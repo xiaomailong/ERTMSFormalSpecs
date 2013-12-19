@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace GUI.DataDictionaryView
 {
-    public class SubVariablesTreeNode : DataTreeNode<DataDictionary.Variables.Variable>
+    public class SubVariablesTreeNode : ModelElementTreeNode<DataDictionary.Variables.Variable>
     {
         /// <summary>
         /// The editor for Train data variables

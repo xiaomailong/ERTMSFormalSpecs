@@ -21,7 +21,7 @@ using System.Drawing.Design;
 
 namespace GUI.TestRunnerView
 {
-    public class StepTreeNode : DataTreeNode<DataDictionary.Tests.Step>
+    public class StepTreeNode : ModelElementTreeNode<DataDictionary.Tests.Step>
     {
         /// <summary>
         /// The value editor

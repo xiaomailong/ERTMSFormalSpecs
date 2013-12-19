@@ -45,7 +45,7 @@ namespace DataDictionary.Interpreter.Filter
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static bool Predicate(INamable value)
+        public static new bool Predicate(INamable value)
         {
             return value is Variables.IVariable || IsValue.Predicate(value);
         }

@@ -182,4 +182,15 @@ namespace GUI.Converters
             converters.Add(new Converter(DataDictionary.Generated.acceptor.ExpectationKind.aContinuous, "Continuous"));
         }
     }
+
+    public class ChangeActionConverter : GenericEnumConverter<HistoricalData.Generated.acceptor.ChangeOperationEnum>
+    {
+        public ChangeActionConverter(Type type)
+            : base(type)
+        {
+            converters.Add(new Converter(HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Add"));
+            converters.Add(new Converter(HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Change"));
+            converters.Add(new Converter(HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove, "Remove"));
+        }
+    }
 }

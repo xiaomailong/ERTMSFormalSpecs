@@ -20,7 +20,7 @@ using DataDictionary;
 
 namespace GUI.TestRunnerView
 {
-    public class TestsTreeNode : DataTreeNode<DataDictionary.Dictionary>
+    public class TestsTreeNode : ModelElementTreeNode<DataDictionary.Dictionary>
     {
         private class ItemEditor : NamedEditor
         {

@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace GUI.DataDictionaryView
 {
-    public class StructureProceduresTreeNode : DataTreeNode<DataDictionary.Types.Structure>
+    public class StructureProceduresTreeNode : ModelElementTreeNode<DataDictionary.Types.Structure>
     {
         /// <summary>
         /// The editor for message variables

@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace GUI.TranslationRules
 {
-    public class FolderTreeNode : DataTreeNode<DataDictionary.Tests.Translations.Folder>
+    public class FolderTreeNode : ModelElementTreeNode<DataDictionary.Tests.Translations.Folder>
     {
         private class ItemEditor : NamedEditor
         {

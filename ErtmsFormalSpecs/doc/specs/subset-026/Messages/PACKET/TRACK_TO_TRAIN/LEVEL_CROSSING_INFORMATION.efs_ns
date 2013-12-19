@@ -1,5 +1,6 @@
 <NameSpace
  Name="LEVEL_CROSSING_INFORMATION"
+ Guid="56ae48d0-f58b-4ae2-9329-f5bca3590959"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="8e1d81d0-71cd-483f-b0fd-e23fe6d632b7"
 >
 <ReqRef
  Id="4744429f-fce3-4833-817a-c0cd74ffcd7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b26c2b5-84c1-4a15-9b2a-67b680ea0e3f"
 >
 </ReqRef><ReqRef
  Id="09955e19-89e5-4073-8a7b-b17cb637603a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8e10d1c0-561b-4d9e-bc7a-aa906e016881"
 >
 </ReqRef><Comment>Level Crossing information</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="2b6e6de9-a0dc-4587-8303-8f0cf86566c0"
 >
 <ReqRef
  Id="4744429f-fce3-4833-817a-c0cd74ffcd7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="488cb250-c3cd-4fb6-8812-23200686280d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="5dd75c12-c643-437f-b093-eb9420485f23"
 >
 <ReqRef
  Id="4744429f-fce3-4833-817a-c0cd74ffcd7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="18c716f5-aa4e-4646-a00f-13de3b36e2d7"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="4044c197-309f-499b-8c09-1ed7e960f99a"
 >
 <ReqRef
  Id="4744429f-fce3-4833-817a-c0cd74ffcd7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7269b35-b419-41d7-ba49-4ec0d8daf468"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="3f80bf1a-d4be-4622-8ffc-8f25b8c45c5e"
 >
 <ReqRef
  Id="4744429f-fce3-4833-817a-c0cd74ffcd7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="95dfd506-1d14-4572-b638-d62ffd96afad"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_LX"
@@ -67,10 +79,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LX"
+ Guid="cd99c57b-7926-4410-aa54-a2c0444c9e92"
 >
 <ReqRef
  Id="4744429f-fce3-4833-817a-c0cd74ffcd7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb5584b3-5989-4e3e-b969-b417892fbb0b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_LX"
@@ -78,10 +92,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_LX"
+ Guid="940fd0c7-795e-424a-9d10-58dd197067f4"
 >
 <ReqRef
  Id="4744429f-fce3-4833-817a-c0cd74ffcd7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8bf2e761-524f-4153-b93e-404e08d837b1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_LX"
@@ -89,10 +105,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_LX"
+ Guid="a9b4d752-4591-4bdd-8f6e-eb404ea44cf9"
 >
 <ReqRef
  Id="4744429f-fce3-4833-817a-c0cd74ffcd7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e75aa88d-395d-44fd-a37f-1f1b7f382c4a"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_LXSTATUS"
@@ -100,10 +118,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_LXSTATUS"
+ Guid="49f6d761-db51-4ac6-b0fd-8e5d45d3497b"
 >
 <ReqRef
  Id="4744429f-fce3-4833-817a-c0cd74ffcd7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d9a8bf15-5c49-4e82-8130-bdb354d4f418"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="V_LX"
@@ -111,6 +131,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="V_LX"
+ Guid="7483e16e-3555-46cb-9218-acea26cb06b1"
 >
 </StructureElement><StructureElement
  TypeName="Q_STOPLX"
@@ -118,6 +139,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_STOPLX"
+ Guid="6b782e6b-5325-499d-a50f-3217876afa89"
 >
 </StructureElement><StructureElement
  TypeName="L_STOPLX"
@@ -125,6 +147,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_STOPLX"
+ Guid="622236f0-715f-4f1d-85c9-3e71816c4a31"
 >
 </StructureElement></Structure></Structures>
 </NameSpace>

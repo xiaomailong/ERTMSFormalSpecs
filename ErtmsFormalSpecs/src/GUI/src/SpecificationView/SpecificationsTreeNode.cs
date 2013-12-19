@@ -20,7 +20,7 @@ using System.Windows.Forms;
 
 namespace GUI.SpecificationView
 {
-    public class SpecificationsTreeNode : DataTreeNode<DataDictionary.Dictionary>
+    public class SpecificationsTreeNode : ModelElementTreeNode<DataDictionary.Dictionary>
     {
         /// <summary>
         /// The editor
@@ -34,7 +34,7 @@ namespace GUI.SpecificationView
         /// Instanciates the editor
         /// </summary>
         /// <returns></returns>
-        protected override DataTreeNode<DataDictionary.Dictionary>.Editor createEditor()
+        protected override ModelElementTreeNode<DataDictionary.Dictionary>.Editor createEditor()
         {
             return new SpecificationEditor();
         }

@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace GUI.Shortcuts
 {
-    public class ShortcutTreeNode : DataTreeNode<DataDictionary.Shortcuts.Shortcut>
+    public class ShortcutTreeNode : ModelElementTreeNode<DataDictionary.Shortcuts.Shortcut>
     {
         private class ItemEditor : NamedEditor
         {

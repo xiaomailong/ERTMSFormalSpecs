@@ -65,6 +65,22 @@ namespace DataDictionary
         /// Indicates that no logging should occur
         /// </summary>
         public static bool BeSilent { get; set; }
+
+        /// <summary>
+        /// Provides the Guid of the paragraph and creates one if it is not yet set
+        /// </summary>
+        public virtual string Guid
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(getGuid()))
+                {
+                    setGuid(System.Guid.NewGuid().ToString());
+                }
+
+                return getGuid();
+            }
+        }
     }
 
     public interface TextualExplain

@@ -1,5 +1,6 @@
 <NameSpace
  Name="ERA_BrakingCurvesVerification"
+ Guid="336a4b67-324d-4b67-b2ce-31dc4f686df4"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,20 +9,24 @@
  Type="Boolean"
  NeedsRequirement="FALSE"
  Name="Compare"
+ Guid="e28e6af8-9a4e-4301-a06b-00654d61ce89"
 >
 <Parameters>
 <Parameter
  Type="Double"
  Name="Val1"
+ Guid="d6419bbd-a046-4395-b7bc-00f5af95af94"
 >
 </Parameter><Parameter
  Type="Double"
  Name="Val2"
+ Guid="f7c1aaab-fce2-4f84-b61e-8f2beb11c3f2"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="f19d0f87-1351-47db-a1f1-4c546277f614"
 >
 <Expression>AbsoluteValue ( AbsoluteValue (Val1) - AbsoluteValue (Val2) ) &lt; 0.25</Expression>
 </Case></Cases>
@@ -29,22 +34,28 @@
  Type="Double"
  NeedsRequirement="FALSE"
  Name="AbsoluteValue"
+ Guid="5583d127-8106-4b70-818b-44eeadd96040"
 >
 <Parameters>
 <Parameter
  Type="Double"
  Name="Value"
+ Guid="70b87f78-56af-4eb7-b0b7-6dc1d19d3634"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Negative"
+ Guid="91192a34-c7bf-4c66-92ae-e9901cc137ab"
 >
 <PreConditions>
-<PreCondition>Value &lt; 0.0</PreCondition></PreConditions>
+<PreCondition
+ Guid="416f61fb-8367-49b6-a3ab-fd8adf404b5c"
+>Value &lt; 0.0</PreCondition></PreConditions>
 <Expression>- Value</Expression>
 </Case><Case
  Name="Positive"
+ Guid="860438cb-c475-4f5f-b32a-34fd2fc79248"
 >
 <Expression>Value</Expression>
 </Case></Cases>
@@ -52,16 +63,19 @@
  Type="Default.BaseTypes.Distance"
  NeedsRequirement="FALSE"
  Name="ConvertTargetDistance"
+ Guid="cdded46f-adbd-4dde-ac56-2eeeec5c17c7"
 >
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="d"
+ Guid="00fe5a17-f511-4e1b-9eb5-c2ecd4750f54"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="0b0e4bbc-39c9-4923-a447-63fe6b79cda8"
 >
 <Expression>Kernel.MA.EndOfMovementAuthority().Location - d</Expression>
 </Case></Cases>
@@ -69,20 +83,24 @@
  Type="Boolean"
  NeedsRequirement="FALSE"
  Name="CompareAcceleration"
+ Guid="b9d2686e-06d9-4932-8ec2-3ccca803d773"
 >
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Acceleration"
  Name="Val1"
+ Guid="06c31594-3cd7-4731-a4f4-06887819da9a"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Acceleration"
  Name="Val2"
+ Guid="9d6431d2-ccad-441e-b067-1ffb6dce14f9"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="688d8a7e-6fe5-4f6c-b56c-28dce7f0c743"
 >
 <Expression>AbsoluteValue ( AbsoluteValue (Val1) - AbsoluteValue (Val2) ) &lt; 0.001</Expression>
 </Case></Cases>

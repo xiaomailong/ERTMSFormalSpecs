@@ -1,5 +1,6 @@
 <NameSpace
  Name="TRACK_CONDITION_STATION_PLATFORMS"
+ Guid="cf15155a-b1e6-489e-93b9-adb08ff4c2e5"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="97677114-4f79-4c6c-90a3-f9521d264170"
 >
 <ReqRef
  Id="0be2ea06-0c8b-4622-9a32-bd8954c01555"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="100f092a-52b6-40d8-ae92-872ba2816c8e"
 >
 </ReqRef><ReqRef
  Id="275e3334-82a3-444d-8ca5-4d7482268ea0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="65544ff1-8e36-448e-93fd-260e5f09b40e"
 >
 </ReqRef><Comment>The packet gives details concerning the location and height of station platforms for use by the train’s door control system</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="a039e962-b33a-4b36-a784-c9026b9caeb6"
 >
 <ReqRef
  Id="0be2ea06-0c8b-4622-9a32-bd8954c01555"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="15cf480c-f0db-4b2d-9f26-1eef0ca4e9cd"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="e447caf7-f9b2-45ca-b454-d9abbbdc74f6"
 >
 <ReqRef
  Id="0be2ea06-0c8b-4622-9a32-bd8954c01555"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="62914f6c-52ba-4bd3-978a-9a4a0ac25b19"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="b7243bf1-2aff-4747-b612-fe4898b349f2"
 >
 <ReqRef
  Id="0be2ea06-0c8b-4622-9a32-bd8954c01555"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88a5dc27-8b5f-44a9-8404-c64cab4a34cb"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="ca884ffc-3e97-4adf-81b4-afd5a6399649"
 >
 <ReqRef
  Id="0be2ea06-0c8b-4622-9a32-bd8954c01555"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e8a84ee6-3b99-4e3a-b543-87aa29f90a52"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_TRACKINIT"
@@ -67,10 +79,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_TRACKINIT"
+ Guid="7d9279b6-982e-4c5d-ad4f-a6da2dc9f45c"
 >
 <ReqRef
  Id="0be2ea06-0c8b-4622-9a32-bd8954c01555"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bfe28e34-0ad1-4c3d-ba82-54a1ecd1c702"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_TRACKINIT"
@@ -78,6 +92,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_TRACKINIT"
+ Guid="f60ade4a-4403-4eeb-88c5-61acbdd93b5c"
 >
 </StructureElement><StructureElement
  TypeName="D_TRACKCOND"
@@ -85,6 +100,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_TRACKCOND"
+ Guid="82d8bcd4-6f9e-4d35-a606-799c49d8168c"
 >
 </StructureElement><StructureElement
  TypeName="L_TRACKCOND"
@@ -92,6 +108,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_TRACKCOND"
+ Guid="82e43055-2cf6-43a5-949a-9f92754decc7"
 >
 </StructureElement><StructureElement
  TypeName="M_PLATFORM"
@@ -99,6 +116,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_PLATFORM"
+ Guid="1c03f577-aa62-4c1d-a385-a7f580a1b5c1"
 >
 </StructureElement><StructureElement
  TypeName="Q_PLATFORM"
@@ -106,6 +124,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_PLATFORM"
+ Guid="5d42464f-5617-47c9-974d-3995be3588d6"
 >
 </StructureElement><StructureElement
  TypeName="N_ITER"
@@ -113,6 +132,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="N_ITER"
+ Guid="bc7cce7b-4998-4273-8365-f75d5a868784"
 >
 </StructureElement><StructureElement
  TypeName="Collection1"
@@ -120,14 +140,17 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
+ Guid="1468c4a3-19f6-48c0-81d9-612224b87f31"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
+ Guid="d687ce48-f7c8-4afc-9868-3be0432f8c47"
 >
 <ReqRef
  Id="275e3334-82a3-444d-8ca5-4d7482268ea0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e9a5806a-7830-4b07-badf-468d0ebf13fa"
 >
 </ReqRef><StructureElement
  TypeName="D_TRACKCOND"
@@ -135,6 +158,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_TRACKCOND"
+ Guid="edfd788e-6145-4c19-a634-0a2f348fed53"
 >
 </StructureElement><StructureElement
  TypeName="L_TRACKCOND"
@@ -142,6 +166,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_TRACKCOND"
+ Guid="0fab1ab7-b4d4-4392-b6e0-80677260c87b"
 >
 </StructureElement><StructureElement
  TypeName="M_PLATFORM"
@@ -149,6 +174,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_PLATFORM"
+ Guid="6b34d317-a2aa-4638-87d3-b9c87ea9a101"
 >
 </StructureElement><StructureElement
  TypeName="Q_PLATFORM"
@@ -156,6 +182,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_PLATFORM"
+ Guid="787d5971-514f-40cc-b2ec-662008c44216"
 >
 </StructureElement></Structure></Structures>
 <Collections>
@@ -164,10 +191,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
+ Guid="37141971-5596-4c76-a375-08b40dd5a4d0"
 >
 <ReqRef
  Id="275e3334-82a3-444d-8ca5-4d7482268ea0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a0d20f16-953d-455c-a524-6f70547373c1"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>

@@ -22,7 +22,7 @@ using System.Drawing.Design;
 
 namespace GUI.DataDictionaryView
 {
-    public class ParameterTreeNode : DataTreeNode<Parameter>
+    public class ParameterTreeNode : ModelElementTreeNode<Parameter>
     {
         private class InternalNameSpaceConverter : Converters.NameSpaceConverter
         {

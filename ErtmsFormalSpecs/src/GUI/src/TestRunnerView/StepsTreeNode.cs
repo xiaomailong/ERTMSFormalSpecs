@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace GUI.TestRunnerView
 {
-    public class StepsTreeNode : DataTreeNode<DataDictionary.Tests.TestCase>
+    public class StepsTreeNode : ModelElementTreeNode<DataDictionary.Tests.TestCase>
     {
         /// <summary>
         /// The value editor

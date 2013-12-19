@@ -21,7 +21,7 @@ using System.Drawing.Design;
 
 namespace GUI
 {
-    public abstract class ReferencesParagraphTreeNode<T> : DataTreeNode<T>
+    public abstract class ReferencesParagraphTreeNode<T> : ModelElementTreeNode<T>
         where T : DataDictionary.ReferencesParagraph
     {
         /// <summary>

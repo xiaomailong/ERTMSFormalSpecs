@@ -4,19 +4,24 @@
  Width="350"
  Height="300"
  Name="SpeedAndDistanceMonitoring"
+ Guid="29ccd64e-2889-44e6-8b10-6499287bee06"
 >
 <NameSpaces>
 <NameSpaceRef
  Name="CeilingSupervision"
+ Guid="1881f10d-39b7-4187-8c3e-9c94689d595b"
 >
 </NameSpaceRef><NameSpaceRef
  Name="TargetSupervision"
+ Guid="cac2dfd6-7f92-4fdc-b1ef-b2f810e58804"
 >
 </NameSpaceRef><NameSpaceRef
  Name="ReleaseSpeedSupervision"
+ Guid="3259d954-cfaf-45a7-a12e-7d2df3ecdc5a"
 >
 </NameSpaceRef><NameSpaceRef
  Name="PreIndicationLocation"
+ Guid="a991d943-4e5c-411d-9eaf-5d2b49b4a23f"
 >
 </NameSpaceRef></NameSpaces>
 <Enumerations>
@@ -24,67 +29,82 @@
  Default="Ceiling"
  Implemented="TRUE"
  Name="MonitoringType"
+ Guid="2ac16c16-edca-4fb7-bbc0-d5da4e832e66"
 >
 <ReqRef
  Id="8f743e52-5860-4a00-b1c3-1a25d8b01bcf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ebbb3490-1e34-47a6-90c5-7fd03936be06"
 >
 </ReqRef><ReqRef
  Id="61609105-e374-4561-8058-cd995e0cac1a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="07907ab7-4e95-4a6a-9eac-32532338dc1b"
 >
 </ReqRef><ReqRef
  Id="1bd536e2-b2c8-48c3-84b5-53f4fd75ad05"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="658a97c5-6d09-4249-b8cd-80dfff07e3f1"
 >
 </ReqRef><ReqRef
  Id="52f69d6f-9efe-46a8-bf28-82cdbaf08617"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="812775a4-f2f7-474d-ac2d-22d81cdf07d2"
 >
 </ReqRef><Values>
 <EnumValue
  Value="0"
  Name="Ceiling"
+ Guid="36d80b4f-9437-42d8-b4d2-05d8cf2fc248"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Target"
+ Guid="0f366445-dc78-4606-9338-a9256a5667fb"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="ReleaseSpeed"
+ Guid="8a016740-7178-4c1f-94ce-3470af7ad622"
 >
 </EnumValue></Values>
 </Enum><Enum
  Default="SupervisionStatus.Normal"
  Implemented="TRUE"
  Name="SupervisionStatus"
+ Guid="425b2655-5563-4f7d-a175-e9ccc940ac92"
 >
 <ReqRef
  Id="b8bd12fa-1398-4b7e-82b5-d9fea4894091"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="52b548fe-0bc1-4a21-b805-664ea56c1ccf"
 >
 </ReqRef><Comment>Indicates the current supervision status of the train.</Comment>
 <Values>
 <EnumValue
  Value="0"
  Name="Normal"
+ Guid="6b67c3eb-f991-4ad6-9b02-49f003cb70c3"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Indication"
+ Guid="26e7f129-502b-465c-b91e-62a92a2cfbc5"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Overspeed"
+ Guid="d89741f5-f481-44f1-8c4a-44403efbf242"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Warning"
+ Guid="1a5a94a3-fc6d-4ba4-bb7d-abc158d96508"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Intervention"
+ Guid="961451cc-ec43-4b91-ae94-3425c4dcd0e3"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -93,46 +113,56 @@
  Type="Default.BaseTypes.Speed"
  Implemented="TRUE"
  Name="f41"
+ Guid="574a6d60-6f0a-4231-a88a-b3218269d93e"
 >
 <ReqRef
  Id="4e10c5a1-f415-44fc-b597-8b1a359c2c25"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0c6a75ff-8f1c-4f21-9eef-d04e42c7f902"
 >
 </ReqRef><ReqRef
  Id="0e91b525-553f-4f68-8970-8bed83e88948"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2017e1bf-bd0e-4eb7-998a-954314fa9191"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="ae24dcec-0c75-48cd-b842-4d34ef229a22"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ab44b8c8-44a1-44c9-83aa-3681e2d9d406"
 >
 </ReqRef><ReqRef
  Id="92e9a363-c16c-40c0-9622-49031126869d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="096a72ec-a7bf-4fff-80d1-9a93ff9ce660"
 >
 </ReqRef><ReqRef
  Id="4ba91473-9e38-449c-87e0-203353bc7bcb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c9abd426-62b5-4e1f-ac94-6cfa5ac6658b"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="528dbfd7-4b7d-4b1d-a596-153aec151d71"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="92bd9095-b0a8-4566-a3fb-1b411b0b3f6b"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="0a156077-932d-4831-b7d8-8cb0350879e1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f9e5a23b-af2f-489e-9a1a-4807bb1e24fc"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="14b50fc8-d11d-4f00-a819-56def9d260b0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3b925746-fb54-4ae6-880c-592e8d84b4a4"
 >
 </ReqRef><ReqRef
  Id="dfe813b0-9500-4f66-bdc1-50df0c88f0ca"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4a5e0389-c293-4c48-b6b4-24af30b8dfee"
 >
 <Comment></Comment>
 </ReqRef><Comment>Computes the compensation of the inaccuracy of the speed measurement. For speed greater than 30km/h, the value is computed using the formula (1/47) * Speed + 7 - (1/47)</Comment>
@@ -140,23 +170,33 @@
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="V"
+ Guid="55c660e8-c7d5-45aa-a698-c5f1cc010f34"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Speed lower than 30km/h"
+ Guid="be93371e-e4bb-49d1-b368-83e2c75653f5"
 >
 <PreConditions>
-<PreCondition>V &lt; 30.0</PreCondition><PreCondition>NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition></PreConditions>
+<PreCondition
+ Guid="5394b5c1-088b-4cd4-99d8-833a9ccb9b0e"
+>V &lt; 30.0</PreCondition><PreCondition
+ Guid="fc94aa76-153b-481d-a628-d5e5681681be"
+>NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition></PreConditions>
 <Expression>2.0</Expression>
 </Case><Case
  Name="Speed upper than 30km/h"
+ Guid="e612c16a-0960-440e-b48a-bcffc10dd9ee"
 >
 <PreConditions>
-<PreCondition>NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition></PreConditions>
+<PreCondition
+ Guid="9db93c12-dc1f-44b4-ab37-d59c2760812b"
+>NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition></PreConditions>
 <Expression>V / 47.0 + 7.0 - 265.0 / 47.0</Expression>
 </Case><Case
  Name="Compensation of inaccuracy inhibited"
+ Guid="7d443066-45eb-484f-993c-be2d35dda86b"
 >
 <Expression>0.0</Expression>
 </Case></Cases>
@@ -164,18 +204,22 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="SBIsAvailableForUse"
+ Guid="b0b21ecb-3c0b-4844-9f7a-1a6e39b0b2fa"
 >
 <ReqRef
  Id="00747c30-1c6d-4751-8e5f-6d65f3085d3a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20f62c9a-5203-4f25-baf1-01ba9e1875ec"
 >
 </ReqRef><ReqRef
  Id="0f223275-ff77-4025-a194-a347f5ef0542"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b286a8d9-d73a-4c9b-b746-0bdd2e873eac"
 >
 </ReqRef><Cases>
 <Case
  Name="Value"
+ Guid="d01614d0-298f-4107-8b27-4e7ff976e5e9"
 >
 <Expression>TrainData.TrainData.Value.SBCommandIsImplemented AND NOT NationalValues.UseOfSBIsInhibited()</Expression>
 </Case></Cases>
@@ -183,53 +227,75 @@
  Type="Default.BaseTypes.Speed"
  Implemented="TRUE"
  Name="PermittedSpeed"
+ Guid="98c15b8c-4a8b-4fc0-8d3c-6e940e541fe2"
 >
 <ReqRef
  Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8cf0ba7-f32e-4c2a-b835-6ba6cb0f32e1"
 >
 </ReqRef><ReqRef
  Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="07f9f820-4f2d-4f73-886c-d0fc8f968675"
 >
 </ReqRef><ReqRef
  Id="74e64307-2966-461e-a976-9a0194ca8514"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f77e2edc-d3c3-4e18-9ba7-1dd5896b3583"
 >
 </ReqRef><ReqRef
  Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f3f297e1-a2c6-47b7-b7e9-90e061ae4b1f"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="222e9cd5-53f5-47e5-967c-cffd85c89a74"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="CeilingSpeedMonitoring_P"
+ Guid="9bcbf022-4599-40dc-ad8a-f5e831f6af26"
 >
 <PreConditions>
-<PreCondition>Monitoring == MonitoringType.Ceiling</PreCondition><PreCondition>Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
+<PreCondition
+ Guid="5394d167-a030-4b1d-a096-b176e1075237"
+>Monitoring == MonitoringType.Ceiling</PreCondition><PreCondition
+ Guid="e902ee0f-8ed6-4c80-aafe-96b258b01056"
+>Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
 <Expression>CeilingSupervision.P ( Distance )</Expression>
 </Case><Case
  Name="CeilingSpeedMonitoring_SBI"
+ Guid="e4f40ce0-734c-4a1d-b8d4-68c346bc038b"
 >
 <PreConditions>
-<PreCondition>Monitoring == MonitoringType.Ceiling</PreCondition></PreConditions>
+<PreCondition
+ Guid="c4529bc3-bd47-4ae9-8347-84a7d362d528"
+>Monitoring == MonitoringType.Ceiling</PreCondition></PreConditions>
 <Expression>CeilingSupervision.SBI ( Distance )</Expression>
 </Case><Case
  Name="TargetSpeedMonitoring_P"
+ Guid="c121bdd5-4b33-48ef-b069-9a042e43983d"
 >
 <PreConditions>
-<PreCondition>Monitoring == MonitoringType.Target</PreCondition><PreCondition>Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
+<PreCondition
+ Guid="5ba6a2ec-fce4-46ab-8e17-256f0a63ae84"
+>Monitoring == MonitoringType.Target</PreCondition><PreCondition
+ Guid="b286ca0d-4051-4c4a-a610-a2615579bcac"
+>Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
 <Expression>TargetSupervision.V_P_DMI()</Expression>
 </Case><Case
  Name="TargetSpeedMonitoring_FLOI"
+ Guid="abb0b3d3-d383-4088-8c65-db4e81cadbae"
 >
 <PreConditions>
-<PreCondition>Monitoring == MonitoringType.Target</PreCondition></PreConditions>
+<PreCondition
+ Guid="7bfba49b-c9f5-492a-8afc-18d09cf1f725"
+>Monitoring == MonitoringType.Target</PreCondition></PreConditions>
 <Expression>TargetSupervision.V_FLOI_DMI()</Expression>
 </Case></Cases>
 </Function></Functions>
@@ -237,35 +303,46 @@
 <Procedure
  NeedsRequirement="FALSE"
  Name="UpdateMonitoring"
+ Guid="3343f3ef-10d0-4a24-9849-d799ebf3c545"
 >
 <Rules>
 <Rule
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="UpdateMonitoring"
+ Guid="d68dc5dd-66dd-4df0-94ac-da7e387cd2c4"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="ReleaseSpeed"
+ Guid="cc74a824-206f-44a4-a2b6-31b96bfddc35"
 >
 <ReqRef
  Id="a387bd06-4306-436c-ae73-a3faa509f059"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4fc58fb-68b2-4182-9837-200439de3372"
 >
 </ReqRef><PreConditions>
-<PreCondition>ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= Odometry.NominalDistance
+<PreCondition
+ Guid="f0a73956-72ca-4e2a-833d-c64917c04a3d"
+>ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= Odometry.NominalDistance
 AND
-ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monitoring != MonitoringType.ReleaseSpeed</PreCondition></PreConditions>
+ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition
+ Guid="d0936740-8827-4152-93cf-3722e478afc0"
+>Monitoring != MonitoringType.ReleaseSpeed</PreCondition></PreConditions>
 <Actions>
-<Action>Monitoring &lt;- MonitoringType.ReleaseSpeed</Action></Actions>
+<Action
+ Guid="9fa14273-a356-4624-b65d-d653232c55c9"
+>Monitoring &lt;- MonitoringType.ReleaseSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TriggerEBCommand"
+ Guid="6b62b8c5-ce72-4fd2-917e-c093976d77cb"
 >
 <Rules>
 <Rule
@@ -273,6 +350,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TriggerEBCommand"
+ Guid="dc7d6796-19bd-466c-a5f0-0b9d08176961"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -280,25 +358,31 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TriggerEBCommand"
+ Guid="555aede7-2e21-4f63-9560-38ff5925a342"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EBTriggered &lt;- True</Action></Actions>
+<Action
+ Guid="f1ce2fe3-5fe1-4732-bd7f-6a48f3aabc20"
+>EBTriggered &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TriggerSBCommand"
+ Guid="bdb289f3-34c3-4ea7-8801-2305124ed76a"
 >
 <ReqRef
  Id="0f223275-ff77-4025-a194-a347f5ef0542"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a836995f-2a48-4c31-a0d8-141d35040167"
 >
 </ReqRef><ReqRef
  Id="b19b213b-b887-4ef8-b210-439b95753041"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="beccff75-037b-431f-857e-14268cb1f690"
 >
 </ReqRef><Comment></Comment>
 <Rules>
@@ -307,6 +391,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TriggerSBCommand"
+ Guid="f59ae9b6-e396-4a40-a8ea-5bf2f8b25f23"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -315,59 +400,87 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SBIsAvailableForUse"
+ Guid="d1ec4ea1-be7f-4093-ad74-278db6897221"
 >
 <PreConditions>
-<PreCondition>SBIsAvailableForUse()</PreCondition></PreConditions>
+<PreCondition
+ Guid="edcfd47a-ea63-4f62-a207-80679aaf847f"
+>SBIsAvailableForUse()</PreCondition></PreConditions>
 <Actions>
-<Action>SBTriggered &lt;- True</Action><Action>SBSpecified &lt;- True</Action></Actions>
+<Action
+ Guid="53eeb1fe-321f-4cd1-badf-82567a688616"
+>SBTriggered &lt;- True</Action><Action
+ Guid="d89cc423-fae2-4789-8127-68c610145693"
+>SBSpecified &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Otherwise"
+ Guid="68c0b104-9eb6-4b67-904e-efe0a874749b"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>TriggerEBCommand()</Action><Action>SBSpecified &lt;- True</Action></Actions>
+<Action
+ Guid="37d9f842-c365-4e03-8f5e-df6d7484dba6"
+>TriggerEBCommand()</Action><Action
+ Guid="fd5d023f-77fd-4fd2-8faf-4daa2289d1ad"
+>SBSpecified &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  NeedsRequirement="FALSE"
  Name="RevokeEBCommand"
+ Guid="4a1fb3de-7c1f-4285-9c15-c45bc8536ccf"
 >
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RevokeSBCommand"
+ Guid="6a037123-bfc5-4122-9ac9-c00925275128"
 >
 <ReqRef
  Id="0f223275-ff77-4025-a194-a347f5ef0542"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4d17d182-2f66-480e-9253-75a9d717deb0"
 >
 </ReqRef><Rules>
 <Rule
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="RevokeSBCommand"
+ Guid="a6d0da46-9ebd-4a4b-a6a2-40ff906bdbb4"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="SBIsAvailableForUse"
+ Guid="091c4b2f-c933-4ad4-a5e9-32790977174f"
 >
 <PreConditions>
-<PreCondition>SBIsAvailableForUse()</PreCondition></PreConditions>
+<PreCondition
+ Guid="b1c74e83-dd79-4f11-9e75-a901db534064"
+>SBIsAvailableForUse()</PreCondition></PreConditions>
 <Actions>
-<Action>SBTriggered &lt;- False</Action><Action>SBSpecified &lt;- False</Action></Actions>
+<Action
+ Guid="2a6f82f8-80a2-4496-bfa4-445fd6c1d335"
+>SBTriggered &lt;- False</Action><Action
+ Guid="4c3aacf3-5346-42c8-950b-be161a915d5f"
+>SBSpecified &lt;- False</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Otherwise"
+ Guid="d4024946-ef07-42fd-905b-695b43215446"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>RevokeEBCommand()</Action><Action>SBSpecified &lt;- False</Action></Actions>
+<Action
+ Guid="8e4ef373-8406-40ac-8590-06ac5a6d17e7"
+>RevokeEBCommand()</Action><Action
+ Guid="8a7deeeb-8de4-4d72-a6c2-3d915194084c"
+>SBSpecified &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -378,10 +491,12 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  VariableMode="Internal"
  Implemented="TRUE"
  Name="Monitoring"
+ Guid="98bc4b2a-6da7-440d-9bf2-e41fe5486bce"
 >
 <ReqRef
  Id="52f69d6f-9efe-46a8-bf28-82cdbaf08617"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee289381-10a6-47b9-ae57-cfc9d28d45e5"
 >
 </ReqRef><Comment>Indicates the current monitoring of the train.</Comment>
 </Variable><Variable
@@ -390,18 +505,22 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  VariableMode="Internal"
  Implemented="TRUE"
  Name="SBTriggered"
+ Guid="76745709-6a98-447f-88dc-47ae1d3f280e"
 >
 <ReqRef
  Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a94f7647-a6fd-4ddd-acd6-2c53443dce83"
 >
 </ReqRef><ReqRef
  Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="42698de5-d3e7-4c6c-ae7a-b3d38cc0454b"
 >
 </ReqRef><ReqRef
  Id="b19b213b-b887-4ef8-b210-439b95753041"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e9555a1b-f367-4622-9faa-66996604960b"
 >
 </ReqRef><Comment>Indicates if SB was triggered.</Comment>
 </Variable><Variable
@@ -410,18 +529,22 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  VariableMode="Internal"
  Implemented="TRUE"
  Name="EBTriggered"
+ Guid="34c6c135-edd7-4757-86c3-b26967d80b7d"
 >
 <ReqRef
  Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="18dfc03a-7711-4816-aed9-b0113d8e5a97"
 >
 </ReqRef><ReqRef
  Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="421356eb-2b78-4de0-a110-d59f1f5857c9"
 >
 </ReqRef><ReqRef
  Id="b19b213b-b887-4ef8-b210-439b95753041"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e36e82e0-f29a-4357-bb33-8229c4305f00"
 >
 </ReqRef><Comment>Indicates if EB was triggered (can be triggered either if EB was specified or if SB was specified but there is no on-board interface with the service brake or the use of the service brake command is not allowed by a National Value).</Comment>
 </Variable><Variable
@@ -430,14 +553,17 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  VariableMode="Internal"
  Implemented="TRUE"
  Name="TractionCutOffTriggered"
+ Guid="977c190f-a73a-4ed6-a0f3-3c8abe725756"
 >
 <ReqRef
  Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a72b9829-af1f-45e7-a716-d068884cfa89"
 >
 </ReqRef><ReqRef
  Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d304123-df8e-4e5b-9c01-015f289a1c6a"
 >
 </ReqRef><Comment>Indicates if the traction cuf-off command was triggered.</Comment>
 </Variable><Variable
@@ -446,10 +572,12 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  VariableMode="Internal"
  Implemented="TRUE"
  Name="Supervision"
+ Guid="80030642-6eaa-408e-9f33-e3ecf28e70ce"
 >
 <ReqRef
  Id="b8bd12fa-1398-4b7e-82b5-d9fea4894091"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e87a484a-d1e1-4938-9576-f0275e9d51b9"
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
@@ -458,10 +586,12 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  VariableMode="Internal"
  Implemented="TRUE"
  Name="SpeedAndDistanceMonitoringIsActive"
+ Guid="f5e2bfa5-4c2a-4ac6-bdae-34426c0f9a9f"
 >
 <ReqRef
  Id="8468de24-42eb-4959-a546-99c00cccb22a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3c1cee0a-e1ef-4f85-928f-93d05439ad66"
 >
 </ReqRef><Comment>Indicates if the speed and distance monitoring function is active.</Comment>
 </Variable><Variable
@@ -471,6 +601,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TCOSpecified"
+ Guid="7ea4025a-f5b3-4e8c-9ab9-1b1ae985b2db"
 >
 <Comment>Indicates if traction cut-off command was specified.</Comment>
 </Variable><Variable
@@ -479,10 +610,12 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  VariableMode="Internal"
  Implemented="TRUE"
  Name="SBSpecified"
+ Guid="b53c4e24-e8b7-4d9c-87a7-e02c83a336d3"
 >
 <ReqRef
  Id="7d9d0edb-ad9a-48db-a67e-e74e1be64d74"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="95dd4898-2b4b-450a-8ef2-62b60ac891aa"
 >
 </ReqRef><Comment>Indicates if the SB command was specified. Use to determine wheter EB command was triggered due to SBI supervision limit or EBI supervision limit.</Comment>
 </Variable><Variable
@@ -491,6 +624,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  VariableMode="Internal"
  Implemented="TRUE"
  Name="TrainTripped"
+ Guid="53d8badf-f08b-4d97-8f5e-710965ab272f"
 >
 <Comment>Indicates if the train is tripped.</Comment>
 </Variable></Variables>

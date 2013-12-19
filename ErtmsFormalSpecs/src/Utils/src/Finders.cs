@@ -13,10 +13,10 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Collections.Generic;
-
 namespace Utils
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// A finder utility class. 
     /// </summary>

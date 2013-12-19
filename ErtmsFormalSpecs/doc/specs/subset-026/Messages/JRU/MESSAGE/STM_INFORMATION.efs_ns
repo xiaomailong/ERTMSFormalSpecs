@@ -1,5 +1,6 @@
 <NameSpace
  Name="STM_INFORMATION"
+ Guid="658ab29f-3c4e-4527-91dc-27fa4faa39b4"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,14 +9,17 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="31840d12-9375-47f5-875f-bb2cf26e474e"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="de86774a-b2f1-49b6-9394-124f78acc4bb"
 >
 </ReqRef><ReqRef
  Id="62a1d40c-6a06-4405-b7b3-b309f012a7d5"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="794aee1a-f504-4b45-bde6-6fb2ccfd6021"
 >
 </ReqRef><Comment>This message is sent to the on board recording device on an STM event i.e. when certain STM packets are exchanged, certain system status messages in relation to NTCs are displayed or a disconnection of the STM control function connection happens.</Comment>
 <StructureElement
@@ -25,6 +29,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="900ed16b-4647-4978-b35e-a82e66143276"
 >
 </StructureElement><StructureElement
  TypeName="NID_STMX"
@@ -33,10 +38,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_STMX"
+ Guid="8437243e-2412-458c-b2eb-80c68f121eaa"
 >
 <ReqRef
  Id="db0f2ba6-d6b5-4b34-8fc5-d28aea9ac112"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f85dac61-f35e-42ca-8d31-60792f636ad0"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_STMEVENT"
@@ -45,10 +52,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_STMEVENT"
+ Guid="8f5852ab-de76-4e4a-a790-fde67ea1f4fe"
 >
 <ReqRef
  Id="0613c795-d8af-47ad-9c72-50689c1f6f47"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="79b478ea-4cb9-477b-bb78-590ddb1eed6d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_DISCSENDER"
@@ -57,10 +66,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_DISCSENDER"
+ Guid="dedbc7ab-106a-4f04-81bb-81a56a6c36b6"
 >
 <ReqRef
  Id="7155063a-97ce-4d37-9776-993d6c97918c"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="de0edb41-cf96-4106-a549-e75e659a4851"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_DISCTYPE"
@@ -69,10 +80,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_DISCTYPE"
+ Guid="b00caf46-e699-41ee-b481-74609155523e"
 >
 <ReqRef
  Id="68e5993b-c596-4f04-83ec-0084cdfe4d2a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="92559372-8bd2-44f8-9f08-8ad2a79dc774"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_DISCREASON"
@@ -81,10 +94,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_DISCREASON"
+ Guid="44b41beb-1d38-4243-ac6a-cc3d04029a63"
 >
 <ReqRef
  Id="191af7c7-6785-4184-8d8e-d24088324395"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6659c411-439d-4c29-88ff-1065e0618c0c"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="STM_SYSTEM_STATUS_MESSAGE"
@@ -93,10 +108,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="STM_SYSTEM_STATUS_MESSAGE"
+ Guid="be75cd29-ab87-47d0-9b23-1facd8e336f4"
 >
 <ReqRef
  Id="d96e0a47-ee44-4feb-8897-b457c1feff4b"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b0b471a0-a025-4c26-a61e-2473a802f197"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_STMPACKET"
@@ -105,10 +122,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_STMPACKET"
+ Guid="66724707-0a20-466e-8261-dbfdef8c615f"
 >
 <ReqRef
  Id="1e89d540-0255-45bd-bde7-b5747a29bf8f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="93b0bdd9-651e-486e-a7b2-c98640bba944"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_STMPACKET"
@@ -117,10 +136,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_STMPACKET"
+ Guid="62c9fce2-28ab-41e2-989d-e13df399558f"
 >
 <ReqRef
  Id="c757f356-dd3f-4140-9478-b575284701b2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="11e1408e-6051-4ea4-a1f9-2c4bc117ea4f"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

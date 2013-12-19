@@ -1,5 +1,6 @@
 <NameSpace
  Name="ActiveFunctions"
+ Guid="2e084590-0115-4ff8-b512-b2ed5a60fd7e"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,24 +9,32 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="ProvideJuridicalData"
+ Guid="98fa69b5-1290-4247-a9cf-fcc160a947cb"
 >
 <ReqRef
  Id="1e4ca98b-fcef-4737-b4e3-38bfc4715927"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f54e3851-9e43-41c1-9a2c-fbb018d7ad83"
 >
 </ReqRef><Cases>
 <Case
  Name="Inactive"
+ Guid="5a4e46d4-c352-4073-b31f-de19d1fb69f4"
 >
 <PreConditions>
-<PreCondition>Kernel.Mode in  [
+<PreCondition
+ Guid="3f2f8909-bc7a-4ee7-bada-9912b601be9c"
+>Kernel.Mode in  [
   Default.Mode.NP]</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Active"
+ Guid="345a70c9-a907-4e71-9ec4-302adcbf7ecd"
 >
 <PreConditions>
-<PreCondition>Kernel.Mode in  [
+<PreCondition
+ Guid="069dcb3e-5bb3-4de3-9eb8-1198dbfb924b"
+>Kernel.Mode in  [
   Default.Mode.SB, 
   Default.Mode.PS, 
   Default.Mode.SH, 
@@ -43,9 +52,12 @@
 <Expression>True</Expression>
 </Case><Case
  Name="Optional"
+ Guid="126c1670-ab46-4dee-afcc-6245a9a671c5"
 >
 <PreConditions>
-<PreCondition>Kernel.Mode in  [
+<PreCondition
+ Guid="d646faaf-d267-4986-ad6e-69cf49285d27"
+>Kernel.Mode in  [
   Default.Mode.SF, 
   Default.Mode.IS]</PreCondition></PreConditions>
 <Expression>True</Expression>

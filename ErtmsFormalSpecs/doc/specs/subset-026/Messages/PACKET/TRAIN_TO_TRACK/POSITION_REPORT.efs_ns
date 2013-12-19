@@ -1,5 +1,6 @@
 <NameSpace
  Name="POSITION_REPORT"
+ Guid="7a2fce3f-dfba-4f64-aba3-2c06d35d4017"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="0e4e05c9-5276-4ece-9c8e-fadf93c76112"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7fb7e590-37c9-4458-961d-cd6d111c5485"
 >
 </ReqRef><ReqRef
  Id="1b5d3174-e90a-42a4-8da3-c7ade895d5d2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b66ccc90-2f77-43bc-87ea-1203b91bd035"
 >
 </ReqRef><Comment>This packet is used to report the train position and speed as well as some additional information (e.g. mode, level, etc.)</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="c5aaf924-23be-44f2-9e34-7cd35155351b"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="910ee4d0-b818-41fe-bbf4-0e8805e7f678"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="aac21539-fecf-467c-96dc-97b682d73495"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6c222a6f-d470-4e3f-a2e8-697ded45bb65"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="36bb8845-0733-4912-99c8-e05324833baa"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8ee1550d-31ee-4c2b-ae21-e072bce59565"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
+ Guid="cc3de60a-52a8-448e-8f9a-a9a66a56b580"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="02c6bc98-389b-4e24-9739-fc39d890fb71"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_LRBG"
@@ -67,10 +79,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_LRBG"
+ Guid="88e82dc4-53e2-4267-9c14-96e73859f604"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="70f446c4-8496-49b2-b7e1-9ae98e2f5216"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIRLRBG"
@@ -78,10 +92,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIRLRBG"
+ Guid="bfb61a6d-655a-4686-9595-b0fcbbb3379a"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5d20450d-4ede-4acb-8ca2-df65bb135a61"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DLRBG"
@@ -89,10 +105,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DLRBG"
+ Guid="138030b1-ba44-479a-ab7e-997509160fff"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fdc09236-9fcf-4e99-a58b-c41ec2d90afd"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_DOUBTOVER"
@@ -100,10 +118,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_DOUBTOVER"
+ Guid="0fa9deca-2dff-4ff0-83f9-ddda1cf18973"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f413168c-68cf-4149-9a55-afb01e049088"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_DOUBTUNDER"
@@ -111,10 +131,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_DOUBTUNDER"
+ Guid="7a0a4e7b-4c57-4681-89d5-f33a9016ea79"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6ef84d7a-b7ec-426e-9ad0-ef2e6169d409"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_LENGTH"
@@ -122,10 +144,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_LENGTH"
+ Guid="22f65e22-b9e6-4602-a861-77cf599d4406"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="512d5559-e7f6-493a-87ce-2226db1d777e"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_TRAININT"
@@ -133,6 +157,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_TRAININT"
+ Guid="d4a1a3a7-14a2-4a93-acd2-4ad30b5c888a"
 >
 </StructureElement><StructureElement
  TypeName="V_TRAIN"
@@ -140,10 +165,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="V_TRAIN"
+ Guid="524133d1-290a-44d8-a059-5d858fe96515"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="61111cbd-026e-4f27-8a8a-a73ea14739bd"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIRTRAIN"
@@ -151,10 +178,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIRTRAIN"
+ Guid="3a916aa8-e661-491c-a43f-9fb0bd45660c"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cbcfc36f-6139-412a-ae50-33a5e5236766"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_MODE"
@@ -162,10 +191,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_MODE"
+ Guid="a6e39b72-dd63-4560-b2d2-d3d9eb313335"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0b28c173-28ef-4d7b-84f5-7f63fbe81f87"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_LEVEL"
@@ -173,10 +204,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_LEVEL"
+ Guid="150f91f1-5853-4d1a-aa09-c387fb570aee"
 >
 <ReqRef
  Id="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f1dfc59-6910-43cf-a7b1-dec7c5808745"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_NTC"
@@ -184,6 +217,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_NTC"
+ Guid="d70f8ea8-f2d1-42aa-adcb-5fd7f73098c7"
 >
 </StructureElement></Structure></Structures>
 </NameSpace>

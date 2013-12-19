@@ -4,6 +4,7 @@
  Width="100"
  Height="50"
  Name="TIU"
+ Guid="ebde6713-ca52-4c13-949d-6735073795ef"
 >
 <NameSpaces>
 </NameSpaces>
@@ -15,6 +16,7 @@
  Default="0.0"
  Implemented="TRUE"
  Name="Pressure"
+ Guid="5187a482-b9a4-4628-81a0-67f0e9a4fd21"
 >
 </Range></Ranges>
 <Variables>
@@ -22,21 +24,26 @@
  Type="Boolean"
  VariableMode="Outgoing"
  Name="ServiceBrakeCommanded"
+ Guid="63609300-c4f8-4580-b85a-fa3d02c99a85"
 >
+<Comment>Indicates the status of service brake of the train.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
  VariableMode="Incoming"
  Implemented="TRUE"
  Name="SleepingRequested"
+ Guid="475c11b7-c9d7-4007-85ce-594413a165c9"
 >
 <ReqRef
  Id="b1cc8b5b-794d-474f-a00b-f1ae16b9be7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aaf38853-5ac6-471c-ad81-bcb5b0cde4f9"
 >
 </ReqRef><ReqRef
  Id="fcc9f8c8-ec5c-4e6e-a905-d17b3e6c2a14"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="970dc551-1cde-48c6-bf1b-e078cb721965"
 >
 </ReqRef><Comment>Indicates if the &quot;sleeping&quot; input signal is received.</Comment>
 </Variable><Variable
@@ -45,10 +52,12 @@
  VariableMode="Incoming"
  Implemented="TRUE"
  Name="PassiveShuntingPermitted"
+ Guid="05232ab0-945a-4fcb-8060-098f8180fc8f"
 >
 <ReqRef
  Id="b630705b-2851-4efe-b023-a26113425740"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="856cb7a0-81fb-47fa-ade9-573c9e96e353"
 >
 </ReqRef><Comment>&amp;</Comment>
 </Variable><Variable
@@ -57,10 +66,12 @@
  VariableMode="Incoming"
  Implemented="TRUE"
  Name="NonLeadingPermitted"
+ Guid="b2429855-b162-4877-8c69-d8a499508ff0"
 >
 <ReqRef
  Id="d0507ada-5b0f-4754-b198-46988a339561"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05f48f3c-b9a0-439e-9e48-359ad54f7a56"
 >
 </ReqRef><Comment>Indicates if the &quot;non leading&quot; input signal is received.</Comment>
 </Variable><Variable
@@ -69,10 +80,12 @@
  VariableMode="Incoming"
  Implemented="TRUE"
  Name="ETCSIsolated"
+ Guid="9859166b-74c8-492c-8de1-92cb1b94e23a"
 >
 <ReqRef
  Id="df71d1ef-a7ee-44b4-839b-8a08ebe2e1c9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="923dcad4-4ca1-4fcf-b09a-de079aa87586"
 >
 </ReqRef><Comment>Indicates if the ERTMS/ETCS on-board equipment is isolated.</Comment>
 </Variable><Variable
@@ -81,14 +94,17 @@
  VariableMode="Outgoing"
  Implemented="TRUE"
  Name="EmergencyBrakeCommanded"
+ Guid="f5e69f7f-9195-4c4f-acef-eca972032832"
 >
 <ReqRef
  Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="17428fab-bf60-4dc1-8c49-1faf0fc8f4e3"
 >
 </ReqRef><ReqRef
  Id="458c52b6-b128-424e-b29e-05cf4a057a91"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8eb2097a-2d7b-4e21-b2c7-203bcbe8db36"
 >
 </ReqRef><Comment>Indicates the status of emergency brake of the train.</Comment>
 </Variable><Variable
@@ -96,6 +112,7 @@
  VariableMode="Internal"
  Implemented="TRUE"
  Name="BrakePressure"
+ Guid="2c4717b7-7081-45bb-9101-5e188eabec2c"
 >
 <Comment>Indicates the brake pressure used in the service brake feedback model</Comment>
 </Variable></Variables>

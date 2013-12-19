@@ -1,24 +1,31 @@
 <NameSpace
  Name="Messages"
+ Guid="b19be6be-ea30-45c2-b01a-a41b1707cb75"
 >
 <NameSpaces>
 <NameSpaceRef
  Name="PACKET"
+ Guid="6c993a46-6b7c-497c-ad1d-ded444bb1fea"
 >
 </NameSpaceRef><NameSpaceRef
  Name="EUROBALISE"
+ Guid="dcbb7942-d058-440a-bd48-6b1f0fbb79c8"
 >
 </NameSpaceRef><NameSpaceRef
  Name="EUROLOOP"
+ Guid="7acb3029-d80e-45e1-94ba-6d308ed017d8"
 >
 </NameSpaceRef><NameSpaceRef
  Name="MESSAGE"
+ Guid="06b7786c-fdb2-4e6f-af6f-a2a46208794d"
 >
 </NameSpaceRef><NameSpaceRef
  Name="TRAIN_TO_RADIO_INFILL"
+ Guid="0aac46f7-6025-45cb-888b-7b4e276944fd"
 >
 </NameSpaceRef><NameSpaceRef
  Name="JRU"
+ Guid="c565d8ef-2aa7-49e9-b751-26f6ef491347"
 >
 </NameSpaceRef></NameSpaces>
 <Ranges>
@@ -29,10 +36,12 @@
  Default="0"
  Implemented="TRUE"
  Name="A_NVMAXREDADH1"
+ Guid="443e0c8c-7609-47fb-87e8-ea2285f37633"
 >
 <ReqRef
  Id="86beb9b7-fb95-4f76-9905-f06c23fc5bde"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8503a878-f4e4-47b9-99b1-6c53b54c780f"
 >
 </ReqRef><Comment>Maximum deceleration under reduced adhesion conditions (1)
 Maximum deceleration under reduced adhesion conditions applicable for trains: • With brake position “Passenger train in P”, and • with special/additional brakes independent from wheel/rail adhesion. This variable is part of the National Values</Comment>
@@ -43,10 +52,12 @@ Maximum deceleration under reduced adhesion conditions applicable for trains: �
  Default="0"
  Implemented="TRUE"
  Name="A_NVMAXREDADH2"
+ Guid="81029b26-5670-42ab-9a15-c1cf05166e9d"
 >
 <ReqRef
  Id="4bfe23d7-61e5-4f3f-9bb4-d5fb75fc444b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a5ff80b-6b8a-44a4-859c-6ee1de7a2b39"
 >
 </ReqRef><Comment>Maximum deceleration under reduced adhesion conditions (2)
 Maximum deceleration under reduced adhesion conditions applicable for trains: • with brake position “Passenger train in P”, and • without special/additional brakes independent from wheel/rail adhesion. This variable is part of the National Values</Comment>
@@ -57,10 +68,12 @@ Maximum deceleration under reduced adhesion conditions applicable for trains: �
  Default="0"
  Implemented="TRUE"
  Name="A_NVMAXREDADH3"
+ Guid="648356aa-255f-4b08-abec-9512e64a79dc"
 >
 <ReqRef
  Id="92725790-baa9-4e3f-8eb5-c98f2fc4a4ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35baffad-48c1-4ebf-b30f-33aaad40ef02"
 >
 </ReqRef><Comment>Maximum deceleration under reduced adhesion conditions (3)
 Maximum deceleration under reduced adhesion conditions applicable for trains: • with brake position &quot;Freight train in P&quot;, or • with brake position &quot;Freight train in G&quot;. This variable is part of the National Values</Comment>
@@ -71,10 +84,12 @@ Maximum deceleration under reduced adhesion conditions applicable for trains: �
  Default="0"
  Implemented="TRUE"
  Name="A_NVP12"
+ Guid="56883dcd-461a-479a-baf3-974a73613a38"
 >
 <ReqRef
  Id="fbdcb28a-c055-45bb-b4c1-a01bea9d6381"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1701f606-1b5c-4ae6-ae52-1bc5f43a3b0a"
 >
 </ReqRef><Comment>Lower deceleration limit to determine the set of Kv to be used
 Lower deceleration limit to determine the set of correction factor Kv to be used for Conventional Passenger trains. This variable is part of the National Values.</Comment>
@@ -85,10 +100,12 @@ Lower deceleration limit to determine the set of correction factor Kv to be used
  Default="0"
  Implemented="TRUE"
  Name="A_NVP23"
+ Guid="8c6c9384-7b50-433d-b480-8d42d794449f"
 >
 <ReqRef
  Id="d0cbfbce-4629-4a24-99d8-d7e0e8876516"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ec3a014e-1c87-408a-9c3b-093c0806158f"
 >
 </ReqRef><Comment>Upper deceleration limit to determine the set of Kv to be used
 Upper deceleration limit to determine the set of correction factor Kv to be used for Conventional Passenger trains. This variable is part of the National Values.</Comment>
@@ -99,10 +116,12 @@ Upper deceleration limit to determine the set of correction factor Kv to be used
  Default="0"
  Implemented="TRUE"
  Name="D_ADHESION"
+ Guid="c357e6b4-065e-44a4-9c8a-9cb34c821f31"
 >
 <ReqRef
  Id="ccc10575-c1d8-403c-b336-fbdfac275064"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6e37da60-9762-4afc-8cbf-146cf345b564"
 >
 </ReqRef><Comment>Distance to start of area with reduced adhesion factor
 </Comment>
@@ -113,10 +132,12 @@ Upper deceleration limit to determine the set of correction factor Kv to be used
  Default="0"
  Implemented="TRUE"
  Name="D_AXLELOAD"
+ Guid="2b7b1ddc-c167-4ff3-92e4-f42bba15b727"
 >
 <ReqRef
  Id="0b4c179e-a381-412e-bdad-451bda6066e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8b24f724-4949-4367-8b5e-39843ba74939"
 >
 </ReqRef><Comment>Incremental distance to the start of the next Axle load speed profile
 </Comment>
@@ -127,10 +148,12 @@ Upper deceleration limit to determine the set of correction factor Kv to be used
  Default="0"
  Implemented="TRUE"
  Name="D_CURRENT"
+ Guid="e327db03-3ef8-496c-b468-57e2375a68dc"
 >
 <ReqRef
  Id="ae0b8930-d36a-4a15-a997-eaa29644fb68"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8c86d70-c5a9-4f98-ae56-e6407803d57d"
 >
 </ReqRef><Comment>Distance to change of allowed current consumption
 </Comment>
@@ -141,10 +164,12 @@ Upper deceleration limit to determine the set of correction factor Kv to be used
  Default="0"
  Implemented="TRUE"
  Name="D_CYCLOC"
+ Guid="f3523648-ce67-4a50-9748-dc51f31f5a54"
 >
 <ReqRef
  Id="58b84566-cf66-4195-ae7a-4520abe69a4b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1369459a-3e01-4139-8e66-5fd6a3a418a5"
 >
 </ReqRef><Comment>Distance between two position reports from the train
 The train has to report its position every D_CYCLOC meters.</Comment>
@@ -152,6 +177,7 @@ The train has to report its position every D_CYCLOC meters.</Comment>
 <EnumValue
  Value="32767"
  Name="The_train_has_not_to_report_cyclically_its_position"
+ Guid="7202eeec-9353-4c31-a279-f887d6289e22"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -161,10 +187,12 @@ The train has to report its position every D_CYCLOC meters.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_DP"
+ Guid="834a833f-6eb8-45e8-a80b-5459a827d919"
 >
 <ReqRef
  Id="1b773b1d-8ba0-43bd-abfb-9c45b0550e35"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8b3fa974-751f-4f33-84ad-988f9bb3c9b2"
 >
 </ReqRef><Comment>Distance from the End of Authority to danger point
 </Comment>
@@ -175,10 +203,12 @@ The train has to report its position every D_CYCLOC meters.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_EMERGENCYSTOP"
+ Guid="583e5143-6c78-464c-942d-ec5c6a14b436"
 >
 <ReqRef
  Id="239472c9-bb24-4f55-8863-b46c0bf26ae1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cac5d3f0-8e14-436b-9920-9d1055017619"
 >
 </ReqRef><Comment>Distance to emergency stop location
 Distance between the LRBG and the emergency stop location</Comment>
@@ -189,10 +219,12 @@ Distance between the LRBG and the emergency stop location</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_ENDTIMERSTARTLOC"
+ Guid="8072ff4d-3b9b-455b-a216-48390d9ccf82"
 >
 <ReqRef
  Id="00bf308a-22d5-43c9-9211-8f761f8ae624"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5e898f0e-1ee1-4a20-832e-a908f26e153d"
 >
 </ReqRef><Comment>Distance from End section timer start location to End of Authority
 </Comment>
@@ -203,10 +235,12 @@ Distance between the LRBG and the emergency stop location</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_GRADIENT"
+ Guid="4690c757-ef58-42d4-a5dc-f3a9acc2c80e"
 >
 <ReqRef
  Id="dc821743-5d36-4c62-b839-0f3f211a52a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dce5dcc8-e416-44ae-aee0-e7070a892eea"
 >
 </ReqRef><Comment>Incremental distance to next change of gradient.
 </Comment>
@@ -217,10 +251,12 @@ Distance between the LRBG and the emergency stop location</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_INFILL"
+ Guid="146a499e-5953-40e4-b225-b6571ae90bb3"
 >
 <ReqRef
  Id="b849aed5-5803-45de-af86-61cb06ebf5a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="32893ec3-a89b-4a94-845d-2794b05dddbc"
 >
 </ReqRef><Comment>Distance to location where to connect/disconnect to a radio infill unit
 </Comment>
@@ -231,10 +267,12 @@ Distance between the LRBG and the emergency stop location</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_LEVELTR"
+ Guid="91387884-b4bf-46e8-aa41-d63c8d9b3385"
 >
 <ReqRef
  Id="48cd2e35-67c2-46a5-9f39-4d543c9361d0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ea07694-a1dd-4d82-b2d1-04bb3cb7a1e4"
 >
 </ReqRef><Comment>Distance to level transition
 </Comment>
@@ -242,6 +280,7 @@ Distance between the LRBG and the emergency stop location</Comment>
 <EnumValue
  Value="32767"
  Name="Now__The_level_transition_is_performed_upon_receipt_of_the_order"
+ Guid="46d1e0ca-d3c2-4573-ba9f-ce40f5832976"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -251,10 +290,12 @@ Distance between the LRBG and the emergency stop location</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_LINK"
+ Guid="adb8f8f6-8399-4fce-bb9e-19b52220442d"
 >
 <ReqRef
  Id="ce44b3b9-c89b-4be3-b31e-3981095a71eb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3c3324e7-05a3-4fc5-8ba2-1a28c7e026f6"
 >
 </ReqRef><Comment>Incremental linking distance to next linked balise group
 </Comment>
@@ -265,10 +306,12 @@ Distance between the LRBG and the emergency stop location</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_LOC"
+ Guid="0c3e985e-99ad-437e-8023-bf1cfa418cf9"
 >
 <ReqRef
  Id="26b2f0b0-1aee-4778-99cf-b5d01eb56627"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac1975bf-2c30-4a9d-92f5-b86656e55597"
 >
 </ReqRef><Comment>Incremental distance between locations where the train has to report its position.
 </Comment>
@@ -279,10 +322,12 @@ Distance between the LRBG and the emergency stop location</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_LOOP"
+ Guid="fd8afedb-6351-4431-8567-2f873c8c28b9"
 >
 <ReqRef
  Id="76b37bac-08d4-40a9-b525-f22f3013a413"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e1908334-089d-4374-970c-7bf25986ea92"
 >
 </ReqRef><Comment>Distance between EOLM and start of loop
 The EOLM specifies the distance to the beginning of the loop transmission</Comment>
@@ -290,6 +335,7 @@ The EOLM specifies the distance to the beginning of the loop transmission</Comme
 <EnumValue
  Value="32767"
  Name="Distance_not_known"
+ Guid="ffba1ddc-c751-4651-bc77-dc02131be216"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -299,10 +345,12 @@ The EOLM specifies the distance to the beginning of the loop transmission</Comme
  Default="0"
  Implemented="TRUE"
  Name="D_LRBG"
+ Guid="96d7cde2-5b89-44e0-a2a6-a988b495321c"
 >
 <ReqRef
  Id="a8706524-cb3c-4b18-9e56-f161fee54a3e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c82c6036-5baa-48a7-abfe-819704978cad"
 >
 </ReqRef><Comment>Distance between the last relevant balise group and the estimated front end of the train (the side of the active cab).
 </Comment>
@@ -310,6 +358,7 @@ The EOLM specifies the distance to the beginning of the loop transmission</Comme
 <EnumValue
  Value="32767"
  Name="Unknown"
+ Guid="b0966e20-2125-46f7-8c5f-0ca444ebb83e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -319,10 +368,12 @@ The EOLM specifies the distance to the beginning of the loop transmission</Comme
  Default="0"
  Implemented="TRUE"
  Name="D_LX"
+ Guid="c945799b-a56d-4b99-b759-c1f95e1afe6d"
 >
 <ReqRef
  Id="4788d498-2e49-46e4-b9ef-ab4371ff454b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="79fdfcd9-e9a5-4bbd-9ca6-139ae8752a40"
 >
 </ReqRef><Comment>Distance to LX start location
 </Comment>
@@ -333,10 +384,12 @@ The EOLM specifies the distance to the beginning of the loop transmission</Comme
  Default="0"
  Implemented="TRUE"
  Name="D_MAMODE"
+ Guid="4501f3e8-e973-4d88-a857-83adea877437"
 >
 <ReqRef
  Id="89925322-dec9-4aa4-8555-37decb3284a8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6abaf71c-ea8d-420d-a3b6-5224e261678d"
 >
 </ReqRef><Comment>Incremental distance to the start of the next Mode Profile
 </Comment>
@@ -347,10 +400,12 @@ The EOLM specifies the distance to the beginning of the loop transmission</Comme
  Default="0"
  Implemented="TRUE"
  Name="D_NVOVTRP"
+ Guid="f4f2819c-06e5-41f7-8eb0-35d864715430"
 >
 <ReqRef
  Id="3b45e80b-a449-42bb-99ca-f5c456e19e88"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bc40b605-f80f-4f9c-85b1-1e3ea81030d0"
 >
 </ReqRef><Comment>Maximum distance for overriding the train trip
 This variable is part of the National Values</Comment>
@@ -361,10 +416,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_NVPOTRP"
+ Guid="4213a620-1930-416a-9c2e-5d89106a7bc9"
 >
 <ReqRef
  Id="39d12626-e17b-4eb2-bc01-a6489eea87e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6db7fe96-9ff9-4f7d-bb4f-6f21e90954ed"
 >
 </ReqRef><Comment>Maximum distance for reversing in Post Trip mode
 This variable is part of the National Values</Comment>
@@ -375,10 +432,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_NVROLL"
+ Guid="0f2d3586-a7fd-4266-9131-44f59581bb79"
 >
 <ReqRef
  Id="bee21e04-9e34-4b84-aa41-a4957a8dcb71"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="78145c93-e736-400c-8ea7-7e5a4466615d"
 >
 </ReqRef><Comment>Roll away distance limit
 This variable is part of the National Values and is used for Roll Away Protection and Reverse Movement Protection. Within the (national/default) limits of D_NVROLL the train may be moved for uncoupling.</Comment>
@@ -386,6 +445,7 @@ This variable is part of the National Values and is used for Roll Away Protectio
 <EnumValue
  Value="32767"
  Name="Infinite"
+ Guid="917cfc42-a255-4982-b8b3-18eaf3d584a0"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -395,10 +455,12 @@ This variable is part of the National Values and is used for Roll Away Protectio
  Default="0"
  Implemented="TRUE"
  Name="D_NVSTFF"
+ Guid="7df41100-d750-47a3-8784-5f561acc4ee0"
 >
 <ReqRef
  Id="0b11d351-f4d6-4885-a839-fd32a3c44518"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ddf36f0-a870-4be0-91b5-e5e5c14acdce"
 >
 </ReqRef><Comment>Maximum distance for running in Staff Responsible mode
 This variable is part of the National Values</Comment>
@@ -406,6 +468,7 @@ This variable is part of the National Values</Comment>
 <EnumValue
  Value="32767"
  Name="Infinite"
+ Guid="23526d7d-88bd-4024-8856-3dbdb4adc545"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -415,10 +478,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_OL"
+ Guid="5bcc9c68-7485-4661-a423-099edf00b473"
 >
 <ReqRef
  Id="326cbd94-a19c-4b09-941b-6c0795e922f2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e1656f9c-0617-46ad-8b9a-bf5eb1cbfdaf"
 >
 </ReqRef><Comment>The distance from the End of Authority to the end of overlap
 </Comment>
@@ -429,10 +494,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_PBD"
+ Guid="e72b2c65-6fae-4f5c-ba11-b02b43792489"
 >
 <ReqRef
  Id="53a67aa1-ae7b-4091-a29f-1206dcc4e68c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="729c3851-2aa4-4141-8c63-9f65575ca75c"
 >
 </ReqRef><Comment>Permitted Braking Distance
 </Comment>
@@ -443,10 +510,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_PBDSR"
+ Guid="8a87787f-7de3-468b-80b3-f71ed31c7a30"
 >
 <ReqRef
  Id="295b2ae9-224d-4ce8-bc0a-a3be0c749a5f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d98d2905-e5dc-4e57-903c-eb203e3f2ad4"
 >
 </ReqRef><Comment>Incremental distance to the start of the next speed restriction to ensure permitted braking distance
 </Comment>
@@ -457,10 +526,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_POSOFF"
+ Guid="97a61486-f313-439a-9d72-e2510fa520b5"
 >
 <ReqRef
  Id="d803e95b-6cad-4960-a6a8-ea864513abaa"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ab0e6f97-f540-476e-a501-e2e2a200a4ca"
 >
 </ReqRef><Comment>Route kilometre offset from the referencing balise
 The geographical position reporting function uses this variables content as an offset from the referencing balise to the reference point.</Comment>
@@ -471,10 +542,12 @@ The geographical position reporting function uses this variables content as an o
  Default="0"
  Implemented="TRUE"
  Name="D_RBCTR"
+ Guid="81279233-9183-4f48-814a-d183b1114517"
 >
 <ReqRef
  Id="8d7f7c64-ed35-4ee2-a511-68029a576144"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="449757ae-bfa8-4318-8390-6db5d0f1d430"
 >
 </ReqRef><Comment>Distance to RBC transition
 </Comment>
@@ -485,10 +558,12 @@ The geographical position reporting function uses this variables content as an o
  Default="0"
  Implemented="TRUE"
  Name="D_REF"
+ Guid="b0c7725e-6751-42df-9041-04d1be15a55b"
 >
 <ReqRef
  Id="6b0d22c5-f1ec-49b5-a58e-e47de5a3895a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fe923abb-5fec-4ab3-995f-c85a02aaf448"
 >
 </ReqRef><Comment>Reference distance
 Distance between the LRBG and the new shifted location reference. The positive values are in the nominal direction of the LRBG</Comment>
@@ -499,10 +574,12 @@ Distance between the LRBG and the new shifted location reference. The positive v
  Default="0"
  Implemented="TRUE"
  Name="D_REVERSE"
+ Guid="4c1569da-86de-4a5a-b7e0-a048192e6dbf"
 >
 <ReqRef
  Id="9576c9d7-f121-46e0-aae3-27170e0d7846"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="259c5fb9-c841-44c0-b031-350963d9da4e"
 >
 </ReqRef><Comment>Distance in RV mode
 Distance that can be run in RV mode</Comment>
@@ -510,6 +587,7 @@ Distance that can be run in RV mode</Comment>
 <EnumValue
  Value="32767"
  Name="Represents_infinite"
+ Guid="dc38a627-8894-4ad3-a2e5-503e0f9dbc0c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -519,10 +597,12 @@ Distance that can be run in RV mode</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_SECTIONTIMERSTOPLOC"
+ Guid="671aac9c-cb44-44c8-85e8-b1108dcc5a26"
 >
 <ReqRef
  Id="b796c06e-efd9-4a35-abfc-9983a477fc35"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="958fd928-9be7-42b5-a290-458ad9eabe84"
 >
 </ReqRef><Comment>Distance from beginning of section to the Section Time-out stop location
 </Comment>
@@ -533,10 +613,12 @@ Distance that can be run in RV mode</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_SR"
+ Guid="4fe8cb0d-b18d-409a-a2fe-f4702822aba7"
 >
 <ReqRef
  Id="d8632ccb-b0f8-4888-91e6-be81999032e1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="774d9c81-d31a-4ddf-853d-527d6d9c967d"
 >
 </ReqRef><Comment>Distance in SR mode
 Distance that can be run in SR mode</Comment>
@@ -544,6 +626,7 @@ Distance that can be run in SR mode</Comment>
 <EnumValue
  Value="32767"
  Name="Represents_Infinite"
+ Guid="6e061a3d-40a8-4b73-a4fb-0e78a6c47cfe"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -553,10 +636,12 @@ Distance that can be run in SR mode</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_STARTOL"
+ Guid="3df768e5-1278-4159-a44d-7b1efd3a5d92"
 >
 <ReqRef
  Id="747d021b-8bdf-43c7-8a0a-a3f568408c72"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff81a567-7cc0-48ff-a71f-ab75b19669c6"
 >
 </ReqRef><Comment>Distance from overlap timer start location to End of Authority
 </Comment>
@@ -567,10 +652,12 @@ Distance that can be run in SR mode</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_STARTREVERSE"
+ Guid="5e235abb-3f78-4e7e-a7cc-53fda0c2575e"
 >
 <ReqRef
  Id="440cd70b-ba2e-4784-94eb-e86061e6397c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c000941-8c7c-471a-adfe-14bf354c7a7d"
 >
 </ReqRef><Comment>Distance to start of reversing permitted area
 </Comment>
@@ -581,10 +668,12 @@ Distance that can be run in SR mode</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_STATIC"
+ Guid="d1273285-a5f1-4543-ace4-4369e5eeb73f"
 >
 <ReqRef
  Id="d15c6258-268a-45c4-838f-e367029786bd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="72633561-6cee-4546-bc49-4858d55f313d"
 >
 </ReqRef><Comment>Incremental distance to next discontinuity in a international SSP profile
 </Comment>
@@ -595,10 +684,12 @@ Distance that can be run in SR mode</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_SUITABILITY"
+ Guid="5591caf7-e3b4-4998-9c00-3a239bef7b93"
 >
 <ReqRef
  Id="4d109261-01fb-4710-810c-a2cfe1ade139"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc5a63c1-f306-4950-97ce-f6adc6000e4d"
 >
 </ReqRef><Comment>Distance to change in route suitability
 The incremental distance to where the route suitability data changes.</Comment>
@@ -609,10 +700,12 @@ The incremental distance to where the route suitability data changes.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_TAFDISPLAY"
+ Guid="97a0bcc1-be0b-4b21-af9a-24350bd648df"
 >
 <ReqRef
  Id="ba1fb5c4-6678-4ee8-93a6-eb199f78f16c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="24a4d8e8-01e4-4fee-9db4-513f8f38957f"
 >
 </ReqRef><Comment>Distance from where on a track ahead free request shall be displayed
 </Comment>
@@ -623,10 +716,12 @@ The incremental distance to where the route suitability data changes.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_TEXTDISPLAY"
+ Guid="d962ee12-c740-4230-bdae-ea99e35ef9ac"
 >
 <ReqRef
  Id="9394282f-c3d9-4e14-8d89-991f0acb3bf8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2fcba78b-75de-41b1-96c9-0906bde55002"
 >
 </ReqRef><Comment>Distance from where on a text shall be displayed
 </Comment>
@@ -634,6 +729,7 @@ The incremental distance to where the route suitability data changes.</Comment>
 <EnumValue
  Value="32767"
  Name="The_display_of_the_text_shall_not_be_distance_limited"
+ Guid="284b6fb4-6fa5-4864-b4c8-c22e4b00fe62"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -643,10 +739,12 @@ The incremental distance to where the route suitability data changes.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_TRACKCOND"
+ Guid="ea405197-117c-41bd-b89b-f9b4fa7bb3e7"
 >
 <ReqRef
  Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f8f9272a-811e-4abe-aed0-d76a7b95940d"
 >
 </ReqRef><Comment>Track condition distance
 The incremental distance to where the track conditions change.</Comment>
@@ -657,10 +755,12 @@ The incremental distance to where the track conditions change.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="D_TRACKINIT"
+ Guid="1e5105cf-bcba-4179-ad68-2f8cd5d6f568"
 >
 <ReqRef
  Id="35ef498a-1c12-4203-b283-26436d281f11"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="31d8aea6-5d15-4cbb-8718-c5978583403c"
 >
 </ReqRef><Comment>Distance to start of empty profile
 Distance to where initial states of the related track description in the packet shall be resumed</Comment>
@@ -671,10 +771,12 @@ Distance to where initial states of the related track description in the packet 
  Default="0"
  Implemented="TRUE"
  Name="D_TRACTION"
+ Guid="efe3ffc0-cf3f-4eab-a676-7160017c957d"
 >
 <ReqRef
  Id="0ee36d8a-a637-4d9f-8195-47e71f70cd7c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc7003e8-1875-472d-9a9c-f0aa168a24e7"
 >
 </ReqRef><Comment>Distance to change of traction
 </Comment>
@@ -685,10 +787,12 @@ Distance to where initial states of the related track description in the packet 
  Default="0"
  Implemented="TRUE"
  Name="D_TSR"
+ Guid="787846b8-70cb-43e9-aae9-2e405a41c62e"
 >
 <ReqRef
  Id="ff58fb6c-9219-4719-b50b-d1e185f06137"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="770062b3-0585-4a43-9845-e7fdc005cf07"
 >
 </ReqRef><Comment>Distance to beginning of temporary speed restriction
 </Comment>
@@ -699,10 +803,12 @@ Distance to where initial states of the related track description in the packet 
  Default="0"
  Implemented="TRUE"
  Name="D_VALIDNV"
+ Guid="773679ac-2ec9-498f-b5b8-a176b73931b1"
 >
 <ReqRef
  Id="bf6ebc6c-63eb-4df0-b095-b0df1c590886"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5f43e941-b2d5-4487-b3b8-e778a8247b21"
 >
 </ReqRef><Comment>Distance to start of validity of national values
 </Comment>
@@ -710,6 +816,7 @@ Distance to where initial states of the related track description in the packet 
 <EnumValue
  Value="32767"
  Name="Now___National_Values_are_immediately_applicable"
+ Guid="a8d4a3cd-1495-473e-84d9-6b064abdfb4a"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -719,10 +826,12 @@ Distance to where initial states of the related track description in the packet 
  Default="0"
  Implemented="TRUE"
  Name="G_A"
+ Guid="f4e52b08-0146-40a2-84e3-e0dc3c14681a"
 >
 <ReqRef
  Id="f0811b08-c419-42d2-b69e-a1505a823496"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c9c38304-c30c-47f7-9108-77e8d7d003bd"
 >
 </ReqRef><Comment>Safe gradient
 This is the absolute value of the minimum gradient between two defined locations.</Comment>
@@ -730,6 +839,7 @@ This is the absolute value of the minimum gradient between two defined locations
 <EnumValue
  Value="255"
  Name="Non_numerical_value_telling_that_the_current_gradient_description_ends_at_D_GRADIENT_n"
+ Guid="900f2b47-d2d6-4b48-a8fc-0631bb8cdd91"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -739,10 +849,12 @@ This is the absolute value of the minimum gradient between two defined locations
  Default="0"
  Implemented="TRUE"
  Name="G_PBDSR"
+ Guid="9601b277-9cad-4100-810d-866fcca309d1"
 >
 <ReqRef
  Id="2bfc2474-36f9-4c5e-85b5-7a15a5ce1e4f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b90a18ac-5144-42a4-a981-d06cb8d17628"
 >
 </ReqRef><Comment>Default gradient for PBD Speed restriction
 Defines a default gradient to be used for calculation of speed restriction to ensure permitted braking distance</Comment>
@@ -753,10 +865,12 @@ Defines a default gradient to be used for calculation of speed restriction to en
  Default="0"
  Implemented="TRUE"
  Name="G_TSR"
+ Guid="12bdf835-e336-4509-982d-a749472dd69c"
 >
 <ReqRef
  Id="eb50f43e-0899-4f55-80bc-bc0065b188aa"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ba2a360b-ad8b-4a48-8d3e-755ef44d58b7"
 >
 </ReqRef><Comment>Default gradient for TSR supervision
 defines a default gradient to be used for TSR supervision when no gradient profile (packet 21) is available.</Comment>
@@ -767,10 +881,12 @@ defines a default gradient to be used for TSR supervision when no gradient profi
  Default="0"
  Implemented="TRUE"
  Name="L_ACKLEVELTR"
+ Guid="53b41bb4-1ef7-46f4-b60e-9adc58ae46d4"
 >
 <ReqRef
  Id="8dc3adec-c4e6-489e-849a-d05eac8ee50b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f2675d1-ce7d-4025-83ec-5846dda755f4"
 >
 </ReqRef><Comment>Length of the acknowledgement area in rear of the required level
 </Comment>
@@ -781,10 +897,12 @@ defines a default gradient to be used for TSR supervision when no gradient profi
  Default="0"
  Implemented="TRUE"
  Name="L_ACKMAMODE"
+ Guid="b7fc31d1-b96e-49ad-9656-ec9df140a1d2"
 >
 <ReqRef
  Id="e91cb267-376b-429f-8918-4d597fdcc562"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e584ced1-4ebe-43eb-b636-441305553a62"
 >
 </ReqRef><Comment>Length of the acknowledgement area in rear of the start of the required mode
 </Comment>
@@ -795,10 +913,12 @@ defines a default gradient to be used for TSR supervision when no gradient profi
  Default="0"
  Implemented="TRUE"
  Name="L_ADHESION"
+ Guid="8ba80d2d-af0a-473a-aa2a-344c13dfbfd6"
 >
 <ReqRef
  Id="665f9555-a334-4d13-b5eb-ee0c9f55a8a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d5bbc70-9ec7-49b2-94d6-44bf7ea7e4e2"
 >
 </ReqRef><Comment>Length of reduced adhesion
 Length for which the reduced adhesion factor apply.</Comment>
@@ -809,10 +929,12 @@ Length for which the reduced adhesion factor apply.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="L_AXLELOAD"
+ Guid="821e35da-6876-4687-8a0c-8f6d51e3507f"
 >
 <ReqRef
  Id="1a02feaa-c003-44ae-bbc0-6685c3aab8d7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cc099ae3-5634-491b-81bc-40db0154f080"
 >
 </ReqRef><Comment>Length of speed restriction due to Axle load
 </Comment>
@@ -823,10 +945,12 @@ Length for which the reduced adhesion factor apply.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="L_DOUBTOVER"
+ Guid="ded6e46e-704b-4a64-8dda-2a8b6adad656"
 >
 <ReqRef
  Id="b9fa14b8-a3ab-4985-94e8-43e238b99449"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1692a447-10e0-472f-a08a-bca6ecac70a9"
 >
 </ReqRef><Comment>L_DOUBTOVER
 L_DOUBTOVER is the over-reading amount plus the Q_LOCACC of the LRBG</Comment>
@@ -834,6 +958,7 @@ L_DOUBTOVER is the over-reading amount plus the Q_LOCACC of the LRBG</Comment>
 <EnumValue
  Value="32767"
  Name="Unknown"
+ Guid="57535a1e-0367-4b76-b9a8-05c9dfb6ce33"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -843,10 +968,12 @@ L_DOUBTOVER is the over-reading amount plus the Q_LOCACC of the LRBG</Comment>
  Default="0"
  Implemented="TRUE"
  Name="L_DOUBTUNDER"
+ Guid="b6816d74-9ecc-47f0-ab2b-5b184ab6c312"
 >
 <ReqRef
  Id="47cac2f8-392d-4460-b642-63aebba6e1fb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5acadcec-e6c0-4c7e-92c3-6f5092fc1c6f"
 >
 </ReqRef><Comment>L_DOUBTUNDER
 L_DOUBTUNDER is the under-reading amount plus the Q_LOCACC of the LRBG</Comment>
@@ -854,6 +981,7 @@ L_DOUBTUNDER is the under-reading amount plus the Q_LOCACC of the LRBG</Comment>
 <EnumValue
  Value="32767"
  Name="Unknown"
+ Guid="9e43420a-9853-4400-84e5-6ca439057774"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -863,10 +991,12 @@ L_DOUBTUNDER is the under-reading amount plus the Q_LOCACC of the LRBG</Comment>
  Default="0"
  Implemented="TRUE"
  Name="L_ENDSECTION"
+ Guid="7335eae3-24da-4a70-862b-87f86758362c"
 >
 <ReqRef
  Id="6429b85c-2e6f-4225-8997-9701a98eacd4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c0e7fe85-f83d-4398-a241-7b0e75989cbc"
 >
 </ReqRef><Comment>Length of the End section in the MA
 </Comment>
@@ -877,10 +1007,12 @@ L_DOUBTUNDER is the under-reading amount plus the Q_LOCACC of the LRBG</Comment>
  Default="0"
  Implemented="TRUE"
  Name="L_LOOP"
+ Guid="455718b5-22dd-4ad6-ae70-16caadcd225a"
 >
 <ReqRef
  Id="1a6f1ba0-1f7f-46a1-b12e-6604d7f4dbf8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4b8b1c38-954f-4bc7-8d20-c540be25b207"
 >
 </ReqRef><Comment>Length of loop
 L_LOOP specifies the length of the loop starting from the distance indicated by D_LOOP </Comment>
@@ -888,6 +1020,7 @@ L_LOOP specifies the length of the loop starting from the distance indicated by 
 <EnumValue
  Value="32767"
  Name="Length_not_known"
+ Guid="0344958a-093b-45c9-b9c4-abafde4cb67d"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -897,10 +1030,12 @@ L_LOOP specifies the length of the loop starting from the distance indicated by 
  Default="0"
  Implemented="TRUE"
  Name="L_LX"
+ Guid="20909faf-0061-4854-9927-c2ebab11d7bf"
 >
 <ReqRef
  Id="29a4f8d4-9f89-4bd3-9a47-729f68635b19"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0efaa4c7-fd5f-4958-859a-f3a67796330d"
 >
 </ReqRef><Comment>Length of the LX area
 </Comment>
@@ -911,10 +1046,12 @@ L_LOOP specifies the length of the loop starting from the distance indicated by 
  Default="0"
  Implemented="TRUE"
  Name="L_MAMODE"
+ Guid="09258eb6-5a75-4832-9828-cddeef62612e"
 >
 <ReqRef
  Id="d4f0c125-9a62-4674-b0f5-bcba928f4835"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="428fed07-a4ce-4309-b35f-a824eeba4a98"
 >
 </ReqRef><Comment>Length of the area of the required mode
 </Comment>
@@ -922,6 +1059,7 @@ L_LOOP specifies the length of the loop starting from the distance indicated by 
 <EnumValue
  Value="32767"
  Name="infinite"
+ Guid="70fcca5f-a362-46e0-a21f-984c1de638b9"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -931,10 +1069,12 @@ L_LOOP specifies the length of the loop starting from the distance indicated by 
  Default="0"
  Implemented="TRUE"
  Name="L_MESSAGE"
+ Guid="56a30667-20a1-4fba-82dd-847b9310d004"
 >
 <ReqRef
  Id="d66f69c5-654f-4d31-b841-74a24b55168f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c02a232-596a-456e-b2e3-dcb13e2ff9a4"
 >
 </ReqRef><Comment>Message length
 L_MESSAGE indicates the length of the message in bytes, including all packets and all variables defined in the message header (NID_MESSAGE and L_MESSAGE also).</Comment>
@@ -945,14 +1085,17 @@ L_MESSAGE indicates the length of the message in bytes, including all packets an
  Default="0"
  Implemented="TRUE"
  Name="L_NVKRINT"
+ Guid="e1286182-5c62-41a5-966e-c006936318da"
 >
 <ReqRef
  Id="27dfcb22-8585-47d7-84e0-9c64c168b74a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b7ed183a-0016-4a79-8328-815b39fcec56"
 >
 </ReqRef><ReqRef
  Id="2116a507-f6d4-42d8-bf4d-4624c66e0ecf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cdb3b170-5f52-4064-b1d4-32e788cc2e1d"
 >
 </ReqRef><Comment>OTrain length step used to define the integrated correction factor Kr
 This variable is part of the National Values</Comment>
@@ -960,130 +1103,162 @@ This variable is part of the National Values</Comment>
 <EnumValue
  Value="0"
  Name="_0mC"
+ Guid="82b025ac-7f1d-431e-b969-23061142f7d8"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="_25mC"
+ Guid="60db139b-bf2a-448f-86bc-e82137f70e0a"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="_50mC"
+ Guid="22814a82-42c3-4173-841b-db88560ca43b"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="_75mC"
+ Guid="7a58402c-0c66-4382-882b-b785cd6f1ee8"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="_100mC"
+ Guid="9ffb75f4-e4f2-4d00-ba88-0d1d2de44ac1"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="_150mC"
+ Guid="11b487c8-b973-4b1e-8567-c9065060a2fc"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="_200mC"
+ Guid="cd712c78-3229-4688-915f-be6ce0a22b6a"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="_300mC"
+ Guid="2d41cf38-1c1f-41fc-8ac7-4ce949e454ce"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="_400mC"
+ Guid="0544e6e8-0622-47bd-a097-b8f6435e28ca"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="_500mC"
+ Guid="5511c0b4-f5dc-406a-91c3-4f76900d28a1"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="_600mC"
+ Guid="d133e5c4-eeed-4d64-9a6b-48e660bacf35"
 >
 </EnumValue><EnumValue
  Value="11"
  Name="_700mC"
+ Guid="9dd74ec4-4be0-482a-a2b6-8ba5069068e7"
 >
 </EnumValue><EnumValue
  Value="12"
  Name="_800mC"
+ Guid="3623e129-5d3d-4241-a68d-d49764c828d8"
 >
 </EnumValue><EnumValue
  Value="13"
  Name="_900mC"
+ Guid="596961eb-3da8-4fe7-b9f6-e3654cbe66b9"
 >
 </EnumValue><EnumValue
  Value="14"
  Name="_1000mC"
+ Guid="2754cec6-1059-41b8-836a-848960202770"
 >
 </EnumValue><EnumValue
  Value="15"
  Name="_1100mC"
+ Guid="a88b1747-7ec6-46d4-9160-c1fbe0e7be20"
 >
 </EnumValue><EnumValue
  Value="16"
  Name="_1200mC"
+ Guid="de8a1102-d6ee-43ba-b2d6-392d0c53c412"
 >
 </EnumValue><EnumValue
  Value="17"
  Name="_1300mC"
+ Guid="15ab9d20-ec07-43c1-8914-f9be88a9f958"
 >
 </EnumValue><EnumValue
  Value="18"
  Name="_1400mC"
+ Guid="02c7bf78-fd2e-48e1-b356-5cb5d0fe2c96"
 >
 </EnumValue><EnumValue
  Value="19"
  Name="_1500mC"
+ Guid="b1590bda-dd49-4052-b248-0d0b537b8de3"
 >
 </EnumValue><EnumValue
  Value="20"
  Name="_1600mC"
+ Guid="81daf6be-5550-49a2-ace2-4e968b92eaeb"
 >
 </EnumValue><EnumValue
  Value="21"
  Name="_1700mC"
+ Guid="de1cee25-42d1-4437-a228-2fae6faa07ef"
 >
 </EnumValue><EnumValue
  Value="22"
  Name="_1800mC"
+ Guid="c572678b-5b06-4a37-abb2-8e8e3b5e0fd2"
 >
 </EnumValue><EnumValue
  Value="23"
  Name="_1900mC"
+ Guid="c5333baf-697c-4dac-a06d-ebea516e32e0"
 >
 </EnumValue><EnumValue
  Value="24"
  Name="_2000mC"
+ Guid="9852a753-8874-46ba-bea9-292bfa066765"
 >
 </EnumValue><EnumValue
  Value="25"
  Name="_2100mC"
+ Guid="2c8100ac-e097-4c01-be75-c863072f5370"
 >
 </EnumValue><EnumValue
  Value="26"
  Name="_2200mC"
+ Guid="1c882ac3-a23c-4bad-ba5d-29ea3ad94a5f"
 >
 </EnumValue><EnumValue
  Value="27"
  Name="_2300mC"
+ Guid="06171e12-4af6-465e-91d5-226b24f1cea3"
 >
 </EnumValue><EnumValue
  Value="28"
  Name="_2400mC"
+ Guid="8dfd6f77-57a8-4aec-ac15-cbd2500d848f"
 >
 </EnumValue><EnumValue
  Value="29"
  Name="_2500mC"
+ Guid="4274ce0c-5db9-4aea-a023-0601d1bf8363"
 >
 </EnumValue><EnumValue
  Value="30"
  Name="_2600mC"
+ Guid="3b72215a-974c-4b68-b4a3-7f163ae52c67"
 >
 </EnumValue><EnumValue
  Value="31"
  Name="_2700C"
+ Guid="8bd12a9e-0ad5-49a1-9bc7-e14bc25f613e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1093,10 +1268,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="cd1f9efc-42ff-4abd-8873-0531641f01a8"
 >
 <ReqRef
  Id="ba8fe597-f174-4898-8d67-3009935075f7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e77d4126-8387-416e-95e3-5654c44e9eff"
 >
 </ReqRef><Comment>Packet length
 L_PACKET indicates the length of the packet in bits, including all bits of the packet header</Comment>
@@ -1107,10 +1284,12 @@ L_PACKET indicates the length of the packet in bits, including all bits of the p
  Default="0"
  Implemented="TRUE"
  Name="L_PBDSR"
+ Guid="31b52fea-c2c8-4b66-b4cb-6d86c83ebd62"
 >
 <ReqRef
  Id="be88793f-f209-4aef-b2ee-385ea2193212"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b5b504a9-a09c-4fbe-a70a-a6278ca8a2db"
 >
 </ReqRef><Comment>Length of speed restriction to ensure permitted braking distance
 </Comment>
@@ -1121,10 +1300,12 @@ L_PACKET indicates the length of the packet in bits, including all bits of the p
  Default="0"
  Implemented="TRUE"
  Name="L_REVERSEAREA"
+ Guid="dcb7511c-5cb5-415a-80e0-ca3dd608170e"
 >
 <ReqRef
  Id="faec86d1-d6e7-42ac-88c2-a547be018a65"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4290060-2180-40ba-b34c-82662e4b7345"
 >
 </ReqRef><Comment>Length of the reversing permitted area
 </Comment>
@@ -1135,10 +1316,12 @@ L_PACKET indicates the length of the packet in bits, including all bits of the p
  Default="0"
  Implemented="TRUE"
  Name="L_SECTION"
+ Guid="955a4740-df40-437b-be6d-cc45a1c3ba6e"
 >
 <ReqRef
  Id="71df462f-9b71-4b35-add6-5ded11f964a3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b11b4af1-ef67-4daf-830e-a88a222b3802"
 >
 </ReqRef><Comment>Length of section in the MA
 </Comment>
@@ -1149,10 +1332,12 @@ L_PACKET indicates the length of the packet in bits, including all bits of the p
  Default="0"
  Implemented="TRUE"
  Name="L_STOPLX"
+ Guid="f2adeb05-669e-4cce-9ca8-749633e58858"
 >
 <ReqRef
  Id="ece82958-6f94-4168-b5b1-f3fe24058435"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2fa14ddf-bad7-4027-88f0-de413229a3ed"
 >
 </ReqRef><Comment>Length of the stopping area in rear of the start location of the LX area
 </Comment>
@@ -1163,10 +1348,12 @@ L_PACKET indicates the length of the packet in bits, including all bits of the p
  Default="0"
  Implemented="TRUE"
  Name="L_TAFDISPLAY"
+ Guid="dbd767a4-f1f1-4a38-b32d-fe8d8a0e6723"
 >
 <ReqRef
  Id="3fe4ee9c-41b8-472e-b3cd-284b830ad3fb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d9be29e-0566-47d1-8207-8fe38358f53d"
 >
 </ReqRef><Comment>Length on which a track ahead free request shall be displayed
 </Comment>
@@ -1177,10 +1364,12 @@ L_PACKET indicates the length of the packet in bits, including all bits of the p
  Default="0"
  Implemented="TRUE"
  Name="L_TEXT"
+ Guid="00e7b0d0-09cf-4b75-bb52-ae8e4327dff2"
 >
 <ReqRef
  Id="cd43b147-622c-45e6-b933-b1ee98259224"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9dd85812-6e84-4435-80e4-dc6ffd5f0ef8"
 >
 </ReqRef><Comment>Length of text string
 L_TEXT defines the length of a text string (L_TEXT * X_TEXT)</Comment>
@@ -1191,10 +1380,12 @@ L_TEXT defines the length of a text string (L_TEXT * X_TEXT)</Comment>
  Default="0"
  Implemented="TRUE"
  Name="L_TEXTDISPLAY"
+ Guid="23e14286-7222-400c-84fb-af81ce47ae30"
 >
 <ReqRef
  Id="ce29575f-35e6-4bb1-8aa2-c6bbf8b3848b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e8550ea5-60de-4b5c-a4bb-d9038037d13b"
 >
 </ReqRef><Comment>Length on which a text shall be displayed
 </Comment>
@@ -1202,6 +1393,7 @@ L_TEXT defines the length of a text string (L_TEXT * X_TEXT)</Comment>
 <EnumValue
  Value="32767"
  Name="The_display_of_the_text_shall_not_be_distance_limited"
+ Guid="d1768ca1-4a8e-4a46-a1ad-aa5316cca067"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1211,10 +1403,12 @@ L_TEXT defines the length of a text string (L_TEXT * X_TEXT)</Comment>
  Default="0"
  Implemented="TRUE"
  Name="L_TRACKCOND"
+ Guid="046537f5-c7a8-4e93-a9d0-13aed52b1fc8"
 >
 <ReqRef
  Id="d93685bd-18ea-422e-8641-3e9ed6427e66"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="924bba3c-0267-4ec8-b9d0-044fa424900c"
 >
 </ReqRef><Comment>Length for which the defined track condition is valid
 </Comment>
@@ -1225,10 +1419,12 @@ L_TEXT defines the length of a text string (L_TEXT * X_TEXT)</Comment>
  Default="0"
  Implemented="TRUE"
  Name="L_TRAIN"
+ Guid="24ea1483-e514-457e-9b2a-f0722306d277"
 >
 <ReqRef
  Id="ef66dece-3a1c-452b-a80b-07fd6b0f8d6d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1cef51cc-d803-4e74-9d6b-23b079ade1ff"
 >
 </ReqRef><Comment>Train length
 This is the absolute real length of the train.</Comment>
@@ -1239,10 +1435,12 @@ This is the absolute real length of the train.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="L_TRAININT"
+ Guid="ed1fec7d-6460-4971-9095-aa5219c7fa15"
 >
 <ReqRef
  Id="31dcf868-9a8e-4513-9ec7-fd5b5fd3c81a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88847bde-7df0-4639-8bbb-33c3e85583eb"
 >
 </ReqRef><Comment>Safe Train length
 </Comment>
@@ -1253,10 +1451,12 @@ This is the absolute real length of the train.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="L_TSR"
+ Guid="828b0dfd-3630-4048-8e2e-946cb13accda"
 >
 <ReqRef
  Id="33595950-84c6-4825-bcab-bfdc5c53742c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ed4a9249-95d7-413a-b80e-b314122e43a5"
 >
 </ReqRef><Comment>Length of the temporary speed restriction
 </Comment>
@@ -1267,14 +1467,17 @@ This is the absolute real length of the train.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_ACK"
+ Guid="452b5a04-dec2-4acc-9493-8f20b5f29c84"
 >
 <ReqRef
  Id="117a6b4a-9556-404c-bc34-6b3464b5ab95"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4b80cf55-1e94-4fb5-9ba4-737cf8e865e9"
 >
 </ReqRef><ReqRef
  Id="33970ce8-30b5-4eaf-a43e-0f2dbdb4a4be"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c8e4976f-2e17-4c88-8a75-ec066a685f27"
 >
 </ReqRef><Comment>Qualifier for acknowledgement request
 Indicates whether the telegram must be acknowledged or not</Comment>
@@ -1282,10 +1485,12 @@ Indicates whether the telegram must be acknowledged or not</Comment>
 <EnumValue
  Value="0"
  Name="No_acknowledgement_required"
+ Guid="55df929c-822c-464c-a4c4-501dd30c9c25"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Acknowledgement_required"
+ Guid="e65758dc-77c1-4149-acff-7f2279e431b3"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1295,14 +1500,17 @@ Indicates whether the telegram must be acknowledged or not</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_ADHESION"
+ Guid="9503a1f7-555e-4715-abb7-4495f04e4bf8"
 >
 <ReqRef
  Id="d21bb69f-7c66-4b3e-9618-3f97c16a306d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3f2d28bc-3be7-4f12-a6e8-40bd54af9f6a"
 >
 </ReqRef><ReqRef
  Id="7f66ce7c-ce46-4e9d-aae5-cddb68b36965"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="09559da0-f286-427d-b076-c1d103c2e1ef"
 >
 </ReqRef><Comment>Adhesion factor
 </Comment>
@@ -1310,10 +1518,12 @@ Indicates whether the telegram must be acknowledged or not</Comment>
 <EnumValue
  Value="0"
  Name="Slippery_rail"
+ Guid="f679481a-b847-4363-be41-60e548482163"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Non_slippery_rail"
+ Guid="5cdff191-a96b-4b26-a2ed-3f7fd6a48150"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1323,14 +1533,17 @@ Indicates whether the telegram must be acknowledged or not</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_AIRTIGHT"
+ Guid="2eb0cc6e-defa-48d7-aa64-e99fde4dc08d"
 >
 <ReqRef
  Id="8e351843-1a66-4ea0-a412-de119ddfc6fa"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1076dc1b-d27a-4726-936e-7032f0a91cd2"
 >
 </ReqRef><ReqRef
  Id="cb0f829b-e44a-4f1d-83d0-87aef0c19b1b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd27256e-25eb-48d3-9430-1e4bb9dd83a3"
 >
 </ReqRef><Comment>airtight system presence
 indicates whether the train is fitted with an airtight system or not.</Comment>
@@ -1338,18 +1551,22 @@ indicates whether the train is fitted with an airtight system or not.</Comment>
 <EnumValue
  Value="0"
  Name="Not_fitted"
+ Guid="ee925c15-d7d6-4b54-8595-17bc205a675d"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Fitted"
+ Guid="464ea608-e2ef-4404-a267-5e948e387f76"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Spare"
+ Guid="dba5f4d7-b7c9-40d8-9d13-4f0736daa309"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="3266f413-31f2-485f-8b19-065f2010417a"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1359,14 +1576,17 @@ indicates whether the train is fitted with an airtight system or not.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_AXLELOADCAT"
+ Guid="16c5a4ee-bf73-4270-bf62-cdf33d2af889"
 >
 <ReqRef
  Id="0fb117ff-1235-410b-998a-c63b1d3a86ed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="afabfd08-a737-4aef-b4e7-07d12173343b"
 >
 </ReqRef><ReqRef
  Id="40db5d49-e04d-4e66-b64b-1a07f43d457f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e84586db-afd0-4f7f-add8-edbe275acdce"
 >
 </ReqRef><Comment>Axle load category
 The values allocated below correspond to a list of increasing axle load categories (i.e. B1 &gt; HS17, B2 &gt; B1, D2 &gt; C4, ….etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside. For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI. The category HS17 (axle load less or equal 17t) corresponds to a static load per axle only, as specified in HS RST TSI clause 4.2.3.2. The introduction of this artefact is necessary to ensure backward compatibility, without any negative performance impact, in case ASPs are used on lines operated with system version X = 1.</Comment>
@@ -1374,54 +1594,67 @@ The values allocated below correspond to a list of increasing axle load categori
 <EnumValue
  Value="0"
  Name="A"
+ Guid="4d620332-df52-47cd-ba56-1b35990fc28c"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="HS17"
+ Guid="1dc43dce-50ca-4767-96f9-223312963592"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="B1"
+ Guid="f094e44e-7362-494a-bf1a-0aa89956df83"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="B2"
+ Guid="8ef98960-ad2e-4601-9fbf-833db7917c5a"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="C2"
+ Guid="7a0e2817-6d82-47bd-aacc-01b88ed39faa"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="C3"
+ Guid="e9b2ee01-fb6e-4ce7-87f2-b0deed88d7f8"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="C4"
+ Guid="66093cdf-9b24-47c3-ab91-681af02593ae"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="D2"
+ Guid="207c3bfd-7ae8-470b-b095-734218b8a330"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="D3"
+ Guid="b5938200-eca7-4f8f-8f64-623e14920452"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="D4"
+ Guid="1b973190-4e80-4a74-81e3-ff2558672490"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="D4XL"
+ Guid="1550f71c-c617-4272-9b62-3d03fa16bb17"
 >
 </EnumValue><EnumValue
  Value="11"
  Name="E4"
+ Guid="d78b69a4-7cf1-4080-95f8-6a70d729c788"
 >
 </EnumValue><EnumValue
  Value="12"
  Name="E5"
+ Guid="df4ce17e-d7df-483f-9739-9347d73ac314"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1431,14 +1664,17 @@ The values allocated below correspond to a list of increasing axle load categori
  Default="0"
  Implemented="TRUE"
  Name="M_CURRENT"
+ Guid="ce0bba77-81fd-47f6-a586-cd399a74f334"
 >
 <ReqRef
  Id="56b9c520-38ab-486b-885c-a66d5e99a45e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="effe2fc0-5acc-4a25-850f-1ed7e261f352"
 >
 </ReqRef><ReqRef
  Id="447362c4-825e-4c01-9039-681efe9a804a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7da76f88-876c-4d9e-98c4-01b4d9adaaa9"
 >
 </ReqRef><Comment>Allowed current consumption
 It defines the allowed current consumption to be used by the train</Comment>
@@ -1446,6 +1682,7 @@ It defines the allowed current consumption to be used by the train</Comment>
 <EnumValue
  Value="1023"
  Name="No_restriction_for_current_consumption"
+ Guid="989e524d-a690-4834-bda2-357602c622aa"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1455,14 +1692,17 @@ It defines the allowed current consumption to be used by the train</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_DUP"
+ Guid="dc13fe55-8a64-4955-b1c6-c9f94036eeb9"
 >
 <ReqRef
  Id="8e5fb4c7-4e32-45f6-999f-dbdc99c92769"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="990669e0-6fcb-4c2c-82da-d4310abfe59e"
 >
 </ReqRef><ReqRef
  Id="d15c3334-3d73-42e3-a7d2-91713e915d8f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a2bc3226-3ac2-45f9-8c8b-d671a1dedf8e"
 >
 </ReqRef><Comment>Duplicate balise
 Flags to tell whether the balise is a duplicate of one of the adjacent balises.</Comment>
@@ -1470,18 +1710,22 @@ Flags to tell whether the balise is a duplicate of one of the adjacent balises.<
 <EnumValue
  Value="0"
  Name="No_duplicates"
+ Guid="9be477cf-0ea5-47c0-8a06-fdc0c589c34a"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="This_balise_is_a_duplicate_of_the_next_balise__seen_in_the_nominal_direction_of_the_balise_group"
+ Guid="a4e45fd0-2795-4de4-b46c-f5d1654b8455"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="This_balise_is_a_duplicate_of_the_previous_balise__seen_in_the_nominal_direction_of_the_balise_group"
+ Guid="4e423cef-0121-4af4-b81b-763b90bde3fc"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="4b521fa4-664c-4933-9a2f-53c30acc551d"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1491,14 +1735,17 @@ Flags to tell whether the balise is a duplicate of one of the adjacent balises.<
  Default="0"
  Implemented="TRUE"
  Name="M_ERROR"
+ Guid="400a0569-fcd3-497b-bd45-86280a94bf26"
 >
 <ReqRef
  Id="573a4929-1cc3-465b-bd3c-de9f85841744"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3acf1106-263d-444e-b7f4-a0b3403b737e"
 >
 </ReqRef><ReqRef
  Id="c431121f-eb76-44c2-8d1e-37d182affa45"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9b61bac3-2b38-4a81-9e21-45885b5b6a2d"
 >
 </ReqRef><Comment>Identifier of the type of error
 </Comment>
@@ -1506,38 +1753,47 @@ Flags to tell whether the balise is a duplicate of one of the adjacent balises.<
 <EnumValue
  Value="0"
  Name="Balise_group__linking_consistency_error__ref__3_16_2_3"
+ Guid="3cd7d8cd-7565-4b2b-96af-b2d06451ca0e"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Linked_balise_group__message_consistency_error_ref__3_16_2_4_1_4"
+ Guid="131e4898-71e7-42e3-9a12-45b85a772342"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Unlinked_balise_group__message_consistency_error__ref__3_16_2_5"
+ Guid="fcc363a3-29af-409d-a3ab-dd0fac9c9e97"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Radio__message_consistency_error__ref__3_16_3_1_1a_c"
+ Guid="6c846070-458a-440e-99f4-4c74eb491704"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Radio__sequence_error__ref__3_16_3_1_1b"
+ Guid="2485dd94-1279-4883-90d2-7b15fca6c82f"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="Radio__safe_radio_connection_error__ref__3_16_3_4__to_be_sent_when_communication_links_re_established"
+ Guid="1b8dc463-7230-4207-b975-5b5d0400083d"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="Safety_critical_failure__ref_4_4_6_1_6___4_4_15_1_5"
+ Guid="0b7f227a-3fc6-41b9-986f-6b8b08204d3e"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="Double_linking_error__3_16_2_7_1"
+ Guid="b12a2f05-8867-43df-8714-be7b7b3f3e10"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Double_repositioning_error__3_16_2_7_2"
+ Guid="621e2542-7d8f-4dd5-a97f-e99b08cfe413"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1547,14 +1803,17 @@ Flags to tell whether the balise is a duplicate of one of the adjacent balises.<
  Default="0"
  Implemented="TRUE"
  Name="M_LEVEL"
+ Guid="35e5901e-99fe-426b-abe7-9586af5fe57a"
 >
 <ReqRef
  Id="be6c26b3-7f04-451a-9f8e-2fd45f315471"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="165d080d-917f-4fc9-a227-cac3a6a39893"
 >
 </ReqRef><ReqRef
  Id="92dc91b7-5daf-4037-9df8-d9b6a799418f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7bfb4304-188b-4672-baf0-a393f74836a9"
 >
 </ReqRef><Comment>Current Operating Level
 </Comment>
@@ -1562,22 +1821,27 @@ Flags to tell whether the balise is a duplicate of one of the adjacent balises.<
 <EnumValue
  Value="0"
  Name="Level_0"
+ Guid="6835a8ad-df1b-4a01-8adc-d0fe451ec28e"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Level_NTC_specified_by_NID_NTC"
+ Guid="03b55e12-a9b5-430f-99f7-9077acf9989f"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Level_1"
+ Guid="e8e4c5e7-c61f-4ea1-a2d1-f60e81accf40"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Level_2"
+ Guid="f26af32a-6c90-4a64-974b-692ed160d1a7"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Level_3"
+ Guid="559ec105-4f86-4770-a268-505d459be688"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1587,6 +1851,7 @@ Flags to tell whether the balise is a duplicate of one of the adjacent balises.<
  Default="0"
  Implemented="TRUE"
  Name="M_LEVELINH"
+ Guid="bd546111-8201-4515-b15f-1be532d08c62"
 >
 <Comment>Level to be inhibited
 </Comment>
@@ -1594,22 +1859,27 @@ Flags to tell whether the balise is a duplicate of one of the adjacent balises.<
 <EnumValue
  Value="0"
  Name="Level_0"
+ Guid="36f5e11b-5487-45cb-9745-c605f8214a89"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Level_NTC_specified_by_NID_NTC"
+ Guid="a33117fb-22bf-4d8d-a8ce-06ba97474998"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Level_1"
+ Guid="08c6e3e9-6ad8-42b3-8f71-c79252de6e54"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Level_2"
+ Guid="e8f545e6-f72d-4f2c-af89-fea5ff3629ed"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Level_3"
+ Guid="fcd06155-c169-4f56-90e4-9b9f98283003"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1619,14 +1889,17 @@ Flags to tell whether the balise is a duplicate of one of the adjacent balises.<
  Default="0"
  Implemented="TRUE"
  Name="M_LEVELTEXTDISPLAY"
+ Guid="9bd19873-84c2-4c90-976c-0768df70d163"
 >
 <ReqRef
  Id="a61f6341-e2cc-4123-94da-07f6ec9bbd4e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0420c234-b5b9-4f9e-ba0d-d8bd6a8edc08"
 >
 </ReqRef><ReqRef
  Id="68300a10-bd33-42b9-b12f-283c8a668cfd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="81430edc-3260-4ccc-85d7-57aacf858965"
 >
 </ReqRef><Comment>Onboard operating level for text display
 The text is displayed when entering / as long as in the defined level</Comment>
@@ -1634,26 +1907,32 @@ The text is displayed when entering / as long as in the defined level</Comment>
 <EnumValue
  Value="0"
  Name="Level_0"
+ Guid="032e9836-8cfc-4d22-a1be-b6c07ede471b"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Level_STM_specified_by_NID_STM"
+ Guid="be007862-a268-438b-b6de-878256abc14d"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Level_1"
+ Guid="3da2b9eb-53be-4500-8d6a-58a71341b760"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Level_2"
+ Guid="5aa1ee0b-c66d-42ae-b2da-f0b3fdd4d9da"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Level_3"
+ Guid="94ceb8cb-1080-474b-af1b-3b30c97aae54"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="The_display_of_the_text_shall_not_be_limited_by_the_level"
+ Guid="10920c3a-fb48-443b-8d47-95ba56233064"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1663,14 +1942,17 @@ The text is displayed when entering / as long as in the defined level</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_LEVELTR"
+ Guid="5fe901e9-f689-469d-a608-69dff773ea53"
 >
 <ReqRef
  Id="a59e0f85-7d70-426a-a85c-75592258286f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4de271c5-3eb0-4859-9f37-06d3afc4f03e"
 >
 </ReqRef><ReqRef
  Id="4fd388ab-ce79-4ee6-abf3-0858722cff41"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20f9df2b-3ee8-4443-9c28-158f52ca5e91"
 >
 </ReqRef><Comment>Required level
 </Comment>
@@ -1678,22 +1960,27 @@ The text is displayed when entering / as long as in the defined level</Comment>
 <EnumValue
  Value="0"
  Name="Level_0"
+ Guid="db95a78b-7599-4bdf-beaf-80db9183abeb"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Level_STM_specified_by_NID_STM"
+ Guid="1fde33c6-3ff6-4aef-84da-33086ecf0d85"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Level_1"
+ Guid="66abb294-87be-475e-94aa-888b560a4190"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Level_2"
+ Guid="19f20333-e699-48ce-bd79-3c3f6f8e8412"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Level_3"
+ Guid="44c97161-eb86-4297-bd17-1d73062db3e7"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1703,14 +1990,17 @@ The text is displayed when entering / as long as in the defined level</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_LINEGAUGE"
+ Guid="3a5bb4a6-4e93-4744-b77b-2cd3ee7b402d"
 >
 <ReqRef
  Id="78f382d2-f2b3-49c3-887a-d8543da41a47"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5fbd3241-db27-4b53-8729-d85315fb1680"
 >
 </ReqRef><ReqRef
  Id="6af059ec-9811-47aa-82fa-6a4dbc6a8379"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="29138f39-3203-4d18-9a7a-9a2044e16282"
 >
 </ReqRef><Comment>Line gauge
 Defining which loading gauge(s) are permitted on a line (refer to TSI INF)</Comment>
@@ -1718,34 +2008,42 @@ Defining which loading gauge(s) are permitted on a line (refer to TSI INF)</Comm
 <EnumValue
  Value="1"
  Name="G1"
+ Guid="86dfd5d2-d90d-43a3-90c7-8f93ed4f1b9b"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="GA"
+ Guid="1a692126-ce7c-438c-b92d-a2c12eeea93c"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="GB"
+ Guid="28b37c47-97ae-492d-8e80-cc93e4850f13"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="GC"
+ Guid="edea1cf8-4bdb-4967-9b5c-60d6394d7306"
 >
 </EnumValue><EnumValue
  Value="16"
  Name="Spare"
+ Guid="98f0a0dc-5ddc-4586-a36b-db2453cdf63b"
 >
 </EnumValue><EnumValue
  Value="32"
  Name="Spare"
+ Guid="770e8ace-ab2f-4831-a8b4-ff536081643d"
 >
 </EnumValue><EnumValue
  Value="64"
  Name="Spare"
+ Guid="249f2567-7c31-406f-b821-8fdb03a95553"
 >
 </EnumValue><EnumValue
  Value="128"
  Name="Spare"
+ Guid="53777273-1ab0-47b9-ac05-e6b5a4f803df"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1755,14 +2053,17 @@ Defining which loading gauge(s) are permitted on a line (refer to TSI INF)</Comm
  Default="0"
  Implemented="TRUE"
  Name="M_LOADINGGAUGE"
+ Guid="46043e84-d151-4f47-873e-6a64d0e822f8"
 >
 <ReqRef
  Id="e89147b6-73d5-4f16-b160-56dab9df494d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf3b5d40-7c25-42d1-851b-5c6b12dea66e"
 >
 </ReqRef><ReqRef
  Id="75ba5bb5-1098-4587-a41b-4d8b2471008a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ec53ec0-77ee-415e-b72b-07571288fdec"
 >
 </ReqRef><Comment>Loading gauge
 Defining the loading gauge profile of a train (refer to TSI RST)</Comment>
@@ -1770,22 +2071,27 @@ Defining the loading gauge profile of a train (refer to TSI RST)</Comment>
 <EnumValue
  Value="0"
  Name="The_train_does_not_fit_to_any_of_the_interoperable_loading_gauge_profiles"
+ Guid="0bfc1f5c-3708-476d-ae00-12d5669c3ccc"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="G1"
+ Guid="b482d562-1ec9-4b6b-9699-0a186ea47494"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="GA"
+ Guid="53a01c76-228e-49f6-afa0-98dac39f5404"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="GB"
+ Guid="a1457114-3838-4e91-bec9-7938803b2e14"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="GC"
+ Guid="f5b55fb7-e2d6-4b2f-94f4-436ac7b6e454"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1795,14 +2101,17 @@ Defining the loading gauge profile of a train (refer to TSI RST)</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_LOC"
+ Guid="fde0c133-0d65-466f-bbcc-0d8999afa02c"
 >
 <ReqRef
  Id="83966f12-95e0-4bd1-a94c-f51c035af1c1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8b1e76cb-81b3-4354-b8c3-c8d371917a0d"
 >
 </ReqRef><ReqRef
  Id="abff4fdc-23d3-4a00-ba4d-d4b2296ad07b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4e3abb00-879a-4d1b-848d-cc76e2b789d5"
 >
 </ReqRef><Comment>Special location/moment where the train has to report its location
 </Comment>
@@ -1810,14 +2119,17 @@ Defining the loading gauge profile of a train (refer to TSI RST)</Comment>
 <EnumValue
  Value="0"
  Name="Now__The_position_report_is_sent_upon_receipt_of_the_order"
+ Guid="168c299d-dbcc-41eb-89e9-c971e0e15089"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Every_LRBG_compliant_balise_group"
+ Guid="7a4a08a3-e784-4cbb-a418-a80812d3eed9"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Do_not_send_position_report_on_passage_of_LRBG_compliant_balise_group"
+ Guid="b7db100a-7dd1-4aa1-b92f-dc46347f8160"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1827,14 +2139,17 @@ Defining the loading gauge profile of a train (refer to TSI RST)</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_MAMODE"
+ Guid="e862b0d6-851f-45ae-afb9-5c28a53d8f34"
 >
 <ReqRef
  Id="8f6cbd01-6f4a-4a45-9b12-053cfa6bbf95"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4d218a7-4ef6-440f-8542-bb00e1d10ac7"
 >
 </ReqRef><ReqRef
  Id="a15bf1f3-40f4-4caf-a1ae-b42823b046f7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3656d3bf-1e29-420c-84b0-663a385ebcfc"
 >
 </ReqRef><Comment>Required mode for a part of the MA
 </Comment>
@@ -1842,18 +2157,22 @@ Defining the loading gauge profile of a train (refer to TSI RST)</Comment>
 <EnumValue
  Value="0"
  Name="On_Sight"
+ Guid="5b3f3298-bf95-4b86-acc9-1b437e570dc0"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Shunting"
+ Guid="2e1c0d58-4e15-4744-8846-2ff5759b4362"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Limited_Supervision"
+ Guid="4cfc368a-fa94-4cae-ac29-8e260404640a"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="e7b0b131-bd99-4d31-ba93-4a7e50debddd"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1863,14 +2182,17 @@ Defining the loading gauge profile of a train (refer to TSI RST)</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_MCOUNT"
+ Guid="210881ce-143c-4c1b-abfe-2aa16d418e2b"
 >
 <ReqRef
  Id="89bff75d-357d-439e-aa39-0e7452545c3b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9bbfa64e-7034-4663-a9d5-fa10395790f2"
 >
 </ReqRef><ReqRef
  Id="ad276549-c145-407d-82c3-281f576d9308"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a6b1e76-6d78-44d0-a832-067a595e3cdf"
 >
 </ReqRef><Comment>Message counter
 The purpose of this counter is to make it possible for the ERTMS/ETCS on-board to detect which balise group message the telegram belongs to.</Comment>
@@ -1878,10 +2200,12 @@ The purpose of this counter is to make it possible for the ERTMS/ETCS on-board t
 <EnumValue
  Value="254"
  Name="The_telegram_never_fits_any_message_of_the_group"
+ Guid="39bc3681-0441-4933-b0e7-f7c110cbae7b"
 >
 </EnumValue><EnumValue
  Value="255"
  Name="The_telegram_fits_with_all_telegrams_of_the_same_balise_group"
+ Guid="3ae70c9a-5dda-4c76-ac3d-115b54b41001"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1891,22 +2215,27 @@ The purpose of this counter is to make it possible for the ERTMS/ETCS on-board t
  Default="0"
  Implemented="TRUE"
  Name="M_MODE"
+ Guid="172db74a-62aa-4b0e-bffd-321a8b711c80"
 >
 <ReqRef
  Id="4b16c6e2-9016-4309-b040-e13423bcf8ce"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e172b998-c1ca-470e-95c1-5a4942241338"
 >
 </ReqRef><ReqRef
  Id="36eaea91-f9af-4edc-bcd8-0a422d05bcc3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c85f4c83-8eea-49c7-899b-c78fa6569f3d"
 >
 </ReqRef><ReqRef
  Id="1fc0ada4-257d-4414-9f05-cdb742f0d054"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="71f4ede4-6bd0-48aa-aee7-afb72d5f2d99"
 >
 </ReqRef><ReqRef
  Id="481363d7-a16f-42a7-aefb-ec3844a005fa"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="35f6cd01-a67b-4c10-b74c-f420a68d78d1"
 >
 </ReqRef><Comment>Onboard operating mode
 </Comment>
@@ -1914,66 +2243,82 @@ The purpose of this counter is to make it possible for the ERTMS/ETCS on-board t
 <EnumValue
  Value="0"
  Name="Full_Supervision"
+ Guid="e666e25e-0e59-4b58-a501-087f63c6005d"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="On_Sight"
+ Guid="478415ba-2991-482c-afc5-080cb7bb9627"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Staff_Responsible"
+ Guid="5c235ae2-e85f-467f-ab35-4577d083a20f"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Shunting"
+ Guid="7d86958d-b936-4898-b844-c5ba044d0c6a"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Unfitted"
+ Guid="057535af-3d99-4bc8-9486-e140efa4dbcc"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="Sleeping"
+ Guid="5ef0e2d6-fec1-46d9-a47a-33b8e188c3cc"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="Stand_By"
+ Guid="a5646be9-db07-4e37-a4a9-f1441262a9c3"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="Trip"
+ Guid="b955e8a7-67bf-4a1a-8944-067b342500ab"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Post_Trip"
+ Guid="3f1e3e71-c65b-43b9-82f2-8caff608a7e8"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="System_Failure"
+ Guid="25a93244-99ac-4f5e-aec4-730904e808b7"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="Isolation"
+ Guid="3937672d-eddd-4b7a-96df-f213467e4841"
 >
 </EnumValue><EnumValue
  Value="11"
  Name="Non_Leading"
+ Guid="6bb434e9-de28-457b-a181-4b6080f3c456"
 >
 </EnumValue><EnumValue
  Value="12"
  Name="Limited_Supervision"
+ Guid="84ca548d-fd91-47a5-a227-cefb826cbc30"
 >
 </EnumValue><EnumValue
  Value="13"
  Name="National_System"
+ Guid="81d25323-2651-4da6-a529-660d5fb4c3b9"
 >
 </EnumValue><EnumValue
  Value="14"
  Name="Reversing"
+ Guid="81ec5437-81d6-48c8-9dfb-6ba39830c042"
 >
 </EnumValue><EnumValue
  Value="15"
  Name="Passive_Shunting"
+ Guid="8b7267a0-91c1-4ea3-847d-b0958b0bafaf"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1983,14 +2328,17 @@ The purpose of this counter is to make it possible for the ERTMS/ETCS on-board t
  Default="0"
  Implemented="TRUE"
  Name="M_MODETEXTDISPLAY"
+ Guid="2a6d93fd-27eb-40bf-8d1a-48285608c29d"
 >
 <ReqRef
  Id="f51cc60c-f63b-4ea5-a5d2-c790f7505a3e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aeab654c-fac6-4995-b951-7c08d7d9b71c"
 >
 </ReqRef><ReqRef
  Id="fee9481d-e100-4f62-86a8-be2ffe73fb8d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af952875-54b1-42ba-b296-0f439949844e"
 >
 </ReqRef><Comment>Onboard operating mode for text display
 The text is displayed when entering / as long as in the defined mode</Comment>
@@ -1998,66 +2346,82 @@ The text is displayed when entering / as long as in the defined mode</Comment>
 <EnumValue
  Value="0"
  Name="Full_Supervision"
+ Guid="e6b7ba2d-0c9b-4f2e-8369-1bde614677bb"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="On_Sight"
+ Guid="77927bd4-efa9-4c27-8752-de04f88d08b2"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Staff_Responsible"
+ Guid="f9d55127-af06-40e8-993e-c76258ad25f3"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="bc5aebd5-45ce-4da2-8eb1-7ccd5fc342e8"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Unfitted"
+ Guid="bef17d11-8d40-4456-90ae-20c71d722e35"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="Spare"
+ Guid="f86ff420-8fd3-418a-a1d6-9031877c935d"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="Stand_By"
+ Guid="6dcd869e-710f-4fd1-b79a-bbbd8c1c5e9f"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="Trip"
+ Guid="714f466a-7692-4155-9684-d2029037333d"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Post_Trip"
+ Guid="3076d629-0ab0-491d-abaa-33d5c284af7e"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="Spare"
+ Guid="90630f6a-968f-458a-94ed-f4c802734595"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="Spare"
+ Guid="0419cb20-3129-4a15-a105-5871b05abce9"
 >
 </EnumValue><EnumValue
  Value="11"
  Name="Non_Leading"
+ Guid="0a11c00e-450f-4a91-8e09-6fa1d0f37f4d"
 >
 </EnumValue><EnumValue
  Value="12"
  Name="Limited_Supervision"
+ Guid="5d649f27-7ce3-4658-acac-751fa705a0e3"
 >
 </EnumValue><EnumValue
  Value="13"
  Name="Spare"
+ Guid="93b5ec0e-fca8-4c7c-b2ea-6bfd11010d2a"
 >
 </EnumValue><EnumValue
  Value="14"
  Name="Reversing"
+ Guid="41e25fb8-99a2-4f0e-8587-c802565761a5"
 >
 </EnumValue><EnumValue
  Value="15"
  Name="The_display_of_the_text_shall_not_be_limited_by_the_mode"
+ Guid="69df4aaf-d7a9-4906-b2d5-ff7d277f35e5"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2067,14 +2431,17 @@ The text is displayed when entering / as long as in the defined mode</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_NVAVADH"
+ Guid="64ee1f11-d3cb-4a4d-9a21-8c57b4b4ba9f"
 >
 <ReqRef
  Id="f9e113f1-d592-489b-9eff-d8ebeb91e758"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b7529879-726e-421c-83f6-ebef98c0b1fc"
 >
 </ReqRef><ReqRef
  Id="56e3f1b8-f5c1-4923-9d98-534b456b821d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3d33e03e-0d95-4309-881e-19abaf96d07a"
 >
 </ReqRef><Comment>Weighting factor for available wheel/rail adhesion
 This variable is part of the National Values.</Comment>
@@ -2085,14 +2452,17 @@ This variable is part of the National Values.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_NVCONTACT"
+ Guid="a34809d9-aeb1-40f4-9a56-5187885d94a0"
 >
 <ReqRef
  Id="6edf9ef8-827e-491f-9cf9-57b74e4cd982"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ce8085ae-2241-4a04-ab80-9249b6c9c607"
 >
 </ReqRef><ReqRef
  Id="d4792624-9c42-436c-9c80-80b60d1baef8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="821a4f00-54ff-47c2-ab83-693fa114c5b3"
 >
 </ReqRef><Comment>T_NVCONTACT reaction
 Indicates the reaction to be performed when T_NVCONTACT timer elapses This variable is part of the National Values</Comment>
@@ -2100,18 +2470,22 @@ Indicates the reaction to be performed when T_NVCONTACT timer elapses This varia
 <EnumValue
  Value="0"
  Name="Train_trip"
+ Guid="d71eee4a-4261-4cc5-ba15-3e6016208409"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Apply_service_brake"
+ Guid="cd336a2f-18e0-4ccf-b609-65b0d6a37405"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="No_Reaction"
+ Guid="d635d62c-b27d-4af9-acec-b579e13d1b55"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="e990e53c-1283-4cad-abc7-d5fdd3684e30"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2121,14 +2495,17 @@ Indicates the reaction to be performed when T_NVCONTACT timer elapses This varia
  Default="0"
  Implemented="TRUE"
  Name="M_NVDERUN"
+ Guid="b5e84709-fb22-4016-8135-d215900bbfcf"
 >
 <ReqRef
  Id="3cebe2c9-7f92-4bcc-bee0-8d7eeea8c4ec"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3b3a9eeb-8360-4d42-97c1-02bb4624b79b"
 >
 </ReqRef><ReqRef
  Id="a3ae6fa1-d271-4728-85aa-3383fb89fa77"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="df2c4ece-585f-4322-b5f1-bdda8edf9794"
 >
 </ReqRef><Comment>Entry of Driver ID permitted while running
 This variable is part of the National Values</Comment>
@@ -2136,10 +2513,12 @@ This variable is part of the National Values</Comment>
 <EnumValue
  Value="0"
  Name="No"
+ Guid="fffda219-8d8c-41a3-8699-5100c66b05fa"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Yes"
+ Guid="7d0d4709-a2fa-4672-9507-e15375b6534a"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2149,14 +2528,17 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_NVEBCL"
+ Guid="ccdf9530-3d24-4e1c-9959-369b0e5d38b8"
 >
 <ReqRef
  Id="e4cb58c4-7c41-470c-a4a5-43eb3968b258"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae1ac621-0c76-4705-8c81-457199a71a8f"
 >
 </ReqRef><ReqRef
  Id="53a5d545-3ea1-4ebc-b233-62015c5f7894"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1a9bd81-b07f-4e57-ae47-77f40a97441e"
 >
 </ReqRef><Comment>Confidence level for emergency brake safe deceleration on dry rails
 This variable is part of the National Values. Based on the required confidence level, the on-board equipment selects its corresponding rolling stock correction factor Kdry_rst(V). The confidence level on emergency brake safe deceleration represents the probability of the following individual event: the rolling stock emergency brake subsystem of the train does ensure a deceleration at least equal to A_brake_emergency(V) * Kdry_rst(V), when the emergency brake is commanded on dry rails.</Comment>
@@ -2164,42 +2546,52 @@ This variable is part of the National Values. Based on the required confidence l
 <EnumValue
  Value="0"
  Name="Confidence_level___50"
+ Guid="449e77a5-5a79-420e-b786-d1b411326d62"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Confidence_level___90"
+ Guid="83164396-ba4c-4691-8275-7b95317f0852"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Confidence_level___99"
+ Guid="7e30ad32-d5ed-4794-9b6e-594b3dc56ff1"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Confidence_level___99_9"
+ Guid="ce274884-f7fd-470e-8800-ff29fd1cc732"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Confidence_level___99_99"
+ Guid="fe2e5568-926f-485f-8f39-c42cd17ed702"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="Confidence_level___99_999"
+ Guid="b3eb9528-57a1-49b8-897c-6cdbfb4ade84"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="Confidence_level___99_9999"
+ Guid="4dd3ce2d-5b6a-48f0-9596-ddd38072c77c"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="Confidence_level___99_99999"
+ Guid="8fc92128-e53f-47c0-94bc-6ea6e1e9853f"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Confidence_level___99_999999"
+ Guid="4a6bc93d-8479-45f1-b723-ac155cc2a9fc"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="Confidence_level___99_9999999"
+ Guid="10e0ec4f-4ac2-4883-897b-f72af137ae3c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2209,10 +2601,12 @@ This variable is part of the National Values. Based on the required confidence l
  Default="0"
  Implemented="TRUE"
  Name="M_NVKRINT"
+ Guid="307625ba-b55f-4389-926a-a57991023507"
 >
 <ReqRef
  Id="17f6811a-7a8d-4f41-8498-e029bc8af7ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4057430-b94c-4cf5-a509-3dc07c55f044"
 >
 </ReqRef><Comment>Integrated correction factor Kr
 This is the train length dependent integrated correction factor. M_NVKRINT(l) is valid for a train length between L_NVKRINT(l) and L_NVKRINT(l+1). M_NVKRINT is valid between 0m and L_NVKRINT(1) This variable is part of the National Values</Comment>
@@ -2223,10 +2617,12 @@ This is the train length dependent integrated correction factor. M_NVKRINT(l) is
  Default="0"
  Implemented="TRUE"
  Name="M_NVKTINT"
+ Guid="3f45227b-7a5c-487e-91de-fa9429dcdc95"
 >
 <ReqRef
  Id="0479c97d-7d3a-4a73-8a4d-ab1a35d677fc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5cef3027-5bcb-4ea3-8c3b-9e822f8bf5ea"
 >
 </ReqRef><Comment>Integrated correction factor Kt
 This variable is part of the National Values</Comment>
@@ -2237,10 +2633,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="M_NVKVINT"
+ Guid="87eb2f72-aec7-45e2-9f17-29a7e14119df"
 >
 <ReqRef
  Id="87af3dac-1ee2-462a-8c96-a5e5250c3fcc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="362a2140-2d01-427a-9ccd-185c8c9c8f5c"
 >
 </ReqRef><Comment>Integrated correction factor Kv
 This is the speed dependent integrated correction factor. M_NVKVINT(n) is valid for an estimated speed between V_NVKVINT(n) and V_NVKVINT(n+1). M_NVKVINT is valid between 0 km/h and V_NVKVINT(1) This variable is part of the National Values</Comment>
@@ -2251,14 +2649,17 @@ This is the speed dependent integrated correction factor. M_NVKVINT(n) is valid 
  Default="0"
  Implemented="TRUE"
  Name="M_PLATFORM"
+ Guid="0695a9a2-a1b9-4448-a73e-755a2fff9088"
 >
 <ReqRef
  Id="aecdec18-5e27-4192-98e9-52708aac826b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0491646d-45f5-443a-9137-c78e360a1d15"
 >
 </ReqRef><ReqRef
  Id="99d8d5e3-4d24-402e-8baa-99fbef119464"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6fddeefc-49a4-4113-bd31-66510fca3cbb"
 >
 </ReqRef><Comment>Type of platform
 Nominal height of platform above rail level (refer to TSI infrastructure)</Comment>
@@ -2266,58 +2667,72 @@ Nominal height of platform above rail level (refer to TSI infrastructure)</Comme
 <EnumValue
  Value="0"
  Name="_200_mmC"
+ Guid="22f1852e-3eff-415c-818e-c50da7c1622e"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="_300_380_mmC"
+ Guid="6fc9860e-c8a6-44c5-9fc4-21b37e2dff63"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="_550_mmC"
+ Guid="6bf4108e-268c-458e-b240-fe7b69038ffe"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="_580_mmC"
+ Guid="f1112af4-aaad-40a4-a21e-4a66a1f9bd74"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="_680_mmC"
+ Guid="988829cb-5b1d-4bf7-983f-5e14d93a4781"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="_685_mmC"
+ Guid="acd0b199-0b42-4505-8c80-aa8f66904eed"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="_730_mmC"
+ Guid="f741d39a-497e-41ef-92c9-f2e8b066ddbe"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="_760_mmC"
+ Guid="d2b5108c-e13e-45d0-bbda-0f16533d9ab0"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="_840_mmC"
+ Guid="c7eab53c-5f50-4edd-9317-c6e333ab7f84"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="_900_mmC"
+ Guid="2a30d606-1ce3-41e0-b681-9d84fc508268"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="_915_mmC"
+ Guid="dc3fc2af-c5ee-4bec-8619-65e5b1e51283"
 >
 </EnumValue><EnumValue
  Value="11"
  Name="_920_mmC"
+ Guid="2f702cdb-ba54-48a3-a3d1-4b7c53048d30"
 >
 </EnumValue><EnumValue
  Value="12"
  Name="_960_mmC"
+ Guid="cdbf3e85-36a7-4206-b30e-4087b5e9a801"
 >
 </EnumValue><EnumValue
  Value="13"
  Name="_1100_mmC"
+ Guid="23fefc89-2ac2-489a-b0f5-8a2489045081"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2327,14 +2742,17 @@ Nominal height of platform above rail level (refer to TSI infrastructure)</Comme
  Default="0"
  Implemented="TRUE"
  Name="M_POSITION"
+ Guid="e96fcb32-783b-4d27-89f9-307bbf5daf1b"
 >
 <ReqRef
  Id="5c5cc0e5-ec68-48f0-b9d8-17de2cf0bcbf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f5de66c-2481-4cbb-98c6-d14a546b4885"
 >
 </ReqRef><ReqRef
  Id="39a0638c-e20b-4213-8d59-132a29567391"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9d1926e8-7fea-43c9-96fa-2b08c52cbafc"
 >
 </ReqRef><Comment>Track kilometre reference value
 The geographical position reporting function uses this variables content as a reference value.</Comment>
@@ -2345,14 +2763,17 @@ The geographical position reporting function uses this variables content as a re
  Default="0"
  Implemented="TRUE"
  Name="M_TRACKCOND"
+ Guid="7d36d62f-f6db-40d7-bebf-c37bcac33664"
 >
 <ReqRef
  Id="b95a22fb-0a06-4d2a-b9f8-73a082712d4c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="959d378a-cb59-4b91-adab-c672a7fd4dc5"
 >
 </ReqRef><ReqRef
  Id="b418e2a0-b0eb-4a80-88b2-d885af7e7082"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="857f1e79-cfe6-4e59-8b38-c321e30cb3a4"
 >
 </ReqRef><Comment>Type of track condition
 </Comment>
@@ -2360,46 +2781,57 @@ The geographical position reporting function uses this variables content as a re
 <EnumValue
  Value="0"
  Name="Non_stopping_area___tunnel__Initial_state__stopping_permitted"
+ Guid="5b37706d-0133-4d9b-b13e-74e2afda2ee4"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Tunnel_stopping_area__Initial_state__no_tunnel_stopping_area"
+ Guid="1877d641-02b4-40b2-b748-84557c11553e"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Sound_horn__Initial_state__no_request_for_sound_horn"
+ Guid="f155dde7-df72-4a9b-8925-e270e4e19f6a"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Powerless_section___lower_pantograph__Initial_state__not_powerless_section"
+ Guid="27c92de8-cdf3-4d4d-b888-e76e3f2df8ca"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Radio_hole__stop_supervising_T_NVCONTACT___Initial_state__supervise_T_NVCONTACT"
+ Guid="cf67daee-3321-48fd-9a25-c36bc88a5f9f"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="Air_tightness__Initial_state__no_request_for_air_tightness"
+ Guid="27dc070b-85cc-46aa-972d-1626dc182c25"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="Switch_off_regenerative_brake__Initial_state__regenerative_brake_on"
+ Guid="ace827b3-71c0-4ad7-b379-c2664a72881b"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="Switch_off_eddy_current_brake_for_service_brake__Initial_state__eddy_current_brake_for_service_brake_on"
+ Guid="dc6d7699-6804-41c2-b2ec-3f5480658804"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Switch_off_magnetic_shoe_brake__Initial_state__magnetic_shoe_brake_on"
+ Guid="b182eb2e-c8c9-4847-a356-053051c75cff"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="Powerless_section___switch_off_the_main_power_switch__Initial_state__not_powerless_section"
+ Guid="da1ea5a0-efd5-43eb-aa5c-221e1200defb"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="Switch_off_eddy_current_brake_for_emergency_brake__Initial_state__eddy_current_brake_for_emergency_brake_on"
+ Guid="44501070-9a23-41c2-8c22-f4e33727cbf9"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2409,14 +2841,17 @@ The geographical position reporting function uses this variables content as a re
  Default="0"
  Implemented="TRUE"
  Name="M_VOLTAGE"
+ Guid="eebff1c0-39d5-4bd6-be56-d38047b949ae"
 >
 <ReqRef
  Id="3279c818-b689-4685-acc2-1390cd5331ca"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d11b0733-50a8-4b2f-aaee-f2df949f96d4"
 >
 </ReqRef><ReqRef
  Id="d1e33376-b717-4319-ac4d-f92b986de71e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6c80fa70-7b68-45e0-9ac0-7af99390d623"
 >
 </ReqRef><Comment>Traction System voltage
 It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE ≠ 0, by the country identifier of the traction system (NID_CTRACTION)</Comment>
@@ -2424,26 +2859,32 @@ It indicates the voltage of the traction system installed on a specific line or 
 <EnumValue
  Value="0"
  Name="Line_not_fitted_with_any_traction_system"
+ Guid="d70c5ccf-573a-43c6-a7e2-266c143081a7"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="AC_25_kV_50_Hz"
+ Guid="24a18af1-4f49-4118-9781-a3ead4df79c0"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="AC_15_kV_16_7_Hz"
+ Guid="01d42b2f-cbb9-4632-94cf-fb68e74fd157"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="DC_3_kV"
+ Guid="f5630697-172a-4fee-adee-d9ee28ac1124"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="DC_1_5_kV"
+ Guid="ee2756dc-a266-426e-8dd4-871e9e5a30df"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="DC_600_750_V"
+ Guid="997265de-78ba-4d7e-bef0-e0efcbccc5b8"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2453,14 +2894,17 @@ It indicates the voltage of the traction system installed on a specific line or 
  Default="0"
  Implemented="TRUE"
  Name="M_VERSION"
+ Guid="abfc0ab7-4bf0-478d-a4fc-35fcbf99b85e"
 >
 <ReqRef
  Id="e3806294-c226-451a-b5c2-70b79a84dded"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b529ffc1-640a-411c-9970-06eedfc5dabe"
 >
 </ReqRef><ReqRef
  Id="19a0469a-d8bc-421c-bb3a-a8e7f3a18a36"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="910da95d-e146-4876-b7f7-273b37ad0063"
 >
 </ReqRef><Comment>Version of ETCS system
 This gives the version of the ETCS system Each part indicates the first and second number of the version respectively. - The first number distinguishes not compatible versions. (The three MSB’s) - The second number indicates compatibility within a version X. (The four LSB’s)</Comment>
@@ -2468,14 +2912,17 @@ This gives the version of the ETCS system Each part indicates the first and seco
 <EnumValue
  Value="16"
  Name="Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0"
+ Guid="ff1a9a70-0e59-4375-9397-00791e0eff59"
 >
 </EnumValue><EnumValue
  Value="17"
  Name="Version_1_1__introduced_in_SRS_3_0_0"
+ Guid="0c9ce030-b4e5-4888-86cc-e3433b4c4b68"
 >
 </EnumValue><EnumValue
  Value="32"
  Name="Version_2_0__introduced_in_SRS_3_0_0"
+ Guid="cd76284f-c3e2-4a05-b070-5d789cc5f9b0"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2485,14 +2932,17 @@ This gives the version of the ETCS system Each part indicates the first and seco
  Default="0"
  Implemented="TRUE"
  Name="N_AXLE"
+ Guid="0383f9e9-95b5-4759-a129-8bf514a7ed96"
 >
 <ReqRef
  Id="72ead3dc-a7c4-4e42-870d-8fcb2cac08ee"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f9ce1ba1-ea2c-49ad-8d86-1e3bca45b333"
 >
 </ReqRef><ReqRef
  Id="4fb3ceb5-b30e-4215-a179-504311b04cf1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a041d93e-fc62-49c3-bd22-16397643a675"
 >
 </ReqRef><Comment>Axle number of the engine
 This gives the number of axles of the single unit (fixed train set or locomotive) in which the onboard equipment is fitted</Comment>
@@ -2500,6 +2950,7 @@ This gives the number of axles of the single unit (fixed train set or locomotive
 <EnumValue
  Value="1023"
  Name="Unknown"
+ Guid="20627dd1-feb2-4dac-820c-c312954eae55"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2509,10 +2960,12 @@ This gives the number of axles of the single unit (fixed train set or locomotive
  Default="0"
  Implemented="TRUE"
  Name="NC_DIFF"
+ Guid="b00a7db2-8944-4a60-a170-fd908dadfadb"
 >
 <ReqRef
  Id="3dfb6b48-a52e-4097-89f5-65ada9dbcbe5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="66a95a35-6431-49e4-8589-b59be1c945fc"
 >
 </ReqRef><Comment>IOther specific SSP category
 It is the “other specific” SSP category for which a different value for the static line speed exists. Used together with V_DIFF to permit trains belonging to the corresponding “other international” train category to go faster or lower than the “international basic static speed” given by V_STATIC. Value 0 of NC_DIFF corresponds to the LSB of NC_TRAIN, value 14 of NC_DIFF to MSB (15-bit variable) of NC_TRAIN.</Comment>
@@ -2520,14 +2973,17 @@ It is the “other specific” SSP category for which a different value for the 
 <EnumValue
  Value="0"
  Name="Specific_SSP_applicable_to_Freight_train_braked_in__P__position"
+ Guid="6e1ce529-cf30-425b-8357-523daf8b2e8f"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Specific_SSP_applicable_to_Freight_train_braked_in__G__position"
+ Guid="a25a2acc-868d-4fa2-a53a-bef18677f4a7"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Specific_SSP_applicable_to_Passenger_train"
+ Guid="5348e914-227c-4b22-b5dc-6efc41e00ea1"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2537,14 +2993,17 @@ It is the “other specific” SSP category for which a different value for the 
  Default="0"
  Implemented="TRUE"
  Name="NC_TRAIN"
+ Guid="7f306b9f-996b-4c62-bca3-7a695b7c7c97"
 >
 <ReqRef
  Id="d1064b23-7377-4cb2-b7ca-5cec6c1f6c69"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ebc6fe5a-e3dc-467d-aa63-1cab1433f536"
 >
 </ReqRef><ReqRef
  Id="5f10839f-b8cb-4707-b0b8-5b1b9eab4db3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="947c93a3-bbd3-4138-8f3e-3f8e6b4342d2"
 >
 </ReqRef><Comment>Other International Train Category. 
 Other train category (different from Cant Deficiency) to which the train belongs. Thanks to NC_TRAIN, the train knows the “Other specific” SSP category it must consider. By receiving a list of static speed profile, thanks to NC_DIFF, the train can select the SSP it must obey. Each bit represents one category. A train can belong to various categories. </Comment>
@@ -2552,66 +3011,82 @@ Other train category (different from Cant Deficiency) to which the train belongs
 <EnumValue
  Value="0"
  Name="Train_does_not_belong_to_any_of_the__Other_International__Train_Category"
+ Guid="117cc593-4a99-4417-85dd-bcd4adfa1d6c"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Freight_train_braked_in__P__position"
+ Guid="affe4341-3431-483c-b4b0-4e4db7c036c0"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Freight_train_braked_in__G__position"
+ Guid="8a96828a-a0e6-42d3-84ad-8d0eb0824e36"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Passenger_train"
+ Guid="a4ee07b3-07bb-4a41-80ff-9da8d3c78770"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Spare"
+ Guid="388692fb-efcf-45f0-8549-100a02a454ae"
 >
 </EnumValue><EnumValue
  Value="16"
  Name="Spare"
+ Guid="aa00fb71-dcd8-4248-8376-a9fd3fa44e1c"
 >
 </EnumValue><EnumValue
  Value="32"
  Name="Spare"
+ Guid="76d593b3-9234-470c-af8b-fbbd6415bb8f"
 >
 </EnumValue><EnumValue
  Value="64"
  Name="Spare"
+ Guid="1f7c6fa8-f7d6-44d3-82ca-f42e5cb876bc"
 >
 </EnumValue><EnumValue
  Value="128"
  Name="Spare"
+ Guid="57df2826-82ae-49ec-97d6-4869b9b563e9"
 >
 </EnumValue><EnumValue
  Value="256"
  Name="Spare"
+ Guid="2d0ed78b-b98c-4406-b932-fc3b8a0f2987"
 >
 </EnumValue><EnumValue
  Value="512"
  Name="Spare"
+ Guid="c167d0ac-0a32-4ee6-b42b-cd409ccd2eb7"
 >
 </EnumValue><EnumValue
  Value="1024"
  Name="Spare"
+ Guid="9a011d8e-93c4-4709-8ed2-a925e47513a7"
 >
 </EnumValue><EnumValue
  Value="2048"
  Name="Spare"
+ Guid="38b24e3c-5c73-4351-850e-1ea2a74683f3"
 >
 </EnumValue><EnumValue
  Value="4096"
  Name="Spare"
+ Guid="0c73a400-4b1e-447f-8715-0e858c02b655"
 >
 </EnumValue><EnumValue
  Value="8192"
  Name="Spare"
+ Guid="223199fb-a4df-4e1a-ba90-9e11820f6b7e"
 >
 </EnumValue><EnumValue
  Value="16384"
  Name="Spare"
+ Guid="f98af855-6a26-44b8-83b8-7c87e61b1570"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2621,14 +3096,17 @@ Other train category (different from Cant Deficiency) to which the train belongs
  Default="0"
  Implemented="TRUE"
  Name="NID_BG"
+ Guid="a9bd88c8-2eda-4b03-a1e5-2506ab52a86f"
 >
 <ReqRef
  Id="ef732c20-6a53-4b9e-89de-31fa7cc8792d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64569422-37c0-47f1-899f-2608ee91aa5a"
 >
 </ReqRef><ReqRef
  Id="6bb968a6-21ff-4885-a21f-86476116ba75"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cd3f3ce5-2935-449b-a4bd-b8c56e612f10"
 >
 </ReqRef><Comment>Identity number of the balise group
 Identity number of a balise group or loop within the country or region defined by NID_C.</Comment>
@@ -2636,6 +3114,7 @@ Identity number of a balise group or loop within the country or region defined b
 <EnumValue
  Value="16383"
  Name="NID_UNKNOWN"
+ Guid="cfbb661a-1e47-4f77-a0f4-12b0748130e9"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2645,10 +3124,12 @@ Identity number of a balise group or loop within the country or region defined b
  Default="0"
  Implemented="TRUE"
  Name="NID_C"
+ Guid="de1abb7f-6f85-415b-b175-c5792317b6df"
 >
 <ReqRef
  Id="22004407-7b7e-41ef-b2a0-17762884662f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b424ffde-c0d6-4b0b-9d25-59048140013d"
 >
 </ReqRef><Comment>Identity number of the country or region
 Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries.</Comment>
@@ -2659,10 +3140,12 @@ Code used to identify the country or region in which the balise group, the RBC o
  Default="0"
  Implemented="TRUE"
  Name="NID_CTRACTION"
+ Guid="4542ab76-df69-4a41-800b-e3ddcf9b63e3"
 >
 <ReqRef
  Id="3e473bc9-3037-4723-8378-f99625c4fc5e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5487905c-a90a-4e54-b481-61619c06941f"
 >
 </ReqRef><Comment>Country identifier of the traction system
 It identifies the information, additional to M_VOLTAGE, required to fully define the traction system.</Comment>
@@ -2673,10 +3156,12 @@ It identifies the information, additional to M_VOLTAGE, required to fully define
  Default="0"
  Implemented="TRUE"
  Name="NID_EM"
+ Guid="2a6c29f8-3c93-458f-80d1-a117c929f6b7"
 >
 <ReqRef
  Id="cfee696a-706e-4517-ab23-0429ac92d10a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="19454e5c-d57a-452a-8b83-e08f4ff366db"
 >
 </ReqRef><Comment>Emergency message identity
 Identifies the number of the emergency message</Comment>
@@ -2687,10 +3172,12 @@ Identifies the number of the emergency message</Comment>
  Default="0"
  Implemented="TRUE"
  Name="NID_ENGINE"
+ Guid="afdbee2c-1948-490c-b701-f60227f6e47a"
 >
 <ReqRef
  Id="9384cdfc-0445-4aa5-886f-e7b5a34f359c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="15f3cbda-ec63-4f80-b21e-3ed044d3af07"
 >
 </ReqRef><Comment>Onboard ETCS identity
 The ETCS identity number is uniquely defined for ERTMS/ETCS purposes</Comment>
@@ -2701,10 +3188,12 @@ The ETCS identity number is uniquely defined for ERTMS/ETCS purposes</Comment>
  Default="0"
  Implemented="TRUE"
  Name="NID_LOOP"
+ Guid="d1a2ec2b-7064-4f9c-bfa5-09c4f7209307"
 >
 <ReqRef
  Id="64fe2915-3527-4fff-8c7c-b351a1791452"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4fafa34-9be9-4a34-8ccb-888c50a0c94e"
 >
 </ReqRef><Comment>Identity number of the loop
 Identity number of a loop within the country or region defined by NID_C given in the EOLM balise header.</Comment>
@@ -2715,14 +3204,17 @@ Identity number of a loop within the country or region defined by NID_C given in
  Default="0"
  Implemented="TRUE"
  Name="NID_LRBG"
+ Guid="b8bceeba-2e7d-452d-b7ed-8f85853842dc"
 >
 <ReqRef
  Id="1a2d8383-787f-4c77-9833-3c39e73c0b0a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4c8927a-c850-4e05-8475-7d4c723fb60f"
 >
 </ReqRef><ReqRef
  Id="336d173f-8415-4f27-b57b-0aa48cc07174"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6be6c43d-0d3e-4f29-8ebf-5642822e4300"
 >
 </ReqRef><Comment>Identity of last relevant balise group
 Country/region identity (NID_C) + balise identity number of last relevant balise group (NID_BG).</Comment>
@@ -2730,6 +3222,7 @@ Country/region identity (NID_C) + balise identity number of last relevant balise
 <EnumValue
  Value="16777215"
  Name="Unknown"
+ Guid="82101494-92c9-4223-b72e-78d0392fa34e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2739,10 +3232,12 @@ Country/region identity (NID_C) + balise identity number of last relevant balise
  Default="0"
  Implemented="TRUE"
  Name="NID_LTRBG"
+ Guid="e898d384-0e31-4881-8e2e-d99d6cea8cf6"
 >
 <ReqRef
  Id="581a08d8-b383-4697-ab28-b0e80f76c407"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="016294b6-e74d-4d6c-8019-2e769bd0853d"
 >
 </ReqRef><Comment>Identity of the level 2/3 transition balise group
 Identity of the balise group at the level 2/3 transition location towards which the train is running. Country/region identity (NID_C) + balise identity number of the level 2/3 transition location balise group (NID_BG).</Comment>
@@ -2753,14 +3248,17 @@ Identity of the balise group at the level 2/3 transition location towards which 
  Default="0"
  Implemented="TRUE"
  Name="NID_LX"
+ Guid="cfbb2a03-1c16-459a-b74c-304a194839e3"
 >
 <ReqRef
  Id="d0a00d26-268e-4fe4-87b9-1b3331051606"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="76d45c75-7625-4128-9c07-03bed063409c"
 >
 </ReqRef><ReqRef
  Id="dab73e4d-9742-4b92-b5a1-1d189578bbf7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="79a26af3-106c-4295-aa01-2f71503f9140"
 >
 </ReqRef><Comment>Identity number of the Level Crossing.
 </Comment>
@@ -2771,10 +3269,12 @@ Identity of the balise group at the level 2/3 transition location towards which 
  Default="0"
  Implemented="TRUE"
  Name="NID_MESSAGE"
+ Guid="3014c170-d03e-47df-924c-0e3aa53bea89"
 >
 <ReqRef
  Id="59d51987-ed8e-4b53-b0fe-89a9813326c1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b14f5cf6-35bf-4407-989e-6bc6ee8e211f"
 >
 </ReqRef><Comment>Message identifier
 Message identifier. Regards defined values of NID_MESSAGE, refer to chapters 8.5.2 and 8.5.3</Comment>
@@ -2785,10 +3285,12 @@ Message identifier. Regards defined values of NID_MESSAGE, refer to chapters 8.5
  Default="0"
  Implemented="TRUE"
  Name="NID_MN"
+ Guid="d56906e6-cad0-48c5-8181-1ad37d4e72fc"
 >
 <ReqRef
  Id="24c5b6a0-14e5-47ad-907d-683ba45456fd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="183dc5dc-0444-4c8c-b05d-667271a18e6b"
 >
 </ReqRef><Comment>Identity of Radio Network
 The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character &quot;F&quot;. For further information about NID_MN refer to Subset-54.</Comment>
@@ -2799,14 +3301,17 @@ The NID_MN identifies the GSM-R network the calling mobile station has to regist
  Default="0"
  Implemented="TRUE"
  Name="NID_OPERATIONAL"
+ Guid="377e7a35-8857-468d-a09d-af2c0bc913e5"
 >
 <ReqRef
  Id="dac86bcd-dbc3-4022-866e-6ede3aa58dbd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c323eadc-d226-471b-a219-1ab85f15f315"
 >
 </ReqRef><ReqRef
  Id="d9f1ac56-1351-4307-8cf8-2d6ddfda91b0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2ded2cc3-ac32-4c31-84d5-d87d2fe2cd76"
 >
 </ReqRef><Comment>Train Running Number
 This is the operational train running number. The NID_OPERATIONAL consists of up to 8 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be entered first. In case the NID_OPERATIONAL is shorter than 8 digits, the remaining space is to be filled with special character &quot;F&quot;.</Comment>
@@ -2817,10 +3322,12 @@ This is the operational train running number. The NID_OPERATIONAL consists of up
  Default="0"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="2c490918-52b0-4b22-8a84-4207d728563b"
 >
 <ReqRef
  Id="c9900553-3a72-4ccb-8bd4-a243c18f6850"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21fdb099-9722-407e-a335-4fa862e29848"
 >
 </ReqRef><Comment>Packet identifier
 This is used in the header for each packet, allowing the receiving equipment to identify the data which follows. Regards defined values of NID_PACKET,.refer to “packet numbers” in the tables in chapter 7.4.1.</Comment>
@@ -2831,14 +3338,17 @@ This is used in the header for each packet, allowing the receiving equipment to 
  Default="0"
  Implemented="TRUE"
  Name="NID_PRVBG"
+ Guid="823cc1e8-739b-4546-8763-dedbcb5fffe8"
 >
 <ReqRef
  Id="d5f16a72-9a08-412c-9d92-ecc0346cc807"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="34272c12-0ecb-4575-9aec-7b3b7eb1b910"
 >
 </ReqRef><ReqRef
  Id="5be8174c-99f3-45d3-9851-238f98735f1c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9dc81654-6825-4865-bf7c-1dc92f440a95"
 >
 </ReqRef><Comment>Identity of the previous balise group
 Previous balise group detected when running towards the balise group identified as LRBG with no change of direction in-between. Country/region identity (NID_C) + balise identity number of the previous balise group (NID_BG).</Comment>
@@ -2846,6 +3356,7 @@ Previous balise group detected when running towards the balise group identified 
 <EnumValue
  Value="16777215"
  Name="unknown"
+ Guid="eadee9f8-8cce-45bd-be4f-cbdfea8395ac"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2855,14 +3366,17 @@ Previous balise group detected when running towards the balise group identified 
  Default="0"
  Implemented="TRUE"
  Name="NID_RADIO"
+ Guid="a3ab9323-56a7-478a-a451-42a13980c368"
 >
 <ReqRef
  Id="8de750b3-478b-4567-9feb-e25053941e7a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eb46b858-bd93-4ea9-9cbb-81540e1d738c"
 >
 </ReqRef><ReqRef
  Id="7f4b0683-09ab-4b59-a0fa-bc60e4bce8c5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af96b081-f3f5-4d88-aee4-f9e6c82de639"
 >
 </ReqRef><Comment>Radio subscriber number.
 Quoted as a 16 digit decimal number. The number is to be entered &quot;left adjusted&quot; starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.</Comment>
@@ -2873,14 +3387,17 @@ Quoted as a 16 digit decimal number. The number is to be entered &quot;left adju
  Default="0"
  Implemented="TRUE"
  Name="NID_RBC"
+ Guid="39ef4dbc-9e30-4106-aad3-82ce71e847ba"
 >
 <ReqRef
  Id="816c0d6e-276a-4016-ad89-124dca81531d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="54ee3c78-0f5d-4680-b3d3-1bb8cf3bc847"
 >
 </ReqRef><ReqRef
  Id="9b3bb187-4a2d-49fa-9d97-e08673f45abf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3286c128-aab7-4b79-b667-97985f82e94b"
 >
 </ReqRef><Comment>RBC ETCS identity number
 This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS identity is given by NID_C + NID_RBC.</Comment>
@@ -2888,6 +3405,7 @@ This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS 
 <EnumValue
  Value="16383"
  Name="not_known"
+ Guid="bc1cb6b7-e85a-4b4a-b255-9a7de77242c1"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2897,10 +3415,12 @@ This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS 
  Default="0"
  Implemented="TRUE"
  Name="NID_RIU"
+ Guid="3edf6f44-b0fd-4479-b0d8-a505f088b589"
 >
 <ReqRef
  Id="3c0693cf-9e59-4032-91d3-61ccb4a12ea8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e074d2a1-fbdc-4ef5-82e0-1a35c5d7d8d1"
 >
 </ReqRef><Comment>Identity of radio in-fill unit
 This variable provides the identity of the RIU belonging to NID_C. The RIU ETCS identity is given by NID_C + NID_RIU.</Comment>
@@ -2908,6 +3428,7 @@ This variable provides the identity of the RIU belonging to NID_C. The RIU ETCS 
 <EnumValue
  Value="16383"
  Name="not_known"
+ Guid="0bf2a715-10dd-41a5-8fa5-5360f26f9c32"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2917,10 +3438,12 @@ This variable provides the identity of the RIU belonging to NID_C. The RIU ETCS 
  Default="0"
  Implemented="TRUE"
  Name="NID_STM"
+ Guid="07e2e03a-3912-4ec3-bdbf-7f6d3cda3770"
 >
 <ReqRef
  Id="957132d4-ee44-447a-8bae-75d858cd1963"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="152fcd47-89c8-4482-8754-46bbbf76d62f"
 >
 </ReqRef><Comment>National System identity
 Each value of this variable represents the identity of a National System.</Comment>
@@ -2931,10 +3454,12 @@ Each value of this variable represents the identity of a National System.</Comme
  Default="0"
  Implemented="TRUE"
  Name="NID_NTC"
+ Guid="d6704bdb-95df-47e9-b592-f9894f4328d6"
 >
 <ReqRef
  Id="957132d4-ee44-447a-8bae-75d858cd1963"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b57fbcc1-0ab3-48d1-a326-5a1f88abcbf7"
 >
 </ReqRef><Comment>National System identity
 Each value of this variable represents the identity of a National System.</Comment>
@@ -2945,10 +3470,12 @@ Each value of this variable represents the identity of a National System.</Comme
  Default="0"
  Implemented="TRUE"
  Name="NID_TEXTMESSAGE"
+ Guid="59891753-acd8-45fd-829e-309a2af509df"
 >
 <ReqRef
  Id="f7f0b16c-bd1d-474a-97e2-b04ba14bf332"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c9f6ea46-b282-462d-ac23-c7fb8c33b8b5"
 >
 </ReqRef><Comment>Text message identifier
 Identity of a text message from trackside to be used in a report of driver acknowledgement to the RBC</Comment>
@@ -2959,18 +3486,22 @@ Identity of a text message from trackside to be used in a report of driver ackno
  Default="0"
  Implemented="TRUE"
  Name="NID_TSR"
+ Guid="331d7fcd-8455-4c83-ba8b-23175c86fb9c"
 >
 <ReqRef
  Id="f7f0b16c-bd1d-474a-97e2-b04ba14bf332"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ddd774ac-968f-4f8b-bd97-073a0dbbe5cc"
 >
 </ReqRef><ReqRef
  Id="791d81bb-d47e-4805-901f-1ced394ba425"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4047f45-cf1d-4cb7-bb2a-1b200d3122e8"
 >
 </ReqRef><ReqRef
  Id="31b94d91-e23e-4dd9-9b3f-ebdcdb51f392"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a7323056-b92a-4b31-89d2-20fcb5cd3862"
 >
 </ReqRef><Comment>Identity number of Temporary Speed Restriction.
 </Comment>
@@ -2978,6 +3509,7 @@ Identity of a text message from trackside to be used in a report of driver ackno
 <EnumValue
  Value="255"
  Name="Non_revocable_speed_restriction__applicable_for_all_transmission_media"
+ Guid="70ea70a1-3b2b-4030-8636-c5e3dbb2270c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2987,14 +3519,17 @@ Identity of a text message from trackside to be used in a report of driver ackno
  Default="0"
  Implemented="TRUE"
  Name="NID_VBCMK"
+ Guid="6bc941fc-4b1f-4fe4-99cc-ecdb01741fbe"
 >
 <ReqRef
  Id="791d81bb-d47e-4805-901f-1ced394ba425"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd596949-014e-4c4a-a191-d5349a75e9eb"
 >
 </ReqRef><ReqRef
  Id="a33ec561-88de-4200-973e-56cffd7dc0ab"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a921cea8-ead8-4f72-8975-32437dba071c"
 >
 </ReqRef><Comment>Marker for virtual balise cover.
 </Comment>
@@ -3005,10 +3540,12 @@ Identity of a text message from trackside to be used in a report of driver ackno
  Default="0"
  Implemented="TRUE"
  Name="NID_XUSER"
+ Guid="154244ca-6ee5-4884-90ee-5bc1b41cdfbc"
 >
 <ReqRef
  Id="1af31797-71d5-4645-afe5-8bdd328f8864"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="79160548-cd5a-4d5e-bfd4-a82c720a5a8d"
 >
 </ReqRef><Comment>Identity of user system
 Identity of user system for which remainder of packet is intended.</Comment>
@@ -3019,10 +3556,12 @@ Identity of user system for which remainder of packet is intended.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="N_ITER"
+ Guid="152fa5a1-365b-48ae-9841-ddecd0e67ddd"
 >
 <ReqRef
  Id="76b164fa-a561-4508-a3a7-39794c4c5403"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0abbb7bd-5802-477e-b51b-6fbaaa8c3980"
 >
 </ReqRef><Comment>Number of iterations of a data set following this variable in a packet
 If N_ITER is 0 then no data set is following. Two nested levels of iterations can exist.</Comment>
@@ -3033,14 +3572,17 @@ If N_ITER is 0 then no data set is following. Two nested levels of iterations ca
  Default="0"
  Implemented="TRUE"
  Name="N_PIG"
+ Guid="54e28940-82d2-4ce9-8303-7eed1129dda8"
 >
 <ReqRef
  Id="361f0d2f-bd63-43fd-9706-2f3d6e02dd36"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5d1f3e73-53f3-4986-af15-c18802e5ecf2"
 >
 </ReqRef><ReqRef
  Id="497bcb2a-0841-4fd5-a527-5aaeb647e49d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="554a52d0-d82f-49b4-bedd-8ab31c1e951c"
 >
 </ReqRef><Comment>Position in Group
 Defines the relative position in a balise group</Comment>
@@ -3048,34 +3590,42 @@ Defines the relative position in a balise group</Comment>
 <EnumValue
  Value="0"
  Name="_1C"
+ Guid="4a08b8c1-fda4-4921-a4e1-179733514cc7"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="_2C"
+ Guid="82b716b1-ca0f-4fde-91c1-8c0fec04a025"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="_3C"
+ Guid="2f57fe6a-3d34-4a92-93ed-88d601983743"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="_4C"
+ Guid="83175475-dee9-40d3-89ea-cad9d3189968"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="_5C"
+ Guid="ff627e63-787d-499f-b581-4f5591a1918f"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="_6C"
+ Guid="9232bbc1-5202-4d97-ae66-72a76826847a"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="_7C"
+ Guid="32cde971-d6b7-41a1-853c-684ed42eb5a4"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="_8C"
+ Guid="28ebbbc5-5bca-403a-b621-a66b95bd8abe"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3085,14 +3635,17 @@ Defines the relative position in a balise group</Comment>
  Default="0"
  Implemented="TRUE"
  Name="N_TOTAL"
+ Guid="ab3be40a-f095-4666-b325-ee2f44181e60"
 >
 <ReqRef
  Id="0d4c2715-af4d-433a-bff9-ee1121e82e42"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2f0423c3-6bac-456a-867f-9505d22313a7"
 >
 </ReqRef><ReqRef
  Id="27fd944b-bd7e-4f05-8a1a-69a9d4479221"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5c8b8f8b-3622-476f-a98a-87b4fca3b240"
 >
 </ReqRef><Comment>Total number of balise(s) in the group
 </Comment>
@@ -3100,34 +3653,42 @@ Defines the relative position in a balise group</Comment>
 <EnumValue
  Value="0"
  Name="_1_balise_in_groupC"
+ Guid="d99d582c-108e-4c0e-9360-e83173e02837"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="_2_balises_in_groupC"
+ Guid="bd3a1951-b14e-4a91-bae5-73ebabe732ae"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="_3_balises_in_groupC"
+ Guid="886ce13e-6bcd-4998-8e6e-72d9fb9aa0c8"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="_4_balises_in_groupC"
+ Guid="a1ac9347-9fe2-4381-8444-f3ef34473b19"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="_5_balises_in_groupC"
+ Guid="c1c26de2-2e7c-422b-8a1a-d7a0897a55e3"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="_6_balises_in_groupC"
+ Guid="ded33d87-f30d-432c-821e-65814ec8e633"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="_7_balises_in_groupC"
+ Guid="3ce5fcca-467a-4deb-8951-543f7bf14da8"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="_8_balises_in_groupC"
+ Guid="1c845514-7388-40a2-b431-ac2601782f0b"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3137,14 +3698,17 @@ Defines the relative position in a balise group</Comment>
  Default="0"
  Implemented="TRUE"
  Name="NC_CDDIFF"
+ Guid="90d1e1d2-0fca-42b9-b928-476d8b737b90"
 >
 <ReqRef
  Id="968938fa-6a64-41cb-9406-2036110d6747"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d0d30077-2f87-4717-9417-4b99a955e5a8"
 >
 </ReqRef><ReqRef
  Id="f00e74e9-7a14-47af-8ac9-23af05d4296d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="800975bb-e19c-42b6-b93e-7c2ed7430942"
 >
 </ReqRef><Comment>Cant Deficiency SSP category
 It is the “Cant Deficiency” SSP category for which a different value for the static line speed exists. Used together with V_DIFF to permit certain trains to go faster or lower than the “international basic static speed” given by V_STATIC. </Comment>
@@ -3152,46 +3716,57 @@ It is the “Cant Deficiency” SSP category for which a different value for the
 <EnumValue
  Value="0"
  Name="Specific_SSP_applicable_to_Cant_Deficiency_80_mm"
+ Guid="2ec8a02c-1cee-451d-a234-e7b2a4bc0a4c"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Specific_SSP_applicable_to_Cant_Deficiency_100_mm"
+ Guid="8d355f20-608e-4bf5-9562-87a274aa5001"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Specific_SSP_applicable_to_Cant_Deficiency_130_mm"
+ Guid="a0422dc0-b056-44d9-9f03-1ba48656de77"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Specific_SSP_applicable_to_Cant_Deficiency_150_mm"
+ Guid="9265c39f-d472-4c49-93bc-37bb354d384b"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Specific_SSP_applicable_to_Cant_Deficiency_165_mm"
+ Guid="5052f768-4eff-4bb3-9d0c-3d761648580c"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="Specific_SSP_applicable_to_Cant_Deficiency_180_mm"
+ Guid="a9bc1de3-4185-47fe-9785-7490e993f074"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="Specific_SSP_applicable_to_Cant_Deficiency_210_mm"
+ Guid="5a041455-6db8-4587-902b-befad1de795a"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="Specific_SSP_applicable_to_Cant_Deficiency_225_mm"
+ Guid="30ae9008-abbe-4feb-9836-ea9ad0ae3b3a"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Specific_SSP_applicable_to_Cant_Deficiency_245_mm"
+ Guid="47b91490-2d7e-4cb7-ab8c-6518e8201bf0"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="Specific_SSP_applicable_to_Cant_Deficiency_275_mm"
+ Guid="250d7d13-e3f5-488f-955e-2e7eb974bfea"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="Specific_SSP_applicable_to_Cant_Deficiency_300_mm"
+ Guid="5439cf28-c6ec-4433-9cea-eb04759c91da"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3201,10 +3776,12 @@ It is the “Cant Deficiency” SSP category for which a different value for the
  Default="0"
  Implemented="TRUE"
  Name="NC_CDTRAIN"
+ Guid="dfe675c7-a60f-40e8-8121-c63ceb2ddcba"
 >
 <ReqRef
  Id="19c6ae96-63bb-4cdb-9405-689f1d7c43fd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e5c83a6a-eb4e-4c05-b138-31656582786f"
 >
 </ReqRef><Comment>Cant Deficiency Train Category
 Cant Deficiency Train category to which the train belongs. Thanks to NC_CDTRAIN, the train knows the “Cant Deficiency” SSP it must obey. By receiving a list of static speed profile, thanks to NC_CDDIFF, the train can select the “Cant Deficiency” SSP best suiting its NC_CDTRAIN. A train belongs to one and only one category of Cant Deficiency. </Comment>
@@ -3212,46 +3789,57 @@ Cant Deficiency Train category to which the train belongs. Thanks to NC_CDTRAIN,
 <EnumValue
  Value="0"
  Name="Cant_Deficiency_80_mm"
+ Guid="54b65d87-de7c-415d-ab1d-2c7ec07f0ad5"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Cant_Deficiency_100_mm"
+ Guid="8fa7fe3e-e1b8-41d6-9db4-df8e3b2b0bef"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Cant_Deficiency_130_mm"
+ Guid="8044ed27-0282-48b4-8e9f-45d3f2de29cc"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Cant_Deficiency_150_mm"
+ Guid="69895a22-de0b-4eaf-bbb4-c3abc8b2660b"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Cant_Deficiency_165_mm"
+ Guid="46f121b4-6830-466e-b7d6-181e310309ea"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="Cant_Deficiency_180_mm"
+ Guid="fe2667af-8f79-473b-8363-1675ffa8db99"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="Cant_Deficiency_210_mm"
+ Guid="c26e8c91-93d5-45b3-a824-51dc70cf623b"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="Cant_Deficiency_225_mm"
+ Guid="29f36ba8-b8b4-433c-988b-7557261bac10"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Cant_Deficiency_245_mm"
+ Guid="9db5ba55-10aa-45f7-8354-ded9d2d43c92"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="Cant_Deficiency_275_mm"
+ Guid="90e1c672-3bac-4b2a-9a5f-9f5b6aa1974a"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="Cant_Deficiency_300_mm"
+ Guid="80bd89dd-6a4a-483d-bc38-ab60c08cf3fd"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3261,14 +3849,17 @@ Cant Deficiency Train category to which the train belongs. Thanks to NC_CDTRAIN,
  Default="0"
  Implemented="TRUE"
  Name="Q_ASPECT"
+ Guid="83d770c5-99cf-4550-ac8d-048363781f3f"
 >
 <ReqRef
  Id="398b786b-7f1c-42e5-a176-ae34a3e39500"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6fd1acc0-2aa9-41f2-9818-16b25ea62927"
 >
 </ReqRef><ReqRef
  Id="37c03cd0-b9a8-4d50-97aa-413018e1473a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="823b489d-d528-4f51-9c40-986714f0f721"
 >
 </ReqRef><Comment>Aspect of &quot;danger for shunting&quot; signal
 </Comment>
@@ -3276,10 +3867,12 @@ Cant Deficiency Train category to which the train belongs. Thanks to NC_CDTRAIN,
 <EnumValue
  Value="0"
  Name="Stop_if_in_SH_mode"
+ Guid="3d4d40e6-642b-4408-bde9-592b34ec0e24"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Go_if_in_SH_mode"
+ Guid="0763d4bf-fc7d-4591-9346-d7cde6c6ed9f"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3289,14 +3882,17 @@ Cant Deficiency Train category to which the train belongs. Thanks to NC_CDTRAIN,
  Default="0"
  Implemented="TRUE"
  Name="Q_CONFTEXTDISPLAY"
+ Guid="076d1b8c-625b-4687-aaba-49e9cf20e7fa"
 >
 <ReqRef
  Id="ce67bb99-49d3-4865-91b1-5f1d46844e9f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="91b49b96-6869-436f-8a25-e27c2e7513b7"
 >
 </ReqRef><ReqRef
  Id="140dd0c2-ba32-44d8-80e1-4c0be707dfa2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="de0f344d-bbbc-4101-b84a-22740eaac0e7"
 >
 </ReqRef><Comment>Qualifier for text confirmation versus end of text display
 Gives the relationship between the event “driver acknowledgement” and the list of events “location”, “time”, “mode”, “level” defining the end condition for text display</Comment>
@@ -3304,10 +3900,12 @@ Gives the relationship between the event “driver acknowledgement” and the li
 <EnumValue
  Value="0"
  Name="Driver_acknowledgement_always_ends_the_text_display__regardless_of_the_end_condition"
+ Guid="86224217-6e3e-4265-95c2-5ea28f0c22d4"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Driver_acknowledgement_is_an_additional_condition_to_end_the_display"
+ Guid="7e9d89f0-95dc-40ed-bf64-dd5907dbb195"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3317,14 +3915,17 @@ Gives the relationship between the event “driver acknowledgement” and the li
  Default="0"
  Implemented="TRUE"
  Name="Q_DANGERPOINT"
+ Guid="21c984aa-a2de-4eb6-8346-8c38732845b4"
 >
 <ReqRef
  Id="30dda18a-b11e-4bbe-a761-8fe4113de2e5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d5717b19-b665-41cc-95e1-c1a9e6f645d6"
 >
 </ReqRef><ReqRef
  Id="389411c8-ebc2-476d-ba86-9a6a58191318"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a9567c48-e1cd-4e18-929d-c04ab567bb55"
 >
 </ReqRef><Comment>Qualifier for danger point description.
 This variable is set to 1 if either a danger point exists or a release speed has to be specified</Comment>
@@ -3332,10 +3933,12 @@ This variable is set to 1 if either a danger point exists or a release speed has
 <EnumValue
  Value="0"
  Name="No_danger_point_information"
+ Guid="f9b9a480-f8c2-4aac-94ad-778c433dd453"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Danger_point_information_to_follow"
+ Guid="c8802ace-016f-45cd-8baf-4e59f224d2e2"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3345,14 +3948,17 @@ This variable is set to 1 if either a danger point exists or a release speed has
  Default="0"
  Implemented="TRUE"
  Name="Q_DIFF"
+ Guid="178e25f6-3c49-4e5f-ade3-47e661278c46"
 >
 <ReqRef
  Id="d4d1dca3-3feb-42f4-9fb0-78e4de18d3a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64fe9cbe-bfd8-472b-9572-72423184534f"
 >
 </ReqRef><ReqRef
  Id="97820250-11ae-43f2-8b84-dd28da8bda95"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="16d7ed47-8b77-41e7-bdbf-88100c844ed2"
 >
 </ReqRef><Comment>Qualifier for specific SSP categories. 
 Indicates the type of specific SSP category In case of “other specific” SSP, it tells ERTMS/ETCS on-board equipment whether it replaces or not the Cant Deficiency SSP as selected by on-board (ref. 3.11.3.2.3), when the train belongs to an “other international” train category to which the “other specific” SSP applies</Comment>
@@ -3360,18 +3966,22 @@ Indicates the type of specific SSP category In case of “other specific” SSP,
 <EnumValue
  Value="0"
  Name="Cant_Deficiency_specific_category"
+ Guid="7b2286af-bdec-4392-ad3b-e54d059c6405"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Other_specific_category__replaces_the_Cant_Deficiency_SSP"
+ Guid="9a7c3a9c-4785-4506-a619-8c005220bf9a"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP"
+ Guid="67015d66-9ab5-4eba-8b1d-cc0233c11764"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="e038c043-20be-4c67-b65b-0fbc64399aa2"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3381,14 +3991,17 @@ Indicates the type of specific SSP category In case of “other specific” SSP,
  Default="0"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="443bc871-cbe7-4a0a-ba73-382bef1288c6"
 >
 <ReqRef
  Id="377174b6-5ade-4ea3-ab23-4c7f1eae2570"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ed9b7535-a2ac-4ada-bd31-d2eb87307343"
 >
 </ReqRef><ReqRef
  Id="473b4206-fc8f-4f21-b22a-65fd8d0fd212"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="675c56ba-8a6c-4bb8-a9c3-877a772b8dc0"
 >
 </ReqRef><Comment>Validity direction of transmitted data
 Qualifier to indicate the relevant validity direction of transmitted data, with reference to directionality of the balise group sending the information or to directionality of the LRBG, in case of information sent via radio.</Comment>
@@ -3396,18 +4009,22 @@ Qualifier to indicate the relevant validity direction of transmitted data, with 
 <EnumValue
  Value="0"
  Name="Reverse"
+ Guid="cb88fcfb-7405-4dae-ac0e-6e38b94ec78a"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Nominal"
+ Guid="5773f2a5-acb0-452d-8da9-273ee8e665ba"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Both_directions"
+ Guid="584b16c7-7c4f-4133-a884-a9bd0f1336a4"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="922206b9-da04-4981-af01-e17ecdb82443"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3417,14 +4034,17 @@ Qualifier to indicate the relevant validity direction of transmitted data, with 
  Default="0"
  Implemented="TRUE"
  Name="Q_DIRLRBG"
+ Guid="bf2198c0-a439-4323-9874-aefa039032e7"
 >
 <ReqRef
  Id="c9768b2a-a9de-41d1-b3e9-2d4ad2ba3b9b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6b8f1adc-0566-4cc1-a9fd-e00a9913ef2c"
 >
 </ReqRef><ReqRef
  Id="8bddd4d1-cc64-448a-9d5e-a8c50ca30557"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="34f73c0c-559d-4ce1-9d8c-bd88b473da52"
 >
 </ReqRef><Comment>Orientation of the train in relation to the direction of the LRBG
 </Comment>
@@ -3432,18 +4052,22 @@ Qualifier to indicate the relevant validity direction of transmitted data, with 
 <EnumValue
  Value="0"
  Name="Reverse"
+ Guid="62e4b75d-1f71-4b4c-93b2-8bb316cd996f"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Nominal"
+ Guid="543eeedb-31a5-458d-b8a8-0706978e5611"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Unknown"
+ Guid="9f4e55f9-fdb4-4194-9536-b77c3785b0c2"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="95b49f8b-4571-4549-8620-6ad09cfb72e9"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3453,14 +4077,17 @@ Qualifier to indicate the relevant validity direction of transmitted data, with 
  Default="0"
  Implemented="TRUE"
  Name="Q_DIRTRAIN"
+ Guid="4a7d65b6-c128-491d-bdb0-1249bc2201dd"
 >
 <ReqRef
  Id="eeda2a87-ac48-4626-8f06-27870112f7ea"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c5a1f869-d93c-49dd-856b-c6ea3944a5db"
 >
 </ReqRef><ReqRef
  Id="441d511a-2bce-40d1-a5b4-e163a5efee59"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="568648e8-ec1b-4185-a935-b1f740592e85"
 >
 </ReqRef><Comment>Direction of train movement in relation to the LRBG orientation
 </Comment>
@@ -3468,18 +4095,22 @@ Qualifier to indicate the relevant validity direction of transmitted data, with 
 <EnumValue
  Value="0"
  Name="Reverse"
+ Guid="2ed4aef7-c53c-43bc-a4e3-487c7d96158c"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Nominal"
+ Guid="0a82fafa-f5cc-4bc5-830a-e4edb6b29e76"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Unknown"
+ Guid="0c2edfc4-54ba-48f8-a5b7-3883736f5d3c"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="b6061741-e148-48ec-aba5-1bdade4676f9"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3489,14 +4120,17 @@ Qualifier to indicate the relevant validity direction of transmitted data, with 
  Default="0"
  Implemented="TRUE"
  Name="Q_DLRBG"
+ Guid="5b0a8268-9d5c-416f-8b59-f73ed2cf1822"
 >
 <ReqRef
  Id="e5c1e056-6432-4e22-aa13-0daf77e8639a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1cac9ad4-6bff-485d-8d39-22518a2287c2"
 >
 </ReqRef><ReqRef
  Id="e92cb13a-b4e2-4667-ab1d-27b51f55f91b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fbba0910-f590-4ab4-9821-c09b4b45fe7e"
 >
 </ReqRef><Comment>Qualifier telling on which side of the LRBG the estimated front end is
 </Comment>
@@ -3504,18 +4138,22 @@ Qualifier to indicate the relevant validity direction of transmitted data, with 
 <EnumValue
  Value="0"
  Name="Reverse"
+ Guid="184d8c10-2fc8-4e38-8c2d-2f4c44ee2547"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Nominal"
+ Guid="0cf84670-9db0-4ca6-b516-55dd400d962d"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Unknown"
+ Guid="747ec419-3a1a-4d49-8b89-9903657e2a19"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="e5b07e66-72d5-4a5b-80a0-386a6ca73fec"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3525,14 +4163,17 @@ Qualifier to indicate the relevant validity direction of transmitted data, with 
  Default="0"
  Implemented="TRUE"
  Name="Q_EMERGENCYSTOP"
+ Guid="17c85668-14b2-4849-8fb1-e8f8dd7e1e77"
 >
 <ReqRef
  Id="5406573f-c517-44ae-8dcc-ce1344531dd1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1ef91586-9b6e-4f59-abe6-06c87e4b45e2"
 >
 </ReqRef><ReqRef
  Id="1e9dfb5f-39ec-40ab-b3d0-afdbc2a0294e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7353ca2-87f4-4b9b-967e-551022187a35"
 >
 </ReqRef><Comment>Qualifier for emergency stop acknowledgement
 Qualifier to inform the RBC about the use of emergency stop by on-board equipment.</Comment>
@@ -3540,18 +4181,22 @@ Qualifier to inform the RBC about the use of emergency stop by on-board equipmen
 <EnumValue
  Value="0"
  Name="Conditional_Emergency_Stop_accepted__with_update_of_EOA"
+ Guid="341295ef-5046-450e-87f2-8e3edf2331c5"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Conditional_Emergency_Stop_accepted__with_no_update_of_EOA"
+ Guid="f356b0f6-156b-47b1-b06d-9fabe36dcf08"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Unconditional_Emergency_Stop_accepted"
+ Guid="1962324d-f420-49de-9dbc-9ef25425aaf1"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Emergency_stop__Conditional_or_Unconditional__rejected__whatever_the_reason"
+ Guid="ce3689a0-28bb-430e-bee2-daa0ec15c8f6"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3561,14 +4206,17 @@ Qualifier to inform the RBC about the use of emergency stop by on-board equipmen
  Default="0"
  Implemented="TRUE"
  Name="Q_ENDTIMER"
+ Guid="7e088d63-d76a-4f2c-820c-32d42044a8c9"
 >
 <ReqRef
  Id="86b0e1e8-53c9-4a9f-9b60-1863f04939ec"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c9dd8819-0901-4e68-8b34-167c0dfa7e12"
 >
 </ReqRef><ReqRef
  Id="c3b1768e-9e76-41da-971c-25fa59fe4a57"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e19dc4b-5478-42ca-a54e-ea3c00c6ff24"
 >
 </ReqRef><Comment>Qualifier to indicate whether end section timer information exists for the End section in the MA
 </Comment>
@@ -3576,10 +4224,12 @@ Qualifier to inform the RBC about the use of emergency stop by on-board equipmen
 <EnumValue
  Value="0"
  Name="No_End_section_timer_information"
+ Guid="d584753a-f31b-4e78-8e50-0785909230e6"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="End_section_timer_information_to_follow"
+ Guid="be53aeb1-2022-4f71-b869-62804a6e8d3d"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3589,14 +4239,17 @@ Qualifier to inform the RBC about the use of emergency stop by on-board equipmen
  Default="0"
  Implemented="TRUE"
  Name="Q_FRONT"
+ Guid="bdbeb6b0-4ab2-40b9-9064-289777935d95"
 >
 <ReqRef
  Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0d26bc69-dfec-4088-9217-822392bc1c14"
 >
 </ReqRef><ReqRef
  Id="dba39ff7-bca3-40a3-9190-07ae4549bdf5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5e1a323d-c60a-4e79-9559-889477ef6966"
 >
 </ReqRef><Comment>Qualifier for validity end point of profile element
 Qualifier to indicate if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element.</Comment>
@@ -3604,10 +4257,12 @@ Qualifier to indicate if a speed limit given for a profile element is to be appl
 <EnumValue
  Value="0"
  Name="Train_length_delay_on_validity_end_point_of_profile_element"
+ Guid="adf5857d-e09c-4da7-90e7-0aa2cbc8f83c"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="No_train_length_delay_on_validity_end_point_of_profile_element"
+ Guid="acae983b-ceca-4886-a336-3ed8d3c6eedc"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3617,14 +4272,17 @@ Qualifier to indicate if a speed limit given for a profile element is to be appl
  Default="0"
  Implemented="TRUE"
  Name="Q_GDIR"
+ Guid="b0e7fe07-eff9-48a6-8c35-9bca8e405e1f"
 >
 <ReqRef
  Id="e9675d44-de8d-42cb-806e-6c5e0ac6a326"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee3ec527-ba1f-453d-abb2-ae725a31ee7c"
 >
 </ReqRef><ReqRef
  Id="ba435eb7-fdf4-412f-8414-c4ffb1f18993"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1a215ab7-9e98-4ec0-be29-c4a6adfd0976"
 >
 </ReqRef><Comment>Qualifier for gradient slope.
 </Comment>
@@ -3632,10 +4290,12 @@ Qualifier to indicate if a speed limit given for a profile element is to be appl
 <EnumValue
  Value="0"
  Name="downhill"
+ Guid="5cffe829-d783-4d4f-80bb-ed9f6c6bf057"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="uphill"
+ Guid="7c580076-4978-4e4a-931f-9f9e3ad1d276"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3645,14 +4305,17 @@ Qualifier to indicate if a speed limit given for a profile element is to be appl
  Default="0"
  Implemented="TRUE"
  Name="Q_INFILL"
+ Guid="d0f18b4f-eed9-4d46-8f54-ebe52d6a7825"
 >
 <ReqRef
  Id="b8e16026-b835-481d-9ad9-bad0f5f437a0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a3047c5d-8a93-4c80-a4e2-09af00adc370"
 >
 </ReqRef><ReqRef
  Id="709c883d-3e8c-4f81-b274-c992c1689624"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="52312ecd-2d1f-4c4b-833a-3b3fa67d37bc"
 >
 </ReqRef><Comment>Qualifier to indicate whether a train is entering or exiting the radio infill area.
 </Comment>
@@ -3660,10 +4323,12 @@ Qualifier to indicate if a speed limit given for a profile element is to be appl
 <EnumValue
  Value="0"
  Name="Enter"
+ Guid="b443da0d-97d6-495d-90f7-f24b647035cd"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Exit"
+ Guid="e222913a-8d33-4e27-bc7f-8454e0efa95a"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3673,14 +4338,17 @@ Qualifier to indicate if a speed limit given for a profile element is to be appl
  Default="0"
  Implemented="TRUE"
  Name="Q_LENGTH"
+ Guid="705fbc78-2f7c-4818-94aa-61b58bb57829"
 >
 <ReqRef
  Id="8d3a84fe-262b-4674-b398-294eba214a14"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="401081a5-93cd-46cb-9345-119728ee2749"
 >
 </ReqRef><ReqRef
  Id="9b46e3b8-2851-43fd-94b9-924e527d4603"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="428577b9-b5f0-4ee7-9dd0-13ccf1de852e"
 >
 </ReqRef><Comment>Qualifier for train integrity status
 Qualifier, identifying the train integrity information available. The related safe train length information is given by L_TRAININT</Comment>
@@ -3688,18 +4356,22 @@ Qualifier, identifying the train integrity information available. The related sa
 <EnumValue
  Value="0"
  Name="No_train_integrity_information_available"
+ Guid="6a2d13f8-9c08-4a70-bf2a-f5a6322dbff3"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Train_integrity_confirmed_by_integrity_monitoring_device"
+ Guid="4cd56cf8-bcfd-4445-aad8-c86b7c90473b"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Train_integrity_confirmed_by_driver"
+ Guid="88f5aabe-fa25-4de5-85e1-2b214484748d"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Train_integrity_lost"
+ Guid="dd5f4575-0063-4b55-ad35-c74f320f45e4"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3709,6 +4381,7 @@ Qualifier, identifying the train integrity information available. The related sa
  Default="0"
  Implemented="TRUE"
  Name="Q_LEVELINH"
+ Guid="a4233fd1-3306-47e4-acec-add76d4ce025"
 >
 <Comment>Qualifier for level inhibitions
 Qualifier to remove all inhibitions or identify that a list of level inhibitions follows</Comment>
@@ -3716,10 +4389,12 @@ Qualifier to remove all inhibitions or identify that a list of level inhibitions
 <EnumValue
  Value="0"
  Name="Packet_empty__remove_all_inhibitions"
+ Guid="ff5c5a9e-e309-4245-afc4-be4fd74cd128"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="TInhibited_levels_follow"
+ Guid="12500c35-5f60-41b6-9fa7-9d455d474c96"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3729,14 +4404,17 @@ Qualifier to remove all inhibitions or identify that a list of level inhibitions
  Default="0"
  Implemented="TRUE"
  Name="Q_LGTLOC"
+ Guid="5f5b721e-5830-4fb5-82fb-ad7bec84dea1"
 >
 <ReqRef
  Id="e5ec5ab9-bbf7-43ce-aee2-703517236f43"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="34bafe19-cc84-43ff-b79c-6a7a780f13fd"
 >
 </ReqRef><ReqRef
  Id="0d6b6822-0e2f-4bd0-b806-8a68da523bed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="56a060b6-3200-4038-a2a3-55d44d9f43f3"
 >
 </ReqRef><Comment>Qualifier for the specified report location
 This qualifier tells whether the train has to report its position when the max safe front end or when the min safe rear end has over passed the location defined by D_LOC</Comment>
@@ -3744,10 +4422,12 @@ This qualifier tells whether the train has to report its position when the max s
 <EnumValue
  Value="0"
  Name="Min_safe_rear_end"
+ Guid="58f4dd75-e88c-4209-9a20-2b177f0781ed"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Max_safe_front_end"
+ Guid="5f8fb851-4761-4508-b6a3-b2af65007e4c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3757,14 +4437,17 @@ This qualifier tells whether the train has to report its position when the max s
  Default="0"
  Implemented="TRUE"
  Name="Q_LINK"
+ Guid="c3486c1c-4a40-4d73-bd5b-f2abe6d2a89f"
 >
 <ReqRef
  Id="c40fed85-fc66-4b03-b83c-2fa46277542d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="91ea3174-2cad-45b0-b164-9ceff47124ad"
 >
 </ReqRef><ReqRef
  Id="d5a9199b-cc21-46c3-bed7-fe5a009b1a6e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c12afb85-c6d4-49b6-b592-74a9b84dfaaf"
 >
 </ReqRef><Comment>Link Qualifier
 This qualifier is used to mark a balise group as linked or unlinked.</Comment>
@@ -3772,10 +4455,12 @@ This qualifier is used to mark a balise group as linked or unlinked.</Comment>
 <EnumValue
  Value="0"
  Name="Unlinked"
+ Guid="8f5661c0-bdef-403c-bc74-df4a91ce576e"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Linked"
+ Guid="234bd3b0-2e90-494c-b1c5-9a25c2056c55"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3785,14 +4470,17 @@ This qualifier is used to mark a balise group as linked or unlinked.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_LINKORIENTATION"
+ Guid="03de1b48-5815-47ea-9c9d-9b7122f9eb54"
 >
 <ReqRef
  Id="b75cc4b2-b3d7-4464-8f3b-1fccaac3998c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3f7d539c-4ee2-41ce-851a-d03c70f141c9"
 >
 </ReqRef><ReqRef
  Id="4b89fc0e-809d-407a-b73b-3293f80a8e69"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1128b4e4-c6de-4ac1-8e67-fe2de06a6201"
 >
 </ReqRef><Comment>Qualifier for the direction of the linked balise group
 Indicates whether the linked balise group will be overpassed by the train in nominal or reverse direction.</Comment>
@@ -3800,10 +4488,12 @@ Indicates whether the linked balise group will be overpassed by the train in nom
 <EnumValue
  Value="0"
  Name="The_balise_group_is_seen_by_the_train_in_reverse_direction"
+ Guid="06835698-38e4-4346-ba9e-6d71774ff5f7"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="The_balise_group_is_seen_by_the_train_in_nominal_direction"
+ Guid="8d2dded2-d051-417b-8d13-25ba1061a04f"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3813,14 +4503,17 @@ Indicates whether the linked balise group will be overpassed by the train in nom
  Default="0"
  Implemented="TRUE"
  Name="Q_LINKREACTION"
+ Guid="51258d32-7c1c-4fb9-959e-b1b95ac3206a"
 >
 <ReqRef
  Id="8ad103dd-9ced-402f-840b-8bce421521ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1503676e-74fe-4e00-b518-29e25ce1fcf9"
 >
 </ReqRef><ReqRef
  Id="99bb38cb-b088-48da-b41f-bdcb900c0078"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="51b88892-db7a-46aa-9bdb-7bc58e4b0fa6"
 >
 </ReqRef><Comment>linking reaction
 Qualifier for the reaction to be performed if a linking or a balise group message consistency problem occurs with the balise group linked to.</Comment>
@@ -3828,18 +4521,22 @@ Qualifier for the reaction to be performed if a linking or a balise group messag
 <EnumValue
  Value="0"
  Name="Train_trip"
+ Guid="605417a1-9df9-4edd-b54c-b3d63da08e20"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Apply_service_brake"
+ Guid="09434968-f9c7-4ab5-99b1-d3396185c6ee"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="No_Reaction"
+ Guid="68abde59-e9b1-41f3-af78-a69ded1efbbd"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="0fc2016e-1827-4d05-9ccc-00635f9b73fe"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3849,10 +4546,12 @@ Qualifier for the reaction to be performed if a linking or a balise group messag
  Default="0"
  Implemented="TRUE"
  Name="Q_LOCACC"
+ Guid="47bca7ec-176e-4079-ab65-cacadff0bb7f"
 >
 <ReqRef
  Id="11fbe67b-af1e-4200-8ca5-a6f376d9824e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="878796e5-e84f-440e-8260-8192ff26e64d"
 >
 </ReqRef><Comment>Accuracy of the balise location
 This Qualifier defines the absolute value of the accuracy of the Balise location (i.e., the value 63m identifies a location accuracy of +/- 63m)</Comment>
@@ -3863,14 +4562,17 @@ This Qualifier defines the absolute value of the accuracy of the Balise location
  Default="0"
  Implemented="TRUE"
  Name="Q_LOOPDIR"
+ Guid="8b3b43ee-3cc9-4ba5-b360-ba3a7ad9d5b3"
 >
 <ReqRef
  Id="ebb2e879-aa99-468d-bee0-783c3ff4a9d8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f0e01016-7302-4c89-a157-9ac7f5a6557c"
 >
 </ReqRef><ReqRef
  Id="612b2736-9da9-4c55-b651-88cbcc2d95db"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4f5b1f2a-a72a-4925-9003-7d385fbda359"
 >
 </ReqRef><Comment>Qualifier to indicate the direction of the loop
 Indicates LOOP-reference direction in relation to EOLM direction</Comment>
@@ -3878,10 +4580,12 @@ Indicates LOOP-reference direction in relation to EOLM direction</Comment>
 <EnumValue
  Value="0"
  Name="Opposite"
+ Guid="977eddf4-539d-49d6-bb63-28b92384979e"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Same"
+ Guid="acdcdd90-aaa2-4329-8d80-682f00d1fe82"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3891,14 +4595,17 @@ Indicates LOOP-reference direction in relation to EOLM direction</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_LXSTATUS"
+ Guid="cfcb6790-f80a-49a5-b5d9-7202d3af1e63"
 >
 <ReqRef
  Id="829b0ec7-e41b-4dbb-ac6a-fd2079cd565c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dfe1bd42-64b5-4011-aa26-cb5427185f31"
 >
 </ReqRef><ReqRef
  Id="c47f275c-20ee-4e5f-a71d-4b873d78114b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8ebaeb03-2237-4249-a1b3-e9db9f3e517c"
 >
 </ReqRef><Comment>LX Protection Status
 Indicates whether the LX is protected or not</Comment>
@@ -3906,10 +4613,12 @@ Indicates whether the LX is protected or not</Comment>
 <EnumValue
  Value="0"
  Name="LX_is_protected"
+ Guid="f1e4b029-e969-4c96-a598-672cc8e473ad"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="LX_is_not_protected"
+ Guid="94ecae71-f8d2-43ec-866c-f7adb2b21a04"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3919,14 +4628,17 @@ Indicates whether the LX is protected or not</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_MAMODE"
+ Guid="5266c92b-c1d8-4258-9bfe-fe620cdfb910"
 >
 <ReqRef
  Id="1eede305-f64b-4f63-a204-1c83dcb1ed2f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="62054d93-9aec-462b-a5f8-5aad9e9a159c"
 >
 </ReqRef><ReqRef
  Id="73e818af-0a57-47df-95d0-d7d3207f55dc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="956bd362-9c40-46b5-a421-5177643c06fa"
 >
 </ReqRef><Comment>Qualifier to indicate the supervision of the beginning of the mode profile
 This qualifier defines whether the beginning of the mode profile shall be considered either as the EOA (keeping the SvL given by the MA) or as both the EOA and SvL (instead of the EOA and SvL given by the MA).</Comment>
@@ -3934,10 +4646,12 @@ This qualifier defines whether the beginning of the mode profile shall be consid
 <EnumValue
  Value="0"
  Name="as_the_EOA__keeping_the_SvL_given_by_the_MA"
+ Guid="250df144-db6c-4335-aaac-ea15508d15b1"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA"
+ Guid="015ae5de-39fd-437d-9c46-a26816a2939c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3947,14 +4661,17 @@ This qualifier defines whether the beginning of the mode profile shall be consid
  Default="0"
  Implemented="TRUE"
  Name="Q_MARQSTREASON"
+ Guid="362864ba-dc52-49b5-8432-c921c0ed28ad"
 >
 <ReqRef
  Id="ce63b2b4-4e7c-4e86-9688-aeae21ce4af9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="204c8bb7-9f30-4e89-8770-323ea1d302fd"
 >
 </ReqRef><ReqRef
  Id="d563b4fd-fbd5-4985-b766-e657f241d070"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7a905fb0-a7ac-417e-bd89-09b7c022c2c2"
 >
 </ReqRef><Comment>Reason for MA request sending
 Qualifier to indicate the reason why the MA request is sent to the RBC</Comment>
@@ -3962,22 +4679,27 @@ Qualifier to indicate the reason why the MA request is sent to the RBC</Comment>
 <EnumValue
  Value="1"
  Name="Start_selected_by_driver"
+ Guid="8f3deaca-8df1-4cdb-8c34-5917bae1bf52"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Time_before_reaching_pre_indication_location_for_the_EOA_LOA_reached"
+ Guid="cda9611a-e6fc-49fe-ac85-86940d7c88f9"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Time_before_a_section_timer_LOA_speed_timer_expires_reached"
+ Guid="2f71f7c4-1117-4288-b39b-4d0526e63c8e"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Track_description_deleted"
+ Guid="3b9c461e-1032-412d-8e13-10384e6a20c2"
 >
 </EnumValue><EnumValue
  Value="16"
  Name="TAF_up_to_level_2_3_transition_location"
+ Guid="a27956ac-2023-4923-b83a-07b3d25e6ea4"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3987,14 +4709,17 @@ Qualifier to indicate the reason why the MA request is sent to the RBC</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_MEDIA"
+ Guid="43d3798b-33e4-43d2-a1fe-f4dfd9b0e441"
 >
 <ReqRef
  Id="8aa44250-8181-401a-a7ff-0484d435bca7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="70f61a5a-0f78-4527-ad4d-476fcd4fe60c"
 >
 </ReqRef><ReqRef
  Id="7a9b920c-2d14-4ebb-81e9-be21400ab2d9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e20758c7-86ea-492d-953a-29cb6768aa7a"
 >
 </ReqRef><Comment>Qualifier to indicate the type of media
 Indicates whether it is a balise telegram or a loop message</Comment>
@@ -4002,10 +4727,12 @@ Indicates whether it is a balise telegram or a loop message</Comment>
 <EnumValue
  Value="0"
  Name="Balise"
+ Guid="5e7a03af-cdb1-4fa2-b24e-33e7444ee92e"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Loop"
+ Guid="c9090b67-a9df-4d32-b9ff-9057f706d56e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4015,14 +4742,17 @@ Indicates whether it is a balise telegram or a loop message</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_MPOSITION"
+ Guid="ac86966a-18ca-45be-b8df-c80672f07274"
 >
 <ReqRef
  Id="77703c80-fefa-4820-a54b-191604cf0b0f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="10fffc41-2114-4f61-8f4d-ca5ac0e19bb4"
 >
 </ReqRef><ReqRef
  Id="9365b764-cc23-4c5f-a3c0-ec331fae5ebd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="72ffec40-970d-46b1-8b75-f65ac8a682a6"
 >
 </ReqRef><Comment>Qualifier for track kilometre direction.
 Qualifier to indicate the direction of counting of the geographical position track kilometre in relation to the geographical position reference balise group directionality.</Comment>
@@ -4030,10 +4760,12 @@ Qualifier to indicate the direction of counting of the geographical position tra
 <EnumValue
  Value="0"
  Name="Opposite__counting_downwards_if_passed_in_nominal_direction_or_counting_upwards_if_passed_in_reverse_direction"
+ Guid="256a8d79-d2f3-4ad7-b0bf-da4e844e1e11"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Same__counting_upwards_if_passed_in_nominal_direction_or_counting_downwards_if_passed_in_reverse_direction"
+ Guid="8dbf953f-01d2-439b-b14d-765e37f8b119"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4043,14 +4775,17 @@ Qualifier to indicate the direction of counting of the geographical position tra
  Default="0"
  Implemented="TRUE"
  Name="Q_NEWCOUNTRY"
+ Guid="24688795-f21b-4870-ad28-34bc69093cdf"
 >
 <ReqRef
  Id="7ec45979-d2e8-4661-a8e1-09e937013367"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2206ddf4-b47b-49b5-b553-3b7b1607766a"
 >
 </ReqRef><ReqRef
  Id="52de94db-0bca-41ad-bb7a-5c29c737daee"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f044d11-59e1-4294-a370-62e224d7b94e"
 >
 </ReqRef><Comment>New Country Qualifier
 Qualifier to indicate whether the next balise group is in the same country / railway administration as the one before inside the packet or not. For the first balise group in the packet, if Q_NEWCOUNTRY = 0, it is the same country / railway administration as the one of the LRBG within the radio message, the one of balise group within the balise telegram giving the packet, or the one of the loop within the loop message giving the packet.</Comment>
@@ -4058,10 +4793,12 @@ Qualifier to indicate whether the next balise group is in the same country / rai
 <EnumValue
  Value="0"
  Name="Same_country___railway_administration__no_NID_C_follows"
+ Guid="69a35abd-c349-413e-8b5a-9d1b2698bbda"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Not_the_same_country___railway_administration__NID_C_follows"
+ Guid="bcd756e4-1886-4b04-a1ad-2da5ea661881"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4071,14 +4808,17 @@ Qualifier to indicate whether the next balise group is in the same country / rai
  Default="0"
  Implemented="TRUE"
  Name="Q_NVDRIVER_ADHES"
+ Guid="eef903ff-a61b-422d-9635-8f22515efdc2"
 >
 <ReqRef
  Id="a931d562-5efa-4a29-8d7a-1dd02becb4ce"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="009382d5-8275-49cd-bf2f-e597b6741d2a"
 >
 </ReqRef><ReqRef
  Id="2aacd12f-169f-42b1-b29c-c411bb9239ab"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0f9e64a4-f764-451a-9b75-b52e41792a0b"
 >
 </ReqRef><Comment>Qualifier for the modification of trackside adhesion factor by driver
 This variable is part of the National Values</Comment>
@@ -4086,10 +4826,12 @@ This variable is part of the National Values</Comment>
 <EnumValue
  Value="0"
  Name="Not_allowed"
+ Guid="84ec7f9c-40ec-427b-a2ef-7df8fe5b6fc7"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Allowed"
+ Guid="ea19fff5-a36d-4795-98d3-64c9f6f4e4b4"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4099,14 +4841,17 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_NVEMRRLS"
+ Guid="0480cef3-0fbc-4d60-9fa3-60609f1935ac"
 >
 <ReqRef
  Id="08dc72eb-ecb2-41b1-83d2-b41c73552c0e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a9c92c2-d181-473a-832b-d53806dea6e8"
 >
 </ReqRef><ReqRef
  Id="d24573b8-7e64-4ac6-bd55-37fe5747eacc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d7aee539-4cd0-4d6b-a080-b6414f6bcc7a"
 >
 </ReqRef><Comment>Qualifier Emergency Brake Release
 Permission to revoke the emergency brake command when the Permitted Speed limit is no longer exceeded or at standstill (for ceiling speed and target speed monitoring). This variable is part of the National Values</Comment>
@@ -4114,10 +4859,12 @@ Permission to revoke the emergency brake command when the Permitted Speed limit 
 <EnumValue
  Value="0"
  Name="Revoke_emergency_brake_command_at_standstill"
+ Guid="cb242112-d93e-4852-896e-cf5064ed684a"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded"
+ Guid="9bba1848-cec6-4d96-9f8e-0b5903b549b5"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4127,14 +4874,17 @@ Permission to revoke the emergency brake command when the Permitted Speed limit 
  Default="0"
  Implemented="TRUE"
  Name="Q_NVGUIPERM"
+ Guid="6f0e2bb7-5086-4adc-9e92-06c09a028066"
 >
 <ReqRef
  Id="56c38799-4919-4c9f-b8b3-7124f2eb4b68"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="703cd718-e487-44f7-894a-6b2281d820cf"
 >
 </ReqRef><ReqRef
  Id="2abcd758-9f83-4688-9102-895563dac77b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c7b98db-d121-4450-9d6a-cb2fc9fb58ad"
 >
 </ReqRef><Comment>Permission to use the guidance curve
 This variable is part of the National Values</Comment>
@@ -4142,10 +4892,12 @@ This variable is part of the National Values</Comment>
 <EnumValue
  Value="0"
  Name="No"
+ Guid="3e90cccf-7fed-4fb2-90da-59e759696015"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Yes"
+ Guid="d66e71dc-7aab-493a-81d7-9f802f5934f4"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4155,14 +4907,17 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_NVINHSMICPERM"
+ Guid="e6405b2f-d2da-447d-9c3b-d843ff0df5a2"
 >
 <ReqRef
  Id="d9b47b3d-166e-4da8-8d02-22873b75a4c0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa82e996-f70b-4bd5-b2c3-4111f15edc48"
 >
 </ReqRef><ReqRef
  Id="fca2cea5-e9bb-4966-9c8e-243b4f5d4b12"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="75dc1c66-ecff-430c-a880-6b6eb21dfd18"
 >
 </ReqRef><Comment>Permission to inhibit the compensation of the speed measurement inaccuracy
 Qualifier to inhibit the compensation of the speed measurement inaccuracy for the calculation of the EBI related supervision limits. This variable is part of the National Values</Comment>
@@ -4170,10 +4925,12 @@ Qualifier to inhibit the compensation of the speed measurement inaccuracy for th
 <EnumValue
  Value="0"
  Name="No"
+ Guid="e3567d00-19f9-4585-a3d3-c8566f208d4f"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Yes"
+ Guid="12705831-6de2-47bc-9157-ced0070cbbf9"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4183,14 +4940,17 @@ Qualifier to inhibit the compensation of the speed measurement inaccuracy for th
  Default="0"
  Implemented="TRUE"
  Name="Q_NVKINT"
+ Guid="b8f1e0de-05c5-41e4-989d-b2369ee28f19"
 >
 <ReqRef
  Id="2f4bc68e-67a9-4ca1-8983-ac2c1947cd88"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7e50dc4b-8367-40bb-a26c-9457e405c555"
 >
 </ReqRef><ReqRef
  Id="b8d814f8-ac42-4018-9b32-bfeee7f92ce4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="592681da-2da1-4945-a71b-0da0fe6351bf"
 >
 </ReqRef><Comment>Qualifier for integrated correction factors
 This variable is part of the National Values</Comment>
@@ -4198,10 +4958,12 @@ This variable is part of the National Values</Comment>
 <EnumValue
  Value="0"
  Name="No_integrated_correction_factors_follow"
+ Guid="9843ce26-c4d0-4291-a4d5-f2db131f084b"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Integrated_correction_factors_follow"
+ Guid="72fcfe68-c9fd-4fba-9919-12589ea56599"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4211,14 +4973,17 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_NVKVINTSET"
+ Guid="f420939c-5f93-49ae-b20f-52019b133aa6"
 >
 <ReqRef
  Id="40ddb39c-2b38-4dcd-9bc0-73ee1e8a2349"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af379e01-9d8b-439f-86fd-c5e9d663a270"
 >
 </ReqRef><ReqRef
  Id="c88969d8-7ec7-4fc6-92dd-f66ac9e964ff"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3a1b2009-9efb-4039-ac85-7f114e2bc64e"
 >
 </ReqRef><Comment>Type of Kv_int set
 </Comment>
@@ -4226,10 +4991,12 @@ This variable is part of the National Values</Comment>
 <EnumValue
  Value="0"
  Name="Freight_trains"
+ Guid="657e71e8-03e9-49df-a15a-1865117cf5ac"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Conventional_passenger_trains"
+ Guid="261469bb-1e13-4bb5-845e-7eaeef12e730"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4239,10 +5006,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_NVLOCACC"
+ Guid="7c056b80-7443-42f9-a920-0a5f71f5c3e3"
 >
 <ReqRef
  Id="daf0fbd3-894f-4c05-b6e4-836f21d1a7bb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="539d33dd-b6b3-4a08-a3b9-c75f16b938c0"
 >
 </ReqRef><Comment>Default accuracy of the balise location (absolute value)
 This variable is part of the National Values</Comment>
@@ -4253,14 +5022,17 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_NVSBFBPERM"
+ Guid="8177b18a-6aae-4887-b153-8a6c48e3d99e"
 >
 <ReqRef
  Id="71a36b95-cdea-42d1-a0ae-e280dd577887"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3f3b6ac3-3dd7-4f70-a914-cffa3a356de9"
 >
 </ReqRef><ReqRef
  Id="1a073198-bf9e-406d-9fdb-f7e011a6ab3e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6bb4eebc-7865-4d3c-9586-4b5235946d8c"
 >
 </ReqRef><Comment>Permission to use the service brake feedback
 This variable is part of the National Values</Comment>
@@ -4268,10 +5040,12 @@ This variable is part of the National Values</Comment>
 <EnumValue
  Value="0"
  Name="No"
+ Guid="6038f22a-c12e-4c01-894e-53130eae0f1c"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Yes"
+ Guid="b214f587-f510-412c-8e52-8f59914a1dbe"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4281,14 +5055,17 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_NVSBTSMPERM"
+ Guid="19210c17-3ec8-4354-9358-b08d2926ee61"
 >
 <ReqRef
  Id="d08d85e7-45e2-4342-84f8-a39335d02388"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="82480837-78a0-49a0-8740-53398514f216"
 >
 </ReqRef><ReqRef
  Id="1764dece-e6bb-4b48-af04-b45b223f2121"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2927df18-2049-4582-a73b-a90d2d56ccb4"
 >
 </ReqRef><Comment>Permission to use service brake in target speed monitoring
 This variable is part of the National Values</Comment>
@@ -4296,10 +5073,12 @@ This variable is part of the National Values</Comment>
 <EnumValue
  Value="0"
  Name="No"
+ Guid="8f173f05-daeb-4eb0-bbd6-18b01972e7e1"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Yes"
+ Guid="209ae794-4b00-44d3-9bc8-1400e98939be"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4309,14 +5088,17 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_ORIENTATION"
+ Guid="3a26a77f-5891-4dda-a3bb-a3938c53c62c"
 >
 <ReqRef
  Id="ff60d83e-dc19-4b2d-acfb-0fbfd30458f0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f0441fd1-abca-4089-bf38-e7383bfcf28f"
 >
 </ReqRef><ReqRef
  Id="fc74eb9a-74f5-4e62-a567-77837402373b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c85d179-43c3-4f91-907f-3d4845f726e5"
 >
 </ReqRef><Comment>Co-ordinate system assigned to a single balise group
 The co-ordinate system is assigned by the RBC to a balise group reported by the on-board equipment as LRBG. The information reverse/nominal (i.e., the assigned co-ordinate system) is given in relation to the direction in which the balise has been passed when reading it.</Comment>
@@ -4324,10 +5106,12 @@ The co-ordinate system is assigned by the RBC to a balise group reported by the 
 <EnumValue
  Value="0"
  Name="The_balise_group_has_been_passed_by_the_train_in_reverse_direction"
+ Guid="6625b3fb-6286-44fb-852a-32a715e7a53d"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="The_balise_group_has_been_passed_by_the_train_in_nominal_direction"
+ Guid="a6b45594-606f-4bac-9546-8c502c9d9ce9"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4337,14 +5121,17 @@ The co-ordinate system is assigned by the RBC to a balise group reported by the 
  Default="0"
  Implemented="TRUE"
  Name="Q_OVERLAP"
+ Guid="0349d4a7-98ef-4f9b-a5a7-f7c3b45139d6"
 >
 <ReqRef
  Id="b3845192-4c2b-4425-bdb0-c0a568c940ea"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ea8a6d2b-2ad9-4314-8e8c-6d915b18ad57"
 >
 </ReqRef><ReqRef
  Id="0db73e06-7cc7-43c5-81c3-2a72062ff7bf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2374aa72-a5c2-4dda-8202-bc96f547ee6a"
 >
 </ReqRef><Comment>Qualifier to tell whether there is an overlap
 This variable is set to 1 if either an overlap exists or a release speed has to be specified</Comment>
@@ -4352,10 +5139,12 @@ This variable is set to 1 if either an overlap exists or a release speed has to 
 <EnumValue
  Value="0"
  Name="No_overlap_information"
+ Guid="d23d366f-021c-444b-8ad4-3f7be96cf60e"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Overlap_information_to_follow"
+ Guid="5c26ce8b-3022-4add-ad9a-db2d86eed04a"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4365,14 +5154,17 @@ This variable is set to 1 if either an overlap exists or a release speed has to 
  Default="0"
  Implemented="TRUE"
  Name="Q_PBDSR"
+ Guid="fad0e635-1e98-4a5a-963a-9ba550c120c7"
 >
 <ReqRef
  Id="29875feb-36aa-465e-bbe9-34bae47c5b43"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="38bd0dea-168f-4c39-a2d9-8407eff4279e"
 >
 </ReqRef><ReqRef
  Id="64b6278f-3586-4cf8-87a6-754be4d4c1b1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f2e62249-2d0f-4a23-993d-efcf04d33864"
 >
 </ReqRef><Comment>Qualifier for Permitted Braking Distance
 Qualifier defining whether the permitted braking distance is to be achieved with the Service Brake or Emergency Brake</Comment>
@@ -4380,10 +5172,12 @@ Qualifier defining whether the permitted braking distance is to be achieved with
 <EnumValue
  Value="0"
  Name="EB_intervention_requested"
+ Guid="076f3acd-09e3-48d0-be85-ea37942088a3"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="SB_intervention_requested"
+ Guid="836698bc-54e7-4d93-bfcd-2af9e8143395"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4393,14 +5187,17 @@ Qualifier defining whether the permitted braking distance is to be achieved with
  Default="0"
  Implemented="TRUE"
  Name="Q_PLATFORM"
+ Guid="7d5005b6-04d6-4ec2-a87f-fca1e821d88e"
 >
 <ReqRef
  Id="c8a2dcf3-6c49-482e-9025-e8c542c2ffa2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55d6c83e-75ba-4ff8-9886-2df32a7fa965"
 >
 </ReqRef><ReqRef
  Id="3323ab6a-d084-4dc4-abd3-f44a5f9a1f3d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b84c412b-7fdb-4ffe-818c-1c2780919972"
 >
 </ReqRef><Comment>Platform position (relative to direction of authorised movement)
 </Comment>
@@ -4408,18 +5205,22 @@ Qualifier defining whether the permitted braking distance is to be achieved with
 <EnumValue
  Value="0"
  Name="Platform_on_left_side"
+ Guid="bbcab3e7-342b-45fb-a9ac-8cdcf0ae688d"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Platform_on_right_side"
+ Guid="a61c4672-dd8a-4237-beb9-75784e511758"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Platform_on_both_sides"
+ Guid="8a689bb8-3e06-4c58-a738-df1c6df83271"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="07582f02-a9bf-4bc9-b537-c7604f54b043"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4429,14 +5230,17 @@ Qualifier defining whether the permitted braking distance is to be achieved with
  Default="0"
  Implemented="TRUE"
  Name="Q_RBC"
+ Guid="0de8ffb3-620e-458b-8a2a-90bcc1741370"
 >
 <ReqRef
  Id="794015cd-d812-4e29-993d-34bd06b6df3e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="29a6f298-4bb1-4890-a1bf-ebe88a3b83a2"
 >
 </ReqRef><ReqRef
  Id="7e786f7c-24ee-4207-ae19-f7d512a669ad"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0cf226e6-0069-4f1b-b41e-3c01855fff1d"
 >
 </ReqRef><Comment>Qualifier for communication session order
 </Comment>
@@ -4444,10 +5248,12 @@ Qualifier defining whether the permitted braking distance is to be achieved with
 <EnumValue
  Value="0"
  Name="Terminate_communication_session"
+ Guid="b6b6d214-59eb-41b6-9cc7-85f115673364"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Establish_communication_session"
+ Guid="2f333362-93c7-4f3a-a28a-c0244d65a0cf"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4457,14 +5263,17 @@ Qualifier defining whether the permitted braking distance is to be achieved with
  Default="0"
  Implemented="TRUE"
  Name="Q_RIU"
+ Guid="775cebb5-52bf-46ab-9d0d-28284c0f096d"
 >
 <ReqRef
  Id="7695ae2a-7c2a-47ab-8c8a-b5c5f417c219"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b117776c-99ab-4ea6-b08b-361bf0d18298"
 >
 </ReqRef><ReqRef
  Id="4e0b022a-bfcc-4b11-8474-40bb9192c0b0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af5e20ff-3ac7-4ae8-a9ee-25c78f3c6b91"
 >
 </ReqRef><Comment>Qualifier for communication session order
 </Comment>
@@ -4472,10 +5281,12 @@ Qualifier defining whether the permitted braking distance is to be achieved with
 <EnumValue
  Value="0"
  Name="Terminate_communication_session"
+ Guid="d85b27ee-6eb3-4965-a792-776a0b10c895"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Establish_communication_session"
+ Guid="b81ede32-c648-473c-905a-7c8e019ad37c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4485,14 +5296,17 @@ Qualifier defining whether the permitted braking distance is to be achieved with
  Default="0"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="7ab27020-d040-49da-9f2c-66f4e2df1bf5"
 >
 <ReqRef
  Id="e2936e54-2130-4bc1-a264-7a69f0cfd51b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7e85d97-42a2-4a29-bd1a-596f7ab94a0f"
 >
 </ReqRef><ReqRef
  Id="6a3631d1-c4d5-436b-9bcd-687e386d294c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="66a21258-69db-4f16-8c12-2a80331ef3e1"
 >
 </ReqRef><Comment>Qualifier for the distance scale.
 Qualifier to indicate the same scale used for describing all distances inside the packet that contains Q_SCALE.</Comment>
@@ -4500,18 +5314,22 @@ Qualifier to indicate the same scale used for describing all distances inside th
 <EnumValue
  Value="0"
  Name="_10_cm_scaleC"
+ Guid="16ff9892-e599-49c9-b14d-a49d7485424b"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="_1_m_scaleC"
+ Guid="2fa3ed66-398e-4761-9873-e378b8c60ea8"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="_10_m_scaleC"
+ Guid="f6b52649-3f6d-41d6-a98c-15c58ce0b8f6"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="d9a57154-364f-4502-9e24-ed47997e0c27"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4521,14 +5339,17 @@ Qualifier to indicate the same scale used for describing all distances inside th
  Default="0"
  Implemented="TRUE"
  Name="Q_SECTIONTIMER"
+ Guid="137e4117-b5f2-4de9-8123-cc0e2229404b"
 >
 <ReqRef
  Id="3ea65cb2-f46e-4d0e-885e-8ae8c75b4a06"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="644d5dd0-460a-4285-952d-3d775ee4a92e"
 >
 </ReqRef><ReqRef
  Id="c91eadf4-ffc4-48b4-9ace-942eede747d9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b14a880e-cb32-44f1-b31c-9909d3769f93"
 >
 </ReqRef><Comment>Qualifier to indicate whether there is a Section Time Out related to the section
 </Comment>
@@ -4536,10 +5357,12 @@ Qualifier to indicate the same scale used for describing all distances inside th
 <EnumValue
  Value="0"
  Name="No_Section_Timer_information"
+ Guid="e1cf1a17-de7a-4a6e-bf0c-6a3bf681b1f0"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Section_Timer_information_to_follow"
+ Guid="c45b4623-d753-409a-8120-437bdd4e38d9"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4549,14 +5372,17 @@ Qualifier to indicate the same scale used for describing all distances inside th
  Default="0"
  Implemented="TRUE"
  Name="Q_SLEEPSESSION"
+ Guid="17a59c95-023d-4f36-bac8-5c6ee5d46aea"
 >
 <ReqRef
  Id="83ef17f0-5bea-435b-bc83-59be244ae065"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4947b81-75c2-406c-ac9d-6a51c5e2d0d3"
 >
 </ReqRef><ReqRef
  Id="635f54ae-4254-498f-aeda-9c069e34a534"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="12dc6408-8da3-4a0f-9ad3-062e1fd59861"
 >
 </ReqRef><Comment>Session management for sleeping equipment
 Qualifier for a Sleeping onboard equipment to execute or not the “session establishment” order</Comment>
@@ -4564,10 +5390,12 @@ Qualifier for a Sleeping onboard equipment to execute or not the “session esta
 <EnumValue
  Value="0"
  Name="Ignore_session_establishment_order"
+ Guid="25103544-4e30-4c76-b577-c0169f0c5c4c"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Execute_session_establishment_order"
+ Guid="f9fcd0f6-65bd-4ce9-b2e7-9a9945371b41"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4577,14 +5405,17 @@ Qualifier for a Sleeping onboard equipment to execute or not the “session esta
  Default="0"
  Implemented="TRUE"
  Name="Q_SRSTOP"
+ Guid="a296a555-13d7-4b4f-a0a7-a82100ae06e1"
 >
 <ReqRef
  Id="6021142e-29b5-4c7f-b88b-43fab801f08d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a64c1cd3-b767-41b3-b5a2-e239e6fa03f1"
 >
 </ReqRef><ReqRef
  Id="318f80a9-3197-46c0-800f-cb8b08547c0b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2222018d-a74a-47e3-bb7e-e37447ed17db"
 >
 </ReqRef><Comment>&quot;Stop if in Staff Responsible&quot; information
 Specifies whether an onboard equipment in staff responsible has to stop or not</Comment>
@@ -4592,10 +5423,12 @@ Specifies whether an onboard equipment in staff responsible has to stop or not</
 <EnumValue
  Value="0"
  Name="Stop_if_in_SR_mode"
+ Guid="ac976d81-9559-449b-ab09-efea8e24c282"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Go_if_in_SR_mode"
+ Guid="cd22027e-f8f8-4189-be8c-93af3c288ec4"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4605,14 +5438,17 @@ Specifies whether an onboard equipment in staff responsible has to stop or not</
  Default="0"
  Implemented="TRUE"
  Name="Q_SSCODE"
+ Guid="5cc755b7-c69e-47d1-acc5-30c0fe7219da"
 >
 <ReqRef
  Id="eaf530c7-a387-4b25-ba2b-e1393392d633"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e3a15490-dcd9-48d7-a8d7-39b3ea49aeb4"
 >
 </ReqRef><ReqRef
  Id="2da7823a-b858-4004-bb5a-05cda550538c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd6b1d4e-c6ec-4362-ad8c-600307594bb3"
 >
 </ReqRef><Comment>Spread Spectrum Code for Euroloop
 Specifies the code required to receive telegrams from a specific Euroloop installation.</Comment>
@@ -4620,6 +5456,7 @@ Specifies the code required to receive telegrams from a specific Euroloop instal
 <EnumValue
  Value="15"
  Name="Code_reserved_for_test_purposes"
+ Guid="9fabe23f-f70c-4846-934f-d4ae57f5a878"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4629,14 +5466,17 @@ Specifies the code required to receive telegrams from a specific Euroloop instal
  Default="0"
  Implemented="TRUE"
  Name="Q_STATUS"
+ Guid="9695c529-e6c5-4f7f-9a39-52e13d8205d1"
 >
 <ReqRef
  Id="de506732-8e45-4f39-add2-7011c076a134"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55f80626-15e0-424d-93f5-14b059b64c63"
 >
 </ReqRef><ReqRef
  Id="0a67c6b4-4709-4760-9a1e-eb63b3a806e1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6178fe0a-0bc2-4b07-ad88-f7638462605d"
 >
 </ReqRef><Comment>status of SoM position report
 It provides the status of the position report</Comment>
@@ -4644,18 +5484,22 @@ It provides the status of the position report</Comment>
 <EnumValue
  Value="0"
  Name="Invalid"
+ Guid="0b25937c-37a5-4aea-affa-d31b3ab6a2fe"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Valid"
+ Guid="982d0398-c909-41bb-ba0b-365fce71558e"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Unknown"
+ Guid="14874a06-0ec2-45b1-be26-6dcbfeb6d62a"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="spare"
+ Guid="c82f1582-1580-42da-bd77-21229f6a6543"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4665,14 +5509,17 @@ It provides the status of the position report</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_STOPLX"
+ Guid="a0a0491a-f111-45fb-b018-0802bb83256e"
 >
 <ReqRef
  Id="fbae4639-91c7-4474-bfc1-2e930f72239f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="618d492b-846c-423e-9359-95aeb84704d8"
 >
 </ReqRef><ReqRef
  Id="893b642f-2b0c-423d-821e-ddc2a796e11c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="445befaa-e4d3-44d0-9871-dfabf077316c"
 >
 </ReqRef><Comment>Qualifier for stopping in rear of the LX
 Indicates whether stopping the train in rear of a non protected LX is required</Comment>
@@ -4680,10 +5527,12 @@ Indicates whether stopping the train in rear of a non protected LX is required</
 <EnumValue
  Value="0"
  Name="No_stop_required"
+ Guid="af764798-366e-48ef-afa5-c56c174a3aef"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Stop_required"
+ Guid="ef73a355-5784-454c-84b8-29726508e4f8"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4693,14 +5542,17 @@ Indicates whether stopping the train in rear of a non protected LX is required</
  Default="0"
  Implemented="TRUE"
  Name="Q_SUITABILITY"
+ Guid="2810d966-e093-4c48-941f-fd7c8bec1f16"
 >
 <ReqRef
  Id="cbe72d69-19e0-428f-99dc-6595e037250d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="941183de-5388-45be-b2b9-c279e3bc5933"
 >
 </ReqRef><ReqRef
  Id="23d78723-324a-433e-ad17-373c8bfa875e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="991059a6-6118-436a-a7b5-bc92b472a453"
 >
 </ReqRef><Comment>Type of route suitability data
 </Comment>
@@ -4708,18 +5560,22 @@ Indicates whether stopping the train in rear of a non protected LX is required</
 <EnumValue
  Value="0"
  Name="Loading_gauge_profile"
+ Guid="bb7f1502-c9ef-4c8a-b7fa-31807a678dff"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Max_axle_load"
+ Guid="13a880cd-e731-4e33-8fbb-7997ae909d9e"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Traction_system"
+ Guid="98db51df-a19b-46ad-927e-6c91eea37590"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="d722eaf5-6b9d-4448-a0f7-7fbb3ef24111"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4729,14 +5585,17 @@ Indicates whether stopping the train in rear of a non protected LX is required</
  Default="0"
  Implemented="TRUE"
  Name="Q_TEXT"
+ Guid="8c5a69ae-6aee-4a01-9199-17ab39b366a7"
 >
 <ReqRef
  Id="2a5dd62b-f334-4654-aa1f-24768ebd26f6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c675282b-5fae-472c-b001-281fc88e5ea6"
 >
 </ReqRef><ReqRef
  Id="03709a74-6470-4f26-a417-78dc30b54d4b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9e258edd-7464-4889-9faa-e64f68a69572"
 >
 </ReqRef><Comment>Fixed message to be displayed.
 Q_TEXT is a pointer to select a fixed text message from the defined table. The language selected by the driver for the DMI shall be used additionally as a qualifier to choose the appropriate language table. </Comment>
@@ -4744,10 +5603,12 @@ Q_TEXT is a pointer to select a fixed text message from the defined table. The l
 <EnumValue
  Value="0"
  Name="__Level_crossing_not_protected_C"
+ Guid="0fa215f9-3970-4907-bccc-1c773f923a18"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="__Acknowledgement_C"
+ Guid="ad4a56b1-fe69-4326-bf53-a762c12a5418"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4757,14 +5618,17 @@ Q_TEXT is a pointer to select a fixed text message from the defined table. The l
  Default="0"
  Implemented="TRUE"
  Name="Q_TEXTCLASS"
+ Guid="0239049e-dfcb-4242-96f1-8fc05d0c52b1"
 >
 <ReqRef
  Id="9ce3aa6a-cb5f-4afa-a70e-e97007b49e44"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a49ecaeb-a585-4752-8308-fe409ed8f025"
 >
 </ReqRef><ReqRef
  Id="e4e4df9c-072b-4144-8769-2cacee50facf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5f3e4053-80dc-4853-8e33-39919ba9eafa"
 >
 </ReqRef><Comment>Class of message to be displayed.
 Q_TEXTCLASS specifies the class of the text message included in the same packet (either plain or fixed message)</Comment>
@@ -4772,18 +5636,22 @@ Q_TEXTCLASS specifies the class of the text message included in the same packet 
 <EnumValue
  Value="0"
  Name="Auxiliary_Information"
+ Guid="41786609-7171-4b86-9cd6-44a227a88f6d"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Important_Information"
+ Guid="9e3b9b66-d167-4aa8-9ba2-afd7fd1b40d9"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Spare"
+ Guid="afc2f9d1-b5be-4d57-afcd-3968aa7db03a"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="1d00ad37-da3e-4c3b-a9b4-13a49577bfa6"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4793,14 +5661,17 @@ Q_TEXTCLASS specifies the class of the text message included in the same packet 
  Default="0"
  Implemented="TRUE"
  Name="Q_TEXTCONFIRM"
+ Guid="41dd1c19-c845-46ae-aedf-503a00cf447c"
 >
 <ReqRef
  Id="015777b0-e9ec-47e3-9bb3-f72cc75ba742"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fefa6d98-d2f2-46e8-9665-ace5314fd4c0"
 >
 </ReqRef><ReqRef
  Id="e75bf9f9-591b-4944-a274-c41e19ed8e88"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05d5eeb7-8b4a-4fd2-bcb2-86d7efc5ca0d"
 >
 </ReqRef><Comment>Qualifier for text confirmation
 </Comment>
@@ -4808,18 +5679,22 @@ Q_TEXTCLASS specifies the class of the text message included in the same packet 
 <EnumValue
  Value="0"
  Name="No_confirmation_required"
+ Guid="2ee9ea73-6855-45ce-b993-6f999feef61a"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Confirmation_required"
+ Guid="9d26892c-1dd3-4ff3-86d9-295c1b224974"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Confirmation_required__command_application_of_the_service_brake_when_display_end_condition_is_fulfilled__unless_the_text_has_already_been_acknowledged_by_the_driver"
+ Guid="fdd15169-de72-4d99-94f1-3e4045a324dd"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Confirmation_required__command_application_of_the_emergency_brake_when_display_end_condition_is_fulfilled__unless_the_text_has_already_been_acknowledged_by_the_driver"
+ Guid="87383c09-b514-40c8-af67-ede72f7c2242"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4829,24 +5704,29 @@ Q_TEXTCLASS specifies the class of the text message included in the same packet 
  Default="0"
  Implemented="TRUE"
  Name="Q_TEXTREPORT"
+ Guid="3458a45a-c8d7-4584-9286-5df40df74c3d"
 >
 <ReqRef
  Id="61f2c6f2-b3b6-4cc3-ae9e-ae04034ffb38"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e0cb3f99-5480-44ae-93af-950ced1466ad"
 >
 </ReqRef><ReqRef
  Id="0749c751-c9ed-442d-8f00-c52bff9fc663"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d3024209-1e10-40d0-8599-631516cde8c1"
 >
 </ReqRef><Comment>Qualifier for reporting acknowledgment of text by driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="No_driver_acknowledgment_report_required"
+ Guid="dac85da3-e9c3-46cc-ad6a-fe41daa96462"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Driver_acknowledgment_report_required"
+ Guid="483cd76e-9bbd-485b-b44c-804cd53940c1"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4856,14 +5736,17 @@ Q_TEXTCLASS specifies the class of the text message included in the same packet 
  Default="0"
  Implemented="TRUE"
  Name="Q_TEXTDISPLAY"
+ Guid="50d7b35a-835e-4dbd-9ef6-84d180e01f9e"
 >
 <ReqRef
  Id="2a70f5e2-5c00-4c08-a8aa-43bdcfca9366"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e160a28a-758e-4732-8af7-b88e47088a20"
 >
 </ReqRef><ReqRef
  Id="a49534dd-343b-4636-a25f-d5fd71a33d0e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="513018c0-9cef-47f9-8bde-b054f0ad86fa"
 >
 </ReqRef><Comment>Qualifier for the combination of text message events
 Q_TEXTDISPLAY defines whether the start/end events for text message are to be combined or not </Comment>
@@ -4871,10 +5754,12 @@ Q_TEXTDISPLAY defines whether the start/end events for text message are to be co
 <EnumValue
  Value="0"
  Name="No__display_as_soon_as___until_one_of_the_events_is_fulfilled"
+ Guid="3537c518-b0f0-4f40-b50a-307e3ae6c74f"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Yes__display_as_soon_as___until_all_events_are_fulfilled"
+ Guid="29e23658-74e7-4a55-b9e1-c87602ecc87f"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4884,14 +5769,17 @@ Q_TEXTDISPLAY defines whether the start/end events for text message are to be co
  Default="0"
  Implemented="TRUE"
  Name="Q_TRACKINIT"
+ Guid="5b044eb8-d8de-41ab-a93f-dca5694a5e1a"
 >
 <ReqRef
  Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47a04b80-7d50-4192-8bcb-4f2d660d8030"
 >
 </ReqRef><ReqRef
  Id="ba214ce7-bb0e-44f8-8d6e-53f306154a61"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ad27fba4-cfd0-4ee4-b0e7-80c91b338665"
 >
 </ReqRef><Comment>Qualifier for resuming the initial states of the related track description of the packet.
 </Comment>
@@ -4899,10 +5787,12 @@ Q_TEXTDISPLAY defines whether the start/end events for text message are to be co
 <EnumValue
  Value="0"
  Name="No_initial_states_to_be_resumed__profile_to_follow"
+ Guid="d36a9106-aa90-4ffd-b395-2f9a40c1cc3c"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Empty_profile__initial_states_to_be_resumed"
+ Guid="7bf4094d-a515-41a0-afda-f5307e469ce0"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4912,14 +5802,17 @@ Q_TEXTDISPLAY defines whether the start/end events for text message are to be co
  Default="0"
  Implemented="TRUE"
  Name="Q_UPDOWN"
+ Guid="2d662a1d-a49a-4318-b614-3ac21567fb81"
 >
 <ReqRef
  Id="60cca817-0743-41eb-b8e3-016a8064231a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="22f50d01-03b1-4031-b679-788c29327747"
 >
 </ReqRef><ReqRef
  Id="fa921386-24a6-4a65-b1ff-df9189e8417b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c02475d6-8974-4b3b-85dd-14513dcc34d9"
 >
 </ReqRef><Comment>Balise telegram transmission direction
 It defines the direction of the information in the balise telegram</Comment>
@@ -4927,10 +5820,12 @@ It defines the direction of the information in the balise telegram</Comment>
 <EnumValue
  Value="0"
  Name="Down_link_telegram"
+ Guid="9de33ce7-1eb1-4843-a8fd-ca58c8c0c82b"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Up_link_telegram"
+ Guid="317943cb-0362-4348-9cb7-aa4485198e63"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4940,14 +5835,17 @@ It defines the direction of the information in the balise telegram</Comment>
  Default="0"
  Implemented="TRUE"
  Name="Q_VBCO"
+ Guid="4e6191ba-bf3b-4983-8c9b-f35f69a112e1"
 >
 <ReqRef
  Id="5e76c0e2-5ba4-402d-a344-d885cf3ce9f8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cf1f0304-16f3-4904-8218-fd6ed3f78ae6"
 >
 </ReqRef><ReqRef
  Id="f0abf324-924d-4555-bb01-5b5e4326bc40"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="edfb75be-0c52-4cb1-8588-ac5fd7f28df1"
 >
 </ReqRef><Comment>Qualifier for virtual balise cover
 Qualifier to set or remove VBC</Comment>
@@ -4955,10 +5853,12 @@ Qualifier to set or remove VBC</Comment>
 <EnumValue
  Value="0"
  Name="Remove_the_Virtual_Balise_cover"
+ Guid="94e5c30d-72c9-4841-98aa-4cb163f1e212"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Set_the_Virtual_Balise_cover"
+ Guid="7e5ab105-9f94-43c8-8c16-d5158d038a34"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4968,10 +5868,12 @@ Qualifier to set or remove VBC</Comment>
  Default="0"
  Implemented="TRUE"
  Name="T_CYCLOC"
+ Guid="a82d050c-2078-4948-a054-68d40c85ee6d"
 >
 <ReqRef
  Id="158a4560-10f9-449d-a58b-02c43291845a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f134208c-9f3e-438e-a5f6-dea9d3415605"
 >
 </ReqRef><Comment>Time Interval between two position reports sent by the train
 The train must send its position every T_CYCLOC</Comment>
@@ -4979,6 +5881,7 @@ The train must send its position every T_CYCLOC</Comment>
 <EnumValue
  Value="255"
  Name="infinite"
+ Guid="097b0d95-3868-4cc5-af34-1f8b57bfe88d"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4988,10 +5891,12 @@ The train must send its position every T_CYCLOC</Comment>
  Default="0"
  Implemented="TRUE"
  Name="T_CYCRQST"
+ Guid="a707fba9-2b1b-4f8f-beea-806e4b4c5200"
 >
 <ReqRef
  Id="ecd0acf3-52c6-488c-a1d4-ed1e35869e6f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af99a781-5a53-4706-b632-2ee69100394f"
 >
 </ReqRef><Comment>Time between two cyclic requests for a movement authority
 When the train asks for a movement authority request, it will repeat its request every T_CYCRQST seconds until it receives a new MA</Comment>
@@ -4999,6 +5904,7 @@ When the train asks for a movement authority request, it will repeat its request
 <EnumValue
  Value="255"
  Name="No_repetition"
+ Guid="e92fbce0-ebe4-41da-98de-9d1b70b0da45"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5008,10 +5914,12 @@ When the train asks for a movement authority request, it will repeat its request
  Default="0"
  Implemented="TRUE"
  Name="T_ENDTIMER"
+ Guid="ee99674a-a9ff-42e1-8ab0-079edf57ea5d"
 >
 <ReqRef
  Id="9e5ace3a-6786-4a54-925a-cf334ff92a80"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c8b8a69c-d3a1-4cb6-91fb-43044c2235ac"
 >
 </ReqRef><Comment>Validity time for the End section in the MA
 Time for which the End section is valid measured from the moment the train reaches the location defined by D_ENDTIMERSTARTLOC.</Comment>
@@ -5019,6 +5927,7 @@ Time for which the End section is valid measured from the moment the train reach
 <EnumValue
  Value="1023"
  Name="infinite"
+ Guid="b517b3fd-aa5d-4f75-a004-841120c7fbb7"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5028,10 +5937,12 @@ Time for which the End section is valid measured from the moment the train reach
  Default="0"
  Implemented="TRUE"
  Name="T_LOA"
+ Guid="c0a8c4f6-8aaf-44eb-9808-f7500fd98939"
 >
 <ReqRef
  Id="a774525d-0597-4d00-a2f5-3148dcf359bd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="84a9701c-e9b9-4150-b431-facf6f82afb6"
 >
 </ReqRef><Comment>Validity time for the target speedat the LOA
 Time for which the target speed is valid measured from the moment information is received</Comment>
@@ -5039,6 +5950,7 @@ Time for which the target speed is valid measured from the moment information is
 <EnumValue
  Value="1023"
  Name="infinite"
+ Guid="79576b93-ee69-4197-8bfd-8a630e9f69b8"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5048,10 +5960,12 @@ Time for which the target speed is valid measured from the moment information is
  Default="0"
  Implemented="TRUE"
  Name="T_MAR"
+ Guid="00be8198-6c9e-489e-adf4-64902da09b85"
 >
 <ReqRef
  Id="05cf6799-8b56-48cb-9adc-a464323c5a84"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7bd5acbb-bc8d-49b6-bb56-203e2d8821d8"
 >
 </ReqRef><Comment>Time before reaching pre-indication location for the EOA/LOA
 </Comment>
@@ -5059,6 +5973,7 @@ Time for which the target speed is valid measured from the moment information is
 <EnumValue
  Value="255"
  Name="__No_MA_request_triggering_with_regards_to_this_functionC"
+ Guid="fc06019c-af46-4aa6-8593-c96e0cd189ff"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5068,10 +5983,12 @@ Time for which the target speed is valid measured from the moment information is
  Default="0"
  Implemented="TRUE"
  Name="T_NVCONTACT"
+ Guid="731cb86e-5b17-4c3c-aaa3-6b102e72d268"
 >
 <ReqRef
  Id="fc1e9309-39da-4f10-9e92-f8cd8cc291c4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af863b03-dd94-4bb9-8d02-204ebf1664ef"
 >
 </ReqRef><Comment>Maximal time without new &quot;safe&quot; message.
 If no &quot;safe&quot; message has been received from the track for more than T_NVCONTACT seconds, an appropriate action according to M_NVCONTACT must be triggered. This variable is part of the National Values</Comment>
@@ -5079,6 +5996,7 @@ If no &quot;safe&quot; message has been received from the track for more than T_
 <EnumValue
  Value="255"
  Name="infinite"
+ Guid="685b0dd9-1001-48a6-a1db-5ace57a050cc"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5088,10 +6006,12 @@ If no &quot;safe&quot; message has been received from the track for more than T_
  Default="0"
  Implemented="TRUE"
  Name="T_NVOVTRP"
+ Guid="fa864409-921a-4ec2-95b0-f71e5e98d423"
 >
 <ReqRef
  Id="c8dfa8cf-6c66-477a-8bfe-19933933952a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3dda8c7e-e59f-4f22-953d-4b71c7f5de4a"
 >
 </ReqRef><Comment>Maximum time for overriding the train trip
 This variable is part of the National Values</Comment>
@@ -5102,10 +6022,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="T_OL"
+ Guid="f64be5d4-2fac-4054-bbd8-a2164e17ec82"
 >
 <ReqRef
  Id="1a00d073-a908-4fc4-9ec3-4652a955b351"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="572fc6c6-2d55-4bd4-9271-08c0af6320a0"
 >
 </ReqRef><Comment>Overlap validity time
 The time span the train can expect the overlap to be available, measured from the moment the train reaches the location defined by D_STARTOL.</Comment>
@@ -5113,6 +6035,7 @@ The time span the train can expect the overlap to be available, measured from th
 <EnumValue
  Value="1023"
  Name="infinite"
+ Guid="1e008042-9658-4df2-9eb3-4ad6056a1100"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5122,10 +6045,12 @@ The time span the train can expect the overlap to be available, measured from th
  Default="0"
  Implemented="TRUE"
  Name="T_SECTIONTIMER"
+ Guid="1743d123-1b64-4392-a921-4c245f27132a"
 >
 <ReqRef
  Id="7482e58a-6251-4406-8216-75bed0eec39a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="54b8fc3d-b4b5-45d0-8420-da102f1aafb2"
 >
 </ReqRef><Comment>Validity time of a section in the MA
 Time for which the section is valid.</Comment>
@@ -5133,6 +6058,7 @@ Time for which the section is valid.</Comment>
 <EnumValue
  Value="1023"
  Name="infinite"
+ Guid="8cd4ecb7-f667-4abb-ae56-14d33a244289"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5142,10 +6068,12 @@ Time for which the section is valid.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="T_TEXTDISPLAY"
+ Guid="274fce1e-2f32-4b3f-b50d-daf542e68d74"
 >
 <ReqRef
  Id="30f4558c-7729-4ea5-b816-e0ded766d3d9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="889cb9c3-1005-41b8-bc88-6815b5ee8c16"
 >
 </ReqRef><Comment>Duration for which a text shall be displayed
 </Comment>
@@ -5153,6 +6081,7 @@ Time for which the section is valid.</Comment>
 <EnumValue
  Value="1023"
  Name="Display_of_text_not_limited_by_time"
+ Guid="c72f460e-d676-44ab-b8ad-a26de1d8ce6c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5162,10 +6091,12 @@ Time for which the section is valid.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="T_TIMEOUTRQST"
+ Guid="9992dd45-1c12-4b25-987d-bbf8cb12f88c"
 >
 <ReqRef
  Id="62880846-6786-43c3-84fe-79a4b98b3fd8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9863db44-147d-4d31-9a27-40f851909b33"
 >
 </ReqRef><Comment>Time before any section timer expires or the LOA speed timer expires
 </Comment>
@@ -5173,6 +6104,7 @@ Time for which the section is valid.</Comment>
 <EnumValue
  Value="1023"
  Name="__No_MA_request_triggering_with_regards_to_this_functionC"
+ Guid="9c33e0f5-3603-44cf-9fde-b193d1a1f42a"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5182,10 +6114,12 @@ Time for which the section is valid.</Comment>
  Default="0"
  Implemented="TRUE"
  Name="T_TRAIN"
+ Guid="c719c225-4e24-4315-ad94-0c968c670bb7"
 >
 <ReqRef
  Id="3e72c194-3b24-4828-931a-5861f7de9d3b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3f689332-2c50-40b4-9abf-1a099abe2964"
 >
 </ReqRef><Comment>Trainborne clock
 Time, according to trainborne clock, at which message is sent</Comment>
@@ -5193,6 +6127,7 @@ Time, according to trainborne clock, at which message is sent</Comment>
 <EnumValue
  Value="4294967295"
  Name="Unknown"
+ Guid="5aa9e04f-0268-42a9-b6a2-4e974eba638d"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5202,10 +6137,12 @@ Time, according to trainborne clock, at which message is sent</Comment>
  Default="0"
  Implemented="TRUE"
  Name="T_VBC"
+ Guid="7040bc53-329a-43d8-9060-7e1e92599d68"
 >
 <ReqRef
  Id="b282a6ca-44f9-4f0c-bad1-3ed7007e41e1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="681c87ff-d2c6-46af-9366-ab50f88e37d6"
 >
 </ReqRef><Comment>VBC validity poeriod</Comment>
 </Range><Range
@@ -5215,10 +6152,12 @@ Time, according to trainborne clock, at which message is sent</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_AXLELOAD"
+ Guid="ebcd5387-542d-45b4-8646-19e5e7e35cd5"
 >
 <ReqRef
  Id="4947d3fc-1665-47ff-a945-9900318dce54"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="84ce7fdb-8d01-42ce-a45a-f1a648189075"
 >
 </ReqRef><Comment>Speed restriction related to axleload
 </Comment>
@@ -5229,10 +6168,12 @@ Time, according to trainborne clock, at which message is sent</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_DIFF"
+ Guid="3e7d34de-6fc0-41de-be0c-2b538813088b"
 >
 <ReqRef
  Id="ddc9bc3c-f8fd-43a4-b45f-0a7b49ab9c74"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e5e7f44-b5a7-4e21-85d6-433fe353b28f"
 >
 </ReqRef><Comment>Absolute Positive Speed associated to a train category.
 </Comment>
@@ -5243,10 +6184,12 @@ Time, according to trainborne clock, at which message is sent</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_LOA"
+ Guid="4cea92f5-cc2d-45dc-ba01-6ea86b918235"
 >
 <ReqRef
  Id="03cd0321-724a-4dbf-ae18-99839cda8019"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e8bcc448-1117-4694-9771-9cad33d46891"
 >
 </ReqRef><Comment>Permitted speed at the limit of authority
 </Comment>
@@ -5257,10 +6200,12 @@ Time, according to trainborne clock, at which message is sent</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_LX"
+ Guid="15bbb744-a0ca-4bd4-8835-2678b0df3005"
 >
 <ReqRef
  Id="35deca04-3db3-4618-8a5b-13f4cdd1478c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b60c4842-1bc6-442a-82a6-03839105533e"
 >
 </ReqRef><Comment>Permitted speed for the LX speed restriction
 Speed at which the LX can be passed when it is not protected</Comment>
@@ -5271,10 +6216,12 @@ Speed at which the LX can be passed when it is not protected</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_MAIN"
+ Guid="eb653298-01dc-4434-8d45-e7349cad64fd"
 >
 <ReqRef
  Id="40e65850-da07-4c7a-bd9f-43c30f8a20a5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c93fbbff-2216-4ac1-bf80-023f64232290"
 >
 </ReqRef><Comment>Signalling related speed restriction
 </Comment>
@@ -5285,10 +6232,12 @@ Speed at which the LX can be passed when it is not protected</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_MAMODE"
+ Guid="302eeb67-9711-47fd-bf70-eec85eab763e"
 >
 <ReqRef
  Id="64e2f87a-5cf2-41b5-880c-dd026169eb44"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2b944164-6d20-45db-9ed6-6410acf46981"
 >
 </ReqRef><Comment>Required mode related speed
 </Comment>
@@ -5296,6 +6245,7 @@ Speed at which the LX can be passed when it is not protected</Comment>
 <EnumValue
  Value="127"
  Name="Use_the_national_speed_value_of_the_required_mode"
+ Guid="f4c49947-e083-41f9-b006-24561f1a90fe"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5305,10 +6255,12 @@ Speed at which the LX can be passed when it is not protected</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_MAXTRAIN"
+ Guid="f3341dc6-9bc5-451a-8a69-e9162c33a439"
 >
 <ReqRef
  Id="f248b04f-3a74-4b74-8c15-836ba750d9d2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b882a8b5-cc02-42f1-8a7c-2c1c3120361e"
 >
 </ReqRef><Comment>Maximum train speed.</Comment>
 </Range><Range
@@ -5318,10 +6270,12 @@ Speed at which the LX can be passed when it is not protected</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_NVALLOWOVTRP"
+ Guid="d1ccdd39-09cc-4620-855e-102c956d116a"
 >
 <ReqRef
  Id="053912bd-a061-43ec-b52b-3ba9cd8dfc8b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5da096ae-5fcb-44e1-969f-efad816b5642"
 >
 </ReqRef><Comment>Speed limit allowing the driver to select the “override” function 
 This variable is part of the National Values</Comment>
@@ -5332,10 +6286,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_NVKVINT"
+ Guid="a23131b1-5879-4524-be43-a9552ca60ec7"
 >
 <ReqRef
  Id="e16301ba-d9c2-4fd8-9fd8-0b603b157f8f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c1646e27-3abd-4ea6-9487-73e16abac904"
 >
 </ReqRef><Comment>Speed step used to define the integrated correction factor Kv
 This variable is part of the National Values </Comment>
@@ -5346,6 +6302,7 @@ This variable is part of the National Values </Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_NVLIMSUPERV"
+ Guid="c5b0a019-a0d2-477a-84c1-0f66ea2fde88"
 >
 <Comment>Limited Supervision mode speed limit
 This variable is part of the National Values</Comment>
@@ -5356,10 +6313,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_NVONSIGHT"
+ Guid="b2d94c26-94ee-49a5-8ea6-ed066217d3bf"
 >
 <ReqRef
  Id="6b617094-55ed-49b7-9b1a-8aadb52bd34f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1343d0bb-ba58-47ee-b660-b4e749fa44a8"
 >
 </ReqRef><Comment>On Sight mode speed limit
 This variable is part of the National Values</Comment>
@@ -5370,10 +6329,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_NVREL"
+ Guid="77fc48da-3e47-437b-976c-8e00728742b5"
 >
 <ReqRef
  Id="d135c1cd-b62c-406a-95ab-1bfd691e1653"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4d4a6848-8199-47e7-9ae5-488e1d6cf226"
 >
 </ReqRef><Comment>Release Speed
 This variable is part of the National Values</Comment>
@@ -5384,10 +6345,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_NVSHUNT"
+ Guid="4e896d96-0ea5-4419-8f69-5eba2d5085f3"
 >
 <ReqRef
  Id="c2e32710-2873-4ef6-b302-59e42906a32d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7517ff6-caf7-4dbb-9950-470a4479b551"
 >
 </ReqRef><Comment>Shunting mode speed limit
 This variable is part of the National Values</Comment>
@@ -5398,10 +6361,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_NVSTFF"
+ Guid="36fb9074-9485-4923-ad54-fd5b49aad012"
 >
 <ReqRef
  Id="1eddc0a4-11f9-4033-a1b4-0256f2693c43"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e61cfb7-3e95-462f-aebe-1279c81246d4"
 >
 </ReqRef><Comment>Staff Responsible mode speed limit
 This variable is part of the National Values</Comment>
@@ -5412,10 +6377,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_NVSUPOVTRP"
+ Guid="dedf7fe8-2697-4477-bb52-ab46ed92263a"
 >
 <ReqRef
  Id="9185fb46-775d-4cef-9c17-801d7b615a1c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="42d51920-5115-44ea-bd61-43435e73a8a8"
 >
 </ReqRef><Comment>Override speed limit to be supervised when the “override” function is active 
 This variable is part of the National Values</Comment>
@@ -5426,10 +6393,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_NVUNFIT"
+ Guid="843818b4-8194-46c6-bb5a-19abd07a7a38"
 >
 <ReqRef
  Id="9760b087-0192-4d33-a84a-4e7678ab8e37"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8d3d0508-6aa2-4bfa-8c74-4cf39ef605d7"
 >
 </ReqRef><Comment>Unfitted mode speed limit
 This variable is part of the National Values</Comment>
@@ -5440,10 +6409,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_RELEASEDP"
+ Guid="db39a712-38de-45eb-819b-6e0e33db32e7"
 >
 <ReqRef
  Id="530b6e5d-9ed2-460a-bc4f-9e158ad1c0b1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c3d3b1dc-e118-480e-82a3-a01c4e6f6410"
 >
 </ReqRef><Comment>Release speed associated with the danger point
 </Comment>
@@ -5451,10 +6422,12 @@ This variable is part of the National Values</Comment>
 <EnumValue
  Value="126"
  Name="Use_onboard_calculated_release_speed"
+ Guid="e0f8efaf-7b09-47f7-a261-0363e156953f"
 >
 </EnumValue><EnumValue
  Value="127"
  Name="Use_national_value"
+ Guid="f6f897c0-1ce3-4556-8f4e-092f02026677"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5464,10 +6437,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_RELEASEOL"
+ Guid="df8d649a-b0fc-4796-a2a1-fb34abd86ad4"
 >
 <ReqRef
  Id="887d1614-89c2-401e-8b28-d47db2b19981"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d9534581-6a56-48ae-9a6d-c46306394a30"
 >
 </ReqRef><Comment>Release speed associated with the overlap
 </Comment>
@@ -5475,10 +6450,12 @@ This variable is part of the National Values</Comment>
 <EnumValue
  Value="126"
  Name="Use_onboard_calculated_release_speed"
+ Guid="d5d1c91a-011d-40a1-b321-0483e15c7a58"
 >
 </EnumValue><EnumValue
  Value="127"
  Name="Use_national_value"
+ Guid="7b58f973-e4a1-4e44-9417-d4419290214f"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5488,10 +6465,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_REVERSE"
+ Guid="212978fe-3504-449b-a4b4-5e6b669a04f0"
 >
 <ReqRef
  Id="46aa1e33-5007-43a9-9c7f-3241bba8bbed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d97f9f8f-1306-438e-93ea-ff57bc64b6b6"
 >
 </ReqRef><Comment>Reversing mode speed limit
 </Comment>
@@ -5502,10 +6481,12 @@ This variable is part of the National Values</Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_STATIC"
+ Guid="1b870504-4331-4a7c-917f-fd2b01ce007d"
 >
 <ReqRef
  Id="51a2d119-ce1a-4cb1-9eec-ab1079e376a3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="085f912b-70d5-49c2-a80b-549ec473856d"
 >
 </ReqRef><Comment>Basic static speed profile
 Basic static speed profile speed after discontinuity (k). </Comment>
@@ -5513,6 +6494,7 @@ Basic static speed profile speed after discontinuity (k). </Comment>
 <EnumValue
  Value="127"
  Name="Non_numerical_value_telling_that_the_static_speed_profile_description_ends_at_D_STATIC_n"
+ Guid="2868907a-99bd-4cf1-bd04-9b759cb163e6"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -5522,10 +6504,12 @@ Basic static speed profile speed after discontinuity (k). </Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_TRAIN"
+ Guid="5f8ad0cf-ac68-480b-8719-92199d0ac5b6"
 >
 <ReqRef
  Id="3e250195-c2c5-46d1-8e98-b1c85c5eb58c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dfb53b6f-c0a8-46c6-8bf4-ff3ee2134b9d"
 >
 </ReqRef><Comment>Train speed
 </Comment>
@@ -5536,10 +6520,12 @@ Basic static speed profile speed after discontinuity (k). </Comment>
  Default="0"
  Implemented="TRUE"
  Name="V_TSR"
+ Guid="ba7eae67-02de-4ce8-a0f9-8b8eb15682b9"
 >
 <ReqRef
  Id="c6f1fbe8-ebe1-4587-95c7-5eefd09cf5cb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="79e9a80a-17c5-4509-860e-cba3f7151a91"
 >
 </ReqRef><Comment>Permitted speed for the temporary speed restriction
 </Comment>
@@ -5550,6 +6536,7 @@ Basic static speed profile speed after discontinuity (k). </Comment>
  Default="0"
  Implemented="TRUE"
  Name="bit"
+ Guid="b733a9f7-e17e-4e59-8471-2434569e55d5"
 >
 </Range></Ranges>
 <Variables>
@@ -5558,24 +6545,28 @@ Basic static speed profile speed after discontinuity (k). </Comment>
  VariableMode="InOut"
  Implemented="TRUE"
  Name="EUROBALISE"
+ Guid="8064769e-f56a-4d70-9852-f693f67ba4d1"
 >
 </Variable><Variable
  Type="Messages.EUROLOOP.Message"
  VariableMode="InOut"
  Implemented="TRUE"
  Name="EUROLOOP"
+ Guid="444f45ae-2a81-4625-bab2-db2a7b54c8e6"
 >
 </Variable><Variable
  Type="Messages.MESSAGE.Message"
  VariableMode="InOut"
  Implemented="TRUE"
  Name="EURORADIO"
+ Guid="0e5dfb37-a92d-4fb0-81bb-37f4de47625d"
 >
 </Variable><Variable
  Type="Messages.TRAIN_TO_RADIO_INFILL.Message"
  VariableMode="InOut"
  Implemented="TRUE"
  Name="TRAIN_TO_RADIO_INFILL"
+ Guid="98d62232-2ea9-4da1-b575-e1b4be972bb1"
 >
 </Variable></Variables>
 </NameSpace>

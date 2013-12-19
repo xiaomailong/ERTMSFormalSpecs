@@ -1,5 +1,6 @@
 <NameSpace
  Name="LEVEL_TRANSITION_ORDER"
+ Guid="944bd2ba-cf00-4583-89a8-5aee3a33b04c"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="2c9d7596-f059-458e-b5b5-6610d3ea104b"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="208372ed-1fd7-42d4-98b6-113e5aca6b31"
 >
 </ReqRef><ReqRef
  Id="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b0d69188-cf05-4fd2-a66d-d9c74519f6c4"
 >
 </ReqRef><Comment>Packet to identify where a level transition shall take place. In case of mixed levels, the successive M_LEVELTR&apos;s go from the highest priority level to the lowest one.</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="c5e202bc-0980-4c89-9d5a-869acce67f0b"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0653e7fe-ad02-4d7f-a929-4b361c0d2f98"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="bc1975ce-a0f9-4348-88b8-883941f9e375"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c36b31b1-18ff-4246-a408-b5cf1302338f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="f7427398-f1f0-4292-95fe-03e22f51183c"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f26002bb-3860-493b-864a-0faa7d92d2f2"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="35395a1d-3355-4811-8152-66147165ac14"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="932c3932-587e-4af2-9c8b-ee6ff7a16331"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_LEVELTR"
@@ -67,10 +79,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_LEVELTR"
+ Guid="3f771bd4-c230-4981-a952-a683dba851a6"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5194bad9-1897-4d85-ad6b-5f8d95eadfce"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_LEVELTR"
@@ -78,10 +92,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_LEVELTR"
+ Guid="13200eeb-750f-48ab-977f-8c6cb4b42319"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5850ac80-9d94-4e36-92f5-528289494c1f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_NTC"
@@ -89,6 +105,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_NTC"
+ Guid="d04381ba-baab-440e-9020-05d614fbae27"
 >
 </StructureElement><StructureElement
  TypeName="L_ACKLEVELTR"
@@ -96,10 +113,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_ACKLEVELTR"
+ Guid="399e79f4-1e4d-4b68-b5af-42da4de3a188"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="965bb65b-f43a-4264-94c1-367b2b656d78"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="N_ITER"
@@ -107,10 +126,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="N_ITER"
+ Guid="4ef24b26-3967-4b4d-8f1b-efe448651c66"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="90e4cd79-4dc8-43f6-8add-09f9961720d2"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
@@ -118,18 +139,22 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
+ Guid="05ac1a27-fcdc-4678-ad93-d4ebcc499c88"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68314926-069b-4447-9000-d4764ed4a173"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
+ Guid="f5bd4924-012a-4cc2-91cd-bad6490ae5b4"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5db3863c-8188-4cbf-8de1-e66cd70cdec8"
 >
 </ReqRef><StructureElement
  TypeName="M_LEVELTR"
@@ -137,10 +162,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_LEVELTR"
+ Guid="499d8f4a-2772-487f-bf8c-48ea0c8c31f1"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8b9d308a-147f-4fe3-abe7-c8a5c0f5e2ca"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_NTC"
@@ -148,6 +175,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_NTC"
+ Guid="fd6a5da3-b53a-489c-96a5-249209e8196f"
 >
 </StructureElement><StructureElement
  TypeName="L_ACKLEVELTR"
@@ -155,10 +183,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_ACKLEVELTR"
+ Guid="5a0a3782-7080-4a31-9618-d92aa764ac61"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="59a41988-7026-4142-afd0-1c9fde54c20a"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
@@ -167,10 +197,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
+ Guid="742739af-310e-4fa5-8091-815ca8c661d2"
 >
 <ReqRef
  Id="3c872475-fbad-4a03-b13a-a6fa51c6a722"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68ee9cb8-2d82-41a6-9e14-bfa32b54a86e"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>

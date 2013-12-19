@@ -20,7 +20,7 @@ using DataDictionary.Specification;
 
 namespace GUI
 {
-    public class ReqRefsTreeNode : DataTreeNode<DataDictionary.ReferencesParagraph>
+    public class ReqRefsTreeNode : ModelElementTreeNode<DataDictionary.ReferencesParagraph>
     {
         /// <summary>
         /// The editor for message variables

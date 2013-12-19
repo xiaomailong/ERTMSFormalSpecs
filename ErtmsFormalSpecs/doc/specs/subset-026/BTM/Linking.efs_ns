@@ -1,5 +1,6 @@
 <NameSpace
  Name="Linking"
+ Guid="9f9dab4e-f382-4269-bbaa-ca168d2a7aef"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,23 +9,28 @@
  Default="LinkingReaction.NoReaction"
  Implemented="TRUE"
  Name="LinkingReaction"
+ Guid="f89bae66-9581-4c14-a4f8-9f12da350a92"
 >
 <ReqRef
  Id="e301f9da-607b-45f9-a74b-a6d53cbfc408"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a2094d2d-a3eb-4e1e-b38b-a088532d2d9e"
 >
 </ReqRef><Values>
 <EnumValue
  Value="1"
  Name="TrainTrip"
+ Guid="898c135e-d06a-4f7e-98ff-8009406e13bb"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="CommandServiceBrake"
+ Guid="b3670cef-fc7d-4140-a5b1-ec4d3640881f"
 >
 </EnumValue><EnumValue
  Value="0"
  Name="NoReaction"
+ Guid="02abe35f-2ec2-4f21-9966-7eb5b57a74f9"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -32,10 +38,12 @@
 <Structure
  Implemented="TRUE"
  Name="LinkingData"
+ Guid="039faab4-39ea-4dfc-864e-e17bf3ad51d8"
 >
 <ReqRef
  Id="3da69521-ffba-42ec-9ded-f9c719a2f4b8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="747d463c-bc18-4d3b-a388-6f365db794cb"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -44,15 +52,18 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="LocationAccuracy"
+ Guid="48c30e83-0b8a-451f-a665-739572f17bf6"
 >
 <ReqRef
  Id="9e4c5ab1-4454-4b08-9df1-666cf07b17ca"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d6916b32-ed01-488d-84a8-d3926f454b8a"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="851ab4c7-24ed-4bb4-bcf0-18ffccc80fb7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e0079562-8765-46ed-9eab-9ae15ea5197e"
 >
 </ReqRef><Comment>Represents the location accuracy of balise groups.</Comment>
 </StructureElement><StructureElement
@@ -61,10 +72,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Orientation"
+ Guid="7bd50dc0-9751-4f9d-bc2b-72dd001a71c7"
 >
 <ReqRef
  Id="c15a755a-0bef-44a2-b2b4-43d8f1bbf0ac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ffb4ecc7-4cfa-422e-b110-a40a5e305211"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -73,14 +86,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Reaction"
+ Guid="b90a4eaf-0013-4c13-8680-c19360f2c1cc"
 >
 <ReqRef
  Id="a58464f1-c74b-420f-ad30-03d671b764c8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="366fe3be-7e89-4676-be57-6061e714d40d"
 >
 </ReqRef><ReqRef
  Id="e301f9da-607b-45f9-a74b-a6d53cbfc408"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="33274337-4d51-4ae8-8d28-5231155730c8"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -89,10 +105,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Distance"
+ Guid="bb85ae8b-55aa-46b3-b105-bd724e471a44"
 >
 <ReqRef
  Id="54049463-080e-41b3-a9aa-83124d1f6471"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c76f1bf6-1c24-4965-9438-d0de5397f86a"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -101,10 +119,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="NID_BG"
+ Guid="efde73d0-dee6-401b-b06e-d61b8454101c"
 >
 <ReqRef
  Id="091b5a23-8a4f-49d0-b23d-9a839b16be15"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fcb4bd9b-790f-490b-ace8-b9a0d5d86b2e"
 >
 </ReqRef><Comment></Comment>
 </StructureElement></Structure></Structures>
@@ -114,6 +134,7 @@
  Default="[]"
  NeedsRequirement="FALSE"
  Name="Linkings"
+ Guid="48ad5ac5-7c08-40be-bbfe-3ec8f3f50e7d"
 >
 </Collection></Collections>
 <Functions>
@@ -121,36 +142,44 @@
  Type="LinkingData"
  NeedsRequirement="FALSE"
  Name="CreateLinkingData"
+ Guid="e67dc131-7b89-4020-a3b6-525024b5593e"
 >
 <Parameters>
 <Parameter
  Type="Default.MessageTypes.Distance"
  Name="D_LINK"
+ Guid="c2792e76-3c01-4dd6-af5a-c30fde497bfe"
 >
 </Parameter><Parameter
  Type="Messages.NID_BG"
  Name="NID_BG"
+ Guid="03cfe05a-dcd5-4bd7-9fd5-f2f66af5ff83"
 >
 </Parameter><Parameter
  Type="Messages.Q_LINKORIENTATION"
  Name="Q_LINK_ORIENTATION"
+ Guid="85b64dac-da83-4cce-8c1b-30e5d8eba9ae"
 >
 </Parameter><Parameter
  Type="Messages.Q_LINKREACTION"
  Name="Q_LINK_REACTION"
+ Guid="2531bf20-6eba-423b-8f0a-20b954dedd93"
 >
 </Parameter><Parameter
  Type="Messages.Q_LOCACC"
  Name="Q_LOCACC"
+ Guid="464a8847-ee60-4bc5-9eb6-7466864992bc"
 >
 </Parameter><Parameter
  Type="Messages.Q_SCALE"
  Name="Q_SCALE"
+ Guid="b59713f6-2531-490c-96b0-383fcc726b05"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Always"
+ Guid="26c7601d-ea48-4264-a247-cbc27a17b8af"
 >
 <Expression>LinkingData {
   Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_LINK, scale =&gt; Q_SCALE ),
@@ -165,34 +194,44 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CurrentBGWithinFrame"
+ Guid="e4b951d5-e364-4b31-a4e0-c6ad0e6fea3c"
 >
 <ReqRef
  Id="c534dda4-ea81-40b7-a27b-c229e935a20e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d5dab54-1715-44d8-8a3f-98c74db7452d"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="75b64f27-a0f0-421e-a6c1-37f2dd27860f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="71528ab1-6044-469d-b298-a834a774d51f"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="5aa027b1-5c1a-4773-a56d-e795d43847fb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c00492b0-e7ab-4cae-8743-b49438642892"
 >
 <Comment></Comment>
 </ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Linking information available"
+ Guid="0bfe0cf6-52e4-46b8-a258-00e1f3aa67c4"
 >
 <PreConditions>
-<PreCondition>((FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked) AND ((FIRST_IN Linkings).NID_BG == (FIRST_IN CurrentBaliseGroup).NID_BG)</PreCondition><PreCondition>(AntennaPosition(Default.DistanceInterval.Max) &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
+<PreCondition
+ Guid="89a5a714-0cfc-400f-90b8-1dad1463b33d"
+>((FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked) AND ((FIRST_IN Linkings).NID_BG == (FIRST_IN CurrentBaliseGroup).NID_BG)</PreCondition><PreCondition
+ Guid="706ded2d-7480-4277-aade-3620f93af67d"
+>(AntennaPosition(Default.DistanceInterval.Max) &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
 AND
 (AntennaPosition(Default.DistanceInterval.Min) &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Default"
+ Guid="31941743-0709-428c-954c-1e57a9692670"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -200,15 +239,18 @@ AND
  Type="LinkingData"
  Implemented="TRUE"
  Name="CurrentLinking"
+ Guid="acaf4d09-047a-41bf-aadd-b6f94c59d499"
 >
 <ReqRef
  Id="370bc14e-630a-4f72-87f6-54e50015825c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c2cb43c-38b6-4186-bfaf-8cd30db606a1"
 >
 </ReqRef><Comment>Provides the linking info currently active</Comment>
 <Cases>
 <Case
  Name="Always"
+ Guid="e255898c-ca83-4e9a-9a4c-b2b8446fe98b"
 >
 <Expression>FIRST_IN Linkings</Expression>
 </Case></Cases>
@@ -216,41 +258,60 @@ AND
  Type="Boolean"
  Implemented="TRUE"
  Name="CurrentBGAcceptableUnknown"
+ Guid="7436a3f2-08ca-45a2-bc66-3d71ac8cce00"
 >
 <ReqRef
  Id="efb1d7b7-401e-46ab-93ac-645f2bc80a33"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b18a609f-7c48-44ba-a843-9b10da5663b3"
 >
 </ReqRef><ReqRef
  Id="203ab365-30f2-4d89-bf31-72cc5c007972"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ff652a5-32cc-466a-9277-761741f2f72f"
 >
 </ReqRef><ReqRef
  Id="81bbc248-7c0b-473e-a3ec-e9178c2ce88d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fdd1586b-7d79-4bc7-88c0-8649071c2080"
 >
 </ReqRef><ReqRef
  Id="62aa6f8e-f444-4ed1-90b7-43dc64aa7594"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="34dd917f-302b-457c-80f2-e17612fc1aa8"
 >
 </ReqRef><ReqRef
  Id="15cc1ee9-1be0-4256-a588-5dd0831c0f97"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="661f974d-3b18-4501-8b06-7188dfb85d99"
 >
 </ReqRef><ReqRef
  Id="370bc14e-630a-4f72-87f6-54e50015825c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2ced5c66-2667-43e9-87de-54b1d9dfe2d9"
 >
 </ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Acceptable"
+ Guid="f0870ba4-9f06-4289-ab64-d0bb73975b45"
 >
 <PreConditions>
-<PreCondition>Available ( CurrentLinking() )</PreCondition><PreCondition>(FIRST_IN Linkings).NID_BG == Messages.NID_BG.NID_UNKNOWN</PreCondition><PreCondition>(FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked </PreCondition><PreCondition>(COUNT CurrentBaliseGroup) &gt;= 2</PreCondition><PreCondition>THERE_IS_IN CurrentBaliseGroup | BaliseHasReposPacketValidForDirection(X)</PreCondition></PreConditions>
+<PreCondition
+ Guid="da977d47-40a4-4f83-8177-970236197651"
+>Available ( CurrentLinking() )</PreCondition><PreCondition
+ Guid="733c9016-29a2-4746-b9ea-ad24785048aa"
+>(FIRST_IN Linkings).NID_BG == Messages.NID_BG.NID_UNKNOWN</PreCondition><PreCondition
+ Guid="f077e4fd-a6f3-48ca-88f6-1bd8e47a08bd"
+>(FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked </PreCondition><PreCondition
+ Guid="8c20f424-e7cd-4ee7-b0bb-33599201a20a"
+>(COUNT CurrentBaliseGroup) &gt;= 2</PreCondition><PreCondition
+ Guid="4d37948a-0edd-4996-99f6-0ae6f7cd0f88"
+>THERE_IS_IN CurrentBaliseGroup | BaliseHasReposPacketValidForDirection(X)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Default"
+ Guid="eb604892-9b34-4660-a7af-c140125e474b"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -258,63 +319,80 @@ AND
  Type="Boolean"
  NeedsRequirement="FALSE"
  Name="CurrentBGIsNominalDirection"
+ Guid="2b60d0a9-f87a-47d6-844d-ae62d45fca5a"
 >
 <Cases>
 <Case
  Name="IsNominal"
+ Guid="be26692e-6036-4892-966a-cbb8c4616d5d"
 >
 <PreConditions>
-<PreCondition>(FIRST_IN CurrentBaliseGroup).N_PIG &lt; (LAST_IN CurrentBaliseGroup).N_PIG</PreCondition></PreConditions>
+<PreCondition
+ Guid="2fc1d54d-4962-4f2b-aeb4-aa61ed2be05c"
+>(FIRST_IN CurrentBaliseGroup).N_PIG &lt; (LAST_IN CurrentBaliseGroup).N_PIG</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="BaliseHasReposPacketValidForDirection"
+ Guid="f1956475-bc3e-42b6-a350-bba0af01c996"
 >
 <ReqRef
  Id="efb1d7b7-401e-46ab-93ac-645f2bc80a33"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5cc934bb-a09f-442e-b666-9add9ea5842b"
 >
 </ReqRef><ReqRef
  Id="e5ef2878-8ec2-4b95-9b91-af8274b231b1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2601acf9-4290-4a93-b9e8-08bf7ca23a35"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.Message"
  Name="message"
+ Guid="f0bd316f-cdcd-41eb-8a6a-cf4007997b85"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Checks"
+ Guid="a793ac49-0e4c-4a69-8191-d2bc8465948a"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</PreCondition></PreConditions>
+<PreCondition
+ Guid="6e691e1f-d66d-4277-9be2-bbd6ec462b45"
+>THERE_IS_IN message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Name="DistanceToBaliseGroup"
+ Guid="41641768-ba85-4244-bd62-229f518ee854"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.NID_BG"
  Name="NID_BG"
+ Guid="82612927-96c8-4e91-8f44-d52409c9459b"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Information available"
+ Guid="3620223c-87f1-4692-b00b-0637557e3fd4"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Linkings | X.NID_BG == NID_BG</PreCondition></PreConditions>
+<PreCondition
+ Guid="18f99ebe-a473-4db4-b373-7e63ff5fd10e"
+>THERE_IS_IN Linkings | X.NID_BG == NID_BG</PreCondition></PreConditions>
 <Expression>( FIRST_IN Linkings | X.NID_BG == NID_BG ).Distance</Expression>
 </Case><Case
  Name="No information available"
+ Guid="d73efdcf-cfd4-445a-8b37-24b05899772b"
 >
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
@@ -322,57 +400,74 @@ AND
  Type="LinkingReaction"
  Implemented="TRUE"
  Name="ConvertLinkingReaction"
+ Guid="12700441-18c7-4250-a53f-f0842c6dab09"
 >
 <ReqRef
  Id="e301f9da-607b-45f9-a74b-a6d53cbfc408"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f17a1ad-de2f-4ed9-a877-fb85f863c64a"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Messages.Q_LINKREACTION"
  Name="Reaction"
+ Guid="be50b670-57fd-467a-9378-20a7ca5d3552"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="No reaction"
+ Guid="9f86a12b-f939-4701-8ce0-c3fec2a3e05a"
 >
 <PreConditions>
-<PreCondition>Reaction == Messages.Q_LINKREACTION.No_Reaction</PreCondition></PreConditions>
+<PreCondition
+ Guid="b9f9d11b-dd86-4911-ae4b-32f0f2c96f5c"
+>Reaction == Messages.Q_LINKREACTION.No_Reaction</PreCondition></PreConditions>
 <Expression>LinkingReaction.NoReaction</Expression>
 </Case><Case
  Name="Train trip"
+ Guid="cf6aecef-840e-46a0-81c3-e291b215cbf5"
 >
 <PreConditions>
-<PreCondition>Reaction == Messages.Q_LINKREACTION.Train_trip</PreCondition></PreConditions>
+<PreCondition
+ Guid="b797bdaf-1d2c-4e61-ac26-8023128b8204"
+>Reaction == Messages.Q_LINKREACTION.Train_trip</PreCondition></PreConditions>
 <Expression>LinkingReaction.TrainTrip</Expression>
 </Case><Case
  Name=" Command service brake"
+ Guid="69ab0520-e824-4eea-97e0-f52ae7762222"
 >
 <PreConditions>
-<PreCondition>Reaction == Messages.Q_LINKREACTION.Apply_service_brake</PreCondition></PreConditions>
+<PreCondition
+ Guid="4e4c51f8-7348-4d86-8258-848629f8b003"
+>Reaction == Messages.Q_LINKREACTION.Apply_service_brake</PreCondition></PreConditions>
 <Expression>LinkingReaction.CommandServiceBrake</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="ConsiderBG"
+ Guid="b7fda5ae-4781-46c8-b105-3ec09760eebb"
 >
 <ReqRef
  Id="22b29a34-8fe5-4ccc-9aec-f79479570714"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ceae52fa-fe12-41b2-b14c-cdb3f0e56168"
 >
 </ReqRef><ReqRef
  Id="45b975c5-6f3a-47c9-9f18-741bdd280f36"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47954bc6-3499-4b5b-b33a-4a575dcbcef3"
 >
 </ReqRef><ReqRef
  Id="370bc14e-630a-4f72-87f6-54e50015825c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="27a3b36a-62d5-47ca-8033-b005433481d7"
 >
 </ReqRef><Cases>
 <Case
  Name="Value"
+ Guid="a6070445-ac76-4e62-86a0-53defac4f917"
 >
 <Expression>NOT Available ( Linking.CurrentLinking() )
   OR
@@ -389,12 +484,14 @@ AND
 <Procedures>
 <Procedure
  Name="LinkingInformationReceived"
+ Guid="b36d74ff-248d-4a64-ad82-dc33020344e9"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message"
  Name="Packet"
+ Guid="17d1099f-0a5e-4c5b-9b88-a0edee76fd61"
 >
 </Parameter></Parameters>
 <Rules>
@@ -402,28 +499,37 @@ AND
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="ClearLinkingInformation"
+ Guid="791123e1-19db-4836-99d0-16e17500fdef"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="No infill"
+ Guid="7178bbc3-25d9-45a5-af00-1a77a210bae3"
 >
 <ReqRef
  Id="d98529ca-fda7-480c-8c31-33ce08d1b140"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f6d2d00-0d68-434d-8d7a-a5c39e2dd1c1"
 >
 </ReqRef><Comment></Comment>
 <PreConditions>
-<PreCondition>Kernel.Infill.Data == EMPTY</PreCondition></PreConditions>
+<PreCondition
+ Guid="16d28157-dce0-492f-a815-20adf48b5991"
+>Kernel.Infill.Data == EMPTY</PreCondition></PreConditions>
 <Actions>
-<Action>Linkings &lt;- []</Action></Actions>
+<Action
+ Guid="f4ed0c9f-1c84-4195-bc54-3ce40d23cbb2"
+>Linkings &lt;- []</Action></Actions>
 </RuleCondition><RuleCondition
  Name="Infill"
+ Guid="40ced0d3-c8a9-40b2-9ad4-699d0a45700a"
 >
 <ReqRef
  Id="f0ea8f90-356c-47de-a7fd-4827ae488f00"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a065f3d-c980-4476-b0b6-b48e1435e101"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -434,6 +540,7 @@ AND
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="Insert first BG"
+ Guid="0e93289c-ce01-44bf-bc80-89c125862c2a"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -441,12 +548,15 @@ AND
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Insert first BG"
+ Guid="851988ba-8bf9-43c5-a92c-263c4fbd2700"
 >
 <Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>INSERT CreateLinkingData (
+<Action
+ Guid="6ebb24f5-be8d-4df6-87cd-5edc20ff3c03"
+>INSERT CreateLinkingData (
   D_LINK =&gt; Packet.D_LINK,
   NID_BG =&gt; Packet.NID_BG,
   Q_LINK_ORIENTATION =&gt; Packet.Q_LINKORIENTATION,
@@ -460,32 +570,39 @@ IN Linkings</Action></Actions>
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="Insert following BGs"
+ Guid="278d8d73-6889-44f1-a3c7-b443ef0f9393"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="Insert following BGs"
+ Guid="f1abce2e-96f2-4d8b-aa83-e5fd2939fb4d"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>APPLY StoreLinkingInfo ( Info =&gt; X, Q_SCALE =&gt; Packet.Q_SCALE ) ON Packet.Sequence1</Action></Actions>
+<Action
+ Guid="f313372b-6e45-44c5-a16a-2f82708636c7"
+>APPLY StoreLinkingInfo ( Info =&gt; X, Q_SCALE =&gt; Packet.Q_SCALE ) ON Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  NeedsRequirement="FALSE"
  Name="StoreLinkingInfo"
+ Guid="4a96e2f2-1676-4283-8150-5dcce152b97a"
 >
 <Comment>Stores a linking information in the list of available linking informations</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LINKING.SubStructure1"
  Name="Info"
+ Guid="d22702d1-0c8b-41d3-8f99-53dd485e6de2"
 >
 </Parameter><Parameter
  Type="Messages.Q_SCALE"
  Name="Q_SCALE"
+ Guid="e11ef72f-1a5b-4cab-abc1-3c72da4a2bef"
 >
 </Parameter></Parameters>
 <Rules>
@@ -493,6 +610,7 @@ IN Linkings</Action></Actions>
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="Store info"
+ Guid="e3791398-80a4-4ee3-a141-a8768935d3ff"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -500,11 +618,14 @@ IN Linkings</Action></Actions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="Store info"
+ Guid="6b6695bd-d089-4fdd-9e17-1592ec146539"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>INSERT CreateLinkingData (
+<Action
+ Guid="0a7cfd2c-c2e7-4059-9963-dca8b4dc0007"
+>INSERT CreateLinkingData (
   D_LINK =&gt; Info.D_LINK,
   NID_BG =&gt; Info.NID_BG,
   Q_LINK_ORIENTATION =&gt; Info.Q_LINKORIENTATION,
@@ -519,10 +640,12 @@ IN Linkings</Action></Actions>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CleanLinkingInfo"
+ Guid="2959fbb4-e4a1-42f4-8370-fe198ce97294"
 >
 <ReqRef
  Id="3ab48b20-0a96-4f02-93ac-64071624c979"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="08d261f7-f732-4da9-9abb-fbefa6e263a7"
 >
 <Comment></Comment>
 </ReqRef><Comment>Clear all Linking information which expectation window has passed safe antenna position</Comment>
@@ -531,6 +654,7 @@ IN Linkings</Action></Actions>
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="ClearLinkingInfo"
+ Guid="a38d2cde-17fb-4d90-9fb9-b511ea42385a"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -538,11 +662,14 @@ IN Linkings</Action></Actions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="FilterLinkings"
+ Guid="28e0ff8b-0934-45c4-b9bc-eb112fec4e6d"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Linkings &lt;- MAP Linkings | ( AntennaPosition ( Default.DistanceInterval.Min ) &lt;= X.Distance + X.LocationAccuracy ) USING X</Action></Actions>
+<Action
+ Guid="8fd68685-2c50-44e2-8c63-633c9323f735"
+>Linkings &lt;- MAP Linkings | ( AntennaPosition ( Default.DistanceInterval.Min ) &lt;= X.Distance + X.LocationAccuracy ) USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -554,10 +681,12 @@ IN Linkings</Action></Actions>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Linkings"
+ Guid="0eba6fac-cb5c-4709-a3df-b9a398dedae4"
 >
 <ReqRef
  Id="4ae178ee-6db4-474c-aa88-d5f8bd8ea1d7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="04216c23-661e-417d-83f6-9414d867e5d3"
 >
 </ReqRef><Comment>Stores the next linking data as provided by the balises</Comment>
 </Variable></Variables>

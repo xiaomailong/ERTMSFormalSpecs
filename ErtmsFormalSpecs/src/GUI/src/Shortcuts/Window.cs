@@ -84,9 +84,13 @@ namespace GUI.Shortcuts
             {
                 List<HistoryObject> history = new List<HistoryObject>();
 
-                foreach (DataDictionary.ModelElement element in GUIUtils.MDIWindow.SelectionHistory)
+                foreach (Utils.IModelElement element in GUIUtils.MDIWindow.SelectionHistory)
                 {
-                    history.Add(new HistoryObject(element));
+                    DataDictionary.ModelElement modelElement = element as DataDictionary.ModelElement;
+                    if (modelElement != null)
+                    {
+                        history.Add(new HistoryObject(modelElement));
+                    }
                 }
 
                 historyDataGridView.DataSource = history;

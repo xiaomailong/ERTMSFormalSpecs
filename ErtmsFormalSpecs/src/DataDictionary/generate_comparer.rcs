@@ -11,7 +11,7 @@ BEGIN
 END ValidName;
 
 -- Generates the class for the corresponding element
-PROCEDURE GenerateImporterClass ( doc )
+PROCEDURE GenerateComparisonClass ( doc )
 BEGIN
   FILE1.Redirect ("src/Compare/Comparer.cs");
   FILE1.WriteList ({
@@ -39,6 +39,9 @@ BEGIN
 `    {
   });
 
+  -- 
+  -- Generate comparison methods
+  -- 
   FOR element IN doc.RecursiveGetElementChildNodes("ELEMENT") DO  
 
     IF InheritsFrom(element, "ModelElement") THEN
@@ -52,7 +55,7 @@ BEGIN
 `        {
 `            if ( other == null )
 `            { 
-`                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+`                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
 `                return;
 `            }
 `
@@ -72,14 +75,14 @@ BEGIN
               FILE1.WriteList ({
    `            if ( !CompareUtil.canonicalStringEquality(obj.get`ValidName(field.NAME)`(), other.get`ValidName(field.NAME)`()) )
    `            {
-   `                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "Previously was [" + other.get`field.NAME`() + "]") );
+   `                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "`field.NAME`", other.get`field.NAME`(), obj.get`field.NAME`()) );
    `            }
               });
             ELSE
               FILE1.WriteList ({
    `            if ( obj.get`ValidName(field.NAME)`() != other.get`ValidName(field.NAME)`() )
    `            {
-   `                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "Previously was [" + other.get`field.NAME`() + "]") );
+   `                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "`field.NAME`", other.get`field.NAME`().ToString(), obj.get`field.NAME`().ToString()) );
    `            }
               });
             END;
@@ -102,12 +105,12 @@ BEGIN
 `                    }
 `                    while ( i < obj.count`field.NAME`() )
 `                    {
-`                        diff.Diffs.Add ( new Diff(obj.get`field.NAME`(i), Diff.ActionEnum.Add) );
+`                        diff.appendChanges ( new Diff(obj.get`field.NAME`(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "`field.NAME`" ) );
 `                        i += 1;
 `                    }
 `                    while ( i < other.count`field.NAME`() )
 `                    {
-`                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.get`field.NAME`( i ).Name) );
+`                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove, "`field.NAME`", other.get`field.NAME`( i ).Name) );
 `                        i += 1;
 `                    }
 `                }
@@ -115,7 +118,7 @@ BEGIN
 `                {
 `                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
 `                    {
-`                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+`                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "`field.NAME`" ) );
 `                    }
 `                }
 `            }
@@ -125,7 +128,7 @@ BEGIN
 `                {
 `                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
 `                    {
-`                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+`                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "`field.NAME`", otherElement.Name) );
 `                    }
 `                }
 `            }
@@ -141,7 +144,7 @@ BEGIN
 `                        bool compared = false;
 `                        foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
 `                        {
-`                            if ( CompareUtil.canonicalStringEquality(subElement.`Identifier(field.REFTYPE)`, otherElement.`Identifier(field.REFTYPE)`) )
+`                            if ( subElement.Guid == otherElement.Guid )
 `                            {
 `                                compare`ValidName (field.REFTYPE)` ( subElement, otherElement, diff );
 `                                compared = true;
@@ -151,7 +154,219 @@ BEGIN
 `
 `                        if ( !compared ) 
 `                        {
-`                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+`                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "`field.NAME`" ) );
+`                        }
+`                    }
+`
+`                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                    {
+`                        bool found = false;
+`                        foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                        {
+`                            if ( subElement.Guid == otherElement.Guid )
+`                            {
+`                                found = true;
+`                                break;
+`                            }
+`                        }
+`
+`                        if ( !found )
+`                        {
+`                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "`field.NAME`", otherElement.Name) );
+`                        }
+`                    }
+`                }
+`                else 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                    {
+`                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "`field.NAME`" ) );
+`                    }
+`                }
+`            }
+`            else 
+`            {
+`                if ( other.all`field.NAME`() != null ) 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                    {
+`                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "`field.NAME`", otherElement.Name) );
+`                    }
+`                }
+`            }
+              });
+            END;
+          ELSE
+            FILE1.WriteList({
+`            if ( obj.get`field.NAME`() == null )
+`            {
+`                if ( other.get`field.NAME`() != null )
+`                {
+`                    diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "`field.NAME`", "" ) );
+`                }
+`            }
+`            else
+`            {
+`                compare`ValidName (field.REFTYPE)` ( obj.get`field.NAME`(), other.get`field.NAME`(), diff );
+`            }
+            });
+          END; -- IF
+        END; -- IF
+      END; -- FOR field
+      FILE1.WriteList ({
+`        }
+`
+      });
+    END; -- IF
+  END; -- FOR element
+
+  --
+  -- Ensure all elements have a GUID and that the GUID match
+  -- 
+  FOR element IN doc.RecursiveGetElementChildNodes("ELEMENT") DO  
+
+    IF InheritsFrom(element, "ModelElement") THEN
+      FILE1.WriteList ({
+`        /// <summary>
+`        /// Ensures that two `element.NAME` have matching GUID, and recursively.
+`        /// obj is the leader for Guid. If other doesn't match obj guid, 
+`        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+`        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+`        /// </summary>
+`        /// <param name="obj"></param>
+`        /// <param name="other"></param>
+`        public static void ensureGuid`ValidName (element.NAME)`(Generated.`ValidName (element.NAME)` obj, Generated.`ValidName (element.NAME)` other)
+`        {
+`            if ( obj == null )
+`            { 
+`                if ( other != null )
+`                {
+`                    // Side effect, setup a GUID if needed for the other part (other)
+`                    string guid = other.Guid;
+`                }
+`                return;
+`            }
+`
+`            if ( other == null )
+`            { 
+`                if ( obj != null )
+`                {
+`                    // Side effect, setup a GUID if needed for the other part (obj)
+`                    string guid = obj.Guid;
+`                }
+`                return;
+`            }
+`
+`            if ( obj.Guid != other.getGuid() )
+`            { 
+`                if ( string.IsNullOrEmpty(other.getGuid()) )
+`                {
+`                    // These are matching elements, copy the guid from  obj
+`                    other.setGuid ( obj.Guid );
+`                }
+`                else 
+`                {
+`                    // Elements do not match. Stop the recursive process
+`                    return;
+`                }
+`            }
+`
+      });
+
+      IF ( element CAN BaseElement ) AND InheritsFrom(element.BaseElement,"ModelElement") THEN
+      FILE1.WriteList ({
+`            ensureGuid`ValidName (element.BaseElement.NAME)` (obj, other);
+`
+      });
+      END;
+
+      FOR field IN element.RecursiveGetElementChildNodes ("FIELD") DO
+        IF ( field CAN REFTYPE ) AND (InheritsFrom(Elements[field.REFTYPE],"ModelElement"))THEN          
+          IF ( THERE_IS IN element.RecursiveGetElementChildNodes ("REPEAT") :- X.TARGET == field.NAME ) THEN
+            IF Ordered ( field.REFTYPE ) THEN 
+              FILE1.WriteList({
+`            if ( obj.all`field.NAME`() != null )
+`            {
+`                if ( other.all`field.NAME`() != null ) 
+`                {
+`                    int i = 0;
+`                    while ( i < obj.count`field.NAME`() && i < other.count`field.NAME`() )
+`                    {
+`                        Generated.`field.REFTYPE` element = obj.get`field.NAME`( i );
+`                        Generated.`field.REFTYPE` otherElement = other.get`field.NAME`( i );
+`                        ensureGuid`field.REFTYPE` ( element, otherElement );
+`                        i += 1;
+`                    }
+`                    while ( i < obj.count`field.NAME`() )
+`                    {
+`                        Generated.`field.REFTYPE` element = obj.get`field.NAME`( i );
+`                        ensureGuid`field.REFTYPE` ( element, null );
+`                        i += 1;
+`                    }
+`                    while ( i < other.count`field.NAME`() )
+`                    {
+`                        Generated.`field.REFTYPE` otherElement = other.get`field.NAME`( i );
+`                        ensureGuid`field.REFTYPE` ( null, otherElement );
+`                        i += 1;
+`                    }
+`                }
+`                else 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                    {
+`                        ensureGuid`field.REFTYPE` ( subElement, null );
+`                    }
+`                }
+`            }
+`            else 
+`            {
+`                if ( other.all`field.NAME`() != null ) 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                    {
+`                        ensureGuid`field.REFTYPE` ( null, otherElement );
+`                    }
+`                }
+`            }
+              }); 
+            ELSE
+              FILE1.WriteList({
+`            if ( obj.all`field.NAME`() != null )
+`            {
+`                if ( other.all`field.NAME`() != null ) 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                    {
+`                        bool found = false;
+`
+`                        // Try first to assign Guid to elements which do not have a guid
+`                        // This helps handling duplicated in lists
+`                        foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                        {
+`                            if ( CompareUtil.canonicalStringEquality(subElement.`Identifier(field.REFTYPE)`, otherElement.`Identifier(field.REFTYPE)`) && otherElement.getGuid() == null )
+`                            {
+`                                ensureGuid`field.REFTYPE` ( subElement, otherElement );
+`                                found = true;
+`                                break;
+`                            }
+`                        }
+`
+`                        if ( !found ) 
+`                        {
+`                            foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                            {
+`                                if ( CompareUtil.canonicalStringEquality(subElement.`Identifier(field.REFTYPE)`, otherElement.`Identifier(field.REFTYPE)`) )
+`                                {
+`                                    ensureGuid`field.REFTYPE` ( subElement, otherElement );
+`                                    found = true;
+`                                    break;
+`                                }
+`                            }
+`                        }
+`
+`                        if ( !found ) 
+`                        {
+`                            ensureGuid`field.REFTYPE` ( subElement, null );
 `                        }
 `                    }
 `
@@ -169,7 +384,7 @@ BEGIN
 `
 `                        if ( !found )
 `                        {
-`                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+`                            ensureGuid`field.REFTYPE` ( null, otherElement );
 `                        }
 `                    }
 `                }
@@ -177,7 +392,7 @@ BEGIN
 `                {
 `                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
 `                    {
-`                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+`                        ensureGuid`field.REFTYPE` ( subElement, null );
 `                    }
 `                }
 `            }
@@ -187,7 +402,7 @@ BEGIN
 `                {
 `                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
 `                    {
-`                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+`                        ensureGuid`field.REFTYPE` ( null, otherElement );
 `                    }
 `                }
 `            }
@@ -195,17 +410,7 @@ BEGIN
             END;
           ELSE
             FILE1.WriteList({
-`            if ( obj.get`field.NAME`() == null )
-`            {
-`                if ( other.get`field.NAME`() != null )
-`                {
-`                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "" ) );
-`                }
-`            }
-`            else
-`            {
-`                compare`ValidName (field.REFTYPE)` ( obj.get`field.NAME`(), other.get`field.NAME`(), diff );
-`            }
+`            ensureGuid`field.REFTYPE` ( obj.get`field.NAME`(), other.get`field.NAME`() );
             });
           END; -- IF
         END; -- IF
@@ -216,6 +421,7 @@ BEGIN
       });
     END; -- IF
   END; -- FOR element
+
 
   FOR element IN doc.RecursiveGetElementChildNodes("ELEMENT") DO  
 
@@ -282,7 +488,7 @@ BEGIN
 `}
   });
   FILE1.Flush;
-END GenerateImporterClass;
+END GenerateComparisonClass;
 
 VAR
   Elements;
@@ -373,7 +579,7 @@ BEGIN
     CreateClassHierarchy ( doc );
 
     OUT.WriteLn ("Generate comparer class");
-    GenerateImporterClass ( doc );
+    GenerateComparisonClass ( doc );
     
   ELSE
     ERR.WriteLn ( "Cannot read file " & SYS.Args[1] );

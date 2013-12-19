@@ -1,6 +1,7 @@
 <Frame
  CycleDuration="0.1"
  Name="Active Functions"
+ Guid="91a65097-74ac-4bb0-a7cf-834908e405ab"
 >
 <SubSequences>
 <SubSequence
@@ -14,14 +15,17 @@
  RBC_ID=""
  RBCPhone=""
  Name="Provide Juridical Data"
+ Guid="d5ed07c4-015f-46a7-a572-c9baf3a9833f"
 >
 <TestCases>
 <TestCase
  Name="Test function ProvideJuridicalData"
+ Guid="aca925a2-bf3b-43a2-a07c-2831aefc3517"
 >
 <ReqRef
  Id="1e4ca98b-fcef-4737-b4e3-38bfc4715927"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a76a86e2-2c5c-48c6-840e-c4be9c4017ec"
 >
 </ReqRef><Steps>
 <Step
@@ -31,13 +35,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 : Setup"
+ Guid="ccc6461d-2529-4615-b841-fd2a2fbaf8f5"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="bce6d750-deac-4bd9-a4cf-52b6e8519520"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="8df25f55-a878-49c3-9cb0-35764cb3d6e9"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46,17 +54,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 : NP"
+ Guid="dd8372d5-d232-44fc-a6c8-a86d21212005"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="ad246dd9-8026-4033-a7ff-669daf417b8a"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NP</Action></Actions>
+<Action
+ Guid="baedb2a0-1b0e-49be-9ef3-799726b062eb"
+>Kernel.Mode &lt;- Default.Mode.NP</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="09630a06-1a32-44f4-84cb-422ac559b551"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -66,17 +79,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 : SB"
+ Guid="5ae26de3-f1d9-4f56-b1b4-45b5fd08fccb"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="3b001507-0d3d-4287-9bfc-f1ea00f2e788"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SB</Action></Actions>
+<Action
+ Guid="1eac7463-7686-4b8c-9291-b2186c887256"
+>Kernel.Mode &lt;- Default.Mode.SB</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="17f74227-356f-476d-a04c-b91992c813ce"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -86,17 +104,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 : PS"
+ Guid="69faea05-25a4-4098-a555-1ce7e91c09e8"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="7b64a92f-0f5e-492b-8b36-eb5be32c92e2"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+<Action
+ Guid="4526bf07-fd41-4767-b927-b445484417fd"
+>Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="c62a07b6-8bbf-4bde-b0be-2e3aba4dcdae"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -106,17 +129,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 : SH"
+ Guid="940d3d89-f072-44e1-8ef8-a8e4fda7fa24"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="ff1c3ec0-ce4d-4608-832a-c6338fefaeb2"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SH</Action></Actions>
+<Action
+ Guid="52ad1296-d95d-4fa6-bee8-ae8608e8b2e8"
+>Kernel.Mode &lt;- Default.Mode.SH</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="c1052a2f-7833-4176-958a-1db995b582f5"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -126,17 +154,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 : FS"
+ Guid="9022df6c-7621-4539-9972-2eac4f7b600d"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="a9fbc8c3-dbb5-4dd7-87bf-ad61fcf45816"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
+<Action
+ Guid="8bddee8b-51d2-4499-a669-5b57e409d24c"
+>Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="acdc2648-143e-495a-831b-7a4d5451f4ee"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -146,17 +179,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 : LS"
+ Guid="44632119-caaf-4160-9423-da6c763a29e0"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="f56b59b3-7b41-4ffa-aeee-b1fd27791e7d"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+<Action
+ Guid="b0b94fcc-5683-464b-8a26-bdf6c828aeb9"
+>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="4f12466d-bafd-41ca-8d49-8015b6577313"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -166,17 +204,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 : SR"
+ Guid="72dfc765-2d1e-404c-a2f1-dd26cb757889"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="846ced0c-373b-4f76-92e8-d333224ad8ce"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+<Action
+ Guid="5a9dd0ae-2386-4665-9cab-61f384f402b5"
+>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="d615e478-4d31-4b51-8659-6765c4fa5929"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -186,17 +229,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 : OS"
+ Guid="159d4e32-5157-4da5-9edf-83adbb002325"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="0ac72885-10f3-4822-8506-33e20cfd04c4"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+<Action
+ Guid="1668d689-e5a3-4417-8a26-be75bba2a162"
+>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="0eac3db5-0214-4f88-88de-d97551a57cc1"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -206,17 +254,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 : SL"
+ Guid="10df8aa2-2d10-47f1-a66a-4ec7d06fe1bf"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="924ba6b9-22f7-4b25-9f2b-43ab96447b0e"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SL</Action></Actions>
+<Action
+ Guid="201a336a-653f-4cf2-ae4b-6a09dd2cb4ef"
+>Kernel.Mode &lt;- Default.Mode.SL</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="f3e290e7-4c79-4e56-8fbe-8f60b46345ff"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -226,17 +279,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 : NL"
+ Guid="f49be0fa-5839-4e4d-a729-465bac5c289b"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="6d26ab70-34f0-4625-8252-d00f7c130a26"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NL</Action></Actions>
+<Action
+ Guid="630a047c-c809-4438-85fe-24f9f54b751b"
+>Kernel.Mode &lt;- Default.Mode.NL</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="183554e2-aab6-4a48-8473-f5303a730923"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -246,18 +304,23 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 : UN"
+ Guid="ad19a884-f9a0-48c0-ba08-cf232c1e2867"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="599856be-ec3b-42ba-9692-0b188db8218f"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.UN
+<Action
+ Guid="3371efac-5078-4408-9b70-51dce04a5f73"
+>Kernel.Mode &lt;- Default.Mode.UN
 </Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="a249a90d-347b-4b63-a45a-644606787447"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -267,17 +330,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 : TR"
+ Guid="f13f0061-d7b8-498d-bc8d-6ac46b5417fb"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="8dbc2f1d-b145-44c8-b5cc-f7fb097d794e"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+<Action
+ Guid="01efe848-c8bc-4192-83f2-af303a62ac49"
+>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="50907a60-e9c9-4a19-8e75-c536727e3616"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -287,17 +355,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 : PT"
+ Guid="5062528c-a768-4ee1-b8b4-72de08a68985"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="258effb0-2d76-4c61-9f4b-c2263e152a74"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+<Action
+ Guid="ba3e3f2e-bb30-4885-b845-c578e1de104a"
+>Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="a6c605fd-2995-465a-aa91-3192d56c2b8f"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -307,17 +380,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 : SF"
+ Guid="7354aae3-975a-4f84-b1ec-c743df6c538c"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="bfa67222-0a44-4400-bb4c-bc345b548e0a"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+<Action
+ Guid="2dab4107-d6dc-4372-b738-b30304ecd843"
+>Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="ae73fbc1-f8b5-4078-bf9f-165f61affb6b"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -327,17 +405,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 : IS"
+ Guid="f6b21b4e-d6c0-492c-b5c1-c0d594795cd3"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="ec9ac867-8543-4649-a7e5-853329acf4f3"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+<Action
+ Guid="669b099b-2825-4290-9959-ea2bb18e74f5"
+>Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="6e4c2409-1558-4807-a03b-1068f2e343ca"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -347,18 +430,23 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 : SN"
+ Guid="40bd7d55-b7d2-4daf-a033-3c24af578759"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="5d8c85be-3d38-4b08-bcd7-c7ac4d213593"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SN
+<Action
+ Guid="28236e93-f83f-4ea4-aa69-4fa6618c5660"
+>Kernel.Mode &lt;- Default.Mode.SN
 </Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="23921d84-5bc7-4e7e-bccf-800e2f34ece5"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -368,17 +456,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step18 : RV"
+ Guid="c3dd6364-7a4e-4adf-9fd8-c721784a9a85"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="d417c62f-03cb-4e0d-9aad-3b12ea35cba1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+<Action
+ Guid="51d787be-f472-42e1-a72f-3f0d143d66e6"
+>Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="7cbba13c-7609-4aef-b91f-9af658e62b57"
 >Kernel.ActiveFunctions.ProvideJuridicalData() == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>

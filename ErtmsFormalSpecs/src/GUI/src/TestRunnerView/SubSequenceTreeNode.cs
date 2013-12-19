@@ -21,7 +21,7 @@ using DataDictionary.Tests;
 
 namespace GUI.TestRunnerView
 {
-    public class SubSequenceTreeNode : DataTreeNode<DataDictionary.Tests.SubSequence>
+    public class SubSequenceTreeNode : ModelElementTreeNode<DataDictionary.Tests.SubSequence>
     {
         /// <summary>
         /// The value editor

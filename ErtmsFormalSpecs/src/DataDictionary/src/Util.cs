@@ -45,31 +45,33 @@ namespace DataDictionary
         private class Updater : Generated.Visitor
         {
             /// <summary>
-            /// Ensures that all paragraphs have a Guid at the end of the load operation
+            /// Indicates that GUID should be updated
             /// </summary>
-            /// <param name="obj"></param>
-            /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+            private bool UpdateGuid { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="updateGuid"></param>
+            public Updater(bool updateGuid)
             {
-                Paragraph paragraph = (Paragraph)obj;
-
-                // Side effect : creates a new Guid if it is empty
-                string guid = paragraph.Guid;
-
-                base.visit(obj, visitSubNodes);
+                UpdateGuid = updateGuid;
             }
 
             /// <summary>
-            /// Ensures that all paragraphs have a Guid at the end of the load operation
+            /// Ensures that all elements have a Guid
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Specification obj, bool visitSubNodes)
+            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
             {
-                Specification.Specification specification = (Specification.Specification)obj;
+                ModelElement element = (ModelElement)obj;
 
-                // Side effect : creates a new Guid if it is empty
-                string guid = specification.Guid;
+                if (UpdateGuid)
+                {
+                    // Side effect : creates a new Guid if it is empty
+                    string guid = element.Guid;
+                }
 
                 base.visit(obj, visitSubNodes);
             }
@@ -83,20 +85,23 @@ namespace DataDictionary
             {
                 ReqRef reqRef = (ReqRef)obj;
 
-                Paragraph paragraph = reqRef.Paragraph;
-                if (paragraph != null)
+                if (UpdateGuid)
                 {
-                    // Updates the paragraph Guid
-                    if (paragraph.Guid != reqRef.getId())
+                    Paragraph paragraph = reqRef.Paragraph;
+                    if (paragraph != null)
                     {
-                        reqRef.setId(paragraph.getGuid());
-                    }
+                        // Updates the paragraph Guid
+                        if (paragraph.Guid != reqRef.getId())
+                        {
+                            reqRef.setId(paragraph.getGuid());
+                        }
 
-                    // Updates the specification Guid
-                    Specification.Specification specification = EnclosingFinder<Specification.Specification>.find(paragraph);
-                    if (specification.Guid != reqRef.getSpecId())
-                    {
-                        reqRef.setSpecId(specification.Guid);
+                        // Updates the specification Guid
+                        Specification.Specification specification = EnclosingFinder<Specification.Specification>.find(paragraph);
+                        if (specification.Guid != reqRef.getSpecId())
+                        {
+                            reqRef.setSpecId(specification.Guid);
+                        }
                     }
                 }
 
@@ -390,60 +395,73 @@ namespace DataDictionary
         /// <param name="efsSystem">The system for which this dictionary is loaded</param>
         /// <param name="lockFiles">Indicates that the files should be locked</param>
         /// <param name="allowErrors">Provides the list used to hold errors during the load. null indicates that no errors are tolerated during load</param>
+        /// <param name="errors">Stores that errors found during load of the file. If null, no error is accepter</param>
+        /// <param name="UpdateGuid">Indicates that the loader should ensure that Guid are set in all elements of the model</param>
         /// <returns></returns>
-        public static Dictionary load(String filePath, EFSSystem efsSystem, bool lockFiles, List<ElementLog> errors)
+        public static Dictionary load(String filePath, EFSSystem efsSystem, bool lockFiles, List<ElementLog> errors, bool updateGuid)
         {
-            Dictionary retVal = DocumentLoader<Dictionary>.loadFile(filePath, null, lockFiles);
+            Dictionary retVal = null;
 
-            if (retVal != null)
+            ObjectFactory factory = (ObjectFactory)Generated.acceptor.getFactory();
+            try
             {
-                retVal.FilePath = filePath;
-                if (efsSystem != null)
+                factory.AutomaticallyGenerateGuid = false;
+                retVal = DocumentLoader<Dictionary>.loadFile(filePath, null, lockFiles);
+                if (retVal != null)
                 {
-                    efsSystem.AddDictionary(retVal);
+                    retVal.FilePath = filePath;
+                    if (efsSystem != null)
+                    {
+                        efsSystem.AddDictionary(retVal);
+                    }
+
+                    // Loads the dependancies for this .efs file
+                    try
+                    {
+                        Generated.ControllersManager.DesactivateAllNotifications();
+                        LoadDepends loadDepends = new LoadDepends(retVal.BasePath, lockFiles, errors);
+                        loadDepends.visit(retVal);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error(e.Message);
+                        retVal = null;
+                    }
+                    finally
+                    {
+                        Generated.ControllersManager.ActivateAllNotifications();
+                    }
                 }
 
-                // Loads the dependancies for this .efs file
-                try
+                if (retVal != null)
                 {
-                    Generated.ControllersManager.DesactivateAllNotifications();
-                    LoadDepends loadDepends = new LoadDepends(retVal.BasePath, lockFiles, errors);
-                    loadDepends.visit(retVal);
-                }
-                catch (Exception e)
-                {
-                    Log.Error(e.Message);
-                    retVal = null;
-                }
-                finally
-                {
-                    Generated.ControllersManager.ActivateAllNotifications();
+                    // Updates the contents of this .efs file
+                    try
+                    {
+                        Generated.ControllersManager.DesactivateAllNotifications();
+                        Updater updater = new Updater(updateGuid);
+                        updater.visit(retVal);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error(e.Message);
+                    }
+                    finally
+                    {
+                        Generated.ControllersManager.ActivateAllNotifications();
+                    }
+
+                    if (retVal != null && efsSystem != null)
+                    {
+                        retVal.CheckRules();
+                    }
                 }
             }
-
-            if (retVal != null)
+            finally
             {
-                // Updates the contents of this .efs file
-                try
-                {
-                    Generated.ControllersManager.DesactivateAllNotifications();
-                    Updater updater = new Updater();
-                    updater.visit(retVal);
-                }
-                catch (Exception e)
-                {
-                    Log.Error(e.Message);
-                }
-                finally
-                {
-                    Generated.ControllersManager.ActivateAllNotifications();
-                }
-
-                if (retVal != null && efsSystem != null)
-                {
-                    retVal.CheckRules();
-                }
+                factory.AutomaticallyGenerateGuid = true;
             }
+
 
             return retVal;
         }

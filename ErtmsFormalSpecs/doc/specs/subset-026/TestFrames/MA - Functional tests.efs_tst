@@ -1,6 +1,7 @@
 <Frame
  CycleDuration="Kernel.CycleDuration"
  Name="MA - Functional tests"
+ Guid="08fc3910-ee2f-4697-bdad-f5e16ee308b9"
 >
 <SubSequences>
 <SubSequence
@@ -14,6 +15,7 @@
  RBC_ID=""
  RBCPhone=""
  Name="MA structure - Danger point"
+ Guid="a43c789a-1909-4b5a-b03e-fbee49df07bc"
 >
 <TestCases>
 <TestCase
@@ -22,22 +24,27 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MA structure - Danger point"
+ Guid="d90a5fe7-4941-431c-91b3-e114188440fc"
 >
 <ReqRef
  Id="53a5391c-db43-4e26-95c4-26b8316d77a8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3093619f-4194-4d2a-a854-374969e16ce0"
 >
 </ReqRef><ReqRef
  Id="48fba67a-8f19-4715-92e7-aea531d01881"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a02ac1df-dcb2-4eac-99c3-06edc0b37b63"
 >
 </ReqRef><ReqRef
  Id="9396972e-8fb4-49d1-9c8f-e2cd2efb6005"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c2ba3d98-deaf-4973-8ef4-2cb98dbdc875"
 >
 </ReqRef><ReqRef
  Id="21d0760f-a057-466a-bdf0-41f316e4721c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1893db6b-fee3-4c92-a8a5-683bb6d94f08"
 >
 </ReqRef><Steps>
 <Step
@@ -47,18 +54,25 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="11e1e93b-0bb9-4c20-b310-5d22ad6149d7"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="29a5e782-5c83-4851-aba0-172960fa2b57"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="8ac64e1b-ddeb-49b4-b220-ee7b7bf2e5b1"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="4ce61ee5-0b31-44de-ab4b-9b2de980f6d9"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="c775fd1f-50f5-4b00-a2e6-dd4430de2f30"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -67,13 +81,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - New MA received in BG message, level 1"
+ Guid="49d8e8aa-577a-4a16-9547-8a6b0187f8e1"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="fae26379-c157-47a7-b986-235af01c3b4f"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="92e7ed40-3e8f-4584-8c07-f17cfa0b56ee"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -121,7 +139,11 @@
             }
         }
     ]
-}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action
+ Guid="4a858630-43e6-4594-8882-6c008665c09f"
+>Kernel.MA.MA &lt;- EMPTY</Action><Action
+ Guid="023f1545-0f49-4bb0-ae5b-0e1ea0addb94"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9618,
     Orientation =&gt; Orientation.Nominal,
@@ -131,7 +153,9 @@
         Position =&gt; 2000.0,
         UnderReadingAmountOdo =&gt; 35.0
     }
-}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action
+ Guid="d0283b75-03ad-45cc-b0d1-2231b5d350f2"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 54.0,
     D_ora =&gt; 51.0,
@@ -141,12 +165,16 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="dd95f1b7-f943-4280-ad1f-b83b98c2bcc3"
 >Available ( Kernel.MA.MA )</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="01c7f4b5-4c13-4e51-b614-f570752f41fa"
 >Kernel.MA.MA.EndSection.DangerPoint.ReleaseSpeed == 25.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="90abd2d4-e123-41db-9183-88f2d048b4ec"
 >Kernel.MA.MA.EndSection.DangerPoint.Distance == 1200.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="3c2d1b49-ce84-4b97-b5b2-718784b3b46f"
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed == 25.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -156,13 +184,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - New MA received in BG message, level 2"
+ Guid="4148459d-391f-41ac-989a-3cf676c957a4"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="f235962a-1442-407e-9d53-ae117df9f76b"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="1ec7e962-5603-40a9-9af9-44c74ed279fb"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -209,16 +241,22 @@
             }
         }
     ]
-}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+}</Action><Action
+ Guid="8de16eb0-20fd-497f-888d-c0f09bb4b471"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="a60dc314-85c6-40a5-996d-f251ca39b33e"
 >Available ( Kernel.MA.MA )</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="56b9e6b9-92ed-4558-86b6-a0a1450c0cc7"
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed == 20.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="076baf2d-e04a-4254-b78d-dc11f1a4ac64"
 >Kernel.MA.MA.EndSection.DangerPoint.ReleaseSpeed == 20.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="912e0589-d1e4-4366-a522-25bbd46ecf32"
 >Kernel.MA.MA.EndSection.DangerPoint.Distance == 840.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -234,6 +272,7 @@
  RBC_ID=""
  RBCPhone=""
  Name="MA structure - Default fields"
+ Guid="eef315c4-ba57-4f41-8859-9cee735b1d1f"
 >
 <TestCases>
 <TestCase
@@ -242,26 +281,32 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MA structure - Default fields"
+ Guid="aa94224c-92bc-4d32-a116-446dd3288f6d"
 >
 <ReqRef
  Id="e0b44a69-1080-47e9-80b7-b635996f4239"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f6b4cefe-9257-401d-b148-5aa8eb40d9d7"
 >
 </ReqRef><ReqRef
  Id="9d444c1e-f8ce-44ed-adb0-f81c08abac75"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="968c6df0-7372-4316-bbac-0ade39d7ac1f"
 >
 </ReqRef><ReqRef
  Id="5d3380ae-3cb4-4f42-a7ba-d37280d33119"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e3d46f8f-55b9-46c6-9df6-3411ebc2e335"
 >
 </ReqRef><ReqRef
  Id="9396972e-8fb4-49d1-9c8f-e2cd2efb6005"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="57f9f360-05f3-4960-8d13-64ef852eecf9"
 >
 </ReqRef><ReqRef
  Id="d949102e-f89b-489f-8acc-cf60824bd0e5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6e6edcbc-a693-453c-b078-7406c8de5456"
 >
 </ReqRef><Steps>
 <Step
@@ -271,18 +316,25 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="4c69d922-a9ff-4fc6-ae31-9f5b76cd7708"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="106a7c1f-292e-44aa-af0b-b2e522cbaf6f"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="3bd1723b-f422-4840-87f4-1ce4bca51d1c"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="7fedee45-3836-479b-bdef-62956b69b93c"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="30196bf2-8e59-4d75-96a6-a9e4f4add9f6"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -291,13 +343,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - New MA received in BG message, level 1"
+ Guid="f1790490-61e7-4d5b-91cc-183fab455ac1"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="94d83dd7-f04f-4ec6-a21c-a598fec59ae4"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="68d751ec-8e62-4cca-9b98-3de46b1c22c1"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -345,7 +401,11 @@
             }
         }
     ]
-}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action
+ Guid="60cfb23e-85c1-4d0c-bfef-b0c8ca98bc15"
+>Kernel.MA.MA &lt;- EMPTY</Action><Action
+ Guid="3f45dd99-97a8-40e1-b84d-3f747e84f616"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9620,
     Orientation =&gt; Orientation.Nominal,
@@ -355,7 +415,9 @@
         Position =&gt; 2500.0,
         UnderReadingAmountOdo =&gt; 44.0
     }
-}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action
+ Guid="4ac46ff1-5520-446a-b117-bf32d7a851af"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 49.0,
     D_ora =&gt; 48.0,
@@ -365,22 +427,31 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="2ad62205-5a8d-4c05-8e50-b2ad4dbdf274"
 >Available ( Kernel.MA.MA )</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="a2f7365b-3a62-4922-b25c-3ce272a6ffc2"
 >Kernel.MA.SignallingRelatedSpeedRestriction == 80.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="aaabb35d-be98-431b-a5cf-337497423eb6"
 >Kernel.MA.MA.Sections == []</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="f9870f0e-c428-41e7-8884-0060d029b68e"
 >Kernel.MA.MA.TargetSpeed == 40.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="7a4f358d-c828-4639-b11c-49125ac5de18"
 >Kernel.MA.MA.TargetSpeedTimeOut == 200.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="43fc1fec-d1ae-4920-b17c-d1d630a7a07b"
 >Kernel.MA.MA.EndSection.Length == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="ceef1b14-6d87-456c-acca-59ede0113160"
 >Kernel.MA.MA.EndSection.Overlap == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="a50576cf-769e-424b-a1d2-e227f867ef02"
 >Kernel.MA.MA.EndSection.EndSectionTimeOut == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="455d0bf2-e5dd-4727-a698-fb8f07b39593"
 >Kernel.MA.MA.EndSection.DangerPoint == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -390,16 +461,20 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - Check EOA"
+ Guid="5cb6ff66-42c0-4a3c-bda4-9e594df8eb30"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="09cd816c-5b8d-4cad-96e7-62bb56548071"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="874298d7-b3f1-42d8-b595-2e673dab943f"
 >Kernel.MA.EndOfMovementAuthority().Location == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="c975384d-562c-4c31-86cd-4b037f7b8004"
 >Kernel.MA.EndOfMovementAuthority().Speed == 40.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -409,13 +484,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - New MA received in BG message, level 2"
+ Guid="14b19322-0bd5-49d2-af64-40c941475062"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="f9e8646b-f62c-436b-931f-51924b90a696"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="c8f78aa3-5859-44c8-9f8f-6e467ff6bfb8"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -462,24 +541,34 @@
             }
         }
     ]
-}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+}</Action><Action
+ Guid="57123886-0aba-429d-b3ce-30912e03a0fb"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="ae32b0bb-bbd1-43c0-a52a-ec021df88d38"
 >Available ( Kernel.MA.MA )</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="c692d213-7270-49c5-b8d6-43bb868e4f78"
 >Kernel.MA.MA.Sections == []</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="39cefcff-b786-4b4d-b780-5994048e969b"
 >Kernel.MA.MA.TargetSpeed == 25.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="b465c136-54ce-466d-be67-0eed6dd5cc74"
 >Kernel.MA.MA.TargetSpeedTimeOut == 150.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="f256185c-90e1-4f33-9e4f-b36de445b9d3"
 >Kernel.MA.MA.EndSection.Length == 800.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="ad0ab424-a434-4cde-916c-659448624a1a"
 >Kernel.MA.MA.EndSection.EndSectionTimeOut == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="0769d429-69bf-402b-ae91-453780330f76"
 >Kernel.MA.MA.EndSection.Overlap == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="498d065b-4fba-461f-ac1a-57daf6fced4f"
 >Kernel.MA.MA.EndSection.DangerPoint == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -489,16 +578,20 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - Check EOA"
+ Guid="69074d6d-8622-4270-a17b-c26fd11318e4"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="1dcdd16a-b770-4ea9-bbd3-29cdf774a082"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="26468b1a-dae7-4c99-a79e-0f3c781eb085"
 >Kernel.MA.EndOfMovementAuthority().Location == 800.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="4bfc2e05-3f9f-4404-b802-fca0c588b94c"
 >Kernel.MA.EndOfMovementAuthority().Speed == 25.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -514,6 +607,7 @@
  RBC_ID=""
  RBCPhone=""
  Name="MA structure - End section time-out"
+ Guid="e62a5189-c9d2-4154-b2db-7aaf5eba9638"
 >
 <TestCases>
 <TestCase
@@ -522,18 +616,22 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MA structure - End section time-out"
+ Guid="4533956a-5206-435d-a926-0f217581ee1c"
 >
 <ReqRef
  Id="9396972e-8fb4-49d1-9c8f-e2cd2efb6005"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d6ce635f-2341-47a5-a4f2-530d193bc767"
 >
 </ReqRef><ReqRef
  Id="8d09ca53-1394-4843-b8d6-829a86336ca3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f777f893-a4bd-4f96-a3b2-0d22d4a1f373"
 >
 </ReqRef><ReqRef
  Id="21d0760f-a057-466a-bdf0-41f316e4721c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fba892cf-ed9a-4326-aeee-22ade5bc8152"
 >
 </ReqRef><Steps>
 <Step
@@ -543,18 +641,25 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="51830eed-cdfa-495a-8c14-680e5a5d27e1"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="77c22e4e-3811-461a-b830-c174bfb5cd68"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="ada25dbf-c1ad-42b5-8b70-656553572189"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="e7313022-6f18-4333-8426-97b7b1b504f1"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="a7e0273b-f9d3-4439-93ee-cfe19c713768"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -563,13 +668,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - New MA received in BG message, level 1"
+ Guid="47e5b95e-8998-468d-bca2-31bf80ee420e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="9f628496-f709-4d97-9efb-5848bd40d1f2"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="98e74792-e8ea-487d-9833-98808a7498cb"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -617,7 +726,11 @@
             }
         }
     ]
-}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action
+ Guid="e92bb955-f017-4876-8c8d-223fa2efbf2a"
+>Kernel.MA.MA &lt;- EMPTY</Action><Action
+ Guid="23d2db07-2bba-4422-9800-22143f00b688"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9622,
     Orientation =&gt; Orientation.Nominal,
@@ -627,7 +740,9 @@
         Position =&gt; 3000.0,
         UnderReadingAmountOdo =&gt; 64.0
     }
-}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action
+ Guid="742c6832-d05f-4463-b41f-f508b86e9222"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 88.0,
     D_ora =&gt; 75.0,
@@ -637,12 +752,16 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="de414f40-85c9-430c-9ac5-23db968dae24"
 >Available ( Kernel.MA.MA )</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="ac58b6b4-739b-4c80-86ed-804af5a2cec1"
 >Kernel.MA.MA.EndSection.EndSectionTimeOut.Distance == 900.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="ee1d3c9a-3a3d-43d5-856d-595021cbc642"
 >Available(Kernel.MA.MA.EndSection.EndSectionTimeOut)</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="52af0537-54ef-4354-9133-4a3c5dd511ca"
 >Kernel.MA.MA.EndSection.EndSectionTimeOut.TimeOut == 200.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -652,13 +771,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - New MA received in BG message, level 2"
+ Guid="21d4c139-41a9-4646-8a32-80becf9f0271"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="2c3f5837-7074-4c6f-9394-1fd61e755983"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="87264adc-b097-4a4b-84f0-269eabd11dfe"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -705,16 +828,22 @@
             }
         }
     ]
-}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+}</Action><Action
+ Guid="e8ae8151-6048-490c-b48e-1c226cf2fb35"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="23fa3d56-383f-4f32-9d64-e6d2d2307dc9"
 >Available ( Kernel.MA.MA )</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="4146f2bd-8e8b-4f32-b990-7a7d9fdbc1d7"
 >Kernel.MA.MA.EndSection.EndSectionTimeOut.TimeOut == 140.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="fc8b7f45-bb5a-4b80-992d-60d8b3e4a012"
 >Kernel.MA.MA.EndSection.EndSectionTimeOut.Distance == 820.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="6471ce10-acd7-48d2-9062-d24de0d04462"
 >Available(Kernel.MA.MA.EndSection.EndSectionTimeOut)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -730,6 +859,7 @@
  RBC_ID=""
  RBCPhone=""
  Name="Release speed"
+ Guid="b1afaba2-cea0-4917-ac80-d3e541200d17"
 >
 <TestCases>
 <TestCase
@@ -737,14 +867,17 @@
  Case="0"
  Implemented="TRUE"
  Name="Release speed"
+ Guid="2b5e88d4-0b30-47d2-8008-7aa59442a588"
 >
 <ReqRef
  Id="197c8e6f-0fae-4862-be76-b280ffa433d2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="39fce824-7c6f-43ab-8d1b-a0c30eaad9b0"
 >
 </ReqRef><ReqRef
  Id="9396972e-8fb4-49d1-9c8f-e2cd2efb6005"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c8a9cfc-46ce-425c-8e17-49fb9eb749f3"
 >
 </ReqRef><Steps>
 <Step
@@ -754,18 +887,25 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="0dccca25-e9ba-422b-b0ed-2a8da2ea4206"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="70a80b37-fe93-4f48-b660-cb38234e3ce0"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="c74d7824-7f20-439c-9b52-30b274ed2e59"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="c98a8cf8-ac65-45d8-b1ef-42f342ebc209"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="fc32d9c8-f8d1-46e6-b902-58ea286b51a0"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -774,13 +914,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - New MA with Danger Point received"
+ Guid="fb824fee-6620-49b1-a79f-bc4004caefe8"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="630e7dcf-9e85-40e0-8417-343e9e3836d7"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="c48a5bfa-8705-4173-8b0d-9729628d6a4b"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -828,7 +972,9 @@
             }
         }
     ]
-}</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action
+ Guid="b95eabac-a6e9-41b1-a436-cb831c09fa45"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9628,
     Orientation =&gt; Orientation.Nominal,
@@ -838,7 +984,9 @@
         Position =&gt; 4500.0,
         UnderReadingAmountOdo =&gt; 21.0
     }
-}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action
+ Guid="dcc53a50-e529-4a33-b743-167f94be895e"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 27.0,
     D_ora =&gt; 26.0,
@@ -848,6 +996,7 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="8508d609-7db6-4fc3-a206-81e936dc2840"
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed == 25.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -857,13 +1006,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - New MA with Overlap received"
+ Guid="17833a8d-9471-4481-b724-9360ec8ad33c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="dbb3b866-16f3-4bb6-af6e-b4c0d5239c24"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="1907e53c-4416-4618-be50-09b703db8bee"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -914,6 +1067,7 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="a8d6455f-f077-415b-95da-8d9ee5791302"
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed == 20.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -923,13 +1077,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - New MA with Overlap and Danger Point received"
+ Guid="da86edcf-d189-4c67-8d98-1caf5050fe7c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="4560c182-f5f6-4c02-96d0-e2af7e9aee6b"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="f5d6ff40-91a0-4353-a10c-940edd4f4ff3"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -980,6 +1138,7 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="f7b6217d-b799-4025-b223-bc429457b01d"
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed == 35.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -989,13 +1148,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - New MA with no Overlap nor Danger Point received"
+ Guid="b85d8a4b-7155-4a7d-929b-07900f1ad1dd"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="6cf19f8f-27ec-4105-893a-7a36b1659e4f"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="a903bb13-7f2c-48c0-90d4-9233b282c114"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -1047,6 +1210,7 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="179061a3-0677-4f49-a99a-79b5512a996f"
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed == 0.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1062,6 +1226,7 @@
  RBC_ID=""
  RBCPhone=""
  Name="MA structure - Sections"
+ Guid="d5ce9fb0-4ddf-462a-bc4d-b41ffafbb5a5"
 >
 <TestCases>
 <TestCase
@@ -1070,42 +1235,52 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MA structure - Sections"
+ Guid="57be9522-8874-49fd-aaec-7a5b3b812f28"
 >
 <ReqRef
  Id="e0b44a69-1080-47e9-80b7-b635996f4239"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c8f7b584-b379-4ea4-aa5d-416bc98cb93a"
 >
 </ReqRef><ReqRef
  Id="cfc4df94-c1ee-4d42-b8ab-44f37ef4a6ba"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="df2a928d-331c-4361-ab12-f39c08222f6c"
 >
 </ReqRef><ReqRef
  Id="173067d8-3484-4ec9-81e4-7275c3374764"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d3335510-b180-4f41-a344-54ef289ab4c8"
 >
 </ReqRef><ReqRef
  Id="9e1096f7-cf79-4ff5-8dcf-ac3a8bc775e6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e596229-f496-49c0-82d1-013910558129"
 >
 </ReqRef><ReqRef
  Id="5fa277c4-02a9-47ea-b645-f1473c0617ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="293e17d2-d182-412f-85d4-4deb35db2a8d"
 >
 </ReqRef><ReqRef
  Id="9396972e-8fb4-49d1-9c8f-e2cd2efb6005"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="76ed4ad0-228a-4598-95de-0fa6ebb92161"
 >
 </ReqRef><ReqRef
  Id="4b2c7641-4724-45e9-ac46-acb185e386b0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7e99a972-e2be-4b36-b6d6-5e6ee7eadc8c"
 >
 </ReqRef><ReqRef
  Id="51578cd7-a50a-46d9-b7a5-11e24eee2f49"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb59f1a4-8871-4785-911a-6092bb275ac8"
 >
 </ReqRef><ReqRef
  Id="b4e8a739-839a-4e55-80ab-4cabb887e47b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="877fdff8-7e2f-4ebe-acee-31b39494af95"
 >
 </ReqRef><Steps>
 <Step
@@ -1115,18 +1290,25 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="7c58f400-deaf-4cf5-bb38-0035175c0ac9"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="8b4608e9-7a4f-4898-bb7f-a077033d2416"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="8d62c5a5-f8e2-42b2-a73a-578dff07dbf7"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="359c2b43-76af-4306-9d9f-efd5e485c7fc"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="7025c03c-594a-4a68-9089-ed15fb7c1721"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1135,13 +1317,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - New MA received in BG message, level 1"
+ Guid="b7b1da94-55e1-4dea-89d4-3e703d5b7ea0"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="98d3d91c-0a0e-4b3f-87d1-a14d1ea2d29a"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="d30647ef-191a-4efe-bede-c2ed99f52ef3"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -1219,7 +1405,11 @@
             }
         }
     ]
-}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action
+ Guid="a1016a36-fda1-4cf0-9029-fd90b8527a8f"
+>Kernel.MA.MA &lt;- EMPTY</Action><Action
+ Guid="d697a6d4-55b4-496e-8e0d-f94a79aa0714"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9626,
     Orientation =&gt; Orientation.Nominal,
@@ -1229,7 +1419,9 @@
         Position =&gt; 4000.0,
         UnderReadingAmountOdo =&gt; 12.0
     }
-}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action
+ Guid="046ec9b6-67d1-4c3b-9c0b-e30f8f6f58f0"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 15.0,
     D_ora =&gt; 20.0,
@@ -1239,8 +1431,10 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="f3cc80cf-eaaf-423c-9818-fda5610a7521"
 >Available ( Kernel.MA.MA )</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="df4f5f41-ecb0-42bb-b358-3dbba9955f57"
 >Available(Kernel.MA.MA.Sections)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1250,24 +1444,32 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - Check EOA + section info"
+ Guid="fd273ec6-bfea-4404-ae44-3d350aa4d423"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="f29bb631-94b3-4ca3-97fb-3608e76f1d02"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="91132c8a-74f9-4fab-b865-d0af9554d552"
 >Kernel.MA.EndOfMovementAuthority().Location == 1500.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="4451f42d-584c-4e32-a56c-a11b581cb192"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 120.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="d5875c8a-f842-42cd-b155-7b915b757821"
 >(FIRST_IN Kernel.MA.MA.Sections).TimeOut.TimeOut == 40.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="01a08aa6-ca70-441e-bad2-a0e4e7bba436"
 >(FIRST_IN Kernel.MA.MA.Sections).TimeOut.Distance == 20.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="eca863f4-0542-4f60-a00c-eb37f24c3722"
 >Available ( ( FIRST_IN Kernel.MA.MA.Sections ).TimeOut )</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="400ea3a5-1406-4786-aea7-cd5b05e483f4"
 >Kernel.MA.EndOfMovementAuthority().Speed == 40.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1277,13 +1479,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - New MA received in BG message, level 2"
+ Guid="03828251-b25f-4f67-be46-344ca56f4d3e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="cf92d325-845c-40e1-9702-50fffd3b552b"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="598ba1ac-fc0b-44db-beef-dabbb7a78dd9"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -1353,12 +1559,16 @@
             }
         }
     ]
-}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+}</Action><Action
+ Guid="0701d4bf-3c4b-4a23-aa63-d25fb162ce94"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="7065fbed-f3ff-4cc4-bae9-48f8c2733320"
 >Available ( Kernel.MA.MA )</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="3a2f8a06-69d3-4bcd-af27-0b276c734bf7"
 >Available(Kernel.MA.MA.Sections)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1368,20 +1578,26 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - Check EOA + section info"
+ Guid="bc0a4e24-8744-4cb2-b740-ac7b46c97463"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="c2feb83a-82f4-4b4d-ac82-fa3a4e00ca27"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="a43d58e2-c473-45b5-8448-a3550beef338"
 >Kernel.MA.EndOfMovementAuthority().Location == 1310.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="3413f504-eac7-4dd4-800d-f49b1424ab9c"
 >(FIRST_IN Kernel.MA.MA.Sections).TimeOut == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="6b552018-2db9-49b1-a6b5-b6282db50b00"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 170.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="1d43c373-49f0-4bea-8f95-4d38983c3755"
 >Kernel.MA.EndOfMovementAuthority().Speed == 25.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1397,6 +1613,7 @@
  RBC_ID=""
  RBCPhone=""
  Name="MA structure - Overlap"
+ Guid="869b3fdd-89a2-40ee-835c-383267b215a0"
 >
 <TestCases>
 <TestCase
@@ -1405,22 +1622,27 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MA structure - Overlap"
+ Guid="c8e59639-8b90-462a-9af2-1ab29e1b5599"
 >
 <ReqRef
  Id="7fa6af9c-023d-474c-a0f7-8f72181a8fee"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb7ae1d9-7f18-41ae-b966-24e2aeaa69b7"
 >
 </ReqRef><ReqRef
  Id="4777cb40-cb40-4257-8324-c515327a0152"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94282b2c-00f8-400c-9bf8-fc99f8070f81"
 >
 </ReqRef><ReqRef
  Id="9396972e-8fb4-49d1-9c8f-e2cd2efb6005"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7881de61-06e0-4312-bed5-11705ba8732a"
 >
 </ReqRef><ReqRef
  Id="21d0760f-a057-466a-bdf0-41f316e4721c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f01f9c34-ef81-4e34-b4b3-1bc5cb97690d"
 >
 </ReqRef><Steps>
 <Step
@@ -1430,18 +1652,25 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="d189b8f0-3098-4924-b5d5-5f57a1dcffa2"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="c27016e9-c53e-4514-a9d5-745dadd339e2"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="7f635957-221c-46fe-a4fe-bf22ec150c9b"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="a789fa69-78e6-415b-ad88-c5da177e3fda"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="4c640555-2e59-4098-a650-bd431e0f102c"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1450,13 +1679,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - New MA received in BG message, level 1"
+ Guid="56761277-c1ae-4206-b51c-aad3a8042ab7"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="d7d7c0cd-108e-4703-9fdf-f0f8621dfe3c"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="57156be9-0f58-4ea5-850a-f0e513ac48f4"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -1504,7 +1737,11 @@
             }
         }
     ]
-}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action
+ Guid="bf7d2694-0e9e-4b08-877b-a5c6d6628efb"
+>Kernel.MA.MA &lt;- EMPTY</Action><Action
+ Guid="bc659084-8e9b-4e47-8c2f-19f0d61908ac"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9624,
     Orientation =&gt; Orientation.Nominal,
@@ -1514,7 +1751,9 @@
         Position =&gt; 3500.0,
         UnderReadingAmountOdo =&gt; 21.0
     }
-}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action
+ Guid="f24a1e86-d4c5-4a32-bff7-c0328a96290e"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 41.0,
     D_ora =&gt; 36.0,
@@ -1524,14 +1763,19 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="19380d7a-d6e2-4537-9794-b83c9272cc52"
 >Available ( Kernel.MA.MA )</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="004eb404-71c4-4fe0-9b66-5cd2c5b57826"
 >Kernel.MA.MA.EndSection.Overlap.ReleaseSpeed == 30.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="65e5b70b-0132-4bde-9c41-41d19ceed5d4"
 >Kernel.MA.MA.EndSection.Overlap.Distance == 1150.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="ab93c077-fc32-4d5d-b949-ccf517f056e5"
 >Kernel.MA.MA.EndSection.Overlap.TimerDistance == 100.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="fcb0954c-15c7-4a9b-9ac6-530ac05e7b48"
 >Kernel.MA.MA.EndSection.Overlap.TimeOut == 40.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1541,13 +1785,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - New MA received in BG message, level 2"
+ Guid="4d34b3d5-bed3-4f91-a4b1-bcf1412ad76d"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="19c90077-7394-4624-a72d-2832a2b1b590"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="912c66ff-b263-4979-857e-d13c7c40a3d2"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -1594,18 +1842,25 @@
             }
         }
     ]
-}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+}</Action><Action
+ Guid="7e7609fb-6e6b-447d-b7c8-8c7f8544cbe2"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="a7909095-5c47-4de3-bbfe-d6f20d57e795"
 >Available ( Kernel.MA.MA )</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="9c3f0803-f087-46f9-9ca3-835ce337d0b5"
 >Kernel.MA.MA.EndSection.Overlap.TimeOut == 70.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="feef41c5-eb90-4ddd-a7bf-5da7d8864afb"
 >Kernel.MA.MA.EndSection.Overlap.ReleaseSpeed == 10.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="2d8b44de-1dc3-4cee-9146-7397c7a5fc75"
 >Kernel.MA.MA.EndSection.Overlap.Distance == 900.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="357b0b8c-769c-45bf-8359-0911df0e0c2b"
 >Kernel.MA.MA.EndSection.Overlap.TimerDistance == 40.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1621,6 +1876,7 @@
  RBC_ID=""
  RBCPhone=""
  Name="Signalling related speed restrictions"
+ Guid="02d75a6b-ca82-4a49-bb00-df19685479a7"
 >
 <TestCases>
 <TestCase
@@ -1628,14 +1884,17 @@
  Case="0"
  Implemented="TRUE"
  Name="Signalling related speed restrictions"
+ Guid="6efaea60-867d-4ce9-a42a-bb1430ca8882"
 >
 <ReqRef
  Id="d949102e-f89b-489f-8acc-cf60824bd0e5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f6fbcd95-e441-4fcd-aa84-a4486b08c7ed"
 >
 </ReqRef><ReqRef
  Id="5d3380ae-3cb4-4f42-a7ba-d37280d33119"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa0b12c4-1e23-45e3-984e-8796b818b4fc"
 >
 </ReqRef><Steps>
 <Step
@@ -1645,18 +1904,25 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="079fa9b7-6470-476e-954d-e5d1d3972cd9"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="0f7ea0f6-51dd-40ac-8e63-53453ad1dd9f"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="9697545b-cb87-4c3d-bd7f-811f1285e4c5"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="d4e09fe6-4c83-4e36-824e-8be7c273f412"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="8e3f718f-9542-4d0d-b444-9f9ff5abc1e5"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1665,13 +1931,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - New MA received"
+ Guid="2583012a-399d-4b5c-86dc-37c58f8bb1a9"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="a313c668-ade1-4171-93f7-22dc4a3896be"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="5b608fcb-3bd3-4c95-911f-b5458e86e31b"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -1719,7 +1989,11 @@
             }
         }
     ]
-}</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action
+ Guid="26ad6f63-5699-4e59-a2f1-d2734f07d84b"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="76ac5283-c32d-4181-a348-382e77050531"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9630,
     Orientation =&gt; Orientation.Nominal,
@@ -1729,7 +2003,9 @@
         Position =&gt; 5000.0,
         UnderReadingAmountOdo =&gt; 12.0
     }
-}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action
+ Guid="0a6db323-2e3e-4d48-8fc1-22755277f802"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 15.0,
     D_ora =&gt; 17.0,
@@ -1739,6 +2015,7 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="eb8fb62e-3ced-4fd0-acfc-1f14a94ea132"
 >Kernel.MA.SignallingRelatedSpeedRestrictions ( 5000.0 ) == 85.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1748,16 +2025,21 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - Level changes"
+ Guid="56b22c7d-f984-42ba-ad7c-e2e7e9639a8d"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="935ea03c-12ef-475b-a699-719079556f72"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
+<Action
+ Guid="07658e46-0aac-48bb-93cd-273625139cce"
+>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="c57226b6-c9a9-4001-a580-2775086db88c"
 >Kernel.MA.SignallingRelatedSpeedRestrictions ( 0.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1773,6 +2055,7 @@
  RBC_ID=""
  RBCPhone=""
  Name="The SectionTimerStopLocation shall be inside the section"
+ Guid="adfb8643-51cd-466e-b6b5-f4353fb8497d"
 >
 <TestCases>
 <TestCase
@@ -1780,10 +2063,12 @@
  Case="0"
  Implemented="TRUE"
  Name="The SectionTimerStopLocation shall be inside the section"
+ Guid="e5ae1a1e-4935-4480-aaf0-7b48e2131fc0"
 >
 <ReqRef
  Id="e5896680-5ea9-4749-b01e-599ab85abe84"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4e2de457-67bf-4374-8224-1c7736dd4990"
 >
 </ReqRef><Steps>
 <Step
@@ -1793,18 +2078,25 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="de8d2e15-3822-4ae4-a7e8-b2e2bf33b34a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="fabf54cc-3252-41b3-9fa6-206e530578fd"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="f0ff2822-e109-4079-9fbb-5e183c2e5e63"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="36410df0-a9b7-4eab-9544-4900653b388c"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="d2e9c961-b4ec-4961-9d9b-792c7ef57205"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1814,13 +2106,17 @@
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step2 - BTM.Message"
+ Guid="a9be50f3-9dc1-4105-bf52-efee9679a11b"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="4bc2265b-c7de-4dcd-b0ad-e50f3ace1bea"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="5bbda3c4-0eab-4f9e-8f72-6cb30011319a"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -1887,15 +2183,18 @@
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step3 - Data check"
+ Guid="19e35669-2545-4949-9854-76e38501a014"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="2aa83288-cbd7-4da3-9de6-3760a7231441"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="1d02e92f-f43d-4a42-b18d-6cb9d521a08d"
 >THERE_IS_IN Kernel.MA.MA.Sections | (  X.Length == 120.0 AND X.TimeOut.Distance == 20.0  )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1911,6 +2210,7 @@
  RBC_ID=""
  RBCPhone=""
  Name="SvL"
+ Guid="9ab672d1-bff1-499f-af06-91576781cfa2"
 >
 <TestCases>
 <TestCase
@@ -1918,10 +2218,12 @@
  Case="0"
  Implemented="TRUE"
  Name="SvL is defined"
+ Guid="97e05855-9164-4540-adcc-3578af3ca1e3"
 >
 <ReqRef
  Id="dc0bc969-44fc-43da-bc2e-a002f4c15435"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d22aaeb5-853c-4bff-a06e-4d434a12c900"
 >
 </ReqRef><Steps>
 <Step
@@ -1931,18 +2233,25 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="ea975a0e-c8d9-4677-88a9-b98d04c0fd4e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="836d86ba-f213-4e1e-926a-fc54ea908202"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="eb85624b-9d19-4c22-9f0f-6a2f202ac254"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="f61659f1-0ad4-4a46-be0d-f7e850531e82"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="865d7d8c-ef57-43e4-bbb1-af19291b23cb"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1952,13 +2261,17 @@
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step1 - SvL Overlap"
+ Guid="22a772ab-b81e-40d4-8a7b-fb6dbaa4e2e3"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="7e6c23bc-adfd-4927-9f55-b6145f3b99f8"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="9ea3ace0-af8e-4a32-b000-cea30562ae06"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -2009,20 +2322,25 @@
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="2476b1c2-7ae5-4ef1-8113-d5430ad827f1"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="3258ab4f-28fb-4973-8b48-ea74bb9dc718"
 >Kernel.MA.MA.EndSection.Overlap != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="fefb336e-52c4-4530-9176-552e7c8501cd"
 >Kernel.MA.SvL().Speed == Kernel.MA.MA.TargetSpeed</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="79381957-7718-4f72-89ae-f836eaad6374"
 >Kernel.MA.SvL().Location == Kernel.MA.OverlapLocation()</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="86c5fc2a-aa5d-4b2c-a68d-6afa98be1bd0"
 >Kernel.MA.MA.EndSection.DangerPoint == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -2033,13 +2351,17 @@
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step3 - SvL DangerPoint"
+ Guid="51f62346-2e46-4387-a1a5-27537d747b86"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="408104a1-3b38-4d18-a218-4d64e289ef68"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="5cdfc60d-7cd0-4cce-9121-52c5db21d7ca"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -2090,20 +2412,25 @@
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="57a04ee0-e442-4236-94cf-90b76f406602"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="69207650-efe3-4137-b31c-2c27932fee0e"
 >Kernel.MA.MA.EndSection.DangerPoint != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="40843add-b194-4aee-ac7b-e778a9982dd2"
 >Kernel.MA.SvL().Speed == Kernel.MA.MA.TargetSpeed</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="53ffcaf2-0711-41aa-98d8-5c1dfcd47113"
 >Kernel.MA.SvL().Location == Kernel.MA.DangerPointLocation()</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="6ba9ba12-01fb-43be-a9f6-90b8dbef7ba9"
 >Kernel.MA.MA.EndSection.Overlap == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -2114,13 +2441,17 @@
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step3 - SvL EOA"
+ Guid="2313e92e-5421-40a4-946e-4f9e6fb8f8c7"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="21401a24-c3b5-4e8b-8c0f-9c4513eff283"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="ac90014f-b4ff-47e1-99b4-bf216f2664e1"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -2171,20 +2502,25 @@
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="674e7b41-ad07-479f-84d9-d6f384477338"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="fddd1095-e476-4711-a18d-7f4032df61d4"
 >Kernel.MA.SvL().Speed == Kernel.MA.MA.TargetSpeed</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="a580ac02-fcf7-404e-89f0-675a3d1a6a44"
 >Kernel.MA.SvL().Location == Kernel.MA.EndOfMovementAuthority().Location</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="b0c789c4-ba6d-4d4e-8d2f-a70ce9bfe1b9"
 >Kernel.MA.MA.EndSection.Overlap == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="3038fca0-e21b-4260-93f5-11bf7c5aac87"
 >Kernel.MA.MA.EndSection.DangerPoint == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -2193,10 +2529,12 @@
  Case="0"
  Implemented="TRUE"
  Name="SvL is not defined"
+ Guid="fa04d249-ebed-4006-93ff-f311d4596412"
 >
 <ReqRef
  Id="8ab7aafb-d8cf-4c4d-bafc-08a1f658decd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1b5e02ad-5ed8-4a59-a703-d81da105a4ff"
 >
 </ReqRef><Steps>
 <Step
@@ -2207,13 +2545,17 @@
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step1 LimitofAuthority -&gt; No SvL defined"
+ Guid="56017c8a-01ea-4f14-bdb4-54d557a91628"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="6f5a3954-f452-4721-93d2-854f9ba69972"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="bee88319-62a2-4036-b27d-bd88361dc3f3"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -2264,14 +2606,17 @@
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="774a3621-c343-4459-9482-59d376366e94"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="cb1efda1-457b-4bc9-b0ac-d871fbed3c5d"
 >Kernel.MA.SvL() == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="4727a3d0-6b2d-4b38-a820-b2aea024c5bd"
 >Kernel.MA.MA.TargetSpeed != 0.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -2287,6 +2632,7 @@
  RBC_ID=""
  RBCPhone=""
  Name="MA from RBC"
+ Guid="6dbec374-f17e-48f9-95c8-0cd023c404fd"
 >
 <TestCases>
 <TestCase
@@ -2294,14 +2640,17 @@
  Case="0"
  Implemented="TRUE"
  Name="MA received from an RBC and by BTM.Message"
+ Guid="a97b4455-3aa2-4ef2-b32b-65b87ccd9f3a"
 >
 <ReqRef
  Id="948cdca7-999f-4b57-8b4a-7ffc1873927f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6956c310-ad7a-4404-9752-470d33d15923"
 >
 </ReqRef><ReqRef
  Id="ab5117d0-92b0-4488-9084-9e07dba02cec"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="053d0b3e-9d5a-42f0-9cd7-c08cb5523959"
 >
 </ReqRef><Steps>
 <Step
@@ -2311,18 +2660,25 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="ea08f4eb-2c44-4315-9a3e-84d2e2d3016f"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="21d839ec-b9e7-4bcf-9997-78a8e57d73fb"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="168dec10-d8af-4035-bd99-aab1fd05a951"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="2bdbca76-d4f2-4fbd-b5bc-347798263cf4"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="2ad58fa5-bd11-4941-af8d-fe25fe48ff01"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2332,13 +2688,17 @@
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step2 - Euroradio Message + BTM.LRBG"
+ Guid="ed06cbbf-ccb7-4b53-a572-704b1245be25"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="6499dded-fbb1-4697-a30d-7ff6a9b0837c"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+<Action
+ Guid="f87f5e12-09f6-4e86-97a7-1bf9247bad39"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9626,
     Orientation =&gt; Orientation.Nominal,
@@ -2348,7 +2708,9 @@
         Position =&gt; 4000.0,
         UnderReadingAmountOdo =&gt; 12.0
     }
-}</Action><Action>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+}</Action><Action
+ Guid="afe594ec-0029-4031-bb55-443b4f4f5243"
+>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
 {
     MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
@@ -2405,14 +2767,17 @@
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="a84e4629-f2a4-40a2-83b3-8d5092086b4a"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="ea6796f4-9fb9-4d60-ab83-24265ee67569"
 >BTM.LRBG.NID == 9626</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="9be24957-4004-4754-b1cb-68464fe77eae"
 >Kernel.MA.MA.ReferenceBG == 9627</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -2423,13 +2788,17 @@
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step3 - BTM.Message + BTM.LRBG"
+ Guid="249162d2-0e9f-4f1a-87d1-8a3b5e37ff70"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="f6a714d3-b569-4c8d-9864-2b6e90be1390"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="6bb5ff58-5e62-4f7b-9f27-f31bedebc053"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -2507,7 +2876,9 @@
             }
         }
     ]
-}</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action
+ Guid="6d626234-8418-4a27-b2b4-e4511f4be683"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 2120,
     Orientation =&gt; Orientation.Nominal,
@@ -2520,14 +2891,17 @@
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="40973dac-3c58-4d81-b974-e9499bf3c405"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="b9f599b2-6f26-406b-8a43-1fe9e5a97548"
 >BTM.LRBG.NID == 2120</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="da9f9e02-88a9-4c74-8031-50d1c933aef5"
 >Kernel.MA.MA.ReferenceBG == 2124</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -2543,6 +2917,7 @@
  RBC_ID=""
  RBCPhone=""
  Name="Infill MA"
+ Guid="471ddf4c-2727-4315-925c-0a7392ace87e"
 >
 <TestCases>
 <TestCase
@@ -2550,18 +2925,22 @@
  Case="0"
  Implemented="TRUE"
  Name="Infill MA received only when FS or LS Mode and Linking information available"
+ Guid="a0c3819c-7913-4d2a-9df7-40d12856b135"
 >
 <ReqRef
  Id="ddf1106f-1c68-46d4-bb66-180ab706aa8e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa1a9105-1218-4e03-a232-d8ddf3b6881e"
 >
 </ReqRef><ReqRef
  Id="55512f96-4453-4790-88cb-a4324c3a4a22"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d90a7f79-6d1b-4e14-b3ee-b9d997279957"
 >
 </ReqRef><ReqRef
  Id="ee4976a9-43b5-48a3-83fa-b4b49e47c1a8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="30bd9e0d-b857-4005-853a-3d737d96784f"
 >
 </ReqRef><Comment>In the steps 3 and 4 it is possible to see that the OBU receives Infill MA when there is Linking information ( step 4 ). If there is not Linking information, there is not Infill MA ( step 3). This is the requirement 3.8.4.6.4. </Comment>
 <Steps>
@@ -2572,19 +2951,26 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="1252f476-eb0e-4384-88bf-c17d675d33be"
 >
 <Comment>Setup of the enviroment</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="0f4cc37e-e0b7-4f2e-a8a8-fd7bc2355cab"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="5760df5d-2cdf-41ef-aa12-9fb65d94b437"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="a8e878a4-b34a-44a8-9f91-0428a0d27cd3"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="881401de-e9c9-4a2d-a021-44857c77c981"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2594,24 +2980,35 @@
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step2 - Mode OS + Level 1"
+ Guid="850d75d2-61b0-4607-89a3-c62483a23723"
 >
 <Comment>level 1 needed to change to a valid mode</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="bcf334ba-e0b0-497d-9cb9-2891af8aa1d5"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.OS</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+<Action
+ Guid="8310c54d-3c6f-43a4-ae0e-0966b5828271"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="b4e1d9e5-0242-4859-82cf-c382e93985f5"
+>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="57ed2d6d-5444-4fa6-a577-2e40ab498dcd"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="8254375b-a829-4a96-8138-f881096667b6"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="b50b0e37-52e9-487b-81d7-d3fff6d7a597"
 >Kernel.MA.MA == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="97c9e324-a095-47c9-a3f7-4524b33b01f2"
 >Kernel.Infill.Data == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -2622,14 +3019,18 @@
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step3 - BTM.Message + Linking + Mode != LS or FS"
+ Guid="f7238157-7ce4-4004-af88-dbecb80f5b7d"
 >
 <Comment>This step is for testing that the OBU doesnt received the packets because it is not in the correct mode, in this case should be FS or LS </Comment>
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="9bf10b10-84c0-465d-82ce-0f66d0f2345d"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="c83a2621-036e-462a-be45-6d00c0a84b10"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -2692,7 +3093,9 @@
             }
          }
                 ]
-}</Action><Action>INSERT
+}</Action><Action
+ Guid="086ebb1c-4d62-4307-af58-3313dca5e9d2"
+>INSERT
 BTM.Linking.LinkingData
 {
 Distance =&gt; 1000.0,
@@ -2706,17 +3109,21 @@ IN
 BTM.Linking.Linkings</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="acbc57b7-6a44-44d8-98a1-3c4d2627a6f7"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="9a3591fe-7262-4f9d-947d-63e15da02898"
 >Kernel.MA.MA == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="78dd55fc-9f8c-4d19-bc83-f2dd53b29f4d"
 >Kernel.Mode == Default.Mode.OS</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="848ccabd-2c2e-471d-8a40-7efae5620ca4"
 >Kernel.Infill.Data == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -2727,14 +3134,20 @@ BTM.Linking.Linkings</Action></Actions>
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step4 - BTM.Message + Mode FS"
+ Guid="c7cfa7fc-1a82-4de4-9ab5-f1eff3c78f53"
 >
 <Comment>This step is for testing that the OBU receives the packets. It has all the necessary for it. The linking information, the correct mode LS or FS and a BTM.Message with the packets. </Comment>
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="d6ea842e-1a02-42b6-88aa-c2a9c2fb9c8b"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="340b9d3f-3766-4bf0-801a-64d225aff07c"
+>Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+ Guid="397c8d42-e6ac-4538-a472-b4da2f0d1f84"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -2802,20 +3215,25 @@ BTM.Linking.Linkings</Action></Actions>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="6551ed0e-58bc-4397-a3e1-21fb3067e840"
 >Kernel.Infill.Data.NID_BG == 2126</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="0395614f-47fc-4fc4-a480-6a6159274687"
 >Kernel.Infill.Data != EMPTY</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="2a38b278-ee53-4e8a-9c28-9deda843b106"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="efec0446-b053-4541-a171-93284d0a9376"
 >Kernel.Mode == Default.Mode.FS</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="d89c64f2-34b1-4bb2-ad8f-5bdb2e4fe16e"
 >Kernel.MA.MA.EndSection.Length == 1000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -2826,14 +3244,22 @@ BTM.Linking.Linkings</Action></Actions>
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step5 - BTM.Message + Mode LS"
+ Guid="4815e7bb-d15d-4e3f-8b41-1321365c4da2"
 >
 <Comment>Same as step 4 but for LS. The train is tripped otherwise kernel changes the mode to FS (condition 32 of Table 4.6)</Comment>
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="74dc0345-070d-442a-8fac-0c9969ff688a"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.LS</Action><Action>Kernel.SpeedAndDistanceMonitoring.TrainTripped &lt;- True</Action><Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="a2d32957-4cec-4135-a8dd-11c6278eb13d"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="fa793573-b25e-4dcf-9aa6-68ecc128a38d"
+>Kernel.SpeedAndDistanceMonitoring.TrainTripped &lt;- True</Action><Action
+ Guid="c4f646dc-b220-4ca0-af54-2ba4318f54ca"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -2899,14 +3325,17 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="bfe8d52b-3338-4dc6-812f-1e6551e3ebf2"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="7a1d827b-24ff-4503-b3c5-6af70fd68382"
 >Kernel.Mode == Default.Mode.LS</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="ff018495-c063-4f3c-9377-402a3cbe9a51"
 >Kernel.MA.MA.EndSection.Length == 800.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -2917,14 +3346,20 @@ BTM.Linking.Linkings</Action></Actions>
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step6 - BTM.Message + Mode LS + No Linking"
+ Guid="81e4d5d0-1203-4f63-a362-c62d7a4e2ad1"
 >
 <Comment>This step is for testing that if there is not linking information, the OBU does not receive the packet even if it is in the correct mode. The value of the length of the EndSection, is for the previous MA. That means that the new one ( 1200 ) it is not stored.</Comment>
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="7abcbe47-e4d6-4656-988a-8cbc75556a11"
 >
 <Actions>
-<Action>BTM.Linking.Linkings &lt;- []</Action><Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="5bff752f-beee-4dfd-8674-a9d80cc1f8d4"
+>BTM.Linking.Linkings &lt;- []</Action><Action
+ Guid="2a1750b0-19cd-4739-aeee-a1e2f87ec2c3"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -2990,28 +3425,34 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="b44adfb1-528f-486f-8769-16ebf7679533"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="d1c6ec46-56f6-436c-8cf7-27a97dd43dbc"
 >Kernel.Infill.Data == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="d5e1c764-8358-40ca-886e-ed6cf735ae46"
 >Kernel.MA.MA.EndSection.Length == 800.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
  Implemented="TRUE"
  Name="Replace data beyond balise group in L1 via Balise"
+ Guid="13ce3fac-5f3f-4922-8961-8f7ebea94716"
 >
 <ReqRef
  Id="4f9e6037-be46-477d-bbca-3122bd9ad940"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b1359c11-e323-41b6-863c-87a911bf0b2c"
 >
 </ReqRef><ReqRef
  Id="76a67f0f-9afc-46c4-80b9-b7a211017100"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b744d588-3820-4a2e-94b9-328d68163640"
 >
 </ReqRef><Steps>
 <Step
@@ -3021,20 +3462,27 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="5f852612-7a56-418a-be2e-e55ffa4e6c93"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1 - Initialize test environment"
+ Guid="3de3aa38-5c91-4e01-8bac-5d11b1518fbb"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment(
+<Action
+ Guid="ceae8009-5ac9-4ebc-aad9-319bc44a266b"
+>Kernel.InitializeTestEnvironment(
 
 )</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="a58a93d8-8899-4314-a596-95b38c07d4a0"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="e8a97b53-9886-44f8-bd50-8b25490d96ca"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3043,23 +3491,40 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Mode FS + Level 1"
+ Guid="1e36bc5f-ff4c-43d2-8b1d-594fded12c7d"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="917c86cb-3955-463f-8794-7b2d54e50bd6"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>Kernel.Infill.Data &lt;- EMPTY</Action><Action>BTM.Linking.Linkings &lt;- []</Action></Actions>
+<Action
+ Guid="1bfda77d-1448-44b5-bdfe-c80edd013a94"
+>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="06694a08-b3cb-4eaf-b49b-889af96a480d"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+ Guid="851e79be-bb39-4eb2-9bfa-d90c79f36350"
+>Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+ Guid="be2ff6e5-079e-4d29-88fb-a16e9e845175"
+>Kernel.MA.MA &lt;- EMPTY</Action><Action
+ Guid="690069b3-72aa-405c-93ae-1bc1771979d6"
+>Kernel.Infill.Data &lt;- EMPTY</Action><Action
+ Guid="937b5cd3-2dcc-40f0-8cf7-47d517315d38"
+>BTM.Linking.Linkings &lt;- []</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="362596bb-e244-4add-899c-1e7f38e5e83f"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="9d824544-ebde-4d0f-8196-77bdaf699c72"
 >Kernel.Infill.Data == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="4d54e3e7-df02-4bbb-9764-5198507b8707"
 >Kernel.MA.MA == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -3069,13 +3534,17 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - BTM.Message 1 NoInfill"
+ Guid="412e4412-7b82-4989-ac9d-cd61fe26baed"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="1143abe5-0c52-4faa-b469-1628838443fb"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="a4dbe559-da07-402a-ac2d-d7add3b95de6"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -3130,14 +3599,17 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="d1c61444-baac-46d7-a827-16403a0d1e5f"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="57d1864b-8a23-45b2-ba2a-207bd714af45"
 >(COUNT Kernel.MA.MA.Sections) == 3</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="77cfa782-b5f1-4cdf-9eb5-f34e29f29663"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -3147,13 +3619,17 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - BTM.Message 2 Infill"
+ Guid="161f1f4b-d8d5-467a-bcb1-db0a1e0b28b4"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1 - Send"
+ Guid="cc9a226a-c591-47e1-bc79-dcded8e1a3e4"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="9dfc4b1a-f413-430a-8ef5-16e636f158f4"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -3231,7 +3707,9 @@ BTM.Linking.Linkings</Action></Actions>
             }
          }
                 ]
-}</Action><Action>INSERT
+}</Action><Action
+ Guid="1401f724-b035-4266-a62f-3e54da5dd95f"
+>INSERT
 BTM.Linking.LinkingData
 {
 Distance =&gt; 1000.0,
@@ -3245,6 +3723,7 @@ IN
 BTM.Linking.Linkings</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="93553a3d-6ce6-4257-9b92-1c29508a34a7"
 >
 </SubStep></SubSteps>
 </Step><Step
@@ -3254,27 +3733,34 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - Check for replaced information"
+ Guid="db7e7508-55c5-4665-a735-3379468750d6"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="e24d08ce-2d2b-4755-906a-501c10a2f2b9"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="45ddc847-be91-4155-9d16-f21d3695aa49"
 >(COUNT Kernel.MA.MA.Sections) == 5</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="cf8525c5-7738-4c6f-8112-b6e940e38e27"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="25f8e812-0eac-4ebe-9ce8-27f9c0cce4c3"
 >(LAST_IN Kernel.MA.MA.Sections).Length == 345.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="e6b4fb12-7025-4840-83d7-e340baf5a2d0"
 >Kernel.MA.MA.EndSection.Length == 1234.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="f417fcf7-d3df-4f8b-a813-e4abcd3763b9"
 >Before(
     ExpectedFirst=&gt; FIRST_IN Kernel.MA.MA.Sections | X.Length == 800.0, 
     ExpectedSecond=&gt; FIRST_IN Kernel.MA.MA.Sections | X.Length == 200.0,
@@ -3285,14 +3771,17 @@ BTM.Linking.Linkings</Action></Actions>
 </TestCase><TestCase
  Implemented="TRUE"
  Name="Replace data beyond balise group in L1 via Loop"
+ Guid="910045cb-0dac-421c-a7d8-d2850a9c5d7d"
 >
 <ReqRef
  Id="4f9e6037-be46-477d-bbca-3122bd9ad940"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48a3ee6f-fca1-4b54-a177-7ed32ea9b32a"
 >
 </ReqRef><ReqRef
  Id="76a67f0f-9afc-46c4-80b9-b7a211017100"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f9b2c9e9-e69f-4826-9a49-70dd98de3d71"
 >
 </ReqRef><Steps>
 <Step
@@ -3302,20 +3791,27 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="1e1486f7-5c7e-40e0-b709-f6d723cc9c94"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1 - Initialize test environment"
+ Guid="f96d2200-552a-4bae-abc2-4ab5a86d6e77"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment(
+<Action
+ Guid="2a6a0d5e-36e0-49d8-8cd7-d0a9c03920b6"
+>Kernel.InitializeTestEnvironment(
 
 )</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="86b44a2b-67a1-4e1f-80b8-bf90aac3b45a"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="5189c256-08aa-44a2-9344-1999cc5e8277"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3324,23 +3820,40 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Mode FS + Level 1"
+ Guid="5c46b008-5ca5-4c2f-9660-9d77ed596792"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="b3bea4fd-08b0-4765-975d-ca8650793e90"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>Kernel.Infill.Data &lt;- EMPTY</Action><Action>BTM.Linking.Linkings &lt;- []</Action></Actions>
+<Action
+ Guid="8de5b060-aff5-4c4e-992c-1852db1fec77"
+>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="c46c77f6-53f1-4476-8e14-45326cfb44cc"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+ Guid="8334c3df-4f78-4b96-a4da-819f0cee7b11"
+>Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+ Guid="1c28a5ce-cbb9-483d-a6fa-e70bc6df00f4"
+>Kernel.MA.MA &lt;- EMPTY</Action><Action
+ Guid="ca5f22dd-b138-44dd-b950-d049a10239db"
+>Kernel.Infill.Data &lt;- EMPTY</Action><Action
+ Guid="884fac6e-cd36-4ae3-9f1b-2585f79d6607"
+>BTM.Linking.Linkings &lt;- []</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="a8296992-802e-4edc-bc31-73bfe4b20df4"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="b1bb463e-09b6-471f-9208-115b174ea2b0"
 >Kernel.Infill.Data == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="aa7a5a68-a80c-4352-b441-682c8cfcbc4e"
 >Kernel.MA.MA == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -3350,13 +3863,17 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - BTM.Message 1 NoInfill"
+ Guid="51b240f2-3261-4f52-bfd0-9c87286e8a5b"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="31acef13-6c99-45ff-9896-dd70c0f29ec0"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="16acf83b-4b1a-4a97-a87a-cac5cbc11077"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -3411,14 +3928,17 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="6b2e8fa5-c0c8-4447-ab64-5cd5289eeaf4"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="c31e6d0c-1c34-4739-b78d-578ccbb99e10"
 >(COUNT Kernel.MA.MA.Sections) == 3</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="46459917-4e41-43ec-bf31-7d85dee40007"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -3428,13 +3948,17 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - BTM.Message 2 Infill"
+ Guid="be6e9ee8-9078-4b6e-86eb-c59332a87afd"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1 - Send"
+ Guid="c6a7b690-c2ff-451c-b9de-ce1918329055"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="06e55a73-eebb-4b41-b954-db8776e3fa74"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -3512,7 +4036,9 @@ BTM.Linking.Linkings</Action></Actions>
             }
          }
                 ]
-}</Action><Action>INSERT
+}</Action><Action
+ Guid="f87b8f80-0be6-4934-af75-bc604a568546"
+>INSERT
 BTM.Linking.LinkingData
 {
 Distance =&gt; 1000.0,
@@ -3526,6 +4052,7 @@ IN
 BTM.Linking.Linkings</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="4805facc-c965-471c-8ce0-c47a025e04fe"
 >
 </SubStep></SubSteps>
 </Step><Step
@@ -3535,27 +4062,34 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - Check for replaced information"
+ Guid="c9f7dd0e-3e7c-44ca-b610-4baf1763a59c"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="379a58f5-8a74-4c8e-a2cd-3a8012cb1ac3"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="7b1010de-9e50-46ca-98eb-5b7c4830eb8b"
 >(COUNT Kernel.MA.MA.Sections) == 5</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="4c82dd5d-9a47-489b-a113-4d28402af077"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="1cbb2c98-8ff7-4af9-b56f-db0bbe06a983"
 >(LAST_IN Kernel.MA.MA.Sections).Length == 345.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="8394a171-1c84-4220-8b4c-225425e246e9"
 >Kernel.MA.MA.EndSection.Length == 1234.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="782c252c-122d-4573-afa8-14aa99be644e"
 >Before(
     ExpectedFirst=&gt; FIRST_IN Kernel.MA.MA.Sections | X.Length == 800.0, 
     ExpectedSecond=&gt; FIRST_IN Kernel.MA.MA.Sections | X.Length == 200.0,
@@ -3575,19 +4109,23 @@ BTM.Linking.Linkings</Action></Actions>
  RBC_ID=""
  RBCPhone=""
  Name="No Infill MA"
+ Guid="147a8fdd-57c3-4597-8db4-e8776bf4a784"
 >
 <TestCases>
 <TestCase
  Implemented="TRUE"
  Name="Overwrite existing information L1 + Balise"
+ Guid="f1c12474-93e0-423b-b807-e9c6c9205608"
 >
 <ReqRef
  Id="5aa1fa8e-68c3-4f4f-83d8-b6d2b462a508"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48818ec9-5a37-4b58-8911-fe3266ab4b55"
 >
 </ReqRef><ReqRef
  Id="76a67f0f-9afc-46c4-80b9-b7a211017100"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c9b8fcbb-54da-48d3-af91-cff50dd685ef"
 >
 </ReqRef><Steps>
 <Step
@@ -3597,20 +4135,27 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="79f32470-c128-45b8-9e93-e389be076bd5"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="2ee889fb-9142-4efb-a206-ca4c8d81f7a5"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment(
+<Action
+ Guid="653b111c-f27f-4260-91f9-a925a82382ef"
+>Kernel.InitializeTestEnvironment(
 
 )</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="aae2eff5-49b9-45a1-a9e7-4c3112f577f8"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="d0ec3b6e-eab7-4c7d-9507-e8c07090a34f"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3619,23 +4164,34 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Mode OS + Level1"
+ Guid="82619df7-4532-470a-af95-2f24a9e126ac"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="4e2e53ca-ad6c-4bb6-a44b-d7deb133b7a2"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+<Action
+ Guid="215ca8ee-6912-4cc3-a3ac-46373b4a3a4b"
+>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="31e2e050-eb59-4912-8df4-bffe34880384"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+ Guid="4291347a-5072-4875-b465-8d92c534fbdc"
+>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="0d71a32a-d982-46b8-b2b5-585136f1dc90"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="1d745bc0-21e7-4db7-9667-35f04b88b8da"
 >Kernel.Infill.Data == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="70ff0427-d071-42a5-a322-630fe596a833"
 >Kernel.MA.MA == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -3645,13 +4201,17 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - BTM.Message + someinformation"
+ Guid="7d555834-47ff-4b5f-b4b4-25a1aae415dc"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="21c38af8-620a-4795-b495-d7d39ac4fdef"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+<Action
+ Guid="dab1468d-e4ef-40b2-b875-bb9f5217c3d1"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9618,
     Orientation =&gt; Orientation.Nominal,
@@ -3661,7 +4221,9 @@ BTM.Linking.Linkings</Action></Actions>
         Position =&gt; 2000.0,
         UnderReadingAmountOdo =&gt; 35.0
     }
-}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action
+ Guid="dc0725f7-7907-4ad6-9ba6-ec9a7fd1b5de"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 54.0,
     D_ora =&gt; 51.0,
@@ -3670,9 +4232,12 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="f07d95bd-475d-44ce-94dc-2bd76309c56d"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="9321ab3f-7979-438d-83e3-e78c0c99b4da"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -3719,41 +4284,53 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3"
+ Guid="11a8b5d8-df41-4bfc-950a-b69cdb4152ba"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="684630bd-a592-41ae-aefe-b310023bdd3d"
 >Kernel.MA.MA != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="ecbbdec8-b2b4-44b9-b18e-67102c5112fe"
 >Kernel.MA.MA.EndSection.Length == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="359f0d59-d7af-4e14-ae44-cc9323c258ce"
 >Kernel.MA.MA.TargetSpeed == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="67bf53fc-12fd-4e1e-9633-815942eb081c"
 >Kernel.MA.MA.TargetSpeedTimeOut == 250.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="4dcd1654-63dd-4ec3-a806-b9e2d897d0ff"
 >Kernel.MA.MA.ReferenceBG == 9618</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="208a8d88-e52c-4077-96af-d4a6a58118df"
 >Kernel.MA.SignallingRelatedSpeedRestriction == 100.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="621b2bd7-d6d5-4647-9a80-64a8d20c0b0a"
 >(COUNT Kernel.MA.MA.Sections) == 1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="ba0dc73b-fe60-404f-bf18-fc3ef38ab496"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="b022faa4-47ab-4227-9b41-b928d5f27aa1"
 >Kernel.MA.MA.EndSection.DangerPoint.Distance == 1200.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="dd25f4d4-575f-47bc-8601-611efe5c18a6"
 >Kernel.MA.MA.EndSection.DangerPoint.ReleaseSpeed == 25.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="1ab3c0df-7405-4c89-89b9-980ab9ca7c36"
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed == 25.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -3763,13 +4340,17 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - BTM.Message + someNEWinformation"
+ Guid="4e26f275-b571-4044-92a7-ef29fd747811"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="6e03e140-d642-4ac6-9edc-f6efc867eb78"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+<Action
+ Guid="5d0fd17b-b17d-4989-95dc-8d5758c283df"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9619,
     Orientation =&gt; Orientation.Nominal,
@@ -3784,12 +4365,16 @@ BTM.Linking.Linkings</Action></Actions>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="511de61d-d3df-4ec4-b1c4-fc5e1dd53d66"
 >Kernel.MA.MA != EMPTY</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="4c22cca3-29a7-4a7a-93c7-f82a5acd0269"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="859ff319-4069-4f9d-9aa3-8fc53caae3ac"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -3840,44 +4425,57 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3"
+ Guid="61fb7e4d-d70c-4102-a3e1-2869a71c69da"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="1fc85d33-c97d-49b3-af1d-4975283ff7ce"
 >Kernel.MA.MA != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="4dc92d83-9358-48ed-b6e9-17b29bd8d893"
 >Kernel.MA.MA.EndSection.Length == 1200.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="ddcedda8-8426-4bcc-8cad-be7719d2ba00"
 >Kernel.MA.MA.TargetSpeed == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="9513d054-0146-44a1-883f-bddb098791d1"
 >Kernel.MA.MA.TargetSpeedTimeOut == 200.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="b8e5634d-28bb-4ef1-9743-eac6e52f6a2e"
 >Kernel.MA.MA.ReferenceBG == 9619</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="18645150-d1e6-4d70-8624-14dc5e2e896c"
 >Kernel.MA.SignallingRelatedSpeedRestriction == 80.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="00e19708-5e45-4a55-beb3-cff2a60ea65f"
 >(COUNT Kernel.MA.MA.Sections) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="c9df00a6-f750-4b1c-a363-5a8a829907be"
 >(LAST_IN Kernel.MA.MA.Sections).Length == 1100.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="c1e0ad36-e8f7-48c3-bc40-1b1793bbf817"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 900.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="3757fa09-0f4e-427a-824d-d4faedc1ea80"
 >Kernel.MA.MA.EndSection.DangerPoint.ReleaseSpeed == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="f07f9dde-b9d2-4de6-a061-2c3269550880"
 >Kernel.MA.MA.EndSection.DangerPoint.Distance == 1300.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="e9ee397f-5037-4996-a39c-53a8192c016e"
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed == 50.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -3887,14 +4485,18 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - BTM.Message + someMORENEWinformation"
+ Guid="e5833bed-de96-470e-bf74-145a22041209"
 >
 <Comment>We separately check for the overlap-fields here, so there is no interference with Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed #morido, 13/11/20</Comment>
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="bf477a64-856f-4fc1-9d70-8070c4eb7745"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+<Action
+ Guid="028b877a-2ab5-44b0-a0d2-c58a334a6018"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9620,
     Orientation =&gt; Orientation.Nominal,
@@ -3909,12 +4511,16 @@ BTM.Linking.Linkings</Action></Actions>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="a6c3a092-4160-44d8-be80-9fdb678aefce"
 >Kernel.MA.MA != EMPTY</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="4850268b-6944-4031-bc09-8c51358329c0"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="17056443-115f-4d75-8ee0-1e457d17ae69"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -3967,43 +4573,54 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3"
+ Guid="c3718d5e-c0e9-47a8-80fb-9a0f00d17d31"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="41c5904b-e1df-4a9b-8ac6-ece29108567d"
 >Kernel.MA.MA.EndSection.Overlap.Distance == 1150.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="465b0424-3798-4628-be30-c02e95ea7011"
 >Kernel.MA.MA.EndSection.Overlap.ReleaseSpeed == 30.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="93584aea-46a3-4ffa-b811-1834102db5b4"
 >Kernel.MA.MA.EndSection.Overlap.TimeOut == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="58070b70-8408-4452-868a-a2710e5e60f0"
 >Kernel.MA.MA.EndSection.Overlap.TimerDistance == 100.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="32a1c8a1-7491-4bb6-ae76-22b66cbdb2e7"
 >(COUNT Kernel.MA.MA.Sections) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="0065b07a-d6a4-4b74-bc73-22458548a917"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="9345a241-b19f-4620-be0a-4288dab7944a"
 >(LAST_IN Kernel.MA.MA.Sections).Length == 700.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
  Implemented="TRUE"
  Name="Overwrite existing information L23 + Balise"
+ Guid="a9e75aee-f632-4425-893b-0d33f2d528d2"
 >
 <ReqRef
  Id="5aa1fa8e-68c3-4f4f-83d8-b6d2b462a508"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="921f6364-5984-4a18-8bf4-97f33402dfa2"
 >
 </ReqRef><ReqRef
  Id="76a67f0f-9afc-46c4-80b9-b7a211017100"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="affb68ac-0f12-4fc8-933c-da03fec89cf7"
 >
 </ReqRef><Steps>
 <Step
@@ -4013,20 +4630,27 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="ec7e92ed-cfa9-4437-afca-4ecc1987f5f1"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="99f19017-973e-403b-98af-ff42fbb91e07"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment(
+<Action
+ Guid="17c18d3d-05fe-477c-80cd-907873eb9bc4"
+>Kernel.InitializeTestEnvironment(
 
 )</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="a2cf86fa-1ca4-4578-973f-8e5d3f3f24d8"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="ff795c92-bec8-49aa-93b1-7e989a2dc607"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4035,23 +4659,36 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Mode OS + Level2"
+ Guid="5425b18c-9c07-489d-943e-f59c0597c139"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="25054664-4fa2-47bf-8ca3-01b4605c0dc4"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L2</Action><Action>Kernel.Mode &lt;- Default.Mode.OS</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+<Action
+ Guid="ebb8a841-08e8-44be-b297-53cd0c43135a"
+>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="1340d3bf-a5d6-44d3-8183-df4cab6f1e24"
+>Kernel.Level.Value &lt;- Default.Level.L2</Action><Action
+ Guid="1298054f-8256-4fc6-9dff-bffcfe6642cf"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="e84974d8-8a82-4055-82bf-da0b1d0c4ba6"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="6ab4210b-aadc-4c55-b54c-da0fe11c993d"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="db49fde4-cd8d-4e42-9a34-63a6f4d01b86"
 >Kernel.Infill.Data == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="e9f6870d-0de6-4478-a63b-56d3d150a4ea"
 >Kernel.MA.MA == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -4061,13 +4698,17 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - BTM.Message + someinformation"
+ Guid="bb559cc6-369c-4fb7-9504-de895055163f"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="85f95102-23a1-4550-b445-7cfee501e87d"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+<Action
+ Guid="b345e43f-f2cd-47d9-9ed9-ae75f8183243"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9618,
     Orientation =&gt; Orientation.Nominal,
@@ -4077,7 +4718,9 @@ BTM.Linking.Linkings</Action></Actions>
         Position =&gt; 2000.0,
         UnderReadingAmountOdo =&gt; 35.0
     }
-}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action
+ Guid="1f1f132c-3be6-410a-ba87-f1c2946d2a6c"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 54.0,
     D_ora =&gt; 51.0,
@@ -4086,9 +4729,12 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="9c35c98b-a2cd-4d7a-bb72-5078bd102012"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="1ebc3ba4-55b2-43ce-92ac-f0c98ef6395f"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -4135,38 +4781,49 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3"
+ Guid="2cfb48bb-6391-47e2-a4ba-a66dc4132a5c"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="771a6b3a-8137-4cda-bbc5-729a7f1266ec"
 >Kernel.MA.MA != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="b2331200-9453-4b59-813e-9a3680d84f53"
 >Kernel.MA.MA.EndSection.Length == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="dada50ad-b638-44da-8632-c9bf83fbeef5"
 >Kernel.MA.MA.TargetSpeed == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="22411e6c-9801-4bc9-bdfd-60077ba5a7cb"
 >Kernel.MA.MA.TargetSpeedTimeOut == 250.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="a5d7ff6c-3baa-4f87-a571-100ce5aa55d4"
 >Kernel.MA.MA.ReferenceBG == 9618</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="118ad2de-34d3-4da2-a6ed-78bd11b9850d"
 >(COUNT Kernel.MA.MA.Sections) == 1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="92b696f7-debb-46bd-aeb7-5244ba217ae9"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="0c4a7fb9-ec20-4bf4-8f8b-038267cfc123"
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed == 25.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="adc0859e-947a-4c52-a9f0-cf0e3141a51c"
 >Kernel.MA.MA.EndSection.DangerPoint.Distance == 1200.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="69f5cb10-5870-44c2-99f0-421a14fbdcae"
 >Kernel.MA.MA.EndSection.DangerPoint.ReleaseSpeed == 25.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -4176,13 +4833,17 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - BTM.Message + someNEWinformation"
+ Guid="f90a35a0-8219-4c92-be8b-ff3cd5378abd"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="ee5e1b7c-2208-4e6f-8e3b-d9d009c19b21"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+<Action
+ Guid="a4ad3115-6f92-4923-ba77-474715decf9b"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9619,
     Orientation =&gt; Orientation.Nominal,
@@ -4197,12 +4858,16 @@ BTM.Linking.Linkings</Action></Actions>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="20755ae5-8538-4f0f-890d-56da5cf2d694"
 >Kernel.MA.MA != EMPTY</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="a93db420-32c2-41ff-a890-0bb4eb27b565"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="f045c320-198d-4904-9aa3-770a2cfeb7d5"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -4254,41 +4919,53 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3"
+ Guid="5aa1f690-b2ef-4733-9526-a3239f9ac0de"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="f5e4bdeb-477e-4d40-b2a3-28890dbf0f24"
 >Kernel.MA.MA != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="83fd3425-121a-41ea-a9f6-1752f0801b1b"
 >Kernel.MA.MA.EndSection.Length == 1200.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="ac9ef2a8-85a0-4310-bf73-78e6fd6b770a"
 >Kernel.MA.MA.TargetSpeed == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="4fc03293-2a8d-47fc-a9c1-bcd25f96f916"
 >Kernel.MA.MA.TargetSpeedTimeOut == 200.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="eebdc120-07f5-4880-a217-b00bd2688baf"
 >Kernel.MA.MA.ReferenceBG == 9619</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="da2ab0a5-e2e6-4f03-a083-23f579a57b94"
 >(COUNT Kernel.MA.MA.Sections) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="85598268-dddb-4332-bbb5-fa7335ea905d"
 >(LAST_IN Kernel.MA.MA.Sections).Length == 1100.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="73c1d331-c90c-42eb-ba19-a79309d9269a"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 900.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="5b62f711-2e0e-4d54-9801-d819aa76d415"
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="4efb578e-8657-4196-83d4-4a4446547525"
 >Kernel.MA.MA.EndSection.DangerPoint.Distance == 1300.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="7758ec3f-7127-4853-ba76-e5a17264ee41"
 >Kernel.MA.MA.EndSection.DangerPoint.ReleaseSpeed == 50.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -4298,14 +4975,18 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - BTM.Message + someMORENEWinformation"
+ Guid="bf636ad9-2ae1-4324-b47e-e74f733bb501"
 >
 <Comment>We separately check for the overlap-fields here, so there is no interference with Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed #morido, 13/11/20</Comment>
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="24973c27-81f6-4ae4-94c0-e2d243a805df"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+<Action
+ Guid="fd8996ce-71d9-4186-aba7-26e81a07cbe6"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9620,
     Orientation =&gt; Orientation.Nominal,
@@ -4320,12 +5001,16 @@ BTM.Linking.Linkings</Action></Actions>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="1d5917f5-506f-4979-abda-a36f4b4aa6ba"
 >Kernel.MA.MA != EMPTY</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="ccde0264-55d1-49f1-b3cf-d944d148bff6"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="4b3dc7b4-e7f6-468a-b6e0-cc21554c7dbe"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -4379,43 +5064,54 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3"
+ Guid="1683a7e8-2710-4de4-843d-95d32a9f7bb1"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="ef6e5b5e-6572-473a-a485-3d535bee86f4"
 >(COUNT Kernel.MA.MA.Sections) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="b5b3ab7a-a0bc-4c60-aabd-6b8ffe226f47"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="22fd6f7d-a096-4a9b-b2b3-af7e3e2563da"
 >(LAST_IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="9a79bf85-2feb-451a-a5ea-0a06e7f0a601"
 >Kernel.MA.MA.EndSection.Overlap.Distance == 1150.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="e204ad41-5cad-45c6-aee7-92a146e3350e"
 >Kernel.MA.MA.EndSection.Overlap.ReleaseSpeed == 30.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="d73f1e6d-23f7-42f6-8b16-481407923ac8"
 >Kernel.MA.MA.EndSection.Overlap.TimeOut == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="6652591f-ef26-4ec1-a080-64de2e0c72f7"
 >Kernel.MA.MA.EndSection.Overlap.TimerDistance == 100.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
  Implemented="TRUE"
  Name="Overwrite existing information L23 + Euroradio"
+ Guid="7987e70c-ebe2-4107-96ed-3ae881139a1b"
 >
 <ReqRef
  Id="5aa1fa8e-68c3-4f4f-83d8-b6d2b462a508"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e019dd70-3ea5-4079-aab8-20ceb470a6b8"
 >
 </ReqRef><ReqRef
  Id="76a67f0f-9afc-46c4-80b9-b7a211017100"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="884b49ca-4ac7-4a65-b3f2-979f3b189dac"
 >
 </ReqRef><Comment>We separately check for the overlap-fields here, so there is no interference with Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed #morido, 13/11/20</Comment>
 <Steps>
@@ -4426,20 +5122,27 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
+ Guid="f6a21194-2a8d-4742-aeb9-c6229d5067b8"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Initialize test environment"
+ Guid="9792fc8d-511e-4ecf-98fd-bbacaf4154f7"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment(
+<Action
+ Guid="8112a78f-f4db-4662-a23a-f04301e39529"
+>Kernel.InitializeTestEnvironment(
 
 )</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
+ Guid="31619091-b909-4aac-b1c2-6e916124f741"
 >
 <Actions>
-<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+<Action
+ Guid="3a289672-5f51-4d70-b3c9-dac48c0c64cf"
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4448,23 +5151,36 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Mode OS + Level2"
+ Guid="4faa96c4-8ff9-41ef-8d80-7a9106e64ee9"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="bdd41fb7-d027-4dc5-9360-23f26a7a9ff7"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L2</Action><Action>Kernel.Mode &lt;- Default.Mode.OS</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+<Action
+ Guid="82385b4a-05f4-4719-b506-c757f5bfca42"
+>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="ce6b8e51-a4bb-462f-a82b-2b0c32791a17"
+>Kernel.Level.Value &lt;- Default.Level.L2</Action><Action
+ Guid="07775d8d-84e3-40af-a42a-e9eca411f3bb"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="e4034b1b-9aac-4fcf-8055-6f149ba6ca62"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="5dda5265-1513-4bd4-8a82-260d397dccbf"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="706d93a5-7dcf-4088-9f9c-6e6748cf08ec"
 >Kernel.Infill.Data == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="2ceed9ce-edc3-4853-9cea-9ce817a41d14"
 >Kernel.MA.MA == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -4474,13 +5190,17 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - EURORADIO.Message + someinformation"
+ Guid="4b9f0fe1-f1bb-4cee-900e-6183d558b9a5"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="2db6d439-7f3d-44df-8a72-bbc42486ef9e"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+<Action
+ Guid="4ca49b22-3e77-48c0-94a8-c850429b5587"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9618,
     Orientation =&gt; Orientation.Nominal,
@@ -4490,7 +5210,9 @@ BTM.Linking.Linkings</Action></Actions>
         Position =&gt; 2000.0,
         UnderReadingAmountOdo =&gt; 35.0
     }
-}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action
+ Guid="506febf7-dc06-4b79-a6ec-2692e7189885"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 54.0,
     D_ora =&gt; 51.0,
@@ -4499,9 +5221,12 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="8b29f553-e364-49d3-9b57-37463e57efc8"
 >
 <Actions>
-<Action>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+<Action
+ Guid="77442a5d-3f25-47e9-9457-9746ac814d83"
+>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
 {
     MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
@@ -4548,38 +5273,49 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3"
+ Guid="0092df30-38e9-4a2c-84fd-16a61b492329"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="68e2a335-83e3-43ea-b38b-e71ad1bfc8c8"
 >Kernel.MA.MA != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="90e9544a-c912-4d5c-a0c9-10b84b2ccd05"
 >Kernel.MA.MA.EndSection.Length == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="59dd7c6e-0ef7-41c2-9521-5aef0c19e39c"
 >Kernel.MA.MA.TargetSpeed == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="b1712dfd-55a6-43ef-9473-23756e0dc15b"
 >Kernel.MA.MA.TargetSpeedTimeOut == 250.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="119a7eb8-0550-481a-8cd6-24e2cba806e3"
 >Kernel.MA.MA.ReferenceBG == 9627</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="375df2e0-32a1-4b8c-8bec-70a8cef07857"
 >(COUNT Kernel.MA.MA.Sections) == 1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="f9b2c5a3-6309-4770-aa6f-3f6cf6c2e711"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="70b73ce1-ab1e-4ae2-9942-5d9eafc9c137"
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed == 25.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="8623c32e-6efc-48ca-9b44-66e16fed2a8c"
 >Kernel.MA.MA.EndSection.DangerPoint.Distance == 1200.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="d61e8552-2697-47b2-8be9-031a9319f7fd"
 >Kernel.MA.MA.EndSection.DangerPoint.ReleaseSpeed == 25.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -4589,13 +5325,17 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - EURORADIO.Message + someNEWinformation"
+ Guid="5d14c253-4643-40e5-b06f-7fad0cefc9d2"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="0a7f8247-3e6d-4e62-b836-106243adf75b"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+<Action
+ Guid="46d8ad76-9f4c-457c-a68c-4416ddd5890c"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9619,
     Orientation =&gt; Orientation.Nominal,
@@ -4610,12 +5350,16 @@ BTM.Linking.Linkings</Action></Actions>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="c3a3b5f3-a596-4808-a807-d5522809e4c0"
 >Kernel.MA.MA != EMPTY</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="06753054-a68b-453a-9377-7552017b30cf"
 >
 <Actions>
-<Action>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+<Action
+ Guid="d0b9d8be-818c-4282-af2d-4680cd063b32"
+>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
 {
     MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
@@ -4668,41 +5412,53 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3"
+ Guid="b162abdf-027d-4832-847d-1259e80aa729"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="97baf753-29e9-4e29-b23e-2dccb5cf3843"
 >Kernel.MA.MA != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="e6d1e74e-2330-46c5-857e-53ad2b5693d5"
 >Kernel.MA.MA.EndSection.Length == 1200.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="89d0cad7-a1ac-4cf9-a267-474e564c01ec"
 >Kernel.MA.MA.TargetSpeed == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="50dc222b-d4cd-4393-8abe-bc81d95075d3"
 >Kernel.MA.MA.TargetSpeedTimeOut == 200.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="45e0c4c8-4964-44b4-b737-4d8ef13bdaf9"
 >Kernel.MA.MA.ReferenceBG == 9628</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="08e8739c-0e3b-4f76-aa4e-36b75632cd2e"
 >(COUNT Kernel.MA.MA.Sections) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="f31e7ee8-4d6e-4480-8baa-1e3ba394dc18"
 >(LAST_IN Kernel.MA.MA.Sections).Length == 1100.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="fa8a144f-38a7-4315-a111-3608aaf3d580"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 900.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="0183e11b-c1cf-48f8-a72f-4d52ddde0322"
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="ba4ef67f-ec51-4bb1-a344-fff1612e0145"
 >Kernel.MA.MA.EndSection.DangerPoint.Distance == 1300.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="b8068fcc-9a2a-479c-b9a4-53a75b2e0a67"
 >Kernel.MA.MA.EndSection.DangerPoint.ReleaseSpeed == 50.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -4712,13 +5468,17 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - EURORADIO.Message + someMORENEWinformation"
+ Guid="91d00844-8507-4574-8f33-d67596161508"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="f5e98e80-8069-4ea8-af7c-e5a470a1dd73"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+<Action
+ Guid="ee42fee4-a2ff-454c-ba54-6837efce8038"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9620,
     Orientation =&gt; Orientation.Nominal,
@@ -4733,12 +5493,16 @@ BTM.Linking.Linkings</Action></Actions>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="06735959-6b24-4868-bc61-5efbe323ca4f"
 >Kernel.MA.MA != EMPTY</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="712bc00e-b543-4abe-832e-e92c6a28e89f"
 >
 <Actions>
-<Action>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+<Action
+ Guid="36a86e16-a730-4a1e-8a45-856caf36230c"
+>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
 {
     MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
@@ -4793,29 +5557,37 @@ BTM.Linking.Linkings</Action></Actions>
 }</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3"
+ Guid="09e86ba1-4391-46b4-a682-d86499fbbc93"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="e5b98327-a3f3-415e-a2ab-deb18ba35fd1"
 >(COUNT Kernel.MA.MA.Sections) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="7a60bcd9-3fdd-4584-95d1-e0728d47bbec"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="68479eb1-0b4b-4688-a220-b76e4a62de5a"
 >(LAST_IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="aa3ae47d-086b-47c3-bf6a-68e0a2eff910"
 >Kernel.MA.MA.EndSection.Overlap.Distance == 1150.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="e67afe6a-46c1-4f87-9a32-a1654dc0594b"
 >Kernel.MA.MA.EndSection.Overlap.ReleaseSpeed == 30.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="6c895f47-4528-4fd5-b9cf-706c4dd6304c"
 >Kernel.MA.MA.EndSection.Overlap.TimeOut == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="28ce9956-cba8-4eba-a4cc-342ed31716ad"
 >Kernel.MA.MA.EndSection.Overlap.TimerDistance == 100.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
