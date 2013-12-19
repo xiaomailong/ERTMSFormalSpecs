@@ -191,6 +191,7 @@ namespace DataDictionary
                         if (nameSpace != null)
                         {
                             dictionary.appendNameSpaces(nameSpace);
+                            nameSpace.NameSpaceRef = nameSpaceRef;
                         }
                         else
                         {
@@ -207,6 +208,7 @@ namespace DataDictionary
                         if (frame != null)
                         {
                             dictionary.appendTests(frame);
+                            frame.FrameRef = testRef;
                         }
                         else
                         {
@@ -231,6 +233,7 @@ namespace DataDictionary
                         if (subNameSpace != null)
                         {
                             nameSpace.appendNameSpaces(subNameSpace);
+                            subNameSpace.NameSpaceRef = nameSpaceRef;
                         }
                         else
                         {
@@ -256,6 +259,7 @@ namespace DataDictionary
                         if (chapter != null)
                         {
                             specification.appendChapters(chapter);
+                            chapter.ChapterRef = chapterRef;
                         }
                         else
                         {

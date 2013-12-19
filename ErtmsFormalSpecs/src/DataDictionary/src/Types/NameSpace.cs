@@ -583,5 +583,10 @@ namespace DataDictionary.Types
 
             return retVal;
         }
+
+        /// <summary>
+        /// The namespace ref which instanciated this namespace
+        /// </summary>
+        public NameSpaceRef NameSpaceRef { get; set; }
     }
 }

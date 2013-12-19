@@ -253,5 +253,9 @@ namespace DataDictionary.Specification
             }
         }
 
+        /// <summary>
+        /// The chapter ref which instanciated this chapter
+        /// </summary>
+        public ChapterRef ChapterRef { get; set; }
     }
 }

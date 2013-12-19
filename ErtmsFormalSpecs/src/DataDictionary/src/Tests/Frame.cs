@@ -168,5 +168,10 @@ namespace DataDictionary.Tests
 
             return retVal;
         }
+
+        /// <summary>
+        /// The frameref which instanciated this frame
+        /// </summary>
+        public FrameRef FrameRef { get; set; }
     }
 }
