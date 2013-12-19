@@ -128,6 +128,7 @@ namespace DataDictionary
                         break;
 
                     case Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK:
+                    case Generated.acceptor.Paragraph_scope.defaultParagraph_scope:
                         paragraph.setScopeOnBoard(true);
                         paragraph.setScopeTrackside(true);
                         break;
@@ -135,9 +136,12 @@ namespace DataDictionary
                     case Generated.acceptor.Paragraph_scope.aROLLING_STOCK:
                         paragraph.setScopeRollingStock(true);
                         break;
+
                 }
 
                 paragraph.setScope(Generated.acceptor.Paragraph_scope.aFLAGS);
+
+                base.visit(obj, visitSubNodes);
             }
         }
 
