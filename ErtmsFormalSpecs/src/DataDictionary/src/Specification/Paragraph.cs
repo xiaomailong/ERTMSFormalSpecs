@@ -607,5 +607,32 @@ namespace DataDictionary.Specification
                 }
             }
         }
+
+        public void SetScopeOnBoardAndAlterImplementableStatus(bool value)
+        {
+            setScopeOnBoard(value);
+            if (value && getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
+            {
+                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
+            }
+        }
+
+        public void SetScopeTracksideAndAlterImplementableStatus(bool value)
+        {
+            setScopeTrackside(value);
+            if (value && !getScopeOnBoard())
+            {
+                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
+            }
+        }
+
+        public void SetScopeRollingStockAndAlterImplementableStatus(bool value)
+        {
+            setScopeRollingStock(value);
+            if (value && !getScopeOnBoard())
+            {
+                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
+            }
+        }
     }
 }
