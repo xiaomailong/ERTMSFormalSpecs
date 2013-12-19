@@ -752,6 +752,10 @@ namespace DataDictionary
                 {
                     paragraph.AddWarning("Paragraph scope should be Rolling Stock, according to its sub-paragraphs");
                 }
+                if (!paragraph.getScopeOnBoard() && !paragraph.getScopeTrackside() && !paragraph.getScopeRollingStock())
+                {
+                    paragraph.AddWarning("Paragraph scope not set");
+                }
             }
 
             base.visit(obj, visitSubNodes);
