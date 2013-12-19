@@ -682,7 +682,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="d3ca2268-b036-419d-840e-24ffa81434d4"
->JRU.JRU1.Message.TRAIN_DATA != EMPTY</Expectation></Expectations>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.TRAIN_DATA != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -889,8 +889,8 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="d05084b7-bfe6-4dcf-86c4-aabb9624b7f0"
->JRU.JRU1.Message.TRAIN_DATA == EMPTY</Expectation></Expectations>
+ Guid="eaadc1db-4b0f-4494-abc6-734113903bc8"
+>JRU.JRU1.JRUMessages == []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -915,11 +915,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b8df3b89-d3b7-4eb0-a94d-771f0c4303fa"
->JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c39a3ff3-14c7-4d2b-82e1-bfe66f5887ff"
->JRU.JRU1.Message.TRAIN_DATA != EMPTY</Expectation></Expectations>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.TRAIN_DATA != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -939,12 +939,16 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="f230a560-b23a-43a2-add6-a840ada0d4a3"
->JRU.JRU1.Message.TRAIN_DATA == EMPTY</Expectation><Expectation
+ Guid="67a25998-30a3-424d-a8e3-fe5082e3bf56"
+>FORALL_IN JRU.JRU1.JRUMessages | X.TRAIN_DATA == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="a0b3ee85-edcb-4ff6-bb5a-318b5c425583"
->JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
+ Guid="90080d20-f5a2-4229-b417-738ffa9eabc6"
+>FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7bb18f1f-5468-4995-8caf-ae35d84c1702"
+>JRU.JRU1.JRUMessages == []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -996,7 +1000,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5e2bae49-6ef3-4432-ae78-aafef50ee78f"
->JRU.JRU1.Message == EMPTY</Expectation></Expectations>
+>JRU.JRU1.JRUMessages == []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1016,8 +1020,12 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="0c892588-350d-41bf-9134-b5415958d113"
->JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
+ Guid="9768db81-736e-42fe-a460-a0c62744dfa4"
+>FORALL_IN JRU.JRU1.JRUMessages | X.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4be7ebcf-f254-4c5e-b719-22a92a6263fc"
+>JRU.JRU1.JRUMessages == []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1042,11 +1050,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="1cedfb79-313b-4c09-a35a-dca3ffa68a7c"
->JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE != EMPTY</Expectation><Expectation
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.SERVICE_BRAKE_COMMAND_STATE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fa864def-17f0-4ece-ba7d-0def929d9846"
->JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE.M_BRAKE_COMMAND_STATE == Messages.JRU.M_BRAKE_COMMAND_STATE.Commanded</Expectation></Expectations>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.SERVICE_BRAKE_COMMAND_STATE.M_BRAKE_COMMAND_STATE == Messages.JRU.M_BRAKE_COMMAND_STATE.Commanded</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1067,7 +1075,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="183c8a54-2e05-4949-b16b-0ebf63168a55"
->JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
+>FORALL_IN JRU.JRU1.JRUMessages | X.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4be7ebcf-f254-4c5e-b719-22a92a6263fc"
+>JRU.JRU1.JRUMessages == []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1091,12 +1103,12 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="029ae210-6123-44c0-856f-2fa5440522d0"
->JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE != EMPTY</Expectation><Expectation
+ Guid="4548f385-8a59-4c6d-a42d-e2cf59417b0f"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.SERVICE_BRAKE_COMMAND_STATE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="aeb11ca2-49ea-461b-a661-48a3d4765262"
->JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE.M_BRAKE_COMMAND_STATE == Messages.JRU.M_BRAKE_COMMAND_STATE.Not_commanded</Expectation></Expectations>
+ Guid="c255a800-3de5-4520-a439-01e8e846721a"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.SERVICE_BRAKE_COMMAND_STATE.M_BRAKE_COMMAND_STATE == Messages.JRU.M_BRAKE_COMMAND_STATE.Not_commanded</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
