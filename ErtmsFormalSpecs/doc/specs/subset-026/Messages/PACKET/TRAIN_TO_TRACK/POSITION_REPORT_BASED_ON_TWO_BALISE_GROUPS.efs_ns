@@ -1,5 +1,6 @@
 <NameSpace
  Name="POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS"
+ Guid="e531ca34-c8a5-403e-bbdd-3c20ab9feb90"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="06ee2c68-e0f3-4975-b365-5f19a85e7891"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="da705c9c-5309-4a12-a9ec-541df6548579"
 >
 </ReqRef><ReqRef
  Id="f20ec9e0-b487-46ab-8145-dcde0dbb9ea6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eaca3230-40cb-4dc6-b96c-866f606676b0"
 >
 </ReqRef><Comment>This packet is an extension of the &quot;standard position report &quot; packet 0. It is used in case of single balise groups if the orientation of the LRBG is unknown but the on-board equipment is able to report a second balise group (the one detected before) to give an indication of the running direction to the RBC.</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="a1c13ff2-a7d0-4663-bbc5-ed08d9f7937d"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4b20bad6-ee7b-4438-9049-9763565ca0c7"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="528cc5d2-577d-4945-804f-7022dea357df"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8920a481-ec10-4bf8-ae9b-350382f5a0d1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="26dea65b-01f0-483b-9acb-8516d1943b3b"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="61347c18-245b-4ce3-9b02-815971bb5586"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
+ Guid="06387822-0016-4448-8933-29a2eed943a9"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35fe5dad-211f-4063-9b9e-f6004695c72a"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_PRVBG"
@@ -67,10 +79,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PRVLRBG"
+ Guid="b0a76a13-61aa-4c91-a8bb-9a0ab4c2345f"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="de754dcc-b090-4efc-8878-dc5d476766b9"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_LRBG"
@@ -78,10 +92,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_LRBG"
+ Guid="430bf5ca-7a2b-48c5-870b-c93700c333d8"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fee79f53-b3a4-42c1-8dae-4a30bc6f9789"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIRLRBG"
@@ -89,10 +105,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIRLRBG"
+ Guid="e741e187-89b3-4342-96a3-f85d4c2fd3dc"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4a5f502e-ddc0-43d7-ac83-fa9642885c8d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DLRBG"
@@ -100,10 +118,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DLRBG"
+ Guid="d09d0db7-a282-40ae-b194-d57cbde8c652"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c300abf8-dd13-4b9c-9218-b28f6918a11e"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_DOUBTOVER"
@@ -111,10 +131,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_DOUBTOVER"
+ Guid="862bd3dd-5e7a-4d88-8a8f-4fbc045378d4"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3db2f9c7-18c8-43c3-ac79-6f5fa68ae328"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_DOUBTUNDER"
@@ -122,10 +144,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_DOUBTUNDER"
+ Guid="0107ff91-318d-4717-8881-37506875eaa5"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2824afc0-9ead-4858-b579-4f6860ecb5b6"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_LENGTH"
@@ -133,10 +157,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_LENGTH"
+ Guid="a988f52f-09b9-4792-b0f6-b38f72fb0351"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d13273b4-8def-43f8-9215-fbdfc9965727"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_TRAININT"
@@ -144,6 +170,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_TRAININT"
+ Guid="98f191e7-3b08-4cfc-87ad-48a9312c04e0"
 >
 </StructureElement><StructureElement
  TypeName="V_TRAIN"
@@ -151,10 +178,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="V_TRAIN"
+ Guid="e792aabc-7db4-4029-bd3d-8eb9d0f275a5"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b6931b39-9a4e-46ec-b60c-44a36858a19b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIRTRAIN"
@@ -162,10 +191,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIRTRAIN"
+ Guid="32414664-0c39-4fb7-b20e-a5392f5484cc"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a8248606-e38b-4cf9-9bc8-f64e40796115"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_MODE"
@@ -173,10 +204,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_MODE"
+ Guid="d6aa9f04-7a91-4854-9947-b22fe564b06c"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9c314be5-37bd-47c8-bf5e-0e7055894ef3"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_LEVEL"
@@ -184,10 +217,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_LEVEL"
+ Guid="339a7db0-c039-4d17-a1bc-1e24374a4194"
 >
 <ReqRef
  Id="7481e941-1b42-49cb-8cfd-e80d9da9949b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f81af34f-c523-4946-abae-38aaa651c478"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_NTC"
@@ -195,6 +230,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_NTC"
+ Guid="43e584a5-fd44-49fc-97e8-3f92cad57cb6"
 >
 </StructureElement></Structure></Structures>
 </NameSpace>

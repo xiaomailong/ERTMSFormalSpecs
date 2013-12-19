@@ -4,6 +4,7 @@
  Width="100"
  Height="750"
  Name="TrainPosition"
+ Guid="9768eb28-0355-4891-b84a-b57bb9df171e"
 >
 <NameSpaces>
 </NameSpaces>
@@ -11,15 +12,18 @@
 <Structure
  Implemented="TRUE"
  Name="TrainPosition"
+ Guid="607a75d0-3d30-4e13-9431-91746926f303"
 >
 <ReqRef
  Id="3dbd1b48-23b6-40f9-a38e-77df9cc1ed68"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bbad44e6-cae5-486c-93ee-01107b2048f6"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="4147b6c6-84d8-452d-b38e-8479cb6dc795"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="985ce938-6835-4de1-b8e0-66e0560eecc6"
 >
 <Comment>Even if the requirement is related to the train position, it seems more consistent to place the previous LRBGs in the BTM namespace</Comment>
 </ReqRef><Comment>Represents the current position of the train, as described in 3.6.1.3.
@@ -32,10 +36,12 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DirectionalPositionInformation"
+ Guid="b9058b7a-0709-4d30-876a-5380b1a0522b"
 >
 <ReqRef
  Id="4f6dd5a0-a24c-40f0-8757-8c0c86cc2c43"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1a655beb-2656-49bd-aadc-d95e8780d4ef"
 >
 </ReqRef><Comment>The directional position information of the train (the train front end position, the train orientation and the train running direction).</Comment>
 </StructureElement><StructureElement
@@ -45,19 +51,23 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DataState"
+ Guid="409e308a-f2cb-4c85-a883-c9664e17b68c"
 >
 <ReqRef
  Id="8f27e8d5-aaaf-4ec3-986d-36345986e5f2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7395a9af-76df-4d75-8516-d88ec7c2f838"
 >
 </ReqRef><Comment>The data state of the train position.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="DirectionalTrainPositionInformation"
+ Guid="ed65a176-3ac0-42bf-94aa-77bfa166d800"
 >
 <ReqRef
  Id="4f6dd5a0-a24c-40f0-8757-8c0c86cc2c43"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="72a61b32-dcc3-456c-8c9c-1a0042c662b3"
 >
 </ReqRef><Comment>This structure represents the directional train position information, in reference to the balise group orientation.</Comment>
 <StructureElement
@@ -66,10 +76,12 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Mode="Internal"
  Implemented="TRUE"
  Name="TrainFrontEndPosition"
+ Guid="84a2ded8-23f3-4c41-86b3-a2326f96da1f"
 >
 <ReqRef
  Id="18585bb5-dc2f-4e24-bb2e-10c77305d565"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="afb9f1b8-fbbb-413c-a1c4-d28befe4b689"
 >
 </ReqRef><Comment>Position of the train front end, corresponds to Q_DLRBG.</Comment>
 </StructureElement><StructureElement
@@ -78,10 +90,12 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Mode="Internal"
  Implemented="TRUE"
  Name="TrainOrientation"
+ Guid="e61fa84b-7a43-4a6e-acb7-b9406467ce85"
 >
 <ReqRef
  Id="2a8febe6-f85b-423c-bc63-60828f11aa62"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c2419d9e-4efc-4691-99d9-f26fd9ea716c"
 >
 </ReqRef><Comment>Train orientation, corresponds to Q_DIRLRBG.</Comment>
 </StructureElement><StructureElement
@@ -90,10 +104,12 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Mode="Internal"
  Implemented="TRUE"
  Name="TrainRunningDirection"
+ Guid="933b46d3-8929-4b43-b211-bfef5b571fee"
 >
 <ReqRef
  Id="1ca933ce-9114-4bbd-b4fa-25bea496671c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2a8e6e96-d30b-44fc-8745-59fa0d6b3760"
 >
 </ReqRef><Comment>Train running direction, corresponds to Q_DIRTRAIN.</Comment>
 </StructureElement></Structure></Structures>
@@ -102,94 +118,131 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Type="Default.BaseTypes.Distance"
  Implemented="TRUE"
  Name="FrontEndPosition"
+ Guid="0398d7f6-6b64-407d-9e5b-dca2fbc88cd4"
 >
 <ReqRef
  Id="6e85df81-278a-4eb5-8ce0-b773e472f711"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d7c69c5b-a4f9-4000-b1b0-28275b647a06"
 >
 </ReqRef><ReqRef
  Id="dfd8a050-ad00-42a4-969a-1da448625473"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6297e289-f36a-4369-9672-21ddb7fba4ff"
 >
 </ReqRef><Comment>This function is used to compute the estimated front end position, the max and min safe front end position of the train. The parameter specifies which of the values must be returned.</Comment>
 <Parameters>
 <Parameter
  Type="Default.DistanceInterval"
  Name="PointOfInterest"
+ Guid="7af4ee52-9fbb-44c4-9f46-527d61a913b0"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="No valid position on-board"
+ Guid="fdff3051-a684-4dbb-be2b-50187f6898e8"
 >
 <PreConditions>
-<PreCondition>Position.DataState != DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="cf061e0e-d4c3-4801-88b0-96d5c524d68f"
+>Position.DataState != DataState.Valid</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Nominal"
+ Guid="0a17f132-8e7f-4b1c-9e04-e43432c59031"
 >
 <PreConditions>
-<PreCondition>PointOfInterest == Default.DistanceInterval.Nom</PreCondition></PreConditions>
+<PreCondition
+ Guid="c61aea8d-3319-4f16-b8a6-d87e9c290890"
+>PointOfInterest == Default.DistanceInterval.Nom</PreCondition></PreConditions>
 <Expression>Odometry.NominalDistance - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Maximum"
+ Guid="812d52ca-441b-4da6-a0d8-ce13ec19f117"
 >
 <PreConditions>
-<PreCondition>PointOfInterest == Default.DistanceInterval.Max</PreCondition></PreConditions>
+<PreCondition
+ Guid="470ac07d-62b5-42c4-a517-866a90c3bfee"
+>PointOfInterest == Default.DistanceInterval.Max</PreCondition></PreConditions>
 <Expression>Odometry.NominalDistance + Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Minimum"
+ Guid="33a2da89-eff5-4355-8fa9-2974bb4f2c14"
 >
 <PreConditions>
-<PreCondition>PointOfInterest == Default.DistanceInterval.Min</PreCondition></PreConditions>
+<PreCondition
+ Guid="acddaf27-c5fb-493f-8b2c-ebdc1bb73993"
+>PointOfInterest == Default.DistanceInterval.Min</PreCondition></PreConditions>
 <Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - BTM.LRBG.Position.Position</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Implemented="TRUE"
  Name="RearEndPosition"
+ Guid="4a6bae4e-f993-4dba-a059-0760076ece8a"
 >
 <ReqRef
  Id="d61ea269-686c-486d-9852-1fd7e6f88c24"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d39884e0-a5bb-433b-80fa-0ed1ed02c038"
 >
 </ReqRef><Comment>This function is used to compute the estimated rear end position, the max and min safe rear end position of the train. The parameter specifies which of the values must be returned. These values are computed iff the train integrity status is valid (confirmed by driver or by integrity monitoring device).</Comment>
 <Parameters>
 <Parameter
  Type="Default.DistanceInterval"
  Name="PointOfInterest"
+ Guid="649fb3a6-63d6-4a5e-94a2-a5430c53f384"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="No valid position on-board"
+ Guid="c23e833e-473b-4784-a10a-806485ebdfe1"
 >
 <PreConditions>
-<PreCondition>Position.DataState != DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="9b31b852-4b9f-4141-956b-1cad986e9b1b"
+>Position.DataState != DataState.Valid</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Nominal"
+ Guid="12d68e3e-9a7b-433c-85bb-e8d2bf2e40cc"
 >
 <PreConditions>
-<PreCondition>PointOfInterest == Default.DistanceInterval.Nom</PreCondition><PreCondition>Kernel.TrainIntegrity.Status in [
+<PreCondition
+ Guid="af6354bc-53f0-4317-a7c6-bd6f449d83af"
+>PointOfInterest == Default.DistanceInterval.Nom</PreCondition><PreCondition
+ Guid="831ebca8-7ed8-4b42-82b6-247bfdf5a945"
+>Kernel.TrainIntegrity.Status in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
 ]</PreCondition></PreConditions>
 <Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.TrainIntegrity.SafeTrainLength) - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Maximum"
+ Guid="b426890d-eef3-43d5-a1b8-fa3270e36c15"
 >
 <PreConditions>
-<PreCondition>PointOfInterest == Default.DistanceInterval.Max</PreCondition><PreCondition>Kernel.TrainIntegrity.Status in [
+<PreCondition
+ Guid="39cfca21-49df-4f1e-8025-c2388dba9c80"
+>PointOfInterest == Default.DistanceInterval.Max</PreCondition><PreCondition
+ Guid="af6b235c-0228-4fb2-8281-a70958656341"
+>Kernel.TrainIntegrity.Status in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
 ]</PreCondition></PreConditions>
 <Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.TrainIntegrity.SafeTrainLength) + Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Minimum"
+ Guid="9c92d5c6-f86d-4cb4-b67d-50e0b531635d"
 >
 <PreConditions>
-<PreCondition>PointOfInterest == Default.DistanceInterval.Min</PreCondition><PreCondition>Kernel.TrainIntegrity.Status in [
+<PreCondition
+ Guid="add9c23c-ed04-4a06-be98-4afc341bfbd8"
+>PointOfInterest == Default.DistanceInterval.Min</PreCondition><PreCondition
+ Guid="60d6893d-b406-4028-bdc2-cc2c879989ca"
+>Kernel.TrainIntegrity.Status in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
 ]</PreCondition></PreConditions>
@@ -201,34 +254,49 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="UpdatePositionState"
+ Guid="6cdf2a34-87f3-4959-908b-9ba4ff2dda70"
 >
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Update position state"
+ Guid="55a55aa2-e01a-4b26-a390-3a472410831f"
 >
 <ReqRef
  Id="3dbd1b48-23b6-40f9-a38e-77df9cc1ed68"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e9e66317-3e85-4ddf-a4af-ba7a36eda376"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="LRBG is known"
+ Guid="9d9c005e-2e23-456d-84c4-0297cbdc3ab4"
 >
 <PreConditions>
-<PreCondition>Available ( BTM.LRBG )</PreCondition></PreConditions>
+<PreCondition
+ Guid="ebb63de6-5d6c-42ea-863c-cc45b2035c0b"
+>Available ( BTM.LRBG )</PreCondition></PreConditions>
 <Actions>
-<Action>Position.DataState &lt;- DataState.Valid</Action></Actions>
+<Action
+ Guid="5de6dbe1-ecc5-4386-8dc0-d09a5a6a49de"
+>Position.DataState &lt;- DataState.Valid</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="LRBG is unknown"
+ Guid="0928622d-2a35-4cb2-938b-03a752812d02"
 >
 <PreConditions>
-<PreCondition>BTM.LRBG == EMPTY</PreCondition><PreCondition>Position.DataState != DataState.Invalid</PreCondition></PreConditions>
+<PreCondition
+ Guid="5234c501-b995-48d0-a954-656e018b210f"
+>BTM.LRBG == EMPTY</PreCondition><PreCondition
+ Guid="f7740abf-4293-414b-840d-342933b94656"
+>Position.DataState != DataState.Invalid</PreCondition></PreConditions>
 <Actions>
-<Action>Position.DataState &lt;- DataState.Unknown</Action></Actions>
+<Action
+ Guid="2ac2232a-f080-40b8-8b9d-71bf83d4e452"
+>Position.DataState &lt;- DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -239,15 +307,18 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  VariableMode="Internal"
  Implemented="TRUE"
  Name="Position"
+ Guid="ae945ace-8720-498a-a351-dcc74280808f"
 >
 <ReqRef
  Id="3dbd1b48-23b6-40f9-a38e-77df9cc1ed68"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2cc1cad1-03f9-4a5b-b27d-425fd83c99fe"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="8f27e8d5-aaaf-4ec3-986d-36345986e5f2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bbfa7a99-0ee1-4ecc-859d-b11eb3c977fc"
 >
 </ReqRef><Comment></Comment>
 </Variable></Variables>

@@ -1,5 +1,6 @@
 <NameSpace
  Name="EOLM_PACKET"
+ Guid="e0789d75-de96-4678-b4fb-f7b3d737baeb"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="f8277d99-49e9-4439-a8b4-255a63f2e193"
 >
 <ReqRef
  Id="474556c2-0607-4586-9b68-7a963de350a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="51c4da22-f887-42dd-bfc0-4a40b9ab6dce"
 >
 </ReqRef><ReqRef
  Id="5762e4f2-149b-48a8-bcd9-eb1703a14bc6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="175278a6-343b-4240-8805-76451321da98"
 >
 </ReqRef><Comment>This packet announces a loop.</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="9487623e-5d8e-4224-ab66-130a33e5ebf3"
 >
 <ReqRef
  Id="474556c2-0607-4586-9b68-7a963de350a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b5509284-c311-416e-ac50-97266bd3fe55"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="45dd07ba-5edd-466f-87ad-5cd5e12475f2"
 >
 <ReqRef
  Id="474556c2-0607-4586-9b68-7a963de350a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0b1c1e56-0a00-40a0-a9dc-dbf2d66bbd91"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="db237058-40cf-418e-af3f-24f5e70afc16"
 >
 <ReqRef
  Id="474556c2-0607-4586-9b68-7a963de350a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e5a63137-ec9f-4e11-9402-8b5b5c58a536"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="107bac18-7291-4f9f-9af8-71301c5791be"
 >
 <ReqRef
  Id="474556c2-0607-4586-9b68-7a963de350a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d53503b-c61b-44b5-a358-11bdf1df330b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_LOOP"
@@ -67,10 +79,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LOOP"
+ Guid="a7beb300-e4b5-4266-b3df-84a06749edb7"
 >
 <ReqRef
  Id="474556c2-0607-4586-9b68-7a963de350a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53bd24c1-64e1-40c9-9051-fb73472dabbd"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_LOOP"
@@ -78,10 +92,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_LOOP"
+ Guid="31b79a23-e29d-4e1a-80fd-af1bd2d6fda5"
 >
 <ReqRef
  Id="474556c2-0607-4586-9b68-7a963de350a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e71c4734-175e-4d8f-b34c-1505600b4cf9"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_LOOP"
@@ -89,10 +105,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_LOOP"
+ Guid="59327ea6-6740-4cb1-9705-10895c48fef3"
 >
 <ReqRef
  Id="474556c2-0607-4586-9b68-7a963de350a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6545f524-21ee-494d-9e1a-e6d855337269"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_LOOPDIR"
@@ -100,10 +118,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_LOOPDIR"
+ Guid="4987d336-b348-4c6b-b56a-9c61fc5571bb"
 >
 <ReqRef
  Id="474556c2-0607-4586-9b68-7a963de350a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b9f773c2-b30e-4999-8beb-5c80a7151a8d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SSCODE"
@@ -111,10 +131,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SSCODE"
+ Guid="6ffeecf2-ff0a-4c4d-8929-eab86310453c"
 >
 <ReqRef
  Id="474556c2-0607-4586-9b68-7a963de350a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb1533a9-5941-4e29-a301-af248dc7a388"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

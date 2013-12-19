@@ -1,5 +1,6 @@
 <NameSpace
  Name="REQUEST_TO_SHORTEN_MA"
+ Guid="ef7c09e4-6c12-477e-a410-3d58e2a3581a"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,6 +8,7 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="8bbb692a-8360-43a0-9af3-0391d14389d2"
 >
 <Comment>Request to Shorten MA</Comment>
 <StructureElement
@@ -15,10 +17,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_MESSAGE"
+ Guid="3cd46fb0-4c4c-4737-949b-79c309f3b5de"
 >
 <ReqRef
  Id="b42e44cb-53b4-478a-b1fb-db5b5aefcbe3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ef53c613-f32c-43fe-8fe5-b835c089f34a"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
@@ -26,10 +30,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
+ Guid="fab78a2a-f2e2-487d-899d-023068c3e9b6"
 >
 <ReqRef
  Id="83a87141-eea5-4cd9-bb89-9849ed4c644e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1766ab7c-c913-40d5-93a2-ce4bf000e686"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
@@ -37,10 +43,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
+ Guid="0b4c909c-6994-458c-928e-da3205c28ec3"
 >
 <ReqRef
  Id="6dc8487f-7d73-4fc0-870c-0050b6678ba4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cd31f16f-7b8b-4293-a598-0784061f8ea9"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
@@ -48,10 +56,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
+ Guid="22ee6e77-6751-4f39-b299-d1c849c6ca48"
 >
 <ReqRef
  Id="973f9ef1-d90e-4e03-8a97-5ba862847988"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d9560dd3-32fe-4d11-922a-32554d733577"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
@@ -59,10 +69,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
+ Guid="d9b3ab92-2141-410e-b447-41e3e8ca6804"
 >
 <ReqRef
  Id="5712d3b0-7b0f-49aa-babe-aa622c859e7a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9801eafc-bf0a-4ef3-8754-590ea060a382"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message"
@@ -70,10 +82,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="LEVEL_2_3_MOVEMENT_AUTHORITY"
+ Guid="7e61975f-f848-4ef7-a090-f450f8a6570e"
 >
 <ReqRef
  Id="57d61b1c-3b97-4a2b-9885-bcf7d03e30fb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9cf3b30e-98e2-456a-8072-88653f45751b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
@@ -81,18 +95,22 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
+ Guid="2086a5f6-d155-4d9c-9d56-2e4e5e5b2b4f"
 >
 <ReqRef
  Id="d175558d-2bb2-4e19-aba0-4c4a8ee41667"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="485b5b84-78cc-4310-a47c-e9c032f56302"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
+ Guid="cdabcf5f-5ea6-4570-982d-5e09e7deb1e7"
 >
 <ReqRef
  Id="d175558d-2bb2-4e19-aba0-4c4a8ee41667"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6b45e2b1-935e-422f-9d32-6b89cdec0b6d"
 >
 </ReqRef><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message"
@@ -100,10 +118,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="MODE_PROFILE"
+ Guid="588a66f4-c90c-45ec-8488-5afc4bcf5b4e"
 >
 <ReqRef
  Id="d175558d-2bb2-4e19-aba0-4c4a8ee41667"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a0b78440-0472-4686-9090-9aba677f8bb3"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
@@ -112,10 +132,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
+ Guid="ee8bedf6-97da-4148-934f-459f84c35bc3"
 >
 <ReqRef
  Id="d175558d-2bb2-4e19-aba0-4c4a8ee41667"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="52b39d04-b2bf-42f2-86de-56c4eab85ba0"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>

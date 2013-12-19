@@ -1,5 +1,6 @@
 <NameSpace
  Name="END_OF_INFORMATION"
+ Guid="92349083-f200-48d1-86e7-782b8039faac"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="82360e9c-6f7d-4aaf-9798-80810a09e73f"
 >
 <ReqRef
  Id="117f3df9-02c0-4205-bab3-6ed6b524e368"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dfce120b-18b5-4343-a57f-6ffa44ce1aa4"
 >
 </ReqRef><ReqRef
  Id="d565892a-adaf-4bc2-a9b2-8210b62ae6c2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7ca63158-67c9-406d-b151-0d7d7fa018eb"
 >
 </ReqRef><Comment>This packet consists only of NID_PACKET containing 8 bit 1s It acts as a finish flag; the receiver will stop reading the remaining part of the message/telegram when receiving eight bits set to one in the NID_PACKET field.</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="fc8a161c-3cc8-40e5-b3ec-30f805690a12"
 >
 <ReqRef
  Id="117f3df9-02c0-4205-bab3-6ed6b524e368"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a2ac765a-d7ef-4c80-8cb6-83453c6c215b"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

@@ -1,5 +1,6 @@
 <NameSpace
  Name="DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM"
+ Guid="52b2c61c-4c67-4fa6-8688-496885b3a3fd"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="6a423d42-e9d6-4a07-962e-5083e739d0bb"
 >
 <ReqRef
  Id="2cc818c4-64df-4750-9f06-829e7ed446d8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1956465e-6732-4a8f-b55a-2cf6e7c30fa4"
 >
 </ReqRef><ReqRef
  Id="46e44695-6900-4593-8b3e-e9b671d8809c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="00d32e73-ecdb-4229-a0ae-9d37d89d4273"
 >
 </ReqRef><Comment>Messages between trackside and on-board devices, which contain information used by applications outside the ERTMS/ETCS system.</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="6e1a2e56-2965-402e-9b66-641a5c20dd5a"
 >
 <ReqRef
  Id="2cc818c4-64df-4750-9f06-829e7ed446d8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="480d28c2-8b93-4f30-8af7-50185b5ddc30"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="0caf99c6-cf23-4dbd-8c2f-ad5375fa9d1f"
 >
 <ReqRef
  Id="2cc818c4-64df-4750-9f06-829e7ed446d8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="72abc983-11cb-4c01-894e-fff58fee81a1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="dae5f887-8b9a-48c6-ad21-41b58e61183b"
 >
 <ReqRef
  Id="2cc818c4-64df-4750-9f06-829e7ed446d8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="310d037f-83e3-4b47-b8d7-b126718cf75e"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_XUSER"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_XUSER"
+ Guid="3d61db89-d2c6-48d6-bfdc-a5ae9309a428"
 >
 <ReqRef
  Id="2cc818c4-64df-4750-9f06-829e7ed446d8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d906b077-7857-41bf-9d66-00dc6016e53d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_NTC"
@@ -67,6 +79,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_NTC"
+ Guid="a8623d44-d4ac-4e3e-b914-fdc65f5d4e0a"
 >
 </StructureElement><StructureElement
  TypeName="Collection1"
@@ -74,18 +87,22 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
+ Guid="dcb15b90-392f-464e-af5d-473b768a619b"
 >
 <ReqRef
  Id="2cc818c4-64df-4750-9f06-829e7ed446d8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="943b7148-9132-4a71-b6a6-7e59c2894cd1"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
+ Guid="e908a533-ad40-4146-8ad2-831ef744d976"
 >
 <ReqRef
  Id="2cc818c4-64df-4750-9f06-829e7ed446d8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a77aacd7-f45d-4b8a-9a45-d944523015bc"
 >
 </ReqRef><StructureElement
  TypeName="bit"
@@ -93,10 +110,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_XUSER"
+ Guid="7d80d45a-0354-4085-a96f-40662416dc07"
 >
 <ReqRef
  Id="2cc818c4-64df-4750-9f06-829e7ed446d8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="90253b52-2a06-411a-989a-a622d39d729a"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
@@ -105,10 +124,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
+ Guid="6d8a157f-b5b7-447b-ab44-67987e81c156"
 >
 <ReqRef
  Id="2cc818c4-64df-4750-9f06-829e7ed446d8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b7b6894d-a7cc-4a48-9cb7-a880428b739e"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>

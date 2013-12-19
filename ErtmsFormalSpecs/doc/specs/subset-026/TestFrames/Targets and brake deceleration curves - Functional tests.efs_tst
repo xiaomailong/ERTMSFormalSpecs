@@ -1,6 +1,7 @@
 <Frame
  CycleDuration="Kernel.CycleDuration"
  Name="Targets and brake deceleration curves - Functional tests"
+ Guid="3f42cc3e-88c4-4a5f-be00-4ea73023c733"
 >
 <SubSequences>
 <SubSequence
@@ -14,6 +15,7 @@
  RBC_ID=""
  RBCPhone=""
  Name="Compute EBD and SBD"
+ Guid="1c2408ba-6159-45d4-bbca-0ef11af5b901"
 >
 <TestCases>
 <TestCase
@@ -22,6 +24,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Setup"
+ Guid="da379484-7b75-43b9-b60c-0d2532999273"
 >
 <Steps>
 <Step
@@ -31,13 +34,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Initialize train data"
+ Guid="04b844bd-ef74-4371-9e50-d442face0e81"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="3729db7c-27ec-40e8-bc15-461e27cd07bd"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="08481a73-466a-43b3-b5e1-41dde97ba1fc"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46,13 +53,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Setup"
+ Guid="23d70c63-a5a1-418d-ab78-6ff8492abeb7"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="1d7fcb09-c433-4711-90cc-7f6ea11f9a80"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+<Action
+ Guid="6ecfe4e1-3136-4e35-b677-1480364c6920"
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9616,
     Orientation =&gt; Orientation.Nominal,
@@ -62,7 +73,19 @@
         Position =&gt; 0.0,
         UnderReadingAmountOdo =&gt; 2.0
     }
-}</Action><Action>Kernel.TSR.TSRs &lt;- []</Action><Action>Odometry.NominalDistance &lt;- 2000.0</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>Kernel.Mode &lt;- Mode.LS</Action><Action>Kernel.TrackDescription.Gradient.Gradients &lt;- 
+}</Action><Action
+ Guid="d49d288e-db0b-4f38-bdbd-3f6ca0c026c5"
+>Kernel.TSR.TSRs &lt;- []</Action><Action
+ Guid="b2f761ee-af09-4682-82e3-382d52566756"
+>Odometry.NominalDistance &lt;- 2000.0</Action><Action
+ Guid="76197ddf-b82c-436b-8882-b643f673271d"
+>Kernel.MA.MA &lt;- EMPTY</Action><Action
+ Guid="feb11f14-3b53-426b-9983-38af3fd2d805"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="b4a7ee50-9789-4535-8685-b2258ce215bd"
+>Kernel.Mode &lt;- Mode.LS</Action><Action
+ Guid="4f0b567a-fa27-4777-8ebe-bc739dace820"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- 
 [
     Kernel.TrackDescription.Gradient.GradientInfo
     {
@@ -84,7 +107,9 @@
         Gradient =&gt; 0.0,
         Distance =&gt; 5700.0
     }
-]</Action><Action>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
+]</Action><Action
+ Guid="1d2048b8-e3f1-4313-bc12-03eae79c07c8"
+>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
 {
     DataState =&gt; DataState.Valid,
     NID_C =&gt; 42,
@@ -97,7 +122,9 @@
         MaxDecelValueUnderReducedAdhesionCond3 =&gt; 0.7,
         WeightingFactorForAvailableWheelRailAdhesion =&gt; 0.2
     }
-}</Action><Action>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;-
+}</Action><Action
+ Guid="e918db0d-9c22-4b5f-8fb2-efaa8e7f74c3"
+>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;-
 [
     Kernel.TrackDescription.AdhesionFactors.AdhesionFactor
     {
@@ -111,7 +138,9 @@
         Length =&gt; 500.0,
         Value =&gt; Messages.M_ADHESION.Slippery_rail
     }
-]</Action><Action>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- Kernel.TrackDescription.TrackConditions.TrackConditionProfile
+]</Action><Action
+ Guid="c69c44fc-2ea0-4d2a-bcc6-ad36ecba93c0"
+>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- Kernel.TrackDescription.TrackConditions.TrackConditionProfile
 {
     Conditions =&gt; 
     [
@@ -149,23 +178,43 @@
             }
         }
     ]
-}</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 100.0</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 110.0</Action><Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 0.05</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action
+ Guid="b8f3f44e-3b03-48ad-a883-a215d09e53f4"
+>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="e2bddf05-7955-4650-af7d-90a19788234f"
+>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 100.0</Action><Action
+ Guid="51c0ce15-dec4-4801-8e3a-05feea52e94d"
+>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 110.0</Action><Action
+ Guid="7439f740-e5b1-446c-a28f-9e0da1604968"
+>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 0.05</Action><Action
+ Guid="f722264e-9547-4a2d-8afa-0e55444df079"
+>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action
+ Guid="17faeb23-8156-4927-b707-4336db8472c3"
+>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action
+ Guid="92f3342c-c68f-4998-89ad-71d84c39877c"
+>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action><Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action
+ Guid="7f700801-acee-4ba1-b35d-32ce56d839b8"
+>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action><Action>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
+}</Action><Action
+ Guid="57bfafbc-15e1-42dd-9cf8-8a0ee1f6ad08"
+>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
 {
     CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_210_mm,
     OtherInternational =&gt; [Kernel.TrainData.TrainCategory.FreightTrainInP]
-}</Action><Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet
+}</Action><Action
+ Guid="03792f5c-fdc3-4125-b8d3-c5098afa284b"
+>Kernel.TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet
 {
     ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
     {
@@ -485,7 +534,9 @@
             CF6 =&gt; 0.85
         }
     }
-}</Action><Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+}</Action><Action
+ Guid="7442d495-267e-4d51-8d31-3e68ff17b933"
+>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
 {
     ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
     {
@@ -642,7 +693,9 @@
             }
         }
     }
-}</Action><Action>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+}</Action><Action
+ Guid="b9aa9912-c276-4f47-b3af-c1dd979c9304"
+>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
     EddyCurrent =&gt; 12.0,
     EddyCurrent_Magnetic =&gt; 14.0,
@@ -659,7 +712,9 @@
     Magnetic =&gt; 2.9,
     Regenerative =&gt; 3.7,
     Ep =&gt; 4.5
-}</Action><Action>Kernel.TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+}</Action><Action
+ Guid="afb58fbf-af09-4c6e-b1ee-0ef54b9ba941"
+>Kernel.TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
     EddyCurrent =&gt; 12.1,
     EddyCurrent_Magnetic =&gt; 5.6,
@@ -676,18 +731,24 @@
     Magnetic =&gt; 12.4,
     Regenerative =&gt; 12.1,
     Ep =&gt; 11.0
-}</Action><Action>Kernel.TrainIntegrity &lt;- Kernel.TrainIntegrity
+}</Action><Action
+ Guid="f70c0736-dcc0-4cc2-87ca-8d84d8de6de7"
+>Kernel.TrainIntegrity &lt;- Kernel.TrainIntegrity
 {
     Status =&gt; Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
     SafeTrainLength =&gt; 500.0,
     DataState =&gt; DataState.Valid
-}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action
+ Guid="9bd8bff2-2444-46c5-a8ac-639fe22a998f"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 12.0,
     D_ora =&gt; 15.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action><Action>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
+}</Action><Action
+ Guid="20528748-38c3-4d99-ae44-8dba2e0f6f44"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
 [
     Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
     {
@@ -713,10 +774,12 @@
  Case="0"
  Implemented="TRUE"
  Name="Receive MA"
+ Guid="a14f72c8-04d2-4e49-bb1b-0a68810d9079"
 >
 <ReqRef
  Id="d949102e-f89b-489f-8acc-cf60824bd0e5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="980b3b42-a9fd-48e5-8649-03c14bf76270"
 >
 </ReqRef><Steps>
 <Step
@@ -726,13 +789,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Provide MA"
+ Guid="cf78162a-238d-47d9-a444-e056d223107a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="ed602506-3801-491b-8d40-ad6736ed9026"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="f22833a4-da49-42db-872a-4512a8901470"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -814,14 +881,19 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="c6a7fc3b-f4b8-4934-8e30-e86286c9d7fb"
 >Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.P( 4000.0 ) == 70.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="6ec22edc-cc00-4d11-a27b-2352545823bb"
 >Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.P( 6000.0 ) == 0.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="9f5c1449-8446-4e25-952e-01913833cedb"
 >Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.P( 8000.0 ) == 0.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="58660089-18f0-4571-87b4-e5aee24745b3"
 >Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.P( 2000.0 ) == 70.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="c3a795e1-76ac-46a8-85a8-8bad390bce71"
 >Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.P( 7000.0 ) == 0.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -830,10 +902,12 @@
  Case="0"
  Implemented="TRUE"
  Name="Receive TSR"
+ Guid="9f4ae92f-2c0b-4c85-8786-190f217c5226"
 >
 <ReqRef
  Id="d925afa7-0975-42ee-8f81-820493dda041"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="44ee2013-722c-4657-834c-42f1274185f2"
 >
 </ReqRef><Steps>
 <Step
@@ -843,13 +917,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Provide TSR"
+ Guid="a5d53d2f-550a-4420-8d34-10e8c8e622b1"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="b9856755-6b7c-408a-b2ed-c5315581363b"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="88145ed2-9a96-4dd2-b8d3-ce4219461dbe"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -886,14 +964,19 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="e7362074-b837-4b89-9907-2051376310ab"
 >Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.P( 4000.0 ) == 25.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="f56dc7db-867e-4a45-a688-84626d28d437"
 >Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.P( 7000.0 ) == 0.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="9e15c659-fccd-468e-bc4a-3ef531452172"
 >Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.P( 8000.0 ) == 0.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="803a3f45-64a4-42a2-980b-eed03c6ef9a3"
 >Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( 2000.0 ) == 70.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="dd53d886-9f9e-4bbe-b327-5663a8ad61aa"
 >Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( 2000.0 ) == 70.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -902,10 +985,12 @@
  Case="0"
  Implemented="TRUE"
  Name="Receive LX"
+ Guid="99fb3896-0e4f-4db8-98dc-459c5395847a"
 >
 <ReqRef
  Id="f80261a5-4553-4c43-ab09-2cf0da750a7e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f955a464-2358-4e10-a69b-30a6148e004f"
 >
 </ReqRef><Steps>
 <Step
@@ -915,13 +1000,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Provide LX"
+ Guid="73b7d2a8-f8f6-47d1-b2d7-193ca0b4f39a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="7594cbe5-f210-496e-bc80-7033ee880998"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="f68fdaeb-4527-47d8-8b54-b36837c9283b"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -960,10 +1049,13 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="88641d54-dc74-4d91-b9c7-528db40805d5"
 >Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.P( 4000.0 ) == 25.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="d0bff169-cc7f-4879-8b1c-ee15499edd83"
 >Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.P( 7000.0 ) == 0.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="c90a8db2-0dd3-4261-b14b-814891d38715"
 >Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.P( 8000.0 ) == 0.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -972,6 +1064,7 @@
  Case="0"
  NeedsRequirement="FALSE"
  Name="Compute MREBDT"
+ Guid="06ce5c57-da1c-4bc5-b74c-3f8c2eb3482c"
 >
 <Steps>
 <Step
@@ -981,24 +1074,35 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1"
+ Guid="c10e26b4-4d79-4820-91b3-749f303e8a95"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="739c244d-f067-4909-b6db-fb41c80f1c58"
 >
 <Actions>
-<Action>Odometry.EstimatedAcceleration &lt;- 0.4</Action><Action>Kernel.TrainData.TrainData.Value.TractionModel &lt;- Kernel.TrainData.TractionModel
+<Action
+ Guid="76f7e7cf-e058-4e27-bcc5-8504df427d38"
+>Odometry.EstimatedAcceleration &lt;- 0.4</Action><Action
+ Guid="456db9ef-3be0-4989-adaf-1b35353429bb"
+>Kernel.TrainData.TrainData.Value.TractionModel &lt;- Kernel.TrainData.TractionModel
 {
     Coefficient =&gt; 14.0,
     Constant =&gt; 2.0
-}</Action><Action>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- Boolean.True</Action></Actions>
+}</Action><Action
+ Guid="aeb752b9-046e-4cff-ab34-ab3b0a32fdca"
+>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- Boolean.True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="ae7ba728-6c6e-4911-94b3-31b32f1a7bfa"
 >Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vdelta0() == 0.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="bbd88c51-5e68-49ad-9160-b09c3fa025b5"
 >Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vdelta2() == 0.0</Expectation><Expectation
  Kind="Instantaneous"
+ Guid="dc090427-607e-4c96-8a02-c9700e706a4f"
 >Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_berem() == 0.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>

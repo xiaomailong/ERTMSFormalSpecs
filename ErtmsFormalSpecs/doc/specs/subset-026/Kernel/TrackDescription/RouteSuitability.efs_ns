@@ -4,6 +4,7 @@
  Width="100"
  Height="50"
  Name="RouteSuitability"
+ Guid="b86b1882-436b-4c40-9f56-ad92c5c35b66"
 >
 <NameSpaces>
 </NameSpaces>
@@ -12,10 +13,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RouteSuitabilityInformation"
+ Guid="a4c26c78-a7bc-4e60-aab5-66bbca14ba5e"
 >
 <ReqRef
  Id="80557bc0-c47d-4cda-9a7b-6ee9a84c939e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="97170351-bb99-4f29-9dce-a9f25b9646fa"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -24,10 +27,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="EmptyProfileDistance"
+ Guid="4a91433a-b0a2-46f7-9e5b-5a09b19da968"
 >
 <ReqRef
  Id="35ef498a-1c12-4203-b283-26436d281f11"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1fdd389-07d6-4344-a91b-eb5d62c64aac"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_TRACKINIT"
@@ -35,10 +40,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="InitialState"
+ Guid="942f9cc8-6261-4558-9798-c93d6a1f870f"
 >
 <ReqRef
  Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ef924bc6-ddd3-44e8-b4c6-fd8c66feb80d"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -48,11 +55,13 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Items"
+ Guid="b14b3b07-9a6e-4524-bd22-9489892f4013"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RouteSuitabilityItem"
+ Guid="193772c0-fe69-43ed-8d0e-986f0aaa4465"
 >
 <StructureElement
  TypeName="Messages.Q_SUITABILITY"
@@ -60,22 +69,27 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Type"
+ Guid="58514f71-d257-477d-9b95-e5db2683c4df"
 >
 <ReqRef
  Id="d89b3c91-52f0-4b3a-b8c5-a651c28e580d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b8c94f3-01fe-470a-b336-fdc75bd85966"
 >
 </ReqRef><ReqRef
  Id="96afd3a3-f828-4c6e-a46d-9b0d96a7a22a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="134dc66f-316c-4239-915b-b560f275b3ea"
 >
 </ReqRef><ReqRef
  Id="636c0584-97a6-40a1-b98c-c6fb3a5d973f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="882b6790-9ae3-46fe-9ae3-edb1cdbebb0d"
 >
 </ReqRef><ReqRef
  Id="cbe72d69-19e0-428f-99dc-6595e037250d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="40061f26-dd8d-41c5-aa5a-9bd111f56bf7"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -83,10 +97,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Distance"
+ Guid="4648cc07-0d66-4722-9f69-d3d8b47cf360"
 >
 <ReqRef
  Id="4d109261-01fb-4710-810c-a2cfe1ade139"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af94e84d-35c0-4c7d-a746-87f46d21ad69"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.M_LINEGAUGE"
@@ -94,14 +110,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="LineGauge"
+ Guid="f0f6b962-b141-433e-b700-7713cc5de99a"
 >
 <ReqRef
  Id="78f382d2-f2b3-49c3-887a-d8543da41a47"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ba1d8b0c-e322-47ea-afa2-aa97f54bcca0"
 >
 </ReqRef><ReqRef
  Id="636c0584-97a6-40a1-b98c-c6fb3a5d973f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="22bd9ea7-7a41-451a-970d-772d7a1b2ffe"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -110,14 +129,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="MaxAxleLoad"
+ Guid="6689eeb1-5d6a-4fdd-8ec8-bde1ceec6c56"
 >
 <ReqRef
  Id="d89b3c91-52f0-4b3a-b8c5-a651c28e580d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="369e066e-329c-4fe5-a838-1e46d542e61b"
 >
 </ReqRef><ReqRef
  Id="0fb117ff-1235-410b-998a-c63b1d3a86ed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="931e4672-2ea6-4fd7-9cf1-8acb859ba680"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.M_VOLTAGE"
@@ -125,14 +147,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="TractionSystem"
+ Guid="f6517e63-d287-4e85-a61b-dc68191428f6"
 >
 <ReqRef
  Id="3279c818-b689-4685-acc2-1390cd5331ca"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="505f9c1c-db68-49e3-8e93-b7cfbfcec7b2"
 >
 </ReqRef><ReqRef
  Id="96afd3a3-f828-4c6e-a46d-9b0d96a7a22a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dbc8fdbf-2eaa-4b1d-acde-350b0f602597"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.NID_CTRACTION"
@@ -140,14 +165,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="NidCTraction"
+ Guid="22cf7e0c-41f8-4cd4-b05c-8816eec2eb92"
 >
 <ReqRef
  Id="3e473bc9-3037-4723-8378-f99625c4fc5e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="248bd705-48e9-4586-bbb0-583459d9cba0"
 >
 </ReqRef><ReqRef
  Id="96afd3a3-f828-4c6e-a46d-9b0d96a7a22a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3b1cdd26-1229-48fc-937f-75c9a4415d11"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
@@ -155,10 +183,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="IsUnsuitability"
+ Guid="7ab7b874-cc71-415d-95d9-364494f47dfc"
 >
 <ReqRef
  Id="072f0acc-a45c-44b9-8efe-422c893a3dfd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="43d25135-fc47-4189-b077-709a4f0d773a"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
@@ -168,6 +198,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RouteSuitabilityItems"
+ Guid="78c5dfd6-0b32-4fba-8186-eb35756f6093"
 >
 </Collection></Collections>
 <Functions>
@@ -175,41 +206,50 @@
  Type="RouteSuitability.RouteSuitabilityItem"
  Implemented="TRUE"
  Name="CreateRouteSuitabilityItem"
+ Guid="0e992176-c20e-4b2b-9ebc-f1466bacf9e3"
 >
 <ReqRef
  Id="072f0acc-a45c-44b9-8efe-422c893a3dfd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b727cf2e-7e90-4313-8597-e5a041a1e8bb"
 >
 </ReqRef><Comment>Creates an EFS axle load structure from the first ERTMS axle load element provided by the trackside.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="aDistance"
+ Guid="da9f7db4-8cb9-403b-a5e6-f1d32c86aba8"
 >
 </Parameter><Parameter
  Type="Messages.Q_SUITABILITY"
  Name="aType"
+ Guid="d82ebc99-85a2-45f4-8bcd-f043d91c25b3"
 >
 </Parameter><Parameter
  Type="Messages.M_LINEGAUGE"
  Name="aLineGauge"
+ Guid="be1961a0-ce5f-4f50-bbf9-7084648cb298"
 >
 </Parameter><Parameter
  Type="Messages.M_AXLELOADCAT"
  Name="aMaxAxleLoad"
+ Guid="d395f88e-2d6a-48ab-9aeb-5f5e95fc095e"
 >
 </Parameter><Parameter
  Type="Messages.M_VOLTAGE"
  Name="aTractionSystem"
+ Guid="b8d822bd-31d8-49c5-a315-4af5ac51b879"
 >
 </Parameter><Parameter
  Type="Messages.NID_CTRACTION"
  Name="aNidCTraction"
+ Guid="7fa3727a-f3af-4650-b15b-c38c4b57ee31"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="709fac9d-e5a9-4941-8d72-bdf48a9c8f4d"
 >
 <Expression>RouteSuitabilityItem
 {
@@ -226,85 +266,110 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="UnsuitabilityExists"
+ Guid="c7deead7-d55a-45db-96a6-766ccd730dc2"
 >
 <ReqRef
  Id="072f0acc-a45c-44b9-8efe-422c893a3dfd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8ce3a0ab-0d82-40b9-a9b2-78b1df49964e"
 >
 </ReqRef><ReqRef
  Id="636c0584-97a6-40a1-b98c-c6fb3a5d973f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d1a9e2e-5ae4-4a88-876c-c28e7d2747c9"
 >
 </ReqRef><ReqRef
  Id="96afd3a3-f828-4c6e-a46d-9b0d96a7a22a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3fe3ed4b-1e4e-452e-a608-b0d1df3a5778"
 >
 </ReqRef><ReqRef
  Id="d89b3c91-52f0-4b3a-b8c5-a651c28e580d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4a6646bd-32d6-4a58-a569-4b1be1ed138e"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.Q_SUITABILITY"
  Name="aType"
+ Guid="d6329eb7-c28a-4033-b7a7-22a1ec542437"
 >
 </Parameter><Parameter
  Type="Messages.M_LINEGAUGE"
  Name="aLineGauge"
+ Guid="beef0a65-5a3e-4209-a861-569cd0073112"
 >
 </Parameter><Parameter
  Type="Messages.M_AXLELOADCAT"
  Name="aMaxAxleLoad"
+ Guid="47a0a0ea-151d-4b7f-bbb6-bf2af467ad8a"
 >
 </Parameter><Parameter
  Type="Messages.M_VOLTAGE"
  Name="aTractionSystem"
+ Guid="5efb5342-f519-4760-86ca-c4a46db57a55"
 >
 </Parameter><Parameter
  Type="Messages.NID_CTRACTION"
  Name="aNidCTraction"
+ Guid="07d449f2-ab67-42d7-a03a-9e03d1bda9fb"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Line gauge"
+ Guid="621c7c64-a3e9-48d1-913d-cd2e9bb5720d"
 >
 <PreConditions>
-<PreCondition>aType == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
+<PreCondition
+ Guid="a29186e6-0ce9-4d0e-88ca-76d6d250028a"
+>aType == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
 <Expression>TrainData.TrainData.Value.LoadingGauge != aLineGauge</Expression>
 </Case><Case
  Name="Axle load"
+ Guid="2161906b-ab60-44ec-864b-1b522510851f"
 >
 <PreConditions>
-<PreCondition>aType == Messages.Q_SUITABILITY.Max_axle_load</PreCondition></PreConditions>
+<PreCondition
+ Guid="0d721740-4b22-49e4-8662-bbec0e59cfbf"
+>aType == Messages.Q_SUITABILITY.Max_axle_load</PreCondition></PreConditions>
 <Expression>aMaxAxleLoad &lt; TrainData.TrainData.Value.AxleLoadCategory</Expression>
 </Case><Case
  Name="Traction system"
+ Guid="8f15b209-1d1a-42cb-b75f-339d72abcb35"
 >
 <PreConditions>
-<PreCondition>aType == Messages.Q_SUITABILITY.Traction_system</PreCondition></PreConditions>
+<PreCondition
+ Guid="4676c596-4178-4368-a433-3f79212b496b"
+>aType == Messages.Q_SUITABILITY.Traction_system</PreCondition></PreConditions>
 <Expression>NOT ( THERE_IS_IN TrainData.TrainData.Value.TractionSystems | X.Voltage == aTractionSystem AND X.Country == aNidCTraction )</Expression>
 </Case></Cases>
 </Function><Function
  Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Implemented="TRUE"
  Name="EOA"
+ Guid="dc03df9c-9b6f-45b0-ba1e-4e006afb39c5"
 >
 <ReqRef
  Id="beedf65d-aba6-4017-83dd-0fe57bc88e85"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a114dfbc-af65-4be1-b9f8-38c635867817"
 >
 </ReqRef><ReqRef
  Id="f7dd0ecc-078c-4434-8d46-4ebb4b1f44f2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="30f351f1-2eff-4794-aec1-fc374daf6ee2"
 >
 </ReqRef><Cases>
 <Case
  Name="EOA defined"
+ Guid="68d67405-caf7-4094-b3e4-7f0058728b8e"
 >
 <PreConditions>
-<PreCondition>RouteSuitabilityProfile != EMPTY
+<PreCondition
+ Guid="cb68af68-0cb6-4298-98b1-fe36a552f264"
+>RouteSuitabilityProfile != EMPTY
   AND
 RouteSuitabilityProfile.Items != []
   AND
@@ -319,6 +384,7 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 }</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="08d62dce-082f-414d-b284-11ba2a25c091"
 >
 <Expression>EMPTY</Expression>
 </Case></Cases>
@@ -326,21 +392,27 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
  Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Implemented="TRUE"
  Name="SvL"
+ Guid="961d0614-6b17-450f-aba5-c86627fb1425"
 >
 <ReqRef
  Id="beedf65d-aba6-4017-83dd-0fe57bc88e85"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd576747-5520-4af2-859d-3c6303fb7d57"
 >
 </ReqRef><ReqRef
  Id="f7dd0ecc-078c-4434-8d46-4ebb4b1f44f2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a7bc8f9-c812-4ed7-8021-f2128fd131ae"
 >
 </ReqRef><Cases>
 <Case
  Name="SvL defined"
+ Guid="ba04cd1a-0ae1-4333-82c5-b4571e9fca2d"
 >
 <PreConditions>
-<PreCondition>RouteSuitabilityProfile != EMPTY
+<PreCondition
+ Guid="7a82f3f3-71b6-4f01-9e3a-7b5a183081db"
+>RouteSuitabilityProfile != EMPTY
   AND
 RouteSuitabilityProfile.Items != []
   AND
@@ -355,6 +427,7 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 }</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="76a4dbcf-40cb-47f6-9080-af0dca483b33"
 >
 <Expression>EMPTY</Expression>
 </Case></Cases>
@@ -363,24 +436,29 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 <Procedure
  Implemented="TRUE"
  Name="RouteSuitabilityReceived"
+ Guid="77df88d8-346e-41a6-ad9b-de332d8f859c"
 >
 <ReqRef
  Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5f0efd4f-e048-4e2b-94ab-956e1b74202e"
 >
 </ReqRef><ReqRef
  Id="352086ee-e08d-456c-a884-d2ee94aec4e9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="efd25c39-06dc-4cef-80e3-ef577968b8ed"
 >
 </ReqRef><ReqRef
  Id="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa601cb1-7fff-4af5-a434-ba1823678614"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message"
  Name="Packet"
+ Guid="f1789fa9-f72a-4111-a7ab-e62062e3646b"
 >
 </Parameter></Parameters>
 <Rules>
@@ -389,6 +467,7 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="UpdateRouteSuitabilityProfile"
+ Guid="1b1ddae1-28d6-407c-b269-49c44c9aca3f"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -397,42 +476,62 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InitialStatesToBeResumed"
+ Guid="6fd46360-bc63-40f4-8bf6-a507f953d0b3"
 >
 <ReqRef
  Id="35ef498a-1c12-4203-b283-26436d281f11"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="def675e1-f063-4c46-89ca-1a261d17b1a5"
 >
 </ReqRef><ReqRef
  Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eebe493e-e1f0-4dd1-8551-2fbfc8f433b0"
 >
 </ReqRef><Comment></Comment>
 <PreConditions>
-<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition><PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
+<PreCondition
+ Guid="c739346b-2d76-4838-9ef7-d353adce26df"
+>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition><PreCondition
+ Guid="7ba25a20-76f2-4c81-a606-193e56409134"
+>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
-<Action>RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action><Action>RouteSuitabilityProfile.EmptyProfileDistance &lt;- Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE )</Action></Actions>
+<Action
+ Guid="568dbbb3-66aa-4aaf-b3ae-569b14b7f9a8"
+>RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action><Action
+ Guid="469b32be-fde5-4ba4-a8fe-823dc9ae9e97"
+>RouteSuitabilityProfile.EmptyProfileDistance &lt;- Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NoInitialStatesToBeResumed"
+ Guid="4f23e59f-7ac3-4c59-82da-5a5b6ed56e41"
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition><PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
+<PreCondition
+ Guid="d49260da-af2e-4fca-9d32-9f48b35a6b24"
+>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition><PreCondition
+ Guid="51f2213c-d3b3-4dc5-aedb-ae7e1ddae272"
+>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
-<Action>HandleNewRouteSuitabilityProfile ( Packet )</Action></Actions>
+<Action
+ Guid="9acb85b7-b135-46ee-a759-4b7a46b7022f"
+>HandleNewRouteSuitabilityProfile ( Packet )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleNewRouteSuitabilityProfile"
+ Guid="e789f9c3-f411-4a31-8a98-9c3fb465f4db"
 >
 <Comment>Updates the axle load profile according to the values of the packet received as parameter.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message"
  Name="Packet"
+ Guid="ccd04eb9-8da8-4cc7-8f64-1fc4791f4e7d"
 >
 </Parameter></Parameters>
 <Rules>
@@ -440,10 +539,12 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
  Priority="Processing"
  Implemented="TRUE"
  Name="Remove old loading gauge information"
+ Guid="fc108900-7448-4be0-8f6c-57fd924011ad"
 >
 <ReqRef
  Id="b8848ce0-06d1-4fb9-92da-ef424548d231"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0c6892af-55d4-487c-ab64-6d8fe72e34cc"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -452,62 +553,82 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Remove old loading gauge information"
+ Guid="fa9033c7-2623-409f-a0e3-1977a62d2ac2"
 >
 <PreConditions>
-<PreCondition>Packet.Q_SUITABILITY == Messages.Q_SUITABILITY.Loading_gauge_profile
+<PreCondition
+ Guid="642c6480-81d4-476b-becc-0d506024a451"
+>Packet.Q_SUITABILITY == Messages.Q_SUITABILITY.Loading_gauge_profile
   OR
 THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Type == Messages.Q_SUITABILITY.Loading_gauge_profile IN RouteSuitabilityProfile.Items</Action></Actions>
+<Action
+ Guid="6a2f38c1-da1c-4e68-9a0d-472f127284b4"
+>REMOVE ALL X.Type == Messages.Q_SUITABILITY.Loading_gauge_profile IN RouteSuitabilityProfile.Items</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Remove old traction system information"
+ Guid="0a46707c-1859-489d-8f36-999743cfbce1"
 >
 <ReqRef
  Id="34e52b72-19f6-41be-90c8-e46ac315c822"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c233d1fc-874c-40e6-92dd-dfcadbdef9e5"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Remove old traction system information"
+ Guid="7d299e84-196c-44a8-b199-bededcb209e7"
 >
 <PreConditions>
-<PreCondition>Packet.Q_SUITABILITY == Messages.Q_SUITABILITY.Traction_system
+<PreCondition
+ Guid="79753430-4827-4043-b794-c4a30462dfe3"
+>Packet.Q_SUITABILITY == Messages.Q_SUITABILITY.Traction_system
   OR
 THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Traction_system</PreCondition></PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Type == Messages.Q_SUITABILITY.Traction_system IN RouteSuitabilityProfile.Items</Action></Actions>
+<Action
+ Guid="5234549a-f98d-4998-ba3c-c0295e85fdd9"
+>REMOVE ALL X.Type == Messages.Q_SUITABILITY.Traction_system IN RouteSuitabilityProfile.Items</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Remove old axle load information"
+ Guid="a8009141-a32b-4328-b8e4-54e4a4f2fda3"
 >
 <ReqRef
  Id="e9c7fde8-f344-4a2d-9963-01a43c215553"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="50046fd1-2d50-4585-b0fd-c1d468daa544"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Remove old axle load information"
+ Guid="520f00bf-8149-42fd-8b50-d3265dbc0282"
 >
 <PreConditions>
-<PreCondition>Packet.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axle_load
+<PreCondition
+ Guid="329da492-751c-435f-bcd7-bb60a4a70751"
+>Packet.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axle_load
   OR
 THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axle_load</PreCondition></PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Type == Messages.Q_SUITABILITY.Max_axle_load IN RouteSuitabilityProfile.Items</Action></Actions>
+<Action
+ Guid="7e5e3cc1-05b2-4889-ac3d-45de07e8ac3a"
+>REMOVE ALL X.Type == Messages.Q_SUITABILITY.Max_axle_load IN RouteSuitabilityProfile.Items</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Insert first item"
+ Guid="3b9ae9d8-ba3a-468a-8f3f-a4f3a07abceb"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -516,27 +637,34 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axl
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InsertFirstAxleLoad"
+ Guid="1ca439cc-04c4-4905-8488-cc3b987d34e0"
 >
 <ReqRef
  Id="0b4c179e-a381-412e-bdad-451bda6066e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f55a0282-c7af-4406-a685-9e1d4e010163"
 >
 </ReqRef><ReqRef
  Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cfdac5cc-99d0-4244-b863-2dbebe8e38b3"
 >
 </ReqRef><ReqRef
  Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="029b628e-29da-4cdf-8b7e-9792c8a548bf"
 >
 </ReqRef><ReqRef
  Id="1a02feaa-c003-44ae-bbc0-6685c3aab8d7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a721cc18-0be4-4931-940a-e5adc7ba5f96"
 >
 </ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>INSERT
+<Action
+ Guid="2ed4cfd1-9270-4adc-b1b9-1667a2e1e93f"
+>INSERT
     CreateRouteSuitabilityItem ( aDistance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SUITABILITY, scale =&gt; Packet.Q_SCALE ),
                                                  aType =&gt; Packet.Q_SUITABILITY,
                                                  aLineGauge =&gt; Packet.M_LINEGAUGE,
@@ -544,17 +672,21 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axl
                                                  aTractionSystem =&gt; Packet.M_VOLTAGE,
                                                  aNidCTraction =&gt; Packet.NID_CTRACTION )
 IN
-    RouteSuitabilityProfile.Items</Action><Action>RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action></Actions>
+    RouteSuitabilityProfile.Items</Action><Action
+ Guid="f8786c61-b9c0-4264-9887-6e57bef57302"
+>RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Insert following items"
+ Guid="041c5f47-774e-429d-aef6-12d35586562b"
 >
 <ReqRef
  Id="0b4c179e-a381-412e-bdad-451bda6066e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b22d4182-8cd1-4f69-b475-c564f75bc9e2"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -563,11 +695,14 @@ IN
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InsertFollowingAxleLoads"
+ Guid="2e4e1878-d1c9-40aa-bbb3-cb839b0bb573"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>APPLY
+<Action
+ Guid="d3f74efb-35e6-4de6-81d4-ad75778cce96"
+>APPLY
     AddRouteSuitability ( aRouteSuitability =&gt; X,
                                      Scale =&gt; Packet.Q_SCALE )
 ON
@@ -577,36 +712,46 @@ ON
  Priority="Processing"
  Implemented="TRUE"
  Name="Display route unsuitabilities"
+ Guid="f8360467-fd68-45b4-af74-60c647dacc4f"
 >
 <ReqRef
  Id="beedf65d-aba6-4017-83dd-0fe57bc88e85"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1bd9e0ea-3dc1-42da-ba8d-40b75846ab2a"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Display route unsuitabilities"
+ Guid="0d656aad-3889-48e4-9449-e9f4ed8bca2a"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability</PreCondition></PreConditions>
+<PreCondition
+ Guid="1a52cb97-8d8a-4b18-8f75-61e6c0468f61"
+>THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().DisplayRouteUnsuitabilities()</Action></Actions>
+<Action
+ Guid="c06648a3-cff4-478f-8884-305f08c7951e"
+>DMI.MasterDMI().DisplayRouteUnsuitabilities()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AddRouteSuitability"
+ Guid="f274bd48-61fe-491d-9fb2-18f29e6ea2c9"
 >
 <Comment>Adds a new axle load value to the axle load&apos;s collection.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1"
  Name="aRouteSuitability"
+ Guid="18d7877b-1032-461b-b341-aeb8462918e6"
 >
 </Parameter><Parameter
  Type="Messages.Q_SCALE"
  Name="Scale"
+ Guid="7c7c2c88-7c4f-4ede-8c50-f5cfb121ead7"
 >
 </Parameter></Parameters>
 <Rules>
@@ -615,6 +760,7 @@ ON
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Add Route Suitability"
+ Guid="5f43f128-d336-4248-827b-a4f6f03b7849"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -623,11 +769,14 @@ ON
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Add Route Suitability"
+ Guid="aa3b31a5-7572-4053-8d6c-3795289237fb"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>INSERT
+<Action
+ Guid="9aa4fcd8-bf54-45ea-936d-dbd11c18ce5c"
+>INSERT
     CreateRouteSuitabilityItem ( aDistance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; aRouteSuitability.D_SUITABILITY, scale =&gt; Scale ),
                                                  aType =&gt; aRouteSuitability.Q_SUITABILITY,
                                                  aLineGauge =&gt; aRouteSuitability.M_LINEGAUGE,
@@ -646,19 +795,23 @@ IN
  VariableMode="Internal"
  Implemented="TRUE"
  Name="RouteSuitabilityProfile"
+ Guid="b35fbd6f-3cfb-40d4-876b-13c11efc2172"
 >
 <ReqRef
  Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="341c0957-3c31-4602-bcc7-26eb33b21500"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="352086ee-e08d-456c-a884-d2ee94aec4e9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6b00fc46-888b-4f4c-922c-44d52fdb8554"
 >
 </ReqRef><ReqRef
  Id="655cd82d-364d-40cf-9540-62e1d8292f94"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26fe470d-2d8e-4f16-a92f-9eee2f27e826"
 >
 </ReqRef><Comment>Represents the route suitability information received from the trackside.</Comment>
 </Variable></Variables>
@@ -668,15 +821,18 @@ IN
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InitialStatesToBeResumed"
+ Guid="c4e55c76-a92d-4130-a798-593f6bade99e"
 >
 <ReqRef
  Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="74c30960-f9cf-4133-9570-6f9fe5bd4b20"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="35ef498a-1c12-4203-b283-26436d281f11"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b6fafcf9-bdac-460c-a344-e163824ae372"
 >
 </ReqRef><Comment>If the train reached the distance where the initial states have to be resumed, the axle load profile is deleted.</Comment>
 <SubRules></SubRules>
@@ -685,12 +841,21 @@ IN
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InitialStatesToBeResumed"
+ Guid="288a2ffb-523b-4cf2-8ceb-33c442aed2bb"
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>BTM.TravelledDistanceFromLRBG() &gt;= RouteSuitabilityProfile.EmptyProfileDistance</PreCondition><PreCondition>RouteSuitabilityProfile.InitialState == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition></PreConditions>
+<PreCondition
+ Guid="2e30c98e-8b97-443a-8e75-46bd26ebae25"
+>BTM.TravelledDistanceFromLRBG() &gt;= RouteSuitabilityProfile.EmptyProfileDistance</PreCondition><PreCondition
+ Guid="77ccb71b-d065-483a-a88a-a9c5d3c4324d"
+>RouteSuitabilityProfile.InitialState == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition></PreConditions>
 <Actions>
-<Action>RouteSuitabilityProfile.Items &lt;- []</Action><Action>RouteSuitabilityProfile.InitialState &lt;- Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</Action></Actions>
+<Action
+ Guid="ec07d11c-619b-4562-9b56-4d8f5f7d2317"
+>RouteSuitabilityProfile.Items &lt;- []</Action><Action
+ Guid="d5a0237c-2b86-4cd2-8374-e28591091a79"
+>RouteSuitabilityProfile.InitialState &lt;- Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

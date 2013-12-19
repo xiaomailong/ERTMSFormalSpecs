@@ -1,5 +1,6 @@
 <NameSpace
  Name="BaseTypes"
+ Guid="2a7d1254-c37b-451b-83c4-3174d5d3a1c4"
 >
 <NameSpaces>
 </NameSpaces>
@@ -11,16 +12,19 @@
  Default="0.0"
  NeedsRequirement="FALSE"
  Name="Distance"
+ Guid="6603780b-ee49-4ebc-b4c6-524cddcb0a76"
 >
 <Comment>Expressed in m</Comment>
 <SpecialValues>
 <EnumValue
  Value="2147483648.0"
  Name="Infinity"
+ Guid="d5bd1ee6-5753-41d8-9cce-7d1ad980f2f6"
 >
 </EnumValue><EnumValue
  Value="2147483647.0"
  Name="Unknown"
+ Guid="98dc64b2-68db-4321-8a80-12e40b5f2d2b"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -30,28 +34,34 @@
  Default="0.0"
  NeedsRequirement="FALSE"
  Name="Speed"
+ Guid="0fcd646f-af1b-4e71-913a-4b80fe8e1e3e"
 >
 <Comment>Expressed in km/h</Comment>
 <SpecialValues>
 <EnumValue
  Value="32769.0"
  Name="NA"
+ Guid="88c2748c-7a1a-4533-adfe-087e59a6a574"
 >
 </EnumValue><EnumValue
  Value="32768.0"
  Name="Infinity"
+ Guid="f465eb2d-243c-44a4-8f22-09d1952dc995"
 >
 </EnumValue><EnumValue
  Value="200.0"
  Name="MaxSpeed"
+ Guid="8fbfd6a7-e560-4f5c-970b-a2c134d5e25d"
 >
 </EnumValue><EnumValue
  Value="32770.0"
  Name="ComputeReleaseSpeedOnBoard"
+ Guid="f97ef45d-7f6b-4760-8588-72fb48dafc9e"
 >
 </EnumValue><EnumValue
  Value="32771.0"
  Name="UseNVForReleaseSpeed"
+ Guid="512ccc5c-71f8-4179-acd0-5e5ca4a0aaa7"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -61,16 +71,19 @@
  Default="0.0"
  NeedsRequirement="FALSE"
  Name="Time"
+ Guid="a4ee516e-7d6d-4cb3-9a18-b2a74ff1060d"
 >
 <Comment></Comment>
 <SpecialValues>
 <EnumValue
  Value="9999999999.0"
  Name="Infinity"
+ Guid="161da388-e86e-40e3-b2b1-2675d7cae6a5"
 >
 </EnumValue><EnumValue
  Value="9999999998.0"
  Name="NA"
+ Guid="97c711e2-449d-4de5-b5ba-793c38da1706"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -80,16 +93,19 @@
  Default="0.0"
  NeedsRequirement="FALSE"
  Name="Length"
+ Guid="82c35ffb-5c64-410e-8e3c-a0432011067c"
 >
 <Comment>Expressed in m</Comment>
 <SpecialValues>
 <EnumValue
  Value="32769.0"
  Name="NA"
+ Guid="d193cf5b-fd90-49f2-a64d-5e86b7776995"
 >
 </EnumValue><EnumValue
  Value="32768.0"
  Name="Infinity"
+ Guid="214a99cf-647c-4019-b9cd-8a16d5de145e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -99,12 +115,14 @@
  Default="0.0"
  NeedsRequirement="FALSE"
  Name="Gradient"
+ Guid="129c65cd-3ea8-491a-b022-81300cdfd599"
 >
 <Comment></Comment>
 <SpecialValues>
 <EnumValue
  Value="100.0"
  Name="Indefinite"
+ Guid="b7431095-4d31-4cb1-9069-9b6e912bb446"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -114,20 +132,24 @@
  Default="0.0"
  NeedsRequirement="FALSE"
  Name="Acceleration"
+ Guid="cc95a8d0-0cb1-429c-91fe-4f08895e038a"
 >
 <Comment>Expressed in m/s/s</Comment>
 <SpecialValues>
 <EnumValue
  Value="32769.0"
  Name="NA"
+ Guid="5723d704-5d32-4b0e-9f51-e3212c415ada"
 >
 </EnumValue><EnumValue
  Value="32768.0"
  Name="Infinity"
+ Guid="c88c19b8-bb37-4aa0-92fe-9f4245e03c34"
 >
 </EnumValue><EnumValue
  Value="9.81"
  Name="g"
+ Guid="e70719f7-75bb-4b7e-b6c0-85d4ec3afecf"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -137,6 +159,7 @@
  Default="0"
  NeedsRequirement="FALSE"
  Name="Number"
+ Guid="e739e4c3-e1cc-4fa8-95d0-4541c43cdcce"
 >
 <Comment></Comment>
 </Range><Range
@@ -146,6 +169,7 @@
  Default="0"
  NeedsRequirement="FALSE"
  Name="Qualifier"
+ Guid="aaccaf4d-1b88-42d5-b960-3f93a9c7c9f8"
 >
 <Comment></Comment>
 </Range><Range
@@ -155,6 +179,7 @@
  Default="0"
  NeedsRequirement="FALSE"
  Name="IdentityNumber"
+ Guid="ad24279f-b340-4e67-8b65-b78576a491c2"
 >
 <Comment></Comment>
 </Range></Ranges>
@@ -163,86 +188,116 @@
  Type="BaseTypes.Length"
  NeedsRequirement="FALSE"
  Name="DistanceToLength"
+ Guid="3183ca17-f2a7-4c82-92ba-291cce34a2bf"
 >
 <Parameters>
 <Parameter
  Type="BaseTypes.Distance"
  Name="Distance"
+ Guid="ff519043-dc17-4e58-892e-858aa855ab2c"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Valid length"
+ Guid="aa7052a0-59cd-49c4-ac7c-4a88da5acbf7"
 >
 <PreConditions>
-<PreCondition>Distance &lt; 32768.0</PreCondition><PreCondition>Distance &gt;= 0.0</PreCondition></PreConditions>
+<PreCondition
+ Guid="21ea9a30-2fab-4da2-905c-b5d8ebe8e2c7"
+>Distance &lt; 32768.0</PreCondition><PreCondition
+ Guid="55c11d05-6cc1-4644-91ee-956290023cd0"
+>Distance &gt;= 0.0</PreCondition></PreConditions>
 <Expression>Length(Distance)</Expression>
 </Case><Case
  Name="SpecialValue_Infinity"
+ Guid="9a792297-6982-4ec9-ada3-356628705a75"
 >
 <PreConditions>
-<PreCondition>Distance == 2147483648.0</PreCondition></PreConditions>
+<PreCondition
+ Guid="ecfe1d9f-52be-4a8a-9ccd-1a04e9246952"
+>Distance == 2147483648.0</PreCondition></PreConditions>
 <Expression>32768.0</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  NeedsRequirement="FALSE"
  Name="LengthToDistance"
+ Guid="54e75178-8c9b-4843-8821-d997840a91fb"
 >
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Length"
  Name="Length"
+ Guid="257b37e0-dc06-4ed2-a123-644d9c3d5863"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SpecialValue_Infinity"
+ Guid="898d8265-66e1-4e8d-9eed-5f2bf48c315c"
 >
 <PreConditions>
-<PreCondition>Length &gt;= Length.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="f030ab8c-43ca-4cae-9838-194c0d2c28bd"
+>Length &gt;= Length.Infinity</PreCondition></PreConditions>
 <Expression>Distance.Infinity</Expression>
 </Case><Case
  Name="Valid distance"
+ Guid="efa27d02-b0eb-4b92-93aa-bfe2d639014c"
 >
 <PreConditions>
-<PreCondition>Length &gt;= 0.0</PreCondition><PreCondition>Length &lt; 32768.0</PreCondition></PreConditions>
+<PreCondition
+ Guid="0f594a95-bda8-486d-b4d1-542e271bb217"
+>Length &gt;= 0.0</PreCondition><PreCondition
+ Guid="b9b7d6af-e8b9-4cd6-a927-d652c7d01d6c"
+>Length &lt; 32768.0</PreCondition></PreConditions>
 <Expression>Distance(Length)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Length"
  NeedsRequirement="FALSE"
  Name="QualifierToLength"
+ Guid="4be3966d-ab5a-4d13-83ca-afbe6243a8c2"
 >
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Qualifier"
  Name="Qualifier"
+ Guid="6dd3c400-a666-4c30-a9c4-ecc0d687fe11"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="ValidQualifier"
+ Guid="e91f7ba6-c70f-4a01-9f38-2b8e90efac90"
 >
 <PreConditions>
-<PreCondition>Qualifier &gt;= 0</PreCondition><PreCondition>Qualifier &lt; 32768</PreCondition></PreConditions>
+<PreCondition
+ Guid="145a2f9b-017c-43ac-a104-55ce2275cd56"
+>Qualifier &gt;= 0</PreCondition><PreCondition
+ Guid="2cd8583f-488f-41d8-af4f-c3e54d8af96f"
+>Qualifier &lt; 32768</PreCondition></PreConditions>
 <Expression>Length(Qualifier)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Gradient"
  NeedsRequirement="FALSE"
  Name="IndefiniteGradientFunction"
+ Guid="800dfab5-6aa8-4ce2-a93c-a661bd3ac496"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Double"
  Name="Distance"
+ Guid="34e74d0b-5b9b-4852-94c3-8f6c8102fef0"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="21116bb2-22ab-4d51-9e24-7de250c19200"
 >
 <Expression>Gradient.Indefinite</Expression>
 </Case></Cases>
@@ -251,39 +306,52 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MinGradient"
+ Guid="04ad8684-d11e-4bc7-9965-6a3cd81ea80e"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Gradient"
  Name="g1"
+ Guid="6b8d5b8d-9716-4205-9bf6-346c59136ed7"
 >
 </Parameter><Parameter
  Type="Gradient"
  Name="g2"
+ Guid="7a582cf4-9a5b-4dbf-9aec-7120c4b3417f"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="g1 is indefinite"
+ Guid="805eec41-348f-405c-930b-f50b05eb89ec"
 >
 <PreConditions>
-<PreCondition>g1 == Gradient.Indefinite</PreCondition></PreConditions>
+<PreCondition
+ Guid="236c6225-8879-4e7c-bca2-5b4af361ff1a"
+>g1 == Gradient.Indefinite</PreCondition></PreConditions>
 <Expression>g2</Expression>
 </Case><Case
  Name="g2 is indefinite"
+ Guid="3faa710a-7d5c-4c62-a78f-68f846f4d1dd"
 >
 <PreConditions>
-<PreCondition>g2 == Gradient.Indefinite</PreCondition></PreConditions>
+<PreCondition
+ Guid="5f623b56-20cc-4e40-b16a-e42b0b1cb30a"
+>g2 == Gradient.Indefinite</PreCondition></PreConditions>
 <Expression>g1</Expression>
 </Case><Case
  Name="g1 &lt; g2"
+ Guid="8418cf17-96ab-40b7-b206-dbb5b2028363"
 >
 <PreConditions>
-<PreCondition>g1 &lt; g2</PreCondition></PreConditions>
+<PreCondition
+ Guid="9b6adf0d-d262-48de-9e09-e029c7b1408e"
+>g1 &lt; g2</PreCondition></PreConditions>
 <Expression>g1</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="f7b0d110-16f4-4b3b-aecb-58f1c8d119d7"
 >
 <Expression>g2</Expression>
 </Case></Cases>
@@ -292,39 +360,52 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MinSpeed"
+ Guid="95d26cd1-b4ae-4b95-9609-0dacbd327d84"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="X1"
+ Guid="8c20da21-5316-45fe-a288-9e6976c1bfd8"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Speed"
  Name="X2"
+ Guid="bee70587-35f0-49dd-b971-5122a9aedcaa"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="X1 infinite"
+ Guid="d57e04b6-76aa-4dc8-8233-33a2f391cf3e"
 >
 <PreConditions>
-<PreCondition>X1 == Speed.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="094da13e-4192-42ef-bf05-53db1c77139e"
+>X1 == Speed.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X2 infinite"
+ Guid="beb03f4c-47b0-4382-bc42-5c7bc9df5d13"
 >
 <PreConditions>
-<PreCondition>X2 == Speed.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="8963b136-a96e-4ff5-a09f-4edbef177341"
+>X2 == Speed.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X1 &lt; X2"
+ Guid="99a585d3-1ac9-459c-8c37-bdeb61138fdd"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
+<PreCondition
+ Guid="7067b6ad-f162-4467-af41-2e88dfb91cbe"
+>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="4c9d63a9-83aa-46b8-9f93-22e13f1af288"
 >
 <Expression>X2</Expression>
 </Case></Cases>
@@ -333,17 +414,20 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MaxSpeedFunction"
+ Guid="63a521a6-c93e-4d65-91e0-b4420352fbcd"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Double"
  Name="Distance"
+ Guid="f011e386-4e6f-480e-a594-2b9a01eefc06"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="947b6e6b-74f4-4f9d-aad3-535db7dcfd07"
 >
 <Expression>Speed.MaxSpeed</Expression>
 </Case></Cases>
@@ -352,39 +436,52 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MinAcceleration"
+ Guid="f74c05ff-2f82-4f5f-a117-5af8efc8c58e"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Acceleration"
  Name="X1"
+ Guid="c7096bc2-6864-4b1c-9871-7d4af7054e98"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Acceleration"
  Name="X2"
+ Guid="80d37143-cad7-4090-b785-72c46c85ece2"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="X1 infinite"
+ Guid="3b9fef63-41ea-4878-bd0c-24d1ad213bc4"
 >
 <PreConditions>
-<PreCondition>X1 == Distance.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="8289de1a-f2bb-41ad-ba17-ec0d9a71b515"
+>X1 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X2 infinite"
+ Guid="13301996-7b69-479b-a5b0-169818409781"
 >
 <PreConditions>
-<PreCondition>X2 == Distance.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="2cf67e96-bce0-41fc-b2ae-1fd2cc2e970d"
+>X2 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X1 &lt; X2"
+ Guid="fe4ddc3e-b4d9-4fad-8f36-fdbe5342dcdb"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
+<PreCondition
+ Guid="8c7b31ad-d5e8-447a-a7a5-2f255df1ea22"
+>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="697b47ec-676f-433c-86fa-d49ef31b4351"
 >
 <Expression>X2</Expression>
 </Case></Cases>
@@ -393,26 +490,33 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AddDistance"
+ Guid="6cc7541b-602c-462a-a607-3ab985e7431d"
 >
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="X1"
+ Guid="459f1b36-00de-445d-b65a-204bbe096218"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
  Name="X2"
+ Guid="9b43a2f9-4952-4f4e-b6c4-caf38d15d26d"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="X1 or X2 equal Infinity"
+ Guid="351d73f3-076c-4217-99d2-f7ae54e9cfc6"
 >
 <PreConditions>
-<PreCondition>X1 == Distance.Infinity OR X2 == Distance.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="024a9843-3dc0-4a4c-8475-ca0155d8ad01"
+>X1 == Distance.Infinity OR X2 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>Distance.Infinity</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="e84bc135-fa4c-450e-b403-81484f4f045b"
 >
 <Expression>X1 + X2</Expression>
 </Case></Cases>
@@ -421,39 +525,52 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MinLength"
+ Guid="6f28fe63-3db8-4cf4-a591-9d1b778b86da"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Length"
  Name="X1"
+ Guid="a3275694-8764-4f76-8f27-88ad601a400b"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Length"
  Name="X2"
+ Guid="ede68300-34f4-474e-adff-e416ffe36246"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="X1 infinite"
+ Guid="7e5a97f8-db44-422c-bf59-d81d90f2ffa5"
 >
 <PreConditions>
-<PreCondition>X1 == Length.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="d12b117e-e5ad-4524-927b-2b6b1166da97"
+>X1 == Length.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X2 infinite"
+ Guid="b279a377-e631-43de-b8be-9f806242e54f"
 >
 <PreConditions>
-<PreCondition>X2 == Length.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="6f3ff74e-3a90-4ec8-ba9d-3711dd52a361"
+>X2 == Length.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X1 &lt; X2"
+ Guid="d3d270cd-8b4c-4374-980b-200ee0e6bc9c"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
+<PreCondition
+ Guid="5e245e19-d64b-4830-87b2-cc84c5db90d5"
+>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="c9836070-2d48-428d-b55c-77f237cc0467"
 >
 <Expression>X2</Expression>
 </Case></Cases>
@@ -462,39 +579,52 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MaxDistance"
+ Guid="802ed84c-8308-4e99-9359-0e87e5b2917f"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="X1"
+ Guid="2613c8f1-f24f-4ead-8eee-fb6c57b4418a"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
  Name="X2"
+ Guid="91f00c1a-96f5-4680-8511-60d30f440aaa"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="X1 infinite"
+ Guid="a2a3e925-63b1-4d93-8f23-5e530a9c1a9f"
 >
 <PreConditions>
-<PreCondition>X1 == Distance.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="e849345d-1ad8-4a0b-aa4c-e381584f4f64"
+>X1 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X2 infinite"
+ Guid="3f98729f-638c-4e05-9236-e9b1b962aa52"
 >
 <PreConditions>
-<PreCondition>X2 == Distance.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="09f1de6f-cf59-433a-85ef-f4663a73d1c5"
+>X2 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X1 &lt; X2"
+ Guid="6077f907-ca11-46e1-b05a-396b5d9da3a4"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
+<PreCondition
+ Guid="6fd45dbe-e0b7-4b0a-999d-1e17ce63b3d3"
+>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="9a6ba23a-1bfd-45ba-8a7f-b91e13f67196"
 >
 <Expression>X1</Expression>
 </Case></Cases>
@@ -503,39 +633,52 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MaxSpeed"
+ Guid="97b4d077-6c21-42c6-8d5b-5519bf3c1917"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="X1"
+ Guid="9b79a221-f334-4e8a-8da5-a2cc8488bc18"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Speed"
  Name="X2"
+ Guid="f49fac7f-9eb9-4225-8658-0abae3f50e88"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="X1 infinite"
+ Guid="fd262265-ecab-4ef4-9bba-bb59b177dbf2"
 >
 <PreConditions>
-<PreCondition>X1 == Speed.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="c43a7fd6-7fcf-431d-b520-2e58c690ee22"
+>X1 == Speed.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X2 infinite"
+ Guid="4ccc9d3a-cae0-4cb8-857f-a0a7f75de3bc"
 >
 <PreConditions>
-<PreCondition>X2 == Speed.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="43f9dafb-2ce7-4125-a514-1be107b5bbfc"
+>X2 == Speed.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X1 &lt; X2"
+ Guid="ac30a2ba-a10f-460b-ad99-42106974aafc"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
+<PreCondition
+ Guid="c1c33777-7c51-42d4-9435-625b890432ea"
+>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="ffe2bf83-1acd-42da-8c68-1ce3b91af501"
 >
 <Expression>X1</Expression>
 </Case></Cases>
@@ -544,39 +687,52 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MaxTime"
+ Guid="a6c678fe-f4f0-4b7d-908c-c0c15cfae575"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Time"
  Name="X1"
+ Guid="eedf25d4-cadd-48ba-8ceb-8ade82ecd7d0"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Time"
  Name="X2"
+ Guid="9e5c0bac-c53e-4f5d-b2fb-049e22d64d5e"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="X1 infinite"
+ Guid="e3c03875-267c-4917-8aed-8539e8034114"
 >
 <PreConditions>
-<PreCondition>X1 == Time.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="5f7d8b4b-a174-48d4-8fb8-ed91d65c70bc"
+>X1 == Time.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X2 infinite"
+ Guid="979fc4ec-868d-4930-b325-c5596010482a"
 >
 <PreConditions>
-<PreCondition>X2 == Time.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="a1f8d14d-7c2c-4d3b-9d56-2003b8b3ad72"
+>X2 == Time.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X1 &lt; X2"
+ Guid="7ea60768-c4ec-4610-bd9d-d28e0dd8df09"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
+<PreCondition
+ Guid="ad169c50-d609-4393-89db-b6dd62b1ff61"
+>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="2b66a894-84eb-40a9-9d1d-6fb7d051dc58"
 >
 <Expression>X1</Expression>
 </Case></Cases>
@@ -585,39 +741,52 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MaxAcceleration"
+ Guid="e01cf441-5c66-45bb-8a22-f1a24fca024f"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Acceleration"
  Name="X1"
+ Guid="1b55caaa-63c4-43c1-9397-4c93ef8ae55a"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Acceleration"
  Name="X2"
+ Guid="5dda9749-7c63-4e3d-8841-68c2f0f9a15d"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="X1 infinite"
+ Guid="ea25386b-2e75-43af-a93a-8421e8f93450"
 >
 <PreConditions>
-<PreCondition>X1 == Acceleration.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="e36c3b8c-ec70-4028-bcfd-1c2bc59ec29e"
+>X1 == Acceleration.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X2 infinite"
+ Guid="c2c54e1b-66d3-49e4-acf7-40346cfb3626"
 >
 <PreConditions>
-<PreCondition>X2 == Acceleration.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="8d9f2d96-c7eb-4ea7-8c4e-87ae1033246f"
+>X2 == Acceleration.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X1 &lt; X2"
+ Guid="f13ef594-f62b-4b1e-b6f5-8ec7f3760f11"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
+<PreCondition
+ Guid="6840d8a2-82ab-4642-ae0f-f5da5718cee7"
+>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="12ef732d-75a7-4227-9ff9-e8ef7c156ce9"
 >
 <Expression>X1</Expression>
 </Case></Cases>
@@ -626,39 +795,52 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MinDistance"
+ Guid="5d4cc48f-69a8-4f87-8f7a-b20a6c9b3ea2"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="X1"
+ Guid="3da6e4e3-3e47-4f9a-be03-0299b585ead6"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
  Name="X2"
+ Guid="34f47e55-eb40-4fad-b7ca-7c10be53d905"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="X1 infinite"
+ Guid="00a24617-d9d7-489a-9c5b-03e245ceb991"
 >
 <PreConditions>
-<PreCondition>X1 == Distance.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="6827cac0-c8ae-4a07-acc3-7b9efc52385e"
+>X1 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X2 infinite"
+ Guid="4c9d5caf-5c24-42fe-a53c-1270c2856810"
 >
 <PreConditions>
-<PreCondition>X2 == Distance.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="cead10d5-d0ee-454f-971c-28dd212f30b4"
+>X2 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X1 &lt; X2"
+ Guid="94b4ba83-21c8-489f-91b4-107328670759"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
+<PreCondition
+ Guid="dcd5753a-0235-4a76-a2e2-6c698675dbfd"
+>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="084dc330-07d9-48ea-a65f-4d138bba99c0"
 >
 <Expression>X2</Expression>
 </Case></Cases>
@@ -667,22 +849,28 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AbsoluteSpeed"
+ Guid="f3db063c-0cfa-4bd3-8875-1fd86653a71d"
 >
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="X"
+ Guid="1f6e6ca4-1d10-4f33-b16b-7d6f3825442c"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="X is positive"
+ Guid="372e4d55-8dbe-4710-945e-6fcb68ce689d"
 >
 <PreConditions>
-<PreCondition>X &gt;= 0.0</PreCondition></PreConditions>
+<PreCondition
+ Guid="4a788ce6-a690-4ada-8359-8d51eca4042e"
+>X &gt;= 0.0</PreCondition></PreConditions>
 <Expression>X</Expression>
 </Case><Case
  Name="X is negative"
+ Guid="f1de2492-523c-47be-9008-8daaa0494407"
 >
 <Expression>- X</Expression>
 </Case></Cases>
@@ -691,39 +879,52 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MaxLength"
+ Guid="ccb33628-1978-47f2-a6d1-b905c67885dc"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Length"
  Name="X1"
+ Guid="da6d4da4-3a45-4288-998a-526610df1d13"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Length"
  Name="X2"
+ Guid="f19349e1-9d71-42ae-b6da-ac48be2f0e56"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="X1 infinite"
+ Guid="623ae2ea-33ef-4f40-882e-da706ed805bd"
 >
 <PreConditions>
-<PreCondition>X1 == Length.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="78827337-c918-4b71-8e11-a8b754aea5d8"
+>X1 == Length.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X2 infinite"
+ Guid="b743d086-9510-4772-8d11-d285d6f1e412"
 >
 <PreConditions>
-<PreCondition>X2 == Length.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="5e568f57-8df8-4945-9166-2159bb460d51"
+>X2 == Length.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X1 &lt; X2"
+ Guid="239c8b77-86e0-4f5a-90e8-5a3d2a69ad2a"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
+<PreCondition
+ Guid="46717829-7211-4766-9808-76c965b45647"
+>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="35b1c5e8-9fce-4a36-8026-97371a51ef71"
 >
 <Expression>X1</Expression>
 </Case></Cases>
@@ -732,16 +933,19 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SpeedToMS"
+ Guid="08620e10-a49d-4239-9f40-d4c94e4f2462"
 >
 <Parameters>
 <Parameter
  Type="BaseTypes.Speed"
  Name="Val"
+ Guid="b4150a8b-a876-4268-ba9f-f049da4e4bce"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="aafb6c95-f08e-425c-9fef-95e277dc9764"
 >
 <Expression>Val / 3.6</Expression>
 </Case></Cases>
@@ -750,16 +954,19 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SpeedToKmH"
+ Guid="8a3137f1-a885-4afb-861a-d756a0a98356"
 >
 <Parameters>
 <Parameter
  Type="BaseTypes.Speed"
  Name="Val"
+ Guid="2c8613e7-ecd7-4b53-8f19-19a35ffb892c"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="9f9e959e-bf64-42af-87c5-9903dc2193d2"
 >
 <Expression>Val * 3.6</Expression>
 </Case></Cases>
@@ -773,6 +980,7 @@
  Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="G"
+ Guid="17002011-25db-4aed-b696-50f6b12ce614"
 >
 <Comment>The earth gravity</Comment>
 </Variable></Variables>

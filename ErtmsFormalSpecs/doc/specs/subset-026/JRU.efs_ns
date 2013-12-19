@@ -4,6 +4,7 @@
  Width="100"
  Height="50"
  Name="JRU"
+ Guid="eb4c743a-9cf0-4670-ae78-1c658e68b69d"
 >
 <NameSpaces>
 </NameSpaces>
@@ -11,32 +12,41 @@
 <Structure
  Implemented="TRUE"
  Name="JRU"
+ Guid="fcd8bc1d-4787-454f-a0d1-863a0d566326"
 >
 <Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
  Name="SendMessage"
+ Guid="e099ac06-9929-4fb6-a309-f7dd215f858e"
 >
 <ReqRef
  Id="afff8a8f-43e0-4227-a33e-7bc28cb8661d"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="587d701b-115a-4739-a45e-310496596b2e"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="SendMessage"
+ Guid="6adace2d-8413-4265-a732-4cfc6ca754a5"
 >
 <PreConditions>
-<PreCondition>SendJruNewMessage(THIS) == True</PreCondition></PreConditions>
+<PreCondition
+ Guid="c7be3f63-444c-4d7c-8b71-dd667a30c684"
+>SendJruNewMessage(THIS) == True</PreCondition></PreConditions>
 <Actions>
-<Action>JRU.SendJruMessage()</Action></Actions>
+<Action
+ Guid="ceacc66c-5e57-4024-81f9-daf7d248fcdf"
+>JRU.SendJruMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
  Implemented="TRUE"
  Name="CleanUp"
+ Guid="b805dd78-9b08-4e02-99a3-813033fa1785"
 >
 <Comment>Getting ready for the next cycle</Comment>
 <SubRules></SubRules>
@@ -44,38 +54,63 @@
 <RuleCondition
  Implemented="TRUE"
  Name="CleanUp"
+ Guid="b614f541-65ff-4dd9-8e90-7f36443832bd"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Message &lt;- EMPTY</Action><Action>PreviousSystemVersion &lt;- Kernel.OperatedSystemVersion.Value</Action><Action>PreviousTrainData &lt;- Kernel.TrainData.TrainData.Value</Action><Action>PreviousKernelMode &lt;- Kernel.Mode</Action><Action>PreviousKernelLevel &lt;- Kernel.Level.Value</Action><Action>PreviousEBStatus &lt;- TIU.EmergencyBrakeCommanded</Action><Action>PreviousSBStatus &lt;- TIU.ServiceBrakeCommanded</Action></Actions>
+<Action
+ Guid="dbfb4ce6-6e75-4ec4-9570-7ba16fe4a050"
+>Message &lt;- EMPTY</Action><Action
+ Guid="06d0091f-b48f-486b-8088-c41f6e231e53"
+>PreviousSystemVersion &lt;- Kernel.OperatedSystemVersion.Value</Action><Action
+ Guid="2530de24-0c40-4088-b0a4-1325135e6574"
+>PreviousTrainData &lt;- Kernel.TrainData.TrainData.Value</Action><Action
+ Guid="d1059a2b-c836-41a2-858f-bde87944278a"
+>PreviousKernelMode &lt;- Kernel.Mode</Action><Action
+ Guid="22c9d4de-9284-4627-9d4b-5a958d7d0250"
+>PreviousKernelLevel &lt;- Kernel.Level.Value</Action><Action
+ Guid="c4ddae0a-1491-4a0b-a46d-bd0947ad8b0e"
+>PreviousEBStatus &lt;- TIU.EmergencyBrakeCommanded</Action><Action
+ Guid="206fd4c8-709e-46c9-8eca-1a121a0cf55f"
+>PreviousSBStatus &lt;- TIU.ServiceBrakeCommanded</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="UpdateJRUTime"
+ Guid="2cefdd03-1df3-4a9c-8fce-54dfb01f7a19"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="UpdateTime"
+ Guid="82202276-9547-45f4-8495-0353695ff6dc"
 >
 <PreConditions>
-<PreCondition>SendMessagePeriodically(THIS)</PreCondition></PreConditions>
+<PreCondition
+ Guid="bd5e4bf2-8113-464b-8859-58726f368827"
+>SendMessagePeriodically(THIS)</PreCondition></PreConditions>
 <Actions>
-<Action>JRU.SendJruMessage()</Action><Action>JRU.JRU1.PreviousTime &lt;- Kernel.CurrentTime</Action></Actions>
+<Action
+ Guid="30019192-a227-4b3b-b4bc-9ff99059d11b"
+>JRU.SendJruMessage()</Action><Action
+ Guid="1dd375f4-1c36-44bc-8f3f-fbd3204b191e"
+>JRU.JRU1.PreviousTime &lt;- Kernel.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
  Name="SendJruMessage"
+ Guid="850cfa57-2727-4b9a-8ef7-5f5fa4f69fd7"
 >
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="SendJruMessage"
+ Guid="45362a63-6d4b-4d0b-becb-db3f6f7466a4"
 >
 <Comment>This procedure will send a JRU message when one of all the conditions has been satisfied</Comment>
 <SubRules></SubRules>
@@ -83,77 +118,100 @@
 <RuleCondition
  Implemented="TRUE"
  Name="SendJruMessage"
+ Guid="0cc7c038-15e3-46f5-ada3-d8eb7fdf1465"
 >
 <Comment>When one of all the possible reasons for sending a General JRU Messages is true then a new General JRU Message will be sent</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Message &lt;- Messages.JRU.MESSAGE.Message { }</Action></Actions>
+<Action
+ Guid="63e31c8b-6484-4e99-9db9-f9b29b72b552"
+>Message &lt;- Messages.JRU.MESSAGE.Message { }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="SendNtcSelectedMessage"
+ Guid="a7724310-6cd0-40c6-ab61-706120e7b4f4"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="SendNtcSelectedMessage"
+ Guid="87753d10-2295-4e11-8946-89db7d0af51d"
 >
 <ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0d2496b2-36ad-4eff-8f0a-20c8e981e964"
 >
 </ReqRef><PreConditions>
-<PreCondition>( LevelChangedToNtc(THIS) )</PreCondition></PreConditions>
+<PreCondition
+ Guid="4b98b25b-e0e1-4b73-abce-efb77e9ef86e"
+>( LevelChangedToNtc(THIS) )</PreCondition></PreConditions>
 <Actions>
-<Action>Message.NTC_SELECTED &lt;- CreateNtcSelectedMessage()</Action></Actions>
+<Action
+ Guid="1f156b86-5ad4-4f71-b713-b90d2220acf4"
+>Message.NTC_SELECTED &lt;- CreateNtcSelectedMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="SendGeneralJruMessage"
+ Guid="6e282cfd-251d-4c07-827f-785ba50a3d06"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="SendGeneralJruMessage"
+ Guid="dc280e18-94ae-4bf3-9ad1-f51e3999d277"
 >
 <ReqRef
  Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="3d6d04b5-1a89-4cae-876f-301697bb8ad3"
 >
 </ReqRef><ReqRef
  Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c9b887ef-cb19-414a-b0db-de56a1e7d462"
 >
 </ReqRef><ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="baaecf6c-c948-4428-b73d-efb2e7db52c3"
 >
 </ReqRef><ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7d6bc944-fc5b-4b69-bd36-ba58d0d4fea4"
 >
 </ReqRef><PreConditions>
-<PreCondition>( SendNewGeneralMessage(THIS) )</PreCondition></PreConditions>
+<PreCondition
+ Guid="d54d3701-4766-46c3-89b1-40dd29a1c3da"
+>( SendNewGeneralMessage(THIS) )</PreCondition></PreConditions>
 <Actions>
-<Action>Message.GENERAL_MESSAGE &lt;- CreateGeneralMessage()</Action></Actions>
+<Action
+ Guid="a2e909fc-f437-4efb-9dfb-399829b60fce"
+>Message.GENERAL_MESSAGE &lt;- CreateGeneralMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="SendTrainDataJruMessage"
+ Guid="e14c160a-f079-4098-acd4-ae5c59173e72"
 >
 <ReqRef
  Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8067d693-cfb2-4ee8-ad01-7aa9837f795d"
 >
 </ReqRef><ReqRef
  Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="466148b1-d68f-41b1-b8f3-b6b5b28cbd91"
 >
 </ReqRef><Comment>Will contain the TrainData information in the JRU</Comment>
 <SubRules></SubRules>
@@ -161,76 +219,105 @@
 <RuleCondition
  Implemented="TRUE"
  Name="JruTrainDataMessage"
+ Guid="c851d79b-ccfd-454d-86ec-b0ef6bcdf2e9"
 >
 <Comment>When the function that examines the changes of the TrainDataVerified variable returns true</Comment>
 <PreConditions>
-<PreCondition>SendTrainDataJruMessage(THIS)</PreCondition></PreConditions>
+<PreCondition
+ Guid="5281ff5a-9ae0-47a7-8732-83dc0445fdc2"
+>SendTrainDataJruMessage(THIS)</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TrainDataVerified &lt;- False</Action><Action>Message.TRAIN_DATA &lt;- CreateTrainDataMessage()</Action></Actions>
+<Action
+ Guid="53c8185c-b1db-4c4c-9778-c8c65d4d4c47"
+>Kernel.TrainDataVerified &lt;- False</Action><Action
+ Guid="9c53e3cd-d6e0-4d3b-8990-9e9c536431b7"
+>Message.TRAIN_DATA &lt;- CreateTrainDataMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="SendEmergencyBrakeCommandStateJruMessage"
+ Guid="a87e6e90-f964-4012-aea8-f4348ed7c5ae"
 >
 <ReqRef
  Id="0c66d0c2-4189-4bdd-9a59-f8fb5da1dc72"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0e73f96a-29b8-4f14-8936-7de1ece29976"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="SendEmergencyBrakeCommandStateJruMessage"
+ Guid="3b64f0e4-6aad-496a-a89d-b88c550ff315"
 >
 <PreConditions>
-<PreCondition>EmergencyBrakeStatusChanged(THIS)</PreCondition></PreConditions>
+<PreCondition
+ Guid="511e0ca3-3a28-4758-abc1-2b9c352f462d"
+>EmergencyBrakeStatusChanged(THIS)</PreCondition></PreConditions>
 <Actions>
-<Action>Message.EMERGENCY_BRAKE_COMMAND_STATE &lt;- CreateEBCommandStateMessage()</Action></Actions>
+<Action
+ Guid="7c9857ea-ccb4-413f-9701-363e864e468a"
+>Message.EMERGENCY_BRAKE_COMMAND_STATE &lt;- CreateEBCommandStateMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="SendServiceBrakeCommandStateJruMessage"
+ Guid="3a1489a5-e6fb-4c2b-a77a-eec0255565b7"
 >
 <ReqRef
  Id="089434c4-9c48-438a-9c6e-1dc3af77e9db"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="13dbf288-0680-4a19-bcea-24cf833fde4d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="SendEmergencyBrakeCommandStateJruMessage"
+ Guid="33e24480-68b9-4c5f-8733-154ffbe8f0d7"
 >
 <ReqRef
  Id="089434c4-9c48-438a-9c6e-1dc3af77e9db"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="4ea03b7b-5d5e-43e1-a6d1-e444c1c733df"
 >
 </ReqRef><PreConditions>
-<PreCondition>ServiceBrakeStatusChanged(THIS)</PreCondition></PreConditions>
+<PreCondition
+ Guid="b7e6ba46-a3bf-4841-b6c5-67ec043531c0"
+>ServiceBrakeStatusChanged(THIS)</PreCondition></PreConditions>
 <Actions>
-<Action>Message.SERVICE_BRAKE_COMMAND_STATE &lt;- CreateSBCommandStateMessage()</Action></Actions>
+<Action
+ Guid="5e253593-036b-4172-af6c-537b332e8bc6"
+>Message.SERVICE_BRAKE_COMMAND_STATE &lt;- CreateSBCommandStateMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="TelegramFromEuroBaliseRecieved"
+ Guid="5a91183c-11ab-4fe0-9f61-55ca98260898"
 >
 <ReqRef
  Id="2775cdfc-7d3f-4adc-b431-79d473f86272"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="daaf7ce0-4214-40b5-ba4b-f554155123ac"
 >
 </ReqRef><Comment>A JRU Message should be sent when a telegram from an EuroBalise has been recieved</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="TelegramFromEuroBaliseRecieved"
+ Guid="01260484-7d17-4a3c-9ca6-743f1308071d"
 >
 <PreConditions>
-<PreCondition>JRU.TelegramFromBaliseRecieved()</PreCondition></PreConditions>
+<PreCondition
+ Guid="30005dec-9a3f-4f5d-94e6-65c3b4f1b049"
+>JRU.TelegramFromBaliseRecieved()</PreCondition></PreConditions>
 <Actions>
-<Action>Message.TELEGRAM_FROM_BALISE &lt;- JRU.CreateJruTelegramFromBaliseMessage()</Action></Actions>
+<Action
+ Guid="e8d247c7-1e71-428a-bf8d-240c42f3a3b6"
+>Message.TELEGRAM_FROM_BALISE &lt;- JRU.CreateJruTelegramFromBaliseMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -240,10 +327,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="PreviousTime"
+ Guid="527c7ddc-d3a6-4d23-bbe3-816a3bd01686"
 >
 <ReqRef
  Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b778e8a0-0854-42b1-b106-8291d8dfdef7"
 >
 </ReqRef><Comment>This will reflex the last time a JRU message was sent to JRU.</Comment>
 </StructureElement><StructureElement
@@ -252,6 +341,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Message"
+ Guid="6bf6af70-645b-4c6a-8be3-752637168084"
 >
 <Comment>Represent a JRU message.</Comment>
 </StructureElement><StructureElement
@@ -260,10 +350,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="PreviousSystemVersion"
+ Guid="ea041794-6a54-4b0a-befa-ae6bd4c58141"
 >
 <ReqRef
  Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d9fb4197-ee4f-4e37-9df7-e317fbf656cc"
 >
 </ReqRef><Comment>It will reflex the previous System Version</Comment>
 </StructureElement><StructureElement
@@ -272,10 +364,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="PreviousKernelMode"
+ Guid="9a1e710d-c3d0-42c6-a104-1cd8057cd362"
 >
 <ReqRef
  Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b888c69c-e432-439a-82f2-98a94fe9345c"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.Level"
@@ -283,10 +377,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="PreviousKernelLevel"
+ Guid="4bb8fde4-1d8f-4698-9113-ebda8d2163d6"
 >
 <ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f2d08d21-8b8c-49d3-9f09-7476afd4577b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Kernel.TrainData.TrainDataValues"
@@ -294,10 +390,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="PreviousTrainData"
+ Guid="e83b3317-7064-49ea-a178-a99311c490e2"
 >
 <ReqRef
  Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="3ace8be9-c83c-4359-ba82-c0a58ad00bd4"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
@@ -305,10 +403,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="PreviousSBStatus"
+ Guid="9ea7685a-65f1-4074-8555-287bbf73ba87"
 >
 <ReqRef
  Id="089434c4-9c48-438a-9c6e-1dc3af77e9db"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="34497b31-46e8-4df0-82f5-6432b4993bee"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
@@ -316,10 +416,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="PreviousEBStatus"
+ Guid="e6e515fb-e955-4b19-891a-e0359d68c2e1"
 >
 <ReqRef
  Id="0c66d0c2-4189-4bdd-9a59-f8fb5da1dc72"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b97e87da-0624-4898-8439-68eee96f5407"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Functions>
@@ -327,11 +429,13 @@
  Type="Messages.JRU.MESSAGE.GENERAL_MESSAGE.Message"
  Implemented="TRUE"
  Name="CreateGeneralMessage"
+ Guid="18992937-700e-4c32-8c61-b76ff205298f"
 >
 <Comment>It will fill a Genera Message in JRU</Comment>
 <Cases>
 <Case
  Name="Value"
+ Guid="3caa4d49-f819-44e2-b791-3d3758bd06db"
 >
 <Expression>Messages.JRU.MESSAGE.GENERAL_MESSAGE.Message{
     HEADER =&gt; CreateHeader(1)
@@ -341,24 +445,29 @@
  Type="Messages.JRU.HEADER.Message"
  Implemented="TRUE"
  Name="CreateHeader"
+ Guid="9962f540-f94d-473f-91e9-bc737b1a13a7"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d8e23c05-6adb-4969-b128-50ed51410c77"
 >
 </ReqRef><ReqRef
  Id="6451c7ce-0322-4d09-a760-30452fad7e33"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="dd1842fc-c088-40ee-a0da-fde85bc7e583"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Integer"
  Name="MessageId"
+ Guid="e61acd4f-d843-4a29-adac-d4eb68168d25"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="JRUHeader"
+ Guid="26f17d21-e797-4d30-972c-e9d5567392a3"
 >
 <Expression>Messages.JRU.HEADER.Message
      {
@@ -396,174 +505,247 @@
  Type="Messages.JRU.LEVEL"
  Implemented="TRUE"
  Name="ToJruLevel"
+ Guid="ac4426f8-eda9-485b-989d-a7a7611ec6b6"
 >
 <Comment>It will transform a Kernel.Level int a JRU.Level</Comment>
 <Parameters>
 <Parameter
  Type="Default.Level"
  Name="LevelInKernel"
+ Guid="671b6ff1-c6f4-4b84-ac91-846a87f00732"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Messages.JRU.LEVEL.Level_0"
+ Guid="dc14beb5-33e6-4376-b6bc-b0987021cec7"
 >
 <PreConditions>
-<PreCondition>LevelInKernel == Default.Level.L0</PreCondition></PreConditions>
+<PreCondition
+ Guid="34d01b9a-809b-40bd-bf19-ea740f16f309"
+>LevelInKernel == Default.Level.L0</PreCondition></PreConditions>
 <Expression>Messages.JRU.LEVEL.Level_0</Expression>
 </Case><Case
  Name="Messages.JRU.LEVEL.Level_1"
+ Guid="d485ae58-4e52-4eca-962b-8319415079c6"
 >
 <PreConditions>
-<PreCondition>LevelInKernel == Default.Level.L1</PreCondition></PreConditions>
+<PreCondition
+ Guid="7ef86129-792b-4f61-829c-12f9a23e1c01"
+>LevelInKernel == Default.Level.L1</PreCondition></PreConditions>
 <Expression>Messages.JRU.LEVEL.Level_1</Expression>
 </Case><Case
  Name="Messages.JRU.LEVEL.Level_2"
+ Guid="1b8a86ee-d776-4835-ac45-115f6f29ff29"
 >
 <PreConditions>
-<PreCondition>LevelInKernel == Default.Level.L2</PreCondition></PreConditions>
+<PreCondition
+ Guid="8ffe33fe-aebb-4ef8-b457-5fb0fbfcd824"
+>LevelInKernel == Default.Level.L2</PreCondition></PreConditions>
 <Expression>Messages.JRU.LEVEL.Level_2</Expression>
 </Case><Case
  Name="Messages.JRU.LEVEL.Level_3"
+ Guid="2b1689c9-ee32-4449-a35a-3a9f73612435"
 >
 <PreConditions>
-<PreCondition>LevelInKernel == Default.Level.L3</PreCondition></PreConditions>
+<PreCondition
+ Guid="c7bdf3fd-6767-44ce-8db6-2e2210514613"
+>LevelInKernel == Default.Level.L3</PreCondition></PreConditions>
 <Expression>Messages.JRU.LEVEL.Level_3</Expression>
 </Case><Case
  Name="Level_STM_specified_by_NID_NTC"
+ Guid="162ff1a8-b5b4-41d2-b814-36deb51f3b38"
 >
 <PreConditions>
-<PreCondition>LevelInKernel == Default.Level.LNTC</PreCondition></PreConditions>
+<PreCondition
+ Guid="d80edfa1-7aba-4a01-891e-c142c5831aef"
+>LevelInKernel == Default.Level.LNTC</PreCondition></PreConditions>
 <Expression>Messages.JRU.LEVEL.Level_STM_specified_by_NID_NTC</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.M_MODE"
  Implemented="TRUE"
  Name="ToJruMode"
+ Guid="66578131-da84-494b-84c4-f928a111de40"
 >
 <Parameters>
 <Parameter
  Type="Default.Mode"
  Name="ModeInkernel"
+ Guid="7cac4561-1c47-4d45-a0e5-3345dba4562a"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="JruModeStaffResponsible"
+ Guid="5238deb0-0f6c-43a8-908f-657224a59bf3"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.SR</PreCondition></PreConditions>
+<PreCondition
+ Guid="d58b5d4c-137e-45f0-b033-388f663e004a"
+>ModeInkernel == Default.Mode.SR</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Staff_Responsible</Expression>
 </Case><Case
  Name="JruModeOnSight"
+ Guid="09e68e3b-794c-4bee-8049-62b1ca670f9e"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.OS</PreCondition></PreConditions>
+<PreCondition
+ Guid="65dd3f84-c68c-4f44-a554-2f37e35b3b97"
+>ModeInkernel == Default.Mode.OS</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.On_Sight</Expression>
 </Case><Case
  Name="JruModeIsolation"
+ Guid="30329f9d-f3d1-49cd-8b66-43416241b080"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.IS</PreCondition></PreConditions>
+<PreCondition
+ Guid="c81827f1-e33b-499b-a201-e2c6e05c71be"
+>ModeInkernel == Default.Mode.IS</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Isolation</Expression>
 </Case><Case
  Name="JruModeLimitedSupervision"
+ Guid="412b3e3f-1905-4c28-bebe-5aef5b79be68"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.LS</PreCondition></PreConditions>
+<PreCondition
+ Guid="78e1e3b4-747f-45fe-b3bd-79017ec187a9"
+>ModeInkernel == Default.Mode.LS</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Limited_Supervision</Expression>
 </Case><Case
  Name="JruModeNationalSystem"
+ Guid="1445d1ed-e80e-42d9-9f8c-a47f97cc7bcd"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.SN</PreCondition></PreConditions>
+<PreCondition
+ Guid="a50e9e12-b362-4b8c-8e8b-7b712c356128"
+>ModeInkernel == Default.Mode.SN</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.National_System</Expression>
 </Case><Case
  Name="JruModeNonLeading"
+ Guid="8c9b81fc-9629-43fa-8f30-62198913d923"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.NL</PreCondition></PreConditions>
+<PreCondition
+ Guid="4144de64-8c31-44fb-8fd0-c3d313c9f65d"
+>ModeInkernel == Default.Mode.NL</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Non_Leading</Expression>
 </Case><Case
  Name="JruModePassiveShunting"
+ Guid="69378b72-b46e-42f5-b46f-0d695adef3d0"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.PS</PreCondition></PreConditions>
+<PreCondition
+ Guid="2c957db7-0de7-4ed7-a4e0-00cc2dc23fbe"
+>ModeInkernel == Default.Mode.PS</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Passive_Shunting</Expression>
 </Case><Case
  Name="JruModePosttrip"
+ Guid="70bc49b0-3de9-4c9b-9d4e-6720a7a27e7a"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.PT</PreCondition></PreConditions>
+<PreCondition
+ Guid="7772e571-7bf8-4792-b099-e58c84aebaa1"
+>ModeInkernel == Default.Mode.PT</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Post_Trip</Expression>
 </Case><Case
  Name="JruModeReversing"
+ Guid="0284e8ca-9994-45c1-8858-b73b60e2c682"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.RV</PreCondition></PreConditions>
+<PreCondition
+ Guid="82409c40-e1d0-4962-bd58-f750f695df1e"
+>ModeInkernel == Default.Mode.RV</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Reversing</Expression>
 </Case><Case
  Name="JruModeUnfitted"
+ Guid="1493be04-bfc6-4148-a0eb-d5efa0cfa07c"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.UN</PreCondition></PreConditions>
+<PreCondition
+ Guid="0183745a-b08c-497d-8ac4-ad06006de01c"
+>ModeInkernel == Default.Mode.UN</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Unfitted</Expression>
 </Case><Case
  Name="JruModeShunting"
+ Guid="1555ab74-dfe9-44ee-aaf9-eaa35ec9f454"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.SH</PreCondition></PreConditions>
+<PreCondition
+ Guid="ef5c2c4e-4fb8-4c5c-9a79-d7a5b4c61fea"
+>ModeInkernel == Default.Mode.SH</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Full_Supervision</Expression>
 </Case><Case
  Name="JruModeSystemFailure"
+ Guid="61d8724b-9bd9-4959-b6bc-ee843883f405"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.SF</PreCondition></PreConditions>
+<PreCondition
+ Guid="081e2014-8b9a-4f34-a757-f13a78294acc"
+>ModeInkernel == Default.Mode.SF</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.System_Failure</Expression>
 </Case><Case
  Name="JruModeStandBy"
+ Guid="b90716db-3dc3-4406-8fb5-e1210b369054"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.SB</PreCondition></PreConditions>
+<PreCondition
+ Guid="ef6b18e7-3529-4204-8a2c-e71f178225db"
+>ModeInkernel == Default.Mode.SB</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Stand_By</Expression>
 </Case><Case
  Name="JruModeFullsupervision"
+ Guid="6241e35a-e8a9-49d4-9e41-4fdb26a28aed"
 >
 <PreConditions>
-<PreCondition>Kernel.Mode == Default.Mode.FS</PreCondition></PreConditions>
+<PreCondition
+ Guid="049a9260-68c5-46e4-b55b-6afaf934add3"
+>Kernel.Mode == Default.Mode.FS</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Full_Supervision</Expression>
 </Case><Case
  Name="JruModeSleeping"
+ Guid="9777d358-d1bd-4f87-9455-9708cf47ab44"
 >
 <PreConditions>
-<PreCondition>Kernel.Mode == Default.Mode.SL</PreCondition></PreConditions>
+<PreCondition
+ Guid="62d927fc-955e-430f-b5f6-9a6de4ea0494"
+>Kernel.Mode == Default.Mode.SL</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Sleeping</Expression>
 </Case><Case
  Name="JruModeTrip"
+ Guid="e983bf5e-6194-4ec5-80a6-b9e86b6cdc1a"
 >
 <PreConditions>
-<PreCondition>Kernel.Mode == Default.Mode.TR</PreCondition></PreConditions>
+<PreCondition
+ Guid="c848ff89-7d48-4b40-ab08-d34c72eed5f5"
+>Kernel.Mode == Default.Mode.TR</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Trip</Expression>
 </Case></Cases>
 </Function><Function
  Type="MessageTypes.Speed"
  Implemented="TRUE"
  Name="ToJruVtrain"
+ Guid="91c92590-51f5-4a7e-8dd6-685d094dd617"
 >
 <ReqRef
  Id="3c0233a7-b01e-40fb-a5f0-652063fdf644"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="932323e2-5409-4cb5-80bf-79fc9a1bd8d7"
 >
 </ReqRef><Comment>this function will be used in order to translate from a Default.BaseTypes.Speed to the V_TRAIN type of the JRU.HEADER</Comment>
 <Cases>
 <Case
  Name="NotStandStill"
+ Guid="afbe7ba9-de86-4f7c-bdc1-c8a44a18154a"
 >
 <PreConditions>
-<PreCondition>Odometry.EstimatedSpeed != 0.0</PreCondition></PreConditions>
+<PreCondition
+ Guid="e82be393-fc78-4c8d-894b-118829d6b2b8"
+>Odometry.EstimatedSpeed != 0.0</PreCondition></PreConditions>
 <Expression>Default.MessageTypes.UnResolveSpeed( Odometry.EstimatedSpeed, 5.0)</Expression>
 </Case><Case
  Name="StandStill"
+ Guid="33ecabf8-f71b-43ed-87b4-c2f157db86e0"
 >
 <Expression>1023</Expression>
 </Case></Cases>
@@ -571,35 +753,47 @@
  Type="Messages.JRU.SYSTEM_VERSION"
  Implemented="TRUE"
  Name="ToJruSystemVersion"
+ Guid="074aa369-7b30-42c2-aceb-0d3bb250ba9f"
 >
 <Comment>This will convert the info from a Kernel.OperatedSystemVersion to a JRU SYSTEM_VERSION type</Comment>
 <Parameters>
 <Parameter
  Type="Kernel.OperatedSystemVersion"
  Name="SystemVersion"
+ Guid="f11a2a65-6bf3-46e6-a8bc-5bb294faca9a"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Version_1_1__introduced_in_SRS_3_0_0"
+ Guid="51f5ad19-6386-4218-9e74-edefb6c53578"
 >
 <PreConditions>
-<PreCondition>SystemVersion.Value == &apos;Version_1_1__introduced_in_SRS_3_0_0&apos;</PreCondition></PreConditions>
+<PreCondition
+ Guid="4192a0e3-64ef-4734-8c83-38be693f4c6b"
+>SystemVersion.Value == &apos;Version_1_1__introduced_in_SRS_3_0_0&apos;</PreCondition></PreConditions>
 <Expression>Messages.JRU.SYSTEM_VERSION.Class_1__version_1_1__introduced_in_SRS_3_0_0</Expression>
 </Case><Case
  Name="Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0"
+ Guid="c80b62a0-a019-4299-8ac1-293ee7964476"
 >
 <PreConditions>
-<PreCondition>SystemVersion.Value == &apos;Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0&apos;</PreCondition></PreConditions>
+<PreCondition
+ Guid="f6a293ef-1394-4490-a5f7-b624ffdae8ef"
+>SystemVersion.Value == &apos;Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0&apos;</PreCondition></PreConditions>
 <Expression>Messages.JRU.SYSTEM_VERSION.Class_1__version_2_0__introduced_in_SRS_3_0_0</Expression>
 </Case><Case
  Name="Version_2_0__introduced_in_SRS_3_0_0"
+ Guid="79ab7b6a-df16-4d6f-91a5-270f4ea86bda"
 >
 <PreConditions>
-<PreCondition>SystemVersion.Value == &apos;Version_2_0__introduced_in_SRS_3_0_0&apos;</PreCondition></PreConditions>
+<PreCondition
+ Guid="0e5c7dbb-a8fc-4c3f-ad28-e552c1c638c8"
+>SystemVersion.Value == &apos;Version_2_0__introduced_in_SRS_3_0_0&apos;</PreCondition></PreConditions>
 <Expression>Messages.JRU.SYSTEM_VERSION.Class_1__version_2_0__introduced_in_SRS_3_0_0</Expression>
 </Case><Case
  Name="Default"
+ Guid="1e049f40-f9ba-4939-b8ad-aea112453435"
 >
 <Expression>Messages.JRU.SYSTEM_VERSION.Unknown</Expression>
 </Case></Cases>
@@ -607,14 +801,17 @@
  Type="Messages.JRU.MESSAGE.NTC_SELECTED.Message"
  Implemented="TRUE"
  Name="CreateNtcSelectedMessage"
+ Guid="7392d91f-bade-43c1-a05e-f23920977933"
 >
 <ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d677c4db-5d59-4468-98d8-d494170c96aa"
 >
 </ReqRef><Cases>
 <Case
  Name="Value"
+ Guid="ce5aefc3-a18f-41b1-a8da-6e52ca3038fb"
 >
 <Expression>Messages.JRU.MESSAGE.NTC_SELECTED.Message{
 HEADER =&gt; CreateHeader(MessageId=&gt;26),
@@ -625,46 +822,58 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  Type="Messages.JRU.NID_NTC"
  Implemented="TRUE"
  Name="ToJruNidNtc"
+ Guid="6b348997-2882-4945-9a7c-0d6814ddc511"
 >
 <ReqRef
  Id="1fc880ed-12b0-4b3a-9b18-232e2d8aa5cd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fcfb56a0-7ba8-47f0-a465-d899039c1d25"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Default.NID_NTC"
  Name="KernelNidNtc"
+ Guid="db7f3371-5cb1-4dc0-b5ad-a80b866ff962"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Applicable"
+ Guid="4a7cd6a3-b392-4e90-b513-402f4c54d9a1"
 >
 <PreConditions>
-<PreCondition>KernelNidNtc != Default.NID_NTC.NOT_APPLICABLE</PreCondition></PreConditions>
+<PreCondition
+ Guid="1bb2cf33-1d6c-4c74-85c6-b47085324c2d"
+>KernelNidNtc != Default.NID_NTC.NOT_APPLICABLE</PreCondition></PreConditions>
 <Expression>KernelNidNtc</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="SendJruNewMessage"
+ Guid="0b310333-5920-48db-b09d-f00052cdad46"
 >
 <ReqRef
  Id="1091ba63-481f-4f86-b05d-cb22ba129a44"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="07d1090f-bf6f-432a-86f6-5cb89ace353d"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="JRU"
  Name="jru"
+ Guid="307e6f9a-ff0e-4cb8-a2dc-7b2db6e82560"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SendGeneralMessage"
+ Guid="367b9bad-5565-4488-957d-849ab291e91d"
 >
 <PreConditions>
-<PreCondition>( LevelChanged(jru) )
+<PreCondition
+ Guid="e932afe8-ba36-4cdd-b2b8-0c4a04bebf4e"
+>( LevelChanged(jru) )
   OR
 ( SendMessagePeriodically(jru) )
 OR
@@ -682,6 +891,7 @@ OR
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="e634de22-f610-47ee-99ef-4d5718be9a46"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -690,26 +900,33 @@ OR
  Implemented="TRUE"
  Verified="TRUE"
  Name="LevelChanged"
+ Guid="5e43ea12-9e1f-445d-9296-8dd836103091"
 >
 <ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ce7b4acc-e3b2-4a2e-aac5-3ad5e291da7c"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="JRU"
  Name="jru"
+ Guid="dede4b41-b990-42a8-9715-bbf29e7e4738"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Different Level"
+ Guid="7799ac71-81f1-4026-8e1e-c747275937c5"
 >
 <PreConditions>
-<PreCondition>jru.PreviousKernelLevel != Kernel.Level.Value</PreCondition></PreConditions>
+<PreCondition
+ Guid="650348de-97d8-4158-8c48-aecec97c384a"
+>jru.PreviousKernelLevel != Kernel.Level.Value</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Same Level"
+ Guid="37f06f34-e7bf-4ddd-bd6e-5a6315fd54ca"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -718,26 +935,33 @@ OR
  Implemented="TRUE"
  Verified="TRUE"
  Name="SendMessagePeriodically"
+ Guid="cda5f287-6b11-4dea-b674-bfab93f0afe7"
 >
 <ReqRef
  Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7ce4c537-3253-41b1-9ddc-ba4d1cf58a3f"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="JRU"
  Name="jru"
+ Guid="2d446e40-b2bf-4e62-aeee-36172bdb2531"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Five Seconds Have Passed"
+ Guid="b301eb6a-e5a2-4959-98dc-d35c98b846f5"
 >
 <PreConditions>
-<PreCondition>jru.PreviousTime + 5.0 &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
+<PreCondition
+ Guid="f1ed7a82-bc2e-4196-b866-904859861fa1"
+>jru.PreviousTime + 5.0 &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Five Seconds Has not Passed"
+ Guid="85b3652b-f811-4c81-9551-755140e412d8"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -746,26 +970,33 @@ OR
  Implemented="TRUE"
  Verified="TRUE"
  Name="ModeChanged"
+ Guid="2a1206a9-73b0-4091-a358-af406e3f86ce"
 >
 <ReqRef
  Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ffdfd30f-16f2-4108-8b8e-8a45e6908559"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="JRU"
  Name="jru"
+ Guid="3b151fc9-e9f9-45e6-98a8-998d03553361"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="ModeChanged"
+ Guid="adfc126a-bc7a-4ff2-8735-1b2b95d36d7e"
 >
 <PreConditions>
-<PreCondition>jru.PreviousKernelMode != Kernel.Mode</PreCondition></PreConditions>
+<PreCondition
+ Guid="49cfb6c6-f48e-4763-9faf-1419ee9c71de"
+>jru.PreviousKernelMode != Kernel.Mode</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="SameMode"
+ Guid="3d8edbfb-9bc4-43a8-88b1-9985612a0f7e"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -774,26 +1005,33 @@ OR
  Implemented="TRUE"
  Verified="TRUE"
  Name="SystemVersionChanged"
+ Guid="01974340-11ee-49e1-83ba-ca4f7e3f3092"
 >
 <ReqRef
  Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="44a4658c-97d3-4ed3-a104-6e886f975427"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="JRU"
  Name="jru"
+ Guid="f1822896-8721-4b82-ba40-a7581f280652"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="System Version Changed"
+ Guid="5461b79a-9ab6-4044-9cda-a9360c881ebe"
 >
 <PreConditions>
-<PreCondition>jru.PreviousSystemVersion != Kernel.OperatedSystemVersion.Value</PreCondition></PreConditions>
+<PreCondition
+ Guid="e4396d39-c942-4dc4-a21c-8e4ffecaaa74"
+>jru.PreviousSystemVersion != Kernel.OperatedSystemVersion.Value</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Same System Version"
+ Guid="6f2b49c4-fe94-4f51-8dd7-7d21739d6328"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -802,26 +1040,33 @@ OR
  Implemented="TRUE"
  Verified="TRUE"
  Name="LevelChangedToNtc"
+ Guid="164cb278-b434-4354-871f-11c3bac4031d"
 >
 <ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="01436b8e-f6c8-4258-a3b5-73608eb8a1f2"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="JRU"
  Name="jru"
+ Guid="68986f7f-2b6f-4a67-9b00-60b0d926ced5"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="LevelChangedToNTC"
+ Guid="4c5a551b-5e1c-485c-b38e-8c74e0c805d1"
 >
 <PreConditions>
-<PreCondition>( LevelChanged(jru) ) AND ( Kernel.Level.Value == Default.Level.LNTC )</PreCondition></PreConditions>
+<PreCondition
+ Guid="ad4690a4-8546-41d1-9df7-10d96bf53ab3"
+>( LevelChanged(jru) ) AND ( Kernel.Level.Value == Default.Level.LNTC )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="LevelNotChangedToNtc"
+ Guid="220ef693-ded2-4c3e-8c4e-7ef333de143d"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -829,35 +1074,44 @@ OR
  Type="Boolean"
  Implemented="TRUE"
  Name="SendNewGeneralMessage"
+ Guid="ef1a800b-b23e-497d-91c6-1239c55b99c2"
 >
 <ReqRef
  Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="82521370-58ea-42bd-8601-8ba4040a1d79"
 >
 </ReqRef><ReqRef
  Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="82fe8ced-0ff6-4ccd-a8b7-f585108c09fd"
 >
 </ReqRef><ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2f0c69d1-8912-426c-ada9-7ea44cc97493"
 >
 </ReqRef><ReqRef
  Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="00204030-765f-46c2-a8bd-0659f44bbef3"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="JRU"
  Name="jru"
+ Guid="a40e8cf7-f7e5-4d01-9517-815de8ba6103"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SendGeneralJruMessage"
+ Guid="b3b2d82a-33c9-4dfd-878a-e6c414e887d8"
 >
 <PreConditions>
-<PreCondition>( LevelChanged(jru)  )
+<PreCondition
+ Guid="aad0f2da-a04c-4c7c-b81e-a8289c3eaf50"
+>( LevelChanged(jru)  )
 OR
 ( ModeChanged(jru) AND (Kernel.Mode != Default.Mode.NP) )
 OR
@@ -867,6 +1121,7 @@ OR
 <Expression>True</Expression>
 </Case><Case
  Name="NotSenGeneralJruMessage"
+ Guid="2d48ebc5-06ef-4358-95c3-aa34df8145bb"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -874,18 +1129,22 @@ OR
  Type="Messages.JRU.MESSAGE.TRAIN_DATA.Message"
  Implemented="TRUE"
  Name="CreateTrainDataMessage"
+ Guid="64a9ed0a-2fd4-4fac-8013-c98a74c72536"
 >
 <ReqRef
  Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="74ea51a5-6a7c-4f8d-a8ed-b69c4c0fc674"
 >
 </ReqRef><ReqRef
  Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c3d28fdc-8d64-4f02-b5b1-5d6f528d7ff2"
 >
 </ReqRef><Cases>
 <Case
  Name="Value"
+ Guid="85511fe5-eca8-424c-912c-81356d0d5acc"
 >
 <Expression>Messages.JRU.MESSAGE.TRAIN_DATA.Message{
 HEADER =&gt; CreateHeader(2),
@@ -914,21 +1173,27 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
  Type="Boolean"
  Implemented="TRUE"
  Name="TrainDataVerified"
+ Guid="e6117187-60a6-4ac3-9012-2fed71d768e2"
 >
 <ReqRef
  Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ce0198b3-598d-4df0-a481-71ce08c29b75"
 >
 </ReqRef><Comment>When the train data are verified during the Start Of Mission this function will return true. Otherwise it will return False</Comment>
 <Cases>
 <Case
  Name="Verified"
+ Guid="20d74b0a-e18e-45c9-ab9e-432607ed1a44"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainDataVerified == True</PreCondition></PreConditions>
+<PreCondition
+ Guid="e7a94299-37e9-40fc-a411-c3172dc4f678"
+>Kernel.TrainDataVerified == True</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="16c91101-7797-4334-bf97-87485397c6b9"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -936,16 +1201,19 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
  Type="MessageTypes.Speed"
  Implemented="TRUE"
  Name="ToJruVMaxTrain"
+ Guid="353a5ca7-9df0-4922-89bd-e893032f58ce"
 >
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="MaxTrainSpeed"
+ Guid="adfa6953-1676-4e10-9cf2-2394303dc23e"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="NotStandStill"
+ Guid="595c20cd-6b0d-4c65-a563-8d51b8adaf52"
 >
 <Expression>Default.MessageTypes.UnResolveSpeed( MaxTrainSpeed, 5.0)</Expression>
 </Case></Cases>
@@ -953,53 +1221,70 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
  Type="Messages.JRU.M_BRAKE_POSITION"
  Implemented="TRUE"
  Name="ToJruMbrakePosition"
+ Guid="f7d5ccb4-af61-4d38-92e6-218eec1a01d9"
 >
 <Parameters>
 <Parameter
  Type="Kernel.TrainData.BrakingParameters.BrakePositions"
  Name="BrakePositionInKernel"
+ Guid="f98fdbee-c2d1-4aca-a1c9-d473449935fb"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Freight_train_in_G"
+ Guid="fdf5f4dc-2e6c-4aea-9faa-fc1bce11015d"
 >
 <PreConditions>
-<PreCondition>BrakePositionInKernel == Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</PreCondition></PreConditions>
+<PreCondition
+ Guid="ead3d26b-6f9e-4e21-8bfa-e0747ff98156"
+>BrakePositionInKernel == Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_BRAKE_POSITION.Freight_train_in_G</Expression>
 </Case><Case
  Name="Freight_train_in_P"
+ Guid="d1b2984e-6cfa-464d-8fd7-e333b27aa6be"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP == BrakePositionInKernel</PreCondition></PreConditions>
+<PreCondition
+ Guid="8ea4f890-f68d-4cda-b114-b70970f1f3af"
+>Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP == BrakePositionInKernel</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_BRAKE_POSITION.Freight_train_in_P</Expression>
 </Case><Case
  Name="Passenger_train_in_P"
+ Guid="88e39381-e323-44f7-a162-471d62edbe52"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP == BrakePositionInKernel</PreCondition></PreConditions>
+<PreCondition
+ Guid="963a2da0-45ae-4096-96fa-d211f5379a9e"
+>Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP == BrakePositionInKernel</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_BRAKE_POSITION.Passenger_train_in_P</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.M_NOM_ROT_MASS"
  Implemented="TRUE"
  Name="ToJruNomRotMass"
+ Guid="f6f16c52-28b4-41ba-b2fe-e59b4499933c"
 >
 <Parameters>
 <Parameter
  Type="Default.Percentage"
  Name="M_nom_rot_mass_in_kernel"
+ Guid="1de9be59-09d5-4a12-8e57-eedf2e852280"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="General"
+ Guid="46a02cb1-3258-46a2-8f76-8e67b972c15f"
 >
 <PreConditions>
-<PreCondition>M_nom_rot_mass_in_kernel != Default.Percentage.NA</PreCondition></PreConditions>
+<PreCondition
+ Guid="23f2f8c3-5ad5-40fd-ba58-076ad058c521"
+>M_nom_rot_mass_in_kernel != Default.Percentage.NA</PreCondition></PreConditions>
 <Expression>DoubleToInteger(M_nom_rot_mass_in_kernel)</Expression>
 </Case><Case
  Name="NA"
+ Guid="e17ff2f5-2928-46bc-b5e3-a3e8028573a5"
 >
 <Expression>16</Expression>
 </Case></Cases>
@@ -1007,264 +1292,357 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
  Type="Messages.JRU.M_REGENERATIVEBRAKE"
  Implemented="TRUE"
  Name="ToJruMRegenerativeBrake"
+ Guid="e9d9d25b-778d-412a-8047-8ff6bdf4928d"
 >
 <Parameters>
 <Parameter
  Type="Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus"
  Name="MRegenerativeBrakeInKernel"
+ Guid="523d964f-f881-4dab-b324-97112292a21a"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Both"
+ Guid="22e9058f-b394-4abc-946d-e784106945ad"
 >
 <PreConditions>
-<PreCondition>MRegenerativeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</PreCondition></PreConditions>
+<PreCondition
+ Guid="5e5187a9-9738-40ef-8c69-49fcced73fc5"
+>MRegenerativeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_EB_and_SB</Expression>
 </Case><Case
  Name="EB"
+ Guid="811c9445-6ace-43d9-bcf5-01a5691480b7"
 >
 <PreConditions>
-<PreCondition>MRegenerativeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</PreCondition></PreConditions>
+<PreCondition
+ Guid="895f1c27-606b-464a-8127-97e2995f9464"
+>MRegenerativeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_EB</Expression>
 </Case><Case
  Name="SB"
+ Guid="03111b0b-7830-408e-bec6-f37fa1afb1b0"
 >
 <PreConditions>
-<PreCondition>MRegenerativeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</PreCondition></PreConditions>
+<PreCondition
+ Guid="554e1497-fabe-4246-9c79-b4834ad18371"
+>MRegenerativeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_SB</Expression>
 </Case><Case
  Name="NoInterface"
+ Guid="f7bcb6aa-78b5-4fea-998f-8dd1322b9f36"
 >
 <PreConditions>
-<PreCondition>MRegenerativeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</PreCondition></PreConditions>
+<PreCondition
+ Guid="cb39315c-9f6d-48cb-87ef-a102e23ff3a1"
+>MRegenerativeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.No_interface</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.M_EDDYCURRENTBRAKE"
  Implemented="TRUE"
  Name="ToJruMEddyCurrentBrake"
+ Guid="b4cde76f-4ff9-4040-a3f5-3050645ee462"
 >
 <Parameters>
 <Parameter
  Type="Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus"
  Name="MEddyCurrentBrakeInKernel"
+ Guid="862df1cf-d190-4236-adf8-ba71432336cf"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Both"
+ Guid="288ad06d-9614-4ea0-bd56-d61f9d929d5e"
 >
 <PreConditions>
-<PreCondition>MEddyCurrentBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</PreCondition></PreConditions>
+<PreCondition
+ Guid="c7ab8525-acdd-43a6-a387-532bacde5bd6"
+>MEddyCurrentBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_EB_and_SB</Expression>
 </Case><Case
  Name="EB"
+ Guid="7e806717-77f9-4e64-b243-45834a316121"
 >
 <PreConditions>
-<PreCondition>MEddyCurrentBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</PreCondition></PreConditions>
+<PreCondition
+ Guid="03bd3d7e-4bda-4411-ba3d-664b32a6fe36"
+>MEddyCurrentBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_EB</Expression>
 </Case><Case
  Name="SB"
+ Guid="906b46fd-0ed7-4b25-b0ce-e7de73613662"
 >
 <PreConditions>
-<PreCondition>MEddyCurrentBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</PreCondition></PreConditions>
+<PreCondition
+ Guid="f10ab531-70b0-465a-969c-103884a026f4"
+>MEddyCurrentBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_SB</Expression>
 </Case><Case
  Name="NoInterface"
+ Guid="9a90ae8c-d770-4209-bf2f-08119ea260b0"
 >
 <PreConditions>
-<PreCondition>MEddyCurrentBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</PreCondition></PreConditions>
+<PreCondition
+ Guid="4dbc93b9-6d18-42a2-83b7-54315e8e3686"
+>MEddyCurrentBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.No_interface</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.M_MAGNETICSHOEBRAKE"
  Implemented="TRUE"
  Name="ToJruMMagneticShoeBrake"
+ Guid="aa709ea3-3337-432f-9e05-08effee920ca"
 >
 <Parameters>
 <Parameter
  Type="Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus"
  Name="MMagneticShoeBrakeInKernel"
+ Guid="594e1618-483c-47fe-afb6-3a640c78b39a"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Both"
+ Guid="0a4aaff6-413d-4c2b-a5f4-1b48124b7e4f"
 >
 <PreConditions>
-<PreCondition>MMagneticShoeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</PreCondition></PreConditions>
+<PreCondition
+ Guid="afbf495f-1207-4e95-9d8c-7f93c898e256"
+>MMagneticShoeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_EB_and_SB</Expression>
 </Case><Case
  Name="EB"
+ Guid="1dade122-8deb-4c14-9470-de40b12e8792"
 >
 <PreConditions>
-<PreCondition>MMagneticShoeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</PreCondition></PreConditions>
+<PreCondition
+ Guid="f902e8d0-ebb2-48d0-9cd4-8b23fd526299"
+>MMagneticShoeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_EB</Expression>
 </Case><Case
  Name="SB"
+ Guid="ecb05baf-edb0-4c0f-9a7e-5e091d8b1e29"
 >
 <PreConditions>
-<PreCondition>MMagneticShoeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</PreCondition></PreConditions>
+<PreCondition
+ Guid="aefac506-8b66-48c5-829e-876c18a397b7"
+>MMagneticShoeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_SB</Expression>
 </Case><Case
  Name="NoInterface"
+ Guid="aa4622cf-190b-4915-841e-3c1130ad463b"
 >
 <PreConditions>
-<PreCondition>MMagneticShoeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</PreCondition></PreConditions>
+<PreCondition
+ Guid="a325016d-606c-421d-8ad1-d6c289e5a5bd"
+>MMagneticShoeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.No_interface</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.M_REGENERATIVEBRAKE"
  Implemented="TRUE"
  Name="ToJruEpBrake"
+ Guid="bcf16c9d-413e-4feb-885e-d2bfe65dcd3d"
 >
 <Parameters>
 <Parameter
  Type="Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus"
  Name="MEpInKernel"
+ Guid="f21256bb-b76f-4d05-97bb-db1ddcd99e81"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Both"
+ Guid="bd38aa09-4be0-4fc1-9eb4-2f29fd827c6e"
 >
 <PreConditions>
-<PreCondition>MEpInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</PreCondition></PreConditions>
+<PreCondition
+ Guid="eba0fc43-5fbb-4c67-95c1-7fb646167594"
+>MEpInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_EB_and_SB</Expression>
 </Case><Case
  Name="EB"
+ Guid="ee67d532-132e-4f58-bb0e-130e8ea093dc"
 >
 <PreConditions>
-<PreCondition>MEpInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</PreCondition></PreConditions>
+<PreCondition
+ Guid="343c0c1c-7c94-42b5-9baf-3cb10b20455d"
+>MEpInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_EB</Expression>
 </Case><Case
  Name="SB"
+ Guid="87dbea84-00c9-46ce-88fb-72051235af02"
 >
 <PreConditions>
-<PreCondition>MEpInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</PreCondition></PreConditions>
+<PreCondition
+ Guid="c18ba683-1e51-4fd4-84e0-c8a649dc71d1"
+>MEpInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_SB</Expression>
 </Case><Case
  Name="NoInterface"
+ Guid="81d02bd5-05b7-45b6-8539-dabe463f4eea"
 >
 <PreConditions>
-<PreCondition>MEpInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</PreCondition></PreConditions>
+<PreCondition
+ Guid="62d49921-beb4-40dc-a007-aa6f306ad994"
+>MEpInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.No_interface</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.Q_TRACTIONCUTOFFINTERFACE"
  Implemented="TRUE"
  Name="ToJruQ_TractionCutOffFunction"
+ Guid="4f915fca-9450-4f26-88f0-ad03bc4294a9"
 >
 <Parameters>
 <Parameter
  Type="Boolean"
  Name="TractionCutOffInKernel"
+ Guid="cbb34437-d097-43f2-9f6a-8d9484b0af22"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="IsImplemented"
+ Guid="fc7a380f-f0ed-47dc-8c36-1071d6b84438"
 >
 <PreConditions>
-<PreCondition>TractionCutOffInKernel == True</PreCondition></PreConditions>
+<PreCondition
+ Guid="ea11f4f8-942e-45f8-aaaf-863a7dc508dc"
+>TractionCutOffInKernel == True</PreCondition></PreConditions>
 <Expression>1</Expression>
 </Case><Case
  Name="NotImplemented"
+ Guid="62630d7d-2494-4c98-bb33-03be9671b824"
 >
 <PreConditions>
-<PreCondition>TractionCutOffInKernel == False</PreCondition></PreConditions>
+<PreCondition
+ Guid="8f21f068-cfe0-42f8-8931-38c3ebc16034"
+>TractionCutOffInKernel == False</PreCondition></PreConditions>
 <Expression>0</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.Q_SERVICEBRAKEINTERFACE"
  Implemented="TRUE"
  Name="ToJruQ_ServiceBrakeInterface"
+ Guid="330293ec-ddb2-4a92-91f6-4334f4f74e31"
 >
 <Parameters>
 <Parameter
  Type="Boolean"
  Name="ServiceBrakeInterfaceInKernel"
+ Guid="203a1688-6f86-49b0-9811-8b27ae88bc74"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="IsImplemented"
+ Guid="0574b139-ba0e-4a67-b03a-5340bbf40083"
 >
 <PreConditions>
-<PreCondition>ServiceBrakeInterfaceInKernel == True</PreCondition></PreConditions>
+<PreCondition
+ Guid="57330326-e78c-4f09-b06c-6f8e6151b670"
+>ServiceBrakeInterfaceInKernel == True</PreCondition></PreConditions>
 <Expression>1</Expression>
 </Case><Case
  Name="NotImplemented"
+ Guid="992b4ca2-ccd4-4194-b742-150716633d9e"
 >
 <PreConditions>
-<PreCondition>ServiceBrakeInterfaceInKernel == False</PreCondition></PreConditions>
+<PreCondition
+ Guid="6fb4f53d-6235-4bce-bba2-02a2fbb344ec"
+>ServiceBrakeInterfaceInKernel == False</PreCondition></PreConditions>
 <Expression>0</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.Q_SERVICEBRAKEFEEDBACK"
  Implemented="TRUE"
  Name="ToJruQ_ServiceBrakeFeedback"
+ Guid="4cf5c53e-fac9-4e0d-aa5e-43cd726f7e93"
 >
 <Parameters>
 <Parameter
  Type="Boolean"
  Name="ServiceBrakeFeedBackInKernel"
+ Guid="a4d11f6c-d189-4ebf-8a47-360da065ced2"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="IsImplemented"
+ Guid="76efc085-a134-4593-b1e0-1d8e74a0823f"
 >
 <PreConditions>
-<PreCondition>ServiceBrakeFeedBackInKernel == True</PreCondition></PreConditions>
+<PreCondition
+ Guid="02e33835-36f1-42aa-ad5c-475c04fa7196"
+>ServiceBrakeFeedBackInKernel == True</PreCondition></PreConditions>
 <Expression>1</Expression>
 </Case><Case
  Name="NotImplemented"
+ Guid="1a7ecf40-6b86-40bb-acf1-1c64b31e0d31"
 >
 <PreConditions>
-<PreCondition>ServiceBrakeFeedBackInKernel == False</PreCondition></PreConditions>
+<PreCondition
+ Guid="c172788d-5524-4149-af94-c7b06a929d98"
+>ServiceBrakeFeedBackInKernel == False</PreCondition></PreConditions>
 <Expression>0</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.Q_BRAKE_CAPT_TYPE"
  Implemented="TRUE"
  Name="ToJruQ_BrakeCaptType"
+ Guid="1c16d414-bbf4-44ff-b5b2-9dd798b66e23"
 >
 <Cases>
 <Case
  Name="Lambda"
+ Guid="47372e4b-f63a-4abe-a11b-19576ee0780c"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed() == True</PreCondition></PreConditions>
+<PreCondition
+ Guid="9a07de87-bda1-4f5c-9569-ba2fdb6a0325"
+>Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed() == True</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_BRAKE_CAPT_TYPE.Lambda_type__the_brake_percentages_is_acquired_as_Train_Data_and_the_conversion_model_is_applicable</Expression>
 </Case><Case
  Name="Gamma"
+ Guid="be2d360f-d328-456e-b179-60d22368e150"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed() == False</PreCondition></PreConditions>
+<PreCondition
+ Guid="8ee30a8a-d3b2-42ba-9bb5-76afbf30e4ca"
+>Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed() == False</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_BRAKE_CAPT_TYPE.gamma_type__all_other_captures</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.M_BRAKE_PERCENTAGE"
  Implemented="TRUE"
  Name="ToJruBrakePercentage"
+ Guid="fdf103a8-6c40-4c9f-95db-036c64d0c424"
 >
 <Parameters>
 <Parameter
  Type="Default.Percentage"
  Name="BrakePercentageInKernel"
+ Guid="b9f5b753-8273-40ce-b0cf-e6a64a511c51"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="General"
+ Guid="fddb6790-9dd4-4be3-b203-3f454ee06cfb"
 >
 <PreConditions>
-<PreCondition>BrakePercentageInKernel != Percentage.NA</PreCondition></PreConditions>
+<PreCondition
+ Guid="d8d59594-7f6a-4de8-a7f1-27810ccdf1a6"
+>BrakePercentageInKernel != Percentage.NA</PreCondition></PreConditions>
 <Expression>DoubleToInteger(BrakePercentageInKernel)</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="3aed6d42-6bf6-4680-8a14-8badc343d195"
 >
 <Expression>0</Expression>
 </Case></Cases>
@@ -1272,28 +1650,37 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
  Type="Messages.JRU.M_AIRTIGHT"
  Implemented="TRUE"
  Name="ToJruM_AirTight"
+ Guid="bc323093-18f9-46b6-8495-93b97cf3e5db"
 >
 <Parameters>
 <Parameter
  Type="Boolean"
  Name="AirTightInKernel"
+ Guid="9c457d4e-67ac-47e7-8fd4-1be6b0c323ea"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Fitted"
+ Guid="e4ac5855-038c-4e7e-9a54-7cd30eb992ee"
 >
 <PreConditions>
-<PreCondition>AirTightInKernel == True</PreCondition></PreConditions>
+<PreCondition
+ Guid="045286d7-344c-4478-99cd-b4bcadab0fe4"
+>AirTightInKernel == True</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_AIRTIGHT.Fitted</Expression>
 </Case><Case
  Name="NotFitted"
+ Guid="2420a8e5-46b8-4e4f-bbc5-689d2651cb7d"
 >
 <PreConditions>
-<PreCondition>AirTightInKernel == False</PreCondition></PreConditions>
+<PreCondition
+ Guid="03542cff-1896-4a45-a0f7-cc149cffa915"
+>AirTightInKernel == False</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_AIRTIGHT.Not_fitted</Expression>
 </Case><Case
  Name="UnKnown"
+ Guid="de4bfd09-e417-404b-a426-352252c8a090"
 >
 <Expression>Messages.JRU.M_AIRTIGHT.Unknown</Expression>
 </Case></Cases>
@@ -1301,26 +1688,33 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
  Type="Boolean"
  Implemented="TRUE"
  Name="EmergencyBrakeStatusChanged"
+ Guid="6da00ec9-89e7-4c01-8b9d-9ab8ebcdd6d8"
 >
 <ReqRef
  Id="0c66d0c2-4189-4bdd-9a59-f8fb5da1dc72"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="de717f1b-3bfb-41e7-8e83-c8142b39d466"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="JRU"
  Name="jru"
+ Guid="81bbba4c-bf2d-4a39-985a-7898f03d2993"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="EmergencyBrakeHasChanged"
+ Guid="cc6b7da5-7a50-44fb-8191-3ff2e52a761b"
 >
 <PreConditions>
-<PreCondition>TIU.EmergencyBrakeCommanded != jru.PreviousEBStatus</PreCondition></PreConditions>
+<PreCondition
+ Guid="35dcd78c-b14d-4060-8844-be5380644fe4"
+>TIU.EmergencyBrakeCommanded != jru.PreviousEBStatus</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="25c5413c-7a37-44f6-a24f-572968db057e"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -1328,14 +1722,17 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
  Type="Messages.JRU.MESSAGE.EMERGENCY_BRAKE_COMMAND_STATE.Message"
  Implemented="TRUE"
  Name="CreateEBCommandStateMessage"
+ Guid="0383907d-771d-458e-9f7e-5ae17b398ee3"
 >
 <ReqRef
  Id="0c66d0c2-4189-4bdd-9a59-f8fb5da1dc72"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="851c9207-8eb1-47f3-afb0-db7bd2deeeed"
 >
 </ReqRef><Cases>
 <Case
  Name="Value"
+ Guid="4a97f78e-97ec-450a-82d3-367bacaebffb"
 >
 <Expression>Messages.JRU.MESSAGE.EMERGENCY_BRAKE_COMMAND_STATE.Message{
     HEADER =&gt; CreateHeader(3),
@@ -1346,95 +1743,124 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruEBCommanded()
  Type="Messages.JRU.M_BRAKE_COMMAND_STATE"
  Implemented="TRUE"
  Name="ToJruEBCommanded"
+ Guid="82ab4229-725c-4c7e-ab40-15e891f44ea6"
 >
 <Cases>
 <Case
  Name="Applied"
+ Guid="88dd030f-c74d-40b2-afe6-1ca91c3c3a23"
 >
 <PreConditions>
-<PreCondition>TIU.EmergencyBrakeCommanded == True</PreCondition></PreConditions>
+<PreCondition
+ Guid="293eca63-c569-4f2e-bdbd-5bbdd836e794"
+>TIU.EmergencyBrakeCommanded == True</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_BRAKE_COMMAND_STATE.Commanded</Expression>
 </Case><Case
  Name="NotApplied"
+ Guid="50ce993c-bc2a-45d1-a312-4349866f5de4"
 >
 <PreConditions>
-<PreCondition>TIU.EmergencyBrakeCommanded == False</PreCondition></PreConditions>
+<PreCondition
+ Guid="88e5d515-3b3b-461f-afbc-dec51ca9a302"
+>TIU.EmergencyBrakeCommanded == False</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_BRAKE_COMMAND_STATE.Not_commanded</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="TrainDataHaveChanged"
+ Guid="eb4777aa-225d-4faa-8b30-2eb0c633e334"
 >
 <ReqRef
  Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5259170f-35bf-46ec-b2b4-a743996ccdfa"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="JRU"
  Name="jru"
+ Guid="796d6185-28cf-4d6e-a71b-3d8ada5dd733"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="TrainDataHaveChanged"
+ Guid="86826d13-292c-4b6b-9f9a-1ed5409db078"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.Value != jru.PreviousTrainData</PreCondition></PreConditions>
+<PreCondition
+ Guid="2e5c0f82-080e-4163-9a52-182e956ac907"
+>Kernel.TrainData.TrainData.Value != jru.PreviousTrainData</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="02359579-ead1-4294-8a62-f94f426fc182"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.Value == jru.PreviousTrainData</PreCondition></PreConditions>
+<PreCondition
+ Guid="430f705f-c550-4287-89fa-2549e1645420"
+>Kernel.TrainData.TrainData.Value == jru.PreviousTrainData</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="SendTrainDataJruMessage"
+ Guid="3ab09d11-2939-4759-9ae4-4720b8542ee2"
 >
 <ReqRef
  Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="99e55e6f-c0cf-4b26-8041-94689790ac74"
 >
 </ReqRef><ReqRef
  Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="155d8936-616b-4d70-be67-6baf27384bf3"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="JRU"
  Name="jru"
+ Guid="b98284df-8f57-4c6e-9d7f-974ba1764b75"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Send"
+ Guid="b1a189b5-34a9-4b21-b90a-fa8cbcd25387"
 >
 <PreConditions>
-<PreCondition>(TrainDataHaveChanged(jru) == True) OR (TrainDataVerified() == True)</PreCondition></PreConditions>
+<PreCondition
+ Guid="f9f43f6c-751d-4f20-8dd4-15c9cf58523e"
+>(TrainDataHaveChanged(jru) == True) OR (TrainDataVerified() == True)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="9e6ff57a-4c5e-4fa5-8104-85e32db99474"
 >
 <PreConditions>
-<PreCondition>(TrainDataHaveChanged(jru) != True) OR (TrainDataVerified() != True)</PreCondition></PreConditions>
+<PreCondition
+ Guid="c74fd7b3-db82-4651-b9ea-a2500222b712"
+>(TrainDataHaveChanged(jru) != True) OR (TrainDataVerified() != True)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.MESSAGE.SERVICE_BRAKE_COMMAND_STATE.Message"
  Implemented="TRUE"
  Name="CreateSBCommandStateMessage"
+ Guid="28e96520-02a7-4e65-a648-e4bf6beca53d"
 >
 <ReqRef
  Id="089434c4-9c48-438a-9c6e-1dc3af77e9db"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c98f4f34-e733-413c-8fc8-a13033669014"
 >
 </ReqRef><Cases>
 <Case
  Name="Value"
+ Guid="bced488d-2c77-4ef6-9121-c54c5b1eca07"
 >
 <Expression>Messages.JRU.MESSAGE.SERVICE_BRAKE_COMMAND_STATE.Message{
     HEADER =&gt; CreateHeader(4),
@@ -1445,26 +1871,33 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
  Type="Boolean"
  Implemented="TRUE"
  Name="ServiceBrakeStatusChanged"
+ Guid="19ea6022-b75d-452c-9a0e-a06736cf8fcc"
 >
 <ReqRef
  Id="089434c4-9c48-438a-9c6e-1dc3af77e9db"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b8a2933a-a08b-4fd2-90f5-4f0ada2eb0d4"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="JRU"
  Name="jru"
+ Guid="093a10c6-0bfc-4bb9-93a3-3d6c32f0eb78"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="ServiceBrakeHasBeenApplied"
+ Guid="354e3a1d-84d2-4e2a-8198-fb61a798b563"
 >
 <PreConditions>
-<PreCondition>TIU.ServiceBrakeCommanded != jru.PreviousSBStatus</PreCondition></PreConditions>
+<PreCondition
+ Guid="75e4c8e8-7341-45d7-abfb-9d8eece8564c"
+>TIU.ServiceBrakeCommanded != jru.PreviousSBStatus</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="c8c31327-847e-49fc-bedd-e06d425d4ddb"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -1472,41 +1905,54 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
  Type="Messages.JRU.M_BRAKE_COMMAND_STATE"
  Implemented="TRUE"
  Name="ToJruSBCommanded"
+ Guid="bcdc94d9-fb0b-422b-80f3-ed90e775aefb"
 >
 <Cases>
 <Case
  Name="Applied"
+ Guid="1dbb26cd-86b5-4755-8fe8-922a7ef1a2cb"
 >
 <PreConditions>
-<PreCondition>TIU.ServiceBrakeCommanded == True</PreCondition></PreConditions>
+<PreCondition
+ Guid="2e282d4e-3550-4590-95ae-a1523f5b3953"
+>TIU.ServiceBrakeCommanded == True</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_BRAKE_COMMAND_STATE.Commanded</Expression>
 </Case><Case
  Name="NotApplied"
+ Guid="8660e02a-2ace-45fa-9cbf-3b668afaed8f"
 >
 <PreConditions>
-<PreCondition>TIU.ServiceBrakeCommanded == False</PreCondition></PreConditions>
+<PreCondition
+ Guid="929c65d7-3b15-473e-843c-d6726286c37c"
+>TIU.ServiceBrakeCommanded == False</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_BRAKE_COMMAND_STATE.Not_commanded</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.NID_LRBG"
  Implemented="TRUE"
  Name="ToJruNidLRBG"
+ Guid="260983c5-fcd5-4ec2-9308-09b73eeb11ea"
 >
 <Parameters>
 <Parameter
  Type="Messages.NID_LRBG"
  Name="LRBGinBTM"
+ Guid="230d4965-fe54-4785-b53f-129b01468439"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="ThereIsLRBG"
+ Guid="34aa06d3-aa1c-4cf2-8a6d-689a19110aa1"
 >
 <PreConditions>
-<PreCondition>LRBGinBTM != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
+<PreCondition
+ Guid="6cf0210b-a794-49e0-905b-e94fe002710b"
+>LRBGinBTM != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
 <Expression>LRBGinBTM</Expression>
 </Case><Case
  Name="ThereIsNoLRBG"
+ Guid="0a70af36-2f12-4e0f-b1b7-31f42de3ca06"
 >
 <Expression>0</Expression>
 </Case></Cases>
@@ -1514,78 +1960,103 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
  Type="Messages.JRU.Q_DLRBG"
  Implemented="TRUE"
  Name="ToJruQdirLRBG"
+ Guid="7da1c050-14cb-444d-befc-ae96133765b4"
 >
 <Parameters>
 <Parameter
  Type="Default.Orientation"
  Name="Q_DIR_LRBG"
+ Guid="77d39e54-835c-4775-940a-93ad78befee7"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Nominal"
+ Guid="819a11f4-6257-40a2-8460-200bcffeb791"
 >
 <PreConditions>
-<PreCondition>Q_DIR_LRBG == Default.Orientation.Nominal</PreCondition></PreConditions>
+<PreCondition
+ Guid="58de66e6-65ae-42b9-8675-a636216bcbfd"
+>Q_DIR_LRBG == Default.Orientation.Nominal</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_DLRBG.Nominal</Expression>
 </Case><Case
  Name="Reverse"
+ Guid="f4825c10-9fc4-47e7-97bf-c8e836b31865"
 >
 <PreConditions>
-<PreCondition>Q_DIR_LRBG == Default.Orientation.Reverse</PreCondition></PreConditions>
+<PreCondition
+ Guid="18bb5e87-7fd3-4d44-81d4-b690935a059b"
+>Q_DIR_LRBG == Default.Orientation.Reverse</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_DLRBG.Reverse</Expression>
 </Case><Case
  Name="Unknown"
+ Guid="7bd80179-2cfd-41cc-98e6-4020c4ca0dd6"
 >
 <PreConditions>
-<PreCondition>Q_DIR_LRBG == Default.Orientation.Unknown OR Q_DIR_LRBG == Default.Orientation.Both</PreCondition></PreConditions>
+<PreCondition
+ Guid="02f617b9-f4e7-4398-9920-bcce126220e0"
+>Q_DIR_LRBG == Default.Orientation.Unknown OR Q_DIR_LRBG == Default.Orientation.Both</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_DIRLRBG.Uknown</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.Q_DLRBG"
  Implemented="TRUE"
  Name="ToJruQDLRBG"
+ Guid="e291bb16-1c87-45dd-b8d9-8b87ca72b6d1"
 >
 <Parameters>
 <Parameter
  Type="Default.Orientation"
  Name="Q_DLRBG"
+ Guid="72f7d850-6d42-4132-91e5-d710a5273f8f"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Nominal"
+ Guid="44ad60cd-43b8-4b83-8fc1-13a5124da18b"
 >
 <PreConditions>
-<PreCondition>Q_DLRBG == Default.Orientation.Nominal</PreCondition></PreConditions>
+<PreCondition
+ Guid="3eaa047c-8536-4550-94e3-d6a95eaa6508"
+>Q_DLRBG == Default.Orientation.Nominal</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_DLRBG.Nominal</Expression>
 </Case><Case
  Name="Reverse"
+ Guid="43d3bc8a-e318-4ce7-a4cb-819ca10a4e62"
 >
 <PreConditions>
-<PreCondition>Q_DLRBG == Default.Orientation.Reverse</PreCondition></PreConditions>
+<PreCondition
+ Guid="47b03716-f397-4412-b715-2683c8b864fb"
+>Q_DLRBG == Default.Orientation.Reverse</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_DLRBG.Reverse</Expression>
 </Case><Case
  Name="Unknown"
+ Guid="056cd23a-3c7b-4fe7-ac68-320e448e273e"
 >
 <PreConditions>
-<PreCondition>Q_DLRBG == Default.Orientation.Unknown OR Q_DLRBG == Default.Orientation.Both</PreCondition></PreConditions>
+<PreCondition
+ Guid="3633e29b-b365-45c6-aa93-86cbc2c2a391"
+>Q_DLRBG == Default.Orientation.Unknown OR Q_DLRBG == Default.Orientation.Both</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_DIRLRBG.Uknown</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.L_DOUBTOVER"
  Implemented="TRUE"
  Name="ToJruLDoubtOver"
+ Guid="596b4813-88d1-4881-83c5-661260ab562a"
 >
 <Parameters>
 <Parameter
  Type="Messages.JRU.Q_SCALE"
  Name="Q_SCALE"
+ Guid="69d3c906-979b-4bd6-99d1-fa6901ae58b4"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="L_DOUBTOVER"
+ Guid="12bf1e94-2638-470c-911e-55bd927b5f3e"
 >
 <Expression>MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER), Q_SCALE)</Expression>
 </Case></Cases>
@@ -1593,16 +2064,19 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
  Type="Messages.JRU.L_DOUBTOVER"
  Implemented="TRUE"
  Name="ToJruLDoubtUnder"
+ Guid="5eb9ddf6-9925-456d-8b77-5a9fcacbaef8"
 >
 <Parameters>
 <Parameter
  Type="Messages.JRU.Q_SCALE"
  Name="Q_SCALE"
+ Guid="7b58f423-cc0c-4876-9701-0c1a3be57a4d"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="L_DOUBTUNDER"
+ Guid="6671444f-d7d6-4175-975d-cce10ef0234b"
 >
 <Expression>MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER), Q_SCALE)</Expression>
 </Case></Cases>
@@ -1610,16 +2084,19 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
  Type="Messages.JRU.D_LRBG"
  Implemented="TRUE"
  Name="ToJruDLRBG"
+ Guid="74a710bc-8832-432b-ab9d-dfc7725d4ea8"
 >
 <Parameters>
 <Parameter
  Type="Messages.JRU.Q_SCALE"
  Name="Q_SCALE"
+ Guid="459a5440-d08b-4655-a3c5-5ee43933eb96"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="D_LRBG"
+ Guid="8b98f5c1-5722-4917-8ca6-4c9408d771e3"
 >
 <Expression>MessageTypes.UnScaleDistance ( BTM.DistanceFromLRBG(), Q_SCALE)</Expression>
 </Case></Cases>
@@ -1627,68 +2104,90 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
  Type="Messages.JRU.Q_SCALE"
  Implemented="TRUE"
  Name="ToJruQScale"
+ Guid="4a2642ff-6439-488e-8281-93da9098b001"
 >
 <Parameters>
 <Parameter
  Type="Messages.Q_SCALE"
  Name="Q_SCALE"
+ Guid="266ca3c3-4d02-4aee-8efc-6a895de33607"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="_1_m_scaleC"
+ Guid="6ec27e1d-3a25-4f25-b97a-c37fbc50bdf8"
 >
 <PreConditions>
-<PreCondition>Q_SCALE == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="c6faae95-234a-4203-9ef2-0e666c652fbd"
+>Q_SCALE == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_SCALE._1_m_scaleC</Expression>
 </Case><Case
  Name="_10_cm_scaleC"
+ Guid="695bf54f-256a-421e-9a09-563f34ebe098"
 >
 <PreConditions>
-<PreCondition>Q_SCALE == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="ebf41e48-d6aa-4f36-809b-173b7d3aedbb"
+>Q_SCALE == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_SCALE._10_cm_scaleC</Expression>
 </Case><Case
  Name="_10_m_scaleC"
+ Guid="68f42522-af11-4487-97f0-4bbf783fd4bc"
 >
 <PreConditions>
-<PreCondition>Q_SCALE == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="83c84ab4-d84d-456c-90ab-ac78c2a5da9b"
+>Q_SCALE == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_SCALE._10_m_scaleC</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="TelegramFromBaliseRecieved"
+ Guid="0fea15cc-3567-478e-9175-1c3ff3c8fe3b"
 >
 <ReqRef
  Id="2775cdfc-7d3f-4adc-b431-79d473f86272"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="acf5415f-b6c0-4289-b1cb-a389f15244cd"
 >
 </ReqRef><Cases>
 <Case
  Name="NewEuroBaliseTelegram"
+ Guid="dd859344-d323-4634-bd14-f32e438d4a4a"
 >
 <PreConditions>
-<PreCondition>BTM.Message != EMPTY</PreCondition></PreConditions>
+<PreCondition
+ Guid="7b7b86aa-0bd6-4ed9-8037-b93c8a9ed1b8"
+>BTM.Message != EMPTY</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="d1b29f39-4a26-42c9-b2e9-4cc75f2bd637"
 >
 <PreConditions>
-<PreCondition>BTM.Message == EMPTY</PreCondition></PreConditions>
+<PreCondition
+ Guid="b3c5b48a-2f61-42c4-ae99-7b811c754545"
+>BTM.Message == EMPTY</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.MESSAGE.TELEGRAM_FROM_BALISE.Message"
  Implemented="TRUE"
  Name="CreateJruTelegramFromBaliseMessage"
+ Guid="752aebcd-1a1d-41c5-b68d-9080b2aab245"
 >
 <ReqRef
  Id="2775cdfc-7d3f-4adc-b431-79d473f86272"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ea87baf7-066e-4326-81bb-0ee3d6fff027"
 >
 </ReqRef><Cases>
 <Case
  Name="Value"
+ Guid="a3826fed-2d49-428d-92e7-53bbe25ccc30"
 >
 <Expression>Messages.JRU.MESSAGE.TELEGRAM_FROM_BALISE.Message{
     HEADER =&gt; CreateHeader(6),
@@ -1702,6 +2201,7 @@ TELEGRAM=&gt; BTM.Message
  VariableMode="InOut"
  Implemented="TRUE"
  Name="JRU1"
+ Guid="bbb2ea45-08d4-4c1b-a85c-10a854022eab"
 >
 <Comment>Represents an instance of a JRU structure</Comment>
 </Variable></Variables>

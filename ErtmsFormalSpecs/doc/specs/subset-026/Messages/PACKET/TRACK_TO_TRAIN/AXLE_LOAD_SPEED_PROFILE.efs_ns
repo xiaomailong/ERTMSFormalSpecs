@@ -1,5 +1,6 @@
 <NameSpace
  Name="AXLE_LOAD_SPEED_PROFILE"
+ Guid="9a3b5d23-c787-40df-9a27-2bc6d45b9332"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="17a7bfaa-65a8-4492-9ee6-9a9b70353370"
 >
 <ReqRef
  Id="9e4cc30b-7c23-4202-aa4b-87839eea29a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f82a39d4-6965-4920-b0dc-be886d4fb6e0"
 >
 </ReqRef><ReqRef
  Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ba133a5-760e-4b60-8435-1450b4ce976a"
 >
 </ReqRef><Comment>This packet gives the speed restrictions for trains with axle load category higher than or equal to the specified value for the speed restriction</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="7b8e6bf7-880e-434b-970c-3a4e4a8377de"
 >
 <ReqRef
  Id="9e4cc30b-7c23-4202-aa4b-87839eea29a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4e615362-8ccd-4a04-bf57-70fa722af803"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="287280ab-f7c7-43a7-99c2-0c81d89ef8ca"
 >
 <ReqRef
  Id="9e4cc30b-7c23-4202-aa4b-87839eea29a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7cc8f7ab-b2b0-49ed-987d-485e945b14f5"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="4106e502-806d-4529-a393-777db19cf971"
 >
 <ReqRef
  Id="9e4cc30b-7c23-4202-aa4b-87839eea29a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d3a2584-8cf8-46d3-b131-bf6721219a23"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="3701ac7f-9334-4cc0-af90-93c83e2f41fb"
 >
 <ReqRef
  Id="9e4cc30b-7c23-4202-aa4b-87839eea29a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0543a46e-f1bc-4e75-becb-637e41129134"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_TRACKINIT"
@@ -67,10 +79,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_TRACKINIT"
+ Guid="73397ae7-16a1-4709-82b3-f70ae578fde7"
 >
 <ReqRef
  Id="9e4cc30b-7c23-4202-aa4b-87839eea29a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="616409f0-f735-4d17-8780-d76cb91a0828"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_AXLELOAD"
@@ -78,6 +92,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_AXLELOAD"
+ Guid="fdae6f11-3ddb-49b0-8d25-10cbeb444fef"
 >
 </StructureElement><StructureElement
  TypeName="L_AXLELOAD"
@@ -85,6 +100,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_AXLELOAD"
+ Guid="776fe45b-e4f7-47ec-9071-9b4bafefe809"
 >
 </StructureElement><StructureElement
  TypeName="Q_FRONT"
@@ -92,6 +108,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_FRONT"
+ Guid="43b6cf8c-a5e3-4746-b52c-e9e8d81a6725"
 >
 </StructureElement><StructureElement
  TypeName="N_ITER"
@@ -99,6 +116,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="N_ITER_0"
+ Guid="d7e4d8bc-5c32-4408-b271-82220a04152b"
 >
 </StructureElement><StructureElement
  TypeName="Collection1"
@@ -106,6 +124,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
+ Guid="38657ddd-41d2-461b-9a3a-ea903f8cf63f"
 >
 </StructureElement><StructureElement
  TypeName="N_ITER"
@@ -113,6 +132,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="N_ITER_1"
+ Guid="12acba38-f29b-435a-bcf5-b726fb880154"
 >
 </StructureElement><StructureElement
  TypeName="Collection3"
@@ -120,6 +140,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence3"
+ Guid="e56b4af4-9fad-4fcf-9212-c52de7cae61a"
 >
 </StructureElement><StructureElement
  TypeName="D_TRACKINIT"
@@ -127,14 +148,17 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_TRACKINIT"
+ Guid="900d2583-46d4-405d-9ebe-c09c3ba1ee32"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
+ Guid="38ea6ee1-9605-482f-9591-7f1f39ca49c9"
 >
 <ReqRef
  Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2a23d09e-a3da-4bec-9fd2-051208c7d134"
 >
 </ReqRef><StructureElement
  TypeName="M_AXLELOADCAT"
@@ -142,6 +166,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_AXLELOADCAT"
+ Guid="2493b26b-1bfb-47f2-a2c3-75acd71d1f84"
 >
 </StructureElement><StructureElement
  TypeName="V_AXLELOAD"
@@ -149,14 +174,17 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="V_AXLELOAD"
+ Guid="a140a17a-fe1e-4893-a70f-51bf93a939ea"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure2"
+ Guid="f92651ac-bbfa-4988-935c-53e635e45cf5"
 >
 <ReqRef
  Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a72e36bf-b26b-4fae-bdf0-fb25876600fa"
 >
 </ReqRef><StructureElement
  TypeName="D_AXLELOAD"
@@ -164,6 +192,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_AXLELOAD"
+ Guid="44f97971-52ae-4ec9-89db-77fd54fca9d2"
 >
 </StructureElement><StructureElement
  TypeName="L_AXLELOAD"
@@ -171,6 +200,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_AXLELOAD"
+ Guid="930d50a8-6c4d-4cba-97df-1575155c1e63"
 >
 </StructureElement><StructureElement
  TypeName="Q_FRONT"
@@ -178,6 +208,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_FRONT"
+ Guid="0fd9ffcc-e317-4bda-80c4-7144c0dc1eac"
 >
 </StructureElement><StructureElement
  TypeName="N_ITER"
@@ -185,6 +216,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="N_ITER"
+ Guid="1c29cce7-5b12-4775-8bc2-ba5a512a4690"
 >
 </StructureElement><StructureElement
  TypeName="Collection2"
@@ -192,14 +224,17 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence2"
+ Guid="d2cdc15a-49f2-4ebc-8ca5-74ac2c2a2d1f"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure3"
+ Guid="e965cd14-534f-4b2f-9774-e80c2c6100b6"
 >
 <ReqRef
  Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="14585d5b-2c11-49ab-b651-2166081b3e58"
 >
 </ReqRef><StructureElement
  TypeName="M_AXLELOADCAT"
@@ -207,6 +242,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_AXLELOADCAT"
+ Guid="ea456715-7130-4ce2-b1d7-920e536643e7"
 >
 </StructureElement><StructureElement
  TypeName="V_AXLELOAD"
@@ -214,6 +250,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="V_AXLELOAD"
+ Guid="a4ecf7e2-196e-44a0-97da-ccd06cdd6455"
 >
 </StructureElement></Structure></Structures>
 <Collections>
@@ -222,30 +259,36 @@
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
+ Guid="7bb30d44-a057-4d10-8f9b-041302d4743c"
 >
 <ReqRef
  Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b25d194-9e48-425c-8c5a-1a8fee8b4e7f"
 >
 </ReqRef></Collection><Collection
  TypeName="SubStructure3"
  Default="[]"
  Implemented="TRUE"
  Name="Collection2"
+ Guid="bf4402ee-b41c-4bec-a174-adde1fbb16af"
 >
 <ReqRef
  Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4aa8b912-2649-46c9-b3e3-94bb5655fa8d"
 >
 </ReqRef></Collection><Collection
  TypeName="SubStructure2"
  Default="[]"
  Implemented="TRUE"
  Name="Collection3"
+ Guid="eaddc754-d2a1-4bf0-a5f7-b1a0f7f79521"
 >
 <ReqRef
  Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="95651a30-7452-4cf7-b9b1-0fbef17dd663"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>

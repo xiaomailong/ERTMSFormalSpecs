@@ -4,6 +4,7 @@
  Width="100"
  Height="50"
  Name="AxleLoad"
+ Guid="2bb7594e-aee3-45d5-bcb6-092282828fe2"
 >
 <NameSpaces>
 </NameSpaces>
@@ -11,18 +12,22 @@
 <Structure
  Implemented="TRUE"
  Name="AxleLoadProfile"
+ Guid="7669fef7-c011-4007-bc1d-fc27e4e7bdfb"
 >
 <ReqRef
  Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ffcaaef7-616f-46e8-95e8-7322ce66c264"
 >
 </ReqRef><ReqRef
  Id="38267eb5-348a-4d09-b4c6-4907aea348f2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3edd52e9-7b3f-46dd-8755-876faa0f3b40"
 >
 </ReqRef><ReqRef
  Id="0bc77f7e-62ac-42cc-bf02-051522a4d11a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8bd1dfe2-0633-4324-8687-b1997ed350b4"
 >
 </ReqRef><Comment>Represents the speed restrictions due to axle load.</Comment>
 <StructureElement
@@ -32,10 +37,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InitialState"
+ Guid="946bc69b-ca9a-45fe-9b46-8100c4b08b92"
 >
 <ReqRef
  Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cf0a11c1-ffaa-4fa9-bd6b-b40d30f1984e"
 >
 <Comment></Comment>
 </ReqRef><Comment>Indicates if the initial state has to be resumed. In that case there will be no speed restrictions due to axle load profile.</Comment>
@@ -46,10 +53,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="EmptyProfileDistance"
+ Guid="361e1dc2-e116-4385-9fb7-fdaadca50147"
 >
 <ReqRef
  Id="35ef498a-1c12-4203-b283-26436d281f11"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="83a3d80c-a040-4d79-b312-aa274d51dc30"
 >
 <Comment></Comment>
 </ReqRef><Comment>Indicates when the initial state has to be resumed.</Comment>
@@ -60,15 +69,18 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ALs"
+ Guid="4e53cbe8-fb84-4df8-a50e-4d966ab7af02"
 >
 <Comment>The collection of axle load speed restrictions.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="AxleLoadValue"
+ Guid="fa42ca0f-788f-48d1-b567-ecbeaaf5b60b"
 >
 <ReqRef
  Id="13798cd3-156c-4ae1-a925-b41dfda2af88"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="42d3394a-524c-46a9-a274-29c4f4979bf6"
 >
 </ReqRef><Comment>Represents an axle load value: a couple Axle Load Category x Speed.</Comment>
 <StructureElement
@@ -78,10 +90,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Category"
+ Guid="2c34db10-b188-476a-8141-089da911e170"
 >
 <ReqRef
  Id="0fb117ff-1235-410b-998a-c63b1d3a86ed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46c9c30b-3afe-47b5-9fce-fd6a8111f7bf"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -91,15 +105,18 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Speed"
+ Guid="996a5dd9-98fa-4685-be6a-119eb6358770"
 >
 <ReqRef
  Id="4947d3fc-1665-47ff-a945-9900318dce54"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="01d1e964-8eba-4426-a3e5-c2526a36e145"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AxleLoad"
+ Guid="9dd469a1-b327-4ab3-8799-dec44bd7903e"
 >
 <Comment>Represents an axle load information.</Comment>
 <StructureElement
@@ -109,10 +126,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Length"
+ Guid="59e937fb-7cde-4cd6-8197-5ce4c9c7c65c"
 >
 <ReqRef
  Id="1a02feaa-c003-44ae-bbc0-6685c3aab8d7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="314e9fc6-f20a-4710-b65e-13f255585a18"
 >
 </ReqRef><Comment>The length of the axle load speed profile.</Comment>
 </StructureElement><StructureElement
@@ -121,18 +140,22 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="TrainLengthDelay"
+ Guid="8801d11a-5d87-4174-9e73-1fe2a2a221d6"
 >
 <ReqRef
  Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="60ca8baf-a529-4af5-8170-0a94c6469eb0"
 >
 </ReqRef><ReqRef
  Id="ba5abe5a-c0c5-477f-9ab9-52ce07011bb1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa63c332-bec5-4bec-927f-9985104dfd2a"
 >
 </ReqRef><ReqRef
  Id="49595724-3359-4536-a90e-542bc90ffc8e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb53858f-a63d-4966-8afe-3752780c84bc"
 >
 </ReqRef><Comment>Indicates if the train length has to be considered for the computation of the speed restrictions due to axle load profile.</Comment>
 </StructureElement><StructureElement
@@ -142,10 +165,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Distance"
+ Guid="22a27ae1-10c7-4597-9197-2b79fddf7208"
 >
 <ReqRef
  Id="0b4c179e-a381-412e-bdad-451bda6066e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21a4d2dd-1237-4561-9f8a-2f5125e83df9"
 >
 </ReqRef><Comment>The distance to the next axle load speed profile.</Comment>
 </StructureElement><StructureElement
@@ -154,18 +179,22 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Values"
+ Guid="167ce347-d968-4936-aa7f-8d2135237f8d"
 >
 <ReqRef
  Id="4947d3fc-1665-47ff-a945-9900318dce54"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="03119fc5-df90-4f43-b4f7-fd031b3972a8"
 >
 </ReqRef><ReqRef
  Id="0fb117ff-1235-410b-998a-c63b1d3a86ed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ed68a08-c2aa-4450-9cd8-4c61224841fb"
 >
 </ReqRef><ReqRef
  Id="13798cd3-156c-4ae1-a925-b41dfda2af88"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68cebca4-a52b-4f2e-9640-b06fe773bafe"
 >
 </ReqRef><Comment>Speed restrictions associated to the different axle load categories.</Comment>
 </StructureElement></Structure></Structures>
@@ -176,10 +205,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="AxleLoadValues"
+ Guid="37ea60a7-1060-427c-8a92-a30a5d49e75f"
 >
 <ReqRef
  Id="13798cd3-156c-4ae1-a925-b41dfda2af88"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7cd477bd-1c3b-4dbb-a63e-5019beda071a"
 >
 </ReqRef><Comment>Represents a set of axle load values.</Comment>
 </Collection><Collection
@@ -189,10 +220,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AxleLoads"
+ Guid="724ddbcf-edeb-4745-9b64-66044ac0f56e"
 >
 <ReqRef
  Id="e0ecf6c6-baf4-4601-a121-23e3946830d7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="555afcf0-7b93-4ef5-85ee-c3c7c1436374"
 >
 </ReqRef><Comment>Represents a set of axle load informations.</Comment>
 </Collection></Collections>
@@ -201,33 +234,40 @@
  Type="Default.BaseTypes.Speed"
  Implemented="TRUE"
  Name="SpeedRestrictions"
+ Guid="ac5c9711-135a-4889-a8a9-19764bedb0f0"
 >
 <ReqRef
  Id="38267eb5-348a-4d09-b4c6-4907aea348f2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="65014558-9baf-43a7-bc3a-b5212f8b0b0d"
 >
 </ReqRef><ReqRef
  Id="bfa09769-fb03-456f-b92b-14ab4cf7977b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55040a00-9112-4c96-95a5-84aa2f1a9c52"
 >
 </ReqRef><ReqRef
  Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dc4e688e-8a52-4270-9c57-65adf4f3c857"
 >
 </ReqRef><ReqRef
  Id="fd20f88d-92bb-420d-b66e-a56c331b36a0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="38255505-9aef-4133-86e1-fbc5bd12f9c1"
 >
 </ReqRef><Comment>Provides the speed restrictions profile due to axle loads.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="141094f5-bdc1-40cf-ab01-c872c0fa9c60"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SpeedRestriction"
+ Guid="22c57881-cbe1-4a7d-9121-ccd4179f1296"
 >
 <Expression>(REDUCE ASP.ALs
     USING  
@@ -240,41 +280,50 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateAxleLoad"
+ Guid="c61140d1-b1b4-4189-988b-b480a321f14d"
 >
 <ReqRef
  Id="1a02feaa-c003-44ae-bbc0-6685c3aab8d7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="69622df5-07b2-4ac5-8d71-88c91f3fb171"
 >
 </ReqRef><ReqRef
  Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ceaa53c-1a30-49ff-8cb1-ec5fcd51dc95"
 >
 </ReqRef><ReqRef
  Id="0fb117ff-1235-410b-998a-c63b1d3a86ed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="714c6dff-cb04-4a12-8c7a-9a83b6981772"
 >
 </ReqRef><ReqRef
  Id="4947d3fc-1665-47ff-a945-9900318dce54"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8b8792da-93e1-45c9-80ed-ed7bbd7e0833"
 >
 </ReqRef><Comment>Creates an EFS axle load structure from an element of the collection of ERTMS axle loads provided by the trackside.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure2"
  Name="anAxleLoad"
+ Guid="16568242-a853-459f-a364-a2e05df604fd"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="107dffac-e597-43bc-a52b-70c44a34fe7d"
 >
 </Parameter><Parameter
  Type="Messages.Q_SCALE"
  Name="Scale"
+ Guid="794accb5-92f8-44f5-b92b-e3aa4993359a"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="7ab8f7aa-817f-49eb-8cb8-a7380ea2ea26"
 >
 <Expression>AxleLoad
 {
@@ -292,21 +341,25 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateAxleLoadValue"
+ Guid="0a0bc59b-a572-4b65-98a5-3496cebc6021"
 >
 <Comment>Creates an EFS axle load value from an ERMS axle load value provided by the trackside.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.M_AXLELOADCAT"
  Name="Category"
+ Guid="cdb7791b-9057-43d2-bf58-d4b798dd3c92"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Speed"
  Name="Speed"
+ Guid="39062411-6d0b-44cd-a5de-0839802a3256"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="ff9d50eb-6730-4d24-a55a-8b6ff2ae4227"
 >
 <Expression>AxleLoadValue
 {
@@ -319,29 +372,35 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateFirstAxleLoad"
+ Guid="8f847cea-a19f-4151-843c-d786f267f793"
 >
 <Comment>Creates an EFS axle load structure from the first ERTMS axle load element provided by the trackside.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="NextDistance"
+ Guid="9b3a3641-a9be-4cde-87bb-28c0fbf3cc04"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Length"
  Name="AxleLoadLength"
+ Guid="128d7a65-a065-4f6c-9d9b-fb8df7aacc1d"
 >
 </Parameter><Parameter
  Type="Messages.Q_FRONT"
  Name="TrainLengthDelay"
+ Guid="92df0e20-593f-4cf4-8a39-e0768261e43b"
 >
 </Parameter><Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Collection1"
  Name="AxleLoadValues"
+ Guid="32a1c69c-4646-48b2-95de-e4db70e5e1d7"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="544fdb12-2f2d-487c-83e5-22d88ff6becc"
 >
 <Expression>AxleLoad
 {
@@ -359,25 +418,30 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AbsoluteDistance"
+ Guid="a953c8a5-7db2-4c98-9fbb-9cdce89630e2"
 >
 <Comment>Provides the absolute distance of a certain axle load provided by trackside.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Collection3"
  Name="AxleLoads"
+ Guid="ac572adf-9c77-4de1-9f41-5d2bc355719b"
 >
 </Parameter><Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure2"
  Name="anAxleLoad"
+ Guid="25826b73-2311-436f-8894-ee7f018d1610"
 >
 </Parameter><Parameter
  Type="Messages.Q_SCALE"
  Name="Scale"
+ Guid="ff5e49bd-84eb-4ef4-a1fe-3f62da74b145"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="9e996269-71ec-4423-8269-7977266d22e5"
 >
 <Expression>SUM
     AxleLoads |
@@ -389,38 +453,53 @@ USING
  Type="Default.BaseTypes.Speed"
  Implemented="TRUE"
  Name="AxleLoadSpeedRestriction"
+ Guid="9e74a7a7-7107-4423-a5d2-1e3d5bdb9d6b"
 >
 <ReqRef
  Id="0aceff75-cd35-48b0-8d5a-4bc8277d35c4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4ccf18a-7ec8-4e19-bd8e-6211379180de"
 >
 </ReqRef><ReqRef
  Id="9682d65d-131e-40e8-9f59-eee5815bf874"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dc931458-a3b4-4481-9968-af13d01dc48f"
 >
 </ReqRef><Comment>Provides the speed restriction for a given level crossing. The speed restriction is applicable after the distance specified in the level crossing information and during its length. From all categories specified in the level crossing, only the categories lower than or equal to the train&apos;s category are chosen and among these categories the minimum speed value is chosen. In case when there is no category lower that or equal to the train&apos;s category, the maximum speed value is returned.</Comment>
 <Parameters>
 <Parameter
  Type="AxleLoad"
  Name="anAxleLoad"
+ Guid="36b5a445-303c-4608-8735-26983e0c59d4"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="32405c97-044d-4c7d-978c-1dcc0605d89c"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="BeforeAxleLoad"
+ Guid="45e19031-2062-4515-b494-ba2d2bd1a02f"
 >
 <PreConditions>
-<PreCondition>0.0 &lt;= Distance</PreCondition><PreCondition>Distance &lt; anAxleLoad.Distance</PreCondition></PreConditions>
+<PreCondition
+ Guid="55579a66-b5b5-4001-9aa3-c3501ac91ffa"
+>0.0 &lt;= Distance</PreCondition><PreCondition
+ Guid="8341334a-efda-4d4e-8822-456b5b3d44ae"
+>Distance &lt; anAxleLoad.Distance</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="DuringAxleLoad"
+ Guid="2f0a6589-b51a-400a-872e-70adff620438"
 >
 <PreConditions>
-<PreCondition>Distance &lt; anAxleLoad.Distance + Default.BaseTypes.LengthToDistance (AxleLoadLength (anAxleLoad) )</PreCondition><PreCondition>anAxleLoad.Distance  &lt;= Distance</PreCondition></PreConditions>
+<PreCondition
+ Guid="7870a6b7-4187-4e74-8037-45e7738a1837"
+>Distance &lt; anAxleLoad.Distance + Default.BaseTypes.LengthToDistance (AxleLoadLength (anAxleLoad) )</PreCondition><PreCondition
+ Guid="c2336483-6933-444a-a639-460c167fcd61"
+>anAxleLoad.Distance  &lt;= Distance</PreCondition></PreConditions>
 <Expression>REDUCE
     anAxleLoad.Values | X.Category &lt;= Kernel.TrainData.TrainData.Value.AxleLoadCategory
     USING
@@ -429,24 +508,30 @@ USING
         Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="AfterAxleLoad"
+ Guid="a2b45560-b072-4525-a9cc-ba44cfad293f"
 >
 <PreConditions>
-<PreCondition>anAxleLoad.Distance + Default.BaseTypes.LengthToDistance (AxleLoadLength (anAxleLoad) ) &lt;= Distance</PreCondition></PreConditions>
+<PreCondition
+ Guid="eb19e581-3a05-4969-8bff-889395eff194"
+>anAxleLoad.Distance + Default.BaseTypes.LengthToDistance (AxleLoadLength (anAxleLoad) ) &lt;= Distance</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Length"
  Implemented="TRUE"
  Name="AxleLoadLength"
+ Guid="28c9866a-7388-4e77-86f7-c371daab904c"
 >
 <ReqRef
  Id="ba5abe5a-c0c5-477f-9ab9-52ce07011bb1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d0c19ffa-a7fa-472f-bf2e-ad8403eca91a"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="49595724-3359-4536-a90e-542bc90ffc8e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b6141a27-51ad-4c76-9250-ff3143f8309a"
 >
 <Comment></Comment>
 </ReqRef><Comment>Provides the length of an axle load together with the train&apos;s length, if needed.</Comment>
@@ -454,17 +539,22 @@ USING
 <Parameter
  Type="AxleLoad"
  Name="anAxleLoad"
+ Guid="06832e68-67d5-4537-877e-c2f9d8149056"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="TrainLengthDelay"
+ Guid="43494234-386c-4b36-a59b-7050266ce0d3"
 >
 <PreConditions>
-<PreCondition>anAxleLoad.TrainLengthDelay== Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</PreCondition></PreConditions>
+<PreCondition
+ Guid="6ec59e8b-09e1-4985-b403-8239785f4450"
+>anAxleLoad.TrainLengthDelay== Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</PreCondition></PreConditions>
 <Expression>anAxleLoad.Length + Kernel.TrainData.TrainData.Value.TrainLength</Expression>
 </Case><Case
  Name="NoTrainLengthDelay"
+ Guid="46518444-78d6-4a08-8282-027c42ca0db1"
 >
 <Expression>anAxleLoad.Length</Expression>
 </Case></Cases>
@@ -473,19 +563,23 @@ USING
 <Procedure
  Implemented="TRUE"
  Name="AxleLoadProfileReceived"
+ Guid="bd278863-a9e9-4f05-b449-c6b22bc23908"
 >
 <ReqRef
  Id="0bc77f7e-62ac-42cc-bf02-051522a4d11a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1b0482c0-e198-4a73-929e-1ca3b1529e2d"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="6a6eebd7-7178-4712-b7fa-135df10c5a4c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3345ed28-74e9-4bb5-bcd9-555ac3b165f2"
 >
 </ReqRef><ReqRef
  Id="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="619edb0b-4f77-4b16-8a96-582fb90e003d"
 >
 </ReqRef><Comment>This procedure is called when a new axle load profile is received. There are two cases:
   - If the initial states have to be resumed, the distance to where they have to be resumed is saved
@@ -494,6 +588,7 @@ USING
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message"
  Name="Packet"
+ Guid="39f1c63f-4621-4a8b-87e3-7a0f079235ff"
 >
 </Parameter></Parameters>
 <Rules>
@@ -502,6 +597,7 @@ USING
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="UpdateAxleLoadProfile"
+ Guid="53e1254c-7f16-4541-8487-61fd7a8c80da"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -510,50 +606,72 @@ USING
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InitialStatesToBeResumed"
+ Guid="682d8886-1308-4f6d-af62-5240a3246f68"
 >
 <ReqRef
  Id="35ef498a-1c12-4203-b283-26436d281f11"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a591d1ab-f91d-4150-814f-09375b5217d3"
 >
 </ReqRef><ReqRef
  Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4ce9aa8b-492e-401d-abd8-e15219cdf935"
 >
 </ReqRef><Comment></Comment>
 <PreConditions>
-<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition><PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
+<PreCondition
+ Guid="5d71078b-ef97-4758-aac1-4ba5b2f40779"
+>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition><PreCondition
+ Guid="32711449-c906-4471-ab6a-9217e29a8f35"
+>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
-<Action>ASP.InitialState &lt;- Packet.Q_TRACKINIT</Action><Action>ASP.EmptyProfileDistance &lt;- Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE )</Action></Actions>
+<Action
+ Guid="f0af1c31-9fef-4462-8e7c-c02a1a4f3762"
+>ASP.InitialState &lt;- Packet.Q_TRACKINIT</Action><Action
+ Guid="dcd0948f-6491-43bd-bf4a-c6a4af622dda"
+>ASP.EmptyProfileDistance &lt;- Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NoInitialStatesToBeResumed"
+ Guid="06102f57-e117-480c-9129-ab152587cb29"
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition><PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
+<PreCondition
+ Guid="ccf11f0a-f6de-4d68-a793-4eeae4640d18"
+>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition><PreCondition
+ Guid="afc78fb4-1dc1-4744-bef0-1bb4c503a210"
+>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
-<Action>HandleNewAxleLoadProfile(Packet)</Action></Actions>
+<Action
+ Guid="ed03174f-9bce-4ab2-ab99-5381a1db832c"
+>HandleNewAxleLoadProfile(Packet)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AddAxleLoad"
+ Guid="e4e805db-9e3d-4948-a63d-4d36d45e57a2"
 >
 <Comment>Adds a new axle load value to the axle load&apos;s collection.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure2"
  Name="anAxleLoad"
+ Guid="e3f02669-4e67-4b94-b821-a84effe1e288"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="c8282434-c69d-4ae2-8801-ea00bb8c1f3e"
 >
 </Parameter><Parameter
  Type="Messages.Q_SCALE"
  Name="Scale"
+ Guid="550a0b8a-3ddf-4cb4-8464-0ad0af23bee8"
 >
 </Parameter></Parameters>
 <Rules>
@@ -562,6 +680,7 @@ USING
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AddAxleLoad"
+ Guid="63b33bc6-1915-43fe-a705-355a5031188c"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -569,11 +688,14 @@ USING
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AddAxleLoad"
+ Guid="7749561a-27a0-4fd6-95b1-e0c59d1d5779"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>INSERT
+<Action
+ Guid="49c843ec-c06e-4db9-a610-785d3f858172"
+>INSERT
     CreateAxleLoad(anAxleLoad =&gt; anAxleLoad,
                               Distance =&gt; Distance
                               Scale =&gt; Scale)
@@ -585,12 +707,14 @@ IN
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleNewAxleLoadProfile"
+ Guid="29842376-70dd-4f73-9d70-4b3188c17c77"
 >
 <Comment>Updates the axle load profile according to the values of the packet received as parameter.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message"
  Name="Packet"
+ Guid="7c1806e0-6b0d-4d1c-837e-4af418170b2c"
 >
 </Parameter></Parameters>
 <Rules>
@@ -599,10 +723,12 @@ IN
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RemoveOldAxleLoads"
+ Guid="e0c21b17-5c90-441e-80a0-797e258de49a"
 >
 <ReqRef
  Id="d12121cf-b42b-4840-8d4d-20d47f70a1aa"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64dbfeb1-8927-463b-ba7a-92e0d202fab3"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -611,17 +737,21 @@ IN
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RemoveOldAxleLoads"
+ Guid="b39710e7-b084-4b66-8aec-b4ab0e30d9d8"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_AXLELOAD, scale =&gt; Packet.Q_SCALE ) IN ASP.ALs</Action></Actions>
+<Action
+ Guid="716a507b-9034-4bd8-871a-e4a4ea4c05f2"
+>REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_AXLELOAD, scale =&gt; Packet.Q_SCALE ) IN ASP.ALs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InsertFirstAxleLoad"
+ Guid="dafbc0d5-6a4d-44f9-9e44-3c9dba40a004"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -630,43 +760,54 @@ IN
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InsertFirstAxleLoad"
+ Guid="2a1ebf3a-9b1a-4bd1-8e20-3dee0efd6f7d"
 >
 <ReqRef
  Id="0b4c179e-a381-412e-bdad-451bda6066e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a354144f-629a-411f-aafe-b367e75c1aed"
 >
 </ReqRef><ReqRef
  Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb22c17a-de30-4b2b-aed3-281135bd161b"
 >
 </ReqRef><ReqRef
  Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e55b6155-b3a9-4080-af7d-6bf2b7be9cac"
 >
 </ReqRef><ReqRef
  Id="1a02feaa-c003-44ae-bbc0-6685c3aab8d7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3d6efcda-9b73-463f-95b4-05c30affe42b"
 >
 </ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>INSERT
+<Action
+ Guid="c4047e4a-5dea-46ec-bca0-126325fe2069"
+>INSERT
     CreateFirstAxleLoad ( NextDistance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_AXLELOAD, scale =&gt; Packet.Q_SCALE ),
                                       AxleLoadLength =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_AXLELOAD, scale =&gt; Packet.Q_SCALE ),
                                       TrainLengthDelay =&gt; Packet.Q_FRONT,
                                        AxleLoadValues =&gt; Packet.Sequence1 )
 IN
-    ASP.ALs</Action><Action>ASP.InitialState &lt;- Packet.Q_TRACKINIT</Action></Actions>
+    ASP.ALs</Action><Action
+ Guid="6056605f-6bd9-4a23-8286-ee6154e1da22"
+>ASP.InitialState &lt;- Packet.Q_TRACKINIT</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InsertFollowingAxleLoads"
+ Guid="57ee9719-4ba9-41bb-8727-8297c1e69e40"
 >
 <ReqRef
  Id="0b4c179e-a381-412e-bdad-451bda6066e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5aadd5de-2c1d-442e-8528-d01ebebbb00c"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -675,11 +816,14 @@ IN
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InsertFollowingAxleLoads"
+ Guid="0df6f0e0-62f7-425d-a9f7-23c6decb2172"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>APPLY
+<Action
+ Guid="08c6ad9c-fe0e-4fae-ba8a-a0a882d8adc1"
+>APPLY
     AddAxleLoad ( anAxleLoad =&gt; X,
                             Distance =&gt; AbsoluteDistance ( AxleLoads =&gt; Packet.Sequence3, anAxleLoad =&gt; X, Scale =&gt; Packet.Q_SCALE) + Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_AXLELOAD, scale =&gt; Packet.Q_SCALE),
                             Scale =&gt; Packet.Q_SCALE )
@@ -700,18 +844,22 @@ ON
  VariableMode="Internal"
  Implemented="TRUE"
  Name="ASP"
+ Guid="bcd8e2e5-3222-4524-8d15-51f6d4b02c75"
 >
 <ReqRef
  Id="38267eb5-348a-4d09-b4c6-4907aea348f2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0af586db-7172-4fc2-9f5a-8376324d7e50"
 >
 </ReqRef><ReqRef
  Id="6a6eebd7-7178-4712-b7fa-135df10c5a4c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9859fe5b-2ef4-4f0d-a41b-f24fab17a583"
 >
 </ReqRef><ReqRef
  Id="a3345820-31df-4b78-835f-d02b8d42d3bc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6817a3b3-4ad2-4d52-bea9-7028bff8333a"
 >
 </ReqRef><Comment>Contains the axle load speed restrictions provided by the trackside.</Comment>
 </Variable></Variables>
@@ -721,14 +869,17 @@ ON
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InitialStatesToBeResumed"
+ Guid="50410267-7e4a-49e0-947c-c21a5a69a288"
 >
 <ReqRef
  Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c1bada1-add4-4eac-8e80-e0dcfef582d0"
 >
 </ReqRef><ReqRef
  Id="35ef498a-1c12-4203-b283-26436d281f11"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a12e86dc-2c22-4897-bd97-12d9e38b78d1"
 >
 </ReqRef><Comment>If the train reached the distance where the initial states have to be resumed, the axle load profile is deleted.</Comment>
 <SubRules></SubRules>
@@ -737,12 +888,21 @@ ON
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InitialStatesToBeResumed"
+ Guid="a03d3367-fb14-45fa-9955-c16b87b36bfa"
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>BTM.TravelledDistanceFromLRBG() &gt;= ASP.EmptyProfileDistance</PreCondition><PreCondition>ASP.InitialState == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition></PreConditions>
+<PreCondition
+ Guid="72e1f556-901a-48d1-b07e-569a772e86e3"
+>BTM.TravelledDistanceFromLRBG() &gt;= ASP.EmptyProfileDistance</PreCondition><PreCondition
+ Guid="89824f4b-7e4f-4726-9dc5-ebe40aec7187"
+>ASP.InitialState == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition></PreConditions>
 <Actions>
-<Action>ASP.ALs &lt;- []</Action><Action>ASP.InitialState &lt;- Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</Action></Actions>
+<Action
+ Guid="4ad3347b-ced2-45bb-a7e7-f5c8c12d4901"
+>ASP.ALs &lt;- []</Action><Action
+ Guid="40a9520d-f6e6-4098-9f5e-21ae83c6433f"
+>ASP.InitialState &lt;- Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

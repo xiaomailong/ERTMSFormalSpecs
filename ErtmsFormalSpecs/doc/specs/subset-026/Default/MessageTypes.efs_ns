@@ -1,5 +1,6 @@
 <NameSpace
  Name="MessageTypes"
+ Guid="b671bc1c-bb8b-4892-8dd4-e7ff95685943"
 >
 <NameSpaces>
 </NameSpaces>
@@ -11,15 +12,18 @@
  Default="0"
  NeedsRequirement="FALSE"
  Name="Acceleration"
+ Guid="698b553f-65ef-4e4a-975d-983ac8d44c59"
 >
 <SpecialValues>
 <EnumValue
  Value="32769"
  Name="NA"
+ Guid="25abfefd-f850-4b71-b3bd-66361475b237"
 >
 </EnumValue><EnumValue
  Value="32768"
  Name="Infinity"
+ Guid="b7063c4c-9270-4494-8c42-52aac9c440fa"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -29,19 +33,23 @@
  Default="0"
  NeedsRequirement="FALSE"
  Name="Distance"
+ Guid="4041b30c-7cb5-40cb-a725-27604ab35342"
 >
 <SpecialValues>
 <EnumValue
  Value="2147483648"
  Name="Infinity"
+ Guid="51156cd0-3cb9-4b83-ac34-d2b3b2944c42"
 >
 </EnumValue><EnumValue
  Value="2147483647"
  Name="Now"
+ Guid="2e4df273-b334-4e09-b3a5-a27524c1e0ba"
 >
 </EnumValue><EnumValue
  Value="2147483646"
  Name="Unknown"
+ Guid="f96b252a-1c29-4363-9a39-4e1790507d76"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -51,6 +59,7 @@
  Default="0"
  NeedsRequirement="FALSE"
  Name="Gradient"
+ Guid="e50f7a0f-b3e2-4f0d-83e4-7f2e6b86393c"
 >
 </Range><Range
  MinValue="0"
@@ -59,15 +68,18 @@
  Default="0"
  NeedsRequirement="FALSE"
  Name="Length"
+ Guid="cfa1f608-f2e8-497b-9b16-9c28342cde5c"
 >
 <SpecialValues>
 <EnumValue
  Value="32769"
  Name="NA"
+ Guid="fc91cf5b-cc7e-43f4-bb4c-d2ba0fe8b2ce"
 >
 </EnumValue><EnumValue
  Value="32768"
  Name="Infinity"
+ Guid="02a8b53b-96b5-436e-9751-661eab900750"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -77,15 +89,18 @@
  Default="0"
  NeedsRequirement="FALSE"
  Name="Speed"
+ Guid="7a00461d-6586-47d2-9d2d-393dce90de0f"
 >
 <SpecialValues>
 <EnumValue
  Value="32769"
  Name="NA"
+ Guid="00d61b72-b9f0-4d59-9a6e-3b2510757efe"
 >
 </EnumValue><EnumValue
  Value="32768"
  Name="Infinity"
+ Guid="abc058b6-b317-488c-a481-5e030ee33b66"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -95,6 +110,7 @@
  Default="0"
  NeedsRequirement="FALSE"
  Name="Time"
+ Guid="be6e8f0e-e054-476d-99f5-d88da7c12ac9"
 >
 </Range></Ranges>
 <Functions>
@@ -102,16 +118,19 @@
  Type="BaseTypes.Length"
  NeedsRequirement="FALSE"
  Name="QLocAccLength"
+ Guid="a30e6bfc-eb39-4896-abaa-63b8fdbbc2cc"
 >
 <Parameters>
 <Parameter
  Type="Messages.Q_LOCACC"
  Name="length"
+ Guid="b7791768-43bc-4cc5-8331-59eb433ada82"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Always"
+ Guid="249fb5d7-f086-48fb-9e8f-1eee34018f5b"
 >
 <Expression>BaseTypes.Length ( length )</Expression>
 </Case></Cases>
@@ -119,17 +138,20 @@
  Type="BaseTypes.Gradient"
  NeedsRequirement="FALSE"
  Name="QScaleGradient"
+ Guid="01a12dce-9529-47a2-b7ca-32a4e9ec7879"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="MessageTypes.Gradient"
  Name="gradient"
+ Guid="6b4239fe-6876-498b-958a-e1d22bdb7ad9"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Always"
+ Guid="7c4888f1-6175-420f-ad60-518da91f3b45"
 >
 <Expression>BaseTypes.Gradient ( BaseTypes.Gradient ( gradient ) / 1000.0 )</Expression>
 </Case></Cases>
@@ -137,20 +159,24 @@
  Type="BaseTypes.Acceleration"
  NeedsRequirement="FALSE"
  Name="DecelerationResolution"
+ Guid="06092188-a00c-4a15-9e63-e807f02ba265"
 >
 <Parameters>
 <Parameter
  Type="MessageTypes.Acceleration"
  Name="acceleration"
+ Guid="a0d8f1b5-e298-481c-9a16-ff4205dff6db"
 >
 </Parameter><Parameter
  Type="Double"
  Name="resolution"
+ Guid="37153fcf-c2f8-4adf-91af-a516ac9a967a"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Always"
+ Guid="eb7203d6-99e0-4d39-a58b-82d0c729c8d4"
 >
 <Expression>- BaseTypes.Acceleration ( BaseTypes.Acceleration ( acceleration ) * resolution )</Expression>
 </Case></Cases>
@@ -158,26 +184,33 @@
  Type="MessageTypes.Speed"
  NeedsRequirement="FALSE"
  Name="UnResolveSpeed"
+ Guid="546594f2-b0e6-40f7-911a-30de489aa2a9"
 >
 <Parameters>
 <Parameter
  Type="BaseTypes.Speed"
  Name="speed"
+ Guid="e58d2954-2d5c-4b9b-900c-72bd6f0afe48"
 >
 </Parameter><Parameter
  Type="Double"
  Name="resolution"
+ Guid="585560a3-c3d6-42b1-b955-9fa6f0f13085"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Empty"
+ Guid="2da040cb-0164-4051-9e02-894499a82187"
 >
 <PreConditions>
-<PreCondition>NOT ( Available ( speed ) )</PreCondition></PreConditions>
+<PreCondition
+ Guid="730e4495-76aa-44e5-8910-c614b79ba177"
+>NOT ( Available ( speed ) )</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="Always"
+ Guid="f11032b3-a4ab-460e-8bfe-f8d48243e85c"
 >
 <Expression>MessageTypes.Speed ( speed / resolution )</Expression>
 </Case></Cases>
@@ -185,61 +218,80 @@
  Type="MessageTypes.Length"
  NeedsRequirement="FALSE"
  Name="UnScaleLength"
+ Guid="82c0b878-e405-4ed0-a792-5f948c15f26a"
 >
 <Parameters>
 <Parameter
  Type="BaseTypes.Length"
  Name="length"
+ Guid="2b2a80f7-7835-4db0-ae28-6a793b1a0bad"
 >
 </Parameter><Parameter
  Type="Messages.Q_SCALE"
  Name="scale"
+ Guid="cb76bbac-3c3b-4c41-b9eb-56eec0795201"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Empty"
+ Guid="50b30c0a-e8fc-4635-8d79-7de09cfe8796"
 >
 <PreConditions>
-<PreCondition>NOT ( Available ( length ) )</PreCondition></PreConditions>
+<PreCondition
+ Guid="f9f9a2a2-3a8e-45d4-b104-3d5b6d7f38cb"
+>NOT ( Available ( length ) )</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="10 cm"
+ Guid="67a6a018-5449-45a8-afef-040912333acd"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="248ecb25-d47a-4d50-a2e3-3260104526e2"
+>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
 <Expression>MessageTypes.Length ( length * 10.0 )</Expression>
 </Case><Case
  Name="1 m"
+ Guid="9f68a7d9-8aba-4a8e-bb99-7d15cc0c2e62"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="a136e04f-c4e7-497e-87f2-95bc13223e16"
+>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
 <Expression>MessageTypes.Length ( length )</Expression>
 </Case><Case
  Name="10 m"
+ Guid="6d4a94ba-a43a-45c9-a7aa-950212469851"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="31c90d93-3235-47b3-9023-f32dbecb46ab"
+>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
 <Expression>MessageTypes.Length ( length / 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
  Type="BaseTypes.Speed"
  NeedsRequirement="FALSE"
  Name="SpeedResolution"
+ Guid="a6810c09-56df-4744-842f-023c0e59c92e"
 >
 <Parameters>
 <Parameter
  Type="MessageTypes.Speed"
  Name="speed"
+ Guid="ebfbea4a-03ac-484c-a4ee-f9d8d4b02474"
 >
 </Parameter><Parameter
  Type="Double"
  Name="resolution"
+ Guid="2e537d1b-eb85-4815-9144-391f42373f9b"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Use correction factor"
+ Guid="ecc122fa-28c6-44b6-9746-4ec4f29e6938"
 >
 <Expression>BaseTypes.Speed ( BaseTypes.Speed ( speed ) * resolution )</Expression>
 </Case></Cases>
@@ -247,131 +299,174 @@
  Type="BaseTypes.Length"
  NeedsRequirement="FALSE"
  Name="QScaleLength"
+ Guid="d939f01e-5aca-485a-90c1-a1ace317b34d"
 >
 <Parameters>
 <Parameter
  Type="MessageTypes.Length"
  Name="length"
+ Guid="a3bfc420-951a-4e75-900a-f021d44ba8b9"
 >
 </Parameter><Parameter
  Type="Messages.Q_SCALE"
  Name="scale"
+ Guid="1a3855d8-0096-42c7-ba0a-fc9251cd56d6"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="10 cm"
+ Guid="944c480d-2d8d-4f20-89cf-bd7ee1bf8ffd"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="c31cc166-f166-4985-90d1-26d4e97da259"
+>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
 <Expression>BaseTypes.Length ( BaseTypes.Length ( length ) / 10.0 )</Expression>
 </Case><Case
  Name="1 m"
+ Guid="5bfd1fa9-88c0-47b7-93ff-b913e2cf564d"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="b5e72700-e415-40dd-a68e-1b65ada269eb"
+>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
 <Expression>BaseTypes.Length ( length )</Expression>
 </Case><Case
  Name="10 m"
+ Guid="c39307da-6d55-4033-8022-4540576dad74"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="b1e0396f-7ad1-4a36-be2f-ceb39b65ec33"
+>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
 <Expression>BaseTypes.Length ( BaseTypes.Length ( length ) * 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
  Type="MessageTypes.Distance"
  NeedsRequirement="FALSE"
  Name="UnScaleDistance"
+ Guid="09fb6390-d261-4af0-8873-a71af6b73b2d"
 >
 <Parameters>
 <Parameter
  Type="BaseTypes.Distance"
  Name="distance"
+ Guid="c93fe7bc-6630-4570-92d9-cd91a46cb89c"
 >
 </Parameter><Parameter
  Type="Messages.Q_SCALE"
  Name="scale"
+ Guid="cb002c1e-a918-452b-a25b-1f24282546da"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Empty"
+ Guid="8e406ea1-bd50-4858-89f7-ff85806d028d"
 >
 <PreConditions>
-<PreCondition>NOT ( Available ( distance ) )</PreCondition></PreConditions>
+<PreCondition
+ Guid="01083d14-996d-40d9-98f7-7cb8dababe16"
+>NOT ( Available ( distance ) )</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="10 cm"
+ Guid="9610dcec-7088-48d1-afee-70bdfd237a13"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="6ddca2ae-da89-412c-8763-e75d25ccdee5"
+>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
 <Expression>MessageTypes.Distance ( distance * 10.0 )</Expression>
 </Case><Case
  Name="1 m"
+ Guid="cb92c018-52ae-434f-b574-9e9870fe6764"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="57511d31-3ce0-45b9-96cb-4b6723251361"
+>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
 <Expression>MessageTypes.Distance ( distance )</Expression>
 </Case><Case
  Name="10 m"
+ Guid="0175a615-987a-49e2-9e9b-ae503260cbff"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="1a034831-9ea6-4ff3-8d5f-6ece984c8e35"
+>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
 <Expression>MessageTypes.Distance ( distance / 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
  Type="BaseTypes.Distance"
  NeedsRequirement="FALSE"
  Name="QScaleDistance"
+ Guid="e89036a0-0897-4ceb-b19b-f75aff95f1f4"
 >
 <Parameters>
 <Parameter
  Type="MessageTypes.Distance"
  Name="distance"
+ Guid="baaf20a8-ab03-472e-b8d9-f1a2898f02c1"
 >
 </Parameter><Parameter
  Type="Messages.Q_SCALE"
  Name="scale"
+ Guid="fcfdec58-ffbd-4070-8d80-5ee93f8ef490"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="10 cm"
+ Guid="ff115c3f-ddbd-472a-8ac8-c5bcbe24d0ef"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="7dcea897-bbfb-4c77-afa8-64bbeb357bc2"
+>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance ( BaseTypes.Distance ( distance ) / 10.0 )</Expression>
 </Case><Case
  Name="1 m"
+ Guid="b8c2919e-ca24-4920-ac6c-56758d6c75f9"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="44ed3566-e5ce-4a1f-b809-97a7427504f4"
+>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance ( distance )</Expression>
 </Case><Case
  Name="10 m"
+ Guid="81fc9f3d-ac32-492e-ab0d-ce7515891009"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
+<PreCondition
+ Guid="d7892622-62ac-46ea-aa66-ec94380c4cfd"
+>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance ( BaseTypes.Distance ( distance ) * 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
  Type="BaseTypes.Acceleration"
  NeedsRequirement="FALSE"
  Name="AccelerationResolution"
+ Guid="6711c7a1-7622-4e08-acad-5fff44b95ae5"
 >
 <Parameters>
 <Parameter
  Type="MessageTypes.Acceleration"
  Name="acceleration"
+ Guid="20ae8604-dfcb-4a47-afd8-b63b489d0948"
 >
 </Parameter><Parameter
  Type="Double"
  Name="resolution"
+ Guid="60a21eb2-d04d-4496-b1cd-5bc5e01ea3a8"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Always"
+ Guid="095b758f-f316-4b60-bff9-4029a961dceb"
 >
 <Expression>BaseTypes.Acceleration ( BaseTypes.Acceleration ( acceleration ) * resolution )</Expression>
 </Case></Cases>

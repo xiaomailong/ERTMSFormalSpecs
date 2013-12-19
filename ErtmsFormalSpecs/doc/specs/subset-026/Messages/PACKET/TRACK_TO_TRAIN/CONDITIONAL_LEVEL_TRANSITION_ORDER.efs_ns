@@ -1,5 +1,6 @@
 <NameSpace
  Name="CONDITIONAL_LEVEL_TRANSITION_ORDER"
+ Guid="3cb92e55-a416-4149-9637-e04c66116ed2"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="3ce3406f-37fd-4b99-a18f-6423f45be880"
 >
 <ReqRef
  Id="377cc4cc-52bc-4bc6-8489-759a13078b63"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fde249d1-8448-4b7c-b803-fc7487c105c0"
 >
 </ReqRef><ReqRef
  Id="f4234e8e-5580-4552-8e45-6e515b2db2c3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5d49b804-4091-4973-9a66-9062664f2872"
 >
 </ReqRef><Comment>Packet for a conditional level transition. The successive M_LEVELTR&apos;s go from the highest priority level to the lowest one.</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="4225c235-063d-4edf-9e10-5fb7bc9d26c8"
 >
 <ReqRef
  Id="377cc4cc-52bc-4bc6-8489-759a13078b63"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ed4cac38-651e-4d97-82c0-ccf7afeba1b2"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="8edd9d57-d1db-4f48-994d-69a3c6adfcd5"
 >
 <ReqRef
  Id="377cc4cc-52bc-4bc6-8489-759a13078b63"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9e3ee035-223e-422d-8cce-3d6c6918b87e"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="4076984f-66de-40ee-bb7a-058d783e2a06"
 >
 <ReqRef
  Id="377cc4cc-52bc-4bc6-8489-759a13078b63"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="74b28022-8675-4609-bf55-8101798c6a20"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_LEVELTR"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_LEVELTR"
+ Guid="66aca804-f0c7-4fac-83ce-f10154f1ba6f"
 >
 <ReqRef
  Id="377cc4cc-52bc-4bc6-8489-759a13078b63"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7925580-6e04-46d4-bc0f-8267faf15c9d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_NTC"
@@ -67,6 +79,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_NTC"
+ Guid="e4625a45-cbe9-4e5b-8b57-e8b024f8f211"
 >
 </StructureElement><StructureElement
  TypeName="N_ITER"
@@ -74,10 +87,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="N_ITER"
+ Guid="93aadfe9-f90e-4fec-8f47-bbb9217e8ae7"
 >
 <ReqRef
  Id="377cc4cc-52bc-4bc6-8489-759a13078b63"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2e3224a1-4f88-4163-a2de-91572ea4fbfd"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
@@ -85,18 +100,22 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
+ Guid="119762f4-8e6f-48cf-9992-494c8db05bbf"
 >
 <ReqRef
  Id="377cc4cc-52bc-4bc6-8489-759a13078b63"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c730f9c9-13ac-4f0e-8bc7-c515357aadea"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
+ Guid="3a64ac27-69f9-4ce3-992d-a5d05a713a87"
 >
 <ReqRef
  Id="377cc4cc-52bc-4bc6-8489-759a13078b63"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89537083-6005-4aa5-a0ec-c81a9ee69ea9"
 >
 </ReqRef><StructureElement
  TypeName="M_LEVELTR"
@@ -104,10 +123,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_LEVELTR"
+ Guid="d757fa7e-5993-4d74-b2c9-011af33cde37"
 >
 <ReqRef
  Id="377cc4cc-52bc-4bc6-8489-759a13078b63"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c77d83a0-0d1b-4e23-af5e-6839c5ce5b5f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_NTC"
@@ -115,6 +136,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_NTC"
+ Guid="f4623ba7-039c-43a7-833c-de0cc7fb19d0"
 >
 </StructureElement></Structure></Structures>
 <Collections>
@@ -123,10 +145,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
+ Guid="a430fa1d-bece-4b48-a3a0-20b9e6c86c62"
 >
 <ReqRef
  Id="377cc4cc-52bc-4bc6-8489-759a13078b63"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bdd0e3d6-3424-4ac8-9c7e-93e0090c6d02"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>

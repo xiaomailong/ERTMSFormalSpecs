@@ -4,6 +4,7 @@
  Width="100"
  Height="50"
  Name="Gradient"
+ Guid="c4a131aa-b4c3-4fd7-b091-fe0519c58d94"
 >
 <NameSpaces>
 </NameSpaces>
@@ -15,10 +16,12 @@
  Default="0.0"
  Implemented="TRUE"
  Name="CorrectionFactor"
+ Guid="ddba636f-074c-43be-b790-adc129a91d83"
 >
 <ReqRef
  Id="6968018c-94a2-4347-be4e-79b2187f2c5a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b2f20504-2743-4026-a731-731349057c50"
 >
 </ReqRef></Range></Ranges>
 <Structures>
@@ -26,6 +29,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="GradientInfo"
+ Guid="b67f932e-9aa3-44c2-82dd-63dbcb515caa"
 >
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -34,6 +38,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Distance"
+ Guid="4ff6c768-f6e6-48fe-af50-7daee9cd0441"
 >
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Gradient"
@@ -42,11 +47,13 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Gradient"
+ Guid="039d5a8a-f499-4018-b8f3-7d61e4b2f82e"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DefaultGradientForTSR"
+ Guid="26e1494d-8a46-41b8-8572-edc8cc4cb510"
 >
 <StructureElement
  TypeName="Default.BaseTypes.Gradient"
@@ -55,11 +62,13 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Gradient"
+ Guid="6b187c8d-a38a-46c2-8a20-f9ef07e9ae2e"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CorFactValue"
+ Guid="3678f4c9-a256-4fcc-a817-027f4c276928"
 >
 <Comment></Comment>
 <StructureElement
@@ -69,6 +78,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Factor"
+ Guid="ea248163-79c1-4392-bc84-cc0d35c0c5d8"
 >
 <Comment></Comment>
 </StructureElement><StructureElement
@@ -78,15 +88,18 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SpeedStep"
+ Guid="c9b932d9-bfca-4f89-872e-ce70be10b9e0"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CorFact"
+ Guid="c265323b-5443-434c-bfe2-b45d47e46dff"
 >
 <ReqRef
  Id="f99e95e3-0fb8-475a-bbe1-f9524c4138d2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e6e1e97e-dee3-46cf-9dce-8cb360ac6a30"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -96,6 +109,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val3"
+ Guid="26341e31-91dd-4bf6-a34a-d463a6e50704"
 >
 <Comment></Comment>
 </StructureElement><StructureElement
@@ -105,6 +119,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val4"
+ Guid="7bc5525d-c7ba-4eff-8566-7737a7535ce3"
 >
 <Comment></Comment>
 </StructureElement><StructureElement
@@ -114,6 +129,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val2"
+ Guid="bc9aafd6-1112-45a8-9b13-068fbd70ca1e"
 >
 <Comment></Comment>
 </StructureElement><StructureElement
@@ -123,6 +139,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val0"
+ Guid="b3e12edd-0f2e-4eda-9539-06513d28704c"
 >
 <Comment></Comment>
 </StructureElement><StructureElement
@@ -132,6 +149,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val1"
+ Guid="dc38e2e1-24ea-46b2-a1ce-096272c16a00"
 >
 <Comment></Comment>
 </StructureElement></Structure></Structures>
@@ -143,10 +161,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Gradients"
+ Guid="d71b8d98-c9a0-4bb7-994f-c3975cff69ac"
 >
 <ReqRef
  Id="80268ed0-b391-4741-8200-f28c5bffebf6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="039009b7-2b11-4a42-ae95-11b628f26871"
 >
 </ReqRef></Collection></Collections>
 <Functions>
@@ -155,27 +175,34 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="GradientProfileWithDefaultValue"
+ Guid="5482eab7-46f7-4339-bd31-b8d1a595d2cc"
 >
 <Comment>Provides a default value where the gradient is not defined</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="8388433a-325e-4d48-9b82-94700d559727"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Gradient"
  Name="DefaultGradient"
+ Guid="f99d82fe-6a97-4223-b78e-f709d640820e"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Indefinite gradient profile"
+ Guid="a498e59a-2790-42bc-82ee-dd3271d9287f"
 >
 <PreConditions>
-<PreCondition>GradientInfoProfileSummary ( Distance ) == BaseTypes.Gradient.Indefinite</PreCondition></PreConditions>
+<PreCondition
+ Guid="2c28578c-3152-4b9f-bf25-f9c2f2ed7d7f"
+>GradientInfoProfileSummary ( Distance ) == BaseTypes.Gradient.Indefinite</PreCondition></PreConditions>
 <Expression>DefaultGradient</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="1df22536-c1fa-466a-a2c1-93da402a800e"
 >
 <Expression>GradientInfoProfileSummary (Distance)</Expression>
 </Case></Cases>
@@ -184,14 +211,17 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="GradientEnd"
+ Guid="8a988f31-6f99-48b2-b67f-a9c6308cef98"
 >
 <ReqRef
  Id="1a3c2b61-54c8-49b4-b142-4128f826e0d9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f99f737-031f-4ea4-9ee9-681d850a3f56"
 >
 </ReqRef><ReqRef
  Id="79afcf7b-52b5-4eff-a6f8-5b6af8d6c1bc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="de5101b6-45a0-4d90-b4e4-cdd060c4fbed"
 >
 </ReqRef><Comment>Provides the end of the current gradient element. If the current element is the last element of the gradient profile, we have two cases:
 1. Gradient value is equal to 255 =&gt; this is the end of gradient information
@@ -200,17 +230,22 @@
 <Parameter
  Type="Gradient.GradientInfo"
  Name="Current"
+ Guid="4dd83776-79ca-421c-802b-3e29e7a80c14"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Gradient information stops at current location"
+ Guid="72b7b9f3-1a76-4ff1-8ad2-b347593f765c"
 >
 <PreConditions>
-<PreCondition>Current.Gradient == 255.0</PreCondition></PreConditions>
+<PreCondition
+ Guid="da74bd49-2f10-460d-a4d8-380b084c76bb"
+>Current.Gradient == 255.0</PreCondition></PreConditions>
 <Expression>Current.Distance</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="57b006b4-2aa4-4cf0-bdb7-fadb3a1a0a54"
 >
 <Expression>REDUCE
     Gradients | X.Distance &gt; Current.Distance
@@ -223,14 +258,17 @@ INITIAL_VALUE
  Type="Default.BaseTypes.Gradient"
  Implemented="TRUE"
  Name="GradientInfoProfile_NonCompensated"
+ Guid="fe442e63-2182-4938-b9f1-19a8cd772e42"
 >
 <ReqRef
  Id="6ed12ec2-277d-4e00-9838-d75deca5efae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f85d5a96-f53e-4642-ac26-5977e85b4d15"
 >
 </ReqRef><ReqRef
  Id="3ea3e199-c76e-4d60-bc33-f4db3e609900"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9b9614de-5674-42ae-aa59-8201ae5cc04a"
 >
 </ReqRef><Comment>Provides the value of the gradient, for the specific distance according to the gradient info and the train length.
 Outside the distances provided by the gradient, the gradient value is defined as Indefinite The gradient value is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
@@ -238,31 +276,41 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Parameter
  Type="Gradient.GradientInfo"
  Name="GradientInfo"
+ Guid="8b5413f1-a3af-4611-afaa-ee7ff5415f08"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="105ea9b7-2e3d-4ec6-b361-b95ad2363161"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Length"
  Name="TrainLength"
+ Guid="198e595b-5480-4849-956c-4706e8494a68"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Before gradient info (considering train length)"
+ Guid="8c000383-45ea-4ecc-b65e-c6bd3ae4451f"
 >
 <PreConditions>
-<PreCondition>Distance &lt; GradientInfo.Distance</PreCondition></PreConditions>
+<PreCondition
+ Guid="0930875a-81dd-4ccc-808a-26c9c0e50ca2"
+>Distance &lt; GradientInfo.Distance</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient.Indefinite</Expression>
 </Case><Case
  Name="After gradient info"
+ Guid="ec28e6ad-64ca-45ce-bb8a-27b789b00111"
 >
 <PreConditions>
-<PreCondition>Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( TrainLength )</PreCondition></PreConditions>
+<PreCondition
+ Guid="b418acee-6312-4dd5-afa8-1d828f68b2ea"
+>Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( TrainLength )</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient.Indefinite</Expression>
 </Case><Case
  Name="Within gradient info"
+ Guid="ccb33418-3a7a-400d-80de-f558fe76b9f4"
 >
 <Expression>GradientInfo.Gradient</Expression>
 </Case></Cases>
@@ -271,52 +319,68 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateGradient"
+ Guid="0c95e33f-a70a-4686-a46c-76e541fdab9a"
 >
 <ReqRef
  Id="50b6b08d-a88c-4621-8123-19cf47ec3cf1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8418c0ae-819b-4ff2-948d-ee1c225c371c"
 >
 </ReqRef><ReqRef
  Id="e0b809d3-897c-4378-98e7-67a5c3ae9468"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c6d6ba74-f396-4f8f-a0b9-4025e2129382"
 >
 </ReqRef><ReqRef
  Id="e9675d44-de8d-42cb-806e-6c5e0ac6a326"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b1f191eb-1ef0-452b-a10e-69936c1ae3d6"
 >
 </ReqRef><ReqRef
  Id="79afcf7b-52b5-4eff-a6f8-5b6af8d6c1bc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ce9a3c9-d831-443c-8624-4a29ab75d07c"
 >
 </ReqRef><Comment>Creates a gradient based on the gradient orientation( uphill or downhill) and the corresponding gradient value</Comment>
 <Parameters>
 <Parameter
  Type="Messages.Q_GDIR"
  Name="Q_GDIR"
+ Guid="a768ad9a-dc89-4110-94bf-ece5f6005057"
 >
 </Parameter><Parameter
  Type="Default.MessageTypes.Gradient"
  Name="G_A"
+ Guid="ce1d9f50-cd8c-469b-8b37-46ed26db0464"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Last gradient value"
+ Guid="b0d56362-8d0b-40f2-8fe5-676de66f1b19"
 >
 <PreConditions>
-<PreCondition>G_A == 255</PreCondition></PreConditions>
+<PreCondition
+ Guid="fac886c7-2448-4a24-9e70-81fb6214219b"
+>G_A == 255</PreCondition></PreConditions>
 <Expression>255.0</Expression>
 </Case><Case
  Name="Q_GDIR is uphill"
+ Guid="6e3067de-d6b0-4df0-9ddf-cfe7fd482509"
 >
 <PreConditions>
-<PreCondition>Q_GDIR == Messages.Q_GDIR.uphill</PreCondition></PreConditions>
+<PreCondition
+ Guid="4300f7a9-f3ab-4712-994a-c13dbfb66403"
+>Q_GDIR == Messages.Q_GDIR.uphill</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient ( G_A )</Expression>
 </Case><Case
  Name="Q_GDIR is downhill"
+ Guid="267d5f27-c929-4c6d-8990-885be9da5b2b"
 >
 <PreConditions>
-<PreCondition>Q_GDIR == Messages.Q_GDIR.downhill</PreCondition></PreConditions>
+<PreCondition
+ Guid="6a06ad6c-36b8-42b0-b966-021359c175d0"
+>Q_GDIR == Messages.Q_GDIR.downhill</PreCondition></PreConditions>
 <Expression>- BaseTypes.Gradient ( G_A )</Expression>
 </Case></Cases>
 </Function><Function
@@ -324,25 +388,30 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AbsoluteDistance"
+ Guid="f76759ab-9143-4839-8633-d1956d28e22a"
 >
 <Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Collection1"
  Name="Gradients"
+ Guid="9672a1ed-6f39-4c3f-98a8-de53b269a537"
 >
 </Parameter><Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1"
  Name="Gradient"
+ Guid="bcc4ef6a-61a1-4a0b-96f3-65c92466bc56"
 >
 </Parameter><Parameter
  Type="Messages.Q_SCALE"
  Name="Scale"
+ Guid="0bd687ca-e187-4896-bdef-05bdb981593c"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="1312bbb8-8336-43b7-b0ad-aad728fe5af2"
 >
 <Expression>SUM
     Gradients |
@@ -355,26 +424,32 @@ USING
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CompensateGradientWithRotatingMass"
+ Guid="85694473-14f6-45d6-9c76-50fba4a0f5c1"
 >
 <ReqRef
  Id="58b032f9-8cd2-4fba-9fb7-862f6c37c470"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2e83171c-e985-4910-a443-feb3780e5df7"
 >
 </ReqRef><ReqRef
  Id="e8393dfe-1151-4444-a62e-bf32f3cef6a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4662f232-3391-4202-b06f-b9449a5dba94"
 >
 </ReqRef><ReqRef
  Id="748112e3-d318-4847-94da-e417e95dfa88"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="699960db-d2cb-4b11-8ac7-94d8a776b5f3"
 >
 </ReqRef><ReqRef
  Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6f85a6bb-d021-42aa-9bde-4f352f7a6a89"
 >
 </ReqRef><ReqRef
  Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bdd21f05-5710-495f-91c5-f1581f8abd5a"
 >
 </ReqRef><Comment>Compensates the gradient with the rotating mass of the train.
 The formulae are easier than in subset 26 since the values of grad and M_rotating_xxx are expressed as % : e.g. 1% = 0.01</Comment>
@@ -382,73 +457,103 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 <Parameter
  Type="Default.BaseTypes.Gradient"
  Name="Gradient"
+ Guid="1c7586c8-8003-4f3c-b22b-7f9a8255aba1"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="M_rotating_nom is unknown, uphill"
+ Guid="562e5197-0770-41f3-8b37-6b24b3224ce8"
 >
 <PreConditions>
-<PreCondition>TrainData.TrainData.Value.M_rotating_nom == Default.Percentage.NA</PreCondition><PreCondition>Gradient &gt;= 0.0</PreCondition></PreConditions>
+<PreCondition
+ Guid="c251abd5-ae0b-4546-9370-af15eefc6a37"
+>TrainData.TrainData.Value.M_rotating_nom == Default.Percentage.NA</PreCondition><PreCondition
+ Guid="846fd481-cff0-4851-a79a-3806b43dc156"
+>Gradient &gt;= 0.0</PreCondition></PreConditions>
 <Expression>Gradient / ( 1000.0 + 10.0 * M_rotating_max )</Expression>
 </Case><Case
  Name="M_rotating_nom is unknown, downhill"
+ Guid="467f77b2-4c96-4065-afbb-537b8b0fc7fb"
 >
 <PreConditions>
-<PreCondition>TrainData.TrainData.Value.M_rotating_nom == Default.Percentage.NA</PreCondition><PreCondition>Gradient &lt; 0.0</PreCondition></PreConditions>
+<PreCondition
+ Guid="0c4fb344-37be-4402-877a-6091ddd07b6a"
+>TrainData.TrainData.Value.M_rotating_nom == Default.Percentage.NA</PreCondition><PreCondition
+ Guid="840b9fe7-a3cb-4516-8985-3ad058907ce2"
+>Gradient &lt; 0.0</PreCondition></PreConditions>
 <Expression>Gradient / ( 1000.0 + 10.0 * M_rotating_min )</Expression>
 </Case><Case
  Name="M_rotating_nom is known, uphill"
+ Guid="1a4db4e0-29cb-4afd-8ec4-9c6d373d5fd7"
 >
 <PreConditions>
-<PreCondition>TrainData.TrainData.Value.M_rotating_nom != Default.Percentage.NA</PreCondition><PreCondition>Gradient &gt;= 0.0</PreCondition></PreConditions>
+<PreCondition
+ Guid="21a4ccda-967e-4cc1-b49f-3d34f6d5ba6f"
+>TrainData.TrainData.Value.M_rotating_nom != Default.Percentage.NA</PreCondition><PreCondition
+ Guid="783c230a-2105-4754-b542-f92714c1641c"
+>Gradient &gt;= 0.0</PreCondition></PreConditions>
 <Expression>Gradient / ( 1000.0 + 10.0 * TrainData.TrainData.Value.M_rotating_nom )</Expression>
 </Case><Case
  Name="M_rotating_nom is known, downhill"
+ Guid="55cdf420-e991-4448-baca-eb9bd494e509"
 >
 <PreConditions>
-<PreCondition>TrainData.TrainData.Value.M_rotating_nom != Default.Percentage.NA</PreCondition><PreCondition>Gradient &lt; 0.0</PreCondition></PreConditions>
+<PreCondition
+ Guid="9da3d253-e3ad-45a0-b304-aa2afdc7dba3"
+>TrainData.TrainData.Value.M_rotating_nom != Default.Percentage.NA</PreCondition><PreCondition
+ Guid="53f7dda7-3bf5-47a2-8563-d694f266b4dc"
+>Gradient &lt; 0.0</PreCondition></PreConditions>
 <Expression>Gradient / ( 1000.0 + 10.0 * TrainData.TrainData.Value.M_rotating_nom )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Implemented="TRUE"
  Name="A_gradient"
+ Guid="d5c5b564-eea9-4148-93ea-4ffed87b2929"
 >
 <ReqRef
  Id="f9c0f0b7-0cba-4cee-ba0c-25c654215c74"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="444a6fd8-de5e-4594-94b5-a03a96419e7f"
 >
 </ReqRef><ReqRef
  Id="adca4bed-139a-44a3-b605-a7e58f68066f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b02f60d9-5b3f-4217-88f5-9380e97edaa6"
 >
 </ReqRef><ReqRef
  Id="35a07bde-ebad-4140-ac2a-4fe3c0b6b8e3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="779a3ab3-7bcc-4b2e-a797-a14660023de3"
 >
 </ReqRef><ReqRef
  Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aa389523-099d-4053-ab09-22ca5f90cc7b"
 >
 </ReqRef><ReqRef
  Id="51ee044c-b79a-4329-b477-4569763b65d1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bc2baa67-5555-401e-bfa2-4cd1adfac950"
 >
 </ReqRef><ReqRef
  Id="58b032f9-8cd2-4fba-9fb7-862f6c37c470"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="42112ce9-1cf3-4dc3-8873-eda44cbebd92"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="b90fe4e4-4364-4229-bd42-f792dbbbf968"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Always"
+ Guid="d239d564-57e7-49e1-92c2-8228c5e08254"
 >
 <Expression>BaseTypes.Acceleration.g * GradientProfile( Distance )</Expression>
 </Case></Cases>
@@ -456,25 +561,30 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  Type="Default.BaseTypes.Gradient"
  Implemented="TRUE"
  Name="GradientInfoProfileSummary_NonCompensated"
+ Guid="7b37d34e-061c-4bdf-86dc-3a39188e50c3"
 >
 <ReqRef
  Id="6ed12ec2-277d-4e00-9838-d75deca5efae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d503f7da-a95d-4cf1-998c-6382d3145aa2"
 >
 </ReqRef><ReqRef
  Id="3ea3e199-c76e-4d60-bc33-f4db3e609900"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a6de2e0-29b1-4ada-bf68-5909b7f1baf5"
 >
 </ReqRef><Comment>Provides the gradient profile based on the gradient information stored in Gradients. The gradient profile is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="d93e06c3-33da-4756-8a54-bb829e95b170"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Always"
+ Guid="4dd28f32-dbba-44cf-abd7-7cd0c8d4e2ab"
 >
 <Expression>(REDUCE Gradients 
     USING  MIN ( RESULT, FUNCTION d : BaseTypes.Distance =&gt; GradientInfoProfile_NonCompensated( GradientInfo =&gt; X, Distance =&gt; d, TrainLength =&gt; TrainData.TrainData.Value.TrainLength ) )
@@ -485,36 +595,47 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="GradientProfile"
+ Guid="ba9268c0-984a-4eaf-a930-9f4bbbfeb25c"
 >
 <ReqRef
  Id="5388dd34-33be-4b31-90c1-ec3bc653ccd4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dff6911f-750e-4b73-ad29-a7191c1ef721"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="09303092-be71-4d04-a92e-88c5407dfe01"
 >
 </ReqRef><ReqRef
  Id="51ee044c-b79a-4329-b477-4569763b65d1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="99e12558-306e-4650-9baf-b1d3e73a2977"
 >
 </ReqRef><Comment>Takes into account the default values for the gradient </Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="9ebe2eca-1c4c-4ec1-a68e-16483c328937"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Default Gradient for a TSR is available and the default target is due to a TSR"
+ Guid="206cd443-c08a-4d0c-8d14-9eac0282f5b5"
 >
 <PreConditions>
-<PreCondition>Available ( DefaultGradientForTSR )</PreCondition><PreCondition>TSR.CurrentTargetDueToTSR ()</PreCondition></PreConditions>
+<PreCondition
+ Guid="bba83cb2-adbd-488a-89ac-d23c7f8cb2df"
+>Available ( DefaultGradientForTSR )</PreCondition><PreCondition
+ Guid="c31e85a9-e87b-4520-ac68-8a6f347de937"
+>TSR.CurrentTargetDueToTSR ()</PreCondition></PreConditions>
 <Expression>GradientProfileWithDefaultValue ( Distance, DefaultGradientForTSR.Gradient )</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="cae161a2-3348-43e4-afed-0eced9471beb"
 >
 <Expression>GradientProfileWithDefaultValue ( Distance, 0.0 )</Expression>
 </Case></Cases>
@@ -523,18 +644,22 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="GradientInfoProfile"
+ Guid="7c65ceba-3c38-4fdf-a5be-2e0e8fc63a6a"
 >
 <ReqRef
  Id="6ed12ec2-277d-4e00-9838-d75deca5efae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4dc4b9b3-d542-4097-a25d-491f1603ca72"
 >
 </ReqRef><ReqRef
  Id="e8393dfe-1151-4444-a62e-bf32f3cef6a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c1a7a292-fb0e-4d2d-b4ad-88e259e16dce"
 >
 </ReqRef><ReqRef
  Id="c8787b49-ee97-4460-b52b-1a690c6b12e2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="adb110c8-8af2-4c2d-bdbc-e0c15589ddcf"
 >
 </ReqRef><Comment>Provides the value of the gradient, for the specific distance according to the gradient info and the train length.
 Outside the distances provided by the gradient, the gradient value is defined as Indefinite</Comment>
@@ -542,37 +667,50 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Parameter
  Type="Gradient.GradientInfo"
  Name="GradientInfo"
+ Guid="e306ed33-b31a-405c-bcf7-b88ed5725021"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="76e2a551-6c3d-4446-9b20-da46a88fa9a7"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Length"
  Name="TrainLength"
+ Guid="3fb1a45c-f136-4f18-9b4f-31295787adc0"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Last element"
+ Guid="3f3e888d-45ea-4995-8c96-b894ff694b94"
 >
 <PreConditions>
-<PreCondition>GradientInfo.Gradient == 255.0</PreCondition></PreConditions>
+<PreCondition
+ Guid="93a14cb4-a216-4c12-93e1-5fe971e2d253"
+>GradientInfo.Gradient == 255.0</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient.Indefinite</Expression>
 </Case><Case
  Name="Before gradient info (considering train length)"
+ Guid="7f8c2c01-09b8-48bc-a83f-2a18ae968f87"
 >
 <PreConditions>
-<PreCondition>Distance &lt; GradientInfo.Distance</PreCondition></PreConditions>
+<PreCondition
+ Guid="ca9e35b1-2f6b-4fd0-875a-486e22599f02"
+>Distance &lt; GradientInfo.Distance</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient.Indefinite</Expression>
 </Case><Case
  Name="After gradient info"
+ Guid="aec87aad-c53c-4751-b404-ff04fba3f96a"
 >
 <PreConditions>
-<PreCondition>Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( TrainLength )</PreCondition></PreConditions>
+<PreCondition
+ Guid="55d1dd43-8bdd-4519-b0f6-3ff74b3c4c3c"
+>Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( TrainLength )</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient.Indefinite</Expression>
 </Case><Case
  Name="Within gradient info"
+ Guid="4be41a32-e76a-4d41-a8f6-2b8b4b455590"
 >
 <Expression>CompensateGradientWithRotatingMass( GradientInfo.Gradient )</Expression>
 </Case></Cases>
@@ -581,21 +719,25 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="GradientInfoProfileSummary"
+ Guid="b0db833b-41a7-4232-850b-a61b75afe1c4"
 >
 <ReqRef
  Id="6ed12ec2-277d-4e00-9838-d75deca5efae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa0306bf-2ae4-45e7-b397-55321d8d4a1e"
 >
 </ReqRef><Comment>Provides the gradient profile based on the gradient information stored in Gradients</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="148cf719-eccb-4413-ad5e-c6ff71a982e9"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Always"
+ Guid="0690ccc9-34ff-4b71-8628-e586415e8cbd"
 >
 <Expression>(REDUCE Gradients 
     USING  MIN ( RESULT, FUNCTION d : BaseTypes.Distance =&gt; GradientInfoProfile( GradientInfo =&gt; X, Distance =&gt; d, TrainLength =&gt; TrainData.TrainData.Value.TrainLength ) )
@@ -605,57 +747,73 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Type="Default.BaseTypes.Gradient"
  Implemented="TRUE"
  Name="GradientProfile_NonCompensated"
+ Guid="a3728098-b4c0-49c0-9ded-4ec3484e433b"
 >
 <ReqRef
  Id="3ea3e199-c76e-4d60-bc33-f4db3e609900"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1527bf0e-9f84-46a1-95cd-e01976b3227d"
 >
 </ReqRef><ReqRef
  Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f07f66bf-2657-4301-b066-e41abf9a2287"
 >
 </ReqRef><ReqRef
  Id="7110ff23-b408-45d5-98da-7385e6fbf210"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0bb7e3b8-1f5c-4630-ba8d-e4b4f05c9186"
 >
 </ReqRef><ReqRef
  Id="18eb1a25-7998-43b3-8e76-63ddccc5baf0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2e8b65f3-aab9-4daf-bd75-9d2daf010728"
 >
 </ReqRef><ReqRef
  Id="51ee044c-b79a-4329-b477-4569763b65d1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="28029acd-579f-458f-94ea-26320c051b8f"
 >
 </ReqRef><ReqRef
  Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f107f7b6-856e-4ae9-aa54-31cb728e882b"
 >
 </ReqRef><Comment>Provides the gradient profile based on the gradient information stored in Gradients. The gradient profile is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="d"
+ Guid="eb76c9d9-8d30-4b65-9da1-84ed1ea0ff80"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Speed"
  Name="V"
+ Guid="f3da3d08-9681-40a5-8851-c0e1338c7fa2"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Indefinite gradient profile"
+ Guid="c9b72058-ac4f-43dc-96e4-10771cf765d6"
 >
 <PreConditions>
-<PreCondition>GradientInfoProfileSummary_NonCompensated ( d ) == BaseTypes.Gradient.Indefinite</PreCondition></PreConditions>
+<PreCondition
+ Guid="04f906a4-dc56-42b9-8ed6-bf6715c8fa8c"
+>GradientInfoProfileSummary_NonCompensated ( d ) == BaseTypes.Gradient.Indefinite</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="Positive gradient value"
+ Guid="27561695-e8b1-4cc1-bfc2-93424bc79f36"
 >
 <PreConditions>
-<PreCondition>GradientInfoProfileSummary_NonCompensated ( d ) &gt;= 0.0</PreCondition></PreConditions>
+<PreCondition
+ Guid="cea37a89-6179-452d-8d1f-dca5be11b6c9"
+>GradientInfoProfileSummary_NonCompensated ( d ) &gt;= 0.0</PreCondition></PreConditions>
 <Expression>KnPlus ( V ) * GradientInfoProfileSummary_NonCompensated ( d )</Expression>
 </Case><Case
  Name="Negative gradient value"
+ Guid="6d5caab8-c46c-4db9-9cee-e873fa5c32a5"
 >
 <Expression>KnMin ( V ) * GradientInfoProfileSummary_NonCompensated ( d )</Expression>
 </Case></Cases>
@@ -663,77 +821,109 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Type="CorrectionFactor"
  Implemented="TRUE"
  Name="CorrectionFactorFunction"
+ Guid="7de99599-e199-4386-ab35-d0718105e0f9"
 >
 <ReqRef
  Id="d9d8aa6f-c16b-4873-b6b9-8cb4c566117d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f11c451b-b9a8-47b1-a042-d955c84cefb2"
 >
 </ReqRef><ReqRef
  Id="f99e95e3-0fb8-475a-bbe1-f9524c4138d2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ef3557f7-c036-4291-9a7a-a24d6e8c80a1"
 >
 </ReqRef><Comment>Gives the deceleration due to braking depending on the current speed value.</Comment>
 <Parameters>
 <Parameter
  Type="CorFact"
  Name="aCorrectionFactor"
+ Guid="7ae9bf94-515d-47c6-9389-a878a49003f0"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Speed"
  Name="V"
+ Guid="8a0561f1-25b9-45dc-af37-c19f7b279f99"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="GCF_0"
+ Guid="24691a7c-a568-497c-b2d0-5f655d6532cc"
 >
 <PreConditions>
-<PreCondition>aCorrectionFactor.Val0.SpeedStep &lt;= V</PreCondition><PreCondition>V &lt; aCorrectionFactor.Val1.SpeedStep</PreCondition></PreConditions>
+<PreCondition
+ Guid="b01f9902-e8b9-4164-bca5-e10af04ec1c5"
+>aCorrectionFactor.Val0.SpeedStep &lt;= V</PreCondition><PreCondition
+ Guid="cf0f04bb-9d03-46b7-9a8e-c8fb63850099"
+>V &lt; aCorrectionFactor.Val1.SpeedStep</PreCondition></PreConditions>
 <Expression>aCorrectionFactor.Val0.Factor</Expression>
 </Case><Case
  Name="GCF_1"
+ Guid="3a3c3644-0373-4b53-8682-87beb90be2f9"
 >
 <PreConditions>
-<PreCondition>aCorrectionFactor.Val1.SpeedStep &lt;= V</PreCondition><PreCondition>V &lt; aCorrectionFactor.Val2.SpeedStep</PreCondition></PreConditions>
+<PreCondition
+ Guid="fb001ed5-3613-4c1f-a1d4-e16de5f6f9cc"
+>aCorrectionFactor.Val1.SpeedStep &lt;= V</PreCondition><PreCondition
+ Guid="ecdf5303-5a04-46e0-a0de-4fc0c17e803e"
+>V &lt; aCorrectionFactor.Val2.SpeedStep</PreCondition></PreConditions>
 <Expression>aCorrectionFactor.Val1.Factor</Expression>
 </Case><Case
  Name="GCF_2"
+ Guid="bd6e33af-6cd2-49e5-97d1-a154f6731bdb"
 >
 <PreConditions>
-<PreCondition>aCorrectionFactor.Val2.SpeedStep &lt;=  V</PreCondition><PreCondition>V &lt; aCorrectionFactor.Val3.SpeedStep</PreCondition></PreConditions>
+<PreCondition
+ Guid="ce35983f-2742-492b-80a4-a161bd93229b"
+>aCorrectionFactor.Val2.SpeedStep &lt;=  V</PreCondition><PreCondition
+ Guid="73e0abe7-9868-48e7-b99d-948b25f07582"
+>V &lt; aCorrectionFactor.Val3.SpeedStep</PreCondition></PreConditions>
 <Expression>aCorrectionFactor.Val2.Factor</Expression>
 </Case><Case
  Name="GCF_3"
+ Guid="8f9f4890-f2c4-45f5-9b35-20e079c38ed3"
 >
 <PreConditions>
-<PreCondition>aCorrectionFactor.Val3.SpeedStep &lt;= V</PreCondition><PreCondition>V &lt; aCorrectionFactor.Val4.SpeedStep</PreCondition></PreConditions>
+<PreCondition
+ Guid="ae2adf74-07f6-48e0-a93a-e261aa4de511"
+>aCorrectionFactor.Val3.SpeedStep &lt;= V</PreCondition><PreCondition
+ Guid="43f4185b-719b-4cea-9fd1-cd22b33ed812"
+>V &lt; aCorrectionFactor.Val4.SpeedStep</PreCondition></PreConditions>
 <Expression>aCorrectionFactor.Val3.Factor</Expression>
 </Case><Case
  Name="GCF_4"
+ Guid="465033b4-1439-4ce2-b78a-0787e4ee59e3"
 >
 <PreConditions>
-<PreCondition>aCorrectionFactor.Val4.SpeedStep &lt;= V</PreCondition></PreConditions>
+<PreCondition
+ Guid="1e04695c-a0a9-4aa7-8f48-6b539cd7af5d"
+>aCorrectionFactor.Val4.SpeedStep &lt;= V</PreCondition></PreConditions>
 <Expression>aCorrectionFactor.Val4.Factor</Expression>
 </Case></Cases>
 </Function><Function
  Type="CorrectionFactor"
  Implemented="TRUE"
  Name="KnPlus"
+ Guid="8042f812-5300-4cd0-bf08-5d04c9348522"
 >
 <ReqRef
  Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b5b6896f-d98c-4b44-817a-2c9c52c35a6d"
 >
 </ReqRef><Comment>Provides the value of the on-board correction factor Kn+(V).</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="V"
+ Guid="f65fb502-465a-47f4-97e3-27d36ee2eb04"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="79b28c2a-7c75-4886-aa5c-eda61d6759af"
 >
 <Expression>CorrectionFactorFunction ( aCorrectionFactor =&gt; KnPlus, V =&gt; V )</Expression>
 </Case></Cases>
@@ -741,21 +931,25 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Type="CorrectionFactor"
  Implemented="TRUE"
  Name="KnMin"
+ Guid="51d26fca-6603-4fe9-8336-9e3da9ce5449"
 >
 <ReqRef
  Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="39d23b99-7bbd-4ec7-b3ff-fc69e9a91bfe"
 >
 </ReqRef><Comment>Provides the value of the on-board correction factor Kn-(V).</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="V"
+ Guid="4e9c186f-12aa-45b0-b6f4-92c569727761"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="a6c148bc-0c26-4f2d-b8bd-f0810ad654d9"
 >
 <Expression>CorrectionFactorFunction ( aCorrectionFactor =&gt; KnMin, V =&gt; V )</Expression>
 </Case></Cases>
@@ -764,28 +958,34 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Procedure
  Implemented="TRUE"
  Name="ProfileReceived"
+ Guid="86fab488-8ba2-4158-839e-28fbba11aaf2"
 >
 <ReqRef
  Id="d96e7170-b578-4e28-bb03-82d0b7cc6a6d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5222ecfe-46a4-4b45-bc41-12b46ea95277"
 >
 </ReqRef><ReqRef
  Id="e0b809d3-897c-4378-98e7-67a5c3ae9468"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1834852-4b71-476a-ad11-78b61614d645"
 >
 </ReqRef><ReqRef
  Id="e1e59e57-94a5-48ea-bb40-d183aa229e20"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7e91dd8b-8ce4-4140-a07d-6ea8f7fdeb1f"
 >
 </ReqRef><ReqRef
  Id="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5623e850-def6-45cb-a9e2-5e764d1a8387"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message"
  Name="Packet"
+ Guid="9402903a-405f-4565-89a5-518bc1ba1cc7"
 >
 </Parameter></Parameters>
 <Rules>
@@ -793,10 +993,12 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Priority="Processing"
  Implemented="TRUE"
  Name="Remove previous values"
+ Guid="1e7c36be-807c-4c1f-85a3-9931791224de"
 >
 <ReqRef
  Id="d8ccf575-2703-40a1-8aac-bf3fe6714fd5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48abb442-89db-41f3-9480-cc44783e8967"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -804,17 +1006,23 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Stores gradient profile info"
+ Guid="68cdb357-8231-4362-860d-107718709ffc"
 >
 <PreConditions>
-<PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
+<PreCondition
+ Guid="1bfb5b6a-6356-4305-b8a8-5d2e4877e086"
+>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE) IN Gradients</Action></Actions>
+<Action
+ Guid="879d940c-79ed-4325-8e15-cfe834f37953"
+>REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE) IN Gradients</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Store first gradient value"
+ Guid="c314ce8b-22c3-44f8-83a4-3cff301c1f57"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -822,11 +1030,16 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Store first gradient value"
+ Guid="7e74c39b-c9e1-4861-ab80-58918b672f97"
 >
 <PreConditions>
-<PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
+<PreCondition
+ Guid="59013953-7efc-43db-b2a9-50e3db5f6300"
+>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
-<Action>StoreSingleProfileInfo ( 
+<Action
+ Guid="7036cebd-f595-4bb8-be2e-2bb5ce2840bc"
+>StoreSingleProfileInfo ( 
   GradientInfo {
     Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE ),
     Gradient =&gt; CreateGradient ( Q_GDIR =&gt; Packet.Q_GDIR, G_A =&gt; Packet.G_A )
@@ -838,6 +1051,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Store following graduent values"
+ Guid="f8c1be22-7df9-4ed1-a0f8-14f9019c76d2"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -845,11 +1059,16 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Store following graduent values"
+ Guid="0f8fea63-5538-4c34-9c94-041d86cde51c"
 >
 <PreConditions>
-<PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
+<PreCondition
+ Guid="8e65a098-c6d1-4f88-9505-559d53b4aa90"
+>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
-<Action>APPLY  
+<Action
+ Guid="0cd68bff-b294-4500-b732-62890eaa683e"
+>APPLY  
   StoreSingleProfileInfo
   ( 
     GradientInfo
@@ -865,11 +1084,13 @@ ON Packet.Sequence1</Action></Actions>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="StoreSingleProfileInfo"
+ Guid="d8b750c8-4a05-44f4-ae7f-bff26cb1228f"
 >
 <Parameters>
 <Parameter
  Type="GradientInfo"
  Name="Info"
+ Guid="392cab3e-0003-43de-be28-1b310b5b924f"
 >
 </Parameter></Parameters>
 <Rules>
@@ -878,6 +1099,7 @@ ON Packet.Sequence1</Action></Actions>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Stores the profile info"
+ Guid="a1030fe7-0688-489e-9b10-fda7a895fb2f"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -885,30 +1107,37 @@ ON Packet.Sequence1</Action></Actions>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Stores the profile info"
+ Guid="71516413-d17b-43f3-a182-016f284b63ef"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>INSERT Info IN Gradients</Action></Actions>
+<Action
+ Guid="4e471971-a78a-455d-9072-378ba2a5edd4"
+>INSERT Info IN Gradients</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  Name="DefaultGradientForTSRReceived"
+ Guid="e6fa18d1-c91a-40a8-894e-c721c95a86aa"
 >
 <ReqRef
  Id="02d9f252-59e9-4dbb-a7cc-b66f2b96fe25"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ccc93ca-b949-4679-9bed-b929397afbaa"
 >
 </ReqRef><ReqRef
  Id="ca53e2c7-6148-4023-8a27-3d8b94de964c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d34eea09-5fd7-48c9-8500-77ebef108d65"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION.Message"
  Name="Packet"
+ Guid="e945cbb8-319c-45f6-97b9-a3c6159dc8a9"
 >
 </Parameter></Parameters>
 <Rules>
@@ -917,6 +1146,7 @@ ON Packet.Sequence1</Action></Actions>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Stores the default gradient for TSR value"
+ Guid="de0768ba-873c-4d00-8a03-2ba6b269a413"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -924,11 +1154,14 @@ ON Packet.Sequence1</Action></Actions>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Stores the default gradient for TSR value"
+ Guid="01f119f5-54d2-4b03-8e14-33074d62a9c8"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>DefaultGradientForTSR &lt;- DefaultGradientForTSR
+<Action
+ Guid="8a117e45-84ef-43a3-92af-5c8d5a7cd8d4"
+>DefaultGradientForTSR &lt;- DefaultGradientForTSR
 {
   Gradient =&gt; CreateGradient
   (
@@ -947,18 +1180,22 @@ ON Packet.Sequence1</Action></Actions>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Gradients"
+ Guid="11f5aff8-d4f8-4094-9afe-cccd35337e92"
 >
 <ReqRef
  Id="e1e59e57-94a5-48ea-bb40-d183aa229e20"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="76ad756a-5257-4d01-b61f-0164ae26201e"
 >
 </ReqRef><ReqRef
  Id="91c896f9-c3d0-473b-bb99-e2dfb219ae1d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="60b98f63-b705-43fe-9230-a10562e2c8d4"
 >
 </ReqRef><ReqRef
  Id="e7979a56-555a-422e-9a04-9210ecca2b25"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7650a2c1-03cd-4ebf-bd03-2732a1bf8b9d"
 >
 </ReqRef><Comment>Holds the gradient information received from trackside</Comment>
 </Variable><Variable
@@ -968,18 +1205,22 @@ ON Packet.Sequence1</Action></Actions>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_rotating_max"
+ Guid="e1f13cac-b644-434e-a9a7-76edffdc952b"
 >
 <ReqRef
  Id="a8139931-9d04-4b5e-8e2f-e681748fc57d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="731214f1-daa9-4077-a723-c15c24e7c02e"
 >
 </ReqRef><ReqRef
  Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b972899a-f5b9-4c6e-bac7-212ed8ddc74c"
 >
 </ReqRef><ReqRef
  Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="60289007-97a2-4477-a8a2-6260f1ac4197"
 >
 </ReqRef><Comment>Maximum possible rotating mass as a percentage of the total weight of the train: 15 %</Comment>
 </Variable><Variable
@@ -989,18 +1230,22 @@ ON Packet.Sequence1</Action></Actions>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_rotating_min"
+ Guid="27d1cace-3004-496a-ad86-ea8454d3e966"
 >
 <ReqRef
  Id="f3ca37d9-b093-479e-92d7-31517627da99"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="483353fe-efee-4580-9a69-9c015c49e2fe"
 >
 </ReqRef><ReqRef
  Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6bcc3bb8-6140-4cae-847a-74097a5feb78"
 >
 </ReqRef><ReqRef
  Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="61959985-1838-4779-a438-dfcecd1358b6"
 >
 </ReqRef><Comment>Minimum possible rotating mass as a percentage of the total weight of the train: 2 %</Comment>
 </Variable><Variable
@@ -1010,10 +1255,12 @@ ON Packet.Sequence1</Action></Actions>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DefaultGradientForTSR"
+ Guid="79020344-201f-44ed-9ebe-7e29cfc728dd"
 >
 <ReqRef
  Id="02d9f252-59e9-4dbb-a7cc-b66f2b96fe25"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9c7fe1f7-a0dd-401e-8d26-77256f831723"
 >
 </ReqRef><Comment>Represents the default gradient for TSR supervision.</Comment>
 </Variable><Variable
@@ -1022,14 +1269,17 @@ ON Packet.Sequence1</Action></Actions>
  VariableMode="Internal"
  Implemented="TRUE"
  Name="KnMin"
+ Guid="2d457264-c39a-4b3c-beea-1803ea25aac3"
 >
 <ReqRef
  Id="f99e95e3-0fb8-475a-bbe1-f9524c4138d2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1ea169aa-2216-4f71-84be-d86080c2e2e4"
 >
 </ReqRef><ReqRef
  Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9c36490e-9758-4279-ac49-05c3fa57b2ec"
 >
 <Comment></Comment>
 </ReqRef><Comment>Represents the speed dependent correction factor for positive gradient on the normal service brake.</Comment>
@@ -1039,14 +1289,17 @@ ON Packet.Sequence1</Action></Actions>
  VariableMode="Internal"
  Implemented="TRUE"
  Name="KnPlus"
+ Guid="11db2b54-a7ac-42e4-a535-0156f8b2de59"
 >
 <ReqRef
  Id="f99e95e3-0fb8-475a-bbe1-f9524c4138d2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="df51b644-787b-4e94-976f-f90530ae9843"
 >
 </ReqRef><ReqRef
  Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e2adc680-c31f-405d-8ea2-27c61328fb47"
 >
 </ReqRef><Comment>Represents the speed dependent correction factor for positive gradient on the normal service brake.</Comment>
 </Variable></Variables>

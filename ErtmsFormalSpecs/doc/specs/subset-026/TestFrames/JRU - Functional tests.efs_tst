@@ -1,6 +1,7 @@
 <Frame
  CycleDuration="0.1"
  Name="JRU - Functional tests"
+ Guid="c23d41f7-9d94-44fd-864d-ce1a1fbd3ed1"
 >
 <SubSequences>
 <SubSequence
@@ -14,15 +15,18 @@
  RBC_ID=""
  RBCPhone=""
  Name="Send a JRU General Message periodically"
+ Guid="eba06a21-9d5d-4ef2-b5a6-44c1aca3ef55"
 >
 <TestCases>
 <TestCase
  Implemented="TRUE"
  Name="Send a message periodically"
+ Guid="15522b4c-9450-4b0a-8c93-841dd4b38ec6"
 >
 <ReqRef
  Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="579eff73-38e3-4b18-8066-8eea45450452"
 >
 </ReqRef><Steps>
 <Step
@@ -32,17 +36,24 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Initialize train data"
+ Guid="d1cc7e98-cfba-4814-9913-e391799b54a4"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="9eb7be51-cd9c-43ad-9be2-7efb130ec4eb"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action><Action>JRU.JRU1.PreviousTime &lt;- 0.0</Action></Actions>
+<Action
+ Guid="ab402dfd-c303-41b9-beba-e24a4426fe0b"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="1f8bfd0a-6848-4a98-8f09-f34ecad7fd37"
+>JRU.JRU1.PreviousTime &lt;- 0.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="35f7ee09-b02f-459d-a1f1-e26387706a15"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -52,15 +63,18 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Ensure that the perdiod has passed"
+ Guid="ad88fdb4-6697-4198-83e6-6b10db499674"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="a9889cff-2d76-45a0-bc3b-5464cf7947a7"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
+ Guid="99ee9222-a9a8-488c-9db2-03ef220465e0"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -70,16 +84,19 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - Ensure that the first JRU GENERAL message is sent after 5 secs"
+ Guid="a29413b1-4fde-489a-bf95-49a55f4c1b08"
 >
 <Comment>The expectation of this step will be satisfied after a certain number of cycles, the amount of cycles it is related with the period</Comment>
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="761103c7-11a9-4b11-9d58-6be1f35dc1bd"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
+ Guid="794b8f25-4a22-4e79-b6f1-bc2d2d5bd460"
 >JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -89,15 +106,18 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - Ensure the period has passed again"
+ Guid="97c8e439-392b-4dc7-a185-80ad34b8c04c"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="52a3c63d-8079-4787-9690-d3dc8f7a51a7"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
+ Guid="0ae3e0ce-8ad4-413f-8d00-812d58b7b84c"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -107,16 +127,19 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - Ensure that the JRU GENERAL message is sent after the second period"
+ Guid="7ca66c76-3d76-44a9-b646-c31a0920c0d6"
 >
 <Comment>The expectation of this step will be satisfied after a certain number of cycles, the amount of cycles it is related with the period</Comment>
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="3618a5d1-35d4-4698-920f-27df6437f150"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
+ Guid="23c0a9f2-e52c-4ebd-bdf8-22c33b2c83bd"
 >JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -132,16 +155,19 @@
  RBC_ID=""
  RBCPhone=""
  Name="Send a JRU General Message after System Version has changed"
+ Guid="6b969539-103a-4f7d-9090-c9bb7743382a"
 >
 <TestCases>
 <TestCase
  Implemented="TRUE"
  Verified="TRUE"
  Name="Send a JRU General Message when the System Version Changes"
+ Guid="01f7f010-9a67-452e-9f1f-72d4affdef1e"
 >
 <ReqRef
  Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a86127b4-ef98-4ce9-90aa-c5401445dbc0"
 >
 </ReqRef><Steps>
 <Step
@@ -151,17 +177,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Initialize train data"
+ Guid="98d25a89-bab5-4760-87fc-127bc4aa3be4"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="56807023-55f0-4657-aa10-a7d932b9ff91"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="e3c57cb7-0ef4-4596-8163-a1b5f865cf31"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="3cdbf351-dd15-4a63-95ec-332530d54334"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -171,25 +202,32 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Change System Version"
+ Guid="05638979-1e96-409e-87ce-fe805a32b9c7"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="5a345e68-656d-4dc7-920e-0cb66fe3acca"
 >
 <Actions>
-<Action>Kernel.OperatedSystemVersion.Value &lt;- &apos;Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0&apos;</Action></Actions>
+<Action
+ Guid="88c763c3-f445-43f3-84ca-799a536de6c6"
+>Kernel.OperatedSystemVersion.Value &lt;- &apos;Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="c154f097-e810-48fd-83eb-5d09d63f6596"
 >JRU.JRU1.PreviousSystemVersion != Kernel.OperatedSystemVersion.Value</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="ae6e6aa4-69a1-48a0-882c-06189b466e0f"
 >JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.SYSTEM_VERSION == JRU.ToJruSystemVersion(
     SystemVersion=&gt; Kernel.OperatedSystemVersion
 )</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
+ Guid="c7a718ac-861d-4d94-ab3b-966fceef8778"
 >JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -199,15 +237,18 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - Ensure that the first JRU GENERAL message is no more present after it has been sent"
+ Guid="1741a4e6-150f-4450-b464-524d6c5e1613"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="6a3a8a1b-6bdb-4beb-963f-ac780eb330f8"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="133d1cf6-dcb5-403b-a45f-3a50453affc5"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -223,16 +264,19 @@
  RBC_ID=""
  RBCPhone=""
  Name="Send General Message When Mode Changes"
+ Guid="b6b232bd-2d7c-4d85-8a4e-9fb9bf492cd1"
 >
 <TestCases>
 <TestCase
  Implemented="TRUE"
  Verified="TRUE"
  Name="Send General Message When Mode changes"
+ Guid="8e451bb5-7b05-4287-8f54-1a72dc99bd16"
 >
 <ReqRef
  Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a763da1c-7905-4e6e-bca0-2f6912a77b82"
 >
 </ReqRef><Steps>
 <Step
@@ -242,13 +286,19 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Initialize train data"
+ Guid="227819e2-0d28-454f-a2b9-ee64bc7feb65"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="1e971ba9-b9ac-48d9-869d-7b6843e7b0ff"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+<Action
+ Guid="271c3e8d-e00e-410f-8c25-1a076d3cb66a"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="658b7e38-722a-41a9-b9d9-3e21d24331ef"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -257,15 +307,18 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Ensure that there is no JRU messages"
+ Guid="062dde03-5cc4-41e2-918a-df6ef5846ac5"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="ce22a4c4-c567-4d45-965f-615fe5fae0c9"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
+ Guid="a9be0df9-7386-4fca-b858-34a7bd86632f"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -275,25 +328,32 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - Mode Changes"
+ Guid="6c28225c-a076-4dbb-a6ed-58c05b7159f4"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="17bbdca7-248d-4825-8b01-e7198dea805b"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
+<Action
+ Guid="4dea5d47-e00f-4e19-bc47-c7714d03e486"
+>Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="7833611d-39ca-4d6c-9cf8-0a5cfd37fab7"
 >JRU.JRU1.PreviousKernelMode != Kernel.Mode</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="6c7dc48a-0568-4238-aeb6-9b6c790886f0"
 >JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.MODE== JRU.ToJruMode(
     ModeInkernel=&gt;Kernel.Mode
 )</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="417e6087-bb5e-4888-a6cc-0fbe90fe6a7b"
 >JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
     ModeInkernel=&gt;Default.Mode.FS
 )</Expectation></Expectations>
@@ -305,15 +365,18 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - Ensure that the first JRU GENERAL message has been sent"
+ Guid="1dc413bb-0441-4fd7-8894-2732a91946f5"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="ff94e8ed-a5d6-42cc-8212-ce7509543f61"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="9ecd2a79-9b80-4ad1-b358-ce6c6df61ab1"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -329,16 +392,19 @@
  RBC_ID=""
  RBCPhone=""
  Name="Send JRU Message when Level changes"
+ Guid="c57fec22-3f04-4582-b665-ec36fa97e2fa"
 >
 <TestCases>
 <TestCase
  Implemented="TRUE"
  Verified="TRUE"
  Name="Send General JRU Messages when level changes"
+ Guid="0fef8dc2-80ae-4a34-990d-6090bba33081"
 >
 <ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="51a5b94a-bbc1-4f8d-8846-4628a4ed0fe1"
 >
 </ReqRef><Steps>
 <Step
@@ -348,13 +414,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Initialize train data"
+ Guid="e94dd6ac-7b93-4945-8ab0-b4913d7437ff"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="f904bdd4-ea70-46e7-85d4-5963b078d159"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="f02ca3b2-90ad-4517-9746-34259b13aaf1"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -363,18 +433,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Ensure that there is no JRU messages"
+ Guid="e6d96ce9-ac10-4a9a-8ebe-522ae5de0d69"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="2c145e26-db85-4ad2-a2ec-1ba2301c9872"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
+ Guid="4518ced9-9935-4c77-a472-2d0a51335afb"
 >JRU.JRU1.Message.NTC_SELECTED == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="629092d9-879e-469e-aa99-3291673a3474"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -384,17 +458,24 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - Level changes"
+ Guid="62e156aa-6478-4a31-899d-fb2210459b7d"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="352ccf2f-381a-4d5d-a8d7-22b06d0fbd68"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
+<Action
+ Guid="c934b1c1-a719-4fc4-b4d8-cfac79eff316"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+ Guid="17bc2807-b21e-44eb-98f1-eb0e82bca1c0"
+>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="5e853311-b2f7-4c6f-a1da-3af2857ad13c"
 >JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -404,18 +485,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - Ensure that the first JRU GENERAL message has been sent"
+ Guid="62f628db-f368-4dc1-b348-b6b3005caa8b"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="436929ff-9d82-4524-b5c0-69fb411c73ff"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="5951b2ff-64af-4400-bab6-06730328bb50"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
+ Guid="8107798e-b611-4dbe-be42-73652758f7e3"
 >JRU.JRU1.Message.NTC_SELECTED == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -425,28 +510,40 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - Level changes again"
+ Guid="c33777cc-a95a-40b4-9a03-169fefb6edd1"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="e422e225-2cf3-4ab8-88d8-9763678c1efc"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="da4c0b59-b02b-4061-a41d-db50fe295c3d"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="2656e30c-8ad6-4089-b8cf-72aafffa9ee8"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action><Action>Kernel.NationalSystemId &lt;- 254</Action></Actions>
+<Action
+ Guid="cfc68e0b-ac4a-45e8-afbe-12d8f8950904"
+>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="ebfd599d-4718-40f4-a4f3-2a2b59464962"
+>Kernel.Level.Value &lt;- Default.Level.LNTC</Action><Action
+ Guid="2ef2ad41-1d9e-4aa5-abe1-eae003ce78f4"
+>Kernel.NationalSystemId &lt;- 254</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="77641bb4-5e26-47c4-917c-163ea74e7c85"
 >JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="12478b9c-5c40-422c-8edb-f9df9b6772a0"
 >JRU.JRU1.Message.NTC_SELECTED != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -456,18 +553,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - Ensure that no JRU GENERAL message has been sent"
+ Guid="655cefc1-4975-4869-92d2-46842442b115"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="3cb27687-5f12-42db-af99-32a135660346"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="fe99395e-b77e-4783-ba87-60167c03e54e"
 >JRU.JRU1.Message.NTC_SELECTED == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="e9facc57-2cb2-4cd1-a313-34e3d2cd9d60"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -483,15 +584,18 @@
  RBC_ID=""
  RBCPhone=""
  Name="Send Train Data Message after validation in SoM"
+ Guid="779cefb1-0730-4ce7-9136-43d46dbcdccb"
 >
 <TestCases>
 <TestCase
  Implemented="TRUE"
  Name="Send Train Data JRU Message after validation in SoM"
+ Guid="3d07638e-a4e1-44be-b86b-0a45abca33b3"
 >
 <ReqRef
  Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0b004d9b-7b94-4a47-af2a-378f94f08467"
 >
 </ReqRef><Steps>
 <Step
@@ -501,13 +605,25 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Initialize train data"
+ Guid="a2db8108-c037-4656-8a38-444cc68f351a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="06b279d0-fc34-4f93-8a76-7c4903909832"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 500.0</Action><Action>Kernel.TrainData.InitializeTrainData()</Action><Action>Kernel.TrainData.Initialize()</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action></Actions>
+<Action
+ Guid="99e41fb2-9177-47e5-991e-7b992002477c"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="31dd4c9b-bd22-4624-a58a-8ebbcffa4b1e"
+>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 500.0</Action><Action
+ Guid="fcd0bd36-5959-4d09-8318-32ee2dd56f32"
+>Kernel.TrainData.InitializeTrainData()</Action><Action
+ Guid="d3de1ef5-6a9e-4336-9cb5-e131d435bf24"
+>Kernel.TrainData.Initialize()</Action><Action
+ Guid="d78e110f-e511-4950-abdc-1481715be448"
+>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -516,20 +632,26 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Train Data Validated Variable becomes true"
+ Guid="86c653f6-cad6-463b-becc-738113b26ee9"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="6a0c5400-f28e-48e7-ac94-ef63a173fadb"
 >
 <Actions>
-<Action>Kernel.TrainDataVerified &lt;- True</Action></Actions>
+<Action
+ Guid="7036f50f-6612-4148-b7e6-d5b9cbee7407"
+>Kernel.TrainDataVerified &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="2d62a208-c0ac-41ad-87ff-27b40f5ddb5d"
 >JRU.JRU1.Message.TRAIN_DATA != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="070ca1be-f269-4f68-afae-72a85829a752"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -545,16 +667,19 @@
  RBC_ID=""
  RBCPhone=""
  Name="Emergency brake command"
+ Guid="d8c04208-d4a1-42fe-8e2e-aa0b7013005e"
 >
 <TestCases>
 <TestCase
  Implemented="TRUE"
  Verified="TRUE"
  Name="Send JRU EMERGENCY BRAKE COMMAND when the status of the EB changes"
+ Guid="a256679a-c29d-4661-9aec-28b9718dc86c"
 >
 <ReqRef
  Id="0c66d0c2-4189-4bdd-9a59-f8fb5da1dc72"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e965dcd5-3a22-496a-88c5-b81f8464fd33"
 >
 </ReqRef><Steps>
 <Step
@@ -564,17 +689,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Initialize test"
+ Guid="def77adb-8bac-42cd-94cf-e790e7d75389"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="c238d7d6-4b98-43da-91e0-e87f9bd5b1b9"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="8c427743-4098-4e96-bfdc-4eee37b07aa9"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="2d955017-a6e3-4725-8831-666ed2263055"
 >JRU.JRU1.Message == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -584,15 +714,18 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Verification there is no Emergency Brake Command on the JRU"
+ Guid="e3ef8319-4fda-4d1d-8c4f-c150d362b8dc"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="5c9ee0f6-e92b-4f4c-9eb5-36614d3006db"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="b2826af5-a9ab-428c-9ff0-3fbff422686c"
 >JRU.JRU1.Message.EMERGENCY_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -602,17 +735,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - Emergency brake is applied"
+ Guid="bab53d4e-a45d-4a6f-a3d7-ba1f593bf1b2"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="633e45b2-3a4a-436b-a202-0e1a340fbe22"
 >
 <Actions>
-<Action>TIU.EmergencyBrakeCommanded &lt;- True</Action></Actions>
+<Action
+ Guid="125667fb-2011-4636-9cf7-678ee98acb0f"
+>TIU.EmergencyBrakeCommanded &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="0ce6c2f2-b662-4c5a-92e3-a276a44d1eb3"
 >JRU.JRU1.Message.EMERGENCY_BRAKE_COMMAND_STATE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -622,15 +760,18 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - Verification the JRU Emergency Brake Command is Empty"
+ Guid="415b3cb2-ae03-423e-a552-1378998f70e9"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="306edca9-3b15-4d4a-8653-b2ace6b2c395"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="e03e3699-944b-4013-992f-7e30ad254f3a"
 >JRU.JRU1.Message.EMERGENCY_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -640,17 +781,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - Emergency Brake Changes again"
+ Guid="7e1e7551-bace-4271-8122-fa07e800fc69"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="6c723406-d09b-4fc9-9f54-d9b1f95498a3"
 >
 <Actions>
-<Action>TIU.EmergencyBrakeCommanded &lt;- False</Action></Actions>
+<Action
+ Guid="d058c056-de67-4dea-8146-4e362aaa3633"
+>TIU.EmergencyBrakeCommanded &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="951d277f-3bae-4904-90d7-44936debed0b"
 >JRU.JRU1.Message.EMERGENCY_BRAKE_COMMAND_STATE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -666,16 +812,19 @@
  RBC_ID=""
  RBCPhone=""
  Name="TrainData Changed"
+ Guid="cfcbf4e6-8fe3-42c4-baba-9b36894e9b31"
 >
 <TestCases>
 <TestCase
  Implemented="TRUE"
  Verified="TRUE"
  Name="Send Train Data JRU Message When the train data changes"
+ Guid="fe1f0c8e-7701-412b-acbf-16e19a67a71e"
 >
 <ReqRef
  Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="32963bdd-787c-49a1-8da0-bfbe376f2d1b"
 >
 </ReqRef><Steps>
 <Step
@@ -685,17 +834,32 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Initialize train data"
+ Guid="29c22a3b-c6e4-46ee-a662-4647761c22c6"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="341cca35-2714-4756-9739-0327de3fed91"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 500.0</Action><Action>Kernel.TrainData.InitializeTrainData()</Action><Action>Kernel.TrainData.Initialize()</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.AxleNumber &lt;- 300</Action></Actions>
+<Action
+ Guid="e52a062b-8be8-4c21-97c3-01368904f5c7"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="e5263438-c167-4f42-ab0a-89e666f90915"
+>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 500.0</Action><Action
+ Guid="0b34a304-cd10-4ba2-aae5-b96cc23e379c"
+>Kernel.TrainData.InitializeTrainData()</Action><Action
+ Guid="f37ffa56-0335-4aeb-b6dc-72ea8b60fc66"
+>Kernel.TrainData.Initialize()</Action><Action
+ Guid="3169741d-6f6d-4f43-9075-5ef0c248c20a"
+>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action
+ Guid="2ca15d32-bf88-489e-b972-3e9f0c43285a"
+>Kernel.TrainData.TrainData.Value.AxleNumber &lt;- 300</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="d05084b7-bfe6-4dcf-86c4-aabb9624b7f0"
 >JRU.JRU1.Message.TRAIN_DATA == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -705,20 +869,26 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - TrainData Changed"
+ Guid="39674b3a-5532-40d6-8be4-715f2f54709f"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="0f882d15-e9e9-4857-9ee2-c79a7f506fac"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.AxleNumber &lt;- 150</Action></Actions>
+<Action
+ Guid="95fa9ba8-e2a6-42eb-b68d-2ca1ab644163"
+>Kernel.TrainData.TrainData.Value.AxleNumber &lt;- 150</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="b8df3b89-d3b7-4eb0-a94d-771f0c4303fa"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="c39a3ff3-14c7-4d2b-82e1-bfe66f5887ff"
 >JRU.JRU1.Message.TRAIN_DATA != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -728,18 +898,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - Check there is a new JRU message"
+ Guid="04c3e98d-2f4c-476e-9150-f20eed61724d"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="6dd6cbaf-be81-49b2-9416-99d87433fda7"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="f230a560-b23a-43a2-add6-a840ada0d4a3"
 >JRU.JRU1.Message.TRAIN_DATA == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="a0b3ee85-edcb-4ff6-bb5a-318b5c425583"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -755,15 +929,18 @@
  RBC_ID=""
  RBCPhone=""
  Name="Service brake command"
+ Guid="76029bc7-0ef2-4047-932a-36a2b8344c21"
 >
 <TestCases>
 <TestCase
  Implemented="TRUE"
  Name="Service brake command JRU Message when the status of the SB changes"
+ Guid="f2b31d20-0595-4604-8fbe-a87b2e3914df"
 >
 <ReqRef
  Id="089434c4-9c48-438a-9c6e-1dc3af77e9db"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a78642cd-1658-4d5f-ae8d-03e667ac0e31"
 >
 </ReqRef><Steps>
 <Step
@@ -773,17 +950,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Initialize test"
+ Guid="e0e9a5f3-dc7d-4587-b9bd-e19c83e6c246"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="bb7ff6a4-10e5-4ea3-a48e-058f5eb1b769"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="ced944c5-746c-4bd8-9e82-d65d7fb203c2"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="5e2bae49-6ef3-4432-ae78-aafef50ee78f"
 >JRU.JRU1.Message == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -793,15 +975,18 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Verification there is no Service Brake Command on the JRU"
+ Guid="3eb6fbb6-d483-4282-838d-d97c5575eb83"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="d8b6b1c3-41c5-4369-87d0-3fc659568e21"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="0c892588-350d-41bf-9134-b5415958d113"
 >JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -811,20 +996,26 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - Service brake is applied"
+ Guid="604fa57c-311c-4374-baeb-1ee56bd482e2"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="af2501cd-4b8c-4f5a-bd0d-71d389fcbd1c"
 >
 <Actions>
-<Action>TIU.ServiceBrakeCommanded &lt;- True</Action></Actions>
+<Action
+ Guid="e97294f7-e3a2-4be6-a29e-cef86ea38e9d"
+>TIU.ServiceBrakeCommanded &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="1cedfb79-313b-4c09-a35a-dca3ffa68a7c"
 >JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="fa864def-17f0-4ece-ba7d-0def929d9846"
 >JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE.M_BRAKE_COMMAND_STATE == Messages.JRU.M_BRAKE_COMMAND_STATE.Commanded</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -834,15 +1025,18 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - Verification the JRU Service Brake Command is Empty"
+ Guid="bf383369-2584-426b-957f-2c4833c234cb"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="22f592a2-70a0-4cb1-9a82-bf400c35d664"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="183c8a54-2e05-4949-b16b-0ebf63168a55"
 >JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -852,20 +1046,26 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - Service Brake Changes again"
+ Guid="e4c849d7-1e05-4713-b1b7-cf79c205e2d3"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="f1a14d27-d001-439f-836a-6c1c521b0266"
 >
 <Actions>
-<Action>TIU.ServiceBrakeCommanded &lt;- False</Action></Actions>
+<Action
+ Guid="e47ff9db-a132-41e2-87a6-da59c4154d48"
+>TIU.ServiceBrakeCommanded &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="029ae210-6123-44c0-856f-2fa5440522d0"
 >JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="aeb11ca2-49ea-461b-a661-48a3d4765262"
 >JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE.M_BRAKE_COMMAND_STATE == Messages.JRU.M_BRAKE_COMMAND_STATE.Not_commanded</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -881,16 +1081,19 @@
  RBC_ID=""
  RBCPhone=""
  Name="JRU Telegram From Balise when a Telegram From Balise has been received"
+ Guid="d19b41d9-c0a1-488e-b7c7-e41b56e7b0f6"
 >
 <TestCases>
 <TestCase
  Implemented="TRUE"
  Verified="TRUE"
  Name="Send JRU BALISE TELEGRAM Message when a Balise Telegram is recieved"
+ Guid="1c00a859-d5cf-42ee-b52d-884fb0ec70e3"
 >
 <ReqRef
  Id="2775cdfc-7d3f-4adc-b431-79d473f86272"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6d8c469c-a3fe-455c-bf24-56207841a143"
 >
 </ReqRef><Steps>
 <Step
@@ -900,17 +1103,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Initialize test"
+ Guid="7344da7e-60d2-48af-8c20-94c54372348a"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="2dddd8f8-7c67-4750-a734-840a3a1c3c7a"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="3a387ecb-dddb-4cf6-bec5-468bde0b64a8"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="735e7aee-f3f8-4a47-a0e0-329b5e356be9"
 >JRU.JRU1.Message == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -920,15 +1128,18 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Verification there is no Telegram From euroBalise Message on the JRU"
+ Guid="a40f6804-5f21-4d7b-bb3f-adf1a8295ba2"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="a6bd28b6-2a95-454d-a7c1-14ddd8559123"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="9e05c4f6-01ac-476a-909b-784fd89308fb"
 >JRU.JRU1.Message.TELEGRAM_FROM_BALISE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -938,13 +1149,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - Send Balise with NID_BG 9806"
+ Guid="d7665a0f-22fb-4162-b9cb-0a7c35daf0f7"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="3062cdc1-263d-4561-8574-3a0d6171cc12"
 >
 <Actions>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action
+ Guid="7ec264fa-a4e3-48d2-b9ac-b884fd3a22d6"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram, 
     M_VERSION =&gt; 0, 
@@ -1257,12 +1472,15 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="019e2d42-2cc1-4b2b-b305-3424983bfcab"
 >JRU.JRU1.Message.TELEGRAM_FROM_BALISE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="5d97fb06-4e71-4823-a611-0d9969b71786"
 >BTM.Message != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="e3e244b9-3333-435b-b99b-8d51f7c26960"
 >JRU.JRU1.Message.TELEGRAM_FROM_BALISE.TELEGRAM.NID_BG == 9806</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1272,18 +1490,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - Verification Telegram From euroBalise Message on the JRU is no longer present"
+ Guid="585d5ddc-2af2-4cdb-aa65-a14b108b1cd8"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="5eb30463-5959-43b5-810a-ac57179c7f38"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="ee04c599-66c0-4f5d-bf56-d435266b9c51"
 >JRU.JRU1.Message.TELEGRAM_FROM_BALISE == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="84c5490b-34c1-46b9-a988-9c2067e3d9a9"
 >BTM.Message == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1299,16 +1521,19 @@
  RBC_ID=""
  RBCPhone=""
  Name="Level changes to NTC"
+ Guid="57924002-4ea2-4b68-acbe-3d83b43582c3"
 >
 <TestCases>
 <TestCase
  Implemented="TRUE"
  Verified="TRUE"
  Name="Send NTC SELECTED Messages when the level changes to LNTC"
+ Guid="73bcb499-f560-48aa-9683-ea7f95686793"
 >
 <ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b83cff7b-1cd3-4951-9525-0aabd1639e58"
 >
 </ReqRef><Steps>
 <Step
@@ -1318,17 +1543,22 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Initialize test"
+ Guid="671dbb65-40bf-46bf-aa1d-02697098a16c"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="b77fad62-a1c0-438e-ac50-b4a050f3896f"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action
+ Guid="3e3ee0c6-7afd-4f48-8582-329c37782875"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="295c035d-6fe7-48b2-9ad5-68e29c57e039"
 >JRU.JRU1.Message == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1338,26 +1568,38 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - Level changes"
+ Guid="43f294d3-6aa3-4997-b990-2b9ad0572410"
 >
 <SubSteps>
 <SubStep
  Name="SubStep1"
+ Guid="f83019db-512b-4660-95c8-9c615ad2a566"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.NationalSystemId &lt;- 254</Action></Actions>
+<Action
+ Guid="662d3de6-520e-4ecb-8fd1-f911a0be8f3a"
+>Kernel.Level.Value &lt;- Default.Level.LNTC</Action><Action
+ Guid="ea85ce02-0623-4ff2-b875-3ec93ab741d1"
+>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="603503a2-5f9f-4195-89c6-a0f04ff581b7"
+>Kernel.NationalSystemId &lt;- 254</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="a73577c9-2d17-446b-9969-8eccddccf971"
 >JRU.JRU1.Message.NTC_SELECTED.HEADER.LEVEL == Messages.JRU.LEVEL.Level_STM_specified_by_NID_NTC</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="7bbc4589-1d70-42f6-bd29-7618ba4e1711"
 >JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="0321ac00-5e8a-469d-a747-7e624d08564d"
 >JRU.JRU1.Message.NTC_SELECTED != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="32edbf47-fa8f-40aa-8ed4-a715fe88def2"
 >JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.LEVEL == Messages.JRU.LEVEL.Level_STM_specified_by_NID_NTC</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>

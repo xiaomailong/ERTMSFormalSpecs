@@ -4,6 +4,7 @@
  Width="1400"
  Height="50"
  Name="NationalValues"
+ Guid="ab0c0598-d909-46cd-a861-9e42c8dac64b"
 >
 <NameSpaces>
 </NameSpaces>
@@ -15,10 +16,12 @@
  Default="0.0"
  Implemented="TRUE"
  Name="CorFactorKr"
+ Guid="9c7841f8-44ee-4c7b-9d95-8f9c5e633c13"
 >
 <ReqRef
  Id="17f6811a-7a8d-4f41-8498-e029bc8af7ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="badd9c3f-7cfb-4f73-becf-89bee03c0faf"
 >
 </ReqRef></Range><Range
  MinValue="0.0"
@@ -27,10 +30,12 @@
  Default="0.0"
  Implemented="TRUE"
  Name="CorFactorKt"
+ Guid="81bfda52-1869-4476-b83f-416021a6fe5e"
 >
 <ReqRef
  Id="0479c97d-7d3a-4a73-8a4d-ab1a35d677fc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="52c4aabe-1a96-4a92-b633-e84a2717dc9e"
 >
 </ReqRef></Range><Range
  MinValue="0.0"
@@ -39,10 +44,12 @@
  Default="0.0"
  Implemented="TRUE"
  Name="CorFactorKv"
+ Guid="ea4125fa-26dd-425b-8c7c-74e73b0c25df"
 >
 <ReqRef
  Id="87af3dac-1ee2-462a-8c96-a5e5250c3fcc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e85e8098-f9e8-4a78-aa5f-3334ef67666f"
 >
 </ReqRef></Range><Range
  MinValue="0.0"
@@ -51,10 +58,12 @@
  Default="0.0"
  Implemented="TRUE"
  Name="WeightFactor"
+ Guid="d8b83ead-bde2-42f4-81d3-70509ad8181f"
 >
 <ReqRef
  Id="f9e113f1-d592-489b-9eff-d8ebeb91e758"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ee86021-e176-4540-845e-68bcbed2e0c0"
 >
 </ReqRef></Range></Ranges>
 <Structures>
@@ -62,10 +71,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NationalValues"
+ Guid="8f837377-bd01-4939-acc2-92b09fa72f1a"
 >
 <ReqRef
  Id="30187272-dc83-4027-afd9-a7a9754c22a4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f429f737-7bc9-4571-b85d-e412fb00facd"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -75,6 +86,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DataState"
+ Guid="c8177008-4dec-4299-88ff-3c86cf909031"
 >
 <Comment></Comment>
 </StructureElement><StructureElement
@@ -84,6 +96,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Value"
+ Guid="1cf54990-f151-41d0-b144-8cae70750db3"
 >
 <Comment></Comment>
 </StructureElement><StructureElement
@@ -93,10 +106,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ApplicableDistance"
+ Guid="72b44e00-1465-4d49-bb11-3a9b278ca11f"
 >
 <ReqRef
  Id="bb94d1fa-9b3e-4389-bf7a-f04d1654005b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7e80beae-d8aa-4c51-988c-2a87ecef3abd"
 >
 <Comment></Comment>
 </ReqRef><Comment>Distance from where the National values become applicable.</Comment>
@@ -106,32 +121,39 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="NID_C"
+ Guid="2daff9ab-7bc6-4adb-9c60-2ace0c3012f4"
 >
 <ReqRef
  Id="766f0274-5b6e-4050-a48d-226dccf68782"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d86f6885-fb00-477a-8793-f89d20740808"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="NationalDefaultData"
+ Guid="26269253-e818-4d28-b655-4a02aaf52e18"
 >
 <ReqRef
  Id="24c3f669-e8b2-4f88-9cee-d6cbd5a7c513"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7dbf092b-f874-4a1a-a956-f594ea670a65"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="8e3fa180-44fb-4e6a-9bfb-47518e196bef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a84e7d70-68a2-4a11-ac71-be17482ade71"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="30187272-dc83-4027-afd9-a7a9754c22a4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="84087f6e-225f-40a1-9281-dc72ea4be639"
 >
 </ReqRef><ReqRef
  Id="18962f3c-7beb-4506-837c-10c871272cc9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88d70076-159b-4e8f-8198-2b3261783205"
 >
 </ReqRef><Comment>Represents the set of national/default values.</Comment>
 <StructureElement
@@ -140,14 +162,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="ModificationOfAdhesionFactorByDriver"
+ Guid="fd475acd-652d-482d-a9a6-c3f645648fa5"
 >
 <ReqRef
  Id="5e746ce1-3ef0-4f84-8d48-0e1e88904204"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5cb14585-83ec-49d7-8482-9e8ea2a3801d"
 >
 </ReqRef><ReqRef
  Id="a931d562-5efa-4a29-8d7a-1dd02becb4ce"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1b9c012-8279-4a08-b42c-537713da776b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_NVSBFBPERM"
@@ -155,18 +180,22 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="PermToUseTheServiceBrakeFeedback"
+ Guid="eb05e2ad-7998-462f-9c61-6860b288ba07"
 >
 <ReqRef
  Id="23092785-c209-44ef-a5f5-2db7d9d0f65b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4082e166-bdb0-430c-a224-66567221033b"
 >
 </ReqRef><ReqRef
  Id="71a36b95-cdea-42d1-a0ae-e280dd577887"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9728e308-5197-4ea1-8dd8-4c927547de99"
 >
 </ReqRef><ReqRef
  Id="a651727b-67a1-4e0c-99d6-89af31425c35"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b6ee19f1-625b-4677-847b-69e42b2c7f6b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_NVLOCACC"
@@ -174,14 +203,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="DefaultLocationAccuracyOfABaliseGroup"
+ Guid="00ae2998-87bb-4693-a3ec-07b427cbe98b"
 >
 <ReqRef
  Id="7e712341-8fcf-474b-a20b-d3dc889cf08a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5c848d5b-2575-435a-b542-3e414c972663"
 >
 </ReqRef><ReqRef
  Id="daf0fbd3-894f-4c05-b6e4-836f21d1a7bb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="351753ea-a85d-4e37-9a2c-65ffb22ea8ca"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="CorFactorKt"
@@ -189,30 +221,37 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="IntegratedCorrectionFactorForBrakeBuildUpTime"
+ Guid="343c9c63-99bb-42cc-ab49-a8d0df6072a7"
 >
 <ReqRef
  Id="b84c39d8-6718-43f5-8a15-c15fecc7e1e3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cd4648f5-1fee-4b85-ba92-337318361155"
 >
 </ReqRef><ReqRef
  Id="0479c97d-7d3a-4a73-8a4d-ab1a35d677fc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8d2a3b8b-173c-4b87-9e2e-0c22330dc481"
 >
 </ReqRef><ReqRef
  Id="f4734217-febd-4c83-b03b-95421ce86be2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86c88797-37b7-4eb4-acfa-7b92d93ff878"
 >
 </ReqRef><ReqRef
  Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="41bf1571-594e-4d82-9f04-fd70fd344d78"
 >
 </ReqRef><ReqRef
  Id="cdb611eb-1ce9-4aba-a1fb-e64ca06b3669"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e1065344-e281-4f21-9b40-e7a7cad3b62a"
 >
 </ReqRef><ReqRef
  Id="92da629d-5f50-4600-b877-db00a98ecf43"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="900b221e-9d7c-41ee-95f9-c7925dd54ff3"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Acceleration"
@@ -220,22 +259,27 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="MaxDecelValueUnderReducedAdhesionCond1"
+ Guid="ca1c9941-4bd6-4cf8-8815-b1f267371871"
 >
 <ReqRef
  Id="4bdf713f-a04b-4492-92ac-08b864e26449"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4df13445-b3be-40db-9f93-1757c5bb1e83"
 >
 </ReqRef><ReqRef
  Id="c99601f4-d6ed-4f84-988c-9fbc856fdb87"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="29852320-13f1-4cc1-a4a4-c4d97d39e300"
 >
 </ReqRef><ReqRef
  Id="86beb9b7-fb95-4f76-9905-f06c23fc5bde"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a97762b5-b8f6-4024-a76c-4b7f851beae0"
 >
 </ReqRef><ReqRef
  Id="1ea1fcd0-0483-4f31-9e4e-972784b19f91"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f597ee31-f562-4892-82a9-c4933a6fc550"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -244,22 +288,27 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="MaxDecelValueUnderReducedAdhesionCond2"
+ Guid="14134abb-166f-40fe-bb51-a94b81c32432"
 >
 <ReqRef
  Id="afa7ef49-e01b-49da-851e-e4a4e62f5e1a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c7eb9a5-f89b-4277-9a19-4980a0ba7bc9"
 >
 </ReqRef><ReqRef
  Id="c99601f4-d6ed-4f84-988c-9fbc856fdb87"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e518304-eb56-4bff-a792-47b529660eb3"
 >
 </ReqRef><ReqRef
  Id="4bfe23d7-61e5-4f3f-9bb4-d5fb75fc444b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b577ceed-b62d-47bd-b878-f1f8c3f1f097"
 >
 </ReqRef><ReqRef
  Id="6f5803a9-c056-47a1-9fd1-1c160eb10885"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8d8fd5a5-e271-4627-8cac-da1edc7e7f31"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Acceleration"
@@ -267,22 +316,27 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="MaxDecelValueUnderReducedAdhesionCond3"
+ Guid="9505776b-111d-4797-acb2-406a9b5a20f7"
 >
 <ReqRef
  Id="2fe949f8-b640-443c-afa7-6dee7bf83063"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="52a3dc2a-87bd-4942-9334-923aea0d3e1f"
 >
 </ReqRef><ReqRef
  Id="c99601f4-d6ed-4f84-988c-9fbc856fdb87"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d5cee5e8-cf86-4998-86fa-5690b28ab2a7"
 >
 </ReqRef><ReqRef
  Id="92725790-baa9-4e3f-8eb5-c98f2fc4a4ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64c8014c-f46f-4bb5-bc99-13e8f88de3d8"
 >
 </ReqRef><ReqRef
  Id="66b1a76d-7680-41c7-a08d-7daf6f301b1d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="30281eff-d83c-45c0-b9c4-af72c10cefdf"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
@@ -290,22 +344,27 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="ShuntingModeSpeedLimit"
+ Guid="0db7794d-fcb4-4159-ad88-c9984bf4ab1d"
 >
 <ReqRef
  Id="cf121ea5-16c6-4ee1-8543-aee4ed3e60ee"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bdf5db50-faac-4c34-b3b4-04d053cdb6c7"
 >
 </ReqRef><ReqRef
  Id="aee41b7b-392b-4306-b271-aa82bdfb015f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="80fea871-600e-4c42-80af-4a698f9adb0c"
 >
 </ReqRef><ReqRef
  Id="0135f953-2245-4eca-b9c8-90c950b1d94f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fe7ac8a8-2e61-4ed0-ba1d-0136da5af0d0"
 >
 </ReqRef><ReqRef
  Id="c2e32710-2873-4ef6-b302-59e42906a32d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="80256771-a48a-4ccc-a2ae-b915c89b8e46"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -314,22 +373,27 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="StaffResponsibleModeSpeedLimit"
+ Guid="cd853f68-a422-4f69-96ec-45cbfb01d21f"
 >
 <ReqRef
  Id="68883fc3-c6a5-47b4-bc4d-75ef7328646c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9bc864a7-ac5e-4b25-ac04-1cc69da96034"
 >
 </ReqRef><ReqRef
  Id="aee41b7b-392b-4306-b271-aa82bdfb015f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ba84a0da-1c11-4565-a4ad-b1efc3fe50a4"
 >
 </ReqRef><ReqRef
  Id="0135f953-2245-4eca-b9c8-90c950b1d94f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="52cae98f-332a-4140-b3cd-bc74c757c066"
 >
 </ReqRef><ReqRef
  Id="1eddc0a4-11f9-4033-a1b4-0256f2693c43"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d750db8-3a8a-4a44-8fd0-2e408b80fc12"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
@@ -337,22 +401,27 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="OnSightModeSpeedLimit"
+ Guid="49bce4cd-46ea-4d3a-a7d4-fc56e5e86caf"
 >
 <ReqRef
  Id="b8e14a8d-e04d-4cec-ac0b-5d81c7c442aa"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c973def-a9c2-4b5f-9b39-a6e19cb0dc72"
 >
 </ReqRef><ReqRef
  Id="aee41b7b-392b-4306-b271-aa82bdfb015f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4924881e-be06-4ee0-b51e-dee57b47ee23"
 >
 </ReqRef><ReqRef
  Id="0135f953-2245-4eca-b9c8-90c950b1d94f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c7038c8a-10c5-42d2-bf9a-377e9aafd0fb"
 >
 </ReqRef><ReqRef
  Id="6b617094-55ed-49b7-9b1a-8aadb52bd34f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cdd7772a-c296-4315-b8a6-657a6046c561"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
@@ -360,22 +429,27 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="LimitedSupervisionModeSpeedLimit"
+ Guid="48c36bb7-aa5b-4068-a6dd-a98f283472d2"
 >
 <ReqRef
  Id="dcb4c590-15d1-437f-a21f-2bb72c135087"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a9e49e17-d164-41be-808f-ed285b14d893"
 >
 </ReqRef><ReqRef
  Id="aee41b7b-392b-4306-b271-aa82bdfb015f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae6e211f-4efe-46a4-aeff-9ce936409794"
 >
 </ReqRef><ReqRef
  Id="0135f953-2245-4eca-b9c8-90c950b1d94f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="79796e39-3157-4985-9062-3e3e18e37f66"
 >
 </ReqRef><ReqRef
  Id="707ab5a2-317f-45c9-89ed-217261c6853a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="777c92e8-9683-4550-b3b5-3c0da4191178"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -384,22 +458,27 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="UnfittedModeSpeedLimit"
+ Guid="a6543833-c3c3-4ecb-ad84-902c888bf852"
 >
 <ReqRef
  Id="c6ce3eac-dbf6-4ac8-9e8b-769f4f794527"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="73c8508b-294a-4cdc-a23c-22967524b30e"
 >
 </ReqRef><ReqRef
  Id="aee41b7b-392b-4306-b271-aa82bdfb015f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c65d933c-86da-4c5b-8a1a-356976e746fd"
 >
 </ReqRef><ReqRef
  Id="0135f953-2245-4eca-b9c8-90c950b1d94f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e13524be-bdc6-457e-9b91-d36a2c145a36"
 >
 </ReqRef><ReqRef
  Id="9760b087-0192-4d33-a84a-4e7678ab8e37"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f83db841-0a01-45b3-a693-1b674eee16ea"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
@@ -407,18 +486,22 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="ReleaseSpeed"
+ Guid="917d3775-74bc-4488-b550-46df9fa519d0"
 >
 <ReqRef
  Id="419b54e3-c0d5-4436-96e7-6b557414c8b4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5eb2f926-e44c-4ebe-9c94-411c8d35261d"
 >
 </ReqRef><ReqRef
  Id="d135c1cd-b62c-406a-95ab-1bfd691e1653"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35f73231-a6bc-4e2b-ac1d-8f7265c1a73a"
 >
 </ReqRef><ReqRef
  Id="84fba645-57ac-4105-828a-2d06de564e67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c2dc3fc3-fc4e-4276-baaf-77e1c619ec96"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -426,14 +509,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="DistToBeUsedInRollAwayProt_RevMvtProt_StandstillSup"
+ Guid="3d785699-1232-49c4-87c2-deb61b7704df"
 >
 <ReqRef
  Id="86484324-f5d8-46c9-afec-7de29e7d0b2d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0818a53c-a7e2-46f6-a68c-16f7d6b7ffc0"
 >
 </ReqRef><ReqRef
  Id="bee21e04-9e34-4b84-aa41-a4957a8dcb71"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3a3dd977-6bec-479d-8374-437baf86d701"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -442,18 +528,22 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="UseServiceBrakeInTargetSpeedMonitoring"
+ Guid="f6e70837-33e7-4529-8e94-79014581fdf5"
 >
 <ReqRef
  Id="d4577a2e-04bc-4d08-bb25-856e75975567"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f6c8c40d-18fe-4004-9fc7-da0c8bafbb4f"
 >
 </ReqRef><ReqRef
  Id="d08d85e7-45e2-4342-84f8-a39335d02388"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a7cf7112-5411-4ca5-aaba-30a5ed42c084"
 >
 </ReqRef><ReqRef
  Id="0f223275-ff77-4025-a194-a347f5ef0542"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f83c76b3-7a40-4640-8744-cfbc523cf976"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_NVEMRRLS"
@@ -461,14 +551,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="PermToReleaseEmergencyBrake"
+ Guid="6ab2f71e-c93c-401c-8766-8d2928d575c5"
 >
 <ReqRef
  Id="f0514754-78f9-44cc-aa63-24a37276ca93"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0d038bdb-4cc3-4966-8ad5-bd1093bceafb"
 >
 </ReqRef><ReqRef
  Id="08dc72eb-ecb2-41b1-83d2-b41c73552c0e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="384dbd94-3313-4081-b03f-b0f4a9d0830d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_NVGUIPERM"
@@ -476,18 +569,22 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="PermToUseGuidanceCurves"
+ Guid="efe826b5-b070-4480-8183-b18b889ca961"
 >
 <ReqRef
  Id="3a44059a-2f71-401f-9364-677c23b51750"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="87339a34-4c9f-4966-9e4b-0a22032bf350"
 >
 </ReqRef><ReqRef
  Id="56c38799-4919-4c9f-b8b3-7124f2eb4b68"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="32816005-a872-4552-8866-a5cb8c46307c"
 >
 </ReqRef><ReqRef
  Id="4a6a5396-38cf-4784-bd94-ba5c844bb58c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="29582e3e-d489-4dda-8203-478cc55322fd"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_NVINHSMICPERM"
@@ -495,18 +592,22 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy"
+ Guid="b43d9def-d7a0-4480-8fa3-f21e349c7879"
 >
 <ReqRef
  Id="075bcce7-569f-4935-b08c-c8d743da733b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5e165c2d-fb69-4035-96e5-84ed511ff5d8"
 >
 </ReqRef><ReqRef
  Id="d9b47b3d-166e-4da8-8d02-22873b75a4c0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7cd4bce1-4b20-4200-acee-cb3e20af9e67"
 >
 </ReqRef><ReqRef
  Id="dfe813b0-9500-4f66-bdc1-50df0c88f0ca"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d7e87767-cfdd-4343-8661-3e51dfcad2cc"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -515,14 +616,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="SpeedLimitForTriggeringTheOverrideFunction"
+ Guid="45a1f801-4b8a-4f73-a0f0-734db55dcca3"
 >
 <ReqRef
  Id="1812b2b8-e2e8-4575-8d53-68f83a984593"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53991059-5242-4a98-a346-47432a29c3ff"
 >
 </ReqRef><ReqRef
  Id="053912bd-a061-43ec-b52b-3ba9cd8dfc8b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="276b8da7-68ee-472b-867b-7fdef79f4dad"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
@@ -530,14 +634,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive"
+ Guid="49abcc00-139b-462a-a72a-589ecaee838a"
 >
 <ReqRef
  Id="6c694ff5-5ebf-40f6-86ea-d7d66de576cd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5d064e76-9883-4cbe-9e8d-8d7a036d32be"
 >
 </ReqRef><ReqRef
  Id="9185fb46-775d-4cef-9c17-801d7b615a1c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="526669a6-62c9-47e0-bbd6-a26035f04866"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -545,14 +652,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="DistForTrainTripSuppressionWhenOverrideIsTriggered"
+ Guid="a624836b-a8ff-4616-9fb3-175cbc48e11c"
 >
 <ReqRef
  Id="0d778c1c-3670-40c3-ad58-48b71867e056"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a242605d-5c0b-47dc-9837-0e61cf735841"
 >
 </ReqRef><ReqRef
  Id="3b45e80b-a449-42bb-99ca-f5c456e19e88"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b727dea0-7e5b-465b-a859-2624771af2b3"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -561,14 +671,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered"
+ Guid="98c2cb0a-1512-4808-a4c5-437d151edd03"
 >
 <ReqRef
  Id="7ca74073-9f1d-48d5-830a-bf7a2b0ba8cc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="00a506bc-91e5-4c26-842c-5d2b6e10898b"
 >
 </ReqRef><ReqRef
  Id="c8dfa8cf-6c66-477a-8bfe-19933933952a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="39eef574-e6ca-483b-9bd5-580a9da354b8"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.M_NVDERUN"
@@ -576,14 +689,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="ChangeOfDriverIDPermittedWhileRunning"
+ Guid="733f8a86-1d53-48bf-bcfe-5275b5bc41df"
 >
 <ReqRef
  Id="ead174d5-0da6-4970-aeca-47d81ad0968b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa9db165-65c6-40f2-baa7-d44e8ce10501"
 >
 </ReqRef><ReqRef
  Id="3cebe2c9-7f92-4bcc-bee0-8d7eeea8c4ec"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5025fa31-2207-4736-867e-109ef8ad7d6f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.M_NVCONTACT"
@@ -591,14 +707,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="SystemReactionIfRadioChannelMonitoringTimeLimitExpires"
+ Guid="77686dbb-8d19-45b2-8181-51b9605e891a"
 >
 <ReqRef
  Id="55b6aecf-dac0-4374-8142-63150d4492d7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e5589393-f62e-4032-addb-a1f7645e7de6"
 >
 </ReqRef><ReqRef
  Id="6edf9ef8-827e-491f-9cf9-57b74e4cd982"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3c029a68-0c1f-40a3-b96f-a30e9cc65037"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Time"
@@ -606,14 +725,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram"
+ Guid="283a7046-213a-48a0-9735-e93c4bc7771f"
 >
 <ReqRef
  Id="56736501-c0fe-4e20-a3ab-b24a8c64423d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="816bff01-4514-4874-a4cb-0abccb0e78b7"
 >
 </ReqRef><ReqRef
  Id="fc1e9309-39da-4f10-9e92-f8cd8cc291c4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c59964e9-5223-4984-93b5-e2e15da39b48"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -621,14 +743,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="DistToBeAllowedForReversingInPostTripMode"
+ Guid="477360e5-05a1-4b1c-8f12-b8ed16e923f6"
 >
 <ReqRef
  Id="c73407b1-d957-40a8-b7a0-3f88757d1b9a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b2e471da-09ac-4932-9677-81c694cf0788"
 >
 </ReqRef><ReqRef
  Id="39d12626-e17b-4eb2-bc01-a6489eea87e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c7af845d-e1b8-491b-bffd-6e0984809544"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -636,14 +761,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="MaxPermDistToRunInStaffResponsibleMode"
+ Guid="e2386e07-da05-464f-9e53-2177776562e8"
 >
 <ReqRef
  Id="b258d7fb-75e8-43fb-bc4c-fdc3974f2a68"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e102e9a8-0df6-42c3-8ecc-32f03ccc4389"
 >
 </ReqRef><ReqRef
  Id="0b11d351-f4d6-4885-a839-fd32a3c44518"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="619e28e9-e518-4eca-8065-97c51e9712f0"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -652,18 +780,22 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="WeightingFactorForAvailableWheelRailAdhesion"
+ Guid="1afb17fa-fe30-4079-bd1f-0384876fcc92"
 >
 <ReqRef
  Id="0b52f25f-041c-43c7-96d8-cbe52bdb5426"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26a1edd5-d029-4393-b435-8920da83af3f"
 >
 </ReqRef><ReqRef
  Id="f9e113f1-d592-489b-9eff-d8ebeb91e758"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a386652-ddd0-4503-ba84-87eb8ffad7ea"
 >
 </ReqRef><ReqRef
  Id="2a47f8ca-cb24-457f-98df-f582d87fc9f5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c9d1104-9208-4e0f-9f1a-e14fa11f3ecd"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.M_NVEBCL"
@@ -671,22 +803,27 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="ConfLevelForEmergBrakeSafeDecelerationOnDryRails"
+ Guid="b4cdc497-7f46-4c9e-9cbc-eeb4e8d06f76"
 >
 <ReqRef
  Id="0baa8d9f-c0f0-4278-9075-88b483b08359"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c8b40b27-5721-4829-ac7d-87138de9c280"
 >
 </ReqRef><ReqRef
  Id="e4cb58c4-7c41-470c-a4a5-43eb3968b258"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dff6d7c4-a41b-46f9-8db2-290d8791a1eb"
 >
 </ReqRef><ReqRef
  Id="59212bdc-e7a1-4127-aa56-123c9f178c3f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aafcf8d9-722d-4e34-8157-7d93729738d0"
 >
 </ReqRef><ReqRef
  Id="7cdec823-92bb-41e1-9c42-c852a448f5e8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68d3c747-bad8-4e49-88bd-a732db3ccc6a"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -695,22 +832,27 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="IntegratedCorrectionFactorKrInt"
+ Guid="caeaf685-83bc-42ee-aaef-d4b0820ccbe0"
 >
 <ReqRef
  Id="e6844f24-1a39-4a99-a4bd-ee1d57741bee"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af16eb48-c71a-4c6e-97f2-3882cf3c265a"
 >
 </ReqRef><ReqRef
  Id="25f7c7cb-d1ef-4503-82f7-346e03536773"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="823f11fc-3dff-4883-aa11-36a1269fe847"
 >
 </ReqRef><ReqRef
  Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8e385deb-c0ab-4a50-a718-af7e8fbd0371"
 >
 </ReqRef><ReqRef
  Id="e6efd599-0613-4f01-8315-f611bcebacb5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1f1ca27-c707-4f46-b5e4-176dca58b7fb"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="KvIntValueSet_FreightTrain"
@@ -718,54 +860,67 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="IntegratedCorrectionFactorKvInt_FreightTrain"
+ Guid="973959e8-bcc0-47f7-9bb9-f11c74df078a"
 >
 <ReqRef
  Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b6dcd30c-16b5-4723-913a-c7fb039c6598"
 >
 </ReqRef><ReqRef
  Id="479916ae-45c8-472d-9390-572251963c4f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1e7ca9c4-30ac-463e-9bd1-cb70a2348048"
 >
 </ReqRef><ReqRef
  Id="c50b4a75-1478-431a-9fc7-a709e78aec0a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="63554a89-302c-4f7d-9272-ac5a293695eb"
 >
 </ReqRef><ReqRef
  Id="e16301ba-d9c2-4fd8-9fd8-0b603b157f8f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf815d9a-7455-4a26-902c-022fecf631c6"
 >
 </ReqRef><ReqRef
  Id="d0cbfbce-4629-4a24-99d8-d7e0e8876516"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ef4a8952-6882-4c21-a283-a428e2f9e224"
 >
 </ReqRef><ReqRef
  Id="b57ecdfb-662d-4696-9c28-868f1cdb7deb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2849a25e-be80-4c18-8248-34fb4bec9b50"
 >
 </ReqRef><ReqRef
  Id="fbdcb28a-c055-45bb-b4c1-a01bea9d6381"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c1b69280-bf25-452f-88d8-2883acfb85b0"
 >
 </ReqRef><ReqRef
  Id="4e43c303-7c49-45b5-baa7-e7d052b88d04"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e99765f0-5184-4e6c-abed-c46ff5c760c0"
 >
 </ReqRef><ReqRef
  Id="87af3dac-1ee2-462a-8c96-a5e5250c3fcc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="167bb801-8fe5-4fda-9c39-bcde9cf7d716"
 >
 </ReqRef><ReqRef
  Id="2200ce2a-cb53-4489-8469-546d7e953ce4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f88c935e-d233-4620-afb2-6d5372b371de"
 >
 </ReqRef><ReqRef
  Id="eeb1f154-0934-483a-bd4e-d32bc969bbc3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d075562c-0ee2-4c04-9f18-2d366b90394a"
 >
 </ReqRef><ReqRef
  Id="e6efd599-0613-4f01-8315-f611bcebacb5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8ea67b74-f21c-41ed-aa90-6ac54ab88773"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -774,60 +929,74 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="IntegratedCorrectionFactorKvInt_PassengerTrain"
+ Guid="c7e276e2-9bfd-432a-bfe1-6310129d6fdf"
 >
 <ReqRef
  Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aa1aa185-6595-41e9-b457-57c9be51fb81"
 >
 </ReqRef><ReqRef
  Id="479916ae-45c8-472d-9390-572251963c4f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b09a1a5f-8c13-4648-b40a-affe6f95f180"
 >
 </ReqRef><ReqRef
  Id="c50b4a75-1478-431a-9fc7-a709e78aec0a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9b75a089-9179-4c86-97c6-7b2e2410fe35"
 >
 </ReqRef><ReqRef
  Id="e16301ba-d9c2-4fd8-9fd8-0b603b157f8f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9b97467b-67c7-43d6-85b6-524af71c2add"
 >
 </ReqRef><ReqRef
  Id="d0cbfbce-4629-4a24-99d8-d7e0e8876516"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46a5d807-52f8-4698-8670-c964d09bf268"
 >
 </ReqRef><ReqRef
  Id="b57ecdfb-662d-4696-9c28-868f1cdb7deb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f9e14f94-375a-418d-97b2-5a476c5dfd4c"
 >
 </ReqRef><ReqRef
  Id="fbdcb28a-c055-45bb-b4c1-a01bea9d6381"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b454424c-f786-42d9-8c8c-e0775c121a09"
 >
 </ReqRef><ReqRef
  Id="4e43c303-7c49-45b5-baa7-e7d052b88d04"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46e79ff5-95ab-4437-abc3-9dd01eb228eb"
 >
 </ReqRef><ReqRef
  Id="87af3dac-1ee2-462a-8c96-a5e5250c3fcc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1e93849c-0c16-45f6-b41a-cc9088b3c1e3"
 >
 </ReqRef><ReqRef
  Id="2200ce2a-cb53-4489-8469-546d7e953ce4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1b1b4e2a-c192-4c89-a1ae-f39aa54f78b0"
 >
 </ReqRef><ReqRef
  Id="eeb1f154-0934-483a-bd4e-d32bc969bbc3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="61a2fcfb-a483-480b-8145-e17dd02af555"
 >
 </ReqRef><ReqRef
  Id="e6efd599-0613-4f01-8315-f611bcebacb5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="508639e7-3ae6-49d2-aa5f-0456c0f87d77"
 >
 </ReqRef><Comment></Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="KrIntValue"
+ Guid="c31d7ee3-3af1-4ae0-b186-feafcd48f1b7"
 >
 <StructureElement
  TypeName="Default.BaseTypes.Length"
@@ -835,14 +1004,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="LengthStep"
+ Guid="296a2e99-e6ec-4a85-aa45-cacf5d98796b"
 >
 <ReqRef
  Id="27dfcb22-8585-47d7-84e0-9c64c168b74a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ce0f161-1b30-4e57-aef5-3cea46101594"
 >
 </ReqRef><ReqRef
  Id="e6844f24-1a39-4a99-a4bd-ee1d57741bee"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="01dc799c-5b26-46fa-9ae5-e138135de62a"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="CorFactorKr"
@@ -850,30 +1022,37 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Value"
+ Guid="8166abb0-d2d6-41fc-a20f-10cf86c94652"
 >
 <ReqRef
  Id="17f6811a-7a8d-4f41-8498-e029bc8af7ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6e68333b-7839-4cd9-a3a4-f2e0bb7c5ab8"
 >
 </ReqRef><ReqRef
  Id="25f7c7cb-d1ef-4503-82f7-346e03536773"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e26bdd41-fa5c-4fe6-9b20-d234bb665d79"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="KrIntValueSet"
+ Guid="9a5b95ab-10d8-49e1-8ccb-83113970a44b"
 >
 <ReqRef
  Id="fb41c5b9-b4fa-4a64-bfb1-6a3d6b819885"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f8515eb-e4cf-4ce7-9a86-8b83c60ba9f2"
 >
 </ReqRef><ReqRef
  Id="5ee1dd50-3153-404e-a1f7-2980262f157e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68566b1d-0bf0-4f11-9305-e03aee22ef4f"
 >
 </ReqRef><ReqRef
  Id="80a66105-c23f-482c-b740-9e83ccd82aa5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="29afc98c-9444-4d34-bc61-4a0968a7719c"
 >
 </ReqRef><StructureElement
  TypeName="KrIntValue"
@@ -882,6 +1061,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val0"
+ Guid="7ef8d393-cc5f-4bb0-947d-f184d16c29d2"
 >
 </StructureElement><StructureElement
  TypeName="KrIntValue"
@@ -890,6 +1070,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val1"
+ Guid="2909821e-15d5-4ed1-8806-1ea57b07a1bb"
 >
 </StructureElement><StructureElement
  TypeName="KrIntValue"
@@ -898,6 +1079,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val2"
+ Guid="9e6497ed-2530-4d75-a79d-7e59df9f0358"
 >
 </StructureElement><StructureElement
  TypeName="KrIntValue"
@@ -906,6 +1088,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val3"
+ Guid="fb5fed5e-0767-445d-aa03-40874a51c170"
 >
 </StructureElement><StructureElement
  TypeName="KrIntValue"
@@ -914,15 +1097,18 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val4"
+ Guid="2bc9baf5-689c-4683-8c9d-7e61496df30f"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="KvIntValue_FreightTrain"
+ Guid="7a395039-a722-45e9-a085-1b919d698dc3"
 >
 <ReqRef
  Id="eeb1f154-0934-483a-bd4e-d32bc969bbc3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9325be5c-2ae2-45d3-89e9-4047d8447dbe"
 >
 </ReqRef><StructureElement
  TypeName="Default.BaseTypes.Speed"
@@ -930,14 +1116,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="SpeedStep"
+ Guid="c6dd5442-52cc-49e3-bf78-cad5845a5751"
 >
 <ReqRef
  Id="e16301ba-d9c2-4fd8-9fd8-0b603b157f8f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b45e0d3f-39b5-415b-8b77-b3389284bb7b"
 >
 </ReqRef><ReqRef
  Id="c50b4a75-1478-431a-9fc7-a709e78aec0a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="51e4a46e-befe-46fe-9f33-633e4b44d11b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="CorFactorKv"
@@ -945,30 +1134,37 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Value"
+ Guid="5f9fd7ee-4bcd-4027-8eaf-85d26def3c91"
 >
 <ReqRef
  Id="2200ce2a-cb53-4489-8469-546d7e953ce4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d9d89c2-d9cb-4722-bfe2-9771339aa9ab"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="KvIntValueSet_PassengerTrain"
+ Guid="ca191328-3e2c-4b63-81a6-dd6fb753ce61"
 >
 <ReqRef
  Id="73cf0b53-78ae-4ea4-8a36-3217d4acf417"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bbc74e6a-7dca-49d1-b82b-8d943eb7b7b7"
 >
 </ReqRef><ReqRef
  Id="479916ae-45c8-472d-9390-572251963c4f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd271391-8750-4449-bf8d-47675da988d0"
 >
 </ReqRef><ReqRef
  Id="2abf254f-b4a4-4636-8c8e-99996cd4851e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="85957bfc-a5ae-488b-8ab9-5c4fe40bfdca"
 >
 </ReqRef><ReqRef
  Id="eeb1f154-0934-483a-bd4e-d32bc969bbc3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1b6ca6d9-af29-41fb-8884-16691ab512e2"
 >
 </ReqRef><StructureElement
  TypeName="KvIntValue_PassengerTrain"
@@ -977,6 +1173,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val0"
+ Guid="32e7fed3-82c9-4a30-9723-7ddb812e1a54"
 >
 </StructureElement><StructureElement
  TypeName="KvIntValue_PassengerTrain"
@@ -985,6 +1182,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val1"
+ Guid="d0bed2e7-0357-46b6-b1df-3887b953a918"
 >
 </StructureElement><StructureElement
  TypeName="KvIntValue_PassengerTrain"
@@ -993,6 +1191,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val2"
+ Guid="784af310-64db-45ea-8945-9debe85398e9"
 >
 </StructureElement><StructureElement
  TypeName="KvIntValue_PassengerTrain"
@@ -1001,6 +1200,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val3"
+ Guid="b6f84fc9-f2fd-4b2a-bdf4-f8bb288f005f"
 >
 </StructureElement><StructureElement
  TypeName="KvIntValue_PassengerTrain"
@@ -1009,6 +1209,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val4"
+ Guid="0da50072-1206-49c3-982a-373b7742f3c3"
 >
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Acceleration"
@@ -1016,10 +1217,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="A_NVP12"
+ Guid="9e44e49d-19db-4897-b112-5801e3da1c8e"
 >
 <ReqRef
  Id="4e43c303-7c49-45b5-baa7-e7d052b88d04"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d966d3e1-5506-46b8-ac25-3fa6289b8d19"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Acceleration"
@@ -1027,22 +1230,27 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="A_NVP23"
+ Guid="15e47c78-54a2-4640-9ff1-420c6d9f304b"
 >
 <ReqRef
  Id="b57ecdfb-662d-4696-9c28-868f1cdb7deb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f10f78d6-c8c7-411f-a61b-7063caa323a5"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="KvIntValue_PassengerTrain"
+ Guid="0277029c-9d4b-48b4-8f68-a2c4c7d8b291"
 >
 <ReqRef
  Id="13908a17-3c3e-4130-9376-d19b1e00066d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a4780fa6-f2d1-4386-afd3-e9410069e20b"
 >
 </ReqRef><ReqRef
  Id="eeb1f154-0934-483a-bd4e-d32bc969bbc3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5e551b39-6edc-411d-943b-a6f242016007"
 >
 </ReqRef><StructureElement
  TypeName="Default.BaseTypes.Speed"
@@ -1050,14 +1258,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="SpeedStep"
+ Guid="eb8a97ea-f95f-4b51-9082-e977d88169ad"
 >
 <ReqRef
  Id="e16301ba-d9c2-4fd8-9fd8-0b603b157f8f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c1cb151-dd85-4f3b-91e7-67347a5b4587"
 >
 </ReqRef><ReqRef
  Id="c50b4a75-1478-431a-9fc7-a709e78aec0a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f5f7392e-e553-4560-8cae-17ef72c5ccea"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="CorFactorKv"
@@ -1065,14 +1276,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="ValueA"
+ Guid="826413ed-4162-421c-9667-334c4c2e3166"
 >
 <ReqRef
  Id="2200ce2a-cb53-4489-8469-546d7e953ce4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="40b194c6-ecb8-42e1-9ae9-24f712e75fdd"
 >
 </ReqRef><ReqRef
  Id="6075b973-4525-49c2-96ff-bddef2c0a66f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4515579e-32b1-4f68-8c7f-b0358bce6f1b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="CorFactorKv"
@@ -1080,30 +1294,37 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="ValueB"
+ Guid="c82598d5-4d26-4efa-99f0-8195993f0604"
 >
 <ReqRef
  Id="2200ce2a-cb53-4489-8469-546d7e953ce4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a60a3a29-a3ad-418e-a407-e889600bff70"
 >
 </ReqRef><ReqRef
  Id="f6f3cae9-b149-4be8-8f9f-c25be457d939"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="36b720d4-744e-49b9-9ec5-0be7954c2e7c"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="KvIntValueSet_FreightTrain"
+ Guid="b8cee096-cde5-458a-9707-d1c73314a3c3"
 >
 <ReqRef
  Id="73cf0b53-78ae-4ea4-8a36-3217d4acf417"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53d27aa1-bbf0-4636-9987-82b355ae921d"
 >
 </ReqRef><ReqRef
  Id="2abf254f-b4a4-4636-8c8e-99996cd4851e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68b4ab4b-6e07-4dab-bda3-6e9083b374b2"
 >
 </ReqRef><ReqRef
  Id="eeb1f154-0934-483a-bd4e-d32bc969bbc3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a0c46cd-284a-4aa7-89d7-6eace2642d2a"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -1113,6 +1334,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val0"
+ Guid="a60cb805-d9e9-4372-a55b-ce8a0d497687"
 >
 </StructureElement><StructureElement
  TypeName="KvIntValue_FreightTrain"
@@ -1121,6 +1343,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val1"
+ Guid="33f08a11-2a39-4d31-bd5e-1ad84fd30640"
 >
 </StructureElement><StructureElement
  TypeName="KvIntValue_FreightTrain"
@@ -1129,6 +1352,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val2"
+ Guid="d6aff7bf-fc34-4004-bbe1-5f38a14b3c1f"
 >
 </StructureElement><StructureElement
  TypeName="KvIntValue_FreightTrain"
@@ -1137,6 +1361,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val3"
+ Guid="4e29ebd9-6b3c-4411-9190-483564a11c6c"
 >
 </StructureElement><StructureElement
  TypeName="KvIntValue_FreightTrain"
@@ -1145,6 +1370,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Val4"
+ Guid="eae61b8e-dc0d-4dc5-8b6d-7912317aa661"
 >
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Acceleration"
@@ -1152,10 +1378,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="A_NVP12"
+ Guid="07c39b06-47f5-4bed-bdd7-b05e5ee6d8b7"
 >
 <ReqRef
  Id="4e43c303-7c49-45b5-baa7-e7d052b88d04"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20ef8b92-839b-4033-b27b-97fad094f54b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Acceleration"
@@ -1163,10 +1391,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="A_NVP23"
+ Guid="146a2326-7ba5-451d-b878-9c0acf9e2e94"
 >
 <ReqRef
  Id="b57ecdfb-662d-4696-9c28-868f1cdb7deb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0df20cd4-18d6-43a3-b121-fc6f2ac663b3"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Functions>
@@ -1174,157 +1404,195 @@
  Type="NationalValues"
  Implemented="TRUE"
  Name="CreateNewNationalValues"
+ Guid="383ff4ad-c76d-4d85-9df9-145c33786300"
 >
 <ReqRef
  Id="766f0274-5b6e-4050-a48d-226dccf68782"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d2ac8c57-3065-478a-b582-7371ae85a33d"
 >
 </ReqRef><ReqRef
  Id="c2e32710-2873-4ef6-b302-59e42906a32d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c005bb3d-06eb-4610-bfe8-f2ef419bd691"
 >
 </ReqRef><ReqRef
  Id="1eddc0a4-11f9-4033-a1b4-0256f2693c43"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0a57b16e-e264-4632-9751-0975c936ce01"
 >
 </ReqRef><ReqRef
  Id="6b617094-55ed-49b7-9b1a-8aadb52bd34f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21cab7c2-5aad-4b18-afde-1e2eb6928330"
 >
 </ReqRef><ReqRef
  Id="707ab5a2-317f-45c9-89ed-217261c6853a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1f922e2b-48a3-4f42-8f33-19f80ead3230"
 >
 </ReqRef><ReqRef
  Id="9760b087-0192-4d33-a84a-4e7678ab8e37"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a852fbac-bd63-469e-9e6a-321d71857f1f"
 >
 </ReqRef><ReqRef
  Id="d135c1cd-b62c-406a-95ab-1bfd691e1653"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e14dfc01-e82d-42ae-995e-00620ba49f7e"
 >
 </ReqRef><ReqRef
  Id="bee21e04-9e34-4b84-aa41-a4957a8dcb71"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="54231e67-e13e-4e77-bcd7-30133563c8e8"
 >
 </ReqRef><ReqRef
  Id="053912bd-a061-43ec-b52b-3ba9cd8dfc8b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bd72dee4-44f9-4015-9c42-637aec44d04b"
 >
 </ReqRef><ReqRef
  Id="9185fb46-775d-4cef-9c17-801d7b615a1c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cc0ea3a4-e603-4144-a86b-de7a24a5c57f"
 >
 </ReqRef><ReqRef
  Id="3b45e80b-a449-42bb-99ca-f5c456e19e88"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="25775c1c-2b7f-4a12-9ae0-73acb446bbac"
 >
 </ReqRef><ReqRef
  Id="39d12626-e17b-4eb2-bc01-a6489eea87e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="329fa79c-5527-4dfd-b886-78aa166546d1"
 >
 </ReqRef><ReqRef
  Id="0b11d351-f4d6-4885-a839-fd32a3c44518"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1aa7fcd0-44b3-4038-8a11-690dc4576a1f"
 >
 </ReqRef><ReqRef
  Id="e16301ba-d9c2-4fd8-9fd8-0b603b157f8f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e1926dfe-f42d-4862-83b5-276535ff4c44"
 >
 </ReqRef><ReqRef
  Id="86beb9b7-fb95-4f76-9905-f06c23fc5bde"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3eb31b2c-012a-4071-9183-8e41264fc91c"
 >
 </ReqRef><ReqRef
  Id="4bfe23d7-61e5-4f3f-9bb4-d5fb75fc444b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f92c36c0-e883-41ff-91b8-bf24d83a5b1c"
 >
 </ReqRef><ReqRef
  Id="92725790-baa9-4e3f-8eb5-c98f2fc4a4ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c3e28ac9-1145-4b53-b623-10bf4ac43e11"
 >
 </ReqRef><ReqRef
  Id="fbdcb28a-c055-45bb-b4c1-a01bea9d6381"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0baa4f88-9742-4f81-a087-100c37d65624"
 >
 </ReqRef><ReqRef
  Id="d0cbfbce-4629-4a24-99d8-d7e0e8876516"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="466c45c8-b178-47eb-be31-927197f030ab"
 >
 </ReqRef><ReqRef
  Id="fc1e9309-39da-4f10-9e92-f8cd8cc291c4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f8773ed-a091-4574-a097-10c6cb1b02ef"
 >
 </ReqRef><ReqRef
  Id="c8dfa8cf-6c66-477a-8bfe-19933933952a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1cbdc1d6-7c39-424f-a112-674486b8ba0c"
 >
 </ReqRef><ReqRef
  Id="6edf9ef8-827e-491f-9cf9-57b74e4cd982"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="37adade7-4b04-4eb0-ad99-e2e650d83b46"
 >
 </ReqRef><ReqRef
  Id="3cebe2c9-7f92-4bcc-bee0-8d7eeea8c4ec"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cb1668f5-555a-41c9-9615-2d6a6f954603"
 >
 </ReqRef><ReqRef
  Id="a931d562-5efa-4a29-8d7a-1dd02becb4ce"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f3493dee-b93d-4acf-88a6-d63ed234f490"
 >
 </ReqRef><ReqRef
  Id="08dc72eb-ecb2-41b1-83d2-b41c73552c0e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="230ba0ea-5f38-4ac9-8aee-09a90f01b6d2"
 >
 </ReqRef><ReqRef
  Id="56c38799-4919-4c9f-b8b3-7124f2eb4b68"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="de657e5f-4503-4793-a12c-bcece1dca794"
 >
 </ReqRef><ReqRef
  Id="d9b47b3d-166e-4da8-8d02-22873b75a4c0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d35cdf3-10e9-408f-b11e-06dbb21ef781"
 >
 </ReqRef><ReqRef
  Id="71a36b95-cdea-42d1-a0ae-e280dd577887"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88741a1f-628f-4ae9-87ca-aaa81804b77d"
 >
 </ReqRef><ReqRef
  Id="d08d85e7-45e2-4342-84f8-a39335d02388"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="031b742a-e371-4790-9d4e-ed4c41b3f4da"
 >
 </ReqRef><ReqRef
  Id="17f6811a-7a8d-4f41-8498-e029bc8af7ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="550b22e9-be93-4737-8145-9b8ae0a9e0e3"
 >
 </ReqRef><ReqRef
  Id="0479c97d-7d3a-4a73-8a4d-ab1a35d677fc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="307c0cb1-ecf3-4c1b-8596-51c5c38f0737"
 >
 </ReqRef><ReqRef
  Id="87af3dac-1ee2-462a-8c96-a5e5250c3fcc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f81ed3c5-80da-4e78-a8ad-6e7b8a2bf329"
 >
 </ReqRef><ReqRef
  Id="f9e113f1-d592-489b-9eff-d8ebeb91e758"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="df4e0514-a70b-4e4c-8cbf-89aa0728b4cd"
 >
 </ReqRef><ReqRef
  Id="daf0fbd3-894f-4c05-b6e4-836f21d1a7bb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ea06b87d-c72a-4c0e-a304-4e9c66dca0fb"
 >
 </ReqRef><Comment>Creates a new NationalValues structure value from the received packet.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message"
  Name="Packet"
+ Guid="e62ecd1d-56cd-44f1-b01c-5208db3510ec"
 >
 </Parameter><Parameter
  Type="Messages.NID_C"
  Name="NID_C"
+ Guid="5f8009a4-5898-45d8-ac3b-bef69d574398"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="aeac79be-36aa-4c26-8c2f-cd1ed795aee9"
 >
 <Expression>Kernel.NationalValues.NationalValues
 {
@@ -1369,157 +1637,224 @@
  Type="Default.BaseTypes.Speed"
  Implemented="TRUE"
  Name="OverrideRelatedSpeedRestrictions"
+ Guid="7154247b-2d20-43d1-958a-d089b9c4ce39"
 >
 <ReqRef
  Id="740a2050-4496-4fb8-9389-3250365d206a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ddba30b9-4607-414c-9211-83906123fc82"
 >
 </ReqRef><ReqRef
  Id="4ffc9c73-6c94-446a-8dc8-d6d9277102e2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1229262b-a2c1-4b5d-822f-a00254ef191d"
 >
 </ReqRef><ReqRef
  Id="4ffc9c73-6c94-446a-8dc8-d6d9277102e2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a6660c6b-65fb-425f-b7f7-81c56ccedfe5"
 >
 </ReqRef><ReqRef
  Id="bfa09769-fb03-456f-b92b-14ab4cf7977b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3a3b9acf-62e8-4158-98f3-f3b48bcbe51b"
 >
 </ReqRef><ReqRef
  Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="16570061-16ee-400c-9097-90998953ca6b"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="8855b02e-2f8e-4eb7-b474-c50fca0f00ab"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="NationalValuesAvailable"
+ Guid="365eaf43-8d38-477c-b38b-f76886205404"
 >
 <PreConditions>
-<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition><PreCondition>Kernel.HandleModeChange in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
+<PreCondition
+ Guid="3d5a36d0-595f-42e5-a36a-49a44199a640"
+>Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition><PreCondition
+ Guid="97ff3cda-e064-42fd-9ef4-2561e441b7cc"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
 <Expression>Kernel.NationalValues.ApplicableNationalValues.Value.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive</Expression>
 </Case><Case
  Name="DefaultValue"
+ Guid="10e22cc9-fc2e-4997-8935-445d4869c0ed"
 >
 <PreConditions>
-<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition><PreCondition>Kernel.HandleModeChange in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
+<PreCondition
+ Guid="6fe49ff5-1abc-44f8-9fbe-0809314bf327"
+>Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition><PreCondition
+ Guid="fdd71851-17b9-4fca-940a-4c6865621452"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
 <Expression>Kernel.NationalValues.DefaultValues.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive</Expression>
 </Case><Case
  Name="OverrideNotActive"
+ Guid="926d0bc3-585c-4bd1-9c29-04a3a0526a09"
 >
 <PreConditions>
-<PreCondition>Kernel.HandleModeChange not in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
+<PreCondition
+ Guid="14b28a32-c7d1-4f6a-9dfa-7147e1dbf61f"
+>Kernel.HandleModeChange not in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Implemented="TRUE"
  Name="A_MAXREDADH"
+ Guid="237c959b-92b5-460e-891a-e132ba211983"
 >
 <ReqRef
  Id="efbd6139-0aa7-45a3-b746-fbb16fead767"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ddf9390-704f-4260-bacf-a47ac43fa9f9"
 >
 </ReqRef><ReqRef
  Id="86beb9b7-fb95-4f76-9905-f06c23fc5bde"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f4f5a4f8-856e-48d1-b4a7-eceba10af70f"
 >
 </ReqRef><ReqRef
  Id="4bfe23d7-61e5-4f3f-9bb4-d5fb75fc444b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6da05f05-9e67-45cc-9e74-d74451ccbe04"
 >
 </ReqRef><ReqRef
  Id="92725790-baa9-4e3f-8eb5-c98f2fc4a4ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="503d056a-7e38-4880-a19f-f77f4f0fcb49"
 >
 </ReqRef><ReqRef
  Id="c99601f4-d6ed-4f84-988c-9fbc856fdb87"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="87b979e1-9f0f-4b72-8da5-e0857c22487a"
 >
 </ReqRef><ReqRef
  Id="1ea1fcd0-0483-4f31-9e4e-972784b19f91"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3e639d0a-6a7a-463b-9f04-692fc3b3f84f"
 >
 </ReqRef><ReqRef
  Id="6f5803a9-c056-47a1-9fd1-1c160eb10885"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7e1ba5d3-f3ca-48f0-9c71-8ecec8d49c1e"
 >
 </ReqRef><ReqRef
  Id="66b1a76d-7680-41c7-a08d-7daf6f301b1d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dc667702-1082-48a5-8fe1-14fcc2b1ee97"
 >
 </ReqRef><ReqRef
  Id="f3bcff62-12ff-4959-a7b5-1a7089516acb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b09f7a93-024c-43fa-b613-09512435ea28"
 >
 </ReqRef><ReqRef
  Id="8ac52d71-a6bb-4f68-876a-983f24037001"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7ffc18c8-ee3c-401e-a2c9-dc9c904cb5fb"
 >
 </ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="FreightTrain_NV"
+ Guid="bdbd8d1a-17a3-4d19-becd-986918759ee6"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.Value.BrakePosition in [Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP,Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition><PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="c74660cf-9016-4488-aff2-22f1b3e04e9b"
+>Kernel.TrainData.TrainData.Value.BrakePosition in [Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP,Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition><PreCondition
+ Guid="c36d932b-6fb7-4575-b5d8-204440e0d288"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3</Expression>
 </Case><Case
  Name="FreightTrain_Default"
+ Guid="e7f2cab3-4a13-46c6-8b2e-d1e9c215e2e0"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.Value.BrakePosition in [Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP,Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition></PreConditions>
+<PreCondition
+ Guid="ec044d5e-b1aa-40e9-b086-ee870ec96593"
+>Kernel.TrainData.TrainData.Value.BrakePosition in [Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP,Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition></PreConditions>
 <Expression>DefaultValues.MaxDecelValueUnderReducedAdhesionCond3</Expression>
 </Case><Case
  Name="PassengerTrainWithBrakesIndependentFromWheelRailAdhesion_NV"
+ Guid="2c3f0be4-1a9f-47cd-a3cb-abf9dcec6566"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition>Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition><PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="62e0ee78-f62c-40f0-8088-bcee31304ad7"
+>Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
+ Guid="5891c969-d31e-43b7-92a0-bb72d17d9fe0"
+>Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition><PreCondition
+ Guid="df7504cc-63f7-471f-94bb-9497d55a6b23"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond1</Expression>
 </Case><Case
  Name="PassengerTrainWithBrakesIndependentFromWheelRailAdhesion_Default"
+ Guid="d9ce2341-cca7-4673-b51a-046e261bad26"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition>Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition></PreConditions>
+<PreCondition
+ Guid="d29a5b14-527a-4849-9999-53b52218c701"
+>Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
+ Guid="b1aac6b3-1fa5-47df-aae0-287baecf0607"
+>Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition></PreConditions>
 <Expression>DefaultValues.MaxDecelValueUnderReducedAdhesionCond1</Expression>
 </Case><Case
  Name="PassengerTrainWithoutBrakesIndependentFromWheelRailAdhesion_NV"
+ Guid="d8eb2910-2216-4652-aed1-93de83505dd2"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition>NOT Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition><PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="b0e1e819-ae1e-47aa-b0f4-05f1cf67d2c7"
+>Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
+ Guid="0aae850b-97c9-46c9-a0d2-a0f698d84d30"
+>NOT Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition><PreCondition
+ Guid="856c721e-e6ec-4e26-a4c6-5fe4817c460e"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond2</Expression>
 </Case><Case
  Name="PassengerTrainWithoutBrakesIndependentFromWheelRailAdhesion_Default"
+ Guid="d2a0ba00-6ba4-432d-8de8-1cf1cc2ce869"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition>NOT Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition></PreConditions>
+<PreCondition
+ Guid="38a5768c-d031-45e0-b83c-b27f068618a9"
+>Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
+ Guid="818c6748-3268-4671-947e-4d911770f422"
+>NOT Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition></PreConditions>
 <Expression>DefaultValues.MaxDecelValueUnderReducedAdhesionCond2</Expression>
 </Case></Cases>
 </Function><Function
  Type="CorFactorKt"
  Implemented="TRUE"
  Name="KtResolution"
+ Guid="a5aa8704-838e-4360-8b93-eeedaafe47ed"
 >
 <ReqRef
  Id="0479c97d-7d3a-4a73-8a4d-ab1a35d677fc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="24b20ca6-8f2d-46c1-a2b7-952cf04ec9ab"
 >
 </ReqRef><Comment>Computes the value of the correction factor Kt from the value provided by the trackside.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.M_NVKTINT"
  Name="KtValue"
+ Guid="efe5228d-ef82-451e-b347-7afa2f2fc2c0"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="9263c87f-d094-4585-bb2f-cfd5639192b5"
 >
 <Expression>CorFactorKt ( 0.05 * KtValue )</Expression>
 </Case></Cases>
@@ -1527,25 +1862,30 @@
  Type="WeightFactor"
  Implemented="TRUE"
  Name="WeightFactResolution"
+ Guid="96d979f0-6cb7-4c35-aa67-6efa84aef151"
 >
 <ReqRef
  Id="87af3dac-1ee2-462a-8c96-a5e5250c3fcc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4db08152-6028-4c57-9dce-8167e8afe90a"
 >
 </ReqRef><ReqRef
  Id="f9e113f1-d592-489b-9eff-d8ebeb91e758"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c34f01f0-bb66-4e8d-8e93-77b0a4ccad35"
 >
 </ReqRef><Comment>Computes the value of the weighting factor for available wheel/rail adhesion from the value provided by the trackside.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.M_NVAVADH"
  Name="VadhValue"
+ Guid="e65a2527-e303-43a8-911c-5b0a70d5df1e"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="cd4c07c9-5737-4c3c-869b-d222d5af1aa7"
 >
 <Expression>WeightFactor ( 0.05 * VadhValue )</Expression>
 </Case></Cases>
@@ -1553,21 +1893,25 @@
  Type="CorFactorKr"
  Implemented="TRUE"
  Name="KrResolution"
+ Guid="9cf61d7c-6ca1-4e8f-a56b-a9fe1ba70f8f"
 >
 <ReqRef
  Id="17f6811a-7a8d-4f41-8498-e029bc8af7ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86f4c3e7-03b9-49dd-b06e-e953912c71b6"
 >
 </ReqRef><Comment>Computes the value of the correction factor Kr from the value provided by the trackside.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.M_NVKRINT"
  Name="KrValue"
+ Guid="e0761fdf-7a73-4a85-88c2-559814ee433a"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="2736e6d6-89a6-4bda-a705-e1d5c3351d13"
 >
 <Expression>CorFactorKr ( 0.05 * KrValue )</Expression>
 </Case></Cases>
@@ -1575,21 +1919,25 @@
  Type="CorFactorKv"
  Implemented="TRUE"
  Name="KvResolution"
+ Guid="3f454256-a049-4173-bc9c-201accccf5bf"
 >
 <ReqRef
  Id="87af3dac-1ee2-462a-8c96-a5e5250c3fcc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="923cc442-45d5-41c8-8843-6621112f8e33"
 >
 </ReqRef><Comment>Computes the value of the correction factor Kv from the value provided by the trackside.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.M_NVKVINT"
  Name="KvValue"
+ Guid="5bf6cb37-e6e2-46ae-bcdd-1ea009716c1c"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="a1cc0622-6b9d-407a-b1fb-57b51b0f11e6"
 >
 <Expression>CorFactorKv ( 0.02 * KvValue )</Expression>
 </Case></Cases>
@@ -1597,182 +1945,267 @@
  Type="CorFactorKr"
  Implemented="TRUE"
  Name="Kr_intFunction"
+ Guid="c1efc677-7c29-4ead-8ab2-0b50e84e74da"
 >
 <ReqRef
  Id="80a66105-c23f-482c-b740-9e83ccd82aa5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c2b03b98-5d5c-4f5d-bb51-b6044ec85167"
 >
 </ReqRef><ReqRef
  Id="2abf254f-b4a4-4636-8c8e-99996cd4851e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a3165ba0-ad25-42e6-9bbd-10c131d4f413"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="KrIntValueSet"
  Name="aKr_int"
+ Guid="11dc3fba-3e8a-4661-a871-92eb53ccdd9e"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Length"
  Name="L"
+ Guid="ba4df01d-26e1-4f92-bb8a-ed76032a386d"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="ICF0"
+ Guid="bef3488f-d056-49bd-a6dd-438885b88b95"
 >
 <PreConditions>
-<PreCondition>L &lt;= aKr_int.Val1.LengthStep </PreCondition><PreCondition>aKr_int.Val0.LengthStep &lt;= L</PreCondition></PreConditions>
+<PreCondition
+ Guid="77eaf87e-9924-4c73-953f-0ae657dd7da3"
+>L &lt;= aKr_int.Val1.LengthStep </PreCondition><PreCondition
+ Guid="58090d65-2e92-4e85-8fd3-0bf365cf559f"
+>aKr_int.Val0.LengthStep &lt;= L</PreCondition></PreConditions>
 <Expression>aKr_int.Val0.Value</Expression>
 </Case><Case
  Name="ICF1"
+ Guid="9c69f792-aaeb-4498-8b79-3b1236eefc56"
 >
 <PreConditions>
-<PreCondition>aKr_int.Val1.LengthStep &lt; L</PreCondition><PreCondition>L &lt;= aKr_int.Val2.LengthStep </PreCondition></PreConditions>
+<PreCondition
+ Guid="3322d713-5dd0-49fb-a7cb-1eb57dd154f5"
+>aKr_int.Val1.LengthStep &lt; L</PreCondition><PreCondition
+ Guid="adabfd83-5b3f-4193-820b-af596e085b8d"
+>L &lt;= aKr_int.Val2.LengthStep </PreCondition></PreConditions>
 <Expression>aKr_int.Val1.Value</Expression>
 </Case><Case
  Name="ICF2"
+ Guid="53473ce4-1872-4163-a298-2b7b67e6169b"
 >
 <PreConditions>
-<PreCondition>aKr_int.Val2.LengthStep &lt; L</PreCondition><PreCondition>L &lt;= aKr_int.Val3.LengthStep </PreCondition></PreConditions>
+<PreCondition
+ Guid="74cecbba-bdcc-44ec-96b2-fdf757570e43"
+>aKr_int.Val2.LengthStep &lt; L</PreCondition><PreCondition
+ Guid="eaa4f7b4-8333-4864-bd6e-52fdb6ca517b"
+>L &lt;= aKr_int.Val3.LengthStep </PreCondition></PreConditions>
 <Expression>aKr_int.Val2.Value</Expression>
 </Case><Case
  Name="ICF3"
+ Guid="f660a15c-796b-41b8-8fd4-241dcc9dcc9b"
 >
 <PreConditions>
-<PreCondition>aKr_int.Val3.LengthStep &lt; L</PreCondition><PreCondition>L &lt;= aKr_int.Val4.LengthStep </PreCondition></PreConditions>
+<PreCondition
+ Guid="3195520b-a9d4-411b-b313-0e1a125cf9be"
+>aKr_int.Val3.LengthStep &lt; L</PreCondition><PreCondition
+ Guid="041016f8-ea27-47de-a311-8b208339366f"
+>L &lt;= aKr_int.Val4.LengthStep </PreCondition></PreConditions>
 <Expression>aKr_int.Val3.Value</Expression>
 </Case><Case
  Name="ICF4"
+ Guid="4cd839aa-08f2-40aa-9348-9b4edd14e1fc"
 >
 <PreConditions>
-<PreCondition>aKr_int.Val4.LengthStep &lt; L</PreCondition></PreConditions>
+<PreCondition
+ Guid="61f9fc18-388e-4b2a-b57d-48b07e0e5fcd"
+>aKr_int.Val4.LengthStep &lt; L</PreCondition></PreConditions>
 <Expression>aKr_int.Val4.Value</Expression>
 </Case></Cases>
 </Function><Function
  Type="CorFactorKv"
  Implemented="TRUE"
  Name="Kv_intFunction_FreightTrains"
+ Guid="c3afb732-3883-4328-b268-a3d0e169767d"
 >
 <ReqRef
  Id="5ee1dd50-3153-404e-a1f7-2980262f157e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0f622719-adb4-464a-a2d2-fd3b43f1ab35"
 >
 </ReqRef><ReqRef
  Id="2abf254f-b4a4-4636-8c8e-99996cd4851e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b9dbb08b-4b23-4967-96ba-1746d32ecc48"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="KvIntValueSet_FreightTrain"
  Name="aKv_int"
+ Guid="8937d5bf-fea1-4f6b-8062-3fd01d6dce55"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Speed"
  Name="V"
+ Guid="5b5d2694-5730-4fa6-8c9f-6488806c5b2c"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="ICF0"
+ Guid="6eeb2c85-b5d2-42af-8867-e9f5566d8383"
 >
 <PreConditions>
-<PreCondition>V &lt;= aKv_int.Val1.SpeedStep</PreCondition><PreCondition>aKv_int.Val0.SpeedStep &lt;= V</PreCondition></PreConditions>
+<PreCondition
+ Guid="2c2cd27e-278b-4024-a335-9322b7685adf"
+>V &lt;= aKv_int.Val1.SpeedStep</PreCondition><PreCondition
+ Guid="d14f5a85-c8b2-4e76-99ea-95a06386f2fa"
+>aKv_int.Val0.SpeedStep &lt;= V</PreCondition></PreConditions>
 <Expression>aKv_int.Val0.Value</Expression>
 </Case><Case
  Name="ICF1"
+ Guid="fe503ca7-9936-4aab-b485-dd52741c543e"
 >
 <PreConditions>
-<PreCondition>aKv_int.Val1.SpeedStep &lt; V</PreCondition><PreCondition>V &lt;= aKv_int.Val2.SpeedStep</PreCondition></PreConditions>
+<PreCondition
+ Guid="aa8d357c-e28e-4962-be9d-47bed705f079"
+>aKv_int.Val1.SpeedStep &lt; V</PreCondition><PreCondition
+ Guid="c7823c57-3123-4f08-bdc6-23d9c7a0daca"
+>V &lt;= aKv_int.Val2.SpeedStep</PreCondition></PreConditions>
 <Expression>aKv_int.Val1.Value</Expression>
 </Case><Case
  Name="ICF2"
+ Guid="10cae199-edbd-421e-b0fd-96bbd5a6926e"
 >
 <PreConditions>
-<PreCondition>aKv_int.Val2.SpeedStep &lt; V</PreCondition><PreCondition>V &lt;= aKv_int.Val3.SpeedStep</PreCondition></PreConditions>
+<PreCondition
+ Guid="775bd5a1-67dd-4ab5-8c23-27df70686fbc"
+>aKv_int.Val2.SpeedStep &lt; V</PreCondition><PreCondition
+ Guid="a9bf73fd-c764-4583-8f67-769f26753935"
+>V &lt;= aKv_int.Val3.SpeedStep</PreCondition></PreConditions>
 <Expression>aKv_int.Val2.Value</Expression>
 </Case><Case
  Name="ICF3"
+ Guid="e07d0680-f338-4a55-9e6c-9da20d46ea0c"
 >
 <PreConditions>
-<PreCondition>aKv_int.Val3.SpeedStep &lt; V</PreCondition><PreCondition>V &lt;= aKv_int.Val4.SpeedStep</PreCondition></PreConditions>
+<PreCondition
+ Guid="0d3050c2-91d0-4d0f-b1e9-31abae3d5b5d"
+>aKv_int.Val3.SpeedStep &lt; V</PreCondition><PreCondition
+ Guid="fa9dd5ae-0c4b-4419-a02a-4980d52b7ae1"
+>V &lt;= aKv_int.Val4.SpeedStep</PreCondition></PreConditions>
 <Expression>aKv_int.Val3.Value</Expression>
 </Case><Case
  Name="ICF4"
+ Guid="55d07fd1-63f7-4a7a-984b-077a5e3f5c0c"
 >
 <PreConditions>
-<PreCondition>aKv_int.Val4.SpeedStep &lt; V</PreCondition></PreConditions>
+<PreCondition
+ Guid="4835c956-c690-4ead-be8b-9ae6a338739a"
+>aKv_int.Val4.SpeedStep &lt; V</PreCondition></PreConditions>
 <Expression>aKv_int.Val4.Value</Expression>
 </Case></Cases>
 </Function><Function
  Type="CorFactorKv"
  Implemented="TRUE"
  Name="Kv_intFunction_PassengerTrains"
+ Guid="4c368072-eb9c-46f7-a37d-e5825a53c8d0"
 >
 <ReqRef
  Id="5ee1dd50-3153-404e-a1f7-2980262f157e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ed3c63f-ebf1-4af8-b5fa-1d0a65ec33aa"
 >
 </ReqRef><ReqRef
  Id="2abf254f-b4a4-4636-8c8e-99996cd4851e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c7da0dab-4e7a-4a34-818f-326176fccbc4"
 >
 </ReqRef><ReqRef
  Id="32b5ae5d-7b60-4ca2-9931-ae73368cb0ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4bf52e43-db72-4051-a19c-e73b946b25f5"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="KvIntValueSet_PassengerTrain"
  Name="aKv_int"
+ Guid="987b3fdd-4cf7-4e18-b912-70b13b27aa83"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Speed"
  Name="V"
+ Guid="b2177216-a250-4bc7-8f72-a431a66b0f25"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="ICF0"
+ Guid="eac97b40-80a9-4d10-93f9-0b7375537e9f"
 >
 <PreConditions>
-<PreCondition>V &lt;= aKv_int.Val1.SpeedStep</PreCondition><PreCondition>aKv_int.Val0.SpeedStep &lt;= V</PreCondition></PreConditions>
+<PreCondition
+ Guid="5bf2f755-ce83-45c4-9687-e39c26ffd26a"
+>V &lt;= aKv_int.Val1.SpeedStep</PreCondition><PreCondition
+ Guid="8eac0ead-e3c6-4e84-ae89-18f2fd6daf17"
+>aKv_int.Val0.SpeedStep &lt;= V</PreCondition></PreConditions>
 <Expression>Kv_intValueFunction ( A_P12 =&gt; aKv_int.A_NVP12,
                                   A_P23 =&gt; aKv_int.A_NVP23,
                                   ValA =&gt; aKv_int.Val0.ValueA,
                                   ValB =&gt; aKv_int.Val0.ValueB )</Expression>
 </Case><Case
  Name="ICF1"
+ Guid="d6ba0108-e5e7-41b5-985c-4f75b9b467fd"
 >
 <PreConditions>
-<PreCondition>aKv_int.Val1.SpeedStep &lt; V</PreCondition><PreCondition>V &lt;= aKv_int.Val2.SpeedStep</PreCondition></PreConditions>
+<PreCondition
+ Guid="ab57d238-dcff-4fe5-b602-6d0b284e78bc"
+>aKv_int.Val1.SpeedStep &lt; V</PreCondition><PreCondition
+ Guid="51f180b8-5f17-4fd8-bb42-c52ac3ef1c31"
+>V &lt;= aKv_int.Val2.SpeedStep</PreCondition></PreConditions>
 <Expression>Kv_intValueFunction ( A_P12 =&gt; aKv_int.A_NVP12,
                                   A_P23 =&gt; aKv_int.A_NVP23,
                                   ValA =&gt; aKv_int.Val1.ValueA,
                                   ValB =&gt; aKv_int.Val1.ValueB )</Expression>
 </Case><Case
  Name="ICF2"
+ Guid="d5b45b1b-9aee-473f-8339-29ba559f5699"
 >
 <PreConditions>
-<PreCondition>aKv_int.Val2.SpeedStep &lt; V</PreCondition><PreCondition>V &lt;= aKv_int.Val3.SpeedStep</PreCondition></PreConditions>
+<PreCondition
+ Guid="f7f69d4b-c5a8-4ae4-83cf-f7f6edb33205"
+>aKv_int.Val2.SpeedStep &lt; V</PreCondition><PreCondition
+ Guid="22f5f121-0d63-4b44-8ab0-723e13b01d7a"
+>V &lt;= aKv_int.Val3.SpeedStep</PreCondition></PreConditions>
 <Expression>Kv_intValueFunction ( A_P12 =&gt; aKv_int.A_NVP12,
                                   A_P23 =&gt; aKv_int.A_NVP23,
                                   ValA =&gt; aKv_int.Val2.ValueA,
                                   ValB =&gt; aKv_int.Val2.ValueB )</Expression>
 </Case><Case
  Name="ICF3"
+ Guid="4d7fec6d-3c66-42e1-808c-5c6b77015a1d"
 >
 <PreConditions>
-<PreCondition>aKv_int.Val3.SpeedStep &lt; V</PreCondition><PreCondition>V &lt;= aKv_int.Val4.SpeedStep</PreCondition></PreConditions>
+<PreCondition
+ Guid="10f555af-0163-4aaf-a2a0-9650223763a7"
+>aKv_int.Val3.SpeedStep &lt; V</PreCondition><PreCondition
+ Guid="84772ea4-a723-4a34-a9a7-856581fb8be1"
+>V &lt;= aKv_int.Val4.SpeedStep</PreCondition></PreConditions>
 <Expression>Kv_intValueFunction ( A_P12 =&gt; aKv_int.A_NVP12,
                                   A_P23 =&gt; aKv_int.A_NVP23,
                                   ValA =&gt; aKv_int.Val3.ValueA,
                                   ValB =&gt; aKv_int.Val3.ValueB )</Expression>
 </Case><Case
  Name="ICF4"
+ Guid="48ce1680-05bf-4c2d-925f-8c3dd0187c24"
 >
 <PreConditions>
-<PreCondition>aKv_int.Val4.SpeedStep &lt; V</PreCondition></PreConditions>
+<PreCondition
+ Guid="9fa9d722-072e-4dc3-9445-1eaca0094d3a"
+>aKv_int.Val4.SpeedStep &lt; V</PreCondition></PreConditions>
 <Expression>Kv_intValueFunction ( A_P12 =&gt; aKv_int.A_NVP12,
                                   A_P23 =&gt; aKv_int.A_NVP23,
                                   ValA =&gt; aKv_int.Val4.ValueA,
@@ -1782,52 +2215,67 @@
  Type="Default.BaseTypes.Acceleration"
  Implemented="TRUE"
  Name="Kv_intValueFunction"
+ Guid="fdb4ec03-c40a-476d-abcb-0656aa3f4e4e"
 >
 <ReqRef
  Id="32b5ae5d-7b60-4ca2-9931-ae73368cb0ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ad530afd-bf4e-47c1-9fda-268765cae607"
 >
 </ReqRef><ReqRef
  Id="6075b973-4525-49c2-96ff-bddef2c0a66f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb957d93-38c9-4e21-85e0-0a22bbc4375d"
 >
 </ReqRef><ReqRef
  Id="f6f3cae9-b149-4be8-8f9f-c25be457d939"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c73d3bac-607f-4f5f-bc81-39f5c5f89cb5"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Acceleration"
  Name="A_P12"
+ Guid="bbe5a04b-b108-4a7c-8514-a88636335a44"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Acceleration"
  Name="A_P23"
+ Guid="40a6a6e4-dcc2-4720-96a8-7cd477a1d978"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Acceleration"
  Name="ValA"
+ Guid="623184b0-a09b-42c4-99cd-5ad9c0c2a501"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Acceleration"
  Name="ValB"
+ Guid="96a06780-ada0-4d4b-93ab-a2d56e75e531"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="A_ebmax &lt;= AP_12"
+ Guid="7892db1b-4f59-4ed0-9a25-dee47db4c16f"
 >
 <PreConditions>
-<PreCondition>A_P12 &gt;= TrainData.BrakingParameters.A_ebmax()</PreCondition></PreConditions>
+<PreCondition
+ Guid="babb1c5e-ab27-4870-8aa7-a3f9c7e3ccd5"
+>A_P12 &gt;= TrainData.BrakingParameters.A_ebmax()</PreCondition></PreConditions>
 <Expression>ValA</Expression>
 </Case><Case
  Name="A_ebmax &gt;= A_P23"
+ Guid="e1f843e0-253e-4e0c-a925-bef8002fe864"
 >
 <PreConditions>
-<PreCondition>A_P23 &lt;= TrainData.BrakingParameters.A_ebmax()</PreCondition></PreConditions>
+<PreCondition
+ Guid="d6fe66a2-65bf-4439-bd2e-8d048171dd3d"
+>A_P23 &lt;= TrainData.BrakingParameters.A_ebmax()</PreCondition></PreConditions>
 <Expression>ValB</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="541c5db0-4ec6-4417-97e7-de4c74359602"
 >
 <Expression>ValA + ( TrainData.BrakingParameters.A_ebmax() - A_P12 ) / ( A_P23 - A_P12 ) * ( ValB-ValA )</Expression>
 </Case></Cases>
@@ -1835,67 +2283,93 @@
  Type="Default.BaseTypes.Acceleration"
  Implemented="TRUE"
  Name="Kv_int"
+ Guid="05acdecd-a454-458b-b41f-34b5eae0a54c"
 >
 <ReqRef
  Id="5ee1dd50-3153-404e-a1f7-2980262f157e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd6af1bc-e625-49e9-a33f-eaa1db8d8455"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="V"
+ Guid="5c7e96c1-5130-486e-b34f-c1485612c445"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="NV available, passenger train"
+ Guid="f4b06dca-02aa-4a06-877c-bfa3cc3690ef"
 >
 <PreConditions>
-<PreCondition>TrainData.TrainData.Value.BrakePosition == TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="1b966e7b-4628-49e9-a576-795207603422"
+>TrainData.TrainData.Value.BrakePosition == TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
+ Guid="94addf95-8a2a-440e-aab6-de5d081171b3"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>Kv_intFunction_PassengerTrains ( aKv_int =&gt; ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain, V =&gt; V )</Expression>
 </Case><Case
  Name="NV available, freight train"
+ Guid="f54d8bc0-02b3-4024-adfc-892e65a2b069"
 >
 <PreConditions>
-<PreCondition>TrainData.TrainData.Value.BrakePosition in [TrainData.BrakingParameters.BrakePositions.FreightTrainInP, TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition><PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="f84d530e-7734-4978-81a8-9d0fe1bde311"
+>TrainData.TrainData.Value.BrakePosition in [TrainData.BrakingParameters.BrakePositions.FreightTrainInP, TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition><PreCondition
+ Guid="85743eb1-5e8a-43de-8e42-fb02ba6b99ef"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>Kv_intFunction_FreightTrains ( aKv_int =&gt; ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain, V =&gt; V )</Expression>
 </Case><Case
  Name="No NV available, passenger train"
+ Guid="a4cedfc8-269a-4ff0-b413-ac8e92a74925"
 >
 <PreConditions>
-<PreCondition>TrainData.TrainData.Value.BrakePosition == TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition></PreConditions>
+<PreCondition
+ Guid="39e6caa1-a236-40d2-a2f1-4621a75b0da1"
+>TrainData.TrainData.Value.BrakePosition == TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition></PreConditions>
 <Expression>Kv_intFunction_PassengerTrains ( aKv_int =&gt; DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain, V =&gt; V )</Expression>
 </Case><Case
  Name="No NV available, freight train"
+ Guid="ac3d77be-a910-4871-8bcf-6d28e06d0056"
 >
 <PreConditions>
-<PreCondition>TrainData.TrainData.Value.BrakePosition in [TrainData.BrakingParameters.BrakePositions.FreightTrainInP, TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition></PreConditions>
+<PreCondition
+ Guid="79252463-5811-4e9f-bacd-b57425cedb4d"
+>TrainData.TrainData.Value.BrakePosition in [TrainData.BrakingParameters.BrakePositions.FreightTrainInP, TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition></PreConditions>
 <Expression>Kv_intFunction_FreightTrains ( aKv_int =&gt; DefaultValues.IntegratedCorrectionFactorKvInt_FreightTrain, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Implemented="TRUE"
  Name="Kr_int"
+ Guid="b80e7499-0cc1-49a7-aa23-21f2c2ce0caa"
 >
 <ReqRef
  Id="80a66105-c23f-482c-b740-9e83ccd82aa5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="82c0aaf5-610a-4688-aa13-548259970495"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Length"
  Name="L"
+ Guid="105ffb4c-5d02-4f0c-864c-a26535eacd3e"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="NV available"
+ Guid="404c4d20-dd9b-4332-a1e1-b71960af0b9c"
 >
 <PreConditions>
-<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="7db75a07-549f-48a2-af3b-211c8656b06e"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>Kr_intFunction ( aKr_int =&gt; ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt, L =&gt; L )</Expression>
 </Case><Case
  Name="No NV available"
+ Guid="5c55cb8d-e69e-458f-8bd6-2fbb0041d846"
 >
 <Expression>Kr_intFunction ( aKr_int =&gt; DefaultValues.IntegratedCorrectionFactorKrInt, L =&gt; L )</Expression>
 </Case></Cases>
@@ -1904,27 +2378,40 @@
  Cacheable="TRUE"
  Implemented="TRUE"
  Name="MaxDistInSRSpeedRestriction"
+ Guid="beff0cfe-7c2c-4583-b570-504c58d54f05"
 >
 <ReqRef
  Id="6f7286d5-47c8-4fc2-8fd3-ed4da2867417"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eb5a2366-15fb-479a-9f48-20c0a8d3cf50"
 >
 </ReqRef><Comment>Provides the speed restriction due to the maximum permitted distance to run in Staff Responsible mode.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="374fc8f7-0b0f-475f-a63e-0053de5a61aa"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Stopping required"
+ Guid="1d0a440f-d2a8-4126-875a-ebd4014ab524"
 >
 <PreConditions>
-<PreCondition>Distance &lt; ApplicableNationalValues.ApplicableDistance</PreCondition><PreCondition>ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode &lt;= Distance</PreCondition><PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition><PreCondition>Kernel.Mode == Mode.SR</PreCondition></PreConditions>
+<PreCondition
+ Guid="3c8e6d4c-7d8f-4e62-833e-dcbdb643906f"
+>Distance &lt; ApplicableNationalValues.ApplicableDistance</PreCondition><PreCondition
+ Guid="0cb8f8e9-a841-4bff-bbb0-a534c9774614"
+>ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode &lt;= Distance</PreCondition><PreCondition
+ Guid="9ac672a4-f130-4e84-8a0a-712cd3080e6b"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition><PreCondition
+ Guid="085f5adc-b43b-426c-90bb-1e23251bbef5"
+>Kernel.Mode == Mode.SR</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="No speed restriction"
+ Guid="b13ef6f3-58dc-4633-bdc2-d5328104e5f0"
 >
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
@@ -1933,20 +2420,26 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ComputationOfGUIIsEnabled"
+ Guid="ab169807-a12d-4115-8264-37e1959e3081"
 >
 <ReqRef
  Id="4a6a5396-38cf-4784-bd94-ba5c844bb58c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8533894c-673c-4d54-bbdf-78b59534da7e"
 >
 </ReqRef><Cases>
 <Case
  Name="NationalValues"
+ Guid="bc94fc99-7234-43fb-9a3e-d1c10cbbc101"
 >
 <PreConditions>
-<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="aa5bd5dd-1ce3-4977-b2da-111cc04d3b4e"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseGuidanceCurves == Messages.Q_NVGUIPERM.Yes</Expression>
 </Case><Case
  Name="DefaultValues"
+ Guid="abae21fc-3c0d-44ab-8963-5946ae86bf4d"
 >
 <Expression>Kernel.NationalValues.DefaultValues.PermToUseGuidanceCurves == Messages.Q_NVGUIPERM.Yes</Expression>
 </Case></Cases>
@@ -1955,20 +2448,26 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CompensationOfInaccuracyOfTheSpeedIsInhibited"
+ Guid="6f7633fb-73e5-4bcd-aa1e-af229e27501e"
 >
 <ReqRef
  Id="dfe813b0-9500-4f66-bdc1-50df0c88f0ca"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c83ce6d6-46b1-452b-adaf-52aa5261bf33"
 >
 </ReqRef><Cases>
 <Case
  Name="NationalValues"
+ Guid="7e79a92c-a2be-4cad-af3c-e69674b84aa6"
 >
 <PreConditions>
-<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="5829c109-7ddc-455d-8b9f-d97942937fcb"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</Expression>
 </Case><Case
  Name="DefaultValues"
+ Guid="03de849d-6080-448f-a377-81e2ef891307"
 >
 <Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</Expression>
 </Case></Cases>
@@ -1977,20 +2476,26 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ReleaseSpeed"
+ Guid="77f37105-9db6-48fc-9645-3f84a2f38e2a"
 >
 <ReqRef
  Id="84fba645-57ac-4105-828a-2d06de564e67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="963a4f47-3b16-4fce-84d9-f6ce3b001a46"
 >
 </ReqRef><Cases>
 <Case
  Name="NationalValues"
+ Guid="02a4b48d-4259-464e-8f73-0f5587887c26"
 >
 <PreConditions>
-<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="001aeaf4-3a2a-4dec-b295-b06db614cb99"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>ApplicableNationalValues.Value.ReleaseSpeed</Expression>
 </Case><Case
  Name="DefaultValues"
+ Guid="497a6443-159e-4f95-947c-20371aa4a8d7"
 >
 <Expression>DefaultValues.ReleaseSpeed</Expression>
 </Case></Cases>
@@ -1999,20 +2504,26 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="UseOfSBFeedbackIsPermitted"
+ Guid="7bc28764-7fb5-4345-9764-1130a4d5bb5c"
 >
 <ReqRef
  Id="a651727b-67a1-4e0c-99d6-89af31425c35"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="107fcc47-58a6-48b0-86ce-4fc5a73fd976"
 >
 </ReqRef><Cases>
 <Case
  Name="NationalValues"
+ Guid="a50453e8-e00d-4277-ab5d-eed72b01afff"
 >
 <PreConditions>
-<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="23adcbd6-175f-450b-abf2-6134351c71a3"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback == Messages.Q_NVSBFBPERM.Yes</Expression>
 </Case><Case
  Name="DefaultValues"
+ Guid="4efe5695-306f-4efb-9734-95fe7b45f1b3"
 >
 <Expression>Kernel.NationalValues.DefaultValues.PermToUseTheServiceBrakeFeedback == Messages.Q_NVSBFBPERM.Yes</Expression>
 </Case></Cases>
@@ -2020,30 +2531,40 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="ReleaseOfEBIsPermitted"
+ Guid="b9edb3fc-53c1-4267-86ab-8723bc511c5a"
 >
 <ReqRef
  Id="ec0c435b-0145-4656-99a6-3a16788797ff"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="caf1decf-26b8-4671-a9ac-fb85b6756eb0"
 >
 </ReqRef><Cases>
 <Case
  Name="NationalValues_Standstill"
+ Guid="779c4f9e-14ef-41b5-9896-f28f9f3d6f59"
 >
 <PreConditions>
-<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="076e8f62-4c7e-40a8-ad88-47cc8bd4416c"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill AND Odometry.EstimatedSpeed == 0.0</Expression>
 </Case><Case
  Name="NationalValues_SpeedSupervisionLimitIsNoLongerExceeded"
+ Guid="c42b9ca4-4e17-4e9c-8e6e-e9970071fd9c"
 >
 <PreConditions>
-<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="f7f7c12d-3963-40da-83ea-2d25e6986142"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Expression>
 </Case><Case
  Name="DefaultValues_Standstill"
+ Guid="1492cda9-b98a-41ed-a5e9-08df618081eb"
 >
 <Expression>Kernel.NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill AND Odometry.EstimatedSpeed == 0.0</Expression>
 </Case><Case
  Name="DefaultValues_SpeedSupervisionLimitIsNoLongerExceeded"
+ Guid="cb889c73-68c2-4ad3-8c17-9640a862ddaa"
 >
 <Expression>Kernel.NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Expression>
 </Case></Cases>
@@ -2052,20 +2573,26 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="UseOfSBIsInhibited"
+ Guid="7298972a-ac89-4157-9748-e85a3169fb05"
 >
 <ReqRef
  Id="0f223275-ff77-4025-a194-a347f5ef0542"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="554ae5f2-28c8-4673-b2cf-c5ce3332b28d"
 >
 </ReqRef><Cases>
 <Case
  Name="NationalValues"
+ Guid="c997c9fa-d93f-43fd-a275-a6d486580da9"
 >
 <PreConditions>
-<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="6d2ab883-b3bb-4a4d-87d1-f75f81a152ed"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>ApplicableNationalValues.Value.UseServiceBrakeInTargetSpeedMonitoring == Messages.Q_NVSBTSMPERM.No</Expression>
 </Case><Case
  Name="DefaultValues"
+ Guid="f0356af9-31a3-44aa-adda-d5cfb587104d"
 >
 <Expression>DefaultValues.UseServiceBrakeInTargetSpeedMonitoring == Messages.Q_NVSBTSMPERM.No</Expression>
 </Case></Cases>
@@ -2074,16 +2601,21 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="IntegratedCorrectionFactorForBrakeBuildUpTime"
+ Guid="58e29de2-38e6-4c37-984c-18341be74312"
 >
 <Cases>
 <Case
  Name="NationalValues"
+ Guid="c4dd9026-e44b-4b03-8758-29c55ca3f9c4"
 >
 <PreConditions>
-<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="44305a07-806e-4c0e-937c-65feef0ba006"
+>ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>ApplicableNationalValues.Value.IntegratedCorrectionFactorForBrakeBuildUpTime</Expression>
 </Case><Case
  Name="DefaultValues"
+ Guid="aab50b16-4841-45b9-98a1-b0f8800e95c9"
 >
 <Expression>DefaultValues.IntegratedCorrectionFactorForBrakeBuildUpTime</Expression>
 </Case></Cases>
@@ -2092,24 +2624,29 @@
 <Procedure
  Implemented="TRUE"
  Name="NationalValuesReceived"
+ Guid="7bd5ba33-cfc2-45cf-a2eb-7e3a8cef239f"
 >
 <ReqRef
  Id="bb94d1fa-9b3e-4389-bf7a-f04d1654005b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ca43c7d3-0947-4aea-bba7-f6a756b2f655"
 >
 </ReqRef><ReqRef
  Id="766f0274-5b6e-4050-a48d-226dccf68782"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0a392307-5d07-4f84-94a9-4e46dbb811fc"
 >
 </ReqRef><Comment>Determines if the received national values will be applicable immediately or not and assings the new value (created thanks to the function CreateNewNationalValues)  to the appropriate variable.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message"
  Name="Packet"
+ Guid="73c73be5-6790-4797-81da-79e7d0bf91e2"
 >
 </Parameter><Parameter
  Type="Messages.NID_C"
  Name="NID_C"
+ Guid="b6bb64be-41ab-4d1e-87cb-b24adec63416"
 >
 </Parameter></Parameters>
 <Rules>
@@ -2117,6 +2654,7 @@
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
  Name="Applicable"
+ Guid="80014809-036c-4c0f-a293-fe3c0fabda65"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -2125,11 +2663,20 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Applicable"
+ Guid="9ecfa029-358c-4e67-b280-b1c2c7c956bb"
 >
 <PreConditions>
-<PreCondition>Packet.D_VALIDNV == 0</PreCondition></PreConditions>
+<PreCondition
+ Guid="52fb718b-2072-4fd0-8a86-000eb368f226"
+>Packet.D_VALIDNV == 0</PreCondition></PreConditions>
 <Actions>
-<Action>ApplicableNationalValues &lt;- CreateNewNationalValues(Packet=&gt;Packet,NID_C=&gt;NID_C)</Action><Action>CreateKrIntValueSet ( InitialLength =&gt; Packet.L_NVKRINT, InitialValue =&gt; Packet.M_NVKRINT, Values =&gt; Packet.Sequence5, NV =&gt; ApplicableNationalValues.Value )</Action><Action>CreateKvIntValueSet
+<Action
+ Guid="d415aa33-b4bc-4ba1-8db5-dbd2e13601f3"
+>ApplicableNationalValues &lt;- CreateNewNationalValues(Packet=&gt;Packet,NID_C=&gt;NID_C)</Action><Action
+ Guid="35a81e6f-bd61-417f-a93e-59bc81782b23"
+>CreateKrIntValueSet ( InitialLength =&gt; Packet.L_NVKRINT, InitialValue =&gt; Packet.M_NVKRINT, Values =&gt; Packet.Sequence5, NV =&gt; ApplicableNationalValues.Value )</Action><Action
+ Guid="951447f5-5a2a-4c70-87ac-2b53e8353455"
+>CreateKvIntValueSet
 (
     Qualifier =&gt; Packet.Q_NVKINT,
     TrainType =&gt; Packet.Q_NVKVINTSET,
@@ -2147,6 +2694,7 @@
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
  Name="NotApplicable"
+ Guid="8527bf5f-6596-4006-9b1c-a5a86c6c0429"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -2155,12 +2703,21 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NotApplicable"
+ Guid="11bce0ae-9087-4ce0-8136-eac08be8036b"
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Packet.D_VALIDNV != 0</PreCondition></PreConditions>
+<PreCondition
+ Guid="1cb1d1f9-ebab-4653-95c1-777309bf5e80"
+>Packet.D_VALIDNV != 0</PreCondition></PreConditions>
 <Actions>
-<Action>NotApplicableNationalValues &lt;- CreateNewNationalValues(Packet=&gt;Packet,NID_C=&gt;NID_C)</Action><Action>CreateKrIntValueSet ( InitialLength =&gt; Packet.L_NVKRINT, InitialValue =&gt; Packet.M_NVKRINT, Values =&gt; Packet.Sequence5, NV =&gt; NotApplicableNationalValues.Value )</Action><Action>CreateKvIntValueSet
+<Action
+ Guid="bef218a7-7827-4209-8533-6afe05207b4c"
+>NotApplicableNationalValues &lt;- CreateNewNationalValues(Packet=&gt;Packet,NID_C=&gt;NID_C)</Action><Action
+ Guid="6dc15f14-398f-4870-b52d-fae96dcfed5b"
+>CreateKrIntValueSet ( InitialLength =&gt; Packet.L_NVKRINT, InitialValue =&gt; Packet.M_NVKRINT, Values =&gt; Packet.Sequence5, NV =&gt; NotApplicableNationalValues.Value )</Action><Action
+ Guid="86ba960f-d314-42e0-9c88-b0f8cdf9042a"
+>CreateKvIntValueSet
 (
     Qualifier =&gt; Packet.Q_NVKINT,
     TrainType =&gt; Packet.Q_NVKVINTSET,
@@ -2178,52 +2735,64 @@
 </Procedure><Procedure
  Implemented="TRUE"
  Name="CreateKvIntValueSet"
+ Guid="32022afb-5a87-4e39-9be6-8b72330e744e"
 >
 <ReqRef
  Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="41a66756-1091-4400-811d-10a29d021279"
 >
 </ReqRef><Comment>Fills the KrInt information from information received from the National Values.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.Q_NVKINT"
  Name="Qualifier"
+ Guid="037b3112-8a78-413d-b8d8-4b0ad07ca1fa"
 >
 </Parameter><Parameter
  Type="Messages.Q_NVKVINTSET"
  Name="TrainType"
+ Guid="70d11765-0d06-43d7-a420-36e50640bd46"
 >
 </Parameter><Parameter
  Type="Default.MessageTypes.Acceleration"
  Name="LowerLimit"
+ Guid="fad7c78e-69c1-44d3-b1f0-b648b164708f"
 >
 </Parameter><Parameter
  Type="Default.MessageTypes.Acceleration"
  Name="UpperLimit"
+ Guid="b2b7d463-f60e-4a1f-8127-f378e25bb6a4"
 >
 </Parameter><Parameter
  Type="Default.MessageTypes.Speed"
  Name="InitialSpeed"
+ Guid="03e1ab0f-3034-4064-8de3-3ef9745ad3a6"
 >
 </Parameter><Parameter
  Type="Messages.M_NVKVINT"
  Name="InitialValueA"
+ Guid="9d809812-4765-40dd-9e78-78e541ef718e"
 >
 </Parameter><Parameter
  Type="Messages.M_NVKVINT"
  Name="InitialValueB"
+ Guid="a7ca76b5-1846-4139-bc81-e63f42cf0d70"
 >
 </Parameter><Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Collection2"
  Name="Values"
+ Guid="ff18ff3a-dba8-4b5b-9c56-85693f94fb4c"
 >
 </Parameter><Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Collection4"
  Name="ValueSets"
+ Guid="9d08d313-e77f-45c6-acdc-04caa6b05b61"
 >
 </Parameter><Parameter
  Type="NationalDefaultData"
  Name="NV"
+ Guid="7ba74d48-4879-44a7-83a5-ec6dfae93e0f"
 >
 </Parameter></Parameters>
 <Rules>
@@ -2231,6 +2800,7 @@
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="CreateKvIntValueSet"
+ Guid="3e37f338-e384-4c10-acac-8008aa295343"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -2238,38 +2808,76 @@
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="CreateKvIntValueSet_PassengerTrains"
+ Guid="1e43d804-f9d7-4d4d-a15f-b9f65504559d"
 >
 <PreConditions>
-<PreCondition>TrainType == Messages.Q_NVKVINTSET.Conventional_passenger_trains</PreCondition><PreCondition>Qualifier == Messages.Q_NVKINT.Integrated_correction_factors_follow</PreCondition></PreConditions>
+<PreCondition
+ Guid="06329fdb-8319-4e26-93df-d6d9f07bad23"
+>TrainType == Messages.Q_NVKVINTSET.Conventional_passenger_trains</PreCondition><PreCondition
+ Guid="5aa5afe1-b745-4535-8c19-e317194a9866"
+>Qualifier == Messages.Q_NVKINT.Integrated_correction_factors_follow</PreCondition></PreConditions>
 <Actions>
-<Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( InitialSpeed, 5.0 )</Action><Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueA &lt;- KvResolution ( InitialValueA )</Action><Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueB &lt;- KvResolution ( InitialValueB )</Action><Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 &lt;- MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action><Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 &lt;- MessageTypes.DecelerationResolution ( UpperLimit, 0.05 )</Action><Action>APPLY CreateKvIntValue_PassengerTrain ( ValueA =&gt; X.M_NVKVINT_0, ValueB =&gt; X.M_NVKVINT_1, Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_PassengerTrain ) ON Values</Action><Action>APPLY CreateKvIntValue ( Value =&gt; X, NV =&gt; NV ) ON ValueSets</Action></Actions>
+<Action
+ Guid="c1becae3-6e1a-4170-a8a1-adf7cdd3d97c"
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( InitialSpeed, 5.0 )</Action><Action
+ Guid="fbcfffe9-d65d-4a12-b4da-4608a9c25682"
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueA &lt;- KvResolution ( InitialValueA )</Action><Action
+ Guid="2c634ac8-184a-4f4a-8a67-2b963e2cdd89"
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueB &lt;- KvResolution ( InitialValueB )</Action><Action
+ Guid="bc6d8ad7-3677-49d6-ad4c-38890c6c2606"
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 &lt;- MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action><Action
+ Guid="45cb5b6e-1d06-4c22-bad0-c8450095dc49"
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 &lt;- MessageTypes.DecelerationResolution ( UpperLimit, 0.05 )</Action><Action
+ Guid="cf10bb82-803b-4012-93a4-b757a457f689"
+>APPLY CreateKvIntValue_PassengerTrain ( ValueA =&gt; X.M_NVKVINT_0, ValueB =&gt; X.M_NVKVINT_1, Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_PassengerTrain ) ON Values</Action><Action
+ Guid="46f6439c-4704-4862-ae91-bdf83e5d0d57"
+>APPLY CreateKvIntValue ( Value =&gt; X, NV =&gt; NV ) ON ValueSets</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="CreateKvIntValueSet_FreightTrains"
+ Guid="59663646-e8b5-4759-93cf-2915c990e2b2"
 >
 <PreConditions>
-<PreCondition>TrainType == Messages.Q_NVKVINTSET.Freight_trains</PreCondition><PreCondition>Qualifier == Messages.Q_NVKINT.Integrated_correction_factors_follow</PreCondition></PreConditions>
+<PreCondition
+ Guid="919a2555-4dd3-4f9c-855c-a9c8796519d8"
+>TrainType == Messages.Q_NVKVINTSET.Freight_trains</PreCondition><PreCondition
+ Guid="6d8d8113-dd73-46a3-bd0d-d037cfeca73c"
+>Qualifier == Messages.Q_NVKINT.Integrated_correction_factors_follow</PreCondition></PreConditions>
 <Actions>
-<Action>NV.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( InitialSpeed, 5.0 )</Action><Action>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 &lt;- MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action><Action>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 &lt;- MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action><Action>APPLY CreateKvIntValue_FreightTrain ( Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_FreightTrain ) ON Values</Action><Action>APPLY CreateKvIntValue ( Value =&gt; X, NV =&gt; NV ) ON ValueSets</Action></Actions>
+<Action
+ Guid="cfcad485-7d5b-4383-be3a-c559310b907b"
+>NV.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( InitialSpeed, 5.0 )</Action><Action
+ Guid="d7907659-8ff3-4364-995f-f6e1feebb17b"
+>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 &lt;- MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action><Action
+ Guid="2581743e-39b1-48ee-b39f-b5a89eb251be"
+>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 &lt;- MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action><Action
+ Guid="0b7fff38-ac0a-4151-9f9d-07d541bde61c"
+>APPLY CreateKvIntValue_FreightTrain ( Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_FreightTrain ) ON Values</Action><Action
+ Guid="d2888a66-8da7-424b-8ee2-ccb4b8d35958"
+>APPLY CreateKvIntValue ( Value =&gt; X, NV =&gt; NV ) ON ValueSets</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  Name="CreateKvIntValue"
+ Guid="dcada860-e0bd-45ef-ab27-2c683e2449f8"
 >
 <ReqRef
  Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cf47aa4d-f4d3-4592-97ef-9d52dee16594"
 >
 </ReqRef><Comment>Fill the elements of KrInt (the first element was filled by the procedure CreateKrIntValueSet). The selected element to fill is the first element was has not yet been initialized (the value of LengthStep equals Infinity).</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure3"
  Name="Value"
+ Guid="faa7f9c1-70c0-4e34-a12f-c01b6dab8ad7"
 >
 </Parameter><Parameter
  Type="NationalDefaultData"
  Name="NV"
+ Guid="a143a52f-ff7f-4dde-8f0e-79938dc3c4be"
 >
 </Parameter></Parameters>
 <Rules>
@@ -2277,6 +2885,7 @@
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="CreateKvIntValue"
+ Guid="dc45a021-a9a8-4bf8-a3b3-dcac427944cf"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -2284,47 +2893,79 @@
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="CreateKvIntValueSet_PassengerTrains"
+ Guid="c2203fea-1127-47f1-8f3b-a728f4666f63"
 >
 <PreConditions>
-<PreCondition>Value.Q_NVKVINTSET == Messages.Q_NVKVINTSET.Conventional_passenger_trains</PreCondition></PreConditions>
+<PreCondition
+ Guid="34bb0503-8b99-4b19-8002-ba061392e9e4"
+>Value.Q_NVKVINTSET == Messages.Q_NVKVINTSET.Conventional_passenger_trains</PreCondition></PreConditions>
 <Actions>
-<Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( Value.V_NVKVINT, 5.0 )</Action><Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueA &lt;- KvResolution ( Value.M_NVKVINT_0 )</Action><Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueB &lt;- KvResolution ( Value.M_NVKVINT_1 )</Action><Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP12, 0.05 )</Action><Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP23, 0.05 )</Action><Action>APPLY CreateKvIntValue_PassengerTrain ( ValueA =&gt; X.M_NVKVINT_0, ValueB =&gt; X.M_NVKVINT_1, Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_PassengerTrain ) ON Value.Sequence3</Action></Actions>
+<Action
+ Guid="0aad9b94-a9e0-4bb6-b42c-5bf3abac6040"
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( Value.V_NVKVINT, 5.0 )</Action><Action
+ Guid="4d10563c-b59e-4804-ae09-22d07721b276"
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueA &lt;- KvResolution ( Value.M_NVKVINT_0 )</Action><Action
+ Guid="5d7394d8-aa09-4dab-8901-4bb657c592f5"
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueB &lt;- KvResolution ( Value.M_NVKVINT_1 )</Action><Action
+ Guid="85397132-e980-4289-911c-34475e387dba"
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP12, 0.05 )</Action><Action
+ Guid="dcf17b74-527b-4ea5-b8d4-eb2c3baeed9d"
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP23, 0.05 )</Action><Action
+ Guid="897f29cb-d63b-4a40-b33b-c2efd03314c8"
+>APPLY CreateKvIntValue_PassengerTrain ( ValueA =&gt; X.M_NVKVINT_0, ValueB =&gt; X.M_NVKVINT_1, Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_PassengerTrain ) ON Value.Sequence3</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="CreateKvIntValueSet_FreightTrains"
+ Guid="78f55658-1f84-478c-83ef-ff07d80194e8"
 >
 <PreConditions>
-<PreCondition>Value.Q_NVKVINTSET == Messages.Q_NVKVINTSET.Freight_trains</PreCondition></PreConditions>
+<PreCondition
+ Guid="9a5695d7-df3c-4438-b7d2-8150630c4f57"
+>Value.Q_NVKVINTSET == Messages.Q_NVKVINTSET.Freight_trains</PreCondition></PreConditions>
 <Actions>
-<Action>NV.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( Value.V_NVKVINT, 5.0 )</Action><Action>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP12, 0.05 )</Action><Action>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP23, 0.05 )</Action><Action>APPLY CreateKvIntValue_FreightTrain ( Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_FreightTrain ) ON Value.Sequence3</Action></Actions>
+<Action
+ Guid="a6f1abff-276f-405d-a44b-777620b05ffa"
+>NV.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( Value.V_NVKVINT, 5.0 )</Action><Action
+ Guid="eb7b31e9-85ff-47d9-8073-fc583564acff"
+>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP12, 0.05 )</Action><Action
+ Guid="4f6674c9-942f-4859-a24d-b3d2052d5f97"
+>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP23, 0.05 )</Action><Action
+ Guid="c6395a3d-341e-4c95-af1b-5174a6caf594"
+>APPLY CreateKvIntValue_FreightTrain ( Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_FreightTrain ) ON Value.Sequence3</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateKrIntValueSet"
+ Guid="2a057e6b-2b60-4e03-b5ee-0b2d6dd03ba7"
 >
 <ReqRef
  Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b899f213-ac93-4997-aab3-5642b048331a"
 >
 </ReqRef><Comment>Fills the KrInt information from information received from the National Values.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.L_NVKRINT"
  Name="InitialLength"
+ Guid="220d16d2-1a84-4a83-a9fd-a1acb5e84303"
 >
 </Parameter><Parameter
  Type="Messages.M_NVKRINT"
  Name="InitialValue"
+ Guid="f6f43344-0d7d-4761-8eec-1a60fb2f9038"
 >
 </Parameter><Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Collection5"
  Name="Values"
+ Guid="deec40c1-9f33-42e6-81af-03f1498fe670"
 >
 </Parameter><Parameter
  Type="NationalDefaultData"
  Name="NV"
+ Guid="bd582510-8859-40dd-ac5b-90cdd3e07b36"
 >
 </Parameter></Parameters>
 <Rules>
@@ -2332,6 +2973,7 @@
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="CreateKrIntValueSet"
+ Guid="b19a6569-bd47-4c46-a18b-3d284db1f955"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -2339,30 +2981,41 @@
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="CreateKrIntValueSet"
+ Guid="1f235501-722c-490f-a597-656de71dc6f6"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>NV.IntegratedCorrectionFactorKrInt.Val0.LengthStep &lt;-  KrIntLengthConverter ( InitialLength )</Action><Action>NV.IntegratedCorrectionFactorKrInt.Val0.Value &lt;- KrResolution ( InitialValue )</Action><Action>APPLY CreateKrIntValue ( Value =&gt; X, KrInt =&gt; NV.IntegratedCorrectionFactorKrInt ) ON Values</Action></Actions>
+<Action
+ Guid="33026411-a597-448a-878e-b99ff0ccda97"
+>NV.IntegratedCorrectionFactorKrInt.Val0.LengthStep &lt;-  KrIntLengthConverter ( InitialLength )</Action><Action
+ Guid="42e3bbd8-3ee3-435f-9880-5d6aeb16cea2"
+>NV.IntegratedCorrectionFactorKrInt.Val0.Value &lt;- KrResolution ( InitialValue )</Action><Action
+ Guid="ba6cc39f-c9b7-4566-883f-ae7bb444c6cf"
+>APPLY CreateKrIntValue ( Value =&gt; X, KrInt =&gt; NV.IntegratedCorrectionFactorKrInt ) ON Values</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  Name="CreateKrIntValue"
+ Guid="aa18dd70-4ad2-488f-8110-7f0abcedc667"
 >
 <ReqRef
  Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a941e45-623d-440d-8862-29a530e0a667"
 >
 </ReqRef><Comment>Fill the elements of KrInt (the first element was filled by the procedure CreateKrIntValueSet). The selected element to fill is the first element was has not yet been initialized (the value of LengthStep equals Infinity).</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5"
  Name="Value"
+ Guid="f152b83e-d894-4017-8836-beb77865bd25"
 >
 </Parameter><Parameter
  Type="KrIntValueSet"
  Name="KrInt"
+ Guid="5b564ccd-1a47-4c55-a7f6-caad9af5bcfb"
 >
 </Parameter></Parameters>
 <Rules>
@@ -2370,60 +3023,93 @@
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="CreateKrIntValue"
+ Guid="8aeb6f5e-5c7e-467a-9e02-052369c181b4"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="Val1"
+ Guid="a548a9e9-19a9-4936-ae84-aac982f8fbea"
 >
 <PreConditions>
-<PreCondition>KrInt.Val1.LengthStep == BaseTypes.Length.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="9f8e3b44-8bd4-434b-9172-62bf9d06bbb5"
+>KrInt.Val1.LengthStep == BaseTypes.Length.Infinity</PreCondition></PreConditions>
 <Actions>
-<Action>KrInt.Val1.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action>KrInt.Val1.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action></Actions>
+<Action
+ Guid="befc6b41-4c10-496c-83a8-5e8994d16e6f"
+>KrInt.Val1.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action
+ Guid="c8a1cde2-1f19-42e5-a912-29d7a21f4600"
+>KrInt.Val1.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Val2"
+ Guid="b2a7306a-d340-423c-a67c-62456985b5e5"
 >
 <PreConditions>
-<PreCondition>KrInt.Val2.LengthStep == BaseTypes.Length.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="a228458a-68e0-40c0-856a-cdaad8190f2e"
+>KrInt.Val2.LengthStep == BaseTypes.Length.Infinity</PreCondition></PreConditions>
 <Actions>
-<Action>KrInt.Val2.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action>KrInt.Val2.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action></Actions>
+<Action
+ Guid="e2373cfe-b1ab-44dc-9b79-ac2d5984f91b"
+>KrInt.Val2.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action
+ Guid="f7cfe666-9666-4337-8956-5c392ebfff28"
+>KrInt.Val2.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Val3"
+ Guid="c4b12856-5734-440b-8c19-046529f7fad8"
 >
 <PreConditions>
-<PreCondition>KrInt.Val3.LengthStep == BaseTypes.Length.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="7812895a-aa18-450e-b769-cfbc8c81c6d6"
+>KrInt.Val3.LengthStep == BaseTypes.Length.Infinity</PreCondition></PreConditions>
 <Actions>
-<Action>KrInt.Val3.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action>KrInt.Val3.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action></Actions>
+<Action
+ Guid="87feb100-16ec-4d2e-9637-f11156ed9d20"
+>KrInt.Val3.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action
+ Guid="a1776987-1980-4a0b-a964-8a3d37de31dc"
+>KrInt.Val3.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Val4"
+ Guid="54599c2f-da34-4134-9021-19dade47a6ec"
 >
 <PreConditions>
-<PreCondition>KrInt.Val4.LengthStep == BaseTypes.Length.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="cd40286c-b38e-41c9-9538-28ca990b3778"
+>KrInt.Val4.LengthStep == BaseTypes.Length.Infinity</PreCondition></PreConditions>
 <Actions>
-<Action>KrInt.Val4.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action>KrInt.Val4.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action></Actions>
+<Action
+ Guid="3eb74c13-aab0-4515-b5da-b1b310fcce0e"
+>KrInt.Val4.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action
+ Guid="13488caa-2517-4507-b685-e73df95aca02"
+>KrInt.Val4.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  Name="CreateKvIntValue_FreightTrain"
+ Guid="cb53bd91-f44c-4c6b-a33f-1a47175393f4"
 >
 <ReqRef
  Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc23a190-7451-4644-b1b4-234e28c4e3b0"
 >
 </ReqRef><Comment>Fill the elements of KrInt (the first element was filled by the procedure CreateKrIntValueSet). The selected element to fill is the first element was has not yet been initialized (the value of LengthStep equals Infinity).</Comment>
 <Parameters>
 <Parameter
  Type="Default.MessageTypes.Speed"
  Name="Speed"
+ Guid="bc7f4837-0193-49e9-85fe-ef6a49d94878"
 >
 </Parameter><Parameter
  Type="KvIntValueSet_FreightTrain"
  Name="KvInt"
+ Guid="6dcb0279-a53e-4c43-a096-c9815c3d8ce4"
 >
 </Parameter></Parameters>
 <Rules>
@@ -2431,68 +3117,95 @@
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="CreateKvIntValue"
+ Guid="2988db9c-7f01-4bb8-ae49-5f3bf2515baf"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="Val1"
+ Guid="82b1b4e1-2a39-44bc-b022-47b6a3614dd1"
 >
 <PreConditions>
-<PreCondition>KvInt.Val1.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="a3614ae8-6bb6-4357-ae33-171e1ecd43aa"
+>KvInt.Val1.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
-<Action>KvInt.Val1.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
+<Action
+ Guid="9a6b1e17-ad76-4c59-afc6-f336d0c358dc"
+>KvInt.Val1.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Val2"
+ Guid="eab18f0a-3f3f-487c-a90c-4f61ede9bc83"
 >
 <PreConditions>
-<PreCondition>KvInt.Val2.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="a0c2fe13-5b8c-4214-aac3-05d63a1dc27b"
+>KvInt.Val2.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
-<Action>KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
+<Action
+ Guid="e985bd1f-70dc-4961-bdde-1c08a935989a"
+>KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Val3"
+ Guid="b6b0b546-46bb-4cbb-8668-659cf88dbb24"
 >
 <PreConditions>
-<PreCondition>KvInt.Val3.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="e53c7325-d435-4af8-ba0c-5a61dd278eb9"
+>KvInt.Val3.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
-<Action>KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
+<Action
+ Guid="1917adc2-911a-47c0-9fad-2d3b551b256c"
+>KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Val4"
+ Guid="043fe851-1b8c-4394-b674-e37b3da69ef2"
 >
 <PreConditions>
-<PreCondition>KvInt.Val4.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="ec306e92-2b25-4fdd-bc62-d737038b3298"
+>KvInt.Val4.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
-<Action>KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
+<Action
+ Guid="77ea9c6e-78a8-4919-b755-d5d5f968162c"
+>KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  Name="CreateKvIntValue_PassengerTrain"
+ Guid="16eeba6c-5933-4e9c-9500-5f6ed3103619"
 >
 <ReqRef
  Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a62f1dd-c07b-4d3c-ace0-e49584a0cd54"
 >
 </ReqRef><Comment>Fill the elements of KrInt (the first element was filled by the procedure CreateKrIntValueSet). The selected element to fill is the first element was has not yet been initialized (the value of LengthStep equals Infinity).</Comment>
 <Parameters>
 <Parameter
  Type="Messages.M_NVKVINT"
  Name="ValueA"
+ Guid="0b02cadd-57b7-44bc-9648-40494e808d93"
 >
 </Parameter><Parameter
  Type="Messages.M_NVKVINT"
  Name="ValueB"
+ Guid="3fee1c5c-33fd-4f07-9f27-9fdf3115800a"
 >
 </Parameter><Parameter
  Type="Default.MessageTypes.Speed"
  Name="Speed"
+ Guid="45903244-9b5e-40e6-b7ff-ca917ef60781"
 >
 </Parameter><Parameter
  Type="KvIntValueSet_PassengerTrain"
  Name="KvInt"
+ Guid="95dbbc80-2905-4e9b-84e3-910fdbd4e6ef"
 >
 </Parameter></Parameters>
 <Rules>
@@ -2500,41 +3213,78 @@
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="CreateKvIntValue"
+ Guid="344c10aa-2c66-4385-9bb4-1a35ee5ad517"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="Val1"
+ Guid="ed36a08c-e6fc-451a-93b8-9d4b27a44f6e"
 >
 <PreConditions>
-<PreCondition>KvInt.Val1.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="87b7e9f2-598a-445e-a254-d8962f7e6018"
+>KvInt.Val1.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
-<Action>KvInt.Val1.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action>KvInt.Val1.ValueA &lt;- KvResolution ( ValueA )</Action><Action>KvInt.Val1.ValueB &lt;- KvResolution ( ValueB )</Action></Actions>
+<Action
+ Guid="02098015-9328-4060-bf47-a34950e5e92f"
+>KvInt.Val1.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action
+ Guid="ff12d93b-63e4-4cac-827e-85f00b5ddc71"
+>KvInt.Val1.ValueA &lt;- KvResolution ( ValueA )</Action><Action
+ Guid="3f7c9184-c574-4923-8508-d5f4d62c2fe3"
+>KvInt.Val1.ValueB &lt;- KvResolution ( ValueB )</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Val2"
+ Guid="f34ab6c8-3712-44f4-92f6-c11b21762eab"
 >
 <PreConditions>
-<PreCondition>KvInt.Val2.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="bfbe6406-1d30-4a23-ad74-6d1eeb2cc39c"
+>KvInt.Val2.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
-<Action>KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action>KvInt.Val2.ValueA &lt;- KvResolution ( ValueA )</Action><Action>KvInt.Val2.ValueB &lt;- KvResolution ( ValueB )</Action></Actions>
+<Action
+ Guid="c6c70a21-8882-4b1f-9ba4-1518a04379f5"
+>KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action
+ Guid="9a98ff4a-e97b-4cb1-93cd-620014766dd0"
+>KvInt.Val2.ValueA &lt;- KvResolution ( ValueA )</Action><Action
+ Guid="50e95d44-1e25-487a-b47e-6a2f21a21a4f"
+>KvInt.Val2.ValueB &lt;- KvResolution ( ValueB )</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Val3"
+ Guid="689618d8-c573-4f3a-9a25-dc877fc7c098"
 >
 <PreConditions>
-<PreCondition>KvInt.Val3.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="47e8da02-6679-45ee-82e9-2c28bd1147a0"
+>KvInt.Val3.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
-<Action>KvInt.Val3.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action>KvInt.Val3.ValueA &lt;- KvResolution ( ValueA )</Action><Action>KvInt.Val3.ValueB &lt;- KvResolution ( ValueB )</Action></Actions>
+<Action
+ Guid="815b91fb-c06e-4553-aeac-aaec02534634"
+>KvInt.Val3.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action
+ Guid="c1b56876-41e2-417d-b749-c70677c9dbb6"
+>KvInt.Val3.ValueA &lt;- KvResolution ( ValueA )</Action><Action
+ Guid="913e1348-aa70-4eae-9e3a-c066e7e65fa4"
+>KvInt.Val3.ValueB &lt;- KvResolution ( ValueB )</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Val4"
+ Guid="99066f5f-0fdb-4029-ab78-27860ffc26da"
 >
 <PreConditions>
-<PreCondition>KvInt.Val4.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+<PreCondition
+ Guid="77d7e468-8f99-4d92-ae50-152b5ccb16b3"
+>KvInt.Val4.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
-<Action>KvInt.Val4.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action>KvInt.Val4.ValueA &lt;- KvResolution ( ValueA )</Action><Action>KvInt.Val4.ValueB &lt;- KvResolution ( ValueB )</Action></Actions>
+<Action
+ Guid="998253c5-2808-4b46-9455-7f6ec1bd4330"
+>KvInt.Val4.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action
+ Guid="fe54f14e-3a30-4835-89c9-1def6c8149d5"
+>KvInt.Val4.ValueA &lt;- KvResolution ( ValueA )</Action><Action
+ Guid="603fb8b0-b3d7-4c1e-8412-657adf28d887"
+>KvInt.Val4.ValueB &lt;- KvResolution ( ValueB )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2545,14 +3295,17 @@
  VariableMode="Internal"
  Implemented="TRUE"
  Name="NotApplicableNationalValues"
+ Guid="c2d9d4f6-ee74-4af9-b1a1-c1c8d1b94c38"
 >
 <ReqRef
  Id="30187272-dc83-4027-afd9-a7a9754c22a4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4fd89eed-d4e5-4983-9c12-416c007ea33f"
 >
 </ReqRef><ReqRef
  Id="bb94d1fa-9b3e-4389-bf7a-f04d1654005b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b0907048-ea48-45e8-9d62-b084a7fe387c"
 >
 </ReqRef><Comment>Represents national values that are not yet applicable on the train.</Comment>
 <SubVariables>
@@ -2561,6 +3314,7 @@
  VariableMode="Internal"
  NeedsRequirement="FALSE"
  Name="RemainingDistance"
+ Guid="1e9652c0-d0c7-4d8e-98b6-04e07a7b5338"
 >
 </Variable></SubVariables>
 </Variable><Variable
@@ -2569,23 +3323,28 @@
  VariableMode="Internal"
  Implemented="TRUE"
  Name="ApplicableNationalValues"
+ Guid="dc0d4977-1d4d-4d94-b4d8-54b15cdce9a7"
 >
 <ReqRef
  Id="30187272-dc83-4027-afd9-a7a9754c22a4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0bdc7fa8-773f-421b-81fa-9a6e546aa2ff"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="bb94d1fa-9b3e-4389-bf7a-f04d1654005b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48d08d43-8161-4ef8-8e49-8885f034cb01"
 >
 </ReqRef><ReqRef
  Id="28e8fd74-8da8-4c8d-9d0b-2b3de6dea1ac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="414fa44d-86b7-4f50-9727-4edb755da888"
 >
 </ReqRef><ReqRef
  Id="967fe971-b137-4079-b900-5f6c1f5f25ff"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf7b315a-e715-4bd8-be48-6edfe403f58a"
 >
 </ReqRef><Comment>Represents the national values currenty applicable on the train.</Comment>
 </Variable><Variable
@@ -2594,10 +3353,12 @@
  VariableMode="Internal"
  Implemented="TRUE"
  Name="DefaultValues"
+ Guid="643313ac-94b6-41ca-bc72-34e264176bd5"
 >
 <ReqRef
  Id="18962f3c-7beb-4506-837c-10c871272cc9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4912a7b3-3219-442d-bbb9-964ba26d8bea"
 >
 </ReqRef><Comment></Comment>
 </Variable></Variables>
@@ -2606,10 +3367,12 @@
  Priority="Processing"
  Implemented="TRUE"
  Name="NVBecomeApplicable"
+ Guid="9f5dee4e-50f1-492d-94da-64278acc22f3"
 >
 <ReqRef
  Id="e1a6f4e6-623b-4e54-b030-85fafb5acb2f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6344e292-f74f-4630-9844-ee60a555fd12"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2617,11 +3380,26 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NVBecomeApplicable"
+ Guid="aa5f2558-8c2c-4eee-9675-3e120221f113"
 >
 <PreConditions>
-<PreCondition>Odometry.NominalDistance == NotApplicableNationalValues.ApplicableDistance</PreCondition><PreCondition>NotApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="36a832ac-f673-4b9f-8989-1a9304523d0c"
+>Odometry.NominalDistance == NotApplicableNationalValues.ApplicableDistance</PreCondition><PreCondition
+ Guid="3d66c648-74f2-4bdc-8264-633197a17194"
+>NotApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>NotApplicableNationalValues.DataState &lt;- Default.DataState.Invalid</Action><Action>ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action><Action>ApplicableNationalValues.Value &lt;- NotApplicableNationalValues.Value</Action><Action>ApplicableNationalValues.ApplicableDistance &lt;- NotApplicableNationalValues.ApplicableDistance</Action><Action>ApplicableNationalValues.NID_C &lt;- NotApplicableNationalValues.NID_C</Action></Actions>
+<Action
+ Guid="2aeb7c89-b50c-4fef-b303-7045654a89c7"
+>NotApplicableNationalValues.DataState &lt;- Default.DataState.Invalid</Action><Action
+ Guid="a31648ef-89c5-489f-811a-399416b62ef5"
+>ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="5d002dba-0fe8-4a51-ad39-d6fe34e76e3a"
+>ApplicableNationalValues.Value &lt;- NotApplicableNationalValues.Value</Action><Action
+ Guid="adc91ac5-b5ab-4419-ace6-47b0b51d178d"
+>ApplicableNationalValues.ApplicableDistance &lt;- NotApplicableNationalValues.ApplicableDistance</Action><Action
+ Guid="53f5c8f6-af1f-4c8e-aba4-051e9cf0fb58"
+>ApplicableNationalValues.NID_C &lt;- NotApplicableNationalValues.NID_C</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

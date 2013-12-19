@@ -1,5 +1,6 @@
 <NameSpace
  Name="INFILL_MA"
+ Guid="247a3f13-e4f9-4b23-89ab-1561b77111f8"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,6 +8,7 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="b3f7d96a-fe6a-4002-9bc2-76aa2e82f3e0"
 >
 <Comment>In-fill MA</Comment>
 <StructureElement
@@ -15,10 +17,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_MESSAGE"
+ Guid="ca957f9d-473d-4923-b6ba-593c4aff46f2"
 >
 <ReqRef
  Id="e3bc53a0-c005-4a4f-b7ab-dd2b459c825d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9bc70f75-105a-441b-a456-5ff712ff4b2f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
@@ -26,10 +30,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
+ Guid="6b3525f6-c079-4e8e-8c75-02a03019d185"
 >
 <ReqRef
  Id="319453ba-ed99-4c93-8cf7-6dcf1bd5af75"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aad39350-95a4-4baa-80fc-4fd1a08c51f9"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
@@ -37,10 +43,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
+ Guid="36baf94c-ddcd-484e-96a2-1116a519f08e"
 >
 <ReqRef
  Id="037af489-8dec-41a9-97a7-0470e38d9512"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d93273c0-c83a-4ca3-9432-6ebd5a7d06bd"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
@@ -48,10 +56,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
+ Guid="9ab51230-1b15-4196-b617-9514b257a234"
 >
 <ReqRef
  Id="6e4bd0d6-6e57-478e-ab35-ca9d380ddbf4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="890b25fa-38db-413a-91a2-6c4705553b59"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
@@ -59,10 +69,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
+ Guid="950ed06b-09b8-4f05-af76-60120df633f5"
 >
 <ReqRef
  Id="e07dc8f9-c375-4749-8624-70e32f014e6c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="085c6556-d9b0-4ab3-a720-2fbab3eada11"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message"
@@ -70,10 +82,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="INFILL_LOCATION_REFERENCE"
+ Guid="dddf7485-83be-44df-8d86-cd74eb9ac5c9"
 >
 <ReqRef
  Id="522da3a6-5606-4157-a56b-8aaf15c0e080"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4ebc34b-f5d7-45c6-a428-73b14a41d106"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
@@ -81,10 +95,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="LEVEL_1_MOVEMENT_AUTHORITY"
+ Guid="1c4f22e9-c10a-4401-ac47-f33ba47c0135"
 >
 <ReqRef
  Id="68874ec2-b9ba-4dbc-8c09-237df06879e8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8ba8feb4-b8e8-46ef-9748-7a52eedaafca"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
@@ -92,18 +108,22 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
+ Guid="3e074604-5100-44a7-87f1-7f2521b5ebad"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="31081d30-d933-4fab-afc6-685df2ece4da"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
+ Guid="4490ab67-d533-454c-8ea6-b41a73d27f43"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4d654024-31b7-428e-b1ac-eda4e1b14ddc"
 >
 </ReqRef><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message"
@@ -111,10 +131,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="GRADIENT_PROFILE"
+ Guid="dbc2d338-fbe7-4bfc-8ed2-550834f972f4"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d2278b9f-a638-45ea-8e33-e1c424810100"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message"
@@ -122,10 +144,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="INTERNATIONAL_STATIC_SPEED_PROFILE"
+ Guid="142a499d-2d68-4299-a85b-46b4b6df5504"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c59a1409-d5ca-481a-853f-ea07c35a22e9"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Message"
@@ -133,10 +157,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="LIST_OF_BALISES_FOR_SH_AREA"
+ Guid="ef7e41b6-c11c-4b18-b05b-5753320ae6d3"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cde8110a-f2c3-474b-b269-30d444df3572"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message"
@@ -144,10 +170,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="MODE_PROFILE"
+ Guid="62bb7b65-7fd8-48bc-a3d5-10dcb5d51100"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="022a9a35-f1d2-4c06-a61a-ce7af9beb5c0"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT_WITH_NEIGHBOURING_RADIO_INFILL_UNIT.Message"
@@ -155,10 +183,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="SESSION_MANAGEMENT_WITH_NEIGHBOURING_RADIO_INFILL_UNIT"
+ Guid="f8fe2550-d7fd-4f63-b37e-7c0f07667e20"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2b39ebfb-ea9e-4725-906d-997318cc2f15"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.DEFAULT_BALISE_LOOP_OR_RIU_INFORMATION.Message"
@@ -166,10 +196,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="DEFAULT_BALISE_LOOP_OR_RIU_INFORMATION"
+ Guid="914219b1-869a-48ef-a63c-0afd15287345"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a87e24dc-6594-4f31-93f3-2fd333c9e849"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message"
@@ -177,10 +209,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NATIONAL_VALUES"
+ Guid="e56a2c30-e2fe-4a0a-9f19-4c8c248ea6f4"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0b060660-2239-4120-94c1-8e4e00d7e091"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LINKING.Message"
@@ -188,10 +222,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="LINKING"
+ Guid="b210a49f-65aa-439a-a716-f241cecd100b"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="318f7942-33da-498b-be1e-b5d989502a9c"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM.Message"
@@ -199,10 +235,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM"
+ Guid="38933f0d-703f-48bc-8c37-0d62d5c4210a"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="388f826e-9d11-42e5-ac3e-38ec2daf8012"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message"
@@ -210,10 +248,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="AXLE_LOAD_SPEED_PROFILE"
+ Guid="907cb484-d53d-4dcd-8ca3-8b18aaeae274"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bee88be6-402e-48e2-b733-65e10e832266"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message"
@@ -221,10 +261,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="LEVEL_TRANSITION_ORDER"
+ Guid="77a4ec9d-193a-4a9a-ac0d-cb68d417e36e"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="da6b4f74-aad0-46c6-b12e-5f6d65f8f760"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Message"
@@ -232,10 +274,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="SESSION_MANAGEMENT"
+ Guid="c2050dbc-450e-4dc8-85b2-7285ee1de55e"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="57f8c84d-d401-4d6c-87ed-4001ce4a560e"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.RADIO_NETWORK_REGISTRATION.Message"
@@ -243,10 +287,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="RADIO_NETWORK_REGISTRATION"
+ Guid="c0fff468-fa98-43c5-b8a9-59635c27cb61"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc6896cb-7fdb-4283-828e-16e7f5ec5bba"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS.Message"
@@ -254,10 +300,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="MOVEMENT_AUTHORITY_REQUEST_PARAMETERS"
+ Guid="6268e0a3-08ee-444e-80ad-606672239600"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f2eb6980-6b91-4b40-8ffb-7ce904e0b99c"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.POSITION_REPORT_PARAMETERS.Message"
@@ -265,10 +313,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="POSITION_REPORT_PARAMETERS"
+ Guid="601cf9c0-0d37-41d6-a4e3-6f77c8baac64"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3c4ff9ba-d6a3-42dc-b86e-371ee3d8278d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message"
@@ -276,10 +326,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="TEMPORARY_SPEED_RESTRICTION"
+ Guid="d92dba3f-1faf-4cba-9d91-0cb8dded727f"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="78e0984a-7722-4b0d-8c79-4f1639e3f328"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Message"
@@ -287,10 +339,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="TEMPORARY_SPEED_RESTRICTION_REVOCATION"
+ Guid="ec7a42e7-7832-46f6-9dbc-40f2577bdf31"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="95b7f5af-fde8-4e27-ad8e-261054e29efd"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TRACK_CONDITION.Message"
@@ -298,10 +352,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="TRACK_CONDITION"
+ Guid="b3ffe0c7-45d3-42a4-84b5-23913adb1701"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c87586ae-6066-498a-b566-28048688b634"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message"
@@ -309,10 +365,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="ROUTE_SUITABILITY_DATA"
+ Guid="f7740773-ffa1-4c96-a51f-29e5043dbe33"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="45973367-7368-493e-b861-6ad9f7c7be14"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.ADHESION_FACTOR.Message"
@@ -320,10 +378,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="ADHESION_FACTOR"
+ Guid="9fcfbd61-b7df-467a-a504-9cba20ca2e33"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="71399b44-4a9a-41ef-875e-84ec5ce16523"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES.Message"
@@ -331,10 +391,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES"
+ Guid="627052d9-3d9e-4f9a-8519-65e519bdd0d8"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ab8586c5-03fa-4a65-8083-36239a01ebb1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES.Message"
@@ -342,10 +404,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES"
+ Guid="b8f64ff8-9345-49fd-8311-ffc09adb7b0d"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d309d0f6-f62c-4224-9f7a-1268d1d80302"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.Message"
@@ -353,10 +417,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="GEOGRAPHICAL_POSITION_INFORMATION"
+ Guid="38fac683-1edd-4cff-a345-dc0d20e9ade1"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b829f6df-869a-472c-be2e-4261c642194f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER.Message"
@@ -364,10 +430,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="RBC_TRANSITION_ORDER"
+ Guid="65496f09-4278-4b52-a6e3-8086084c679d"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a3987795-dba3-4ae9-b7e8-5b79cdb5492f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Message"
@@ -375,10 +443,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="REVERSING_AREA_INFORMATION"
+ Guid="44f8bdb5-2f16-415b-968a-afb2e5581a6a"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="000b7d34-d7e3-4ea4-8f13-9bf6ce37ea6d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Message"
@@ -386,10 +456,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="REVERSING_SUPERVISION_INFORMATION"
+ Guid="f7ce71bd-0160-444e-8073-d6436b5a429a"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cb958203-40ba-4d2f-9b54-6c82ed123e69"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TRAIN_RUNNING_NUMBER_FROM_RBC.Message"
@@ -397,10 +469,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="TRAIN_RUNNING_NUMBER_FROM_RBC"
+ Guid="04b094a3-0d7d-43ad-b972-a85072c35350"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4d7d2d69-b72b-4aa5-a4bc-7b3c18fd0d67"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
@@ -409,10 +483,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
+ Guid="f3cd1b4c-7d26-4584-a296-74d146da6070"
 >
 <ReqRef
  Id="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c74167ce-16e4-4a37-af0d-7954d3ca2b69"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>

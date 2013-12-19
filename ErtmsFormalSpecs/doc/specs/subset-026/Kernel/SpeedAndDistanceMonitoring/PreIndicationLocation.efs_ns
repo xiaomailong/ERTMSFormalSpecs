@@ -4,6 +4,7 @@
  Width="200"
  Height="400"
  Name="PreIndicationLocation"
+ Guid="8975141d-87b4-4f7b-9cfd-a0e026aa8ac1"
 >
 <NameSpaces>
 </NameSpaces>
@@ -12,29 +13,35 @@
  Type="Default.BaseTypes.Distance"
  Implemented="TRUE"
  Name="d_EBI"
+ Guid="25077a4d-2005-43b7-85bb-9a493f2c72ce"
 >
 <ReqRef
  Id="f9c8f255-fec3-4713-857e-21091c0091c9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3768988d-0555-4999-a915-f2c5e1fd341b"
 >
 </ReqRef><ReqRef
  Id="528dbfd7-4b7d-4b1d-a596-153aec151d71"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="022c9766-37b5-4bff-8ea9-df8abbd77804"
 >
 </ReqRef><ReqRef
  Id="0c5eaae4-4be7-4f73-ba4d-93cbbc028872"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f3cede9b-4af3-405c-8b69-e270992d68bb"
 >
 </ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vmrsp"
+ Guid="55a81856-c78d-4268-b3ab-6a25fab54e07"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="87bc3884-bbcf-40e7-891f-a35b2baa7c00"
 >
 <Expression>DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; f41 ( Vmrsp ) ) - ( Vmrsp + f41 ( Vmrsp ) ) * ( TargetSupervision.T_berem() + TargetSupervision.T_traction() )</Expression>
 </Case></Cases>
@@ -42,21 +49,25 @@
  Type="Default.BaseTypes.Distance"
  Implemented="TRUE"
  Name="d_SBI2"
+ Guid="9bb663ce-e8e8-4bd2-8e83-e8b8748d59a7"
 >
 <ReqRef
  Id="0c5eaae4-4be7-4f73-ba4d-93cbbc028872"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="95ac0bb1-adf8-4909-baec-7073f17ef940"
 >
 </ReqRef><Comment>Provides the distance d_SBI2.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vmrsp"
+ Guid="b48a3e8a-35b5-483a-87e0-86b3a3d4039d"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="6f89c598-f655-4f78-82da-514e35c14b27"
 >
 <Expression>PreIndicationLocation.d_EBI ( Vmrsp )  - Vmrsp * TargetSupervision.T_bs2</Expression>
 </Case></Cases>
@@ -64,28 +75,34 @@
  Type="Default.BaseTypes.Distance"
  Implemented="TRUE"
  Name="d_I"
+ Guid="dc704916-e5cb-4eea-a118-d25fd3c2d5b5"
 >
 <ReqRef
  Id="0c5eaae4-4be7-4f73-ba4d-93cbbc028872"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="208ce322-0849-4995-aead-8d61494d5602"
 >
 </ReqRef><ReqRef
  Id="7436b38b-cdb4-4fc5-9d24-f45da79f42f5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="60cbdde9-8930-455c-99ac-2cd62aa4f282"
 >
 </ReqRef><ReqRef
  Id="1c3a3e00-d5be-4e94-b8f4-d89e2b2970a6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c3cd904-121a-4804-a7e1-1d205ce987aa"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vmrsp"
+ Guid="d3d44a74-6a3d-43bc-82af-1df1d08bbcec"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="24aaf0e5-5720-411a-ae32-9abd355f6ec5"
 >
 <Expression>PreIndicationLocation.d_P ( Vmrsp ) - Vmrsp * TargetSupervision.T_indication()</Expression>
 </Case></Cases>
@@ -93,27 +110,34 @@
  Type="Default.BaseTypes.Distance"
  Implemented="TRUE"
  Name="d_P_EOA"
+ Guid="6e840631-e405-49da-af54-fd87deb27d11"
 >
 <ReqRef
  Id="c2747f10-3553-4ce9-9fc1-61bbf23b7f0b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="737c4587-24bb-4b4b-bb37-9e1e36319263"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vmrsp"
+ Guid="a7d49188-5325-4de5-b567-e40c0cdcb9df"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="GUI is inhibited"
+ Guid="85c9b356-2781-4253-9018-3fbcc051309b"
 >
 <PreConditions>
-<PreCondition>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
+<PreCondition
+ Guid="76ff14fe-1069-48b8-a935-8bfa9f50e6fc"
+>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <Expression>TargetSupervision.d_SBI1 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
+ Guid="e2ed0a38-959f-4ca1-af51-1fd4543d4a69"
 >
 <Expression>BaseTypes.MinDistance ( X1 =&gt; TargetSupervision.d_SBI1 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; TargetSupervision.GUI, Speed =&gt; Vmrsp ) )</Expression>
 </Case></Cases>
@@ -121,47 +145,68 @@
  Type="Default.BaseTypes.Distance"
  Implemented="TRUE"
  Name="Compute_d_preindication"
+ Guid="7fabfa64-423f-4dff-9d43-8860b61137bf"
 >
 <ReqRef
  Id="2a213dcf-f704-443d-a6e1-d343329af276"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="36089ac4-db5b-4475-9817-e2394762c6d4"
 >
 </ReqRef><ReqRef
  Id="8ff0bb4b-bc97-415b-93b4-fde4c5154544"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c9c830d-52cc-42fc-a53a-ff30bfba4747"
 >
 </ReqRef><ReqRef
  Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="999f0861-4395-4782-ba39-71db62e22d5e"
 >
 </ReqRef><ReqRef
  Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9b8b4542-8e20-4e44-921e-b72459897505"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="TargetSupervision.Target"
  Name="MRSPn"
+ Guid="157d4132-628f-4d83-ba3d-e059b7db2413"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="EOA, first case"
+ Guid="e4ed753d-ac09-403e-afd3-fb72a28b9706"
 >
 <PreConditions>
-<PreCondition>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition><PreCondition>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition><PreCondition>MA.IsEOA ( MRSPn )</PreCondition></PreConditions>
+<PreCondition
+ Guid="0b29228c-ccce-4669-acfd-3f9141ede40a"
+>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition><PreCondition
+ Guid="a697db5b-8d80-4750-948c-b0b45689adc2"
+>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition><PreCondition
+ Guid="b45489d6-5cf3-4f02-83f3-ec715922f527"
+>MA.IsEOA ( MRSPn )</PreCondition></PreConditions>
 <Expression>d_I_EOA ( MRSPn.Speed ) - MRSPn.Speed * T_preindication</Expression>
 </Case><Case
  Name="Other target, first case"
+ Guid="41f0a5a1-7965-4568-834c-248d28641324"
 >
 <PreConditions>
-<PreCondition>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition><PreCondition>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition></PreConditions>
+<PreCondition
+ Guid="77374c64-30fb-4792-b9cd-84aa69ffd20f"
+>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition><PreCondition
+ Guid="dcee462f-c5ab-4b6b-b370-8eb19ec9d5b9"
+>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition></PreConditions>
 <Expression>PreIndicationLocation.d_I ( MRSPn.Speed ) - MRSPn.Speed * T_preindication</Expression>
 </Case><Case
  Name="Second case"
+ Guid="fa19f559-65e4-402a-897b-7fda2bfa28dd"
 >
 <PreConditions>
-<PreCondition>PreIndicationLocation.d_I
+<PreCondition
+ Guid="e0a60a90-5e23-4565-820e-7eeb897d42f6"
+>PreIndicationLocation.d_I
 (
     REDUCE
         TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) | X.Location &gt; MRSPn.Location
@@ -169,27 +214,33 @@
         BaseTypes.MinDistance ( X.Location, RESULT )
     INITIAL_VALUE
         BaseTypes.Distance.Infinity
-) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition><PreCondition>MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length ) &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition></PreConditions>
+) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition><PreCondition
+ Guid="ca3a5b34-272b-4664-a001-2443e4f76a1d"
+>MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length ) &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition></PreConditions>
 <Expression>MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length ) - MRSPn.Speed * T_preindication</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Implemented="TRUE"
  Name="d_I_EOA"
+ Guid="b747aa02-f496-41f1-acfe-a455b8039557"
 >
 <ReqRef
  Id="c2747f10-3553-4ce9-9fc1-61bbf23b7f0b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4f0cf09c-99e9-4558-a36c-4918bebb9dae"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vmrsp"
+ Guid="01eb8a22-9ab8-4480-a1ef-0e925b3c256e"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="7c618fa6-806f-47d7-a5c8-bba444d4051f"
 >
 <Expression>d_P_EOA ( Vmrsp ) - Vmrsp * TargetSupervision.T_indication()</Expression>
 </Case></Cases>
@@ -197,27 +248,34 @@
  Type="Default.BaseTypes.Distance"
  Implemented="TRUE"
  Name="d_P"
+ Guid="14e456ed-c180-4d64-ba58-3e97a654a998"
 >
 <ReqRef
  Id="0c5eaae4-4be7-4f73-ba4d-93cbbc028872"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="56dd1725-7c5c-4ee3-b600-016cd4c69807"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vmrsp"
+ Guid="6508e397-bc4d-4595-8635-f9557fc76553"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="GUI is inhibited"
+ Guid="f66f3c06-c206-4999-97d9-25170cc4e170"
 >
 <PreConditions>
-<PreCondition>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
+<PreCondition
+ Guid="dac95c93-f0c0-4ace-862c-c7475c858e6e"
+>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <Expression>PreIndicationLocation.d_SBI2 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
+ Guid="ed419bb1-5c35-46f3-8791-27aa4b53b189"
 >
 <Expression>BaseTypes.MinDistance ( X1 =&gt; PreIndicationLocation.d_SBI2 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; TargetSupervision.GUI, Speed =&gt; Vmrsp ) )</Expression>
 </Case></Cases>
@@ -225,26 +283,32 @@
  Type="Default.BaseTypes.Distance"
  Implemented="TRUE"
  Name="d_preindication"
+ Guid="22dbac85-5953-4f33-bf20-79beb74b725a"
 >
 <ReqRef
  Id="2a213dcf-f704-443d-a6e1-d343329af276"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6b15a9e3-b0b2-4429-9f8c-bee01db5b4a9"
 >
 </ReqRef><ReqRef
  Id="8ff0bb4b-bc97-415b-93b4-fde4c5154544"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e0a8e468-a71f-4f81-b9fa-0d040eafa57e"
 >
 </ReqRef><ReqRef
  Id="1c3a3e00-d5be-4e94-b8f4-d89e2b2970a6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cb891c3f-7ed4-4788-9dff-fc801ac2aab3"
 >
 </ReqRef><ReqRef
  Id="c2747f10-3553-4ce9-9fc1-61bbf23b7f0b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="169ec5bc-d765-443a-ab45-0d5c7dbbd232"
 >
 </ReqRef><Cases>
 <Case
  Name="Value"
+ Guid="77b61b8d-bb27-49b3-95c5-027e22b5eba2"
 >
 <Expression>Compute_d_preindication ( FIRST_IN TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) )</Expression>
 </Case></Cases>
@@ -256,23 +320,28 @@
  VariableMode="Constant"
  Implemented="TRUE"
  Name="T_preindication"
+ Guid="68afe859-409d-4646-bde4-a94f2e4e0c1d"
 >
 <ReqRef
  Id="74d937dc-e17d-4627-b243-5abf98b6b980"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf2da945-7062-4059-bae6-2ec2b91b15ff"
 >
 <Comment>Time between the pre-indication location and the indication supervision limit valid for MRSP speed.</Comment>
 </ReqRef><ReqRef
  Id="4bd7be0f-7449-41a7-9dba-2c0897a8c933"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="93e73dea-226b-40d0-aeb4-ff7c1fc70c04"
 >
 </ReqRef><ReqRef
  Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="358af338-3139-4a31-b4bb-0bbc874bb446"
 >
 </ReqRef><ReqRef
  Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fffcd424-982a-4c28-b9cb-549cb7ca6b63"
 >
 </ReqRef><Comment>Time between the pre-indication location and the indication supervision limit valid for MRSP speed.</Comment>
 </Variable></Variables>

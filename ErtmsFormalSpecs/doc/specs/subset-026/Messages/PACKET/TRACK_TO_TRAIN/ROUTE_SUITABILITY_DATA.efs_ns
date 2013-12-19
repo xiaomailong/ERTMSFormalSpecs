@@ -1,5 +1,6 @@
 <NameSpace
  Name="ROUTE_SUITABILITY_DATA"
+ Guid="6c754cd9-fcb1-4c25-b079-2c8d4065e790"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="e6463f40-7bad-49a7-b839-e7c304633f1a"
 >
 <ReqRef
  Id="21443e68-000d-4c84-b4f4-17c5373d0a4e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d651ce0a-1555-4b95-b43f-df879cbd6041"
 >
 </ReqRef><ReqRef
  Id="80557bc0-c47d-4cda-9a7b-6ee9a84c939e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="714d4fe2-c9c7-4230-a47a-7015c8d603f9"
 >
 </ReqRef><Comment>The packet gives the characteristics needed to enter a route.</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="2c3276e8-f39c-4efd-9b98-78e8bb2db6e1"
 >
 <ReqRef
  Id="21443e68-000d-4c84-b4f4-17c5373d0a4e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c1668014-84e1-48c0-8381-e26c6a14a76a"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="b3b43504-699e-42a4-82cf-9df663c47387"
 >
 <ReqRef
  Id="21443e68-000d-4c84-b4f4-17c5373d0a4e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="014a6145-44c8-4fb1-be7d-59d97d32e42c"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="1945c125-33d3-4280-a1e1-fbdd10c0c62e"
 >
 <ReqRef
  Id="21443e68-000d-4c84-b4f4-17c5373d0a4e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="339ed960-d9b7-480e-9e6e-fdffe9e0b9f8"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="da84bc76-8839-4219-8228-a980a1d0e191"
 >
 <ReqRef
  Id="21443e68-000d-4c84-b4f4-17c5373d0a4e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="73b7dab2-2c98-4f9c-8f0e-11779e962ef3"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_TRACKINIT"
@@ -67,10 +79,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_TRACKINIT"
+ Guid="09a51dea-67ec-4750-84c1-857d3b676155"
 >
 <ReqRef
  Id="21443e68-000d-4c84-b4f4-17c5373d0a4e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="25aeb58c-7941-455a-a8e7-8b9c4bfe2f4d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_TRACKINIT"
@@ -78,6 +92,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_TRACKINIT"
+ Guid="816ea548-e351-4b35-9ebc-737ecf0467cd"
 >
 </StructureElement><StructureElement
  TypeName="D_SUITABILITY"
@@ -85,6 +100,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_SUITABILITY"
+ Guid="10c78029-9e2f-43e7-bf41-5c46b60db966"
 >
 </StructureElement><StructureElement
  TypeName="Q_SUITABILITY"
@@ -92,6 +108,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SUITABILITY"
+ Guid="15d177a4-459e-414e-a825-027e2029dfb4"
 >
 </StructureElement><StructureElement
  TypeName="M_LINEGAUGE"
@@ -99,6 +116,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_LINEGAUGE"
+ Guid="2a3e78de-f29d-4b1f-aaf3-4216067de57d"
 >
 </StructureElement><StructureElement
  TypeName="M_AXLELOADCAT"
@@ -106,6 +124,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_AXLELOADCAT"
+ Guid="e4137233-a893-4c9f-8dc4-e1a18c2eba8f"
 >
 </StructureElement><StructureElement
  TypeName="M_VOLTAGE"
@@ -113,6 +132,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_VOLTAGE"
+ Guid="00156301-d91f-4e7b-89e0-e9b0d10882b0"
 >
 </StructureElement><StructureElement
  TypeName="NID_CTRACTION"
@@ -120,6 +140,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_CTRACTION"
+ Guid="d52a6e9c-90bd-4221-83e2-1f9c119c9d62"
 >
 </StructureElement><StructureElement
  TypeName="N_ITER"
@@ -127,6 +148,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="N_ITER"
+ Guid="37838c4d-33b1-49ad-83b0-541e93a54614"
 >
 </StructureElement><StructureElement
  TypeName="Collection1"
@@ -134,14 +156,17 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
+ Guid="ca1be59c-fe6a-4605-b9a1-10e03c6861c5"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
+ Guid="33f5c87d-2fe7-41a4-bcd7-3d7d49c2798e"
 >
 <ReqRef
  Id="80557bc0-c47d-4cda-9a7b-6ee9a84c939e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e58205ab-a8f7-4dc5-aa43-601e470050ca"
 >
 </ReqRef><StructureElement
  TypeName="D_SUITABILITY"
@@ -149,6 +174,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_SUITABILITY"
+ Guid="b421e415-adda-4f9c-afd7-75866c467e2c"
 >
 </StructureElement><StructureElement
  TypeName="Q_SUITABILITY"
@@ -156,6 +182,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SUITABILITY"
+ Guid="d67f3e78-6447-491d-ae98-c36076c7290a"
 >
 </StructureElement><StructureElement
  TypeName="M_LINEGAUGE"
@@ -163,6 +190,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_LINEGAUGE"
+ Guid="00105b9c-f5c2-4422-93b0-8d4928c36a81"
 >
 </StructureElement><StructureElement
  TypeName="M_AXLELOADCAT"
@@ -170,6 +198,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_AXLELOADCAT"
+ Guid="bb608fdf-573d-4890-a84d-71f144b38071"
 >
 </StructureElement><StructureElement
  TypeName="M_VOLTAGE"
@@ -177,6 +206,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_VOLTAGE"
+ Guid="2adcf69f-0175-4047-a0ee-85cdf2f910bf"
 >
 </StructureElement><StructureElement
  TypeName="NID_CTRACTION"
@@ -184,6 +214,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_CTRACTION"
+ Guid="b2c2586c-2677-4eb9-8b8e-01889f42eceb"
 >
 </StructureElement></Structure></Structures>
 <Collections>
@@ -192,10 +223,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
+ Guid="e37fa946-ccbd-4573-8751-90e143e5b38a"
 >
 <ReqRef
  Id="80557bc0-c47d-4cda-9a7b-6ee9a84c939e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05489144-59f7-4710-8f99-70eadaddb3bf"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>
