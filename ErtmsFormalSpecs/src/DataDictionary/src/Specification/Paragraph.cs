@@ -214,7 +214,7 @@ namespace DataDictionary.Specification
 
                 foreach (Paragraph p in SubParagraphs)
                 {
-                    retVal = p.getScopeOnBoard() || p.SubParagraphScopeRollingStock;
+                    retVal = p.getScopeOnBoard() || p.SubParagraphScopeOnboard;
                     if (retVal)
                     {
                         break;
