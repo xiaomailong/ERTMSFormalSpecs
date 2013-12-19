@@ -69,19 +69,19 @@ namespace GUI.SpecificationView
             /// The onboard scope
             /// </summary>
             [Category("\tScope")]
-            public bool OnBoard { get { return Item.getScopeOnBoard(); } set { Item.setScopeOnBoard(value); } }
+            public bool OnBoard { get { return Item.getScopeOnBoard(); } set { Item.SetScopeOnBoard(value); } }
 
             /// <summary>
             /// The trackside scope
             /// </summary>
             [Category("\tScope")]
-            public bool Trackside { get { return Item.getScopeTrackside(); } set { Item.setScopeTrackside(value); } }
+            public bool Trackside { get { return Item.getScopeTrackside(); } set { Item.SetScopeTrackside(value); } }
 
             /// <summary>
             /// The rolling stock scope
             /// </summary>
             [Category("\tScope")]
-            public bool RollingStock { get { return Item.getScopeRollingStock(); } set { Item.setScopeRollingStock(value); } }
+            public bool RollingStock { get { return Item.getScopeRollingStock(); } set { Item.SetScopeRollingStock(value); } }
 
             /// <summary>
             /// Indicates if the paragraph has been reviewed (content & structure)

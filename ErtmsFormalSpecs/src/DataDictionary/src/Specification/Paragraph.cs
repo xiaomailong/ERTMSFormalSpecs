@@ -280,7 +280,10 @@ namespace DataDictionary.Specification
             switch (Type)
             {
                 case Generated.acceptor.Paragraph_type.aREQUIREMENT:
-                    setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
+                    if (getScopeOnBoard() == true)
+                    {
+                        setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
+                    }
                     break;
                 default:
                     setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
@@ -296,6 +299,33 @@ namespace DataDictionary.Specification
             {
                 enclosingParagraph.subParagraphsScope = Generated.acceptor.Paragraph_scope.defaultParagraph_scope;
                 enclosingParagraph = enclosingParagraph.EnclosingParagraph;
+            }
+        }
+
+        public void SetScopeOnBoard(Boolean Scope)
+        {
+            setScopeOnBoard(Scope);
+            if (Scope == true && getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
+            {
+                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
+            }
+        }
+
+        public void SetScopeTrackside(Boolean Scope)
+        {
+            setScopeTrackside(Scope);
+            if (Scope == true && getScopeOnBoard() == false)
+            {
+                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
+            }
+        }
+
+        public void SetScopeRollingStock(Boolean Scope)
+        {
+            setScopeRollingStock(Scope);
+            if (Scope == true && getScopeOnBoard() == false)
+            {
+                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
             }
         }
 
