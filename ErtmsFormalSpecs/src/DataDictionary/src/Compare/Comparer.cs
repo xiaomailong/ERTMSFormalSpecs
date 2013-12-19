@@ -4570,9 +4570,17 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Type", other.getType().ToString(), obj.getType().ToString()) );
             }
-            if ( obj.getScope() != other.getScope() )
+            if ( obj.getScopeOnBoard() != other.getScopeOnBoard() )
             {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Scope", other.getScope().ToString(), obj.getScope().ToString()) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ScopeOnBoard", other.getScopeOnBoard().ToString(), obj.getScopeOnBoard().ToString()) );
+            }
+            if ( obj.getScopeTrackside() != other.getScopeTrackside() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ScopeTrackside", other.getScopeTrackside().ToString(), obj.getScopeTrackside().ToString()) );
+            }
+            if ( obj.getScopeRollingStock() != other.getScopeRollingStock() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ScopeRollingStock", other.getScopeRollingStock().ToString(), obj.getScopeRollingStock().ToString()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getBl(), other.getBl()) )
             {

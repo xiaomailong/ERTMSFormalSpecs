@@ -206,6 +206,63 @@ namespace DataDictionary.Specification
             get { return getFather() as Paragraph; }
         }
 
+        public bool SubParagraphScopeOnboard
+        {
+            get
+            {
+                bool retVal = false;
+
+                foreach (Paragraph p in SubParagraphs)
+                {
+                    retVal = p.getScopeOnBoard() || p.SubParagraphScopeRollingStock;
+                    if (retVal)
+                    {
+                        break;
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        public bool SubParagraphScopeTrackside
+        {
+            get
+            {
+                bool retVal = false;
+
+                foreach (Paragraph p in SubParagraphs)
+                {
+                    retVal = p.getScopeTrackside() || p.SubParagraphScopeTrackside;
+                    if (retVal)
+                    {
+                        break;
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        public bool SubParagraphScopeRollingStock
+        {
+            get
+            {
+                bool retVal = false;
+
+                foreach (Paragraph p in SubParagraphs)
+                {
+                    retVal = p.getScopeRollingStock() || p.SubParagraphScopeRollingStock;
+                    if (retVal)
+                    {
+                        break;
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
         private DataDictionary.Generated.acceptor.Paragraph_scope subParagraphsScope = Generated.acceptor.Paragraph_scope.defaultParagraph_scope;
         public DataDictionary.Generated.acceptor.Paragraph_scope SubParagraphsScope
         {
