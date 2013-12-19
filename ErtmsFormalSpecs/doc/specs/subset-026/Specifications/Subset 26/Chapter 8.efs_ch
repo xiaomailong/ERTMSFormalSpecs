@@ -4,19 +4,23 @@
 >
 <Paragraph
  id="8.3"
+ guid=""
  type="TITLE"
- scope="OBU_AND_TRACK"
+ scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
  Name=""
  Guid="adce1607-6b33-4ece-af27-6227c8d50a06"
 >Introduction<Sub>
 <Paragraph
  id="8.3.1"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -29,6 +33,7 @@
 >Scope and Purpose<Sub>
 <Paragraph
  id="8.3.1.1"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -42,6 +47,7 @@
 ><Comment></Comment>
 This chapter defines the format and content of messages necessary for ERTMS/ETCS functions.</Paragraph><Paragraph
  id="8.3.1.2"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -54,6 +60,7 @@ This chapter defines the format and content of messages necessary for ERTMS/ETCS
 >Concerning the transmission media, this chapter does not cover considerations such as medium-specific use constraints (e.g. distance between track-circuit and balise), as well as functions (e.g. detection of balise reference, time and location stamp, identifying type of receiving balise, Key Management, Releasing/maintaining a radio connection) and performance of the transmission media.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.3.2"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -66,6 +73,7 @@ This chapter defines the format and content of messages necessary for ERTMS/ETCS
 >Definitions<Sub>
 <Paragraph
  id="8.3.2.1"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -79,6 +87,7 @@ This chapter defines the format and content of messages necessary for ERTMS/ETCS
 ><Comment></Comment>
 Transmission media considered hereafter are standard ERTMS/ETCS transmission media used for ETCS (Eurobalise, Euroradio and Euroloop).</Paragraph><Paragraph
  id="8.3.2.2"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -90,6 +99,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  Guid="01a0a58b-b9ce-46f7-b84c-b4c99280a89c"
 >A message includes user data (application level) and protocol data (depending on the transmission medium).</Paragraph><Paragraph
  id="8.3.2.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -101,6 +111,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  Guid="a12e7295-b996-4ac6-b3ca-1da20370ae00"
 >A Eurobalise message is the information sent by a balise group (i.e. the message is composed of one or several telegrams, sorted by balise number in the group (telegram from balise number 1 first), each telegram is transmitted by a Eurobalise). A Eurobalise telegram contains one header and an identified and coherent set of Packets.</Paragraph><Paragraph
  id="8.3.2.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -112,6 +123,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  Guid="bce8954b-117a-4017-b1ad-89d8f411d3a9"
 >A Euroradio message contains one header and an identified and coherent set of variables (if needed) and Packets.</Paragraph><Paragraph
  id="8.3.2.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -125,19 +137,23 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4"
+ guid=""
  type="TITLE"
- scope="OBU_AND_TRACK"
+ scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
  Name=""
  Guid="bec1e13e-395b-4daa-9e8c-97be245b796b"
 >Rules<Sub>
 <Paragraph
  id="8.4.1"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -150,6 +166,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
 >Common Rules<Sub>
 <Paragraph
  id="8.4.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -165,6 +182,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
 	3. When needed, a predefined set of Packets (only for Radio),
 	4. Optional Packets as needed by application.</Paragraph><Paragraph
  id="8.4.1.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -176,6 +194,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  Guid="04373058-2f44-4857-a462-2da1803b8e71"
 >The transmission order shall respect the order of data elements listed in the message format (from top to bottom).</Paragraph><Paragraph
  id="8.4.1.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -188,6 +207,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
 >The behaviour of the receiver shall not depend on the sequence of the Packets given by the message.<Sub>
 <Paragraph
  id="8.4.1.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -199,6 +219,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  Guid="374dfd6c-8df4-4ffd-bb09-c40385a6a953"
 >Exception for Infill information: The locations given in the packets following packet 136 (Infill Location Reference) shall be referred to the balise group indicated in such packet.</Paragraph><Paragraph
  id="8.4.1.3.2"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -211,6 +232,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
 >Note: orientations are in any case always referred to the directionality of balise group (balise transmission), directionality of loop (Euroloop transmission) or directionality of LRBG (radio transmission).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.1.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -223,6 +245,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
 >It shall be forbidden to send more instances of the same packet type for the same direction in the same message.<Sub>
 <Paragraph
  id="8.4.1.4.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -234,6 +257,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  Guid="76d9ab69-938a-4e46-9794-ede4e90427bc"
 >Exception 1: A message can contain several packets 44 (Data used by applications outside the ERTMS/ETCS system).</Paragraph><Paragraph
  id="8.4.1.4.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -245,6 +269,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  Guid="30760274-e4bd-455d-9f46-5acd0d55850f"
 >Exception 2: A message can contain several packets 65 (Temporary Speed Restriction). In case of revocable TSRs, the identities of the corresponding temporary speed restrictions (variable NID_TSR) transmitted in the same message shall be different.</Paragraph><Paragraph
  id="8.4.1.4.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -256,6 +281,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  Guid="6ccb4b9a-503f-401a-b5a9-677e72a770c9"
 >Exception 3: A message can contain several packets 66 (TSR Revocation). The identities of the corresponding temporary speed restrictions (variable NID_TSR) transmitted in the same message shall be different.</Paragraph><Paragraph
  id="8.4.1.4.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -267,6 +293,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  Guid="d0998160-1f71-42dd-b9e9-ca9b69a73225"
 >Exception 4: A message transmitted by a balise group can contain one packet 136 per balise telegram per direction. Each packet 136 indicates which part of that telegram is to be considered as part of the infill information. Multiple packets 136 in balises of a balise group shall have identical content per direction.</Paragraph><Paragraph
  id="8.4.1.4.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -278,6 +305,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  Guid="020a897d-1be0-4fbf-b38d-91e3010007a1"
 >Exception 5: A message can contain several packets 88 (Level Crossing information). The identities of the corresponding Level Crossings (variable NID_LX) transmitted in the same message shall be different.</Paragraph><Paragraph
  id="8.4.1.4.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -289,6 +317,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  Guid="80554aa2-cb28-4a2c-9fc8-fff06c4841f9"
 >Exception 6: A message transmitted by a balise group can contain several packets 254 (default balise, loop or RIU information).</Paragraph><Paragraph
  id="8.4.1.4.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -300,6 +329,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  Guid="2cea63d4-f285-4201-b88e-41d4ef3a5c1f"
 >Exception 7: A message transmitted by a balise group can contain several packets 145 (Inhibition of balise group message consistency reaction).</Paragraph><Paragraph
  id="8.4.1.4.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -313,6 +343,7 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
 ><Comment></Comment>
 Exception 8: A message transmitted by a balise group can contain several packets 0 (Virtual Balise Cover marker).</Paragraph><Paragraph
  id="8.4.1.4.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -328,6 +359,7 @@ Exception 9: A message transmitted by a balise group can contain several packets
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.2"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -340,6 +372,7 @@ Exception 9: A message transmitted by a balise group can contain several packets
 >Rules for Eurobalise telegrams<Sub>
 <Paragraph
  id="8.4.2.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -352,6 +385,7 @@ Exception 9: A message transmitted by a balise group can contain several packets
 >The format of the telegram to be transmitted by each balise is as follows:<Sub>
 <Paragraph
  id="Table 8.4.2.1.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -365,6 +399,7 @@ Exception 9: A message transmitted by a balise group can contain several packets
 Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 <Paragraph
  id="Entry 8.4.2.1.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -379,6 +414,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 	Down-link telegram (train to track) (0) 
 	Up-link telegram (track to train) (1)</Paragraph><Paragraph
  id="Entry 8.4.2.1.1.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -391,6 +427,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="61182e3e-48cf-4832-b38a-f8d84d9259d3"
 >2; M_VERSION; 7; Version of the ERTMS/ETCS system.</Paragraph><Paragraph
  id="Entry 8.4.2.1.1.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -403,6 +440,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6f5f4b8d-a859-403c-803e-34a58d726b3c"
 >3; Q_MEDIA; 1; Defines the type of media: Balise (0)</Paragraph><Paragraph
  id="Entry 8.4.2.1.1.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -415,6 +453,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="ad9fe629-2f69-4c61-b144-050a6c68b09c"
 >4; N_PIG; 3; Position in the group. Defines the position of the balise in the balise group.</Paragraph><Paragraph
  id="Entry 8.4.2.1.1.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -427,6 +466,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="e7019673-e23b-45be-8395-0baaf09d22b3"
 >5; N_TOTAL; 3; Total number of balises in the balise group</Paragraph><Paragraph
  id="Entry 8.4.2.1.1.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -439,6 +479,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="eb812e3a-a93b-4ff7-9ea5-d892aa71c0ee"
 >6; M_DUP; 2; Used to indicate whether the information of the balise is a duplicate of the balise before or after this one.</Paragraph><Paragraph
  id="Entry 8.4.2.1.1.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -451,6 +492,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="ac5bba2d-7d1b-41f7-a629-8091ef690191"
 >7; M_MCOUNT; 8; Message counter (M_MCOUNT) - 8 bits. To enable detection of a change of balise group message during passage of the balise group.</Paragraph><Paragraph
  id="Entry 8.4.2.1.1.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -463,6 +505,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6a27dd53-022e-45be-b8e4-5fa7c2bcca60"
 >8; NID_C; 10; Country or region.</Paragraph><Paragraph
  id="Entry 8.4.2.1.1.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -475,6 +518,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6b818eec-206e-4e2b-84de-8402d8972de9"
 >9; NID_BG; 14; Identity of the balise group.</Paragraph><Paragraph
  id="Entry 8.4.2.1.1.10"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -487,6 +531,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="79e13368-ea44-4522-b910-7aa3e8ac6a48"
 >10; Q_LINK; 1; Marks the balise group as linked (Q_LINK = 1) or unlinked (Q_LINK = 0)</Paragraph><Paragraph
  id="Entry 8.4.2.1.1.11"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -500,6 +545,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 ><Comment></Comment>
 ;Packet 0 (optional);14;Virtual Balise Cover marker</Paragraph><Paragraph
  id="Entry 8.4.2.1.1.12"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -512,6 +558,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="c44c150b-f254-4b99-8020-e591f160b83a"
 >; Information; Variable; This information is composed according to the rules applicable for packets.</Paragraph><Paragraph
  id="Entry 8.4.2.1.1.13"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -525,6 +572,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >; Packet 255; 8; Finishing flag of the telegram</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.2.1.bis"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -538,6 +586,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Number of bits in balise header: 50</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.2.2"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -549,6 +598,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="f4a3e7a1-702d-45a1-ab46-a200b58ff121"
 >The user information transmitted by a balise shall contain complete packets, i.e. splitting a packet between two balises is forbidden.</Paragraph><Paragraph
  id="8.4.2.3"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -563,6 +613,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 When used, the packet 0 shall be transmitted as the first packet of the telegram (i.e. it is appended to the header).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.3"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -575,6 +626,7 @@ When used, the packet 0 shall be transmitted as the first packet of the telegram
 >Rules for Euroloop messages<Sub>
 <Paragraph
  id="8.4.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -587,6 +639,7 @@ When used, the packet 0 shall be transmitted as the first packet of the telegram
 >The format of the message to be transmitted by each loop is as follows:<Sub>
 <Paragraph
  id="Table 8.4.3.1.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -600,6 +653,7 @@ When used, the packet 0 shall be transmitted as the first packet of the telegram
 Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 <Paragraph
  id="Entry 8.4.3.1.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -614,6 +668,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 	Down-link message (train to track) (0) 
 	Up-link message (track to train) (1)</Paragraph><Paragraph
  id="Entry 8.4.3.1.1.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -626,6 +681,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="8a9c92c5-28ec-4d69-b3f8-03d287f3841c"
 >2; M_VERSION; 7; Version of the ERTMS/ETCS system.</Paragraph><Paragraph
  id="Entry 8.4.3.1.1.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -638,6 +694,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="e1b9482b-f530-4463-b277-57b4776563fd"
 >3; Q_MEDIA; 1; Defines the type of media: Loop   (1)</Paragraph><Paragraph
  id="Entry 8.4.3.1.1.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -650,6 +707,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="8066b640-2b8d-4a84-a081-ca21cfc9a7e6"
 >4; NID_C; 10; Country or region.</Paragraph><Paragraph
  id="Entry 8.4.3.1.1.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -662,6 +720,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="de28839f-fea0-4119-86b2-b44e47275671"
 >5; NID_LOOP; 14; Identity of Euroloop.</Paragraph><Paragraph
  id="Entry 8.4.3.1.1.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -674,6 +733,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="a421cda3-4eb0-41d2-a06f-d4f9b7b9c9f6"
 >; Information; Variable; This information is composed according to the rules applicable for packets.</Paragraph><Paragraph
  id="Entry 8.4.3.1.1.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -687,6 +747,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >; Packet 255; 8; Finishing flag of the message</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.3.1.bis"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -700,6 +761,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Number of bits in loop header: 33</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.3.2"
+ guid=""
  type="DELETED"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -713,6 +775,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Intentionally deleted.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.4"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -725,6 +788,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Rules for Euroradio messages<Sub>
 <Paragraph
  id="8.4.4.1"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -737,6 +801,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >The message identifier is unique (variable NID_MESSAGE).<Sub>
 <Paragraph
  id="8.4.4.1.1"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -749,6 +814,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >All currently not defined message identifiers are reserved for future use and shall be considered as invalid values (i.e. like spare values). Exception: reception of information only differing by Y with regards to the highest system version number X supported by on-board (refer to section 3.17.3.11 b)).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.4.2"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -761,6 +827,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Each message shall indicate its own length through the use of the variable L_MESSAGE.<Sub>
 <Paragraph
  id="8.4.4.2.1"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -774,6 +841,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.4.3"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -785,6 +853,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="d4cb2e77-1960-4e01-847a-cba74a0c2bbb"
 >The messages shall be composed of predefined variables and packets.</Paragraph><Paragraph
  id="8.4.4.4"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -797,6 +866,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >For some messages, it shall be possible to add optional packets at the end of the message.<Sub>
 <Paragraph
  id="8.4.4.4.1"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -809,6 +879,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >The track to train messages possibly including optional packets are listed hereafter:<Sub>
 <Paragraph
  id="Table 8.4.4.4.1.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -822,6 +893,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Track to Train message; Mess. ID; Optional packets<Sub>
 <Paragraph
  id="Entry 8.4.4.4.1.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -834,6 +906,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6dc87cd2-d3b8-4d7f-a8f0-26e60b30a71e"
 >SR Authorisation; 2; 63</Paragraph><Paragraph
  id="Entry 8.4.4.4.1.1.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -846,6 +919,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="34124e11-dd20-40b4-8914-44b6b7397ff1"
 >Movement Authority; 3; 21, 27, 49, 80, plus common optional packets</Paragraph><Paragraph
  id="Entry 8.4.4.4.1.1.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -858,6 +932,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="8430bb84-5228-4341-b64b-f578dfc94604"
 >Request To Shorten MA; 9; 49, 80</Paragraph><Paragraph
  id="Entry 8.4.4.4.1.1.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -871,6 +946,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >General Message; 24; From RBC: 21, 27, plus common optional packets
 	From RIU: 45, 143, 254</Paragraph><Paragraph
  id="Entry 8.4.4.4.1.1.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -883,6 +959,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="a9c3b99f-ed94-4e53-9926-e303c3898b8a"
 >SH authorised; 28; 3, 44, 49</Paragraph><Paragraph
  id="Entry 8.4.4.4.1.1.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -895,6 +972,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="17ca4691-52af-4571-83b8-d4e345bcc557"
 >MA with Shifted Location Reference; 33; 21, 27, 49, 80, plus common optional packets</Paragraph><Paragraph
  id="Entry 8.4.4.4.1.1.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -908,6 +986,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Infill MA; 37; 5, 21, 27, 39, 40, 41, 44, 49, 51, 65, 66, 68, 69, 70, 71, 80, 88, 138, 139</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.4.4.1.1"
+ guid=""
  type="DELETED"
  scope="OBU_AND_TRACK"
  bl=""
@@ -921,6 +1000,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >The common optional packets are the following ones:<Sub>
 <Paragraph
  id="8.4.4.4.1.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -935,6 +1015,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.4.4.2"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -950,6 +1031,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 	c) Packet 44 (Data used by applications outside the ERTMS/ETCS system).
 </Paragraph><Paragraph
  id="8.4.4.4.3"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -963,6 +1045,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 	a) Packet 3 (Onboard Telephone Numbers)
 </Paragraph><Paragraph
  id="8.4.4.4.4"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -977,6 +1060,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.4.5"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -988,6 +1072,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="7d71a355-e521-4949-bfde-5875d67b24da"
 >If needed to obtain an integer number of bytes, padding shall be added at the end of the message.</Paragraph><Paragraph
  id="8.4.4.6"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1000,6 +1085,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Standard format of a radio message from track to train :<Sub>
 <Paragraph
  id="8.4.4.6.1"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1012,6 +1098,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Format:<Sub>
 <Paragraph
  id="8.4.4.6.1.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1024,6 +1111,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.4.4.6.1.2"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1036,6 +1124,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >1; NID_MESSAGE; Message Identification Number
 </Paragraph><Paragraph
  id="8.4.4.6.1.3"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1048,6 +1137,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >2; L_MESSAGE; Message length including everything (from field 1 to padding inclusive).
 </Paragraph><Paragraph
  id="8.4.4.6.1.4"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1060,6 +1150,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >3; T_TRAIN; Time Stamp from RBC (see sections 3.16.3.2 &amp; 3.16.3.3).
 </Paragraph><Paragraph
  id="8.4.4.6.1.5"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1072,6 +1163,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >4; M_ACK; Indicates whether the message must be acknowledged (or not) by the on-board equipment (message no 146).
 </Paragraph><Paragraph
  id="8.4.4.6.1.6"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1084,6 +1176,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >5; NID_LRBG; Identification Number of LRBG.
 </Paragraph><Paragraph
  id="8.4.4.6.1.7"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1096,6 +1189,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >; variables as required by NID_MESSAGE; If needed for this message. Used when sending variables which are not included in a packet.
 </Paragraph><Paragraph
  id="8.4.4.6.1.8"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1108,6 +1202,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >; packets as required by NID_MESSAGE; If needed for this message.
 </Paragraph><Paragraph
  id="8.4.4.6.1.9"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1120,6 +1215,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >; Optional packets; Refer to section 8.4.4.4 of this document.
 </Paragraph><Paragraph
  id="8.4.4.6.1.10"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1133,6 +1229,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.4.6.2"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1144,6 +1241,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="afc8b8af-1acf-4aef-9196-e2b3c2cb08c7"
 >Note: In section 8.7 giving the contents of the messages, the padding information is intentionally omitted.</Paragraph><Paragraph
  id="8.4.4.6.3"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1156,6 +1254,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >The track to train message 39 (Acknowledgement of termination of a communication session) shall include the variable M_ACK set to 0. Justification: see 3.5.5.3.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.4.7"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1168,6 +1267,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Standard format of a radio message from train to track:<Sub>
 <Paragraph
  id="8.4.4.7.1"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1180,6 +1280,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Format:<Sub>
 <Paragraph
  id="8.4.4.7.1.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1192,6 +1293,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.4.4.7.1.2"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1204,6 +1306,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >1; NID_MESSAGE; Message Identification Number
 </Paragraph><Paragraph
  id="8.4.4.7.1.3"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1215,6 +1318,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="011c880b-289b-4a14-9aac-6be390fb2d5e"
 >2; L_MESSAGE; Message length including everything (from field 1 to padding inclusive).</Paragraph><Paragraph
  id="8.4.4.7.1.4"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1227,6 +1331,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >3; T_TRAIN; Time Stamp from Train (see chapter 3 - Data Consistency).
 </Paragraph><Paragraph
  id="8.4.4.7.1.5"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1239,6 +1344,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >4; NID_ENGINE; Identity of the train.
 </Paragraph><Paragraph
  id="8.4.4.7.1.6"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1251,6 +1357,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >5; variables as required by NID_MESSAGE; If needed for this message. Used when sending variables which are not included in a packet.
 </Paragraph><Paragraph
  id="8.4.4.7.1.7"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1262,6 +1369,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="d8641a6b-2102-4978-b459-3cc6cde67e1d"
 >6; Packet 0 or 1; Train-to-track packet type 0 - Position report, or packet type 1 - Position report based on two balise groups. Not included in messages 146, 154, 155, 156 and 159.</Paragraph><Paragraph
  id="8.4.4.7.1.8"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1274,6 +1382,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >7; Other Packets as required by NID_MESSAGE; (only for message 129)
 </Paragraph><Paragraph
  id="8.4.4.7.1.9"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1286,6 +1395,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >8; Optional packets; 
 </Paragraph><Paragraph
  id="8.4.4.7.1.10"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1299,6 +1409,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.4.7.2"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1316,6 +1427,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 	e) Intentionally deleted
 	f) Message 159 (Session Established).</Paragraph><Paragraph
  id="8.4.4.7.3"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1330,19 +1442,23 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.5"
+ guid=""
  type="TITLE"
- scope="OBU_AND_TRACK"
+ scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
  Name=""
  Guid="f0d232ed-e430-4633-bfff-7025cfa2ee21"
 >List of radio Messages<Sub>
 <Paragraph
  id="8.5.1"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1355,6 +1471,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Introduction<Sub>
 <Paragraph
  id="8.5.1.1"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1366,6 +1483,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="061101db-6ff7-4abd-a31b-be3208894a8b"
 >This section identifies the radio messages with corresponding Message Identifier (&quot;Mes. Id.&quot;) and Message Name. It also gives a list of the version-invariant messages.</Paragraph><Paragraph
  id="8.5.1.2"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1378,6 +1496,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >&quot;Type&quot; defines whether a message is to be sent as normal priority (N) or as high priority data (E), as defined in Euroradio specifications.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.5.2"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1390,6 +1509,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Train to Track radio messages<Sub>
 <Paragraph
  id="8.5.2.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1401,6 +1521,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="7343e974-e768-4f1d-8cfe-b92d91de8bb4"
 >Mes. Id.; Message Name; Type; Invariant; Transmitted to</Paragraph><Paragraph
  id="8.5.2.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1412,6 +1533,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="d00ed482-4e7b-4dc9-a857-b5fb171adf5b"
 >129; Validated Train Data; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1423,6 +1545,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="4538d3bf-abc5-49c0-b3df-d7179bd3fe54"
 >130; Request for Shunting; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1434,6 +1557,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="09bd805d-47dc-47e1-9489-e5fb2e24f885"
 >132; MA Request; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1445,6 +1569,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="1bf8b9b6-79f5-474e-b31e-1e946b2adaf1"
 >136; Train Position Report; N; No; RBC, RIU</Paragraph><Paragraph
  id="8.5.2.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1456,6 +1581,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6dfcd9dd-db04-495f-96eb-7eb953e4b3c9"
 >137; Request to shorten MA is granted; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1467,6 +1593,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6d1732ea-861d-4c65-954c-3c26b0a99c1b"
 >138; Request to shorten MA is rejected; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1478,6 +1605,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="3f4bddf9-98d3-42ec-9139-6a3d3913523d"
 >146; Acknowledgement; N; No; RBC, RIU</Paragraph><Paragraph
  id="8.5.2.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1489,6 +1617,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="1d5d1613-e3b5-4dc3-ac17-1785740b57a4"
 >147; Acknowledgement of Emergency Stop; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.10"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1500,6 +1629,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="2255259b-9293-4048-ad34-6b1e307f7472"
 >149; Track Ahead Free Granted; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.11"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1511,6 +1641,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="d3955e28-f016-43ba-aa05-ed187deb9195"
 >150; End of Mission; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.12"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1522,6 +1653,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="cdb98225-48c8-4f17-90bd-9983218915d7"
 >153; Radio infill request; N; No; RIU</Paragraph><Paragraph
  id="8.5.2.13"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1533,6 +1665,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="29ac8b57-887f-4420-8b7b-91bb1e505d65"
 >154; No compatible version supported; N; Yes; RBC, RIU</Paragraph><Paragraph
  id="8.5.2.14"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1544,6 +1677,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="9934dc4b-5b76-4e42-9f4c-b7efb6c87c30"
 >155; Initiation of a communication session; N; Yes; RBC, RIU</Paragraph><Paragraph
  id="8.5.2.15"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1555,6 +1689,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="19c4b8ef-f85a-4b84-8eff-203e8b462604"
 >156; Termination of a communication session; N; Yes; RBC, RIU</Paragraph><Paragraph
  id="8.5.2.16"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1566,6 +1701,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="f3ff7f4d-3f24-4101-8ad4-d2902c011869"
 >157; SoM Position Report; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.17"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1577,6 +1713,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="4c2b803e-1b6e-406f-b450-45c71272cd6b"
 >158; Text message acknowledged by driver; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.18"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1589,6 +1726,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >159; Session Established; N; No; RBC, RIU</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.5.3"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1601,6 +1739,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Track to Train radio messages<Sub>
 <Paragraph
  id="8.5.3.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1612,6 +1751,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="62358e11-608f-4b04-af53-14c7ae4bacc2"
 >Mes. Id.; Message Name; Type; Invariant; Transmitted by</Paragraph><Paragraph
  id="8.5.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1623,6 +1763,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="d97a231f-6ef1-4300-9bd9-d3dba7d434bd"
 >2; SR Authorisation; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1634,6 +1775,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="c04116c0-24b6-4d81-ae02-cff4fa993bef"
 >3; Movement Authority; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1645,6 +1787,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="21c031bd-8f98-4fee-9fc5-f8c7a8b94fc3"
 >6; Recognition of exit from TRIP mode; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1656,6 +1799,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="64dae4f0-7a7b-4908-8fa8-6f082446f198"
 >8; Acknowledgement of Train Data; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1667,6 +1811,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="20a7a00d-396e-453b-8cd0-0a2ec8f83340"
 >9; Request to Shorten MA; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1678,6 +1823,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="f6e5eaf6-2bea-486e-b3f7-3e854c745b5d"
 >15; Conditional Emergency Stop; E or N; No; RBC</Paragraph><Paragraph
  id="8.5.3.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1689,6 +1835,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="0043347f-c382-4046-b7ae-6c3e73575ec6"
 >16; Unconditional Emergency Stop; E or N; No; RBC</Paragraph><Paragraph
  id="8.5.3.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1700,6 +1847,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="a911a02d-c12c-41f6-9111-27edfeceb382"
 >18; Revocation of Emergency Stop; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.10"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1711,6 +1859,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="7791130c-94a3-4a45-9437-4a4835707e9a"
 >24; General message; N; No; RBC, RIU</Paragraph><Paragraph
  id="8.5.3.11"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1722,6 +1871,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="a2ff07ed-af73-4d18-8233-2001d2d071a4"
 >27; SH Refused; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.12"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1733,6 +1883,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="38d45e49-f55c-4765-9dfc-1faf09f9a446"
 >28; SH Authorised; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.13"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1744,6 +1895,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="97eca6f5-ba51-4c2e-a71f-3e5752290f21"
 >33; MA with Shifted Location Reference; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.14"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1755,6 +1907,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="2c9bebd4-e758-4982-ae9b-92e657bfcba2"
 >34; Track Ahead Free Request; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.15"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1766,6 +1919,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6e740969-1d8d-40d5-bcaf-7bf18e08aa4b"
 >37; Infill MA; N; No; RIU</Paragraph><Paragraph
  id="8.5.3.16"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1777,6 +1931,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="bc294642-8437-469e-8c66-7be2171440c5"
 >40; Train Rejected; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.17"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1788,6 +1943,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="71740f57-d219-41b2-93f8-319c302b1afa"
 >32; RBC/RIU System Version; N; Yes; RBC, RIU</Paragraph><Paragraph
  id="8.5.3.18"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1799,6 +1955,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="5c22942d-5616-44c5-8707-c8edf2889ba9"
 >38; Initiation of a communication session; N; Yes; RBC</Paragraph><Paragraph
  id="8.5.3.19"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1810,6 +1967,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6091731d-92bd-4133-aff2-790f6f482dbf"
 >39; Acknowledgement of termination of a communication session; N; Yes; RBC, RIU</Paragraph><Paragraph
  id="8.5.3.20"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1821,6 +1979,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="ea01ea66-b8e6-438d-93a4-4207dbd3797f"
 >41; Train Accepted; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.21"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1832,6 +1991,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="54a97260-e9dd-4150-8cba-095ed5a8f0d6"
 >43; SoM position report confirmed by RBC; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.22"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1845,19 +2005,23 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6"
+ guid=""
  type="TITLE"
- scope="OBU_AND_TRACK"
+ scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
  Name=""
  Guid="28c7aa97-a924-4388-89ab-d7fbda1d7c1a"
 >Definition of Radio Messages from Train to Track<Sub>
 <Paragraph
  id="8.6.1"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1870,6 +2034,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 129: Validated Train Data<Sub>
 <Paragraph
  id="8.6.1.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1881,6 +2046,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="c130446d-d4d4-4a39-8b29-53c5df3b5177"
 >Field No.; VARIABLE/ PACKET; Remarks</Paragraph><Paragraph
  id="8.6.1.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1892,6 +2058,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="4c109f90-966c-4202-93f8-a66c21964f25"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.1.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1903,6 +2070,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="c394072b-5ccc-4f02-83ca-030f9a7b59d6"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.1.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1914,6 +2082,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="51682c39-49ab-4ed1-875d-e244f8b91b95"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.1.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1925,6 +2094,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="3ac64b50-c74e-4254-be73-259fb5466b4f"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.1.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1936,6 +2106,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="7c52a141-a336-45c4-8933-e8521c8b7522"
 >5; Packet 0 or 1;</Paragraph><Paragraph
  id="8.6.1.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1948,6 +2119,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >6; Train data; Train - track packet type 11.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.2"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1960,6 +2132,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 130: Request for Shunting<Sub>
 <Paragraph
  id="8.6.2.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1972,6 +2145,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE/ PACKET; Remarks
 </Paragraph><Paragraph
  id="8.6.2.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1983,6 +2157,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="ec079598-670c-4c4c-9b4b-522eb377eacf"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.2.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1994,6 +2169,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="ae8e9b38-1f8d-4043-9b1a-47e161fb1d55"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.2.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2005,6 +2181,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="d6b2c059-6bf8-4097-bbec-0c06656b3e70"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.2.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2016,6 +2193,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="381e47f5-126e-425d-82ca-c6bd3f298786"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.2.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2028,6 +2206,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >5; Packet 0 or 1;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.3"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2040,6 +2219,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 132: MA Request<Sub>
 <Paragraph
  id="8.6.3.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2051,6 +2231,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="ed655b1d-193c-41db-b47e-7181f34bcf93"
 >Field No.; VARIABLE/ PACKET; Remarks</Paragraph><Paragraph
  id="8.6.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2062,6 +2243,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="8de66288-ba8b-49f2-a9cc-e1cd1b848fa3"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.3.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2073,6 +2255,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="562e9d9d-f160-4726-9fdd-0192ae0ac13a"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.3.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2084,6 +2267,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="422bfd78-6a90-4d9b-8000-8670a93a76db"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.3.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2095,6 +2279,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="00db9178-25bc-425f-9d84-def8931cd919"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.3.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2106,6 +2291,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="706d4b2b-fef4-4426-a33a-c820303c26bd"
 >5; Q_MARQSTREASON;</Paragraph><Paragraph
  id="8.6.3.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2117,6 +2303,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="60fb8ae5-aecd-4fcf-aa69-ec41649b9c2f"
 >6; Packet 0 or 1;</Paragraph><Paragraph
  id="8.6.3.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2129,6 +2316,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >7; Optional packets;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.4"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2141,6 +2329,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 136: Train Position Report<Sub>
 <Paragraph
  id="8.6.4.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2153,6 +2342,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE/ PACKET; Remarks
 </Paragraph><Paragraph
  id="8.6.4.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2164,6 +2354,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="7a161d4e-9daf-4632-afbc-9c0ba1b37e6c"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.4.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2175,6 +2366,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="8512700f-a6d7-4b0c-a289-782c95b3ff9c"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.4.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2186,6 +2378,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="57f6f903-9f6e-4b2c-8772-6ba6ca0aec3f"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.4.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2197,6 +2390,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="1ad3279a-9643-4da5-9373-74edaa89c5fb"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.4.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2208,6 +2402,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="2cede8a1-5372-48a2-b195-db43cc0d3c3f"
 >5; Packet 0 or 1;</Paragraph><Paragraph
  id="8.6.4.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2220,6 +2415,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >6; Optional packets;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.5"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2232,6 +2428,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 137: Request to Shorten MA is granted<Sub>
 <Paragraph
  id="8.6.5.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2244,6 +2441,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE/ PACKET; Remarks
 </Paragraph><Paragraph
  id="8.6.5.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2255,6 +2453,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="5e4ad049-6ea4-405f-bfa5-b4c2d8e45cb0"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.5.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2266,6 +2465,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="261a475b-d31f-4ce5-9afb-00261f97690d"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.5.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2277,6 +2477,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="8a717d40-be67-4c40-9ad3-906f1dc858dc"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.5.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2288,6 +2489,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="4c77a394-0e97-4f72-8d22-f453f4fa543c"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.5.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2299,6 +2501,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="b5366a6e-553d-41fb-ad64-011480b5e94b"
 >5; T_TRAIN; Time stamp contained in the request.</Paragraph><Paragraph
  id="8.6.5.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2311,6 +2514,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >6; Packet 0 or 1;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.6"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2323,6 +2527,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 138: Request to Shorten MA is rejected<Sub>
 <Paragraph
  id="8.6.6.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2335,6 +2540,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE/ PACKET; Remarks
 </Paragraph><Paragraph
  id="8.6.6.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2346,6 +2552,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="96878f91-b582-496f-91e0-5487c3e4e59a"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.6.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2357,6 +2564,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="198efbaa-a8cc-4791-8049-8a0299b36d63"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.6.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2368,6 +2576,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="eefac400-820c-4a97-8ac7-987e21cf3830"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.6.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2379,6 +2588,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="f671c941-c8dc-478e-9e1f-915872850992"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.6.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2390,6 +2600,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="e39baccd-996a-49f1-a03e-644ef897d97b"
 >5; T_TRAIN; Time stamp contained in the request.</Paragraph><Paragraph
  id="8.6.6.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2402,6 +2613,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >6; Packet 0 or 1;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.7"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2414,6 +2626,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 146: Acknowledgement<Sub>
 <Paragraph
  id="8.6.7.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2426,6 +2639,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.6.7.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2437,6 +2651,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="840e412d-463b-47f7-9f1d-cccb059efb62"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.7.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2448,6 +2663,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="e5667077-5de2-4c3e-af86-68a5be08a113"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.7.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2459,6 +2675,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="4f75e0bd-10ea-4605-aaf5-c2b8f7d5d38d"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.7.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2470,6 +2687,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="edc5e32c-257d-4832-877f-8cfb5dfc00f6"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.7.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2482,6 +2700,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >5; T_TRAIN; Time stamp contained in the message that is acknowledged.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.8"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2494,6 +2713,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 147: Acknowledgement of Emergency Stop<Sub>
 <Paragraph
  id="8.6.8.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2506,6 +2726,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.6.8.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2517,6 +2738,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="c99e85b2-17b6-42ce-9b97-dbb17591f957"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.8.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2528,6 +2750,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="353d80f7-d37e-4952-87d6-c993f0d146d7"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.8.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2539,6 +2762,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="2021b9de-fee0-4e23-89ca-1093a14beb16"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.8.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2550,6 +2774,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="71443874-c4de-4da6-9d2f-f6668f13b126"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.8.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2561,6 +2786,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="077dae9c-0d63-4b59-b4e5-ac197edca727"
 >5; NID_EM; Identification Number of the acknowledged Emergency Message.</Paragraph><Paragraph
  id="8.6.8.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2572,6 +2798,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="9e5ae867-ff49-400d-8172-3bc629e506d6"
 >6; Q_EMERGENCYSTOP;</Paragraph><Paragraph
  id="8.6.8.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2584,6 +2811,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >7; Packet 0 or 1;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.9"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2596,6 +2824,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 149: Track Ahead Free Granted<Sub>
 <Paragraph
  id="8.6.9.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2608,6 +2837,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE/ PACKET; Remarks
 </Paragraph><Paragraph
  id="8.6.9.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2619,6 +2849,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="aebab1a5-d7eb-4483-b1fb-4d494d19ece9"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.9.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2630,6 +2861,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="73d010ae-6637-4f5a-aa4c-0b6dbe9f3c2a"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.9.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2641,6 +2873,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="14cdaf65-b7b4-48bd-be26-ab3a6c03f33b"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.9.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2652,6 +2885,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="14a35615-f26c-4b61-a906-f2e64cb6ac19"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.9.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2664,6 +2898,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >5; Packet 0 or 1;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.10"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2676,6 +2911,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 150: End of Mission<Sub>
 <Paragraph
  id="8.6.10.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2688,6 +2924,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE/ PACKET; Remarks
 </Paragraph><Paragraph
  id="8.6.10.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2699,6 +2936,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="32e9bb4f-cc73-4be6-8a71-c4006cf68928"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.10.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2710,6 +2948,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="194a6507-f64b-4bf2-9881-d8497cb30d7a"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.10.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2721,6 +2960,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="7e2d6d39-15b7-4051-b3d6-102637c8ee8c"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.10.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2732,6 +2972,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="ab60cd45-b6cb-478d-863b-d24b5d00c448"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.10.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2744,6 +2985,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >5; Packet 0 or 1;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.11"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -2756,6 +2998,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 153: Radio infill request<Sub>
 <Paragraph
  id="8.6.11.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2768,6 +3011,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.6.11.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2779,6 +3023,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="53f12506-daee-4c85-9053-02c8bf17af0b"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.11.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2790,6 +3035,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="eedf8dd8-1bb9-4731-b5a8-893561261572"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.11.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2801,6 +3047,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="0d1d67de-b4a4-42bb-a50b-f282fc413af7"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.11.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2812,6 +3059,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="320e774e-8a78-49e6-adf8-05ac649a873f"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.11.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2823,6 +3071,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="584989db-990b-4f2d-987b-dcdb0b50cd1f"
 >5; NID_C; identity of the country of the &quot;target&quot; main balise group</Paragraph><Paragraph
  id="8.6.11.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2834,6 +3083,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="e853e743-549d-456a-b585-1e8370ab45c8"
 >6; NID_BG; identity of the &quot;target&quot; main balise group</Paragraph><Paragraph
  id="8.6.11.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -2845,6 +3095,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="4208500d-8fd0-4c2f-8199-7c0ac6e67083"
 >7; Q_INFILL; start; end of infill</Paragraph><Paragraph
  id="8.6.11.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2857,6 +3108,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >8; Packet 0 or 1;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.12"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2869,6 +3121,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 154: No compatible version supported<Sub>
 <Paragraph
  id="8.6.12.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2881,6 +3134,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE/ PACKET; Remarks
 </Paragraph><Paragraph
  id="8.6.12.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2892,6 +3146,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="180abffc-1e69-479f-9d27-b361a511b724"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.12.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2903,6 +3158,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="771097a5-70ee-4e32-ad57-cc3370e9c2df"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.12.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2914,6 +3170,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="5fa92a17-4bdd-45f7-af50-8fb767b1f5df"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.12.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2926,6 +3183,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >4; NID_ENGINE;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.13"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2938,6 +3196,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 155: Initiation of a communication session<Sub>
 <Paragraph
  id="8.6.13.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2950,6 +3209,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE/ PACKET; Remarks
 </Paragraph><Paragraph
  id="8.6.13.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2961,6 +3221,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="193e4ff3-c085-4881-89f4-4bba951aae20"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.13.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2972,6 +3233,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="f122a1cb-426c-4f27-b1b2-521eeb9d7655"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.13.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2983,6 +3245,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="974dafe8-70ad-409f-a13c-435c0f1b8be1"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.13.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2995,6 +3258,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >4; NID_ENGINE;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.14"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3007,6 +3271,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 156: Termination of a communication session<Sub>
 <Paragraph
  id="8.6.14.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3019,6 +3284,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE/ PACKET; Remarks
 </Paragraph><Paragraph
  id="8.6.14.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3030,6 +3296,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="8c9ce563-d6d0-4490-a402-5a4bcf54598c"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.14.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3041,6 +3308,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="a4fe513a-ba78-4d81-a472-2d562542fef9"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.14.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3052,6 +3320,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="4d45f289-023e-4ed4-a8b2-f23bc5f23bbf"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.14.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3064,6 +3333,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >4; NID_ENGINE;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.15"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3076,6 +3346,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 157: SoM Position Report<Sub>
 <Paragraph
  id="8.6.15.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3087,6 +3358,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="0c345b71-9eb8-4cd3-8911-29017704cf21"
 >Field No.; VARIABLE/ PACKET; Remarks</Paragraph><Paragraph
  id="8.6.15.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3098,6 +3370,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="fd5c097e-b4c0-466b-850d-99f930692988"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.15.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3109,6 +3382,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="7d3615d3-8bd3-4134-8d72-fcfc017f1749"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.15.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3120,6 +3394,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="4608349b-50d4-4c14-9c72-18d03706ed89"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.15.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3131,6 +3406,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="9f0eacfe-16d9-4bf2-936d-fe62a645918e"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.15.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3142,6 +3418,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="21f08a64-2ded-47ef-b209-47e6f1df9f9f"
 >5; Q_STATUS;</Paragraph><Paragraph
  id="8.6.15.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3153,6 +3430,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="bbaed3c1-8068-4694-b20d-a574f61aff20"
 >6; Packet 0 or 1;</Paragraph><Paragraph
  id="8.6.15.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3165,6 +3443,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >7; Optional packets;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.16"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3177,6 +3456,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 158: Text Message Acknowledged by Driver<Sub>
 <Paragraph
  id="8.6.16.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3189,6 +3469,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE/ PACKET; Remarks
 </Paragraph><Paragraph
  id="8.6.16.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3200,6 +3481,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="26e127ec-3ecd-43a3-ae47-c2704005b4a4"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.16.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3211,6 +3493,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="a3ce8670-24f4-4e73-bd2f-994f7a301d88"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.16.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3222,6 +3505,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="eae00cc5-369e-42f3-93f9-359ac766060d"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.16.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3233,6 +3517,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="d0240bd3-94f2-46e9-82b8-06962f660f26"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.16.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3244,6 +3529,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="252f27c1-d5e8-4400-b26b-ae4c8ed381f3"
 >5; NID_TEXTMESSAGE; Identity of the text message that the driver has acknowledged.</Paragraph><Paragraph
  id="8.6.16.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3256,6 +3542,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >6; Packet 0 or 1;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6.17"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3268,6 +3555,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 159: Session established<Sub>
 <Paragraph
  id="8.6.17.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3280,6 +3568,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE/ PACKET; Remarks
 </Paragraph><Paragraph
  id="8.6.17.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3291,6 +3580,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6d607aea-ecdf-49ba-94cf-820077be16f5"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.6.17.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3302,6 +3592,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="da48d790-6e99-4ede-b382-33683f89734e"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.6.17.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3313,6 +3604,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="034e6081-8324-46a4-8701-9547536400ac"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.6.17.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3324,6 +3616,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="81482df6-4bcd-4d73-987a-cd90bcffe361"
 >4; NID_ENGINE;</Paragraph><Paragraph
  id="8.6.17.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3337,19 +3630,23 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7"
+ guid=""
  type="TITLE"
- scope="OBU_AND_TRACK"
+ scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
  Name=""
  Guid="d0b494bd-7957-4cdf-919f-a68726e4c31e"
 >Definition of Radio Messages from Track to Train<Sub>
 <Paragraph
  id="8.7.1"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3362,6 +3659,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 2: SR Authorisation<Sub>
 <Paragraph
  id="8.7.1.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3373,6 +3671,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="cbfee9c2-2140-45a7-a66f-63c7cefedf60"
 >Field No.; VARIABLE; Remarks</Paragraph><Paragraph
  id="8.7.1.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3384,6 +3683,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="0f2e193e-66b4-4dcf-9a50-b6e963e9c732"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.1.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3395,6 +3695,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="231451ee-7b28-4033-9fbd-5d6a8545e926"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.1.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3406,6 +3707,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="388712c2-fe27-4991-a909-304753dbaa70"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.1.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3417,6 +3719,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="98e62c6d-a6f1-4f99-af53-6d0ec0259a41"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.1.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3428,6 +3731,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="f516cf0b-ccbd-47ba-835e-74361fcc3c42"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.1.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3439,6 +3743,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="f10f8728-1e96-49c1-bc72-2a7ed7dca14a"
 >6; Q_SCALE;</Paragraph><Paragraph
  id="8.7.1.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3450,6 +3755,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="13ab2c85-748e-4895-a3c6-95ec5c0d9f08"
 >7; D_SR;</Paragraph><Paragraph
  id="8.7.1.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3462,6 +3768,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >8; Optional packets;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.2"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3474,6 +3781,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 3: Movement Authority<Sub>
 <Paragraph
  id="8.7.2.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3485,6 +3793,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="5bbe54ae-db9c-441b-97ae-842e838baaa5"
 >Field No.; VARIABLE; Remarks</Paragraph><Paragraph
  id="8.7.2.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3496,6 +3805,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="52cc612c-a6d6-4c5a-9def-5688e665d963"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.2.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3507,6 +3817,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="4369669d-b85a-4789-aa03-c76dd2a0b3c3"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.2.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3518,6 +3829,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="60e404c2-dacc-4710-a28b-1c60922c2b37"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.2.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3529,6 +3841,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="28502483-d264-4a9d-9ddb-a1bd2df1ce8a"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.2.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3540,6 +3853,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="8fcff81a-7fac-412d-81f0-35e0add73c2e"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.2.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3551,6 +3865,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="9701e3a2-ed1c-4b54-b3d4-25d45a3fe95e"
 >6; Level 2/3 Movement Authority; Packet 15</Paragraph><Paragraph
  id="8.7.2.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3563,6 +3878,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >7; Optional packets;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.3"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3575,6 +3891,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 6: Recognition of exit from TRIP mode<Sub>
 <Paragraph
  id="8.7.3.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3587,6 +3904,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3598,6 +3916,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="08a7f1c5-9976-4070-a898-08dd660c8bc4"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.3.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3609,6 +3928,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="b08e4d21-ec80-4e61-a419-776f847e1f52"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.3.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3620,6 +3940,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6654c019-1b7a-4ac5-9f0d-e51083328d7f"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.3.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3631,6 +3952,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="fd5e3e66-0f25-4f48-af63-33752b6ab316"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.3.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3643,6 +3965,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >5; NID_LRBG;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.4"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3655,6 +3978,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 8: Acknowledgement of Train Data<Sub>
 <Paragraph
  id="8.7.4.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3667,6 +3991,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.4.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3678,6 +4003,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="30f9a54a-7f8f-420c-a389-ab8e98e1629a"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.4.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3689,6 +4015,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="d1c0f221-242a-484c-b275-a23081cb8295"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.4.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3700,6 +4027,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="5017a53b-9228-4e75-89f0-2b9ce47d67e3"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.4.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3711,6 +4039,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="24e6f3b7-b31d-4630-9361-82a2e8240aa2"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.4.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3722,6 +4051,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="4408ebe1-8134-4a83-94bb-635fddc70dc5"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.4.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3734,6 +4064,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >6; T_TRAIN; Reference to received train data message</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.5"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3746,6 +4077,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 9: Request to Shorten MA<Sub>
 <Paragraph
  id="8.7.5.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3758,6 +4090,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.5.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3769,6 +4102,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="b42e44cb-53b4-478a-b1fb-db5b5aefcbe3"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.5.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3780,6 +4114,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="83a87141-eea5-4cd9-bb89-9849ed4c644e"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.5.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3791,6 +4126,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6dc8487f-7d73-4fc0-870c-0050b6678ba4"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.5.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3802,6 +4138,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="973f9ef1-d90e-4e03-8a97-5ba862847988"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.5.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3813,6 +4150,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="5712d3b0-7b0f-49aa-babe-aa622c859e7a"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.5.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3824,6 +4162,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="57d61b1c-3b97-4a2b-9885-bcf7d03e30fb"
 >6; Level 2/3 Movement Authority; Packet 15</Paragraph><Paragraph
  id="8.7.5.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3836,6 +4175,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >7; Optional packet; Packet 80</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.6"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3848,6 +4188,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 15: Conditional Emergency Stop<Sub>
 <Paragraph
  id="8.7.6.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3860,6 +4201,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.6.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3871,6 +4213,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="00d90111-8cf5-4205-9605-58e3b735e252"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.6.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3882,6 +4225,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="0374f1f1-0f73-46da-9cee-b3d8f5b9fbe5"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.6.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3893,6 +4237,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="3b6d4d7a-c1c6-45a1-9a13-2f58f543ffce"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.6.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3904,6 +4249,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="81be1455-8b57-4735-9d15-0a2d9cc22723"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.6.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3915,6 +4261,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="7ba7ff83-7ac6-4bfc-866a-832356f678cd"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.6.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3926,6 +4273,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="ba99fd87-1d73-40cd-b9e7-163c1a5b7f68"
 >6; NID_EM; Identification Number of the Emergency Stop Message.</Paragraph><Paragraph
  id="8.7.6.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3937,6 +4285,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="d9c316ae-8c31-49c3-9189-ed83e1563e90"
 >7; Q_SCALE;</Paragraph><Paragraph
  id="8.7.6.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3948,6 +4297,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="c0a0302c-ec2f-45fa-abf1-9eb80ba59d58"
 >8; D_REF;</Paragraph><Paragraph
  id="8.7.6.10"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3959,6 +4309,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="8fd9bb19-c087-475c-9925-1135b7e2523a"
 >9; Q_DIR;</Paragraph><Paragraph
  id="8.7.6.11"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3971,6 +4322,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >10; D_EMERGENCYSTOP; Distance between LRBG and the position reference to the emergency stop.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.7"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3983,6 +4335,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 16: Unconditional Emergency Stop<Sub>
 <Paragraph
  id="8.7.7.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3995,6 +4348,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.7.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4006,6 +4360,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="b4e5ad7f-e469-4ac1-a5ed-a715a8993961"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.7.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4017,6 +4372,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="28c9f95f-f65f-4bff-a969-4a2e7a925e8f"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.7.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4028,6 +4384,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="570efa27-51cf-4f8c-a87f-4fa92c9822a0"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.7.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4039,6 +4396,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="975626bf-5783-4959-8d64-2043d7031210"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.7.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4050,6 +4408,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="802ecd9f-a134-47c9-9042-4f31bbd166e5"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.7.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4062,6 +4421,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >6; NID_EM; Identification Number of the Emergency Stop Message.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.8"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4074,6 +4434,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 18: Revocation of Emergency Stop<Sub>
 <Paragraph
  id="8.7.8.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4086,6 +4447,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.8.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4097,6 +4459,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="38476b93-c284-4743-b820-5a32db31deeb"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.8.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4108,6 +4471,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="59631027-3100-4b17-8b0f-9b4c25f2280c"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.8.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4119,6 +4483,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="9734bf29-4783-41c8-a83d-b5dd1f9e59ff"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.8.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4130,6 +4495,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="70b07924-a97c-4387-a658-118ee1e11735"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.8.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4141,6 +4507,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="3c021d46-d475-455d-89f1-964a18cf302b"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.8.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4153,6 +4520,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >6; NID_EM; Identification Number of the Emergency Stop Message.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.9"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4165,6 +4533,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 24: General message<Sub>
 <Paragraph
  id="8.7.9.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4177,6 +4546,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.9.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4188,6 +4558,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="fc2b0d6b-8022-4c97-896c-1dfbf82fc1d8"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.9.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4199,6 +4570,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="96bce90f-dea0-4c7e-8202-faac9770b7f9"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.9.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4210,6 +4582,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6e8f4323-2b4b-4d94-b604-8a5b082a9bfc"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.9.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4221,6 +4594,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="f5555eef-435e-40bf-a703-0a51fce09fd0"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.9.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4232,6 +4606,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="fe5b6f60-a8a9-4847-b47e-c864ee470f7b"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.9.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4244,6 +4619,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >6; Optional packets;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.10"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4256,6 +4632,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 27: SH Refused<Sub>
 <Paragraph
  id="8.7.10.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4268,6 +4645,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.10.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4279,6 +4657,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="c1921f01-652a-43a0-90fb-a6c43b15c41d"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.10.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4290,6 +4669,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="f19b89ce-b2ff-42a6-a420-f8bfa90c1373"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.10.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4301,6 +4681,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="533aef01-a7b0-47c3-9657-ee1ae797a0f6"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.10.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4312,6 +4693,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="a24929c8-0101-4521-824f-265e13107369"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.10.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4323,6 +4705,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="544c55b8-4adb-437d-a42f-10c3d86a172a"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.10.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4335,6 +4718,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >6; T_TRAIN; Time stamp of the shunting request.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.11"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4347,6 +4731,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 28: SH Authorised<Sub>
 <Paragraph
  id="8.7.11.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4359,6 +4744,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.11.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4370,6 +4756,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="1a78f8c3-1473-411d-b230-cfa3bc7ab867"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.11.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4381,6 +4768,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="0253bf5e-de26-4478-8ba8-7c206576f048"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.11.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4392,6 +4780,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="11afceae-cbc2-4058-98e0-fa38e56c8dcf"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.11.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4403,6 +4792,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="a70d69eb-cab7-4570-8b23-010311ef0f56"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.11.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4414,6 +4804,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="a911a453-6ab6-42cc-b680-1b5050b88825"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.11.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4425,6 +4816,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="3a33cec6-ce20-4658-b166-8106a9728f15"
 >6; T_TRAIN; Time stamp of the shunting request.</Paragraph><Paragraph
  id="8.7.11.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4437,6 +4829,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >7; Optional packets;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.12"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4449,6 +4842,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 32: RBC/RIU System Version<Sub>
 <Paragraph
  id="8.7.12.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4461,6 +4855,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.12.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4472,6 +4867,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="479f1579-c6c4-4d37-bca6-65c2fa12bb97"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.12.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4483,6 +4879,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="22e91507-5c0f-42f8-9dab-1349ee87c523"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.12.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4494,6 +4891,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="607a3a22-f47d-4067-b5de-64b67056c023"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.12.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4505,6 +4903,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="7654ffdb-f6fc-418e-a613-6aff3e5da4f9"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.12.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4516,6 +4915,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="a649082f-fada-4d44-8eaf-dcdec5c4fa59"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.12.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4528,6 +4928,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >6; M_VERSION; Version of the ERTMS/ETCS system.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.13"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4540,6 +4941,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 33: MA with Shifted Location Reference<Sub>
 <Paragraph
  id="8.7.13.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4552,6 +4954,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.13.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4563,6 +4966,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="0123c08b-279e-4b7a-83ba-538a77d3f2c6"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.13.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4574,6 +4978,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="4a3f40b4-9ecf-48d4-aa65-82156d5d1704"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.13.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4585,6 +4990,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="58db2e34-781f-4cf7-a190-e9735078853a"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.13.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4596,6 +5002,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="1eac02a7-f65f-491c-b129-64af269dda72"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.13.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4607,6 +5014,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6d4f4840-da84-41cf-a910-29f79bd5a91d"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.13.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4618,6 +5026,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="419d10d3-b696-49ee-9a6c-6815c48a59a1"
 >6; Q_SCALE;</Paragraph><Paragraph
  id="8.7.13.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4629,6 +5038,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="e01dd30e-e06e-4bf6-a4ea-64228e0ff0c6"
 >7; D_REF; Reference Distance</Paragraph><Paragraph
  id="8.7.13.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4640,6 +5050,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="f642eb96-8b1e-40fe-bd75-33c93ec8f0f8"
 >8; Level 2/3 Movement Authority; Packet 15</Paragraph><Paragraph
  id="8.7.13.10"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4652,6 +5063,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >9; Optional packets;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.14"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4664,6 +5076,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 34: Track Ahead Free Request<Sub>
 <Paragraph
  id="8.7.14.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4676,6 +5089,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.14.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4687,6 +5101,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="a8e1749b-687c-4f1f-9a0a-0d0a57a57753"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.14.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4698,6 +5113,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="a4864287-79ef-4dc8-8557-29df87f10031"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.14.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4709,6 +5125,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="1e61e20d-a6d4-48b9-85e2-9ed7fb895367"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.14.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4720,6 +5137,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="03b2263d-8a37-4293-99be-e6e4eb8f74a0"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.14.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4731,6 +5149,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="0f45a7b6-8329-4a07-81b6-9adaec8d94bf"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.14.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4742,6 +5161,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="33dde37a-3f1e-483b-a868-d015ef1bac56"
 >6; Q_SCALE;</Paragraph><Paragraph
  id="8.7.14.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4753,6 +5173,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="29f36dd7-c647-40cf-9030-9f463cf415a7"
 >7; D_REF;</Paragraph><Paragraph
  id="8.7.14.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4764,6 +5185,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="edaf3b97-1fa8-4cac-9444-ef095299ccfe"
 >8; Q_DIR;</Paragraph><Paragraph
  id="8.7.14.10"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4775,6 +5197,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="53054485-2282-4b77-af7c-25fdf2c537b5"
 >9; D_TAFDISPLAY;</Paragraph><Paragraph
  id="8.7.14.11"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4787,6 +5210,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >10; L_TAFDISPLAY;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.15"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -4799,6 +5223,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 37: Infill MA<Sub>
 <Paragraph
  id="8.7.15.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4811,6 +5236,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.15.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4822,6 +5248,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="e3bc53a0-c005-4a4f-b7ab-dd2b459c825d"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.15.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4833,6 +5260,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="319453ba-ed99-4c93-8cf7-6dcf1bd5af75"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.15.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4844,6 +5272,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="037af489-8dec-41a9-97a7-0470e38d9512"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.15.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4855,6 +5284,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="6e4bd0d6-6e57-478e-ab35-ca9d380ddbf4"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.15.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4866,6 +5296,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="e07dc8f9-c375-4749-8624-70e32f014e6c"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.15.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4877,6 +5308,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="522da3a6-5606-4157-a56b-8aaf15c0e080"
 >6; Infill Location Reference; Packet 136</Paragraph><Paragraph
  id="8.7.15.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4888,6 +5320,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="68874ec2-b9ba-4dbc-8c09-237df06879e8"
 >7; Level 1 Movement Authority; Packet 12</Paragraph><Paragraph
  id="8.7.15.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4900,6 +5333,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >8; Optional packets;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.16"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4912,6 +5346,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 38: Initiation of a communication session<Sub>
 <Paragraph
  id="8.7.16.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4924,6 +5359,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.16.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4935,6 +5371,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="98d6cd49-9a26-46aa-995e-8a64cca7cec7"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.16.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4946,6 +5383,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="96dad3cb-0f5f-45aa-95c8-f58ce4e44d5f"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.16.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -4957,6 +5395,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="25cdefa6-72ed-4ae5-a192-28e214e976dd"
 >3; T_TRAIN; always set to unknown</Paragraph><Paragraph
  id="8.7.16.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4968,6 +5407,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="0e220815-8ec5-4409-83e7-b4cefe7834d5"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.16.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -4980,6 +5420,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >5; NID_LRBG; always set to unknown</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.17"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4992,6 +5433,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 39: Acknowledgement of termination of a communication session<Sub>
 <Paragraph
  id="8.7.17.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5004,6 +5446,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.17.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5015,6 +5458,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="b351109f-973f-42b5-b93a-2c11ae369ab1"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.17.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5026,6 +5470,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="267f4994-3c66-4c86-a8f2-cfba232a5622"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.17.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5037,6 +5482,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="36648251-031c-4183-9b57-39976b6a0a30"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.17.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -5048,6 +5494,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="f868e8e8-7036-4ad2-b54f-b2b69ce62b88"
 >4; M_ACK; always set to 0</Paragraph><Paragraph
  id="8.7.17.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5060,6 +5507,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >5; NID_LRBG;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.18"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5072,6 +5520,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 40: Train Rejected<Sub>
 <Paragraph
  id="8.7.18.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5084,6 +5533,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.18.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5095,6 +5545,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="a590a041-642b-460c-bec7-677c7ba21bf2"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.18.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5106,6 +5557,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="c6116d7e-c3a6-40b5-81f7-4d8a984ea121"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.18.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5117,6 +5569,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="b0115eeb-c047-4cc9-9411-9048e6a397d6"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.18.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5128,6 +5581,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="75ca0bf3-adc6-4162-968a-07f6b3d61211"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.18.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5140,6 +5594,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >5; NID_LRBG;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.19"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5152,6 +5607,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 41: Train Accepted<Sub>
 <Paragraph
  id="8.7.19.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5164,6 +5620,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.19.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5175,6 +5632,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="ed8a8a47-6b0f-46d4-a31e-66432f3bd7b6"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.19.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5186,6 +5644,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="b18c7d8b-3079-4f06-929a-05ca5e8b2e89"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.19.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5197,6 +5656,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="9ff84447-bca6-4d93-a246-f1e5122fcaf2"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.19.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5208,6 +5668,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="1af886d0-4cca-476e-9d54-33a91fe2330a"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.19.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5220,6 +5681,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >5; NID_LRBG;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.20"
+ guid=""
  type="DELETED"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5231,6 +5693,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="1eb1c828-8b69-4c5e-bd8d-2ed082e877fc"
 >Intentionally deleted</Paragraph><Paragraph
  id="8.7.21"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5243,6 +5706,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 43: SoM position report confirmed by RBC<Sub>
 <Paragraph
  id="8.7.21.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5255,6 +5719,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.21.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5266,6 +5731,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="0b531e78-3531-49ff-9047-bdb1d79716cd"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.21.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5277,6 +5743,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="99ce84ee-4b3e-4cb8-937c-230f6d35dc3c"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.21.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5288,6 +5755,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="f6710b9a-fd34-4ba5-bd93-ed44f5bd4650"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.21.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5299,6 +5767,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="806423e8-08f3-4d5f-9255-15dc00d6dc8e"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.21.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5311,6 +5780,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >5; NID_LRBG;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.7.22"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5323,6 +5793,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Message 45: Assignment of coordinate system<Sub>
 <Paragraph
  id="8.7.22.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5335,6 +5806,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
 >Field No.; VARIABLE; Remarks
 </Paragraph><Paragraph
  id="8.7.22.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5346,6 +5818,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="904eea23-8183-44f2-bc1a-9cd164e6a7d2"
 >1; NID_MESSAGE;</Paragraph><Paragraph
  id="8.7.22.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5357,6 +5830,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="7fd481cf-6829-4a1b-8148-dab4e4144a2b"
 >2; L_MESSAGE;</Paragraph><Paragraph
  id="8.7.22.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5368,6 +5842,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="b766d982-24ee-47d9-b7c4-a661d0ec79dc"
 >3; T_TRAIN;</Paragraph><Paragraph
  id="8.7.22.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5379,6 +5854,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="1a3f73ad-aa94-4e0b-ab3f-1d85a74ab67a"
 >4; M_ACK;</Paragraph><Paragraph
  id="8.7.22.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5390,6 +5866,7 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  Guid="0079b85c-7fb3-43a0-aafb-c38c573c0803"
 >5; NID_LRBG;</Paragraph><Paragraph
  id="8.7.22.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""

@@ -4,19 +4,22 @@
 >
 <Paragraph
  id="2.1"
+ guid=""
  type="TITLE"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="49369c23-ccd1-4131-b01e-42cbbf3a36f3"
 >General<Sub>
 <Paragraph
  id="2.1.1.1"
+ guid=""
  type="DEFINITION"
  scope="OBU"
  bl=""
@@ -29,6 +32,7 @@
  Guid="97f12209-d1b7-4e8a-a4e2-3288c14f780e"
 >This chapter describes the functional requirements on all information which is exchanged between ERTMS/ETCS onboard and the Vehicle via the Train Interface.</Paragraph><Paragraph
  id="2.1.1.2"
+ guid=""
  type="DEFINITION"
  scope="OBU"
  bl=""
@@ -41,6 +45,7 @@
  Guid="53acd6ba-79b4-4e17-a613-759cd440eb4b"
 >The information which is exchanged between ERTMS/ETCS onboard and the Vehicle is based on the functionality defined by the ERTMS/ETCS SRS [1]</Paragraph><Paragraph
  id="2.1.1.3"
+ guid=""
  type="DEFINITION"
  scope="OBU"
  bl=""
@@ -53,6 +58,7 @@
  Guid="ad1c2fc2-3eec-4076-b323-52d765bce3a8"
 >Note: Due to its complexity and characteristics, the specification of the interface between ERTMS/ETCS onboard and the recording device in the train is defined in a separate interface specification and therefore not part of the train interface specification.</Paragraph><Paragraph
  id="2.1.1.4"
+ guid=""
  type="DEFINITION"
  scope="OBU"
  bl=""
@@ -67,6 +73,7 @@
 - Input is defined as data flow from Vehicle to ERTMS/ETCS onboard
 - Output is defined as data flow from ERTMS/ETCS onboard to Vehicle.</Paragraph><Paragraph
  id="2.1.1.5"
+ guid=""
  type="DEFINITION"
  scope="OBU"
  bl=""
@@ -80,19 +87,22 @@
 >In this chapter all functional requirements are written as mandatory principles, i.e. using the word &quot;shall&quot;. Whether a function is used in a specific implementation of the Train Interface may depend on the characteristics of the Vehicle.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.2"
+ guid=""
  type="TITLE"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="b2e0f352-0c2b-4677-879f-b71184656510"
 >Mode Control<Sub>
 <Paragraph
  id="2.2.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -105,6 +115,7 @@
 >Sleeping<Sub>
 <Paragraph
  id="2.2.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -119,6 +130,7 @@
 - Sleeping requested
 - Sleeping not requested.</Paragraph><Paragraph
  id="2.2.1.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -131,6 +143,7 @@
  Guid="705d58b9-e6bf-4033-9442-3c725365f693"
 >Note: The input value &quot;Sleeping requested&quot; is used by ERTMS/ETCS onboard as one of the conditions for the transition to Sleeping mode. The other two conditions are &quot;standstill&quot;, which is managed internally in the ERTMS/ETCS onboard and &quot;All desks connected to the ERTMS/ETCS onboard equipment are closed&quot;, equivalent to &quot;All cabs connected to the ERTMS/ETCS onboard equipment are not active&quot;, which is generated internally in the ERTMS/ETCS onboard based on the input values &quot;Cab not active&quot; as defined in 2.5.1 of this document. See also the SRS references in 2.8.</Paragraph><Paragraph
  id="2.2.1.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -144,6 +157,7 @@
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.2.1.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -157,6 +171,7 @@
 >After successful train inauguration, i.e. one master vehicle exists, defined by strictly one activated cab in the train, the information about successful master definition shall be communicated train-wide to all ERTMS/ETCS onboard units by means of the value &quot;Sleeping requested&quot;.<Sub>
 <Paragraph
  id="2.2.1.3.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -170,6 +185,7 @@
 >Exception: The ERTMS/ETCS onboard connected via the cab status input (see 2.5.1) with the active cab may be excluded from getting the &quot;Sleeping requested&quot; information because it is not relevant for this ERTMS/ETCS onboard.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.2.1.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -182,6 +198,7 @@
  Guid="2a74e194-a693-42bc-bac7-ff75e7e642d9"
 >If no active cab exists in the train, this information shall be communicated train-wide to all ERTMS/ETCS onboard units by means of the value &quot;Sleeping not requested&quot;.</Paragraph><Paragraph
  id="2.2.1.3.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -196,6 +213,7 @@
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.2.2"
+ guid=""
  type="TITLE"
  scope="OBU"
  bl=""
@@ -209,6 +227,7 @@
 >Passive shunting<Sub>
 <Paragraph
  id="2.2.2.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -223,6 +242,7 @@
 - Passive shunting permitted
 - Passive shunting not permitted.</Paragraph><Paragraph
  id="2.2.2.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -235,6 +255,7 @@
 >Note: The input value &quot;Passive shunting permitted&quot; is used by ERTMS/ETCS onboard as one of the conditions for the transition to Passive Shunting mode. The other two conditions are &quot;desks are closed&quot;, equivalent to &quot;Cabs are not active&quot;, which is generated internally in the ERTMS/ETCS onboard from the input values &quot;cab not active&quot; as defined in 2.5.1 of this document, and &quot;Continue Shunting on desk closure function
 is active, which is generated internally in ERTMS/ETCS onboard from driver input. See also the SRS references in 2.7.</Paragraph><Paragraph
  id="2.2.2.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -247,6 +268,7 @@ is active, which is generated internally in ERTMS/ETCS onboard from driver input
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.2.2.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -263,6 +285,7 @@ OR
 
 b) Train-wide (i.e. data communication between vehicles in the train requested): Brakes other than the train brake applied (e.g. holding or parking brake), IF they can be released by train-wide command.</Paragraph><Paragraph
  id="2.2.2.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -274,6 +297,7 @@ b) Train-wide (i.e. data communication between vehicles in the train requested):
  Guid="33aa9df2-40c2-4f63-b9c2-a54ade97c129"
 >If none of the conditions in 2.2.2.3.1 is fulfilled, the passive shunting input shall have the value &quot;Passive shunting not permitted&quot;.</Paragraph><Paragraph
  id="2.2.2.3.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -287,6 +311,7 @@ b) Train-wide (i.e. data communication between vehicles in the train requested):
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.2.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -299,6 +324,7 @@ b) Train-wide (i.e. data communication between vehicles in the train requested):
 >Non-Leading<Sub>
 <Paragraph
  id="2.2.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -311,6 +337,7 @@ b) Train-wide (i.e. data communication between vehicles in the train requested):
 >The non-leading information is defined as a two state input with the following values:
 . Non-leading permitted . Non-leading not permitted.</Paragraph><Paragraph
  id="2.2.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -322,6 +349,7 @@ b) Train-wide (i.e. data communication between vehicles in the train requested):
  Guid="14a0113e-9a92-4745-9790-56bec28eace5"
 >Note: The input value &quot;Non-leading permitted&quot; is used by ERTMS/ETCS onboard as one of the conditions for the transition to Non Leading mode. The other two conditions are &quot;standstill&quot; and &quot;Driver selects Non Leading via the DMI&quot; which are managed internally in the ERTMS/ETCS onboard. See also the SRS references in 2.7</Paragraph><Paragraph
  id="2.2.3.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -334,6 +362,7 @@ b) Train-wide (i.e. data communication between vehicles in the train requested):
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.2.3.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -350,6 +379,7 @@ AND
 
 b) Travel direction selected</Paragraph><Paragraph
  id="2.2.3.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -363,6 +393,7 @@ b) Travel direction selected</Paragraph><Paragraph
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.2.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -375,6 +406,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Isolation<Sub>
 <Paragraph
  id="2.2.4.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -387,6 +419,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The isolation information is defined as a two state output with the following values:
 . ETCS isolated . ETCS not isolated.</Paragraph><Paragraph
  id="2.2.4.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -400,18 +433,21 @@ b) Travel direction selected</Paragraph><Paragraph
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.3"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="814737d5-1a86-4bc4-9487-077e479240c8"
 >Control of Brakes<Sub>
 <Paragraph
  id="2.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -424,6 +460,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Service brake command<Sub>
 <Paragraph
  id="2.3.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -436,6 +473,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The service brake command (SBC) is defined as a two state output with the following values:
 . Service brake commanded . Service brake not commanded.</Paragraph><Paragraph
  id="2.3.1.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -447,6 +485,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="bfc16fe6-2364-4975-8d7c-ad98326d1b25"
 >Note: The SBC output is generated by ERTMS/ETCS onboard to command the service brake and to revoke this command.</Paragraph><Paragraph
  id="2.3.1.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -459,6 +498,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.3.1.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -470,6 +510,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="7057d9c0-dca3-4254-b52a-4bfe92452fd5"
 >The SBC output value &quot;Service brake commanded&quot; shall result in the train applying the full service brake and cutting off the traction.</Paragraph><Paragraph
  id="2.3.1.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -481,6 +522,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="a0b5a287-67d7-43ea-aae5-37e7772e2f87"
 >Note: Full service brake means application of 100% of the installed braking performance of the train.</Paragraph><Paragraph
  id="2.3.1.3.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -492,6 +534,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="8ecd522b-24a8-4154-98cb-742652adcf99"
 >The SBC output value &quot;Service brake not commanded&quot; shall result in a release of the service brake, but only to the highest brake level currently commanded by other application(s) or by the driver, and shall permit the traction power to be switched on.</Paragraph><Paragraph
  id="2.3.1.3.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -503,6 +546,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="ac74e4b9-5cb6-496f-84cc-b63c7437e7b5"
 >Note 1: the traction power can be switched on again only after the driver has cancelled the traction command (i.e. after a 0-position-acknowledgement by the traction controller).</Paragraph><Paragraph
  id="2.3.1.3.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -514,6 +558,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="e160c73d-094f-4a38-a4a6-7f4a98f5433a"
 >Note 2: In case of no SB manually applied by the driver and in case of no ASC activated, the SB released by ETCS will automatically cancel the brake application on the train. In case of a gradient, it is possible to have forward movement which must be controlled by driver with his own action on brake. This is acceptable as it is the same situation today (without ETCS).</Paragraph><Paragraph
  id="2.3.1.3.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -527,6 +572,7 @@ b) Travel direction selected</Paragraph><Paragraph
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -539,6 +585,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Brake pressure<Sub>
 <Paragraph
  id="2.3.2.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -551,6 +598,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The brake pressure information is defined as a composite input with the following values:
 . A range from 0 to 6 bar in steps of 0.1 bar.</Paragraph><Paragraph
  id="2.3.2.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -562,6 +610,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="6ea52912-6ef6-43dd-93a4-8cd0603b56a0"
 >Note: The brake pressure input is used by ERTMS/ETCS onboard in the service brake feedback model in [1].</Paragraph><Paragraph
  id="2.3.2.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -574,6 +623,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The following requirements apply to the rolling stock:<Sub>
 <Paragraph
  id="2.3.2.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -585,6 +635,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="5da99ec2-7aab-47ef-840b-e8b05116f1ba"
 >The value of the brake pressure input shall represent either the pressure in the main brake pipe or in the brake cylinder.</Paragraph><Paragraph
  id="2.3.2.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -598,6 +649,7 @@ b) Travel direction selected</Paragraph><Paragraph
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.3.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -610,6 +662,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Emergency brake command<Sub>
 <Paragraph
  id="2.3.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -622,6 +675,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The emergency brake command (EBC) is defined as a two state output with the following values:
 . Emergency brake commanded . Emergency brake not commanded.</Paragraph><Paragraph
  id="2.3.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -633,6 +687,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="983169a7-091c-42ff-9ade-6b4e7172f06b"
 >Note: The EBC output is generated by ERTMS/ETCS onboard to command the emergency brake and to revoke this command.</Paragraph><Paragraph
  id="2.3.3.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -645,6 +700,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The following requirements apply to the rolling stock:<Sub>
 <Paragraph
  id="2.3.3.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -656,6 +712,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="5552dcbb-67b4-4719-b7ea-74d92fa3a017"
 >The EBC output value &quot;Emergency brake commanded&quot; shall result in the train applying the emergency brake and cutting off the traction.</Paragraph><Paragraph
  id="2.3.3.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -667,6 +724,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="3c432473-4ad8-4b8c-aea0-3fe0b4e9aad6"
 >The EBC output value &quot;Emergency brake not commanded&quot; shall permit release of the emergency brake (implementation dependent if brake is released automatically or not, decision made by operator) and shall permit the traction power to be switched on.</Paragraph><Paragraph
  id="2.3.3.3.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -680,6 +738,7 @@ b) Travel direction selected</Paragraph><Paragraph
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.3.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -692,6 +751,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Special brake inhibit  Trackside orders<Sub>
 <Paragraph
  id="2.3.4.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -704,6 +764,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >To be harmonized.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.3.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -716,6 +777,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Special brake inhibit  STM Orders<Sub>
 <Paragraph
  id="2.3.5.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -728,6 +790,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The generic requirement descriptions in this section shall apply to the inhibition of the following special brakes:
 . Regenerative brake . Magnetic shoe brake . Eddy current brake for emergency braking . Eddy current brake for service braking.</Paragraph><Paragraph
  id="2.3.5.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -740,6 +803,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >This special brake information is defined for each special brake as a two state output with the following values:
 . Not inhibited . Inhibited.</Paragraph><Paragraph
  id="2.3.5.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -752,6 +816,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Note: This special brake inhibit output is generated by the ERTMS/ETCS onboard to inform the train that the respective special brake application is to be allowed / inhibited due to an order from STM.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.3.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -764,6 +829,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Special brake status<Sub>
 <Paragraph
  id="2.3.6.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -776,6 +842,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The generic requirement descriptions in this section shall apply to the status of the following special brakes:
 . Regenerative brake . Magnetic shoe brake . Eddy current brake . Electro Pneumatic (EP) brake.</Paragraph><Paragraph
  id="2.3.6.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -787,6 +854,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="b71f094b-9dd3-45f5-92f3-a39fd870cb1b"
 >Note: The specifications for the status of these special brakes are exactly the same and therefore given only once.</Paragraph><Paragraph
  id="2.3.6.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -799,6 +867,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The special brake status information is defined as a two state input with the following values:
 . Special brake active . Special brake not active.</Paragraph><Paragraph
  id="2.3.6.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -810,6 +879,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="03cde933-89e7-47e7-9145-df57f955e647"
 >Note: The special brake status input is used by ERTMS/ETCS onboard to adapt the braking curve model for the characteristics of the service brake, the emergency brake, or both, according to the possible configurations of ERTMS/ETCS onboard as defined in [1].</Paragraph><Paragraph
  id="2.3.6.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -822,6 +892,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.3.6.5.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -833,6 +904,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="58591906-95a2-4114-9175-01e04940dee2"
 >The special brake status input shall have the value &quot;Special brake active&quot; if the special brake is available, i.e. in working condition and not inhibited.</Paragraph><Paragraph
  id="2.3.6.5.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -846,6 +918,7 @@ b) Travel direction selected</Paragraph><Paragraph
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.3.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -858,6 +931,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Additional brake status<Sub>
 <Paragraph
  id="2.3.7.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -870,6 +944,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The additional brake status information (ABS) is defined as a two state input with the following values:
 . Additional brakes active . Additional brakes not active.</Paragraph><Paragraph
  id="2.3.7.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -881,6 +956,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="dd174716-d385-4fbd-be0e-1ccf329bf059"
 >The &quot;additional brakes&quot; are defined as any brakes in the train which are independent of wheel/rail adhesion.</Paragraph><Paragraph
  id="2.3.7.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -892,6 +968,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="cb88b506-7ed8-46a9-988e-3cd7ea95ef7a"
 >Note: The ABS input is used by ERTMS/ETCS onboard to adapt the braking curve model for the characteristics of the additional brakes independent of wheel/rail adhesions, as defined in [1].</Paragraph><Paragraph
  id="2.3.7.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -904,6 +981,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.3.7.4.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -915,6 +993,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="9009bf82-5cb0-4f38-98a1-c69ce36d3845"
 >The ABS input shall have the value &quot;additional brakes active&quot; if the additional brake(s) is/are available, i.e. in working condition and not inhibited.</Paragraph><Paragraph
  id="2.3.7.4.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -929,18 +1008,21 @@ b) Travel direction selected</Paragraph><Paragraph
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.4"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="b12b86f2-bea8-4c73-b264-eba159113859"
 >Control of Train Functions<Sub>
 <Paragraph
  id="2.4.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -953,6 +1035,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Change of traction system<Sub>
 <Paragraph
  id="2.4.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -965,6 +1048,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >To be harmonized.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.4.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -977,6 +1061,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Pantograph  Trackside orders<Sub>
 <Paragraph
  id="2.4.2.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -989,6 +1074,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >To be harmonized.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.4.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1001,6 +1087,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Pantograph  STM orders<Sub>
 <Paragraph
  id="2.4.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1013,6 +1100,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >This pantograph information is defined as a two state output with the following values:
 . Raise . Lower.</Paragraph><Paragraph
  id="2.4.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1025,6 +1113,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Note: This pantograph output is generated by the ERTMS/ETCS onboard to inform the train that the pantograph has to be raised / lowered immediately due to an order from STM.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.4.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1037,6 +1126,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Air tightness  Trackside orders<Sub>
 <Paragraph
  id="2.4.4.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1049,6 +1139,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >To be harmonized.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.4.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1061,6 +1152,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Air tightness  STM orders<Sub>
 <Paragraph
  id="2.4.5.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1073,6 +1165,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >This air tightness information is defined as a two state output with the following values:
 . Open . Close.</Paragraph><Paragraph
  id="2.4.5.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1085,6 +1178,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Note: This air tightness output is generated by the ERTMS/ETCS onboard to inform the train that the flap has to be open / closed immediately due to an order from STM.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.4.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1097,6 +1191,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Passenger Door<Sub>
 <Paragraph
  id="2.4.6.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1109,6 +1204,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >To be harmonized.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.4.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1121,6 +1217,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Main Power Switch  Trackside orders<Sub>
 <Paragraph
  id="2.4.7.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1133,6 +1230,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >To be harmonized.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.4.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1145,6 +1243,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Main Power Switch  STM orders<Sub>
 <Paragraph
  id="2.4.8.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1157,6 +1256,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >This main power switch information is defined as a two state output with the following values:
 . Open . Close.</Paragraph><Paragraph
  id="2.4.8.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1169,6 +1269,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Note: This main power switch output is generated by the ERTMS/ETCS onboard to inform the train that the main switch has to be open / closed immediately due to an order from STM.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.4.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1181,6 +1282,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Traction Cut Off<Sub>
 <Paragraph
  id="2.4.9.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1193,6 +1295,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The traction cut off information (TCO) is defined as a two state output with the following values:
 . Cut off traction . Do not cut off traction.</Paragraph><Paragraph
  id="2.4.9.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1204,6 +1307,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="54fc5d9e-849c-4ae7-9f7d-bfcfe12ee72d"
 >Note: The TCO output is generated by ERTMS/ETCS onboard to cut the traction as soon as it passes the warning limit of the braking curve model as defined in [1] or as a consequence of an STM command.</Paragraph><Paragraph
  id="2.4.9.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1216,6 +1320,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.4.9.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1227,6 +1332,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="70e73fa7-dc62-4ac5-815d-6b05f9b4b92a"
 >The TCO output value &quot;Cut off traction&quot; shall be used by the train to cut off the traction power.</Paragraph><Paragraph
  id="2.4.9.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1240,6 +1346,7 @@ b) Travel direction selected</Paragraph><Paragraph
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.4.10"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1252,6 +1359,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Change of allowed current consumption<Sub>
 <Paragraph
  id="2.4.10.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1265,18 +1373,21 @@ b) Travel direction selected</Paragraph><Paragraph
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.5"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="4e4bf824-24db-4724-b38a-1f3c6dd97931"
 >Train Status<Sub>
 <Paragraph
  id="2.5.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1289,6 +1400,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >Cab Status<Sub>
 <Paragraph
  id="2.5.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1301,6 +1413,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The cab status information is defined as a two state input with the following values:
 . Cab active . Cab not active.</Paragraph><Paragraph
  id="2.5.1.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1312,6 +1425,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="4e985ff8-d185-48ce-8afd-6944a286b13a"
 >Note 1: The cab status input is used by ERTMS/ETCS onboard for various purposes as defined in [1] or by an STM as defined in [3]. The expression &quot;desk open&quot; in [1] is equivalent to &quot;Cab active&quot; and &quot;desk closed&quot; in [1] is equivalent to &quot;Cab not active&quot;.</Paragraph><Paragraph
  id="2.5.1.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1323,6 +1437,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="839d8340-fe74-4358-8e90-bbcbf37f22e7"
 >If there is more than one cab connected to a single ERTMS/ETCS onboard unit, each cab will be connected to its individual input.</Paragraph><Paragraph
  id="2.5.1.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1335,6 +1450,7 @@ b) Travel direction selected</Paragraph><Paragraph
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.5.1.4.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1346,6 +1462,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="940fcf76-9d94-4edc-9b7f-15982740e30b"
 >The cab status input shall have the value &quot;Cab active&quot; if the cab connected to this input is active.</Paragraph><Paragraph
  id="2.5.1.4.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1357,6 +1474,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="a6becdcf-9e47-4430-b668-fe727b9e29e9"
 >Note: The active cab is the cab from which the traction is controlled.</Paragraph><Paragraph
  id="2.5.1.4.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1368,6 +1486,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="6ace0263-f3e3-4b80-802f-7ef76f67ec2d"
 >The cab status input shall have the value &quot;Cab not active&quot; if the cab connected to this input is not active.</Paragraph><Paragraph
  id="2.5.1.4.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1379,6 +1498,7 @@ b) Travel direction selected</Paragraph><Paragraph
  Guid="2285ede8-d6ee-4335-ad56-8651d6bcf99c"
 >For single cab locos with two desks, each related to a different train orientation, each desk will be connected to its individual cab status input.</Paragraph><Paragraph
  id="2.5.1.4.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1392,6 +1512,7 @@ b) Travel direction selected</Paragraph><Paragraph
 Virtual Cab A active = (Cab active) AND (train orientation direction A)
 Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragraph><Paragraph
  id="2.5.1.4.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1403,6 +1524,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  Guid="f601c872-0d40-422d-a9ed-92b3d10c28c7"
 >Note: The train orientation may be obtained from e.g. the head lights of the train.</Paragraph><Paragraph
  id="2.5.1.4.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1416,6 +1538,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.5.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1428,6 +1551,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 >Direction Controller<Sub>
 <Paragraph
  id="2.5.2.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1440,6 +1564,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 >The direction controller information is defined as a three state input with the following values:
 . Forward . Neutral . Backward.</Paragraph><Paragraph
  id="2.5.2.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1451,6 +1576,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  Guid="e3570366-8e7e-4a12-b8eb-61b004744ca2"
 >The notion of forward direction shall correspond to the train orientation defined by the active (virtual) cab as defined in 2.5.1, i.e. when the direction controller is in forward position, this means that the train movement will be in the direction of the active (virtual) cab.</Paragraph><Paragraph
  id="2.5.2.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1462,6 +1588,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  Guid="bf9fab91-97bd-4886-a748-5fe11405b73f"
 >If no cab is active the direction controller information may have any value, but shall be ignored by ERTMS/ETCS onboard.</Paragraph><Paragraph
  id="2.5.2.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1473,6 +1600,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  Guid="172da1f2-b135-469b-b39a-5f6fb0fabb49"
 >Note: The direction controller input is used by ERTMS/ETCS onboard to prevent train movement which conflicts with the current position of the direction controller in the active cab and to detect the driver&apos;s intention to reverse, which is one of the conditions for entering Reversing mode. The direction controller input is also used by an STM as defined in [3].</Paragraph><Paragraph
  id="2.5.2.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1485,6 +1613,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.5.2.5.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1498,6 +1627,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.5.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1510,6 +1640,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 >Train integrity<Sub>
 <Paragraph
  id="2.5.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1522,6 +1653,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 >To be harmonized.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.5.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1534,6 +1666,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 >Traction status<Sub>
 <Paragraph
  id="2.5.4.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1546,6 +1679,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 >The traction status information is defined as a two state input with the following values:
 . On . Off.</Paragraph><Paragraph
  id="2.5.4.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1559,18 +1693,21 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.6"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="fb750e61-2b8d-4339-b488-e6fbe7528e2d"
 >Train Data<Sub>
 <Paragraph
  id="2.6.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1583,6 +1720,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 >Type of train data entry<Sub>
 <Paragraph
  id="2.6.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1596,6 +1734,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 . Fixed . Flexible . Switchable.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.6.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1608,6 +1747,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 >Train data information<Sub>
 <Paragraph
  id="2.6.2.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1621,18 +1761,21 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.7"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="66c68f09-3fcf-423c-8a1f-ed4ba13b7639"
 >National System isolation<Sub>
 <Paragraph
  id="2.7.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1645,6 +1788,7 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 >The National System isolation information is defined as a two state input with the following values:
 . NTC isolated . NTC not isolated.</Paragraph><Paragraph
  id="2.7.1.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1657,18 +1801,21 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 >A NTC isolation input shall be used by the ERTMS/ETCS on-board equipment in case it is interfaced to the National System through an STM and this National System requires isolation of the STM to be implemented.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="2.8"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="7c738480-29dc-4df0-b16a-476e7ab9add2"
 >Reference of functions<Sub>
 <Paragraph
  id="2.8.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1686,39 +1833,45 @@ Input / Output
 Sleeping</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.6"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="5201cbb5-376b-438b-8289-6933ea907ba6"
 >/ 4.6.3
 Input
 Passive shunting</Paragraph><Paragraph
  id="4.4.20"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="fc64e50c-99bf-4348-901c-f717dd882bf4"
 >/ 4.6.3
 Input
 Non-Leading</Paragraph><Paragraph
  id="4.4.15"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="1b41149c-7a2a-4f0d-b976-48d12ecfb3b4"
 >/ 4.6.3
@@ -1729,26 +1882,30 @@ Service brake command
 Output
 Brake pressure</Paragraph><Paragraph
  id="3.13.2.2.7"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="51d04b8c-822d-469d-b7da-151bc4109a72"
 >/ A.3.10
 Input
 Emergency brake command</Paragraph><Paragraph
  id="3.13.10"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="c1b85fe2-40ed-4fe6-afc2-d4d3c87aeb89"
 >/ 3.14.1 / 4.4.4 / 4.4.5 / 4.4.13
@@ -1781,13 +1938,15 @@ Cab Status
 Input
 Direction Controller</Paragraph><Paragraph
  id="3.14.2"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="e6bdbfab-d6c0-4dad-b4d1-2d782ccba782"
 >/ 5.13.1.4
@@ -1796,13 +1955,15 @@ Train integrity
 Input
 Train Data information</Paragraph><Paragraph
  id="3.18.3"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="d08ee0ce-8812-4629-bc01-338964ac0a3f"
 >/ 5.17
@@ -1845,13 +2006,15 @@ Reference in STM [3]
 Input / Output
 National System isolation</Paragraph><Paragraph
  id="10.3.3"
+ guid=""
  type="REQUIREMENT"
- scope="OBU"
+ scope="FLAGS"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
  Name=""
  Guid="809a9c46-8cfc-4188-8203-3166473b2e73"
 >5, 10.3.3.6 e), 10.14.1.2

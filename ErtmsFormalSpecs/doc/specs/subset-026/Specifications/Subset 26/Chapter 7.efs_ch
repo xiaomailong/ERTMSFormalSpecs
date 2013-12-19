@@ -4,19 +4,23 @@
 >
 <Paragraph
  id="7.3"
+ guid=""
  type="TITLE"
- scope="OBU_AND_TRACK"
+ scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
  Name=""
  Guid="e9f610b2-9f7c-4d8b-84ab-5df84d887bee"
 >Components of ERTMS/ETCS Language<Sub>
 <Paragraph
  id="7.3.1"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -30,6 +34,7 @@
 >Introduction<Sub>
 <Paragraph
  id="7.3.1.1"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -42,6 +47,7 @@
  Guid="cead0c44-6366-4ca2-a626-e00cfa850f8b"
 >The ERTMS/ETCS language is used in transmitting information over the radio, balise and loop airgaps.</Paragraph><Paragraph
  id="7.3.1.2"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -54,6 +60,7 @@
  Guid="cafd0c0e-3d25-481a-b449-a3a57d96e195"
 >The ERTMS/ETCS language is based on variables, packets, messages and telegrams (variables and packets are described in this section, while telegrams and messages are described in chapter 8).</Paragraph><Paragraph
  id="7.3.1.3"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -67,6 +74,7 @@
 >Note: A number of variables contain values which have to be assigned. Some of these values have to be unique to ensure that the system functions properly. A centralised handling of this assignment is therefore required (nationally or internationally, depending on the variable). The variables concerned have been marked. The values included in this document for these variables are therefore not to be used without prior verification of their validity. See SUBSET-054 for further details.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.3.2"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -80,6 +88,7 @@
 >Definition of Variables<Sub>
 <Paragraph
  id="7.3.2.1"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -93,6 +102,7 @@
 ><Comment></Comment>
 Variables shall be used to encode single data values. Variables cannot be split in minor units. The whole variable has one type (meaning).</Paragraph><Paragraph
  id="7.3.2.2"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -105,6 +115,7 @@ Variables shall be used to encode single data values. Variables cannot be split 
  Guid="c3751c5d-48dc-4aa7-842d-4e89db7ca37f"
 >Variables may have special values which are related to the basic meaning of the variable.</Paragraph><Paragraph
  id="7.3.2.3"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -117,6 +128,7 @@ Variables shall be used to encode single data values. Variables cannot be split 
  Guid="4fa3b8ce-a8e9-48e6-bcb2-e49ccb90c8af"
 >Special values have always the highest values in a variable (eg. 11...111 = &quot;unknown&quot;).</Paragraph><Paragraph
  id="7.3.2.4"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -129,6 +141,7 @@ Variables shall be used to encode single data values. Variables cannot be split 
  Guid="2f2541af-c981-42bc-bd64-651a34bd0764"
 >Spare values shall be located between the normal and special values in the variable range</Paragraph><Paragraph
  id="7.3.2.5"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -143,6 +156,7 @@ Variables shall be used to encode single data values. Variables cannot be split 
 ><Comment>This requirement is not respected by sections 7 and 8</Comment>
 Names of variables are unique. A variable is used in context with the meaning as described in the variable definition. Variables with different meanings have different names.</Paragraph><Paragraph
  id="7.3.2.6"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -156,6 +170,7 @@ Names of variables are unique. A variable is used in context with the meaning as
 ><Comment></Comment>
 All variable definitions shall be independent of the transport media over which they are used, if used in more than one media.</Paragraph><Paragraph
  id="7.3.2.7"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -169,6 +184,7 @@ All variable definitions shall be independent of the transport media over which 
 ><Comment>Encoding is not handled in the applicative layer</Comment>
 Signed values shall be encoded as 2&apos;s complement.</Paragraph><Paragraph
  id="7.3.2.8"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -182,6 +198,7 @@ Signed values shall be encoded as 2&apos;s complement.</Paragraph><Paragraph
 ><Comment>Encoding is not handled in the applicative layer</Comment>
 One bit variables (Boolean) shall always use 0 for false and 1 for true.</Paragraph><Paragraph
  id="7.3.2.9"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -195,6 +212,7 @@ One bit variables (Boolean) shall always use 0 for false and 1 for true.</Paragr
 ><Comment></Comment>
 Offsets for numerical values shall be avoided (0 shall be used for 0, 1 for 1, etc.) except where justified.</Paragraph><Paragraph
  id="7.3.2.10"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -208,6 +226,7 @@ Offsets for numerical values shall be avoided (0 shall be used for 0, 1 for 1, e
 ><Comment>Encoding is not handled in the applicative layer</Comment>
 When transmitting over the different transmission media, the most significant bit shall be transmitted first.</Paragraph><Paragraph
  id="7.3.2.11"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -222,6 +241,7 @@ When transmitting over the different transmission media, the most significant bi
 All Variables have one of the following prefixes:<Sub>
 <Paragraph
  id="7.3.2.11.1"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -234,6 +254,7 @@ All Variables have one of the following prefixes:<Sub>
  Guid="25d3ff81-92f4-44d6-b2e0-7b1cf06ba4cd"
 >A_; Acceleration</Paragraph><Paragraph
  id="7.3.2.11.2"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -246,6 +267,7 @@ All Variables have one of the following prefixes:<Sub>
  Guid="6cb7e7d2-85e2-4c3d-a8fb-33195840d16f"
 >D_; distance</Paragraph><Paragraph
  id="7.3.2.11.3"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -258,6 +280,7 @@ All Variables have one of the following prefixes:<Sub>
  Guid="7f569cb6-0f41-4ef8-9f39-3b3067d5f858"
 >G_; Gradient</Paragraph><Paragraph
  id="7.3.2.11.4"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -270,6 +293,7 @@ All Variables have one of the following prefixes:<Sub>
  Guid="c7158ae6-c7b0-445a-9a05-2c49557334aa"
 >L_; length</Paragraph><Paragraph
  id="7.3.2.11.5"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -282,6 +306,7 @@ All Variables have one of the following prefixes:<Sub>
  Guid="41724ea3-4599-4f79-809b-11edb3540ead"
 >M_; Miscellaneous</Paragraph><Paragraph
  id="7.3.2.11.6"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -294,6 +319,7 @@ All Variables have one of the following prefixes:<Sub>
  Guid="08c3b05c-e9a6-473b-84b1-648bb81b1feb"
 >N_; Number</Paragraph><Paragraph
  id="7.3.2.11.7"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -306,6 +332,7 @@ All Variables have one of the following prefixes:<Sub>
  Guid="4cedb917-c9ef-4585-a893-a599d2771ed8"
 >NC_; class number</Paragraph><Paragraph
  id="7.3.2.11.8"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -318,6 +345,7 @@ All Variables have one of the following prefixes:<Sub>
  Guid="44bcd3f4-27e3-4dcc-9ec7-043c5c0f1e5c"
 >NID_; identity number</Paragraph><Paragraph
  id="7.3.2.11.9"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -330,6 +358,7 @@ All Variables have one of the following prefixes:<Sub>
  Guid="9f91becb-656b-41d4-893e-3e3c5f4fb433"
 >Q_; Qualifier</Paragraph><Paragraph
  id="7.3.2.11.10"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -342,6 +371,7 @@ All Variables have one of the following prefixes:<Sub>
  Guid="b8b4a8d5-5f84-403b-812c-a2e86a699704"
 >T_; time/date</Paragraph><Paragraph
  id="7.3.2.11.11"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -354,6 +384,7 @@ All Variables have one of the following prefixes:<Sub>
  Guid="4d0b6089-abe7-431d-bb06-defa203b5bae"
 >V_; Speed</Paragraph><Paragraph
  id="7.3.2.11.12"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -368,6 +399,7 @@ All Variables have one of the following prefixes:<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.3.3"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -382,6 +414,7 @@ All Variables have one of the following prefixes:<Sub>
 Definition of Packets<Sub>
 <Paragraph
  id="7.3.3.1"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -394,6 +427,7 @@ Definition of Packets<Sub>
  Guid="fa71b8d0-bd5c-44bd-9e4b-e7045518936f"
 >Packets are multiple variables grouped into a single unit, with a defined internal structure.</Paragraph><Paragraph
  id="7.3.3.2"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -407,6 +441,7 @@ Definition of Packets<Sub>
 >This structure consists of a packet header with:<Sub>
 <Paragraph
  id="7.3.3.2.1"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -421,6 +456,7 @@ Definition of Packets<Sub>
 >- Track to Train: a unique packet number, the length of the packet in bits, the orientation information, optionally the distance scale and an information section containing a defined set of variables. The packet structure is as follows:<Sub>
 <Paragraph
  id="7.3.3.2.1.1"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -433,6 +469,7 @@ Definition of Packets<Sub>
  Guid="1ccbb429-ed95-4488-9a7c-ea855f2d7a70"
 >Number; NID_PACKET; Packet identifier</Paragraph><Paragraph
  id="7.3.3.2.1.2"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -445,6 +482,7 @@ Definition of Packets<Sub>
  Guid="edefd6ab-796c-4dde-98b9-e13f9cfe54d9"
 >Direction; Q_DIR; Specifies the validity direction of transmitted data</Paragraph><Paragraph
  id="7.3.3.2.1.3"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -457,6 +495,7 @@ Definition of Packets<Sub>
  Guid="d5792dd6-f9eb-4d79-b8d4-4182b31b1540"
 >Length; L_PACKET; Number of bits in the packet</Paragraph><Paragraph
  id="7.3.3.2.1.4"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -470,6 +509,7 @@ Definition of Packets<Sub>
 >Scale; Q_SCALE; Specifies which distance scale is used for all distance information within the packet.
 	There is no Q_SCALE variable in packets which do not contain distance information.</Paragraph><Paragraph
  id="7.3.3.2.1.5"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -483,6 +523,7 @@ Definition of Packets<Sub>
 >Information; ......; Well defined set(s) of variables.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.3.3.2.2"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -496,6 +537,7 @@ Definition of Packets<Sub>
 >- Train to Track: a unique packet number, the length of the packet in bits, optionally the distance scale and an information section containing a defined set of variables. The packet structure is as follows:<Sub>
 <Paragraph
  id="7.3.3.2.2.1"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -508,6 +550,7 @@ Definition of Packets<Sub>
  Guid="f7e86070-aa6a-473f-bbb6-b12499b484e7"
 >Number; NID_PACKET; Packet identifier</Paragraph><Paragraph
  id="7.3.3.2.2.2"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -520,6 +563,7 @@ Definition of Packets<Sub>
  Guid="d00b23ec-bf67-4ad8-9c04-f3cb53e23620"
 >Length; L_PACKET; Number of bits in the packet</Paragraph><Paragraph
  id="7.3.3.2.2.3"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -533,6 +577,7 @@ Definition of Packets<Sub>
 >Scale; Q_SCALE; Specifies which distance scale is used for all distance information within the packet.
 	There is no Q_SCALE variable in packets which do not contain distance information.</Paragraph><Paragraph
  id="7.3.3.2.2.4"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -547,6 +592,7 @@ Definition of Packets<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.3.3.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -559,6 +605,7 @@ Definition of Packets<Sub>
  Guid="2f7f414c-d89e-421b-8678-efe87407d56d"
 >The packet definition does not change when transmitted over different transmission media.</Paragraph><Paragraph
  id="7.3.3.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -572,6 +619,7 @@ Definition of Packets<Sub>
 ><Comment></Comment>
 All currently not defined packet identifiers are reserved for future use and shall be considered as invalid values (i.e. like spare values). Exception: reception of information only differing by Y with regards to the highest system version number X supported by on-board (refer to section 3.17.3.11). All future packet definitions shall follow the above defined structure.</Paragraph><Paragraph
  id="7.3.3.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -586,6 +634,7 @@ All currently not defined packet identifiers are reserved for future use and sha
 ><Comment>How are these packets different?</Comment>
 Exception: Packet 0 &quot;Virtual Balise Cover marker&quot; and Packet 255: &quot;End of Telegram&quot; do not follow the above defined structure.</Paragraph><Paragraph
  id="7.3.3.6"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -600,6 +649,7 @@ Exception: Packet 0 &quot;Virtual Balise Cover marker&quot; and Packet 255: &quo
 ><Comment>How many iteration an N_ITER variable may hold ? (in other words, what is the maximum size of the following table ? )</Comment>
 N_ITER specifies the number of iterations of a variable or group of variables which follow.</Paragraph><Paragraph
  id="7.3.3.7"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -612,6 +662,7 @@ N_ITER specifies the number of iterations of a variable or group of variables wh
  Guid="92da1be1-004d-448e-86f4-44df6078e18c"
 >If N_ITER is 0 then no variables follow.</Paragraph><Paragraph
  id="7.3.3.8"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -624,6 +675,7 @@ N_ITER specifies the number of iterations of a variable or group of variables wh
  Guid="1494a64f-93a5-4669-a0e3-58a6a3ba3d7a"
 >Two nested levels of iterations can exist.</Paragraph><Paragraph
  id="7.3.3.9"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -636,6 +688,7 @@ N_ITER specifies the number of iterations of a variable or group of variables wh
  Guid="d3a42de6-3c9d-4b36-bfbf-43fec63a1bfc"
 >If, depending on the value of a previous qualifier variable in the packet, a variable is optional, it is written indented in the packet definition</Paragraph><Paragraph
  id="7.3.3.10"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -649,6 +702,7 @@ N_ITER specifies the number of iterations of a variable or group of variables wh
 >Note: Row &quot;Transmitted by&quot; in the description of a packet specifies which ERTMS/ETCS trackside device (balise, loop, RIU, RBC) can transmit this packet. &quot;Any&quot; means that the packet can be transmitted by a balise, a loop, an RBC and a RIU.<Sub>
 <Paragraph
  id="7.3.3.10.1"
+ guid=""
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -664,20 +718,24 @@ N_ITER specifies the number of iterations of a variable or group of variables wh
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4"
+ guid=""
  type="TITLE"
- scope="OBU_AND_TRACK"
+ scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
  Name=""
  Guid="64c34c9e-cff6-4981-b982-a869794d59ce"
 ><Comment></Comment>
 PACKETS<Sub>
 <Paragraph
  id="7.4.1"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -691,6 +749,7 @@ PACKETS<Sub>
 >List of Packets<Sub>
 <Paragraph
  id="Table 7.4.1.1"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -705,6 +764,7 @@ PACKETS<Sub>
 Packet Number; Packet Name; Page No<Sub>
 <Paragraph
  id="Entry 7.4.1.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -719,6 +779,7 @@ Packet Number; Packet Name; Page No<Sub>
 ><Comment></Comment>
 0; Virtual Balise Cover marker; 11</Paragraph><Paragraph
  id="Entry 7.4.1.1.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -731,6 +792,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="7a2d478a-8db9-4380-9a12-04cc8d22cf6a"
 >2; System Version order; 11</Paragraph><Paragraph
  id="Entry 7.4.1.1.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -743,6 +805,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="967fe971-b137-4079-b900-5f6c1f5f25ff"
 >3; National Values; 11</Paragraph><Paragraph
  id="Entry 7.4.1.1.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -755,6 +818,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="4ae178ee-6db4-474c-aa88-d5f8bd8ea1d7"
 >5; Linking; 14</Paragraph><Paragraph
  id="Entry 7.4.1.1.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -769,6 +833,7 @@ Packet Number; Packet Name; Page No<Sub>
 ><Comment></Comment>
 6; Virtual Balise Cover order; 15</Paragraph><Paragraph
  id="Entry 7.4.1.1.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -781,6 +846,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="ab682687-0117-4289-925f-65a6680a3644"
 >12; Level 1 Movement Authority; 15</Paragraph><Paragraph
  id="Entry 7.4.1.1.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -793,6 +859,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="97d89d9f-5e50-4833-b2d7-a8d16c30ac35"
 >13; Staff Responsible distance information from loop; 17</Paragraph><Paragraph
  id="Entry 7.4.1.1.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -805,6 +872,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="200c6541-d8d8-43b9-b5c0-4f586318bbce"
 >15; Level 2/3 Movement Authority; 17</Paragraph><Paragraph
  id="Entry 7.4.1.1.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -817,6 +885,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="08e951b3-e2c5-45bd-a768-68580e2d4307"
 >16; Repositioning Information; 18</Paragraph><Paragraph
  id="Entry 7.4.1.1.10"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -829,6 +898,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="91c896f9-c3d0-473b-bb99-e2dfb219ae1d"
 >21; Gradient Profile; 18</Paragraph><Paragraph
  id="Entry 7.4.1.1.11"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -841,6 +911,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="9570bc20-fe09-49cb-8e1d-d7adbb5fdfbc"
 >27; International Static Speed Profile; 18</Paragraph><Paragraph
  id="Entry 7.4.1.1.12"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -853,6 +924,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="2559c745-3a6f-444a-b3bd-fb143a2a1fc6"
 >39; Track Condition Change of traction system; 19</Paragraph><Paragraph
  id="Entry 7.4.1.1.13"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -865,6 +937,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="3b292c0a-1360-49a7-9047-9707757f6e7b"
 >40; Track Condition Change of allowed current consumption; 20</Paragraph><Paragraph
  id="Entry 7.4.1.1.14"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -877,6 +950,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="6b26f38c-d98d-4eee-a314-ae6b48256d36"
 >41; Level Transition Order; 20</Paragraph><Paragraph
  id="Entry 7.4.1.1.15"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -889,6 +963,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="ff45f18e-7a7b-412e-8847-569b6605d632"
 >42; Session Management; 21</Paragraph><Paragraph
  id="Entry 7.4.1.1.16"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -901,6 +976,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="6df398cf-cf5e-4d82-81d0-2f1cf9a373dd"
 >44; Data used by applications outside the ERTMS/ETCS system.; 21</Paragraph><Paragraph
  id="Entry 7.4.1.1.17"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -913,6 +989,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="6476afb5-0645-4298-926a-e67147752ddf"
 >45; Radio Network registration; 21</Paragraph><Paragraph
  id="Entry 7.4.1.1.18"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -925,6 +1002,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="51ddbc44-360a-4339-9b7c-fc91347a5da2"
 >46; Conditional Level Transition Order; 21</Paragraph><Paragraph
  id="Entry 7.4.1.1.19"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -937,6 +1015,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="d52b6935-7a67-4676-ae5b-0c905452c8d3"
 >49; List of balises for SH Area; 22</Paragraph><Paragraph
  id="Entry 7.4.1.1.20"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -949,6 +1028,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="a3345820-31df-4b78-835f-d02b8d42d3bc"
 >51; Axle load Speed Profile; 22</Paragraph><Paragraph
  id="Entry 7.4.1.1.21"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -961,6 +1041,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="1b02a3e8-5313-4a1e-8209-c203e96ab40f"
 >52; Permitted Braking Distance Information; 23</Paragraph><Paragraph
  id="Entry 7.4.1.1.22"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -973,6 +1054,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="3a8b8f9a-8f3d-48b3-a57f-4955397ec4cb"
 >57; Movement Authority Request Parameters; 24</Paragraph><Paragraph
  id="Entry 7.4.1.1.23"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -985,6 +1067,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="0536f7d3-e066-46cf-b0ad-1cbd509d2e5d"
 >58; Position Report Parameters; 24</Paragraph><Paragraph
  id="Entry 7.4.1.1.24"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -997,6 +1080,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="24114d6c-706d-4acb-bc98-e1729e311f76"
 >63; List of Balises in SR Authority; 25</Paragraph><Paragraph
  id="Entry 7.4.1.1.25"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1009,6 +1093,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="21e37f96-9722-47c7-aa9c-e34cbf92f441"
 >64; Inhibition of revocable TSRs from balises in L2/3; 25</Paragraph><Paragraph
  id="Entry 7.4.1.1.26"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1021,6 +1106,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="37cb1c8d-6ea0-43c6-85a9-6ce724bf590e"
 >65; Temporary Speed Restriction; 25</Paragraph><Paragraph
  id="Entry 7.4.1.1.27"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1033,6 +1119,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="fcf6574b-fd16-4246-81d9-07cda44db502"
 >66; Temporary Speed Restriction Revocation; 26</Paragraph><Paragraph
  id="Entry 7.4.1.1.28"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1045,6 +1132,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="a013028b-ded7-4e9f-9521-43654f2cb992"
 >67; Track Condition Big Metal Masses; 26</Paragraph><Paragraph
  id="Entry 7.4.1.1.29"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1057,6 +1145,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="46ff0663-ed84-4dea-af46-b87941a77c51"
 >68; Track Condition; 26</Paragraph><Paragraph
  id="Entry 7.4.1.1.30"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1069,6 +1158,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="47c59e98-996c-4daa-84b7-bda20f4e45ac"
 >69; Track Condition Station Platforms; 27</Paragraph><Paragraph
  id="Entry 7.4.1.1.31"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1081,6 +1171,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="655cd82d-364d-40cf-9540-62e1d8292f94"
 >70; Route Suitability Data; 27</Paragraph><Paragraph
  id="Entry 7.4.1.1.32"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1093,6 +1184,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="7ee3b877-7ff2-4541-aa86-6af70c0cb7c6"
 >71; Adhesion Factor; 28</Paragraph><Paragraph
  id="Entry 7.4.1.1.33"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1105,6 +1197,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="cc1f66d4-6eec-4fe4-a302-2e6287ccb3f0"
 >72; Packet for sending plain text messages; 29</Paragraph><Paragraph
  id="Entry 7.4.1.1.34"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1117,6 +1210,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="85fef952-5e74-4514-b7d4-1c70f23587c0"
 >76; Packet for sending fixed text messages; 29</Paragraph><Paragraph
  id="Entry 7.4.1.1.35"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1129,6 +1223,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="16e1df6b-c27b-4c82-8dcf-37b394753241"
 >79; Geographical Position Information; 30</Paragraph><Paragraph
  id="Entry 7.4.1.1.36"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1141,6 +1236,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="98b78c68-b649-45c4-9dd8-6bfbf4a8f9c1"
 >80; Mode profile; 31</Paragraph><Paragraph
  id="Entry 7.4.1.1.37"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1153,6 +1249,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="8a060a51-4b93-4eb7-aa9b-5b5c264b6820"
 >88; Level crossing information; 32</Paragraph><Paragraph
  id="Entry 7.4.1.1.38"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1165,6 +1262,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="864033cc-a0bd-4284-9de8-2572cad9faf5"
 >90; Track Ahead Free up to level 2/3 transition location; 32</Paragraph><Paragraph
  id="Entry 7.4.1.1.39"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1177,6 +1275,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="813504ec-6af8-4d96-be72-5e3b6b595a0a"
 >131; RBC transition order; 32</Paragraph><Paragraph
  id="Entry 7.4.1.1.40"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1189,6 +1288,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="48f89af6-963e-401c-b92f-a9358f6df7a4"
 >132; Danger for Shunting information; 33</Paragraph><Paragraph
  id="Entry 7.4.1.1.41"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1201,6 +1301,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="f3c31ac1-3728-48ff-a099-c2f6808712b0"
 >133; Radio infill area information; 33</Paragraph><Paragraph
  id="Entry 7.4.1.1.42"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1213,6 +1314,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="1375894a-1b97-4d13-876d-a091b245a852"
 >134; EOLM Packet; 33</Paragraph><Paragraph
  id="Entry 7.4.1.1.43"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1225,6 +1327,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="af105028-3643-45a9-b6f2-a80c426a9b7d"
 >135; Stop Shunting on desk opening; 34</Paragraph><Paragraph
  id="Entry 7.4.1.1.44"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1237,6 +1340,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="041247c0-323f-4ba8-8e1f-5b5a3232d83b"
 >136; Infill location reference; 34</Paragraph><Paragraph
  id="Entry 7.4.1.1.45"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1249,6 +1353,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="31fb455b-2925-497c-b09a-b8b9573a81ff"
 >137; Stop if in Staff Responsible; 34</Paragraph><Paragraph
  id="Entry 7.4.1.1.46"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1261,6 +1366,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="f32ad7de-67d9-4075-bb38-75a13996ad98"
 >138; Reversing area information; 35</Paragraph><Paragraph
  id="Entry 7.4.1.1.47"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1273,6 +1379,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="c93e250c-fc42-406f-9706-6ec7488b8982"
 >139; Reversing supervision information; 35</Paragraph><Paragraph
  id="Entry 7.4.1.1.48"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1285,6 +1392,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="f2880676-9271-4b14-ae51-9d4a0aa02802"
 >140; Train running number from RBC; 35</Paragraph><Paragraph
  id="Entry 7.4.1.1.49"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1297,6 +1405,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="e7979a56-555a-422e-9a04-9210ecca2b25"
 >141; Default Gradient for Temporary Speed Restriction; 35</Paragraph><Paragraph
  id="Entry 7.4.1.1.50"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1309,6 +1418,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="2eea8192-52be-4f30-ba17-905285f1c136"
 >143; Session Management with neighbouring Radio Infill Unit; 36</Paragraph><Paragraph
  id="Entry 7.4.1.1.51"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1321,6 +1431,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="a75f8e41-42b7-4bc1-a2c2-27a5f6e2b0e2"
 >145; Inhibition of balise group message consistency reaction; 36</Paragraph><Paragraph
  id="Entry 7.4.1.1.52"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1334,6 +1445,7 @@ Packet Number; Packet Name; Page No<Sub>
 >254; Default balise, loop or RIU information; 36</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Table 7.4.1.2"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1348,6 +1460,7 @@ Packet Number; Packet Name; Page No<Sub>
 Packet Number; Packet Name; Page No<Sub>
 <Paragraph
  id="Entry 7.4.1.2.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1360,6 +1473,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="c777f0b7-86fb-438a-91dc-20b12ceec0b0"
 >0; Position Report; 37</Paragraph><Paragraph
  id="Entry 7.4.1.2.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1372,6 +1486,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="bc9d05af-2451-4f8c-8e90-24b256a572fa"
 >1; Position Report based on two balise groups; 37</Paragraph><Paragraph
  id="Entry 7.4.1.2.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1384,6 +1499,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="a0a1a643-5cf9-4392-b573-9ea14a76a3e7"
 >3; Onboard telephone numbers; 38</Paragraph><Paragraph
  id="Entry 7.4.1.2.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1396,6 +1512,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="65c0616d-9c81-42f1-907b-c71e0d73d3ff"
 >4; Error Reporting; 38</Paragraph><Paragraph
  id="Entry 7.4.1.2.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1408,6 +1525,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="dff427f0-8487-4b4d-992a-860128460d6b"
 >5; Train running number; 39</Paragraph><Paragraph
  id="Entry 7.4.1.2.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1420,6 +1538,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="5eb8fd0b-fa1d-4294-8ba2-e2a4359a4e3c"
 >9; Level 2/3 transition information; 39</Paragraph><Paragraph
  id="Entry 7.4.1.2.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1432,6 +1551,7 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="314a65fb-2b09-4631-8372-2420970cec84"
 >11; Validated train data; 39</Paragraph><Paragraph
  id="Entry 7.4.1.2.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1445,6 +1565,7 @@ Packet Number; Packet Name; Page No<Sub>
 >44; Data used by applications outside the ERTMS/ETCS system.; 40</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Table 7.4.1.3"
+ guid=""
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1459,6 +1580,7 @@ Packet Number; Packet Name; Page No<Sub>
 Packet Number; Packet Name; Page No<Sub>
 <Paragraph
  id="7.4.1.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1473,6 +1595,7 @@ Packet Number; Packet Name; Page No<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1486,6 +1609,7 @@ Packet Number; Packet Name; Page No<Sub>
 >PACKETS: TRACK TO TRAIN<Sub>
 <Paragraph
  id="7.4.2.0"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1500,6 +1624,7 @@ Packet Number; Packet Name; Page No<Sub>
 Packet Number 0: Virtual Balise Cover marker<Sub>
 <Paragraph
  id="7.4.2.0.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -1517,6 +1642,7 @@ Indication to on-board that the telegram can be ignored according to a VBC
     NID_VBCMK  [6]</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1530,6 +1656,7 @@ Indication to on-board that the telegram can be ignored according to a VBC
 >Packet Number 2: System Version order<Sub>
 <Paragraph
  id="7.4.2.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1575,6 +1702,7 @@ Indication to on-board that the telegram can be ignored according to a VBC
 </Message>
 </Paragraph><Paragraph
  id="7.4.2.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1588,6 +1716,7 @@ Indication to on-board that the telegram can be ignored according to a VBC
 >Packet Number 3: National Values<Sub>
 <Paragraph
  id="7.4.2.1.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2062,6 +2191,7 @@ Downloads a set of National Values to the train
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2076,6 +2206,7 @@ Downloads a set of National Values to the train
 Packet Number 5: Linking<Sub>
 <Paragraph
  id="7.4.2.2.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2227,6 +2358,7 @@ Packet Number 5: Linking<Sub>
 </Message>
 </Paragraph><Paragraph
  id="7.4.2.2.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2241,6 +2373,7 @@ Packet Number 5: Linking<Sub>
 >Packet Number 6: Virtual Balise Cover order<Sub>
 <Paragraph
  id="7.4.2.2.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2263,6 +2396,7 @@ Packet Number 5: Linking<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2277,6 +2411,7 @@ Packet Number 5: Linking<Sub>
 Packet Number 12: Level 1 Movement Authority<Sub>
 <Paragraph
  id="7.4.2.3.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2486,6 +2621,7 @@ Transmission of a movement authority for level 1.
 </Message>
 </Paragraph><Paragraph
  id="7.4.2.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2500,6 +2636,7 @@ Transmission of a movement authority for level 1.
 Packet Number 13: Staff Responsible distance Information from loop<Sub>
 <Paragraph
  id="7.4.2.3.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2631,6 +2768,7 @@ Packet Number 13: Staff Responsible distance Information from loop<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2645,6 +2783,7 @@ Packet Number 13: Staff Responsible distance Information from loop<Sub>
 Packet Number 15: Level 2/3 Movement Authority<Sub>
 <Paragraph
  id="7.4.2.4.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2847,6 +2986,7 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2860,6 +3000,7 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
 >Packet Number 16: Repositioning Information<Sub>
 <Paragraph
  id="7.4.2.5.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2913,6 +3054,7 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2926,6 +3068,7 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
 >Packet Number 21: Gradient Profile<Sub>
 <Paragraph
  id="7.4.2.6.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3021,6 +3164,7 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3034,6 +3178,7 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
 >Packet Number 27: International Static Speed Profile<Sub>
 <Paragraph
  id="7.4.2.7.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3199,6 +3344,7 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -3213,6 +3359,7 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
 Packet Number 39: Track Condition Change of traction system<Sub>
 <Paragraph
  id="7.4.2.8.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3282,6 +3429,7 @@ The packet gives information about change of the traction system.
 </Message>
 </Paragraph><Paragraph
  id="7.4.2.8.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3296,6 +3444,7 @@ The packet gives information about change of the traction system.
 Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 <Paragraph
  id="7.4.2.8.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3357,6 +3506,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3370,6 +3520,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 >Packet Number 41: Level Transition Order<Sub>
 <Paragraph
  id="7.4.2.9.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3474,6 +3625,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.10"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3487,6 +3639,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 >Packet Number 42: Session Management<Sub>
 <Paragraph
  id="7.4.2.10.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3562,6 +3715,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.11"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3575,6 +3729,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 >Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
 <Paragraph
  id="7.4.2.11.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3635,6 +3790,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 </Message>
 </Paragraph><Paragraph
  id="7.4.2.11.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3648,6 +3804,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 >Packet Number 45: Radio Network registration<Sub>
 <Paragraph
  id="7.4.2.11.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3695,6 +3852,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.11.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3708,6 +3866,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 >Packet Number 46: Conditional Level Transition Order<Sub>
 <Paragraph
  id="7.4.2.11.2.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3786,6 +3945,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.12"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3799,6 +3959,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 >Packet Number 49: List of balises for SH Area<Sub>
 <Paragraph
  id="7.4.2.12.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3867,6 +4028,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.13"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3881,6 +4043,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 Packet Number 51: Axle Load Speed Profile<Sub>
 <Paragraph
  id="7.4.2.13.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -4035,6 +4198,7 @@ This packet gives the speed restrictions for trains with axle load category high
 </Message>
 </Paragraph><Paragraph
  id="7.4.2.13.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4048,6 +4212,7 @@ This packet gives the speed restrictions for trains with axle load category high
 >Packet 52: Permitted Braking Distance Information<Sub>
 <Paragraph
  id="7.4.2.13.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4201,6 +4366,7 @@ This packet requests the on-board calculation of speed restrictions which ensure
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.14"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4215,6 +4381,7 @@ This packet requests the on-board calculation of speed restrictions which ensure
 Packet Number 57: Movement Authority Request Parameters<Sub>
 <Paragraph
  id="7.4.2.14.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4276,6 +4443,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.15"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4289,6 +4457,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 >Packet Number 58: Position Report Parameters<Sub>
 <Paragraph
  id="7.4.2.15.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4377,6 +4546,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.16"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4390,6 +4560,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 >Packet Number 63: List of Balises in SR Authority<Sub>
 <Paragraph
  id="7.4.2.16.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4458,6 +4629,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 </Message>
 </Paragraph><Paragraph
  id="7.4.2.16.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4471,6 +4643,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 >Packet Number 64: Inhibition of revocable TSRs from balises in L2/3<Sub>
 <Paragraph
  id="7.4.2.16.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4512,6 +4685,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.17"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4525,6 +4699,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 >Packet Number 65: Temporary Speed Restriction<Sub>
 <Paragraph
  id="7.4.2.17.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4606,6 +4781,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.18"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4619,6 +4795,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 >Packet Number 66: Temporary Speed Restriction Revocation<Sub>
 <Paragraph
  id="7.4.2.18.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4665,6 +4842,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.19"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4678,6 +4856,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 >Packet Number 67: Track Condition Big Metal Masses<Sub>
 <Paragraph
  id="7.4.2.19.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4759,6 +4938,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.20"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4772,6 +4952,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 >Packet Number 68: Track Condition<Sub>
 <Paragraph
  id="7.4.2.20.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4880,6 +5061,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 </Message>
 </Paragraph><Paragraph
  id="7.4.2.20.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4893,6 +5075,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 >Packet Number 69: Track Condition Station Platforms<Sub>
 <Paragraph
  id="7.4.2.20.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5017,6 +5200,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.21"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5030,6 +5214,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
 >Packet Number 70:  Route Suitability Data<Sub>
 <Paragraph
  id="7.4.2.21.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5188,6 +5373,7 @@ The packet gives the characteristics needed to enter a route.
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.22"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5202,6 +5388,7 @@ The packet gives the characteristics needed to enter a route.
 Packet number 71: Adhesion factor<Sub>
 <Paragraph
  id="7.4.2.22.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5269,6 +5456,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.23"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5282,6 +5470,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 72: Packet for sending plain text messages<Sub>
 <Paragraph
  id="7.4.2.23.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5463,6 +5652,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.24"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5476,6 +5666,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 76: Packet for sending fixed text messages<Sub>
 <Paragraph
  id="7.4.2.24.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5650,6 +5841,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.25"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5663,6 +5855,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 79: Geographical Position Information<Sub>
 <Paragraph
  id="7.4.2.25.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5802,6 +5995,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.26"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5815,6 +6009,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 80: Mode profile<Sub>
 <Paragraph
  id="7.4.2.26.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5951,6 +6146,7 @@ Packet number 71: Adhesion factor<Sub>
 </Message>
 </Paragraph><Paragraph
  id="7.4.2.26.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5964,6 +6160,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 88: Level Crossing information<Sub>
 <Paragraph
  id="7.4.2.26.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6059,6 +6256,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.26.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6072,6 +6270,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 90: Track Ahead Free up to level 2/3 transition location<Sub>
 <Paragraph
  id="7.4.2.26.2.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6133,6 +6332,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.27"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6146,6 +6346,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 131: RBC transition order<Sub>
 <Paragraph
  id="7.4.2.27.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6228,6 +6429,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.28"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6241,6 +6443,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 132: Danger for Shunting information<Sub>
 <Paragraph
  id="7.4.2.28.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6287,6 +6490,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.29"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -6300,6 +6504,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 133: Radio infill area information<Sub>
 <Paragraph
  id="7.4.2.29.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6394,6 +6599,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.30"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6407,6 +6613,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 134: EOLM Packet<Sub>
 <Paragraph
  id="7.4.2.30.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6488,6 +6695,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.31"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -6501,6 +6709,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 135: Stop Shunting on desk opening<Sub>
 <Paragraph
  id="7.4.2.31.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -6540,6 +6749,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.32"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6553,6 +6763,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 136: Infill location reference<Sub>
 <Paragraph
  id="7.4.2.32.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6614,6 +6825,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.33"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6627,6 +6839,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 137: Stop if in Staff Responsible<Sub>
 <Paragraph
  id="7.4.2.33.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6673,6 +6886,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.34"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6686,6 +6900,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 138: Reversing area information<Sub>
 <Paragraph
  id="7.4.2.34.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6746,6 +6961,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.35"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6759,6 +6975,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 139: Reversing supervision information<Sub>
 <Paragraph
  id="7.4.2.35.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6819,6 +7036,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.36"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6832,6 +7050,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 140: Train running number from RBC<Sub>
 <Paragraph
  id="7.4.2.36.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6879,6 +7098,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.37"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6892,6 +7112,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 141: Default Gradient for Temporary Speed Restriction<Sub>
 <Paragraph
  id="7.4.2.37.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6944,6 +7165,7 @@ Packet number 71: Adhesion factor<Sub>
 </Message>
 </Paragraph><Paragraph
  id="7.4.2.37.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6957,6 +7179,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 143: Session Management with neighbouring Radio Infill Unit<Sub>
 <Paragraph
  id="7.4.2.37.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7025,6 +7248,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.37.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -7038,6 +7262,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 145: Inhibition of balise group message consistency reaction<Sub>
 <Paragraph
  id="7.4.2.37.2.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -7078,6 +7303,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.38"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7091,6 +7317,7 @@ Packet number 71: Adhesion factor<Sub>
 >Packet Number 254: Default balise, loop or RIU information<Sub>
 <Paragraph
  id="7.4.2.38.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7132,6 +7359,7 @@ Packet number 71: Adhesion factor<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.3"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7146,6 +7374,7 @@ Packet number 71: Adhesion factor<Sub>
 PACKETS: TRAIN TO TRACK<Sub>
 <Paragraph
  id="7.4.3.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7160,6 +7389,7 @@ PACKETS: TRAIN TO TRACK<Sub>
 Packet Number 0: Position Report<Sub>
 <Paragraph
  id="7.4.3.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7293,6 +7523,7 @@ This packet is used to report the train position and speed as well as some addit
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.3.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7306,6 +7537,7 @@ This packet is used to report the train position and speed as well as some addit
 >Packet Number 1: Position Report based on two balise groups<Sub>
 <Paragraph
  id="7.4.3.2.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7445,6 +7677,7 @@ This packet is used to report the train position and speed as well as some addit
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.3.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7458,6 +7691,7 @@ This packet is used to report the train position and speed as well as some addit
 >Packet Number 3: Onboard telephone numbers<Sub>
 <Paragraph
  id="7.4.3.3.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7505,6 +7739,7 @@ This packet is used to report the train position and speed as well as some addit
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.3.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7518,6 +7753,7 @@ This packet is used to report the train position and speed as well as some addit
 >Packet Number 4: Error reporting<Sub>
 <Paragraph
  id="7.4.3.4.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7557,6 +7793,7 @@ This packet is used to report the train position and speed as well as some addit
 </Message>
 </Paragraph><Paragraph
  id="7.4.3.4.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7570,6 +7807,7 @@ This packet is used to report the train position and speed as well as some addit
 >Packet Number 5: Train running number<Sub>
 <Paragraph
  id="7.4.3.4.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7610,6 +7848,7 @@ This packet is used to report the train position and speed as well as some addit
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.3.4.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7623,6 +7862,7 @@ This packet is used to report the train position and speed as well as some addit
 >Packet Number 9: Level 2/3 transition information<Sub>
 <Paragraph
  id="7.4.3.4.2.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7664,6 +7904,7 @@ This packet is used to report the train position and speed as well as some addit
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.3.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7677,6 +7918,7 @@ This packet is used to report the train position and speed as well as some addit
 >Packet Number 11: Validated train data<Sub>
 <Paragraph
  id="7.4.3.5.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7806,6 +8048,7 @@ Validated train data.
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.3.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7820,6 +8063,7 @@ Validated train data.
 Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
 <Paragraph
  id="7.4.3.6.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7868,6 +8112,7 @@ Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.4"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7881,6 +8126,7 @@ Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
 >PACKETS: TRACK TO TRAIN or TRAIN TO TRACK<Sub>
 <Paragraph
  id="7.4.4.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7894,6 +8140,7 @@ Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
 >Packet Number 255: End of Information<Sub>
 <Paragraph
  id="7.4.4.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7922,8 +8169,9 @@ Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5"
+ guid=""
  type="TITLE"
- scope="OBU_AND_TRACK"
+ scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
@@ -7931,12 +8179,15 @@ Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
  version="3.0.0"
  functionalBlock="TRUE"
  functionalBlockName="7.5 Definitions of Variables"
+ onboard="TRUE"
+ trackside="TRUE"
  Name=""
  Guid="94cdbb18-8f44-400c-a016-8a2fd726cd03"
 ><Comment></Comment>
 Definitions of Variables<Sub>
 <Paragraph
  id="7.5.0"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7952,6 +8203,7 @@ Definitions of Variables<Sub>
 <Sub>
 <Paragraph
  id="7.5.0.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7990,6 +8242,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.0.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8028,6 +8281,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.0.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8066,6 +8320,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.0.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8100,6 +8355,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.0.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8135,6 +8391,7 @@ Values:
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1"
+ guid=""
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8150,6 +8407,7 @@ Values:
 <Sub>
 <Paragraph
  id="7.5.1.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8181,6 +8439,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8200,6 +8459,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.2.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8244,6 +8504,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8265,6 +8526,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.3.0"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8306,6 +8568,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8336,6 +8599,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8369,6 +8633,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8399,6 +8664,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.7"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8429,6 +8695,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.8"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8461,6 +8728,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.9"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8479,6 +8747,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.9.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8519,6 +8788,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.10"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8549,6 +8819,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.11"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8579,6 +8850,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.12"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8599,6 +8871,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.12.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8640,6 +8913,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.13"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8659,6 +8933,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.13.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8677,6 +8952,7 @@ Values:
             Type: unknown
             Value: Unknown</Paragraph><Paragraph
  id="7.5.1.13.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8716,6 +8992,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.14"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8747,6 +9024,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.15"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8780,6 +9058,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.16"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8813,6 +9092,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.17"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8833,6 +9113,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.17.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8874,6 +9155,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.18"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8894,6 +9176,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.18.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8935,6 +9218,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.19"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8954,6 +9238,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.19.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8985,6 +9270,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.19.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9016,6 +9302,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.20"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9050,6 +9337,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.21"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9080,6 +9368,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.22"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9102,6 +9391,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.22.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9143,6 +9433,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.23"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9164,6 +9455,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.23.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9205,6 +9497,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.24"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9235,6 +9528,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.25"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9255,6 +9549,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.25.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9296,6 +9591,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.26"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9326,6 +9622,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.27"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9356,6 +9653,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.28"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9386,6 +9684,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.29"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9419,6 +9718,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.30"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9449,6 +9749,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.31"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9467,6 +9768,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.31.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9507,6 +9809,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.32"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9540,6 +9843,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.33"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9573,6 +9877,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.34"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9603,6 +9908,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.35"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9633,6 +9939,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.36"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9651,6 +9958,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.36.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9692,6 +10000,7 @@ SpecialOrReservedValues:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.37"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9713,6 +10022,7 @@ Values:
     ResolutionFormula: value: 1, units: per-thousand<Sub>
 <Paragraph
  id="7.5.1.37.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9732,6 +10042,7 @@ SpecialOrReservedValues:
             Type: enum
             Value: Non numerical value telling that the current gradient description ends at D_GRADIENT(n)</Paragraph><Paragraph
  id="7.5.1.37.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9775,6 +10086,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.38"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9809,6 +10121,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.39"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9839,6 +10152,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.40"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9869,6 +10183,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.41"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9902,6 +10217,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.42"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9932,6 +10248,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.43"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9953,6 +10270,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.43.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9995,6 +10313,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.44"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10016,6 +10335,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.44.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10058,6 +10378,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.45"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10088,6 +10409,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.46"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10109,6 +10431,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.46.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10126,6 +10449,7 @@ Values:
             Type: unknown
             Value: Unknown</Paragraph><Paragraph
  id="7.5.1.46.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10179,6 +10503,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.47"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10198,6 +10523,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.47.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10238,6 +10564,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.48"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10259,6 +10586,7 @@ Values:
     ResolutionFormula: value: 1, units: abyte<Sub>
 <Paragraph
  id="7.5.1.48.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10278,6 +10606,7 @@ Length: 5 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
  id="7.5.1.48.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10420,6 +10749,7 @@ Baseline: 3.2.0<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.49"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10441,6 +10771,7 @@ Values:
     ResolutionFormula: value: 1, units: abit<Sub>
 <Paragraph
  id="7.5.1.49.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10486,6 +10817,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.50"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10517,6 +10849,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.51"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10535,6 +10868,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.51.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10579,6 +10913,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.52"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10610,6 +10945,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.53"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10643,6 +10979,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.54"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10661,6 +10998,7 @@ Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
  id="7.5.1.54.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10701,6 +11039,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.55"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10731,6 +11070,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.56"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10764,6 +11104,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.57"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10794,6 +11135,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.58"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10824,6 +11166,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.59"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10842,6 +11185,7 @@ Indicates whether the telegram must be acknowledged or not
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.59.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10891,6 +11235,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.60"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10907,6 +11252,7 @@ Short description: Adhesion factor
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.60.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10955,6 +11301,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.61"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10973,6 +11320,7 @@ indicates whether the train is fitted with an airtight system or not.
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.61.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11044,6 +11392,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.62"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -11065,6 +11414,7 @@ The category HS17 (axle load &lt;= 17t) corresponds to a static load per axle on
 Length: 7 bits<Sub>
 <Paragraph
  id="7.5.1.62.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11149,6 +11499,7 @@ Length: 7 bits<Sub>
                 Type: invalid
                 Value: Spare</Paragraph><Paragraph
  id="7.5.1.62.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11169,6 +11520,7 @@ Values:
     ResolutionFormula: value: 10, units: A<Sub>
 <Paragraph
  id="7.5.1.62.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11291,6 +11643,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.63"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11309,6 +11662,7 @@ Flags to tell whether the balise is a duplicate of one of the adjacent balises.
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.63.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11380,6 +11734,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.64"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11397,6 +11752,7 @@ Short description: Identifier of the type of error
 Length: 8 bits<Sub>
 <Paragraph
  id="7.5.1.64.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11536,6 +11892,7 @@ Length: 8 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.65"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11554,6 +11911,7 @@ Length: 3 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
  id="7.5.1.65.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11651,6 +12009,7 @@ SpecialOrReservedValues:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.66"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11671,6 +12030,7 @@ Length: 3 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
  id="7.5.1.66.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11780,6 +12140,7 @@ SpecialOrReservedValues:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.67"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11798,6 +12159,7 @@ Length: 3 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
  id="7.5.1.67.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11842,6 +12204,7 @@ SpecialOrReservedValues:
             Type: invalid
             Value: Spare</Paragraph><Paragraph
  id="7.5.1.67.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11862,6 +12225,7 @@ Length: 8 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
  id="7.5.1.67.1.0"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11969,6 +12333,7 @@ Baseline: 3.2.0<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.68"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11989,6 +12354,7 @@ Length: 8 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
  id="7.5.1.68.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12087,6 +12453,7 @@ SpecialOrReservedValues:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.69"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12104,6 +12471,7 @@ Short description: Special location/moment where the train has to report its pos
 Length: 3 bits<Sub>
 <Paragraph
  id="7.5.1.69.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12178,6 +12546,7 @@ SpecialOrReservedValues:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.70"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12195,6 +12564,7 @@ Short description: Required mode for a part of the MA
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.70.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12265,6 +12635,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.71"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12284,6 +12655,7 @@ Length: 8 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
  id="7.5.1.71.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12334,6 +12706,7 @@ Baseline: 3.2.0<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.72"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12351,6 +12724,7 @@ Short description: Onboard operating mode
 Length: 4 bits<Sub>
 <Paragraph
  id="7.5.1.72.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12555,6 +12929,7 @@ Length: 4 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.73"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12573,6 +12948,7 @@ The text is displayed when entering / as long as in the defined mode
 Length: 4 bits<Sub>
 <Paragraph
  id="7.5.1.73.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12666,6 +13042,7 @@ Length: 4 bits<Sub>
             Type: enum
             Value: The display of the text shall not be limited by the mode.</Paragraph><Paragraph
  id="7.5.1.73.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12686,6 +13063,7 @@ Values:
     ResolutionFormula: value: 0.05, units: defaultresolution_formula_units<Sub>
 <Paragraph
  id="7.5.1.73.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12815,6 +13193,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.74"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12834,6 +13213,7 @@ This variable is part of the National Values
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.74.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12906,6 +13286,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.75"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12924,6 +13305,7 @@ This variable is part of the National Values
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.75.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12947,6 +13329,7 @@ Length: 1 bits<Sub>
             Type: enum
             Value: Yes</Paragraph><Paragraph
  id="7.5.1.75.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12968,6 +13351,7 @@ Length: 4 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
  id="7.5.1.75.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13038,6 +13422,7 @@ Baseline: 3.2.0<Sub>
             Value: Spare</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1.75.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13060,6 +13445,7 @@ Length: 5 bits
 Values:
     ResolutionFormula: value: 0.05, units: defaultresolution_formula_units</Paragraph><Paragraph
  id="7.5.1.75.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13079,6 +13465,7 @@ Length: 5 bits
 Values:
     ResolutionFormula: value: 0.05, units: defaultresolution_formula_units</Paragraph><Paragraph
  id="7.5.1.75.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13101,6 +13488,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 0.02, units: defaultresolution_formula_units</Paragraph><Paragraph
  id="7.5.1.75.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13119,6 +13507,7 @@ Nominal height of platform above rail level (refer to TSI infrastructure)
 Length: 4 bits<Sub>
 <Paragraph
  id="7.5.1.75.5.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13234,6 +13623,7 @@ Length: 4 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.76"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13255,6 +13645,7 @@ Values:
     ResolutionFormula: value: 1, units: m<Sub>
 <Paragraph
  id="7.5.1.76.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13301,6 +13692,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.77"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13317,6 +13709,7 @@ Short description: Type of track condition
 Length: 4 bits<Sub>
 <Paragraph
  id="7.5.1.77.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13482,6 +13875,7 @@ Length: 4 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.78"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13502,6 +13896,7 @@ Length: 4 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
  id="7.5.1.78.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13611,6 +14006,7 @@ Baseline: 3.2.0<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.79"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13633,6 +14029,7 @@ This gives the version of the ETCS system
 Length: 7 bits<Sub>
 <Paragraph
  id="7.5.1.79.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13688,6 +14085,7 @@ SpecialOrReservedValues:
             Type: enum
             Value: Reserved for future use (this is a valid value)</Paragraph><Paragraph
  id="7.5.1.79.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13708,6 +14106,7 @@ Values:
     ResolutionFormula: value: integers, units: defaultresolution_formula_units<Sub>
 <Paragraph
  id="7.5.1.79.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13791,6 +14190,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.80"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13824,6 +14224,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.81"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13842,6 +14243,7 @@ Defines the relative position in a balise group
 Length: 3 bits<Sub>
 <Paragraph
  id="7.5.1.81.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13957,6 +14359,7 @@ Length: 3 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.82"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13973,6 +14376,7 @@ Short description: Total number of balise(s) in the group
 Length: 3 bits<Sub>
 <Paragraph
  id="7.5.1.82.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14026,6 +14430,7 @@ Length: 3 bits<Sub>
             Type: enum
             Value: 8 balises in the group</Paragraph><Paragraph
  id="7.5.1.82.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14045,6 +14450,7 @@ Used together with V_DIFF to permit certain trains to go faster or lower than th
 Length: 4 bits<Sub>
 <Paragraph
  id="7.5.1.82.1.bis"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14125,6 +14531,7 @@ Length: 4 bits<Sub>
             Value: Spare</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1.82.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14145,6 +14552,7 @@ A train belongs to one and only one category of Cant Deficiency.
 Length: 4 bits<Sub>
 <Paragraph
  id="7.5.1.82.2.bis"
+ guid=""
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14286,6 +14694,7 @@ Length: 4 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.83"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14308,6 +14717,7 @@ Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
  id="7.5.1.83.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14392,6 +14802,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.84"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14416,6 +14827,7 @@ Values:
     ResolutionFormula: value: Bitset, units: defaultresolution_formula_units<Sub>
 <Paragraph
  id="7.5.1.84.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14654,6 +15066,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.85"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14674,6 +15087,7 @@ Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
  id="7.5.1.85.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14715,6 +15129,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.86"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14735,6 +15150,7 @@ Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
  id="7.5.1.86.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14782,6 +15198,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.87"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14811,6 +15228,7 @@ Length: 4 bits<TypeSpec
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.88"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14839,6 +15257,7 @@ Length: 24 bits<TypeSpec
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.89"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14870,6 +15289,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.90"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14888,6 +15308,7 @@ Country/region identity (NID_C) + balise identity number of last relevant balise
 Length: 24 bits<Sub>
 <Paragraph
  id="7.5.1.90.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14906,6 +15327,7 @@ Length: 24 bits<Sub>
             Type: Unknown
             Value: unknown</Paragraph><Paragraph
  id="7.5.1.90.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14924,6 +15346,7 @@ Identity of the balise group at the level 2/3 transition location towards which 
 Country/region identity (NID_C) + balise identity number of the level 2/3 transition location balise group (NID_BG).
 Length: 24 bits</Paragraph><Paragraph
  id="7.5.1.90.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14942,6 +15365,7 @@ Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
  id="7.5.1.90.2.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14986,6 +15410,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.91"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15006,6 +15431,7 @@ Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
  id="7.5.1.91.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15027,6 +15453,7 @@ Values:
     ResolutionFormula: value: Binary Coded Decimal, units: defaultresolution_formula_unit<Sub>
 <Paragraph
  id="7.5.1.91.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15097,6 +15524,7 @@ SpecialOrReservedValues:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.92"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15118,6 +15546,7 @@ Values:
     ResolutionFormula: value: Binary Coded Decimal, units: defaultresolution_formula_units<Sub>
 <Paragraph
  id="7.5.1.92.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15185,6 +15614,7 @@ SpecialOrReservedValues:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.93"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15218,6 +15648,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.94"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15237,6 +15668,7 @@ Previous LRBG detected when running towards the balise group identified as LRBG 
 Length: 24 bits<Sub>
 <Paragraph
  id="7.5.1.94.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15276,6 +15708,7 @@ Length: 24 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.95"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15299,6 +15732,7 @@ Values:
     ResolutionFormula: value: Binary Coded Decimal, units: defaultresolution_formula_units<Sub>
 <Paragraph
  id="7.5.1.95.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15366,6 +15800,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.96"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15388,6 +15823,7 @@ Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
  id="7.5.1.96.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15427,6 +15863,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.97"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15446,6 +15883,7 @@ Length: 14 bits
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units</Paragraph><Paragraph
  id="7.5.1.98"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15465,6 +15903,7 @@ Each value of this variable represents the identity of a National System.
 Length: 8 bits<Sub>
 <Paragraph
  id="7.5.1.98.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15508,6 +15947,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.99"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15527,6 +15967,7 @@ Values:
     ResolutionFormula: value: Number, units: defaultresolution_formula_units<Sub>
 <Paragraph
  id="7.5.1.99.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15556,6 +15997,7 @@ SpecialOrReservedValues:
             Type: enum
             Value: Non-revocable speed restriction (applicable for all transmission media)</Paragraph><Paragraph
  id="7.5.1.99.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -15613,6 +16055,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.100"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15646,6 +16089,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.101"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15662,6 +16106,7 @@ Short description: Aspect of &quot;danger for shunting&quot; signal
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.101.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15685,6 +16130,7 @@ Length: 1 bits<Sub>
             Type: enum
             Value: Go if in SH mode</Paragraph><Paragraph
  id="7.5.1.101.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15703,6 +16149,7 @@ Gives the relationship between the event &quot;driver acknowledgement&quot; and 
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.101.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15777,6 +16224,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.102"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15795,6 +16243,7 @@ This variable is set to 1 if either a danger point exists or a release speed has
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.102.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15818,6 +16267,7 @@ Length: 1 bits<Sub>
             Type: enum
             Value: Danger point information to follow</Paragraph><Paragraph
  id="7.5.1.102.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15837,6 +16287,7 @@ In case of &quot;other specific&quot; SSP, it tells ERTMS/ETCS on-board equipmen
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.102.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15897,6 +16348,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.103"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15915,6 +16367,7 @@ Qualifier to indicate the relevant validity direction of transmitted data, with 
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.103.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15986,6 +16439,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.104"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16002,6 +16456,7 @@ Short description: Orientation of the train in relation to the direction of the 
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.104.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16072,6 +16527,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.105"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16088,6 +16544,7 @@ Short description: Direction of train movement in relation to the LRBG orientati
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.105.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16158,6 +16615,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.106"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16174,6 +16632,7 @@ Short description: Qualifier telling on which side of the LRBG the estimated fro
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.106.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16244,6 +16703,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.107"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16262,6 +16722,7 @@ Qualifier to inform the RBC about the use of emergency stop by on-board equipmen
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.107.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16333,6 +16794,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.108"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16349,6 +16811,7 @@ Short description: Qualifier to indicate whether end section timer information e
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.108.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16397,6 +16860,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.109"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16415,6 +16879,7 @@ Qualifier to indicate if a speed limit given for a profile element is to be appl
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.109.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16464,6 +16929,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.110"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16480,6 +16946,7 @@ Short description: Qualifier for gradient slope.
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.110.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16528,6 +16995,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.111"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16544,6 +17012,7 @@ Short description: Qualifier to indicate whether a train is entering or exiting 
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.111.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16592,6 +17061,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.112"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16610,6 +17080,7 @@ Qualifier, identifying the train integrity information available. The related sa
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.112.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16681,6 +17152,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.113"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16699,6 +17171,7 @@ This qualifier tells whether the train has to report its location when the max s
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.113.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16748,6 +17221,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.114"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16766,6 +17240,7 @@ This qualifier is used to mark a balise group as linked or unlinked.
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.114.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16815,6 +17290,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.115"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16848,6 +17324,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.116"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16866,6 +17343,7 @@ Indicates whether the linked balise group will be overpassed by the train in nom
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.116.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16915,6 +17393,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.117"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16933,6 +17412,7 @@ Qualifier for the reaction to be performed if a linking or a balise group messag
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.117.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17004,6 +17484,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.118"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17022,6 +17503,7 @@ Indicates LOOP-reference direction in relation to EOLM direction
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.118.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17046,6 +17528,7 @@ SpecialOrReservedValues:
             Type: enum
             Value: Same</Paragraph><Paragraph
  id="7.5.1.118.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17064,6 +17547,7 @@ Indicates whether the LX is protected  or not
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.118.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17088,6 +17572,7 @@ Length: 1 bits<Sub>
             Value: LX is not protected</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1.118.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17107,6 +17592,7 @@ This qualifier defines whether the beginning of the mode profile shall be consid
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.118.2.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17131,6 +17617,7 @@ Length: 1 bits<Sub>
             Value: as both the EOA and SvL (instead of the EOA and SvL given by the MA)</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1.118.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17152,6 +17639,7 @@ Values:
     ResolutionFormula: value: Bitset, units: defaultresolution_formula_units<Sub>
 <Paragraph
  id="7.5.1.118.3.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17217,6 +17705,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.119"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17236,6 +17725,7 @@ Indicates whether it is a balise telegram or a loop message
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.119.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17285,6 +17775,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.120"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17303,6 +17794,7 @@ Qualifier to indicate the direction of counting of the geographical position tra
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.120.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17352,6 +17844,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.121"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17371,6 +17864,7 @@ For the first balise group in the packet, if Q_NEWCOUNTRY = 0, it is the same co
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.121.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17421,6 +17915,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.122"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17438,6 +17933,7 @@ This variable is part of the National Values
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.122.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17461,6 +17957,7 @@ Length: 1 bits<Sub>
             Value: Allowed</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1.123"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17480,6 +17977,7 @@ This variable is part of the National Values
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.123.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17503,6 +18001,7 @@ Length: 1 bits<Sub>
             Type: enum
             Value: Revoke emergency brake command when permitted speed supervision limit is no longer exceeded</Paragraph><Paragraph
  id="7.5.1.123.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17521,6 +18020,7 @@ This variable is part of the National Values
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.123.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17545,6 +18045,7 @@ Length: 1 bits<Sub>
             Value: Yes</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1.123.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17565,6 +18066,7 @@ Length: 1 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
  id="7.5.1.123.2.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17589,6 +18091,7 @@ Baseline: 3.2.0<Sub>
             Value: Yes</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1.123.3"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17607,6 +18110,7 @@ This variable is part of the National Values
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.123.3.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17631,6 +18135,7 @@ Length: 1 bits<Sub>
             Value: Integrated correction factors follow</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1.123.4"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17647,6 +18152,7 @@ Short description: Type of Kv_int set
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.123.4.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17676,6 +18182,7 @@ Length: 2 bits<Sub>
             Value: Spare</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1.123.5"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17695,6 +18202,7 @@ Length: 6 bits
 Values:
     ResolutionFormula: value: 1, units: m</Paragraph><Paragraph
  id="7.5.1.123.6"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17713,6 +18221,7 @@ This variable is part of the National Values
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.123.6.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17764,6 +18273,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.124"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17783,6 +18293,7 @@ This variable is part of the National Values
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.124.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17832,6 +18343,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.125"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17850,6 +18362,7 @@ The co-ordinate system is assigned by the RBC to a balise group reported by the 
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.125.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17899,6 +18412,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.126"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17917,6 +18431,7 @@ This variable is set to 1 if either an overlap exists or a release speed has to 
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.126.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17940,6 +18455,7 @@ Length: 1 bits<Sub>
             Type: enum
             Value: Overlap information to follow</Paragraph><Paragraph
  id="7.5.1.126.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17958,6 +18474,7 @@ Qualifier defining whether the permitted braking distance is to be achieved with
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.126.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17982,6 +18499,7 @@ Length: 1 bits<Sub>
             Value: SB intervention requested</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1.126.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17998,6 +18516,7 @@ Short description: Platform position (relative to direction of authorised moveme
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.126.2.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18058,6 +18577,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.127"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18074,6 +18594,7 @@ Short description: Qualifier for communication session order
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.127.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18122,6 +18643,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.128"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18138,6 +18660,7 @@ Short description: Qualifier for communication session order
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.128.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18186,6 +18709,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.129"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18204,6 +18728,7 @@ Qualifier to indicate the same scale used for describing all distances inside th
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.129.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18287,6 +18812,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.130"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18303,6 +18829,7 @@ Short description: Qualifier to indicate whether there is a Section Time Out rel
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.130.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18352,6 +18879,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.131"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18370,6 +18898,7 @@ Order for a Sleeping onboard equipment to consider or not the &quot;session mana
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.131.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18419,6 +18948,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.132"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18437,6 +18967,7 @@ Specifies whether an onboard equipment in staff responsible has to stop or not
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.132.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18486,6 +19017,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.133"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18504,6 +19036,7 @@ Specifies the code required to receive telegrams from a specific Euroloop instal
 Length: 4 bits<Sub>
 <Paragraph
  id="7.5.1.133.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18542,6 +19075,7 @@ Length: 4 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.134"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18560,6 +19094,7 @@ It provides the status of the position report
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.134.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18593,6 +19128,7 @@ Length: 2 bits<Sub>
             Type: invalid
             Value: spare</Paragraph><Paragraph
  id="7.5.1.134.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18611,6 +19147,7 @@ Indicates whether stopping the train in rear of a non protected LX is required
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.134.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18698,6 +19235,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.135"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18714,6 +19252,7 @@ Short description: Type of route suitability data
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.135.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18787,6 +19326,7 @@ SpecialOrReservedValues:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.136"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18806,6 +19346,7 @@ Q_TEXT is a pointer to select a fixed text message from the defined table. The l
 Length: 8 bits<Sub>
 <Paragraph
  id="7.5.1.136.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18870,6 +19411,7 @@ SpecialOrReservedValues:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.137"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18889,6 +19431,7 @@ Q_TEXTCLASS specifies the class of the text message included in the same packet 
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.137.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18960,6 +19503,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.138"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18976,6 +19520,7 @@ Short description: Qualifier for text confirmation
 Length: 2 bits<Sub>
 <Paragraph
  id="7.5.1.138.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19046,6 +19591,7 @@ Length: 2 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.139"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19064,6 +19610,7 @@ Q_TEXTDISPLAY defines whether the start/end conditions for text message are to b
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.139.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19113,6 +19660,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.140"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19129,6 +19677,7 @@ Short description: Qualifier for reporting acknowledgement of text by driver
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.140.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19177,6 +19726,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.141"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19193,6 +19743,7 @@ Short description: Qualifier for resuming the initial states of the related trac
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.141.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19241,6 +19792,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.142"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19259,6 +19811,7 @@ It defines the direction of the information in the balise telegram
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.142.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19282,6 +19835,7 @@ Length: 1 bits<Sub>
             Type: enum
             Value: Up link telegram</Paragraph><Paragraph
  id="7.5.1.142.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -19300,6 +19854,7 @@ Qualifier to set or remove a VBC
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.142.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19349,6 +19904,7 @@ Length: 1 bits<Sub>
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.143"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19369,6 +19925,7 @@ Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
  id="7.5.1.143.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19410,6 +19967,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.144"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19430,6 +19988,7 @@ Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
  id="7.5.1.144.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19471,6 +20030,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.145"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19491,6 +20051,7 @@ Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
  id="7.5.1.145.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19532,6 +20093,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.146"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19552,6 +20114,7 @@ Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
  id="7.5.1.146.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19593,6 +20156,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.147"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19611,6 +20175,7 @@ Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
  id="7.5.1.147.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19651,6 +20216,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.148"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19672,6 +20238,7 @@ Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
  id="7.5.1.148.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19714,6 +20281,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.149"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19747,6 +20315,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.150"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19767,6 +20336,7 @@ Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
  id="7.5.1.150.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19808,6 +20378,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.151"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19828,6 +20399,7 @@ Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
  id="7.5.1.151.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19869,6 +20441,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.152"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19888,6 +20461,7 @@ Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
  id="7.5.1.152.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19929,6 +20503,7 @@ SpecialOrReservedValues:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.153"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19948,6 +20523,7 @@ Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
  id="7.5.1.153.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19988,6 +20564,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.154"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20008,6 +20585,7 @@ Values:
     ResolutionFormula: value: 10, units: ms<Sub>
 <Paragraph
  id="7.5.1.154.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20026,6 +20604,7 @@ Values:
             Type: unknown
             Value: Unknown</Paragraph><Paragraph
  id="7.5.1.154.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -20067,6 +20646,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.155"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20084,6 +20664,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.155.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20102,6 +20683,7 @@ Values:
             Value: Spare</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1.156"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20120,6 +20702,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.156.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20163,6 +20746,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.157"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20182,6 +20766,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.157.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20200,6 +20785,7 @@ Values:
             Type: invalid
             Value: Spare</Paragraph><Paragraph
  id="7.5.1.157.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20220,6 +20806,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.157.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20264,6 +20851,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.158"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20282,6 +20870,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.158.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20330,6 +20919,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.159"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20348,6 +20938,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.159.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20402,6 +20993,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.160"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20420,6 +21012,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.160.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20464,6 +21057,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.161"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20484,6 +21078,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.161.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20502,6 +21097,7 @@ Values:
             Type: invalid
             Value: Spare</Paragraph><Paragraph
  id="7.5.1.161.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20522,6 +21118,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.161.1.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20541,6 +21138,7 @@ Values:
             Value: Spare</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1.161.2"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20561,6 +21159,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.161.2.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20606,6 +21205,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.162"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20626,6 +21226,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.162.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20670,6 +21271,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.163"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20690,6 +21292,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.163.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20734,6 +21337,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.164"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20754,6 +21358,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.164.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20798,6 +21403,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.165"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20818,6 +21424,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.165.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20862,6 +21469,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.166"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20882,6 +21490,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.166.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20926,6 +21535,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.167"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20946,6 +21556,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.167.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20990,6 +21601,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.168"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21008,6 +21620,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.168.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21073,6 +21686,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.169"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21091,6 +21705,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.169.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21156,6 +21771,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.170"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21174,6 +21790,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.170.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21217,6 +21834,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.171"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21237,6 +21855,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.171.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21292,6 +21911,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.172"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21310,6 +21930,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.172.1"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21354,6 +21975,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.173"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21372,6 +21994,7 @@ Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
  id="7.5.1.173.bis"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21415,6 +22038,7 @@ Values:
 </TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.174"
+ guid=""
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
