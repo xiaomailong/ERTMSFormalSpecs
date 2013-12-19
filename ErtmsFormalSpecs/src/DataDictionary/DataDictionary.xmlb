@@ -1282,7 +1282,11 @@
       <FIELD NAME="Type"                 ENUMTYPE="Paragraph_type" />
       <FIELD NAME="Scope"                ENUMTYPE="Paragraph_scope" >
         <META NAME="DoNotTranslate" />
+        <META NAME="DoNotCompare" />
       </FIELD>
+      <FIELD NAME="ScopeOnBoard"         TYPE="BOOLEAN" />
+      <FIELD NAME="ScopeTrackside"       TYPE="BOOLEAN" />
+      <FIELD NAME="ScopeRollingStock"    TYPE="BOOLEAN" />
       <FIELD NAME="Bl"                   TYPE="PCHAR">
         <META NAME="DoNotTranslate" />
       </FIELD>
@@ -1340,6 +1344,9 @@
       <ATTR NAME="specIssue"           TARGET="SpecIssue" OPTIONAL="TRUE" DEFAULT="FALSE" />
       <ATTR NAME="functionalBlock"     TARGET="FunctionalBlock" OPTIONAL="TRUE" DEFAULT="FALSE" />
       <ATTR NAME="functionalBlockName" TARGET="FunctionalBlockName" OPTIONAL="TRUE" DEFAULT=""/>
+      <ATTR NAME="onboard"             TARGET="ScopeOnBoard" OPTIONAL="TRUE" DEFAULT="FALSE"/>
+      <ATTR NAME="trackside"           TARGET="ScopeTrackside" OPTIONAL="TRUE" DEFAULT="FALSE"/>
+      <ATTR NAME="rollinkstock"        TARGET="ScopeRollingStock" OPTIONAL="TRUE" DEFAULT="FALSE"/>
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
@@ -1726,6 +1733,7 @@
     <ENUMVALUE NAME="TRACK" />
     <ENUMVALUE NAME="OBU" />
     <ENUMVALUE NAME="ROLLING_STOCK" />
+    <ENUMVALUE NAME="FLAGS" />
   </ENUM>
 
   <!-- ------------------ -->

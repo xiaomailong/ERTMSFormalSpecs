@@ -40,7 +40,7 @@ namespace GUI.SpecificationView
             /// <summary>
             /// The item name
             /// </summary>
-            [Category("Description")]
+            [Category("\t\tDescription")]
             public string Id
             {
                 get { return Item.getId(); }
@@ -52,23 +52,9 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
-            /// The item name
-            /// </summary>
-            [Category("Description")]
-            public string Text
-            {
-                get { return Item.Text; }
-                set
-                {
-                    Item.setText(value);
-                    RefreshNode();
-                }
-            }
-
-            /// <summary>
             /// Provides the type of the paragraph
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(Converters.SpecTypeConverter))]
+            [Category("\t\tDescription"), TypeConverter(typeof(Converters.SpecTypeConverter))]
             public virtual DataDictionary.Generated.acceptor.Paragraph_type Type
             {
                 get { return Item.getType(); }
@@ -79,24 +65,23 @@ namespace GUI.SpecificationView
                 }
             }
 
+            /// <summary>
+            /// The onboard scope
+            /// </summary>
+            [Category("\tScope")]
+            public bool OnBoard { get { return Item.getScopeOnBoard(); } set { Item.setScopeOnBoard(value); } }
 
             /// <summary>
-            /// Provides the scope of the paragraph
+            /// The trackside scope
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(Converters.ScopeConverter))]
-            public virtual DataDictionary.Generated.acceptor.Paragraph_scope Scope
-            {
-                get { return Item.getScope(); }
-                set
-                {
-                    if (value == DataDictionary.Generated.acceptor.Paragraph_scope.defaultParagraph_scope)
-                    {
-                        value = DataDictionary.Generated.acceptor.Paragraph_scope.aOBU;
-                    }
+            [Category("\tScope")]
+            public bool Trackside { get { return Item.getScopeTrackside(); } set { Item.setScopeTrackside(value); } }
 
-                    Item.SetScope(value);
-                }
-            }
+            /// <summary>
+            /// The rolling stock scope
+            /// </summary>
+            [Category("\tScope")]
+            public bool RollingStock { get { return Item.getScopeRollingStock(); } set { Item.setScopeRollingStock(value); } }
 
             /// <summary>
             /// Indicates if the paragraph has been reviewed (content & structure)
@@ -106,6 +91,16 @@ namespace GUI.SpecificationView
             {
                 get { return Item.getReviewed(); }
                 set { Item.setReviewed(value); }
+            }
+
+            /// <summary>
+            /// Indicates if the paragraph can be implemented by the EFS
+            /// </summary>
+            [Category("Meta data"), TypeConverter(typeof(Converters.ImplementationStatusConverter))]
+            public virtual DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM ImplementationStatus
+            {
+                get { return Item.getImplementationStatus(); }
+                set { Item.setImplementationStatus(value); }
             }
 
             /// <summary>
@@ -129,19 +124,10 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
-            /// Indicates if the paragraph can be implemented by the EFS
-            /// </summary>
-            [Category("Meta data"), TypeConverter(typeof(Converters.ImplementationStatusConverter))]
-            public virtual DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM ImplementationStatus
-            {
-                get { return Item.getImplementationStatus(); }
-                set { Item.setImplementationStatus(value); }
-            }
-
-            /// <summary>
             /// Indicates if the paragraph is functional block
             /// </summary>
             [Category("Meta data")]
+            [Browsable(false)]
             public virtual bool IsFunctionalBlock
             {
                 get { return Item.getFunctionalBlock(); }
@@ -152,12 +138,13 @@ namespace GUI.SpecificationView
             /// The name of functional block, if any
             /// </summary>
             [Category("Meta data")]
+            [Browsable(false)]
             public string FunctionalBlockName
             {
                 get
                 {
                     if (Item.getFunctionalBlock() && Item.getFunctionalBlockName().Equals(""))
-                        Item.setFunctionalBlockName(Text);
+                        Item.setFunctionalBlockName(Item.Text);
                     return Item.getFunctionalBlockName();
                 }
                 set

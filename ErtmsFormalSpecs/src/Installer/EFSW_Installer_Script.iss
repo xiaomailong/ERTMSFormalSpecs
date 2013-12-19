@@ -30,6 +30,7 @@ Source: ..\..\bin\MigraDoc.Rendering.dll; DestDir: {app}\bin; Flags: ignoreversi
 Source: ..\..\bin\PdfSharp.Charting.dll; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\PdfSharp.dll; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\Reports.dll; DestDir: {app}\bin; Flags: ignoreversion
+Source: ..\..\bin\HistoricalData.dll; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\Utils.dll; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\XmlBooster.dll; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\log4net.dll; DestDir: {app}\bin; Flags: ignoreversion
@@ -45,6 +46,7 @@ Source: ..\..\bin\DataDictionary.pdb; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\ErtmsSolutions.pdb; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\Importer.pdb; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\Reports.pdb; DestDir: {app}\bin; Flags: ignoreversion
+Source: ..\..\bin\HistoricalData.pdb; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\Utils.pdb; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\XmlBooster.pdb; DestDir: {app}\bin; Flags: ignoreversion
 

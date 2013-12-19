@@ -740,9 +740,17 @@ namespace DataDictionary
                     }
                 }
 
-                if (paragraph.getScope() != paragraph.SubParagraphsScope && paragraph.getScope() != Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK)
+                if ((!paragraph.getScopeOnBoard()) && paragraph.SubParagraphScopeOnboard)
                 {
-                    paragraph.AddWarning("Paragraph scope does not correspond to the scope of its sub-paragraphs");
+                    paragraph.AddWarning("Paragraph scope should be On Board, according to its sub-paragraphs");
+                }
+                if ((!paragraph.getScopeTrackside()) && paragraph.SubParagraphScopeTrackside)
+                {
+                    paragraph.AddWarning("Paragraph scope should be Trackside, according to its sub-paragraphs");
+                }
+                if ((!paragraph.getScopeRollingStock()) && paragraph.SubParagraphScopeRollingStock)
+                {
+                    paragraph.AddWarning("Paragraph scope should be Rolling Stock, according to its sub-paragraphs");
                 }
             }
 

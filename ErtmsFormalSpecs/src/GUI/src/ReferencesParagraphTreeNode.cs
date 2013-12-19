@@ -64,7 +64,7 @@ namespace GUI
             {
             }
 
-            [Category("Description")]
+            [Category("Meta data")]
             [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
             [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
             public T Comment

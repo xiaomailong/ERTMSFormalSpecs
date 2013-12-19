@@ -107,6 +107,38 @@ namespace DataDictionary
 
                 base.visit(obj, visitSubNodes);
             }
+
+            /// <summary>
+            /// Replaces the paragraph scope by the corresponding flags
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+            {
+                Specification.Paragraph paragraph = (Specification.Paragraph)obj;
+
+                switch (paragraph.getScope())
+                {
+                    case Generated.acceptor.Paragraph_scope.aOBU:
+                        paragraph.setScopeOnBoard(true);
+                        break;
+
+                    case Generated.acceptor.Paragraph_scope.aTRACK:
+                        paragraph.setScopeTrackside(true);
+                        break;
+
+                    case Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK:
+                        paragraph.setScopeOnBoard(true);
+                        paragraph.setScopeTrackside(true);
+                        break;
+
+                    case Generated.acceptor.Paragraph_scope.aROLLING_STOCK:
+                        paragraph.setScopeRollingStock(true);
+                        break;
+                }
+
+                paragraph.setScope(Generated.acceptor.Paragraph_scope.aFLAGS);
+            }
         }
 
         /// <summary>
@@ -159,6 +191,7 @@ namespace DataDictionary
                         if (nameSpace != null)
                         {
                             dictionary.appendNameSpaces(nameSpace);
+                            nameSpace.NameSpaceRef = nameSpaceRef;
                         }
                         else
                         {
@@ -175,6 +208,7 @@ namespace DataDictionary
                         if (frame != null)
                         {
                             dictionary.appendTests(frame);
+                            frame.FrameRef = testRef;
                         }
                         else
                         {
@@ -199,6 +233,7 @@ namespace DataDictionary
                         if (subNameSpace != null)
                         {
                             nameSpace.appendNameSpaces(subNameSpace);
+                            subNameSpace.NameSpaceRef = nameSpaceRef;
                         }
                         else
                         {
@@ -224,6 +259,7 @@ namespace DataDictionary
                         if (chapter != null)
                         {
                             specification.appendChapters(chapter);
+                            chapter.ChapterRef = chapterRef;
                         }
                         else
                         {
