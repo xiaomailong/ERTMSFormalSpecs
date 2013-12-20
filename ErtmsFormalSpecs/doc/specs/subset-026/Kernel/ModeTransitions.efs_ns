@@ -2100,6 +2100,11 @@ DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Respon
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="032e4e87-977f-4376-ad53-34dc4bbd24c5"
 >
+</ReqRef><ReqRef
+ Id="14a0113e-9a92-4745-9790-56bec28eace5"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="c5f45c3e-03b2-4daf-b1db-21b01657fdc3"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -2107,7 +2112,7 @@ DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Respon
 >
 <Expression>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Response
   AND
-Odometry.EstimatedSpeed == 0.0
+Odometry.TrainIsAtStandstill()
   AND
 TIU.NonLeadingPermitted</Expression>
 </Case></Cases>
