@@ -1910,27 +1910,31 @@
  Guid="30a3575e-0fda-490b-8762-e2530e93b597"
 >TrainData.Value.EddyCurrentBrake &lt;- BrakingParameters.SpecialBrake
 {
-    IsActive =&gt; Boolean.True,
     InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.Both
 }</Action><Action
  Guid="c289289c-bc7e-4abf-822a-baa902d9c86e"
 >TrainData.Value.MagneticShoeBrake &lt;- BrakingParameters.SpecialBrake
 {
-    IsActive =&gt; Boolean.True,
     InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.EB
 }</Action><Action
  Guid="1150faf4-4606-4991-8763-8a8aafba4453"
 >TrainData.Value.EpBrake &lt;- BrakingParameters.SpecialBrake
 {
-    IsActive =&gt; Boolean.True,
     InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.Both
 }</Action><Action
  Guid="57d18a98-ba5a-42ff-a4ad-c58afc9c5042"
 >TrainData.Value.RegenerativeBrake &lt;- BrakingParameters.SpecialBrake
 {
-    IsActive =&gt; Boolean.True,
     InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.Both
-}</Action></Actions>
+}</Action><Action
+ Guid="2107d35f-3bc6-4272-88c4-8614d0362dde"
+>TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive &lt;- True</Action><Action
+ Guid="3c48340b-684f-4283-9333-051616fa4413"
+>TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive &lt;- True</Action><Action
+ Guid="0f3fcab5-3024-4f84-ad59-4582a302b0cc"
+>TIU.SpecialBrakeStatus.EPBrakeIsActive &lt;- True</Action><Action
+ Guid="51c01b97-bf84-4dfa-bb16-9ccc3257a1cc"
+>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

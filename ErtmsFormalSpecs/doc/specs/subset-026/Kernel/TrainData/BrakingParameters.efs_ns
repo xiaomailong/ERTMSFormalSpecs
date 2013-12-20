@@ -366,20 +366,6 @@
 >
 </ReqRef><Comment>Describes the status of a special brake.</Comment>
 <StructureElement
- TypeName="Boolean"
- Default="Boolean.False"
- Mode="Constant"
- Implemented="TRUE"
- Name="IsActive"
- Guid="15bbc38e-0889-46cf-a019-3dc717392822"
->
-<ReqRef
- Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="589f0c96-ecea-44f6-9446-1706f5ed6820"
->
-</ReqRef><Comment>Indicates if this special brake is active.</Comment>
-</StructureElement><StructureElement
  TypeName="BrakeInterfaceStatus"
  Default="BrakeInterfaceStatus.NoInterface"
  Mode="Constant"
@@ -1417,7 +1403,8 @@
 <PreCondition
  Guid="01310e45-41c9-4b4e-bbd2-55fbd067d327"
 >aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition></PreConditions>
-<Expression>TrainData.Value.RegenerativeBrake.IsActive AND
+<Expression>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive
+  AND
 TrainData.Value.RegenerativeBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="EddyCurrent"
@@ -1427,7 +1414,8 @@ TrainData.Value.RegenerativeBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, B
 <PreCondition
  Guid="4acdfcb5-5a8d-48f0-97af-2760e812f22f"
 >aSpecialBrake == SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
-<Expression>TrainData.Value.EddyCurrentBrake.IsActive AND
+<Expression>TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive
+  AND
 TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1468,7 +1456,9 @@ TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, Br
 <PreCondition
  Guid="955b5dad-79bf-4085-88cb-b6dd7f04ac78"
 >aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition></PreConditions>
-<Expression>TrainData.Value.RegenerativeBrake.IsActive AND TrainData.Value.RegenerativeBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
+<Expression>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive
+  AND
+TrainData.Value.RegenerativeBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="EddyCurrent"
  Guid="b9039624-27c7-40e7-82f1-ad85b81822c6"
@@ -1477,7 +1467,9 @@ TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, Br
 <PreCondition
  Guid="b0a25e62-d875-452f-bb7e-338e1b5186f6"
 >aSpecialBrake == SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
-<Expression>TrainData.Value.EddyCurrentBrake.IsActive AND TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
+<Expression>TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive
+  AND
+TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="ElectroPneumatic"
  Guid="f2accdb5-0ba5-42df-a086-de0543dbd7c4"
@@ -1486,7 +1478,9 @@ TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, Br
 <PreCondition
  Guid="84dd0124-3bae-4307-adda-3c498f559ffc"
 >aSpecialBrake == SpecialBrakeName.ElectroPneumatic</PreCondition></PreConditions>
-<Expression>TrainData.Value.EpBrake.IsActive AND TrainData.Value.EpBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
+<Expression>TIU.SpecialBrakeStatus.EPBrakeIsActive
+  AND
+TrainData.Value.EpBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="a2babbf6-7b4a-467c-a552-9d2857c25266"
@@ -1531,7 +1525,7 @@ TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, Br
 <PreCondition
  Guid="2911132b-7a4d-4089-96dd-1aa6f4755821"
 >aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition></PreConditions>
-<Expression>TrainData.Value.RegenerativeBrake.IsActive AND
+<Expression>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive AND
 TrainData.Value.RegenerativeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="EddyCurrent"
@@ -1541,7 +1535,7 @@ TrainData.Value.RegenerativeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
 <PreCondition
  Guid="6e6ef9b5-12fb-4698-87ee-e4fcea7802f9"
 >aSpecialBrake == SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
-<Expression>TrainData.Value.EddyCurrentBrake.IsActive AND
+<Expression>TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive AND
 TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="Magnetic"
@@ -1551,7 +1545,7 @@ TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, Br
 <PreCondition
  Guid="6ae266a3-76b7-4e8e-a861-2291d5594af6"
 >aSpecialBrake == SpecialBrakeName.MagneticShoe</PreCondition></PreConditions>
-<Expression>TrainData.Value.MagneticShoeBrake.IsActive AND
+<Expression>TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive AND
 TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1592,7 +1586,9 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
 <PreCondition
  Guid="70050ac5-e2bc-4755-928f-64118577993f"
 >aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition></PreConditions>
-<Expression>TrainData.Value.RegenerativeBrake.IsActive AND TrainData.Value.RegenerativeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
+<Expression>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive
+  AND
+TrainData.Value.RegenerativeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="EddyCurrent"
  Guid="5002ff67-afd9-4f63-bb3a-a6385840db9e"
@@ -1601,7 +1597,9 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
 <PreCondition
  Guid="0cc14bf7-ad93-4aea-bfed-04375ba35309"
 >aSpecialBrake == SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
-<Expression>TrainData.Value.EddyCurrentBrake.IsActive AND TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
+<Expression>TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive
+  AND
+TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="Magnetic"
  Guid="87612bd7-fa34-492a-8e1c-501e6ca9bff5"
@@ -1610,7 +1608,9 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
 <PreCondition
  Guid="76be0c17-aef6-41fc-9d01-5de9635b8a43"
 >aSpecialBrake == SpecialBrakeName.MagneticShoe</PreCondition></PreConditions>
-<Expression>TrainData.Value.MagneticShoeBrake.IsActive AND TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
+<Expression>TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive
+  AND
+TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="ElectroPneumatic"
  Guid="4064af31-1290-4ae0-b1e8-89d7e686bdac"
@@ -1619,7 +1619,9 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
 <PreCondition
  Guid="17b702b0-5620-4c9d-9f25-375a53f46eca"
 >aSpecialBrake == SpecialBrakeName.ElectroPneumatic</PreCondition></PreConditions>
-<Expression>TrainData.Value.EpBrake.IsActive AND TrainData.Value.EpBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
+<Expression>TIU.SpecialBrakeStatus.EPBrakeIsActive
+  AND
+TrainData.Value.EpBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="69495ea9-857b-4463-b86d-1b5a32db1425"
@@ -2538,10 +2540,15 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Guid="ad2686d0-1ff9-4ebe-a7bb-97a7c712af17"
 >
 <Expression>ContributionOfSpecialBrakeIsAllowed AND
-    (TrainData.Value.EddyCurrentBrake.IsActive OR
-     TrainData.Value.MagneticShoeBrake.IsActive OR
-     TrainData.Value.RegenerativeBrake.IsActive OR
-     TrainData.Value.EpBrake.IsActive)</Expression>
+(
+  TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive
+    OR
+  TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive
+    OR
+  TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive
+    OR
+  TIU.SpecialBrakeStatus.EPBrakeIsActive
+)</Expression>
 </Case></Cases>
 </Function><Function
  Type="BrakingModel"

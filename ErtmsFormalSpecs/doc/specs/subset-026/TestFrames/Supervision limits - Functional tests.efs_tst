@@ -430,19 +430,16 @@
  Guid="7047aceb-ef3a-428f-bb9c-fa0dadfc128d"
 >Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
-    IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface
 }</Action><Action
  Guid="3de6b5b2-ec5a-43a0-a4e9-277984344ddc"
 >Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
-    IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
 }</Action><Action
  Guid="adfd38cb-3497-4791-9a61-118d135f97e9"
 >Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
-    IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
 }</Action><Action
  Guid="af1539a0-36fa-4518-a7d8-4a7166d96590"
@@ -467,9 +464,16 @@
  Guid="5367708a-05e6-45cd-bea7-0932825d52d9"
 >Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
-    IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action></Actions>
+}</Action><Action
+ Guid="02447e64-6cdd-4a9f-93cc-60c76ab69091"
+>TIU.SpecialBrakeStatus.EPBrakeIsActive &lt;- True</Action><Action
+ Guid="8b36e169-6215-499d-8474-5e3296e359a5"
+>TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive &lt;- True</Action><Action
+ Guid="13398d53-4c81-4d19-be83-39917a89ab66"
+>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive &lt;- True</Action><Action
+ Guid="be18a1e0-558f-4459-9d94-063f5f8a81ac"
+>TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -811,25 +815,21 @@
  Guid="f04c8c07-b618-44c3-b31f-804fc4ec8f88"
 >Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
-    IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface
 }</Action><Action
  Guid="ee9c72e3-ca17-4061-aa11-b4c256cbde37"
 >Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
-    IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
 }</Action><Action
  Guid="319e14b8-43fa-46b1-bd43-ba73502ebd6b"
 >Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
-    IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
 }</Action><Action
  Guid="ff789485-f8b2-4f35-8a60-104351d1da0f"
 >Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
-    IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
 }</Action><Action
  Guid="7315739c-f8bf-4537-9ea9-c788274272ba"
@@ -1488,7 +1488,6 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Guid="16d2360a-f40d-4ec9-8a69-74e2ee79343a"
 >Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
-    IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
 }</Action><Action
  Guid="31682f67-c8a7-490c-a68e-0329f4d01bc1"

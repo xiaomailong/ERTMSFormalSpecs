@@ -44,7 +44,7 @@
 <StructureElement
  TypeName="Boolean"
  Default="False"
- Mode="Internal"
+ Mode="Outgoing"
  Implemented="TRUE"
  Name="RegenerativeBrakeInhibited"
  Guid="1b77edef-c236-41dd-b0e9-773bab27d74f"
@@ -53,7 +53,7 @@
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="False"
- Mode="Internal"
+ Mode="Outgoing"
  Implemented="TRUE"
  Name="MagneticShoeBrakeInhibited"
  Guid="0be8c60b-98f8-4355-a71f-66b547e7237d"
@@ -62,7 +62,7 @@
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="False"
- Mode="Internal"
+ Mode="Outgoing"
  Name="ECBrakeForEBInhibited"
  Guid="3e335428-6a9f-4668-9ad7-8d6894f7592b"
 >
@@ -70,11 +70,68 @@
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="False"
- Mode="Internal"
+ Mode="Outgoing"
  Name="ECBrakeForSBInhibited"
  Guid="0fa90f90-4f85-42a9-acda-41043a0430bb"
 >
 <Comment>Indicates if eddy current brake in inhibited for service braking by the STM.</Comment>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="BrakeStatusStruct"
+ Guid="f05f9d2e-d556-402f-a0c7-7535c7472d91"
+>
+<ReqRef
+ Id="40825e98-f126-45fb-aa32-7514e64332b6"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="68258941-9ea9-44f1-9ad3-8f033f1030be"
+>
+</ReqRef><ReqRef
+ Id="dc456af4-f303-4870-a171-ef1d7085b9c0"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="70ca8b06-7d3b-409a-9af3-ff5bcdecc62d"
+>
+</ReqRef><ReqRef
+ Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ac32093-30da-474c-9c32-225f20ea087c"
+>
+</ReqRef><Comment>Indicates the status of special brakes.</Comment>
+<StructureElement
+ TypeName="Boolean"
+ Default="True"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="RegenerativeBrakeIsActive"
+ Guid="67a9a2d5-88de-4356-83e3-f25826afded5"
+>
+<Comment>Indicates if the status of regenerative brake is active.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="True"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="MagneticShoeBrakeIsActive"
+ Guid="79018c2f-2c1c-409f-ac31-429789bbbe2d"
+>
+<Comment>Indicates if the status of magnetic brake is active.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="True"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="EddyCurrentBrakeIsActive"
+ Guid="fca8c803-dffe-4684-a073-58cc5c686089"
+>
+<Comment>Indicates if the status of eddy current brake is active.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="True"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="EPBrakeIsActive"
+ Guid="2de336fc-bfd9-4d1e-8222-d23de3db78a4"
+>
+<Comment>Indicates if the status of electro pneumatic brake is active.</Comment>
 </StructureElement></Structure></Structures>
 <Variables>
 <Variable
@@ -225,5 +282,28 @@
  SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
  Guid="2fda6080-f67f-4637-99c2-21e03216ca8d"
 >
-</ReqRef></Variable></Variables>
+</ReqRef></Variable><Variable
+ Type="BrakeStatusStruct"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="SpecialBrakeStatus"
+ Guid="471a690a-2060-43c7-a6e2-d1984f85391e"
+>
+<ReqRef
+ Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c5bd915d-587e-4b1c-ad88-467073c32c12"
+>
+</ReqRef><ReqRef
+ Id="40825e98-f126-45fb-aa32-7514e64332b6"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="3d37ae23-17e9-4b36-a6d6-3286bc98d3b9"
+>
+</ReqRef><ReqRef
+ Id="dc456af4-f303-4870-a171-ef1d7085b9c0"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="0a294c22-f387-488c-b9b7-3b83ce7c9e9f"
+>
+</ReqRef><Comment>Indicates the status of special brakes.</Comment>
+</Variable></Variables>
 </NameSpace>
