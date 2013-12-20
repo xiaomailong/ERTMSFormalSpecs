@@ -234,6 +234,8 @@ namespace GUI.SpecificationView
             paragraph.Text = "";
             paragraph.setType(DataDictionary.Generated.acceptor.Paragraph_type.aREQUIREMENT);
             paragraph.setScopeOnBoard(true);
+            paragraph.setScopeTrackside(true);
+            paragraph.setScopeRollingStock(false);
             AddParagraph(paragraph);
         }
 
