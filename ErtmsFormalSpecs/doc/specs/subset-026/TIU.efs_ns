@@ -18,15 +18,78 @@
  Name="Pressure"
  Guid="5187a482-b9a4-4628-81a0-67f0e9a4fd21"
 >
-</Range></Ranges>
+<ReqRef
+ Id="f549b249-bf4b-4d17-a7cb-df8b47ffd37a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="84495ea3-0949-4acb-82f2-e88a458d446a"
+>
+</ReqRef></Range></Ranges>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ Name="BrakeInhibitStruct"
+ Guid="78cf7e1b-d098-4812-8d9e-ba265ce76b20"
+>
+<ReqRef
+ Id="8e7e9edc-238d-4740-a6e5-0b3072ab03c3"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="627e7e15-99af-47a3-b387-091c61528f49"
+>
+</ReqRef><ReqRef
+ Id="ee8241a4-8aa5-4163-8de2-20ca4e6ad70a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="ca5793cc-4bab-450d-aa5b-f82b9837b0ee"
+>
+</ReqRef><Comment>Indicates if some brakes are inhibited.</Comment>
+<StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="RegenerativeBrakeInhibited"
+ Guid="1b77edef-c236-41dd-b0e9-773bab27d74f"
+>
+<Comment>Indicates if regenerative brake is inhibited by the STM.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="MagneticShoeBrakeInhibited"
+ Guid="0be8c60b-98f8-4355-a71f-66b547e7237d"
+>
+<Comment>Indicates if magnetic shoe brake is inhibited by the STM.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="ECBrakeForEBInhibited"
+ Guid="3e335428-6a9f-4668-9ad7-8d6894f7592b"
+>
+<Comment>Indicates if eddy current brake is inhibited for emergency braking by the STM.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="ECBrakeForSBInhibited"
+ Guid="0fa90f90-4f85-42a9-acda-41043a0430bb"
+>
+<Comment>Indicates if eddy current brake in inhibited for service braking by the STM.</Comment>
+</StructureElement></Structure></Structures>
 <Variables>
 <Variable
  Type="Boolean"
  VariableMode="Outgoing"
+ Implemented="TRUE"
  Name="ServiceBrakeCommanded"
  Guid="63609300-c4f8-4580-b85a-fa3d02c99a85"
 >
-<Comment>Indicates the status of service brake of the train.</Comment>
+<ReqRef
+ Id="329a7f27-1bd7-4cd4-a3c6-c54b2e0342d5"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="74a7c714-9900-4fc8-a966-682506a9a37a"
+>
+</ReqRef><Comment>Indicates the status of service brake of the train.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
@@ -45,6 +108,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="970dc551-1cde-48c6-bf1b-e078cb721965"
 >
+</ReqRef><ReqRef
+ Id="9bd34b9e-1275-4b1d-b8bd-f7d43514a97f"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="70f8fe81-060e-41c4-a3f6-1515c8c0a7fb"
+>
 </ReqRef><Comment>Indicates if the &quot;sleeping&quot; input signal is received.</Comment>
 </Variable><Variable
  Type="Boolean"
@@ -58,6 +126,11 @@
  Id="b630705b-2851-4efe-b023-a26113425740"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="856cb7a0-81fb-47fa-ade9-573c9e96e353"
+>
+</ReqRef><ReqRef
+ Id="1e916e21-6a94-4e75-aeaa-8857ea37acf7"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="5c9d9456-8517-463d-a6dd-d8050e83db5d"
 >
 </ReqRef><Comment>&amp;</Comment>
 </Variable><Variable
@@ -73,6 +146,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="05f48f3c-b9a0-439e-9e48-359ad54f7a56"
 >
+</ReqRef><ReqRef
+ Id="99c18997-e909-4f87-bb31-4cb0656ef216"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="9a16e952-87af-46f0-87b2-e5ecf8220a5b"
+>
 </ReqRef><Comment>Indicates if the &quot;non leading&quot; input signal is received.</Comment>
 </Variable><Variable
  Type="Boolean"
@@ -86,6 +164,11 @@
  Id="df71d1ef-a7ee-44b4-839b-8a08ebe2e1c9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="923dcad4-4ca1-4fcf-b09a-de079aa87586"
+>
+</ReqRef><ReqRef
+ Id="e14a2a36-a1c5-4316-b05f-600097f91329"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="bef4ab3f-3fad-4195-9a93-201f213ff27c"
 >
 </ReqRef><Comment>Indicates if the ERTMS/ETCS on-board equipment is isolated.</Comment>
 </Variable><Variable
@@ -106,6 +189,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8eb2097a-2d7b-4e21-b2c7-203bcbe8db36"
 >
+</ReqRef><ReqRef
+ Id="07aa4451-7a3c-41ac-8176-3eab54039e3c"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="7f239be4-bb3d-4611-8f91-a3d5ca48a3b1"
+>
 </ReqRef><Comment>Indicates the status of emergency brake of the train.</Comment>
 </Variable><Variable
  Type="Pressure"
@@ -114,6 +202,28 @@
  Name="BrakePressure"
  Guid="2c4717b7-7081-45bb-9101-5e188eabec2c"
 >
-<Comment>Indicates the brake pressure used in the service brake feedback model</Comment>
-</Variable></Variables>
+<ReqRef
+ Id="f549b249-bf4b-4d17-a7cb-df8b47ffd37a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="b4c894da-e766-4be5-a544-12a6256575fa"
+>
+</ReqRef><Comment>Indicates the brake pressure used in the service brake feedback model</Comment>
+</Variable><Variable
+ Type="BrakeInhibitStruct"
+ VariableMode="Outgoing"
+ Implemented="TRUE"
+ Name="STMBrakeInhibit"
+ Guid="11c93a7d-1d19-4b45-90ad-701672331f8f"
+>
+<ReqRef
+ Id="8e7e9edc-238d-4740-a6e5-0b3072ab03c3"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="e063f8b2-6bee-44a5-a832-733ee6c9f151"
+>
+</ReqRef><ReqRef
+ Id="ee8241a4-8aa5-4163-8de2-20ca4e6ad70a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="2fda6080-f67f-4637-99c2-21e03216ca8d"
+>
+</ReqRef></Variable></Variables>
 </NameSpace>
