@@ -7,7 +7,11 @@
  Guid="ebde6713-ca52-4c13-949d-6735073795ef"
 >
 <NameSpaces>
-</NameSpaces>
+<NameSpaceRef
+ Name="STMOrders"
+ Guid="64f649eb-ebfd-419d-a241-306f1d4e39fe"
+>
+</NameSpaceRef></NameSpaces>
 <Ranges>
 <Range
  MinValue="0"
@@ -24,58 +28,68 @@
  Guid="84495ea3-0949-4acb-82f2-e88a458d446a"
 >
 </ReqRef></Range></Ranges>
-<Structures>
-<Structure
+<Enumerations>
+<Enum
+ Default="Fixed"
  Implemented="TRUE"
- Name="BrakeInhibitStruct"
- Guid="78cf7e1b-d098-4812-8d9e-ba265ce76b20"
+ Name="TrainDataEntryEnum"
+ Guid="78939d66-d326-40db-a435-7cb223cacade"
 >
 <ReqRef
- Id="8e7e9edc-238d-4740-a6e5-0b3072ab03c3"
+ Id="6d212610-a9ec-4b0e-9502-48730fbbbd5a"
  SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
- Guid="627e7e15-99af-47a3-b387-091c61528f49"
+ Guid="346c5101-aa14-4e5c-87ef-603d64e2d443"
 >
-</ReqRef><ReqRef
- Id="ee8241a4-8aa5-4163-8de2-20ca4e6ad70a"
+</ReqRef><Comment>Indicates the type of train data entry information.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Fixed"
+ Guid="937db9c0-00ff-4a81-aeee-fec5a801a50c"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Flexible"
+ Guid="fe57b3cc-0d7d-4a3c-bcda-fd89179df224"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Switchable"
+ Guid="1364fe5e-a1df-4443-8a2e-3f8991e2204f"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Neutral"
+ Implemented="TRUE"
+ Name="DirectionControllerEnum"
+ Guid="6433d9c7-0385-4f12-9159-cc0f3564dba7"
+>
+<ReqRef
+ Id="4a159c89-1c48-4991-b068-8e3a93337280"
  SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
- Guid="ca5793cc-4bab-450d-aa5b-f82b9837b0ee"
+ Guid="3885e76b-9d90-4deb-8e1e-afdf70b1ae46"
 >
-</ReqRef><Comment>Indicates if some brakes are inhibited.</Comment>
-<StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Outgoing"
- Implemented="TRUE"
- Name="RegenerativeBrakeInhibited"
- Guid="1b77edef-c236-41dd-b0e9-773bab27d74f"
+</ReqRef><Comment>Gives the possible values for the direction controller.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Forward"
+ Guid="270a2daa-ab74-4eba-9db0-c59dc2b3dab9"
 >
-<Comment>Indicates if regenerative brake is inhibited by the STM.</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Outgoing"
- Implemented="TRUE"
- Name="MagneticShoeBrakeInhibited"
- Guid="0be8c60b-98f8-4355-a71f-66b547e7237d"
+</EnumValue><EnumValue
+ Value="1"
+ Name="Neutral"
+ Guid="c68f93c4-033a-4f09-bf22-9f4412121b60"
 >
-<Comment>Indicates if magnetic shoe brake is inhibited by the STM.</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Outgoing"
- Name="ECBrakeForEBInhibited"
- Guid="3e335428-6a9f-4668-9ad7-8d6894f7592b"
+</EnumValue><EnumValue
+ Value="2"
+ Name="Backward"
+ Guid="bccd346a-0918-4d41-bfa3-9984f89c643e"
 >
-<Comment>Indicates if eddy current brake is inhibited for emergency braking by the STM.</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Outgoing"
- Name="ECBrakeForSBInhibited"
- Guid="0fa90f90-4f85-42a9-acda-41043a0430bb"
->
-<Comment>Indicates if eddy current brake in inhibited for service braking by the STM.</Comment>
-</StructureElement></Structure><Structure
+</EnumValue></Values>
+</Enum></Enumerations>
+<Structures>
+<Structure
  Implemented="TRUE"
  Name="BrakeStatusStruct"
  Guid="f05f9d2e-d556-402f-a0c7-7535c7472d91"
@@ -266,23 +280,6 @@
 >
 </ReqRef><Comment>Indicates the brake pressure used in the service brake feedback model</Comment>
 </Variable><Variable
- Type="BrakeInhibitStruct"
- VariableMode="Outgoing"
- Implemented="TRUE"
- Name="STMBrakeInhibit"
- Guid="11c93a7d-1d19-4b45-90ad-701672331f8f"
->
-<ReqRef
- Id="8e7e9edc-238d-4740-a6e5-0b3072ab03c3"
- SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
- Guid="e063f8b2-6bee-44a5-a832-733ee6c9f151"
->
-</ReqRef><ReqRef
- Id="ee8241a4-8aa5-4163-8de2-20ca4e6ad70a"
- SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
- Guid="2fda6080-f67f-4637-99c2-21e03216ca8d"
->
-</ReqRef></Variable><Variable
  Type="BrakeStatusStruct"
  VariableMode="Incoming"
  Implemented="TRUE"
@@ -305,5 +302,75 @@
  Guid="0a294c22-f387-488c-b9b7-3b83ce7c9e9f"
 >
 </ReqRef><Comment>Indicates the status of special brakes.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Outgoing"
+ Implemented="TRUE"
+ Name="CutOffTraction"
+ Guid="9054eedc-ab47-4d29-a717-d2b7577b5041"
+>
+<ReqRef
+ Id="150c63c0-f112-408f-bb6c-1ea9c8c0d98a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="6c2dc0e4-37bb-42db-bc83-88c6bfa65a99"
+>
+</ReqRef><Comment>Indicates if the traction has to be cut off.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="TractionIsOn"
+ Guid="2a2c1041-c78f-41bb-835e-5636cdc61410"
+>
+<ReqRef
+ Id="51935dba-7b50-4bd2-b935-b00e566f76f9"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="90cdb6d9-7d1c-40ba-9a54-b3600947fc17"
+>
+</ReqRef><Comment>Indicates if the status of traction is on.</Comment>
+</Variable><Variable
+ Type="TrainDataEntryEnum"
+ DefaultValue="Fixed"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="TrainDataEntry"
+ Guid="34a0ac36-82f8-4106-92a2-2a2f29a8c049"
+>
+<ReqRef
+ Id="6d212610-a9ec-4b0e-9502-48730fbbbd5a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="4b74e701-dcc8-4ed5-a113-c604c7cba265"
+>
+</ReqRef><Comment>Indicates the type of train data entry.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="NTCIsolated"
+ Guid="5108e549-7a88-4508-aad9-0e6ae4408910"
+>
+<ReqRef
+ Id="f2a86c31-9afa-4835-9476-eef3285affd4"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="3d46474f-ea0f-4b7a-b149-03adcf8e5574"
+>
+</ReqRef><Comment>Indicates if the National System is isolated.</Comment>
+</Variable><Variable
+ Type="DirectionControllerEnum"
+ DefaultValue="Neutral"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="DirectionControllerInformation"
+ Guid="0d2471c3-3d9b-45f5-99a0-2cfc2ef90f09"
+>
+<ReqRef
+ Id="4a159c89-1c48-4991-b068-8e3a93337280"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="2287691d-5e3f-422e-8c9b-cb3875c7ce0b"
+>
+</ReqRef><Comment>Indicates the direction of the train.</Comment>
 </Variable></Variables>
 </NameSpace>
