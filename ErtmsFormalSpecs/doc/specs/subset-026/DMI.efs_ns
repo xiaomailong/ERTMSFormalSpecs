@@ -41,7 +41,7 @@
 <Structures>
 <Structure
  NeedsRequirement="FALSE"
- Name="DMI"
+ Name="DMIStruct"
  Guid="d3caa114-07fe-41de-984d-a9c2b0c3cb06"
 >
 <ReqRef
@@ -9437,30 +9437,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="DeskOpen"
- Guid="9b67f106-8f69-429d-912b-84971f92521b"
->
-<ReqRef
- Id="abbd517e-8b49-43b4-8dfa-117c8988fa86"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="41723adc-5f54-4221-be87-89f7c026b866"
->
-</ReqRef><Comment>Indicates if the desk of the current DMI is open or closed.</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Internal"
- NeedsRequirement="FALSE"
- Name="PrecedingDeskOpen"
- Guid="a1ac7446-79fd-4016-a2d1-b56da514418e"
->
-<Comment>Holds the previous value of DMI.DeskOpen.</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="IsMaster"
  Guid="81997e88-519e-46dc-9dc7-f4cf598ad353"
 >
@@ -9532,7 +9508,17 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9ee3e831-b06b-4d54-b268-26e92e853ce2"
 >
-</ReqRef></StructureElement></Structure><Structure
+</ReqRef></StructureElement><StructureElement
+ TypeName="Integer"
+ Default="0"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Id"
+ Guid="0fa592fb-b7ef-4fcd-af91-b3cc7cf619d4"
+>
+<Comment>DMI&apos;s identifier.</Comment>
+</StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InputInformation"
@@ -9728,7 +9714,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </StructureElement></Structure></Structures>
 <Functions>
 <Function
- Type="DMI.DMI"
+ Type="DMI.DMIStruct"
  Implemented="TRUE"
  Name="MasterDMI"
  Guid="a73ed919-cd79-497a-a960-8ff0650d282c"
@@ -9760,64 +9746,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 <Expression>DMI2</Expression>
 </Case></Cases>
 </Function><Function
- Type="Boolean"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DriverClosedTheDesk"
- Guid="f3b19e3b-19ce-4dac-9bb1-379f4b9925e0"
->
-<Comment>Returns true if the driver closed the desk of the DMI passed as parameter; returns false otherwise.</Comment>
-<Parameters>
-<Parameter
- Type="DMI.DMI"
- Name="DMI"
- Guid="0e9134bf-2cc7-47bd-a73a-2223232e1aac"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="All cases"
- Guid="03ea07b0-9520-4c08-b3c8-964a63849821"
->
-<PreConditions>
-<PreCondition
- Guid="8796e1fb-02be-49a8-958a-8fca775a3322"
->Available ( DMI )</PreCondition></PreConditions>
-<Expression>DMI.PrecedingDeskOpen AND NOT ( DMI.DeskOpen ) </Expression>
-</Case><Case
- Name="Empty DMI"
- Guid="b380880e-bb75-49bd-87fa-c2e2fcd8acb8"
->
-<PreConditions>
-<PreCondition
- Guid="f459553d-1bce-40d1-8f6d-a032a7f72479"
->NOT Available ( DMI )</PreCondition></PreConditions>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DriverOpenedTheDesk"
- Guid="d52535f0-dd35-4eb2-a916-d0094fe3aee5"
->
-<Comment>Returns true if the driver opened the desk of the DMI passed as parameter; returns false otherwise.</Comment>
-<Parameters>
-<Parameter
- Type="DMI.DMI"
- Name="DMI"
- Guid="3623cb31-96a5-499f-aeaa-b14593c022e5"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="All cases"
- Guid="126a73c7-b271-41d8-bb69-7b5991a1fe0f"
->
-<Expression>DMI.DeskOpen == Boolean.True AND DMI.PrecedingDeskOpen == Boolean.False</Expression>
-</Case></Cases>
-</Function><Function
- Type="DMI.DMI"
+ Type="DMI.DMIStruct"
  Implemented="TRUE"
  Name="SlaveDMI"
  Guid="c3252f0f-82fc-4a6d-9e59-635fe574107a"
@@ -9867,10 +9796,107 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 <Expression>DMI.MasterDMI().PreviousMode != Kernel.Mode</Expression>
 </Case></Cases>
+</Function><Function
+ Type="TIU.CabStruct"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CabOfDMI"
+ Guid="cbc8b78e-22c3-4d0d-80c2-08cfda743ef9"
+>
+<Comment>Gives the cab of the provided DMI.</Comment>
+<Parameters>
+<Parameter
+ Type="DMI.DMIStruct"
+ Name="aDMI"
+ Guid="1c2793f4-15a1-4d06-bbe6-8816908e8730"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Cab1"
+ Guid="6e85ec20-eb0d-4852-be45-e95f0979e002"
+>
+<PreConditions>
+<PreCondition
+ Guid="e5771334-a911-4305-a7a7-ada037e3ac13"
+>aDMI.Id == TIU.Cab1.Id</PreCondition></PreConditions>
+<Expression>TIU.Cab1</Expression>
+</Case><Case
+ Name="Cab2"
+ Guid="1d2f6ec0-819a-49f9-a054-c8dbe3944726"
+>
+<PreConditions>
+<PreCondition
+ Guid="b4236209-7359-4ad7-bc70-3b79e8a3dac1"
+>aDMI.Id == TIU.Cab2.Id</PreCondition></PreConditions>
+<Expression>TIU.Cab2</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="DeskIsOpen"
+ Guid="1849ab3d-c834-4645-a0dc-965e031fe2e0"
+>
+<ReqRef
+ Id="4e985ff8-d185-48ce-8afd-6944a286b13a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="d0885fdf-e1fb-4a56-a92e-848f8b010570"
+>
+</ReqRef><Comment>Indicates if the desk of the provided DMI is open.</Comment>
+<Parameters>
+<Parameter
+ Type="DMIStruct"
+ Name="aDMI"
+ Guid="d5f97db8-f4e6-458b-9fe1-6be57bbe689d"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="fb50fc35-abf3-4cc4-974b-7ee3eb1a8a67"
+>
+<Expression>CabOfDMI ( aDMI ).IsActive</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="DesksAreClosed"
+ Guid="7533be36-4dc9-4172-9b3f-9651d90522e8"
+>
+<ReqRef
+ Id="b630705b-2851-4efe-b023-a26113425740"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="72d8185e-8f1c-47aa-a37c-af942da4075b"
+>
+</ReqRef><ReqRef
+ Id="be813d86-793b-49e5-ae84-eb22743ce71a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b4311207-42b6-4b22-b8ed-ca54c2ada626"
+>
+</ReqRef><ReqRef
+ Id="2695652b-30cd-4582-8306-64d14e50dc79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="30cc9059-163e-4ea3-b2c2-98c7f1a614b3"
+>
+</ReqRef><ReqRef
+ Id="19f2d380-29dd-4668-a992-36ea2f07fce8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0b655722-7591-464a-bfb7-ba9dd5b51bdd"
+>
+</ReqRef><Comment>Indicates if all the desks are closed.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="049ad985-01ec-4597-908a-4c624747856a"
+>
+<Expression>NOT TIU.Cab1.IsActive
+  AND
+NOT TIU.Cab2.IsActive</Expression>
+</Case></Cases>
 </Function></Functions>
 <Variables>
 <Variable
- Type="DMI.DMI"
+ Type="DMI.DMIStruct"
  DefaultValue=""
  VariableMode="InOut"
  NeedsRequirement="FALSE"
@@ -9883,7 +9909,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="f355a778-4037-4b9e-99e7-b3b68aba7cf3"
 >
 </ReqRef></Variable><Variable
- Type="DMI.DMI"
+ Type="DMI.DMIStruct"
  DefaultValue=""
  VariableMode="InOut"
  NeedsRequirement="FALSE"
@@ -9898,29 +9924,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </ReqRef></Variable></Variables>
 <Rules>
 <Rule
- Priority="CleanUp"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="FollowDeskStatus"
- Guid="73b44c40-1a91-4457-9ddc-84a55805b27d"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="FollowDeskStatus"
- Guid="3cccdeef-6e8a-4d9f-b434-63af3fc142a1"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="5af2cb87-39d9-4064-b72a-58cfc0215301"
->DMI1.PrecedingDeskOpen &lt;- DMI1.DeskOpen</Action><Action
- Guid="72339b2b-c4cd-4be2-993e-bebd864fc4bf"
->DMI2.PrecedingDeskOpen &lt;- DMI2.DeskOpen</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"

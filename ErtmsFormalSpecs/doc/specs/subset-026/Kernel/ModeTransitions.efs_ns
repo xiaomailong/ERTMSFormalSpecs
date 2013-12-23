@@ -179,9 +179,9 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
   AND
 Odometry.TrainIsAtStandstill()
   AND
-NOT DMI.MasterDMI().DeskOpen
+NOT DMI.DeskIsOpen ( DMI.MasterDMI() )
   AND
-NOT DMI.SlaveDMI().DeskOpen</Expression>
+NOT DMI.DeskIsOpen ( DMI.SlaveDMI() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -338,7 +338,7 @@ NOT
  Name="Value"
  Guid="e09579e6-4a46-49c6-98c7-5fe5186b2076"
 >
-<Expression>DMI.MasterDMI().DeskOpen</Expression>
+<Expression>DMI.DeskIsOpen ( DMI.MasterDMI() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -936,7 +936,8 @@ MA.ModeProfile.Profile == []
  Name="Value"
  Guid="4deb44d5-7aaa-4f8a-a3f3-80141bb2b686"
 >
-<Expression>DMI.MasterDMI().DeskOpen AND
+<Expression>DMI.DeskIsOpen ( DMI.MasterDMI() )
+  AND
 NOT Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
 </Case></Cases>
 </Function><Function
@@ -955,8 +956,7 @@ NOT Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
  Name="Value"
  Guid="76429653-d3ad-4c36-808b-03c2a9edf2d5"
 >
-<Expression>NOT DMI.MasterDMI().DeskOpen AND
-  NOT DMI.SlaveDMI().DeskOpen</Expression>
+<Expression>DMI.DesksAreClosed()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -974,8 +974,8 @@ NOT Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
  Name="Value"
  Guid="9e0b8659-9489-4799-b474-44713d11b2ad"
 >
-<Expression>NOT DMI.MasterDMI().DeskOpen AND
-  NOT DMI.SlaveDMI().DeskOpen AND
+<Expression>DMI.DesksAreClosed()
+  AND
 NOT Kernel.Shunting.ContinueShuntingOnDeskClosure</Expression>
 </Case></Cases>
 </Function><Function
@@ -994,9 +994,7 @@ NOT Kernel.Shunting.ContinueShuntingOnDeskClosure</Expression>
  Name="Value"
  Guid="80000771-c009-4002-bb89-e12ff41b9d10"
 >
-<Expression>NOT DMI.MasterDMI().DeskOpen
-  AND
-NOT DMI.SlaveDMI().DeskOpen
+<Expression>DMI.DesksAreClosed()
   AND
 NOT Kernel.Shunting.ContinueShuntingOnDeskClosure
   AND
@@ -1054,7 +1052,8 @@ Odometry.EstimatedSpeed == 0.0</Expression>
  Name="Value"
  Guid="ceae814f-03ea-4f27-ab95-ad5fdc28bb7f"
 >
-<Expression>DMI.MasterDMI().DeskOpen AND
+<Expression>DMI.DeskIsOpen ( DMI.MasterDMI() )
+  AND
 Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
 </Case></Cases>
 </Function><Function
@@ -1356,6 +1355,7 @@ Level.Value in [Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="Condition30"
  Guid="1ed756b3-59f3-488a-b1a0-73863a63711e"
 >
@@ -1369,7 +1369,9 @@ Level.Value in [Level.L2, Level.L3]</Expression>
  Name="Value"
  Guid="8b01a6ac-2983-442a-9e69-6e27436a743e"
 >
-<Expression>False</Expression>
+<Expression>DMI.DesksAreClosed ()
+  AND
+TIU.PassiveShuntingPermitted</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

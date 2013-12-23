@@ -529,7 +529,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="be297a45-8f00-4515-85de-3b074fc79eb4"
 >Kernel.Mode == Mode.SB</PreCondition><PreCondition
  Guid="b69c599e-b059-495e-89e8-a2e5e3c6aa3d"
->(DMI.MasterDMI()).DeskOpen == True</PreCondition><PreCondition
+>DMI.DeskIsOpen ( DMI.MasterDMI() )</PreCondition><PreCondition
  Guid="cf68f025-8f89-456d-a84b-72f7305ebd05"
 >EURORADIO.SessionState == SessionState.Closed</PreCondition></PreConditions>
 <Actions>
@@ -5295,7 +5295,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </ReqRef><PreConditions>
 <PreCondition
  Guid="d1e9b91a-ff56-4aba-b114-541ef4901082"
->DMI.DriverClosedTheDesk(DMI.MasterDMI())</PreCondition></PreConditions>
+>NOT DMI.DeskIsOpen ( DMI.MasterDMI() )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="575cfaa5-2e3b-4bac-9c36-dc6b0a10c2cf"
@@ -9450,13 +9450,21 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="e1ee2cc9-4190-4538-a31b-abec6da6eee2"
->DMI.DMI1.DeskOpen &lt;- True</Action><Action
+>TIU.Cab1.IsActive &lt;- True</Action><Action
  Guid="eb11d587-0237-4dab-9017-68297f3de1ab"
 >DMI.DMI1.IsMaster &lt;- True</Action><Action
  Guid="21856a04-ea9e-4f80-b170-359f928e25e2"
->DMI.DMI2.DeskOpen &lt;- False</Action><Action
+>TIU.Cab2.IsActive &lt;- False</Action><Action
  Guid="880fb6ea-f93f-426d-a18f-3cb85df1ab07"
->DMI.DMI2.IsMaster &lt;- False</Action></Actions>
+>DMI.DMI2.IsMaster &lt;- False</Action><Action
+ Guid="387892f5-b0d0-4cac-955b-477e13bf32df"
+>DMI.DMI1.Id &lt;- 1</Action><Action
+ Guid="5d128991-6e9f-4221-8e47-5021b3bcbab8"
+>DMI.DMI2.Id &lt;- 2</Action><Action
+ Guid="8349c9de-3024-4a75-b5df-3243dea722c1"
+>TIU.Cab1.Id &lt;- 1</Action><Action
+ Guid="3dd83743-5ce9-48ba-b632-32e51c9d9be5"
+>TIU.Cab2.Id &lt;- 2</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

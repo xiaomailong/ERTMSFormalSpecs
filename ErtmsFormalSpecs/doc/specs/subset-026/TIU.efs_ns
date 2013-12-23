@@ -146,6 +146,40 @@
  Guid="2de336fc-bfd9-4d1e-8222-d23de3db78a4"
 >
 <Comment>Indicates if the status of electro pneumatic brake is active.</Comment>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="CabStruct"
+ Guid="0805e9a4-1a0e-4cb6-9640-6560cdcb831e"
+>
+<ReqRef
+ Id="deed4628-97e4-4181-8665-7509256de3fa"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="34901950-772a-43b8-bd84-cb903053dbb3"
+>
+</ReqRef><StructureElement
+ TypeName="Integer"
+ Default="0"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Id"
+ Guid="b39a2e42-59ef-498e-83fc-cdee0be7f9e3"
+>
+<Comment>Cab&apos;s identifier.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="IsActive"
+ Guid="b74e499a-7ab7-4841-bf2d-f6958a8724ff"
+>
+<ReqRef
+ Id="deed4628-97e4-4181-8665-7509256de3fa"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="bef6fb31-5263-4ec1-ae6c-a9a8f2a08c47"
+>
+</ReqRef><Comment>Indicates if the current cab is active.</Comment>
 </StructureElement></Structure></Structures>
 <Variables>
 <Variable
@@ -372,5 +406,43 @@
  Guid="2287691d-5e3f-422e-8c9b-cb3875c7ce0b"
 >
 </ReqRef><Comment>Indicates the direction of the train.</Comment>
+</Variable><Variable
+ Type="CabStruct"
+ DefaultValue=""
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="Cab1"
+ Guid="4861f6b3-9984-4fa9-8932-e7c3e48e785f"
+>
+<ReqRef
+ Id="deed4628-97e4-4181-8665-7509256de3fa"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="f4db729e-4edb-4006-8406-f2d8fba5d4eb"
+>
+</ReqRef><ReqRef
+ Id="839d8340-fe74-4358-8e90-bbcbf37f22e7"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="6a21bb00-9a33-4b90-b7e0-9c6567e02017"
+>
+</ReqRef><Comment>Represents the cab 1.</Comment>
+</Variable><Variable
+ Type="CabStruct"
+ DefaultValue=""
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="Cab2"
+ Guid="79bf21ac-8580-4282-bb90-157cd56f3872"
+>
+<ReqRef
+ Id="deed4628-97e4-4181-8665-7509256de3fa"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="3e32e5e6-9401-4a2d-b0aa-15e5eb432de5"
+>
+</ReqRef><ReqRef
+ Id="839d8340-fe74-4358-8e90-bbcbf37f22e7"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="2a94db6b-20b9-4378-ac27-5f265148fad1"
+>
+</ReqRef><Comment>Represents the cab 2.</Comment>
 </Variable></Variables>
 </NameSpace>
