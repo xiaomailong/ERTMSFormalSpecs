@@ -1,0 +1,121 @@
+<NameSpace
+ Name="STMOrders"
+ Guid="02e91149-1cea-4632-881c-7d4c7b7b14fb"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ Name="BrakeInhibitStruct"
+ Guid="78cf7e1b-d098-4812-8d9e-ba265ce76b20"
+>
+<ReqRef
+ Id="8e7e9edc-238d-4740-a6e5-0b3072ab03c3"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="627e7e15-99af-47a3-b387-091c61528f49"
+>
+</ReqRef><ReqRef
+ Id="ee8241a4-8aa5-4163-8de2-20ca4e6ad70a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="ca5793cc-4bab-450d-aa5b-f82b9837b0ee"
+>
+</ReqRef><Comment>Indicates if some brakes are inhibited.</Comment>
+<StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Outgoing"
+ Implemented="TRUE"
+ Name="RegenerativeBrakeInhibited"
+ Guid="1b77edef-c236-41dd-b0e9-773bab27d74f"
+>
+<Comment>Indicates if regenerative brake is inhibited by the STM.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Outgoing"
+ Implemented="TRUE"
+ Name="MagneticShoeBrakeInhibited"
+ Guid="0be8c60b-98f8-4355-a71f-66b547e7237d"
+>
+<Comment>Indicates if magnetic shoe brake is inhibited by the STM.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Outgoing"
+ Name="ECBrakeForEBInhibited"
+ Guid="3e335428-6a9f-4668-9ad7-8d6894f7592b"
+>
+<Comment>Indicates if eddy current brake is inhibited for emergency braking by the STM.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Outgoing"
+ Name="ECBrakeForSBInhibited"
+ Guid="0fa90f90-4f85-42a9-acda-41043a0430bb"
+>
+<Comment>Indicates if eddy current brake in inhibited for service braking by the STM.</Comment>
+</StructureElement></Structure></Structures>
+<Variables>
+<Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Outgoing"
+ Implemented="TRUE"
+ Name="OpenMainPowerSwitch"
+ Guid="e8ef2747-7e63-4885-abf5-2bb961c680f6"
+>
+<ReqRef
+ Id="a206f1ba-bef5-40dd-b305-c2cb46cab517"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="4839ebd0-3819-4f93-91ec-c92d58b46276"
+>
+</ReqRef><Comment>Indicates if STM has ordered to open the main power switch.</Comment>
+</Variable><Variable
+ Type="BrakeInhibitStruct"
+ VariableMode="Outgoing"
+ Implemented="TRUE"
+ Name="BrakeInhibit"
+ Guid="11c93a7d-1d19-4b45-90ad-701672331f8f"
+>
+<ReqRef
+ Id="8e7e9edc-238d-4740-a6e5-0b3072ab03c3"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="e063f8b2-6bee-44a5-a832-733ee6c9f151"
+>
+</ReqRef><ReqRef
+ Id="ee8241a4-8aa5-4163-8de2-20ca4e6ad70a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="2fda6080-f67f-4637-99c2-21e03216ca8d"
+>
+</ReqRef><Comment>Indicates if STM has ordered to inhibit the special brakes.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Outgoing"
+ Implemented="TRUE"
+ Name="OpenAirTightness"
+ Guid="7209bfe9-89cc-4483-921a-8d01d19a2e66"
+>
+<ReqRef
+ Id="e864835c-d370-4254-abe0-f0231ef53296"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="ca505cfc-1c8a-4aa4-9f5a-340b97290c0c"
+>
+</ReqRef><Comment>Indicates if STM has ordered to open air tightness.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Outgoing"
+ Implemented="TRUE"
+ Name="LowerPantograph"
+ Guid="bf38c441-fe45-484e-8462-bf318fab0754"
+>
+<ReqRef
+ Id="64796bcb-a745-4f75-99bf-47778270abbd"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="8adbba96-b62b-4752-acd7-6a71f8f8311a"
+>
+</ReqRef><Comment>Indicates if STM has ordered to lower (or raise) the pantograph.</Comment>
+</Variable></Variables>
+</NameSpace>
