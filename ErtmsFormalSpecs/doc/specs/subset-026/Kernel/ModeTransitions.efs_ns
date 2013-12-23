@@ -170,6 +170,11 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="651d8ebd-ff35-4ccf-ad7f-6732ba145d2b"
 >
+</ReqRef><ReqRef
+ Id="705d58b9-e6bf-4033-9442-3c725365f693"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="1fa1fa03-594c-4948-9eda-2a5d57f0fb64"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -179,9 +184,7 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
   AND
 Odometry.TrainIsAtStandstill()
   AND
-NOT DMI.DeskIsOpen ( DMI.MasterDMI() )
-  AND
-NOT DMI.DeskIsOpen ( DMI.SlaveDMI() )</Expression>
+DMI.DesksAreClosed()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -989,6 +992,11 @@ NOT Kernel.Shunting.ContinueShuntingOnDeskClosure</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7c5d2cbe-8375-437d-bbab-528dba4f731f"
 >
+</ReqRef><ReqRef
+ Id="df56552b-73ea-4617-bea7-d04ca4234fc4"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="9481cec6-b798-4efd-8bdd-5c07347040f7"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -1371,7 +1379,7 @@ Level.Value in [Level.L2, Level.L3]</Expression>
 >
 <Expression>DMI.DesksAreClosed ()
   AND
-TIU.PassiveShuntingPermitted</Expression>
+NOT TIU.PassiveShuntingPermitted</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

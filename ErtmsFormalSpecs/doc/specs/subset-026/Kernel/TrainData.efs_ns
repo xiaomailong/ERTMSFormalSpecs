@@ -1104,14 +1104,14 @@
 <Rule
  Priority="Processing"
  NeedsRequirement="FALSE"
- Name="TrainData"
+ Name="Train data"
  Guid="6cdfcaa4-fa2b-4c22-92d0-f81997e116a0"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
- Name="TrainData"
+ Name="Train data"
  Guid="643ef28c-48c2-449d-8cba-31f2d3943523"
 >
 <PreConditions>
@@ -1949,15 +1949,7 @@
  Guid="1150faf4-4606-4991-8763-8a8aafba4453"
 >TrainData.Value.EpBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
  Guid="57d18a98-ba5a-42ff-a4ad-c58afc9c5042"
->TrainData.Value.RegenerativeBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
- Guid="2107d35f-3bc6-4272-88c4-8614d0362dde"
->TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive &lt;- True</Action><Action
- Guid="3c48340b-684f-4283-9333-051616fa4413"
->TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive &lt;- True</Action><Action
- Guid="0f3fcab5-3024-4f84-ad59-4582a302b0cc"
->TIU.SpecialBrakeStatus.EPBrakeIsActive &lt;- True</Action><Action
- Guid="51c01b97-bf84-4dfa-bb16-9ccc3257a1cc"
->TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive &lt;- True</Action></Actions>
+>TrainData.Value.RegenerativeBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.Both</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
