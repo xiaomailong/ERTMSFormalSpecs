@@ -1357,6 +1357,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="31f4e13f-40c4-4706-b717-b172a999d718"
 >
+</ReqRef><ReqRef
+ Id="03cde933-89e7-47e7-9145-df57f955e647"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="31bb35ee-195d-45ce-ad91-e944de1632d8"
+>
 </ReqRef><Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of A_service_emergency(V).</Comment>
 <Parameters>
 <Parameter
@@ -1409,6 +1414,11 @@ TrainData.Value.EddyCurrentBrakeInterface in [BrakeInterfaceStatus.SB, BrakeInte
  Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7cffa2e1-d01b-4732-a2d7-484a8e70b256"
+>
+</ReqRef><ReqRef
+ Id="03cde933-89e7-47e7-9145-df57f955e647"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="806ce1d6-4be4-4edc-bfc8-139a77879ebf"
 >
 </ReqRef><Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of T_brake_service.</Comment>
 <Parameters>
@@ -1479,6 +1489,11 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.SB, BrakeInterfaceStat
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2e30d5d8-11ca-4d27-955e-423df10d37bd"
 >
+</ReqRef><ReqRef
+ Id="03cde933-89e7-47e7-9145-df57f955e647"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="c047a9d2-0646-4df3-b606-373c620b8ab1"
+>
 </ReqRef><Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of A_brake_emergency(V).</Comment>
 <Parameters>
 <Parameter
@@ -1539,6 +1554,11 @@ TrainData.Value.MagneticShoeBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInt
  Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1a7982c5-45e3-4a64-81c4-e38d0302688b"
+>
+</ReqRef><ReqRef
+ Id="03cde933-89e7-47e7-9145-df57f955e647"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="e72d8a5b-dfd2-442a-95ab-39b16aa2a0b0"
 >
 </ReqRef><Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of T_brake_emergency.</Comment>
 <Parameters>
@@ -2504,13 +2524,26 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="81e27934-a6b4-402e-848b-7e3caa95141c"
 >
+</ReqRef><ReqRef
+ Id="03cde933-89e7-47e7-9145-df57f955e647"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="adccc45a-224c-4f3d-b8a7-b51188a65023"
+>
+</ReqRef><ReqRef
+ Id="cb88b506-7ed8-46a9-988e-3cd7ea95ef7a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="f3957bae-365b-47a4-b708-a2f25abb930b"
+>
 </ReqRef><Comment>Indicates if it is allowed to take into account the contribution of a special/additional brake, which is independent from wheel/rail adhesion, for the selection of the maximum emergency brake deceleration under reduced adhesion conditions and, if it is allowed, indicates if the status of the special/additional brake is active.</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="ad2686d0-1ff9-4ebe-a7bb-97a7c712af17"
 >
-<Expression>ContributionOfSpecialBrakeIsAllowed AND
+<Expression>ContributionOfSpecialBrakeIsAllowed
+  AND
+TIU.AdditionalBrakesActive
+  AND
 (
   TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive
     OR
@@ -4125,15 +4158,41 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="ConversionModel"
+ Name="Special brakes in TIU"
+ Guid="dbe0d12a-240b-4f9f-8daa-4bf7e25b31ff"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Special brakes in TIU"
+ Guid="2865776e-12b0-41d1-9260-1845f80af5c4"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2107d35f-3bc6-4272-88c4-8614d0362dde"
+>TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive &lt;- True</Action><Action
+ Guid="3c48340b-684f-4283-9333-051616fa4413"
+>TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive &lt;- True</Action><Action
+ Guid="0f3fcab5-3024-4f84-ad59-4582a302b0cc"
+>TIU.SpecialBrakeStatus.EPBrakeIsActive &lt;- True</Action><Action
+ Guid="51c01b97-bf84-4dfa-bb16-9ccc3257a1cc"
+>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Conversion model"
  Guid="44f3f49f-166f-494c-b831-1e37377074bc"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
- Name="ConversionModel"
+ Name="Conversion model"
  Guid="945cf2ab-9d5e-4b23-bb7e-4369587123a2"
 >
 <PreConditions>
