@@ -61,7 +61,7 @@
 <Actions>
 <Action
  Guid="dbfb4ce6-6e75-4ec4-9570-7ba16fe4a050"
->Message &lt;- EMPTY</Action><Action
+>JRUMessages &lt;- []</Action><Action
  Guid="06d0091f-b48f-486b-8088-c41f6e231e53"
 >PreviousSystemVersion &lt;- Kernel.OperatedSystemVersion.Value</Action><Action
  Guid="2530de24-0c40-4088-b0a4-1325135e6574"
@@ -126,7 +126,7 @@
 <Actions>
 <Action
  Guid="63e31c8b-6484-4e99-9db9-f9b29b72b552"
->Message &lt;- Messages.JRU.MESSAGE.Message { }</Action></Actions>
+>JRUMessages &lt;- JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -153,7 +153,9 @@
 <Actions>
 <Action
  Guid="1f156b86-5ad4-4f71-b713-b90d2220acf4"
->Message.NTC_SELECTED &lt;- CreateNtcSelectedMessage()</Action></Actions>
+>INSERT Messages.JRU.MESSAGE.Message {
+NTC_SELECTED =&gt; CreateNtcSelectedMessage()
+} IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -195,7 +197,9 @@
 <Actions>
 <Action
  Guid="a2e909fc-f437-4efb-9dfb-399829b60fce"
->Message.GENERAL_MESSAGE &lt;- CreateGeneralMessage()</Action></Actions>
+>INSERT Messages.JRU.MESSAGE.Message {
+GENERAL_MESSAGE =&gt; CreateGeneralMessage()
+} IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -231,7 +235,9 @@
  Guid="53c8185c-b1db-4c4c-9778-c8c65d4d4c47"
 >Kernel.TrainDataVerified &lt;- False</Action><Action
  Guid="9c53e3cd-d6e0-4d3b-8990-9e9c536431b7"
->Message.TRAIN_DATA &lt;- CreateTrainDataMessage()</Action></Actions>
+>INSERT Messages.JRU.MESSAGE.Message {
+TRAIN_DATA =&gt; CreateTrainDataMessage()
+} IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -258,7 +264,9 @@
 <Actions>
 <Action
  Guid="7c9857ea-ccb4-413f-9701-363e864e468a"
->Message.EMERGENCY_BRAKE_COMMAND_STATE &lt;- CreateEBCommandStateMessage()</Action></Actions>
+>INSERT Messages.JRU.MESSAGE.Message {
+EMERGENCY_BRAKE_COMMAND_STATE =&gt; CreateEBCommandStateMessage()
+} IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -290,7 +298,9 @@
 <Actions>
 <Action
  Guid="5e253593-036b-4172-af6c-537b332e8bc6"
->Message.SERVICE_BRAKE_COMMAND_STATE &lt;- CreateSBCommandStateMessage()</Action></Actions>
+>INSERT Messages.JRU.MESSAGE.Message {
+SERVICE_BRAKE_COMMAND_STATE =&gt; CreateSBCommandStateMessage()
+} IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -317,7 +327,9 @@
 <Actions>
 <Action
  Guid="e8d247c7-1e71-428a-bf8d-240c42f3a3b6"
->Message.TELEGRAM_FROM_BALISE &lt;- JRU.CreateJruTelegramFromBaliseMessage()</Action></Actions>
+>INSERT Messages.JRU.MESSAGE.Message {
+  TELEGRAM_FROM_BALISE =&gt; JRU.CreateJruTelegramFromBaliseMessage()
+} IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -423,7 +435,23 @@
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="b97e87da-0624-4898-8439-68eee96f5407"
 >
-</ReqRef></StructureElement></Structure></Structures>
+</ReqRef></StructureElement><StructureElement
+ TypeName="JRUMessages"
+ Default=""
+ Mode="Internal"
+ Name="JRUMessages"
+ Guid="aca59d19-3dcb-4c35-8d91-91589353e7e8"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="Messages.JRU.MESSAGE.Message"
+ MaxSize="30"
+ Default="[]"
+ Name="JRUMessages"
+ Guid="eb0177e5-5953-4de1-a99a-dd82f1fa7fd2"
+>
+</Collection></Collections>
 <Functions>
 <Function
  Type="Messages.JRU.MESSAGE.GENERAL_MESSAGE.Message"
