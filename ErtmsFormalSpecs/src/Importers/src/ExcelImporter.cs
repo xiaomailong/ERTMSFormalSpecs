@@ -564,7 +564,7 @@ namespace Importers
                 double temp = (double)(aRange.Cells[i, 3] as Range).Value2;
                 if (temp != gradientValue || i == 33)
                 {
-                    addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "INSERT\n    Kernel.TrackDescription.Gradient.GradientInfo\n    {{\n        Location => {0:0.0},\n        Gradient => {1:0.0}\n    }}\nIN\n    Kernel.TrackDescription.Gradient.Gradients", gradientDistance, gradientValue));
+                    addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "INSERT\n    Kernel.TrackDescription.Gradient.GradientInfo\n    {{\n        Distance => {0:0.0},\n        Gradient => {1:0.0}\n    }}\nIN\n    Kernel.TrackDescription.Gradient.Gradients", gradientDistance, gradientValue));
                     gradientDistance = (double)(aRange.Cells[i, 1] as Range).Value2;
                     gradientValue = temp;
                 }
@@ -696,7 +696,10 @@ namespace Importers
             if (obj != null)
             {
                 if (initializeBrakes)
-                    addAction(aSubStep, String.Format("Kernel.TrainData.TrainData.Value.EddyCurrentBrake <- Kernel.TrainData.BrakingParameters.SpecialBrake\n{{\n    IsActive => True,\n    InterfaceStatus => Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both\n}}"));
+                {
+                    addAction(aSubStep, String.Format("TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive <- True"));
+                    addAction(aSubStep, String.Format("Kernel.TrainData.TrainData.Value.EddyCurrentBrakeInterface <- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both\n"));
+                }
                 ebBrakesCombination += obj == null ? "" : "EddyCurrent";
                 sbBrakesCombination += obj == null ? "" : "EddyCurrent";
             }
@@ -704,14 +707,20 @@ namespace Importers
             if (obj != null)
             {
                 if (initializeBrakes)
-                    addAction(aSubStep, String.Format("Kernel.TrainData.TrainData.Value.MagneticShoeBrake <- Kernel.TrainData.BrakingParameters.SpecialBrake\n{{\n    IsActive => True,\n    InterfaceStatus => Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both\n}}"));
+                {
+                    addAction(aSubStep, String.Format("TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive <- True"));
+                    addAction(aSubStep, String.Format("Kernel.TrainData.TrainData.Value.MagneticShoeBrakeInterface <- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both\n"));
+                }
                 ebBrakesCombination += ebBrakesCombination == "" ? "Magnetic" : "_Magnetic";
             }
             obj = (aRange.Cells[6, brakesCombinationColumnNumber] as Range).Value2;
             if (obj != null)
             {
                 if (initializeBrakes)
-                    addAction(aSubStep, String.Format("Kernel.TrainData.TrainData.Value.RegenerativeBrake <- Kernel.TrainData.BrakingParameters.SpecialBrake\n{{\n    IsActive => True,\n    InterfaceStatus => Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both\n}}"));
+                {
+                    addAction(aSubStep, String.Format("TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive <- True"));
+                    addAction(aSubStep, String.Format("Kernel.TrainData.TrainData.Value.RegenerativeBrakeInterface <- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both\n"));
+                }
                 ebBrakesCombination += ebBrakesCombination == "" ? "Regenerative" : "_Regenerative";
                 sbBrakesCombination += sbBrakesCombination == "" ? "Regenerative" : "_Regenerative";
             }
