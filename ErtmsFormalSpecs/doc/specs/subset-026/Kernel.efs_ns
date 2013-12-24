@@ -318,62 +318,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Comment>The stop location of this emergency stop.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
- Name="TrainIntegrity"
- Guid="2c7a8cb2-30a0-4c5a-8b3d-a28cffb11256"
->
-<ReqRef
- Id="2b2ed08d-1183-4018-b0cc-3b454b2f8c4d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="993d3271-b76c-4be6-b225-f4032bec7c06"
->
-</ReqRef><Comment>Train integrity information.</Comment>
-<StructureElement
- TypeName="Messages.Q_LENGTH"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Status"
- Guid="35465ef2-aec0-42a1-9c6b-88d5ba56c3cd"
->
-<ReqRef
- Id="0d7b3630-948f-424b-9a71-0e04aa754bd1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="11cfdd25-7f5a-436d-be30-f3e2d6a333ff"
->
-</ReqRef><Comment>Status of the train integrity information.</Comment>
-</StructureElement><StructureElement
- TypeName="Default.BaseTypes.Length"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="SafeTrainLength"
- Guid="50f4c16f-b2ee-4474-9fd1-20c3298667da"
->
-<ReqRef
- Id="84654558-6cb7-46d9-a984-7fb0aa823724"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5a4fd9dc-dc85-49ed-a343-8cec5b304489"
->
-</ReqRef><Comment>Safe train length.</Comment>
-</StructureElement><StructureElement
- TypeName="Default.DataState"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DataState"
- Guid="af4e6367-ff10-431c-888f-6f90a6a73b00"
->
-<ReqRef
- Id="84654558-6cb7-46d9-a984-7fb0aa823724"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f74ad6a5-4c99-4ccd-8ad8-cbd97e659a24"
->
-</ReqRef><Comment>Data state of the train integrity information.</Comment>
-</StructureElement></Structure><Structure
- Implemented="TRUE"
  Name="OperatedSystemVersion"
  Guid="e4602fc9-bbc3-4fd4-920b-19c1f9c8e08c"
 >
@@ -9580,7 +9524,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Actions>
 <Action
  Guid="f4b53bdc-821b-40c5-9833-b1d9bf484700"
->Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action></Actions>
+>TIU.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9843,20 +9787,6 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Guid="99a6061c-85c1-43c3-9737-4920568539f4"
 >
 </ReqRef><Comment>The target distance of the train.</Comment>
-</Variable><Variable
- Type="TrainIntegrity"
- DefaultValue=""
- VariableMode="InOut"
- Implemented="TRUE"
- Name="TrainIntegrity"
- Guid="861d2f88-4347-4621-b3d4-6222bf3b6f4a"
->
-<ReqRef
- Id="2b2ed08d-1183-4018-b0cc-3b454b2f8c4d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="59585f3c-90f0-4e9f-b2b4-badaa285d63b"
->
-</ReqRef><Comment>This variable represens the train integrity information as described in 3.6.5.2.3.</Comment>
 </Variable><Variable
  Type="Kernel.NationalValues.NationalDefaultData"
  DefaultValue=""

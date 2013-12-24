@@ -180,6 +180,62 @@
  Guid="bef6fb31-5263-4ec1-ae6c-a9a8f2a08c47"
 >
 </ReqRef><Comment>Indicates if the current cab is active.</Comment>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="TrainIntegrityStruct"
+ Guid="2c7a8cb2-30a0-4c5a-8b3d-a28cffb11256"
+>
+<ReqRef
+ Id="2b2ed08d-1183-4018-b0cc-3b454b2f8c4d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="993d3271-b76c-4be6-b225-f4032bec7c06"
+>
+</ReqRef><Comment>Train integrity information.</Comment>
+<StructureElement
+ TypeName="Messages.Q_LENGTH"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Status"
+ Guid="35465ef2-aec0-42a1-9c6b-88d5ba56c3cd"
+>
+<ReqRef
+ Id="0d7b3630-948f-424b-9a71-0e04aa754bd1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="11cfdd25-7f5a-436d-be30-f3e2d6a333ff"
+>
+</ReqRef><Comment>Status of the train integrity information.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SafeTrainLength"
+ Guid="50f4c16f-b2ee-4474-9fd1-20c3298667da"
+>
+<ReqRef
+ Id="84654558-6cb7-46d9-a984-7fb0aa823724"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a4fd9dc-dc85-49ed-a343-8cec5b304489"
+>
+</ReqRef><Comment>Safe train length.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.DataState"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DataState"
+ Guid="af4e6367-ff10-431c-888f-6f90a6a73b00"
+>
+<ReqRef
+ Id="84654558-6cb7-46d9-a984-7fb0aa823724"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f74ad6a5-4c99-4ccd-8ad8-cbd97e659a24"
+>
+</ReqRef><Comment>Data state of the train integrity information.</Comment>
 </StructureElement></Structure></Structures>
 <Variables>
 <Variable
@@ -458,5 +514,34 @@
  Guid="4be5d63c-a25b-4832-89e2-74053c038776"
 >
 </ReqRef><Comment>Indicates if the additional brakes are active.</Comment>
+</Variable><Variable
+ Type="TrainIntegrityStruct"
+ DefaultValue=""
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="TrainIntegrity"
+ Guid="861d2f88-4347-4621-b3d4-6222bf3b6f4a"
+>
+<ReqRef
+ Id="2b2ed08d-1183-4018-b0cc-3b454b2f8c4d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="59585f3c-90f0-4e9f-b2b4-badaa285d63b"
+>
+</ReqRef><ReqRef
+ Id="ffb67ede-3ead-4df3-94ea-b7e1f6ec3d7f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8b7a224e-1437-4ad7-a528-bb4391e00760"
+>
+</ReqRef><ReqRef
+ Id="ef800618-551f-4333-aa9f-a92d9bd7e925"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="dd9acede-ae9b-4e4c-97c3-c5354ca2bd05"
+>
+</ReqRef><ReqRef
+ Id="f9e20546-588d-4a20-b2e2-bbbad853bafe"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="2a4507d1-a44d-480c-8ba3-7541b181d12c"
+>
+</ReqRef><Comment>This variable represens the train integrity information as described in 3.6.5.2.3.</Comment>
 </Variable></Variables>
 </NameSpace>

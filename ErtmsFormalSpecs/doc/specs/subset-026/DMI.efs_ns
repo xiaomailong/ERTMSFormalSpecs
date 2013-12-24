@@ -9803,7 +9803,12 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Name="CabOfDMI"
  Guid="cbc8b78e-22c3-4d0d-80c2-08cfda743ef9"
 >
-<Comment>Gives the cab of the provided DMI.</Comment>
+<ReqRef
+ Id="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="285fb6e2-a269-47d7-81b5-03c579871dbe"
+>
+</ReqRef><Comment>Gives the cab of the provided DMI.</Comment>
 <Parameters>
 <Parameter
  Type="DMI.DMIStruct"
@@ -9841,6 +9846,11 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Id="4e985ff8-d185-48ce-8afd-6944a286b13a"
  SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
  Guid="d0885fdf-e1fb-4a56-a92e-848f8b010570"
+>
+</ReqRef><ReqRef
+ Id="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="919e8602-7a67-40b1-bb75-9a8220529c2d"
 >
 </ReqRef><Comment>Indicates if the desk of the provided DMI is open.</Comment>
 <Parameters>
@@ -9882,6 +9892,11 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Id="19f2d380-29dd-4668-a992-36ea2f07fce8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0b655722-7591-464a-bfb7-ba9dd5b51bdd"
+>
+</ReqRef><ReqRef
+ Id="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="a314032d-c554-46bd-813a-693622a56bd7"
 >
 </ReqRef><Comment>Indicates if all the desks are closed.</Comment>
 <Cases>
