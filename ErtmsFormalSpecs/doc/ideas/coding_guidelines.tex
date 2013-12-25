@@ -41,178 +41,25 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\documentclass[draft]{efsguide}
 
-\documentclass[draft, a4paper, oneside]{scrreprt}
-\usepackage[american]{babel}
-\usepackage{hyperref}
-\usepackage{pdfcomment}
-\usepackage{enumitem}
-\usepackage[nohyphen]{underscore} %allow for simple _ instead of \_
-\usepackage[usenames, dvipsnames]{xcolor}
-\usepackage{xspace}
-\usepackage[tablegrid]{vhistory}
-\usepackage[nonumberlist]{glossaries}
-\usepackage{fixme}
-\usepackage{ifdraft}
-\usepackage[lighttt]{lmodern} %add better ttfont including a bold variant
-\usepackage{listings}
-\ifdraft{\usepackage[firstpage]{draftwatermark}}{}
-\usepackage{scrpage2}
-\usepackage[titletoc]{appendix} %for the word "Appendix" in the TOC
+%% BEGIN title
+\renewcommand{\docTitle}{ERTMS Formal Specs Workbench}
+\renewcommand{\docSubTitle}{Coding Guidelines}
+%% END title
 
-%%
-%% BEGIN title + general-stuff
-%%
-
-\newcommand{\docTitle}{ERTMS Formal Specs Workbench}
-\newcommand{\docSubTitle}{Coding Guidelines}
-
-\hypersetup{%
-draft = false,  %link in draft mode as well
-pdftitle = {\docTitle, \docSubTitle},
-pdfkeywords = {\docTitle, Version \vhCurrentVersion from \vhCurrentDate},
-pdfauthor = {\vhAllAuthorsSet},
-colorlinks = true,
-linkcolor = black,
-citecolor = black,
-filecolor = black,
-urlcolor = black
-}
-
-\pagestyle{scrheadings}
-\chead[]{}
-\ifoot[\docTitle, \docSubTitle\ -- Version \vhCurrentVersion]{\docTitle, \docSubTitle\ -- Version \vhCurrentVersion}
-\cfoot[]{}
-\ofoot[\thepage]{\thepage}
-
-%%
-%% END title + general stuff
-%%
-
-
-%%
-%%% BEGIN specific commands for this file
-%%
-
-\makeatletter
-% makes the enumeration item label start with the number
-% of the current section/subsection/etc.
-\newcommand{\thecurrentlevel}{%
-  \ifnum\c@section=0\thechapter\else
-  \ifnum\c@subsection=0\thesection\else
-  \ifnum\c@subsubsection=0\thesubsection\else
-  \thesubsubsection\fi\fi\fi}
-\makeatother
-
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3}
-\setlength{\parindent}{0em}
-
-\newlist{rules}{enumerate}{3}
-\setlist[rules, 1]{leftmargin=*, label=\thecurrentlevel.\arabic*.}
-\setlist[rules, 2]{label*=\arabic*.}
-\setlist[rules, 3]{label*=\arabic*.}
-\let\emph\textsl
-
-
-
-\newcommand{\literally}[1]{\textsf{\emph{#1}}}
-\newcommand{\indraftmode}[1]{\ifdraft{#1}{}}
-
-\fxsetup{mode=multiuser, theme=color, layout=inline}
-\colorlet{fxnote}{Green} 
-\colorlet{fxnotefg}{black}
-\colorlet{fxnotebg}{LimeGreen} %is not the same as fxnote to keep it readable
-\colorlet{fxfatal}{red}
-\colorlet{fxfatalbg}{red}
-\colorlet{fxfatalfg}{white}
-\colorlet{fxwarning}{Plum}
-\colorlet{fxwarningbg}{Plum}
-\colorlet{fxwarningfg}{White}
-% redefine the layout macro:
-\makeatletter
-\renewcommand*\FXLayoutInline[3]{%
-  \@fxdocolon {#3}{%
-    \@fxuseface {inline}%
-    \colorbox{fx#1bg}{\color {fx#1fg}\ignorespaces \sffamily #2\textsubscript{\emph{#3}}}}   
-    }
-\makeatother
-
-\setliststyle{AuthorComment} %alter the appearance of the pdfcomments list
-
-\lstdefinelanguage{EFSDSL}
-{%
-keywords={SUM, AND, APPLY, COUNT, EMPTY, FIRST_IN, FORALL_IN, IN, INITIAL_VALUE, LAST_IN, MAP, NOT, ON, OR, REDUCE, RESULT, THERE_IS_IN, USING, X},
-morekeywords=[2]{AddIncrement, Allocate, Available, Before, DecelerationProfile, IntersectAt, Max, Min, MinSurface, Override, RoundToMultiple,  Targets},
-morekeywords=[3]{Boolean, Collection, Condition, double, Expression, f, List, ListExpression, ListValue, Statement, StatementList},
-morestring=[b]',
-sensitive=true}
-\lstset{%
-language=EFSDSL,
-basicstyle=\ttfamily,
-keywordstyle=\bfseries,
-keywordstyle=[2]\underline,
-keywordstyle=[3]\emph,
-stringstyle=\sffamily,
-showstringspaces=true,
-breakatwhitespace=true,
-breaklines=true}
-\newcommand{\code}[1]{\lstinline$#1$}
-
-\ifdraft{%
-\newcommand{\ruleauthor}[2]{\mbox{}\newline\mbox{}\hfill{\footnotesize\textcolor{gray}{\emph{#1, #2}}}\xspace}}
-{%
-\newcommand{\ruleauthor}[2]{}
-}
-
-
-\newcommand{\addauthor}[2]{%
-%setup vhistory
-\expandafter\newcommand\csname #1\endcsname{#2}
-%setup fixme
-\FXRegisterAuthor{#1}{a#1}{#1}
-%setup personal PDF Comment
-\ifdraft{%
-\expandafter\newcommand\csname #1explain\endcsname[1]{\pdfcomment[author=#2, color=yellow, icon=Comment, subject=Comment, open=true]{##1}}}
-{%
-\expandafter\newcommand\csname #1explain\endcsname[1]{}
-}
-}
-
-%%
-%% END specific commands for this file
-%%
-
-
-%%
 %% BEGIN abbreviations for author names
-%%
-
 \addauthor{MD}{Moritz Dorka}
-
-% @ALL:
-% extend as needed
-
-%%
+% @ALL: extend as needed
 %% END abbreviations for author names
-%%
 
-
-%%
 %% BEGIN GLOSSARY
-%%
-
 \makeglossaries
 
 \newacronym{efs}{EFS}{ERTMS Formal Specs Workbench}
 \newacronym{dsl}{DSL}{Domain Specific Language}
-
-% @ALL: add your entries as necessary
-% Then follow the instructions from Note 1 above.
-
-%%
+% @ALL: add your entries as necessary. Then follow the instructions from Note 1 above.
 %% END GLOSSARY
-%%
 
 
 
@@ -229,23 +76,15 @@ breaklines=true}
 \author{\vhListAllAuthorsLongWithAbbrev}
 \maketitle
 
-
-%%
 %% BEGIN VERSIONING
-%%
-
 \begin{versionhistory}
 \vhEntry{0.1}{31/10/2013}{MD}{initial draft}
 \vhEntry{0.2}{12/11/2013}{MD}{add "How to use this file", "Comments", "Glossary", "Bibliography"}
 \vhEntry{0.3}{14/12/2013}{MD}{add "Committer checklist"}
-% @ALL:
-% add your revision information here
-
+% @ALL: add your revision information here
 \end{versionhistory}
-
-%%
 %% END VERSIONING
-%%
+
 
 
 \newpage
@@ -403,14 +242,6 @@ It is merely impossible to change them afterwards so please obey \ref{rules:comm
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliography{efsbibliography}
 \bibliographystyle{plain}
-
-\indraftmode{
-\newpage
-\phantomsection
-\addcontentsline{toc}{chapter}{List of Corrections}
-\listoffixmes\newpage
-\listofpdfcomments[heading=List of PDF comments]
-}
 
 
 \end{document}
