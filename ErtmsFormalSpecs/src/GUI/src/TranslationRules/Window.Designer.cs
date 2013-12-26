@@ -54,10 +54,14 @@ namespace GUI.TranslationRules
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.translationTreeView = new GUI.TranslationRules.TranslationTreeView();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.propertyGrid = new GUI.MyPropertyGrid();
-            this.messageRichTextBox = new GUI.EditorTextBox();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.sourceTextBox = new GUI.EditorTextBox();
+            this.translationCodeTextBox = new GUI.EditorTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.messageRichTextBox = new GUI.EditorTextBox();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -67,6 +71,14 @@ namespace GUI.TranslationRules
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -82,7 +94,7 @@ namespace GUI.TranslationRules
             this.nextInfoToolStripButton});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(767, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(926, 25);
             this.toolStrip2.TabIndex = 2;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -146,8 +158,8 @@ namespace GUI.TranslationRules
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer1.Size = new System.Drawing.Size(767, 436);
-            this.splitContainer1.SplitterDistance = 254;
+            this.splitContainer1.Size = new System.Drawing.Size(926, 548);
+            this.splitContainer1.SplitterDistance = 306;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 5;
             // 
@@ -163,7 +175,7 @@ namespace GUI.TranslationRules
             this.translationTreeView.Root = null;
             this.translationTreeView.Selected = null;
             this.translationTreeView.SelectedImageIndex = 0;
-            this.translationTreeView.Size = new System.Drawing.Size(254, 436);
+            this.translationTreeView.Size = new System.Drawing.Size(306, 548);
             this.translationTreeView.TabIndex = 1;
             // 
             // splitContainer4
@@ -176,15 +188,33 @@ namespace GUI.TranslationRules
             // 
             // splitContainer4.Panel1
             // 
-            this.splitContainer4.Panel1.Controls.Add(this.propertyGrid);
+            this.splitContainer4.Panel1.Controls.Add(this.splitContainer2);
             // 
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer4.Size = new System.Drawing.Size(510, 436);
-            this.splitContainer4.SplitterDistance = 252;
+            this.splitContainer4.Size = new System.Drawing.Size(617, 548);
+            this.splitContainer4.SplitterDistance = 446;
             this.splitContainer4.SplitterWidth = 3;
             this.splitContainer4.TabIndex = 1;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.propertyGrid);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
+            this.splitContainer2.Size = new System.Drawing.Size(617, 446);
+            this.splitContainer2.SplitterDistance = 182;
+            this.splitContainer2.TabIndex = 1;
             // 
             // propertyGrid
             // 
@@ -194,21 +224,62 @@ namespace GUI.TranslationRules
             this.propertyGrid.Margin = new System.Windows.Forms.Padding(2);
             this.propertyGrid.Name = "propertyGrid";
             this.propertyGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.propertyGrid.Size = new System.Drawing.Size(510, 252);
+            this.propertyGrid.Size = new System.Drawing.Size(617, 182);
             this.propertyGrid.TabIndex = 0;
             // 
-            // messageRichTextBox
+            // splitContainer3
             // 
-            this.messageRichTextBox.AutoComplete = true;
-            this.messageRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.messageRichTextBox.Lines = new string[0];
-            this.messageRichTextBox.Location = new System.Drawing.Point(3, 3);
-            this.messageRichTextBox.Name = "messageRichTextBox";
-            this.messageRichTextBox.ReadOnly = false;
-            this.messageRichTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.sourceTextBox);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.translationCodeTextBox);
+            this.splitContainer3.Size = new System.Drawing.Size(617, 260);
+            this.splitContainer3.SplitterDistance = 300;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // sourceTextBox
+            // 
+            this.sourceTextBox.AutoComplete = true;
+            this.sourceTextBox.BackColor = System.Drawing.Color.Transparent;
+            this.sourceTextBox.ConsiderOnlyTypes = false;
+            this.sourceTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sourceTextBox.Instance = null;
+            this.sourceTextBox.Lines = new string[] {
+        "",
+        "",
+        "",
+        ""};
+            this.sourceTextBox.Location = new System.Drawing.Point(0, 0);
+            this.sourceTextBox.Name = "sourceTextBox";
+            this.sourceTextBox.ReadOnly = false;
+            this.sourceTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+    "ans Serif;}}\r\n{\\colortbl ;\\red0\\green0\\blue0;}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r" +
+    "\n\\fs17\\par\r\n\\par\r\n\\cf1\\fs17\\par\r\n}\r\n";
+            this.sourceTextBox.Size = new System.Drawing.Size(300, 260);
+            this.sourceTextBox.TabIndex = 0;
+            // 
+            // translationCodeTextBox
+            // 
+            this.translationCodeTextBox.AutoComplete = true;
+            this.translationCodeTextBox.BackColor = System.Drawing.Color.Transparent;
+            this.translationCodeTextBox.ConsiderOnlyTypes = false;
+            this.translationCodeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.translationCodeTextBox.Instance = null;
+            this.translationCodeTextBox.Lines = new string[0];
+            this.translationCodeTextBox.Location = new System.Drawing.Point(0, 0);
+            this.translationCodeTextBox.Name = "translationCodeTextBox";
+            this.translationCodeTextBox.ReadOnly = false;
+            this.translationCodeTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
     "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs17\\par\r\n}\r\n";
-            this.messageRichTextBox.Size = new System.Drawing.Size(496, 149);
-            this.messageRichTextBox.TabIndex = 4;
+            this.translationCodeTextBox.Size = new System.Drawing.Size(313, 260);
+            this.translationCodeTextBox.TabIndex = 0;
             // 
             // tabControl1
             // 
@@ -217,7 +288,7 @@ namespace GUI.TranslationRules
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(510, 181);
+            this.tabControl1.Size = new System.Drawing.Size(617, 99);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -226,19 +297,479 @@ namespace GUI.TranslationRules
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(502, 155);
+            this.tabPage1.Size = new System.Drawing.Size(609, 73);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Messages";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // messageRichTextBox
+            // 
+            this.messageRichTextBox.AutoComplete = true;
+            this.messageRichTextBox.ConsiderOnlyTypes = false;
+            this.messageRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.messageRichTextBox.Instance = null;
+            this.messageRichTextBox.Lines = new string[] {
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""};
+            this.messageRichTextBox.Location = new System.Drawing.Point(3, 3);
+            this.messageRichTextBox.Name = "messageRichTextBox";
+            this.messageRichTextBox.ReadOnly = false;
+            this.messageRichTextBox.Rtf = resources.GetString("messageRichTextBox.Rtf");
+            this.messageRichTextBox.Size = new System.Drawing.Size(603, 67);
+            this.messageRichTextBox.TabIndex = 4;
             // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(767, 461);
+            this.ClientSize = new System.Drawing.Size(926, 573);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip2);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Window";
             this.ShowInTaskbar = false;
@@ -253,6 +784,14 @@ namespace GUI.TranslationRules
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -276,6 +815,10 @@ namespace GUI.TranslationRules
         private EditorTextBox messageRichTextBox;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private EditorTextBox sourceTextBox;
+        private EditorTextBox translationCodeTextBox;
 
     }
 }

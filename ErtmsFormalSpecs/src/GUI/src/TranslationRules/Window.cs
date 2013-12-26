@@ -65,6 +65,9 @@ namespace GUI.TranslationRules
             InitializeComponent();
 
             messageRichTextBox.AutoComplete = false;
+            sourceTextBox.AutoComplete = false;
+
+            sourceTextBox.ReadOnly = true;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
