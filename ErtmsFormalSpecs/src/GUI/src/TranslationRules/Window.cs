@@ -19,39 +19,25 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.TranslationRules
 {
-    public partial class Window : DockContent, IBaseForm
+    public partial class Window : BaseForm
     {
-        public MyPropertyGrid Properties
+
+        public override EditorTextBox RequirementsTextBox
         {
-            get { return propertyGrid; }
+            get { return sourceTextBox; }
         }
 
-        public RichTextBox MessagesTextBox
+        public override EditorTextBox ExpressionEditorTextBox
         {
-            get { return messageRichTextBox.TextBox; }
+            get { return translationCodeTextBox; }
         }
 
-        public EditorTextBox RequirementsTextBox
+        public override ExplainTextBox ExplainTextBox
         {
-            get { return null; }
+            get { return explainTextBox; }
         }
 
-        public EditorTextBox ExpressionEditorTextBox
-        {
-            get { return null; }
-        }
-
-        public BaseTreeView subTreeView
-        {
-            get { return null; }
-        }
-
-        public ExplainTextBox ExplainTextBox
-        {
-            get { return null; }
-        }
-
-        public BaseTreeView TreeView
+        public override BaseTreeView TreeView
         {
             get { return translationTreeView; }
         }
@@ -66,13 +52,18 @@ namespace GUI.TranslationRules
 
             messageRichTextBox.AutoComplete = false;
             sourceTextBox.AutoComplete = false;
+            translationCodeTextBox.AutoComplete = false;
 
             sourceTextBox.ReadOnly = true;
+            translationCodeTextBox.ReadOnly = true;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
             translationTreeView.Root = dictionary;
             Text = dictionary.Dictionary.Name + " test translation view";
+
+            ResizeDescriptionArea(propertyGrid, 20);
+
             Refresh();
         }
 
@@ -108,27 +99,9 @@ namespace GUI.TranslationRules
         /// <summary>
         /// Refreshed the model of the window
         /// </summary>
-        public void RefreshModel()
+        public override void RefreshModel()
         {
             translationTreeView.RefreshModel();
-        }
-
-        /// <summary>
-        /// Provides the model element currently selected in this IBaseForm
-        /// </summary>
-        public Utils.IModelElement Selected
-        {
-            get
-            {
-                Utils.IModelElement retVal = null;
-
-                if (TreeView != null && TreeView.Selected != null)
-                {
-                    retVal = TreeView.Selected.Model;
-                }
-
-                return retVal;
-            }
         }
 
         /// <summary>
