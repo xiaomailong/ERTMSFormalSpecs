@@ -21,6 +21,15 @@ namespace GUI.TranslationRules
 {
     public partial class Window : BaseForm
     {
+        public override MyPropertyGrid Properties
+        {
+            get { return propertyGrid; }
+        }
+
+        public override RichTextBox MessagesTextBox
+        {
+            get { return messageRichTextBox.TextBox; }
+        }
 
         public override EditorTextBox RequirementsTextBox
         {
