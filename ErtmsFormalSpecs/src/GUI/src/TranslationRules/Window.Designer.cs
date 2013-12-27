@@ -276,7 +276,7 @@ namespace GUI.TranslationRules
             this.explainTextBox.Size = new System.Drawing.Size(313, 274);
             this.explainTextBox.TabIndex = 1;
             // 
-            // translationCodeTextBox
+            // expressionEditorTextBox
             // 
             this.expressionEditorTextBox.AutoComplete = true;
             this.expressionEditorTextBox.BackColor = System.Drawing.Color.Transparent;
@@ -288,7 +288,7 @@ namespace GUI.TranslationRules
             this.expressionEditorTextBox.Location = new System.Drawing.Point(0, 0);
             this.expressionEditorTextBox.Name = "translationCodeTextBox";
             this.expressionEditorTextBox.ReadOnly = false;
-            this.expressionEditorTextBox.Rtf = resources.GetString("translationCodeTextBox.Rtf");
+            this.expressionEditorTextBox.Rtf = resources.GetString("expressionEditorTextBox.Rtf");
             this.expressionEditorTextBox.Size = new System.Drawing.Size(313, 274);
             this.expressionEditorTextBox.TabIndex = 0;
             this.expressionEditorTextBox.Visible = false;
