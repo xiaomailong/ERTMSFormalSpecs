@@ -61,10 +61,10 @@ namespace GUI.TranslationRules
 
             messageRichTextBox.AutoComplete = false;
             sourceTextBox.AutoComplete = false;
-            translationCodeTextBox.AutoComplete = false;
+            explainTextBox.AutoComplete = false;
 
             sourceTextBox.ReadOnly = true;
-            translationCodeTextBox.ReadOnly = true;
+            explainTextBox.ReadOnly = true;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
