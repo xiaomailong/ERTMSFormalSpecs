@@ -59,7 +59,7 @@ namespace GUI.TranslationRules
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.sourceTextBox = new GUI.EditorTextBox();
             this.explainTextBox = new GUI.ExplainTextBox();
-            this.translationCodeTextBox = new GUI.EditorTextBox();
+            this.expressionEditorTextBox = new GUI.EditorTextBox();
             this.messageGroupBox = new System.Windows.Forms.GroupBox();
             this.messageRichTextBox = new GUI.EditorTextBox();
             this.toolStrip2.SuspendLayout();
@@ -239,7 +239,7 @@ namespace GUI.TranslationRules
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.explainTextBox);
-            this.splitContainer3.Panel2.Controls.Add(this.translationCodeTextBox);
+            this.splitContainer3.Panel2.Controls.Add(this.expressionEditorTextBox);
             this.splitContainer3.Size = new System.Drawing.Size(617, 274);
             this.splitContainer3.SplitterDistance = 300;
             this.splitContainer3.TabIndex = 0;
@@ -278,19 +278,20 @@ namespace GUI.TranslationRules
             // 
             // translationCodeTextBox
             // 
-            this.translationCodeTextBox.AutoComplete = true;
-            this.translationCodeTextBox.BackColor = System.Drawing.Color.Transparent;
-            this.translationCodeTextBox.ConsiderOnlyTypes = false;
-            this.translationCodeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.translationCodeTextBox.Instance = null;
-            this.translationCodeTextBox.Lines = new string[] {
+            this.expressionEditorTextBox.AutoComplete = true;
+            this.expressionEditorTextBox.BackColor = System.Drawing.Color.Transparent;
+            this.expressionEditorTextBox.ConsiderOnlyTypes = false;
+            this.expressionEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.expressionEditorTextBox.Instance = null;
+            this.expressionEditorTextBox.Lines = new string[] {
         ""};
-            this.translationCodeTextBox.Location = new System.Drawing.Point(0, 0);
-            this.translationCodeTextBox.Name = "translationCodeTextBox";
-            this.translationCodeTextBox.ReadOnly = false;
-            this.translationCodeTextBox.Rtf = resources.GetString("translationCodeTextBox.Rtf");
-            this.translationCodeTextBox.Size = new System.Drawing.Size(313, 274);
-            this.translationCodeTextBox.TabIndex = 0;
+            this.expressionEditorTextBox.Location = new System.Drawing.Point(0, 0);
+            this.expressionEditorTextBox.Name = "translationCodeTextBox";
+            this.expressionEditorTextBox.ReadOnly = false;
+            this.expressionEditorTextBox.Rtf = resources.GetString("translationCodeTextBox.Rtf");
+            this.expressionEditorTextBox.Size = new System.Drawing.Size(313, 274);
+            this.expressionEditorTextBox.TabIndex = 0;
+            this.expressionEditorTextBox.Visible = false;
             // 
             // messageGroupBox
             // 
@@ -372,7 +373,7 @@ namespace GUI.TranslationRules
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private EditorTextBox sourceTextBox;
-        private EditorTextBox translationCodeTextBox;
+        private EditorTextBox expressionEditorTextBox;
         private System.Windows.Forms.GroupBox messageGroupBox;
         private ExplainTextBox explainTextBox;
 

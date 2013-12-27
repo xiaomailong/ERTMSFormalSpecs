@@ -38,7 +38,7 @@ namespace GUI.TranslationRules
 
         public override EditorTextBox ExpressionEditorTextBox
         {
-            get { return translationCodeTextBox; }
+            get { return expressionEditorTextBox; }
         }
 
         public override ExplainTextBox ExplainTextBox
