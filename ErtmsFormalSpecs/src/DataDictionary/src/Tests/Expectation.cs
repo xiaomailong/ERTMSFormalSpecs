@@ -53,7 +53,15 @@ namespace DataDictionary.Tests
         /// </summary>
         public Translations.Translation Translation
         {
-            get { return Enclosing as Translations.Translation; }
+            get
+            {
+                Translations.Translation result = null;
+                if (SubStep != null)
+                {
+                    result = SubStep.Translation;
+                }
+                return result;
+            }
         }
 
         /// <summary>

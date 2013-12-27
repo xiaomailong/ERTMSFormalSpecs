@@ -124,7 +124,15 @@ namespace DataDictionary.Rules
         /// </summary>
         public Tests.Translations.Translation Translation
         {
-            get { return Enclosing as Tests.Translations.Translation; }
+            get
+            {
+                Tests.Translations.Translation result = null;
+                if (SubStep != null)
+                {
+                    result = SubStep.Translation;
+                }
+                return result;
+            }
         }
 
         public override System.Collections.ArrayList EnclosingCollection
