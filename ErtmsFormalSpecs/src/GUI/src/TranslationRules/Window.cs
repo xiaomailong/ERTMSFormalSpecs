@@ -16,6 +16,7 @@
 using System;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
+using DataDictionary;
 
 namespace GUI.TranslationRules
 {
@@ -67,6 +68,7 @@ namespace GUI.TranslationRules
             explainTextBox.ReadOnly = true;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
+            expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Visible = false;
             translationTreeView.Root = dictionary;
             Text = dictionary.Dictionary.Name + " test translation view";
@@ -74,6 +76,15 @@ namespace GUI.TranslationRules
             ResizeDescriptionArea(propertyGrid, 20);
 
             Refresh();
+        }
+
+        void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            IExpressionable expressionable = Selected as IExpressionable;
+            if (expressionable != null)
+            {
+                expressionable.ExpressionText = expressionEditorTextBox.TextBox.Text;
+            }
         }
 
         /// <summary>
