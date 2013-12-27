@@ -225,32 +225,25 @@ namespace DataDictionary.Tests.Translations
         public string getExplain(bool explainSubElements, int indent)
         {
             string result = "";
-            if (SourceTexts.Count > 1)
-            {
-                //TextualExplainUtilities.Pad("{\\cf11 // " + Name + "}\\cf1\\par", indentLevel);
-                result += TextualExplainUtilities.Pad("{\\b SOURCE TEXTS}\\par", indent);
-            }
-            else
-            {
-                result += TextualExplainUtilities.Pad("{\\b SOURCE TEXT}\\par", indent);
-            }
 
-            foreach (SourceText sourceText in SourceTexts)
-            {
-                result += sourceText.getExplain(explainSubElements, indent + 2) + "\\par";
-            }
-
-            if (explainSubElements)
+            if (!explainSubElements)
             {
                 if (SourceTexts.Count > 1)
                 {
-                    result += TextualExplainUtilities.Pad("{\\b ARE TRANSLATED AS}\\par", indent);
+                    result += TextualExplainUtilities.Pad("{\\b SOURCE TEXTS}\\par", indent);
                 }
                 else
                 {
-                    result += TextualExplainUtilities.Pad("{\\b IS TRANSLATED AS}\\par", indent);
+                    result += TextualExplainUtilities.Pad("{\\b SOURCE TEXT}\\par", indent);
                 }
 
+                foreach (SourceText sourceText in SourceTexts)
+                {
+                    result += sourceText.getExplain(explainSubElements, indent + 2) + "\\par";
+                }
+            }
+            else
+            {
                 foreach (SubStep subStep in SubSteps)
                 {
                     result += subStep.getExplain(indent + 2, explainSubElements) + "\\par";
@@ -258,6 +251,29 @@ namespace DataDictionary.Tests.Translations
             }
 
             result += "\\par";
+
+            return result;
+        }
+
+        public string getSourceTextExplain()
+        {
+            string result = "";
+            string prefix = "";
+            int textCount = 1;
+
+            foreach (SourceText sourceText in SourceTexts)
+            {
+                if (SourceTexts.Count > 1)
+                {
+                    prefix = textCount + ". ";
+                }
+                else
+                {
+                    prefix = "";
+                }
+                result += prefix + sourceText.Name + "\n";
+                textCount++;
+            }
 
             return result;
         }
