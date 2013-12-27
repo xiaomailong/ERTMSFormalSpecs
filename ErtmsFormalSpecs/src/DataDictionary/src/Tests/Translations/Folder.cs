@@ -17,7 +17,7 @@
 
 namespace DataDictionary.Tests.Translations
 {
-    public class Folder : Generated.Folder
+    public class Folder : Generated.Folder, TextualExplain
     {
         /// <summary>
         /// Constructor
@@ -125,6 +125,40 @@ namespace DataDictionary.Tests.Translations
                     appendTranslations(translation);
                 }
             }
+        }
+
+        /// <summary>
+        /// Explains the Folder
+        /// </summary>
+        /// <returns></returns>
+        public string getExplain(bool explainSubElements)
+        {
+            string result = TextualExplainUtilities.Pad("{\\b FOLDER} " + Name + "\\par", 0);
+            if (explainSubElements)
+            {
+                foreach (Folder folder in Folders)
+                {
+                    result += folder.getExplain();
+                }
+                result += explainFolder();
+            }
+            else
+            {
+                result += explainFolder();
+            }
+            result += "\\par";
+            return result;
+        }
+
+
+        private string explainFolder()
+        {
+            string result = "";
+            foreach (Translation translation in Translations)
+            {
+                result += translation.getExplain(false, 2);
+            }
+            return result;
         }
     }
 }

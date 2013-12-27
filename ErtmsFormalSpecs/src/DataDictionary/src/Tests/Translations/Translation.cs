@@ -21,7 +21,7 @@ using System.Linq;
 
 namespace DataDictionary.Tests.Translations
 {
-    public class Translation : Generated.Translation, ICommentable
+    public class Translation : Generated.Translation, ICommentable, TextualExplain
     {
         /// <summary>
         /// Constructor
@@ -206,6 +206,60 @@ namespace DataDictionary.Tests.Translations
 
                 subStepCounter++;
             }
+        }
+
+
+        /// <summary>
+        /// Explains the Translation with indentation
+        /// </summary>
+        /// <returns></returns>
+        public string getExplain(bool explainSubElements)
+        {
+            return getExplain(explainSubElements, 0);
+        }
+
+        /// <summary>
+        /// Explains the Translation with indentation
+        /// </summary>
+        /// <returns></returns>
+        public string getExplain(bool explainSubElements, int indent)
+        {
+            string result = "";
+            if (SourceTexts.Count > 1)
+            {
+                //TextualExplainUtilities.Pad("{\\cf11 // " + Name + "}\\cf1\\par", indentLevel);
+                result += TextualExplainUtilities.Pad("{\\b SOURCE TEXTS}\\par", indent);
+            }
+            else
+            {
+                result += TextualExplainUtilities.Pad("{\\b SOURCE TEXT}\\par", indent);
+            }
+
+            foreach (SourceText sourceText in SourceTexts)
+            {
+                result += sourceText.getExplain(explainSubElements, indent + 2) + "\\par";
+            }
+
+            if (explainSubElements)
+            {
+                if (SourceTexts.Count > 1)
+                {
+                    result += TextualExplainUtilities.Pad("{\\b ARE TRANSLATED AS}\\par", indent);
+                }
+                else
+                {
+                    result += TextualExplainUtilities.Pad("{\\b IS TRANSLATED AS}\\par", indent);
+                }
+
+                foreach (SubStep subStep in SubSteps)
+                {
+                    result += subStep.getExplain(indent + 2, explainSubElements) + "\\par";
+                }
+            }
+
+            result += "\\par";
+
+            return result;
         }
 
         /// <summary>

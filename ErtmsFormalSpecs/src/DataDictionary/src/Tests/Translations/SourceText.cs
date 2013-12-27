@@ -38,5 +38,23 @@ namespace DataDictionary.Tests.Translations
         public override void AddModelElement(Utils.IModelElement element)
         {
         }
+
+        /// <summary>
+        /// Explains the SourceText
+        /// </summary>
+        /// <returns></returns>
+        public string getExplain(bool explainSubElements)
+        {
+            return getExplain(explainSubElements, 2);
+        }
+
+        /// <summary>
+        /// Explains the SourceText with indentation
+        /// </summary>
+        /// <returns></returns>
+        public string getExplain(bool explainSubElements, int indent)
+        {
+            return TextualExplainUtilities.Pad(Name, indent);
+        }
     }
 }
