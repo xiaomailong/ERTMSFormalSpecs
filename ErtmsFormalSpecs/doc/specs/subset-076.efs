@@ -12,6 +12,7 @@
 <Tests>
 <FrameRef
  Name="Subset-076"
+ Guid="36c55005-90b6-4aa5-9bb9-c8525fae4481"
 >
 </FrameRef></Tests>
 <TranslationDictionary
@@ -41,7 +42,7 @@
 <Actions>
 <Action
  Guid="09dedf40-ba79-4af7-a54d-15144f44d8a7"
->DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
+>TIU.Cab1.IsActive &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
@@ -753,7 +754,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
  Guid="eda6e0a6-769c-4c9d-b4e2-6e0e05d168fe"
 >Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="c3af006e-164b-4d61-ba76-d7fc96430342"
->Kernel.TrainPosition.TrainPosition.DataState &lt;- DataState.Valid</Action><Action
+>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action
  Guid="20add2ec-45e4-4607-94d8-dd2955f2bf6f"
 >Kernel.TrainRunningNumber.Value &lt;- &apos;TR007&apos;</Action><Action
  Guid="030de690-5f6f-46d4-85b0-ef326ec3899d"
@@ -761,7 +762,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
  Guid="2b3ef8a2-7e10-4d6c-b33f-70efe99887a3"
 >DMI.DMI1.IsMaster &lt;- True</Action><Action
  Guid="feb6ef26-8380-4ded-8c71-016643dff90c"
->Kernel.TrainPosition.TrainPosition.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
