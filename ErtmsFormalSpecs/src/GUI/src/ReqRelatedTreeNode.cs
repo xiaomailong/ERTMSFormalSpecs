@@ -111,8 +111,10 @@ namespace GUI
         {
             List<MenuItem> retVal = base.GetMenuItems();
 
-            retVal.Add(new MenuItem("Mark as implemented", new EventHandler(ImplementedHandler)));
-            retVal.Add(new MenuItem("Mark as verified", new EventHandler(VerifiedHandler)));
+            MenuItem newItem = new MenuItem("Mark as...");
+            newItem.MenuItems.Add(new MenuItem("Implemented", new EventHandler(ImplementedHandler)));
+            newItem.MenuItems.Add(new MenuItem("Verified", new EventHandler(VerifiedHandler)));
+            retVal.Insert(2, newItem);
 
             return retVal;
         }

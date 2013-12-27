@@ -102,11 +102,12 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
             retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Functional view", new EventHandler(ShowFunctionalViewHandler)));
+            retVal.AddRange(base.GetMenuItems());
+            retVal.Insert(4, new MenuItem("-"));
+            retVal.Insert(5, new MenuItem("Functional view", new EventHandler(ShowFunctionalViewHandler)));
 
             return retVal;
         }

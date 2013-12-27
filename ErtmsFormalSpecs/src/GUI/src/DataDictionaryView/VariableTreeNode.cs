@@ -196,16 +196,15 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal;
+            List<MenuItem> retVal = new List<MenuItem>();
 
             if (!IsASubVariable)
             {
-                retVal = base.GetMenuItems();
                 retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+                retVal.AddRange(base.GetMenuItems());
             }
             else
             {
-                retVal = new List<MenuItem>();
                 retVal.Add(new MenuItem("Refresh", new EventHandler(RefreshNodeHandler)));
             }
 
@@ -219,8 +218,8 @@ namespace GUI.DataDictionaryView
                     DataDictionary.Functions.Graph graph = function.createGraph(context, parameter);
                     if (graph != null && graph.Segments.Count != 0)
                     {
-                        retVal.Add(new MenuItem("-"));
-                        retVal.Add(new MenuItem("Display", new EventHandler(DisplayHandler)));
+                        retVal.Insert(5, new MenuItem("-"));
+                        retVal.Insert(6, new MenuItem("Display", new EventHandler(DisplayHandler)));
                     }
                 }
                 else if (function.FormalParameters.Count == 2)
@@ -228,16 +227,16 @@ namespace GUI.DataDictionaryView
                     DataDictionary.Functions.Surface surface = function.createSurface(context);
                     if (surface != null && surface.Segments.Count != 0)
                     {
-                        retVal.Add(new MenuItem("-"));
-                        retVal.Add(new MenuItem("Display", new EventHandler(DisplayHandler)));
+                        retVal.Insert(5, new MenuItem("-"));
+                        retVal.Insert(6, new MenuItem("Display", new EventHandler(DisplayHandler)));
                     }
                 }
             }
 
             if (Item.Type is StateMachine)
             {
-                retVal.Add(new MenuItem("-"));
-                retVal.Add(new MenuItem("View state diagram", new EventHandler(ViewStateDiagramHandler)));
+                retVal.Insert(5, new MenuItem("-"));
+                retVal.Insert(6, new MenuItem("View state diagram", new EventHandler(ViewStateDiagramHandler)));
             }
 
             return retVal;

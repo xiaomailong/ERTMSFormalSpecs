@@ -106,12 +106,14 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Add procedure", new EventHandler(AddProcedureHandler)));
-            retVal.Add(new MenuItem("Add structure element", new EventHandler(AddStructureElementHandler)));
-            retVal.Add(new MenuItem("-"));
+            MenuItem newItem = new MenuItem("Add...");
+            newItem.MenuItems.Add(new MenuItem("Procedure", new EventHandler(AddProcedureHandler)));
+            newItem.MenuItems.Add(new MenuItem("Structure element", new EventHandler(AddStructureElementHandler)));
+            retVal.Add(newItem);
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
 
             return retVal;
         }

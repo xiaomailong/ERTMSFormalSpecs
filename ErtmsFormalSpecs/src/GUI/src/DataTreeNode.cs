@@ -702,15 +702,17 @@ namespace GUI
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Check", new EventHandler(Check)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Recursively mark as implemented", new EventHandler(MarkAsImplemented)));
-            retVal.Add(new MenuItem("Recursively mark as verified", new EventHandler(MarkAsVerified)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Refresh", new EventHandler(RefreshNodeHandler)));
             retVal.Add(new MenuItem("Rename", new EventHandler(LabelEditHandler)));
             retVal.Add(new MenuItem("-"));
+            MenuItem newItem = new MenuItem("Recursive actions...");
+            newItem.MenuItems.Add(new MenuItem("Mark as implemented", new EventHandler(MarkAsImplemented)));
+            newItem.MenuItems.Add(new MenuItem("Mark as verified", new EventHandler(MarkAsVerified)));
+            retVal.Add(newItem);
+            retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Show history", new EventHandler(ShowHistoryHandler)));
+            retVal.Add(new MenuItem("Check", new EventHandler(Check)));
+            retVal.Add(new MenuItem("-"));
+            retVal.Add(new MenuItem("Refresh", new EventHandler(RefreshNodeHandler)));
 
             return retVal;
         }

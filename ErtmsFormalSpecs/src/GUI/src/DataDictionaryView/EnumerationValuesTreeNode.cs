@@ -58,7 +58,7 @@ namespace GUI.DataDictionaryView
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Add value", new EventHandler(AddEnumValueHandler)));
+            retVal.Add(new MenuItem("Add", new EventHandler(AddEnumValueHandler)));
 
             return retVal;
         }
