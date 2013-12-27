@@ -179,5 +179,25 @@ namespace GUI.TranslationRules
                 createSourceText(sourceText);
             }
         }
+
+        /// <summary>
+        /// Handles a selection change event
+        /// </summary>
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
+        {
+            base.SelectionChanged(displayStatistics);
+            if (BaseTreeView != null && BaseTreeView.RefreshNodeContent)
+            {
+                IBaseForm baseForm = BaseForm;
+                if (baseForm != null)
+                {
+                    if (baseForm.RequirementsTextBox != null)
+                    {
+                        baseForm.RequirementsTextBox.Text = Item.getSourceTextExplain();
+                    }
+                }
+            }
+        }
     }
 }

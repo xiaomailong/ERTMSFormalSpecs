@@ -42,6 +42,29 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
+        /// Handles a selection change event
+        /// </summary>
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
+        {
+            base.SelectionChanged(displayStatistics);
+            if (Item.Translation != null)
+            {
+                if (BaseTreeView != null && BaseTreeView.RefreshNodeContent)
+                {
+                    IBaseForm baseForm = BaseForm;
+                    if (baseForm != null)
+                    {
+                        if (baseForm.RequirementsTextBox != null)
+                        {
+                            baseForm.RequirementsTextBox.Text = Item.Translation.getSourceTextExplain();
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
