@@ -120,7 +120,7 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
             retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
 

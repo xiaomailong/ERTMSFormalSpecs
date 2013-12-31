@@ -214,11 +214,11 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Guid="af6354bc-53f0-4317-a7c6-bd6f449d83af"
 >PointOfInterest == Default.DistanceInterval.Nom</PreCondition><PreCondition
  Guid="831ebca8-7ed8-4b42-82b6-247bfdf5a945"
->Kernel.TrainIntegrity.Status in [
+>TIU.TrainIntegrity.Status in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
 ]</PreCondition></PreConditions>
-<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.TrainIntegrity.SafeTrainLength) - BTM.LRBG.Position.Position</Expression>
+<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(TIU.TrainIntegrity.SafeTrainLength) - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Maximum"
  Guid="b426890d-eef3-43d5-a1b8-fa3270e36c15"
@@ -228,11 +228,11 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Guid="39cfca21-49df-4f1e-8025-c2388dba9c80"
 >PointOfInterest == Default.DistanceInterval.Max</PreCondition><PreCondition
  Guid="af6b235c-0228-4fb2-8281-a70958656341"
->Kernel.TrainIntegrity.Status in [
+>TIU.TrainIntegrity.Status in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
 ]</PreCondition></PreConditions>
-<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.TrainIntegrity.SafeTrainLength) + Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - BTM.LRBG.Position.Position</Expression>
+<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(TIU.TrainIntegrity.SafeTrainLength) + Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Minimum"
  Guid="9c92d5c6-f86d-4cb4-b67d-50e0b531635d"
@@ -242,11 +242,11 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Guid="add9c23c-ed04-4a06-be98-4afc341bfbd8"
 >PointOfInterest == Default.DistanceInterval.Min</PreCondition><PreCondition
  Guid="60d6893d-b406-4028-bdc2-cc2c879989ca"
->Kernel.TrainIntegrity.Status in [
+>TIU.TrainIntegrity.Status in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
 ]</PreCondition></PreConditions>
-<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.TrainIntegrity.SafeTrainLength) - Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - BTM.LRBG.Position.Position</Expression>
+<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(TIU.TrainIntegrity.SafeTrainLength) - Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - BTM.LRBG.Position.Position</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

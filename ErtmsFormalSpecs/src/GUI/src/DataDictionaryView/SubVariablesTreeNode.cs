@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace GUI.DataDictionaryView
 {
@@ -72,6 +73,15 @@ namespace GUI.DataDictionaryView
         protected override Editor createEditor()
         {
             return new ItemEditor();
+        }
+
+        /// <summary>
+        /// The menu items for this tree node
+        /// </summary>
+        /// <returns></returns>
+        protected override List<MenuItem> GetMenuItems()
+        {
+            return new List<MenuItem>();
         }
     }
 }

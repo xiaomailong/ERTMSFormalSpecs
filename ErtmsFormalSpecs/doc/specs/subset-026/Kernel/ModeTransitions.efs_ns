@@ -170,6 +170,16 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="651d8ebd-ff35-4ccf-ad7f-6732ba145d2b"
 >
+</ReqRef><ReqRef
+ Id="705d58b9-e6bf-4033-9442-3c725365f693"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="1fa1fa03-594c-4948-9eda-2a5d57f0fb64"
+>
+</ReqRef><ReqRef
+ Id="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="90a16cb4-7a74-4593-9c21-ebf3bcd3ee10"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -179,9 +189,7 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
   AND
 Odometry.TrainIsAtStandstill()
   AND
-NOT DMI.MasterDMI().DeskOpen
-  AND
-NOT DMI.SlaveDMI().DeskOpen</Expression>
+DMI.DesksAreClosed()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -333,12 +341,17 @@ NOT
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="46f7abcd-4e95-4395-b92a-a6a513ecfeba"
 >
+</ReqRef><ReqRef
+ Id="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="e374ae6a-8a9e-4625-82c2-9bc4839679ac"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="e09579e6-4a46-49c6-98c7-5fe5186b2076"
 >
-<Expression>DMI.MasterDMI().DeskOpen</Expression>
+<Expression>DMI.DeskIsOpen ( DMI.MasterDMI() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -931,12 +944,18 @@ MA.ModeProfile.Profile == []
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7ab6aecd-e4d0-4b43-8f55-3faa56ad06fb"
 >
+</ReqRef><ReqRef
+ Id="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="b54fc244-c2e4-4dad-86d1-c4c7a8429e4a"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="4deb44d5-7aaa-4f8a-a3f3-80141bb2b686"
 >
-<Expression>DMI.MasterDMI().DeskOpen AND
+<Expression>DMI.DeskIsOpen ( DMI.MasterDMI() )
+  AND
 NOT Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
 </Case></Cases>
 </Function><Function
@@ -950,13 +969,17 @@ NOT Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6ed8ec43-118d-4791-a43b-9911b1dffa11"
 >
+</ReqRef><ReqRef
+ Id="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="48173931-4310-48a2-b39c-529975531b77"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="76429653-d3ad-4c36-808b-03c2a9edf2d5"
 >
-<Expression>NOT DMI.MasterDMI().DeskOpen AND
-  NOT DMI.SlaveDMI().DeskOpen</Expression>
+<Expression>DMI.DesksAreClosed()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -969,13 +992,18 @@ NOT Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="20114331-483d-418c-b78e-b06472ca99b9"
 >
+</ReqRef><ReqRef
+ Id="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="49518805-9647-455a-acb0-222c5aade4a6"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="9e0b8659-9489-4799-b474-44713d11b2ad"
 >
-<Expression>NOT DMI.MasterDMI().DeskOpen AND
-  NOT DMI.SlaveDMI().DeskOpen AND
+<Expression>DMI.DesksAreClosed()
+  AND
 NOT Kernel.Shunting.ContinueShuntingOnDeskClosure</Expression>
 </Case></Cases>
 </Function><Function
@@ -989,14 +1017,22 @@ NOT Kernel.Shunting.ContinueShuntingOnDeskClosure</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7c5d2cbe-8375-437d-bbab-528dba4f731f"
 >
+</ReqRef><ReqRef
+ Id="df56552b-73ea-4617-bea7-d04ca4234fc4"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="9481cec6-b798-4efd-8bdd-5c07347040f7"
+>
+</ReqRef><ReqRef
+ Id="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="aea8ad58-9357-4082-bc14-d17769adf5e2"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="80000771-c009-4002-bb89-e12ff41b9d10"
 >
-<Expression>NOT DMI.MasterDMI().DeskOpen
-  AND
-NOT DMI.SlaveDMI().DeskOpen
+<Expression>DMI.DesksAreClosed()
   AND
 NOT Kernel.Shunting.ContinueShuntingOnDeskClosure
   AND
@@ -1049,12 +1085,18 @@ Odometry.EstimatedSpeed == 0.0</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9596304b-046f-4cc3-bd6a-10e571e98e4c"
 >
+</ReqRef><ReqRef
+ Id="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="28869923-ef8a-4add-a716-00599ff5b52b"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="ceae814f-03ea-4f27-ab95-ad5fdc28bb7f"
 >
-<Expression>DMI.MasterDMI().DeskOpen AND
+<Expression>DMI.DeskIsOpen ( DMI.MasterDMI() )
+  AND
 Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
 </Case></Cases>
 </Function><Function
@@ -1356,6 +1398,7 @@ Level.Value in [Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="Condition30"
  Guid="1ed756b3-59f3-488a-b1a0-73863a63711e"
 >
@@ -1364,12 +1407,19 @@ Level.Value in [Level.L2, Level.L3]</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d0a3b9d0-f665-42d0-942b-f6b1969d5588"
 >
+</ReqRef><ReqRef
+ Id="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="6dafc62c-57f7-460e-a95f-2d8b3323e402"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="8b01a6ac-2983-442a-9e69-6e27436a743e"
 >
-<Expression>False</Expression>
+<Expression>DMI.DesksAreClosed ()
+  AND
+NOT TIU.PassiveShuntingPermitted</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2100,6 +2150,11 @@ DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Respon
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="032e4e87-977f-4376-ad53-34dc4bbd24c5"
 >
+</ReqRef><ReqRef
+ Id="14a0113e-9a92-4745-9790-56bec28eace5"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="c5f45c3e-03b2-4daf-b1db-21b01657fdc3"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -2107,7 +2162,7 @@ DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Respon
 >
 <Expression>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Response
   AND
-Odometry.EstimatedSpeed == 0.0
+Odometry.TrainIsAtStandstill()
   AND
 TIU.NonLeadingPermitted</Expression>
 </Case></Cases>

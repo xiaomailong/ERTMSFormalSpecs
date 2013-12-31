@@ -162,13 +162,15 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Add state", new EventHandler(AddStateHandler)));
-            retVal.Add(new MenuItem("Add rule", new EventHandler(AddRuleHandler)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("View state diagram", new EventHandler(ViewStateDiagramHandler)));
+            MenuItem newItem = new MenuItem("Add...");
+            newItem.MenuItems.Add(new MenuItem("State", new EventHandler(AddStateHandler)));
+            newItem.MenuItems.Add(new MenuItem("Rule", new EventHandler(AddRuleHandler)));
+            retVal.Add(newItem);
+            retVal.AddRange(base.GetMenuItems());
+            retVal.Insert(5, new MenuItem("-"));
+            retVal.Insert(6, new MenuItem("View state diagram", new EventHandler(ViewStateDiagramHandler)));
 
             return retVal;
         }

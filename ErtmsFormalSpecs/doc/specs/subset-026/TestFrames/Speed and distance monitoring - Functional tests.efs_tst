@@ -1162,21 +1162,9 @@
         MaximumSpeed =&gt; 110.0,
         M_rotating_nom =&gt; 0.05,
         BrakePosition =&gt; Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG,
-        EddyCurrentBrake =&gt; Kernel.TrainData.BrakingParameters.SpecialBrake
-        {
-            IsActive =&gt; True,
-            InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-        },
-        MagneticShoeBrake =&gt; Kernel.TrainData.BrakingParameters.SpecialBrake
-        {
-            IsActive =&gt; True,
-            InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-        },
-        RegenerativeBrake =&gt; Kernel.TrainData.BrakingParameters.SpecialBrake
-        {
-            IsActive =&gt; True,
-            InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-        },
+        EddyCurrentBrakeInterface =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both,
+        MagneticShoeBrakeInterface =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both,
+        RegenerativeBrakeInterface =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB,
         TrainCategories =&gt; Kernel.TrainData.TrainCategories
         {
             CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_210_mm,
@@ -1634,7 +1622,13 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
         Gradient =&gt; 0.0,
         Distance =&gt; 1600.0
     }
-]</Action></Actions>
+]</Action><Action
+ Guid="1fa396b6-a8ad-4cca-b2d5-7cfcaf38cdcc"
+>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive &lt;- True</Action><Action
+ Guid="a83a9116-9d6e-4d05-a9e9-174c35be2e27"
+>TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive &lt;- True</Action><Action
+ Guid="22c9a055-5573-4432-ab22-b3ea019057e4"
+>TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1959,31 +1953,23 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
     Ep =&gt; 0.46
 }</Action><Action
  Guid="c50ade10-e6d7-4a7b-8d0f-03e83d938c25"
->Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
-{
-    IsActive =&gt; True,
-    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action><Action
+>Kernel.TrainData.TrainData.Value.EddyCurrentBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
  Guid="1e363ec5-58ed-49c1-8769-f8f172368343"
->Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
-{
-    IsActive =&gt; True,
-    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action><Action
+>Kernel.TrainData.TrainData.Value.EpBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
  Guid="def40b43-0c73-47cf-9e6a-b10d86ca317d"
->Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
-{
-    IsActive =&gt; True,
-    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action><Action
+>Kernel.TrainData.TrainData.Value.MagneticShoeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</Action><Action
  Guid="e73dbf50-3d73-426a-9dcb-539936b14196"
->Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
-{
-    IsActive =&gt; True,
-    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface
-}</Action><Action
+>Kernel.TrainData.TrainData.Value.RegenerativeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</Action><Action
  Guid="f96c06ab-6281-4df6-b232-9459b306d61e"
->Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action></Actions>
+>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action><Action
+ Guid="8402c298-b1d5-4d19-bff8-a55633e58466"
+>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive &lt;- True</Action><Action
+ Guid="87e09ddb-fb06-4d64-a444-d1eb0a0b0d69"
+>TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive &lt;- True</Action><Action
+ Guid="0bf4a402-7761-4cea-a7de-dcbd8d9fae5f"
+>TIU.SpecialBrakeStatus.EPBrakeIsActive &lt;- True</Action><Action
+ Guid="44a3ab88-6125-4b3b-a464-a69325dd4bfa"
+>TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2016,11 +2002,9 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
 <Actions>
 <Action
  Guid="4ab82db4-d6fe-4881-b28d-0569fa9458bd"
->Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
-{
-    IsActive =&gt; True,
-    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface
-}</Action></Actions>
+>Kernel.TrainData.TrainData.Value.EddyCurrentBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</Action><Action
+ Guid="5e9145fc-91bf-4b95-bcd0-d6ae57eda827"
+>TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2053,11 +2037,9 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
 <Actions>
 <Action
  Guid="431fc5cf-56c7-448b-b281-3a2af78258df"
->Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
-{
-    IsActive =&gt; True,
-    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action></Actions>
+>Kernel.TrainData.TrainData.Value.EpBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</Action><Action
+ Guid="bddb259a-eb85-4d2f-a9c2-c5b891e8b8e7"
+>TIU.SpecialBrakeStatus.EPBrakeIsActive &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

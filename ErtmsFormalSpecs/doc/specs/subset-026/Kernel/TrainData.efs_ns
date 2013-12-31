@@ -705,11 +705,11 @@
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
- TypeName="BrakingParameters.SpecialBrake"
+ TypeName="BrakingParameters.BrakeInterfaceStatus"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="MagneticShoeBrake"
+ Name="MagneticShoeBrakeInterface"
  Guid="fcf12ba7-49cc-4e28-8a07-2cf1a5ad96a8"
 >
 <ReqRef
@@ -727,13 +727,18 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d6da7e58-1c6d-4699-9643-bbdba73dcb5b"
 >
+</ReqRef><ReqRef
+ Id="83b8df3d-39ba-47e5-b2df-236a14f1441a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ce2b0c0c-d377-436d-be83-3e8fc3a4a4ab"
+>
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
- TypeName="BrakingParameters.SpecialBrake"
+ TypeName="BrakingParameters.BrakeInterfaceStatus"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="RegenerativeBrake"
+ Name="RegenerativeBrakeInterface"
  Guid="58657fc4-5618-4163-909d-3e47b78516ac"
 >
 <ReqRef
@@ -751,13 +756,23 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="80c34a16-4ae7-4b49-a83d-45b0ba99caac"
 >
+</ReqRef><ReqRef
+ Id="83b8df3d-39ba-47e5-b2df-236a14f1441a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="23e4d8eb-1d87-4c61-a2bc-48cc335948c3"
+>
+</ReqRef><ReqRef
+ Id="78767d0a-b1d1-4311-b158-adede38b9077"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cda60589-d3a8-40f0-9bf2-57de568c321f"
+>
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
- TypeName="BrakingParameters.SpecialBrake"
+ TypeName="BrakingParameters.BrakeInterfaceStatus"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="EddyCurrentBrake"
+ Name="EddyCurrentBrakeInterface"
  Guid="603ce858-d188-4a05-a488-4cc1e345bcbf"
 >
 <ReqRef
@@ -775,13 +790,23 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="561f5a76-9979-43ff-a5c4-7a45f763cda0"
 >
+</ReqRef><ReqRef
+ Id="83b8df3d-39ba-47e5-b2df-236a14f1441a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7782e620-60ae-4a66-9b29-abd30709a290"
+>
+</ReqRef><ReqRef
+ Id="78767d0a-b1d1-4311-b158-adede38b9077"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="466ac193-9855-4f15-9899-3c3c66fd892f"
+>
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
- TypeName="BrakingParameters.SpecialBrake"
+ TypeName="BrakingParameters.BrakeInterfaceStatus"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="EpBrake"
+ Name="EpBrakeInterface"
  Guid="527ef1f0-c859-48d6-a53b-ae288e5ba1d0"
 >
 <ReqRef
@@ -798,6 +823,16 @@
  Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0935a4a3-f1d0-45c3-96f4-6e659a12035f"
+>
+</ReqRef><ReqRef
+ Id="83b8df3d-39ba-47e5-b2df-236a14f1441a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1a494387-6316-49a5-a648-7f6579ab23a6"
+>
+</ReqRef><ReqRef
+ Id="78767d0a-b1d1-4311-b158-adede38b9077"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7019d90-1cd7-4d29-841e-bef709a36c75"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -1069,14 +1104,14 @@
 <Rule
  Priority="Processing"
  NeedsRequirement="FALSE"
- Name="TrainData"
+ Name="Train data"
  Guid="6cdfcaa4-fa2b-4c22-92d0-f81997e116a0"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
- Name="TrainData"
+ Name="Train data"
  Guid="643ef28c-48c2-449d-8cba-31f2d3943523"
 >
 <PreConditions>
@@ -1908,29 +1943,13 @@
             A_SB12 =&gt; 0.7
         }</Action><Action
  Guid="30a3575e-0fda-490b-8762-e2530e93b597"
->TrainData.Value.EddyCurrentBrake &lt;- BrakingParameters.SpecialBrake
-{
-    IsActive =&gt; Boolean.True,
-    InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.Both
-}</Action><Action
+>TrainData.Value.EddyCurrentBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
  Guid="c289289c-bc7e-4abf-822a-baa902d9c86e"
->TrainData.Value.MagneticShoeBrake &lt;- BrakingParameters.SpecialBrake
-{
-    IsActive =&gt; Boolean.True,
-    InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.EB
-}</Action><Action
+>TrainData.Value.MagneticShoeBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.EB</Action><Action
  Guid="1150faf4-4606-4991-8763-8a8aafba4453"
->TrainData.Value.EpBrake &lt;- BrakingParameters.SpecialBrake
-{
-    IsActive =&gt; Boolean.True,
-    InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.Both
-}</Action><Action
+>TrainData.Value.EpBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
  Guid="57d18a98-ba5a-42ff-a4ad-c58afc9c5042"
->TrainData.Value.RegenerativeBrake &lt;- BrakingParameters.SpecialBrake
-{
-    IsActive =&gt; Boolean.True,
-    InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.Both
-}</Action></Actions>
+>TrainData.Value.RegenerativeBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.Both</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
