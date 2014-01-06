@@ -90,9 +90,10 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Add Step", new EventHandler(AddHandler)));
+            retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
+            retVal.AddRange(base.GetMenuItems());
 
             return retVal;
         }

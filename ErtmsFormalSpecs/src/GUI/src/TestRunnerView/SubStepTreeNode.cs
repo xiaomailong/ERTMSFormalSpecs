@@ -172,12 +172,14 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Add action", new EventHandler(AddActionHandler)));
-            retVal.Add(new MenuItem("Add expectation", new EventHandler(AddExpectationHandler)));
-            retVal.Add(new MenuItem("-"));
+            MenuItem newItem = new MenuItem("Add...");
+            newItem.MenuItems.Add(new MenuItem("Action", new EventHandler(AddActionHandler)));
+            newItem.MenuItems.Add(new MenuItem("Expectation", new EventHandler(AddExpectationHandler)));
+            retVal.Add(newItem);
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
 
             return retVal;
         }

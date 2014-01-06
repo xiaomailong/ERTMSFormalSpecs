@@ -333,16 +333,16 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
-            retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Add sub-step", new EventHandler(AddSubStepHandler)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Run once", new EventHandler(RunHandler)));
-            retVal.Add(new MenuItem("Run until expectation reached", new EventHandler(RunForExpectationsHandler)));
-            retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
+            retVal.Insert(6, new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
+            retVal.Insert(7, new MenuItem("-"));
+            retVal.Insert(8, new MenuItem("Run once", new EventHandler(RunHandler)));
+            retVal.Insert(9, new MenuItem("Run until expectation reached", new EventHandler(RunForExpectationsHandler)));
+            retVal.Insert(10, new MenuItem("-"));            
 
             return retVal;
         }
