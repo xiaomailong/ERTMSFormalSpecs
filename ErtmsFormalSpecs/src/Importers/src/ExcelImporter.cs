@@ -168,6 +168,14 @@ namespace Importers
             aSubStep.setSkipEngine(true);
             aStep.AddModelElement(aSubStep);
 
+            TestAction powerOn = new TestAction();
+            powerOn.Expression = "Kernel.PowerOn <- True";
+            aSubStep.AddModelElement(powerOn);
+
+            TestAction modeInitialization = new TestAction();
+            modeInitialization.Expression = "Kernel.Mode <- Mode.FS";
+            aSubStep.AddModelElement(modeInitialization);
+
             TestAction levelInitialization = new TestAction();
             levelInitialization.Expression = "Kernel.Level <- Kernel.LevelData\n{\n    Value => Level.L1,\n    DataState => DataState.Valid\n}";
             aSubStep.AddModelElement(levelInitialization);
@@ -709,7 +717,7 @@ namespace Importers
                 if (initializeBrakes)
                 {
                     addAction(aSubStep, String.Format("TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive <- True"));
-                    addAction(aSubStep, String.Format("Kernel.TrainData.TrainData.Value.MagneticShoeBrakeInterface <- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both\n"));
+                    addAction(aSubStep, String.Format("Kernel.TrainData.TrainData.Value.MagneticShoeBrakeInterface <- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB\n"));
                 }
                 ebBrakesCombination += ebBrakesCombination == "" ? "Magnetic" : "_Magnetic";
             }
