@@ -327,9 +327,9 @@
 </ReqRef><PreConditions>
 <PreCondition
  Guid="f0a73956-72ca-4e2a-833d-c64917c04a3d"
->ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= Odometry.NominalDistance
-AND
-ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition
+>ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0
+  AND
+ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= Odometry.NominalDistance</PreCondition><PreCondition
  Guid="d0936740-8827-4152-93cf-3722e478afc0"
 >Monitoring != MonitoringType.ReleaseSpeed</PreCondition></PreConditions>
 <Actions>
