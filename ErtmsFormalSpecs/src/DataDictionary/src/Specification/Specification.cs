@@ -391,7 +391,6 @@ namespace DataDictionary.Specification
         /// </summary>
         public void CheckImplementation()
         {
-            Dictionary.ClearMessages();
             NotImplementedVisitor visitor = new NotImplementedVisitor();
             visitor.visit(this);
         }
@@ -416,7 +415,6 @@ namespace DataDictionary.Specification
         /// </summary>
         public void CheckReview()
         {
-            Dictionary.ClearMessages();
             NotReviewedVisitor visitor = new NotReviewedVisitor();
             visitor.visit(this);
         }
@@ -525,7 +523,6 @@ namespace DataDictionary.Specification
 
         public void CheckMoreInfo()
         {
-            Dictionary.ClearMessages();
             MoreInfoParagraphsVisitor visitor = new MoreInfoParagraphsVisitor();
             visitor.visit(this);
         }
@@ -626,7 +623,6 @@ namespace DataDictionary.Specification
         /// </summary>
         public void CheckImplementedWithNoFunctionalTest()
         {
-            Dictionary.ClearMessages();
             ImplementedWithNoFunctionalTestVisitor visitor = new ImplementedWithNoFunctionalTestVisitor(this);
             visitor.visit(this);
         }
@@ -734,7 +730,6 @@ namespace DataDictionary.Specification
         /// </summary>
         public void CheckNotImplementedButImplementationExists()
         {
-            Dictionary.ClearMessages();
             NotImplementedButImplementationExistsVisitor visitor = new NotImplementedButImplementationExistsVisitor(this);
             visitor.visit(this);
         }
