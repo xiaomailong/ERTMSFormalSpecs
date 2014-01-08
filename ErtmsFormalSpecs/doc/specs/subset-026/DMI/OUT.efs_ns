@@ -3135,7 +3135,11 @@
  Guid="192abb43-8a6c-4da5-8120-07c256ce6121"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="cfab63ee-7d53-4866-889d-af9c47e77295"
+>ProcedureOut not in ProcedureOutSM.NotAvailable
+  AND
+ProcedureOut not in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c312fe49-c752-4ce5-8361-a09bc8d7ecab"
