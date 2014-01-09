@@ -37,8 +37,17 @@ namespace GUI.LongOperations
         /// <param name="allowCancel">Indicates that the opeation can be canceled</param>
         public void ExecuteUsingProgressDialog(string message, bool allowCancel = true)
         {
-            ProgressDialog dialog = new ProgressDialog(message, this, allowCancel);
-            dialog.ShowDialog();
+            try
+            {
+                SynchronizerList.SuspendSynchronization();
+
+                ProgressDialog dialog = new ProgressDialog(message, this, allowCancel);
+                dialog.ShowDialog();
+            }
+            finally
+            {
+                SynchronizerList.ResumeSynchronization();
+            }
         }
     }
 }
