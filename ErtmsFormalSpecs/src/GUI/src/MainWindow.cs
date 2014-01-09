@@ -1358,9 +1358,12 @@ namespace GUI
             // Retrieve the hash tag and the corresponding dictionary version
             VersionSelector.VersionSelector selector = new VersionSelector.VersionSelector(dictionary);
             selector.ShowDialog();
-            CompareWithRepositoryOperation operation = new CompareWithRepositoryOperation(dictionary, selector.Selected);
-            operation.ExecuteUsingProgressDialog("Compare with repository version " + selector.Selected.MessageShort);
-            Refresh();
+            if (selector.Selected != null)
+            {
+                CompareWithRepositoryOperation operation = new CompareWithRepositoryOperation(dictionary, selector.Selected);
+                operation.ExecuteUsingProgressDialog("Compare with repository version " + selector.Selected.MessageShort);
+                Refresh();
+            }
         }
 
         /// <summary>
