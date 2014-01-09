@@ -36,16 +36,15 @@ namespace HistoricalData
                 switch (Action)
                 {
                     case Generated.acceptor.ChangeOperationEnum.aAdd:
-                        retVal += "Add ";
+                        retVal += "Add " + After + " in " + Field;
                         break;
                     case Generated.acceptor.ChangeOperationEnum.aChange:
-                        retVal += "Change ";
+                        retVal += "Change in " + Field;
                         break;
                     case Generated.acceptor.ChangeOperationEnum.aRemove:
-                        retVal += "Remove ";
+                        retVal += "Remove " + Before + " from " + Field;
                         break;
                 }
-                retVal += "in " + Field;
 
                 return retVal;
             }

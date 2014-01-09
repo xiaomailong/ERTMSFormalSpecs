@@ -142,7 +142,7 @@ namespace GUI.TestRunnerView
         }
 
         #region Execute tests
-        private class ExecuteTestsHandler : Utils.ProgressHandler
+        private class ExecuteTestsHandler : LongOperations.BaseLongOperation
         {
             /// <summary>
             /// The window for which theses tests should be executed
@@ -196,8 +196,7 @@ namespace GUI.TestRunnerView
         {
             ClearMessages();
             ExecuteTestsHandler executeTestHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
-            ProgressDialog dialog = new ProgressDialog("Executing test steps", executeTestHandler);
-            dialog.ShowDialog();
+            executeTestHandler.ExecuteUsingProgressDialog("Executing test steps");
 
             Window window = BaseForm as Window;
             if (window != null)

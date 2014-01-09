@@ -152,7 +152,7 @@ namespace GUI.TestRunnerView
         }
 
         #region ExecuteTests
-        private class ExecuteTestsOperation : ProgressHandler
+        private class ExecuteTestsOperation : LongOperations.BaseLongOperation
         {
             /// <summary>
             /// The number of failed tests 
@@ -216,8 +216,7 @@ namespace GUI.TestRunnerView
             ClearMessages();
 
             ExecuteTestsOperation executeTestsOperation = new ExecuteTestsOperation(BaseForm as Window, Item);
-            ProgressDialog dialog = new ProgressDialog("Executing test sequences", executeTestsOperation);
-            dialog.ShowDialog();
+            executeTestsOperation.ExecuteUsingProgressDialog("Executing test sequences");
 
             string runtimeErrors = "";
             if (Utils.ModelElement.Errors.Values.Count > 0)
