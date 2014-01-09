@@ -28,7 +28,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -47,7 +47,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -72,7 +72,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Requirements" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Requirements", "", subElement.Name ) );
                         }
                     }
 
@@ -98,7 +98,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ReqRef subElement in obj.allRequirements() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Requirements" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Requirements", "", subElement.Name ) );
                     }
                 }
             }
@@ -127,7 +127,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -156,7 +156,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -179,7 +179,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Specifications" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Specifications", "", subElement.Name ) );
                         }
                     }
 
@@ -205,7 +205,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Specification subElement in obj.allSpecifications() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Specifications" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Specifications", "", subElement.Name ) );
                     }
                 }
             }
@@ -238,7 +238,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "RuleDisablings" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "RuleDisablings", "", subElement.Name ) );
                         }
                     }
 
@@ -264,7 +264,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.RuleDisabling subElement in obj.allRuleDisablings() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "RuleDisablings" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "RuleDisablings", "", subElement.Name ) );
                     }
                 }
             }
@@ -297,7 +297,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaces" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaces", "", subElement.Name ) );
                         }
                     }
 
@@ -323,7 +323,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaces" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaces", "", subElement.Name ) );
                     }
                 }
             }
@@ -356,7 +356,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaceRefs" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaceRefs", "", subElement.Name ) );
                         }
                     }
 
@@ -382,7 +382,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaceRefs" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaceRefs", "", subElement.Name ) );
                     }
                 }
             }
@@ -415,7 +415,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Tests" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Tests", "", subElement.Name ) );
                         }
                     }
 
@@ -441,7 +441,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Frame subElement in obj.allTests() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Tests" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Tests", "", subElement.Name ) );
                     }
                 }
             }
@@ -474,7 +474,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "TestRefs" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "TestRefs", "", subElement.Name ) );
                         }
                     }
 
@@ -500,7 +500,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.FrameRef subElement in obj.allTestRefs() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "TestRefs" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "TestRefs", "", subElement.Name ) );
                     }
                 }
             }
@@ -555,7 +555,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -576,7 +576,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -593,7 +593,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -618,7 +618,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaces" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaces", "", subElement.Name ) );
                         }
                     }
 
@@ -644,7 +644,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaces" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaces", "", subElement.Name ) );
                     }
                 }
             }
@@ -677,7 +677,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaceRefs" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaceRefs", "", subElement.Name ) );
                         }
                     }
 
@@ -703,7 +703,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaceRefs" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaceRefs", "", subElement.Name ) );
                     }
                 }
             }
@@ -736,7 +736,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Ranges" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Ranges", "", subElement.Name ) );
                         }
                     }
 
@@ -762,7 +762,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Range subElement in obj.allRanges() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Ranges" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Ranges", "", subElement.Name ) );
                     }
                 }
             }
@@ -795,7 +795,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Enumerations" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Enumerations", "", subElement.Name ) );
                         }
                     }
 
@@ -821,7 +821,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Enum subElement in obj.allEnumerations() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Enumerations" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Enumerations", "", subElement.Name ) );
                     }
                 }
             }
@@ -854,7 +854,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Structures" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Structures", "", subElement.Name ) );
                         }
                     }
 
@@ -880,7 +880,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Structure subElement in obj.allStructures() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Structures" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Structures", "", subElement.Name ) );
                     }
                 }
             }
@@ -913,7 +913,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Collections" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Collections", "", subElement.Name ) );
                         }
                     }
 
@@ -939,7 +939,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Collection subElement in obj.allCollections() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Collections" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Collections", "", subElement.Name ) );
                     }
                 }
             }
@@ -972,7 +972,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "StateMachines" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "StateMachines", "", subElement.Name ) );
                         }
                     }
 
@@ -998,7 +998,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "StateMachines" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "StateMachines", "", subElement.Name ) );
                     }
                 }
             }
@@ -1031,7 +1031,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Functions" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Functions", "", subElement.Name ) );
                         }
                     }
 
@@ -1057,7 +1057,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Function subElement in obj.allFunctions() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Functions" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Functions", "", subElement.Name ) );
                     }
                 }
             }
@@ -1090,7 +1090,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Procedures" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Procedures", "", subElement.Name ) );
                         }
                     }
 
@@ -1116,7 +1116,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Procedure subElement in obj.allProcedures() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Procedures" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Procedures", "", subElement.Name ) );
                     }
                 }
             }
@@ -1149,7 +1149,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Variables" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Variables", "", subElement.Name ) );
                         }
                     }
 
@@ -1175,7 +1175,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Variable subElement in obj.allVariables() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Variables" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Variables", "", subElement.Name ) );
                     }
                 }
             }
@@ -1208,7 +1208,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules", "", subElement.Name ) );
                         }
                     }
 
@@ -1234,7 +1234,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule subElement in obj.allRules() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules", "", subElement.Name ) );
                     }
                 }
             }
@@ -1279,7 +1279,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -1298,7 +1298,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -1319,7 +1319,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -1339,7 +1339,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countValues() )
                     {
-                        diff.appendChanges ( new Diff(obj.getValues(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Values" ) );
+                        diff.appendChanges ( new Diff(obj.getValues(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Values", "", obj.getValues( i ).Name ) );
                         i += 1;
                     }
                     while ( i < other.countValues() )
@@ -1352,7 +1352,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.EnumValue subElement in obj.allValues() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Values" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Values", "", subElement.Name ) );
                     }
                 }
             }
@@ -1385,7 +1385,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubEnums" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubEnums", "", subElement.Name ) );
                         }
                     }
 
@@ -1411,7 +1411,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Enum subElement in obj.allSubEnums() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubEnums" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubEnums", "", subElement.Name ) );
                     }
                 }
             }
@@ -1436,7 +1436,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -1457,7 +1457,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -1485,7 +1485,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countSpecialValues() )
                     {
-                        diff.appendChanges ( new Diff(obj.getSpecialValues(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SpecialValues" ) );
+                        diff.appendChanges ( new Diff(obj.getSpecialValues(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SpecialValues", "", obj.getSpecialValues( i ).Name ) );
                         i += 1;
                     }
                     while ( i < other.countSpecialValues() )
@@ -1498,7 +1498,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.EnumValue subElement in obj.allSpecialValues() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SpecialValues" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SpecialValues", "", subElement.Name ) );
                     }
                 }
             }
@@ -1527,7 +1527,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -1552,7 +1552,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Elements" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Elements", "", subElement.Name ) );
                         }
                     }
 
@@ -1578,7 +1578,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.StructureElement subElement in obj.allElements() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Elements" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Elements", "", subElement.Name ) );
                     }
                 }
             }
@@ -1611,7 +1611,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Procedures" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Procedures", "", subElement.Name ) );
                         }
                     }
 
@@ -1637,7 +1637,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Procedure subElement in obj.allProcedures() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Procedures" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Procedures", "", subElement.Name ) );
                     }
                 }
             }
@@ -1670,7 +1670,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "StateMachines" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "StateMachines", "", subElement.Name ) );
                         }
                     }
 
@@ -1696,7 +1696,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "StateMachines" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "StateMachines", "", subElement.Name ) );
                     }
                 }
             }
@@ -1729,7 +1729,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules", "", subElement.Name ) );
                         }
                     }
 
@@ -1755,7 +1755,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule subElement in obj.allRules() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules", "", subElement.Name ) );
                     }
                 }
             }
@@ -1780,7 +1780,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -1809,7 +1809,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -1834,7 +1834,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -1859,7 +1859,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Parameters" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Parameters", "", subElement.Name ) );
                         }
                     }
 
@@ -1885,7 +1885,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Parameter subElement in obj.allParameters() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Parameters" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Parameters", "", subElement.Name ) );
                     }
                 }
             }
@@ -1913,7 +1913,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countCases() )
                     {
-                        diff.appendChanges ( new Diff(obj.getCases(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Cases" ) );
+                        diff.appendChanges ( new Diff(obj.getCases(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Cases", "", obj.getCases( i ).Name ) );
                         i += 1;
                     }
                     while ( i < other.countCases() )
@@ -1926,7 +1926,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Case subElement in obj.allCases() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Cases" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Cases", "", subElement.Name ) );
                     }
                 }
             }
@@ -1959,7 +1959,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -1980,7 +1980,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -2000,7 +2000,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countPreConditions() )
                     {
-                        diff.appendChanges ( new Diff(obj.getPreConditions(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "PreConditions" ) );
+                        diff.appendChanges ( new Diff(obj.getPreConditions(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "PreConditions", "", obj.getPreConditions( i ).Name ) );
                         i += 1;
                     }
                     while ( i < other.countPreConditions() )
@@ -2013,7 +2013,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.PreCondition subElement in obj.allPreConditions() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "PreConditions" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "PreConditions", "", subElement.Name ) );
                     }
                 }
             }
@@ -2042,7 +2042,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -2078,7 +2078,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules", "", subElement.Name ) );
                         }
                     }
 
@@ -2104,7 +2104,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule subElement in obj.allRules() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules", "", subElement.Name ) );
                     }
                 }
             }
@@ -2137,7 +2137,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Parameters" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Parameters", "", subElement.Name ) );
                         }
                     }
 
@@ -2163,7 +2163,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Parameter subElement in obj.allParameters() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Parameters" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Parameters", "", subElement.Name ) );
                     }
                 }
             }
@@ -2188,7 +2188,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -2217,7 +2217,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "States" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "States", "", subElement.Name ) );
                         }
                     }
 
@@ -2243,7 +2243,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.State subElement in obj.allStates() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "States" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "States", "", subElement.Name ) );
                     }
                 }
             }
@@ -2276,7 +2276,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules", "", subElement.Name ) );
                         }
                     }
 
@@ -2302,7 +2302,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule subElement in obj.allRules() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules", "", subElement.Name ) );
                     }
                 }
             }
@@ -2327,7 +2327,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -2371,7 +2371,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -2408,7 +2408,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubVariables" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubVariables", "", subElement.Name ) );
                         }
                     }
 
@@ -2434,7 +2434,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Variable subElement in obj.allSubVariables() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubVariables" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubVariables", "", subElement.Name ) );
                     }
                 }
             }
@@ -2459,7 +2459,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -2488,7 +2488,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Conditions" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Conditions", "", subElement.Name ) );
                         }
                     }
 
@@ -2514,7 +2514,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.RuleCondition subElement in obj.allConditions() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Conditions" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Conditions", "", subElement.Name ) );
                     }
                 }
             }
@@ -2539,7 +2539,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -2559,7 +2559,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countPreConditions() )
                     {
-                        diff.appendChanges ( new Diff(obj.getPreConditions(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "PreConditions" ) );
+                        diff.appendChanges ( new Diff(obj.getPreConditions(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "PreConditions", "", obj.getPreConditions( i ).Name ) );
                         i += 1;
                     }
                     while ( i < other.countPreConditions() )
@@ -2572,7 +2572,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.PreCondition subElement in obj.allPreConditions() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "PreConditions" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "PreConditions", "", subElement.Name ) );
                     }
                 }
             }
@@ -2600,7 +2600,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countActions() )
                     {
-                        diff.appendChanges ( new Diff(obj.getActions(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Actions" ) );
+                        diff.appendChanges ( new Diff(obj.getActions(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Actions", "", obj.getActions( i ).Name ) );
                         i += 1;
                     }
                     while ( i < other.countActions() )
@@ -2613,7 +2613,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Action subElement in obj.allActions() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Actions" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Actions", "", subElement.Name ) );
                     }
                 }
             }
@@ -2646,7 +2646,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubRules" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubRules", "", subElement.Name ) );
                         }
                     }
 
@@ -2672,7 +2672,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule subElement in obj.allSubRules() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubRules" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubRules", "", subElement.Name ) );
                     }
                 }
             }
@@ -2697,7 +2697,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -2716,7 +2716,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -2735,7 +2735,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -2752,7 +2752,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -2781,7 +2781,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSequences" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSequences", "", subElement.Name ) );
                         }
                     }
 
@@ -2807,7 +2807,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.SubSequence subElement in obj.allSubSequences() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSequences" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSequences", "", subElement.Name ) );
                     }
                 }
             }
@@ -2832,7 +2832,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -2893,7 +2893,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "TestCases" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "TestCases", "", subElement.Name ) );
                         }
                     }
 
@@ -2919,7 +2919,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.TestCase subElement in obj.allTestCases() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "TestCases" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "TestCases", "", subElement.Name ) );
                     }
                 }
             }
@@ -2944,7 +2944,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -2977,7 +2977,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Steps" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Steps", "", subElement.Name ) );
                         }
                     }
 
@@ -3003,7 +3003,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Step subElement in obj.allSteps() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Steps" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Steps", "", subElement.Name ) );
                     }
                 }
             }
@@ -3028,7 +3028,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -3105,7 +3105,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSteps" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSteps", "", subElement.Name ) );
                         }
                     }
 
@@ -3131,7 +3131,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.SubStep subElement in obj.allSubSteps() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSteps" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSteps", "", subElement.Name ) );
                     }
                 }
             }
@@ -3164,7 +3164,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Messages" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Messages", "", subElement.Name ) );
                         }
                     }
 
@@ -3190,7 +3190,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.DBMessage subElement in obj.allMessages() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Messages" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Messages", "", subElement.Name ) );
                     }
                 }
             }
@@ -3215,7 +3215,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -3235,7 +3235,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countActions() )
                     {
-                        diff.appendChanges ( new Diff(obj.getActions(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Actions" ) );
+                        diff.appendChanges ( new Diff(obj.getActions(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Actions", "", obj.getActions( i ).Name ) );
                         i += 1;
                     }
                     while ( i < other.countActions() )
@@ -3248,7 +3248,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Action subElement in obj.allActions() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Actions" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Actions", "", subElement.Name ) );
                     }
                 }
             }
@@ -3276,7 +3276,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countExpectations() )
                     {
-                        diff.appendChanges ( new Diff(obj.getExpectations(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Expectations" ) );
+                        diff.appendChanges ( new Diff(obj.getExpectations(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Expectations", "", obj.getExpectations( i ).Name ) );
                         i += 1;
                     }
                     while ( i < other.countExpectations() )
@@ -3289,7 +3289,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Expectation subElement in obj.allExpectations() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Expectations" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Expectations", "", subElement.Name ) );
                     }
                 }
             }
@@ -3318,7 +3318,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -3355,7 +3355,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -3388,7 +3388,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Fields" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Fields", "", subElement.Name ) );
                         }
                     }
 
@@ -3414,7 +3414,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.DBField subElement in obj.allFields() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Fields" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Fields", "", subElement.Name ) );
                     }
                 }
             }
@@ -3447,7 +3447,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Packets" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Packets", "", subElement.Name ) );
                         }
                     }
 
@@ -3473,7 +3473,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.DBPacket subElement in obj.allPackets() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Packets" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Packets", "", subElement.Name ) );
                     }
                 }
             }
@@ -3498,7 +3498,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -3523,7 +3523,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Fields" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Fields", "", subElement.Name ) );
                         }
                     }
 
@@ -3549,7 +3549,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.DBField subElement in obj.allFields() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Fields" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Fields", "", subElement.Name ) );
                     }
                 }
             }
@@ -3574,7 +3574,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -3599,7 +3599,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -3624,7 +3624,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders", "", subElement.Name ) );
                         }
                     }
 
@@ -3650,7 +3650,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Folder subElement in obj.allFolders() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders", "", subElement.Name ) );
                     }
                 }
             }
@@ -3683,7 +3683,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Translations" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Translations", "", subElement.Name ) );
                         }
                     }
 
@@ -3709,7 +3709,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Translation subElement in obj.allTranslations() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Translations" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Translations", "", subElement.Name ) );
                     }
                 }
             }
@@ -3734,7 +3734,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -3759,7 +3759,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders", "", subElement.Name ) );
                         }
                     }
 
@@ -3785,7 +3785,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Folder subElement in obj.allFolders() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders", "", subElement.Name ) );
                     }
                 }
             }
@@ -3818,7 +3818,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Translations" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Translations", "", subElement.Name ) );
                         }
                     }
 
@@ -3844,7 +3844,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Translation subElement in obj.allTranslations() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Translations" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Translations", "", subElement.Name ) );
                     }
                 }
             }
@@ -3869,7 +3869,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -3894,7 +3894,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SourceTexts" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SourceTexts", "", subElement.Name ) );
                         }
                     }
 
@@ -3920,7 +3920,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.SourceText subElement in obj.allSourceTexts() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SourceTexts" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SourceTexts", "", subElement.Name ) );
                     }
                 }
             }
@@ -3957,7 +3957,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSteps" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSteps", "", subElement.Name ) );
                         }
                     }
 
@@ -3983,7 +3983,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.SubStep subElement in obj.allSubSteps() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSteps" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSteps", "", subElement.Name ) );
                     }
                 }
             }
@@ -4012,7 +4012,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -4029,7 +4029,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -4054,7 +4054,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders", "", subElement.Name ) );
                         }
                     }
 
@@ -4080,7 +4080,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders", "", subElement.Name ) );
                     }
                 }
             }
@@ -4113,7 +4113,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Shortcuts" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Shortcuts", "", subElement.Name ) );
                         }
                     }
 
@@ -4139,7 +4139,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Shortcuts" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Shortcuts", "", subElement.Name ) );
                     }
                 }
             }
@@ -4164,7 +4164,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -4189,7 +4189,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders", "", subElement.Name ) );
                         }
                     }
 
@@ -4215,7 +4215,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders", "", subElement.Name ) );
                     }
                 }
             }
@@ -4248,7 +4248,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Shortcuts" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Shortcuts", "", subElement.Name ) );
                         }
                     }
 
@@ -4274,7 +4274,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Shortcuts" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Shortcuts", "", subElement.Name ) );
                     }
                 }
             }
@@ -4299,7 +4299,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -4320,7 +4320,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -4349,7 +4349,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Chapters" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Chapters", "", subElement.Name ) );
                         }
                     }
 
@@ -4375,7 +4375,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Chapter subElement in obj.allChapters() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Chapters" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Chapters", "", subElement.Name ) );
                     }
                 }
             }
@@ -4408,7 +4408,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "ChapterRefs" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "ChapterRefs", "", subElement.Name ) );
                         }
                     }
 
@@ -4434,7 +4434,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ChapterRef subElement in obj.allChapterRefs() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "ChapterRefs" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "ChapterRefs", "", subElement.Name ) );
                     }
                 }
             }
@@ -4459,7 +4459,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -4476,7 +4476,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -4505,7 +4505,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Paragraphs" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Paragraphs", "", subElement.Name ) );
                         }
                     }
 
@@ -4531,7 +4531,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Paragraphs" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Paragraphs", "", subElement.Name ) );
                     }
                 }
             }
@@ -4556,7 +4556,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 
@@ -4625,7 +4625,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Paragraphs" ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Paragraphs", "", subElement.Name ) );
                         }
                     }
 
@@ -4651,7 +4651,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Paragraphs" ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Paragraphs", "", subElement.Name ) );
                     }
                 }
             }
@@ -4703,7 +4703,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
                 return;
             }
 

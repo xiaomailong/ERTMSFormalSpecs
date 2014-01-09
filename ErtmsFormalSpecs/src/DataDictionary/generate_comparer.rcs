@@ -55,7 +55,7 @@ BEGIN
 `        {
 `            if ( other == null )
 `            { 
-`                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+`                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
 `                return;
 `            }
 `
@@ -105,7 +105,7 @@ BEGIN
 `                    }
 `                    while ( i < obj.count`field.NAME`() )
 `                    {
-`                        diff.appendChanges ( new Diff(obj.get`field.NAME`(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "`field.NAME`" ) );
+`                        diff.appendChanges ( new Diff(obj.get`field.NAME`(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "`field.NAME`", "", obj.get`field.NAME`( i ).Name ) );
 `                        i += 1;
 `                    }
 `                    while ( i < other.count`field.NAME`() )
@@ -118,7 +118,7 @@ BEGIN
 `                {
 `                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
 `                    {
-`                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "`field.NAME`" ) );
+`                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "`field.NAME`", "", subElement.Name ) );
 `                    }
 `                }
 `            }
@@ -154,7 +154,7 @@ BEGIN
 `
 `                        if ( !compared ) 
 `                        {
-`                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "`field.NAME`" ) );
+`                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "`field.NAME`", "", subElement.Name ) );
 `                        }
 `                    }
 `
@@ -180,7 +180,7 @@ BEGIN
 `                {
 `                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
 `                    {
-`                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "`field.NAME`" ) );
+`                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "`field.NAME`", "", subElement.Name ) );
 `                    }
 `                }
 `            }
