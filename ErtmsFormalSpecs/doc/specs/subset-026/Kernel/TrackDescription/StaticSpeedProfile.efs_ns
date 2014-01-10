@@ -597,6 +597,15 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >aSSP.BasicSpeed == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
+ Name="Last SSP"
+ Guid="3a817aca-20b1-458b-af48-d585b43aec8a"
+>
+<PreConditions>
+<PreCondition
+ Guid="cdc88c52-cc87-4d46-a489-8483578cb5ef"
+>SSPEnd ( aSSP ) == BaseTypes.Distance.Infinity</PreCondition></PreConditions>
+<Expression>SSPSpeed(aSSP)</Expression>
+</Case><Case
  Name="During SSP"
  Guid="82fa0622-8426-4627-a328-c92df7a6646f"
 >
@@ -606,7 +615,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >aSSP.Distance &lt;= Distance</PreCondition><PreCondition
  Guid="a3494ca1-2ab4-45f5-9d76-b4fec8b96902"
 >Distance &lt; Default.BaseTypes.AddDistance (X1 =&gt; aSSP.Distance, X2 =&gt; SSPLength(aSSP))</PreCondition></PreConditions>
-<Expression>SSPSpeed(aSSP)</Expression>
+<Expression>SSPSpeed ( aSSP )</Expression>
 </Case><Case
  Name="Outside SSP"
  Guid="003d9321-b254-46ed-8c99-ee86f755db21"
