@@ -3127,6 +3127,7 @@
  Name="UpdateValue"
  Guid="0cc4030a-fa8f-4691-b6e3-a19fe4187f41"
 >
+<Comment>TODO: currently this rule is not executed, otherwise EFS gets errors while computing intersection of a target with EBD curve. Its seems to be a problem in the specification. See the comment for paragraph 3.13.9.3.5.7, marked as a spec issue.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3139,7 +3140,9 @@
  Guid="cfab63ee-7d53-4866-889d-af9c47e77295"
 >ProcedureOut not in ProcedureOutSM.NotAvailable
   AND
-ProcedureOut not in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
+ProcedureOut not in ProcedureOutSM.NotApplicable
+  AND
+ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c312fe49-c752-4ce5-8361-a09bc8d7ecab"
