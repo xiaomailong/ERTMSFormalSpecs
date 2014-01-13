@@ -18,6 +18,11 @@ using System.Collections.Generic;
 
 namespace Utils
 {
+    /// <summary>
+    /// Indicates if the element holds messages, or is part of a path to a message 
+    /// </summary>
+    public enum MessagePathInfoEnum { NotComputed = 0, Nothing = 4, Error = 10, PathToError = 9, Warning = 8, PathToWarning = 7, Info = 6, PathToInfo = 5 };
+
     public interface IEnclosed
     {
         /// <summary>
@@ -61,6 +66,11 @@ namespace Utils
         /// Clears the messages associated to this model element
         /// </summary>
         void ClearMessages();
+
+        /// <summary>
+        /// Indicates if the element holds messages, or is part of a path to a message 
+        /// </summary>
+        MessagePathInfoEnum MessagePathInfo { get; }
 
         /// <summary>
         /// Indicates that at least one message of type levelEnum is attached to the element
@@ -341,6 +351,11 @@ namespace Utils
 
             return retVal;
         }
+
+        /// <summary>
+        /// Indicates if the element holds messages, or is part of a path to a message 
+        /// </summary>
+        public MessagePathInfoEnum MessagePathInfo { get; set; }
 
         /// <summary>
         /// Adds a model element in this model element

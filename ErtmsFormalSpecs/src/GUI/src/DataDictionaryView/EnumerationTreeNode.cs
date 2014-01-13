@@ -87,7 +87,6 @@ namespace GUI.DataDictionaryView
             }
         }
 
-
         private EnumerationValuesTreeNode valuesTreeNode;
 
         /// <summary>
@@ -95,12 +94,9 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public EnumerationTreeNode(DataDictionary.Types.Enum item)
-            : base(item)
+        public EnumerationTreeNode(DataDictionary.Types.Enum item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
-            valuesTreeNode = new EnumerationValuesTreeNode(item);
-            Nodes.Add(valuesTreeNode);
-            Nodes.Add(new SubEnumerationsTreeNode(item));
         }
 
         /// <summary>
@@ -108,9 +104,22 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public EnumerationTreeNode(DataDictionary.Types.Enum item, string name, bool isFolder, bool addRequirements)
-            : base(item, name, isFolder, addRequirements)
+        public EnumerationTreeNode(DataDictionary.Types.Enum item, bool buildSubNodes, string name, bool isFolder, bool addRequirements)
+            : base(item, buildSubNodes, name, isFolder, addRequirements)
         {
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
+        {
+            valuesTreeNode = new EnumerationValuesTreeNode(Item, buildSubNodes);
+            Nodes.Add(valuesTreeNode);
+            Nodes.Add(new SubEnumerationsTreeNode(Item, buildSubNodes));
+
+            base.BuildSubNodes(buildSubNodes);
         }
 
         /// <summary>

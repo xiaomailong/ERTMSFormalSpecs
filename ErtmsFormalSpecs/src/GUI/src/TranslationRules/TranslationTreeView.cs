@@ -29,7 +29,7 @@ namespace GUI.TranslationRules
         protected override void BuildModel()
         {
             Nodes.Clear();
-            dictionary = new TranslationDictionaryTreeNode(Root);
+            dictionary = new TranslationDictionaryTreeNode(Root, true);
             Nodes.Add(dictionary);
         }
 

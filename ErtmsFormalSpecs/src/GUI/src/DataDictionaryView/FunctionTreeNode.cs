@@ -104,20 +104,23 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public FunctionTreeNode(Function item)
-            : base(item)
+        public FunctionTreeNode(Function item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
-            Cases = new CasesTreeNode(Item);
-            Nodes.Add(Cases);
-
-            Parameters = new ParametersTreeNode(Item);
+            Parameters = new ParametersTreeNode(Item, buildSubNodes);
             Nodes.Add(Parameters);
+            Cases = new CasesTreeNode(Item, buildSubNodes);
+            Nodes.Add(Cases);
         }
 
         /// <summary>
@@ -125,8 +128,8 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public FunctionTreeNode(Function item, string name, bool isFolder = false, bool addRequirements = true)
-            : base(item, name, isFolder, addRequirements)
+        public FunctionTreeNode(Function item, bool buildSubNodes, string name, bool isFolder = false, bool addRequirements = true)
+            : base(item, buildSubNodes, name, isFolder, addRequirements)
         {
         }
 

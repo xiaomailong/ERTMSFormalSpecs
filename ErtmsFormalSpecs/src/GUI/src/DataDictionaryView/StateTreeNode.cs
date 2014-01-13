@@ -66,13 +66,23 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public StateTreeNode(DataDictionary.Constants.State item)
-            : base(item, null, false, true)
+        public StateTreeNode(DataDictionary.Constants.State item, bool buildSubNodes)
+            : base(item, buildSubNodes, null, false, true)
         {
-            SubStates = new StateSubStatesTreeNode(item);
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
+        {
+            SubStates = new StateSubStatesTreeNode(Item, buildSubNodes);
             Nodes.Add(SubStates);
-            Rules = new StateRulesTreeNode(item);
+            Rules = new StateRulesTreeNode(Item, buildSubNodes);
             Nodes.Add(Rules);
+
+            base.BuildSubNodes(buildSubNodes);
         }
 
         /// <summary>
@@ -89,7 +99,7 @@ namespace GUI.DataDictionaryView
             DataDictionary.Constants.State state = (DataDictionary.Constants.State)DataDictionary.Generated.acceptor.getFactory().createState();
             state.Name = "State" + (GetNodeCount(true) + 1);
             Item.StateMachine.appendStates(state);
-            Nodes.Add(new StateTreeNode(state));
+            Nodes.Add(new StateTreeNode(state, true));
             SortSubNodes();
         }
 
@@ -154,7 +164,7 @@ namespace GUI.DataDictionaryView
             retVal.AddRange(base.GetMenuItems());
             retVal.Insert(6, new MenuItem("-"));
             retVal.Insert(7, new MenuItem("View state diagram", new EventHandler(ViewStateDiagramHandler)));
-            
+
             return retVal;
         }
     }

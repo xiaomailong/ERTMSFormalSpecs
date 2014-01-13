@@ -36,12 +36,12 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public StateRulesTreeNode(DataDictionary.Constants.State item)
-            : base(item, "Rules", true, false)
+        public StateRulesTreeNode(DataDictionary.Constants.State item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Rules", true, false)
         {
             foreach (DataDictionary.Rules.Rule rule in item.StateMachine.Rules)
             {
-                Nodes.Add(new RuleTreeNode(rule));
+                Nodes.Add(new RuleTreeNode(rule, buildSubNodes));
             }
         }
 
@@ -85,7 +85,7 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         public RuleTreeNode AddRule(DataDictionary.Rules.Rule rule)
         {
-            RuleTreeNode retVal = new DataDictionaryView.RuleTreeNode(rule);
+            RuleTreeNode retVal = new DataDictionaryView.RuleTreeNode(rule, true);
 
             Item.StateMachine.appendRules(rule);
             Nodes.Add(retVal);

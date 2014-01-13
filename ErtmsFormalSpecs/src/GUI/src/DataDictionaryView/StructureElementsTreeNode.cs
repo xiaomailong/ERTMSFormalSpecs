@@ -25,12 +25,20 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public StructureElementsTreeNode(DataDictionary.Types.Structure item)
-            : base(item, "Sub elements", true, false)
+        public StructureElementsTreeNode(DataDictionary.Types.Structure item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Sub elements", true, false)
         {
-            foreach (DataDictionary.Types.StructureElement structureElement in item.Elements)
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
+        {
+            foreach (DataDictionary.Types.StructureElement structureElement in Item.Elements)
             {
-                Nodes.Add(new StructureElementTreeNode(structureElement));
+                Nodes.Add(new StructureElementTreeNode(structureElement, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -42,7 +50,7 @@ namespace GUI.DataDictionaryView
         public void AddElement(DataDictionary.Types.StructureElement element)
         {
             Item.appendElements(element);
-            Nodes.Add(new StructureElementTreeNode(element));
+            Nodes.Add(new StructureElementTreeNode(element, true));
             SortSubNodes();
         }
 

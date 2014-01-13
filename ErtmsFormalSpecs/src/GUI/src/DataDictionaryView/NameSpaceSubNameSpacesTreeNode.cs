@@ -26,16 +26,20 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public NameSpaceSubNameSpacesTreeNode(DataDictionary.Types.NameSpace item)
-            : base(item, "Namespaces", true)
+        public NameSpaceSubNameSpacesTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Namespaces", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
             foreach (DataDictionary.Types.NameSpace nameSpace in Item.NameSpaces)
             {
-                Nodes.Add(new NameSpaceTreeNode(nameSpace));
+                Nodes.Add(new NameSpaceTreeNode(nameSpace, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -54,7 +58,7 @@ namespace GUI.DataDictionaryView
         public NameSpaceTreeNode AddSubNameSpace(DataDictionary.Types.NameSpace nameSpace)
         {
             Item.appendNameSpaces(nameSpace);
-            NameSpaceTreeNode retVal = new NameSpaceTreeNode(nameSpace);
+            NameSpaceTreeNode retVal = new NameSpaceTreeNode(nameSpace, true);
             Nodes.Add(retVal);
             SortSubNodes();
 

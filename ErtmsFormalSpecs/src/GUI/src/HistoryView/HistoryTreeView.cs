@@ -28,7 +28,7 @@ namespace GUI.HistoryView
                 DataDictionary.Compare.History history = modelElement.EFSSystem.History;
                 foreach (HistoricalData.Change change in history.GetChanges(modelElement))
                 {
-                    ChangeTreeNode node = new ChangeTreeNode(change);
+                    ChangeTreeNode node = new ChangeTreeNode(change, true);
                     Nodes.Add(node);
                 }
             }

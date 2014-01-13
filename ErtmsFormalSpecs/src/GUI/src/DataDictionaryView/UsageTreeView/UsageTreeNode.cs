@@ -51,8 +51,8 @@ namespace GUI.DataDictionaryView.UsageTreeView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public UsageTreeNode(Usage usage)
-            : base(usage.User, usage.DisplayName())
+        public UsageTreeNode(Usage usage, bool buildSubNodes)
+            : base(usage.User, buildSubNodes, usage.DisplayName())
         {
             Usage = usage;
             ToolTipText = usage.User.FullName;
@@ -96,8 +96,8 @@ namespace GUI.DataDictionaryView.UsageTreeView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public UsageTreeNode(string name)
-            : base(null, name, true)
+        public UsageTreeNode(string name, bool buildSubNodes)
+            : base(null, buildSubNodes, name, true)
         {
         }
 

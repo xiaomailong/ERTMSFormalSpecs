@@ -37,18 +37,22 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public StructuresTreeNode(DataDictionary.Types.NameSpace item)
-            : base(item, "Structures", true)
+        public StructuresTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Structures", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Types.Structure structure in Item.Structures)
             {
-                Nodes.Add(new StructureTreeNode(structure));
+                Nodes.Add(new StructureTreeNode(structure, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -78,7 +82,7 @@ namespace GUI.DataDictionaryView
         {
             Item.appendStructures(structure);
 
-            StructureTreeNode retVal = new StructureTreeNode(structure);
+            StructureTreeNode retVal = new StructureTreeNode(structure, true);
             Nodes.Add(retVal);
             SortSubNodes();
 
@@ -119,7 +123,7 @@ namespace GUI.DataDictionaryView
             aStructure.Name = aConfig.ProcedureName;
             aStructure.NeedsRequirement = true;
             Item.appendStructures(aStructure);
-            StructureTreeNode aStructureTreeNode = new StructureTreeNode(aStructure);
+            StructureTreeNode aStructureTreeNode = new StructureTreeNode(aStructure, true);
             Nodes.Add(aStructureTreeNode);
 
             DataDictionary.Types.StructureElement structElemIn = (DataDictionary.Types.StructureElement)DataDictionary.Generated.acceptor.getFactory().createStructureElement();
@@ -138,7 +142,7 @@ namespace GUI.DataDictionaryView
             aStructure.Name = aConfig.ProcedureName;
             aStructure.NeedsRequirement = true;
             Item.appendStructures(aStructure);
-            StructureTreeNode aStructureTreeNode = new StructureTreeNode(aStructure);
+            StructureTreeNode aStructureTreeNode = new StructureTreeNode(aStructure, true);
             Nodes.Add(aStructureTreeNode);
 
             DataDictionary.Types.StructureElement structElemIn = (DataDictionary.Types.StructureElement)DataDictionary.Generated.acceptor.getFactory().createStructureElement();

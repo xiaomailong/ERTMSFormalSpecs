@@ -37,18 +37,22 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public RuleDisablingsTreeNode(DataDictionary.Dictionary item)
-            : base(item, "Disabled rules", true)
+        public RuleDisablingsTreeNode(DataDictionary.Dictionary item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Disabled rules", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Rules.RuleDisabling ruleDisabling in Item.RuleDisablings)
             {
-                Nodes.Add(new RuleDisablingTreeNode(ruleDisabling));
+                Nodes.Add(new RuleDisablingTreeNode(ruleDisabling, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -67,7 +71,7 @@ namespace GUI.DataDictionaryView
             DataDictionary.Rules.RuleDisabling ruleDisabling = (DataDictionary.Rules.RuleDisabling)DataDictionary.Generated.acceptor.getFactory().createRuleDisabling();
             ruleDisabling.Name = "<RuleDisabling" + (GetNodeCount(false) + 1) + ">";
             Item.appendRuleDisablings(ruleDisabling);
-            Nodes.Add(new RuleDisablingTreeNode(ruleDisabling));
+            Nodes.Add(new RuleDisablingTreeNode(ruleDisabling, true));
             SortSubNodes();
         }
 

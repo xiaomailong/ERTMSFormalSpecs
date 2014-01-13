@@ -43,18 +43,22 @@ namespace GUI.SpecificationView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SpecificationsTreeNode(DataDictionary.Dictionary item)
-            : base(item, "Specifications", true)
+        public SpecificationsTreeNode(DataDictionary.Dictionary item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Specifications", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Specification.Specification specification in Item.Specifications)
             {
-                Nodes.Add(new SpecificationTreeNode(specification));
+                Nodes.Add(new SpecificationTreeNode(specification, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -66,7 +70,7 @@ namespace GUI.SpecificationView
         public void AddSpecification(DataDictionary.Specification.Specification specification)
         {
             Item.appendSpecifications(specification);
-            Nodes.Add(new SpecificationTreeNode(specification));
+            Nodes.Add(new SpecificationTreeNode(specification, true));
             RefreshNode();
         }
 

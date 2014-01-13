@@ -37,16 +37,20 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public CasesTreeNode(DataDictionary.Functions.Function item)
-            : base(item, "Cases", true, false)
+        public CasesTreeNode(DataDictionary.Functions.Function item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Cases", true, false)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
             foreach (DataDictionary.Functions.Case aCase in Item.Cases)
             {
-                Nodes.Add(new CaseTreeNode(aCase));
+                Nodes.Add(new CaseTreeNode(aCase, buildSubNodes));
             }
         }
 
@@ -94,7 +98,7 @@ namespace GUI.DataDictionaryView
         public CaseTreeNode AddCase(DataDictionary.Functions.Case aCase)
         {
             Item.appendCases(aCase);
-            CaseTreeNode retVal = new CaseTreeNode(aCase);
+            CaseTreeNode retVal = new CaseTreeNode(aCase, true);
             Nodes.Add(retVal);
 
             return retVal;

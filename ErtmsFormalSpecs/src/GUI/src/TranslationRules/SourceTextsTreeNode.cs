@@ -36,18 +36,22 @@ namespace GUI.TranslationRules
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SourceTextsTreeNode(DataDictionary.Tests.Translations.Translation item)
-            : base(item, "Source texts", true)
+        public SourceTextsTreeNode(DataDictionary.Tests.Translations.Translation item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Source texts", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Tests.Translations.SourceText sourceText in Item.SourceTexts)
             {
-                Nodes.Add(new SourceTextTreeNode(sourceText));
+                Nodes.Add(new SourceTextTreeNode(sourceText, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -71,7 +75,7 @@ namespace GUI.TranslationRules
             SourceTextTreeNode retVal;
 
             Item.appendSourceTexts(sourceText);
-            retVal = new SourceTextTreeNode(sourceText);
+            retVal = new SourceTextTreeNode(sourceText, true);
             Nodes.Add(retVal);
             SortSubNodes();
 

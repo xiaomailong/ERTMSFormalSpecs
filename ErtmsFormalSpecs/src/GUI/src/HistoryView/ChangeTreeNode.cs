@@ -77,8 +77,8 @@ namespace GUI.HistoryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ChangeTreeNode(HistoricalData.Change item)
-            : base(item)
+        public ChangeTreeNode(HistoricalData.Change item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
         }
 

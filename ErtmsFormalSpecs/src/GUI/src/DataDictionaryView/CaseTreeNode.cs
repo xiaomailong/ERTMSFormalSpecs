@@ -55,19 +55,20 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public CaseTreeNode(Case aCase)
-            : base(aCase)
+        public CaseTreeNode(Case aCase, bool buildSubNodes)
+            : base(aCase, buildSubNodes)
         {
         }
 
         /// <summary>
-        /// Builds the sub nodes of this node
+        /// Builds the subnodes of this node
         /// </summary>
-        protected override void BuildSubNodes()
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
-            PreConditions = new PreConditionsTreeNode(Item);
+            PreConditions = new PreConditionsTreeNode(Item, buildSubNodes);
             Nodes.Add(PreConditions);
         }
 
@@ -77,8 +78,8 @@ namespace GUI.DataDictionaryView
         /// <param name="aCase"></param>
         /// <param name="name"></param>
         /// <param name="isFolder"></param>
-        protected CaseTreeNode(Case aCase, string name, bool isFolder)
-            : base(aCase, name, isFolder)
+        protected CaseTreeNode(Case aCase, bool buildSubNodes, string name, bool isFolder)
+            : base(aCase, buildSubNodes, name, isFolder)
         {
         }
 

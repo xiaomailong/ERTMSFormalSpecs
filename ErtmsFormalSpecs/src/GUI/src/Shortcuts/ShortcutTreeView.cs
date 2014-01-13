@@ -34,7 +34,7 @@ namespace GUI.Shortcuts
             Nodes.Clear();
             foreach (DataDictionary.Dictionary dictionary in Root.EFSSystem.Dictionaries)
             {
-                Nodes.Add(new ShortcutDictionaryTreeNode(dictionary.ShortcutsDictionary));
+                Nodes.Add(new ShortcutDictionaryTreeNode(dictionary.ShortcutsDictionary, true));
             }
 
             foreach (BaseTreeNode node in Nodes)

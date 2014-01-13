@@ -38,8 +38,8 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        protected TypeTreeNode(T item, string name = null, bool isFolder = false, bool addRequirements = true)
-            : base(item, name, isFolder, addRequirements)
+        protected TypeTreeNode(T item, bool buildSubNodes, string name = null, bool isFolder = false, bool addRequirements = true)
+            : base(item, buildSubNodes, name, isFolder, addRequirements)
         {
         }
     }

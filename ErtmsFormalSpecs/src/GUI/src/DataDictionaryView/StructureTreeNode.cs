@@ -47,17 +47,9 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public StructureTreeNode(DataDictionary.Types.Structure item)
-            : base(item)
+        public StructureTreeNode(DataDictionary.Types.Structure item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
-            rules = new RulesTreeNode(item);
-            elements = new StructureElementsTreeNode(item);
-            procedures = new StructureProceduresTreeNode(item);
-            stateMachines = new StructureStateMachinesTreeNode(item);
-            Nodes.Add(procedures);
-            Nodes.Add(stateMachines);
-            Nodes.Add(elements);
-            Nodes.Add(rules);
         }
 
         /// <summary>
@@ -65,9 +57,27 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public StructureTreeNode(DataDictionary.Types.Structure item, string name, bool isFolder, bool addRequirements)
-            : base(item, name, isFolder, addRequirements)
+        public StructureTreeNode(DataDictionary.Types.Structure item, bool buildSubNodes, string name, bool isFolder, bool addRequirements)
+            : base(item, buildSubNodes, name, isFolder, addRequirements)
         {
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
+        {
+            rules = new RulesTreeNode(Item, buildSubNodes);
+            elements = new StructureElementsTreeNode(Item, buildSubNodes);
+            procedures = new StructureProceduresTreeNode(Item, buildSubNodes);
+            stateMachines = new StructureStateMachinesTreeNode(Item, buildSubNodes);
+            Nodes.Add(procedures);
+            Nodes.Add(stateMachines);
+            Nodes.Add(elements);
+            Nodes.Add(rules);
+
+            base.BuildSubNodes(buildSubNodes);
         }
 
         /// <summary>

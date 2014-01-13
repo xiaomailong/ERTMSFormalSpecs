@@ -37,18 +37,22 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public EnumerationsTreeNode(DataDictionary.Types.NameSpace item)
-            : base(item, "Enumerations", true)
+        public EnumerationsTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Enumerations", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Types.Enum enumeration in Item.Enumerations)
             {
-                Nodes.Add(new EnumerationTreeNode(enumeration));
+                Nodes.Add(new EnumerationTreeNode(enumeration, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -80,7 +84,7 @@ namespace GUI.DataDictionaryView
         public void AddEnum(DataDictionary.Types.Enum enumeration)
         {
             Item.appendEnumerations(enumeration);
-            Nodes.Add(new EnumerationTreeNode(enumeration));
+            Nodes.Add(new EnumerationTreeNode(enumeration, true));
             SortSubNodes();
         }
 

@@ -195,7 +195,6 @@ namespace GUI
                 DockAreas = DockAreas.Document;
                 DockState = DockState.Document;
                 Show(GUIUtils.MDIWindow.dockPanel, DockState.Document);
-
             }
         }
 
@@ -205,7 +204,7 @@ namespace GUI
         /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
-            FormSynchronizer.Synchronize = false;
+            FormSynchronizer.Stop();
         }
 
         /// <summary>

@@ -39,18 +39,22 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ActionsTreeNode(DataDictionary.Tests.SubStep item)
-            : base(item, "Actions", true)
+        public ActionsTreeNode(DataDictionary.Tests.SubStep item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Actions", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Rules.Action action in Item.Actions)
             {
-                Nodes.Add(new DataDictionaryView.ActionTreeNode(action));
+                Nodes.Add(new DataDictionaryView.ActionTreeNode(action, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -71,7 +75,7 @@ namespace GUI.TestRunnerView
         public void addAction(DataDictionary.Rules.Action action)
         {
             action.Enclosing = Item;
-            DataDictionaryView.ActionTreeNode actionNode = new DataDictionaryView.ActionTreeNode(action);
+            DataDictionaryView.ActionTreeNode actionNode = new DataDictionaryView.ActionTreeNode(action, true);
             Item.appendActions(action);
             Nodes.Add(actionNode);
             SortSubNodes();

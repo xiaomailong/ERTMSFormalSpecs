@@ -37,18 +37,22 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public FunctionsTreeNode(DataDictionary.Types.NameSpace item)
-            : base(item, "Functions", true)
+        public FunctionsTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Functions", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Functions.Function function in Item.Functions)
             {
-                Nodes.Add(new FunctionTreeNode(function));
+                Nodes.Add(new FunctionTreeNode(function, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -86,7 +90,7 @@ namespace GUI.DataDictionaryView
             }
 
             Item.appendFunctions(function);
-            FunctionTreeNode retVal = new FunctionTreeNode(function);
+            FunctionTreeNode retVal = new FunctionTreeNode(function, true);
             Nodes.Add(retVal);
             SortSubNodes();
 

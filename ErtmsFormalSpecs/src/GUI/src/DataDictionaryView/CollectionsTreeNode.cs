@@ -37,18 +37,22 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public CollectionsTreeNode(DataDictionary.Types.NameSpace item)
-            : base(item, "Collections", true)
+        public CollectionsTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Collections", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Types.Collection collection in Item.Collections)
             {
-                Nodes.Add(new CollectionTreeNode(collection));
+                Nodes.Add(new CollectionTreeNode(collection, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -80,7 +84,7 @@ namespace GUI.DataDictionaryView
         public void AddCollection(DataDictionary.Types.Collection collection)
         {
             Item.appendCollections(collection);
-            Nodes.Add(new CollectionTreeNode(collection));
+            Nodes.Add(new CollectionTreeNode(collection, true));
             SortSubNodes();
         }
 
