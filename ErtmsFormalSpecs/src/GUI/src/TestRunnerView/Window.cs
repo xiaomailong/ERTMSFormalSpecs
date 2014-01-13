@@ -116,7 +116,7 @@ namespace GUI.TestRunnerView
         void TextBox_TextChanged(object sender, EventArgs e)
         {
             IExpressionable expressionable = Selected as IExpressionable;
-            if (expressionable != null)
+            if (expressionable != null && expressionable == expressionEditorTextBox.Instance)
             {
                 expressionable.ExpressionText = expressionEditorTextBox.TextBox.Text;
             }
