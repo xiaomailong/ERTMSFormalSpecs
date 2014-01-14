@@ -36,23 +36,27 @@ namespace GUI.TranslationRules
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public FolderTreeNode(DataDictionary.Tests.Translations.Folder item)
-            : base(item, null, true)
+        public FolderTreeNode(DataDictionary.Tests.Translations.Folder item, bool buildSubNodes)
+            : base(item, buildSubNodes, null, true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Tests.Translations.Folder folder in Item.Folders)
             {
-                Nodes.Add(new FolderTreeNode(folder));
+                Nodes.Add(new FolderTreeNode(folder, buildSubNodes));
             }
 
             foreach (DataDictionary.Tests.Translations.Translation translation in Item.Translations)
             {
-                Nodes.Add(new TranslationTreeNode(translation));
+                Nodes.Add(new TranslationTreeNode(translation, buildSubNodes));
             }
         }
 
@@ -72,7 +76,7 @@ namespace GUI.TranslationRules
         /// <returns></returns>
         public FolderTreeNode createFolder(DataDictionary.Tests.Translations.Folder folder)
         {
-            FolderTreeNode retVal = new FolderTreeNode(folder);
+            FolderTreeNode retVal = new FolderTreeNode(folder, false);
 
             Item.appendFolders(folder);
             Nodes.Add(retVal);
@@ -112,7 +116,7 @@ namespace GUI.TranslationRules
             TranslationTreeNode retVal;
 
             Item.appendTranslations(translation);
-            retVal = new TranslationTreeNode(translation);
+            retVal = new TranslationTreeNode(translation, false);
             Nodes.Add(retVal);
             SortSubNodes();
 

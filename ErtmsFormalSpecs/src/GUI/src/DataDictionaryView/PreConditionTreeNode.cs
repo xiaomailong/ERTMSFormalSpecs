@@ -63,8 +63,8 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public PreConditionTreeNode(DataDictionary.Rules.PreCondition item)
-            : base(item, null)
+        public PreConditionTreeNode(DataDictionary.Rules.PreCondition item, bool buildSubNodes)
+            : base(item, buildSubNodes, null)
         {
         }
 

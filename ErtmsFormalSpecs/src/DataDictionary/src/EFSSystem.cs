@@ -1299,5 +1299,10 @@ namespace DataDictionary
                 dictionary.GetParagraphs(paragraphs);
             }
         }
+
+        /// <summary>
+        /// Indicates if the element holds messages, or is part of a path to a message 
+        /// </summary>
+        public Utils.MessagePathInfoEnum MessagePathInfo { get { return Utils.MessagePathInfoEnum.Nothing; } }
     }
 }

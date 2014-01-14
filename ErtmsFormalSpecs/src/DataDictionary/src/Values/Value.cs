@@ -211,6 +211,10 @@ namespace DataDictionary.Values
             return getExplain(0);
         }
 
+        /// <summary>
+        /// Indicates if the element holds messages, or is part of a path to a message 
+        /// </summary>
+        public MessagePathInfoEnum MessagePathInfo { get { return MessagePathInfoEnum.Nothing; } }
     }
 
     public abstract class BaseValue<CorrespondingType, StorageType> : Value

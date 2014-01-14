@@ -81,7 +81,10 @@ namespace GUI
             {
                 foreach (BaseTreeNode node in instance.Nodes)
                 {
-                    node.ComputeColor();
+                    if (node.Model is DataDictionary.ModelElement)
+                    {
+                        DataDictionary.Util.UpdateMessageInfo((DataDictionary.ModelElement)node.Model);
+                    }
                 }
 
                 instance.Invoke((MethodInvoker)delegate
@@ -314,16 +317,6 @@ namespace GUI
             foreach (BaseTreeNode node in Nodes)
             {
                 RefreshNode(node as BaseTreeNode);
-            }
-            RefreshNodeColors();
-        }
-
-        private void RefreshNodeColors()
-        {
-            foreach (BaseTreeNode node in Nodes)
-            {
-                node.ComputeColor();
-                node.UpdateColor();
             }
         }
 

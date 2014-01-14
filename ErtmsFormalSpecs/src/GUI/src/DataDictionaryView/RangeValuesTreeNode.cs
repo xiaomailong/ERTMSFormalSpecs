@@ -28,12 +28,20 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RangeValuesTreeNode(DataDictionary.Types.Range item)
-            : base(item, "Special values", true, false)
+        public RangeValuesTreeNode(DataDictionary.Types.Range item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Special values", true, false)
         {
-            foreach (DataDictionary.Constants.EnumValue value in item.SpecialValues)
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
+        {
+            foreach (DataDictionary.Constants.EnumValue value in Item.SpecialValues)
             {
-                Nodes.Add(new EnumerationValueTreeNode(value));
+                Nodes.Add(new EnumerationValueTreeNode(value, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -52,7 +60,7 @@ namespace GUI.DataDictionaryView
         public void AppendSpecialValue(DataDictionary.Constants.EnumValue value)
         {
             Item.appendSpecialValues(value);
-            Nodes.Add(new EnumerationValueTreeNode(value));
+            Nodes.Add(new EnumerationValueTreeNode(value, true));
             SortSubNodes();
         }
 

@@ -25,12 +25,20 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public EnumerationValuesTreeNode(DataDictionary.Types.Enum item)
-            : base(item, "Values", true, false)
+        public EnumerationValuesTreeNode(DataDictionary.Types.Enum item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Values", true, false)
         {
-            foreach (DataDictionary.Constants.EnumValue value in item.Values)
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
+        {
+            foreach (DataDictionary.Constants.EnumValue value in Item.Values)
             {
-                Nodes.Add(new EnumerationValueTreeNode(value));
+                Nodes.Add(new EnumerationValueTreeNode(value, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -46,7 +54,7 @@ namespace GUI.DataDictionaryView
             value.Name = "<EnumValue" + (GetNodeCount(false) + 1) + ">";
             value.setValue("");
             Item.appendValues(value);
-            Nodes.Add(new EnumerationValueTreeNode(value));
+            Nodes.Add(new EnumerationValueTreeNode(value, true));
             SortSubNodes();
         }
 

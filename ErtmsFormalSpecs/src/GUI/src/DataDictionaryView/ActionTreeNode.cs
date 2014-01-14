@@ -63,8 +63,8 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ActionTreeNode(DataDictionary.Rules.Action item)
-            : base(item)
+        public ActionTreeNode(DataDictionary.Rules.Action item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
         }
 
@@ -112,7 +112,7 @@ namespace GUI.DataDictionaryView
             retVal.AddRange(base.GetMenuItems());
             retVal.Insert(4, new MenuItem("-"));
             retVal.Insert(5, new MenuItem("Split", new EventHandler(SplitHandler)));
-            
+
             return retVal;
         }
 
@@ -135,7 +135,7 @@ namespace GUI.DataDictionaryView
                         DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
                         action.Expression = structExpression.Structure.ToString() + "." + value.Key + " <- " + value.Value.ToString();
                         string aString = value.Value.ToString();
-                        ActionTreeNode actionTreeNode = new ActionTreeNode(action);
+                        ActionTreeNode actionTreeNode = new ActionTreeNode(action, true);
 
                         BaseTreeNode parent = Parent as BaseTreeNode;
                         if ((parent != null) && (parent.Nodes != null))

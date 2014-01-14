@@ -41,8 +41,8 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RuleDisablingTreeNode(DataDictionary.Rules.RuleDisabling item)
-            : base(item, "Rule disabling", false)
+        public RuleDisablingTreeNode(DataDictionary.Rules.RuleDisabling item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Rule disabling", false)
         {
         }
 

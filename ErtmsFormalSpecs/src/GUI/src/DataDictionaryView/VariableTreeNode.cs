@@ -136,12 +136,12 @@ namespace GUI.DataDictionaryView
         /// <param name="item"></param>
         /// <param name="children"></param>
         /// <param name="encounteredTypes">the types that have already been encountered in the path to create this variable </param>
-        public VariableTreeNode(DataDictionary.Variables.Variable item, HashSet<DataDictionary.Types.Type> encounteredTypes, bool isASubVariable = false)
-            : base(item)
+        public VariableTreeNode(DataDictionary.Variables.Variable item, bool buildSubNodes, HashSet<DataDictionary.Types.Type> encounteredTypes, bool isASubVariable = false)
+            : base(item, buildSubNodes)
         {
             encounteredTypes.Add(item.Type);
             IsASubVariable = isASubVariable;
-            subVariables = new SubVariablesTreeNode(item, encounteredTypes);
+            subVariables = new SubVariablesTreeNode(item, buildSubNodes, encounteredTypes);
             Nodes.Add(subVariables);
             encounteredTypes.Remove(item.Type);
         }
@@ -152,12 +152,12 @@ namespace GUI.DataDictionaryView
         /// <param name="item"></param>
         /// <param name="children"></param>
         /// <param name="encounteredTypes">the types that have already been encountered in the path to create this variable </param>
-        public VariableTreeNode(DataDictionary.Variables.Variable item, string name, HashSet<DataDictionary.Types.Type> encounteredTypes, bool isASubVariable = false)
-            : base(item, name, false)
+        public VariableTreeNode(DataDictionary.Variables.Variable item, bool buildSubNodes, string name, HashSet<DataDictionary.Types.Type> encounteredTypes, bool isASubVariable = false)
+            : base(item, buildSubNodes, name, false)
         {
             encounteredTypes.Add(item.Type);
             IsASubVariable = isASubVariable;
-            subVariables = new SubVariablesTreeNode(item, encounteredTypes);
+            subVariables = new SubVariablesTreeNode(item, buildSubNodes, encounteredTypes);
             Nodes.Add(subVariables);
             encounteredTypes.Remove(item.Type);
         }
@@ -260,7 +260,7 @@ namespace GUI.DataDictionaryView
             if (Nodes != null && subVariables != null)
             {
                 Nodes.Remove(subVariables);
-                subVariables = new SubVariablesTreeNode(Item, new HashSet<DataDictionary.Types.Type>());
+                subVariables = new SubVariablesTreeNode(Item, true, new HashSet<DataDictionary.Types.Type>());
                 Nodes.Add(subVariables);
             }
             base.RefreshNode();

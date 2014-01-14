@@ -99,8 +99,8 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public CollectionTreeNode(DataDictionary.Types.Collection item)
-            : base(item)
+        public CollectionTreeNode(DataDictionary.Types.Collection item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
         }
 

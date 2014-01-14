@@ -109,8 +109,8 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public StructureElementTreeNode(DataDictionary.Types.StructureElement item)
-            : base(item, null, false)
+        public StructureElementTreeNode(DataDictionary.Types.StructureElement item, bool buildSubNodes)
+            : base(item, buildSubNodes, null, false)
         {
         }
 

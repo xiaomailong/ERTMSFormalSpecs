@@ -37,18 +37,22 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public RangesTreeNode(DataDictionary.Types.NameSpace item)
-            : base(item, "Ranges", true)
+        public RangesTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Ranges", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Types.Range range in Item.Ranges)
             {
-                Nodes.Add(new RangeTreeNode(range));
+                Nodes.Add(new RangeTreeNode(range, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -78,7 +82,7 @@ namespace GUI.DataDictionaryView
         public void AddRange(DataDictionary.Types.Range range)
         {
             Item.appendRanges(range);
-            Nodes.Add(new RangeTreeNode(range));
+            Nodes.Add(new RangeTreeNode(range, true));
             SortSubNodes();
         }
 

@@ -21,8 +21,8 @@ namespace GUI.DataDictionaryView
         protected override void BuildModel()
         {
             Nodes.Clear();
-            Nodes.Add(new RuleDisablingsTreeNode(Root));
-            Nodes.Add(new NameSpacesTreeNode(Root));
+            Nodes.Add(new RuleDisablingsTreeNode(Root, true));
+            Nodes.Add(new NameSpacesTreeNode(Root, true));
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace GUI.DataDictionaryView
                 if (variableTreeNode != null)
                 {
                     HashSet<DataDictionary.Types.Type> encounteredTypes = new HashSet<DataDictionary.Types.Type>();
-                    SubVariablesTreeNode tmp = new SubVariablesTreeNode(variableTreeNode.Item, encounteredTypes);
+                    SubVariablesTreeNode tmp = new SubVariablesTreeNode(variableTreeNode.Item, true, encounteredTypes);
                     variableTreeNode.subVariables.Nodes.Clear();
                     foreach (BaseTreeNode tt in tmp.Nodes)
                     {

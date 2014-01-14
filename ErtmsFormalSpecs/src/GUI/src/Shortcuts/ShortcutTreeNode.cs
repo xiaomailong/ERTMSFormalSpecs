@@ -36,8 +36,8 @@ namespace GUI.Shortcuts
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ShortcutTreeNode(DataDictionary.Shortcuts.Shortcut item)
-            : base(item)
+        public ShortcutTreeNode(DataDictionary.Shortcuts.Shortcut item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
         }
 

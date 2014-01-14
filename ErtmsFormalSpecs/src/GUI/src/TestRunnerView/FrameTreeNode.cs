@@ -51,18 +51,22 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public FrameTreeNode(DataDictionary.Tests.Frame item)
-            : base(item, null, true)
+        public FrameTreeNode(DataDictionary.Tests.Frame item, bool buildSubNodes)
+            : base(item, buildSubNodes, null, true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        protected override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Tests.SubSequence subSequence in Item.SubSequences)
             {
-                Nodes.Add(new SubSequenceTreeNode(subSequence));
+                Nodes.Add(new SubSequenceTreeNode(subSequence, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -88,7 +92,7 @@ namespace GUI.TestRunnerView
             subSequence.Enclosing = Item;
             Item.appendSubSequences(subSequence);
 
-            retVal = new SubSequenceTreeNode(subSequence);
+            retVal = new SubSequenceTreeNode(subSequence, true);
             Nodes.Add(retVal);
             SortSubNodes();
 
