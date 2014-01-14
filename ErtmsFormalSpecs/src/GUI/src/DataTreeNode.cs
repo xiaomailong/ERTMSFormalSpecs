@@ -949,13 +949,16 @@ namespace GUI
             }
         }
 
+        private bool ExpandedOnce = false;
+
         /// <summary>
         /// Lazy create the subnodes when it is expanded
         /// </summary>
         public override void HandleExpand()
         {
-            if (!SubNodesBuilt)
+            if (!ExpandedOnce)
             {
+                ExpandedOnce = true;
                 Nodes.Clear();
                 BuildSubNodes(true);
                 RefreshNode();
