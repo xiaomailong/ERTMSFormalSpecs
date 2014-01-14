@@ -50,7 +50,7 @@ namespace GUI.DataDictionaryView
         /// Provides the editor for rule disablings
         /// </summary>
         /// <returns></returns>
-        protected override DataTreeNode<DataDictionary.Rules.RuleDisabling>.Editor createEditor()
+        protected override ModelElementTreeNode<DataDictionary.Rules.RuleDisabling>.Editor createEditor()
         {
             return new ItemEditor();
         }
@@ -62,9 +62,10 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
 
             return retVal;
         }

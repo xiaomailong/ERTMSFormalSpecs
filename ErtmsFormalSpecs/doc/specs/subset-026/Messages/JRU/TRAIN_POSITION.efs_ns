@@ -1,5 +1,6 @@
 <NameSpace
  Name="TRAIN_POSITION"
+ Guid="acd78145-7213-4513-93f4-8f4918177841"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,95 +9,111 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="71a37e43-2ad0-4069-88c9-88bb03bb145c"
 >
 <ReqRef
  Id="4a22fd87-da9f-42a3-b0a8-859408806178"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c365fc43-8bf8-4ed3-90d6-35ef48552a2d"
 >
 </ReqRef><Comment>This field contains the position of the train when the event recorded has occured.  This position is calculated with the distance to the last LRBG (Identity of Last Relevant Balise Group).</Comment>
 <StructureElement
  TypeName="Q_SCALE"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_SCALE"
+ Guid="be83620f-c3df-4802-b68b-c544c8de25cf"
 >
 <ReqRef
  Id="2a62a9cd-6e7b-4a40-b527-182fafda63b4"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="912d7f3b-437b-4584-b1fd-b4aeb7b97d86"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_LRBG"
+ Guid="4570f4e4-9b5f-40ea-a1e4-8d8f59b17b85"
 >
 <ReqRef
  Id="7e9288d3-9c65-4f84-9d67-7dfd155350aa"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9c6adb41-1478-4627-a2d4-2395bb2546a7"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_LRBG"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_LRBG"
+ Guid="f5b26e99-2897-45d3-987c-f1161a64f6a3"
 >
 <ReqRef
  Id="ea8128a8-7e46-455f-8339-ecff77dec87b"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="efb28d18-1042-4cd7-8e31-689f3f53ee3f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIRLRBG"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_DIRLRBG"
+ Guid="d726c6c6-6d01-44f1-aa46-c759c984295d"
 >
 <ReqRef
  Id="82fe98f5-1bb9-4b41-8fb5-faa0e4045200"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d658dcf3-3cbe-4513-b497-f71cb67f9043"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DLRBG"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_DLRBG"
+ Guid="888e3737-6e27-4f5c-a89b-84fb4aa7375e"
 >
 <ReqRef
  Id="7248c9fd-02cc-47d7-8a7c-fba6f5dac6b2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b9489e1e-b31d-4b92-9e88-adabee04ef18"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_DOUBTOVER"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_DOUBTOVER"
+ Guid="71ad8b9e-4c81-49fe-ba82-a31e809f1515"
 >
 <ReqRef
  Id="60d8bcde-b154-4df4-96f6-92aa9a207ef8"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="12eb630a-205e-4f11-ad49-81c2519d2442"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_DOUBTUNDER"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_DOUBTUNDER"
+ Guid="74a53f29-7fe4-4e81-8db7-343d20eb7cf6"
 >
 <ReqRef
  Id="c8af4db0-327b-4bb4-baa3-fbf2c80f3dd5"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="34299f50-6ebf-45c3-8a43-9b16e5b29638"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

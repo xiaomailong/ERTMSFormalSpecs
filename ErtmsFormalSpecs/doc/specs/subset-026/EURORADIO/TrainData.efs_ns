@@ -3,6 +3,7 @@
  Width="100"
  Height="50"
  Name="TrainData"
+ Guid="1f612fda-e3ec-42cc-b9ac-1d15c648bde0"
 >
 <NameSpaces>
 </NameSpaces>
@@ -11,14 +12,17 @@
  Type="Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message"
  Implemented="TRUE"
  Name="CreateTrainData"
+ Guid="948446f4-d228-4931-983c-325e7d1bf913"
 >
 <ReqRef
  Id="0aa692d6-e57e-48a1-929d-b3f3a51951bf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="936ffb90-c1ad-4973-9594-9acbefa002bb"
 >
 </ReqRef><Cases>
 <Case
  Name="Value"
+ Guid="482bd376-472b-4618-8b45-bbab3b9de39d"
 >
 <Expression>Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message
 {
@@ -43,16 +47,21 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="FillAirtightSystem"
+ Guid="2161c7a0-aaca-45bd-a02b-67f3b829d0c7"
 >
 <Cases>
 <Case
  Name="Train is fitted with an airtight system"
+ Guid="7852dc2d-9383-4c58-8a33-b4483b8e9c71"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.Value.TrainFittedWithAirtightSystem</PreCondition></PreConditions>
+<PreCondition
+ Guid="29317c91-e4c8-4ec7-ad9c-d8ac7e2dc7b9"
+>Kernel.TrainData.TrainData.Value.TrainFittedWithAirtightSystem</PreCondition></PreConditions>
 <Expression>Messages.M_AIRTIGHT.Fitted</Expression>
 </Case><Case
  Name="Train is not fitted with an airtight system"
+ Guid="0d31d8d3-cbb1-4e6d-b5aa-6a5aa679d3e7"
 >
 <Expression>Messages.M_AIRTIGHT.Not_fitted</Expression>
 </Case></Cases>
@@ -61,6 +70,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="FillLaudingGauge"
+ Guid="2d650e8d-cf30-4061-bcbe-3973f6ccabe3"
 >
 <Cases>
 </Cases>
@@ -69,16 +79,19 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateTractionSystem"
+ Guid="540e4d1a-f5ac-4990-9775-d2dfa8c83f4c"
 >
 <Parameters>
 <Parameter
  Type="Kernel.TrainData.TractionSystem"
  Name="aTractionSystem"
+ Guid="7af62b41-ae83-4d13-9fad-2bbc70005fb2"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="141eeae2-6347-42d6-933e-251badf700dd"
 >
 <Expression>Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.SubStructure1
 {
@@ -91,92 +104,126 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="FillOtherInternationalTrainCategories"
+ Guid="c1d3528b-5f7a-4246-8274-92444f0e615a"
 >
 <ReqRef
  Id="d1064b23-7377-4cb2-b7ca-5cec6c1f6c69"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="075733f9-43cd-4d7c-b13c-0f3e918ecc59"
 >
 </ReqRef><Cases>
 <Case
  Name="Freight in P, freight in G, passanger"
+ Guid="7541b57c-4ec7-4c23-b4cd-581853a4c25d"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN
+<PreCondition
+ Guid="afcd3e27-5585-42ea-83a3-8241f2579ad9"
+>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition><PreCondition>THERE_IS_IN
+  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition><PreCondition
+ Guid="cc8204b3-1c2b-44d6-abe7-0f212c5660e5"
+>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition><PreCondition>THERE_IS_IN
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition><PreCondition
+ Guid="6089474c-4595-4dff-a38b-0d12cf3e3e51"
+>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
   X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition></PreConditions>
 <Expression>7</Expression>
 </Case><Case
  Name="Freight in P, freight in G"
+ Guid="343f4b54-4c91-459c-bec8-7909414385dc"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN
+<PreCondition
+ Guid="2b1339ca-e393-4f52-bd77-d3c16ef5d167"
+>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition><PreCondition>THERE_IS_IN
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition><PreCondition
+ Guid="b200bee5-5186-4e5c-b14b-4346f6db8091"
+>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
   X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition></PreConditions>
 <Expression>3</Expression>
 </Case><Case
  Name="Freight in P, passenger"
+ Guid="665584e3-814c-4da0-b87f-517c9df0a4be"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN
+<PreCondition
+ Guid="30459bd9-3801-464e-8d4e-26fcab329e75"
+>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition><PreCondition>THERE_IS_IN
+  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition><PreCondition
+ Guid="13ed1d90-650a-4749-972e-3132bb5e709c"
+>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
   X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition></PreConditions>
 <Expression>5</Expression>
 </Case><Case
  Name="Freight in G, passenger"
+ Guid="73254acd-86de-4525-b1e6-dd26bfc636b2"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN
+<PreCondition
+ Guid="27d97e11-8f88-414a-94b6-9369e261f35f"
+>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition><PreCondition>THERE_IS_IN
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition><PreCondition
+ Guid="f5d25510-c8af-4a36-a2ab-f533e210375c"
+>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
   X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition></PreConditions>
 <Expression>6</Expression>
 </Case><Case
  Name="Freight in P"
+ Guid="1bdf51ec-0cff-4f29-8359-2fa730a3eb38"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN
+<PreCondition
+ Guid="b08f6a49-acb6-4bf6-a717-3fb887d382c5"
+>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
   X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition></PreConditions>
 <Expression>1</Expression>
 </Case><Case
  Name="Freight in G"
+ Guid="c1b70baa-fc04-46e3-92b4-c243ae9cb7d4"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN
+<PreCondition
+ Guid="40c5d1b8-459d-4c0e-96d1-4d9ab316fe63"
+>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
   X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition></PreConditions>
 <Expression>2</Expression>
 </Case><Case
  Name="Passenger"
+ Guid="f75af032-a59b-40fa-a330-ebb0a0ff610f"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN
+<PreCondition
+ Guid="7d6f63a4-b15a-469d-a0b2-a69ad48f3fc3"
+>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
   X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition></PreConditions>
 <Expression>4</Expression>
 </Case><Case
  Name="No category"
+ Guid="ae1eaab3-bdbf-49b9-8a26-0ec23d39764c"
 >
 <Expression>0</Expression>
 </Case></Cases>
@@ -185,20 +232,25 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateNationalSystem"
+ Guid="5448b8e5-f668-4ec7-be85-0e7eb540167f"
 >
 <Comment>we have to explicitly cast back to the &quot;base range&quot; of Default.NID_NTC (Messges.NID_NTC without the special value) so the data can be sent out again properly. #morido, 13/10/17</Comment>
 <Parameters>
 <Parameter
  Type="Default.NID_NTC"
  Name="aNationalSystem"
+ Guid="585b1a18-116d-4441-80f0-457589eaaf6e"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="67d68b55-1c66-4155-81cf-74f6f2dd8cd9"
 >
 <PreConditions>
-<PreCondition>aNationalSystem != Default.NID_NTC.NOT_APPLICABLE</PreCondition></PreConditions>
+<PreCondition
+ Guid="faf4a8ca-4b53-40c9-ab8a-639fa5db2256"
+>aNationalSystem != Default.NID_NTC.NOT_APPLICABLE</PreCondition></PreConditions>
 <Expression>Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.SubStructure2
 {
     NID_NTC =&gt; Messages.NID_NTC(aNationalSystem)
@@ -209,30 +261,37 @@
 <Procedure
  Implemented="TRUE"
  Name="SendTrainData"
+ Guid="5e8585ff-5096-4df7-a74d-9272db3f84cf"
 >
 <ReqRef
  Id="8b735562-2ede-429c-940c-7f53b0f6f675"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c76f8877-efbd-4800-b4d0-0be9f93c28fd"
 >
 </ReqRef><ReqRef
  Id="0aa692d6-e57e-48a1-929d-b3f3a51951bf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d24f2133-00f7-4fd4-9180-c9bafc9b71cf"
 >
 </ReqRef><Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Name="Send train data"
+ Guid="872d1f42-9012-45ab-851c-1d031e37d13a"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Send train data"
+ Guid="02987fbb-6adb-49ac-926b-9a702a9f3ceb"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EURORADIO.EuroradioMessageOut.VALIDATED_TRAIN_DATA &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message
+<Action
+ Guid="f26165a7-1b31-4afe-b6c9-ea1f49fa06de"
+>EURORADIO.EuroradioMessageOut.VALIDATED_TRAIN_DATA &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message
 {
     L_MESSAGE =&gt; 0,
     NID_ENGINE =&gt; 0,

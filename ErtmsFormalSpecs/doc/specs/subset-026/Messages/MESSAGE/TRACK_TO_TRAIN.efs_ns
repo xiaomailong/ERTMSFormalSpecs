@@ -1,75 +1,98 @@
 <NameSpace
  Name="TRACK_TO_TRAIN"
+ Guid="ce480279-0c1b-4713-8858-ff9edd3848ad"
 >
 <NameSpaces>
 <NameSpaceRef
  Name="SR_AUTHORISATION"
+ Guid="b9280405-a61a-4803-9376-7cfc85a38ed9"
 >
 </NameSpaceRef><NameSpaceRef
  Name="MOVEMENT_AUTHORITY"
+ Guid="657e6d09-37b8-4983-8581-36f7275635f1"
 >
 </NameSpaceRef><NameSpaceRef
  Name="RECOGNITION_OF_EXIT_FROM_TRIP_MODE"
+ Guid="1cb8a281-690c-4889-9ed5-49c87f500189"
 >
 </NameSpaceRef><NameSpaceRef
  Name="ACKNOWLEDGEMENT_OF_TRAIN_DATA"
+ Guid="42606a6a-eb60-4cfa-9843-92220aab8831"
 >
 </NameSpaceRef><NameSpaceRef
  Name="REQUEST_TO_SHORTEN_MA"
+ Guid="ca6bbe13-7809-4a99-b8ea-9627aeb2b04c"
 >
 </NameSpaceRef><NameSpaceRef
  Name="CONDITIONAL_EMERGENCY_STOP"
+ Guid="f32c821b-5657-479a-b47a-230595f17b62"
 >
 </NameSpaceRef><NameSpaceRef
  Name="UNCONDITIONAL_EMERGENCY_STOP"
+ Guid="2e447a11-4388-4c3a-9836-e8eb49a97f7e"
 >
 </NameSpaceRef><NameSpaceRef
  Name="REVOCATION_OF_EMERGENCY_STOP"
+ Guid="dec2565e-68b1-40ee-9d13-7f6743d11e76"
 >
 </NameSpaceRef><NameSpaceRef
  Name="GENERAL_MESSAGE"
+ Guid="1dd017de-323f-4b7c-879d-528341b58549"
 >
 </NameSpaceRef><NameSpaceRef
  Name="SH_REFUSED"
+ Guid="cc638752-5e7e-443d-afe2-6aa17ea2c3da"
 >
 </NameSpaceRef><NameSpaceRef
  Name="SH_AUTHORISED"
+ Guid="833af335-ce0b-4f8d-ab65-dac6825704e9"
 >
 </NameSpaceRef><NameSpaceRef
  Name="MA_WITH_SHIFTED_LOCATION_REFERENCE"
+ Guid="eaeeff12-07c5-433d-9acd-2e16d70662a6"
 >
 </NameSpaceRef><NameSpaceRef
  Name="TRACK_AHEAD_FREE_REQUEST"
+ Guid="287896e1-c498-450a-b04a-e43313f475f4"
 >
 </NameSpaceRef><NameSpaceRef
  Name="INFILL_MA"
+ Guid="c9f6f592-ba2d-4667-9f5c-92c6d358f083"
 >
 </NameSpaceRef><NameSpaceRef
  Name="TRAIN_REJECTED"
+ Guid="01796412-6864-4218-aceb-6dad4b2cf7ae"
 >
 </NameSpaceRef><NameSpaceRef
  Name="RBC"
+ Guid="0c60e1a2-c86a-4cf1-92b8-3029a314bea1"
 >
 </NameSpaceRef><NameSpaceRef
  Name="INITIATION_OF_A_COMMUNICATION_SESSION"
+ Guid="94a0d74a-8c60-4a7f-894d-2b67903f6ff8"
 >
 </NameSpaceRef><NameSpaceRef
  Name="ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION"
+ Guid="8e8e60f1-027f-4fa6-a1ad-14ee1ed688c7"
 >
 </NameSpaceRef><NameSpaceRef
  Name="TRAIN_ACCEPTED"
+ Guid="32d4a9a5-4be1-494f-9c3f-f5ec8289b38b"
 >
 </NameSpaceRef><NameSpaceRef
  Name="SOM_POSITION_REPORT_CONFIRMED_BY_RBC"
+ Guid="ea2cbbbf-6ad8-4d38-b2e6-ae2571d3ee73"
 >
 </NameSpaceRef><NameSpaceRef
  Name="ASSIGNMENT_OF_COORDINATE_SYSTEM"
+ Guid="15d76969-d225-4435-9ab4-c9ace6ef3d3d"
 >
 </NameSpaceRef></NameSpaces>
 <Structures>
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="4509d2e2-b849-44ad-8a6b-e3c065dc8be4"
 >
 <StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.SR_AUTHORISATION.Message"
@@ -77,10 +100,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="SR_AUTHORISATION"
+ Guid="5d3d61f1-2868-47e1-bbe8-f4c8587d5ad1"
 >
 <ReqRef
  Id="d97a231f-6ef1-4300-9bd9-d3dba7d434bd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="076f4667-21aa-47b0-bb7a-7f2fd2f49015"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message"
@@ -88,10 +113,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="MOVEMENT_AUTHORITY"
+ Guid="7c4cfb2c-2abf-440c-ab7f-f6fbb5398c39"
 >
 <ReqRef
  Id="c04116c0-24b6-4d81-ae02-cff4fa993bef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f4e0bb8d-2879-4384-ab66-e380abf361e8"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.RECOGNITION_OF_EXIT_FROM_TRIP_MODE.Message"
@@ -99,10 +126,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="RECOGNITION_OF_EXIT_FROM_TRIP_MODE"
+ Guid="6f618843-7aea-407c-8357-787987b27fa2"
 >
 <ReqRef
  Id="21c031bd-8f98-4fee-9fc5-f8c7a8b94fc3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cecdf315-b37f-43f5-8d17-533d1a978d4a"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TRAIN_DATA.Message"
@@ -110,10 +139,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="ACKNOWLEDGEMENT_OF_TRAIN_DATA"
+ Guid="a4d00d8e-6f1e-457a-bc81-45e801acd119"
 >
 <ReqRef
  Id="64dae4f0-7a7b-4908-8fa8-6f082446f198"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48d85864-51c4-44b7-9f70-58c7de2ddf5a"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.REQUEST_TO_SHORTEN_MA.Message"
@@ -121,10 +152,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="REQUEST_TO_SHORTEN_MA"
+ Guid="097459af-1bc2-4e54-9185-3dc86737ae46"
 >
 <ReqRef
  Id="20a7a00d-396e-453b-8cd0-0a2ec8f83340"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="de774922-7d25-4adf-84e7-99a7c0abf86d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.CONDITIONAL_EMERGENCY_STOP.Message"
@@ -132,10 +165,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="CONDITIONAL_EMERGENCY_STOP"
+ Guid="90da2bff-4edb-4e24-b797-411644e3c917"
 >
 <ReqRef
  Id="f6e5eaf6-2bea-486e-b3f7-3e854c745b5d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d5eff187-ab65-451d-8916-e42ccb25f256"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.UNCONDITIONAL_EMERGENCY_STOP.Message"
@@ -143,10 +178,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="UNCONDITIONAL_EMERGENCY_STOP"
+ Guid="ed389556-db6f-4364-a76b-61456708e8f7"
 >
 <ReqRef
  Id="0043347f-c382-4046-b7ae-6c3e73575ec6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="db554e60-2274-493d-8ee4-2e102e295e7c"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.REVOCATION_OF_EMERGENCY_STOP.Message"
@@ -154,10 +191,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="REVOCATION_OF_EMERGENCY_STOP"
+ Guid="1c39b4c2-6b9b-4490-8af3-e3212b157397"
 >
 <ReqRef
  Id="a911a02d-c12c-41f6-9111-27edfeceb382"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d3b38b69-755a-4005-ad18-294d74539996"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.GENERAL_MESSAGE.Message"
@@ -165,10 +204,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="GENERAL_MESSAGE"
+ Guid="14f91853-9b6b-4732-b7e8-7615d7f904f8"
 >
 <ReqRef
  Id="7791130c-94a3-4a45-9437-4a4835707e9a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="953092d1-ae06-4031-aecf-f640b0529140"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.SH_REFUSED.Message"
@@ -176,10 +217,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="SH_REFUSED"
+ Guid="a1ef8847-3dc4-4f77-99a2-21eacdc8fa17"
 >
 <ReqRef
  Id="a2ff07ed-af73-4d18-8233-2001d2d071a4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c359594-29d2-4574-9c09-b9faa05a7e3f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.SH_AUTHORISED.Message"
@@ -187,10 +230,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="SH_AUTHORISED"
+ Guid="03b2c97c-c890-4a92-98ca-7ff3add8b290"
 >
 <ReqRef
  Id="38d45e49-f55c-4765-9dfc-1faf09f9a446"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eb081a08-4df4-49e7-82b0-6a9a64a8814d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.MA_WITH_SHIFTED_LOCATION_REFERENCE.Message"
@@ -198,10 +243,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="MA_WITH_SHIFTED_LOCATION_REFERENCE"
+ Guid="b6af3980-58f0-429a-a35f-48b146fd0615"
 >
 <ReqRef
  Id="97eca6f5-ba51-4c2e-a71f-3e5752290f21"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6c40afed-5a62-4dc9-a161-ef516f876496"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.TRACK_AHEAD_FREE_REQUEST.Message"
@@ -209,10 +256,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="TRACK_AHEAD_FREE_REQUEST"
+ Guid="4f4724ac-66ab-4553-a768-bdcf7b1005fa"
 >
 <ReqRef
  Id="2c9bebd4-e758-4982-ae9b-92e657bfcba2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dea4c3d1-d0f8-4c27-b9bd-c46d0f7f215d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.INFILL_MA.Message"
@@ -220,10 +269,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="INFILL_MA"
+ Guid="382a9914-9b19-4bb7-b908-5dc3897c3df5"
 >
 <ReqRef
  Id="6e740969-1d8d-40d5-bcaf-7bf18e08aa4b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3aad3648-49a3-4903-b870-e578e02a6dc2"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.TRAIN_REJECTED.Message"
@@ -231,10 +282,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="TRAIN_REJECTED"
+ Guid="b45f4b73-b903-4413-a1d9-464e78d59336"
 >
 <ReqRef
  Id="bc294642-8437-469e-8c66-7be2171440c5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="98aedbae-3d53-4c77-8e7c-5804de6ad11f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.RBC.RIU_SYSTEM_VERSION.Message"
@@ -242,10 +295,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="RIU_SYSTEM_VERSION"
+ Guid="17ffccb6-c07a-44eb-8ef6-1399396bfeee"
 >
 <ReqRef
  Id="71740f57-d219-41b2-93f8-319c302b1afa"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae441191-050a-49d5-b783-c0eb85f19708"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.INITIATION_OF_A_COMMUNICATION_SESSION.Message"
@@ -253,10 +308,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="INITIATION_OF_A_COMMUNICATION_SESSION"
+ Guid="108bcd44-0483-4af4-825e-008f281db4ca"
 >
 <ReqRef
  Id="5c22942d-5616-44c5-8707-c8edf2889ba9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4093db19-12ff-4041-8580-777f21a901d8"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION.Message"
@@ -264,10 +321,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION"
+ Guid="40249687-8265-41fb-85cc-91c672e41b0c"
 >
 <ReqRef
  Id="6091731d-92bd-4133-aff2-790f6f482dbf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="70621e49-8a0c-40bb-8926-09e6eba61b44"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.TRAIN_ACCEPTED.Message"
@@ -275,10 +334,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="TRAIN_ACCEPTED"
+ Guid="b4c80c2f-5512-48c3-8598-d3d7230047dc"
 >
 <ReqRef
  Id="ea01ea66-b8e6-438d-93a4-4207dbd3797f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="959b969b-1159-437f-9d27-bc5f4359a539"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.SOM_POSITION_REPORT_CONFIRMED_BY_RBC.Message"
@@ -286,10 +347,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="SOM_POSITION_REPORT_CONFIRMED_BY_RBC"
+ Guid="d762a336-0161-4926-a07e-ab15cbd6e888"
 >
 <ReqRef
  Id="54a97260-e9dd-4150-8cba-095ed5a8f0d6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="672c05aa-0f7e-4635-96a5-46aafacfa5fb"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRACK_TO_TRAIN.ASSIGNMENT_OF_COORDINATE_SYSTEM.Message"
@@ -297,10 +360,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="ASSIGNMENT_OF_COORDINATE_SYSTEM"
+ Guid="204ccaec-955b-45c6-9ec7-892adf4a1531"
 >
 <ReqRef
  Id="8de65de0-6db2-4a35-9c6c-94bdb2aa4cc5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8d11824-b8f2-408f-999d-8fc89692d9d0"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

@@ -93,7 +93,7 @@ namespace GUI.Converters
                     EditorForm form = new EditorForm();
                     TextChangeHandler handler = new TextChangeHandler(expressionable as ModelElement);
                     form.setChangeHandler(handler);
-                    GUIUtils.MDIWindow.AddChildWindow(form);
+                    GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
                 }
             }
 

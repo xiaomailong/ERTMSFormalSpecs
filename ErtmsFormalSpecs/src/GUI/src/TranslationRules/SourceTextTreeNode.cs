@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace GUI.TranslationRules
 {
-    public class SourceTextTreeNode : DataTreeNode<DataDictionary.Tests.Translations.SourceText>
+    public class SourceTextTreeNode : ModelElementTreeNode<DataDictionary.Tests.Translations.SourceText>
     {
         private class ItemEditor : NamedEditor
         {
@@ -39,6 +39,29 @@ namespace GUI.TranslationRules
         public SourceTextTreeNode(DataDictionary.Tests.Translations.SourceText item)
             : base(item)
         {
+        }
+
+        /// <summary>
+        /// Handles a selection change event
+        /// </summary>
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
+        {
+            base.SelectionChanged(displayStatistics);
+            if (Item.Translation != null)
+            {
+                if (BaseTreeView != null && BaseTreeView.RefreshNodeContent)
+                {
+                    IBaseForm baseForm = BaseForm;
+                    if (baseForm != null)
+                    {
+                        if (baseForm.RequirementsTextBox != null)
+                        {
+                            baseForm.RequirementsTextBox.Text = Item.Translation.getSourceTextExplain();
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 <NameSpace
  Name="ADDITIONAL_BRAKE_STATUS"
+ Guid="cc6a2439-ae08-4878-a570-631492f3299c"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,35 +9,41 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="d2326aa8-8ca2-4e4c-a209-3749e1ac615f"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="4fb474ba-93c2-4298-a28c-87db70a3e2bf"
 >
 </ReqRef><ReqRef
  Id="1376ba80-d0c0-4a52-9124-6468c01c9932"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a0e59ea9-6a8e-4a8d-83cd-9c560b95cec8"
 >
 </ReqRef><Comment>This message allows to transmit the aditional brake status</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="8f7c8f8f-ea92-451c-87f0-9664e23cef0b"
 >
 </StructureElement><StructureElement
  TypeName="M_AB_STATUS"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_AB_STATUS"
+ Guid="a4467793-89ac-4d4e-84cd-054b242b4456"
 >
 <ReqRef
  Id="b1979da8-e9d7-4c61-b931-3934d0c7dd45"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a30f1082-262a-4a04-97b5-6d3a18433397"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

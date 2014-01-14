@@ -24,7 +24,7 @@ using System.Drawing.Design;
 
 namespace GUI.TranslationRules
 {
-    public class TranslationTreeNode : DataTreeNode<DataDictionary.Tests.Translations.Translation>
+    public class TranslationTreeNode : ModelElementTreeNode<DataDictionary.Tests.Translations.Translation>
     {
         private class ItemEditor : NamedEditor
         {
@@ -177,6 +177,26 @@ namespace GUI.TranslationRules
                 sourceText.Name = step.Item.getDescription();
                 Item.appendSourceTexts(sourceText);
                 createSourceText(sourceText);
+            }
+        }
+
+        /// <summary>
+        /// Handles a selection change event
+        /// </summary>
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
+        {
+            base.SelectionChanged(displayStatistics);
+            if (BaseTreeView != null && BaseTreeView.RefreshNodeContent)
+            {
+                IBaseForm baseForm = BaseForm;
+                if (baseForm != null)
+                {
+                    if (baseForm.RequirementsTextBox != null)
+                    {
+                        baseForm.RequirementsTextBox.Text = Item.getSourceTextExplain();
+                    }
+                }
             }
         }
     }

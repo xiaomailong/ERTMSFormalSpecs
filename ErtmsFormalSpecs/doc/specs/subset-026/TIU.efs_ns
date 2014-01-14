@@ -4,7 +4,544 @@
  Width="100"
  Height="50"
  Name="TIU"
+ Guid="ebde6713-ca52-4c13-949d-6735073795ef"
 >
 <NameSpaces>
-</NameSpaces>
+<NameSpaceRef
+ Name="STMOrders"
+ Guid="64f649eb-ebfd-419d-a241-306f1d4e39fe"
+>
+</NameSpaceRef></NameSpaces>
+<Ranges>
+<Range
+ MinValue="0"
+ MaxValue="6"
+ Precision="DoublePrecision"
+ Default="0.0"
+ Implemented="TRUE"
+ Name="Pressure"
+ Guid="5187a482-b9a4-4628-81a0-67f0e9a4fd21"
+>
+<ReqRef
+ Id="f549b249-bf4b-4d17-a7cb-df8b47ffd37a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="84495ea3-0949-4acb-82f2-e88a458d446a"
+>
+</ReqRef></Range></Ranges>
+<Enumerations>
+<Enum
+ Default="Fixed"
+ Implemented="TRUE"
+ Name="TrainDataEntryEnum"
+ Guid="78939d66-d326-40db-a435-7cb223cacade"
+>
+<ReqRef
+ Id="6d212610-a9ec-4b0e-9502-48730fbbbd5a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="346c5101-aa14-4e5c-87ef-603d64e2d443"
+>
+</ReqRef><Comment>Indicates the type of train data entry information.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Fixed"
+ Guid="937db9c0-00ff-4a81-aeee-fec5a801a50c"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Flexible"
+ Guid="fe57b3cc-0d7d-4a3c-bcda-fd89179df224"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Switchable"
+ Guid="1364fe5e-a1df-4443-8a2e-3f8991e2204f"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Neutral"
+ Implemented="TRUE"
+ Name="DirectionControllerEnum"
+ Guid="6433d9c7-0385-4f12-9159-cc0f3564dba7"
+>
+<ReqRef
+ Id="4a159c89-1c48-4991-b068-8e3a93337280"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="3885e76b-9d90-4deb-8e1e-afdf70b1ae46"
+>
+</ReqRef><Comment>Gives the possible values for the direction controller.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Forward"
+ Guid="270a2daa-ab74-4eba-9db0-c59dc2b3dab9"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Neutral"
+ Guid="c68f93c4-033a-4f09-bf22-9f4412121b60"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Backward"
+ Guid="bccd346a-0918-4d41-bfa3-9984f89c643e"
+>
+</EnumValue></Values>
+</Enum></Enumerations>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ Name="BrakeStatusStruct"
+ Guid="f05f9d2e-d556-402f-a0c7-7535c7472d91"
+>
+<ReqRef
+ Id="40825e98-f126-45fb-aa32-7514e64332b6"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="68258941-9ea9-44f1-9ad3-8f033f1030be"
+>
+</ReqRef><ReqRef
+ Id="dc456af4-f303-4870-a171-ef1d7085b9c0"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="70ca8b06-7d3b-409a-9af3-ff5bcdecc62d"
+>
+</ReqRef><ReqRef
+ Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ac32093-30da-474c-9c32-225f20ea087c"
+>
+</ReqRef><Comment>Indicates the status of special brakes.</Comment>
+<StructureElement
+ TypeName="Boolean"
+ Default="True"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="RegenerativeBrakeIsActive"
+ Guid="67a9a2d5-88de-4356-83e3-f25826afded5"
+>
+<Comment>Indicates if the status of regenerative brake is active.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="True"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="MagneticShoeBrakeIsActive"
+ Guid="79018c2f-2c1c-409f-ac31-429789bbbe2d"
+>
+<Comment>Indicates if the status of magnetic brake is active.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="True"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="EddyCurrentBrakeIsActive"
+ Guid="fca8c803-dffe-4684-a073-58cc5c686089"
+>
+<Comment>Indicates if the status of eddy current brake is active.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="True"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="EPBrakeIsActive"
+ Guid="2de336fc-bfd9-4d1e-8222-d23de3db78a4"
+>
+<Comment>Indicates if the status of electro pneumatic brake is active.</Comment>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="CabStruct"
+ Guid="0805e9a4-1a0e-4cb6-9640-6560cdcb831e"
+>
+<ReqRef
+ Id="deed4628-97e4-4181-8665-7509256de3fa"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="34901950-772a-43b8-bd84-cb903053dbb3"
+>
+</ReqRef><StructureElement
+ TypeName="Integer"
+ Default="0"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Id"
+ Guid="b39a2e42-59ef-498e-83fc-cdee0be7f9e3"
+>
+<Comment>Cab&apos;s identifier.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="IsActive"
+ Guid="b74e499a-7ab7-4841-bf2d-f6958a8724ff"
+>
+<ReqRef
+ Id="deed4628-97e4-4181-8665-7509256de3fa"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="bef6fb31-5263-4ec1-ae6c-a9a8f2a08c47"
+>
+</ReqRef><Comment>Indicates if the current cab is active.</Comment>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="TrainIntegrityStruct"
+ Guid="2c7a8cb2-30a0-4c5a-8b3d-a28cffb11256"
+>
+<ReqRef
+ Id="2b2ed08d-1183-4018-b0cc-3b454b2f8c4d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="993d3271-b76c-4be6-b225-f4032bec7c06"
+>
+</ReqRef><Comment>Train integrity information.</Comment>
+<StructureElement
+ TypeName="Messages.Q_LENGTH"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Status"
+ Guid="35465ef2-aec0-42a1-9c6b-88d5ba56c3cd"
+>
+<ReqRef
+ Id="0d7b3630-948f-424b-9a71-0e04aa754bd1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="11cfdd25-7f5a-436d-be30-f3e2d6a333ff"
+>
+</ReqRef><Comment>Status of the train integrity information.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SafeTrainLength"
+ Guid="50f4c16f-b2ee-4474-9fd1-20c3298667da"
+>
+<ReqRef
+ Id="84654558-6cb7-46d9-a984-7fb0aa823724"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a4fd9dc-dc85-49ed-a343-8cec5b304489"
+>
+</ReqRef><Comment>Safe train length.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.DataState"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DataState"
+ Guid="af4e6367-ff10-431c-888f-6f90a6a73b00"
+>
+<ReqRef
+ Id="84654558-6cb7-46d9-a984-7fb0aa823724"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f74ad6a5-4c99-4ccd-8ad8-cbd97e659a24"
+>
+</ReqRef><Comment>Data state of the train integrity information.</Comment>
+</StructureElement></Structure></Structures>
+<Variables>
+<Variable
+ Type="Boolean"
+ VariableMode="Outgoing"
+ Implemented="TRUE"
+ Name="ServiceBrakeCommanded"
+ Guid="63609300-c4f8-4580-b85a-fa3d02c99a85"
+>
+<ReqRef
+ Id="329a7f27-1bd7-4cd4-a3c6-c54b2e0342d5"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="74a7c714-9900-4fc8-a966-682506a9a37a"
+>
+</ReqRef><Comment>Indicates the status of service brake of the train.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="SleepingRequested"
+ Guid="475c11b7-c9d7-4007-85ce-594413a165c9"
+>
+<ReqRef
+ Id="b1cc8b5b-794d-474f-a00b-f1ae16b9be7f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aaf38853-5ac6-471c-ad81-bcb5b0cde4f9"
+>
+</ReqRef><ReqRef
+ Id="fcc9f8c8-ec5c-4e6e-a905-d17b3e6c2a14"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="970dc551-1cde-48c6-bf1b-e078cb721965"
+>
+</ReqRef><ReqRef
+ Id="9bd34b9e-1275-4b1d-b8bd-f7d43514a97f"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="70f8fe81-060e-41c4-a3f6-1515c8c0a7fb"
+>
+</ReqRef><Comment>Indicates if the &quot;sleeping&quot; input signal is received.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="PassiveShuntingPermitted"
+ Guid="05232ab0-945a-4fcb-8060-098f8180fc8f"
+>
+<ReqRef
+ Id="b630705b-2851-4efe-b023-a26113425740"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="856cb7a0-81fb-47fa-ade9-573c9e96e353"
+>
+</ReqRef><ReqRef
+ Id="1e916e21-6a94-4e75-aeaa-8857ea37acf7"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="5c9d9456-8517-463d-a6dd-d8050e83db5d"
+>
+</ReqRef><Comment>&amp;</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="NonLeadingPermitted"
+ Guid="b2429855-b162-4877-8c69-d8a499508ff0"
+>
+<ReqRef
+ Id="d0507ada-5b0f-4754-b198-46988a339561"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05f48f3c-b9a0-439e-9e48-359ad54f7a56"
+>
+</ReqRef><ReqRef
+ Id="99c18997-e909-4f87-bb31-4cb0656ef216"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="9a16e952-87af-46f0-87b2-e5ecf8220a5b"
+>
+</ReqRef><Comment>Indicates if the &quot;non leading&quot; input signal is received.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="ETCSIsolated"
+ Guid="9859166b-74c8-492c-8de1-92cb1b94e23a"
+>
+<ReqRef
+ Id="df71d1ef-a7ee-44b4-839b-8a08ebe2e1c9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="923dcad4-4ca1-4fcf-b09a-de079aa87586"
+>
+</ReqRef><ReqRef
+ Id="e14a2a36-a1c5-4316-b05f-600097f91329"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="bef4ab3f-3fad-4195-9a93-201f213ff27c"
+>
+</ReqRef><Comment>Indicates if the ERTMS/ETCS on-board equipment is isolated.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Outgoing"
+ Implemented="TRUE"
+ Name="EmergencyBrakeCommanded"
+ Guid="f5e69f7f-9195-4c4f-acef-eca972032832"
+>
+<ReqRef
+ Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="17428fab-bf60-4dc1-8c49-1faf0fc8f4e3"
+>
+</ReqRef><ReqRef
+ Id="458c52b6-b128-424e-b29e-05cf4a057a91"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8eb2097a-2d7b-4e21-b2c7-203bcbe8db36"
+>
+</ReqRef><ReqRef
+ Id="07aa4451-7a3c-41ac-8176-3eab54039e3c"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="7f239be4-bb3d-4611-8f91-a3d5ca48a3b1"
+>
+</ReqRef><Comment>Indicates the status of emergency brake of the train.</Comment>
+</Variable><Variable
+ Type="Pressure"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="BrakePressure"
+ Guid="2c4717b7-7081-45bb-9101-5e188eabec2c"
+>
+<ReqRef
+ Id="f549b249-bf4b-4d17-a7cb-df8b47ffd37a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="b4c894da-e766-4be5-a544-12a6256575fa"
+>
+</ReqRef><Comment>Indicates the brake pressure used in the service brake feedback model</Comment>
+</Variable><Variable
+ Type="BrakeStatusStruct"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="SpecialBrakeStatus"
+ Guid="471a690a-2060-43c7-a6e2-d1984f85391e"
+>
+<ReqRef
+ Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c5bd915d-587e-4b1c-ad88-467073c32c12"
+>
+</ReqRef><ReqRef
+ Id="40825e98-f126-45fb-aa32-7514e64332b6"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="3d37ae23-17e9-4b36-a6d6-3286bc98d3b9"
+>
+</ReqRef><ReqRef
+ Id="dc456af4-f303-4870-a171-ef1d7085b9c0"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="0a294c22-f387-488c-b9b7-3b83ce7c9e9f"
+>
+</ReqRef><Comment>Indicates the status of special brakes.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Outgoing"
+ Implemented="TRUE"
+ Name="CutOffTraction"
+ Guid="9054eedc-ab47-4d29-a717-d2b7577b5041"
+>
+<ReqRef
+ Id="150c63c0-f112-408f-bb6c-1ea9c8c0d98a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="6c2dc0e4-37bb-42db-bc83-88c6bfa65a99"
+>
+</ReqRef><Comment>Indicates if the traction has to be cut off.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="TractionIsOn"
+ Guid="2a2c1041-c78f-41bb-835e-5636cdc61410"
+>
+<ReqRef
+ Id="51935dba-7b50-4bd2-b935-b00e566f76f9"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="90cdb6d9-7d1c-40ba-9a54-b3600947fc17"
+>
+</ReqRef><Comment>Indicates if the status of traction is on.</Comment>
+</Variable><Variable
+ Type="TrainDataEntryEnum"
+ DefaultValue="TrainDataEntryEnum.Fixed"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="TrainDataEntry"
+ Guid="34a0ac36-82f8-4106-92a2-2a2f29a8c049"
+>
+<ReqRef
+ Id="6d212610-a9ec-4b0e-9502-48730fbbbd5a"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="4b74e701-dcc8-4ed5-a113-c604c7cba265"
+>
+</ReqRef><Comment>Indicates the type of train data entry.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="NTCIsolated"
+ Guid="5108e549-7a88-4508-aad9-0e6ae4408910"
+>
+<ReqRef
+ Id="f2a86c31-9afa-4835-9476-eef3285affd4"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="3d46474f-ea0f-4b7a-b149-03adcf8e5574"
+>
+</ReqRef><Comment>Indicates if the National System is isolated.</Comment>
+</Variable><Variable
+ Type="DirectionControllerEnum"
+ DefaultValue="DirectionControllerEnum.Neutral"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="DirectionControllerInformation"
+ Guid="0d2471c3-3d9b-45f5-99a0-2cfc2ef90f09"
+>
+<ReqRef
+ Id="4a159c89-1c48-4991-b068-8e3a93337280"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="2287691d-5e3f-422e-8c9b-cb3875c7ce0b"
+>
+</ReqRef><Comment>Indicates the direction of the train.</Comment>
+</Variable><Variable
+ Type="CabStruct"
+ DefaultValue=""
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="Cab1"
+ Guid="4861f6b3-9984-4fa9-8932-e7c3e48e785f"
+>
+<ReqRef
+ Id="deed4628-97e4-4181-8665-7509256de3fa"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="f4db729e-4edb-4006-8406-f2d8fba5d4eb"
+>
+</ReqRef><ReqRef
+ Id="839d8340-fe74-4358-8e90-bbcbf37f22e7"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="6a21bb00-9a33-4b90-b7e0-9c6567e02017"
+>
+</ReqRef><Comment>Represents the cab 1.</Comment>
+</Variable><Variable
+ Type="CabStruct"
+ DefaultValue=""
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="Cab2"
+ Guid="79bf21ac-8580-4282-bb90-157cd56f3872"
+>
+<ReqRef
+ Id="deed4628-97e4-4181-8665-7509256de3fa"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="3e32e5e6-9401-4a2d-b0aa-15e5eb432de5"
+>
+</ReqRef><ReqRef
+ Id="839d8340-fe74-4358-8e90-bbcbf37f22e7"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="2a94db6b-20b9-4378-ac27-5f265148fad1"
+>
+</ReqRef><Comment>Represents the cab 2.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="True"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="AdditionalBrakesActive"
+ Guid="d8cb2693-52c0-4ee0-984f-291735f7a081"
+>
+<ReqRef
+ Id="39f2f6b9-101e-4160-b324-b2c4c3b64bbc"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="4be5d63c-a25b-4832-89e2-74053c038776"
+>
+</ReqRef><Comment>Indicates if the additional brakes are active.</Comment>
+</Variable><Variable
+ Type="TrainIntegrityStruct"
+ DefaultValue=""
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="TrainIntegrity"
+ Guid="861d2f88-4347-4621-b3d4-6222bf3b6f4a"
+>
+<ReqRef
+ Id="2b2ed08d-1183-4018-b0cc-3b454b2f8c4d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="59585f3c-90f0-4e9f-b2b4-badaa285d63b"
+>
+</ReqRef><ReqRef
+ Id="ffb67ede-3ead-4df3-94ea-b7e1f6ec3d7f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8b7a224e-1437-4ad7-a528-bb4391e00760"
+>
+</ReqRef><ReqRef
+ Id="ef800618-551f-4333-aa9f-a92d9bd7e925"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="dd9acede-ae9b-4e4c-97c3-c5354ca2bd05"
+>
+</ReqRef><ReqRef
+ Id="f9e20546-588d-4a20-b2e2-bbbad853bafe"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="2a4507d1-a44d-480c-8ba3-7541b181d12c"
+>
+</ReqRef><Comment>This variable represens the train integrity information as described in 3.6.5.2.3.</Comment>
+</Variable></Variables>
 </NameSpace>

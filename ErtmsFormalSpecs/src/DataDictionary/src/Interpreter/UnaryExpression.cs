@@ -17,6 +17,7 @@ namespace DataDictionary.Interpreter
 {
     using System;
     using System.Collections.Generic;
+    using DataDictionary.Interpreter.Filter;
 
     public class UnaryExpression : Expression
     {
@@ -77,7 +78,7 @@ namespace DataDictionary.Interpreter
         /// <param name="expectation">the expectation on the element found</param>
         /// <param name="last">indicates that this is the last element in a dereference chain</param>
         /// <returns></returns>
-        public override ReturnValue getReferences(Utils.INamable instance, Filter.AcceptableChoice expectation, bool last)
+        public override ReturnValue getReferences(Utils.INamable instance, BaseFilter expectation, bool last)
         {
             ReturnValue retVal = ReturnValue.Empty;
 
@@ -103,7 +104,7 @@ namespace DataDictionary.Interpreter
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <param name="last">indicates that this is the last element in a dereference chain</param>
         /// <returns></returns>
-        public override ReturnValue getReferenceTypes(Utils.INamable instance, Filter.AcceptableChoice expectation, bool last)
+        public override ReturnValue getReferenceTypes(Utils.INamable instance, BaseFilter expectation, bool last)
         {
             ReturnValue retVal = ReturnValue.Empty;
 
@@ -128,7 +129,7 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <param name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, Filter.AcceptableChoice expectation)
+        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
@@ -359,7 +360,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, Filter.AcceptableChoice filter)
+        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
         {
             if (Term != null)
             {

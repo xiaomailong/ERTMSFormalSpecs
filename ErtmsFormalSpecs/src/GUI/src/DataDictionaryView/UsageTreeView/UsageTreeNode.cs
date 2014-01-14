@@ -20,7 +20,7 @@ using DataDictionary.Interpreter;
 
 namespace GUI.DataDictionaryView.UsageTreeView
 {
-    public class UsageTreeNode : DataTreeNode<DataDictionary.ModelElement>
+    public class UsageTreeNode : ModelElementTreeNode<DataDictionary.ModelElement>
     {
         /// <summary>
         /// The usage for which this tree node is built

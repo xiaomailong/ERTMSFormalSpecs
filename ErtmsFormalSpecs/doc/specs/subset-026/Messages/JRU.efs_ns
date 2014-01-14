@@ -1,21 +1,27 @@
 <NameSpace
  Name="JRU"
+ Guid="d79609b6-5ab9-4277-a5b2-b87e374d3be8"
 >
 <NameSpaces>
 <NameSpaceRef
  Name="DATE"
+ Guid="12233b89-fc1a-408a-a577-097e221549e4"
 >
 </NameSpaceRef><NameSpaceRef
  Name="TIME"
+ Guid="cffaa859-d788-4fe1-bf7c-abceeb15b05a"
 >
 </NameSpaceRef><NameSpaceRef
  Name="TRAIN_POSITION"
+ Guid="154e307d-c3f3-4770-9b6c-6ccee4e1d21c"
 >
 </NameSpaceRef><NameSpaceRef
  Name="HEADER"
+ Guid="ffe93d4c-e89e-4f6a-ade2-b8adee2fde2c"
 >
 </NameSpaceRef><NameSpaceRef
  Name="MESSAGE"
+ Guid="e5f0e1a3-3fa1-45ac-a34b-ec598de21ab3"
 >
 </NameSpaceRef></NameSpaces>
 <Ranges>
@@ -27,6 +33,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_NTC"
+ Guid="bcd8724b-f3a1-4266-b23d-102edb87464b"
 >
 <Comment>NTC identity
 One value of this variable represents the identity of an STM reflecting each composition of national infrastructure.</Comment>
@@ -38,14 +45,17 @@ One value of this variable represents the identity of an STM reflecting each com
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_MESSAGE"
+ Guid="69bb7f5b-eec7-4590-b825-581cbeb31437"
 >
 <ReqRef
  Id="3c64ae3c-8549-4e30-a019-5eb9b8c965e7"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c9cc4ad8-3ee6-4cf5-8d6d-51c6e6fc32de"
 >
 </ReqRef><ReqRef
  Id="cc3d45f4-d90b-4e96-9049-1701e7aa7cf3"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f7666555-8ba1-437d-84e4-0ccb1a4ad585"
 >
 </ReqRef><Comment>Message identifier
 Identifier of the message.</Comment>
@@ -57,16 +67,9 @@ Identifier of the message.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_MESSAGE"
+ Guid="6ece172c-af31-4b36-b976-ddaa96b37717"
 >
-<ReqRef
- Id="6f3aac9c-7ea4-4a24-9098-8401aa8b22f9"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><ReqRef
- Id="e1abd747-9c54-43d2-b647-4633ce3e4e3b"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><Comment>Message length
+<Comment>Message length
 L_MESSAGE indicates the length of the message in bytes, 
          including all variables in the message header (L_MESSAGE also).</Comment>
 </Range><Range
@@ -77,6 +80,7 @@ L_MESSAGE indicates the length of the message in bytes,
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DAY"
+ Guid="44d9e091-ab98-4885-8752-1316ae842842"
 >
 <Comment>Official day
 It&apos;s used to label data recorded</Comment>
@@ -84,6 +88,7 @@ It&apos;s used to label data recorded</Comment>
 <EnumValue
  Value="0"
  Name="Unknown"
+ Guid="38d6b6ed-b2d0-4251-9a00-218852deb10f"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -94,6 +99,7 @@ It&apos;s used to label data recorded</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MONTH"
+ Guid="d6502d8d-b501-4095-9cbc-46bbda3cc1eb"
 >
 <Comment>Official month
 It&apos;s used to label data recorded</Comment>
@@ -101,10 +107,12 @@ It&apos;s used to label data recorded</Comment>
 <EnumValue
  Value="0"
  Name="not_used"
+ Guid="9d33e7fc-f8f0-4bed-89de-6f8cd5373b55"
 >
 </EnumValue><EnumValue
  Value="15"
  Name="Unknown"
+ Guid="a0131380-01df-4a71-aa14-f85a990f3622"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -115,6 +123,7 @@ It&apos;s used to label data recorded</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="YEAR"
+ Guid="9353e084-d3c1-479b-86d5-ef701d7f417d"
 >
 <Comment>Official year
 It&apos;s used to label data recorded.  Only the last two figures of the year are recorded (unit and ten).</Comment>
@@ -122,6 +131,7 @@ It&apos;s used to label data recorded.  Only the last two figures of the year ar
 <EnumValue
  Value="127"
  Name="Unknown"
+ Guid="4da5b692-a659-4933-aade-92cb64c5ccd6"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -132,6 +142,7 @@ It&apos;s used to label data recorded.  Only the last two figures of the year ar
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HOUR"
+ Guid="83c91cea-52c2-4dd4-8f81-3357d297bb31"
 >
 <Comment>Official hour
 It&apos;s used to label data recorded</Comment>
@@ -139,6 +150,7 @@ It&apos;s used to label data recorded</Comment>
 <EnumValue
  Value="31"
  Name="Unknown"
+ Guid="72ccb208-5fcf-433f-847d-df17625fa6b2"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -149,6 +161,7 @@ It&apos;s used to label data recorded</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MINUTES"
+ Guid="af765810-91ab-4ee9-92b1-c7a4617cf333"
 >
 <Comment>Official minutes
 It&apos;s used to label data recorded</Comment>
@@ -156,6 +169,7 @@ It&apos;s used to label data recorded</Comment>
 <EnumValue
  Value="63"
  Name="Unknown"
+ Guid="6fcf5bab-9609-47c5-bed1-f5bc4537b00c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -166,6 +180,7 @@ It&apos;s used to label data recorded</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SECONDS"
+ Guid="5b1969db-69b0-49e1-b47a-b7a6413f4966"
 >
 <Comment>Official seconds
 It&apos;s used to label data recorded</Comment>
@@ -173,6 +188,7 @@ It&apos;s used to label data recorded</Comment>
 <EnumValue
  Value="63"
  Name="Unknown"
+ Guid="53c1cee0-8b30-43a9-bceb-ba875b37a58f"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -183,6 +199,7 @@ It&apos;s used to label data recorded</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TTS"
+ Guid="402f6306-e6ad-47ef-b14f-6d1b4ec5df60"
 >
 <Comment>Official hundredth of second
 Used update label data recorded.  Used only in conjunction with HOUR, MINUTES and SECONDS.</Comment>
@@ -190,6 +207,7 @@ Used update label data recorded.  Used only in conjunction with HOUR, MINUTES an
 <EnumValue
  Value="31"
  Name="Unknown"
+ Guid="b4bfe16d-dfb7-4f71-b7c9-65c59f62e778"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -200,24 +218,14 @@ Used update label data recorded.  Used only in conjunction with HOUR, MINUTES an
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_TRAIN"
+ Guid="c200baab-78d0-4376-902c-1a67e9c0bfa9"
 >
-<ReqRef
- Id="3c0233a7-b01e-40fb-a5f0-652063fdf644"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><ReqRef
- Id="fbdccb80-301b-4431-a470-97e66ae1ef6c"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><ReqRef
- Id="2a15b46d-5611-4053-974b-182b0436ce24"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><Comment>This field contains the current speed of the train.</Comment>
+<Comment>This field contains the current speed of the train.</Comment>
 <SpecialValues>
 <EnumValue
  Value="1023"
  Name="standstill"
+ Guid="5e09a74a-30f4-4316-b03f-b6ceab43850c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -228,14 +236,17 @@ Used update label data recorded.  Used only in conjunction with HOUR, MINUTES an
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_ENGINE"
+ Guid="e84677e2-aa5d-44d7-8fef-d5ce0e04c7c7"
 >
 <ReqRef
  Id="498726b7-6f35-4b72-909e-32d4995241ba"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b0801f0f-58de-4bf3-bdc5-8da66bff7968"
 >
 </ReqRef><ReqRef
  Id="9e76d22c-dd18-4697-8aaa-2d37c2608b67"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7577ee5d-f1e0-4c6f-8fd3-24b3106afc92"
 >
 </ReqRef><Comment>This field contains the on board ETCS identity
 This field contains the on board ETCS identity.</Comment>
@@ -247,14 +258,17 @@ This field contains the on board ETCS identity.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SYSTEM_VERSION"
+ Guid="4ed948ba-1cd1-430c-95dc-6c28dfe5eaab"
 >
 <ReqRef
  Id="23f87f8c-2500-4f0c-87d6-f92f4df40390"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0b5530ca-ff10-45f1-9d65-57f5a0e3c26c"
 >
 </ReqRef><ReqRef
  Id="8aa4a2d0-f0af-4e25-b00f-ae42f0a9c0ba"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f53bbea9-a2e2-4ae3-9d01-dff1fd88eb93"
 >
 </ReqRef><Comment>Version of the ETCS system
 Gives the version of the ETCS system. Each part indicates the first and second number of the version. The first part distinguishes the not compatible version (MSB&apos;s). -	The second number indicates compatibility within a version X. (The four LSB’s)</Comment>
@@ -262,14 +276,17 @@ Gives the version of the ETCS system. Each part indicates the first and second n
 <EnumValue
  Value="16"
  Name="Unknown"
+ Guid="6e4dc96a-6749-4421-8e42-e18c704ee5d8"
 >
 </EnumValue><EnumValue
  Value="17"
  Name="Class_1__version_1_1__introduced_in_SRS_3_0_0"
+ Guid="06325e9c-ff9e-4b99-871b-2baef8c50247"
 >
 </EnumValue><EnumValue
  Value="32"
  Name="Class_1__version_2_0__introduced_in_SRS_3_0_0"
+ Guid="7badefc6-6843-4a62-88b1-32165c869a22"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -280,6 +297,7 @@ Gives the version of the ETCS system. Each part indicates the first and second n
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="LEVEL"
+ Guid="38210c2e-8cb9-4452-8f03-e2bffec7706f"
 >
 <Comment>Current Operating Level
 This field contains the current level.</Comment>
@@ -287,22 +305,27 @@ This field contains the current level.</Comment>
 <EnumValue
  Value="0"
  Name="Level_0"
+ Guid="1630455b-41bd-4b54-9003-a7f0f996942b"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Level_STM_specified_by_NID_NTC"
+ Guid="0dbbd2a0-f7af-4ac1-a49e-95afdf3c0358"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Level_1"
+ Guid="56a0a71c-b7e2-43f4-8b01-bbb129aa1e17"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Level_2"
+ Guid="8a1cb38f-39cf-446e-a53a-4c86b59b5589"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Level_3"
+ Guid="d3d42a01-420c-471a-b6be-f704b0f86c4a"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -313,6 +336,7 @@ This field contains the current level.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_SCALE"
+ Guid="82fc1bac-52a6-434d-a97a-325982a43c1e"
 >
 <Comment>Qualifier for the distance scale.
 Qualifier to indicate the same scale used for describing all distances inside the packet that contains Q_SCALE.</Comment>
@@ -320,18 +344,22 @@ Qualifier to indicate the same scale used for describing all distances inside th
 <EnumValue
  Value="0"
  Name="_10_cm_scaleC"
+ Guid="c8dfb174-f53a-4185-8f82-3eabeb95c056"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="_1_m_scaleC"
+ Guid="5ae7d5b1-4201-4fee-99c4-284282c92877"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="_10_m_scaleC"
+ Guid="f0f1c032-fe97-4b5f-8edf-0f7e7c44ca2b"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="ce89b133-810b-4f0a-9203-0cb05510dcb4"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -342,6 +370,7 @@ Qualifier to indicate the same scale used for describing all distances inside th
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_LRBG"
+ Guid="6893fa97-ca81-4ec9-a5c1-00812cca7ad5"
 >
 <Comment>Identity of last relevant balise group
 Country/region identity (NID_C) + balise identity number of last relevant balise group (NID_BG).</Comment>
@@ -349,6 +378,7 @@ Country/region identity (NID_C) + balise identity number of last relevant balise
 <EnumValue
  Value="16777215"
  Name="Spare"
+ Guid="3aaf89e4-72e0-4e40-a217-dd7330b2da4e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -359,12 +389,14 @@ Country/region identity (NID_C) + balise identity number of last relevant balise
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_LRBG"
+ Guid="597b1e64-9639-46b2-9efa-38bf13f818d1"
 >
 <Comment>Distance between the last relevant balise group and the estimated front end of the train (the side of the active cab).</Comment>
 <SpecialValues>
 <EnumValue
  Value="32767"
  Name="Spare"
+ Guid="b6eaf372-ad4b-4a16-98eb-2c5dcbbad847"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -375,24 +407,29 @@ Country/region identity (NID_C) + balise identity number of last relevant balise
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_DIRLRBG"
+ Guid="f75f5258-711e-41d1-b6fe-513e337bf00e"
 >
 <Comment>Orientation of the train in relation to the direction of the LRBG</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="Reverse"
+ Guid="23421f1a-c577-4007-9305-16e65bc5e075"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Nominal"
+ Guid="f10e7f88-b761-4e65-bb2a-77964d47e473"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Uknown"
+ Guid="8b0c9c8d-2de6-433a-9083-b272c450715c"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="6a80d6b7-4a54-4848-b6a3-1047f5cafe68"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -403,24 +440,29 @@ Country/region identity (NID_C) + balise identity number of last relevant balise
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_DLRBG"
+ Guid="1e40d62b-7971-447b-9965-d2dac629cf72"
 >
 <Comment>Qualifier telling on which side of the LRBG the estimated front end is</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="Reverse"
+ Guid="f30f84fc-164d-458c-9a3e-5cdaa3ac617f"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Nominal"
+ Guid="39491f72-dd4c-4368-a904-f1a138bbfe6b"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Unknown"
+ Guid="3e70c642-76f3-4cd7-9987-81ab615ffb26"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="c4987b67-a810-4883-80cb-a30be43f7f9e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -431,6 +473,7 @@ Country/region identity (NID_C) + balise identity number of last relevant balise
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_DOUBTOVER"
+ Guid="b0ff22f4-54d1-49bc-93c2-c750e924161f"
 >
 <Comment>Over-reading error
 L_DOUBTOVER is the difference between the lower bound of the confidence interval and the estimated value of D_LRBG</Comment>
@@ -438,6 +481,7 @@ L_DOUBTOVER is the difference between the lower bound of the confidence interval
 <EnumValue
  Value="32767"
  Name="Unknown"
+ Guid="764bbea7-5da5-41ff-a9d0-3f7995ee9403"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -448,6 +492,7 @@ L_DOUBTOVER is the difference between the lower bound of the confidence interval
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_DOUBTUNDER"
+ Guid="69025aec-4bdf-4dec-a57c-5bf4cd6b0685"
 >
 <Comment>Under-reading error
 L_DOUBTUNDER is the difference between the upper bound of the confidence interval and the estimated value of D_LRBG</Comment>
@@ -455,6 +500,7 @@ L_DOUBTUNDER is the difference between the upper bound of the confidence interva
 <EnumValue
  Value="32767"
  Name="Unknown"
+ Guid="0f67a87e-074b-4b9c-8a68-a34c8cf89bd8"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -465,6 +511,7 @@ L_DOUBTUNDER is the difference between the upper bound of the confidence interva
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_MAXTRAIN"
+ Guid="1dfe4943-14a9-4da3-a0c5-4fa4df0bba5e"
 >
 <Comment>Maximum permitted train speed.
 Maximum permitted speed for the train, taking into account the maximum speed of every vehicle contained in the train set.</Comment>
@@ -476,6 +523,7 @@ Maximum permitted speed for the train, taking into account the maximum speed of 
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NC_CDTRAIN"
+ Guid="c3d00978-fe32-416b-b035-26774b848654"
 >
 <Comment>Cant Deficiency Train Category.
 Thanks to NC_CDTRAIN, the train knows the “Cant Deficiency” SSP it must obey. By receiving a list of static speed profile, thanks to NC_CDDIFF, the train can select the “Cant Deficiency” SSP best suiting its NC_CDTRAIN..</Comment>
@@ -483,46 +531,57 @@ Thanks to NC_CDTRAIN, the train knows the “Cant Deficiency” SSP it must obey
 <EnumValue
  Value="0"
  Name="Cant_Deficiency_80_mm"
+ Guid="779b7be0-b2e2-4f22-a2bf-35416a1f4bc1"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Cant_Deficiency_100_mm"
+ Guid="8bfe80fc-264d-4cdc-9329-987efc2a4cdb"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Cant_Deficiency_130_mm"
+ Guid="d5fca424-9a66-4353-90e0-e33d3f2f6d08"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Cant_Deficiency_150_mm_train"
+ Guid="74c33911-3e12-4a27-90a3-49ef4664b5fa"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Cant_Deficiency_165_mm"
+ Guid="858dc236-911c-4024-9a86-62398b67e9e3"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="Cant_Deficiency_180_mm"
+ Guid="812bcdb4-7681-4bc5-9f46-5fd812efb0cc"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="Cant_Deficiency_210_mm"
+ Guid="6625418e-70a4-4851-97a3-8fe44d28beea"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="Cant_Deficiency_225_mm"
+ Guid="23f72f8c-3621-46e4-a33a-99133d730547"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Cant_Deficiency_245_mm"
+ Guid="1a8d39a2-b680-45a6-8505-470328fa5334"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="Cant_Deficiency_275_mm"
+ Guid="984cd0af-05dd-4005-ac41-51269f9393df"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="Cant_Deficiency_300_mm"
+ Guid="6342c2cb-4830-4d6e-9bbd-728b619404a2"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -533,6 +592,7 @@ Thanks to NC_CDTRAIN, the train knows the “Cant Deficiency” SSP it must obey
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NC_TRAIN"
+ Guid="0d4008d2-ef9a-461e-b877-e8d2f659d255"
 >
 <Comment>International Category to which belongs the train.
 Train category used for the static speed profile calculation. Thanks to NC_TRAIN, the train knows the SSP it must obey. by receiving a list of static speed profile, thanks to NC_TRAIN, the train can select the SSP it must obey. Each bit represents one category. A train can belong to various categories.</Comment>
@@ -540,66 +600,82 @@ Train category used for the static speed profile calculation. Thanks to NC_TRAIN
 <EnumValue
  Value="0"
  Name="Train_does_not_belong_to_any_of_the__Other_International__Train_Category"
+ Guid="6cc09c69-73a4-4809-a99a-e851e614206b"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Freight_train_braked_in__P__position"
+ Guid="a46a15fe-fc2f-41f8-bdbb-81730a774f28"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Freight_train_braked_in__G__position"
+ Guid="50e9e6c3-d1ad-4fae-bc9b-993623ddb0c1"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Passengers_train"
+ Guid="f70caa8c-396a-4a91-b309-b10a8b803d68"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Spare"
+ Guid="2fe500fa-4a22-48a9-b104-3775f4655d61"
 >
 </EnumValue><EnumValue
  Value="16"
  Name="Spare"
+ Guid="95bb5324-334e-4d71-9ea9-9bb7b6490210"
 >
 </EnumValue><EnumValue
  Value="32"
  Name="Spare"
+ Guid="f2231ed7-4942-4fe0-b1b1-c37c74c69cd8"
 >
 </EnumValue><EnumValue
  Value="64"
  Name="Spare"
+ Guid="db0418b4-5217-4460-8bf9-a266d82a744d"
 >
 </EnumValue><EnumValue
  Value="128"
  Name="Spare"
+ Guid="f3faffce-5acc-4f0c-b72f-c75ec037b773"
 >
 </EnumValue><EnumValue
  Value="256"
  Name="Spare"
+ Guid="c1ee85e6-193c-4e60-a9e8-fb98eb6de6ce"
 >
 </EnumValue><EnumValue
  Value="512"
  Name="Spare"
+ Guid="c69d51ac-ed95-4366-b1f4-27b6cc54601a"
 >
 </EnumValue><EnumValue
  Value="1024"
  Name="Spare"
+ Guid="40406193-e6ff-480d-8882-0fac60a6712e"
 >
 </EnumValue><EnumValue
  Value="2048"
  Name="Spare"
+ Guid="5ccb4fba-6e84-4554-b6a0-434bb0913d7d"
 >
 </EnumValue><EnumValue
  Value="4096"
  Name="Spare"
+ Guid="89c94a2f-febd-462d-9912-0f8fd52f42a2"
 >
 </EnumValue><EnumValue
  Value="8192"
  Name="Spare"
+ Guid="4a9d2a4d-57ef-4b9e-abb6-e219e9e57c6f"
 >
 </EnumValue><EnumValue
  Value="16384"
  Name="Spare"
+ Guid="81a3ee74-a98a-421f-9063-4cbf1bedbf60"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -610,16 +686,9 @@ Train category used for the static speed profile calculation. Thanks to NC_TRAIN
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_TRAIN"
+ Guid="5ceed320-a0fc-4edc-8d30-b1a754e3c366"
 >
-<ReqRef
- Id="4c5f3c51-19fa-414b-bac9-a02f2705838a"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><ReqRef
- Id="45e25e11-fae5-4e6c-bb31-76de6e847cdb"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><Comment>Train length
+<Comment>Train length
 This is the absolute real length of the train.</Comment>
 </Range><Range
  MinValue="0"
@@ -629,10 +698,12 @@ This is the absolute real length of the train.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="T_TRACTION_CUT_OFF"
+ Guid="ce905107-ca4c-421d-b44c-7418c3dc83be"
 >
 <ReqRef
  Id="f0428811-caf7-4af4-8ff2-b9401f752e09"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="067e73ea-cbe9-47ce-8a16-b63daa1c5510"
 >
 </ReqRef><Comment>Time to cut-off traction
 It is the time delay from the traction cut-off command by the on-board unit to the moment the acceleration due to traction is guaranteed to be zero</Comment>
@@ -644,10 +715,12 @@ It is the time delay from the traction cut-off command by the on-board unit to t
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_BRAKE_POSITION"
+ Guid="0ceea17c-76fe-4d0c-ac5a-cff03159c91e"
 >
 <ReqRef
  Id="ad471f0f-fd27-4b9e-8adb-215c85aabdde"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0a6e28cd-53e0-4b2f-8e7f-2be49e37e2f3"
 >
 </ReqRef><Comment>Brake position
 The brake position defines the behaviour of the brake for specific train types</Comment>
@@ -655,18 +728,22 @@ The brake position defines the behaviour of the brake for specific train types</
 <EnumValue
  Value="0"
  Name="Passenger_train_in_P"
+ Guid="7dd439e0-e9dc-4189-af99-36fbf33f0fc0"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Freight_train_in_P"
+ Guid="93617f4f-a67f-4dfd-96c4-7b647d4ae7d2"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Freight_train_in_G"
+ Guid="4628d838-bce8-4375-b3cd-f2e06e33ee2b"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="f154a8a0-d257-47d9-95da-0c04b378239a"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -677,10 +754,12 @@ The brake position defines the behaviour of the brake for specific train types</
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_NOM_ROT_MASS"
+ Guid="9ba4b68e-16b7-4517-a3f1-cf125e6415c3"
 >
 <ReqRef
  Id="077785a4-136d-415e-ad35-538260ce5ad4"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="09f5d05a-ec0f-48e0-9871-e877ad6e3394"
 >
 </ReqRef><Comment>Nominal rotating mass of the train
 It defines the nominal rotating mass as a percentage of the total weight</Comment>
@@ -688,6 +767,7 @@ It defines the nominal rotating mass as a percentage of the total weight</Commen
 <EnumValue
  Value="16"
  Name="unknown"
+ Guid="c1917bf9-6ef4-4052-b192-df0455816bdc"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -698,10 +778,12 @@ It defines the nominal rotating mass as a percentage of the total weight</Commen
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_REGENERATIVEBRAKE"
+ Guid="31e875eb-b76c-4e37-aeb7-c281e94cd5bc"
 >
 <ReqRef
  Id="c0eec423-f803-41b3-88a7-a6033904d934"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ff28ade8-955d-4f08-9062-165b0a32324a"
 >
 </ReqRef><Comment>Regenrative brake interface
 It describes the interface with the regenerative brake and whether if affects the braking curve calculation</Comment>
@@ -709,18 +791,22 @@ It describes the interface with the regenerative brake and whether if affects th
 <EnumValue
  Value="0"
  Name="No_interface"
+ Guid="b6b68426-4635-4738-b2d2-0c533f66d494"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Interface_existis_and_affects_only_EB"
+ Guid="856fac06-623d-4e60-a3dc-b7f955c94bc7"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Interface_existis_and_affects_only_SB"
+ Guid="409d6663-11a8-4a6b-a56c-4b2ad2c570ac"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Interface_existis_and_affects_EB_and_SB"
+ Guid="52e49e85-a1a5-4c12-8bab-e0c3fbf3d9e2"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -731,10 +817,12 @@ It describes the interface with the regenerative brake and whether if affects th
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_EDDYCURRENTBRAKE"
+ Guid="77d31391-f88f-436d-a4b4-4c9469374f7e"
 >
 <ReqRef
  Id="72034d91-121e-4f2c-b022-55267bba924b"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="309d0951-692b-4152-81a2-860e0f7d67e9"
 >
 </ReqRef><Comment>Eddy current brake interface
 It describes the interface with eddy current brake and whether if affects the braking curve calculation</Comment>
@@ -742,18 +830,22 @@ It describes the interface with eddy current brake and whether if affects the br
 <EnumValue
  Value="0"
  Name="No_interface"
+ Guid="0f762130-b1a2-453f-a40a-bf82386387bb"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Interface_existis_and_affects_only_EB"
+ Guid="48b60783-6a21-4aec-9800-bc248a78925b"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Interface_existis_and_affects_only_SB"
+ Guid="4cb9b6d0-0dd6-45d5-9066-bbe9efb5728d"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Interface_existis_and_affects_EB_and_SB"
+ Guid="50301a87-6d43-4072-8131-0d8e113dbc51"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -764,10 +856,12 @@ It describes the interface with eddy current brake and whether if affects the br
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_MAGNETICSHOEBRAKE"
+ Guid="50943ec2-e582-489f-b67a-32a77ab4b49e"
 >
 <ReqRef
  Id="f7e574d7-ddae-478f-8b38-5aa84197c757"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d13ce3d6-0b6b-4bd6-b08f-7bd49c1640c7"
 >
 </ReqRef><Comment>Magnetic shoe brake interface
 It describes the interface with magnetic shoe brake and whether if affects the braking curve calculation</Comment>
@@ -775,18 +869,22 @@ It describes the interface with magnetic shoe brake and whether if affects the b
 <EnumValue
  Value="0"
  Name="No_interface"
+ Guid="f1350c99-08fe-405e-8f23-2e17d4f3217c"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Interface_existis_and_affects_only_EB"
+ Guid="80898c1c-2e1b-4000-ae85-002f63564073"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Spare"
+ Guid="3e44743b-1f89-455b-be8e-06d9424dbc9f"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="96e86314-a9c7-40c3-9d2d-8b5d3c88747f"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -797,10 +895,12 @@ It describes the interface with magnetic shoe brake and whether if affects the b
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_ELECTROPNEUMATICBRAKE"
+ Guid="d579b03f-f99f-4275-9672-88e2b96344b6"
 >
 <ReqRef
  Id="011f3ab5-fe0c-4a15-9831-1cd7e9d19749"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ccf237c7-a202-412f-bfb8-f38dcd4072d6"
 >
 </ReqRef><Comment>Electro pneumatic brake interface
 It describes the interface with electro pneumatic brake and whether if affects the braking curve calculation</Comment>
@@ -808,18 +908,22 @@ It describes the interface with electro pneumatic brake and whether if affects t
 <EnumValue
  Value="0"
  Name="No_interface"
+ Guid="3296f951-c713-42ee-84bd-88878d30def8"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Interface_existis_and_affects_only_SB"
+ Guid="8795ff1b-4147-4884-ba14-0fba90ebcd25"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Interface_existis_and_affects_EB_and_SB"
+ Guid="3a7c5622-c06f-4351-8e59-9a0bb3ccb366"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="a56bc20b-df96-4b52-bad4-253e8720654e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -830,10 +934,12 @@ It describes the interface with electro pneumatic brake and whether if affects t
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_TRACTIONCUTOFFINTERFACE"
+ Guid="4578862e-895e-462d-8571-3f324da63467"
 >
 <ReqRef
  Id="a44c7e61-5457-48e7-8639-df22379baaf4"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b061cfd4-0a87-4fe1-b6f5-b4ae3a17e1ee"
 >
 </ReqRef><Comment>Quallifier for traction cut off interface
 Indicates whether the traction cut off command is implemented or not</Comment>
@@ -841,10 +947,12 @@ Indicates whether the traction cut off command is implemented or not</Comment>
 <EnumValue
  Value="0"
  Name="Not_implemented"
+ Guid="85231d8f-fe20-4f75-b696-172a501a644b"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Implemented"
+ Guid="9b799e74-cf11-44bc-850d-419aea65b26e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -855,10 +963,12 @@ Indicates whether the traction cut off command is implemented or not</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_SERVICEBRAKEINTERFACE"
+ Guid="81ab7fdc-d5fb-4880-b1bd-7fb43a6b778b"
 >
 <ReqRef
  Id="ec3ebba0-095a-46dd-b27f-5c3ca4036a12"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="13e8fc2d-273f-40fc-bbc2-60c6de9fbf04"
 >
 </ReqRef><Comment>Quallifier for service brake interface
 Indicates whether the service brake command is implemented or not</Comment>
@@ -866,10 +976,12 @@ Indicates whether the service brake command is implemented or not</Comment>
 <EnumValue
  Value="0"
  Name="Not_implemented"
+ Guid="474ffe8d-1290-4592-b7ed-092eab37ea87"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Implemented"
+ Guid="55537014-2337-4d39-ba1b-09c2c0c9d93d"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -880,10 +992,12 @@ Indicates whether the service brake command is implemented or not</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_SERVICEBRAKEFEEDBACK"
+ Guid="6009ac11-3ffe-4bbe-91b8-f20463994c44"
 >
 <ReqRef
  Id="21839d70-37b9-4b54-a32f-6c027fe0cc2e"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d3e6dcb3-84a6-427b-aade-e5395deb3f9d"
 >
 </ReqRef><Comment>Quallifier for service brake feedback interface
 Indicates whether the service brake feedback is implemented or not</Comment>
@@ -891,10 +1005,12 @@ Indicates whether the service brake feedback is implemented or not</Comment>
 <EnumValue
  Value="0"
  Name="Not_implemented"
+ Guid="8f56fb9d-34a0-4472-bf87-874fa2a424a6"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Implemented"
+ Guid="0211ea0b-fd68-438d-8d3d-548b423c9df4"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -905,21 +1021,25 @@ Indicates whether the service brake feedback is implemented or not</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_BRAKE_CAPT_TYPE"
+ Guid="b8f6c4d2-9f70-41dd-9351-afec9e8cad50"
 >
 <ReqRef
  Id="33c42d4c-ddb3-4d58-9661-7c6109e3eab5"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="98fd62f6-1477-4fd5-ab24-0f715ec67075"
 >
 </ReqRef><Comment>Quallifier for gamma/lambda discrimination
 The variable discriminates the type of the capture of the brake parameters</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
- Name="Lambda_type__the_brake_percentages_is_acquired_as_Train_Data_and_the_conversion_modil_is_applicable"
+ Name="Lambda_type__the_brake_percentages_is_acquired_as_Train_Data_and_the_conversion_model_is_applicable"
+ Guid="5c6295a3-0565-46b4-a7ff-66baa4431026"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="gamma_type__all_other_captures"
+ Guid="a4e7da27-e380-480e-91e9-bfcc053c03f5"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -930,10 +1050,12 @@ The variable discriminates the type of the capture of the brake parameters</Comm
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_BRAKE_PERCENTAGE"
+ Guid="c3f1fd74-f44f-4f4a-9844-19f429d333cc"
 >
 <ReqRef
  Id="1bb3c340-c410-40e6-880c-bc30ee78df20"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="dfb467b7-3675-402c-938c-d1c57f764dd6"
 >
 </ReqRef><Comment>Brake percentage value
 The brake percentage is used to derive the brake parameters in conjunction with the conversion model</Comment>
@@ -945,10 +1067,12 @@ The brake percentage is used to derive the brake parameters in conjunction with 
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_BRAKE_CONF"
+ Guid="13f5bd48-1f3e-4cd5-a70f-d074b86af188"
 >
 <ReqRef
  Id="34976712-9ffa-472c-8977-ca68e6aff10b"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="cbb90111-b2f8-443c-b529-2f8eda840b8f"
 >
 </ReqRef><Comment>Special brakes configuration
 Number of iterations of special brake configuration(s) applicable to the selection of the appropiate brake parameter(s), following this variable in the message</Comment>
@@ -956,66 +1080,82 @@ Number of iterations of special brake configuration(s) applicable to the selecti
 <EnumValue
  Value="0"
  Name="_1C"
+ Guid="0ff020ed-db36-47cc-8c78-61177f748007"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="_2C"
+ Guid="ef90acfe-85f0-45b0-9a9a-0c1110e6973b"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="_3C"
+ Guid="eb84ec34-ebac-4fb3-8500-8f378a985890"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="_4C"
+ Guid="b8b474ce-26d4-4753-b061-a41df23465b7"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="_5C"
+ Guid="601b2a21-a93c-482e-b829-e331c9696608"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="_6C"
+ Guid="0929df59-4cb8-49d2-a8e0-03abf68df04c"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="_7C"
+ Guid="a2af35c6-2b04-4f3c-b399-22a979f053f9"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="_8C"
+ Guid="670d9a22-1c50-4014-b276-04746d270af2"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="_9C"
+ Guid="ab1102d5-5f51-4336-8285-37b28d064c4f"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="_10C"
+ Guid="02653d11-3506-4bb3-bb73-3d0191160ade"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="_11C"
+ Guid="826ee739-6ccd-4ca5-b69c-e619fdd2081b"
 >
 </EnumValue><EnumValue
  Value="11"
  Name="_12C"
+ Guid="d760cd0c-277e-4433-954d-42077f3b5c67"
 >
 </EnumValue><EnumValue
  Value="12"
  Name="_13C"
+ Guid="45a85f6f-51de-401d-8d7d-78d516dc8ee9"
 >
 </EnumValue><EnumValue
  Value="13"
  Name="_14C"
+ Guid="4baea19c-35bf-40aa-97db-e9e14767df02"
 >
 </EnumValue><EnumValue
  Value="14"
  Name="_15C"
+ Guid="231b39ba-9bc0-47d9-8b4c-811c4c519646"
 >
 </EnumValue><EnumValue
  Value="15"
  Name="_16C"
+ Guid="44dcc511-6731-43d8-9602-f61fecf2b874"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1026,10 +1166,12 @@ Number of iterations of special brake configuration(s) applicable to the selecti
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_BRAKE_LAMBDA_CONF"
+ Guid="4a2fc104-8cde-490c-aaae-347142732886"
 >
 <ReqRef
  Id="490edf92-ef65-46ea-a4f9-3b1de4105098"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6c81185b-08d7-44f3-9d64-1a6daa57d90a"
 >
 </ReqRef><Comment>Specific special brakes configuration for lambda trains
 It describes a specific special brake configuration to which the related brake parameters are applicable</Comment>
@@ -1037,18 +1179,22 @@ It describes a specific special brake configuration to which the related brake p
 <EnumValue
  Value="0"
  Name="No_interface_to_special_brakes_exists_or_all_status_are_inactive"
+ Guid="c21b3a7a-0402-4374-8fcb-7f192f06de86"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Regenerative_brake_interface_exists_and_status_is_active"
+ Guid="c9a2cf0e-4c10-454a-9624-107f7d264e70"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Eddy_current_brake_interface_exists_and_status_is_active"
+ Guid="00b0497a-094b-4fbe-a131-83aca149eb4c"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Ep_brake_interface_exists_and_status_is_active"
+ Guid="fe911675-5297-4f46-8842-d91d84a51155"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1059,10 +1205,12 @@ It describes a specific special brake configuration to which the related brake p
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="T_BRAKE_SERVICE"
+ Guid="eed36849-91f4-4cc2-9eea-c3a3a4977c70"
 >
 <ReqRef
  Id="b81fba3b-ee5a-4f9d-95b0-1d41197814cd"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ecd078ee-79ef-4e48-8e89-ec537f29faca"
 >
 </ReqRef><Comment>Brake number of sections
 Number of iterations of speed sections needed to build a brake model, following this variable in the message</Comment>
@@ -1074,10 +1222,12 @@ Number of iterations of speed sections needed to build a brake model, following 
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_BRAKE_GAMMA_CONF"
+ Guid="6112cc13-3ddb-4480-92f7-42ec69354682"
 >
 <ReqRef
  Id="aaf63f4f-2f5e-4b8b-8dca-5759c9c8121f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="51c9123a-3af4-46cc-82e4-e5bad7bbf129"
 >
 </ReqRef><Comment>Specific special brakes configuration for gamma trains
 It describes a specific special brake configuration to which the related brake parameters are applicable</Comment>
@@ -1085,22 +1235,27 @@ It describes a specific special brake configuration to which the related brake p
 <EnumValue
  Value="0"
  Name="No_interface_to_special_brakes_exists_or_all_status_are_inactive"
+ Guid="8b6701bd-381b-4cf1-9f06-c2eab3588c92"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Regenerative_brake_interface_exists_and_status_is_active"
+ Guid="091fff77-5a60-44ec-a3a0-fd4c88dad848"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Eddy_current_brake_interface_exists_and_status_is_active"
+ Guid="b8978ddc-5ff9-45f2-80be-8bb8e3ceed29"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Magnetic_shoe_brake_interface_exists_and_status_is_active"
+ Guid="77b23fe2-7edd-4d6f-9dab-1214b590d4c1"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Ep_brake_interface_exists_and_status_is_active"
+ Guid="ef57c990-6369-4e4d-aab7-c488a934dc46"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1111,10 +1266,12 @@ It describes a specific special brake configuration to which the related brake p
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="T_BRAKE_EMERGENCY"
+ Guid="c177fe6d-c23e-462e-a88d-3dc8368b0c7e"
 >
 <ReqRef
  Id="2351f936-4f0c-41f2-9296-57b91a5f2328"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="89d05223-bed4-4735-ae17-bd9886516858"
 >
 </ReqRef><Comment>Emergency brake delay time
 This is the build up time for the emergency brake</Comment>
@@ -1126,10 +1283,12 @@ This is the build up time for the emergency brake</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_BRAKE_SECTIONS"
+ Guid="662eca6e-7569-463c-8dca-83790bc48e1a"
 >
 <ReqRef
  Id="f936e846-2e3d-455c-8cbf-cd0df2f386e7"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c61a89fd-79ba-4e2d-acb9-4d2eb925b844"
 >
 </ReqRef><Comment>Brake number of sections
 Number of iterations of speed sections needed to build a brake model, following this variable in the message</Comment>
@@ -1141,12 +1300,9 @@ Number of iterations of speed sections needed to build a brake model, following 
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_BRAKE_EMERGENCY_COMP"
+ Guid="93001a70-7799-4d97-a82b-13ac2a4941bd"
 >
-<ReqRef
- Id="bb2c130f-7f70-4649-b205-43d79cc935e4"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><Comment>Emeregency brake speed component
+<Comment>Emeregency brake speed component
 It contains the lowest speed value of the speed section to which the related emeregency brake deceleration component is applicable</Comment>
 </Range><Range
  MinValue="0"
@@ -1156,10 +1312,12 @@ It contains the lowest speed value of the speed section to which the related eme
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A_BRAKE_EMERGENCY_COMP"
+ Guid="25c70403-5cc3-475d-a4c6-c539382964c7"
 >
 <ReqRef
  Id="0f2dbd96-6593-410e-aae8-fe8482274d06"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="23f697bb-f9b3-44c5-b91a-7e548a1aa6da"
 >
 </ReqRef><Comment>Emeregency brake deceleration component
 It contains the value of the emeregency brake deceleration coponent which is applicable to the related speed section</Comment>
@@ -1171,10 +1329,12 @@ It contains the value of the emeregency brake deceleration coponent which is app
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST"
+ Guid="cd3c8c28-6c81-43dd-bd9c-5354e22bde73"
 >
 <ReqRef
  Id="025a1d1f-c481-4f16-8bd5-8b1970e3de5a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="1ea75fe6-20d8-4e6d-babe-f9c5577a0de4"
 >
 </ReqRef><Comment>Rolling stock correction factor on dry rails
 This variable is a corrector factor applicable to the emergency brake deceleration according to the variable M_NVEBCL defined in chapter 7 of subset-26</Comment>
@@ -1186,10 +1346,12 @@ This variable is a corrector factor applicable to the emergency brake decelerati
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KWET_RST"
+ Guid="2c3458d2-d67a-46fe-927b-a3f0abfe7d5f"
 >
 <ReqRef
  Id="91b5dc43-9b11-414a-b9b3-850841e86fed"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f225e22a-f7f1-4715-bab8-a1609018b2ff"
 >
 </ReqRef><Comment>Rolling stock correction factor on wet rails
 This variable is a corrector factor applicable to the emergency brake deceleration according to the variable M_NVAVADH defined in chapter 7 of subset-26</Comment>
@@ -1201,10 +1363,12 @@ This variable is a corrector factor applicable to the emergency brake decelerati
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_BRAKE_SERVICE_COMP"
+ Guid="91d3cd78-b7df-4df1-8658-fc1079426e2e"
 >
 <ReqRef
  Id="7e5f5b95-e177-4917-a71a-f40a403e0cb6"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="44b77f86-2b46-482b-9edb-cc4a5bbf2e42"
 >
 </ReqRef><Comment>Service brake speed component
 It contains the lowest speed value of the speed section to which the related service brake deceleration component is applicable</Comment>
@@ -1216,10 +1380,12 @@ It contains the lowest speed value of the speed section to which the related ser
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A_BRAKE_SERVICE_COMP"
+ Guid="512f1a92-7539-4dda-abfb-bb33b81395c5"
 >
 <ReqRef
  Id="4e167f10-ee4e-4ae4-a5ae-4e875f46c1d7"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5082002f-98ed-4704-b5b5-75014ad21126"
 >
 </ReqRef><Comment>Service brake deceleration component
 It contains the calue of the service brake deceleration coponent which is applicable to the related speed section</Comment>
@@ -1231,6 +1397,7 @@ It contains the calue of the service brake deceleration coponent which is applic
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_LOADINGGAUGE"
+ Guid="7d3b7902-be85-49f3-a689-4efda62e9464"
 >
 <Comment>Load profile
 Defining the loading gauge profile</Comment>
@@ -1238,22 +1405,27 @@ Defining the loading gauge profile</Comment>
 <EnumValue
  Value="0"
  Name="The_train_does_not_fit_to_any_of_the_interoperable_loading_gauge_profiles"
+ Guid="cc1ef52c-9303-48ee-a942-0e8388aec6d6"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="G1"
+ Guid="800024ec-a559-476b-a778-1687fd295606"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="GA"
+ Guid="d0941182-66d4-46d3-8843-0b2249c3bf8f"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="GB"
+ Guid="f5415af7-a149-40ed-a0f9-ba315584cf33"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="GC"
+ Guid="d49cc48c-28d1-4c77-85eb-be61a4498d35"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1264,6 +1436,7 @@ Defining the loading gauge profile</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_AXLE"
+ Guid="4ea8c83f-ae12-4192-b843-05a6bd6447be"
 >
 <Comment>Axle number of the engine
 This gives the number of axles of the single unit (fixed train set or locomotive) in which the onboard equipment is fitted</Comment>
@@ -1271,6 +1444,7 @@ This gives the number of axles of the single unit (fixed train set or locomotive
 <EnumValue
  Value="1023"
  Name="Unknown"
+ Guid="ead994e0-9797-4141-9a86-cbad102b9b49"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1281,56 +1455,69 @@ This gives the number of axles of the single unit (fixed train set or locomotive
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_AXLELOADCAT"
+ Guid="a6fe19b8-6e08-4251-b0f7-d320a13410a1"
 >
 <Comment>Axle load</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="A"
+ Guid="87735c10-126f-4945-8ec6-c92d0c8ba4c7"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="B1"
+ Guid="058001e8-7577-4740-adc5-e3243c60f932"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="B2"
+ Guid="5b8dc54d-7f6f-4cba-b2fa-5cedc954af1b"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="C2"
+ Guid="5a23c5e5-7a7c-4d90-ac48-e024a7ff7344"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="C3"
+ Guid="9df55fc0-0d80-4175-bcc3-29a904d7dfd1"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="C4"
+ Guid="e7240367-0f6e-4e52-a491-fe501871ab07"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="D2"
+ Guid="ba2bea01-43ab-4479-8059-57f1f29020d6"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="D3"
+ Guid="ae579f38-20d4-40b0-b9d3-aadea612a384"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="D4"
+ Guid="45f8a2e8-7c58-45b1-afcf-b47ac77a8e9a"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="D4XL"
+ Guid="706e4f48-d27b-4b61-9597-8a3ea44f96ec"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="E4"
+ Guid="f4ce4343-5ed6-4f8b-a15e-f05b2460ae2f"
 >
 </EnumValue><EnumValue
  Value="11"
  Name="E5"
+ Guid="d03d7306-a799-4a1e-84fd-a3d826ea0616"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1341,6 +1528,7 @@ This gives the number of axles of the single unit (fixed train set or locomotive
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_ITER"
+ Guid="0fc26ded-a9e6-451e-9b41-bdbda862b744"
 >
 <Comment>Number of iterations of a data set following this variable in a packet
 If N_ITER is 0 then no data set is following. Two nested levels of iterations can exist.</Comment>
@@ -1352,6 +1540,7 @@ If N_ITER is 0 then no data set is following. Two nested levels of iterations ca
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_VOLTAGE"
+ Guid="f5d861e5-88c7-4fcd-9f45-e50e927f716f"
 >
 <Comment>Traction System voltage
 It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE ≠ 0, by the country identifier of the traction system (NID_CTRACTION)</Comment>
@@ -1359,26 +1548,32 @@ It indicates the voltage of the traction system installed on a specific line or 
 <EnumValue
  Value="0"
  Name="Line_not_fitted_with_any_traction_system"
+ Guid="792f9566-795a-468d-b4e1-a356237ab941"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="AC_25_kV_50_Hz"
+ Guid="a5c1f302-250a-4469-a8ec-55ceb5475666"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="AC_15_kV_16_7_Hz"
+ Guid="b46b138a-ed37-46ef-a9c9-a3e72ec2bd1f"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="DC_3_kV"
+ Guid="a20c6b89-3c1c-422f-91e4-ab8b1125ee1e"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="DC_1_5_kV"
+ Guid="2c576a06-cf21-48ee-adbf-12a314bc0dd3"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="DC_600_750_V"
+ Guid="97ea8b65-030d-46c3-b171-471c8808307a"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1389,6 +1584,7 @@ It indicates the voltage of the traction system installed on a specific line or 
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_CTRACTION"
+ Guid="3555613c-4d32-4633-a1d9-5114bffeba30"
 >
 <Comment>Country identifier of the traction system
 It identifies the information, additional to M_VOLTAGE, required to fully define the traction system.</Comment>
@@ -1400,6 +1596,7 @@ It identifies the information, additional to M_VOLTAGE, required to fully define
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_AIRTIGHT"
+ Guid="98a9077f-4f2b-48c7-902f-22fa80a105c5"
 >
 <Comment>airtight system presence
 indicates whether the train is fitted with an airtight system or not.</Comment>
@@ -1407,18 +1604,22 @@ indicates whether the train is fitted with an airtight system or not.</Comment>
 <EnumValue
  Value="0"
  Name="Not_fitted"
+ Guid="c6a848ee-f1c4-4be5-8c77-e380d8e1b80e"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Fitted"
+ Guid="884492ed-fe8e-4463-a22f-c2a23ee09e39"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Unknown"
+ Guid="dd4d260a-8826-4955-8afd-e222a1643513"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="27f49d20-c5d4-4ef4-b20c-58c57662bc17"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1429,14 +1630,17 @@ indicates whether the train is fitted with an airtight system or not.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_BRAKE_COMMAND_STATE"
+ Guid="5c7f3d57-ea91-4f59-b46a-95d7d399164c"
 >
 <ReqRef
  Id="be2c4bda-9cbc-42ba-b3f9-48e0867b8f53"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9909ac97-805c-4f75-83e7-4d1f3b2a78fe"
 >
 </ReqRef><ReqRef
  Id="cb3458d8-a8bd-47d7-b410-3cd6789a56cd"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7c9b3f08-f212-47bc-aad2-11ed0a523968"
 >
 </ReqRef><Comment>Brake command state
 It contains the command state of the brakes</Comment>
@@ -1444,10 +1648,12 @@ It contains the command state of the brakes</Comment>
 <EnumValue
  Value="0"
  Name="Not_commanded"
+ Guid="7d033322-db17-44f6-8dfe-b63f4e8a6570"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Commanded"
+ Guid="f60c78f2-0a38-4cb8-a4bd-45d46ce84dbc"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1458,16 +1664,19 @@ It contains the command state of the brakes</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_ADHESION"
+ Guid="0e8d79ad-69e6-4772-aa5f-af62d0390fd2"
 >
 <Comment>Adhesion factor</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="Slippery_rail"
+ Guid="2360d068-643f-4caa-a8fa-6c5712a5beb7"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Non_slippery_rail"
+ Guid="c33db9c5-0014-4daf-87b9-c1c11c735ac6"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1478,6 +1687,7 @@ It contains the command state of the brakes</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_RIU"
+ Guid="5312dd99-981a-4067-9608-60173e4939b4"
 >
 <Comment>Identity of radio infill unit 
 This variable provides the identity of the RIU belonging to NID_C. The RIU ETCS identity is given by NID_C + NID_RIU</Comment>
@@ -1489,6 +1699,7 @@ This variable provides the identity of the RIU belonging to NID_C. The RIU ETCS 
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_MN"
+ Guid="ee3f82b5-7fb0-49e5-8e15-90c57a2d30eb"
 >
 <Comment>Identity of Radio Network
 The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character &quot;F&quot;. For further information about NID_MN refer to Subset-54.</Comment>
@@ -1500,6 +1711,7 @@ The NID_MN identifies the GSM-R network the calling mobile station has to regist
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_RBC"
+ Guid="567e6e68-f952-4857-97bc-4e8a2861b586"
 >
 <Comment>RBC ETCS identity number
 This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS identity is given by NID_C + NID_RBC.</Comment>
@@ -1507,6 +1719,7 @@ This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS 
 <EnumValue
  Value="16383"
  Name="Unknown"
+ Guid="c7c80a54-8a8c-430a-8612-4fe0073de254"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1517,6 +1730,7 @@ This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS 
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_RADIO"
+ Guid="47a4fb44-8813-4ff8-b79f-956d30c3aa13"
 >
 <Comment>Radio subscriber number.
 Quoted as a 16 digit decimal number.</Comment>
@@ -1528,6 +1742,7 @@ Quoted as a 16 digit decimal number.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_EVENTS"
+ Guid="669ec606-0c7b-49e1-8e7d-5fbf3e9e199a"
 >
 <Comment>Events on board
 Record the events for train safety which take place on board during normal train operational</Comment>
@@ -1535,50 +1750,62 @@ Record the events for train safety which take place on board during normal train
 <EnumValue
  Value="0"
  Name="Not_used"
+ Guid="1f85bd1d-98d0-4994-9bbf-a4a655fb9dbb"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Service_brake_failure"
+ Guid="7ff21288-8c24-4529-bd47-394590ce2916"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Standstill_supervision_intervention"
+ Guid="ac759852-e997-4c0d-89b9-66d747dca930"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Roll_away_supervision_intervention"
+ Guid="0876205f-a4de-4527-8c88-ec7329275340"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Reverse_movement_intervention"
+ Guid="a0d2cd5a-be48-4254-9bbe-95a4e1be9231"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="Override_EOA"
+ Guid="94aafeb0-6a26-49f8-805b-174b25e67b04"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="Loop_transmission_error"
+ Guid="0295a17d-48a1-4870-abb8-22da25ccbd5f"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="Odometer_failure"
+ Guid="afa795dc-9e8f-4df3-95a1-b788686bcb17"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Passenger_brake_application"
+ Guid="f0ae6137-89d8-4933-8746-24efd67b1f5b"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="Version_incompatibility_with_RBC"
+ Guid="2dffdd55-fbc0-477e-8447-3520aadda3fa"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="Override_EOA_deactivated"
+ Guid="b68ed13b-90d0-4f20-8f4f-5f1ddc9f8430"
 >
 </EnumValue><EnumValue
  Value="11"
  Name="Stop_due_to_route_unsuitability"
+ Guid="332ae7fd-dd89-4406-9b40-f138a54461f2"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1589,6 +1816,7 @@ Record the events for train safety which take place on board during normal train
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="BIT"
+ Guid="b3dc15bb-23ec-4bfb-afb3-0921ba126491"
 >
 <Comment>One bit</Comment>
 </Range><Range
@@ -1599,10 +1827,12 @@ Record the events for train safety which take place on board during normal train
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_DRIVERACTIONS"
+ Guid="f8089ef8-6041-4741-9bf6-91a6182bd451"
 >
 <ReqRef
  Id="17d1d25c-06cf-4f97-b5ab-31e6ed708170"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2d08f8fc-5703-4704-b8f2-2cc2a31ce08e"
 >
 </ReqRef><Comment>Driver&apos;s actions
 This variable contains the driver&apos;s action</Comment>
@@ -1610,174 +1840,217 @@ This variable contains the driver&apos;s action</Comment>
 <EnumValue
  Value="0"
  Name="Ack_of_on_sight"
+ Guid="0b5df832-a528-407f-8d8a-8c4986b9eb5b"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Ack_of_shunting"
+ Guid="0d533e93-26d4-40de-a902-c20150577d30"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Ack_of_trip"
+ Guid="0751aeed-8dfc-4ebc-aeff-3e4990d0f87c"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Ack_of_staff_responsible"
+ Guid="1723c9fc-6fb3-46de-a486-33de3758ce3f"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Ack_of_unfitted"
+ Guid="9c683133-a59e-452f-b329-5656b40210a0"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="Ack_of_reversing"
+ Guid="4486b4c7-6536-4420-899d-67646dd8266e"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="Ack_level_0"
+ Guid="4a0969d5-4755-45e1-8b3f-c62328c63fe9"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="Ack_level_1"
+ Guid="0f0887e3-b489-4667-9311-1d0067288c95"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Ack_level_2"
+ Guid="d795aa60-804b-409f-8595-10e5145e4795"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="Ack_level_3"
+ Guid="66ccb997-3acb-4efe-9cf4-0be44dcfc1e7"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="Ack_level_NTC"
+ Guid="4e86f00d-612e-468d-97de-727d69c0f44f"
 >
 </EnumValue><EnumValue
  Value="11"
  Name="Shunting_selected"
+ Guid="ba830836-918d-4dfe-88b6-a8f5f4cfaa37"
 >
 </EnumValue><EnumValue
  Value="12"
  Name="Non_leading_selected"
+ Guid="bcd4a92f-2128-4e7f-87a2-f1fe49c2bc74"
 >
 </EnumValue><EnumValue
  Value="13"
  Name="Ack_limited_supervision"
+ Guid="09e45c34-84cb-4e93-a6c8-3efac0f44310"
 >
 </EnumValue><EnumValue
  Value="14"
  Name="Override_EOA_selected"
+ Guid="1b5df3d4-d176-4a1d-b9f2-94aae4868786"
 >
 </EnumValue><EnumValue
  Value="15"
  Name="__Continue_shuntting_on_desk_closure__selectedC"
+ Guid="8e9c4cdb-afd4-464b-a59b-23e249e24682"
 >
 </EnumValue><EnumValue
  Value="16"
  Name="Brake_release_acknowledgment"
+ Guid="2ca3d62d-7cab-4fd2-b2bf-89aa4f044a53"
 >
 </EnumValue><EnumValue
  Value="17"
  Name="Exit_of_shunting_selected"
+ Guid="62571679-6f79-4bc7-a30f-02f91761e529"
 >
 </EnumValue><EnumValue
  Value="18"
  Name="Isolation_selected"
+ Guid="6c874bb9-e89f-4f16-8761-229fcef656f3"
 >
 </EnumValue><EnumValue
  Value="19"
  Name="Start_selected"
+ Guid="520163b2-0a91-4644-9d6a-45bb944ed666"
 >
 </EnumValue><EnumValue
  Value="20"
  Name="Train_data_Entry_requested"
+ Guid="eb0d8652-bae1-4c68-926d-34340b47f841"
 >
 </EnumValue><EnumValue
  Value="21"
  Name="Validation_of_the_train_data"
+ Guid="d64ab702-10d5-4d89-9bd5-9acdd4e88ced"
 >
 </EnumValue><EnumValue
  Value="22"
  Name="Confirm_track_ahead_free"
+ Guid="5ad988d1-15ce-4167-8074-5eecb79e2a15"
 >
 </EnumValue><EnumValue
  Value="23"
  Name="Ack_of_Plain_Text_Messages"
+ Guid="1e2794b5-2062-4dc7-a90a-396b757cef26"
 >
 </EnumValue><EnumValue
  Value="24"
  Name="Ack_of_Fixed_Text_Messages"
+ Guid="4af83956-c08a-4802-b3c4-9fc685443fbe"
 >
 </EnumValue><EnumValue
  Value="25"
  Name="Request_to_hide_supervision_limits"
+ Guid="64851df9-c365-42da-8ca5-938597e8539a"
 >
 </EnumValue><EnumValue
  Value="26"
  Name="Train_integrity_confirmation"
+ Guid="4376fbc1-95ab-4913-9eaf-6be2771bc62c"
 >
 </EnumValue><EnumValue
  Value="27"
  Name="Request_to_show__permitted___target__speed___target_distance"
+ Guid="0f7810c0-3734-4208-92f5-5d92fb19baa7"
 >
 </EnumValue><EnumValue
  Value="28"
  Name="Ack_SN_mode"
+ Guid="95d0e1a6-f752-46cb-bbe3-1c0806ffc8f2"
 >
 </EnumValue><EnumValue
  Value="29"
  Name="Change_of_language"
+ Guid="59fcba82-e306-4623-8894-9a1071e1bd74"
 >
 </EnumValue><EnumValue
  Value="30"
  Name="Request_to_show_geographical_position"
+ Guid="9eb8a8d7-aed2-4664-a74f-56f736dda9e4"
 >
 </EnumValue><EnumValue
  Value="31"
  Name="Spare"
+ Guid="ad599f29-6983-4aed-9bc3-958d85223cfb"
 >
 </EnumValue><EnumValue
  Value="32"
  Name="Spare"
+ Guid="2e28c9b2-a91c-4096-a5af-8d949a90e4e4"
 >
 </EnumValue><EnumValue
  Value="33"
  Name="Request_to_hide_geographical_information"
+ Guid="9f5686ab-b7d4-4de2-883a-4a4b293632bb"
 >
 </EnumValue><EnumValue
  Value="34"
  Name="Level_0_selected"
+ Guid="357fe14f-5185-4583-a579-939efae5d783"
 >
 </EnumValue><EnumValue
  Value="35"
  Name="Level_1_selected"
+ Guid="1ba38575-f92f-449b-ad22-e50eac6179d2"
 >
 </EnumValue><EnumValue
  Value="36"
  Name="Level_2_selected"
+ Guid="f1d671ee-0cea-4cac-bc2b-60d1f03bdebe"
 >
 </EnumValue><EnumValue
  Value="37"
  Name="Level_3_selected"
+ Guid="e844e73b-bc25-4870-af04-661aa40ca252"
 >
 </EnumValue><EnumValue
  Value="38"
  Name="Level_NTC_selected"
+ Guid="eee71828-f6ca-495d-b8e2-a2cee1349cd7"
 >
 </EnumValue><EnumValue
  Value="39"
  Name="Request_to_show_tunnel_stopping_area_information"
+ Guid="4d8a62bf-b8cf-4932-a81b-1c7308ba7a66"
 >
 </EnumValue><EnumValue
  Value="40"
  Name="Request_to_hide_tunnel_stopping_area_information"
+ Guid="ebac7f09-768b-484f-8642-ae27fefb610f"
 >
 </EnumValue><EnumValue
  Value="41"
  Name="Scroll_up_button_activated"
+ Guid="5c3f305e-71e7-410c-8f21-2df8650de4f9"
 >
 </EnumValue><EnumValue
  Value="42"
  Name="Scroll_down_button_activated"
+ Guid="b2fb13f3-d842-4f16-ad8b-d50e6573689f"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1788,6 +2061,7 @@ This variable contains the driver&apos;s action</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_BG"
+ Guid="00ed06c9-a30b-483c-a879-ab18d397a15d"
 >
 <Comment>Identity number of the balise group
 Identity number of a balise group or loop within the country or region defined by NID_C.</Comment>
@@ -1795,6 +2069,7 @@ Identity number of a balise group or loop within the country or region defined b
 <EnumValue
  Value="16383"
  Name="only_accept_balise_groups_containing_repositioning_information_for_the_running_direction__only_to_be_used_in_linking"
+ Guid="a16ebbf5-4bfa-487a-87d0-f0d816aa3087"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1805,6 +2080,7 @@ Identity number of a balise group or loop within the country or region defined b
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_C"
+ Guid="cf63aead-9408-4d58-b6fc-72967ce2d8b0"
 >
 <Comment>Identity number of the country or region
 Code used to identify the country or region in which the balise group is situated. These need not necessarily follow administrative or political boundaries.</Comment>
@@ -1816,40 +2092,49 @@ Code used to identify the country or region in which the balise group is situate
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_ERROR"
+ Guid="3418423f-fc6c-4853-93a6-8fb579ca1c0d"
 >
 <Comment>Identifier of the type of error</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="Balise_consistency__linking"
+ Guid="a5d9f02f-d359-4150-b2e3-8b3829e635fb"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Balise_consistency__message_error"
+ Guid="6e9f80bf-0f88-443e-9b28-fc14c2f34678"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Balise_consistency__unlinked_group"
+ Guid="ad935de5-fe45-4093-9e27-ed19529f6c5f"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Radio_consistency__message_error"
+ Guid="60c97f5f-165e-40ec-9c2a-1d91d958d7a6"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Radio_consistency__sequence"
+ Guid="40d380a4-57e3-42cc-acd9-84cf678e6194"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="Radio_consistency__radio_link"
+ Guid="4cb9bf1a-610c-44e0-8969-2806530ca7a1"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="No_fatal_error"
+ Guid="103f1060-e543-4e92-a327-cb134e322624"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="Fatal_error__equipment_in_SL_or_NL_mode"
+ Guid="76322d13-4880-4729-8216-660e80ecaf99"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1860,10 +2145,12 @@ Code used to identify the country or region in which the balise group is situate
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_ERRORBG"
+ Guid="2cc6a2af-ea90-45c4-a9d9-09fa3c14ff03"
 >
 <ReqRef
  Id="85571c61-c62b-4499-ae83-df5dba7d9c7f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="54bc46c9-c7a5-423a-93bd-730f34f4e08f"
 >
 </ReqRef><Comment>Identity number of the balise group which triggered the error.
 It contains the identity number of the balise group to which the error is related. NID_ERRORBG is identical to NID_BG except for the NID_ERRORBG Special value 16383 which has the meaning &quot;unknown&quot; and covers the case that, due to error, the balise group identity is unknown.</Comment>
@@ -1875,10 +2162,12 @@ It contains the identity number of the balise group to which the error is relate
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_STMX"
+ Guid="ddda7c51-49bb-459b-bc3d-b165c9d6456c"
 >
 <ReqRef
  Id="0fae287c-ec3d-45e6-bd37-dd90fc39be24"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0a8660cd-c754-44d7-b9f8-3177efa565c6"
 >
 </ReqRef><Comment>STM identification
 STM relevant for the event. For STM-packets or disconect request sentr from an STM or to a single STM, its value is given by the NID_STM as identified in Subset-58</Comment>
@@ -1886,6 +2175,7 @@ STM relevant for the event. For STM-packets or disconect request sentr from an S
 <EnumValue
  Value="255"
  Name="For_STM_packets_or_disconect_reauest_sent_to_all__connectd__STMs"
+ Guid="fa34ef02-dbd9-4708-bce7-4ce52ee87a77"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1896,28 +2186,34 @@ STM relevant for the event. For STM-packets or disconect request sentr from an S
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_STMEVENT"
+ Guid="b4860bd9-27fa-41e7-b6ad-90621a49f049"
 >
 <ReqRef
  Id="1794d8ed-2b89-4280-a497-a5d2126c637f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="984a94c9-79a2-4f26-88a8-1276a67cd87a"
 >
 </ReqRef><Comment>STM event type.</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="Disconnection"
+ Guid="e51b5f64-de2d-4e11-b698-b3ed33b8e7eb"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Display_of_system_status_message"
+ Guid="649f7e68-3dbc-47e7-af07-913cf5b678b1"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Reception_sending_of_STM_packet"
+ Guid="b77342a5-ebf4-43f2-8faf-5c4cabde4200"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="2c78af73-5758-4f2b-84ee-1c4a27f369be"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1928,10 +2224,12 @@ STM relevant for the event. For STM-packets or disconect request sentr from an S
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_DISCSENDER"
+ Guid="d646a6fb-03e0-4bef-a9d0-9240e823a852"
 >
 <ReqRef
  Id="19f38286-767b-433a-8bd2-981d51acf46a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b168e5c9-0666-4507-bf9f-327868b23e5b"
 >
 </ReqRef><Comment>Sender of disconnect request
 Sender of disconnect request (STM or STM control Function)</Comment>
@@ -1939,10 +2237,12 @@ Sender of disconnect request (STM or STM control Function)</Comment>
 <EnumValue
  Value="0"
  Name="Disconnect_request_sent_from_STM"
+ Guid="4d2bb891-a431-4b54-85c0-2131edc15af6"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Disctonect_request_sent_from_STM_Control_Function"
+ Guid="17bf8fbd-e7af-45e4-aa58-defff82f34cd"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1953,10 +2253,12 @@ Sender of disconnect request (STM or STM control Function)</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_DISCTYPE"
+ Guid="78d6b494-9508-40c6-9440-4ccca4f6eaf8"
 >
 <ReqRef
  Id="a7aa1cdf-ad7a-415c-9d68-aaa4883b1e19"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="252d8a7e-a8d0-45ac-aa75-f1caa5927e47"
 >
 </ReqRef><Comment>Type of disconnection
 Type of the disconnection, see subset-57 section 5.2.5.9</Comment>
@@ -1964,10 +2266,12 @@ Type of the disconnection, see subset-57 section 5.2.5.9</Comment>
 <EnumValue
  Value="0"
  Name="Final_disconnection"
+ Guid="5da6ede0-b843-4f76-9b09-395cb589fb49"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Non_final_disconnection"
+ Guid="b80e0c51-671b-44f0-85df-0178d352b25a"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -1978,10 +2282,12 @@ Type of the disconnection, see subset-57 section 5.2.5.9</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="STM_SYSTEM_STATUS_MESSAGE"
+ Guid="487435c5-ad53-4ad5-a609-48eb932bbaaf"
 >
 <ReqRef
  Id="e573b5aa-409b-409f-a9e7-65709733913d"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e53e3621-dd6c-4247-96a4-50693893a745"
 >
 </ReqRef><Comment>STM system status message
 System status messages displayed to the driver. A bit set to 1 means tgat tge cirresoponding systems status is displayed</Comment>
@@ -1989,14 +2295,17 @@ System status messages displayed to the driver. A bit set to 1 means tgat tge ci
 <EnumValue
  Value="1"
  Name="NTC_brake_demand"
+ Guid="871ca350-1084-4c3c-bc7c-cf7189af11c8"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="NTC_needs_data"
+ Guid="6ee977c3-fcef-47be-938c-906a959b7b47"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="NTC_failed"
+ Guid="9b190f87-b328-46e0-ad03-e1d55efba845"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2007,10 +2316,12 @@ System status messages displayed to the driver. A bit set to 1 means tgat tge ci
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_STMPACKET"
+ Guid="5ae29b10-d81b-45e6-8bb3-ce813c8c687e"
 >
 <ReqRef
  Id="9d7bf318-e590-4a4e-b92e-0aac575c829d"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="bcf088ff-d241-4b1e-b4ed-898442329d6b"
 >
 </ReqRef><Comment>STM packet identification.
 STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Comment>
@@ -2018,102 +2329,127 @@ STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Commen
 <EnumValue
  Value="6"
  Name="Override_activation"
+ Guid="ae35b4a3-c8e2-484e-a8fd-a356e70495d4"
 >
 </EnumValue><EnumValue
  Value="14"
  Name="State_order_to_STM"
+ Guid="53dd5e62-c685-4b61-a48b-0799c7e94994"
 >
 </EnumValue><EnumValue
  Value="15"
  Name="State_report_from_STM"
+ Guid="2718ce00-1872-4bf0-9221-f52fa7a30dd9"
 >
 </EnumValue><EnumValue
  Value="16"
  Name="Transition_variables_STM_max_speed_from_STM"
+ Guid="1c464b3f-cda6-4d06-95cb-65eb1fb4072b"
 >
 </EnumValue><EnumValue
  Value="17"
  Name="Transition_variables_STM_system_speed_and_distance_from_STM"
+ Guid="7ef5701c-09aa-4943-be9a-f411a701aedf"
 >
 </EnumValue><EnumValue
  Value="18"
  Name="National_trip_procedure"
+ Guid="1ec7185f-da38-4a8f-8184-8bcb5344f849"
 >
 </EnumValue><EnumValue
  Value="19"
  Name="Spare"
+ Guid="a5ff701d-b1b8-4b8d-90b0-76e77cb5eaee"
 >
 </EnumValue><EnumValue
  Value="20"
  Name="Antenna_BTM_ID"
+ Guid="ab84ed74-0e51-48d3-ac84-08a2f48642eb"
 >
 </EnumValue><EnumValue
  Value="21"
  Name="Test_procedure_permission_request"
+ Guid="c7e18163-0f02-486e-8af3-c3f3cd05f6f0"
 >
 </EnumValue><EnumValue
  Value="22"
  Name="Test_procedure_permisison"
+ Guid="bbae874c-b4b6-4129-a912-63751d30b96d"
 >
 </EnumValue><EnumValue
  Value="31"
  Name="Active_DMI_channel"
+ Guid="b7964fb2-d1d3-4fd4-a289-c826da98997a"
 >
 </EnumValue><EnumValue
  Value="32"
  Name="Button_request"
+ Guid="622aad1c-5705-4344-b3ca-6ea52edc689a"
 >
 </EnumValue><EnumValue
  Value="33"
  Name="Spare"
+ Guid="da411459-3215-4197-8716-9bcf9d8979ae"
 >
 </EnumValue><EnumValue
  Value="34"
  Name="Button_event_report"
+ Guid="e326bfa0-aec8-4276-ab94-5fec1654a10f"
 >
 </EnumValue><EnumValue
  Value="35"
  Name="Indicator_request"
+ Guid="8caa47b1-6f64-463a-ad8a-5c9b7f04d358"
 >
 </EnumValue><EnumValue
  Value="38"
  Name="Text_message"
+ Guid="11f39424-2596-443f-98bc-19798322682e"
 >
 </EnumValue><EnumValue
  Value="39"
  Name="Delete_text_message"
+ Guid="870bf86e-e2e5-4d3b-8ab3-bcbb8b39c56d"
 >
 </EnumValue><EnumValue
  Value="40"
  Name="Acknowledgement_reply"
+ Guid="5057de58-85c6-4a59-a053-d015f61f9561"
 >
 </EnumValue><EnumValue
  Value="43"
  Name="Speed_and_distance_supervision_information"
+ Guid="d1baa2ea-d965-4437-85e4-4ebb20d716d2"
 >
 </EnumValue><EnumValue
  Value="46"
  Name="Sound_command"
+ Guid="f03b2c83-dd2f-440e-9a07-67b1b1f6e169"
 >
 </EnumValue><EnumValue
  Value="47"
  Name="ETCS_BTM_status_message_to_STM"
+ Guid="82c6c04e-5cc5-44db-81c8-5305d25a5c2c"
 >
 </EnumValue><EnumValue
  Value="128"
  Name="STM_emergency_and_service_brake_command_to_brake_interface"
+ Guid="cbf0d658-2a4f-4cb2-bd58-d2dec10555c9"
 >
 </EnumValue><EnumValue
  Value="129"
  Name="STM_specific_brake_control_command"
+ Guid="0f77ce1b-0a66-4918-8ca3-f1dbe921f0e6"
 >
 </EnumValue><EnumValue
  Value="130"
  Name="STM_commands_to_train_interface"
+ Guid="275d5e23-2d85-4293-917b-8794d6f0f723"
 >
 </EnumValue><EnumValue
  Value="161"
  Name="NTC_juridical_data_from_STM"
+ Guid="a83606a3-b5a9-4431-aa77-0753b2c81d6e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2124,12 +2460,9 @@ STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Commen
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_STMPACKET"
+ Guid="5793d850-a297-4794-a9bc-4920a19d1706"
 >
-<ReqRef
- Id="0e78f9c8-b63a-4899-a5c9-2ad2a29439e8"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><Comment>Length of the STM packet.</Comment>
+<Comment>Length of the STM packet.</Comment>
 </Range><Range
  MinValue="0"
  MaxValue="255"
@@ -2138,44 +2471,54 @@ STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Commen
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_DISCREASON"
+ Guid="e8b14e70-afc3-47d7-bfff-0a6117a86bed"
 >
 <Comment>Disconnect reason.</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="Disconnect_request_from_application"
+ Guid="7119760b-e2cf-4094-9aa1-830f61e54cd8"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Bad_version_error"
+ Guid="8d6caba4-d69d-478c-a198-e7e445e5ef20"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Error_during_connection_set_up"
+ Guid="27d2806c-503b-4344-bfa9-6b423ff6ce50"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Authentication_error"
+ Guid="1c330487-da55-4978-b024-18c169e180bf"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Connection_set_up_for_existing_connection"
+ Guid="75c2ee0d-3487-40f3-82d6-98ba0961a303"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="Idle_cycle_timeout"
+ Guid="74ce1f3a-daa3-48d9-9c54-116f292db7d4"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="First_incorrect_receive"
+ Guid="46782767-5f12-477d-8bae-33456ed4e8d5"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="Second_incorrect_receive"
+ Guid="0a9d4cf5-cf66-410c-9663-59407fabaee4"
 >
 </EnumValue><EnumValue
  Value="31"
  Name="Other_reason_for_disconnec_issued_by_safe_link_layer"
+ Guid="d86e30f5-7412-4af3-a873-a4be4cfd452b"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2186,10 +2529,12 @@ STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Commen
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_COLD_MVT"
+ Guid="05cf0d83-e72e-4dc3-918d-f8c07528647f"
 >
 <ReqRef
  Id="cff4f20a-e083-4240-a1c6-acb8332718a6"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="cefb680a-e2e5-421a-9185-38144e278621"
 >
 </ReqRef><Comment>Cold movement detector information.
 Indicates whetehr no cold movement has ocurred or if a cold movement has been detected or if no cold movement is available.</Comment>
@@ -2197,18 +2542,22 @@ Indicates whetehr no cold movement has ocurred or if a cold movement has been de
 <EnumValue
  Value="0"
  Name="No_cold_movement_ocurred"
+ Guid="6f610773-fcba-4328-a11b-2ff78750caa8"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Cold_movement_detected"
+ Guid="2fc79dc6-8116-442e-bc59-3fb3a9f52f0c"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="No_cold_movement_information_available"
+ Guid="638b884b-f47a-455f-820d-c431a1e7aae2"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="32b12ee8-cf6c-4e49-85fb-620406d94938"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2219,6 +2568,7 @@ Indicates whetehr no cold movement has ocurred or if a cold movement has been de
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_TEXT"
+ Guid="cfb45689-9987-41c0-8ad9-eed976f686a9"
 >
 <Comment>Fixed message to be displayed.
 Q_TEXT is a pointer to select a fixed text message from the defined table. The language selected by the driver for the MMI shall be used additionally as a qualifier to choose the appropriate language table.</Comment>
@@ -2230,6 +2580,7 @@ Q_TEXT is a pointer to select a fixed text message from the defined table. The l
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_TEXT"
+ Guid="9f31e5be-1859-42f2-80a6-a287b4cbda6a"
 >
 <Comment>Length of text string
 L_TEXT defines the length of a text string (L_TEXT * X_TEXT)</Comment>
@@ -2241,10 +2592,12 @@ L_TEXT defines the length of a text string (L_TEXT * X_TEXT)</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_SDMTYPE"
+ Guid="f5a344d3-6e25-448c-87e6-bfa6dbfed553"
 >
 <ReqRef
  Id="d78b5d9b-a778-4992-922f-a1bfa907c33a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="19a4613d-b0b9-4133-bd77-9a0c0029c449"
 >
 </ReqRef><Comment>Speed and distance monitoring type
 Type of the speed and distance monitoring</Comment>
@@ -2252,18 +2605,22 @@ Type of the speed and distance monitoring</Comment>
 <EnumValue
  Value="0"
  Name="Ceiling_speed_monitoring__CSM"
+ Guid="64efa26b-9bab-4a83-8f33-783ab79d0bac"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Pre_indication_monitoring__PIM"
+ Guid="fc4f487f-d1be-4301-b6bd-794676901041"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Target_speed_monitoring__TSM"
+ Guid="93ea2c87-ef44-4662-b6eb-a07884a15ad6"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Release_speed_monitoring_RSM"
+ Guid="7a49943b-4827-4bb7-b6a3-987dc20944a3"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2274,10 +2631,12 @@ Type of the speed and distance monitoring</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_SDMSUPSTAT"
+ Guid="4cbb8948-09d7-4d02-b024-13d3d1617692"
 >
 <ReqRef
  Id="e0d596d2-c164-4d5b-bc28-5a2988c7db8e"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c67057fd-247f-4d48-9451-646e0016e7d0"
 >
 </ReqRef><Comment>Speed and distance monitoring supervision status
 Supervision status of the speed and distance monitoring</Comment>
@@ -2285,22 +2644,27 @@ Supervision status of the speed and distance monitoring</Comment>
 <EnumValue
  Value="0"
  Name="Normal_status"
+ Guid="6ca7d9b1-47bc-4695-bb73-ca6f13de7469"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Indication_status"
+ Guid="ea713d0d-7e61-4923-b855-de7efc192a8a"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Overspeed_status"
+ Guid="44616278-42d1-4f9d-bca4-7a5c3c1b4192"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Warning_status"
+ Guid="2328be66-8c47-49f4-82dc-55a0e8f75fc7"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Intervention_status"
+ Guid="3d4e7b7f-7375-4c5f-a6f5-f47a5e9ad118"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2311,21 +2675,15 @@ Supervision status of the speed and distance monitoring</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_PERM"
+ Guid="180255c7-8f17-45a6-bb98-927c2981d811"
 >
-<ReqRef
- Id="6b567e14-e137-4612-a782-45e646e87d7c"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><ReqRef
- Id="752a7f7c-3b26-4deb-b950-a92c5a32fa72"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><Comment>Permitted speed
+<Comment>Permitted speed
 Permited speed displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="1023"
  Name="none"
+ Guid="b434e2b2-45b8-47cb-a87a-e307900fc699"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2336,21 +2694,15 @@ Permited speed displayed to the driver</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_FLOI"
+ Guid="3dac98b2-d2a9-4ec7-af9d-cdd67f30f4ef"
 >
-<ReqRef
- Id="177494e0-d2f0-4448-8b06-b8d4b9d4c16c"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><ReqRef
- Id="ecba5d6f-0d27-4108-b60c-672a1db4e53c"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><Comment>First line of intervention speed
+<Comment>First line of intervention speed
 FLOI speed displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="1023"
  Name="none"
+ Guid="92d8bf05-9c2e-4b8f-8f2f-c73d2ada980c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2361,6 +2713,7 @@ FLOI speed displayed to the driver</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_TARGET"
+ Guid="7542e557-cb8a-4604-bd4f-d738da98b68f"
 >
 <Comment>Target speed
 Target speed displayed to the driver</Comment>
@@ -2368,6 +2721,7 @@ Target speed displayed to the driver</Comment>
 <EnumValue
  Value="1023"
  Name="none"
+ Guid="97bf9b4b-99ce-4b89-aedd-ed0ee0007115"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2378,6 +2732,7 @@ Target speed displayed to the driver</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_TARGET"
+ Guid="40eb5b03-e220-4048-afd5-48f701ca5faf"
 >
 <Comment>Target distance
 Target speed displayed to the driver</Comment>
@@ -2385,6 +2740,7 @@ Target speed displayed to the driver</Comment>
 <EnumValue
  Value="32767"
  Name="none"
+ Guid="cfe7f59b-0b73-4bc3-b1f4-69ff21328ebf"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2395,17 +2751,15 @@ Target speed displayed to the driver</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_RELEASE"
+ Guid="3c3a2d94-de18-42ca-9700-1ca4faf638eb"
 >
-<ReqRef
- Id="7e5aaa18-69c4-471f-8580-c19a54d18408"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><Comment>Release speed
+<Comment>Release speed
 Release speed displayed to the driver.</Comment>
 <SpecialValues>
 <EnumValue
  Value="1023"
  Name="None"
+ Guid="dc285fd8-e828-45b7-8680-dedca5c432d8"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2416,16 +2770,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE01"
+ Guid="c6839970-59eb-4df8-baf7-3f07634219ec"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="aa4bac9d-e3a6-42c9-b233-7aecf8a1c424"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="8fa7f27b-9586-4656-ac9f-aadeaf228ca5"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2436,16 +2793,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE02"
+ Guid="d1cacb96-4ac8-46e2-86d2-56d421e9f703"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="ee327ed3-1304-4ff1-91d4-bcdce68ac8e1"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="a06c9a68-5c72-41e0-ab48-4be93cd9473c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2456,16 +2816,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE03"
+ Guid="635fc4c5-9c95-42f8-a17a-2b5cfc840878"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="188f99fe-bfc5-4d3e-b77d-39f658904be2"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="5f159e03-887c-4055-8467-3cdba589b7ba"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2476,16 +2839,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE04"
+ Guid="0117fbfb-679b-4c99-a30a-0e6965d61215"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="2f894060-5936-4506-b8bb-fe7f8be2eb88"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="e9d0b133-f589-440a-b0e9-87671c9f4501"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2496,16 +2862,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE05"
+ Guid="92b55dc0-1865-436d-946f-34b06175ea52"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="1ca2e2b5-d5c2-4133-8ccd-151717494423"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="943d2c2a-b12a-4b27-afb0-e7de5832729b"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2516,16 +2885,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE06"
+ Guid="a923120d-6781-472d-a54e-945b13dd7261"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="a3aa71d3-eaa9-4a84-a063-5ff290a5e70f"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="2047f0e2-1400-4e47-842f-69773ae1c129"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2536,16 +2908,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE07"
+ Guid="9f84fd03-514a-4344-8eb1-c4a846079215"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="d29c820d-e421-40a8-9351-5fef7f8636f1"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="5230e977-094c-42d5-92f4-9f63bfa1720a"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2556,16 +2931,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE08"
+ Guid="32f8f94f-a5d7-4d10-9d44-b7d156393e93"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="4c0e1352-e40f-4c80-b7ed-533918def032"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="58fb0e7b-2b7b-48bb-ae31-87be4d5556f6"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2576,16 +2954,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE09"
+ Guid="800d9615-dec0-45fb-918e-80cf8d4e2809"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="d998db33-3760-49f6-a24b-21010f8aa5b6"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="6602861d-94e2-40cc-83e0-1a471af689c5"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2596,16 +2977,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE10"
+ Guid="a308157a-e5c9-46ea-ab44-405ffa7317dc"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="a71cbe25-c17e-474d-86ba-bb5831f4e08b"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="19d2b2da-3f89-4a3c-a4b1-a751a2331074"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2616,16 +3000,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE11"
+ Guid="ba4266f0-e939-44ef-afc3-bbe02c617ff3"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="27b1ad5e-b5fb-4616-b660-3770c56a2589"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="b8721349-1464-4976-9f08-50d4639a9b79"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2636,16 +3023,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE12"
+ Guid="cef3ce5d-697f-466e-8297-73b33002f490"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="16a21880-a898-4357-a433-0ec4b9767223"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="7f5d6b66-4ea3-4eba-b64c-390dcdf6d2d2"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2656,16 +3046,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE13"
+ Guid="4ae18e2c-3355-4a93-9f2c-9fbdf9a5304b"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="0470a0c9-2880-44a3-a9c1-778af70eaaa0"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="24b7ee42-5044-47b3-82e8-a12285af8474"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2676,16 +3069,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE14"
+ Guid="23fa71d0-85c9-4d02-9858-8e209455511e"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="41cea548-4b8b-4f80-af88-d8ca3f6f6a71"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="8502bda6-dced-44ea-8e75-0d4510e36066"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2696,16 +3092,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LE15"
+ Guid="f33dcb0f-b3f0-43b7-a05f-6d5f2c1e5d82"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="95c1039c-2719-4869-8af6-7e2b562c20b8"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="7f83a440-e02e-4e80-9716-b448ea7e566c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2716,16 +3115,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO01"
+ Guid="a8ef6032-7628-46aa-a8ff-27f16c51ee92"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="15e956f2-6e7f-4e11-992e-4a1737f11917"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="05cb9cdc-b944-4c30-b11a-53236e90a2c7"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2736,16 +3138,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO02"
+ Guid="8541dac8-ece5-4b1f-92a4-53528d937ac7"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="9f331d73-794b-4f17-aa50-13f15d3000dd"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="07bf0ecf-9c0f-4521-993b-4489917b007e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2756,16 +3161,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO03"
+ Guid="ccceab7f-3e15-4e42-a85b-78fa62227fbd"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="86b2fc9f-d456-4411-a555-8aa97915004c"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="467b4187-6dad-4763-a02d-a8f64e21f812"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2776,16 +3184,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO04"
+ Guid="306ccc3f-9d02-4f2d-be6d-410e0472afa4"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="6429ea48-1442-4056-b203-f00b556b4bae"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="c57f05c4-2bc7-4a6d-8058-4140054eaf34"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2796,16 +3207,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO05"
+ Guid="9f08eeec-34d3-499e-ac81-22940c45147c"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="de7af73c-0ccb-4dc3-88d8-f644dd1c1917"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="ef52d9da-ceaa-46e4-a529-334fd236b711"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2816,16 +3230,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO06"
+ Guid="933cfaa9-4b38-4374-aced-248a88810b12"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="b5a9af60-1118-481e-91a3-6d780c4f66e8"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="36ae9bbc-6d7d-484a-b26c-8d507553a9b3"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2836,16 +3253,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO07"
+ Guid="a2f5004a-c578-4c2e-8a88-48aa9c20f2ef"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="58a0dd99-250a-434e-8823-c47a7d687c52"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="c0a5398a-612a-4f49-b6ef-068144c079ad"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2856,16 +3276,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO08"
+ Guid="b7f2b699-b4ad-4b22-989d-48dab8088743"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="e89cc61f-b3ac-45b0-803b-4057a5ead181"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="e523016e-f375-4b5a-86af-8d1bd94677af"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2876,16 +3299,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO09"
+ Guid="06208dbd-4ba2-4e57-b135-d989b00f53a0"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="1432c0f1-2ce8-4991-9694-61f978533e8b"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="058471b5-5813-42c7-80ad-ceedfefa8951"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2896,16 +3322,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO10"
+ Guid="e4cc6b0c-8e4d-4844-b88f-765d32f56edb"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="c6d1bae5-cddd-4751-9443-c3ebecea55e4"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="3bf7251e-10d3-4714-be3c-e52b28e0a9b0"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2916,16 +3345,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO11"
+ Guid="1d5067ad-f548-4299-878a-9cd9f94fa4e1"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="b38b795d-a61a-4b91-8e89-e69dd6f2e488"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="05e476e2-ae94-405f-b25b-014f36d754fc"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2936,16 +3368,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO12"
+ Guid="dc1c5aa8-3b8d-463e-ab6d-6a7a5a726c7d"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="af871664-aab7-44b6-85c8-eeb654b10490"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="6abef767-e3f5-4d75-9396-1400bfc95fe1"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2956,16 +3391,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO13"
+ Guid="2819ff42-de41-4041-8f30-ae1990d1d07d"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="0b8240cf-828b-49dd-b4fa-84166607757f"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="04048efc-1ff5-4392-a0db-bc9220fe7ba2"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2976,16 +3414,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO14"
+ Guid="5115cded-2dfc-4a43-bf1c-fe922d60298f"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="82bd3151-acd0-4c09-97b9-79d65f7388c0"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="d9b60aa7-29ac-46da-8f8e-ae2b19826760"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2996,16 +3437,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO15"
+ Guid="4b6708de-52cd-4769-a37a-e5eb4af974f0"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="2b58e097-90c1-4b9b-a153-06ee70a30d28"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="3b900a61-5806-423b-9a74-dd57605c5e1d"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3016,16 +3460,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO16"
+ Guid="ea0b48c1-9df2-48d8-8d97-8d6b39f23094"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="9dd8e825-eaa9-400a-990d-39cc56b424eb"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="a99fb806-66b7-41ba-915f-a18273a37720"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3036,16 +3483,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO17"
+ Guid="88f58720-1387-4579-b20c-164c0e1941c0"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="ffd42360-51f6-449f-97f5-4fbd76220029"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="a9f56fc9-5cb7-4f18-b38f-237a657f2370"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3056,16 +3506,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO18"
+ Guid="2b90f76c-fac6-499a-a6c4-d457d87429dd"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="b1f3b336-f120-4421-a62c-f4390af60dad"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="2b617831-adb1-4eca-80ea-f26dde6839be"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3076,16 +3529,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO19"
+ Guid="2f7c78d2-3282-43fe-a516-cfecb015f72f"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="fe5276c0-4cb1-49b6-845e-b06b00a56a9d"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="2c8d8dc8-0cce-44ad-94bd-5235255acc5e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3096,16 +3552,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO20"
+ Guid="e3915925-6244-4cd8-acdf-682d367d83a9"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="5c0da635-077d-454b-8939-18f7c7272d33"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="324d175f-b536-46a8-899c-0aa41b23aed7"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3116,16 +3575,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO21"
+ Guid="063b4f7a-d19d-458e-be3a-46adfc497cb5"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="123a796a-c0de-4783-aa87-3f99229d006e"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="279b24a5-179a-4e56-9890-80af0308820e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3136,16 +3598,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_MO22"
+ Guid="25979c8f-530c-4451-b848-77b98fac2dce"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="955faff9-6bd4-4706-9061-508ecef381c4"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="c6544355-7243-4f9a-976c-f5d8584a6b93"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3156,16 +3621,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_ST01"
+ Guid="9b44b701-d1d4-4b97-bc73-0a679e2e5f17"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="84c72d43-dd11-44cb-8b8d-4eda1426ddf0"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="74514ee5-4e1a-4e55-9f40-5084973e05cd"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3176,16 +3644,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_ST02"
+ Guid="6604d64a-1d65-459d-b9fa-07adcfcb4367"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="f98a1408-03b6-401c-9c0f-17abe667cdd7"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="db18f14d-22c7-43ce-8215-031de87c0cb5"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3196,16 +3667,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_ST03"
+ Guid="5d286c90-5b4b-4d7a-ad2a-2e3a36df700b"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="eae0fb64-3ab2-45a6-98fb-49351b8ac4d5"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="0f049821-56af-451e-997f-b385b6437676"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3216,16 +3690,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_ST04"
+ Guid="05392fb7-b263-4cf1-a0be-914187e8c13b"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="5f7e6bdc-adb5-4f57-8fdd-cd246e48e011"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="a30289cb-9ec9-4878-8e2e-bab01310cc27"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3236,16 +3713,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_ST05"
+ Guid="f570e136-e55c-4c7e-a232-e6d4af2d68bb"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="109c16e5-39ca-4dcb-9762-7309977ebcf4"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="e08fa92a-987d-4df4-88af-c9b32187b58b"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3256,16 +3736,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_ST06"
+ Guid="a5e7b5d9-9852-4344-be32-ee0af56b79b9"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="3d2b1667-7aa1-4659-8e06-b9e08f40245b"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="bc8a29e3-e9ee-49d3-8989-734db99a3c75"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3276,16 +3759,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC01"
+ Guid="d5ef629e-1c9a-48ea-96bf-231779647085"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="a9fe9e0b-3539-4851-9dcf-f1d097d95aaa"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="4a322862-5877-49c4-927e-5bf98198d4fe"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3296,16 +3782,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC02"
+ Guid="5f66fe96-76f8-43b4-8c09-ea9ac9790415"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="b1f4ad1f-3cc0-4e36-92e5-fbc46da7121b"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="703ce687-e633-4ec6-bc84-76e8dcdb54e9"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3316,16 +3805,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC03"
+ Guid="3cb00112-6f3b-4440-9ed3-4560a55f0e36"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="a92a4e11-fe0d-4406-bb31-a58746ba9ccf"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="da2b13da-22bb-4c74-81dc-673f64b214ce"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3336,16 +3828,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC04"
+ Guid="bc6ec964-a119-4fc5-a266-a0bfadfe44f4"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="bf49df2e-639e-496d-bca7-2d2cfe0350a6"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="ff62babd-5ea2-40aa-b83a-f07ec6b2efb8"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3356,16 +3851,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC05"
+ Guid="916f66b8-af9d-497f-8804-1838148f3b48"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="2d7a119f-cca3-430b-86c5-50c7c1d5be7a"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="e54bb1e3-539c-4884-b92c-aa1e9ead3358"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3376,16 +3874,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC06"
+ Guid="56755511-9202-4685-baef-af5e11d22c0f"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="03070286-f5e9-4e8f-b5f9-5201c2e49ab0"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="c7cd113c-6522-476a-b896-94cccba3ed8e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3396,16 +3897,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC07"
+ Guid="c573f759-7390-4203-98c8-0b98a7bea560"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="4d1efd63-5d7d-4cd0-8a50-4f0bb15f2f52"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="0ec90107-1e7d-45f8-883f-beaca69690b7"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3416,16 +3920,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC08"
+ Guid="5c6ab63e-e0ce-4500-adb3-cc4373b842a0"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="b41abe3a-cb6e-4918-a52d-c042af07afd1"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="297d1c26-3420-4953-ae32-25c6aa7698ff"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3436,16 +3943,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC09"
+ Guid="3fec8d9a-36ba-47ba-a051-2344417f75fd"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="26cc7118-ddf3-4f3a-87b1-ee1600f8d095"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="3b76a919-b64a-4371-bb61-f5e051436240"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3456,16 +3966,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC10"
+ Guid="c64d8449-4804-40da-a395-bb7f08ea998d"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="c4d19003-e4e3-4370-9478-f8ca0e91131f"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="21f6e1e0-049a-428f-963e-fe4bb07b383f"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3476,16 +3989,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC11"
+ Guid="e78b1fe1-ba74-4ba4-be3a-20c6e0b2a75f"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="473ecd32-f140-4075-a430-5a355e79a37d"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="55e67061-f545-4bd0-a746-1820156058dd"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3496,16 +4012,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC12"
+ Guid="12450edc-1306-4b11-ab25-a50a1dd1c538"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="19b847b6-ff3f-487c-a4a3-22383e08b9e4"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="06b3f11a-dfd7-4020-9d86-4716ced053f1"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3516,16 +4035,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC13"
+ Guid="2a947b87-9097-4ed9-b5c2-f8a07fa4c291"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="a97979e6-0f98-4acb-b207-fc33b4945a52"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="f6dd298d-a056-40f1-b5c6-3cd234ba4fdd"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3536,16 +4058,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC14"
+ Guid="e7f8334c-4f3b-4571-89e0-fcbdeb44eb37"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="f8e0e977-10d0-4c79-8934-7648e0199eb9"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="a6fe1a55-674e-44e7-85fd-872297a311b6"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3556,16 +4081,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC15"
+ Guid="86a21f65-04c2-43fa-8b50-6806f98fe25b"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="fd8cf0ef-dbf2-4ee5-9cfe-cdc03f8964b1"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="fbadf3bd-a0ae-4eea-9c54-d4c68621aa3d"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3576,16 +4104,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC16"
+ Guid="b3f55dec-f7a1-451a-b27a-38319930ab6f"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="1d20253a-7f9f-4bf9-a0ef-f3799075728d"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="3feecce3-14f9-4145-af4c-940b7efebd13"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3596,16 +4127,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC17"
+ Guid="a716e2e8-e0f4-4e51-9e42-0d8e7e2c0592"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="81648ea9-bd2f-4b4a-8b2a-80a1fd874cbb"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="e95cb72b-3843-4180-8fc4-5394be2b765e"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3616,16 +4150,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC18"
+ Guid="af4035c6-7ef0-44ea-908c-1d9b2f6087c1"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="d22cb852-ef7f-46a0-bce2-5cf62aafcf4c"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="7b42d480-12d4-4a72-952c-bec7310c9137"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3636,16 +4173,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC19"
+ Guid="8df1683d-d5d5-4357-ab80-c87b2d76ca4d"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="8c8100ce-5f63-498c-a5b9-987e44749646"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="d6ee0aac-526f-4052-ab31-dca677d7d2bf"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3656,16 +4196,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC20"
+ Guid="33393e9d-97ff-4bde-ba0a-4f878e6c1164"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="0a1600f8-99ea-4040-9cef-f62735dc7199"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="3f3ffb29-3abb-4461-908e-6dad00eb6520"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3676,16 +4219,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC21"
+ Guid="028afbb4-2cbc-4cac-9e0f-5fc4e6c14765"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="8d7cdb85-7726-4fb1-b2f2-6d42ab3fc37c"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="da59c76b-7df8-429f-bb1c-f817e1dbfb16"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3696,16 +4242,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC22"
+ Guid="6a050e2f-9f6d-4ba7-af2f-3cb76eca5786"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="db5a64cb-92d0-43fd-9124-7bb5ad12f77f"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="d3fcf32f-a965-4603-8236-407792b1f70b"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3716,16 +4265,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC23"
+ Guid="ffd77d6b-7476-4bc7-8add-11e157352153"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="3c9e6c94-ee7e-4569-8a2a-41a64e10517b"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="973fa8d8-831a-4f40-9fe3-c9060777fc23"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3736,16 +4288,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC24"
+ Guid="eb3b1e3c-db2d-45cb-9f03-ac793c4a6e34"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="824cb3be-7638-4282-8f7d-f71e79fb0d92"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="5d000aac-17eb-4c83-b888-91f5407949cb"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3756,16 +4311,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC25"
+ Guid="55a983e1-a0d2-43de-940f-653c32cef7f5"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="878486d4-9308-45de-a305-b231d3972ec9"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="8998e7c7-c5eb-4ac1-8b98-4511d6fd89bc"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3776,16 +4334,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC26"
+ Guid="855f9f16-3246-4038-9a7f-64a326bb5503"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="19567f9d-fe22-40a1-ac97-eb74aa8a6e4f"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="64964b9b-2d83-4afb-9065-9aa439ceda3f"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3796,16 +4357,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC27"
+ Guid="36502015-8a95-4576-ad69-6d1066671e7f"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="c501dd46-9f55-43fc-92c7-b95ca338912e"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="7f44c0e8-3199-45d0-bb91-f3c9112dbae8"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3816,16 +4380,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC28"
+ Guid="11d746ae-e9d1-4354-9cf3-7bf05ec1e8ba"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="16828f85-26d1-4962-9698-217b25449925"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="a327f51b-16f3-4497-9571-23ba84220e97"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3836,16 +4403,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC29"
+ Guid="4b203a39-3a58-425f-983c-9f92727c93e5"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="12b41dbf-0903-46fe-ad3a-f8fe2e0a7687"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="541f48ea-e8a9-44bb-9c77-e97639122e85"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3856,16 +4426,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC30"
+ Guid="93ecd411-2abf-4d2d-b9ac-0baa908246ce"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="e4490732-a691-4a65-ace6-afbd761c5808"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="1ee3149a-d7a0-404b-bf04-eef8e87baa41"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3876,16 +4449,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC31"
+ Guid="4c8102ff-9e50-44b0-96b3-b8685415ead1"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="f324a0ff-1d83-4554-b4cf-a847c60e2bca"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="fcb82bb0-c4c6-4a65-a834-a9432c4217d8"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3896,16 +4472,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC32"
+ Guid="7be59ef7-4587-4cf6-9e5a-a306a4192c2a"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="44960255-3f81-4a3d-a71a-f328831debbf"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="5110906f-ec57-4744-bee8-4174cbfbab8a"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3916,16 +4495,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC33"
+ Guid="a99e9ec8-0c76-43a4-b8d4-bc22a649e99e"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="b0ba19b7-2c84-478b-9717-3d7585ab3616"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="6d8e59dd-b4cd-41f7-a90b-4eb9dac3346d"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3936,16 +4518,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC34"
+ Guid="58515daa-3b5d-4ada-824d-cc2388f6d07b"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="5f1263e4-1218-495f-989d-bc2df688ba48"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="96684706-b8f6-465c-b127-bf95afd1c681"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3956,16 +4541,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC35"
+ Guid="730d8179-cb66-4515-b87b-b19264d4043b"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="9fa706b8-6fca-48b2-8f6e-ae955fa9e592"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="e2f29a17-cf6e-4406-b5c2-ad22221f771c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3976,16 +4564,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC36"
+ Guid="bba4eb5b-d2ef-4b4d-accc-4ccd9216a1c2"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="ba7d65af-a97f-4994-a0cf-52ea152bdf12"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="57ef7120-4a27-4eb1-8044-4a523f320daf"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -3996,16 +4587,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_TC37"
+ Guid="4a4ab5a4-5749-46c8-8dea-3315518ed315"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="330486d7-1324-4499-a30d-beb9705cb78e"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="d9bd21c7-af4b-4738-a758-a2182ba7f0cd"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4016,16 +4610,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_DR01"
+ Guid="11dc25b0-e16a-40e9-8887-dcd8ac5d3e97"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="776ed17a-2766-4d61-b2f3-6e7f1ec2979c"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="dd0e08c9-e69b-40f3-924b-312e91d494dc"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4036,16 +4633,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_DR02"
+ Guid="e406db60-7576-45d4-b30f-3cbde4991d86"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="a1fda9ab-7700-4d50-86c7-d73bfef69b17"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="9651226a-9224-4dbf-9917-3b1182ad3c86"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4056,16 +4656,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_DR03"
+ Guid="a4caa228-085a-4cb2-a944-ea66693891dd"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="f725c703-cb7e-4b37-8962-023a4d9f4ba4"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="223eb716-296f-458f-868e-fde9875727e8"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4076,16 +4679,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_DR04"
+ Guid="8f6df230-769e-4e1f-9d4b-252a454d4d2b"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="f49de7ba-1958-4622-9e8f-ecf89a20f5f5"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="71c6223b-52d2-4ee0-8017-4dea3b789443"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4096,16 +4702,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_DR05"
+ Guid="e7c08a70-8d46-4905-bf0e-19b8558f6dfa"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="dc912963-2ea9-405c-9e16-4d2a58390f95"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="308ece6b-e486-45dd-a094-0608031025ec"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4116,16 +4725,19 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SYMB_STATUS_LX01"
+ Guid="bee71fea-7aed-45d2-9b92-2ba3a7923d50"
 >
 <Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="not_displayed"
+ Guid="f032831c-9ccd-481a-b307-6e70dfad1048"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="displayed"
+ Guid="6588e2b3-005a-4850-89c9-974218c4326b"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4136,24 +4748,29 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMI_SOUND_STATUS"
+ Guid="7866701f-c6af-4f16-87ed-4cce3d573e56"
 >
 <ReqRef
  Id="fc7394cf-4565-4758-8c81-0e446549e1ef"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e310f803-ab43-47a4-9436-de8bd5d872ef"
 >
 </ReqRef><Comment>Status of the audible information played to the driver. A bit set to 1 means that the corresponding sound is generated.</Comment>
 <SpecialValues>
 <EnumValue
  Value="1"
  Name="Sound_SInfo___information_on_DMI"
+ Guid="39b2778c-81b4-4454-87a7-a3b9edba6335"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Sound_S1___Overspeed"
+ Guid="1dcfc1f7-6ac2-4bfe-bc04-2e84bb27bf75"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Sound_S2___Warning"
+ Guid="f1d1ddd2-e126-4668-aaa4-90cacefc5425"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4164,104 +4781,129 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SYSTEM_STATUS_MESSAGE"
+ Guid="2163adde-f8b4-487c-931d-22c6f68ee020"
 >
 <ReqRef
  Id="91edf44c-54a6-4ab1-805f-8a0678a979aa"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="20ffb3d8-c701-4feb-9a25-48ddb32bba06"
 >
 </ReqRef><Comment>System status message displayed to the driver. A bit set to 1 means that the corresponding system status message is displayed.</Comment>
 <SpecialValues>
 <EnumValue
  Value="1"
  Name="Balise_read_error"
+ Guid="c4339b26-558e-4bcd-a268-a0e3732d4da6"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Trackside_malfunction"
+ Guid="f45b6fd8-404c-4fb9-9e22-2be950f6746e"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="Communication_error"
+ Guid="b9e146e2-17d7-4651-9dc2-91a8d299964f"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="Entering_FS"
+ Guid="22afaa59-b860-4542-ab2e-ca044860c3e8"
 >
 </EnumValue><EnumValue
  Value="16"
  Name="Entering_OS"
+ Guid="dab360cd-eb33-40e2-88fa-ef608343a658"
 >
 </EnumValue><EnumValue
  Value="32"
  Name="Runaway_movement"
+ Guid="8a020879-2420-4fef-bea5-7d625919de59"
 >
 </EnumValue><EnumValue
  Value="64"
  Name="SH_refused"
+ Guid="60c84124-3cb3-4580-9950-65543b35eda1"
 >
 </EnumValue><EnumValue
  Value="128"
  Name="SH_request_failed"
+ Guid="e85acd8b-c9bb-4b2f-a6b6-946a88cbb6bc"
 >
 </EnumValue><EnumValue
  Value="256"
  Name="Trackside_not_compatible"
+ Guid="35434f85-9749-4846-8ee5-c7bc287234ce"
 >
 </EnumValue><EnumValue
  Value="512"
  Name="Train_data_changed"
+ Guid="5ab2371f-438d-4cc3-9f52-cf0f8d66dfd2"
 >
 </EnumValue><EnumValue
  Value="1024"
  Name="Train_rejected"
+ Guid="9954b862-ad2c-4802-ba7f-cc928a2d3139"
 >
 </EnumValue><EnumValue
  Value="2048"
  Name="Unauthorized_passing_of_EOA_LOA"
+ Guid="1832a465-deff-4b47-ab62-2a08a5df3d28"
 >
 </EnumValue><EnumValue
  Value="4096"
  Name="No_MA_received_at_level_transition"
+ Guid="ef1fecd1-9251-4fc1-999b-40bd4d7090d5"
 >
 </EnumValue><EnumValue
  Value="8192"
  Name="SR_distance_exceeded"
+ Guid="35022837-6f83-494e-b2ab-35ef5c0a5469"
 >
 </EnumValue><EnumValue
  Value="16384"
  Name="SR_stop_order"
+ Guid="e0b9afbe-7500-49b4-b785-f7e8ddacb184"
 >
 </EnumValue><EnumValue
  Value="32768"
  Name="SR_stop_order"
+ Guid="81179a4d-78bf-4258-ac4c-b5859ab94778"
 >
 </EnumValue><EnumValue
  Value="65536"
  Name="Emergency_stop"
+ Guid="f12cd236-37dd-487c-b229-ee719cb7ca54"
 >
 </EnumValue><EnumValue
  Value="131072"
  Name="RV_distance_exceeded"
+ Guid="180e0d8a-fb74-4b18-ba3a-16b486271bf1"
 >
 </EnumValue><EnumValue
  Value="262144"
  Name="No_track_description"
+ Guid="87826da0-54dc-44b9-b4a6-9908d992c70e"
 >
 </EnumValue><EnumValue
  Value="524288"
  Name="Route_unsuitable___axleload_category"
+ Guid="5d172d5f-abb0-435a-84e3-c5ebccfbf24c"
 >
 </EnumValue><EnumValue
  Value="1048576"
  Name="Route_unsuitable___loading_gauge"
+ Guid="fda88b08-3eca-4cc2-8c4c-18846c576fab"
 >
 </EnumValue><EnumValue
  Value="2097152"
  Name="Route_unsuitable___traction_system"
+ Guid="c4e292a7-b006-4c59-8ab6-493364839027"
 >
 </EnumValue><EnumValue
  Value="4194304"
  Name="Radio_network_registration_failed"
+ Guid="2f23a0c8-df87-4346-a915-3efcb712a839"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4272,10 +4914,12 @@ Release speed displayed to the driver.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_RBCENTRY"
+ Guid="0b5429ad-1e49-4a99-b270-ed3f5760fd99"
 >
 <ReqRef
  Id="eeff373a-c4c9-4758-81b5-3b7ce7bdd2f0"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8d598b12-b267-4eaa-9c69-e6fc2bd71d0a"
 >
 </ReqRef><Comment>Qualifier for the RBC contact information.
 This variable indicates the type of the driver&apos;s selection for the RBC data.</Comment>
@@ -4283,18 +4927,22 @@ This variable indicates the type of the driver&apos;s selection for the RBC data
 <EnumValue
  Value="0"
  Name="Contact_last_unknown_RBC"
+ Guid="daaac148-1a18-414b-a301-4f36a0afd303"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Use_short_number"
+ Guid="4afaad26-bfe3-42d2-8648-e3a7e9c07230"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Enter_RBC_data"
+ Guid="8a0b6615-8a3a-4b4a-8a2f-7c5e0a9bf426"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="931dcf0a-0306-494d-bc00-f6db5ce8e3e0"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4305,6 +4953,7 @@ This variable indicates the type of the driver&apos;s selection for the RBC data
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_OPERATIONAL"
+ Guid="c28148f1-0f1f-4551-a286-38af30ad6efb"
 >
 <Comment>Train Running Number
 This is the operational train running number. The NID_OPERATIONAL consists of up to 8 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be entered first. In case the NID_OPERATIONAL is shorter than 8 digits, the remaining space is to be filled with special character “F”.</Comment>
@@ -4316,12 +4965,9 @@ This is the operational train running number. The NID_OPERATIONAL consists of up
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_SR"
+ Guid="cea31955-f51d-4702-8c2a-bd44b0541cde"
 >
-<ReqRef
- Id="20ff7bf0-f074-4e91-a8c6-a8f7a2d48b2e"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><Comment>Staff responsible speed
+<Comment>Staff responsible speed
 Speed allowed running in Staff Responsible, modified by the driver through the DMI</Comment>
 </Range><Range
  MinValue="0"
@@ -4331,12 +4977,9 @@ Speed allowed running in Staff Responsible, modified by the driver through the D
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_SR"
+ Guid="bcd5c47f-72f1-4b9e-8716-f27e787fa2d3"
 >
-<ReqRef
- Id="724fead6-ff94-4cca-ba1c-94ead297e6cb"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><Comment>Staff Responsible distance
+<Comment>Staff Responsible distance
 Distance allowed running in Staff responsible, modified by the driver through the DMI. The maximum value corresponds to the one that is considered appropiate from operational point of view</Comment>
 </Range><Range
  MinValue="0"
@@ -4346,6 +4989,7 @@ Distance allowed running in Staff responsible, modified by the driver through th
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_VBCMK"
+ Guid="50e3be93-4ee7-42b0-ad17-5004f126b814"
 >
 <Comment>Marker for virtual balise cover</Comment>
 </Range><Range
@@ -4356,6 +5000,7 @@ Distance allowed running in Staff responsible, modified by the driver through th
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="T_VBC"
+ Guid="41363368-27d4-4b75-b31d-e5bdc0a84d8d"
 >
 <Comment>VBC validity period (meassured in days)</Comment>
 </Range><Range
@@ -4366,10 +5011,12 @@ Distance allowed running in Staff responsible, modified by the driver through th
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_SLEEPING"
+ Guid="332895ef-3020-47a3-aa26-e9f587441925"
 >
 <ReqRef
  Id="78be0579-c844-4e19-86b2-33b5020846e4"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="02b2fb51-60c3-422e-bc85-30b46154ecff"
 >
 </ReqRef><Comment>Sleeping input
 This variable contains the state if the sleeping input.</Comment>
@@ -4377,10 +5024,12 @@ This variable contains the state if the sleeping input.</Comment>
 <EnumValue
  Value="0"
  Name="Sleeping_not_requested"
+ Guid="d36e5e0d-fc70-49af-8ffd-79e67f45b501"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Sleeping_requested"
+ Guid="8511ca55-112d-41dd-984b-9a93f6e5ee2b"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4391,10 +5040,12 @@ This variable contains the state if the sleeping input.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_PASSIVE_SHUNTTING"
+ Guid="2157d39a-3cc5-4b1a-8f75-58cb2536813c"
 >
 <ReqRef
  Id="25d08e04-94ca-4697-8ad8-7e741b13661f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a822231d-caf5-47eb-9b48-db4aed54855b"
 >
 </ReqRef><Comment>Passive shunting input
 This variable contains the state if the passive shunting input.</Comment>
@@ -4402,10 +5053,12 @@ This variable contains the state if the passive shunting input.</Comment>
 <EnumValue
  Value="0"
  Name="Passive_shuntting_not_permitted"
+ Guid="a902dde0-e13d-48d7-9976-180e06b89312"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Passive_shuntting_permitted"
+ Guid="c0be9db0-b6e8-499d-865d-4de9703ab05b"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4416,10 +5069,12 @@ This variable contains the state if the passive shunting input.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_NON_LEADING"
+ Guid="0038e301-8458-4fc0-be44-119904e4e849"
 >
 <ReqRef
  Id="ff93b26b-ebdc-4f1e-846d-f4991f753b7e"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a466d8bc-e3a5-4f06-b3eb-fbe588623a56"
 >
 </ReqRef><Comment>Non leading input state
 This variable contains the state of the non leading input</Comment>
@@ -4427,10 +5082,12 @@ This variable contains the state of the non leading input</Comment>
 <EnumValue
  Value="0"
  Name="Non_leading_not_permitted"
+ Guid="a0918638-d441-4dea-9374-22d26bed94c7"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Non_leading_permitted"
+ Guid="accd085a-bcb5-4d36-aad9-a784beb2ec0a"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4441,10 +5098,12 @@ This variable contains the state of the non leading input</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_RB_STATUS"
+ Guid="44fcb9fc-683d-479e-bfc5-b9798d261c6e"
 >
 <ReqRef
  Id="de020c80-db0c-45db-855e-ae27cffc7437"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d5d8e646-eae8-4fe5-91dd-b03f12dfff10"
 >
 </ReqRef><Comment>Status of regenerative brake.
 This variable contains the status of the regenerative brake</Comment>
@@ -4452,10 +5111,12 @@ This variable contains the status of the regenerative brake</Comment>
 <EnumValue
  Value="0"
  Name="Not_active"
+ Guid="fac0855f-8de8-48a3-9d84-37aef476bb25"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Active"
+ Guid="3662efbc-1913-4efa-9350-1febffc18299"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4466,10 +5127,12 @@ This variable contains the status of the regenerative brake</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_MSB_STATUS"
+ Guid="20090936-289b-4827-841f-1d730481dc92"
 >
 <ReqRef
  Id="4a9ce77d-31fb-4220-a7ff-e6e79157ca6f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="266a9eb9-396e-4510-8976-8ec612691c60"
 >
 </ReqRef><Comment>Status of magnetic shoe brake.
 This variable contains the status of the magnetic shoe brake</Comment>
@@ -4477,10 +5140,12 @@ This variable contains the status of the magnetic shoe brake</Comment>
 <EnumValue
  Value="0"
  Name="Not_active"
+ Guid="76ab6456-d40c-42ef-9675-9d4385638cab"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Active"
+ Guid="8a641131-df87-4919-9253-a40c8a3d4e42"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4491,10 +5156,12 @@ This variable contains the status of the magnetic shoe brake</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_ECB_STATUS"
+ Guid="7ccc2a48-0218-4c21-b9a5-9183e00b39bd"
 >
 <ReqRef
  Id="8b09420a-4f06-43d3-aada-ea5751a960ec"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="1020194b-c151-45b6-a5c3-b720b093c256"
 >
 </ReqRef><Comment>Status of eddy current brake.
 This variable contains the status of the eddy current brake</Comment>
@@ -4502,10 +5169,12 @@ This variable contains the status of the eddy current brake</Comment>
 <EnumValue
  Value="0"
  Name="Not_active"
+ Guid="33be4d50-fb23-4d24-bd7d-04421d0d9c30"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Active"
+ Guid="7083c19a-6db7-4963-9302-ae44d04de1ab"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4516,10 +5185,12 @@ This variable contains the status of the eddy current brake</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_EP_STATUS"
+ Guid="33ccaebc-848c-4b62-b7e7-4e4588c3b104"
 >
 <ReqRef
  Id="31f32d56-9e3c-4fd0-b226-ea769b746033"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="533b66ae-e33f-47b5-ad57-ed5b7a02ebd3"
 >
 </ReqRef><Comment>Status of the electro pneumatic brake
 This variable contains the status of the electro pneumatic brake</Comment>
@@ -4527,10 +5198,12 @@ This variable contains the status of the electro pneumatic brake</Comment>
 <EnumValue
  Value="0"
  Name="Not_active"
+ Guid="03739323-84a2-4fc1-a82e-8d57df7c0db5"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Active"
+ Guid="de6769a7-4e34-45b5-a01c-1189b87a74f2"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4541,10 +5214,12 @@ This variable contains the status of the electro pneumatic brake</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_AB_STATUS"
+ Guid="4667e6b8-a9e1-4d2d-9477-b89a791fdba5"
 >
 <ReqRef
  Id="7947c4dd-de78-4fde-b208-f53d2dc562ce"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7791b683-d373-41fc-9985-14d283d5d593"
 >
 </ReqRef><Comment>Status of the additional brakes.
 This variable contains the status of the aditional brake</Comment>
@@ -4552,10 +5227,12 @@ This variable contains the status of the aditional brake</Comment>
 <EnumValue
  Value="0"
  Name="Not_active"
+ Guid="7b299031-8ac7-4aaa-8a8a-ef6f6d200ddf"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Active"
+ Guid="0de422d5-1b94-46be-95c9-56a754005cc7"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4566,10 +5243,12 @@ This variable contains the status of the aditional brake</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_CAB_A_STATUS"
+ Guid="4e8c0ad4-a63c-4fe2-ae03-c5ef5aac6dfb"
 >
 <ReqRef
  Id="f9a025a0-5d6b-4d68-946b-f3f5c736adc2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="71580247-ca79-4b86-ab35-488f8543b110"
 >
 </ReqRef><Comment>Cab A status
 This variable contains the cab A status. In case the ERTMS/ETCS on board is connected only to one cab, this cab is considered as being cab A</Comment>
@@ -4577,10 +5256,12 @@ This variable contains the cab A status. In case the ERTMS/ETCS on board is conn
 <EnumValue
  Value="0"
  Name="Not_active"
+ Guid="2a301698-e961-4140-aa70-f73af2e29365"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Active"
+ Guid="77aedfb8-47bc-4c79-b411-945fc9857b04"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4591,10 +5272,12 @@ This variable contains the cab A status. In case the ERTMS/ETCS on board is conn
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_CAB_B"
+ Guid="62bbc0e8-2954-4697-b226-7cb85432a45b"
 >
 <ReqRef
  Id="ca6de985-daf9-4798-87b8-e36f3b143ed7"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c7f5a0fa-69d4-42a4-b44b-a411de5215bb"
 >
 </ReqRef><Comment>Qualifier for Cab B
 Qualifier to indicate whether a secon cab is connected to the ERTMS/ETCS on board</Comment>
@@ -4602,10 +5285,12 @@ Qualifier to indicate whether a secon cab is connected to the ERTMS/ETCS on boar
 <EnumValue
  Value="0"
  Name="No"
+ Guid="40652aa2-2365-465f-83de-26a87ebc69fe"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Yes"
+ Guid="e2a9149c-97f5-4bcf-91fa-7d048135eb4b"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4616,10 +5301,12 @@ Qualifier to indicate whether a secon cab is connected to the ERTMS/ETCS on boar
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_CAB_B_STATUS"
+ Guid="afbc121f-3013-4c43-a776-9e5532624f80"
 >
 <ReqRef
  Id="45287456-663d-411a-82b3-093ef23e2fd9"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7f14be42-769b-4722-8ff5-1da5f2ace834"
 >
 </ReqRef><Comment>Cab B status
 This variable contains the cab B status.</Comment>
@@ -4627,10 +5314,12 @@ This variable contains the cab B status.</Comment>
 <EnumValue
  Value="0"
  Name="Not_active"
+ Guid="d836b373-b7ad-4a47-b73d-b8c37357f990"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Active"
+ Guid="cb0bb1e1-0d89-4b42-9303-82c7893e65e3"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4641,10 +5330,12 @@ This variable contains the cab B status.</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_SINGLE_DESK"
+ Guid="7a6951a3-bdae-44fe-bf0d-208cd0a9e6d5"
 >
 <ReqRef
  Id="d81dea26-df76-4043-a640-59fb6eaad210"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="3de9de6b-26fc-4b56-9080-bcbf6bb94174"
 >
 </ReqRef><Comment>Qualifier for single desk cab.
 Qualifier to indicate whether the cab connected to the ERTMS/ETCS on board is fitted with a single desk</Comment>
@@ -4652,10 +5343,12 @@ Qualifier to indicate whether the cab connected to the ERTMS/ETCS on board is fi
 <EnumValue
  Value="0"
  Name="No"
+ Guid="49848d3e-d38e-4be4-83a7-70ac8c8a410d"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Yes"
+ Guid="dcdbcc55-5f24-4cac-a0ba-3b22ee1bd4f3"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4666,10 +5359,12 @@ Qualifier to indicate whether the cab connected to the ERTMS/ETCS on board is fi
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_TRAIN_ORIENTATION"
+ Guid="5d9e4fcb-3bac-4fa3-b221-7755d8ca9a84"
 >
 <ReqRef
  Id="75a6add1-c50c-4ba3-ae2d-f02732622167"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="df25e4dc-c0b2-44b3-bc82-b2b4d1d07b14"
 >
 </ReqRef><Comment>Train orientation input state
 The variable contains the train orientation input state</Comment>
@@ -4677,10 +5372,12 @@ The variable contains the train orientation input state</Comment>
 <EnumValue
  Value="0"
  Name="Direction_B"
+ Guid="1f72d54d-49c6-4959-9704-3fdc791f72d6"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Direction_A"
+ Guid="5ed40998-750d-4182-bc4f-a8a9bb2b6dc0"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4691,28 +5388,34 @@ The variable contains the train orientation input state</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_DIRECTION_CONTROLLER"
+ Guid="21232788-885a-4edc-a29f-9c2c0313e815"
 >
 <ReqRef
  Id="ade5813e-3f65-4f0b-acdc-d51816305acc"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ffc234e1-9180-451c-86d8-fb59ad74ead0"
 >
 </ReqRef><Comment>Direction controller state</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="Neutral"
+ Guid="921366eb-4f70-4771-951b-00918c7965b8"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Backward"
+ Guid="7e12e9e9-2ba8-4ace-85e6-22d4a25625fd"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Forward"
+ Guid="136391e6-e2e0-4e1a-9813-c06907dc8598"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="d2f9fc84-977e-4197-b2ea-8c74781db021"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4723,10 +5426,12 @@ The variable contains the train orientation input state</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_TRACTION_STATUS"
+ Guid="9728fead-696c-4e7b-bb5f-2683cb49d071"
 >
 <ReqRef
  Id="2fa2f9ae-31ff-4ea3-af52-c0dffbbdbef1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="167570aa-5abf-4c01-a7b5-264b8eeaa93a"
 >
 </ReqRef><Comment>Traction status
 This variable contains the traction status</Comment>
@@ -4734,10 +5439,12 @@ This variable contains the traction status</Comment>
 <EnumValue
  Value="0"
  Name="Off"
+ Guid="e0325656-9029-4bc6-b765-0e7f7609845d"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="On"
+ Guid="694cdf5c-fc10-4f8c-95ad-e015a4b4c101"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4748,10 +5455,12 @@ This variable contains the traction status</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_TRAIN_DATA_ENTRY"
+ Guid="ef2ff79f-d48f-48a2-b4a7-8229494d537c"
 >
 <ReqRef
  Id="c0493d5f-364b-43e7-b271-75b71b32b33a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2ab6f178-fd70-4382-86b2-dd0d4dae5794"
 >
 </ReqRef><Comment>Type of the train data entry
 This variable contains the type of the train data entry</Comment>
@@ -4759,18 +5468,22 @@ This variable contains the type of the train data entry</Comment>
 <EnumValue
  Value="0"
  Name="Fixed"
+ Guid="1729ae1b-3656-4f0a-bb24-092dd7d16c4d"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Flexible"
+ Guid="06e4ad36-2dbf-43f8-aff3-f28ce2abd33e"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Switchable"
+ Guid="f6622f19-614f-45d4-9f19-28654dde4fce"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="Spare"
+ Guid="778f51e6-0ca5-4607-9eb7-365e4f4943ae"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4781,10 +5494,12 @@ This variable contains the type of the train data entry</Comment>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_NATIONAL_SYSTEM_ISOLATION"
+ Guid="b0c80e32-53bf-42d5-bee2-c6c654e0963e"
 >
 <ReqRef
  Id="3dd8bd11-719b-48a0-bdfe-bb3c14032355"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8a9c2638-46c6-49a5-9960-fe5c221e16c9"
 >
 </ReqRef><Comment>Isolation of the National System.
 The variable contains the indication of isolation of the National System</Comment>
@@ -4792,10 +5507,12 @@ The variable contains the indication of isolation of the National System</Commen
 <EnumValue
  Value="0"
  Name="NTC_isolated"
+ Guid="b0034475-bc30-442d-8bf4-5492e73df784"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="NTC_not_isolated"
+ Guid="ab9a4843-7357-4293-86f7-72ac3c4151fc"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4806,10 +5523,12 @@ The variable contains the indication of isolation of the National System</Commen
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_TCO_COMMAND_STATE"
+ Guid="6fc87e70-8c27-4038-9ab2-4d07ed94b153"
 >
 <ReqRef
  Id="3a14cad3-b86a-48ac-9b03-fc152ddaee7b"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0ac53906-d3a5-4628-a1f2-9672591660e4"
 >
 </ReqRef><Comment>Traction cut off command state
 The variable contains the command state of the traction cut off</Comment>
@@ -4817,10 +5536,12 @@ The variable contains the command state of the traction cut off</Comment>
 <EnumValue
  Value="0"
  Name="Not_commanded"
+ Guid="6217d2ee-fc43-490c-8844-33139c9bae00"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Commanded"
+ Guid="07b14b12-5536-4b52-8774-082c3034e60a"
 >
 </EnumValue></SpecialValues>
 </Range></Ranges>
@@ -4830,6 +5551,7 @@ The variable contains the command state of the traction cut off</Comment>
  VariableMode="InOut"
  Implemented="TRUE"
  Name="JRU"
+ Guid="36f1050a-f0fa-4212-b21b-37237851b4e4"
 >
 </Variable></Variables>
 </NameSpace>

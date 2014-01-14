@@ -1,5 +1,6 @@
 <NameSpace
  Name="LEVEL_1_MOVEMENT_AUTHORITY"
+ Guid="6c13edbd-2b8d-480d-b22a-5db9316d17fe"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="1a1b6953-880c-416f-8a32-3b6fe8b70171"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="32e4fb02-6eda-40bb-abe1-68d0fc777dc0"
 >
 </ReqRef><ReqRef
  Id="024e56c3-ee12-47e7-9c88-debeb1870367"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="603d043d-57c2-4c87-90a2-a4bc9520de03"
 >
 </ReqRef><Comment>Transmission of a movement authority for level 1.</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="346b7f62-4148-4df5-9d53-7b72ece77b8f"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="02602561-ca86-4ed4-8d0b-5a99fe0359be"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="c8a33d6a-41e6-45b0-b40e-7cce7b1f662d"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e46b390-9707-4f43-b336-ab08cc89c484"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="ba092512-7ddf-4713-bdd1-228158a3223e"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac504dd8-423d-49b5-81f1-5cf040e530cc"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="abaa7c07-3275-403e-bd38-3b0b78bbbc85"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6a3961f8-5e6d-4c6d-a7c3-986d1801a474"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="V_MAIN"
@@ -67,10 +79,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="V_MAIN"
+ Guid="534df127-f6dc-4d14-917e-28444405561c"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4a500985-22b0-4ef7-8f6b-51df9322b762"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="V_LOA"
@@ -78,10 +92,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="V_LOA"
+ Guid="84aa8896-c5c3-4707-a68c-998f533306c2"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2ab5ad30-944f-40a9-a377-29975a62d959"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_LOA"
@@ -89,10 +105,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="T_LOA"
+ Guid="9bca47e9-baed-4423-830e-e2c744234662"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="847278a9-7838-4b7b-a8c1-b750144be576"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="N_ITER"
@@ -100,10 +118,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="N_ITER"
+ Guid="d144b257-ea58-422b-8251-5c53e9408c73"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26a7a3be-7c0d-4813-81bf-a6c275725238"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
@@ -111,10 +131,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
+ Guid="3d70209a-eec0-4abe-92bf-444640d232fe"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="adf134c9-8cb1-4278-86a8-bcf849dfc46c"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_ENDSECTION"
@@ -122,10 +144,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_ENDSECTION"
+ Guid="7a698ead-e7cf-45f4-811b-9ec86cf2e2e0"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="196bfe92-585a-4519-8663-a1ad7159c32f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SECTIONTIMER"
@@ -133,10 +157,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SECTIONTIMER"
+ Guid="23839a5a-1cf0-4fed-8d33-61f0d3fb25c9"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2cbca873-cf01-4ce2-81a2-ac70c540228c"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_SECTIONTIMER"
@@ -144,6 +170,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="T_SECTIONTIMER"
+ Guid="33cb389c-fcea-42dc-b7a9-bf23dcd5a46e"
 >
 </StructureElement><StructureElement
  TypeName="D_SECTIONTIMERSTOPLOC"
@@ -151,6 +178,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_SECTIONTIMERSTOPLOC"
+ Guid="d2d6c3d4-8068-447c-825d-df7ffb57e041"
 >
 </StructureElement><StructureElement
  TypeName="Q_ENDTIMER"
@@ -158,10 +186,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_ENDTIMER"
+ Guid="645853b0-2406-43d9-90b8-f898f8dd2e5b"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="84c3f228-9056-4f8e-8b86-441d27a78b8c"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_ENDTIMER"
@@ -169,6 +199,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="T_ENDTIMER"
+ Guid="76b46d68-e676-4c34-a157-ac7419d7b912"
 >
 </StructureElement><StructureElement
  TypeName="D_ENDTIMERSTARTLOC"
@@ -176,6 +207,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_ENDTIMERSTARTLOC"
+ Guid="bba3fe8a-697a-44ca-8df1-2295ca1bc272"
 >
 </StructureElement><StructureElement
  TypeName="Q_DANGERPOINT"
@@ -183,10 +215,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DANGERPOINT"
+ Guid="eaa68385-d794-49e8-b627-df876b6a131d"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c8cec42f-4683-4380-a538-ff2f6cabb092"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_DP"
@@ -194,6 +228,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_DP"
+ Guid="4fb5bbec-f7e1-4627-a856-cde9b5022e6b"
 >
 </StructureElement><StructureElement
  TypeName="V_RELEASEDP"
@@ -201,6 +236,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="V_RELEASEDP"
+ Guid="14f31e0b-0d6e-4ee4-a5c5-5a4f87063a04"
 >
 </StructureElement><StructureElement
  TypeName="Q_OVERLAP"
@@ -208,10 +244,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_OVERLAP"
+ Guid="003f0c56-674a-4975-b73d-7917d77cb565"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="daa9fbd5-baaa-4b04-90ac-344af6e7e6b1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_STARTOL"
@@ -219,6 +257,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_STARTOL"
+ Guid="5d7b8d59-d7b2-481e-b46e-da0d508c4584"
 >
 </StructureElement><StructureElement
  TypeName="T_OL"
@@ -226,6 +265,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="T_OL"
+ Guid="2502e171-2b59-4b47-b3c2-68dd57ada513"
 >
 </StructureElement><StructureElement
  TypeName="D_OL"
@@ -233,6 +273,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_OL"
+ Guid="155ea2e5-2488-4e32-852b-3fee021e8b7a"
 >
 </StructureElement><StructureElement
  TypeName="V_RELEASEOL"
@@ -240,14 +281,17 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="V_RELEASEOL"
+ Guid="c1c8dfe1-2f11-40d6-a3bd-6df2f18b63d5"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
+ Guid="d3460f1a-c893-486a-84b0-c6f3715b437b"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5132aa08-2295-45b5-9f34-a2bb8259f2ab"
 >
 </ReqRef><StructureElement
  TypeName="L_SECTION"
@@ -255,10 +299,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_SECTION"
+ Guid="f4ba5c6b-30e9-4044-b9a0-24e3b34b86bf"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d23d95d5-5e10-45c9-847e-af50fe14491f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SECTIONTIMER"
@@ -266,10 +312,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SECTIONTIMER"
+ Guid="f40a7c33-f769-4430-9ab9-a1898efa49eb"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c7d7f8a4-bad7-4bfb-a57f-7eeb929e74dd"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_SECTIONTIMER"
@@ -277,6 +325,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="T_SECTIONTIMER"
+ Guid="6a34f70f-4d6a-4b53-88eb-c0fc0095edcd"
 >
 </StructureElement><StructureElement
  TypeName="D_SECTIONTIMERSTOPLOC"
@@ -284,6 +333,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_SECTIONTIMERSTOPLOC"
+ Guid="bfe85470-3fa9-4c0f-abb0-87a49e766c6e"
 >
 </StructureElement></Structure></Structures>
 <Collections>
@@ -292,10 +342,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
+ Guid="803d7a12-1963-48ba-a829-6ac1736a4e1d"
 >
 <ReqRef
  Id="20241a08-e360-4144-b573-5a0e657dd9a2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd1d52ee-d9a5-47c6-b758-871f106adb9d"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>

@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using DataDictionary.Functions;
+using DataDictionary.Interpreter.Filter;
 
 namespace DataDictionary.Interpreter
 {
@@ -97,18 +98,18 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, Filter.AcceptableChoice expectation)
+        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
             if (retVal)
             {
                 // Left
-                Left.SemanticAnalysis(instance, Filter.IsRightSide);
+                Left.SemanticAnalysis(instance, IsRightSide.INSTANCE);
                 StaticUsage.AddUsages(Left.StaticUsage, Usage.ModeEnum.Read);
 
                 // Right
-                Right.SemanticAnalysis(instance, Filter.IsRightSide);
+                Right.SemanticAnalysis(instance, IsRightSide.INSTANCE);
                 StaticUsage.AddUsages(Right.StaticUsage, Usage.ModeEnum.Read);
             }
 
@@ -941,7 +942,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, Filter.AcceptableChoice filter)
+        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
         {
             Left.fill(retVal, filter);
             Right.fill(retVal, filter);
@@ -957,7 +958,7 @@ namespace DataDictionary.Interpreter
 
             if (Operation == OPERATOR.EQUAL)
             {
-                retVal = Filter.IsLeftSide(Left.Ref) && Filter.IsLiteral(Right.Ref);
+                retVal = IsLeftSide.INSTANCE.AcceptableChoice(Left.Ref) && IsLiteral.Predicate(Right.Ref);
             }
 
             return retVal;

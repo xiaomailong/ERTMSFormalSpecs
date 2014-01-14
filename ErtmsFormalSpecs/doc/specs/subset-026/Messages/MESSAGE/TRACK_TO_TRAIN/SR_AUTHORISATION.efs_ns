@@ -1,5 +1,6 @@
 <NameSpace
  Name="SR_AUTHORISATION"
+ Guid="f5502a1b-f56b-4c02-9106-9fe58c15156e"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,6 +8,7 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="5e0195be-255b-41e6-8a35-3d4638302e43"
 >
 <Comment>SR Authorisation</Comment>
 <StructureElement
@@ -15,10 +17,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_MESSAGE"
+ Guid="1fb21fb2-583a-4bbe-9a57-eb7aa8fd6515"
 >
 <ReqRef
  Id="0f2e193e-66b4-4dcf-9a50-b6e963e9c732"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f149ea1-07f3-4e44-b470-dc5b363d8a02"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
@@ -26,10 +30,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
+ Guid="ba7f95a3-e188-4f7d-9ea0-55fa24010626"
 >
 <ReqRef
  Id="231451ee-7b28-4033-9fbd-5d6a8545e926"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8bbb3d32-7583-47cd-85e6-0d9589f9b612"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
@@ -37,10 +43,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
+ Guid="46718f28-f68e-43c1-b432-8ac46a542662"
 >
 <ReqRef
  Id="388712c2-fe27-4991-a909-304753dbaa70"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9203a2fb-3c4e-4f5b-968b-303972898174"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
@@ -48,10 +56,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
+ Guid="19ade9b3-bc4a-4881-8cb8-a6ce0cc5b9d9"
 >
 <ReqRef
  Id="98e62c6d-a6f1-4f99-af53-6d0ec0259a41"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5abec7f5-ba01-4ed7-88e5-faef99582aaa"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
@@ -59,10 +69,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
+ Guid="fce40b1f-9fbb-4d12-a2ab-ff5ea88e4750"
 >
 <ReqRef
  Id="f516cf0b-ccbd-47ba-835e-74361fcc3c42"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8cf79a2d-99cd-44ec-ab1b-9951e7277d97"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
@@ -70,10 +82,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="907560c5-4e06-45c3-9be5-2e81103eb47e"
 >
 <ReqRef
  Id="f10f8728-1e96-49c1-bc72-2a7ed7dca14a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac5c894f-0324-4685-b2fb-763ea76c1d3a"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_SR"
@@ -81,10 +95,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_SR"
+ Guid="24d6e776-4064-4cc2-9bef-6eca95e4c37a"
 >
 <ReqRef
  Id="13ab2c85-748e-4895-a3c6-95ec5c0d9f08"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1c27d0c6-f673-4772-b402-720b407990b7"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
@@ -92,18 +108,22 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
+ Guid="4570047d-ab2e-40b4-ad75-4c29d61358a8"
 >
 <ReqRef
  Id="f281a173-764d-4113-9c05-01d56d592fee"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ccd020cf-8808-4112-bc26-6cde62825fea"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
+ Guid="4b3f5191-8b68-436e-9a3b-575c09f36998"
 >
 <ReqRef
  Id="f281a173-764d-4113-9c05-01d56d592fee"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d2a41915-0ef3-4b27-8706-39541c85dace"
 >
 </ReqRef><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_IN_SR_AUTHORITY.Message"
@@ -111,10 +131,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="LIST_OF_BALISES_IN_SR_AUTHORITY"
+ Guid="f97b8e45-e39d-4720-8512-548d9ae5587d"
 >
 <ReqRef
  Id="f281a173-764d-4113-9c05-01d56d592fee"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cad8ecee-605e-415b-8f64-165a4a56a8fa"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
@@ -123,10 +145,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
+ Guid="204246f8-a142-4c57-aee8-21f1a41a0050"
 >
 <ReqRef
  Id="f281a173-764d-4113-9c05-01d56d592fee"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ecab98a-3c7e-40d0-a440-fdf38460f3b2"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>

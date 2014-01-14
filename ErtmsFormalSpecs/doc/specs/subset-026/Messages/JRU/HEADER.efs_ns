@@ -1,5 +1,6 @@
 <NameSpace
  Name="HEADER"
+ Guid="97c4a292-8e93-492f-b8b3-464a4ed755a8"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,158 +9,186 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="9a6e71ae-bbdb-4cc7-9e85-9049292bdb95"
 >
 <StructureElement
  TypeName="NID_MESSAGE"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_MESSAGE"
+ Guid="da0d61d1-e074-421c-94b4-daa7e0210122"
 >
 <ReqRef
  Id="cfbb06c3-434e-480f-8535-31fba21d7ff1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e2e9ec92-afbe-4a45-823a-a89ebc82cbd3"
 >
 </ReqRef><ReqRef
  Id="e4bac226-7f4c-4034-8611-a1b2a429006f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="1d25c856-3091-4bcd-a9db-82cd6e8af4fe"
 >
 </ReqRef><ReqRef
  Id="3c64ae3c-8549-4e30-a019-5eb9b8c965e7"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a206d6a9-637e-484c-ab8b-a0ec717465fa"
 >
 </ReqRef><ReqRef
  Id="cc3d45f4-d90b-4e96-9049-1701e7aa7cf3"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="4296809b-b506-423c-bd2d-21b126f1594c"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_MESSAGE"
+ Guid="fa9ed66b-b5a1-412d-a431-53ffb3e0282c"
 >
 <ReqRef
  Id="d7ff8235-78a7-423d-a351-50a649b66d8e"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="97bac12b-ae58-4d7b-83f7-2398e8b83355"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="DATE.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DATE"
+ Guid="3ee97f3e-f9ff-4d7c-bd1c-c194848efdf9"
 >
 <ReqRef
  Id="e52688db-b556-49fa-adc7-5872de3f1038"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a3d31a2f-3776-4dec-90c1-d3c5adafc3f1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="TIME.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TIME"
+ Guid="36b82615-c6d5-4e88-9b26-35bd83cc6bdd"
 >
 <ReqRef
  Id="6e38004e-74a2-4d5e-afc2-535022239fea"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="58794f22-343a-4c72-9130-f4dce67b2dbd"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="TRAIN_POSITION.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TRAIN_POSITION"
+ Guid="3acd3cfd-41c4-4046-b59b-116754b3561a"
 >
 <ReqRef
  Id="4a22fd87-da9f-42a3-b0a8-859408806178"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e721883a-bb8b-4ad3-99a4-4911e8cb8534"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="V_TRAIN"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_TRAIN"
+ Guid="c248879c-ca6f-454b-8570-ca4f082b472f"
 >
 <ReqRef
  Id="3c0233a7-b01e-40fb-a5f0-652063fdf644"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="526b2559-81c6-41e3-a7bb-8a5b09f72eed"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="String"
- Default="0"
- Mode="InOut"
+ Default=""
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DRIVER_ID"
+ Guid="7fc683d1-4a88-4445-a8b6-2e8ede8213d6"
 >
 <ReqRef
  Id="55f1519a-05d7-4825-97c7-d7a1b746b27b"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5bbe5f7d-00c0-4b7e-a661-fbb2deafd8df"
 >
 </ReqRef><ReqRef
  Id="b9538a8b-54f9-4f8e-bdc2-8c535fceb675"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5eb845db-a410-481c-8cd9-1b831d05a89b"
 >
 </ReqRef><ReqRef
  Id="44bf4823-05db-4276-a978-5ebe4be5810d"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="be3fb23e-6ea6-4690-abf5-c25210c6f4aa"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_ENGINE"
- Default="0"
- Mode="InOut"
+ Default=""
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_ENGINE"
+ Guid="097b3f6a-d04c-4ecb-a383-d0af5c18ca5a"
 >
 <ReqRef
  Id="498726b7-6f35-4b72-909e-32d4995241ba"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="211011b9-e652-4b7e-a523-96618dc92366"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="SYSTEM_VERSION"
- Default="0"
- Mode="InOut"
+ Default=""
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SYSTEM_VERSION"
+ Guid="2293e9e2-1acd-4e22-b2f9-deee522f9f07"
 >
 <ReqRef
  Id="23f87f8c-2500-4f0c-87d6-f92f4df40390"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b7e556ab-36c9-4a2f-b19c-153c567b48a1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="LEVEL"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="LEVEL"
+ Guid="24bd52a9-ffd6-4cef-963e-78a349b648f5"
 >
 <ReqRef
  Id="4c5f3c51-19fa-414b-bac9-a02f2705838a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6d67e2a5-b2d7-42b5-b8d3-49d06578b9f4"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_MODE"
- Default="0"
- Mode="InOut"
+ Default=""
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MODE"
+ Guid="ae91392f-729f-4722-9051-b60367cb5e2a"
 >
 <ReqRef
  Id="1fc0ada4-257d-4414-9f05-cdb742f0d054"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="284a5fb5-99fa-4f3e-95eb-b925ce1c7460"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

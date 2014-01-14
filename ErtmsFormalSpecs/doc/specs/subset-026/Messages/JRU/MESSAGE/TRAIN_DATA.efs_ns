@@ -1,5 +1,6 @@
 <NameSpace
  Name="TRAIN_DATA"
+ Guid="f32f3332-452a-4b3b-ad9b-fd0752dc9da0"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,685 +9,799 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="fc78d8b3-9fe6-4103-b2a6-255d9ba833b5"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="3ec750a3-edcb-47b0-8137-9d0e8fab7609"
 >
 </ReqRef><ReqRef
  Id="8623ab63-7b21-4ea0-8ae5-1f6cbb90a9b5"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9f335a25-0872-4e02-99ea-aa8775f686da"
 >
 </ReqRef><Comment>this message records the emergency brake application command state</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="098822da-3b77-4efd-a635-6acd46312411"
 >
 </StructureElement><StructureElement
  TypeName="V_MAXTRAIN"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_MAXTRAIN"
+ Guid="d040ab66-82be-49bb-ae32-742a4f34efb4"
 >
 <ReqRef
  Id="9988fed6-030e-46c5-bc1b-f0cf5b8f3543"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2e5aefb4-b3f5-447c-bd57-a675ec384a70"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NC_CDTRAIN"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NC_CDTRAIN"
+ Guid="42388a6f-2437-4146-a14a-1b68c985773f"
 >
 <ReqRef
  Id="81ac6c57-2fb0-47df-8ad3-2a6cb88b8af1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ccc3f9ac-b969-4972-9063-65050735d5ce"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NC_TRAIN"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NC_TRAIN"
+ Guid="c03dfd63-6e54-487d-ad9a-aa124b9fbd9d"
 >
 <ReqRef
  Id="3d1802a3-5497-4db2-a943-202965c29421"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d7565ddc-5cae-4346-b3d8-b4b4f26b7316"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_TRAIN"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_TRAIN"
+ Guid="e0c346b7-8e9b-4a71-b776-9c02bdbef31a"
 >
 <ReqRef
  Id="8200d54e-d157-4b9a-b050-aa147d0fa939"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ffd46ef0-647f-46fe-8478-1286699405ff"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_TRACTION_CUT_OFF"
- Default="0"
- Mode="InOut"
+ Default=""
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="T_TRACTION_CUT_OFF"
+ Guid="ffd13097-cc29-4d3d-86fb-6e80724eaef6"
 >
 <ReqRef
  Id="d3bda0c7-97a3-4a4b-a1de-8e694953eb3d"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c6e924c1-cc52-40a0-aa62-c004815ca8c9"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_BRAKE_POSITION"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_BRAKE_POSITION"
+ Guid="737fcfd0-8ca2-4f01-8c57-78fa3327e124"
 >
 <ReqRef
  Id="2b523498-4c29-482c-b698-a5f37aeb9812"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c30d4e8f-f8a0-43e8-a61c-e00fa0bc3076"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_NOM_ROT_MASS"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_NOM_ROT_MASS"
+ Guid="0c3a683d-82b0-4e3f-975b-ef18894809c7"
 >
 <ReqRef
  Id="223d5049-935f-4eda-9fbe-88cfcf309eb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="1b74d1af-93c5-4027-91de-6924b395a9b1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_REGENERATIVEBRAKE"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_REGENERATIVEBRAKE"
+ Guid="9a0aceba-328f-4ae0-bf3a-713aaf685c7e"
 >
 <ReqRef
  Id="e436e8a4-9fce-4fc0-8083-1ecff0fb881e"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="66f74ced-9bc8-488b-974e-ce6ff77a878d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_EDDYCURRENTBRAKE"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_EDDYCURRENTBRAKE"
+ Guid="5f89106d-6885-4fc7-82c0-b6b9a04bf78b"
 >
 <ReqRef
  Id="45cbef68-7973-4da2-9ad4-27f760d5a67f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="741f5391-1f23-4583-be3a-ec3c629b5f86"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_MAGNETICSHOEBRAKE"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_MAGNETICSHOEBRAKE"
+ Guid="ec88716b-a93d-4357-b672-61da95e77c31"
 >
 <ReqRef
  Id="d973b24c-fef0-4dd2-a313-cece1b4f7dca"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5c4c858c-9fad-4eee-83c7-3194f57df377"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_ELECTROPNEUMATICBRAKE"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_ELECTROPNEUMATICBRAKE"
+ Guid="94afb8a6-ec6c-4895-9922-76edd6d289b4"
 >
 <ReqRef
  Id="879e2b9e-d58d-43d1-adc8-c1fe5778e80b"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8bbca9a1-8a11-4733-a9f9-38825d5fa7df"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_TRACTIONCUTOFFINTERFACE"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_TRACTIONCUTOFFINTERFACE"
+ Guid="9f32e48d-e1c4-42c7-bc67-634fee8b9fa3"
 >
 <ReqRef
  Id="c5b26d13-d547-4d89-9011-6a7aae1a74eb"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b9c96e06-83f8-40ed-bf5c-7f3d0a75f814"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SERVICEBRAKEINTERFACE"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_SERVICEBRAKEINTERFACE"
+ Guid="3dee5b1e-d758-4057-b935-8e77408d93d4"
 >
 <ReqRef
  Id="ff072fc9-7dfe-44c3-a827-dad988874775"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="66ec878b-cbda-4936-ac79-d99b0bc66842"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SERVICEBRAKEFEEDBACK"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_SERVICEBRAKEFEEDBACK"
+ Guid="55d54b87-b07e-45e8-9e3e-3c90e1312200"
 >
 <ReqRef
  Id="971218b4-b6bb-4751-854f-ebb6d604c176"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="acfdff16-164d-4a1a-bedf-11e13eb6b99c"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_BRAKE_CAPT_TYPE"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_BRAKE_CAPT_TYPE"
+ Guid="06dc5ae9-c35f-4c2b-b453-206d76fe4340"
 >
 <ReqRef
  Id="e40f7505-d893-412e-aa27-68a5a1d23afb"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a8934948-abe3-411b-981e-2bdc03814a14"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_BRAKE_PERCENTAGE"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_BRAKE_PERCENTAGE"
+ Guid="2aed18cb-f247-4ab0-bb9a-46603a6f6b14"
 >
 <ReqRef
  Id="bb7926e1-4192-47aa-b8a8-2f1c20b82b8a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="06c5059f-a5ed-43e9-b62a-cf6892fe80c2"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="N_BRAKE_CONF"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_BRAKE_CONF"
+ Guid="8e73d857-eb35-4cda-b927-9a98f04b15da"
 >
 <ReqRef
  Id="1eaa9674-4bce-4d3e-ae28-70a5e58efee3"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="796a721c-4aba-495d-a55e-b8738e7a4334"
 >
 </ReqRef><ReqRef
  Id="87775fe5-602e-4587-9e19-69183cf61658"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="91089fb0-7fb2-4ac2-b576-079bc73f1713"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence1"
+ Guid="744af725-d411-482a-8481-9868945e304c"
 >
 </StructureElement><StructureElement
  TypeName="Collection4"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence4"
+ Guid="8a03792a-1b76-4947-9c55-387d8ca4ec17"
 >
 </StructureElement><StructureElement
  TypeName="M_LOADINGGAUGE"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_LOADINGGAUGE"
+ Guid="372ec46b-c53a-4c6c-9688-904528740f2b"
 >
 <ReqRef
  Id="11f2dc0e-7509-4c6c-8ca0-1b6323fb41e5"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ff1fac95-7fc3-4eab-893b-67505d30d713"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="N_AXLE"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_AXLE"
+ Guid="5f9ba989-3e13-46b8-a73b-75da46a31730"
 >
 <ReqRef
  Id="58c86228-d16a-4611-b62e-2608428d9cda"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f8f3b9b1-e2ff-4761-bf8d-160193ceb3b2"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="N_AXLELOADCAT"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_AXLELOADCAT"
+ Guid="e6e325eb-f6f3-425d-ac42-97d7a81f1a57"
 >
 <ReqRef
  Id="8172cda0-e56b-47ad-8ab5-4a3a919262f5"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="4e520916-d277-4e4e-ac94-547b55a6adc9"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="N_ITER"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_ITER_0"
+ Guid="0ddc12c9-53f0-4420-bb82-21663cf1dc0d"
 >
 <ReqRef
  Id="cdae853e-99ef-4221-afea-a431d90a7062"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="61636229-bd59-49ca-b678-65a3f52c6e6f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection5"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence5"
+ Guid="cfdcff27-f143-4078-9d2b-fcfede4f978d"
 >
 </StructureElement><StructureElement
  TypeName="N_ITER"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_ITER_1"
+ Guid="beb27ff5-6152-48d0-9f0e-e77ca70bfa7b"
 >
 <ReqRef
  Id="01afe5d0-5e38-46a6-8884-e10f53aa1253"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="bb538fd3-77ac-49d3-8234-2619affd6ba3"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection6"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence6"
+ Guid="da144b3e-3940-4c67-be7e-f31b80ab14f3"
 >
 </StructureElement><StructureElement
  TypeName="M_AIRTIGHT"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_AIRTIGHT"
+ Guid="eb6461da-4f57-48dd-b472-94883288709f"
 >
 <ReqRef
  Id="a1bfa3e4-5afd-4845-a414-ec001070d6ed"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c88921d6-f2cc-43d3-bc82-4c0804d59aa1"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure1"
+ Guid="f9378bc1-522c-49c4-9c5f-0bd3ed6dc3b1"
 >
 <StructureElement
  TypeName="M_BRAKE_LAMBDA_CONF"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_BRAKE_LAMBDA_CONF"
+ Guid="b94adaf8-e076-4cf4-9735-28deb26abfb4"
 >
 <ReqRef
  Id="470482d0-3a61-48ea-bca5-edd507f330f1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="4ab39893-8e43-43ad-9bcd-44d011c9fce1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_BRAKE_SERVICE"
- Default="0"
- Mode="InOut"
+ Default=""
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="T_BRAKE_SERVICE"
+ Guid="25e7b46b-2aab-4d20-b398-e0d231085b85"
 >
 <ReqRef
  Id="abe0f66f-fa68-49a7-8865-94f4697926f3"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="74d63918-b5c1-4ccb-ab59-6c316f88e3e8"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure2"
+ Guid="f2608a0d-c0be-407f-9af6-9fdbd666f296"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="bfc8d163-579f-4db9-a563-4ae02dbe1e46"
 >
 </ReqRef><StructureElement
  TypeName="M_BRAKE_GAMMA_CONF"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_BRAKE_GAMMA_CONF"
+ Guid="7f0d6597-945b-480a-965d-e02b5a134cc9"
 >
 <ReqRef
  Id="32617ffc-0e47-494e-a52e-4b8c24f76a70"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c72d4918-0a0c-4efa-8d3e-af29111645d1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_BRAKE_EMERGENCY"
- Default="0"
- Mode="InOut"
+ Default=""
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="T_BRAKE_EMERGENCY"
+ Guid="b44ca4a1-3c09-4a32-968b-9806e3d7ea46"
 >
 <ReqRef
  Id="5626b0f1-9f44-4fed-bba1-8625f5e5bba6"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2052134a-23ae-46e7-81d5-53fc0b32a7f6"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="N_BRAKE_SECTIONS"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_BRAKE_SECTIONS_0"
+ Guid="cd7f730e-3638-4523-948b-43975e82d06c"
 >
 <ReqRef
  Id="6ca2081f-851e-4751-9012-480e458845de"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2ddee0f8-9b2e-4eaf-a2bb-4ac34c48977a"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection2"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence2"
+ Guid="6b33b267-0b50-48f0-9226-4a00ba24241c"
 >
 </StructureElement><StructureElement
  TypeName="T_BRAKE_SERVICE"
- Default="0"
- Mode="InOut"
+ Default=""
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="T_BRAKE_SERVICE"
+ Guid="2b9f1e65-525f-4d79-81ef-5545a7c6825d"
 >
 <ReqRef
  Id="359b754c-597d-4321-9f37-f39af8241fe0"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7c30023f-b89a-4398-bf0a-4e49cc06d567"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="N_BRAKE_SECTIONS"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_BRAKE_SECTIONS_1"
+ Guid="c2a3e604-6b8c-4593-8fda-6c69e0d9caca"
 >
 <ReqRef
  Id="bbf425ee-35fa-4076-81f6-dafb8bed41fa"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c9d62584-e874-4fd9-ab38-1ac0aeda0ee8"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection3"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence3"
+ Guid="e3652537-610f-4ea6-b68e-b4dc22ecd22e"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure3"
+ Guid="c7661e9d-6c69-4619-b3fb-05d82e12e933"
 >
 <StructureElement
  TypeName="V_BRAKE_EMERGENCY_COMP"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_BRAKE_EMERGENCY_COMP"
+ Guid="8cc9e776-5b8e-4a94-9f6f-0c8e1436dbf6"
 >
 <ReqRef
  Id="234e648c-50f7-48bc-b922-9664c5e29a63"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="03ffa5bd-d381-4171-a5dd-98ebfb211d28"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="A_BRAKE_EMERGENCY_COMP"
- Default="0"
- Mode="InOut"
+ Default=""
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A_BRAKE_EMERGENCY_COMP"
+ Guid="f4a11030-c7e1-442c-a18f-754a87848d7e"
 >
 <ReqRef
  Id="98a105e9-8988-46ca-b688-5a06f621d178"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="da445543-c384-4efc-98bd-59c4c6f0aae1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_50"
+ Guid="6c548c86-e1d5-4836-b361-24bb6314825a"
 >
 <ReqRef
  Id="f8759b8c-ab43-494a-ab3b-fd8ad75afa20"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="27282a0e-fd71-4851-8c06-0f054614ddae"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_90"
+ Guid="e41e8e38-f4b5-438f-946c-8ae9b3f72921"
 >
 <ReqRef
  Id="0e1ac6fe-a3e6-4288-be02-6c15c5255661"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="59ba0f36-68bb-49c5-9879-4c97ae25b02b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99"
+ Guid="a8f884f6-1843-4531-91b6-cbff81a43e5f"
 >
 <ReqRef
  Id="83474f9f-6ba9-401e-a16e-f26a6d47a92f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="1463e2dd-57a2-404f-ab66-a7a1a7ef70bd"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_9"
+ Guid="c80cedc3-1bb0-43d4-89ad-e484df06d1e0"
 >
 <ReqRef
  Id="20b9c3fb-d7e0-486b-952e-57067cd9bdbb"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7e66adfc-fa30-407b-a23a-bf836e88ab5b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_99"
+ Guid="046e1714-1d12-4f7d-af8b-648771d3cb4f"
 >
 <ReqRef
  Id="9b06cc55-c552-4058-bb4d-8213470858af"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="955bfd0e-088e-4266-a6aa-b0e2d78a1604"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_999"
+ Guid="5ffb1441-a147-42bc-838e-b61b836b00c2"
 >
 <ReqRef
  Id="9d7c4429-39d5-4553-9c3e-37031ef87f91"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2a4d4f1e-21b1-444b-a544-617a3f8523a7"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_9999"
+ Guid="db96eb96-bfb1-4e42-9a7c-284731c1bff1"
 >
 <ReqRef
  Id="09e11638-da64-4247-8ca4-2fa73f09c5e2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2b0adc92-57f9-461a-9382-1b899e0df2fa"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_99999"
+ Guid="5b8f7333-9fc4-4d1e-b482-e006ddae3125"
 >
 <ReqRef
  Id="0db14814-3e55-4bcd-b292-77b9db6ee18d"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="aa7df600-974a-41b9-8c9e-c9b3adfa3af6"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_999999"
+ Guid="1e846b0d-84e5-47ae-9a21-85313521e988"
 >
 <ReqRef
  Id="a26a0f01-43c7-4e11-9bbc-8d4f4955a138"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="336518a7-3ac3-43cf-b7cf-242adc5ae1eb"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_9999999"
+ Guid="3567069a-65d0-4b0b-84c0-ec467000d0d9"
 >
 <ReqRef
  Id="62ed59f4-bcd1-4025-8f76-76dfc9f72cc7"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="32ece3ba-7619-4cca-a7e4-70244c2b9a04"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KWET_RST"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KWET_RST"
+ Guid="e1cf00d7-36b7-408c-a89d-2ce95811273f"
 >
 <ReqRef
  Id="d2c9b51e-dfb6-4600-b3d0-1826348e4e0a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6ada41d3-76f4-4c44-af27-e84c1c2f2b74"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure4"
+ Guid="de30df81-6278-4e4d-a17f-0f05aeb6bd14"
 >
 <StructureElement
  TypeName="V_BRAKE_SERVICE_COMP"
- Default="0"
- Mode="InOut"
+ Default=""
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_BRAKE_SERVICE_COMP"
+ Guid="4b93ca17-9731-456e-8430-543513583224"
 >
 <ReqRef
  Id="e1bf9b64-ccf9-49ca-a29a-09da0c7e96ff"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a3db88db-3721-4680-a358-e775e046cf3b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="A_BRAKE_SERVICE_COMP"
- Default="0"
- Mode="InOut"
+ Default=""
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A_BRAKE_SERVICE_COMP"
+ Guid="15923c11-76bc-4b9b-b37a-9c03d90fc795"
 >
 <ReqRef
  Id="53bdd381-2771-4b60-8f15-a77775302e06"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c92a243f-2b1f-41af-840d-0461eb1d8276"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure5"
+ Guid="cdc43d53-304e-462e-81d8-1750efc2279c"
 >
 <StructureElement
  TypeName="M_VOLTAGE"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_VOLTAGE"
+ Guid="40943aef-aa07-4438-8a2a-39d48f669664"
 >
 <ReqRef
  Id="53d8ce5f-17b9-4ab7-a9cf-1f35476af1ec"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7f313b26-bee4-49c0-805a-36d2d6cdd183"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_CTRACTION"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_CTRACTION"
+ Guid="2b0f250f-f422-47ab-be6b-ad6979682965"
 >
 <ReqRef
  Id="aed3787e-59d5-4500-92f0-674ad7997248"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a89ab887-79f9-403b-8304-0c8af2dec17d"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure6"
+ Guid="ecc18b5d-cee7-4be0-a400-baf382b352b5"
 >
 <StructureElement
  TypeName="NID_NTC"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_NTC"
+ Guid="f08732c0-c0f1-4851-aabb-9e98c21db970"
 >
 <ReqRef
  Id="b640d1cd-5e2f-4e98-ae46-aa5375410ac2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="65a518f6-647d-46bf-9eff-02f7aa24b1f2"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
@@ -696,6 +811,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection1"
+ Guid="dd6e0930-a376-4238-b071-2ee3bd805005"
 >
 </Collection><Collection
  TypeName="SubStructure3"
@@ -703,6 +819,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection2"
+ Guid="6f444a80-8c62-4d8b-b197-62aae1c320c8"
 >
 </Collection><Collection
  TypeName="SubStructure4"
@@ -710,6 +827,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection3"
+ Guid="4a2006c1-1e8f-4266-986e-7cac87a8ee0b"
 >
 </Collection><Collection
  TypeName="SubStructure2"
@@ -717,6 +835,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection4"
+ Guid="020be917-6795-4e45-b660-c85f83712a0d"
 >
 </Collection><Collection
  TypeName="SubStructure5"
@@ -724,6 +843,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection5"
+ Guid="8f7ef992-5bd5-4a07-936a-d804b148f84d"
 >
 </Collection><Collection
  TypeName="SubStructure6"
@@ -731,6 +851,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection6"
+ Guid="cc965d0f-4268-4876-88ed-b9d2b1721ee0"
 >
 </Collection></Collections>
 </NameSpace>

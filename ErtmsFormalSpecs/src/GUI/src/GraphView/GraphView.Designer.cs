@@ -181,6 +181,7 @@ namespace GUI.GraphView
             this.maximumValueTextBox.Name = "maximumValueTextBox";
             this.maximumValueTextBox.Size = new System.Drawing.Size(100, 20);
             this.maximumValueTextBox.TabIndex = 5;
+            this.maximumValueTextBox.Text = "5000";
             this.maximumValueTextBox.LostFocus += new System.EventHandler(this.maximumValueTextBox_LostFocus);
             // 
             // label1
@@ -213,6 +214,8 @@ namespace GUI.GraphView
             // setMaximumValueCheckBox
             // 
             this.setMaximumValueCheckBox.AutoSize = true;
+            this.setMaximumValueCheckBox.Checked = true;
+            this.setMaximumValueCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.setMaximumValueCheckBox.Location = new System.Drawing.Point(6, 74);
             this.setMaximumValueCheckBox.Name = "setMaximumValueCheckBox";
             this.setMaximumValueCheckBox.Size = new System.Drawing.Size(117, 17);
@@ -228,6 +231,7 @@ namespace GUI.GraphView
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(772, 476);
             this.Controls.Add(this.tabControl1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "GraphView";
             this.ShowInTaskbar = false;
             this.Text = "Graph View";

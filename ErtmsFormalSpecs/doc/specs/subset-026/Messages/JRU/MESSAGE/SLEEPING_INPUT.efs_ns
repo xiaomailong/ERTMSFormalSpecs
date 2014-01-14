@@ -1,5 +1,6 @@
 <NameSpace
  Name="SLEEPING_INPUT"
+ Guid="36d86612-2f60-434a-b809-aae122cfaadc"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,35 +9,41 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="21d14bf1-8ee4-4979-8263-5578c46483ea"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2b01ac2f-60f5-47ec-af23-90df9527f9f4"
 >
 </ReqRef><ReqRef
  Id="6f2bb22b-a705-4170-8cc3-7a555b3e22ff"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c242411a-066a-427c-9e8e-4bf4af415337"
 >
 </ReqRef><Comment>This message allows to transmit the state of the sleeping input</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="8eed726a-2bd9-4f62-adb0-f8ea9abceb3a"
 >
 </StructureElement><StructureElement
  TypeName="M_SLEEPING"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_SLEEPING"
+ Guid="8a4ef3f6-4a54-4aad-8e4d-122791f2f81b"
 >
 <ReqRef
  Id="a5f0656f-ef95-445b-8b44-65bb3f7d4960"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d5f88071-c67b-46f2-bf65-5e9a95ea9f32"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

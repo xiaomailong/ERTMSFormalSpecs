@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Interpreter.Filter;
 namespace DataDictionary.Interpreter.ListOperators
 {
     public class SumExpression : ExpressionBasedListExpression, Utils.ISubDeclarator
@@ -66,7 +67,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, Filter.AcceptableChoice expectation)
+        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
@@ -75,9 +76,9 @@ namespace DataDictionary.Interpreter.ListOperators
                 // Accumulator
                 AccumulatorVariable.Type = GetExpressionType();
 
-                DefinedAccumulator.SemanticAnalysis(instance, Filter.AllMatches);
+                DefinedAccumulator.SemanticAnalysis(instance, AllMatches.INSTANCE);
 
-                Accumulator.SemanticAnalysis(instance, Filter.AllMatches);
+                Accumulator.SemanticAnalysis(instance, AllMatches.INSTANCE);
                 StaticUsage.AddUsages(Accumulator.StaticUsage, Usage.ModeEnum.Read);
             }
 

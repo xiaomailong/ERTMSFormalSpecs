@@ -1,5 +1,6 @@
 <NameSpace
  Name="START_DISPLAYING_PLAIN_TEXT_MESSAGE"
+ Guid="a181c80d-3b20-46b3-a972-d6ad5b8e3d3f"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,64 +9,75 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="b7e7b59a-363d-49d4-953a-c3e7deeaf21d"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="267760ba-b687-4145-83db-01482bc14723"
 >
 </ReqRef><ReqRef
  Id="716b3fc9-958d-44c6-8f2d-2aee2be0ff6a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f6aaabf7-cefd-4271-8b7a-53db5aa6ed5b"
 >
 </ReqRef><Comment>This message contains a plain text message that is currently being shown to the driver</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="d21c757f-0de4-4347-87b0-ec9e772c8ac5"
 >
 </StructureElement><StructureElement
  TypeName="L_TEXT"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_TEXT"
+ Guid="3aec8709-fc39-4a14-8ca5-ed82693b17f5"
 >
 <ReqRef
  Id="fd0b971b-3290-4dd8-bebf-f8ea2d51c947"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="cf5c8c75-5b9f-4929-9024-965deebaae78"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence1"
+ Guid="fffe8945-a96c-4859-8a8d-2eda4b52643e"
 >
 <ReqRef
  Id="5ff6b16e-785d-470c-9c08-7398535628cb"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2b790f52-0a44-4f1a-a162-e773dc3ba62e"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure1"
+ Guid="23f884ab-4978-4ce2-9d34-2ac67118492e"
 >
 <ReqRef
  Id="5ff6b16e-785d-470c-9c08-7398535628cb"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e0b1a8c6-197f-4730-874e-bd4f27042e24"
 >
 </ReqRef><StructureElement
  TypeName="String"
  Default="&apos;&apos;"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="X_TEXT"
+ Guid="829cea98-7c8d-44c0-af36-f3730c1fc929"
 >
 </StructureElement></Structure></Structures>
 <Collections>
@@ -75,10 +87,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection1"
+ Guid="bc8e296c-2ca4-4ad3-8385-67c6f191e7c2"
 >
 <ReqRef
  Id="5ff6b16e-785d-470c-9c08-7398535628cb"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f0d41f88-1670-4368-a6f4-71947fbdb65e"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>

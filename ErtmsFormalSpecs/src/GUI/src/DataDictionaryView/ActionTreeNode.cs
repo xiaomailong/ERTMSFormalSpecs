@@ -21,7 +21,7 @@ using System.ComponentModel;
 
 namespace GUI.DataDictionaryView
 {
-    public class ActionTreeNode : DataTreeNode<DataDictionary.Rules.Action>
+    public class ActionTreeNode : ModelElementTreeNode<DataDictionary.Rules.Action>
     {
         private class ItemEditor : Editor
         {
@@ -69,6 +69,29 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
+        /// Handles a selection change event
+        /// </summary>
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
+        {
+            base.SelectionChanged(displayStatistics);
+            if (Item.Translation != null)
+            {
+                if (BaseTreeView != null && BaseTreeView.RefreshNodeContent)
+                {
+                    IBaseForm baseForm = BaseForm;
+                    if (baseForm != null)
+                    {
+                        if (baseForm.RequirementsTextBox != null)
+                        {
+                            baseForm.RequirementsTextBox.Text = Item.Translation.getSourceTextExplain();
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
@@ -83,11 +106,13 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Split", new EventHandler(SplitHandler)));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
-
+            retVal.AddRange(base.GetMenuItems());
+            retVal.Insert(4, new MenuItem("-"));
+            retVal.Insert(5, new MenuItem("Split", new EventHandler(SplitHandler)));
+            
             return retVal;
         }
 

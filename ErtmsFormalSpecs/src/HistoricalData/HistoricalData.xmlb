@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SYSTEM NAME="HistoricalData.Generated"
+        IGNOREALIENATTRS="TRUE"
+	ENTITIESINATTR="TRUE">
+
+  <CSHARPCONFIG USEABSTRACTFACTORY="TRUE"
+                GENERATEWITHCONTROLLERS="TRUE" >
+  </CSHARPCONFIG>
+
+  <!-- ------------------------- -->
+  <!-- History                   -->
+  <!-- ------------------------- -->
+  <ELEMENT NAME="History" MAIN="TRUE" BASECLASS="HistoricalData.HistoricalDataElement">
+    <FIELDS>
+      <FIELD NAME="Commits"   REFTYPE="Commit" />
+    </FIELDS>
+    <FORMULA>
+      <CONCAT>
+        <REPEAT TARGET="Commits" >
+          <ELEMENTREF NAME="Commit" />
+        </REPEAT>
+      </CONCAT>
+    </FORMULA>
+  </ELEMENT>
+
+  <!-- ------------------------- -->
+  <!-- Commit                    -->
+  <!-- ------------------------- -->
+  <ELEMENT NAME="Commit" BASECLASS="HistoricalData.HistoricalDataElement">
+    <FIELDS>
+      <FIELD NAME="Message"   TYPE="PCHAR" />
+      <FIELD NAME="Date"      TYPE="PCHAR" />
+      <FIELD NAME="Hash"      TYPE="PCHAR" />
+      <FIELD NAME="Committer" TYPE="PCHAR" />
+      <FIELD NAME="Changes"   REFTYPE="Change" />
+    </FIELDS>
+    <ATTRIBUTES>
+      <ATTR NAME="Hash"      TARGET="Hash" />
+      <ATTR NAME="Committer" TARGET="Committer" />
+      <ATTR NAME="Date"      TARGET="Date" />
+    </ATTRIBUTES>
+    <FORMULA>
+      <CONCAT>
+        <ENCLOSED NAME="Message" OPTIONAL="TRUE">
+	  <PCDATA TARGET="Message" />
+	</ENCLOSED>
+        <REPEAT TARGET="Changes" >
+          <ELEMENTREF NAME="Change" />
+        </REPEAT>
+      </CONCAT>
+    </FORMULA>
+  </ELEMENT>
+
+  <!-- ------------------------- -->
+  <!-- Change                    -->
+  <!-- ------------------------- -->
+  <ELEMENT NAME="Change" BASECLASS="HistoricalData.HistoricalDataElement">
+    <FIELDS>
+      <FIELD NAME="Guid"      TYPE="PCHAR" />
+      <FIELD NAME="Before"    TYPE="PCHAR" />
+      <FIELD NAME="After"     TYPE="PCHAR" />
+      <FIELD NAME="Operation" ENUMTYPE="ChangeOperationEnum" />
+      <FIELD NAME="Field"     TYPE="PCHAR" />
+    </FIELDS>
+    <ATTRIBUTES>
+      <ATTR NAME="Guid"      TARGET="Guid" />
+      <ATTR NAME="Field"     TARGET="Field" />
+      <ATTR NAME="Operation" TARGET="Operation" />
+    </ATTRIBUTES>
+    <FORMULA>
+      <CONCAT>
+        <ENCLOSED NAME="Before">
+          <PCDATA TARGET="Before" />
+        </ENCLOSED>
+        <ENCLOSED NAME="After">
+          <PCDATA TARGET="After" />
+        </ENCLOSED>
+      </CONCAT>
+    </FORMULA>
+  </ELEMENT>
+
+  <!-- --------------------- -->
+  <!-- Enum Expectation kind -->
+  <!-- --------------------- -->
+  <ENUM NAME="ChangeOperationEnum" >
+    <ENUMVALUE NAME="Change" />
+    <ENUMVALUE NAME="Add" />
+    <ENUMVALUE NAME="Remove" />
+  </ENUM>
+</SYSTEM>

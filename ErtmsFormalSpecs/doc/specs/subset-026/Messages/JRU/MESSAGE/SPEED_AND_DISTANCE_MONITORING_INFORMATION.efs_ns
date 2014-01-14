@@ -1,5 +1,6 @@
 <NameSpace
  Name="SPEED_AND_DISTANCE_MONITORING_INFORMATION"
+ Guid="ea89e5eb-ebc1-4600-a5be-ad678736c628"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,107 +9,125 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="a2b996a0-2171-4e8b-912c-92cd465cc01f"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a043632a-e070-4c8d-893d-dedb108ffd2f"
 >
 </ReqRef><Comment>This message contains speed and distance monitoring data, in relation to the information displayed to the driver</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="f8b80fe7-ad81-48ae-9972-eec725e856ae"
 >
 </StructureElement><StructureElement
  TypeName="M_SDMTYPE"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_SDMTYPE"
+ Guid="1d49bc25-7e87-496e-9997-1f7121090036"
 >
 <ReqRef
  Id="a1620ce5-1b59-4c83-9eea-97f750d3dd5f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="90c30010-82f9-4060-9abe-ee95a45520a8"
 >
 </ReqRef><ReqRef
  Id="d78b5d9b-a778-4992-922f-a1bfa907c33a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f9cb2f92-630d-4859-9a8a-beffc51086d8"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_SDMSUPSTAT"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_SDMSUPSTAT"
+ Guid="4c30694a-0026-457b-ba7d-999e962ad5b0"
 >
 <ReqRef
  Id="1f8fcc93-5fb1-4284-a329-e5892b4387f6"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="4a448d1e-3eb3-4cc6-b1db-f516c5910760"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="V_PERM"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_PERM"
+ Guid="2f5337f0-8bb2-4258-bae4-303ba0623e85"
 >
 <ReqRef
  Id="1d93cbb9-5eed-473f-b4c7-9a34d8d45aa1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="fbc1e713-2f27-4a83-80ba-7bccdb6b49ea"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="V_FLOI"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_FLOI"
+ Guid="07b25179-434c-499e-bd06-d00118a4e36f"
 >
 <ReqRef
  Id="96aa1b95-24c4-40ae-b9cb-cad345c62c0a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0c1c066d-3851-4a2d-9a4c-e537ff20efb2"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="V_TARGET"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_TARGET"
+ Guid="ac6db0f9-6362-436e-9b86-e04c862814fd"
 >
 <ReqRef
  Id="0820619a-17f4-4f88-b9a0-6ff0a111a01e"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8d1fb238-882e-49e2-8bdc-c56fd85a79bd"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_TARGET"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_TARGET"
+ Guid="bf1d6db2-f473-4d83-aee5-7202152bc819"
 >
 <ReqRef
  Id="2c436fad-5350-443c-b5d0-d3fb240fb972"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a383ff9a-2724-4b30-8a56-aa6b0ded06d7"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="V_RELEASE"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_RELEASE"
+ Guid="22b7a12e-220f-4e44-9e27-79cc1828e9c0"
 >
 <ReqRef
  Id="03168781-6fa4-4496-8cb4-eb8643c268d1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6447dac5-ee22-4e5e-a591-e2345e74d112"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

@@ -5,6 +5,7 @@
  Height="50"
  Hidden="TRUE"
  Name="Infill"
+ Guid="44d64c33-9ae1-40d6-a342-51ea2e902414"
 >
 <NameSpaces>
 </NameSpaces>
@@ -12,15 +13,18 @@
 <Procedure
  Implemented="TRUE"
  Name="InfillReceived"
+ Guid="caaee2cc-ae2d-44eb-b71d-534d0264beed"
 >
 <ReqRef
  Id="299e44cd-9a5e-4f38-8721-bad782668787"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="feada224-3f7c-460d-8875-1f1294415eb5"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message"
  Name="Packet"
+ Guid="dcebfcd1-5e63-41cb-9f2c-7710c47593bf"
 >
 </Parameter></Parameters>
 <Rules>
@@ -28,17 +32,21 @@
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="UpdateInfill"
+ Guid="83218b1a-89c5-48a2-8eaf-02b84fce61c6"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="UpdateInfill"
+ Guid="6c0d8476-ac94-4a6e-820c-69022643f894"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Data &lt;- BaliseGroup
+<Action
+ Guid="23a68de7-a41d-4547-8dea-9faccfcb08cb"
+>Data &lt;- BaliseGroup
 {
     NID_BG =&gt; Packet.NID_BG,
     NewCountry =&gt; Q_NEWCOUNTRY_To_Bool ( Packet.Q_NEWCOUNTRY ),
@@ -54,14 +62,17 @@
  VariableMode="Internal"
  Implemented="TRUE"
  Name="Data"
+ Guid="b04bd19e-f910-4ad1-abcd-a4c60d7202c9"
 >
 <ReqRef
  Id="082b9d97-81b9-4995-87a2-07e6e31bd2d0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d6f3d8ef-b187-4e00-bc59-33f7389fadec"
 >
 </ReqRef><ReqRef
  Id="041247c0-323f-4ba8-8e1f-5b5a3232d83b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="00678690-ae17-4a24-82fd-6a612c046377"
 >
 </ReqRef><Comment>Indicates the infill location reference.</Comment>
 </Variable><Variable
@@ -70,10 +81,12 @@
  VariableMode="Internal"
  Implemented="TRUE"
  Name="InfillTransmissionMediaAvailable"
+ Guid="86d5f155-36d6-41c1-af09-dc6d81c24eaa"
 >
 <ReqRef
  Id="b997b70b-691d-427f-8512-361a510200ab"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c575f400-7ccf-48a1-ab7d-e7c42f0890a7"
 >
 </ReqRef><Comment>Indicates if the on-board system is equipped with the infill transmission media (otherwise the infill information will be ignored).</Comment>
 </Variable></Variables>

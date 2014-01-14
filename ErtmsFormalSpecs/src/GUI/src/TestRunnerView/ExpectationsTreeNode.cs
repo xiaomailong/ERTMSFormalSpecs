@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace GUI.TestRunnerView
 {
-    public class ExpectationsTreeNode : DataTreeNode<DataDictionary.Tests.SubStep>
+    public class ExpectationsTreeNode : ModelElementTreeNode<DataDictionary.Tests.SubStep>
     {
         /// <summary>
         /// The value editor
@@ -42,6 +42,29 @@ namespace GUI.TestRunnerView
         public ExpectationsTreeNode(DataDictionary.Tests.SubStep item)
             : base(item, "Expectations", true)
         {
+        }
+
+        /// <summary>
+        /// Handles a selection change event
+        /// </summary>
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
+        {
+            base.SelectionChanged(displayStatistics);
+            if (Item.Translation != null)
+            {
+                if (BaseTreeView != null && BaseTreeView.RefreshNodeContent)
+                {
+                    IBaseForm baseForm = BaseForm;
+                    if (baseForm != null)
+                    {
+                        if (baseForm.RequirementsTextBox != null)
+                        {
+                            baseForm.RequirementsTextBox.Text = Item.Translation.getSourceTextExplain();
+                        }
+                    }
+                }
+            }
         }
 
         protected override void BuildSubNodes()

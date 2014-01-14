@@ -21,7 +21,7 @@ using System.Linq;
 
 namespace DataDictionary.Tests.Translations
 {
-    public class Translation : Generated.Translation, ICommentable
+    public class Translation : Generated.Translation, ICommentable, TextualExplain
     {
         /// <summary>
         /// Constructor
@@ -206,6 +206,76 @@ namespace DataDictionary.Tests.Translations
 
                 subStepCounter++;
             }
+        }
+
+
+        /// <summary>
+        /// Explains the Translation with indentation
+        /// </summary>
+        /// <returns></returns>
+        public string getExplain(bool explainSubElements)
+        {
+            return getExplain(explainSubElements, 0);
+        }
+
+        /// <summary>
+        /// Explains the Translation with indentation
+        /// </summary>
+        /// <returns></returns>
+        public string getExplain(bool explainSubElements, int indent)
+        {
+            string result = "";
+
+            if (!explainSubElements)
+            {
+                if (SourceTexts.Count > 1)
+                {
+                    result += TextualExplainUtilities.Pad("{\\b SOURCE TEXTS}\\par", indent);
+                }
+                else
+                {
+                    result += TextualExplainUtilities.Pad("{\\b SOURCE TEXT}\\par", indent);
+                }
+
+                foreach (SourceText sourceText in SourceTexts)
+                {
+                    result += sourceText.getExplain(explainSubElements, indent + 2) + "\\par";
+                }
+            }
+            else
+            {
+                foreach (SubStep subStep in SubSteps)
+                {
+                    result += subStep.getExplain(indent + 2, explainSubElements) + "\\par";
+                }
+            }
+
+            result += "\\par";
+
+            return result;
+        }
+
+        public string getSourceTextExplain()
+        {
+            string result = "";
+            string prefix = "";
+            int textCount = 1;
+
+            foreach (SourceText sourceText in SourceTexts)
+            {
+                if (SourceTexts.Count > 1)
+                {
+                    prefix = textCount + ". ";
+                }
+                else
+                {
+                    prefix = "";
+                }
+                result += prefix + sourceText.Name + "\n";
+                textCount++;
+            }
+
+            return result;
         }
 
         /// <summary>

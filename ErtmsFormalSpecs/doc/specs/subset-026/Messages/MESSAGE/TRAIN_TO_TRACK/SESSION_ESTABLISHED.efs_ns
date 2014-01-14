@@ -1,5 +1,6 @@
 <NameSpace
  Name="SESSION_ESTABLISHED"
+ Guid="0a6d87c9-4989-4441-85bd-ace30a568694"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,6 +8,7 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="388c6b50-1855-4d71-a603-b4dc9596dad9"
 >
 <Comment>Session Established</Comment>
 <StructureElement
@@ -15,10 +17,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_MESSAGE"
+ Guid="847954cf-7bbc-4b47-aa4e-0902b3271bf0"
 >
 <ReqRef
  Id="6d607aea-ecdf-49ba-94cf-820077be16f5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="67dd6fcc-7682-42e4-b460-05e816c2a218"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
@@ -26,10 +30,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
+ Guid="b7d12a50-4ed0-4d54-b447-9cd642c78f9f"
 >
 <ReqRef
  Id="da48d790-6e99-4ede-b382-33683f89734e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="df6a2cbf-ad13-464c-a870-1d077be45e99"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
@@ -37,10 +43,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
+ Guid="54346bb2-b36a-4c47-9be0-fce9db9257dd"
 >
 <ReqRef
  Id="034e6081-8324-46a4-8701-9547536400ac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c28ac23-2fde-4de6-ae56-b60d4fef0320"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_ENGINE"
@@ -48,10 +56,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_ENGINE"
+ Guid="9a04ab8a-61dc-4573-b696-4023a3186b3b"
 >
 <ReqRef
  Id="81482df6-4bcd-4d73-987a-cd90bcffe361"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="79015e16-d791-488d-b603-768c54945271"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
@@ -59,18 +69,22 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
+ Guid="339b0631-a0f0-4855-8f79-b94218197983"
 >
 <ReqRef
  Id="f5760847-4b49-4c61-8ca9-da687dc787ac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b1c686c0-6d73-4166-bc29-0221f6c816df"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
+ Guid="10601832-940d-4d91-a595-bb51e7e0387f"
 >
 <ReqRef
  Id="f5760847-4b49-4c61-8ca9-da687dc787ac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1f10477-1d44-44e7-9c43-bfd83c3676fc"
 >
 </ReqRef><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.ONBOARD_TELEPHONE_NUMBERS.Message"
@@ -78,10 +92,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="ONBOARD_TELEPHONE_NUMBERS"
+ Guid="a4d4d184-768c-4408-b66f-9542a34eaa7c"
 >
 <ReqRef
  Id="f5760847-4b49-4c61-8ca9-da687dc787ac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47509fda-4dfd-48ff-b28e-ddbc655ac124"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
@@ -90,10 +106,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
+ Guid="abda5985-60ed-48c3-89e0-bda312b82197"
 >
 <ReqRef
  Id="f5760847-4b49-4c61-8ca9-da687dc787ac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d0482b7a-4182-4cbd-99d7-ecd098d8911a"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>

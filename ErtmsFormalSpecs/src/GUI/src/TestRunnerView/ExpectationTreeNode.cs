@@ -22,7 +22,7 @@ using System.Windows.Forms;
 
 namespace GUI.TestRunnerView
 {
-    public class ExpectationTreeNode : DataTreeNode<DataDictionary.Tests.Expectation>
+    public class ExpectationTreeNode : ModelElementTreeNode<DataDictionary.Tests.Expectation>
     {
         /// <summary>
         /// The value editor
@@ -104,6 +104,29 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
+        /// Handles a selection change event
+        /// </summary>
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
+        {
+            base.SelectionChanged(displayStatistics);
+            if (Item.Translation != null)
+            {
+                if (BaseTreeView != null && BaseTreeView.RefreshNodeContent)
+                {
+                    IBaseForm baseForm = BaseForm;
+                    if (baseForm != null)
+                    {
+                        if (baseForm.RequirementsTextBox != null)
+                        {
+                            baseForm.RequirementsTextBox.Text = Item.Translation.getSourceTextExplain();
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
@@ -118,9 +141,10 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
 
             return retVal;
         }

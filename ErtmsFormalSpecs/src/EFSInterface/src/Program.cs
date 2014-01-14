@@ -163,7 +163,7 @@ namespace EFSInterface
                 {
                     Console.Out.WriteLine("Loading dictionary " + arg);
                     bool lockFiles = false;
-                    Dictionary dictionary = Util.load(arg, efsSystem, lockFiles, null);
+                    Dictionary dictionary = Util.load(arg, efsSystem, lockFiles, null, false);
                     if (dictionary == null)
                     {
                         Console.Out.WriteLine("Cannot load dictionary " + arg);

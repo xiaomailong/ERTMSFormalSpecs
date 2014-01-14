@@ -22,7 +22,7 @@ using DataDictionary;
 
 namespace GUI.Shortcuts
 {
-    public class ShortcutFolderTreeNode : DataTreeNode<DataDictionary.Shortcuts.ShortcutFolder>
+    public class ShortcutFolderTreeNode : ModelElementTreeNode<DataDictionary.Shortcuts.ShortcutFolder>
     {
         private class ItemEditor : NamedEditor
         {

@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DataDictionary.Functions;
 
 namespace DataDictionary
 {
@@ -460,28 +461,35 @@ namespace DataDictionary
                 {
                     // Check whether the expression is valid
                     Interpreter.Expression expression = checkExpression(preCondition, preCondition.Condition);
-                    if (!preCondition.Dictionary.EFSSystem.BoolType.Match(expression.GetExpressionType()))
+                    if (expression != null)
                     {
-                        preCondition.AddError("Expression type should be Boolean");
-                    }
-
-                    Types.ITypedElement element = OverallTypedElementFinder.INSTANCE.findByName(preCondition, preCondition.findVariable());
-                    if (element != null)
-                    {
-                        if (element.Type is Types.StateMachine)
+                        if (!preCondition.Dictionary.EFSSystem.BoolType.Match(expression.GetExpressionType()))
                         {
-                            if (preCondition.findOperator() != null)
+                            preCondition.AddError("Expression type should be Boolean");
+                        }
+
+                        Types.ITypedElement element = OverallTypedElementFinder.INSTANCE.findByName(preCondition, preCondition.findVariable());
+                        if (element != null)
+                        {
+                            if (element.Type is Types.StateMachine)
                             {
-                                if (preCondition.findOperator().CompareTo("==") == 0)
+                                if (preCondition.findOperator() != null)
                                 {
-                                    preCondition.AddWarning("Operator == should not be used for state machines");
-                                }
-                                else if (preCondition.findOperator().CompareTo("!=") == 0)
-                                {
-                                    preCondition.AddWarning("Operator != should not be used for state machines");
+                                    if (preCondition.findOperator().CompareTo("==") == 0)
+                                    {
+                                        preCondition.AddWarning("Operator == should not be used for state machines");
+                                    }
+                                    else if (preCondition.findOperator().CompareTo("!=") == 0)
+                                    {
+                                        preCondition.AddWarning("Operator != should not be used for state machines");
+                                    }
                                 }
                             }
                         }
+                    }
+                    else
+                    {
+                        preCondition.AddError("Cannot parse pre condition");
                     }
                 }
                 catch (Exception exception)
@@ -732,10 +740,34 @@ namespace DataDictionary
                     }
                 }
 
-                if (paragraph.getScope() != paragraph.SubParagraphsScope && paragraph.getScope() != Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK)
+                if ((!paragraph.getScopeOnBoard()) && paragraph.SubParagraphScopeOnboard)
                 {
-                    paragraph.AddWarning("Paragraph scope does not correspond to the scope of its sub-paragraphs");
+                    paragraph.AddWarning("Paragraph scope should be On Board, according to its sub-paragraphs");
                 }
+                if ((!paragraph.getScopeTrackside()) && paragraph.SubParagraphScopeTrackside)
+                {
+                    paragraph.AddWarning("Paragraph scope should be Trackside, according to its sub-paragraphs");
+                }
+                if ((!paragraph.getScopeRollingStock()) && paragraph.SubParagraphScopeRollingStock)
+                {
+                    paragraph.AddWarning("Paragraph scope should be Rolling Stock, according to its sub-paragraphs");
+                }
+                if (!paragraph.getScopeOnBoard() && !paragraph.getScopeTrackside() && !paragraph.getScopeRollingStock())
+                {
+                    paragraph.AddWarning("Paragraph scope not set");
+                }
+            }
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Function obj, bool visitSubNodes)
+        {
+            Function function = (Function)obj;
+
+            if (function.ReturnType == null)
+            {
+                function.AddError("Cannot determine function return type");
             }
 
             base.visit(obj, visitSubNodes);
@@ -752,7 +784,7 @@ namespace DataDictionary
                 {
                     expression.checkExpression();
                     Types.Type expressionType = cas.Expression.GetExpressionType();
-                    if (expressionType != null)
+                    if (expressionType != null && cas.EnclosingFunction != null && cas.EnclosingFunction.ReturnType != null)
                     {
                         if (!cas.EnclosingFunction.ReturnType.Match(expressionType))
                         {

@@ -1,5 +1,6 @@
 <NameSpace
  Name="INHIBITION_OF_BALISE_GROUP_MESSAGE_CONSISTENCY_REACTION"
+ Guid="86319010-dfca-4f65-893e-b2d0ca43b1b5"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="207dfb85-fe6f-46ed-9d99-c157ba5fbc4a"
 >
 <ReqRef
  Id="edd66dcd-afe0-4315-8892-06477a24808f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="33152cd4-1150-4abb-a68e-415ec4f38ff2"
 >
 </ReqRef><ReqRef
  Id="e362155d-3e5a-4b76-ba72-59b33ec33248"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a754890-d364-409f-aadb-b53ac9334b9d"
 >
 </ReqRef><Comment>Indication to on-board that the balise group message consistency reaction (service brake command) can be inhibited for this balise group message only, in case one or more balise telegram(s) of the group is/are missed or is/are detected but not decoded.</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="a528829c-1edc-4c16-9283-fcb6e4d1eca7"
 >
 <ReqRef
  Id="edd66dcd-afe0-4315-8892-06477a24808f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="449bedf9-c663-41fd-a1a3-3be6b7e4b9ac"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="ae1d4b0b-121c-47ec-a7ec-6d8071794d3e"
 >
 <ReqRef
  Id="edd66dcd-afe0-4315-8892-06477a24808f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8d81c8b5-491e-4fae-9cc5-850ffabc95a2"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="9b56c507-c89d-403e-90ee-967bb04f57de"
 >
 <ReqRef
  Id="edd66dcd-afe0-4315-8892-06477a24808f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6a395ce5-afc6-4ddd-aff9-3a9d7fb59c6c"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

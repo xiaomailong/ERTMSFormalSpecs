@@ -4,16 +4,20 @@
  Width="100"
  Height="50"
  Name="AcceptInformation"
+ Guid="f7f83012-bdd3-434f-80ae-c81265c22812"
 >
 <NameSpaces>
 <NameSpaceRef
  Name="Exceptions"
+ Guid="faac5e41-8b64-490c-ae06-1473516da522"
 >
 </NameSpaceRef><NameSpaceRef
  Name="ModeRules"
+ Guid="d6b46686-f2df-4139-979a-b791f51535f3"
 >
 </NameSpaceRef><NameSpaceRef
  Name="LevelRules"
+ Guid="81b2ca53-8643-4284-adfa-8c994ddb4ebd"
 >
 </NameSpaceRef></NameSpaces>
 <Enumerations>
@@ -22,23 +26,28 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Source"
+ Guid="72802c19-8f62-4253-89b7-661d639306bc"
 >
 <Values>
 <EnumValue
  Value="0"
  Name="RBC"
+ Guid="4cfb508f-62bb-4efd-b584-e8ccb991a40a"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="BaliseGroup"
+ Guid="4a3d26be-c2e3-4834-ae59-d344cf25f0a3"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="Loop"
+ Guid="7e95fc75-2f83-476f-b867-4a4c678407c8"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="RIU"
+ Guid="f90271ab-2585-4bff-a6a1-0bb3f7d3fd16"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -47,375 +56,472 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="UnconditionalEmergencyStop"
+ Guid="1c80756d-3fa9-492b-8683-4aec805e659c"
 >
 <ReqRef
  Id="e1d3ae38-40fd-432c-bbc0-f1912fc6fa01"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3661404f-ce7c-495b-837b-2a22e6e4d090"
 >
 </ReqRef><ReqRef
  Id="c18bd90f-a67a-4638-8e11-a96a07a6582c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9c1c75be-b42d-426c-8b4f-255deedd9c40"
 >
 </ReqRef><ReqRef
  Id="79c36a3b-28cb-46f1-b4af-83cabe0812e0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="74509bdf-cac6-4518-aef2-34f7ac45bcc7"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="6c669cc4-fd50-4c98-9df0-ef489b26aea1"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="c8affaef-9898-44da-90b4-924183c28a45"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="8a652aca-1b2c-4714-bf86-275269133f8b"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptUnconditionalEmergencyStopFromRBC() AND ModeRules.AcceptUnconditionalEmergencyStop()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="CoOperativeShorteningOfMA"
+ Guid="1e43f0f4-b171-4ebf-8741-02db6fa142ac"
 >
 <ReqRef
  Id="a7434a99-ef78-4ab3-b711-971f86e213d5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b16418d3-5f28-4026-b57f-bb20a6d61c2b"
 >
 </ReqRef><ReqRef
  Id="291d8440-fb04-4f8f-82b6-9e76400193bc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1ee7ca30-d90d-45fe-b99b-dbf832ea59cf"
 >
 </ReqRef><ReqRef
  Id="c749d322-3680-4083-a042-08358ca8c324"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b5a39b4f-a4ea-4123-9e89-53fc03b7dd70"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="4a3bf8c6-1094-411a-9057-e18d12594f01"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="d41e86d6-792f-4743-964c-86b9ac6b2cc7"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="ac09ab98-2871-4502-8579-d2458f1d1c60"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptCoOperativeShorteningOfMAFromRBC() AND ModeRules.AcceptCoOperativeShorteningOfMA()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="AcknowledgementOfTrainData"
+ Guid="76c255de-89bf-4702-8b46-efe0aafc227e"
 >
 <ReqRef
  Id="5d44fc75-c83d-4f1a-a186-cb333b51c48e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47e7190c-861b-4b76-affb-fc89f17d83d8"
 >
 </ReqRef><ReqRef
  Id="2a6efa84-6142-4025-8e32-9c42decd9ee2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21205b76-7375-4700-9762-4a095d85e003"
 >
 </ReqRef><ReqRef
  Id="121e8fdb-35a6-48c8-a8cc-909f3b0e172a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a7b579b6-acb0-43bf-8d64-d9d5b3953d99"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="5b8a18ca-3815-4e9d-a61d-90e367aac875"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="8931b5e6-e22a-4230-bf31-bd8335176962"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="3cb5d9a8-8f7a-4fcf-bfbd-3c15fb00782d"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptAcknowledgementOfTrainDataFromRBC() AND ModeRules.AcceptAcknowledgementOfTrainData()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="ConditionalEmergencyStop"
+ Guid="3e8241de-88a8-44ec-80c7-6842991fab67"
 >
 <ReqRef
  Id="fbadd599-8069-4fde-b35a-3fd61c34d41c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8d58cab7-ed7b-441c-b62a-5f4e6eb77bc9"
 >
 </ReqRef><ReqRef
  Id="60ac7223-a277-4aad-bed1-3e841a92b64a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b5b79c0a-d056-411e-84c5-b48f3ca8acff"
 >
 </ReqRef><ReqRef
  Id="26b8e217-6dda-428d-9668-118d3e11e9a8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bdefc3d5-d0bb-493d-b3ac-96f3549a60e4"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="c42737d7-148e-4c70-946b-145918303d3e"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="c27ef0d3-5189-481a-873d-e4102723a47b"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="792b3bf8-baaf-447c-8c7d-bc7e6f0fb5dd"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptConditionalEmergencyStopFromRBC() AND ModeRules.AcceptConditionalEmergencyStop()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="SHAuthorised"
+ Guid="204decf7-1b09-42c6-9089-bb07e788286a"
 >
 <ReqRef
  Id="a5820a00-2f5b-4f06-b503-c1b74d428a2b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="522e5719-8a42-4f80-859b-311021f4c532"
 >
 </ReqRef><ReqRef
  Id="aa70bf0d-eaf2-4416-aed3-c38a8d06c623"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4b6bcb90-a1ad-410f-b327-c0f9df0c9223"
 >
 </ReqRef><ReqRef
  Id="bf43d045-2c72-494f-9782-67e34582f0b8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7df54478-30c4-4c08-9379-d7db2d0feaa7"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="4db5c4c4-ea6f-4caf-a3ea-50612861540b"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="bb5dc9ab-8402-4fd5-bfda-7e3d67f410a9"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="ced28df1-735d-425e-9dd9-8af2b6326295"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptSHAuthorisedFromRBC() AND ModeRules.AcceptSHAuthorised()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="SHRefused"
+ Guid="1ee20f19-4bca-4d9f-84c3-fd5b3afef1cf"
 >
 <ReqRef
  Id="1e3dbcf4-8697-4618-9a1e-c6d278addfc9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0c7d8c35-9a11-4ccd-bafb-982839aa271c"
 >
 </ReqRef><ReqRef
  Id="662f99ef-76a4-4018-850a-fb85a704df24"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8e13d4d3-b28b-412e-879a-04aeb010d1ae"
 >
 </ReqRef><ReqRef
  Id="35cb7866-7b4a-4118-a031-2924fab6b966"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb735647-b774-48a5-b01f-3f0fe0517a0b"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="f62aa863-cb29-4f73-bac0-a81a3ce010e7"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="1527f2e7-d03c-489c-aa96-af99089e3cdd"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="e82e6d2e-52c7-4531-9fd0-a9ba38d00e7b"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptSHRefusedFromRBC() AND ModeRules.AcceptSHRefused()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="RevocationOfEmergencyStop"
+ Guid="e2613dcf-4ab9-4f74-9cb1-d210f1ef01f3"
 >
 <ReqRef
  Id="50c556fa-4070-4b59-8c28-0eaf9923c709"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b288aed9-51bc-4dab-be4e-bb635c3892e3"
 >
 </ReqRef><ReqRef
  Id="9a44e905-b3ab-4712-aab4-cb179d4973f2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cc344316-63c1-45cc-972c-8f318fca1f25"
 >
 </ReqRef><ReqRef
  Id="fb434db5-82e8-4e25-a533-7d12b18a20e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7a0f8feb-942f-4e7c-b71d-11ba17f3b89d"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="3025a319-b544-44cd-94c4-33d2de3c8c73"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="d64ce5f8-fb3a-44fe-a3ec-41b2d7cdcd44"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="aec3097d-cb02-4105-8156-46bf1da38344"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptRevocationOfEmergencyStopFromRBC() AND ModeRules.AcceptRevocationOfEmergencyStop()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="RecognitionOfExitFromTRIPMode"
+ Guid="aa1eb470-5da8-4a20-93c4-cc353ee7cb08"
 >
 <ReqRef
  Id="9738aa6b-2052-4c1e-bbd2-8a4daf0ebb90"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b5cc1dc4-b33e-4077-bf3c-edddea2fc5a4"
 >
 </ReqRef><ReqRef
  Id="23c39e3c-74c3-49d9-901d-c7b83ea4d7ba"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2f2f37e3-3078-4755-9434-6d2f37b71969"
 >
 </ReqRef><ReqRef
  Id="18cf4755-5380-4ed5-9ab0-392bd4f1dc00"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d34856a9-08bb-4c2b-be0a-5385326f2fb3"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="cf2642d9-902d-4d58-88b2-744642c3bd88"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="8d486ed4-5501-4702-aa74-f68c76d02fa6"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="d86c0a21-e2c6-4dd8-95d0-025dbd986014"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptRecognitionOfExitFromTRIPModeFromRBC() AND ModeRules.AcceptRecognitionOfExitFromTRIPMode()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="InfillLocationReference"
+ Guid="c044bf3d-5335-4a10-aef6-3110f359faa3"
 >
 <ReqRef
  Id="534c6d31-c6ec-4d6b-b554-4e26d4578d9c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff1b66a3-a33b-4ebc-8ab7-6dba7c04cdc3"
 >
 </ReqRef><ReqRef
  Id="cf9c35af-ae01-4629-a4b3-5aa6d084ad70"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fe74e583-775c-4d3f-94cf-4f7f126329c4"
 >
 </ReqRef><ReqRef
  Id="86181efd-ae29-4466-9e19-281e2d3328be"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8fe4b794-f7ba-4dea-85cd-14a86038efad"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="d542c8a2-48b3-4358-bb18-549a36cd0906"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="d1f0c91a-b1c1-4263-83e9-233815be5b35"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="9675c29e-4a95-41c1-9383-1715a45e50d1"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptInfillLocationReference() AND ModeRules.AcceptInfillLocationReference()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="AssignmentOfCoOrdinateSystem"
+ Guid="fec6beea-711b-4270-a7f8-7cb7f7eed20d"
 >
 <ReqRef
  Id="7855e24b-8b04-4769-8b80-85d96ac6c4bf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d8008006-487b-4ce1-9cec-0e0b0105604f"
 >
 </ReqRef><ReqRef
  Id="1cce96a5-baff-415e-a0e8-8f899e9907e9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="40490fd4-c04b-4400-b20c-37d506557cb8"
 >
 </ReqRef><ReqRef
  Id="bf3ddd2d-2637-47f2-9cc8-f1150fbc63bd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2e003c62-08e3-4755-b681-ee7a1361cad8"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="ceb50faa-cb95-4f4d-854a-dbb712169c7c"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="8e727aa2-ef19-49d2-b2c7-6fbf8e476da4"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="c1bf81a2-c6c7-481d-a731-ee238acf5394"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptAssignmentOfCoOrdinateSystemFromRBC() AND ModeRules.AcceptAssignmentOfCoOrdinateSystem()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="EOLMInformation"
+ Guid="db538749-fdb5-4660-9a31-b9b24c52e073"
 >
 <ReqRef
  Id="31ad05ab-2f11-4e80-9c5e-ddf00ae71987"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5782e49a-a0d8-41a3-9e94-ed6e096ac249"
 >
 </ReqRef><ReqRef
  Id="3a1a57ec-17e6-4841-a0d9-19b86d54f63b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b7c0246d-60a5-4a99-8bd4-9dbd1bca2855"
 >
 </ReqRef><ReqRef
  Id="94729314-cbe8-407a-8d98-c343762eb364"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4ef2a688-f2a7-41e0-822b-d855a3c51fe2"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="e64de570-5592-40e0-bdb7-173eb698d45c"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="a4b39874-b1a6-4bdd-b2f5-86915d353ac1"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="484d68ea-5e56-41a5-aa7a-11b70dbbc29a"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptEOLMInformation() AND ModeRules.AcceptEOLMInformation()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="TrackConditionsExcludingSpecialCases"
+ Guid="926be491-27ad-46b0-be23-b91085c76d23"
 >
 <ReqRef
  Id="3fa8a506-3ea9-4d64-a87b-730b4ee4bcf9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="17a2b6a3-8539-4489-a127-70a466906ba7"
 >
 </ReqRef><ReqRef
  Id="8f0be598-b43f-481e-89ce-a0d0899f208d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5eb447ee-40bd-4dc8-8684-96b36cb5805f"
 >
 </ReqRef><ReqRef
  Id="d830b7dc-fc98-46fa-8cef-c981b54a3a56"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ca6a70c8-d8eb-4ece-bb18-7031107658e8"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="dd0a0802-9bcc-4274-99f8-b01b7e1e0506"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="18d53f78-5f96-4734-8439-4f9851435500"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="94e38286-5e60-4864-afef-6e42028393ce"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptTrackConditionsExcludingBigMetalMassesFromRBC() AND ModeRules.AcceptTrackConditionsExcludingSpecialCases()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="28395962-7447-4e8b-9bb4-c0cb45c88d80"
 >
 <Expression>LevelRules.AcceptTrackConditionsExcludingBigMetalMasses() AND ModeRules.AcceptTrackConditionsExcludingSpecialCases()</Expression>
 </Case></Cases>
@@ -423,96 +529,121 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="LocationIdentity"
+ Guid="9ffa2f91-8044-4d4d-8d01-ed34078478f3"
 >
 <ReqRef
  Id="77210ea5-212b-45e5-be18-e538e6498db0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="70b602ac-f095-412b-ae7a-41c125b489a9"
 >
 </ReqRef><ReqRef
  Id="d319fde2-49fe-46a4-ae8b-d887a6a43c4a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5fbd1eb1-92f3-4828-b754-19666dd52b2d"
 >
 </ReqRef><ReqRef
  Id="ceb8ce84-f9c7-4182-8fb3-b7d893e9d1f3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1a51be1a-bb68-4cbb-991d-8e96b894a517"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="913c0339-feec-4729-8fa8-0a3cfc812503"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="3320b269-813d-41dd-818a-16bad4353f7b"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="695f7a26-c067-4c8d-bb84-e9e938cbb42c"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptLocationIdentity() AND ModeRules.AcceptLocationIdentity()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="TrackConditionsBigMetalMasses"
+ Guid="5d84ba59-5804-41b6-a1bf-18d6b24f819a"
 >
 <ReqRef
  Id="66e08452-abbc-420d-9a70-72e11fa0b5d5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="15d310eb-1506-4023-9895-ee79f34c3f53"
 >
 </ReqRef><ReqRef
  Id="a83b79e3-528b-489b-800f-4b0e15b5cd15"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b6d8047f-ab25-484c-ac2e-f502aeac0710"
 >
 </ReqRef><ReqRef
  Id="890a3aed-da40-44d4-9e48-44d0d15b6e77"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="93c897ef-62b8-471b-8a1e-b69ac4686cfd"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="7a35a2cd-7843-45e8-ba78-b57266668a40"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="e991ba3c-dabb-4006-b5bb-e30009dbd228"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="3e072063-0592-455f-8124-5a30bad9cea8"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptTrackConditionsBigMetalMasses() AND ModeRules.AcceptTrackConditionsBigMetalMasses()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="TrackConditionsIncludingSpecialCases"
+ Guid="28c0beec-db55-4a94-a9d5-8844214d73e4"
 >
 <ReqRef
  Id="3fa8a506-3ea9-4d64-a87b-730b4ee4bcf9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94e58c42-4abd-4e73-8a5a-89d471ad7a3f"
 >
 </ReqRef><ReqRef
  Id="8f0be598-b43f-481e-89ce-a0d0899f208d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cdb72008-31ef-4e72-a2c8-ed79359137a9"
 >
 </ReqRef><ReqRef
  Id="b55fec33-8e41-455a-a3e1-b06cd42e3268"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="df76f021-9683-422a-a108-176e7665cb44"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="5017ff24-daea-444e-b36e-296fd8472cf0"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="743d8cc3-9f75-4ea6-8827-4fc623e20846"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="46cb3d5a-5f31-4222-88f0-18bcb0962819"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptTrackConditionsExcludingBigMetalMassesFromRBC() AND ModeRules.AcceptTrackConditionsIncludingSpecialCases()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="60d7d37c-1a92-48b1-be02-7aceb7626278"
 >
 <Expression>LevelRules.AcceptTrackConditionsExcludingBigMetalMasses() AND ModeRules.AcceptTrackConditionsIncludingSpecialCases()</Expression>
 </Case></Cases>
@@ -520,34 +651,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="TracksideConstituentSystemVersion"
+ Guid="af3576cc-953c-4939-8f21-c564bf883311"
 >
 <ReqRef
  Id="d75d8947-a3b9-4c92-8f4a-86938fd12e9c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4cdbd4bb-4cf9-43c8-93b4-12abcf29f569"
 >
 </ReqRef><ReqRef
  Id="986b5095-0500-48d2-9088-9b313a0ee7c3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5d27c136-930f-447f-b9d7-b2044f67ea07"
 >
 </ReqRef><ReqRef
  Id="f33b2b57-e9c7-4c8e-8d28-623698ccd5db"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64574b40-b654-4037-a28a-2f27f2259762"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="eb4b9870-5e52-47f5-a35a-2c182f060338"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="d75b8ac0-07e6-4680-a00b-f3bd65227794"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="84534fbc-a811-46f1-beca-8886a5ac9e12"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptTracksideConstituentSystemVersionFromRBC() AND ModeRules.AcceptTracksideConstituentSystemVersion()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="0c08abef-61f6-49b6-893b-7ace1b7c17ef"
 >
 <Expression>LevelRules.AcceptTracksideConstituentSystemVersion() AND ModeRules.AcceptTracksideConstituentSystemVersion()</Expression>
 </Case></Cases>
@@ -555,65 +695,82 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="DefaultBaliseLoopRIUInformation"
+ Guid="87f9cb37-9ca2-4409-90ca-8d2bf73939fe"
 >
 <ReqRef
  Id="ae952ffb-7f6a-4784-93db-9d636e39df89"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a2a00488-d994-4f89-9105-b9d19fba5f53"
 >
 </ReqRef><ReqRef
  Id="4bfd92e9-8b4f-4326-b8f8-56f3c8d36ca2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d813081-a34d-427f-86d9-5a1736757c92"
 >
 </ReqRef><ReqRef
  Id="4aad6d52-1334-44ec-b89f-efc7667cb064"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="80adaf52-3cd5-4407-bb95-fdb6982a0e47"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="d29f6e7f-5273-4be8-bef9-741925acc2ec"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="60b24f2a-55c2-46b5-bea6-5252d8657ddf"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="c68ec7e2-15f4-42b4-86e0-3a3f3dfd8699"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptDefaultBaliseLoopRIUInformation() AND ModeRules.AcceptDefaultBaliseLoopRIUInformation()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="ReversingSupervisionInformation"
+ Guid="8ebdd443-8d08-4552-8a2c-af5cfc9398cd"
 >
 <ReqRef
  Id="750cfd80-2406-4aa0-b1cc-c55a029ae1a0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3c4781dd-31a2-48f8-b89d-e2192f7e1936"
 >
 </ReqRef><ReqRef
  Id="9f6a9117-f292-47a0-8054-19d7e0143d67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="01969809-3b08-4719-b420-18a0544d42d9"
 >
 </ReqRef><ReqRef
  Id="adef65f1-e138-41a4-894f-b4f0cc00ba12"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ef310ac2-34b8-4f26-8c38-e93660ebba9a"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="4d19386f-d3f6-4495-b79f-00a26aa8f30b"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="4ea9679f-44f9-4559-bb16-2c56d08738a6"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="c503f540-e9f4-4e63-b80a-1496fefeb048"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptReversingSupervisionInformationFromRBC() AND ModeRules.AcceptReversingSupervisionInformation()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="cbdf9dab-b0ce-46ee-8805-b2e6bcdff9ff"
 >
 <Expression>LevelRules.AcceptReversingSupervisionInformation() AND ModeRules.AcceptReversingSupervisionInformation()</Expression>
 </Case></Cases>
@@ -621,34 +778,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="ReversingAreaInformation"
+ Guid="6b04b780-4c26-4957-8a38-0e1c4ea4f11c"
 >
 <ReqRef
  Id="52272e9b-6955-459d-babd-f4bc7b526fb3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7ce28dcd-d7ba-40fc-8a45-6acfc376df9a"
 >
 </ReqRef><ReqRef
  Id="da73b9b9-ca1a-4f2d-a1c3-881d1af88284"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ca883ed1-69a0-4c32-8ed7-f0398e07779c"
 >
 </ReqRef><ReqRef
  Id="7feebc65-4ad1-47b2-a3fb-bc3b03732c44"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5365e722-fc5d-45c9-ad68-947f107c7775"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="b227145f-39d3-40fe-9b35-6157417afafa"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="6e3056e0-2131-4412-a044-bc4389dffcd8"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="69a114cf-4b5d-43e8-be1e-6e6e9fd48ea6"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptReversingAreaInformationFromRBC() AND ModeRules.AcceptReversingAreaInformation()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="d34bee18-d527-4006-85e4-5361b2532aa2"
 >
 <Expression>LevelRules.AcceptNationalValues() AND ModeRules.AcceptNationalValues()</Expression>
 </Case></Cases>
@@ -656,65 +822,82 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="TrackAheadFreeUpToLevel2_3TransitionLocation"
+ Guid="61a162e5-0324-4d8f-af04-8f7b939f80fa"
 >
 <ReqRef
  Id="90b02532-aab7-4fdf-890a-1663384ea547"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d97a0bd-9c93-4eb4-8070-f3cbb06fc9f8"
 >
 </ReqRef><ReqRef
  Id="735eac8a-221a-4a2b-afe0-5995149c4d88"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f3fcc0db-2642-4414-9e18-06b10ea5fc37"
 >
 </ReqRef><ReqRef
  Id="73953ce2-8fe8-4bcc-8bb0-eaebaaebd70e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dce34312-3b23-454b-87af-da6e780d271e"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="33fd37fe-5dc7-4279-8a75-bbbee58ac849"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="176e7ed2-1d7d-48c7-9def-ce4c368766bc"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="53d65a14-9528-4314-9f83-6a8da39dfe0d"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptTrackAheadFreeUpToLevel2_3TransitionLocation() AND ModeRules.AcceptTrackAheadFreeUpToLevel2_3TransitionLocation()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="LevelCrossingInformation"
+ Guid="ac729ba8-8578-4fb2-8c21-2f04f62dba7d"
 >
 <ReqRef
  Id="5b5ed845-4d23-4acc-a7ad-eb7473a3e3fb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="226faf8b-644b-4775-9733-2d72a7d6c151"
 >
 </ReqRef><ReqRef
  Id="ea9cb238-fa10-432d-98fa-7444cd377ee5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d8719e9-5ada-487e-8750-fb6c52158a20"
 >
 </ReqRef><ReqRef
  Id="249801fd-3e28-4f64-96a5-94eb73ae3a3e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b881221-07f7-4eb1-9ff5-77293f5a6d51"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="28c87e00-8a60-4450-a682-bef18cca3740"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="64d93422-8e01-4f33-9f0e-07c3a656f630"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="6915ed8e-f545-48ee-88d9-5a89e7967084"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptLevelCrossingInformationFromRBC() AND ModeRules.AcceptLevelCrossingInformation()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="fcb09401-5fea-42d9-8094-4238838f7ce8"
 >
 <Expression>LevelRules.AcceptLevelCrossingInformation() AND ModeRules.AcceptLevelCrossingInformation()</Expression>
 </Case></Cases>
@@ -722,34 +905,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="PermittedBrakingDistanceInformation"
+ Guid="ec309858-f84d-4fc0-9dbb-b4fd93790a69"
 >
 <ReqRef
  Id="6b017bae-a717-40af-bdf5-37c5f86dd8df"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b4ad1fd2-41b2-4482-b898-e2d1a36dc79c"
 >
 </ReqRef><ReqRef
  Id="1757ce1e-13d5-436a-829d-5ad8a9d5146c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f2ec1712-c056-43b1-9af1-1bec1a4200da"
 >
 </ReqRef><ReqRef
  Id="c762bcd7-1f88-429d-9bcc-05196c931c42"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff5701da-f774-4242-b79a-d2094cd484ae"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="a01b071b-9c03-424e-a6ae-2d79277c017b"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="3d2c0474-ee57-4b25-87d6-f88c0767eab3"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="e3fa5e4d-3b7e-4f66-bc5c-db4829ec7c6e"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptPermittedBrakingDistanceInformationFromRBC() AND ModeRules.AcceptPermittedBrakingDistanceInformation()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="79604335-ec54-42b3-852b-f1ec227bae5f"
 >
 <Expression>LevelRules.AcceptPermittedBrakingDistanceInformation() AND ModeRules.AcceptPermittedBrakingDistanceInformation()</Expression>
 </Case></Cases>
@@ -757,251 +949,316 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="SoMPositionReportConfirmedByRBC"
+ Guid="0e10fd05-f6a3-4547-acde-8f0d5297cd45"
 >
 <ReqRef
  Id="65b77f30-d8f9-418a-9b9a-94e9e0bebd04"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c27349f9-3f07-4f7e-887c-6f1b47f6dc2f"
 >
 </ReqRef><ReqRef
  Id="05f2ef1a-9ea1-4448-9520-935781396799"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6c0cc8f9-02ad-4b8f-a2b5-cbf2b187605e"
 >
 </ReqRef><ReqRef
  Id="3ffeb664-dd87-4f27-88f1-62c23e855d3a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee9c2c85-bdbb-4c2f-90b1-f54035336ebe"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="c74d5f2e-fb35-4708-b1d4-a96e04b2a9df"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="960b6e76-2d33-4551-a654-52734544e17c"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="7997edc1-dc82-4e0a-8a72-5d56d5411073"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptSoMPositionReportConfirmedByRBCFromRBC() AND ModeRules.AcceptSoMPositionReportConfirmedByRBC()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="TrainRunningNumber"
+ Guid="352a6d02-614d-42b3-aa25-f6eb769b2b7b"
 >
 <ReqRef
  Id="dcd6eef0-f236-4063-83b5-05bda55a7c7d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e25d00cb-e6b5-451c-87cc-b170027528d7"
 >
 </ReqRef><ReqRef
  Id="06c6e474-b887-47bf-926e-7679a6d0eb57"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c2a51cdc-e4c1-40bf-93b7-8c76301a5932"
 >
 </ReqRef><ReqRef
  Id="7c89f544-0a35-48e3-af63-ccbcdb93b365"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c36bdf82-8c5c-486c-8f3e-b0ca7df058a5"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="77a67029-818f-4d6d-8531-c5012ec823f2"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="4c79fbdb-95a2-4b8f-8af5-693eaa20e2b4"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="ff7d8a2e-070f-48ae-a0a9-e6faf9cb6083"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptTrainRunningNumberFromRBC() AND ModeRules.AcceptTrainRunningNumber()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="TrackAheadFreeRequest"
+ Guid="31074348-e81a-468f-9c6c-186eba5c20cf"
 >
 <ReqRef
  Id="06600714-f6e8-4cb4-9aa3-49e0fc41d783"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5e87c7af-da03-468f-b128-d115dfaebc2e"
 >
 </ReqRef><ReqRef
  Id="d8499ae8-7f1b-478b-98bc-f06350447db7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="de6ad08b-187c-4d33-8df3-1d966e7c9db6"
 >
 </ReqRef><ReqRef
  Id="40029586-e824-4497-af02-df262b5c3eac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="97338c65-2b24-47fb-b680-276ad0d388ec"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="ab09ac92-fcb8-408a-bc11-8f94d5e599bb"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="3849d7e6-c805-4f7f-a992-9e4787b4504d"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="2c0ab8fa-4755-46b1-9ecf-b8afc3ddcd51"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptTrackAheadFreeRequestFromRBC() AND ModeRules.AcceptTrackAheadFreeRequest()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="SystemVersionOrder"
+ Guid="f0e9b1cf-c6de-4174-acf1-c99fd1a9c02c"
 >
 <ReqRef
  Id="211894c2-6ff1-41a6-bbe1-432ef4c57461"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="df0d7d60-bc8c-40cc-b41e-00afb42299e5"
 >
 </ReqRef><ReqRef
  Id="26bef53e-e677-4fda-ab99-beed596198eb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac9c857a-0423-4fc6-9307-fd546f537d9c"
 >
 </ReqRef><ReqRef
  Id="adc75e26-3f76-48cd-b616-5c772f5c497a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0638b21d-18e2-429e-ab57-24c50f65715f"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="732a479a-5203-4b39-be42-6abad01bdcdf"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="e21475a7-ef17-4017-b1a7-a6b2d45c07de"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="0f004785-1879-4a1c-83da-68ca1268311a"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptSystemVersionOrder() AND ModeRules.AcceptSystemVersionOrder()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="InitiationOfSession"
+ Guid="0d97ee68-4bfa-4be6-b30c-9ec832871eab"
 >
 <ReqRef
  Id="0de29526-a79b-44d0-a2ea-e42578090eeb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="757dcd01-33c9-4d03-aceb-152bfc0e4da8"
 >
 </ReqRef><ReqRef
  Id="18d9982c-30de-42e5-bd5c-071bb7967c1a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f28037b0-f487-4616-a7ab-982ee6521ec8"
 >
 </ReqRef><ReqRef
  Id="62d795d5-3629-49b8-b1cc-1728f0993433"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b77a12bc-6e8f-4fdd-a378-5dce16337ca4"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="8df8f091-bb25-4e34-bc94-951143c51832"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="ab636b4d-ab9c-419c-878c-2ea5f400a639"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="677b2e32-9b1b-42e4-b80e-790b30408cf4"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptInitiationOfSessionFromRBC() AND ModeRules.AcceptInitiationOfSession()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="TrainAccepted"
+ Guid="21e64b47-b749-4b73-936c-9392fd7a93f0"
 >
 <ReqRef
  Id="0571a76d-b02a-4798-8f7e-77e3849b62aa"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a365e9f2-7840-4716-91d9-b2c9e235f1a9"
 >
 </ReqRef><ReqRef
  Id="b08f0f66-3a74-4795-afc8-fad837540bd5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="01e20a59-5ec6-4935-b40d-e2ecef9f1164"
 >
 </ReqRef><ReqRef
  Id="7c3b809f-23c0-42ef-8862-00e14fc954da"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="744fcdf0-a5e1-4f95-929b-efd936b2c524"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="869a7a69-572b-4932-8e42-c7c9d1c8ca95"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="b552e921-bed1-4107-95e5-dae4e1f6be34"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="24bea6c2-eeee-4f2d-82a6-a813b7d721d5"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptTrainAcceptedFromRBC() AND ModeRules.AcceptTrainAccepted()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="TrainRejected"
+ Guid="4cf12701-4cd4-4a5d-a878-2489688199f7"
 >
 <ReqRef
  Id="d7fa8f8a-0df5-4510-827b-860aec57f2b2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="451bf3f6-06f8-446e-983b-3617e0ed63ff"
 >
 </ReqRef><ReqRef
  Id="d9a059d0-5336-4f7c-9d11-ffa7c1b7a772"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35a06301-eda4-4a67-9ea7-335555ce5d27"
 >
 </ReqRef><ReqRef
  Id="2045143b-3eef-42aa-9c1c-34c42a08fd88"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5d4601d8-a89d-4b9f-921e-58f70bd58cc8"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="aaf83bd9-3566-44aa-90c5-933b5e8c6784"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="3ad411ad-b923-4563-88d9-4631c72da717"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="1e98199b-3015-4f84-87bc-49dafde63978"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptTrainRejectedFromRBC() AND ModeRules.AcceptTrainRejected()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="AcknowledgementOfSessionTermination"
+ Guid="c7d9a438-c78b-4fb6-bf25-c8d4862fb8e7"
 >
 <ReqRef
  Id="cf2a17cb-d040-4799-965d-cff6914ede17"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0b139273-0461-41d2-a942-09a75ea120f4"
 >
 </ReqRef><ReqRef
  Id="f264b390-0e6d-40e0-a26f-1e5b687c94ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="775382d9-5b6a-42c1-b75a-64dd5bfd5e1d"
 >
 </ReqRef><ReqRef
  Id="3745662e-055d-4aa7-9075-a3f3a036c66d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e0072eec-3217-4df3-8381-1efd37a94770"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="95bfcaeb-a56d-415f-a030-8add195194a0"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="83a40636-1403-4b32-bb32-50d98d5ffa46"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="a3c637b3-a945-4da2-8e86-61fdec1598dd"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptAcknowledgementOfSessionTerminationFromRBC() AND ModeRules.AcceptAcknowledgementOfSessionTermination()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="e96b4124-fd79-4126-b4bb-5de4dfc6729b"
 >
 <Expression>LevelRules.AcceptAcknowledgementOfSessionTermination() AND ModeRules.AcceptAcknowledgementOfSessionTermination()</Expression>
 </Case></Cases>
@@ -1009,96 +1266,121 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="SessionManagementWithNeighbouringRIU"
+ Guid="9923b66e-9c8d-47f3-bec1-b4a117fc7b7b"
 >
 <ReqRef
  Id="43c0c315-adfb-4bf7-a4a5-a7f8fc05bfd9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="99646580-316e-47dd-b67c-6b0e9e600ccc"
 >
 </ReqRef><ReqRef
  Id="3eeb0b0a-810c-4d1e-9f00-301c2c0f7b85"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6460d30a-ae47-4fb2-afe4-8b3c7cf0b14c"
 >
 </ReqRef><ReqRef
  Id="62363399-aa9f-49e0-9195-fff594b5f8f8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4e673f7a-ba26-4ac7-af11-531e0d249ca2"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="b8825da8-9b9b-4fd4-b99a-9c3252f0fc95"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="4d9b31b1-326a-4395-a2e0-ffbee9113264"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="07ac62be-90a9-424f-bc3c-4673217e7b9a"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptSessionManagementWithNeighbouringRIU() AND ModeRules.AcceptSessionManagementWithNeighbouringRIU()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="ConditionalLevelTransitionOrder"
+ Guid="d6476f5d-fef1-4d41-ba4f-d385ade1fddb"
 >
 <ReqRef
  Id="f5817bb9-b506-4f0c-924c-3a71028ad249"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a994c28b-27e1-4075-aeba-74fbb7463ed2"
 >
 </ReqRef><ReqRef
  Id="8ad11558-3a99-4eeb-846b-ace4682568b9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bfce163f-c658-48dc-90d3-a42e519f5510"
 >
 </ReqRef><ReqRef
  Id="00db98d7-ef0d-41b1-a493-f4813ef391b2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b76ddd5b-3517-4b29-8a60-3b96de6db318"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="3d0143e6-e525-4273-9de1-88cf6356e9e2"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="0f2aae56-8d75-4e8c-9ad0-a2bc161b38b6"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="73f94cb0-a9c3-4947-a295-8e658a808419"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptConditionalLevelTransitionOrder() AND ModeRules.AcceptLevelTransitionOrders()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="LevelTransitionOrder"
+ Guid="12701138-d9bc-4565-bc1e-c01438c18298"
 >
 <ReqRef
  Id="9a11e02c-5661-4f2d-8b88-c2dfd737f3a7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1239501-8140-48ed-a44d-c377a1a40c47"
 >
 </ReqRef><ReqRef
  Id="aade7c0e-4bd7-4599-88fd-f61f5cc4d479"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="39bdb232-2942-4eac-9424-59562701fe8b"
 >
 </ReqRef><ReqRef
  Id="00db98d7-ef0d-41b1-a493-f4813ef391b2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf4992db-139f-4ba6-9ec1-0512b7f202ed"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="46b41e82-f951-4978-81dc-c523e2c986fe"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="522a41ad-1c34-41c9-9b63-d0ff50004a26"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="df41f668-f3f7-4697-938b-d5dccf3c9f27"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptLevelTransitionOrderFromRBC() AND ModeRules.AcceptLevelTransitionOrders()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="4506e6e0-642c-4a61-a336-fc1ba63f6ce2"
 >
 <Expression>LevelRules.AcceptLevelTransitionOrder() AND ModeRules.AcceptLevelTransitionOrders()</Expression>
 </Case></Cases>
@@ -1106,34 +1388,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="SessionManagement"
+ Guid="8de3e53c-7390-494b-96a7-5ca0349f2a76"
 >
 <ReqRef
  Id="4f703c81-2115-4798-ad11-3f6b08de24ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d171b934-6571-4b0a-9f24-f3d2027751d3"
 >
 </ReqRef><ReqRef
  Id="4ad48ab5-75e3-4493-9af7-fd1dc19b74f9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="91f007d4-3065-4283-926c-e91a3e130338"
 >
 </ReqRef><ReqRef
  Id="fcf8013e-93d0-4eeb-a506-3af269fb8105"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c7db3926-6e3b-49e9-a3c2-9f0da8238671"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="fc133476-8e82-4c8d-90f4-48798437e26f"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="8e0241e4-ce8c-4d06-b290-9f711949197c"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="bd6d8e5b-1826-4337-b30a-1c489ada82b1"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptSessionManagementFromRBC() AND ModeRules.AcceptSessionManagement()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="f7052879-a478-4ca5-8feb-d805073e32bf"
 >
 <Expression>LevelRules.AcceptSessionManagement() AND ModeRules.AcceptSessionManagement()</Expression>
 </Case></Cases>
@@ -1141,96 +1432,121 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="PositionReportParameters"
+ Guid="635e6335-4eab-4089-94c3-eb4cbeed5390"
 >
 <ReqRef
  Id="2c7fe13f-b14d-4c5f-99ce-bb84388e2963"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c3d906e6-5ac1-4669-a4b5-05090f553503"
 >
 </ReqRef><ReqRef
  Id="66c297db-e0ec-43f6-8886-db2ff38cab8a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7ee7eea7-16cc-4c96-93f5-03ded454471b"
 >
 </ReqRef><ReqRef
  Id="c953de2e-6e37-49bd-8ced-fac48775a128"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4da73f4e-3887-43fd-bc58-328dd3bf6751"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="96ad2350-5c2c-4c1b-96f2-edf5f8dcdb82"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="38839422-4dca-410f-9bc6-36b11997851f"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="865b3545-e34d-4837-986e-5f132998b8bf"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptPositionReportParametersFromRBC() AND ModeRules.AcceptPositionReportParameters()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="MARequestParameters"
+ Guid="bdd2651e-2f61-4aab-85c0-ed7e9c09cd3f"
 >
 <ReqRef
  Id="23828900-68cc-42f4-a21c-6c862fb2629f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c98783d1-569c-411c-8ea5-717dff74cd8f"
 >
 </ReqRef><ReqRef
  Id="d36444d0-79d7-4221-90c2-424e4a4dcd10"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="18156dd7-6cbd-480c-8f80-267ed302c8a2"
 >
 </ReqRef><ReqRef
  Id="61b1d085-dea6-4e72-8b0d-ecc66f56b942"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68127103-8486-4ba3-a7ea-567e2b1feaa2"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="e9fd431b-1549-4e93-8dbc-f94537526e13"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="d7393124-8211-4f56-b115-b85abf152ffe"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="449d5278-7af8-4616-9710-9ef29a810873"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptMARequestParametersFromRBC() AND ModeRules.AcceptMARequestParameters()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="RadioNetworkRegistration"
+ Guid="39b6b7bc-36bd-41d0-8c87-67c8faf60762"
 >
 <ReqRef
  Id="cc277823-dc92-4e35-8524-bebd0ee6b1ed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a4170d8-a048-4870-bf4b-b69e33b93884"
 >
 </ReqRef><ReqRef
  Id="9ebdcaf4-4b18-46fe-9885-5abf212cca75"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a86617c4-afc4-454b-bb50-c1307287e9c0"
 >
 </ReqRef><ReqRef
  Id="5e35adac-add4-4596-ad68-6ecbe6f484ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="167f7165-5140-494b-a489-95e3d69fc4e8"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="b9125e3d-2a32-458f-814c-73997684d733"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="a7d8dd92-1627-4b67-a85f-7b45cfd5433e"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="76a2b9cc-2a5e-4dcf-9a1a-fc44040feb92"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptRadioNetworkRegistrationFromRBC() AND ModeRules.AcceptRadioNetworkRegistration()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="452bcf14-596c-4d3f-88b6-9ee0d36a682a"
 >
 <Expression>LevelRules.AcceptRadioNetworkRegistration() AND ModeRules.AcceptRadioNetworkRegistration()</Expression>
 </Case></Cases>
@@ -1238,34 +1554,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="AxleLoadSpeedProfile"
+ Guid="c8fc9f2e-2607-425c-b5f4-9d3ddb687915"
 >
 <ReqRef
  Id="2919a42e-fd8d-4ac4-8559-6d73935c619d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a1f116d-c70b-47c7-a503-5629139a234c"
 >
 </ReqRef><ReqRef
  Id="437193f7-3fe9-430b-9b01-518f5bd0e5e1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53c8c196-b9ea-4bed-9816-9c543efbdc63"
 >
 </ReqRef><ReqRef
  Id="f3e6b62a-3061-4090-b5c4-8b2fec2ad6ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26406866-917c-4c33-8557-5a50c1007d46"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="e3089b4a-1109-464d-a1fb-9a96815b4055"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="d587e5ca-f261-41e7-93a5-0c2cd614fe44"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="43483402-8aa9-4bc7-a09a-82ae4ed27a7e"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptAxleLoadSpeedProfileFromRBC() AND ModeRules.AcceptAxleLoadSpeedProfile()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="89cd0080-57bf-4b9b-9cb8-fd29063a7d1d"
 >
 <Expression>LevelRules.AcceptAxleLoadSpeedProfile() AND ModeRules.AcceptAxleLoadSpeedProfile()</Expression>
 </Case></Cases>
@@ -1273,65 +1598,82 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="SignallingRelatedSpeedRestriction"
+ Guid="ca9f5de9-37fa-4eae-a023-a04caf512f4d"
 >
 <ReqRef
  Id="8b210155-3495-482f-b049-c6ef34eabe75"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="770f53df-f1f5-45db-b65d-5dbebe42df70"
 >
 </ReqRef><ReqRef
  Id="844efad7-5b6f-4180-8c70-547c44450add"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d05c3ac2-bc15-4a30-a99d-9f9b3c35a795"
 >
 </ReqRef><ReqRef
  Id="8527e575-e037-421b-a5a8-15bc8a669892"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e82012b8-ca55-4e99-b035-3a9c4349009f"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="e4ec00e9-e2b8-4e12-b67e-e5f41bf19c0b"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="ee169373-aee7-4a3d-9588-c52c05ba583c"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="a407d6a3-2d27-4aba-a0dd-c778b7195423"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptSignallingRelatedSpeedRestriction() AND ModeRules.AcceptSignallingRelatedSpeedRestriction()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="Linking"
+ Guid="64a0b55b-49ca-47f2-a99a-55b2e6ad80f0"
 >
 <ReqRef
  Id="ac878c44-5d03-4ded-98bd-1c2f9c14946c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9974df93-df94-4bbf-a07d-52d35603c185"
 >
 </ReqRef><ReqRef
  Id="03350710-ee05-4c71-ac9b-fed770bdfe6d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="01683f67-ef5a-4e55-bb6d-2646cfe51b51"
 >
 </ReqRef><ReqRef
  Id="6d43f41b-f299-4568-b022-d7be0fa7d6bb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7ef02e1c-ada3-419a-9065-f5b7bbac1bab"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="8e4d5fa8-79fb-4f71-81fd-157e85e63211"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="ac08499f-27f0-4f3f-90bd-363f080732db"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="37f40db5-1b42-4980-8690-dd81c7d02cca"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptLinkingFromRBC() AND ModeRules.AcceptLinking()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="d3be0192-0a05-4d2c-a916-0b462e3d8cec"
 >
 <Expression>LevelRules.AcceptLinking() AND ModeRules.AcceptLinking()</Expression>
 </Case></Cases>
@@ -1339,34 +1681,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="NationalValues"
+ Guid="261d2888-da20-4fe3-993e-7c6df507ea96"
 >
 <ReqRef
  Id="c3000e08-13c3-456e-b58a-bf06e7c230a8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7e4955b1-1723-497e-bc37-131c9b83ee08"
 >
 </ReqRef><ReqRef
  Id="8e2418c3-925c-4279-86a2-b3e7382da737"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="85419f30-b1fa-41d6-b64f-37db61dd9784"
 >
 </ReqRef><ReqRef
  Id="3bb4b172-bb5b-42e5-a4bc-f1c67dfa7962"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8935104f-8fdc-4999-831b-df6e6a8a807f"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="ac445abb-7010-4954-a93d-92b1eae453a7"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="a63b83c5-454d-476c-be4f-05189fb92c7b"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="51b457f0-c67f-44bb-844d-5857f0adc2c6"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptNationalValuesFromRBC() AND ModeRules.AcceptNationalValues()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="94497b04-2413-44c3-bf36-c0b12d716d38"
 >
 <Expression>LevelRules.AcceptNationalValues() AND ModeRules.AcceptNationalValues()</Expression>
 </Case></Cases>
@@ -1374,34 +1725,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="MovementAuthority"
+ Guid="a60d06ef-9711-406c-97b6-1cc2ce553b75"
 >
 <ReqRef
  Id="b5a1c34b-a86b-4f58-a14e-72bdcaf37e34"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f2da23f-c6dc-45ad-baee-341e3e921698"
 >
 </ReqRef><ReqRef
  Id="1accea5f-62c2-4325-9f35-9effee81ee8f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94b6b331-e0b8-4093-9e53-187b8b8e9184"
 >
 </ReqRef><ReqRef
  Id="4bf699b2-781e-4269-aba6-bb90960ef26a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c6ae628e-5bfd-4232-9c08-b5b4e4068e46"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="8cda4657-827f-4f38-ad45-34168113e733"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="993c6b74-7817-43c5-9017-94b4d7879313"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="2e245ebe-bdba-4e76-b4a3-19690c6bb946"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptMovementAuthorityFromRBC() AND ModeRules.AcceptMovementAuthority()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="5524ab2d-2aa3-4034-aaa8-e86e9e9220b7"
 >
 <Expression>LevelRules.AcceptMovementAuthority() AND ModeRules.AcceptMovementAuthority()</Expression>
 </Case></Cases>
@@ -1409,34 +1769,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="InternationalSSP"
+ Guid="6e81ddea-3f2c-4efa-8291-3961b09b20de"
 >
 <ReqRef
  Id="0fe6086f-bf77-4c6a-bd46-c921c26b97da"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="81a1db71-2abd-4e2b-84a0-3e0c8af0dcdd"
 >
 </ReqRef><ReqRef
  Id="42e63be8-561f-4a0c-af99-61e0fb942ef9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="58cf9599-8268-44a9-98d9-bd1acc482e3f"
 >
 </ReqRef><ReqRef
  Id="be992850-8bd7-495c-a8e7-ae97db51ccb2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="77061980-b71c-415b-a71b-771274f44c5d"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="f8cf9f6d-286d-432b-8c66-2b2a980fe88f"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="c6186fe5-8b7f-4d17-adf4-e50f8420aeee"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="43d90201-14c4-4235-ac64-60203362f20f"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptInternationalSSPFromRBC() AND ModeRules.AcceptInternationalSSP()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="3402b6c7-7da8-4e91-9f7d-e37f6fbe7de7"
 >
 <Expression>LevelRules.AcceptInternationalSSP() AND ModeRules.AcceptInternationalSSP()</Expression>
 </Case></Cases>
@@ -1444,34 +1813,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="GradientProfile"
+ Guid="7b87fa83-d06f-4909-aedf-dc2c8cb91c97"
 >
 <ReqRef
  Id="cf0ba12c-7a61-4637-9180-54af2526964b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="413fbbf7-db22-4664-a3c2-6e012fe05521"
 >
 </ReqRef><ReqRef
  Id="00dee930-7971-4602-a983-f2fb89fb82b9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac9f2a8d-5eb1-4ec8-b315-4cb978b4dd18"
 >
 </ReqRef><ReqRef
  Id="721181a8-3ee0-49ce-a60b-4fb203dae027"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c701360b-91cd-4b42-9661-578aa6f4b6a9"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="59fbccfd-f890-4438-9a33-911f9c67ca0b"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="e3359f4a-4dda-40d0-9650-9cbbf0894831"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="65fb287e-d4d4-47d1-b44f-47143418a41a"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptGradientProfileFromRBC() AND ModeRules.AcceptGradientProfile()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="3671b8f2-159d-42b5-b8b0-d1c33387f49b"
 >
 <Expression>LevelRules.AcceptGradientProfile() AND ModeRules.AcceptGradientProfile()</Expression>
 </Case></Cases>
@@ -1479,96 +1857,121 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="RepositioningInformation"
+ Guid="e0885a47-9eaf-4fe3-821c-c1709c0287c0"
 >
 <ReqRef
  Id="e171155e-e609-46d8-96ff-c7c5bc955d56"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="969ed175-ce5b-4f5f-98cf-0dd0ec2399fb"
 >
 </ReqRef><ReqRef
  Id="2ed9629d-030e-4e9c-84a7-868c4aa25061"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="90d4e0a1-7749-4fba-8095-cc42e8e7c30e"
 >
 </ReqRef><ReqRef
  Id="8d1ecf07-654e-4819-a053-87b531646a0e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="95f083eb-cd59-48bc-b7df-fc4c53953faa"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="729f7ac3-66e3-48b4-9007-bfbb40750813"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="557fe3d4-6fcc-4188-8fbe-53b8489f5e4c"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="5ec0fbfe-63b5-4522-9560-34930e4c6141"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptRepositioningInformation() AND ModeRules.AcceptRepositioningInformation()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="SRAuthorisation"
+ Guid="6a313bbf-1448-4c4a-9fd8-9d9418aae6e0"
 >
 <ReqRef
  Id="40238023-8b3a-41bb-b66d-bcccaa053a02"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="689c4fdd-f23d-48ed-a9ef-1495fcde8513"
 >
 </ReqRef><ReqRef
  Id="a76f1307-6dff-4573-b58d-a11be47a6094"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f32afabf-eb26-42f6-8dbb-85a78c82d02a"
 >
 </ReqRef><ReqRef
  Id="12923430-4f30-4bba-b339-81bdde5e2f69"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1ae9543-d41e-4d7c-b05d-1aa0986f8caa"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="96c93924-c8b4-4be9-ac2e-7ae6905cbb9a"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="3b18d794-b58e-411b-a6a4-e0ea61efca0a"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="dc540aec-c858-4d08-be91-8185c8b72b2f"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptSRAuthorisationFromRBC() AND ModeRules.AcceptSRAuthorisation()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="GeographicalPosition"
+ Guid="bce4d368-789c-493f-88d1-3c95a7d0903a"
 >
 <ReqRef
  Id="78d274e3-ba52-4888-8199-3bfabfb2c0ed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="37f38508-e6d5-46ad-b15d-3d5e01b2d039"
 >
 </ReqRef><ReqRef
  Id="b8ab7849-fda2-4fdc-b5b8-8f09e65c57fb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="378c0610-1d3d-47b3-8152-a157f5787327"
 >
 </ReqRef><ReqRef
  Id="f5a1d86d-da06-41d6-a782-873da565a053"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7508dadb-7b5b-4a5a-944a-b25a2aaf1086"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="9119be2a-24e6-4287-b31f-77fb118a1290"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="e864fcbb-f8a8-4bf9-a21e-435d2df7f1a9"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="07c45bbd-a146-42eb-b5b6-b8c5c9419f71"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptGeographicalPositionFromRBC() AND ModeRules.AcceptGeographicalPosition()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="daa70b29-cbe6-4f72-a93a-e25bbe673a8a"
 >
 <Expression>LevelRules.AcceptGeographicalPosition() AND ModeRules.AcceptGeographicalPosition()</Expression>
 </Case></Cases>
@@ -1576,34 +1979,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="FixedTextInformation"
+ Guid="7237c3c4-935c-4510-8a7a-5b26fc4ec7ce"
 >
 <ReqRef
  Id="965380a2-d85f-4377-955f-127e651a7924"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6cc89a7a-b95a-466d-87c5-fc4e2c2964ca"
 >
 </ReqRef><ReqRef
  Id="da0a1e9d-244f-4d0c-aff8-53e5342fc213"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa9410a5-552d-4b7f-805f-9a3cf7bf5913"
 >
 </ReqRef><ReqRef
  Id="bacd4431-98d9-4c00-9e52-ce250ca8b7b0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="00a98273-d35b-4801-89ef-c189a46158f5"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="ec55a9f4-a627-4e70-a751-4c19a53bf6b8"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="28c8f07c-2149-4ac6-bcbc-aa613f1c774a"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="e1b78b09-ba47-4370-a795-a1d58e3766af"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptFixedTextInformationFromRBC() AND ModeRules.AcceptFixedTextInformation()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="32d02d7e-9fec-4349-b570-e8e7250b4334"
 >
 <Expression>LevelRules.AcceptFixedTextInformation() AND ModeRules.AcceptFixedTextInformation()</Expression>
 </Case></Cases>
@@ -1611,34 +2023,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="PlainTextInformation"
+ Guid="f90dce34-e5b6-438d-b5d6-3227e3413831"
 >
 <ReqRef
  Id="2f979843-1a3a-413c-b4f5-8df9cacb7205"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fe0cd090-e60f-4c1e-bf61-8e94f14fe292"
 >
 </ReqRef><ReqRef
  Id="9e7c5d78-d122-474e-a973-50b6d5ca650c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="511d1892-516c-45b1-99b1-de993ae3412a"
 >
 </ReqRef><ReqRef
  Id="2c5ab253-d430-4f27-a9cb-3151aecbde53"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="817639e0-c022-4a0c-bba5-876eaeef13ba"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="ad9f0d41-ea02-47f0-b3a4-f3773e24ee9d"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="75db0023-6421-486b-af91-a96c590ff462"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="7c162a63-6645-463a-86c5-30fcfd6781b4"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptPlainTextInformationFromRBC() AND ModeRules.AcceptPlainTextInformation()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="c56972fb-3b7e-4fd2-aff9-f8befd6e9cec"
 >
 <Expression>LevelRules.AcceptPlainTextInformation() AND ModeRules.AcceptPlainTextInformation()</Expression>
 </Case></Cases>
@@ -1646,34 +2067,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="RBCTransitionOrder"
+ Guid="6a6c8128-4ae7-4079-ac7b-ba508bde5297"
 >
 <ReqRef
  Id="b555ed51-36c0-4f25-b0e9-ffd76f6bf48e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d9c7f7d-4715-4778-89e6-381375cdd0fd"
 >
 </ReqRef><ReqRef
  Id="bce3ba1a-aad1-4f42-8bee-fa39dc7ed87d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c06eeecd-e8f0-490c-b4ac-a5f8057154d4"
 >
 </ReqRef><ReqRef
  Id="7939ad49-dfb3-4d97-b94b-88f4e4af6112"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="447de899-f96c-4622-beb8-a0823eca5fee"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="8a9cfd28-f59c-4b95-8846-f8e754b1c53e"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="d84ef67a-697b-4e7a-93fc-5cfcd613c3ef"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="11be87df-8bd9-4ba7-96c7-b176378902cc"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptRBCTransitionOrderFromRBC() AND ModeRules.AcceptRBCTransitionOrder()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="605e5304-76c9-42e7-9c88-014c8bd0563f"
 >
 <Expression>LevelRules.AcceptRBCTransitionOrder() AND ModeRules.AcceptRBCTransitionOrder()</Expression>
 </Case></Cases>
@@ -1681,127 +2111,160 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="RadioInfillAreaInformation"
+ Guid="a219b602-069d-47aa-afb7-d7f1864f5ce4"
 >
 <ReqRef
  Id="2667ad53-d4e0-4569-a6de-ae4f199f25ac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f8bbdeb-a0b6-4722-9961-9662ede1fb80"
 >
 </ReqRef><ReqRef
  Id="6d34647d-ddb7-46e8-9947-ac4e244ed56e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="761f2a81-2215-4b8b-b352-1c8c46d26a0d"
 >
 </ReqRef><ReqRef
  Id="10a5ed42-84ec-470e-8079-6f504e11df4e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1753ace6-115b-49fb-ba33-b4face5e9e15"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="21c96ada-73f0-4cc6-a9a6-1eccb9d44c1a"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="06dad4af-c6e1-4f02-962f-ab15265ac729"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="81cb8dfd-4a08-4cfa-91d0-360b9bd1afca"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptRadioInfillAreaInformation() AND ModeRules.AcceptRadioInfillAreaInformation()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="StopShuntingOnDeskOpening"
+ Guid="f7421984-24eb-4aa7-abaa-c19ee8b5f755"
 >
 <ReqRef
  Id="f0e37c8f-bdf9-4dd3-8476-71d622e93dd2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8974d787-3e24-4ab6-af4d-6536b4856b55"
 >
 </ReqRef><ReqRef
  Id="f6f7dcdf-f734-48f1-9861-0bd47e805a9b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="84c7552f-5a04-4d89-a14c-a1f5b6c0304e"
 >
 </ReqRef><ReqRef
  Id="061fb0cf-3891-46a2-a43b-256b2c9f883f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53749a52-a601-4039-afb3-f7898436e721"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="7699436c-4da5-4429-b171-9b9679f97ebd"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="383812e9-8024-48fd-ae00-5065babc0877"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="24504fab-d0b1-4e7f-80f6-1c9195ae2dbe"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptStopShuntingOnDeskOpening() AND ModeRules.AcceptStopShuntingOnDeskOpening()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="DangerForSHInformation"
+ Guid="f34f2919-da49-468c-b985-1bc8b6479220"
 >
 <ReqRef
  Id="b2f26e8a-472a-4734-bfd9-b4b1fc06e892"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b744f0b1-d597-48d3-aa45-0d4a3cddaf6f"
 >
 </ReqRef><ReqRef
  Id="335c0427-1b50-455d-bfb4-3f7daa2f6892"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="284baa74-a740-487d-9777-20e9d6b0376d"
 >
 </ReqRef><ReqRef
  Id="7ddf7eb6-c6e5-4f4f-a31a-8135578f3804"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="74bb82f6-17ef-4a1a-a2cf-1f4371c26aef"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="eb9eabd3-db84-471e-9287-7f6665191861"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="4879d2c4-e659-407e-9bea-f6e99ae7e2e5"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="fb3ec202-2ed6-47bf-a6b9-e67666a53ecc"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptDangerForSHInformation() AND ModeRules.AcceptDangerForSHInformation()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="AdhesionFactor"
+ Guid="f23f0250-7d31-4888-bca4-2d1852759cec"
 >
 <ReqRef
  Id="dc9341cd-9d4c-442d-943d-d2ee3632f6e3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6080b85e-983c-4725-aab8-92f467324b5e"
 >
 </ReqRef><ReqRef
  Id="a5fa5ebb-5bbb-436e-bb64-214d7f363011"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c31748c5-1adf-4686-92e9-730890b6196f"
 >
 </ReqRef><ReqRef
  Id="bf48ad1e-8ae9-4bdb-a2e4-eabb5926a3a6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b5582c33-3edc-4d4e-a397-592d7873d4d4"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="c6c1ddc5-a357-46cd-89e4-88d38dca3f03"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="ed887d2d-1fdb-4f18-928c-e942a2ae0a29"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="ab458204-c9bd-44cb-b49d-813bba7e84e1"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptAdhesionFactorFromRBC() AND ModeRules.AcceptAdhesionFactor()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="e43f76b7-1d09-4345-9c3b-82f0e34d8ef1"
 >
 <Expression>LevelRules.AcceptAdhesionFactor() AND ModeRules.AcceptAdhesionFactor()</Expression>
 </Case></Cases>
@@ -1809,34 +2272,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="TemporarySpeedRestriction"
+ Guid="f97a0c91-f12d-4341-921b-1aa36cca7dd3"
 >
 <ReqRef
  Id="3b4f3cbc-f160-4d6c-a231-62e94ee907c1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a9a7573c-61e5-4366-abf0-d9baf366c4a9"
 >
 </ReqRef><ReqRef
  Id="89e43656-0ea0-46b5-a43e-7bda3ed37bd5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e428fd9-cbb6-445c-9997-e125bb3a8f0d"
 >
 </ReqRef><ReqRef
  Id="ffbaf4a3-fe0d-4cec-b748-9060712eb94f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="406ac3d3-6974-4b14-b1b6-edc1d443182f"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="6d683d28-0814-481f-80f5-00897bce5465"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="75cb4e8a-4697-4463-8de6-2afa7cd9edb9"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="4ae08c88-7f8e-4031-8ee7-cc349919c103"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptTemporarySpeedRestrictionFromRBC() AND ModeRules.AcceptTemporarySpeedRestriction()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="0bf37052-cab2-48d3-9950-49e2340ab7db"
 >
 <Expression>LevelRules.AcceptTemporarySpeedRestriction() AND ModeRules.AcceptTemporarySpeedRestriction()</Expression>
 </Case></Cases>
@@ -1844,96 +2316,121 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="SRDistanceInformationFromLoop"
+ Guid="46793b44-549e-46d9-a7a4-999e5d6fc173"
 >
 <ReqRef
  Id="adff06f6-78cd-4172-9778-bd19e49d3c10"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf521abe-bf37-412f-80d3-4f1e8faf2327"
 >
 </ReqRef><ReqRef
  Id="dce0abf1-0ec6-450e-acbe-fdf72cab2ab8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="72fccb62-0416-4de8-85a7-1365958d5ef1"
 >
 </ReqRef><ReqRef
  Id="a563ae1a-d9b9-4e95-9f01-b242953f2244"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="957c03dc-b4f8-4e83-a851-1252e9fcaf91"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="4451a138-10ff-4a7d-a8c8-dde16851e324"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="763d2972-7b03-4bc3-900f-97e8ff2378c4"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="342576f1-3de3-4a73-a50f-9fddcd6f133d"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptSRDistanceInformationFromLoop() AND ModeRules.AcceptSRDistanceInformationFromLoop()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="StopIfInSRMode"
+ Guid="52bd2dde-f657-4b83-a17b-b92812069eda"
 >
 <ReqRef
  Id="842866ad-0e84-4e72-8787-b3615f13980c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="37dd713d-f463-4fc7-916c-6bce71eedf15"
 >
 </ReqRef><ReqRef
  Id="65fb2caa-b2e1-4c23-8e31-5aed96a0f86e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64938c0a-7205-49b9-aec5-fc3af17e895a"
 >
 </ReqRef><ReqRef
  Id="442c6062-2e81-4d82-9e49-8e24736a1327"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f50f6831-0816-461b-9cbc-75b83ebb43dc"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="21a710be-7541-4e6c-92fd-0aaf43e937d9"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="9893b404-05ee-497e-93dc-b2204948bd77"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="ed12fa06-beb2-4de4-bc4d-0690d49d28a3"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptStopIfInSRMode() AND ModeRules.AcceptStopIfInSRMode()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="TemporarySpeedRestrictionRevocation"
+ Guid="7c2777d0-dec2-4752-9386-8adc5bc5fdfd"
 >
 <ReqRef
  Id="f622cba0-9e87-4600-b630-89bcdbf6dbe2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e74112f8-44c0-4ffe-8a94-2503dd041d49"
 >
 </ReqRef><ReqRef
  Id="e1d60bb5-1ff8-4e1d-966e-1c12938a426d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="be64c806-89a6-4b6f-bd14-eeee9e8ff96b"
 >
 </ReqRef><ReqRef
  Id="34fe986d-e514-4cf1-b63d-075a07b275c7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c1897111-e924-42fc-a48a-704dfa09dd67"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="f9fb5401-540c-43a0-a30e-5f9cf1aef0b3"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="66e8202b-0092-4247-bb5c-63e197fbdb10"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="ef2fca0a-b27f-4217-ae24-49ee4332128d"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptTemporarySpeedRestrictionRevocationFromRBC() AND ModeRules.AcceptTemporarySpeedRestrictionRevocation()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="18c61209-697e-45a7-a644-d85e0956ee39"
 >
 <Expression>LevelRules.AcceptTemporarySpeedRestrictionRevocation() AND ModeRules.AcceptTemporarySpeedRestrictionRevocation()</Expression>
 </Case></Cases>
@@ -1941,34 +2438,43 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="RouteSuitabilityData"
+ Guid="dd880b2d-e886-4759-93b5-83d515203001"
 >
 <ReqRef
  Id="69baea53-8dc0-40a4-b802-ddd8403f7e5d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4cb0d08d-2f79-4792-b369-a76af622397d"
 >
 </ReqRef><ReqRef
  Id="ec03c4bc-2ec3-45a8-8d8a-3347cf730dfe"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ef501d8-e2f8-4684-b76a-bd15727bd70a"
 >
 </ReqRef><ReqRef
  Id="11baddb4-2a82-428c-a65a-5546e6b2c926"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="23268f56-dc08-4a37-9d62-65a7770e02f0"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="273ef4a8-691c-4c64-90cf-0f6be80848c9"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="From RBC"
+ Guid="dab7e0d3-925b-4650-a93c-6aeee64292fc"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="5be8a135-6899-46a1-b215-f2ae6694fae6"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptRouteSuitabilityDataFromRBC() AND ModeRules.AcceptRouteSuitabilityData()</Expression>
 </Case><Case
  Name="Otherwise"
+ Guid="a2c9c745-2018-49f4-aa18-c61953cf89f0"
 >
 <Expression>LevelRules.AcceptRouteSuitabilityData() AND ModeRules.AcceptRouteSuitabilityData()</Expression>
 </Case></Cases>
@@ -1976,82 +2482,102 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="DefaultGradientForTSR"
+ Guid="858f5332-157a-4264-a6fe-ec51df0f1ce4"
 >
 <ReqRef
  Id="e1ea7173-49d3-4e8b-b646-3827df50d35e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="15017706-93ff-45b9-a805-61458775a26e"
 >
 </ReqRef><ReqRef
  Id="bfe9c227-26fd-4a46-8b8a-50ee9ca20989"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="85e23e3d-fbd5-487a-8b36-d343a11d4ed8"
 >
 </ReqRef><ReqRef
  Id="51e6a7b3-8dfa-4a72-8cac-4276e27e0d77"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="250408b3-b7f3-405b-b93c-921677dbc69f"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="042d2693-5f4f-4980-826d-7fb96bb122e2"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="d1a42d2c-d82f-45fa-b445-d50df5fe855a"
 >
 <PreConditions>
-<PreCondition>Source != Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="8e6357ff-c09d-49b8-b66b-67a8dda81880"
+>Source != Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptDefaultGradientForTSR() AND ModeRules.AcceptDefaultGradientForTSR()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="InhibitionOfRevocableTSRs"
+ Guid="9920e33a-2783-4e7b-a91e-5ff3c4ce5ce7"
 >
 <ReqRef
  Id="f131cfaf-0584-4e29-9eb4-e0ad275f4420"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f330841f-d55b-4fa0-96d6-5be6ef68ca35"
 >
 </ReqRef><ReqRef
  Id="92a8effd-a2cc-4e8d-9e78-3619d8b9ad17"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac32d57f-4ab2-4932-b121-1d2057e00035"
 >
 </ReqRef><ReqRef
  Id="00342b01-69e6-4e1d-9a39-8223b33e790c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f09ad46-85c9-4b16-a89c-83db21858f21"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="c11a34b5-d069-4b3f-827d-c77bf37ec1c5"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="17b42a2c-aadc-46c1-a717-c2df9c7629cf"
 >
 <PreConditions>
-<PreCondition>Source == Source.RBC</PreCondition></PreConditions>
+<PreCondition
+ Guid="3ff11897-dd33-494e-8ecf-216cd1b015e0"
+>Source == Source.RBC</PreCondition></PreConditions>
 <Expression>LevelRules.AcceptInhibitionOfRevocableTSRsFromRBC() AND ModeRules.AcceptInhibitionOfRevocableTSRs()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="STMMaxSpeed"
+ Guid="f55d4dc7-fbef-4023-a6d4-acb098c4a96b"
 >
 <ReqRef
  Id="656a45a5-ca5b-4f1a-bc7a-d6ea1a2f9218"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0c9eb191-0da7-466d-a1ca-b0b1bd802c0b"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="6e86840d-8ecd-407d-986c-b2b57a3f72af"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="aee687a5-6e65-4faa-b37e-b868fd18e95a"
 >
 <Expression>ModeRules.AcceptSTMMaxSpeed()</Expression>
 </Case></Cases>
@@ -2059,20 +2585,24 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="STMSystemSpeedDistance"
+ Guid="f4005941-5351-43f8-a3bd-9b29e5794e63"
 >
 <ReqRef
  Id="25207531-5543-4f77-9a0b-baaddb6da1e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="58d8a892-090d-45e7-8e3e-94109652ec0a"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Source"
  Name="Source"
+ Guid="3e2581df-4e56-43fd-99fb-165673c3b5f9"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="5393d22f-f9ed-4141-8cf9-65efbb816e5c"
 >
 <Expression>ModeRules.AcceptSTMSystemSpeedDistance()</Expression>
 </Case></Cases>

@@ -1,5 +1,6 @@
 <NameSpace
  Name="EDDY_CURRENT_BRAKE_STATUS"
+ Guid="34f8748e-7af5-4560-b36f-38b80727182e"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,35 +9,41 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="c9190ba5-5f74-442d-9dc2-4cb21a6383cd"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0e35406b-e0f1-46d8-9f4a-ba77c41c76cf"
 >
 </ReqRef><ReqRef
  Id="6b6aed3a-e263-4d03-ba9e-ac96c0f5e38a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d47a1c66-e8d3-4467-b11c-b9fa871c829a"
 >
 </ReqRef><Comment>This message allows to transmit the eddy current brake status</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="613322b8-7255-4717-aa73-55bf8a5bf221"
 >
 </StructureElement><StructureElement
  TypeName="M_ECB_STATUS"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_ECB_STATUS"
+ Guid="6fadc77c-545b-436d-a61b-3f117b41029e"
 >
 <ReqRef
  Id="f3236d76-bef2-48c1-b04b-3fc6e159a593"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b2df1b09-962c-4e0e-aade-08bc9b2ca04b"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

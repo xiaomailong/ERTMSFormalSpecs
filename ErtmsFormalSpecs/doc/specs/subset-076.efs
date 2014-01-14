@@ -1,674 +1,867 @@
 <Dictionary
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:noNamespaceSchemaLocation="DataDictionary.xsd"
+ Guid="487371c7-66b6-42e6-8e98-2116efaddaf4"
 >
 <Specification
  Name="Requirements"
+ Guid="d6f6c30b-84b6-44dc-844a-90a420925b47"
 >
 </Specification><NameSpaces>
 </NameSpaces>
 <Tests>
 <FrameRef
  Name="Subset-076"
+ Guid="36c55005-90b6-4aa5-9bb9-c8525fae4481"
 >
 </FrameRef></Tests>
 <TranslationDictionary
+ Guid="a35c81c7-3967-4f6a-92b3-a1f02d99683d"
 >
 <Folders>
 <Folder
  Name="DMI"
+ Guid="6585c32f-99b8-4f66-9992-0ed90a1ec53c"
 >
 <Translations>
 <Translation
  Implemented="TRUE"
+ Guid="392eea33-5e0e-4b76-92ca-e4afb0cc3996"
 >
 <SourceTexts>
 <SourceText
  Name="Driver opens desk"
+ Guid="0cf57b80-3bd1-4922-83b2-4b845397f6aa"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="2ffab481-9182-4afd-96ec-10ee0dd2852d"
 >
 <Actions>
-<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
+<Action
+ Guid="09dedf40-ba79-4af7-a54d-15144f44d8a7"
+>TIU.Cab1.IsActive &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="35b030ab-efdd-47bf-b80f-163ee5edcee6"
 >
 <SourceTexts>
 <SourceText
  Name="The actual mode SB is DISPLAYED"
+ Guid="2a2648f9-6e2c-4572-8616-8c5293753e04"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="d1ed58d4-5af4-4fcc-aba7-309fb15b8bc9"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
  Name="Expectation"
+ Guid="689a32ac-42aa-4c3a-8308-02064869ab14"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == %Step_ModeIN</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="bf8aef1e-7a05-433e-9ce4-171383a374ea"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested </Expectation></Expectations>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
+ Guid="44f325cd-bc1d-4579-bb05-1151e52be7e1"
 >
 <SourceTexts>
 <SourceText
  Name="SB mode is permanently displayed to the driver when the on-board equipment is in SB mode."
+ Guid="376970d9-4995-4f45-b0ee-34afe00969fd"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="6402684f-d282-456d-a86f-1214f34cab10"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="959d4840-5439-42a4-8d50-68cf57c9ff0c"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SB</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="be8f19b8-709e-4d4b-954e-156d0a03690b"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 <Comment>We cannot express permanent expectations rigth now -&gt; to be modified.</Comment>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="33a0619a-fbcf-4745-96e2-50b6800a831e"
 >
 <SourceTexts>
 <SourceText
  Name="The driver enters a correct Driver ID"
+ Guid="1104b00c-22b5-4201-8ca2-ab457a5c5315"
 >
 </SourceText><SourceText
  Name="The driver validates the Driver Id."
+ Guid="cc22fe51-750c-4d68-a62d-c14e12d704a7"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="70369b8c-191b-456a-8fa6-ed75f24b2260"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Driver_ID&apos;</Action></Actions>
+<Action
+ Guid="e1e63870-9c2a-4503-93ec-b99f00494399"
+>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Driver_ID&apos;</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="2177751c-4f47-485e-883b-e044ba810a3f"
 >
 <SourceTexts>
 <SourceText
  Name="The on-board equipment requires the driver to enter a Driver ID 
 There is NO initial Driver ID value displayed"
+ Guid="1f909e1b-ea86-488c-a1ec-c19e286d6add"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="b07b3431-0aec-4144-9a3e-263f50268325"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
  Name=""
+ Guid="1ecce491-3cd9-4bee-b199-ae7e43e925e6"
 >DMI.MasterDMI().In_DriverId.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="1b06d5e7-4765-4e31-b99a-711627fb1425"
 >DMI.MasterDMI().In_DriverId.DriverAction.Enter</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="3f2b19b2-df68-4429-9778-20add1193779"
 >DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested == False</Expectation></Expectations>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="7509b03d-f156-450e-952c-d12c0fdcabfb"
 >
 <SourceTexts>
 <SourceText
  Name="The on-board equipment allow the driver to validate the Driver Id"
+ Guid="59edcb0c-9853-4c84-b5be-89cdbc42dbad"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="c09fd5f1-fe9c-474b-be42-0b0833d4673a"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="bca7d3d4-353a-4f13-bd00-bf0d1e255a6d"
 >DMI.MasterDMI().In_DriverId.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="86b38d6d-3187-435d-b033-bcaa6330779b"
 >DMI.MasterDMI().In_DriverId.DriverAction.Enter</Expectation></Expectations>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="4316f3b3-7376-42bb-ac71-9035a55a1a57"
 >
 <SourceTexts>
 <SourceText
  Name="The driver validates the ERTMS/ETCS level."
+ Guid="6183cdad-94fa-4558-bcc9-7a0e72fd68d6"
 >
 </SourceText><SourceText
  Name="The driver validates the ERMS/ETCS level."
+ Guid="38cecb1b-5aa7-4824-873e-6b9c557df2ac"
 >
 </SourceText><SourceText
  Name="The driver validates the ERMS/ETCS level."
+ Guid="b0a574a0-dffa-4985-8087-9fcea8604958"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="60e083b8-2101-49cb-a371-b521fda0a8d1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+<Action
+ Guid="37b5b920-71db-48cb-a566-4c5ffefbdc18"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="34c25c35-4aa2-4040-beca-d8c2e685183f"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Response</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="6a50e65b-82ab-4b09-95dc-3cef77a005c1"
 >
 <SourceTexts>
 <SourceText
  Name="The driver can select either SH or NL or ?Train Data Entry? or &apos;change of level&apos;"
+ Guid="abd80d94-5591-42cb-a717-b1164fea4c59"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="92efec84-b260-47f4-ae11-7c908e24d0fa"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="1490d7e4-5fc7-4dee-b609-50d8f24cb710"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="c70a24f5-32cf-4229-a37b-04ddedc7c7b0"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="3d11bff5-fd44-493a-abd7-8646a993a3dc"
 >DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="d45d491b-0af4-41c1-bf03-2757013bc10c"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="73b4d740-3878-4e74-96b1-f068cdc21d38"
 >
 <SourceTexts>
 <SourceText
  Name="It is not possible to select &apos;Override EoA&apos;, since the train data is invalid or unknown."
+ Guid="218e75af-f2b0-4d10-8a82-b94a7d937cbd"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="27cfa007-8917-4932-aa5b-7de66f81050a"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="c4093d59-afff-4879-8a38-d1c455611d5e"
 >NOT DMI.MasterDMI().In_OverrideRequest.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation><Translation
+ Guid="3b6c2553-dc66-45ba-b070-758519ba2225"
 >
 <SourceTexts>
 <SourceText
  Name="A complete set of Train Data is displayed to the driver 
 The driver is allowed to modify/validate the train data. Those data includes the train running number (always), the additional train data (always) and the additional STM data (if needed)."
+ Guid="bc3cb8e3-a6c3-4415-9851-3e783501ad05"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="b1342bc2-da0a-4fa1-9efb-e52a9f7b0392"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="aa3f4be8-8534-4747-8a1b-d74b4a9f72ac"
 >DMI.MasterDMI().In_TrainData.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="3f0ab513-79b9-4a9b-93c8-ba21663bfe0e"
 >DMI.MasterDMI().In_TrainData.Data == Kernel.TrainData.TrainData.Value</Expectation></Expectations>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="d4abbd5a-0dbe-4ea1-aed0-c44352597599"
 >
 <SourceTexts>
 <SourceText
  Name="The driver validates the Driver Id."
+ Guid="fd069a3a-0d52-4e75-bee0-97be1ed327c8"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="d955247c-af2e-429e-9b94-73c7cf6b8ccb"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+<Action
+ Guid="85a0a4e3-985a-44c4-8425-98f939cabdad"
+>DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="05f14a4f-619d-47a1-bf08-27fdf8744c58"
 >DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Response</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="776268c8-bf7f-49f3-b4b1-66bca0a5dea2"
 >
 <SourceTexts>
 <SourceText
  Name="The driver modifies the ERTMS/ETCS Level data (e.g. a new valid data is input)."
+ Guid="da70bb0d-31c7-4735-8ec9-f0058481e9c8"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="266659a9-4e03-4664-91ee-5138fa316abf"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="f1c01b6e-4b6c-465b-831c-ffb454d54e9e"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="c7215c2f-b1e2-43c1-b345-06ca263c774a"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.Level &lt;- Level.L1</Action></Actions>
+<Action
+ Guid="bdad9163-3442-498a-8e6f-89e5736da3ca"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.Level &lt;- Level.L1</Action></Actions>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="9a380b12-7787-4a86-928b-8865fefd65c3"
 >
 <SourceTexts>
 <SourceText
  Name="The driver modify and validates the train data."
+ Guid="8a1f432a-f533-4ff8-976b-c5d581cd87d7"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="cf6b6945-8995-4a4f-83af-aac137e9e798"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainData.Data.TrainLength &lt;- 640.0</Action><Action>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+<Action
+ Guid="292307da-ccff-492a-9da8-e10547328e3c"
+>DMI.MasterDMI().In_TrainData.Data.TrainLength &lt;- 640.0</Action><Action
+ Guid="a7da1d8b-34e7-46ce-b846-292fcf1e0bb6"
+>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="92183a6f-3176-400a-b980-96c6a1c5f0e2"
 >
 <SourceTexts>
 <SourceText
  Name="The DMI allows the driver to select again the option ?Train Data Entry? or the option ?START?."
+ Guid="6c67012a-3e8e-4b27-8e03-54aee3fb3afb"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="f344a159-d6ab-4ea2-8d4f-9e3221676381"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="ae68a463-19ee-4f48-82b7-f0cc6dcb1201"
 >DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="7a7a2a0b-d255-492a-9632-cbdca79ba226"
 >DMI.MasterDMI().In_Start.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="de96894e-6d25-4c65-968b-06d46d01c90c"
 >
 <SourceTexts>
 <SourceText
  Name="The On-Board equipment allows the driver to select  &apos;Start&apos;.
 ERTMS Level 1 and SB or PT mode are displayed on the DMI"
+ Guid="cae7f08d-a7de-497d-bd8f-21e2535dc980"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="b1a9f7d6-06e4-4491-b73b-50d47be6082f"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="37889cea-6926-4025-a2fc-251ec8a0fba6"
 >DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="c3aee100-e81b-478c-878a-c8524af3aa22"
 >DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.L1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="8ee85954-6349-4444-8ebd-995ced4419a8"
 >DMI.MasterDMI().In_Start.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="488d6b80-f00a-4581-a6b4-2e40af6d3d9b"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode in [Mode.SB, Mode.PT]</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="432940d4-43bb-4d50-b4c5-5a29828b16af"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="2d86e565-de76-4302-9bc4-fcbc6f58439e"
 >
 <SourceTexts>
 <SourceText
  Name="The driver selects &apos;Start&apos;."
+ Guid="e1a7ba7c-9a9a-4c2b-afde-f48f184456a6"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="0e643ea6-2d6c-486e-8c2d-bb180854a945"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+<Action
+ Guid="095a9250-8e42-4438-9864-2cac7d7b6792"
+>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="acfd1769-0240-428e-8c41-bccb96ac15b6"
 >
 <SourceTexts>
 <SourceText
  Name="An acknowledgement request for running in Staff Responsible mode is displayed on the DMI"
+ Guid="eed8dfe8-4ea8-48a9-8660-88cf37b0f77a"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="7d69ef85-9b56-4096-b097-07b2d9551842"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="a49781bf-2636-431a-8375-52efe46920aa"
 >DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="0cdb2517-0d9a-415d-8327-db2248c121a5"
 >
 <SourceTexts>
 <SourceText
  Name="The text message of acknowledgment for SR mode is acknowledged"
+ Guid="6488b27f-bb1e-4816-9c5f-76c931278c2d"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="53bc38dc-3655-4c7b-ac82-4c1c2cada021"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action></Actions>
+<Action
+ Guid="b92b9e2d-8f0a-4947-a00e-caaaaeaee591"
+>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="b145f619-a291-49d9-9fe5-07de2b1bfae3"
 >
 <SourceTexts>
 <SourceText
  Name="Indication of SR mode is DISPLAYED"
+ Guid="d3afa724-9d67-4be1-8d99-e54b4a9c7b6a"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="3ab577e6-dd02-4262-88f4-d98bbdfa81ae"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="ec23e912-b7e9-4f6b-a767-8b45f7ef3cf5"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="7aa5df3f-1503-45d7-b6fe-0938dc8a2d97"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation><Translation
+ Guid="1aeabff6-3021-4441-a03b-a2a99dd66ec3"
 >
 <SourceTexts>
 <SourceText
  Name="Permanent Indication of mode SR to the driver"
+ Guid="35221fa2-9763-47c4-abf7-aab5d87aef01"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="07f081a8-f590-4b84-9791-bfb757bcc795"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="31b0a17f-341b-4512-888b-c63a4b95f609"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="1b6c4bee-46c8-42d9-b12e-c476f4e1d356"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 <Comment>We cannot express permanent expectations right now -&gt; to me modified.</Comment>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="52c8902f-2af8-4bdf-a93d-2c1ef20bf6f6"
 >
 <SourceTexts>
 <SourceText
  Name="The driver validates the train data."
+ Guid="f8f85c8f-22d0-4c98-9ca3-7242affc5cb1"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="509bb3cf-61f5-4c3c-8b4f-b414feb5e3e7"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+<Action
+ Guid="70efa341-dcd6-4e6f-b3e4-52df58a3688d"
+>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
+ Guid="de462866-baa2-47d0-8e1e-ba927e7fe494"
 >
 <SourceTexts>
 <SourceText
  Name="The on-board equipment requires the driver to enter all Train Data unknown by the on-board equipment and prevents the driver from performing any other actions. Those data includes the train running number (always), and the additional STM data (if needed)."
+ Guid="a6298dd1-aa81-4b44-af41-6d23cf6025f6"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="f2b4c735-8eb5-41a1-aee2-0c8f31781f33"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="707eab37-be31-4cbf-bac7-589f3c26b944"
 >DMI.MasterDMI().In_TrainData.Data == Kernel.TrainData.TrainData.Value</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="96074297-a495-4fff-9382-ad1037cb71d8"
 >DMI.MasterDMI().In_TrainData.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation><Translation
+ Guid="5b208949-d30c-46b1-a273-1d3f8b45b842"
 >
 <SourceTexts>
 <SourceText
  Name="The driver is allowed to validate the train data"
+ Guid="2223d363-3865-43e7-8e0c-d04718259f04"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="54ad165b-bc82-42c2-bf36-c86358065945"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="c9212d09-a2fb-4826-aee1-2ca3e2303af3"
 >DMI.MasterDMI().In_TrainData.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation></Translations>
 </Folder><Folder
  Name="JRU"
+ Guid="ea62f716-c9d5-45ed-889c-c48c9187824b"
 >
 <Translations>
 <Translation
  Implemented="TRUE"
+ Guid="3540ffb1-6361-44f7-9a14-797753679cf5"
 >
 <SourceTexts>
 <SourceText
  Name="The new current mode SB is RECORDED on JRU"
+ Guid="844fbe0b-d5d8-4de6-bee9-06415bdfe8a1"
 >
 </SourceText><SourceText
  Name="The transition to SR mode is RECORDED"
+ Guid="ff5498c4-67a1-4b38-a22c-1a30aa5a5ce6"
 >
 </SourceText><SourceText
  Name="The mode change to FS is stored."
+ Guid="250f8718-4caa-4141-86f7-fac17ddb0375"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="b26413b4-86a1-47d8-acf8-d5320018555d"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
  Name="Expectation"
+ Guid="2dec76b1-7808-48b3-8310-0025fcc1c3d2"
 >JRU.jru1.ReportModeChange.Mode == %Step_ModeIN</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
  Name="Expectation..."
+ Guid="195b91e5-6171-4213-9a55-d7116f29cc22"
 >JRU.jru1.ReportModeChange.Request == Request.Request</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="14eedf47-d86e-4fdd-9ee0-7ca68cb3dc44"
 >
 <Actions>
-<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
+<Action
+ Guid="10089594-fdda-4829-8077-20a9c70106e3"
+>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
 </SubStep></SubSteps>
 </Translation></Translations>
 </Folder><Folder
  Name="EURORADIO"
+ Guid="569e1f1e-3603-4760-b733-fe62dccc4943"
 >
 <Translations>
 <Translation
  Implemented="TRUE"
+ Guid="472c075a-bf42-4cb4-a79f-36829b18d564"
 >
 <SourceTexts>
 <SourceText
  Name="Train tries to set up a safe connection."
+ Guid="7dd2622c-928a-4ce2-90e0-f9a1bc434a4d"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="2abd31e1-73aa-4b8b-b16c-5ca7472c5ab6"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
  Name=""
+ Guid="f9199543-daa5-4c49-9e99-ddc7ecbc08c6"
 >EURORADIO.RequestOpenRbcSession.RequestState == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation></Translations>
 </Folder><Folder
  Name="Setup"
+ Guid="5837007d-eb7e-4259-8fd0-b89a35e903a7"
 >
 <Translations>
 <Translation
  Implemented="TRUE"
  Name="Manual setup test sequence"
+ Guid="3e183c35-7af1-4116-9b51-ad9ea17768a4"
 >
 <SourceTexts>
 <SourceText
  Name="Manual setup test sequence"
+ Guid="ba150f33-38c1-4ac2-a64d-5214ea61c464"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="6cd31ef2-8392-4f53-a2b0-1555dea7b1a9"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- %Level</Action><Action>Kernel.Mode &lt;- %Mode</Action></Actions>
+<Action
+ Guid="71062393-f397-4e7d-8c93-4e4477bb8c7a"
+>Kernel.Level.Value &lt;- %Level</Action><Action
+ Guid="d1faef8e-4f2f-4921-813b-a25d086ef5b6"
+>Kernel.Mode &lt;- %Mode</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
+ Guid="352b34f7-bd68-4279-a91c-1e59a9e1a0b2"
 >
 <SourceTexts>
 <SourceText
  Name="Setup test sequence"
+ Guid="70a8902b-23ca-4782-b4b3-bd89b6bd39de"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="c779baa4-90ef-47f7-941a-4ee6b3c0f78c"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainPosition.TrainPosition.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainRunningNumber.Value &lt;- &apos;TR007&apos;</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Valid</Action><Action>DMI.DMI1.IsMaster &lt;- True</Action><Action>Kernel.TrainPosition.TrainPosition.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
+<Action
+ Guid="eda6e0a6-769c-4c9d-b4e2-6e0e05d168fe"
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
+ Guid="c3af006e-164b-4d61-ba76-d7fc96430342"
+>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action
+ Guid="20add2ec-45e4-4607-94d8-dd2955f2bf6f"
+>Kernel.TrainRunningNumber.Value &lt;- &apos;TR007&apos;</Action><Action
+ Guid="030de690-5f6f-46d4-85b0-ef326ec3899d"
+>Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="2b3ef8a2-7e10-4d6c-b33f-70efe99887a3"
+>DMI.DMI1.IsMaster &lt;- True</Action><Action
+ Guid="feb6ef26-8380-4ded-8c71-016643dff90c"
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
  Implemented="TRUE"
  Name="Initialize train data"
+ Guid="e6fb1132-96eb-401c-8374-175379a28776"
 >
 <SourceTexts>
 <SourceText
  Name="Initialize train data"
+ Guid="0f4f45cd-8d51-4e96-841f-25ed64a61115"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="106d1fa7-1fcc-4580-8d59-6e52c029f7be"
 >
 <Actions>
-<Action>Kernel.TrainData.Initialize()</Action></Actions>
+<Action
+ Guid="23d4c1a3-62fa-42e0-a75a-bc0aead09ade"
+>Kernel.TrainData.Initialize()</Action></Actions>
 </SubStep></SubSteps>
 </Translation></Translations>
 </Folder><Folder
  Name="BTM"
+ Guid="2d7346a7-c5e3-456c-aa0c-f7429d85b6d5"
 >
 <Translations>
 <Translation
  Implemented="TRUE"
+ Guid="bcbca191-d7d1-47c6-a719-a588cd474eaa"
 >
 <SourceTexts>
 <SourceText
  Name="The train receives a balise telegram with, at least:
 Packet 12: Level 1 Movement Authority"
+ Guid="813b7dfa-4bc6-4f8a-92e3-9c81eff4c35a"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="48dd60c3-3cec-4eb8-8d7d-c0d572b073cb"
 >
 <Actions>
-<Action>BTM.Message &lt;- %Step_Messages_0</Action></Actions>
+<Action
+ Guid="17eacf91-2b62-4177-bc56-da8ac5d9fec2"
+>BTM.Message &lt;- %Step_Messages_0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="28e373b8-98e0-4531-aecc-cf3c0671c2eb"
 >NOT Available ( BTM.Message )</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
+ Guid="38a670d1-94c2-4f21-bd18-d2d973ff67fb"
 >
 <Actions>
-<Action>BTM.Message &lt;- %Step_Messages_1</Action></Actions>
+<Action
+ Guid="3cb99e18-e22d-4aa4-a329-46187fec5b94"
+>BTM.Message &lt;- %Step_Messages_1</Action></Actions>
 </SubStep></SubSteps>
 </Translation></Translations>
 </Folder><Folder
  Name="Kernel"
+ Guid="a579074f-ca95-42ea-b056-bc8a99e062b0"
 >
 <Translations>
 <Translation
  Implemented="TRUE"
+ Guid="7276ca24-13b1-4256-846e-527624ffdb83"
 >
 <SourceTexts>
 <SourceText
  Name="The on-board equipment switches to FS mode.
 The driver is informed on the DMI of the change to FS mode."
+ Guid="002384b3-b136-42a5-a3af-7a7afb97b21d"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="7c383f4b-3c95-44cd-b3d8-34d80fb92cd3"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="53d73587-f9c0-4070-98ec-805fd2121ff7"
 >Kernel.Mode == Mode.FS</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="326278e4-f64a-499d-b8ce-912452b9b5e8"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.FS</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="1497d193-bea1-4cae-a1bf-e9f8a8215e92"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation></Translations>
@@ -676,27 +869,34 @@ The driver is informed on the DMI of the change to FS mode."
 <Translations>
 <Translation
  Implemented="TRUE"
+ Guid="62e00252-f8d1-4038-9284-1d15f74879e5"
 >
 <SourceTexts>
 <SourceText
  Name="The power of the on-board is switched on.
 The on-board equipment changes to SB mode."
+ Guid="c170b9a8-6daf-4e7e-a89a-df08f6b9b3b8"
 >
 </SourceText></SourceTexts>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="f8f914c9-e938-4ab1-bdfd-be4af1457b4a"
 >
 <Actions>
-<Action>Kernel.PowerOn &lt;- Boolean.True</Action></Actions>
+<Action
+ Guid="65283eb8-224c-46a1-97d3-f31d7d8f9b36"
+>Kernel.PowerOn &lt;- Boolean.True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
+ Guid="e2a17662-434a-4047-805e-d530a09e7148"
 >Kernel.Mode == Mode.SB</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation></Translations>
 </TranslationDictionary><ShortcutDictionary
  Name="subset-076"
+ Guid="6e4c3030-4b5f-4533-9800-aadf63d4cc52"
 >
 </ShortcutDictionary></Dictionary>

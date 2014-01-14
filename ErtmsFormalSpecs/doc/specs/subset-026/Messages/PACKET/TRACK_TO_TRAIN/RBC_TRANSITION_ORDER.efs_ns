@@ -1,5 +1,6 @@
 <NameSpace
  Name="RBC_TRANSITION_ORDER"
+ Guid="2fd9addf-1058-4e56-9ab9-94d63287b405"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="a7a24a44-b1a8-47d3-84d1-5d7a67966a52"
 >
 <ReqRef
  Id="f69899f9-70f7-4f0e-bc95-d9d97964dc81"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4d79a1b-3c41-4287-8f10-e821db66c78c"
 >
 </ReqRef><ReqRef
  Id="11b7f19b-6d24-498d-8449-24944eab8b45"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94cd6739-e8cd-4b0d-9d87-493afab2231c"
 >
 </ReqRef><Comment>Packet to order an RBC transition</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="8c01ad0a-cfc0-42ed-baeb-c7954632e315"
 >
 <ReqRef
  Id="f69899f9-70f7-4f0e-bc95-d9d97964dc81"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f28a6446-77d7-4991-bed2-d797902b41b4"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="7d5cade3-5494-4926-814e-a23a140e5266"
 >
 <ReqRef
  Id="f69899f9-70f7-4f0e-bc95-d9d97964dc81"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e733ca20-72f9-4ca9-9f23-8442789c2b3d"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="c4682ffb-2797-4088-8915-a43131054b1d"
 >
 <ReqRef
  Id="f69899f9-70f7-4f0e-bc95-d9d97964dc81"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fee5eff0-959f-4bd4-a8d9-3527c0b870e6"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="ed4abe29-90db-4e59-a898-89764c1a3cee"
 >
 <ReqRef
  Id="f69899f9-70f7-4f0e-bc95-d9d97964dc81"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6fe94d77-7bf9-4f9d-ac75-bc6c92e5848e"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_RBCTR"
@@ -67,10 +79,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_RBCTR"
+ Guid="7239dea6-445f-44e1-bb6f-5d72f0f129c2"
 >
 <ReqRef
  Id="f69899f9-70f7-4f0e-bc95-d9d97964dc81"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7227928f-d96c-4911-ab27-4b131c3f47f6"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
@@ -78,10 +92,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_C"
+ Guid="f4bcb744-bb7e-4ff2-b443-07e30502cd1f"
 >
 <ReqRef
  Id="f69899f9-70f7-4f0e-bc95-d9d97964dc81"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dbff1d00-f438-446e-818d-b7a4cbc04fc2"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_RBC"
@@ -89,10 +105,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_RBC"
+ Guid="a6bb286d-120f-4d55-81f4-3382cacec5fb"
 >
 <ReqRef
  Id="f69899f9-70f7-4f0e-bc95-d9d97964dc81"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5caa5c32-fae9-46fd-a402-e3a5a7fd9fd0"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_RADIO"
@@ -100,10 +118,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_RADIO"
+ Guid="d4110481-5d1e-4508-ae10-4ccb69d84370"
 >
 <ReqRef
  Id="f69899f9-70f7-4f0e-bc95-d9d97964dc81"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="015ab711-2811-4ee0-a33d-318e332e3fde"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SLEEPSESSION"
@@ -111,10 +131,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SLEEPSESSION"
+ Guid="c7024be2-629b-4824-b754-252abee9c30b"
 >
 <ReqRef
  Id="f69899f9-70f7-4f0e-bc95-d9d97964dc81"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b31c37cd-7f8e-420f-9cd4-7cf2c4c036ba"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

@@ -1,5 +1,6 @@
 <NameSpace
  Name="CAB_STATUS"
+ Guid="cac8bfe9-72bf-4f4f-9507-0997927d6e43"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,83 +9,97 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="d0cbf8e3-669c-4e29-acc2-245c87c3556a"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d400f768-3340-4b4b-9e14-72da8cc99434"
 >
 </ReqRef><ReqRef
  Id="7275722c-79c3-4be4-aa59-792d2628c3ac"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="11718dc2-6fbe-4da3-b16e-ef4e4a4c2ce4"
 >
 </ReqRef><Comment>This message allows to transmit the cab status that the ERTMS/ETCS on-board received from the train interface</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="75ae6a0c-678e-4cf5-af9d-599fcfd6952f"
 >
 </StructureElement><StructureElement
  TypeName="M_CAB_A_STATUS"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_CAB_A_STATUS"
+ Guid="c8c58d53-f4a0-4db7-aa35-d6756b94494f"
 >
 <ReqRef
  Id="4f390dd5-f5ce-4d60-8ed1-fde51a48b37d"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a59a9ae5-ccc2-45f7-a588-4408c9ad3fe6"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_CAB_B"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_CAB_B"
+ Guid="d979d071-9863-47b5-a495-3c0e2caf074e"
 >
 <ReqRef
  Id="07639a9d-c6ea-4946-b1c8-3fffb617f1bb"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="05891c2e-e48b-46e2-848f-18b6ff646496"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_CAB_B_STATUS"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_CAB_B_STATUS"
+ Guid="02823da1-38f8-4ac3-9da7-97c3b9584e47"
 >
 <ReqRef
  Id="09df2c37-ada9-4078-a318-636e1ef17601"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="991d994c-e655-40ba-ac33-7fddf89069d1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SINGLE_DESK"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_SINGLE_DESK"
+ Guid="781f4fb8-fd07-472e-8c51-0f4dbf0f25bd"
 >
 <ReqRef
  Id="0ec2900a-2b2f-49b7-9753-efb0612b31ad"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5398a309-7986-4d7e-914e-7e69c15463e1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_TRAIN_ORIENTATION"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_TRAIN_ORIENTATION"
+ Guid="4bc0f269-dd8b-48f3-822a-1290528b3d32"
 >
 <ReqRef
  Id="b20dda46-468b-4c2d-a8e0-20027409746b"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="16bd8fe5-d5cd-4842-bbcb-1a72e89a7b9d"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

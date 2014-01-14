@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using DataDictionary.Interpreter.Filter;
 
 namespace DataDictionary.Interpreter
 {
@@ -50,20 +51,20 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, Filter.AcceptableChoice expectation)
+        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
             if (retVal)
             {
                 // Structure
-                Structure.SemanticAnalysis(instance, Filter.IsStructure);
+                Structure.SemanticAnalysis(instance, IsStructure.INSTANCE);
                 StaticUsage.AddUsages(Structure.StaticUsage, Usage.ModeEnum.Type);
 
                 // Structure field Association
                 foreach (Expression expr in Associations.Values)
                 {
-                    expr.SemanticAnalysis(instance, Filter.IsRightSide);
+                    expr.SemanticAnalysis(instance, IsRightSide.INSTANCE);
                     StaticUsage.AddUsages(expr.StaticUsage, Usage.ModeEnum.Read);
                 }
             }
@@ -127,7 +128,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, Filter.AcceptableChoice filter)
+        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
         {
             foreach (Expression expression in Associations.Values)
             {

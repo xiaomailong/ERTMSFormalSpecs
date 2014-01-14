@@ -103,6 +103,9 @@ namespace GUI.DataDictionaryView
 
             // TODO : Does not work yet
             // GUIUtils.ResizePropertyGridSplitter(Properties, 25);
+
+            ResizeDescriptionArea(dataDictPropertyGrid, 20);
+
             Refresh();
         }
 

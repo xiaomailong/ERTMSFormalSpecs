@@ -4,6 +4,7 @@
  Width="100"
  Height="50"
  Name="AdhesionFactors"
+ Guid="b288ef05-4dd9-4571-a723-ad1db09aa674"
 >
 <NameSpaces>
 </NameSpaces>
@@ -11,14 +12,17 @@
 <Structure
  Implemented="TRUE"
  Name="AdhesionFactor"
+ Guid="dbdade40-4de6-4418-bf4e-557f8840956b"
 >
 <ReqRef
  Id="4d70e8b6-9e84-4816-bfe8-565433e79731"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c13fb5f1-78bc-4625-9584-5aa2c1f82ab1"
 >
 </ReqRef><ReqRef
  Id="d3e2813d-25b4-419a-8bc7-765e8794c652"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a7c30330-4b7d-47ac-bbf8-0368c1ccfbce"
 >
 </ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -26,6 +30,7 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Distance"
+ Guid="70100128-5be8-45ca-ac85-b29150f40a0b"
 >
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
@@ -33,10 +38,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Length"
+ Guid="6a99c544-edc6-4751-abb9-37b339228073"
 >
 <ReqRef
  Id="665f9555-a334-4d13-b5eb-ee0c9f55a8a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5e6dad90-c312-4fc5-93e0-8b23d9be1528"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.M_ADHESION"
@@ -44,18 +51,22 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Value"
+ Guid="a28d4846-f185-4653-b2b3-bcf4e4e17223"
 >
 <ReqRef
  Id="d21bb69f-7c66-4b3e-9618-3f97c16a306d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1348dbaa-6ddd-487d-b1f3-a6d4116c2936"
 >
 </ReqRef><ReqRef
  Id="315cffca-d457-4d11-91a0-59af0514973c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c1a2c57-4506-4356-bd00-3762842e7e17"
 >
 </ReqRef><ReqRef
  Id="8c94001e-944c-4e4c-9425-db637f743011"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ce82ebb8-5d0e-4aaf-8c62-6db17a9619ed"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
@@ -64,10 +75,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="AdhesionFactors"
+ Guid="40262e54-b30b-4d17-9774-c5ab8b3ae51b"
 >
 <ReqRef
  Id="d3e2813d-25b4-419a-8bc7-765e8794c652"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c5445d7b-d0f9-421c-98ba-489109b86ec1"
 >
 </ReqRef></Collection></Collections>
 <Functions>
@@ -75,21 +88,25 @@
  Type="Default.BaseTypes.Length"
  Implemented="TRUE"
  Name="AdhFactorLength"
+ Guid="d076ad86-414a-4b43-8311-88e0eb0d2e07"
 >
 <ReqRef
  Id="d3e2813d-25b4-419a-8bc7-765e8794c652"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a3b1a31b-de97-4ba0-8a3d-f3ff9224756c"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="AdhesionFactor"
  Name="anAdhesionFactor"
+ Guid="b4f442a6-01ad-4aba-9157-9a924b5b0889"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="117114ea-c9ec-4e5d-b148-2f8d680193d7"
 >
 <Expression>anAdhesionFactor.Length + TrainData.TrainData.Value.TrainLength</Expression>
 </Case></Cases>
@@ -97,25 +114,32 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="AdhFactorModificationAllowed"
+ Guid="008648ff-8694-4efb-a4e8-a2a26c30633b"
 >
 <ReqRef
  Id="115b09d2-66f8-4553-9085-6484d37ec385"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d0d1a6c1-5b4d-439e-a10a-022f67ee9f9f"
 >
 </ReqRef><ReqRef
  Id="685b2380-f60d-4d5d-8493-1edeaaf2869b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f7add78-9402-4f6b-ab86-50926b839420"
 >
 </ReqRef><Comment>Indicates if the modification of adhesion factor by driver is allowed (according to national values (if available) or default data).</Comment>
 <Cases>
 <Case
  Name="National values available"
+ Guid="6240405e-f05d-42e4-873a-7dda69635a0b"
 >
 <PreConditions>
-<PreCondition>NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="7dfdce05-8f62-4d93-83b8-7c2f90a3dcc0"
+>NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver == Messages.Q_NVDRIVER_ADHES.Allowed</Expression>
 </Case><Case
  Name="Default values"
+ Guid="c77ddc99-4364-4329-a46f-ab9310bd802c"
 >
 <Expression>NationalValues.DefaultValues.ModificationOfAdhesionFactorByDriver == Messages.Q_NVDRIVER_ADHES.Allowed</Expression>
 </Case></Cases>
@@ -124,22 +148,27 @@
 <Procedure
  Implemented="TRUE"
  Name="AdhesionFactorReceived"
+ Guid="da980c6d-0fe5-4219-821a-397a3e297ea8"
 >
 <ReqRef
  Id="edb711e6-2b8c-4c00-88b8-563ee23ec94b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c6ab819e-562a-494d-a0b4-a77ebeb924fa"
 >
 </ReqRef><ReqRef
  Id="24260651-d1c0-4755-bba9-09153737ca10"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e20758dd-eae6-4be7-8c96-b8e7241e60d3"
 >
 </ReqRef><ReqRef
  Id="ed2472a1-ec6f-4b94-b43e-a0b17ee7080c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="577553ab-d0a2-450b-848a-35bf1b7ddcfd"
 >
 </ReqRef><ReqRef
  Id="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6440affc-69c0-4155-958f-b45f3e69004e"
 >
 </ReqRef><Comment>This procedure is called when a new axle load profile is received. There are two cases:
   - If the initial states have to be resumed, the distance to where they have to be resumed is saved
@@ -148,6 +177,7 @@
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.ADHESION_FACTOR.Message"
  Name="Packet"
+ Guid="5b56257b-550d-420b-a2b1-65a28684fb11"
 >
 </Parameter></Parameters>
 <Rules>
@@ -155,6 +185,7 @@
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="UpdateAdhesionFactors"
+ Guid="cbeb8c22-5bb3-45a9-9664-d0e10427662f"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -162,24 +193,31 @@
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="UpdateAdhesionFactors"
+ Guid="04841656-d54a-4025-8b89-ca31242c18aa"
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
+<PreCondition
+ Guid="3561a639-76c0-4960-8b38-0a4fe6522090"
+>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
-<Action>HandleNewAdhesionFactor(Packet)</Action></Actions>
+<Action
+ Guid="28507f44-7f78-41c3-a734-268448af9a57"
+>HandleNewAdhesionFactor(Packet)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleNewAdhesionFactor"
+ Guid="7e55a8df-7d35-41fa-8b2d-ee5ea9856044"
 >
 <Comment>Updates the axle load profile according to the values of the packet received as parameter.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.ADHESION_FACTOR.Message"
  Name="Packet"
+ Guid="5532abf1-f435-4699-9801-be7f2744f2b5"
 >
 </Parameter></Parameters>
 <Rules>
@@ -188,10 +226,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RemoveOldAdhesionFactors"
+ Guid="d66711ff-0cd7-4934-a442-998a93e55b1c"
 >
 <ReqRef
  Id="7d335a9b-a371-42e5-aaba-0565884b8283"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6cc14c8b-41b6-4e9f-b749-6d1165b8b7d9"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -200,21 +240,26 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RemoveOldAdhesionFactors"
+ Guid="66ce1549-3d7e-491f-9c0b-1c02ec6444a1"
 >
 <ReqRef
  Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5e50d8e0-91e4-4f0e-8ee2-ce3cfae449ac"
 >
 </ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_ADHESION, scale =&gt; Packet.Q_SCALE) IN AdhFactors</Action></Actions>
+<Action
+ Guid="97493d02-161f-4f42-9e15-655f310d7e55"
+>REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_ADHESION, scale =&gt; Packet.Q_SCALE) IN AdhFactors</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InsertNewAdhesionFactors"
+ Guid="149cf5f7-ac29-400d-910b-42fd161396a1"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -223,27 +268,34 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InsertNewAdhesionFactor"
+ Guid="a200f808-41ae-4863-b368-9203f262c759"
 >
 <ReqRef
  Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7041dbe4-4fa9-442b-b16b-31964db15424"
 >
 </ReqRef><ReqRef
  Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="00ebcca0-5d06-4450-ac4f-100bbf6b683d"
 >
 </ReqRef><ReqRef
  Id="d93685bd-18ea-422e-8641-3e9ed6427e66"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3a081a89-83d1-4318-baf0-ecabef3d0aea"
 >
 </ReqRef><ReqRef
  Id="b95a22fb-0a06-4d2a-b9f8-73a082712d4c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="51c4fe1a-0390-4ace-bd3a-18676abf1737"
 >
 </ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>INSERT
+<Action
+ Guid="cada790d-4718-4a92-bca2-70aae882cbc5"
+>INSERT
     AdhesionFactor
     {
         Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_ADHESION, scale =&gt; Packet.Q_SCALE ),
@@ -262,31 +314,38 @@ IN
  VariableMode="Internal"
  Implemented="TRUE"
  Name="AdhFactors"
+ Guid="35e5c627-aece-489c-a558-1e7ead62a0a7"
 >
 <ReqRef
  Id="9479529b-7ed6-4961-b08a-7bcb18714d1a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4f5eeb1-227a-45e5-8115-7e3582eadaae"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="7398172b-264c-4ff9-8f60-3b1e043f2033"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc37c84a-d8dd-474f-83f5-2b3b757c3df6"
 >
 </ReqRef><ReqRef
  Id="9321d0a2-9ea3-4834-adc7-1f1fb0ec70db"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="58a1fc31-d19b-4874-ac5d-4a069d9d64ff"
 >
 </ReqRef><ReqRef
  Id="ed2472a1-ec6f-4b94-b43e-a0b17ee7080c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="985aaa67-0e77-49b5-983f-7e384e1c3d9e"
 >
 </ReqRef><ReqRef
  Id="7ee3b877-7ff2-4541-aa86-6af70c0cb7c6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3cddf98e-0187-4999-a223-9ba4deb7cb62"
 >
 </ReqRef><ReqRef
  Id="d3e2813d-25b4-419a-8bc7-765e8794c652"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="873b2330-064c-4ab6-b45a-10e35f83919b"
 >
 </ReqRef><Comment>The list of adhesion factors received from the trackside.</Comment>
 </Variable><Variable
@@ -295,23 +354,28 @@ IN
  VariableMode="Internal"
  Implemented="TRUE"
  Name="SlipperyRailSelectedByDriver"
+ Guid="c2af278e-2841-4222-bd25-068482f3a1a1"
 >
 <ReqRef
  Id="115b09d2-66f8-4553-9085-6484d37ec385"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d14006d3-44bd-4cf3-85fd-58f31840beab"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="315cffca-d457-4d11-91a0-59af0514973c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1ac2d763-8e5a-4f24-9b49-c984dc4eea6e"
 >
 </ReqRef><ReqRef
  Id="8c94001e-944c-4e4c-9425-db637f743011"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c71e02f-c374-4085-a6f5-19dcef8ad9f9"
 >
 </ReqRef><ReqRef
  Id="3a290d20-7245-41fa-a2ae-84a3585ce63b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c6dfda9-3e8e-49eb-86ba-3a4a16d7bcb2"
 >
 </ReqRef><Comment>Indicates the &quot;Slippery rail&quot; value selected by driver.</Comment>
 </Variable></Variables>
@@ -320,10 +384,12 @@ IN
  Priority="CleanUp"
  Implemented="TRUE"
  Name="AdhFactorTracker"
+ Guid="54e6743e-1c83-4ad5-92aa-34191c5e9766"
 >
 <ReqRef
  Id="115b09d2-66f8-4553-9085-6484d37ec385"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e1b43114-357d-49a6-8e1a-10dcae97a45f"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -331,11 +397,18 @@ IN
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="AdhFactorTracker"
+ Guid="99eaab19-c674-4269-a970-f99c111cdb36"
 >
 <PreConditions>
-<PreCondition>NOT AdhFactorModificationAllowed()</PreCondition><PreCondition>SlipperyRailSelectedByDriver == Messages.M_ADHESION.Slippery_rail</PreCondition></PreConditions>
+<PreCondition
+ Guid="d02e33ed-3490-4b02-bebd-9e5e8d1165aa"
+>NOT AdhFactorModificationAllowed()</PreCondition><PreCondition
+ Guid="d9881cb1-eccb-462a-8786-64b1477dd895"
+>SlipperyRailSelectedByDriver == Messages.M_ADHESION.Slippery_rail</PreCondition></PreConditions>
 <Actions>
-<Action>SlipperyRailSelectedByDriver &lt;- Messages.M_ADHESION.Non_slippery_rail</Action></Actions>
+<Action
+ Guid="11a62dee-1252-4610-8f17-8793fd2758a1"
+>SlipperyRailSelectedByDriver &lt;- Messages.M_ADHESION.Non_slippery_rail</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

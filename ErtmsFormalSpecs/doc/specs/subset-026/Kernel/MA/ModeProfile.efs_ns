@@ -1,5 +1,6 @@
 <NameSpace
  Name="ModeProfile"
+ Guid="cb25e4ae-499f-476f-8599-0113103669f1"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,10 +8,12 @@
 <Structure
  Implemented="TRUE"
  Name="ModeProfile"
+ Guid="75913f7d-934d-437f-be60-0a28d46d8587"
 >
 <ReqRef
  Id="b4a804d0-53f6-49e2-9897-24b3babe34bd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="71f84709-ef29-467d-bba4-410f650a9f0d"
 >
 </ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -18,18 +21,22 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Distance"
+ Guid="0cc7a6c9-2aae-483f-bd2a-e9a3e55ea2be"
 >
 <ReqRef
  Id="89925322-dec9-4aa4-8555-37decb3284a8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5f9a4bf6-edae-49cb-80e3-5663151b52b5"
 >
 </ReqRef><ReqRef
  Id="41d92e15-57e4-42b2-b756-c81a36b02db7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47607aa1-686d-4620-b315-955c29c1aee3"
 >
 </ReqRef><ReqRef
  Id="b5036802-ea03-4dbd-bf0e-3bbb99b7059e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bc352759-7f8a-49fc-9f7f-0b8e62c25a97"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.Mode.ModeProfile"
@@ -37,10 +44,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Mode"
+ Guid="14abea86-58fb-4797-acb1-c23ea3d66b6b"
 >
 <ReqRef
  Id="8f6cbd01-6f4a-4a45-9b12-053cfa6bbf95"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ccce08ec-2fef-49c7-9fb0-d52b0756649a"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
@@ -48,10 +57,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Speed"
+ Guid="1cbafab9-7a7a-4a77-a0a6-cf4e19a7e1c2"
 >
 <ReqRef
  Id="64e2f87a-5cf2-41b5-880c-dd026169eb44"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="85c542ce-4562-4198-9944-84b7baedd20b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
@@ -59,10 +70,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Length"
+ Guid="087c3054-e554-497e-882a-dec41811550b"
 >
 <ReqRef
  Id="d4f0c125-9a62-4674-b0f5-bcba928f4835"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bedd835e-b271-412b-8672-72de428e3996"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
@@ -70,10 +83,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="AcknLength"
+ Guid="acc4b025-cd7e-4126-a90c-742b57c57d27"
 >
 <ReqRef
  Id="e91cb267-376b-429f-8918-4d597fdcc562"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="92bf8fc4-f46d-4659-b52b-b1f466514a55"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_MAMODE"
@@ -81,10 +96,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="SupervisionQualifier"
+ Guid="202c1cd1-8f68-4f01-a829-6c6c50903df5"
 >
 <ReqRef
  Id="1eede305-f64b-4f63-a204-1c83dcb1ed2f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="77353074-200c-4e38-b3c7-2e2f47bf4e8d"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
@@ -95,6 +112,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ModeProfiles"
+ Guid="df0aa68f-39be-4030-b122-a8af9ee50ca1"
 >
 </Collection></Collections>
 <Functions>
@@ -102,57 +120,73 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="DistanceIsWithinAModeProfile"
+ Guid="39b55868-566d-4ddf-abe5-fc45af1b275c"
 >
 <ReqRef
  Id="d36ad0a3-d955-4bcf-8e7c-29e8ad53a491"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8b7ce67-6bd5-41bc-8e90-a47931822b07"
 >
 </ReqRef><ReqRef
  Id="522c85b9-86d1-4001-8889-a1a4e5ca7c51"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d97eb0cd-7688-4fff-96ed-8f8a8cb9f1e9"
 >
 </ReqRef><ReqRef
  Id="3b16e285-2513-4123-a986-2b50cf27f60f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ec0d7f3d-c481-4517-b8a7-d58fb298739e"
 >
 </ReqRef><ReqRef
  Id="c3a0339b-08aa-4713-aace-4e545d160b65"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1af53e38-b9d7-49c5-8fb3-49572c682125"
 >
 </ReqRef><ReqRef
  Id="b4a804d0-53f6-49e2-9897-24b3babe34bd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2b0c8f74-019e-4c69-92c1-ef94b273eab0"
 >
 </ReqRef><ReqRef
  Id="25c1b633-d7e9-42a2-be80-037ff105dcd8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff741fe8-5947-4f90-93d9-8da61ff544c2"
 >
 </ReqRef><ReqRef
  Id="68290e3a-68aa-485c-9b80-ad0a6da08d3f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="236698e9-6865-4a74-a60a-d048338617ae"
 >
 </ReqRef><ReqRef
  Id="dbd12b73-87dc-4f8b-aad5-7e3cb90fa5b1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="455d0908-c75c-4055-945d-7ffc5337ccf0"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="ModeProfile.ModeProfile"
  Name="aModeProfile"
+ Guid="5f79a1a2-7e43-4b47-93b8-5f4067577550"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SH"
+ Guid="8948b082-6c1f-4fa8-bfd3-b95622c286b3"
 >
 <PreConditions>
-<PreCondition>aModeProfile.Mode == Mode.ModeProfile.SH</PreCondition></PreConditions>
+<PreCondition
+ Guid="6114dc4d-7678-4510-95a8-2144c9f43f82"
+>aModeProfile.Mode == Mode.ModeProfile.SH</PreCondition></PreConditions>
 <Expression>aModeProfile.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )</Expression>
 </Case><Case
  Name="OS"
+ Guid="1f7deadc-8146-439c-97b2-3edcf63db2a9"
 >
 <PreConditions>
-<PreCondition>aModeProfile.Mode == Mode.ModeProfile.OS</PreCondition></PreConditions>
+<PreCondition
+ Guid="46a20481-6c6f-4178-9b7a-b6bfe09b0264"
+>aModeProfile.Mode == Mode.ModeProfile.OS</PreCondition></PreConditions>
 <Expression>aModeProfile.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )
   AND
 TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distance + BaseTypes.LengthToDistance ( aModeProfile.Length )
@@ -160,6 +194,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
 </Case><Case
  Name="LS"
+ Guid="8c23abbf-e779-492b-8354-f7f9276a904a"
 >
 <Expression>aModeProfile.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )
   AND
@@ -169,21 +204,27 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Type="Boolean"
  Implemented="TRUE"
  Name="ModeProfileIsApplicable"
+ Guid="3f481255-8672-487c-8369-61d528f68163"
 >
 <ReqRef
  Id="d7eddae1-a7bf-4be3-8180-19f2e70ac2fd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="39dc7a5b-e779-417c-856c-4c64e105ebe7"
 >
 </ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Mode profile not available"
+ Guid="4b4310b8-065b-46d8-94ef-ecc033e5531a"
 >
 <PreConditions>
-<PreCondition>MA.MA == EMPTY OR Profile == []</PreCondition></PreConditions>
+<PreCondition
+ Guid="3b0b7828-cb17-4b0f-b2d7-98074e563129"
+>MA.MA == EMPTY OR Profile == []</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Mode profile available"
+ Guid="b3d11290-015c-4b99-9601-fe80c8d7ebc7"
 >
 <Expression>DistanceIsWithinAModeProfile ( FIRST_IN Profile )</Expression>
 </Case></Cases>
@@ -191,14 +232,17 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Type="Default.Mode.ModeProfile"
  Implemented="TRUE"
  Name="CurrentMode"
+ Guid="ba4c9d24-cadc-4470-b658-69c1bdc024f9"
 >
 <ReqRef
  Id="66ed413a-6b6e-4b23-b847-4b1870c4d831"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="62272c20-587d-4cf8-af77-0c80e0364bc5"
 >
 </ReqRef><Cases>
 <Case
  Name="Value"
+ Guid="951cc127-221a-4c9f-8e74-8a45b13fdf27"
 >
 <Expression>( FIRST_IN Profile ).Mode</Expression>
 </Case></Cases>
@@ -206,31 +250,39 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Type="Boolean"
  Implemented="TRUE"
  Name="RemoveMode"
+ Guid="0b4e5f8b-0a62-4620-834a-8154496cc8ac"
 >
 <ReqRef
  Id="03b6c53e-3c15-4db3-8d90-3353c60fd14d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f14a9271-5483-49fb-af8f-7caa6117f643"
 >
 </ReqRef><ReqRef
  Id="eaa70a17-109a-45b5-8747-ecc49e581ccd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7a26f171-5b10-4050-8d75-a9f63001275d"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="ModeProfile"
  Name="aProfile"
+ Guid="30f1c5a6-0d93-409e-aef7-b8968e2caab2"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="OS or LS"
+ Guid="d88b3f0d-3c6b-4070-9b50-140262edde84"
 >
 <PreConditions>
-<PreCondition>aProfile.Mode == Mode.ModeProfile.OS</PreCondition></PreConditions>
+<PreCondition
+ Guid="287768f9-ea4e-48fe-a272-30d38aff9d61"
+>aProfile.Mode == Mode.ModeProfile.OS</PreCondition></PreConditions>
 <Expression>TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &gt;= aProfile.Distance + BaseTypes.LengthToDistance ( aProfile.Length )</Expression>
 </Case><Case
  Name="SH"
+ Guid="df9e81c4-d70f-4918-b476-41109e9e77a5"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -238,10 +290,12 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Type="ModeProfile"
  Implemented="TRUE"
  Name="ProfileForInfill"
+ Guid="00b092f7-ea4d-4143-b544-b7d57cb8871b"
 >
 <ReqRef
  Id="2a495f6e-680c-4def-a6b5-d8bcd1f41a9d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6b4a5586-cd43-444e-a590-2a9f7b29caa2"
 >
 </ReqRef><Comment>Indicates if the given mode profile should be deleted or not when an infill information is received. There are three possible cases:
 1. If the profile is before the infill location, it should be kept (the whole profile is returned).
@@ -251,27 +305,36 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Parameter
  Type="ModeProfile"
  Name="aProfile"
+ Guid="5edee4a2-0bce-4cdb-b56b-560b902fb90a"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
  Name="InfillDistance"
+ Guid="93793903-c8a7-4a12-a92c-12c9a0ed3fe5"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Infill location before profile"
+ Guid="3f7cac04-843d-46e7-b1bd-ac87e75d8571"
 >
 <PreConditions>
-<PreCondition>aProfile.Distance + BaseTypes.LengthToDistance ( aProfile.Length ) &lt;= InfillDistance</PreCondition></PreConditions>
+<PreCondition
+ Guid="24609d85-64ee-4f58-81e9-da0bd36e1703"
+>aProfile.Distance + BaseTypes.LengthToDistance ( aProfile.Length ) &lt;= InfillDistance</PreCondition></PreConditions>
 <Expression>aProfile</Expression>
 </Case><Case
  Name="Infill location after profile"
+ Guid="08f4ee9b-8d33-44a9-ad8d-4dd9164faa6b"
 >
 <PreConditions>
-<PreCondition>InfillDistance &lt;= aProfile.Distance</PreCondition></PreConditions>
+<PreCondition
+ Guid="11207bb5-7d97-4421-baaa-83868e35318a"
+>InfillDistance &lt;= aProfile.Distance</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="Infill location inside profile"
+ Guid="64c1a003-f722-4380-8ac3-35d56678e659"
 >
 <Expression>ModeProfile
 {
@@ -288,60 +351,77 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ERTMS_To_EFS_Mode"
+ Guid="5fd9933c-08ff-435f-aece-f31cc161c2de"
 >
 <Parameters>
 <Parameter
  Type="Messages.M_MAMODE"
  Name="aMode"
+ Guid="4d181f77-f762-4f22-9f1d-b05df78c9132"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="OS"
+ Guid="95d38ffb-41bd-4917-8a04-0faf880f4607"
 >
 <PreConditions>
-<PreCondition>aMode == Messages.M_MAMODE.On_Sight</PreCondition></PreConditions>
+<PreCondition
+ Guid="0ea7502a-e0f8-464b-a7cc-6313b6c6035f"
+>aMode == Messages.M_MAMODE.On_Sight</PreCondition></PreConditions>
 <Expression>Mode.ModeProfile.OS</Expression>
 </Case><Case
  Name="LS"
+ Guid="a93f9055-cc83-435f-83ab-188b4de199bc"
 >
 <PreConditions>
-<PreCondition>aMode == Messages.M_MAMODE.Limited_Supervision</PreCondition></PreConditions>
+<PreCondition
+ Guid="7397d7ea-e622-4b41-b913-2ff9c0bd3b4b"
+>aMode == Messages.M_MAMODE.Limited_Supervision</PreCondition></PreConditions>
 <Expression>Mode.ModeProfile.LS</Expression>
 </Case><Case
  Name="SH"
+ Guid="7e925daa-edf8-4339-82f1-d7c5cfd95737"
 >
 <PreConditions>
-<PreCondition>aMode == Messages.M_MAMODE.Shunting</PreCondition></PreConditions>
+<PreCondition
+ Guid="4a26be35-7bf2-44a7-8591-c3a946778451"
+>aMode == Messages.M_MAMODE.Shunting</PreCondition></PreConditions>
 <Expression>Mode.ModeProfile.SH</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  Name="AcknAreaReached"
+ Guid="101ad133-d946-48a4-86ff-efa58065c439"
 >
 <ReqRef
  Id="f8b146ed-492a-43af-b78d-fbd3e12aa731"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bac096af-4ce9-4938-82ea-6aabe029ef9d"
 >
 </ReqRef><ReqRef
  Id="69196e9c-9533-43f3-8c1f-cd9a9b248178"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c50632b-e866-444d-89bd-c23b4213d440"
 >
 </ReqRef><ReqRef
  Id="2ae92ee4-8298-478f-94c4-806e389cc5cb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="207b1744-f96c-4fdc-ab2c-60a8b6f45fde"
 >
 </ReqRef><Comment>Indicates if the acknowledgement area is reached for a given mode profile.</Comment>
 <Parameters>
 <Parameter
  Type="ModeProfile"
  Name="aProfile"
+ Guid="3da9327d-dc53-4a47-89c8-678a6b8d12ed"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="cd6ddbc2-9759-49af-bd95-8f4a684555e3"
 >
 <Expression>aProfile.Distance - BaseTypes.LengthToDistance ( aProfile.AcknLength ) &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
 </Case></Cases>
@@ -349,25 +429,36 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Implemented="TRUE"
  Name="EOA"
+ Guid="ebdab32d-5390-43f3-a32f-0cb87bef5bbf"
 >
 <ReqRef
  Id="81828a4c-73e2-440d-8353-e050603f323f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d7e5eddc-3cbe-4115-9136-a905addc6b0d"
 >
 </ReqRef><ReqRef
  Id="6b1f5744-6c85-45eb-a7de-1eba5bad0131"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21f3f252-bb0e-4594-90d4-f2edfcb184bd"
 >
 </ReqRef><ReqRef
  Id="f2ddac1e-eea7-4f30-ade6-5ace543c21ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a543c236-bbd7-4441-aa3b-7fba736f19c3"
 >
 </ReqRef><Cases>
 <Case
  Name="Mode Profile EOA available"
+ Guid="35bb6df3-77eb-44a1-a069-ac7715eb8c61"
 >
 <PreConditions>
-<PreCondition>Available ( MA.MA )</PreCondition><PreCondition>Profile != []</PreCondition><PreCondition>( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ) != EMPTY</PreCondition></PreConditions>
+<PreCondition
+ Guid="9f665942-1c2b-4bca-9ed1-3bba5e995a0c"
+>Available ( MA.MA )</PreCondition><PreCondition
+ Guid="c4990a7c-151a-406f-8a0f-1d730706b1e6"
+>Profile != []</PreCondition><PreCondition
+ Guid="72d9cd73-06fc-4d5b-abaa-ec05e4cb3dc7"
+>( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ) != EMPTY</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Location =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Distance,
@@ -376,6 +467,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 }</Expression>
 </Case><Case
  Name="No Mode Profile EOA available"
+ Guid="1983d666-3c4d-4573-b41e-f5ac4dde4c24"
 >
 <Expression>EMPTY</Expression>
 </Case></Cases>
@@ -383,25 +475,38 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Implemented="TRUE"
  Name="SvL"
+ Guid="105e4f55-76a4-490a-8482-3637297e2256"
 >
 <ReqRef
  Id="81828a4c-73e2-440d-8353-e050603f323f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ad188b1a-5d58-4304-8285-e1460ce5f39b"
 >
 </ReqRef><ReqRef
  Id="6b1f5744-6c85-45eb-a7de-1eba5bad0131"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="204e63e6-a7d6-4ba4-843e-cc4e6eea652c"
 >
 </ReqRef><ReqRef
  Id="f2ddac1e-eea7-4f30-ade6-5ace543c21ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d015959e-6c8f-4db1-9287-5b2e166456e5"
 >
 </ReqRef><Cases>
 <Case
  Name="Mode Profile SvL available"
+ Guid="5dbb9bfb-4674-49fd-9b83-a74ce04de1fb"
 >
 <PreConditions>
-<PreCondition>( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).SupervisionQualifier == Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA</PreCondition><PreCondition>( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ) != EMPTY</PreCondition><PreCondition>Profile != []</PreCondition><PreCondition>Available ( MA.MA )</PreCondition></PreConditions>
+<PreCondition
+ Guid="c12d56c2-e68e-492c-9d92-25d017e224b0"
+>( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).SupervisionQualifier == Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA</PreCondition><PreCondition
+ Guid="6360e380-3cc4-43da-8cdc-1b090db6045d"
+>( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ) != EMPTY</PreCondition><PreCondition
+ Guid="30aa3403-c8b3-4807-bd15-b549f015ae93"
+>Profile != []</PreCondition><PreCondition
+ Guid="ae49b5bd-f40e-49bd-b5bd-ea562a6cde15"
+>Available ( MA.MA )</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Location =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Distance,
@@ -410,6 +515,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 }</Expression>
 </Case><Case
  Name="No Mode Profile SvL available"
+ Guid="aff5d04b-6d78-4293-b8f9-7d0d42286e48"
 >
 <Expression>EMPTY</Expression>
 </Case></Cases>
@@ -419,99 +525,136 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InitiateDriverAck"
+ Guid="12cfa8ea-ce28-4fce-8003-8fca365a9729"
 >
 <Rules>
 <Rule
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="Initiate driver ack"
+ Guid="481bfdba-8e13-4e61-a5a9-19b642ba0dbe"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="Initiate driver ack for OS"
+ Guid="9b2cd539-96a8-4236-870e-f88a2e5fbd1f"
 >
 <ReqRef
  Id="1650d44a-fe6b-42d3-b8a8-77f7a93f90b8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="54645201-e2f1-49e3-800f-c798832237e2"
 >
 </ReqRef><PreConditions>
-<PreCondition>CurrentMode() == Mode.ModeProfile.OS</PreCondition></PreConditions>
+<PreCondition
+ Guid="3238789f-c620-4519-8190-ff6b8b5d76e4"
+>CurrentMode() == Mode.ModeProfile.OS</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfOSMode()</Action><Action>DriverAckTimer &lt;- CurrentTime</Action></Actions>
+<Action
+ Guid="98823607-91dd-484b-b5b1-f3e4c5782128"
+>DMI.MasterDMI().InitiateAcknOfOSMode()</Action><Action
+ Guid="57a5d091-0427-485b-8afa-b802aca3eebd"
+>DriverAckTimer &lt;- CurrentTime</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Initiate driver ack for LS"
+ Guid="bb46e7ba-7f27-4bd1-92e3-a91824ffcbdb"
 >
 <ReqRef
  Id="bf8f8704-ab96-4ceb-a58e-dca57715e14f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ca29006b-7bb2-438b-af61-a1b041457993"
 >
 </ReqRef><PreConditions>
-<PreCondition>CurrentMode() == Mode.ModeProfile.LS</PreCondition></PreConditions>
+<PreCondition
+ Guid="18ce89cf-f196-45fa-91c2-76e40674c52e"
+>CurrentMode() == Mode.ModeProfile.LS</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfLSMode()</Action><Action>DriverAckTimer &lt;- CurrentTime</Action></Actions>
+<Action
+ Guid="f3d3707f-1bcd-43de-a194-2b9fbdab9e8c"
+>DMI.MasterDMI().InitiateAcknOfLSMode()</Action><Action
+ Guid="04e8a3f6-bc05-4614-a844-ce7bbc5b31b4"
+>DriverAckTimer &lt;- CurrentTime</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Initiate driver ack for SH"
+ Guid="95976a40-a9e0-409d-a6b0-1ca233975f12"
 >
 <ReqRef
  Id="9802040a-5388-4af0-8605-01cd7d0816f3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb0ebfe4-5f45-4f88-ac8a-12db3e64a8b3"
 >
 </ReqRef><ReqRef
  Id="39ae88ad-20ca-43d1-8c3f-5f7172777b6e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2b9f2baf-16a1-4d3d-a9ef-c3ced9da9341"
 >
 </ReqRef><PreConditions>
-<PreCondition>CurrentMode() == Mode.ModeProfile.SH</PreCondition></PreConditions>
+<PreCondition
+ Guid="f4862025-752e-4ca1-9057-6601634bf231"
+>CurrentMode() == Mode.ModeProfile.SH</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfSHMode()</Action><Action>DriverAckTimer &lt;- CurrentTime</Action></Actions>
+<Action
+ Guid="33b83755-998c-44ea-b9ca-94db0c606363"
+>DMI.MasterDMI().InitiateAcknOfSHMode()</Action><Action
+ Guid="3967bc73-aa86-4222-8f4c-96d110b07eae"
+>DriverAckTimer &lt;- CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  Name="ModeProfileReceived"
+ Guid="beb2c296-a5e1-4033-a491-317f0531dd26"
 >
 <ReqRef
  Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f67fc4c1-e794-4df9-a90f-774f072c842b"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="4744429f-fce3-4833-817a-c0cd74ffcd7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae7783f2-1204-4946-931b-b76ec9c981af"
 >
 </ReqRef><ReqRef
  Id="e6b9b34b-5183-45ec-96a2-8eef4909b34c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="22aa3dca-996b-4319-8f09-592b9a3bba56"
 >
 </ReqRef><ReqRef
  Id="85399986-8b1a-4ee5-ba62-20eb7ca0a3b9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3cf46ce2-be5c-4575-b83a-0ca3ff590a76"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message"
  Name="Packet"
+ Guid="75b62463-3fa9-4c19-b2ec-dfce61799a11"
 >
 </Parameter></Parameters>
 <Rules>
 <Rule
  Priority="Processing"
  Name="Add first profile"
+ Guid="e66d71f8-c387-4ceb-bd8c-7ccf4fbcb946"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Add new profile"
+ Guid="14aee0f3-9f0e-4f8b-906c-eb50d95486eb"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>AddNewProfile
+<Action
+ Guid="e3906603-1756-4c2c-bf27-60382dd7b1d2"
+>AddNewProfile
 (
     L_ACKMAMODE =&gt; Packet.L_ACKMAMODE,
     D_MAMODE =&gt; Packet.D_MAMODE,
@@ -525,16 +668,20 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 </Rule><Rule
  Priority="Processing"
  Name="Add following profiles"
+ Guid="76413865-dfc6-4396-8fe8-64ecedc67e8f"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Add following profiles"
+ Guid="66b0b22b-84a7-4296-8a17-166e4bc4dfde"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>APPLY
+<Action
+ Guid="83b7183e-1ec2-4df8-9f80-f4aa411f0cbe"
+>APPLY
     AddNewProfile
     (
         L_ACKMAMODE =&gt; X.L_ACKMAMODE,
@@ -552,67 +699,83 @@ ON
 </Procedure><Procedure
  Implemented="TRUE"
  Name="AddNewProfile"
+ Guid="ede52e42-b396-4eab-8d95-2a8c1281ddbd"
 >
 <ReqRef
  Id="4744429f-fce3-4833-817a-c0cd74ffcd7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bd3f57f3-c2ad-4965-b084-583f7f16491c"
 >
 </ReqRef><ReqRef
  Id="e91cb267-376b-429f-8918-4d597fdcc562"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a802b86d-c666-456b-af88-308268eb6d5c"
 >
 </ReqRef><ReqRef
  Id="89925322-dec9-4aa4-8555-37decb3284a8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="453af72d-da1a-456e-a185-5b328f84fb81"
 >
 </ReqRef><ReqRef
  Id="d4f0c125-9a62-4674-b0f5-bcba928f4835"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="44be40d4-4fb4-40e3-b37d-770778857d8e"
 >
 </ReqRef><ReqRef
  Id="8f6cbd01-6f4a-4a45-9b12-053cfa6bbf95"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="13c6f75a-44a9-4dfc-8678-61399a667d10"
 >
 </ReqRef><ReqRef
  Id="64e2f87a-5cf2-41b5-880c-dd026169eb44"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ad749c1-7096-47a6-a735-dee35aae0594"
 >
 </ReqRef><ReqRef
  Id="1eede305-f64b-4f63-a204-1c83dcb1ed2f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="07d6a2ec-a818-481d-a711-ae99c59a7730"
 >
 </ReqRef><ReqRef
  Id="b4a804d0-53f6-49e2-9897-24b3babe34bd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bbda7634-3ea3-4356-bda3-f2c326a5ffbc"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Default.MessageTypes.Length"
  Name="L_ACKMAMODE"
+ Guid="8b987134-a0aa-4a09-90b1-fdd88cb4b5ee"
 >
 </Parameter><Parameter
  Type="Default.MessageTypes.Distance"
  Name="D_MAMODE"
+ Guid="b1613141-f964-47a2-9297-e05209779fab"
 >
 </Parameter><Parameter
  Type="Default.MessageTypes.Length"
  Name="L_MAMODE"
+ Guid="4b4fd8b9-5a5b-440e-a5f6-6eae6ff0a57d"
 >
 </Parameter><Parameter
  Type="Messages.M_MAMODE"
  Name="M_MAMODE"
+ Guid="c9f8ac70-6ee6-44d8-ae44-59a7c353b0c8"
 >
 </Parameter><Parameter
  Type="Default.MessageTypes.Speed"
  Name="V_MAMODE"
+ Guid="37ad71fc-21ba-44b2-a0e2-23a407780ba7"
 >
 </Parameter><Parameter
  Type="Messages.Q_MAMODE"
  Name="Q_MAMODE"
+ Guid="94018a37-d9ad-477a-92f0-4f97c0e7a6dd"
 >
 </Parameter><Parameter
  Type="Messages.Q_SCALE"
  Name="Q_SCALE"
+ Guid="59470058-475d-468a-b380-e1d74d140903"
 >
 </Parameter></Parameters>
 <Rules>
@@ -621,6 +784,7 @@ ON
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Add new profile"
+ Guid="aefe8386-f7a1-49e2-8a54-ed8dd6cef4fc"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -628,15 +792,23 @@ ON
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Infill available, SH"
+ Guid="9933d76e-d925-4c38-a175-ae2d2c268df1"
 >
 <ReqRef
  Id="bd3f7106-e2c1-465f-be7e-f47543c5f94b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ed72a11b-ae3f-4401-9f90-12dee8ae02ab"
 >
 </ReqRef><PreConditions>
-<PreCondition>Kernel.Infill.Data != EMPTY</PreCondition><PreCondition>M_MAMODE == Messages.M_MAMODE.Shunting</PreCondition></PreConditions>
+<PreCondition
+ Guid="022da320-6f5e-4431-a3a7-861e2096f6ac"
+>Kernel.Infill.Data != EMPTY</PreCondition><PreCondition
+ Guid="33384be8-0555-4b72-b9bc-a85b6064dffe"
+>M_MAMODE == Messages.M_MAMODE.Shunting</PreCondition></PreConditions>
 <Actions>
-<Action>INSERT
+<Action
+ Guid="9344dddf-f9b7-44bf-8229-ecb9b436017f"
+>INSERT
     ModeProfile
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
@@ -650,11 +822,16 @@ IN
     Profile</Action></Actions>
 </RuleCondition><RuleCondition
  Name="No infill available, SH"
+ Guid="e17706c0-74ac-4c15-8627-8aec55d86a52"
 >
 <PreConditions>
-<PreCondition>M_MAMODE == Messages.M_MAMODE.Shunting</PreCondition></PreConditions>
+<PreCondition
+ Guid="7a8f0e52-383d-41ee-8df5-71a1521c2764"
+>M_MAMODE == Messages.M_MAMODE.Shunting</PreCondition></PreConditions>
 <Actions>
-<Action>INSERT
+<Action
+ Guid="68e9e673-7813-4947-b1d0-7efbeb20158e"
+>INSERT
     ModeProfile
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
@@ -670,15 +847,21 @@ IN
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Infill available, LS or OS"
+ Guid="aa57b292-68fc-4feb-b411-50f273bcfbf6"
 >
 <ReqRef
  Id="bd3f7106-e2c1-465f-be7e-f47543c5f94b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eb3793a3-90a2-4df8-a3c2-69e0c13bc76b"
 >
 </ReqRef><PreConditions>
-<PreCondition>Kernel.Infill.Data != EMPTY</PreCondition></PreConditions>
+<PreCondition
+ Guid="f1684bcc-f007-401f-a563-b5b2c938adb4"
+>Kernel.Infill.Data != EMPTY</PreCondition></PreConditions>
 <Actions>
-<Action>INSERT
+<Action
+ Guid="fd905e47-15f3-4a3f-905a-8ef2acd85169"
+>INSERT
     ModeProfile
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
@@ -692,11 +875,14 @@ IN
     Profile</Action></Actions>
 </RuleCondition><RuleCondition
  Name="No infill available, LS or OS"
+ Guid="07db9b5d-c0c8-47e0-b272-7d8042bea88b"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>INSERT
+<Action
+ Guid="65882a47-d665-4ffa-8642-d5d84b9259ec"
+>INSERT
     ModeProfile
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
@@ -713,15 +899,18 @@ IN
 </Procedure><Procedure
  Implemented="TRUE"
  Name="ClearModeProfile"
+ Guid="eb6ef3c0-69da-430b-8e73-9be421757bd6"
 >
 <ReqRef
  Id="74a25803-8c28-4708-b506-55a76bd8bc21"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9912c05b-a2ff-4b0d-a17e-fb4d35f5215f"
 >
 </ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message"
  Name="InfillPacket"
+ Guid="3c5d7e25-1a58-47af-81ff-022219c483f5"
 >
 </Parameter></Parameters>
 <Rules>
@@ -730,29 +919,39 @@ IN
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Clear previous Mode Profile"
+ Guid="3fb32f5c-bb35-4b94-86f8-eac502c00085"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="Infill available"
+ Guid="e2d9057b-6d4c-4f1c-a2fe-0eec006d8a77"
 >
 <ReqRef
  Id="2a495f6e-680c-4def-a6b5-d8bcd1f41a9d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="27fb3b75-ccad-4b93-9962-454d310035cf"
 >
 </ReqRef><PreConditions>
-<PreCondition>InfillPacket != EMPTY</PreCondition></PreConditions>
+<PreCondition
+ Guid="acbdd6b9-884b-450b-bdcc-17b491c78147"
+>InfillPacket != EMPTY</PreCondition></PreConditions>
 <Actions>
-<Action>ModeProfile.Profile &lt;- MAP ModeProfile.Profile USING ModeProfile.ProfileForInfill ( aProfile =&gt; X, InfillDistance =&gt; BTM.Linking.DistanceToBaliseGroup ( InfillPacket.NID_BG ) )</Action></Actions>
+<Action
+ Guid="ca7c34df-e127-4393-a18b-a4fac6c5288e"
+>ModeProfile.Profile &lt;- MAP ModeProfile.Profile USING ModeProfile.ProfileForInfill ( aProfile =&gt; X, InfillDistance =&gt; BTM.Linking.DistanceToBaliseGroup ( InfillPacket.NID_BG ) )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No infill available"
+ Guid="43da712d-cb6e-47bf-a0ca-fd7fd8c8ecee"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>ModeProfile.Profile &lt;- []</Action></Actions>
+<Action
+ Guid="a27373f3-39f3-4957-914e-db3d443351e0"
+>ModeProfile.Profile &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -763,26 +962,32 @@ IN
  VariableMode="Internal"
  Implemented="TRUE"
  Name="Profile"
+ Guid="1a6aab28-6509-409b-9625-b33e588a826f"
 >
 <ReqRef
  Id="cbef1165-fc33-4ac1-994e-5f8a83f5e225"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3118a0d9-44fb-427b-90b7-e2542c207fd8"
 >
 </ReqRef><ReqRef
  Id="d7eddae1-a7bf-4be3-8180-19f2e70ac2fd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="319fb5a2-777c-4f37-9ee3-65a7f3ecb413"
 >
 </ReqRef><ReqRef
  Id="4650224e-986e-4212-b1a4-704ebe9317a4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="898c194b-8c74-4102-81ff-8da263265d27"
 >
 </ReqRef><ReqRef
  Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f26155a6-853b-4653-80a9-c52880cbafe9"
 >
 </ReqRef><ReqRef
  Id="98b78c68-b649-45c4-9dd8-6bfbf4a8f9c1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89c231c0-cc82-4a47-9f1f-c44317f85ca2"
 >
 </ReqRef><Comment>Represents the mode profile of the train.</Comment>
 </Variable><Variable
@@ -791,30 +996,37 @@ IN
  VariableMode="Internal"
  Implemented="TRUE"
  Name="DriverAckTimer"
+ Guid="89b56ad3-12ae-4fb5-a2eb-7d680f2b3e26"
 >
 <ReqRef
  Id="19ba3404-792f-4f75-a058-7b89395bce5c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="85557f15-7bb0-48c1-9efd-c2ed964e5107"
 >
 </ReqRef><ReqRef
  Id="c3352be2-25f7-499e-b638-51b4b8e180ed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="560c9437-7d80-4e79-9e48-d42e212a6959"
 >
 </ReqRef><ReqRef
  Id="f1fefc2b-0ed9-4f11-9b47-0930e4ba5821"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="517f04fa-eae5-4a6c-b990-b0ad7024b77f"
 >
 </ReqRef><ReqRef
  Id="81394bed-5665-4b0a-a527-9c845c6db537"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dad6daa3-9a50-4d73-8a0a-8ef931957af3"
 >
 </ReqRef><ReqRef
  Id="c4b29bf1-b564-4981-9967-9bc22c91b8f9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="58ef66a5-6ced-45f1-b53b-7685ec0e9a8b"
 >
 </ReqRef><ReqRef
  Id="33d6b46d-2f8a-4411-8e48-aa43acd4cce3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="33dfd7e2-32d0-402c-b907-8a05dfa118a8"
 >
 </ReqRef><Comment>Represents the time when the driver ack was requested.</Comment>
 </Variable><Variable
@@ -823,34 +1035,42 @@ IN
  VariableMode="Internal"
  Implemented="TRUE"
  Name="Tack"
+ Guid="43415c9b-e244-4abb-aaaa-f0d95525304d"
 >
 <ReqRef
  Id="c3352be2-25f7-499e-b638-51b4b8e180ed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bbd8432f-8d4f-4582-983c-aac72dc81350"
 >
 </ReqRef><ReqRef
  Id="19ba3404-792f-4f75-a058-7b89395bce5c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="efe26c5b-b4e8-4fb4-839e-e3779f0c9df3"
 >
 </ReqRef><ReqRef
  Id="f1fefc2b-0ed9-4f11-9b47-0930e4ba5821"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="69e9b17b-6823-4770-b77d-bea6526c3301"
 >
 </ReqRef><ReqRef
  Id="81394bed-5665-4b0a-a527-9c845c6db537"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5e92c17e-cc65-4d0d-8ec0-e40f8dad941e"
 >
 </ReqRef><ReqRef
  Id="c4b29bf1-b564-4981-9967-9bc22c91b8f9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="660e9c71-4538-4e4f-ae21-4068386c9000"
 >
 </ReqRef><ReqRef
  Id="33d6b46d-2f8a-4411-8e48-aa43acd4cce3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="65edfe30-804f-43ae-adbf-6b0bf6282260"
 >
 </ReqRef><ReqRef
  Id="8c5b881c-69d8-482a-9ec2-98778e9fddc2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="670b530f-bfe9-4e27-af2a-b2e920b60561"
 >
 </ReqRef><Comment>Driver acknowledgement time.</Comment>
 </Variable></Variables>
@@ -859,31 +1079,38 @@ IN
  Priority="CleanUp"
  Implemented="TRUE"
  Name="Clear profile"
+ Guid="861c2421-ea67-4299-abec-0d8d26269696"
 >
 <ReqRef
  Id="eaa70a17-109a-45b5-8747-ecc49e581ccd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d3558914-a7c8-432c-9be2-caf005deb80d"
 >
 </ReqRef><ReqRef
  Id="03b6c53e-3c15-4db3-8d90-3353c60fd14d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1c347756-616b-4ccf-a015-61883bd90610"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Clear profile"
+ Guid="34b2d5de-80a8-4539-96e6-c35627980e9b"
 >
 <Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>REMOVE ALL RemoveMode ( X ) IN  Profile</Action></Actions>
+<Action
+ Guid="bef1dd94-9db8-4d2d-86e9-aa0a15bb0913"
+>REMOVE ALL RemoveMode ( X ) IN  Profile</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Display driver ack"
+ Guid="413fa19c-51c6-4d80-8f2b-56d878b3285f"
 >
 <Comment>For the modes SB and PT, the acknowledgement procedure is launched in the procedures Start of Mission and Train Trip respectively.</Comment>
 <SubRules></SubRules>
@@ -891,117 +1118,178 @@ IN
 <RuleCondition
  Implemented="TRUE"
  Name="Display driver ack for OS"
+ Guid="917932cd-dbe2-40a0-8e32-73a0be2b54e2"
 >
 <ReqRef
  Id="4ebd4845-9d08-4721-8788-6991ab66d3eb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a4a83cb-59d0-4e88-946e-3d52bb7b9b75"
 >
 </ReqRef><ReqRef
  Id="33b54e77-9cb2-4190-92cd-1cfeb3a94b5d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4924f19-9eab-48c8-b282-579132050e78"
 >
 </ReqRef><ReqRef
  Id="83b4c9f4-e480-4a7c-96f4-1e05dbd4b32f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6baae0da-52a4-4b76-bcd3-149e426fa6c2"
 >
 </ReqRef><ReqRef
  Id="f8b146ed-492a-43af-b78d-fbd3e12aa731"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af636e4f-758d-4bd1-a1d4-6b1ee23b8d6c"
 >
 </ReqRef><ReqRef
  Id="02990d41-6bf4-4c89-94b5-aee9d1db2510"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6cb9f5e3-6f0f-449a-b776-da8e307fd840"
 >
 </ReqRef><ReqRef
  Id="becf543b-94ee-4436-85b2-708e4e58eb59"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="acd1e175-c0cd-4942-b746-d47da15000b0"
 >
 </ReqRef><ReqRef
  Id="9a63ec40-59c4-454f-a41d-51030fc51481"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7805c3ce-592e-496e-bbcb-2e43dc7743da"
 >
 </ReqRef><ReqRef
  Id="6e265aec-2ccf-45a4-8713-34d7ea277c53"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2cfaa422-d2fe-404b-b28c-cf93722a90ff"
 >
 </ReqRef><PreConditions>
-<PreCondition>Mode not in [Mode.OS, Mode.SB, Mode.PT]</PreCondition><PreCondition>( FIRST_IN Profile | X.Mode == Mode.OS ) != EMPTY</PreCondition><PreCondition>AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.OS )</PreCondition><PreCondition>ModeRelatedSpeedLimits.OSModeSpeedLimit() &gt; Odometry.EstimatedSpeed </PreCondition><PreCondition>NOT DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested</PreCondition></PreConditions>
+<PreCondition
+ Guid="6d1c7801-3e7d-452d-9a52-40bebe0ec5fd"
+>Mode not in [Mode.OS, Mode.SB, Mode.PT]</PreCondition><PreCondition
+ Guid="42784a5a-1cae-4c0b-811f-443315954aca"
+>( FIRST_IN Profile | X.Mode == Mode.OS ) != EMPTY</PreCondition><PreCondition
+ Guid="5047ee70-4096-4857-a378-73f6b22a865d"
+>AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.OS )</PreCondition><PreCondition
+ Guid="66b2c6ba-7c31-4c87-9718-93a1cb7db83d"
+>ModeRelatedSpeedLimits.OSModeSpeedLimit() &gt; Odometry.EstimatedSpeed </PreCondition><PreCondition
+ Guid="9c07352e-7368-4267-b097-8f8ae8201d4d"
+>NOT DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
-<Action>InitiateDriverAck()</Action></Actions>
+<Action
+ Guid="82ba23e0-1820-477a-9003-f622746b0571"
+>InitiateDriverAck()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Display driver ack for LS"
+ Guid="3e827100-8525-4e86-9c20-97c273e0d79a"
 >
 <ReqRef
  Id="4fb449e7-3376-4d1d-9cb1-7ab1bbb762c0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="12925cd9-b799-45c8-8456-aa188709d491"
 >
 </ReqRef><ReqRef
  Id="2ae92ee4-8298-478f-94c4-806e389cc5cb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ca9b2aca-f2f7-448f-9945-a70b04d8871c"
 >
 </ReqRef><ReqRef
  Id="f0920be8-e671-4e0b-bc0b-5be12d23b1e3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3db52e8b-d658-4024-97fc-f4d8accc538e"
 >
 </ReqRef><ReqRef
  Id="7eb769c6-7a5f-4b65-8ae8-09c3c01deb44"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ade9f611-2d7b-4c98-8cce-85c4c4c60454"
 >
 </ReqRef><ReqRef
  Id="af9486e0-4055-4c87-949a-b752d1b54a50"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="73be83c7-7c26-411b-b16c-4815e81880fd"
 >
 </ReqRef><ReqRef
  Id="504f5bac-204f-4aec-a4b3-3b1b00862286"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1841f833-a383-44f0-bfd3-18b4d4664991"
 >
 </ReqRef><ReqRef
  Id="7cba24fb-f8f0-411d-b295-e943d3f930c1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf63d74a-dead-415b-bc99-8608d368a2ac"
 >
 </ReqRef><ReqRef
  Id="8c7eb4ff-2716-4d9f-a6f2-bd52aacc416b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="41c7688c-1f16-4acf-910f-6eb4d335c50b"
 >
 </ReqRef><PreConditions>
-<PreCondition>Mode not in [Mode.LS, Mode.SB, Mode.PT]</PreCondition><PreCondition>( FIRST_IN Profile | X.Mode == Mode.LS ) != EMPTY</PreCondition><PreCondition>AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.LS )</PreCondition><PreCondition>ModeRelatedSpeedLimits.LSModeSpeedLimit() &gt; Odometry.EstimatedSpeed </PreCondition><PreCondition>NOT DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DisplayRequested</PreCondition></PreConditions>
+<PreCondition
+ Guid="5600aaf9-7d5c-4a4b-b01c-dcbf24977c52"
+>Mode not in [Mode.LS, Mode.SB, Mode.PT]</PreCondition><PreCondition
+ Guid="eb47dd1f-303f-4d40-9087-cb226e89eea5"
+>( FIRST_IN Profile | X.Mode == Mode.LS ) != EMPTY</PreCondition><PreCondition
+ Guid="04fb07e1-e2e4-434a-a085-60940cd1d683"
+>AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.LS )</PreCondition><PreCondition
+ Guid="961a9514-325f-4dd3-8288-f7f5c316bf3b"
+>ModeRelatedSpeedLimits.LSModeSpeedLimit() &gt; Odometry.EstimatedSpeed </PreCondition><PreCondition
+ Guid="3da0d65b-0e2b-4020-8afd-97fbbee5539f"
+>NOT DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
-<Action>InitiateDriverAck()</Action></Actions>
+<Action
+ Guid="b5e35da4-c967-4a59-85c6-a08ce49af47a"
+>InitiateDriverAck()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Display driver ack for SH"
+ Guid="7a67803e-50d7-4bb2-a902-fc9d924e1df0"
 >
 <ReqRef
  Id="ff0a5aad-f1c0-4297-8d8f-e10acf97e4cb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="92da6ab8-2171-4fc5-a412-0ca5b4fd785c"
 >
 </ReqRef><ReqRef
  Id="9cce28e1-bf30-4268-94b6-ed70b2b1533e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ef8a3701-2324-469a-88b0-f1a6777a8858"
 >
 </ReqRef><ReqRef
  Id="69196e9c-9533-43f3-8c1f-cd9a9b248178"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c9742a59-046a-4b41-87d7-3d30d5e8d1d2"
 >
 </ReqRef><ReqRef
  Id="dc4be9b4-1646-45e4-bf8b-64af5d107a36"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="70b3bfec-4ab5-4f83-98f3-ef01298922e5"
 >
 </ReqRef><ReqRef
  Id="39ae88ad-20ca-43d1-8c3f-5f7172777b6e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35e408c0-1d04-4f6a-80e6-056c81f9ce1b"
 >
 </ReqRef><PreConditions>
-<PreCondition>Mode not in [Mode.SB, Mode.PT]</PreCondition><PreCondition>( FIRST_IN Profile | X.Mode == Mode.SH ) != EMPTY</PreCondition><PreCondition>AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.SH )</PreCondition><PreCondition>ModeRelatedSpeedLimits.SHModeSpeedLimit() &gt; Odometry.EstimatedSpeed </PreCondition><PreCondition>NOT DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DisplayRequested</PreCondition></PreConditions>
+<PreCondition
+ Guid="a6b8a37e-3e25-40ae-ba2c-da28116ece59"
+>Mode not in [Mode.SB, Mode.PT]</PreCondition><PreCondition
+ Guid="55cf8108-eb50-4bee-ad58-f34d699f55d3"
+>( FIRST_IN Profile | X.Mode == Mode.SH ) != EMPTY</PreCondition><PreCondition
+ Guid="3e3576fb-239d-486e-8039-2fb033696845"
+>AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.SH )</PreCondition><PreCondition
+ Guid="b7041bbe-293e-4a65-9f11-1f7ea8cd24b3"
+>ModeRelatedSpeedLimits.SHModeSpeedLimit() &gt; Odometry.EstimatedSpeed </PreCondition><PreCondition
+ Guid="778ffeec-9d0d-4cc8-9cdb-a9b312b12afe"
+>NOT DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
-<Action>InitiateDriverAck()</Action></Actions>
+<Action
+ Guid="c13e2743-8c40-487f-84d9-9f5b18f67495"
+>InitiateDriverAck()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Driver ack timeout"
+ Guid="5e7a02ed-8746-46f9-8f8a-9786dd7cc397"
 >
 <Comment></Comment>
 <SubRules></SubRules>
@@ -1009,19 +1297,34 @@ IN
 <RuleCondition
  Implemented="TRUE"
  Name="Driver ack timeout for OS"
+ Guid="b66c20d6-bceb-46e2-b973-cf6de1b87b29"
 >
 <ReqRef
  Id="c3352be2-25f7-499e-b638-51b4b8e180ed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="285247a8-b606-4ada-b5aa-792519598737"
 >
 </ReqRef><ReqRef
  Id="19ba3404-792f-4f75-a058-7b89395bce5c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="07afc52e-d4fc-4025-9e79-61d69bf44e1c"
 >
 </ReqRef><PreConditions>
-<PreCondition>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested</PreCondition><PreCondition>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition><PreCondition>NOT EmergencyBrakeApplied</PreCondition><PreCondition>Kernel.Mode == Mode.OS</PreCondition></PreConditions>
+<PreCondition
+ Guid="1af308aa-11fd-4159-a0ff-6063b49cf8c5"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="70cd1e0f-c048-41cd-8dd3-f02be417fabf"
+>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition><PreCondition
+ Guid="605c2a3c-b14b-4de0-b95c-62732be2bb6b"
+>NOT TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
+ Guid="c5d7fb66-2f3c-4333-8660-4272cdb19e13"
+>Kernel.Mode == Mode.OS</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.EmergencyBrakeApplied &lt;- True</Action><Action>INSERT
+<Action
+ Guid="3b3023f7-80d9-48c3-a8e0-f3fd51dea270"
+>TIU.EmergencyBrakeCommanded &lt;- True</Action><Action
+ Guid="2339a3ad-fa96-46a4-a713-5c7326273104"
+>INSERT
     Kernel.EmergencyStop
     {
         Id =&gt; BrakeReason.DriverAckTimeOut,
@@ -1033,19 +1336,32 @@ IN
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Driver ack timeout for LS"
+ Guid="a7d4c798-54f9-46e1-9b00-fb3ec677aa1b"
 >
 <ReqRef
  Id="c4b29bf1-b564-4981-9967-9bc22c91b8f9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3b8a70dc-73fb-4938-9d74-2d051ec6c048"
 >
 </ReqRef><ReqRef
  Id="33d6b46d-2f8a-4411-8e48-aa43acd4cce3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ba7523a6-c845-4941-aeb2-8bea4fd53730"
 >
 </ReqRef><PreConditions>
-<PreCondition>Kernel.Mode == Mode.LS</PreCondition><PreCondition>NOT EmergencyBrakeApplied</PreCondition><PreCondition>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DisplayRequested</PreCondition><PreCondition>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition></PreConditions>
+<PreCondition
+ Guid="67e8c925-5ed6-49dd-9683-286503836380"
+>Kernel.Mode == Mode.LS</PreCondition><PreCondition
+ Guid="fee35770-78b9-48c3-86f3-98a4fc5953d7"
+>NOT TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
+ Guid="f28f60de-be90-44e4-8046-3653258d54cd"
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="63385cea-a2a5-4761-b295-a54164bb3745"
+>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition></PreConditions>
 <Actions>
-<Action>INSERT
+<Action
+ Guid="34cc8f11-590c-4103-9ee3-90b50fa543c9"
+>INSERT
     Kernel.EmergencyStop
     {
         Id =&gt; BrakeReason.DriverAckTimeOut,
@@ -1053,23 +1369,40 @@ IN
         StopLocation =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
     }
 IN
-    Kernel.EmergencyStops</Action><Action>Kernel.EmergencyBrakeApplied &lt;- True</Action></Actions>
+    Kernel.EmergencyStops</Action><Action
+ Guid="2c54df9e-310b-4ba6-a35c-bbd10d789e58"
+>TIU.EmergencyBrakeCommanded &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Driver ack timeout for SH"
+ Guid="ae95ad2a-0cda-434d-b1d5-fbdb48fefad1"
 >
 <ReqRef
  Id="f1fefc2b-0ed9-4f11-9b47-0930e4ba5821"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cb41a279-8668-4aa1-a9df-8db947f3a3fb"
 >
 </ReqRef><ReqRef
  Id="81394bed-5665-4b0a-a527-9c845c6db537"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a5320b9f-25f7-46c7-9bc5-bea6b9a5a4a8"
 >
 </ReqRef><PreConditions>
-<PreCondition>Kernel.Mode == Mode.SH</PreCondition><PreCondition>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DisplayRequested</PreCondition><PreCondition>NOT EmergencyBrakeApplied</PreCondition><PreCondition>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition></PreConditions>
+<PreCondition
+ Guid="41b79268-f740-4fa2-9e70-08d78771856a"
+>Kernel.Mode == Mode.SH</PreCondition><PreCondition
+ Guid="563dae96-f4da-4c28-ac8e-b7fecd752f0c"
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="a7ac6784-ad88-44b3-aba1-5c17e74862a9"
+>NOT TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
+ Guid="b4be8fa9-acea-4bd9-85a6-49c0a4e62385"
+>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.EmergencyBrakeApplied &lt;- True</Action><Action>INSERT
+<Action
+ Guid="7cb462a7-f1fe-4184-970f-311588f9441d"
+>TIU.EmergencyBrakeCommanded &lt;- True</Action><Action
+ Guid="8437465e-1ade-432d-9b55-de4a5793cc23"
+>INSERT
     Kernel.EmergencyStop
     {
         Id =&gt; BrakeReason.DriverAckTimeOut,
@@ -1083,41 +1416,59 @@ IN
  Priority="Processing"
  Implemented="TRUE"
  Name="Release emergency brake"
+ Guid="5a4d844d-30c6-4a72-8a4f-aa79a805770b"
 >
 <ReqRef
  Id="c3352be2-25f7-499e-b638-51b4b8e180ed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7507935a-2e07-4b9e-8a86-d71ceec580b7"
 >
 </ReqRef><ReqRef
  Id="19ba3404-792f-4f75-a058-7b89395bce5c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b07da452-a7d4-4fab-b84c-093534ba5f87"
 >
 </ReqRef><ReqRef
  Id="f1fefc2b-0ed9-4f11-9b47-0930e4ba5821"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6b0b1f10-52c6-4111-89b5-b048221add6c"
 >
 </ReqRef><ReqRef
  Id="81394bed-5665-4b0a-a527-9c845c6db537"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="33edff68-5617-4dc4-9a8b-f3d5db665985"
 >
 </ReqRef><ReqRef
  Id="c4b29bf1-b564-4981-9967-9bc22c91b8f9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="70a3b034-4afe-4b09-98b9-b94eac9768a3"
 >
 </ReqRef><ReqRef
  Id="33d6b46d-2f8a-4411-8e48-aa43acd4cce3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="263a0c68-6df9-4f0a-b715-872b15132d4b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="Release emergency brake"
+ Guid="cc215b5d-cef8-4b74-b35f-3bd23be47fa4"
 >
 <PreConditions>
-<PreCondition>EmergencyBrakeApplied</PreCondition><PreCondition>THERE_IS_IN EmergencyStops | X.Id == BrakeReason.DriverAckTimeOut</PreCondition><PreCondition>( COUNT EmergencyStops ) == 1</PreCondition></PreConditions>
+<PreCondition
+ Guid="863fe0fb-623d-4d72-bdc1-9bfb5700e462"
+>TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
+ Guid="9a079a5e-29df-49b0-8e55-e5b5e245f253"
+>THERE_IS_IN EmergencyStops | X.Id == BrakeReason.DriverAckTimeOut</PreCondition><PreCondition
+ Guid="3e004f42-4d6d-41f5-8591-0ea27887b80a"
+>( COUNT EmergencyStops ) == 1</PreCondition></PreConditions>
 <Actions>
-<Action>EmergencyBrakeApplied &lt;- False</Action><Action>EmergencyStops &lt;- []</Action></Actions>
+<Action
+ Guid="7ff5c6ed-5396-43e8-ad76-c44fa6cee5bd"
+>TIU.EmergencyBrakeCommanded &lt;- False</Action><Action
+ Guid="a990ab68-3104-4fea-90c8-89e182f71136"
+>EmergencyStops &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

@@ -131,6 +131,7 @@ namespace GUI.Converters
             converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_scope.aOBU, "On Board Unit"));
             converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK, "On Board Unit and Track"));
             converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_scope.aTRACK, "Track"));
+            converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_scope.aROLLING_STOCK, "Rolling stock"));
         }
     }
 
@@ -179,6 +180,17 @@ namespace GUI.Converters
         {
             converters.Add(new Converter(DataDictionary.Generated.acceptor.ExpectationKind.aInstantaneous, "Instantaneous"));
             converters.Add(new Converter(DataDictionary.Generated.acceptor.ExpectationKind.aContinuous, "Continuous"));
+        }
+    }
+
+    public class ChangeActionConverter : GenericEnumConverter<HistoricalData.Generated.acceptor.ChangeOperationEnum>
+    {
+        public ChangeActionConverter(Type type)
+            : base(type)
+        {
+            converters.Add(new Converter(HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Add"));
+            converters.Add(new Converter(HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Change"));
+            converters.Add(new Converter(HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove, "Remove"));
         }
     }
 }

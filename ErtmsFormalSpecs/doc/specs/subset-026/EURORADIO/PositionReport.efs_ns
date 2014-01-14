@@ -2,6 +2,7 @@
  Width="100"
  Height="50"
  Name="PositionReport"
+ Guid="e7cf5843-ef46-4028-aa51-d0dc661e9005"
 >
 <NameSpaces>
 </NameSpaces>
@@ -10,35 +11,43 @@
  Default="PositionReportSpecialLocation.DoNotSend"
  Implemented="TRUE"
  Name="PositionReportSpecialLocation"
+ Guid="476931ac-c736-436a-8d31-ea5db2a0e915"
 >
 <ReqRef
  Id="5bc210dc-ac9e-4d2a-9508-b89f3d465a7b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3f10dc5c-11cc-4201-9a25-fcd767995693"
 >
 </ReqRef><ReqRef
  Id="3c43c95f-9a2d-4244-a81b-8ce6833a6a96"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="896b214f-b7b7-4551-8506-d99d27e5803e"
 >
 </ReqRef><ReqRef
  Id="aa035c94-e9a5-4a0d-80ed-80d1a0e9db3f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bc54cffd-8d18-4ef3-aa0b-3490e16c3d7d"
 >
 </ReqRef><ReqRef
  Id="83966f12-95e0-4bd1-a94c-f51c035af1c1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="593d4130-2967-47da-b2a0-de195360ab2d"
 >
 </ReqRef><Values>
 <EnumValue
  Value="0"
  Name="DoNotSend"
+ Guid="d2f064a4-349a-4448-bec2-0050eb993e54"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="Now"
+ Guid="fc6d298a-c88b-4d8d-a832-322076f6b464"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="LRBG"
+ Guid="b553051e-abc4-4950-938d-c4edcbc815a6"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -47,6 +56,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="PositionReportEventsTracker"
+ Guid="e4d7d885-b4b0-4a2f-84fe-fd83278d8dac"
 >
 <StructureElement
  TypeName="Messages.Q_LENGTH"
@@ -55,14 +65,17 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TrainIntegrityStatus"
+ Guid="702a47f2-b548-4920-90c2-c9af032dad2d"
 >
 <ReqRef
  Id="08ae9142-b051-4a16-ad2f-f7e7d927a51e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd3f42b9-d613-4ae9-b122-4c3e5679fdbb"
 >
 </ReqRef><ReqRef
  Id="5e354f4a-2bd0-458a-983a-75be865356d0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="597cf4ba-39be-4e74-b946-c07ad32f1204"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
@@ -71,10 +84,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Speed"
+ Guid="cd628589-9d93-4fae-9f68-1214b8f86c72"
 >
 <ReqRef
  Id="0310893d-d293-4089-ad7f-c6e74d25d402"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="422ed2ff-d3b2-4b9d-b93a-f653b27905a1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.Level"
@@ -83,10 +98,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Level"
+ Guid="dfe14e8f-60f2-41d1-a4e2-bfe45f5b2d64"
 >
 <ReqRef
  Id="a73c2ac0-c4f3-4593-b90c-ba4ee8cc4957"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88fb8d10-2186-4fd5-bc3a-eec65b47cdd8"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.Mode"
@@ -95,10 +112,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Mode"
+ Guid="0fe0a95b-e6d2-4b3f-a065-860c0a2cea17"
 >
 <ReqRef
  Id="51d5337f-1430-4900-a7a0-9fc794f74fdb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3354f402-f79e-41af-9fff-c6f5a9ad88db"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
@@ -106,22 +125,27 @@
  Mode="Internal"
  NeedsRequirement="FALSE"
  Name="HasActiveSession"
+ Guid="0e42fee9-39f2-4da3-bf59-40f56503187f"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="PositionReportParametersValues"
+ Guid="0cfceaa4-617d-4da2-835a-9da4e0f84f51"
 >
 <ReqRef
  Id="ae550cab-c867-4e9d-af2c-8e62dbe27545"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4e45c620-e6c8-449e-816c-52ad872af845"
 >
 </ReqRef><ReqRef
  Id="a216803e-5575-472e-bbd0-bfaa483382b7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0bbe34d7-d7ce-4d81-a106-19baf7bde62e"
 >
 </ReqRef><ReqRef
  Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5345377f-dea6-446b-8e0f-f68d3a590b32"
 >
 </ReqRef><Comment>Parameters of position reporting given by RBC.</Comment>
 <StructureElement
@@ -131,10 +155,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TimeInterval"
+ Guid="687f8957-1f6e-45f1-b69b-a9e607d1194c"
 >
 <ReqRef
  Id="2ad61dc3-1f8d-4e29-888b-5d0a9df1e5cf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="511735ab-525d-47db-826e-f23458a0a87e"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -143,10 +169,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DistanceInterval"
+ Guid="c7e38d7a-e78e-4c47-aac5-b6497179ff9b"
 >
 <ReqRef
  Id="9bce1dcb-f670-481c-9012-c9772b746a32"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="947e0a12-8289-4d58-8073-ff08878f96f4"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -156,18 +184,22 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SpecialLocation"
+ Guid="c76f861d-b33d-48e7-8f7f-a6ebd3e6b90e"
 >
 <ReqRef
  Id="5bc210dc-ac9e-4d2a-9508-b89f3d465a7b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89a71b21-5286-46a6-a4a0-43a59d3509b7"
 >
 </ReqRef><ReqRef
  Id="3c43c95f-9a2d-4244-a81b-8ce6833a6a96"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4f2489cb-1e12-4bc1-b4d1-cb1e5b5ef7b0"
 >
 </ReqRef><ReqRef
  Id="aa035c94-e9a5-4a0d-80ed-80d1a0e9db3f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ad05d477-180f-4a70-83e0-713dc9b6cbbd"
 >
 <Comment>This requirement is always satisfied because the value of the field PositionReportSpecialLocation can be either LRBG or Now and never the both together.</Comment>
 </ReqRef></StructureElement><StructureElement
@@ -177,14 +209,17 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Locations"
+ Guid="fdd2c7b2-cab4-4f62-9a29-a8f986e6016f"
 >
 <ReqRef
  Id="12080437-12c5-47ab-9aec-ceced6bba68f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="23a80406-b674-43a5-9e8a-129b78b93722"
 >
 </ReqRef></StructureElement></Structure><Structure
  NeedsRequirement="FALSE"
  Name="PositionReportParameters"
+ Guid="dafba94d-6433-44d4-9e3f-ba35ffadb8ea"
 >
 <StructureElement
  TypeName="Default.DataState"
@@ -192,6 +227,7 @@
  Mode="Internal"
  NeedsRequirement="FALSE"
  Name="DataState"
+ Guid="05e8cb01-1d61-4e80-bcaa-11d314b7ab34"
 >
 </StructureElement><StructureElement
  TypeName="PositionReportParametersValues"
@@ -199,11 +235,13 @@
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="Values"
+ Guid="e3fce09b-5758-403f-8751-cb7438db0924"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="LastPositionReportInformation"
+ Guid="f69c4eae-36c3-4704-8ae3-4d74ffbed1b7"
 >
 <StructureElement
  TypeName="Default.BaseTypes.Time"
@@ -212,14 +250,17 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Time"
+ Guid="2c77c80c-ecb4-4967-aaba-3484ca357c06"
 >
 <ReqRef
  Id="2ad61dc3-1f8d-4e29-888b-5d0a9df1e5cf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="97943dfe-78b0-4c13-8031-1416b87c53ef"
 >
 </ReqRef><ReqRef
  Id="60acc0ca-e056-4297-ae12-7f37389323d3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5252e3f0-2439-46a0-8345-93770c0310b1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -228,10 +269,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Position"
+ Guid="3a74034d-e43e-4db0-85ed-16ef9093a145"
 >
 <ReqRef
  Id="9bce1dcb-f670-481c-9012-c9772b746a32"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53833c15-3196-4533-b745-9e2e693d6384"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="BTM.BaliseGroup"
@@ -240,10 +283,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="LRBG"
+ Guid="aca04f80-cae6-4046-8486-cdcd0165d683"
 >
 <ReqRef
  Id="3c43c95f-9a2d-4244-a81b-8ce6833a6a96"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3d95f0aa-14a5-4a75-94a3-f22873d343a9"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
@@ -252,10 +297,12 @@
  MaxSize="32"
  Default="[]"
  Name="PositionReportLocations"
+ Guid="65a363a1-fc0b-412a-8b6f-2d68bc7fe4d4"
 >
 <ReqRef
  Id="12080437-12c5-47ab-9aec-ceced6bba68f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f0b3f25-c0de-4842-b980-b8655e5ce454"
 >
 </ReqRef><Comment></Comment>
 </Collection></Collections>
@@ -264,14 +311,17 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="SendReportDueToCommunicationSessionIsEstablished"
+ Guid="06396c3e-d71c-45c8-8a5f-01b87812bd95"
 >
 <ReqRef
  Id="7650e199-5792-467e-8851-48660d18ee90"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5357decc-14e6-459a-86b1-8c8348764169"
 >
 </ReqRef><Cases>
 <Case
  Name="Condition"
+ Guid="38910f57-eaaa-45c2-8562-0f00ec822b4b"
 >
 <Expression>PositionReportEventsTracker.HasActiveSession == Boolean.False</Expression>
 </Case></Cases>
@@ -280,22 +330,28 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SendReportDueToLevelChange"
+ Guid="288fe7d5-072a-4cb4-b491-d43752f16310"
 >
 <ReqRef
  Id="a73c2ac0-c4f3-4593-b90c-ba4ee8cc4957"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4b9d39f9-3b1e-4fe4-827a-e87370db6bba"
 >
 </ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Condition"
+ Guid="2267941e-218a-4012-9fe6-34f016f07663"
 >
 <Expression>PositionReportEventsTracker.Level != Kernel.Level.Value</Expression>
 </Case><Case
  Name="DoNotSend"
+ Guid="66fc2856-0c33-498f-a5a8-904e29c1a15e"
 >
 <PreConditions>
-<PreCondition>PositionReportEventsTracker.Level == Kernel.Level.Value</PreCondition></PreConditions>
+<PreCondition
+ Guid="87775add-1503-4d81-9951-61bdb65e8361"
+>PositionReportEventsTracker.Level == Kernel.Level.Value</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -303,49 +359,60 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SendReportDueToLossOfTrainIntegrityDetected"
+ Guid="845d881a-6178-4569-b16f-1e6a2f9ba2df"
 >
 <ReqRef
  Id="5e354f4a-2bd0-458a-983a-75be865356d0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="51b45c95-767f-4a31-b29a-59105f7378a7"
 >
 </ReqRef><Cases>
 <Case
  Name="Condition"
+ Guid="971ecd82-8414-41b3-b1b4-7dd8e9b80181"
 >
-<Expression>PositionReportEventsTracker.TrainIntegrityStatus != Kernel.TrainIntegrity.Status AND Kernel.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost
-</Expression>
+<Expression>PositionReportEventsTracker.TrainIntegrityStatus != TIU.TrainIntegrity.Status
+  AND
+TIU.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SendReportDueToModeChange"
+ Guid="1023a58f-3dfb-42af-92ce-408194247e71"
 >
 <ReqRef
  Id="51d5337f-1430-4900-a7a0-9fc794f74fdb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="77b85189-1394-485f-b51b-729b18896fb8"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="9f9eccce-90aa-4339-8dff-74915b041b83"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="37d5120a-c6b1-4174-b595-9b2ef6def822"
 >
 </ReqRef><ReqRef
  Id="1e84c5a2-c916-45da-94c9-cdf6585f39c9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4a45e4c6-7ec1-43e4-921e-b9e3125d4558"
 >
 </ReqRef><ReqRef
  Id="0dc5d937-27a9-4c96-a97d-dfdbe75c85d9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c0f2c45c-122e-45d9-8856-41b90ee5bb1d"
 >
 </ReqRef><ReqRef
  Id="cd15246a-5c87-478b-bc9e-36ed9f2f9127"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae6e296d-103d-44de-8009-4cbbd5d73d8e"
 >
 </ReqRef><Comment>Determines if the train has to send a position report to the RBC due to the mode change. If the report has to be sent, the function returns the mode to be sent with the report. In not, the function returns EMPTY.</Comment>
 <Cases>
 <Case
  Name="Condition"
+ Guid="5dceb123-fe06-4e6a-8ded-c6c2984cebe4"
 >
 <Expression>PositionReportEventsTracker.Mode != Kernel.Mode</Expression>
 </Case></Cases>
@@ -354,14 +421,17 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SendReportDueToPositionReportTimeReached"
+ Guid="f61e474a-4323-4285-ad21-a9b6103b3a12"
 >
 <ReqRef
  Id="2ad61dc3-1f8d-4e29-888b-5d0a9df1e5cf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0b40b0f5-773a-4ef1-bdcf-49f0eda24ff2"
 >
 </ReqRef><Cases>
 <Case
  Name="Condition"
+ Guid="aaa72c64-bb2e-466c-93eb-5bf924372ffc"
 >
 <Expression>Kernel.CurrentTime &gt;= LastPositionReport.Time + PositionReportParameters.Values.TimeInterval AND PositionReportParameters.DataState == Default.DataState.Valid AND PositionReportParameters.Values.TimeInterval != 0.0</Expression>
 </Case></Cases>
@@ -370,15 +440,18 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SendReportDueToPositionReportDistanceReached"
+ Guid="998de66e-d6a4-47c6-8eeb-235cf27d723d"
 >
 <ReqRef
  Id="9bce1dcb-f670-481c-9012-c9772b746a32"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d2543aac-c3e4-43c4-a662-302e248412bd"
 >
 </ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Condition"
+ Guid="3bcde522-0efd-4e95-9c56-00ee9dbe3059"
 >
 <Expression>(Odometry.NominalDistance &gt;= (LastPositionReport.Position + PositionReportParameters.Values.DistanceInterval)) AND (PositionReportParameters.DataState == Default.DataState.Valid) AND (PositionReportParameters.Values.DistanceInterval != Default.BaseTypes.Distance.Infinity)</Expression>
 </Case></Cases>
@@ -387,14 +460,17 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SendReportDueToSpecialLocationNow"
+ Guid="84d7f642-0a9a-46ca-b0e3-977a5fe3ec73"
 >
 <ReqRef
  Id="5bc210dc-ac9e-4d2a-9508-b89f3d465a7b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="510261da-dfb8-4672-9c08-b3af809ece5f"
 >
 </ReqRef><Cases>
 <Case
  Name="Condition"
+ Guid="d39cbac2-cb23-4eef-a013-bccca1716554"
 >
 <Expression>PositionReportParameters.Values.SpecialLocation == PositionReportSpecialLocation.Now</Expression>
 </Case></Cases>
@@ -403,14 +479,17 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SendReportDueToStandstillReached"
+ Guid="cbe675fd-6bde-4d48-81b3-9e4935d4d8ec"
 >
 <ReqRef
  Id="0310893d-d293-4089-ad7f-c6e74d25d402"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2690fd19-425e-42e0-a919-981196c4b422"
 >
 </ReqRef><Cases>
 <Case
  Name="Condition"
+ Guid="9067bdff-9b40-4532-9e37-c911b007f3db"
 >
 <Expression>PositionReportEventsTracker.Speed != Odometry.EstimatedSpeed AND Odometry.EstimatedSpeed == 0.0</Expression>
 </Case></Cases>
@@ -419,35 +498,41 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SendReportDueToTrainIntegrityConfirmedByDriver"
+ Guid="5bb62493-e9e4-48e5-8ecf-49cb55b2ad85"
 >
 <ReqRef
  Id="08ae9142-b051-4a16-ad2f-f7e7d927a51e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bdf155da-5c71-4289-aebc-c341580be424"
 >
 </ReqRef><Cases>
 <Case
  Name="Condition"
+ Guid="b4a5f2d7-356a-4eb5-b5c5-e979531e600f"
 >
-<Expression>PositionReportEventsTracker.TrainIntegrityStatus != Kernel.TrainIntegrity.Status AND 
-Kernel.TrainIntegrity.Status in [
+<Expression>PositionReportEventsTracker.TrainIntegrityStatus != TIU.TrainIntegrity.Status
+  AND 
+TIU.TrainIntegrity.Status in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
-]
-</Expression>
+]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  NeedsRequirement="FALSE"
  Name="SendReportDueToRBCBorderPassedWithMaxSafeFrontEnd"
+ Guid="0eaf3def-06c0-4ba0-9a63-eed38830506b"
 >
 <ReqRef
  Id="93c1473b-e776-4fae-83f9-f2c0423ab494"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6f918740-1a48-431c-acd4-c2a538ae69ea"
 >
 </ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Condition"
+ Guid="3f13f59b-b0a0-40f5-83c2-df74ce33945b"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -456,18 +541,22 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SendReportDueToPositionReportSpecialLocationReached"
+ Guid="466e4d39-37fb-47a7-bb94-61b8beb9c698"
 >
 <ReqRef
  Id="5bc210dc-ac9e-4d2a-9508-b89f3d465a7b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f2e8436c-0fa7-4d7d-b358-3bd1757876a9"
 >
 </ReqRef><ReqRef
  Id="3c43c95f-9a2d-4244-a81b-8ce6833a6a96"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c3e0b5f6-c7df-47bb-8ab6-f48f8104a2ae"
 >
 </ReqRef><Cases>
 <Case
  Name="Condition"
+ Guid="8e7cde14-f71d-4b3b-afd0-3d60e81ba553"
 >
 <Expression>SendReportDueToSpecialLocationNow() OR SendReportDueToSpecialLocationLRBGCompliantBG()</Expression>
 </Case></Cases>
@@ -475,14 +564,17 @@ Kernel.TrainIntegrity.Status in [
  Type="Boolean"
  NeedsRequirement="FALSE"
  Name="SendReportDueToRBCBorderPassedWithMinSafeRearEnd"
+ Guid="49f37338-8086-41fc-b4a3-6edbcffd162f"
 >
 <ReqRef
  Id="1d33b0f5-c87d-4d19-912f-cd058e370e5a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b460c865-7b34-4273-877d-3c856f516c91"
 >
 </ReqRef><Cases>
 <Case
  Name="Condition"
+ Guid="1c36a158-5055-418e-ba11-de0eb40fa197"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -490,14 +582,17 @@ Kernel.TrainIntegrity.Status in [
  Type="Boolean"
  NeedsRequirement="FALSE"
  Name="SendReportDueToLRBGCompliantBGPassed"
+ Guid="6deafe8f-5156-4e8d-b53b-48a9f7361756"
 >
 <ReqRef
  Id="d2a0c77e-82a9-493a-b6c6-892dfdc8298f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e3f5328b-dc54-4bf5-bd3b-1427750e89ce"
 >
 </ReqRef><Cases>
 <Case
  Name="Condition"
+ Guid="48204b28-2e0f-4a18-b93d-684c07d63427"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -505,14 +600,17 @@ Kernel.TrainIntegrity.Status in [
  Type="Boolean"
  NeedsRequirement="FALSE"
  Name="SendReportDueToLevelTransitionBorderPassedWithMinSafeRearEnd"
+ Guid="653f40d4-26f6-4bd3-a8f7-37dc03dcb5ef"
 >
 <ReqRef
  Id="de95016e-13da-4a9a-8a87-17139648fd40"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="73e27a1b-0ae1-443d-9777-8fde6f13b382"
 >
 </ReqRef><Cases>
 <Case
  Name="Condition"
+ Guid="3cdf6774-c76a-42dd-9aa8-76d918c9c115"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -520,15 +618,18 @@ Kernel.TrainIntegrity.Status in [
  Type="Boolean"
  NeedsRequirement="FALSE"
  Name="SendReportDueToSpecialLocationLRBGCompliantBG"
+ Guid="d82afd23-bb03-4a72-8cbf-8733bb209752"
 >
 <ReqRef
  Id="3c43c95f-9a2d-4244-a81b-8ce6833a6a96"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c9c00f8-b393-48a5-9501-fcde47bfb4a2"
 >
 </ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Condition"
+ Guid="e924629c-bec5-4c78-b137-ec70b26429ef"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -537,87 +638,108 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SendReportNow"
+ Guid="a376ac89-d8fe-494b-b2ca-d990c5455aae"
 >
 <ReqRef
  Id="0310893d-d293-4089-ad7f-c6e74d25d402"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5217c75b-666f-4619-ac7b-d7ef281e411a"
 >
 </ReqRef><ReqRef
  Id="51d5337f-1430-4900-a7a0-9fc794f74fdb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7794f35c-827e-46b6-8c4b-e945a142d092"
 >
 </ReqRef><ReqRef
  Id="08ae9142-b051-4a16-ad2f-f7e7d927a51e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8d7300c5-2568-400b-b18a-7b12a45f3183"
 >
 </ReqRef><ReqRef
  Id="5e354f4a-2bd0-458a-983a-75be865356d0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e5a39de8-afe2-4484-9733-185d02d2f180"
 >
 </ReqRef><ReqRef
  Id="1d33b0f5-c87d-4d19-912f-cd058e370e5a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="73cda5b2-674f-46b4-b9f5-26f8681c970a"
 >
 </ReqRef><ReqRef
  Id="de95016e-13da-4a9a-8a87-17139648fd40"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0d126b6f-3d3c-40c7-aa11-208de64306ad"
 >
 </ReqRef><ReqRef
  Id="a73c2ac0-c4f3-4593-b90c-ba4ee8cc4957"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d486638-157f-44a4-b983-ad6d5cc2fc16"
 >
 </ReqRef><ReqRef
  Id="7650e199-5792-467e-8851-48660d18ee90"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d8eb0bb9-ffb7-403e-ad1a-20310c5ffdc5"
 >
 </ReqRef><ReqRef
  Id="a64f54ad-1ecf-473d-a008-4d5b80cd7d5e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9eb446d4-d500-47b7-8b3b-745f4688ee07"
 >
 </ReqRef><ReqRef
  Id="d2a0c77e-82a9-493a-b6c6-892dfdc8298f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4cac353c-9c28-4dba-959c-20a0be447ed1"
 >
 </ReqRef><ReqRef
  Id="93c1473b-e776-4fae-83f9-f2c0423ab494"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="42e12962-0ee2-4b2a-9f0a-1c25e5a93d19"
 >
 </ReqRef><ReqRef
  Id="2ad61dc3-1f8d-4e29-888b-5d0a9df1e5cf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ddb8dcbd-b64d-46cf-a617-d57c2f0bea0c"
 >
 </ReqRef><ReqRef
  Id="9bce1dcb-f670-481c-9012-c9772b746a32"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3cb63510-352e-49bb-b2a5-3628e378f676"
 >
 </ReqRef><ReqRef
  Id="12080437-12c5-47ab-9aec-ceced6bba68f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="75ca4eb3-1e82-4272-b2a4-53e2b3816bcd"
 >
 </ReqRef><ReqRef
  Id="3c43c95f-9a2d-4244-a81b-8ce6833a6a96"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c89bd120-998e-4b45-97f4-d981f8eec3b0"
 >
 </ReqRef><ReqRef
  Id="5bc210dc-ac9e-4d2a-9508-b89f3d465a7b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d63c175-98ea-4215-9232-99afdca647ca"
 >
 </ReqRef><ReqRef
  Id="1e84c5a2-c916-45da-94c9-cdf6585f39c9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d2c10bdf-3688-4040-a5a5-c61b3adf0050"
 >
 </ReqRef><ReqRef
  Id="0dc5d937-27a9-4c96-a97d-dfdbe75c85d9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f8a83a7e-8051-480e-a067-897d9f0ffa0c"
 >
 </ReqRef><ReqRef
  Id="cd15246a-5c87-478b-bc9e-36ed9f2f9127"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cdc04f74-a89e-4d70-a52a-f3320b4338e4"
 >
 </ReqRef><Comment>Determines if the train has to send a position report to the RBC now.</Comment>
 <Cases>
 <Case
  Name="Condition"
+ Guid="95b790d2-b1f1-40e6-808f-05b60c4e9d13"
 >
 <Expression>(
     BTM.LRBG.Orientation != Orientation.Unknown
@@ -646,31 +768,42 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ERTMSSpecialLocationConverter"
+ Guid="2520f1c3-f3e2-4a0b-a0a7-5a80ee8960a5"
 >
 <Parameters>
 <Parameter
  Type="Messages.M_LOC"
  Name="M_LOC"
+ Guid="7effdbbf-bc72-4732-a21c-59dfdfa2c32e"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Now"
+ Guid="42d2d109-f4d7-45d6-a996-1a7fc0cb66b6"
 >
 <PreConditions>
-<PreCondition>M_LOC == 0</PreCondition></PreConditions>
+<PreCondition
+ Guid="35c794c0-5225-4e97-b992-64e1cc0f9013"
+>M_LOC == 0</PreCondition></PreConditions>
 <Expression>PositionReportSpecialLocation.Now</Expression>
 </Case><Case
  Name="LRBG"
+ Guid="94794676-4b38-47b1-bdc8-7d102b9b4ab7"
 >
 <PreConditions>
-<PreCondition>M_LOC == 1</PreCondition></PreConditions>
+<PreCondition
+ Guid="7a286dfe-aba0-4dbf-84ec-4a50e6e6f4ae"
+>M_LOC == 1</PreCondition></PreConditions>
 <Expression>PositionReportSpecialLocation.LRBG</Expression>
 </Case><Case
  Name="DoNotSend"
+ Guid="5f8d4ff4-9ae7-4625-b2fa-8bf772e3d0e7"
 >
 <PreConditions>
-<PreCondition>M_LOC == 2</PreCondition></PreConditions>
+<PreCondition
+ Guid="95161b86-ce17-4022-8323-28087be8111d"
+>M_LOC == 2</PreCondition></PreConditions>
 <Expression>PositionReportSpecialLocation.DoNotSend</Expression>
 </Case></Cases>
 </Function><Function
@@ -678,23 +811,31 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="FillLevelInformation"
+ Guid="6399a313-cf38-4497-9f66-2ff546b2fd8e"
 >
 <ReqRef
  Id="9f9eccce-90aa-4339-8dff-74915b041b83"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3feb3140-77d4-4847-8aa1-b42141f5cb26"
 >
 </ReqRef><Cases>
 <Case
  Name="LevelChanged"
+ Guid="22ea3887-4ad7-458d-a9c9-eeffa9810c0e"
 >
 <PreConditions>
-<PreCondition>SendReportDueToLevelChange()</PreCondition></PreConditions>
+<PreCondition
+ Guid="616052db-8451-4c18-a036-b9769e06293d"
+>SendReportDueToLevelChange()</PreCondition></PreConditions>
 <Expression>Default.EFSLevelConverter ( Kernel.Level.Value )</Expression>
 </Case><Case
  Name="LevelUnchanged"
+ Guid="739b61cf-28cc-4829-8d66-31c0f7ba8dd3"
 >
 <PreConditions>
-<PreCondition>NOT SendReportDueToLevelChange()</PreCondition></PreConditions>
+<PreCondition
+ Guid="5b9dfad2-41e8-4396-8a33-d540534ca35a"
+>NOT SendReportDueToLevelChange()</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
@@ -702,23 +843,31 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="FillModeInformation"
+ Guid="b45da76e-4fa4-4a98-ab7a-d60c6ae81202"
 >
 <ReqRef
  Id="9f9eccce-90aa-4339-8dff-74915b041b83"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8e2100a6-7137-4c5d-9c32-e4432ba30b8d"
 >
 </ReqRef><Cases>
 <Case
  Name="ModeChanged"
+ Guid="e7641b93-82d8-42c7-a415-7557e99b5b30"
 >
 <PreConditions>
-<PreCondition>SendReportDueToModeChange()</PreCondition></PreConditions>
+<PreCondition
+ Guid="c041d51c-1dc8-4e97-a7bc-08eb52ba266d"
+>SendReportDueToModeChange()</PreCondition></PreConditions>
 <Expression>Default.EFSModeConverter ( Kernel.Mode )</Expression>
 </Case><Case
  Name="ModeUnchanged"
+ Guid="0c1d27c7-6b24-443a-9750-dff15bf062ef"
 >
 <PreConditions>
-<PreCondition>NOT SendReportDueToModeChange()</PreCondition></PreConditions>
+<PreCondition
+ Guid="8d23affe-ea35-40a0-842a-5dd22f5c7e8b"
+>NOT SendReportDueToModeChange()</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
@@ -726,64 +875,80 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="FillTrainIntegrityInformation"
+ Guid="bb5fd216-49ab-4b0e-b1a3-4ef0c8e52bd3"
 >
 <ReqRef
  Id="9f9eccce-90aa-4339-8dff-74915b041b83"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="503a4f50-50cc-4145-8c66-d512a53e6007"
 >
 </ReqRef><ReqRef
  Id="1b5d3174-e90a-42a4-8da3-c7ade895d5d2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cab917c1-4d78-4a4e-963d-083c2087b407"
 >
 </ReqRef><ReqRef
  Id="f20ec9e0-b487-46ab-8145-dcde0dbb9ea6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3a671f53-219a-47a0-9e6d-b97e0a032c03"
 >
 </ReqRef><Cases>
 <Case
  Name="TrainIntegrityConfirmed"
+ Guid="80908703-517b-405d-8f22-d1ad760f9266"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainIntegrity.Status in [
+<PreCondition
+ Guid="ce99678d-425b-4af1-9727-8bbb0efbfa96"
+>TIU.TrainIntegrity.Status in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
 ]</PreCondition></PreConditions>
-<Expression>Kernel.TrainIntegrity.SafeTrainLength</Expression>
+<Expression>TIU.TrainIntegrity.SafeTrainLength</Expression>
 </Case><Case
  Name="TrainIntegrityNotConfirmed"
+ Guid="fb2628eb-5e48-4888-961f-13a7650d95a8"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainIntegrity.Status not in [
+<PreCondition
+ Guid="bffaea8c-ddb4-46cd-b54d-aa8a567f8c89"
+>TIU.TrainIntegrity.Status not in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
-]
-</PreCondition></PreConditions>
+]</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message"
  Implemented="TRUE"
  Name="CreatePositionReport"
+ Guid="2c0dadbb-d07b-4fb5-8371-d890520965f8"
 >
 <ReqRef
  Id="366a126c-fe75-41b9-bb69-ee7464cf1272"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4bbcf8c6-5b17-4db9-9e87-4a8597785cda"
 >
 </ReqRef><ReqRef
  Id="9f9eccce-90aa-4339-8dff-74915b041b83"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b1e889d-6a01-4da4-a5c4-d38960146ab1"
 >
 </ReqRef><ReqRef
  Id="1b5d3174-e90a-42a4-8da3-c7ade895d5d2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dbce64e2-3e18-409c-a6ce-5a3696b7426f"
 >
 </ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="One BG"
+ Guid="85eff0a6-7e75-4fd3-9825-9e0a8fbf6192"
 >
 <PreConditions>
-<PreCondition>BTM.LRBG.Orientation != Orientation.Unknown</PreCondition></PreConditions>
+<PreCondition
+ Guid="f21e89a9-9a6b-412d-97ad-c87d8656875f"
+>BTM.LRBG.Orientation != Orientation.Unknown</PreCondition></PreConditions>
 <Expression>Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message
 {
     POSITION_REPORT=&gt; Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORT.Message
@@ -795,7 +960,7 @@ Kernel.TrainIntegrity.Status in [
         Q_DLRBG =&gt; Default.Q_DLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition ),
         L_DOUBTOVER =&gt; MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER), Messages.Q_SCALE._1_m_scaleC ),
         L_DOUBTUNDER =&gt; MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER), Messages.Q_SCALE._1_m_scaleC ),
-        Q_LENGTH =&gt; Kernel.TrainIntegrity.Status,
+        Q_LENGTH =&gt; TIU.TrainIntegrity.Status,
         L_TRAININT =&gt; MessageTypes.UnScaleLength ( FillTrainIntegrityInformation(), Messages.Q_SCALE._1_m_scaleC),
         V_TRAIN =&gt; MessageTypes.UnResolveSpeed ( Odometry.EstimatedSpeed, 5.0 ),
         Q_DIRTRAIN =&gt; Default.Q_DIRTRAIN ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection ),
@@ -806,6 +971,7 @@ Kernel.TrainIntegrity.Status in [
 }</Expression>
 </Case><Case
  Name="Two BGs"
+ Guid="84e46cd8-5e10-4316-bd28-38f4540024f7"
 >
 <Expression>Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message
 {
@@ -819,7 +985,7 @@ Kernel.TrainIntegrity.Status in [
         Q_DLRBG =&gt; Default.Q_DLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition ),
         L_DOUBTOVER =&gt; MessageTypes.UnScaleLength ( length =&gt; Kernel.ConfidenceInterval.ConfidenceInterval ( Default.ConfidenceInterval.L_DOUBTOVER ), scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
         L_DOUBTUNDER =&gt; MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval ( Default.ConfidenceInterval.L_DOUBTUNDER ), scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
-        Q_LENGTH =&gt; Kernel.TrainIntegrity.Status,
+        Q_LENGTH =&gt; TIU.TrainIntegrity.Status,
         L_TRAININT =&gt; MessageTypes.UnScaleLength ( FillTrainIntegrityInformation(), Messages.Q_SCALE._1_m_scaleC),
         V_TRAIN =&gt; MessageTypes.UnResolveSpeed ( Odometry.EstimatedSpeed, 5.0 ),
         Q_DIRTRAIN =&gt; Default.Q_DIRTRAIN ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection ),
@@ -832,54 +998,72 @@ Kernel.TrainIntegrity.Status in [
  Type="Messages.Q_STATUS"
  Implemented="TRUE"
  Name="FillQStatus"
+ Guid="b0cba2fa-7765-443d-8e8c-58a283e252bf"
 >
 <ReqRef
  Id="aa43ddb6-13a5-4b3e-bbcc-bf985bea4175"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="57691381-cc06-49af-9731-9d113138e4f1"
 >
 </ReqRef><ReqRef
  Id="6375b0de-0293-4d16-abdf-cb5f39a35143"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7039c91-c473-43fc-8e54-7f90563e2d58"
 >
 </ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Valid"
+ Guid="c8c46f4a-f314-473b-b5c5-96807953b04b"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
+<PreCondition
+ Guid="6d57e308-168e-4650-ab9e-85fca0dc39b8"
+>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>Messages.Q_STATUS.Valid</Expression>
 </Case><Case
  Name="Invalid"
+ Guid="238d8964-adb4-4c31-9096-ec53ada49684"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Invalid</PreCondition></PreConditions>
+<PreCondition
+ Guid="d494d339-f451-4df2-9360-f9b682c99f11"
+>Kernel.TrainPosition.Position.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Expression>Messages.Q_STATUS.Invalid</Expression>
 </Case><Case
  Name="Unknown"
+ Guid="17a9643e-ad95-4bf6-82f0-8a4c9dcf4f5d"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditions>
+<PreCondition
+ Guid="62c8fb34-1fe4-4b03-889f-f2f00ff6042b"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Expression>Messages.Q_STATUS.Unknown</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.MessageTypes.Distance"
  Implemented="TRUE"
  Name="FillDistance"
+ Guid="06a30396-059d-48ce-8307-81d1ef4237e7"
 >
 <ReqRef
  Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4db1506-206b-4a5e-8e4c-92086bebeefa"
 >
 </ReqRef><Cases>
 <Case
  Name="Distance unknown"
+ Guid="73cc0be4-5aa2-4f8a-a502-c66462dd8d01"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditions>
+<PreCondition
+ Guid="aaa7bc6b-badb-4e38-9d86-88f46f615afe"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Expression>MessageTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Distance known"
+ Guid="11ec8272-ab63-4022-aa13-66802b914a9b"
 >
 <Expression>MessageTypes.UnScaleDistance ( BTM.DistanceFromLRBG(), Messages.Q_SCALE._1_m_scaleC )</Expression>
 </Case></Cases>
@@ -887,64 +1071,85 @@ Kernel.TrainIntegrity.Status in [
 <Procedures>
 <Procedure
  Name="UpdatePositionReportParameters"
+ Guid="ab143d6e-de00-4e9d-a8c4-d91206bf6813"
 >
 <ReqRef
  Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5dcd3caf-a4bc-49ca-8144-1453dc04e357"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.POSITION_REPORT_PARAMETERS.Message"
  Name="Packet"
+ Guid="06599896-903e-405e-83bb-f4e083cfa85b"
 >
 </Parameter></Parameters>
 <Rules>
 <Rule
  Priority="UpdateOUT"
  Name="UpdatePositionReportParameters"
+ Guid="1c9f0244-63e5-4e91-ad5a-fbbff23becb8"
 >
 <ReqRef
  Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d3e93e00-1d08-4533-b43d-48bbe936161b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="UpdatePositionReportParameters"
+ Guid="f5b9ed0c-e0fd-4357-b628-f628b1584cdf"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>PositionReportParameters.DataState &lt;- Default.DataState.Valid</Action><Action>PositionReportParameters.Values.TimeInterval &lt;- BaseTypes.Time ( Packet.T_CYCLOC )</Action><Action>PositionReportParameters.Values.DistanceInterval &lt;- MessageTypes.QScaleDistance ( Packet.D_CYCLOC, Packet.Q_SCALE)</Action><Action>PositionReportParameters.Values.SpecialLocation &lt;- ERTMSSpecialLocationConverter(Packet.M_LOC)</Action></Actions>
+<Action
+ Guid="bb7d9795-fec8-42f3-a619-fb767260a89d"
+>PositionReportParameters.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="f3e0c810-5538-4ebf-b190-2e4fa7161c79"
+>PositionReportParameters.Values.TimeInterval &lt;- BaseTypes.Time ( Packet.T_CYCLOC )</Action><Action
+ Guid="bbed578f-bec0-45d5-a457-6c3e192bcb6b"
+>PositionReportParameters.Values.DistanceInterval &lt;- MessageTypes.QScaleDistance ( Packet.D_CYCLOC, Packet.Q_SCALE)</Action><Action
+ Guid="89290f52-e348-42cd-abb6-f2b2841c62fb"
+>PositionReportParameters.Values.SpecialLocation &lt;- ERTMSSpecialLocationConverter(Packet.M_LOC)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  Name="SendSOMPositionReport"
+ Guid="e3220a82-2afc-4b5c-a090-53f9bb36659b"
 >
 <ReqRef
  Id="aa43ddb6-13a5-4b3e-bbcc-bf985bea4175"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="767f0bfd-f651-4416-b879-f414c2f79cea"
 >
 </ReqRef><ReqRef
  Id="6375b0de-0293-4d16-abdf-cb5f39a35143"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4dccb90-05ce-4571-9f3f-3523708d0a38"
 >
 </ReqRef><Rules>
 <Rule
  Priority="Processing"
  Name="Send SOM position report"
+ Guid="e7b63b93-4c09-4afe-94e5-e1b9c3117f37"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Send SOM position report"
+ Guid="4e90bb91-75ed-4086-9d9f-15cbf50dc8d1"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EuroradioMessageOut.SOM_POSITION_REPORT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.SOM_POSITION_REPORT.Message
+<Action
+ Guid="ee5a0c21-596d-4adf-9f6e-f3f46a1437d7"
+>EuroradioMessageOut.SOM_POSITION_REPORT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.SOM_POSITION_REPORT.Message
 {
     L_MESSAGE =&gt; EMPTY,
     NID_ENGINE =&gt; EMPTY,
@@ -960,6 +1165,7 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SendPositionReport"
+ Guid="d551c0f2-3853-4033-86fa-bb55a4747107"
 >
 <Rules>
 <Rule
@@ -967,6 +1173,7 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Send position report"
+ Guid="82ce2511-2a70-4ca7-8582-7a7414817805"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -974,11 +1181,14 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Send position report"
+ Guid="b7be9954-2e9c-4bfa-b6d1-db8342f482c8"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EuroradioMessageOut.TRAIN_POSITION_REPORT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.TRAIN_POSITION_REPORT.Message
+<Action
+ Guid="79dbebec-3f39-4331-b8b2-edabf9c5149b"
+>EuroradioMessageOut.TRAIN_POSITION_REPORT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.TRAIN_POSITION_REPORT.Message
 {
     L_MESSAGE =&gt; EMPTY,
     NID_ENGINE =&gt; EMPTY,
@@ -997,14 +1207,17 @@ Kernel.TrainIntegrity.Status in [
  VariableMode="Incoming"
  Implemented="TRUE"
  Name="PositionReportParameters"
+ Guid="113484a5-3bf0-4901-ab04-48f688af408f"
 >
 <ReqRef
  Id="ae550cab-c867-4e9d-af2c-8e62dbe27545"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b20d1930-a5f4-4f22-a28c-e015ba351cf6"
 >
 </ReqRef><ReqRef
  Id="a216803e-5575-472e-bbd0-bfaa483382b7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2f3e7607-6e0c-40e9-bb6f-ed3de0a37da6"
 >
 </ReqRef><Comment>This variable contains the position report parameters given by the RBC.</Comment>
 </Variable><Variable
@@ -1013,26 +1226,32 @@ Kernel.TrainIntegrity.Status in [
  VariableMode="Internal"
  Implemented="TRUE"
  Name="PositionReportEventsTracker"
+ Guid="552bfc53-cebe-4c1a-ab8d-32611eaaf102"
 >
 <ReqRef
  Id="0310893d-d293-4089-ad7f-c6e74d25d402"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cc2b2b4f-00c5-417b-a66d-aeca2e1653e7"
 >
 </ReqRef><ReqRef
  Id="51d5337f-1430-4900-a7a0-9fc794f74fdb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c94e606a-d1fa-47a7-8629-9c5357ec787a"
 >
 </ReqRef><ReqRef
  Id="08ae9142-b051-4a16-ad2f-f7e7d927a51e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0d99f3f1-d51e-474c-913c-587bb9e4f5cb"
 >
 </ReqRef><ReqRef
  Id="5e354f4a-2bd0-458a-983a-75be865356d0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bd315725-10bd-4e22-bf64-2b3a62777299"
 >
 </ReqRef><ReqRef
  Id="a73c2ac0-c4f3-4593-b90c-ba4ee8cc4957"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0908ce11-0caf-4890-bb9a-e7549dde9e95"
 >
 </ReqRef><Comment>This variable is used to detect changes of kernel variables (mode, level etc) that can require a position report to RBC.</Comment>
 </Variable><Variable
@@ -1041,18 +1260,22 @@ Kernel.TrainIntegrity.Status in [
  VariableMode="Internal"
  Implemented="TRUE"
  Name="LastPositionReport"
+ Guid="67498216-d657-44a5-a0b7-6e7cd8819a67"
 >
 <ReqRef
  Id="9bce1dcb-f670-481c-9012-c9772b746a32"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3b750e2c-a616-4c0e-87e9-e50e0e978810"
 >
 </ReqRef><ReqRef
  Id="2ad61dc3-1f8d-4e29-888b-5d0a9df1e5cf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0364ae66-a04f-4638-8cc1-ef019c94e1c7"
 >
 </ReqRef><ReqRef
  Id="3c43c95f-9a2d-4244-a81b-8ce6833a6a96"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6a30ea7e-c3ba-4759-8cb8-96a7dda20135"
 >
 </ReqRef><Comment>Indicates when and where the last position report was sent.</Comment>
 </Variable><Variable
@@ -1061,10 +1284,12 @@ Kernel.TrainIntegrity.Status in [
  VariableMode="Internal"
  Implemented="TRUE"
  Name="NumberOfSentReportRepetitions"
+ Guid="d96b5ab0-4030-4ae6-839f-1f4ca3db83e7"
 >
 <ReqRef
  Id="0df24273-c216-4ef5-8d1d-23e83f6d6c2d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d40edde6-c9f0-4baf-839f-22175651a6e4"
 >
 </ReqRef><Comment>Indicates the number of sent position report repetitions.</Comment>
 </Variable></Variables>
@@ -1073,12 +1298,14 @@ Kernel.TrainIntegrity.Status in [
  Priority="CleanUp"
  NeedsRequirement="FALSE"
  Name="PositionReportEventsTrackerCleanUp"
+ Guid="728c26b7-570e-4d32-b6cb-6af762241ac4"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="PositionReportEventsCleanUp"
+ Guid="5a196179-422d-4e6b-becf-bf5ada482ed1"
 >
 <PreConditions>
 </PreConditions>
@@ -1090,6 +1317,7 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CommunicationSessionState"
+ Guid="fa75f6c0-aad1-4de7-adb8-492e75acb2e8"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -1097,17 +1325,23 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CommunicationSessionState"
+ Guid="09614cfa-a405-4baa-b9cc-d4b95df5748d"
 >
 <PreConditions>
-<PreCondition>PositionReportEventsTracker.HasActiveSession != EURORADIO.HasActiveSession()</PreCondition></PreConditions>
+<PreCondition
+ Guid="b5b3bdcf-5b20-47eb-a2c1-2cc56eeffb29"
+>PositionReportEventsTracker.HasActiveSession != EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
-<Action>PositionReportEventsTracker.HasActiveSession &lt;- EURORADIO.HasActiveSession()</Action></Actions>
+<Action
+ Guid="f253a472-4a0b-4830-9daf-dc9f1d297a47"
+>PositionReportEventsTracker.HasActiveSession &lt;- EURORADIO.HasActiveSession()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Level"
+ Guid="013b22f0-ed85-42da-8942-a930b0fde9a8"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -1115,17 +1349,23 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Level"
+ Guid="6d49b62f-15e0-4aa3-b377-d0af1e9fb393"
 >
 <PreConditions>
-<PreCondition>PositionReportEventsTracker.Level != Kernel.Level.Value</PreCondition></PreConditions>
+<PreCondition
+ Guid="49677e46-1ad5-40a9-af59-160a893d7fa9"
+>PositionReportEventsTracker.Level != Kernel.Level.Value</PreCondition></PreConditions>
 <Actions>
-<Action>PositionReportEventsTracker.Level &lt;- Kernel.Level.Value</Action></Actions>
+<Action
+ Guid="515acf5a-9876-4a6f-a73b-ca4bf8d4188f"
+>PositionReportEventsTracker.Level &lt;- Kernel.Level.Value</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Mode"
+ Guid="f2ebd5e5-3246-4fba-8332-76750bd830db"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -1133,17 +1373,23 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Mode"
+ Guid="0a5bf594-ed6f-446e-80d9-db262c4517c7"
 >
 <PreConditions>
-<PreCondition>PositionReportEventsTracker.Mode != Kernel.Mode</PreCondition></PreConditions>
+<PreCondition
+ Guid="5db42a2c-f937-4f32-a925-9c7b4f8337fd"
+>PositionReportEventsTracker.Mode != Kernel.Mode</PreCondition></PreConditions>
 <Actions>
-<Action>PositionReportEventsTracker.Mode &lt;- Kernel.Mode</Action></Actions>
+<Action
+ Guid="a40ed2af-fb9d-49e3-a621-997105f90762"
+>PositionReportEventsTracker.Mode &lt;- Kernel.Mode</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TrainIntegrity"
+ Guid="f163185a-7782-4814-bf5d-1e1dafbe8b9f"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -1151,17 +1397,23 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TrainIntegrity"
+ Guid="2d86582e-de31-4fab-a563-66eb3d6a1694"
 >
 <PreConditions>
-<PreCondition>PositionReportEventsTracker.TrainIntegrityStatus != Kernel.TrainIntegrity.Status</PreCondition></PreConditions>
+<PreCondition
+ Guid="e9d87099-edc8-4dea-bdd4-ab5fd6b85fae"
+>PositionReportEventsTracker.TrainIntegrityStatus != TIU.TrainIntegrity.Status</PreCondition></PreConditions>
 <Actions>
-<Action>PositionReportEventsTracker.TrainIntegrityStatus &lt;- Kernel.TrainIntegrity.Status</Action></Actions>
+<Action
+ Guid="03674022-99fb-4c9a-913c-c3686ac1025e"
+>PositionReportEventsTracker.TrainIntegrityStatus &lt;- TIU.TrainIntegrity.Status</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Speed"
+ Guid="a38605ca-42a6-452b-a2cd-0b106c885156"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -1169,17 +1421,23 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Speed"
+ Guid="afbe17aa-9778-4985-adbf-7ef3f092648e"
 >
 <PreConditions>
-<PreCondition>PositionReportEventsTracker.Speed != Odometry.EstimatedSpeed</PreCondition></PreConditions>
+<PreCondition
+ Guid="4ff8ab1e-553f-4bc5-9e31-9cdf9c890e0a"
+>PositionReportEventsTracker.Speed != Odometry.EstimatedSpeed</PreCondition></PreConditions>
 <Actions>
-<Action>PositionReportEventsTracker.Speed &lt;- Odometry.EstimatedSpeed</Action></Actions>
+<Action
+ Guid="f06ea1a9-ebb0-4f14-89bd-3d61fbc07ba2"
+>PositionReportEventsTracker.Speed &lt;- Odometry.EstimatedSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SpecialLocation"
+ Guid="49997566-1993-4362-a440-57073f46cf9b"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -1187,17 +1445,27 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SpecialLocation"
+ Guid="0aeae08a-4952-4b7e-8391-3a741e289b7d"
 >
 <PreConditions>
-<PreCondition>PositionReportParameters.Values.SpecialLocation == PositionReportSpecialLocation.Now</PreCondition></PreConditions>
+<PreCondition
+ Guid="01e9965d-e63e-492a-8fd6-d2abb46ca74d"
+>PositionReportParameters.Values.SpecialLocation == PositionReportSpecialLocation.Now</PreCondition></PreConditions>
 <Actions>
-<Action>PositionReportParameters.Values.SpecialLocation &lt;- PositionReportSpecialLocation.DoNotSend</Action><Action>LastPositionReport.Time &lt;- Kernel.CurrentTime</Action><Action>LastPositionReport.Position &lt;- Odometry.NominalDistance</Action></Actions>
+<Action
+ Guid="ce1b2dac-1a95-4367-9e31-0328b192cae8"
+>PositionReportParameters.Values.SpecialLocation &lt;- PositionReportSpecialLocation.DoNotSend</Action><Action
+ Guid="465e9a0b-308d-4a86-a7e3-75ee18e0f703"
+>LastPositionReport.Time &lt;- Kernel.CurrentTime</Action><Action
+ Guid="6541046c-0889-4cf3-9a50-e0778f68cb93"
+>LastPositionReport.Position &lt;- Odometry.NominalDistance</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="PositionReportTimeInterval"
+ Guid="9e80ddfb-8e45-4e20-a552-20cfbf31531e"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -1205,17 +1473,23 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="PositionReportTimeInterval"
+ Guid="772bf26c-aac0-448e-8a1f-c590508bb7cf"
 >
 <PreConditions>
-<PreCondition>SendReportDueToPositionReportTimeReached()</PreCondition></PreConditions>
+<PreCondition
+ Guid="06f45f9c-043b-4bbc-b95c-80f3dff05f14"
+>SendReportDueToPositionReportTimeReached()</PreCondition></PreConditions>
 <Actions>
-<Action>LastPositionReport.Time &lt;- Kernel.CurrentTime</Action></Actions>
+<Action
+ Guid="d52d054b-2c95-4bcb-b1f0-f2cb70ee9265"
+>LastPositionReport.Time &lt;- Kernel.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="PositionReportDistanceInterval"
+ Guid="d04487bb-928e-4ac0-a152-e5eee431f3c9"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -1223,11 +1497,16 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="PositionReportDistanceInterval"
+ Guid="876d4ee0-e43f-44f6-913c-c54346fcd6d9"
 >
 <PreConditions>
-<PreCondition>SendReportDueToPositionReportDistanceReached()</PreCondition></PreConditions>
+<PreCondition
+ Guid="5dfc878b-69eb-4c7a-bb0e-ce7e410d873a"
+>SendReportDueToPositionReportDistanceReached()</PreCondition></PreConditions>
 <Actions>
-<Action>LastPositionReport.Position &lt;- Odometry.NominalDistance</Action></Actions>
+<Action
+ Guid="62ca8361-552c-4f8d-a5af-7a2d6bd64455"
+>LastPositionReport.Position &lt;- Odometry.NominalDistance</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1235,26 +1514,32 @@ Kernel.TrainIntegrity.Status in [
  Priority="Processing"
  Implemented="TRUE"
  Name="Send position report"
+ Guid="e1127980-df0f-4a33-8d9d-ebef6c03e08b"
 >
 <ReqRef
  Id="ff0f5831-c94a-4b39-b850-e16770555201"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="412cab51-96e9-4afa-a5d2-48259bb7b203"
 >
 </ReqRef><ReqRef
  Id="ae550cab-c867-4e9d-af2c-8e62dbe27545"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e17fa22-8cab-4cdc-87e0-9a34f82195b3"
 >
 </ReqRef><ReqRef
  Id="1e84c5a2-c916-45da-94c9-cdf6585f39c9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3cdcb436-dcfc-4f18-8b8e-e79447be3418"
 >
 </ReqRef><ReqRef
  Id="0dc5d937-27a9-4c96-a97d-dfdbe75c85d9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7a28d389-5442-49e3-8656-1c779cf41eba"
 >
 </ReqRef><ReqRef
  Id="cd15246a-5c87-478b-bc9e-36ed9f2f9127"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ff53960-e822-431f-b184-d3682bad6225"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1262,33 +1547,51 @@ Kernel.TrainIntegrity.Status in [
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Send position report"
+ Guid="da2401e1-0c86-4c1f-88d9-c40eb40850f0"
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>SendReportNow()</PreCondition></PreConditions>
+<PreCondition
+ Guid="c0cd5727-43a9-490a-adb3-b7ab7cfac417"
+>SendReportNow()</PreCondition></PreConditions>
 <Actions>
-<Action>SendPositionReport()</Action></Actions>
+<Action
+ Guid="caed2442-a4dd-49e2-9bb4-55a01c80b907"
+>SendPositionReport()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
  Verified="TRUE"
  Name="Send report due to mode change"
+ Guid="97905d43-d953-42a7-984d-22f5c47dd4f6"
 >
 <ReqRef
  Id="fbaaf410-a59f-40cd-b972-aa1e84116831"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb1705dd-c8fc-49d2-914a-30d6ffd6a5cb"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="Send report due to mode change"
+ Guid="a87a0f40-5c61-4709-bb1e-3eff84c2ebb3"
 >
 <PreConditions>
-<PreCondition>SendReportDueToModeChange()</PreCondition><PreCondition>NOT HasActiveSession()</PreCondition><PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition>Kernel.HandleModeChange not in Kernel.HandleModeChange.EndOfMission</PreCondition></PreConditions>
+<PreCondition
+ Guid="0d631197-e276-4301-8fdf-95969ecff022"
+>SendReportDueToModeChange()</PreCondition><PreCondition
+ Guid="3851743c-a5c3-471c-b027-c563a75cabc0"
+>NOT HasActiveSession()</PreCondition><PreCondition
+ Guid="9c52a0e8-c2dd-498a-80b9-94ee30da49b3"
+>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
+ Guid="b6fefde5-0b7b-4b82-a3f6-8c30fabd8a56"
+>Kernel.HandleModeChange not in Kernel.HandleModeChange.EndOfMission</PreCondition></PreConditions>
 <Actions>
-<Action>OpenRBCSession()</Action></Actions>
+<Action
+ Guid="b1aff9d2-712c-4f6e-acf7-546a1d29a74f"
+>OpenRBCSession()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

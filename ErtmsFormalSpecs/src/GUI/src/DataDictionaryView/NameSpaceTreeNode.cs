@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace GUI.DataDictionaryView
 {
-    public class NameSpaceTreeNode : DataTreeNode<DataDictionary.Types.NameSpace>
+    public class NameSpaceTreeNode : ModelElementTreeNode<DataDictionary.Types.NameSpace>
     {
         private class ItemEditor : NamedEditor
         {
@@ -102,13 +102,9 @@ namespace GUI.DataDictionaryView
             return new ItemEditor();
         }
 
-        /// <summary>
-        /// Adds a new range type
-        /// </summary>
-        /// <param name="range"></param>
-        public void AddRangeType(DataDictionary.Types.Range range)
+        private void AddNamespaceHandler(object sender, EventArgs args)
         {
-            ranges.AddRange(range);
+            subNameSpaces.AddHandler(sender, args);
         }
 
         private void AddRangeHandler(object sender, EventArgs args)
@@ -116,42 +112,9 @@ namespace GUI.DataDictionaryView
             ranges.AddHandler(sender, args);
         }
 
-        /// <summary>
-        /// Adds a new enumeration type
-        /// </summary>
-        /// <param name="enumeration"></param>
-        public void AddEnumeration(DataDictionary.Types.Enum enumeration)
-        {
-            enumerations.AddEnum(enumeration);
-        }
-
         private void AddEnumerationHandler(object sender, EventArgs args)
         {
             enumerations.AddHandler(sender, args);
-        }
-
-        /// <summary>
-        /// Adds a new collection type
-        /// </summary>
-        /// <param name="collection"></param>
-        public void AddCollection(DataDictionary.Types.Collection collection)
-        {
-            collections.AddCollection(collection);
-        }
-
-        private void AddCollectionHandler(object sender, EventArgs args)
-        {
-            collections.AddHandler(sender, args);
-        }
-
-        /// <summary>
-        /// Adds a new structure
-        /// </summary>
-        /// <param name="structure"></param>
-        /// <returns>the corresponding node</returns>
-        public StructureTreeNode AddStructure(DataDictionary.Types.Structure structure)
-        {
-            return structures.AddStructure(structure);
         }
 
         private void AddStructureHandler(object sender, EventArgs args)
@@ -159,14 +122,9 @@ namespace GUI.DataDictionaryView
             structures.AddHandler(sender, args);
         }
 
-        /// <summary>
-        /// Adds a new state machine
-        /// </summary>
-        /// <param name="stateMachine"></param>
-        /// <returns>the corresponding node</returns>
-        public StateMachineTreeNode AddStateMachine(DataDictionary.Types.StateMachine stateMachine)
+        private void AddCollectionHandler(object sender, EventArgs args)
         {
-            return stateMachines.AddStateMachine(stateMachine);
+            collections.AddHandler(sender, args);
         }
 
         private void AddStateMachineHandler(object sender, EventArgs args)
@@ -174,34 +132,24 @@ namespace GUI.DataDictionaryView
             stateMachines.AddHandler(sender, args);
         }
 
-        /// <summary>
-        /// Adds a new function
-        /// </summary>
-        /// <param name="structure"></param>
-        /// <returns>the corresponding node</returns>
-        public FunctionTreeNode AddFunction(DataDictionary.Functions.Function function)
-        {
-            return functions.AddFunction(function);
-        }
-
         private void AddFunctionHandler(object sender, EventArgs args)
         {
             functions.AddHandler(sender, args);
         }
 
-        /// <summary>
-        /// Adds a new variable
-        /// </summary>
-        /// <param name="variable"></param>
-        /// <returns>the corresponding node</returns>
-        public VariableTreeNode AddVariable(DataDictionary.Variables.Variable variable)
+        private void AddProcedureHandler(object sender, EventArgs args)
         {
-            return variables.AddVariable(variable);
+            procedures.AddHandler(sender, args);
         }
 
         private void AddVariableHandler(object sender, EventArgs args)
         {
             variables.AddHandler(sender, args);
+        }
+
+        private void AddRuleHandler(object sender, EventArgs args)
+        {
+            rules.AddHandler(sender, args);
         }
 
 
@@ -233,20 +181,25 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Add range", new EventHandler(AddRangeHandler)));
-            retVal.Add(new MenuItem("Add enumeration", new EventHandler(AddEnumerationHandler)));
-            retVal.Add(new MenuItem("Add collection", new EventHandler(AddCollectionHandler)));
-            retVal.Add(new MenuItem("Add structure", new EventHandler(AddStructureHandler)));
-            retVal.Add(new MenuItem("Add state machine", new EventHandler(AddStateMachineHandler)));
-            retVal.Add(new MenuItem("Add function", new EventHandler(AddFunctionHandler)));
-            retVal.Add(new MenuItem("Add variable", new EventHandler(AddVariableHandler)));
-            retVal.Add(new MenuItem("-"));
+            MenuItem newItem = new MenuItem("Add...");
+            newItem.MenuItems.Add(new MenuItem("Namespace", new EventHandler(AddNamespaceHandler)));
+            newItem.MenuItems.Add(new MenuItem("Range", new EventHandler(AddRangeHandler)));
+            newItem.MenuItems.Add(new MenuItem("Enumeration", new EventHandler(AddEnumerationHandler)));
+            newItem.MenuItems.Add(new MenuItem("Structure", new EventHandler(AddStructureHandler)));
+            newItem.MenuItems.Add(new MenuItem("Collection", new EventHandler(AddCollectionHandler)));
+            newItem.MenuItems.Add(new MenuItem("State machine", new EventHandler(AddStateMachineHandler)));
+            newItem.MenuItems.Add(new MenuItem("Function", new EventHandler(AddFunctionHandler)));
+            newItem.MenuItems.Add(new MenuItem("Procedure", new EventHandler(AddProcedureHandler)));
+            newItem.MenuItems.Add(new MenuItem("Variable", new EventHandler(AddVariableHandler)));
+            newItem.MenuItems.Add(new MenuItem("Rule", new EventHandler(AddRuleHandler)));
+            retVal.Add(newItem);
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Functional view", new EventHandler(ShowFunctionalViewHandler)));
-
+            retVal.AddRange(base.GetMenuItems());
+            retVal.Insert(5, new MenuItem("-"));
+            retVal.Insert(6, new MenuItem("Functional view", new EventHandler(ShowFunctionalViewHandler)));
+            
             return retVal;
         }
 

@@ -13,11 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Collections.Generic;
-using DataDictionary.Rules;
-
 namespace DataDictionary.Interpreter.Statement
 {
+    using System.Collections.Generic;
+    using DataDictionary.Rules;
+    using DataDictionary.Interpreter.Filter;
+
     public class VariableUpdateStatement : Statement
     {
         /// <summary>
@@ -56,11 +57,11 @@ namespace DataDictionary.Interpreter.Statement
             if (retVal)
             {
                 // VariableIdentification
-                VariableIdentification.SemanticAnalysis(instance, Filter.IsLeftSide);
+                VariableIdentification.SemanticAnalysis(instance, IsLeftSide.INSTANCE);
                 StaticUsage.AddUsages(VariableIdentification.StaticUsage, Usage.ModeEnum.Write);
 
                 // Expression
-                Expression.SemanticAnalysis(instance, Filter.IsRightSide);
+                Expression.SemanticAnalysis(instance, IsRightSide.INSTANCE);
                 StaticUsage.AddUsages(Expression.StaticUsage, Usage.ModeEnum.Read);
             }
 

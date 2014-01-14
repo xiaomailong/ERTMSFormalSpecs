@@ -1,5 +1,6 @@
 <NameSpace
  Name="MAGNETIC_SHOE_BRAKE_STATUS"
+ Guid="0b8ce63c-bf66-4225-981f-97cef01ff38a"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,35 +9,41 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="5e6d06f4-1d53-4256-8b39-c32e3c15fc6b"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="fbf572b6-d11b-4f87-9085-9c9fc548742a"
 >
 </ReqRef><ReqRef
  Id="a55faf1c-5e2a-4b5a-ad4c-8745c9ca8eb9"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a61dd32d-d635-45f0-842d-c215eb8a38f5"
 >
 </ReqRef><Comment>This message allows to transmit the magnetic shoe brake status</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="d364de50-5c87-40e1-9f1d-dde6ed983ac8"
 >
 </StructureElement><StructureElement
  TypeName="M_MSB_STATUS"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_MSB_STATUS"
+ Guid="fa700eb3-2651-4fb0-992c-8cdf0d1954b6"
 >
 <ReqRef
  Id="27861d88-4426-497a-a549-8c55f43b0b75"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="68caf385-6765-4c31-92b1-0b9c690b2cde"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

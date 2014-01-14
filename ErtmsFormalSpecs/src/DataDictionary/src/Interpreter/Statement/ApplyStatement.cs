@@ -13,11 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Collections.Generic;
-using DataDictionary.Rules;
-
 namespace DataDictionary.Interpreter.Statement
 {
+    using System.Collections.Generic;
+    using DataDictionary.Rules;
+    using Interpreter.Filter;
+
     public class ApplyStatement : Statement, Utils.ISubDeclarator
     {
         /// <summary>
@@ -104,7 +105,7 @@ namespace DataDictionary.Interpreter.Statement
             if (retVal)
             {
                 // ListExpression
-                ListExpression.SemanticAnalysis(instance, Filter.IsRightSide);
+                ListExpression.SemanticAnalysis(instance, IsRightSide.INSTANCE);
                 StaticUsage.AddUsages(ListExpression.StaticUsage, Usage.ModeEnum.ReadAndWrite);
 
                 Types.Collection collectionType = ListExpression.GetExpressionType() as Types.Collection;

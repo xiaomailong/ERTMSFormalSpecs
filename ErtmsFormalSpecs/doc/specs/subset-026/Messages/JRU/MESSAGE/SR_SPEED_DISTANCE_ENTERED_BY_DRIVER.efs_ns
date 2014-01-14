@@ -1,5 +1,6 @@
 <NameSpace
  Name="SR_SPEED_DISTANCE_ENTERED_BY_DRIVER"
+ Guid="d52270d1-826c-4598-a87b-84347602cf96"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,47 +9,55 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="39c906ad-9481-4fea-bd2f-8937ba96a773"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2eac7e18-9701-4b01-b730-302c4d69a38d"
 >
 </ReqRef><ReqRef
  Id="de5dad40-0b2a-4819-887a-6652ed89cc50"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c8156fe2-016a-436f-93cc-cd2affd0453d"
 >
 </ReqRef><Comment>This message contains the change of the SR Speed or Distance entered by the driver</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="d1de3266-780d-4e1a-80a4-0d23a4acf6df"
 >
 </StructureElement><StructureElement
  TypeName="D_SR"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_SR"
+ Guid="39b6546c-f6df-465f-8517-605fa0601138"
 >
 <ReqRef
  Id="f768919e-797b-4f8f-8c25-ff5b96befa74"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c03c1068-4136-4cff-88c3-f4f775ce7c2f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="V_SR"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_SR"
+ Guid="0d13e607-12a8-4d49-bdc7-69acb4547b37"
 >
 <ReqRef
  Id="2774f89b-bcff-4741-ac90-8537e331db11"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d7c81d3f-7c85-4c56-ba55-d753f5bff7a9"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

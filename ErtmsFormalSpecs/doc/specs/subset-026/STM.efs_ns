@@ -4,6 +4,7 @@
  Width="100"
  Height="50"
  Name="STM"
+ Guid="379a7d78-a7e1-4553-a269-32408f2c73d4"
 >
 <NameSpaces>
 </NameSpaces>
@@ -11,14 +12,17 @@
 <Structure
  Implemented="TRUE"
  Name="SpeedSupervision"
+ Guid="4b99c30c-b634-4167-8cb2-3a6d3ac661e2"
 >
 <ReqRef
  Id="8321661d-73c4-49fe-acb7-74e4bc41bd37"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f1aa3c91-6a29-4269-8a5b-b598aaeb3c1c"
 >
 </ReqRef><ReqRef
  Id="5b427521-61cb-409a-8485-a942fda2760a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1064f85-4d4a-4cab-ae87-44785ec1d081"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -28,6 +32,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Speed"
+ Guid="e1153308-d937-4877-b878-7df5ee254273"
 >
 </StructureElement><StructureElement
  TypeName="Boolean"
@@ -36,6 +41,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HasToBeSupervised"
+ Guid="0a399fa6-d5e6-4c7e-9dde-373648eb8915"
 >
 </StructureElement></Structure></Structures>
 <Functions>
@@ -43,35 +49,44 @@
  Type="Default.BaseTypes.Speed"
  Implemented="TRUE"
  Name="MaxSpeedRestrictions"
+ Guid="3a1c538f-da90-4d66-98bc-93304ce2e950"
 >
 <ReqRef
  Id="8321661d-73c4-49fe-acb7-74e4bc41bd37"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="145265aa-a55f-4074-bae4-a2c637a48097"
 >
 </ReqRef><ReqRef
  Id="bfa09769-fb03-456f-b92b-14ab4cf7977b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="97136f73-1c6c-4efc-8ae4-5e0d52fcffeb"
 >
 </ReqRef><ReqRef
  Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="090587f1-4afa-451d-b073-2669807f9f85"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="9df51a13-24b6-4187-8bdb-2d39eee2d8b2"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SuperviseMaxSpeed"
+ Guid="fe4e274f-5aa6-4c8c-a6bf-0cf782b34410"
 >
 <PreConditions>
-<PreCondition>MaxSpeed.HasToBeSupervised</PreCondition></PreConditions>
+<PreCondition
+ Guid="297bfc3f-bce1-4b5a-8541-c5fd5eb96e78"
+>MaxSpeed.HasToBeSupervised</PreCondition></PreConditions>
 <Expression>MaxSpeed.Speed</Expression>
 </Case><Case
  Name="DoNotSuperviseMaxSpeed"
+ Guid="3c26e129-7c47-434b-be1b-d4b6949d6316"
 >
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
@@ -79,35 +94,44 @@
  Type="Default.BaseTypes.Speed"
  Implemented="TRUE"
  Name="SystemSpeedRestrictions"
+ Guid="901adcef-ec5c-47dc-aba0-280c7153d1db"
 >
 <ReqRef
  Id="5b427521-61cb-409a-8485-a942fda2760a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b3e39bd4-8419-4990-aa44-efa5b5273e76"
 >
 </ReqRef><ReqRef
  Id="bfa09769-fb03-456f-b92b-14ab4cf7977b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b1ce4baf-77a1-42ff-97e2-74b99137080d"
 >
 </ReqRef><ReqRef
  Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ef4a2478-bf06-454e-a72b-1f8842146333"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="00b68501-92de-4a24-96cb-7be1f1519e73"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SuperviseSystemSpeed"
+ Guid="4464ff6b-d5fd-4928-9264-d7d9ff5364f1"
 >
 <PreConditions>
-<PreCondition>SystemSpeed.HasToBeSupervised</PreCondition></PreConditions>
+<PreCondition
+ Guid="4c989159-f357-4668-99e2-18f8f754f3b3"
+>SystemSpeed.HasToBeSupervised</PreCondition></PreConditions>
 <Expression>SystemSpeed.Speed</Expression>
 </Case><Case
  Name="DoNotSuperviseSystemSpeed"
+ Guid="3b4d3bb6-e32d-4a73-b260-c88d695510ba"
 >
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
@@ -118,10 +142,12 @@
  VariableMode="Incoming"
  Implemented="TRUE"
  Name="MaxSpeed"
+ Guid="cd306acf-ec45-450c-9442-f5435e955ccf"
 >
 <ReqRef
  Id="8321661d-73c4-49fe-acb7-74e4bc41bd37"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9c063577-63b8-4e46-b811-26ef156b0d5a"
 >
 </ReqRef><Comment>Allows the STM, for national reasons unknown to the ETCS On-board or ERTMS Trackside, to request a given train speed at the level transition border in order to have a smooth transition.</Comment>
 </Variable><Variable
@@ -129,10 +155,12 @@
  VariableMode="Incoming"
  Implemented="TRUE"
  Name="SystemSpeed"
+ Guid="f98047fd-4c78-4c1e-ba72-62451ab47f22"
 >
 <ReqRef
  Id="5b427521-61cb-409a-8485-a942fda2760a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d7f71af-6bc7-4e68-9460-ebc1f325b3e3"
 >
 </ReqRef><Comment>This speed together with the &quot;STM system distance&quot; is to allow the STM, to request a given train speed at a given position (&quot;STM system distance&quot;) before the level transition border in order to be able to detect its national trackside.</Comment>
 </Variable></Variables>

@@ -1,5 +1,6 @@
 <NameSpace
  Name="BALISE_GROUP_ERROR"
+ Guid="5828f34b-5f07-4398-a0f6-b9f154680c60"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,59 +9,69 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="d53fb100-f108-4a2b-8d9e-46474b3d4b7a"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="3e0f3ec0-04b0-477a-8c48-b9d3ff7a5642"
 >
 </ReqRef><ReqRef
  Id="ccd7ef95-5c65-43d9-b86b-bbca24597cab"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="825a9fe1-11bc-4e54-80df-a35238d44ff5"
 >
 </ReqRef><Comment>This message contains the balise group related error as identified by M_ERROR.</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="1d1990cf-ba90-468e-93f6-aac9a13052e9"
 >
 </StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_C"
+ Guid="da05ffff-e747-4f3f-a6b0-c509b28ab662"
 >
 <ReqRef
  Id="8188c39d-5a75-462e-bc91-e5b619c08830"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="28bd47b9-c6bb-4d31-9b82-222ef417f0d8"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_ERRORBG"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_ERRORBG"
+ Guid="66c01081-fdd2-4c56-b704-fd333dcb5c85"
 >
 <ReqRef
  Id="cad27005-1141-498f-8aa4-e246c2d7d024"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8536407d-5c3e-4e0d-a1a3-7e07d88860b4"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_ERROR"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_ERROR"
+ Guid="e3e72cf9-4da3-422d-9c6e-88a0b6960909"
 >
 <ReqRef
  Id="50903bc8-6206-4f86-b8c2-bb1a49dced13"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ac1e8f08-9401-487c-ac7e-d75541ce88ee"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

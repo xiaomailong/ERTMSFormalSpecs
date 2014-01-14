@@ -377,15 +377,15 @@ namespace GUI
         public void AfterSelectHandler(object sender, TreeViewEventArgs e)
         {
             Selected = e.Node as BaseTreeNode;
+            currentSelection = Selected;
             if (Selected != null)
             {
+                Selected.SelectionChanged(true);
                 if (KeepTrackOfSelection)
                 {
                     GUIUtils.MDIWindow.HandleSelection(Selected.Model);
                 }
-                Selected.SelectionChanged(true);
             }
-            currentSelection = Selected;
         }
 
         /// <summary>

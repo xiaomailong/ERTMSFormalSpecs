@@ -1,5 +1,6 @@
 <NameSpace
  Name="TELEGRAM_FROM_BALISE"
+ Guid="3ec96f34-a904-447f-b239-aca8d31492df"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,35 +9,41 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="b3b05e28-1a65-4936-acb4-cdf3be5cca20"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9c796e81-7e74-4905-8e9e-bbbee5c1aa64"
 >
 </ReqRef><ReqRef
  Id="4ab81fb1-24cc-45db-8eae-dc76d5cec96f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="914f29ba-62da-4089-b6ab-ffba77aacfa7"
 >
 </ReqRef><Comment>This message is sent after receiving a telegram from a balise</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="9d5bf19d-b3a7-44a4-8d54-26241710d878"
 >
 </StructureElement><StructureElement
  TypeName="EUROBALISE.Message"
- Default="0"
+ Default=""
  Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TELEGRAM"
+ Guid="f581d295-3e06-4eb8-b624-4e0052d4fef6"
 >
 <ReqRef
  Id="d5f77b0d-de50-41bd-8a16-2a2d0f8d98d9"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="dc2b351c-d87f-417c-8c3d-e39f0e37766f"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

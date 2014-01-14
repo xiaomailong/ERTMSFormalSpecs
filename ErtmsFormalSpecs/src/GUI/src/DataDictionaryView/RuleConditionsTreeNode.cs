@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace GUI.DataDictionaryView
 {
-    public class RuleConditionsTreeNode : DataTreeNode<DataDictionary.Rules.Rule>
+    public class RuleConditionsTreeNode : ModelElementTreeNode<DataDictionary.Rules.Rule>
     {
         private class ItemEditor : NamedEditor
         {
@@ -120,7 +120,7 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
             retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
 

@@ -1,5 +1,6 @@
 <NameSpace
  Name="PERMITTED_BRAKING_DISTANCE_INFORMATION"
+ Guid="a56e5171-fb96-4e06-893e-70dee8ca33ea"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="17518b61-147f-4e43-b7f3-e1c11d5ed20a"
 >
 <ReqRef
  Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e795871a-d647-4d6e-a46c-59f1b7092e22"
 >
 </ReqRef><ReqRef
  Id="39016576-7686-4e14-9c1a-13bd7dd28045"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cb22cda3-027e-488b-ab06-9f4732cadd4e"
 >
 </ReqRef><Comment>This packet requests the on-board calculation of speed restrictions which ensure a given permitted brake distance in case of an EB, or SB, intervention</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="b54fc09e-21f6-448f-92f4-de337d93e7cb"
 >
 <ReqRef
  Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5fe827c7-b278-4b90-8672-1a0b03bbbe7a"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="2360642a-4977-4eb5-9d4d-e0b8ee549242"
 >
 <ReqRef
  Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c88f72b-95d9-4fa0-9bb0-a9163ee06c12"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="d6e078b0-7be9-42c8-a944-3994ff4a582c"
 >
 <ReqRef
  Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a76052a9-bfc0-434a-8bbd-7b33d00b0a3e"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="1770827b-e49e-45f3-ab06-10113a0ab0b3"
 >
 <ReqRef
  Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="97add1da-aa1c-4f3b-8614-469cb11741ca"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_TRACKINIT"
@@ -67,10 +79,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_TRACKINIT"
+ Guid="f7b7b0ee-c27f-4ee0-85b3-eaad38a7b469"
 >
 <ReqRef
  Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6cc58fc3-5f16-4e80-b610-64243c520a7a"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_PBD"
@@ -78,6 +92,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_PBD"
+ Guid="303319db-5382-425d-acc8-0a4c731476bc"
 >
 </StructureElement><StructureElement
  TypeName="Q_GDIR"
@@ -85,6 +100,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_GDIR"
+ Guid="7601147b-a06f-4cc1-93c6-1e20e29bd235"
 >
 </StructureElement><StructureElement
  TypeName="G_PBDSR"
@@ -92,6 +108,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="G_PBDSR"
+ Guid="ab4a5407-fa52-42c6-8e86-a167670af449"
 >
 </StructureElement><StructureElement
  TypeName="Q_PBDSR"
@@ -99,6 +116,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_PBDSR"
+ Guid="0bf589be-c045-4a31-8c2e-2671967e2c05"
 >
 </StructureElement><StructureElement
  TypeName="D_PBDSR"
@@ -106,6 +124,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_PBDSR"
+ Guid="f6994e7d-4770-4dac-9218-ee16693f17d9"
 >
 </StructureElement><StructureElement
  TypeName="L_PBDSR"
@@ -113,6 +132,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PBDSR"
+ Guid="5bb3f751-9948-4fd6-b018-c7a199a9724e"
 >
 </StructureElement><StructureElement
  TypeName="N_ITER"
@@ -120,6 +140,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="N_ITER"
+ Guid="3c3387ea-e0bd-4254-8bfb-c1068ec12d37"
 >
 </StructureElement><StructureElement
  TypeName="Collection1"
@@ -127,6 +148,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
+ Guid="688688f5-a74e-48c6-9e00-bdb4ca5dc722"
 >
 </StructureElement><StructureElement
  TypeName="D_TRACKINIT"
@@ -134,14 +156,17 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_TRACKINIT"
+ Guid="900e8fcb-0e9d-4c93-9df8-364dcbd15096"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
+ Guid="285dd262-179c-4729-a094-f365dd5f6a25"
 >
 <ReqRef
  Id="39016576-7686-4e14-9c1a-13bd7dd28045"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d6683efc-3ebc-44ff-a7f4-0726235bbe03"
 >
 </ReqRef><StructureElement
  TypeName="D_PBD"
@@ -149,6 +174,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_PBD"
+ Guid="ff8da77b-63ec-44fe-b36e-d71979609505"
 >
 </StructureElement><StructureElement
  TypeName="Q_GDIR"
@@ -156,6 +182,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_GDIR"
+ Guid="7591c70b-ce28-456f-8e5b-d1a07f922da4"
 >
 </StructureElement><StructureElement
  TypeName="G_PBDSR"
@@ -163,6 +190,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="G_PBDSR"
+ Guid="1708b7e6-0f52-4eac-90ce-3cef6ba3e637"
 >
 </StructureElement><StructureElement
  TypeName="Q_PBDSR"
@@ -170,6 +198,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_PBDSR"
+ Guid="f632738b-7b98-4b53-bf2f-1c5f91c527ae"
 >
 </StructureElement><StructureElement
  TypeName="D_PBDSR"
@@ -177,6 +206,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_PBDSR"
+ Guid="cee2ed14-5998-4daa-9661-27cabce81ad9"
 >
 </StructureElement><StructureElement
  TypeName="L_PBDSR"
@@ -184,6 +214,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PBDSR"
+ Guid="7952b4dd-aaed-43c0-9666-5181c937d757"
 >
 </StructureElement></Structure></Structures>
 <Collections>
@@ -192,10 +223,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
+ Guid="a7cfc3cb-4141-4520-a659-87990146fd70"
 >
 <ReqRef
  Id="39016576-7686-4e14-9c1a-13bd7dd28045"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="90e28089-8672-4bf6-8b53-d86085055d47"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>

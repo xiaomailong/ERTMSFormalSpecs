@@ -21,7 +21,7 @@ using System.Drawing.Design;
 
 namespace GUI
 {
-    public abstract class ReferencesParagraphTreeNode<T> : DataTreeNode<T>
+    public abstract class ReferencesParagraphTreeNode<T> : ModelElementTreeNode<T>
         where T : DataDictionary.ReferencesParagraph
     {
         /// <summary>
@@ -64,7 +64,7 @@ namespace GUI
             {
             }
 
-            [Category("Description")]
+            [Category("Meta data")]
             [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
             [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
             public T Comment

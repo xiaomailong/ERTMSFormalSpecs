@@ -22,6 +22,7 @@ namespace DataDictionary
     using System;
     using DataDictionary.Interpreter.Statement;
     using DataDictionary.Specification;
+    using DataDictionary.Interpreter.Filter;
 
     /// <summary>
     /// A complete system, along with all dictionaries
@@ -87,6 +88,16 @@ namespace DataDictionary
         public Compiler Compiler { get; private set; }
 
         /// <summary>
+        /// The file name of the history file
+        /// </summary>
+        public const string HISTORY_FILE_NAME = "HistoryCache.hst";
+
+        /// <summary>
+        /// Provides the history
+        /// </summary>
+        public Compare.History History { get; private set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         private EFSSystem()
@@ -95,6 +106,15 @@ namespace DataDictionary
 
             DataDictionary.Generated.acceptor.setFactory(new DataDictionary.ObjectFactory());
             Compiler = new Interpreter.Compiler(this);
+
+            // Reads the history file and updates the blame information stored in it
+            Compare.Factory historyFactory = DataDictionary.Compare.Factory.INSTANCE;
+            History = (Compare.History)HistoricalData.HistoryUtils.Load(HISTORY_FILE_NAME, historyFactory);
+            if (History == null)
+            {
+                History = (Compare.History)historyFactory.createHistory();
+            }
+            History.UpdateBlame();
 
             Generated.ControllersManager.BaseModelElementController.Listeners.Insert(0, new BaseModelElementChangeListener(this));
         }
@@ -318,22 +338,6 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined function double to double type
-        /// </summary>
-        private Types.FunctionDoubleToDouble functionDoubleToDoubleType;
-        public Types.FunctionDoubleToDouble FunctionDoubleToDoubleType
-        {
-            get
-            {
-                if (functionDoubleToDoubleType == null)
-                {
-                    functionDoubleToDoubleType = new Types.FunctionDoubleToDouble(this);
-                }
-                return functionDoubleToDoubleType;
-            }
-        }
-
-        /// <summary>
         /// The generic collection type
         /// </summary>
         /// <returns></returns>
@@ -366,7 +370,6 @@ namespace DataDictionary
                     PredefinedTypes[IntegerType.Name] = IntegerType;
                     PredefinedTypes[DoubleType.Name] = DoubleType;
                     PredefinedTypes[StringType.Name] = StringType;
-                    PredefinedTypes[FunctionDoubleToDoubleType.Name] = FunctionDoubleToDoubleType;
                 }
                 return predefinedTypes;
             }
@@ -520,6 +523,22 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// The predefined DoubleToInteger function
+        /// </summary>
+        private Functions.PredefinedFunctions.DoubleToInteger doubleToIntegerPredefinedFunction;
+        public Functions.PredefinedFunctions.DoubleToInteger DoubleToIntegerPredefinedFunction
+        {
+            get
+            {
+                if (doubleToIntegerPredefinedFunction == null)
+                {
+                    doubleToIntegerPredefinedFunction = new Functions.PredefinedFunctions.DoubleToInteger(this);
+                }
+                return doubleToIntegerPredefinedFunction;
+            }
+        }
+
+        /// <summary>
         /// The predefined deceleration profile function
         /// </summary>
         private Functions.PredefinedFunctions.DecelerationProfile decelerationProfilePredefinedFunction;
@@ -634,6 +653,7 @@ namespace DataDictionary
                     predefinedFunctions[MaxPredefinedFunction.Name] = MaxPredefinedFunction;
                     predefinedFunctions[TargetsPredefinedFunction.Name] = TargetsPredefinedFunction;
                     predefinedFunctions[RoundToMultiplePredefinedFunction.Name] = RoundToMultiplePredefinedFunction;
+                    predefinedFunctions[DoubleToIntegerPredefinedFunction.Name] = DoubleToIntegerPredefinedFunction;
                     predefinedFunctions[DecelerationProfilePredefinedFunction.Name] = DecelerationProfilePredefinedFunction;
                     predefinedFunctions[BeforePredefinedFunction.Name] = BeforePredefinedFunction;
                     predefinedFunctions[AddIncrementPredefinedFunction.Name] = AddIncrementPredefinedFunction;
@@ -952,7 +972,7 @@ namespace DataDictionary
             /// <summary>
             /// The filter to apply to the selection
             /// </summary>
-            private Filter.AcceptableChoice Filter { get; set; }
+            private BaseFilter Filter { get; set; }
 
             /// <summary>
             /// Constructor
@@ -969,7 +989,7 @@ namespace DataDictionary
             /// Constructor
             /// </summary>
             /// <param name="filter">The filter to apply to the search</param>
-            public ReferenceVisitor(Filter.AcceptableChoice filter)
+            public ReferenceVisitor(BaseFilter filter)
             {
                 Usages = new List<Usage>();
                 Model = null;
@@ -996,7 +1016,7 @@ namespace DataDictionary
                     {
                         foreach (Usage usage in statement.StaticUsage.AllUsages)
                         {
-                            if (Filter(usage.Referenced))
+                            if (Filter.AcceptableChoice(usage.Referenced))
                             {
                                 Usages.Add(usage);
                             }
@@ -1025,7 +1045,7 @@ namespace DataDictionary
                     {
                         foreach (Usage usage in expression.StaticUsage.AllUsages)
                         {
-                            if (Filter(usage.Referenced))
+                            if (Filter.AcceptableChoice(usage.Referenced))
                             {
                                 Usages.Add(usage);
                             }
@@ -1052,7 +1072,7 @@ namespace DataDictionary
                     }
                     else
                     {
-                        if (Filter(element.Type))
+                        if (Filter.AcceptableChoice(element.Type))
                         {
                             Usages.Add(new Usage(element.Type, modelElement, Usage.ModeEnum.Type));
                         }
@@ -1231,7 +1251,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public List<Usage> FindReferences(Filter.AcceptableChoice filter)
+        public List<Usage> FindReferences(BaseFilter filter)
         {
             // Find references
             ReferenceVisitor visitor = new ReferenceVisitor(filter);

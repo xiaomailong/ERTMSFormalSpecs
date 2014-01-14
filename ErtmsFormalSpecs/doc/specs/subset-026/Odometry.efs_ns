@@ -4,6 +4,7 @@
  Width="400"
  Height="400"
  Name="Odometry"
+ Guid="eb49e898-2a38-43cf-82a0-17e52883a9ed"
 >
 <NameSpaces>
 </NameSpaces>
@@ -15,6 +16,7 @@
  Default="0"
  NeedsRequirement="FALSE"
  Name="M_MAXSUMVAR"
+ Guid="a1855d02-6183-4cd3-9af5-15c57f90665d"
 >
 <Comment>Maximum Sum of Variance.
 Maximum Sum of Variance, adding to the positive movement direction of the confidence interval.</Comment>
@@ -25,6 +27,7 @@ Maximum Sum of Variance, adding to the positive movement direction of the confid
  Default="0"
  NeedsRequirement="FALSE"
  Name="M_MINSUMVAR"
+ Guid="a21d8338-289c-4491-a326-9f6bbf6933c1"
 >
 <Comment>Minimum Sum of Variance.
 Minimum Sum of Variance, adding to the negative movement direction of the confidence interval.</Comment>
@@ -34,6 +37,7 @@ Minimum Sum of Variance, adding to the negative movement direction of the confid
  Default="Q_NOM_ODO.Nominal"
  NeedsRequirement="FALSE"
  Name="Q_NOM_ODO"
+ Guid="81dfc5ee-e6bc-429a-86fc-98d118b26076"
 >
 <Comment>Nominal odometer qualifier.
 Indicate if the odometer configuration is nominal (all sensors available) or not.</Comment>
@@ -41,16 +45,19 @@ Indicate if the odometer configuration is nominal (all sensors available) or not
 <EnumValue
  Value="1"
  Name="Nominal"
+ Guid="0c3d3bf5-e917-4d51-b588-8fa603cc67a6"
 >
 </EnumValue><EnumValue
  Value="0"
  Name="NotNominal"
+ Guid="6ad94aa6-f74f-4c27-ac0b-94fa4e44a92d"
 >
 </EnumValue></Values>
 </Enum><Enum
  Default="Q_SAFEDIR.NotAmbiguous"
  NeedsRequirement="FALSE"
  Name="Q_SAFEDIR"
+ Guid="8a9dbd91-ca6d-4265-bf01-a24e7181e7f7"
 >
 <Comment>Direction ambiguity.
 Define if the direction information is ambiguous or not.</Comment>
@@ -58,16 +65,19 @@ Define if the direction information is ambiguous or not.</Comment>
 <EnumValue
  Value="1"
  Name="Ambiguous"
+ Guid="30756770-2866-458e-aa99-9e8696ce3a23"
 >
 </EnumValue><EnumValue
  Value="0"
  Name="NotAmbiguous"
+ Guid="2dac3c72-319c-41fb-9c22-7bec7fb3a24b"
 >
 </EnumValue></Values>
 </Enum><Enum
  Default="M_K_ETCS.ReservedForNonStaticalModel"
  NeedsRequirement="FALSE"
  Name="M_K_ETCS"
+ Guid="58d90229-7cff-4502-932e-f3a5e3f9b751"
 >
 <Comment>Confidence level.
 The confidence level (K) is defined as a level of probability that the true position is inside the confidence interval.</Comment>
@@ -75,34 +85,42 @@ The confidence level (K) is defined as a level of probability that the true posi
 <EnumValue
  Value="0"
  Name="ReservedForNonStaticalModel"
+ Guid="f8085dab-eefc-4a8a-a3f9-0707c54fd98a"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="68"
+ Guid="acb77a03-42aa-405b-bdef-3fa563041b98"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="95"
+ Guid="49797f47-0b95-4fa5-bcae-97397a42c96e"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="99.7"
+ Guid="37480281-1fbb-45f8-85f6-d1c140972650"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="99.99"
+ Guid="d69c61ab-ca75-45db-83e1-3b04353c377e"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="99.9999"
+ Guid="58ed4160-3626-4076-88d9-305e92cdd442"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="99.999999"
+ Guid="32f60b95-c98d-4f73-9a46-bc17a643fca5"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="99.99999999"
+ Guid="759a6bfc-5c19-4df6-a76c-31c5b59cbf32"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -110,10 +128,12 @@ The confidence level (K) is defined as a level of probability that the true posi
 <Structure
  Implemented="TRUE"
  Name="OdometerAccuracy"
+ Guid="5626dc8f-4ab8-4d91-b8c7-355b0a1df7ac"
 >
 <ReqRef
  Id="8a1fe4ea-dcfd-4748-bc1e-b8b0be8aa8e0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d7c66f75-c2a1-44b4-ac6d-8403b6e4f469"
 >
 <Comment></Comment>
 </ReqRef><Comment>Represents the odometer accuracy, updated after each odometer message reception.</Comment>
@@ -123,10 +143,12 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Internal"
  Implemented="TRUE"
  Name="D_ura"
+ Guid="891591e2-663e-4eac-9f91-d680f255fe9c"
 >
 <ReqRef
  Id="8a1fe4ea-dcfd-4748-bc1e-b8b0be8aa8e0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="58ca6303-6af7-4e07-9e7b-f3fe03362c3d"
 >
 </ReqRef><Comment>Distance under reading amount.</Comment>
 </StructureElement><StructureElement
@@ -135,10 +157,12 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Internal"
  Implemented="TRUE"
  Name="D_ora"
+ Guid="ad3a5a5e-3432-4e70-8ba8-869fb8e26aa3"
 >
 <ReqRef
  Id="8a1fe4ea-dcfd-4748-bc1e-b8b0be8aa8e0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94961b7e-3d8f-4ec6-a739-dacc99eb6251"
 >
 </ReqRef><Comment>Distance over reading amount.</Comment>
 </StructureElement><StructureElement
@@ -148,6 +172,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_ora"
+ Guid="c0f8fdb2-f107-40dd-a8a9-354b55449c26"
 >
 <Comment>Speed over reading amount.</Comment>
 </StructureElement><StructureElement
@@ -156,20 +181,24 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Internal"
  Implemented="TRUE"
  Name="V_ura"
+ Guid="c7d8cd39-a1df-4b9d-9fe9-2d76ca35d2f0"
 >
 <ReqRef
  Id="45c6ab5d-cd00-4092-b7fb-002e30ca1337"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="58c21ffd-cdda-4fd8-81ff-50d005c1f59f"
 >
 </ReqRef><Comment>Speed under reading amount.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="OdometerMulticastMessage"
+ Guid="9f0dce54-50b8-4203-8485-8ef43127557c"
 >
 <ReqRef
  Id="b774cb9b-3ed7-4270-b69a-b81066add7a1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0c2fca9c-5f43-40a4-8b7c-afe4f3f9bd9f"
 >
 <Comment></Comment>
 </ReqRef><Comment>Represents a message from Odometry, as specified in the Subset 58 v 211.</Comment>
@@ -179,6 +208,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="NID_PACKET"
+ Guid="8d2552e6-a7a9-4fc6-9b0f-c3794526900b"
 >
 <Comment>Packet identifier. Value = 8.</Comment>
 </StructureElement><StructureElement
@@ -187,6 +217,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="L_PACKET"
+ Guid="87a72885-83ac-4b7d-8f34-ae9e7544dacd"
 >
 <Comment>Packet length.</Comment>
 </StructureElement><StructureElement
@@ -195,6 +226,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="Q_SAFEDIR"
+ Guid="71b3a6ef-f5bc-414b-b53b-aa3938e8c28c"
 >
 <Comment>Ambiguous Direction.</Comment>
 </StructureElement><StructureElement
@@ -203,6 +235,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="V_MAX"
+ Guid="43a38a7d-e564-4bfb-97c8-8da530587843"
 >
 <Comment>Upper bound of the measured speed.</Comment>
 </StructureElement><StructureElement
@@ -211,6 +244,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="V_NOM"
+ Guid="d3a1a087-af44-44fd-a03f-1c8644b2565b"
 >
 <Comment>Nominal speed value.</Comment>
 </StructureElement><StructureElement
@@ -219,6 +253,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="V_MIN"
+ Guid="b05c4b90-1700-4d80-8c82-a2daec15ae6b"
 >
 <Comment>Lower bound of the measured speed.</Comment>
 </StructureElement><StructureElement
@@ -227,6 +262,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="D_MAX_ACCUM"
+ Guid="2a8c1f6e-c898-4c2a-8068-92ecfec0b6ab"
 >
 <Comment>Accumulative part in positive movement direction of stochastical confidence interval. Variable not transmitted if M_K_ETCS =0.</Comment>
 </StructureElement><StructureElement
@@ -235,6 +271,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="D_MAX"
+ Guid="366938c3-6381-4573-a726-1797f295aa64"
 >
 <Comment>MAX_ODO, Positive direction side of non-stochastic confidence interval.</Comment>
 </StructureElement><StructureElement
@@ -243,6 +280,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="D_NOM"
+ Guid="86d325c7-4300-4b3c-b446-62e6c228f149"
 >
 <Comment>NOM_ODO, nominal value of distance.</Comment>
 </StructureElement><StructureElement
@@ -251,6 +289,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="D_MIN"
+ Guid="28355a0f-6d93-40b1-b5a8-d7fa626fcd3f"
 >
 <Comment>MIN_ODO, Negative direction side of non-stochastic confidence interval.</Comment>
 </StructureElement><StructureElement
@@ -259,6 +298,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="D_MIN_ACCUM"
+ Guid="10a2dddf-81e7-4798-ab02-5b74a9fd3b5f"
 >
 <Comment>Accumulative part in negative movement direction of stochastical confidence interval. Variable not transmitted if M_K_ETCS =0.</Comment>
 </StructureElement><StructureElement
@@ -267,6 +307,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="T_ODO"
+ Guid="03f3d1c1-e7fe-4a68-9f72-5ce88e4c9bf9"
 >
 <Comment>Timestamp.</Comment>
 </StructureElement><StructureElement
@@ -275,6 +316,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="D_RES"
+ Guid="d23f4b5e-b65f-489d-bce6-847418b638c2"
 >
 <Comment>RES_ODO, resolution of distance (RES_ODO) measurement.</Comment>
 </StructureElement><StructureElement
@@ -283,6 +325,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="Q_NOM_ODO"
+ Guid="16a7ffd1-6637-403c-aa87-ae69e266541e"
 >
 <Comment>Indicate if the odometer configuration is nominal or not.</Comment>
 </StructureElement><StructureElement
@@ -291,6 +334,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="M_K_ETCS"
+ Guid="9f64f90f-a0a1-4b6d-bb04-47c4fefaf57b"
 >
 <Comment>The confidence level (K) is defined as a level of probability that the true position is inside the confidence interval.</Comment>
 </StructureElement><StructureElement
@@ -299,6 +343,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="M_MAXSUMVAR"
+ Guid="c122fc7f-181e-4cec-833b-acb432d3530b"
 >
 <Comment>Maximum Sum of Variance. Variable not transmitted if M_K_ETCS =0.</Comment>
 </StructureElement><StructureElement
@@ -307,6 +352,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Mode="Incoming"
  NeedsRequirement="FALSE"
  Name="M_MINSUMVAR"
+ Guid="b512cef3-11f2-460b-a2d0-a327d3b74373"
 >
 <Comment>Minimum Sum of Variance. Variable not transmitted if M_K_ETCS =0.</Comment>
 </StructureElement></Structure></Structures>
@@ -315,18 +361,22 @@ The confidence level (K) is defined as a level of probability that the true posi
  Type="Boolean"
  Implemented="TRUE"
  Name="TrainIsAtStandstill"
+ Guid="2ef6584d-0800-457a-b8cb-1783cef2f8ff"
 >
 <ReqRef
  Id="e9db5333-b289-4dc4-a0ff-2523b0f32009"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="133e632d-28ae-4afd-bc5b-a2ca308274b7"
 >
 </ReqRef><ReqRef
  Id="e5f97755-8416-4822-93e4-2c3e935d4b0e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5104351e-6732-4c76-884f-3f3ee3ba1d9b"
 >
 </ReqRef><Cases>
 <Case
  Name="Value"
+ Guid="47f0b7ea-e7fc-4f64-9fda-0b33c9abebe1"
 >
 <Expression>EstimatedSpeed == 0.0</Expression>
 </Case></Cases>
@@ -335,11 +385,13 @@ The confidence level (K) is defined as a level of probability that the true posi
 <Procedure
  NeedsRequirement="FALSE"
  Name="StoreOdometerMessage"
+ Guid="edb34d80-e449-491e-8f3b-aae9c289c55c"
 >
 <Parameters>
 <Parameter
  Type="OdometerMulticastMessage"
  Name="Message"
+ Guid="c80158b8-7024-4537-9f24-a47f191474b7"
 >
 </Parameter></Parameters>
 <Rules>
@@ -347,18 +399,36 @@ The confidence level (K) is defined as a level of probability that the true posi
  Priority="Processing"
  NeedsRequirement="FALSE"
  Name="StoreOdometerMessage"
+ Guid="f15825ae-0c78-48df-aab0-9b3baf63f43c"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="StoreOdometerMessage"
+ Guid="52f7c34d-4689-4ac6-ac7b-52fbb49ce252"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Odometry.CurrentTime &lt;- Message.T_ODO</Action><Action>Odometry.NominalDistance &lt;- Message.D_NOM</Action><Action>Odometry.OdometerAccuracy.D_ura &lt;- Default.BaseTypes.DistanceToLength(Message.D_MAX - Message.D_NOM)</Action><Action>Odometry.OdometerAccuracy.D_ora &lt;- Default.BaseTypes.DistanceToLength(Message.D_NOM - Message.D_MIN)</Action><Action>Odometry.EstimatedSpeed &lt;- Message.V_NOM</Action><Action>Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
--  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration ( Odometry.CurrentTime - Message.T_ODO )</Action><Action>Odometry.OdometerAccuracy.V_ora &lt;- Message.V_NOM - Message.V_MIN</Action><Action>Odometry.OdometerAccuracy.V_ura &lt;- Message.V_MAX - Message.V_NOM</Action></Actions>
+<Action
+ Guid="b92908d8-bb37-433f-bb12-af688ebed023"
+>Odometry.CurrentTime &lt;- Message.T_ODO</Action><Action
+ Guid="ab9780a3-2b2c-4004-aaeb-2efb4c699d69"
+>Odometry.NominalDistance &lt;- Message.D_NOM</Action><Action
+ Guid="a7bc8e19-3c2d-40e0-8fcd-019a376526a0"
+>Odometry.Accuracy.D_ura &lt;- Default.BaseTypes.DistanceToLength(Message.D_MAX - Message.D_NOM)</Action><Action
+ Guid="77e6e519-84b4-4ee9-9090-7bfe385d539a"
+>Odometry.Accuracy.D_ora &lt;- Default.BaseTypes.DistanceToLength(Message.D_NOM - Message.D_MIN)</Action><Action
+ Guid="63cfd51a-a706-4c38-bf84-6496ef309c84"
+>Odometry.EstimatedSpeed &lt;- Message.V_NOM</Action><Action
+ Guid="24d8010e-c271-4470-96c1-5303813aaafe"
+>Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
+-  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration ( Odometry.CurrentTime - Message.T_ODO )</Action><Action
+ Guid="be1750f6-f121-4bb4-9192-25785d00bc32"
+>Odometry.Accuracy.V_ora &lt;- Message.V_NOM - Message.V_MIN</Action><Action
+ Guid="7a4376a7-9f06-403b-87a3-14f47c6b2890"
+>Odometry.Accuracy.V_ura &lt;- Message.V_MAX - Message.V_NOM</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -375,10 +445,12 @@ The confidence level (K) is defined as a level of probability that the true posi
  VariableMode="Internal"
  Implemented="TRUE"
  Name="Accuracy"
+ Guid="7499913c-ed8f-44ca-8c93-e75d46f6ce78"
 >
 <ReqRef
  Id="8a1fe4ea-dcfd-4748-bc1e-b8b0be8aa8e0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e5728d16-983b-4df7-8677-fa9a9d7a53ff"
 >
 <Comment></Comment>
 </ReqRef><Comment>Represents the odometer accuracy, updated after each odometer message reception. Used for calculating the confidence interval.
@@ -390,6 +462,7 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
  VariableMode="Internal"
  NeedsRequirement="FALSE"
  Name="CurrentTime"
+ Guid="6a47d9d8-a45d-49f5-bb86-dc2434ec76ab"
 >
 <Comment>The current time of the odometry.</Comment>
 </Variable><Variable
@@ -398,6 +471,7 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
  VariableMode="InOut"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="f232a64d-dd76-4f3f-a0f7-d01e910a8d1e"
 >
 <Comment>Represents an odometer message. The message is received if NewMessageReceived sub variable equals True. OdometerMessage.Message contains the received message.</Comment>
 </Variable><Variable
@@ -406,6 +480,7 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
  VariableMode="Internal"
  NeedsRequirement="FALSE"
  Name="NominalDistance"
+ Guid="8b9d0041-32c3-4c95-afd4-2d33d93fe306"
 >
 <Comment>The estimated position of the train.</Comment>
 </Variable><Variable
@@ -413,8 +488,10 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
  DefaultValue="0.0"
  VariableMode="Internal"
  Implemented="TRUE"
+ Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="EstimatedSpeed"
+ Guid="efe4b202-5dbe-4d3f-af3f-3662f43404a4"
 >
 <Comment>The estimated speed of the train.</Comment>
 </Variable><Variable
@@ -424,6 +501,7 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="PreviousTime"
+ Guid="54374bf2-9c24-4224-a9d4-7d81e96e671e"
 >
 <Comment>Contains the time value received in the previous odometry message, used to calculate the estimated acceleration.</Comment>
 </Variable><Variable
@@ -433,6 +511,7 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="PreviousSpeed"
+ Guid="d441f48e-5b85-4a51-90c7-029b88f4c69e"
 >
 <Comment>Contains the speed value received in the previous odometry message, used to calculate the estimated acceleration.</Comment>
 </Variable><Variable
@@ -442,6 +521,7 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="EstimatedAcceleration"
+ Guid="1ca9418b-e14a-434c-85d0-27dd6a0a2690"
 >
 <Comment>The acceleration of the train, computed from its speed and the time.</Comment>
 </Variable></Variables>
@@ -451,6 +531,7 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ClearNewMessage"
+ Guid="01de3ad9-5ce4-4c91-a0fb-f9b9aef1542f"
 >
 <Comment>After processing the new message its content is deleted.</Comment>
 <SubRules></SubRules>
@@ -458,12 +539,21 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="ClearNewMessage"
+ Guid="d20ef759-ed8a-4c29-a45d-346ee89326b2"
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Available ( Odometry.Message )</PreCondition></PreConditions>
+<PreCondition
+ Guid="57d2ef17-78d5-457e-85e4-e49008d580c9"
+>Available ( Odometry.Message )</PreCondition></PreConditions>
 <Actions>
-<Action>Odometry.Message &lt;- EMPTY</Action><Action>PreviousTime &lt;- CurrentTime</Action><Action>PreviousSpeed &lt;- EstimatedSpeed</Action></Actions>
+<Action
+ Guid="23d419d0-8ffb-4a8b-b4ba-cdcfcc1766a8"
+>Odometry.Message &lt;- EMPTY</Action><Action
+ Guid="4433bbad-1426-41b2-b90b-7923057a565f"
+>PreviousTime &lt;- CurrentTime</Action><Action
+ Guid="5ee92494-7a41-432d-937e-a24f22bcf92c"
+>PreviousSpeed &lt;- EstimatedSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

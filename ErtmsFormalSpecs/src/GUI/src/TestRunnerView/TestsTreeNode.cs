@@ -20,7 +20,7 @@ using DataDictionary;
 
 namespace GUI.TestRunnerView
 {
-    public class TestsTreeNode : DataTreeNode<DataDictionary.Dictionary>
+    public class TestsTreeNode : ModelElementTreeNode<DataDictionary.Dictionary>
     {
         private class ItemEditor : NamedEditor
         {
@@ -191,7 +191,7 @@ namespace GUI.TestRunnerView
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
+            retVal.Add(new MenuItem("Add frame", new EventHandler(AddHandler)));
             retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Import braking curves verification set", new EventHandler(ImportBrakingCurvesHandler)));
             retVal.Add(new MenuItem("-"));

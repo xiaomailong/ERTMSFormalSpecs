@@ -16,42 +16,38 @@
 using System;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
+using DataDictionary;
 
 namespace GUI.TranslationRules
 {
-    public partial class Window : DockContent, IBaseForm
+    public partial class Window : BaseForm
     {
-        public MyPropertyGrid Properties
+        public override MyPropertyGrid Properties
         {
             get { return propertyGrid; }
         }
 
-        public RichTextBox MessagesTextBox
+        public override RichTextBox MessagesTextBox
         {
             get { return messageRichTextBox.TextBox; }
         }
 
-        public EditorTextBox RequirementsTextBox
+        public override EditorTextBox RequirementsTextBox
         {
-            get { return null; }
+            get { return sourceTextBox; }
         }
 
-        public EditorTextBox ExpressionEditorTextBox
+        public override EditorTextBox ExpressionEditorTextBox
         {
-            get { return null; }
+            get { return expressionEditorTextBox; }
         }
 
-        public BaseTreeView subTreeView
+        public override ExplainTextBox ExplainTextBox
         {
-            get { return null; }
+            get { return explainTextBox; }
         }
 
-        public ExplainTextBox ExplainTextBox
-        {
-            get { return null; }
-        }
-
-        public BaseTreeView TreeView
+        public override BaseTreeView TreeView
         {
             get { return translationTreeView; }
         }
@@ -65,12 +61,30 @@ namespace GUI.TranslationRules
             InitializeComponent();
 
             messageRichTextBox.AutoComplete = false;
+            sourceTextBox.AutoComplete = false;
+            explainTextBox.AutoComplete = false;
+
+            sourceTextBox.ReadOnly = true;
+            explainTextBox.ReadOnly = true;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
+            expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Visible = false;
             translationTreeView.Root = dictionary;
             Text = dictionary.Dictionary.Name + " test translation view";
+
+            ResizeDescriptionArea(propertyGrid, 20);
+
             Refresh();
+        }
+
+        void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            IExpressionable expressionable = Selected as IExpressionable;
+            if (expressionable != null)
+            {
+                expressionable.ExpressionText = expressionEditorTextBox.TextBox.Text;
+            }
         }
 
         /// <summary>
@@ -105,27 +119,9 @@ namespace GUI.TranslationRules
         /// <summary>
         /// Refreshed the model of the window
         /// </summary>
-        public void RefreshModel()
+        public override void RefreshModel()
         {
             translationTreeView.RefreshModel();
-        }
-
-        /// <summary>
-        /// Provides the model element currently selected in this IBaseForm
-        /// </summary>
-        public Utils.IModelElement Selected
-        {
-            get
-            {
-                Utils.IModelElement retVal = null;
-
-                if (TreeView != null && TreeView.Selected != null)
-                {
-                    retVal = TreeView.Selected.Model;
-                }
-
-                return retVal;
-            }
         }
 
         /// <summary>

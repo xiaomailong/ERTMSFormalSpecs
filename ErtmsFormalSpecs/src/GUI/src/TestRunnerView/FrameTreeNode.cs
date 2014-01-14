@@ -21,7 +21,7 @@ using Utils;
 
 namespace GUI.TestRunnerView
 {
-    public class FrameTreeNode : DataTreeNode<DataDictionary.Tests.Frame>
+    public class FrameTreeNode : ModelElementTreeNode<DataDictionary.Tests.Frame>
     {
         /// <summary>
         /// The value editor
@@ -152,7 +152,7 @@ namespace GUI.TestRunnerView
         }
 
         #region ExecuteTests
-        private class ExecuteTestsOperation : ProgressHandler
+        private class ExecuteTestsOperation : LongOperations.BaseLongOperation
         {
             /// <summary>
             /// The number of failed tests 
@@ -216,8 +216,7 @@ namespace GUI.TestRunnerView
             ClearMessages();
 
             ExecuteTestsOperation executeTestsOperation = new ExecuteTestsOperation(BaseForm as Window, Item);
-            ProgressDialog dialog = new ProgressDialog("Executing test sequences", executeTestsOperation);
-            dialog.ShowDialog();
+            executeTestsOperation.ExecuteUsingProgressDialog("Executing test sequences");
 
             string runtimeErrors = "";
             if (Utils.ModelElement.Errors.Values.Count > 0)
@@ -246,16 +245,16 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Add sub sequence", new EventHandler(AddHandler)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Execute", new EventHandler(RunHandler)));
-            retVal.Add(new MenuItem("Create report", new EventHandler(ReportHandler)));
-            retVal.Add(new MenuItem("-"));
+            retVal.Add(new MenuItem("Add sub-sequence", new EventHandler(AddHandler)));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
+            retVal.Insert(5, new MenuItem("-"));
+            retVal.Insert(6, new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
+            retVal.Insert(7, new MenuItem("-"));
+            retVal.Insert(8, new MenuItem("Execute", new EventHandler(RunHandler)));
+            retVal.Insert(9, new MenuItem("Create report", new EventHandler(ReportHandler)));
 
             return retVal;
         }

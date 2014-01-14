@@ -160,7 +160,13 @@ namespace DataDictionary
 
             private NameSpaceRef referenceNameSpace(ModelElement enclosing, NameSpace nameSpace)
             {
-                NameSpaceRef retVal = (NameSpaceRef)Generated.acceptor.getFactory().createNameSpaceRef();
+                NameSpaceRef retVal = nameSpace.NameSpaceRef;
+
+                if (retVal == null)
+                {
+                    retVal = (NameSpaceRef)Generated.acceptor.getFactory().createNameSpaceRef();
+                }
+
                 retVal.Name = nameSpace.Name;
                 retVal.setFather(enclosing);
                 retVal.SaveNameSpace(nameSpace);
@@ -170,7 +176,13 @@ namespace DataDictionary
 
             private FrameRef referenceFrame(ModelElement enclosing, Frame test)
             {
-                FrameRef retVal = (FrameRef)Generated.acceptor.getFactory().createFrameRef();
+                FrameRef retVal = test.FrameRef;
+
+                if (retVal == null)
+                {
+                    retVal = (FrameRef)Generated.acceptor.getFactory().createFrameRef();
+                }
+
                 retVal.Name = test.Name;
                 retVal.setFather(enclosing);
                 retVal.SaveFrame(test);
@@ -180,7 +192,13 @@ namespace DataDictionary
 
             private ChapterRef referenceChapter(ModelElement enclosing, Chapter chapter)
             {
-                ChapterRef retVal = (ChapterRef)Generated.acceptor.getFactory().createChapterRef();
+                ChapterRef retVal = chapter.ChapterRef;
+
+                if (retVal == null)
+                {
+                    retVal = (ChapterRef)Generated.acceptor.getFactory().createChapterRef();
+                }
+
                 retVal.Name = chapter.Name;
                 retVal.setFather(enclosing);
                 retVal.SaveChapter(chapter);

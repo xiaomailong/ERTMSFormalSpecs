@@ -1,5 +1,6 @@
 <NameSpace
  Name="FROM_EUROLOOP"
+ Guid="b7a66fa5-ff99-461f-aec4-1cc556210944"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,40 +9,46 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="8a8817a1-c3df-4cc6-9d80-0d2e192a4deb"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="db7e4a12-bc9e-4c2e-83a5-02060d9d7688"
 >
 </ReqRef><Comment>This message is sent after receiving a message from an euroloop unit</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="b5664340-03e1-438c-8fb6-be411e3ed859"
 >
 </StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence1"
+ Guid="071fb7fd-f113-4d22-b7b2-84c1fc54e505"
 >
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure1"
+ Guid="5c06dbff-d771-487e-88dc-d0b52628fdda"
 >
 <StructureElement
  TypeName="BIT"
- Default="0"
- Mode="InOut"
+ Default=""
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DATA"
+ Guid="9ad26e5b-a725-4d1d-89af-45f3eb1261a2"
 >
 </StructureElement></Structure></Structures>
 <Collections>
@@ -51,6 +58,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection1"
+ Guid="91b57bc2-55bd-4234-9420-c7d32ecc52f8"
 >
 </Collection></Collections>
 </NameSpace>

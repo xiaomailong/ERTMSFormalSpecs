@@ -1,5 +1,6 @@
 <NameSpace
  Name="GEOGRAPHICAL_POSITION_INFORMATION"
+ Guid="dce98a9d-7f23-4547-b9b9-7d4f4e9e71c1"
 >
 <NameSpaces>
 </NameSpaces>
@@ -7,14 +8,17 @@
 <Structure
  Implemented="TRUE"
  Name="Message"
+ Guid="44be740c-c86e-4d91-8b4d-f1c29d0d28e7"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4ff86bb3-7ac9-45ad-9dec-5d227996df49"
 >
 </ReqRef><ReqRef
  Id="5f18c863-0780-4cbd-8960-633822d1844b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="23331a6f-080f-4d4f-87ab-de6f5468dcb9"
 >
 </ReqRef><Comment>This packet gives geographical location information for one or multiple references to the train.</Comment>
 <StructureElement
@@ -23,10 +27,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_PACKET"
+ Guid="b3a80b06-5944-40a7-8504-6d3e196f9b7b"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="673c5bcd-0da9-44fc-a5b4-f9e5b287bc00"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
@@ -34,10 +40,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
+ Guid="9f283603-7971-45ad-8ac7-985ff891f09e"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eafa0025-0136-4ca1-b3aa-af2ac09cf2b7"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="L_PACKET"
@@ -45,10 +53,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="L_PACKET"
+ Guid="0aa3e348-0e58-4a24-9195-b461aee43b79"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bc081066-29d7-436f-a6c7-99d2930fe897"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
@@ -56,10 +66,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
+ Guid="fd846efb-e964-4ef4-9ee4-895cbffccbde"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="44af0e37-7e00-4102-bf7e-851ba053fd60"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_NEWCOUNTRY"
@@ -67,10 +79,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_NEWCOUNTRY"
+ Guid="3b687532-e98b-453e-b060-c23d1b8df9f9"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8ba6c83c-1939-4802-b54b-4eed74c620bb"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
@@ -78,6 +92,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_C"
+ Guid="e7805ca7-1703-4b0e-ae67-002be7e54fa4"
 >
 </StructureElement><StructureElement
  TypeName="NID_BG"
@@ -85,10 +100,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_BG"
+ Guid="e96441b4-ca89-47d9-b40b-2213ec3707bc"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1b084a64-1ec7-45de-afea-1313257946cb"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_POSOFF"
@@ -96,10 +113,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_POSOFF"
+ Guid="62feb7d1-bc28-4804-9e26-092ff980feb8"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd2f5f52-4346-41bf-818a-5d01e1bc9a0f"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_MPOSITION"
@@ -107,10 +126,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_MPOSITION"
+ Guid="ad8d3019-1780-46c8-905f-868de9296f6a"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee063a61-9b8f-4618-b7b5-1eaad19c7396"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_POSITION"
@@ -118,10 +139,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_POSITION"
+ Guid="d7584df4-030f-48f1-ae88-8a83a5caa6da"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5e1212a9-3488-481c-986d-426e89ecfa27"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="N_ITER"
@@ -129,10 +152,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="N_ITER"
+ Guid="51d83eea-ef69-4357-a729-da436de29f87"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e5ae745b-9e75-4343-aa7f-5beae2c814ad"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
@@ -140,18 +165,22 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
+ Guid="9dc0d606-f028-4c69-bde6-8bd8eaceebd6"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a316bdc8-02f5-4d7e-a60a-0898c520b518"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
+ Guid="87204649-5624-42c2-9e89-1db43fcce7be"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3d1d9e07-74f3-41b2-b5c4-aba4191adb51"
 >
 </ReqRef><StructureElement
  TypeName="Q_NEWCOUNTRY"
@@ -159,10 +188,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_NEWCOUNTRY"
+ Guid="0ef90dbc-c138-421b-983c-fdb10ca5faab"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc834338-2742-4c5d-81ee-4620cc959137"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
@@ -170,6 +201,7 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_C"
+ Guid="8d29ca17-d04a-496b-877a-c4efe3d61a38"
 >
 </StructureElement><StructureElement
  TypeName="NID_BG"
@@ -177,10 +209,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_BG"
+ Guid="c2c5afd1-6d4b-46ec-aee2-b8dc54a9a814"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64809b88-535f-4f5c-85fd-092e74a49feb"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="D_POSOFF"
@@ -188,10 +222,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="D_POSOFF"
+ Guid="490f15c2-3029-4c23-a846-b85293f08d25"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f5851362-4f27-41ed-96e1-02540bda3591"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_MPOSITION"
@@ -199,10 +235,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_MPOSITION"
+ Guid="8860963e-5d61-4b3f-811c-ca3028642a5d"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f3ff396b-ddc9-43a9-b680-07dce1fa7434"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_POSITION"
@@ -210,10 +248,12 @@
  Mode="InOut"
  Implemented="TRUE"
  Name="M_POSITION"
+ Guid="818e672a-8c75-441b-98d5-588b835a4139"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb35b4c6-f55f-415e-aa21-3cfe06c04a2b"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
@@ -222,10 +262,12 @@
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
+ Guid="acd3d9b2-021b-4642-9866-309329a6f633"
 >
 <ReqRef
  Id="3f471e44-8594-4731-ba67-b7173dc06106"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="996e2d84-cf3a-48e4-84af-8957820cbf3b"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>

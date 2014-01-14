@@ -24,6 +24,7 @@ namespace DataDictionary
     using Utils;
     using DataDictionary.Types.AccessMode;
     using DataDictionary.Variables;
+    using DataDictionary.Interpreter.Filter;
 
     /// <summary>
     /// Holds several namespaces
@@ -57,7 +58,7 @@ namespace DataDictionary
         {
             SortedSet<ProcedureOrFunctionCall> procedureCalls = new SortedSet<ProcedureOrFunctionCall>();
             SortedSet<AccessToVariable> accessesToVariables = new SortedSet<AccessToVariable>();
-            foreach (Usage usage in system.FindReferences(Filter.IsCallableOrIsVariable))
+            foreach (Usage usage in system.FindReferences(IsCallableOrIsVariable.INSTANCE))
             {
                 ModelElement target = (ModelElement)usage.Referenced;
                 ModelElement source = usage.User;
@@ -65,7 +66,7 @@ namespace DataDictionary
                 NameSpace sourceNameSpace = getCorrespondingNameSpace(source, container, true);
                 NameSpace targetNameSpace = getCorrespondingNameSpace(target, container, false);
 
-                if (Filter.IsCallable(usage.Referenced))
+                if (IsCallable.Predicate(usage.Referenced))
                 {
                     if (considerCall(usage, container, sourceNameSpace, targetNameSpace))
                     {

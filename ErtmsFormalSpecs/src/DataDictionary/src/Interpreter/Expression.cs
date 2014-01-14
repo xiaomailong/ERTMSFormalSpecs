@@ -16,11 +16,13 @@
 namespace DataDictionary.Interpreter
 {
     using System.Collections.Generic;
+    using DataDictionary.Interpreter.Filter;
+    using System;
 
     /// <summary>
     /// Stores the association between a interpreter tree node and a value
     /// </summary>
-    public class ReturnValueElement
+    public class ReturnValueElement : IComparable<ReturnValueElement>
     {
         /// <summary>
         /// The previous return value element in the 
@@ -33,14 +35,76 @@ namespace DataDictionary.Interpreter
         public Utils.INamable Value { get; set; }
 
         /// <summary>
+        /// Indicates that the return value element was found as a type of its instance, instead of the instance itself. 
+        /// This allow to differenciate between a structure and  the return value of a function of type structure 
+        /// (in the latter case, the specific element cannot be statically identified in the model)
+        /// </summary>
+        public bool AsType { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="value"></param>
         /// <param name="previous"></param>
-        public ReturnValueElement(Utils.INamable value, ReturnValueElement previous = null)
+        /// <param name="asType"></param>
+        public ReturnValueElement(Utils.INamable value, ReturnValueElement previous = null, bool asType = false)
         {
             PreviousElement = previous;
             Value = value;
+            AsType = asType;
+        }
+
+        // Summary:
+        //     Compares the current object with another object of the same type.
+        //
+        // Parameters:
+        //   other:
+        //     An object to compare with this object.
+        //
+        // Returns:
+        //     A value that indicates the relative order of the objects being compared.
+        //     The return value has the following meanings: Value Meaning Less than zero
+        //     This object is less than the other parameter.Zero This object is equal to
+        //     other. Greater than zero This object is greater than other.
+        public int CompareTo(ReturnValueElement other)
+        {
+            int retVal = 1;
+
+            if (other != null)
+            {
+                if (Value == other.Value && AsType == other.AsType)
+                {
+                    // This seem to be the same return value
+                    retVal = 0;
+
+                    // Ensure that previous elements match.
+                    if (PreviousElement != null)
+                    {
+                        retVal = PreviousElement.CompareTo(other.PreviousElement);
+                    }
+                    else
+                    {
+                        if (other.PreviousElement != null)
+                        {
+                            retVal = -1;
+                        }
+                    }
+                }
+            }
+
+            return retVal;
+        }
+
+        public override string ToString()
+        {
+            string retVal = Value.ToString();
+
+            if (PreviousElement != null)
+            {
+                retVal += " -> " + PreviousElement.ToString();
+            }
+
+            return retVal;
         }
     }
 
@@ -97,23 +161,23 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="value">The value to add</param>
         /// <param name="previous">The previous element in the chain</param>
-        public void Add(Utils.INamable value, ReturnValueElement previous = null)
+        public void Add(Utils.INamable value, ReturnValueElement previous = null, bool asType = false)
         {
             if (value != null)
             {
-                bool found = false;
+                ReturnValueElement element = new ReturnValueElement(value, previous, asType);
                 foreach (ReturnValueElement elem in Values)
                 {
-                    if (elem.Value == value)
+                    if (elem.CompareTo(element) == 0)
                     {
-                        found = true;
+                        element = null;
                         break;
                     }
                 }
 
-                if (!found)
+                if (element != null)
                 {
-                    Values.Add(new ReturnValueElement(value, previous));
+                    Values.Add(element);
                 }
             }
         }
@@ -127,7 +191,7 @@ namespace DataDictionary.Interpreter
         {
             foreach (ReturnValueElement elem in other.Values)
             {
-                Add(elem.Value, previous);
+                Add(elem.Value, previous, elem.AsType);
             }
         }
 
@@ -163,13 +227,13 @@ namespace DataDictionary.Interpreter
         /// Filters out value according to predicate
         /// </summary>
         /// <param name="accept"></param>
-        public void filter(Filter.AcceptableChoice accept)
+        public void filter(BaseFilter accept)
         {
             // Only keep the most specific elements.
             string mostSpecific = null;
             foreach (ReturnValueElement element in Values)
             {
-                if (accept(element.Value))
+                if (accept.AcceptableChoice(element.Value))
                 {
                     if (mostSpecific == null)
                     {
@@ -185,23 +249,53 @@ namespace DataDictionary.Interpreter
                 }
             }
 
+            // if the filtering is about variables, ensure that there is at least one variable in the element chain
+            if (accept is IsVariable)
+            {
+                List<ReturnValueElement> tmp = new List<ReturnValueElement>();
+                foreach (ReturnValueElement element in Values)
+                {
+                    bool variableFound = false;
+                    bool onlyStructureElement = true;
+                    ReturnValueElement current = element;
+                    while (!variableFound && current != null)
+                    {
+                        variableFound = IsStrictVariableOrValue.INSTANCE.AcceptableChoice(current.Value) || current.AsType;
+                        onlyStructureElement = onlyStructureElement && current.Value is Types.StructureElement;
+                        current = current.PreviousElement;
+                    }
+
+                    if (variableFound)
+                    {
+                        tmp.Add(element);
+                    }
+                    else if (onlyStructureElement)
+                    {
+                        tmp.Add(element);
+                    }
+                }
+                Values = tmp;
+            }
+
             // Build a new list with the filtered out elements
             bool variable = false;
-            List<ReturnValueElement> tmp = new List<ReturnValueElement>();
-            foreach (ReturnValueElement element in Values)
             {
-                if (accept(element.Value) && element.Value.FullName.Equals(mostSpecific))
+                List<ReturnValueElement> tmp = new List<ReturnValueElement>();
+                foreach (ReturnValueElement element in Values)
                 {
-                    tmp.Add(element);
-                    variable = variable || element.Value is Variables.IVariable;
+                    if (accept.AcceptableChoice(element.Value) && element.Value.FullName.Equals(mostSpecific))
+                    {
+                        tmp.Add(element);
+                        variable = variable || element.Value is Variables.IVariable;
+                    }
                 }
+                Values = tmp;
             }
-            Values = tmp;
 
             // HaCK : If both Variable and StructureElement are found, only keep the variable
             if (variable)
             {
-                tmp = new List<ReturnValueElement>();
+                List<ReturnValueElement> tmp = new List<ReturnValueElement>();
                 foreach (ReturnValueElement element in Values)
                 {
                     if (!(element.Value is Types.StructureElement) && !(element.Value is Types.Type))
@@ -364,7 +458,7 @@ namespace DataDictionary.Interpreter
         /// <param name="expectation">the expectation on the element found</param>
         /// <param name="last">indicates that this is the last element in a dereference chain</param>
         /// <returns></returns>
-        public virtual ReturnValue getReferences(Utils.INamable instance, Filter.AcceptableChoice expectation, bool last)
+        public virtual ReturnValue getReferences(Utils.INamable instance, BaseFilter expectation, bool last)
         {
             return ReturnValue.Empty;
         }
@@ -376,12 +470,13 @@ namespace DataDictionary.Interpreter
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <param name="last">indicates that this is the last element in a dereference chain</param>
         /// <returns></returns>
-        public virtual ReturnValue getReferenceTypes(Utils.INamable instance, Filter.AcceptableChoice expectation, bool last)
+        public virtual ReturnValue getReferenceTypes(Utils.INamable instance, BaseFilter expectation, bool last)
         {
             ReturnValue retVal = new ReturnValue(this);
 
-            SemanticAnalysis(instance, Filter.AllMatches);
-            retVal.Add(GetExpressionType());
+            SemanticAnalysis(instance, AllMatches.INSTANCE);
+            bool asType = true;
+            retVal.Add(GetExpressionType(), null, asType);
 
             return retVal;
         }
@@ -392,7 +487,7 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public virtual bool SemanticAnalysis(Utils.INamable instance, Filter.AcceptableChoice expectation)
+        public virtual bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
         {
             bool retVal = !SemanticAnalysisDone;
 
@@ -412,7 +507,7 @@ namespace DataDictionary.Interpreter
         /// <returns>True if semantic analysis should be continued</returns>
         public bool SemanticAnalysis(Utils.INamable instance = null)
         {
-            return SemanticAnalysis(instance, Filter.AllMatches);
+            return SemanticAnalysis(instance, AllMatches.INSTANCE);
         }
 
         /// <summary>
@@ -420,7 +515,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public bool SemanticAnalysis(Filter.AcceptableChoice expectation)
+        public bool SemanticAnalysis(BaseFilter expectation)
         {
             return SemanticAnalysis(null, expectation);
         }
@@ -613,7 +708,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public abstract void fill(List<Utils.INamable> retVal, Filter.AcceptableChoice filter);
+        public abstract void fill(List<Utils.INamable> retVal, BaseFilter filter);
 
         /// <summary>
         /// Provides the right sides used by this expression
@@ -623,7 +718,7 @@ namespace DataDictionary.Interpreter
             List<Types.ITypedElement> retVal = new List<Types.ITypedElement>();
 
             List<Utils.INamable> tmp = new List<Utils.INamable>();
-            fill(tmp, Filter.IsRightSide);
+            fill(tmp, IsRightSide.INSTANCE);
 
             foreach (Utils.INamable namable in tmp)
             {
@@ -645,7 +740,7 @@ namespace DataDictionary.Interpreter
             List<Variables.IVariable> retVal = new List<Variables.IVariable>();
 
             List<Utils.INamable> tmp = new List<Utils.INamable>();
-            fill(tmp, Filter.IsVariable);
+            fill(tmp, IsVariable.INSTANCE);
 
             foreach (Utils.INamable namable in tmp)
             {
@@ -666,7 +761,7 @@ namespace DataDictionary.Interpreter
             List<Values.IValue> retVal = new List<Values.IValue>();
 
             List<Utils.INamable> tmp = new List<Utils.INamable>();
-            fill(tmp, Filter.IsValue);
+            fill(tmp, IsValue.INSTANCE);
 
             foreach (Utils.INamable namable in tmp)
             {

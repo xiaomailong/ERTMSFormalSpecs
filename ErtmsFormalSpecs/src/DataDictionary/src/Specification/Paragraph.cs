@@ -82,16 +82,18 @@ namespace DataDictionary.Specification
         /// <summary>
         /// Provides the Guid of the paragraph and creates one if it is not yet set
         /// </summary>
-        public string Guid
+        public override string Guid
         {
             get
             {
-                if (string.IsNullOrEmpty(getGuid()))
+                // Remove the obsolete guid
+                if (!string.IsNullOrEmpty(getObsoleteGuid()))
                 {
-                    setGuid(System.Guid.NewGuid().ToString());
+                    setGuid(getObsoleteGuid());
+                    setObsoleteGuid(null);
                 }
 
-                return getGuid();
+                return base.Guid;
             }
         }
 
@@ -204,14 +206,60 @@ namespace DataDictionary.Specification
             get { return getFather() as Paragraph; }
         }
 
-        private DataDictionary.Generated.acceptor.Paragraph_scope subParagraphsScope = Generated.acceptor.Paragraph_scope.defaultParagraph_scope;
-        public DataDictionary.Generated.acceptor.Paragraph_scope SubParagraphsScope
+        public bool SubParagraphScopeOnboard
         {
             get
             {
-                if (subParagraphsScope == Generated.acceptor.Paragraph_scope.defaultParagraph_scope)
-                    subParagraphsScope = computeSubParagraphsScope();
-                return subParagraphsScope;
+                bool retVal = false;
+
+                foreach (Paragraph p in SubParagraphs)
+                {
+                    retVal = p.getScopeOnBoard() || p.SubParagraphScopeOnboard;
+                    if (retVal)
+                    {
+                        break;
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        public bool SubParagraphScopeTrackside
+        {
+            get
+            {
+                bool retVal = false;
+
+                foreach (Paragraph p in SubParagraphs)
+                {
+                    retVal = p.getScopeTrackside() || p.SubParagraphScopeTrackside;
+                    if (retVal)
+                    {
+                        break;
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        public bool SubParagraphScopeRollingStock
+        {
+            get
+            {
+                bool retVal = false;
+
+                foreach (Paragraph p in SubParagraphs)
+                {
+                    retVal = p.getScopeRollingStock() || p.SubParagraphScopeRollingStock;
+                    if (retVal)
+                    {
+                        break;
+                    }
+                }
+
+                return retVal;
             }
         }
 
@@ -221,22 +269,14 @@ namespace DataDictionary.Specification
             switch (Type)
             {
                 case Generated.acceptor.Paragraph_type.aREQUIREMENT:
-                    setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
+                    if (getScopeOnBoard() == true)
+                    {
+                        setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
+                    }
                     break;
                 default:
                     setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
                     break;
-            }
-        }
-
-        public void SetScope(DataDictionary.Generated.acceptor.Paragraph_scope Scope)
-        {
-            setScope(Scope);
-            Paragraph enclosingParagraph = this;
-            while (enclosingParagraph != null)
-            {
-                enclosingParagraph.subParagraphsScope = Generated.acceptor.Paragraph_scope.defaultParagraph_scope;
-                enclosingParagraph = enclosingParagraph.EnclosingParagraph;
             }
         }
 
@@ -414,8 +454,7 @@ namespace DataDictionary.Specification
         {
             bool retVal;
             retVal = getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT;
-            retVal = retVal && (getScope() == Generated.acceptor.Paragraph_scope.aOBU ||
-                                getScope() == Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK);
+            retVal = retVal && getScopeOnBoard();
             return retVal;
         }
 
@@ -569,36 +608,31 @@ namespace DataDictionary.Specification
             }
         }
 
-        /// <summary>
-        /// Computes the scope of the sub-paragraphs
-        /// </summary>
-        /// <returns></returns>
-        private DataDictionary.Generated.acceptor.Paragraph_scope computeSubParagraphsScope()
+        public void SetScopeOnBoardAndAlterImplementableStatus(bool value)
         {
-            DataDictionary.Generated.acceptor.Paragraph_scope result = getScope();
-
-            foreach (Paragraph paragraph in SubParagraphs)
+            setScopeOnBoard(value);
+            if (value && getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
             {
-                switch (paragraph.SubParagraphsScope)
-                {
-                    case Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK:
-                        return Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK;
-                    case Generated.acceptor.Paragraph_scope.aOBU:
-                        if (result == Generated.acceptor.Paragraph_scope.aTRACK)
-                            return Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK;
-                        else
-                            result = Generated.acceptor.Paragraph_scope.aOBU;
-                        break;
-                    case Generated.acceptor.Paragraph_scope.aTRACK:
-                        if (result == Generated.acceptor.Paragraph_scope.aOBU)
-                            return Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK;
-                        else
-                            result = Generated.acceptor.Paragraph_scope.aTRACK;
-                        break;
-                }
+                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
             }
+        }
 
-            return result;
+        public void SetScopeTracksideAndAlterImplementableStatus(bool value)
+        {
+            setScopeTrackside(value);
+            if (value && !getScopeOnBoard())
+            {
+                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
+            }
+        }
+
+        public void SetScopeRollingStockAndAlterImplementableStatus(bool value)
+        {
+            setScopeRollingStock(value);
+            if (value && !getScopeOnBoard())
+            {
+                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
+            }
         }
     }
 }

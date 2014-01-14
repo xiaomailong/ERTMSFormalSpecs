@@ -1,5 +1,6 @@
 <NameSpace
  Name="ELECTRO_PNEUMATIC_BRAKE_STATUS"
+ Guid="60c90ad5-b41b-448c-a31a-2977a5c653f6"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,35 +9,41 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="83f87908-996e-41d6-abfc-d3b74a01c103"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="49309012-18bd-43e9-a956-23ff47e8430b"
 >
 </ReqRef><ReqRef
  Id="93254149-6489-4e55-bb64-7f75408d3be8"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="892d1615-6c79-496a-be90-bf881077f589"
 >
 </ReqRef><Comment>This message allows to transmit the electro pneumatic brake status</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="2ffb1c4d-d6ba-4ef6-9794-279b38e38c1f"
 >
 </StructureElement><StructureElement
  TypeName="M_EP_STATUS"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_EP_STATUS"
+ Guid="9e87ab21-f13a-4e5d-a501-01c07b407f8d"
 >
 <ReqRef
  Id="5fdb3970-d469-4ae9-a8e8-d4689e467f8a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6572b92c-92ed-4c3b-9c5a-8c0468017837"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

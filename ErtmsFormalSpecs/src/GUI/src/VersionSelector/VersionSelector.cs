@@ -105,21 +105,7 @@ namespace GUI.VersionSelector
         {
             if (Dictionary != null)
             {
-                string directory = Path.GetDirectoryName(Dictionary.FilePath);
-
-                Repository repository = null;
-                while (repository == null && !String.IsNullOrEmpty(directory))
-                {
-                    try
-                    {
-                        repository = new Repository(directory);
-                    }
-                    catch (Exception e)
-                    {
-                        directory = Path.GetDirectoryName(directory);
-                    }
-                }
-
+                Repository repository = Repository;
                 if (repository != null)
                 {
                     string filter = filterTextBox.Text;
@@ -151,7 +137,6 @@ namespace GUI.VersionSelector
                             {
                                 source.Add(new DisplayObject(commit));
                             }
-
                         }
                     }
                     dataGridView.DataSource = source;
@@ -165,9 +150,51 @@ namespace GUI.VersionSelector
             Refresh();
         }
 
+        /// <summary>
+        /// Provides the repository related to the VersionSelector directory
+        /// </summary>
+        /// <returns></returns>
+        public Repository Repository
+        {
+            get
+            {
+                Repository retVal = null;
+
+                string directory = Path.GetDirectoryName(Dictionary.FilePath);
+                while (retVal == null && !String.IsNullOrEmpty(directory))
+                {
+                    try
+                    {
+                        retVal = new Repository(directory);
+                    }
+                    catch (Exception)
+                    {
+                        directory = Path.GetDirectoryName(directory);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
         private void filterTextBox_TextChanged(object sender, EventArgs e)
         {
             RefreshModel();
+        }
+
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

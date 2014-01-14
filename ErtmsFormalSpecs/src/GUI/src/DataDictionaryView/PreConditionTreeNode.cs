@@ -21,7 +21,7 @@ using System.ComponentModel;
 
 namespace GUI.DataDictionaryView
 {
-    public class PreConditionTreeNode : DataTreeNode<DataDictionary.Rules.PreCondition>
+    public class PreConditionTreeNode : ModelElementTreeNode<DataDictionary.Rules.PreCondition>
     {
         private class ItemEditor : Editor
         {
@@ -83,9 +83,10 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
 
             return retVal;
         }

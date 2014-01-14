@@ -15,12 +15,18 @@
   <!-- Model Elements            -->
   <!-- ------------------------- -->
   <ELEMENT NAME="BaseModelElement" ABSTRACT="TRUE" BASECLASS="Utils.ModelElement">
+    <FIELDS>
+      <FIELD NAME="Guid" TYPE="PCHAR" />
+    </FIELDS>
+    <ATTRIBUTES>
+      <ATTR NAME="Guid" TARGET="Guid" OPTIONAL="TRUE" />
+    </ATTRIBUTES>
   </ELEMENT>
 
   <!-- ------------------------- -->
   <!-- Elements that have a name -->
   <!-- ------------------------- -->
-  <ELEMENT NAME="Namable" ABSTRACT="TRUE" MAIN="TRUE" BASECLASS="ModelElement">
+  <ELEMENT NAME="Namable" ABSTRACT="TRUE" MAIN="TRUE" BASEELEMENT="BaseModelElement" BASECLASS="ModelElement">
     <META NAME="SourcePackage">DataDictionary</META>
     <META NAME="Class">NamedElement</META>
     <FIELDS>
@@ -273,7 +279,9 @@
         <META NAME="DoNotTranslate"/>
         <META NAME="DoNotCompare"/>
       </FIELD>
-      <FIELD NAME="SpecId"   TYPE="PCHAR" />
+      <FIELD NAME="SpecId"   TYPE="PCHAR">
+        <META NAME="DoNotCompare"/>
+      </FIELD>
       <FIELD NAME="Comment"  TYPE="PCHAR" />
     </FIELDS>
     <ATTRIBUTES>
@@ -1202,7 +1210,6 @@
   <ELEMENT NAME="Specification" MAIN="TRUE" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">requirements</META>
     <FIELDS>
-      <FIELD NAME="Guid"    TYPE="PCHAR" />
       <FIELD NAME="Version" TYPE="PCHAR">
 	<META NAME="DoNotTranslate"/>
       </FIELD>
@@ -1212,7 +1219,6 @@
       <FIELD NAME="ChapterRefs" REFTYPE="ChapterRef" MODE="DEFAULT" />
     </FIELDS>
     <ATTRIBUTES>
-      <ATTR NAME="Guid"    TARGET="Guid"    OPTIONAL="TRUE"/>
       <ATTR NAME="version" TARGET="Version" OPTIONAL="TRUE"/>
     </ATTRIBUTES>
     <FORMULA>
@@ -1276,7 +1282,11 @@
       <FIELD NAME="Type"                 ENUMTYPE="Paragraph_type" />
       <FIELD NAME="Scope"                ENUMTYPE="Paragraph_scope" >
         <META NAME="DoNotTranslate" />
+        <META NAME="DoNotCompare" />
       </FIELD>
+      <FIELD NAME="ScopeOnBoard"         TYPE="BOOLEAN" />
+      <FIELD NAME="ScopeTrackside"       TYPE="BOOLEAN" />
+      <FIELD NAME="ScopeRollingStock"    TYPE="BOOLEAN" />
       <FIELD NAME="Bl"                   TYPE="PCHAR">
         <META NAME="DoNotTranslate" />
       </FIELD>
@@ -1314,14 +1324,14 @@
       <FIELD NAME="FunctionalBlockName"  TYPE="PCHAR" >
         <META NAME="DoNotTranslate" />
       </FIELD>
-      <FIELD NAME="Guid"                 TYPE="PCHAR">
+      <FIELD NAME="ObsoleteGuid"         TYPE="PCHAR">
         <META NAME="Key"/> 
         <META NAME="DoNotCompare"/> 
       </FIELD>
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="id"                  TARGET="Id"/>
-      <ATTR NAME="guid"                TARGET="Guid" OPTIONAL="TRUE" DEFAULT=""/>
+      <ATTR NAME="guid"                TARGET="ObsoleteGuid" OPTIONAL="TRUE" DEFAULT=""/>
       <ATTR NAME="type"                TARGET="Type" OPTIONAL="TRUE" DEFAULT="REQUIREMENT" />
       <ATTR NAME="scope"               TARGET="Scope" OPTIONAL="TRUE" DEFAULT="OBU_AND_TRACK" />
       <ATTR NAME="bl"                  TARGET="Bl" OPTIONAL="TRUE" DEFAULT=""/>
@@ -1334,6 +1344,9 @@
       <ATTR NAME="specIssue"           TARGET="SpecIssue" OPTIONAL="TRUE" DEFAULT="FALSE" />
       <ATTR NAME="functionalBlock"     TARGET="FunctionalBlock" OPTIONAL="TRUE" DEFAULT="FALSE" />
       <ATTR NAME="functionalBlockName" TARGET="FunctionalBlockName" OPTIONAL="TRUE" DEFAULT=""/>
+      <ATTR NAME="onboard"             TARGET="ScopeOnBoard" OPTIONAL="TRUE" DEFAULT="FALSE"/>
+      <ATTR NAME="trackside"           TARGET="ScopeTrackside" OPTIONAL="TRUE" DEFAULT="FALSE"/>
+      <ATTR NAME="rollinkstock"        TARGET="ScopeRollingStock" OPTIONAL="TRUE" DEFAULT="FALSE"/>
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
@@ -1719,6 +1732,8 @@
     <ENUMVALUE NAME="OBU_AND_TRACK" USEASNULL="TRUE" />
     <ENUMVALUE NAME="TRACK" />
     <ENUMVALUE NAME="OBU" />
+    <ENUMVALUE NAME="ROLLING_STOCK" />
+    <ENUMVALUE NAME="FLAGS" />
   </ENUM>
 
   <!-- ------------------ -->

@@ -22,7 +22,7 @@ using System.Drawing.Design;
 
 namespace GUI.DataDictionaryView
 {
-    public class CaseTreeNode : DataTreeNode<Case>
+    public class CaseTreeNode : ModelElementTreeNode<Case>
     {
         private class ItemEditor : NamedEditor
         {

@@ -175,12 +175,14 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Add parameter", new EventHandler(AddParameterHandler)));
-            retVal.Add(new MenuItem("Add case", new EventHandler(AddCaseHandler)));
-            retVal.Add(new MenuItem("-"));
+            MenuItem newItem = new MenuItem("Add...");
+            newItem.MenuItems.Add(new MenuItem("Parameter", new EventHandler(AddParameterHandler)));
+            newItem.MenuItems.Add(new MenuItem("Case", new EventHandler(AddCaseHandler)));
+            retVal.Add(newItem);
+            retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
 
             DataDictionary.Interpreter.InterpretationContext context = new DataDictionary.Interpreter.InterpretationContext(Item);
             if (Item.FormalParameters.Count == 1)
@@ -189,8 +191,8 @@ namespace GUI.DataDictionaryView
                 DataDictionary.Functions.Graph graph = Item.createGraph(context, parameter);
                 if (graph != null && graph.Segments.Count != 0)
                 {
-                    retVal.Add(new MenuItem("Display", new EventHandler(DisplayHandler)));
-                    retVal.Add(new MenuItem("-"));
+                    retVal.Insert(7, new MenuItem("Display", new EventHandler(DisplayHandler)));
+                    retVal.Insert(8, new MenuItem("-"));
                 }
             }
             else if (Item.FormalParameters.Count == 2)
@@ -198,12 +200,10 @@ namespace GUI.DataDictionaryView
                 DataDictionary.Functions.Surface surface = Item.createSurface(context);
                 if (surface != null && surface.Segments.Count != 0)
                 {
-                    retVal.Add(new MenuItem("Display", new EventHandler(DisplayHandler)));
-                    retVal.Add(new MenuItem("-"));
+                    retVal.Insert(7, new MenuItem("Display", new EventHandler(DisplayHandler)));
+                    retVal.Insert(8, new MenuItem("-"));
                 }
             }
-
-            retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
 
             return retVal;
         }

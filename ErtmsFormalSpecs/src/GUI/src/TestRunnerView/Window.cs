@@ -107,6 +107,9 @@ namespace GUI.TestRunnerView
             Text = "System test view";
             Visible = false;
             EFSSystem = efsSystem;
+
+            ResizeDescriptionArea(propertyGrid, 20);
+
             Refresh();
         }
 
@@ -439,24 +442,6 @@ namespace GUI.TestRunnerView
             }
 
             Refresh();
-        }
-
-        /// <summary>
-        /// Provides the model element currently selected in this IBaseForm
-        /// </summary>
-        public Utils.IModelElement Selected
-        {
-            get
-            {
-                Utils.IModelElement retVal = null;
-
-                if (TreeView != null && TreeView.Selected != null)
-                {
-                    retVal = TreeView.Selected.Model;
-                }
-
-                return retVal;
-            }
         }
     }
 }

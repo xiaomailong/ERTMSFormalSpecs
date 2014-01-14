@@ -1,5 +1,6 @@
 <NameSpace
  Name="NATIONAL_SYSTEM_ISOLATION"
+ Guid="6585894c-ad3a-4f61-bc0a-4485b6508003"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,46 +9,55 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="428590e4-5121-4719-837d-5746db948da9"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b6d373b8-4461-4ba8-9924-618bfd47f228"
 >
 </ReqRef><ReqRef
  Id="18e07467-cc7f-49fe-af88-92a28c9906ad"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5d13e961-0054-4953-9886-248de4ad4c0b"
 >
 </ReqRef><Comment>This message allows to transmit the indication that a National System, which is interfaced to the on-board through an STM, is isolated or not.</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="e662b438-b9a9-4e5e-96de-ec1d39a6b3f0"
 >
 </StructureElement><StructureElement
  TypeName="NID_NTC"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_NTC"
+ Guid="6c6804cf-3382-4003-87e0-e75e59dba2c3"
 >
 <ReqRef
  Id="b8b17a24-261e-4580-88ef-9b0d3e557a00"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b5c82258-07d5-40f3-a52c-a819b854feca"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="M_NATIONAL_SYSTEM_ISOLATION"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_NATIONAL_SYSTEM_ISOLATION"
+ Guid="b50552c8-428c-42aa-ad32-8017a79f5e6d"
 >
 <ReqRef
  Id="828c326c-8ed8-45cd-84f9-ebb663801513"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a326ed95-c559-4abf-b1f3-5cd1326fdf25"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

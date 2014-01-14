@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace GUI.DataDictionaryView
 {
-    public class SubEnumerationsTreeNode : DataTreeNode<DataDictionary.Types.Enum>
+    public class SubEnumerationsTreeNode : ModelElementTreeNode<DataDictionary.Types.Enum>
     {
         private class ItemEditor : NamedEditor
         {
@@ -90,7 +90,7 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
             retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
 

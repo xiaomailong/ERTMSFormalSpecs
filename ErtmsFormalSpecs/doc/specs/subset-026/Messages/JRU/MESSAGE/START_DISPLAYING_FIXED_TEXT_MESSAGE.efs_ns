@@ -1,5 +1,6 @@
 <NameSpace
  Name="START_DISPLAYING_FIXED_TEXT_MESSAGE"
+ Guid="65140ee6-debb-4a60-bace-7a64f85f1e69"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,35 +9,41 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="85f900e2-c621-461d-8f5c-20b62dcf82f2"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="1bdef689-c067-47aa-8d44-aea7f7296f5e"
 >
 </ReqRef><ReqRef
  Id="2ff7fe69-7ba7-4e29-9c09-dd1a97e10e5c"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9f933b42-94e6-4db5-85b7-0885e8eeff21"
 >
 </ReqRef><Comment>This message contains a fixed text message that is currently being shown to the driver</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="94c8ea62-9ccc-4917-8941-b830dda93739"
 >
 </StructureElement><StructureElement
  TypeName="Q_TEXT"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_TEXT"
+ Guid="be23137e-a708-4d7b-8631-7c1362996027"
 >
 <ReqRef
  Id="d62ce08f-20aa-491d-a448-02ef1c5e981f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9e1e9761-9fb8-45c7-bd3c-925a6a212cc4"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

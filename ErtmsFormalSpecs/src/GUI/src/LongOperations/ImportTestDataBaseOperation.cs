@@ -1,0 +1,93 @@
+﻿// ------------------------------------------------------------------------------
+// -- Copyright ERTMS Solutions
+// -- Licensed under the EUPL V.1.1
+// -- http://joinup.ec.europa.eu/software/page/eupl/licence-eupl
+// --
+// -- This file is part of ERTMSFormalSpec software and documentation
+// --
+// --  ERTMSFormalSpec is free software: you can redistribute it and/or modify
+// --  it under the terms of the EUPL General Public License, v.1.1
+// --
+// -- ERTMSFormalSpec is distributed in the hope that it will be useful,
+// -- but WITHOUT ANY WARRANTY; without even the implied warranty of
+// -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// --
+// ------------------------------------------------------------------------------
+namespace GUI.LongOperations
+{
+    using DataDictionary;
+
+    public class ImportTestDataBaseOperation : BaseLongOperation
+    {
+        /// <summary>
+        /// The name of the frame for the subset 76
+        /// </summary>
+        private static string SUBSET_076 = "Subset-076";
+
+        /// <summary>
+        /// The password requireed to access the database
+        /// </summary>
+        private static string DB_PASSWORD = "papagayo";
+
+        /// <summary>
+        /// The dictionary in which the database should be imported
+        /// </summary>
+        private DataDictionary.Dictionary Dictionary;
+
+        /// <summary>
+        /// The name of the database to import
+        /// </summary>
+        private string FileName { get; set; }
+
+        /// <summary>
+        /// Should we import a file, or a directory containing a set of files?
+        /// </summary>
+        public enum Mode { File, Directory };
+
+        /// <summary>
+        /// The import mode
+        /// </summary>
+        private Mode ImportMode { get; set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="dictionary"></param>
+        public ImportTestDataBaseOperation(string fileName, Dictionary dictionary, Mode mode)
+        {
+            FileName = fileName;
+            Dictionary = dictionary;
+            ImportMode = mode;
+        }
+
+        /// <summary>
+        /// Generates the file in the background thread
+        /// </summary>
+        /// <param name="arg"></param>
+        public override void ExecuteWork()
+        {
+            DataDictionary.Tests.Frame frame = Dictionary.findFrame(SUBSET_076);
+            if (frame == null)
+            {
+                frame = (DataDictionary.Tests.Frame)DataDictionary.Generated.acceptor.getFactory().createFrame();
+                frame.Name = SUBSET_076;
+                Dictionary.appendTests(frame);
+            }
+
+            if (ImportMode == Mode.File)
+            {
+                Importers.TestImporter importer = new Importers.TestImporter(FileName, DB_PASSWORD);
+                importer.Import(frame);
+            }
+            else
+            {
+                foreach (string fName in System.IO.Directory.GetFiles(FileName, "*.mdb"))
+                {
+                    Importers.TestImporter importer = new Importers.TestImporter(fName, DB_PASSWORD);
+                    importer.Import(frame);
+                }
+            }
+        }
+    }
+}

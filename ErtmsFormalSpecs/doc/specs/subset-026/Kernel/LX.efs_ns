@@ -4,6 +4,7 @@
  Width="100"
  Height="50"
  Name="LX"
+ Guid="b086b356-2889-4262-a7bb-ae9355607b0a"
 >
 <NameSpaces>
 </NameSpaces>
@@ -11,26 +12,32 @@
 <Structure
  Implemented="TRUE"
  Name="LevelCrossing"
+ Guid="02504b1e-5cef-4fa8-b6ec-b2928255acdf"
 >
 <ReqRef
  Id="f80261a5-4553-4c43-ab09-2cf0da750a7e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac807194-ff85-4c2c-afab-ada1d79de657"
 >
 </ReqRef><ReqRef
  Id="f694242d-ad4f-45aa-a715-677610005bcb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a01f5fe3-58db-4bd6-aa9f-517efe11e50a"
 >
 </ReqRef><ReqRef
  Id="0f039a3b-873b-484c-913f-292a6031b162"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3199d1ed-27e0-4cb4-9745-2c0841a07a85"
 >
 </ReqRef><ReqRef
  Id="4744429f-fce3-4833-817a-c0cd74ffcd7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d6d74812-730d-4c10-a0cf-61b79821cf53"
 >
 </ReqRef><ReqRef
  Id="09955e19-89e5-4073-8a7b-b17cb637603a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f3674213-e094-4540-897f-4f7f2ed3e730"
 >
 </ReqRef><Comment>Represents a level crossing received from the trackside.</Comment>
 <StructureElement
@@ -39,14 +46,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Id"
+ Guid="77b46ead-5ee4-4253-8161-e6ec80348d1b"
 >
 <ReqRef
  Id="6caaedb4-a566-4536-a6c7-b958f8c96d03"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0a37e135-3601-4b30-ada7-683f32a32859"
 >
 </ReqRef><ReqRef
  Id="d0a00d26-268e-4fe4-87b9-1b3331051606"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05703681-a3d5-4897-8a17-3090af21e8cc"
 >
 </ReqRef><Comment>The identity number of the level crossing.</Comment>
 </StructureElement><StructureElement
@@ -56,6 +66,7 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="LRBG"
+ Guid="165bbb56-3f64-4a74-bde9-8c9c5a0d5552"
 >
 <Comment>Indicates the id of the balise group to which is related the distance of the level crossing.</Comment>
 </StructureElement><StructureElement
@@ -64,14 +75,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Location"
+ Guid="2ca4decf-5975-4f37-aa98-ced4aac78e2b"
 >
 <ReqRef
  Id="06213f41-1d21-4d8e-bed7-9f24274f7f14"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3c9b63b1-de4b-4dab-be47-b0b3570eb79a"
 >
 </ReqRef><ReqRef
  Id="4788d498-2e49-46e4-b9ef-ab4371ff454b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb4c8e01-db6e-40ee-a2e0-64716e00aa3e"
 >
 </ReqRef><Comment>Distance to level crossing start location.</Comment>
 </StructureElement><StructureElement
@@ -80,14 +94,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Length"
+ Guid="08b02a6a-ead7-4156-81ff-c5eb304fadc1"
 >
 <ReqRef
  Id="06213f41-1d21-4d8e-bed7-9f24274f7f14"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="965c3270-de69-47fd-a2f6-68ab599ec599"
 >
 </ReqRef><ReqRef
  Id="29a4f8d4-9f89-4bd3-9a47-729f68635b19"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9def4b42-84f5-42f1-a293-f471187a5f0d"
 >
 </ReqRef><Comment>Length of the level crossing area.</Comment>
 </StructureElement><StructureElement
@@ -96,22 +113,27 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="IsProtected"
+ Guid="93d3aa15-7a76-470e-83d4-0dfc90a7aae3"
 >
 <ReqRef
  Id="127b4102-89de-4c50-9c52-b1bead79aa18"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9abdf440-430b-4d12-aa43-4e7f0a52bc68"
 >
 </ReqRef><ReqRef
  Id="36b7b2d7-fafa-4229-b0da-4e4d149ed7c7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8e79b32e-2f40-4d5b-9eb6-e5e570c92648"
 >
 </ReqRef><ReqRef
  Id="f694242d-ad4f-45aa-a715-677610005bcb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55413315-de99-40b7-89bd-0dd28e6807ad"
 >
 </ReqRef><ReqRef
  Id="829b0ec7-e41b-4dbb-ac6a-fd2079cd565c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="34b77fbb-6366-4367-8ce9-0830473df896"
 >
 </ReqRef><Comment>Level crossing protection status.</Comment>
 </StructureElement><StructureElement
@@ -120,14 +142,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Speed"
+ Guid="04f6de41-4e3d-4253-84bc-13ea66572423"
 >
 <ReqRef
  Id="4b756e9d-4e0d-4fd1-81a8-9244618a8547"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e66acd40-3526-4922-bed2-16962f9b5f76"
 >
 </ReqRef><ReqRef
  Id="35deca04-3db3-4618-8a5b-13f4cdd1478c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4efcec09-50c5-4d95-a9df-1cf217106071"
 >
 </ReqRef><Comment>Permitted speed for the level crossing speed restriction.</Comment>
 </StructureElement><StructureElement
@@ -136,14 +161,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="StoppingRequired"
+ Guid="c5ed6932-f1d1-49ea-8e62-8b6e37e52406"
 >
 <ReqRef
  Id="4be474be-fe70-49b2-8c94-d7383e9539e8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53d23f57-9378-4b35-999a-e3ae4ab5958a"
 >
 </ReqRef><ReqRef
  Id="fbae4639-91c7-4474-bfc1-2e930f72239f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1e01ef7a-3905-475b-aa8a-91b3fa6ebcd3"
 >
 </ReqRef><Comment>Indicates whether stopping the train in rear of a non protected level crossing is required.</Comment>
 </StructureElement><StructureElement
@@ -152,14 +180,17 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="StoppingAreaLength"
+ Guid="66041ee1-2931-4889-a8ba-079014523bee"
 >
 <ReqRef
  Id="25ba8ee8-fa61-47e2-acbd-df1d8614ed6a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="202d1272-9864-4eef-9bd9-395e6086362a"
 >
 </ReqRef><ReqRef
  Id="ece82958-6f94-4168-b5b1-f3fe24058435"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2dff7a7e-cb5e-4d2e-9b12-e6e7c349421d"
 >
 </ReqRef><Comment>Length of the stopping area in rear of the start location of the level crossing area.</Comment>
 </StructureElement></Structure></Structures>
@@ -170,14 +201,17 @@
  Default="[]"
  Implemented="TRUE"
  Name="LevelCrossings"
+ Guid="f7ac6fa8-6bd4-4b62-818b-23b38afbfbeb"
 >
 <ReqRef
  Id="6caaedb4-a566-4536-a6c7-b958f8c96d03"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f14f9e76-fccf-46e4-a7da-5c1d226d8d2b"
 >
 </ReqRef><ReqRef
  Id="0f039a3b-873b-484c-913f-292a6031b162"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af170558-4a3b-4241-aaf3-f806e11d7e67"
 >
 </ReqRef><Comment>Represents the level crossings received from the trackside.</Comment>
 </Collection></Collections>
@@ -186,34 +220,41 @@
  Type="Default.BaseTypes.Speed"
  Implemented="TRUE"
  Name="SpeedRestrictions"
+ Guid="43f4c956-b164-47bd-8d4a-3bedc17819d2"
 >
 <ReqRef
  Id="f80261a5-4553-4c43-ab09-2cf0da750a7e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9aea009c-7b86-4064-b613-03e2a4294b05"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="6caaedb4-a566-4536-a6c7-b958f8c96d03"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9b4eb25b-c267-49ab-9fff-47dc2a06fc64"
 >
 </ReqRef><ReqRef
  Id="bfa09769-fb03-456f-b92b-14ab4cf7977b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b64392bb-f12c-4e06-88c1-68cb8976414a"
 >
 </ReqRef><ReqRef
  Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="01304af6-c162-4a03-9357-acca83f8d327"
 >
 </ReqRef><Comment>Provides the speed profile due to the level crossing restrictions.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="474d82b0-e2f2-48b9-a57e-304089744732"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
+ Guid="0aaa7939-0011-43dc-9333-93f25d3eead6"
 >
 <Expression>(REDUCE LevelCrossings 
     USING  
@@ -225,53 +266,72 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Type="Default.BaseTypes.Speed"
  Implemented="TRUE"
  Name="LXSpeedRestriction"
+ Guid="b2e86dbf-3f29-4693-b45a-9152ff8e90d1"
 >
 <ReqRef
  Id="06213f41-1d21-4d8e-bed7-9f24274f7f14"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2eb34725-9edf-4f67-b8ee-646d5564503e"
 >
 </ReqRef><ReqRef
  Id="127b4102-89de-4c50-9c52-b1bead79aa18"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7a0a7035-0645-4164-9287-bd04326db310"
 >
 </ReqRef><ReqRef
  Id="4b756e9d-4e0d-4fd1-81a8-9244618a8547"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c77a94d3-55b6-47e0-9b89-70e7ed1fdece"
 >
 </ReqRef><ReqRef
  Id="4be474be-fe70-49b2-8c94-d7383e9539e8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ecb575d7-e491-4f57-9b1a-90cb8f610ecc"
 >
 </ReqRef><ReqRef
  Id="25ba8ee8-fa61-47e2-acbd-df1d8614ed6a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1e8d68f9-0685-4d62-b7f2-816013e62ef2"
 >
 </ReqRef><Comment>Provides the speed profile due to a level crossing.</Comment>
 <Parameters>
 <Parameter
  Type="LevelCrossing"
  Name="aLX"
+ Guid="d7d85ea2-3ebc-4c2a-a4aa-8074be5f2f4e"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
+ Guid="00edb0fe-84e0-4a5c-ba02-68f649cbab18"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Stopping area"
+ Guid="c02bca9b-8d4b-448d-a0f4-34d1cbdf40f8"
 >
 <PreConditions>
-<PreCondition>aLX.Location - Default.BaseTypes.LengthToDistance(aLX.StoppingAreaLength) &lt;= Distance</PreCondition><PreCondition>Distance &lt; aLX.Location - Default.BaseTypes.LengthToDistance(aLX.StoppingAreaLength) + 0.1</PreCondition></PreConditions>
+<PreCondition
+ Guid="0b2f6eef-b4ba-4d04-b58d-f9e3967cb279"
+>aLX.Location - Default.BaseTypes.LengthToDistance(aLX.StoppingAreaLength) &lt;= Distance</PreCondition><PreCondition
+ Guid="8950058e-304d-4ac4-a86a-a98ef88c42a9"
+>Distance &lt; aLX.Location - Default.BaseTypes.LengthToDistance(aLX.StoppingAreaLength) + 0.1</PreCondition></PreConditions>
 <Expression>StoppingAreaSpeed(aLX)</Expression>
 </Case><Case
  Name="During LX"
+ Guid="20734346-3c5e-4874-98f2-a6f945ae06cf"
 >
 <PreConditions>
-<PreCondition>aLX.Location &lt;= Distance</PreCondition><PreCondition>Distance &lt; aLX.Location + Default.BaseTypes.LengthToDistance(aLX.Length)</PreCondition></PreConditions>
+<PreCondition
+ Guid="aa68eaa3-e106-4898-a5a8-0da6cc9bab87"
+>aLX.Location &lt;= Distance</PreCondition><PreCondition
+ Guid="fcd3813f-21a2-4424-a05a-e68ff8a575e9"
+>Distance &lt; aLX.Location + Default.BaseTypes.LengthToDistance(aLX.Length)</PreCondition></PreConditions>
 <Expression>NonProtectedSpeed(aLX)</Expression>
 </Case><Case
  Name="Outside LX"
+ Guid="f1b56221-be26-417f-969b-c42462ccb12f"
 >
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
@@ -279,27 +339,34 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Type="Default.BaseTypes.Speed"
  Implemented="TRUE"
  Name="NonProtectedSpeed"
+ Guid="fc60e92d-e251-48d6-85be-da9ced8c827f"
 >
 <ReqRef
  Id="4b756e9d-4e0d-4fd1-81a8-9244618a8547"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3901d7e5-2c67-47fa-baed-a686559b96ed"
 >
 </ReqRef><Comment>Provides the speed value during the level crossing. If the current LX is protected, the speed is not limited, if the current LX is not protected, the speed is limited to the value given by the LX.</Comment>
 <Parameters>
 <Parameter
  Type="LevelCrossing"
  Name="aLX"
+ Guid="0cb48cb8-ea4e-4723-9582-e4719b7ee221"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="LX is not protected"
+ Guid="4aeaa947-7bb9-4f94-b693-73f82de18cd0"
 >
 <PreConditions>
-<PreCondition>aLX.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition></PreConditions>
+<PreCondition
+ Guid="d632bc00-1e4d-44cf-ba8c-2133d1f88ca0"
+>aLX.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition></PreConditions>
 <Expression>aLX.Speed</Expression>
 </Case><Case
  Name="LX is protected"
+ Guid="4359d193-2752-4a1e-8efe-3d266fb9367c"
 >
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
@@ -307,10 +374,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Type="Default.BaseTypes.Speed"
  Implemented="TRUE"
  Name="StoppingAreaSpeed"
+ Guid="38fbcc58-30db-45fc-90ee-de1f34963493"
 >
 <ReqRef
  Id="4be474be-fe70-49b2-8c94-d7383e9539e8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ed753af3-4522-4e47-a35b-e0b83aa4f612"
 >
 </ReqRef><Comment>Provides the speed value for the stopping area of a given LX. There are three possible cases:
 1. The LX is not protected and the stopping is required =&gt; the speed equals 0
@@ -320,23 +389,35 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <Parameter
  Type="LevelCrossing"
  Name="aLX"
+ Guid="9369ff2c-f0da-45fc-98fc-62bebb888802"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Stopping required"
+ Guid="8665054a-cef1-49ed-a051-18e1509107f4"
 >
 <PreConditions>
-<PreCondition>aLX.StoppingRequired == Messages.Q_STOPLX.Stop_required</PreCondition><PreCondition>aLX.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition></PreConditions>
+<PreCondition
+ Guid="8938012f-528f-44aa-bfc5-753e5238a230"
+>aLX.StoppingRequired == Messages.Q_STOPLX.Stop_required</PreCondition><PreCondition
+ Guid="4cf0b792-29ea-4228-93ac-30a8d6186e3a"
+>aLX.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="No stopping required, stopping area is 0"
+ Guid="1c6b7841-a634-4b3c-86aa-d2b2e085c7d5"
 >
 <PreConditions>
-<PreCondition>aLX.StoppingAreaLength == 0.0</PreCondition><PreCondition>aLX.IsProtected ==  Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition></PreConditions>
+<PreCondition
+ Guid="06f322c2-1017-4408-b473-623b18c09641"
+>aLX.StoppingAreaLength == 0.0</PreCondition><PreCondition
+ Guid="e0e31d3a-3425-4866-8bef-75967e0814bc"
+>aLX.IsProtected ==  Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition></PreConditions>
 <Expression>aLX.Speed</Expression>
 </Case><Case
  Name="No stopping required, stopping area is != 0"
+ Guid="00ecb741-a6a6-4d3e-9420-6320aca790ae"
 >
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
@@ -345,44 +426,55 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateLevelCrossing"
+ Guid="cbac608b-ef3f-4823-bf1e-795f7b75f62c"
 >
 <ReqRef
  Id="4788d498-2e49-46e4-b9ef-ab4371ff454b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="60fc910b-43d2-48f8-b1b0-cd93faa009f4"
 >
 </ReqRef><ReqRef
  Id="29a4f8d4-9f89-4bd3-9a47-729f68635b19"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6752f332-3721-44ae-8418-a80bb3578c3f"
 >
 </ReqRef><ReqRef
  Id="ece82958-6f94-4168-b5b1-f3fe24058435"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eafa30ab-cb9a-459f-8884-42d8a34833b4"
 >
 </ReqRef><ReqRef
  Id="35deca04-3db3-4618-8a5b-13f4cdd1478c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c3426c7a-5593-444b-a84e-8df379e237e1"
 >
 </ReqRef><Comment>When a new LX is received, one have to check if it has the same id than an other LX received previously. In that case we have to replace the previously received TSR with the same id by the new one. This function takes a previously received LX in parameters and if it has the same id as the new one, it returns a new LX; in the other case it returnes the same TSR.</Comment>
 <Parameters>
 <Parameter
  Type="LevelCrossing"
  Name="aLevelCrossing"
+ Guid="5c9e17d6-63b7-439f-8087-738f2b1c7f4a"
 >
 </Parameter><Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message"
  Name="Packet"
+ Guid="1e9359ff-7cde-41ea-8f70-26abc9a7f524"
 >
 </Parameter><Parameter
  Type="Messages.NID_BG"
  Name="NID_BG"
+ Guid="afc60f2f-a697-45ad-acb2-07fe40be5d66"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SameId"
+ Guid="3c7d1422-3ee4-4419-ad6e-520b797ab236"
 >
 <PreConditions>
-<PreCondition>aLevelCrossing.Id == Packet.NID_LX</PreCondition></PreConditions>
+<PreCondition
+ Guid="fe8a1ccd-112a-435e-bfef-c05500940864"
+>aLevelCrossing.Id == Packet.NID_LX</PreCondition></PreConditions>
 <Expression>LevelCrossing
 {
     Id =&gt; Packet.NID_LX,
@@ -396,9 +488,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 }</Expression>
 </Case><Case
  Name="DifferentId"
+ Guid="83d8765c-1d6d-4d4d-8c18-5de1e74b359e"
 >
 <PreConditions>
-<PreCondition>aLevelCrossing.Id != Packet.NID_LX</PreCondition></PreConditions>
+<PreCondition
+ Guid="aa4903f7-4694-4419-8a52-da1e0bdf3679"
+>aLevelCrossing.Id != Packet.NID_LX</PreCondition></PreConditions>
 <Expression>aLevelCrossing</Expression>
 </Case></Cases>
 </Function></Functions>
@@ -406,20 +501,24 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <Procedure
  Implemented="TRUE"
  Name="LXReceived"
+ Guid="ea0c2341-28a7-4f3c-b952-200b3c078ff1"
 >
 <ReqRef
  Id="f694242d-ad4f-45aa-a715-677610005bcb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="db94e85a-ca32-4533-bcc6-219d9f36c47e"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message"
  Name="Packet"
+ Guid="0c96d92f-4119-4027-a554-bb5687195b89"
 >
 </Parameter><Parameter
  Type="Messages.NID_BG"
  Name="NID_BG"
+ Guid="51e8597b-8ed8-44ae-bc71-987d1edc9614"
 >
 </Parameter></Parameters>
 <Rules>
@@ -428,50 +527,65 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="UpdateLevelCrossings"
+ Guid="2f346b4d-6e5b-4d7c-aa47-e547a9a1601d"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="ExistingLevelCrossing"
+ Guid="5ec899a1-5be9-4d78-89d9-330a9bbf343f"
 >
 <ReqRef
  Id="1db11ec4-063b-4b77-b176-cba385f8f886"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="71622625-e828-4a94-b810-def49fca23c3"
 >
 </ReqRef><PreConditions>
-<PreCondition>THERE_IS_IN LevelCrossings | X.Id == Packet.NID_LX</PreCondition></PreConditions>
+<PreCondition
+ Guid="c45454d0-a5f2-4a6d-ad2e-bfc59ec32279"
+>THERE_IS_IN LevelCrossings | X.Id == Packet.NID_LX</PreCondition></PreConditions>
 <Actions>
-<Action>LevelCrossings &lt;- MAP LevelCrossings USING CreateLevelCrossing(aLevelCrossing=&gt;X, Packet=&gt;Packet, NID_BG=&gt;NID_BG)</Action></Actions>
+<Action
+ Guid="c3074af9-ea7f-46b8-a94a-efca00745de7"
+>LevelCrossings &lt;- MAP LevelCrossings USING CreateLevelCrossing(aLevelCrossing=&gt;X, Packet=&gt;Packet, NID_BG=&gt;NID_BG)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="NewLevelCrossing"
+ Guid="6502b4b7-ffd9-445f-b073-0ced29d3ac61"
 >
 <ReqRef
  Id="6caaedb4-a566-4536-a6c7-b958f8c96d03"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1ca1251f-7e91-45a7-83cf-67828b216ce4"
 >
 </ReqRef><ReqRef
  Id="29a4f8d4-9f89-4bd3-9a47-729f68635b19"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2881fd28-b072-4567-9d2f-f5ce241e3059"
 >
 </ReqRef><ReqRef
  Id="4788d498-2e49-46e4-b9ef-ab4371ff454b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88d3b679-db56-42e6-af8e-b356bfcf8c61"
 >
 </ReqRef><ReqRef
  Id="35deca04-3db3-4618-8a5b-13f4cdd1478c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4a209b7-34b7-43e6-abca-d7c0bc952347"
 >
 </ReqRef><ReqRef
  Id="ece82958-6f94-4168-b5b1-f3fe24058435"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7fa62d07-c1df-4796-b333-a7d62dea0a53"
 >
 </ReqRef><Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>INSERT
+<Action
+ Guid="31f55fb6-5217-49b5-8a68-ba5ad5434dfa"
+>INSERT
 LevelCrossing
 {
     Id=&gt;Packet.NID_LX,
@@ -494,18 +608,22 @@ IN LevelCrossings</Action></Actions>
  VariableMode="Internal"
  Implemented="TRUE"
  Name="LevelCrossings"
+ Guid="f57bad76-0297-460a-916f-2c6ce1af3ffd"
 >
 <ReqRef
  Id="f80261a5-4553-4c43-ab09-2cf0da750a7e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7298fc20-057d-4d65-ab47-bce3d6280257"
 >
 </ReqRef><ReqRef
  Id="6caaedb4-a566-4536-a6c7-b958f8c96d03"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a6e038f6-1c2d-4472-82db-40ee5b61750f"
 >
 </ReqRef><ReqRef
  Id="8a060a51-4b93-4eb7-aa9b-5b5c264b6820"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8584f093-706e-487f-95ad-7986a043990a"
 >
 </ReqRef><Comment>Represents the level crossings received from the trackside.</Comment>
 </Variable></Variables>

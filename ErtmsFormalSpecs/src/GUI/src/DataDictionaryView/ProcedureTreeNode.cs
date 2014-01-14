@@ -91,10 +91,10 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
-            retVal.Add(new MenuItem("-"));
+            retVal.AddRange(base.GetMenuItems());
 
             return retVal;
         }

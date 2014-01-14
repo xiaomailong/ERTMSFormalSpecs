@@ -1,5 +1,6 @@
 <NameSpace
  Name="FROM_RADIO_INFILL_UNIT"
+ Guid="b6ec9cb1-4bda-4854-b717-35759dd99780"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,55 +9,64 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="5262caf8-71b1-4068-a363-0b7b7a11d82b"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="91b7600a-891e-48bb-b1db-9688cc15acd0"
 >
 </ReqRef><ReqRef
  Id="3f34bf1a-4403-48f6-9858-4e5c0ebc91c9"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="54ac64a4-699d-4cd0-9a8d-182d3088d7d6"
 >
 </ReqRef><Comment>This message is sent after receiving a message from a radio infill unit</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="5b1565d2-89da-4bfa-a89a-b7fa2c9b7f69"
 >
 </StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_C"
+ Guid="0ae197cc-ed03-4822-8de5-0e05ff3e1ef8"
 >
 <ReqRef
  Id="3a34ee40-e69b-4773-9916-141ac4b91693"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ab9d0e66-3578-4da3-a5d3-8bb97bf31b5e"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_RIU"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_RIU"
+ Guid="f50cd748-f27a-48d5-8881-1ece94356f34"
 >
 <ReqRef
  Id="1bbf9e5f-6123-4c52-91ed-6eb9d8282965"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5b69cdfe-2679-494a-9ee1-a940aa6cb6ab"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="EUROLOOP.Message"
- Default="0"
+ Default=""
  Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TELEGRAM"
+ Guid="fc1c4971-c601-4288-9709-813ca143f8f2"
 >
 </StructureElement></Structure></Structures>
 </NameSpace>

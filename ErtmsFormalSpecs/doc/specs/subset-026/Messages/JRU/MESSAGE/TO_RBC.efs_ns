@@ -1,5 +1,6 @@
 <NameSpace
  Name="TO_RBC"
+ Guid="84815ec9-cf6d-4005-9415-c8cebd648ce7"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,59 +9,69 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="661cb372-7d3c-4ada-b2f2-96904f14f361"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e4c03a69-3102-4ffb-aa7e-9b9fa5fa0ef2"
 >
 </ReqRef><ReqRef
  Id="aba7a9a3-253d-451a-8cf5-df368cc1c6d5"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0b85cdb6-9594-4abd-92c3-1a5c089b6314"
 >
 </ReqRef><Comment>This message is sent after sending a message to the RBC</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="3ed95798-f589-4742-929f-293d04ea5750"
 >
 </StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_C"
+ Guid="3af8898c-95d9-4abc-9078-7e6929543da5"
 >
 <ReqRef
  Id="8786f310-b395-4335-99e7-e975a39f7002"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a0af8152-9cb9-485f-be6f-1d148381579c"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_RIU"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_RBC"
+ Guid="3b52b984-17e9-4499-9ee5-c2b56144a526"
 >
 <ReqRef
  Id="dd25f031-3a5c-4443-980a-6020ceeeef1b"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6cfef962-5227-4292-a21d-37c9f08fb16b"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.Message"
- Default="0"
+ Default=""
  Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TELEGRAM"
+ Guid="209eec61-04cb-46d6-87d3-2a26272ec4c6"
 >
 <ReqRef
  Id="49c4ee3f-f7b9-4a71-852c-e816da574639"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="95dfb2aa-fc56-4cbc-bb70-1ba0696d9a06"
 >
 </ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

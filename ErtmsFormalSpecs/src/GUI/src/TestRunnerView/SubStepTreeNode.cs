@@ -20,7 +20,7 @@ using System.Windows.Forms;
 
 namespace GUI.TestRunnerView
 {
-    public class SubStepTreeNode : DataTreeNode<DataDictionary.Tests.SubStep>
+    public class SubStepTreeNode : ModelElementTreeNode<DataDictionary.Tests.SubStep>
     {
         /// <summary>
         /// The value editor
@@ -53,6 +53,29 @@ namespace GUI.TestRunnerView
         public SubStepTreeNode(DataDictionary.Tests.SubStep item)
             : base(item, null, true)
         {
+        }
+
+        /// <summary>
+        /// Handles a selection change event
+        /// </summary>
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
+        {
+            base.SelectionChanged(displayStatistics);
+            if (Item.Translation != null)
+            {
+                if (BaseTreeView != null && BaseTreeView.RefreshNodeContent)
+                {
+                    IBaseForm baseForm = BaseForm;
+                    if (baseForm != null)
+                    {
+                        if (baseForm.RequirementsTextBox != null)
+                        {
+                            baseForm.RequirementsTextBox.Text = Item.Translation.getSourceTextExplain();
+                        }
+                    }
+                }
+            }
         }
 
         protected override void BuildSubNodes()
@@ -149,12 +172,14 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Add action", new EventHandler(AddActionHandler)));
-            retVal.Add(new MenuItem("Add expectation", new EventHandler(AddExpectationHandler)));
-            retVal.Add(new MenuItem("-"));
+            MenuItem newItem = new MenuItem("Add...");
+            newItem.MenuItems.Add(new MenuItem("Action", new EventHandler(AddActionHandler)));
+            newItem.MenuItems.Add(new MenuItem("Expectation", new EventHandler(AddExpectationHandler)));
+            retVal.Add(newItem);
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
 
             return retVal;
         }

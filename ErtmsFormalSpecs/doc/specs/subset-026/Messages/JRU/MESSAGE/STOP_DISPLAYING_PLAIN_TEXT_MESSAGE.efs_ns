@@ -1,5 +1,6 @@
 <NameSpace
  Name="STOP_DISPLAYING_PLAIN_TEXT_MESSAGE"
+ Guid="a03eaadc-ccc9-4e2c-84ec-c3c1b61764ca"
 >
 <NameSpaces>
 </NameSpaces>
@@ -8,60 +9,70 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
+ Guid="425b2f73-bc16-46c4-a871-fdea3e21e57e"
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9e3d7a06-d833-451a-b745-def69acaf353"
 >
 </ReqRef><ReqRef
  Id="0cdea006-f974-48b2-9462-be3e9a5e2f65"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8f9411e7-881f-44e3-a4bc-c694bd3e9cb4"
 >
 </ReqRef><Comment>This message contains a plain text message that is not shown to the driver anymore</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
+ Guid="133cb4cc-ed23-4eee-abdc-ab06c39784fe"
 >
 </StructureElement><StructureElement
  TypeName="L_TEXT"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_TEXT"
+ Guid="30aade39-1562-49b2-87f0-4e453243dabf"
 >
 <ReqRef
  Id="59b2e502-a5e5-41d8-9098-cf4d8939030b"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="85672a67-ec4e-4330-9a1d-cdbbd6aa0670"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence1"
+ Guid="f27a8b25-42bd-481d-997c-e0238af6fc85"
 >
 <ReqRef
  Id="25fc216e-fc4b-4f5a-b72c-070ffcbcff5a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="1bd715aa-6d7a-4d09-8777-34803a29df2b"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure1"
+ Guid="58f080fa-c2cc-4696-9feb-3d8e934c1bb4"
 >
 <StructureElement
  TypeName="String"
  Default="&apos;&apos;"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="X_TEXT"
+ Guid="5ba81fad-b8c4-452b-80f8-ba733829994d"
 >
 </StructureElement></Structure></Structures>
 <Collections>
@@ -71,10 +82,12 @@
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection1"
+ Guid="e28cc83f-5a4f-4bf7-b96d-3dd6cb1d971b"
 >
 <ReqRef
  Id="25fc216e-fc4b-4f5a-b72c-070ffcbcff5a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8c4582be-42ea-4f05-876f-14f383dc3d54"
 >
 </ReqRef></Collection></Collections>
 </NameSpace>
