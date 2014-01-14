@@ -1057,32 +1057,34 @@ namespace GUI
             {
                 System.Drawing.Color retVal = base.ComputedColor;
 
-                switch (Item.MessagePathInfo)
+                if (Item != null)
                 {
-                    case Utils.MessagePathInfoEnum.Nothing:
-                    case Utils.MessagePathInfoEnum.NotComputed:
-                        retVal = System.Drawing.Color.Black;
-                        break;
+                    switch (Item.MessagePathInfo)
+                    {
+                        case Utils.MessagePathInfoEnum.Nothing:
+                        case Utils.MessagePathInfoEnum.NotComputed:
+                            retVal = System.Drawing.Color.Black;
+                            break;
 
-                    case Utils.MessagePathInfoEnum.Error:
-                        retVal = System.Drawing.Color.DarkRed;
-                        break;
-                    case Utils.MessagePathInfoEnum.PathToError:
-                        retVal = System.Drawing.Color.Red;
-                        break;
-                    case Utils.MessagePathInfoEnum.Warning:
-                        retVal = System.Drawing.Color.Brown;
-                        break;
-                    case Utils.MessagePathInfoEnum.PathToWarning:
-                        retVal = System.Drawing.Color.LightCoral;
-                        break;
-                    case Utils.MessagePathInfoEnum.Info:
-                        retVal = System.Drawing.Color.Blue;
-                        break;
-                    case Utils.MessagePathInfoEnum.PathToInfo:
-                        retVal = System.Drawing.Color.LightBlue;
-                        break;
-
+                        case Utils.MessagePathInfoEnum.Error:
+                            retVal = System.Drawing.Color.DarkRed;
+                            break;
+                        case Utils.MessagePathInfoEnum.PathToError:
+                            retVal = System.Drawing.Color.Red;
+                            break;
+                        case Utils.MessagePathInfoEnum.Warning:
+                            retVal = System.Drawing.Color.Brown;
+                            break;
+                        case Utils.MessagePathInfoEnum.PathToWarning:
+                            retVal = System.Drawing.Color.LightCoral;
+                            break;
+                        case Utils.MessagePathInfoEnum.Info:
+                            retVal = System.Drawing.Color.Blue;
+                            break;
+                        case Utils.MessagePathInfoEnum.PathToInfo:
+                            retVal = System.Drawing.Color.LightBlue;
+                            break;
+                    }
                 }
 
                 return retVal;
