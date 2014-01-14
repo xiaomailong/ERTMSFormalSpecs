@@ -114,11 +114,17 @@ namespace GUI
         }
 
         /// <summary>
+        /// Indicates that the subNodes have already been built, hence, does not require to build its contents anymore
+        /// </summary>
+        protected bool SubNodesBuilt = false;
+
+        /// <summary>
         /// Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
-        protected virtual void BuildSubNodes(bool buildSubNodes)
+        public virtual void BuildSubNodes(bool buildSubNodes)
         {
+            SubNodesBuilt = true;
         }
 
         /// <summary>
@@ -948,9 +954,12 @@ namespace GUI
         /// </summary>
         public override void HandleExpand()
         {
-            Nodes.Clear();
-            BuildSubNodes(true);
-            RefreshNode();
+            if (!SubNodesBuilt)
+            {
+                Nodes.Clear();
+                BuildSubNodes(true);
+                RefreshNode();
+            }
 
             base.HandleExpand();
         }
