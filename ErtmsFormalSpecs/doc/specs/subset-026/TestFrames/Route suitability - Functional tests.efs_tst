@@ -149,7 +149,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="82f2c959-8946-4923-9bf9-22f4c7447a4d"
->FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items</Expectation><Expectation
+>(FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e95e1b32-981a-46a5-a7b3-20d48794abf8"
@@ -157,11 +157,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e6c74a23-51b5-4490-8325-aa5f74995ad6"
-></Expectation><Expectation
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.InitialState == 0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="1fa482c6-03b5-4d51-81eb-be4531727386"
->Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.InitialState == 0</Expectation></Expectations>
+>(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 1000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
