@@ -418,6 +418,29 @@ namespace GUI
         /// <param name="Model"></param>
         public abstract void SetRoot(Utils.IModelElement Model);
 
+
+        /// <summary>
+        /// Indicates whether the second argument (parent) is a parent of the first argument (element).
+        /// It also returns true then parent==element
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="parent"></param>
+        /// <returns></returns>
+        private bool IsParent(Utils.IModelElement element, Utils.IModelElement parent)
+        {
+            bool retVal;
+
+            Utils.IModelElement current = element;
+            do
+            {
+                retVal = current == parent;
+                current = Utils.EnclosingFinder<Utils.IModelElement>.find(current);
+            }
+            while (!retVal && current != null);
+
+            return retVal;
+        }
+
         /// <summary>
         /// Finds the node which references the element provided
         /// </summary>
@@ -434,12 +457,21 @@ namespace GUI
             }
             else
             {
+                // Ensures that the sub nodes have been built before trying to find the corresponding element
+                if (!node.SubNodesBuilt)
+                {
+                    node.BuildSubNodes(false);
+                }
+
                 foreach (BaseTreeNode subNode in node.Nodes)
                 {
-                    retVal = InnerFindNode(subNode, element);
-                    if (retVal != null)
+                    if (IsParent(element, subNode.Model))
                     {
-                        break;
+                        retVal = InnerFindNode(subNode, element);
+                        if (retVal != null)
+                        {
+                            break;
+                        }
                     }
                 }
             }
