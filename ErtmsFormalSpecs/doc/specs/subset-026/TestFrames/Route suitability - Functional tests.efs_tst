@@ -103,7 +103,7 @@
                       Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                       Q_TRACKINIT =&gt; 0,
 
-                      D_SUITABILITY =&gt; 1000,
+                      D_SUITABILITY =&gt; 500,
                       Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Loading_gauge_profile,
                       M_LINEGAUGE =&gt; Messages.M_LINEGAUGE.GB,
 
@@ -116,7 +116,7 @@
                          }
                         ,
                         Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1{
-                            D_SUITABILITY =&gt; 1000,
+                            D_SUITABILITY =&gt; 2000,
                             Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Traction_system,
                             M_VOLTAGE =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
                             NID_CTRACTION =&gt; 80
@@ -148,20 +148,36 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="82f2c959-8946-4923-9bf9-22f4c7447a4d"
->(FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 1000.0</Expectation><Expectation
+ Guid="4c03c706-5e86-437c-996a-a9c74e790cea"
+>THERE_IS_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | X.TractionSystem == Messages.M_VOLTAGE.AC_25_kV_50_Hz</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="e95e1b32-981a-46a5-a7b3-20d48794abf8"
->(COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 3</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="e6c74a23-51b5-4490-8325-aa5f74995ad6"
+ Guid="0c90100c-e33e-4236-b027-3dbd15f18f5b"
 >Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.InitialState == 0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="1fa482c6-03b5-4d51-81eb-be4531727386"
->(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 1000.0</Expectation></Expectations>
+ Guid="c5fbed39-6356-4c0e-b7f3-8b4bfc80ccf8"
+>(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 2000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0f08b536-83f1-4e8f-afc9-094f88eb7965"
+>(FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 500.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b2be7619-db97-4931-bc20-c69af53c64c0"
+>(COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 3</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b9b55801-26ed-4880-92bd-2ce0858c4896"
+>THERE_IS_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | X.Distance == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="cc6ddbef-692f-4036-9f74-873156dd3352"
+>THERE_IS_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | X.Type == Messages.Q_SUITABILITY.Max_axle_load</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0ddeb3ea-caf9-4c79-a64b-3d649f712d85"
+>THERE_IS_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | X.Type == Messages.Q_SUITABILITY.Loading_gauge_profile</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
