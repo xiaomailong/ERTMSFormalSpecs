@@ -542,24 +542,50 @@ namespace GUI
         {
             BaseTreeNode retVal = null;
 
-            if (considerThisOne && (node.Parent == null || node.Model != ((BaseTreeNode)node.Parent).Model))
+            if (current != null)
             {
-                if (node.Model.HasMessage(levelEnum) && node.Model != current)
+                if (considerThisOne && (node.Parent == null || node.Model != ((BaseTreeNode)node.Parent).Model))
                 {
-                    retVal = node;
-                }
-            }
-
-            if (retVal == null)
-            {
-                if (node.Nodes.Count > 0)
-                {
-                    foreach (BaseTreeNode subNode in node.Nodes)
+                    if (node.Model.HasMessage(levelEnum) && node.Model != current)
                     {
-                        retVal = RecursivelySelectNext(current, subNode, levelEnum, true);
-                        if (retVal != null)
+                        retVal = node;
+                    }
+                }
+
+                if (retVal == null)
+                {
+                    if (node.Nodes.Count == 0)
+                    {
+                        // Maybe the correspponding subnodes have not yet been built
+                        // Do we need to look through these ? 
+                        if (levelEnum == Utils.ElementLog.LevelEnum.Error &&
+                                (current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError ||
+                                 current.MessagePathInfo == Utils.MessagePathInfoEnum.Error))
                         {
-                            break;
+                            node.BuildSubNodes(true);
+                        }
+                        else if (levelEnum == Utils.ElementLog.LevelEnum.Warning &&
+                                (current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError ||
+                                 current.MessagePathInfo == Utils.MessagePathInfoEnum.Error ||
+                                 current.MessagePathInfo == Utils.MessagePathInfoEnum.Warning ||
+                                 current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToWarning))
+                        {
+                            node.BuildSubNodes(true);
+                        }
+                        else if (levelEnum == Utils.ElementLog.LevelEnum.Info && current.MessagePathInfo != Utils.MessagePathInfoEnum.Nothing)
+                        {
+                            node.BuildSubNodes(true);
+                        }
+                    }
+                    if (node.Nodes.Count > 0)
+                    {
+                        foreach (BaseTreeNode subNode in node.Nodes)
+                        {
+                            retVal = RecursivelySelectNext(current, subNode, levelEnum, true);
+                            if (retVal != null)
+                            {
+                                break;
+                            }
                         }
                     }
                 }

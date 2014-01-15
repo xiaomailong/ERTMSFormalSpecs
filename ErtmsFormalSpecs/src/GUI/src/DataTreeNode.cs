@@ -114,11 +114,17 @@ namespace GUI
         }
 
         /// <summary>
+        /// Indicates that the subNodes have already been built, hence, does not require to build its contents anymore
+        /// </summary>
+        protected bool SubNodesBuilt = false;
+
+        /// <summary>
         /// Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
-        protected virtual void BuildSubNodes(bool buildSubNodes)
+        public virtual void BuildSubNodes(bool buildSubNodes)
         {
+            SubNodesBuilt = true;
         }
 
         /// <summary>
@@ -943,14 +949,20 @@ namespace GUI
             }
         }
 
+        private bool ExpandedOnce = false;
+
         /// <summary>
         /// Lazy create the subnodes when it is expanded
         /// </summary>
         public override void HandleExpand()
         {
-            Nodes.Clear();
-            BuildSubNodes(true);
-            RefreshNode();
+            if (!ExpandedOnce)
+            {
+                ExpandedOnce = true;
+                Nodes.Clear();
+                BuildSubNodes(true);
+                RefreshNode();
+            }
 
             base.HandleExpand();
         }
@@ -1057,32 +1069,34 @@ namespace GUI
             {
                 System.Drawing.Color retVal = base.ComputedColor;
 
-                switch (Item.MessagePathInfo)
+                if (Item != null)
                 {
-                    case Utils.MessagePathInfoEnum.Nothing:
-                    case Utils.MessagePathInfoEnum.NotComputed:
-                        retVal = System.Drawing.Color.Black;
-                        break;
+                    switch (Item.MessagePathInfo)
+                    {
+                        case Utils.MessagePathInfoEnum.Nothing:
+                        case Utils.MessagePathInfoEnum.NotComputed:
+                            retVal = System.Drawing.Color.Black;
+                            break;
 
-                    case Utils.MessagePathInfoEnum.Error:
-                        retVal = System.Drawing.Color.DarkRed;
-                        break;
-                    case Utils.MessagePathInfoEnum.PathToError:
-                        retVal = System.Drawing.Color.Red;
-                        break;
-                    case Utils.MessagePathInfoEnum.Warning:
-                        retVal = System.Drawing.Color.Brown;
-                        break;
-                    case Utils.MessagePathInfoEnum.PathToWarning:
-                        retVal = System.Drawing.Color.LightCoral;
-                        break;
-                    case Utils.MessagePathInfoEnum.Info:
-                        retVal = System.Drawing.Color.Blue;
-                        break;
-                    case Utils.MessagePathInfoEnum.PathToInfo:
-                        retVal = System.Drawing.Color.LightBlue;
-                        break;
-
+                        case Utils.MessagePathInfoEnum.Error:
+                            retVal = System.Drawing.Color.DarkRed;
+                            break;
+                        case Utils.MessagePathInfoEnum.PathToError:
+                            retVal = System.Drawing.Color.Red;
+                            break;
+                        case Utils.MessagePathInfoEnum.Warning:
+                            retVal = System.Drawing.Color.Brown;
+                            break;
+                        case Utils.MessagePathInfoEnum.PathToWarning:
+                            retVal = System.Drawing.Color.LightCoral;
+                            break;
+                        case Utils.MessagePathInfoEnum.Info:
+                            retVal = System.Drawing.Color.Blue;
+                            break;
+                        case Utils.MessagePathInfoEnum.PathToInfo:
+                            retVal = System.Drawing.Color.LightBlue;
+                            break;
+                    }
                 }
 
                 return retVal;

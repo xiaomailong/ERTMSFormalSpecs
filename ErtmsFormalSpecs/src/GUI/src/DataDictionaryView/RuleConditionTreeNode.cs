@@ -59,7 +59,7 @@ namespace GUI.DataDictionaryView
         /// Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
-        protected override void BuildSubNodes(bool buildSubNodes)
+        public override void BuildSubNodes(bool buildSubNodes)
         {
             PreConditions = new RulePreConditionsTreeNode(Item, buildSubNodes);
             Nodes.Add(PreConditions);

@@ -82,7 +82,7 @@ namespace GUI.TestRunnerView
         /// Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
-        protected override void BuildSubNodes(bool buildSubNodes)
+        public override void BuildSubNodes(bool buildSubNodes)
         {
             base.BuildSubNodes(buildSubNodes);
 
