@@ -52,6 +52,7 @@ namespace GUI.DataDictionaryView
             {
                 Nodes.Add(new ParameterTreeNode(parameter, buildSubNodes));
             }
+            SubNodesBuilt = true;
         }
 
         /// <summary>

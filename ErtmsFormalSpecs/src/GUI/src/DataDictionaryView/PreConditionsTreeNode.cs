@@ -41,6 +41,7 @@ namespace GUI.DataDictionaryView
             {
                 Nodes.Add(new DataDictionaryView.PreConditionTreeNode(preCondition, buildSubNodes));
             }
+            SubNodesBuilt = true;
         }
 
         /// <summary>

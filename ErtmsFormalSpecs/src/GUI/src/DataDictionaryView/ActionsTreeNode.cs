@@ -44,6 +44,7 @@ namespace GUI.DataDictionaryView
             {
                 SortSubNodes();
             }
+            SubNodesBuilt = true;
         }
 
         public override ActionTreeNode AddAction(DataDictionary.Rules.Action action)

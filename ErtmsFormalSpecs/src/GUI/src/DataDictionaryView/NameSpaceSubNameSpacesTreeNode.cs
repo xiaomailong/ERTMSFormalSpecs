@@ -42,6 +42,7 @@ namespace GUI.DataDictionaryView
                 Nodes.Add(new NameSpaceTreeNode(nameSpace, buildSubNodes));
             }
             SortSubNodes();
+            SubNodesBuilt = true;
         }
 
         public void AddHandler(object sender, EventArgs args)

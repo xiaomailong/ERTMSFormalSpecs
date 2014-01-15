@@ -594,7 +594,7 @@ namespace GUI
                                 (current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError ||
                                  current.MessagePathInfo == Utils.MessagePathInfoEnum.Error))
                         {
-                            node.BuildSubNodes(true);
+                            node.BuildSubNodes(false);
                         }
                         else if (levelEnum == Utils.ElementLog.LevelEnum.Warning &&
                                 (current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError ||
@@ -602,11 +602,11 @@ namespace GUI
                                  current.MessagePathInfo == Utils.MessagePathInfoEnum.Warning ||
                                  current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToWarning))
                         {
-                            node.BuildSubNodes(true);
+                            node.BuildSubNodes(false);
                         }
                         else if (levelEnum == Utils.ElementLog.LevelEnum.Info && current.MessagePathInfo != Utils.MessagePathInfoEnum.Nothing)
                         {
-                            node.BuildSubNodes(true);
+                            node.BuildSubNodes(false);
                         }
                     }
                     if (node.Nodes.Count > 0)
