@@ -625,6 +625,32 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axl
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Name="Create the route suitability profile"
+ Guid="ce752460-e53f-4f33-b629-e2bfb148dca1"
+>
+<Comment>If the route suitability profile is EMPTY, initialize it</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Create the route suitability profile"
+ Guid="50983b51-3f9a-47b1-8110-dfd98356a5a4"
+>
+<PreConditions>
+<PreCondition
+ Guid="e339442a-3327-4071-b829-0be6b8002a29"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile == EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="473b1205-1429-4bbd-ab83-a5909aecd1bd"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile &lt;-Kernel.TrackDescription.RouteSuitability.RouteSuitabilityInformation
+ {
+    InitialState =&gt; 1,
+    EmptyProfileDistance =&gt; 0.0,
+    Items =&gt; []
+ }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Insert first item"
@@ -784,13 +810,13 @@ ON
                                                  aTractionSystem =&gt; aRouteSuitability.M_VOLTAGE,
                                                  aNidCTraction =&gt; aRouteSuitability.NID_CTRACTION )
 IN
-    RouteSuitabilityProfile.Items</Action></Actions>
+    Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="RouteSuitability.RouteSuitabilityInformation"
+ Type="RouteSuitabilityInformation"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  Implemented="TRUE"
