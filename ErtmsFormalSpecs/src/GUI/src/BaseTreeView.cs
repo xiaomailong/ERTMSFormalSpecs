@@ -94,7 +94,7 @@ namespace GUI
                     {
                         node.UpdateColor();
                     }
-                    instance.ResumeLayout();
+                    instance.ResumeLayout(true);
                 });
             }
         }
@@ -191,6 +191,7 @@ namespace GUI
             NodeNameSynchronizer = new NameSynchronizer(this, 5000);
 
             KeepTrackOfSelection = true;
+            DoubleBuffered = true;
         }
 
         void BaseTreeView_KeyUp(object sender, KeyEventArgs e)
