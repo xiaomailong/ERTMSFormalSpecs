@@ -35,6 +35,36 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fd512ea5-4491-44a4-8641-3a67f000e66e"
 >
+</ReqRef><ReqRef
+ Id="3da69521-ffba-42ec-9ded-f9c719a2f4b8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="163adc59-5bab-42bf-a1b1-abb2fe1b3a4d"
+>
+</ReqRef><ReqRef
+ Id="091b5a23-8a4f-49d0-b23d-9a839b16be15"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3bc307e8-efcc-4caf-8a8d-dadbb3c3ad0b"
+>
+</ReqRef><ReqRef
+ Id="54049463-080e-41b3-a9aa-83124d1f6471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="00204724-4689-498e-b250-f929dc01958f"
+>
+</ReqRef><ReqRef
+ Id="851ab4c7-24ed-4bb4-bcf0-18ffccc80fb7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4b2d3cfb-6e7d-4437-98f5-84bed8670792"
+>
+</ReqRef><ReqRef
+ Id="c15a755a-0bef-44a2-b2b4-43d8f1bbf0ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="03e58e14-1b09-4586-9dd8-2ebea621e0db"
+>
+</ReqRef><ReqRef
+ Id="a58464f1-c74b-420f-ad30-03d671b764c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="921e4feb-e88f-4be6-8745-a7f0aaa00bb5"
+>
 </ReqRef><Steps>
 <Step
  IO="NA"
@@ -137,7 +167,27 @@ N_ITER=&gt;0
 <Expectation
  Kind="Instantaneous"
  Guid="8a2cdf6d-f120-454d-9787-f4300a1fd6c6"
->(COUNT BTM.Linking.Linkings) == 1</Expectation></Expectations>
+>(COUNT BTM.Linking.Linkings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="a78d19da-81f2-4f58-8976-0ca814646265"
+>(FIRST_IN BTM.Linking.Linkings).Distance == 3500.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e0da2041-3d45-4b05-bfe0-2fcc742e9004"
+>(FIRST_IN BTM.Linking.Linkings).LocationAccuracy == 1.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="660889e5-0898-4010-ae5e-5222bf612bae"
+>(FIRST_IN BTM.Linking.Linkings).NID_BG == 10000</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="50fc6586-6213-4ac8-9c17-858650f5ca98"
+>(FIRST_IN BTM.Linking.Linkings).Orientation == Default.Orientation.Nominal</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="43548f10-6ba7-4cb1-aecf-147ec80e8ce7"
+>(FIRST_IN BTM.Linking.Linkings).Reaction == BTM.Linking.LinkingReaction.CommandServiceBrake</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
