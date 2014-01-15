@@ -896,7 +896,7 @@ namespace GUI
             Refresh();
         }
 
-        private void verifiedToolStripMenuItem_Click(object sender, EventArgs e)
+        private void reviewedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
