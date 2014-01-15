@@ -116,7 +116,7 @@ namespace GUI
         /// <summary>
         /// Indicates that the subNodes have already been built, hence, does not require to build its contents anymore
         /// </summary>
-        protected bool SubNodesBuilt = false;
+        public bool SubNodesBuilt = false;
 
         /// <summary>
         /// Builds the subnodes of this node
@@ -949,20 +949,20 @@ namespace GUI
             }
         }
 
-        private bool ExpandedOnce = false;
-
         /// <summary>
         /// Lazy create the subnodes when it is expanded
         /// </summary>
         public override void HandleExpand()
         {
-            if (!ExpandedOnce)
+            foreach (BaseTreeNode node in Nodes)
             {
-                ExpandedOnce = true;
-                Nodes.Clear();
-                BuildSubNodes(true);
-                RefreshNode();
+                if (!node.SubNodesBuilt)
+                {
+                    node.BuildSubNodes(false);
+                }
             }
+            RefreshNode();
+
 
             base.HandleExpand();
         }

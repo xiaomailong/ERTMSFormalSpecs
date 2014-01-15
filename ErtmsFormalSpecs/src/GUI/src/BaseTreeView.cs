@@ -554,7 +554,7 @@ namespace GUI
 
                 if (retVal == null)
                 {
-                    if (node.Nodes.Count == 0)
+                    if (!node.SubNodesBuilt)
                     {
                         // Maybe the correspponding subnodes have not yet been built
                         // Do we need to look through these ? 
