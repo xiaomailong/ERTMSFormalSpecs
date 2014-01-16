@@ -625,10 +625,12 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axl
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Create the route suitability profile"
  Guid="ce752460-e53f-4f33-b629-e2bfb148dca1"
 >
-<Comment>If the route suitability profile is EMPTY, initialize it</Comment>
+<Comment>If the route suitability profile is EMPTY, initialize it -James</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
