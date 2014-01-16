@@ -188,7 +188,7 @@ namespace GUI
             TypeImageIndex = 9;
 
             NodeColorSynchronizer = new ColorSynchronizer(this, 300);
-            NodeNameSynchronizer = new NameSynchronizer(this, 5000);
+            NodeNameSynchronizer = new NameSynchronizer(this, 300);
 
             KeepTrackOfSelection = true;
             DoubleBuffered = true;

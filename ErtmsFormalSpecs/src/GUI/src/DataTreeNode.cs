@@ -1084,7 +1084,7 @@ namespace GUI
                             parentNode = (BaseTreeNode)Parent;
                             if (parentNode == null || parentNode.Model != Model)
                             {
-                                retVal = System.Drawing.Color.DarkRed;
+                                retVal = System.Drawing.Color.Red;
                             }
                             break;
 
@@ -1097,7 +1097,7 @@ namespace GUI
                             {
                                 if (subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.Error || subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError)
                                 {
-                                    retVal = System.Drawing.Color.Red;
+                                    retVal = System.Drawing.Color.Orange;
                                     break;
                                 }
                             }
