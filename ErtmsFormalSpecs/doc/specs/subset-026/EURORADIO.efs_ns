@@ -34,6 +34,7 @@
 >
 </EnumValue></Values>
 </Enum><Enum
+ Default="ContactRBCActionEnum.Establish"
  Implemented="TRUE"
  Name="ContactRBCActionEnum"
  Guid="ea5b0cd8-a7cc-4aca-9390-c8842517ff24"
@@ -71,7 +72,7 @@
 <StructureElement
  TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
  Default="EMPTY"
- Mode="Incoming"
+ Mode="InOut"
  Implemented="TRUE"
  Name="MessageIn"
  Guid="cdeef650-7114-4f12-8bfd-c8962d8ff0a2"
@@ -80,7 +81,7 @@
 </StructureElement><StructureElement
  TypeName="Messages.MESSAGE.TRAIN_TO_TRACK.Message"
  Default="EMPTY"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  Name="MessageOut"
  Guid="19cbc992-30ef-4db9-a8d2-4816992c1126"
@@ -118,6 +119,15 @@
  Guid="ea1f0ade-0a84-48f2-a86e-2206d337446f"
 >
 <Comment>The safe radio connection status.</Comment>
+</StructureElement><StructureElement
+ TypeName="ContactRBCOrderStruct"
+ Default="EMPTY"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="ContactRBCOrder"
+ Guid="2007b98c-b3ea-412e-8bcf-fb463d719de4"
+>
+<Comment>Provides the order to contact the RBC, if any</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  InitialState="NotConnected"
@@ -161,13 +171,18 @@
 </StateMachine></StateMachines>
 </Structure><Structure
  Implemented="TRUE"
- Name="ContactRBCOrder"
+ Name="ContactRBCOrderStruct"
  Guid="0b20f5b7-2179-44b2-b8c4-19c69efa393a"
 >
 <ReqRef
  Id="951fc6d8-739b-4bd4-9361-5686840e8b5a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="aad52615-8995-411d-beac-095d25210560"
+>
+</ReqRef><ReqRef
+ Id="711a8f6b-f758-4405-bb80-f9b331940c39"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53323bec-6f3a-4084-adce-0d087292a1ba"
 >
 </ReqRef><StructureElement
  TypeName="String"
@@ -182,6 +197,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7e3ada7b-82db-4b53-aa7f-5bf0c7825f02"
 >
+</ReqRef><ReqRef
+ Id="bf375eb5-37d4-48bc-9e97-ed34696dd18d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a7c2039-8f5c-4b40-863e-1a727356ea4f"
+>
 </ReqRef><Comment>The identity of the RBC.</Comment>
 </StructureElement><StructureElement
  TypeName="String"
@@ -195,6 +215,11 @@
  Id="e7d678f2-4b9e-4960-818a-8773557c1742"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4093722b-d3f7-4c8e-9f44-3881216778b4"
+>
+</ReqRef><ReqRef
+ Id="1edceb91-f111-4748-af9c-6d142efbb335"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2e03d81a-fdd4-4dc8-911c-9b562d20b4e6"
 >
 </ReqRef><Comment>Telephone number of the RBC.</Comment>
 </StructureElement><StructureElement
@@ -223,6 +248,11 @@
  Id="53c901d2-749c-41ce-be89-218897ceff07"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="589b9aa8-6e18-48a6-aab9-eedfa3941ab0"
+>
+</ReqRef><ReqRef
+ Id="bae735db-1bcf-40d2-b035-f39a5663407f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d966b111-ad3c-4937-9f9c-18b07bd04154"
 >
 </ReqRef><Comment>Indicates whether the order applies also to Sleeping units.</Comment>
 </StructureElement><StateMachines>
@@ -319,10 +349,128 @@ RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Ex
 </Function></Functions>
 <Procedures>
 <Procedure
- Name="EstablishCommunicationSession"
+ Implemented="TRUE"
+ Name="ContactRBC"
  Guid="d105e077-5c97-4b2b-97a0-538f17fd7201"
 >
-<Comment>Allows to establish/terminate the communication session.</Comment>
+<ReqRef
+ Id="410ad67d-6b5a-46f5-9694-35e5954fcb65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dedd0078-6ac0-4dc1-a834-6c739bef65db"
+>
+</ReqRef><ReqRef
+ Id="951fc6d8-739b-4bd4-9361-5686840e8b5a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="819e1e79-9b39-4782-b8f6-2e8ef581405d"
+>
+</ReqRef><Comment>Allows to establish/terminate the communication session.</Comment>
+<Parameters>
+<Parameter
+ Type="ContactRBCOrderStruct"
+ Name="Order"
+ Guid="bd7c227e-3f2a-4591-b2f2-0261dead5db0"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Select RBC"
+ Guid="d8aeb849-b368-455f-9c7b-b9df2fe98385"
+>
+<Comment>Selection of RBC according to their communication status.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="RBC1"
+ Guid="0e5a581a-1201-405e-b00a-40ae760b28f2"
+>
+<PreConditions>
+<PreCondition
+ Guid="8df44f1d-8bc6-47ea-9994-67dde1dc64c4"
+>RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fb0c323a-04ee-47a6-86cd-341b24a90ee3"
+>RBC1.ContactRBCOrder &lt;- Order</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="RBC2"
+ Guid="78b179e8-af95-448d-a830-a24a276f6974"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2086e972-9bf9-41fd-bbac-eef71aecabe9"
+>RBC2.ContactRBCOrder &lt;- Order</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="ContactAcceptingRBC"
+ Guid="9fc2337d-7e64-41d1-a72d-a19a466b8342"
+>
+<ReqRef
+ Id="711a8f6b-f758-4405-bb80-f9b331940c39"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8be15c32-7c74-4fb5-8e55-06b822994013"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="ContactRBCOrderStruct"
+ Name="Order"
+ Guid="36d1affc-3e90-44a1-bafa-74605373535b"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Select RBC"
+ Guid="0cdba42d-a87d-4fbb-b448-ea7fd7ae4fd1"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="RBC1"
+ Guid="3d112c45-c399-4909-9c57-0b56d8c93b57"
+>
+<PreConditions>
+<PreCondition
+ Guid="ffda9f58-de4b-460e-9459-f56d2e21d0d9"
+>RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="26ca8f48-278e-43b7-b3a9-85398b8d2fc7"
+>RBC1.ContactRBCOrder &lt;- ContactRBCOrderStruct
+{
+    Id =&gt; Order.Id,
+    TelephoneNumber =&gt; Order.TelephoneNumber,
+    ActionToPerform =&gt; ContactRBCActionEnum.Establish,
+    AppliesToSleepingUnits =&gt; Order.AppliesToSleepingUnits
+}</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="RBC2"
+ Guid="0f6ccc7b-209c-482c-a596-433da0ec4386"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="73ee1e00-5c33-49e9-a6b2-2b8018da8475"
+>RBC2.ContactRBCOrder &lt;- ContactRBCOrderStruct
+{
+    Id =&gt; Order.Id,
+    TelephoneNumber =&gt; Order.TelephoneNumber,
+    ActionToPerform =&gt; ContactRBCActionEnum.Establish,
+    AppliesToSleepingUnits =&gt; Order.AppliesToSleepingUnits
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -332,7 +480,12 @@ RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Ex
  Name="RBC1"
  Guid="1c63a7e2-d86b-4b5e-abe0-d5f70612612e"
 >
-<Comment>First RBC connection.</Comment>
+<ReqRef
+ Id="410ad67d-6b5a-46f5-9694-35e5954fcb65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="63f393d5-32eb-4311-ac14-2a578d25d424"
+>
+</ReqRef><Comment>First RBC connection.</Comment>
 </Variable><Variable
  Type="RBCStruct"
  VariableMode="InOut"
@@ -340,6 +493,11 @@ RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Ex
  Name="RBC2"
  Guid="e96dc281-72ad-449b-94b2-01b2501d13a0"
 >
-<Comment>Second RBC connection.</Comment>
+<ReqRef
+ Id="410ad67d-6b5a-46f5-9694-35e5954fcb65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0995d081-63bd-4a6e-88fa-b949b4eed5af"
+>
+</ReqRef><Comment>Second RBC connection.</Comment>
 </Variable></Variables>
 </NameSpace>
