@@ -94,7 +94,7 @@ namespace GUI
                     {
                         node.UpdateColor();
                     }
-                    instance.ResumeLayout();
+                    instance.ResumeLayout(true);
                 });
             }
         }
@@ -191,6 +191,7 @@ namespace GUI
             NodeNameSynchronizer = new NameSynchronizer(this, 5000);
 
             KeepTrackOfSelection = true;
+            DoubleBuffered = true;
         }
 
         void BaseTreeView_KeyUp(object sender, KeyEventArgs e)
@@ -594,7 +595,7 @@ namespace GUI
                                 (current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError ||
                                  current.MessagePathInfo == Utils.MessagePathInfoEnum.Error))
                         {
-                            node.BuildSubNodes(true);
+                            node.BuildSubNodes(false);
                         }
                         else if (levelEnum == Utils.ElementLog.LevelEnum.Warning &&
                                 (current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError ||
@@ -602,11 +603,11 @@ namespace GUI
                                  current.MessagePathInfo == Utils.MessagePathInfoEnum.Warning ||
                                  current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToWarning))
                         {
-                            node.BuildSubNodes(true);
+                            node.BuildSubNodes(false);
                         }
                         else if (levelEnum == Utils.ElementLog.LevelEnum.Info && current.MessagePathInfo != Utils.MessagePathInfoEnum.Nothing)
                         {
-                            node.BuildSubNodes(true);
+                            node.BuildSubNodes(false);
                         }
                     }
                     if (node.Nodes.Count > 0)

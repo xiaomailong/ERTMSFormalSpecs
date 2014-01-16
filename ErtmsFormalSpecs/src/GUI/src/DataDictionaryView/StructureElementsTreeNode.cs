@@ -41,6 +41,7 @@ namespace GUI.DataDictionaryView
                 Nodes.Add(new StructureElementTreeNode(structureElement, buildSubNodes));
             }
             SortSubNodes();
+            SubNodesBuilt = true;
         }
 
         /// <summary>

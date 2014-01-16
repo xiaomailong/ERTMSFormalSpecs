@@ -1071,6 +1071,8 @@ namespace GUI
 
                 if (Item != null)
                 {
+                    BaseTreeNode parentNode;
+
                     switch (Item.MessagePathInfo)
                     {
                         case Utils.MessagePathInfoEnum.Nothing:
@@ -1079,22 +1081,72 @@ namespace GUI
                             break;
 
                         case Utils.MessagePathInfoEnum.Error:
-                            retVal = System.Drawing.Color.DarkRed;
+                            parentNode = (BaseTreeNode)Parent;
+                            if (parentNode == null || parentNode.Model != Model)
+                            {
+                                retVal = System.Drawing.Color.DarkRed;
+                            }
                             break;
+
                         case Utils.MessagePathInfoEnum.PathToError:
-                            retVal = System.Drawing.Color.Red;
+                            if (!SubNodesBuilt)
+                            {
+                                BuildSubNodes(false);
+                            }
+                            foreach (BaseTreeNode subNode in Nodes)
+                            {
+                                if (subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.Error || subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError)
+                                {
+                                    retVal = System.Drawing.Color.Red;
+                                    break;
+                                }
+                            }
                             break;
+
                         case Utils.MessagePathInfoEnum.Warning:
-                            retVal = System.Drawing.Color.Brown;
+                            parentNode = (BaseTreeNode)Parent;
+                            if (parentNode == null || parentNode.Model != Model)
+                            {
+                                retVal = System.Drawing.Color.Brown;
+                            }
                             break;
+
                         case Utils.MessagePathInfoEnum.PathToWarning:
-                            retVal = System.Drawing.Color.LightCoral;
+                            if (!SubNodesBuilt)
+                            {
+                                BuildSubNodes(false);
+                            }
+                            foreach (BaseTreeNode subNode in Nodes)
+                            {
+                                if (subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.Warning || subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.PathToWarning)
+                                {
+                                    retVal = System.Drawing.Color.LightCoral;
+                                    break;
+                                }
+                            }
                             break;
+
                         case Utils.MessagePathInfoEnum.Info:
-                            retVal = System.Drawing.Color.Blue;
+                            parentNode = (BaseTreeNode)Parent;
+                            if (parentNode == null || parentNode.Model != Model)
+                            {
+                                retVal = System.Drawing.Color.Blue;
+                            }
                             break;
+
                         case Utils.MessagePathInfoEnum.PathToInfo:
-                            retVal = System.Drawing.Color.LightBlue;
+                            if (!SubNodesBuilt)
+                            {
+                                BuildSubNodes(false);
+                            }
+                            foreach (BaseTreeNode subNode in Nodes)
+                            {
+                                if (subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.Info || subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.PathToInfo)
+                                {
+                                    retVal = System.Drawing.Color.LightBlue;
+                                    break;
+                                }
+                            }
                             break;
                     }
                 }
