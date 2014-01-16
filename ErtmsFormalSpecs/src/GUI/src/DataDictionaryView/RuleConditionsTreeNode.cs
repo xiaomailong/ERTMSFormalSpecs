@@ -36,18 +36,22 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RuleConditionsTreeNode(DataDictionary.Rules.Rule item)
-            : base(item, "Conditions", true)
+        public RuleConditionsTreeNode(DataDictionary.Rules.Rule item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Conditions", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Rules.RuleCondition ruleCondition in Item.RuleConditions)
             {
-                Nodes.Add(new RuleConditionTreeNode(ruleCondition));
+                Nodes.Add(new RuleConditionTreeNode(ruleCondition, buildSubNodes));
             }
         }
 
@@ -111,7 +115,7 @@ namespace GUI.DataDictionaryView
         public void AddRuleCondition(DataDictionary.Rules.RuleCondition ruleCondition)
         {
             Item.appendConditions(ruleCondition);
-            Nodes.Add(new DataDictionaryView.RuleConditionTreeNode(ruleCondition));
+            Nodes.Add(new DataDictionaryView.RuleConditionTreeNode(ruleCondition, true));
         }
 
         /// <summary>

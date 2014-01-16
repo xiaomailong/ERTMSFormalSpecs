@@ -69,8 +69,8 @@ namespace GUI
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public ReqRefTreeNode(DataDictionary.ReqRef item, string name = null)
-            : base(item, name)
+        public ReqRefTreeNode(DataDictionary.ReqRef item, bool buildSubNodes, string name = null)
+            : base(item, buildSubNodes, name)
         {
         }
 
@@ -123,7 +123,7 @@ namespace GUI
             retVal.AddRange(base.GetMenuItems());
             retVal.Insert(4, new MenuItem("-"));
             retVal.Insert(5, new MenuItem("Select", new EventHandler(SelectHandler)));
-            
+
             return retVal;
         }
 

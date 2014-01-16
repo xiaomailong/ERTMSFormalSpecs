@@ -88,13 +88,22 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public TestCaseTreeNode(DataDictionary.Tests.TestCase item)
-            : base(item)
+        public TestCaseTreeNode(DataDictionary.Tests.TestCase item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
-            steps = new StepsTreeNode(Item);
-            Nodes.Add(steps);
         }
 
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
+        {
+            steps = new StepsTreeNode(Item, buildSubNodes);
+            Nodes.Add(steps);
+
+            base.BuildSubNodes(buildSubNodes);
+        }
         /// <summary>
         /// Creates the editor for this tree node
         /// </summary>

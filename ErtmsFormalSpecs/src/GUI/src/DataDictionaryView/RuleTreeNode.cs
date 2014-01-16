@@ -50,20 +50,30 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RuleTreeNode(DataDictionary.Rules.Rule item)
-            : base(item)
+        public RuleTreeNode(DataDictionary.Rules.Rule item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
-            Conditions = new RuleConditionsTreeNode(item);
-            Nodes.Add(Conditions);
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RuleTreeNode(string name, DataDictionary.Rules.Rule item)
-            : base(item, name, false, true)
+        public RuleTreeNode(string name, DataDictionary.Rules.Rule item, bool buildSubNodes)
+            : base(item, buildSubNodes, name, false, true)
         {
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
+        {
+            base.BuildSubNodes(buildSubNodes);
+
+            Conditions = new RuleConditionsTreeNode(Item, buildSubNodes);
+            Nodes.Add(Conditions);
         }
 
         /// <summary>

@@ -40,18 +40,22 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public ProcedureRulesTreeNode(DataDictionary.Functions.Procedure item)
-            : base(item, "Rules", true)
+        public ProcedureRulesTreeNode(DataDictionary.Functions.Procedure item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Rules", true)
         {
         }
-        
-        protected override void BuildSubNodes()
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Rules.Rule rule in Item.Rules)
             {
-                Nodes.Add(new RuleTreeNode(rule));
+                Nodes.Add(new RuleTreeNode(rule, buildSubNodes));
             }
         }
 
@@ -78,7 +82,7 @@ namespace GUI.DataDictionaryView
         public RuleTreeNode AddRule(DataDictionary.Rules.Rule rule)
         {
             Item.appendRules(rule);
-            RuleTreeNode retVal = new RuleTreeNode(rule);
+            RuleTreeNode retVal = new RuleTreeNode(rule, true);
             Nodes.Add(retVal);
 
             return retVal;

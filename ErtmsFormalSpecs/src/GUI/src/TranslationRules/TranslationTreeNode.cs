@@ -66,21 +66,25 @@ namespace GUI.TranslationRules
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public TranslationTreeNode(Translation item)
-            : base(item)
+        public TranslationTreeNode(Translation item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
-            sources = new SourceTextsTreeNode(Item);
+            sources = new SourceTextsTreeNode(Item, buildSubNodes);
             Nodes.Add(sources);
 
             foreach (SubStep subStep in Item.SubSteps)
             {
-                Nodes.Add(new TestRunnerView.SubStepTreeNode(subStep));
+                Nodes.Add(new TestRunnerView.SubStepTreeNode(subStep, buildSubNodes));
             }
         }
 
@@ -115,7 +119,7 @@ namespace GUI.TranslationRules
         /// <returns></returns>
         public TestRunnerView.SubStepTreeNode createSubStep(DataDictionary.Tests.SubStep subStep)
         {
-            TestRunnerView.SubStepTreeNode retVal = new TestRunnerView.SubStepTreeNode(subStep);
+            TestRunnerView.SubStepTreeNode retVal = new TestRunnerView.SubStepTreeNode(subStep, true);
 
             Item.appendSubSteps(subStep);
             Nodes.Add(retVal);

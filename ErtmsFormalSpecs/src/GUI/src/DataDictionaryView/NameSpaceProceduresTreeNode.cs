@@ -40,18 +40,22 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public NameSpaceProceduresTreeNode(DataDictionary.Types.NameSpace item)
-            : base(item, "Procedures", true)
+        public NameSpaceProceduresTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Procedures", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Functions.Procedure procedure in Item.Procedures)
             {
-                Nodes.Add(new ProcedureTreeNode(procedure));
+                Nodes.Add(new ProcedureTreeNode(procedure, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -79,7 +83,7 @@ namespace GUI.DataDictionaryView
         public ProcedureTreeNode AddProcedure(DataDictionary.Functions.Procedure procedure)
         {
             Item.appendProcedures(procedure);
-            ProcedureTreeNode retVal = new ProcedureTreeNode(procedure);
+            ProcedureTreeNode retVal = new ProcedureTreeNode(procedure, true);
             Nodes.Add(retVal);
             SortSubNodes();
 

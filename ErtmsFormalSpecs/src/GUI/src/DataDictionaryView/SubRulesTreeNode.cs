@@ -25,14 +25,23 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SubRulesTreeNode(DataDictionary.Rules.RuleCondition item)
-            : base(item, "Sub rules", true, false)
+        public SubRulesTreeNode(DataDictionary.Rules.RuleCondition item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Sub rules", true, false)
         {
-            foreach (DataDictionary.Rules.Rule rule in item.SubRules)
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
+        {
+            foreach (DataDictionary.Rules.Rule rule in Item.SubRules)
             {
-                Nodes.Add(new RuleTreeNode(rule));
+                Nodes.Add(new RuleTreeNode(rule, buildSubNodes));
             }
             SortSubNodes();
+            SubNodesBuilt = true;
         }
 
         private static List<BaseTreeNode> sort(List<BaseTreeNode> nodes)
@@ -48,7 +57,7 @@ namespace GUI.DataDictionaryView
         public void AddRule(DataDictionary.Rules.Rule rule)
         {
             Item.appendSubRules(rule);
-            Nodes.Add(new RuleTreeNode(rule));
+            Nodes.Add(new RuleTreeNode(rule, true));
             SortSubNodes();
 
             Item.setVerified(false);

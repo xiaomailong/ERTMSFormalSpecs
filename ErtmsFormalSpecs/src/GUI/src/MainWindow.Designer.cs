@@ -101,7 +101,7 @@ namespace GUI
             this.markNonApplicableParagraphsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markRequirementsWhereMoreInfoIsRequiredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notImplementedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verifiedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reviewedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markNotImplementedButImplementationExistsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markImplementedButNoFunctionalTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markSpecIssuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -500,7 +500,7 @@ namespace GUI
             this.markNonApplicableParagraphsToolStripMenuItem,
             this.markRequirementsWhereMoreInfoIsRequiredToolStripMenuItem,
             this.notImplementedToolStripMenuItem,
-            this.verifiedToolStripMenuItem,
+            this.reviewedToolStripMenuItem,
             this.markNotImplementedButImplementationExistsToolStripMenuItem,
             this.markImplementedButNoFunctionalTestToolStripMenuItem,
             this.markSpecIssuesToolStripMenuItem,
@@ -537,17 +537,17 @@ namespace GUI
             // 
             // notImplementedToolStripMenuItem
             // 
-            this.notImplementedToolStripMenuItem.Name = "implementedToolStripMenuItem";
+            this.notImplementedToolStripMenuItem.Name = "notImplementedToolStripMenuItem";
             this.notImplementedToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
             this.notImplementedToolStripMenuItem.Text = "Mark not implemented";
             this.notImplementedToolStripMenuItem.Click += new System.EventHandler(this.implementedToolStripMenuItem_Click);
             // 
-            // verifiedToolStripMenuItem
+            // reviewedToolStripMenuItem
             // 
-            this.verifiedToolStripMenuItem.Name = "verifiedToolStripMenuItem";
-            this.verifiedToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.verifiedToolStripMenuItem.Text = "Mark verified";
-            this.verifiedToolStripMenuItem.Click += new System.EventHandler(this.verifiedToolStripMenuItem_Click);
+            this.reviewedToolStripMenuItem.Name = "verifiedToolStripMenuItem";
+            this.reviewedToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
+            this.reviewedToolStripMenuItem.Text = "Mark reviewed";
+            this.reviewedToolStripMenuItem.Click += new System.EventHandler(this.reviewedToolStripMenuItem_Click);
             // 
             // markNotImplementedButImplementationExistsToolStripMenuItem
             // 
@@ -1155,7 +1155,7 @@ namespace GUI
         private System.Windows.Forms.ToolStripMenuItem verificationRequiredToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearMarksToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem specificationsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verifiedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reviewedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notImplementedToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem testsToolStripMenuItem;

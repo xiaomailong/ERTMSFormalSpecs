@@ -29,7 +29,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
             {
                 if (__tests == null)
                 {
-                    __tests = new UsageTreeNode("Test");
+                    __tests = new UsageTreeNode("Test", true);
                     __tests.setImageIndex(false);
                     Nodes.Add(__tests);
                 }
@@ -49,7 +49,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
             {
                 if (__models == null)
                 {
-                    __models = new UsageTreeNode("Model");
+                    __models = new UsageTreeNode("Model", true);
                     __models.setImageIndex(false);
                     Nodes.Add(__models);
                 }
@@ -149,7 +149,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
                 TestNode = null;
                 foreach (Usage usage in model.EFSSystem.FindReferences(model))
                 {
-                    UsageTreeNode current = new UsageTreeNode(usage);
+                    UsageTreeNode current = new UsageTreeNode(usage, true);
                     current.setImageIndex(false);
 
                     if (IsModel(usage.User))

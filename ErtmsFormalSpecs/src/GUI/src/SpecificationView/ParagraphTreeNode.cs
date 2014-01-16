@@ -159,13 +159,23 @@ namespace GUI.SpecificationView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ParagraphTreeNode(DataDictionary.Specification.Paragraph item)
-            : base(item)
+        public ParagraphTreeNode(DataDictionary.Specification.Paragraph item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
-            foreach (DataDictionary.Specification.Paragraph paragraph in item.SubParagraphs)
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
+        {
+            foreach (DataDictionary.Specification.Paragraph paragraph in Item.SubParagraphs)
             {
-                Nodes.Add(new ParagraphTreeNode(paragraph));
+                Nodes.Add(new ParagraphTreeNode(paragraph, buildSubNodes));
             }
+
+            base.BuildSubNodes(buildSubNodes);
         }
 
         /// <summary>
@@ -193,7 +203,7 @@ namespace GUI.SpecificationView
                 window.specBrowserRuleView.Nodes.Clear();
                 foreach (DataDictionary.ReqRef reqRef in Item.Implementations)
                 {
-                    window.specBrowserRuleView.Nodes.Add(new ReqRefTreeNode(reqRef, reqRef.Model.Name));
+                    window.specBrowserRuleView.Nodes.Add(new ReqRefTreeNode(reqRef, true, reqRef.Model.Name));
                 }
             }
 
@@ -223,7 +233,7 @@ namespace GUI.SpecificationView
         public void AddParagraph(DataDictionary.Specification.Paragraph paragraph)
         {
             Item.appendParagraphs(paragraph);
-            Nodes.Add(new ParagraphTreeNode(paragraph));
+            Nodes.Add(new ParagraphTreeNode(paragraph, true));
             RefreshNode();
         }
 
@@ -268,7 +278,7 @@ namespace GUI.SpecificationView
             {
                 if (HandleRequirements && ReqReferences == null)
                 {
-                    ReqReferences = new ReqRefsTreeNode(Item);
+                    ReqReferences = new ReqRefsTreeNode(Item, true);
                     Nodes.Add(ReqReferences);
                     RefreshNode();
                 }

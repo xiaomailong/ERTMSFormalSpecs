@@ -26,17 +26,22 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="children"></param>
-        public PreConditionsTreeNode(DataDictionary.Functions.Case item)
-            : base(item, "Pre condition", true)
+        public PreConditionsTreeNode(DataDictionary.Functions.Case item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Pre condition", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
             foreach (DataDictionary.Rules.PreCondition preCondition in Item.PreConditions)
             {
-                Nodes.Add(new DataDictionaryView.PreConditionTreeNode(preCondition));
+                Nodes.Add(new DataDictionaryView.PreConditionTreeNode(preCondition, buildSubNodes));
             }
+            SubNodesBuilt = true;
         }
 
         /// <summary>
@@ -73,7 +78,7 @@ namespace GUI.DataDictionaryView
         public void AddPreCondition(DataDictionary.Rules.PreCondition preCondition)
         {
             Item.appendPreConditions(preCondition);
-            Nodes.Add(new DataDictionaryView.PreConditionTreeNode(preCondition));
+            Nodes.Add(new DataDictionaryView.PreConditionTreeNode(preCondition, true));
             SortSubNodes();
         }
 

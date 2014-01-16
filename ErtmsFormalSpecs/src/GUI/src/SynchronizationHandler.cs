@@ -148,7 +148,7 @@ namespace GUI
             Synchronize = false;
             if (Thread != null)
             {
-                Thread.Join();
+                Thread.Abort();
                 Thread = null;
             }
         }

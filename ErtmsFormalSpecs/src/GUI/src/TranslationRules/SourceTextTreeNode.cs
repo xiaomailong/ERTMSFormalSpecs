@@ -36,8 +36,8 @@ namespace GUI.TranslationRules
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SourceTextTreeNode(DataDictionary.Tests.Translations.SourceText item)
-            : base(item)
+        public SourceTextTreeNode(DataDictionary.Tests.Translations.SourceText item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
         }
 

@@ -81,11 +81,9 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public RangeTreeNode(DataDictionary.Types.Range item)
-            : base(item)
+        public RangeTreeNode(DataDictionary.Types.Range item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
-            specialValues = new RangeValuesTreeNode(item);
-            Nodes.Add(specialValues);
         }
 
         /// <summary>
@@ -93,11 +91,21 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public RangeTreeNode(DataDictionary.Types.Range item, string name, bool isFolder, bool addRequirements)
-            : base(item, name, isFolder, addRequirements)
+        public RangeTreeNode(DataDictionary.Types.Range item, bool buildSubNodes, string name, bool isFolder, bool addRequirements)
+            : base(item, buildSubNodes, name, isFolder, addRequirements)
         {
         }
 
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
+        {
+            specialValues = new RangeValuesTreeNode(Item, buildSubNodes);
+            Nodes.Add(specialValues);
+            base.BuildSubNodes(buildSubNodes);
+        }
 
         /// <summary>
         /// Creates the editor for this tree node

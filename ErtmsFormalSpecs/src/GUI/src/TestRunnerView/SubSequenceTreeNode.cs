@@ -41,18 +41,22 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SubSequenceTreeNode(DataDictionary.Tests.SubSequence item)
-            : base(item, null, true)
+        public SubSequenceTreeNode(DataDictionary.Tests.SubSequence item, bool buildSubNodes)
+            : base(item, buildSubNodes, null, true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Tests.TestCase testCase in Item.TestCases)
             {
-                Nodes.Add(new TestCaseTreeNode(testCase));
+                Nodes.Add(new TestCaseTreeNode(testCase, buildSubNodes));
             }
         }
 
@@ -72,7 +76,7 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         public TestCaseTreeNode createTestCase(DataDictionary.Tests.TestCase testCase)
         {
-            TestCaseTreeNode retVal = new TestCaseTreeNode(testCase);
+            TestCaseTreeNode retVal = new TestCaseTreeNode(testCase, true);
 
             Item.appendTestCases(testCase);
             Nodes.Add(retVal);
@@ -233,7 +237,7 @@ namespace GUI.TestRunnerView
             retVal.Insert(8, new MenuItem("Execute", new EventHandler(RunHandler)));
             retVal.Insert(9, new MenuItem("Create report", new EventHandler(ReportHandler)));
             retVal.Insert(10, new MenuItem("-"));
-            
+
 
             return retVal;
         }

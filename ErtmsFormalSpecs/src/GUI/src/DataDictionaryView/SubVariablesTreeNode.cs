@@ -39,8 +39,8 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="encounteredTypes">the types that have already been encountered in the path to create this variable </param>
-        public SubVariablesTreeNode(DataDictionary.Variables.Variable item, HashSet<DataDictionary.Types.Type> encounteredTypes)
-            : base(item, "Sub variables", true)
+        public SubVariablesTreeNode(DataDictionary.Variables.Variable item, bool buildSubNodes, HashSet<DataDictionary.Types.Type> encounteredTypes)
+            : base(item, buildSubNodes, "Sub variables", true)
         {
             foreach (DataDictionary.Variables.IVariable ivariable in Item.SubVariables.Values)
             {
@@ -49,14 +49,14 @@ namespace GUI.DataDictionaryView
                 {
                     if (variable.Type == null)
                     {
-                        Nodes.Add(new VariableTreeNode(variable, encounteredTypes, true));
+                        Nodes.Add(new VariableTreeNode(variable, buildSubNodes, encounteredTypes, true));
                     }
                     else
                     {
                         if (!encounteredTypes.Contains(variable.Type))
                         {
                             encounteredTypes.Add(variable.Type);
-                            Nodes.Add(new VariableTreeNode(variable, encounteredTypes, true));
+                            Nodes.Add(new VariableTreeNode(variable, buildSubNodes, encounteredTypes, true));
                             encounteredTypes.Remove(variable.Type);
                         }
                     }

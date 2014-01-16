@@ -24,6 +24,7 @@ using DataDictionary.Types;
 using DataDictionary.Variables;
 using XmlBooster;
 using Utils;
+using System.Collections;
 
 namespace DataDictionary
 {
@@ -611,6 +612,95 @@ namespace DataDictionary
             }
 
             return retVal;
+        }
+
+        private class MessageInfoVisitor : Generated.Visitor
+        {
+            /// <summary>
+            /// Provides the maximum path info
+            /// </summary>
+            /// <param name="v1"></param>
+            /// <param name="v2"></param>
+            /// <returns></returns>
+            private MessagePathInfoEnum Max(MessagePathInfoEnum v1, MessagePathInfoEnum v2)
+            {
+                MessagePathInfoEnum retVal;
+
+                if (v1.CompareTo(v2) > 0)
+                {
+                    retVal = v1;
+                }
+                else
+                {
+                    retVal = v2;
+                }
+
+                return retVal;
+            }
+
+            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            {
+                // Compute the local value of the message path info
+                if (obj.HasMessage(ElementLog.LevelEnum.Error))
+                {
+                    obj.MessagePathInfo = MessagePathInfoEnum.Error;
+                }
+                else if (obj.HasMessage(ElementLog.LevelEnum.Warning))
+                {
+                    obj.MessagePathInfo = MessagePathInfoEnum.Warning;
+                }
+                else if (obj.HasMessage(ElementLog.LevelEnum.Info))
+                {
+                    obj.MessagePathInfo = MessagePathInfoEnum.Info;
+                }
+                else
+                {
+                    obj.MessagePathInfo = MessagePathInfoEnum.Nothing;
+                }
+
+                // Compute the value of the sub element message path info
+                base.visit(obj, visitSubNodes);
+
+                // Combine the current value with the sub element's values
+                ArrayList l = new ArrayList();
+                obj.subElements(l);
+                if (l != null)
+                {
+                    foreach (object subElement in l)
+                    {
+                        Generated.BaseModelElement element = subElement as Generated.BaseModelElement;
+                        if (element != null)
+                        {
+                            MessagePathInfoEnum sub = element.MessagePathInfo;
+
+                            if (sub == MessagePathInfoEnum.Error)
+                            {
+                                sub = MessagePathInfoEnum.PathToError;
+                            }
+                            else if (sub == MessagePathInfoEnum.Warning)
+                            {
+                                sub = MessagePathInfoEnum.PathToWarning;
+                            }
+                            else if (sub == MessagePathInfoEnum.Info)
+                            {
+                                sub = MessagePathInfoEnum.PathToInfo;
+                            }
+
+                            obj.MessagePathInfo = Max(obj.MessagePathInfo, sub);
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Updates the message info according to the model element messages and its sub model elements
+        /// </summary>
+        /// <param name="modelElement"></param>
+        public static void UpdateMessageInfo(ModelElement modelElement)
+        {
+            MessageInfoVisitor visitor = new MessageInfoVisitor();
+            visitor.visit(modelElement, true);
         }
     }
 }

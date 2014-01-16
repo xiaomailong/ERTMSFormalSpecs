@@ -39,18 +39,22 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public StepsTreeNode(DataDictionary.Tests.TestCase item)
-            : base(item, "Steps", true)
+        public StepsTreeNode(DataDictionary.Tests.TestCase item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Steps", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Tests.Step step in Item.Steps)
             {
-                Nodes.Add(new StepTreeNode(step));
+                Nodes.Add(new StepTreeNode(step, buildSubNodes));
             }
         }
 
@@ -71,7 +75,7 @@ namespace GUI.TestRunnerView
         public StepTreeNode createStep(DataDictionary.Tests.Step step)
         {
             step.Enclosing = Item;
-            StepTreeNode retVal = new StepTreeNode(step);
+            StepTreeNode retVal = new StepTreeNode(step, true);
 
             Item.appendSteps(step);
             Nodes.Add(retVal);

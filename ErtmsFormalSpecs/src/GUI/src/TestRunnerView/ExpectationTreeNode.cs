@@ -98,8 +98,8 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ExpectationTreeNode(DataDictionary.Tests.Expectation item)
-            : base(item)
+        public ExpectationTreeNode(DataDictionary.Tests.Expectation item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
         }
 
@@ -159,7 +159,7 @@ namespace GUI.TestRunnerView
 
             foreach (DataDictionary.Tests.Expectation expectation in elements)
             {
-                retVal.Add(new ExpectationTreeNode(expectation));
+                retVal.Add(new ExpectationTreeNode(expectation, true));
             }
 
             return retVal;

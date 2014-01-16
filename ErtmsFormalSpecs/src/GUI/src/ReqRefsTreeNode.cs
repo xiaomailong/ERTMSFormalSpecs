@@ -40,18 +40,22 @@ namespace GUI
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ReqRefsTreeNode(DataDictionary.ReferencesParagraph item)
-            : base(item, "Requirements", true)
+        public ReqRefsTreeNode(DataDictionary.ReferencesParagraph item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Requirements", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.ReqRef req in Item.Requirements)
             {
-                Nodes.Add(new ReqRefTreeNode(req));
+                Nodes.Add(new ReqRefTreeNode(req, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -74,7 +78,7 @@ namespace GUI
             DataDictionary.ReqRef req = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
             req.Paragraph = paragraph;
             Item.appendRequirements(req);
-            Nodes.Add(new ReqRefTreeNode(req));
+            Nodes.Add(new ReqRefTreeNode(req, true));
             SortSubNodes();
             RefreshNode();
         }

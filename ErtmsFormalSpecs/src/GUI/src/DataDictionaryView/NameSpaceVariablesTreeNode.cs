@@ -40,18 +40,22 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public NameSpaceVariablesTreeNode(DataDictionary.Types.NameSpace item)
-            : base(item, "Variables", true)
+        public NameSpaceVariablesTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Variables", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Variables.Variable variable in Item.Variables)
             {
-                Nodes.Add(new VariableTreeNode(variable, new HashSet<DataDictionary.Types.Type>()));
+                Nodes.Add(new VariableTreeNode(variable, buildSubNodes, new HashSet<DataDictionary.Types.Type>()));
             }
             SortSubNodes();
         }
@@ -85,7 +89,7 @@ namespace GUI.DataDictionaryView
             }
 
             Item.appendVariables(variable);
-            VariableTreeNode retVal = new VariableTreeNode(variable, new HashSet<DataDictionary.Types.Type>());
+            VariableTreeNode retVal = new VariableTreeNode(variable, true, new HashSet<DataDictionary.Types.Type>());
             Nodes.Add(retVal);
             SortSubNodes();
 

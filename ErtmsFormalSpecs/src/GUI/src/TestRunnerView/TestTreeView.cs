@@ -16,7 +16,7 @@ namespace GUI.TestRunnerView
             Nodes.Clear();
             foreach (DataDictionary.Dictionary dictionary in Root.Dictionaries)
             {
-                tests = new TestRunnerView.TestsTreeNode(dictionary);
+                tests = new TestRunnerView.TestsTreeNode(dictionary, true);
                 Nodes.Add(tests);
             }
         }
