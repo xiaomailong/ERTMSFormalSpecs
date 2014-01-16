@@ -3,7 +3,11 @@
  Guid="e1153af3-3878-4752-bfdb-9a6c11411de4"
 >
 <NameSpaces>
-</NameSpaces>
+<NameSpaceRef
+ Name="PositionReport"
+ Guid="c9623ca4-7f96-47f9-9040-bcb29cb92c3d"
+>
+</NameSpaceRef></NameSpaces>
 <Enumerations>
 <Enum
  Default="SafeRadioConnectionStatusEnum.NoConnection"
@@ -301,7 +305,7 @@
 <Function
  Type="Boolean"
  Implemented="TRUE"
- Name="RBCIsConnected"
+ Name="HasActiveSession"
  Guid="7b48d082-5d7b-4d27-8757-6e110b3f9f7d"
 >
 <Comment>Indicates if a communication session is established with an RBC.</Comment>
@@ -499,5 +503,33 @@ RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Ex
  Guid="0995d081-63bd-4a6e-88fa-b949b4eed5af"
 >
 </ReqRef><Comment>Second RBC connection.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="15.0"
+ VariableMode="Constant"
+ Implemented="TRUE"
+ Name="TimeBeforeMessageRepetition"
+ Guid="7fb9905e-15ef-46c7-bd03-db851be58bc7"
+>
+<ReqRef
+ Id="0f9b05dd-7dd5-408f-94d8-e94d2b283f7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0415d335-0a90-4f02-8ec4-240662656ae8"
+>
+</ReqRef><Comment>Represents the waiting time before radio message repetition.</Comment>
+</Variable><Variable
+ Type="Integer"
+ DefaultValue="3"
+ VariableMode="Constant"
+ Implemented="TRUE"
+ Name="NumberOfMessageRepetitions"
+ Guid="c6fc6f21-c004-4e60-9413-a82917e94238"
+>
+<ReqRef
+ Id="023bb134-975d-4e3e-9294-8f3644763d4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="430f28c3-f752-4247-93ae-fd580cbd55c8"
+>
+</ReqRef><Comment>Indicates the number of repetitions of radio messages (i.e. excluding the first sending).</Comment>
 </Variable></Variables>
 </NameSpace>

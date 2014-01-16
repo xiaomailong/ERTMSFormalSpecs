@@ -8,10 +8,6 @@
 >
 <NameSpaces>
 <NameSpaceRef
- Name="PositionReport"
- Guid="c9623ca4-7f96-47f9-9040-bcb29cb92c3d"
->
-</NameSpaceRef><NameSpaceRef
  Name="TrainData"
  Guid="3e0fac33-af2e-49fb-87bd-7ac9bade11fe"
 >
@@ -910,19 +906,6 @@
 </StateMachine></StateMachines>
 <Functions>
 <Function
- Type="Boolean"
- NeedsRequirement="FALSE"
- Name="HasActiveSession"
- Guid="4732c881-6e01-4481-828f-993b9b9383c7"
->
-<Cases>
-<Case
- Name="Default"
- Guid="9093b0c6-ab57-4847-9af9-e2ca05ad2b2e"
->
-<Expression>CurrentRadioSession.RadioSessionState in RadioSession.RadioSessionState.Initialized</Expression>
-</Case></Cases>
-</Function><Function
  Type="EURORADIO.SessionAction"
  NeedsRequirement="FALSE"
  Name="ToAction"
@@ -2138,34 +2121,6 @@
  Name="NewRadioSession"
  Guid="78eb0e5f-86a3-440a-8e58-26c05355edcf"
 >
-</Variable><Variable
- Type="Default.BaseTypes.Time"
- DefaultValue="15.0"
- VariableMode="Constant"
- Implemented="TRUE"
- Name="TimeBeforeMessageRepetition"
- Guid="7fb9905e-15ef-46c7-bd03-db851be58bc7"
->
-<ReqRef
- Id="0f9b05dd-7dd5-408f-94d8-e94d2b283f7c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0415d335-0a90-4f02-8ec4-240662656ae8"
->
-</ReqRef><Comment>Represents the waiting time before radio message repetition.</Comment>
-</Variable><Variable
- Type="Integer"
- DefaultValue="3"
- VariableMode="Constant"
- Implemented="TRUE"
- Name="NumberOfMessageRepetitions"
- Guid="c6fc6f21-c004-4e60-9413-a82917e94238"
->
-<ReqRef
- Id="023bb134-975d-4e3e-9294-8f3644763d4f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="430f28c3-f752-4247-93ae-fd580cbd55c8"
->
-</ReqRef><Comment>Indicates the number of repetitions of radio messages (i.e. excluding the first sending).</Comment>
 </Variable><Variable
  Type="EURORADIO.RegisterMobileTerminalSM"
  DefaultValue=""
