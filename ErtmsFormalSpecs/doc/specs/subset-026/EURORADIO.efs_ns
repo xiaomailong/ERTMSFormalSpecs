@@ -73,6 +73,180 @@
  Guid="cb738b09-f0d3-4a4e-8c82-014ee43482cc"
 >
 </ReqRef><Comment>Represents one instance of communication with RBC.</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SendPositionReport"
+ Guid="d551c0f2-3853-4033-86fa-bb55a4747107"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="1e838a0b-1365-4864-a698-9b6294d2c77d"
+>
+<Comment>If the message is EMPTY, it has to be initialized</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="1326e3c1-f9f4-4e39-a552-d0f91ba0ed9e"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d36b5e14-701a-47f8-a07f-2c20c9a57a79"
+>InitializeOutMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send position report"
+ Guid="82ce2511-2a70-4ca7-8582-7a7414817805"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send position report"
+ Guid="b7be9954-2e9c-4bfa-b6d1-db8342f482c8"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="79dbebec-3f39-4331-b8b2-edabf9c5149b"
+>MessageOut.TRAIN_POSITION_REPORT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.TRAIN_POSITION_REPORT.Message
+{
+    L_MESSAGE =&gt; EMPTY,
+    NID_ENGINE =&gt; EMPTY,
+    NID_MESSAGE =&gt; EMPTY,
+    POSITION_REPORT =&gt; PositionReport.CreatePositionReport(),
+    Sequence1 =&gt; EMPTY,
+    T_TRAIN =&gt; EMPTY
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendSOMPositionReport"
+ Guid="e3220a82-2afc-4b5c-a090-53f9bb36659b"
+>
+<ReqRef
+ Id="aa43ddb6-13a5-4b3e-bbcc-bf985bea4175"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="767f0bfd-f651-4416-b879-f414c2f79cea"
+>
+</ReqRef><ReqRef
+ Id="6375b0de-0293-4d16-abdf-cb5f39a35143"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4dccb90-05ce-4571-9f3f-3523708d0a38"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="a12be67a-f112-414a-af20-7873c6b0671e"
+>
+<Comment>If the message is EMPTY, it has to be initialized</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="3c9531c1-a642-4e1b-b3dd-dc4e7ab35d2c"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ad87a631-5eb9-4189-b1f9-c830843481d2"
+>InitializeOutMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Send SOM position report"
+ Guid="e7b63b93-4c09-4afe-94e5-e1b9c3117f37"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Send SOM position report"
+ Guid="4e90bb91-75ed-4086-9d9f-15cbf50dc8d1"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ee5a0c21-596d-4adf-9f6e-f3f46a1437d7"
+>MessageOut.SOM_POSITION_REPORT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.SOM_POSITION_REPORT.Message
+{
+    L_MESSAGE =&gt; EMPTY,
+    NID_ENGINE =&gt; EMPTY,
+    NID_MESSAGE =&gt; EMPTY,
+    Q_STATUS =&gt; PositionReport.FillQStatus(),
+    POSITION_REPORT =&gt; PositionReport.CreatePositionReport(),
+    Sequence1 =&gt; EMPTY,
+    T_TRAIN =&gt; EMPTY
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="InitializeOutMessage"
+ Guid="c3a62f8f-4ddb-4ad9-b370-6cb6b66ac72b"
+>
+<Comment>This procedure has to be called before filling the out message with some information.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Initialize out message"
+ Guid="6d4d6846-0184-40cc-87a6-19c04a568c69"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Initialize out message"
+ Guid="383c3a6c-4b8b-411f-b5a0-6dacf0dfa9bd"
+>
+<PreConditions>
+<PreCondition
+ Guid="96e96db5-efb2-4460-8166-cd2593b2ee48"
+>MessageOut == EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2d00e9a8-4356-42a6-a9b3-cdf669db2f2b"
+>MessageOut &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.Message
+{
+    VALIDATED_TRAIN_DATA =&gt; EMPTY,
+    TRAIN_POSITION_REPORT =&gt; EMPTY,
+    REQUEST_FOR_SHUNTING =&gt; EMPTY,
+    MA_REQUEST =&gt; EMPTY,
+    TRAIN_POSITION_REPORT =&gt; EMPTY,
+    REQUEST_TO_SHORTEN_MA_IS_GRANTED =&gt; EMPTY,
+    REQUEST_TO_SHORTEN_MA_IS_REJECTED =&gt; EMPTY,
+    ACKNOWLEDGEMENT =&gt; EMPTY,
+    ACKNOWLEDGEMENT_OF_EMERGENCY_STOP =&gt; EMPTY,
+    TRACK_AHEAD_FREE_GRANTED =&gt; EMPTY,
+    END_OF_MISSION =&gt; EMPTY,
+    RADIO_INFILL_REQUEST =&gt; EMPTY,
+    NO_COMPATIBLE_VERSION_SUPPORTED =&gt; EMPTY,
+    INITIATION_OF_A_COMMUNICATION_SESSION =&gt; EMPTY,
+    TERMINATION_OF_A_COMMUNICATION_SESSION =&gt; EMPTY,
+    SOM_POSITION_REPORT =&gt; EMPTY,
+    TEXT_MESSAGE_ACKNOWLEDGED_BY_DRIVER =&gt; EMPTY,
+    SESSION_ESTABLISHED =&gt; EMPTY
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
  Default="EMPTY"

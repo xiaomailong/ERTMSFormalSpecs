@@ -290,6 +290,44 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3d95f0aa-14a5-4a75-94a3-f22873d343a9"
 >
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="PositionLocation"
+ Guid="22647d7a-ba05-4975-8cb5-f8392fab6640"
+>
+<ReqRef
+ Id="12080437-12c5-47ab-9aec-ceced6bba68f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4decd675-9b9a-4e99-9a7b-cf36f4681375"
+>
+</ReqRef><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance"
+ Guid="6cbe6c7e-36e3-4867-9a9e-44716f89b5a8"
+>
+<ReqRef
+ Id="26b2f0b0-1aee-4778-99cf-b5d01eb56627"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="387b6c06-2c64-4504-a351-bef01392fb73"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="TrainEnd"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TrainEnd"
+ Guid="51582ceb-41cc-4f21-80a1-aa76cdf21000"
+>
+<ReqRef
+ Id="e5ec5ab9-bbf7-43ce-aee2-703517236f43"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f51a051-7939-4734-8130-1af784799527"
+>
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -1117,88 +1155,6 @@ TIU.TrainIntegrity.Status in [
 >PositionReportParameters.Values.SpecialLocation &lt;- ERTMSSpecialLocationConverter(Packet.M_LOC)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- Name="SendSOMPositionReport"
- Guid="e3220a82-2afc-4b5c-a090-53f9bb36659b"
->
-<ReqRef
- Id="aa43ddb6-13a5-4b3e-bbcc-bf985bea4175"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="767f0bfd-f651-4416-b879-f414c2f79cea"
->
-</ReqRef><ReqRef
- Id="6375b0de-0293-4d16-abdf-cb5f39a35143"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e4dccb90-05ce-4571-9f3f-3523708d0a38"
->
-</ReqRef><Rules>
-<Rule
- Priority="Processing"
- Name="Send SOM position report"
- Guid="e7b63b93-4c09-4afe-94e5-e1b9c3117f37"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Send SOM position report"
- Guid="4e90bb91-75ed-4086-9d9f-15cbf50dc8d1"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="ee5a0c21-596d-4adf-9f6e-f3f46a1437d7"
->EuroradioMessageOut.SOM_POSITION_REPORT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.SOM_POSITION_REPORT.Message
-{
-    L_MESSAGE =&gt; EMPTY,
-    NID_ENGINE =&gt; EMPTY,
-    NID_MESSAGE =&gt; EMPTY,
-    Q_STATUS =&gt; FillQStatus(),
-    POSITION_REPORT =&gt; CreatePositionReport(),
-    Sequence1 =&gt; EMPTY,
-    T_TRAIN =&gt; EMPTY
-}</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="SendPositionReport"
- Guid="d551c0f2-3853-4033-86fa-bb55a4747107"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Send position report"
- Guid="82ce2511-2a70-4ca7-8582-7a7414817805"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Send position report"
- Guid="b7be9954-2e9c-4bfa-b6d1-db8342f482c8"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="79dbebec-3f39-4331-b8b2-edabf9c5149b"
->EuroradioMessageOut.TRAIN_POSITION_REPORT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.TRAIN_POSITION_REPORT.Message
-{
-    L_MESSAGE =&gt; EMPTY,
-    NID_ENGINE =&gt; EMPTY,
-    NID_MESSAGE =&gt; EMPTY,
-    POSITION_REPORT =&gt; CreatePositionReport(),
-    Sequence1 =&gt; EMPTY,
-    T_TRAIN =&gt; EMPTY
-}</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -1557,7 +1513,7 @@ TIU.TrainIntegrity.Status in [
 <Actions>
 <Action
  Guid="caed2442-a4dd-49e2-9bb4-55a01c80b907"
->SendPositionReport()</Action></Actions>
+>ConnectedRBC().SendPositionReport()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
