@@ -1,0 +1,2380 @@
+<NameSpace
+ X="600"
+ Y="1600"
+ Width="700"
+ Height="1000"
+ Name="EURORADIO_"
+ Guid="4bf61b22-8e73-40e2-acdf-61fc4b34e2e4"
+>
+<NameSpaces>
+<NameSpaceRef
+ Name="PositionReport"
+ Guid="c9623ca4-7f96-47f9-9040-bcb29cb92c3d"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TrainData"
+ Guid="3e0fac33-af2e-49fb-87bd-7ac9bade11fe"
+>
+</NameSpaceRef></NameSpaces>
+<Ranges>
+<Range
+ MinValue="1"
+ MaxValue="2"
+ Precision="IntegerPrecision"
+ Default="1"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MobileTerminalID"
+ Guid="893cd972-437b-46da-ae65-0082c816ba20"
+>
+</Range></Ranges>
+<Enumerations>
+<Enum
+ Default="TrainEnd.MaxSafeFrontEnd"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TrainEnd"
+ Guid="1c419445-1887-48ef-87ed-f441cc99f884"
+>
+<ReqRef
+ Id="e5ec5ab9-bbf7-43ce-aee2-703517236f43"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c86c48b3-a437-449b-b97c-200f56cc78ad"
+>
+</ReqRef><ReqRef
+ Id="2ecb1ec4-fc6b-4879-a45a-e1b1c55b41fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6bf3b04a-c7c9-4ada-a859-5e60470cfd7a"
+>
+</ReqRef><ReqRef
+ Id="4a9c97b2-dfca-4175-b297-9da9fc3d16fc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="84890117-671b-4d42-b8b2-e3c7a97c57ec"
+>
+</ReqRef><ReqRef
+ Id="d61ea269-686c-486d-9852-1fd7e6f88c24"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4938e8b5-283c-4604-b7bc-880e2269701b"
+>
+</ReqRef><ReqRef
+ Id="bcb653a9-abe2-44a8-ac09-0df33ec9af30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d6527102-1dc7-4b08-9311-d393654f91e9"
+>
+</ReqRef><Values>
+<EnumValue
+ Value="1"
+ Name="MaxSafeFrontEnd"
+ Guid="7cb04fde-3df2-45b7-8afc-b5b786738517"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="MinSafeRearEnd"
+ Guid="1b732104-98a7-463c-b250-64174353c724"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="MinSafeFrontEnd"
+ Guid="848abbad-565c-43af-830f-156856c40f5b"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="MaxSafeRearEnd"
+ Guid="7784661d-f066-4294-891d-d550d305f439"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="SessionAction.Establish"
+ NeedsRequirement="FALSE"
+ Name="SessionAction"
+ Guid="7d6b9f09-add8-4107-8dfe-832107604930"
+>
+<Values>
+<EnumValue
+ Value=""
+ Name="Establish"
+ Guid="0c54c7e0-5fdc-4c0f-98e8-b29e73900ff2"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="Terminate"
+ Guid="7b55da66-4d71-4cf5-ada8-8e8f89dd4e4e"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="SystemVersion.NonMatching"
+ NeedsRequirement="FALSE"
+ Name="SystemVersion"
+ Guid="50335d17-c19c-4b54-996c-8ebccccc9795"
+>
+<Values>
+<EnumValue
+ Value=""
+ Name="Matching"
+ Guid="0426b9c1-bc63-406a-ba9a-8c86d155b45c"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="NonMatching"
+ Guid="c0af46e1-bdbc-4b64-9f48-b51801f2a62c"
+>
+</EnumValue></Values>
+</Enum></Enumerations>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RBCIdOrPhoneNumber"
+ Guid="f12d6fc4-c9f1-44b0-85fd-e3f39e90a71d"
+>
+<StructureElement
+ TypeName="String"
+ Default=""
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Id"
+ Guid="913f5502-1190-493b-bfe5-eae805985880"
+>
+</StructureElement><StructureElement
+ TypeName="String"
+ Default=""
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="PhoneNumber"
+ Guid="52f5b8fd-fd0a-4f65-a695-171b2d349e86"
+>
+</StructureElement></Structure><Structure
+ Name="RequestOpenRbcSession"
+ Guid="6fc16960-992c-4b6b-9cf3-343e08d505f5"
+>
+<StructureElement
+ TypeName="SessionState"
+ Default="SessionState.Closed"
+ Mode="Internal"
+ Name="SessionState"
+ Guid="73e55ed2-d8fa-49e0-b8f6-ab54bab4f9bd"
+>
+</StructureElement><StructureElement
+ TypeName="Request"
+ Default="Request.Disabled"
+ Mode="InOut"
+ Name="RequestState"
+ Guid="6c856f84-2b40-4354-8355-4956d333e6a1"
+>
+</StructureElement></Structure><Structure
+ Name="RequestRegisterMobileTerminalsToNetwork"
+ Guid="b502ca86-2c41-4a57-86fe-b52bda72df6c"
+>
+<StructureElement
+ TypeName="RBC_ID"
+ Default="0"
+ Mode="Outgoing"
+ Name="RbcID"
+ Guid="6d83aab3-a1b9-4fc5-b551-315ab6cf6376"
+>
+</StructureElement><StructureElement
+ TypeName="String"
+ Default="&apos;&apos;"
+ Mode="Outgoing"
+ Name="RbcPhoneNumber"
+ Guid="e5c6d5e4-6896-4c3f-bf02-db83651abd04"
+>
+</StructureElement><StructureElement
+ TypeName="Request"
+ Default="Request.Disabled"
+ Mode="InOut"
+ Name="RequestState"
+ Guid="fe50d952-3e51-4cc9-9f6d-519ab7f2e300"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="AcquireListOfAvailableNetworks"
+ Guid="e6849568-73f7-4b28-ae32-8b6bf0058e00"
+>
+<StructureElement
+ TypeName="Default.Request"
+ Default="Default.Request.Disabled"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="RequestState"
+ Guid="92cbb691-f862-4800-bcc1-b1c3201d2980"
+>
+</StructureElement><StructureElement
+ TypeName="EURORADIO.NetworkIDs"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="NetworkIDs"
+ Guid="0ed60605-c72c-4461-b890-b564097e7b37"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RadioNetworkId"
+ Guid="ff36a222-e1c4-40bf-a0ec-19deb8b81ea2"
+>
+<StructureElement
+ TypeName="String"
+ Default=""
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Id"
+ Guid="5a124805-a900-4cd9-be26-1ce0ad094dc4"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="RadioSessionInformation"
+ Guid="a4c3c9df-2e4a-40c8-baa4-0f807c6b05e5"
+>
+<ReqRef
+ Id="951fc6d8-739b-4bd4-9361-5686840e8b5a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e770755-a20b-4d4d-8df3-452ef97afa18"
+>
+</ReqRef><ReqRef
+ Id="711a8f6b-f758-4405-bb80-f9b331940c39"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86816a4f-4a8c-4361-b702-7b016026d5dd"
+>
+</ReqRef><ReqRef
+ Id="aca297a1-7d62-42ac-ab7e-6c8c590c5637"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="afea840e-b3a0-4cbe-8a83-564d84df215c"
+>
+</ReqRef><ReqRef
+ Id="f6cda523-6b70-489d-a6dd-e29b33d2a772"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4c4189d-9e04-4813-abcc-dea44fe108bc"
+>
+</ReqRef><StructureElement
+ TypeName="EURORADIO.RadioNetworkId"
+ Default=""
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="RadioNetworkId"
+ Guid="2ebba6b8-16ef-48dc-a23b-eeb636e3969e"
+>
+</StructureElement><StructureElement
+ TypeName="RBCIdOrPhoneNumber"
+ Default=""
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="RBCIdOrPhoneNumber"
+ Guid="05b9c998-8445-4ef9-a960-add1a968b57e"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="AppliesToSleeping"
+ Guid="d156e6e7-af49-4b00-bd96-55d14df3d6ac"
+>
+</StructureElement><StructureElement
+ TypeName="SessionAction"
+ Default=""
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Action"
+ Guid="6d7aa9e2-d431-4cc8-96a6-5ba09312e4fc"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="HandingOverRBC"
+ Guid="d0d03106-44b3-45a2-9cac-bf9ab9dd5a80"
+>
+</StructureElement><StructureElement
+ TypeName="Default.DataState"
+ Default="Default.DataState.Unknown"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="DataState"
+ Guid="bb8112f4-948b-456b-bce2-30affc1532f5"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="PositionLocation"
+ Guid="22647d7a-ba05-4975-8cb5-f8392fab6640"
+>
+<ReqRef
+ Id="12080437-12c5-47ab-9aec-ceced6bba68f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4decd675-9b9a-4e99-9a7b-cf36f4681375"
+>
+</ReqRef><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance"
+ Guid="6cbe6c7e-36e3-4867-9a9e-44716f89b5a8"
+>
+<ReqRef
+ Id="26b2f0b0-1aee-4778-99cf-b5d01eb56627"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="387b6c06-2c64-4504-a351-bef01392fb73"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="TrainEnd"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TrainEnd"
+ Guid="51582ceb-41cc-4f21-80a1-aa76cdf21000"
+>
+<ReqRef
+ Id="e5ec5ab9-bbf7-43ce-aee2-703517236f43"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f51a051-7939-4734-8130-1af784799527"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RbcRiuSystemVersion"
+ Guid="c9a00120-15ba-4333-9f04-1cf83670ada1"
+>
+<ReqRef
+ Id="fb08360f-0ff1-4327-8bcd-edf3c1e01e8f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="80b29feb-aef1-4aec-b3b3-5b1bc28246f6"
+>
+</ReqRef><Comment>Data state and the value of the RBC/RIU system version.</Comment>
+<StructureElement
+ TypeName="Default.DataState"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DataState"
+ Guid="19200d0f-f419-4b32-9a05-06ce3e0dc3a7"
+>
+<Comment>Data state of the RBC/RIU system version.</Comment>
+</StructureElement><StructureElement
+ TypeName="String"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Value"
+ Guid="cd624408-38d0-41a1-b08c-591ed6bcb240"
+>
+<Comment>Value of the RBC/RIU system version.</Comment>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="RadioSession"
+ Guid="552ba2ee-961c-4112-8868-b48884d1f6f7"
+>
+<ReqRef
+ Id="becb430f-a4f2-4817-ad08-3672ed05f855"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b724ee2-666a-49ab-8a9e-ccc6accf2249"
+>
+</ReqRef><Procedures>
+<Procedure
+ NeedsRequirement="FALSE"
+ Name="SendTerminationOfCommunicationSessionMessage"
+ Guid="27ea5415-8e7c-42f7-95ca-08d9752637ce"
+>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="ProcessAllMessages"
+ Guid="e0dfde43-ba62-4ecb-9df8-fc2dc335aeca"
+>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="ProcessAckMessages"
+ Guid="b2e42830-2874-4106-8aa9-e1983aec12eb"
+>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="EURORADIO.SafeRadioConnectionStatus"
+ Default="SafeRadioConnectionStatus.NoConnection"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Status"
+ Guid="ec1b5571-970d-48e2-818b-f3a9a3380f7a"
+>
+</StructureElement><StructureElement
+ TypeName="EURORADIO.RadioSessionInformation"
+ Default="RadioSessionInformation{}"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="SessionInfo"
+ Guid="b11c0cf1-e772-417e-ae90-37a62e67b551"
+>
+</StructureElement><StructureElement
+ TypeName="EuroradioConnection"
+ Default="EuroradioConnection{Connected =&gt; False, ConnectionLost =&gt; False}"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Subset37Connection"
+ Guid="3139e689-ad14-44ac-9cae-8b8ba3254a10"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Connect"
+ Guid="8f0daaf6-17eb-4696-9f02-e6c8d63a4c25"
+>
+</StructureElement><StructureElement
+ TypeName="Integer"
+ Default="0"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="ConnectionAttemptsCounter"
+ Guid="4b6a21b7-2b7b-4c00-ae60-fcfadb643681"
+>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default=""
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="ConnectionLostTime"
+ Guid="5d003b59-2532-4f6e-ab97-6eedee682857"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Terminate"
+ Guid="ca6fc4da-4cde-4429-ba1a-a94dab060958"
+>
+</StructureElement><StructureElement
+ TypeName="RadioSessionStateSM"
+ Default=""
+ Mode="Internal"
+ Name="RadioSessionState"
+ Guid="0a32c073-18b1-42db-94fc-78a12d9aefaa"
+>
+</StructureElement><StateMachines>
+<StateMachine
+ InitialState="Inactive"
+ Default="Inactive"
+ NeedsRequirement="FALSE"
+ Name="RadioSessionStateSM"
+ Guid="283d3fd1-dc92-4d52-be9b-32f8dc396af4"
+>
+<States>
+<State
+ X="10"
+ Y="80"
+ Width="100"
+ Height="50"
+ Name="Inactive"
+ Guid="2ede3d22-52e2-4793-b45e-3e135153299e"
+>
+<StateMachine
+ InitialState=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="97b65c48-f350-4784-8208-a7ada2c28879"
+>
+<ReqRef
+ Id="66543af0-6c4b-46a0-b17f-96ed3e1d37ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="01e5f31b-32a0-465b-b4a4-16dcd4da08af"
+>
+<Comment></Comment>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Connect"
+ Guid="263e0edf-a14e-4b87-a816-58a63f40fc57"
+>
+<Comment>This rule implicitly implements requirement 3.5.3.4.1
+--&gt; if the RadioSessionState is not in Inactive state, A Connect &lt;- True shall have no effect.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Connect"
+ Guid="c43b3c71-4866-43ed-9b22-2610e0e5ade8"
+>
+<PreConditions>
+<PreCondition
+ Guid="24fe0bfe-d5f8-4755-9277-50a0240a27b1"
+>Connect</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5338efa8-4e4b-48f5-bbe0-9536965804ec"
+>EuroradioConnection.Connect()</Action><Action
+ Guid="b533c634-805e-458a-8afb-e9d73859a995"
+>THIS &lt;- Connecting</Action><Action
+ Guid="5a153723-05c6-4b92-9728-94bff4d2fb0a"
+>Connect &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="490"
+ Y="80"
+ Width="100"
+ Height="50"
+ Name="Initializing"
+ Guid="ec1bc00e-f285-493e-b96e-b0a1fcd72cde"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="dba14336-14b1-459d-a33b-66c05b21529c"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Handle system version"
+ Guid="0da65af3-817a-4f77-97f1-693a747994f9"
+>
+<ReqRef
+ Id="02f20f26-3445-49b9-95cf-a6948ab029b8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d9a738b-40ad-4f62-8fcd-f33d44d4a01d"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="SystemVersionMatch"
+ Guid="97682c93-b792-4107-944a-1821e403fc6e"
+>
+<ReqRef
+ Id="790cf49e-a85c-4110-b567-fc5d57052339"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="15faa550-d9f7-4446-bfbe-abd5f22c9b55"
+>
+</ReqRef><PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9f4df566-2a02-43ae-9cac-1ff93d8523d2"
+>THIS &lt;- RadioSessionState.Initialized</Action><Action
+ Guid="3ab6bbcb-9bdb-49c6-bf2b-f23f10a9f0b3"
+>SendVersionMessage(SystemVersion.Matching)</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="SystemVersionMismatch"
+ Guid="961334a0-c25f-40ab-8cbf-ec0397391419"
+>
+<ReqRef
+ Id="25af834a-3a24-459b-b5c8-97b85eddb2e8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64244056-9351-4c47-b904-4e111843f52b"
+>
+</ReqRef><ReqRef
+ Id="21b52bea-13d1-437e-9aec-4d66149f68d5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b3b7de3-e6e6-46d6-bb39-1a07305e4b94"
+>
+</ReqRef><PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3aecfa18-eda6-4e3d-a0fb-b69cf89af739"
+>THIS &lt;- RadioSessionState.Terminated</Action><Action
+ Guid="51867cb2-561c-4ef1-a267-273bb0cac790"
+>SendVersionMessage(SystemVersion.NonMatching)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="490"
+ Y="260"
+ Width="100"
+ Height="50"
+ Name="Initialized"
+ Guid="78bcad77-eb39-4591-8595-5d04f26ad67d"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="5b2f4e47-8595-4319-a574-75ca6e49b70e"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Handle connection state"
+ Guid="dc9b7522-cfef-4f23-bdf5-98ed520a13f2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="ConnectionLost"
+ Guid="9c013075-575e-4caf-8614-fff7bebbf1ec"
+>
+<ReqRef
+ Id="308624ea-ea91-4451-b8c4-1cfbc9094f8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="233e112a-df09-4590-8bf9-dea02a9f5356"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="34294706-d389-480d-bd6b-87fa214dfa1b"
+>Subset37Connection.ConnectionLost == True</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c7dbde69-663a-419d-a6ac-1f392acf098a"
+>ConnectionLostTime &lt;- Kernel.CurrentTime</Action><Action
+ Guid="6d9f373d-0025-44be-a16c-7719375d6428"
+>THIS &lt;- RadioSessionState.ConnectionLost</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Terminate"
+ Guid="b5749bb8-4fa0-4219-8899-70f9fc49d4bf"
+>
+<ReqRef
+ Id="bc41e5e5-6fff-4b96-a901-9bc45f108b16"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46e61237-7782-4d6a-9c1b-7a32909a660d"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="3f26d926-e2ad-4188-a9c5-a35f38460c15"
+>Terminate == True</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="22aa693c-8e42-48e4-b5e9-c023fa9ef81d"
+>RadioSession.SendTerminationOfCommunicationSessionMessage()</Action><Action
+ Guid="bc462522-2fa3-41b2-9087-66fc2e9f7550"
+>THIS &lt;- RadioSessionState.Terminating</Action><Action
+ Guid="77272d76-6565-41c6-bdf9-7e3dcc55f8c0"
+>Terminate &lt;- False</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Otherwise"
+ Guid="3320a64f-6293-4983-80ea-5ada9abe1fa0"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e856a21d-8614-46ca-b611-b1c0bb48e138"
+>RadioSession.ProcessAllMessages()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="250"
+ Y="260"
+ Width="100"
+ Height="50"
+ Name="ConnectionLost"
+ Guid="2a26a266-b724-4a4c-b40e-4f239a775645"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="8343182b-5a35-4492-93bd-00869c3a4f72"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Reconnect"
+ Guid="dadba158-d0cd-416c-864a-d7bb53aaacb1"
+>
+<ReqRef
+ Id="fff58fab-5102-4a71-bbc4-ce7f2e1ea7d2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="75cfc10c-4596-4119-a030-b6e24ce7cf0b"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ReconnectIfOutOfRadioHole"
+ Guid="0c505e91-4d66-41f7-9d5d-eb25154292e3"
+>
+<ReqRef
+ Id="752d0832-7cfa-4424-96f7-d3fbb447a20e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c986f718-58b3-48c5-9c4d-9651b5c37dc4"
+>
+</ReqRef><ReqRef
+ Id="529343f5-9881-4318-8dcc-53dade4fe1df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="97070618-473b-488e-b245-ce25b32692b4"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="d5d19468-282c-45aa-b607-b577d6263b68"
+>NOT  Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7d0d9cda-1982-458b-94fc-efc3f8922bc3"
+>RadioSession.Subset37Connection.Connect()</Action><Action
+ Guid="b258af7e-0d74-4bd0-8f5f-fb2bacb8cae9"
+>ConnectionAttemptsCounter &lt;- (ConnectionAttemptsCounter + 1)</Action><Action
+ Guid="cda2863c-e699-42db-954c-62235b0d79b0"
+>THIS &lt;- RadioSessionState.Connecting</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="250"
+ Y="80"
+ Width="100"
+ Height="50"
+ Name="Connecting"
+ Guid="9041a584-9b8c-4dbb-81d6-88fbd23f876a"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="f0f4dbae-f4c8-43a1-b4d1-256b2fa338df"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Connecting"
+ Guid="be50a719-e993-454d-befb-6dd4e24b6236"
+>
+<ReqRef
+ Id="5342093f-7355-4153-b42e-b0eb8bb14b89"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c0714057-471f-418c-a73f-59a1edb50e1c"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="EuroradioConnected"
+ Guid="ada469ca-5d4e-432a-9de6-62e795c2cf38"
+>
+<PreConditions>
+<PreCondition
+ Guid="782101d3-f73b-46c4-a042-261612e9b218"
+>Subset37Connection.Connected</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d85122ea-249a-43e7-ac5a-b084e4209b9f"
+>THIS &lt;- RadioSession.RadioSessionState.Initializing</Action><Action
+ Guid="bb7f3674-5840-4cb9-92d5-8a6ce0bfebca"
+>SendInitiationOfComSessionMessage()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="TerminateRequest"
+ Guid="0e79ec02-b15c-42b9-9575-145c7d3b175c"
+>
+<ReqRef
+ Id="e1848200-b260-492c-a722-3b64311cb97f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9c9da336-ca5a-4ab5-80c9-c97674269a29"
+>
+</ReqRef><PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="17ead2e1-1f52-4576-bb81-586da416ebf9"
+>RadioSession.Subset37Connection.Disconnect()</Action><Action
+ Guid="cf569ba2-e8b2-42ef-9856-67efeea2b71f"
+>THIS &lt;- RadioSessionState.Inactive</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="RequestTimeout"
+ Guid="450c50a7-83a2-4b3a-a82a-d4bec0ee45e1"
+>
+<ReqRef
+ Id="249d841a-1bca-4d29-8e4c-51ce7db07de4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="322e8995-37b1-40eb-90b4-fe94932451da"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="0ca604c6-5a31-4a8b-b8ab-2c702fed4ec2"
+>((Kernel.CurrentTime - ConnectionLostTime) &gt; AdditionalDelayTimeToDisconnection)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2b4f7f7b-9624-49db-aae5-7f521d6c02da"
+>THIS &lt;- RadioSessionState.Terminated</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="730"
+ Y="260"
+ Width="100"
+ Height="50"
+ Name="Terminated"
+ Guid="23365f0e-f01c-448c-804d-698931580fc2"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="77b78ad0-d2ae-4ddd-8d3a-a6b3f394ef99"
+>
+</StateMachine></State><State
+ X="490"
+ Y="440"
+ Width="100"
+ Height="50"
+ Name="Terminating"
+ Guid="0437cfe8-25e6-4944-831a-a6a396b1eace"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="abd23bc4-d129-459a-8acc-3aea62a51920"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Handle session end"
+ Guid="8e917118-7aef-4d98-ba67-9c17954312a6"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="TerminationAckedByTrackside"
+ Guid="0ce6b535-1317-4132-877d-3418930ed478"
+>
+<ReqRef
+ Id="e094e23a-bd94-4440-8632-705782494f35"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="969b49e6-0d3b-432b-9e3e-479eb15f1d27"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="440af424-a3a1-48e6-bcd6-178aa3cccc16"
+>Terminate</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b2b76e07-e928-4451-9d2c-816c34d02567"
+>THIS &lt;- RadioSessionState.Terminated</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="ProcessAcks"
+ Guid="b2083bec-5c0c-4da7-8334-64478fa9eca9"
+>
+<ReqRef
+ Id="e65c9779-618e-4a55-97c9-4038b3410eaf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c6b768f0-cc61-4765-92a9-1a32ecbd6e4b"
+>
+</ReqRef><PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a1240d2a-06c7-4d80-82c6-d6ead0e1d8fc"
+>RadioSession.ProcessAckMessages()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></StateMachines>
+</Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="EuroradioConnection"
+ Guid="ffc83690-74f2-4297-b311-17903c38cbc3"
+>
+<Procedures>
+<Procedure
+ NeedsRequirement="FALSE"
+ Name="Connect"
+ Guid="04703c0b-2728-493f-b800-17fcb7faa61c"
+>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="Disconnect"
+ Guid="d812e0d9-c6db-4c51-8e7d-d6d306db16c4"
+>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Connected"
+ Guid="247a06cd-87bf-4f93-97ae-f348125e97b3"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="ConnectionLost"
+ Guid="3e0b0df5-7b3e-470f-a176-46f8ace789a1"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="String"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="NetworkIDs"
+ Guid="87063a38-c3ff-451d-af99-5d0039e70a2f"
+>
+</Collection><Collection
+ TypeName="RadioSession"
+ MaxSize="2"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="RadioSessions"
+ Guid="8efa9963-c7e2-4c57-bf5f-62dc1b6e3c8a"
+>
+</Collection><Collection
+ TypeName="MobileTerminalID"
+ MaxSize="2"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MobileTerminalIDs"
+ Guid="c11465cd-6494-4bd4-ab4b-628e2874fe32"
+>
+<Comment>probably 2 is the maximum number of perceiveable MobileTerminals mounted on a loco. Requirement needed. #morido, 13/10/14</Comment>
+</Collection></Collections>
+<StateMachines>
+<StateMachine
+ InitialState="Inactive"
+ NeedsRequirement="FALSE"
+ Name="RegisterMobileTerminalSM"
+ Guid="70696006-0bc3-433f-9bca-365ae4da970d"
+>
+<States>
+<State
+ X="80"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="Registering"
+ Guid="ba7da4de-2be6-426a-8eab-304e63c00d71"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="caa84345-15d0-4577-a7c2-de3eb7cf062e"
+>
+</StateMachine></State><State
+ X="80"
+ Y="240"
+ Width="100"
+ Height="50"
+ Name="Registered"
+ Guid="b3209759-6e5a-485c-ac12-d134c1d96682"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="9f88476d-ec7c-4f30-a8c0-63632d0d0599"
+>
+</StateMachine></State><State
+ X="300"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="Inactive"
+ Guid="e342a656-6659-4ac1-9297-e157c65d9f56"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="46b37f26-e9c1-4249-ae08-15a037a52c14"
+>
+</StateMachine></State></States>
+</StateMachine></StateMachines>
+<Functions>
+<Function
+ Type="Boolean"
+ NeedsRequirement="FALSE"
+ Name="HasActiveSession"
+ Guid="4732c881-6e01-4481-828f-993b9b9383c7"
+>
+<Cases>
+<Case
+ Name="Default"
+ Guid="9093b0c6-ab57-4847-9af9-e2ca05ad2b2e"
+>
+<Expression>CurrentRadioSession.RadioSessionState in RadioSession.RadioSessionState.Initialized</Expression>
+</Case></Cases>
+</Function><Function
+ Type="EURORADIO.SessionAction"
+ NeedsRequirement="FALSE"
+ Name="ToAction"
+ Guid="3ceb0cdd-ae96-4aa4-921e-94227c427f49"
+>
+<Parameters>
+<Parameter
+ Type="Messages.Q_RBC"
+ Name="Q_RBC"
+ Guid="3f93fb26-a2b9-44ff-a304-7a480fb216fa"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Establish"
+ Guid="60170754-59ef-4dde-988c-35d9fd3ac827"
+>
+<PreConditions>
+<PreCondition
+ Guid="757fe0f5-55d2-4f5e-bb45-b8a53224a6e4"
+>Q_RBC == Messages.Q_RBC.Establish_communication_session</PreCondition></PreConditions>
+<Expression>SessionAction.Establish</Expression>
+</Case><Case
+ Name="Terminate"
+ Guid="daba895f-d026-42f5-a1b3-1021f8db8f3d"
+>
+<Expression>SessionAction.Terminate</Expression>
+</Case></Cases>
+</Function><Function
+ Type="String"
+ NeedsRequirement="FALSE"
+ Name="Concat"
+ Guid="1d05fcda-510c-4a2e-b6f6-4e8cc23f34c4"
+>
+<Parameters>
+<Parameter
+ Type="Messages.NID_C"
+ Name="NID_C"
+ Guid="e9c73aaf-5538-4122-b9c9-89dbd34b10d1"
+>
+</Parameter><Parameter
+ Type="Messages.NID_RBC"
+ Name="NID_RBC"
+ Guid="9608aeac-5574-4ae3-8e57-db31d01ea2fb"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Default"
+ Guid="4e19b5d5-12e6-43d9-a675-c7ab8dd9f7a8"
+>
+<Expression>&apos;TODO&apos;</Expression>
+</Case></Cases>
+</Function><Function
+ Type="String"
+ NeedsRequirement="FALSE"
+ Name="ToString"
+ Guid="56b7dcb8-ead6-43e8-854c-16dca3ddffc6"
+>
+<Parameters>
+<Parameter
+ Type="Messages.NID_RADIO"
+ Name="NID_RADIO"
+ Guid="6add8426-4c1a-440b-b6da-5113e46a1cfe"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Default"
+ Guid="a1e94180-8c3e-41a2-ae1b-f913b0208c4e"
+>
+<Expression>&apos;TODO&apos;</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ NeedsRequirement="FALSE"
+ Name="NoSession"
+ Guid="9cfdb9ea-d97b-43f7-90eb-3dd08d9f171b"
+>
+<Cases>
+<Case
+ Name="Default"
+ Guid="a17e1479-3f3e-49f3-a5e3-1b952b856149"
+>
+<Expression>CurrentRadioSession.RadioSessionState in RadioSession.RadioSessionState.Inactive</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="OneMobileTerminalIsAvailable"
+ Guid="e31f0ce4-5ca7-4615-9f01-e835968b6bb2"
+>
+<ReqRef
+ Id="d88669ab-b014-4a92-b565-0f1e46f40945"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8ea3d211-ac31-4faa-8ba9-4587b570b2aa"
+>
+</ReqRef><Cases>
+<Case
+ Name="AtLeastOneIsAvailable"
+ Guid="8a425b2a-af9b-4a02-9cbc-8d1d15189bb3"
+>
+<PreConditions>
+<PreCondition
+ Guid="e430bb96-b5a1-4417-a849-3299e6967113"
+>EURORADIO.MobileTerminals != []</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="74198ec7-7047-4c71-928f-41d5af5a1f23"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="OpenRBCSession"
+ Guid="60a35180-467d-4377-97c8-3b6ece7539d0"
+>
+<ReqRef
+ Id="410ad67d-6b5a-46f5-9694-35e5954fcb65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8471eac-81c8-4796-9674-1e3a1c535785"
+>
+</ReqRef><ReqRef
+ Id="66543af0-6c4b-46a0-b17f-96ed3e1d37ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9533e983-b275-4336-a050-311d742b961a"
+>
+</ReqRef><ReqRef
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4955a2b5-eb08-4984-a51b-e32eb216a161"
+>
+</ReqRef><Comment></Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="OpenRBCSession"
+ Guid="4e4c6a57-4f47-4fa9-9418-3a4a0f984bbb"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NoActiveSession"
+ Guid="210b8735-8265-4748-bdaa-d05c5e299bfa"
+>
+<PreConditions>
+<PreCondition
+ Guid="97f056d4-8ecf-4fb8-9e65-1db195cd50a3"
+>NoSession()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="398bfcae-dda8-4f12-bd88-d7a508a9075f"
+>CurrentRadioSession.Connect &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HandingOver"
+ Guid="58577985-de0b-4888-99f4-fc419b96a26f"
+>
+<ReqRef
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6a81b37b-ffcf-4da0-9fdc-7e559bf24e82"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="1c81200f-324b-4c67-a11a-052f4596e6c3"
+>EURORADIO.RadioSessionOrder.HandingOverRBC == True</PreCondition><PreCondition
+ Guid="9b91b870-d02b-448b-a0af-9b2f7c729eb8"
+>HasActiveSession()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="46ebed43-6c5b-4f30-bc49-3e10b422b9b1"
+>NewRadioSession.Connect &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ConnectToAnotherRBC"
+ Guid="33be1917-21f4-4fac-8aff-1d55ba6ccb55"
+>
+<ReqRef
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c8063b76-f9fe-4680-9604-0d84c2b98801"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="7079c443-a160-42ac-ab03-191e15c7028a"
+>HasActiveSession()</PreCondition><PreCondition
+ Guid="906d595e-bb5e-4ebf-b82d-bd6e876d1bdf"
+>RadioSessionOrder.RBCIdOrPhoneNumber.Id != CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="23c77d5a-0cdd-40d8-8194-51a820d3ff2b"
+>NewRadioSession.Connect &lt;- True</Action><Action
+ Guid="eaec70e7-20d2-4a2f-9560-561ed1fc245a"
+>CurrentRadioSession.Terminate &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="HandleEuroradioMessage"
+ Guid="b9ea4dd2-c1d7-457b-b33c-62e49af0c65b"
+>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
+ Name="Message"
+ Guid="72113823-2b1b-43bb-b457-15bf4f1f449d"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="UpdateINTERNAL"
+ Name="GeneralMessage"
+ Guid="e53756b8-59a0-40ca-aa4c-9eca78feb0b4"
+>
+<ReqRef
+ Id="4dea631e-f3ef-4f67-8232-6d867ebc7c34"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="311ecfe7-ea5c-4667-a285-a1892d7774f7"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="GeneralMessage"
+ Guid="73ad08e9-e929-4ea4-93c0-5cb635407280"
+>
+<PreConditions>
+<PreCondition
+ Guid="379edce7-f62e-4d83-8b49-c4b6bf2389a9"
+>Available ( Message.GENERAL_MESSAGE )</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="Report parameters received"
+ Guid="935df013-36d5-46e2-8fd1-1c22e87f3dfc"
+>
+<ReqRef
+ Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3e5938e1-3ca7-41d6-ae46-5f9bca5e096f"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Report parameters received"
+ Guid="8f6b94f8-5ebc-4d66-9acf-ddf51ba1d957"
+>
+<ReqRef
+ Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68ef5d9c-449c-40de-beea-e8affff46386"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="e736f8f8-7e25-47b8-95d9-3641a99d39cb"
+>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="066e716a-07aa-4d5a-a10b-7fc517f0f0b2"
+>PositionReport.UpdatePositionReportParameters
+(
+  ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Level transition order received"
+ Guid="36e96b58-9f40-4919-9b4e-07c2b3fbed30"
+>
+<ReqRef
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fae9450d-113e-4c25-8362-ca7a7290c307"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Level transition order received"
+ Guid="492fa7fb-64bb-408c-99de-c1b404915089"
+>
+<PreConditions>
+<PreCondition
+ Guid="aff2ca99-df87-4fce-af4a-c5d94d2935f5"
+>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="176f516e-fef3-4f21-b17f-0556e8216f5d"
+>Kernel.LevelTransition.LTOReceived ( Packet =&gt;  ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.LEVEL_TRANSITION_ORDER ) ).LEVEL_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Name="InfillMA"
+ Guid="ed471ca1-d692-4236-a58c-bfb34482b2b2"
+>
+<ReqRef
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ffd8fa69-6a8a-4a28-b335-5593a40ea323"
+>
+</ReqRef><ReqRef
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d6de3548-9a65-4ada-a1ea-64a1c5951ce6"
+>
+</ReqRef><ReqRef
+ Id="eca6c9fc-15bb-4b61-8142-88af3b8e685f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="83a5a26a-12f1-455a-9292-86eb8210ba4e"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="InfillMA"
+ Guid="d88ca5bb-9db1-4adf-b76e-e87731cb14a6"
+>
+<PreConditions>
+<PreCondition
+ Guid="2218137b-5a46-48c7-996e-77239bd0276d"
+>Available (Message.INFILL_MA )</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Level transition order received"
+ Guid="1e3c7c24-198c-43ed-975b-dbe5a441caf3"
+>
+<ReqRef
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c6272465-206f-4fd5-958d-983191281a02"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Level transition order received"
+ Guid="b23111b6-dc5d-4ef3-bcdc-8872f1653ec4"
+>
+<PreConditions>
+<PreCondition
+ Guid="8eba5cd9-0030-4d92-826b-c91887c836ed"
+>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fd9f395f-4d3f-45ad-b8bf-3444ca9d3d17"
+>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile received"
+ Guid="ba5e7903-74f0-416c-ace9-cdc1392a7a73"
+>
+<ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="890d979e-b69a-40ed-9fb9-9575e833679d"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode profile received"
+ Guid="5723e1bb-1530-43ae-b94a-8989fd2a71a0"
+>
+<PreConditions>
+<PreCondition
+ Guid="568a6d32-c46c-450a-86ed-fa1646521c57"
+>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3913ccf6-bc3b-423b-a4da-7742b09c8e22"
+>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Name="MAWithShiftedLocationReference"
+ Guid="c827bc7f-c31b-4e5b-b1d7-0c40f0977756"
+>
+<ReqRef
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f201ac46-7bc8-4573-abb2-42dd3c495037"
+>
+</ReqRef><ReqRef
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c19718f7-8892-4eec-822e-47429c73ee54"
+>
+</ReqRef><ReqRef
+ Id="17ca4691-52af-4571-83b8-d4e345bcc557"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3a85200b-d4dc-4c63-ab3f-58ace0758c7c"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MAWithShiftedLocationReference"
+ Guid="e0951c53-d0ce-491c-8f51-9d84c8f49e55"
+>
+<PreConditions>
+<PreCondition
+ Guid="4b26ec5f-a027-4caa-bca8-cd8c1bb56153"
+>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE )</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile received"
+ Guid="d438dc8b-7936-4bcf-8833-97af765a4527"
+>
+<ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ed54168-0a74-4d24-88f7-fcbdd7fbf41d"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode profile received"
+ Guid="5fd08ada-39f6-43b7-bb09-1af3639e5a10"
+>
+<PreConditions>
+<PreCondition
+ Guid="4db7c2bd-92a6-46fa-8e2a-21d174da1a53"
+>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6fc1e57f-7584-4af7-b92a-c41bcf7f6e58"
+>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Level transition order received"
+ Guid="2daa150e-f714-4954-9c73-3b6086131c5a"
+>
+<ReqRef
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="43764454-ca9a-4af0-ad98-93c57e99b628"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Level transition order received"
+ Guid="8a7303b3-edcf-4f4a-a210-3b5a94aa69a9"
+>
+<PreConditions>
+<PreCondition
+ Guid="47f09839-0138-4c3c-892e-6c8aab01dcd1"
+>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2a39f497-93ab-442c-bd1a-1f87053a30c5"
+>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="Report parameters received"
+ Guid="41514341-5275-4457-b6e1-3d0cdf73210d"
+>
+<ReqRef
+ Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="75394fb1-b13d-4ea8-b0ae-b8da4e554e2c"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Report parameters received"
+ Guid="a072a522-be55-470d-ac59-e4904cf1245c"
+>
+<ReqRef
+ Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fbc7c1b8-fb9d-4785-b3a8-b910c732edb4"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="5b8975b0-260d-4631-8a07-a597c7067649"
+>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition
+ Guid="29c7550e-0318-4ea1-be60-556bb6f76b25"
+>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d4dd1adc-2417-418e-9af1-28d490582186"
+>PositionReport.UpdatePositionReportParameters
+(
+   ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="MovementAuthority"
+ Guid="626962c6-9ca8-4901-8a62-680c26f7dc7a"
+>
+<ReqRef
+ Id="948cdca7-999f-4b57-8b4a-7ffc1873927f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="93b1df7b-3be7-4595-ac53-eb958ee1749c"
+>
+</ReqRef><ReqRef
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8ac4a4f7-3e5f-4335-b743-e8ee7a7ce385"
+>
+</ReqRef><ReqRef
+ Id="34124e11-dd20-40b4-8914-44b6b7397ff1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8d52b2e1-2ae4-4fa4-a15b-a79f20a19041"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="MovementAuthority"
+ Guid="b2ace9c6-9fcd-4829-b42f-393341b8a143"
+>
+<PreConditions>
+<PreCondition
+ Guid="cc9777a1-c95d-4abd-9469-632ab302b08b"
+>Available ( Message.MOVEMENT_AUTHORITY )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="34f6db8a-45cd-4c94-b8e3-83e7ea450181"
+>Kernel.MA.MALvl2or3Received
+(
+    Packet =&gt; Message.MOVEMENT_AUTHORITY.LEVEL_2_3_MOVEMENT_AUTHORITY,
+    NID_BG =&gt; Message.MOVEMENT_AUTHORITY.NID_LRBG
+)</Action></Actions>
+<SubRules>
+<Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="Report parameters received"
+ Guid="6952e078-ee86-43d6-84ef-44a7987c6f51"
+>
+<ReqRef
+ Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="34d33893-3280-45dc-9cda-903fabe88e9a"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Report parameters received"
+ Guid="b3006b05-322a-4ec3-adaf-f31c462e909a"
+>
+<ReqRef
+ Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="83cda4d2-8fed-4ae3-bb4e-fccc5f09ca44"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="4e66790e-11e3-42ae-9f8a-5c70586ffac3"
+>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition
+ Guid="ce0a957f-db4d-48fe-abd1-16ae231136fe"
+>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE ) == Boolean.False</PreCondition><PreCondition
+ Guid="b72cbd16-8ee3-43c1-8931-f3202d3cec34"
+>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="aea31b9a-b403-4674-ba05-b2e0e573cd40"
+>PositionReport.UpdatePositionReportParameters(
+  (FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available(X.POSITION_REPORT_PARAMETERS)).POSITION_REPORT_PARAMETERS
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="List of balises for SH area received"
+ Guid="fcf5520f-ce3c-4f17-b984-02a819e47adb"
+>
+<ReqRef
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c0e24bd2-6d1d-4cc1-b3d3-ed16112b088a"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="List of balises for SH area received"
+ Guid="1ac428d8-87fc-45d9-a277-e609c689b426"
+>
+<PreConditions>
+<PreCondition
+ Guid="50fdfdf7-d5b4-4b7a-84b2-11828d779ff0"
+>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="302b5642-258f-499d-89b3-212a4433b74f"
+>Kernel.Shunting.HandleNewListOfBaliseGroups ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) ).LIST_OF_BALISES_FOR_SH_AREA )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Level transition order received"
+ Guid="7cc3a1d4-5397-46fd-b656-d5b84b928e94"
+>
+<ReqRef
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="03236951-52f5-449f-976f-3b0a9f5016c1"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Level transition order received"
+ Guid="1ef92a16-cc7b-4664-9d2b-b735ff9588a4"
+>
+<PreConditions>
+<PreCondition
+ Guid="77ad28b3-e1f4-46b8-b1bc-d32e603da92c"
+>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="48dbeb01-ed9a-488f-9c37-1df78daff92f"
+>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile received"
+ Guid="77eaf966-192f-4c0e-9990-7e4897dad4af"
+>
+<ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a402d46-e655-4ff8-ad35-7229f2ed2f0a"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode profile received"
+ Guid="009cc428-70b4-4b0a-b5df-468b677b743e"
+>
+<PreConditions>
+<PreCondition
+ Guid="9faa2fda-94d0-4d88-b999-35cbcbcf7f60"
+>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1d0407c6-42f3-4cd3-9dbd-5721ca7faffe"
+>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Name="RequestToShortenMA"
+ Guid="f573cc24-d8e7-4a5a-837b-fcfd15701f42"
+>
+<ReqRef
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="54da9cb4-680f-43b6-b33a-03a77edf5ce4"
+>
+</ReqRef><ReqRef
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89f3be06-5ef7-468a-b825-4e1198285de5"
+>
+</ReqRef><ReqRef
+ Id="8430bb84-5228-4341-b64b-f578dfc94604"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d9bcc358-027f-447c-8982-38032c81b0fc"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="RequestToShortenMA"
+ Guid="b3c21ffa-a5dc-4ee9-8a69-18a619d2a108"
+>
+<PreConditions>
+<PreCondition
+ Guid="324ed534-7ece-4d2d-83d2-634f8405934d"
+>Available ( Message.REQUEST_TO_SHORTEN_MA )</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile received"
+ Guid="0118014c-9220-4336-9541-bf8317e774e2"
+>
+<ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2b4661af-9e46-4ac4-9f54-c9ec3eb55d10"
+>
+</ReqRef><ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="745f1f3e-15fd-429b-964b-ea647b81965e"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode profile received"
+ Guid="a57d89cc-ee5f-47b4-9486-73125c45cc4d"
+>
+<PreConditions>
+<PreCondition
+ Guid="6f406375-f0b0-4331-aa87-fa5c9fcc422c"
+>THERE_IS_IN Message.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="42923357-d030-4973-8f7e-66c4c0796d02"
+>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Name="SHAuthorised"
+ Guid="4bb7073f-95bc-4318-8d3f-3caa5247ea0c"
+>
+<ReqRef
+ Id="a9c3b99f-ed94-4e53-9926-e303c3898b8a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e98a66ec-b3a6-46c1-ade8-a2123a480ae2"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="SHAuthorised"
+ Guid="9df194d9-d435-4491-af34-2b1bdab6c098"
+>
+<PreConditions>
+<PreCondition
+ Guid="b6beabb3-2162-4140-bf62-6c441dbea7c6"
+>Available ( Message.SH_AUTHORISED )</PreCondition></PreConditions>
+<Actions>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Name="SRAuthorisation"
+ Guid="e847d1b0-8be3-41a3-8ffd-43e655a3a124"
+>
+<ReqRef
+ Id="6dc87cd2-d3b8-4d7f-a8f0-26e60b30a71e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="658de14c-3157-4d55-84fd-a580054731dc"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="SRAuthorisation"
+ Guid="d118d140-ad45-45ff-852f-8cb03f830fa2"
+>
+<PreConditions>
+<PreCondition
+ Guid="aae29d37-06e2-4a68-af77-695ecbbe2651"
+>Available ( Message.SR_AUTHORISATION )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="80d3a386-cf7c-4ca1-91f3-31d8046462f2"
+>Kernel.SR.SRAuthorisationReceived ( Packet =&gt; Message.SR_AUTHORISATION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TracksideOrderedSession"
+ Guid="aa947d6d-5ed0-4cb9-9175-d6bbf385946c"
+>
+<ReqRef
+ Id="af0db000-6b09-4a25-b01b-439fa27cbc6a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2dc771ca-4061-4cb2-adb7-816a3d7b329e"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Message"
+ Name="Packet"
+ Guid="d3881c83-afc8-4e4b-aaa6-e10fc539514f"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Default"
+ Guid="6c34a727-8dde-40bb-9015-478401cad4b9"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Default"
+ Guid="721d5c93-8eb8-4965-9388-bd080476103c"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a937382b-c086-4f4b-9d40-9ea9eb5ab43f"
+>StoreSessionInformation(Packet)</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="ProcessMessage"
+ Guid="30cc10b2-e830-475a-8809-faf5fadc392d"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HandleEstablish"
+ Guid="e7741144-8585-429a-b3df-4261d6f7c5dd"
+>
+<ReqRef
+ Id="af0db000-6b09-4a25-b01b-439fa27cbc6a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1b983a93-eeca-47d4-9e3f-4329a71b256d"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="7bbb7949-9537-40c3-8458-6a645a0d514a"
+>RadioSessionOrder.Action == SessionAction.Establish</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="be284535-8a08-4d84-bc54-4bdfca9ae919"
+>OpenRBCSession()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="HandleTerminate"
+ Guid="83204fe7-02dc-49a2-87fa-cd7ed6110f71"
+>
+<ReqRef
+ Id="e4addba5-4948-4054-b3dc-0e7eeabd6768"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e6347c42-78d9-4255-b1a0-b0e3e11f08f0"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="601d121b-ad74-42ac-ba65-d3f16d0772b6"
+>RadioSessionOrder.Action == SessionAction.Terminate</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0670f42d-9c02-4ca1-8000-57057ab44047"
+>CloseRBCSession()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="StoreSessionInformation"
+ Guid="317c3501-434b-4719-8829-ff15fb83a313"
+>
+<ReqRef
+ Id="951fc6d8-739b-4bd4-9361-5686840e8b5a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3754c56e-95db-4ba7-bb91-f41689628cbf"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Message"
+ Name="Packet"
+ Guid="7c59e653-9d9b-458e-8166-51ad5e46a527"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="StoreOrder"
+ Guid="e5ccc4ef-853d-488c-ac3a-1d4f5370aa79"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Default"
+ Guid="4f5b4f50-ac27-401e-93c6-61a11a3f6895"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="af71065d-6ad0-4a7c-a179-1a63581757ab"
+>RadioSessionOrder &lt;- RadioSessionInformation
+{
+Action =&gt; ToAction(Packet.Q_RBC),
+AppliesToSleeping =&gt; Packet.Q_SLEEPSESSION == Messages.Q_SLEEPSESSION.Execute_session_establishment_order,
+DataState =&gt; DataState.Valid,
+HandingOverRBC =&gt; False,
+RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
+{
+  Id =&gt; Concat(Packet.NID_C, Packet.NID_RBC),
+  PhoneNumber =&gt; ToString(Packet.NID_RADIO)
+}
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="SendInitiationOfComSessionMessage"
+ Guid="24d7afe5-52bc-48c4-8e90-3fbc7480dd78"
+>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="SendVersionMessage"
+ Guid="79f7b8dc-a03c-45e9-bfb5-719e154d9ad7"
+>
+<Parameters>
+<Parameter
+ Type="SystemVersion"
+ Name="IsMatching"
+ Guid="cd6e8dee-8b98-42b9-83ba-c12d5f1e32fc"
+>
+</Parameter></Parameters>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="CloseRBCSession"
+ Guid="f0be0a25-2941-456f-b264-1f5b2d4b41e8"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="CloseSession"
+ Guid="1d84f0cc-889d-4705-a19e-f4cd719757aa"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Default"
+ Guid="e6e91aae-f5ae-4576-a0ff-52fb9973c741"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="8a462bc3-bd9e-43db-8c9f-3fd66ba74e7f"
+>CurrentRadioSession.Terminate &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="SetNewAsCurrentSession"
+ Guid="ce16ed27-9354-42da-8c50-adc421adf526"
+>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendMARequest"
+ Guid="605c5787-3cea-40e3-9541-b6fee56354ff"
+>
+<ReqRef
+ Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21b60f86-6bac-4cab-822c-a49daf822344"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="Messages.Q_MARQSTREASON"
+ Name="aReason"
+ Guid="5c0da812-a270-4cf0-b8e8-c58eb2c798db"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Send MA request"
+ Guid="32efbbf1-f2da-49ca-8d3a-de8db9f9a608"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Send MA request"
+ Guid="5453c885-e136-49b5-8072-69a3f4e899ac"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f105e56b-cf2d-4016-b30e-0ea135442f31"
+>EURORADIO.EuroradioMessageOut.MA_REQUEST &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.MA_REQUEST.Message
+{
+    NID_MESSAGE =&gt; 132,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; MessageTypes.Time ( Kernel.CurrentTime ),
+    NID_ENGINE =&gt; Kernel.NidEngine,
+    Q_MARQSTREASON =&gt; aReason,
+    POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendRequestForShunting"
+ Guid="bbf768a6-9eec-467b-b2ef-6470b3f72595"
+>
+<ReqRef
+ Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="376abddb-f246-4e20-8cd6-b3fb29cb373c"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send Request for Shunting"
+ Guid="592cdc3a-a9ac-4116-8e09-d56c9311fe9e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send Request for Shunting"
+ Guid="f43c3579-ea00-4730-b1f4-763eea38dcc9"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="7297c0d3-1229-4d0e-9a96-f81af5183fa9"
+>EuroradioMessageOut.REQUEST_FOR_SHUNTING &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.REQUEST_FOR_SHUNTING.Message
+{
+    NID_MESSAGE =&gt; 130,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; MessageTypes.Time ( Kernel.CurrentTime ),
+    NID_ENGINE =&gt; Kernel.NidEngine,
+    POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendEoMReport"
+ Guid="ab89aa1a-870b-435e-9232-e0bed3a33834"
+>
+<ReqRef
+ Id="3f735818-2dc8-4e4a-a842-9112c3e053a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21ee6751-35c3-4438-84e8-e4d7b17d623b"
+>
+</ReqRef><ReqRef
+ Id="7b63a22c-a47e-4e98-87a7-bb6800dbb38e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e46bb61e-928d-4a62-8c22-bff1af3712ac"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send EoM report"
+ Guid="5a3dfb27-b6e9-43df-b30b-358a19f04fb9"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send EoM report"
+ Guid="548bd947-dca9-48ba-910e-f261128b06b6"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5d5990b8-a350-4843-9667-b01f3a4ae06c"
+>EuroradioMessageOut.END_OF_MISSION &lt;-Messages.MESSAGE.TRAIN_TO_TRACK.END_OF_MISSION.Message{
+    NID_MESSAGE =&gt; 0,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 0,
+    NID_ENGINE =&gt; 0,
+    POSITION_REPORT =&gt; EURORADIO.PositionReport.CreatePositionReport()
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<Variables>
+<Variable
+ Type="String"
+ DefaultValue=""
+ VariableMode="Internal"
+ Name="NetworkID"
+ Guid="395d907b-f15a-4160-9be6-fdd0cf01b750"
+>
+</Variable><Variable
+ Type="RequestOpenRbcSession"
+ DefaultValue=""
+ VariableMode="InOut"
+ Name="RequestOpenRbcSession"
+ Guid="04664f4a-bd9e-436f-97d3-ead1edd71c18"
+>
+</Variable><Variable
+ Type="RequestRegisterMobileTerminalsToNetwork"
+ DefaultValue=""
+ VariableMode="InOut"
+ Name="RequestRegisterMobileTerminalsToNetwork"
+ Guid="e95b828f-d1bc-44f2-9611-0d1982a39c59"
+>
+</Variable><Variable
+ Type="DataState"
+ DefaultValue="DataState.Unknown"
+ VariableMode="Incoming"
+ Name="RevokeEmergencyStop"
+ Guid="a92f2d78-26f4-4bc7-9586-95fa4bbe0848"
+>
+</Variable><Variable
+ Type="Default.SessionState"
+ DefaultValue="Default.SessionState.Closed"
+ VariableMode="Internal"
+ Name="SessionState"
+ Guid="99819e81-30e5-4637-bfa6-1c2320f3e2db"
+>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Name="TerminateRbcSession"
+ Guid="3a5b364f-9ade-4698-ad0f-c43775dada5f"
+>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.True"
+ VariableMode="Internal"
+ NeedsRequirement="FALSE"
+ Name="MobileTerminalRegisteredToNetwork"
+ Guid="86d86ed2-63b6-470f-b917-a85c50c7e441"
+>
+</Variable><Variable
+ Type="EURORADIO.AcquireListOfAvailableNetworks"
+ DefaultValue=""
+ VariableMode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcquireListOfAvailableNetworks"
+ Guid="9d7f6bef-0cfa-41e1-9323-34efc9fb2a6a"
+>
+<ReqRef
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="81b43df2-1e38-4bc5-a8a3-c21e908d535c"
+>
+</ReqRef><Comment>This request is used to gather the list of allowed networks, based on a request to the Mobile Terminals</Comment>
+<SubVariables>
+<Variable
+ Type="EURORADIO.NetworkIDs"
+ DefaultValue="[]"
+ VariableMode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="NetworkIDs"
+ Guid="9ba5f1bf-e15d-4c8b-9785-45303627f480"
+>
+</Variable></SubVariables>
+</Variable><Variable
+ Type="SafeRadioConnectionStatus"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="SafeRadioConnectionStatus"
+ Guid="b4f91fd7-1107-4108-aa2c-0f46c6c8cc87"
+>
+<ReqRef
+ Id="747bae2e-7720-4f04-ac58-bf2f7feb9e50"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff3abd8d-3aaf-49e8-8245-90310f11d82f"
+>
+</ReqRef></Variable><Variable
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
+ DefaultValue=""
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="EuroradioMessageIn"
+ Guid="e0585fda-c05d-44e4-a2ba-a097d54164e2"
+>
+<Comment>This variable is used to manage the messages received from Euroradio. If a new message is received, the sub-variable NewMessage equals True and the sub variable Message contains the message received.</Comment>
+</Variable><Variable
+ Type="Messages.MESSAGE.TRAIN_TO_TRACK.Message"
+ DefaultValue=""
+ VariableMode="Outgoing"
+ Implemented="TRUE"
+ Name="EuroradioMessageOut"
+ Guid="1722f6a3-b909-4100-acdb-7e0e1fc2f501"
+>
+<Comment>This variable is used to manage the messages to send to Euroradio. If a new message is ready to be sent, the sub-variable NewMessage equals True and the sub variable Message contains the message to be sent.</Comment>
+</Variable><Variable
+ Type="RbcRiuSystemVersion"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="RbcRiuSystemVersion"
+ Guid="2954a034-a778-4dfb-9a50-a68f7917d07c"
+>
+<ReqRef
+ Id="fb08360f-0ff1-4327-8bcd-edf3c1e01e8f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b5879aaa-8e63-43ca-b1f5-376e4a529e28"
+>
+</ReqRef></Variable><Variable
+ Type="EURORADIO.RadioSessionInformation"
+ DefaultValue=""
+ VariableMode="Internal"
+ NeedsRequirement="FALSE"
+ Name="RadioSessionOrder"
+ Guid="1f96a9c7-3143-4115-ba34-99736c45ea10"
+>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue=""
+ VariableMode="Internal"
+ NeedsRequirement="FALSE"
+ Name="AdditionalDelayTimeToDisconnection"
+ Guid="9a292c67-9ae6-485b-a162-cc2dea899b73"
+>
+</Variable><Variable
+ Type="EURORADIO.RadioSession"
+ DefaultValue=""
+ VariableMode="Internal"
+ NeedsRequirement="FALSE"
+ Name="CurrentRadioSession"
+ Guid="30ebf8c0-4c4b-4189-bee0-d8e58097941f"
+>
+</Variable><Variable
+ Type="EURORADIO.RadioSession"
+ DefaultValue=""
+ VariableMode="Internal"
+ NeedsRequirement="FALSE"
+ Name="NewRadioSession"
+ Guid="78eb0e5f-86a3-440a-8e58-26c05355edcf"
+>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="15.0"
+ VariableMode="Constant"
+ Implemented="TRUE"
+ Name="TimeBeforeMessageRepetition"
+ Guid="7fb9905e-15ef-46c7-bd03-db851be58bc7"
+>
+<ReqRef
+ Id="0f9b05dd-7dd5-408f-94d8-e94d2b283f7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0415d335-0a90-4f02-8ec4-240662656ae8"
+>
+</ReqRef><Comment>Represents the waiting time before radio message repetition.</Comment>
+</Variable><Variable
+ Type="Integer"
+ DefaultValue="3"
+ VariableMode="Constant"
+ Implemented="TRUE"
+ Name="NumberOfMessageRepetitions"
+ Guid="c6fc6f21-c004-4e60-9413-a82917e94238"
+>
+<ReqRef
+ Id="023bb134-975d-4e3e-9294-8f3644763d4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="430f28c3-f752-4247-93ae-fd580cbd55c8"
+>
+</ReqRef><Comment>Indicates the number of repetitions of radio messages (i.e. excluding the first sending).</Comment>
+</Variable><Variable
+ Type="EURORADIO.RegisterMobileTerminalSM"
+ DefaultValue=""
+ VariableMode="Internal"
+ Name="RegisterMobileTerminal"
+ Guid="5e8964c3-5c76-49cc-a58d-9a1412dfe186"
+>
+</Variable><Variable
+ Type="EURORADIO.MobileTerminalIDs"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="MobileTerminals"
+ Guid="ed866a18-1070-40b6-8d27-114d681b51e6"
+>
+</Variable></Variables>
+<Rules>
+<Rule
+ Priority="CleanUp"
+ NeedsRequirement="FALSE"
+ Name="ClearInMessage"
+ Guid="29e427d6-3a96-4a14-8b21-8f0638834979"
+>
+<Comment>After processing the new message its content is deleted.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="ClearNewInMessage"
+ Guid="6af6ad75-0dca-420d-9a44-76ca0003eff3"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="574c36d9-b04d-4184-97af-ad1c96066630"
+>Available(EuroradioMessageIn)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b8c0c6f9-01e8-4b0b-a94f-c58e31ee8059"
+>EuroradioMessageIn &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="PrepareOutMessage"
+ Guid="efe09988-6b0f-4b1f-b294-94c422020bfe"
+>
+<Comment>This rule initialises the EuroradioMessageOut with EMPTY values. After this initialisation it will be possible to access EuroradioMessageOut fields in order to fill them with appropriate values.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="PrepareOutMessage"
+ Guid="17ffa29a-3583-479f-b1c0-e52011845776"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a7b09c4e-c49d-4a42-a8ca-5c94a6003151"
+>EuroradioMessageOut &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.Message
+{
+    ACKNOWLEDGEMENT=&gt;EMPTY,
+    ACKNOWLEDGEMENT_OF_EMERGENCY_STOP=&gt;EMPTY,
+    END_OF_MISSION=&gt;EMPTY,
+    INITIATION_OF_A_COMMUNICATION_SESSION=&gt;EMPTY,
+    MA_REQUEST=&gt;EMPTY,
+    NO_COMPATIBLE_VERSION_SUPPORTED=&gt;EMPTY,
+    RADIO_INFILL_REQUEST=&gt;EMPTY,
+    REQUEST_FOR_SHUNTING=&gt;EMPTY,
+    REQUEST_TO_SHORTEN_MA_IS_GRANTED=&gt;EMPTY,
+    REQUEST_TO_SHORTEN_MA_IS_REJECTED=&gt;EMPTY,
+    SESSION_ESTABLISHED=&gt;EMPTY,
+    SOM_POSITION_REPORT=&gt;EMPTY,
+    TERMINATION_OF_A_COMMUNICATION_SESSION=&gt;EMPTY,
+    TRACK_AHEAD_FREE_GRANTED=&gt;EMPTY,
+    TRAIN_POSITION_REPORT=&gt;EMPTY,
+    VALIDATED_TRAIN_DATA=&gt;EMPTY
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>
