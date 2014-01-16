@@ -94,7 +94,7 @@ namespace GUI
                     {
                         node.UpdateColor();
                     }
-                    instance.ResumeLayout();
+                    instance.ResumeLayout(true);
                 });
             }
         }
@@ -191,6 +191,7 @@ namespace GUI
             NodeNameSynchronizer = new NameSynchronizer(this, 5000);
 
             KeepTrackOfSelection = true;
+            DoubleBuffered = true;
         }
 
         void BaseTreeView_KeyUp(object sender, KeyEventArgs e)
@@ -418,6 +419,29 @@ namespace GUI
         /// <param name="Model"></param>
         public abstract void SetRoot(Utils.IModelElement Model);
 
+
+        /// <summary>
+        /// Indicates whether the second argument (parent) is a parent of the first argument (element).
+        /// It also returns true then parent==element
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="parent"></param>
+        /// <returns></returns>
+        private bool IsParent(Utils.IModelElement element, Utils.IModelElement parent)
+        {
+            bool retVal;
+
+            Utils.IModelElement current = element;
+            do
+            {
+                retVal = current == parent;
+                current = Utils.EnclosingFinder<Utils.IModelElement>.find(current);
+            }
+            while (!retVal && current != null);
+
+            return retVal;
+        }
+
         /// <summary>
         /// Finds the node which references the element provided
         /// </summary>
@@ -434,12 +458,21 @@ namespace GUI
             }
             else
             {
+                // Ensures that the sub nodes have been built before trying to find the corresponding element
+                if (!node.SubNodesBuilt)
+                {
+                    node.BuildSubNodes(false);
+                }
+
                 foreach (BaseTreeNode subNode in node.Nodes)
                 {
-                    retVal = InnerFindNode(subNode, element);
-                    if (retVal != null)
+                    if (IsParent(element, subNode.Model))
                     {
-                        break;
+                        retVal = InnerFindNode(subNode, element);
+                        if (retVal != null)
+                        {
+                            break;
+                        }
                     }
                 }
             }
@@ -562,7 +595,7 @@ namespace GUI
                                 (current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError ||
                                  current.MessagePathInfo == Utils.MessagePathInfoEnum.Error))
                         {
-                            node.BuildSubNodes(true);
+                            node.BuildSubNodes(false);
                         }
                         else if (levelEnum == Utils.ElementLog.LevelEnum.Warning &&
                                 (current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError ||
@@ -570,11 +603,11 @@ namespace GUI
                                  current.MessagePathInfo == Utils.MessagePathInfoEnum.Warning ||
                                  current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToWarning))
                         {
-                            node.BuildSubNodes(true);
+                            node.BuildSubNodes(false);
                         }
                         else if (levelEnum == Utils.ElementLog.LevelEnum.Info && current.MessagePathInfo != Utils.MessagePathInfoEnum.Nothing)
                         {
-                            node.BuildSubNodes(true);
+                            node.BuildSubNodes(false);
                         }
                     }
                     if (node.Nodes.Count > 0)

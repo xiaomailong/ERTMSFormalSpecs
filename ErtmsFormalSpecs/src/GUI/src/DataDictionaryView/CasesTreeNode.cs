@@ -52,6 +52,7 @@ namespace GUI.DataDictionaryView
             {
                 Nodes.Add(new CaseTreeNode(aCase, buildSubNodes));
             }
+            SubNodesBuilt = true;
         }
 
         /// <summary>

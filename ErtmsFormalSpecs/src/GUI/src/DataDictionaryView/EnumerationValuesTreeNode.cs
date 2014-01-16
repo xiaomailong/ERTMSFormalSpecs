@@ -41,6 +41,7 @@ namespace GUI.DataDictionaryView
                 Nodes.Add(new EnumerationValueTreeNode(value, buildSubNodes));
             }
             SortSubNodes();
+            SubNodesBuilt = true;
         }
 
         public void AddEnumValueHandler(object sender, EventArgs args)
