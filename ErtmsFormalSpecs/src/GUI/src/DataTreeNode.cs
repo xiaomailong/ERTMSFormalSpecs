@@ -841,7 +841,6 @@ namespace GUI
             {
                 Model.Name = newLabel;
             }
-            RefreshNode();
         }
     }
 

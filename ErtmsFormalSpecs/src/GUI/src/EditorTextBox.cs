@@ -1167,7 +1167,7 @@ namespace GUI
             }
             set
             {
-                if (value != LastText)
+                if (value != EditionTextBox.Text)
                 {
                     LastText = value;
                     EditionTextBox.Rtf = InitialRTF;
