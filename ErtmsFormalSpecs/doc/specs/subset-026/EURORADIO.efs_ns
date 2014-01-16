@@ -1,6 +1,6 @@
 <NameSpace
  Name="EURORADIO"
- Guid="db1fbf2b-5c5a-4933-b021-7b687989e0a0"
+ Guid="e1153af3-3878-4752-bfdb-9a6c11411de4"
 >
 <NameSpaces>
 </NameSpaces>
@@ -9,63 +9,63 @@
  Default="SafeRadioConnectionStatusEnum.NoConnection"
  Implemented="TRUE"
  Name="SafeRadioConnectionStatusEnum"
- Guid="79038595-6b1d-4d23-87e3-b68ff77e9db6"
+ Guid="fe039c94-e8dc-416a-b815-f5ad8300c526"
 >
 <ReqRef
  Id="747bae2e-7720-4f04-ac58-bf2f7feb9e50"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a27a87dd-b9b6-4489-b5c1-cb2e744216b6"
+ Guid="9a75773a-005e-4c35-993c-02bb41df811e"
 >
 </ReqRef><Values>
 <EnumValue
  Value="0"
  Name="NoConnection"
- Guid="8f829304-91dd-469e-970f-0b49f42bb759"
+ Guid="56356f1b-8662-4507-a0d9-ec8a7d4cd272"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="ConnectionLostOrSetUpFailed"
- Guid="b5154bec-2b5f-459e-ab2f-1cdba404948a"
+ Guid="6e15a44f-7a64-4aef-8094-c6cd3222235a"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="ConnectionUp"
- Guid="c53198a8-ef83-4d62-b2ac-c1cd29d28916"
+ Guid="865de485-ea5e-45e3-9dbe-9d63433a1a2e"
 >
 </EnumValue></Values>
 </Enum><Enum
  Implemented="TRUE"
  Name="ContactRBCActionEnum"
- Guid="a8651a9a-a291-4ecb-84b0-e358deb2f330"
+ Guid="ea5b0cd8-a7cc-4aca-9390-c8842517ff24"
 >
 <ReqRef
  Id="c2b39282-833e-4fd4-abd9-3a72c47f0782"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d7211a9d-362a-40e0-93f2-f266a26526a7"
+ Guid="22f89241-4057-4375-972a-172c9d3b6255"
 >
 </ReqRef><Comment>Action to be performed while ordering to contact an RBC.</Comment>
 <Values>
 <EnumValue
  Value=""
  Name="Establish"
- Guid="5599c60b-7113-4cda-96ab-f04e35fda410"
+ Guid="34fd382e-e4ab-4f91-9e9e-cad2e2a7d21a"
 >
 </EnumValue><EnumValue
  Value=""
  Name="Terminate"
- Guid="8b35ea60-ca9c-4dbc-93fc-95ef6ae13a08"
+ Guid="efe01397-7c69-4d63-8eb6-7e646cca2191"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
 <Structure
  Name="RBCStruct"
- Guid="e6d0e4c5-8243-43a2-bce7-9b465fa8b47d"
+ Guid="a486085f-3201-4bf5-8db8-cf3027c03815"
 >
 <ReqRef
  Id="becb430f-a4f2-4817-ad08-3672ed05f855"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b8902608-87e5-47f9-b1db-457bf825f1f3"
+ Guid="cb738b09-f0d3-4a4e-8c82-014ee43482cc"
 >
 </ReqRef><Comment>Represents one instance of communication with RBC.</Comment>
 <StructureElement
@@ -74,7 +74,7 @@
  Mode="Incoming"
  Implemented="TRUE"
  Name="MessageIn"
- Guid="76b540a2-e0cc-48c4-a336-98db38c56433"
+ Guid="cdeef650-7114-4f12-8bfd-c8962d8ff0a2"
 >
 <Comment>Represents the message received from the current RBC. If no message is received, the structure is EMPTY.</Comment>
 </StructureElement><StructureElement
@@ -83,7 +83,7 @@
  Mode="Outgoing"
  Implemented="TRUE"
  Name="MessageOut"
- Guid="3a6193d0-44d9-441e-9743-a38eb123ef38"
+ Guid="19cbc992-30ef-4db9-a8d2-4816992c1126"
 >
 <Comment>Represents the message to send to the current RBC. If no message has to be sent, the structure is EMPTY.</Comment>
 </StructureElement><StructureElement
@@ -92,12 +92,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Id"
- Guid="fa4cb8c5-16dc-42ef-9fc7-3a71a0c93060"
+ Guid="f619c693-9b6c-44b9-9e47-28d4270e994f"
 >
 <ReqRef
  Id="becb430f-a4f2-4817-ad08-3672ed05f855"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9f013a3c-77a5-4d1e-97b0-cff84b4afef9"
+ Guid="e994975e-ef44-45ee-9520-410116dd431c"
 >
 </ReqRef><Comment>Id of the RBC.</Comment>
 </StructureElement><StructureElement
@@ -106,7 +106,7 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="ConnectionState"
- Guid="8622e9f8-8a6d-496e-929a-05d2a2b9d774"
+ Guid="9da35b1e-5a10-49fe-97e2-9344ea080d37"
 >
 <Comment>Represents the current state of the communication session.</Comment>
 </StructureElement><StructureElement
@@ -115,59 +115,59 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="SafeRadioConnectionStatus"
- Guid="d41d3bae-9fc9-4078-a5ea-265806e4cc12"
+ Guid="ea1f0ade-0a84-48f2-a86e-2206d337446f"
 >
 <Comment>The safe radio connection status.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  InitialState="NotConnected"
  Name="ConnectionStateSM"
- Guid="13eab55b-75e9-4a63-908a-be9a4ce18031"
+ Guid="d82fd57c-5e3b-49a3-9588-9ba0c3633131"
 >
 <States>
 <State
  Name="NotConnected"
- Guid="dbc1f31c-f086-4ada-9176-ab44023f50c0"
+ Guid="d33370b3-b877-475d-b1da-b15d3eaca819"
 >
 <StateMachine
  InitialState=""
- Guid="bf8d4201-6fed-4676-9fac-3ee4eba59b74"
+ Guid="691e3286-67ef-4b68-b4c9-5aa0ce8e8788"
 >
 </StateMachine></State><State
  Name="Connecting"
- Guid="fd974e8b-b71d-4e4c-9f69-beaa81303aba"
+ Guid="620d737c-d8e3-43c2-8cda-c9b1ca68371a"
 >
 <StateMachine
  InitialState=""
- Guid="36f03692-880b-41a2-898b-4751cbcfe352"
+ Guid="939342a0-af0b-417c-af03-c79040f6200e"
 >
 </StateMachine></State><State
  Name="Connected"
- Guid="83e93ee6-1e09-4fcb-967a-d184a5197823"
+ Guid="9296f778-498c-4dfb-8eb9-bda176289afa"
 >
 <StateMachine
  InitialState=""
- Guid="a270a515-bc18-4c0d-a437-b3041fc85d4b"
+ Guid="0b8f9771-1352-4442-9971-a125688da2ae"
 >
 </StateMachine></State><State
  Name="Disconnecting"
- Guid="d20008c7-4e9f-47d2-97d4-328da50bba1f"
+ Guid="852724a0-2e07-4fc6-ba9d-25a46e4032a2"
 >
 <StateMachine
  InitialState=""
- Guid="ff1b08d8-85b5-4f16-b694-b00754dfa4dc"
+ Guid="dfd5369b-7468-4e57-b4c3-591d53607134"
 >
 </StateMachine></State></States>
 </StateMachine></StateMachines>
 </Structure><Structure
  Implemented="TRUE"
  Name="ContactRBCOrder"
- Guid="9ea70a15-aebc-439b-9155-d4e43fd3dc40"
+ Guid="0b20f5b7-2179-44b2-b8c4-19c69efa393a"
 >
 <ReqRef
  Id="951fc6d8-739b-4bd4-9361-5686840e8b5a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="45c05aae-0f45-4667-a01c-b8c3c6e69670"
+ Guid="aad52615-8995-411d-beac-095d25210560"
 >
 </ReqRef><StructureElement
  TypeName="String"
@@ -175,12 +175,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="Id"
- Guid="45fd2141-977c-4dff-aa0e-fc7fd79bd072"
+ Guid="090d6f31-3d17-41d8-a297-773c0dad4df8"
 >
 <ReqRef
  Id="cfa25d7e-ba55-4b80-ba0e-931979188cd9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3833341c-9705-49ab-b349-c1f8315fc22c"
+ Guid="7e3ada7b-82db-4b53-aa7f-5bf0c7825f02"
 >
 </ReqRef><Comment>The identity of the RBC.</Comment>
 </StructureElement><StructureElement
@@ -189,12 +189,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="TelephoneNumber"
- Guid="d500a029-2bb9-4e96-8f3f-fac945d4ef04"
+ Guid="8403992a-5c33-472a-915b-6e9e82f06133"
 >
 <ReqRef
  Id="e7d678f2-4b9e-4960-818a-8773557c1742"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7389ce09-2545-489a-bd1e-b7b5052a7891"
+ Guid="4093722b-d3f7-4c8e-9f44-3881216778b4"
 >
 </ReqRef><Comment>Telephone number of the RBC.</Comment>
 </StructureElement><StructureElement
@@ -203,12 +203,12 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="ActionToPerform"
- Guid="597dc0c9-86e2-4df3-a412-7846786425c4"
+ Guid="86ca7945-4cbf-4528-960c-a9062aa3621e"
 >
 <ReqRef
  Id="c2b39282-833e-4fd4-abd9-3a72c47f0782"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="94da959d-756c-4783-a600-821d275456d4"
+ Guid="2fb816a0-8a56-460d-a842-d80a533ad336"
 >
 </ReqRef><Comment>The action to be performed.</Comment>
 </StructureElement><StructureElement
@@ -217,52 +217,52 @@
  Mode="Internal"
  Implemented="TRUE"
  Name="AppliesToSleepingUnits"
- Guid="54ffff48-f3aa-48f1-9caf-980fa87bfa8a"
+ Guid="4701d82d-24e3-4223-926c-223b4125b649"
 >
 <ReqRef
  Id="53c901d2-749c-41ce-be89-218897ceff07"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b1ba3565-1aed-481e-86a9-793cf7896494"
+ Guid="589b9aa8-6e18-48a6-aab9-eedfa3941ab0"
 >
 </ReqRef><Comment>Indicates whether the order applies also to Sleeping units.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  InitialState="NotConnected"
  Name="ConnectionStateSM"
- Guid="13eab55b-75e9-4a63-908a-be9a4ce18031"
+ Guid="18b25123-7b1d-4ca5-b70b-4a20f876f310"
 >
 <States>
 <State
  Name="NotConnected"
- Guid="dbc1f31c-f086-4ada-9176-ab44023f50c0"
+ Guid="09e55ea7-fd74-4fea-96a1-688369c10cfa"
 >
 <StateMachine
  InitialState=""
- Guid="bf8d4201-6fed-4676-9fac-3ee4eba59b74"
+ Guid="8b36bbde-2e6e-40ef-84d3-8528420bad29"
 >
 </StateMachine></State><State
  Name="Connecting"
- Guid="fd974e8b-b71d-4e4c-9f69-beaa81303aba"
+ Guid="a8ddf426-23b6-4ec7-8d63-5a74fc3f564f"
 >
 <StateMachine
  InitialState=""
- Guid="36f03692-880b-41a2-898b-4751cbcfe352"
+ Guid="06cad34b-0874-4344-9b0c-15f3486de434"
 >
 </StateMachine></State><State
  Name="Connected"
- Guid="83e93ee6-1e09-4fcb-967a-d184a5197823"
+ Guid="9fd4c87f-04d1-4ce8-91d2-9fa8f81b952b"
 >
 <StateMachine
  InitialState=""
- Guid="a270a515-bc18-4c0d-a437-b3041fc85d4b"
+ Guid="857952e5-2bc8-4ea9-9639-d3ebeb81cf2c"
 >
 </StateMachine></State><State
  Name="Disconnecting"
- Guid="d20008c7-4e9f-47d2-97d4-328da50bba1f"
+ Guid="58ff52dc-3eb3-4d43-af96-42dc1d0f0655"
 >
 <StateMachine
  InitialState=""
- Guid="ff1b08d8-85b5-4f16-b694-b00754dfa4dc"
+ Guid="b9825236-5d62-4c20-ac3a-6519069532be"
 >
 </StateMachine></State></States>
 </StateMachine></StateMachines>
@@ -272,13 +272,13 @@
  Type="Boolean"
  Implemented="TRUE"
  Name="RBCIsConnected"
- Guid="e8013176-b4c1-4c58-906f-18ea262b6e89"
+ Guid="7b48d082-5d7b-4d27-8757-6e110b3f9f7d"
 >
 <Comment>Indicates if a communication session is established with an RBC.</Comment>
 <Cases>
 <Case
  Name="Value"
- Guid="f6b68fdb-e88b-4f0b-9b5c-edd8172d1c99"
+ Guid="10904d1f-8fc9-4d89-a374-c156b560a9fe"
 >
 <Expression>RBC1.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection
   OR
@@ -288,31 +288,31 @@ RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Ex
  Type="RBCStruct"
  Implemented="TRUE"
  Name="ConnectedRBC"
- Guid="11afdf9d-137d-436a-90cd-1b7913b559f3"
+ Guid="3f3bd225-5d45-4ad8-a3c3-4b15bd9d11e4"
 >
 <Comment>Provides the connected RBC, if any.</Comment>
 <Cases>
 <Case
  Name="RBC1"
- Guid="ab524b6b-dff2-4f07-a817-2898d88fa3ae"
+ Guid="721da144-3a02-4f84-8e10-a29715edbe77"
 >
 <PreConditions>
 <PreCondition
- Guid="2b11a66b-7555-4f7d-8dc3-aa78d96a278a"
+ Guid="d3cd7a0d-a9ee-430b-9f4b-b7438d4ee678"
 >RBC1.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
 <Expression>RBC1</Expression>
 </Case><Case
  Name="RBC2"
- Guid="fec43d2a-11d0-40d3-a33c-173401f7f558"
+ Guid="71411cb1-fbc3-4d56-8c9e-a2ac172c6983"
 >
 <PreConditions>
 <PreCondition
- Guid="fbd98f68-413e-4877-915a-6b40b4f8e0e1"
+ Guid="c206bbc7-2081-47e3-8787-62607c5d9759"
 >RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
 <Expression>RBC2</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="1ea166fc-e265-4698-97c3-b1c56120a246"
+ Guid="4c0afc08-9971-428d-9abf-278039b2c35c"
 >
 <Expression>EMPTY</Expression>
 </Case></Cases>
@@ -320,7 +320,7 @@ RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Ex
 <Procedures>
 <Procedure
  Name="EstablishCommunicationSession"
- Guid="66aef097-0398-4d9a-8e50-2ab8d1f87842"
+ Guid="d105e077-5c97-4b2b-97a0-538f17fd7201"
 >
 <Comment>Allows to establish/terminate the communication session.</Comment>
 </Procedure></Procedures>
@@ -330,7 +330,7 @@ RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Ex
  VariableMode="InOut"
  Implemented="TRUE"
  Name="RBC1"
- Guid="5ab766b5-d55a-4df7-95cf-0ab38b27552e"
+ Guid="1c63a7e2-d86b-4b5e-abe0-d5f70612612e"
 >
 <Comment>First RBC connection.</Comment>
 </Variable><Variable
@@ -338,7 +338,7 @@ RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Ex
  VariableMode="InOut"
  Implemented="TRUE"
  Name="RBC2"
- Guid="4accaf3a-7467-495b-b7d7-bf64242e4036"
+ Guid="e96dc281-72ad-449b-94b2-01b2501d13a0"
 >
 <Comment>Second RBC connection.</Comment>
 </Variable></Variables>
