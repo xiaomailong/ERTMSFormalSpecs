@@ -325,7 +325,7 @@
 <PreCondition
  Guid="a29186e6-0ce9-4d0e-88ca-76d6d250028a"
 >aType == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
-<Expression>TrainData.TrainData.Value.LoadingGauge != aLineGauge</Expression>
+<Expression>NOT(GaugesMatch(aLineGauge =&gt; aLineGauge, aLoadingGauge =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge))</Expression>
 </Case><Case
  Name="Axle load"
  Guid="2161906b-ab60-44ec-864b-1b522510851f"
@@ -430,6 +430,61 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
  Guid="76a4dbcf-40cb-47f6-9080-af0dca483b33"
 >
 <Expression>EMPTY</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="GaugesMatch"
+ Guid="1d44dc39-5432-4459-9c71-2bb64fd698dd"
+>
+<Parameters>
+<Parameter
+ Type="Messages.M_LINEGAUGE"
+ Name="aLineGauge"
+ Guid="ecfadd34-5ca0-4b18-add4-b8481ce8f257"
+>
+</Parameter><Parameter
+ Type="Messages.M_LOADINGGAUGE"
+ Name="aLoadingGauge"
+ Guid="f6d6657b-704d-4573-957f-73c5b28e9a30"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="G1"
+ Guid="a70fd565-b003-4db7-8dbe-f6e8336f1f72"
+>
+<PreConditions>
+<PreCondition
+ Guid="80d1983d-ee7a-419a-aa8b-51c2d31b9f0b"
+>aLoadingGauge == Messages.M_LOADINGGAUGE.G1</PreCondition></PreConditions>
+<Expression>aLineGauge == Messages.M_LINEGAUGE.G1</Expression>
+</Case><Case
+ Name="GA"
+ Guid="0c76e4b8-ac7b-4df3-9a5e-2cec60e0fc9e"
+>
+<PreConditions>
+<PreCondition
+ Guid="b4f6d070-c95a-4b75-8e5d-9ffd30e5b167"
+>aLoadingGauge == Messages.M_LOADINGGAUGE.GA</PreCondition></PreConditions>
+<Expression>aLineGauge == Messages.M_LINEGAUGE.GA</Expression>
+</Case><Case
+ Name="GB"
+ Guid="f36f960c-5385-415c-a84a-496fbd3a7701"
+>
+<PreConditions>
+<PreCondition
+ Guid="63a0cfb2-6d45-490e-843a-d4b59f33845e"
+>aLoadingGauge == Messages.M_LOADINGGAUGE.GB</PreCondition></PreConditions>
+<Expression>aLineGauge == Messages.M_LINEGAUGE.GB</Expression>
+</Case><Case
+ Name="GC"
+ Guid="b955e661-4663-4bab-8223-25f0a2b4cce2"
+>
+<PreConditions>
+<PreCondition
+ Guid="9e47c740-c666-4108-ad41-f4179ece21d5"
+>aLoadingGauge == Messages.M_LOADINGGAUGE.GC</PreCondition></PreConditions>
+<Expression>aLineGauge == Messages.M_LINEGAUGE.GC</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
