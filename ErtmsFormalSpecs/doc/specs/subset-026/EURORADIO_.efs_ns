@@ -8,18 +8,6 @@
 >
 <NameSpaces>
 </NameSpaces>
-<Ranges>
-<Range
- MinValue="1"
- MaxValue="2"
- Precision="IntegerPrecision"
- Default="1"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="MobileTerminalID"
- Guid="893cd972-437b-46da-ae65-0082c816ba20"
->
-</Range></Ranges>
 <Enumerations>
 <Enum
  Default="SessionAction.Establish"
@@ -196,12 +184,7 @@
  Name="RadioSession"
  Guid="552ba2ee-961c-4112-8868-b48884d1f6f7"
 >
-<ReqRef
- Id="becb430f-a4f2-4817-ad08-3672ed05f855"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7b724ee2-666a-49ab-8a9e-ccc6accf2249"
->
-</ReqRef><Procedures>
+<Procedures>
 <Procedure
  NeedsRequirement="FALSE"
  Name="SendTerminationOfCommunicationSessionMessage"
@@ -748,16 +731,6 @@
  Name="RadioSessions"
  Guid="8efa9963-c7e2-4c57-bf5f-62dc1b6e3c8a"
 >
-</Collection><Collection
- TypeName="MobileTerminalID"
- MaxSize="2"
- Default="[]"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="MobileTerminalIDs"
- Guid="c11465cd-6494-4bd4-ab4b-628e2874fe32"
->
-<Comment>probably 2 is the maximum number of perceiveable MobileTerminals mounted on a loco. Requirement needed. #morido, 13/10/14</Comment>
 </Collection></Collections>
 <StateMachines>
 <StateMachine
@@ -896,33 +869,6 @@
 >
 <Expression>CurrentRadioSession.RadioSessionState in RadioSession.RadioSessionState.Inactive</Expression>
 </Case></Cases>
-</Function><Function
- Type="Boolean"
- Implemented="TRUE"
- Name="OneMobileTerminalIsAvailable"
- Guid="e31f0ce4-5ca7-4615-9f01-e835968b6bb2"
->
-<ReqRef
- Id="d88669ab-b014-4a92-b565-0f1e46f40945"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8ea3d211-ac31-4faa-8ba9-4587b570b2aa"
->
-</ReqRef><Cases>
-<Case
- Name="AtLeastOneIsAvailable"
- Guid="8a425b2a-af9b-4a02-9cbc-8d1d15189bb3"
->
-<PreConditions>
-<PreCondition
- Guid="e430bb96-b5a1-4417-a849-3299e6967113"
->EURORADIO.MobileTerminals != []</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="74198ec7-7047-4c71-928f-41d5af5a1f23"
->
-<Expression>False</Expression>
-</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -966,12 +912,7 @@
  Name="HandingOver"
  Guid="58577985-de0b-4888-99f4-fc419b96a26f"
 >
-<ReqRef
- Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6a81b37b-ffcf-4da0-9fdc-7e559bf24e82"
->
-</ReqRef><PreConditions>
+<PreConditions>
 <PreCondition
  Guid="1c81200f-324b-4c67-a11a-052f4596e6c3"
 >EURORADIO.RadioSessionOrder.HandingOverRBC == True</PreCondition><PreCondition
@@ -987,12 +928,7 @@
  Name="ConnectToAnotherRBC"
  Guid="33be1917-21f4-4fac-8aff-1d55ba6ccb55"
 >
-<ReqRef
- Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c8063b76-f9fe-4680-9604-0d84c2b98801"
->
-</ReqRef><PreConditions>
+<PreConditions>
 <PreCondition
  Guid="7079c443-a160-42ac-ab03-191e15c7028a"
 >HasActiveSession()</PreCondition><PreCondition
@@ -1737,136 +1673,6 @@
  Name="SetNewAsCurrentSession"
  Guid="ce16ed27-9354-42da-8c50-adc421adf526"
 >
-</Procedure><Procedure
- Implemented="TRUE"
- Name="SendMARequest"
- Guid="605c5787-3cea-40e3-9541-b6fee56354ff"
->
-<ReqRef
- Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="21b60f86-6bac-4cab-822c-a49daf822344"
->
-</ReqRef><Parameters>
-<Parameter
- Type="Messages.Q_MARQSTREASON"
- Name="aReason"
- Guid="5c0da812-a270-4cf0-b8e8-c58eb2c798db"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Name="Send MA request"
- Guid="32efbbf1-f2da-49ca-8d3a-de8db9f9a608"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="Send MA request"
- Guid="5453c885-e136-49b5-8072-69a3f4e899ac"
->
-<Comment></Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="f105e56b-cf2d-4016-b30e-0ea135442f31"
->EURORADIO.EuroradioMessageOut.MA_REQUEST &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.MA_REQUEST.Message
-{
-    NID_MESSAGE =&gt; 132,
-    L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; MessageTypes.Time ( Kernel.CurrentTime ),
-    NID_ENGINE =&gt; Kernel.NidEngine,
-    Q_MARQSTREASON =&gt; aReason,
-    POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
-}</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- Name="SendRequestForShunting"
- Guid="bbf768a6-9eec-467b-b2ef-6470b3f72595"
->
-<ReqRef
- Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="376abddb-f246-4e20-8cd6-b3fb29cb373c"
->
-</ReqRef><Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Send Request for Shunting"
- Guid="592cdc3a-a9ac-4116-8e09-d56c9311fe9e"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Send Request for Shunting"
- Guid="f43c3579-ea00-4730-b1f4-763eea38dcc9"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="7297c0d3-1229-4d0e-9a96-f81af5183fa9"
->EuroradioMessageOut.REQUEST_FOR_SHUNTING &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.REQUEST_FOR_SHUNTING.Message
-{
-    NID_MESSAGE =&gt; 130,
-    L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; MessageTypes.Time ( Kernel.CurrentTime ),
-    NID_ENGINE =&gt; Kernel.NidEngine,
-    POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
-}</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- Name="SendEoMReport"
- Guid="ab89aa1a-870b-435e-9232-e0bed3a33834"
->
-<ReqRef
- Id="3f735818-2dc8-4e4a-a842-9112c3e053a9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="21ee6751-35c3-4438-84e8-e4d7b17d623b"
->
-</ReqRef><ReqRef
- Id="7b63a22c-a47e-4e98-87a7-bb6800dbb38e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e46bb61e-928d-4a62-8c22-bff1af3712ac"
->
-</ReqRef><Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Send EoM report"
- Guid="5a3dfb27-b6e9-43df-b30b-358a19f04fb9"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Send EoM report"
- Guid="548bd947-dca9-48ba-910e-f261128b06b6"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="5d5990b8-a350-4843-9667-b01f3a4ae06c"
->EuroradioMessageOut.END_OF_MISSION &lt;-Messages.MESSAGE.TRAIN_TO_TRACK.END_OF_MISSION.Message{
-    NID_MESSAGE =&gt; 0,
-    L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; 0,
-    NID_ENGINE =&gt; 0,
-    POSITION_REPORT =&gt; EURORADIO.PositionReport.CreatePositionReport()
-}</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -2026,13 +1832,6 @@
  VariableMode="Internal"
  Name="RegisterMobileTerminal"
  Guid="5e8964c3-5c76-49cc-a58d-9a1412dfe186"
->
-</Variable><Variable
- Type="EURORADIO.MobileTerminalIDs"
- VariableMode="Internal"
- Implemented="TRUE"
- Name="MobileTerminals"
- Guid="ed866a18-1070-40b6-8d27-114d681b51e6"
 >
 </Variable></Variables>
 <Rules>

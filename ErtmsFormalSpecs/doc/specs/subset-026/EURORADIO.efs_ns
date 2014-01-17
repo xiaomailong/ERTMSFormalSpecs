@@ -12,6 +12,25 @@
  Guid="3e0fac33-af2e-49fb-87bd-7ac9bade11fe"
 >
 </NameSpaceRef></NameSpaces>
+<Ranges>
+<Range
+ MinValue="0"
+ MaxValue="2"
+ Precision="IntegerPrecision"
+ Default="1"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MobileTerminalID"
+ Guid="893cd972-437b-46da-ae65-0082c816ba20"
+>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="NotAvailable"
+ Guid="ad6b62bd-d36b-4440-8cea-7ae65a02c2f7"
+>
+</EnumValue></SpecialValues>
+</Range></Ranges>
 <Enumerations>
 <Enum
  Default="SafeRadioConnectionStatusEnum.NoConnection"
@@ -70,9 +89,29 @@
  Guid="efe01397-7c69-4d63-8eb6-7e646cca2191"
 >
 </EnumValue></Values>
+</Enum><Enum
+ Default="SystemVersionEnum.Version1"
+ Implemented="TRUE"
+ Name="SystemVersionEnum"
+ Guid="e434ea8a-ec75-42f9-8347-85f8030caba3"
+>
+<Comment>Gives the possible system versions for Euroradio communication.</Comment>
+<Values>
+<EnumValue
+ Value=""
+ Name="Version1"
+ Guid="57240a8e-82c1-4bc2-85a2-0db7d7eca3b9"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="Version2"
+ Guid="0dc39e5e-a3df-4e7b-b900-0faa0a026b92"
+>
+</EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
 <Structure
+ Implemented="TRUE"
  Name="RBCStruct"
  Guid="a486085f-3201-4bf5-8db8-cf3027c03815"
 >
@@ -319,6 +358,199 @@
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendEoMReport"
+ Guid="ab89aa1a-870b-435e-9232-e0bed3a33834"
+>
+<ReqRef
+ Id="3f735818-2dc8-4e4a-a842-9112c3e053a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21ee6751-35c3-4438-84e8-e4d7b17d623b"
+>
+</ReqRef><ReqRef
+ Id="7b63a22c-a47e-4e98-87a7-bb6800dbb38e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e46bb61e-928d-4a62-8c22-bff1af3712ac"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="3eabc145-1193-4620-be32-ebc6cf35c2b4"
+>
+<Comment>If the message is EMPTY, it has to be initialized</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="144933fc-e9f1-4489-911e-e6bf16b8ad3b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="159f8be9-e901-46cd-b31a-91728b854d33"
+>InitializeOutMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send EoM report"
+ Guid="5a3dfb27-b6e9-43df-b30b-358a19f04fb9"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send EoM report"
+ Guid="548bd947-dca9-48ba-910e-f261128b06b6"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5d5990b8-a350-4843-9667-b01f3a4ae06c"
+>MessageOut.END_OF_MISSION &lt;-Messages.MESSAGE.TRAIN_TO_TRACK.END_OF_MISSION.Message{
+    NID_MESSAGE =&gt; 0,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 0,
+    NID_ENGINE =&gt; 0,
+    POSITION_REPORT =&gt; EURORADIO.PositionReport.CreatePositionReport()
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendRequestForShunting"
+ Guid="bbf768a6-9eec-467b-b2ef-6470b3f72595"
+>
+<ReqRef
+ Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="376abddb-f246-4e20-8cd6-b3fb29cb373c"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="aae94d1a-4576-49d7-ab43-e61a40efe9e9"
+>
+<Comment>If the message is EMPTY, it has to be initialized</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="31f1450c-9cfd-4568-8768-521f7b2f72e5"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="22e1fb48-7194-41fa-9413-884aed465214"
+>InitializeOutMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send Request for Shunting"
+ Guid="592cdc3a-a9ac-4116-8e09-d56c9311fe9e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send Request for Shunting"
+ Guid="f43c3579-ea00-4730-b1f4-763eea38dcc9"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="7297c0d3-1229-4d0e-9a96-f81af5183fa9"
+>MessageOut.REQUEST_FOR_SHUNTING &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.REQUEST_FOR_SHUNTING.Message
+{
+    NID_MESSAGE =&gt; 130,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; MessageTypes.Time ( Kernel.CurrentTime ),
+    NID_ENGINE =&gt; Kernel.NidEngine,
+    POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendMARequest"
+ Guid="605c5787-3cea-40e3-9541-b6fee56354ff"
+>
+<ReqRef
+ Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21b60f86-6bac-4cab-822c-a49daf822344"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="Messages.Q_MARQSTREASON"
+ Name="aReason"
+ Guid="5c0da812-a270-4cf0-b8e8-c58eb2c798db"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Initialize message_1"
+ Guid="d3b68b75-987a-41d6-99f1-fb0772635b9e"
+>
+<Comment>If the message is EMPTY, it has to be initialized</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="4e0423b2-ff99-457f-bc39-7ee3fbd568f4"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="bd0bff4f-a385-4604-9275-9ca2e8029bb5"
+>InitializeOutMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Send MA request"
+ Guid="32efbbf1-f2da-49ca-8d3a-de8db9f9a608"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Send MA request"
+ Guid="5453c885-e136-49b5-8072-69a3f4e899ac"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f105e56b-cf2d-4016-b30e-0ea135442f31"
+>MessageOut.MA_REQUEST &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.MA_REQUEST.Message
+{
+    NID_MESSAGE =&gt; 132,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; MessageTypes.Time ( Kernel.CurrentTime ),
+    NID_ENGINE =&gt; Kernel.NidEngine,
+    Q_MARQSTREASON =&gt; aReason,
+    POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
@@ -379,6 +611,15 @@
  Guid="2007b98c-b3ea-412e-8bcf-fb463d719de4"
 >
 <Comment>Provides the order to contact the RBC, if any.</Comment>
+</StructureElement><StructureElement
+ TypeName="SessionEstablishmentStruct"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SessionEstablishmentData"
+ Guid="1ca4ec93-c578-45ad-bbdb-e44c71c1f9aa"
+>
+<Comment>Data needed to establish a communication session.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  InitialState="NotConnected"
@@ -620,7 +861,43 @@
  Guid="73fea7b0-d546-4a93-893e-f4c2ed0b849a"
 >
 <Comment>Short number.</Comment>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="SessionEstablishmentStruct"
+ Guid="395169e1-4c72-48ca-950b-fa0d473758a1"
+>
+<Comment>Data used to establish a session.</Comment>
+<StructureElement
+ TypeName="Default.Request"
+ Default="Default.Request.Disabled"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="Request"
+ Guid="3da0a1c7-ca89-43ab-9597-09b7adf15b15"
+>
+<Comment>Used to initiate a communication session with an RBC.</Comment>
+</StructureElement><StructureElement
+ TypeName="SystemVersionEnum"
+ Default="SystemVersionEnum.Version1"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="SystemVersion"
+ Guid="abb42052-649b-4e21-b7c9-461a8f11576a"
+>
+<Comment>The system version of the trackside.</Comment>
 </StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="MobileTerminalID"
+ MaxSize="2"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MobileTerminalIDs"
+ Guid="c11465cd-6494-4bd4-ab4b-628e2874fe32"
+>
+<Comment>probably 2 is the maximum number of perceiveable MobileTerminals mounted on a loco. Requirement needed. #morido, 13/10/14</Comment>
+</Collection></Collections>
 <Functions>
 <Function
  Type="Boolean"
@@ -691,6 +968,33 @@ RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Ex
   AND
 RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="OneMobileTerminalIsAvailable"
+ Guid="e31f0ce4-5ca7-4615-9f01-e835968b6bb2"
+>
+<ReqRef
+ Id="d88669ab-b014-4a92-b565-0f1e46f40945"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8ea3d211-ac31-4faa-8ba9-4587b570b2aa"
+>
+</ReqRef><Cases>
+<Case
+ Name="AtLeastOneIsAvailable"
+ Guid="8a425b2a-af9b-4a02-9cbc-8d1d15189bb3"
+>
+<PreConditions>
+<PreCondition
+ Guid="e430bb96-b5a1-4417-a849-3299e6967113"
+>EURORADIO.MobileTerminals != []</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="74198ec7-7047-4c71-928f-41d5af5a1f23"
+>
+<Expression>False</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -703,10 +1007,15 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="819e1e79-9b39-4782-b8f6-2e8ef581405d"
 >
+</ReqRef><ReqRef
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="186a859f-0ee2-4458-8b0b-f471f0cbdf5e"
+>
 </ReqRef><Comment>Allows to establish/terminate the communication session with an RBC.</Comment>
 <Parameters>
 <Parameter
- Type="ContactRBCOrderStruct"
+ Type="ContactOrderStruct"
  Name="Order"
  Guid="bd7c227e-3f2a-4591-b2f2-0261dead5db0"
 >
@@ -756,6 +1065,11 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
  Id="711a8f6b-f758-4405-bb80-f9b331940c39"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8be15c32-7c74-4fb5-8e55-06b822994013"
+>
+</ReqRef><ReqRef
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d4f24b0-92a9-4856-a71d-88e34d2d59ac"
 >
 </ReqRef><Comment>Allows to establish the communication session with an accepting RBC.</Comment>
 <Parameters>
@@ -813,21 +1127,28 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  Name="OpenRBCSession"
  Guid="1e3e4aab-936d-4b3e-90d0-c39dfa476afa"
->
-<Rules>
-<Rule
- Priority="Processing"
- Name="Open RBC session"
- Guid="96a4a42f-501a-40c4-9a82-8d522f07c55a"
 >
 <ReqRef
  Id="410ad67d-6b5a-46f5-9694-35e5954fcb65"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="87145945-d2e8-41ff-aeb7-78199b7678e0"
+ Guid="882474cc-7ade-45b2-a1e4-47af0e562d10"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><ReqRef
+ Id="becb430f-a4f2-4817-ad08-3672ed05f855"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1ee1871-11f4-4b57-9cd4-1613cfc9d0a7"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Open RBC session"
+ Guid="96a4a42f-501a-40c4-9a82-8d522f07c55a"
+>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -979,5 +1300,14 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
  Guid="871247fa-7189-4f13-874e-e3466aad155e"
 >
 <Comment>Contains information about the last known RBC.</Comment>
+</Variable><Variable
+ Type="MobileTerminalIDs"
+ DefaultValue="[1,2]"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="MobileTerminals"
+ Guid="ed866a18-1070-40b6-8d27-114d681b51e6"
+>
+<Comment>Represents the mobile terminals available on-board.</Comment>
 </Variable></Variables>
 </NameSpace>
