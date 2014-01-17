@@ -4869,7 +4869,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="d8168522-2e95-455d-b009-9b8a1f790460"
->EURORADIO.SendMARequest ( aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver )</Action><Action
+>EURORADIO.ConnectedRBC().SendMARequest ( aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver )</Action><Action
  Guid="90885e9c-cbaf-452c-80fe-9e7324d8b5a0"
 >THIS &lt;- HandleModeChange.StartOfMission.S21.MARequestSent</Action></Actions>
 </RuleCondition></Conditions>
@@ -6944,7 +6944,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="39540147-4615-44eb-84a8-9083d135c7c0"
->EURORADIO.SendMARequest ( aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver )</Action><Action
+>EURORADIO.ConnectedRBC().SendMARequest ( aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver )</Action><Action
  Guid="fed8c181-694f-4bae-b0ce-bceb028acba9"
 >THIS &lt;- HandleModeChange.TrainTrip.S150.MARequestSent</Action></Actions>
 </RuleCondition></Conditions>
@@ -7954,11 +7954,11 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="fc2d9fa3-d834-42a2-8978-11653b10d672"
->Available ( FIRST_IN EURORADIO.EuroradioMessageIn.SH_AUTHORISED.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) )</PreCondition></PreConditions>
+>Available ( FIRST_IN EURORADIO.ConnectedRBC().MessageIn.SH_AUTHORISED.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9284dece-9f13-46bf-bcd9-3348e25bdd07"
->Shunting.HandleNewListOfBaliseGroups ( ( FIRST_IN EURORADIO.EuroradioMessageIn.SH_AUTHORISED.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) ).LIST_OF_BALISES_FOR_SH_AREA )</Action></Actions>
+>Shunting.HandleNewListOfBaliseGroups ( ( FIRST_IN EURORADIO.ConnectedRBC().MessageIn.SH_AUTHORISED.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) ).LIST_OF_BALISES_FOR_SH_AREA )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -8038,7 +8038,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="63d11d3e-e82f-4a5d-b7a1-6e47f1c88410"
 >THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.S050</Action><Action
  Guid="ad9ddcbb-6f74-4882-b01f-462593af8352"
->EURORADIO.SendRequestForShunting()</Action><Action
+>EURORADIO.ConnectedRBC().SendRequestForShunting()</Action><Action
  Guid="06d67b36-615b-4772-896c-f9e2d15610e5"
 >Shunting.NumberOfSentRequestRepetitions &lt;- 0</Action><Action
  Guid="cb5c1d6c-3df7-4123-895e-6edc8dd00866"
@@ -8157,7 +8157,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="8808d797-c2cd-444b-8c2e-1e2ff3620a82"
->EURORADIO.SendRequestForShunting()</Action><Action
+>EURORADIO.ConnectedRBC().SendRequestForShunting()</Action><Action
  Guid="b2283ec0-3f07-401a-85ff-311a71079033"
 >Shunting.NumberOfSentRequestRepetitions &lt;- Shunting.NumberOfSentRequestRepetitions + 1</Action><Action
  Guid="250d0e5c-57fe-4f75-acc6-00eaecafbd84"
@@ -8910,7 +8910,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="fee0628a-3a16-4a1e-b4b7-32307d0154e3"
->EURORADIO.SendEoMReport()</Action><Action
+>EURORADIO.ConnectedRBC().SendEoMReport()</Action><Action
  Guid="79f27736-0b0e-4f3f-8ea1-26db0a692105"
 >THIS &lt;- Step3</Action><Action
  Guid="ae7a5d9a-f7cc-436a-8054-cca8f1ca33a5"
@@ -9112,7 +9112,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="7fbed012-8ff1-4b63-979e-ee7eb21cab89"
->EURORADIO.SendEoMReport()</Action><Action
+>EURORADIO.ConnectedRBC().SendEoMReport()</Action><Action
  Guid="12d67a3e-c1ff-4622-a75f-772f36316780"
 >NumberOfSentEoMRequestRepetitions  &lt;- NumberOfSentEoMRequestRepetitions  + 1</Action><Action
  Guid="744e2793-5a3d-4c7e-87dc-a9d2d9055b21"
