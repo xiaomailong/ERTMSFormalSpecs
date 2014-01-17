@@ -7,11 +7,7 @@
  Guid="4bf61b22-8e73-40e2-acdf-61fc4b34e2e4"
 >
 <NameSpaces>
-<NameSpaceRef
- Name="TrainData"
- Guid="3e0fac33-af2e-49fb-87bd-7ac9bade11fe"
->
-</NameSpaceRef></NameSpaces>
+</NameSpaces>
 <Ranges>
 <Range
  MinValue="1"
@@ -26,60 +22,6 @@
 </Range></Ranges>
 <Enumerations>
 <Enum
- Default="TrainEnd.MaxSafeFrontEnd"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TrainEnd"
- Guid="1c419445-1887-48ef-87ed-f441cc99f884"
->
-<ReqRef
- Id="e5ec5ab9-bbf7-43ce-aee2-703517236f43"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c86c48b3-a437-449b-b97c-200f56cc78ad"
->
-</ReqRef><ReqRef
- Id="2ecb1ec4-fc6b-4879-a45a-e1b1c55b41fe"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6bf3b04a-c7c9-4ada-a859-5e60470cfd7a"
->
-</ReqRef><ReqRef
- Id="4a9c97b2-dfca-4175-b297-9da9fc3d16fc"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="84890117-671b-4d42-b8b2-e3c7a97c57ec"
->
-</ReqRef><ReqRef
- Id="d61ea269-686c-486d-9852-1fd7e6f88c24"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4938e8b5-283c-4604-b7bc-880e2269701b"
->
-</ReqRef><ReqRef
- Id="bcb653a9-abe2-44a8-ac09-0df33ec9af30"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d6527102-1dc7-4b08-9311-d393654f91e9"
->
-</ReqRef><Values>
-<EnumValue
- Value="1"
- Name="MaxSafeFrontEnd"
- Guid="7cb04fde-3df2-45b7-8afc-b5b786738517"
->
-</EnumValue><EnumValue
- Value="0"
- Name="MinSafeRearEnd"
- Guid="1b732104-98a7-463c-b250-64174353c724"
->
-</EnumValue><EnumValue
- Value=""
- Name="MinSafeFrontEnd"
- Guid="848abbad-565c-43af-830f-156856c40f5b"
->
-</EnumValue><EnumValue
- Value=""
- Name="MaxSafeRearEnd"
- Guid="7784661d-f066-4294-891d-d550d305f439"
->
-</EnumValue></Values>
-</Enum><Enum
  Default="SessionAction.Establish"
  NeedsRequirement="FALSE"
  Name="SessionAction"

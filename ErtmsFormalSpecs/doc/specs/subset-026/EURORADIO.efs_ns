@@ -7,6 +7,10 @@
  Name="PositionReport"
  Guid="c9623ca4-7f96-47f9-9040-bcb29cb92c3d"
 >
+</NameSpaceRef><NameSpaceRef
+ Name="TrainData"
+ Guid="3e0fac33-af2e-49fb-87bd-7ac9bade11fe"
+>
 </NameSpaceRef></NameSpaces>
 <Enumerations>
 <Enum
@@ -243,6 +247,70 @@
     SOM_POSITION_REPORT =&gt; EMPTY,
     TEXT_MESSAGE_ACKNOWLEDGED_BY_DRIVER =&gt; EMPTY,
     SESSION_ESTABLISHED =&gt; EMPTY
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendTrainData"
+ Guid="5e8585ff-5096-4df7-a74d-9272db3f84cf"
+>
+<ReqRef
+ Id="8b735562-2ede-429c-940c-7f53b0f6f675"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c76f8877-efbd-4800-b4d0-0be9f93c28fd"
+>
+</ReqRef><ReqRef
+ Id="0aa692d6-e57e-48a1-929d-b3f3a51951bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d24f2133-00f7-4fd4-9180-c9bafc9b71cf"
+>
+</ReqRef><Comment></Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="511ff74f-c4b6-4b78-810c-99f0123510ee"
+>
+<Comment>If the message is EMPTY, it has to be initialized</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="2687b67a-4497-4efc-b70d-2d91183ff1bd"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5e0b679f-e1cd-4f2e-a08e-c29838eb1d21"
+>InitializeOutMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Send train data"
+ Guid="872d1f42-9012-45ab-851c-1d031e37d13a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Send train data"
+ Guid="02987fbb-6adb-49ac-926b-9a702a9f3ceb"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f26165a7-1b31-4afe-b6c9-ea1f49fa06de"
+>MessageOut.VALIDATED_TRAIN_DATA &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message
+{
+    L_MESSAGE =&gt; 0,
+    NID_ENGINE =&gt; 0,
+    NID_MESSAGE =&gt; 129,
+    T_TRAIN =&gt; 0,
+    VALIDATED_TRAIN_DATA =&gt; TrainData.CreateTrainData()
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -524,6 +592,27 @@ RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Ex
 >
 <Expression>EMPTY</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AllSessionsClosed"
+ Guid="d5ab709a-c73f-4f2a-bece-c9c7586dcde5"
+>
+<ReqRef
+ Id="abbd517e-8b49-43b4-8dfa-117c8988fa86"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0dc0a5ce-e9ad-4e66-9089-3cd52c0eb9cc"
+>
+</ReqRef><Comment>Indicates if all the Euroradio sessions are closed</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="570d8238-c486-4d19-bd40-02645a6b780e"
+>
+<Expression>RBC1.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected
+  AND
+RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -649,6 +738,14 @@ RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Ex
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Name="OpenRBCSession"
+ Guid="1e3e4aab-936d-4b3e-90d0-c39dfa476afa"
+>
+</Procedure><Procedure
+ Name="CloseRBCSession"
+ Guid="2691fd9c-77e5-40c8-859a-310f132a7a1c"
+>
 </Procedure></Procedures>
 <Variables>
 <Variable
