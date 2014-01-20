@@ -318,14 +318,16 @@
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Line gauge"
+ Name="Unsuitable line gauge"
  Guid="621c7c64-a3e9-48d1-913d-cd2e9bb5720d"
 >
 <PreConditions>
 <PreCondition
  Guid="a29186e6-0ce9-4d0e-88ca-76d6d250028a"
->aType == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
-<Expression>NOT(GaugesMatch(aLineGauge =&gt; aLineGauge, aLoadingGauge =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge))</Expression>
+>aType == Messages.Q_SUITABILITY.Loading_gauge_profile
+AND
+GaugesMatch(aLineGauge =&gt; aLineGauge, aLoadingGauge =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge) == Boolean.False</PreCondition></PreConditions>
+<Expression>True</Expression>
 </Case><Case
  Name="Axle load"
  Guid="2161906b-ab60-44ec-864b-1b522510851f"
@@ -344,6 +346,17 @@
  Guid="4676c596-4178-4368-a433-3f79212b496b"
 >aType == Messages.Q_SUITABILITY.Traction_system</PreCondition></PreConditions>
 <Expression>NOT ( THERE_IS_IN TrainData.TrainData.Value.TractionSystems | X.Voltage == aTractionSystem AND X.Country == aNidCTraction )</Expression>
+</Case><Case
+ Name="Suitable line gauge"
+ Guid="65b80f78-257e-4f3c-8141-a6ef596b31f1"
+>
+<PreConditions>
+<PreCondition
+ Guid="7b7bae42-ceba-4a58-996b-d5ffd8c1f391"
+>aType == Messages.Q_SUITABILITY.Loading_gauge_profile
+AND
+GaugesMatch(aLineGauge =&gt; aLineGauge, aLoadingGauge =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge) == Boolean.True</PreCondition></PreConditions>
+<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
@@ -456,8 +469,10 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 <PreConditions>
 <PreCondition
  Guid="80d1983d-ee7a-419a-aa8b-51c2d31b9f0b"
->aLoadingGauge == Messages.M_LOADINGGAUGE.G1</PreCondition></PreConditions>
-<Expression>aLineGauge == Messages.M_LINEGAUGE.G1</Expression>
+>aLoadingGauge == Messages.M_LOADINGGAUGE.G1
+AND
+aLineGauge == Messages.M_LINEGAUGE.G1</PreCondition></PreConditions>
+<Expression>True</Expression>
 </Case><Case
  Name="GA"
  Guid="0c76e4b8-ac7b-4df3-9a5e-2cec60e0fc9e"
@@ -465,8 +480,10 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 <PreConditions>
 <PreCondition
  Guid="b4f6d070-c95a-4b75-8e5d-9ffd30e5b167"
->aLoadingGauge == Messages.M_LOADINGGAUGE.GA</PreCondition></PreConditions>
-<Expression>aLineGauge == Messages.M_LINEGAUGE.GA</Expression>
+>aLoadingGauge == Messages.M_LOADINGGAUGE.GA
+AND
+aLineGauge == Messages.M_LINEGAUGE.GA</PreCondition></PreConditions>
+<Expression>True</Expression>
 </Case><Case
  Name="GB"
  Guid="f36f960c-5385-415c-a84a-496fbd3a7701"
@@ -474,8 +491,10 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 <PreConditions>
 <PreCondition
  Guid="63a0cfb2-6d45-490e-843a-d4b59f33845e"
->aLoadingGauge == Messages.M_LOADINGGAUGE.GB</PreCondition></PreConditions>
-<Expression>aLineGauge == Messages.M_LINEGAUGE.GB</Expression>
+>aLoadingGauge == Messages.M_LOADINGGAUGE.GB
+AND
+aLineGauge == Messages.M_LINEGAUGE.GB</PreCondition></PreConditions>
+<Expression>True</Expression>
 </Case><Case
  Name="GC"
  Guid="b955e661-4663-4bab-8223-25f0a2b4cce2"
@@ -483,8 +502,15 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 <PreConditions>
 <PreCondition
  Guid="9e47c740-c666-4108-ad41-f4179ece21d5"
->aLoadingGauge == Messages.M_LOADINGGAUGE.GC</PreCondition></PreConditions>
-<Expression>aLineGauge == Messages.M_LINEGAUGE.GC</Expression>
+>aLoadingGauge == Messages.M_LOADINGGAUGE.GC
+AND
+aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="8d7ef58b-2407-491e-887a-12a9d6326a7e"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
