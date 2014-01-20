@@ -202,9 +202,9 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \chapter{Git}
 \section{General}
 \begin{rules}
-\item \label{rule:pullrequest} Own edits shall always be committed into a personal fork of the \gls{efs} repository and then transferred by issuing a pull-request. \ruleauthor{MD}{31/10/2013}
+\item \label{rule:pullrequest} Own edits shall always be committed into a personal fork of the \gls{efs} repository and then transferred by issuing a pull-request. See \ref{sec:pull_request}. \ruleauthor{MD}{31/10/2013}
 \item The \gls{efs} repository located at \code{github.com/openETCS/ERTMSFormalSpecs.git} shall always be named \literally{upstream} inside SmartGit. \ruleauthor{MD}{20/01/2014}
-\item If the user has write-access to the \gls{efs} repository it is advisable to force a different username for it inside SmartGit so that writing is limited to pull requests as described in \ref{rule:pullrequest} This can be achieved by entering the reposisitory URL like so \code{https://dummy@github.com/openETCS/ERTMSFormalSpecs.git} (\literally{dummy} being the "different username" here). \ruleauthor{MD}{20/01/2014}
+\item If the user has write-access to the \gls{efs} repository it is advisable to force a different username for it inside SmartGit so that writing is limited to pull requests as described in \ref{rule:pullrequest} This can be achieved by entering the reposisitory URL like so: \code{https://dummy@github.com/openETCS/ERTMSFormalSpecs.git} (\literally{dummy} being the "different username" here). \ruleauthor{MD}{20/01/2014}
 
 \end{rules}
 
@@ -215,13 +215,23 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \item \label{rule:smallcommits} numerous small commits dealing with a single issue are preferable over few huge commits possibly dealing with many different issues. \ruleauthor{MD}{31/10/2013}
 \end{rules}
 
-
 \subsection{commit description texts}
 \label{rules:committexts}
 \begin{rules}
 \item The text shall not contain line-breaks (i.e. consist of a single line only). \ruleauthor{MD}{31/10/2013}
 \item Commits dealing with the modeling part of the tool shall begin with \literally{EA_MODEL} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
 \item Commits dealing with the testing part of the tool shall begin with \literally{EA_TEST} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
+\item Commits dealing with the documentation part of the tool shall begin with \literally{EA_DOC} followed by a reference to the documents the commit affects and a descriptive text. \ruleauthor{MD}{20/01/2014}
+\end{rules}
+
+
+\section{Pull-Requests}
+\label{sec:pull_request}
+\subsection{General}
+\begin{rules}
+
+\item Use a separate branch for each new "feature" (i.e. a coherent set of tests) and then issue a pull-request from that branch. \ruleauthor{MD}{20/01/2014}
+
 \end{rules}
 
 \begin{appendices}
