@@ -898,14 +898,15 @@ Linking information shall be composed of:<Sub>
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
  trackside="TRUE"
  Name=""
  Guid="851ab4c7-24ed-4bb4-bcf0-18ffccc80fb7"
->The accuracy of this location.
+><Comment>The note has not yet been taken care of, #morido, 14/01/15</Comment>
+The accuracy of this location.
 Note: If the reference balise is duplicated, it is the trackside responsibility to define the location accuracy to cover at least the location of the two duplicated balises.</Paragraph><Paragraph
  id="3.4.4.2.1.d"
  guid=""
@@ -948,12 +949,14 @@ Note: If the reference balise is duplicated, it is the trackside responsibility 
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  functionalBlockName=""
  onboard="TRUE"
  trackside="TRUE"
  Name=""
  Guid="3ab48b20-0a96-4f02-93ac-64071624c979"
->&quot;Linking information is used&quot; shall be interpreted as when balise group(s) are announced and the minimum safe antenna position has not yet passed the expectation window of the furthest announced balise group.</Paragraph></Sub>
+><Comment>The term &quot;Linking information is used&quot; is confusing because of its tense. It should rather be &quot;Linking information is {currently in use | applicable}&quot;, #morido, 14/01/16</Comment>
+&quot;Linking information is used&quot; shall be interpreted as when balise group(s) are announced and the minimum safe antenna position has not yet passed the expectation window of the furthest announced balise group.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.4.4.2.2"
  guid=""
@@ -1128,8 +1131,15 @@ Note: If the reference balise is duplicated, it is the trackside responsibility 
  trackside="TRUE"
  Name=""
  Guid="22b29a34-8fe5-4ccc-9aec-f79479570714"
-><Comment>what does &quot;when no linking information is used onboard&quot; mean? 
-That no Packet 5 has been read?</Comment>
+><ReqRef
+ Id="3ab48b20-0a96-4f02-93ac-64071624c979"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7891db51-ee72-4dd6-9284-90660b8054a2"
+>
+</ReqRef><Comment>what does &quot;when no linking information is used onboard&quot; mean? 
+That no Packet 5 has been read?
+
+see linked requirement #morido, 14/01/16</Comment>
 When no linking information is used on-board, all balise groups shall be taken into account.</Paragraph><Paragraph
  id="3.4.4.4.2"
  guid=""
@@ -1162,7 +1172,12 @@ When linking information is used on-board, only balise groups marked as linked a
  trackside="TRUE"
  Name=""
  Guid="efb1d7b7-401e-46ab-93ac-645f2bc80a33"
->When linking information is used on-board and the expected balise group is referred in the linking information with a balise group with ID &quot;unknown&quot;, a balise group marked as linked shall only be taken into account if:<Sub>
+><ReqRef
+ Id="3ab48b20-0a96-4f02-93ac-64071624c979"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c5280209-a55c-4ea7-87c4-675941d734bf"
+>
+</ReqRef>When linking information is used on-board and the expected balise group is referred in the linking information with a balise group with ID &quot;unknown&quot;, a balise group marked as linked shall only be taken into account if:<Sub>
 <Paragraph
  id="3.4.4.4.2.1.a"
  guid=""
@@ -3831,7 +3846,12 @@ In case of an LRBG being a single balise group with no co-ordinate system assign
  trackside="TRUE"
  Name=""
  Guid="50574953-3247-4859-8de2-1049ab46e862"
->For the LRBG the following requirements have to be met:
+><ReqRef
+ Id="3ab48b20-0a96-4f02-93ac-64071624c979"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6ee94296-28a7-40b7-9c0c-8324a686e0d4"
+>
+</ReqRef>For the LRBG the following requirements have to be met:
 	a) The on-board equipment shall use the last balise group passed as a reference when reporting its position to the RBC (in the following termed as LRBGONB). Only
 	- balise groups marked as linked and contained in the previously received linking
 	information, if linking information is used on-board
@@ -24031,7 +24051,12 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  trackside="TRUE"
  Name=""
  Guid="0547edfa-b17d-4b79-8cad-2fba135b2d95"
->If linking information is used the on-board shall react according to the linking reaction information in the following cases:
+><ReqRef
+ Id="3ab48b20-0a96-4f02-93ac-64071624c979"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8427287c-0ecb-484a-a650-8a50119bb36a"
+>
+</ReqRef>If linking information is used the on-board shall react according to the linking reaction information in the following cases:
 	a) If the location reference of the expected balise group is found in rear of the expectation window
 	b) If the location reference of the expected balise group is not found inside the expectation window (i.e. the end of the expectation window has been reached without having found the expected balise group)
 	c) If inside the expectation window of the expected balise group another announced balise group, expected later, is found.<Sub>
@@ -24141,7 +24166,12 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  trackside="TRUE"
  Name=""
  Guid="00031a80-e9f3-4821-a0a6-1d322a75fa85"
->If linking information is used, the on-board shall reject the message from a linked balise group found in the expected location and react according to the linking reaction in the following cases:
+><ReqRef
+ Id="3ab48b20-0a96-4f02-93ac-64071624c979"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e8567ba9-ebf0-4d91-bbe0-954c083fb1ab"
+>
+</ReqRef>If linking information is used, the on-board shall reject the message from a linked balise group found in the expected location and react according to the linking reaction in the following cases:
 	a) A balise is missed inside the group.
 	b) A balise is detected but no telegram is decoded (e.g. wrong CRC,...).
 	c) Variables in the balise group message have invalid values.
@@ -24174,7 +24204,12 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  trackside="TRUE"
  Name=""
  Guid="dc13fa0f-3c6b-42d8-a367-9de75248768d"
->If linking information is used, the on-board shall reject the message from a balise group marked as linked but not included in the linking information. No reaction shall be applied, even if errors in the reading of the balise group occur.</Paragraph><Paragraph
+><ReqRef
+ Id="3ab48b20-0a96-4f02-93ac-64071624c979"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d54a19bf-8026-4060-bf43-8158e59b399d"
+>
+</ReqRef>If linking information is used, the on-board shall reject the message from a balise group marked as linked but not included in the linking information. No reaction shall be applied, even if errors in the reading of the balise group occur.</Paragraph><Paragraph
  id="3.16.2.4.4"
  guid=""
  type="REQUIREMENT"
@@ -24188,7 +24223,12 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  trackside="TRUE"
  Name=""
  Guid="a7df0f1f-2d5f-4baa-b656-9ddbc4393074"
->If no linking information is used, the on-board shall reject the message from a balise group marked as linked and command application of the service brake in the following cases:
+><ReqRef
+ Id="3ab48b20-0a96-4f02-93ac-64071624c979"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5559ef66-8b37-439c-9f06-3d1f3eb325ce"
+>
+</ReqRef>If no linking information is used, the on-board shall reject the message from a balise group marked as linked and command application of the service brake in the following cases:
 	a) A balise is missed inside the group.
 	b) A balise is detected, but no telegram is decoded (e.g. wrong CRC).
 	c) Variables in the balise group message have invalid values.
@@ -25296,8 +25336,12 @@ If 2 consecutive linked balise groups announced by linking are not detected and 
  trackside="TRUE"
  Name=""
  Guid="a3885eb8-93e0-4d9c-8084-7fb3d864615a"
->If linking information is used on-board, no error reporting shall be done for balise groups marked as linked but not included in the linking information.
-</Paragraph></Sub>
+><ReqRef
+ Id="3ab48b20-0a96-4f02-93ac-64071624c979"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e0a90bce-3d0c-48d2-9676-16cfb3d50406"
+>
+</ReqRef>If linking information is used on-board, no error reporting shall be done for balise groups marked as linked but not included in the linking information.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.17"
