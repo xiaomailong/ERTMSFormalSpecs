@@ -33,8 +33,9 @@ namespace GUI.Report
             TxtB_Path.Text = reportHandler.FileName;
 
             List<string> userNames = new List<string>();
-            userNames.Add("Diego");
+            userNames.Add("James");
             userNames.Add("Moritz");
+            userNames.Add("Diego");
             userNames.Add("Peyman");
             userNames.Add("Luis");
             Cbb_UserNames.DataSource = userNames;

@@ -325,7 +325,7 @@
 <PreCondition
  Guid="a29186e6-0ce9-4d0e-88ca-76d6d250028a"
 >aType == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
-<Expression>TrainData.TrainData.Value.LoadingGauge != aLineGauge</Expression>
+<Expression>NOT (GaugesMatch(aLineGauge =&gt; aLineGauge, aLoadingGauge =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge) )</Expression>
 </Case><Case
  Name="Axle load"
  Guid="2161906b-ab60-44ec-864b-1b522510851f"
@@ -430,6 +430,74 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
  Guid="76a4dbcf-40cb-47f6-9080-af0dca483b33"
 >
 <Expression>EMPTY</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="GaugesMatch"
+ Guid="1d44dc39-5432-4459-9c71-2bb64fd698dd"
+>
+<Parameters>
+<Parameter
+ Type="Messages.M_LINEGAUGE"
+ Name="aLineGauge"
+ Guid="ecfadd34-5ca0-4b18-add4-b8481ce8f257"
+>
+</Parameter><Parameter
+ Type="Messages.M_LOADINGGAUGE"
+ Name="aLoadingGauge"
+ Guid="f6d6657b-704d-4573-957f-73c5b28e9a30"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="G1"
+ Guid="a70fd565-b003-4db7-8dbe-f6e8336f1f72"
+>
+<PreConditions>
+<PreCondition
+ Guid="80d1983d-ee7a-419a-aa8b-51c2d31b9f0b"
+>aLoadingGauge == Messages.M_LOADINGGAUGE.G1
+AND
+aLineGauge == Messages.M_LINEGAUGE.G1</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="GA"
+ Guid="0c76e4b8-ac7b-4df3-9a5e-2cec60e0fc9e"
+>
+<PreConditions>
+<PreCondition
+ Guid="b4f6d070-c95a-4b75-8e5d-9ffd30e5b167"
+>aLoadingGauge == Messages.M_LOADINGGAUGE.GA
+AND
+aLineGauge == Messages.M_LINEGAUGE.GA</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="GB"
+ Guid="f36f960c-5385-415c-a84a-496fbd3a7701"
+>
+<PreConditions>
+<PreCondition
+ Guid="63a0cfb2-6d45-490e-843a-d4b59f33845e"
+>aLoadingGauge == Messages.M_LOADINGGAUGE.GB
+AND
+aLineGauge == Messages.M_LINEGAUGE.GB</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="GC"
+ Guid="b955e661-4663-4bab-8223-25f0a2b4cce2"
+>
+<PreConditions>
+<PreCondition
+ Guid="9e47c740-c666-4108-ad41-f4179ece21d5"
+>aLoadingGauge == Messages.M_LOADINGGAUGE.GC
+AND
+aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="8d7ef58b-2407-491e-887a-12a9d6326a7e"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -627,6 +695,34 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axl
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
+ Name="Create the route suitability profile"
+ Guid="ce752460-e53f-4f33-b629-e2bfb148dca1"
+>
+<Comment>If the route suitability profile is EMPTY, initialize it -James</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Create the route suitability profile"
+ Guid="50983b51-3f9a-47b1-8110-dfd98356a5a4"
+>
+<PreConditions>
+<PreCondition
+ Guid="e339442a-3327-4071-b829-0be6b8002a29"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile == EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="473b1205-1429-4bbd-ab83-a5909aecd1bd"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile &lt;-Kernel.TrackDescription.RouteSuitability.RouteSuitabilityInformation
+ {
+    InitialState =&gt; 1,
+    EmptyProfileDistance =&gt; 0.0,
+    Items =&gt; []
+ }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Insert first item"
  Guid="3b9ae9d8-ba3a-468a-8f3f-a4f3a07abceb"
 >
@@ -784,13 +880,13 @@ ON
                                                  aTractionSystem =&gt; aRouteSuitability.M_VOLTAGE,
                                                  aNidCTraction =&gt; aRouteSuitability.NID_CTRACTION )
 IN
-    RouteSuitabilityProfile.Items</Action></Actions>
+    Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="RouteSuitability.RouteSuitabilityInformation"
+ Type="RouteSuitabilityInformation"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  Implemented="TRUE"
