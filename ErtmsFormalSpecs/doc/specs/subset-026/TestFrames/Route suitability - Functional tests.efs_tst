@@ -34,12 +34,12 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step1 - Initialize train data"
+ Name="Step 1 - Initialize train data"
  Guid="5ff6e63a-0856-472e-951f-753e4f7e7fc7"
 >
 <SubSteps>
 <SubStep
- Name="SubStep1 - Initialize test environment"
+ Name="SubStep 1 - Initialize test environment"
  Guid="78024ff6-7571-41b0-b8c2-40391d543185"
 >
 <Actions>
@@ -47,7 +47,7 @@
  Guid="7bd1c3e7-2578-4737-bc35-7bf501ee8089"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2 - Setup for the BG"
+ Name="Sub-step 2 - Setup for the BG"
  Guid="b7fc74df-4aa7-47f0-8ab5-43cd83d7857e"
 >
 <Actions>
@@ -59,7 +59,7 @@
  Guid="c52d0e63-7526-4e71-a8e0-641715e2cf29"
 >Odometry.NominalDistance &lt;- 0.0</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step3 - Give the train some data"
+ Name="Sub-step 3 - Give the train some data"
  Guid="f0647dbf-6179-479c-8cf4-151604f7a58b"
 >
 <Actions>
@@ -95,13 +95,13 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step2 - Receive a message from the balise"
+ Name="Step 2 - Receive a message from the balise"
  Guid="e7e0af1b-05c9-4981-b4e6-b8d366d1bb80"
 >
 <Comment>The balise transmits a route suitability packet that the train stores</Comment>
 <SubSteps>
 <SubStep
- Name="SubStep1 - The message gets sent"
+ Name="SubStep 1 - The message gets sent"
  Guid="9f468db7-a6d1-4d77-8b66-df4150604482"
 >
 <Actions>
@@ -177,12 +177,12 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step3"
+ Name="Step 3 - Expectations"
  Guid="f8021b81-5ad6-4c9e-b585-55fcf07dd0a5"
 >
 <SubSteps>
 <SubStep
- Name="SubStep1 - Check that the message was stored"
+ Name="SubStep 1 - Check that the message was stored"
  Guid="588059ac-d6a4-4526-ac64-b6f0b83d9f82"
 >
 <Expectations>
@@ -228,7 +228,7 @@
  Guid="b9b55801-26ed-4880-92bd-2ce0858c4896"
 >THERE_IS_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | (X.Distance == 1000.0 AND X.Type ==  Messages.Q_SUITABILITY.Max_axle_load AND X.MaxAxleLoad == Messages.M_AXLELOADCAT.D4)</Expectation></Expectations>
 </SubStep><SubStep
- Name="Sub-step2 - Check that inconsistencies are correctly identified"
+ Name="Sub-step 2 - Check that inconsistencies are correctly identified"
  Guid="4341c3e5-24fb-4fca-8782-70b44b8e7ce0"
 >
 <Expectations>
@@ -250,7 +250,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Handle route suitability data from the radio"
+ Name="NOT WORKING YET -- Handle route suitability data from the radio"
  Guid="e698e242-c067-40e0-842f-f4c8672a54e9"
 >
 <TestCases>
@@ -275,7 +275,7 @@
 >
 <SubSteps>
 <SubStep
- Name="SubStep1 - Initialize test environment"
+ Name="SubStep 1 - Initialize test environment"
  Guid="67dd5af6-9556-4514-b693-e5eba7d8f51e"
 >
 <Actions>
@@ -283,7 +283,7 @@
  Guid="425052ae-e9d4-4429-82ea-2e35dc61bf06"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2 - Setup for the radio"
+ Name="Sub-step 2 - Setup for the radio"
  Guid="9f0cf1ba-33db-4d64-9322-ffdffcab98e2"
 >
 <Actions>
@@ -297,12 +297,12 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step 2"
+ Name="Step 2 - Receive the message from the RBC"
  Guid="5bc76fa3-2c5b-4e59-af1c-db717d063e6f"
 >
 <SubSteps>
 <SubStep
- Name="SubStep1"
+ Name="SubStep 1 - The message gets sent"
  Guid="b9f2e941-f060-42f8-b92f-eb6e080ac991"
 >
 <Actions>
@@ -344,9 +344,20 @@
          ]
      }
 }</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="4460208e-93c7-46d4-93bf-86fcf3c5676a"
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 3 - Expectations"
+ Guid="00103050-a46d-4db3-8e91-2e62f70648ff"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Check that the message was stored"
+ Guid="e8b1b591-bcd5-475b-807c-9105e8f31401"
 >
 <Expectations>
 <Expectation
@@ -354,6 +365,510 @@
  DeadLine="1"
  Guid="28e64a49-e8dc-4197-8e2d-7f4f99e77146"
 >(COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Check for unsuitabilities"
+ Guid="ae582d00-3164-42be-a65d-9293ab89b396"
+>
+<TestCases>
+<TestCase
+ Name="Check that unsuitability flags for each data type"
+ Guid="9d8a2a1a-fdf3-4b9f-b1d9-20188fa02227"
+>
+<ReqRef
+ Id="072f0acc-a45c-44b9-8efe-422c893a3dfd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48202bdb-f369-4c3f-903e-7df09cffa2c0"
+>
+</ReqRef><ReqRef
+ Id="636c0584-97a6-40a1-b98c-c6fb3a5d973f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="74419dbe-81b6-4b96-a082-ef56f5581ef0"
+>
+</ReqRef><ReqRef
+ Id="96afd3a3-f828-4c6e-a46d-9b0d96a7a22a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="df9bed6f-3132-4075-982c-33f1c86df087"
+>
+</ReqRef><ReqRef
+ Id="d89b3c91-52f0-4b3a-b8c5-a651c28e580d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d2a6362d-a235-40cf-bcdf-cf6f9d48533a"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Initialize train data"
+ Guid="90d63062-5102-443d-8097-664ed245909b"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Initialize test environment"
+ Guid="5598477a-6c68-4f98-b7a6-3ba9453ce565"
+>
+<Actions>
+<Action
+ Guid="e133f5c0-5e8a-443e-b277-0244b0d5c7e9"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Setup for the BG"
+ Guid="84f95230-a464-4ee2-a32b-192336f1348d"
+>
+<Actions>
+<Action
+ Guid="305f1322-2269-4d9b-b834-9acaafa09a60"
+>BTM.LRBG &lt;- EMPTY</Action><Action
+ Guid="2b15a820-9a66-447f-970b-968844ce68c8"
+>BTM.PreviousLRBGs &lt;- []</Action><Action
+ Guid="dc249aaf-f113-4dfc-bb75-315b6e2c9ddb"
+>Odometry.NominalDistance &lt;- 0.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Give the train some data"
+ Guid="98b20a29-94b2-4dcb-ac8c-6a9689be478d"
+>
+<Actions>
+<Action
+ Guid="252fc30e-ed5b-49de-b921-175f24c80da3"
+>Kernel.TrainData.TrainData &lt;- Kernel.TrainData.TrainData
+ {
+    DataState =&gt; DataState.Valid,
+    Value =&gt; Kernel.TrainData.TrainDataValues
+     {
+        AxleLoadCategory =&gt; Messages.M_AXLELOADCAT.C3,
+        LoadingGauge =&gt; Messages.M_LOADINGGAUGE.GA,
+        TractionSystems =&gt;
+         [
+            Kernel.TrainData.TractionSystem
+             {
+                Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
+                Country =&gt; 80
+             }
+            ,
+            Kernel.TrainData.TractionSystem
+             {
+                Voltage =&gt; Messages.M_VOLTAGE.AC_15_kV_16_7_Hz,
+                Country =&gt; 80
+             }
+         ]
+     }
+ }</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 2 - Loading gauge limitation"
+ Guid="e353935e-2e05-4e24-979a-9c1ce4bd831f"
+>
+<Comment>The balise transmits a route suitability packet that the train stores</Comment>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Receive the information from balise"
+ Guid="47035008-26b2-436c-8156-d5ae9f623f20"
+>
+<Actions>
+<Action
+ Guid="5d03feed-a1b7-484f-9fb1-4607ad39e390"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; 1,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._1C,
+    N_TOTAL =&gt; Messages.N_TOTAL._1_balise_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 1,
+    NID_C =&gt; 80,
+    NID_BG =&gt; 256,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
+     [
+        Messages.EUROBALISE.SubStructure1
+         {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                ROUTE_SUITABILITY_DATA =&gt; Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message
+                 {
+                      NID_PACKET =&gt; 70,
+                      Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                      L_PACKET =&gt; 1,
+                      Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                      Q_TRACKINIT =&gt; 0,
+
+                      D_SUITABILITY =&gt; 500,
+                      Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Loading_gauge_profile,
+                      M_LINEGAUGE =&gt; Messages.M_LINEGAUGE.GB,
+
+                      N_ITER =&gt; 0
+                 }
+             }
+         }
+     ]
+ }</Action><Action
+ Guid="2a99ceac-12db-479c-8b16-4186315ebed4"
+>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 256,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 2.0,
+        Position =&gt; 250.0,
+        UnderReadingAmountOdo =&gt; 2.0
+
+    }
+}</Action></Actions>
+</SubStep><SubStep
+ Name="SubStep 2 - Expectations _ incorrect loading gauge"
+ Guid="f126ee4d-ff56-49e2-9b61-441a9157aca0"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e1c901e7-38c9-4207-aa37-889f322ed57e"
+>( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).IsUnsuitability == Boolean.True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1fe0f5b2-d2bc-494d-a4bb-afbb53f69cdc"
+>( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Loading_gauge_profile</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b8dd528c-bf69-46b0-aee9-57b01648c436"
+>(COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 3 - Axle load category"
+ Guid="45cd46f6-f4fa-4d57-9d42-d8e3e2c964bd"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Receive the information from a balise"
+ Guid="2c8ea325-9d76-4a8e-8ff9-fc6116699fe9"
+>
+<Actions>
+<Action
+ Guid="e5f761ff-39d7-4fa5-8384-8ba607d32e60"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; 1,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._1C,
+    N_TOTAL =&gt; Messages.N_TOTAL._1_balise_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 1,
+    NID_C =&gt; 80,
+    NID_BG =&gt; 257,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
+     [
+        Messages.EUROBALISE.SubStructure1
+         {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                ROUTE_SUITABILITY_DATA =&gt; Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message
+                 {
+                      NID_PACKET =&gt; 70,
+                      Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                      L_PACKET =&gt; 1,
+                      Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                      Q_TRACKINIT =&gt; 0,
+
+                      D_SUITABILITY =&gt; 500,
+                      Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Max_axle_load,
+                      M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B1,
+
+                      N_ITER =&gt; 0
+                 }
+             }
+         }
+     ]
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="SubStep 2 - Expectations _ incorrect axle load category"
+ Guid="5db6bbac-f46e-4329-b870-73151738e6ba"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="6dec155d-6039-4dbc-8940-027ccbd1df79"
+>( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).IsUnsuitability == Boolean.True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="98239d5f-b6a4-4e3c-a4c3-1ba9dd08c2e9"
+>( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Max_axle_load</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="094f9f91-e39b-476d-8355-36a374ac46f6"
+>(COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 4 - Traction system"
+ Guid="0fb5b751-e4e4-44b3-aa9c-cdd57c1dc122"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Receive the information from a balise"
+ Guid="81640aa8-68f5-4d19-8ea0-c0ba2a88bdf6"
+>
+<Actions>
+<Action
+ Guid="78c91775-c97c-4936-a640-3b5e78b5da7e"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; 1,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._1C,
+    N_TOTAL =&gt; Messages.N_TOTAL._1_balise_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 1,
+    NID_C =&gt; 80,
+    NID_BG =&gt; 258,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
+     [
+        Messages.EUROBALISE.SubStructure1
+         {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                ROUTE_SUITABILITY_DATA =&gt; Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message
+                 {
+                      NID_PACKET =&gt; 70,
+                      Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                      L_PACKET =&gt; 1,
+                      Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                      Q_TRACKINIT =&gt; 0,
+
+                      D_SUITABILITY =&gt; 500,
+                      Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Traction_system,
+                      M_VOLTAGE =&gt; Messages.M_VOLTAGE.DC_1_5_kV,
+                      NID_CTRACTION =&gt; 80,
+
+                      N_ITER =&gt; 0
+                 }
+             }
+         }
+     ]
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="SubStep 2 - Expectations _ incorrect traction system"
+ Guid="9b06f21a-df06-40b0-8107-b1eabaf9ae90"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="a5f1d5ba-48ec-465c-b739-abe7f65cb3db"
+>( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).IsUnsuitability == Boolean.True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="fbaba285-4636-46bc-b1f7-36f24cc47ad3"
+>( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Traction_system</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e8ceb019-ba66-4c4b-b03f-6ec405eb9524"
+>( COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 3</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="NOT WORKING YET -- Loading gauges are correctly flagged"
+ Guid="c4bb18a8-0c42-421c-a3df-40411e015dc2"
+>
+<TestCases>
+<TestCase
+ Name="Check that route suitability is correctly identified"
+ Guid="7c0bc732-80e5-4b94-a9e2-8c39cb2cf92a"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize train data"
+ Guid="3c679dbc-5012-44dc-94e9-69ea64c81cbe"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1 - Initialize test environment"
+ Guid="64e527e4-7338-4331-b276-dc919c16658f"
+>
+<Actions>
+<Action
+ Guid="893e75ef-1c02-420a-8697-dc9aa2523c02"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - BG setup"
+ Guid="6929937e-88a9-47cc-b413-740df8e44c01"
+>
+<Actions>
+<Action
+ Guid="6181eab0-5c23-4e98-9ac2-317069a31b24"
+>BTM.LRBG &lt;- EMPTY</Action><Action
+ Guid="d447493e-6efc-46da-8dfb-294f27c85fa7"
+>BTM.PreviousLRBGs &lt;- []</Action><Action
+ Guid="9c7dcb04-2a7b-4636-b8d8-09450fd80330"
+>Odometry.NominalDistance &lt;- 0.0</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2"
+ Guid="d057048c-c69d-4afd-8e3c-3069a1d802f5"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="5ae33177-2dd6-481a-8361-aa2287914eef"
+>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Axle load categories are correctly flagged"
+ Guid="b3cce70b-fe4c-4f30-ae13-103b48883c0d"
+>
+<TestCases>
+<TestCase
+ Name="Check that route suitability is correctly identified"
+ Guid="39274fc9-f3af-4ed4-8c23-1c717d2efd5b"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize train data"
+ Guid="1c4efe83-4bf2-4fa6-a4be-e86d1b5d03d8"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1 - Initialize test environment"
+ Guid="c8d0c413-1e3f-43dc-91c6-d668f11716ec"
+>
+<Actions>
+<Action
+ Guid="ac02120c-f92f-4c36-a9f3-fa5617c02fe7"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - BG setup"
+ Guid="6358818b-33bd-4785-98de-932be500d446"
+>
+<Actions>
+<Action
+ Guid="1134eeeb-14ab-4aed-a508-614fadfe8e2f"
+>BTM.LRBG &lt;- EMPTY</Action><Action
+ Guid="174be167-0da3-4c8a-ad9a-b44ec1e3e0a3"
+>BTM.PreviousLRBGs &lt;- []</Action><Action
+ Guid="7406e63d-5f24-45be-a27e-037c5831b2ea"
+>Odometry.NominalDistance &lt;- 0.0</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Traction systems are correctly flagged"
+ Guid="b41b69a5-5fd0-457e-872d-1d9a9370a069"
+>
+<TestCases>
+<TestCase
+ Name="Check that route suitability is correctly identified"
+ Guid="8d6ccd4f-6330-45c1-87dd-b488c9a05907"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Initialize train data"
+ Guid="ebd03d63-ab50-4d2f-9fab-a8b62068baf8"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Initialize test environment"
+ Guid="0b15988d-b796-44e4-9159-b236d19912c4"
+>
+<Actions>
+<Action
+ Guid="1c32bb8b-6d09-4f59-92c0-4eb4c78c7d9b"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - BG setup"
+ Guid="39c37cb5-f7df-4522-9d51-bb5169cd5c80"
+>
+<Actions>
+<Action
+ Guid="0a09021d-6b1d-4f6f-b7db-8bff77ab550e"
+>BTM.LRBG &lt;- EMPTY</Action><Action
+ Guid="2713bb78-2132-4e5b-9b35-3a869ad82086"
+>BTM.PreviousLRBGs &lt;- []</Action><Action
+ Guid="e795c3ea-2e2d-45a2-b3c0-2ae3dc050eeb"
+>Odometry.NominalDistance &lt;- 0.0</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
