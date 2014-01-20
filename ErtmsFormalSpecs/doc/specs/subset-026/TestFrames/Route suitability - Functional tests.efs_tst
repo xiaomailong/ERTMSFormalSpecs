@@ -19,6 +19,7 @@
 >
 <TestCases>
 <TestCase
+ Implemented="TRUE"
  Name="Receive and store a route suitability message from a balise"
  Guid="07a2596f-970e-4c2b-8ee8-3747a2a0c0ce"
 >
@@ -255,6 +256,7 @@
 >
 <TestCases>
 <TestCase
+ Implemented="TRUE"
  Name="Check that unsuitability flags for each data type"
  Guid="9d8a2a1a-fdf3-4b9f-b1d9-20188fa02227"
 >
@@ -588,15 +590,11 @@
 >
 <TestCases>
 <TestCase
+ Implemented="TRUE"
  Name="Check that route suitability is correctly identified"
  Guid="39274fc9-f3af-4ed4-8c23-1c717d2efd5b"
 >
 <ReqRef
- Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e75d5abc-ab79-4786-8c75-5f7fe30a97aa"
->
-</ReqRef><ReqRef
  Id="072f0acc-a45c-44b9-8efe-422c893a3dfd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fa92ae94-7cf4-4316-9497-7e1ad1839a65"
@@ -880,10 +878,21 @@
 >
 <TestCases>
 <TestCase
+ Implemented="TRUE"
  Name="Check that route suitability is correctly identified"
  Guid="8d6ccd4f-6330-45c1-87dd-b488c9a05907"
 >
-<Steps>
+<ReqRef
+ Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e70c5dd-0fd7-4bcc-80ad-c22f117f48ae"
+>
+</ReqRef><ReqRef
+ Id="072f0acc-a45c-44b9-8efe-422c893a3dfd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e7aeadd-c651-4796-9933-502038de0044"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1076,6 +1085,176 @@
  DeadLine="1"
  Guid="85320656-534e-4ca8-9fea-51236d78ef70"
 >( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).IsUnsuitability == Boolean.True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="End of Authority and Supervised Location in the case of unsuitability"
+ Guid="3228129f-4eb6-4f49-bfa7-db76868d6c51"
+>
+<TestCases>
+<TestCase
+ Name="Start of unsuitability becomes EoA and SvL"
+ Guid="b84e6da1-ff5e-49b0-a0ee-64104de26f09"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Initialize train data"
+ Guid="0ee00c88-115b-41dc-8526-070e5ef1dc34"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Initialize test environment"
+ Guid="8cdf14d9-bd6d-4947-af14-5bb1e1503fe1"
+>
+<Actions>
+<Action
+ Guid="668edb47-f7a9-4b0c-ba09-00d63b695701"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Balise Group setup"
+ Guid="8bbc98f7-0747-4fa2-989e-81926c07abd3"
+>
+<Actions>
+<Action
+ Guid="5e32322e-2398-4af0-ae7e-7f998e713b34"
+>BTM.LRBG &lt;- EMPTY</Action><Action
+ Guid="60322d5f-3be1-41a9-9e05-3ff6ddd01a7c"
+>BTM.PreviousLRBGs &lt;- []</Action><Action
+ Guid="ca7200ea-39a2-4331-9d75-9fd06dec62da"
+>Odometry.NominalDistance &lt;- 0.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Give the train some data"
+ Guid="01740f5a-d442-4eee-8583-d780f80d2b21"
+>
+<Actions>
+<Action
+ Guid="9acf6bb2-5cc7-409f-b5cb-4b8607fa5cd5"
+>Kernel.TrainData.TrainData &lt;- Kernel.TrainData.TrainData
+ {
+    DataState =&gt; DataState.Valid,
+    Value =&gt; Kernel.TrainData.TrainDataValues
+     {
+        AxleLoadCategory =&gt; Messages.M_AXLELOADCAT.C3,
+        LoadingGauge =&gt; Messages.M_LOADINGGAUGE.GA,
+        TractionSystems =&gt;
+         [
+            Kernel.TrainData.TractionSystem
+             {
+                Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
+                Country =&gt; 80
+             }
+            ,
+            Kernel.TrainData.TractionSystem
+             {
+                Voltage =&gt; Messages.M_VOLTAGE.AC_15_kV_16_7_Hz,
+                Country =&gt; 80
+             }
+         ]
+     }
+ }</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 2 - Route suitability data is transmitted from a balise"
+ Guid="8cc877e4-0e7a-453d-a1cb-2019d05589e8"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - The upcoming route is unsuitable"
+ Guid="51779376-7e3b-42c8-9ad3-fce3940e025b"
+>
+<Actions>
+<Action
+ Guid="ef96ed36-c41c-4b96-a47c-bbcfdbe29ed2"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; 1,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._1C,
+    N_TOTAL =&gt; Messages.N_TOTAL._1_balise_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 1,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 256,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
+     [
+        Messages.EUROBALISE.SubStructure1
+         {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                ROUTE_SUITABILITY_DATA =&gt; Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message
+                 {
+                      NID_PACKET =&gt; 70,
+                      Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                      L_PACKET =&gt; 1,
+                      Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                      Q_TRACKINIT =&gt; 0,
+
+                      D_SUITABILITY =&gt; 500,
+                      Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Max_axle_load,
+                      M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
+
+                      N_ITER =&gt; 1,
+                      Sequence1 =&gt; [
+                          Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1
+                           {
+                              D_SUITABILITY =&gt; 500,
+                              Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Loading_gauge_profile,
+                              M_LINEGAUGE =&gt; Messages.M_LINEGAUGE.GB
+                           }
+                      ]
+                 }
+             }
+         }
+     ]
+
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Check that the unsuitability is recorded"
+ Guid="c39d1253-b987-4be2-81ee-4f9d886de419"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9269a0b4-1823-4869-b331-2f12f8882f80"
+>(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).IsUnsuitability == Boolean.True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 3 - Expectations"
+ Guid="694d4965-997a-493c-8dd5-06d049ec4ce0"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - The unsuitabilities are output on the DMI"
+ Guid="3857d71a-1722-4a8d-be3b-5cc748a9137b"
+>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
