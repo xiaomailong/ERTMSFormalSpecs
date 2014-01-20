@@ -318,16 +318,14 @@
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Unsuitable line gauge"
+ Name="Line gauge"
  Guid="621c7c64-a3e9-48d1-913d-cd2e9bb5720d"
 >
 <PreConditions>
 <PreCondition
  Guid="a29186e6-0ce9-4d0e-88ca-76d6d250028a"
->aType == Messages.Q_SUITABILITY.Loading_gauge_profile
-AND
-GaugesMatch(aLineGauge =&gt; aLineGauge, aLoadingGauge =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge) == Boolean.False</PreCondition></PreConditions>
-<Expression>True</Expression>
+>aType == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
+<Expression>NOT (GaugesMatch(aLineGauge =&gt; aLineGauge, aLoadingGauge =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge) )</Expression>
 </Case><Case
  Name="Axle load"
  Guid="2161906b-ab60-44ec-864b-1b522510851f"
@@ -346,17 +344,6 @@ GaugesMatch(aLineGauge =&gt; aLineGauge, aLoadingGauge =&gt; Kernel.TrainData.Tr
  Guid="4676c596-4178-4368-a433-3f79212b496b"
 >aType == Messages.Q_SUITABILITY.Traction_system</PreCondition></PreConditions>
 <Expression>NOT ( THERE_IS_IN TrainData.TrainData.Value.TractionSystems | X.Voltage == aTractionSystem AND X.Country == aNidCTraction )</Expression>
-</Case><Case
- Name="Suitable line gauge"
- Guid="65b80f78-257e-4f3c-8141-a6ef596b31f1"
->
-<PreConditions>
-<PreCondition
- Guid="7b7bae42-ceba-4a58-996b-d5ffd8c1f391"
->aType == Messages.Q_SUITABILITY.Loading_gauge_profile
-AND
-GaugesMatch(aLineGauge =&gt; aLineGauge, aLoadingGauge =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge) == Boolean.True</PreCondition></PreConditions>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
