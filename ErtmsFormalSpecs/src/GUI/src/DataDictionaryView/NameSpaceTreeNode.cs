@@ -50,25 +50,29 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public NameSpaceTreeNode(DataDictionary.Types.NameSpace item)
-            : base(item, null, false)
+        public NameSpaceTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+            : base(item, buildSubNodes, null, false)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
-            subNameSpaces = new NameSpaceSubNameSpacesTreeNode(Item);
-            ranges = new RangesTreeNode(Item);
-            enumerations = new EnumerationsTreeNode(Item);
-            structures = new StructuresTreeNode(Item);
-            collections = new CollectionsTreeNode(Item);
-            stateMachines = new StateMachinesTreeNode(Item);
-            functions = new FunctionsTreeNode(Item);
-            procedures = new NameSpaceProceduresTreeNode(Item);
-            variables = new NameSpaceVariablesTreeNode(Item);
-            rules = new NameSpaceRulesTreeNode(Item);
+            subNameSpaces = new NameSpaceSubNameSpacesTreeNode(Item, buildSubNodes);
+            ranges = new RangesTreeNode(Item, buildSubNodes);
+            enumerations = new EnumerationsTreeNode(Item, buildSubNodes);
+            structures = new StructuresTreeNode(Item, buildSubNodes);
+            collections = new CollectionsTreeNode(Item, buildSubNodes);
+            stateMachines = new StateMachinesTreeNode(Item, buildSubNodes);
+            functions = new FunctionsTreeNode(Item, buildSubNodes);
+            procedures = new NameSpaceProceduresTreeNode(Item, buildSubNodes);
+            variables = new NameSpaceVariablesTreeNode(Item, buildSubNodes);
+            rules = new NameSpaceRulesTreeNode(Item, buildSubNodes);
 
             Nodes.Add(subNameSpaces);
             Nodes.Add(ranges);
@@ -87,8 +91,8 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        protected NameSpaceTreeNode(DataDictionary.Types.NameSpace item, string name, bool isFolder)
-            : base(item, name, isFolder)
+        protected NameSpaceTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes, string name, bool isFolder)
+            : base(item, buildSubNodes, name, isFolder)
         {
             isDirectory = true;
         }
@@ -199,7 +203,7 @@ namespace GUI.DataDictionaryView
             retVal.AddRange(base.GetMenuItems());
             retVal.Insert(5, new MenuItem("-"));
             retVal.Insert(6, new MenuItem("Functional view", new EventHandler(ShowFunctionalViewHandler)));
-            
+
             return retVal;
         }
 

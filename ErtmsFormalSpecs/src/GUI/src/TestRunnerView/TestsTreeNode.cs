@@ -37,18 +37,22 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public TestsTreeNode(DataDictionary.Dictionary item)
-            : base(item, null, true)
+        public TestsTreeNode(DataDictionary.Dictionary item, bool buildSubNodes)
+            : base(item, buildSubNodes, null, true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Tests.Frame frame in Item.Tests)
             {
-                Nodes.Add(new FrameTreeNode(frame));
+                Nodes.Add(new FrameTreeNode(frame, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -74,7 +78,7 @@ namespace GUI.TestRunnerView
             DataDictionary.Tests.Frame frame = DataDictionary.Tests.Frame.createDefault(name);
             Item.appendTests(frame);
 
-            retVal = new FrameTreeNode(frame);
+            retVal = new FrameTreeNode(frame, false);
             Nodes.Add(retVal);
             SortSubNodes();
 
@@ -191,7 +195,7 @@ namespace GUI.TestRunnerView
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
+            retVal.Add(new MenuItem("Add frame", new EventHandler(AddHandler)));
             retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Import braking curves verification set", new EventHandler(ImportBrakingCurvesHandler)));
             retVal.Add(new MenuItem("-"));

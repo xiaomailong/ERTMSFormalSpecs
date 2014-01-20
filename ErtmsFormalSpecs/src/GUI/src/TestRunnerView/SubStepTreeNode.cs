@@ -50,8 +50,8 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SubStepTreeNode(DataDictionary.Tests.SubStep item)
-            : base(item, null, true)
+        public SubStepTreeNode(DataDictionary.Tests.SubStep item, bool buildSubNodes)
+            : base(item, buildSubNodes, null, true)
         {
         }
 
@@ -78,12 +78,16 @@ namespace GUI.TestRunnerView
             }
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
-            actions = new ActionsTreeNode(Item);
-            expectations = new ExpectationsTreeNode(Item);
+            actions = new ActionsTreeNode(Item, buildSubNodes);
+            expectations = new ExpectationsTreeNode(Item, buildSubNodes);
 
             Nodes.Add(actions);
             Nodes.Add(expectations);
@@ -130,7 +134,7 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         public DataDictionaryView.ActionTreeNode createAction(DataDictionary.Rules.Action action)
         {
-            DataDictionaryView.ActionTreeNode retVal = new DataDictionaryView.ActionTreeNode(action);
+            DataDictionaryView.ActionTreeNode retVal = new DataDictionaryView.ActionTreeNode(action, true);
 
             Item.appendActions(action);
             actions.Nodes.Add(retVal);
@@ -158,7 +162,7 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         public ExpectationTreeNode createExpectation(DataDictionary.Tests.Expectation expectation)
         {
-            ExpectationTreeNode retVal = new ExpectationTreeNode(expectation);
+            ExpectationTreeNode retVal = new ExpectationTreeNode(expectation, true);
 
             Item.appendExpectations(expectation);
             expectations.Nodes.Add(retVal);
@@ -172,12 +176,14 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Add action", new EventHandler(AddActionHandler)));
-            retVal.Add(new MenuItem("Add expectation", new EventHandler(AddExpectationHandler)));
-            retVal.Add(new MenuItem("-"));
+            MenuItem newItem = new MenuItem("Add...");
+            newItem.MenuItems.Add(new MenuItem("Action", new EventHandler(AddActionHandler)));
+            newItem.MenuItems.Add(new MenuItem("Expectation", new EventHandler(AddExpectationHandler)));
+            retVal.Add(newItem);
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
 
             return retVal;
         }

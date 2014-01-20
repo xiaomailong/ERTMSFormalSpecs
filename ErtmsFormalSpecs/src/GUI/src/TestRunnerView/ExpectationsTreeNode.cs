@@ -39,8 +39,8 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ExpectationsTreeNode(DataDictionary.Tests.SubStep item)
-            : base(item, "Expectations", true)
+        public ExpectationsTreeNode(DataDictionary.Tests.SubStep item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Expectations", true)
         {
         }
 
@@ -67,13 +67,17 @@ namespace GUI.TestRunnerView
             }
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Tests.Expectation expectation in Item.Expectations)
             {
-                Nodes.Add(new ExpectationTreeNode(expectation));
+                Nodes.Add(new ExpectationTreeNode(expectation, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -94,7 +98,7 @@ namespace GUI.TestRunnerView
         public void addExpectation(DataDictionary.Tests.Expectation expectation)
         {
             expectation.Enclosing = Item;
-            ExpectationTreeNode expectationNode = new ExpectationTreeNode(expectation);
+            ExpectationTreeNode expectationNode = new ExpectationTreeNode(expectation, true);
             Item.appendExpectations(expectation);
             Nodes.Add(expectationNode);
             SortSubNodes();

@@ -324,12 +324,19 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c4fc58fb-68b2-4182-9837-200439de3372"
 >
+</ReqRef><ReqRef
+ Id="88ab50b9-74b8-45a8-b956-3f0754ac2824"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94a7764e-b7e3-4d25-bba9-62497f43ca3a"
+>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="f0a73956-72ca-4e2a-833d-c64917c04a3d"
->ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= Odometry.NominalDistance
-AND
-ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition
+>MA.EOADefined()
+  AND
+ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0
+  AND
+ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= Odometry.NominalDistance</PreCondition><PreCondition
  Guid="d0936740-8827-4152-93cf-3722e478afc0"
 >Monitoring != MonitoringType.ReleaseSpeed</PreCondition></PreConditions>
 <Actions>

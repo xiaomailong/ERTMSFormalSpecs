@@ -93,9 +93,17 @@ namespace GUI.LongOperations
                             }
                             else
                             {
-                                MessageBox.Show("Cannot open file for commit\n" + commit.MessageShort + " (" + commit.Sha + ")\nplease see log file (GUI.Log) for more information.\nProcess continues.", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                // Stick back to the previous version to continue the process
-                                currentVersion = previousVersion;
+                                DialogResult result = MessageBox.Show("Cannot open file for commit\n" + commit.MessageShort + " (" + commit.Sha + ")\nplease see log file (GUI.Log) for more information.\nPress OK to continue.", "Cannot open file", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                                if (result == DialogResult.OK)
+                                {
+                                    // Stick back to the previous version to continue the process
+                                    currentVersion = previousVersion;
+                                }
+                                else
+                                {
+                                    // Stop the process
+                                    break;
+                                }
                             }
 
                             previousCommit = null;

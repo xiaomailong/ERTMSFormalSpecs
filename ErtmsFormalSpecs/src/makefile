@@ -26,7 +26,7 @@ increase_release_number :
 	@echo === Increase build number
 	@-$(XMLB_CALL) -SCRIPT update_release_number.rcs GUI/Properties/AssemblyInfo.cs > /dev/null
 
-release: all increase_release_number Installer/EFSW_Installer_Script.iss	
+release: clean increase_release_number all Installer/EFSW_Installer_Script.iss	
 	@echo === Building Installer package	
 	@../depends/InnoInstaller5/ISCC.exe Installer/EFSW_Installer_Script.iss /q
 

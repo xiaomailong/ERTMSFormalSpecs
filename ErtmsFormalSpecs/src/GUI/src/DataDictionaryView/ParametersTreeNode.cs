@@ -37,17 +37,22 @@ namespace GUI.DataDictionaryView
         /// Constructor (for function)
         /// </summary>
         /// <param name="item"></param>
-        public ParametersTreeNode(DataDictionary.Functions.Function item)
-            : base(item, "Parameters", true, false)
+        public ParametersTreeNode(DataDictionary.Functions.Function item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Parameters", true, false)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
             foreach (DataDictionary.Parameter parameter in Item.FormalParameters)
             {
-                Nodes.Add(new ParameterTreeNode(parameter));
+                Nodes.Add(new ParameterTreeNode(parameter, buildSubNodes));
             }
+            SubNodesBuilt = true;
         }
 
         /// <summary>
@@ -94,7 +99,7 @@ namespace GUI.DataDictionaryView
         public ParameterTreeNode AddParameter(DataDictionary.Parameter parameter)
         {
             Item.appendParameters(parameter);
-            ParameterTreeNode retVal = new ParameterTreeNode(parameter);
+            ParameterTreeNode retVal = new ParameterTreeNode(parameter, true);
             Nodes.Add(retVal);
 
             return retVal;

@@ -51,7 +51,11 @@
     DataState =&gt; DataState.Valid
 }</Action><Action
  Guid="cd85b1f0-8ab9-439e-8ce8-5a6ef41732e3"
->Odometry.NominalDistance &lt;- 0.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 0.0</Action><Action
+ Guid="fa154ce9-ba9d-4bad-a0f8-ed1255c4fea5"
+>Kernel.Mode &lt;- Mode.FS</Action><Action
+ Guid="6a5882b0-b00a-49d8-a777-51a5fd0a1e55"
+>Kernel.PowerOn &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -248,7 +252,7 @@ IN
  Guid="ddcc596b-68eb-4130-86a5-13540e3279d9"
 >Kernel.TrainData.TrainData.Value.EddyCurrentBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
  Guid="8d1a5ff1-3765-4134-9e47-c85cebbc5d40"
->Kernel.TrainData.TrainData.Value.MagneticShoeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
+>Kernel.TrainData.TrainData.Value.MagneticShoeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</Action><Action
  Guid="b60fc8d7-75c6-46a6-9750-d4a63e0fb2e3"
 >Kernel.TrainData.TrainData.Value.RegenerativeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
  Guid="b2c6037d-d5ed-4321-b776-62f6df15036d"

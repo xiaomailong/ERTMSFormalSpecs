@@ -25,22 +25,31 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ActionsTreeNode(DataDictionary.Rules.RuleCondition item)
-            : base(item, "Actions", true, false)
+        public ActionsTreeNode(DataDictionary.Rules.RuleCondition item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Actions", true, false)
         {
-            foreach (DataDictionary.Rules.Action action in item.Actions)
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
+        {
+            foreach (DataDictionary.Rules.Action action in Item.Actions)
             {
-                Nodes.Add(new ActionTreeNode(action));
+                Nodes.Add(new ActionTreeNode(action, buildSubNodes));
             }
             if (Item.EnclosingRule != null && !Item.EnclosingRule.BelongsToAProcedure())
             {
                 SortSubNodes();
             }
+            SubNodesBuilt = true;
         }
 
         public override ActionTreeNode AddAction(DataDictionary.Rules.Action action)
         {
-            ActionTreeNode retVal = new ActionTreeNode(action);
+            ActionTreeNode retVal = new ActionTreeNode(action, true);
             Item.appendActions(action);
 
             Nodes.Add(retVal);

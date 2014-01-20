@@ -1383,7 +1383,7 @@ namespace DataDictionary.Functions
             if (retVal == double.MaxValue)
             {
                 // TODO : check and activate
-                // throw new Exception("Impossible to compute the solution X for the graph");
+                throw new Exception("Impossible to compute the solution X for the graph");
             }
 
             return retVal;

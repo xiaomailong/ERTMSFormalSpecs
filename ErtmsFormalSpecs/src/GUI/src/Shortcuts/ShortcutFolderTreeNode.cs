@@ -39,23 +39,27 @@ namespace GUI.Shortcuts
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ShortcutFolderTreeNode(DataDictionary.Shortcuts.ShortcutFolder item)
-            : base(item, null, true)
+        public ShortcutFolderTreeNode(DataDictionary.Shortcuts.ShortcutFolder item, bool buildSubNodes)
+            : base(item, buildSubNodes, null, true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Shortcuts.ShortcutFolder folder in Item.Folders)
             {
-                Nodes.Add(new ShortcutFolderTreeNode(folder));
+                Nodes.Add(new ShortcutFolderTreeNode(folder, buildSubNodes));
             }
 
             foreach (DataDictionary.Shortcuts.Shortcut shortcut in Item.Shortcuts)
             {
-                Nodes.Add(new ShortcutTreeNode(shortcut));
+                Nodes.Add(new ShortcutTreeNode(shortcut, buildSubNodes));
             }
         }
 
@@ -78,7 +82,7 @@ namespace GUI.Shortcuts
             ShortcutFolderTreeNode retVal;
 
             Item.appendFolders(folder);
-            retVal = new ShortcutFolderTreeNode(folder);
+            retVal = new ShortcutFolderTreeNode(folder, true);
             Nodes.Add(retVal);
             SortSubNodes();
 
@@ -99,7 +103,7 @@ namespace GUI.Shortcuts
         public ShortcutFolderTreeNode AddFolder(DataDictionary.Shortcuts.ShortcutFolder folder)
         {
             Item.appendFolders(folder);
-            ShortcutFolderTreeNode retVal = new ShortcutFolderTreeNode(folder);
+            ShortcutFolderTreeNode retVal = new ShortcutFolderTreeNode(folder, true);
             Nodes.Add(retVal);
             SortSubNodes();
 
@@ -127,7 +131,7 @@ namespace GUI.Shortcuts
             ShortcutTreeNode retVal;
 
             Item.appendShortcuts(shortcut);
-            retVal = new ShortcutTreeNode(shortcut);
+            retVal = new ShortcutTreeNode(shortcut, true);
             Nodes.Add(retVal);
             SortSubNodes();
 

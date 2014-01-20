@@ -81,7 +81,10 @@ namespace GUI
             {
                 foreach (BaseTreeNode node in instance.Nodes)
                 {
-                    node.ComputeColor();
+                    if (node.Model is DataDictionary.ModelElement)
+                    {
+                        DataDictionary.Util.UpdateMessageInfo((DataDictionary.ModelElement)node.Model);
+                    }
                 }
 
                 instance.Invoke((MethodInvoker)delegate
@@ -91,7 +94,7 @@ namespace GUI
                     {
                         node.UpdateColor();
                     }
-                    instance.ResumeLayout();
+                    instance.ResumeLayout(true);
                 });
             }
         }
@@ -185,9 +188,10 @@ namespace GUI
             TypeImageIndex = 9;
 
             NodeColorSynchronizer = new ColorSynchronizer(this, 300);
-            NodeNameSynchronizer = new NameSynchronizer(this, 5000);
+            NodeNameSynchronizer = new NameSynchronizer(this, 300);
 
             KeepTrackOfSelection = true;
+            DoubleBuffered = true;
         }
 
         void BaseTreeView_KeyUp(object sender, KeyEventArgs e)
@@ -315,16 +319,6 @@ namespace GUI
             {
                 RefreshNode(node as BaseTreeNode);
             }
-            RefreshNodeColors();
-        }
-
-        private void RefreshNodeColors()
-        {
-            foreach (BaseTreeNode node in Nodes)
-            {
-                node.ComputeColor();
-                node.UpdateColor();
-            }
         }
 
         private void RefreshNode(BaseTreeNode node)
@@ -425,6 +419,29 @@ namespace GUI
         /// <param name="Model"></param>
         public abstract void SetRoot(Utils.IModelElement Model);
 
+
+        /// <summary>
+        /// Indicates whether the second argument (parent) is a parent of the first argument (element).
+        /// It also returns true then parent==element
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="parent"></param>
+        /// <returns></returns>
+        private bool IsParent(Utils.IModelElement element, Utils.IModelElement parent)
+        {
+            bool retVal;
+
+            Utils.IModelElement current = element;
+            do
+            {
+                retVal = current == parent;
+                current = Utils.EnclosingFinder<Utils.IModelElement>.find(current);
+            }
+            while (!retVal && current != null);
+
+            return retVal;
+        }
+
         /// <summary>
         /// Finds the node which references the element provided
         /// </summary>
@@ -441,12 +458,21 @@ namespace GUI
             }
             else
             {
+                // Ensures that the sub nodes have been built before trying to find the corresponding element
+                if (!node.SubNodesBuilt)
+                {
+                    node.BuildSubNodes(false);
+                }
+
                 foreach (BaseTreeNode subNode in node.Nodes)
                 {
-                    retVal = InnerFindNode(subNode, element);
-                    if (retVal != null)
+                    if (IsParent(element, subNode.Model))
                     {
-                        break;
+                        retVal = InnerFindNode(subNode, element);
+                        if (retVal != null)
+                        {
+                            break;
+                        }
                     }
                 }
             }
@@ -549,24 +575,50 @@ namespace GUI
         {
             BaseTreeNode retVal = null;
 
-            if (considerThisOne && (node.Parent == null || node.Model != ((BaseTreeNode)node.Parent).Model))
+            if (current != null)
             {
-                if (node.Model.HasMessage(levelEnum) && node.Model != current)
+                if (considerThisOne && (node.Parent == null || node.Model != ((BaseTreeNode)node.Parent).Model))
                 {
-                    retVal = node;
-                }
-            }
-
-            if (retVal == null)
-            {
-                if (node.Nodes.Count > 0)
-                {
-                    foreach (BaseTreeNode subNode in node.Nodes)
+                    if (node.Model.HasMessage(levelEnum) && node.Model != current)
                     {
-                        retVal = RecursivelySelectNext(current, subNode, levelEnum, true);
-                        if (retVal != null)
+                        retVal = node;
+                    }
+                }
+
+                if (retVal == null)
+                {
+                    if (!node.SubNodesBuilt)
+                    {
+                        // Maybe the correspponding subnodes have not yet been built
+                        // Do we need to look through these ? 
+                        if (levelEnum == Utils.ElementLog.LevelEnum.Error &&
+                                (current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError ||
+                                 current.MessagePathInfo == Utils.MessagePathInfoEnum.Error))
                         {
-                            break;
+                            node.BuildSubNodes(false);
+                        }
+                        else if (levelEnum == Utils.ElementLog.LevelEnum.Warning &&
+                                (current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError ||
+                                 current.MessagePathInfo == Utils.MessagePathInfoEnum.Error ||
+                                 current.MessagePathInfo == Utils.MessagePathInfoEnum.Warning ||
+                                 current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToWarning))
+                        {
+                            node.BuildSubNodes(false);
+                        }
+                        else if (levelEnum == Utils.ElementLog.LevelEnum.Info && current.MessagePathInfo != Utils.MessagePathInfoEnum.Nothing)
+                        {
+                            node.BuildSubNodes(false);
+                        }
+                    }
+                    if (node.Nodes.Count > 0)
+                    {
+                        foreach (BaseTreeNode subNode in node.Nodes)
+                        {
+                            retVal = RecursivelySelectNext(current, subNode, levelEnum, true);
+                            if (retVal != null)
+                            {
+                                break;
+                            }
                         }
                     }
                 }

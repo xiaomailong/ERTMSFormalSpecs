@@ -41,26 +41,36 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RuleConditionTreeNode(DataDictionary.Rules.RuleCondition item)
-            : base(item)
+        public RuleConditionTreeNode(DataDictionary.Rules.RuleCondition item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
-            PreConditions = new RulePreConditionsTreeNode(item);
-            Nodes.Add(PreConditions);
-
-            Actions = new ActionsTreeNode(item);
-            Nodes.Add(Actions);
-
-            SubRules = new SubRulesTreeNode(item);
-            Nodes.Add(SubRules);
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RuleConditionTreeNode(DataDictionary.Rules.RuleCondition item, string name, bool isFolder = false, bool addRequirements = true)
-            : base(item, name, false, addRequirements)
+        public RuleConditionTreeNode(DataDictionary.Rules.RuleCondition item, bool buildSubNodes, string name, bool isFolder = false, bool addRequirements = true)
+            : base(item, buildSubNodes, name, false, addRequirements)
         {
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
+        {
+            PreConditions = new RulePreConditionsTreeNode(Item, buildSubNodes);
+            Nodes.Add(PreConditions);
+
+            Actions = new ActionsTreeNode(Item, buildSubNodes);
+            Nodes.Add(Actions);
+
+            SubRules = new SubRulesTreeNode(Item, buildSubNodes);
+            Nodes.Add(SubRules);
+
+            base.BuildSubNodes(buildSubNodes);
         }
 
         /// <summary>

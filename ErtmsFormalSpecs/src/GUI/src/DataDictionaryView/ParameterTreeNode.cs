@@ -112,8 +112,8 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ParameterTreeNode(Parameter parameter, string name = null)
-            : base(parameter, name)
+        public ParameterTreeNode(Parameter parameter, bool buildSubNodes, string name = null)
+            : base(parameter, buildSubNodes, name)
         {
         }
 

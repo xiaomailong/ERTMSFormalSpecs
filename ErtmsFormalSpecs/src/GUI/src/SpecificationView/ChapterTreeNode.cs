@@ -57,18 +57,22 @@ namespace GUI.SpecificationView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ChapterTreeNode(DataDictionary.Specification.Chapter item)
-            : base(item, null, true)
+        public ChapterTreeNode(DataDictionary.Specification.Chapter item, bool buildSubNodes)
+            : base(item, buildSubNodes, null, true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Specification.Paragraph paragraph in Item.Paragraphs)
             {
-                Nodes.Add(new ParagraphTreeNode(paragraph));
+                Nodes.Add(new ParagraphTreeNode(paragraph, buildSubNodes));
             }
         }
 
@@ -88,7 +92,7 @@ namespace GUI.SpecificationView
         public void AddParagraph(DataDictionary.Specification.Paragraph paragraph)
         {
             Item.appendParagraphs(paragraph);
-            Nodes.Add(new ParagraphTreeNode(paragraph));
+            Nodes.Add(new ParagraphTreeNode(paragraph, true));
             RefreshNode();
         }
 

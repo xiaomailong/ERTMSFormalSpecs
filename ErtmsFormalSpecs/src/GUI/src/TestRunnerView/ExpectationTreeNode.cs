@@ -98,8 +98,8 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ExpectationTreeNode(DataDictionary.Tests.Expectation item)
-            : base(item)
+        public ExpectationTreeNode(DataDictionary.Tests.Expectation item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
         }
 
@@ -141,9 +141,10 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
 
             return retVal;
         }
@@ -158,7 +159,7 @@ namespace GUI.TestRunnerView
 
             foreach (DataDictionary.Tests.Expectation expectation in elements)
             {
-                retVal.Add(new ExpectationTreeNode(expectation));
+                retVal.Add(new ExpectationTreeNode(expectation, true));
             }
 
             return retVal;

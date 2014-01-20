@@ -113,8 +113,18 @@ namespace GUI
             RefreshNode();
         }
 
-        protected virtual void BuildSubNodes()
+        /// <summary>
+        /// Indicates that the subNodes have already been built, hence, does not require to build its contents anymore
+        /// </summary>
+        public bool SubNodesBuilt = false;
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public virtual void BuildSubNodes(bool buildSubNodes)
         {
+            SubNodesBuilt = true;
         }
 
         /// <summary>
@@ -365,59 +375,6 @@ namespace GUI
             }
         }
 
-        private static System.Drawing.Color NOTHING_COLOR = System.Drawing.Color.Black;
-        private static System.Drawing.Color ERROR_COLOR = System.Drawing.Color.Red;
-        private static System.Drawing.Color ERROR_COLOR_PATH = System.Drawing.Color.Orange;
-        private static System.Drawing.Color WARNING_COLOR = System.Drawing.Color.Brown;
-        private static System.Drawing.Color WARNING_COLOR_PATH = System.Drawing.Color.LightCoral;
-        private static System.Drawing.Color INFO_COLOR = System.Drawing.Color.Blue;
-        private static System.Drawing.Color INFO_COLOR_PATH = System.Drawing.Color.LightBlue;
-
-        private static Dictionary<System.Drawing.Color, int> value;
-
-        private static Dictionary<System.Drawing.Color, int> Value
-        {
-            get
-            {
-                if (value == null)
-                {
-                    value = new Dictionary<System.Drawing.Color, int>();
-                    value[ERROR_COLOR] = 10;
-                    value[ERROR_COLOR_PATH] = 9;
-                    value[WARNING_COLOR] = 8;
-                    value[WARNING_COLOR_PATH] = 7;
-                    value[INFO_COLOR] = 6;
-                    value[INFO_COLOR_PATH] = 5;
-                    value[NOTHING_COLOR] = 4;
-                }
-                return value;
-            }
-        }
-
-        /// <summary>
-        /// An order between colors
-        /// </summary>
-        /// <param name="col1"></param>
-        /// <param name="col2"></param>
-        /// <returns></returns>
-        private static System.Drawing.Color max(System.Drawing.Color col1, System.Drawing.Color col2)
-        {
-            System.Drawing.Color retVal = col1;
-
-            int v1;
-            int v2;
-
-            Value.TryGetValue(col1, out v1);
-            Value.TryGetValue(col2, out v2);
-
-            if (v2 > v1)
-            {
-                retVal = col2;
-            }
-
-            return retVal;
-        }
-
         /// <summary>
         /// Updates the node color according to the associated messages
         /// </summary>
@@ -439,81 +396,7 @@ namespace GUI
         /// <summary>
         /// Provides the computed color
         /// </summary>
-        private System.Drawing.Color ComputedColor { get; set; }
-
-        /// <summary>
-        /// Computes the color for this node
-        /// </summary>
-        /// <returns></returns>
-        public System.Drawing.Color ComputeColor()
-        {
-            ComputedColor = System.Drawing.Color.Black;
-
-            if (Model != null)
-            {
-                // Compute the color associated to sub elements
-                foreach (BaseTreeNode node in Nodes)
-                {
-                    if (node != null)
-                    {
-                        ComputedColor = max(ComputedColor, node.ComputeColor());
-                    }
-                }
-
-                if (ComputedColor == ERROR_COLOR)
-                {
-                    ComputedColor = ERROR_COLOR_PATH;
-                }
-                else if (ComputedColor == WARNING_COLOR)
-                {
-                    ComputedColor = WARNING_COLOR_PATH;
-                }
-                else if (ComputedColor == INFO_COLOR)
-                {
-                    ComputedColor = INFO_COLOR_PATH;
-                }
-
-                BaseTreeNode parent = Parent as BaseTreeNode;
-                if (parent != null && parent.Model != Model)
-                {
-                    // If the parent node is the same as the current node, the color does not count
-                    // since it has already been reported in the enclosing node. Just consider subnodes 
-                    // for this node's color
-
-                    ComputedColor = max(ComputedColor, ColorByErrorLevel());
-                }
-            }
-
-            return ComputedColor;
-        }
-
-        /// <summary>
-        /// Provides the color corresponding to the error level
-        /// </summary>
-        /// <returns></returns>
-        private System.Drawing.Color ColorByErrorLevel()
-        {
-            System.Drawing.Color retVal = NOTHING_COLOR;
-
-            foreach (Utils.ElementLog log in Model.Messages)
-            {
-                if (log.Level == Utils.ElementLog.LevelEnum.Error)
-                {
-                    retVal = max(retVal, ERROR_COLOR);
-                    break;
-                }
-                else if (log.Level == Utils.ElementLog.LevelEnum.Warning)
-                {
-                    retVal = max(retVal, WARNING_COLOR);
-                }
-                else if (log.Level == Utils.ElementLog.LevelEnum.Info)
-                {
-                    retVal = max(retVal, INFO_COLOR);
-                }
-            }
-
-            return retVal;
-        }
+        protected virtual System.Drawing.Color ComputedColor { get { return System.Drawing.Color.Black; } }
 
         /// <summary>
         /// Updates the node name text according to the modelized item
@@ -884,7 +767,7 @@ namespace GUI
 
                     Model.AddModelElement(copy);
                     Nodes.Clear();
-                    BuildSubNodes();
+                    BuildSubNodes(false);
                 }
                 catch (Exception)
                 {
@@ -917,7 +800,7 @@ namespace GUI
                     if (parentNode != null)
                     {
                         parentNode.Nodes.Clear();
-                        parentNode.BuildSubNodes();
+                        parentNode.BuildSubNodes(false);
                     }
                     else
                     {
@@ -958,7 +841,6 @@ namespace GUI
             {
                 Model.Name = newLabel;
             }
-            RefreshNode();
         }
     }
 
@@ -1052,15 +934,38 @@ namespace GUI
         /// Constructor
         /// </summary>
         /// <param name="item">The element to be represented by this tree node</param>
+        /// <param name="buildSubNodes">Indicates that subnodes should also be built</param>
         /// <param name="name">The display name of the node</param>
         /// <param name="isFolder">Indicates whether this node is a folder</param>
-        protected ModelElementTreeNode(T item, string name = null, bool isFolder = false)
+        protected ModelElementTreeNode(T item, bool buildSubNodes, string name = null, bool isFolder = false)
             : base(item, name, isFolder)
         {
             Item = item;
-            BuildSubNodes();
-            RefreshNode();
+            if (buildSubNodes)
+            {
+                BuildSubNodes(false);
+                RefreshNode();
+            }
         }
+
+        /// <summary>
+        /// Lazy create the subnodes when it is expanded
+        /// </summary>
+        public override void HandleExpand()
+        {
+            foreach (BaseTreeNode node in Nodes)
+            {
+                if (!node.SubNodesBuilt)
+                {
+                    node.BuildSubNodes(false);
+                }
+            }
+            RefreshNode();
+
+
+            base.HandleExpand();
+        }
+
 
         /// <summary>
         /// An editor for an item. It is the responsibility of this class to implement attributes 
@@ -1154,6 +1059,98 @@ namespace GUI
                         baseForm.Properties.SelectedObject = editor;
                     }
                 }
+            }
+        }
+
+        protected override System.Drawing.Color ComputedColor
+        {
+            get
+            {
+                System.Drawing.Color retVal = base.ComputedColor;
+
+                if (Item != null)
+                {
+                    BaseTreeNode parentNode;
+
+                    switch (Item.MessagePathInfo)
+                    {
+                        case Utils.MessagePathInfoEnum.Nothing:
+                        case Utils.MessagePathInfoEnum.NotComputed:
+                            retVal = System.Drawing.Color.Black;
+                            break;
+
+                        case Utils.MessagePathInfoEnum.Error:
+                            parentNode = (BaseTreeNode)Parent;
+                            if (parentNode == null || parentNode.Model != Model)
+                            {
+                                retVal = System.Drawing.Color.Red;
+                            }
+                            break;
+
+                        case Utils.MessagePathInfoEnum.PathToError:
+                            if (!SubNodesBuilt)
+                            {
+                                BuildSubNodes(false);
+                            }
+                            foreach (BaseTreeNode subNode in Nodes)
+                            {
+                                if (subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.Error || subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError)
+                                {
+                                    retVal = System.Drawing.Color.Orange;
+                                    break;
+                                }
+                            }
+                            break;
+
+                        case Utils.MessagePathInfoEnum.Warning:
+                            parentNode = (BaseTreeNode)Parent;
+                            if (parentNode == null || parentNode.Model != Model)
+                            {
+                                retVal = System.Drawing.Color.Brown;
+                            }
+                            break;
+
+                        case Utils.MessagePathInfoEnum.PathToWarning:
+                            if (!SubNodesBuilt)
+                            {
+                                BuildSubNodes(false);
+                            }
+                            foreach (BaseTreeNode subNode in Nodes)
+                            {
+                                if (subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.Warning || subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.PathToWarning)
+                                {
+                                    retVal = System.Drawing.Color.LightCoral;
+                                    break;
+                                }
+                            }
+                            break;
+
+                        case Utils.MessagePathInfoEnum.Info:
+                            parentNode = (BaseTreeNode)Parent;
+                            if (parentNode == null || parentNode.Model != Model)
+                            {
+                                retVal = System.Drawing.Color.Blue;
+                            }
+                            break;
+
+                        case Utils.MessagePathInfoEnum.PathToInfo:
+                            if (!SubNodesBuilt)
+                            {
+                                BuildSubNodes(false);
+                            }
+                            foreach (BaseTreeNode subNode in Nodes)
+                            {
+                                if (subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.Info || subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.PathToInfo)
+                                {
+                                    retVal = System.Drawing.Color.LightBlue;
+                                    break;
+                                }
+                            }
+                            break;
+                    }
+                }
+
+                return retVal;
             }
         }
     }

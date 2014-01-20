@@ -41,18 +41,22 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SubSequenceTreeNode(DataDictionary.Tests.SubSequence item)
-            : base(item, null, true)
+        public SubSequenceTreeNode(DataDictionary.Tests.SubSequence item, bool buildSubNodes)
+            : base(item, buildSubNodes, null, true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Tests.TestCase testCase in Item.TestCases)
             {
-                Nodes.Add(new TestCaseTreeNode(testCase));
+                Nodes.Add(new TestCaseTreeNode(testCase, buildSubNodes));
             }
         }
 
@@ -72,7 +76,7 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         public TestCaseTreeNode createTestCase(DataDictionary.Tests.TestCase testCase)
         {
-            TestCaseTreeNode retVal = new TestCaseTreeNode(testCase);
+            TestCaseTreeNode retVal = new TestCaseTreeNode(testCase, true);
 
             Item.appendTestCases(testCase);
             Nodes.Add(retVal);
@@ -142,7 +146,7 @@ namespace GUI.TestRunnerView
         }
 
         #region Execute tests
-        private class ExecuteTestsHandler : Utils.ProgressHandler
+        private class ExecuteTestsHandler : LongOperations.BaseLongOperation
         {
             /// <summary>
             /// The window for which theses tests should be executed
@@ -196,8 +200,7 @@ namespace GUI.TestRunnerView
         {
             ClearMessages();
             ExecuteTestsHandler executeTestHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
-            ProgressDialog dialog = new ProgressDialog("Executing test steps", executeTestHandler);
-            dialog.ShowDialog();
+            executeTestHandler.ExecuteUsingProgressDialog("Executing test steps");
 
             Window window = BaseForm as Window;
             if (window != null)
@@ -224,16 +227,17 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
-            retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Add test case", new EventHandler(AddHandler)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Execute", new EventHandler(RunHandler)));
-            retVal.Add(new MenuItem("Create report", new EventHandler(ReportHandler)));
-            retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
+            retVal.Insert(6, new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
+            retVal.Insert(7, new MenuItem("-"));
+            retVal.Insert(8, new MenuItem("Execute", new EventHandler(RunHandler)));
+            retVal.Insert(9, new MenuItem("Create report", new EventHandler(ReportHandler)));
+            retVal.Insert(10, new MenuItem("-"));
+
 
             return retVal;
         }

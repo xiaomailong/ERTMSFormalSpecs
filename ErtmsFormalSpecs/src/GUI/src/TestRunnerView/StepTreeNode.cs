@@ -193,18 +193,22 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public StepTreeNode(DataDictionary.Tests.Step item)
-            : base(item)
+        public StepTreeNode(DataDictionary.Tests.Step item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Tests.SubStep subStep in Item.SubSteps)
             {
-                Nodes.Add(new SubStepTreeNode(subStep));
+                Nodes.Add(new SubStepTreeNode(subStep, buildSubNodes));
             }
         }
 
@@ -261,7 +265,7 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         public SubStepTreeNode createSubStep(DataDictionary.Tests.SubStep subStep)
         {
-            SubStepTreeNode retVal = new SubStepTreeNode(subStep);
+            SubStepTreeNode retVal = new SubStepTreeNode(subStep, true);
 
             Item.appendSubSteps(subStep);
             Nodes.Add(retVal);
@@ -333,16 +337,16 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
-            retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Add sub-step", new EventHandler(AddSubStepHandler)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Run once", new EventHandler(RunHandler)));
-            retVal.Add(new MenuItem("Run until expectation reached", new EventHandler(RunForExpectationsHandler)));
-            retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
+            retVal.Insert(6, new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
+            retVal.Insert(7, new MenuItem("-"));
+            retVal.Insert(8, new MenuItem("Run once", new EventHandler(RunHandler)));
+            retVal.Insert(9, new MenuItem("Run until expectation reached", new EventHandler(RunForExpectationsHandler)));
+            retVal.Insert(10, new MenuItem("-"));
 
             return retVal;
         }

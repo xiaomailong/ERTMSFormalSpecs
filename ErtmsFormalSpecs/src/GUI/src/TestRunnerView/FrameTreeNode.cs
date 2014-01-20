@@ -51,18 +51,22 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public FrameTreeNode(DataDictionary.Tests.Frame item)
-            : base(item, null, true)
+        public FrameTreeNode(DataDictionary.Tests.Frame item, bool buildSubNodes)
+            : base(item, buildSubNodes, null, true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Tests.SubSequence subSequence in Item.SubSequences)
             {
-                Nodes.Add(new SubSequenceTreeNode(subSequence));
+                Nodes.Add(new SubSequenceTreeNode(subSequence, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -88,7 +92,7 @@ namespace GUI.TestRunnerView
             subSequence.Enclosing = Item;
             Item.appendSubSequences(subSequence);
 
-            retVal = new SubSequenceTreeNode(subSequence);
+            retVal = new SubSequenceTreeNode(subSequence, true);
             Nodes.Add(retVal);
             SortSubNodes();
 
@@ -152,7 +156,7 @@ namespace GUI.TestRunnerView
         }
 
         #region ExecuteTests
-        private class ExecuteTestsOperation : ProgressHandler
+        private class ExecuteTestsOperation : LongOperations.BaseLongOperation
         {
             /// <summary>
             /// The number of failed tests 
@@ -216,8 +220,7 @@ namespace GUI.TestRunnerView
             ClearMessages();
 
             ExecuteTestsOperation executeTestsOperation = new ExecuteTestsOperation(BaseForm as Window, Item);
-            ProgressDialog dialog = new ProgressDialog("Executing test sequences", executeTestsOperation);
-            dialog.ShowDialog();
+            executeTestsOperation.ExecuteUsingProgressDialog("Executing test sequences");
 
             string runtimeErrors = "";
             if (Utils.ModelElement.Errors.Values.Count > 0)
@@ -246,16 +249,16 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Add sub sequence", new EventHandler(AddHandler)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Execute", new EventHandler(RunHandler)));
-            retVal.Add(new MenuItem("Create report", new EventHandler(ReportHandler)));
-            retVal.Add(new MenuItem("-"));
+            retVal.Add(new MenuItem("Add sub-sequence", new EventHandler(AddHandler)));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
+            retVal.Insert(5, new MenuItem("-"));
+            retVal.Insert(6, new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
+            retVal.Insert(7, new MenuItem("-"));
+            retVal.Insert(8, new MenuItem("Execute", new EventHandler(RunHandler)));
+            retVal.Insert(9, new MenuItem("Create report", new EventHandler(ReportHandler)));
 
             return retVal;
         }

@@ -8709,6 +8709,8 @@ Maximum deceleration under reduced adhesion conditions applicable for trains:
 - with special/additional brakes independent from wheel/rail adhesion.
 This variable is part of the National Values
 Length: 6 bits
+Minimum value: 0 m_s2
+Maximum value: 3.15 m_s2
 Values:
     ResolutionFormula: value: 0.05, units: m_s2<TypeSpec
  length="6"
@@ -8750,6 +8752,8 @@ Maximum deceleration under reduced adhesion conditions applicable for trains:
 - without special/additional brakes independent from wheel/rail adhesion.
 This variable is part of the National Values
 Length: 6 bits
+Minimum value: 0 m_s2
+Maximum value: 3.15 m_s2
 Values:
     ResolutionFormula: value: 0.05, units: m_s2<TypeSpec
  length="6"
@@ -8791,6 +8795,8 @@ Maximum deceleration under reduced adhesion conditions applicable for trains:
 - with brake position &quot;Freight train in G&quot;.
 This variable is part of the National Values
 Length: 6 bits
+Minimum value: 0 m_s2
+Maximum value: 3.15 m_s2
 Values:
     ResolutionFormula: value: 0.05, units: m_s2<TypeSpec
  length="6"
@@ -8830,6 +8836,8 @@ Description:
 Lower deceleration limit to determine the set of correction factor Kv to be used for Conventional Passenger trains.
 This variable is part of the National Values.
 Length: 6 bits
+Minimum value: 0 m_s2
+Maximum value: 3.15 m_s2
 Values:
     ResolutionFormula: value: 0.05, units: m_s2<TypeSpec
  length="6"
@@ -8867,6 +8875,8 @@ Description:
 Upper deceleration limit to determine the set of correction factor Kv to be used for Conventional Passenger trains.
 This variable is part of the National Values.
 Length: 6 bits
+Minimum value: 0 m_s2
+Maximum value: 3.15 m_s2
 Values:
     ResolutionFormula: value: 0.05, units: m_s2<TypeSpec
  length="6"
@@ -8921,6 +8931,8 @@ Values:
 Id: D_ADHESION
 Short description: Distance to start of area with reduced adhesion factor
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -8955,6 +8967,8 @@ Values:
 Id: D_AXLELOAD
 Short description: Incremental distance to the start of the next Axle load speed profile
 Length: 15 bits
+Minimum value: 0 m
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -8976,6 +8990,8 @@ Values:
 >Id: D_CURRENT
 Short description: Distance to change of allowed current consumption
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9026,10 +9042,12 @@ Short description: Distance between two location reports from the train
 Description:
 The train has to report its location every D_CYCLOC meters.
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.3.0"
+ id="7.5.1.3.bis"
  guid=""
  type="REQUIREMENT"
  scope="FLAGS"
@@ -9091,6 +9109,8 @@ Values:
 >Id: D_DP
 Short description: Distance from the End of Authority to danger point
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9126,6 +9146,8 @@ Short description: Distance to emergency stop location
 Description:
 Distance between the LRBG and the emergency stop location
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9160,6 +9182,8 @@ Values:
 >Id: D_ENDTIMERSTARTLOC
 Short description: Distance from End section timer start location to End of Authority
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9193,6 +9217,8 @@ Values:
 >Id: D_GRADIENT
 Short description: Incremental distance to next change of gradient.
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9226,7 +9252,8 @@ Values:
 >Id: D_INFILL
 Short description: Distance from location where to connect/disconnect to a radio infill unit
 Length: 15 bits
-Baseline: 3.2.0
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9261,6 +9288,8 @@ Values:
 >Id: D_LEVELTR
 Short description: Distance to level transition
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -9325,6 +9354,8 @@ Values:
 >Id: D_LINK
 Short description: Incremental linking distance to next linked balise group
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9358,6 +9389,8 @@ Values:
 >Id: D_LOC
 Short description: Incremental distance between locations where the train has to report its position.
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9393,6 +9426,8 @@ Short description: Distance between EOLM and start of loop
 Description:
 The EOLM specifies the distance to the beginning of the loop transmission
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -9459,6 +9494,8 @@ Values:
 Id: D_LRBG
 Short description: Distance between the last relevant balise group and the estimated front end of the train (the side of the active cab).
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -9501,6 +9538,8 @@ Values:
 >Id: D_LX
 Short description: Distance to LX start location
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale</Paragraph></Sub>
 <TypeSpec
@@ -9544,6 +9583,8 @@ Values:
 Id: D_MAMODE
 Short description: Incremental distance to the start of the next Mode Profile
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9579,6 +9620,8 @@ Short description: Maximum distance for overriding the train trip
 Description:
 This variable is part of the National Values
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9615,6 +9658,8 @@ Short description: Maximum distance for reversing in Post Trip mode
 Description:
 This variable is part of the National Values
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9651,6 +9696,8 @@ Short description: Roll away distance limit
 Description:
 This variable is part of the National Values and is used for Roll Away Protection and Reverse Movement Protection. Within the (national/default) limits of D_NVROLL the train may be moved for uncoupling.
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -9718,6 +9765,8 @@ Short description: Maximum distance for running in Staff Responsible mode
 Description:
 This variable is part of the National Values
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -9784,6 +9833,8 @@ Values:
 Id: D_OL
 Short description: The distance from the End of Authority to the end of overlap
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -9806,6 +9857,8 @@ Values:
 Id: D_PBD
 Short description: Permitted Braking Distance
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9839,6 +9892,8 @@ Values:
 >Id: D_PBDSR
 Short description: Incremental distance to the start of the next speed restriction to ensure permitted braking distance
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale</Paragraph></Sub>
 <TypeSpec
@@ -9876,6 +9931,8 @@ Short description: Offset from the location reference of the geographical positi
 Description:
 The geographical position reporting function uses this variables content as an offset from the location reference of the geographical position reference balise group to the related track kilometre reference. 
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9910,6 +9967,8 @@ Values:
 >Id: D_RBCTR
 Short description: Distance to RBC transition
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -9947,6 +10006,8 @@ Short description: Reference distance
 Description:
 Distance between the LRBG and the new shifted location reference. The positive values are in the nominal direction of the LRBG
 Length: 16 bits
+Minimum value: -327.680 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -10015,6 +10076,8 @@ Short description: Maximum distance to run in RV mode
 Description:
 Distance from reference location to end location of the distance to run in RV mode
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -10080,6 +10143,8 @@ Values:
 >Id: D_SECTIONTIMERSTOPLOC
 Short description: Distance from beginning of section to the Section Time-out stop location
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10115,6 +10180,8 @@ Short description: Distance in SR mode
 Description:
 Distance that can be run in SR mode
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -10180,6 +10247,8 @@ Values:
 >Id: D_STARTOL
 Short description: Distance from overlap timer start location to End of Authority
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10213,6 +10282,8 @@ Values:
 >Id: D_STARTREVERSE
 Short description: Distance to start of reversing permitted area
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10246,6 +10317,8 @@ Values:
 >Id: D_STATIC
 Short description: Incremental distance to next discontinuity in a international SSP profile
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10281,6 +10354,8 @@ Short description: Distance to change in route suitability
 Description:
 The incremental distance to where the route suitability data changes.
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10315,6 +10390,8 @@ Values:
 >Id: D_TAFDISPLAY
 Short description: Distance from where on a track ahead free request shall be displayed
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10348,6 +10425,8 @@ Values:
 >Id: D_TEXTDISPLAY
 Short description: Distance from where on a text shall be displayed
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -10414,6 +10493,8 @@ Short description: Distance to start of empty profile
 Description:
 Distance to where initial states of the related track description in the packet shall be resumed
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10450,6 +10531,8 @@ Short description: Track condition distance
 Description:
 The incremental distance to where the track conditions change.
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10484,6 +10567,8 @@ Values:
 >Id: D_TRACTION
 Short description: Distance to change of traction
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10517,6 +10602,8 @@ Values:
 >Id: D_TSR
 Short description: Distance to beginning of temporary speed restriction
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10550,6 +10637,8 @@ Values:
 >Id: D_VALIDNV
 Short description: Distance to start of validity of national values
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.676 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -10618,6 +10707,8 @@ Short description: Safe gradient
 Description:
 This is the absolute  value of the minimum gradient between two defined locations.
 Length: 8 bits
+Minimum value: 0 ‰
+Maximum value: 254 ‰
 Values:
     ResolutionFormula: value: 1, units: per-thousand<Sub>
 <Paragraph
@@ -10664,6 +10755,8 @@ Short description: Default gradient for PBD Speed restriction
 Description:
 Defines a default gradient to be used for calculation of speed restriction to ensure permitted braking distance
 Length: 8 bits
+Minimum value: 0 ‰
+Maximum value: 255 ‰
 Values:
     ResolutionFormula: value: 1, units: perthousand</Paragraph></Sub>
 <TypeSpec
@@ -10710,6 +10803,8 @@ Short description: Default gradient for TSR supervision
 Description:
 defines a default gradient to be used for TSR supervision when no gradient profile (packet 21) is available.
 Length: 8 bits
+Minimum value: 0 ‰
+Maximum value: 255 ‰
 Values:
     ResolutionFormula: value: 1, units: percent<TypeSpec
  length="8"
@@ -10744,6 +10839,8 @@ Values:
 >Id: L_ACKLEVELTR
 Short description: Length of the acknowledgement area in rear of the required level
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10777,6 +10874,8 @@ Values:
 >Id: L_ACKMAMODE
 Short description: Length of the acknowledgement area in rear of the start of the required mode
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10812,6 +10911,8 @@ Short description: Length of reduced adhesion
 Description:
 Length for which the reduced adhesion factor apply.
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10846,6 +10947,8 @@ Values:
 >Id: L_AXLELOAD
 Short description: Length of speed restriction due to Axle load
 Length: 15 bits
+Minimum value: 0 m
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -10881,7 +10984,8 @@ Short description: L_DOUBTOVER
 Description:
 L_DOUBTOVER is the over-reading amount plus the Q_LOCACC of the LRBG
 Length: 15 bits
-Baseline: 3.2.0
+Minimum value: 0 cm
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -10950,7 +11054,8 @@ Short description: L_DOUBTUNDER
 Description:
 L_DOUBTUNDER is the under-reading amount plus the Q_LOCACC of the LRBG
 Length: 15 bits
-Baseline: 3.2.0
+Minimum value: 0 cm
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -11017,6 +11122,8 @@ Values:
 >Id: L_ENDSECTION
 Short description: Length of the End section in the MA
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -11053,6 +11160,8 @@ Short description: Length of loop
 Description:
 The EOLM specifies the length of the loop starting from the distance indicated by D_LOOP
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -11094,6 +11203,8 @@ Values:
 >Id: L_LX
 Short description: Length of the LX area
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -11151,6 +11262,8 @@ Values:
 Id: L_MAMODE
 Short description: Length of the area of the required mode
 Length: 15 bits
+Minimum value: 0 m
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -11218,6 +11331,8 @@ Short description: Message length
 Description:
 L_MESSAGE indicates the length of the message in bytes, including all packets and all variables defined in the message header (NID_MESSAGE and L_MESSAGE also).
 Length: 10 bits
+Minimum value: 0
+Maximum value: 1023
 Values:
     ResolutionFormula: value: 1, units: abyte<Sub>
 <Paragraph
@@ -11240,8 +11355,7 @@ Values:
 Short description: Train length step used to define the integrated correction factor Kr
 Description:
 This variable is part of the National Values
-Length: 5 bits
-Baseline: 3.2.0<Sub>
+Length: 5 bits<Sub>
 <Paragraph
  id="7.5.1.48.1.bis"
  guid=""
@@ -11409,6 +11523,8 @@ Short description: Packet length
 Description:
 L_PACKET indicates the length of the packet in bits, including all bits of the packet header
 Length: 13 bits
+Minimum value: 0
+Maximum value: 8191
 Values:
     ResolutionFormula: value: 1, units: abit<Sub>
 <Paragraph
@@ -11430,6 +11546,8 @@ Values:
 >Id: L_PBDSR
 Short description: Length of speed restriction to ensure permitted braking distance
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: abit<TypeSpec
  length="15"
@@ -11479,6 +11597,8 @@ Values:
 Id: L_REVERSEAREA
 Short description: Length of the reversing permitted area
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -11512,6 +11632,8 @@ Values:
 >Id: L_SECTION
 Short description: Length of section in the MA
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -11533,6 +11655,8 @@ Values:
 >Id: L_STOPLX
 Short description: Length of the stopping area in rear of the start location of the LX area
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -11581,6 +11705,8 @@ Values:
 Id: L_TAFDISPLAY
 Short description: Length on which a track ahead free request shall be displayed
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -11616,6 +11742,8 @@ Short description: Length of text string
 Description:
 L_TEXT defines the length of a text string (L_TEXT * X_TEXT)
 Length: 8 bits
+Minimum value: 0
+Maximum value: 255
 Values:
     ResolutionFormula: value: 1, units: text_string_element<TypeSpec
  length="8"
@@ -11650,6 +11778,8 @@ Values:
 >Id: L_TEXTDISPLAY
 Short description: Length on which a text shall be displayed
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.660 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
@@ -11714,6 +11844,8 @@ Values:
 >Id: L_TRACKCOND
 Short description: Length for which the defined track condition is valid
 Length: 15 bits
+Minimum value: 0 m
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -11749,6 +11881,8 @@ Short description: Train length
 Description:
 This is the absolute real length of the train.
 Length: 12 bits
+Minimum value: 0 m
+Maximum value: 4095 m
 Values:
     ResolutionFormula: value: 1, units: m<TypeSpec
  length="12"
@@ -11783,6 +11917,8 @@ Values:
 >Id: L_TRAININT
 Short description: Safe Train length
 Length: 15 bits
+Minimum value: 0 m
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: m<TypeSpec
  length="15"
@@ -11816,6 +11952,8 @@ Values:
 >Id: L_TSR
 Short description: Length of the temporary speed restriction
 Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
 Values:
     ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
@@ -12200,6 +12338,8 @@ Short description: Allowed current consumption
 Description:
 It defines the allowed current consumption to be used by the train
 Length: 2 bits
+Minimum value: 0 A
+Maximum value: 10000 A
 Values:
     ResolutionFormula: value: 10, units: A<Sub>
 <Paragraph
@@ -13376,6 +13516,8 @@ Short description: Message counter
 Description:
 The purpose of this counter is to make it possible for the ERTMS/ETCS on-board to detect which balise group message the telegram belongs to.
 Length: 8 bits
+Minimum value: 0
+Maximum value: 253
 Baseline: 3.2.0<Sub>
 <Paragraph
  id="7.5.1.71.bis"
@@ -13795,6 +13937,8 @@ Short description: Weighting factor for available wheel/rail adhesion
 Description:
 This variable is part of the National Values.
 Length: 5 bits
+Minimum value: 0
+Maximum value: 1.0
 Values:
     ResolutionFormula: value: 0.05, units: defaultresolution_formula_units<Sub>
 <Paragraph
@@ -14194,6 +14338,8 @@ M_NVKRINT(l) is valid for a train length between L_NVKRINT(l) and L_NVKRINT(l+1)
 M_NVKRINT is valid between 0m and L_NVKRINT(1)
 This variable is part of the National Values
 Length: 5 bits
+Minimum value: 0
+Maximum value: 1.55
 Values:
     ResolutionFormula: value: 0.05, units: defaultresolution_formula_units</Paragraph><Paragraph
  id="7.5.1.75.3"
@@ -14216,6 +14362,8 @@ Short description: Integrated correction factor Kt
 Description:
 This variable is part of the National Values
 Length: 5 bits
+Minimum value: 0
+Maximum value: 1.55
 Values:
     ResolutionFormula: value: 0.05, units: defaultresolution_formula_units</Paragraph><Paragraph
  id="7.5.1.75.4"
@@ -14241,6 +14389,8 @@ M_NVKVINT(n) is valid for an estimated speed between V_NVKVINT(n) and V_NVKVINT(
 M_NVKVINT is valid between 0 km/h and V_NVKVINT(1)
 This variable is part of the National Values
 Length: 7 bits
+Minimum value: 0
+Maximum value: 2.54
 Values:
     ResolutionFormula: value: 0.02, units: defaultresolution_formula_units</Paragraph><Paragraph
  id="7.5.1.75.5"
@@ -14403,6 +14553,8 @@ Short description: Track kilometre reference value
 Description:
 The geographical position reporting function uses this variables content as a reference value.
 Length: 20 bits
+Minimum value: 0 m
+Maximum value: 9&apos;999&apos;999 m
 Values:
     ResolutionFormula: value: 1, units: m<Sub>
 <Paragraph
@@ -14880,6 +15032,8 @@ Short description: Axle number of the engine
 Description:
 This gives the number of axles of the single unit (fixed train set or locomotive) in which the onboard equipment is fitted
 Length: 10 bits
+Minimum value: 0
+Maximum value: 1022
 Values:
     ResolutionFormula: value: integers, units: defaultresolution_formula_units<Sub>
 <Paragraph
@@ -14990,6 +15144,8 @@ Short description: Number of iterations of a data set following this variable in
 Description:
 If N_ITER is 0 then no data set is following. Two nested levels of iterations can exist.
 Length: 5 bits
+Minimum value: 0
+Maximum value: 31
 Values:
     ResolutionFormula: value: integers, units: defaultresolution_formula_units<TypeSpec
  length="5"
@@ -15239,7 +15395,9 @@ Short description: Cant Deficiency SSP category
 Description:
 It is the &quot;Cant Deficiency&quot; SSP category for which a different value for the static line speed exists.
 Used together with V_DIFF to permit certain trains to go faster or lower than the &quot;international basic static speed&quot; given by V_STATIC.
-Length: 4 bits<Sub>
+Length: 4 bits
+Minimum value: 0
+Maximum value: 15<Sub>
 <Paragraph
  id="7.5.1.82.1.bis"
  guid=""
@@ -15345,7 +15503,9 @@ Description:
 Cant Deficiency Train category to which the train belongs.
 Thanks to NC_CDTRAIN, the train knows the &quot;Cant Deficiency&quot; SSP it must obey. By receiving a list of static speed profile, thanks to NC_CDDIFF, the train can select the &quot;Cant Deficiency&quot; SSP best suiting its NC_CDTRAIN.
 A train belongs to one and only one category of Cant Deficiency.
-Length: 4 bits<Sub>
+Length: 4 bits
+Minimum value: 0
+Maximum value: 15<Sub>
 <Paragraph
  id="7.5.1.82.2.bis"
  guid=""
@@ -15513,6 +15673,8 @@ It is the &quot;other specific&quot; SSP category for which a different value fo
 Used together with V_DIFF to permit trains belonging to the corresponding &quot;other international&quot; train category to go faster or lower than the &quot;international basic static speed&quot; given by V_STATIC. 
 Value 0 of NC_DIFF corresponds to the LSB of NC_TRAIN, value 14 of NC_DIFF to MSB (15-bit variable) of NC_TRAIN.
 Length: 4 bits
+Minimum value: 0
+Maximum value: 15
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
@@ -15891,6 +16053,8 @@ Short description: Identity number of the balise group
 Description:
 Identity number of a balise group or loop within the country or region defined by NID_C.
 Length: 14 bits
+Minimum value: 0
+Maximum value: 16382
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
@@ -15958,6 +16122,8 @@ Short description: Identity number of the country or region
 Description:
 Code used to identify the country or region in which the balise group is situated. These need not necessarily follow administrative or political boundaries.
 Length: 10 bits
+Minimum value: 0
+Maximum value: 1023
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
@@ -15981,6 +16147,8 @@ Short description: Country identifier of the traction system
 Description:
 It identifies the information, additional to M_VOLTAGE, required to fully define the traction system.
 Length: 10 bits
+Minimum value: 0
+Maximum value: 1023
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<TypeSpec
  length="10"
@@ -16094,6 +16262,8 @@ Short description: Identity number of the loop
 Description:
 Identity number of a loop within the country or region defined by NID_C given in the EOLM balise header.
 Length: 14 bits
+Minimum value: 0
+Maximum value: 16383
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<TypeSpec
  length="14"
@@ -16189,6 +16359,8 @@ Length: 24 bits</Paragraph><Paragraph
 >Id: NID_LX
 Short description: Identity number of the Level Crossing.
 Length: 8 bits
+Minimum value: 0
+Maximum value: 255
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
@@ -16259,6 +16431,8 @@ Short description: Message identifier
 Description:
 Message identifier. Regards defined values of NID_MESSAGE, refer to chapters 8.5.2 and 8.5.3
 Length: 8 bits
+Minimum value: 0
+Maximum value: 255
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
@@ -16283,6 +16457,8 @@ Short description: Identity of Radio Network
 Description:
 The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character &quot;F&quot;. For further information about NID_MN refer to Subset-54.
 Length: 24 bits
+Minimum value: 0
+Maximum value: 999999
 Values:
     ResolutionFormula: value: Binary Coded Decimal, units: defaultresolution_formula_unit<Sub>
 <Paragraph
@@ -16380,6 +16556,8 @@ Short description: Train Running Number
 Description:
 This is the operational train running number. The NID_OPERATIONAL consists of up to 8 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be entered first. In case the NID_OPERATIONAL is shorter than 8 digits, the remaining space is to be filled with special character &quot;F&quot;.
 Length: 32 bits
+Minimum value: 0
+Maximum value: 999999
 Values:
     ResolutionFormula: value: Binary Coded Decimal, units: defaultresolution_formula_units<Sub>
 <Paragraph
@@ -16474,6 +16652,8 @@ Short description: Packet identifier
 Description:
 This is used in the header for each packet, allowing the receiving equipment to identify the data which follows. Regards defined values of NID_PACKET,.refer to &quot;packet numbers&quot; in the tables in chapter 7.4.1.
 Length: 8 bits
+Minimum value: 0
+Maximum value: 255
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<TypeSpec
  length="8"
@@ -16576,6 +16756,8 @@ Quoted as a 16 digit decimal number.
 The number is to be entered &quot;left adjusted&quot; starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number. 
 For further information about NID_RADIO  refer to SUBSET-054.
 Length: 64 bits
+Minimum value: 0
+Maximum value: 9999 9999 9999 9999
 Values:
     ResolutionFormula: value: Binary Coded Decimal, units: defaultresolution_formula_units<Sub>
 <Paragraph
@@ -16671,6 +16853,8 @@ Description:
 This variable provides the identity of the RBC belonging to NID_C.
 The RBC ETCS identity is given by NID_C + NID_RBC.
 Length: 14 bits
+Minimum value: 0
+Maximum value: 16 382
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
@@ -16736,6 +16920,8 @@ Description:
 This variable provides the identity of the RIU belonging to NID_C.
 The RIU ECTS identity is given by NID_C + NID_RIU.
 Length: 14 bits
+Minimum value: 0
+Maximum value: 16 383
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units</Paragraph><Paragraph
  id="7.5.1.98"
@@ -16758,7 +16944,9 @@ Id: NID_NTC (Values to be assigned according to 7.3.1.3)
 Short description: National System identity
 Description:
 Each value of this variable represents the identity of a National System.
-Length: 8 bits<Sub>
+Length: 8 bits
+Minimum value: 0
+Maximum value: 255<Sub>
 <Paragraph
  id="7.5.1.98.1"
  guid=""
@@ -16780,6 +16968,8 @@ Short description: Text message identifier
 Description:
 Identity of a text message from trackside to be used in a report of driver acknowledgement to the RBC
 Length: 8 bits
+Minimum value: 0
+Maximum value: 255
 Values:
     ResolutionFormula: value: Number, units: defaultresolution_formula_units<TypeSpec
  length="8"
@@ -16825,6 +17015,8 @@ Values:
 Id: NID_TSR
 Short description: Identity number of Temporary Speed Restriction.
 Length: 8 bits
+Minimum value: 0
+Maximum value: 255
 Values:
     ResolutionFormula: value: Number, units: defaultresolution_formula_units<Sub>
 <Paragraph
@@ -16879,6 +17071,8 @@ SpecialOrReservedValues:
 Id: NID_VBCMK
 Short description: Marker for Virtual Balise Cover
 Length: 6 bits
+Minimum value: 0
+Maximum value: 63
 Values:
     ResolutionFormula: value: Number, units: defaultresolution_formula_units</Paragraph></Sub>
 <TypeSpec
@@ -16941,6 +17135,8 @@ Short description: Identity of user system
 Description:
 Identity of user system for which remainder of packet is intended.
 Length: 9 bits
+Minimum value: 0
+Maximum value: 511
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<TypeSpec
  length="9"
@@ -18241,6 +18437,8 @@ Short description: Accuracy of the balise location
 Description:
 This Qualifier defines the absolute value of the accuracy of the Balise location (i.e., the value 63m identifies a location accuracy of +/- 63m)
 Length: 6 bits
+Minimum value: 0 m
+Maximum value: 63 m
 Values:
     ResolutionFormula: value: 1, units: m<TypeSpec
  length="6"
@@ -18755,6 +18953,8 @@ Length: 1 bits<Sub>
 Short description: Qualifier for track kilometre direction.
 Description:
 Qualifier to indicate the direction of counting of the geographical position track kilometre in relation to the geographical position reference balise group directionality.
+Minimum value: 0
+Maximum value: 1
 Length: 1 bits<Sub>
 <Paragraph
  id="7.5.1.120.bis"
@@ -19195,6 +19395,8 @@ Short description: Default accuracy of the balise location (absolute value)
 Description:
 This variable is part of the National Values
 Length: 6 bits
+Minimum value: 0 m
+Maximum value: 63 m
 Values:
     ResolutionFormula: value: 1, units: m</Paragraph><Paragraph
  id="7.5.1.123.6"
@@ -20079,6 +20281,8 @@ Length: 1 bits<Sub>
 Short description: Spread Spectrum Code for Euroloop
 Description:
 Specifies the code required to receive telegrams from a specific Euroloop installation.
+Minimum value: 0
+Maximum value: 14
 Length: 4 bits<Sub>
 <Paragraph
  id="7.5.1.133.bis"
@@ -20405,7 +20609,9 @@ Id: Q_TEXT
 Short description: Fixed message to be displayed. 
 Description:
 Q_TEXT is a pointer to select a fixed text message from the defined table. The language selected by the driver for the DMI shall be used additionally as a qualifier to choose the appropriate language table.
-Length: 8 bits<Sub>
+Length: 8 bits
+Minimum value: 0
+Maximum value: 255<Sub>
 <Paragraph
  id="7.5.1.136.bis"
  guid=""
@@ -21015,6 +21221,8 @@ Short description: Time Interval between two location reports sent by the train
 Description:
 The train must send its location every T_CYCLOC
 Length: 8 bits
+Minimum value: 0 seconds
+Maximum value: 254 s
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
@@ -21082,6 +21290,8 @@ Short description: Time between two cyclic requests for a movement authority
 Description:
 When the train asks for a movement authority request, it will repeat its request every T_CYCRQST seconds until it receives a new MA
 Length: 8 bits
+Minimum value: 0 seconds
+Maximum value: 254 s
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
@@ -21149,6 +21359,8 @@ Short description: Validity time for the End section in the MA
 Description:
 Time for which the End section is valid measured from the moment the train reaches the location defined by D_ENDTIMERSTARTLOC.
 Length: 10 bits
+Minimum value: 0
+Maximum value: 1022
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
@@ -21216,6 +21428,8 @@ Short description: Validity time for the target speed at the LOA
 Description:
 Time for which the target speed is valid measured from the moment information is received
 Length: 10 bits
+Minimum value: 0
+Maximum value: 1022
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
@@ -21281,6 +21495,8 @@ Values:
 >Id: T_MAR
 Short description: Time before reaching indication limit for the EOA/LOA
 Length: 8 bits
+Minimum value: 0
+Maximum value: 254
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
@@ -21348,6 +21564,8 @@ Description:
 If no &quot;safe&quot; message has been received from the track for more than T_NVCONTACT seconds, an appropriate action according to M_NVCONTACT must be triggered.
 This variable is part of the National Values
 Length: 8 bits
+Minimum value: 0s
+Maximum value: 254s
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
@@ -21416,6 +21634,8 @@ Short description: Maximum time for overriding the train trip
 Description:
 This variable is part of the National Values
 Length: 8 bits
+Minimum value: 0 s
+Maximum value: 255 s
 Values:
     ResolutionFormula: value: 1, units: s<TypeSpec
  length="8"
@@ -21452,6 +21672,8 @@ Short description: Overlap validity time
 Description:
 The time span the train can expect the overlap to be available, measured from the moment the train reaches the location defined by D_STARTOL.
 Length: 10 bits
+Minimum value: 0
+Maximum value: 1022 s
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
@@ -21519,6 +21741,8 @@ Short description: Validity time of a section in the MA
 Description:
 Time for which the section is valid.
 Length: 10 bits
+Minimum value: 0
+Maximum value: 1022
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
@@ -21585,6 +21809,8 @@ Values:
 Id: T_TEXTDISPLAY
 Short description: Duration for which a text shall be displayed
 Length: 10 bits
+Minimum value: 0
+Maximum value: 1022 s
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
@@ -21651,6 +21877,8 @@ SpecialOrReservedValues:
 Id: T_TIMEOUTRQST
 Short description: Time before any section timer expires or the LOA speed timer expires
 Length: 10 bits
+Minimum value: 0
+Maximum value: 1022
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
@@ -21717,6 +21945,8 @@ Short description: Trainborne clock
 Description:
 Time, according to trainborne clock, at which message is sent
 Length: 32 bits
+Minimum value: 0
+Maximum value: 42949672.94 s
 Values:
     ResolutionFormula: value: 10, units: ms<Sub>
 <Paragraph
@@ -21760,6 +21990,8 @@ Values:
 Id: T_VBC
 Short description: VBC validity period
 Length: 8 bits
+Minimum value: 0
+Maximum value: 255 days
 Values:
     ResolutionFormula: value: 1, units: day</Paragraph></Sub>
 <TypeSpec
@@ -21802,6 +22034,8 @@ Values:
 >Id: V_AXLELOAD
 Short description: Speed restriction related to axleload
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -21844,6 +22078,8 @@ Values:
 >Id: V_DIFF
 Short description: Absolute Positive Speed associated to a train category.
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -21912,6 +22148,8 @@ Values:
 Id: V_LOA
 Short description: Permitted speed at the limit of authority
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -21956,6 +22194,8 @@ Short description: Permitted speed for the LX speed restriction
 Description:
 Speed at which the LX an be passed when it is not protected
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22024,6 +22264,8 @@ Values:
 >Id: V_MAIN
 Short description: Signalling related speed restriction
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22096,6 +22338,8 @@ Values:
 >Id: V_MAMODE
 Short description: Required mode related speed
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22174,6 +22418,8 @@ Values:
 >Id: V_MAXTRAIN
 Short description: Maximum train speed.
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22244,6 +22490,8 @@ Short description: Speed limit allowing the driver to select the &quot;override&
 Description:
 This variable is part of the National Values
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22288,6 +22536,8 @@ Short description: Speed step used to define the integrated correction factor Kv
 Description:
 This variable is part of the National Values
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22333,6 +22583,8 @@ Short description: Limited Supervision mode speed limit
 Description:
 This variable is part of the National Values
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22404,6 +22656,8 @@ Short description: On Sight mode speed limit
 Description:
 This variable is part of the National Values
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22474,6 +22728,8 @@ Short description: Override speed limit to be supervised when the &quot;override
 Description:
 This variable is part of the National Values
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22544,6 +22800,8 @@ Short description: Release Speed (permitted) speed limit
 Description:
 This variable is part of the National Values
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22614,6 +22872,8 @@ Short description: Shunting mode speed limit
 Description:
 This variable is part of the National Values
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22684,6 +22944,8 @@ Short description: Staff Responsible mode speed limit
 Description:
 This variable is part of the National Values
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22754,6 +23016,8 @@ Short description: Unfitted mode speed limit
 Description:
 This variable is part of the National Values
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22822,6 +23086,8 @@ Values:
 >Id: V_RELEASEDP
 Short description: Release speed associated with the danger point
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -22911,6 +23177,8 @@ Values:
 >Id: V_RELEASEOL
 Short description: Release speed associated with the overlap
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -23000,6 +23268,8 @@ Values:
 >Id: V_REVERSE
 Short description: Reversing mode speed limit
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -23069,6 +23339,8 @@ Short description: Static speed profile
 Description:
 Static speed profile speed after discontinuity (k).
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -23148,6 +23420,8 @@ Values:
 >Id: V_TRAIN
 Short description: Train speed
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -23216,6 +23490,8 @@ Values:
 >Id: V_TSR
 Short description: Permitted speed for the temporary speed restriction
 Length: 7 bits
+Minimum value: 0 km/h
+Maximum value: 600 km/h
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph

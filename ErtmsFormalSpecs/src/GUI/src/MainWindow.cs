@@ -866,9 +866,13 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                dictionary.ClearMessages();
+                if (dictionary.Specifications != null)
                 {
-                    specification.CheckImplementation();
+                    foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                    {
+                        specification.CheckImplementation();
+                    }
                 }
             }
             Refresh();
@@ -892,13 +896,17 @@ namespace GUI
             Refresh();
         }
 
-        private void verifiedToolStripMenuItem_Click(object sender, EventArgs e)
+        private void reviewedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                dictionary.ClearMessages();
+                if (dictionary.Specifications != null)
                 {
-                    specification.CheckReview();
+                    foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                    {
+                        specification.CheckReview();
+                    }
                 }
                 Refresh();
             }
@@ -929,6 +937,7 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
+                dictionary.ClearMessages();
                 if (dictionary.Specifications != null)
                 {
                     foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
@@ -944,9 +953,13 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                dictionary.ClearMessages();
+                if (dictionary.Specifications != null)
                 {
-                    specification.CheckImplementedWithNoFunctionalTest();
+                    foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                    {
+                        specification.CheckImplementedWithNoFunctionalTest();
+                    }
                 }
             }
             Refresh();
@@ -956,9 +969,13 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                dictionary.ClearMessages();
+                if (dictionary.Specifications != null)
                 {
-                    specification.CheckNotImplementedButImplementationExists();
+                    foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                    {
+                        specification.CheckNotImplementedButImplementationExists();
+                    }
                 }
             }
             Refresh();
@@ -969,10 +986,12 @@ namespace GUI
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 dictionary.ClearMessages();
-
-                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                if (dictionary.Specifications != null)
                 {
-                    specification.CheckApplicable();
+                    foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                    {
+                        specification.CheckApplicable();
+                    }
                 }
             }
             Refresh();
@@ -1016,9 +1035,12 @@ namespace GUI
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 dictionary.ClearMessages();
-                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                if (dictionary.Specifications != null)
                 {
-                    specification.CheckNonApplicable();
+                    foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                    {
+                        specification.CheckNonApplicable();
+                    }
                 }
             }
             Refresh();
@@ -1029,9 +1051,12 @@ namespace GUI
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 dictionary.ClearMessages();
-                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                if (dictionary.Specifications != null)
                 {
-                    specification.CheckSpecIssues();
+                    foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                    {
+                        specification.CheckSpecIssues();
+                    }
                 }
             }
             Refresh();
@@ -1333,9 +1358,12 @@ namespace GUI
             // Retrieve the hash tag and the corresponding dictionary version
             VersionSelector.VersionSelector selector = new VersionSelector.VersionSelector(dictionary);
             selector.ShowDialog();
-            CompareWithRepositoryOperation operation = new CompareWithRepositoryOperation(dictionary, selector.Selected);
-            operation.ExecuteUsingProgressDialog("Compare with repository version " + selector.Selected.MessageShort);
-            Refresh();
+            if (selector.Selected != null)
+            {
+                CompareWithRepositoryOperation operation = new CompareWithRepositoryOperation(dictionary, selector.Selected);
+                operation.ExecuteUsingProgressDialog("Compare with repository version " + selector.Selected.MessageShort);
+                Refresh();
+            }
         }
 
         /// <summary>

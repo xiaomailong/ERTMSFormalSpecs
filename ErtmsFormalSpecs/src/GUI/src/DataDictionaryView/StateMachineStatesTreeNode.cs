@@ -47,18 +47,22 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="children"></param>
-        public StateMachineStatesTreeNode(DataDictionary.Types.StateMachine item)
-            : base(item, "States", true)
+        public StateMachineStatesTreeNode(DataDictionary.Types.StateMachine item, bool buildSubNodes)
+            : base(item, buildSubNodes, "States", true)
         {
         }
 
-        protected override void BuildSubNodes()
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
         {
-            base.BuildSubNodes();
+            base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.Constants.State state in Item.States)
             {
-                Nodes.Add(new StateTreeNode(state));
+                Nodes.Add(new StateTreeNode(state, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -86,7 +90,7 @@ namespace GUI.DataDictionaryView
         public StateTreeNode AddState(DataDictionary.Constants.State state)
         {
             Item.appendStates(state);
-            StateTreeNode retVal = new StateTreeNode(state);
+            StateTreeNode retVal = new StateTreeNode(state, true);
             Nodes.Add(retVal);
             SortSubNodes();
             return retVal;

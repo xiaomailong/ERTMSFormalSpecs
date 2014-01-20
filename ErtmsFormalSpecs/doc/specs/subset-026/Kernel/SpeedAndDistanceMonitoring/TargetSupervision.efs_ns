@@ -770,8 +770,10 @@ INITIAL_VALUE
 <PreConditions>
 <PreCondition
  Guid="7b9f6890-4be7-49cf-9750-bc2b6d56cfb4"
->d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) &lt; DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
- Guid="c358e48e-8150-4739-a9eb-03567f034361"
+>d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget )
+  &lt;
+DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
+ Guid="2784bf61-3ed4-4bb9-ba3c-cfa74d731b58"
 >NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition></PreConditions>
 <Expression>EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) ) - ( Vbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) - Vest )</Expression>
 </Case><Case
@@ -783,7 +785,9 @@ INITIAL_VALUE
  Guid="0eca90da-8457-4dee-9fe8-edd31394c8f9"
 >NationalValues.ComputationOfGUIIsEnabled ()</PreCondition><PreCondition
  Guid="b6dbd2ec-7f55-4672-b4b9-9c4635a43455"
->d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) &lt; DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></PreConditions>
+>d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget )
+  &lt;
+DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></PreConditions>
 <Expression>BaseTypes.MinDistance ( X1 =&gt; EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) ) - ( Vbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) - Vest ), X2 =&gt; GUI ( d_maxsafefront ) )</Expression>
 </Case><Case
  Name="Second case"
@@ -1108,7 +1112,19 @@ INITIAL_VALUE
 <PreConditions>
 <PreCondition
  Guid="2e2cb67d-e986-47dd-9a32-d34ea033b11a"
->V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; X1.Speed, Vest =&gt; Odometry.EstimatedSpeed ) &lt;= V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; X2.Speed, Vest =&gt; Odometry.EstimatedSpeed ) </PreCondition></PreConditions>
+>V_P_EBD_Target
+    (
+        d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ),
+        Vtarget =&gt; X1.Speed,
+        Vest =&gt; Odometry.EstimatedSpeed
+    )
+  &lt;=
+V_P_EBD_Target
+    (
+        d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ),
+        Vtarget =&gt; X2.Speed,
+        Vest =&gt; Odometry.EstimatedSpeed
+    )</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="Otherwise"

@@ -481,22 +481,26 @@ namespace DataDictionary.Interpreter
                     {
                         tmp2.Add(namable);
 
-                        // Consistency check. 
-                        Variables.IVariable subDeclVar = subDeclarator as Variables.Variable;
-                        if (subDeclVar != null)
+                        if (!(namable is Values.EmptyValue))
                         {
-                            if (((IEnclosed)namable).Enclosing != subDeclVar.Value)
+                            // Consistency check. 
+                            // Empty value should not be considered because we can dereference 'Empty'
+                            Variables.IVariable subDeclVar = subDeclarator as Variables.Variable;
+                            if (subDeclVar != null)
                             {
-                                AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
+                                if (((IEnclosed)namable).Enclosing != subDeclVar.Value)
+                                {
+                                    AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
+                                }
                             }
-                        }
-                        else
-                        {
-                            if (((IEnclosed)namable).Enclosing != subDeclarator)
+                            else
                             {
-                                AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
-                            }
+                                if (((IEnclosed)namable).Enclosing != subDeclarator)
+                                {
+                                    AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
+                                }
 
+                            }
                         }
                     }
                 }

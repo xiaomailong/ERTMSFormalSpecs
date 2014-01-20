@@ -47,8 +47,8 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public EnumerationValueTreeNode(DataDictionary.Constants.EnumValue item)
-            : base(item)
+        public EnumerationValueTreeNode(DataDictionary.Constants.EnumValue item, bool buildSubNodes)
+            : base(item, buildSubNodes)
         {
         }
 

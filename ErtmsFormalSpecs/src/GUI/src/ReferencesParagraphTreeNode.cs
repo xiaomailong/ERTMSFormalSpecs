@@ -92,13 +92,13 @@ namespace GUI
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        protected ReferencesParagraphTreeNode(T item, string name = null, bool isFolder = false, bool addRequirements = true)
-            : base(item, name, isFolder)
+        protected ReferencesParagraphTreeNode(T item, bool buildSubNodes, string name = null, bool isFolder = false, bool addRequirements = true)
+            : base(item, buildSubNodes, name, isFolder)
         {
             HandleRequirements = true;
             if (addRequirements && item.Requirements.Count > 0)
             {
-                ReqReferences = new ReqRefsTreeNode(item);
+                ReqReferences = new ReqRefsTreeNode(item, buildSubNodes);
                 Nodes.Add(ReqReferences);
             }
         }
@@ -115,7 +115,7 @@ namespace GUI
             {
                 if (HandleRequirements && ReqReferences == null)
                 {
-                    ReqReferences = new ReqRefsTreeNode(Item);
+                    ReqReferences = new ReqRefsTreeNode(Item, false);
                     Nodes.Add(ReqReferences);
                 }
 
