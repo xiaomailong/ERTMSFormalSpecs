@@ -182,7 +182,7 @@
  Default="Boolean.False"
  Mode="Internal"
  Implemented="TRUE"
- Name="IsUnsuitability"
+ Name="IsUnsuitable"
  Guid="7ab7b874-cc71-415d-95d9-364494f47dfc"
 >
 <ReqRef
@@ -259,7 +259,7 @@
     MaxAxleLoad =&gt; aMaxAxleLoad,
     TractionSystem =&gt; aTractionSystem,
     NidCTraction =&gt; aNidCTraction,
-    IsUnsuitability =&gt; UnsuitabilityExists ( aType =&gt; aType, aLineGauge =&gt; aLineGauge, aMaxAxleLoad =&gt; aMaxAxleLoad, aTractionSystem =&gt; aTractionSystem, aNidCTraction =&gt; aNidCTraction )
+    IsUnsuitable =&gt; UnsuitabilityExists ( aType =&gt; aType, aLineGauge =&gt; aLineGauge, aMaxAxleLoad =&gt; aMaxAxleLoad, aTractionSystem =&gt; aTractionSystem, aNidCTraction =&gt; aNidCTraction )
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -373,11 +373,11 @@
   AND
 RouteSuitabilityProfile.Items != []
   AND
-THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondition></PreConditions>
+THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitable == True</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
-    Location =&gt; REDUCE RouteSuitabilityProfile.Items | X.IsUnsuitability == True
+    Location =&gt; REDUCE RouteSuitabilityProfile.Items | X.IsUnsuitable == True
                         USING BaseTypes.MinDistance ( X1 =&gt; X.Distance, X2 =&gt; RESULT )
                         INITIAL_VALUE BaseTypes.Distance.Infinity,
     Speed =&gt; 0.0
@@ -416,11 +416,11 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
   AND
 RouteSuitabilityProfile.Items != []
   AND
-THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondition></PreConditions>
+THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitable == True</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
-    Location =&gt; REDUCE RouteSuitabilityProfile.Items | X.IsUnsuitability == True
+    Location =&gt; REDUCE RouteSuitabilityProfile.Items | X.IsUnsuitable == True
                         USING BaseTypes.MinDistance ( X1 =&gt; X.Distance, X2 =&gt; RESULT )
                         INITIAL_VALUE BaseTypes.Distance.Infinity,
     Speed =&gt; 0.0
@@ -824,7 +824,7 @@ ON
 <PreConditions>
 <PreCondition
  Guid="1a52cb97-8d8a-4b18-8f75-61e6c0468f61"
->THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability</PreCondition></PreConditions>
+>THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitable</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c06648a3-cff4-478f-8884-305f08c7951e"
