@@ -319,17 +319,19 @@ namespace GUI.SpecificationView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
+            List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Add Table to Id", new EventHandler(AddTableHandler)));
-            retVal.Add(new MenuItem("Add Entry to Id", new EventHandler(AddEntryHandler)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Implemented", new EventHandler(ImplementedHandler)));
-            retVal.Add(new MenuItem("Not implementable", new EventHandler(NotImplementableHandler)));
-            retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Add paragraph", new EventHandler(AddParagraphHandler)));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
-
+            retVal.AddRange(base.GetMenuItems());
+            MenuItem newItem = new MenuItem("Mark as...");
+            newItem.MenuItems.Add(new MenuItem("Implemented", new EventHandler(ImplementedHandler)));
+            newItem.MenuItems.Add(new MenuItem("Not implementable", new EventHandler(NotImplementableHandler)));
+            retVal.Insert(4, newItem);
+            retVal.Insert(7, new MenuItem("Add Table to Id", new EventHandler(AddTableHandler)));
+            retVal.Insert(8, new MenuItem("Add Entry to Id", new EventHandler(AddEntryHandler)));
+            retVal.Insert(9, new MenuItem("-"));
+            
             return retVal;
         }
 
