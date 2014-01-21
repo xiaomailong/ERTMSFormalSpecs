@@ -921,7 +921,7 @@
 >BTM.LRBG &lt;- EMPTY</Action><Action
  Guid="2713bb78-2132-4e5b-9b35-3a869ad82086"
 >BTM.PreviousLRBGs &lt;- []</Action><Action
- Guid="e795c3ea-2e2d-45a2-b3c0-2ae3dc050eeb"
+ Guid="628726d0-d32d-4548-9379-623dc2d8b88f"
 >Odometry.NominalDistance &lt;- 0.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 3 - Give the train some data"
@@ -1325,6 +1325,256 @@
 (REDUCE Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitability( anItem=&gt; X ) == Boolean.True
     USING Default.BaseTypes.MinDistance(X1 =&gt; RESULT, X2 =&gt; X.Distance)
     INITIAL_VALUE Default.BaseTypes.Distance.Infinity)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Routes are correctly flagged for loading gauges"
+ Guid="39b4cfbd-f343-4a26-b663-d36379e5e43d"
+>
+<TestCases>
+<TestCase
+ Implemented="TRUE"
+ Name="Check that route unsuitability is correctly identified"
+ Guid="47850c3d-70bf-412c-b5aa-a35c6b25e36b"
+>
+<ReqRef
+ Id="636c0584-97a6-40a1-b98c-c6fb3a5d973f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b800cd6d-3420-4848-938d-717059403fe9"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Initialize train data"
+ Guid="bd046993-4711-4a48-ba4a-f917ff51b2a8"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Intitialize test environment"
+ Guid="3299f464-fa7e-4f09-808d-572640753786"
+>
+<Actions>
+<Action
+ Guid="136c7225-175e-462a-a63a-cbd54224e3e2"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - BG setup"
+ Guid="3ea0e2d6-4a23-4fb0-9e36-4986ee991b57"
+>
+<Actions>
+<Action
+ Guid="9620d730-ab38-4e28-af37-3c59c973d834"
+>BTM.LRBG &lt;- EMPTY</Action><Action
+ Guid="0f4eb182-db69-42e8-a6d3-4816e7a41410"
+>BTM.PreviousLRBGs &lt;- []</Action><Action
+ Guid="e795c3ea-2e2d-45a2-b3c0-2ae3dc050eeb"
+>Odometry.NominalDistance &lt;- 0.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Give the train some data"
+ Guid="494dda87-d9a0-456d-8aef-1affea3fca9c"
+>
+<Actions>
+<Action
+ Guid="37790215-0cde-4be5-ba4b-b0e17d21c924"
+>Kernel.TrainData.TrainData &lt;- Kernel.TrainData.TrainData
+ {
+    DataState =&gt; DataState.Valid,
+    Value =&gt; Kernel.TrainData.TrainDataValues
+     {
+        AxleLoadCategory =&gt; Messages.M_AXLELOADCAT.C3,
+        LoadingGauge =&gt; Messages.M_LOADINGGAUGE.GA,
+        TractionSystems =&gt;
+         [
+            Kernel.TrainData.TractionSystem
+             {
+                Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
+                Country =&gt; 85
+             }
+            ,
+            Kernel.TrainData.TractionSystem
+             {
+                Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
+                Country =&gt; 85
+             }
+         ]
+     }
+ }</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 2 - Receive route suitability data containing a loading gauge that matches the train&apos;s"
+ Guid="0d53edb5-6272-4adf-987f-4cccb19d7640"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Receive the route suitability data from a balise"
+ Guid="b1d0052b-c430-4f94-afbb-84ec438d63f8"
+>
+<Actions>
+<Action
+ Guid="24cbe0ff-a171-4070-8429-c1900bca10ef"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; 1,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._1C,
+    N_TOTAL =&gt; Messages.N_TOTAL._1_balise_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 1,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 256,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
+     [
+        Messages.EUROBALISE.SubStructure1
+         {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                ROUTE_SUITABILITY_DATA =&gt; Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message
+                 {
+                    NID_PACKET =&gt; 70,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 1,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    Q_TRACKINIT =&gt; 0,
+
+                    D_SUITABILITY =&gt; 500,
+                    Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Loading_gauge_profile,
+                    M_LINEGAUGE =&gt; Messages.M_LINEGAUGE.G1,
+
+                    N_ITER =&gt; 1,
+                    Sequence1 =&gt; [
+                        Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1
+                         {
+                            D_SUITABILITY =&gt; 500,
+                            Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Loading_gauge_profile,
+                            M_LINEGAUGE =&gt; Messages.M_LINEGAUGE.GA
+                         }
+                     ]
+                 }
+             }
+         }
+     ]
+
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Expectations"
+ Guid="8ab909dd-8d90-4b1f-8be5-691414ed7b40"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="dbf613f2-518f-4b86-a062-805a42e729b7"
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitability( anItem =&gt; FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items ) == Boolean.False</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4f50f7ec-61e2-4695-842c-c6ffb76dd5cc"
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitability( anItem =&gt; LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items ) == Boolean.False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 3 - Receive route suitability data without a loading gauge matching the train&apos;s"
+ Guid="6a972e5a-1769-4a58-8261-e0a21c724b2c"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Clear RouteSuitabilityProfile"
+ Guid="8ff435de-0ae0-4fa0-a20f-e5a00471c41e"
+>
+<Actions>
+<Action
+ Guid="ef66a5fd-c424-4ce6-87ca-47e3b6797b0f"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile &lt;- EMPTY</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Receive the route suitability data from a balise"
+ Guid="97f2ba5a-6f66-45aa-be1e-d16636f12f56"
+>
+<Actions>
+<Action
+ Guid="3c0505b3-6cce-4ece-bac7-642fb8b8cd58"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; 1,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._1C,
+    N_TOTAL =&gt; Messages.N_TOTAL._1_balise_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 1,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 257,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
+     [
+        Messages.EUROBALISE.SubStructure1
+         {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                ROUTE_SUITABILITY_DATA =&gt; Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message
+                 {
+                    NID_PACKET =&gt; 70,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 1,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    Q_TRACKINIT =&gt; 0,
+
+                    D_SUITABILITY =&gt; 500,
+                    Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Loading_gauge_profile,
+                    M_LINEGAUGE =&gt; Messages.M_LINEGAUGE.GB,
+
+                    N_ITER =&gt; 1,
+                    Sequence1 =&gt; [
+                        Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1
+                         {
+                            D_SUITABILITY =&gt; 500,
+                            Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Loading_gauge_profile,
+                            M_LINEGAUGE =&gt; Messages.M_LINEGAUGE.GC
+                         }
+                     ]
+                 }
+             }
+         }
+     ]
+
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Expectations"
+ Guid="b944c1f0-e253-4695-83c9-36e266a88aa4"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="dab80ece-de48-4d47-a794-9356b401edd0"
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitability( anItem =&gt; FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items ) == Boolean.True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="682d2d85-0610-43b4-9219-e9c248df2caa"
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitability( anItem =&gt; LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items ) == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
