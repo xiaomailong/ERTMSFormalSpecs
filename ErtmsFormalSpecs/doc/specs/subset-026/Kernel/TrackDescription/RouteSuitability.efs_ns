@@ -177,19 +177,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3b1cdd26-1229-48fc-937f-75c9a4415d11"
 >
-</ReqRef></StructureElement><StructureElement
- TypeName="Boolean"
- Default="Boolean.False"
- Mode="Internal"
- Implemented="TRUE"
- Name="IsUnsuitability"
- Guid="7ab7b874-cc71-415d-95d9-364494f47dfc"
->
-<ReqRef
- Id="072f0acc-a45c-44b9-8efe-422c893a3dfd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="43d25135-fc47-4189-b077-709a4f0d773a"
->
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -258,14 +245,13 @@
     LineGauge =&gt; aLineGauge,
     MaxAxleLoad =&gt; aMaxAxleLoad,
     TractionSystem =&gt; aTractionSystem,
-    NidCTraction =&gt; aNidCTraction,
-    IsUnsuitability =&gt; UnsuitabilityExists ( aType =&gt; aType, aLineGauge =&gt; aLineGauge, aMaxAxleLoad =&gt; aMaxAxleLoad, aTractionSystem =&gt; aTractionSystem, aNidCTraction =&gt; aNidCTraction )
+    NidCTraction =&gt; aNidCTraction
 }</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="UnsuitabilityExists"
+ Name="IsUnsuitability"
  Guid="c7deead7-d55a-45db-96a6-766ccd730dc2"
 >
 <ReqRef
@@ -291,28 +277,8 @@
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
- Type="Messages.Q_SUITABILITY"
- Name="aType"
- Guid="d6329eb7-c28a-4033-b7a7-22a1ec542437"
->
-</Parameter><Parameter
- Type="Messages.M_LINEGAUGE"
- Name="aLineGauge"
- Guid="beef0a65-5a3e-4209-a861-569cd0073112"
->
-</Parameter><Parameter
- Type="Messages.M_AXLELOADCAT"
- Name="aMaxAxleLoad"
- Guid="47a0a0ea-151d-4b7f-bbb6-bf2af467ad8a"
->
-</Parameter><Parameter
- Type="Messages.M_VOLTAGE"
- Name="aTractionSystem"
- Guid="5efb5342-f519-4760-86ca-c4a46db57a55"
->
-</Parameter><Parameter
- Type="Messages.NID_CTRACTION"
- Name="aNidCTraction"
+ Type="RouteSuitabilityItem"
+ Name="anItem"
  Guid="07d449f2-ab67-42d7-a03a-9e03d1bda9fb"
 >
 </Parameter></Parameters>
@@ -324,8 +290,21 @@
 <PreConditions>
 <PreCondition
  Guid="a29186e6-0ce9-4d0e-88ca-76d6d250028a"
->aType == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
-<Expression>NOT (GaugesMatch(aLineGauge =&gt; aLineGauge, aLoadingGauge =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge) )</Expression>
+>anItem.Type == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
+<Expression>NOT
+(
+  GaugesMatch ( aLineGauge =&gt; anItem.LineGauge,
+                           aLoadingGauge =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge)
+)
+  AND
+NOT THERE_IS_IN
+  RouteSuitabilityProfile.Items |
+    X.Type == Messages.Q_SUITABILITY.Loading_gauge_profile
+      AND
+    X.Distance == anItem.Distance
+      AND
+    GaugesMatch ( aLineGauge =&gt; X.LineGauge,
+                             aLoadingGauge =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge)</Expression>
 </Case><Case
  Name="Axle load"
  Guid="2161906b-ab60-44ec-864b-1b522510851f"
@@ -333,8 +312,8 @@
 <PreConditions>
 <PreCondition
  Guid="0d721740-4b22-49e4-8662-bbec0e59cfbf"
->aType == Messages.Q_SUITABILITY.Max_axle_load</PreCondition></PreConditions>
-<Expression>aMaxAxleLoad &lt; TrainData.TrainData.Value.AxleLoadCategory</Expression>
+>anItem.Type == Messages.Q_SUITABILITY.Max_axle_load</PreCondition></PreConditions>
+<Expression>anItem.MaxAxleLoad &lt; TrainData.TrainData.Value.AxleLoadCategory</Expression>
 </Case><Case
  Name="Traction system"
  Guid="8f15b209-1d1a-42cb-b75f-339d72abcb35"
@@ -342,8 +321,15 @@
 <PreConditions>
 <PreCondition
  Guid="4676c596-4178-4368-a433-3f79212b496b"
->aType == Messages.Q_SUITABILITY.Traction_system</PreCondition></PreConditions>
-<Expression>NOT ( THERE_IS_IN TrainData.TrainData.Value.TractionSystems | X.Voltage == aTractionSystem AND X.Country == aNidCTraction )</Expression>
+>anItem.Type == Messages.Q_SUITABILITY.Traction_system</PreCondition></PreConditions>
+<Expression>NOT
+(
+  THERE_IS_IN
+    TrainData.TrainData.Value.TractionSystems |
+      X.Voltage == anItem.TractionSystem
+        AND
+      X.Country == anItem.NidCTraction
+)</Expression>
 </Case></Cases>
 </Function><Function
  Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
@@ -373,11 +359,11 @@
   AND
 RouteSuitabilityProfile.Items != []
   AND
-THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondition></PreConditions>
+THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitability ( X )</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
-    Location =&gt; REDUCE RouteSuitabilityProfile.Items | X.IsUnsuitability == True
+    Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitability ( X )
                         USING BaseTypes.MinDistance ( X1 =&gt; X.Distance, X2 =&gt; RESULT )
                         INITIAL_VALUE BaseTypes.Distance.Infinity,
     Speed =&gt; 0.0
@@ -416,11 +402,11 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
   AND
 RouteSuitabilityProfile.Items != []
   AND
-THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondition></PreConditions>
+THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitability ( X )</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
-    Location =&gt; REDUCE RouteSuitabilityProfile.Items | X.IsUnsuitability == True
+    Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitability ( X )
                         USING BaseTypes.MinDistance ( X1 =&gt; X.Distance, X2 =&gt; RESULT )
                         INITIAL_VALUE BaseTypes.Distance.Infinity,
     Speed =&gt; 0.0
@@ -433,6 +419,9 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
+ Verified="TRUE"
+ NeedsRequirement="FALSE"
  Name="GaugesMatch"
  Guid="1d44dc39-5432-4459-9c71-2bb64fd698dd"
 >
@@ -702,6 +691,8 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axl
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Create the route suitability profile"
  Guid="50983b51-3f9a-47b1-8110-dfd98356a5a4"
 >
@@ -824,7 +815,7 @@ ON
 <PreConditions>
 <PreCondition
  Guid="1a52cb97-8d8a-4b18-8f75-61e6c0468f61"
->THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability</PreCondition></PreConditions>
+>THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitability ( X )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c06648a3-cff4-478f-8884-305f08c7951e"
