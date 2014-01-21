@@ -1098,15 +1098,20 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="End of Authority and Supervised Location in the case of unsuitability"
- Guid="3228129f-4eb6-4f49-bfa7-db76868d6c51"
+ Name="EOA and SvL when there is unsuitability"
+ Guid="d3522343-efbf-4e69-b8fb-819b897b1bbc"
 >
 <TestCases>
 <TestCase
- Name="Start of unsuitability becomes EoA and SvL"
- Guid="b84e6da1-ff5e-49b0-a0ee-64104de26f09"
+ Name="Unsuitability for upcoming track"
+ Guid="499a9a82-8fd1-4ae0-9338-78d58e6e375b"
 >
-<Steps>
+<ReqRef
+ Id="beedf65d-aba6-4017-83dd-0fe57bc88e85"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c36b1be0-5ee5-49a0-99da-7283669c3fcc"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1114,36 +1119,36 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step 1 - Initialize train data"
- Guid="0ee00c88-115b-41dc-8526-070e5ef1dc34"
+ Guid="2a0185b8-4874-4e77-a18f-760388b2c23a"
 >
 <SubSteps>
 <SubStep
  Name="SubStep 1 - Initialize test environment"
- Guid="8cdf14d9-bd6d-4947-af14-5bb1e1503fe1"
+ Guid="6f7c3060-a327-45be-8cbb-01ac27ac7872"
 >
 <Actions>
 <Action
- Guid="668edb47-f7a9-4b0c-ba09-00d63b695701"
+ Guid="a4e6e6b8-effa-4367-a651-06b7d80948fe"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 2 - Balise Group setup"
- Guid="8bbc98f7-0747-4fa2-989e-81926c07abd3"
+ Guid="092959b1-39ea-4e07-b44f-a111932be729"
 >
 <Actions>
 <Action
- Guid="5e32322e-2398-4af0-ae7e-7f998e713b34"
+ Guid="336015f8-7d8c-4237-b8ac-cc1bae844ef0"
 >BTM.LRBG &lt;- EMPTY</Action><Action
- Guid="60322d5f-3be1-41a9-9e05-3ff6ddd01a7c"
+ Guid="4d3c9161-a94a-4e46-9049-dc15813314ed"
 >BTM.PreviousLRBGs &lt;- []</Action><Action
- Guid="ca7200ea-39a2-4331-9d75-9fd06dec62da"
+ Guid="2e060564-cb52-4933-9704-e8d806049d73"
 >Odometry.NominalDistance &lt;- 0.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 3 - Give the train some data"
- Guid="01740f5a-d442-4eee-8583-d780f80d2b21"
+ Guid="20af7b53-bc06-41d3-a98a-9ac9bd3e9716"
 >
 <Actions>
 <Action
- Guid="9acf6bb2-5cc7-409f-b5cb-4b8607fa5cd5"
+ Guid="cff7c100-3d03-4b57-9958-6da33d55410b"
 >Kernel.TrainData.TrainData &lt;- Kernel.TrainData.TrainData
  {
     DataState =&gt; DataState.Valid,
@@ -1161,12 +1166,24 @@
             ,
             Kernel.TrainData.TractionSystem
              {
-                Voltage =&gt; Messages.M_VOLTAGE.AC_15_kV_16_7_Hz,
+                Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
                 Country =&gt; 80
              }
          ]
      }
+ }</Action><Action
+ Guid="663a8233-0c68-4e0d-b5e6-25e08c1eb4de"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="e371df52-2c72-4a5a-a8ad-9a96f415cdf4"
+>Kernel.Level &lt;- Kernel.LevelData
+ {
+    DataState =&gt; Default.DataState.Valid,
+    Value =&gt; Default.Level.L1
  }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 4 - DMI setup"
+ Guid="47fced02-96bb-42ed-9b08-e0017549b0f3"
+>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1174,17 +1191,17 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step 2 - Route suitability data is transmitted from a balise"
- Guid="8cc877e4-0e7a-453d-a1cb-2019d05589e8"
+ Name="Step 2 - Get the route suitability data from a balise"
+ Guid="6d858312-27e7-44bd-b32e-a4b88708ebde"
 >
 <SubSteps>
 <SubStep
- Name="SubStep 1 - The upcoming route is unsuitable"
- Guid="51779376-7e3b-42c8-9ad3-fce3940e025b"
+ Name="SubStep 1 - Receive the data"
+ Guid="3caa7c50-1840-48af-97d9-08b7e44f60f5"
 >
 <Actions>
 <Action
- Guid="ef96ed36-c41c-4b96-a47c-bbcfdbe29ed2"
+ Guid="6fb2c99b-b099-4d94-820a-a1a741d99b3f"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
  {
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
@@ -1195,7 +1212,7 @@
     M_DUP =&gt; Messages.M_DUP.No_duplicates,
     M_MCOUNT =&gt; 1,
     NID_C =&gt; 85,
-    NID_BG =&gt; 256,
+    NID_BG =&gt; 258,
     Q_LINK =&gt; Messages.Q_LINK.Linked,
     Sequence1 =&gt; 
      [
@@ -1211,34 +1228,42 @@
                       Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                       Q_TRACKINIT =&gt; 0,
 
-                      D_SUITABILITY =&gt; 500,
-                      Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Max_axle_load,
-                      M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
+                      D_SUITABILITY =&gt; 700,
+                      Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Traction_system,
+                      M_VOLTAGE =&gt; Messages.M_VOLTAGE.DC_600_750_V,
+                      NID_CTRACTION =&gt; 85,
 
                       N_ITER =&gt; 1,
                       Sequence1 =&gt; [
                           Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1
                            {
-                              D_SUITABILITY =&gt; 500,
-                              Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Loading_gauge_profile,
-                              M_LINEGAUGE =&gt; Messages.M_LINEGAUGE.GB
+                              D_SUITABILITY =&gt; 1000,
+                              Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Max_axle_load,
+                              M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C2
                            }
-                      ]
+                       ]
                  }
              }
          }
      ]
-
  }</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Check that the unsuitability is recorded"
- Guid="c39d1253-b987-4be2-81ee-4f9d886de419"
+ Name="Sub-step 2 - Check the unsuitabilities are recorded"
+ Guid="8c9de7ee-52cd-49f5-87cc-fd79b9104ce0"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="9269a0b4-1823-4869-b331-2f12f8882f80"
+ Guid="d46b4cf8-f81c-47b0-808b-dd4511c9768e"
+>(COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 2</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f7636d79-0e59-4355-8907-8c16ba6833e8"
+>(FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).IsUnsuitability == Boolean.True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="efee40e8-722e-4cc4-9620-b55ebb931fa0"
 >(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).IsUnsuitability == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1248,13 +1273,57 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step 3 - Expectations"
- Guid="694d4965-997a-493c-8dd5-06d049ec4ce0"
+ Guid="1ff2f5a2-bb91-4e6d-97ef-fea078356949"
 >
 <SubSteps>
 <SubStep
- Name="SubStep 1 - The unsuitabilities are output on the DMI"
- Guid="3857d71a-1722-4a8d-be3b-5cc748a9137b"
+ Name="SubStep 1 - The unsuitabilities are displayed on the DMI"
+ Guid="45b37b2a-8fe6-48ee-8ad1-8cc6545dc596"
 >
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="69ab5fff-1c92-45d9-a616-b89705074b74"
+>(COUNT DMI.DMI1.Out_RouteUnsuitabilities.RouteUnsuitabilities) == 2</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9829518d-bd36-4076-bc59-827e5e74f334"
+>DMI.DMI1.Out_RouteUnsuitabilities.OutputInformation.DisplayRequested == Boolean.True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step 2 - Start of the closest unsuitability is considered EOA with no release speed"
+ Guid="18ea8222-0404-4066-a1c7-f8465f67e960"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="5285880e-7ea4-4f87-8aad-182dd1f1c14d"
+>Kernel.MA.EndOfMovementAuthority().Location != Default.BaseTypes.Distance.Infinity</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="409876eb-d3bd-4264-b343-ef498fdd5ea4"
+>Kernel.MA.EndOfMovementAuthority().Location == 
+(REDUCE Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | X.IsUnsuitability == Boolean.True
+    USING Default.BaseTypes.MinDistance(X1 =&gt; RESULT, X2 =&gt; X.Distance)
+    INITIAL_VALUE Default.BaseTypes.Distance.Infinity)</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2a941fbf-19be-4cd3-b971-d86450092454"
+>Kernel.MA.EndOfMovementAuthority().Speed == 0.0</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step 3 - Start of the closest unsuitability is considered SvL"
+ Guid="0aea355d-7a0a-4976-8b7f-a699d719a8ca"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1a65d5a1-0fef-40fe-8e7b-384ae032aaa5"
+>Kernel.MA.SvL().Location ==
+(REDUCE Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | X.IsUnsuitability == Boolean.True
+    USING Default.BaseTypes.MinDistance(X1 =&gt; RESULT, X2 =&gt; X.Distance)
+    INITIAL_VALUE Default.BaseTypes.Distance.Infinity)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
