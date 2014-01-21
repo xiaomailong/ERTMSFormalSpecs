@@ -241,7 +241,8 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 This is a short checklist that everyone willing to push code onto the ERTMSFormalSpec repository should go through before every commit.
 
 \begin{enumerate}
-
+\item \textbf{pull + merge from main repository}\\
+Before you start working make sure so have a recent copy of the model in your local fork of the \gls{efs} repository. \ruleauthor{MD}{21/01/2014}
 \item \textbf{make small commits}\\
 Each commit should only change one logical thing (i.e. one test-case at a time). See \ref{rule:smallcommits} \ruleauthor{MD}{14/12/2013}
 \item \textbf{use meaningful titles for new nodes}\\
@@ -249,13 +250,13 @@ For tests see \ref{rules:tests_naming}. For the model: be creative! \ruleauthor{
 \item \textbf{link to requirements}\\
 Always link your tests and model-code with the respective requirements. \ruleauthor{MD}{14/12/2013}
 \item \textbf{set implementation-flag}\\
-If you implemented any requirements make sure to mark their respective nodes in the specification view with \literally{Implementation Status: Implemented}.\\ \literally{Reviewed: True} should also has to be set if you verified the requirement text matches with that of the original word document of subset-026 \cite{subset26}. \ruleauthor{MD}{14/12/2013}
+If you implemented any requirements make sure to mark their respective nodes in the specification view with \literally{Implementation Status: Implemented}.\\ \literally{Reviewed: True} also has to be set if you verified the requirement text matches with that of the original word document of subset-026 \cite{subset26}. \ruleauthor{MD}{14/12/2013}
 \item \textbf{check model}\\
 Please hit \literally{CTRL+R} in \gls{efs} and see if there are any errors introduced by your work. If so, fix them. \ruleauthor{MD}{14/12/2013}
 \item \textbf{commit to your own fork}\\
 Commit your changes to your own fork of the ERTMSFormalSpec repository and then create a pull request. See \ref{rule:pullrequest} \ruleauthor{MD}{14/12/2013}
 \item \textbf{use meaningful commit messages}\\
-It is merely impossible to change them afterwards so please obey \ref{rules:committexts}. \ruleauthor{MD}{14/12/2013}	
+It is merely impossible to change them afterwards so please obey \ref{rules:committexts}. \ruleauthor{MD}{14/12/2013}
 \end{enumerate}
 
 \end{appendices}
