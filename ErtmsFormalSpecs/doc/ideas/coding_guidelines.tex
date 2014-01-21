@@ -82,6 +82,7 @@
 \vhEntry{0.2}{12/11/2013}{MD}{add "How to use this file", "Comments", "Glossary", "Bibliography"}
 \vhEntry{0.3}{14/12/2013}{MD}{add "Committer checklist"}
 \vhEntry{0.4}{16/01/2014}{MD}{add a section about "types" for the DSL}
+\vhEntry{0.5}{21/01/2014}{MD}{add chapter about the specification view}
 % @ALL: add your revision information here
 \end{versionhistory}
 %% END VERSIONING
@@ -143,8 +144,19 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \item Do not create a range that only consists of special values. Use an enumeration (see section \ref{sec:enumeration}) instead. \ruleauthor{MD}{16/01/2014}
 \end{rules}
 
+\chapter{Specification}
+\section{General}
+
+\begin{rules}
+\item Links between requirements shall only be used for \literally{implementation}-relations (i.e. paragraph A is implemented by paragraph B) and not for \literally{documentation}-relations (i.e paragraph A explains paragraph B). For the latter use comments instead (see esp. rule \ref{rule:comments_inner_workings}). \ruleauthor{MD}{21/01/2014}
+
+\end{rules}
+
+
 
 \chapter{Model}
+\MDfatal{TODO}\MDexplain{add naming conventions for procedures, functions etc.; see also rule \#3 of the committer checklist.}
+
 
 \section{General}
 
@@ -189,10 +201,9 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 
 
 \chapter{Comments}
-
 \section{General}
 \begin{rules}
-\item Comments shall be used wherever the inner workings of a code are not directly obvious from the documentation provided by the linked requirements or design choices. \ruleauthor{MD}{12/11/2013}
+\item \label{rule:comments_inner_workings} Comments shall be used wherever the inner workings of a code are not directly obvious from the documentation provided by the linked requirements or design choices. \ruleauthor{MD}{12/11/2013}
 \item Comments shall always be assigned to the narrowest possible scope to which they apply (i.e. to an individual test-step rather than to the entire test). \ruleauthor{MD}{12/11/2013}
 \item Comments shall not be used to justify Design Choices. See rule \ref{rule:model_general_design_choices} instead. \ruleauthor{MD}{12/11/2013}
 \item \MDnote{redundant}\MDexplain{Basically we have the same information available through the blame mode. Still I find it a lot easier to have the name of the other right next to the actual comment.} Comments shall always end with \literally{\#$<$github_username$>$, yy/mm/dd}. Where \literally{$<$github_username$>$} is to be replaced with the actual username of the comment-author and \literally{yy/mm/dd} with the current date. \ruleauthor{MD}{12/11/2013}
