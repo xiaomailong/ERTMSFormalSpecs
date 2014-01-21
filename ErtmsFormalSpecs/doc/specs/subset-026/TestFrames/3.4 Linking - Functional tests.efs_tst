@@ -14,7 +14,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Simple test"
+ Name="Receive Linking Information"
  Guid="226579c5-8d1b-4d69-9e6c-e36fde9b3691"
 >
 <TestCases>
@@ -22,15 +22,10 @@
  Feature="0"
  Case="0"
  Implemented="TRUE"
- Name="Receive a linking packet"
+ Name="Receive a single linking packet"
  Guid="ef27f634-3ecb-475b-84df-4596ce7ad6d9"
 >
 <ReqRef
- Id="0547edfa-b17d-4b79-8cad-2fba135b2d95"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a5ec6c43-19a5-45b7-bce3-a6df984469d0"
->
-</ReqRef><ReqRef
  Id="3ab48b20-0a96-4f02-93ac-64071624c979"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fd512ea5-4491-44a4-8641-3a67f000e66e"
@@ -179,7 +174,7 @@ N_ITER=&gt;0
  Kind="Instantaneous"
  DeadLine="1"
  Guid="660889e5-0898-4010-ae5e-5222bf612bae"
->(FIRST_IN BTM.Linking.Linkings).NID_BG == 10000</Expectation><Expectation
+>(FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 10000</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="50fc6586-6213-4ac8-9c17-858650f5ca98"
@@ -199,6 +194,7 @@ N_ITER=&gt;0
  Name="Step3 - See a linked balise rear of window"
  Guid="d8960d70-c600-4119-979c-4030144ee020"
 >
+<UserComment>I think this was meant to implement 3.16.2.3.1., but should definitely be reviewed again, #morido, 14701704</UserComment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
