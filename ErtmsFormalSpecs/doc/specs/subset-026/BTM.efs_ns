@@ -515,7 +515,7 @@
  Guid="682a9ec8-f37d-4d87-8dd6-9a4ca0648099"
 >( COUNT CurrentBaliseGroup ) &lt; 2</PreCondition><PreCondition
  Guid="3f4762dd-f337-493a-927f-479853f08788"
->Linking.CurrentLinking().NID_BG == ( FIRST_IN CurrentBaliseGroup ).NID_BG</PreCondition></PreConditions>
+>Linking.CurrentLinking().BaliseGroupIdentifier== ( FIRST_IN CurrentBaliseGroup ).NID_BG</PreCondition></PreConditions>
 <Expression>Linking.CurrentLinking().Orientation</Expression>
 </Case><Case
  Name="Less than two balises in the balise group, invalid linking information"
@@ -1579,13 +1579,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Name="HandleBaliseMessage"
  Guid="99858b9d-1417-47df-8644-63e0b422c4ff"
 >
-<ReqRef
- Id="3ab48b20-0a96-4f02-93ac-64071624c979"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="45ae09e0-8736-412d-b4c6-39c5cf1f2375"
->
-<Comment></Comment>
-</ReqRef><Comment>Handles a new complete balise group message (when all its balise messages have been received). There are several steps:
+<Comment>Handles a new complete balise group message (when all its balise messages have been received). There are several steps:
 - Test if the new BG is linked and has to be considered as a new LRBG
 - If the new BG is not linked and is marked as unlinked, its information has to be considered
 - After that all the packets of this BG are handled</Comment>
@@ -1939,7 +1933,7 @@ If all the messages of the current balise group have been received, calls Handle
 <Actions>
 <Action
  Guid="989096bd-3294-40f5-81b7-908279de9c8e"
->INSERT Message IN CurrentBaliseGroup </Action></Actions>
+>INSERT Message IN CurrentBaliseGroup</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"

@@ -4,7 +4,7 @@
 %%
 %% 1. add your name with \addauthor{<initials>}{<full name>} below
 %% 2. make your changes
-%% 3. for every rule add a \ruleauthor{<initials>}{<date}> at the end
+%% 3. for every rule add a \ruleauthor{<initials>}{<date>} at the end
 %% 4. put remarks with \<initials>note{<sometext>},
 %%    \<initials>warning{<sometext>} or
 %%    \<initials>fatal{<sometext>} (in order of significance}
@@ -81,6 +81,7 @@
 \vhEntry{0.1}{31/10/2013}{MD}{initial draft}
 \vhEntry{0.2}{12/11/2013}{MD}{add "How to use this file", "Comments", "Glossary", "Bibliography"}
 \vhEntry{0.3}{14/12/2013}{MD}{add "Committer checklist"}
+\vhEntry{0.4}{16/01/2014}{MD}{add a section about "types" for the DSL}
 % @ALL: add your revision information here
 \end{versionhistory}
 %% END VERSIONING
@@ -124,17 +125,23 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 
 \section{General}
 \begin{rules}
-\item \MDfatal{TODO} \code{EMPTY} vs. \code{NOT Available()} vs. \code{[]} \ruleauthor{MD}{31/10/2013}
+\item \MDfatal{TODO} \code{EMPTY} vs. \code{NOT Available()} vs. \code{[]} vs. \code{(COUNT List) == 0} \ruleauthor{MD}{31/10/2013}
 \item \code{SUM List USING X} shall be preferred over \code{REDUCE List USING X + RESULT}. \ruleauthor{MD}{31/10/2013}
 \item \code{THERE_IS_IN List | Condition} shall be preferred over \code{MAP List | Condition USING X}. \ruleauthor{MD}{31/10/2013}
 \end{rules}
 
 \section{Types}
 \subsection{Enumerations}
+\label{sec:enumeration}
 \begin{rules}
 \item Always use the symbolic names of the items of an enumeration and never their numerical value. \ruleauthor{MD}{14/01/2014}
 \end{rules}
 
+\subsection{Ranges}
+\begin{rules}
+\item Do not use any kind of arithmetic operator on special values except for equality (that is \code{==}). \ruleauthor{MD}{16/01/2014}
+\item Do not create a range that only consists of special values. Use an enumeration (see section \ref{sec:enumeration}) instead. \ruleauthor{MD}{16/01/2014}
+\end{rules}
 
 
 \chapter{Model}
@@ -152,8 +159,8 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 
 \subsubsection{General}
 \begin{rules}
-\item \label{rule:functions_cases_general_trivialexpressions}\MDwarning{TBD} Cases shall only contain trivial expressions (i.e. all logic shall be defined inside pre-conditions). \ruleauthor{MD}{31/10/2013}
-\item \MDwarning{TBD} Complex expressions and pre-conditions shall not be used together. \MDnote{this rule is mutually exclusive to \ref{rule:functions_cases_general_trivialexpressions}} \ruleauthor{MD}{31/10/2013}
+\item \label{rule:functions_cases_general_trivialexpressions}\MDwarning{TBD} Cases shall only contain trivial expressions as their return values (i.e. all logic shall be defined inside pre-conditions). \ruleauthor{MD}{31/10/2013}
+\item \MDwarning{TBD} Complex return expressions and pre-conditions shall not be used together. \MDnote{this rule is mutually exclusive to \ref{rule:functions_cases_general_trivialexpressions}} \ruleauthor{MD}{31/10/2013}
 \end{rules}
 
 \subsubsection{Pre-conditions}
@@ -188,7 +195,7 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \item Comments shall be used wherever the inner workings of a code are not directly obvious from the documentation provided by the linked requirements or design choices. \ruleauthor{MD}{12/11/2013}
 \item Comments shall always be assigned to the narrowest possible scope to which they apply (i.e. to an individual test-step rather than to the entire test). \ruleauthor{MD}{12/11/2013}
 \item Comments shall not be used to justify Design Choices. See rule \ref{rule:model_general_design_choices} instead. \ruleauthor{MD}{12/11/2013}
-\item Comments shall always end with \literally{\#$<$github_username$>$, yy/mm/dd}. Where \literally{$<$github_username$>$} is to be replaced with the actual username of the comment-author and \literally{yy/mm/dd} with the current date. \ruleauthor{MD}{12/11/2013}
+\item \MDnote{redundant}\MDexplain{Basically we have the same information available through the blame mode. Still I find it a lot easier to have the name of the other right next to the actual comment.} Comments shall always end with \literally{\#$<$github_username$>$, yy/mm/dd}. Where \literally{$<$github_username$>$} is to be replaced with the actual username of the comment-author and \literally{yy/mm/dd} with the current date. \ruleauthor{MD}{12/11/2013}
 \end{rules}
 
 
@@ -196,13 +203,18 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \section{General}
 \begin{rules}
 \item \label{rule:pullrequest} Own edits shall always be committed into a personal fork of the \gls{efs} repository and then transferred by issuing a pull-request. \ruleauthor{MD}{31/10/2013}
+\item The \gls{efs} repository located at \code{github.com/openETCS/ERTMSFormalSpecs.git} shall always be named \literally{upstream} inside SmartGit. \ruleauthor{MD}{20/01/2014}
+\item If the user has write-access to the \gls{efs} repository it is advisable to force a different username for it inside SmartGit so that writing is limited to pull requests as described in \ref{rule:pullrequest} This can be achieved by entering the reposisitory URL like so \code{https://dummy@github.com/openETCS/ERTMSFormalSpecs.git} (\literally{dummy} being the "different username" here). \ruleauthor{MD}{20/01/2014}
+
 \end{rules}
+
 
 \section{Commits}
 \subsection{General}
 \begin{rules}
 \item \label{rule:smallcommits} numerous small commits dealing with a single issue are preferable over few huge commits possibly dealing with many different issues. \ruleauthor{MD}{31/10/2013}
 \end{rules}
+
 
 \subsection{commit description texts}
 \label{rules:committexts}
