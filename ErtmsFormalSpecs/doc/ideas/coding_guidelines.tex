@@ -215,7 +215,7 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \begin{rules}
 \item \label{rule:pullrequest} Own edits shall always be committed into a personal fork of the \gls{efs} repository and then transferred by issuing a pull-request. See \ref{sec:pull_request}. \ruleauthor{MD}{31/10/2013}
 \item The \gls{efs} repository located at \code{github.com/openETCS/ERTMSFormalSpecs.git} shall always be named \literally{upstream} inside SmartGit. \ruleauthor{MD}{20/01/2014}
-\item If the user has write-access to the \gls{efs} repository it is advisable to force a different username for it inside SmartGit so that writing is limited to pull requests as described in \ref{rule:pullrequest} This can be achieved by entering the reposisitory URL like so: \code{https://dummy@github.com/openETCS/ERTMSFormalSpecs.git} (\literally{dummy} being the "different username" here). \ruleauthor{MD}{20/01/2014}
+\item If the user has write-access to the \gls{efs} repository it is advisable to force a different username for it inside SmartGit so that writing is limited to pull requests as described in \ref{rule:pullrequest} This can be achieved by entering the reposisitory URL like so: \code{https://dummy@github.com/openETCS/ERTMSFormalSpecs.git} (\literally{dummy} being the "different username" here). See also \cite{gitworkflow}. \ruleauthor{MD}{20/01/2014}
 
 \end{rules}
 
@@ -253,7 +253,7 @@ This is a short checklist that everyone willing to push code onto the ERTMSForma
 
 \begin{enumerate}
 \item \textbf{pull + merge from main repository}\\
-Before you start working make sure so have a recent copy of the model in your local fork of the \gls{efs} repository. \ruleauthor{MD}{21/01/2014}
+Before you start working make sure so have a recent copy of the model in your local fork of the \gls{efs} repository. For instructions how to do this see \cite{gitworkflow}. \ruleauthor{MD}{21/01/2014}
 \item \textbf{make small commits}\\
 Each commit should only change one logical thing (i.e. one test-case at a time). See \ref{rule:smallcommits} \ruleauthor{MD}{14/12/2013}
 \item \textbf{use meaningful titles for new nodes}\\
