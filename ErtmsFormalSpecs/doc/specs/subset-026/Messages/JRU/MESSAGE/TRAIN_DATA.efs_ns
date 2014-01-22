@@ -25,16 +25,16 @@
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
  Guid="098822da-3b77-4efd-a635-6acd46312411"
 >
 </StructureElement><StructureElement
- TypeName="V_MAXTRAIN"
+ TypeName="MessageTypes.Speed"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_MAXTRAIN"
@@ -48,7 +48,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="NC_CDTRAIN"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NC_CDTRAIN"
@@ -62,7 +62,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="NC_TRAIN"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NC_TRAIN"
@@ -74,9 +74,9 @@
  Guid="d7565ddc-5cae-4346-b3d8-b4b4f26b7316"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="L_TRAIN"
+ TypeName="MessageTypes.Length"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_TRAIN"
@@ -90,7 +90,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="T_TRACTION_CUT_OFF"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="T_TRACTION_CUT_OFF"
@@ -104,7 +104,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_BRAKE_POSITION"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_BRAKE_POSITION"
@@ -118,7 +118,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_NOM_ROT_MASS"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_NOM_ROT_MASS"
@@ -132,7 +132,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_REGENERATIVEBRAKE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_REGENERATIVEBRAKE"
@@ -146,7 +146,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_EDDYCURRENTBRAKE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_EDDYCURRENTBRAKE"
@@ -160,7 +160,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_MAGNETICSHOEBRAKE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_MAGNETICSHOEBRAKE"
@@ -174,7 +174,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_ELECTROPNEUMATICBRAKE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_ELECTROPNEUMATICBRAKE"
@@ -188,7 +188,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_TRACTIONCUTOFFINTERFACE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_TRACTIONCUTOFFINTERFACE"
@@ -202,7 +202,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SERVICEBRAKEINTERFACE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_SERVICEBRAKEINTERFACE"
@@ -216,7 +216,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_SERVICEBRAKEFEEDBACK"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_SERVICEBRAKEFEEDBACK"
@@ -230,7 +230,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_BRAKE_CAPT_TYPE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_BRAKE_CAPT_TYPE"
@@ -244,7 +244,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_BRAKE_PERCENTAGE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_BRAKE_PERCENTAGE"
@@ -258,7 +258,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="N_BRAKE_CONF"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_BRAKE_CONF"
@@ -277,7 +277,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence1"
@@ -286,7 +286,7 @@
 </StructureElement><StructureElement
  TypeName="Collection4"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence4"
@@ -295,7 +295,7 @@
 </StructureElement><StructureElement
  TypeName="M_LOADINGGAUGE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_LOADINGGAUGE"
@@ -309,7 +309,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="N_AXLE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_AXLE"
@@ -323,7 +323,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="N_AXLELOADCAT"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_AXLELOADCAT"
@@ -337,7 +337,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="N_ITER"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_ITER_0"
@@ -351,7 +351,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection5"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence5"
@@ -360,7 +360,7 @@
 </StructureElement><StructureElement
  TypeName="N_ITER"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_ITER_1"
@@ -374,7 +374,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection6"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence6"
@@ -383,7 +383,7 @@
 </StructureElement><StructureElement
  TypeName="M_AIRTIGHT"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_AIRTIGHT"
@@ -403,7 +403,7 @@
 <StructureElement
  TypeName="M_BRAKE_LAMBDA_CONF"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_BRAKE_LAMBDA_CONF"
@@ -417,7 +417,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="T_BRAKE_SERVICE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="T_BRAKE_SERVICE"
@@ -442,7 +442,7 @@
 </ReqRef><StructureElement
  TypeName="M_BRAKE_GAMMA_CONF"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_BRAKE_GAMMA_CONF"
@@ -456,7 +456,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="T_BRAKE_EMERGENCY"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="T_BRAKE_EMERGENCY"
@@ -470,7 +470,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="N_BRAKE_SECTIONS"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_BRAKE_SECTIONS_0"
@@ -484,7 +484,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection2"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence2"
@@ -493,7 +493,7 @@
 </StructureElement><StructureElement
  TypeName="T_BRAKE_SERVICE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="T_BRAKE_SERVICE"
@@ -507,7 +507,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="N_BRAKE_SECTIONS"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="N_BRAKE_SECTIONS_1"
@@ -521,7 +521,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection3"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence3"
@@ -534,9 +534,9 @@
  Guid="c7661e9d-6c69-4619-b3fb-05d82e12e933"
 >
 <StructureElement
- TypeName="V_BRAKE_EMERGENCY_COMP"
+ TypeName="MessageTypes.Speed"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_BRAKE_EMERGENCY_COMP"
@@ -550,7 +550,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="A_BRAKE_EMERGENCY_COMP"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A_BRAKE_EMERGENCY_COMP"
@@ -564,7 +564,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_50"
@@ -578,7 +578,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_90"
@@ -592,7 +592,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99"
@@ -606,7 +606,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_9"
@@ -620,7 +620,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_99"
@@ -634,7 +634,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_999"
@@ -648,7 +648,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_9999"
@@ -662,7 +662,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_99999"
@@ -676,7 +676,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_999999"
@@ -690,7 +690,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KDRY_RST"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST_99_9999999"
@@ -704,7 +704,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_KWET_RST"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_KWET_RST"
@@ -724,7 +724,7 @@
 <StructureElement
  TypeName="V_BRAKE_SERVICE_COMP"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_BRAKE_SERVICE_COMP"
@@ -738,7 +738,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="A_BRAKE_SERVICE_COMP"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A_BRAKE_SERVICE_COMP"
@@ -758,7 +758,7 @@
 <StructureElement
  TypeName="M_VOLTAGE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_VOLTAGE"
@@ -772,7 +772,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_CTRACTION"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_CTRACTION"
@@ -792,7 +792,7 @@
 <StructureElement
  TypeName="NID_NTC"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_NTC"

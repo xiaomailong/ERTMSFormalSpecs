@@ -28,7 +28,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The image of the string
         /// </summary>
-        private string Image { get; set; }
+        public string Image { get; private set; }
 
         /// <summary>
         /// Constructor

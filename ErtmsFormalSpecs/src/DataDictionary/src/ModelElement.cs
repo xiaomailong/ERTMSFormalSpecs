@@ -73,7 +73,8 @@ namespace DataDictionary
         {
             get
             {
-                if (string.IsNullOrEmpty(getGuid()))
+                ObjectFactory factory = (ObjectFactory)Generated.acceptor.getFactory();
+                if (string.IsNullOrEmpty(getGuid()) && factory.AutomaticallyGenerateGuid)
                 {
                     setGuid(System.Guid.NewGuid().ToString());
                 }
