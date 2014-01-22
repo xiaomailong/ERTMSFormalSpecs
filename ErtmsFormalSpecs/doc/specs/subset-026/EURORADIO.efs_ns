@@ -571,7 +571,7 @@
 >
 <Comment>Represents the message to send to the current RBC. If no message has to be sent, the structure is EMPTY.</Comment>
 </StructureElement><StructureElement
- TypeName="String"
+ TypeName="RBCIdStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -614,7 +614,7 @@
 </StructureElement><StructureElement
  TypeName="SessionEstablishmentStruct"
  Default=""
- Mode="Internal"
+ Mode="InOut"
  Implemented="TRUE"
  Name="SessionEstablishmentData"
  Guid="1ca4ec93-c578-45ad-bbdb-e44c71c1f9aa"
@@ -682,8 +682,8 @@
  Guid="d37b22c1-9b7f-4129-a033-3e1fab068fc5"
 >
 </ReqRef><StructureElement
- TypeName="String"
- Default="&apos;&apos;"
+ TypeName="RBCIdStruct"
+ Default=""
  Mode="Internal"
  Implemented="TRUE"
  Name="Id"
@@ -835,8 +835,8 @@
  Guid="1e73ef47-4485-45ed-b769-1f6d6cc25dcb"
 >
 <StructureElement
- TypeName="String"
- Default="&apos;&apos;"
+ TypeName="RBCIdStruct"
+ Default="EMPTY"
  Mode="Internal"
  Implemented="TRUE"
  Name="Id"
@@ -885,6 +885,24 @@
  Guid="abb42052-649b-4e21-b7c9-461a8f11576a"
 >
 <Comment>The system version of the trackside.</Comment>
+</StructureElement></Structure><Structure
+ Name="RBCIdStruct"
+ Guid="06bc7e20-822b-4896-a367-bc92333c4911"
+>
+<StructureElement
+ TypeName="Messages.NID_C"
+ Default=""
+ Mode="Internal"
+ Name="Country"
+ Guid="05cede5e-c482-41df-9072-e4113ad144b9"
+>
+</StructureElement><StructureElement
+ TypeName="Messages.NID_RBC"
+ Default=""
+ Mode="Internal"
+ Name="Id"
+ Guid="aa91517d-2240-40b4-bfd9-8878fcc96be9"
+>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -992,6 +1010,66 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="74198ec7-7047-4c71-928f-41d5af5a1f23"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="ContactActionEnum"
+ Implemented="TRUE"
+ Name="ConvertActionToPerform"
+ Guid="fcc7735a-3e46-4160-a9cb-7124ea1d73e6"
+>
+<Comment>Converts the value received from the trackside to ContactActionEnum</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.Q_RBC"
+ Name="anAction"
+ Guid="2dc3f1b7-07ef-4192-a904-45caa04da49c"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Establish"
+ Guid="ceb08062-d72f-4cf5-877d-121ebb9ea7f9"
+>
+<PreConditions>
+<PreCondition
+ Guid="25b870bb-f06f-4a6d-b140-b8e5998a1b3f"
+>anAction == Messages.Q_RBC.Establish_communication_session</PreCondition></PreConditions>
+<Expression>ContactActionEnum.Establish</Expression>
+</Case><Case
+ Name="Terminate"
+ Guid="5e2d31e6-1284-446b-bd20-6f8fb35aa180"
+>
+<Expression>ContactActionEnum.Terminate</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="ConvertAppliesToSleepingUnits"
+ Guid="71777804-f6af-463a-a0cd-be78c7cf123a"
+>
+<Comment>Converts the value indicating if the order applies to sleeping units to boolean</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.Q_SLEEPSESSION"
+ Name="aValue"
+ Guid="95b89cca-bddd-4920-a537-2f4c90e311f0"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Applies to sleeping units"
+ Guid="41f4167f-b8bf-4f20-80a1-09bccc192889"
+>
+<PreConditions>
+<PreCondition
+ Guid="7de92c40-a560-4c7c-8c3e-4d25a94f310c"
+>aValue == Messages.Q_SLEEPSESSION.Execute_session_establishment_order</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Doesn&apos;t apply to sleeping units"
+ Guid="8de8ad88-30a2-4af6-b6a2-186d840a815d"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -1225,6 +1303,87 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 <Action
  Guid="d73c602a-7643-4127-a75a-809495d5acbb"
 >RIU.ContactRIUOrder &lt;- Order</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TracksideOrderedSession"
+ Guid="aa947d6d-5ed0-4cb9-9175-d6bbf385946c"
+>
+<ReqRef
+ Id="af0db000-6b09-4a25-b01b-439fa27cbc6a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2dc771ca-4061-4cb2-adb7-816a3d7b329e"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Message"
+ Name="Packet"
+ Guid="d3881c83-afc8-4e4b-aaa6-e10fc539514f"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Handle trackside order"
+ Guid="432c07cc-89ff-4dc7-aa9f-e8aacd9867d0"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Contact last known RBC"
+ Guid="83b37f06-70a4-46e7-8c47-7c7d23261d65"
+>
+<ReqRef
+ Id="369d7ae0-50db-411b-9941-bbe30e354733"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f252f718-1e31-4681-b313-39faa0912928"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="3b4b580e-3c79-489d-a09a-403729e158a8"
+>Packet.NID_RBC == Messages.NID_RBC.contact_last_known_RBC</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Verify last known identity"
+ Guid="a07b79f9-3ba4-4a08-bc5f-208ecef0f935"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Identity known"
+ Guid="bc9e5569-66ec-4a0c-ac89-98c5fc40f755"
+>
+<PreConditions>
+<PreCondition
+ Guid="ed774a24-cf60-4ff7-a891-167c4f37b771"
+>LastKnownRBC != EMPTY
+  AND
+LastKnownRBC.Id != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="21f26d0a-7720-431b-a2c8-aa7386d415c0"
+>ContactRBC
+(
+    Order =&gt; ContactOrderStruct
+    {
+        Id =&gt; RBCIdStruct
+        {
+            Country =&gt; LastKnownRBC.Id.Country,
+            Id =&gt; LastKnownRBC.Id.Id
+        },
+        ActionToPerform =&gt; ConvertActionToPerform ( Packet.Q_RBC ),
+        AppliesToSleepingUnits =&gt; ConvertAppliesToSleepingUnits ( Packet.Q_SLEEPSESSION)
+    }
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
