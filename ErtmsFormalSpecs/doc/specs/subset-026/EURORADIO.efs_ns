@@ -1083,26 +1083,6 @@
 <Expression>&apos;TODO&apos;</Expression>
 </Case></Cases>
 </Function><Function
- Type="String"
- NeedsRequirement="FALSE"
- Name="ToString"
- Guid="56b7dcb8-ead6-43e8-854c-16dca3ddffc6"
->
-<Parameters>
-<Parameter
- Type="Messages.NID_RADIO"
- Name="NID_RADIO"
- Guid="6add8426-4c1a-440b-b6da-5113e46a1cfe"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Default"
- Guid="a1e94180-8c3e-41a2-ae1b-f913b0208c4e"
->
-<Expression>&apos;TODO&apos;</Expression>
-</Case></Cases>
-</Function><Function
  Type="Boolean"
  NeedsRequirement="FALSE"
  Name="NoSession"
@@ -2019,7 +1999,7 @@ HandingOverRBC =&gt; False,
 RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 {
   Id =&gt; Concat(Packet.NID_C, Packet.NID_RBC),
-  PhoneNumber =&gt; ToString(Packet.NID_RADIO)
+  PhoneNumber =&gt; Packet.NID_RADIO
 }
 }</Action></Actions>
 </RuleCondition></Conditions>
