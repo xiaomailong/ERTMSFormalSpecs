@@ -20,7 +20,7 @@
 <StructureElement
  TypeName="Q_SCALE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_SCALE"
@@ -34,7 +34,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_LRBG"
@@ -46,9 +46,9 @@
  Guid="9c6adb41-1478-4627-a2d4-2395bb2546a7"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="D_LRBG"
+ TypeName="MessageTypes.Distance"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_LRBG"
@@ -62,7 +62,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DIRLRBG"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_DIRLRBG"
@@ -76,7 +76,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_DLRBG"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_DLRBG"
@@ -88,9 +88,9 @@
  Guid="b9489e1e-b31d-4b92-9e88-adabee04ef18"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="L_DOUBTOVER"
+ TypeName="MessageTypes.Length"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_DOUBTOVER"
@@ -102,9 +102,9 @@
  Guid="12eb630a-205e-4f11-ad49-81c2519d2442"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="L_DOUBTUNDER"
+ TypeName="MessageTypes.Length"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_DOUBTUNDER"

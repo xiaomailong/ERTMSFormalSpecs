@@ -24,17 +24,17 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The number image
         /// </summary>
-        private string Image { get; set; }
+        public string Image { get; private set; }
 
         /// <summary>
         /// The image of the value
         /// </summary>
-        private Values.IValue Value { get; set; }
+        public Values.IValue Value { get; private set; }
 
         /// <summary>
         /// The value type
         /// </summary>
-        private Types.Type Type { get; set; }
+        public Types.Type Type { get; private set; }
 
         /// <summary>
         /// Constructor
