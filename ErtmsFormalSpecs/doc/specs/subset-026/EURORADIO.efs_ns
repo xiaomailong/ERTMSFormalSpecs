@@ -831,37 +831,6 @@
 >
 <Comment>Identifier of the RIU.</Comment>
 </StructureElement></Structure><Structure
- Name="LastKnownRBCStruct"
- Guid="1e73ef47-4485-45ed-b769-1f6d6cc25dcb"
->
-<StructureElement
- TypeName="RBCIdStruct"
- Default="EMPTY"
- Mode="Internal"
- Implemented="TRUE"
- Name="Id"
- Guid="04e91c71-a5c6-40c5-923f-fe5d6c2fa6dc"
->
-<Comment>Identifier of the RBC.</Comment>
-</StructureElement><StructureElement
- TypeName="String"
- Default="&apos;&apos;"
- Mode="Internal"
- Implemented="TRUE"
- Name="PhoneNumber"
- Guid="af9e85f8-73af-467c-8c42-ead5cdd07141"
->
-<Comment>Phone number of the RBC.</Comment>
-</StructureElement><StructureElement
- TypeName="String"
- Default="&apos;&apos;"
- Mode="Internal"
- Implemented="TRUE"
- Name="ShortNumber"
- Guid="73fea7b0-d546-4a93-893e-f4c2ed0b849a"
->
-<Comment>Short number.</Comment>
-</StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SessionEstablishmentStruct"
  Guid="395169e1-4c72-48ca-950b-fa0d473758a1"
@@ -893,16 +862,44 @@
  TypeName="Messages.NID_C"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="Country"
  Guid="05cede5e-c482-41df-9072-e4113ad144b9"
 >
+<Comment>Country of the RBC.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.NID_RBC"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="Id"
  Guid="aa91517d-2240-40b4-bfd9-8878fcc96be9"
 >
+<Comment>Identifier of the RBC.</Comment>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="LastKnownRBCStruct"
+ Guid="34a7c15c-662b-4a6d-a149-5587a333e7cf"
+>
+<Comment>Contains information about the last known RBC.</Comment>
+<StructureElement
+ TypeName="RBCIdStruct"
+ Default="EMPTY"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Id"
+ Guid="99ae12d2-bc9c-4170-a5ac-5ec02a642457"
+>
+<Comment>Identifier of the RBC.</Comment>
+</StructureElement><StructureElement
+ TypeName="String"
+ Default="&apos;&apos;"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PhoneNumber"
+ Guid="3367d1e9-5512-45ec-9356-57305e0372d5"
+>
+<Comment>Phone number of the RBC.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -1333,6 +1330,40 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ Name="Contact information provided by the packet"
+ Guid="a1967dcf-c7b2-477d-a589-c2dc4de30508"
+>
+<ReqRef
+ Id="cebfc056-7b96-49d7-a6ff-1fdf0076bb9e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0a0571a8-3af1-44b4-8760-c3e5cb384074"
+>
+</ReqRef><Comment>If the contact information is provided by the packet (no special values in NID_RBC or NID_RADIO), then the order can be created with these values.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="7b666480-3ecb-4c96-8c61-ffca7307d3f0"
+>Packet.NID_RBC != Messages.NID_RBC.contact_last_known_RBC</PreCondition><PreCondition
+ Guid="cfb7f6d4-38c4-4b3c-8c66-f6f85d58f314"
+>Packet.NID_RADIO != &apos;FFFFFFFFFFFFFFFF&apos;</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a6ebac2e-aa73-4d15-b591-4cdeeb13852b"
+>ContactRBC
+(
+    Order =&gt; ContactOrderStruct
+    {
+        Id =&gt; RBCIdStruct
+        {
+            Country =&gt; Packet.NID_C,
+            Id =&gt; Packet.NID_RBC
+        },
+        PhoneNumber =&gt; Packet.NID_RADIO,
+        ActionToPerform =&gt; ConvertActionToPerform ( Packet.Q_RBC ),
+        AppliesToSleepingUnits =&gt; ConvertAppliesToSleepingUnits ( Packet.Q_SLEEPSESSION)
+    }
+)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Contact last known RBC"
  Guid="83b37f06-70a4-46e7-8c47-7c7d23261d65"
 >
@@ -1341,31 +1372,18 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f252f718-1e31-4681-b313-39faa0912928"
 >
-</ReqRef><PreConditions>
-<PreCondition
- Guid="3b4b580e-3c79-489d-a09a-403729e158a8"
->Packet.NID_RBC == Messages.NID_RBC.contact_last_known_RBC</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Verify last known identity"
- Guid="a07b79f9-3ba4-4a08-bc5f-208ecef0f935"
+</ReqRef><ReqRef
+ Id="31fff3ff-41dc-41fb-9f2e-b43b04a91e5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9bd57e09-46a8-4e53-9d23-73a2713355ad"
 >
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Identity known"
- Guid="bc9e5569-66ec-4a0c-ac89-98c5fc40f755"
->
+</ReqRef><Comment>If the packet asks to contact the last known RBC and this information is available, then it is used to create to order. Otherwise the order is ignored.</Comment>
 <PreConditions>
 <PreCondition
+ Guid="3b4b580e-3c79-489d-a09a-403729e158a8"
+>Packet.NID_RBC == Messages.NID_RBC.contact_last_known_RBC</PreCondition><PreCondition
  Guid="ed774a24-cf60-4ff7-a891-167c4f37b771"
->LastKnownRBC != EMPTY
-  AND
-LastKnownRBC.Id != EMPTY</PreCondition></PreConditions>
+>LastKnownRBC != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="21f26d0a-7720-431b-a2c8-aa7386d415c0"
@@ -1378,12 +1396,53 @@ LastKnownRBC.Id != EMPTY</PreCondition></PreConditions>
             Country =&gt; LastKnownRBC.Id.Country,
             Id =&gt; LastKnownRBC.Id.Id
         },
+        PhoneNumber =&gt; LastKnownRBC.PhoneNumber,
         ActionToPerform =&gt; ConvertActionToPerform ( Packet.Q_RBC ),
         AppliesToSleepingUnits =&gt; ConvertAppliesToSleepingUnits ( Packet.Q_SLEEPSESSION)
     }
 )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Use on-board stored short number"
+ Guid="851df2b3-550c-43a1-a88a-4e153544c8bf"
+>
+<ReqRef
+ Id="40859515-77c4-46aa-96a5-12453cd171a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a3656cd-43f6-42e7-8d65-fa07d75ecd3f"
+>
+</ReqRef><ReqRef
+ Id="f8152593-9f99-41a4-9ae8-b51e619e6ece"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1f68f5f4-47cd-4fdc-b805-884a22003510"
+>
+</ReqRef><ReqRef
+ Id="5f82380a-e109-4aba-90d2-9062db8ac675"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="22b090a3-8bd5-4a4c-b5bd-c7de0e0dba4b"
+>
+</ReqRef><Comment>If the packet asks to use the short number, then the order is created from the RBC id provided by the packet + the short number stored on-board.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="22232e5b-8c7d-4811-8464-469786240a65"
+>Packet.NID_RADIO == &apos;FFFFFFFFFFFFFFFF&apos;</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="81f8e818-3b94-4484-9cb1-2ae9a62240e9"
+>ContactRBC
+(
+    Order =&gt; ContactOrderStruct
+    {
+        Id =&gt; RBCIdStruct
+        {
+            Country =&gt; Packet.NID_C,
+            Id =&gt; Packet.NID_RBC
+        },
+        PhoneNumber =&gt; ShortNumber,
+        ActionToPerform =&gt; ConvertActionToPerform ( Packet.Q_RBC ),
+        AppliesToSleepingUnits =&gt; ConvertAppliesToSleepingUnits ( Packet.Q_SLEEPSESSION)
+    }
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1458,7 +1517,12 @@ LastKnownRBC.Id != EMPTY</PreCondition></PreConditions>
  Name="LastKnownRBC"
  Guid="871247fa-7189-4f13-874e-e3466aad155e"
 >
-<Comment>Contains information about the last known RBC.</Comment>
+<ReqRef
+ Id="369d7ae0-50db-411b-9941-bbe30e354733"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9e28c009-2f92-4859-8e59-109fe39db193"
+>
+</ReqRef><Comment>Contains information about the last known RBC.</Comment>
 </Variable><Variable
  Type="MobileTerminalIDs"
  DefaultValue="[1,2]"
@@ -1468,5 +1532,29 @@ LastKnownRBC.Id != EMPTY</PreCondition></PreConditions>
  Guid="ed866a18-1070-40b6-8d27-114d681b51e6"
 >
 <Comment>Represents the mobile terminals available on-board.</Comment>
+</Variable><Variable
+ Type="String"
+ DefaultValue="&apos;&apos;"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="ShortNumber"
+ Guid="56e3a8ca-da3a-43e8-b3a9-ba7a9a8a6805"
+>
+<ReqRef
+ Id="1563df47-a941-45f8-9388-142278ad7952"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a26a7788-a37b-40ae-8235-4e3f28870b7d"
+>
+</ReqRef><ReqRef
+ Id="f8152593-9f99-41a4-9ae8-b51e619e6ece"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="821540b1-66cb-486b-918d-6cdd79e1c6f9"
+>
+</ReqRef><ReqRef
+ Id="40859515-77c4-46aa-96a5-12453cd171a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35afd293-b8b4-4acb-9b06-f5ae19225f06"
+>
+</ReqRef><Comment>The short number of the RBC.</Comment>
 </Variable></Variables>
 </NameSpace>
