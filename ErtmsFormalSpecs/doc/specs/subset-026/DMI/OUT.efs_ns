@@ -13624,7 +13624,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6c795dd9-cfd6-4c71-9695-cc2210c5bcaf"
->ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatus</Action></Actions>
+>ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatus()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -13636,7 +13636,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Guid="c5fd2b81-d0c8-4849-bd4c-86504f9ecc90"
 >
 </StructureElement><StructureElement
- TypeName="EURORADIO.SafeRadioConnectionStatus"
+ TypeName="EURORADIO.SafeRadioConnectionStatusEnum"
  Default=""
  Mode="Outgoing"
  NeedsRequirement="FALSE"

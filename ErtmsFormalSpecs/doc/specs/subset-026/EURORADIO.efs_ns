@@ -1070,6 +1070,34 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 >
 <Expression>False</Expression>
 </Case></Cases>
+</Function><Function
+ Type="SafeRadioConnectionStatusEnum"
+ Implemented="TRUE"
+ Name="SafeRadioConnectionStatus"
+ Guid="ac5710b4-af55-4138-9865-c2e469eb9c9b"
+>
+<ReqRef
+ Id="747bae2e-7720-4f04-ac58-bf2f7feb9e50"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b443be0-00c4-4831-b78c-0cd8f104ab16"
+>
+</ReqRef><Comment>Provides the safe radio connection status of the active connection.</Comment>
+<Cases>
+<Case
+ Name="Connection is active"
+ Guid="61ae260c-2217-4637-89fc-9c073942c53b"
+>
+<PreConditions>
+<PreCondition
+ Guid="c479547e-7482-4d77-b26b-6233e5fa24f1"
+>ConnectedRBC() != EMPTY</PreCondition></PreConditions>
+<Expression>ConnectedRBC().SafeRadioConnectionStatus</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="5c5fa0b2-d7b6-4272-a01f-9c985a96ba64"
+>
+<Expression>SafeRadioConnectionStatusEnum.NoConnection</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -1377,6 +1405,11 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9bd57e09-46a8-4e53-9d23-73a2713355ad"
 >
+</ReqRef><ReqRef
+ Id="69dc4eed-7cae-45b6-adbb-58b2b1ac6edd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="61312243-54c8-4f97-8fba-9d4e9873d62c"
+>
 </ReqRef><Comment>If the packet asks to contact the last known RBC and this information is available, then it is used to create to order. Otherwise the order is ignored.</Comment>
 <PreConditions>
 <PreCondition
@@ -1521,6 +1554,16 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
  Id="369d7ae0-50db-411b-9941-bbe30e354733"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9e28c009-2f92-4859-8e59-109fe39db193"
+>
+</ReqRef><ReqRef
+ Id="69dc4eed-7cae-45b6-adbb-58b2b1ac6edd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b16379af-d5c7-4071-815c-245a173d6287"
+>
+</ReqRef><ReqRef
+ Id="31fff3ff-41dc-41fb-9f2e-b43b04a91e5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d078814-362d-4fc3-8fe8-9c5a20662f9d"
 >
 </ReqRef><Comment>Contains information about the last known RBC.</Comment>
 </Variable><Variable
