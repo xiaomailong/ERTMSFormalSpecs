@@ -1132,7 +1132,7 @@ Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
  Name="Value"
  Guid="eb07c999-d231-4dc5-b70f-9699310621f7"
 >
-<Expression>False</Expression>
+<Expression>THERE_IS_IN Kernel.EmergencyStops | X.IsConditional == Boolean.False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

@@ -1327,7 +1327,7 @@ IN
 >INSERT
     Kernel.EmergencyStop
     {
-        Id =&gt; BrakeReason.DriverAckTimeOut,
+        Reason =&gt; BrakeReason.DriverAckTimeOut,
         IsConditional =&gt; False,
         StopLocation =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
     }
@@ -1364,7 +1364,7 @@ IN
 >INSERT
     Kernel.EmergencyStop
     {
-        Id =&gt; BrakeReason.DriverAckTimeOut,
+        Reason =&gt; BrakeReason.DriverAckTimeOut,
         IsConditional =&gt; False,
         StopLocation =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
     }
@@ -1405,7 +1405,7 @@ IN
 >INSERT
     Kernel.EmergencyStop
     {
-        Id =&gt; BrakeReason.DriverAckTimeOut,
+        Reason =&gt; BrakeReason.DriverAckTimeOut,
         IsConditional =&gt; False,
         StopLocation =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
     }
