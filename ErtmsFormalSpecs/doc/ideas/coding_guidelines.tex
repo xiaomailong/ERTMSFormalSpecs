@@ -83,6 +83,7 @@
 \vhEntry{0.3}{14/12/2013}{MD}{add "Committer checklist"}
 \vhEntry{0.4}{16/01/2014}{MD}{add a section about "types" for the DSL}
 \vhEntry{0.5}{21/01/2014}{MD}{add chapter about the specification view}
+\vhEntry{0.8}{22/01/2014}{MD}{review of document after internal meeting}
 % @ALL: add your revision information here
 \end{versionhistory}
 %% END VERSIONING
@@ -128,7 +129,7 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \begin{rules}
 \item \MDfatal{TODO} \code{EMPTY} vs. \code{NOT Available()} vs. \code{[]} vs. \code{(COUNT List) == 0} \ruleauthor{MD}{31/10/2013}
 \item \code{SUM List USING X} shall be preferred over \code{REDUCE List USING X + RESULT}. \ruleauthor{MD}{31/10/2013}
-\item \code{THERE_IS_IN List | Condition} shall be preferred over \code{MAP List | Condition USING X}. \ruleauthor{MD}{31/10/2013}
+\item \deleted
 \end{rules}
 
 \section{Types}
@@ -141,7 +142,7 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \subsection{Ranges}
 \begin{rules}
 \item Do not use any kind of arithmetic operator on special values except for equality (that is \code{==}). \ruleauthor{MD}{16/01/2014}
-\item Do not create a range that only consists of special values. Use an enumeration (see section \ref{sec:enumeration}) instead. \ruleauthor{MD}{16/01/2014}
+\item Do not create a range that only consists of special values. Use an enumeration (see section \ref{sec:enumeration}) instead. Note: This only applies to manual coding.\ruleauthor{MD}{16/01/2014}
 \end{rules}
 
 \chapter{Specification}
@@ -155,13 +156,11 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 
 
 \chapter{Model}
-\MDfatal{TODO}\MDexplain{add naming conventions for procedures, functions etc.; see also rule \#3 of the committer checklist.}
-
 
 \section{General}
 
 \begin{rules}
-\item \label{rule:model_general_design_choices} All decisions made by the modeler which are not purely cosmetic (i.e. using a Function instead of a Procedure), but have an influence on the actual behavior of the model shall be documented in the section \literally{Design Choices} of the Specification View and linked to the respective code. \ruleauthor{MD}{12/11/2013}
+\item \label{rule:model_general_design_choices} All decisions made by the modeler which are not purely cosmetic (i.e. using a function instead of a procedure), but have an influence on the actual behavior of the model, shall be documented in the section \literally{Design Choices} of the Specification View and linked to the respective code. \ruleauthor{MD}{12/11/2013}
 
 \end{rules}
 
@@ -171,8 +170,9 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 
 \subsubsection{General}
 \begin{rules}
-\item \label{rule:functions_cases_general_trivialexpressions}\MDwarning{TBD} Cases shall only contain trivial expressions as their return values (i.e. all logic shall be defined inside pre-conditions). \ruleauthor{MD}{31/10/2013}
-\item \MDwarning{TBD} Complex return expressions and pre-conditions shall not be used together. \MDnote{this rule is mutually exclusive to \ref{rule:functions_cases_general_trivialexpressions}} \ruleauthor{MD}{31/10/2013}
+\item \deleted
+\item \deleted
+\item \label{rule:function_naming}\MDwarning{TBD}\MDexplain{How about stuff like "GaugesMatch"?}Names of functions that return boolean values shall begin with \literally{Is}. I.e. \code{IsUnsuitable()} for a function that checks for unsuitability. \ruleauthor{MD}{22/01/2014}
 \end{rules}
 
 \subsubsection{Pre-conditions}
@@ -185,7 +185,7 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 
 \section{Structure}
 \begin{rules}
-\item \MDwarning{TBD}\MDexplain{Unfortunately this is not possible in all cases. Require justification if rule cannot be obeyed?} A Sub-step shall either contain Actions or Expectations but not both. \ruleauthor{MD}{12/11/2013}
+\item \deleted
 \item The first Sub-step of the first step of a test frame shall only contain the expression \code{Kernel.InitializeTestEnvironment()}. \ruleauthor{MD}{31/10/2013}
 \begin{rules}
 \item There shall be no Expectation associated with this Sub-step. \ruleauthor{MD}{31/10/2013}
@@ -206,7 +206,7 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \item \label{rule:comments_inner_workings} Comments shall be used wherever the inner workings of a code are not directly obvious from the documentation provided by the linked requirements or design choices. \ruleauthor{MD}{12/11/2013}
 \item Comments shall always be assigned to the narrowest possible scope to which they apply (i.e. to an individual test-step rather than to the entire test). \ruleauthor{MD}{12/11/2013}
 \item Comments shall not be used to justify Design Choices. See rule \ref{rule:model_general_design_choices} instead. \ruleauthor{MD}{12/11/2013}
-\item \MDnote{redundant}\MDexplain{Basically we have the same information available through the blame mode. Still I find it a lot easier to have the name of the other right next to the actual comment.} Comments shall always end with \literally{\#$<$github_username$>$, yy/mm/dd}. Where \literally{$<$github_username$>$} is to be replaced with the actual username of the comment-author and \literally{yy/mm/dd} with the current date. \ruleauthor{MD}{12/11/2013}
+\item \deleted
 \end{rules}
 
 
@@ -215,6 +215,7 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \begin{rules}
 \item \label{rule:pullrequest} Own edits shall always be committed into a personal fork of the \gls{efs} repository and then transferred by issuing a pull-request. See \ref{sec:pull_request}. \ruleauthor{MD}{31/10/2013}
 \item The \gls{efs} repository located at \code{github.com/openETCS/ERTMSFormalSpecs.git} shall always be named \literally{upstream} inside SmartGit. \ruleauthor{MD}{20/01/2014}
+% rationale: explained here https://www.kernel.org/pub/software/scm/git/docs/git-tag.html
 \item If the user has write-access to the \gls{efs} repository it is advisable to force a different username for it inside SmartGit so that writing is limited to pull requests as described in \ref{rule:pullrequest} This can be achieved by entering the reposisitory URL like so: \code{https://dummy@github.com/openETCS/ERTMSFormalSpecs.git} (\literally{dummy} being the "different username" here). See also \cite{gitworkflow}. \ruleauthor{MD}{20/01/2014}
 
 \end{rules}
@@ -223,7 +224,7 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \section{Commits}
 \subsection{General}
 \begin{rules}
-\item \label{rule:smallcommits} numerous small commits dealing with a single issue are preferable over few huge commits possibly dealing with many different issues. \ruleauthor{MD}{31/10/2013}
+\item \label{rule:smallcommits} Numerous small commits dealing with a single issue are preferable over few huge commits possibly dealing with many different issues. \ruleauthor{MD}{31/10/2013}
 \end{rules}
 
 \subsection{commit description texts}
@@ -257,13 +258,16 @@ Before you start working make sure so have a recent copy of the model in your lo
 \item \textbf{make small commits}\\
 Each commit should only change one logical thing (i.e. one test-case at a time). See \ref{rule:smallcommits} \ruleauthor{MD}{14/12/2013}
 \item \textbf{use meaningful titles for new nodes}\\
-For tests see \ref{rules:tests_naming}. For the model: be creative! \ruleauthor{MD}{14/12/2013}
+For tests see \ref{rules:tests_naming}. For the model see \ref{rule:function_naming} \ruleauthor{MD}{14/12/2013}
 \item \textbf{link to requirements}\\
 Always link your tests and model-code with the respective requirements. \ruleauthor{MD}{14/12/2013}
 \item \textbf{set implementation-flag}\\
-If you implemented any requirements make sure to mark their respective nodes in the specification view with \literally{Implementation Status: Implemented}.\\ \literally{Reviewed: True} also has to be set if you verified the requirement text matches with that of the original word document of subset-026 \cite{subset26}. \ruleauthor{MD}{14/12/2013}
+If you fully implemented any requirements make sure to mark their respective nodes in the specification view with \literally{Implementation Status: Implemented}.\\
+If you finished a test-case or a procedure / function is completely done also set their respective flags to \literally{Implementation Status: Implemented}.\\
+ \literally{Reviewed: True} has to be set if you verified the requirement text matches with that of the original word document of subset-026 \cite{subset26}. \ruleauthor{MD}{14/12/2013}
 \item \textbf{check model}\\
-Please hit \literally{CTRL+R} in \gls{efs} and see if there are any errors introduced by your work. If so, fix them. \ruleauthor{MD}{14/12/2013}
+Please hit \literally{CTRL+R} in \gls{efs} and see if there are any errors introduced by your work. If so, fix them.\\
+After complex remodeling all tests in test view should be executed, as well.\ruleauthor{MD}{14/12/2013}
 \item \textbf{commit to your own fork}\\
 Commit your changes to your own fork of the ERTMSFormalSpec repository and then create a pull request. See \ref{rule:pullrequest} \ruleauthor{MD}{14/12/2013}
 \item \textbf{use meaningful commit messages}\\
