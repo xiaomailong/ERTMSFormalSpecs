@@ -25,16 +25,16 @@
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
  Guid="d1de3266-780d-4e1a-80a4-0d23a4acf6df"
 >
 </StructureElement><StructureElement
- TypeName="D_SR"
+ TypeName="MessageTypes.Distance"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_SR"
@@ -46,9 +46,9 @@
  Guid="c03c1068-4136-4cff-88c3-f4f775ce7c2f"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="V_SR"
+ TypeName="MessageTypes.Speed"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_SR"

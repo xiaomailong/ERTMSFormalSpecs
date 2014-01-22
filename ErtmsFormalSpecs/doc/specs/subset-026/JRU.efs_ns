@@ -2069,7 +2069,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 <Expression>Messages.JRU.Q_DIRLRBG.Uknown</Expression>
 </Case></Cases>
 </Function><Function
- Type="Messages.JRU.L_DOUBTOVER"
+ Type="MessageTypes.Length"
  Implemented="TRUE"
  Name="ToJruLDoubtOver"
  Guid="596b4813-88d1-4881-83c5-661260ab562a"
@@ -2089,7 +2089,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 <Expression>MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER), Q_SCALE)</Expression>
 </Case></Cases>
 </Function><Function
- Type="Messages.JRU.L_DOUBTOVER"
+ Type="MessageTypes.Length"
  Implemented="TRUE"
  Name="ToJruLDoubtUnder"
  Guid="5eb9ddf6-9925-456d-8b77-5a9fcacbaef8"
@@ -2109,7 +2109,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 <Expression>MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER), Q_SCALE)</Expression>
 </Case></Cases>
 </Function><Function
- Type="Messages.JRU.D_LRBG"
+ Type="MessageTypes.Distance"
  Implemented="TRUE"
  Name="ToJruDLRBG"
  Guid="74a710bc-8832-432b-ab9d-dfc7725d4ea8"
