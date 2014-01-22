@@ -151,6 +151,11 @@
  Name="DriverAckTimeOut"
  Guid="82c4ddf6-af7f-4de2-af79-fd959a35618c"
 >
+</EnumValue><EnumValue
+ Value=""
+ Name="Message"
+ Guid="0b225f61-844c-4a87-8946-d28a505473e4"
+>
 </EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
@@ -292,7 +297,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <Comment>Indicates if this emergency stop is conditional or not.</Comment>
 </StructureElement><StructureElement
- TypeName="BrakeReason"
+ TypeName="Messages.NID_EM"
  Default="BrakeReason.DriverAckTimeOut"
  Mode="Internal"
  Implemented="TRUE"
@@ -316,6 +321,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="fc9c12ce-a392-4872-b338-33898df64176"
 >
 <Comment>The stop location of this emergency stop.</Comment>
+</StructureElement><StructureElement
+ TypeName="BrakeReason"
+ Default=""
+ Mode="Internal"
+ Name="Reason"
+ Guid="3f89f43d-554f-45d9-b2ea-ad274c34225c"
+>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="OperatedSystemVersion"
@@ -9234,7 +9246,12 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="CreateEmergencyStop"
  Guid="ed5c4ddd-670a-414d-961c-9ef4c2963243"
 >
-<Comment>Creates an EmergencyStop from a Conditional or Unconditional Emergency Stop messages</Comment>
+<ReqRef
+ Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1d46788-be76-4ae3-a73b-8dba6b6c10e8"
+>
+</ReqRef><Comment>Creates an EmergencyStop from a Conditional or Unconditional Emergency Stop messages</Comment>
 <Parameters>
 <Parameter
  Type="Boolean"
@@ -9247,7 +9264,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="e5980230-2325-4db0-b47e-ba389b5f6219"
 >
 </Parameter><Parameter
- Type="Messages.D_EMERGENCYSTOP"
+ Type="Default.BaseTypes.Distance"
  Name="aStopLocation"
  Guid="95bdb748-fd62-4493-beab-82cc872754c0"
 >
