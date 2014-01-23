@@ -1189,6 +1189,47 @@ Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.NotConnec
 >
 <Expression>THERE_IS_IN MobileTerminals | X.IsRegistered</Expression>
 </Case></Cases>
+</Function><Function
+ Type="MobileTerminalStruct"
+ Implemented="TRUE"
+ Name="CurrentTerminal"
+ Guid="1578f217-c304-4c22-98c7-cb41f87ae7b7"
+>
+<Comment>Provides the current terminal.</Comment>
+<Cases>
+<Case
+ Name="Connection opened on terminal 1"
+ Guid="688a99fe-65fa-4958-83a1-fd990459de79"
+>
+<PreConditions>
+<PreCondition
+ Guid="c3452b29-ef21-4a6f-88bd-7ae9c80cd9da"
+>Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition></PreConditions>
+<Expression>Terminal1</Expression>
+</Case><Case
+ Name="Connection opened on terminal 2"
+ Guid="909b1669-a4a2-4bb4-a8f8-ad28926921a0"
+>
+<PreConditions>
+<PreCondition
+ Guid="fb0f7a9d-b7ff-43e8-80d1-cb8b82186a20"
+>Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition></PreConditions>
+<Expression>Terminal2</Expression>
+</Case><Case
+ Name="Terminal 2 is not registered"
+ Guid="cdd75c3d-6b70-4b5c-a649-53a129d44fbc"
+>
+<PreConditions>
+<PreCondition
+ Guid="32745b2d-c50e-46dd-96a8-b56db9fb8695"
+>NOT Terminal2.IsRegistered</PreCondition></PreConditions>
+<Expression>Terminal1</Expression>
+</Case><Case
+ Name="Terminal 2 is registered"
+ Guid="66f6b667-960f-4fec-b6ee-96b6cf589e21"
+>
+<Expression>Terminal2</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
