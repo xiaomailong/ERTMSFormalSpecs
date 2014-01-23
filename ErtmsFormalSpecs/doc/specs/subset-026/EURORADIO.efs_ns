@@ -108,6 +108,33 @@
  Guid="0dc39e5e-a3df-4e7b-b900-0faa0a026b92"
 >
 </EnumValue></Values>
+</Enum><Enum
+ Default="Inactive"
+ Name="ConnectionStateEnum"
+ Guid="74c47361-7da4-47f8-b235-0f2760b914d6"
+>
+<Values>
+<EnumValue
+ Value="2"
+ Name="Initialized"
+ Guid="a0074619-14df-4449-9fd4-54c207eb2de4"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="ConnectionLost"
+ Guid="ac7b014a-7554-4eb5-9c97-37295981e630"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Connecting"
+ Guid="953215a3-3f51-4671-8898-7ba8808f4c88"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Inactive"
+ Guid="4d117622-6bb8-4edb-965e-8c47177c0ecd"
+>
+</EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
 <Structure
@@ -585,8 +612,8 @@
 >
 </ReqRef><Comment>Identifier of the RBC.</Comment>
 </StructureElement><StructureElement
- TypeName="ConnectionStateSM"
- Default="ConnectionStateSM.NotConnected"
+ TypeName="ConnectionStateEnum"
+ Default="ConnectionStateEnum.Inactive"
  Mode="Internal"
  Implemented="TRUE"
  Name="ConnectionState"
@@ -1050,9 +1077,9 @@ Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  Name="Value"
  Guid="570d8238-c486-4d19-bd40-02645a6b780e"
 >
-<Expression>Terminal1.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected
+<Expression>Terminal1.RBCConnection.ConnectionState == ConnectionStateEnum.Inactive
   AND
-Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
+Terminal2.RBCConnection.ConnectionState == ConnectionStateEnum.Inactive</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
