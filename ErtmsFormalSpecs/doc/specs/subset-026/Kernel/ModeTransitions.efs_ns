@@ -469,7 +469,7 @@ DMI.MasterDMI().In_ShuntingRequest.InputInformation.DriverAnswered</Expression>
 >
 <Expression>HandleModeChange in HandleModeChange.ShuntingInitiatedByDriver.S050
   AND
-Available ( EURORADIO.CurrentConnection().MessageIn.SH_AUTHORISED )</Expression>
+Available ( EURORADIO.CurrentRBCConnection().MessageIn.SH_AUTHORISED )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
