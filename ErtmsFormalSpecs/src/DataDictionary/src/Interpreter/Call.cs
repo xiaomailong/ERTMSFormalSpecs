@@ -301,7 +301,7 @@ namespace DataDictionary.Interpreter
 
             if (retVal == null)
             {
-                retVal = Called.getStaticCallable() as ICallable;
+                retVal = Called.getStaticCallable().ReturnType as ICallable;
             }
 
             return retVal;
