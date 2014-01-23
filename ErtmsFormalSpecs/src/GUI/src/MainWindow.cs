@@ -678,7 +678,7 @@ namespace GUI
                 {
                     retVal = EFSSystem.Dictionaries[0];
                 }
-                else
+                else if (EFSSystem.Dictionaries.Count > 1)
                 {
                     DictionarySelector.DictionarySelector dictionarySelector = new DictionarySelector.DictionarySelector(EFSSystem);
                     dictionarySelector.ShowDialog(this);

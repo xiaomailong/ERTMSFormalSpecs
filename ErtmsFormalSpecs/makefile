@@ -30,18 +30,3 @@ clean:
 	rm -rf distrib distrib.zip
 	-mkdir bin
 
-ea_diego:
-	git.exe log --author diegofdz --since=7.days --stat --grep 'EA_MODEL\|EA_TEST' --all-match --no-abbrev-commit --date=rfc | grep -v "commit" > ERTMSAcademyReport.txt
-	mv ERTMSAcademyReport.txt ./bin
-
-ea_moritz:
-	git.exe log --author morido --since=7.days --stat --grep 'EA_MODEL\|EA_TEST' --all-match --no-abbrev-commit --date=rfc | grep -v "commit" > ERTMSAcademyReport.txt
-	mv ERTMSAcademyReport.txt ./bin
-
-ea_peyman:
-	git.exe log --author Farhangi --since=7.days --stat --grep 'EA_MODEL\|EA_TEST' --all-match --no-abbrev-commit --date=rfc | grep -v "commit" > ERTMSAcademyReport.txt
-	mv ERTMSAcademyReport.txt ./bin
-
-ea_james:
-	git.exe log --author james --since=7.days --stat --grep 'EA_MODEL\|EA_TEST' --all-match --no-abbrev-commit --date=rfc | grep -v "commit" > ERTMSAcademyReport.txt
-	mv ERTMSAcademyReport.txt ./bin
