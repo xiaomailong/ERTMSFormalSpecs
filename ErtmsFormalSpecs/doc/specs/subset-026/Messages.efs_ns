@@ -2032,43 +2032,6 @@ Identity of the balise group at the level 2/3 transition location towards which 
 Message identifier. Regards defined values of NID_MESSAGE, refer to chapters 8.5.2 and 8.5.3</Comment>
 </Range><Range
  MinValue="0"
- MaxValue="16777215"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- Name="NID_MN"
- Guid="d56906e6-cad0-48c5-8181-1ad37d4e72fc"
->
-<ReqRef
- Id="24c5b6a0-14e5-47ad-907d-683ba45456fd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="183dc5dc-0444-4c8c-b05d-667271a18e6b"
->
-</ReqRef><Comment>Identity of Radio Network
-The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character &quot;F&quot;. For further information about NID_MN refer to Subset-54.</Comment>
-</Range><Range
- MinValue="0"
- MaxValue="4294967295"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- Name="NID_OPERATIONAL"
- Guid="377e7a35-8857-468d-a09d-af2c0bc913e5"
->
-<ReqRef
- Id="dac86bcd-dbc3-4022-866e-6ede3aa58dbd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c323eadc-d226-471b-a219-1ab85f15f315"
->
-</ReqRef><ReqRef
- Id="d9f1ac56-1351-4307-8cf8-2d6ddfda91b0"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2ded2cc3-ac32-4c31-84d5-d87d2fe2cd76"
->
-</ReqRef><Comment>Train Running Number
-This is the operational train running number. The NID_OPERATIONAL consists of up to 8 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be entered first. In case the NID_OPERATIONAL is shorter than 8 digits, the remaining space is to be filled with special character &quot;F&quot;.</Comment>
-</Range><Range
- MinValue="0"
  MaxValue="255"
  Precision="IntegerPrecision"
  Default="0"
