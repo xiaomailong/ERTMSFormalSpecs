@@ -940,6 +940,15 @@
  Guid="cfb23dd5-d65a-4a97-9854-23391f7523d4"
 >
 <Comment>Indicates if the mobile terminal is registered to the network.</Comment>
+</StructureElement><StructureElement
+ TypeName="RBCStruct"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="RBCConnection"
+ Guid="0af6403f-d522-46ef-ae39-17e5433e5c02"
+>
+<Comment>RBC connected on this terminal.</Comment>
 </StructureElement></Structure><Structure
  NeedsRequirement="FALSE"
  Name="AvailableNetworksStruct"
@@ -997,17 +1006,17 @@
  Name="Value"
  Guid="10904d1f-8fc9-4d89-a374-c156b560a9fe"
 >
-<Expression>RBC1.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection
+<Expression>Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection
   OR
-RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Expression>
+Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Expression>
 </Case></Cases>
 </Function><Function
  Type="RBCStruct"
  Implemented="TRUE"
- Name="CurrentConnection"
+ Name="CurrentRBCConnection"
  Guid="3f3bd225-5d45-4ad8-a3c3-4b15bd9d11e4"
 >
-<Comment>Provides the current connection. If none of RBCs is connected, RBC1 is provided.</Comment>
+<Comment>Provides the current RBC connection. If none of terminals is connected, RBC1 is provided.</Comment>
 <Cases>
 <Case
  Name="RBC1"
@@ -1016,13 +1025,13 @@ RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Ex
 <PreConditions>
 <PreCondition
  Guid="d3cd7a0d-a9ee-430b-9f4b-b7438d4ee678"
->RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
-<Expression>RBC1</Expression>
+>Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
+<Expression>Terminal1.RBCConnection</Expression>
 </Case><Case
  Name="RBC2"
  Guid="71411cb1-fbc3-4d56-8c9e-a2ac172c6983"
 >
-<Expression>RBC2</Expression>
+<Expression>Terminal2.RBCConnection</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1041,9 +1050,9 @@ RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Ex
  Name="Value"
  Guid="570d8238-c486-4d19-bd40-02645a6b780e"
 >
-<Expression>RBC1.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected
+<Expression>Terminal1.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected
   AND
-RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
+Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1149,7 +1158,7 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
  Name="Value"
  Guid="61ae260c-2217-4637-89fc-9c073942c53b"
 >
-<Expression>CurrentConnection().SafeRadioConnectionStatus</Expression>
+<Expression>CurrentRBCConnection().SafeRadioConnectionStatus</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1223,11 +1232,11 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 <PreConditions>
 <PreCondition
  Guid="8df44f1d-8bc6-47ea-9994-67dde1dc64c4"
->RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
+>Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="fb0c323a-04ee-47a6-86cd-341b24a90ee3"
->RBC1.ContactRBCOrder &lt;- Order</Action></Actions>
+>Terminal1.RBCConnection.ContactRBCOrder &lt;- Order</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="RBC2"
@@ -1238,7 +1247,7 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 <Actions>
 <Action
  Guid="2086e972-9bf9-41fd-bbac-eef71aecabe9"
->RBC2.ContactRBCOrder &lt;- Order</Action></Actions>
+>Terminal2.RBCConnection.ContactRBCOrder &lt;- Order</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1281,11 +1290,11 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 <PreConditions>
 <PreCondition
  Guid="ffda9f58-de4b-460e-9459-f56d2e21d0d9"
->RBC2.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition></PreConditions>
+>Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="26ca8f48-278e-43b7-b3a9-85398b8d2fc7"
->RBC1.ContactRBCOrder &lt;- ContactOrderStruct
+>Terminal1.RBCConnection.ContactRBCOrder &lt;- ContactOrderStruct
 {
     Id =&gt; Order.Id,
     PhoneNumber =&gt; Order.PhoneNumber,
@@ -1302,7 +1311,7 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 <Actions>
 <Action
  Guid="73ee1e00-5c33-49e9-a6b2-2b8018da8475"
->RBC2.ContactRBCOrder &lt;- ContactOrderStruct
+>Terminal2.RBCConnection.ContactRBCOrder &lt;- ContactOrderStruct
 {
     Id =&gt; Order.Id,
     PhoneNumber =&gt; Order.PhoneNumber,
@@ -2162,32 +2171,6 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="RBCStruct"
- VariableMode="InOut"
- Implemented="TRUE"
- Name="RBC1"
- Guid="1c63a7e2-d86b-4b5e-abe0-d5f70612612e"
->
-<ReqRef
- Id="410ad67d-6b5a-46f5-9694-35e5954fcb65"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="63f393d5-32eb-4311-ac14-2a578d25d424"
->
-</ReqRef><Comment>First RBC connection.</Comment>
-</Variable><Variable
- Type="RBCStruct"
- VariableMode="InOut"
- Implemented="TRUE"
- Name="RBC2"
- Guid="e96dc281-72ad-449b-94b2-01b2501d13a0"
->
-<ReqRef
- Id="410ad67d-6b5a-46f5-9694-35e5954fcb65"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0995d081-63bd-4a6e-88fa-b949b4eed5af"
->
-</ReqRef><Comment>Second RBC connection.</Comment>
-</Variable><Variable
  Type="Default.BaseTypes.Time"
  DefaultValue="15.0"
  VariableMode="Constant"
@@ -2298,5 +2281,21 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
  Guid="f24775ac-92d1-48d2-8446-fcd2eb8c7467"
 >
 <Comment>Allows to request the list of available and allowed networks.</Comment>
+</Variable><Variable
+ Type="MobileTerminalStruct"
+ VariableMode="InOut"
+ Implemented="TRUE"
+ Name="Terminal1"
+ Guid="b9169f5f-b1a9-481e-8d17-7b9aee24c60e"
+>
+<Comment>First terminal struct.</Comment>
+</Variable><Variable
+ Type="MobileTerminalStruct"
+ VariableMode="InOut"
+ Implemented="TRUE"
+ Name="Terminal2"
+ Guid="14bc979c-299e-41a1-b18b-77e58ca89e59"
+>
+<Comment>Second mobile terminal.</Comment>
 </Variable></Variables>
 </NameSpace>
