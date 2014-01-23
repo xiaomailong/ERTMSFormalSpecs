@@ -151,10 +151,10 @@
 >Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S120</Expectation><Expectation
  Kind="Instantaneous"
  Guid="fb070293-856d-4ba0-8021-65637f566b77"
->Available ( EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT )</Expectation><Expectation
+>Available ( EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT )</Expectation><Expectation
  Kind="Instantaneous"
  Guid="613d1205-563c-43af-9ad2-3e21d90a10ed"
->EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Messages.M_MODE.Post_Trip</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Messages.M_MODE.Post_Trip</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -388,10 +388,10 @@
 >Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A035</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c2790b1c-2edc-4ff0-a8d0-147b75442d2b"
->Available ( EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT )</Expectation><Expectation
+>Available ( EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT )</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d53a9bd8-7110-4437-90ad-b617821eb2f7"
->EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Messages.M_MODE.Trip</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Messages.M_MODE.Trip</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -2071,7 +2071,7 @@
  Guid="96cac230-63c8-4f61-b156-15cce70efd41"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S120</Action><Action
  Guid="ed5bb7e3-d500-496d-b622-f69330b62cf8"
->EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     RECOGNITION_OF_EXIT_FROM_TRIP_MODE =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.RECOGNITION_OF_EXIT_FROM_TRIP_MODE.Message
     {
@@ -3001,10 +3001,10 @@
 >Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Expectation><Expectation
  Kind="Instantaneous"
  Guid="f568396b-11ec-4046-a80b-fdc2890b419e"
->Available ( EURORADIO.EuroradioMessageOut.MA_REQUEST )</Expectation><Expectation
+>Available ( EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST )</Expectation><Expectation
  Kind="Instantaneous"
  Guid="693279f3-5ec3-4002-b6aa-ef1efa472f2c"
->EURORADIO.EuroradioMessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
