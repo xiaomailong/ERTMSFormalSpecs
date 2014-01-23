@@ -5583,12 +5583,12 @@
  Guid="fc1d3085-fa38-40ba-97a6-a35bacc8bde6"
 >Kernel.InitializeTestEnvironment()</Action><Action
  Guid="6a768461-bf74-4356-81ea-862c46ce92e7"
->EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Inactive</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="8d62ad12-47e6-4f18-8ba7-625f2f89a922"
->EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Inactive</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().ConnectionState == EURORADIO.ConnectionStateEnum.Inactive</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -5628,7 +5628,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="a6d75cec-8e7d-408a-823c-6c2109d3f995"
->EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Connecting</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().ConnectionState == EURORADIO.ConnectionStateEnum.Connecting</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -5895,7 +5895,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="da85fd23-49b6-4a6c-b916-b5127a7d8dec"
->DMI.MasterDMI().Out_SafeRadioConnectionIndication.ConnectionStatus == EURORADIO.SafeRadioConnectionStatus.ConnectionLostOrSetUpFailed</Expectation></Expectations>
+>DMI.MasterDMI().Out_SafeRadioConnectionIndication.ConnectionStatus == EURORADIO.SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
