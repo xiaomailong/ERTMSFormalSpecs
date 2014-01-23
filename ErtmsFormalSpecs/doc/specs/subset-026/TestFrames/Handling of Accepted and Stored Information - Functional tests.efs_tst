@@ -2578,7 +2578,7 @@
  Guid="a32d366e-a009-43ce-afdb-bf822b7a5b75"
 >EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;RBC_Id&apos;</Action><Action
  Guid="49a02fa7-609c-4f27-9220-e024a7262cbd"
->EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="74d27552-45ef-4771-a076-11f4915937bf"
 >EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;123456789&apos;</Action></Actions>
 </SubStep></SubSteps>
@@ -2604,7 +2604,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="e65854ef-2026-4e0b-aef4-232de786fe79"
->EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
  Guid="b0335f7e-31af-4164-a68e-4da640e1397a"
 >EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber == &apos;123456789&apos;</Expectation><Expectation
