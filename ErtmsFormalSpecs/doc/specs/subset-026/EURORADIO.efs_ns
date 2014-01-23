@@ -900,15 +900,46 @@
  Guid="3367d1e9-5512-45ec-9356-57305e0372d5"
 >
 <Comment>Phone number of the RBC.</Comment>
+</StructureElement></Structure><Structure
+ Name="MobileTerminalStruct"
+ Guid="d55c89a9-b712-45c6-a15c-1829f68822b8"
+>
+<StructureElement
+ TypeName="String"
+ Default="&apos;&apos;"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Id"
+ Guid="94afdc00-ee3b-416f-a426-21fea264a34c"
+>
+<Comment>Identifier of the mobile terminal.</Comment>
+</StructureElement><StructureElement
+ TypeName="String"
+ Default="&apos;&apos;"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="NetworkId"
+ Guid="a38f3a7d-5646-4e2c-9bf3-7329e3d2d746"
+>
+<Comment>Identifier of the network.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="IsRegistered"
+ Guid="cfb23dd5-d65a-4a97-9854-23391f7523d4"
+>
+<Comment>Indicates if the mobile terminal is registered to the network.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="MobileTerminalID"
+ TypeName="MobileTerminalStruct"
  MaxSize="2"
  Default="[]"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="MobileTerminalIDs"
+ Name="MobileTerminalsCollection"
  Guid="c11465cd-6494-4bd4-ab4b-628e2874fe32"
 >
 <Comment>probably 2 is the maximum number of perceiveable MobileTerminals mounted on a loco. Requirement needed. #morido, 13/10/14</Comment>
@@ -1097,6 +1128,35 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
  Guid="5c5fa0b2-d7b6-4272-a01f-9c985a96ba64"
 >
 <Expression>SafeRadioConnectionStatusEnum.NoConnection</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="MobileTerminalRegisteredToNetwork"
+ Guid="af2b63fd-7a74-4d0c-9dd5-640bccd97f2c"
+>
+<ReqRef
+ Id="65314800-5286-475e-b755-60e19e8cb01d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86dca3f3-96a5-4716-aab2-e171d185f8eb"
+>
+</ReqRef><ReqRef
+ Id="25c7ba02-1985-488d-b506-b24eef2b11b4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21560c78-c017-4f92-82b7-164ed6fbfc5a"
+>
+</ReqRef><ReqRef
+ Id="ff5aeaff-49e3-489d-816f-c49fc05bc951"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ffddbae-852a-4c6a-b270-2c53874223d9"
+>
+</ReqRef><Comment>Indicates if at least one mobile terminal is registered to a Radio Network.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="8d5b3f0d-e99a-4b78-a893-b7f25eb488a9"
+>
+<Expression>THERE_IS_IN MobileTerminals | X.IsRegistered</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -1567,8 +1627,8 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 >
 </ReqRef><Comment>Contains information about the last known RBC.</Comment>
 </Variable><Variable
- Type="MobileTerminalIDs"
- DefaultValue="[1,2]"
+ Type="MobileTerminalsCollection"
+ DefaultValue="[]"
  VariableMode="Internal"
  Implemented="TRUE"
  Name="MobileTerminals"
