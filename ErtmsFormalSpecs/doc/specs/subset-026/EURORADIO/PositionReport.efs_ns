@@ -1108,6 +1108,7 @@ TIU.TrainIntegrity.Status in [
 </Function></Functions>
 <Procedures>
 <Procedure
+ Implemented="TRUE"
  Name="UpdatePositionReportParameters"
  Guid="ab143d6e-de00-4e9d-a8c4-d91206bf6813"
 >
@@ -1127,6 +1128,7 @@ TIU.TrainIntegrity.Status in [
 <Rules>
 <Rule
  Priority="UpdateOUT"
+ Implemented="TRUE"
  Name="UpdatePositionReportParameters"
  Guid="1c9f0244-63e5-4e91-ad5a-fbbff23becb8"
 >
@@ -1513,7 +1515,7 @@ TIU.TrainIntegrity.Status in [
 <Actions>
 <Action
  Guid="caed2442-a4dd-49e2-9bb4-55a01c80b907"
->CurrentConnection().SendPositionReport()</Action></Actions>
+>CurrentRBCConnection().SendPositionReport()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
