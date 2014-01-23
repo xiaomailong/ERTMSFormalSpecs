@@ -1460,7 +1460,7 @@ IN
  Guid="863fe0fb-623d-4d72-bdc1-9bfb5700e462"
 >TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
  Guid="9a079a5e-29df-49b0-8e55-e5b5e245f253"
->THERE_IS_IN EmergencyStops | X.Id == BrakeReason.DriverAckTimeOut</PreCondition><PreCondition
+>THERE_IS_IN EmergencyStops | X.Reason == BrakeReason.DriverAckTimeOut</PreCondition><PreCondition
  Guid="3e004f42-4d6d-41f5-8591-0ea27887b80a"
 >( COUNT EmergencyStops ) == 1</PreCondition></PreConditions>
 <Actions>

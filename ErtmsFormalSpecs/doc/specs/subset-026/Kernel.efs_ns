@@ -9276,6 +9276,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <Expression>EmergencyStop
  {
+    Reason =&gt; Kernel.BrakeReason.Message,
     IsConditional =&gt; aIsConditional,
     Id =&gt; aId,
     StopLocation =&gt; aStopLocation
@@ -9663,9 +9664,14 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 >
 <Parameters>
 <Parameter
- Type="Messages.MESSAGE.TRACK_TO_TRAIN.CONDITIONAL_EMERGENCY_STOP.Message"
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
  Name="aMessage"
  Guid="b1406273-1565-491b-b8e1-82c7a2f264b3"
+>
+</Parameter><Parameter
+ Type="Messages.Q_SCALE"
+ Name="Scale"
+ Guid="d51f5950-d406-47c3-9471-3ef566bf0fd8"
 >
 </Parameter></Parameters>
 <Rules>
@@ -9677,13 +9683,45 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Add Emergency Stop"
+ Name="Add Conditional Emergency Stop"
  Guid="17059008-89b6-4e10-a7e3-9938cfc666eb"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="e240d531-4475-416c-bb30-c3574d5dcda4"
+>Available ( aMessage.CONDITIONAL_EMERGENCY_STOP )</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="9a5fa779-e4b0-4c4a-b5bf-584bb7826348"
+>INSERT
+CreateEmergencyStop ( aIsConditional =&gt; Boolean.True,
+     aId =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_EM,
+     aStopLocation =&gt; Default.MessageTypes.QScaleDistance(
+    distance =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP,
+    scale =&gt; Scale )
+)
+
+IN
+Kernel.EmergencyStops</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Add Unconditional Emergency Stop"
+ Guid="ca987d81-cf62-4efd-b7b6-f4b669f0f48e"
+>
+<PreConditions>
+<PreCondition
+ Guid="ba56b109-d68e-48b6-8d69-8c00d3011ebf"
+>Available ( aMessage.UNCONDITIONAL_EMERGENCY_STOP )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8ef76b33-4a6b-4e7e-af81-02d5dbbb7354"
+>INSERT
+CreateEmergencyStop ( aIsConditional =&gt; Boolean.False,
+     aId =&gt; aMessage.UNCONDITIONAL_EMERGENCY_STOP.NID_EM,
+     aStopLocation =&gt; 0.0
+)
+
+IN
+Kernel.EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
