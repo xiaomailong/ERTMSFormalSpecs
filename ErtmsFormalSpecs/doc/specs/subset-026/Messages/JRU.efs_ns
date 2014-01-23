@@ -1570,18 +1570,6 @@ It contains the command state of the brakes</Comment>
 This variable provides the identity of the RIU belonging to NID_C. The RIU ETCS identity is given by NID_C + NID_RIU</Comment>
 </Range><Range
  MinValue="0"
- MaxValue="16777215"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="NID_MN"
- Guid="ee3f82b5-7fb0-49e5-8e15-90c57a2d30eb"
->
-<Comment>Identity of Radio Network
-The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character &quot;F&quot;. For further information about NID_MN refer to Subset-54.</Comment>
-</Range><Range
- MinValue="0"
  MaxValue="16383"
  Precision="IntegerPrecision"
  Default="0"
@@ -1599,18 +1587,6 @@ This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS 
  Guid="c7c80a54-8a8c-430a-8612-4fe0073de254"
 >
 </EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="18446744073709551615"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="NID_RADIO"
- Guid="47a4fb44-8813-4ff8-b79f-956d30c3aa13"
->
-<Comment>Radio subscriber number.
-Quoted as a 16 digit decimal number.</Comment>
 </Range><Range
  MinValue="0"
  MaxValue="255"
@@ -4704,18 +4680,6 @@ This variable indicates the type of the driver&apos;s selection for the RBC data
  Guid="931dcf0a-0306-494d-bc00-f6db5ce8e3e0"
 >
 </EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="4294967295"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="NID_OPERATIONAL"
- Guid="c28148f1-0f1f-4551-a286-38af30ad6efb"
->
-<Comment>Train Running Number
-This is the operational train running number. The NID_OPERATIONAL consists of up to 8 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be entered first. In case the NID_OPERATIONAL is shorter than 8 digits, the remaining space is to be filled with special character “F”.</Comment>
 </Range><Range
  MinValue="0"
  MaxValue="63"
