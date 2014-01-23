@@ -617,6 +617,19 @@ namespace DataDictionary
         private class MessageInfoVisitor : Generated.Visitor
         {
             /// <summary>
+            /// The number of messages found
+            /// </summary>
+            public int MessagesCount { get; private set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public MessageInfoVisitor()
+            {
+                MessagesCount = 0;
+            }
+
+            /// <summary>
             /// Provides the maximum path info
             /// </summary>
             /// <param name="v1"></param>
@@ -640,6 +653,8 @@ namespace DataDictionary
 
             public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
             {
+                MessagesCount += obj.Messages.Count;
+
                 // Compute the local value of the message path info
                 if (obj.HasMessage(ElementLog.LevelEnum.Error))
                 {
@@ -697,10 +712,13 @@ namespace DataDictionary
         /// Updates the message info according to the model element messages and its sub model elements
         /// </summary>
         /// <param name="modelElement"></param>
-        public static void UpdateMessageInfo(ModelElement modelElement)
+        public static int UpdateMessageInfo(ModelElement modelElement)
         {
             MessageInfoVisitor visitor = new MessageInfoVisitor();
+
             visitor.visit(modelElement, true);
+
+            return visitor.MessagesCount;
         }
     }
 }
