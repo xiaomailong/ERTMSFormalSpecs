@@ -878,7 +878,7 @@
 <Comment>Identifier of the RBC.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
- Name="LastKnownRBCStruct"
+ Name="RBCContactStruct"
  Guid="34a7c15c-662b-4a6d-a149-5587a333e7cf"
 >
 <Comment>Contains information about the last known RBC.</Comment>
@@ -931,6 +931,29 @@
  Guid="cfb23dd5-d65a-4a97-9854-23391f7523d4"
 >
 <Comment>Indicates if the mobile terminal is registered to the network.</Comment>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="AvailableNetworksStruct"
+ Guid="e6849568-73f7-4b28-ae32-8b6bf0058e00"
+>
+<StructureElement
+ TypeName="Default.Request"
+ Default="Default.Request.Disabled"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="RequestState"
+ Guid="92cbb691-f862-4800-bcc1-b1c3201d2980"
+>
+<Comment>Allows to request the list of available and allowed networks.</Comment>
+</StructureElement><StructureElement
+ TypeName="EURORADIO.AvailableNetworksCollection"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="Networks"
+ Guid="0ed60605-c72c-4461-b890-b564097e7b37"
+>
+<Comment>Collection of available and allowed networks.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -943,6 +966,14 @@
  Guid="c11465cd-6494-4bd4-ab4b-628e2874fe32"
 >
 <Comment>probably 2 is the maximum number of perceiveable MobileTerminals mounted on a loco. Requirement needed. #morido, 13/10/14</Comment>
+</Collection><Collection
+ TypeName="String"
+ Default="[]"
+ Implemented="TRUE"
+ Name="AvailableNetworksCollection"
+ Guid="104401a1-8c78-4794-bf19-a0f04f17b077"
+>
+<Comment>List of available and allowed networks.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -1603,7 +1634,7 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
 >
 <Comment>RIU connection.</Comment>
 </Variable><Variable
- Type="LastKnownRBCStruct"
+ Type="RBCContactStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  Implemented="TRUE"
@@ -1659,5 +1690,23 @@ RBC2.ConnectionState in RBCStruct.ConnectionStateSM.NotConnected</Expression>
  Guid="35afd293-b8b4-4acb-9b06-f5ae19225f06"
 >
 </ReqRef><Comment>The short number of the RBC.</Comment>
+</Variable><Variable
+ Type="String"
+ DefaultValue="&apos;&apos;"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="LastKnownNetworkId"
+ Guid="4c27382c-64a2-4c88-8d58-ff66b400ad51"
+>
+<Comment>The last received Radio Network identity.</Comment>
+</Variable><Variable
+ Type="AvailableNetworksStruct"
+ DefaultValue="[]"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="AvailableNetworks"
+ Guid="f24775ac-92d1-48d2-8446-fcd2eb8c7467"
+>
+<Comment>Allows to request the list of available and allowed networks.</Comment>
 </Variable></Variables>
 </NameSpace>

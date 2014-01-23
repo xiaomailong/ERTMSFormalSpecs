@@ -1356,7 +1356,9 @@
 <Actions>
 <Action
  Guid="7856aaad-190f-4795-b48c-e29b2d53f82c"
->RBCContactInformation &lt;- EURORADIO.CurrentRadioSession.SessionInfo</Action></Actions>
+>RBCContactInformation &lt;- EURORADIO.LastKnownRBC</Action><Action
+ Guid="a0d2451b-237c-4d9c-bf90-12ec94387235"
+>NetworkId &lt;- EURORADIO.LastKnownNetworkId</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -1368,7 +1370,7 @@
  Guid="ee86cf9a-f8c1-4825-922a-13cbfb74d179"
 >
 </StructureElement><StructureElement
- TypeName="EURORADIO.RadioSessionInformation"
+ TypeName="EURORADIO.RBCContactStruct"
  Default=""
  Mode="InOut"
  NeedsRequirement="FALSE"
@@ -1382,6 +1384,15 @@
  Name="ProcedureOut"
  Guid="98076635-dc87-4a83-9cd4-787604762f0d"
 >
+</StructureElement><StructureElement
+ TypeName="String"
+ Default="&apos;&apos;"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="NetworkId"
+ Guid="5e481548-2fbd-4f4a-a63e-1f1714a30e36"
+>
+<Comment>Radio Network identity.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  InitialState="NotAvailable"

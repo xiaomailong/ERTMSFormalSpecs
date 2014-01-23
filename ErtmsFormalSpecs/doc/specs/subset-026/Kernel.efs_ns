@@ -1653,11 +1653,11 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="bdfd2aaf-0240-446d-9eee-f9de37124239"
->EURORADIO.AcquireListOfAvailableNetworks.RequestState == Default.Request.Response</PreCondition></PreConditions>
+>EURORADIO.AvailableNetworks.RequestState == Default.Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="235c73db-6ad5-49f0-8c6f-d0e4f1cd4116"
->EURORADIO.AcquireListOfAvailableNetworks.RequestState &lt;- Default.Request.Disabled</Action></Actions>
+>EURORADIO.AvailableNetworks.RequestState &lt;- Default.Request.Disabled</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1682,7 +1682,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="9bfc3576-f1e1-4859-adc2-b6244737b4d0"
->EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs == []</PreCondition></PreConditions>
+>EURORADIO.AvailableNetworks.Networks == []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="21478aae-4b0b-4b85-861a-fe216b49e4fd"
@@ -1711,13 +1711,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="cd385724-8d3d-40c0-af1d-947757709ab3"
->EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs != []</PreCondition></PreConditions>
+>EURORADIO.AvailableNetworks.Networks != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0d13890a-fdb8-4bb2-a3c5-978e1acfb39f"
 >THIS &lt;- HandleModeChange.StartOfMission.S3.RadioNetworkIdchangeOffered</Action><Action
  Guid="4b5b8b50-d10d-4d84-a0e9-46e32601d7c0"
->DMI.MasterDMI().SelectNetworkId(EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs)</Action></Actions>
+>DMI.MasterDMI().SelectNetworkId(EURORADIO.AvailableNetworks.Networks)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1799,7 +1799,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="cac3db6f-4414-4a16-8142-65789dff9874"
->EURORADIO.NetworkID &lt;- DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.SelectedID</Action><Action
+>EURORADIO.LastKnownNetworkId &lt;- DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.SelectedID</Action><Action
  Guid="198cb14a-02da-4a00-8f9c-b5ddffc80be8"
 >EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action><Action
  Guid="525893e1-c192-4679-9788-b1b77c5b89c3"

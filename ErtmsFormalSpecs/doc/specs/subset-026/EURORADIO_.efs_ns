@@ -113,27 +113,6 @@
  Guid="fe50d952-3e51-4cc9-9f6d-519ab7f2e300"
 >
 </StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
- Name="AcquireListOfAvailableNetworks"
- Guid="e6849568-73f7-4b28-ae32-8b6bf0058e00"
->
-<StructureElement
- TypeName="Default.Request"
- Default="Default.Request.Disabled"
- Mode="Internal"
- NeedsRequirement="FALSE"
- Name="RequestState"
- Guid="92cbb691-f862-4800-bcc1-b1c3201d2980"
->
-</StructureElement><StructureElement
- TypeName="EURORADIO.NetworkIDs"
- Default=""
- Mode="Incoming"
- NeedsRequirement="FALSE"
- Name="NetworkIDs"
- Guid="0ed60605-c72c-4461-b890-b564097e7b37"
->
-</StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RadioNetworkId"
@@ -1637,31 +1616,6 @@
  Name="MobileTerminalRegisteredToNetwork"
  Guid="86d86ed2-63b6-470f-b917-a85c50c7e441"
 >
-</Variable><Variable
- Type="EURORADIO.AcquireListOfAvailableNetworks"
- DefaultValue=""
- VariableMode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="AcquireListOfAvailableNetworks"
- Guid="9d7f6bef-0cfa-41e1-9323-34efc9fb2a6a"
->
-<ReqRef
- Id="88987d99-35ff-4f33-894e-06060476dc7d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="81b43df2-1e38-4bc5-a8a3-c21e908d535c"
->
-</ReqRef><Comment>This request is used to gather the list of allowed networks, based on a request to the Mobile Terminals</Comment>
-<SubVariables>
-<Variable
- Type="EURORADIO.NetworkIDs"
- DefaultValue="[]"
- VariableMode="Incoming"
- NeedsRequirement="FALSE"
- Name="NetworkIDs"
- Guid="9ba5f1bf-e15d-4c8b-9785-45303627f480"
->
-</Variable></SubVariables>
 </Variable><Variable
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
  DefaultValue=""
