@@ -235,6 +235,26 @@
  Guid="f94cbf31-4d6f-4cd5-8f24-8cd09655aa76"
 >PreviousConnectionState &lt;- ConnectionState</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ Name="Clear input message"
+ Guid="46319b75-1481-4c0f-aa43-2ddac6249e60"
+>
+<Comment>Ah the end of the cycle, the message has to be erazed (otherwise at the beginning of the following cycle the system will consider that this message is received again).</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Clear input message"
+ Guid="48c4a0a3-7c51-4de9-86b1-e4e9433a8cde"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0271d2ba-8432-4ab8-9751-21368dd80660"
+>MessageIn &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
@@ -1008,7 +1028,7 @@
 <Comment>Contains information about the last known RBC.</Comment>
 <StructureElement
  TypeName="RBCIdStruct"
- Default="EMPTY"
+ Default=""
  Mode="Internal"
  Implemented="TRUE"
  Name="Id"
