@@ -252,7 +252,7 @@ namespace DataDictionary
         {
             if (string.IsNullOrEmpty(commentable.Comment))
             {
-                ((ModelElement)commentable).AddWarning("This element should be documented");
+                ((ModelElement)commentable).AddInfo("This element should be documented");
             }
         }
 

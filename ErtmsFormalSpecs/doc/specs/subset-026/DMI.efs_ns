@@ -4197,7 +4197,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="827cb70d-fcc6-4bbf-95a8-ce3b2fbe743a"
 >Out_RouteUnsuitabilities.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action><Action
  Guid="325bbefb-2125-42dd-bb14-7142f1dbab46"
->Out_RouteUnsuitabilities.RouteUnsuitabilities &lt;- MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitability ( X ) USING X</Action></Actions>
+>Out_RouteUnsuitabilities.RouteUnsuitabilities &lt;- MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( X ) USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
