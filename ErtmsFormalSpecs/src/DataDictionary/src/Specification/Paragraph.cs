@@ -634,5 +634,48 @@ namespace DataDictionary.Specification
                 setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
             }
         }
+
+        private class RemoveReqRef : Generated.Visitor
+        {
+            /// <summary>
+            /// The paragraph for which no req ref should exist
+            /// </summary>
+            private Paragraph Paragraph { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="paragraph"></param>
+            public RemoveReqRef(Paragraph paragraph)
+            {
+                Paragraph = paragraph;
+            }
+
+            public override void visit(Generated.ReqRef obj, bool visitSubNodes)
+            {
+                ReqRef reqRef = (ReqRef)obj;
+
+                if (reqRef.Paragraph == Paragraph)
+                {
+                    reqRef.Delete();
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
+        /// Also removes the req refs to that paragraph
+        /// </summary>
+        public override void Delete()
+        {
+            RemoveReqRef remover = new RemoveReqRef(this);
+            foreach (Dictionary dictionary in EFSSystem.Dictionaries)
+            {
+                remover.visit(dictionary, true);
+            }
+
+            base.Delete();
+        }
     }
 }
