@@ -134,6 +134,11 @@
  Name="Inactive"
  Guid="4d117622-6bb8-4edb-965e-8c47177c0ecd"
 >
+</EnumValue><EnumValue
+ Value=""
+ Name="Terminating"
+ Guid="1f82a860-3649-4cd7-b95e-572a049275ab"
+>
 </EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
@@ -999,6 +1004,24 @@
  Guid="0ed60605-c72c-4461-b890-b564097e7b37"
 >
 <Comment>Collection of available and allowed networks.</Comment>
+</StructureElement></Structure><Structure
+ Name="SystemVersionStruct"
+ Guid="d57ddcfd-645d-4096-81d5-c12c41bd57bb"
+>
+<StructureElement
+ TypeName="String"
+ Default="&apos;&apos;"
+ Mode="Internal"
+ Name="Value"
+ Guid="6b92d905-fc0e-4c7c-8f01-e8ea9c2663a8"
+>
+</StructureElement><StructureElement
+ TypeName="Default.DataState"
+ Default="Default.DataState.Unknown"
+ Mode="Internal"
+ Name="DataState"
+ Guid="1d98ef8a-fbe4-4fe6-affb-c0d0d99bb986"
+>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -2365,5 +2388,11 @@ Terminal2.RBCConnection.ConnectionState == ConnectionStateEnum.Inactive</Express
  Guid="14bc979c-299e-41a1-b18b-77e58ca89e59"
 >
 <Comment>Second mobile terminal.</Comment>
+</Variable><Variable
+ Type="SystemVersionStruct"
+ VariableMode="Internal"
+ Name="RbcRiuSystemVersion"
+ Guid="9102c513-6f5a-4f5c-8625-1e0ea40fb32c"
+>
 </Variable></Variables>
 </NameSpace>
