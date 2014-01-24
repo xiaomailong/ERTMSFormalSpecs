@@ -617,16 +617,10 @@ namespace DataDictionary
         private class MessageInfoVisitor : Generated.Visitor
         {
             /// <summary>
-            /// The number of messages found
-            /// </summary>
-            public int MessagesCount { get; private set; }
-
-            /// <summary>
             /// Constructor
             /// </summary>
             public MessageInfoVisitor()
             {
-                MessagesCount = 0;
             }
 
             /// <summary>
@@ -651,58 +645,62 @@ namespace DataDictionary
                 return retVal;
             }
 
-            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            public void UpdateMessageInfo(ModelElement element)
             {
-                MessagesCount += obj.Messages.Count;
-
                 // Compute the local value of the message path info
-                if (obj.HasMessage(ElementLog.LevelEnum.Error))
+                if (element.HasMessage(ElementLog.LevelEnum.Error))
                 {
-                    obj.MessagePathInfo = MessagePathInfoEnum.Error;
+                    element.MessagePathInfo = MessagePathInfoEnum.Error;
                 }
-                else if (obj.HasMessage(ElementLog.LevelEnum.Warning))
+                else if (element.HasMessage(ElementLog.LevelEnum.Warning))
                 {
-                    obj.MessagePathInfo = MessagePathInfoEnum.Warning;
+                    element.MessagePathInfo = MessagePathInfoEnum.Warning;
                 }
-                else if (obj.HasMessage(ElementLog.LevelEnum.Info))
+                else if (element.HasMessage(ElementLog.LevelEnum.Info))
                 {
-                    obj.MessagePathInfo = MessagePathInfoEnum.Info;
+                    element.MessagePathInfo = MessagePathInfoEnum.Info;
                 }
                 else
                 {
-                    obj.MessagePathInfo = MessagePathInfoEnum.Nothing;
+                    element.MessagePathInfo = MessagePathInfoEnum.Nothing;
                 }
 
-                // Compute the value of the sub element message path info
-                base.visit(obj, visitSubNodes);
-
-                // Combine the current value with the sub element's values
+                // Grab the list of sub elements
                 ArrayList l = new ArrayList();
-                obj.subElements(l);
-                if (l != null)
+                element.subElements(l);
+
+                // Compute the sub element's message info
+                foreach (object obj in l)
                 {
-                    foreach (object subElement in l)
+                    ModelElement subElement = obj as ModelElement;
+                    if (subElement != null)
                     {
-                        Generated.BaseModelElement element = subElement as Generated.BaseModelElement;
-                        if (element != null)
+                        UpdateMessageInfo(subElement);
+                    }
+                }
+
+                // Combine the message info
+                foreach (object obj in l)
+                {
+                    ModelElement subElement = obj as ModelElement;
+                    if (subElement != null)
+                    {
+                        MessagePathInfoEnum sub = subElement.MessagePathInfo;
+
+                        if (sub == MessagePathInfoEnum.Error)
                         {
-                            MessagePathInfoEnum sub = element.MessagePathInfo;
-
-                            if (sub == MessagePathInfoEnum.Error)
-                            {
-                                sub = MessagePathInfoEnum.PathToError;
-                            }
-                            else if (sub == MessagePathInfoEnum.Warning)
-                            {
-                                sub = MessagePathInfoEnum.PathToWarning;
-                            }
-                            else if (sub == MessagePathInfoEnum.Info)
-                            {
-                                sub = MessagePathInfoEnum.PathToInfo;
-                            }
-
-                            obj.MessagePathInfo = Max(obj.MessagePathInfo, sub);
+                            sub = MessagePathInfoEnum.PathToError;
                         }
+                        else if (sub == MessagePathInfoEnum.Warning)
+                        {
+                            sub = MessagePathInfoEnum.PathToWarning;
+                        }
+                        else if (sub == MessagePathInfoEnum.Info)
+                        {
+                            sub = MessagePathInfoEnum.PathToInfo;
+                        }
+
+                        element.MessagePathInfo = Max(element.MessagePathInfo, sub);
                     }
                 }
             }
@@ -712,13 +710,10 @@ namespace DataDictionary
         /// Updates the message info according to the model element messages and its sub model elements
         /// </summary>
         /// <param name="modelElement"></param>
-        public static int UpdateMessageInfo(ModelElement modelElement)
+        public static void UpdateMessageInfo(ModelElement modelElement)
         {
             MessageInfoVisitor visitor = new MessageInfoVisitor();
-
-            visitor.visit(modelElement, true);
-
-            return visitor.MessagesCount;
+            visitor.UpdateMessageInfo(modelElement);
         }
     }
 }
