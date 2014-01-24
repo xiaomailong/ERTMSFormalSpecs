@@ -591,7 +591,7 @@
 <TestCases>
 <TestCase
  Implemented="TRUE"
- Name="Check that route suitability is correctly identified"
+ Name="Check that route suitability is correctly identified for axle load categories"
  Guid="39274fc9-f3af-4ed4-8c23-1c717d2efd5b"
 >
 <ReqRef
@@ -879,7 +879,7 @@
 <TestCases>
 <TestCase
  Implemented="TRUE"
- Name="Check that route suitability is correctly identified"
+ Name="Check that route suitability is correctly identified for traction systems"
  Guid="8d6ccd4f-6330-45c1-87dd-b488c9a05907"
 >
 <ReqRef
@@ -1162,13 +1162,13 @@
             Kernel.TrainData.TractionSystem
              {
                 Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
-                Country =&gt; 80
+                Country =&gt; 85
              }
             ,
             Kernel.TrainData.TractionSystem
              {
                 Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
-                Country =&gt; 80
+                Country =&gt; 85
              }
          ]
      }
@@ -1234,17 +1234,17 @@
                       Sequence1 =&gt; [
                           Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1
                            {
-                              D_SUITABILITY =&gt; 1000,
-                              Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Max_axle_load,
-                              M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C2
-                           }
-                          ,
-                          Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1
-                           {
                               D_SUITABILITY =&gt; 400,
                               Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Traction_system,
                               M_VOLTAGE =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
                               NID_CTRACTION =&gt; 85
+                           }
+                          ,
+                          Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1
+                           {
+                              D_SUITABILITY =&gt; 1000,
+                              Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Max_axle_load,
+                              M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C2
                            }
                        ]
                  }
@@ -1269,7 +1269,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="efee40e8-722e-4cc4-9620-b55ebb931fa0"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable (LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation></Expectations>
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable (LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="338382e1-4efa-41f3-aae4-19a91ce443d8"
+>THERE_IS_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable( anItem=&gt; X ) == Boolean.False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1290,7 +1294,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="69ab5fff-1c92-45d9-a616-b89705074b74"
->(COUNT DMI.MasterDMI().Out_RouteUnsuitabilities.RouteUnsuitabilities) == 3</Expectation><Expectation
+>(COUNT DMI.MasterDMI().Out_RouteUnsuitabilities.RouteUnsuitabilities) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="9829518d-bd36-4076-bc59-827e5e74f334"
@@ -1308,10 +1312,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="409876eb-d3bd-4264-b343-ef498fdd5ea4"
->Kernel.MA.EndOfMovementAuthority().Location == 
-(REDUCE Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem =&gt; X ) == Boolean.True
-    USING Default.BaseTypes.MinDistance( X1 =&gt; RESULT , X2 =&gt; X.Distance )
-    INITIAL_VALUE Default.BaseTypes.Distance.Infinity)</Expectation><Expectation
+>Kernel.MA.EndOfMovementAuthority().Location == 700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="2a941fbf-19be-4cd3-b971-d86450092454"
@@ -1325,10 +1326,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="1a65d5a1-0fef-40fe-8e7b-384ae032aaa5"
->Kernel.MA.SvL().Location ==
-(REDUCE Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem=&gt; X ) == Boolean.True
-    USING Default.BaseTypes.MinDistance(X1 =&gt; RESULT, X2 =&gt; X.Distance)
-    INITIAL_VALUE Default.BaseTypes.Distance.Infinity)</Expectation></Expectations>
+>Kernel.MA.SvL().Location == 700.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1348,13 +1346,18 @@
 <TestCases>
 <TestCase
  Implemented="TRUE"
- Name="Check that route unsuitability is correctly identified"
+ Name="Check that route suitability is correctly identified for loading gauges"
  Guid="47850c3d-70bf-412c-b5aa-a35c6b25e36b"
 >
 <ReqRef
  Id="636c0584-97a6-40a1-b98c-c6fb3a5d973f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b800cd6d-3420-4848-938d-717059403fe9"
+>
+</ReqRef><ReqRef
+ Id="072f0acc-a45c-44b9-8efe-422c893a3dfd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="098030f2-721c-4c43-bdb0-89e2a6eeb9ce"
 >
 </ReqRef><Steps>
 <Step
