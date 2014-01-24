@@ -602,7 +602,7 @@ namespace GUI
                         DataDictionaryView.Window modelWindow = null;
                         if (dictionary.NameSpaces.Count > 0)
                         {
-                            modelWindow =new DataDictionaryView.Window(dictionary);
+                            modelWindow = new DataDictionaryView.Window(dictionary);
                             AddChildWindow(modelWindow, DockAreas.Document);
                         }
 
@@ -642,7 +642,7 @@ namespace GUI
                             }
                         }
 
-                        if ( modelWindow != null )
+                        if (modelWindow != null)
                         {
                             modelWindow.Focus();
                         }
