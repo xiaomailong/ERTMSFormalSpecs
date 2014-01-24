@@ -29,7 +29,10 @@ namespace DataDictionary
                 if (Paragraph != null)
                 {
                     Specification.Specification specification = Utils.EnclosingFinder<Specification.Specification>.find(Paragraph);
-                    retVal = specification.Name + " § " + Paragraph.getId();
+                    if (specification != null)
+                    {
+                        retVal = specification.Name + " § " + Paragraph.getId();
+                    }
                 }
 
                 return retVal;

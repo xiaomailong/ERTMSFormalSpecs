@@ -25,7 +25,7 @@
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
@@ -34,7 +34,7 @@
 </StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_C"
@@ -48,7 +48,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_RIU"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_RBC"
@@ -60,7 +60,7 @@
  Guid="6cfef962-5227-4292-a21d-37c9f08fb16b"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MESSAGE.Message"
+ TypeName="Messages.MESSAGE.Message"
  Default=""
  Mode="InOut"
  Implemented="TRUE"

@@ -309,16 +309,16 @@ AND
  Guid="da977d47-40a4-4f83-8177-970236197651"
 >Available ( CurrentLinking() )</PreCondition><PreCondition
  Guid="733c9016-29a2-4746-b9ea-ad24785048aa"
->(FIRST_IN Linkings).BaliseGroupIdentifier== Messages.NID_BG.NID_UNKNOWN</PreCondition><PreCondition
+>(CurrentLinking()).BaliseGroupIdentifier== Messages.NID_BG.NID_UNKNOWN</PreCondition><PreCondition
  Guid="f077e4fd-a6f3-48ca-88f6-1bd8e47a08bd"
->(FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked </PreCondition><PreCondition
+>(FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked</PreCondition><PreCondition
  Guid="8c20f424-e7cd-4ee7-b0bb-33599201a20a"
 >(COUNT CurrentBaliseGroup) &gt;= 2</PreCondition><PreCondition
  Guid="4d37948a-0edd-4996-99f6-0ae6f7cd0f88"
->THERE_IS_IN CurrentBaliseGroup | BaliseHasReposPacketValidForDirection(X)</PreCondition></PreConditions>
+>THERE_IS_IN CurrentBaliseGroup | BaliseHasRepositioningPacketValidForDirection(X)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="Default"
+ Name="Otherwise"
  Guid="eb604892-9b34-4660-a7af-c140125e474b"
 >
 <Expression>False</Expression>
@@ -343,15 +343,11 @@ AND
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="BaliseHasReposPacketValidForDirection"
+ Verified="TRUE"
+ Name="BaliseHasRepositioningPacketValidForDirection"
  Guid="f1956475-bc3e-42b6-a350-bba0af01c996"
 >
 <ReqRef
- Id="efb1d7b7-401e-46ab-93ac-645f2bc80a33"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5cc934bb-a09f-442e-b666-9add9ea5842b"
->
-</ReqRef><ReqRef
  Id="e5ef2878-8ec2-4b95-9b91-af8274b231b1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2601acf9-4290-4a93-b9e8-08bf7ca23a35"
@@ -360,20 +356,25 @@ AND
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.Message"
- Name="message"
+ Name="Message"
  Guid="f0bd316f-cdcd-41eb-8a6a-cf4007997b85"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Checks"
+ Name="Yes"
  Guid="a793ac49-0e4c-4a69-8191-d2bc8465948a"
 >
 <PreConditions>
 <PreCondition
  Guid="6e691e1f-d66d-4277-9be2-bbd6ec462b45"
->THERE_IS_IN message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</PreCondition></PreConditions>
-<Expression>True</Expression>
+>THERE_IS_IN Message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="5f0f9a73-022d-4e21-b9f4-c3e95023aea4"
+>
+<Expression>Boolean.False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -674,6 +675,7 @@ IN Linkings</Action></Actions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
+ Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="CleanLinkingInfo"
  Guid="2959fbb4-e4a1-42f4-8370-fe198ce97294"

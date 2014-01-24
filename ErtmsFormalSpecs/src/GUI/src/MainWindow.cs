@@ -599,9 +599,11 @@ namespace GUI
                         }
 
                         // Only open the model view window if model elements are available in the opened file
+                        DataDictionaryView.Window modelWindow = null;
                         if (dictionary.NameSpaces.Count > 0)
                         {
-                            AddChildWindow(new DataDictionaryView.Window(dictionary), DockAreas.Document);
+                            modelWindow = new DataDictionaryView.Window(dictionary);
+                            AddChildWindow(modelWindow, DockAreas.Document);
                         }
 
                         // Only shold the tests window if tests are defined in the opened file
@@ -638,6 +640,11 @@ namespace GUI
                             {
                                 historyWindow.RefreshModel();
                             }
+                        }
+
+                        if (modelWindow != null)
+                        {
+                            modelWindow.Focus();
                         }
 
                         SetCoverageStatus(EFSSystem);
@@ -678,7 +685,7 @@ namespace GUI
                 {
                     retVal = EFSSystem.Dictionaries[0];
                 }
-                else
+                else if (EFSSystem.Dictionaries.Count > 1)
                 {
                     DictionarySelector.DictionarySelector dictionarySelector = new DictionarySelector.DictionarySelector(EFSSystem);
                     dictionarySelector.ShowDialog(this);

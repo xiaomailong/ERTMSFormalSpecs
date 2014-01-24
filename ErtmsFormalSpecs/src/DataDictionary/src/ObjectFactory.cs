@@ -237,6 +237,10 @@ namespace DataDictionary
         /// </summary>
         public bool AutomaticallyGenerateGuid
         {
+            get
+            {
+                return DefaultValueSetter.AutomaticallyGenerateGuid;
+            }
             set
             {
                 DefaultValueSetter.AutomaticallyGenerateGuid = value;

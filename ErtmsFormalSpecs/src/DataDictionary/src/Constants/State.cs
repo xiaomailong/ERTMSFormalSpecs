@@ -84,6 +84,7 @@ namespace DataDictionary.Constants
         /// </summary>
         public override void ClearMessages()
         {
+            LogCount -= Messages.Count;
             base.Messages.Clear();
         }
 

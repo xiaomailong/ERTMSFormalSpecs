@@ -25,7 +25,7 @@
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
@@ -34,7 +34,7 @@
 </StructureElement><StructureElement
  TypeName="NID_STMX"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_STMX"
@@ -48,7 +48,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_STMEVENT"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_STMEVENT"
@@ -62,7 +62,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_DISCSENDER"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_DISCSENDER"
@@ -76,7 +76,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_DISCTYPE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_DISCTYPE"
@@ -90,7 +90,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_DISCREASON"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_DISCREASON"
@@ -104,7 +104,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="STM_SYSTEM_STATUS_MESSAGE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="STM_SYSTEM_STATUS_MESSAGE"
@@ -118,7 +118,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_STMPACKET"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_STMPACKET"
@@ -130,9 +130,9 @@
  Guid="93b0bdd9-651e-486e-a7b2-c98640bba944"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="L_STMPACKET"
+ TypeName="MessageTypes.Length"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_STMPACKET"

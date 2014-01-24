@@ -61,19 +61,6 @@ One value of this variable represents the identity of an STM reflecting each com
 Identifier of the message.</Comment>
 </Range><Range
  MinValue="0"
- MaxValue="2047"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="L_MESSAGE"
- Guid="6ece172c-af31-4b36-b976-ddaa96b37717"
->
-<Comment>Message length
-L_MESSAGE indicates the length of the message in bytes, 
-         including all variables in the message header (L_MESSAGE also).</Comment>
-</Range><Range
- MinValue="0"
  MaxValue="31"
  Precision="IntegerPrecision"
  Default="0"
@@ -208,24 +195,6 @@ Used update label data recorded.  Used only in conjunction with HOUR, MINUTES an
  Value="31"
  Name="Unknown"
  Guid="b4bfe16d-dfb7-4f71-b7c9-65c59f62e778"
->
-</EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="1023"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="V_TRAIN"
- Guid="c200baab-78d0-4376-902c-1a67e9c0bfa9"
->
-<Comment>This field contains the current speed of the train.</Comment>
-<SpecialValues>
-<EnumValue
- Value="1023"
- Name="standstill"
- Guid="5e09a74a-30f4-4316-b03f-b6ceab43850c"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -383,24 +352,6 @@ Country/region identity (NID_C) + balise identity number of last relevant balise
 </EnumValue></SpecialValues>
 </Range><Range
  MinValue="0"
- MaxValue="32767"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="D_LRBG"
- Guid="597b1e64-9639-46b2-9efa-38bf13f818d1"
->
-<Comment>Distance between the last relevant balise group and the estimated front end of the train (the side of the active cab).</Comment>
-<SpecialValues>
-<EnumValue
- Value="32767"
- Name="Spare"
- Guid="b6eaf372-ad4b-4a16-98eb-2c5dcbbad847"
->
-</EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
  MaxValue="3"
  Precision="IntegerPrecision"
  Default="0"
@@ -465,56 +416,6 @@ Country/region identity (NID_C) + balise identity number of last relevant balise
  Guid="c4987b67-a810-4883-80cb-a30be43f7f9e"
 >
 </EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="32767"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="L_DOUBTOVER"
- Guid="b0ff22f4-54d1-49bc-93c2-c750e924161f"
->
-<Comment>Over-reading error
-L_DOUBTOVER is the difference between the lower bound of the confidence interval and the estimated value of D_LRBG</Comment>
-<SpecialValues>
-<EnumValue
- Value="32767"
- Name="Unknown"
- Guid="764bbea7-5da5-41ff-a9d0-3f7995ee9403"
->
-</EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="32767"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="L_DOUBTUNDER"
- Guid="69025aec-4bdf-4dec-a57c-5bf4cd6b0685"
->
-<Comment>Under-reading error
-L_DOUBTUNDER is the difference between the upper bound of the confidence interval and the estimated value of D_LRBG</Comment>
-<SpecialValues>
-<EnumValue
- Value="32767"
- Name="Unknown"
- Guid="0f67a87e-074b-4b9c-8a68-a34c8cf89bd8"
->
-</EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="127"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="V_MAXTRAIN"
- Guid="1dfe4943-14a9-4da3-a0c5-4fa4df0bba5e"
->
-<Comment>Maximum permitted train speed.
-Maximum permitted speed for the train, taking into account the maximum speed of every vehicle contained in the train set.</Comment>
 </Range><Range
  MinValue="0"
  MaxValue="15"
@@ -678,18 +579,6 @@ Train category used for the static speed profile calculation. Thanks to NC_TRAIN
  Guid="81a3ee74-a98a-421f-9063-4cbf1bedbf60"
 >
 </EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="4095"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="L_TRAIN"
- Guid="5ceed320-a0fc-4edc-8d30-b1a754e3c366"
->
-<Comment>Train length
-This is the absolute real length of the train.</Comment>
 </Range><Range
  MinValue="0"
  MaxValue="4095"
@@ -1294,18 +1183,6 @@ This is the build up time for the emergency brake</Comment>
 Number of iterations of speed sections needed to build a brake model, following this variable in the message</Comment>
 </Range><Range
  MinValue="0"
- MaxValue="1023"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="V_BRAKE_EMERGENCY_COMP"
- Guid="93001a70-7799-4d97-a82b-13ac2a4941bd"
->
-<Comment>Emeregency brake speed component
-It contains the lowest speed value of the speed section to which the related emeregency brake deceleration component is applicable</Comment>
-</Range><Range
- MinValue="0"
  MaxValue="255"
  Precision="IntegerPrecision"
  Default="0"
@@ -1693,18 +1570,6 @@ It contains the command state of the brakes</Comment>
 This variable provides the identity of the RIU belonging to NID_C. The RIU ETCS identity is given by NID_C + NID_RIU</Comment>
 </Range><Range
  MinValue="0"
- MaxValue="16777215"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="NID_MN"
- Guid="ee3f82b5-7fb0-49e5-8e15-90c57a2d30eb"
->
-<Comment>Identity of Radio Network
-The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character &quot;F&quot;. For further information about NID_MN refer to Subset-54.</Comment>
-</Range><Range
- MinValue="0"
  MaxValue="16383"
  Precision="IntegerPrecision"
  Default="0"
@@ -1722,18 +1587,6 @@ This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS 
  Guid="c7c80a54-8a8c-430a-8612-4fe0073de254"
 >
 </EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="18446744073709551615"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="NID_RADIO"
- Guid="47a4fb44-8813-4ff8-b79f-956d30c3aa13"
->
-<Comment>Radio subscriber number.
-Quoted as a 16 digit decimal number.</Comment>
 </Range><Range
  MinValue="0"
  MaxValue="255"
@@ -2454,17 +2307,6 @@ STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Commen
 </EnumValue></SpecialValues>
 </Range><Range
  MinValue="0"
- MaxValue="8191"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="L_STMPACKET"
- Guid="5793d850-a297-4794-a9bc-4920a19d1706"
->
-<Comment>Length of the STM packet.</Comment>
-</Range><Range
- MinValue="0"
  MaxValue="255"
  Precision="IntegerPrecision"
  Default="0"
@@ -2574,18 +2416,6 @@ Indicates whetehr no cold movement has ocurred or if a cold movement has been de
 Q_TEXT is a pointer to select a fixed text message from the defined table. The language selected by the driver for the MMI shall be used additionally as a qualifier to choose the appropriate language table.</Comment>
 </Range><Range
  MinValue="0"
- MaxValue="255"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="L_TEXT"
- Guid="9f31e5be-1859-42f2-80a6-a287b4cbda6a"
->
-<Comment>Length of text string
-L_TEXT defines the length of a text string (L_TEXT * X_TEXT)</Comment>
-</Range><Range
- MinValue="0"
  MaxValue="3"
  Precision="IntegerPrecision"
  Default="0"
@@ -2665,101 +2495,6 @@ Supervision status of the speed and distance monitoring</Comment>
  Value="4"
  Name="Intervention_status"
  Guid="3d4e7b7f-7375-4c5f-a6f5-f47a5e9ad118"
->
-</EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="1023"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="V_PERM"
- Guid="180255c7-8f17-45a6-bb98-927c2981d811"
->
-<Comment>Permitted speed
-Permited speed displayed to the driver</Comment>
-<SpecialValues>
-<EnumValue
- Value="1023"
- Name="none"
- Guid="b434e2b2-45b8-47cb-a87a-e307900fc699"
->
-</EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="1023"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="V_FLOI"
- Guid="3dac98b2-d2a9-4ec7-af9d-cdd67f30f4ef"
->
-<Comment>First line of intervention speed
-FLOI speed displayed to the driver</Comment>
-<SpecialValues>
-<EnumValue
- Value="1023"
- Name="none"
- Guid="92d8bf05-9c2e-4b8f-8f2f-c73d2ada980c"
->
-</EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="1023"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="V_TARGET"
- Guid="7542e557-cb8a-4604-bd4f-d738da98b68f"
->
-<Comment>Target speed
-Target speed displayed to the driver</Comment>
-<SpecialValues>
-<EnumValue
- Value="1023"
- Name="none"
- Guid="97bf9b4b-99ce-4b89-aedd-ed0ee0007115"
->
-</EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="32767"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="D_TARGET"
- Guid="40eb5b03-e220-4048-afd5-48f701ca5faf"
->
-<Comment>Target distance
-Target speed displayed to the driver</Comment>
-<SpecialValues>
-<EnumValue
- Value="32767"
- Name="none"
- Guid="cfe7f59b-0b73-4bc3-b1f4-69ff21328ebf"
->
-</EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="1023"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="V_RELEASE"
- Guid="3c3a2d94-de18-42ca-9700-1ca4faf638eb"
->
-<Comment>Release speed
-Release speed displayed to the driver.</Comment>
-<SpecialValues>
-<EnumValue
- Value="1023"
- Name="None"
- Guid="dc285fd8-e828-45b7-8680-dedca5c432d8"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4945,42 +4680,6 @@ This variable indicates the type of the driver&apos;s selection for the RBC data
  Guid="931dcf0a-0306-494d-bc00-f6db5ce8e3e0"
 >
 </EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
- MaxValue="4294967295"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="NID_OPERATIONAL"
- Guid="c28148f1-0f1f-4551-a286-38af30ad6efb"
->
-<Comment>Train Running Number
-This is the operational train running number. The NID_OPERATIONAL consists of up to 8 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be entered first. In case the NID_OPERATIONAL is shorter than 8 digits, the remaining space is to be filled with special character “F”.</Comment>
-</Range><Range
- MinValue="0"
- MaxValue="1023"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="V_SR"
- Guid="cea31955-f51d-4702-8c2a-bd44b0541cde"
->
-<Comment>Staff responsible speed
-Speed allowed running in Staff Responsible, modified by the driver through the DMI</Comment>
-</Range><Range
- MinValue="0"
- MaxValue="131071"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="D_SR"
- Guid="bcd5c47f-72f1-4b9e-8716-f27e787fa2d3"
->
-<Comment>Staff Responsible distance
-Distance allowed running in Staff responsible, modified by the driver through the DMI. The maximum value corresponds to the one that is considered appropiate from operational point of view</Comment>
 </Range><Range
  MinValue="0"
  MaxValue="63"
