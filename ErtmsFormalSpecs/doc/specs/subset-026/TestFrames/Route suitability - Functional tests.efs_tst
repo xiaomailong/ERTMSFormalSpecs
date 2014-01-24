@@ -1308,10 +1308,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="409876eb-d3bd-4264-b343-ef498fdd5ea4"
->Kernel.MA.EndOfMovementAuthority().Location == 
-(REDUCE Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem =&gt; X ) == Boolean.True
-    USING Default.BaseTypes.MinDistance( X1 =&gt; RESULT , X2 =&gt; X.Distance )
-    INITIAL_VALUE Default.BaseTypes.Distance.Infinity)</Expectation><Expectation
+>Kernel.MA.EndOfMovementAuthority().Location == 700</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="2a941fbf-19be-4cd3-b971-d86450092454"
@@ -1325,10 +1322,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="1a65d5a1-0fef-40fe-8e7b-384ae032aaa5"
->Kernel.MA.SvL().Location ==
-(REDUCE Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem=&gt; X ) == Boolean.True
-    USING Default.BaseTypes.MinDistance(X1 =&gt; RESULT, X2 =&gt; X.Distance)
-    INITIAL_VALUE Default.BaseTypes.Distance.Infinity)</Expectation></Expectations>
+>Kernel.MA.SvL().Location == 700</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
