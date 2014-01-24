@@ -262,8 +262,6 @@ namespace DataDictionary
 
             if (variable != null)
             {
-                checkComment(variable);
-
                 if (variable.Type == null)
                 {
                     variable.AddError("Cannot find type for variable");
