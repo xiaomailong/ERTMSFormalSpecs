@@ -1162,13 +1162,13 @@
             Kernel.TrainData.TractionSystem
              {
                 Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
-                Country =&gt; 80
+                Country =&gt; 85
              }
             ,
             Kernel.TrainData.TractionSystem
              {
                 Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
-                Country =&gt; 80
+                Country =&gt; 85
              }
          ]
      }
@@ -1234,17 +1234,17 @@
                       Sequence1 =&gt; [
                           Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1
                            {
-                              D_SUITABILITY =&gt; 1000,
-                              Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Max_axle_load,
-                              M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C2
-                           }
-                          ,
-                          Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1
-                           {
                               D_SUITABILITY =&gt; 400,
                               Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Traction_system,
                               M_VOLTAGE =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
                               NID_CTRACTION =&gt; 85
+                           }
+                          ,
+                          Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1
+                           {
+                              D_SUITABILITY =&gt; 1000,
+                              Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Max_axle_load,
+                              M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C2
                            }
                        ]
                  }
@@ -1269,7 +1269,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="efee40e8-722e-4cc4-9620-b55ebb931fa0"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable (LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation></Expectations>
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable (LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="338382e1-4efa-41f3-aae4-19a91ce443d8"
+>THERE_IS_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable( anItem=&gt; X ) == Boolean.False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1290,7 +1294,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="69ab5fff-1c92-45d9-a616-b89705074b74"
->(COUNT DMI.MasterDMI().Out_RouteUnsuitabilities.RouteUnsuitabilities) == 3</Expectation><Expectation
+>(COUNT DMI.MasterDMI().Out_RouteUnsuitabilities.RouteUnsuitabilities) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="9829518d-bd36-4076-bc59-827e5e74f334"
@@ -1308,7 +1312,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="409876eb-d3bd-4264-b343-ef498fdd5ea4"
->Kernel.MA.EndOfMovementAuthority().Location == 700</Expectation><Expectation
+>Kernel.MA.EndOfMovementAuthority().Location == 700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="2a941fbf-19be-4cd3-b971-d86450092454"
@@ -1322,7 +1326,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="1a65d5a1-0fef-40fe-8e7b-384ae032aaa5"
->Kernel.MA.SvL().Location == 700</Expectation></Expectations>
+>Kernel.MA.SvL().Location == 700.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
