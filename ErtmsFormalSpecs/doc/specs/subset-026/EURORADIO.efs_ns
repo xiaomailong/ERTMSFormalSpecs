@@ -1808,62 +1808,6 @@
  Guid="80d3a386-cf7c-4ca1-91f3-31d8046462f2"
 >Kernel.SR.SRAuthorisationReceived ( Packet =&gt; Message.SR_AUTHORISATION )</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="ConditionalEmergencyStop"
- Guid="6f0f5cdd-e25c-4283-9e41-fef118754d3b"
->
-<ReqRef
- Id="33e62917-dd34-4df6-ad24-d4c5147a5987"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5596ea6f-faf5-460b-ac6e-2e312c094a56"
->
-</ReqRef><ReqRef
- Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9c86e058-ca1e-42b0-9303-c4e566de8373"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="ConditionalEmergencyStop"
- Guid="98010ddc-177d-4d98-8adb-be349dcf8f5c"
->
-<PreConditions>
-<PreCondition
- Guid="d4e425b7-4ce6-4cf0-af42-5f8a834a944e"
->Available ( Message.CONDITIONAL_EMERGENCY_STOP)</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="UnconditionalEmergencyStop"
- Guid="be0249ad-987d-4bbf-b417-be7bbae786d5"
->
-<ReqRef
- Id="5b84aa5e-12e2-49e0-bafe-11832a934de5"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e01dd566-bd65-48f4-9012-6785ebca7bbe"
->
-</ReqRef><ReqRef
- Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f94d8b4a-2109-4ef8-a6b7-f0329a4cda90"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="UnconditionalEmergencyStop"
- Guid="8633e813-1428-4644-9c68-42b095588344"
->
-<PreConditions>
-<PreCondition
- Guid="a00d2c7b-bd29-46d1-b821-05d4c383691e"
->Available ( Message.UNCONDITIONAL_EMERGENCY_STOP)</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
