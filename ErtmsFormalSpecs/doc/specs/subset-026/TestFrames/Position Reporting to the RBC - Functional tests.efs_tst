@@ -188,7 +188,9 @@
 >NOT Available(EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c1a62600-0651-4856-8f7c-bcd02402f1db"
->EURORADIO.PositionReport.LastPositionReport.Time == 1400.0</Expectation></Expectations>
+>EURORADIO.PositionReport.LastPositionReport.Time &gt;= 1400.0
+  AND
+EURORADIO.PositionReport.LastPositionReport.Time &lt; 1401.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -257,7 +259,9 @@
 >NOT Available(EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
  Kind="Instantaneous"
  Guid="f471987a-6343-409b-b51e-b94e41ccafe8"
->EURORADIO.PositionReport.LastPositionReport.Time == 1500.0</Expectation></Expectations>
+>EURORADIO.PositionReport.LastPositionReport.Time &gt;= 1500.0
+  AND
+EURORADIO.PositionReport.LastPositionReport.Time &lt; 1501.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -584,7 +588,9 @@
 >EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation == EURORADIO.PositionReport.PositionReportSpecialLocation.DoNotSend</Expectation><Expectation
  Kind="Instantaneous"
  Guid="7e50af8b-e2dc-463a-90bf-79d713a9a565"
->EURORADIO.PositionReport.LastPositionReport.Time == 2000.0</Expectation><Expectation
+>EURORADIO.PositionReport.LastPositionReport.Time &gt;= 2000.0
+  AND
+EURORADIO.PositionReport.LastPositionReport.Time &lt; 2001.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="84618ac2-36ee-4463-8874-fe52b694a384"
 >EURORADIO.PositionReport.SendReportDueToSpecialLocationNow() == True</Expectation></Expectations>
@@ -656,7 +662,9 @@
 >EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation == EURORADIO.PositionReport.PositionReportSpecialLocation.DoNotSend</Expectation><Expectation
  Kind="Instantaneous"
  Guid="53e5e60a-7e44-436c-aae3-9221e29b5f87"
->EURORADIO.PositionReport.LastPositionReport.Time == 2400.0</Expectation><Expectation
+>EURORADIO.PositionReport.LastPositionReport.Time &gt;= 2400.0
+  AND
+EURORADIO.PositionReport.LastPositionReport.Time &lt; 2401.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="7ae77fe2-9eea-4df8-bff8-7bb1b804be0f"
 >EURORADIO.PositionReport.SendReportDueToPositionReportSpecialLocationReached() == True</Expectation></Expectations>
