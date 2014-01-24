@@ -2576,11 +2576,11 @@
  Guid="a6e4c548-fc30-4a48-a867-de290faef848"
 >Kernel.Mode &lt;- Mode.SB</Action><Action
  Guid="a32d366e-a009-43ce-afdb-bf822b7a5b75"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;RBC_Id&apos;</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.Id.Id &lt;- 1414</Action><Action
  Guid="49a02fa7-609c-4f27-9220-e024a7262cbd"
 >EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="74d27552-45ef-4771-a076-11f4915937bf"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;123456789&apos;</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ContactData.PhoneNumber &lt;- &apos;123456789&apos;</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2607,10 +2607,10 @@
 >EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
  Guid="b0335f7e-31af-4164-a68e-4da640e1397a"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber == &apos;123456789&apos;</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().ContactData.PhoneNumber == &apos;123456789&apos;</Expectation><Expectation
  Kind="Instantaneous"
  Guid="954362db-6975-48bd-9098-a7c675c861af"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id == &apos;RBC_Id&apos;</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().ContactData.Id.Id == 1414</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

@@ -3345,7 +3345,7 @@
  Guid="2113d524-8d23-4949-b519-c0e650e82773"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D11</Action><Action
  Guid="c6ae63f5-cb2a-40db-a69a-d7023e464dad"
->EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Initialized</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3386,7 +3386,7 @@
  Guid="9f9abeb8-ce97-48b8-a11e-a384f3ca0e66"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D11</Action><Action
  Guid="76853ac8-51f9-4091-9a20-48904c1099fa"
->EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Inactive</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7101,7 +7101,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Guid="baa5e5a7-95fb-4f9b-8694-4832a9c76a3e"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A35</Action><Action
  Guid="34b7b911-d049-456d-b7f8-45b8fd3331ed"
->EURORADIO.CurrentRBCConnection.MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     SOM_POSITION_REPORT_CONFIRMED_BY_RBC =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SOM_POSITION_REPORT_CONFIRMED_BY_RBC.Message
     {
@@ -7368,7 +7368,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Actions>
 <Action
  Guid="85f266d1-2940-4361-b377-39713c445ae6"
->EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Initialized</Action><Action
  Guid="85259982-d30e-4fe6-bda1-4aa9f5207958"
 >EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- False</Action></Actions>
 </SubStep></SubSteps>
@@ -7420,7 +7420,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Kind="Instantaneous"
  DeadLine="100"
  Guid="28e8485f-33f7-4763-ad39-b125efefe060"
->EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Terminating</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().ConnectionState in EURORADIO.ConnectionStateEnum.Terminating</Expectation><Expectation
  Kind="Instantaneous"
  Guid="1b492b24-816e-4599-b694-87accdcad072"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A40</Expectation></Expectations>
