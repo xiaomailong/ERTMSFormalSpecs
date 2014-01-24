@@ -514,15 +514,18 @@ namespace GUI
         {
             BaseTreeNode retVal = null;
 
-            retVal = FindNode(element);
-            if (retVal != null)
+            if (element != null)
             {
-                Selected = retVal;
-
-                if (getFocus)
+                retVal = FindNode(element);
+                if (retVal != null)
                 {
-                    Form form = GUIUtils.EnclosingFinder<Form>.find(this);
-                    form.BringToFront();
+                    Selected = retVal;
+
+                    if (getFocus)
+                    {
+                        Form form = GUIUtils.EnclosingFinder<Form>.find(this);
+                        form.BringToFront();
+                    }
                 }
             }
 
