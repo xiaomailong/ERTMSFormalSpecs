@@ -251,7 +251,7 @@
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="IsUnsuitability"
+ Name="IsUnsuitable"
  Guid="c7deead7-d55a-45db-96a6-766ccd730dc2"
 >
 <ReqRef
@@ -359,11 +359,11 @@ NOT THERE_IS_IN
   AND
 RouteSuitabilityProfile.Items != []
   AND
-THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitability ( X )</PreCondition></PreConditions>
+THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
-    Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitability ( X )
+    Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitable ( X )
                         USING BaseTypes.MinDistance ( X1 =&gt; X.Distance, X2 =&gt; RESULT )
                         INITIAL_VALUE BaseTypes.Distance.Infinity,
     Speed =&gt; 0.0
@@ -402,11 +402,11 @@ THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitability ( X )</PreCondition>
   AND
 RouteSuitabilityProfile.Items != []
   AND
-THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitability ( X )</PreCondition></PreConditions>
+THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
-    Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitability ( X )
+    Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitable ( X )
                         USING BaseTypes.MinDistance ( X1 =&gt; X.Distance, X2 =&gt; RESULT )
                         INITIAL_VALUE BaseTypes.Distance.Infinity,
     Speed =&gt; 0.0
@@ -815,7 +815,7 @@ ON
 <PreConditions>
 <PreCondition
  Guid="1a52cb97-8d8a-4b18-8f75-61e6c0468f61"
->THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitability ( X )</PreCondition></PreConditions>
+>THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c06648a3-cff4-478f-8884-305f08c7951e"
