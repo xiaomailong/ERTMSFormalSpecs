@@ -120,11 +120,6 @@
  Guid="a0074619-14df-4449-9fd4-54c207eb2de4"
 >
 </EnumValue><EnumValue
- Value="4"
- Name="ConnectionLost"
- Guid="ac7b014a-7554-4eb5-9c97-37295981e630"
->
-</EnumValue><EnumValue
  Value="1"
  Name="Connecting"
  Guid="953215a3-3f51-4671-8898-7ba8808f4c88"
@@ -153,6 +148,94 @@
  Guid="cb738b09-f0d3-4a4e-8c82-014ee43482cc"
 >
 </ReqRef><Comment>Represents one instance of communication with RBC.</Comment>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Name="Update safe radio connection status"
+ Guid="47c49257-a883-48fb-942d-9527020dabda"
+>
+<Comment>TODO: review it</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Update safe radio connection status"
+ Guid="50ff7b17-e766-4694-a834-e051d2774058"
+>
+<PreConditions>
+<PreCondition
+ Guid="ab957c73-b529-41dd-a6cf-80fc049e3437"
+>PreviousConnectionState != ConnectionState</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Evaluate new state"
+ Guid="e37bd498-5df5-4573-8f6f-507d492afd58"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="New state is initialized"
+ Guid="5dbabc41-4f63-4ab5-a64b-3c7f7ca1d334"
+>
+<PreConditions>
+<PreCondition
+ Guid="ed415371-1c8b-48aa-b2f6-75cee32ce7f0"
+>ConnectionState == ConnectionStateEnum.Initialized</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3cc0b83e-7d64-4a40-aec4-0c9105789548"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="New state is inactive, after terminating"
+ Guid="3d778121-7ef5-4c38-aeb2-25bb0b9f0b4c"
+>
+<PreConditions>
+<PreCondition
+ Guid="f905310b-f5ca-4a7b-af6f-7c5e4f4b2d50"
+>ConnectionState == ConnectionStateEnum.Inactive</PreCondition><PreCondition
+ Guid="42327c32-48f8-4e14-82e6-318f50207a3a"
+>PreviousConnectionState == ConnectionStateEnum.Terminating</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f6f118e1-350f-42c3-ae29-dad069a67a4c"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="New state is inactive, connection lost"
+ Guid="851b2219-c98d-4454-9370-0ad0c22f9e7e"
+>
+<PreConditions>
+<PreCondition
+ Guid="0ea052a6-bff5-4a59-b756-6e3e218f01d7"
+>ConnectionState == ConnectionStateEnum.Inactive</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ba343dfc-2eee-4605-8b2b-78f34af260fb"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ Name="Update connection status"
+ Guid="23151048-ddd8-4a43-b342-358d1d5d1ed8"
+>
+<Comment>TODO: review it</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Update connection status"
+ Guid="cb2b1311-0508-456e-88c3-6b3d5d74bafb"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f94cbf31-4d6f-4cd5-8f24-8cd09655aa76"
+>PreviousConnectionState &lt;- ConnectionState</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -652,6 +735,15 @@
  Guid="1ca4ec93-c578-45ad-bbdb-e44c71c1f9aa"
 >
 <Comment>Data needed to establish a communication session.</Comment>
+</StructureElement><StructureElement
+ TypeName="ConnectionStateEnum"
+ Default="ConnectionStateEnum.Inactive"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousConnectionState"
+ Guid="e9a5cd9d-6e51-4883-b964-1f743253ed28"
+>
+<Comment>Used to detect changes of the connection state.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  InitialState="NotConnected"
@@ -1056,9 +1148,9 @@
  Name="Value"
  Guid="10904d1f-8fc9-4d89-a374-c156b560a9fe"
 >
-<Expression>Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection
+<Expression>Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp
   OR
-Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</Expression>
+Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</Expression>
 </Case></Cases>
 </Function><Function
  Type="RBCStruct"
@@ -1474,6 +1566,27 @@ Terminal2.RBCConnection.ConnectionState == ConnectionStateEnum.Inactive</Express
  Name="CloseRBCSession"
  Guid="2691fd9c-77e5-40c8-859a-310f132a7a1c"
 >
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Close the session"
+ Guid="b37006ef-5ce5-4c15-9dd8-55ec01214286"
+>
+<Comment>TODO: to be implemented</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Close the session"
+ Guid="4446a776-8c46-438a-8b89-c979faf871ba"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ba60038a-715e-4d02-a3b5-689f94b384c1"
+>CurrentRBCConnection().SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
  Name="ContactRIU"
