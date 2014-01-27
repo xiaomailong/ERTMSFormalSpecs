@@ -1582,7 +1582,7 @@ Terminal2.IsRegistered</Expression>
  Guid="dd160343-60f0-4795-ae66-17e29ea4cd14"
 >AllSessionsClosed()</PreCondition><PreCondition
  Guid="c12c7ead-1138-41ac-bb3b-164fdeda2b0e"
->LastKnownRBC != EMPTY</PreCondition></PreConditions>
+>LastKnownRBC.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6f654a64-8159-4c37-b8d2-e71af5809411"
@@ -2476,7 +2476,7 @@ Terminal2.IsRegistered</Expression>
 <Comment>RIU connection.</Comment>
 </Variable><Variable
  Type="RBCContactStruct"
- DefaultValue="EMPTY"
+ DefaultValue=""
  VariableMode="Internal"
  Implemented="TRUE"
  Name="LastKnownRBC"
