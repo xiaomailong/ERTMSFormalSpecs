@@ -9637,11 +9637,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="aMessage"
  Guid="b1406273-1565-491b-b8e1-82c7a2f264b3"
 >
-</Parameter><Parameter
- Type="Messages.Q_SCALE"
- Name="Scale"
- Guid="d51f5950-d406-47c3-9471-3ef566bf0fd8"
->
 </Parameter></Parameters>
 <Rules>
 <Rule
@@ -9663,12 +9658,14 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Action
  Guid="9a5fa779-e4b0-4c4a-b5bf-584bb7826348"
 >INSERT
-CreateEmergencyStop ( aIsConditional =&gt; Boolean.True,
-     aId =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_EM,
-     aStopLocation =&gt; Default.MessageTypes.QScaleDistance(
-    distance =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP,
-    scale =&gt; Scale )
-)
+CreateEmergencyStop (
+    aIsConditional =&gt; Boolean.True,
+    aId =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_EM,
+    aStopLocation =&gt; Default.MessageTypes.QScaleDistance (
+        distance =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP,
+        scale =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.Q_SCALE
+     )
+ )
 
 IN
 Kernel.EmergencyStops</Action></Actions>
@@ -9684,9 +9681,10 @@ Kernel.EmergencyStops</Action></Actions>
 <Action
  Guid="8ef76b33-4a6b-4e7e-af81-02d5dbbb7354"
 >INSERT
-CreateEmergencyStop ( aIsConditional =&gt; Boolean.False,
-     aId =&gt; aMessage.UNCONDITIONAL_EMERGENCY_STOP.NID_EM,
-     aStopLocation =&gt; 0.0
+CreateEmergencyStop (
+    aIsConditional =&gt; Boolean.False,
+    aId =&gt; aMessage.UNCONDITIONAL_EMERGENCY_STOP.NID_EM,
+    aStopLocation =&gt; 0.0
 )
 
 IN

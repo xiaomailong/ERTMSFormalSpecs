@@ -2436,6 +2436,85 @@ Terminal2.IsRegistered</Expression>
  Guid="80d3a386-cf7c-4ca1-91f3-31d8046462f2"
 >Kernel.SR.SRAuthorisationReceived ( Packet =&gt; Message.SR_AUTHORISATION )</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Conditional Emergency Stop"
+ Guid="6219bab3-329e-48c8-ac3b-43208d1cff15"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Conditional Emergency Stop"
+ Guid="3c618754-ea0f-49ef-8876-9f2dcb57eaeb"
+>
+<PreConditions>
+<PreCondition
+ Guid="7ee563c7-9f56-4ea4-a306-7f427f0e871d"
+>Available ( Message.CONDITIONAL_EMERGENCY_STOP )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="89a9e458-8515-4e79-986b-d9a20d7ab21c"
+>Kernel.AddEmergencyStop( aMessage =&gt; Message )</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Train has not reached stop location"
+ Guid="a3dde26d-052a-40b9-91b8-f0946f5668e9"
+>
+<ReqRef
+ Id="e0cce2b4-2341-4ff7-8496-f341142799d3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c654505e-1d72-4ca8-a573-c98379db1ce8"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Train has not reached stop location"
+ Guid="906d528d-1a88-4d5d-8ab4-4532dd386338"
+>
+<Comment>If the train has not yet reached the stop location defined in the message, the stop location is the new EOA and SvL</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b45902ce-1ad5-4544-b07a-efd3ce8b7857"
+>Kernel.TrainPosition.FrontEndPosition( PointOfInterest=&gt;DistanceInterval.Min )  &lt; 
+Default.MessageTypes.QScaleDistance(
+    distance =&gt; Message.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP,
+    scale =&gt; Message.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP
+)
+
+</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="13e508f8-8fd5-4eab-af3b-ebd073c96e70"
+>Kernel.AddEmergencyStop( aMessage =&gt; Message )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Unconditional Emergency Stop"
+ Guid="d181ba0c-6ecc-4a2b-9f9b-3d3ea2832731"
+>
+<ReqRef
+ Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="85d11b25-dd44-4bb1-b9df-67a55173645e"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Unconditional Emergency Stop"
+ Guid="2c426004-97a7-4ae6-8fa9-767322005526"
+>
+<PreConditions>
+<PreCondition
+ Guid="2a1175db-f9be-4516-b844-38ee6b37cd28"
+>Available ( Message.UNCONDITIONAL_EMERGENCY_STOP )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="14b50c09-3233-48b7-8e73-bbdeae756ac9"
+>Kernel.AddEmergencyStop( aMessage =&gt; Message )</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <Variables>
