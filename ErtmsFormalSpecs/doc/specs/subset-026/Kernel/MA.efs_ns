@@ -622,6 +622,22 @@
  Guid="14420dcd-645e-4886-9f63-380fed6e3f3d"
 >
 </ReqRef><Comment>Represents MA sections.</Comment>
+</Collection><Collection
+ TypeName="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Default="[EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]"
+ NeedsRequirement="FALSE"
+ Name="SvLsCol"
+ Guid="e097c5b4-ca09-4f77-bdb7-5a2438b19d3e"
+>
+<Comment>This collection is used to keep the SvLs from different sources so that the most restrictive one can be accessed</Comment>
+</Collection><Collection
+ TypeName="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Default="[EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]"
+ NeedsRequirement="FALSE"
+ Name="EOAsCol"
+ Guid="12ba0846-ca7e-4950-af35-aafe85e10270"
+>
+<Comment>This collection is used to keep the EOAs from different sources so that the most restrictive one can be accessed</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -1726,6 +1742,43 @@ Default.BaseTypes.LengthToDistance(
 >
 <Expression>Boolean.False</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Kernel.SpeedAndDistanceMonitoring.Target"
+ NeedsRequirement="FALSE"
+ Name="CreateEOA"
+ Guid="4eae3efb-cf37-40c6-b570-057cfe92f4fb"
+>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Length"
+ Name="aLength"
+ Guid="19ee40a1-1c14-4335-9c10-ba93e1f10c50"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="aLocation"
+ Guid="be24d2d0-10d8-450c-9e0a-02ed43a8c656"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="aSpeed"
+ Guid="1c00a9ac-74f3-49ee-b5e4-377bdb739c13"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Add a Target item to EOAsCol"
+ Guid="007ca2b0-325c-4d7c-9d0d-91c1956a9c62"
+>
+<Expression>INSERT </Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="&lt;Function22&gt;"
+ Guid="1b4e25f8-5bda-470c-b44a-553b36a13e31"
+>
+<Cases>
+</Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
