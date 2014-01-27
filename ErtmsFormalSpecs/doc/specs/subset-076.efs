@@ -661,20 +661,9 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
  DeadLine="1000"
  Name="Expectation"
  Guid="2dec76b1-7808-48b3-8310-0025fcc1c3d2"
->JRU.jru1.ReportModeChange.Mode == %Step_ModeIN</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation..."
- Guid="195b91e5-6171-4213-9a55-d7116f29cc22"
->JRU.jru1.ReportModeChange.Request == Request.Request</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="14eedf47-d86e-4fdd-9ee0-7ca68cb3dc44"
->
-<Actions>
-<Action
- Guid="10089594-fdda-4829-8077-20a9c70106e3"
->JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
+>JRU.ModeChanged(
+    jru=&gt; JRU.JRU1
+)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation></Translations>
 </Folder><Folder

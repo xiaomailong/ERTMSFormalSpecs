@@ -97,7 +97,7 @@
  Kind="Instantaneous"
  DeadLine="5,5"
  Guid="794b8f25-4a22-4e79-b6f1-bc2d2d5bd460"
->( FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY ) AND ( 4.8 &lt; Kernel.CurrentTime ) AND ( Kernel.CurrentTime &lt; 5.2 )</Expectation></Expectations>
+>( THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY ) AND ( 4.8 &lt; Kernel.CurrentTime ) AND ( Kernel.CurrentTime &lt; 5.2 )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -140,7 +140,7 @@
  Kind="Instantaneous"
  DeadLine="5,5"
  Guid="23c0a9f2-e52c-4ebd-bdf8-22c33b2c83bd"
->( FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY ) AND ( 9.8 &lt; Kernel.CurrentTime ) AND ( Kernel.CurrentTime &lt; 10.2 )</Expectation></Expectations>
+>(THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY ) AND ( 9.8 &lt; Kernel.CurrentTime ) AND ( Kernel.CurrentTime &lt; 10.2 )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -222,13 +222,13 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ae6e6aa4-69a1-48a0-882c-06189b466e0f"
->FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.SYSTEM_VERSION == JRU.ToJruSystemVersion(
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.SYSTEM_VERSION == JRU.ToJruSystemVersion(
     SystemVersion=&gt; Kernel.OperatedSystemVersion
 )</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
  Guid="c7a718ac-861d-4d94-ab3b-966fceef8778"
->FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -348,13 +348,13 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6c7dc48a-0568-4238-aeb6-9b6c790886f0"
->FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
     ModeInkernel=&gt;Kernel.Mode
 )</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="417e6087-bb5e-4888-a6cc-0fbe90fe6a7b"
->FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
     ModeInkernel=&gt;Default.Mode.FS
 )</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -476,7 +476,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5e853311-b2f7-4c6f-a1da-3af2857ad13c"
->FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -540,7 +540,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="77641bb4-5e26-47c4-917c-163ea74e7c85"
->FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="12478b9c-5c40-422c-8edb-f9df9b6772a0"
@@ -790,11 +790,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="0ce6c2f2-b662-4c5a-92e3-a276a44d1eb3"
->FORALL_IN JRU.JRU1.JRUMessages | X.EMERGENCY_BRAKE_COMMAND_STATE != EMPTY</Expectation><Expectation
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.EMERGENCY_BRAKE_COMMAND_STATE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="0ab38562-7344-4386-a2be-fe9f6c8a83d6"
->FORALL_IN JRU.JRU1.JRUMessages | X.EMERGENCY_BRAKE_COMMAND_STATE.M_BRAKE_COMMAND_STATE == Messages.JRU.M_BRAKE_COMMAND_STATE.Commanded</Expectation></Expectations>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.EMERGENCY_BRAKE_COMMAND_STATE.M_BRAKE_COMMAND_STATE == Messages.JRU.M_BRAKE_COMMAND_STATE.Commanded</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -840,11 +840,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="951d277f-3bae-4904-90d7-44936debed0b"
->FORALL_IN JRU.JRU1.JRUMessages | X.EMERGENCY_BRAKE_COMMAND_STATE != EMPTY</Expectation><Expectation
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.EMERGENCY_BRAKE_COMMAND_STATE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="712e3d8c-3a1e-43c2-a3bc-e8bed87a124d"
->FORALL_IN JRU.JRU1.JRUMessages | X.EMERGENCY_BRAKE_COMMAND_STATE.M_BRAKE_COMMAND_STATE == Messages.JRU.M_BRAKE_COMMAND_STATE.Not_commanded</Expectation></Expectations>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.EMERGENCY_BRAKE_COMMAND_STATE.M_BRAKE_COMMAND_STATE == Messages.JRU.M_BRAKE_COMMAND_STATE.Not_commanded</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -944,7 +944,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step3 - Check there is a new JRU message"
+ Name="Step3 - Check there is no new JRU message"
  Guid="04c3e98d-2f4c-476e-9150-f20eed61724d"
 >
 <SubSteps>
@@ -957,11 +957,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="67a25998-30a3-424d-a8e3-fe5082e3bf56"
->FORALL_IN JRU.JRU1.JRUMessages | X.TRAIN_DATA == EMPTY</Expectation><Expectation
+>FORALL_IN  JRU.JRU1.JRUMessages | X.TRAIN_DATA == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="90080d20-f5a2-4229-b417-738ffa9eabc6"
->FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
+>FORALL_IN  JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="7bb18f1f-5468-4995-8caf-ae35d84c1702"
@@ -1091,12 +1091,12 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="183c8a54-2e05-4949-b16b-0ebf63168a55"
->FORALL_IN JRU.JRU1.JRUMessages | X.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation><Expectation
+ Guid="4be7ebcf-f254-4c5e-b719-22a92a6263fc"
+>JRU.JRU1.JRUMessages == []</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="4be7ebcf-f254-4c5e-b719-22a92a6263fc"
->JRU.JRU1.JRUMessages == []</Expectation></Expectations>
+ Guid="28e7222a-edb7-4192-b777-a72573347536"
+>FORALL_IN JRU.JRU1.JRUMessages | X.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1532,11 +1532,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5d97fb06-4e71-4823-a611-0d9969b71786"
->FORALL_IN JRU.JRU1.JRUMessages | X.TELEGRAM_FROM_BALISE != EMPTY</Expectation><Expectation
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.TELEGRAM_FROM_BALISE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e3e244b9-3333-435b-b99b-8d51f7c26960"
->FORALL_IN JRU.JRU1.JRUMessages | X.TELEGRAM_FROM_BALISE.TELEGRAM.NID_BG == 9806</Expectation></Expectations>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.TELEGRAM_FROM_BALISE.TELEGRAM.NID_BG == 9806</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1643,19 +1643,19 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="a73577c9-2d17-446b-9969-8eccddccf971"
->FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.LEVEL== Messages.JRU.LEVEL.Level_STM_specified_by_NID_NTC</Expectation><Expectation
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.LEVEL== Messages.JRU.LEVEL.Level_STM_specified_by_NID_NTC</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="7bbc4589-1d70-42f6-bd29-7618ba4e1711"
->FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="0321ac00-5e8a-469d-a747-7e624d08564d"
->FORALL_IN JRU.JRU1.JRUMessages | X.NTC_SELECTED != EMPTY</Expectation><Expectation
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.NTC_SELECTED != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="32edbf47-fa8f-40aa-8ed4-a715fe88def2"
->FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.LEVEL == Messages.JRU.LEVEL.Level_STM_specified_by_NID_NTC</Expectation></Expectations>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.LEVEL == Messages.JRU.LEVEL.Level_STM_specified_by_NID_NTC</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

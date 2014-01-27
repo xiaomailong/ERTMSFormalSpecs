@@ -429,9 +429,23 @@ SERVICE_BRAKE_COMMAND_STATE =&gt; CreateSBCommandStateMessage()
 </ReqRef></StructureElement><StructureElement
  TypeName="JRUMessages"
  Default=""
- Mode="Internal"
+ Mode="InOut"
  Name="JRUMessages"
  Guid="aca59d19-3dcb-4c35-8d91-91589353e7e8"
+>
+</StructureElement><StructureElement
+ TypeName="TIU.CabStruct"
+ Default=""
+ Mode="Internal"
+ Name="PreviousCab1Status"
+ Guid="5248013b-3005-4ace-bf35-3ba083f61b15"
+>
+</StructureElement><StructureElement
+ TypeName="TIU.CabStruct"
+ Default=""
+ Mode="Internal"
+ Name="PreviousCab2Status"
+ Guid="cde60644-50b5-4049-9ee3-2ec8db9199e6"
 >
 </StructureElement></Structure></Structures>
 <Collections>
@@ -886,7 +900,7 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="SendGeneralMessage"
+ Name="SendMessage"
  Guid="367b9bad-5565-4488-957d-849ab291e91d"
 >
 <PreConditions>
@@ -906,7 +920,11 @@ OR
 OR
 (JRU.ServiceBrakeStatusChanged(jru) )
 OR
-( TelegramFromBaliseRecieved() )</PreCondition></PreConditions>
+( TelegramFromBaliseRecieved() )
+OR
+( MessageToRbcReady() )
+OR
+(MessageFromRbcRecieved() )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -2212,6 +2230,126 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
     HEADER =&gt; CreateHeader(6),
 TELEGRAM=&gt; BTM.Message
 }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="MessageFromRbcRecieved"
+ Guid="7e84067b-160b-41bf-b979-87087ed813be"
+>
+<Cases>
+<Case
+ Name="NewTelegramFromRbc"
+ Guid="850dc852-c264-41fb-bfaa-f4a5b4f72c45"
+>
+<PreConditions>
+<PreCondition
+ Guid="94231cbd-e6ca-45ee-9252-da00c2c399d3"
+>EURORADIO.EuroradioMessageIn != EMPTY</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.FROM_RBC.Message"
+ Name="CreateMessageFromRbc"
+ Guid="51063217-69fa-48a3-bafe-94e6d388ec0e"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="df393e31-c0fe-461b-92eb-4660fb622dd2"
+>
+<Expression>Messages.JRU.MESSAGE.FROM_RBC.Message{
+HEADER =&gt; CreateHeader(9),
+NID_C =&gt; 0,
+NID_RBC =&gt; 0,
+TELEGRAM =&gt; Messages.MESSAGE.Message
+{
+    TRACK_TO_TRAIN =&gt; EURORADIO.EuroradioMessageIn
+}
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.TO_RBC.Message"
+ Name="CreateMessageToRbc"
+ Guid="5ffc2eed-e108-4034-8acb-07bb423b991f"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="dc7b29ff-22bb-4331-bdb9-6931f0abed22"
+>
+<Expression>Messages.JRU.MESSAGE.TO_RBC.Message 
+{
+HEADER =&gt; CreateHeader(9),
+NID_C =&gt; 0,
+NID_RBC =&gt; 0,
+TELEGRAM =&gt; Messages.MESSAGE.Message
+{
+    TRAIN_TO_TRACK=&gt; EURORADIO.EuroradioMessageOut
+}
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="MessageToRbcReady"
+ Guid="38b712dc-b8aa-4b95-8d2b-20801254cffe"
+>
+<Comment>This function will be used when a To Rbc message will be ready to be sent.</Comment>
+<Cases>
+<Case
+ Name="NewTelegramToRbc"
+ Guid="2836142f-ddc7-4a6b-b7bd-7bdb5092583d"
+>
+<PreConditions>
+<PreCondition
+ Guid="508db144-933f-4327-98c1-f9c57dc1148d"
+>EURORADIO.EuroradioMessageOut != EMPTY</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="Cab1StatusChanged"
+ Guid="28ef4811-09e5-491e-922a-56d73bbf52c9"
+>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="f23b31cc-8de5-4995-b7fb-5a4e6ec6af57"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="NewCab1Status"
+ Guid="2dd43a05-22d5-4eb2-a6c3-327af961d24d"
+>
+<PreConditions>
+<PreCondition
+ Guid="cc3d1fe1-936e-4c09-a6ab-c2d3387d0fe2"
+>(TIU.Cab1.IsActive != jru.PreviousCab1Status.IsActive) OR ( TIU.Cab1.Id != jru.PreviousCab1Status.Id )</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="Cab2StatusChanged"
+ Guid="b6f96a68-bde4-401b-a576-1f50ba0bde80"
+>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="fce77138-e1fa-4eae-b4ea-2107a1eec3ea"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="NewCab2Status"
+ Guid="626eb64d-9ab9-49c5-b267-a1f1151f8f96"
+>
+<PreConditions>
+<PreCondition
+ Guid="51cd317a-7823-4f16-86e0-ab35a7334af8"
+>(TIU.Cab2.IsActive != jru.PreviousCab2Status.IsActive) OR (TIU.Cab2.Id != jru.PreviousCab2Status.Id)</PreCondition></PreConditions>
+<Expression>True</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
