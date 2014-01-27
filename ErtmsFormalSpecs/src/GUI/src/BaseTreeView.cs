@@ -59,9 +59,9 @@ namespace GUI
         private class ColorSynchronizer : GenericSynchronizationHandler<BaseTreeView>
         {
             /// <summary>
-            /// The last count of errors
+            /// The last count of messages
             /// </summary>
-            private int LastErrorCount { get; set; }
+            private int LastMessageCount { get; set; }
 
             /// <summary>
             /// Constructor
@@ -70,7 +70,7 @@ namespace GUI
             public ColorSynchronizer(BaseTreeView instance, int cycleTime)
                 : base(instance, cycleTime)
             {
-                LastErrorCount = 0;
+                LastMessageCount = 0;
             }
 
             /// <summary>
@@ -79,23 +79,27 @@ namespace GUI
             /// <param name="instance"></param>
             public override void HandleSynchronization(BaseTreeView instance)
             {
-                foreach (BaseTreeNode node in instance.Nodes)
+                if (LastMessageCount != Utils.ModelElement.LogCount)
                 {
-                    if (node.Model is DataDictionary.ModelElement)
-                    {
-                        DataDictionary.Util.UpdateMessageInfo((DataDictionary.ModelElement)node.Model);
-                    }
-                }
+                    LastMessageCount = Utils.ModelElement.LogCount;
 
-                instance.Invoke((MethodInvoker)delegate
-                {
-                    instance.SuspendLayout();
                     foreach (BaseTreeNode node in instance.Nodes)
                     {
-                        node.UpdateColor();
+                        if (node.Model is DataDictionary.ModelElement)
+                        {
+                            DataDictionary.Util.UpdateMessageInfo((DataDictionary.ModelElement)node.Model);
+                        }
                     }
-                    instance.ResumeLayout(true);
-                });
+                    instance.Invoke((MethodInvoker)delegate
+                    {
+                        instance.SuspendLayout();
+                        foreach (BaseTreeNode node in instance.Nodes)
+                        {
+                            node.UpdateColor();
+                        }
+                        instance.ResumeLayout(true);
+                    });
+                }
             }
         }
 
@@ -510,15 +514,18 @@ namespace GUI
         {
             BaseTreeNode retVal = null;
 
-            retVal = FindNode(element);
-            if (retVal != null)
+            if (element != null)
             {
-                Selected = retVal;
-
-                if (getFocus)
+                retVal = FindNode(element);
+                if (retVal != null)
                 {
-                    Form form = GUIUtils.EnclosingFinder<Form>.find(this);
-                    form.BringToFront();
+                    Selected = retVal;
+
+                    if (getFocus)
+                    {
+                        Form form = GUIUtils.EnclosingFinder<Form>.find(this);
+                        form.BringToFront();
+                    }
                 }
             }
 

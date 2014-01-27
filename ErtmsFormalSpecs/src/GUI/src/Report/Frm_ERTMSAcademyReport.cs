@@ -25,6 +25,8 @@ namespace GUI.Report
     {
         private ERTMSAcademyReportHandler reportHandler;
 
+        private Dictionary<string, string> UsersAndLogin = new Dictionary<string, string>();
+
 
         public ERTMSAcademyReport(Dictionary dictionary)
         {
@@ -32,12 +34,15 @@ namespace GUI.Report
             reportHandler = new ERTMSAcademyReportHandler(dictionary);
             TxtB_Path.Text = reportHandler.FileName;
 
+            UsersAndLogin.Add("James", "james@ertmssolutions.com");
+            UsersAndLogin.Add("Moritz", "morido@web.de");
+            UsersAndLogin.Add("Luis", "luis@ertmssolutions.com");
+            UsersAndLogin.Add("Laurent", "laurent@ertmssolutions.com");
+            UsersAndLogin.Add("Svitlana", "svitlana@ertmssolutions.com");
+
             List<string> userNames = new List<string>();
-            userNames.Add("James");
-            userNames.Add("Moritz");
-            userNames.Add("Diego");
-            userNames.Add("Peyman");
-            userNames.Add("Luis");
+            userNames.AddRange(UsersAndLogin.Keys);
+            userNames.Sort();
             Cbb_UserNames.DataSource = userNames;
         }
 
@@ -56,7 +61,9 @@ namespace GUI.Report
         {
             reportHandler.Name = "ERTMS Academy report";
 
-            reportHandler.UserName = Cbb_UserNames.SelectedValue.ToString();
+            reportHandler.User = Cbb_UserNames.Text;
+            reportHandler.GitLogin = UsersAndLogin[reportHandler.User];
+            reportHandler.SinceHowManyDays = (int)sinceUpDown.Value;
 
             Hide();
 

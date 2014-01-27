@@ -244,6 +244,18 @@ namespace DataDictionary
             return retVal;
         }
 
+        /// <summary>
+        /// Checks that a comment is attached to this ICommentable
+        /// </summary>
+        /// <param name="commentable"></param>
+        private static void checkComment(ICommentable commentable)
+        {
+            if (string.IsNullOrEmpty(commentable.Comment))
+            {
+                ((ModelElement)commentable).AddInfo("This element should be documented");
+            }
+        }
+
         public override void visit(Generated.Variable obj, bool visitSubNodes)
         {
             DataDictionary.Variables.Variable variable = obj as Variables.Variable;
@@ -281,7 +293,6 @@ namespace DataDictionary
 
             base.visit(obj, visitSubNodes);
         }
-
 
         public override void visit(Generated.Structure obj, bool visitSubNodes)
         {
@@ -355,6 +366,15 @@ namespace DataDictionary
                     init.AddInfo("No requirement found for element");
                 }
             }
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Rule obj, bool visitSubNodes)
+        {
+            Rules.Rule rule = (Rules.Rule)obj;
+
+            checkComment(rule);
 
             base.visit(obj, visitSubNodes);
         }
@@ -449,6 +469,15 @@ namespace DataDictionary
             }
 
             base.visit(obj, subNodes);
+        }
+
+        public override void visit(Generated.Procedure obj, bool visitSubNodes)
+        {
+            Procedure procedure = (Procedure)obj;
+
+            checkComment(procedure);
+
+            base.visit(obj, visitSubNodes);
         }
 
         public override void visit(Generated.PreCondition obj, bool subNodes)
@@ -620,6 +649,8 @@ namespace DataDictionary
 
             if (type != null)
             {
+                checkComment(type);
+
                 if (type is Types.StateMachine)
                 {
                     // Ignore state machines
@@ -764,6 +795,8 @@ namespace DataDictionary
         public override void visit(Generated.Function obj, bool visitSubNodes)
         {
             Function function = (Function)obj;
+
+            checkComment(function);
 
             if (function.ReturnType == null)
             {

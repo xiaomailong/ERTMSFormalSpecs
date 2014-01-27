@@ -98,7 +98,6 @@ namespace GUI.LongOperations
                     // Retrieve the archive of the selected version
 
                     ProcessStartInfo _processStartInfo = new ProcessStartInfo();
-                    // _processStartInfo.WorkingDirectory = "c:\\ertms-repositories\\ERTMSFormalSpecs";
                     _processStartInfo.WorkingDirectory = workingDir;
                     _processStartInfo.FileName = "git";
                     _processStartInfo.Arguments = "archive -o " + tempDirectory + "\\specs.zip " + commit.Id.Sha + " .";

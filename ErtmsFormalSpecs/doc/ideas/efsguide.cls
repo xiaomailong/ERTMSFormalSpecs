@@ -102,7 +102,7 @@
 \let\emph\textsl
 
 
-\newcommand{\literally}[1]{\textsf{\emph{#1}}}
+\newcommand{\literally}[1]{\mbox{\textsf{\emph{#1}}}}
 \newcommand{\indraftmode}[1]{\ifdraft{#1}{}}
 
 \fxsetup{mode=multiuser, theme=color, layout=inline}
@@ -159,11 +159,13 @@ breaklines=true}
 \FXRegisterAuthor{#1}{a#1}{#1}
 %setup personal PDF Comment
 \ifdraft{%
-\expandafter\newcommand\csname #1explain\endcsname[1]{\pdfcomment[author=#2, color=yellow, icon=Comment, subject=Comment, open=true]{##1}}}
+\expandafter\newcommand\csname #1explain\endcsname[1]{\pdfcomment[author=#2, color=yellow, icon=Comment, subject=Comment, open=true, hspace=2em]{##1}}}
 {%
 \expandafter\newcommand\csname #1explain\endcsname[1]{}
 }
 }
+
+\newcommand{\deleted}{\emph{-- Intentionally deleted --} \indraftmode{\hfill \colorbox{gray}{\textcolor{white}{\textsf{\textbf{Deleted}}}}}}
 
 % --- Class structure: additional draft options
 % ---

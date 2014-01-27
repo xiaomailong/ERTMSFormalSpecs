@@ -20,7 +20,7 @@
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
@@ -29,7 +29,7 @@
 </StructureElement><StructureElement
  TypeName="M_SDMTYPE"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_SDMTYPE"
@@ -48,7 +48,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="M_SDMSUPSTAT"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_SDMSUPSTAT"
@@ -60,9 +60,9 @@
  Guid="4a448d1e-3eb3-4cc6-b1db-f516c5910760"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="V_PERM"
+ TypeName="MessageTypes.Speed"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_PERM"
@@ -74,9 +74,9 @@
  Guid="fbc1e713-2f27-4a83-80ba-7bccdb6b49ea"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="V_FLOI"
+ TypeName="MessageTypes.Speed"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_FLOI"
@@ -88,9 +88,9 @@
  Guid="0c1c066d-3851-4a2d-9a4c-e537ff20efb2"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="V_TARGET"
+ TypeName="MessageTypes.Speed"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_TARGET"
@@ -102,9 +102,9 @@
  Guid="8d1fb238-882e-49e2-8bdc-c56fd85a79bd"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="D_TARGET"
+ TypeName="MessageTypes.Distance"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_TARGET"
@@ -116,9 +116,9 @@
  Guid="a383ff9a-2724-4b30-8a56-aa6b0ded06d7"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="V_RELEASE"
+ TypeName="MessageTypes.Speed"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_RELEASE"

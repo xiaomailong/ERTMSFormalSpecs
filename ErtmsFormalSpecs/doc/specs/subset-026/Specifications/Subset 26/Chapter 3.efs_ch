@@ -898,14 +898,15 @@ Linking information shall be composed of:<Sub>
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
  trackside="TRUE"
  Name=""
  Guid="851ab4c7-24ed-4bb4-bcf0-18ffccc80fb7"
->The accuracy of this location.
+><Comment>The note has not yet been taken care of, #morido, 14/01/15</Comment>
+The accuracy of this location.
 Note: If the reference balise is duplicated, it is the trackside responsibility to define the location accuracy to cover at least the location of the two duplicated balises.</Paragraph><Paragraph
  id="3.4.4.2.1.d"
  guid=""
@@ -948,12 +949,14 @@ Note: If the reference balise is duplicated, it is the trackside responsibility 
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  functionalBlockName=""
  onboard="TRUE"
  trackside="TRUE"
  Name=""
  Guid="3ab48b20-0a96-4f02-93ac-64071624c979"
->&quot;Linking information is used&quot; shall be interpreted as when balise group(s) are announced and the minimum safe antenna position has not yet passed the expectation window of the furthest announced balise group.</Paragraph></Sub>
+><Comment>The term &quot;Linking information is used&quot; is confusing because of its tense. It should rather be &quot;Linking information is {currently in use | applicable}&quot;, #morido, 14/01/16</Comment>
+&quot;Linking information is used&quot; shall be interpreted as when balise group(s) are announced and the minimum safe antenna position has not yet passed the expectation window of the furthest announced balise group.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.4.4.2.2"
  guid=""
@@ -1129,7 +1132,9 @@ Note: If the reference balise is duplicated, it is the trackside responsibility 
  Name=""
  Guid="22b29a34-8fe5-4ccc-9aec-f79479570714"
 ><Comment>what does &quot;when no linking information is used onboard&quot; mean? 
-That no Packet 5 has been read?</Comment>
+That no Packet 5 has been read?
+
+&quot;Linking information is used&quot; is defined in 3.4.4.2.1.1 #morido, 14/01/20</Comment>
 When no linking information is used on-board, all balise groups shall be taken into account.</Paragraph><Paragraph
  id="3.4.4.4.2"
  guid=""
@@ -1162,7 +1167,8 @@ When linking information is used on-board, only balise groups marked as linked a
  trackside="TRUE"
  Name=""
  Guid="efb1d7b7-401e-46ab-93ac-645f2bc80a33"
->When linking information is used on-board and the expected balise group is referred in the linking information with a balise group with ID &quot;unknown&quot;, a balise group marked as linked shall only be taken into account if:<Sub>
+><Comment>&quot;Linking information is used&quot; is defined in 3.4.4.2.1.1 #morido, 14/01/20</Comment>
+When linking information is used on-board and the expected balise group is referred in the linking information with a balise group with ID &quot;unknown&quot;, a balise group marked as linked shall only be taken into account if:<Sub>
 <Paragraph
  id="3.4.4.4.2.1.a"
  guid=""
@@ -1419,7 +1425,7 @@ Management of Radio Communication<Sub>
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1557,7 +1563,7 @@ At Start of Mission (only if level 2 or 3).</Paragraph><Paragraph
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1573,7 +1579,7 @@ If ordered from trackside.</Paragraph><Paragraph
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1589,7 +1595,7 @@ If a mode change, not considered as an End of Mission, has to be reported to the
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  specIssue="TRUE"
  functionalBlockName=""
@@ -1610,7 +1616,7 @@ If the driver has manually changed the level to 2 or 3</Paragraph><Paragraph
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1626,7 +1632,7 @@ When the train front reaches the end of an announced radio hole</Paragraph><Para
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1642,7 +1648,7 @@ When the previous communication session is considered as terminated due to loss 
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1691,7 +1697,7 @@ In respect of a), b), c), d) and e) of 3.5.3.4, the on-board shall not establish
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1706,7 +1712,7 @@ In respect of a), b), c), d) and e) of 3.5.3.4, the on-board shall not establish
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1721,7 +1727,7 @@ In respect of a), b), c), d) and e) of 3.5.3.4, the on-board shall not establish
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1736,7 +1742,7 @@ In respect of a), b), c), d) and e) of 3.5.3.4, the on-board shall not establish
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1765,7 +1771,7 @@ In respect of a), b), c), d) and e) of 3.5.3.4, the on-board shall not establish
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1794,7 +1800,7 @@ In respect of a), b), c), d) and e) of 3.5.3.4, the on-board shall not establish
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1808,7 +1814,7 @@ In respect of a), b), c), d) and e) of 3.5.3.4, the on-board shall not establish
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1822,7 +1828,7 @@ In respect of a), b), c), d) and e) of 3.5.3.4, the on-board shall not establish
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1838,13 +1844,13 @@ In respect of a), b), c), d) and e) of 3.5.3.4, the on-board shall not establish
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
  Name=""
  Guid="64296fc8-fe88-499d-b63e-d570a4a39744"
-><Comment>[stan@ertmssolutions.com]: we put RIU out of the context for now on.</Comment>
+><Comment></Comment>
 The order to contact a Radio Infill Unit shall include<Sub>
 <Paragraph
  id="3.5.3.6.a"
@@ -1855,13 +1861,13 @@ The order to contact a Radio Infill Unit shall include<Sub>
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
  Name=""
  Guid="27b4bef1-4915-47e2-b193-48f7f3daae5c"
-><Comment>[stan@ertmssolutions.com]: we put RIU out of the context for now on.</Comment>
+><Comment></Comment>
 The identity of the Radio Infill Unit</Paragraph><Paragraph
  id="3.5.3.6.b"
  guid=""
@@ -1871,13 +1877,13 @@ The identity of the Radio Infill Unit</Paragraph><Paragraph
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
  Name=""
  Guid="95aa03b6-4c5a-49a1-ac97-d11d63ebc609"
-><Comment>[stan@ertmssolutions.com]: we put RIU out of the context for now on.</Comment>
+><Comment></Comment>
 The telephone number of the Radio Infill Unit</Paragraph><Paragraph
  id="3.5.3.6.c"
  guid=""
@@ -1887,13 +1893,13 @@ The telephone number of the Radio Infill Unit</Paragraph><Paragraph
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
  Name=""
  Guid="afd82aec-eda7-4ec0-8f16-8002a8687ab2"
-><Comment>[stan@ertmssolutions.com]: we put RIU out of the context for now on.</Comment>
+><Comment></Comment>
 The action to be performed (establish/terminate the session).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.5.3.7"
@@ -2157,7 +2163,7 @@ If the establishment of a communication session is initiated by the RBC, it shal
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -2172,7 +2178,7 @@ If the establishment of a communication session is initiated by the RBC, it shal
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -2201,7 +2207,7 @@ If the establishment of a communication session is initiated by the RBC, it shal
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -2247,7 +2253,7 @@ If the establishment of a communication session is initiated by the RBC, it shal
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -2264,7 +2270,7 @@ Contact last known RBC (order is ignored in case no RBC ID/phone number is store
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -2282,7 +2288,7 @@ Note: If the short number does not direct to the RBC with the given RBC ID, the 
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -3831,7 +3837,8 @@ In case of an LRBG being a single balise group with no co-ordinate system assign
  trackside="TRUE"
  Name=""
  Guid="50574953-3247-4859-8de2-1049ab46e862"
->For the LRBG the following requirements have to be met:
+><Comment>&quot;Linking information is used&quot; is defined in 3.4.4.2.1.1 #morido, 14/01/20</Comment>
+For the LRBG the following requirements have to be met:
 	a) The on-board equipment shall use the last balise group passed as a reference when reporting its position to the RBC (in the following termed as LRBGONB). Only
 	- balise groups marked as linked and contained in the previously received linking
 	information, if linking information is used on-board
@@ -7599,8 +7606,7 @@ In case the main signal is at danger in level 1, the on-board shall supervise th
  trackside="TRUE"
  Name=""
  Guid="9d6569e4-3f30-4589-b167-e8da599da410"
->When the LOA speed timer value becomes greater than the time-out value given by trackside, the speed  associated with the EOA/LOA shall be set to zero (i.e. the Limit of Authority becomes an End of Authority and the SvL is defined on-board according to 3.8.4.5). Refer to appendix A.3.4 for the exhaustive list of location based information stored on-board, which shall be deleted accordingly.
-</Paragraph></Sub>
+>When the LOA speed timer value becomes greater than the time-out value given by trackside, the speed  associated with the EOA/LOA shall be set to zero (i.e. the Limit of Authority becomes an End of Authority and the SvL is defined on-board according to 3.8.4.5). Refer to appendix A.3.4 for the exhaustive list of location based information stored on-board, which shall be deleted accordingly.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.8.4.4"
  guid=""
@@ -9295,8 +9301,7 @@ In case the main signal is at danger in level 1, the on-board shall supervise th
  onboard="TRUE"
  Name=""
  Guid="57170c34-fdd6-4c7a-96b4-267f63401692"
->When receiving an unconditional emergency stop message the train shall be tripped immediately.
-</Paragraph><Paragraph
+>When receiving an unconditional emergency stop message the train shall be tripped immediately.</Paragraph><Paragraph
  id="3.10.2.4"
  guid=""
  type="REQUIREMENT"
@@ -9309,8 +9314,7 @@ In case the main signal is at danger in level 1, the on-board shall supervise th
  onboard="TRUE"
  Name=""
  Guid="ecaefeed-fa89-4186-b8b7-e63999df3603"
->New movement authority received after any accepted emergency stop message and before the emergency message has been revoked, shall be rejected
-</Paragraph><Paragraph
+>New movement authority received after any accepted emergency stop message and before the emergency message has been revoked, shall be rejected</Paragraph><Paragraph
  id="3.10.2.5"
  guid=""
  type="DELETED"
@@ -9337,8 +9341,7 @@ In case the main signal is at danger in level 1, the on-board shall supervise th
  onboard="TRUE"
  Name=""
  Guid="c3434cd8-a28d-4f6f-9aff-3f72b485a528"
->The driver shall be informed when emergency stop(s) have been accepted and are not yet revoked.
-</Paragraph></Sub>
+>The driver shall be informed when emergency stop(s) have been accepted and are not yet revoked.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.10.3"
  guid=""
@@ -11792,12 +11795,14 @@ Intentionally deleted.</Paragraph><Paragraph
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
+ specIssue="TRUE"
  functionalBlockName=""
  onboard="TRUE"
  trackside="TRUE"
  Name=""
  Guid="660c224a-36f1-4dae-bb7d-671adbce8172"
->Route suitability data defines which values concerning loading gauge, traction system and axle load category a train must meet to be allowed to enter the route.</Paragraph><Paragraph
+><Comment>The variable M_LINEGAUGE is used in the Route Suitability Package 7.4.2.21. Line gauge or loading gauge?</Comment>
+Route suitability data defines which values concerning loading gauge, traction system and axle load category a train must meet to be allowed to enter the route.</Paragraph><Paragraph
  id="3.12.2.2"
  guid=""
  type="REQUIREMENT"
@@ -24031,7 +24036,8 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  trackside="TRUE"
  Name=""
  Guid="0547edfa-b17d-4b79-8cad-2fba135b2d95"
->If linking information is used the on-board shall react according to the linking reaction information in the following cases:
+><Comment>&quot;Linking information is used&quot; is defined in 3.4.4.2.1.1 #morido, 14/01/20</Comment>
+If linking information is used the on-board shall react according to the linking reaction information in the following cases:
 	a) If the location reference of the expected balise group is found in rear of the expectation window
 	b) If the location reference of the expected balise group is not found inside the expectation window (i.e. the end of the expectation window has been reached without having found the expected balise group)
 	c) If inside the expectation window of the expected balise group another announced balise group, expected later, is found.<Sub>
@@ -24141,7 +24147,8 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  trackside="TRUE"
  Name=""
  Guid="00031a80-e9f3-4821-a0a6-1d322a75fa85"
->If linking information is used, the on-board shall reject the message from a linked balise group found in the expected location and react according to the linking reaction in the following cases:
+><Comment>&quot;Linking information is used&quot; is defined in 3.4.4.2.1.1 #morido, 14/01/20</Comment>
+If linking information is used, the on-board shall reject the message from a linked balise group found in the expected location and react according to the linking reaction in the following cases:
 	a) A balise is missed inside the group.
 	b) A balise is detected but no telegram is decoded (e.g. wrong CRC,...).
 	c) Variables in the balise group message have invalid values.
@@ -24174,7 +24181,8 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  trackside="TRUE"
  Name=""
  Guid="dc13fa0f-3c6b-42d8-a367-9de75248768d"
->If linking information is used, the on-board shall reject the message from a balise group marked as linked but not included in the linking information. No reaction shall be applied, even if errors in the reading of the balise group occur.</Paragraph><Paragraph
+><Comment>&quot;Linking information is used&quot; is defined in 3.4.4.2.1.1 #morido, 14/01/20</Comment>
+If linking information is used, the on-board shall reject the message from a balise group marked as linked but not included in the linking information. No reaction shall be applied, even if errors in the reading of the balise group occur.</Paragraph><Paragraph
  id="3.16.2.4.4"
  guid=""
  type="REQUIREMENT"
@@ -24188,7 +24196,8 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  trackside="TRUE"
  Name=""
  Guid="a7df0f1f-2d5f-4baa-b656-9ddbc4393074"
->If no linking information is used, the on-board shall reject the message from a balise group marked as linked and command application of the service brake in the following cases:
+><Comment>&quot;Linking information is used&quot; is defined in 3.4.4.2.1.1 #morido, 14/01/20</Comment>
+If no linking information is used, the on-board shall reject the message from a balise group marked as linked and command application of the service brake in the following cases:
 	a) A balise is missed inside the group.
 	b) A balise is detected, but no telegram is decoded (e.g. wrong CRC).
 	c) Variables in the balise group message have invalid values.
@@ -25296,8 +25305,8 @@ If 2 consecutive linked balise groups announced by linking are not detected and 
  trackside="TRUE"
  Name=""
  Guid="a3885eb8-93e0-4d9c-8084-7fb3d864615a"
->If linking information is used on-board, no error reporting shall be done for balise groups marked as linked but not included in the linking information.
-</Paragraph></Sub>
+><Comment>&quot;Linking information is used&quot; is defined in 3.4.4.2.1.1 #morido, 14/01/20</Comment>
+If linking information is used on-board, no error reporting shall be done for balise groups marked as linked but not included in the linking information.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.17"

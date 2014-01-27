@@ -226,11 +226,15 @@ namespace Utils
             private set { messages = value; }
         }
 
+        /// The number of log message
+        public static int LogCount = 0;
+
         /// <summary>
         /// Clears the messages associated to this model element
         /// </summary>
         public virtual void ClearMessages()
         {
+            LogCount -= Messages.Count;
             Messages.Clear();
         }
 
@@ -267,6 +271,7 @@ namespace Utils
             if (add)
             {
                 Messages.Add(log);
+                LogCount += 1;
             }
         }
 
