@@ -2126,7 +2126,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="964990c8-c9d2-40a9-abcb-a6694ada24e2"
->NOT EURORADIO.HasActiveSession()</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().ConnectionState == EURORADIO.ConnectionStateEnum.Terminating</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
