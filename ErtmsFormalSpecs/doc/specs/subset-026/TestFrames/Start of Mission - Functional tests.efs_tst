@@ -3337,20 +3337,30 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Open the session"
  Guid="7387fa4a-8e0a-4e1e-95ef-0219b047534c"
 >
 <Actions>
 <Action
- Guid="2113d524-8d23-4949-b519-c0e650e82773"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D11</Action><Action
  Guid="c6ae63f5-cb2a-40db-a69a-d7023e464dad"
 >EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Initialized</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Check the state"
+ Guid="17bed226-0b19-4f9c-b25d-1daccc7919c4"
+>
+<Actions>
+<Action
+ Guid="2113d524-8d23-4949-b519-c0e650e82773"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D11</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="2e9bd26f-1f3a-4dd1-ab78-d606c23786ab"
->Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S11</Expectation></Expectations>
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S11</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="97a4dc49-779a-46fa-8982-b1876c5c92bc"
+>EURORADIO.HasActiveSession()</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -3378,20 +3388,30 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Open the session"
  Guid="ed2bd761-18a0-4c28-ab47-8dc7f69500c6"
 >
 <Actions>
 <Action
- Guid="9f9abeb8-ce97-48b8-a11e-a384f3ca0e66"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D11</Action><Action
  Guid="76853ac8-51f9-4091-9a20-48904c1099fa"
 >EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Inactive</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Check the state"
+ Guid="3bed7637-3e5c-4b0e-a4ba-067cef497f19"
+>
+<Actions>
+<Action
+ Guid="9f9abeb8-ce97-48b8-a11e-a384f3ca0e66"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D11</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="d49ac733-e46b-4590-ba7c-80a69f1899e9"
->Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation></Expectations>
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d1beadc4-fc02-4f45-a1b3-8e89260d440b"
+>NOT EURORADIO.HasActiveSession()</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
