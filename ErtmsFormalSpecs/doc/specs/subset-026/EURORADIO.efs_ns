@@ -255,6 +255,27 @@
  Guid="0271d2ba-8432-4ab8-9751-21368dd80660"
 >MessageIn &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Contact order received"
+ Guid="cf03347e-b60d-42ad-a8f5-6d8527e81ace"
+>
+<Comment>TODO: has to be implemented</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Contact order received"
+ Guid="259074d2-2334-4631-9d21-8e673eb2f4f8"
+>
+<PreConditions>
+<PreCondition
+ Guid="590e96d3-c91b-4ed9-b585-e1bcf8640736"
+>ContactRBCOrder != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9d55e10d-b702-4370-a162-2eaf600534ce"
+>ConnectionState &lt;- ConnectionStateEnum.Connecting</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
