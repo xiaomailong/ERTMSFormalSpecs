@@ -1250,19 +1250,12 @@ Terminal2.RBCConnection.ConnectionState == ConnectionStateEnum.Inactive</Express
 >
 </ReqRef><Cases>
 <Case
- Name="AtLeastOneIsAvailable"
+ Name="Value"
  Guid="8a425b2a-af9b-4a02-9cbc-8d1d15189bb3"
 >
-<PreConditions>
-<PreCondition
- Guid="e430bb96-b5a1-4417-a849-3299e6967113"
->EURORADIO.MobileTerminals != []</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="74198ec7-7047-4c71-928f-41d5af5a1f23"
->
-<Expression>False</Expression>
+<Expression>Terminal1 != EMPTY
+  OR
+Terminal2 != EMPTY</Expression>
 </Case></Cases>
 </Function><Function
  Type="ContactActionEnum"
@@ -1370,7 +1363,9 @@ Terminal2.RBCConnection.ConnectionState == ConnectionStateEnum.Inactive</Express
  Name="Value"
  Guid="8d5b3f0d-e99a-4b78-a893-b7f25eb488a9"
 >
-<Expression>THERE_IS_IN MobileTerminals | X.IsRegistered</Expression>
+<Expression>Terminal1.IsRegistered
+  OR
+Terminal2.IsRegistered</Expression>
 </Case></Cases>
 </Function><Function
  Type="MobileTerminalStruct"
@@ -2475,15 +2470,6 @@ Terminal2.RBCConnection.ConnectionState == ConnectionStateEnum.Inactive</Express
  Guid="6d078814-362d-4fc3-8fe8-9c5a20662f9d"
 >
 </ReqRef><Comment>Contains information about the last known RBC.</Comment>
-</Variable><Variable
- Type="MobileTerminalsCollection"
- DefaultValue="[]"
- VariableMode="Internal"
- Implemented="TRUE"
- Name="MobileTerminals"
- Guid="ed866a18-1070-40b6-8d27-114d681b51e6"
->
-<Comment>Represents the mobile terminals available on-board.</Comment>
 </Variable><Variable
  Type="String"
  DefaultValue="&apos;&apos;"
