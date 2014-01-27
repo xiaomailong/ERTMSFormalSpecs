@@ -165,6 +165,8 @@ breaklines=true}
 }
 }
 
+\newcommand{\deleted}{\emph{-- Intentionally deleted --} \indraftmode{\hfill \colorbox{gray}{\textcolor{white}{\textsf{\textbf{Deleted}}}}}}
+
 % --- Class structure: additional draft options
 % ---
 \AtEndDocument{%
