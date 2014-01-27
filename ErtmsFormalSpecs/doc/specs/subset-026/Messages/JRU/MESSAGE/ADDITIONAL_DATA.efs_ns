@@ -25,7 +25,7 @@
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
@@ -34,7 +34,7 @@
 </StructureElement><StructureElement
  TypeName="M_ADHESION"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_ADHESION"
@@ -46,9 +46,9 @@
  Guid="e72624fd-3541-4beb-9fe9-558a26a18fde"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="NID_MN"
- Default="0"
- Mode="Outgoing"
+ TypeName="String"
+ Default="&apos;&apos;"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_MN"
@@ -62,7 +62,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Q_RBCENTRY"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_RBCENTRY"
@@ -81,7 +81,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_C"
@@ -95,7 +95,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="NID_RBC"
  Default="0"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_RBC"
@@ -107,18 +107,18 @@
  Guid="3178a6ef-1acb-4e56-98ef-a314ae61ffae"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="NID_RADIO"
- Default="0"
- Mode="Outgoing"
+ TypeName="String"
+ Default="&apos;&apos;"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_RADIO"
  Guid="7b239904-4f4d-4fc9-a480-42cc26213f3f"
 >
 </StructureElement><StructureElement
- TypeName="NID_OPERATIONAL"
- Default="0"
- Mode="Outgoing"
+ TypeName="String"
+ Default="&apos;&apos;"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_OPERATIONAL"
