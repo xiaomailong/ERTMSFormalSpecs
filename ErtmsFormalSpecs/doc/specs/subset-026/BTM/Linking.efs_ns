@@ -139,12 +139,19 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 <Collections>
 <Collection
  TypeName="LinkingData"
+ MaxSize="30"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
+ Verified="TRUE"
  Name="Linkings"
  Guid="48ad5ac5-7c08-40be-bbfe-3ec8f3f50e7d"
 >
-</Collection></Collections>
+<ReqRef
+ Id="4ab4eb51-5945-4fe4-aa12-eac7e8138282"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c9afe0e-4a9b-4d5c-94ac-357c1cfaa428"
+>
+</ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="LinkingData"
@@ -246,6 +253,7 @@ AND
 </Function><Function
  Type="LinkingData"
  Implemented="TRUE"
+ Verified="TRUE"
  Name="CurrentLinking"
  Guid="acaf4d09-047a-41bf-aadd-b6f94c59d499"
 >
@@ -352,7 +360,7 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2601acf9-4290-4a93-b9e8-08bf7ca23a35"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Returns true if the current message contains a packet with reposition-information valid for the train&apos;s current orientation</Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.Message"
@@ -378,10 +386,12 @@ AND
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Verified="TRUE"
  Name="DistanceToBaliseGroup"
  Guid="41641768-ba85-4244-bd62-229f518ee854"
 >
-<Comment></Comment>
+<Comment>Returns the distance to the balise group identifed by NID_BG as it was transmitted in the original Linking-message.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.NID_BG"
@@ -408,6 +418,7 @@ AND
 </Function><Function
  Type="LinkingReaction"
  Implemented="TRUE"
+ Verified="TRUE"
  Name="ConvertLinkingReaction"
  Guid="12700441-18c7-4250-a53f-f0842c6dab09"
 >
@@ -416,7 +427,8 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9f17a1ad-de2f-4ed9-a877-fb85f863c64a"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Converter to fill BTM.Linking.Linkings with proper LinkingReactions</Comment>
+<Parameters>
 <Parameter
  Type="Messages.Q_LINKREACTION"
  Name="Reaction"
@@ -500,7 +512,9 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a2d0a89a-5d92-4cc4-9336-0315918fbb63"
 >
-</ReqRef><Comment>This simple function can be used here since the update of available linkings is done in BTM.HandleBaliseMessage.Clear linking information #morido, 14/01/17</Comment>
+</ReqRef><Comment>Returns true if &quot;Linking information is true&quot; 
+
+Justification: This simple function can be used here since the update of available linkings is done in BTM.HandleBaliseMessage.Clear linking information #morido, 14/01/17</Comment>
 <Cases>
 <Case
  Name="Yes"
@@ -717,6 +731,7 @@ IN Linkings</Action></Actions>
  DefaultValue="[]"
  VariableMode="Internal"
  Implemented="TRUE"
+ Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="Linkings"
  Guid="0eba6fac-cb5c-4709-a3df-b9a398dedae4"
