@@ -5642,6 +5642,7 @@
  Name="Step1 - Open communication with RBC"
  Guid="9793d39c-ebb4-4d8e-a9e8-80a3b8ca0aa3"
 >
+<Comment>Last known RBC identity must be known in order to be able to establish a communication session with RBC.</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
@@ -5650,7 +5651,17 @@
 <Actions>
 <Action
  Guid="75a0dedb-7e33-4dba-a835-0aa4c203f0d6"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A31</Action></Actions>
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A31</Action><Action
+ Guid="9b93d08e-29bf-4f2f-831a-af3e2616a98d"
+>EURORADIO.LastKnownRBC &lt;- EURORADIO.RBCContactStruct
+{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 8,
+        Id =&gt; 1212
+    },
+    PhoneNumber =&gt; &apos;987654321&apos;,
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
