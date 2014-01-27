@@ -1454,9 +1454,9 @@
  Guid="0ffd51b6-1232-4587-a38b-e9b649e47d99"
 >Kernel.Mode &lt;- Mode.SB</Action><Action
  Guid="a11fcdb3-9502-4bb1-9dee-11b9484dbec5"
->EURORADIO.CurrentRadioSession.SessionInfo.RadioNetworkId.Id &lt;- &apos;Network_Id&apos;</Action><Action
+>EURORADIO.CurrentTerminal().NetworkId &lt;- &apos;Network_Id&apos;</Action><Action
  Guid="23f770dd-03ac-45fe-8192-c29a2bea7f9d"
->EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1480,10 +1480,10 @@
 <Expectation
  Kind="Instantaneous"
  Guid="0d7d0c76-181c-4b86-af99-83a9512c41df"
->EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2c58bd77-cc0a-4f8e-9aee-617c8cdd40a1"
->EURORADIO.CurrentRadioSession.SessionInfo.RadioNetworkId.Id == &apos;Network_Id&apos;</Expectation></Expectations>
+>EURORADIO.CurrentTerminal().NetworkId == &apos;Network_Id&apos;</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -2576,11 +2576,11 @@
  Guid="a6e4c548-fc30-4a48-a867-de290faef848"
 >Kernel.Mode &lt;- Mode.SB</Action><Action
  Guid="a32d366e-a009-43ce-afdb-bf822b7a5b75"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;RBC_Id&apos;</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.Id.Id &lt;- 1414</Action><Action
  Guid="49a02fa7-609c-4f27-9220-e024a7262cbd"
->EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="74d27552-45ef-4771-a076-11f4915937bf"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;123456789&apos;</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ContactData.PhoneNumber &lt;- &apos;123456789&apos;</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2604,13 +2604,13 @@
 <Expectation
  Kind="Instantaneous"
  Guid="e65854ef-2026-4e0b-aef4-232de786fe79"
->EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
  Guid="b0335f7e-31af-4164-a68e-4da640e1397a"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber == &apos;123456789&apos;</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().ContactData.PhoneNumber == &apos;123456789&apos;</Expectation><Expectation
  Kind="Instantaneous"
  Guid="954362db-6975-48bd-9098-a7c675c861af"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id == &apos;RBC_Id&apos;</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().ContactData.Id.Id == 1414</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -4802,7 +4802,7 @@
  Guid="00704f4c-acdc-4e73-886c-b59883febefb"
 >EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.LRBG</Action><Action
  Guid="5ae9326d-91d4-47b4-b346-1f087800837e"
->EURORADIO.PositionReport.PositionReportParameters.Values.Locations &lt;- [EURORADIO.PositionLocation{Distance=&gt;1040.0,TrainEnd=&gt;EURORADIO.TrainEnd.MinSafeRearEnd}]</Action></Actions>
+>EURORADIO.PositionReport.PositionReportParameters.Values.Locations &lt;- [EURORADIO.PositionReport.PositionLocation{Distance=&gt;1040.0,TrainEnd=&gt;EURORADIO.TrainData.TrainEnd.MinSafeRearEnd}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4826,7 +4826,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="ca77e333-c67b-4c41-8a65-f7b1263f92a3"
->(FIRST_IN EURORADIO.PositionReport.PositionReportParameters.Values.Locations).TrainEnd == EURORADIO.TrainEnd.MinSafeRearEnd</Expectation><Expectation
+>(FIRST_IN EURORADIO.PositionReport.PositionReportParameters.Values.Locations).TrainEnd == EURORADIO.TrainData.TrainEnd.MinSafeRearEnd</Expectation><Expectation
  Kind="Instantaneous"
  Guid="7f3b5bdd-b786-4c1f-a023-503e23d67ce6"
 >EURORADIO.PositionReport.PositionReportParameters.Values.DistanceInterval == 1000.0</Expectation><Expectation
