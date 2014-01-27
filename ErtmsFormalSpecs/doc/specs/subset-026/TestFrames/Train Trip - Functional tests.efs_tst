@@ -103,11 +103,11 @@
 <Actions>
 <Action
  Guid="e11dcb7a-211c-4a96-b3ac-1964437f8ff3"
->EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="e5b80563-8790-44f3-a408-1eed12b6a95f"
 >Kernel.Mode &lt;- Mode.TR</Action><Action
  Guid="4897dd23-8844-4d04-ab1a-deb0c6579dd5"
->EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Initialized</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -151,10 +151,10 @@
 >Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S120</Expectation><Expectation
  Kind="Instantaneous"
  Guid="fb070293-856d-4ba0-8021-65637f566b77"
->Available ( EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT )</Expectation><Expectation
+>Available ( EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT )</Expectation><Expectation
  Kind="Instantaneous"
  Guid="613d1205-563c-43af-9ad2-3e21d90a10ed"
->EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Messages.M_MODE.Post_Trip</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Messages.M_MODE.Post_Trip</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -342,9 +342,9 @@
  Guid="1bc57f8c-4daa-4a7c-8af1-d07bd913b88f"
 >Kernel.Mode &lt;- Mode.SB</Action><Action
  Guid="10448d24-9e95-40ad-ab2e-1b539783f3a0"
->EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="a8c9e081-9553-403b-8704-fefcf53a469a"
->EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Initialized</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -388,10 +388,10 @@
 >Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A035</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c2790b1c-2edc-4ff0-a8d0-147b75442d2b"
->Available ( EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT )</Expectation><Expectation
+>Available ( EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT )</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d53a9bd8-7110-4437-90ad-b617821eb2f7"
->EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Messages.M_MODE.Trip</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Messages.M_MODE.Trip</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -2071,7 +2071,7 @@
  Guid="96cac230-63c8-4f61-b156-15cce70efd41"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S120</Action><Action
  Guid="ed5bb7e3-d500-496d-b622-f69330b62cf8"
->EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     RECOGNITION_OF_EXIT_FROM_TRIP_MODE =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.RECOGNITION_OF_EXIT_FROM_TRIP_MODE.Message
     {
@@ -3001,10 +3001,10 @@
 >Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Expectation><Expectation
  Kind="Instantaneous"
  Guid="f568396b-11ec-4046-a80b-fdc2890b419e"
->Available ( EURORADIO.EuroradioMessageOut.MA_REQUEST )</Expectation><Expectation
+>Available ( EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST )</Expectation><Expectation
  Kind="Instantaneous"
  Guid="693279f3-5ec3-4002-b6aa-ef1efa472f2c"
->EURORADIO.EuroradioMessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase

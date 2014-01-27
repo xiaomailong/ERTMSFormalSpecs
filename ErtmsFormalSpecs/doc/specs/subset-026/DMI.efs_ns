@@ -129,7 +129,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 <Parameters>
 <Parameter
- Type="EURORADIO.SafeRadioConnectionStatus"
+ Type="EURORADIO.SafeRadioConnectionStatusEnum"
  Name="ConnectionStatus"
  Guid="b5c83aad-e34f-46aa-806f-c480e5474086"
 >
@@ -1095,14 +1095,9 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 <Parameters>
 <Parameter
- Type="String"
- Name="Id"
+ Type="EURORADIO.RBCContactStruct"
+ Name="ContactInformation"
  Guid="efa6eca9-8e89-47ae-ba91-52945e309c40"
->
-</Parameter><Parameter
- Type="String"
- Name="PhoneNumber"
- Guid="37784bf2-8adf-449d-825a-b13a19a93bd9"
 >
 </Parameter><Parameter
  Type="Boolean"
@@ -1185,9 +1180,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="a93e0857-0610-4bf8-95d2-f4213b77b5d8"
 >In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseLastStored &lt;- UseLastStored</Action><Action
  Guid="fdf9c49c-73c1-4f10-8fe4-870128d053d3"
->In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.Id &lt;- Id</Action><Action
- Guid="e0f33a47-859e-4276-834c-7d59441b6264"
->In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.PhoneNumber &lt;- PhoneNumber</Action><Action
+>In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation &lt;- ContactInformation</Action><Action
  Guid="5378fae7-0921-4e84-aeff-17f716b11d48"
 >In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.DriverAnswered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
@@ -4857,7 +4850,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 <Parameters>
 <Parameter
- Type="EURORADIO.NetworkIDs"
+ Type="EURORADIO.AvailableNetworksCollection"
  Name="NetworkIdList"
  Guid="232764cf-c5a5-469e-b627-ff46ad4cbf3a"
 >
@@ -9450,11 +9443,16 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  TypeName="DMI.IN.RBCContactInformationRBCIdOrPhoneNumber"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="In_RBCContactInformationRBCIdOrPhoneNumber"
  Guid="229f3aa5-b3b7-401e-acef-0f549ba13a7f"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="aca297a1-7d62-42ac-ab7e-6c8c590c5637"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="25678ebe-0a3a-4283-b079-9080a6236c30"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="DMI.DisplayLanguage"
  Default=""
  Mode="InOut"

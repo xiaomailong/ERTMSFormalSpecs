@@ -134,7 +134,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="7735ba84-8000-4ba4-85ab-53de6de6e127"
->EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Connecting</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().ConnectionState == EURORADIO.ConnectionStateEnum.Connecting</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -219,7 +219,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ab47c73f-9d26-4a4e-b40f-867f50538834"
->EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Connecting</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().ConnectionState == EURORADIO.ConnectionStateEnum.Connecting</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="2"
  Guid="9c925310-583f-41a9-8ad8-28bf79008b7a"
@@ -278,7 +278,7 @@
  Guid="726bf6f8-ef96-4b06-988d-43315c255853"
 >Odometry.NominalDistance &lt;- 3000.0</Action><Action
  Guid="d6fa0f02-8447-4677-8dbf-4d969047893d"
->EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Initialized</Action><Action
  Guid="a8935c29-c5c7-400b-8a85-63ca457131b1"
 >EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- False</Action><Action
  Guid="aeaae7c4-4c72-47c6-bc3a-09d079ba7ac0"
@@ -388,7 +388,7 @@ N_ITER=&gt;0
 <Expectation
  Kind="Instantaneous"
  Guid="53f4f2ea-38b1-4f6c-898d-779d2d352b9a"
->EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.ConnectionLost</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().ConnectionState == EURORADIO.ConnectionStateEnum.ConnectionLost</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d402152c-3401-4729-bda5-caf902371e55"
 >Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</Expectation></Expectations>
@@ -420,7 +420,7 @@ N_ITER=&gt;0
  Kind="Instantaneous"
  DeadLine="200"
  Guid="06b547b4-e019-472e-8631-5901c149bba0"
->EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Connecting</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().ConnectionState == EURORADIO.ConnectionStateEnum.Connecting</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -471,7 +471,7 @@ N_ITER=&gt;0
  Guid="07bc8727-3d97-4571-8015-a1595185c66b"
 >Kernel.InitializeTestEnvironment()</Action><Action
  Guid="d5e0819c-465f-4d51-ac61-dbce0e4852ce"
->EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Initialized</Action><Action
  Guid="3272cd7f-1e03-49c0-91de-c327d471d20b"
 >Odometry.NominalDistance &lt;- 3000.0</Action></Actions>
 </SubStep></SubSteps>
@@ -495,12 +495,12 @@ N_ITER=&gt;0
  Guid="ad0e3f34-1b3b-4cd3-9a51-9dc87e81bf39"
 >Odometry.NominalDistance &lt;- 4301.0</Action><Action
  Guid="9be8473b-e797-4de9-a821-3a3080381382"
->EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- True</Action></Actions>
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="df0c506a-41ed-47c8-8850-1d65e3acf9ce"
->EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.ConnectionLost</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().ConnectionState == EURORADIO.ConnectionStateEnum.ConnectionLost</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -521,7 +521,7 @@ N_ITER=&gt;0
 <Expectation
  Kind="Instantaneous"
  Guid="9ed0b784-2e46-45cb-89e6-85615c9ac511"
->EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Connecting</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().ConnectionState == EURORADIO.ConnectionStateEnum.Connecting</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -572,7 +572,7 @@ N_ITER=&gt;0
  Guid="07e7ffc6-af23-4a13-9ed7-d55421fe2a4c"
 >Kernel.InitializeTestEnvironment()</Action><Action
  Guid="cebead47-1a9e-4196-bfd8-6323451ad33c"
->EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action><Action
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Inactive</Action><Action
  Guid="0a48c85b-d8c3-46be-927b-d8111acaacf9"
 >Odometry.NominalDistance &lt;- 3000.0</Action><Action
  Guid="94cabcda-8487-4091-86b9-3df87ae1a483"
@@ -593,7 +593,7 @@ N_ITER=&gt;0
 <Expectation
  Kind="Instantaneous"
  Guid="49a014fc-6d61-4afd-a147-8547172363f4"
->EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Connecting</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().ConnectionState == EURORADIO.ConnectionStateEnum.Connecting</Expectation><Expectation
  Kind="Instantaneous"
  Guid="6feba206-5939-4201-bda8-637ed98e41c7"
 >Kernel.Mode == Mode.NL</Expectation></Expectations>
