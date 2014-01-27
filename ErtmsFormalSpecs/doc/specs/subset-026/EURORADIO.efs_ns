@@ -1540,7 +1540,6 @@ Terminal2.IsRegistered</Expression>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- Implemented="TRUE"
  Name="OpenRBCSession"
  Guid="1e3e4aab-936d-4b3e-90d0-c39dfa476afa"
 >
@@ -1565,7 +1564,7 @@ Terminal2.IsRegistered</Expression>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="RBC session is (being) established"
+ Name="No session opened"
  Guid="caa5317d-7334-450b-a354-799705c2362d"
 >
 <ReqRef
@@ -1814,6 +1813,35 @@ Terminal2.IsRegistered</Expression>
  Guid="51a30ec7-ce1f-46f1-a57c-72cb7965af62"
 >
 <Comment>Registers the mobile terminals to a radio network.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Register mobile terminals"
+ Guid="86956c33-030e-4d1f-8f75-ab22dffbfcdd"
+>
+<Comment>TODO: implement it correctly</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Register mobile terminals"
+ Guid="615728d0-acd8-40e3-94ea-aebf1f7bfc01"
+>
+<PreConditions>
+<PreCondition
+ Guid="e65e63b1-fd62-4950-b031-05d1d1109e1c"
+>LastKnownNetworkId != &apos;&apos;</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="78ee6641-812f-4c2a-afbe-b0e4ada5e038"
+>Terminal1.NetworkId &lt;- LastKnownNetworkId</Action><Action
+ Guid="7e15aeae-1d77-4d69-b5b6-eb9e447e9574"
+>Terminal2.NetworkId &lt;- LastKnownNetworkId</Action><Action
+ Guid="c6f1daed-dbca-4284-aa54-e5ac33091cd8"
+>Terminal1.IsRegistered &lt;- True</Action><Action
+ Guid="388ad4df-54c2-4018-b273-2df2b20e73c2"
+>Terminal2.IsRegistered &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure><Procedure
  NeedsRequirement="FALSE"
  Name="HandleEuroradioMessage"
