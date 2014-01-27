@@ -1620,7 +1620,7 @@ Terminal2.IsRegistered</Expression>
 <Actions>
 <Action
  Guid="ba60038a-715e-4d02-a3b5-689f94b384c1"
->CurrentRBCConnection().SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action></Actions>
+>CurrentRBCConnection().ConnectionState &lt;- ConnectionStateEnum.Terminating</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
