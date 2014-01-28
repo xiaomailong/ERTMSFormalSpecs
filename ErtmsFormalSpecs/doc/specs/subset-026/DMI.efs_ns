@@ -37,6 +37,54 @@
  Guid="7caa22f2-6dcd-425c-b75c-643aca8ef5d8"
 >
 </EnumValue></Values>
+</Enum><Enum
+ Default="Desk1"
+ Implemented="TRUE"
+ Name="CabDeskEnum"
+ Guid="1ae7ec78-9a88-42c6-8c53-e8c620c6fb71"
+>
+<ReqRef
+ Id="2285ede8-d6ee-4335-ad56-8651d6bcf99c"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="14b0e011-1859-4370-8770-100cc8ee780c"
+>
+</ReqRef><Comment>Represents the desks of one cab.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Desk1"
+ Guid="03b30ba5-04e4-430b-9bf9-80841019d8a0"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Desk2"
+ Guid="7300224c-6d4d-417e-b0b6-0b1d4973de58"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="CabA"
+ Implemented="TRUE"
+ Name="CabEnum"
+ Guid="c31be23c-f234-4613-b335-2aaa6eaff85f"
+>
+<ReqRef
+ Id="839d8340-fe74-4358-8e90-bbcbf37f22e7"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="48325f59-5df7-454c-a5b1-9c40717d4682"
+>
+</ReqRef><Comment>Represents the cabs.</Comment>
+<Values>
+<EnumValue
+ Value=""
+ Name="CabA"
+ Guid="036354f5-1a26-412f-988f-bbaf870b6583"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="CabB"
+ Guid="5d77f5cf-c19f-45b0-9f04-dea0155adf89"
+>
+</EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
 <Structure
@@ -9507,15 +9555,33 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="9ee3e831-b06b-4d54-b268-26e92e853ce2"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Integer"
- Default="0"
+ TypeName="CabEnum"
+ Default="CabEnum.CabA"
  Mode="Internal"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Id"
+ Name="Cab"
  Guid="0fa592fb-b7ef-4fcd-af91-b3cc7cf619d4"
 >
-<Comment>DMI&apos;s identifier.</Comment>
+<ReqRef
+ Id="839d8340-fe74-4358-8e90-bbcbf37f22e7"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="3d8adf8b-40e4-4171-b87c-8108b8b0a315"
+>
+</ReqRef><Comment>The cab of the current DMI.</Comment>
+</StructureElement><StructureElement
+ TypeName="CabDeskEnum"
+ Default="CabDeskEnum.Desk1"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Desk"
+ Guid="97c26770-b84b-4126-88f0-25e144f8cdad"
+>
+<ReqRef
+ Id="2285ede8-d6ee-4335-ad56-8651d6bcf99c"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="da28c69c-788d-4de8-9498-914404b1a3b1"
+>
+</ReqRef><Comment>The desk of the current DMI.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -9816,23 +9882,23 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Cab1"
+ Name="CabA"
  Guid="6e85ec20-eb0d-4852-be45-e95f0979e002"
 >
 <PreConditions>
 <PreCondition
  Guid="e5771334-a911-4305-a7a7-ada037e3ac13"
->aDMI.Id == TIU.Cab1.Id</PreCondition></PreConditions>
-<Expression>TIU.Cab1</Expression>
+>aDMI.Cab == CabEnum.CabA</PreCondition></PreConditions>
+<Expression>TIU.CabA</Expression>
 </Case><Case
- Name="Cab2"
+ Name="CabB"
  Guid="1d2f6ec0-819a-49f9-a054-c8dbe3944726"
 >
 <PreConditions>
 <PreCondition
  Guid="b4236209-7359-4ad7-bc70-3b79e8a3dac1"
->aDMI.Id == TIU.Cab2.Id</PreCondition></PreConditions>
-<Expression>TIU.Cab2</Expression>
+>aDMI.Cab == CabEnum.CabB</PreCondition></PreConditions>
+<Expression>TIU.CabB</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -9860,10 +9926,23 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Value"
+ Name="Desk1"
  Guid="fb50fc35-abf3-4cc4-974b-7ee3eb1a8a67"
 >
-<Expression>CabOfDMI ( aDMI ).IsActive</Expression>
+<PreConditions>
+<PreCondition
+ Guid="c36448f6-3bcd-4fd4-bdee-1cbc12377404"
+>aDMI.Desk == CabDeskEnum.Desk1</PreCondition></PreConditions>
+<Expression>CabOfDMI ( aDMI ).Desk1IsActive</Expression>
+</Case><Case
+ Name="Desk2"
+ Guid="1a3379e9-c053-48a2-8053-e9c1a0aa5ada"
+>
+<PreConditions>
+<PreCondition
+ Guid="63d9b68d-4443-4f59-8d97-55a23cb054ed"
+>aDMI.Desk == CabDeskEnum.Desk2</PreCondition></PreConditions>
+<Expression>CabOfDMI ( aDMI ).Desk2IsActive</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -9902,9 +9981,9 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Name="Value"
  Guid="049ad985-01ec-4597-908a-4c624747856a"
 >
-<Expression>NOT TIU.Cab1.IsActive
+<Expression>NOT DeskIsOpen ( DMI1 )
   AND
-NOT TIU.Cab2.IsActive</Expression>
+NOT DeskIsOpen ( DMI2 )</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
