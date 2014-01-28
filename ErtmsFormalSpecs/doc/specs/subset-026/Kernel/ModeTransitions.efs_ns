@@ -1140,7 +1140,7 @@ Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
 <Expression>THERE_IS_IN Kernel.EmergencyStops | (
     X.IsConditional == Boolean.False 
 AND 
-    X.Reason == Kernel.BrakeReason.Message
+    X.Reason == Kernel.BrakeReason.OrderFromRBC
 )</Expression>
 </Case></Cases>
 </Function><Function

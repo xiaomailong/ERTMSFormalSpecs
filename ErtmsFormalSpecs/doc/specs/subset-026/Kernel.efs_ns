@@ -153,7 +153,7 @@
 >
 </EnumValue><EnumValue
  Value=""
- Name="Message"
+ Name="OrderFromRBC"
  Guid="0b225f61-844c-4a87-8946-d28a505473e4"
 >
 </EnumValue></Values>
@@ -9248,7 +9248,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <Expression>EmergencyStop
  {
-    Reason =&gt; Kernel.BrakeReason.Message,
+    Reason =&gt; Kernel.BrakeReason.OrderFromRBC
+,
     IsConditional =&gt; aIsConditional,
     Id =&gt; aId,
     StopLocation =&gt; aStopLocation
