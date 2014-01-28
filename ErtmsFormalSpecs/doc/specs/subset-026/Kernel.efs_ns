@@ -9341,6 +9341,30 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="f58ff8d3-2659-4992-92c1-4aa6cfb46808"
 >SpeedAndDistanceMonitoring.UpdateMonitoring()</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="UpdateEOAandSvL"
+ Guid="930bec6a-53b0-4496-b3b9-1d82d5aafcfc"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="UpdateEOA"
+ Guid="d7ab7899-fe7e-4f3d-963b-654c6a62edda"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="4f54d680-b075-4f33-a19e-1ed6596155c5"
+>Kernel.MA.EOAs &lt;- []</Action><Action
+ Guid="33d27edf-9918-4c98-9944-4f96119c6f08"
+>Kernel.MA.SvLs &lt;- []</Action><Action
+ Guid="c6f59ebe-03a7-4ee2-aea3-8fe999bbfc7a"
+>Kernel.MA.MakeEOAs()</Action><Action
+ Guid="64c5dc89-646c-46a1-8e8c-b24814da8ae4"
+>Kernel.MA.MakeSvLs()</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  NeedsRequirement="FALSE"
@@ -9514,62 +9538,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Action
  Guid="e2e35dfb-2542-4a77-afc3-0648bf2da90b"
 >PowerOn &lt;- True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Name="InitializeElementsForMA"
- Guid="6d5c558b-2e55-4405-b201-e178b960d495"
->
-<Rules>
-<Rule
- Priority="Processing"
- Name="Initialize SSP + Gradients"
- Guid="792ddece-1615-4107-bd52-b22b79c2a7c5"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Initialize SSP + Gradients"
- Guid="606363fc-d313-4b6e-b1c7-417b8b00f4c6"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="a56d2555-1473-472d-a7a9-4a0c4517f011"
->Kernel.TrackDescription.Gradient.Gradients &lt;-
-[
-    Kernel.TrackDescription.Gradient.GradientInfo
-    {
-        Distance =&gt; 0.0,
-        Gradient =&gt; 0.7
-    },
-    Kernel.TrackDescription.Gradient.GradientInfo
-    {
-        Distance =&gt; 4800.0,
-        Gradient =&gt; 0.94
-    }
-]</Action><Action
- Guid="e9491f8d-219f-491a-bc18-5c6a44800900"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
-[
-    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
-    {
-        Distance =&gt; 0.0,
-        BasicSpeed =&gt; 70.0,
-        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-        Categories =&gt;
-        [
-            Kernel.TrackDescription.StaticSpeedProfile.SSPCategory
-            {
-                CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_130_mm,
-                OtherSpecific =&gt; Kernel.TrainData.TrainCategory.FreightTrainInG,
-                Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category ,
-                Speed =&gt; 70.0
-            }
-        ]
-    }
-]</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

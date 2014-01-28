@@ -692,21 +692,23 @@
 </ReqRef><Comment>Gives the target corresponding to the End (or Limit) Of Authority. The distance of the target is obtained by adding lenghts of all the sections of the current MA. If no MA is defined, the distance is infinite to avoid the train to be tripped before receivin an MA.</Comment>
 <Cases>
 <Case
- Name="No sections are defined in the MA"
+ Name="Returns the closest EOA"
  Guid="4c10b760-6b33-42af-8b63-16dfab10d6b2"
 >
 <PreConditions>
 <PreCondition
- Guid="10e3e7bd-2a12-4445-bfc0-7fb2f096585d"
->Available ( MA )</PreCondition><PreCondition
- Guid="7a3743f1-27a8-4fbe-8c4d-f976e45f6403"
->FORALL_IN MA.Sections | X == EMPTY</PreCondition></PreConditions>
-<Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
-{
-    Speed =&gt; MA.TargetSpeed,
-    Location =&gt; Default.BaseTypes.LengthToDistance( MA.EndSection.Length ),
-    Length =&gt; Default.BaseTypes.Distance.Infinity
-}</Expression>
+ Guid="99c5dd85-0c64-438b-8c8c-712a109bac26"
+>EOAs != []</PreCondition></PreConditions>
+<Expression>REDUCE EOAs
+    USING ClosestTarget(
+    Target1=&gt;X,
+    Target2=&gt;RESULT
+)
+INITIAL_VALUE CreateTarget (
+    aSpeed =&gt; 0.0,
+    aLocation =&gt; Default.BaseTypes.Distance.Infinity,
+    aLength =&gt; Default.BaseTypes.Distance.Infinity
+ )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Section"
@@ -1317,112 +1319,26 @@
  Name="SvL"
  Guid="fca588eb-ce86-4b0e-9bb9-3862a86d1b7d"
 >
-<ReqRef
- Id="dc0bc969-44fc-43da-bc2e-a002f4c15435"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4d01aab0-9a52-4dc3-91ff-42673596b102"
->
-</ReqRef><ReqRef
- Id="8ab7aafb-d8cf-4c4d-bafc-08a1f658decd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="44ab0a31-28df-4ff3-8f14-6edd5ef0489b"
->
-</ReqRef><ReqRef
- Id="81828a4c-73e2-440d-8353-e050603f323f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4815b7b0-23f4-44ce-9bb2-252ac955f76c"
->
-</ReqRef><ReqRef
- Id="6b1f5744-6c85-45eb-a7de-1eba5bad0131"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="82c367b5-f692-4763-9939-de3a6edf42db"
->
-</ReqRef><ReqRef
- Id="f2ddac1e-eea7-4f30-ade6-5ace543c21ae"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1065e330-46ec-4367-9145-cf3b06382e95"
->
-</ReqRef><ReqRef
- Id="beedf65d-aba6-4017-83dd-0fe57bc88e85"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="725030a4-33bb-41e4-929e-7f861cef433e"
->
-</ReqRef><ReqRef
- Id="f7dd0ecc-078c-4434-8d46-4ebb4b1f44f2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="46160be8-1275-4f8a-a1c2-4557a2944851"
->
-</ReqRef><Comment></Comment>
+<Comment></Comment>
 <Cases>
 <Case
- Name="Route suitability SvL defined"
+ Name="Return the closest SvL"
  Guid="c9018509-c2de-4033-826b-342a2bc196c4"
 >
 <PreConditions>
 <PreCondition
- Guid="21b2fafb-0434-494b-bea4-f280453325cd"
->TrackDescription.RouteSuitability.SvL() != EMPTY</PreCondition></PreConditions>
-<Expression>TrackDescription.RouteSuitability.SvL()</Expression>
-</Case><Case
- Name="Mode Profile SvL defined"
- Guid="3a0ba8d4-9b47-4a12-8e52-5e2c316033ac"
->
-<PreConditions>
-<PreCondition
- Guid="44dc19e4-8008-4f18-9fec-8be5e094ecba"
->ModeProfile.SvL() != EMPTY</PreCondition></PreConditions>
-<Expression>ModeProfile.SvL()</Expression>
-</Case><Case
- Name="SvL defined, overlap"
- Guid="73b9f5d2-a23c-4eba-9579-5e5779eaffed"
->
-<PreConditions>
-<PreCondition
- Guid="f0d6ba13-da89-487e-89ff-f97f2776589c"
->MA.TargetSpeed == 0.0</PreCondition><PreCondition
- Guid="08d9e347-93c2-428a-9a85-cc0c9659901f"
->MA.EndSection.Overlap != EMPTY</PreCondition></PreConditions>
-<Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
-{
-    Location =&gt; OverlapLocation(),
-    Speed =&gt; 0.0,
-    Length =&gt; BaseTypes.Length.Infinity
-}</Expression>
-</Case><Case
- Name="SvL defined, danger point"
- Guid="a7d8f695-8325-4512-aa89-8d9c6d72526e"
->
-<PreConditions>
-<PreCondition
- Guid="e9bd8864-da6c-42c8-b3b0-76a8deb5f2d6"
->MA.TargetSpeed == 0.0</PreCondition><PreCondition
- Guid="ac2377d9-398a-4dc5-88fe-0ec4717fd3bd"
->MA.EndSection.DangerPoint != EMPTY</PreCondition></PreConditions>
-<Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
-{
-    Location =&gt; DangerPointLocation(),
-    Speed =&gt; 0.0,
-    Length =&gt; BaseTypes.Length.Infinity
-}</Expression>
-</Case><Case
- Name="SvL defined, end of authority"
- Guid="8c7b1e1b-4a9b-4051-b14c-c433a871d469"
->
-<PreConditions>
-<PreCondition
- Guid="7d0fbe71-2a7f-402e-807c-9689592e2d9c"
->MA.TargetSpeed == 0.0</PreCondition></PreConditions>
-<Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
-{
-    Location =&gt; EndOfMovementAuthority().Location,
-    Speed =&gt; 0.0,
-    Length =&gt; BaseTypes.Length.Infinity
-}</Expression>
-</Case><Case
- Name="No SvL"
- Guid="2cad7913-f92a-4cea-aeaf-9723dacdf971"
->
-<Expression>EMPTY</Expression>
+ Guid="f439959e-927a-4352-9bad-9ee8aa4cf1d9"
+>SvLs != []</PreCondition></PreConditions>
+<Expression>REDUCE SvLs
+    USING ClosestTarget(
+    Target1=&gt;X,
+    Target2=&gt;RESULT
+)
+INITIAL_VALUE CreateTarget (
+    aSpeed =&gt; 0.0,
+    aLocation =&gt; Default.BaseTypes.Distance.Infinity,
+    aLength =&gt; Default.BaseTypes.Distance.Infinity
+ )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Section"
@@ -1701,7 +1617,7 @@ Default.BaseTypes.LengthToDistance(
 </Function><Function
  Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  NeedsRequirement="FALSE"
- Name="CreateEOAorSvL"
+ Name="CreateTarget"
  Guid="4eae3efb-cf37-40c6-b570-057cfe92f4fb"
 >
 <Parameters>
@@ -1732,6 +1648,40 @@ Default.BaseTypes.LengthToDistance(
     Location =&gt; aLocation,
     Speed =&gt; aSpeed
  }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Name="ClosestTarget"
+ Guid="cafbe57a-b0c3-4040-b9ad-e2a5ef544a40"
+>
+<Comment>Returns the Target with the closest Location</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Name="Target1"
+ Guid="c87fc4ae-7099-42f6-ac05-c31337c8482e"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Name="Target2"
+ Guid="ab06e05e-c9e5-482d-b89c-212bfea05d5b"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Target1 &gt; Target2"
+ Guid="02b5439b-5aed-4aee-be41-d98dc687b3dd"
+>
+<PreConditions>
+<PreCondition
+ Guid="499fd9ac-9444-4444-9617-752e11984521"
+>Target1.Location &gt; Target2.Location</PreCondition></PreConditions>
+<Expression>Target2</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="4f50de9a-b574-43d0-b9cd-fac4a9d4b3ec"
+>
+<Expression>Target1</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -2767,104 +2717,7 @@ IN
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- NeedsRequirement="FALSE"
- Name="AddSvL"
- Guid="cb61b226-a981-424a-accd-606249337c93"
->
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Length"
- Name="aLength"
- Guid="fa0dec0a-2dcd-47e9-b781-ba4a6440b96a"
->
-</Parameter><Parameter
- Type="Default.BaseTypes.Distance"
- Name="aLocation"
- Guid="f6270e1c-7a40-4ed0-a83d-ba8495646db1"
->
-</Parameter><Parameter
- Type="Default.BaseTypes.Speed"
- Name="aSpeed"
- Guid="08fce0d4-204d-4a08-a5f9-5edf9e98123a"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Name="Add SvL"
- Guid="a2688a1f-b745-4db7-8f16-6b3f50d9259c"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Add SvL"
- Guid="fbca846d-e2e2-4973-83c3-0b3914616bad"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="700d09f7-f257-4939-ae86-2dd2034c7c6a"
->INSERT CreateEOAorSvL (
-    aLength =&gt; aLength,
-    aLocation =&gt; aLocation,
-    aSpeed =&gt; aSpeed
-)
-
-IN 
-    Kernel.MA.SvLs</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- NeedsRequirement="FALSE"
- Name="AddEOA"
- Guid="e0f19d07-55fb-4418-a294-03c6705de66c"
->
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Length"
- Name="aLength"
- Guid="276649dc-670d-4909-b3cc-b28c8fcb209c"
->
-</Parameter><Parameter
- Type="Default.BaseTypes.Distance"
- Name="aLocation"
- Guid="070eb8a6-e221-4677-8053-3b7ac72b2125"
->
-</Parameter><Parameter
- Type="Default.BaseTypes.Speed"
- Name="aSpeed"
- Guid="cb8b24a1-544b-43c5-9020-74a89b93245b"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Name="Add EOA"
- Guid="2a4182a8-5dfc-43cf-b42a-18d1c44cd992"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Add EOA"
- Guid="6905c85a-be8d-4fe2-99f3-9afa3b25258e"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="a227dedd-7eae-401d-93ee-a86f08a08961"
->INSERT CreateEOAorSvL (
-    aLength =&gt; aLength,
-    aLocation =&gt; aLocation,
-    aSpeed =&gt; aSpeed
-)
-
-IN 
-    Kernel.MA.EOAs</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
+ Implemented="TRUE"
  Name="MakeEOAs"
  Guid="079a7605-b119-4881-8fe0-ab1a2a44fac6"
 >
@@ -2975,6 +2828,8 @@ IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Sections are defined in the MA"
  Guid="64e84d24-7541-455b-b8bf-c6234f657b89"
 >
@@ -2994,13 +2849,11 @@ IN EOAs</Action></Actions>
 <Action
  Guid="02a0d872-3ea1-48ef-a8ac-d2b605a7ef3b"
 >INSERT
-SpeedAndDistanceMonitoring.TargetSupervision.Target
-{
-    Speed =&gt; MA.TargetSpeed,
-    Location =&gt; Default.BaseTypes.LengthToDistance ( (SUM MA.Sections USING X.Length) + MA.EndSection.Length ),
-    Length =&gt; Default.BaseTypes.Distance.Infinity
-}
-
+CreateTarget (
+    aSpeed =&gt; MA.TargetSpeed,
+    aLocation =&gt; Default.BaseTypes.LengthToDistance ( (SUM MA.Sections USING X.Length) + MA.EndSection.Length ),
+    aLength =&gt; Default.BaseTypes.Distance.Infinity
+)
 IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -3021,11 +2874,18 @@ IN EOAs</Action></Actions>
  Guid="08a4286f-ccdb-4e73-80bf-91bdbdf925e0"
 >Available ( MA )</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="27ea72e8-4e70-4326-b736-bd2fb8e26a62"
+>INSERT CreateTarget (
+    aSpeed =&gt; MA.TargetSpeed,
+    aLocation =&gt; Default.BaseTypes.LengthToDistance( MA.EndSection.Length ),
+    aLength =&gt; Default.BaseTypes.Distance.Infinity
+ )
+IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Name="No EOA Received"
+ Name="No EOA received"
  Guid="ae6b3e38-8dd5-460c-8ad5-2b102ea9030a"
 >
 <SubRules></SubRules>
@@ -3041,13 +2901,269 @@ IN EOAs</Action></Actions>
 <Actions>
 <Action
  Guid="777d7877-37bc-43a8-96a2-f67253857249"
->INSERT SpeedAndDistanceMonitoring.TargetSupervision.Target
- {
-    Speed =&gt; 0.0,
-    Location =&gt; Default.BaseTypes.Distance.Infinity,
-    Length =&gt; Default.BaseTypes.Distance.Infinity
- }
+>INSERT CreateTarget (
+    aSpeed =&gt; 0.0,
+    aLocation =&gt; Default.BaseTypes.Distance.Infinity,
+    aLength =&gt; Default.BaseTypes.Distance.Infinity
+ )
 IN EOAs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="MakeSvLs"
+ Guid="44193527-6144-4bde-b7b0-f826e9baf559"
+>
+<ReqRef
+ Id="f7dd0ecc-078c-4434-8d46-4ebb4b1f44f2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e29ce0e6-67c8-48c8-bde0-37426779df1c"
+>
+</ReqRef><ReqRef
+ Id="beedf65d-aba6-4017-83dd-0fe57bc88e85"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6e02d145-242e-4e02-864d-67b0608c36a8"
+>
+</ReqRef><ReqRef
+ Id="8ab7aafb-d8cf-4c4d-bafc-08a1f658decd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="527c2cda-bcf3-4fc8-85f9-a917799c20bd"
+>
+</ReqRef><ReqRef
+ Id="f2ddac1e-eea7-4f30-ade6-5ace543c21ae"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cb52ebf0-076c-4e0e-893c-498bf1549740"
+>
+</ReqRef><ReqRef
+ Id="6b1f5744-6c85-45eb-a7de-1eba5bad0131"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ceafef7-0fa9-4546-aac1-294f5658a692"
+>
+</ReqRef><ReqRef
+ Id="81828a4c-73e2-440d-8353-e050603f323f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="58f0c344-8b9d-4e54-b97d-2418f08eb4d8"
+>
+</ReqRef><ReqRef
+ Id="dc0bc969-44fc-43da-bc2e-a002f4c15435"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6985d93c-d45b-462f-98dd-5399758cd705"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Route suitability SvL defined"
+ Guid="61e6b7c2-b5bf-4299-9feb-a6acf9331eb0"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Route suitability SvL defined"
+ Guid="05b9511b-476b-4a4f-b3c3-37ac673d81da"
+>
+<PreConditions>
+<PreCondition
+ Guid="96b46e57-19ae-42d1-a66d-a8e9a497d529"
+>TrackDescription.RouteSuitability.SvL() != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f9b0a2c0-aaa2-4b2d-a561-bda09265f421"
+>INSERT TrackDescription.RouteSuitability.SvL()
+IN SvLs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode Profile SvL defined"
+ Guid="2f7536e1-df41-45eb-b4e0-eb52f6bd8bfe"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode Profile SvL defined"
+ Guid="c7f6602d-6c44-41c4-bb57-fc915f5bb37a"
+>
+<PreConditions>
+<PreCondition
+ Guid="1d8e1ac3-45b7-4f98-a932-63db1f3403e2"
+>ModeProfile.SvL() != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="03a7f8e6-3334-4d8e-8c4c-76bc70bfe7cb"
+>INSERT ModeProfile.SvL()
+IN SvLs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="SvL defined, overlap"
+ Guid="60a9ca7b-f818-477c-8140-41f1f1be7133"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="SvL defined, overlap"
+ Guid="16caef1e-67f4-48f5-865e-7b2864b695be"
+>
+<PreConditions>
+<PreCondition
+ Guid="215f42e0-2b31-4277-bb6c-812e8ea8e88c"
+>MA.EndSection.Overlap != EMPTY</PreCondition><PreCondition
+ Guid="6b5b5cca-2abe-4a35-ba48-722d6a43cbdd"
+>MA.TargetSpeed == 0.0</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b2167c03-e084-4419-9978-0e92dc27be2f"
+>INSERT CreateTarget (
+    aLocation =&gt; OverlapLocation(),
+    aSpeed =&gt; 0.0,
+    aLength =&gt; BaseTypes.Length.Infinity
+ )
+IN SvLs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="SvL defined, danger point"
+ Guid="a682c1be-3a5c-43f5-8709-bc749814aea9"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="SvL defined, danger point"
+ Guid="cc5f6b61-b71d-41cd-befc-5e2620ed46e7"
+>
+<Comment>The Overlap precondition is to satisfy requirement 3.8.4.5.1</Comment>
+<PreConditions>
+<PreCondition
+ Guid="dc70bb5c-8f5e-4284-8073-ab38322d16d0"
+>MA.EndSection.DangerPoint != EMPTY</PreCondition><PreCondition
+ Guid="262a6363-57ea-4522-99e7-96d5519e8ab9"
+>MA.TargetSpeed == 0.0</PreCondition><PreCondition
+ Guid="ae7d6bee-201a-437a-98be-2b8c4fe2bdf7"
+>MA.EndSection.Overlap == EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="34b23ee0-eb06-43b4-834f-1245e46fcd95"
+>INSERT CreateTarget (
+    aLocation =&gt; DangerPointLocation(),
+    aSpeed =&gt; 0.0,
+    aLength =&gt; BaseTypes.Length.Infinity
+ )
+IN SvLs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="SvL defined, end of authority"
+ Guid="add55289-5851-4a82-8a09-767a54d257e0"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="SvL defined, end of authority"
+ Guid="19a994c4-8233-47d8-997a-66cdb96719d7"
+>
+<Comment>The Overlap and DangerPoint requirements are to satisfy requirement 3.8.4.5.1</Comment>
+<PreConditions>
+<PreCondition
+ Guid="cc1d2851-a9ce-4ad2-941e-668f3bec546f"
+>MA.TargetSpeed == 0.0</PreCondition><PreCondition
+ Guid="bccc0d0b-6604-4341-9629-54a2ab408b8d"
+>MA.EndSection.Overlap == EMPTY</PreCondition><PreCondition
+ Guid="1691be27-3707-48d7-bc85-f83554fae8b7"
+>MA.EndSection.DangerPoint == EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3bf7458d-7f9b-4188-94f9-8c6a0c847b12"
+>INSERT CreateTarget(
+    aLocation =&gt; EndOfMovementAuthority().Location,
+    aSpeed =&gt; 0.0,
+    aLength =&gt; BaseTypes.Length.Infinity
+)
+IN SvLs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="No SvL received"
+ Guid="00da68f3-d613-4807-b64a-91eefaadd605"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No SvL received"
+ Guid="e8bd2754-fcb9-435d-be5d-851069149bfc"
+>
+<PreConditions>
+<PreCondition
+ Guid="e0bdc53b-8d1b-4715-abef-4cc00b15245e"
+>SvLs == []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8d87f101-84b6-4c38-88ff-c5179972873e"
+>INSERT CreateTarget (
+    aSpeed =&gt; 0.0,
+    aLocation =&gt; Default.BaseTypes.Distance.Infinity,
+    aLength =&gt; Default.BaseTypes.Distance.Infinity
+ )
+IN SvLs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="InitializeElementsForMA"
+ Guid="308f7a88-e9cd-4e48-bbc1-66b9b6ccc0a1"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Initialize SSP + Gradients"
+ Guid="1e2c9bd5-c3d2-4d13-aada-2bd07896904a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Initialize SSP + Gradients"
+ Guid="d7839432-4eec-4ec7-971d-4648f059b30c"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3615ce68-522a-4f37-9745-49d04c0543b3"
+>Kernel.TrackDescription.Gradient.Gradients &lt;-
+[
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Distance =&gt; 0.0,
+        Gradient =&gt; 0.7
+    },
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Distance =&gt; 4800.0,
+        Gradient =&gt; 0.94
+    }
+]</Action><Action
+ Guid="1613d496-73f3-4873-ac23-ca4bc8624aa1"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
+[
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 0.0,
+        BasicSpeed =&gt; 70.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt;
+        [
+            Kernel.TrackDescription.StaticSpeedProfile.SSPCategory
+            {
+                CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_130_mm,
+                OtherSpecific =&gt; Kernel.TrainData.TrainCategory.FreightTrainInG,
+                Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category ,
+                Speed =&gt; 70.0
+            }
+        ]
+    }
+]</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
