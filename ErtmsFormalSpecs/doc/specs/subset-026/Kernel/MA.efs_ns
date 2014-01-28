@@ -626,15 +626,7 @@
  TypeName="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Default="[EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]"
  NeedsRequirement="FALSE"
- Name="SvLsCol"
- Guid="e097c5b4-ca09-4f77-bdb7-5a2438b19d3e"
->
-<Comment>This collection is used to keep the SvLs from different sources so that the most restrictive one can be accessed</Comment>
-</Collection><Collection
- TypeName="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
- Default="[EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]"
- NeedsRequirement="FALSE"
- Name="EOAsCol"
+ Name="EOAsAndSvLsCol"
  Guid="12ba0846-ca7e-4950-af35-aafe85e10270"
 >
 <Comment>This collection is used to keep the EOAs from different sources so that the most restrictive one can be accessed</Comment>
@@ -695,10 +687,6 @@
  Name="Returns the closest EOA"
  Guid="4c10b760-6b33-42af-8b63-16dfab10d6b2"
 >
-<PreConditions>
-<PreCondition
- Guid="99c5dd85-0c64-438b-8c8c-712a109bac26"
->EOAs != []</PreCondition></PreConditions>
 <Expression>REDUCE EOAs
     USING ClosestTarget(
     Target1=&gt;X,
@@ -2780,6 +2768,24 @@ IN
 </ReqRef><Rules>
 <Rule
  Priority="Processing"
+ Name="Wipe the old EOAs"
+ Guid="d1dfb0e0-0c44-4739-ad7b-cfd327d528fc"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Wipe the old EOAs"
+ Guid="d4f6b293-937a-4acd-9eb8-fbd667b53bae"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d69d2c39-43b3-4141-96ed-feb6a58e9a31"
+>EOAs &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
  Implemented="TRUE"
  Name="Route suitability EOA defined"
  Guid="e93a0965-cf33-4a59-84d4-6d40b464ccef"
@@ -2956,6 +2962,24 @@ IN EOAs</Action></Actions>
 >
 </ReqRef><Rules>
 <Rule
+ Priority="Processing"
+ Name="Wipe the old SvLs"
+ Guid="9fb13f00-bc38-439d-8cf4-92fc814ccce5"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Wipe the old SvLs"
+ Guid="5678bbbf-0138-4fa2-90ce-02471f1330ca"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9d52eeaf-526c-4b5e-90ef-3dae9c952522"
+>SvLs &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Route suitability SvL defined"
@@ -3224,14 +3248,14 @@ IN SvLs</Action></Actions>
 >
 </ReqRef><Comment>Allows to verify if the MA was shortened (possibly regardless of SvL location).</Comment>
 </Variable><Variable
- Type="Kernel.MA.SvLsCol"
+ Type="Kernel.MA.EOAsAndSvLsCol"
  VariableMode="Internal"
  NeedsRequirement="FALSE"
  Name="SvLs"
  Guid="a971b150-ed0b-461c-910c-3339b1170397"
 >
 </Variable><Variable
- Type="Kernel.MA.EOAsCol"
+ Type="Kernel.MA.EOAsAndSvLsCol"
  VariableMode="Internal"
  NeedsRequirement="FALSE"
  Name="EOAs"
