@@ -331,6 +331,50 @@ SERVICE_BRAKE_COMMAND_STATE =&gt; CreateSBCommandStateMessage()
   TELEGRAM_FROM_BALISE =&gt; JRU.CreateJruTelegramFromBaliseMessage()
 } IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="TelegramFromRbcRecieved"
+ Guid="0db90093-23b4-4bc0-83a2-6024bde30a04"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="TelegramFromRbcRecieved"
+ Guid="aee740c1-e84a-4cdf-8084-8f1741b1884b"
+>
+<PreConditions>
+<PreCondition
+ Guid="5ae64df4-66eb-4a2f-89dc-3f9a09fb9a81"
+>JRU.MessageFromRbcRecieved(EURORADIO.CurrentRBCConnection())</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bd0cd303-3d8b-4d90-a66d-3e88424cb4f1"
+>INSERT Messages.JRU.MESSAGE.Message {
+FROM_RBC =&gt; JRU.CreateMessageFromRbc(EURORADIO.CurrentRBCConnection())
+} IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="TelegramToRbcReady"
+ Guid="2100df88-e0b4-4eae-a0df-1c6fb07ce14e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="TelegramToRbcReady"
+ Guid="8dab86bd-7f12-4eb2-90be-02ca8789574c"
+>
+<PreConditions>
+<PreCondition
+ Guid="10fe01aa-af34-48b4-aa33-1e179a03aef0"
+>JRU.MessageToRbcReady(EURORADIO.CurrentRBCConnection())</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="aeca0d65-1fde-41db-a827-19ebff8bf7d4"
+>INSERT Messages.JRU.MESSAGE.Message {
+TO_RBC =&gt; JRU.CreateMessageToRbc(EURORADIO.CurrentRBCConnection())
+} IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
@@ -436,14 +480,14 @@ SERVICE_BRAKE_COMMAND_STATE =&gt; CreateSBCommandStateMessage()
 </StructureElement><StructureElement
  TypeName="TIU.CabStruct"
  Default=""
- Mode="Internal"
+ Mode="Incoming"
  Name="PreviousCab1Status"
  Guid="5248013b-3005-4ace-bf35-3ba083f61b15"
 >
 </StructureElement><StructureElement
  TypeName="TIU.CabStruct"
  Default=""
- Mode="Internal"
+ Mode="Incoming"
  Name="PreviousCab2Status"
  Guid="cde60644-50b5-4049-9ee3-2ec8db9199e6"
 >
@@ -922,9 +966,9 @@ OR
 OR
 ( TelegramFromBaliseRecieved() )
 OR
-( MessageToRbcReady() )
+( MessageToRbcReady(EURORADIO.CurrentRBCConnection()) )
 OR
-(MessageFromRbcRecieved() )</PreCondition></PreConditions>
+(MessageFromRbcRecieved(EURORADIO.CurrentRBCConnection() ) )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -2232,26 +2276,17 @@ TELEGRAM=&gt; BTM.Message
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Boolean"
- Name="MessageFromRbcRecieved"
- Guid="7e84067b-160b-41bf-b979-87087ed813be"
->
-<Cases>
-<Case
- Name="NewTelegramFromRbc"
- Guid="850dc852-c264-41fb-bfaa-f4a5b4f72c45"
->
-<PreConditions>
-<PreCondition
- Guid="94231cbd-e6ca-45ee-9252-da00c2c399d3"
->EURORADIO.EuroradioMessageIn != EMPTY</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case></Cases>
-</Function><Function
  Type="Messages.JRU.MESSAGE.FROM_RBC.Message"
  Name="CreateMessageFromRbc"
  Guid="51063217-69fa-48a3-bafe-94e6d388ec0e"
 >
+<Parameters>
+<Parameter
+ Type="EURORADIO.RBCStruct"
+ Name="RbcInfo"
+ Guid="3c457eb4-08fa-4234-a6d0-f21d1c27c45a"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
@@ -2263,7 +2298,7 @@ NID_C =&gt; 0,
 NID_RBC =&gt; 0,
 TELEGRAM =&gt; Messages.MESSAGE.Message
 {
-    TRACK_TO_TRAIN =&gt; EURORADIO.EuroradioMessageIn
+    TRACK_TO_TRAIN =&gt;RbcInfo.MessageIn
 }
 }</Expression>
 </Case></Cases>
@@ -2272,6 +2307,13 @@ TELEGRAM =&gt; Messages.MESSAGE.Message
  Name="CreateMessageToRbc"
  Guid="5ffc2eed-e108-4034-8acb-07bb423b991f"
 >
+<Parameters>
+<Parameter
+ Type="EURORADIO.RBCStruct"
+ Name="RbcInfo"
+ Guid="2f6a233d-acb0-462d-839f-71cffe54adb7"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
@@ -2284,7 +2326,7 @@ NID_C =&gt; 0,
 NID_RBC =&gt; 0,
 TELEGRAM =&gt; Messages.MESSAGE.Message
 {
-    TRAIN_TO_TRACK=&gt; EURORADIO.EuroradioMessageOut
+    TRAIN_TO_TRACK=&gt; RbcInfo.MessageOut
 }
 }</Expression>
 </Case></Cases>
@@ -2294,6 +2336,13 @@ TELEGRAM =&gt; Messages.MESSAGE.Message
  Guid="38b712dc-b8aa-4b95-8d2b-20801254cffe"
 >
 <Comment>This function will be used when a To Rbc message will be ready to be sent.</Comment>
+<Parameters>
+<Parameter
+ Type="EURORADIO.RBCStruct"
+ Name="RbcInfo"
+ Guid="6768f0c1-4c66-421f-bc7a-a17c271a2bf9"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="NewTelegramToRbc"
@@ -2302,8 +2351,13 @@ TELEGRAM =&gt; Messages.MESSAGE.Message
 <PreConditions>
 <PreCondition
  Guid="508db144-933f-4327-98c1-f9c57dc1148d"
->EURORADIO.EuroradioMessageOut != EMPTY</PreCondition></PreConditions>
+>RbcInfo.MessageOut != EMPTY</PreCondition></PreConditions>
 <Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="54d04ac9-cf1b-4f90-b498-7365071be9b6"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2350,6 +2404,34 @@ TELEGRAM =&gt; Messages.MESSAGE.Message
  Guid="51cd317a-7823-4f16-86e0-ab35a7334af8"
 >(TIU.Cab2.IsActive != jru.PreviousCab2Status.IsActive) OR (TIU.Cab2.Id != jru.PreviousCab2Status.Id)</PreCondition></PreConditions>
 <Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="MessageFromRbcRecieved"
+ Guid="112cf923-4d83-4e00-a970-89c06e5bb18c"
+>
+<Parameters>
+<Parameter
+ Type="EURORADIO.RBCStruct"
+ Name="RbcInfo"
+ Guid="da3c315b-2e07-4f9d-92a2-1899b1e17a3c"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="NewMessageFromRbc"
+ Guid="111025cc-1188-4e45-9ce5-45c1886af469"
+>
+<PreConditions>
+<PreCondition
+ Guid="4666d863-3e7c-4a72-b9e5-0e61297c2721"
+>RbcInfo.MessageIn != EMPTY</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="f6515967-7e71-4e2a-9728-fdc3be216e82"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>

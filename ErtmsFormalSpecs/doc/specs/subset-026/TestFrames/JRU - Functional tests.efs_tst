@@ -1659,5 +1659,269 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Recieved Message FromRbc"
+ Guid="13a4a994-3636-4a62-8318-97285f8739ca"
+>
+<TestCases>
+<TestCase
+ Name="Recieve Message From Rbc"
+ Guid="dd8e1d4c-a166-486e-a755-87de2194b38d"
+>
+<ReqRef
+ Id="0fa7965c-d9e6-452a-92fb-83e6e336171d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="4b361581-ebe1-4a32-8bce-abafbf802fe5"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="9f97e0f0-2c93-43c3-8ab4-2ff91070cff2"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="a8c02c88-f75b-4b6f-8c88-bdba34969986"
+>
+<Actions>
+<Action
+ Guid="18c12249-99e1-4ea9-9118-f7a74eb32a42"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="6e489bd7-e0f9-4e14-8e0c-e276c8a967fc"
+>JRU.JRU1.JRUMessages == []</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Generate FromRbc Message"
+ Guid="80e92a7b-41b2-4b3f-8050-e591efea0c73"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="e6236d68-41a9-437a-9380-dad2592a19dd"
+>
+<Actions>
+<Action
+ Guid="be6791b5-c9ac-4251-aa18-28b7d29a5ed6"
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+
+{
+    MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
+    {
+
+    NID_MESSAGE =&gt; 0,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 0,
+    M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
+    NID_LRBG =&gt; 9627,
+    LEVEL_2_3_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message
+
+      {
+        NID_PACKET =&gt; 15,
+        Q_DIR =&gt; Messages.Q_DIR.Nominal,
+        L_PACKET =&gt; 0,
+        Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
+        V_LOA =&gt; 0,
+        T_LOA =&gt; 0,
+        N_ITER =&gt; 1,
+        Sequence1 =&gt; 
+        [
+                 Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.SubStructure1
+                 {
+                   L_SECTION =&gt; 100,
+                   Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                   T_SECTIONTIMER =&gt; 0,
+                   D_SECTIONTIMERSTOPLOC =&gt; 0
+                 }
+               ],
+        L_ENDSECTION =&gt; 1000,
+        Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+        T_SECTIONTIMER =&gt; 0,
+        D_SECTIONTIMERSTOPLOC =&gt; 0,
+        Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information,
+        T_ENDTIMER =&gt; 0,
+        D_ENDTIMERSTARTLOC =&gt; 0,
+        Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.No_danger_point_information,
+        D_DP =&gt; 0,
+        V_RELEASEDP =&gt; 0,
+        Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information,
+        D_STARTOL =&gt; 0,
+        T_OL =&gt; 0,
+        D_OL =&gt; 0,
+        V_RELEASEOL =&gt; 0
+       },
+    Sequence1 =&gt;[
+                Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.SubStructure1
+          {
+    MODE_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message
+                {
+                   D_MAMODE=&gt;0,
+                   L_ACKMAMODE=&gt;500,
+                   L_MAMODE=&gt;100,
+                   L_PACKET=&gt;0,
+                   M_MAMODE=&gt;Messages.M_MAMODE.On_Sight,               
+                   N_ITER=&gt;0,
+                   NID_PACKET=&gt;80,
+                   Q_DIR=&gt; Messages.Q_DIR.Nominal,
+                   Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
+                   Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                   V_MAMODE=&gt;1,
+                   Sequence1=&gt;[] 
+                }
+}
+]
+}
+}</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1ef20b68-0a65-4cfa-a7a7-6fa689cfd2e4"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.FROM_RBC != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Verify there is no ToRbc Messages in the JRU"
+ Guid="445b2442-a13d-4912-80fc-6bf19975770a"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="193d2f2a-2e5d-4766-a6f5-6b71f414f581"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="60417101-1011-459f-a047-a02677e2f958"
+>FORALL_IN JRU.JRU1.JRUMessages | X.FROM_RBC== EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Send Message ToRbc"
+ Guid="55c0fde6-0b38-45c9-9d19-068471e1c192"
+>
+<TestCases>
+<TestCase
+ Name="Send Message ToRbc"
+ Guid="57103870-0450-44c8-a2f3-93b780aaae5b"
+>
+<ReqRef
+ Id="0c320b0b-218e-4a78-9fad-488fdb0e6902"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8638262e-c9c7-468c-9278-81c6efe7072d"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="a7dc3b87-a43c-449b-ac5a-f6608661d083"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="b695b788-4b66-4031-b701-ea9f1a73a391"
+>
+<Actions>
+<Action
+ Guid="2441c4ba-6c4d-47d2-9c93-6b17fae13b21"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="20eca140-a4b6-4be2-b097-93be3d2eefcc"
+>JRU.JRU1.JRUMessages == []</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Make the EVC generate an ToRbc Message"
+ Guid="a141f8e0-6a04-409d-9d02-48f1e78c75cf"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="da3aeb84-c9da-4fdc-b75c-22456cad3986"
+>
+<Actions>
+<Action
+ Guid="18aced2b-7a83-4201-87a1-fe86cb8d88a9"
+>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.Now</Action><Action
+ Guid="878db186-4733-43c2-b00b-72cd82c861e5"
+>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="088aea4a-5e69-4e88-a5df-073ba6cac105"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.TO_RBC != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Verify the JRU message ToRbc is no longer present"
+ Guid="f5120ee2-95c6-4ec7-be25-e5e88a86b3b6"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="beb9bd98-1b79-4b8e-a2f0-a56b357199f1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="5b86ae71-a564-42e4-8b2f-891dd9107e09"
+>FORALL_IN JRU.JRU1.JRUMessages | X.TO_RBC== EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
