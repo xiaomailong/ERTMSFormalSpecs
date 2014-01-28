@@ -9409,6 +9409,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="DMI"
  Guid="cbc776e4-b71e-47fd-9dd9-8530d55725a0"
 >
+<Comment>DMI1 will be the master and will be connected to the first desk of the CabA.
+DMI2 will be the slave and will be connected to the first desk of the CabB.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9421,21 +9423,21 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="e1ee2cc9-4190-4538-a31b-abec6da6eee2"
->TIU.Cab1.IsActive &lt;- True</Action><Action
+>TIU.CabA.Desk1IsActive &lt;- True</Action><Action
  Guid="eb11d587-0237-4dab-9017-68297f3de1ab"
 >DMI.DMI1.IsMaster &lt;- True</Action><Action
  Guid="21856a04-ea9e-4f80-b170-359f928e25e2"
->TIU.Cab2.IsActive &lt;- False</Action><Action
+>TIU.CabB.Desk1IsActive &lt;- False</Action><Action
  Guid="880fb6ea-f93f-426d-a18f-3cb85df1ab07"
 >DMI.DMI2.IsMaster &lt;- False</Action><Action
- Guid="387892f5-b0d0-4cac-955b-477e13bf32df"
->DMI.DMI1.Id &lt;- 1</Action><Action
- Guid="5d128991-6e9f-4221-8e47-5021b3bcbab8"
->DMI.DMI2.Id &lt;- 2</Action><Action
- Guid="8349c9de-3024-4a75-b5df-3243dea722c1"
->TIU.Cab1.Id &lt;- 1</Action><Action
- Guid="3dd83743-5ce9-48ba-b632-32e51c9d9be5"
->TIU.Cab2.Id &lt;- 2</Action></Actions>
+ Guid="1701afb0-1c92-46ba-9854-71e4cf3da43f"
+>DMI.DMI1.Cab &lt;- DMI.CabEnum.CabA</Action><Action
+ Guid="fa57a880-158c-4211-964e-7c9419e83669"
+>DMI.DMI2.Cab &lt;- DMI.CabEnum.CabB</Action><Action
+ Guid="1b5980f5-92fd-4d2c-b57d-9b86789ecdf0"
+>DMI.DMI1.Desk &lt;- DMI.CabDeskEnum.Desk1</Action><Action
+ Guid="66b762d5-1b65-4766-8a1e-c2ac2170184d"
+>DMI.DMI2.Desk &lt;- DMI.CabDeskEnum.Desk1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
