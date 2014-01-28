@@ -12,25 +12,6 @@
  Guid="3e0fac33-af2e-49fb-87bd-7ac9bade11fe"
 >
 </NameSpaceRef></NameSpaces>
-<Ranges>
-<Range
- MinValue="0"
- MaxValue="2"
- Precision="IntegerPrecision"
- Default="1"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="MobileTerminalID"
- Guid="893cd972-437b-46da-ae65-0082c816ba20"
->
-<SpecialValues>
-<EnumValue
- Value="0"
- Name="NotAvailable"
- Guid="ad6b62bd-d36b-4440-8cea-7ae65a02c2f7"
->
-</EnumValue></SpecialValues>
-</Range></Ranges>
 <Enumerations>
 <Enum
  Default="SafeRadioConnectionStatusEnum.NoConnection"
@@ -1848,6 +1829,7 @@ Terminal2.IsRegistered</Expression>
  Name="HandleEuroradioMessage"
  Guid="b9ea4dd2-c1d7-457b-b33c-62e49af0c65b"
 >
+<Comment>This procedure is called for each message received from the Euroradio. It stores the received information into the internal variables.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
@@ -1866,7 +1848,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="311ecfe7-ea5c-4667-a285-a1892d7774f7"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of the general message.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -1881,6 +1864,33 @@ Terminal2.IsRegistered</Expression>
 </Actions>
 <SubRules>
 <Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Route suitability data received"
+ Guid="4aa1a01f-4254-4958-b0e8-99b5cb30cc20"
+>
+<ReqRef
+ Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="052af9bd-f74a-4e5a-b527-5d0041e154b5"
+>
+</ReqRef><Comment>Handles reception of the route suitability data received with the general message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Route suitability data received"
+ Guid="c0c990ba-89d9-47e6-b458-c64d95c8112c"
+>
+<PreConditions>
+<PreCondition
+ Guid="446284a7-38bb-4883-9c06-40ea15d59a53"
+>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.ROUTE_SUITABILITY_DATA )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1835b379-689c-41b7-82bd-bafdaa9df3c9"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
  Name="Report parameters received"
@@ -1891,7 +1901,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3e5938e1-3ca7-41d6-ae46-5f9bca5e096f"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of report parameters received with the general message.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1926,7 +1937,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fae9450d-113e-4c25-8362-ca7a7290c307"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of level transition orders received with the general message.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1964,7 +1976,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="83a5a26a-12f1-455a-9292-86eb8210ba4e"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of the infill MA.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -1981,6 +1994,60 @@ Terminal2.IsRegistered</Expression>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="Route suitability data received"
+ Guid="1cfcd676-857b-4365-ae5e-e92d658219b7"
+>
+<ReqRef
+ Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1aa70151-07e5-4921-beff-f097d27213fd"
+>
+</ReqRef><Comment>Handles reception of the route suitability data received with infill MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Route suitability data received"
+ Guid="cfe0f284-c660-462a-b15f-f16501bcb05d"
+>
+<PreConditions>
+<PreCondition
+ Guid="a9a94a8a-24a1-42dd-bba4-78709ada8176"
+>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.ROUTE_SUITABILITY_DATA )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7cd439db-30ed-4037-bc40-1110364e540b"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile received"
+ Guid="ba5e7903-74f0-416c-ace9-cdc1392a7a73"
+>
+<ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="890d979e-b69a-40ed-9fb9-9575e833679d"
+>
+</ReqRef><Comment>Handles reception of mode profile received with the infill MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode profile received"
+ Guid="5723e1bb-1530-43ae-b94a-8989fd2a71a0"
+>
+<PreConditions>
+<PreCondition
+ Guid="568a6d32-c46c-450a-86ed-fa1646521c57"
+>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3913ccf6-bc3b-423b-a4da-7742b09c8e22"
+>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="Level transition order received"
  Guid="1e3c7c24-198c-43ed-975b-dbe5a441caf3"
 >
@@ -1989,7 +2056,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c6272465-206f-4fd5-958d-983191281a02"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of level transition orders received with the infill MA.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2004,32 +2072,6 @@ Terminal2.IsRegistered</Expression>
 <Action
  Guid="fd9f395f-4d3f-45ad-b8bf-3444ca9d3d17"
 >Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Mode profile received"
- Guid="ba5e7903-74f0-416c-ace9-cdc1392a7a73"
->
-<ReqRef
- Id="de18f207-08ba-467b-a877-d3c5a458123d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="890d979e-b69a-40ed-9fb9-9575e833679d"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Mode profile received"
- Guid="5723e1bb-1530-43ae-b94a-8989fd2a71a0"
->
-<PreConditions>
-<PreCondition
- Guid="568a6d32-c46c-450a-86ed-fa1646521c57"
->THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="3913ccf6-bc3b-423b-a4da-7742b09c8e22"
->Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2053,7 +2095,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3a85200b-d4dc-4c63-ab3f-58ace0758c7c"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of MA with shifted location reference.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2079,7 +2122,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0ed54168-0a74-4d24-88f7-fcbdd7fbf41d"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of mode profile received with MA with shifted location reference.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Mode profile received"
@@ -2105,7 +2149,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="43764454-ca9a-4af0-ad98-93c57e99b628"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles receptino of level transition orders with MA with shifted location reference.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Level transition order received"
@@ -2131,7 +2176,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="75394fb1-b13d-4ea8-b0ae-b8da4e554e2c"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of report parameters received with MA with shifted location reference.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2146,16 +2192,43 @@ Terminal2.IsRegistered</Expression>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="5b8975b0-260d-4631-8a07-a597c7067649"
->THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition
+>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition
  Guid="29c7550e-0318-4ea1-be60-556bb6f76b25"
->Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition></PreConditions>
+>Message.GENERAL_MESSAGE == EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d4dd1adc-2417-418e-9af1-28d490582186"
 >PositionReport.UpdatePositionReportParameters
 (
-   ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
+   ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
 )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Route suitability data received"
+ Guid="d1763cf0-854a-43b9-890b-65362093d1e5"
+>
+<ReqRef
+ Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2551bc7c-0bcd-40d7-97b3-da8a51f1f3eb"
+>
+</ReqRef><Comment>Handles reception of the route suitability data received with MA with shifted location reference.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Route suitability data received"
+ Guid="05c6c904-72ce-4e9f-b546-00d44c02eb79"
+>
+<PreConditions>
+<PreCondition
+ Guid="785ad9f3-d16d-4ca7-a789-7e6ec4432c28"
+>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.ROUTE_SUITABILITY_DATA )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="249aeb3c-974b-4193-96c5-9a76aafc8946"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2180,7 +2253,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8d52b2e1-2ae4-4fa4-a15b-a79f20a19041"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of the MA.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -2211,7 +2285,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="34d33893-3280-45dc-9cda-903fabe88e9a"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of report parameters received with the MA.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2226,16 +2301,16 @@ Terminal2.IsRegistered</Expression>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="4e66790e-11e3-42ae-9f8a-5c70586ffac3"
->THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition
+>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition
  Guid="ce0a957f-db4d-48fe-abd1-16ae231136fe"
->Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE ) == Boolean.False</PreCondition><PreCondition
+>Message.MA_WITH_SHIFTED_LOCATION_REFERENCE == EMPTY</PreCondition><PreCondition
  Guid="b72cbd16-8ee3-43c1-8931-f3202d3cec34"
->Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition></PreConditions>
+>Message.GENERAL_MESSAGE == EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="aea31b9a-b403-4674-ba05-b2e0e573cd40"
 >PositionReport.UpdatePositionReportParameters(
-  (FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available(X.POSITION_REPORT_PARAMETERS)).POSITION_REPORT_PARAMETERS
+  (FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1  | Available(X.POSITION_REPORT_PARAMETERS)).POSITION_REPORT_PARAMETERS
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -2249,7 +2324,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c0e24bd2-6d1d-4cc1-b3d3-ed16112b088a"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of the list of balises for SH area received with the MA.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="List of balises for SH area received"
@@ -2275,7 +2351,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="03236951-52f5-449f-976f-3b0a9f5016c1"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of level transition orders received with the MA.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2302,7 +2379,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9a402d46-e655-4ff8-ad35-7229f2ed2f0a"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of mode profile received with the MA.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Mode profile received"
@@ -2316,6 +2394,33 @@ Terminal2.IsRegistered</Expression>
 <Action
  Guid="1d0407c6-42f3-4cd3-9dbd-5721ca7faffe"
 >Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Route suitability data received"
+ Guid="e83a4b79-7e77-45ec-b306-cc4f23787f6e"
+>
+<ReqRef
+ Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee9775d6-15df-469d-9f57-45db9fb68014"
+>
+</ReqRef><Comment>Handles reception of the route suitability data received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Route suitability data received"
+ Guid="6d8f8b6c-44de-46a3-ad4e-fe9a3f8bd878"
+>
+<PreConditions>
+<PreCondition
+ Guid="d17863ff-43e3-41a3-8676-e178880f8608"
+>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.ROUTE_SUITABILITY_DATA )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6408d9ba-f07f-4dc0-8df8-e66f89eca5d8"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2339,7 +2444,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d9bcc358-027f-447c-8982-38032c81b0fc"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of the request to shorten MA.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -2369,7 +2475,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="745f1f3e-15fd-429b-964b-ea647b81965e"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of the mode profile received with the request to shorten MA.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Mode profile received"
@@ -2396,7 +2503,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e98a66ec-b3a6-46c1-ade8-a2123a480ae2"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of shunting authorised.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -2420,7 +2528,8 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="658de14c-3157-4d55-84fd-a580054731dc"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles reception of SR authorisation.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
