@@ -1339,6 +1339,11 @@ INITIAL_VALUE CreateTarget (
     aLocation =&gt; Default.BaseTypes.Distance.Infinity,
     aLength =&gt; Default.BaseTypes.Distance.Infinity
  )</Expression>
+</Case><Case
+ Name="No SvL"
+ Guid="4c8f9718-7983-4753-b750-ab7c9bae9727"
+>
+<Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
  Type="Section"
@@ -3082,31 +3087,6 @@ IN SvLs</Action></Actions>
     aSpeed =&gt; 0.0,
     aLength =&gt; BaseTypes.Length.Infinity
 )
-IN SvLs</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="No SvL received"
- Guid="00da68f3-d613-4807-b64a-91eefaadd605"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="No SvL received"
- Guid="e8bd2754-fcb9-435d-be5d-851069149bfc"
->
-<PreConditions>
-<PreCondition
- Guid="e0bdc53b-8d1b-4715-abef-4cc00b15245e"
->SvLs == []</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="8d87f101-84b6-4c38-88ff-c5179972873e"
->INSERT CreateTarget (
-    aSpeed =&gt; 0.0,
-    aLocation =&gt; Default.BaseTypes.Distance.Infinity,
-    aLength =&gt; Default.BaseTypes.Distance.Infinity
- )
 IN SvLs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
