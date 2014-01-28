@@ -51,7 +51,7 @@
  Guid="8836c136-c773-441e-98bf-049220f7037c"
 >Kernel.InitializeTestEnvironment()</Action><Action
  Guid="a66f3d0f-3fac-4bd3-9e51-1c544bc17a36"
->DMI.CabOfDMI ( DMI1 ).Desk1IsActive &lt;- False</Action></Actions>
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="16b9c7f0-07cc-4dd4-9948-fa4c43d7577c"
@@ -65,7 +65,7 @@
  Guid="0f8c93e2-fe04-40a4-a0ea-1a2d7e2a8d4a"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action
  Guid="1270b000-e2b8-49da-a17f-703d25a1a222"
->DMI.CabOfDMI ( DMI2 ).Desk1IsActive &lt;- False</Action><Action
+>DMI.CabOfDMI ( DMI.DMI2 ).Desk1IsActive &lt;- False</Action><Action
  Guid="773098ae-e614-4ecf-898a-1cd924a3419c"
 >DMI.DMI1.IsMaster &lt;- Boolean.True</Action></Actions>
 </SubStep></SubSteps>
@@ -86,7 +86,7 @@
 <Actions>
 <Action
  Guid="1de40ed3-a5fe-48de-b5c4-b893cdcc4a81"
->DMI.CabOfDMI ( DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7698,7 +7698,7 @@
  Guid="606fe6af-749d-4bbf-bd0d-94cb598bac24"
 >Kernel.Mode &lt;- Mode.SB</Action><Action
  Guid="cb9aab24-ce61-4bf1-97d0-96ae28a7b4a9"
->DMI.CabOfDMI ( DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7722,7 +7722,7 @@
 <Actions>
 <Action
  Guid="195f4d6a-8629-4ec5-977e-c40e8d5167a7"
->DMI.CabOfDMI ( DMI1 ).Desk1IsActive &lt;- False</Action></Actions>
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
