@@ -375,6 +375,32 @@ FROM_RBC =&gt; JRU.CreateMessageFromRbc(EURORADIO.CurrentRBCConnection())
 TO_RBC =&gt; JRU.CreateMessageToRbc(EURORADIO.CurrentRBCConnection())
 } IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="SendCabStatusMessage"
+ Guid="ca116b75-57ab-4f20-9c30-1fe3e22c78c9"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="CabStatusMessage"
+ Guid="cb44cdc9-eda7-46f2-8d6e-7ce66ebc7263"
+>
+<PreConditions>
+<PreCondition
+ Guid="7d3e988c-03a6-40fc-87ff-eef88ae4b560"
+>JRU.CabAStatusChanged(
+    jru=&gt;THIS
+) OR JRU.CabBStatusChanged(
+    jru=&gt; THIS
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1e0810d8-3803-4205-b78d-db639f49c094"
+>INSERT Messages.JRU.MESSAGE.Message {
+CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
+} IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
@@ -968,7 +994,10 @@ OR
 OR
 ( MessageToRbcReady(EURORADIO.CurrentRBCConnection()) )
 OR
-(MessageFromRbcRecieved(EURORADIO.CurrentRBCConnection() ) )</PreCondition></PreConditions>
+(MessageFromRbcRecieved(EURORADIO.CurrentRBCConnection() ) )
+OR
+(CabAStatusChanged(jru) OR ( CabBStatusChanged(jru) ) )
+</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -2361,7 +2390,7 @@ TELEGRAM =&gt; Messages.MESSAGE.Message
 </Case></Cases>
 </Function><Function
  Type="Boolean"
- Name="Cab1StatusChanged"
+ Name="CabAStatusChanged"
  Guid="28ef4811-09e5-491e-922a-56d73bbf52c9"
 >
 <Parameters>
@@ -2379,12 +2408,17 @@ TELEGRAM =&gt; Messages.MESSAGE.Message
 <PreConditions>
 <PreCondition
  Guid="cc3d1fe1-936e-4c09-a6ab-c2d3387d0fe2"
->(TIU.Cab1.IsActive != jru.PreviousCab1Status.IsActive) OR ( TIU.Cab1.Id != jru.PreviousCab1Status.Id )</PreCondition></PreConditions>
+>(TIU.CabA.Desk1IsActive != jru.PreviousCab1Status.Desk1IsActive) OR (TIU.CabA.Desk2IsActive != jru.PreviousCab1Status.Desk2IsActive) OR (TIU.CabA.IsFittedWithSingleDesk != jru.PreviousCab1Status.IsFittedWithSingleDesk )</PreCondition></PreConditions>
 <Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="bfcd6af1-caa4-447d-87b1-1fefcd1bdbcc"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
- Name="Cab2StatusChanged"
+ Name="CabBStatusChanged"
  Guid="b6f96a68-bde4-401b-a576-1f50ba0bde80"
 >
 <Parameters>
@@ -2402,8 +2436,13 @@ TELEGRAM =&gt; Messages.MESSAGE.Message
 <PreConditions>
 <PreCondition
  Guid="51cd317a-7823-4f16-86e0-ab35a7334af8"
->(TIU.Cab2.IsActive != jru.PreviousCab2Status.IsActive) OR (TIU.Cab2.Id != jru.PreviousCab2Status.Id)</PreCondition></PreConditions>
+>(TIU.CabB.Desk1IsActive != jru.PreviousCab2Status.Desk1IsActive) OR (TIU.CabB.Desk2IsActive != jru.PreviousCab2Status.Desk2IsActive) OR (TIU.CabB.IsFittedWithSingleDesk != jru.PreviousCab2Status.IsFittedWithSingleDesk )</PreCondition></PreConditions>
 <Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="199cf3c9-08ca-45b9-9b0b-b02f0d1e0ee3"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2432,6 +2471,221 @@ TELEGRAM =&gt; Messages.MESSAGE.Message
  Guid="f6515967-7e71-4e2a-9728-fdc3be216e82"
 >
 <Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.CAB_STATUS.Message"
+ Name="CreateCabStatusJruMessage"
+ Guid="6d8db90d-bd08-46be-a60d-39853472f958"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="3280e33f-ec81-4ba9-8464-58df507dee07"
+>
+<Expression>Messages.JRU.MESSAGE.CAB_STATUS.Message {
+    HEADER =&gt; CreateHeader(38),
+M_CAB_A_STATUS =&gt;ToJruCabAStatus(),
+ Q_CAB_B =&gt; SecondCabPresent(
+    SecondCab=&gt; TIU.CabB),
+ M_CAB_B_STATUS =&gt; SelectCabBStatusValue(),
+ Q_SINGLE_DESK =&gt; SelectSingleDeskValue() ,
+ M_TRAIN_ORIENTATION =&gt; SelectTrainOrientationValue()
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_CAB_A_STATUS"
+ Name="ToJruCabAStatus"
+ Guid="e8d8931f-0f5c-462a-adfc-e10277523b9c"
+>
+<Cases>
+<Case
+ Name="IsActive"
+ Guid="2437f156-18f3-488d-b937-3d4c56613215"
+>
+<PreConditions>
+<PreCondition
+ Guid="5a376e46-689d-4304-9c50-bf707cab94a4"
+>(TIU.CabA.Desk1IsActive) OR (TIU.CabA.Desk2IsActive)</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_CAB_A_STATUS.Active</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="380bf9ec-3a61-453b-bc04-83142ae0562c"
+>
+<Expression>Messages.JRU.M_CAB_A_STATUS.Not_active</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_CAB_A_STATUS"
+ Name="ToJruCabBStatus"
+ Guid="3b2f61a5-f6d2-4dc2-9d46-4fda55042cf8"
+>
+<Cases>
+<Case
+ Name="IsActive"
+ Guid="18dd4a19-f852-4372-84d7-c55b8d1986f2"
+>
+<PreConditions>
+<PreCondition
+ Guid="9073efc4-9fb1-4956-a234-b6908f284a54"
+>(TIU.CabB.Desk1IsActive) OR (TIU.CabB.Desk2IsActive)</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_CAB_B_STATUS.Active</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="875a1c04-d684-4646-ac29-d740fb6c9712"
+>
+<Expression>Messages.JRU.M_CAB_B_STATUS.Not_active</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.Q_CAB_B"
+ Name="SecondCabPresent"
+ Guid="421e1388-9941-4b9c-b435-857c59ba0213"
+>
+<Parameters>
+<Parameter
+ Type="TIU.CabStruct"
+ Name="SecondCab"
+ Guid="addb79e8-9195-4f37-9441-dd1ae63a364b"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="IsPresent"
+ Guid="509ae002-f509-477d-a8cd-c8bcb2702fe6"
+>
+<PreConditions>
+<PreCondition
+ Guid="4437e72e-bc36-42b3-8a05-19b33ce20925"
+>SecondCab.Desk1IsActive OR SecondCab.Desk2IsActive</PreCondition></PreConditions>
+<Expression>Messages.JRU.Q_CAB_B.Yes</Expression>
+</Case><Case
+ Name="NotPresent"
+ Guid="d1057e87-8a0e-4f9d-8db7-abbe90802973"
+>
+<Expression>Messages.JRU.Q_CAB_B.No</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_CAB_B_STATUS"
+ Name="SelectCabBStatusValue"
+ Guid="13e4aa09-e718-4d06-a188-91c003171925"
+>
+<Cases>
+<Case
+ Name="GetCabBStatus"
+ Guid="269872a9-43d8-4f11-b50e-5f0855751d52"
+>
+<PreConditions>
+<PreCondition
+ Guid="9e14b62b-bdab-4e73-aa1e-1c5b1333cfd3"
+>SecondCabPresent(
+    SecondCab=&gt; TIU.CabB
+) == Messages.JRU.Q_CAB_B.Yes</PreCondition></PreConditions>
+<Expression>ToJruCabBStatus()</Expression>
+</Case><Case
+ Name="NoCabBStatus"
+ Guid="eb08540e-dda2-4325-9511-ebef9435f41c"
+>
+<Expression>EMPTY</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.Q_SINGLE_DESK"
+ Name="SelectSingleDeskValue"
+ Guid="92b53653-87d4-49eb-966a-309ea63707a2"
+>
+<Cases>
+<Case
+ Name="SingleDeskValue"
+ Guid="2393f718-9ef0-493a-ae1e-b55287a7d62a"
+>
+<PreConditions>
+<PreCondition
+ Guid="a4a67a2b-97ec-4616-a326-6fb17582e685"
+>SecondCabPresent(
+    SecondCab=&gt; TIU.CabB
+) == Messages.JRU.Q_CAB_B.No</PreCondition></PreConditions>
+<Expression>ToJruSingleDesk(
+    CabParameters=&gt; TIU.CabA
+)</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="85d62aed-6907-4548-a895-a7eeb64fe47d"
+>
+<Expression>EMPTY</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.Q_SINGLE_DESK"
+ Name="ToJruSingleDesk"
+ Guid="6bd7c697-ba4c-47dd-8c0f-74d365ac0ec1"
+>
+<Parameters>
+<Parameter
+ Type="TIU.CabStruct"
+ Name="CabParameters"
+ Guid="03fdf56a-e38f-4925-9988-d6ec05191310"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SingleDesk"
+ Guid="2646d28e-1567-4856-8ce4-1e1106d3463e"
+>
+<PreConditions>
+<PreCondition
+ Guid="fe96f16e-3a98-418a-a443-025693f781c3"
+>CabParameters.IsFittedWithSingleDesk</PreCondition></PreConditions>
+<Expression>Messages.JRU.Q_SINGLE_DESK.Yes</Expression>
+</Case><Case
+ Name="NotSingleDesk"
+ Guid="ee5a8f1f-df15-450c-9e38-63462ac5ed46"
+>
+<Expression>Messages.JRU.Q_SINGLE_DESK.No</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_TRAIN_ORIENTATION"
+ Name="ToJruTrainOrientation"
+ Guid="20e3d0e5-392d-45a6-aa62-b8849cd2f75b"
+>
+<Cases>
+<Case
+ Name="DirectionA"
+ Guid="d5d8a78b-629b-4c6d-8f1b-03eef86c6a74"
+>
+<PreConditions>
+<PreCondition
+ Guid="725b04a9-4abf-49c4-a864-8a3af4212fe2"
+>TIU.DirectionControllerInformation == TIU.DirectionControllerEnum.Forward</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_TRAIN_ORIENTATION.Direction_A</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="0ae601e4-f58e-49c3-a82b-5b5a69daff72"
+>
+<Expression>Messages.JRU.M_TRAIN_ORIENTATION.Direction_B</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_TRAIN_ORIENTATION"
+ Name="SelectTrainOrientationValue"
+ Guid="c98224a1-bb17-4faf-b708-85b98e5bb9a3"
+>
+<ReqRef
+ Id="8c425848-9e3f-47e1-b085-05409ddc4922"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="04ec09c8-0540-4589-b0fe-840a307ded43"
+>
+</ReqRef><Cases>
+<Case
+ Name="SetTrainOrientationValue"
+ Guid="f7fc53d0-6c04-4365-9cc7-bcf7d87c48a2"
+>
+<PreConditions>
+<PreCondition
+ Guid="3112ecd1-10df-4704-ab30-b142219a89e2"
+>Messages.JRU.Q_SINGLE_DESK.Yes == ToJruSingleDesk(
+    CabParameters=&gt; TIU.CabA
+)</PreCondition></PreConditions>
+<Expression>ToJruTrainOrientation()</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="ad0fc36c-34f5-4f83-8c96-a36d41117b98"
+>
+<Expression>EMPTY</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>

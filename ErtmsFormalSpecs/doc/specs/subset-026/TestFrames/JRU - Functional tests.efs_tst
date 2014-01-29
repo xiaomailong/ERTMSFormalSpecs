@@ -1923,5 +1923,105 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="SendCabStatusMessage"
+ Guid="2eb7e327-13b2-4b21-bcf2-654938401267"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="1a0525d7-0ba7-4440-aef8-ce5d11bd3886"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 Step1 - Initialize test"
+ Guid="cc103b34-7a23-4467-916e-728ba2b98f23"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="6c3d1c02-9dde-435e-8eba-51a634d81074"
+>
+<Actions>
+<Action
+ Guid="8093df57-ab1d-43a0-bdc2-916d5302d17d"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2d102765-eaf5-4570-a2d8-4dd72c36c74a"
+>JRU.JRU1.JRUMessages == []</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="bafa6d84-a92a-46b8-b43c-eb94baeb12d4"
+>FORALL_IN JRU.JRU1.JRUMessages | X.CAB_STATUS == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2"
+ Guid="5159e13f-92cb-4f56-8999-fcc448f6aea3"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="43f59a54-19f4-4fbd-be15-29d05aa15c7f"
+>
+<Actions>
+<Action
+ Guid="90a73be8-d65f-4430-917b-e4dca3c67270"
+>TIU.CabB.Desk2IsActive &lt;- False</Action><Action
+ Guid="bd71459f-0c54-4248-bdbe-26230b4db70b"
+>TIU.CabA.Desk1IsActive &lt;- True</Action><Action
+ Guid="fcbb2ed1-ccf0-417d-975d-e904e07c8df2"
+>TIU.CabB.IsFittedWithSingleDesk &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="88ed7599-9eab-4b9c-a36d-e30f29610971"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.CAB_STATUS == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3"
+ Guid="0b246b22-9267-40d4-b638-b7cd807f3334"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="621b9a4b-5a88-472d-8e72-f23167f3f568"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="297e5137-3985-4870-8f59-1f2fc3b2c2a1"
+>FORALL_IN JRU.JRU1.JRUMessages | X.CAB_STATUS == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
