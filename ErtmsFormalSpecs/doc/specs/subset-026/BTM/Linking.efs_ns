@@ -84,6 +84,11 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ffb4ecc7-4cfa-422e-b110-a40a5e305211"
 >
+</ReqRef><ReqRef
+ Id="764c6acf-d811-4c13-bcd5-727c1595ada6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9d2dd1a7-fafa-45ca-9013-03206ae2e422"
+>
 </ReqRef><Comment>Since this stores nothing but the value of Q_LINKORIENTATION (which can only be &quot;nominal&quot; or &quot;reverse&quot;) it should be safe to use Default.Orientation here which can also be of &quot;orientation:both&quot;, #morido, 14/01/15</Comment>
 </StructureElement><StructureElement
  TypeName="LinkingReaction"
@@ -139,12 +144,19 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 <Collections>
 <Collection
  TypeName="LinkingData"
+ MaxSize="30"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
+ Verified="TRUE"
  Name="Linkings"
  Guid="48ad5ac5-7c08-40be-bbfe-3ec8f3f50e7d"
 >
-</Collection></Collections>
+<ReqRef
+ Id="4ab4eb51-5945-4fe4-aa12-eac7e8138282"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c9afe0e-4a9b-4d5c-94ac-357c1cfaa428"
+>
+</ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="LinkingData"
@@ -222,7 +234,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  Guid="c00492b0-e7ab-4cae-8743-b49438642892"
 >
 <Comment></Comment>
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Returns true if the current BaliseGroup is linked + stored in our Linking database and within reach of the onboard antenna</Comment>
 <Cases>
 <Case
  Name="Linking information available"
@@ -231,7 +243,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 <PreConditions>
 <PreCondition
  Guid="89a5a714-0cfc-400f-90b8-1dad1463b33d"
->((FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked) AND ((FIRST_IN Linkings).BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG)</PreCondition><PreCondition
+>CurrentBGisLinked() AND ((FIRST_IN Linkings).BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG)</PreCondition><PreCondition
  Guid="706ded2d-7480-4277-aade-3620f93af67d"
 >(AntennaPosition(Default.DistanceInterval.Max) &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
 AND
@@ -246,6 +258,7 @@ AND
 </Function><Function
  Type="LinkingData"
  Implemented="TRUE"
+ Verified="TRUE"
  Name="CurrentLinking"
  Guid="acaf4d09-047a-41bf-aadd-b6f94c59d499"
 >
@@ -352,7 +365,7 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2601acf9-4290-4a93-b9e8-08bf7ca23a35"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Returns true if the current message contains a packet with reposition-information valid for the train&apos;s current orientation</Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.Message"
@@ -378,10 +391,12 @@ AND
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Verified="TRUE"
  Name="DistanceToBaliseGroup"
  Guid="41641768-ba85-4244-bd62-229f518ee854"
 >
-<Comment></Comment>
+<Comment>Returns the distance to the balise group identifed by NID_BG as it was transmitted in the original Linking-message.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.NID_BG"
@@ -408,6 +423,7 @@ AND
 </Function><Function
  Type="LinkingReaction"
  Implemented="TRUE"
+ Verified="TRUE"
  Name="ConvertLinkingReaction"
  Guid="12700441-18c7-4250-a53f-f0842c6dab09"
 >
@@ -416,7 +432,8 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9f17a1ad-de2f-4ed9-a877-fb85f863c64a"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Converter to fill BTM.Linking.Linkings with proper LinkingReactions</Comment>
+<Parameters>
 <Parameter
  Type="Messages.Q_LINKREACTION"
  Name="Reaction"
@@ -473,21 +490,22 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="27a3b36a-62d5-47ca-8033-b005433481d7"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Returns for the current BaliseGroup if it is to be taken into account</Comment>
+<Cases>
 <Case
- Name="Value"
- Guid="a6070445-ac76-4e62-86a0-53defac4f917"
+ Name="Linking is not available"
+ Guid="a29a3c7c-d4e3-4c1e-adfa-64373b9626db"
 >
-<Expression>NOT Available ( Linking.CurrentLinking() )
-  OR
-( Available ( Linking.CurrentLinking () )
-    AND
-    (
-        Linking.CurrentBGWithinFrame()
-            OR
-        Message.Q_LINK == Messages.Q_LINK.Unlinked
-    )
-)</Expression>
+<PreConditions>
+<PreCondition
+ Guid="7fb25cc6-4417-4b2f-9e39-4c8c7ca670ef"
+>NOT ( LinkingApplicable() )</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="61e517d8-9b27-462b-b7ec-6caf0cbf5dbc"
+>
+<Expression>Linking.CurrentBGWithinFrame() OR ( NOT (CurrentBGisLinked() ))</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -500,7 +518,9 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a2d0a89a-5d92-4cc4-9336-0315918fbb63"
 >
-</ReqRef><Comment>This simple function can be used here since the update of available linkings is done in BTM.HandleBaliseMessage.Clear linking information #morido, 14/01/17</Comment>
+</ReqRef><Comment>Returns true if &quot;Linking information is used&quot; 
+
+Justification: This simple function can be used here since the update of available linkings is done in BTM.HandleBaliseMessage.Clear linking information</Comment>
 <Cases>
 <Case
  Name="Yes"
@@ -514,6 +534,32 @@ AND
 </Case><Case
  Name="Otherwise"
  Guid="6f2947ab-680b-4f75-8593-5caa93ea57c4"
+>
+<Expression>Boolean.False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CurrentBGisLinked"
+ Guid="9e18ed01-8872-48ce-ad92-cf3ad4f6b5f9"
+>
+<Comment>Returns true if the Current Balise Group is linked
+
+FORALL_IN is defensive programming; if the Collection does not have the same values for Q_LINK in all Telegrams, the Message should not have been accepted in the first place (§3.16.2.4.1/c, §3.16.2.4.4/c, §3.16.2.5.1/c)</Comment>
+<Cases>
+<Case
+ Name="Yes"
+ Guid="10d7ba53-fe0f-4e69-b2f8-e74a576996b1"
+>
+<PreConditions>
+<PreCondition
+ Guid="0c352e43-b4c5-43b8-8db4-1151a0c0500a"
+>FORALL_IN CurrentBaliseGroup | X.Q_LINK == Messages.Q_LINK.Linked</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="49110f36-6f78-4900-a25b-3c1f0eab48a8"
 >
 <Expression>Boolean.False</Expression>
 </Case></Cases>
@@ -717,6 +763,7 @@ IN Linkings</Action></Actions>
  DefaultValue="[]"
  VariableMode="Internal"
  Implemented="TRUE"
+ Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="Linkings"
  Guid="0eba6fac-cb5c-4709-a3df-b9a398dedae4"
