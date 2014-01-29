@@ -256,6 +256,26 @@ namespace DataDictionary
             }
         }
 
+        public override void visit(Generated.StructureElement obj, bool visitSubNodes)
+        {
+            Types.StructureElement element = (Types.StructureElement)obj;
+
+            if (!Utils.Utils.isEmpty(element.getDefault()))
+            {
+                checkExpression(element, element.getDefault());
+            }
+
+            if (element.DefaultValue != null)
+            {
+                if (!element.Type.Match(element.DefaultValue.Type))
+                {
+                    element.AddError("Type of default value (" + element.DefaultValue.Type.FullName + ")does not match element type (" + element.Type.FullName + ")");
+                }
+            }                
+
+            base.visit(obj, visitSubNodes);
+        }
+
         public override void visit(Generated.Variable obj, bool visitSubNodes)
         {
             DataDictionary.Variables.Variable variable = obj as Variables.Variable;
@@ -289,6 +309,14 @@ namespace DataDictionary
                 {
                     checkExpression(variable, variable.getDefaultValue());
                 }
+
+                if (variable.DefaultValue != null)
+                {
+                    if (!variable.Type.Match(variable.DefaultValue.Type))
+                    {
+                        variable.AddError("Type of default value (" + variable.DefaultValue.Type.FullName + ")does not match variable type (" + variable.Type.FullName + ")");
+                    }
+                }                
             }
 
             base.visit(obj, visitSubNodes);
