@@ -681,6 +681,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dfb1ba4b-b324-4e7f-832b-24466ee392e1"
 >
+</ReqRef><ReqRef
+ Id="5fd9abb2-0712-4c70-a573-7668ecb3a103"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4a0368d-a5f1-480b-9340-9e047f9781f2"
+>
 </ReqRef><Comment>Gives the target corresponding to the End (or Limit) Of Authority. The distance of the target is obtained by adding lenghts of all the sections of the current MA. If no MA is defined, the distance is infinite to avoid the train to be tripped before receivin an MA.</Comment>
 <Cases>
 <Case
@@ -1307,7 +1312,12 @@ INITIAL_VALUE CreateTarget (
  Name="SvL"
  Guid="fca588eb-ce86-4b0e-9bb9-3862a86d1b7d"
 >
-<Comment></Comment>
+<ReqRef
+ Id="5fd9abb2-0712-4c70-a573-7668ecb3a103"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fdedf1f9-8af6-4087-af89-97d0afc363b3"
+>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Return the closest SvL"
