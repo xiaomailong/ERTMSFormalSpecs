@@ -135,7 +135,7 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="BrakeReason.DriverAckTimeOut"
+ Default="DriverAckTimeOut"
  Implemented="TRUE"
  Name="BrakeReason"
  Guid="0fb8e0ec-b6c6-4517-b005-253d3c0ebdea"
@@ -298,7 +298,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Comment>Indicates if this emergency stop is conditional or not.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.NID_EM"
- Default="BrakeReason.DriverAckTimeOut"
+ Default="0"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
