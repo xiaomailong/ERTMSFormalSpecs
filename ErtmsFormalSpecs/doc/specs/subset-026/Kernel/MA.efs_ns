@@ -626,7 +626,7 @@
  TypeName="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Default="[EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]"
  NeedsRequirement="FALSE"
- Name="EOAsAndSvLsCol"
+ Name="TargetsCol"
  Guid="12ba0846-ca7e-4950-af35-aafe85e10270"
 >
 <Comment>This collection is used to keep the EOAs from different sources so that the most restrictive one can be accessed</Comment>
@@ -2818,6 +2818,36 @@ IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Name="Conditional emergency stop"
+ Guid="5d25714b-a191-4a26-ba75-f8972b9f4030"
+>
+<ReqRef
+ Id="4f290d49-e10d-41ae-a385-d9a756df04d3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f2fd6edd-1552-447f-a689-fd596fd3c551"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Conditional emergency stop"
+ Guid="199e8bb6-f70b-4b17-8aa9-6aed934ba089"
+>
+<PreConditions>
+<PreCondition
+ Guid="a7d3e9eb-090c-464f-ad59-e3fdb77f9e29"
+>THERE_IS_IN Kernel.EmergencyStops | ( (X.Reason == Kernel.BrakeReason.OrderFromRBC) AND (X.IsConditional) )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7c64880f-bfc1-476f-a9b1-9983265c63c0"
+>INSERT CreateTarget(
+    aLength=&gt;Default.BaseTypes.Distance.Infinity,
+    aLocation=&gt;Kernel.ClosestStopLocation().StopLocation,
+    aSpeed=&gt;0.0
+)
+IN EOAs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
  Name="Mode profile EOA defined"
  Guid="1b9338c9-b013-49b9-9a10-c9bbbc7e933f"
 >
@@ -3248,14 +3278,14 @@ IN SvLs</Action></Actions>
 >
 </ReqRef><Comment>Allows to verify if the MA was shortened (possibly regardless of SvL location).</Comment>
 </Variable><Variable
- Type="Kernel.MA.EOAsAndSvLsCol"
+ Type="Kernel.MA.TargetsCol"
  VariableMode="Internal"
  NeedsRequirement="FALSE"
  Name="SvLs"
  Guid="a971b150-ed0b-461c-910c-3339b1170397"
 >
 </Variable><Variable
- Type="Kernel.MA.EOAsAndSvLsCol"
+ Type="Kernel.MA.TargetsCol"
  VariableMode="Internal"
  NeedsRequirement="FALSE"
  Name="EOAs"
