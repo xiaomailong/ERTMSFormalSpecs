@@ -267,7 +267,7 @@ namespace DataDictionary
 
             if (element.DefaultValue != null)
             {
-                if (!element.Type.Match(element.DefaultValue.Type))
+                if (!element.DefaultValue.Type.Match(element.Type))
                 {
                     element.AddError("Type of default value (" + element.DefaultValue.Type.FullName + ")does not match element type (" + element.Type.FullName + ")");
                 }
@@ -312,7 +312,7 @@ namespace DataDictionary
 
                 if (variable.DefaultValue != null)
                 {
-                    if (!variable.Type.Match(variable.DefaultValue.Type))
+                    if (!variable.DefaultValue.Type.Match(variable.Type))
                     {
                         variable.AddError("Type of default value (" + variable.DefaultValue.Type.FullName + ")does not match variable type (" + variable.Type.FullName + ")");
                     }
