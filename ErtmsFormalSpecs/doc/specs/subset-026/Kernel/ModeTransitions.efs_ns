@@ -1138,7 +1138,7 @@ Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
  Guid="eb07c999-d231-4dc5-b70f-9699310621f7"
 >
 <Expression>THERE_IS_IN Kernel.EmergencyStops | (
-    X.IsConditional == Boolean.False 
+    NOT(X.IsConditional) 
 AND 
     X.Reason == Kernel.BrakeReason.OrderFromRBC
 )</Expression>

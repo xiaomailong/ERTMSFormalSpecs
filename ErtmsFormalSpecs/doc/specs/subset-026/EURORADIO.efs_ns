@@ -688,6 +688,65 @@
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="SendEmergencyStopRejection"
+ Guid="e87a9d80-111c-45f9-832c-e6cafcf1c042"
+>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
+ Name="aMessage"
+ Guid="7d4addf6-2d0c-478d-8a18-29d13281c06a"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Initialize message"
+ Guid="ac03dd37-e4fd-465d-893a-8278a0376598"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Initialize message"
+ Guid="61954d2d-de18-46d5-90c5-adb4d2c9e3ba"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3977b5c4-e5bf-434c-932e-ed4d7cff72f5"
+>InitializeOutMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Send emergency stop rejection"
+ Guid="ad4c4384-48b9-4066-9332-2b21328ef512"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Send emergency stop rejection"
+ Guid="cc544e71-6e86-430d-a549-2df2df9aa045"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="bf04e5dc-64f2-41c2-8382-b29798e0e305"
+>MessageOut.ACKNOWLEDGEMENT_OF_EMERGENCY_STOP &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.ACKNOWLEDGEMENT_OF_EMERGENCY_STOP.Message
+ {
+    NID_MESSAGE =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_MESSAGE,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime ),
+    NID_ENGINE =&gt; Kernel.NidEngine,
+    NID_EM =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_EM,
+    Q_EMERGENCYSTOP =&gt; Messages.Q_EMERGENCYSTOP.Emergency_stop__Conditional_or_Unconditional__rejected__whatever_the_reason,
+    POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
+ }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
@@ -2550,7 +2609,12 @@ Terminal2.IsRegistered</Expression>
  Name="Conditional Emergency Stop"
  Guid="6219bab3-329e-48c8-ac3b-43208d1cff15"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="4f290d49-e10d-41ae-a385-d9a756df04d3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9643411f-14d6-4b2c-959f-9fdb865d1d3a"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Conditional Emergency Stop"
@@ -2561,9 +2625,7 @@ Terminal2.IsRegistered</Expression>
  Guid="7ee563c7-9f56-4ea4-a306-7f427f0e871d"
 >Available ( Message.CONDITIONAL_EMERGENCY_STOP )</PreCondition></PreConditions>
 <Actions>
-<Action
- Guid="89a9e458-8515-4e79-986b-d9a20d7ab21c"
->Kernel.AddEmergencyStop( aMessage =&gt; Message )</Action></Actions>
+</Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2589,13 +2651,27 @@ Terminal2.IsRegistered</Expression>
 Default.MessageTypes.QScaleDistance(
     distance =&gt; Message.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP,
     scale =&gt; Message.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP
-)
-
-</PreCondition></PreConditions>
+)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="13e508f8-8fd5-4eab-af3b-ebd073c96e70"
 >Kernel.AddEmergencyStop( aMessage =&gt; Message )</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Train has passed stop location"
+ Guid="676caee5-da37-43fb-b10b-cfe4fbb2ac70"
+>
+<PreConditions>
+<PreCondition
+ Guid="d576cf7f-55e9-49ee-8461-75648e378b60"
+>Kernel.TrainPosition.FrontEndPosition( PointOfInterest=&gt;DistanceInterval.Min )  &gt;= 
+Default.MessageTypes.QScaleDistance(
+    distance =&gt; Message.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP,
+    scale =&gt; Message.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="40cd1d56-1167-44a7-a25a-cdddeccd30bd"
+>EmergencyStopRejected( aMessage =&gt; Message)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2623,6 +2699,37 @@ Default.MessageTypes.QScaleDistance(
 <Action
  Guid="14b50c09-3233-48b7-8e73-bbdeae756ac9"
 >Kernel.AddEmergencyStop( aMessage =&gt; Message )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="EmergencyStopRejected"
+ Guid="4c726569-c107-4eb0-871e-ba276a9f1880"
+>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
+ Name="aMessage"
+ Guid="d56466d3-2abd-4b25-8e24-74dd8a825e3d"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Inform the RBC that the message was rejected"
+ Guid="36409fc0-6465-4277-803a-c0dc8c4900ac"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Inform the RBC that the message was rejected"
+ Guid="a4e00a82-8985-4811-a924-713ba360c06d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="80d0c7ae-f73f-41f7-aa5e-8c18caf4cd92"
+>CurrentTerminal().RBCConnection.SendEmergencyStopRejection(aMessage=&gt;aMessage)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
