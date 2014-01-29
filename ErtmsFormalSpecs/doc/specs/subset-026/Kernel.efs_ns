@@ -9397,6 +9397,26 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="f58ff8d3-2659-4992-92c1-4aa6cfb46808"
 >SpeedAndDistanceMonitoring.UpdateMonitoring()</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="UpdateEOAandSvL"
+ Guid="930bec6a-53b0-4496-b3b9-1d82d5aafcfc"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="UpdateEOA"
+ Guid="d7ab7899-fe7e-4f3d-963b-654c6a62edda"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c6f59ebe-03a7-4ee2-aea3-8fe999bbfc7a"
+>Kernel.MA.MakeEOAs()</Action><Action
+ Guid="64c5dc89-646c-46a1-8e8c-b24814da8ae4"
+>Kernel.MA.MakeSvLs()</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  NeedsRequirement="FALSE"
@@ -9574,6 +9594,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 >PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+<<<<<<< HEAD
 </Procedure><Procedure
  Name="InitializeElementsForMA"
  Guid="6d5c558b-2e55-4405-b201-e178b960d495"
