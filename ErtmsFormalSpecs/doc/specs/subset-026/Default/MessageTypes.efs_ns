@@ -105,7 +105,7 @@
 </EnumValue></SpecialValues>
 </Range><Range
  MinValue="0"
- MaxValue="1023"
+ MaxValue="4294967295"
  Precision="IntegerPrecision"
  Default="0"
  NeedsRequirement="FALSE"
@@ -469,6 +469,54 @@
  Guid="095b758f-f316-4b60-bff9-4029a961dceb"
 >
 <Expression>BaseTypes.Acceleration ( BaseTypes.Acceleration ( acceleration ) * resolution )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="MessageTypes.Time"
+ Name="UnResolveTime"
+ Guid="796ab421-d591-4514-b5e3-3723d4109e32"
+>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Time"
+ Name="time"
+ Guid="4fbf7b3b-62d5-46ac-97fe-679464e38043"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Empty"
+ Guid="7d8d9242-4377-4b75-b308-d5344a7ff473"
+>
+<PreConditions>
+<PreCondition
+ Guid="6b124e24-4ede-4eaa-87da-40122815a0ce"
+>NOT ( Available ( time ) )</PreCondition></PreConditions>
+<Expression>EMPTY</Expression>
+</Case><Case
+ Name="Always"
+ Guid="4845247f-8e59-4ec2-9bb6-f53701fddf7e"
+>
+<Expression>MessageTypes.Time(time*100.0)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Time"
+ NeedsRequirement="FALSE"
+ Name="TimeResolution"
+ Guid="59622f5f-701b-40a7-a3d0-bdd43e4a531f"
+>
+<Parameters>
+<Parameter
+ Type="MessageTypes.Time"
+ Name="time"
+ Guid="8ed85dc2-7751-41f2-b173-22da127c5d05"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+ Guid="6d92702a-15c9-427b-bc53-727eaefaf9f8"
+>
+<Expression>BaseTypes.Time(BaseTypes.Time(time)/100.0)</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
