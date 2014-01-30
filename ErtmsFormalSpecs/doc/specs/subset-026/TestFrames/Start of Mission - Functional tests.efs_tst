@@ -1844,13 +1844,10 @@
 <Expectation
  Kind="Instantaneous"
  Guid="c1c53d49-8c41-4fe8-af94-05f14fafcd4f"
->DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.AskDriverOptionToChangeNetworkId</Expectation><Expectation
+>DMI.MasterDMI().In_RBCContactInformation.ProposedActions == [ DMI.RBCContactActionEnum.ReenterNetworkId ]</Expectation><Expectation
  Kind="Instantaneous"
  Guid="b6c8edc2-f012-49b9-b727-acfa06fd2d60"
->DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus == Default.Request.Request</Expectation><Expectation
- Kind="Instantaneous"
- Guid="a4c0dbfb-2149-4802-9216-90bccbedf7b0"
->DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.AskDriverToSelectNetworkId == False</Expectation></Expectations>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Default.Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1899,11 +1896,11 @@
 <Actions>
 <Action
  Guid="0c39f19d-3872-4b23-b460-ba753aa44492"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.DriverResponse1</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.NetworkIdReenteringOffered</Action><Action
  Guid="d83054ec-b936-4834-accf-4bdb3f78d8c3"
->DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="4785624a-d4f9-4669-b796-3dd3cfa94273"
->DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.DriverElectsToChangeNetworkId &lt;- True</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.DriverElectsToReenterNetworkId &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1939,16 +1936,13 @@
 >EURORADIO.AvailableNetworks.RequestState == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  Guid="688198bb-45ae-4ca2-9533-6364bfc177da"
->DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
  Guid="dd9b6b27-864c-457a-92b4-1c78430500ae"
->DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.AskDriverToSelectNetworkId == True</Expectation><Expectation
+>DMI.MasterDMI().In_RBCContactInformation.ProposedActions == [ DMI.RBCContactActionEnum.SelectNetworkId ]</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d9a4d4cd-b657-45b2-b52b-292cb6a69bb7"
->DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.AvailableNetworkIDs == [&apos;1234&apos;, &apos;4562&apos;]</Expectation><Expectation
- Kind="Instantaneous"
- Guid="d390dfb1-58c7-48e6-8cda-7b7ce4a4438d"
->DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.AskDriverOptionToChangeNetworkId == False</Expectation></Expectations>
+>DMI.MasterDMI().In_RBCContactInformation.AvailableNetworks == [&apos;1234&apos;, &apos;4562&apos;]</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1967,11 +1961,9 @@
 <Actions>
 <Action
  Guid="b130dfe8-46d8-4d71-8e82-640a53e0e40c"
->DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
- Guid="4e3ea8ad-1031-41b0-bcbb-c1fcc41fe2c5"
->DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.DriverChangedNetworkId &lt;- True</Action><Action
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="afdabf48-c8f0-4f8e-a758-024274c9a527"
->DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.SelectedID &lt;- &apos;4562&apos;</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.SelectedNetwork &lt;- &apos;4562&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2006,7 +1998,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="6369b968-b9a1-40fa-ae3d-e48463c8c350"
->Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID</Expectation></Expectations>
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2083,7 +2075,7 @@
 <Actions>
 <Action
  Guid="9f0a5edc-ad74-471b-afea-d04aaa4c8b64"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID </Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Action><Action
  Guid="f5c662f4-fab7-43dc-904f-a4328eaeff34"
 >EURORADIO.Terminal1.IsRegistered &lt;- True</Action><Action
  Guid="6396f662-5eba-46a8-932c-3473c823120c"
@@ -2096,25 +2088,21 @@
 <Expectation
  Kind="Instantaneous"
  Guid="f08b8cf8-ce9c-4c00-b52f-823a38efa501"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
  Guid="cf2d095e-fff9-4559-a680-d29d64fbb375"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.Enter == False</Expectation><Expectation
- Kind="Instantaneous"
- Guid="979b6625-673a-4742-8ff8-e9d2fc462173"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.ReEnter == True</Expectation><Expectation
- Kind="Instantaneous"
- Guid="93647aeb-f9b6-4795-9dac-a43c7b2bed07"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseEirene == True</Expectation><Expectation
- Kind="Instantaneous"
- Guid="5f1bc70f-b164-414c-b01d-1fc686d9edf1"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseLastStored == True</Expectation><Expectation
+>DMI.MasterDMI().In_RBCContactInformation.ProposedActions == 
+[
+    DMI.RBCContactActionEnum.RevalidateContactInfo,
+    DMI.RBCContactActionEnum.UseEireneShortNumber,
+    DMI.RBCContactActionEnum.UseLastStoredNumber
+]</Expectation><Expectation
  Kind="Instantaneous"
  Guid="78e1429a-8d0d-409d-a54a-8a8ae84d98b8"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.Id.Id == 6543</Expectation><Expectation
+>DMI.MasterDMI().In_RBCContactInformation.RBCContactInformation.Id.Id == 6543</Expectation><Expectation
  Kind="Instantaneous"
  Guid="6502b308-e9ea-4bd8-b313-84eb4a8a864c"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.PhoneNumber == &apos;5742&apos;</Expectation></Expectations>
+>DMI.MasterDMI().In_RBCContactInformation.RBCContactInformation.PhoneNumber == &apos;5742&apos;</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2133,7 +2121,7 @@
 <Actions>
 <Action
  Guid="10bff51d-36cf-4f52-96d7-3488803a4b1a"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID </Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Action><Action
  Guid="46905405-653d-4779-a78e-59fffc305ff7"
 >EURORADIO.Terminal1.IsRegistered &lt;- True</Action><Action
  Guid="68efa288-04ab-4fc9-83a5-df1e9c17a58f"
@@ -2146,25 +2134,19 @@
 <Expectation
  Kind="Instantaneous"
  Guid="63ea8bda-9644-4457-a12f-956435567aaf"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
  Guid="66c939c9-07a3-4d34-b76a-5e0c23a8abe6"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.Enter == False</Expectation><Expectation
- Kind="Instantaneous"
- Guid="a461325a-c328-493b-9563-34c9ed68472d"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.ReEnter == False</Expectation><Expectation
- Kind="Instantaneous"
- Guid="23115c05-ae2d-4da3-8061-ed650ff112ec"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseEirene == True</Expectation><Expectation
- Kind="Instantaneous"
- Guid="20babfd0-f05f-43df-95ef-218b3ee69f39"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseLastStored == False</Expectation><Expectation
+>DMI.MasterDMI().In_RBCContactInformation.ProposedActions == 
+[
+    DMI.RBCContactActionEnum.UseEireneShortNumber
+]</Expectation><Expectation
  Kind="Instantaneous"
  Guid="40731b3f-db5e-4209-a632-2f8fcaf5dd09"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.Id.Id == 7654</Expectation><Expectation
+>DMI.MasterDMI().In_RBCContactInformation.RBCContactInformation.Id.Id == 7654</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2f8dabc8-ae56-493d-b243-d754413d1797"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.PhoneNumber == &apos;6574&apos;</Expectation></Expectations>
+>DMI.MasterDMI().In_RBCContactInformation.RBCContactInformation.PhoneNumber == &apos;6574&apos;</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2183,7 +2165,7 @@
 <Actions>
 <Action
  Guid="ab3d83ae-ef80-4e1d-be9f-30e9719adda5"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID </Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Action><Action
  Guid="a7d8e6f4-db1c-455c-9125-e4b1f2e6f8d7"
 >EURORADIO.Terminal1.IsRegistered &lt;- True</Action><Action
  Guid="cecf1275-73c7-43d9-98e2-c1620437d190"
@@ -2196,25 +2178,20 @@
 <Expectation
  Kind="Instantaneous"
  Guid="8e59b038-ee45-499d-a743-8389a938f349"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
  Guid="5801acee-8886-478c-aa75-ba1328ebd893"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.Enter == True</Expectation><Expectation
- Kind="Instantaneous"
- Guid="5aab693f-771a-4251-bd37-9a2bd3c1371b"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.ReEnter == False</Expectation><Expectation
- Kind="Instantaneous"
- Guid="c0f9815d-b4f7-4caa-9342-ace41fd43474"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseEirene == True</Expectation><Expectation
- Kind="Instantaneous"
- Guid="f9902546-80d5-4e26-ba95-e978eb349d6e"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseLastStored == False</Expectation><Expectation
+>DMI.MasterDMI().In_RBCContactInformation.ProposedActions == 
+[
+    DMI.RBCContactActionEnum.EnterContactInfo,
+    DMI.RBCContactActionEnum.UseEireneShortNumber
+]</Expectation><Expectation
  Kind="Instantaneous"
  Guid="93c12525-6d03-4570-becf-ebd540b442ce"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.Id.Id == 6541</Expectation><Expectation
+>DMI.MasterDMI().In_RBCContactInformation.RBCContactInformation.Id.Id == 6541</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3ea1638d-c822-4a34-b86f-df8ee80e1053"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.PhoneNumber == &apos;5741&apos;</Expectation></Expectations>
+>DMI.MasterDMI().In_RBCContactInformation.RBCContactInformation.PhoneNumber == &apos;5741&apos;</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2258,14 +2235,14 @@
 <Actions>
 <Action
  Guid="717238a6-3473-4d52-b989-47bc5bd4482d"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ChangeRBCIDOffered </Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.RBCIdChangeOffered</Action><Action
  Guid="c5c9aaa9-eae2-49b1-956c-8baebeab0010"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="15fb39e5-a5b8-4b49-9d53-715c7fab6829"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b1a73892-a5f8-42e7-aa7a-9424335cad31"
@@ -2288,15 +2265,13 @@
 <Actions>
 <Action
  Guid="463ebdcf-db4d-421b-b56c-14c018d06718"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ChangeRBCIDOffered </Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.RBCIdChangeOffered</Action><Action
  Guid="5a46ea13-1e37-4ec7-bdfe-516b370dece5"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
- Guid="01940635-dbcc-4918-90b8-a1d6a8b0bd44"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.DriverChangedId &lt;- True</Action><Action
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="2bb26852-d088-40d5-bf39-b91ea18d8e3b"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.Id.Id &lt;- 6656</Action><Action
+>DMI.MasterDMI().In_RBCContactInformation.RBCContactInformation.Id.Id &lt;- 6656</Action><Action
  Guid="7a4f0ad8-4616-42f2-8baf-36b56646d997"
->DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.PhoneNumber &lt;- &apos;2398&apos;</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.RBCContactInformation.PhoneNumber &lt;- &apos;2398&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
