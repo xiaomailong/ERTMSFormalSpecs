@@ -4097,6 +4097,84 @@ BTM.Linking.Linkings</Action></Actions>
 )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
+</TestCase><TestCase
+ Name="New MA section at infill location reference"
+ Guid="28a920f7-f975-4c2a-8baa-661e32fe68a4"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Initialize things"
+ Guid="744d2287-a2d5-4220-9958-ac5b9c804048"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Initialize test environment"
+ Guid="b5a101b1-31c1-48d7-986f-cda37ad218bb"
+>
+<Actions>
+<Action
+ Guid="70d64647-6a83-4cb1-b705-d9888a212c0c"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Initialize elements for MA"
+ Guid="a99e386c-583d-4346-98fd-aa263c8e485c"
+>
+<Actions>
+<Action
+ Guid="e82abeeb-7acf-4039-9c74-75783a5040fe"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 2 - Send the message"
+ Guid="9ed7589d-b553-458f-92be-2694824eab4e"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="e5f125f3-ad92-4c69-9d5c-1503a23c20e7"
+>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 3 - ????"
+ Guid="352e8b34-fd24-4662-ab0d-8db592d082ae"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="40ed5556-f21b-4494-85f9-f98ec6ae7316"
+>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 4 - Profit"
+ Guid="7230d477-aa88-487f-a0eb-a566b54fe678"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="a9c0ddce-414c-41a9-9415-4b184c02990e"
+>
+</SubStep></SubSteps>
+</Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
  D_LRBG=""
