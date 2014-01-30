@@ -160,10 +160,13 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 <Functions>
 <Function
  Type="LinkingData"
+ Implemented="TRUE"
+ Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateLinkingData"
  Guid="e67dc131-7b89-4020-a3b6-525024b5593e"
 >
+<Comment>Create an element of Linking data for use in the BTM.Linkings variable</Comment>
 <Parameters>
 <Parameter
  Type="Default.MessageTypes.Distance"
@@ -198,7 +201,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Always"
+ Name="Otherwise"
  Guid="26c7601d-ea48-4264-a247-cbc27a17b8af"
 >
 <Expression>LinkingData {
@@ -297,11 +300,6 @@ AND
  Guid="fdd1586b-7d79-4bc7-88c0-8649071c2080"
 >
 </ReqRef><ReqRef
- Id="62aa6f8e-f444-4ed1-90b7-43dc64aa7594"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="34dd917f-302b-457c-80f2-e17612fc1aa8"
->
-</ReqRef><ReqRef
  Id="15cc1ee9-1be0-4256-a588-5dd0831c0f97"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="661f974d-3b18-4501-8b06-7188dfb85d99"
@@ -320,11 +318,11 @@ AND
 <PreConditions>
 <PreCondition
  Guid="da977d47-40a4-4f83-8177-970236197651"
->Available ( CurrentLinking() )</PreCondition><PreCondition
+>LinkingApplicable()</PreCondition><PreCondition
  Guid="733c9016-29a2-4746-b9ea-ad24785048aa"
->(CurrentLinking()).BaliseGroupIdentifier== Messages.NID_BG.NID_UNKNOWN</PreCondition><PreCondition
+>(CurrentLinking()).BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN</PreCondition><PreCondition
  Guid="f077e4fd-a6f3-48ca-88f6-1bd8e47a08bd"
->(FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked</PreCondition><PreCondition
+>CurrentBGisLinked()</PreCondition><PreCondition
  Guid="8c20f424-e7cd-4ee7-b0bb-33599201a20a"
 >(COUNT CurrentBaliseGroup) &gt;= 2</PreCondition><PreCondition
  Guid="4d37948a-0edd-4996-99f6-0ae6f7cd0f88"
