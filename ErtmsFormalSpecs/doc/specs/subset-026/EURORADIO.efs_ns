@@ -2046,7 +2046,9 @@ Terminal2.IsRegistered</Expression>
 <PreConditions>
 <PreCondition
  Guid="2218137b-5a46-48c7-996e-77239bd0276d"
->Available (Message.INFILL_MA )</PreCondition></PreConditions>
+>Available (Message.INFILL_MA )</PreCondition><PreCondition
+ Guid="ef9e6dde-adf6-4d12-a2ca-7091646da7e6"
+>NOT (THERE_IS_IN Kernel.EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -2166,7 +2168,9 @@ Terminal2.IsRegistered</Expression>
 <PreConditions>
 <PreCondition
  Guid="4b26ec5f-a027-4caa-bca8-cd8c1bb56153"
->Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE )</PreCondition></PreConditions>
+>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE )</PreCondition><PreCondition
+ Guid="1d3581de-d6a2-4ce9-aa78-ab337178f1a0"
+>NOT (THERE_IS_IN Kernel.EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -2323,7 +2327,9 @@ Terminal2.IsRegistered</Expression>
 <PreConditions>
 <PreCondition
  Guid="cc9777a1-c95d-4abd-9469-632ab302b08b"
->Available ( Message.MOVEMENT_AUTHORITY )</PreCondition></PreConditions>
+>Available ( Message.MOVEMENT_AUTHORITY )</PreCondition><PreCondition
+ Guid="0a1244f7-fc1f-4b75-b7ab-0ca339366842"
+>NOT (THERE_IS_IN Kernel.EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="34f6db8a-45cd-4c94-b8e3-83e7ea450181"
@@ -2514,7 +2520,9 @@ Terminal2.IsRegistered</Expression>
 <PreConditions>
 <PreCondition
  Guid="324ed534-7ece-4d2d-83d2-634f8405934d"
->Available ( Message.REQUEST_TO_SHORTEN_MA )</PreCondition></PreConditions>
+>Available ( Message.REQUEST_TO_SHORTEN_MA )</PreCondition><PreCondition
+ Guid="ac3c42b9-2925-4f5d-a63b-8248eade008e"
+>NOT (THERE_IS_IN Kernel.EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
