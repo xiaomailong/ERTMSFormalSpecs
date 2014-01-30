@@ -1110,8 +1110,8 @@
 >
 <Comment>Allows to request the list of available and allowed networks.</Comment>
 </StructureElement><StructureElement
- TypeName="EURORADIO.AvailableNetworksCollection"
- Default=""
+ TypeName="EURORADIO.AvailableNetworksCol"
+ Default="[]"
  Mode="Incoming"
  Implemented="TRUE"
  Name="Networks"
@@ -1144,7 +1144,7 @@
  Default="[]"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="MobileTerminalsCollection"
+ Name="MobileTerminalsCol"
  Guid="c11465cd-6494-4bd4-ab4b-628e2874fe32"
 >
 <Comment>probably 2 is the maximum number of perceiveable MobileTerminals mounted on a loco. Requirement needed. #morido, 13/10/14</Comment>
@@ -1152,7 +1152,7 @@
  TypeName="String"
  Default="[]"
  Implemented="TRUE"
- Name="AvailableNetworksCollection"
+ Name="AvailableNetworksCol"
  Guid="104401a1-8c78-4794-bf19-a0f04f17b077"
 >
 <Comment>List of available and allowed networks.</Comment>
