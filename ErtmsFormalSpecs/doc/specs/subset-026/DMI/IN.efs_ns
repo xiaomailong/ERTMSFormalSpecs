@@ -13486,6 +13486,24 @@
  Guid="4e3828e3-1065-4337-b34a-a82cfa1e8e49"
 >
 <Comment>The network id selected by the driver.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="DriverElectsToReenterNetworkId"
+ Guid="ddb451f2-297d-45d9-b4f1-b4f858b74a03"
+>
+<Comment>If the driver was asked to reenter the network id, this variable gives his decision.</Comment>
+</StructureElement><StructureElement
+ TypeName="EURORADIO.RBCContactStruct"
+ Default="EMPTY"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SelectedRBCContactInformation"
+ Guid="b2381f9f-a8c4-4679-8cad-abb8201a7940"
+>
+<Comment>The entered RBC contact data.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  InitialState="NotAvailable"
