@@ -185,6 +185,13 @@ namespace DataDictionary.Types
                     appendRules(item);
                 }
             }
+            {
+                StateMachine item = element as StateMachine;
+                if (item != null)
+                {
+                    appendStateMachines(item);
+                }
+            }
 
             base.AddModelElement(element);
         }

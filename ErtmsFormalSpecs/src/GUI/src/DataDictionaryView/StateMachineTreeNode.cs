@@ -178,10 +178,11 @@ namespace GUI.DataDictionaryView
             newItem.MenuItems.Add(new MenuItem("State", new EventHandler(AddStateHandler)));
             newItem.MenuItems.Add(new MenuItem("Rule", new EventHandler(AddRuleHandler)));
             retVal.Add(newItem);
+            retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.AddRange(base.GetMenuItems());
-            retVal.Insert(5, new MenuItem("-"));
-            retVal.Insert(6, new MenuItem("View state diagram", new EventHandler(ViewStateDiagramHandler)));
-
+            retVal.Insert(6, new MenuItem("-"));
+            retVal.Insert(7, new MenuItem("View state diagram", new EventHandler(ViewStateDiagramHandler)));
+            
             return retVal;
         }
     }

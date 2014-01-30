@@ -235,6 +235,34 @@
  Guid="9915d05d-6218-4271-ad1a-353ad78f2716"
 >
 </ReqRef><Comment>Indicates if the second desk of the current cab is active. If the cab contains only one desk, it will be represented by Desk1.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="VirtualCabAActive"
+ Guid="12133e3e-21a7-43da-8065-9127aabb6026"
+>
+<ReqRef
+ Id="639e4b78-6508-4b15-8ce2-176c73314ca5"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="52d2004d-5f3e-4222-b67f-91988278cb2b"
+>
+</ReqRef><Comment>Indicates the status of virtual cab A, if the current cab is single and contains only one desk.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="VirtualCabBActive"
+ Guid="3aa855df-6755-423a-b300-f36c8f207846"
+>
+<ReqRef
+ Id="639e4b78-6508-4b15-8ce2-176c73314ca5"
+ SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
+ Guid="ac713e2f-80ec-4be1-bfd2-3665abfdc1d1"
+>
+</ReqRef><Comment>Indicates the status of virtual cab A, if the current cab is single and contains only one desk.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="TrainIntegrityStruct"
