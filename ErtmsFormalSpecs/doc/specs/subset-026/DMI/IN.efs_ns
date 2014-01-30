@@ -11332,7 +11332,7 @@
 >
 <Comment></Comment>
 </StructureElement><StructureElement
- TypeName="EURORADIO.AvailableNetworksCollection"
+ TypeName="EURORADIO.AvailableNetworksCol"
  Default=""
  Mode="Outgoing"
  Implemented="TRUE"
@@ -13382,6 +13382,552 @@
 <Actions>
 <Action
  Guid="2286028f-8b0c-469f-809e-3bc5fc8b2a6e"
+>THIS &lt;- Available.Idle</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State></States>
+</StateMachine></StateMachines>
+</Structure><Structure
+ Implemented="TRUE"
+ Name="RBCContactInformation"
+ Guid="97b6838f-fafd-4990-b04a-718599dbf9de"
+>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+ Guid="86c15e32-f304-464f-bdf7-a59db42e8dcf"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+ Guid="7bf364dc-fbf2-43db-a0c2-06b19f003cfe"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+ Guid="f19c074b-635e-4c09-9bf2-7327279ed992"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="150f6fac-820b-4f0d-905f-8fe939d7d8fc"
+>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
+ Guid="cc391527-25c9-467e-bf9a-30ce07933810"
+>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+ Guid="8afa053c-cff5-4eae-ab11-d8038a186495"
+>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="ProcedureInSM"
+ Default=""
+ Mode="Internal"
+ Name="ProcedureIn"
+ Guid="a850a68f-35c1-4633-b47e-d1e701334d8d"
+>
+</StructureElement><StructureElement
+ TypeName="DMI.InputInformation"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="InputInformation"
+ Guid="abb3d796-c38e-486e-8a14-dd1ab00627ad"
+>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="EURORADIO.RBCContactStruct"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="RBCContactInformation"
+ Guid="1be8d477-1707-45a2-b3b5-3d705fd2d177"
+>
+</StructureElement><StructureElement
+ TypeName="RBCContactActionEnum"
+ Default="RBCContactActionEnum.ReenterNetworkId"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="DriversSelectedAction"
+ Guid="9351f446-baa5-4956-bbcd-4c3dda3ac4d0"
+>
+<Comment>The action chosen by the driver.</Comment>
+</StructureElement><StructureElement
+ TypeName="RBCContactActionsCol"
+ Default="[]"
+ Mode="Outgoing"
+ Implemented="TRUE"
+ Name="ProposedActions"
+ Guid="48d51ddc-8853-4ac6-9fb1-93a09d4b7909"
+>
+<Comment>Actions that are proposed to the driver for entering of the RBC contact information.</Comment>
+</StructureElement><StructureElement
+ TypeName="EURORADIO.AvailableNetworksCol"
+ Default="[]"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="AvailableNetworks"
+ Guid="155b093b-504f-4a89-8af4-16df91f6ab68"
+>
+<Comment>The list of available networks from which the driver has to select the desired network.</Comment>
+</StructureElement><StructureElement
+ TypeName="String"
+ Default="&apos;&apos;"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SelectedNetwork"
+ Guid="4e3828e3-1065-4337-b34a-a82cfa1e8e49"
+>
+<Comment>The network id selected by the driver.</Comment>
+</StructureElement><StateMachines>
+<StateMachine
+ InitialState="NotAvailable"
+ Default="NotAvailable"
+ Name="ProcedureInSM"
+ Guid="c11d5446-782a-4a14-b83c-c3b298d63999"
+>
+<States>
+<State
+ X="230"
+ Y="60"
+ Width="140"
+ Height="50"
+ Name="NotAvailable"
+ Guid="32d3743c-0fd1-49ae-a3fd-a43334b10fd4"
+>
+<StateMachine
+ InitialState="InitialState"
+ NeedsRequirement="FALSE"
+ Guid="0c988b96-8f25-4a6f-8ddb-566a51b599d2"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="InitialState"
+ Guid="b1afba2c-4e46-4095-bc66-089b960ad83e"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="30fbddc4-1e59-4487-a2b4-c3b701de9215"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="930d846c-0fa3-40cd-aea8-f28f6072e934"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="b6ffa187-858f-4ff5-a35e-ec02221992ac"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d6f123cb-548e-4608-b037-288acb09edf4"
+>THIS &lt;- NotAvailable.Idle</Action><Action
+ Guid="118744a2-fec5-41e2-8a37-2e0b29ffaedd"
+>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
+ Guid="9cd94de2-d2e9-496b-8f38-a1e9f3f46601"
+>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Idle"
+ Guid="b3db97cf-b2c8-431b-9c87-b79b1bf85605"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="fa4b3923-75e1-4aa3-9894-80c4cba1e203"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="50"
+ Y="180"
+ Width="140"
+ Height="50"
+ Name="NationalSystemAvailability"
+ Guid="9b472a21-4bde-4892-85b4-9ffe39af378e"
+>
+<StateMachine
+ InitialState="InitialState"
+ NeedsRequirement="FALSE"
+ Guid="a5e32292-9558-47e4-8c7b-1f4d482bfe1e"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="InitialState"
+ Guid="e2c7da76-f729-4414-98d6-f9c9e3f56deb"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="1d2d87b1-7aac-4c24-82a8-35d120dc7465"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="a92f80ba-51f5-48d2-a5e0-3bb8f9d8545f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="a24ff4c3-e96d-44f5-83e4-ff7993347130"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d3559147-8b4d-4656-951b-04d16a0a731a"
+>THIS &lt;- NationalSystemAvailability.Idle</Action><Action
+ Guid="3d86c13d-8b08-45d6-8403-a523682f344a"
+>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
+ Guid="fe1b00f5-76b1-44c0-8e33-d97f3771422f"
+>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Idle"
+ Guid="1b5bcea7-f916-4a3f-a1b0-bd931406584a"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="f8525baa-e582-44b4-9b09-f4795925d7d4"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="410"
+ Y="180"
+ Width="140"
+ Height="50"
+ Name="NotApplicable"
+ Guid="7c665b10-3445-495e-aef9-87694aa17ce3"
+>
+<StateMachine
+ InitialState="InitialState"
+ NeedsRequirement="FALSE"
+ Guid="27cc2603-a9b8-46ad-a200-f06ebe1f8641"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="InitialState"
+ Guid="a12eff8d-0e0e-4f29-b3c3-878e9b47736d"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="38881fa6-4003-4cb8-96ca-2e00788bac1b"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="11096cbf-1cf9-4bb5-8dd0-007bb427cff6"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="1f5d1aae-fe50-4c00-87fd-d5a080aaad92"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a31c70b6-6416-4f60-b66a-ebca2609edd5"
+>THIS &lt;- NotApplicable.Idle</Action><Action
+ Guid="4b2e18d0-16a7-456a-891d-e1b0b8f43b5e"
+>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
+ Guid="fd5e834b-f17c-44a3-a3ab-43c6b3157ab2"
+>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Idle"
+ Guid="df8406fa-ddee-4859-97f3-62949c3a89b5"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="51ed2aaf-b5bf-47c3-abba-c0475d945955"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="50"
+ Y="300"
+ Width="140"
+ Height="50"
+ Name="Active"
+ Guid="15064e70-0117-4184-9e5f-4e834ba49c73"
+>
+<StateMachine
+ InitialState="InitialState"
+ NeedsRequirement="FALSE"
+ Guid="83f894b7-35d7-405c-9e41-43cddd5a28a3"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="InitialState"
+ Guid="01d86089-1c48-4f71-b2c3-d6545eab355f"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="ebd3f360-6be6-41ff-9b98-5ae21636edac"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="6ab6bbd4-88a1-4626-adad-bfe6cb069af2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="df229984-a97f-47f7-8e65-c3d132df2db7"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e143c464-adcc-46af-86da-95f54442989a"
+>THIS &lt;- Active.Send</Action><Action
+ Guid="f84007eb-208d-4369-a047-859a902d55c0"
+>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
+ Guid="ee466c74-7a9b-4ea1-a0de-b2f2aabbfc93"
+>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Send"
+ Guid="dd86a808-0fc3-45be-8e3e-8c2ebca6764a"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="cb76bc6b-307e-4373-ba88-d2aaa70915ae"
+>
+<Rules>
+<Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ResponseReceived"
+ Guid="dc2f09dc-3a18-45cf-b577-d73116677274"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ResponseReceived"
+ Guid="d58512d4-aa20-44c4-b90a-e1290d589cbc"
+>
+<PreConditions>
+<PreCondition
+ Guid="ff1bf9da-5d56-42be-8017-281f7f98bdf5"
+>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7ed62bbd-1504-4ad4-9579-f05490d1ee7e"
+>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="410"
+ Y="300"
+ Width="140"
+ Height="50"
+ Name="Available"
+ Guid="8661ba78-127f-4000-a896-35e4d9270a48"
+>
+<StateMachine
+ InitialState="Idle"
+ NeedsRequirement="FALSE"
+ Guid="9b58155c-6988-41a4-8b32-86c8de63e73a"
+>
+<States>
+<State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Idle"
+ Guid="86b33561-897b-4fbe-966e-29a8a640a1a4"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="05518bb4-1d78-4b5f-9e3d-6b23a951a197"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RequestActivated"
+ Guid="7f420080-9b3c-46cc-99bc-0a631ae3bd17"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RequestActivated"
+ Guid="f22e07f0-d750-430b-8a17-0474f96fb101"
+>
+<PreConditions>
+<PreCondition
+ Guid="ec98ef0c-4d0f-4e86-8ac6-6c351e9e33ea"
+>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f69bd74f-1bdc-4470-ae65-9649caadcc8d"
+>THIS &lt;- Available.Send</Action><Action
+ Guid="4204d3bb-3ede-406a-85a3-0e73a8ea2dbc"
+>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="560"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Send"
+ Guid="2c7f8e1b-f5d8-482d-a22b-34e2f1b37702"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="04cb822a-048a-43a3-a9d0-312402bbf310"
+>
+<Rules>
+<Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ResponseReceived"
+ Guid="b4a22b11-b8cf-4722-b560-79142978ccf8"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ResponseReceived"
+ Guid="5f2b6b0f-b0af-434c-9c67-b7d4efff8045"
+>
+<PreConditions>
+<PreCondition
+ Guid="77a09e24-9831-4879-b009-05bbb69c9ccc"
+>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6d3649e7-baa3-41a3-b808-3d62af24d653"
+>THIS &lt;- Available.Response</Action><Action
+ Guid="0aa4963d-4f98-46f6-a3e4-c48e1ff70658"
+>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="430"
+ Y="170"
+ Width="100"
+ Height="50"
+ Name="Response"
+ Guid="934345ac-aaf5-4be6-93c8-372c827c1645"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+ Guid="3d01b8b8-e70c-4358-9ff0-f098e9e7e292"
+>
+<Rules>
+<Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RequestDisabled"
+ Guid="a1a9767d-11b5-4aba-bb76-1c1a013bcf79"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RequestDisabled"
+ Guid="89fb650d-26b4-47e7-81f8-439bb3e694c2"
+>
+<PreConditions>
+<PreCondition
+ Guid="25ffe96e-db72-4f37-83d6-74b7fb88fbdb"
+>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e28a8534-043c-4a47-bfae-7e20c161be62"
 >THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
