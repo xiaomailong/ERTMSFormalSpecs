@@ -145,7 +145,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6b8d455d-eb79-4af0-a1a2-a854ac0ed25e"
 >
-</ReqRef><Values>
+</ReqRef><Comment>Enumerates all the possible reasons for the emergency brakes to be tripped</Comment>
+<Values>
 <EnumValue
  Value=""
  Name="DriverAckTimeOut"
@@ -413,7 +414,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a005923c-ed2e-44ff-84c8-450e7870ef82"
 >
-</ReqRef><Comment>Represents the set of received emergency stops (conditional or unconditional).</Comment>
+</ReqRef><Comment>Collection holding structures of type Kernel.EmergencyStop</Comment>
 </Collection><Collection
  TypeName="BaliseGroup"
  MaxSize="20"
@@ -9124,6 +9125,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Functions>
 <Function
  Type="EmergencyStop"
+ Implemented="TRUE"
  Name="CreateEmergencyStop"
  Guid="ed5c4ddd-670a-414d-961c-9ef4c2963243"
 >
@@ -9165,6 +9167,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </Case></Cases>
 </Function><Function
  Type="Kernel.EmergencyStop"
+ Implemented="TRUE"
  Name="ClosestStopLocation"
  Guid="60af8f56-9ae5-4e3d-b04a-709236d5e630"
 >
@@ -9187,7 +9190,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="6504658f-9677-4b71-97ed-e60c579ccab0"
 >
 <Expression>REDUCE aESCol | ( X.Reason == Kernel.BrakeReason.OrderFromRBC AND X.IsConditional )
-    USING Kernel.MinESDistance( EmergencyStop1 =&gt; X, EmergencyStop2 =&gt; RESULT )
+    USING Kernel.MinEmergencyStopDistance( EmergencyStop1 =&gt; X, EmergencyStop2 =&gt; RESULT )
 INITIAL_VALUE EmergencyStop
                             {
                                 StopLocation =&gt; Default.BaseTypes.Distance.Infinity
@@ -9195,7 +9198,8 @@ INITIAL_VALUE EmergencyStop
 </Case></Cases>
 </Function><Function
  Type="Kernel.EmergencyStop"
- Name="MinESDistance"
+ Implemented="TRUE"
+ Name="MinEmergencyStopDistance"
  Guid="760d41cd-34f8-4a83-8e8d-d49e57d0c208"
 >
 <Comment>Returns the EmergencyStop item with the closest StopLocation, chosen amongst the conditional emergency stops received from the RBC</Comment>
@@ -9623,10 +9627,16 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  Name="AddEmergencyStop"
  Guid="ceb27117-9325-44f7-88ca-b8341a1a09d6"
 >
-<Comment>Adds an emergency stop item to the list from a conditional emergency stop message or from an unconditional emergency stop message</Comment>
+<ReqRef
+ Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4195cc84-95a8-4f19-ac0f-26a5d2694cb3"
+>
+</ReqRef><Comment>Adds an emergency stop item to the list from a conditional emergency stop message or from an unconditional emergency stop message</Comment>
 <Parameters>
 <Parameter
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
@@ -9799,7 +9809,7 @@ Kernel.EmergencyStops</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ff01a9c0-064c-49da-9e3c-7e0a6350c0c7"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>This holds all the different emergency stop messages the train currently has.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
  DefaultValue=""
