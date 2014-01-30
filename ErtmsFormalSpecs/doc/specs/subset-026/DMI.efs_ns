@@ -85,6 +85,65 @@
  Guid="5d77f5cf-c19f-45b0-9f04-dea0155adf89"
 >
 </EnumValue></Values>
+</Enum><Enum
+ Default="RBCContactActionEnum.ReenterNetworkId"
+ Implemented="TRUE"
+ Name="RBCContactActionEnum"
+ Guid="c399b535-c0a4-40b4-afd8-15d2660493c2"
+>
+<ReqRef
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1ff1fd86-793a-46de-b8a5-722cf9339542"
+>
+</ReqRef><ReqRef
+ Id="1ab51773-764d-4fc1-b533-351222363321"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="56a11a0a-ef4e-4d63-ae8c-58d5a33b8d2a"
+>
+</ReqRef><ReqRef
+ Id="bc8058d6-c833-43cf-93a4-f446a3a326ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="288b4767-4237-4d40-8277-f583c15267d9"
+>
+</ReqRef><ReqRef
+ Id="a9f86939-1651-4064-9732-2d860f2d28af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a97f9086-3a33-4528-b5d5-3390c2e364a9"
+>
+</ReqRef><Comment>Represents the possible driver actions for handling of RBC contact information.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="ReenterNetworkId"
+ Guid="09572e27-87c1-4724-9134-e4eb4037a21d"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="UseLastStoredNumber"
+ Guid="c4818512-05be-4165-8d26-3d2d8d7253d4"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="UseEireneShortNumber"
+ Guid="4ba47743-e0d0-4fca-be5d-5a93ab2cd3de"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="EnterContactInfo"
+ Guid="93880513-aa4c-4a63-8570-94523f38f23e"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="RevalidateContactInfo"
+ Guid="7a90d888-3fa4-40dd-af8b-185b3bcb726c"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="SelectNetworkId"
+ Guid="6c49c904-ae82-4ace-8345-777a1c613d7f"
+>
+</EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
 <Structure
@@ -1069,11 +1128,32 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateNetworkIdRequest"
+ Name="InitiateRBCContactInformationRequest"
  Guid="896a9ec8-f1cc-49ee-a82a-bae035d64bbc"
 >
-<Comment>Asks the driver if he whishes to change the network ID</Comment>
+<ReqRef
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d42d8b98-ee20-45b2-989b-918c56814a28"
+>
+</ReqRef><ReqRef
+ Id="ff5aeaff-49e3-489d-816f-c49fc05bc951"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c0825305-fa39-4a9c-acff-fc653327720e"
+>
+</ReqRef><Comment>Asks the driver to enter the RBC Contact Information. The possible actions will be listed in Actions parameter.</Comment>
+<Parameters>
+<Parameter
+ Type="RBCContactActionsCol"
+ Name="Actions"
+ Guid="a000b112-bba9-48c3-9b52-df06dfab5f0c"
+>
+</Parameter><Parameter
+ Type="EURORADIO.RBCContactStruct"
+ Name="anRBCContactInformation"
+ Guid="a66a2fc2-d14a-4580-b1bd-4f9b330de6e5"
+>
+</Parameter></Parameters>
 <Rules>
 <Rule
  Priority="Processing"
@@ -1087,7 +1167,8 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="31700a64-e853-40de-97cf-aaa94de04fe1"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the mode has changed, first update the state machines.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1106,16 +1187,18 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateRequest"
+ Name="Initiate request"
  Guid="b26df151-b76e-44d1-9cb1-c1320a388c28"
 >
-<Comment></Comment>
+<Comment>Initiates the RBC contact information request, according to the provided parameters.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateRequest"
+ Name="Initiate request"
  Guid="57bbde6c-9ad8-4a75-a62a-76fc47692926"
 >
 <Comment></Comment>
@@ -1124,113 +1207,15 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 <Actions>
 <Action
  Guid="ae44b34e-6d5c-4179-8491-b22fa91eca38"
->In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
+>In_RBCContactInformation.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
  Guid="84058554-1ed6-4d3c-9e22-4d2af46e68b6"
->In_RBCContactInformationRadioNetworkId.AskDriverOptionToChangeNetworkId &lt;- True</Action><Action
+>In_RBCContactInformation.ProposedActions &lt;- Actions</Action><Action
  Guid="0d8c73e2-a45e-43b8-9066-efb4cdcd7ddb"
->In_RBCContactInformationRadioNetworkId.AvailableNetworkIDs &lt;- []</Action><Action
- Guid="363c043b-c83e-4656-b927-3112eb9557f3"
->In_RBCContactInformationRadioNetworkId.AskDriverToSelectNetworkId &lt;- False</Action><Action
+>In_RBCContactInformation.AvailableNetworks &lt;- []</Action><Action
  Guid="7aee15d0-7e12-4fd5-a113-ba31cee671b8"
->In_RBCContactInformationRadioNetworkId.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRBCIdOrPhoneNumberRequest"
- Guid="41240577-1062-4cfb-bc50-390eede90bb0"
->
-<Parameters>
-<Parameter
- Type="EURORADIO.RBCContactStruct"
- Name="ContactInformation"
- Guid="efa6eca9-8e89-47ae-ba91-52945e309c40"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="Enter"
- Guid="169a963b-8c6d-4615-9925-3956aed51eb9"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="ReEnter"
- Guid="3c27f959-8508-4fd4-bd26-38f76f153c3b"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="UseEirene"
- Guid="998d52c7-3d51-45a5-ba81-94c231aec629"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="UseLastStored"
- Guid="0cd3c6fc-d1d0-41b2-8b4b-cbad427d8a23"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="09d149a4-e1f1-4d42-b521-dcc899966a90"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="50ca2667-682a-43f0-8bb0-e08b223c9070"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="198ace9e-592a-430f-b87e-552ce3d58dc0"
->
-<PreConditions>
-<PreCondition
- Guid="f59d5c74-afd2-49e8-a384-ae540b76a61d"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="4e2db4df-3320-45b3-b086-8c4f2ce1f417"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="4ab48f29-92f1-4c1a-b724-6464fa0cb6b5"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="f010b87c-181b-4544-afe7-a92aa85f5e3a"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="2ee64c4f-20fb-4dab-be3b-eb3deabe014a"
->In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="6c9bed17-c2ae-4164-add9-ec6dfb6c2571"
->In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.Enter &lt;- Enter</Action><Action
- Guid="18cfe5bd-e7b0-4fe4-8045-f7ef6bc2fe44"
->In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.ReEnter &lt;- ReEnter</Action><Action
- Guid="23c9f084-2e3e-4ff3-b3bd-60f4823f3c9e"
->In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseEirene &lt;- UseEirene</Action><Action
- Guid="a93e0857-0610-4bf8-95d2-f4213b77b5d8"
->In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseLastStored &lt;- UseLastStored</Action><Action
- Guid="fdf9c49c-73c1-4f10-8fe4-870128d053d3"
->In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation &lt;- ContactInformation</Action><Action
- Guid="5378fae7-0921-4e84-aeff-17f716b11d48"
->In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.DriverAnswered &lt;- False</Action></Actions>
+>In_RBCContactInformation.InputInformation.DriverAnswered &lt;- False</Action><Action
+ Guid="e026f3a4-7204-4559-82f5-185a04c0de02"
+>In_RBCContactInformation.RBCContactInformation &lt;- anRBCContactInformation</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4892,14 +4877,16 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SelectNetworkId"
  Guid="697499ff-091e-40d9-b82d-00baa5ac24f8"
 >
+<Comment>Asks the driver to select the network id from the proposed list.</Comment>
 <Parameters>
 <Parameter
- Type="EURORADIO.AvailableNetworksCollection"
- Name="NetworkIdList"
+ Type="EURORADIO.AvailableNetworksCol"
+ Name="Networks"
  Guid="232764cf-c5a5-469e-b627-ff46ad4cbf3a"
 >
 </Parameter></Parameters>
@@ -4916,7 +4903,8 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f53ce9b-8544-49ca-a2ae-83f53d9b13a0"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the mode has changed, first update the state machines.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4935,15 +4923,18 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="SelectNetworkId"
+ Name="Initiate request"
  Guid="79d9c715-8465-476e-a40e-c63d03a2d1aa"
 >
+<Comment>Initializes a request to select a network id. The only possible driver&apos;s action is SelectNetworkId.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateRequest"
+ Name="Initiate request"
  Guid="71b088bf-b2ee-4352-8f4c-db6ee6e118cb"
 >
 <PreConditions>
@@ -4951,15 +4942,13 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 <Actions>
 <Action
  Guid="2fbcc21b-900d-44e5-b0ef-d1f8f0593fa8"
->In_RBCContactInformationRadioNetworkId.AskDriverToSelectNetworkId &lt;- True</Action><Action
+>In_RBCContactInformation.ProposedActions &lt;- [ RBCContactActionEnum.SelectNetworkId ]</Action><Action
  Guid="f2e8df58-d658-41fa-b692-19b730231706"
->In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
+>In_RBCContactInformation.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
  Guid="fbb5b6d0-fa35-43a0-9e7f-3102cc6e93c2"
->In_RBCContactInformationRadioNetworkId.AvailableNetworkIDs &lt;- NetworkIdList</Action><Action
- Guid="1f1640cd-e00e-46e8-9ccb-1d54555818b6"
->In_RBCContactInformationRadioNetworkId.AskDriverOptionToChangeNetworkId &lt;- False</Action><Action
+>In_RBCContactInformation.AvailableNetworks &lt;- Networks</Action><Action
  Guid="23b8ae56-3c6d-4af5-9779-e36c0a926331"
->In_RBCContactInformationRadioNetworkId.InputInformation.DriverAnswered &lt;- False</Action></Actions>
+>In_RBCContactInformation.InputInformation.DriverAnswered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5612,8 +5601,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotAvailable</Action><Action
  Guid="95552dcc-d23b-4076-819d-4eb536da90b1"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.NotAvailable</Action><Action
- Guid="8edcd2ca-4aca-4b45-905c-d7b8807ea48f"
->In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn &lt;- In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn.NotAvailable</Action><Action
  Guid="eab17d12-f21f-425b-8d36-2842272f2510"
 >In_TrainIntegrity.ProcedureIn &lt;- In_TrainIntegrity.ProcedureIn.NotAvailable</Action><Action
  Guid="cc2c3068-d400-4ed0-8fcb-bfbffc7e2f51"
@@ -5755,7 +5742,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="902c2280-a3f1-44fa-8a78-e2585f23db1c"
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.NotAvailable</Action><Action
  Guid="be9d17f3-5ef3-4ea3-b8e0-3c412665bd6f"
->In_RBCContactInformationRadioNetworkId.ProcedureIn &lt;- In_RBCContactInformationRadioNetworkId.ProcedureIn.NotAvailable</Action><Action
+>In_RBCContactInformation.ProcedureIn &lt;- In_RBCContactInformation.ProcedureIn.NotAvailable</Action><Action
  Guid="071ba4d9-e923-4756-8ef4-8c867100f678"
 >In_TrainDataEntryRequest.ProcedureIn &lt;- In_TrainDataEntryRequest.ProcedureIn.NotAvailable</Action></Actions>
 </RuleCondition></Conditions>
@@ -5801,8 +5788,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_TrackAdhesionFactor.GoToAvailable()</Action><Action
  Guid="b104dcd8-9c62-4617-bd57-424fdfe33390"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
- Guid="1ff2be95-3b6d-490e-a395-eb41b83afb77"
->In_RBCContactInformationRBCIdOrPhoneNumber.GoToAvailable()</Action><Action
  Guid="443ba3af-f358-4f73-9995-100e3e00eec9"
 >In_TrainIntegrity.GoToAvailable()</Action><Action
  Guid="f87aafd6-df74-4e3a-b9d3-76833439d815"
@@ -5944,7 +5929,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="1052ae83-f5ef-4345-af5c-a64cd9bb9982"
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.NotAvailable</Action><Action
  Guid="83ea63d3-2f58-41c6-b6e3-92f9abf22ac8"
->In_RBCContactInformationRadioNetworkId.GoToAvailable()</Action><Action
+>In_RBCContactInformation.GoToAvailable()</Action><Action
  Guid="31881816-0861-4ba3-9fda-1c8bb29d6ce9"
 >In_TrainDataEntryRequest.GoToAvailable()</Action></Actions>
 </RuleCondition></Conditions>
@@ -6028,8 +6013,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_ErtmsEtcsLevel.ProcedureIn &lt;- In_ErtmsEtcsLevel.ProcedureIn.NotAvailable</Action><Action
  Guid="6fb13b43-e01c-4e3d-aea6-4d95b2166980"
 >In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotAvailable</Action><Action
- Guid="a5fe0fb5-d60e-4349-b2ae-613e35d31717"
->In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn &lt;- In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn.NotAvailable</Action><Action
  Guid="46e4d9a7-1aed-49d0-825d-bc3028add488"
 >In_TrainIntegrity.ProcedureIn &lt;- In_TrainIntegrity.ProcedureIn.NotAvailable</Action><Action
  Guid="9a2db3f8-6fe1-4b17-bcba-96212d77a287"
@@ -6133,7 +6116,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="0ef91f0b-ba24-4cf1-bb52-ba26058b3242"
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.NotAvailable</Action><Action
  Guid="bb8773f5-6fbc-4d69-a36a-9ef182acee8d"
->In_RBCContactInformationRadioNetworkId.ProcedureIn &lt;- In_RBCContactInformationRadioNetworkId.ProcedureIn.NotAvailable</Action><Action
+>In_RBCContactInformation.ProcedureIn &lt;- In_RBCContactInformation.ProcedureIn.NotAvailable</Action><Action
  Guid="a70a6a3a-b35a-46b6-ad86-9fca581fb6ed"
 >In_TrainDataEntryRequest.ProcedureIn &lt;- In_TrainDataEntryRequest.ProcedureIn.NotAvailable</Action></Actions>
 </RuleCondition></Conditions>
@@ -6187,8 +6170,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_TrackAdhesionFactor.GoToAvailable()</Action><Action
  Guid="a6a29c28-c07c-4073-89af-37e37835b413"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
- Guid="af88fa50-e7da-437c-b82f-bc40b626342f"
->In_RBCContactInformationRBCIdOrPhoneNumber.GoToAvailable()</Action><Action
  Guid="399dc6ee-ecc2-431d-9ac4-511e2029f874"
 >In_TrainIntegrity.GoToAvailable()</Action><Action
  Guid="27385552-a92a-4eea-b0db-02bb0a5ad4b5"
@@ -6322,7 +6303,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="b2b5203a-4a3e-4bf2-938a-c03436bddbd0"
 >Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="73989860-0ee4-43eb-91d3-1ff73419d838"
->In_RBCContactInformationRadioNetworkId.GoToAvailable()</Action><Action
+>In_RBCContactInformation.GoToAvailable()</Action><Action
  Guid="00f17719-9b72-4793-9f6a-987dd4a90053"
 >In_TrainDataEntryRequest.GoToAvailable()</Action></Actions>
 </RuleCondition></Conditions>
@@ -6374,8 +6355,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_TrackAdhesionFactor.GoToAvailable()</Action><Action
  Guid="f799029d-7fea-43e5-888d-83a52a5194bb"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
- Guid="de213d96-15c1-42ea-9dfd-c89300677b6c"
->In_RBCContactInformationRBCIdOrPhoneNumber.GoToAvailable()</Action><Action
  Guid="8da4c5bf-0133-468c-9a67-13fbce341222"
 >In_TrainIntegrity.GoToAvailable()</Action><Action
  Guid="dc4edb39-084c-4ec8-b1e1-187322d64554"
@@ -6513,7 +6492,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="9b56463c-9356-4cbb-9517-4442985fa027"
 >Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="3b22e4ed-2afa-4020-a519-51c758ea438a"
->In_RBCContactInformationRadioNetworkId.GoToAvailable()</Action><Action
+>In_RBCContactInformation.GoToAvailable()</Action><Action
  Guid="8ae92b07-5cbe-467d-bf95-483487dc58aa"
 >In_TrainDataEntryRequest.GoToAvailable()</Action></Actions>
 </RuleCondition></Conditions>
@@ -6565,8 +6544,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_TrackAdhesionFactor.GoToAvailable()</Action><Action
  Guid="15bbe280-d1e2-4fd0-be1d-099cf2121e4d"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
- Guid="144e42cf-feae-4c40-8c58-6206209aa19d"
->In_RBCContactInformationRBCIdOrPhoneNumber.GoToAvailable()</Action><Action
  Guid="a68a0505-1d41-4e48-9e74-dacf19869c09"
 >In_TrainIntegrity.GoToAvailable()</Action><Action
  Guid="b115bfc6-5be6-4fe2-8c19-b9b9bd8e11b3"
@@ -6702,7 +6679,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="a06748f4-9666-443e-928c-c32478ad09a3"
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.NotAvailable</Action><Action
  Guid="4b336a19-0575-4227-82a0-6d7cd74d1d98"
->In_RBCContactInformationRadioNetworkId.GoToAvailable()</Action><Action
+>In_RBCContactInformation.GoToAvailable()</Action><Action
  Guid="728d69ea-593f-4556-bee0-bea8cb1e8faa"
 >In_TrainDataEntryRequest.GoToAvailable()</Action></Actions>
 </RuleCondition></Conditions>
@@ -6754,8 +6731,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_TrackAdhesionFactor.GoToAvailable()</Action><Action
  Guid="5e4f9ce3-8bfa-4768-860c-cd4a6e3d8632"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
- Guid="7d506023-05e8-466e-b0b0-f05d56a9a8a2"
->In_RBCContactInformationRBCIdOrPhoneNumber.GoToAvailable()</Action><Action
  Guid="1dbeae11-ab2f-4559-8d9e-6539a898653d"
 >In_TrainIntegrity.GoToAvailable()</Action><Action
  Guid="6631c872-289f-4486-9145-1857ba8f7184"
@@ -6893,7 +6868,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="56f36b51-842b-4d5f-ab9d-f0e28f6dcce4"
 >Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="d7194bca-e7f0-40f5-853f-9d07b04c3e9b"
->In_RBCContactInformationRadioNetworkId.GoToAvailable()</Action><Action
+>In_RBCContactInformation.GoToAvailable()</Action><Action
  Guid="d31fd376-d888-4d4a-8f13-59f40da98b22"
 >In_TrainDataEntryRequest.GoToAvailable()</Action></Actions>
 </RuleCondition></Conditions>
@@ -6941,8 +6916,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotAvailable</Action><Action
  Guid="1c7c88cb-f5fa-4c38-82c2-df5b7438e813"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
- Guid="6cfd06ae-51ce-4381-91b5-120f044c2c90"
->In_RBCContactInformationRBCIdOrPhoneNumber.GoToAvailable()</Action><Action
  Guid="fd49730e-e3d6-4f97-84ef-2af7897df451"
 >In_AcknOfFixedTextInformation.GoToAvailable()</Action><Action
  Guid="f3e5aca9-9f5d-48c6-a134-ada9c46d1769"
@@ -7082,7 +7055,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="506b73da-7de1-4aa2-b05a-36505032a7fa"
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.NotAvailable</Action><Action
  Guid="f9bbe278-c1de-414f-b44a-70ab0126c594"
->In_RBCContactInformationRadioNetworkId.GoToAvailable()</Action><Action
+>In_RBCContactInformation.GoToAvailable()</Action><Action
  Guid="fce123a8-3829-4cf8-bae3-a4456dc21802"
 >In_TrainDataEntryRequest.ProcedureIn &lt;- In_TrainDataEntryRequest.ProcedureIn.NotAvailable</Action></Actions>
 </RuleCondition></Conditions>
@@ -7180,8 +7153,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >Out_BrakeReason.ProcedureOut &lt;- Out_BrakeReason.ProcedureOut.Available</Action><Action
  Guid="9869d2c2-8502-431c-99d6-5583c5299ba2"
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
- Guid="49c72782-e891-4bde-8028-57d7e014d8b9"
->In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn &lt;- In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn.NotAvailable</Action><Action
  Guid="3ee19a05-07d9-43a0-a946-a1838bea122a"
 >In_TrainIntegrity.ProcedureIn &lt;- In_TrainIntegrity.ProcedureIn.NotAvailable</Action><Action
  Guid="80498fc7-c9e8-4175-9d23-5183a35b2a46"
@@ -7271,7 +7242,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="24c78839-7a5b-4628-a202-7cbc54f7132f"
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.NotAvailable</Action><Action
  Guid="9bf0fffc-10bf-4222-beaf-a26ad43c7c11"
->In_RBCContactInformationRadioNetworkId.ProcedureIn &lt;- In_RBCContactInformationRadioNetworkId.ProcedureIn.NotAvailable</Action><Action
+>In_RBCContactInformation.ProcedureIn &lt;- In_RBCContactInformation.ProcedureIn.NotAvailable</Action><Action
  Guid="23eaeb08-deff-48d8-a04d-c512d1e308f5"
 >In_TrainDataEntryRequest.GoToAvailable()</Action></Actions>
 </RuleCondition></Conditions>
@@ -7363,8 +7334,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_ErtmsEtcsLevel.ProcedureIn &lt;- In_ErtmsEtcsLevel.ProcedureIn.NotAvailable</Action><Action
  Guid="ae99ff31-0cd5-421d-9690-715780d12343"
 >In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotAvailable</Action><Action
- Guid="c01dd0b9-a6e0-4377-b0f6-f2144f54bdad"
->In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn &lt;- In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn.NotAvailable</Action><Action
  Guid="e4da1180-79bc-4af5-9f70-161ec6f84e8a"
 >In_TrainIntegrity.ProcedureIn &lt;- In_TrainIntegrity.ProcedureIn.NotAvailable</Action><Action
  Guid="f6a8eb55-7e19-4d0c-97b5-6cbabe6fe574"
@@ -7460,7 +7429,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="0a1a2a20-b20c-462d-b0c7-0402d7214cfe"
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.NotAvailable</Action><Action
  Guid="a7a6252f-79c5-4723-873e-1cdf831dd464"
->In_RBCContactInformationRadioNetworkId.ProcedureIn &lt;- In_RBCContactInformationRadioNetworkId.ProcedureIn.NotAvailable</Action><Action
+>In_RBCContactInformation.ProcedureIn &lt;- In_RBCContactInformation.ProcedureIn.NotAvailable</Action><Action
  Guid="23e1a526-737b-422f-8587-50b230170c24"
 >In_TrainDataEntryRequest.ProcedureIn &lt;- In_TrainDataEntryRequest.ProcedureIn.NotAvailable</Action></Actions>
 </RuleCondition></Conditions>
@@ -7502,8 +7471,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="54b11ec2-960c-44ef-be12-30775074328a"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
- Guid="62a5adb7-ba7d-42ad-936f-2f736ecc6410"
->In_RBCContactInformationRBCIdOrPhoneNumber.GoToAvailable()</Action><Action
  Guid="7f552b43-2bd1-4f86-be7d-b33744f0beab"
 >In_TrainIntegrity.GoToAvailable()</Action><Action
  Guid="969b1577-64ed-4965-bf43-e06f286a99ae"
@@ -7649,7 +7616,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="e666b029-20b8-47ad-a997-812ac92942e9"
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.NotAvailable</Action><Action
  Guid="fd36d00e-59f6-4d62-ad36-85255584f159"
->In_RBCContactInformationRadioNetworkId.GoToAvailable()</Action><Action
+>In_RBCContactInformation.GoToAvailable()</Action><Action
  Guid="e6d5c1df-e535-4597-9a8b-b621ce7c1415"
 >In_TrainDataEntryRequest.ProcedureIn &lt;- In_TrainDataEntryRequest.ProcedureIn.NotAvailable</Action></Actions>
 </RuleCondition></Conditions>
@@ -7697,8 +7664,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotApplicable</Action><Action
  Guid="e28d90ea-b185-4539-804a-d998bf9af800"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.NotApplicable</Action><Action
- Guid="c98c7c37-297c-4634-b7ef-64f908d4759a"
->In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn &lt;- In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn.NotApplicable</Action><Action
  Guid="fbd8a26f-98f1-454f-9613-2d01c976eddd"
 >In_TrainIntegrity.ProcedureIn &lt;- In_TrainIntegrity.ProcedureIn.NotApplicable</Action><Action
  Guid="3f6e3fb9-6562-44cc-a6bf-96e567953919"
@@ -7838,7 +7803,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="0c61a5b1-9992-49d5-b38d-e9274f9c8424"
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.NotApplicable</Action><Action
  Guid="0eb59ee6-d547-4f04-9be0-d13ac5bb36cb"
->In_RBCContactInformationRadioNetworkId.ProcedureIn &lt;- In_RBCContactInformationRadioNetworkId.ProcedureIn.NotApplicable</Action><Action
+>In_RBCContactInformation.ProcedureIn &lt;- In_RBCContactInformation.ProcedureIn.NotApplicable</Action><Action
  Guid="36028979-c823-4587-82a4-e2f56f666a90"
 >In_TrainDataEntryRequest.ProcedureIn &lt;- In_TrainDataEntryRequest.ProcedureIn.NotApplicable</Action></Actions>
 </RuleCondition></Conditions>
@@ -7886,8 +7851,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotApplicable</Action><Action
  Guid="0e9ce2e2-3b86-47dd-bd97-0304079e93d3"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.NotApplicable</Action><Action
- Guid="ea03b6fe-75c5-4d1a-a644-ed38977d0200"
->In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn &lt;- In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn.NotApplicable</Action><Action
  Guid="15d82653-dfd9-4a59-ba95-91526b94d15c"
 >In_TrainIntegrity.ProcedureIn &lt;- In_TrainIntegrity.ProcedureIn.NotApplicable</Action><Action
  Guid="0e67a0a8-9845-4839-805e-21541fe70197"
@@ -8027,7 +7990,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="ef202da5-3a59-446d-91cd-b49e6bae8618"
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.NotApplicable</Action><Action
  Guid="c5ad7f07-df54-4178-80f9-15b1080099bf"
->In_RBCContactInformationRadioNetworkId.ProcedureIn &lt;- In_RBCContactInformationRadioNetworkId.ProcedureIn.NotApplicable</Action><Action
+>In_RBCContactInformation.ProcedureIn &lt;- In_RBCContactInformation.ProcedureIn.NotApplicable</Action><Action
  Guid="9cadfba9-c44b-4e6a-955f-4f3816164348"
 >In_TrainDataEntryRequest.ProcedureIn &lt;- In_TrainDataEntryRequest.ProcedureIn.NotApplicable</Action></Actions>
 </RuleCondition></Conditions>
@@ -8119,8 +8082,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.NationalSystemAvailability</Action><Action
  Guid="1244de2c-28af-4e82-8cb8-02ff155898bf"
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.NationalSystemAvailability</Action><Action
- Guid="84579beb-e8a9-41d4-bce5-a6093e6942b9"
->In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn &lt;- In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn.NotAvailable</Action><Action
  Guid="5aa436cd-7b00-4d34-a7c6-75a8d89b4bc7"
 >In_TrainIntegrity.ProcedureIn &lt;- In_TrainIntegrity.ProcedureIn.NotAvailable</Action><Action
  Guid="67569e3b-4536-4785-bcaa-75587dff1386"
@@ -8216,7 +8177,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="2b48032b-a36c-4152-ad16-2592ee598915"
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.NotAvailable</Action><Action
  Guid="5e255603-97fd-4172-8e78-4f9176f6120e"
->In_RBCContactInformationRadioNetworkId.ProcedureIn &lt;- In_RBCContactInformationRadioNetworkId.ProcedureIn.NotAvailable</Action><Action
+>In_RBCContactInformation.ProcedureIn &lt;- In_RBCContactInformation.ProcedureIn.NotAvailable</Action><Action
  Guid="5bc77c36-88ec-4224-93d1-90657c16d12a"
 >In_TrainDataEntryRequest.GoToAvailable()</Action></Actions>
 </RuleCondition></Conditions>
@@ -8304,8 +8265,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_ErtmsEtcsLevel.ProcedureIn &lt;- In_ErtmsEtcsLevel.ProcedureIn.NotAvailable</Action><Action
  Guid="808cc9bd-d7d6-4ea4-adbc-74da2a9a2c52"
 >In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotAvailable</Action><Action
- Guid="f87bc93c-b6f3-49ee-82ef-cabc2e6c112a"
->In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn &lt;- In_RBCContactInformationRBCIdOrPhoneNumber.ProcedureIn.NotAvailable</Action><Action
  Guid="019bd830-b060-4fe9-8c7a-6c896eaf8647"
 >In_TrainIntegrity.ProcedureIn &lt;- In_TrainIntegrity.ProcedureIn.NotAvailable</Action><Action
  Guid="6f0f9dd8-bcc4-415e-b5e6-9ec1c77c2df4"
@@ -8405,7 +8364,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="9d2949ce-7e19-4f63-82d1-5df48f86a17e"
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.NotAvailable</Action><Action
  Guid="bbc95b00-9c84-4622-9844-daccb62abaac"
->In_RBCContactInformationRadioNetworkId.ProcedureIn &lt;- In_RBCContactInformationRadioNetworkId.ProcedureIn.NotAvailable</Action><Action
+>In_RBCContactInformation.ProcedureIn &lt;- In_RBCContactInformation.ProcedureIn.NotAvailable</Action><Action
  Guid="449d3cd4-ee86-4e57-b8d4-f28e0e47970a"
 >In_TrainDataEntryRequest.ProcedureIn &lt;- In_TrainDataEntryRequest.ProcedureIn.NotAvailable</Action></Actions>
 </RuleCondition></Conditions>
@@ -8467,11 +8426,11 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="c11b2337-1f71-4d28-88ab-dd4d336af343"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="DMI.IN.RBCContactInformationRadioNetworkId"
+ TypeName="DMI.IN.RBCContactInformation"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
- Name="In_RBCContactInformationRadioNetworkId"
+ Name="In_RBCContactInformation"
  Guid="6cecad07-98f8-4346-9351-8ed80d39f0b9"
 >
 <ReqRef
@@ -9488,19 +9447,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 </ReqRef><Comment>Indicates if the current DMI is master or slave.</Comment>
 </StructureElement><StructureElement
- TypeName="DMI.IN.RBCContactInformationRBCIdOrPhoneNumber"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- Name="In_RBCContactInformationRBCIdOrPhoneNumber"
- Guid="229f3aa5-b3b7-401e-acef-0f549ba13a7f"
->
-<ReqRef
- Id="aca297a1-7d62-42ac-ab7e-6c8c590c5637"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="25678ebe-0a3a-4283-b079-9080a6236c30"
->
-</ReqRef></StructureElement><StructureElement
  TypeName="DMI.DisplayLanguage"
  Default=""
  Mode="InOut"
@@ -9776,6 +9722,37 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="fc4b1da1-54db-4a35-a408-3150beed20f2"
 >
 </StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="RBCContactActionEnum"
+ MaxSize="5"
+ Default="[]"
+ Implemented="TRUE"
+ Name="RBCContactActionsCol"
+ Guid="5e1d1909-0faa-4bc0-8f4a-4d733d378b24"
+>
+<ReqRef
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21d5052c-e6bd-4c53-9a48-a49143e5ce69"
+>
+</ReqRef><ReqRef
+ Id="1ab51773-764d-4fc1-b533-351222363321"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f48660be-5d88-4d14-b2f1-a0de1ea3d5c0"
+>
+</ReqRef><ReqRef
+ Id="bc8058d6-c833-43cf-93a4-f446a3a326ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4f37ed78-3c09-4ad0-a752-f49dcb1cbcb4"
+>
+</ReqRef><ReqRef
+ Id="a9f86939-1651-4064-9732-2d860f2d28af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c55a110b-fd1b-4aae-b2b1-6c506c761272"
+>
+</ReqRef><Comment>Actions that can be proposed to the driver for entering the RBC contact information.</Comment>
+</Collection></Collections>
 <Functions>
 <Function
  Type="DMI.DMIStruct"

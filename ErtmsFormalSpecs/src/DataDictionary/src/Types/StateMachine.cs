@@ -173,7 +173,38 @@ namespace DataDictionary.Types
             }
             else if (EnclosingNameSpace != null)
             {
-                EnclosingNameSpace.StateMachines.Remove(this); ;
+                EnclosingNameSpace.StateMachines.Remove(this);
+            }
+            else
+            {
+                Structure structure = Enclosing as Structure;
+                if (structure != null)
+                {
+                    structure.StateMachines.Remove(this);
+                }
+            }
+        }
+
+        public override System.Collections.ArrayList EnclosingCollection
+        {
+            get
+            {
+                System.Collections.ArrayList retVal = base.EnclosingCollection;
+
+                if (EnclosingNameSpace != null)
+                {
+                    retVal = EnclosingNameSpace.Structures;
+                }
+                else
+                {
+                    Structure structure = Enclosing as Structure;
+                    if (structure != null)
+                    {
+                        retVal = structure.StateMachines;
+                    }
+                }
+
+                return retVal;
             }
         }
 
