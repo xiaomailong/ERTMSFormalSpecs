@@ -1583,5 +1583,240 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Handle route suitability from the RBC"
+ Guid="ae0d8fa7-50f7-412f-a423-197e37f0717c"
+>
+<TestCases>
+<TestCase
+ Name="Receive and store a route suitability message from the RBC"
+ Guid="5a138290-8020-4f34-96bc-eab131fe5a2d"
+>
+<ReqRef
+ Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a272213c-3a9f-4fdf-a5ce-95415a98dd9c"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Initialize train data"
+ Guid="e6fecda5-f241-4e47-beac-1700c367444b"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Initialize test environment"
+ Guid="921cacbd-3e22-4b59-a41b-a3839bf74692"
+>
+<Actions>
+<Action
+ Guid="882a70a3-530c-49fd-83fb-ac3c41115c89"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Setup"
+ Guid="25de3e75-cca1-4b0b-91a1-f2eead292cdf"
+>
+<Actions>
+<Action
+ Guid="53932b9f-14c8-402b-aeb6-cbeded3be5c2"
+>Odometry.NominalDistance &lt;- 0.0</Action><Action
+ Guid="61455775-3df5-4bdd-a7f3-b26122d6367b"
+>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 256,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 2.0,
+        Position =&gt; 250.0,
+        UnderReadingAmountOdo =&gt; 2.0
+
+    }
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Start radio connection"
+ Guid="b1b911c1-96d3-48bf-8a50-ac706ce508b2"
+>
+<Actions>
+<Action
+ Guid="7d20c1d7-70a0-4e59-9dc6-0e6a66d18c06"
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 4 - Give the train some data"
+ Guid="811864bb-cbae-464b-8121-49f1f6002fd9"
+>
+<Actions>
+<Action
+ Guid="5364a381-1a5e-4b02-846d-655fba78dfdb"
+>Kernel.TrainData.TrainData &lt;- Kernel.TrainData.TrainData
+ {
+    DataState =&gt; DataState.Valid,
+    Value =&gt; Kernel.TrainData.TrainDataValues
+     {
+        AxleLoadCategory =&gt; Messages.M_AXLELOADCAT.D4,
+        LoadingGauge =&gt; Messages.M_LOADINGGAUGE.GB,
+        TractionSystems =&gt;
+         [
+            Kernel.TrainData.TractionSystem
+             {
+                Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
+                Country =&gt; 80
+             }
+            ,
+            Kernel.TrainData.TractionSystem
+             {
+                Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
+                Country =&gt; 80
+             }
+         ]
+     }
+ }</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 2 - Receive a message from the RBC"
+ Guid="bd16148e-fe85-47b7-bae4-e9d89adb796f"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="36e5a7bf-0b47-471a-9ee0-34be77938eea"
+>
+<Actions>
+<Action
+ Guid="623c11c2-cec8-43ec-bc1b-debdcefffd26"
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+ {
+    GENERAL_MESSAGE =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.GENERAL_MESSAGE.Message
+     {
+        NID_MESSAGE =&gt; 24,
+        L_MESSAGE =&gt; 0,
+        T_TRAIN =&gt; 654643,
+        M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
+        NID_LRBG =&gt; 256,
+
+        Sequence1 =&gt; [
+
+            Messages.MESSAGE.TRACK_TO_TRAIN.GENERAL_MESSAGE.SubStructure1{
+
+                ROUTE_SUITABILITY_DATA =&gt; Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message
+                 {
+                    NID_PACKET =&gt; 70,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 1,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    Q_TRACKINIT =&gt; 0,
+
+                    D_SUITABILITY =&gt; 500,
+                    Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Loading_gauge_profile,
+                    M_LINEGAUGE =&gt; Messages.M_LINEGAUGE.GB,
+
+                    N_ITER =&gt; 2,
+                    Sequence1 =&gt; [
+                      Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1{
+                          D_SUITABILITY =&gt; 1000,
+                          Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Max_axle_load,
+                          M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4
+                       }
+                      ,
+                      Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1{
+                          D_SUITABILITY =&gt; 2000,
+                          Q_SUITABILITY =&gt; Messages.Q_SUITABILITY.Traction_system,
+                          M_VOLTAGE =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
+                          NID_CTRACTION =&gt; 80
+                       }
+                     ]
+                 }
+             }
+         ]
+     }
+ }</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 3 - Expectations"
+ Guid="4b9c8519-5a82-4549-9283-86eedd5009a3"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Check that the message was stored"
+ Guid="30be861f-ec90-42b4-b96c-5c10c1493c41"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="fac4c56e-b236-4d10-b5c5-73b8aec206f3"
+>(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).NidCTraction == 80</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="29b7ba20-867c-4c40-b525-05b1012a67a3"
+>(COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 3</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="fceae6ba-e38c-49b9-9ac7-082b0d6b07c8"
+>(FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 500.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7ab8319c-55cb-412b-b544-4bf767b80f8b"
+>(FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).LineGauge == Messages.M_LINEGAUGE.GB</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="28ecefba-f238-48ee-b5b5-f368ffeb5ec2"
+>(FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Loading_gauge_profile</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2f2814e1-8e85-4cb3-ae1a-0efca86b2127"
+>(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 2000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="269c68bc-b651-4115-a295-592f591cd628"
+>(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).TractionSystem == Messages.M_VOLTAGE.AC_25_kV_50_Hz</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="abd61f75-d524-4227-a846-702a18927abc"
+>(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Traction_system</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="a89f1035-3d52-4f28-b67d-38cee43dc66f"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.InitialState == 0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="cf41088a-7a1d-49dd-b869-df70923c86ef"
+>THERE_IS_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | (X.Distance == 1000.0 AND X.Type ==  Messages.Q_SUITABILITY.Max_axle_load AND X.MaxAxleLoad == Messages.M_AXLELOADCAT.D4)</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step 2 - Check that inconsistencies are correctly identified"
+ Guid="49fd774d-f16e-4ba8-9523-77f6f6bddbd9"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="80aa9580-bbc9-46c2-99df-a7bba81ac078"
+>( FORALL_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem=&gt; X ) == Boolean.False )</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
