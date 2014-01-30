@@ -269,7 +269,7 @@ namespace DataDictionary
             {
                 if (!element.DefaultValue.Type.Match(element.Type))
                 {
-                    element.AddError("Type of default value (" + element.DefaultValue.Type.FullName + ")does not match element type (" + element.Type.FullName + ")");
+                    element.AddError("Type of default value (" + element.DefaultValue.Type.FullName + ") does not match element type (" + element.Type.FullName + ")");
                 }
             }                
 
