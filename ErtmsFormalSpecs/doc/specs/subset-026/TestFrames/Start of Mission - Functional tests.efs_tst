@@ -1771,7 +1771,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="S3 : Radio Network ID"
+ Name="S3 : RBC Contact information"
  Guid="5f86433e-b9fc-469a-a7dc-3530fca27c5e"
 >
 <TestCases>
@@ -2188,10 +2188,7 @@
 ]</Expectation><Expectation
  Kind="Instantaneous"
  Guid="93c12525-6d03-4570-becf-ebd540b442ce"
->DMI.MasterDMI().In_RBCContactInformation.RBCContactInformation.Id.Id == 6541</Expectation><Expectation
- Kind="Instantaneous"
- Guid="3ea1638d-c822-4a34-b86f-df8ee80e1053"
->DMI.MasterDMI().In_RBCContactInformation.RBCContactInformation.PhoneNumber == &apos;5741&apos;</Expectation></Expectations>
+>DMI.MasterDMI().In_RBCContactInformation.RBCContactInformation == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2269,9 +2266,16 @@
  Guid="5a46ea13-1e37-4ec7-bdfe-516b370dece5"
 >DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="2bb26852-d088-40d5-bf39-b91ea18d8e3b"
->DMI.MasterDMI().In_RBCContactInformation.RBCContactInformation.Id.Id &lt;- 6656</Action><Action
- Guid="7a4f0ad8-4616-42f2-8baf-36b56646d997"
->DMI.MasterDMI().In_RBCContactInformation.RBCContactInformation.PhoneNumber &lt;- &apos;2398&apos;</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.SelectedRBCContactInformation &lt;- EURORADIO.RBCContactStruct
+{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 15,
+        Id =&gt; 6656
+    },
+    PhoneNumber =&gt; &apos;2398&apos;
+}</Action><Action
+ Guid="bfba776d-a96e-4195-960b-fbb87f65b299"
+>DMI.MasterDMI().In_RBCContactInformation.DriversSelectedAction &lt;- DMI.RBCContactActionEnum.EnterContactInfo</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2282,7 +2286,11 @@
 >EURORADIO.CurrentRBCConnection().ContactData.PhoneNumber == &apos;2398&apos;</Expectation><Expectation
  Kind="Instantaneous"
  Guid="e0f4e289-dbf0-474b-b5eb-e313f193a2ad"
->EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Valid</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3b8afb6d-54b5-4cd0-aadc-704b7ed84540"
+>EURORADIO.CurrentRBCConnection().ContactData.Id.Country == 15</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
