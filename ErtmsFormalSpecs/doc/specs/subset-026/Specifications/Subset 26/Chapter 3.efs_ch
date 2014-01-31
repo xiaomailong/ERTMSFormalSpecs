@@ -1563,7 +1563,7 @@ At Start of Mission (only if level 2 or 3).</Paragraph><Paragraph
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -1926,24 +1926,15 @@ If the establishment of a communication session is initiated by the on-board, it
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
  Name=""
  Guid="5b9e9eb3-ffa4-47c2-a6f5-9fa6efc58ffe"
->The on-board shall request the set-up of a safe radio connection with the trackside. If this request is part of an on-going Start of Mission procedure, it shall be repeated until successful or a defined number of times (see Appendix A3.1).
-If this request is not part of an on-going Start of Mission procedure, it shall be repeated until at least one of the following conditions is met:
-- Safe radio connection is set up
-- End of Mission is performed
-- Order to terminate communication session is received from trackside
-- The train passes a level transition border (from level 2/3 to level 0, NTC, 1) with its front end.
-- Order to establish communication session with a different RBC is received from trackside and the order does not request to contact an Accepting RBC.
-- The train passes a RBC/RBC border with its front end.
-- The train front passes the start of an announced radio hole
-- Regards RIUs only: Level 1 is left
-A request shall be repeated immediately after EURORADIO has indicated that setting up the safe radio connection has failed.</Paragraph><Paragraph
- id="3.5.3.7.b"
+>The on-board shall request the set-up of a safe radio connection with the trackside.<Sub>
+<Paragraph
+ id="3.5.3.7.a.1"
  guid=""
  type="REQUIREMENT"
  scope="FLAGS"
@@ -1951,6 +1942,57 @@ A request shall be repeated immediately after EURORADIO has indicated that setti
  name=""
  reviewed="TRUE"
  status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ Name=""
+ Guid="ac96ab5d-7682-43e6-a576-f8a2ada8b003"
+>If this request is part of an on-going Start of Mission procedure, it shall be repeated until successful or a defined number of times (see Appendix A3.1).</Paragraph><Paragraph
+ id="3.5.3.7.a.2"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ Name=""
+ Guid="c2fdf450-8b2f-4ed0-a744-03d015cc0c69"
+>If this request is not part of an on-going Start of Mission procedure, it shall be repeated until at least one of the following conditions is met:
+- Safe radio connection is set up
+- End of Mission is performed
+- Order to terminate communication session is received from trackside
+- The train passes a level transition border (from level 2/3 to level 0, NTC, 1) with its front end.
+- Order to establish communication session with a different RBC is received from trackside and the order does not request to contact an Accepting RBC.
+- The train passes a RBC/RBC border with its front end.
+- The train front passes the start of an announced radio hole
+- Regards RIUs only: Level 1 is left</Paragraph><Paragraph
+ id="3.5.3.7.a.3"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ Name=""
+ Guid="db31b8b2-7e8c-4c37-ac8a-c0df7eda9f8d"
+>A request shall be repeated immediately after EURORADIO has indicated that setting up the safe radio connection has failed.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="3.5.3.7.b"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
