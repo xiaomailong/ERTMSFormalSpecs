@@ -550,6 +550,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 </Function></Functions>
 <Procedures>
 <Procedure
+ NeedsRequirement="FALSE"
  Name="LinkingInformationReceived"
  Guid="b36d74ff-248d-4a64-ad82-dc33020344e9"
 >
@@ -655,6 +656,7 @@ IN Linkings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="StoreLinkingInfo"
  Guid="4a96e2f2-1676-4283-8150-5dcce152b97a"
@@ -675,6 +677,8 @@ IN Linkings</Action></Actions>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
+ Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="Store info"
  Guid="e3791398-80a4-4ee3-a141-a8768935d3ff"
