@@ -573,6 +573,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ Verified="TRUE"
  Name="No infill"
  Guid="7178bbc3-25d9-45a5-af00-1a77a210bae3"
 >
@@ -591,6 +592,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  Guid="f4ed0c9f-1c84-4195-bc54-3ce40d23cbb2"
 >Linkings &lt;- []</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Infill"
  Guid="40ced0d3-c8a9-40b2-9ad4-699d0a45700a"
 >
@@ -602,7 +604,9 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 </ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="739997f0-0a9a-42ec-8b3b-8856cdc14a17"
+>Linkings &lt;- MAP Linkings | X.Distance &lt; BTM.Linking.DistanceToBaliseGroup ( Kernel.Infill.Data.NID_BG  ) USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
