@@ -4143,6 +4143,76 @@ BTM.Linking.Linkings</Action></Actions>
  Name="SubStep1"
  Guid="e5f125f3-ad92-4c69-9d5c-1503a23c20e7"
 >
+<Actions>
+<Action
+ Guid="990281b0-10d9-4719-9a91-9a9674fa64d6"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._1C,
+    N_TOTAL =&gt; Messages.N_TOTAL._1_balise_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5461,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+
+    Sequence1 =&gt; [
+        Messages.EUROBALISE.SubStructure1
+         {
+            Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                INFILL_LOCATION_REFERENCE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message
+                 {
+                    NID_PACKET =&gt; 136,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 0,
+                    Q_NEWCOUNTRY =&gt; Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows
+                    NID_C =&gt; 85,
+                    NID_BG =&gt; 5461,
+                 }
+             }
+         }
+        ,
+        Messages.EUROBALISE.SubStructure1
+         {
+            Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                LEVEL_1_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                 {
+                    STRUCTURE Message 
+ NID_PACKET : NID_PACKET
+ Q_DIR : Q_DIR
+ L_PACKET : MessageTypes.Length
+ Q_SCALE : Q_SCALE
+ V_MAIN : MessageTypes.Speed
+ V_LOA : MessageTypes.Speed
+ T_LOA : MessageTypes.Time
+ N_ITER : N_ITER
+ Sequence1 : Collection1
+ L_ENDSECTION : MessageTypes.Length
+ Q_SECTIONTIMER : Q_SECTIONTIMER
+ T_SECTIONTIMER : MessageTypes.Time
+ D_SECTIONTIMERSTOPLOC : MessageTypes.Distance
+ Q_ENDTIMER : Q_ENDTIMER
+ T_ENDTIMER : MessageTypes.Time
+ D_ENDTIMERSTARTLOC : MessageTypes.Distance
+ Q_DANGERPOINT : Q_DANGERPOINT
+ D_DP : MessageTypes.Distance
+ V_RELEASEDP : MessageTypes.Speed
+ Q_OVERLAP : Q_OVERLAP
+ D_STARTOL : MessageTypes.Distance
+ T_OL : MessageTypes.Time
+ D_OL : MessageTypes.Distance
+ V_RELEASEOL : MessageTypes.Speed
+                 }
+             }
+         }
+     ]
+ }</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
