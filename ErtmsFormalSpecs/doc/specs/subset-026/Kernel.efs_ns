@@ -2029,6 +2029,73 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Action
  Guid="005ab267-bbd1-4474-b5e5-217058561ce5"
 >THIS &lt;- HandleModeChange.StartOfMission.A31</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update RBC contact options"
+ Guid="805727e8-c699-491e-aff6-1176c19648f6"
+>
+<Comment>The driver&apos;s selected action is stored.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Driver selected to use last stored RBC number"
+ Guid="baec451f-e8af-437c-80ab-fdb4df4493ca"
+>
+<ReqRef
+ Id="369d7ae0-50db-411b-9941-bbe30e354733"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5c65e7c9-fe72-4ab3-9dff-68b7032339de"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="32626884-e265-4849-a120-f71a520e02a6"
+>DMI.MasterDMI().In_RBCContactInformation.DriversSelectedAction == DMI.RBCContactActionEnum.UseLastStoredNumber</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bf7bbae9-8b6d-4bd3-808a-af8eacf7b880"
+>EURORADIO.ContactOption &lt;- EURORADIO.ContactOptionEnum.ContactLastKnownRBC</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Driver selected to use on-board stored short number"
+ Guid="4ec4b9eb-c19e-428b-9669-0c963fd8ef1e"
+>
+<ReqRef
+ Id="40859515-77c4-46aa-96a5-12453cd171a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4493eed4-c270-419e-8311-4807c96987ef"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="05fe5311-ce1b-4720-a2da-3b1f06a376cf"
+>DMI.MasterDMI().In_RBCContactInformation.DriversSelectedAction == DMI.RBCContactActionEnum.UseEireneShortNumber</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="95793100-26fa-4d28-b9e4-af14dded9d38"
+>EURORADIO.ContactOption &lt;- EURORADIO.ContactOptionEnum.UseOnBoardStoredShortNumber</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Driver revalidated or entered new RBC contact information"
+ Guid="a0a0468b-05fe-4e0c-9c3e-e22aa2ae39a1"
+>
+<ReqRef
+ Id="cebfc056-7b96-49d7-a6ff-1fdf0076bb9e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e8368bf0-f055-4abd-93db-c3a1658a2785"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="9525b908-7a51-4be2-9ea4-897bf2b5942e"
+>DMI.MasterDMI().In_RBCContactInformation.DriversSelectedAction in [ DMI.RBCContactActionEnum.EnterContactInfo, DMI.RBCContactActionEnum.RevalidateContactInfo ]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8851da30-5b10-432e-84a4-4d4e819e55ba"
+>EURORADIO.ContactOption &lt;- EURORADIO.ContactOptionEnum.RBCIdAndPhoneNumber </Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
