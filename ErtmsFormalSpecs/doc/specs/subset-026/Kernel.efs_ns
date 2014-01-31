@@ -9652,12 +9652,14 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Add emergency stop"
  Guid="7482b271-0036-4a99-8046-791fdabca1e8"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Add Conditional Emergency Stop"
  Guid="17059008-89b6-4e10-a7e3-9938cfc666eb"
 >
@@ -9665,6 +9667,46 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 <PreCondition
  Guid="e240d531-4475-416c-bb30-c3574d5dcda4"
 >Available ( aMessage.CONDITIONAL_EMERGENCY_STOP )</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove emergency stop with matching ID"
+ Guid="510d142d-5819-4e9f-a721-345703619cf0"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove emergency stop with matching ID"
+ Guid="2cc19b98-a0bf-4cf9-89b1-b9292015c320"
+>
+<PreConditions>
+<PreCondition
+ Guid="5213315d-bb53-4831-8f81-cdb97635e22d"
+>THERE_IS_IN Kernel.EmergencyStops | X.Id == aMessage.CONDITIONAL_EMERGENCY_STOP.NID_EM</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="623d21b8-a315-48d5-bdab-8546397cb072"
+>RemoveEmergencyStop( aId =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_EM )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Add emergency stop"
+ Guid="9da60f57-1e97-4906-a5bc-9bdfe385ddee"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Add emergency stop"
+ Guid="362925da-3224-40cd-abd9-eb2d6a97b556"
+>
+<PreConditions>
+</PreConditions>
 <Actions>
 <Action
  Guid="9a5fa779-e4b0-4c4a-b5bf-584bb7826348"
@@ -9680,7 +9722,10 @@ CreateEmergencyStop (
 
 IN
 Kernel.EmergencyStops</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Add Unconditional Emergency Stop"
  Guid="ca987d81-cf62-4efd-b7b6-f4b669f0f48e"
 >
@@ -9689,17 +9734,59 @@ Kernel.EmergencyStops</Action></Actions>
  Guid="ba56b109-d68e-48b6-8d69-8c00d3011ebf"
 >Available ( aMessage.UNCONDITIONAL_EMERGENCY_STOP )</PreCondition></PreConditions>
 <Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove emergency stop with matching ID"
+ Guid="dfecdd88-2808-40f7-8d9b-181c9f4906bc"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove emergency stop with matching ID"
+ Guid="77946d5d-2488-4ab8-9d69-abf97380b1c1"
+>
+<PreConditions>
+<PreCondition
+ Guid="e5df9eed-bba8-4c10-b2b4-5cb8a2c1dd05"
+>THERE_IS_IN Kernel.EmergencyStops | X.Id == aMessage.UNCONDITIONAL_EMERGENCY_STOP.NID_EM</PreCondition></PreConditions>
+<Actions>
 <Action
- Guid="8ef76b33-4a6b-4e7e-af81-02d5dbbb7354"
+ Guid="270de67c-f7ea-46e1-90cd-1fc4044d13ed"
+>RemoveEmergencyStop( aId =&gt; aMessage.UNCONDITIONAL_EMERGENCY_STOP.NID_EM )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Add emergency stop"
+ Guid="2b667b66-ac70-4af5-b64d-de806e4f2704"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Add emergency stop"
+ Guid="c0e272b5-8a28-486a-ae08-041563bdb7a4"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f4288555-85c3-46ca-85a6-a4a6c45ca5e7"
 >INSERT
 CreateEmergencyStop (
     aIsConditional =&gt; Boolean.False,
     aId =&gt; aMessage.UNCONDITIONAL_EMERGENCY_STOP.NID_EM,
     aStopLocation =&gt; 0.0
-)
+ )
 
 IN
 Kernel.EmergencyStops</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9715,6 +9802,7 @@ Kernel.EmergencyStops</Action></Actions>
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Display emergency stops"
  Guid="eb963954-587d-4ac4-8ee7-64cca604e788"
 >
@@ -9724,6 +9812,63 @@ Kernel.EmergencyStops</Action></Actions>
 <Action
  Guid="2f4ad37d-fe37-4706-8e7a-4d05f4ffae50"
 >DMI.MasterDMI().DisplayAcceptedEmergencyStops()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="RemoveEmergencyStop"
+ Guid="f336793a-dd82-40af-b8d5-efe066418065"
+>
+<Parameters>
+<Parameter
+ Type="Messages.NID_EM"
+ Name="aId"
+ Guid="bdba32de-72c1-49b0-a2df-7f1a7ea0acb4"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove emergency stop from the list"
+ Guid="038fc7be-b42d-40e9-81ef-b47310f0a49e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove emergency stop from the list"
+ Guid="3def3988-ff76-4cd0-94db-b21625735b26"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="eb928e38-b0ef-4a1d-8bc9-6a68b0de2c13"
+>EmergencyStops &lt;- MAP Kernel.EmergencyStops | (X.Id != aId)
+    USING X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove driver notification for empty list"
+ Guid="fe50f981-7c59-47b7-b6b0-a1f72c7f1116"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove driver notification for empty list"
+ Guid="2c54b49c-05a7-4cce-b224-8b4cacb10cdb"
+>
+<PreConditions>
+<PreCondition
+ Guid="ed27c8f0-85f6-4b6b-a0a1-49ed462fa9b1"
+>NOT( THERE_IS_IN Kernel.EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e2602b9e-3c0d-4aac-a5bf-d0678874da0e"
+>DMI.MasterDMI().HideAcceptedEmergencyStops()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

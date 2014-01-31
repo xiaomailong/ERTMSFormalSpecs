@@ -8425,9 +8425,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="2b2ec0a8-3501-4e12-a856-6fefc5198056"
 >
 <PreConditions>
-<PreCondition
- Guid="06b37073-86c8-4bdb-8fe7-5fec40f34738"
->NOT ( THERE_IS_IN Kernel.EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC )</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
  Guid="8c6b621e-13af-455b-8dd1-400d9da9693b"
