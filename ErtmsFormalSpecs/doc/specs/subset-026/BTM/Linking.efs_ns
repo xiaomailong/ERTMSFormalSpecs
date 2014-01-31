@@ -309,10 +309,10 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2ced5c66-2667-43e9-87de-54b1d9dfe2d9"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Returns true if a linked balise group has an unkown NID but is still to be taken into account</Comment>
 <Cases>
 <Case
- Name="Acceptable"
+ Name="Unkown_but_acceptable"
  Guid="f0870ba4-9f06-4289-ab64-d0bb73975b45"
 >
 <PreConditions>
@@ -320,13 +320,15 @@ AND
  Guid="da977d47-40a4-4f83-8177-970236197651"
 >LinkingApplicable()</PreCondition><PreCondition
  Guid="733c9016-29a2-4746-b9ea-ad24785048aa"
->(CurrentLinking()).BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN</PreCondition><PreCondition
+>CurrentLinking().BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN</PreCondition><PreCondition
  Guid="f077e4fd-a6f3-48ca-88f6-1bd8e47a08bd"
 >CurrentBGisLinked()</PreCondition><PreCondition
  Guid="8c20f424-e7cd-4ee7-b0bb-33599201a20a"
->(COUNT CurrentBaliseGroup) &gt;= 2</PreCondition><PreCondition
+>BaliseGroupOrientation() != Orientation.Unknown</PreCondition><PreCondition
  Guid="4d37948a-0edd-4996-99f6-0ae6f7cd0f88"
->THERE_IS_IN CurrentBaliseGroup | BaliseHasRepositioningPacketValidForDirection(X)</PreCondition></PreConditions>
+>THERE_IS_IN CurrentBaliseGroup | BaliseHasRepositioningPacketValidForDirection(X)</PreCondition><PreCondition
+ Guid="8031a5fd-f738-46c9-aa81-6e369911008c"
+>CurrentLinking().Orientation == Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
