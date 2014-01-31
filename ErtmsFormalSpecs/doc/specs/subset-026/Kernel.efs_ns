@@ -9636,6 +9636,11 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4195cc84-95a8-4f19-ac0f-26a5d2694cb3"
 >
+</ReqRef><ReqRef
+ Id="c3434cd8-a28d-4f6f-9aff-3f72b485a528"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d622edaf-ffd8-40b0-b71c-b535341b6463"
+>
 </ReqRef><Comment>Adds an emergency stop item to the list from a conditional emergency stop message or from an unconditional emergency stop message</Comment>
 <Parameters>
 <Parameter
@@ -9647,7 +9652,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 <Rules>
 <Rule
  Priority="Processing"
- Name="Add Emergency Stop"
+ Name="Add emergency stop"
  Guid="7482b271-0036-4a99-8046-791fdabca1e8"
 >
 <SubRules></SubRules>
@@ -9695,6 +9700,30 @@ CreateEmergencyStop (
 
 IN
 Kernel.EmergencyStops</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Display emergency stops"
+ Guid="4268dff1-3142-445f-81e3-f146701a7451"
+>
+<ReqRef
+ Id="c3434cd8-a28d-4f6f-9aff-3f72b485a528"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="124f7681-01bf-4cba-ad11-122aa21910a8"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Display emergency stops"
+ Guid="eb963954-587d-4ac4-8ee7-64cca604e788"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2f4ad37d-fe37-4706-8e7a-4d05f4ffae50"
+>DMI.MasterDMI().DisplayAcceptedEmergencyStops()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
