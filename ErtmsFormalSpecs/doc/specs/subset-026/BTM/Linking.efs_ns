@@ -247,7 +247,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 <PreConditions>
 <PreCondition
  Guid="89a5a714-0cfc-400f-90b8-1dad1463b33d"
->CurrentBGisLinked() AND ((FIRST_IN Linkings).BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG)</PreCondition><PreCondition
+>CurrentBGisLinked() AND (CurrentLinking().BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG)</PreCondition><PreCondition
  Guid="706ded2d-7480-4277-aade-3620f93af67d"
 >(AntennaPosition(Default.DistanceInterval.Max) &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
 AND
