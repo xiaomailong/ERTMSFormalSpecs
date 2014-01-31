@@ -135,7 +135,7 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="BrakeReason.DriverAckTimeOut"
+ Default="DriverAckTimeOut"
  Implemented="TRUE"
  Name="BrakeReason"
  Guid="0fb8e0ec-b6c6-4517-b005-253d3c0ebdea"
@@ -145,11 +145,17 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6b8d455d-eb79-4af0-a1a2-a854ac0ed25e"
 >
-</ReqRef><Values>
+</ReqRef><Comment>Enumerates all the possible reasons for the emergency brakes to be tripped</Comment>
+<Values>
 <EnumValue
  Value=""
  Name="DriverAckTimeOut"
  Guid="82c4ddf6-af7f-4de2-af79-fd959a35618c"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="OrderFromRBC"
+ Guid="0b225f61-844c-4a87-8946-d28a505473e4"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -292,8 +298,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <Comment>Indicates if this emergency stop is conditional or not.</Comment>
 </StructureElement><StructureElement
- TypeName="BrakeReason"
- Default="BrakeReason.DriverAckTimeOut"
+ TypeName="Messages.NID_EM"
+ Default="0"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -316,6 +322,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="fc9c12ce-a392-4872-b338-33898df64176"
 >
 <Comment>The stop location of this emergency stop.</Comment>
+</StructureElement><StructureElement
+ TypeName="Kernel.BrakeReason"
+ Default=""
+ Mode="Internal"
+ Name="Reason"
+ Guid="3f89f43d-554f-45d9-b2ea-ad274c34225c"
+>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="OperatedSystemVersion"
@@ -387,7 +400,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  TypeName="Kernel.EmergencyStop"
  Default="[]"
  Implemented="TRUE"
- Name="EmergencyStops"
+ Name="EmergencyStopsCol"
  Guid="9543cdba-100d-4b27-90d5-f248e12b2645"
 >
 <ReqRef
@@ -401,7 +414,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a005923c-ed2e-44ff-84c8-450e7870ef82"
 >
-</ReqRef><Comment>Represents the set of received emergency stops (conditional or unconditional).</Comment>
+</ReqRef><Comment>Collection holding structures of type Kernel.EmergencyStop</Comment>
 </Collection><Collection
  TypeName="BaliseGroup"
  MaxSize="20"
@@ -9109,6 +9122,116 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 </StateMachine></State></States>
 </StateMachine></StateMachines>
+<Functions>
+<Function
+ Type="EmergencyStop"
+ Implemented="TRUE"
+ Name="CreateEmergencyStop"
+ Guid="ed5c4ddd-670a-414d-961c-9ef4c2963243"
+>
+<ReqRef
+ Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1d46788-be76-4ae3-a73b-8dba6b6c10e8"
+>
+</ReqRef><Comment>Creates an EmergencyStop from a Conditional or Unconditional Emergency Stop messages</Comment>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="aIsConditional"
+ Guid="641cccc5-1c47-4e1e-9928-d7a0d1128dbc"
+>
+</Parameter><Parameter
+ Type="Messages.NID_EM"
+ Name="aId"
+ Guid="e5980230-2325-4db0-b47e-ba389b5f6219"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="aStopLocation"
+ Guid="95bdb748-fd62-4493-beab-82cc872754c0"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="d21e63ba-bec7-41f2-a0f1-e5ad05e4c49a"
+>
+<Expression>EmergencyStop
+ {
+    Reason =&gt; Kernel.BrakeReason.OrderFromRBC,
+    IsConditional =&gt; aIsConditional,
+    Id =&gt; aId,
+    StopLocation =&gt; aStopLocation
+ }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Kernel.EmergencyStop"
+ Implemented="TRUE"
+ Name="ClosestStopLocation"
+ Guid="60af8f56-9ae5-4e3d-b04a-709236d5e630"
+>
+<ReqRef
+ Id="4f290d49-e10d-41ae-a385-d9a756df04d3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b04396c3-8252-4401-9f39-534abc4e286e"
+>
+</ReqRef><Comment>Takes a collection of Emergency Stops and returns the closest conditional emergency stop</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.EmergencyStopsCol"
+ Name="aESCol"
+ Guid="ac51e9d6-df83-443b-a2dc-d4b7dfa198c1"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Return the closest conditional ES"
+ Guid="6504658f-9677-4b71-97ed-e60c579ccab0"
+>
+<Expression>REDUCE aESCol | ( X.Reason == Kernel.BrakeReason.OrderFromRBC AND X.IsConditional )
+    USING Kernel.MinEmergencyStopDistance( EmergencyStop1 =&gt; X, EmergencyStop2 =&gt; RESULT )
+INITIAL_VALUE EmergencyStop
+                            {
+                                StopLocation =&gt; Default.BaseTypes.Distance.Infinity
+                            }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Kernel.EmergencyStop"
+ Implemented="TRUE"
+ Name="MinEmergencyStopDistance"
+ Guid="760d41cd-34f8-4a83-8e8d-d49e57d0c208"
+>
+<Comment>Returns the EmergencyStop item with the closest StopLocation, chosen amongst the conditional emergency stops received from the RBC</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.EmergencyStop"
+ Name="EmergencyStop1"
+ Guid="9e4b6b95-8fc6-4c63-82ae-6cb3353e472b"
+>
+</Parameter><Parameter
+ Type="Kernel.EmergencyStop"
+ Name="EmergencyStop2"
+ Guid="96fac747-08ca-4dbf-b46c-6a0b449f934c"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="First emergency stop is closer"
+ Guid="b6da9bf5-c399-43a3-9512-93fc756fa03f"
+>
+<PreConditions>
+<PreCondition
+ Guid="d6a8ab20-c3ba-4803-81b5-94d9115414fd"
+>EmergencyStop1.StopLocation &lt; EmergencyStop2.StopLocation</PreCondition></PreConditions>
+<Expression>EmergencyStop1</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="da188692-c1fd-43cd-9f56-3e4f3ed573be"
+>
+<Expression>EmergencyStop2</Expression>
+</Case></Cases>
+</Function></Functions>
 <Procedures>
 <Procedure
  NeedsRequirement="FALSE"
@@ -9447,6 +9570,223 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 >PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Name="InitializeElementsForMA"
+ Guid="6d5c558b-2e55-4405-b201-e178b960d495"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Initialize SSP + Gradients"
+ Guid="792ddece-1615-4107-bd52-b22b79c2a7c5"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Initialize SSP + Gradients"
+ Guid="606363fc-d313-4b6e-b1c7-417b8b00f4c6"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a56d2555-1473-472d-a7a9-4a0c4517f011"
+>Kernel.TrackDescription.Gradient.Gradients &lt;-
+[
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Distance =&gt; 0.0,
+        Gradient =&gt; 0.7
+    },
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Distance =&gt; 4800.0,
+        Gradient =&gt; 0.94
+    }
+]</Action><Action
+ Guid="e9491f8d-219f-491a-bc18-5c6a44800900"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
+[
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 0.0,
+        BasicSpeed =&gt; 70.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt;
+        [
+            Kernel.TrackDescription.StaticSpeedProfile.SSPCategory
+            {
+                CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_130_mm,
+                OtherSpecific =&gt; Kernel.TrainData.TrainCategory.FreightTrainInG,
+                Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category ,
+                Speed =&gt; 70.0
+            }
+        ]
+    }
+]</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="AddEmergencyStop"
+ Guid="ceb27117-9325-44f7-88ca-b8341a1a09d6"
+>
+<ReqRef
+ Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4195cc84-95a8-4f19-ac0f-26a5d2694cb3"
+>
+</ReqRef><ReqRef
+ Id="c3434cd8-a28d-4f6f-9aff-3f72b485a528"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d622edaf-ffd8-40b0-b71c-b535341b6463"
+>
+</ReqRef><Comment>Adds an emergency stop item to the list from a conditional emergency stop message or from an unconditional emergency stop message</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
+ Name="aMessage"
+ Guid="b1406273-1565-491b-b8e1-82c7a2f264b3"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Add emergency stop"
+ Guid="7482b271-0036-4a99-8046-791fdabca1e8"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Add Conditional Emergency Stop"
+ Guid="17059008-89b6-4e10-a7e3-9938cfc666eb"
+>
+<PreConditions>
+<PreCondition
+ Guid="e240d531-4475-416c-bb30-c3574d5dcda4"
+>Available ( aMessage.CONDITIONAL_EMERGENCY_STOP )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9a5fa779-e4b0-4c4a-b5bf-584bb7826348"
+>INSERT
+CreateEmergencyStop (
+    aIsConditional =&gt; Boolean.True,
+    aId =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_EM,
+    aStopLocation =&gt; Default.MessageTypes.QScaleDistance (
+        distance =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP,
+        scale =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.Q_SCALE
+     )
+ )
+
+IN
+Kernel.EmergencyStops</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Add Unconditional Emergency Stop"
+ Guid="ca987d81-cf62-4efd-b7b6-f4b669f0f48e"
+>
+<PreConditions>
+<PreCondition
+ Guid="ba56b109-d68e-48b6-8d69-8c00d3011ebf"
+>Available ( aMessage.UNCONDITIONAL_EMERGENCY_STOP )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f4288555-85c3-46ca-85a6-a4a6c45ca5e7"
+>INSERT
+CreateEmergencyStop (
+    aIsConditional =&gt; Boolean.False,
+    aId =&gt; aMessage.UNCONDITIONAL_EMERGENCY_STOP.NID_EM,
+    aStopLocation =&gt; 0.0
+ )
+
+IN
+Kernel.EmergencyStops</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Display emergency stops"
+ Guid="4268dff1-3142-445f-81e3-f146701a7451"
+>
+<ReqRef
+ Id="c3434cd8-a28d-4f6f-9aff-3f72b485a528"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="124f7681-01bf-4cba-ad11-122aa21910a8"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display emergency stops"
+ Guid="eb963954-587d-4ac4-8ee7-64cca604e788"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2f4ad37d-fe37-4706-8e7a-4d05f4ffae50"
+>DMI.MasterDMI().DisplayAcceptedEmergencyStops()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="RemoveEmergencyStop"
+ Guid="f336793a-dd82-40af-b8d5-efe066418065"
+>
+<Parameters>
+<Parameter
+ Type="Messages.NID_EM"
+ Name="aId"
+ Guid="bdba32de-72c1-49b0-a2df-7f1a7ea0acb4"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove emergency stop from the list"
+ Guid="038fc7be-b42d-40e9-81ef-b47310f0a49e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove emergency stop from the list"
+ Guid="3def3988-ff76-4cd0-94db-b21625735b26"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="eb928e38-b0ef-4a1d-8bc9-6a68b0de2c13"
+>EmergencyStops &lt;- MAP Kernel.EmergencyStops | (X.Id != aId)
+    USING X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove driver notification for empty list"
+ Guid="fe50f981-7c59-47b7-b6b0-a1f72c7f1116"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove driver notification for empty list"
+ Guid="2c54b49c-05a7-4cce-b224-8b4cacb10cdb"
+>
+<PreConditions>
+<PreCondition
+ Guid="ed27c8f0-85f6-4b6b-a0a1-49ed462fa9b1"
+>NOT( THERE_IS_IN Kernel.EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e2602b9e-3c0d-4aac-a5bf-d0678874da0e"
+>DMI.MasterDMI().HideAcceptedEmergencyStops()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -9542,7 +9882,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
- Type="Kernel.EmergencyStops"
+ Type="Kernel.EmergencyStopsCol"
  DefaultValue=""
  VariableMode="Internal"
  Implemented="TRUE"
@@ -9559,7 +9899,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ff01a9c0-064c-49da-9e3c-7e0a6350c0c7"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>This holds all the different emergency stop messages the train currently has.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
  DefaultValue=""

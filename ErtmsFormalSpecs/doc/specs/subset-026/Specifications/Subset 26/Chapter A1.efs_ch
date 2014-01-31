@@ -285,7 +285,21 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
 a) &quot;data is deleted&quot; means that the status of the corresponding data becomes &quot;Unknown&quot;;
 b) &quot;data is reset&quot; means that the corresponding data receives its default values;
 c) &quot;data status is unchanged&quot; means that the corresponding data doesn&apos;t change;
-d) &quot;data is to be revalidated&quot; means that the status of the corresponding data becomes &quot;Invalid&quot; while the its other values don&apos;t change.</Paragraph></Sub>
+d) &quot;data is to be revalidated&quot; means that the status of the corresponding data becomes &quot;Invalid&quot; while the its other values don&apos;t change.</Paragraph><Paragraph
+ id="A1.1.5.2"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="5fd9abb2-0712-4c70-a573-7668ecb3a103"
+>In the case where the train has multiple EOAs or SvLs, we decided that it would regard the closest one as the &quot;true&quot; target.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.6"
  guid=""
@@ -1008,6 +1022,36 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
  Guid="1fc880ed-12b0-4b3a-9b18-232e2d8aa5cd"
 >We do not know what to do when the NID_STM is not applicable and should provided to the JRU. We assume that this situation never occurs</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="A1.1.19"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="d21eb5fe-a454-453e-a6e8-c6b1608799c2"
+><Sub>
+<Paragraph
+ id="A1.1.19.1"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="e0cce2b4-2341-4ff7-8496-f341142799d3"
+>In paragraph 3.10.2.2, the train&apos;s behaviour is defined for when it has passed a stop location and for when it has not yet passed the stop location. We have decided to consider that when it is at the specified location, it is to behave as if it had passed it.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.2"
