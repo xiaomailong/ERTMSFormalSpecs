@@ -215,6 +215,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
+ Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="CurrentBGWithinFrame"
  Guid="e4b951d5-e364-4b31-a4e0-c6ad0e6fea3c"
@@ -253,7 +254,7 @@ AND
 (AntennaPosition(Default.DistanceInterval.Min) &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="Default"
+ Name="Otherwise"
  Guid="31941743-0709-428c-954c-1e57a9692670"
 >
 <Expression>False</Expression>
