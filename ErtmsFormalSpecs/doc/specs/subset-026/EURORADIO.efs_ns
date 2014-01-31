@@ -80,14 +80,19 @@
 <Comment>Gives the possible system versions for Euroradio communication.</Comment>
 <Values>
 <EnumValue
- Value=""
+ Value="1"
  Name="Version1"
  Guid="57240a8e-82c1-4bc2-85a2-0db7d7eca3b9"
 >
 </EnumValue><EnumValue
- Value=""
+ Value="2"
  Name="Version2"
  Guid="0dc39e5e-a3df-4e7b-b900-0faa0a026b92"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Unknown"
+ Guid="c8df87c9-3860-4af4-90d5-deaba35e1dfe"
 >
 </EnumValue></Values>
 </Enum><Enum
@@ -733,6 +738,13 @@
  Guid="40e6ba54-d9c4-498d-88f2-2ffb1157f4aa"
 >
 <Comment>Indicates the last time when a request to the RBC was sent.</Comment>
+</StructureElement><StructureElement
+ TypeName="Integer"
+ Default="0"
+ Mode="Internal"
+ Name="NumberOfSentRequests"
+ Guid="03f193b2-8aea-4f04-b805-1de34a4398f8"
+>
 </StructureElement><StateMachines>
 <StateMachine
  InitialState="Inactive"
@@ -779,7 +791,7 @@
  Guid="30ffcf61-752f-4621-bd06-aae49937b224"
 >THIS &lt;- Connecting</Action><Action
  Guid="0435a548-28e2-45b2-b8f8-0711b2fc3498"
->SessionEstablishmentData.Request &lt;- Request.Request</Action></Actions>
+>SessionEstablishmentData.RequestSent &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -794,16 +806,10 @@
 <Rules>
 <Rule
  Priority="Processing"
- Implemented="TRUE"
- Name="Safe radio connection is set-up"
+ Name="Handle the connection request"
  Guid="9a9bbb19-838a-48e9-aa60-b9dfeaf939af"
 >
-<ReqRef
- Id="1ead58b3-f05d-46bd-b3f8-bc0a16010cdd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3fef3016-4b29-440c-b9b3-befc8b41d664"
->
-</ReqRef><Comment>As soon as the safe radio connection is set-up, the on-board sends the message Initiation of communication session.</Comment>
+<Comment>As soon as the safe radio connection is set-up, the on-board sends the message Initiation of communication session.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -811,14 +817,112 @@
  Name="Safe radio connection is set-up"
  Guid="dedc8409-7712-44a5-962a-944a3b26fe52"
 >
-<PreConditions>
+<ReqRef
+ Id="1ead58b3-f05d-46bd-b3f8-bc0a16010cdd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3e40cb31-2d77-4868-8f52-b6d63bd33ce7"
+>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="28c2e922-3c7a-4a58-861a-33bc2615f866"
->SessionEstablishmentData.Request == Request.Response</PreCondition></PreConditions>
+>SessionEstablishmentData.ResponseReceived</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="623e6269-823f-4126-b491-ac074c895b43"
 >SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Repeat the connection request"
+ Guid="13984cfa-f744-469f-ab79-5063a2f58711"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Repeat the connection request"
+ Guid="c6cd2b9e-746c-48d2-b150-39954458d216"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="The request is part of an on-going SoM"
+ Guid="e49895de-cf43-46aa-b926-c7fbff4a44e0"
+>
+<Comment>If the request is part of an on-going SoM, it is repeated the number of times allowed by Appendix A3.1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="870a013c-7c76-4333-a2b6-d4476047b946"
+>Kernel.HandleModeChange in Kernel.HandleModeChangeSM.StartOfMission</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle request repetition in SoM"
+ Guid="bdd73248-c577-4e8a-b9cd-d15a0842f3f0"
+>
+<Comment>If the request is part of an on-going SoM, it is repeated the number of times allowed by Appendix A3.1.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send new request"
+ Guid="6ee281d8-5947-4fd2-b6ea-4a61e0f5d896"
+>
+<Comment>If the request has to be repeated and the maximum number of requests is not reached it, a new request is sent.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5f21704f-fd79-4d25-ac8d-54f9ec46d7e7"
+>NumberOfSentRequests &lt; NumberOfMessageRepetitions</PreCondition><PreCondition
+ Guid="efc41a15-575b-4c33-9d93-c2ad1a51a905"
+>LastRequestTime &lt; Kernel.CurrentTime + TimeBeforeMessageRepetition</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6c9db820-9596-4dc3-b487-9fb6e343bc2b"
+>LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+ Guid="ba529648-8bde-4b6c-bab8-b53b04a493ea"
+>SessionEstablishmentData.RequestSent &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Maximum number of requests reached"
+ Guid="301af69a-abcb-4f58-bb23-313539119ff7"
+>
+<Comment>If the request has to be repeated but the maximum number of requests is already reached, RBC declares that the setup has failed and goes to inactive state.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="4932a3e3-358f-4a69-b034-4dadf129cf89"
+>NumberOfSentRequests== NumberOfMessageRepetitions</PreCondition><PreCondition
+ Guid="5b519869-182e-4cf3-a71c-289c5d5b7bda"
+>LastRequestTime &lt; Kernel.CurrentTime + TimeBeforeMessageRepetition</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="947cdfdd-e42c-4684-9dd1-65abb983fad5"
+>THIS &lt;- Inactive</Action><Action
+ Guid="c12bd255-c050-4efb-9c03-4e77c4f2b055"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action><Action
+ Guid="d6469a14-111f-45b4-846e-e000f91ba652"
+>NumberOfSentRequests &lt;- 0</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Name="The request is not a part of on-going SoM"
+ Guid="ef0c34e4-8af2-49ed-8202-e5b73075c9dc"
+>
+<ReqRef
+ Id="c2fdf450-8b2f-4ed0-a744-03d015cc0c69"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b55e54e0-51eb-4729-8895-578963ed886b"
+>
+</ReqRef><PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1016,15 +1120,38 @@
  Guid="395169e1-4c72-48ca-950b-fa0d473758a1"
 >
 <Comment>Data used to establish a session.</Comment>
-<StructureElement
- TypeName="Default.Request"
- Default="Default.Request.Disabled"
- Mode="InOut"
+<Rules>
+<Rule
+ Priority="Verification"
  Implemented="TRUE"
- Name="Request"
+ NeedsRequirement="FALSE"
+ Name="CleanUp"
+ Guid="205e01b9-eb50-4780-9ba5-1d03cd0a56e7"
+>
+<Comment>Resets the request to false.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="CleanUp"
+ Guid="6fdc24b9-9135-4544-8be5-2872afecf193"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="554740df-b62d-4d21-9e26-a8e2554409c8"
+>RequestSent &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="RequestSent"
  Guid="3da0a1c7-ca89-43ab-9597-09b7adf15b15"
 >
-<Comment>Used to initiate a communication session with an RBC.</Comment>
+<Comment>Set to True when a request to establish a safe radio connection has to be sent.</Comment>
 </StructureElement><StructureElement
  TypeName="SystemVersionEnum"
  Default="SystemVersionEnum.Version1"
@@ -1034,6 +1161,15 @@
  Guid="abb42052-649b-4e21-b7c9-461a8f11576a"
 >
 <Comment>The system version of the trackside.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="ResponseReceived"
+ Guid="c17b46b9-59d6-4f7e-8701-92890b16dc3f"
+>
+<Comment>Is set to True when the safe radio connection is established.</Comment>
 </StructureElement></Structure><Structure
  Name="RBCIdStruct"
  Guid="06bc7e20-822b-4896-a367-bc92333c4911"
@@ -1986,7 +2122,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <Rules>
 <Rule
  Priority="UpdateINTERNAL"
- Name="GeneralMessage"
+ Name="General message"
  Guid="e53756b8-59a0-40ca-aa4c-9eca78feb0b4"
 >
 <ReqRef
@@ -2104,7 +2240,7 @@ It can only return false if there is no open session or if the last known RBC ha
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
- Name="InfillMA"
+ Name="Infill MA"
  Guid="ed471ca1-d692-4236-a58c-bfb34482b2b2"
 >
 <ReqRef
