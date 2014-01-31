@@ -338,23 +338,6 @@ AND
 </Case></Cases>
 </Function><Function
  Type="Boolean"
- NeedsRequirement="FALSE"
- Name="CurrentBGIsNominalDirection"
- Guid="2b60d0a9-f87a-47d6-844d-ae62d45fca5a"
->
-<Cases>
-<Case
- Name="IsNominal"
- Guid="be26692e-6036-4892-966a-cbb8c4616d5d"
->
-<PreConditions>
-<PreCondition
- Guid="2fc1d54d-4962-4f2b-aeb4-aa61ed2be05c"
->(FIRST_IN CurrentBaliseGroup).N_PIG &lt; (LAST_IN CurrentBaliseGroup).N_PIG</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
  Implemented="TRUE"
  Verified="TRUE"
  Name="BaliseHasRepositioningPacketValidForDirection"
