@@ -180,12 +180,12 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 >
 </Parameter><Parameter
  Type="Messages.Q_LINKORIENTATION"
- Name="Q_LINK_ORIENTATION"
+ Name="Q_LINKORIENTATION"
  Guid="85b64dac-da83-4cce-8c1b-30e5d8eba9ae"
 >
 </Parameter><Parameter
  Type="Messages.Q_LINKREACTION"
- Name="Q_LINK_REACTION"
+ Name="Q_LINKREACTION"
  Guid="2531bf20-6eba-423b-8f0a-20b954dedd93"
 >
 </Parameter><Parameter
@@ -207,8 +207,8 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 <Expression>LinkingData {
   Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_LINK, scale =&gt; Q_SCALE ),
   BaliseGroupIdentifier =&gt; NID_BG,
-  Orientation =&gt; LinkingOrientationConverter ( Q_LINK_ORIENTATION ),
-  Reaction =&gt; ConvertLinkingReaction ( Q_LINK_REACTION ),
+  Orientation =&gt; LinkingOrientationConverter ( Q_LINKORIENTATION ),
+  Reaction =&gt; ConvertLinkingReaction ( Q_LINKREACTION ),
   LocationAccuracy =&gt; MessageTypes.QLocAccLength(Q_LOCACC)
 }</Expression>
 </Case></Cases>
@@ -626,8 +626,8 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 >INSERT CreateLinkingData (
   D_LINK =&gt; Packet.D_LINK,
   NID_BG =&gt; Packet.NID_BG,
-  Q_LINK_ORIENTATION =&gt; Packet.Q_LINKORIENTATION,
-  Q_LINK_REACTION =&gt; Packet.Q_LINKREACTION,
+  Q_LINKORIENTATION =&gt; Packet.Q_LINKORIENTATION,
+  Q_LINKREACTION =&gt; Packet.Q_LINKREACTION,
   Q_LOCACC =&gt; Packet.Q_LOCACC,
   Q_SCALE =&gt; Packet.Q_SCALE
 )
@@ -695,8 +695,8 @@ IN Linkings</Action></Actions>
 >INSERT CreateLinkingData (
   D_LINK =&gt; Info.D_LINK,
   NID_BG =&gt; Info.NID_BG,
-  Q_LINK_ORIENTATION =&gt; Info.Q_LINKORIENTATION,
-  Q_LINK_REACTION =&gt; Info.Q_LINKREACTION,
+  Q_LINKORIENTATION =&gt; Info.Q_LINKORIENTATION,
+  Q_LINKREACTION =&gt; Info.Q_LINKREACTION,
   Q_LOCACC =&gt; Info.Q_LOCACC,
   Q_SCALE =&gt; Q_SCALE
 ) 
