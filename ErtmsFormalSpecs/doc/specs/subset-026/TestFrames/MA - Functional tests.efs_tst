@@ -4097,154 +4097,6 @@ BTM.Linking.Linkings</Action></Actions>
 )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
-</TestCase><TestCase
- Name="New MA section at infill location reference"
- Guid="28a920f7-f975-4c2a-8baa-661e32fe68a4"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step 1 - Initialize things"
- Guid="744d2287-a2d5-4220-9958-ac5b9c804048"
->
-<SubSteps>
-<SubStep
- Name="SubStep 1 - Initialize test environment"
- Guid="b5a101b1-31c1-48d7-986f-cda37ad218bb"
->
-<Actions>
-<Action
- Guid="70d64647-6a83-4cb1-b705-d9888a212c0c"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step 2 - Initialize elements for MA"
- Guid="a99e386c-583d-4346-98fd-aa263c8e485c"
->
-<Actions>
-<Action
- Guid="e82abeeb-7acf-4039-9c74-75783a5040fe"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step 2 - Send the message"
- Guid="9ed7589d-b553-458f-92be-2694824eab4e"
->
-<SubSteps>
-<SubStep
- Name="SubStep1"
- Guid="e5f125f3-ad92-4c69-9d5c-1503a23c20e7"
->
-<Actions>
-<Action
- Guid="990281b0-10d9-4719-9a91-9a9674fa64d6"
->BTM.Message &lt;- Messages.EUROBALISE.Message
- {
-
-    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
-    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
-    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
-    N_PIG =&gt; Messages.N_PIG._1C,
-    N_TOTAL =&gt; Messages.N_TOTAL._1_balise_in_groupC,
-    M_DUP =&gt; Messages.M_DUP.No_duplicates,
-    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
-    NID_C =&gt; 85,
-    NID_BG =&gt; 5461,
-    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
-
-    Sequence1 =&gt; [
-        Messages.EUROBALISE.SubStructure1
-         {
-            Messages.PACKET.TRACK_TO_TRAIN.Message
-             {
-                INFILL_LOCATION_REFERENCE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message
-                 {
-                    NID_PACKET =&gt; 136,
-                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
-                    L_PACKET =&gt; 0,
-                    Q_NEWCOUNTRY =&gt; Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows
-                    NID_C =&gt; 85,
-                    NID_BG =&gt; 5461,
-                 }
-             }
-         }
-        ,
-        Messages.EUROBALISE.SubStructure1
-         {
-            Messages.PACKET.TRACK_TO_TRAIN.Message
-             {
-                LEVEL_1_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
-                 {
-                    STRUCTURE Message 
- NID_PACKET : NID_PACKET
- Q_DIR : Q_DIR
- L_PACKET : MessageTypes.Length
- Q_SCALE : Q_SCALE
- V_MAIN : MessageTypes.Speed
- V_LOA : MessageTypes.Speed
- T_LOA : MessageTypes.Time
- N_ITER : N_ITER
- Sequence1 : Collection1
- L_ENDSECTION : MessageTypes.Length
- Q_SECTIONTIMER : Q_SECTIONTIMER
- T_SECTIONTIMER : MessageTypes.Time
- D_SECTIONTIMERSTOPLOC : MessageTypes.Distance
- Q_ENDTIMER : Q_ENDTIMER
- T_ENDTIMER : MessageTypes.Time
- D_ENDTIMERSTARTLOC : MessageTypes.Distance
- Q_DANGERPOINT : Q_DANGERPOINT
- D_DP : MessageTypes.Distance
- V_RELEASEDP : MessageTypes.Speed
- Q_OVERLAP : Q_OVERLAP
- D_STARTOL : MessageTypes.Distance
- T_OL : MessageTypes.Time
- D_OL : MessageTypes.Distance
- V_RELEASEOL : MessageTypes.Speed
-                 }
-             }
-         }
-     ]
- }</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step 3 - ????"
- Guid="352e8b34-fd24-4662-ab0d-8db592d082ae"
->
-<SubSteps>
-<SubStep
- Name="SubStep1"
- Guid="40ed5556-f21b-4494-85f9-f98ec6ae7316"
->
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step 4 - Profit"
- Guid="7230d477-aa88-487f-a0eb-a566b54fe678"
->
-<SubSteps>
-<SubStep
- Name="SubStep1"
- Guid="a9c0ddce-414c-41a9-9415-4b184c02990e"
->
-</SubStep></SubSteps>
-</Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
  D_LRBG=""
@@ -5875,6 +5727,221 @@ BTM.Linking.Linkings</Action></Actions>
  DeadLine="1"
  Guid="43426094-8e48-43f5-b3b1-ef8fb940aeb4"
 >EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.POSITION_REPORT != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="MA Update"
+ Guid="fdc8c9f4-80a9-4d3b-9d28-de9af7ccc2bb"
+>
+<TestCases>
+<TestCase
+ Name="New MA section at infill location reference"
+ Guid="28a920f7-f975-4c2a-8baa-661e32fe68a4"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Initialize things"
+ Guid="744d2287-a2d5-4220-9958-ac5b9c804048"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Initialize test environment"
+ Guid="b5a101b1-31c1-48d7-986f-cda37ad218bb"
+>
+<Actions>
+<Action
+ Guid="70d64647-6a83-4cb1-b705-d9888a212c0c"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Initialize elements for MA"
+ Guid="a99e386c-583d-4346-98fd-aa263c8e485c"
+>
+<Actions>
+<Action
+ Guid="e82abeeb-7acf-4039-9c74-75783a5040fe"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Set up a simple MA to work with"
+ Guid="d7fe1df8-1db8-4721-a59b-366bd41efbd6"
+>
+<Actions>
+<Action
+ Guid="991b559c-ac47-4c61-ad4b-a9aa6953c133"
+>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+{
+    TargetSpeed =&gt; 120.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection
+    {
+        EndSectionTimeOut =&gt; EMPTY,
+        TimeOut =&gt; EMPTY,
+        Length =&gt; Default.BaseTypes.Length.Infinity,
+        DangerPoint =&gt; EMPTY,
+        Overlap =&gt; EMPTY
+    },
+    ReferenceBG =&gt; 5455,
+    ReferenceBGLocation =&gt; 200.0
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 2 - Give the train linking information"
+ Guid="68b015bb-0548-42ae-af00-0b4eb5565d21"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step 1 - Get rid of any residual linking data around"
+ Guid="6cba92bf-59b7-490d-b7e5-b8ef24892535"
+>
+<Actions>
+<Action
+ Guid="576a3aa0-ed0e-4309-bc0b-c5878c35608a"
+>BTM.Linking.Linkings &lt;- []</Action></Actions>
+</SubStep><SubStep
+ Name="SubStep 1 - Manually insert linking information"
+ Guid="9eee11fa-4782-4772-9f90-81952f3fa7a5"
+>
+<Actions>
+<Action
+ Guid="26b5a166-2eda-462e-9aff-bb646b6511a3"
+>INSERT BTM.Linking.LinkingData {
+    Orientation =&gt; Default.Orientation.Both,
+    BaliseGroupIdentifier =&gt; 5461,
+    Distance =&gt; 250.0,
+    LocationAccuracy =&gt; 0.7,
+    Reaction =&gt; BTM.Linking.LinkingReaction.CommandServiceBrake
+ }
+
+IN BTM.Linking.Linkings</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 3 - Send the message"
+ Guid="9ed7589d-b553-458f-92be-2694824eab4e"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="e5f125f3-ad92-4c69-9d5c-1503a23c20e7"
+>
+<Actions>
+<Action
+ Guid="990281b0-10d9-4719-9a91-9a9674fa64d6"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._1C,
+    N_TOTAL =&gt; Messages.N_TOTAL._1_balise_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5460,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+
+    Sequence1 =&gt; [
+        Messages.EUROBALISE.SubStructure1
+         {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                INFILL_LOCATION_REFERENCE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message
+                 {
+                    NID_PACKET =&gt; 136,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 0,
+                    Q_NEWCOUNTRY =&gt; Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
+                    NID_C =&gt; 85,
+                    NID_BG =&gt; 5461
+                 }
+             }
+         }
+        ,
+        
+        Messages.EUROBALISE.SubStructure1
+         {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                LEVEL_1_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                 {
+                    NID_PACKET =&gt; 12,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 0,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN =&gt; 300,
+                    V_LOA =&gt; 70,
+                    T_LOA =&gt; 180,
+
+                    N_ITER =&gt; 0,
+
+                    L_ENDSECTION =&gt; 2000,
+                    Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+
+                    Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information,
+
+                    Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.No_danger_point_information,
+
+                    Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information
+                 }
+             }
+         }
+     ]
+ }</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3429b279-e359-4390-a55a-ee27368c94cc"
+>BTM.BGIsConsidered == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 4 - Expectations"
+ Guid="352e8b34-fd24-4662-ab0d-8db592d082ae"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - A section is created at the location of the upcoming linked balise"
+ Guid="40ed5556-f21b-4494-85f9-f98ec6ae7316"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4a42d321-213d-4b17-ad4c-4e2f7a510877"
+>Available (Kernel.MA.MA.Sections)</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9bbdfb43-dd1a-4777-a3b5-6c5495afb79e"
+>(COUNT Kernel.MA.MA.Sections) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
