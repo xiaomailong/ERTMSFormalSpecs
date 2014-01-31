@@ -2973,7 +2973,12 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Name="DisplayInformation"
  Guid="07ca946e-11b1-4d2d-9e0f-389d5be33d8c"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="c3434cd8-a28d-4f6f-9aff-3f72b485a528"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="62f50bb1-18b2-4599-8733-78ada58d2142"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -8369,6 +8374,64 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_TrainDataEntryRequest.ProcedureIn &lt;- In_TrainDataEntryRequest.ProcedureIn.NotAvailable</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HideAcceptedEmergencyStops"
+ Guid="d4c455fd-98b6-4c0d-9544-4ad47e660f85"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Check mode change"
+ Guid="d1135f3a-cd78-4194-853c-64cced2819e3"
+>
+<ReqRef
+ Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fbc355d8-0ff5-41be-8988-378f4068f6d0"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Check mode change"
+ Guid="162045c6-13ac-402f-98da-8f408526b3dd"
+>
+<PreConditions>
+<PreCondition
+ Guid="7b765163-2bf0-4e5b-b8fa-9375cc06e247"
+>ModeChanged()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9d34fc7e-2f5b-4c19-972a-150f2d67d0ef"
+>HandleModeChange()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="HideRevokedInformation"
+ Guid="2fe065e7-527b-4ef4-9516-215dd268e056"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="HideRevokedInformation"
+ Guid="2b2ec0a8-3501-4e12-a856-6fefc5198056"
+>
+<PreConditions>
+<PreCondition
+ Guid="06b37073-86c8-4bdb-8fe7-5fec40f34738"
+>NOT ( THERE_IS_IN Kernel.EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8c6b621e-13af-455b-8dd1-400d9da9693b"
+>Out_AcceptedEmergencyStops.OutputInformation.HideRequestStatus &lt;- Default.Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
