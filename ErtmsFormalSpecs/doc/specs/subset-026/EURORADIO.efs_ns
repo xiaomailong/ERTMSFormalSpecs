@@ -24,7 +24,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9a75773a-005e-4c35-993c-02bb41df811e"
 >
-</ReqRef><Values>
+</ReqRef><Comment>Possible safe connection statuses.</Comment>
+<Values>
 <EnumValue
  Value="0"
  Name="NoConnection"
@@ -114,6 +115,45 @@
  Value="3"
  Name="Terminating"
  Guid="1f82a860-3649-4cd7-b95e-572a049275ab"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="ContactOptionEnum.ContactLastKnownRBC"
+ Implemented="TRUE"
+ Name="ContactOptionEnum"
+ Guid="7bab1523-0861-44c9-ad3b-364cd97fcc04"
+>
+<ReqRef
+ Id="369d7ae0-50db-411b-9941-bbe30e354733"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a0c7f339-6f2d-4c73-95b4-8cefbd1020ac"
+>
+</ReqRef><ReqRef
+ Id="40859515-77c4-46aa-96a5-12453cd171a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7dc8e3c5-7a8b-446a-8538-363110bacba6"
+>
+</ReqRef><ReqRef
+ Id="cebfc056-7b96-49d7-a6ff-1fdf0076bb9e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1e3e0613-ae98-44ff-a1b3-6f6d8fff01d4"
+>
+</ReqRef><Comment>Indicates how the RBC has to be contacted.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="ContactLastKnownRBC"
+ Guid="b8d94300-4144-4b52-9852-f37c28d2ee88"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="UseOnBoardStoredShortNumber"
+ Guid="69a92fdd-ed20-43d6-b2f5-6dd666092907"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="RBCIdAndPhoneNumber"
+ Guid="e2610b4d-3509-49f9-bb90-82315bcfe068"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -1389,6 +1429,47 @@ Terminal2.IsRegistered</Expression>
 >
 <Expression>Terminal2</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SessionIsAlreadyEstablishedWithRequestedRBC"
+ Guid="c4eccae5-0e53-41e7-af15-9608b3f9878d"
+>
+<ReqRef
+ Id="66543af0-6c4b-46a0-b17f-96ed3e1d37ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26d3911c-cdb4-4242-8981-7159f2405edd"
+>
+</ReqRef><Comment>Indicates if the session is already established with the requested RBC.
+
+It can only return false if there is no open session or if the last known RBC has to be contacted and the id of the currenly connected RBC corresponds to the last known RBC id.</Comment>
+<Cases>
+<Case
+ Name="No open session"
+ Guid="bdb5d993-9c32-4855-adcf-db92b3936ac0"
+>
+<PreConditions>
+<PreCondition
+ Guid="8455685c-d8f8-43ba-96b6-445565f557cb"
+>AllSessionsClosed()</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Contact last known RBC"
+ Guid="64d6f106-510a-4e1f-84b6-125c437a5319"
+>
+<PreConditions>
+<PreCondition
+ Guid="bcb10fd3-510d-4c90-bae8-f07439b7b2bf"
+>ContactOption == ContactOptionEnum.ContactLastKnownRBC</PreCondition><PreCondition
+ Guid="5681dc01-53e7-409e-9433-13e0c39fa57b"
+>LastKnownRBC.Id != CurrentRBCConnection().ContactData.Id</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="0996c4d0-015e-467b-a61e-cc13846a6c74"
+>
+<Expression>True</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -1535,18 +1616,20 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d1ee1871-11f4-4b57-9cd4-1613cfc9d0a7"
 >
-</ReqRef><Rules>
+</ReqRef><Comment>Initiates the contact with the RBC, as requested by ContactOption.</Comment>
+<Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Open RBC session"
  Guid="96a4a42f-501a-40c4-9a82-8d522f07c55a"
 >
+<Comment>Initiates the contact with the RBC, as requested by ContactOption.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="No session opened"
+ Name="Session is already (being) established with this RBC"
  Guid="caa5317d-7334-450b-a354-799705c2362d"
 >
 <ReqRef
@@ -1554,26 +1637,96 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="887d02f6-5b47-4eeb-9c9d-b558136b3ec4"
 >
-</ReqRef><ReqRef
- Id="69dc4eed-7cae-45b6-adbb-58b2b1ac6edd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ef94f737-3fec-44c7-bf51-13ad10f062a9"
->
-</ReqRef><PreConditions>
+</ReqRef><Comment>If a session is already (being) established with this RBC, the order is ignored.</Comment>
+<PreConditions>
 <PreCondition
  Guid="dd160343-60f0-4795-ae66-17e29ea4cd14"
->AllSessionsClosed()</PreCondition><PreCondition
+>SessionIsAlreadyEstablishedWithRequestedRBC()</PreCondition></PreConditions>
+<Actions>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Contact last known RBC"
+ Guid="f01fc2bf-5429-4449-a4de-036700e0a472"
+>
+<ReqRef
+ Id="69dc4eed-7cae-45b6-adbb-58b2b1ac6edd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9c020d93-6490-4b5e-be20-c6d0443f3740"
+>
+</ReqRef><ReqRef
+ Id="369d7ae0-50db-411b-9941-bbe30e354733"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="06f42b1f-3ae0-42a2-8cee-ca8119a0ce18"
+>
+</ReqRef><Comment>If there is no valid last known RBC stored on-board, the order is ignored.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b800f70b-83f7-45b4-9432-c769f9dca3f6"
+>ContactOption == ContactOptionEnum.ContactLastKnownRBC</PreCondition><PreCondition
  Guid="c12c7ead-1138-41ac-bb3b-164fdeda2b0e"
 >LastKnownRBC.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="6f654a64-8159-4c37-b8d2-e71af5809411"
+ Guid="2078f218-6c1c-485a-9a00-f77a91524075"
 >ContactRBC
 (
     Order =&gt; ContactOrderStruct
     {
         Id =&gt; LastKnownRBC.Id,
         PhoneNumber =&gt; LastKnownRBC.PhoneNumber,
+        ActionToPerform =&gt; ContactActionEnum.Establish
+    }
+)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Use on-board stored short number"
+ Guid="862bab30-ca83-421f-999b-a05239d001d6"
+>
+<ReqRef
+ Id="40859515-77c4-46aa-96a5-12453cd171a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="82f9117e-6a4e-4124-8891-6c82527765c5"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="44730a03-b518-420f-86e0-c7c20a7a8fc6"
+>ContactOption == ContactOptionEnum.UseOnBoardStoredShortNumber</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5dd1dd73-af6c-4f90-99d8-db129a45167f"
+>ContactRBC
+(
+    Order =&gt; ContactOrderStruct
+    {
+        Id =&gt; CurrentRBCConnection().ContactData.Id,
+        PhoneNumber =&gt; ShortNumber,
+        ActionToPerform =&gt; ContactActionEnum.Establish
+    }
+)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Use RBC id + phone number"
+ Guid="191d7715-3f6a-4e80-856b-e904fa4f1342"
+>
+<ReqRef
+ Id="cebfc056-7b96-49d7-a6ff-1fdf0076bb9e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e7fc21dd-a91f-44fb-a8a0-321f2a70b430"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="a96e13e9-b470-4d73-9b24-98a3929baf63"
+>ContactOption == ContactOptionEnum.RBCIdAndPhoneNumber</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9f928072-675b-4a55-a3b6-da40798f6286"
+>ContactRBC
+(
+    Order =&gt; ContactOrderStruct
+    {
+        Id =&gt; CurrentRBCConnection().ContactData.Id,
+        PhoneNumber =&gt; CurrentRBCConnection().ContactData.PhoneNumber,
         ActionToPerform =&gt; ContactActionEnum.Establish
     }
 )</Action></Actions>
@@ -2672,5 +2825,14 @@ Terminal2.IsRegistered</Expression>
  Name="RbcRiuSystemVersion"
  Guid="9102c513-6f5a-4f5c-8625-1e0ea40fb32c"
 >
+</Variable><Variable
+ Type="ContactOptionEnum"
+ DefaultValue="ContactOptionEnum.ContactLastKnownRBC"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="ContactOption"
+ Guid="81db5f5d-dec8-43d9-9546-57479127847f"
+>
+<Comment>Indicates how the RBC has to be contacted.</Comment>
 </Variable></Variables>
 </NameSpace>
