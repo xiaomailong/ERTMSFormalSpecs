@@ -91,33 +91,6 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="Inactive"
- Name="ConnectionStateEnum"
- Guid="74c47361-7da4-47f8-b235-0f2760b914d6"
->
-<Values>
-<EnumValue
- Value="2"
- Name="Initialized"
- Guid="a0074619-14df-4449-9fd4-54c207eb2de4"
->
-</EnumValue><EnumValue
- Value="1"
- Name="Connecting"
- Guid="953215a3-3f51-4671-8898-7ba8808f4c88"
->
-</EnumValue><EnumValue
- Value="0"
- Name="Inactive"
- Guid="4d117622-6bb8-4edb-965e-8c47177c0ecd"
->
-</EnumValue><EnumValue
- Value="3"
- Name="Terminating"
- Guid="1f82a860-3649-4cd7-b95e-572a049275ab"
->
-</EnumValue></Values>
-</Enum><Enum
  Default="ContactOptionEnum.ContactLastKnownRBC"
  Implemented="TRUE"
  Name="ContactOptionEnum"
@@ -171,92 +144,6 @@
 </ReqRef><Comment>Represents one instance of communication with RBC.</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Name="Update safe radio connection status"
- Guid="47c49257-a883-48fb-942d-9527020dabda"
->
-<Comment>TODO: review it</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Update safe radio connection status"
- Guid="50ff7b17-e766-4694-a834-e051d2774058"
->
-<PreConditions>
-<PreCondition
- Guid="ab957c73-b529-41dd-a6cf-80fc049e3437"
->PreviousConnectionState != ConnectionState</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Name="Evaluate new state"
- Guid="e37bd498-5df5-4573-8f6f-507d492afd58"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="New state is initialized"
- Guid="5dbabc41-4f63-4ab5-a64b-3c7f7ca1d334"
->
-<PreConditions>
-<PreCondition
- Guid="ed415371-1c8b-48aa-b2f6-75cee32ce7f0"
->ConnectionState == ConnectionStateEnum.Initialized</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="3cc0b83e-7d64-4a40-aec4-0c9105789548"
->SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
-</RuleCondition><RuleCondition
- Name="New state is inactive, after terminating"
- Guid="3d778121-7ef5-4c38-aeb2-25bb0b9f0b4c"
->
-<PreConditions>
-<PreCondition
- Guid="f905310b-f5ca-4a7b-af6f-7c5e4f4b2d50"
->ConnectionState == ConnectionStateEnum.Inactive</PreCondition><PreCondition
- Guid="42327c32-48f8-4e14-82e6-318f50207a3a"
->PreviousConnectionState == ConnectionStateEnum.Terminating</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f6f118e1-350f-42c3-ae29-dad069a67a4c"
->SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action></Actions>
-</RuleCondition><RuleCondition
- Name="New state is inactive, connection lost"
- Guid="851b2219-c98d-4454-9370-0ad0c22f9e7e"
->
-<PreConditions>
-<PreCondition
- Guid="0ea052a6-bff5-4a59-b756-6e3e218f01d7"
->ConnectionState == ConnectionStateEnum.Inactive</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ba343dfc-2eee-4605-8b2b-78f34af260fb"
->SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="CleanUp"
- Name="Update connection status"
- Guid="23151048-ddd8-4a43-b342-358d1d5d1ed8"
->
-<Comment>TODO: review it</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Update connection status"
- Guid="cb2b1311-0508-456e-88c3-6b3d5d74bafb"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="f94cbf31-4d6f-4cd5-8f24-8cd09655aa76"
->PreviousConnectionState &lt;- ConnectionState</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="CleanUp"
  Implemented="TRUE"
  Name="Clear input message"
@@ -275,27 +162,6 @@
 <Action
  Guid="0271d2ba-8432-4ab8-9751-21368dd80660"
 >MessageIn &lt;- EMPTY</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Contact order received"
- Guid="cf03347e-b60d-42ad-a8f5-6d8527e81ace"
->
-<Comment>TODO: has to be implemented</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Contact order received"
- Guid="259074d2-2334-4631-9d21-8e673eb2f4f8"
->
-<PreConditions>
-<PreCondition
- Guid="590e96d3-c91b-4ed9-b585-e1bcf8640736"
->ContactRBCOrder != EMPTY</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="9d55e10d-b702-4370-a162-2eaf600534ce"
->ConnectionState &lt;- ConnectionStateEnum.Connecting</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -728,6 +594,67 @@
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendInitiationOfCommunicationSession"
+ Guid="696d88ca-8c89-4d15-8686-73cc7ad795f2"
+>
+<ReqRef
+ Id="1ead58b3-f05d-46bd-b3f8-bc0a16010cdd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4ea5e0d5-0e85-46a1-acd4-cda08bdc398a"
+>
+</ReqRef><Comment>Sends the initiation of communication session message.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="fbc287fc-61e7-449e-9d9f-a7e57f921c47"
+>
+<Comment>If the message is EMPTY, it has to be initialized</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="ca61f4f9-df8c-4f72-9d2d-f52350d0ef01"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e922975d-2e7e-4fb8-ae7b-2051e81118c1"
+>InitializeOutMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send initiation of communication session"
+ Guid="260229b4-4a1b-4342-b26a-aa625424c480"
+>
+<Comment>Sends the initiation of communication session message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send initiation of communication session"
+ Guid="cd51079a-9b65-4b6c-9bb5-5dc87ddac17a"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5496a749-0788-45c7-917c-9edb136dfa0c"
+>MessageOut.INITIATION_OF_A_COMMUNICATION_SESSION &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.INITIATION_OF_A_COMMUNICATION_SESSION.Message
+{
+    NID_MESSAGE =&gt; 155,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; MessageTypes.Time ( Kernel.CurrentTime ),
+    NID_ENGINE =&gt; Kernel.NidEngine
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
@@ -762,14 +689,14 @@
 >
 </ReqRef><Comment>Identifier of the RBC.</Comment>
 </StructureElement><StructureElement
- TypeName="ConnectionStateEnum"
- Default="ConnectionStateEnum.Inactive"
+ TypeName="ConnectionStateSM"
+ Default=""
  Mode="Internal"
  Implemented="TRUE"
  Name="ConnectionState"
  Guid="9da35b1e-5a10-49fe-97e2-9344ea080d37"
 >
-<Comment>Represents the current state of the communication session.</Comment>
+<Comment>The state machine of the current connection.</Comment>
 </StructureElement><StructureElement
  TypeName="SafeRadioConnectionStatusEnum"
  Default="SafeRadioConnectionStatusEnum.NoConnection"
@@ -798,49 +725,116 @@
 >
 <Comment>Data needed to establish a communication session.</Comment>
 </StructureElement><StructureElement
- TypeName="ConnectionStateEnum"
- Default="ConnectionStateEnum.Inactive"
+ TypeName="Default.BaseTypes.Time"
+ Default="0.0"
  Mode="Internal"
  Implemented="TRUE"
- Name="PreviousConnectionState"
- Guid="e9a5cd9d-6e51-4883-b964-1f743253ed28"
+ Name="LastRequestTime"
+ Guid="40e6ba54-d9c4-498d-88f2-2ffb1157f4aa"
 >
-<Comment>Used to detect changes of the connection state.</Comment>
+<Comment>Indicates the last time when a request to the RBC was sent.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
- InitialState="NotConnected"
+ InitialState="Inactive"
  Name="ConnectionStateSM"
  Guid="d82fd57c-5e3b-49a3-9588-9ba0c3633131"
 >
+<Comment>Handles the different processes of the connection according to its current state.</Comment>
 <States>
 <State
- Name="NotConnected"
+ Implemented="TRUE"
+ Name="Inactive"
  Guid="d33370b3-b877-475d-b1da-b15d3eaca819"
 >
+<Comment>No connection is established.</Comment>
 <StateMachine
  InitialState=""
  Guid="691e3286-67ef-4b68-b4c9-5aa0ce8e8788"
 >
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="RBC contact order received"
+ Guid="b1c9e783-f0f5-4d68-8816-a13e44c8b068"
+>
+<ReqRef
+ Id="5b9e9eb3-ffa4-47c2-a6f5-9fa6efc58ffe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5458231e-1df4-425e-8e8b-9b993b243cc4"
+>
+</ReqRef><Comment>When an order to contact an RBC is received, the on-board requests the set-up of a safe radio connection with the trackside.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="RBC contact order received"
+ Guid="16010e1f-582d-4673-a08f-e652d867206d"
+>
+<PreConditions>
+<PreCondition
+ Guid="d70d315d-97c4-418f-a89b-173190c448b2"
+>ContactRBCOrder != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="30ffcf61-752f-4621-bd06-aae49937b224"
+>THIS &lt;- Connecting</Action><Action
+ Guid="0435a548-28e2-45b2-b8f8-0711b2fc3498"
+>SessionEstablishmentData.Request &lt;- Request.Request</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State><State
  Name="Connecting"
  Guid="620d737c-d8e3-43c2-8cda-c9b1ca68371a"
 >
+<Comment>The connection is being established.</Comment>
 <StateMachine
  InitialState=""
  Guid="939342a0-af0b-417c-af03-c79040f6200e"
 >
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Safe radio connection is set-up"
+ Guid="9a9bbb19-838a-48e9-aa60-b9dfeaf939af"
+>
+<ReqRef
+ Id="1ead58b3-f05d-46bd-b3f8-bc0a16010cdd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3fef3016-4b29-440c-b9b3-befc8b41d664"
+>
+</ReqRef><Comment>As soon as the safe radio connection is set-up, the on-board sends the message Initiation of communication session.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Safe radio connection is set-up"
+ Guid="dedc8409-7712-44a5-962a-944a3b26fe52"
+>
+<PreConditions>
+<PreCondition
+ Guid="28c2e922-3c7a-4a58-861a-33bc2615f866"
+>SessionEstablishmentData.Request == Request.Response</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="623e6269-823f-4126-b491-ac074c895b43"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State><State
  Name="Connected"
  Guid="9296f778-498c-4dfb-8eb9-bda176289afa"
 >
+<Comment>The connection is established.</Comment>
 <StateMachine
  InitialState=""
  Guid="0b8f9771-1352-4442-9971-a125688da2ae"
 >
 </StateMachine></State><State
- Name="Disconnecting"
+ Name="Terminating"
  Guid="852724a0-2e07-4fc6-ba9d-25a46e4032a2"
 >
+<Comment>The connection is being terminated.</Comment>
 <StateMachine
  InitialState=""
  Guid="dfd5369b-7468-4e57-b4c3-591d53607134"
@@ -1797,7 +1791,6 @@ It can only return false if there is no open session or if the last known RBC ha
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="TracksideOrderedSession"
  Guid="aa947d6d-5ed0-4cb9-9175-d6bbf385946c"
 >
