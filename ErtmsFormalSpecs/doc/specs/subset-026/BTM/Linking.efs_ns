@@ -490,7 +490,7 @@ AND
  Name="Otherwise"
  Guid="61e517d8-9b27-462b-b7ec-6caf0cbf5dbc"
 >
-<Expression>Linking.CurrentBGWithinFrame() OR ( NOT (CurrentBGisLinked() ))</Expression>
+<Expression>Linking.CurrentBGWithinFrame() OR ( ConsiderUnlinkedBG() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -557,11 +557,6 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 <ReqRef
  Id="c2167b58-3dec-449f-be34-ebe09320d97b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4556e260-17d5-4393-aa09-5c56539a7b77"
->
-</ReqRef><ReqRef
- Id="c2167b58-3dec-449f-be34-ebe09320d97b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e7366b18-f1db-4147-8fa0-7acb5e34595c"
 >
 </ReqRef><Comment>Explicit inverse of CurrentBGisLinked(). Returns true if the current BaliseGroup is unlinked.
@@ -579,6 +574,36 @@ FORALL_IN is defensive programming.</Comment>
 </Case><Case
  Name="Otherwise"
  Guid="7501d96a-3582-4eed-bfa9-754bd84aa989"
+>
+<Expression>Boolean.False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="ConsiderUnlinkedBG"
+ Guid="dfd8d051-1d51-408f-bb7b-11e260f03e0c"
+>
+<ReqRef
+ Id="17cdeaca-a795-4ae1-b38f-adb2b3ece625"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4ace0d8a-5450-4e81-a56a-4858fbdf2225"
+>
+</ReqRef><Comment>Special case of ConsiderBG(). Returns true if the current BG is unlinked but has to be considered, nevertheless.</Comment>
+<Cases>
+<Case
+ Name="Yes"
+ Guid="7a5fb781-d47d-4183-85ce-e677f5830885"
+>
+<PreConditions>
+<PreCondition
+ Guid="7210223b-face-49e0-a644-dcd192e5aa92"
+>CurrentBGisUnlinked()</PreCondition><PreCondition
+ Guid="5212c0da-1db9-4fac-882f-17c46d93b969"
+>CountBalises() &gt;= 2</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="4ac067bc-24ca-4ec3-a711-4d6942039b37"
 >
 <Expression>Boolean.False</Expression>
 </Case></Cases>
