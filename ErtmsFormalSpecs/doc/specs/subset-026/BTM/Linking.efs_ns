@@ -551,6 +551,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 </Function></Functions>
 <Procedures>
 <Procedure
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="LinkingInformationReceived"
  Guid="b36d74ff-248d-4a64-ad82-dc33020344e9"
@@ -566,6 +567,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ClearLinkingInformation"
  Guid="791123e1-19db-4836-99d0-16e17500fdef"
@@ -611,6 +613,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Insert first BG"
  Guid="0e93289c-ce01-44bf-bc80-89c125862c2a"
@@ -641,6 +644,7 @@ IN Linkings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Insert following BGs"
  Guid="278d8d73-6889-44f1-a3c7-b443ef0f9393"
@@ -648,6 +652,7 @@ IN Linkings</Action></Actions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Insert following BGs"
  Guid="f1abce2e-96f2-4d8b-aa83-e5fd2939fb4d"
@@ -657,10 +662,11 @@ IN Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="f313372b-6e45-44c5-a16a-2f82708636c7"
->APPLY StoreLinkingInfo ( Info =&gt; X, Q_SCALE =&gt; Packet.Q_SCALE ) ON Packet.Sequence1</Action></Actions>
+>APPLY StoreLinkingInfo ( Data =&gt; X, Q_SCALE =&gt; Packet.Q_SCALE ) ON Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="StoreLinkingInfo"
@@ -670,7 +676,7 @@ IN Linkings</Action></Actions>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LINKING.SubStructure1"
- Name="Info"
+ Name="Data"
  Guid="d22702d1-0c8b-41d3-8f99-53dd485e6de2"
 >
 </Parameter><Parameter
@@ -702,11 +708,11 @@ IN Linkings</Action></Actions>
 <Action
  Guid="0a7cfd2c-c2e7-4059-9963-dca8b4dc0007"
 >INSERT CreateLinkingData (
-  D_LINK =&gt; Info.D_LINK,
-  NID_BG =&gt; Info.NID_BG,
-  Q_LINKORIENTATION =&gt; Info.Q_LINKORIENTATION,
-  Q_LINKREACTION =&gt; Info.Q_LINKREACTION,
-  Q_LOCACC =&gt; Info.Q_LOCACC,
+  D_LINK =&gt; Data.D_LINK,
+  NID_BG =&gt; Data.NID_BG,
+  Q_LINKORIENTATION =&gt; Data.Q_LINKORIENTATION,
+  Q_LINKREACTION =&gt; Data.Q_LINKREACTION,
+  Q_LOCACC =&gt; Data.Q_LOCACC,
   Q_SCALE =&gt; Q_SCALE
 ) 
 IN Linkings</Action></Actions>
