@@ -548,6 +548,40 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 >
 <Expression>Boolean.False</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="CurrentBGisUnlinked"
+ Guid="6b035d2b-3bc3-4167-a746-42d6a5155537"
+>
+<ReqRef
+ Id="c2167b58-3dec-449f-be34-ebe09320d97b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4556e260-17d5-4393-aa09-5c56539a7b77"
+>
+</ReqRef><ReqRef
+ Id="c2167b58-3dec-449f-be34-ebe09320d97b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e7366b18-f1db-4147-8fa0-7acb5e34595c"
+>
+</ReqRef><Comment>Explicit inverse of CurrentBGisLinked(). Returns true if the current BaliseGroup is unlinked.
+FORALL_IN is defensive programming.</Comment>
+<Cases>
+<Case
+ Name="Yes"
+ Guid="a63f5a6c-9cbb-4f79-978b-7f2b81d317de"
+>
+<PreConditions>
+<PreCondition
+ Guid="cc05af08-4a5f-4a1c-b5aa-b6ee74a6d275"
+>FORALL_IN CurrentBaliseGroup | X.Q_LINK == Messages.Q_LINK.Unlinked</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="7501d96a-3582-4eed-bfa9-754bd84aa989"
+>
+<Expression>Boolean.False</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
