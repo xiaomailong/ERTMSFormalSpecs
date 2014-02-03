@@ -5768,14 +5768,6 @@ BTM.Linking.Linkings</Action></Actions>
  Guid="70d64647-6a83-4cb1-b705-d9888a212c0c"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Initialize elements for MA"
- Guid="a99e386c-583d-4346-98fd-aa263c8e485c"
->
-<Actions>
-<Action
- Guid="e82abeeb-7acf-4039-9c74-75783a5040fe"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
-</SubStep><SubStep
  Name="Sub-step 3 - Set up a simple MA to work with"
  Guid="d7fe1df8-1db8-4721-a59b-366bd41efbd6"
 >
@@ -5797,6 +5789,14 @@ BTM.Linking.Linkings</Action></Actions>
     ReferenceBG =&gt; 5455,
     ReferenceBGLocation =&gt; 200.0
 }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 4 - Put the train in LS mode"
+ Guid="5008faa4-a6ce-48ed-8504-c50e85563b9b"
+>
+<Actions>
+<Action
+ Guid="04d18e63-f531-47e5-9530-3d1987d063f8"
+>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5824,7 +5824,7 @@ BTM.Linking.Linkings</Action></Actions>
 <Action
  Guid="26b5a166-2eda-462e-9aff-bb646b6511a3"
 >INSERT BTM.Linking.LinkingData {
-    Orientation =&gt; Default.Orientation.Both,
+    Orientation =&gt; Default.Orientation.Nominal,
     BaliseGroupIdentifier =&gt; 5461,
     Distance =&gt; 250.0,
     LocationAccuracy =&gt; 0.7,
@@ -5896,7 +5896,14 @@ IN BTM.Linking.Linkings</Action></Actions>
                     V_LOA =&gt; 70,
                     T_LOA =&gt; 180,
 
-                    N_ITER =&gt; 0,
+                    N_ITER =&gt; 1,
+                    Sequence1 =&gt; [
+                        Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.SubStructure1 {
+                            L_SECTION =&gt; 800,
+                            Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information
+                         }
+                     ]
+                    ,
 
                     L_ENDSECTION =&gt; 2000,
                     Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
@@ -5911,12 +5918,6 @@ IN BTM.Linking.Linkings</Action></Actions>
          }
      ]
  }</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="3429b279-e359-4390-a55a-ee27368c94cc"
->BTM.BGIsConsidered == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5937,11 +5938,11 @@ IN BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4a42d321-213d-4b17-ad4c-4e2f7a510877"
->Available (Kernel.MA.MA.Sections)</Expectation><Expectation
+>THERE_IS_IN Kernel.MA.MA.Sections</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="9bbdfb43-dd1a-4777-a3b5-6c5495afb79e"
->(COUNT Kernel.MA.MA.Sections) == 1</Expectation></Expectations>
+>(COUNT Kernel.MA.MA.Sections) == 2</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
