@@ -258,7 +258,7 @@ namespace DataDictionary.Variables
                     else
                     {
                         // The variable defines a default value, try to interpret it
-                        Interpreter.Expression expression = EFSSystem.Parser.Expression(Type, getDefaultValue(), null, true, this);
+                        Interpreter.Expression expression = EFSSystem.Parser.Expression(this, getDefaultValue(), null, true, this);
                         if (expression != null)
                         {
                             retVal = expression.GetValue(new Interpreter.InterpretationContext(Type));

@@ -491,11 +491,6 @@ namespace DataDictionary
                     {
                         Generated.ControllersManager.ActivateAllNotifications();
                     }
-
-                    if (retVal != null && efsSystem != null)
-                    {
-                        retVal.CheckRules();
-                    }
                 }
             }
             finally
@@ -503,6 +498,10 @@ namespace DataDictionary
                 factory.AutomaticallyGenerateGuid = true;
             }
 
+            if (retVal != null && efsSystem != null)
+            {
+                retVal.CheckRules();
+            }
 
             return retVal;
         }

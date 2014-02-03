@@ -729,15 +729,18 @@ namespace GUI
                     RegererateGuidVisitor visitor = new RegererateGuidVisitor();
                     visitor.visit(copy, true);
 
+                    Model.AddModelElement(copy);
+                    System.Collections.ArrayList targetCollection = copy.EnclosingCollection;
+                    copy.Delete();
                     Utils.INamable namable = copy as Utils.INamable;
-                    if (namable != null && SourceNode.Model.EnclosingCollection != null)
+                    if (namable != null && targetCollection != null)
                     {
                         int previousIndex = -1;
                         int index = 0;
                         while (previousIndex != index)
                         {
                             previousIndex = index;
-                            foreach (Utils.INamable other in SourceNode.Model.EnclosingCollection)
+                            foreach (Utils.INamable other in targetCollection)
                             {
                                 if (index > 0)
                                 {
