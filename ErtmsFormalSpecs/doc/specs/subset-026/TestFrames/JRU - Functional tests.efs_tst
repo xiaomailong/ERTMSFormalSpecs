@@ -1678,9 +1678,9 @@
  Guid="dd8e1d4c-a166-486e-a755-87de2194b38d"
 >
 <ReqRef
- Id="0fa7965c-d9e6-452a-92fb-83e6e336171d"
+ Id="a71ad63d-ce07-4898-a796-68cabe1767bc"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="4b361581-ebe1-4a32-8bce-abafbf802fe5"
+ Guid="3ed1a26b-3a3a-4a98-bc86-b57c7da5024a"
 >
 </ReqRef><Steps>
 <Step
@@ -2151,7 +2151,12 @@
  Name="Double Cab activated"
  Guid="92aec9b0-dc0f-4141-a809-f6a401eeaf19"
 >
-<Steps>
+<ReqRef
+ Id="8c425848-9e3f-47e1-b085-05409ddc4922"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="1ab0bc2b-b97b-435e-bd1e-e92934789cc4"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2349,10 +2354,15 @@
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Send TRAIN DIRECTION CONTROLLER Message"
  Guid="f7c906ff-64e6-4190-bd5a-c3c240e86ac4"
 >
-<Steps>
+<ReqRef
+ Id="1d66e852-98d7-42e9-ac5a-f63774661b64"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6fd7ad36-9345-41cb-9457-23cd81991c0d"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2376,11 +2386,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6241a50b-c806-4940-b9f4-b0ffd746404e"
->JRU.JRU1.JRUMessages == []</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="5de86122-c9ef-414a-964e-ccd8872e0893"
->FORALL_IN JRU.JRU1.JRUMessages | X.CAB_STATUS == EMPTY</Expectation></Expectations>
+>JRU.JRU1.JRUMessages == []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2388,7 +2394,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step2"
+ Name="Step2 - Train Direction Controller changes"
  Guid="826b96a1-b594-4037-88b5-64f9122ae5b7"
 >
 <SubSteps>
@@ -2413,7 +2419,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step3"
+ Name="Step3 - Verify the message has been succesfully sent"
  Guid="2ae1b049-6e37-4a3c-8a07-c281dc93b801"
 >
 <SubSteps>
@@ -2451,7 +2457,7 @@
 <ReqRef
  Id="1d116569-0a84-49db-b43b-fc79a8237b40"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="ca7c14c5-0c8e-4782-b10c-fb3ab32aefc7"
+ Guid="522d1cf3-7ac4-4252-b89d-763e60aa3c4d"
 >
 </ReqRef><Steps>
 <Step
@@ -2531,7 +2537,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step4"
+ Name="Step4 - The Traction Status variable changes again"
  Guid="07060f3e-548c-469f-9e97-977deb06f94e"
 >
 <SubSteps>
@@ -2549,6 +2555,27 @@
  DeadLine="1"
  Guid="b898ab16-0a52-4823-83e6-508c4c8bfc4a"
 >THERE_IS_IN JRU.JRU1.JRUMessages | X.TRACTION_STATUS != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Verify the Message has benn succesfully sent"
+ Guid="1cc683f8-b214-4810-929f-663d8d6f42b7"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="be7e9ef7-481e-43f6-bcd1-c2b429836cb8"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9b1e0e8f-1297-4abe-bc85-95f4e91c136e"
+>FORALL_IN JRU.JRU1.JRUMessages | X.TRACTION_STATUS == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -2602,7 +2629,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step2"
+ Name="Step2 - Train Data Entry variable changes its value"
  Guid="e166e674-0368-4805-962c-88a0d4a34b7f"
 >
 <SubSteps>
@@ -2627,7 +2654,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step3"
+ Name="Step3 - Verify the message has been succesfully sent"
  Guid="d78c71ab-1fa6-4eed-a24a-e798864c9348"
 >
 <SubSteps>
@@ -2730,10 +2757,15 @@
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Send JRU NATIONAL SYSTEM ISOLATION Message"
  Guid="1e6b5b07-b4a1-4d4f-bbc7-7f4996eb7bf3"
 >
-<Steps>
+<ReqRef
+ Id="06030586-dcc2-49e6-bf66-b0650c069a4d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="59543e3f-861d-4797-abc8-4aaa4081e672"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2771,7 +2803,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step2 - Chenge NTCIsolation value"
+ Name="Step2 - Chenge National System Isolation value"
  Guid="fa7adf1b-02d2-46f2-a932-85f2ed611e35"
 >
 <SubSteps>
@@ -2817,7 +2849,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step4 -"
+ Name="Step4 - Change the National System Isolation value again"
  Guid="fbfd358e-76af-4783-9541-a9ccd927fb13"
 >
 <SubSteps>
@@ -2842,7 +2874,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step5"
+ Name="Step5 - Verify the Message has been succesfully sent"
  Guid="9dbd6bda-ab37-4aa6-b5dc-1faa3c002f3a"
 >
 <SubSteps>
@@ -2874,10 +2906,15 @@
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Send TRACTION CUT OFF COMMAND STATE Message"
  Guid="95750090-1b5e-4664-bb70-adcf0a565853"
 >
-<Steps>
+<ReqRef
+ Id="3822ea70-c0cb-4073-966b-5bee1bef3f8a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9ee38345-8d83-4fd0-91ee-73ad67db826a"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2913,7 +2950,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step2 - Change TCO value"
+ Name="Step2 - Change Traction Command State value"
  Guid="b65ec158-92fc-4654-9f3b-0c59d085c1e7"
 >
 <SubSteps>
@@ -2938,7 +2975,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step3"
+ Name="Step3 - Verify the Message has been succesfully sent"
  Guid="24477e74-c1fe-4944-9f8d-be9fcba50bac"
 >
 <SubSteps>

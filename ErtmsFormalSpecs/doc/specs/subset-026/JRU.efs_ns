@@ -364,7 +364,7 @@ SERVICE_BRAKE_COMMAND_STATE =&gt; CreateSBCommandStateMessage()
 <Action
  Guid="bd0cd303-3d8b-4d90-a66d-3e88424cb4f1"
 >INSERT Messages.JRU.MESSAGE.Message {
-FROM_RBC =&gt; JRU.CreateMessageFromRbc(EURORADIO.CurrentRBCConnection())
+FROM_RBC =&gt; JRU.CreateMessageFromRbc(EURORADIO.CurrentRBCConnection(), EURORADIO.LastKnownRBC.Id)
 } IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -386,7 +386,7 @@ FROM_RBC =&gt; JRU.CreateMessageFromRbc(EURORADIO.CurrentRBCConnection())
 <Action
  Guid="aeca0d65-1fde-41db-a827-19ebff8bf7d4"
 >INSERT Messages.JRU.MESSAGE.Message {
-TO_RBC =&gt; JRU.CreateMessageToRbc(EURORADIO.CurrentRBCConnection())
+TO_RBC =&gt; JRU.CreateMessageToRbc(EURORADIO.CurrentRBCConnection(), EURORADIO.LastKnownRBC.Id)
 } IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -697,6 +697,13 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Mode="Internal"
  Name="PreviousTractionCommandStatus"
  Guid="89846cc1-acde-4541-bff4-70049995498f"
+>
+</StructureElement><StructureElement
+ TypeName="TIU.TrainDataEntryEnum"
+ Default=""
+ Mode="Internal"
+ Name="PreviousTrainDataEntry"
+ Guid="78c19e2b-d705-4ee4-aa13-a2f205b3784c"
 >
 </StructureElement></Structure></Structures>
 <Collections>
@@ -2539,15 +2546,26 @@ TELEGRAM=&gt; BTM.Message
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.MESSAGE.FROM_RBC.Message"
+ Implemented="TRUE"
  Name="CreateMessageFromRbc"
  Guid="51063217-69fa-48a3-bafe-94e6d388ec0e"
 >
-<Comment>Function used to create the MessagesFromRbc JRU Message</Comment>
+<ReqRef
+ Id="b2e509d5-17fa-4916-bf5b-0ac33d558433"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="aea4ed7f-db23-4cd7-896e-8c0335202cbf"
+>
+</ReqRef><Comment>Function used to create the MessagesFromRbc JRU Message</Comment>
 <Parameters>
 <Parameter
  Type="EURORADIO.RBCStruct"
  Name="RbcInfo"
  Guid="3c457eb4-08fa-4234-a6d0-f21d1c27c45a"
+>
+</Parameter><Parameter
+ Type="EURORADIO.RBCIdStruct"
+ Name="RBCContactIbnformation"
+ Guid="cdb18285-cfcb-4626-b3d9-c1a1fbafbccb"
 >
 </Parameter></Parameters>
 <Cases>
@@ -2557,8 +2575,8 @@ TELEGRAM=&gt; BTM.Message
 >
 <Expression>Messages.JRU.MESSAGE.FROM_RBC.Message{
 HEADER =&gt; CreateHeader(9),
-NID_C =&gt; 0,
-NID_RBC =&gt; 0,
+NID_C =&gt; RBCContactIbnformation.Country,
+NID_RBC =&gt; RBCContactIbnformation.Id,
 TELEGRAM =&gt; Messages.MESSAGE.Message
 {
     TRACK_TO_TRAIN =&gt;RbcInfo.MessageIn
@@ -2567,15 +2585,26 @@ TELEGRAM =&gt; Messages.MESSAGE.Message
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.MESSAGE.TO_RBC.Message"
+ Implemented="TRUE"
  Name="CreateMessageToRbc"
  Guid="5ffc2eed-e108-4034-8acb-07bb423b991f"
 >
-<Comment>Function used to create the MessageToRbc JRU Messages</Comment>
+<ReqRef
+ Id="aba7a9a3-253d-451a-8cf5-df368cc1c6d5"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="380dd166-a169-4b62-838e-49a75588ef9c"
+>
+</ReqRef><Comment>Function used to create the MessageToRbc JRU Messages</Comment>
 <Parameters>
 <Parameter
  Type="EURORADIO.RBCStruct"
  Name="RbcInfo"
  Guid="2f6a233d-acb0-462d-839f-71cffe54adb7"
+>
+</Parameter><Parameter
+ Type="EURORADIO.RBCIdStruct"
+ Name="RBCContactIbnformation"
+ Guid="b2959b8e-ff98-4f90-a96f-0717dd710143"
 >
 </Parameter></Parameters>
 <Cases>
@@ -2586,8 +2615,8 @@ TELEGRAM =&gt; Messages.MESSAGE.Message
 <Expression>Messages.JRU.MESSAGE.TO_RBC.Message 
 {
 HEADER =&gt; CreateHeader(9),
-NID_C =&gt; 0,
-NID_RBC =&gt; 0,
+NID_C =&gt; RBCContactIbnformation.Country,
+NID_RBC =&gt; RBCContactIbnformation.Id,
 TELEGRAM =&gt; Messages.MESSAGE.Message
 {
     TRAIN_TO_TRACK=&gt; RbcInfo.MessageOut
@@ -3092,7 +3121,7 @@ M_DIRECTION_CONTROLLER =&gt; ToJruDirectionController(
 <PreConditions>
 <PreCondition
  Guid="40f6427d-ce92-47db-b81b-6257a0a3792d"
->(jru.PreviousKernelMode != Kernel.Mode ) AND (jru.PreviousKernelMode != Default.Mode.NP )</PreCondition></PreConditions>
+>((TIU.CabA.Desk1IsActive == True ) OR (TIU.CabA.Desk2IsActive == True ) OR (TIU.CabB.Desk1IsActive == True ) OR (TIU.CabB.Desk2IsActive == True )) AND ((jru.PreviousKernelMode != Kernel.Mode ) AND (jru.PreviousKernelMode != Default.Mode.NP ))</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="CabBecamesActive"
@@ -3204,10 +3233,16 @@ OR
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.MESSAGE.TRACTION_STATUS.Message"
+ Implemented="TRUE"
  Name="CreateTractionStatusMessage"
  Guid="9f0cd0e0-cbb2-4ca1-a01c-849ea837d233"
 >
-<Cases>
+<ReqRef
+ Id="8244b69a-230d-41b4-b7bb-0890ff2ccc7b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a6f4dac3-8454-4899-b1e1-98833dd1ad4a"
+>
+</ReqRef><Cases>
 <Case
  Name="Value"
  Guid="ba0bc24a-02cb-4b0a-9eee-657a3748d2f4"
@@ -3319,10 +3354,16 @@ M_TRACTION_STATUS=&gt;ToJruTractionStatus()
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.MESSAGE.TYPE_OF_TRAIN_DATA_ENTRY.Message"
+ Implemented="TRUE"
  Name="CreateTrainDataEntryMessage"
  Guid="c138db8f-548a-408d-8cc1-d2caf521bd9d"
 >
-<Cases>
+<ReqRef
+ Id="5642b7ac-8532-4e16-a3e9-a766287904d9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="699f5b5d-ba6c-4a93-88a8-73f8213ae103"
+>
+</ReqRef><Cases>
 <Case
  Name="Value"
  Guid="c404ac6c-b622-4439-b683-2b68e2912fa3"
@@ -3365,8 +3406,17 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 >( jru.PreviousCabAStatus != TIU.CabA ) OR (jru.PreviousCabBStatus != TIU.CabB )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="Otherwise"
+ Name="TrainDataEntryChanges"
  Guid="97617122-7ca5-4824-9990-bfe6d175148e"
+>
+<PreConditions>
+<PreCondition
+ Guid="4bad0eb2-7c63-45c7-98a6-525d907c213a"
+>TIU.TrainDataEntry != jru.PreviousTrainDataEntry</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="de8276e8-36ce-47b7-98a6-58da4a1bb6bc"
 >
 <Expression>False</Expression>
 </Case></Cases>
@@ -3397,10 +3447,16 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.MESSAGE.NATIONAL_SYSTEM_ISOLATION.Message"
+ Implemented="TRUE"
  Name="CreateNationalSystemsIsolationMessage"
  Guid="11a2ab3b-0534-41f8-bf09-7a0941b19454"
 >
-<Cases>
+<ReqRef
+ Id="18e07467-cc7f-49fe-af88-92a28c9906ad"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f3d8702d-4c65-4219-a253-2abd307bd38c"
+>
+</ReqRef><Cases>
 <Case
  Name="Value"
  Guid="e77f9ba3-abf9-4a00-97b1-0959a5ca6900"
@@ -3414,10 +3470,16 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="SendNationalSystemIsolationMessage"
  Guid="d0053f41-2e5e-46c6-b1a4-2eedac25a3f8"
 >
-<Parameters>
+<ReqRef
+ Id="06030586-dcc2-49e6-bf66-b0650c069a4d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="64320302-d920-48a1-9478-71a1e3f1e8df"
+>
+</ReqRef><Parameters>
 <Parameter
  Type="JRU.JRU"
  Name="jru"
@@ -3476,10 +3538,16 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.MESSAGE.TRACTION_CUT_OFF_COMMAND_STATE.Message"
+ Implemented="TRUE"
  Name="CreateTractionCutOffMessage"
  Guid="73b3d65d-8ae1-416b-95e7-797235f19724"
 >
-<Cases>
+<ReqRef
+ Id="f5593895-c838-43ca-949d-48a837517e3d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b8151875-9952-40cc-9df4-4028297ba64f"
+>
+</ReqRef><Cases>
 <Case
  Name="Value"
  Guid="ab78b2ab-74e8-4681-8860-eea2cab0d878"
@@ -3492,9 +3560,16 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="SendMTCOMessage"
  Guid="cdcedaf3-e36b-403c-b6b6-96f74545da0e"
 >
+<ReqRef
+ Id="3822ea70-c0cb-4073-966b-5bee1bef3f8a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="55018002-d5e0-4278-a11b-24610b1077d7"
+>
+</ReqRef><Comment>This function will determine when should be sent the TractionCutOffMessage</Comment>
 <Parameters>
 <Parameter
  Type="JRU.JRU"
