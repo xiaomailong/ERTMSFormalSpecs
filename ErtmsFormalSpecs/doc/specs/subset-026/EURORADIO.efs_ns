@@ -1499,9 +1499,9 @@ Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  Name="Value"
  Guid="570d8238-c486-4d19-bd40-02645a6b780e"
 >
-<Expression>Terminal1.RBCConnection.ConnectionState == ConnectionStateEnum.Inactive
+<Expression>Terminal1.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Inactive
   AND
-Terminal2.RBCConnection.ConnectionState == ConnectionStateEnum.Inactive</Expression>
+Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Inactive</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2021,9 +2021,16 @@ It can only return false if there is no open session or if the last known RBC ha
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  Name="CloseRBCSession"
  Guid="2691fd9c-77e5-40c8-859a-310f132a7a1c"
 >
+<ReqRef
+ Id="058ba686-ff06-4bed-b616-68b4fb4ea7fd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b1781efd-43f9-4cb5-be4a-bc6450114f28"
+>
+</ReqRef><Comment>Closing an RBC connection corresponds to an order to contact the current RBC with action &quot;Terminate&quot;.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -2041,8 +2048,16 @@ It can only return false if there is no open session or if the last known RBC ha
 </PreConditions>
 <Actions>
 <Action
- Guid="ba60038a-715e-4d02-a3b5-689f94b384c1"
->CurrentRBCConnection().ConnectionState &lt;- ConnectionStateEnum.Terminating</Action></Actions>
+ Guid="9c41a20d-c457-4bed-8e73-8106d54cde3b"
+>ContactRBC
+(
+    Order =&gt; ContactOrderStruct
+    {
+        Id =&gt; CurrentRBCConnection().ContactData.Id,
+        PhoneNumber =&gt; CurrentRBCConnection().ContactData.PhoneNumber,
+        ActionToPerform =&gt; EURORADIO.ContactActionEnum.Terminate
+    }
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
