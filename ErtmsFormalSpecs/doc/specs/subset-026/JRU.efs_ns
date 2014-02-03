@@ -14,6 +14,12 @@
  Name="JRU"
  Guid="fcd8bc1d-4787-454f-a0d1-863a0d566326"
 >
+<ReqRef
+ Id="cfbb06c3-434e-480f-8535-31fba21d7ff1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a8542ca2-e4f8-494f-acc0-08e15c7e7ac1"
+>
+</ReqRef><Comment>It will represent the JRU structure for all its elements</Comment>
 <Rules>
 <Rule
  Priority="UpdateOUT"
@@ -84,7 +90,7 @@
  Guid="ff2fc6dd-632e-4346-b97b-a4415eb29d66"
 >PreviousNationalSystemIsolationStatus &lt;- TIU.NTCIsolated</Action><Action
  Guid="1a56c4c3-7094-43ec-95b1-a199d7bdad13"
->PreviousTractionCommandStatus &lt;- TIU.CutOffTraction</Action><Action
+>PreviousTractionCutOffCommandStatus &lt;- TIU.CutOffTraction</Action><Action
  Guid="dbfb4ce6-6e75-4ec4-9570-7ba16fe4a050"
 >JRUMessages &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
@@ -119,6 +125,12 @@
  Name="SendJruMessage"
  Guid="850cfa57-2727-4b9a-8ef7-5f5fa4f69fd7"
 >
+<ReqRef
+ Id="1153a012-f94c-4ada-9412-ac62859d8d71"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="64d40389-2926-4441-a39c-3e6c32c6f084"
+>
+</ReqRef><Comment>When necessary it will call the corresponding function to create a new JRU Message</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -140,7 +152,7 @@
 <Actions>
 <Action
  Guid="63e31c8b-6484-4e99-9db9-f9b29b72b552"
->JRUMessages &lt;- JRUMessages</Action></Actions>
+>JRUMessages &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -148,6 +160,17 @@
  Name="SendNtcSelectedMessage"
  Guid="a7724310-6cd0-40c6-ab61-706120e7b4f4"
 >
+<ReqRef
+ Id="7d52b78c-8fb4-4f01-974a-66ecb34be2e7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="15c6b870-8320-4a8b-9b40-2cedf14acd9a"
+>
+</ReqRef><ReqRef
+ Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="48201353-8238-4cc8-b85b-0c65d42b1260"
+>
+</ReqRef><Comment>This will send the JRU MESSAGE NTC_SELECTED</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -155,12 +178,8 @@
  Name="SendNtcSelectedMessage"
  Guid="87753d10-2295-4e11-8946-89db7d0af51d"
 >
-<ReqRef
- Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="0d2496b2-36ad-4eff-8f0a-20c8e981e964"
->
-</ReqRef><PreConditions>
+<Comment>This will insert the NTC_SELECTED JRU Message into the collection of messages</Comment>
+<PreConditions>
 <PreCondition
  Guid="4b98b25b-e0e1-4b73-abce-efb77e9ef86e"
 >( LevelChangedToNtc(THIS) )</PreCondition></PreConditions>
@@ -177,6 +196,27 @@ NTC_SELECTED =&gt; CreateNtcSelectedMessage()
  Name="SendGeneralJruMessage"
  Guid="6e282cfd-251d-4c07-827f-785ba50a3d06"
 >
+<ReqRef
+ Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5f9619f8-9917-43ea-9156-cee34480f769"
+>
+</ReqRef><ReqRef
+ Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f8567e2d-6ea5-4117-b986-b2d639154f71"
+>
+</ReqRef><ReqRef
+ Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a2d1f631-ab22-4809-857e-a4eb2fa19078"
+>
+</ReqRef><ReqRef
+ Id="e703c8b6-f6b2-42a5-899a-06e4b46c5640"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="04d56a41-97d0-445b-bb6c-1f0a4ae90a25"
+>
+</ReqRef><Comment>It will generate the General JRU Message</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -184,27 +224,8 @@ NTC_SELECTED =&gt; CreateNtcSelectedMessage()
  Name="SendGeneralJruMessage"
  Guid="dc280e18-94ae-4bf3-9ad1-f51e3999d277"
 >
-<ReqRef
- Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="3d6d04b5-1a89-4cae-876f-301697bb8ad3"
->
-</ReqRef><ReqRef
- Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="c9b887ef-cb19-414a-b0db-de56a1e7d462"
->
-</ReqRef><ReqRef
- Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="baaecf6c-c948-4428-b73d-efb2e7db52c3"
->
-</ReqRef><ReqRef
- Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="7d6bc944-fc5b-4b69-bd36-ba58d0d4fea4"
->
-</ReqRef><PreConditions>
+<Comment>This will insert the GENERAL_MESSAGE JRU Message into the collection of messages</Comment>
+<PreConditions>
 <PreCondition
  Guid="d54d3701-4766-46c3-89b1-40dd29a1c3da"
 >( SendNewGeneralMessage(THIS) )</PreCondition></PreConditions>
@@ -230,6 +251,11 @@ GENERAL_MESSAGE =&gt; CreateGeneralMessage()
  Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="466148b1-d68f-41b1-b8f3-b6b5b28cbd91"
+>
+</ReqRef><ReqRef
+ Id="3548e812-7c69-44d2-be6e-4d9d79170728"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="391c2efe-96e7-4209-8118-a0110343c09f"
 >
 </ReqRef><Comment>Will contain the TrainData information in the JRU</Comment>
 <SubRules></SubRules>
@@ -264,13 +290,20 @@ TRAIN_DATA =&gt; CreateTrainDataMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="0e73f96a-29b8-4f14-8936-7de1ece29976"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><ReqRef
+ Id="a08b15c2-b9f7-4091-8e0d-d9db951d1a5d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="85c33a5d-e472-4dfc-9ced-127e6dd743de"
+>
+</ReqRef><Comment>It will generate the EB Command JRU Message</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="SendEmergencyBrakeCommandStateJruMessage"
  Guid="3b64f0e4-6aad-496a-a89d-b88c550ff315"
 >
+<Comment>This will insert the EB_COMMAND_STATE_MESSAGE JRU Message into the collection of messages</Comment>
 <PreConditions>
 <PreCondition
  Guid="511e0ca3-3a28-4758-abc1-2b9c352f462d"
@@ -293,7 +326,13 @@ EMERGENCY_BRAKE_COMMAND_STATE =&gt; CreateEBCommandStateMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="13dbf288-0680-4a19-bcea-24cf833fde4d"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><ReqRef
+ Id="a12a618a-7473-4e20-8fec-78804b7db646"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9654f171-560f-4c9a-9882-f80b1f3dd939"
+>
+</ReqRef><Comment>It will generate the SB Command JRU Message</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -305,7 +344,8 @@ EMERGENCY_BRAKE_COMMAND_STATE =&gt; CreateEBCommandStateMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="4ea03b7b-5d5e-43e1-a6d1-e444c1c733df"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>This will insert the SB_COMMAND_STATE JRU Message into the collection of messages</Comment>
+<PreConditions>
 <PreCondition
  Guid="b7e6ba46-a3bf-4841-b6c5-67ec043531c0"
 >ServiceBrakeStatusChanged(THIS)</PreCondition></PreConditions>
@@ -327,6 +367,11 @@ SERVICE_BRAKE_COMMAND_STATE =&gt; CreateSBCommandStateMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="daaf7ce0-4214-40b5-ba4b-f554155123ac"
 >
+</ReqRef><ReqRef
+ Id="3879a47b-14de-4665-bd8e-48684c7716d8"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ca5906b1-c032-4ce1-afa0-7d31a97cf79a"
+>
 </ReqRef><Comment>A JRU Message should be sent when a telegram from an EuroBalise has been recieved</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -334,6 +379,7 @@ SERVICE_BRAKE_COMMAND_STATE =&gt; CreateSBCommandStateMessage()
  Name="TelegramFromEuroBaliseRecieved"
  Guid="01260484-7d17-4a3c-9ca6-743f1308071d"
 >
+<Comment>This will insert the TELEGRAM_FROM_BALISE JRU Message into the collection of messages</Comment>
 <PreConditions>
 <PreCondition
  Guid="30005dec-9a3f-4f5d-94e6-65c3b4f1b049"
@@ -347,15 +393,28 @@ SERVICE_BRAKE_COMMAND_STATE =&gt; CreateSBCommandStateMessage()
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="TelegramFromRbcRecieved"
  Guid="0db90093-23b4-4bc0-83a2-6024bde30a04"
 >
+<ReqRef
+ Id="0fa7965c-d9e6-452a-92fb-83e6e336171d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="72d67ae8-6642-494b-ab98-d3365ea3d6bc"
+>
+</ReqRef><ReqRef
+ Id="a71ad63d-ce07-4898-a796-68cabe1767bc"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e3b0e57b-4b3a-40f3-9df0-6d82d71c52ff"
+>
+</ReqRef><Comment>This will create the FROM RBC JRU Message</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="TelegramFromRbcRecieved"
  Guid="aee740c1-e84a-4cdf-8084-8f1741b1884b"
 >
+<Comment>This will insert the FROM_RBC JRU Message into the collection of messages</Comment>
 <PreConditions>
 <PreCondition
  Guid="5ae64df4-66eb-4a2f-89dc-3f9a09fb9a81"
@@ -369,15 +428,28 @@ FROM_RBC =&gt; JRU.CreateMessageFromRbc(EURORADIO.CurrentRBCConnection(), EURORA
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="TelegramToRbcReady"
  Guid="2100df88-e0b4-4eae-a0df-1c6fb07ce14e"
 >
+<ReqRef
+ Id="2ffe0674-1645-4793-9d44-f0cc0a540f2e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f26e024c-bdf8-491c-81e5-f6e8ef85c46a"
+>
+</ReqRef><ReqRef
+ Id="0c320b0b-218e-4a78-9fad-488fdb0e6902"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="98b50f9d-1c23-497d-af4e-6c7f96065291"
+>
+</ReqRef><Comment>This will create the TO RBC JRU Message</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="TelegramToRbcReady"
  Guid="8dab86bd-7f12-4eb2-90be-02ca8789574c"
 >
+<Comment>This will insert the TO_RBC_TELEGRAM JRU Message into the collection of messages</Comment>
 <PreConditions>
 <PreCondition
  Guid="10fe01aa-af34-48b4-aa33-1e179a03aef0"
@@ -391,15 +463,28 @@ TO_RBC =&gt; JRU.CreateMessageToRbc(EURORADIO.CurrentRBCConnection(), EURORADIO.
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="SendCabStatusMessage"
  Guid="ca116b75-57ab-4f20-9c30-1fe3e22c78c9"
 >
+<ReqRef
+ Id="51f3449f-8379-4046-bc2b-6d3a30d48f11"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="4877a9e3-dfdc-46cf-b5d1-214655d18933"
+>
+</ReqRef><ReqRef
+ Id="8c425848-9e3f-47e1-b085-05409ddc4922"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="adb07f27-c556-4340-8a33-77eefc2d8ee1"
+>
+</ReqRef><Comment>It will generate the CAB STATUS JRU Message</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="CabStatusMessage"
  Guid="cb44cdc9-eda7-46f2-8d6e-7ce66ebc7263"
 >
+<Comment>This will insert the CAB_STATUS JRU Message into the collection of messages</Comment>
 <PreConditions>
 <PreCondition
  Guid="7d3e988c-03a6-40fc-87ff-eef88ae4b560"
@@ -415,15 +500,28 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="SendTrainDirectionControllerMessage"
  Guid="cdc755d9-5f88-4532-9d75-a0b9a4e51470"
 >
+<ReqRef
+ Id="1d66e852-98d7-42e9-ac5a-f63774661b64"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9dcb29c4-be99-4492-972f-dc358071d463"
+>
+</ReqRef><ReqRef
+ Id="baa05df6-1823-4d3b-a401-71222c779904"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0cbc1948-013b-4f48-9c96-2ec06730b7e1"
+>
+</ReqRef><Comment>This will create the DIRECTION_CONTROLLER_STATUS JRU Message</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="TrainDirectionControllerMessage"
  Guid="25163e06-6441-4cf0-b45b-a286b5f59762"
 >
+<Comment>This will insert the DIRECTION_CONTROLLER_STATUS JRU Message into the collection of messages</Comment>
 <PreConditions>
 <PreCondition
  Guid="b9b57d4e-ca25-4110-a5ca-96b2ea9e0256"
@@ -442,12 +540,19 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
  Name="SendTactionStatusMessage"
  Guid="2b8999bb-7900-4885-a8a1-00e1e9351f92"
 >
+<ReqRef
+ Id="1d116569-0a84-49db-b43b-fc79a8237b40"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d1b17cc6-7f51-4d67-a2c9-80eeede557b5"
+>
+</ReqRef><Comment>This will create the TRACTION_STATUS JRU Message</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="SendTactionStatusMessage"
  Guid="7b732cc0-b0f7-4471-9815-20c9b1e8c7d5"
 >
+<Comment>This will insert the TRACTION_STATUS JRU Message into the collection of messages</Comment>
 <PreConditions>
 <PreCondition
  Guid="7507ddd7-d0ac-4aaf-a486-1c49b868ed83"
@@ -463,16 +568,28 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="SendTrainDataEntryMessage"
  Guid="e092fb3a-a973-47b7-a78f-78854b1da66b"
 >
-<Comment>This will create a TrainDataEntry Message if the precondition is satified</Comment>
+<ReqRef
+ Id="3381fab6-7a7f-4493-9e67-33a433346d6b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="78982df8-1c71-4cf1-aa48-06f83276162b"
+>
+</ReqRef><ReqRef
+ Id="1a99e0b8-25e4-40b9-804a-adc887b38588"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="25d5c7e1-f9d6-43ed-bede-dab9b48a97df"
+>
+</ReqRef><Comment>This will create a TrainDataEntry Message if the precondition is satified</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="SendTrainDataEntryMessage"
  Guid="40c5f4fd-32d4-459a-bb38-f4fe3cfcc760"
 >
+<Comment>This will insert the TYPE_OF_TRAIN_DATA_ENTRY JRU Message into the collection of messages</Comment>
 <PreConditions>
 <PreCondition
  Guid="8747a3bd-d791-40fa-8350-fc5417ba977a"
@@ -486,15 +603,28 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="SendNationalSystemIsolationMessage"
  Guid="9fa86020-a23f-4d0d-bdc3-440e0e82b696"
 >
+<ReqRef
+ Id="38cad2be-d09c-43a1-9db5-be152ea6c56f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5a23015d-2c26-4bbd-8380-4ee82459918d"
+>
+</ReqRef><ReqRef
+ Id="06030586-dcc2-49e6-bf66-b0650c069a4d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6a9fe3c1-6d2e-4a3f-837d-5a5045cc2f85"
+>
+</ReqRef><Comment>This will create the NTC_ISOLATION JRU Message</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="SendNationalSystemIsolationMessage"
  Guid="3b04c55a-d5c8-4060-9ad4-78d12936a1d3"
 >
+<Comment>This will insert the NATIONAL_SYSTEMS_ISOLATION JRU Message into the collection of messages</Comment>
 <PreConditions>
 <PreCondition
  Guid="42fcfc24-5a2c-4268-b397-b52c5109b673"
@@ -508,15 +638,28 @@ NATIONAL_SYSTEM_ISOLATION =&gt; CreateNationalSystemsIsolationMessage()
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Name="SendTractionCommandStateMessage"
+ Implemented="TRUE"
+ Name="SendTractionCutOffCommandStateMessage"
  Guid="a5c37573-be95-4141-b3d3-a7fc49dfaafd"
 >
+<ReqRef
+ Id="0cef8827-6917-474b-ab7d-7e27fcc4fe4a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="71c0fec7-f89f-4b1a-8f42-6e3c8575414e"
+>
+</ReqRef><ReqRef
+ Id="3822ea70-c0cb-4073-966b-5bee1bef3f8a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7a0a805d-00b1-43ae-995d-88466507cc6a"
+>
+</ReqRef><Comment>This will create the TRACTION_CUT_OFF_STATUS_COMMAND JRU Message</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="SendTCOMessage"
  Guid="ec073c30-bf66-4b9f-947e-a9ab363169bf"
 >
+<Comment>This will insert the TRACTION_STATUS JRU Message into the collection of messages</Comment>
 <PreConditions>
 <PreCondition
  Guid="e1a8eef2-d4b8-408a-8586-7f29dfa98c27"
@@ -573,7 +716,8 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="b888c69c-e432-439a-82f2-98a94fe9345c"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Used to determine whether the status of Kernel Mode has changed or not</Comment>
+</StructureElement><StructureElement
  TypeName="Default.Level"
  Default=""
  Mode="Internal"
@@ -586,7 +730,8 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="f2d08d21-8b8c-49d3-9f09-7476afd4577b"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Used to determine whether the status of Kernel Level has changed or not</Comment>
+</StructureElement><StructureElement
  TypeName="Kernel.TrainData.TrainDataValues"
  Default=""
  Mode="Internal"
@@ -599,7 +744,8 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="3ace8be9-c83c-4359-ba82-c0a58ad00bd4"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Used to determine whether the status of TrainData has changed or not</Comment>
+</StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
  Mode="Internal"
@@ -612,7 +758,8 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="34497b31-46e8-4df0-82f5-6432b4993bee"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Used to determine whether the status of Service Brake Status has changed or not</Comment>
+</StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
  Mode="Internal"
@@ -625,13 +772,16 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="b97e87da-0624-4898-8439-68eee96f5407"
 >
-</ReqRef></StructureElement><StructureElement
- TypeName="JRUMessages"
+</ReqRef><Comment>Used to determine whether the status of Emergency Brake Status has changed or not</Comment>
+</StructureElement><StructureElement
+ TypeName="JRUMessagesCollection"
  Default=""
  Mode="InOut"
+ Implemented="TRUE"
  Name="JRUMessages"
  Guid="aca59d19-3dcb-4c35-8d91-91589353e7e8"
 >
+<Comment>This will contain all the possible JRU messages</Comment>
 </StructureElement><StructureElement
  TypeName="TIU.CabStruct"
  Default=""
@@ -645,7 +795,8 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="79e7a3b8-5c9c-4a93-b382-46852e68e612"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Used to determine whether the status of Cab A has changed or not</Comment>
+</StructureElement><StructureElement
  TypeName="TIU.CabStruct"
  Default=""
  Mode="Incoming"
@@ -658,7 +809,8 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="d21732f9-df95-4850-8234-db23fc7cd32c"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Used to determine whether the status of Cab B has changed or not</Comment>
+</StructureElement><StructureElement
  TypeName="TIU.DirectionControllerEnum"
  Default=""
  Mode="Internal"
@@ -671,7 +823,8 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="184ab7e9-93b8-45b6-ac8c-6721962686b9"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Used to determine whether the status of DirectionController has changed or not</Comment>
+</StructureElement><StructureElement
  TypeName="Boolean"
  Default="False"
  Mode="Internal"
@@ -684,20 +837,23 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="6b98b927-8a9b-4854-9f06-b36aa5e0c4e2"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Used to determine whether the status of Traction Status has changed or not</Comment>
+</StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
  Mode="Internal"
  Name="PreviousNationalSystemIsolationStatus"
  Guid="d357e38d-3825-4fe2-a9ea-32c5e13dd857"
 >
+<Comment>Used to determine whether the status of NTC Isolation Status has changed or not</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
  Mode="Internal"
- Name="PreviousTractionCommandStatus"
+ Name="PreviousTractionCutOffCommandStatus"
  Guid="89846cc1-acde-4541-bff4-70049995498f"
 >
+<Comment>Used to determine whether the status of Traction Cut Off Status has changed or not</Comment>
 </StructureElement><StructureElement
  TypeName="TIU.TrainDataEntryEnum"
  Default=""
@@ -705,6 +861,7 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Name="PreviousTrainDataEntry"
  Guid="78c19e2b-d705-4ee4-aa13-a2f205b3784c"
 >
+<Comment>Used to determine whether the status of TrainDataEntryType has changed or not</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -712,10 +869,75 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  MaxSize="30"
  Default="[]"
  Implemented="TRUE"
- Name="JRUMessages"
+ Name="JRUMessagesCollection"
  Guid="eb0177e5-5953-4de1-a99a-dd82f1fa7fd2"
 >
-<Comment>Collection which will contain all the sent Messages</Comment>
+<ReqRef
+ Id="e703c8b6-f6b2-42a5-899a-06e4b46c5640"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="42ecd8c9-26e6-4435-a386-53e6cb6fc716"
+>
+</ReqRef><ReqRef
+ Id="3548e812-7c69-44d2-be6e-4d9d79170728"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6c2c73e9-9bd9-42b0-ad70-378d79a0302d"
+>
+</ReqRef><ReqRef
+ Id="a08b15c2-b9f7-4091-8e0d-d9db951d1a5d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2829a4db-7e1e-476f-bc0b-3fdbf76719c3"
+>
+</ReqRef><ReqRef
+ Id="a12a618a-7473-4e20-8fec-78804b7db646"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9474c948-e060-4148-b690-9158c5e08457"
+>
+</ReqRef><ReqRef
+ Id="3879a47b-14de-4665-bd8e-48684c7716d8"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="176359cd-311e-4e9f-9a01-60301e09c5c5"
+>
+</ReqRef><ReqRef
+ Id="0fa7965c-d9e6-452a-92fb-83e6e336171d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="1f93b28d-27d4-424c-a0c2-32f9967338bb"
+>
+</ReqRef><ReqRef
+ Id="0c320b0b-218e-4a78-9fad-488fdb0e6902"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b1dc1d6a-9822-47c6-9f88-5f48bebcc9f8"
+>
+</ReqRef><ReqRef
+ Id="0cef8827-6917-474b-ab7d-7e27fcc4fe4a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ca1e85cd-ccf3-4002-ae3b-223f99b26ef1"
+>
+</ReqRef><ReqRef
+ Id="38cad2be-d09c-43a1-9db5-be152ea6c56f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2c9f2780-ae89-4d54-8e14-9de6fe78e740"
+>
+</ReqRef><ReqRef
+ Id="3381fab6-7a7f-4493-9e67-33a433346d6b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="fc2befa8-7509-40df-85b8-8ce94ebc9849"
+>
+</ReqRef><ReqRef
+ Id="62733358-3780-4cb6-ba99-4d4916118140"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a3145471-52e7-4da5-8f68-188bc87578fe"
+>
+</ReqRef><ReqRef
+ Id="baa05df6-1823-4d3b-a401-71222c779904"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="03349129-dfb3-440a-8fa5-fc655c5860a7"
+>
+</ReqRef><ReqRef
+ Id="51f3449f-8379-4046-bc2b-6d3a30d48f11"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6d62d5c8-baf6-43c7-9e53-444e2bcd238c"
+>
+</ReqRef><Comment>Collection which will contain all the sent Messages</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -724,7 +946,12 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Name="CreateGeneralMessage"
  Guid="18992937-700e-4c32-8c61-b76ff205298f"
 >
-<Comment>It will fill a Genera Message in JRU</Comment>
+<ReqRef
+ Id="e703c8b6-f6b2-42a5-899a-06e4b46c5640"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d720534f-0854-4e73-b4da-5f31aca8bf4b"
+>
+</ReqRef><Comment>It will fill a Genera Message in JRU</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -741,14 +968,59 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="9962f540-f94d-473f-91e9-bc737b1a13a7"
 >
 <ReqRef
- Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+ Id="e4bac226-7f4c-4034-8611-a1b2a429006f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="d8e23c05-6adb-4969-b128-50ed51410c77"
+ Guid="11912121-c272-4389-88b3-d298b8dfa876"
 >
 </ReqRef><ReqRef
- Id="6451c7ce-0322-4d09-a760-30452fad7e33"
+ Id="d7ff8235-78a7-423d-a351-50a649b66d8e"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="dd1842fc-c088-40ee-a0da-fde85bc7e583"
+ Guid="4bf3c8f1-a097-42aa-8feb-45c1ce530fa5"
+>
+</ReqRef><ReqRef
+ Id="e52688db-b556-49fa-adc7-5872de3f1038"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b1eb281d-1dd1-4251-82d1-ac3614db9c39"
+>
+</ReqRef><ReqRef
+ Id="6e38004e-74a2-4d5e-afc2-535022239fea"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8db1b6c9-a29d-4145-8dce-a44f4c244483"
+>
+</ReqRef><ReqRef
+ Id="4a22fd87-da9f-42a3-b0a8-859408806178"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8669d45b-5d8d-4b4e-aee3-c0e83518b7e6"
+>
+</ReqRef><ReqRef
+ Id="3c0233a7-b01e-40fb-a5f0-652063fdf644"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="25138f87-a7a2-48be-aca8-b01d334b4870"
+>
+</ReqRef><ReqRef
+ Id="55f1519a-05d7-4825-97c7-d7a1b746b27b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="61f745e6-9ca7-4166-b474-1b60b1e89ab5"
+>
+</ReqRef><ReqRef
+ Id="498726b7-6f35-4b72-909e-32d4995241ba"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="70b82dae-a749-42fa-8fef-135e770bb4d1"
+>
+</ReqRef><ReqRef
+ Id="23f87f8c-2500-4f0c-87d6-f92f4df40390"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7d207f01-737b-4249-a0ca-d610732889f9"
+>
+</ReqRef><ReqRef
+ Id="4c5f3c51-19fa-414b-bac9-a02f2705838a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ed303bd3-89bc-48d7-b257-7b593a3431cb"
+>
+</ReqRef><ReqRef
+ Id="1fc0ada4-257d-4414-9f05-cdb742f0d054"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e3eead21-5ec9-4840-bbda-a49371496f2f"
 >
 </ReqRef><Comment>Function use to fullfill the common fields of a JRU message</Comment>
 <Parameters>
@@ -798,6 +1070,7 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
 </Function><Function
  Type="Messages.JRU.LEVEL"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruLevel"
  Guid="ac4426f8-eda9-485b-989d-a7a7611ec6b6"
 >
@@ -859,6 +1132,7 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
 </Function><Function
  Type="Messages.M_MODE"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruMode"
  Guid="66578131-da84-494b-84c4-f928a111de40"
 >
@@ -1019,15 +1293,11 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
 </Function><Function
  Type="MessageTypes.Speed"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruVtrain"
  Guid="91c92590-51f5-4a7e-8dd6-685d094dd617"
 >
-<ReqRef
- Id="3c0233a7-b01e-40fb-a5f0-652063fdf644"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="932323e2-5409-4cb5-80bf-79fc9a1bd8d7"
->
-</ReqRef><Comment>this function will be used in order to translate from a Default.BaseTypes.Speed to the V_TRAIN type of the JRU.HEADER</Comment>
+<Comment>this function will be used in order to translate from a Default.BaseTypes.Speed to the V_TRAIN type of the JRU.HEADER</Comment>
 <Cases>
 <Case
  Name="NotStandStill"
@@ -1047,6 +1317,7 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
 </Function><Function
  Type="Messages.JRU.SYSTEM_VERSION"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruSystemVersion"
  Guid="074aa369-7b30-42c2-aceb-0d3bb250ba9f"
 >
@@ -1117,15 +1388,11 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
 </Function><Function
  Type="Messages.JRU.NID_NTC"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruNidNtc"
  Guid="6b348997-2882-4945-9a7c-0d6814ddc511"
 >
-<ReqRef
- Id="1fc880ed-12b0-4b3a-9b18-232e2d8aa5cd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fcfb56a0-7ba8-47f0-a465-d899039c1d25"
->
-</ReqRef><Comment>Function which will convert the input value into JRU NID_NTC</Comment>
+<Comment>Function which will convert the input value into JRU NID_NTC</Comment>
 <Parameters>
 <Parameter
  Type="Default.NID_NTC"
@@ -1154,6 +1421,91 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  Id="1091ba63-481f-4f86-b05d-cb22ba129a44"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="07d1090f-bf6f-432a-86f6-5cb89ace353d"
+>
+</ReqRef><ReqRef
+ Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="37abd325-f04a-498d-82fa-afa480537f82"
+>
+</ReqRef><ReqRef
+ Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="3675d8d4-2c27-4f53-9d39-326878c97407"
+>
+</ReqRef><ReqRef
+ Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c11504db-99f2-4170-bbd0-74d563e30ef1"
+>
+</ReqRef><ReqRef
+ Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="12937311-bc7d-48ce-b290-54b7388be25f"
+>
+</ReqRef><ReqRef
+ Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6cd40855-680a-4baf-8962-be1e79cabc77"
+>
+</ReqRef><ReqRef
+ Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7cddabe5-a666-47fb-849b-93219d624ad7"
+>
+</ReqRef><ReqRef
+ Id="0c66d0c2-4189-4bdd-9a59-f8fb5da1dc72"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="63f141dc-10ff-404f-a48f-49d1c52f86e3"
+>
+</ReqRef><ReqRef
+ Id="089434c4-9c48-438a-9c6e-1dc3af77e9db"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ac57644f-e0ca-4d34-b7a3-89948e2a7251"
+>
+</ReqRef><ReqRef
+ Id="2775cdfc-7d3f-4adc-b431-79d473f86272"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d003af52-cdca-4fd2-a4d1-2adc9748cce9"
+>
+</ReqRef><ReqRef
+ Id="a71ad63d-ce07-4898-a796-68cabe1767bc"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f58b1f3e-d50a-4c2b-b276-d22dd49f8326"
+>
+</ReqRef><ReqRef
+ Id="2ffe0674-1645-4793-9d44-f0cc0a540f2e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7d6df74b-ac50-4c3f-994c-2427d2546cdd"
+>
+</ReqRef><ReqRef
+ Id="3822ea70-c0cb-4073-966b-5bee1bef3f8a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="097386de-8134-4ae4-b781-225ec7459166"
+>
+</ReqRef><ReqRef
+ Id="06030586-dcc2-49e6-bf66-b0650c069a4d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="34b28d56-f2ec-4840-8bd1-1a574e325061"
+>
+</ReqRef><ReqRef
+ Id="1a99e0b8-25e4-40b9-804a-adc887b38588"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0cc67373-d324-46ba-8b92-1671594df0a7"
+>
+</ReqRef><ReqRef
+ Id="1d116569-0a84-49db-b43b-fc79a8237b40"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f89d19a6-e6a8-4a83-9f28-2ad5ba86f1d5"
+>
+</ReqRef><ReqRef
+ Id="1d66e852-98d7-42e9-ac5a-f63774661b64"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a3b5633d-3964-4958-9d7c-f198b6abdbeb"
+>
+</ReqRef><ReqRef
+ Id="8c425848-9e3f-47e1-b085-05409ddc4922"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="18607849-786c-46da-b21a-d0bdf0665790"
 >
 </ReqRef><Comment>Function which will determine if a NEW JRU Message has to be sent</Comment>
 <Parameters>
@@ -1521,6 +1873,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </Function><Function
  Type="MessageTypes.Speed"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruVMaxTrain"
  Guid="353a5ca7-9df0-4922-89bd-e893032f58ce"
 >
@@ -1542,6 +1895,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </Function><Function
  Type="Messages.JRU.M_BRAKE_POSITION"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruMbrakePosition"
  Guid="f7d5ccb4-af61-4d38-92e6-218eec1a01d9"
 >
@@ -1585,6 +1939,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </Function><Function
  Type="Messages.JRU.M_NOM_ROT_MASS"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruNomRotMass"
  Guid="f6f16c52-28b4-41ba-b2fe-e59b4499933c"
 >
@@ -1615,6 +1970,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </Function><Function
  Type="Messages.JRU.M_REGENERATIVEBRAKE"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruMRegenerativeBrake"
  Guid="e9d9d25b-778d-412a-8047-8ff6bdf4928d"
 >
@@ -1667,6 +2023,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </Function><Function
  Type="Messages.JRU.M_EDDYCURRENTBRAKE"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruMEddyCurrentBrake"
  Guid="b4cde76f-4ff9-4040-a3f5-3050645ee462"
 >
@@ -1719,6 +2076,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </Function><Function
  Type="Messages.JRU.M_MAGNETICSHOEBRAKE"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruMMagneticShoeBrake"
  Guid="aa709ea3-3337-432f-9e05-08effee920ca"
 >
@@ -1771,6 +2129,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </Function><Function
  Type="Messages.JRU.M_REGENERATIVEBRAKE"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruEpBrake"
  Guid="bcf16c9d-413e-4feb-885e-d2bfe65dcd3d"
 >
@@ -1823,6 +2182,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </Function><Function
  Type="Messages.JRU.Q_TRACTIONCUTOFFINTERFACE"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruQ_TractionCutOffFunction"
  Guid="4f915fca-9450-4f26-88f0-ad03bc4294a9"
 >
@@ -1857,6 +2217,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </Function><Function
  Type="Messages.JRU.Q_SERVICEBRAKEINTERFACE"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruQ_ServiceBrakeInterface"
  Guid="330293ec-ddb2-4a92-91f6-4334f4f74e31"
 >
@@ -1891,6 +2252,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </Function><Function
  Type="Messages.JRU.Q_SERVICEBRAKEFEEDBACK"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruQ_ServiceBrakeFeedback"
  Guid="4cf5c53e-fac9-4e0d-aa5e-43cd726f7e93"
 >
@@ -1925,6 +2287,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </Function><Function
  Type="Messages.JRU.Q_BRAKE_CAPT_TYPE"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruQ_BrakeCaptType"
  Guid="1c16d414-bbf4-44ff-b5b2-9dd798b66e23"
 >
@@ -1952,6 +2315,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </Function><Function
  Type="Messages.JRU.M_BRAKE_PERCENTAGE"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruBrakePercentage"
  Guid="fdf103a8-6c40-4c9f-95db-036c64d0c424"
 >
@@ -1982,6 +2346,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </Function><Function
  Type="Messages.JRU.M_AIRTIGHT"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruM_AirTight"
  Guid="bc323093-18f9-46b6-8495-93b97cf3e5db"
 >
@@ -2078,6 +2443,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruEBCommanded()
 </Function><Function
  Type="Messages.JRU.M_BRAKE_COMMAND_STATE"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruEBCommanded"
  Guid="82ab4229-725c-4c7e-ab40-15e891f44ea6"
 >
@@ -2245,6 +2611,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 </Function><Function
  Type="Messages.JRU.M_BRAKE_COMMAND_STATE"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruSBCommanded"
  Guid="bcdc94d9-fb0b-422b-80f3-ed90e775aefb"
 >
@@ -2272,6 +2639,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 </Function><Function
  Type="Messages.JRU.NID_LRBG"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruNidLRBG"
  Guid="260983c5-fcd5-4ec2-9308-09b73eeb11ea"
 >
@@ -2302,6 +2670,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 </Function><Function
  Type="Messages.JRU.Q_DLRBG"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruQdirLRBG"
  Guid="7da1c050-14cb-444d-befc-ae96133765b4"
 >
@@ -2345,9 +2714,11 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 </Function><Function
  Type="Messages.JRU.Q_DLRBG"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruQDLRBG"
  Guid="e291bb16-1c87-45dd-b8d9-8b87ca72b6d1"
 >
+<Comment>Function which will translate the value from Default.Orientation into a JRU value</Comment>
 <Parameters>
 <Parameter
  Type="Default.Orientation"
@@ -2387,6 +2758,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 </Function><Function
  Type="MessageTypes.Length"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruLDoubtOver"
  Guid="596b4813-88d1-4881-83c5-661260ab562a"
 >
@@ -2408,6 +2780,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 </Function><Function
  Type="MessageTypes.Length"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruLDoubtUnder"
  Guid="5eb9ddf6-9925-456d-8b77-5a9fcacbaef8"
 >
@@ -2429,6 +2802,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 </Function><Function
  Type="MessageTypes.Distance"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruDLRBG"
  Guid="74a710bc-8832-432b-ab9d-dfc7725d4ea8"
 >
@@ -2450,6 +2824,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 </Function><Function
  Type="Messages.JRU.Q_SCALE"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruQScale"
  Guid="4a2642ff-6439-488e-8281-93da9098b001"
 >
@@ -2614,7 +2989,7 @@ TELEGRAM =&gt; Messages.MESSAGE.Message
 >
 <Expression>Messages.JRU.MESSAGE.TO_RBC.Message 
 {
-HEADER =&gt; CreateHeader(9),
+HEADER =&gt; CreateHeader(10),
 NID_C =&gt; RBCContactIbnformation.Country,
 NID_RBC =&gt; RBCContactIbnformation.Id,
 TELEGRAM =&gt; Messages.MESSAGE.Message
@@ -2727,15 +3102,11 @@ M_CAB_A_STATUS =&gt;ToJruCabAStatus(),
 </Function><Function
  Type="Messages.JRU.M_CAB_A_STATUS"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruCabAStatus"
  Guid="e8d8931f-0f5c-462a-adfc-e10277523b9c"
 >
-<ReqRef
- Id="8c425848-9e3f-47e1-b085-05409ddc4922"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="16df0617-790e-4a52-a365-8b77ec199770"
->
-</ReqRef><Comment>Function which will convert the input value into JRU M_CAB_A_STATUS</Comment>
+<Comment>Function which will convert the input value into JRU M_CAB_A_STATUS</Comment>
 <Cases>
 <Case
  Name="IsActive"
@@ -2755,15 +3126,11 @@ M_CAB_A_STATUS =&gt;ToJruCabAStatus(),
 </Function><Function
  Type="Messages.JRU.M_CAB_A_STATUS"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruCabBStatus"
  Guid="3b2f61a5-f6d2-4dc2-9d46-4fda55042cf8"
 >
-<ReqRef
- Id="8c425848-9e3f-47e1-b085-05409ddc4922"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="30dd80ed-6f33-460b-bd9a-30b6808d620c"
->
-</ReqRef><Comment>Function which will convert the input value into JRU M_CAB_B_STATUS</Comment>
+<Comment>Function which will convert the input value into JRU M_CAB_B_STATUS</Comment>
 <Cases>
 <Case
  Name="IsActive"
@@ -2992,6 +3359,7 @@ AND
 </Function><Function
  Type="Messages.JRU.M_TRAIN_ORIENTATION"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruMTrainOrientation"
  Guid="b0184155-b10b-442a-bd94-186237cc77bf"
 >
@@ -3032,6 +3400,7 @@ AND
 </Function><Function
  Type="Messages.JRU.M_DIRECTION_CONTROLLER"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruDirectionController"
  Guid="0361589d-bcd0-4f10-86de-c3944a2c757b"
 >
@@ -3097,6 +3466,7 @@ M_DIRECTION_CONTROLLER =&gt; ToJruDirectionController(
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="SendTrainDirectionControllerMessage"
  Guid="6fef108c-733c-4e33-8d63-457637f02344"
 >
@@ -3207,6 +3577,7 @@ OR
 </Function><Function
  Type="Messages.JRU.M_TRACTION_STATUS"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruTractionStatus"
  Guid="63d93c89-3831-458e-919d-106b76f33941"
 >
@@ -3242,7 +3613,8 @@ OR
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="a6f4dac3-8454-4899-b1e1-98833dd1ad4a"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Function used to create the JRU Message TRACTION_STATE</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="ba0bc24a-02cb-4b0a-9eee-657a3748d2f4"
@@ -3254,9 +3626,16 @@ M_TRACTION_STATUS=&gt;ToJruTractionStatus()
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="SendTractionStatusMessage"
  Guid="8db5797c-a0ea-46ef-82f6-53a034950db4"
 >
+<ReqRef
+ Id="1d116569-0a84-49db-b43b-fc79a8237b40"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="361741f0-998f-49b6-9768-f9fdc5b29237"
+>
+</ReqRef><Comment>Function used to determine when the TRACTION_STATUS JRU Message should be sent</Comment>
 <Parameters>
 <Parameter
  Type="JRU.JRU"
@@ -3291,9 +3670,12 @@ M_TRACTION_STATUS=&gt;ToJruTractionStatus()
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="TractionStatusChanged"
  Guid="520f27ac-f68a-446e-814f-d10400c9593f"
 >
+<Comment>Function which will translate the incoming TIU value into an understandable JRU value</Comment>
 <Parameters>
 <Parameter
  Type="JRU.JRU"
@@ -3320,9 +3702,11 @@ M_TRACTION_STATUS=&gt;ToJruTractionStatus()
 </Function><Function
  Type="Messages.JRU.M_TRAIN_DATA_ENTRY"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruTrainDataEntry"
  Guid="473f4d4f-8e0a-4bbb-bfc8-4f0077cb76fe"
 >
+<Comment>Function which will translate the incoming TIU value into an understandable JRU value</Comment>
 <Cases>
 <Case
  Name="Fixed"
@@ -3363,7 +3747,8 @@ M_TRACTION_STATUS=&gt;ToJruTractionStatus()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="699f5b5d-ba6c-4a93-88a8-73f8213ae103"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Function used to generate the TRAIN_DATA_ENTRY_TYPE JRU Message</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="c404ac6c-b622-4439-b683-2b68e2912fa3"
@@ -3376,9 +3761,16 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="SendTrainDataEntry"
  Guid="2976de70-0e85-48b3-a380-2fd0df4d5600"
 >
+<ReqRef
+ Id="1a99e0b8-25e4-40b9-804a-adc887b38588"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d7e28695-c982-48e2-bf4e-b9d524006265"
+>
+</ReqRef><Comment>Function used to determine if it is necessary to send a TRAIN_DATA_ENTRY_TYPE JRU Message</Comment>
 <Parameters>
 <Parameter
  Type="JRU.JRU"
@@ -3422,9 +3814,12 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.M_NATIONAL_SYSTEM_ISOLATION"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruNtcIsolated"
  Guid="97902c05-025e-4295-bcba-46249c7ce11f"
 >
+<Comment>Function used to translate the value from the TIU in a JRU type</Comment>
 <Cases>
 <Case
  Name="Isolated"
@@ -3456,7 +3851,8 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="f3d8702d-4c65-4219-a253-2abd307bd38c"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>This will create and fill all the necessary fields to have a NATIONAL_SYSTEMS_ISOLATION JRU Message</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="e77f9ba3-abf9-4a00-97b1-0959a5ca6900"
@@ -3479,7 +3875,8 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="64320302-d920-48a1-9478-71a1e3f1e8df"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Function used to determine when a NTC_SIOLATION JRU Message should be sent</Comment>
+<Parameters>
 <Parameter
  Type="JRU.JRU"
  Name="jru"
@@ -3513,9 +3910,12 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.M_TCO_COMMAND_STATE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ToJruTractionCommandState"
  Guid="e5e92408-817a-4237-a525-69f3ef616a99"
 >
+<Comment>Function which will translate the TIU tractionCutOff value into an understandable JRU value</Comment>
 <Cases>
 <Case
  Name="Commanded"
@@ -3547,7 +3947,8 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="b8151875-9952-40cc-9df4-4028297ba64f"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Function used to create the TRACTION_CUT_OFF_COMMAND_STATUS JRU Message</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="ab78b2ab-74e8-4681-8860-eea2cab0d878"
@@ -3585,7 +3986,7 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 <PreConditions>
 <PreCondition
  Guid="c584ca1b-74af-40aa-bd32-d6a943d2b4b7"
->jru.PreviousTractionCommandStatus != TIU.CutOffTraction</PreCondition></PreConditions>
+>jru.PreviousTractionCutOffCommandStatus != TIU.CutOffTraction</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="NotChanged"
@@ -3602,6 +4003,76 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
  Name="JRU1"
  Guid="bbb2ea45-08d4-4c1b-a85c-10a854022eab"
 >
-<Comment>Represents an instance of a JRU structure</Comment>
+<ReqRef
+ Id="e703c8b6-f6b2-42a5-899a-06e4b46c5640"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="4cad8f0c-6f34-4700-938e-37fce684a86e"
+>
+</ReqRef><ReqRef
+ Id="3548e812-7c69-44d2-be6e-4d9d79170728"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6de4058d-ae66-400c-b1dc-091974d76984"
+>
+</ReqRef><ReqRef
+ Id="a08b15c2-b9f7-4091-8e0d-d9db951d1a5d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="162a1808-e1e5-47a0-92bd-56057b7b4d70"
+>
+</ReqRef><ReqRef
+ Id="a12a618a-7473-4e20-8fec-78804b7db646"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="88facfbb-7a5b-4028-81fa-257452ce1f9d"
+>
+</ReqRef><ReqRef
+ Id="3879a47b-14de-4665-bd8e-48684c7716d8"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b5a1b9a9-b950-41d3-802e-19d82e08b2f2"
+>
+</ReqRef><ReqRef
+ Id="0fa7965c-d9e6-452a-92fb-83e6e336171d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b36c7ad5-91b7-4b36-8350-87b54d65ab48"
+>
+</ReqRef><ReqRef
+ Id="0c320b0b-218e-4a78-9fad-488fdb0e6902"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e3f3df21-f1a8-4324-b3a1-b7b32bebec48"
+>
+</ReqRef><ReqRef
+ Id="7d52b78c-8fb4-4f01-974a-66ecb34be2e7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d8c5565e-098c-4179-a895-4a2ac04497ae"
+>
+</ReqRef><ReqRef
+ Id="0cef8827-6917-474b-ab7d-7e27fcc4fe4a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="59dc2e9f-ed45-4c9f-bd5c-c9eea9978e21"
+>
+</ReqRef><ReqRef
+ Id="38cad2be-d09c-43a1-9db5-be152ea6c56f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="054bc652-a92c-4949-a14d-907e99038a5d"
+>
+</ReqRef><ReqRef
+ Id="3381fab6-7a7f-4493-9e67-33a433346d6b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8fac5247-2d33-4181-8517-05ee040d4633"
+>
+</ReqRef><ReqRef
+ Id="62733358-3780-4cb6-ba99-4d4916118140"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="62b53f4c-21c1-48d1-b004-d21c103e1379"
+>
+</ReqRef><ReqRef
+ Id="baa05df6-1823-4d3b-a401-71222c779904"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="3c4f09b7-c4a4-42f3-91b0-9222aacfed79"
+>
+</ReqRef><ReqRef
+ Id="51f3449f-8379-4046-bc2b-6d3a30d48f11"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d547c6d5-9cd0-479a-9fd3-3905a620d5db"
+>
+</ReqRef><Comment>Represents an instance of a JRU structure</Comment>
 </Variable></Variables>
 </NameSpace>
