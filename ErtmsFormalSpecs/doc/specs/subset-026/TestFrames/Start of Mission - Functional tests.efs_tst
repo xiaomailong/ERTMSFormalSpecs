@@ -3334,7 +3334,7 @@
 <Actions>
 <Action
  Guid="c6ae63f5-cb2a-40db-a69a-d7023e464dad"
->EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action></Actions>
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Check the state"
  Guid="17bed226-0b19-4f9c-b25d-1daccc7919c4"
@@ -3385,7 +3385,7 @@
 <Actions>
 <Action
  Guid="76853ac8-51f9-4091-9a20-48904c1099fa"
->EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.NoConnection</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Check the state"
  Guid="3bed7637-3e5c-4b0e-a4ba-067cef497f19"
