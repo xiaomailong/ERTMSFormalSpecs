@@ -81,6 +81,10 @@
 >PreviousDirectionController &lt;- TIU.DirectionControllerInformation</Action><Action
  Guid="03d54f80-2a40-47e9-855c-23efe6bcb38b"
 >PreviousTractionStatus &lt;- TIU.TractionIsOn</Action><Action
+ Guid="ff2fc6dd-632e-4346-b97b-a4415eb29d66"
+>PreviousNationalSystemIsolationStatus &lt;- TIU.NTCIsolated</Action><Action
+ Guid="1a56c4c3-7094-43ec-95b1-a199d7bdad13"
+>PreviousTractionCommandStatus &lt;- TIU.CutOffTraction</Action><Action
  Guid="dbfb4ce6-6e75-4ec4-9570-7ba16fe4a050"
 >JRUMessages &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
@@ -433,6 +437,99 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
  DIRECTION_CONTROLLER_POSITION=&gt; JRU.CreateDirectionControllerPositionJruMessage()
 } IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="SendTactionStatusMessage"
+ Guid="2b8999bb-7900-4885-a8a1-00e1e9351f92"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="SendTactionStatusMessage"
+ Guid="7b732cc0-b0f7-4471-9815-20c9b1e8c7d5"
+>
+<PreConditions>
+<PreCondition
+ Guid="7507ddd7-d0ac-4aaf-a486-1c49b868ed83"
+>JRU.SendTractionStatusMessage(
+    jru=&gt;THIS
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5c69cf29-bce1-4a15-94be-bfc6ffadfc0c"
+>INSERT Messages.JRU.MESSAGE.Message {
+ TRACTION_STATUS=&gt; JRU.CreateTractionStatusMessage()
+} IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="SendTrainDataEntryMessage"
+ Guid="e092fb3a-a973-47b7-a78f-78854b1da66b"
+>
+<Comment>This will create a TrainDataEntry Message if the precondition is satified</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="SendTrainDataEntryMessage"
+ Guid="40c5f4fd-32d4-459a-bb38-f4fe3cfcc760"
+>
+<PreConditions>
+<PreCondition
+ Guid="8747a3bd-d791-40fa-8350-fc5417ba977a"
+>SendTrainDataEntry(THIS)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8ebcca6e-ab8e-426c-9a8c-69670da14009"
+>INSERT Messages.JRU.MESSAGE.Message {
+ TYPE_OF_TRAIN_DATA_ENTRY=&gt; JRU.CreateTrainDataEntryMessage()
+} IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="SendNationalSystemIsolationMessage"
+ Guid="9fa86020-a23f-4d0d-bdc3-440e0e82b696"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="SendNationalSystemIsolationMessage"
+ Guid="3b04c55a-d5c8-4060-9ad4-78d12936a1d3"
+>
+<PreConditions>
+<PreCondition
+ Guid="42fcfc24-5a2c-4268-b397-b52c5109b673"
+>SendNationalSystemIsolationMessage(THIS)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="04b8fac6-2aaf-4551-8f5a-01d7436bab4e"
+>INSERT Messages.JRU.MESSAGE.Message{
+NATIONAL_SYSTEM_ISOLATION =&gt; CreateNationalSystemsIsolationMessage()
+}IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="SendTractionCommandStateMessage"
+ Guid="a5c37573-be95-4141-b3d3-a7fc49dfaafd"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="SendTCOMessage"
+ Guid="ec073c30-bf66-4b9f-947e-a9ab363169bf"
+>
+<PreConditions>
+<PreCondition
+ Guid="e1a8eef2-d4b8-408a-8586-7f29dfa98c27"
+>SendMTCOMessage(
+    jru=&gt; THIS
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f94c4e15-4d0b-4047-ace8-767319cc5744"
+>INSERT Messages.JRU.MESSAGE.Message{
+TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
+}IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
@@ -576,7 +673,7 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
- Default=""
+ Default="False"
  Mode="Internal"
  Implemented="TRUE"
  Name="PreviousTractionStatus"
@@ -587,7 +684,21 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="6b98b927-8a9b-4854-9f06-b36aa5e0c4e2"
 >
-</ReqRef></StructureElement></Structure></Structures>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Name="PreviousNationalSystemIsolationStatus"
+ Guid="d357e38d-3825-4fe2-a9ea-32c5e13dd857"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Name="PreviousTractionCommandStatus"
+ Guid="89846cc1-acde-4541-bff4-70049995498f"
+>
+</StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="Messages.JRU.MESSAGE.Message"
@@ -1075,7 +1186,15 @@ OR
 OR
 (SendCabStatusMessage(jru))
 OR
-(SendTrainDirectionControllerMessage(jru))</PreCondition></PreConditions>
+(SendTrainDirectionControllerMessage(jru))
+OR
+(SendTractionStatusMessage(jru) )
+OR
+( SendTrainDataEntry(jru) )
+OR
+( SendNationalSystemIsolationMessage(jru) )
+OR
+( SendMTCOMessage(jru) )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -3059,7 +3178,7 @@ OR
 </Function><Function
  Type="Messages.JRU.M_TRACTION_STATUS"
  Implemented="TRUE"
- Name="ToJruTactionStatus"
+ Name="ToJruTractionStatus"
  Guid="63d93c89-3831-458e-919d-106b76f33941"
 >
 <Comment>Function which will convert the input value into JRU M_TRACTION_STATUS</Comment>
@@ -3082,6 +3201,322 @@ OR
  Guid="b481e42c-87fe-4be7-a7d4-22c007866bd2"
 >TIU.TractionIsOn == False</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_TRACTION_STATUS.Off</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.TRACTION_STATUS.Message"
+ Name="CreateTractionStatusMessage"
+ Guid="9f0cd0e0-cbb2-4ca1-a01c-849ea837d233"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="ba0bc24a-02cb-4b0a-9eee-657a3748d2f4"
+>
+<Expression>Messages.JRU.MESSAGE.TRACTION_STATUS.Message {
+    HEADER =&gt; CreateHeader(40),
+M_TRACTION_STATUS=&gt;ToJruTractionStatus()
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SendTractionStatusMessage"
+ Guid="8db5797c-a0ea-46ef-82f6-53a034950db4"
+>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="a737843b-0d61-44c3-b477-9399cddfab35"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="AtStartUp"
+ Guid="5d6a8db1-aff9-456a-8d68-0552f368edf3"
+>
+<PreConditions>
+<PreCondition
+ Guid="e72c8da4-9736-4f15-9369-50f70bb41644"
+>( (jru.PreviousKernelMode != Kernel.Mode ) AND (jru.PreviousKernelMode != Default.Mode.NP ) )</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TractionStatusChanged"
+ Guid="46cbc9e8-ba67-494d-a335-39d9414ec957"
+>
+<PreConditions>
+<PreCondition
+ Guid="7debbf98-084c-4acc-9d4c-ae5d118346f3"
+>TractionStatusChanged(jru) == True</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="92cd62af-acd8-4785-b6ce-ae6631828aef"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="TractionStatusChanged"
+ Guid="520f27ac-f68a-446e-814f-d10400c9593f"
+>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="a4e2f9e5-8443-40d0-b673-8a63a4815f6a"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Changed"
+ Guid="f82e5931-c555-4db8-ae8e-4acab16bd8f0"
+>
+<PreConditions>
+<PreCondition
+ Guid="44afee2f-712e-4fee-bc14-112f2cfd9626"
+>jru.PreviousTractionStatus != TIU.TractionIsOn</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NotChanged"
+ Guid="4eae5765-18fc-4464-ae96-d2bc79d98db9"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_TRAIN_DATA_ENTRY"
+ Implemented="TRUE"
+ Name="ToJruTrainDataEntry"
+ Guid="473f4d4f-8e0a-4bbb-bfc8-4f0077cb76fe"
+>
+<Cases>
+<Case
+ Name="Fixed"
+ Guid="bf7ef3b3-9065-45fc-b5ad-4798639b18e9"
+>
+<PreConditions>
+<PreCondition
+ Guid="4cfff850-8d42-42d2-b0a7-c22f6de5a072"
+>TIU.TrainDataEntry == TIU.TrainDataEntryEnum.Fixed</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_TRAIN_DATA_ENTRY.Fixed</Expression>
+</Case><Case
+ Name="Flexible"
+ Guid="89155933-f3d8-4914-bf02-b72bbe767d1e"
+>
+<PreConditions>
+<PreCondition
+ Guid="0ca1d51e-5a15-4d6f-a337-fc8e149b8937"
+>TIU.TrainDataEntry == TIU.TrainDataEntryEnum.Flexible</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_TRAIN_DATA_ENTRY.Flexible</Expression>
+</Case><Case
+ Name="Switchable"
+ Guid="281f326f-37d9-4bd3-bea7-9452c72fa82c"
+>
+<PreConditions>
+<PreCondition
+ Guid="0d0ac47b-43aa-4b35-ab91-f94ad4cb0005"
+>TIU.TrainDataEntry == TIU.TrainDataEntryEnum.Switchable</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_TRAIN_DATA_ENTRY.Switchable</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.TYPE_OF_TRAIN_DATA_ENTRY.Message"
+ Name="CreateTrainDataEntryMessage"
+ Guid="c138db8f-548a-408d-8cc1-d2caf521bd9d"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="c404ac6c-b622-4439-b683-2b68e2912fa3"
+>
+<Expression>Messages.JRU.MESSAGE.TYPE_OF_TRAIN_DATA_ENTRY.Message
+{
+HEADER =&gt; CreateHeader(41),
+M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SendTrainDataEntry"
+ Guid="2976de70-0e85-48b3-a380-2fd0df4d5600"
+>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="5c56c02f-415b-4969-81ec-65f673515189"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="AtStartUp"
+ Guid="9f4c565a-4e30-46b8-8dd4-f5a91678d2f9"
+>
+<PreConditions>
+<PreCondition
+ Guid="ca653028-09ec-47fc-bcd8-7dfa74cb927f"
+>((TIU.CabA.Desk1IsActive == True ) OR (TIU.CabA.Desk2IsActive == True ) OR (TIU.CabB.Desk1IsActive == True ) OR (TIU.CabB.Desk2IsActive == True )) AND ( (jru.PreviousKernelMode != Kernel.Mode ) AND (jru.PreviousKernelMode != Default.Mode.NP ) )</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="CabBecomesActive"
+ Guid="6987562d-47d5-4c97-801f-1dd10a43c267"
+>
+<PreConditions>
+<PreCondition
+ Guid="52f57aed-f0fe-4617-b334-07d70cfafb68"
+>( jru.PreviousCabAStatus != TIU.CabA ) OR (jru.PreviousCabBStatus != TIU.CabB )</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="97617122-7ca5-4824-9990-bfe6d175148e"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_NATIONAL_SYSTEM_ISOLATION"
+ Name="ToJruNtcIsolated"
+ Guid="97902c05-025e-4295-bcba-46249c7ce11f"
+>
+<Cases>
+<Case
+ Name="Isolated"
+ Guid="e41ed418-780c-4481-9919-e6b340010e51"
+>
+<PreConditions>
+<PreCondition
+ Guid="2a5b611f-e1ec-49c2-b1d4-3a011c428828"
+>TIU.NTCIsolated == True</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_NATIONAL_SYSTEM_ISOLATION.NTC_isolated</Expression>
+</Case><Case
+ Name="NotIsolated"
+ Guid="30f9fcf6-a109-4324-adfc-9446e2edcc66"
+>
+<PreConditions>
+<PreCondition
+ Guid="ab30a44b-5490-4789-8f5d-2ccaecbd379c"
+>TIU.NTCIsolated == False</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_NATIONAL_SYSTEM_ISOLATION.NTC_not_isolated</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.NATIONAL_SYSTEM_ISOLATION.Message"
+ Name="CreateNationalSystemsIsolationMessage"
+ Guid="11a2ab3b-0534-41f8-bf09-7a0941b19454"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="e77f9ba3-abf9-4a00-97b1-0959a5ca6900"
+>
+<Expression>Messages.JRU.MESSAGE.NATIONAL_SYSTEM_ISOLATION.Message
+{
+    HEADER =&gt; CreateHeader(42),
+    NID_NTC =&gt; ToJruNidNtc(Kernel.NationalSystemId),
+    M_NATIONAL_SYSTEM_ISOLATION =&gt; ToJruNtcIsolated()
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SendNationalSystemIsolationMessage"
+ Guid="d0053f41-2e5e-46c6-b1a4-2eedac25a3f8"
+>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="7b7c07af-a5c6-4321-aaa8-a7396633f80a"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="NationalSystemIsolationHasChanged"
+ Guid="60a6c355-2000-4272-b0de-56078eb35c64"
+>
+<PreConditions>
+<PreCondition
+ Guid="981d9859-c5b4-4e85-a2a7-642699d93479"
+>TIU.NTCIsolated != jru.PreviousNationalSystemIsolationStatus</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="AtStartUp"
+ Guid="fcc3e04f-9f3e-4aa8-bc03-256709cbfb03"
+>
+<PreConditions>
+<PreCondition
+ Guid="f6cc93d5-391e-49ec-996b-60113667e0b0"
+>((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP)) AND ( Kernel.Level.Value == Default.Level.LNTC )</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="36ef018a-3e96-4770-be15-aa1069ad673c"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_TCO_COMMAND_STATE"
+ Name="ToJruTractionCommandState"
+ Guid="e5e92408-817a-4237-a525-69f3ef616a99"
+>
+<Cases>
+<Case
+ Name="Commanded"
+ Guid="99a54275-346c-469e-bc04-fc9ead1dec0e"
+>
+<PreConditions>
+<PreCondition
+ Guid="b9e48122-ad67-401c-9558-98f31f735ede"
+>TIU.CutOffTraction == True</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_TCO_COMMAND_STATE.Commanded</Expression>
+</Case><Case
+ Name="NotCommanded"
+ Guid="68fe8473-6ebe-4b9e-b84b-5f17be10a0bb"
+>
+<PreConditions>
+<PreCondition
+ Guid="11248db1-bc2b-43e0-a656-bdbbb646ceb7"
+>TIU.CutOffTraction == False</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_TCO_COMMAND_STATE.Not_commanded</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.TRACTION_CUT_OFF_COMMAND_STATE.Message"
+ Name="CreateTractionCutOffMessage"
+ Guid="73b3d65d-8ae1-416b-95e7-797235f19724"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="ab78b2ab-74e8-4681-8860-eea2cab0d878"
+>
+<Expression>Messages.JRU.MESSAGE.TRACTION_CUT_OFF_COMMAND_STATE.Message
+{
+    HEADER =&gt; CreateHeader(43),    
+    M_TCO_COMMAND_STATE =&gt; ToJruTractionCommandState()
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SendMTCOMessage"
+ Guid="cdcedaf3-e36b-403c-b6b6-96f74545da0e"
+>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="fe6848fe-7ee5-43a1-9bb6-73e8f15aaaec"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Changed"
+ Guid="e29e8a6e-7c2e-4b2c-a29b-baaf34de033c"
+>
+<PreConditions>
+<PreCondition
+ Guid="c584ca1b-74af-40aa-bd32-d6a943d2b4b7"
+>jru.PreviousTractionCommandStatus != TIU.CutOffTraction</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NotChanged"
+ Guid="3e4126fb-1a9c-4dca-93d5-083e2b45244d"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>

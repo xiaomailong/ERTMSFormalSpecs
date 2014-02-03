@@ -2148,7 +2148,7 @@
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Double Cab activated"
  Guid="92aec9b0-dc0f-4141-a809-f6a401eeaf19"
 >
 <Steps>
@@ -2206,7 +2206,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="9ea8dbed-1561-4fe8-89de-1c4ac11c3448"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.CAB_STATUS == EMPTY</Expectation></Expectations>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.CAB_STATUS != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2427,6 +2427,531 @@
  DeadLine="1"
  Guid="62d496c3-f08a-4c69-a010-96fe7137190d"
 >FORALL_IN JRU.JRU1.JRUMessages | X.DIRECTION_CONTROLLER_POSITION == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="TractionStatusMessage"
+ Guid="cfd71993-69db-4b6d-93a5-8c1df0f0fafb"
+>
+<TestCases>
+<TestCase
+ Name="Send TractionStatus Message when the TIU.TractionIsOn value changes"
+ Guid="85d28002-6310-4a06-9a0b-dc4aa413ae79"
+>
+<ReqRef
+ Id="1d116569-0a84-49db-b43b-fc79a8237b40"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ca7c14c5-0c8e-4782-b10c-fb3ab32aefc7"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="bfb62752-e39b-4d13-9865-30d2ba3a052d"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="2abff674-d2da-46f1-bdf4-fe17f6b4353f"
+>
+<Actions>
+<Action
+ Guid="11cfd062-0950-4d29-baf0-9cc398ea2398"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1133126d-87ba-4943-a4c6-e3f6ce0b3399"
+>JRU.JRU1.JRUMessages == []</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Traction Status Changes"
+ Guid="3889e1c3-39ee-4b24-b2ef-6dee6bdd9aa0"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="80aabbf6-bc56-46db-a647-d9e60a131273"
+>
+<Actions>
+<Action
+ Guid="8b9af3db-873b-472d-bcad-55fd03945513"
+>TIU.TractionIsOn &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="6735c472-c1c8-4c29-9e82-6b20606b0cf0"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.TRACTION_STATUS != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Verification that the Messages has been sent"
+ Guid="aa50de5c-c02f-40e5-b00f-f326f61ac069"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="973b363f-5834-4a66-abdd-92e4f9bf3810"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="6d17ad02-ba28-49f5-8183-87f0bc376a9d"
+>FORALL_IN JRU.JRU1.JRUMessages | X.TRACTION_STATUS == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4"
+ Guid="07060f3e-548c-469f-9e97-977deb06f94e"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="d4449c44-fe4f-480b-89a2-fecbf3a0d85a"
+>
+<Actions>
+<Action
+ Guid="b534e32a-2f42-44d0-beb2-1d6b09ba8d8e"
+>TIU.TractionIsOn &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b898ab16-0a52-4823-83e6-508c4c8bfc4a"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.TRACTION_STATUS != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="TrainDataEnty type change"
+ Guid="82f068ee-d2bf-4278-9d9e-108c3593ba5d"
+>
+<TestCases>
+<TestCase
+ Name="TrainData Input type changes"
+ Guid="b0972919-b37d-4aae-81d6-92455eb36262"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="c0a5fdd8-e1d6-4739-8e24-88fbee603696"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="331ac165-f5d8-41ca-84dd-a24405caeb28"
+>
+<Actions>
+<Action
+ Guid="b8358734-a5b4-46f6-9fed-54b58281fbe4"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="90e0bca7-c057-47a6-9c84-debf30a6d8c9"
+>JRU.JRU1.JRUMessages == []</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2"
+ Guid="e166e674-0368-4805-962c-88a0d4a34b7f"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="de87b145-c498-4e6c-8958-25bd9bfcc339"
+>
+<Actions>
+<Action
+ Guid="a8721630-022d-414c-88ec-c01363fdde4b"
+>TIU.TrainDataEntry &lt;- TIU.TrainDataEntryEnum.Switchable</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="24ff4d8b-5332-47a9-af5f-d2e54a503b93"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.TYPE_OF_TRAIN_DATA_ENTRY != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3"
+ Guid="d78c71ab-1fa6-4eed-a24a-e798864c9348"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="7b73bd7b-9f9a-4675-95e8-c5e5205656b2"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b2e659ad-34bf-4314-9c71-a76f3c2ccc95"
+>FORALL_IN JRU.JRU1.JRUMessages | X.TYPE_OF_TRAIN_DATA_ENTRY == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Name="At Start up"
+ Guid="1f5fbfe0-d918-46a4-9e51-c4538f896917"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1"
+ Guid="36e67372-e30e-45ef-9e7d-44652a0c79d3"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="d1ab39fb-c60e-43c8-84b4-e04a8519168f"
+>
+<Actions>
+<Action
+ Guid="b7155a5b-2305-49ac-8ac2-4320db8e44f3"
+>Kernel.Mode &lt;- Default.Mode.SB</Action><Action
+ Guid="d47dd4f9-8e12-4346-8de5-33da119532d7"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+ Guid="a272e4bc-068e-4fba-b758-6459c06a7d8c"
+>TIU.CabA.Desk2IsActive &lt;- False</Action><Action
+ Guid="92019098-c3b1-427b-b986-3df89bffb5c4"
+>TIU.CabA.Desk1IsActive &lt;- False</Action><Action
+ Guid="e1933846-c925-4a4a-bc0c-2982075f88e5"
+>TIU.CabA.Desk1IsActive &lt;- False</Action><Action
+ Guid="79a3cc39-215a-48a5-b674-81452f849c1d"
+>TIU.CabB.Desk1IsActive &lt;- False</Action><Action
+ Guid="efbe81d0-4d9a-440f-bd78-be3c8c2e7462"
+>TIU.CabB.Desk2IsActive &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="25d9ce86-8b3b-442e-9c2f-64de016c5d96"
+>FORALL_IN JRU.JRU1.JRUMessages | X.TYPE_OF_TRAIN_DATA_ENTRY == EMPTY</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="61301dfe-4761-460f-8833-4ef308fa9375"
+>
+<Actions>
+<Action
+ Guid="856709dd-9067-44c0-989b-ed7f6b93e0b2"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="b30d747d-1152-4c9b-8f4f-b8a94afb4643"
+>Kernel.Mode &lt;- Default.Mode.NP</Action><Action
+ Guid="8bc957d1-290d-4900-9fb6-5fd645feecbb"
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="fda6d446-cfe6-4a78-b80f-bd2024079fbf"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.TYPE_OF_TRAIN_DATA_ENTRY != EMPTY</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step3"
+ Guid="d4d27c39-21a2-4969-bc4a-1305f3f52ca2"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="486bef54-6467-46c9-8479-e612f79dec49"
+>FORALL_IN JRU.JRU1.JRUMessages | X.TYPE_OF_TRAIN_DATA_ENTRY == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="NationalSystemIsolation Message"
+ Guid="a487cb5f-d5a2-4430-8286-2c229f1436f7"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="1e6b5b07-b4a1-4d4f-bbc7-7f4996eb7bf3"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="01fd3d5c-3df9-4b38-bfc0-df88b88ab77d"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="ceb7f2f5-bc9e-42a6-8b67-489c86c18d89"
+>
+<Actions>
+<Action
+ Guid="cfeb9338-1088-4be5-9895-f1bb0563044e"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="e427dc91-42a9-4431-ab02-359c0b501c05"
+>Kernel.NationalSystemId &lt;- 240</Action><Action
+ Guid="dc75c3d8-94ec-462f-a1d2-6fdc879f52f7"
+>Kernel.Level.Value &lt;- Default.Level.LNTC</Action><Action
+ Guid="9ebbefa1-6132-49f1-9197-94dc61e4b35c"
+>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9dd66e94-d16d-4df1-9e86-93b7a232a1e7"
+>JRU.JRU1.JRUMessages == []</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Chenge NTCIsolation value"
+ Guid="fa7adf1b-02d2-46f2-a932-85f2ed611e35"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="37dc093a-3c0d-4085-a05f-81f3834fbaf4"
+>
+<Actions>
+<Action
+ Guid="116ec1b0-6c06-41fc-b71b-eb8be31aa62e"
+>TIU.NTCIsolated &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f2ed41fd-7d90-4f92-a865-c082555a2929"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.NATIONAL_SYSTEM_ISOLATION  != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Verificatying the message has been sent"
+ Guid="baeaf17b-5c4d-4bb6-bdac-1604b3f13444"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="aea56f0c-50aa-456f-984d-c688f1b71117"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="192f33d1-730b-45b8-a456-4a6d44891091"
+>FORALL_IN JRU.JRU1.JRUMessages | X.NATIONAL_SYSTEM_ISOLATION == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 -"
+ Guid="fbfd358e-76af-4783-9541-a9ccd927fb13"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="bd815e0d-ecdd-4159-9c98-6c4398d0c7b2"
+>
+<Actions>
+<Action
+ Guid="7259df08-0956-4bac-8e9d-119160b66f8c"
+>TIU.NTCIsolated &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="322a0dcc-ce83-4b2c-912b-084421e4abf9"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.NATIONAL_SYSTEM_ISOLATION  != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5"
+ Guid="9dbd6bda-ab37-4aa6-b5dc-1faa3c002f3a"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="0c67aa79-b5d7-4e14-b7e2-dcda75f02551"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="5dd30c9b-c186-4325-97d2-c08b599bfefc"
+>FORALL_IN JRU.JRU1.JRUMessages | X.NATIONAL_SYSTEM_ISOLATION == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Send TCO JRU Message"
+ Guid="91c106d3-68d0-4061-b8ec-2c2764ef04c4"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="95750090-1b5e-4664-bb70-adcf0a565853"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 Step1 - Initialize test"
+ Guid="91dc5d05-c141-4b66-82f1-ae9ddc3e40e6"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="897eb177-441e-4bac-a33c-b63ae37fec06"
+>
+<Actions>
+<Action
+ Guid="83a05bfd-71ba-4b6e-88a0-aa14f2a802f4"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="5c2e94c6-ddba-45bc-8491-56012d829527"
+>JRU.JRU1.JRUMessages == []</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="a9bcc053-2b53-4f10-953e-134def0c5c69"
+>FORALL_IN JRU.JRU1.JRUMessages | X.TRACTION_CUT_OFF_COMMAND_STATE == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Change TCO value"
+ Guid="b65ec158-92fc-4654-9f3b-0c59d085c1e7"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="b9f8bdf2-bcd2-405c-b162-31a1ece5c7a7"
+>
+<Actions>
+<Action
+ Guid="6e202220-09a8-422e-a49b-a2dea4e7da2c"
+>TIU.CutOffTraction &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="5006cd6d-570d-40fe-bf07-169f0b8053e1"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.TRACTION_CUT_OFF_COMMAND_STATE != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3"
+ Guid="24477e74-c1fe-4944-9f8d-be9fcba50bac"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="a9868c37-61ad-498d-8e89-e6c6e1d06ef1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="6913ac72-0251-46eb-b44d-46358115946f"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.TRACTION_CUT_OFF_COMMAND_STATE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
