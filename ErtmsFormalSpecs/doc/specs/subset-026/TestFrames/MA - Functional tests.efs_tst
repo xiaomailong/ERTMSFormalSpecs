@@ -4097,6 +4097,206 @@ BTM.Linking.Linkings</Action></Actions>
 )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
+</TestCase><TestCase
+ Name="New MA section at infill location reference"
+ Guid="28a920f7-f975-4c2a-8baa-661e32fe68a4"
+>
+<Comment>Test for requirement 3.8.5.1.2</Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Initialize things"
+ Guid="744d2287-a2d5-4220-9958-ac5b9c804048"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Initialize test environment"
+ Guid="b5a101b1-31c1-48d7-986f-cda37ad218bb"
+>
+<Actions>
+<Action
+ Guid="70d64647-6a83-4cb1-b705-d9888a212c0c"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Initialize elements for MA"
+ Guid="d7fe1df8-1db8-4721-a59b-366bd41efbd6"
+>
+<Actions>
+<Action
+ Guid="18a490ce-c903-4244-8f3d-eec3fee26936"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Put the train in FS mode"
+ Guid="709ba5f4-41fe-41e0-b69a-1a78916665f5"
+>
+<Actions>
+<Action
+ Guid="04d18e63-f531-47e5-9530-3d1987d063f8"
+>Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+ Guid="6288ada8-1333-4efc-9670-030a94154b22"
+>Kernel.Level &lt;- Kernel.LevelData
+ {
+    Value =&gt; Default.Level.L1,
+    DataState =&gt; Default.DataState.Valid
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 4 - Set up a simple MA to work with"
+ Guid="5008faa4-a6ce-48ed-8504-c50e85563b9b"
+>
+<Actions>
+<Action
+ Guid="991b559c-ac47-4c61-ad4b-a9aa6953c133"
+>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection
+    {
+        EndSectionTimeOut =&gt; EMPTY,
+        TimeOut =&gt; EMPTY,
+        Length =&gt; 12345.0,
+        DangerPoint =&gt; EMPTY,
+        Overlap =&gt; EMPTY
+    }
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 2 - Give the train linking information"
+ Guid="68b015bb-0548-42ae-af00-0b4eb5565d21"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step 1 - Get rid of any residual linking data around"
+ Guid="6cba92bf-59b7-490d-b7e5-b8ef24892535"
+>
+<Actions>
+<Action
+ Guid="576a3aa0-ed0e-4309-bc0b-c5878c35608a"
+>BTM.Linking.Linkings &lt;- []</Action></Actions>
+</SubStep><SubStep
+ Name="SubStep 1 - Manually insert linking information"
+ Guid="9eee11fa-4782-4772-9f90-81952f3fa7a5"
+>
+<Actions>
+<Action
+ Guid="26b5a166-2eda-462e-9aff-bb646b6511a3"
+>INSERT BTM.Linking.LinkingData {
+    Orientation =&gt; Default.Orientation.Nominal,
+    BaliseGroupIdentifier =&gt; 5461,
+    Distance =&gt; 250.0,
+    LocationAccuracy =&gt; 0.7,
+    Reaction =&gt; BTM.Linking.LinkingReaction.CommandServiceBrake
+ }
+
+IN BTM.Linking.Linkings</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 3 - Receive a infill MA from a balise"
+ Guid="9ed7589d-b553-458f-92be-2694824eab4e"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step 1 - Get an infill MA from a balise"
+ Guid="e5f125f3-ad92-4c69-9d5c-1503a23c20e7"
+>
+<Actions>
+<Action
+ Guid="990281b0-10d9-4719-9a91-9a9674fa64d6"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._1C,
+    N_TOTAL =&gt; Messages.N_TOTAL._1_balise_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5460,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+
+    Sequence1 =&gt; [
+        Messages.EUROBALISE.SubStructure1
+         {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                INFILL_LOCATION_REFERENCE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message
+                 {
+                    NID_PACKET =&gt; 136,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 0,
+                    Q_NEWCOUNTRY =&gt; Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
+                    NID_C =&gt; 85,
+                    NID_BG =&gt; 5461
+                 }
+             }
+         }
+        ,
+        
+        Messages.EUROBALISE.SubStructure1
+         {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                LEVEL_1_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                 {
+                    NID_PACKET =&gt; 12,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 0,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN =&gt; 300,
+                    V_LOA =&gt; 70,
+                    T_LOA =&gt; 180,
+
+                    N_ITER =&gt; 0,
+
+                    L_ENDSECTION =&gt; 2000,
+                    Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+
+                    Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information,
+
+                    Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.No_danger_point_information,
+
+                    Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information
+                 }
+             }
+         }
+     ]
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="Expectations - new MA section at the location of the main signal"
+ Guid="0e81ffa8-7460-4fb7-ba58-211050cb3169"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b5b64573-069d-464c-9463-44e3f950dd3e"
+>THERE_IS_IN BTM.Linking.Linkings | X.Distance == (FIRST_IN Kernel.MA.MA.Sections).Length</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4d56ef67-2ff1-4825-9781-228c0f5b4a46"
+>(COUNT Kernel.MA.MA.Sections) == 1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ed86e9c1-8770-4127-bbe4-17b9394bac22"
+>(FIRST_IN Kernel.MA.MA.Sections).Length == 250.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
  D_LRBG=""
@@ -5589,6 +5789,335 @@ BTM.Linking.Linkings</Action></Actions>
  DeadLine="1"
  Guid="28ce9956-cba8-4eba-a4cc-342ed31716ad"
 >Kernel.MA.MA.EndSection.Overlap.TimerDistance == 100.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Request MA from RBC"
+ Guid="eb49999b-cab1-4c9d-abe9-567231e3cb45"
+>
+<TestCases>
+<TestCase
+ Name="MA request"
+ Guid="2ce4d498-24d7-46f9-a31c-aa9ba57769fa"
+>
+<ReqRef
+ Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb2ceae2-6ab3-4dbd-bdd3-3912e6782dde"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Initialize test environment"
+ Guid="06ded348-f9d7-4a56-80bd-dcc52b31ee48"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="812fa5c7-e807-4cd2-be9e-fab3e7af3f26"
+>
+<Actions>
+<Action
+ Guid="a412b9d5-225e-49a3-b136-18e910a5fba9"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 2 - Setup for RBC connection"
+ Guid="af2c72f4-5903-4c7e-818d-adb5ab4dabc9"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="096519fa-ae7e-4e89-9038-192cc631d029"
+>
+<Actions>
+<Action
+ Guid="4c912b40-1523-49e4-a339-08c133455673"
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="b8eb1534-0bdd-4f62-a585-d0a02da684c8"
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Initialized</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 3 - Send MA request"
+ Guid="7b91feab-90a8-4c60-b698-489f478a657c"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="def112cb-b940-44c3-bff2-bed753875e31"
+>
+<Actions>
+<Action
+ Guid="1db9e7cc-9ef3-4a75-a381-f2af5f0f2280"
+>EURORADIO.CurrentRBCConnection().SendMARequest(
+    aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver
+)</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 4 - Expectations"
+ Guid="f9dc5107-3970-413c-aee9-cde06ec168a9"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - The train has a message set to send"
+ Guid="90d6db41-81f1-4383-bf80-df1aa30a90a4"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3b766a06-4f7d-4462-a970-07045d2ba244"
+>EURORADIO.CurrentRBCConnection().MessageOut != EMPTY</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step 2 - Message details"
+ Guid="60b8103a-191c-45c7-99e3-e145cec35351"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4149893a-6351-41a0-9bf9-f1f737d78b91"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2b56be16-3cb7-4946-a224-fac53d83a67a"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4cb9adce-aa87-498b-8366-3994e9488c7f"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.NID_MESSAGE == 132</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f232b4f0-4899-4e20-aa36-f28cbb6b8c4b"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.NID_ENGINE == Kernel.NidEngine</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="5a2849a0-250c-471c-9187-734b08739f3f"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.T_TRAIN == Default.MessageTypes.Time(Kernel.CurrentTime)</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="43426094-8e48-43f5-b3b1-ef8fb940aeb4"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.POSITION_REPORT != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="MA Update"
+ Guid="fdc8c9f4-80a9-4d3b-9d28-de9af7ccc2bb"
+>
+<TestCases>
+<TestCase
+ Name="New MA defines a closer SvL"
+ Guid="c647259c-43da-4876-8896-4696cfef545a"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Initialize things"
+ Guid="29fa2b84-436b-4e9e-9b43-9f6dffbe6c3b"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Initialize test environment"
+ Guid="d1d65ff6-6ba1-47a8-9f9e-6527b8eabe83"
+>
+<Actions>
+<Action
+ Guid="81cf7e2c-6f75-4878-beb6-8fd81694ede9"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Initialize elements for MA"
+ Guid="14353223-b296-43a4-9e1b-0eb79f1db4f6"
+>
+<Actions>
+<Action
+ Guid="107bbff6-500d-4b7f-ae85-d239ccc33bd8"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Set up a simple MA to work with"
+ Guid="3eb57c89-dc95-416a-a971-ebdb005fedec"
+>
+<Actions>
+<Action
+ Guid="6a0465ba-91ce-4690-a2eb-4babb3deac8d"
+>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection
+    {
+        EndSectionTimeOut =&gt; EMPTY,
+        TimeOut =&gt; EMPTY,
+        Length =&gt; 12345.0,
+        DangerPoint =&gt; EMPTY,
+        Overlap =&gt; EMPTY
+    }
+}</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="5b03286f-4783-4b1e-9cd9-36b0bb27d319"
+>Kernel.MA.SvL().Location == 12345.0</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step 4 - Train data that is useful"
+ Guid="51d8e07d-6e8e-40eb-adf1-08d26cd17458"
+>
+<Actions>
+<Action
+ Guid="542d1990-1927-4994-b849-f4cb692c788e"
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action><Action
+ Guid="6055eb45-9e31-47f4-bf3e-a6231519dd23"
+>Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+ Guid="9095ba07-56a6-4140-a281-e6626f992559"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; Default.Level.L1,
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 2 - Receive a new MA from a balise"
+ Guid="6c55f6a7-e73e-4bd5-8630-7d20b348c74f"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Pass the first balise"
+ Guid="419c8ea5-393d-4d24-bcb9-ed3adf74d6cd"
+>
+<Actions>
+<Action
+ Guid="6939822d-c3f3-477d-9ed0-6da1fb8f1f59"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5461,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+
+    Sequence1 =&gt; [
+        Messages.EUROBALISE.SubStructure1
+         {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                LEVEL_1_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                 {
+                    NID_PACKET =&gt; 12,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN =&gt; 25,
+                    V_LOA =&gt; 0,
+                    T_LOA =&gt; 150,
+
+                    N_ITER =&gt; 0,
+                    Sequence1 =&gt; [],
+
+                    L_ENDSECTION =&gt; 800,
+                    Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                     T_SECTIONTIMER =&gt; 0,
+                     D_SECTIONTIMERSTOPLOC =&gt; 0,
+
+                    Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information,
+                     T_ENDTIMER =&gt; 0,
+                     D_ENDTIMERSTARTLOC =&gt; 0,
+
+                    Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.Danger_point_information_to_follow,
+                     D_DP =&gt; 200,
+                     V_RELEASEDP =&gt; 2,
+
+                    Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information,
+                     D_STARTOL =&gt; 0,
+                     T_OL =&gt; 0,
+                     D_OL =&gt; 0,
+                     V_RELEASEOL =&gt; 0
+                 }
+             }
+         }
+     ]
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Passe the second balise"
+ Guid="062390ab-d0a0-4fcf-84bf-0efa9a64da16"
+>
+<Actions>
+<Action
+ Guid="d888aea8-fbb1-4407-868c-b7d5eac508c1"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 1,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5461,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+
+    Sequence1 =&gt; []
+ }</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="571bac97-0c29-4584-92fd-6c53b1053466"
+>Kernel.MA.MA.EndSection.DangerPoint.Distance == 3800.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

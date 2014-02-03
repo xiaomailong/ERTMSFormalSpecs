@@ -688,6 +688,76 @@
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendAcknowledgementOfEmergencyStop"
+ Guid="e87a9d80-111c-45f9-832c-e6cafcf1c042"
+>
+<ReqRef
+ Id="4f290d49-e10d-41ae-a385-d9a756df04d3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="90a03ff5-462d-42bf-9ca2-65cd7a0f9ed0"
+>
+</ReqRef><Comment>Fills the out message with an acknowledgement of emergency stop message</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
+ Name="aMessage"
+ Guid="7d4addf6-2d0c-478d-8a18-29d13281c06a"
+>
+</Parameter><Parameter
+ Type="Messages.Q_EMERGENCYSTOP"
+ Name="Qualifier"
+ Guid="dbcb29cd-2b70-41c6-8e2a-39767e6620aa"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Initialize message"
+ Guid="ac03dd37-e4fd-465d-893a-8278a0376598"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Initialize message"
+ Guid="61954d2d-de18-46d5-90c5-adb4d2c9e3ba"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3977b5c4-e5bf-434c-932e-ed4d7cff72f5"
+>InitializeOutMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Send emergency stop rejection"
+ Guid="ad4c4384-48b9-4066-9332-2b21328ef512"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Send emergency stop rejection"
+ Guid="cc544e71-6e86-430d-a549-2df2df9aa045"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="bf04e5dc-64f2-41c2-8382-b29798e0e305"
+>MessageOut.ACKNOWLEDGEMENT_OF_EMERGENCY_STOP &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.ACKNOWLEDGEMENT_OF_EMERGENCY_STOP.Message
+ {
+    NID_MESSAGE =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_MESSAGE,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime ),
+    NID_ENGINE =&gt; Kernel.NidEngine,
+    NID_EM =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_EM,
+    Q_EMERGENCYSTOP =&gt; Qualifier,
+    POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
+ }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
@@ -1958,6 +2028,7 @@ Terminal2.IsRegistered</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
+ Implemented="TRUE"
  Name="InfillMA"
  Guid="ed471ca1-d692-4236-a58c-bfb34482b2b2"
 >
@@ -1976,10 +2047,16 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="83a5a26a-12f1-455a-9292-86eb8210ba4e"
 >
+</ReqRef><ReqRef
+ Id="ecaefeed-fa89-4186-b8b7-e63999df3603"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa7cb1f2-644d-4672-b24d-350205f7137f"
+>
 </ReqRef><Comment>Handles reception of the infill MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InfillMA"
  Guid="d88ca5bb-9db1-4adf-b76e-e87731cb14a6"
@@ -1987,7 +2064,9 @@ Terminal2.IsRegistered</Expression>
 <PreConditions>
 <PreCondition
  Guid="2218137b-5a46-48c7-996e-77239bd0276d"
->Available (Message.INFILL_MA )</PreCondition></PreConditions>
+>Available (Message.INFILL_MA )</PreCondition><PreCondition
+ Guid="ef9e6dde-adf6-4d12-a2ca-7091646da7e6"
+>NOT (THERE_IS_IN Kernel.EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -2006,6 +2085,7 @@ Terminal2.IsRegistered</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Route suitability data received"
  Guid="cfe0f284-c660-462a-b15f-f16501bcb05d"
 >
@@ -2033,6 +2113,7 @@ Terminal2.IsRegistered</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Mode profile received"
  Guid="5723e1bb-1530-43ae-b94a-8989fd2a71a0"
 >
@@ -2077,6 +2158,7 @@ Terminal2.IsRegistered</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
+ Implemented="TRUE"
  Name="MAWithShiftedLocationReference"
  Guid="c827bc7f-c31b-4e5b-b1d7-0c40f0977756"
 >
@@ -2095,6 +2177,11 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3a85200b-d4dc-4c63-ab3f-58ace0758c7c"
 >
+</ReqRef><ReqRef
+ Id="ecaefeed-fa89-4186-b8b7-e63999df3603"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="375a6cbf-421a-4321-8edd-7f8a1766d267"
+>
 </ReqRef><Comment>Handles reception of MA with shifted location reference.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -2107,7 +2194,9 @@ Terminal2.IsRegistered</Expression>
 <PreConditions>
 <PreCondition
  Guid="4b26ec5f-a027-4caa-bca8-cd8c1bb56153"
->Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE )</PreCondition></PreConditions>
+>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE )</PreCondition><PreCondition
+ Guid="1d3581de-d6a2-4ce9-aa78-ab337178f1a0"
+>NOT (THERE_IS_IN Kernel.EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -2126,6 +2215,7 @@ Terminal2.IsRegistered</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Mode profile received"
  Guid="5fd08ada-39f6-43b7-bb09-1af3639e5a10"
 >
@@ -2153,6 +2243,7 @@ Terminal2.IsRegistered</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Level transition order received"
  Guid="8a7303b3-edcf-4f4a-a210-3b5a94aa69a9"
 >
@@ -2218,6 +2309,7 @@ Terminal2.IsRegistered</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Route suitability data received"
  Guid="05c6c904-72ce-4e9f-b546-00d44c02eb79"
 >
@@ -2253,10 +2345,16 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8d52b2e1-2ae4-4fa4-a15b-a79f20a19041"
 >
+</ReqRef><ReqRef
+ Id="ecaefeed-fa89-4186-b8b7-e63999df3603"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ffd2cec2-5da8-422b-a8c6-5fc4ce9751ba"
+>
 </ReqRef><Comment>Handles reception of the MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MovementAuthority"
  Guid="b2ace9c6-9fcd-4829-b42f-393341b8a143"
@@ -2264,7 +2362,9 @@ Terminal2.IsRegistered</Expression>
 <PreConditions>
 <PreCondition
  Guid="cc9777a1-c95d-4abd-9469-632ab302b08b"
->Available ( Message.MOVEMENT_AUTHORITY )</PreCondition></PreConditions>
+>Available ( Message.MOVEMENT_AUTHORITY )</PreCondition><PreCondition
+ Guid="0a1244f7-fc1f-4b75-b7ab-0ca339366842"
+>NOT (THERE_IS_IN Kernel.EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="34f6db8a-45cd-4c94-b8e3-83e7ea450181"
@@ -2426,6 +2526,7 @@ Terminal2.IsRegistered</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
+ Implemented="TRUE"
  Name="RequestToShortenMA"
  Guid="f573cc24-d8e7-4a5a-837b-fcfd15701f42"
 >
@@ -2444,10 +2545,16 @@ Terminal2.IsRegistered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d9bcc358-027f-447c-8982-38032c81b0fc"
 >
+</ReqRef><ReqRef
+ Id="ecaefeed-fa89-4186-b8b7-e63999df3603"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7ea53fc6-d681-41e6-9683-e9812a8a9b37"
+>
 </ReqRef><Comment>Handles reception of the request to shorten MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RequestToShortenMA"
  Guid="b3c21ffa-a5dc-4ee9-8a69-18a619d2a108"
@@ -2455,7 +2562,9 @@ Terminal2.IsRegistered</Expression>
 <PreConditions>
 <PreCondition
  Guid="324ed534-7ece-4d2d-83d2-634f8405934d"
->Available ( Message.REQUEST_TO_SHORTEN_MA )</PreCondition></PreConditions>
+>Available ( Message.REQUEST_TO_SHORTEN_MA )</PreCondition><PreCondition
+ Guid="ac3c42b9-2925-4f5d-a63b-8248eade008e"
+>NOT (THERE_IS_IN Kernel.EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -2479,6 +2588,7 @@ Terminal2.IsRegistered</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Mode profile received"
  Guid="a57d89cc-ee5f-47b4-9486-73125c45cc4d"
 >
@@ -2544,6 +2654,118 @@ Terminal2.IsRegistered</Expression>
 <Action
  Guid="80d3a386-cf7c-4ca1-91f3-31d8046462f2"
 >Kernel.SR.SRAuthorisationReceived ( Packet =&gt; Message.SR_AUTHORISATION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="ConditionalEmergencyStop"
+ Guid="6219bab3-329e-48c8-ac3b-43208d1cff15"
+>
+<ReqRef
+ Id="4f290d49-e10d-41ae-a385-d9a756df04d3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9643411f-14d6-4b2c-959f-9fdb865d1d3a"
+>
+</ReqRef><ReqRef
+ Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="463dce3d-0288-4eed-a4c4-19a70f55208e"
+>
+</ReqRef><Comment>Handles reception of a conditional emergency stop message</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Conditional Emergency Stop"
+ Guid="3c618754-ea0f-49ef-8876-9f2dcb57eaeb"
+>
+<PreConditions>
+<PreCondition
+ Guid="7ee563c7-9f56-4ea4-a306-7f427f0e871d"
+>Available ( Message.CONDITIONAL_EMERGENCY_STOP )</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Train has not reached stop location"
+ Guid="a3dde26d-052a-40b9-91b8-f0946f5668e9"
+>
+<ReqRef
+ Id="e0cce2b4-2341-4ff7-8496-f341142799d3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c654505e-1d72-4ca8-a573-c98379db1ce8"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Train has not reached stop location"
+ Guid="906d528d-1a88-4d5d-8ab4-4532dd386338"
+>
+<Comment>If the train has not yet reached the stop location defined in the message, the stop location is the new EOA and SvL</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b45902ce-1ad5-4544-b07a-efd3ce8b7857"
+>Kernel.TrainPosition.FrontEndPosition( PointOfInterest=&gt;DistanceInterval.Min )  &lt; 
+Default.MessageTypes.QScaleDistance(
+    distance =&gt; Message.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP,
+    scale =&gt; Message.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="13e508f8-8fd5-4eab-af3b-ebd073c96e70"
+>Kernel.AddEmergencyStop( aMessage =&gt; Message )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Train has passed stop location"
+ Guid="676caee5-da37-43fb-b10b-cfe4fbb2ac70"
+>
+<PreConditions>
+<PreCondition
+ Guid="d576cf7f-55e9-49ee-8461-75648e378b60"
+>Kernel.TrainPosition.FrontEndPosition( PointOfInterest=&gt;DistanceInterval.Min )  &gt;= 
+Default.MessageTypes.QScaleDistance(
+    distance =&gt; Message.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP,
+    scale =&gt; Message.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="40cd1d56-1167-44a7-a25a-cdddeccd30bd"
+>CurrentTerminal().RBCConnection.SendAcknowledgementOfEmergencyStop(
+    aMessage=&gt;Message,
+    Qualifier =&gt; Messages.Q_EMERGENCYSTOP.Emergency_stop__Conditional_or_Unconditional__rejected__whatever_the_reason
+ )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="UnconditionalEmergencyStop"
+ Guid="d181ba0c-6ecc-4a2b-9f9b-3d3ea2832731"
+>
+<ReqRef
+ Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="85d11b25-dd44-4bb1-b9df-67a55173645e"
+>
+</ReqRef><Comment>Handles reception of an unconditional emergency stop message</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Unconditional Emergency Stop"
+ Guid="2c426004-97a7-4ae6-8fa9-767322005526"
+>
+<PreConditions>
+<PreCondition
+ Guid="2a1175db-f9be-4516-b844-38ee6b37cd28"
+>Available ( Message.UNCONDITIONAL_EMERGENCY_STOP )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="14b50c09-3233-48b7-8e73-bbdeae756ac9"
+>Kernel.AddEmergencyStop( aMessage =&gt; Message )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

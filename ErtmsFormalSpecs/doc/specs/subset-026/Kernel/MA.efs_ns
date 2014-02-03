@@ -625,11 +625,12 @@
 </Collection><Collection
  TypeName="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Default="[EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="EOAsAndSvLsCol"
+ Name="TargetsCol"
  Guid="12ba0846-ca7e-4950-af35-aafe85e10270"
 >
-<Comment>This collection is used to keep the EOAs from different sources so that the most restrictive one can be accessed</Comment>
+<Comment>This collection is used to keep the EOAs and SvLs from different sources so that the most restrictive one can be accessed</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -681,7 +682,12 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dfb1ba4b-b324-4e7f-832b-24466ee392e1"
 >
-</ReqRef><Comment>Gives the target corresponding to the End (or Limit) Of Authority. The distance of the target is obtained by adding lenghts of all the sections of the current MA. If no MA is defined, the distance is infinite to avoid the train to be tripped before receivin an MA.</Comment>
+</ReqRef><ReqRef
+ Id="5fd9abb2-0712-4c70-a573-7668ecb3a103"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4a0368d-a5f1-480b-9340-9e047f9781f2"
+>
+</ReqRef><Comment>Gives the target corresponding to the End (or Limit) Of Authority. This is chosen to be the closest target in the EOAs collection</Comment>
 <Cases>
 <Case
  Name="Returns the closest EOA"
@@ -1014,6 +1020,7 @@ INITIAL_VALUE CreateTarget (
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="EOADefined"
  Guid="29c47ec9-970d-45a3-9828-ffd8555a56b6"
@@ -1307,7 +1314,12 @@ INITIAL_VALUE CreateTarget (
  Name="SvL"
  Guid="fca588eb-ce86-4b0e-9bb9-3862a86d1b7d"
 >
-<Comment></Comment>
+<ReqRef
+ Id="5fd9abb2-0712-4c70-a573-7668ecb3a103"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fdedf1f9-8af6-4087-af89-97d0afc363b3"
+>
+</ReqRef><Comment>Gives the target corresponding to the Supervision Limit. This is chosen to be the closest target in the SvLs collection</Comment>
 <Cases>
 <Case
  Name="Return the closest SvL"
@@ -1609,10 +1621,12 @@ Default.BaseTypes.LengthToDistance(
 </Case></Cases>
 </Function><Function
  Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateTarget"
  Guid="4eae3efb-cf37-40c6-b570-057cfe92f4fb"
 >
+<Comment>Creates a structure of type Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target to be inserted in a collection</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Length"
@@ -1644,10 +1658,12 @@ Default.BaseTypes.LengthToDistance(
 </Case></Cases>
 </Function><Function
  Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ClosestTarget"
  Guid="cafbe57a-b0c3-4040-b9ad-e2a5ef544a40"
 >
-<Comment>Returns the Target with the closest Location</Comment>
+<Comment>Returns the Target, EOA or SvL, with the closest Location</Comment>
 <Parameters>
 <Parameter
  Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
@@ -2818,6 +2834,37 @@ IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
+ Name="Conditional emergency stop"
+ Guid="5d25714b-a191-4a26-ba75-f8972b9f4030"
+>
+<ReqRef
+ Id="4f290d49-e10d-41ae-a385-d9a756df04d3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f2fd6edd-1552-447f-a689-fd596fd3c551"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Conditional emergency stop"
+ Guid="199e8bb6-f70b-4b17-8aa9-6aed934ba089"
+>
+<PreConditions>
+<PreCondition
+ Guid="a7d3e9eb-090c-464f-ad59-e3fdb77f9e29"
+>THERE_IS_IN Kernel.EmergencyStops | ( (X.Reason == Kernel.BrakeReason.OrderFromRBC) AND (X.IsConditional) )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7c64880f-bfc1-476f-a9b1-9983265c63c0"
+>INSERT CreateTarget(
+    aLength=&gt;Default.BaseTypes.Distance.Infinity,
+    aLocation=&gt;Kernel.ClosestStopLocation().StopLocation,
+    aSpeed=&gt;0.0
+)
+IN EOAs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
  Name="Mode profile EOA defined"
  Guid="1b9338c9-b013-49b9-9a10-c9bbbc7e933f"
 >
@@ -3067,11 +3114,11 @@ IN SvLs</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="dc70bb5c-8f5e-4284-8073-ab38322d16d0"
->MA.EndSection.DangerPoint != EMPTY</PreCondition><PreCondition
+>Kernel.MA.MA.EndSection.DangerPoint != EMPTY</PreCondition><PreCondition
  Guid="262a6363-57ea-4522-99e7-96d5519e8ab9"
->MA.TargetSpeed == 0.0</PreCondition><PreCondition
+>Kernel.MA.MA.TargetSpeed == 0.0</PreCondition><PreCondition
  Guid="ae7d6bee-201a-437a-98be-2b8c4fe2bdf7"
->MA.EndSection.Overlap == EMPTY</PreCondition></PreConditions>
+>Kernel.MA.MA.EndSection.Overlap == EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="34b23ee0-eb06-43b4-834f-1245e46fcd95"
@@ -3248,18 +3295,22 @@ IN SvLs</Action></Actions>
 >
 </ReqRef><Comment>Allows to verify if the MA was shortened (possibly regardless of SvL location).</Comment>
 </Variable><Variable
- Type="Kernel.MA.EOAsAndSvLsCol"
+ Type="Kernel.MA.TargetsCol"
  VariableMode="Internal"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SvLs"
  Guid="a971b150-ed0b-461c-910c-3339b1170397"
 >
+<Comment>This is a collection holding all the locations designated as supervision limit according to different external inputs</Comment>
 </Variable><Variable
- Type="Kernel.MA.EOAsAndSvLsCol"
+ Type="Kernel.MA.TargetsCol"
  VariableMode="Internal"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="EOAs"
  Guid="f864823e-e761-4bb2-86c4-e7f5a9e70182"
 >
+<Comment>This variable is a collection holding all the locations designated as end of authority, along with the speed limit and distance of the EOA</Comment>
 </Variable></Variables>
 </NameSpace>
