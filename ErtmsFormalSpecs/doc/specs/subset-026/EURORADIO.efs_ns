@@ -2351,13 +2351,18 @@ It can only return false if there is no open session or if the last known RBC ha
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
- Name="HandleTracksideOrderedSession"
+ Name="TracksideOrderedSessionReceived"
  Guid="aa947d6d-5ed0-4cb9-9175-d6bbf385946c"
 >
 <ReqRef
  Id="af0db000-6b09-4a25-b01b-439fa27cbc6a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2dc771ca-4061-4cb2-adb7-816a3d7b329e"
+>
+</ReqRef><ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1b0f107-721b-4cd0-8df4-da9d7387b4bf"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -2633,6 +2638,40 @@ It can only return false if there is no open session or if the last known RBC ha
 )</Action></Actions>
 <SubRules>
 <Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Session management received"
+ Guid="8ad12600-a556-4799-9fac-e2046bd24f25"
+>
+<ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="60138c61-9928-4a2e-8baa-0f31947c0fea"
+>
+</ReqRef><ReqRef
+ Id="ff45f18e-7a7b-412e-8847-569b6605d632"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8313af48-55a8-4bd6-88c6-a7b6c2534cc5"
+>
+</ReqRef><Comment>Handles reception of session management received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Session management received"
+ Guid="6abe06d6-af4e-4e14-890c-086b61321719"
+>
+<PreConditions>
+<PreCondition
+ Guid="35f50585-8b45-4d82-b3a2-42514806c6aa"
+>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7b01bf6b-5aaa-4c43-9da2-5e2212b1886c"
+>TracksideOrderedSessionReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )).SESSION_MANAGEMENT )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
  Name="Report parameters received"
@@ -3111,6 +3150,40 @@ Default.MessageTypes.QScaleDistance(
  Guid="176f516e-fef3-4f21-b17f-0556e8216f5d"
 >Kernel.LevelTransition.LTOReceived ( Packet =&gt;  ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.LEVEL_TRANSITION_ORDER ) ).LEVEL_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Session management received"
+ Guid="617c0d85-e001-4ba2-9a2e-7ed40b53d7d6"
+>
+<ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1a78d9c-b705-485a-827e-46159c8a4b78"
+>
+</ReqRef><ReqRef
+ Id="ff45f18e-7a7b-412e-8847-569b6605d632"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1f2a0132-4a38-4a8a-9ee9-47bc7b5a6e6f"
+>
+</ReqRef><Comment>Handles reception of session management received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Session management received"
+ Guid="1535de84-4fd0-4408-a56b-3b0d008655c4"
+>
+<PreConditions>
+<PreCondition
+ Guid="baf54c0d-8b2c-45d1-9b37-f44d09c72b31"
+>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="864aed8d-656b-44ab-97d1-b019cba9aeef"
+>TracksideOrderedSessionReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )).SESSION_MANAGEMENT )</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -3314,6 +3387,40 @@ Default.MessageTypes.QScaleDistance(
 <Action
  Guid="249aeb3c-974b-4193-96c5-9a76aafc8946"
 >Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Session management received"
+ Guid="06578948-29db-4a5a-9791-be18d6e3069e"
+>
+<ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4ad0147f-15d4-4238-8de0-2ececa983061"
+>
+</ReqRef><ReqRef
+ Id="ff45f18e-7a7b-412e-8847-569b6605d632"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="95d9a572-5238-4503-a82c-fe8c0775545b"
+>
+</ReqRef><Comment>Handles reception of session management received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Session management received"
+ Guid="705b0473-0854-424b-b540-bd89e9a8fd20"
+>
+<PreConditions>
+<PreCondition
+ Guid="64594881-f511-44f7-b03e-67a2c19c357e"
+>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7a4b291e-cb8d-40bf-9dc9-423cd269c364"
+>TracksideOrderedSessionReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )).SESSION_MANAGEMENT )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
