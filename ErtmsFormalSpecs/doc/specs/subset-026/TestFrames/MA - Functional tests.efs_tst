@@ -5853,8 +5853,8 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Action
  Guid="4c912b40-1523-49e4-a339-08c133455673"
 >EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Valid</Action><Action
- Guid="b8eb1534-0bdd-4f62-a585-d0a02da684c8"
->EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Initialized</Action></Actions>
+ Guid="4c6151e4-0106-4034-986a-254e1924c189"
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5876,57 +5876,36 @@ IN BTM.Linking.Linkings</Action></Actions>
 >EURORADIO.CurrentRBCConnection().SendMARequest(
     aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver
 )</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step 4 - Expectations"
- Guid="f9dc5107-3970-413c-aee9-cde06ec168a9"
->
-<SubSteps>
-<SubStep
- Name="SubStep 1 - The train has a message set to send"
- Guid="90d6db41-81f1-4383-bf80-df1aa30a90a4"
->
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="3b766a06-4f7d-4462-a970-07045d2ba244"
->EURORADIO.CurrentRBCConnection().MessageOut != EMPTY</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step 2 - Message details"
- Guid="60b8103a-191c-45c7-99e3-e145cec35351"
->
-<Expectations>
-<Expectation
+>EURORADIO.CurrentRBCConnection().MessageOut != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4149893a-6351-41a0-9bf9-f1f737d78b91"
 >EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="2b56be16-3cb7-4946-a224-fac53d83a67a"
->EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation><Expectation
+ Guid="f232b4f0-4899-4e20-aa36-f28cbb6b8c4b"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.NID_ENGINE == Kernel.NidEngine</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4cb9adce-aa87-498b-8366-3994e9488c7f"
 >EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.NID_MESSAGE == 132</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="f232b4f0-4899-4e20-aa36-f28cbb6b8c4b"
->EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.NID_ENGINE == Kernel.NidEngine</Expectation><Expectation
+ Guid="43426094-8e48-43f5-b3b1-ef8fb940aeb4"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.POSITION_REPORT != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2b56be16-3cb7-4946-a224-fac53d83a67a"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5a2849a0-250c-471c-9187-734b08739f3f"
->EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.T_TRAIN == Default.MessageTypes.Time(Kernel.CurrentTime)</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="43426094-8e48-43f5-b3b1-ef8fb940aeb4"
->EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.POSITION_REPORT != EMPTY</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.T_TRAIN == Default.MessageTypes.Time(Kernel.CurrentTime)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -5955,7 +5934,7 @@ IN BTM.Linking.Linkings</Action></Actions>
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step 1 - Initialize things"
+ Name="Step 1 - Setup"
  Guid="29fa2b84-436b-4e9e-9b43-9f6dffbe6c3b"
 >
 <SubSteps>
@@ -6090,7 +6069,7 @@ IN BTM.Linking.Linkings</Action></Actions>
      ]
  }</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Passe the second balise"
+ Name="Sub-step 2 - Pass the second balise"
  Guid="062390ab-d0a0-4fcf-84bf-0efa9a64da16"
 >
 <Actions>
@@ -6117,7 +6096,34 @@ IN BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="571bac97-0c29-4584-92fd-6c53b1053466"
->Kernel.MA.MA.EndSection.DangerPoint.Distance == 3800.0</Expectation></Expectations>
+>(Kernel.MA.MA.EndSection.Length + Kernel.MA.MA.EndSection.DangerPoint.Distance) == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2073bc76-a3e8-458b-92da-3b2c7024bd4c"
+>Kernel.MA.SvL().Location == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="42cf24b6-9eaf-4903-a24a-02d3a32f8d27"
+>Kernel.MA.ShorteningHandler.Location == 12345.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0d7fb8d8-cf67-4f2b-bdc7-663934d8286f"
+>Kernel.MA.ShorteningHandler.IsSvL == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 3 - Expectations"
+ Guid="7a8b690c-234f-473a-a98a-f5d9df40a254"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Considered as MA shortening"
+ Guid="d17960e6-19d6-4b80-afe7-331299cfad00"
+>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
