@@ -1067,7 +1067,9 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
  Guid="13984cfa-f744-469f-ab79-5063a2f58711"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="efc41a15-575b-4c33-9d93-c2ad1a51a905"
+>LastRequestTime + TimeBeforeMessageRepetition &lt; Kernel.CurrentTime</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1110,9 +1112,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 <PreConditions>
 <PreCondition
  Guid="5f21704f-fd79-4d25-ac8d-54f9ec46d7e7"
->NumberOfSentRequests &lt; NumberOfMessageRepetitions</PreCondition><PreCondition
- Guid="efc41a15-575b-4c33-9d93-c2ad1a51a905"
->LastRequestTime &lt; Kernel.CurrentTime + TimeBeforeMessageRepetition</PreCondition></PreConditions>
+>NumberOfSentRequests &lt; NumberOfMessageRepetitions</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6c9db820-9596-4dc3-b487-9fb6e343bc2b"
@@ -1121,16 +1121,14 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 >SessionManagementData.RequestSent &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Maximum number of requests reached"
+ Name="Maximum number of requests sent"
  Guid="301af69a-abcb-4f58-bb23-313539119ff7"
 >
 <Comment>If the request has to be repeated but the maximum number of requests is already reached, RBC declares that the setup has failed and goes to inactive state.</Comment>
 <PreConditions>
 <PreCondition
  Guid="4932a3e3-358f-4a69-b034-4dadf129cf89"
->NumberOfSentRequests== NumberOfMessageRepetitions</PreCondition><PreCondition
- Guid="5b519869-182e-4cf3-a71c-289c5d5b7bda"
->LastRequestTime &lt; Kernel.CurrentTime + TimeBeforeMessageRepetition</PreCondition></PreConditions>
+>NumberOfSentRequests== NumberOfMessageRepetitions</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="947cdfdd-e42c-4684-9dd1-65abb983fad5"
@@ -1186,6 +1184,35 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
  Guid="978de328-21de-467f-af05-cca4f3410a75"
 >SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Order to terminate the communication session is received"
+ Guid="63704436-5af4-444f-a8e6-6349d2dee385"
+>
+<Comment>If an order to terminate the communication session is received in connecting state, the establishing of the communication session is aborted.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Order to terminate the communication session is received"
+ Guid="a42b1225-8802-4fe3-9b3b-1148d9802095"
+>
+<PreConditions>
+<PreCondition
+ Guid="c94000a1-d7dc-4cd3-becf-159031484f3a"
+>ContactRBCOrder != EMPTY
+  AND
+ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="005fe0c4-14fe-4ed1-8754-5011041d3708"
+>THIS &lt;- Inactive</Action><Action
+ Guid="11826692-aff7-4c8a-8411-5a0c1d254194"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action><Action
+ Guid="4566df66-8602-481b-8e43-9d6cee572241"
+>ReinitializeCommunicationInformation()</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
  Name="Connected"
@@ -1213,6 +1240,16 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="cd739b37-15fd-4303-9f0b-a1dbca0c6555"
 >
+</ReqRef><ReqRef
+ Id="e0a2f873-6bb3-4327-abdc-4444932d69aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eb974e02-f7d4-476e-8b0f-f169719b35a4"
+>
+</ReqRef><ReqRef
+ Id="dc7b33b5-d923-42f3-be12-580edb475353"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ed4afeb4-ab44-419a-ac37-d7bf139bcba3"
+>
 </ReqRef><Comment>When a connection to the RBC is established and a request to terminate the communication session is sent, on-board sends the Termination of communication session message to the RBC and goes to Terminating state.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1231,7 +1268,11 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Guid="5ab8eb84-a856-41fe-81be-92cc80d83d99"
 >SendTerminationOfCommunicationSession()</Action><Action
  Guid="37faeac1-ef2c-41c8-ab97-8497c4cfcec4"
->THIS &lt;- Terminating</Action></Actions>
+>THIS &lt;- Terminating</Action><Action
+ Guid="1a1a20cb-a8df-46b4-acc5-16faf2b26075"
+>LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+ Guid="ef59530a-188c-48af-86c4-658498732214"
+>NumberOfSentRequests &lt;- 0</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1247,7 +1288,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Acknowledgement of terminaction of the communication session received"
+ Name="Handle termination of the communication session"
  Guid="0b222548-b9a6-47d8-8a8c-8f261e6eb180"
 >
 <ReqRef
@@ -1267,7 +1308,7 @@ The information related to the current communication session is reinitialized.</
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Acknowledgement of terminaction of the communication session received"
+ Name="Acknowledgement of termination of the communication session received"
  Guid="cc43a2d6-cf19-4c54-b780-87cc183105b5"
 >
 <PreConditions>
@@ -1284,6 +1325,74 @@ The information related to the current communication session is reinitialized.</
 >SessionManagementData.Action &lt;- ContactActionEnum.Terminate</Action><Action
  Guid="647ebe75-16e6-45fe-b548-651236617b73"
 >SessionManagementData.RequestSent &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Repeat Termination of Communication Session message"
+ Guid="87eca200-42d6-473a-8745-c19edc24eb83"
+>
+<PreConditions>
+<PreCondition
+ Guid="ebbbdd28-776f-4041-a17e-a784bdf6b436"
+>LastRequestTime + TimeBeforeMessageRepetition &lt; Kernel.CurrentTime</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Repeat Termination of Communication Session message"
+ Guid="74dff78e-a344-4a11-93c2-e698be2bc6fc"
+>
+<Comment>If no acknowledgement is received from the trackside, the on-board will repeat the Termination of Communication Session request.
+
+Aftter a defined number of repetitions, if no acknowledgement is received from the trackside, the on-board considers the communication session as terminated.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send new request"
+ Guid="b3a909c4-5069-4860-8ce2-fd7cf6766e91"
+>
+<ReqRef
+ Id="dc7b33b5-d923-42f3-be12-580edb475353"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="13e5d684-7a46-4916-9f4f-f63351acf2f0"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="d39bee63-0912-4fd7-8aa4-ceebf64406ef"
+>NumberOfSentRequests &lt; NumberOfMessageRepetitions</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8c94cd62-33d6-44a8-a726-b48c5e0f1d88"
+>LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+ Guid="23e6bfe2-b29f-4f51-a757-32c619717618"
+>SendTerminationOfCommunicationSession()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Maximum number of requests sent"
+ Guid="a41352cb-2ce8-49ed-84f9-0c2762b9f3e3"
+>
+<ReqRef
+ Id="e0a2f873-6bb3-4327-abdc-4444932d69aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="23154fa5-ffb1-4040-b127-be2ffd711f99"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="5616a12c-8a52-4abf-8880-c4a24d75d94e"
+>NumberOfSentRequests== NumberOfMessageRepetitions</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ca565153-dca3-42f4-a94e-b62cfede617a"
+>THIS &lt;- Inactive</Action><Action
+ Guid="eb00bc7c-9434-485a-a33c-1463adc14358"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action><Action
+ Guid="f3f8fa5b-bb54-459b-836d-86a309a18c16"
+>ReinitializeCommunicationInformation()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -3699,6 +3808,7 @@ Default.MessageTypes.QScaleDistance(
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  Name="HandleEuroradioMessage"
  Guid="89a51dbf-4fc4-4d63-ba49-4fbbe790cd0b"
 >
@@ -3718,6 +3828,7 @@ Default.MessageTypes.QScaleDistance(
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Verify connection state"
  Guid="793eda9e-a531-433c-94ef-be464ca63d25"
 >
@@ -3734,6 +3845,7 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Verify connection state"
  Guid="349a4108-82e2-4fc6-933a-e986b67dae1b"
 >
@@ -3766,6 +3878,7 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Acknowledgement of termination of a communication session"
  Guid="313b2e1d-ce81-4e1e-bf2a-6f185ff186e5"
 >
