@@ -2282,6 +2282,16 @@ TIU.NonLeadingPermitted</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="98812f85-bb70-4896-b33c-c84d4f13c444"
 >
+</ReqRef><ReqRef
+ Id="a4fadb0e-8c80-4803-99f0-ceff7d136e72"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="290216d6-000d-4b0a-a6be-aa15846dc13e"
+>
+</ReqRef><ReqRef
+ Id="865bbdd6-2010-4869-ab3e-bc538ce5fe4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9222388e-fdf5-45f2-b290-28f029cea192"
+>
 </ReqRef><Comment></Comment>
 <PreConditions>
 <PreCondition
@@ -2290,7 +2300,9 @@ TIU.NonLeadingPermitted</Expression>
 <Actions>
 <Action
  Guid="ee94747a-9874-4e1b-b90d-a6cd463f4bb5"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Kernel.Mode &lt;- Mode.SB</Action><Action
+ Guid="c1fa9ed0-f8e5-4c64-9aae-544df9ed2468"
+>EURORADIO.RegisterMobileTerminals ( EURORADIO.LastKnownNetworkId )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition

@@ -2633,37 +2633,109 @@ It can only return false if there is no open session or if the last known RBC ha
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  Name="RegisterMobileTerminals"
  Guid="51a30ec7-ce1f-46f1-a57c-72cb7965af62"
 >
-<Comment>Registers the mobile terminals to a radio network.</Comment>
+<ReqRef
+ Id="0d0678a7-632a-4a9e-9a4a-87d46d1383b1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="98d92943-9b78-430b-a271-7935c2cb0a2f"
+>
+</ReqRef><ReqRef
+ Id="865bbdd6-2010-4869-ab3e-bc538ce5fe4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="384307ff-cbf9-4473-b59e-a03b4fa28aa9"
+>
+</ReqRef><Comment>Registers the mobile terminals to a radio network.</Comment>
+<Parameters>
+<Parameter
+ Type="String"
+ Name="aNetworkId"
+ Guid="06100028-08c1-4f2b-9385-ab9e1edc17bc"
+>
+</Parameter></Parameters>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Register mobile terminals"
  Guid="86956c33-030e-4d1f-8f75-ab22dffbfcdd"
 >
-<Comment>TODO: implement it correctly</Comment>
+<Comment>If the provided id is valid or the last known nework id is valid, then the mobile terminals are registered.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Register mobile terminals"
+ Implemented="TRUE"
+ Name="Provided id is valid"
  Guid="615728d0-acd8-40e3-94ea-aebf1f7bfc01"
 >
+<Comment>If the provided id is valid, it is used to register the terminals.</Comment>
 <PreConditions>
 <PreCondition
  Guid="e65e63b1-fd62-4950-b031-05d1d1109e1c"
->LastKnownNetworkId != &apos;&apos;</PreCondition></PreConditions>
+>aNetworkId != &apos;&apos;</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="78ee6641-812f-4c2a-afbe-b0e4ada5e038"
->Terminal1.NetworkId &lt;- LastKnownNetworkId</Action><Action
+>Terminal1.NetworkId &lt;- aNetworkId</Action><Action
  Guid="7e15aeae-1d77-4d69-b5b6-eb9e447e9574"
->Terminal2.NetworkId &lt;- LastKnownNetworkId</Action><Action
+>Terminal2.NetworkId &lt;- aNetworkId</Action><Action
  Guid="c6f1daed-dbca-4284-aa54-e5ac33091cd8"
 >Terminal1.IsRegistered &lt;- True</Action><Action
  Guid="388ad4df-54c2-4018-b273-2df2b20e73c2"
 >Terminal2.IsRegistered &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Otherwise, use the default Radio Network id"
+ Guid="c02b6e39-340c-4bf8-a4fd-910b6087bc05"
+>
+<ReqRef
+ Id="5e068e1e-2be5-45b6-b9eb-d1151df93748"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9092e686-fa55-4fa2-93f9-8086146ec060"
+>
+</ReqRef><Comment>Otherwise the default Radio Network id is used.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="301efa69-de1e-4a8d-a59f-c0c7afcbe928"
+>DefaultRadioNetworkId != &apos;&apos;</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="25c3fc69-9b60-4bb1-a2d1-b74d2cd381a9"
+>Terminal1.NetworkId &lt;- DefaultRadioNetworkId</Action><Action
+ Guid="f0f8c48f-c368-4d6f-a81c-0925a124f02b"
+>Terminal2.NetworkId &lt;- DefaultRadioNetworkId</Action><Action
+ Guid="e3be1ede-90b1-4290-b919-3187a1668b3c"
+>Terminal1.IsRegistered &lt;- True</Action><Action
+ Guid="bfda7ae5-0601-4e02-9f74-ce16bf82c901"
+>Terminal2.IsRegistered &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update last known network id"
+ Guid="bfb78b5e-119a-4e09-af0e-35138fc12848"
+>
+<ReqRef
+ Id="9bf96521-7fd6-4183-ab61-1276d48d3996"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6901fdd4-16ee-4f98-bee3-2fea0d726482"
+>
+</ReqRef><Comment>The received network id is memorized in order to be able to use it when the on-board equipment is powered-on.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update last known network id"
+ Guid="908aae06-faac-4683-acfa-a0943eeb9c8f"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e1e7e813-961e-4771-8bdc-7606677f8c40"
+>EURORADIO.LastKnownNetworkId &lt;- aNetworkId</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4027,5 +4099,24 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Guid="81db5f5d-dec8-43d9-9546-57479127847f"
 >
 <Comment>Indicates how the RBC has to be contacted.</Comment>
+</Variable><Variable
+ Type="String"
+ DefaultValue="&apos;&apos;"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="DefaultRadioNetworkId"
+ Guid="2899d0b5-6c7a-4333-b3c0-d5226c93ec7e"
+>
+<ReqRef
+ Id="5e068e1e-2be5-45b6-b9eb-d1151df93748"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8b46767d-0979-4a7a-9437-5ca9d5f363ac"
+>
+</ReqRef><ReqRef
+ Id="5e068e1e-2be5-45b6-b9eb-d1151df93748"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aa7dc0c0-dce3-4fb0-9217-e463d4e2fc72"
+>
+</ReqRef><Comment>Gives the values of the default radio network, to be used when no Radio Network identity was received from trackside or from driver.</Comment>
 </Variable></Variables>
 </NameSpace>
