@@ -72,7 +72,7 @@
 <Actions>
 <Action
  Guid="c775fd1f-50f5-4b00-a2e6-dd4430de2f30"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -334,7 +334,7 @@
 <Actions>
 <Action
  Guid="30196bf2-8e59-4d75-96a6-a9e4f4add9f6"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -659,7 +659,7 @@
 <Actions>
 <Action
  Guid="a7e0273b-f9d3-4439-93ee-cfe19c713768"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -905,7 +905,7 @@
 <Actions>
 <Action
  Guid="fc32d9c8-f8d1-46e6-b902-58ea286b51a0"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1308,7 +1308,7 @@
 <Actions>
 <Action
  Guid="7025c03c-594a-4a68-9089-ed15fb7c1721"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1670,7 +1670,7 @@
 <Actions>
 <Action
  Guid="4c640555-2e59-4098-a650-bd431e0f102c"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1922,7 +1922,7 @@
 <Actions>
 <Action
  Guid="8e3f718f-9542-4d0d-b444-9f9ff5abc1e5"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2096,7 +2096,7 @@
 <Actions>
 <Action
  Guid="d2e9c961-b4ec-4961-9d9b-792c7ef57205"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2251,7 +2251,7 @@
 <Actions>
 <Action
  Guid="865d7d8c-ef57-43e4-bbb1-af19291b23cb"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2678,7 +2678,7 @@
 <Actions>
 <Action
  Guid="2ad58fa5-bd11-4941-af8d-fe25fe48ff01"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2970,7 +2970,7 @@
 <Actions>
 <Action
  Guid="881401de-e9c9-4a2d-a021-44857c77c981"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3139,7 +3139,7 @@ BTM.Linking.Linkings</Action></Actions>
 <Comment>This step is for testing that the OBU receives the packets. It has all the necessary for it. The linking information, the correct mode LS or FS and a BTM.Message with the packets. </Comment>
 <SubSteps>
 <SubStep
- Name="SubStep1"
+ Name="SubStep1 - First balise of unlinked balise group received"
  Guid="d6ea842e-1a02-42b6-88aa-c2a9c2fb9c8b"
 >
 <Actions>
@@ -3153,7 +3153,7 @@ BTM.Linking.Linkings</Action></Actions>
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -3209,32 +3209,53 @@ BTM.Linking.Linkings</Action></Actions>
                 }
             }
          }
-                ]
+     ]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Second balise of unlinked balise group received"
+ Guid="2a38b278-ee53-4e8a-9c28-9deda843b106"
+>
+<Actions>
+<Action
+ Guid="f458e242-65e0-437f-8933-522b62cf3b5f"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;[]
 }</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="6551ed0e-58bc-4397-a3e1-21fb3067e840"
->Kernel.Infill.Data.NID_BG == 2126</Expectation><Expectation
+ Guid="0395614f-47fc-4fc4-a480-6a6159274687"
+>Kernel.Infill.Data != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="0395614f-47fc-4fc4-a480-6a6159274687"
->Kernel.Infill.Data != EMPTY</Expectation></Expectations>
+ Guid="6551ed0e-58bc-4397-a3e1-21fb3067e840"
+>Kernel.Infill.Data.NID_BG == 2126</Expectation></Expectations>
 </SubStep><SubStep
- Name="Sub-step2"
- Guid="2a38b278-ee53-4e8a-9c28-9deda843b106"
+ Name="Sub-step3 - check expectations"
+ Guid="b7741d85-c780-4dda-881a-dea6cacc1674"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="efec0446-b053-4541-a171-93284d0a9376"
->Kernel.Mode == Default.Mode.FS</Expectation><Expectation
+ Guid="d89c64f2-34b1-4bb2-ad8f-5bdb2e4fe16e"
+>Kernel.MA.MA.EndSection.Length == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="d89c64f2-34b1-4bb2-ad8f-5bdb2e4fe16e"
->Kernel.MA.MA.EndSection.Length == 1000.0</Expectation></Expectations>
+ Guid="efec0446-b053-4541-a171-93284d0a9376"
+>Kernel.Mode == Default.Mode.FS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3249,7 +3270,7 @@ BTM.Linking.Linkings</Action></Actions>
 <Comment>Same as step 4 but for LS. The train is tripped otherwise kernel changes the mode to FS (condition 32 of Table 4.6)</Comment>
 <SubSteps>
 <SubStep
- Name="SubStep1"
+ Name="SubStep1 - First balise of unlinked balise group received"
  Guid="74dc0345-070d-442a-8fac-0c9969ff688a"
 >
 <Actions>
@@ -3265,7 +3286,7 @@ BTM.Linking.Linkings</Action></Actions>
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -3321,11 +3342,32 @@ BTM.Linking.Linkings</Action></Actions>
                 }
             }
          }
-                ]
+     ]
 }</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2"
+ Name="Sub-step2 - Second balise of unlinked balise group received"
  Guid="bfe8d52b-3338-4dc6-812f-1e6551e3ebf2"
+>
+<Actions>
+<Action
+ Guid="4e31be74-040c-42b3-992d-e01fe3320239"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;[]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3 - Check expectations"
+ Guid="f0a3b119-7ea8-4814-94e1-7a2bbd2c7c26"
 >
 <Expectations>
 <Expectation
@@ -3482,7 +3524,7 @@ BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="e8a97b53-9886-44f8-bd50-8b25490d96ca"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3623,7 +3665,7 @@ BTM.Linking.Linkings</Action></Actions>
 >
 <SubSteps>
 <SubStep
- Name="SubStep1 - Send"
+ Name="SubStep1 - First balise of unlinked balise group received"
  Guid="cc9a226a-c591-47e1-bc79-dcded8e1a3e4"
 >
 <Actions>
@@ -3635,7 +3677,7 @@ BTM.Linking.Linkings</Action></Actions>
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -3706,7 +3748,7 @@ BTM.Linking.Linkings</Action></Actions>
                 }
             }
          }
-                ]
+     ]
 }</Action><Action
  Guid="1401f724-b035-4266-a62f-3e54da5dd95f"
 >INSERT
@@ -3722,9 +3764,26 @@ Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction
 IN
 BTM.Linking.Linkings</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2"
+ Name="Sub-step2 - Second balise of unlinked balise group received"
  Guid="93553a3d-6ce6-4257-9b92-1c29508a34a7"
 >
+<Actions>
+<Action
+ Guid="3889b9f3-aea2-43b1-8290-35c542fc3cb1"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;[]
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3811,7 +3870,7 @@ BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="5189c256-08aa-44a2-9344-1999cc5e8277"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3952,7 +4011,7 @@ BTM.Linking.Linkings</Action></Actions>
 >
 <SubSteps>
 <SubStep
- Name="SubStep1 - Send"
+ Name="SubStep1 - First balise of unlinked balise group received"
  Guid="c6a7b690-c2ff-451c-b9de-ce1918329055"
 >
 <Actions>
@@ -3964,7 +4023,7 @@ BTM.Linking.Linkings</Action></Actions>
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Loop,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -4035,7 +4094,7 @@ BTM.Linking.Linkings</Action></Actions>
                 }
             }
          }
-                ]
+     ]
 }</Action><Action
  Guid="f87b8f80-0be6-4934-af75-bc604a568546"
 >INSERT
@@ -4051,9 +4110,26 @@ Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction
 IN
 BTM.Linking.Linkings</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2"
+ Name="Sub-step2 - Second balise of unlinked balise group received"
  Guid="4805facc-c965-471c-8ce0-c47a025e04fe"
 >
+<Actions>
+<Action
+ Guid="e5c9ff23-5e64-41d9-afa6-1c6b930bd5d8"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Loop,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;[]
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4155,7 +4231,7 @@ BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="d0ec3b6e-eab7-4c7d-9507-e8c07090a34f"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4650,7 +4726,7 @@ BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="ff795c92-bec8-49aa-93b1-7e989a2dc607"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5142,7 +5218,7 @@ BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="3a289672-5f51-4d70-b3c9-dac48c0c64cf"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
