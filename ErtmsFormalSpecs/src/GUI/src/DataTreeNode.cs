@@ -522,11 +522,6 @@ namespace GUI
         {
             get
             {
-                if (Model != null && Model.Name != null && Model.Name == "BaliseGroupIdentifier")
-                {
-                    System.Diagnostics.Debugger.Break();
-                }
-
                 return System.Drawing.Color.Black;
             }
         }
@@ -1203,11 +1198,6 @@ namespace GUI
             get
             {
                 System.Drawing.Color retVal = base.ComputedColor;
-
-                if (Item != null && Item.Name != null && Item.Name == "BaliseGroupIdentifier")
-                {
-                    System.Diagnostics.Debugger.Break();
-                }
 
                 if (Item != null)
                 {
