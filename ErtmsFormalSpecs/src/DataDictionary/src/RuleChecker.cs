@@ -271,7 +271,7 @@ namespace DataDictionary
                 {
                     element.AddError("Type of default value (" + element.DefaultValue.Type.FullName + ") does not match element type (" + element.Type.FullName + ")");
                 }
-            }                
+            }
 
             base.visit(obj, visitSubNodes);
         }
@@ -316,7 +316,7 @@ namespace DataDictionary
                     {
                         variable.AddError("Type of default value (" + variable.DefaultValue.Type.FullName + ")does not match variable type (" + variable.Type.FullName + ")");
                     }
-                }                
+                }
             }
 
             base.visit(obj, visitSubNodes);
@@ -726,6 +726,15 @@ namespace DataDictionary
                     else
                     {
                         declaredTypes[type.Name] = type;
+                    }
+
+                    Types.Collection collection = type as Types.Collection;
+                    if (collection != null)
+                    {
+                        if (collection.getMaxSize() == 0)
+                        {
+                            type.AddError("Collections should be upper bounded");
+                        }
                     }
                 }
 
