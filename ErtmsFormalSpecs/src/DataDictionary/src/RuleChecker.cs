@@ -395,6 +395,24 @@ namespace DataDictionary
                 }
             }
 
+            reqRelated = init;
+            if (!reqRelated.getImplemented())
+            {
+                ModelElement parent = reqRelated.getFather() as ModelElement;
+                while (parent != null)
+                {
+                    ReqRelated other = parent as ReqRelated;
+                    if (other != null)
+                    {
+                        if (other.getImplemented())
+                        {
+                            other.AddWarning("This element is set as implemented whereas one of its children " + reqRelated.FullName + " is not");
+                        }
+                    }
+                    parent = parent.getFather() as ModelElement;
+                }
+            }
+
             base.visit(obj, visitSubNodes);
         }
 
