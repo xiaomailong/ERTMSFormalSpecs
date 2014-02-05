@@ -2473,74 +2473,6 @@ SvL() != EMPTY</PreCondition></PreConditions>
  Guid="e5e2fcba-251a-4e6f-9ae2-515d5363a592"
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Test MA shortening"
- Guid="a4085e77-2d23-4df8-a431-929002d2d81d"
->
-<ReqRef
- Id="426e405f-a69a-4fd6-b4cb-f0b3e7808f5e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f3965b8f-6b5b-4578-9390-b54af6cbcd07"
->
-</ReqRef><ReqRef
- Id="21484fd2-8698-4d7f-8846-76057374f929"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="48b155d6-3d58-4804-a7f2-fa5fcbd3734b"
->
-</ReqRef><Comment>In case the previous End of Authority was an SvL and the new SvL is shorted, this is an MA shortening.
-
-In case the previous End of Authority was an LOA and the new SvL is shorter, this is an MA shortening regardless of the SvL location.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="TestMaShorteningRegardlessOfSvL"
- Guid="9c1d12a4-2b56-4aa9-bb9f-13a89fc69710"
->
-<ReqRef
- Id="0c39084a-19e8-4784-962f-8dd4ba8a2aee"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e4c947ea-8a75-4b7a-b13a-3cb73f946691"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="7935e2a9-c820-4da5-95ba-536fc1e4ab00"
->ShorteningHandler != EMPTY
-  AND
-NOT ShorteningHandler.IsSvL
-  AND
-SvL() != EMPTY</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="8e3480a6-37c8-4922-8d3b-cd9c3de22266"
->HandlingOfAcceptedAndStoredInformation.ShortenedMaReceivedRegardlessOfSvL &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="TestMaShortening"
- Guid="2c2706e0-5709-48cc-a203-550baff2d24b"
->
-<ReqRef
- Id="d8e470e4-30ad-41be-8c8d-9828fc218d73"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="06c418ed-0e07-48e0-affa-80d4813cc07d"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="51e00945-5c52-4bd2-9d37-0446face1f21"
->ShorteningHandler != EMPTY
-  AND
-ShorteningHandler.IsSvL
-  AND
-SvL() != EMPTY
-  AND
-SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="b1a699f9-d531-489f-bfd1-e8d7484a990f"
->HandlingOfAcceptedAndStoredInformation.ShortenedMaReceived &lt;- True</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
@@ -2766,7 +2698,7 @@ IN
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
- Name="MakeEOAs"
+ Name="HandleEOAs"
  Guid="079a7605-b119-4881-8fe0-ab1a2a44fac6"
 >
 <ReqRef
@@ -2820,15 +2752,18 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d8ea6e27-8361-4ad4-8c5c-1e1fc592f8fb"
 >
-</ReqRef><Rules>
+</ReqRef><Comment>Puts all the EOAs from different sources in a collection of EOAs so that the closest one can be accessed by EndOfMovementAuthority()</Comment>
+<Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Wipe the old EOAs"
  Guid="d1dfb0e0-0c44-4739-ad7b-cfd327d528fc"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Wipe the old EOAs"
  Guid="d4f6b293-937a-4acd-9eb8-fbd667b53bae"
 >
@@ -2858,6 +2793,7 @@ IN
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Route suitability EOA defined"
  Guid="4d1b9a4b-cb43-4a54-8481-19d72ed594c0"
 >
@@ -2885,6 +2821,7 @@ IN EOAs</Action></Actions>
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Conditional emergency stop"
  Guid="199e8bb6-f70b-4b17-8aa9-6aed934ba089"
 >
@@ -2904,12 +2841,14 @@ IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Mode profile EOA defined"
  Guid="1b9338c9-b013-49b9-9a10-c9bbbc7e933f"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Mode profile EOA defined"
  Guid="9061e2de-2c3c-4489-9a09-85374fcdb717"
 >
@@ -2933,6 +2872,7 @@ IN EOAs</Action></Actions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Sections are defined in the MA"
  Guid="53902d05-920e-4e51-85a9-88455db09318"
 >
@@ -2955,12 +2895,14 @@ IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="No sections are defined in the MA"
  Guid="7777f16f-e92e-4374-9647-86584bd158e1"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="No sections are defined in the MA"
  Guid="4cc58661-4b9d-4c01-8b53-b6546fa5a4f7"
 >
@@ -2982,12 +2924,14 @@ IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="No EOA received"
  Guid="ae6b3e38-8dd5-460c-8ad5-2b102ea9030a"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="No EOA Received"
  Guid="bcf932ff-b89d-40c6-86c4-5c6d922897f9"
 >
@@ -3008,7 +2952,7 @@ IN EOAs</Action></Actions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
- Name="MakeSvLs"
+ Name="HandleSvLs"
  Guid="44193527-6144-4bde-b7b0-f826e9baf559"
 >
 <ReqRef
@@ -3046,15 +2990,19 @@ IN EOAs</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6985d93c-d45b-462f-98dd-5399758cd705"
 >
-</ReqRef><Rules>
+</ReqRef><Comment>Puts all the SvLs from different sources in a collection of SvLs so that the closest one can be accessed by SvL(), then checks for a MA shortening</Comment>
+<Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Wipe the old SvLs"
  Guid="9fb13f00-bc38-439d-8cf4-92fc814ccce5"
 >
+<Comment>Deletes the previous SvLs. The location of the previous SvL has been saved in ShorteningHandler for comparison</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Wipe the old SvLs"
  Guid="5678bbbf-0138-4fa2-90ce-02471f1330ca"
 >
@@ -3068,12 +3016,32 @@ IN EOAs</Action></Actions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="MakeSvLs"
+ Guid="c99a0d2f-7892-4169-a275-6b01cb25ef22"
+>
+<Comment>Put all the different SvLs into the collecion</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Make SvLs"
+ Guid="8da11eed-5625-483a-baed-4fb1f16285b2"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="Route suitability SvL defined"
  Guid="61e6b7c2-b5bf-4299-9feb-a6acf9331eb0"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Route suitability SvL defined"
  Guid="05b9511b-476b-4a4f-b3c3-37ac673d81da"
 >
@@ -3096,6 +3064,7 @@ IN SvLs</Action></Actions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Mode Profile SvL defined"
  Guid="c7f6602d-6c44-41c4-bb57-fc915f5bb37a"
 >
@@ -3115,9 +3084,15 @@ IN SvLs</Action></Actions>
  Name="SvL defined, overlap"
  Guid="60a9ca7b-f818-477c-8140-41f1f1be7133"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="8ab7aafb-d8cf-4c4d-bafc-08a1f658decd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1891bee3-6ea3-4dd0-aad2-4ec1aa018cc7"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="SvL defined, overlap"
  Guid="16caef1e-67f4-48f5-865e-7b2864b695be"
 >
@@ -3143,9 +3118,15 @@ IN SvLs</Action></Actions>
  Name="SvL defined, danger point"
  Guid="a682c1be-3a5c-43f5-8709-bc749814aea9"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="8ab7aafb-d8cf-4c4d-bafc-08a1f658decd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55a23945-3bc5-43a4-ac22-589e7d940e6c"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="SvL defined, danger point"
  Guid="cc5f6b61-b71d-41cd-befc-5e2620ed46e7"
 >
@@ -3174,9 +3155,15 @@ IN SvLs</Action></Actions>
  Name="SvL defined, end of authority"
  Guid="add55289-5851-4a82-8a09-767a54d257e0"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="8ab7aafb-d8cf-4c4d-bafc-08a1f658decd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4e34979f-f382-4343-b957-f1aa0e10be7a"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="SvL defined, end of authority"
  Guid="19a994c4-8233-47d8-997a-66cdb96719d7"
 >
@@ -3198,6 +3185,76 @@ IN SvLs</Action></Actions>
     aLength =&gt; BaseTypes.Length.Infinity
 )
 IN SvLs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Test MA shortening"
+ Guid="a8c4a7ff-07ac-457c-982d-0b32970fd916"
+>
+<ReqRef
+ Id="426e405f-a69a-4fd6-b4cb-f0b3e7808f5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f10c4776-b68d-4088-aa6a-c3cbe7d45c55"
+>
+</ReqRef><ReqRef
+ Id="21484fd2-8698-4d7f-8846-76057374f929"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a37899ee-82e3-4495-8744-4d66d0c37256"
+>
+</ReqRef><Comment>In case the previous MA had an SvL and the new SvL is closer, this is an MA shortening.
+
+In case the previous End of Authority was an LOA and the new MA has an SvL, this is an MA shortening regardless of the SvL location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="TestMaShorteningRegardlessOfSvL"
+ Guid="747f5221-9312-4c6b-a8b4-43eedbef37d7"
+>
+<ReqRef
+ Id="0c39084a-19e8-4784-962f-8dd4ba8a2aee"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="751193e0-d3dc-496f-b5c1-a4ba25f90ed5"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="19bccdbd-f627-4eb6-b555-242fd599ad68"
+>ShorteningHandler != EMPTY
+  AND
+NOT ShorteningHandler.IsSvL
+  AND
+SvL() != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="56a0218a-5e6a-46da-94f5-1773ffcbf281"
+>HandlingOfAcceptedAndStoredInformation.ShortenedMaReceivedRegardlessOfSvL &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="TestMaShortening"
+ Guid="4093f2fd-8373-409b-9371-16b0310daed0"
+>
+<ReqRef
+ Id="d8e470e4-30ad-41be-8c8d-9828fc218d73"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fdd43860-3619-44d2-bc12-1eea6acc5a46"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="2f33e75d-0cbd-41cd-a3c1-be78ac425e45"
+>ShorteningHandler != EMPTY
+  AND
+ShorteningHandler.IsSvL
+  AND
+SvL() != EMPTY
+  AND
+SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c5a9f8e6-962f-4e24-9a60-4e8aa640da0c"
+>HandlingOfAcceptedAndStoredInformation.ShortenedMaReceived &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
