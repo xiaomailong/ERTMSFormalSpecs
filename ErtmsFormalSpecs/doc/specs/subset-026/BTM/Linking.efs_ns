@@ -17,7 +17,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a2094d2d-a3eb-4e1e-b38b-a088532d2d9e"
 >
-</ReqRef><Values>
+</ReqRef><Comment>Possible reactions of the train in case of linking inconsistencies.</Comment>
+<Values>
 <EnumValue
  Value="1"
  Name="TrainTrip"
@@ -46,7 +47,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="747d463c-bc18-4d3b-a388-6f365db794cb"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Represents the linking data provided by the trackside.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="Default.BaseTypes.Length.NA"
@@ -156,7 +157,8 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7c9afe0e-4a9b-4d5c-94ac-357c1cfaa428"
 >
-</ReqRef></Collection></Collections>
+</ReqRef><Comment>Collection of linking elements.</Comment>
+</Collection></Collections>
 <Functions>
 <Function
  Type="LinkingData"
@@ -591,7 +593,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  Name="LinkingInformationReceived"
  Guid="b36d74ff-248d-4a64-ad82-dc33020344e9"
 >
-<Comment></Comment>
+<Comment>Handles the reception of linking information and stores it in internal variables.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message"
@@ -607,6 +609,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  Name="ClearLinkingInformation"
  Guid="791123e1-19db-4836-99d0-16e17500fdef"
 >
+<Comment>In case the new linking information is not an infill data, the previous information is cleared. Otherwise, only the elements beyond the infill location are removed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -653,6 +656,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  Name="Insert first BG"
  Guid="0e93289c-ce01-44bf-bc80-89c125862c2a"
 >
+<Comment>Since the first element is not situated in a collection, it has to be inserted separately.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -684,6 +688,7 @@ IN Linkings</Action></Actions>
  Name="Insert following BGs"
  Guid="278d8d73-6889-44f1-a3c7-b443ef0f9393"
 >
+<Comment>The following elements are inserted with APPLY operator.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -707,7 +712,7 @@ IN Linkings</Action></Actions>
  Name="StoreLinkingInfo"
  Guid="4a96e2f2-1676-4283-8150-5dcce152b97a"
 >
-<Comment>Stores a linking information in the list of available linking informations</Comment>
+<Comment>Stores a linking information in the list of available linking informations.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LINKING.SubStructure1"
@@ -729,10 +734,11 @@ IN Linkings</Action></Actions>
  Name="Store info"
  Guid="e3791398-80a4-4ee3-a141-a8768935d3ff"
 >
-<Comment></Comment>
+<Comment>Stores a linking information in the list of available linking informations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Store info"
  Guid="6b6695bd-d089-4fdd-9e17-1592ec146539"
@@ -771,7 +777,7 @@ IN Linkings</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fa65f0a9-4116-4a16-8ed9-6aa23e99e126"
 >
-</ReqRef><Comment>Clear all Linking information which expectation window has passed safe antenna position</Comment>
+</ReqRef><Comment>Clear all Linking information which expectation window has passed safe antenna position.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -779,10 +785,11 @@ IN Linkings</Action></Actions>
  Name="ClearLinkingInfo"
  Guid="a38d2cde-17fb-4d90-9fb9-b511ea42385a"
 >
-<Comment></Comment>
+<Comment>Clear all Linking information which expectation window has passed safe antenna position.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="FilterLinkings"
  Guid="28e0ff8b-0934-45c4-b9bc-eb112fec4e6d"
