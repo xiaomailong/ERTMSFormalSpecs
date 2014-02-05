@@ -394,9 +394,142 @@ namespace GUI
         }
 
         /// <summary>
+        /// The colors used to display things
+        /// </summary>
+        private System.Drawing.Color ERROR_COLOR = System.Drawing.Color.Red;
+        private System.Drawing.Color PATH_TO_ERROR_COLOR = System.Drawing.Color.Orange;
+        private System.Drawing.Color WARNING_COLOR = System.Drawing.Color.Brown;
+        private System.Drawing.Color PATH_TO_WARNING_COLOR = System.Drawing.Color.LightCoral;
+        private System.Drawing.Color INFO_COLOR = System.Drawing.Color.Blue;
+        private System.Drawing.Color PATH_TO_INFO_COLOR = System.Drawing.Color.LightBlue;
+        private System.Drawing.Color NOTHING_COLOR = System.Drawing.Color.Black;
+
+        /// <summary>
+        /// Provides the color according to the info status
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        protected System.Drawing.Color ColorBasedOnInfo(Utils.MessagePathInfoEnum info)
+        {
+            System.Drawing.Color retVal = NOTHING_COLOR;
+
+            switch (info)
+            {
+                case Utils.MessagePathInfoEnum.Error:
+                    retVal = ERROR_COLOR;
+                    break;
+
+                case Utils.MessagePathInfoEnum.PathToError:
+                    retVal = PATH_TO_ERROR_COLOR;
+                    break;
+
+                case Utils.MessagePathInfoEnum.Warning:
+                    retVal = WARNING_COLOR;
+                    break;
+
+                case Utils.MessagePathInfoEnum.PathToWarning:
+                    retVal = PATH_TO_WARNING_COLOR;
+                    break;
+
+                case Utils.MessagePathInfoEnum.Info:
+                    retVal = INFO_COLOR;
+                    break;
+
+                case Utils.MessagePathInfoEnum.PathToInfo:
+                    retVal = PATH_TO_INFO_COLOR;
+                    break;
+
+                case Utils.MessagePathInfoEnum.Nothing:
+                case Utils.MessagePathInfoEnum.NotComputed:
+                    retVal = NOTHING_COLOR;
+                    break;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides the path to a message info
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        private Utils.MessagePathInfoEnum PathTo(Utils.MessagePathInfoEnum info)
+        {
+            Utils.MessagePathInfoEnum retVal = info;
+
+            if (info == Utils.MessagePathInfoEnum.Error)
+            {
+                retVal = Utils.MessagePathInfoEnum.PathToError;
+            }
+            else if (info == Utils.MessagePathInfoEnum.Warning)
+            {
+                retVal = Utils.MessagePathInfoEnum.PathToWarning;
+            }
+            else if (info == Utils.MessagePathInfoEnum.Info)
+            {
+                retVal = Utils.MessagePathInfoEnum.PathToInfo;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Combines two colors
+        /// </summary>
+        /// <param name="c1"></param>
+        /// <param name="c2"></param>
+        /// <returns></returns>
+        private Utils.MessagePathInfoEnum CombineInfo(Utils.MessagePathInfoEnum info1, Utils.MessagePathInfoEnum info2)
+        {
+            Utils.MessagePathInfoEnum retVal;
+
+            if (info1 < info2)
+            {
+                retVal = info2;
+            }
+            else
+            {
+                retVal = info1;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Computes this node's color based on its sub nodes
+        /// </summary>
+        /// <returns></returns>
+        protected System.Drawing.Color ComputeColorBasedOnItsSubNodes()
+        {
+            if (!SubNodesBuilt)
+            {
+                BuildSubNodes(false);
+            }
+
+            Utils.MessagePathInfoEnum retVal = Utils.MessagePathInfoEnum.Nothing;
+            foreach (BaseTreeNode subNode in Nodes)
+            {
+                retVal = CombineInfo(retVal, PathTo(subNode.Model.MessagePathInfo));
+            }
+
+            return ColorBasedOnInfo(retVal);
+        }
+
+        /// <summary>
         /// Provides the computed color
         /// </summary>
-        protected virtual System.Drawing.Color ComputedColor { get { return System.Drawing.Color.Black; } }
+        public virtual System.Drawing.Color ComputedColor
+        {
+            get
+            {
+                if (Model != null && Model.Name != null && Model.Name == "BaliseGroupIdentifier")
+                {
+                    System.Diagnostics.Debugger.Break();
+                }
+
+                return System.Drawing.Color.Black;
+            }
+        }
 
         /// <summary>
         /// Updates the node name text according to the modelized item
@@ -1065,11 +1198,16 @@ namespace GUI
             }
         }
 
-        protected override System.Drawing.Color ComputedColor
+        public override System.Drawing.Color ComputedColor
         {
             get
             {
                 System.Drawing.Color retVal = base.ComputedColor;
+
+                if (Item != null && Item.Name != null && Item.Name == "BaliseGroupIdentifier")
+                {
+                    System.Diagnostics.Debugger.Break();
+                }
 
                 if (Item != null)
                 {
@@ -1088,21 +1226,14 @@ namespace GUI
                             {
                                 retVal = System.Drawing.Color.Red;
                             }
+                            else
+                            {
+                                retVal = ComputeColorBasedOnItsSubNodes();
+                            }
                             break;
 
                         case Utils.MessagePathInfoEnum.PathToError:
-                            if (!SubNodesBuilt)
-                            {
-                                BuildSubNodes(false);
-                            }
-                            foreach (BaseTreeNode subNode in Nodes)
-                            {
-                                if (subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.Error || subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError)
-                                {
-                                    retVal = System.Drawing.Color.Orange;
-                                    break;
-                                }
-                            }
+                            retVal = ComputeColorBasedOnItsSubNodes();
                             break;
 
                         case Utils.MessagePathInfoEnum.Warning:
@@ -1111,21 +1242,14 @@ namespace GUI
                             {
                                 retVal = System.Drawing.Color.Brown;
                             }
+                            else
+                            {
+                                retVal = ComputeColorBasedOnItsSubNodes();
+                            }
                             break;
 
                         case Utils.MessagePathInfoEnum.PathToWarning:
-                            if (!SubNodesBuilt)
-                            {
-                                BuildSubNodes(false);
-                            }
-                            foreach (BaseTreeNode subNode in Nodes)
-                            {
-                                if (subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.Warning || subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.PathToWarning)
-                                {
-                                    retVal = System.Drawing.Color.LightCoral;
-                                    break;
-                                }
-                            }
+                            retVal = ComputeColorBasedOnItsSubNodes();
                             break;
 
                         case Utils.MessagePathInfoEnum.Info:
@@ -1134,21 +1258,14 @@ namespace GUI
                             {
                                 retVal = System.Drawing.Color.Blue;
                             }
+                            else
+                            {
+                                retVal = ComputeColorBasedOnItsSubNodes();
+                            }
                             break;
 
                         case Utils.MessagePathInfoEnum.PathToInfo:
-                            if (!SubNodesBuilt)
-                            {
-                                BuildSubNodes(false);
-                            }
-                            foreach (BaseTreeNode subNode in Nodes)
-                            {
-                                if (subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.Info || subNode.Model.MessagePathInfo == Utils.MessagePathInfoEnum.PathToInfo)
-                                {
-                                    retVal = System.Drawing.Color.LightBlue;
-                                    break;
-                                }
-                            }
+                            retVal = ComputeColorBasedOnItsSubNodes();
                             break;
                     }
                 }
