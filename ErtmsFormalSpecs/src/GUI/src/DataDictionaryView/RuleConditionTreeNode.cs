@@ -61,7 +61,7 @@ namespace GUI.DataDictionaryView
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
         public override void BuildSubNodes(bool buildSubNodes)
         {
-            Nodes.Clear();
+            base.BuildSubNodes(buildSubNodes);
 
             PreConditions = new RulePreConditionsTreeNode(Item, buildSubNodes);
             Nodes.Add(PreConditions);
@@ -71,8 +71,6 @@ namespace GUI.DataDictionaryView
 
             SubRules = new SubRulesTreeNode(Item, buildSubNodes);
             Nodes.Add(SubRules);
-
-            base.BuildSubNodes(buildSubNodes);
         }
 
         /// <summary>

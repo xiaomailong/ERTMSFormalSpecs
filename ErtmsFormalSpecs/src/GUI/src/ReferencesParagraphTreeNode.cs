@@ -104,8 +104,6 @@ namespace GUI
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
         public override void BuildSubNodes(bool buildSubNodes)
         {
-            Nodes.Clear();
-
             base.BuildSubNodes(buildSubNodes);
 
             if (HandleRequirements && Item.Requirements.Count > 0)
@@ -113,7 +111,6 @@ namespace GUI
                 ReqReferences = new ReqRefsTreeNode(Item, buildSubNodes);
                 Nodes.Add(ReqReferences);
             }
-
         }
 
         /// <summary>

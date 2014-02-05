@@ -124,6 +124,7 @@ namespace GUI
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
         public virtual void BuildSubNodes(bool buildSubNodes)
         {
+            Nodes.Clear();
             SubNodesBuilt = true;
         }
 

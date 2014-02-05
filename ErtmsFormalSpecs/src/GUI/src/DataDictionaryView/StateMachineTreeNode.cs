@@ -68,15 +68,13 @@ namespace GUI.DataDictionaryView
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
         public override void BuildSubNodes(bool buildSubNodes)
         {
-            Nodes.Clear();
+            base.BuildSubNodes(buildSubNodes);
 
             states = new StateMachineStatesTreeNode(Item, buildSubNodes);
             Nodes.Add(states);
 
             rules = new StateMachineRulesTreeNode(Item, buildSubNodes);
             Nodes.Add(rules);
-
-            base.BuildSubNodes(buildSubNodes);
         }
 
         /// <summary>
