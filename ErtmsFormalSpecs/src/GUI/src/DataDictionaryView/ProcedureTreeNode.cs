@@ -78,6 +78,8 @@ namespace GUI.DataDictionaryView
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
         public override void BuildSubNodes(bool buildSubNodes)
         {
+            Nodes.Clear();
+
             rules = new ProcedureRulesTreeNode(Item, buildSubNodes);
             parameters = new ProcedureParametersTreeNode(Item, buildSubNodes);
             Nodes.Add(parameters);

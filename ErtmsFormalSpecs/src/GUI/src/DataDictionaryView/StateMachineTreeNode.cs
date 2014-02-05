@@ -68,6 +68,8 @@ namespace GUI.DataDictionaryView
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
         public override void BuildSubNodes(bool buildSubNodes)
         {
+            Nodes.Clear();
+
             states = new StateMachineStatesTreeNode(Item, buildSubNodes);
             Nodes.Add(states);
 
@@ -182,7 +184,7 @@ namespace GUI.DataDictionaryView
             retVal.AddRange(base.GetMenuItems());
             retVal.Insert(6, new MenuItem("-"));
             retVal.Insert(7, new MenuItem("View state diagram", new EventHandler(ViewStateDiagramHandler)));
-            
+
             return retVal;
         }
     }

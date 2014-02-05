@@ -51,6 +51,8 @@ namespace GUI
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
         public override void BuildSubNodes(bool buildSubNodes)
         {
+            Nodes.Clear();
+
             base.BuildSubNodes(buildSubNodes);
 
             foreach (DataDictionary.ReqRef req in Item.Requirements)
