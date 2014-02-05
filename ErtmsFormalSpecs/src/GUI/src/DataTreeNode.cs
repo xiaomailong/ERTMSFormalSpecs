@@ -903,7 +903,7 @@ namespace GUI
 
                     Model.AddModelElement(copy);
                     Nodes.Clear();
-                    BuildSubNodes(false);
+                    BuildSubNodes(true);
                 }
                 catch (Exception)
                 {
@@ -936,7 +936,7 @@ namespace GUI
                     if (parentNode != null)
                     {
                         parentNode.Nodes.Clear();
-                        parentNode.BuildSubNodes(false);
+                        parentNode.BuildSubNodes(true);
                     }
                     else
                     {
