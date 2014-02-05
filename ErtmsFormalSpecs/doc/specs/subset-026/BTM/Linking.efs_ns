@@ -201,7 +201,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Otherwise"
+ Name="Value"
  Guid="26c7601d-ea48-4264-a247-cbc27a17b8af"
 >
 <Expression>LinkingData {
@@ -309,6 +309,11 @@ AND
  Id="370bc14e-630a-4f72-87f6-54e50015825c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2ced5c66-2667-43e9-87de-54b1d9dfe2d9"
+>
+</ReqRef><ReqRef
+ Id="62aa6f8e-f444-4ed1-90b7-43dc64aa7594"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="15670433-821e-4d7c-bfcb-03771df0387b"
 >
 </ReqRef><Comment>Returns true if a linked balise group has an unkown NID but is still to be taken into account</Comment>
 <Cases>
@@ -529,53 +534,24 @@ Justification: This simple function can be used here since the update of availab
  Name="CurrentBGisLinked"
  Guid="9e18ed01-8872-48ce-ad92-cf3ad4f6b5f9"
 >
-<Comment>Returns true if the Current Balise Group is linked
+<ReqRef
+ Id="c2167b58-3dec-449f-be34-ebe09320d97b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e237d1bd-bdb4-468e-866c-0a86059c8158"
+>
+</ReqRef><Comment>Returns true if the Current Balise Group is linked
 
 FORALL_IN is defensive programming; if the Collection does not have the same values for Q_LINK in all Telegrams, the Message should not have been accepted in the first place (§3.16.2.4.1/c, §3.16.2.4.4/c, §3.16.2.5.1/c)</Comment>
 <Cases>
 <Case
- Name="Yes"
+ Name="Value"
  Guid="10d7ba53-fe0f-4e69-b2f8-e74a576996b1"
 >
 <PreConditions>
 <PreCondition
  Guid="0c352e43-b4c5-43b8-8db4-1151a0c0500a"
 >FORALL_IN CurrentBaliseGroup | X.Q_LINK == Messages.Q_LINK.Linked</PreCondition></PreConditions>
-<Expression>Boolean.True</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="49110f36-6f78-4900-a25b-3c1f0eab48a8"
->
-<Expression>Boolean.False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Implemented="TRUE"
- Name="CurrentBGisUnlinked"
- Guid="6b035d2b-3bc3-4167-a746-42d6a5155537"
->
-<ReqRef
- Id="c2167b58-3dec-449f-be34-ebe09320d97b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e7366b18-f1db-4147-8fa0-7acb5e34595c"
->
-</ReqRef><Comment>Explicit inverse of CurrentBGisLinked(). Returns true if the current BaliseGroup is unlinked.
-FORALL_IN is defensive programming.</Comment>
-<Cases>
-<Case
- Name="Yes"
- Guid="a63f5a6c-9cbb-4f79-978b-7f2b81d317de"
->
-<PreConditions>
-<PreCondition
- Guid="cc05af08-4a5f-4a1c-b5aa-b6ee74a6d275"
->FORALL_IN CurrentBaliseGroup | X.Q_LINK == Messages.Q_LINK.Unlinked</PreCondition></PreConditions>
-<Expression>Boolean.True</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="7501d96a-3582-4eed-bfa9-754bd84aa989"
->
-<Expression>Boolean.False</Expression>
+<Expression>FORALL_IN CurrentBaliseGroup | X.Q_LINK == Messages.Q_LINK.Linked</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -597,7 +573,7 @@ FORALL_IN is defensive programming.</Comment>
 <PreConditions>
 <PreCondition
  Guid="7210223b-face-49e0-a644-dcd192e5aa92"
->CurrentBGisUnlinked()</PreCondition><PreCondition
+>NOT CurrentBGisLinked()</PreCondition><PreCondition
  Guid="5212c0da-1db9-4fac-882f-17c46d93b969"
 >CountBalises() &gt;= 2</PreCondition></PreConditions>
 <Expression>Boolean.True</Expression>

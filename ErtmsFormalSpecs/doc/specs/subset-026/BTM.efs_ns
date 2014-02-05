@@ -805,19 +805,10 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 </ReqRef><Comment>Returns true if the current balise group consists of only a single balise</Comment>
 <Cases>
 <Case
- Name="True"
+ Name="Value"
  Guid="050bdffb-b0a0-4a7c-ad7c-995116a0edc3"
 >
-<PreConditions>
-<PreCondition
- Guid="286ae0ae-de8e-4a2e-8d32-68ae5ff5ad16"
->(COUNT CurrentBaliseGroup) == 1</PreCondition></PreConditions>
-<Expression>Boolean.True</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="55c6650d-fde3-4b71-9965-bb0b14d4af33"
->
-<Expression>Boolean.False</Expression>
+<Expression>(COUNT CurrentBaliseGroup) == 1</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
