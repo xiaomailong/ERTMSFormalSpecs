@@ -55,11 +55,14 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// Selects the corresponding model element
             /// </summary>
-            public void SelectModel()
+            public void SelectModel(bool selectModel)
             {
                 if (Explanation.Element != null)
                 {
-                    GUIUtils.MDIWindow.Select(Explanation.Element, true);
+                    if (selectModel)
+                    {
+                        GUIUtils.MDIWindow.Select(Explanation.Element, true);
+                    }
                     ExplainBox.explainRichTextBox.Text = Explanation.Message;
                 }
             }
@@ -119,13 +122,10 @@ namespace GUI.TestRunnerView
         /// <param name="e"></param>
         private void explainTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (Control.ModifierKeys == Keys.Control)
+            ExplainTreeNode node = explainTreeView.SelectedNode as ExplainTreeNode;
+            if (node != null)
             {
-                ExplainTreeNode node = explainTreeView.SelectedNode as ExplainTreeNode;
-                if (node != null)
-                {
-                    node.SelectModel();
-                }
+                node.SelectModel(Control.ModifierKeys == Keys.Control);
             }
         }
     }
