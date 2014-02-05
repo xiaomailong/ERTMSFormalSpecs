@@ -5924,19 +5924,26 @@ IN BTM.Linking.Linkings</Action></Actions>
 >
 <TestCases>
 <TestCase
- Name="New MA defines a closer SvL"
+ Implemented="TRUE"
+ Name="MA shortening"
  Guid="c647259c-43da-4876-8896-4696cfef545a"
 >
-<Steps>
+<ReqRef
+ Id="d8e470e4-30ad-41be-8c8d-9828fc218d73"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="be749d5d-77b9-41d1-a43f-eada6ebdb618"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step 1 - Setup"
+ Name="Step 1 - Setup MA with LOA"
  Guid="29fa2b84-436b-4e9e-9b43-9f6dffbe6c3b"
 >
+<Comment>Start with a MA that ends with a Limit of Authority</Comment>
 <SubSteps>
 <SubStep
  Name="SubStep 1 - Initialize test environment"
@@ -5963,7 +5970,7 @@ IN BTM.Linking.Linkings</Action></Actions>
  Guid="6a0465ba-91ce-4690-a2eb-4babb3deac8d"
 >Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
-    TargetSpeed =&gt; 0.0,
+    TargetSpeed =&gt; 30.0,
     Sections =&gt; [],
     EndSection =&gt; Kernel.MA.EndSection
     {
@@ -5979,7 +5986,7 @@ IN BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5b03286f-4783-4b1e-9cd9-36b0bb27d319"
->Kernel.MA.SvL().Location == 12345.0</Expectation></Expectations>
+>Kernel.MA.SvL() == EMPTY</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step 4 - Train data that is useful"
  Guid="51d8e07d-6e8e-40eb-adf1-08d26cd17458"
@@ -6002,9 +6009,10 @@ IN BTM.Linking.Linkings</Action></Actions>
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step 2 - Receive a new MA from a balise"
+ Name="Step 2 - Receive a new MA from a balise with a SvL"
  Guid="6c55f6a7-e73e-4bd5-8630-7d20b348c74f"
 >
+<Description>Get a SvL from a message -&gt; test 3.8.5.1.4</Description>
 <SubSteps>
 <SubStep
  Name="SubStep 1 - Pass the first balise"
@@ -6045,7 +6053,7 @@ IN BTM.Linking.Linkings</Action></Actions>
                     N_ITER =&gt; 0,
                     Sequence1 =&gt; [],
 
-                    L_ENDSECTION =&gt; 800,
+                    L_ENDSECTION =&gt; 2800,
                     Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
                      T_SECTIONTIMER =&gt; 0,
                      D_SECTIONTIMERSTOPLOC =&gt; 0,
@@ -6096,19 +6104,29 @@ IN BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="571bac97-0c29-4584-92fd-6c53b1053466"
->(Kernel.MA.MA.EndSection.Length + Kernel.MA.MA.EndSection.DangerPoint.Distance) == 1000.0</Expectation><Expectation
+>(Kernel.MA.MA.EndSection.Length + Kernel.MA.MA.EndSection.DangerPoint.Distance) == 3000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="2073bc76-a3e8-458b-92da-3b2c7024bd4c"
->Kernel.MA.SvL().Location == 1000.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="42cf24b6-9eaf-4903-a24a-02d3a32f8d27"
->Kernel.MA.ShorteningHandler.Location == 12345.0</Expectation><Expectation
+>Kernel.MA.SvL().Location == 3000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="0d7fb8d8-cf67-4f2b-bdc7-663934d8286f"
->Kernel.MA.ShorteningHandler.IsSvL == True</Expectation></Expectations>
+>Kernel.MA.ShorteningHandler.IsSvL == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step 3 - Expecting to get a MA shortening regardless of SvL"
+ Guid="cb576c08-1760-48e2-93a4-1d742169aafe"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="38fcdbed-df11-4f0b-a769-376d921ee351"
+>NOT Kernel.HandlingOfAcceptedAndStoredInformation.ShortenedMaReceived</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2e0987aa-5ea9-4057-b5c3-5c3da87fb130"
+>Kernel.HandlingOfAcceptedAndStoredInformation.ShortenedMaReceivedRegardlessOfSvL</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6116,14 +6134,128 @@ IN BTM.Linking.Linkings</Action></Actions>
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step 3 - Expectations"
- Guid="7a8b690c-234f-473a-a98a-f5d9df40a254"
+ Name="Step 3 - Receive a new MA from a balise with a closer SvL"
+ Guid="831428fd-839d-4dc3-a352-c4f5e4c4e29c"
 >
+<Description>Get a closer SvL from this new MA -&gt; test 3.8.5.1.3</Description>
 <SubSteps>
 <SubStep
- Name="SubStep 1 - Considered as MA shortening"
- Guid="d17960e6-19d6-4b80-afe7-331299cfad00"
+ Name="SubStep 1 - Pass the first balise"
+ Guid="33c4a767-25c1-4bbf-bb8b-5c5eec53409e"
 >
+<Actions>
+<Action
+ Guid="85abc104-7e29-4fcb-93cc-72015ef29302"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5466,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+
+    Sequence1 =&gt; [
+        Messages.EUROBALISE.SubStructure1
+         {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                LEVEL_1_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                 {
+                    NID_PACKET =&gt; 12,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN =&gt; 25,
+                    V_LOA =&gt; 0,
+                    T_LOA =&gt; 150,
+
+                    N_ITER =&gt; 0,
+                    Sequence1 =&gt; [],
+
+                    L_ENDSECTION =&gt; 800,
+                    Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                     T_SECTIONTIMER =&gt; 0,
+                     D_SECTIONTIMERSTOPLOC =&gt; 0,
+
+                    Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information,
+                     T_ENDTIMER =&gt; 0,
+                     D_ENDTIMERSTARTLOC =&gt; 0,
+
+                    Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.Danger_point_information_to_follow,
+                     D_DP =&gt; 200,
+                     V_RELEASEDP =&gt; 2,
+
+                    Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information,
+                     D_STARTOL =&gt; 0,
+                     T_OL =&gt; 0,
+                     D_OL =&gt; 0,
+                     V_RELEASEOL =&gt; 0
+                 }
+             }
+         }
+     ]
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Pass the second balise"
+ Guid="a54eb9ce-06a3-4aaa-8e77-2218efa54b68"
+>
+<Actions>
+<Action
+ Guid="9ba644a2-4b73-4ee5-b5bf-5681c9ff2744"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 1,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5466,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+
+    Sequence1 =&gt; []
+ }</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d41a4b2a-db2e-42cd-aff8-5fd11ac54245"
+>(Kernel.MA.MA.EndSection.Length + Kernel.MA.MA.EndSection.DangerPoint.Distance) == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="08e9b578-bef8-449e-870b-49ffd4ea5ee3"
+>Kernel.MA.SvL().Location == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3c796028-f7b0-48d4-a3fc-d435c1cb2fa6"
+>Kernel.MA.ShorteningHandler.Location == 3000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f3795cc0-fef0-4970-a560-6e9fbbb9e206"
+>Kernel.MA.ShorteningHandler.IsSvL</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step 3 - Expecting a MA shortening"
+ Guid="b57c3e8c-edf2-4127-9d94-3fd0d54e2013"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="70906121-c97b-4738-90e6-f5cdf5450737"
+>NOT Kernel.HandlingOfAcceptedAndStoredInformation.ShortenedMaReceivedRegardlessOfSvL</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e913cd15-abe2-4f8b-a608-08cdd0c740aa"
+>Kernel.HandlingOfAcceptedAndStoredInformation.ShortenedMaReceived</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
