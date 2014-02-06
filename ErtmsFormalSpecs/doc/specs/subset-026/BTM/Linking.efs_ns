@@ -17,7 +17,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a2094d2d-a3eb-4e1e-b38b-a088532d2d9e"
 >
-</ReqRef><Values>
+</ReqRef><Comment>Possible reactions of the train in case of linking inconsistencies.</Comment>
+<Values>
 <EnumValue
  Value="1"
  Name="TrainTrip"
@@ -46,7 +47,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="747d463c-bc18-4d3b-a388-6f365db794cb"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Represents the linking data provided by the trackside.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="Default.BaseTypes.Length.NA"
@@ -156,14 +157,18 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7c9afe0e-4a9b-4d5c-94ac-357c1cfaa428"
 >
-</ReqRef></Collection></Collections>
+</ReqRef><Comment>Collection of linking elements.</Comment>
+</Collection></Collections>
 <Functions>
 <Function
  Type="LinkingData"
+ Implemented="TRUE"
+ Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateLinkingData"
  Guid="e67dc131-7b89-4020-a3b6-525024b5593e"
 >
+<Comment>Create an element of Linking data for use in the BTM.Linkings variable</Comment>
 <Parameters>
 <Parameter
  Type="Default.MessageTypes.Distance"
@@ -177,12 +182,12 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 >
 </Parameter><Parameter
  Type="Messages.Q_LINKORIENTATION"
- Name="Q_LINK_ORIENTATION"
+ Name="Q_LINKORIENTATION"
  Guid="85b64dac-da83-4cce-8c1b-30e5d8eba9ae"
 >
 </Parameter><Parameter
  Type="Messages.Q_LINKREACTION"
- Name="Q_LINK_REACTION"
+ Name="Q_LINKREACTION"
  Guid="2531bf20-6eba-423b-8f0a-20b954dedd93"
 >
 </Parameter><Parameter
@@ -198,20 +203,21 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Always"
+ Name="Value"
  Guid="26c7601d-ea48-4264-a247-cbc27a17b8af"
 >
 <Expression>LinkingData {
   Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_LINK, scale =&gt; Q_SCALE ),
   BaliseGroupIdentifier =&gt; NID_BG,
-  Orientation =&gt; LinkingOrientationConverter ( Q_LINK_ORIENTATION ),
-  Reaction =&gt; ConvertLinkingReaction ( Q_LINK_REACTION ),
+  Orientation =&gt; LinkingOrientationConverter ( Q_LINKORIENTATION ),
+  Reaction =&gt; ConvertLinkingReaction ( Q_LINKREACTION ),
   LocationAccuracy =&gt; MessageTypes.QLocAccLength(Q_LOCACC)
 }</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
+ Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="CurrentBGWithinFrame"
  Guid="e4b951d5-e364-4b31-a4e0-c6ad0e6fea3c"
@@ -237,23 +243,12 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </ReqRef><Comment>Returns true if the current BaliseGroup is linked + stored in our Linking database and within reach of the onboard antenna</Comment>
 <Cases>
 <Case
- Name="Linking information available"
+ Name="Check the expectation window"
  Guid="0bfe0cf6-52e4-46b8-a258-00e1f3aa67c4"
 >
-<PreConditions>
-<PreCondition
- Guid="89a5a714-0cfc-400f-90b8-1dad1463b33d"
->CurrentBGisLinked() AND ((FIRST_IN Linkings).BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG)</PreCondition><PreCondition
- Guid="706ded2d-7480-4277-aade-3620f93af67d"
->(AntennaPosition(Default.DistanceInterval.Max) &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
+<Expression>(AntennaPosition(Default.DistanceInterval.Max) &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
 AND
-(AntennaPosition(Default.DistanceInterval.Min) &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Default"
- Guid="31941743-0709-428c-954c-1e57a9692670"
->
-<Expression>False</Expression>
+(AntennaPosition(Default.DistanceInterval.Min) &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</Expression>
 </Case></Cases>
 </Function><Function
  Type="LinkingData"
@@ -278,86 +273,8 @@ AND
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="CurrentBGAcceptableUnknown"
- Guid="7436a3f2-08ca-45a2-bc66-3d71ac8cce00"
->
-<ReqRef
- Id="efb1d7b7-401e-46ab-93ac-645f2bc80a33"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b18a609f-7c48-44ba-a843-9b10da5663b3"
->
-</ReqRef><ReqRef
- Id="203ab365-30f2-4d89-bf31-72cc5c007972"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9ff652a5-32cc-466a-9277-761741f2f72f"
->
-</ReqRef><ReqRef
- Id="81bbc248-7c0b-473e-a3ec-e9178c2ce88d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fdd1586b-7d79-4bc7-88c0-8649071c2080"
->
-</ReqRef><ReqRef
- Id="62aa6f8e-f444-4ed1-90b7-43dc64aa7594"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="34dd917f-302b-457c-80f2-e17612fc1aa8"
->
-</ReqRef><ReqRef
- Id="15cc1ee9-1be0-4256-a588-5dd0831c0f97"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="661f974d-3b18-4501-8b06-7188dfb85d99"
->
-</ReqRef><ReqRef
- Id="370bc14e-630a-4f72-87f6-54e50015825c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2ced5c66-2667-43e9-87de-54b1d9dfe2d9"
->
-</ReqRef><Comment></Comment>
-<Cases>
-<Case
- Name="Acceptable"
- Guid="f0870ba4-9f06-4289-ab64-d0bb73975b45"
->
-<PreConditions>
-<PreCondition
- Guid="da977d47-40a4-4f83-8177-970236197651"
->Available ( CurrentLinking() )</PreCondition><PreCondition
- Guid="733c9016-29a2-4746-b9ea-ad24785048aa"
->(CurrentLinking()).BaliseGroupIdentifier== Messages.NID_BG.NID_UNKNOWN</PreCondition><PreCondition
- Guid="f077e4fd-a6f3-48ca-88f6-1bd8e47a08bd"
->(FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked</PreCondition><PreCondition
- Guid="8c20f424-e7cd-4ee7-b0bb-33599201a20a"
->(COUNT CurrentBaliseGroup) &gt;= 2</PreCondition><PreCondition
- Guid="4d37948a-0edd-4996-99f6-0ae6f7cd0f88"
->THERE_IS_IN CurrentBaliseGroup | BaliseHasRepositioningPacketValidForDirection(X)</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="eb604892-9b34-4660-a7af-c140125e474b"
->
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- NeedsRequirement="FALSE"
- Name="CurrentBGIsNominalDirection"
- Guid="2b60d0a9-f87a-47d6-844d-ae62d45fca5a"
->
-<Cases>
-<Case
- Name="IsNominal"
- Guid="be26692e-6036-4892-966a-cbb8c4616d5d"
->
-<PreConditions>
-<PreCondition
- Guid="2fc1d54d-4962-4f2b-aeb4-aa61ed2be05c"
->(FIRST_IN CurrentBaliseGroup).N_PIG &lt; (LAST_IN CurrentBaliseGroup).N_PIG</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Implemented="TRUE"
  Verified="TRUE"
- Name="BaliseHasRepositioningPacketValidForDirection"
+ Name="BGIsUnknownWithRepositioningPacketValidForDirection"
  Guid="f1956475-bc3e-42b6-a350-bba0af01c996"
 >
 <ReqRef
@@ -365,34 +282,48 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2601acf9-4290-4a93-b9e8-08bf7ca23a35"
 >
-</ReqRef><Comment>Returns true if the current message contains a packet with reposition-information valid for the train&apos;s current orientation</Comment>
-<Parameters>
-<Parameter
- Type="Messages.EUROBALISE.Message"
- Name="Message"
- Guid="f0bd316f-cdcd-41eb-8a6a-cf4007997b85"
+</ReqRef><ReqRef
+ Id="15cc1ee9-1be0-4256-a588-5dd0831c0f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88fcfe42-627b-4b9c-b0a7-d1faefab323c"
 >
-</Parameter></Parameters>
+</ReqRef><ReqRef
+ Id="efb1d7b7-401e-46ab-93ac-645f2bc80a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4d5f91ee-cebb-4dad-9338-3d62421061cc"
+>
+</ReqRef><ReqRef
+ Id="81bbc248-7c0b-473e-a3ec-e9178c2ce88d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1712ccf-85aa-470d-bfd3-b771d07df98e"
+>
+</ReqRef><ReqRef
+ Id="62aa6f8e-f444-4ed1-90b7-43dc64aa7594"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e116f214-8a36-47ae-9086-575c7db05195"
+>
+</ReqRef><ReqRef
+ Id="203ab365-30f2-4d89-bf31-72cc5c007972"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="da1eb59e-f13c-4a97-b6aa-45b539db349f"
+>
+</ReqRef><Comment>If the current balise group was announced by linking as &quot;unknown&quot;, then it will only be considered if it contains the repositioning information valid for the train orientation.</Comment>
 <Cases>
 <Case
- Name="Yes"
+ Name="Value"
  Guid="a793ac49-0e4c-4a69-8191-d2bc8465948a"
 >
-<PreConditions>
-<PreCondition
- Guid="6e691e1f-d66d-4277-9be2-bbd6ec462b45"
->THERE_IS_IN Message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</PreCondition></PreConditions>
-<Expression>Boolean.True</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="5f0f9a73-022d-4e21-b9f4-c3e95023aea4"
->
-<Expression>Boolean.False</Expression>
+<Expression>CurrentLinking().BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN
+  AND
+THERE_IS_IN CurrentBaliseGroup | TelegramContainsRepositioningInformation ( X )
+  AND
+BaliseGroupOrientation() != CurrentLinking().Orientation</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Implemented="TRUE"
  Verified="TRUE"
+ NeedsRequirement="FALSE"
  Name="DistanceToBaliseGroup"
  Guid="41641768-ba85-4244-bd62-229f518ee854"
 >
@@ -490,10 +421,25 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="27a3b36a-62d5-47ca-8033-b005433481d7"
 >
+</ReqRef><ReqRef
+ Id="15cc1ee9-1be0-4256-a588-5dd0831c0f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af3f7db3-9cf2-491e-b5db-142bc144a23f"
+>
+</ReqRef><ReqRef
+ Id="efb1d7b7-401e-46ab-93ac-645f2bc80a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ce2083bc-a64e-4670-a332-952a375fea28"
+>
+</ReqRef><ReqRef
+ Id="62aa6f8e-f444-4ed1-90b7-43dc64aa7594"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="001c07ea-7aa0-4b72-aa4e-847e4d3f140f"
+>
 </ReqRef><Comment>Returns for the current BaliseGroup if it is to be taken into account</Comment>
 <Cases>
 <Case
- Name="Linking is not available"
+ Name="Linking is not available =&gt; all the balise groups will be considered"
  Guid="a29a3c7c-d4e3-4c1e-adfa-64373b9626db"
 >
 <PreConditions>
@@ -502,10 +448,23 @@ AND
 >NOT ( LinkingApplicable() )</PreCondition></PreConditions>
 <Expression>Boolean.True</Expression>
 </Case><Case
+ Name="Current BG is marked as unlinked =&gt; it has to be considered"
+ Guid="fb1b0b2c-93dd-4823-8957-7304f7d349e8"
+>
+<PreConditions>
+<PreCondition
+ Guid="bd0d2fa7-a315-45a0-86a4-ba85161aa42b"
+>ConsiderUnlinkedBG() </PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
  Name="Otherwise"
  Guid="61e517d8-9b27-462b-b7ec-6caf0cbf5dbc"
 >
-<Expression>Linking.CurrentBGWithinFrame() OR ( NOT (CurrentBGisLinked() ))</Expression>
+<Expression>CurrentBGIsLinked()
+  AND
+( BGIdentityIsValid() OR BGIsUnknownWithRepositioningPacketValidForDirection() )
+  AND
+Linking.CurrentBGWithinFrame()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -541,35 +500,104 @@ Justification: This simple function can be used here since the update of availab
  Type="Boolean"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="CurrentBGisLinked"
+ Name="CurrentBGIsLinked"
  Guid="9e18ed01-8872-48ce-ad92-cf3ad4f6b5f9"
 >
-<Comment>Returns true if the Current Balise Group is linked
+<ReqRef
+ Id="c2167b58-3dec-449f-be34-ebe09320d97b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e237d1bd-bdb4-468e-866c-0a86059c8158"
+>
+</ReqRef><Comment>Returns true if the Current Balise Group is linked
 
 FORALL_IN is defensive programming; if the Collection does not have the same values for Q_LINK in all Telegrams, the Message should not have been accepted in the first place (§3.16.2.4.1/c, §3.16.2.4.4/c, §3.16.2.5.1/c)</Comment>
 <Cases>
 <Case
- Name="Yes"
+ Name="Value"
  Guid="10d7ba53-fe0f-4e69-b2f8-e74a576996b1"
 >
-<PreConditions>
-<PreCondition
- Guid="0c352e43-b4c5-43b8-8db4-1151a0c0500a"
->FORALL_IN CurrentBaliseGroup | X.Q_LINK == Messages.Q_LINK.Linked</PreCondition></PreConditions>
-<Expression>Boolean.True</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="49110f36-6f78-4900-a25b-3c1f0eab48a8"
+<Expression>FORALL_IN CurrentBaliseGroup | X.Q_LINK == Messages.Q_LINK.Linked</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="ConsiderUnlinkedBG"
+ Guid="dfd8d051-1d51-408f-bb7b-11e260f03e0c"
 >
-<Expression>Boolean.False</Expression>
+<ReqRef
+ Id="17cdeaca-a795-4ae1-b38f-adb2b3ece625"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4ace0d8a-5450-4e81-a56a-4858fbdf2225"
+>
+</ReqRef><Comment>Special case of ConsiderBG(). Returns true if the current BG is unlinked but has to be considered, nevertheless.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="7a5fb781-d47d-4183-85ce-e677f5830885"
+>
+<Expression>NOT CurrentBGIsLinked()
+  AND
+CountBalises() &gt;= 2</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="BGIdentityIsValid"
+ Guid="736c1e29-e6c1-4329-9a11-181c45d8baa8"
+>
+<ReqRef
+ Id="2bc225fc-8bc7-49ee-a452-094ceb010716"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="532def12-426b-48ac-9413-2795373e77f8"
+>
+</ReqRef><ReqRef
+ Id="45b975c5-6f3a-47c9-9f18-741bdd280f36"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a48c851e-877d-4fad-b7b5-f72c210ad634"
+>
+</ReqRef><Comment>Verifies that the identifier of the current BG was announced by the linking (or that the linking has announced that the following balise group&apos;s identifier is unknown).</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="1389d65e-f43e-4c52-bbc2-a0b9bff9a25c"
+>
+<Expression>CurrentLinking().BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="TelegramContainsRepositioningInformation"
+ Guid="9182d2c5-6efd-4550-ab3d-aac0b5fe4935"
+>
+<ReqRef
+ Id="e5ef2878-8ec2-4b95-9b91-af8274b231b1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68cae0cf-e2a5-4407-b80c-a08c7537dd8e"
+>
+</ReqRef><Comment>Indicates if a balise telegram provided as parameter contains a packet with repositioning information.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.EUROBALISE.Message"
+ Name="Message"
+ Guid="f0bd316f-cdcd-41eb-8a6a-cf4007997b85"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="efbb6e0b-2160-4e54-acf9-98923bf5abab"
+>
+<Expression>THERE_IS_IN Message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="LinkingInformationReceived"
  Guid="b36d74ff-248d-4a64-ad82-dc33020344e9"
 >
-<Comment></Comment>
+<Comment>Handles the reception of linking information and stores it in internal variables.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message"
@@ -580,14 +608,17 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ClearLinkingInformation"
  Guid="791123e1-19db-4836-99d0-16e17500fdef"
 >
+<Comment>In case the new linking information is not an infill data, the previous information is cleared. Otherwise, only the elements beyond the infill location are removed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ Verified="TRUE"
  Name="No infill"
  Guid="7178bbc3-25d9-45a5-af00-1a77a210bae3"
 >
@@ -606,6 +637,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  Guid="f4ed0c9f-1c84-4195-bc54-3ce40d23cbb2"
 >Linkings &lt;- []</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Infill"
  Guid="40ced0d3-c8a9-40b2-9ad4-699d0a45700a"
 >
@@ -617,14 +649,18 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 </ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="739997f0-0a9a-42ec-8b3b-8856cdc14a17"
+>Linkings &lt;- MAP Linkings | X.Distance &lt; BTM.Linking.DistanceToBaliseGroup ( Kernel.Infill.Data.NID_BG  ) USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Insert first BG"
  Guid="0e93289c-ce01-44bf-bc80-89c125862c2a"
 >
+<Comment>Since the first element is not situated in a collection, it has to be inserted separately.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -642,8 +678,8 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 >INSERT CreateLinkingData (
   D_LINK =&gt; Packet.D_LINK,
   NID_BG =&gt; Packet.NID_BG,
-  Q_LINK_ORIENTATION =&gt; Packet.Q_LINKORIENTATION,
-  Q_LINK_REACTION =&gt; Packet.Q_LINKREACTION,
+  Q_LINKORIENTATION =&gt; Packet.Q_LINKORIENTATION,
+  Q_LINKREACTION =&gt; Packet.Q_LINKREACTION,
   Q_LOCACC =&gt; Packet.Q_LOCACC,
   Q_SCALE =&gt; Packet.Q_SCALE
 )
@@ -651,13 +687,16 @@ IN Linkings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Insert following BGs"
  Guid="278d8d73-6889-44f1-a3c7-b443ef0f9393"
 >
+<Comment>The following elements are inserted with APPLY operator.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Insert following BGs"
  Guid="f1abce2e-96f2-4d8b-aa83-e5fd2939fb4d"
@@ -667,19 +706,21 @@ IN Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="f313372b-6e45-44c5-a16a-2f82708636c7"
->APPLY StoreLinkingInfo ( Info =&gt; X, Q_SCALE =&gt; Packet.Q_SCALE ) ON Packet.Sequence1</Action></Actions>
+>APPLY StoreLinkingInfo ( Data =&gt; X, Q_SCALE =&gt; Packet.Q_SCALE ) ON Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
+ Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="StoreLinkingInfo"
  Guid="4a96e2f2-1676-4283-8150-5dcce152b97a"
 >
-<Comment>Stores a linking information in the list of available linking informations</Comment>
+<Comment>Stores a linking information in the list of available linking informations.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LINKING.SubStructure1"
- Name="Info"
+ Name="Data"
  Guid="d22702d1-0c8b-41d3-8f99-53dd485e6de2"
 >
 </Parameter><Parameter
@@ -691,14 +732,17 @@ IN Linkings</Action></Actions>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
+ Verified="TRUE"
  NeedsRequirement="FALSE"
  Name="Store info"
  Guid="e3791398-80a4-4ee3-a141-a8768935d3ff"
 >
-<Comment></Comment>
+<Comment>Stores a linking information in the list of available linking informations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Store info"
  Guid="6b6695bd-d089-4fdd-9e17-1592ec146539"
@@ -709,11 +753,11 @@ IN Linkings</Action></Actions>
 <Action
  Guid="0a7cfd2c-c2e7-4059-9963-dca8b4dc0007"
 >INSERT CreateLinkingData (
-  D_LINK =&gt; Info.D_LINK,
-  NID_BG =&gt; Info.NID_BG,
-  Q_LINK_ORIENTATION =&gt; Info.Q_LINKORIENTATION,
-  Q_LINK_REACTION =&gt; Info.Q_LINKREACTION,
-  Q_LOCACC =&gt; Info.Q_LOCACC,
+  D_LINK =&gt; Data.D_LINK,
+  NID_BG =&gt; Data.NID_BG,
+  Q_LINKORIENTATION =&gt; Data.Q_LINKORIENTATION,
+  Q_LINKREACTION =&gt; Data.Q_LINKREACTION,
+  Q_LOCACC =&gt; Data.Q_LOCACC,
   Q_SCALE =&gt; Q_SCALE
 ) 
 IN Linkings</Action></Actions>
@@ -732,18 +776,24 @@ IN Linkings</Action></Actions>
  Guid="08d261f7-f732-4da9-9abb-fbefa6e263a7"
 >
 <Comment></Comment>
-</ReqRef><Comment>Clear all Linking information which expectation window has passed safe antenna position</Comment>
+</ReqRef><ReqRef
+ Id="5aa027b1-5c1a-4773-a56d-e795d43847fb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa65f0a9-4116-4a16-8ed9-6aa23e99e126"
+>
+</ReqRef><Comment>Clear all Linking information which expectation window has passed safe antenna position.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="ClearLinkingInfo"
  Guid="a38d2cde-17fb-4d90-9fb9-b511ea42385a"
 >
-<Comment></Comment>
+<Comment>Clear all Linking information which expectation window has passed safe antenna position.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="FilterLinkings"
  Guid="28e0ff8b-0934-45c4-b9bc-eb112fec4e6d"

@@ -263,7 +263,7 @@ N_ITER=&gt;0
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Receive first telegram of unlinked balise group"
  Guid="ced6fa08-7927-40c6-9f4f-a13e83786f7a"
 >
 <Actions>
@@ -288,8 +288,8 @@ N_ITER=&gt;0
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;1,
-    N_TOTAL=&gt;0,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;1,
     NID_C=&gt;140,
@@ -310,6 +310,27 @@ N_ITER=&gt;0
             }
         }
     ]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Receive second telegram of unlinked balise group"
+ Guid="10814e59-0a82-4e81-9c4d-bc3aefe0af8c"
+>
+<Actions>
+<Action
+ Guid="1ee24200-a4f8-4f4b-a8f9-8dc1330c5170"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;1,
+    NID_C=&gt;140,
+    NID_BG=&gt;10001,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; []
 }</Action></Actions>
 <Expectations>
 <Expectation
@@ -419,7 +440,7 @@ N_ITER=&gt;0
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     D_LINK=&gt;3500,
                     Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
-                    NID_BG=&gt;10000,
+                    NID_BG=&gt;9620,
 Q_LINKORIENTATION=&gt;Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction,
 Q_LINKREACTION=&gt;Messages.Q_LINKREACTION.Apply_service_brake,
 Q_LOCACC=&gt;1,
@@ -428,7 +449,7 @@ Sequence1 =&gt; [
 Messages.PACKET.TRACK_TO_TRAIN.LINKING.SubStructure1 {
  D_LINK=&gt;4500,
                     Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
-                    NID_BG=&gt;10000,
+                    NID_BG=&gt;9622,
 Q_LINKORIENTATION=&gt;Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction,
 Q_LINKREACTION=&gt;Messages.Q_LINKREACTION.Apply_service_brake,
 Q_LOCACC=&gt;1
@@ -465,7 +486,15 @@ Q_LOCACC=&gt;1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="32e37fc4-5bfa-450e-a98a-ded68c5767a5"
->(LAST_IN BTM.Linking.Linkings).Distance == 4500.0</Expectation></Expectations>
+>(LAST_IN BTM.Linking.Linkings).Distance == 4500.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ccd5446e-d7c7-4349-a34c-7c5ca7fc9a07"
+>(FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9620</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ff87e43b-29f9-4878-9f35-7cea303ce6e5"
+>(LAST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9622</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -474,12 +503,12 @@ Q_LOCACC=&gt;1
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3"
+ Name="Step3 - Another balise with linking information received"
  Guid="24da1be5-9b8d-4f70-8ae7-f8cc664bd8cd"
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - First balise of unlinked balise group received"
  Guid="58bfd37a-b636-4e18-869c-055fd51d542a"
 >
 <Actions>
@@ -490,8 +519,8 @@ Q_LOCACC=&gt;1
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
-    N_TOTAL=&gt;0,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -509,9 +538,9 @@ Q_LOCACC=&gt;1
                     Q_DIR=&gt;Messages.Q_DIR.Nominal,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    D_LINK=&gt;3500,
+                    D_LINK=&gt;1500,
                     Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
-                    NID_BG=&gt;10000,
+                    NID_BG=&gt;9620,
 Q_LINKORIENTATION=&gt;Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction,
 Q_LINKREACTION=&gt;Messages.Q_LINKREACTION.Apply_service_brake,
 Q_LOCACC=&gt;1,
@@ -520,6 +549,27 @@ N_ITER=&gt;0
             }
         }
     ]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Second balise of unlinked balise group received"
+ Guid="47dddd21-22dc-4b53-a2ee-96d80b708b9c"
+>
+<Actions>
+<Action
+ Guid="6558d416-4f1b-417f-a4dd-740f05ca6c9e"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;9618,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; []
 }</Action></Actions>
 <Expectations>
 <Expectation
@@ -530,7 +580,11 @@ N_ITER=&gt;0
  Kind="Instantaneous"
  DeadLine="1"
  Guid="49e3ade1-8f51-4845-bc9d-671629bdcc83"
->(FIRST_IN BTM.Linking.Linkings).Distance == 3500.0</Expectation></Expectations>
+>(FIRST_IN BTM.Linking.Linkings).Distance == 1500.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d5051944-2094-4bc6-89b1-5ea386bd3a62"
+>(FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9620</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

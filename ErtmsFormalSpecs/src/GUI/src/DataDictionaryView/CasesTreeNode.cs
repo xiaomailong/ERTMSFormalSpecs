@@ -48,6 +48,8 @@ namespace GUI.DataDictionaryView
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
         public override void BuildSubNodes(bool buildSubNodes)
         {
+            Nodes.Clear();
+
             foreach (DataDictionary.Functions.Case aCase in Item.Cases)
             {
                 Nodes.Add(new CaseTreeNode(aCase, buildSubNodes));

@@ -2511,7 +2511,7 @@ In case the previous End of Authority was an LOA and the new SvL is shorter, thi
   AND
 NOT ShorteningHandler.IsSvL
   AND
-IsSvL ( MA.EndOfMovementAuthority() )</PreCondition></PreConditions>
+SvL() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8e3480a6-37c8-4922-8d3b-cd9c3de22266"
@@ -2531,11 +2531,11 @@ IsSvL ( MA.EndOfMovementAuthority() )</PreCondition></PreConditions>
  Guid="51e00945-5c52-4bd2-9d37-0446face1f21"
 >ShorteningHandler != EMPTY
   AND
-ShorteningHandler.Location &gt; MA.EndOfMovementAuthority().Location
-  AND
 ShorteningHandler.IsSvL
   AND
-IsSvL ( MA.EndOfMovementAuthority() )</PreCondition></PreConditions>
+SvL() != EMPTY
+  AND
+SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b1a699f9-d531-489f-bfd1-e8d7484a990f"
@@ -2897,7 +2897,7 @@ IN EOAs</Action></Actions>
  Guid="7c64880f-bfc1-476f-a9b1-9983265c63c0"
 >INSERT CreateTarget(
     aLength=&gt;Default.BaseTypes.Distance.Infinity,
-    aLocation=&gt;Kernel.ClosestStopLocation().StopLocation,
+    aLocation=&gt;Kernel.ClosestStopLocation( Kernel.EmergencyStops ).StopLocation,
     aSpeed=&gt;0.0
 )
 IN EOAs</Action></Actions>

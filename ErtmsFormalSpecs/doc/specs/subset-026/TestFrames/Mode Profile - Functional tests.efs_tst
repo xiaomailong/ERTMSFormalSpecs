@@ -2562,7 +2562,7 @@ IN Kernel.MA.ModeProfile.Profile</Action></Actions>
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - First balise of unlinked balise group received"
  Guid="4ee1f52d-f62c-4290-a9fa-a91e3bb54e49"
 >
 <Actions>
@@ -2574,7 +2574,7 @@ IN Kernel.MA.ModeProfile.Profile</Action></Actions>
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -2582,26 +2582,26 @@ IN Kernel.MA.ModeProfile.Profile</Action></Actions>
     Q_LINK=&gt;Messages.Q_LINK.Unlinked,
     Sequence1=&gt;
     [ 
-         Messages.EUROBALISE.SubStructure1
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
             {
-              TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+                INFILL_LOCATION_REFERENCE =&gt;Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message
                 {
-                   INFILL_LOCATION_REFERENCE =&gt;Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message
-                     {
-                          L_PACKET=&gt;10,
-                          NID_BG=&gt;2126,
-                          NID_C=&gt;140,
-                          NID_PACKET=&gt;136,
-                          Q_DIR=&gt;Messages.Q_DIR.Nominal,
-                          Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows
-                     }
-                 }
-             },
-     Messages.EUROBALISE.SubStructure1
+                    L_PACKET=&gt;10,
+                    NID_BG=&gt;2126,
+                    NID_C=&gt;140,
+                    NID_PACKET=&gt;136,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows
+                }
+            }
+        },
+        Messages.EUROBALISE.SubStructure1
         {
             TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
             {
-                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
                 {
                     NID_PACKET=&gt;12,
                     Q_DIR=&gt;Messages.Q_DIR.Nominal,
@@ -2629,30 +2629,50 @@ IN Kernel.MA.ModeProfile.Profile</Action></Actions>
                     V_RELEASEOL=&gt;0
                 }
             }
-         },
-       Messages.EUROBALISE.SubStructure1
+        },
+        Messages.EUROBALISE.SubStructure1
         {
             TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
             {
                 MODE_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message
                 {
-                   D_MAMODE=&gt;50,
-                   L_ACKMAMODE=&gt;10,
-                   L_MAMODE=&gt;500,
-                   L_PACKET=&gt;0,
-                   M_MAMODE=&gt;   Messages.M_MAMODE.Limited_Supervision,               
-                   N_ITER=&gt;0,
-                   NID_PACKET=&gt;80,
-                   Q_DIR=&gt; Messages.Q_DIR.Nominal,
-                   Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
-                   Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                   V_MAMODE=&gt;1,
-                   Sequence1=&gt;[] 
-             }
-          }
-               }
-    
-                ]
+                    D_MAMODE=&gt;50,
+                    L_ACKMAMODE=&gt;10,
+                    L_MAMODE=&gt;500,
+                    L_PACKET=&gt;0,
+                    M_MAMODE=&gt;   Messages.M_MAMODE.Limited_Supervision,               
+                    N_ITER=&gt;0,
+                    NID_PACKET=&gt;80,
+                    Q_DIR=&gt; Messages.Q_DIR.Nominal,
+                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    V_MAMODE=&gt;1,
+                    Sequence1=&gt;[] 
+                }
+            }
+        }
+    ]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Second balise of unlinked balise group received"
+ Guid="b94674d0-5230-4259-9c20-b8a03d7c1fe2"
+>
+<Actions>
+<Action
+ Guid="e4637c34-3411-4ec5-8e39-811f68716a9c"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;[]
 }</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
