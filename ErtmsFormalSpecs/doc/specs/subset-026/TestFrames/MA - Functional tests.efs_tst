@@ -4177,7 +4177,12 @@ BTM.Linking.Linkings</Action></Actions>
  Name="New MA section at infill location reference"
  Guid="28a920f7-f975-4c2a-8baa-661e32fe68a4"
 >
-<Comment>Test for requirement 3.8.5.1.2</Comment>
+<ReqRef
+ Id="9c420bdc-a561-406b-a479-9d6cbde196a6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="462b3a36-981b-49e1-b147-2a57f83c450f"
+>
+</ReqRef><Comment>Test for requirement 3.8.5.1.2</Comment>
 <Steps>
 <Step
  IO="NA"
@@ -5995,7 +6000,7 @@ IN BTM.Linking.Linkings</Action></Actions>
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="MA Update"
+ Name="MA update - MA shortening"
  Guid="fdc8c9f4-80a9-4d3b-9d28-de9af7ccc2bb"
 >
 <TestCases>
@@ -6009,7 +6014,18 @@ IN BTM.Linking.Linkings</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="be749d5d-77b9-41d1-a43f-eada6ebdb618"
 >
-</ReqRef><Steps>
+</ReqRef><ReqRef
+ Id="21484fd2-8698-4d7f-8846-76057374f929"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f161404b-d785-4966-afcc-287cfb74c52d"
+>
+</ReqRef><ReqRef
+ Id="0c39084a-19e8-4784-962f-8dd4ba8a2aee"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a3536361-a985-4970-ab8e-df57030f55d6"
+>
+</ReqRef><Comment>Tests for 3.8.5.1.3, 3.8.5.1.4 and part of 3.8.5.2.4</Comment>
+<Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6088,7 +6104,8 @@ IN BTM.Linking.Linkings</Action></Actions>
  Name="Step 2 - Receive a new MA from a balise with a SvL"
  Guid="6c55f6a7-e73e-4bd5-8630-7d20b348c74f"
 >
-<Description>Get a SvL from a message -&gt; test 3.8.5.1.4</Description>
+<Description></Description>
+<Comment>Get a SvL from a message -&gt; test 3.8.5.1.4</Comment>
 <SubSteps>
 <SubStep
  Name="SubStep 1 - Pass the first balise"
@@ -6213,7 +6230,8 @@ IN BTM.Linking.Linkings</Action></Actions>
  Name="Step 3 - Receive a new MA from a balise with a closer SvL"
  Guid="831428fd-839d-4dc3-a352-c4f5e4c4e29c"
 >
-<Description>Get a closer SvL from this new MA -&gt; test 3.8.5.1.3</Description>
+<Description></Description>
+<Comment>Get a closer SvL from this new MA -&gt; test 3.8.5.1.3</Comment>
 <SubSteps>
 <SubStep
  Name="SubStep 1 - Pass the first balise"
@@ -6333,11 +6351,172 @@ IN BTM.Linking.Linkings</Action></Actions>
  Guid="e913cd15-abe2-4f8b-a608-08cdd0c740aa"
 >Kernel.HandlingOfAcceptedAndStoredInformation.ShortenedMaReceived</Expectation></Expectations>
 </SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 4 - Receive a new MA from a balise with a LOA"
+ Guid="70b4b08f-fcba-4876-aba1-ea8a88ff548d"
+>
+<Description></Description>
+<Comment>The MA gives a LOA instead of a EOA -&gt; no SvL and no MA shortening</Comment>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Pass the first balise"
+ Guid="78f72ead-c9bb-4b55-998a-03273ad4022a"
+>
+<Actions>
+<Action
+ Guid="04a1d6f9-6c47-40de-a5ca-37f8122a65cc"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5467,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+
+    Sequence1 =&gt; [
+        Messages.EUROBALISE.SubStructure1
+         {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+             {
+                LEVEL_1_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                 {
+                    NID_PACKET =&gt; 12,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN =&gt; 25,
+                    V_LOA =&gt; 30,
+                    T_LOA =&gt; 150,
+
+                    N_ITER =&gt; 0,
+                    Sequence1 =&gt; [],
+
+                    L_ENDSECTION =&gt; 250,
+                    Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                     T_SECTIONTIMER =&gt; 0,
+                     D_SECTIONTIMERSTOPLOC =&gt; 0,
+
+                    Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information,
+                     T_ENDTIMER =&gt; 0,
+                     D_ENDTIMERSTARTLOC =&gt; 0,
+
+                    Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.No_danger_point_information,
+                     D_DP =&gt; 0,
+                     V_RELEASEDP =&gt; 0,
+
+                    Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information,
+                     D_STARTOL =&gt; 0,
+                     T_OL =&gt; 0,
+                     D_OL =&gt; 0,
+                     V_RELEASEOL =&gt; 0
+                 }
+             }
+         }
+     ]
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Pass the second balise"
+ Guid="41dbf961-8851-4db8-8b8a-4ef675707a42"
+>
+<Actions>
+<Action
+ Guid="8de75f1d-108d-4e56-a990-214b0d8f4b19"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+ {
+
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 1,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5467,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+
+    Sequence1 =&gt; []
+ }</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="8bc17764-974c-431c-934a-2564b7d743dd"
+>Kernel.MA.MA.EndSection.Length == 250.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="af2fea0e-fdb3-41c1-86fd-ac150769e4fc"
+>Kernel.MA.SvL() == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f895372f-7f39-4012-9284-cdd3886872b8"
+>Kernel.MA.ShorteningHandler.Location == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="487eb78e-6db2-4508-8b1e-d357464d7e73"
+>Kernel.MA.ShorteningHandler.IsSvL</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step 3 - Expecting a MA shortening"
+ Guid="6fcb8878-18ab-4027-a274-2007363182a8"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="13141476-01a6-4091-8193-eb876d45beb9"
+>NOT Kernel.HandlingOfAcceptedAndStoredInformation.ShortenedMaReceivedRegardlessOfSvL</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="8bae69f9-f646-4108-8520-37afc2ca64de"
+>NOT Kernel.HandlingOfAcceptedAndStoredInformation.ShortenedMaReceived</Expectation></Expectations>
+</SubStep></SubSteps>
 </Step></Steps>
-</TestCase><TestCase
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="MA update - Repositioning information"
+ Guid="6cdaf262-3ade-4d1d-ba52-e007f09eb2cb"
+>
+<TestCases>
+<TestCase
  Name="Update the length of the current section by means of repositioning information"
  Guid="5648f549-183c-4eea-bc91-f6f713943c84"
 >
+<ReqRef
+ Id="21484fd2-8698-4d7f-8846-76057374f929"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="caccad29-6b2a-438c-a955-1645ebd2f302"
+>
+</ReqRef><ReqRef
+ Id="62aa6f8e-f444-4ed1-90b7-43dc64aa7594"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6ad3a39b-7561-4cea-91e5-fa25911d2582"
+>
+</ReqRef><ReqRef
+ Id="d68a643a-2faa-429a-a1d6-2724d7c3ccbc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c2d68e5b-2285-4170-abfe-8c617020e8b9"
+>
+</ReqRef><Comment>Tests for 3.8.5.2, 3.8.5.2.2 and some of 3.8.5.2.4</Comment>
 <Steps>
 <Step
  IO="NA"
@@ -6348,9 +6527,10 @@ IN BTM.Linking.Linkings</Action></Actions>
  Name="Step 1 - Setup"
  Guid="bb7a7959-26da-416d-af67-d71c98112e44"
 >
+<Comment>Give the train a distant MA, set it in FS mode and ERTMS level 1</Comment>
 <SubSteps>
 <SubStep
- Name="SubStep 1 - Initialize test environment"
+ Name="Sub-step 1 - Initialize test environment"
  Guid="54cebbf9-2151-4bd4-927d-ad99f0d2cc8b"
 >
 <Actions>
@@ -6366,15 +6546,7 @@ IN BTM.Linking.Linkings</Action></Actions>
  Guid="f5a0ac0a-4021-4bcf-a2cb-473c8e775a34"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 3 - Set up the linking"
- Guid="f05c3f0f-470e-4838-b13b-49e813d67798"
->
-<Actions>
-<Action
- Guid="6ef69831-f32c-4d7f-9828-4ee2fb2f8bd1"
->BTM.Linking.Linkings &lt;- []</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step 4 - Give the train an MA"
+ Name="Sub-step 3 - Give the train an MA"
  Guid="ca6e9397-1c7e-4907-a7b4-0bdf2e5cf4d6"
 >
 <Actions>
@@ -6388,13 +6560,13 @@ IN BTM.Linking.Linkings</Action></Actions>
     {
         EndSectionTimeOut =&gt; EMPTY,
         TimeOut =&gt; EMPTY,
-        Length =&gt; 400.0,
+        Length =&gt; 4000.0,
         DangerPoint =&gt; EMPTY,
         Overlap =&gt; EMPTY
     }
 }</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 5 - Provide train data for handling MAs"
+ Name="Sub-step 4 - Provide train data for handling MAs"
  Guid="d923d035-09f4-4ec5-9fee-9fe5772e62c0"
 >
 <Actions>
@@ -6409,7 +6581,7 @@ IN BTM.Linking.Linkings</Action></Actions>
  Guid="07091361-7ee9-4ea9-b107-34eb13d3f799"
 >Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 6 - Check that the setup performed properly"
+ Name="Sub-step 5 - Check that the setup performed properly"
  Guid="ad592632-781f-4e84-9398-98a37897b473"
 >
 <Expectations>
@@ -6417,35 +6589,11 @@ IN BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b8a1568e-d345-45ba-a184-40a9912b040e"
->Kernel.MA.SvL().Location == 400.0</Expectation><Expectation
+>Kernel.MA.SvL().Location == 4000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ecab0443-4a87-44b3-ba16-07b5003782bc"
->Kernel.MA.EndOfMovementAuthority().Location == 400.0</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step 7 - Clear old linking information"
- Guid="6ab48288-d931-4aad-8ca8-88898fcd8ba3"
->
-<Actions>
-<Action
- Guid="97cdb90a-34ae-45f5-9e06-c29f2eff4280"
->BTM.Linking.Linkings &lt;- []</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step 8 - Put in needed linking information"
- Guid="caa64086-52f1-4033-91ac-4d24ca1c61c6"
->
-<Actions>
-<Action
- Guid="531d7282-dadc-42e8-9bd3-8dfa835d0c92"
->INSERT BTM.Linking.LinkingData{
-    LocationAccuracy =&gt; 2.0,
-    Orientation =&gt; Default.Orientation.Nominal,
-    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
-    Distance =&gt; 250.0,
-    BaliseGroupIdentifier =&gt; Messages.NID_BG.NID_UNKNOWN
-}
-
-IN BTM.Linking.Linkings</Action></Actions>
+>Kernel.MA.EndOfMovementAuthority().Location == 4000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6453,12 +6601,237 @@ IN BTM.Linking.Linkings</Action></Actions>
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step 2 - Encounter a BG holding a repositioning information in the end section"
- Guid="13119158-2b41-4ebe-902c-c8c888d0f504"
+ Name="Step 2 - Accept repositioning information from linked BG with unknown ID"
+ Guid="dc68b77a-76a6-471b-97a3-683b09decca2"
 >
+<Comment>The train gets linking informations consistent with a repositioning information message and ithandles the message</Comment>
 <SubSteps>
 <SubStep
- Name="SubStep 1 - First balise has the packet"
+ Name="Sub-step 1 - Clear linking data"
+ Guid="afcf02a3-24b2-4b6e-97c2-367fca86869f"
+>
+<Actions>
+<Action
+ Guid="e13046c0-21b6-4d4e-b5fb-8bf56500125d"
+>BTM.Linking.Linkings &lt;- []</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Setup for the repositioning information"
+ Guid="61818e95-8130-4800-aa05-d31f980f854c"
+>
+<Actions>
+<Action
+ Guid="f6991e62-dc07-42e8-8e3a-88cbfc7409fe"
+>INSERT BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 10.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 5.0,
+    BaliseGroupIdentifier =&gt; Messages.NID_BG.NID_UNKNOWN
+}
+
+IN BTM.Linking.Linkings</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Receive repositioning information"
+ Guid="1cb95f57-769a-49fc-acc4-7234a3ed03af"
+>
+<Actions>
+<Action
+ Guid="f20b49c7-665d-4ffb-b9fb-8bf7578cf669"
+>BTM.Message &lt;- Messages.EUROBALISE.Message {
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._1C,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5461,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+
+    Sequence1 =&gt; [
+
+        Messages.EUROBALISE.SubStructure1 {
+
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message {
+
+                REPOSITIONING_INFORMATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Message {
+                    NID_PACKET =&gt; 16,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 40,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    L_SECTION =&gt; 2000
+                 }
+             }
+         }
+     ]
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 4 - Second balise for orientation"
+ Guid="5e23813e-2697-46ab-83f5-264b4d1f48a7"
+>
+<Actions>
+<Action
+ Guid="44890235-c4dd-487a-a8e4-d75b55983a08"
+>BTM.Message &lt;- Messages.EUROBALISE.Message {
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._2C,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5461,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; []
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 5 - Expectations _ information handled and no MA shortening"
+ Guid="a7781ca5-3829-4175-b22e-5f73fffafbfb"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2a8545de-3366-4142-a6ce-a4ce0df536f6"
+>NOT Kernel.HandlingOfAcceptedAndStoredInformation.ShortenedMaReceived</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="a1c5ad7e-8545-469e-a68c-70261af6f11c"
+>NOT Kernel.HandlingOfAcceptedAndStoredInformation.ShortenedMaReceivedRegardlessOfSvL</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9b8972f0-5fbd-42ae-9899-b9e58e9f9e87"
+>Kernel.MA.EndOfMovementAuthority().Location != 4000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="96952592-c2fe-471c-b3a6-79ad816e5b2f"
+>Kernel.MA.EndOfMovementAuthority().Location == 2005.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 3 - Reject repositioning information from an announced BG"
+ Guid="7f0e5067-1b1b-4ed1-bf47-903a08dd3246"
+>
+<Comment>The train gets linking information that is inconsistent with a repositioning information message and ignores it</Comment>
+<SubSteps>
+<SubStep
+ Name="Sub-step 1 - Clear linking data"
+ Guid="d2f66423-6964-4f90-a176-440367494049"
+>
+<Actions>
+<Action
+ Guid="423f439f-65d1-4454-b2bb-e688de511f2b"
+>BTM.Linking.Linkings &lt;- []</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Setup for the rejected repositioning information"
+ Guid="a56dcdee-17f5-4c39-a3ae-09bb13f77470"
+>
+<Actions>
+<Action
+ Guid="c5de6f6a-1552-48ca-81f7-097e18faf94c"
+>INSERT BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 10.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 5.0,
+    BaliseGroupIdentifier =&gt; 5466
+}
+
+IN BTM.Linking.Linkings</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Receive repositioning information"
+ Guid="59ce5eac-789e-4bc1-8cc6-909fa01f5a0e"
+>
+<Actions>
+<Action
+ Guid="df33f367-9eb7-47d5-b997-314573c54065"
+>BTM.Message &lt;- Messages.EUROBALISE.Message {
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._1C,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5466,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+
+    Sequence1 =&gt; [
+
+        Messages.EUROBALISE.SubStructure1 {
+
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message {
+
+                REPOSITIONING_INFORMATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Message {
+                    NID_PACKET =&gt; 16,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 40,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    L_SECTION =&gt; 200
+                 }
+             }
+         }
+     ]
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 4 - Second balise for orientation"
+ Guid="ee67c683-edc2-4865-9afd-7919eb8d80a3"
+>
+<Actions>
+<Action
+ Guid="3da423fe-8135-4afd-a860-192991baf95a"
+>BTM.Message &lt;- Messages.EUROBALISE.Message {
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._2C,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5466,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; []
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 5 - Expectations _ information ignored"
+ Guid="7f13f4b2-84d8-4878-8ccf-d005c34c77bd"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f08475a0-4c8f-499f-952b-561eb8ed83fa"
+>Kernel.MA.EndOfMovementAuthority().Location == 2005.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="fca6b8cd-7015-4b19-96b2-d51a5c5f498f"
+>NOT Kernel.HandlingOfAcceptedAndStoredInformation.ShortenedMaReceived</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="11e9b492-2791-4cfb-9aa0-5e099b803e61"
+>NOT Kernel.HandlingOfAcceptedAndStoredInformation.ShortenedMaReceivedRegardlessOfSvL</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 4 - Encounter BG holding repositioning information in another section"
+ Guid="c147548e-d6af-40ea-b6e8-2517554bdeda"
+>
+<Comment>The train handles repositioning information in a section other than the end section (for 3.8.5.2.1)</Comment>
+<SubSteps>
+<SubStep
+ Name="Sub-step 1 - First balise has the packet"
  Guid="863b5e00-f181-44d7-a900-8e7476907f52"
 >
 <Actions>
