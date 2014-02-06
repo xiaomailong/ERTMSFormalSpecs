@@ -48,6 +48,8 @@ namespace GUI.DataDictionaryView
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
         public override void BuildSubNodes(bool buildSubNodes)
         {
+            Nodes.Clear();
+
             foreach (DataDictionary.Parameter parameter in Item.FormalParameters)
             {
                 Nodes.Add(new ParameterTreeNode(parameter, buildSubNodes));

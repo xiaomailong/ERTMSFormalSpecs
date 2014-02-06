@@ -68,6 +68,8 @@ namespace GUI.DataDictionaryView
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
         public override void BuildSubNodes(bool buildSubNodes)
         {
+            base.BuildSubNodes(buildSubNodes);
+
             rules = new RulesTreeNode(Item, buildSubNodes);
             elements = new StructureElementsTreeNode(Item, buildSubNodes);
             procedures = new StructureProceduresTreeNode(Item, buildSubNodes);
@@ -76,8 +78,6 @@ namespace GUI.DataDictionaryView
             Nodes.Add(stateMachines);
             Nodes.Add(elements);
             Nodes.Add(rules);
-
-            base.BuildSubNodes(buildSubNodes);
         }
 
         /// <summary>

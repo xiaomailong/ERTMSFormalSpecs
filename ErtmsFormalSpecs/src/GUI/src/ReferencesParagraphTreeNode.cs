@@ -95,10 +95,20 @@ namespace GUI
         protected ReferencesParagraphTreeNode(T item, bool buildSubNodes, string name = null, bool isFolder = false, bool addRequirements = true)
             : base(item, buildSubNodes, name, isFolder)
         {
-            HandleRequirements = true;
-            if (addRequirements && item.Requirements.Count > 0)
+            HandleRequirements = addRequirements;
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
+        {
+            base.BuildSubNodes(buildSubNodes);
+
+            if (HandleRequirements && Item.Requirements.Count > 0)
             {
-                ReqReferences = new ReqRefsTreeNode(item, buildSubNodes);
+                ReqReferences = new ReqRefsTreeNode(Item, buildSubNodes);
                 Nodes.Add(ReqReferences);
             }
         }

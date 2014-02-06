@@ -271,7 +271,7 @@ namespace DataDictionary
                 {
                     element.AddError("Type of default value (" + element.DefaultValue.Type.FullName + ") does not match element type (" + element.Type.FullName + ")");
                 }
-            }                
+            }
 
             base.visit(obj, visitSubNodes);
         }
@@ -316,7 +316,7 @@ namespace DataDictionary
                     {
                         variable.AddError("Type of default value (" + variable.DefaultValue.Type.FullName + ")does not match variable type (" + variable.Type.FullName + ")");
                     }
-                }                
+                }
             }
 
             base.visit(obj, visitSubNodes);
@@ -392,6 +392,24 @@ namespace DataDictionary
                 if (noReq)
                 {
                     init.AddInfo("No requirement found for element");
+                }
+            }
+
+            reqRelated = init;
+            if (!reqRelated.getImplemented())
+            {
+                ModelElement parent = reqRelated.getFather() as ModelElement;
+                while (parent != null)
+                {
+                    ReqRelated other = parent as ReqRelated;
+                    if (other != null)
+                    {
+                        if (other.getImplemented())
+                        {
+                            other.AddWarning("This element is set as implemented whereas one of its children " + reqRelated.FullName + " is not");
+                        }
+                    }
+                    parent = parent.getFather() as ModelElement;
                 }
             }
 
@@ -726,6 +744,15 @@ namespace DataDictionary
                     else
                     {
                         declaredTypes[type.Name] = type;
+                    }
+
+                    Types.Collection collection = type as Types.Collection;
+                    if (collection != null)
+                    {
+                        if (collection.getMaxSize() == 0)
+                        {
+                            type.AddError("Collections should be upper bounded");
+                        }
                     }
                 }
 
