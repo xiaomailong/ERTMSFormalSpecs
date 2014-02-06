@@ -9654,62 +9654,6 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- Name="InitializeElementsForMA"
- Guid="6d5c558b-2e55-4405-b201-e178b960d495"
->
-<Rules>
-<Rule
- Priority="Processing"
- Name="Initialize SSP + Gradients"
- Guid="792ddece-1615-4107-bd52-b22b79c2a7c5"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Initialize SSP + Gradients"
- Guid="606363fc-d313-4b6e-b1c7-417b8b00f4c6"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="a56d2555-1473-472d-a7a9-4a0c4517f011"
->Kernel.TrackDescription.Gradient.Gradients &lt;-
-[
-    Kernel.TrackDescription.Gradient.GradientInfo
-    {
-        Distance =&gt; 0.0,
-        Gradient =&gt; 0.7
-    },
-    Kernel.TrackDescription.Gradient.GradientInfo
-    {
-        Distance =&gt; 4800.0,
-        Gradient =&gt; 0.94
-    }
-]</Action><Action
- Guid="e9491f8d-219f-491a-bc18-5c6a44800900"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
-[
-    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
-    {
-        Distance =&gt; 0.0,
-        BasicSpeed =&gt; 70.0,
-        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-        Categories =&gt;
-        [
-            Kernel.TrackDescription.StaticSpeedProfile.SSPCategory
-            {
-                CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_130_mm,
-                OtherSpecific =&gt; Kernel.TrainData.TrainCategory.FreightTrainInG,
-                Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category ,
-                Speed =&gt; 70.0
-            }
-        ]
-    }
-]</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
  Implemented="TRUE"
  Name="AddEmergencyStop"
  Guid="ceb27117-9325-44f7-88ca-b8341a1a09d6"

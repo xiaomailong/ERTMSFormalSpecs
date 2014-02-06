@@ -2126,7 +2126,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
  Name="D_LRBG"
  Guid="8b98f5c1-5722-4917-8ca6-4c9408d771e3"
 >
-<Expression>MessageTypes.UnScaleDistance ( BTM.DistanceFromLRBG(), Q_SCALE)</Expression>
+<Expression>MessageTypes.UnScaleDistance ( BTM.TravelledDistanceFromLRBG(), Q_SCALE)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.Q_SCALE"

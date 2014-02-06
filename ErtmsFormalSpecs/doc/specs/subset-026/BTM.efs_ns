@@ -127,7 +127,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dc0e4b52-3342-412a-bfc9-83bf799fc2a8"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>List of balise telegrams representing a single balise message.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -152,7 +152,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="40808470-300c-476e-a373-ad623146adf8"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Gives the value of the Location Accuracy which is determined either by the Linking (if available) or by the corresponding National Value (if applicable) or by the Default Value.</Comment>
 <Cases>
 <Case
  Name="LinkingAvailable"
@@ -193,7 +193,12 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2a707fc9-b132-4f41-a773-ce29711ea69e"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><ReqRef
+ Id="bcb653a9-abe2-44a8-ac09-0df33ec9af30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ea13b6a5-1c54-4c59-8d0e-7c5f7065859a"
+>
+</ReqRef><Comment>Provides the travelled distance from the LRBG, retrieved from the Linking (if available) or from the odometry information.</Comment>
 <Cases>
 <Case
  Name="LinkingAvailable"
@@ -202,7 +207,7 @@
 <PreConditions>
 <PreCondition
  Guid="a7596565-f7a2-424a-ad5d-577218b44d1c"
->Available ( Linking.CurrentLinking )</PreCondition></PreConditions>
+>Linking.LinkingApplicable()</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="LinkingNotAvailable"
@@ -231,25 +236,6 @@
 <Expression>REDUCE PreviousLRBGs 
   USING SelectFartherBG ( X , RESULT )
   INITIAL_VALUE EMPTY</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Distance"
- Implemented="TRUE"
- Name="DistanceFromLRBG"
- Guid="bf719b4e-e15b-4a7f-a4fd-b457b6716090"
->
-<ReqRef
- Id="bcb653a9-abe2-44a8-ac09-0df33ec9af30"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7e6be0ad-9a14-4336-91a6-dc5d5850178b"
->
-</ReqRef><Comment>Current position, relative to the LRBG.</Comment>
-<Cases>
-<Case
- Name="Value"
- Guid="484dc028-6a9a-4a0a-9a62-e97d118be22e"
->
-<Expression>Odometry.NominalDistance - BTM.LRBG.Position.Position</Expression>
 </Case></Cases>
 </Function><Function
  Type="BaliseGroup"
@@ -776,7 +762,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7904a906-de17-49e4-817b-3ae665deff46"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Gives the distance between the safe front end of the train and the active antenna.</Comment>
 <Parameters>
 <Parameter
  Type="Default.DistanceInterval"
@@ -802,22 +788,18 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4c4e5e30-e804-410c-93f1-3f35c3684c3c"
 >
+</ReqRef><ReqRef
+ Id="d3960249-edd7-4e75-8c50-ba27a4b4af49"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9cb72f70-6397-4ae2-bad7-c2db450f2398"
+>
 </ReqRef><Comment>Returns true if the current balise group consists of only a single balise</Comment>
 <Cases>
 <Case
- Name="True"
+ Name="Value"
  Guid="050bdffb-b0a0-4a7c-ad7c-995116a0edc3"
 >
-<PreConditions>
-<PreCondition
- Guid="286ae0ae-de8e-4a2e-8d32-68ae5ff5ad16"
->(COUNT CurrentBaliseGroup) == 1</PreCondition></PreConditions>
-<Expression>Boolean.True</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="55c6650d-fde3-4b71-9965-bb0b14d4af33"
->
-<Expression>Boolean.False</Expression>
+<Expression>(COUNT CurrentBaliseGroup) == 1</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -826,7 +808,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Name="HandleNewPacket"
  Guid="052d0827-c337-4549-9724-72afe831fafd"
 >
-<Comment></Comment>
+<Comment>This procedure is called for each packet received with a balise telegram.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.SubStructure1"
@@ -856,7 +838,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b1bac924-6dc6-4d14-bacc-59c1d6247393"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>We suppose that an element of type Messages.EUROBALISE.SubStructure1 can only contain one field defined, representing a single packet. The rule looks for the first available element and when it is found, calls the corresponding routing to store the received information.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1474,6 +1456,11 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7f9018a3-318b-4c60-a75e-0822012b2b05"
 >
+</ReqRef><ReqRef
+ Id="50574953-3247-4859-8de2-1049ab46e862"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6beac18d-82e2-426e-b617-0411fdd220dd"
+>
 </ReqRef><Comment>This procedure is used when the train detects a new LRBG, in order to update information relative to its LRBG.</Comment>
 <Parameters>
 <Parameter
@@ -1490,13 +1477,16 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Store current LRBG as previous encountered BG"
  Guid="36dfb833-4143-4e52-90a3-b98a644556f1"
 >
+<Comment>The current LRBG is stored in the list of previously encountered balise groups.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="LRBG is available"
  Guid="3b1afa6d-b6ec-451b-95aa-0a2cc16bd7ad"
@@ -1589,7 +1579,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="257374c4-068a-43db-ba08-1001600b3108"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Stores the position of that unlinked balise group, which may be used for position reporting.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1626,14 +1616,16 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Clear linking information"
  Guid="808fa76e-0ab1-4997-8e54-aa7de7f24158"
 >
-<Comment></Comment>
+<Comment>First of all, clear all Linking information which expectation window has passed safe antenna position.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Clear linking information"
  Guid="81a14f0a-5ae2-4723-b089-37713cbdff10"
@@ -1651,7 +1643,12 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Name="LRBG change"
  Guid="2eaeddca-034e-4016-956e-16066b1645ba"
 >
-<Comment></Comment>
+<ReqRef
+ Id="50574953-3247-4859-8de2-1049ab46e862"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9b6ea606-21f9-4e4f-9f72-a903cbde27f5"
+>
+</ReqRef><Comment>If the current balise group is a candidate to become a new LRBG, then it is stored as a new LRBG.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1688,7 +1685,12 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Name="Unlinked BG"
  Guid="d9721a38-c34a-4516-940d-18d4dbe8ac69"
 >
-<Comment></Comment>
+<ReqRef
+ Id="d5dcae2f-5a41-4d4b-ab0d-436579a7646a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c3c3db39-aa21-4c1a-b790-97515020ea23"
+>
+</ReqRef><Comment>Stores the position of that unlinked balise group, which may be used for position reporting.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1717,9 +1719,11 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5e05338d-e93e-4b29-8cdd-fb151214b19c"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>On reception of a new MA, the previously stored mode profile has to be deleted.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Clear mode profile if MA received"
  Guid="e44a7aeb-06b0-41ca-b5de-6a1c63e40993"
 >
@@ -1743,9 +1747,11 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b862888b-2f98-4b53-aefc-fddd796395f3"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the infill information is available, then the mode profil has to be deleted only beyond the reference location of the infill information. Otherwise, the entire mode profile is deleted.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Infill available, before MA"
  Guid="11f4f9e8-af21-4088-9785-72b6d7de5354"
 >
@@ -1765,6 +1771,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Guid="840d737c-0711-45fa-aa7c-6d7614ac52b5"
 >Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; ( FIRST_IN Message.Sequence1 | Available ( X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE ) ).TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Infill available, after MA"
  Guid="78820e91-8f55-4038-84e6-c0149d7833b1"
 >
@@ -1777,6 +1784,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Guid="43a9100d-2063-4f03-968c-58d689ab3e26"
 >Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; EMPTY )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="No infill available"
  Guid="5bec5fe9-140e-4dce-9b69-67f9a5aa7de3"
 >
@@ -1801,7 +1809,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7717c70f-3f60-4a33-a433-266118f23938"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Handles the packets received within the current message and applies the linking reaction, if any.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1827,10 +1835,12 @@ ON Message.Sequence1</Action><Action
  Guid="898211b1-8961-4cba-a823-048cf91b1124"
 >BGIsConsidered &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="ApplyLinkingReaction"
+ Name="Apply linking reaction"
  Guid="25427163-bd6e-4d0e-bc9e-6dbeb64f8e61"
 >
+<Comment>If the balise group is not received within its expectation window, the linking reaction is applied.</Comment>
 <PreConditions>
 <PreCondition
  Guid="a5d3327e-2ad9-4813-96c5-71278cebc117"
@@ -1844,15 +1854,18 @@ ON Message.Sequence1</Action><Action
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="ApplyLinkingReaction"
+ Name="Apply linking reaction"
  Guid="4df4b0bf-3417-4cf7-aac1-ab4426ffbfcc"
 >
+<Comment>If the balise group is not received within its expectation window, the linking reaction is applied.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="ServiceBrake"
+ Name="Service brake"
  Guid="91f4a7b1-c086-45e2-b630-7b518494ff43"
 >
 <PreConditions>
@@ -1864,8 +1877,9 @@ ON Message.Sequence1</Action><Action
  Guid="c25a0dde-94bd-4b8a-b757-7297f7ccdab2"
 >Kernel.SpeedAndDistanceMonitoring.TriggerSBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="TrainTrip"
+ Name="Train trip"
  Guid="5dfb84c4-496e-4117-8cdc-1135596dbfc3"
 >
 <ReqRef
@@ -1895,9 +1909,11 @@ ON Message.Sequence1</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="11cfd1f9-494c-440e-960a-a80376b0ac9c"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>An MA is always considered after all other packets of a message have been processed. This is mandatory to ensure that all preconditions for an MA (which may have been transmitted within this message as well) can be evaluated before the evaluation of the MA.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="HandleBaliseMessage"
  Guid="07873378-d43b-4dd7-8c2f-d1c0fd8aca29"
 >
@@ -1947,14 +1963,16 @@ If all the messages of the current balise group have been received, calls Handle
 <Rules>
 <Rule
  Priority="UpdateINTERNAL"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Store message"
  Guid="e7fd0848-9ab3-4368-b4b7-c0c0cd1f728e"
 >
-<Comment></Comment>
+<Comment>Stores the received information into the corresponding variable.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Not a duplicate"
  Guid="74dfa027-a200-477e-af85-e70bf20148b1"
@@ -1970,14 +1988,16 @@ If all the messages of the current balise group have been received, calls Handle
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Keep position of the first balise"
  Guid="1ec3b0d7-6c60-465f-87b2-a26fb677f799"
 >
-<Comment></Comment>
+<Comment>Stores the position of the first balise of that balise group in order to be used later to compute the position of the new LRBG (in case that balise group will become the LRBG).</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Keep position of balise 1"
  Guid="62e6627c-c2b6-4ac1-88e4-ffa9aa764485"
@@ -1993,14 +2013,16 @@ If all the messages of the current balise group have been received, calls Handle
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="All balises have been received for the balise group"
  Guid="cfeca65f-2c5b-4b0a-88b7-aeb5a11123da"
 >
-<Comment></Comment>
+<Comment>If telegrams from all balises of the current balise group have been received, the on-board handles the new message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="All balises have been received for the balise group"
  Guid="1e6e1aef-6e2f-455a-a63e-f24a5d6fc960"
@@ -2030,7 +2052,8 @@ If all the messages of the current balise group have been received, calls Handle
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a6f1cbf9-29c8-4649-9b08-544b1339877e"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>An MA is always considered after all other packets of a message have been processed. This is mandatory to ensure that all preconditions for an MA (which may have been transmitted within this message as well) can be evaluated before the evaluation of the MA.</Comment>
+<Parameters>
 <Parameter
  Type="Messages.EUROBALISE.SubStructure1"
  Name="Packet"
@@ -2045,9 +2068,11 @@ If all the messages of the current balise group have been received, calls Handle
 <Rules>
 <Rule
  Priority="Processing"
- Name="HandleNewPacketMA"
+ Implemented="TRUE"
+ Name="Handle new MA"
  Guid="27f968b8-6c75-4806-a96d-44abe1a92a13"
 >
+<Comment>Processes the received information about the movement authority (for level 1 or levels 2 or 3).</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2301,6 +2326,7 @@ If all the messages of the current balise group have been received, calls Handle
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Clear current balises from current balise group"
  Guid="9942d5a4-ca09-49f3-8cdd-781b0dc75e3e"
@@ -2323,7 +2349,7 @@ If all the messages of the current balise group have been received, calls Handle
  Name="Incomplete balise group received"
  Guid="898a6047-388a-4c9c-85e6-9dade9e6c758"
 >
-<Comment></Comment>
+<Comment>If the on-board receives a balise telegram of a balise group different from the currently handled balise group, the current balise group is considered as incomplete.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition

@@ -466,6 +466,7 @@ namespace GUI
                 if (!node.SubNodesBuilt)
                 {
                     node.BuildSubNodes(false);
+                    node.UpdateColor();
                 }
 
                 foreach (BaseTreeNode subNode in node.Nodes)
@@ -603,6 +604,7 @@ namespace GUI
                                  current.MessagePathInfo == Utils.MessagePathInfoEnum.Error))
                         {
                             node.BuildSubNodes(false);
+                            node.UpdateColor();
                         }
                         else if (levelEnum == Utils.ElementLog.LevelEnum.Warning &&
                                 (current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError ||
@@ -611,10 +613,12 @@ namespace GUI
                                  current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToWarning))
                         {
                             node.BuildSubNodes(false);
+                            node.UpdateColor();
                         }
                         else if (levelEnum == Utils.ElementLog.LevelEnum.Info && current.MessagePathInfo != Utils.MessagePathInfoEnum.Nothing)
                         {
                             node.BuildSubNodes(false);
+                            node.UpdateColor();
                         }
                     }
                     if (node.Nodes.Count > 0)

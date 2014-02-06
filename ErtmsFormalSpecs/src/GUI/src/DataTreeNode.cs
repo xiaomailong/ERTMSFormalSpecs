@@ -238,20 +238,24 @@ namespace GUI
                 {
                     Utils.IModelElement current = Model;
                     List<Utils.ElementLog> messages = new List<Utils.ElementLog>();
-                    while (current != null)
+                    BaseTreeNode parent = Parent as BaseTreeNode;
+                    if (parent != null && parent.Model != Model)
                     {
-                        if (current.Messages != null)
+                        while (current != null)
                         {
-                            messages.AddRange(current.Messages);
-                        }
+                            if (current.Messages != null)
+                            {
+                                messages.AddRange(current.Messages);
+                            }
 
-                        if (EFSSystem.INSTANCE.DisplayEnclosingMessages)
-                        {
-                            current = current.Enclosing as Utils.IModelElement;
-                        }
-                        else
-                        {
-                            current = null;
+                            if (EFSSystem.INSTANCE.DisplayEnclosingMessages)
+                            {
+                                current = current.Enclosing as Utils.IModelElement;
+                            }
+                            else
+                            {
+                                current = null;
+                            }
                         }
                     }
                     baseForm.MessagesTextBox.Lines = Utils.Utils.toStrings(messages);
@@ -505,6 +509,7 @@ namespace GUI
             if (!SubNodesBuilt)
             {
                 BuildSubNodes(false);
+                UpdateColor();
             }
 
             Utils.MessagePathInfoEnum retVal = Utils.MessagePathInfoEnum.Nothing;
@@ -900,6 +905,7 @@ namespace GUI
                     Model.AddModelElement(copy);
                     Nodes.Clear();
                     BuildSubNodes(true);
+                    UpdateColor();
                 }
                 catch (Exception)
                 {
@@ -933,6 +939,7 @@ namespace GUI
                     {
                         parentNode.Nodes.Clear();
                         parentNode.BuildSubNodes(true);
+                        parentNode.UpdateColor();
                     }
                     else
                     {
@@ -1076,6 +1083,7 @@ namespace GUI
             if (buildSubNodes)
             {
                 BuildSubNodes(false);
+                UpdateColor();
                 RefreshNode();
             }
         }
@@ -1090,6 +1098,7 @@ namespace GUI
                 if (!node.SubNodesBuilt)
                 {
                     node.BuildSubNodes(false);
+                    node.UpdateColor();
                 }
             }
             RefreshNode();
