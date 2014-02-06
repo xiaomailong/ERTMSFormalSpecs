@@ -193,7 +193,12 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2a707fc9-b132-4f41-a773-ce29711ea69e"
 >
-</ReqRef><Comment>Provides the travelled distance from the LRBB, retrieved from the Linking (if available) or from the odometry information.</Comment>
+</ReqRef><ReqRef
+ Id="bcb653a9-abe2-44a8-ac09-0df33ec9af30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ea13b6a5-1c54-4c59-8d0e-7c5f7065859a"
+>
+</ReqRef><Comment>Provides the travelled distance from the LRBG, retrieved from the Linking (if available) or from the odometry information.</Comment>
 <Cases>
 <Case
  Name="LinkingAvailable"
@@ -231,25 +236,6 @@
 <Expression>REDUCE PreviousLRBGs 
   USING SelectFartherBG ( X , RESULT )
   INITIAL_VALUE EMPTY</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Distance"
- Implemented="TRUE"
- Name="DistanceFromLRBG"
- Guid="bf719b4e-e15b-4a7f-a4fd-b457b6716090"
->
-<ReqRef
- Id="bcb653a9-abe2-44a8-ac09-0df33ec9af30"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7e6be0ad-9a14-4336-91a6-dc5d5850178b"
->
-</ReqRef><Comment>Current position, relative to the LRBG.</Comment>
-<Cases>
-<Case
- Name="Value"
- Guid="484dc028-6a9a-4a0a-9a62-e97d118be22e"
->
-<Expression>Odometry.NominalDistance - BTM.LRBG.Position.Position</Expression>
 </Case></Cases>
 </Function><Function
  Type="BaliseGroup"
