@@ -115,11 +115,11 @@ namespace GUI.DataDictionaryView
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
         public override void BuildSubNodes(bool buildSubNodes)
         {
+            base.BuildSubNodes(buildSubNodes);
+
             valuesTreeNode = new EnumerationValuesTreeNode(Item, buildSubNodes);
             Nodes.Add(valuesTreeNode);
             Nodes.Add(new SubEnumerationsTreeNode(Item, buildSubNodes));
-
-            base.BuildSubNodes(buildSubNodes);
         }
 
         /// <summary>

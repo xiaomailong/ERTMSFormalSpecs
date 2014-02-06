@@ -504,7 +504,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ebdbf471-edcb-4fd7-82b6-33a5467a7cc7"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Returns the orientation of the current balise group</Comment>
 <Cases>
 <Case
  Name="Less than two balises in the balise group, valid linking information"
@@ -513,7 +513,7 @@
 <PreConditions>
 <PreCondition
  Guid="682a9ec8-f37d-4d87-8dd6-9a4ca0648099"
->( COUNT CurrentBaliseGroup ) &lt; 2</PreCondition><PreCondition
+>IsSingleBaliseGroup()</PreCondition><PreCondition
  Guid="3f4762dd-f337-493a-927f-479853f08788"
 >Linking.CurrentLinking().BaliseGroupIdentifier== ( FIRST_IN CurrentBaliseGroup ).NID_BG</PreCondition></PreConditions>
 <Expression>Linking.CurrentLinking().Orientation</Expression>
@@ -524,7 +524,7 @@
 <PreConditions>
 <PreCondition
  Guid="42e647d7-f4ec-404e-822d-0af260c9426c"
->( COUNT CurrentBaliseGroup ) &lt; 2</PreCondition></PreConditions>
+>IsSingleBaliseGroup()</PreCondition></PreConditions>
 <Expression>Orientation.Unknown</Expression>
 </Case><Case
  Name="First balise is the number 0"
@@ -790,6 +790,34 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Guid="d62cbab2-876b-43a9-b9ef-9ab243cac385"
 >
 <Expression>Kernel.TrainPosition.FrontEndPosition ( PointOfInterest ) - ActiveAntennaPosition</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="IsSingleBaliseGroup"
+ Guid="35c94014-3076-4d7f-9364-9793510f3456"
+>
+<ReqRef
+ Id="0b39fdf7-d36a-45dc-81ad-4fc52969968f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c4e5e30-e804-410c-93f1-3f35c3684c3c"
+>
+</ReqRef><Comment>Returns true if the current balise group consists of only a single balise</Comment>
+<Cases>
+<Case
+ Name="True"
+ Guid="050bdffb-b0a0-4a7c-ad7c-995116a0edc3"
+>
+<PreConditions>
+<PreCondition
+ Guid="286ae0ae-de8e-4a2e-8d32-68ae5ff5ad16"
+>(COUNT CurrentBaliseGroup) == 1</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="55c6650d-fde3-4b71-9965-bb0b14d4af33"
+>
+<Expression>Boolean.False</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

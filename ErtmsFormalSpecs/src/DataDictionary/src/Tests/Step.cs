@@ -209,7 +209,7 @@ namespace DataDictionary.Tests
             Step retVal = (Step)DataDictionary.Generated.acceptor.getFactory().createStep();
             retVal.Name = name;
 
-            retVal.appendSubSteps(SubStep.createDefault("SubStep1"));
+            retVal.appendSubSteps(SubStep.createDefault("Sub-step1"));
 
             return retVal;
         }

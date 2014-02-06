@@ -170,12 +170,12 @@ namespace GUI.SpecificationView
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
         public override void BuildSubNodes(bool buildSubNodes)
         {
+            base.BuildSubNodes(buildSubNodes);
+
             foreach (DataDictionary.Specification.Paragraph paragraph in Item.SubParagraphs)
             {
                 Nodes.Add(new ParagraphTreeNode(paragraph, buildSubNodes));
             }
-
-            base.BuildSubNodes(buildSubNodes);
         }
 
         /// <summary>
@@ -331,7 +331,7 @@ namespace GUI.SpecificationView
             retVal.Insert(7, new MenuItem("Add Table to Id", new EventHandler(AddTableHandler)));
             retVal.Insert(8, new MenuItem("Add Entry to Id", new EventHandler(AddEntryHandler)));
             retVal.Insert(9, new MenuItem("-"));
-            
+
             return retVal;
         }
 
