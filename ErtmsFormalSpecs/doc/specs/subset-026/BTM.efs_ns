@@ -127,7 +127,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dc0e4b52-3342-412a-bfc9-83bf799fc2a8"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>List of balise telegrams representing a single balise message.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -152,7 +152,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="40808470-300c-476e-a373-ad623146adf8"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Gives the value of the Location Accuracy which is determined either by the Linking (if available) or by the corresponding National Value (if applicable) or by the Default Value.</Comment>
 <Cases>
 <Case
  Name="LinkingAvailable"
@@ -193,7 +193,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2a707fc9-b132-4f41-a773-ce29711ea69e"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Provides the travelled distance from the LRBB, retrieved from the Linking (if available) or from the odometry information.</Comment>
 <Cases>
 <Case
  Name="LinkingAvailable"
@@ -202,7 +202,7 @@
 <PreConditions>
 <PreCondition
  Guid="a7596565-f7a2-424a-ad5d-577218b44d1c"
->Available ( Linking.CurrentLinking )</PreCondition></PreConditions>
+>Linking.LinkingApplicable()</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="LinkingNotAvailable"
@@ -776,7 +776,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7904a906-de17-49e4-817b-3ae665deff46"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Gives the distance between the safe front end of the train and the active antenna.</Comment>
 <Parameters>
 <Parameter
  Type="Default.DistanceInterval"
@@ -802,6 +802,11 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4c4e5e30-e804-410c-93f1-3f35c3684c3c"
 >
+</ReqRef><ReqRef
+ Id="d3960249-edd7-4e75-8c50-ba27a4b4af49"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9cb72f70-6397-4ae2-bad7-c2db450f2398"
+>
 </ReqRef><Comment>Returns true if the current balise group consists of only a single balise</Comment>
 <Cases>
 <Case
@@ -817,7 +822,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Name="HandleNewPacket"
  Guid="052d0827-c337-4549-9724-72afe831fafd"
 >
-<Comment></Comment>
+<Comment>This procedure is called for each packet received with a balise telegram.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.SubStructure1"
@@ -847,7 +852,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b1bac924-6dc6-4d14-bacc-59c1d6247393"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>We suppose that an element of type Messages.EUROBALISE.SubStructure1 can only contain one field defined, representing a single packet. The rule looks for the first available element and when it is found, calls the corresponding routing to store the received information.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1481,6 +1486,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Store current LRBG as previous encountered BG"
  Guid="36dfb833-4143-4e52-90a3-b98a644556f1"
@@ -1488,6 +1494,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="LRBG is available"
  Guid="3b1afa6d-b6ec-451b-95aa-0a2cc16bd7ad"
@@ -1886,7 +1893,8 @@ ON Message.Sequence1</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="11cfd1f9-494c-440e-960a-a80376b0ac9c"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>An MA is always considered after all other packets of a message have been processed. This is mandatory to ensure that all preconditions for an MA (which may have been transmitted within this message as well) can be evaluated before the evaluation of the MA.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="HandleBaliseMessage"
@@ -1938,6 +1946,7 @@ If all the messages of the current balise group have been received, calls Handle
 <Rules>
 <Rule
  Priority="UpdateINTERNAL"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Store message"
  Guid="e7fd0848-9ab3-4368-b4b7-c0c0cd1f728e"
@@ -1946,6 +1955,7 @@ If all the messages of the current balise group have been received, calls Handle
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Not a duplicate"
  Guid="74dfa027-a200-477e-af85-e70bf20148b1"
@@ -1961,6 +1971,7 @@ If all the messages of the current balise group have been received, calls Handle
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Keep position of the first balise"
  Guid="1ec3b0d7-6c60-465f-87b2-a26fb677f799"
@@ -1969,6 +1980,7 @@ If all the messages of the current balise group have been received, calls Handle
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Keep position of balise 1"
  Guid="62e6627c-c2b6-4ac1-88e4-ffa9aa764485"
@@ -1984,6 +1996,7 @@ If all the messages of the current balise group have been received, calls Handle
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="All balises have been received for the balise group"
  Guid="cfeca65f-2c5b-4b0a-88b7-aeb5a11123da"
@@ -1992,6 +2005,7 @@ If all the messages of the current balise group have been received, calls Handle
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="All balises have been received for the balise group"
  Guid="1e6e1aef-6e2f-455a-a63e-f24a5d6fc960"
@@ -2021,7 +2035,8 @@ If all the messages of the current balise group have been received, calls Handle
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a6f1cbf9-29c8-4649-9b08-544b1339877e"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>An MA is always considered after all other packets of a message have been processed. This is mandatory to ensure that all preconditions for an MA (which may have been transmitted within this message as well) can be evaluated before the evaluation of the MA.</Comment>
+<Parameters>
 <Parameter
  Type="Messages.EUROBALISE.SubStructure1"
  Name="Packet"
