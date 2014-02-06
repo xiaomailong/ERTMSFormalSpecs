@@ -119,10 +119,7 @@ namespace GUI
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
-            retVal.AddRange(base.GetMenuItems());
-            retVal.Insert(4, new MenuItem("-"));
-            retVal.Insert(5, new MenuItem("Select", new EventHandler(SelectHandler)));
+            retVal.Add(new MenuItem("Select", new EventHandler(SelectHandler)));
 
             return retVal;
         }
