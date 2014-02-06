@@ -579,7 +579,12 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="67c5844c-2587-487e-a1a0-437d5be4dbf5"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment>Used to store the information about the previous MA, when a new MA is received. Allows to verify if the MA was shortened.
+
+IsSvL indicates if the previous End of Movement Authority was an SvL (to detect the case of MA shortening regardless of the SvL Location).
+
+Location stores the previous End of Movement Authority location.</Comment>
+<StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
@@ -1911,24 +1916,57 @@ Default.BaseTypes.LengthToDistance(
  Name="Store previous information"
  Guid="2c71883e-4454-4fb3-81ba-ab1d2e464a82"
 >
+<ReqRef
+ Id="d8e470e4-30ad-41be-8c8d-9828fc218d73"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d3620d62-574f-4d4a-8539-6d7347681453"
+>
+</ReqRef><ReqRef
+ Id="0c39084a-19e8-4784-962f-8dd4ba8a2aee"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8ae016cd-1801-47e7-a461-58dd80fcf3aa"
+>
+</ReqRef><Comment>If the on-board was supervising an SvL, its location is stored in order to be compared with the new SvL (if any) to detect the possible shortening.
+
+If the on-board was supervision an LOA and will receive a SvL with the new MA, then it will be considered as shortening, regardless the location.
+
+The information about the type of supervised target (SvL or LOA) is also stored, to determine the kind of shortening (regardless the location or not).</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
- Name="Store previous information"
+ Name="SvL"
  Guid="1bdb0b15-38b6-4e9f-9a51-94ff2db10a46"
 >
 <PreConditions>
 <PreCondition
  Guid="51bdba26-9465-413b-af5e-004242826ec0"
->Available ( MA )</PreCondition></PreConditions>
+>Available ( MA )
+  AND
+SvL() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0dab86fc-3cea-42d4-a180-592e92f08cc4"
 >ShorteningHandler &lt;- MaShorteningHandler
 {
-    Location =&gt; EndOfMovementAuthority().Location,
-    IsSvL =&gt; IsSvL ( EndOfMovementAuthority() )
+    Location =&gt; SvL().Location,
+    IsSvL =&gt; True
+}</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="LOA"
+ Guid="12c3d848-e54b-474a-b939-e0c4b8b27b38"
+>
+<PreConditions>
+<PreCondition
+ Guid="fcd92312-44cd-4e8f-a36f-9d2e11fe0416"
+>Available ( MA )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2da3de98-5d2c-4ec0-ab71-2dcfd1efb4f5"
+>ShorteningHandler &lt;- MaShorteningHandler
+{
+    Location =&gt; BaseTypes.Distance.Unknown,
+    IsSvL =&gt; False
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -2438,7 +2476,7 @@ Default.BaseTypes.LengthToDistance(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="TestMaShortening"
+ Name="Test MA shortening"
  Guid="a4085e77-2d23-4df8-a431-929002d2d81d"
 >
 <ReqRef
@@ -2451,7 +2489,10 @@ Default.BaseTypes.LengthToDistance(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="48b155d6-3d58-4804-a7f2-fa5fcbd3734b"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>In case the previous End of Authority was an SvL and the new SvL is shorted, this is an MA shortening.
+
+In case the previous End of Authority was an LOA and the new SvL is shorter, this is an MA shortening regardless of the SvL location.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2468,11 +2509,9 @@ Default.BaseTypes.LengthToDistance(
  Guid="7935e2a9-c820-4da5-95ba-536fc1e4ab00"
 >ShorteningHandler != EMPTY
   AND
-ShorteningHandler.Location &gt; MA.EndOfMovementAuthority().Location
+NOT ShorteningHandler.IsSvL
   AND
-ShorteningHandler.IsSvL
-  AND
-NOT IsSvL ( MA.EndOfMovementAuthority() )</PreCondition></PreConditions>
+SvL() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8e3480a6-37c8-4922-8d3b-cd9c3de22266"
@@ -2492,11 +2531,11 @@ NOT IsSvL ( MA.EndOfMovementAuthority() )</PreCondition></PreConditions>
  Guid="51e00945-5c52-4bd2-9d37-0446face1f21"
 >ShorteningHandler != EMPTY
   AND
-ShorteningHandler.Location &gt; MA.EndOfMovementAuthority().Location
-  AND
 ShorteningHandler.IsSvL
   AND
-IsSvL ( MA.EndOfMovementAuthority() )</PreCondition></PreConditions>
+SvL() != EMPTY
+  AND
+SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b1a699f9-d531-489f-bfd1-e8d7484a990f"

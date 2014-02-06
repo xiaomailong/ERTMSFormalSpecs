@@ -99,10 +99,10 @@ namespace GUI.TestRunnerView
         /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
         public override void BuildSubNodes(bool buildSubNodes)
         {
+            base.BuildSubNodes(buildSubNodes);
+
             steps = new StepsTreeNode(Item, buildSubNodes);
             Nodes.Add(steps);
-
-            base.BuildSubNodes(buildSubNodes);
         }
         /// <summary>
         /// Creates the editor for this tree node

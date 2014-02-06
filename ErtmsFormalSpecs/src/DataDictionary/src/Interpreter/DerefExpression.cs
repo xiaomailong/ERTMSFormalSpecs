@@ -155,7 +155,16 @@ namespace DataDictionary.Interpreter
                         StaticUsage.AddUsages(Arguments[i].StaticUsage, null);
                         StaticUsage.AddUsage(Arguments[i].Ref, Root, null);
                     }
-                    Arguments[0].SemanticAnalysis();
+
+                    if (current.Value is DataDictionary.Types.NameSpace)
+                    {
+                        Arguments[0].SemanticAnalysis(null, Filter.IsNameSpace.INSTANCE);
+                    }
+                    else
+                    {
+                        Arguments[0].SemanticAnalysis();
+
+                    }
                     StaticUsage.AddUsage(Arguments[0].Ref, Root, null);
                 }
                 else if (tmp.IsAmbiguous)

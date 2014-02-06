@@ -256,6 +256,26 @@ namespace DataDictionary
             }
         }
 
+        public override void visit(Generated.StructureElement obj, bool visitSubNodes)
+        {
+            Types.StructureElement element = (Types.StructureElement)obj;
+
+            if (!Utils.Utils.isEmpty(element.getDefault()))
+            {
+                checkExpression(element, element.getDefault());
+            }
+
+            if (element.DefaultValue != null)
+            {
+                if (!element.DefaultValue.Type.Match(element.Type))
+                {
+                    element.AddError("Type of default value (" + element.DefaultValue.Type.FullName + ") does not match element type (" + element.Type.FullName + ")");
+                }
+            }
+
+            base.visit(obj, visitSubNodes);
+        }
+
         public override void visit(Generated.Variable obj, bool visitSubNodes)
         {
             DataDictionary.Variables.Variable variable = obj as Variables.Variable;
@@ -288,6 +308,14 @@ namespace DataDictionary
                 if (!Utils.Utils.isEmpty(variable.getDefaultValue()))
                 {
                     checkExpression(variable, variable.getDefaultValue());
+                }
+
+                if (variable.DefaultValue != null)
+                {
+                    if (!variable.DefaultValue.Type.Match(variable.Type))
+                    {
+                        variable.AddError("Type of default value (" + variable.DefaultValue.Type.FullName + ")does not match variable type (" + variable.Type.FullName + ")");
+                    }
                 }
             }
 
@@ -364,6 +392,24 @@ namespace DataDictionary
                 if (noReq)
                 {
                     init.AddInfo("No requirement found for element");
+                }
+            }
+
+            reqRelated = init;
+            if (!reqRelated.getImplemented())
+            {
+                ModelElement parent = reqRelated.getFather() as ModelElement;
+                while (parent != null)
+                {
+                    ReqRelated other = parent as ReqRelated;
+                    if (other != null)
+                    {
+                        if (other.getImplemented())
+                        {
+                            other.AddWarning("This element is set as implemented whereas one of its children " + reqRelated.FullName + " is not");
+                        }
+                    }
+                    parent = parent.getFather() as ModelElement;
                 }
             }
 
@@ -698,6 +744,15 @@ namespace DataDictionary
                     else
                     {
                         declaredTypes[type.Name] = type;
+                    }
+
+                    Types.Collection collection = type as Types.Collection;
+                    if (collection != null)
+                    {
+                        if (collection.getMaxSize() == 0)
+                        {
+                            type.AddError("Collections should be upper bounded");
+                        }
                     }
                 }
 
