@@ -916,7 +916,7 @@ namespace DataDictionary
             List<Constants.EnumValue> valuesFound = new List<Constants.EnumValue>();
             foreach (Constants.EnumValue enumValue in enumeration.Values)
             {
-                if (enumValue.getValue() != null)
+                if (!string.IsNullOrEmpty(enumValue.getValue()))
                 {
                     foreach (Constants.EnumValue other in valuesFound)
                     {
