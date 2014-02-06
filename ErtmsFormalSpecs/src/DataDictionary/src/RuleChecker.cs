@@ -252,7 +252,18 @@ namespace DataDictionary
         {
             if (string.IsNullOrEmpty(commentable.Comment))
             {
-                ((ModelElement)commentable).AddInfo("This element should be documented");
+                bool requiresComment = true;
+
+                Types.StateMachine stateMachine = commentable as Types.StateMachine;
+                if (stateMachine != null)
+                {
+                    requiresComment = stateMachine.EnclosingStateMachine == null;
+                }
+
+                if (requiresComment)
+                {
+                    ((ModelElement)commentable).AddInfo("This element should be documented");
+                }
             }
         }
 
