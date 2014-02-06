@@ -1012,7 +1012,7 @@
 <Actions>
 <Action
  Guid="12acec09-f19a-4d73-81b1-c9c956918191"
->EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Initialized</Action><Action
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
  Guid="6441ed72-0a34-4ef2-bd41-0c1271c5e5da"
 >EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="065da61c-b10b-40ab-904f-0e068361be4a"
@@ -1837,7 +1837,7 @@
 <Actions>
 <Action
  Guid="d154a5a2-41ee-4dc6-ba2c-69550dd02b04"
->EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Initialized</Action><Action
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
  Guid="a7d0a78a-943a-493c-8243-4ba9c353cd3b"
 >EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="47f77dc4-ef04-464d-83f0-80199ced97ea"
@@ -1951,7 +1951,7 @@
 <Actions>
 <Action
  Guid="0b10fd48-b978-4362-b840-f5811f07bf1f"
->EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Initialized</Action><Action
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
  Guid="a2b6b59e-2e4a-4e80-8e9f-29d63cdb55b3"
 >EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="c3e8f314-ef5e-45a4-ba4e-53e8d3b9f397"
@@ -2071,9 +2071,11 @@
  Guid="4cc62806-bc7a-42e3-8abe-b2209ccfcff2"
 >Kernel.Level.Value &lt;- Level.L2</Action><Action
  Guid="1ab99b18-084a-475f-bc22-1a1172d7beda"
->EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.ConnectionStateEnum.Initialized</Action><Action
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
  Guid="cd8d2c92-29c6-4cc5-a96a-96e7a2709b00"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
+ Guid="0eebaa8a-574f-4fee-bace-11e8b0066a46"
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2126,7 +2128,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="964990c8-c9d2-40a9-abcb-a6694ada24e2"
->EURORADIO.CurrentRBCConnection().ConnectionState == EURORADIO.ConnectionStateEnum.Terminating</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().ConnectionState in EURORADIO.RBCStruct.ConnectionStateSM.Terminating</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
