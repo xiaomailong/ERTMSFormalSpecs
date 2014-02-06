@@ -143,6 +143,7 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public override void CheckStatement()
         {
+            VariableIdentification.checkExpression();
             if (VariableIdentification.Ref is Parameter)
             {
                 Root.AddError("Cannot assign a value to a parameter (" + VariableIdentification.ToString() + ")");
