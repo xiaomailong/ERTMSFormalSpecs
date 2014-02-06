@@ -1584,6 +1584,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="CleanUp"
  Guid="6fdc24b9-9135-4544-8be5-2872afecf193"
 >
@@ -1817,6 +1818,7 @@ Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </Function><Function
  Type="RBCStruct"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="CurrentRBCConnection"
  Guid="3f3bd225-5d45-4ad8-a3c3-4b15bd9d11e4"
 >
@@ -1881,6 +1883,7 @@ Terminal2 != EMPTY</Expression>
 </Function><Function
  Type="ContactActionEnum"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ConvertActionToPerform"
  Guid="fcc7735a-3e46-4160-a9cb-7124ea1d73e6"
 >
@@ -1911,6 +1914,7 @@ Terminal2 != EMPTY</Expression>
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ConvertAppliesToSleepingUnits"
  Guid="71777804-f6af-463a-a0cd-be78c7cf123a"
 >
@@ -1991,6 +1995,7 @@ Terminal2.IsRegistered</Expression>
 </Function><Function
  Type="MobileTerminalStruct"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="CurrentTerminal"
  Guid="1578f217-c304-4c22-98c7-cb41f87ae7b7"
 >
@@ -2073,6 +2078,7 @@ It can only return false if there is no open session or if the last known RBC ha
 </Function><Function
  Type="SystemVersionEnum"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ConvertSystemVersion"
  Guid="83ef1cc8-6c4b-404d-9e99-8966e74cb8ae"
 >
