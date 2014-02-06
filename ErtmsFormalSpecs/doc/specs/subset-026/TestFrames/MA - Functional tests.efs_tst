@@ -6258,6 +6258,189 @@ IN BTM.Linking.Linkings</Action></Actions>
 >Kernel.HandlingOfAcceptedAndStoredInformation.ShortenedMaReceived</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
+</TestCase><TestCase
+ Name="Update the length of the current section by means of repositioning information"
+ Guid="5648f549-183c-4eea-bc91-f6f713943c84"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Setup"
+ Guid="bb7a7959-26da-416d-af67-d71c98112e44"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - Initialize test environment"
+ Guid="54cebbf9-2151-4bd4-927d-ad99f0d2cc8b"
+>
+<Actions>
+<Action
+ Guid="36f92aba-c6d0-4333-98c3-d169aa531756"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Initialize elements for MA"
+ Guid="d3af7ffb-ba0e-4323-a0bd-f0919404817c"
+>
+<Actions>
+<Action
+ Guid="f5a0ac0a-4021-4bcf-a2cb-473c8e775a34"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Set up the linking"
+ Guid="f05c3f0f-470e-4838-b13b-49e813d67798"
+>
+<Actions>
+<Action
+ Guid="6ef69831-f32c-4d7f-9828-4ee2fb2f8bd1"
+>BTM.Linking.Linkings &lt;- []</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 4 - Give the train an MA"
+ Guid="ca6e9397-1c7e-4907-a7b4-0bdf2e5cf4d6"
+>
+<Actions>
+<Action
+ Guid="f5ea5775-fa6a-4c2f-8a6a-c63b28c8f4b3"
+>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection
+    {
+        EndSectionTimeOut =&gt; EMPTY,
+        TimeOut =&gt; EMPTY,
+        Length =&gt; 400.0,
+        DangerPoint =&gt; EMPTY,
+        Overlap =&gt; EMPTY
+    }
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 5 - Provide train data for handling MAs"
+ Guid="d923d035-09f4-4ec5-9fee-9fe5772e62c0"
+>
+<Actions>
+<Action
+ Guid="5b6ff883-5f83-4e2d-919e-83298256212d"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; Default.Level.L1,
+    DataState =&gt; Default.DataState.Valid
+}</Action><Action
+ Guid="5a4fa7bb-ecea-4d51-9777-bf5e5d5c7ab9"
+>Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+ Guid="07091361-7ee9-4ea9-b107-34eb13d3f799"
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 6 - Check that the setup performed properly"
+ Guid="ad592632-781f-4e84-9398-98a37897b473"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b8a1568e-d345-45ba-a184-40a9912b040e"
+>Kernel.MA.SvL().Location == 400.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ecab0443-4a87-44b3-ba16-07b5003782bc"
+>Kernel.MA.EndOfMovementAuthority().Location == 400.0</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step 7 - Clear old linking information"
+ Guid="6ab48288-d931-4aad-8ca8-88898fcd8ba3"
+>
+<Actions>
+<Action
+ Guid="97cdb90a-34ae-45f5-9e06-c29f2eff4280"
+>BTM.Linking.Linkings &lt;- []</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 8 - Put in needed linking information"
+ Guid="caa64086-52f1-4033-91ac-4d24ca1c61c6"
+>
+<Actions>
+<Action
+ Guid="531d7282-dadc-42e8-9bd3-8dfa835d0c92"
+>INSERT BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 2.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 250.0,
+    BaliseGroupIdentifier =&gt; Messages.NID_BG.NID_UNKNOWN
+}
+
+IN BTM.Linking.Linkings</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 2 - Encounter a BG holding a repositioning information in the end section"
+ Guid="13119158-2b41-4ebe-902c-c8c888d0f504"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep 1 - First balise has the packet"
+ Guid="863b5e00-f181-44d7-a900-8e7476907f52"
+>
+<Actions>
+<Action
+ Guid="0b8d390c-c39e-4f28-88fa-c3a407cc79d6"
+>BTM.Message &lt;- Messages.EUROBALISE.Message {
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._1C,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5461,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; [
+        Messages.EUROBALISE.SubStructure1 {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message {
+                REPOSITIONING_INFORMATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Message{
+                    NID_PACKET =&gt; 16,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 0,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    L_SECTION =&gt; 600
+                 }
+             }
+         }
+     ]
+ }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Second balise"
+ Guid="faa7fa5f-3792-480f-87be-cc330d24e954"
+>
+<Actions>
+<Action
+ Guid="0036c021-6c6f-4a6c-8c82-cc678e20a7e6"
+>BTM.Message &lt;- Messages.EUROBALISE.Message {
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._2C,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5461,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; []
+}</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="738701c2-5c9d-4a5d-9f9c-31a23bae0110"
+>Kernel.MA.MA.EndSection.Length == 750.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
