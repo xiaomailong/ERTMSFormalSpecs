@@ -104,6 +104,7 @@
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="UpdateTime"
  Guid="82202276-9547-45f4-8495-0353695ff6dc"
 >
@@ -376,6 +377,7 @@ SERVICE_BRAKE_COMMAND_STATE =&gt; CreateSBCommandStateMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="TelegramFromEuroBaliseRecieved"
  Guid="01260484-7d17-4a3c-9ca6-743f1308071d"
 >
@@ -411,6 +413,7 @@ SERVICE_BRAKE_COMMAND_STATE =&gt; CreateSBCommandStateMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="TelegramFromRbcRecieved"
  Guid="aee740c1-e84a-4cdf-8084-8f1741b1884b"
 >
@@ -446,6 +449,7 @@ FROM_RBC =&gt; JRU.CreateMessageFromRbc(EURORADIO.CurrentRBCConnection(), EURORA
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="TelegramToRbcReady"
  Guid="8dab86bd-7f12-4eb2-90be-02ca8789574c"
 >
@@ -481,6 +485,7 @@ TO_RBC =&gt; JRU.CreateMessageToRbc(EURORADIO.CurrentRBCConnection(), EURORADIO.
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="CabStatusMessage"
  Guid="cb44cdc9-eda7-46f2-8d6e-7ce66ebc7263"
 >
@@ -518,6 +523,7 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="TrainDirectionControllerMessage"
  Guid="25163e06-6441-4cf0-b45b-a286b5f59762"
 >
@@ -537,6 +543,7 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="SendTactionStatusMessage"
  Guid="2b8999bb-7900-4885-a8a1-00e1e9351f92"
 >
@@ -549,6 +556,7 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="SendTactionStatusMessage"
  Guid="7b732cc0-b0f7-4471-9815-20c9b1e8c7d5"
 >
@@ -586,6 +594,7 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="SendTrainDataEntryMessage"
  Guid="40c5f4fd-32d4-459a-bb38-f4fe3cfcc760"
 >
@@ -621,6 +630,7 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="SendNationalSystemIsolationMessage"
  Guid="3b04c55a-d5c8-4060-9ad4-78d12936a1d3"
 >
@@ -656,6 +666,7 @@ NATIONAL_SYSTEM_ISOLATION =&gt; CreateNationalSystemsIsolationMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="SendTCOMessage"
  Guid="ec073c30-bf66-4b9f-947e-a9ab363169bf"
 >
@@ -772,6 +783,11 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="b97e87da-0624-4898-8439-68eee96f5407"
 >
+</ReqRef><ReqRef
+ Id="a08b15c2-b9f7-4091-8e0d-d9db951d1a5d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9e26eace-d87c-4d88-bc36-18bb62bbfde4"
+>
 </ReqRef><Comment>Used to determine whether the status of Emergency Brake Status has changed or not</Comment>
 </StructureElement><StructureElement
  TypeName="JRUMessagesCollection"
@@ -842,26 +858,44 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  TypeName="Boolean"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="PreviousNationalSystemIsolationStatus"
  Guid="d357e38d-3825-4fe2-a9ea-32c5e13dd857"
 >
-<Comment>Used to determine whether the status of NTC Isolation Status has changed or not</Comment>
+<ReqRef
+ Id="38cad2be-d09c-43a1-9db5-be152ea6c56f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0449f67a-5279-4c37-93cd-64dbc5971c2b"
+>
+</ReqRef><Comment>Used to determine whether the status of NTC Isolation Status has changed or not</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="PreviousTractionCutOffCommandStatus"
  Guid="89846cc1-acde-4541-bff4-70049995498f"
 >
-<Comment>Used to determine whether the status of Traction Cut Off Status has changed or not</Comment>
+<ReqRef
+ Id="0cef8827-6917-474b-ab7d-7e27fcc4fe4a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b48fb6cf-6b76-4040-887f-44f066dfb460"
+>
+</ReqRef><Comment>Used to determine whether the status of Traction Cut Off Status has changed or not</Comment>
 </StructureElement><StructureElement
  TypeName="TIU.TrainDataEntryEnum"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="PreviousTrainDataEntry"
  Guid="78c19e2b-d705-4ee4-aa13-a2f205b3784c"
 >
-<Comment>Used to determine whether the status of TrainDataEntryType has changed or not</Comment>
+<ReqRef
+ Id="3381fab6-7a7f-4493-9e67-33a433346d6b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="abf2a252-2ff3-4241-82bf-9dcc8f8c1cd2"
+>
+</ReqRef><Comment>Used to determine whether the status of TrainDataEntryType has changed or not</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
