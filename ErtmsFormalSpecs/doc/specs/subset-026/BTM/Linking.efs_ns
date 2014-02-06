@@ -497,7 +497,7 @@ AND
  Name="Otherwise"
  Guid="61e517d8-9b27-462b-b7ec-6caf0cbf5dbc"
 >
-<Expression>Linking.CurrentBGWithinFrame() OR ( ConsiderUnlinkedBG() )</Expression>
+<Expression>Linking.CurrentBGWithinFrame() OR ConsiderUnlinkedBG()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -569,21 +569,12 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 </ReqRef><Comment>Special case of ConsiderBG(). Returns true if the current BG is unlinked but has to be considered, nevertheless.</Comment>
 <Cases>
 <Case
- Name="Yes"
+ Name="Value"
  Guid="7a5fb781-d47d-4183-85ce-e677f5830885"
 >
-<PreConditions>
-<PreCondition
- Guid="7210223b-face-49e0-a644-dcd192e5aa92"
->NOT CurrentBGisLinked()</PreCondition><PreCondition
- Guid="5212c0da-1db9-4fac-882f-17c46d93b969"
->CountBalises() &gt;= 2</PreCondition></PreConditions>
-<Expression>Boolean.True</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="4ac067bc-24ca-4ec3-a711-4d6942039b37"
->
-<Expression>Boolean.False</Expression>
+<Expression>NOT CurrentBGisLinked()
+  AND
+CountBalises() &gt;= 2</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
