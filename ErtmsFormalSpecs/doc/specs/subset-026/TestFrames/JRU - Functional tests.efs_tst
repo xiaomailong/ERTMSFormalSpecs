@@ -3622,5 +3622,214 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="SendJruEddyCurrentBrakeStatusMessage"
+ Guid="5cd32fc6-554e-40cd-8548-8936329099ed"
+>
+<TestCases>
+<TestCase
+ Implemented="TRUE"
+ Name="Send EDDY_CURRENT_BRAKE_STATUS Message"
+ Guid="88a76987-598d-42e1-9c76-abda87ccebcd"
+>
+<ReqRef
+ Id="6b6aed3a-e263-4d03-ba9e-ac96c0f5e38a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="3cbbc56f-3ee3-4484-a8a5-dde87cfbcef4"
+>
+</ReqRef><ReqRef
+ Id="063fd9d9-a68d-4790-8e2a-259966b89827"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9f3d1c41-c00d-4b7b-a545-bd279585d6eb"
+>
+</ReqRef><Comment>If the status of the Sleeping Input changes a SLEEPING_INPUT Message must be sent</Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="f22f0637-3b68-4062-9abe-1707b81423e0"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="b8615a48-2f27-44b2-8ab2-a6307c273cd5"
+>
+<Actions>
+<Action
+ Guid="54208885-caec-49a4-87ab-b306139f749a"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="678c2af9-2b75-4b72-b066-df6e8f08c65f"
+>FORALL_IN JRU.JRU1.JRUMessages | X.EDDY_CURRENT_BRAKE_STATUS != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Change the eddy current brake status in the TIU"
+ Guid="d244fcb2-779a-4e29-8445-a7f621f39475"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="96a2a4b3-a986-4d60-bfb4-367c7697f500"
+>
+<Actions>
+<Action
+ Guid="8470abec-23a3-4fdc-acc3-7662c04f2980"
+>TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive &lt;- False
+</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="6f03f91a-499b-42cf-abc2-ab0376ca153f"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.EDDY_CURRENT_BRAKE_STATUS != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Verify the message has been sent"
+ Guid="c579f8f4-7e19-40dd-989d-97d306f63302"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="905a023b-2dac-487f-82b5-090395edcac6"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="346b8adb-9c8d-4975-839d-9f3d17f89c69"
+>FORALL_IN JRU.JRU1.JRUMessages | X.EDDY_CURRENT_BRAKE_STATUS == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="SendJruElectroPneumaticBrakeStatus Message"
+ Guid="d7dc199e-f860-42b0-9971-c304a0779552"
+>
+<TestCases>
+<TestCase
+ Implemented="TRUE"
+ Name="Send ELECTRO_PNEUMATIC_BRAKE_STATUS Message"
+ Guid="8491ce00-4318-48c1-bfd9-9591eb9692fc"
+>
+<ReqRef
+ Id="f21d7322-8da5-41b5-a334-69dd9493e2c7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="64c1e0c1-bf4c-46bf-bd3f-5f9c9d08505f"
+>
+</ReqRef><ReqRef
+ Id="93254149-6489-4e55-bb64-7f75408d3be8"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2b09f010-e421-446e-b21b-dc35b4bf4608"
+>
+</ReqRef><Comment>If the status of the Sleeping Input changes a SLEEPING_INPUT Message must be sent</Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="fb83273a-d104-495e-aed9-7a211b8dde01"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="2843eb9f-466b-41b8-a850-32f244bb5c34"
+>
+<Actions>
+<Action
+ Guid="08c6fda4-c9f1-4f75-b103-097fa119e611"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="bbe2f4b9-ec59-410f-ab02-27d4674aaa64"
+>FORALL_IN JRU.JRU1.JRUMessages | X.ELECTRO_PNEUMATIC_BRAKE_STATUS != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Change the eddy current brake status in the TIU"
+ Guid="1917b486-6807-4be3-a190-5b3ec5293b9f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="b094f6b8-53ce-4292-9c91-886a79678745"
+>
+<Actions>
+<Action
+ Guid="045a7f17-b159-4a21-8949-acbe9347e356"
+>TIU.SpecialBrakeStatus.EPBrakeIsActive &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e70daaee-8e40-41d5-b423-9640a36460a2"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.ELECTRO_PNEUMATIC_BRAKE_STATUS != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Verify the message has been sent"
+ Guid="2cf8fa9e-acdd-4ab1-82fc-1dd2b45fae90"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="507b469a-9bad-4592-98f7-5977a61b3118"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4627daa0-5182-4d7d-88b1-b9c3de878ddb"
+>FORALL_IN JRU.JRU1.JRUMessages | X.ELECTRO_PNEUMATIC_BRAKE_STATUS == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
