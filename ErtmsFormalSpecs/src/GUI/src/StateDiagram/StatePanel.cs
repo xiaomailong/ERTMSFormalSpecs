@@ -199,6 +199,11 @@ namespace GUI.StateDiagram
                 if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
                 {
                     DataDictionaryView.StateTreeNode stateNode = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode((State)StateMachine.States[0]) as DataDictionaryView.StateTreeNode;
+                    if (!stateNode.SubNodesBuilt)
+                    {
+                        stateNode.BuildSubNodes(false);
+                        stateNode.UpdateColor();
+                    }
                     DataDictionaryView.RuleTreeNode ruleNode = stateNode.Rules.AddRule(rule);
                 }
 
