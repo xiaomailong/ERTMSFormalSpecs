@@ -727,6 +727,39 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
 SLEEPING_INPUT =&gt; CreateJruSleepingInput()
 }IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="SendPassiveShuntingMessage"
+ Guid="4b99f78d-aac1-4776-ade2-08ed82ca9e75"
+>
+<ReqRef
+ Id="c300dc73-4bcb-45ee-a1f9-184c2ce7b933"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6057dcbc-f748-4601-8221-594b3369af26"
+>
+</ReqRef><Comment>SendPassiveShuntingMessage</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="SendPassiveShuntingMessage"
+ Guid="717b32e0-7c0b-4a76-abf0-bd4388b52af2"
+>
+<Comment>If the conditions are satisfied the PASSIVE SHUNTING INPUT JRU message will be sent</Comment>
+<PreConditions>
+<PreCondition
+ Guid="ff92ab88-965e-480d-a63d-a013b7dec716"
+>SendPassiveShuntingMessage(
+    jru=&gt;THIS
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="aecb5575-a587-4e08-887d-f51a1876ed1a"
+>INSERT Messages.JRU.MESSAGE.Message{
+PASSIVE_SHUNTTING_INPUT =&gt; CreatePassiveShuntingMessage()
+}IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
@@ -963,6 +996,20 @@ SLEEPING_INPUT =&gt; CreateJruSleepingInput()
  Guid="40f30800-ada7-456d-a81a-2a803671facf"
 >
 </ReqRef><Comment>This sub-element will store the previous state of the sleeping input</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousPassiveShuntingState"
+ Guid="e263d670-1030-4c9d-97c0-fc5ef07d7c9a"
+>
+<ReqRef
+ Id="c300dc73-4bcb-45ee-a1f9-184c2ce7b933"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="90522179-60a7-40de-97db-985589673ff7"
+>
+</ReqRef><Comment>This sub-element will store the previous PASSIVE_SHUNTING INPUT on the TIU</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -1608,6 +1655,11 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="1a14532e-987a-4945-ad59-34661b789120"
 >
+</ReqRef><ReqRef
+ Id="f23150cb-df63-4352-837f-3c563876913f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="30c1f932-77f4-463a-8466-f82e01df4661"
+>
 </ReqRef><Comment>Function which will determine if a NEW JRU Message has to be sent</Comment>
 <Parameters>
 <Parameter
@@ -1647,6 +1699,8 @@ OR
 (LevelChangedToNtc(jru))
 OR
 (SendSleppingInput(jru))
+OR
+(SendPassiveShuntingMessage(jru))
 OR
 (SendCabStatusMessage(jru))
 OR
@@ -4176,7 +4230,7 @@ M_SLEEPING =&gt; ToJruSleepingInput()
 <PreConditions>
 <PreCondition
  Guid="11739a91-3f58-40d3-bc70-80c04e35e747"
->((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP)) </PreCondition></PreConditions>
+>((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP))</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Changed"
@@ -4192,6 +4246,102 @@ M_SLEEPING =&gt; ToJruSleepingInput()
  Guid="604619c3-98df-4a82-b477-2d4cad9c1a7e"
 >
 <Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_PASSIVE_SHUNTTING"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToJruPassiveShunting"
+ Guid="91006dd2-8776-4901-888a-5c328d19e0db"
+>
+<Comment>Will cast the input TIU value into an understandable JRU value</Comment>
+<Cases>
+<Case
+ Name="Permited"
+ Guid="0ba92dd6-23f4-4471-b24c-effe69f9f7bb"
+>
+<PreConditions>
+<PreCondition
+ Guid="921e1682-de25-45fe-a6de-3484816f3806"
+>TIU.PassiveShuntingPermitted == True</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_PASSIVE_SHUNTTING.Passive_shuntting_permitted</Expression>
+</Case><Case
+ Name="NotPermited"
+ Guid="6fbff761-9eac-4c6b-88d2-eec84171db30"
+>
+<PreConditions>
+<PreCondition
+ Guid="36c053fe-0571-4507-bb09-f9a75fe931e9"
+>TIU.PassiveShuntingPermitted == False
+</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_PASSIVE_SHUNTTING.Passive_shuntting_not_permitted</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SendPassiveShuntingMessage"
+ Guid="cbe54796-4c07-4ecf-9d0d-1664c383a321"
+>
+<ReqRef
+ Id="f23150cb-df63-4352-837f-3c563876913f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="4d43616b-1df7-4b59-858a-dbd3026c52fe"
+>
+</ReqRef><Comment>Will determine if it is necessary to send a new JRU PASSIVE_SHUNTING_INPUT message</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="29d986f9-a87c-4fe2-8fd9-6bebdd8ccbf0"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="AtStartUp"
+ Guid="8d820009-2d6d-4ceb-97c2-0ea6ac0d5320"
+>
+<PreConditions>
+<PreCondition
+ Guid="1ba7755d-8a48-4e6f-92ec-da399cac0943"
+>((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP))</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PassiveShuntingStateChanged"
+ Guid="c241d548-b835-46e6-b8b9-b98351938a7d"
+>
+<PreConditions>
+<PreCondition
+ Guid="f601f357-9edd-4a15-b659-407bf35ac9cc"
+>jru.PreviousPassiveShuntingState != TIU.PassiveShuntingPermitted</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="f02a26ee-00c1-42c0-903a-550da86cebe5"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.PASSIVE_SHUNTTING_INPUT.Message"
+ Implemented="TRUE"
+ Name="CreatePassiveShuntingMessage"
+ Guid="ccaa00c6-9c14-49c2-8442-59c81d065b97"
+>
+<ReqRef
+ Id="c300dc73-4bcb-45ee-a1f9-184c2ce7b933"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d07c9b21-0646-40ae-80cb-d3085dd9c0d1"
+>
+</ReqRef><Comment>This function will fill the PASSIVE_SHUNTING_INPUT JRU message</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="af757dbe-9125-4ef1-af48-08d2cb15d82e"
+>
+<Expression>Messages.JRU.MESSAGE.PASSIVE_SHUNTTING_INPUT.Message{
+    HEADER =&gt; CreateHeader(31),
+M_PASSIVE_SHUNTTING =&gt; ToJruPassiveShunting()
+}
+</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>

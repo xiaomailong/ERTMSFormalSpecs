@@ -3160,16 +3160,8 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="37997e57-6d15-4033-b293-0052bda81a8d"
->JRU.JRU1.JRUMessages == []</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
  Guid="809fa857-9205-490b-bc60-c39821bcbb5d"
->FORALL_IN JRU.JRU1.JRUMessages | X.SLEEPING_INPUT == EMPTY</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="403ca513-c750-4864-af16-ae77ebd17300"
->Kernel.Mode == Default.Mode.NP</Expectation></Expectations>
+>FORALL_IN JRU.JRU1.JRUMessages | X.SLEEPING_INPUT == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3216,6 +3208,100 @@
  DeadLine="1"
  Guid="789debdf-4b3c-49c2-8834-8a84e74b9aea"
 >FORALL_IN JRU.JRU1.JRUMessages | X.SLEEPING_INPUT == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="SendPassiveShuntingInputMessage"
+ Guid="736261d2-56af-4421-99ef-89c4d6fc5e0c"
+>
+<TestCases>
+<TestCase
+ Implemented="TRUE"
+ Name="Send Passive Shunting Input Message when the TIU.PassiveShuntingInput variable changes its value and at startup"
+ Guid="d0f1cb78-1377-45ef-b3f9-97bf601d6a56"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="46f2cd55-1629-4409-9dbd-a95e284eec38"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="bc3ed2bc-a3f2-4137-90bb-a20987cc72e0"
+>
+<Actions>
+<Action
+ Guid="a9e0fd59-a60e-409a-aa23-bff5980c8845"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="03f73c86-ff7d-45fa-941f-31faebfaf724"
+>FORALL_IN JRU.JRU1.JRUMessages | X.PASSIVE_SHUNTTING_INPUT != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - The PassiveShuntingInput value changes"
+ Guid="b8d8d0ff-dcd7-451c-9d65-a6167e3fdab3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="e0d60c5a-6a22-4a82-8b77-3aee063df3ae"
+>
+<Actions>
+<Action
+ Guid="909f5c70-0a59-4279-8090-4610a6536db6"
+>TIU.PassiveShuntingPermitted &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2ba5b907-260f-4e12-8d59-c767860617f2"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.PASSIVE_SHUNTTING_INPUT != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Verify the message has been succesfully sent"
+ Guid="b0a2ed3a-eb05-4f13-abf6-c7e9f81ff191"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="a4a56b3c-8a84-421e-93ac-099c3e38623e"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="28d8537a-0ed6-493a-a690-3c2398b14b80"
+>FORALL_IN JRU.JRU1.JRUMessages | X.PASSIVE_SHUNTTING_INPUT == EMPTY
+</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
