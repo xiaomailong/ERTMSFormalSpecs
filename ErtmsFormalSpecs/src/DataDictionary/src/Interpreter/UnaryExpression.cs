@@ -255,6 +255,10 @@ namespace DataDictionary.Interpreter
             {
                 retVal = Term.GetVariable(context);
             }
+            else if (Expression != null && UnaryOp == null)
+            {
+                retVal = null;
+            }
             else
             {
                 AddError("Cannot get variable from expression" + ToString());
