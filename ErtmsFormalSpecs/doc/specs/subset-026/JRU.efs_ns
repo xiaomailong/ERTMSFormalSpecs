@@ -101,10 +101,12 @@
 >PreviousMagneticShoeBrakeStatus &lt;- TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive</Action><Action
  Guid="ac4c4305-a3dd-45af-9761-831aaa483ba3"
 >PreviousEddyCurrentBrakeStatus &lt;- TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive</Action><Action
- Guid="dbfb4ce6-6e75-4ec4-9570-7ba16fe4a050"
->JRUMessages &lt;- []</Action><Action
  Guid="b8e91c3e-a8f3-4376-9406-e24aff685950"
->PreviousElectroPneumaticBrakeStatus &lt;- TIU.SpecialBrakeStatus.EPBrakeIsActive</Action></Actions>
+>PreviousElectroPneumaticBrakeStatus &lt;- TIU.SpecialBrakeStatus.EPBrakeIsActive</Action><Action
+ Guid="f986b9dc-68c2-48f4-aa19-15bc06d987e7"
+>PreviousAdditionalBrakeStatus &lt;- TIU.AdditionalBrakesActive</Action><Action
+ Guid="dbfb4ce6-6e75-4ec4-9570-7ba16fe4a050"
+>JRUMessages &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -899,7 +901,7 @@ EDDY_CURRENT_BRAKE_STATUS =&gt; CreateJruEddyCurrentBrakeStatusMessage()
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="SendPreviousElectroPneumaticBrakeStatusMessage"
+ Name="SendElectroPneumaticBrakeStatusMessage"
  Guid="588032c8-05a7-41a9-ad1f-7a177cc082f2"
 >
 <ReqRef
@@ -930,6 +932,42 @@ EDDY_CURRENT_BRAKE_STATUS =&gt; CreateJruEddyCurrentBrakeStatusMessage()
  Guid="9d2308b5-c95a-4278-9929-d43ffd2fa509"
 >INSERT Messages.JRU.MESSAGE.Message{
 ELECTRO_PNEUMATIC_BRAKE_STATUS =&gt; CreateJruElectroPneumaticBrakeStatus()
+}IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="SendAdditionalBrakeStatusMessage"
+ Guid="24640b87-fad6-4b35-8f94-d326463d30cc"
+>
+<ReqRef
+ Id="93254149-6489-4e55-bb64-7f75408d3be8"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="30a24220-2967-405e-9fb1-db8632ac2172"
+>
+</ReqRef><ReqRef
+ Id="f21d7322-8da5-41b5-a334-69dd9493e2c7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f9c0dcc6-0414-4604-af8b-03ec2e440545"
+>
+</ReqRef><Comment>This will verify if the conditions are satisfied and will create the EDDY_CURRENT_BRAKE_STATUS Message</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="SendAdditionalBrakeStatus"
+ Guid="9e94070c-298d-453c-a77a-226f0159fc29"
+>
+<Comment>Once the conditions are satisfied the message will be created</Comment>
+<PreConditions>
+<PreCondition
+ Guid="598e145c-af44-42c6-93ea-b8305d8d0051"
+>SendJruAdditionalBrakeStatusMessage (THIS)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fbdb564d-451c-4808-a07e-dad7af2ceff3"
+>INSERT Messages.JRU.MESSAGE.Message{
+ADDITIONAL_BRAKE_STATUS =&gt; CreateJruAditionalBrakeStatusMessage()
 }IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1252,6 +1290,20 @@ ELECTRO_PNEUMATIC_BRAKE_STATUS =&gt; CreateJruElectroPneumaticBrakeStatus()
  Guid="10f3200a-e7bf-4e3d-b71a-a4c5f36c580f"
 >
 </ReqRef><Comment>Will store the electro pneumatic brake status</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousAdditionalBrakeStatus"
+ Guid="5b4f6ac2-dc66-4647-bcb1-dec8ecf67cc7"
+>
+<ReqRef
+ Id="1376ba80-d0c0-4a52-9124-6468c01c9932"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a4fc8cde-c81c-42fc-bcb3-080aacc0b88e"
+>
+</ReqRef><Comment>Will store the previous additional brakes status</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -1932,6 +1984,11 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="752b68bc-f845-4334-9dcd-fcff6174e955"
 >
+</ReqRef><ReqRef
+ Id="0c351b25-94d2-4d44-86a4-3fe7611f6582"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="3dcf47aa-e82c-437b-9568-cc3b56545da9"
+>
 </ReqRef><Comment>Function which will determine if a NEW JRU Message has to be sent</Comment>
 <Parameters>
 <Parameter
@@ -1981,6 +2038,8 @@ OR
 (SendJruMagneticShoeBrakeStatusMessage(jru))
 OR
 (SendJruElectroPneumaticBrakeStatusMessage(jru))
+OR
+( SendJruAdditionalBrakeStatusMessage(jru) )
 OR
 (SendCabStatusMessage(jru))
 OR
@@ -5129,6 +5188,110 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Case><Case
  Name="Otherwise"
  Guid="52968600-a976-4095-b8e0-136f9c07ba71"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.ADDITIONAL_BRAKE_STATUS.Message"
+ Implemented="TRUE"
+ Name="CreateJruAditionalBrakeStatusMessage"
+ Guid="32b20a28-fea2-43fc-9cbb-2ee81c28d7d2"
+>
+<ReqRef
+ Id="6b6aed3a-e263-4d03-ba9e-ac96c0f5e38a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8518a4d3-7aea-4124-b507-e02ada903d7d"
+>
+</ReqRef><ReqRef
+ Id="93254149-6489-4e55-bb64-7f75408d3be8"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="23f75cff-4e35-486f-b6a5-bbfcbe453379"
+>
+</ReqRef><ReqRef
+ Id="1376ba80-d0c0-4a52-9124-6468c01c9932"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d207f476-f92c-4ed8-af4b-e13eab216116"
+>
+</ReqRef><Comment>Will fill all the necessary fields to create a JRU ELECTRO_PNEUMATIC_BRAKE_STATUS Message</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="950b687a-c814-4017-87a3-99cdff6be66e"
+>
+<Expression>Messages.JRU.MESSAGE.ADDITIONAL_BRAKE_STATUS.Message{
+    HEADER =&gt; CreateHeader(37),
+    M_AB_STATUS=&gt; ToJruAdditionalBrakeStatus()
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_AB_STATUS"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToJruAdditionalBrakeStatus"
+ Guid="4c48aa7d-b7c0-4243-ab30-a28b70547d23"
+>
+<Comment>Will cast the TIU value into an understandable value for the JRU</Comment>
+<Cases>
+<Case
+ Name="Active"
+ Guid="b9e58ca2-d3ba-4ba2-9fbc-73da94e138bf"
+>
+<PreConditions>
+<PreCondition
+ Guid="5e73738a-48d8-4180-81ba-0e5bbdc62008"
+>TIU.AdditionalBrakesActive == True</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_AB_STATUS.Active</Expression>
+</Case><Case
+ Name="NotActive"
+ Guid="be3693e3-8e6a-4a04-9141-d9d0be6df247"
+>
+<PreConditions>
+<PreCondition
+ Guid="c3066653-b735-40ae-b550-a19b2315a248"
+>TIU.AdditionalBrakesActive == False</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_AB_STATUS.Not_active</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SendJruAdditionalBrakeStatusMessage"
+ Guid="21b48e05-4a16-4717-93c4-d325e8b3ee87"
+>
+<ReqRef
+ Id="063fd9d9-a68d-4790-8e2a-259966b89827"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="153ddef7-05c6-4324-9ef8-0fdabce18f43"
+>
+</ReqRef><Comment>Will determine if it is necessary to send the EddyCurrentBrakeStatus JRU Message</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="99dad91f-518c-4b95-9584-744628267ffa"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="AtStartUp"
+ Guid="bb365db2-6488-4b44-82d3-82cab0a43d5c"
+>
+<PreConditions>
+<PreCondition
+ Guid="06455190-de4a-4041-8d07-90dae6a105c6"
+>IsStartUp(jru)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="StatusChanged"
+ Guid="1b16b19d-2ba5-46ee-8fb8-e05d717faa88"
+>
+<PreConditions>
+<PreCondition
+ Guid="617453d8-d19a-4e51-89b6-7b316b442dae"
+>jru.PreviousAdditionalBrakeStatus != TIU.AdditionalBrakesActive</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="ee887635-f273-401a-a066-27ebef60b229"
 >
 <Expression>False</Expression>
 </Case></Cases>

@@ -3831,5 +3831,109 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="SendJruAdditionalBrakeStatus Message"
+ Guid="8ff328d9-6616-45f3-a7af-e8c8d9d1bcfd"
+>
+<TestCases>
+<TestCase
+ Implemented="TRUE"
+ Name="Send ADDITIONAL_BRAKE_STATUS Message"
+ Guid="82f0695c-d368-4a44-8a1a-0fc6e5ee72e7"
+>
+<ReqRef
+ Id="1376ba80-d0c0-4a52-9124-6468c01c9932"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="06d4ae8b-f40c-4cad-a769-91f63da38e67"
+>
+</ReqRef><ReqRef
+ Id="0c351b25-94d2-4d44-86a4-3fe7611f6582"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="1feee8ee-a548-4a7f-adb1-e6eb55244b1d"
+>
+</ReqRef><Comment>If the status of the Sleeping Input changes a SLEEPING_INPUT Message must be sent</Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="3f2ca1b9-5f82-4238-96da-069c8f6767f7"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="1ba6839f-1a74-4cb9-aca4-57218895eeeb"
+>
+<Actions>
+<Action
+ Guid="20f66f0e-cb22-4f67-b598-acf97d32120a"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f26d439f-6236-4aa6-8ccc-61033b26f5a6"
+>FORALL_IN JRU.JRU1.JRUMessages | X.ADDITIONAL_BRAKE_STATUS != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Change the eddy current brake status in the TIU"
+ Guid="f345d52d-3618-49fc-9849-dc638e8a68f3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="b5f2e48b-7f0a-4d47-8805-8fa80db1526b"
+>
+<Actions>
+<Action
+ Guid="80610e53-82b3-4b03-9353-95a3fef2961e"
+>TIU.AdditionalBrakesActive&lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="088e0d44-2719-421f-bb8e-9bc4c3779a59"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.ADDITIONAL_BRAKE_STATUS != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Verify the message has been sent"
+ Guid="160a8c8e-c76c-4ffb-9830-370da7e87289"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="0bec190a-deeb-45f8-8e5c-51bedb209b10"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b2110cc3-e85f-4f7b-86af-26d06130c718"
+>FORALL_IN JRU.JRU1.JRUMessages | X.ADDITIONAL_BRAKE_STATUS == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
