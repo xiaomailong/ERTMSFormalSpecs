@@ -97,6 +97,8 @@
 >PreviousSleepingInput &lt;- TIU.SleepingRequested</Action><Action
  Guid="f094f37f-9354-4b5b-bad5-85e74959d207"
 >PreviousRegenerativeBrakesStatus &lt;- TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive</Action><Action
+ Guid="a4f7299c-9231-4697-aed9-2baf1aacd4bc"
+>PreviousMagneticShoeBrakeStatus &lt;- TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive</Action><Action
  Guid="dbfb4ce6-6e75-4ec4-9570-7ba16fe4a050"
 >JRUMessages &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
@@ -828,6 +830,42 @@ NON_LEADING_INPUT =&gt; CreateNonLeadingJruMessage()
 REGENERATIVE_BRAKE_STATUS =&gt; CreateJruRegenerativeBrakeStatusMessage()
 }IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="SendMagneticShoeBrakeStatus"
+ Guid="f0f6f718-448b-4846-ad9c-7885d266bd50"
+>
+<ReqRef
+ Id="90197942-cb84-4bb5-880d-1ea5d2dc15cf"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="30ce5684-1770-4865-a1e4-f792e5de98ec"
+>
+</ReqRef><ReqRef
+ Id="a55faf1c-5e2a-4b5a-ad4c-8745c9ca8eb9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e8864402-ace9-4bbb-a9d4-e52f8c9e9c2c"
+>
+</ReqRef><Comment>This will verify if the contidions to create a JRU MagneticShoeBrakeStatus Message are satisfied</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="SendMagneticShoeBrakeStatusMessage"
+ Guid="d237eb7d-b815-4027-b1da-96fc0c985ba0"
+>
+<Comment>This will create the MageneticShoeBrake Messge when the conditions will be satisfied</Comment>
+<PreConditions>
+<PreCondition
+ Guid="f2b231a2-e8f0-44c5-af05-4961b21c827e"
+>SendJruMagneticShoeBrakeStatusMessage(THIS)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f1a52ee0-0a77-4bb8-86df-f584ed7fc2dd"
+>INSERT Messages.JRU.MESSAGE.Message{
+MAGNETIC_SHOE_BRAKE_STATUS =&gt; CreateMagneticShoeBrakeStatusJruMessage()
+}IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
@@ -1106,6 +1144,20 @@ REGENERATIVE_BRAKE_STATUS =&gt; CreateJruRegenerativeBrakeStatusMessage()
  Guid="cc548529-3c20-4a66-a42b-b9fe13b2e6c8"
 >
 </ReqRef><Comment>Will store the regenerative Brake previous status</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousMagneticShoeBrakeStatus"
+ Guid="58d2caad-4d59-4d74-a2e1-102ac64cfe14"
+>
+<ReqRef
+ Id="a55faf1c-5e2a-4b5a-ad4c-8745c9ca8eb9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="7ecf2ccb-494f-4692-8b16-8762abd4beb9"
+>
+</ReqRef><Comment>Will store the Previous Status of the MagneticShoeBrake</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -1766,6 +1818,11 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="2c101986-9d5d-4824-ab56-9bdf026e97ea"
 >
+</ReqRef><ReqRef
+ Id="5373d260-e440-4af0-a97e-0195115ecf5a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d1990891-b901-440a-a6d9-ab45ac3a62d3"
+>
 </ReqRef><Comment>Function which will determine if a NEW JRU Message has to be sent</Comment>
 <Parameters>
 <Parameter
@@ -1811,6 +1868,8 @@ OR
 (SendNonLeadingMessage(jru))
 OR
 (SendJruRegenerativeBrakeStatusMessage(jru))
+OR
+(SendJruMagneticShoeBrakeStatusMessage(jru))
 OR
 (SendCabStatusMessage(jru))
 OR
@@ -4670,6 +4729,101 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
  Guid="b7c2befa-ef6b-49aa-b4a4-284799e9457d"
 >
 <Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_MAGNETICSHOEBRAKE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToJruMagneticShoeBrake"
+ Guid="a0961f10-3bd3-4847-a92b-9f70ea868237"
+>
+<Comment>Will cast the value from the TIU into an understandable value to the JRU</Comment>
+<Cases>
+<Case
+ Name="Active"
+ Guid="72c2eab9-d2e4-4039-99f7-58de6697e090"
+>
+<PreConditions>
+<PreCondition
+ Guid="69a15502-6222-48d1-9f37-0b101add08f6"
+>TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive == True</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_MSB_STATUS.Active</Expression>
+</Case><Case
+ Name="NotActive"
+ Guid="646bbc3a-063a-4efa-87cc-78f38197174e"
+>
+<PreConditions>
+<PreCondition
+ Guid="ca5f4b57-43e8-441e-9b1c-1223a44370be"
+>TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive == False
+</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_MSB_STATUS.Not_active</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SendJruMagneticShoeBrakeStatusMessage"
+ Guid="8b8957b5-e016-44a3-987c-83d1826cd71a"
+>
+<ReqRef
+ Id="90197942-cb84-4bb5-880d-1ea5d2dc15cf"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="1cfb5c3d-35cc-4b78-80da-c0330ed3c923"
+>
+</ReqRef><Comment>Will determine when will necessary to send the MagneticShoeBrakeStatus JRU Message</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="44f18844-c814-4678-a92b-d382f351c90c"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="AtStartUp"
+ Guid="23d1ccb7-cdea-4f00-a98a-d7690fa72a84"
+>
+<PreConditions>
+<PreCondition
+ Guid="d13ac046-27bb-45a3-9d5d-b2da7484e1c1"
+>IsStartUp(jru) == True</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="StatusChanged"
+ Guid="c172e0e9-bdf3-488b-9561-a599bc49e73a"
+>
+<PreConditions>
+<PreCondition
+ Guid="2cf1154f-ad0c-4ddf-a0d9-e8d608ad1465"
+>jru.PreviousMagneticShoeBrakeStatus != TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="20f644b6-4ee3-4acf-9342-2713bdec2a9b"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.MAGNETIC_SHOE_BRAKE_STATUS.Message"
+ Implemented="TRUE"
+ Name="CreateMagneticShoeBrakeStatusJruMessage"
+ Guid="1ca6ee0e-823c-48e2-80b1-9784fd7c505f"
+>
+<ReqRef
+ Id="a55faf1c-5e2a-4b5a-ad4c-8745c9ca8eb9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b0baff3d-1ecf-4511-8540-18bc398b3c96"
+>
+</ReqRef><Comment>Will fill the fields of a MAGNETIC_SHOE_BRAKE_STATUS JRU Message</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="15784d21-2bca-4ebf-94d9-15bb2793cc03"
+>
+<Expression>Messages.JRU.MESSAGE.MAGNETIC_SHOE_BRAKE_STATUS.Message{
+    HEADER =&gt; CreateHeader(34),
+    M_MSB_STATUS =&gt; ToJruMagneticShoeBrake()
+}</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>

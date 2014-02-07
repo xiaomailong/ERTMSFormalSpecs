@@ -3161,7 +3161,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="809fa857-9205-490b-bc60-c39821bcbb5d"
->FORALL_IN JRU.JRU1.JRUMessages | X.SLEEPING_INPUT == EMPTY</Expectation></Expectations>
+>FORALL_IN JRU.JRU1.JRUMessages | X.SLEEPING_INPUT != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3517,6 +3517,108 @@
  DeadLine="1"
  Guid="7392bf18-e881-46ac-9090-5654a2ad0203"
 >FORALL_IN JRU.JRU1.JRUMessages | X.REGENERATIVE_BRAKE_STATUS == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="SendJRUMagneticShoeBrakeStatus"
+ Guid="ff41d673-0116-4873-a253-a242de1d7769"
+>
+<TestCases>
+<TestCase
+ Name="SendJRUMagneticShoeBrakeStatusMessage"
+ Guid="9d319691-3d56-423a-a619-5c6a778c8e5a"
+>
+<ReqRef
+ Id="a55faf1c-5e2a-4b5a-ad4c-8745c9ca8eb9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d8348089-62b9-467d-bd08-07855618fca8"
+>
+</ReqRef><ReqRef
+ Id="90197942-cb84-4bb5-880d-1ea5d2dc15cf"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="aad7d409-c8ad-49ac-8e4c-84936312fc00"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="51e797ed-71d2-4d46-bb0e-d2c713bac454"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="3a9019df-24e0-4612-9373-0cee8e7de63c"
+>
+<Actions>
+<Action
+ Guid="d310a503-cf21-473c-8a92-8f2e9b1f8f55"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="db0b5310-a5cf-4cf4-bf0d-3d4f19be86f7"
+>FORALL_IN JRU.JRU1.JRUMessages | X.MAGNETIC_SHOE_BRAKE_STATUS != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Change MagneticShoeBrakeStatus"
+ Guid="c3028d46-51fb-4e6a-bd27-2512dfbce69b"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7cadee44-90c0-47e0-96b1-9dd022f24f79"
+>
+<Actions>
+<Action
+ Guid="5f9e1a05-37c7-42a8-b036-ebe8b377809c"
+>TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="6a883d67-4d2a-488e-9d05-ab59aae898ec"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.MAGNETIC_SHOE_BRAKE_STATUS != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Message has been sent"
+ Guid="83973134-9c5b-440c-83c0-1a25e68a493d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="f2f70d5f-1f60-4b5b-bc60-dd5b0c1933f3"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c68a423d-b2fa-4b88-98db-3fe0cbdf6ba1"
+>FORALL_IN JRU.JRU1.JRUMessages | X.MAGNETIC_SHOE_BRAKE_STATUS == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
