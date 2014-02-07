@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DataDictionary.Functions;
+using System.Collections;
 
 namespace DataDictionary
 {
@@ -252,7 +253,18 @@ namespace DataDictionary
         {
             if (string.IsNullOrEmpty(commentable.Comment))
             {
-                ((ModelElement)commentable).AddInfo("This element should be documented");
+                bool requiresComment = true;
+
+                Types.StateMachine stateMachine = commentable as Types.StateMachine;
+                if (stateMachine != null)
+                {
+                    requiresComment = stateMachine.EnclosingStateMachine == null;
+                }
+
+                if (requiresComment)
+                {
+                    ((ModelElement)commentable).AddInfo("This element should be documented");
+                }
             }
         }
 
@@ -892,6 +904,58 @@ namespace DataDictionary
             catch (Exception e)
             {
                 cas.AddException(e);
+            }
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Enum obj, bool visitSubNodes)
+        {
+            Types.Enum enumeration = (Types.Enum)obj;
+
+            List<Constants.EnumValue> valuesFound = new List<Constants.EnumValue>();
+            foreach (Constants.EnumValue enumValue in enumeration.Values)
+            {
+                if (!string.IsNullOrEmpty(enumValue.getValue()))
+                {
+                    foreach (Constants.EnumValue other in valuesFound)
+                    {
+                        if (enumValue.getValue().CompareTo(other.getValue()) == 0)
+                        {
+                            enumValue.AddError("Duplicate enumeration value");
+                            other.AddError("Duplicate enumeration value");
+                        }
+                    }
+                    valuesFound.Add(enumValue);
+                }
+            }
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Range obj, bool visitSubNodes)
+        {
+            Types.Range range = (Types.Range)obj;
+
+            List<Constants.EnumValue> valuesFound = new List<Constants.EnumValue>();
+            foreach (Constants.EnumValue enumValue in range.SpecialValues)
+            {
+                if (enumValue.Value == null)
+                {
+                    enumValue.AddError("Value is not valid");
+                }
+                else
+                {
+                    foreach (Constants.EnumValue other in valuesFound)
+                    {
+                        if (range.CompareForEquality(enumValue.Value, other.Value))
+                        {
+                            enumValue.AddError("Duplicate special value");
+                            other.AddError("Duplicate special value");
+                        }
+                    }
+                    valuesFound.Add(enumValue);
+                }
             }
 
             base.visit(obj, visitSubNodes);
