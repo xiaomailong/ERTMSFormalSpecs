@@ -203,7 +203,7 @@ namespace GUI.SpecificationView
                 window.specBrowserRuleView.Nodes.Clear();
                 foreach (DataDictionary.ReqRef reqRef in Item.Implementations)
                 {
-                    window.specBrowserRuleView.Nodes.Add(new ReqRefTreeNode(reqRef, true, reqRef.Model.Name));
+                    window.specBrowserRuleView.Nodes.Add(new ReqRefTreeNode(reqRef, true, false, reqRef.Model.Name));
                 }
             }
 

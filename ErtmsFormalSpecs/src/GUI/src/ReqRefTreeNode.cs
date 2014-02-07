@@ -23,6 +23,11 @@ namespace GUI
 {
     public class ReqRefTreeNode : ModelElementTreeNode<DataDictionary.ReqRef>
     {
+        /// <summary>
+        /// Indicates that this req ref can be removed from its model
+        /// </summary>
+        private bool CanBeDeleted { get; set; }
+
         public class InternalTracesConverter : Converters.TracesConverter
         {
             public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
@@ -69,9 +74,10 @@ namespace GUI
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public ReqRefTreeNode(DataDictionary.ReqRef item, bool buildSubNodes, string name = null)
+        public ReqRefTreeNode(DataDictionary.ReqRef item, bool buildSubNodes, bool canBeDeleted, string name = null)
             : base(item, buildSubNodes, name)
         {
+            CanBeDeleted = canBeDeleted;
         }
 
         /// <summary>
@@ -120,6 +126,12 @@ namespace GUI
             List<MenuItem> retVal = new List<MenuItem>();
 
             retVal.Add(new MenuItem("Select", new EventHandler(SelectHandler)));
+
+            if (CanBeDeleted)
+            {
+                retVal.Add(new MenuItem("-"));
+                retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            }
 
             return retVal;
         }
