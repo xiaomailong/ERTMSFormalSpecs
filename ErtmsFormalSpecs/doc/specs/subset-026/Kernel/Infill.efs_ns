@@ -46,11 +46,11 @@
 <Actions>
 <Action
  Guid="23a68de7-a41d-4547-8dea-9faccfcb08cb"
->Kernel.Infill.Data &lt;- Kernel.BaliseGroup
+>Data &lt;- BaliseGroup
 {
-    NewCountry =&gt; Q_NEWCOUNTRY_To_Bool ( Packet.Q_NEWCOUNTRY),
-    NID_C =&gt; Packet.NID_C,
-    NID_BG =&gt; Packet.NID_BG
+    NID_BG =&gt; Packet.NID_BG,
+    NewCountry =&gt; Q_NEWCOUNTRY_To_Bool ( Packet.Q_NEWCOUNTRY ),
+    NID_C =&gt; Packet.NID_C
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
