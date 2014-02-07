@@ -260,7 +260,8 @@ namespace DataDictionary
         {
             if (commentable != null && string.IsNullOrEmpty(commentable.Comment))
             {
-                bool requiresComment = true;
+                Types.NameSpace nameSpace = EnclosingNameSpaceFinder.find((ModelElement)commentable);
+                bool requiresComment = nameSpace != null;
 
                 Types.StateMachine stateMachine = commentable as Types.StateMachine;
                 if (stateMachine != null)
