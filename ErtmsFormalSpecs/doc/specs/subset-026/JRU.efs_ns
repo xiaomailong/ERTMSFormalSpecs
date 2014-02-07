@@ -40,6 +40,7 @@
  Name="SendMessage"
  Guid="6adace2d-8413-4265-a732-4cfc6ca754a5"
 >
+<Comment>This rule will be in charge of generating the right JRU massege and to fill it.</Comment>
 <PreConditions>
 <PreCondition
  Guid="c7be3f63-444c-4d7c-8b71-dd667a30c684"
@@ -63,6 +64,7 @@
  Name="CleanUp"
  Guid="b614f541-65ff-4dd9-8e90-7f36443832bd"
 >
+<Comment>Do the CleanUp</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -104,9 +106,11 @@
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="UpdateTime"
  Guid="82202276-9547-45f4-8495-0353695ff6dc"
 >
+<Comment>Update the Time on the JRU.</Comment>
 <PreConditions>
 <PreCondition
  Guid="bd5e4bf2-8113-464b-8859-58726f368827"
@@ -376,6 +380,7 @@ SERVICE_BRAKE_COMMAND_STATE =&gt; CreateSBCommandStateMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="TelegramFromEuroBaliseRecieved"
  Guid="01260484-7d17-4a3c-9ca6-743f1308071d"
 >
@@ -411,6 +416,7 @@ SERVICE_BRAKE_COMMAND_STATE =&gt; CreateSBCommandStateMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="TelegramFromRbcRecieved"
  Guid="aee740c1-e84a-4cdf-8084-8f1741b1884b"
 >
@@ -446,6 +452,7 @@ FROM_RBC =&gt; JRU.CreateMessageFromRbc(EURORADIO.CurrentRBCConnection(), EURORA
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="TelegramToRbcReady"
  Guid="8dab86bd-7f12-4eb2-90be-02ca8789574c"
 >
@@ -481,6 +488,7 @@ TO_RBC =&gt; JRU.CreateMessageToRbc(EURORADIO.CurrentRBCConnection(), EURORADIO.
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="CabStatusMessage"
  Guid="cb44cdc9-eda7-46f2-8d6e-7ce66ebc7263"
 >
@@ -518,6 +526,7 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="TrainDirectionControllerMessage"
  Guid="25163e06-6441-4cf0-b45b-a286b5f59762"
 >
@@ -537,6 +546,7 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="SendTactionStatusMessage"
  Guid="2b8999bb-7900-4885-a8a1-00e1e9351f92"
 >
@@ -549,6 +559,7 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="SendTactionStatusMessage"
  Guid="7b732cc0-b0f7-4471-9815-20c9b1e8c7d5"
 >
@@ -586,6 +597,7 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="SendTrainDataEntryMessage"
  Guid="40c5f4fd-32d4-459a-bb38-f4fe3cfcc760"
 >
@@ -621,6 +633,7 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="SendNationalSystemIsolationMessage"
  Guid="3b04c55a-d5c8-4060-9ad4-78d12936a1d3"
 >
@@ -656,6 +669,7 @@ NATIONAL_SYSTEM_ISOLATION =&gt; CreateNationalSystemsIsolationMessage()
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="SendTCOMessage"
  Guid="ec073c30-bf66-4b9f-947e-a9ab363169bf"
 >
@@ -684,9 +698,9 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="527c7ddc-d3a6-4d23-bbe3-816a3bd01686"
 >
 <ReqRef
- Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
+ Id="8ba554ab-a23c-4af3-9bb9-f5e8aca2f2a1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="b778e8a0-0854-42b1-b106-8291d8dfdef7"
+ Guid="bdc90a64-fdf7-4c81-b7b2-c5e963c81707"
 >
 </ReqRef><Comment>This will reflex the last time a JRU message was sent to JRU.</Comment>
 </StructureElement><StructureElement
@@ -698,9 +712,9 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="ea041794-6a54-4b0a-befa-ae6bd4c58141"
 >
 <ReqRef
- Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
+ Id="8ba554ab-a23c-4af3-9bb9-f5e8aca2f2a1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="d9fb4197-ee4f-4e37-9df7-e317fbf656cc"
+ Guid="7a25fcfb-f0ad-430e-a408-61b40a5d78f8"
 >
 </ReqRef><Comment>It will reflex the previous System Version</Comment>
 </StructureElement><StructureElement
@@ -712,9 +726,9 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="9a1e710d-c3d0-42c6-a104-1cd8057cd362"
 >
 <ReqRef
- Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
+ Id="8ba554ab-a23c-4af3-9bb9-f5e8aca2f2a1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="b888c69c-e432-439a-82f2-98a94fe9345c"
+ Guid="b6b20e9e-9277-491a-9510-4038af47dd43"
 >
 </ReqRef><Comment>Used to determine whether the status of Kernel Mode has changed or not</Comment>
 </StructureElement><StructureElement
@@ -726,9 +740,9 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="4bb8fde4-1d8f-4698-9113-ebda8d2163d6"
 >
 <ReqRef
- Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
+ Id="8ba554ab-a23c-4af3-9bb9-f5e8aca2f2a1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="f2d08d21-8b8c-49d3-9f09-7476afd4577b"
+ Guid="7b2e98a6-6a6c-465a-89fd-09648cabcfdf"
 >
 </ReqRef><Comment>Used to determine whether the status of Kernel Level has changed or not</Comment>
 </StructureElement><StructureElement
@@ -740,9 +754,9 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="e83b3317-7064-49ea-a178-a99311c490e2"
 >
 <ReqRef
- Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
+ Id="8623ab63-7b21-4ea0-8ae5-1f6cbb90a9b5"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="3ace8be9-c83c-4359-ba82-c0a58ad00bd4"
+ Guid="e3b2b224-f0e1-4648-a67e-2c4664c96fad"
 >
 </ReqRef><Comment>Used to determine whether the status of TrainData has changed or not</Comment>
 </StructureElement><StructureElement
@@ -754,9 +768,9 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="9ea7685a-65f1-4074-8555-287bbf73ba87"
 >
 <ReqRef
- Id="089434c4-9c48-438a-9c6e-1dc3af77e9db"
+ Id="a8f59a9b-a318-44ce-8106-9abe073a59bf"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="34497b31-46e8-4df0-82f5-6432b4993bee"
+ Guid="3b9fbd9a-7b14-457a-a73c-c83d1274e833"
 >
 </ReqRef><Comment>Used to determine whether the status of Service Brake Status has changed or not</Comment>
 </StructureElement><StructureElement
@@ -768,9 +782,9 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="e6e515fb-e955-4b19-891a-e0359d68c2e1"
 >
 <ReqRef
- Id="0c66d0c2-4189-4bdd-9a59-f8fb5da1dc72"
+ Id="a08b15c2-b9f7-4091-8e0d-d9db951d1a5d"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="b97e87da-0624-4898-8439-68eee96f5407"
+ Guid="9e26eace-d87c-4d88-bc36-18bb62bbfde4"
 >
 </ReqRef><Comment>Used to determine whether the status of Emergency Brake Status has changed or not</Comment>
 </StructureElement><StructureElement
@@ -837,31 +851,64 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="6b98b927-8a9b-4854-9f06-b36aa5e0c4e2"
 >
+</ReqRef><ReqRef
+ Id="8244b69a-230d-41b4-b7bb-0890ff2ccc7b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="26d596fd-fff8-4ea4-8217-e502827c0e09"
+>
 </ReqRef><Comment>Used to determine whether the status of Traction Status has changed or not</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="PreviousNationalSystemIsolationStatus"
  Guid="d357e38d-3825-4fe2-a9ea-32c5e13dd857"
 >
-<Comment>Used to determine whether the status of NTC Isolation Status has changed or not</Comment>
+<ReqRef
+ Id="38cad2be-d09c-43a1-9db5-be152ea6c56f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0449f67a-5279-4c37-93cd-64dbc5971c2b"
+>
+</ReqRef><Comment>Used to determine whether the status of NTC Isolation Status has changed or not</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="PreviousTractionCutOffCommandStatus"
  Guid="89846cc1-acde-4541-bff4-70049995498f"
 >
-<Comment>Used to determine whether the status of Traction Cut Off Status has changed or not</Comment>
+<ReqRef
+ Id="0cef8827-6917-474b-ab7d-7e27fcc4fe4a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b48fb6cf-6b76-4040-887f-44f066dfb460"
+>
+</ReqRef><ReqRef
+ Id="f5593895-c838-43ca-949d-48a837517e3d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="29e2dbb5-c4d4-4a55-b5b6-baf3314554fd"
+>
+</ReqRef><Comment>Used to determine whether the status of Traction Cut Off Status has changed or not</Comment>
 </StructureElement><StructureElement
  TypeName="TIU.TrainDataEntryEnum"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="PreviousTrainDataEntry"
  Guid="78c19e2b-d705-4ee4-aa13-a2f205b3784c"
 >
-<Comment>Used to determine whether the status of TrainDataEntryType has changed or not</Comment>
+<ReqRef
+ Id="3381fab6-7a7f-4493-9e67-33a433346d6b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="abf2a252-2ff3-4241-82bf-9dcc8f8c1cd2"
+>
+</ReqRef><ReqRef
+ Id="5642b7ac-8532-4e16-a3e9-a766287904d9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d36484e4-ec60-4a41-8024-65ee3b62873c"
+>
+</ReqRef><Comment>Used to determine whether the status of TrainDataEntryType has changed or not</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -1418,11 +1465,6 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  Guid="0b310333-5920-48db-b09d-f00052cdad46"
 >
 <ReqRef
- Id="1091ba63-481f-4f86-b05d-cb22ba129a44"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="07d1090f-bf6f-432a-86f6-5cb89ace353d"
->
-</ReqRef><ReqRef
  Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="37abd325-f04a-498d-82fa-afa480537f82"
@@ -1539,9 +1581,11 @@ OR
 OR
 ( TelegramFromBaliseRecieved() )
 OR
+ (MessageFromRbcRecieved(EURORADIO.CurrentRBCConnection() ) )
+OR
 ( MessageToRbcReady(EURORADIO.CurrentRBCConnection()) )
 OR
-(MessageFromRbcRecieved(EURORADIO.CurrentRBCConnection() ) )
+(LevelChangedToNtc(jru))
 OR
 (SendCabStatusMessage(jru))
 OR
