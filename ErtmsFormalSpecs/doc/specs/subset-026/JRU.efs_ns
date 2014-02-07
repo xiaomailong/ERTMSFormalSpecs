@@ -40,6 +40,7 @@
  Name="SendMessage"
  Guid="6adace2d-8413-4265-a732-4cfc6ca754a5"
 >
+<Comment>This rule will be in charge of generating the right JRU massege and to fill it.</Comment>
 <PreConditions>
 <PreCondition
  Guid="c7be3f63-444c-4d7c-8b71-dd667a30c684"
@@ -63,6 +64,7 @@
  Name="CleanUp"
  Guid="b614f541-65ff-4dd9-8e90-7f36443832bd"
 >
+<Comment>Do the CleanUp</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -108,6 +110,7 @@
  Name="UpdateTime"
  Guid="82202276-9547-45f4-8495-0353695ff6dc"
 >
+<Comment>Update the Time on the JRU.</Comment>
 <PreConditions>
 <PreCondition
  Guid="bd5e4bf2-8113-464b-8859-58726f368827"
@@ -695,11 +698,6 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="527c7ddc-d3a6-4d23-bbe3-816a3bd01686"
 >
 <ReqRef
- Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="b778e8a0-0854-42b1-b106-8291d8dfdef7"
->
-</ReqRef><ReqRef
  Id="8ba554ab-a23c-4af3-9bb9-f5e8aca2f2a1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="bdc90a64-fdf7-4c81-b7b2-c5e963c81707"
@@ -714,11 +712,6 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="ea041794-6a54-4b0a-befa-ae6bd4c58141"
 >
 <ReqRef
- Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="d9fb4197-ee4f-4e37-9df7-e317fbf656cc"
->
-</ReqRef><ReqRef
  Id="8ba554ab-a23c-4af3-9bb9-f5e8aca2f2a1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="7a25fcfb-f0ad-430e-a408-61b40a5d78f8"
@@ -733,11 +726,6 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="9a1e710d-c3d0-42c6-a104-1cd8057cd362"
 >
 <ReqRef
- Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="b888c69c-e432-439a-82f2-98a94fe9345c"
->
-</ReqRef><ReqRef
  Id="8ba554ab-a23c-4af3-9bb9-f5e8aca2f2a1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="b6b20e9e-9277-491a-9510-4038af47dd43"
@@ -752,11 +740,6 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="4bb8fde4-1d8f-4698-9113-ebda8d2163d6"
 >
 <ReqRef
- Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="f2d08d21-8b8c-49d3-9f09-7476afd4577b"
->
-</ReqRef><ReqRef
  Id="8ba554ab-a23c-4af3-9bb9-f5e8aca2f2a1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="7b2e98a6-6a6c-465a-89fd-09648cabcfdf"
@@ -771,11 +754,6 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="e83b3317-7064-49ea-a178-a99311c490e2"
 >
 <ReqRef
- Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="3ace8be9-c83c-4359-ba82-c0a58ad00bd4"
->
-</ReqRef><ReqRef
  Id="8623ab63-7b21-4ea0-8ae5-1f6cbb90a9b5"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="e3b2b224-f0e1-4648-a67e-2c4664c96fad"
@@ -790,11 +768,6 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="9ea7685a-65f1-4074-8555-287bbf73ba87"
 >
 <ReqRef
- Id="089434c4-9c48-438a-9c6e-1dc3af77e9db"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="34497b31-46e8-4df0-82f5-6432b4993bee"
->
-</ReqRef><ReqRef
  Id="a8f59a9b-a318-44ce-8106-9abe073a59bf"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="3b9fbd9a-7b14-457a-a73c-c83d1274e833"
@@ -809,11 +782,6 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="e6e515fb-e955-4b19-891a-e0359d68c2e1"
 >
 <ReqRef
- Id="0c66d0c2-4189-4bdd-9a59-f8fb5da1dc72"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="b97e87da-0624-4898-8439-68eee96f5407"
->
-</ReqRef><ReqRef
  Id="a08b15c2-b9f7-4091-8e0d-d9db951d1a5d"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="9e26eace-d87c-4d88-bc36-18bb62bbfde4"
@@ -841,11 +809,6 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="79e7a3b8-5c9c-4a93-b382-46852e68e612"
 >
-</ReqRef><ReqRef
- Id="3822ea70-c0cb-4073-966b-5bee1bef3f8a"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="07cccc80-ef35-4656-88cd-24b658387f34"
->
 </ReqRef><Comment>Used to determine whether the status of Cab A has changed or not</Comment>
 </StructureElement><StructureElement
  TypeName="TIU.CabStruct"
@@ -860,11 +823,6 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="d21732f9-df95-4850-8234-db23fc7cd32c"
 >
-</ReqRef><ReqRef
- Id="3822ea70-c0cb-4073-966b-5bee1bef3f8a"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="88ed4dc2-4efa-435d-856d-84176dcd30a2"
->
 </ReqRef><Comment>Used to determine whether the status of Cab B has changed or not</Comment>
 </StructureElement><StructureElement
  TypeName="TIU.DirectionControllerEnum"
@@ -878,11 +836,6 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Id="baa05df6-1823-4d3b-a401-71222c779904"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="184ab7e9-93b8-45b6-ac8c-6721962686b9"
->
-</ReqRef><ReqRef
- Id="1d66e852-98d7-42e9-ac5a-f63774661b64"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="bcb82d03-fdbe-4200-9a12-3d1146507d6c"
 >
 </ReqRef><Comment>Used to determine whether the status of DirectionController has changed or not</Comment>
 </StructureElement><StructureElement
@@ -903,11 +856,6 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="26d596fd-fff8-4ea4-8217-e502827c0e09"
 >
-</ReqRef><ReqRef
- Id="1d116569-0a84-49db-b43b-fc79a8237b40"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="ce0989de-7ef9-445c-83e8-8079c1a87fa0"
->
 </ReqRef><Comment>Used to determine whether the status of Traction Status has changed or not</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
@@ -921,11 +869,6 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Id="38cad2be-d09c-43a1-9db5-be152ea6c56f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="0449f67a-5279-4c37-93cd-64dbc5971c2b"
->
-</ReqRef><ReqRef
- Id="06030586-dcc2-49e6-bf66-b0650c069a4d"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="7eae88e3-ebca-42cf-8616-c9f4e2e827f8"
 >
 </ReqRef><Comment>Used to determine whether the status of NTC Isolation Status has changed or not</Comment>
 </StructureElement><StructureElement
@@ -964,11 +907,6 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Id="5642b7ac-8532-4e16-a3e9-a766287904d9"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="d36484e4-ec60-4a41-8024-65ee3b62873c"
->
-</ReqRef><ReqRef
- Id="1a99e0b8-25e4-40b9-804a-adc887b38588"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="52c0d675-3349-4724-8fe5-5b33c986fc3d"
 >
 </ReqRef><Comment>Used to determine whether the status of TrainDataEntryType has changed or not</Comment>
 </StructureElement></Structure></Structures>
@@ -1527,11 +1465,6 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  Guid="0b310333-5920-48db-b09d-f00052cdad46"
 >
 <ReqRef
- Id="1091ba63-481f-4f86-b05d-cb22ba129a44"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="07d1090f-bf6f-432a-86f6-5cb89ace353d"
->
-</ReqRef><ReqRef
  Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="37abd325-f04a-498d-82fa-afa480537f82"
@@ -1648,9 +1581,11 @@ OR
 OR
 ( TelegramFromBaliseRecieved() )
 OR
+ (MessageFromRbcRecieved(EURORADIO.CurrentRBCConnection() ) )
+OR
 ( MessageToRbcReady(EURORADIO.CurrentRBCConnection()) )
 OR
-(MessageFromRbcRecieved(EURORADIO.CurrentRBCConnection() ) )
+(LevelChangedToNtc(jru))
 OR
 (SendCabStatusMessage(jru))
 OR
