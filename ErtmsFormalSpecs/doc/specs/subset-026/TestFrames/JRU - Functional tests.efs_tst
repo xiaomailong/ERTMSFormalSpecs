@@ -3417,5 +3417,108 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="SendRegenerativeBrakeJruMessage"
+ Guid="6a689bdf-fd7a-41c9-8842-29253d26e790"
+>
+<TestCases>
+<TestCase
+ Name="SendRegenerativeBrakes Status Jru Message when the conditions are satisfied"
+ Guid="c08fa750-f1ae-492b-91ec-8750babea360"
+>
+<ReqRef
+ Id="cc8b6072-8727-4c6b-98d3-e4f416c8efcc"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="bfd0e38d-6d5a-4094-a335-6a6c5f12332f"
+>
+</ReqRef><ReqRef
+ Id="5373d260-e440-4af0-a97e-0195115ecf5a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e40b0690-85fd-4ec0-8ce9-e672a9206777"
+>
+</ReqRef><Comment>If at startUp or the status of the regenerative brakes change</Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="0f7a1218-f897-46c0-b8fe-cb0e72325974"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="38bea544-7d8a-4e9d-9ad5-239a3e48645f"
+>
+<Actions>
+<Action
+ Guid="afdaece8-ced0-48a7-b429-f42dda39d931"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ff7af3b2-b974-40b9-95a6-b77ff0cb9bae"
+>FORALL_IN JRU.JRU1.JRUMessages | X.REGENERATIVE_BRAKE_STATUS == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - The RegenerativeBrakes Status change"
+ Guid="533a95ae-e691-4e59-b201-b3a50c17bb70"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="292e35cd-b64c-4b66-9f65-2a08b7dc5333"
+>
+<Actions>
+<Action
+ Guid="4de96523-0c44-48dd-a67e-56a88b003514"
+>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="8bbcbfd2-2d03-4fba-9f02-083c564738c6"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.REGENERATIVE_BRAKE_STATUS != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - verify that the message has been succesfully sent"
+ Guid="7e0a4cae-8106-4123-9c43-1109e8dd710d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="b1647b76-9518-4cde-854b-54489b58e4a5"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7392bf18-e881-46ac-9090-5654a2ad0203"
+>FORALL_IN JRU.JRU1.JRUMessages | X.REGENERATIVE_BRAKE_STATUS == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>

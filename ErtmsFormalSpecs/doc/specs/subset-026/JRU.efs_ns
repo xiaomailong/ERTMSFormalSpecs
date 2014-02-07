@@ -95,6 +95,8 @@
 >PreviousTractionCutOffCommandStatus &lt;- TIU.CutOffTraction</Action><Action
  Guid="dada19b1-2cf5-48c2-8ba6-ec39706bed95"
 >PreviousSleepingInput &lt;- TIU.SleepingRequested</Action><Action
+ Guid="f094f37f-9354-4b5b-bad5-85e74959d207"
+>PreviousRegenerativeBrakesStatus &lt;- TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive</Action><Action
  Guid="dbfb4ce6-6e75-4ec4-9570-7ba16fe4a050"
 >JRUMessages &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
@@ -793,6 +795,39 @@ PASSIVE_SHUNTTING_INPUT =&gt; CreatePassiveShuntingMessage()
 NON_LEADING_INPUT =&gt; CreateNonLeadingJruMessage()
 }IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="SendJruRegenerativeBrakesStatus"
+ Guid="d5e5d9d4-6410-44eb-82a3-589fe56ac2d3"
+>
+<ReqRef
+ Id="cc8b6072-8727-4c6b-98d3-e4f416c8efcc"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f5ec8a0d-df37-4506-bd47-3f343d509232"
+>
+</ReqRef><Comment>Will verify if the necessary conditions to send a JRU REGENERATIVE_BRAKES_STATUS are satisfied</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="SendJruRegenerativeBrakesStatus"
+ Guid="8ac1a508-d92f-4c1d-a724-1fea6b4418fb"
+>
+<Comment>this will generate and fill the RegenerativeBrakesStatus Jru Message</Comment>
+<PreConditions>
+<PreCondition
+ Guid="053ebf6f-8042-41ab-a9f6-a53e7919366d"
+>SendJruRegenerativeBrakeStatusMessage(
+    jru=&gt;THIS
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="844bc5aa-92db-4693-8c5e-3d2ee7a3c480"
+>INSERT Messages.JRU.MESSAGE.Message{
+REGENERATIVE_BRAKE_STATUS =&gt; CreateJruRegenerativeBrakeStatusMessage()
+}IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
@@ -1057,6 +1092,20 @@ NON_LEADING_INPUT =&gt; CreateNonLeadingJruMessage()
  Guid="cba2efe8-ce06-455e-af33-eed975de38d6"
 >
 </ReqRef><Comment>This sub-element will store the previous NonLeadingInput in the TIU</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousRegenerativeBrakesStatus"
+ Guid="75287328-c3ed-4478-8dac-7ec1c1ace4cd"
+>
+<ReqRef
+ Id="cc8b6072-8727-4c6b-98d3-e4f416c8efcc"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="cc548529-3c20-4a66-a42b-b9fe13b2e6c8"
+>
+</ReqRef><Comment>Will store the regenerative Brake previous status</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -1712,6 +1761,11 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="4023bad5-c89f-4c9e-a6df-bfaa0930603e"
 >
+</ReqRef><ReqRef
+ Id="5373d260-e440-4af0-a97e-0195115ecf5a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2c101986-9d5d-4824-ab56-9bdf026e97ea"
+>
 </ReqRef><Comment>Function which will determine if a NEW JRU Message has to be sent</Comment>
 <Parameters>
 <Parameter
@@ -1755,6 +1809,8 @@ OR
 (SendPassiveShuntingMessage(jru))
 OR
 (SendNonLeadingMessage(jru))
+OR
+(SendJruRegenerativeBrakeStatusMessage(jru))
 OR
 (SendCabStatusMessage(jru))
 OR
@@ -3704,7 +3760,7 @@ M_DIRECTION_CONTROLLER =&gt; ToJruDirectionController(
 <PreConditions>
 <PreCondition
  Guid="40f6427d-ce92-47db-b81b-6257a0a3792d"
->((TIU.CabA.Desk1IsActive == True ) OR (TIU.CabA.Desk2IsActive == True ) OR (TIU.CabB.Desk1IsActive == True ) OR (TIU.CabB.Desk2IsActive == True )) AND ((jru.PreviousKernelMode != Kernel.Mode ) AND (jru.PreviousKernelMode != Default.Mode.NP ))</PreCondition></PreConditions>
+>((TIU.CabA.Desk1IsActive == True ) OR (TIU.CabA.Desk2IsActive == True ) OR (TIU.CabB.Desk1IsActive == True ) OR (TIU.CabB.Desk2IsActive == True )) AND (IsStartUp(jru) == True)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="CabBecamesActive"
@@ -3768,7 +3824,7 @@ OR
 <PreConditions>
 <PreCondition
  Guid="baeb5c55-560e-42e1-9839-a845bf3ec653"
->(jru.PreviousKernelMode != Kernel.Mode ) AND (jru.PreviousKernelMode != Default.Mode.NP )</PreCondition></PreConditions>
+>IsStartUp(jru) == True</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="CabsStatusChanged"
@@ -3864,7 +3920,7 @@ M_TRACTION_STATUS=&gt;ToJruTractionStatus()
 <PreConditions>
 <PreCondition
  Guid="e72c8da4-9736-4f15-9369-50f70bb41644"
->( (jru.PreviousKernelMode != Kernel.Mode ) AND (jru.PreviousKernelMode != Default.Mode.NP ) )</PreCondition></PreConditions>
+>IsStartUp(jru) == True</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="TractionStatusChanged"
@@ -3999,7 +4055,7 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 <PreConditions>
 <PreCondition
  Guid="ca653028-09ec-47fc-bcd8-7dfa74cb927f"
->((TIU.CabA.Desk1IsActive == True ) OR (TIU.CabA.Desk2IsActive == True ) OR (TIU.CabB.Desk1IsActive == True ) OR (TIU.CabB.Desk2IsActive == True )) AND ( (jru.PreviousKernelMode != Kernel.Mode ) AND (jru.PreviousKernelMode != Default.Mode.NP ) )</PreCondition></PreConditions>
+>((TIU.CabA.Desk1IsActive == True ) OR (TIU.CabA.Desk2IsActive == True ) OR (TIU.CabB.Desk1IsActive == True ) OR (TIU.CabB.Desk2IsActive == True )) AND ( IsStartUp(jru) == True )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="CabBecomesActive"
@@ -4113,7 +4169,7 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 <PreConditions>
 <PreCondition
  Guid="f6cc93d5-391e-49ec-996b-60113667e0b0"
->((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP)) AND ( Kernel.Level.Value == Default.Level.LNTC )</PreCondition></PreConditions>
+>(IsStartUp(jru) == True ) AND ( Kernel.Level.Value == Default.Level.LNTC )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -4284,7 +4340,7 @@ M_SLEEPING =&gt; ToJruSleepingInput()
 <PreConditions>
 <PreCondition
  Guid="11739a91-3f58-40d3-bc70-80c04e35e747"
->((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP))</PreCondition></PreConditions>
+>IsStartUp(jru) == True</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Changed"
@@ -4451,8 +4507,7 @@ M_PASSIVE_SHUNTTING =&gt; ToJruPassiveShunting()
 <PreConditions>
 <PreCondition
  Guid="03504fd6-1bcc-492f-a45b-c31a752b43ed"
->((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP))
-</PreCondition></PreConditions>
+>IsStartUp(jru) == True</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="StatusChanged"
@@ -4490,6 +4545,131 @@ M_PASSIVE_SHUNTTING =&gt; ToJruPassiveShunting()
     HEADER =&gt; CreateHeader(32),
 M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_RB_STATUS"
+ NeedsRequirement="FALSE"
+ Name="ToJruRegenrativeBrakeStatus"
+ Guid="b802e62d-1f7c-4434-8e56-ae456c0a96e5"
+>
+<Comment>It will cast the input value from the TIU into an understandable value for the JRU</Comment>
+<Cases>
+<Case
+ Name="Active"
+ Guid="b9179eb4-8f5e-4e3f-828b-49c142149569"
+>
+<PreConditions>
+<PreCondition
+ Guid="46aa8461-c646-41a6-8f03-5997a7f2e9ab"
+>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive == True</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_RB_STATUS.Active</Expression>
+</Case><Case
+ Name="NotActive"
+ Guid="11c613a3-adc6-42a5-a33f-b5ecc0936760"
+>
+<PreConditions>
+<PreCondition
+ Guid="1865bf00-bc17-4579-b1d5-c21f254a9f52"
+>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive == False</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_RB_STATUS.Not_active</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.REGENERATIVE_BRAKE_STATUS.Message"
+ Implemented="TRUE"
+ Name="CreateJruRegenerativeBrakeStatusMessage"
+ Guid="9e3e3701-81f5-4b06-8f6d-5f64390d6328"
+>
+<ReqRef
+ Id="cc8b6072-8727-4c6b-98d3-e4f416c8efcc"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2f24c89d-4d16-48a6-ad08-46c674660f30"
+>
+</ReqRef><Comment>Will fill all the fields of the RegenerativeBrakeStatus Message of the JRU</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="c5ab1c8b-e1b9-4b1a-bd8d-57e1d767fa24"
+>
+<Expression>Messages.JRU.MESSAGE.REGENERATIVE_BRAKE_STATUS.Message{
+    HEADER =&gt; CreateHeader(33),
+    M_RB_STATUS =&gt; ToJruRegenrativeBrakeStatus()
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SendJruRegenerativeBrakeStatusMessage"
+ Guid="7c497b9d-e45b-4ab4-967b-a0badb0ff8f4"
+>
+<ReqRef
+ Id="5373d260-e440-4af0-a97e-0195115ecf5a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="94b89667-2740-473b-8aec-6ed73173dff9"
+>
+</ReqRef><Comment>Will determine if it is necessary to create and send a JRU RegenerativeBrakeStatus message</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="a336806b-9881-4233-bd3f-bf630e0fe220"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="AtStartUp"
+ Guid="a79b4ab9-75a0-4d9e-b4f4-950da81fa1a0"
+>
+<PreConditions>
+<PreCondition
+ Guid="6bdfde5b-f0b8-4326-a535-44e469344d50"
+>IsStartUp(jru) == True</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="StatusChanged"
+ Guid="126a24bd-89e5-45b6-a838-a9cd7ae57865"
+>
+<PreConditions>
+<PreCondition
+ Guid="a4ab6ece-e1c4-4a3f-8de3-30bc0a829468"
+>jru.PreviousRegenerativeBrakesStatus != TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="ec01584d-b515-472b-9899-d8984b623ca9"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="IsStartUp"
+ Guid="babeab5a-d445-4247-95dc-28b6ec7c28db"
+>
+<Comment>This function will be used to determine if the necessary conditions to be in StartUp are satisfied</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="0ea23f28-0079-4295-b4cc-f00355590e66"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="StartUp"
+ Guid="f14f1e90-1e67-4cba-bbaf-42fe44bd3a9e"
+>
+<PreConditions>
+<PreCondition
+ Guid="0bdc2d52-5e10-4271-967e-864f8d695a1c"
+>((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP))
+</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="b7c2befa-ef6b-49aa-b4a4-284799e9457d"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
@@ -4569,6 +4749,21 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
  Id="51f3449f-8379-4046-bc2b-6d3a30d48f11"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="d547c6d5-9cd0-479a-9fd3-3905a620d5db"
+>
+</ReqRef><ReqRef
+ Id="6f2bb22b-a705-4170-8cc3-7a555b3e22ff"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="9bb6b023-2bf8-437a-ad3d-241c51c25114"
+>
+</ReqRef><ReqRef
+ Id="c300dc73-4bcb-45ee-a1f9-184c2ce7b933"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="4ec2a9d8-0a7f-41b6-b6f0-71306f3f5a2e"
+>
+</ReqRef><ReqRef
+ Id="0361c793-fdc8-4da1-9229-09357d6117c9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2d124c14-b759-43af-b902-67c2301eb051"
 >
 </ReqRef><Comment>Represents an instance of a JRU structure</Comment>
 </Variable></Variables>
