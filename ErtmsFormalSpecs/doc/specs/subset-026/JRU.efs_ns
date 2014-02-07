@@ -93,6 +93,8 @@
 >PreviousNationalSystemIsolationStatus &lt;- TIU.NTCIsolated</Action><Action
  Guid="1a56c4c3-7094-43ec-95b1-a199d7bdad13"
 >PreviousTractionCutOffCommandStatus &lt;- TIU.CutOffTraction</Action><Action
+ Guid="dada19b1-2cf5-48c2-8ba6-ec39706bed95"
+>PreviousSleepingInput &lt;- TIU.SleepingRequested</Action><Action
  Guid="dbfb4ce6-6e75-4ec4-9570-7ba16fe4a050"
 >JRUMessages &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
@@ -687,6 +689,44 @@ NATIONAL_SYSTEM_ISOLATION =&gt; CreateNationalSystemsIsolationMessage()
 TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
 }IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="SendSleepingInputMessage"
+ Guid="a1b1e054-9417-47de-9354-5c8bc934141f"
+>
+<ReqRef
+ Id="6f2bb22b-a705-4170-8cc3-7a555b3e22ff"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c9386e05-1c7b-4f5c-b4f3-a816c0b3f0f5"
+>
+</ReqRef><ReqRef
+ Id="9a6a7946-fcd0-4097-be45-9a8168506afd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="043e4df6-19c9-4a49-8def-f0cd9892d2d8"
+>
+</ReqRef><Comment>Generates and sends the JRU SleepingInput Message</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="SendSleepingInputJruMessage"
+ Guid="ab32c001-7d54-42c3-970f-b7615070d360"
+>
+<Comment>When the conditions are the adecuated ones the SleepingInput Message will be generated and sent</Comment>
+<PreConditions>
+<PreCondition
+ Guid="6149369f-d154-4348-a74b-b0f2bc89ff3b"
+>JRU.SendSleppingInput(
+    jru=&gt;THIS
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="60f0d76d-5d8f-496b-a4fc-c066e0b68dbb"
+>INSERT Messages.JRU.MESSAGE.Message{
+SLEEPING_INPUT =&gt; CreateJruSleepingInput()
+}IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
@@ -909,6 +949,20 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="d36484e4-ec60-4a41-8024-65ee3b62873c"
 >
 </ReqRef><Comment>Used to determine whether the status of TrainDataEntryType has changed or not</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousSleepingInput"
+ Guid="ca9a45d5-0406-4a03-a732-1347e5197f94"
+>
+<ReqRef
+ Id="6f2bb22b-a705-4170-8cc3-7a555b3e22ff"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="40f30800-ada7-456d-a81a-2a803671facf"
+>
+</ReqRef><Comment>This sub-element will store the previous state of the sleeping input</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -1549,6 +1603,11 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="18607849-786c-46da-b21a-d0bdf0665790"
 >
+</ReqRef><ReqRef
+ Id="9a6a7946-fcd0-4097-be45-9a8168506afd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="1a14532e-987a-4945-ad59-34661b789120"
+>
 </ReqRef><Comment>Function which will determine if a NEW JRU Message has to be sent</Comment>
 <Parameters>
 <Parameter
@@ -1586,6 +1645,8 @@ OR
 ( MessageToRbcReady(EURORADIO.CurrentRBCConnection()) )
 OR
 (LevelChangedToNtc(jru))
+OR
+(SendSleppingInput(jru))
 OR
 (SendCabStatusMessage(jru))
 OR
@@ -4035,6 +4096,100 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 </Case><Case
  Name="NotChanged"
  Guid="3e4126fb-1a9c-4dca-93d5-083e2b45244d"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_SLEEPING"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToJruSleepingInput"
+ Guid="e4f72bfe-3911-416a-85d4-b4b94fba75a2"
+>
+<Comment>Will cast the value from the TIU into a JRU understandable value</Comment>
+<Cases>
+<Case
+ Name="SleepingNotRequested"
+ Guid="17501642-2399-4bb2-8cc1-5f76c3057053"
+>
+<PreConditions>
+<PreCondition
+ Guid="d12c12c5-3231-4e41-9f95-daf0caa55278"
+>TIU.SleepingRequested == False</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_SLEEPING.Sleeping_not_requested</Expression>
+</Case><Case
+ Name="Requested"
+ Guid="fd2b4c2c-9d05-413a-ae30-24842300fe3b"
+>
+<PreConditions>
+<PreCondition
+ Guid="c8d0bbf6-d33f-467c-b93b-3c3413ba5802"
+>TIU.SleepingRequested == True</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_SLEEPING.Sleeping_requested</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.SLEEPING_INPUT.Message"
+ Implemented="TRUE"
+ Name="CreateJruSleepingInput"
+ Guid="b2f03835-9334-43b8-a0c0-d81e11e6d32b"
+>
+<ReqRef
+ Id="6f2bb22b-a705-4170-8cc3-7a555b3e22ff"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="1cba9d79-9224-4f88-8655-3c9915c26b8e"
+>
+</ReqRef><Comment>Will fill the necessary fields to generate the SLEEPING_INPUT message</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="9279cbc1-cd35-4966-ab2a-80bdf57ecbe1"
+>
+<Expression>Messages.JRU.MESSAGE.SLEEPING_INPUT.Message {
+    HEADER =&gt; CreateHeader(30),
+M_SLEEPING =&gt; ToJruSleepingInput()
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SendSleppingInput"
+ Guid="f4a9d3dd-a17a-4f6c-b7e6-0fd0ab6e4188"
+>
+<ReqRef
+ Id="9a6a7946-fcd0-4097-be45-9a8168506afd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a10dc0f6-3c6f-41e0-8e0a-0ac876df496b"
+>
+</ReqRef><Comment>Will determine if the conditions to send the JRU SLEEPING_INPUT are satisfied</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="8ea71117-f1f7-49f7-adcd-26da0c1f762d"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="AtStartUp"
+ Guid="3458c62d-5caf-465c-a2c9-5553475fbb30"
+>
+<PreConditions>
+<PreCondition
+ Guid="11739a91-3f58-40d3-bc70-80c04e35e747"
+>((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP)) </PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Changed"
+ Guid="30ba8e6b-4514-4746-a8a6-f49623762033"
+>
+<PreConditions>
+<PreCondition
+ Guid="613e1aa8-14b8-4ca2-9ed3-3ecddb3b753d"
+>jru.PreviousSleepingInput != TIU.SleepingRequested</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="604619c3-98df-4a82-b477-2d4cad9c1a7e"
 >
 <Expression>False</Expression>
 </Case></Cases>

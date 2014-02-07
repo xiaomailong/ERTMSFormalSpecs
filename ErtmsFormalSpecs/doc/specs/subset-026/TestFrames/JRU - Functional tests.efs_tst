@@ -3107,5 +3107,117 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="SendSleepingInputMessage"
+ Guid="af0d9811-7974-4d2a-b2ac-742039953be3"
+>
+<TestCases>
+<TestCase
+ Implemented="TRUE"
+ Name="Send Sleeping Input JRU Message after changing the status of the SleepingInput"
+ Guid="e3dba78d-de31-407a-9e56-4c6a27698a09"
+>
+<ReqRef
+ Id="9a6a7946-fcd0-4097-be45-9a8168506afd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b0316903-9112-48f3-91aa-dec115bc649c"
+>
+</ReqRef><ReqRef
+ Id="6f2bb22b-a705-4170-8cc3-7a555b3e22ff"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5da7de32-7e60-4508-b3a8-e67257ddff3d"
+>
+</ReqRef><Comment>If the status of the Sleeping Input changes a SLEEPING_INPUT Message must be sent</Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="edf47cdb-17f3-4e38-825c-939506518aaa"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="d35d01b5-9f95-4d45-8c94-04d1e044127c"
+>
+<Actions>
+<Action
+ Guid="e7959d87-cc29-42ba-9c83-d8b71f11f294"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="37997e57-6d15-4033-b293-0052bda81a8d"
+>JRU.JRU1.JRUMessages == []</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="809fa857-9205-490b-bc60-c39821bcbb5d"
+>FORALL_IN JRU.JRU1.JRUMessages | X.SLEEPING_INPUT == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="403ca513-c750-4864-af16-ae77ebd17300"
+>Kernel.Mode == Default.Mode.NP</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Change the Sleeping input in the TIU"
+ Guid="86e23fdb-0d1e-4c64-97b6-38dae054d17c"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="effb52ce-b5f5-4c23-9b00-c2ce1248ce1d"
+>
+<Actions>
+<Action
+ Guid="351f3083-c8a6-4ff8-bd03-74f364ab1b0c"
+>TIU.SleepingRequested &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="88d61c1d-cbb3-4f6b-9332-b0ce12026a5d"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.SLEEPING_INPUT != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Verify the message has been sent"
+ Guid="6f566a44-80c3-4922-b44a-34bb66dec6be"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="8c18fa42-5019-495b-99e9-e35c2a2c4c69"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="789debdf-4b3c-49c2-8834-8a84e74b9aea"
+>FORALL_IN JRU.JRU1.JRUMessages | X.SLEEPING_INPUT == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
