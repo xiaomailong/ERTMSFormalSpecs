@@ -372,10 +372,22 @@ namespace GUI
             GUIUtils.Graphics = CreateGraphics();
             SelectionHistory = new List<IModelElement>();
 
+            FormClosing += new FormClosingEventHandler(MainWindow_FormClosing);
             WindowSynchronizerTask = new Synchronizer(this, 300);
             StatusSynchronizerTask = new StatusSynchronizer(this);
             KeyUp += new KeyEventHandler(MainWindow_KeyUp);
             Refresh();
+        }
+
+        /// <summary>
+        /// Handles the closing of the main window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool canceled = CheckSave();
+            e.Cancel = canceled;
         }
 
         /// <summary>
@@ -390,7 +402,7 @@ namespace GUI
                 switch (e.KeyCode)
                 {
                     case Keys.W:
-                        CheckSaveThenClose();
+                        Close();
                         e.Handled = true;
                         break;
                 }
@@ -745,14 +757,17 @@ namespace GUI
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
-            CheckSaveThenClose();
+            Close();
         }
 
         /// <summary>
-        /// Checks that save oeprations should be performed, if not, close the window
+        /// Checks if the file should be saved before closing the window
         /// </summary>
-        private void CheckSaveThenClose()
+        /// <returns></returns>
+        private bool CheckSave()
         {
+            bool retVal = false;
+
             if (EFSSystem.ShouldSave)
             {
                 DialogResult result = MessageBox.Show("Model has been changed, do you want to save it", "Model changed", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
@@ -767,11 +782,12 @@ namespace GUI
                         break;
 
                     case System.Windows.Forms.DialogResult.Cancel:
-                        return;
+                        retVal = true;
+                        break;
                 }
             }
 
-            this.Close();
+            return retVal;
         }
 
         /// <summary>
