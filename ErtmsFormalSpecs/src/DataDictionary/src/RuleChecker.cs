@@ -106,6 +106,13 @@ namespace DataDictionary
             return retVal;
         }
 
+        public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+        {
+            checkComment(obj as ICommentable);
+
+            base.visit(obj, visitSubNodes);
+        }
+
         public override void visit(Generated.Frame obj, bool visitSubNodes)
         {
             Tests.Frame frame = (Tests.Frame)obj;
@@ -251,7 +258,7 @@ namespace DataDictionary
         /// <param name="commentable"></param>
         private static void checkComment(ICommentable commentable)
         {
-            if (string.IsNullOrEmpty(commentable.Comment))
+            if (commentable != null && string.IsNullOrEmpty(commentable.Comment))
             {
                 bool requiresComment = true;
 
@@ -428,15 +435,6 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.Rule obj, bool visitSubNodes)
-        {
-            Rules.Rule rule = (Rules.Rule)obj;
-
-            checkComment(rule);
-
-            base.visit(obj, visitSubNodes);
-        }
-
         public override void visit(Generated.RuleCondition obj, bool subNodes)
         {
             Rules.RuleCondition ruleCondition = obj as Rules.RuleCondition;
@@ -527,15 +525,6 @@ namespace DataDictionary
             }
 
             base.visit(obj, subNodes);
-        }
-
-        public override void visit(Generated.Procedure obj, bool visitSubNodes)
-        {
-            Procedure procedure = (Procedure)obj;
-
-            checkComment(procedure);
-
-            base.visit(obj, visitSubNodes);
         }
 
         public override void visit(Generated.PreCondition obj, bool subNodes)
@@ -707,8 +696,6 @@ namespace DataDictionary
 
             if (type != null)
             {
-                checkComment(type);
-
                 if (type is Types.StateMachine)
                 {
                     // Ignore state machines
@@ -862,8 +849,6 @@ namespace DataDictionary
         public override void visit(Generated.Function obj, bool visitSubNodes)
         {
             Function function = (Function)obj;
-
-            checkComment(function);
 
             if (function.ReturnType == null)
             {
