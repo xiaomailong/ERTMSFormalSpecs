@@ -760,6 +760,39 @@ SLEEPING_INPUT =&gt; CreateJruSleepingInput()
 PASSIVE_SHUNTTING_INPUT =&gt; CreatePassiveShuntingMessage()
 }IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="SendNonLeadingInputMessage"
+ Guid="62b0403f-2ca1-468f-9dec-5ceb4de8d880"
+>
+<ReqRef
+ Id="0361c793-fdc8-4da1-9229-09357d6117c9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="08efdc50-8626-4689-87d2-78b9b3a88f14"
+>
+</ReqRef><Comment>Send Non Leading Input Message</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="SendNonLeadingInput"
+ Guid="6423b333-821d-4143-abb3-545427558b8f"
+>
+<Comment>When the conditions will be satisfied it will generate the NON_LEADING_INPUT Message</Comment>
+<PreConditions>
+<PreCondition
+ Guid="0e12a04b-0cf8-4163-a4f0-29aa1e503182"
+>SendNonLeadingMessage(
+    jru=&gt;THIS
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6c10e874-b820-40e9-b866-76c3ccf65dcf"
+>INSERT Messages.JRU.MESSAGE.Message{
+NON_LEADING_INPUT =&gt; CreateNonLeadingJruMessage()
+}IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
@@ -1010,6 +1043,20 @@ PASSIVE_SHUNTTING_INPUT =&gt; CreatePassiveShuntingMessage()
  Guid="90522179-60a7-40de-97db-985589673ff7"
 >
 </ReqRef><Comment>This sub-element will store the previous PASSIVE_SHUNTING INPUT on the TIU</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousNonLeadingStatus"
+ Guid="ac7de32c-6e30-474b-a2f9-a486b4e51fca"
+>
+<ReqRef
+ Id="0361c793-fdc8-4da1-9229-09357d6117c9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="cba2efe8-ce06-455e-af33-eed975de38d6"
+>
+</ReqRef><Comment>This sub-element will store the previous NonLeadingInput in the TIU</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -1660,6 +1707,11 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="30c1f932-77f4-463a-8466-f82e01df4661"
 >
+</ReqRef><ReqRef
+ Id="d4f186d7-bcb1-4feb-8415-a26d1d8d85f1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="4023bad5-c89f-4c9e-a6df-bfaa0930603e"
+>
 </ReqRef><Comment>Function which will determine if a NEW JRU Message has to be sent</Comment>
 <Parameters>
 <Parameter
@@ -1701,6 +1753,8 @@ OR
 (SendSleppingInput(jru))
 OR
 (SendPassiveShuntingMessage(jru))
+OR
+(SendNonLeadingMessage(jru))
 OR
 (SendCabStatusMessage(jru))
 OR
@@ -4340,8 +4394,102 @@ M_SLEEPING =&gt; ToJruSleepingInput()
 <Expression>Messages.JRU.MESSAGE.PASSIVE_SHUNTTING_INPUT.Message{
     HEADER =&gt; CreateHeader(31),
 M_PASSIVE_SHUNTTING =&gt; ToJruPassiveShunting()
-}
-</Expression>
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_NON_LEADING"
+ NeedsRequirement="FALSE"
+ Name="ToJruNonLeadingPermited"
+ Guid="dab452e6-2b30-4891-974c-8698b28b0e77"
+>
+<Comment>Will cast the TIU value into a value understandable by the JRU</Comment>
+<Cases>
+<Case
+ Name="Permitted"
+ Guid="2f2d4864-c444-4d1a-a08c-dd62e8f572e7"
+>
+<PreConditions>
+<PreCondition
+ Guid="170a2f00-80ef-4815-bb69-4ed0b74714b0"
+>TIU.NonLeadingPermitted == True</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_NON_LEADING.Non_leading_permitted</Expression>
+</Case><Case
+ Name="NotPermitted"
+ Guid="7cd40303-5e99-4a68-bd58-f06eae1035f4"
+>
+<PreConditions>
+<PreCondition
+ Guid="fff8f30c-4666-4f0c-8863-b99a4fdebcb4"
+>TIU.NonLeadingPermitted == False
+</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_NON_LEADING.Non_leading_not_permitted</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SendNonLeadingMessage"
+ Guid="1b515c81-b5ec-492c-89a0-8c317a8cccf2"
+>
+<ReqRef
+ Id="d4f186d7-bcb1-4feb-8415-a26d1d8d85f1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6edb0bd5-8bea-407e-b9f0-a4c3d7252a91"
+>
+</ReqRef><Comment>This function will determine if it is necessary to send a new JRU NON_LEADING_INPUT Message</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="7bcf85a0-a2f1-4614-8ae9-f24b31f3fc1c"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="AtStartUp"
+ Guid="0f7f85f0-61ca-438d-81f1-a5c04ddfd3b6"
+>
+<PreConditions>
+<PreCondition
+ Guid="03504fd6-1bcc-492f-a45b-c31a752b43ed"
+>((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP))
+</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="StatusChanged"
+ Guid="c1430aa3-4664-4f5c-bcbd-a642540b696d"
+>
+<PreConditions>
+<PreCondition
+ Guid="e78c1573-30e4-45a6-8ad6-066027dd4a67"
+>jru.PreviousNonLeadingStatus != TIU.NonLeadingPermitted</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="b3fee2fd-c447-4c76-b6f5-8b9e952839f3"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.NON_LEADING_INPUT.Message"
+ Implemented="TRUE"
+ Name="CreateNonLeadingJruMessage"
+ Guid="77df6a5f-0790-4fe8-85b0-105f05c8696e"
+>
+<ReqRef
+ Id="0361c793-fdc8-4da1-9229-09357d6117c9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c23addb2-3c08-435c-9a7f-246e3714abe3"
+>
+</ReqRef><Comment>Will fill all the necessary fields to create a NON_LEADIN_INPUT Message</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="7c2598e7-6b00-46c6-8092-af8e57ed8040"
+>
+<Expression>Messages.JRU.MESSAGE.NON_LEADING_INPUT.Message{
+    HEADER =&gt; CreateHeader(32),
+M_NON_LEADING =&gt; ToJruNonLeadingPermited()
+}</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>

@@ -3230,7 +3230,17 @@
  Name="Send Passive Shunting Input Message when the TIU.PassiveShuntingInput variable changes its value and at startup"
  Guid="d0f1cb78-1377-45ef-b3f9-97bf601d6a56"
 >
-<Steps>
+<ReqRef
+ Id="f23150cb-df63-4352-837f-3c563876913f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="79c6363a-8d26-4559-871f-493798356f61"
+>
+</ReqRef><ReqRef
+ Id="c300dc73-4bcb-45ee-a1f9-184c2ce7b933"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ad76a3e0-46b4-43f5-a70a-2f898776ba54"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3302,6 +3312,108 @@
  Guid="28d8537a-0ed6-493a-a690-3c2398b14b80"
 >FORALL_IN JRU.JRU1.JRUMessages | X.PASSIVE_SHUNTTING_INPUT == EMPTY
 </Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="SendNonLeadingInputMessage"
+ Guid="0a68a7e2-bb2d-480e-85dc-a7b8832e86cb"
+>
+<TestCases>
+<TestCase
+ Name="SendNewJruNonLeadingMessage when the conditions are satisfied"
+ Guid="499d6330-060f-4653-b49e-0a72b2156a2a"
+>
+<ReqRef
+ Id="0361c793-fdc8-4da1-9229-09357d6117c9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5e127b8b-44f1-42cb-a87b-080bb760f28d"
+>
+</ReqRef><ReqRef
+ Id="d4f186d7-bcb1-4feb-8415-a26d1d8d85f1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="de81b321-98a4-4613-81b4-ddb73bf4c607"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="143d246d-de56-4dbe-97d6-20e68e0d8133"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="d5744908-246c-470c-8e38-f0e8003d435d"
+>
+<Actions>
+<Action
+ Guid="a3e8f1b8-0ffe-4b3f-bcc4-abf6185a1e8f"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="33461d8e-3cb4-4a33-b98c-0a973a58a76b"
+>FORALL_IN JRU.JRU1.JRUMessages | X.NON_LEADING_INPUT != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Change the Non Leading Input"
+ Guid="9c0e54e8-7a07-4a03-8d35-54b5a761d3b1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="858089e3-7cb3-40a1-bee3-933fce5054b1"
+>
+<Actions>
+<Action
+ Guid="299c33dc-7934-4cd2-8424-663b515a07a6"
+>TIU.NonLeadingPermitted &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e085583a-20fd-45b9-8ed4-d810babc5b2a"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.NON_LEADING_INPUT != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Verify that the message has been succesfully sent"
+ Guid="3de0bbb6-6ae1-4e86-986c-d88c44e05059"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="1da36724-5556-4b57-94b9-164623a4e7d0"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="721d8a06-0186-417d-b0fd-21c6217b40a4"
+>FORALL_IN JRU.JRU1.JRUMessages | X.NON_LEADING_INPUT == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
