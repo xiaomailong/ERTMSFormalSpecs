@@ -910,9 +910,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="a5ae63f6-8d36-44a3-bbd2-212a49b20d81"
->Linking.CurrentBGAcceptableUnknown ()
-  AND
-ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR )</PreCondition></PreConditions>
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="11ff0426-7369-4b98-8ea9-b7674aadda0c"
@@ -1804,12 +1802,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Name="HandleBaliseMessage"
  Guid="f6523a73-b90d-4f95-8f4c-448ca057bd7d"
 >
-<ReqRef
- Id="0547edfa-b17d-4b79-8cad-2fba135b2d95"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7717c70f-3f60-4a33-a433-266118f23938"
->
-</ReqRef><Comment>Handles the packets received within the current message and applies the linking reaction, if any.</Comment>
+<Comment>Handles the packets received within the current message and applies the linking reaction, if any.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1820,9 +1813,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition
- Guid="9e315ce1-165d-436b-b001-82979c9d42cc"
->Linking.ConsiderBG()</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
  Guid="feca666a-c800-4808-8ad5-6479427df552"
@@ -1831,72 +1822,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
   NID_BG=&gt;Message.NID_BG,
   NID_C=&gt;Message.NID_C
 ) 
-ON Message.Sequence1</Action><Action
- Guid="898211b1-8961-4cba-a823-048cf91b1124"
->BGIsConsidered &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Apply linking reaction"
- Guid="25427163-bd6e-4d0e-bc9e-6dbeb64f8e61"
->
-<Comment>If the balise group is not received within its expectation window, the linking reaction is applied.</Comment>
-<PreConditions>
-<PreCondition
- Guid="a5d3327e-2ad9-4813-96c5-71278cebc117"
->NOT Linking.CurrentBGWithinFrame()</PreCondition><PreCondition
- Guid="de2a6651-b602-4d42-be5c-88d545153a83"
->Message.Q_LINK == Messages.Q_LINK.Linked</PreCondition><PreCondition
- Guid="573073a4-9b7a-4031-8c7e-6ae1cf6a3f34"
->Available ( Linking.CurrentLinking() )</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Apply linking reaction"
- Guid="4df4b0bf-3417-4cf7-aac1-ab4426ffbfcc"
->
-<Comment>If the balise group is not received within its expectation window, the linking reaction is applied.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Service brake"
- Guid="91f4a7b1-c086-45e2-b630-7b518494ff43"
->
-<PreConditions>
-<PreCondition
- Guid="225b3eaa-79f0-47b8-8242-2b45e9e0c7bf"
->(FIRST_IN BTM.Linking.Linkings).Reaction == Linking.LinkingReaction.CommandServiceBrake</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="c25a0dde-94bd-4b8a-b757-7297f7ccdab2"
->Kernel.SpeedAndDistanceMonitoring.TriggerSBCommand()</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Train trip"
- Guid="5dfb84c4-496e-4117-8cdc-1135596dbfc3"
->
-<ReqRef
- Id="a0f4b0d4-ee6d-40d4-94b4-05dd94f6bcd2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="dda3ddef-eebf-4f41-bdd0-3d9252e6dea4"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="d3c0f416-233f-434b-9809-11711134aff6"
->(FIRST_IN BTM.Linking.Linkings).Reaction == Linking.LinkingReaction.TrainTrip</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="59e35c85-e437-4258-93af-28a87f6548e3"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+ON Message.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1919,9 +1845,7 @@ ON Message.Sequence1</Action><Action
 >
 <Comment>This is structurally equal to BTM.HandleBaliseMessage.HandleBaliseMessage.HandleBaliseMessage but only considers MAs #morido, 13/10/24</Comment>
 <PreConditions>
-<PreCondition
- Guid="ec5123f7-6dad-46ef-a822-0f55ab8efe76"
->BGIsConsidered</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
  Guid="671f604a-1d3c-4371-a68d-9bbae9a1400c"
@@ -1929,9 +1853,7 @@ ON Message.Sequence1</Action><Action
   Packet=&gt;X, 
   NID_BG=&gt;Message.NID_BG
 ) 
-ON Message.Sequence1</Action><Action
- Guid="7e8ce76c-ac1f-4ce8-934d-bd147636d29f"
->BGIsConsidered &lt;- False</Action></Actions>
+ON Message.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2037,9 +1959,92 @@ If all the messages of the current balise group have been received, calls Handle
   (     X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT 
   OR X.M_MCOUNT == Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group )</PreCondition></PreConditions>
 <Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Verify linking"
+ Guid="b8bb73c2-f11f-4ea6-8cbf-f11352ae1148"
+>
+<ReqRef
+ Id="0547edfa-b17d-4b79-8cad-2fba135b2d95"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="72e935d9-3309-4156-9849-a90b3f47f5bc"
+>
+</ReqRef><Comment>If the linking information is consistent, the message is handled. Otherwise the linking reaction is applied.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Balise group can be accepted"
+ Guid="4ebc2216-3fa0-4125-8bd5-800bd0d7ea8c"
+>
+<PreConditions>
+<PreCondition
+ Guid="9e315ce1-165d-436b-b001-82979c9d42cc"
+>Linking.ConsiderBG()</PreCondition></PreConditions>
+<Actions>
 <Action
  Guid="ac4ffbb4-40a0-469d-8b50-d2b94e18efe2"
 >APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Apply linking reaction"
+ Guid="fe8ae465-d9f7-4c3e-a389-81dc7c05b5ad"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Apply linking reaction"
+ Guid="4df4b0bf-3417-4cf7-aac1-ab4426ffbfcc"
+>
+<Comment>If the balise group is not received within its expectation window, the linking reaction is applied.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Service brake"
+ Guid="91f4a7b1-c086-45e2-b630-7b518494ff43"
+>
+<PreConditions>
+<PreCondition
+ Guid="225b3eaa-79f0-47b8-8242-2b45e9e0c7bf"
+>(FIRST_IN BTM.Linking.Linkings).Reaction == Linking.LinkingReaction.CommandServiceBrake</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c25a0dde-94bd-4b8a-b757-7297f7ccdab2"
+>Kernel.SpeedAndDistanceMonitoring.TriggerSBCommand()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Train trip"
+ Guid="5dfb84c4-496e-4117-8cdc-1135596dbfc3"
+>
+<ReqRef
+ Id="a0f4b0d4-ee6d-40d4-94b4-05dd94f6bcd2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dda3ddef-eebf-4f41-bdd0-3d9252e6dea4"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="d3c0f416-233f-434b-9809-11711134aff6"
+>(FIRST_IN BTM.Linking.Linkings).Reaction == Linking.LinkingReaction.TrainTrip</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="59e35c85-e437-4258-93af-28a87f6548e3"
+>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2272,16 +2277,6 @@ If all the messages of the current balise group have been received, calls Handle
 >
 </ReqRef><Comment>Distance between the front end of the train and the active Eurobalise antenna.
 [stan@ertmssolutions.com] We assume that ActiveAntennaPosition &gt; 0</Comment>
-</Variable><Variable
- Type="Boolean"
- DefaultValue="Boolean.False"
- VariableMode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="BGIsConsidered"
- Guid="59479397-2896-454b-be92-81cbdce615e4"
->
-<Comment>Used to indicate if the current balise group has to be considered.4</Comment>
 </Variable></Variables>
 <Rules>
 <Rule

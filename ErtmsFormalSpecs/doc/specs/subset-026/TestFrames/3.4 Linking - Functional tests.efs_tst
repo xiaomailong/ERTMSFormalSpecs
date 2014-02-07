@@ -263,7 +263,7 @@ N_ITER=&gt;0
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Receive first telegram of unlinked balise group"
  Guid="ced6fa08-7927-40c6-9f4f-a13e83786f7a"
 >
 <Actions>
@@ -288,8 +288,8 @@ N_ITER=&gt;0
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;1,
-    N_TOTAL=&gt;0,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;1,
     NID_C=&gt;140,
@@ -310,6 +310,27 @@ N_ITER=&gt;0
             }
         }
     ]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Receive second telegram of unlinked balise group"
+ Guid="10814e59-0a82-4e81-9c4d-bc3aefe0af8c"
+>
+<Actions>
+<Action
+ Guid="1ee24200-a4f8-4f4b-a8f9-8dc1330c5170"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;1,
+    NID_C=&gt;140,
+    NID_BG=&gt;10001,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; []
 }</Action></Actions>
 <Expectations>
 <Expectation

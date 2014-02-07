@@ -147,24 +147,19 @@ namespace DataDictionary.Interpreter
                     Ref = tmp.Values[0].Value;
                     StaticUsage.AddUsage(Ref, Root, null);
 
+                    Filter.References referenceFilter;
                     ReturnValueElement current = tmp.Values[0];
                     for (int i = Arguments.Count - 1; i > 0; i--)
                     {
+                        referenceFilter = new Filter.References(current.Value);
                         current = current.PreviousElement;
-                        Arguments[i].SemanticAnalysis(current.Value);
+                        Arguments[i].SemanticAnalysis(current.Value, referenceFilter);
                         StaticUsage.AddUsages(Arguments[i].StaticUsage, null);
                         StaticUsage.AddUsage(Arguments[i].Ref, Root, null);
                     }
-
-                    if (current.Value is DataDictionary.Types.NameSpace)
-                    {
-                        Arguments[0].SemanticAnalysis(null, Filter.IsNameSpace.INSTANCE);
-                    }
-                    else
-                    {
-                        Arguments[0].SemanticAnalysis();
-
-                    }
+                    referenceFilter = new Filter.References(current.Value);
+                    Arguments[0].SemanticAnalysis(null, referenceFilter);
+                    StaticUsage.AddUsages(Arguments[0].StaticUsage, null);
                     StaticUsage.AddUsage(Arguments[0].Ref, Root, null);
                 }
                 else if (tmp.IsAmbiguous)
@@ -362,6 +357,11 @@ namespace DataDictionary.Interpreter
         /// <param name="context">The interpretation context</param>
         public override void checkExpression()
         {
+            foreach (Expression subExpression in Arguments)
+            {
+                subExpression.checkExpression();
+            }
+
             base.checkExpression();
         }
 

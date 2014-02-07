@@ -33,16 +33,26 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
+        {
+            base.BuildSubNodes(buildSubNodes);
+
+            foreach (DataDictionary.Rules.Rule rule in Item.Rules)
+            {
+                Nodes.Add(new RuleTreeNode(rule, buildSubNodes));
+            }
+        }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
         public RulesTreeNode(DataDictionary.Types.Structure item, bool buildSubNodes)
             : base(item, buildSubNodes, "Rules", true, false)
         {
-            foreach (DataDictionary.Rules.Rule rule in item.Rules)
-            {
-                Nodes.Add(new RuleTreeNode(rule, buildSubNodes));
-            }
         }
 
         /// <summary>

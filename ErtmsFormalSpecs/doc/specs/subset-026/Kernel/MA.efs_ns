@@ -2897,7 +2897,7 @@ IN EOAs</Action></Actions>
  Guid="7c64880f-bfc1-476f-a9b1-9983265c63c0"
 >INSERT CreateTarget(
     aLength=&gt;Default.BaseTypes.Distance.Infinity,
-    aLocation=&gt;Kernel.ClosestStopLocation().StopLocation,
+    aLocation=&gt;Kernel.ClosestStopLocation( Kernel.EmergencyStops ).StopLocation,
     aSpeed=&gt;0.0
 )
 IN EOAs</Action></Actions>
