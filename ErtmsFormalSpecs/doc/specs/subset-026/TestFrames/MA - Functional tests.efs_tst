@@ -4174,6 +4174,7 @@ BTM.Linking.Linkings</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
+ Implemented="TRUE"
  Name="New MA section at infill location reference"
  Guid="28a920f7-f975-4c2a-8baa-661e32fe68a4"
 >
@@ -6831,7 +6832,59 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Comment>The train handles repositioning information in a section other than the end section (for 3.8.5.2.1)</Comment>
 <SubSteps>
 <SubStep
- Name="Sub-step 1 - First balise has the packet"
+ Name="Sub-step 1 - Clear linking data"
+ Guid="a2c340f6-7b89-4c39-a015-37bf1a342ff4"
+>
+<Actions>
+<Action
+ Guid="5707bc89-47ae-405b-ae39-6ad2a2c7b918"
+>BTM.Linking.Linkings &lt;- []</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Set up an MA and linking information"
+ Guid="debe2b05-7664-479c-bc93-1d11961ca373"
+>
+<Actions>
+<Action
+ Guid="2845f3d9-488f-49e9-adb6-9a8269f66595"
+>INSERT 
+BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 10.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 5.0,
+    BaliseGroupIdentifier =&gt; Messages.NID_BG.NID_UNKNOWN
+}
+
+IN
+BTM.Linking.Linkings</Action><Action
+ Guid="2b1ae6ac-d648-43d9-b064-f2ff381aea97"
+>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{
+
+    TargetSpeed =&gt; 0.0,
+
+    Sections =&gt; [
+        Kernel.MA.Section{
+            Length =&gt; 400.0,
+            TimeOut =&gt; EMPTY
+         }
+     ],
+
+    EndSection =&gt; Kernel.MA.EndSection{
+        EndSectionTimeOut =&gt; EMPTY,
+        TimeOut =&gt; EMPTY,
+        Length =&gt; 600.0,
+        DangerPoint =&gt; EMPTY,
+        Overlap =&gt; EMPTY
+    }
+}</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="120b8188-f9e4-46ea-807f-a30b9099ae41"
+>Kernel.MA.EndOfMovementAuthority().Location == 1000.0</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step 3 - First balise has the packet"
  Guid="863b5e00-f181-44d7-a900-8e7476907f52"
 >
 <Actions>
@@ -6863,7 +6916,7 @@ IN BTM.Linking.Linkings</Action></Actions>
      ]
  }</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Second balise"
+ Name="Sub-step 4 - Second balise"
  Guid="faa7fa5f-3792-480f-87be-cc330d24e954"
 >
 <Actions>
@@ -6882,12 +6935,20 @@ IN BTM.Linking.Linkings</Action></Actions>
     Q_LINK =&gt; Messages.Q_LINK.Linked,
     Sequence1 =&gt; []
 }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 5 - Expectations"
+ Guid="492413c8-7540-44fc-adae-76e60c8e9a87"
+>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="738701c2-5c9d-4a5d-9f9c-31a23bae0110"
->Kernel.MA.MA.EndSection.Length == 750.0</Expectation></Expectations>
+ Guid="ed206680-d69c-4700-9be9-b4c62e8abd72"
+>Kernel.MA.EndOfMovementAuthority().Location == 1205.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c6a2665c-6283-4b4b-b5f7-5f8a7dced41b"
+>(FIRST_IN Kernel.MA.MA.Sections).Length == 605.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
