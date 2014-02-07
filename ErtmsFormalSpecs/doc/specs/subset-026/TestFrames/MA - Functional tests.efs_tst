@@ -6882,7 +6882,11 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="120b8188-f9e4-46ea-807f-a30b9099ae41"
->Kernel.MA.EndOfMovementAuthority().Location == 1000.0</Expectation></Expectations>
+>Kernel.MA.EndOfMovementAuthority().Location == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="6a57f29c-8976-47bf-8cab-6e2799f3a91f"
+>Kernel.MA.MA.EndSection.Length == 600.0</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step 3 - First balise has the packet"
  Guid="863b5e00-f181-44d7-a900-8e7476907f52"
@@ -6948,7 +6952,11 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c6a2665c-6283-4b4b-b5f7-5f8a7dced41b"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 605.0</Expectation></Expectations>
+>(FIRST_IN Kernel.MA.MA.Sections).Length == 605.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3e216b08-6657-4fc7-89cd-e19d594da9e5"
+>Kernel.MA.MA.EndSection.Length == 600.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
