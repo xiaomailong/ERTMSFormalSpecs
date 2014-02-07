@@ -402,7 +402,7 @@ namespace GUI
                 switch (e.KeyCode)
                 {
                     case Keys.W:
-                        CheckSaveThenClose();
+                        Close();
                         e.Handled = true;
                         break;
                 }
@@ -757,20 +757,7 @@ namespace GUI
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
-            CheckSaveThenClose();
-        }
-
-        /// <summary>
-        /// Checks that save oeprations should be performed, if not, close the window
-        /// </summary>
-        /// <<returns>Indicates that the operation has been interrupted</returns>
-        private void CheckSaveThenClose()
-        {
-            bool canceled = CheckSave();
-            if (!canceled)
-            {
-                this.Close();
-            }
+            Close();
         }
 
         /// <summary>
