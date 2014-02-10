@@ -19,7 +19,7 @@ using System;
 
 namespace DataDictionary.Tests
 {
-    public class Frame : Generated.Frame
+    public class Frame : Generated.Frame, ICommentable
     {
         /// <summary>
         /// The frame sub sequences
@@ -173,5 +173,15 @@ namespace DataDictionary.Tests
         /// The frameref which instanciated this frame
         /// </summary>
         public FrameRef FrameRef { get; set; }
+
+        /// <summary>
+        /// The comment related to this element
+        /// </summary>
+        public string Comment
+        {
+            get { return getComment(); }
+            set { setComment(value); }
+        }
+
     }
 }

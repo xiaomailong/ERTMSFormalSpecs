@@ -21,7 +21,7 @@ using DataDictionary.Types.AccessMode;
 
 namespace DataDictionary.Types
 {
-    public class NameSpace : Generated.NameSpace, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces, IGraphicalDisplay
+    public class NameSpace : Generated.NameSpace, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces, IGraphicalDisplay, ICommentable
     {
         /// <summary>
         /// Used to temporarily store the list of sub-namespaces
@@ -588,5 +588,15 @@ namespace DataDictionary.Types
         /// The namespace ref which instanciated this namespace
         /// </summary>
         public NameSpaceRef NameSpaceRef { get; set; }
+
+        /// <summary>
+        /// The comment related to this element
+        /// </summary>
+        public string Comment
+        {
+            get { return getComment(); }
+            set { setComment(value); }
+        }
+
     }
 }

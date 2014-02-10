@@ -46,6 +46,19 @@ namespace GUI.DataDictionaryView
                 }
             }
 
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
+            public DataDictionary.Rules.PreCondition Comment
+            {
+                get { return Item; }
+                set
+                {
+                    Item = value;
+                    RefreshNode();
+                }
+            }
+
             /// <summary>
             /// Sets the verified flag of the the enclosing rule 
             /// </summary>

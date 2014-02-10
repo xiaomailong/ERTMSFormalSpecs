@@ -26,7 +26,7 @@ namespace GUI.TestRunnerView
         /// <summary>
         /// The value editor
         /// </summary>
-        private class ItemEditor : NamedEditor
+        private class ItemEditor : CommentableEditor
         {
             /// <summary>
             /// Constructor
@@ -63,19 +63,6 @@ namespace GUI.TestRunnerView
             {
                 get { return Item.getDescription(); }
                 set { Item.setDescription(value); }
-            }
-
-            [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
-            public DataDictionary.Tests.Step Comment
-            {
-                get { return Item; }
-                set
-                {
-                    Item = value;
-                    RefreshNode();
-                }
             }
 
             /// <summary>

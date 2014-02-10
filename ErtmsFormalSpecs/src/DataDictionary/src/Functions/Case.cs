@@ -20,7 +20,7 @@ using DataDictionary.Rules;
 
 namespace DataDictionary.Functions
 {
-    public class Case : Generated.Case, TextualExplain, IExpressionable
+    public class Case : Generated.Case, TextualExplain, IExpressionable, ICommentable
     {
         private Expression expression;
 
@@ -239,5 +239,15 @@ namespace DataDictionary.Functions
 
             return retVal;
         }
+
+        /// <summary>
+        /// The comment related to this element
+        /// </summary>
+        public string Comment
+        {
+            get { return getComment(); }
+            set { setComment(value); }
+        }
+
     }
 }

@@ -275,6 +275,14 @@ namespace DataDictionary
                     requiresComment = ruleCondition.EnclosingRule.RuleConditions.Count > 1;
                 }
 
+                if (commentable is DataDictionary.Types.NameSpace
+                    || commentable is DataDictionary.Functions.Case
+                    || commentable is DataDictionary.Rules.PreCondition
+                    || commentable is DataDictionary.Rules.Action)
+                {
+                    requiresComment = false;
+                }
+
                 Rules.Rule rule = commentable as Rules.Rule;
                 if (rule != null && rule.EnclosingProcedure != null)
                 {
