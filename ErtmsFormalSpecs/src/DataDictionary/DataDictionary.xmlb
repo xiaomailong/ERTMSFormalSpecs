@@ -201,6 +201,7 @@
       <FIELD NAME="X"                   TYPE="INTEGER" />
       <FIELD NAME="Y"                   TYPE="INTEGER" />
       <FIELD NAME="Hidden"              TYPE="BOOLEAN" />
+      <FIELD NAME="Comment"             TYPE="PCHAR"   />
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="X"      TARGET="X"      OPTIONAL="TRUE" DEFAULT="0" />
@@ -211,6 +212,9 @@
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
+        <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
+          <PCDATA TARGET="Comment"/>
+        </ENCLOSED>
         <ENCLOSED NAME="NameSpaces" OPTIONAL="TRUE">
 	  <CONCAT>
             <REPEAT TARGET="NameSpaces">
@@ -511,9 +515,13 @@
     <FIELDS>
       <FIELD NAME="PreConditions" REFTYPE="PreCondition" />
       <FIELD NAME="Expression"    TYPE="PCHAR" />
+      <FIELD NAME="Comment"       TYPE="PCHAR" />
     </FIELDS>
     <FORMULA>
       <CONCAT>
+        <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
+          <PCDATA TARGET="Comment"/>
+        </ENCLOSED>
         <ENCLOSED NAME="PreConditions" OPTIONAL="TRUE" >
           <REPEAT TARGET="PreConditions">
             <ELEMENTREF NAME="PreCondition"/>
@@ -701,9 +709,15 @@
     <META NAME="Ordered"/>
     <FIELDS>
       <FIELD NAME="Condition" TYPE="PCHAR"/>
+      <FIELD NAME="Comment"   TYPE="PCHAR"/>
     </FIELDS>
     <FORMULA>
-      <PCDATA TARGET="Condition" />
+      <CONCAT>
+        <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
+          <PCDATA TARGET="Comment"/>
+        </ENCLOSED>
+        <PCDATA TARGET="Condition" />
+      </CONCAT>
     </FORMULA>
   </ELEMENT>
 
@@ -715,9 +729,15 @@
     <META NAME="Ordered"/>
     <FIELDS>
       <FIELD NAME="Expression" TYPE="PCHAR"/>
+      <FIELD NAME="Comment"    TYPE="PCHAR"/>
     </FIELDS>
     <FORMULA>
-      <PCDATA TARGET="Expression" />
+      <CONCAT>
+        <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
+          <PCDATA TARGET="Comment"/>
+        </ENCLOSED>
+        <PCDATA TARGET="Expression" />
+      </CONCAT>
     </FORMULA>
   </ELEMENT>
 
@@ -734,13 +754,17 @@
     <META NAME="Package">test</META>
     <FIELDS>
       <FIELD NAME="CycleDuration" TYPE="PCHAR" />
-      <FIELD NAME="SubSequences" REFTYPE="SubSequence" MODE="DEFAULT"/>
+      <FIELD NAME="SubSequences"  REFTYPE="SubSequence" MODE="DEFAULT"/>
+      <FIELD NAME="Comment"       TYPE="PCHAR" />
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="CycleDuration" TARGET="CycleDuration" OPTIONAL="TRUE" DEFAULT="0.1"/>
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
+        <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
+          <PCDATA TARGET="Comment"/>
+        </ENCLOSED>
         <ENCLOSED NAME="SubSequences" OPTIONAL="TRUE" >
           <REPEAT TARGET="SubSequences">
             <ELEMENTREF NAME="SubSequence"/>
@@ -779,7 +803,8 @@
       <FIELD NAME="RBCPhone"   TYPE="PCHAR" >
         <META NAME="TargetName">RbcPhone</META>
       </FIELD>
-      <FIELD NAME="TestCases" REFTYPE="TestCase" MODE="DEFAULT"/>
+      <FIELD NAME="TestCases"  REFTYPE="TestCase" MODE="DEFAULT"/>
+      <FIELD NAME="Comment"    TYPE="PCHAR"/>
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="D_LRBG"     TARGET="D_LRBG"     OPTIONAL="TRUE" DEFAULT="" />
@@ -794,6 +819,9 @@
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
+        <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
+          <PCDATA TARGET="Comment"/>
+        </ENCLOSED>
         <ENCLOSED NAME="TestCases" OPTIONAL="TRUE">
           <REPEAT TARGET="TestCases">
             <ELEMENTREF NAME="TestCase"/>
@@ -813,6 +841,7 @@
       <FIELD NAME="Feature" TYPE="INTEGER" />
       <FIELD NAME="Case"    TYPE="INTEGER" />
       <FIELD NAME="Steps"   REFTYPE="Step" MODE="DEFAULT"/>
+      <FIELD NAME="Comment" TYPE="PCHAR" />
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="Feature" TARGET="Feature" OPTIONAL="TRUE" DEFAULT="9999" />
@@ -820,6 +849,9 @@
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
+        <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
+          <PCDATA TARGET="Comment"/>
+        </ENCLOSED>
         <ENCLOSED NAME="Steps" OPTIONAL="TRUE" >
           <REPEAT TARGET="Steps">
             <ELEMENTREF NAME="Step"/>
@@ -908,12 +940,16 @@
       <FIELD NAME="Actions"        REFTYPE="Action" />
       <FIELD NAME="Expectations"   REFTYPE="Expectation" />
       <FIELD NAME="SkipEngine"     TYPE="BOOLEAN" />
+      <FIELD NAME="Comment"        TYPE="PCHAR" />
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="SkipEngine" TARGET="SkipEngine" OPTIONAL="TRUE" DEFAULT="FALSE" />
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
+        <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
+          <PCDATA TARGET="Comment"/>
+        </ENCLOSED>
 	<ENCLOSED NAME="Actions" OPTIONAL="TRUE">
           <REPEAT TARGET="Actions">
             <ELEMENTREF NAME="Action"/>
@@ -944,6 +980,7 @@
         <META NAME="TargetName">Deadline</META>
       </FIELD>
       <FIELD NAME="Condition"  TYPE="PCHAR"/>
+      <FIELD NAME="Comment"    TYPE="PCHAR"/>
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="Kind"     TARGET="Kind"     OPTIONAL="TRUE" DEFAULT="Instantaneous"/>
@@ -952,6 +989,9 @@
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
+        <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
+          <PCDATA TARGET="Comment"/>
+        </ENCLOSED>
         <PCDATA TARGET="Value" />
         <ENCLOSED NAME="Condition" OPTIONAL="TRUE">
           <PCDATA TARGET="Condition" />

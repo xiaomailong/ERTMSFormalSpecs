@@ -431,6 +431,14 @@ namespace GUI
                         subDeclarator = typedElement.Type as Utils.ISubDeclarator;
                     }
                 }
+
+                DataDictionary.Variables.IVariable variable = subDeclarator as DataDictionary.Variables.IVariable;
+                if (variable != null)
+                {
+                    type = true;
+                    subDeclarator = variable.Type as Utils.ISubDeclarator;
+                }
+
                 if (subDeclarator != null)
                 {
                     subDeclarator.InitDeclaredElements();

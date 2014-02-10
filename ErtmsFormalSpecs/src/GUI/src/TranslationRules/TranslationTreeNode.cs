@@ -26,7 +26,7 @@ namespace GUI.TranslationRules
 {
     public class TranslationTreeNode : ModelElementTreeNode<DataDictionary.Tests.Translations.Translation>
     {
-        private class ItemEditor : NamedEditor
+        private class ItemEditor : CommentableEditor
         {
             /// <summary>
             /// Constructor
@@ -34,19 +34,6 @@ namespace GUI.TranslationRules
             public ItemEditor()
                 : base()
             {
-            }
-
-            [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
-            public DataDictionary.Tests.Translations.Translation Comment
-            {
-                get { return Item; }
-                set
-                {
-                    Item = value;
-                    RefreshNode();
-                }
             }
 
             /// <summary>

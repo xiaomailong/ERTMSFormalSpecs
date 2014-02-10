@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace DataDictionary.Tests
 {
-    public class SubSequence : Generated.SubSequence, IComparable<SubSequence>
+    public class SubSequence : Generated.SubSequence, IComparable<SubSequence>, ICommentable
     {
         /// <summary>
         /// The comparer
@@ -151,5 +151,15 @@ namespace DataDictionary.Tests
 
             return retVal;
         }
+
+        /// <summary>
+        /// The comment related to this element
+        /// </summary>
+        public string Comment
+        {
+            get { return getComment(); }
+            set { setComment(value); }
+        }
+
     }
 }
