@@ -213,6 +213,11 @@ namespace GUI
         }
 
         /// <summary>
+        /// Indicates that an expand all operation is currently being done
+        /// </summary>
+        bool ExpandingAll = false;
+
+        /// <summary>
         /// Handles an expand event
         /// </summary>
         /// <param name="sender"></param>
@@ -223,7 +228,22 @@ namespace GUI
             {
                 GUIUtils.MDIWindow.HandlingSelection = true;
                 Selected = e.Node as BaseTreeNode;
-                Selected.HandleExpand();
+                if (Control.ModifierKeys == Keys.Control && !ExpandingAll)
+                {
+                    try
+                    {
+                        ExpandingAll = true;
+                        Selected.ExpandAll();
+                    }
+                    finally
+                    {
+                        ExpandingAll = false;
+                    }
+                }
+                else
+                {
+                    Selected.HandleExpand();
+                }
             }
             finally
             {
