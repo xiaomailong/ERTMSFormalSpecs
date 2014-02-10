@@ -436,6 +436,11 @@ namespace GUI
 
             String windowTitle = "ERTMS Formal Spec Workbench (version " + versionNumber + ")";
 
+            foreach (DataDictionary.Dictionary dictioanry in EFSSystem.Dictionaries)
+            {
+                windowTitle += " " + dictioanry.FilePath;
+            }
+
             if (EFSSystem != null && EFSSystem.ShouldSave)
             {
                 windowTitle += " [modified]";
