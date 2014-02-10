@@ -916,7 +916,9 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 <PreConditions>
 <PreCondition
  Guid="a5ae63f6-8d36-44a3-bbd2-212a49b20d81"
->ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR )</PreCondition></PreConditions>
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR )</PreCondition><PreCondition
+ Guid="d86ad34c-f29d-4680-8d17-fef9ba598939"
+>Linking.CurrentLinking().BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="11ff0426-7369-4b98-8ea9-b7674aadda0c"

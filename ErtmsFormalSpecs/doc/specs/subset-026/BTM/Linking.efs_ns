@@ -317,7 +317,7 @@ AND
   AND
 THERE_IS_IN CurrentBaliseGroup | TelegramContainsRepositioningInformation ( X )
   AND
-BaliseGroupOrientation() != CurrentLinking().Orientation</Expression>
+BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -454,7 +454,7 @@ BaliseGroupOrientation() != CurrentLinking().Orientation</Expression>
 <PreConditions>
 <PreCondition
  Guid="bd0d2fa7-a315-45a0-86a4-ba85161aa42b"
->ConsiderUnlinkedBG() </PreCondition></PreConditions>
+>ConsiderUnlinkedBG()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"

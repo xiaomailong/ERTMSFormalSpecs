@@ -9442,7 +9442,7 @@ INITIAL_VALUE EmergencyStop
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Name="UpdateEOAandSvL"
+ Name="UpdateEOA"
  Guid="930bec6a-53b0-4496-b3b9-1d82d5aafcfc"
 >
 <SubRules></SubRules>
@@ -9456,9 +9456,25 @@ INITIAL_VALUE EmergencyStop
 <Actions>
 <Action
  Guid="c6f59ebe-03a7-4ee2-aea3-8fe999bbfc7a"
->Kernel.MA.MakeEOAs()</Action><Action
+>Kernel.MA.HandleEOAs()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="UpdateSvL"
+ Guid="323a7c8d-4b61-4042-af5c-a3ddbec32194"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="UpdateSvL"
+ Guid="06bdb857-818e-49a7-9717-5767e306582a"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
  Guid="64c5dc89-646c-46a1-8e8c-b24814da8ae4"
->Kernel.MA.MakeSvLs()</Action></Actions>
+>Kernel.MA.HandleSvLs()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
