@@ -90,22 +90,17 @@
 </ReqRef><Comment>Gives the possible system versions for Euroradio communication.</Comment>
 <Values>
 <EnumValue
- Value="1"
+ Value="0"
  Name="Version1_0"
  Guid="57240a8e-82c1-4bc2-85a2-0db7d7eca3b9"
 >
 </EnumValue><EnumValue
- Value="2"
+ Value="1"
  Name="Version1_1"
  Guid="0dc39e5e-a3df-4e7b-b900-0faa0a026b92"
 >
 </EnumValue><EnumValue
- Value="0"
- Name="Unknown"
- Guid="c8df87c9-3860-4af4-90d5-deaba35e1dfe"
->
-</EnumValue><EnumValue
- Value="3"
+ Value="2"
  Name="Version2_0"
  Guid="27af6815-c66e-44a0-8232-36c46b5f46f1"
 >
@@ -1606,8 +1601,8 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 >
 <Comment>Set to True when a request to establish a safe radio connection has to be sent.</Comment>
 </StructureElement><StructureElement
- TypeName="SystemVersionEnum"
- Default="SystemVersionEnum.Unknown"
+ TypeName="SystemVersionStruct"
+ Default=""
  Mode="Incoming"
  Implemented="TRUE"
  Name="SystemVersion"
@@ -1737,15 +1732,22 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 >
 <Comment>RBC connected on this terminal.</Comment>
 </StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="AvailableNetworksStruct"
  Guid="e6849568-73f7-4b28-ae32-8b6bf0058e00"
 >
+<ReqRef
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="81bc9c91-72b9-4123-8780-3da0231cb9ab"
+>
+</ReqRef><Comment>Allows to request the list of available and allowed networkds, based on a request to the Mobile Terminal(s).</Comment>
 <StructureElement
  TypeName="Default.Request"
  Default="Default.Request.Disabled"
  Mode="Internal"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="RequestState"
  Guid="92cbb691-f862-4800-bcc1-b1c3201d2980"
 >
@@ -1755,6 +1757,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Default="[]"
  Mode="Incoming"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Networks"
  Guid="0ed60605-c72c-4461-b890-b564097e7b37"
 >
@@ -1764,8 +1767,8 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Guid="d57ddcfd-645d-4096-81d5-c12c41bd57bb"
 >
 <StructureElement
- TypeName="String"
- Default="&apos;&apos;"
+ TypeName="SystemVersionEnum"
+ Default="SystemVersionEnum.Unknown"
  Mode="Internal"
  Name="Value"
  Guid="6b92d905-fc0e-4c7c-8f01-e8ea9c2663a8"
@@ -3841,7 +3844,9 @@ Default.MessageTypes.QScaleDistance(
 <Actions>
 <Action
  Guid="e17bef78-a2ff-421f-8ab3-bf8d2d0939ac"
->CurrentRBCConnection().SessionManagementData.SystemVersion &lt;- ConvertSystemVersion ( aVersion =&gt; aMessage.M_VERSION )</Action></Actions>
+>CurrentRBCConnection().SessionManagementData.SystemVersion.Value &lt;- ConvertSystemVersion ( aVersion =&gt; aMessage.M_VERSION )</Action><Action
+ Guid="8212c19a-2428-4a44-aa05-ed206845382b"
+>CurrentRBCConnection().SessionManagementData.SystemVersion.DataState &lt;- DataState.Valid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4073,7 +4078,12 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Name="AvailableNetworks"
  Guid="f24775ac-92d1-48d2-8446-fcd2eb8c7467"
 >
-<Comment>Allows to request the list of available and allowed networks.</Comment>
+<ReqRef
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="69752379-7c7f-4176-a31b-b10e08129209"
+>
+</ReqRef><Comment>Allows to request the list of available and allowed networks.</Comment>
 </Variable><Variable
  Type="MobileTerminalStruct"
  VariableMode="InOut"
@@ -4090,12 +4100,6 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Guid="14bc979c-299e-41a1-b18b-77e58ca89e59"
 >
 <Comment>Second mobile terminal.</Comment>
-</Variable><Variable
- Type="SystemVersionStruct"
- VariableMode="Internal"
- Name="RbcRiuSystemVersion"
- Guid="9102c513-6f5a-4f5c-8625-1e0ea40fb32c"
->
 </Variable><Variable
  Type="ContactOptionEnum"
  DefaultValue="ContactOptionEnum.ContactLastKnownRBC"
