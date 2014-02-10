@@ -106,7 +106,21 @@
  Guid="f986b9dc-68c2-48f4-aa19-15bc06d987e7"
 >PreviousAdditionalBrakeStatus &lt;- TIU.AdditionalBrakesActive</Action><Action
  Guid="dbfb4ce6-6e75-4ec4-9570-7ba16fe4a050"
->JRUMessages &lt;- []</Action></Actions>
+>JRUMessages &lt;- []</Action><Action
+ Guid="e147e5df-e42d-47f4-b4b4-bfe04454a4d4"
+>PreviousSpeedAndDistanceSuppervisionStatus &lt;- Kernel.SupervisionStatus</Action><Action
+ Guid="97c2a87c-d97d-488f-b296-648397ba8beb"
+>PreviousSpeedAndDistanceSuppervisionType &lt;- Kernel.SpeedAndDistanceMonitoring.Monitoring</Action><Action
+ Guid="58633a81-4072-494e-a17d-19e34b04acc0"
+>PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><Action
+ Guid="9bc80e3a-1a1a-429f-98aa-42c1d4d761ce"
+>PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</Action><Action
+ Guid="d461f9a5-7f7b-482b-8ffa-2ca4aed6d474"
+>PreviousTargetSpeed &lt;- DMI.MasterDMI().Out_TargetSpeed.Speed</Action><Action
+ Guid="cc02b5bb-d96c-46dd-a3bf-abe2b314c992"
+>PreviousTargetDistance &lt;- Kernel.TargetDistance</Action><Action
+ Guid="0eb30b56-c6ab-4c4d-800f-f09532b1c04c"
+>PreviousReleaseSpeed &lt;- DMI.MasterDMI().Out_ReleaseSpeed.Speed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -970,6 +984,43 @@ ELECTRO_PNEUMATIC_BRAKE_STATUS =&gt; CreateJruElectroPneumaticBrakeStatus()
 ADDITIONAL_BRAKE_STATUS =&gt; CreateJruAditionalBrakeStatusMessage()
 }IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="SendSDMonitoringInformation"
+ Guid="08989d46-5b8e-4f7f-a17d-8dd00010346a"
+>
+<ReqRef
+ Id="bdd0c87f-c020-42d5-8bca-0adcf401e0a7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6f2ee733-5e48-4478-af91-50e6fb3a7c45"
+>
+</ReqRef><ReqRef
+ Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5c8247d1-d132-4636-b9b7-a02e9b6de257"
+>
+</ReqRef><Comment>This will create and fullfill all the necessary fields of the SpeedAndDistanceMonitoringInformationMessage</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="SendSDMonitoringInformationMessage"
+ Guid="b6703ea3-be74-45e3-8501-b189b22e560a"
+>
+<Comment>This will create the SD Monitoring information message once the conditions have been satisfied</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b68fe90d-3f7f-4f71-be23-059f5f67cf38"
+>SendSpeedAndDistanceMonitoringInformationMessage(THIS)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e0adc517-5b2f-4309-ab4b-821bd1fbaf57"
+>INSERT Messages.JRU.MESSAGE.Message{
+SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitoringInformationMessage()
+}IN JRUMessages
+</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
@@ -1304,6 +1355,139 @@ ADDITIONAL_BRAKE_STATUS =&gt; CreateJruAditionalBrakeStatusMessage()
  Guid="a4fc8cde-c81c-42fc-bcb3-080aacc0b88e"
 >
 </ReqRef><Comment>Will store the previous additional brakes status</Comment>
+</StructureElement><StructureElement
+ TypeName="Kernel.SpeedAndDistanceMonitoring.MonitoringType"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousSpeedAndDistanceSuppervisionType"
+ Guid="f00ad418-1a9b-42a0-b5e5-f6a9aee1682c"
+>
+<ReqRef
+ Id="bdd0c87f-c020-42d5-8bca-0adcf401e0a7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="3e903dcf-bc76-4828-8aad-f8ed0e90aeaa"
+>
+</ReqRef><ReqRef
+ Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e94d2665-1917-4943-b0ed-1c591f8a9aa1"
+>
+</ReqRef><Comment>Will store the previous value of the M_SDMTYPE variable</Comment>
+</StructureElement><StructureElement
+ TypeName="Kernel.SupervisionStatus"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousSpeedAndDistanceSuppervisionStatus"
+ Guid="201ec3dc-44e2-48e3-aef0-755635fe2d0e"
+>
+<ReqRef
+ Id="bdd0c87f-c020-42d5-8bca-0adcf401e0a7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="62e762c4-356b-4c0c-a97c-2525af7788a2"
+>
+</ReqRef><ReqRef
+ Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="22a45de6-9ced-42ba-a54c-02752b9a22f6"
+>
+</ReqRef><Comment>Will store the previous value of the M_SDMTYPE variable</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousPermittedSpeed"
+ Guid="1ff95ab4-af30-43c1-b6cd-ab439a64c646"
+>
+<ReqRef
+ Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6f2093a3-8b0c-4e1f-919b-a551dff48ee0"
+>
+</ReqRef><ReqRef
+ Id="bdd0c87f-c020-42d5-8bca-0adcf401e0a7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="124c76f6-c85e-4d28-987c-3276b64a920a"
+>
+</ReqRef><Comment>This will store the previous value of the permitted speed</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousVFloiValue"
+ Guid="e224a007-94bd-4300-b6ed-7c06e1966132"
+>
+<ReqRef
+ Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="44a55d0a-cc32-4d09-98fc-2f08e3369563"
+>
+</ReqRef><ReqRef
+ Id="bdd0c87f-c020-42d5-8bca-0adcf401e0a7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e6fb501f-75fa-4df6-8fb6-c53ceb6737a7"
+>
+</ReqRef><Comment>It will store the previous value of the first line of intervention variable</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousTargetSpeed"
+ Guid="f058f4ce-6fba-42cf-8c53-c44e73f48626"
+>
+<ReqRef
+ Id="bdd0c87f-c020-42d5-8bca-0adcf401e0a7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a84c8dbc-5ac3-43ec-b3d6-c44bebada28b"
+>
+</ReqRef><ReqRef
+ Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="fa4dca8a-4f30-4d8d-b57b-f368fba194a6"
+>
+</ReqRef><Comment>It will store the previous value of the target speed variable</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousTargetDistance"
+ Guid="8ee63ccb-5b11-4dd5-a3da-ff59ff8fcff0"
+>
+<ReqRef
+ Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0c7980f0-d573-42fc-98e0-551a03d54d37"
+>
+</ReqRef><ReqRef
+ Id="bdd0c87f-c020-42d5-8bca-0adcf401e0a7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="290a7753-b981-4607-ab73-ed0509eeb755"
+>
+</ReqRef><Comment>This will store the previous value of the TargetDistance variable</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousReleaseSpeed"
+ Guid="53f42a03-6519-4b1e-82da-f6d6a98ef44b"
+>
+<ReqRef
+ Id="bdd0c87f-c020-42d5-8bca-0adcf401e0a7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f962fef2-922e-47df-8dc0-5d8e851c3954"
+>
+</ReqRef><ReqRef
+ Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e2131815-7b35-46f3-9dac-611fa6f135a2"
+>
+</ReqRef><Comment>This will store the previous release speed value</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -2026,6 +2210,8 @@ OR
 ( MessageToRbcReady(EURORADIO.CurrentRBCConnection()) )
 OR
 (LevelChangedToNtc(jru))
+OR
+(SendSpeedAndDistanceMonitoringInformationMessage(jru) )
 OR
 (SendSleppingInput(jru))
 OR
@@ -5218,7 +5404,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
  Name="Value"
  Guid="950b687a-c814-4017-87a3-99cdff6be66e"
 >
-<Expression>Messages.JRU.MESSAGE.ADDITIONAL_BRAKE_STATUS.Message{
+<Expression>Messages.JRU.MESSAGE.ADDITIONAL_BRAKE_STATUS.Message {
     HEADER =&gt; CreateHeader(37),
     M_AB_STATUS=&gt; ToJruAdditionalBrakeStatus()
 }</Expression>
@@ -5292,6 +5478,284 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Case><Case
  Name="Otherwise"
  Guid="ee887635-f273-401a-a066-27ebef60b229"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_SDMSUPSTAT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToJruSpeedAndDistanceMonitoringsupervisionStatus"
+ Guid="1424736f-c12b-4f05-9dd1-adc393b40b9c"
+>
+<Comment>It will cast the incoming value from the kernel into an understandable value for the JRU</Comment>
+<Cases>
+<Case
+ Name="NormalStatus"
+ Guid="a7e2039a-a33b-4611-aab6-c3e6252b1712"
+>
+<PreConditions>
+<PreCondition
+ Guid="07ac1eae-7593-4e1e-a3da-e63d16ac8bcc"
+>Kernel.SupervisionStatus == Kernel.SupervisionStatus.Normal</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_SDMSUPSTAT.Normal_status</Expression>
+</Case><Case
+ Name="InticationsStatus"
+ Guid="877d9a0c-7f3f-4744-97a8-062f0fab5260"
+>
+<PreConditions>
+<PreCondition
+ Guid="21f25c2e-9685-471a-97bb-041773f1f6be"
+>Kernel.SupervisionStatus == Kernel.SupervisionStatus.Indication</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_SDMSUPSTAT.Indication_status</Expression>
+</Case><Case
+ Name="OverspeedStatus"
+ Guid="2db33b8c-1975-41d6-9d8a-bc52f19ea0e1"
+>
+<PreConditions>
+<PreCondition
+ Guid="cdd52112-b870-4727-b72d-2133ff2c2508"
+>Kernel.SupervisionStatus == Kernel.SupervisionStatus.Overspeed</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_SDMSUPSTAT.Overspeed_status</Expression>
+</Case><Case
+ Name="WarningStatus"
+ Guid="ac38a66d-0739-4f1c-9e93-9e4eb779b3ee"
+>
+<PreConditions>
+<PreCondition
+ Guid="a57fe756-6732-4947-b79e-1c37a9943b9c"
+>Kernel.SupervisionStatus == Kernel.SupervisionStatus.Warning</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_SDMSUPSTAT.Warning_status</Expression>
+</Case><Case
+ Name="InterventionStatus"
+ Guid="9a608aae-75ee-46c2-9b84-3634fbe058bf"
+>
+<PreConditions>
+<PreCondition
+ Guid="c8eec333-ca81-4140-b160-66111e8e215d"
+>Kernel.SupervisionStatus == Kernel.SupervisionStatus.Intervention</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_SDMSUPSTAT.Intervention_status</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_SDMTYPE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToJruSpeedAndDistanceMonitoringType"
+ Guid="84f56d8c-c0ab-4eff-95bc-a1bd2d61d834"
+>
+<Comment>It will cast the incoming value from the kernel into an understandable value in the JRU</Comment>
+<Cases>
+<Case
+ Name="CSM"
+ Guid="a60d076f-ce4a-4a1e-a276-1e3e7fc211b6"
+>
+<PreConditions>
+<PreCondition
+ Guid="1a616611-6e7d-4a54-ab2e-cc083381415a"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Ceiling</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_SDMTYPE.Ceiling_speed_monitoring__CSM</Expression>
+</Case><Case
+ Name="TSM"
+ Guid="899f8e83-aa20-4940-8aa4-764a20da33ac"
+>
+<PreConditions>
+<PreCondition
+ Guid="915ead74-5b53-434c-8c19-72d423b31cf2"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_SDMTYPE.Target_speed_monitoring__TSM</Expression>
+</Case><Case
+ Name="RSM"
+ Guid="0ed0da22-2f50-4689-96fc-5ff3c2ebf8cc"
+>
+<PreConditions>
+<PreCondition
+ Guid="79088302-a61b-4499-9717-0db5a3e9ca11"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.ReleaseSpeed</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_SDMTYPE.Release_speed_monitoring_RSM</Expression>
+</Case><Case
+ Name="PIM"
+ Guid="06dabf03-731f-4ff7-a9c9-cbddddbaa6e3"
+>
+<Expression>Messages.JRU.M_SDMTYPE.Pre_indication_monitoring__PIM</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.SPEED_AND_DISTANCE_MONITORING_INFORMATION.Message"
+ Implemented="TRUE"
+ Name="CreateJruSpeedAndDistanceMonitoringInformationMessage"
+ Guid="3de869ca-c99b-4435-8863-78e3b1bbdfd0"
+>
+<ReqRef
+ Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="fdd06f7b-606e-45e2-be67-aaaeebecda2f"
+>
+</ReqRef><Comment>This will create the JRU Speed and distance monitoring information Message</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="393b633c-2c88-4500-8f99-25bf3690af5e"
+>
+<Expression>Messages.JRU.MESSAGE.SPEED_AND_DISTANCE_MONITORING_INFORMATION.Message{
+    HEADER =&gt; CreateHeader(25),
+M_SDMTYPE =&gt; ToJruSpeedAndDistanceMonitoringType(),
+M_SDMSUPSTAT =&gt; ToJruSpeedAndDistanceMonitoringsupervisionStatus(),
+V_PERM =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_PermittedSpeed.Speed ),
+V_FLOI=&gt;ToMessagesSpeed(Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()),
+V_TARGET =&gt;ToMessagesSpeed(DMI.MasterDMI().Out_TargetSpeed.Speed),
+D_TARGET=&gt; ToMessagesDistance(
+    distance=&gt;Kernel.TargetDistance,
+    scale=&gt;Messages.JRU.Q_SCALE._1_m_scaleC
+),
+V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="MessageTypes.Speed"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToMessagesSpeed"
+ Guid="b1b2f068-6f8d-47d3-b341-195e933e6833"
+>
+<Comment>This will cast an Default speed into a Messages Speed type</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Speed"
+ Guid="b8bae30b-68b6-47b1-86e7-26adc8e7cffc"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="NotStandStill"
+ Guid="0cd9ab8a-e509-4e2a-a039-65dcd41464f4"
+>
+<PreConditions>
+<PreCondition
+ Guid="17dff9fa-9166-4ad4-a897-53f45ff796f8"
+>Odometry.EstimatedSpeed != 0.0</PreCondition></PreConditions>
+<Expression>Default.MessageTypes.UnResolveSpeed( Speed, 5.0)</Expression>
+</Case><Case
+ Name="StandStill"
+ Guid="f5c6517d-2103-4fe9-9108-e1cc5f4967d5"
+>
+<Expression>0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="MessageTypes.Distance"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToMessagesDistance"
+ Guid="c7f57d99-56f1-4069-b55b-b1ce0562f22d"
+>
+<Comment>This will cast an Default distance into a Message type distance</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="distance"
+ Guid="27583065-89c1-4366-a9e3-30c7c59ad7f2"
+>
+</Parameter><Parameter
+ Type="Messages.JRU.Q_SCALE"
+ Name="scale"
+ Guid="abb139b5-7ad0-49cb-a13d-cc63e9e04dab"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Available"
+ Guid="9cc95c12-9865-4286-a8c3-683d2e34e245"
+>
+<Expression>Default.MessageTypes.UnScaleDistance(
+    distance=&gt;distance,
+    scale=&gt;scale
+)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SendSpeedAndDistanceMonitoringInformationMessage"
+ Guid="af3fd38d-e5cd-49ff-b9ff-3f05502b63a4"
+>
+<ReqRef
+ Id="bdd0c87f-c020-42d5-8bca-0adcf401e0a7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="56b9b3b4-7420-46d9-a10a-3b642ca66e7d"
+>
+</ReqRef><Comment>This will determine if the necessary conditions to send the SpeedAndDistanceMonitoringInformation JRU message have to be sent</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="ba64764e-ad31-46cb-baa7-b50ca6f8a956"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="MonitoringTypeChanged"
+ Guid="cf3ed2ff-72a6-4688-bbf1-7817e23712db"
+>
+<PreConditions>
+<PreCondition
+ Guid="cf7bc0f9-44ef-4ed0-8243-19b3e15e0791"
+>jru.PreviousSpeedAndDistanceSuppervisionType != Kernel.SpeedAndDistanceMonitoring.Monitoring</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="MonitoringSupervisionStatusChanged"
+ Guid="67eb6523-2d63-4f30-a601-a58145e999cb"
+>
+<PreConditions>
+<PreCondition
+ Guid="0f85d667-58cc-4f06-9c3a-6a0eea33498d"
+>jru.PreviousSpeedAndDistanceSuppervisionStatus != Kernel.SupervisionStatus</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PremittedSpeedChanged"
+ Guid="238cfa91-6c7a-4a49-82e7-41a60f3c04d3"
+>
+<PreConditions>
+<PreCondition
+ Guid="3ae2559e-29cc-4a70-9b6a-56703d25c603"
+>jru.PreviousPermittedSpeed != DMI.MasterDMI().Out_PermittedSpeed.Speed </PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="FLOISpeedChanged"
+ Guid="ca347fb9-c634-4db5-9542-dd65f9c8a34f"
+>
+<PreConditions>
+<PreCondition
+ Guid="13358226-042e-4eb7-a8e9-c752639ee537"
+>jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TargetSpeedChanged"
+ Guid="4fedeecf-1440-46e9-a327-59aa24b099b5"
+>
+<PreConditions>
+<PreCondition
+ Guid="3ddd7358-7d74-472e-b390-58d31389e17c"
+>jru.PreviousTargetSpeed != DMI.MasterDMI().Out_TargetSpeed.Speed</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TargetDistanceChanged"
+ Guid="5346a428-a540-498d-a025-48dea44c0809"
+>
+<PreConditions>
+<PreCondition
+ Guid="c720d35c-be42-4990-831b-743cec7e607b"
+>jru.PreviousTargetDistance != Kernel.TargetDistance</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="ReleaseSpeedChanged"
+ Guid="1f06f341-bcda-4bb8-a621-920216ef2db2"
+>
+<PreConditions>
+<PreCondition
+ Guid="4fb5f380-6cb1-436f-ba6f-2de471ea9771"
+>jru.PreviousReleaseSpeed != DMI.MasterDMI().Out_ReleaseSpeed.Speed</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="fbf036fc-3299-428d-8c57-98ca35ddacf1"
 >
 <Expression>False</Expression>
 </Case></Cases>

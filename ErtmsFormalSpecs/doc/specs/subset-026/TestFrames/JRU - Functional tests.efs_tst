@@ -3935,5 +3935,107 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="SendSpeedAndDistanceTrainMonitoringInformation Message"
+ Guid="a6f17a63-15ed-4d4c-9cf9-1ec02d9ede17"
+>
+<TestCases>
+<TestCase
+ Name="Send Speed and Distance Information Message when the conditions are satisfied"
+ Guid="bb85408a-7d46-429d-be57-5cc5b7262525"
+>
+<ReqRef
+ Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="6222b766-dcca-407c-8467-9aefeb594e55"
+>
+</ReqRef><ReqRef
+ Id="bdd0c87f-c020-42d5-8bca-0adcf401e0a7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="377647f5-2867-4697-bca8-a86b18ef7bf0"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="1d20e972-eedc-40cb-a289-547ce12275aa"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+ Guid="fa151714-1d0b-45b4-a540-dd22d7fa3244"
+>
+<Actions>
+<Action
+ Guid="a7e2b9bb-3f38-4f48-bae9-296ff5db8128"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7686f40f-2a38-434f-ba1c-b66e9189d897"
+>FORALL_IN JRU.JRU1.JRUMessages | X.SPEED_AND_DISTANCE_MONITORING_INFORMATION == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Change one of the parameters to verify that the message is created"
+ Guid="fc30ed43-2ae5-43f5-ab09-e14d4857d6df"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="4fc2257c-b55d-43fa-8832-66777b0bdec3"
+>
+<Actions>
+<Action
+ Guid="54d6c3cb-a4e0-4df7-82de-84fe0dee2d10"
+>Kernel.SupervisionStatus &lt;- Kernel.SupervisionStatus.Overspeed</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="50e58ce1-aeb3-4c57-b12d-e0fef0ddd120"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.SPEED_AND_DISTANCE_MONITORING_INFORMATION != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - verify that the message has been sent"
+ Guid="71b5a566-8426-45d5-8ea7-e563b40b8f1d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="1ae7977d-2512-4615-967e-5d9619549a0f"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d22634f9-514d-4c4b-afe1-5145405fa2d6"
+>FORALL_IN JRU.JRU1.JRUMessages | X.SPEED_AND_DISTANCE_MONITORING_INFORMATION == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
