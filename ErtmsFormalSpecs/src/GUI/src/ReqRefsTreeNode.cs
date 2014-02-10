@@ -55,7 +55,7 @@ namespace GUI
 
             foreach (DataDictionary.ReqRef req in Item.Requirements)
             {
-                Nodes.Add(new ReqRefTreeNode(req, buildSubNodes));
+                Nodes.Add(new ReqRefTreeNode(req, buildSubNodes, true));
             }
             SortSubNodes();
         }
@@ -78,7 +78,7 @@ namespace GUI
             DataDictionary.ReqRef req = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
             req.Paragraph = paragraph;
             Item.appendRequirements(req);
-            Nodes.Add(new ReqRefTreeNode(req, true));
+            Nodes.Add(new ReqRefTreeNode(req, true, true));
             SortSubNodes();
             RefreshNode();
         }

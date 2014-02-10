@@ -159,6 +159,7 @@ namespace DataDictionary.Interpreter
                     }
                     referenceFilter = new Filter.References(current.Value);
                     Arguments[0].SemanticAnalysis(null, referenceFilter);
+                    StaticUsage.AddUsages(Arguments[0].StaticUsage, null);
                     StaticUsage.AddUsage(Arguments[0].Ref, Root, null);
                 }
                 else if (tmp.IsAmbiguous)

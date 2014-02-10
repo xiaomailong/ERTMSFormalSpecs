@@ -70,7 +70,7 @@
 >
 </ReqRef><Comment>Represents the location accuracy of balise groups.
 
-Since this only stores what is inside Q_LOCACC (which can only be in the range of 0 to 63) it should be safe to use an ordinary length type here, #morido, 14/01/15</Comment>
+Since this only stores what is inside Q_LOCACC (which can only be in the range of 0 to 63) it should be safe to use an ordinary length type here.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Orientation"
  Default="Default.Orientation.Unknown"
@@ -110,7 +110,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="33274337-4d51-4ae8-8d28-5231155730c8"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Reaction to be used in cas of data inconsistencies.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="Default.BaseTypes.Distance.Unknown"
@@ -125,7 +125,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c76f1bf6-1c24-4965-9438-d0de5397f86a"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Distance to the balise group identified by BaliseGroupIdentifier.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.NID_BG"
  Default=""
@@ -140,7 +140,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fcb4bd9b-790f-490b-ace8-b9a0d5d86b2e"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Identifier of the linked balise group.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -613,7 +613,7 @@ CountBalises() &gt;= 2</Expression>
  Name="ClearLinkingInformation"
  Guid="791123e1-19db-4836-99d0-16e17500fdef"
 >
-<Comment>In case the new linking information is not an infill data, the previous information is cleared. Otherwise, only the elements beyond the infill location are removed.</Comment>
+<Comment>Clears the previous linking information.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -627,7 +627,7 @@ CountBalises() &gt;= 2</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9f6d2d00-0d68-434d-8d7a-a5c39e2dd1c1"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>In case the new linking information is not an infill data, all the previous information is cleared.</Comment>
 <PreConditions>
 <PreCondition
  Guid="16d28157-dce0-492f-a815-20adf48b5991"
@@ -646,7 +646,8 @@ CountBalises() &gt;= 2</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9a065f3d-c980-4476-b0b6-b48e1435e101"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>In case the new linking information is an infill data, only the elements beyond the infill location are removed.</Comment>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action

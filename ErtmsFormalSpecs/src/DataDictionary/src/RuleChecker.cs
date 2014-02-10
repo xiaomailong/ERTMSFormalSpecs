@@ -106,6 +106,13 @@ namespace DataDictionary
             return retVal;
         }
 
+        public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+        {
+            checkComment(obj as ICommentable);
+
+            base.visit(obj, visitSubNodes);
+        }
+
         public override void visit(Generated.Frame obj, bool visitSubNodes)
         {
             Tests.Frame frame = (Tests.Frame)obj;
@@ -251,14 +258,27 @@ namespace DataDictionary
         /// <param name="commentable"></param>
         private static void checkComment(ICommentable commentable)
         {
-            if (string.IsNullOrEmpty(commentable.Comment))
+            if (commentable != null && string.IsNullOrEmpty(commentable.Comment))
             {
-                bool requiresComment = true;
+                Types.NameSpace nameSpace = EnclosingNameSpaceFinder.find((ModelElement)commentable);
+                bool requiresComment = nameSpace != null;
 
                 Types.StateMachine stateMachine = commentable as Types.StateMachine;
                 if (stateMachine != null)
                 {
                     requiresComment = stateMachine.EnclosingStateMachine == null;
+                }
+
+                Rules.RuleCondition ruleCondition = commentable as Rules.RuleCondition;
+                if (ruleCondition != null)
+                {
+                    requiresComment = ruleCondition.EnclosingRule.RuleConditions.Count > 1;
+                }
+
+                Rules.Rule rule = commentable as Rules.Rule;
+                if (rule != null && rule.EnclosingProcedure != null)
+                {
+                    requiresComment = rule.EnclosingProcedure.Rules.Count > 1;
                 }
 
                 if (requiresComment)
@@ -428,15 +448,6 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.Rule obj, bool visitSubNodes)
-        {
-            Rules.Rule rule = (Rules.Rule)obj;
-
-            checkComment(rule);
-
-            base.visit(obj, visitSubNodes);
-        }
-
         public override void visit(Generated.RuleCondition obj, bool subNodes)
         {
             Rules.RuleCondition ruleCondition = obj as Rules.RuleCondition;
@@ -527,15 +538,6 @@ namespace DataDictionary
             }
 
             base.visit(obj, subNodes);
-        }
-
-        public override void visit(Generated.Procedure obj, bool visitSubNodes)
-        {
-            Procedure procedure = (Procedure)obj;
-
-            checkComment(procedure);
-
-            base.visit(obj, visitSubNodes);
         }
 
         public override void visit(Generated.PreCondition obj, bool subNodes)
@@ -707,8 +709,6 @@ namespace DataDictionary
 
             if (type != null)
             {
-                checkComment(type);
-
                 if (type is Types.StateMachine)
                 {
                     // Ignore state machines
@@ -863,8 +863,6 @@ namespace DataDictionary
         {
             Function function = (Function)obj;
 
-            checkComment(function);
-
             if (function.ReturnType == null)
             {
                 function.AddError("Cannot determine function return type");
@@ -916,7 +914,7 @@ namespace DataDictionary
             List<Constants.EnumValue> valuesFound = new List<Constants.EnumValue>();
             foreach (Constants.EnumValue enumValue in enumeration.Values)
             {
-                if (enumValue.getValue() != null)
+                if (!string.IsNullOrEmpty(enumValue.getValue()))
                 {
                     foreach (Constants.EnumValue other in valuesFound)
                     {
