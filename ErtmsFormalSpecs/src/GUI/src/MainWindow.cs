@@ -775,7 +775,7 @@ namespace GUI
 
             if (EFSSystem.ShouldSave)
             {
-                DialogResult result = MessageBox.Show("Model has been changed, do you want to save it", "Model changed", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                DialogResult result = MessageBox.Show("Model has been changed, do you want to save it ?", "Model changed", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 switch (result)
                 {
                     case System.Windows.Forms.DialogResult.Yes:
