@@ -168,7 +168,7 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The item user comment
             /// </summary>
-            [Category("Meta data")]
+            [Category("Subset76")]
             public string UserComment
             {
                 get { return Item.getUserComment(); }
