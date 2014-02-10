@@ -72,7 +72,7 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="SystemVersionEnum.Unknown"
+ Default="SystemVersionEnum.Version2_0"
  Implemented="TRUE"
  Name="SystemVersionEnum"
  Guid="e434ea8a-ec75-42f9-8347-85f8030caba3"
@@ -880,7 +880,9 @@
  Guid="2c770b25-75ef-4584-9ad0-ad6650c0cd3d"
 >SessionManagementData.AcknowledgementOfTerminationReceived &lt;- False</Action><Action
  Guid="f86651e7-1ebb-49de-8053-907c88f5741d"
->NumberOfSentRequests &lt;- 0</Action></Actions>
+>NumberOfSentRequests &lt;- 0</Action><Action
+ Guid="3d5afa42-b712-4474-af54-81ae258173b2"
+>SessionManagementData.SystemVersion.DataState &lt;- DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1171,7 +1173,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 <PreConditions>
 <PreCondition
  Guid="fc7f4583-9abe-4721-9172-3d91c2dbab42"
->SessionManagementData.SystemVersion != SystemVersionEnum.Unknown</PreCondition></PreConditions>
+>SessionManagementData.SystemVersion.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b4f25d0d-6815-4c2d-ae03-b9c5f4fe9298"
@@ -1540,9 +1542,16 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </StateMachine></State></States>
 </StateMachine></StateMachines>
 </Structure><Structure
+ Implemented="TRUE"
  Name="RIUStruct"
  Guid="b15198c3-238e-44cf-bd78-8b40d48ea78f"
 >
+<ReqRef
+ Id="64296fc8-fe88-499d-b63e-d570a4a39744"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="17bba8ad-3761-4af8-8daf-f79e39a3b371"
+>
+</ReqRef><Comment>Represents one instance of the communication with RIU.</Comment>
 <StructureElement
  TypeName="ContactOrderStruct"
  Default="EMPTY"
@@ -1768,7 +1777,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 >
 <StructureElement
  TypeName="SystemVersionEnum"
- Default="SystemVersionEnum.Unknown"
+ Default="SystemVersionEnum.Version2_0"
  Mode="Internal"
  Name="Value"
  Guid="6b92d905-fc0e-4c7c-8f01-e8ea9c2663a8"
@@ -1783,23 +1792,18 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="MobileTerminalStruct"
- MaxSize="2"
- Default="[]"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="MobileTerminalsCol"
- Guid="c11465cd-6494-4bd4-ab4b-628e2874fe32"
->
-<Comment>probably 2 is the maximum number of perceiveable MobileTerminals mounted on a loco. Requirement needed. #morido, 13/10/14</Comment>
-</Collection><Collection
  TypeName="String"
  Default="[]"
  Implemented="TRUE"
  Name="AvailableNetworksCol"
  Guid="104401a1-8c78-4794-bf19-a0f04f17b077"
 >
-<Comment>List of available and allowed networks.</Comment>
+<ReqRef
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8d18e7fe-9416-4292-a792-535d3df5e1e8"
+>
+</ReqRef><Comment>List of available and allowed networks.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -1808,7 +1812,27 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Name="HasActiveSession"
  Guid="7b48d082-5d7b-4d27-8757-6e110b3f9f7d"
 >
-<Comment>Indicates if a communication session is established with an RBC.</Comment>
+<ReqRef
+ Id="a2f8c5d0-9029-4c1f-b5bf-fee1dca550f7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d7366702-ff1d-4278-b4d6-ab392caaab2b"
+>
+</ReqRef><ReqRef
+ Id="f4b1a027-643a-48c1-a840-1735e19ae661"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1585da45-384c-4bb1-8d20-801a20e325b3"
+>
+</ReqRef><ReqRef
+ Id="58b99381-a184-4b10-8c25-d125705b5194"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="267a1a1e-4342-4fb3-8e7e-2665a3bbf0de"
+>
+</ReqRef><ReqRef
+ Id="0a55611b-2936-44a8-89fb-8b7fa083a761"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89286c79-15e3-4d68-8bcc-c7bef8ead11d"
+>
+</ReqRef><Comment>Indicates if a communication session is established with an RBC.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -1874,7 +1898,8 @@ Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Inactive<
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8ea3d211-ac31-4faa-8ba9-4587b570b2aa"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if at least one terminal is available.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="8a425b2a-af9b-4a02-9cbc-8d1d15189bb3"
@@ -2164,9 +2189,10 @@ It can only return false if there is no open session or if the last known RBC ha
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="RBC1"
+ Name="Terminal1"
  Guid="0e5a581a-1201-405e-b00a-40ae760b28f2"
 >
+<Comment>Terminal1 is the default terminal. If none of terminals are connected, then the connection will be established on the Terminal1. If the connection is already established on this terminal, then it will be closed and the new connection will be opened.</Comment>
 <PreConditions>
 <PreCondition
  Guid="8df44f1d-8bc6-47ea-9994-67dde1dc64c4"
@@ -2177,9 +2203,10 @@ It can only return false if there is no open session or if the last known RBC ha
 >Terminal1.RBCConnection.ContactRBCOrder &lt;- Order</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="RBC2"
+ Name="Terminal2"
  Guid="78b179e8-af95-448d-a830-a24a276f6974"
 >
+<Comment>If the connection is already established on the second mobile terminal, then it will be closed and a new connection will be opened.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -2222,9 +2249,10 @@ It can only return false if there is no open session or if the last known RBC ha
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="RBC1"
+ Name="Terminal1"
  Guid="3d112c45-c399-4909-9c57-0b56d8c93b57"
 >
+<Comment>If the second mobile terminal is already connected, then the connection will be established on the first one.</Comment>
 <PreConditions>
 <PreCondition
  Guid="ffda9f58-de4b-460e-9459-f56d2e21d0d9"
@@ -2241,9 +2269,10 @@ It can only return false if there is no open session or if the last known RBC ha
 }</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="RBC2"
+ Name="Terminal2"
  Guid="0f6ccc7b-209c-482c-a596-433da0ec4386"
 >
+<Comment>If the first mobile terminal is already connected, the connection will be established on the second one.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -2316,7 +2345,7 @@ It can only return false if there is no open session or if the last known RBC ha
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="06f42b1f-3ae0-42a2-8cee-ca8119a0ce18"
 >
-</ReqRef><Comment>If there is no valid last known RBC stored on-board, the order is ignored.</Comment>
+</ReqRef><Comment>Contact last known RBC. If there is no valid last known RBC stored on-board, the order is ignored.</Comment>
 <PreConditions>
 <PreCondition
  Guid="b800f70b-83f7-45b4-9432-c769f9dca3f6"
@@ -2345,7 +2374,8 @@ It can only return false if there is no open session or if the last known RBC ha
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="82f9117e-6a4e-4124-8891-6c82527765c5"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Use on-board store short number.</Comment>
+<PreConditions>
 <PreCondition
  Guid="44730a03-b518-420f-86e0-c7c20a7a8fc6"
 >ContactOption == ContactOptionEnum.UseOnBoardStoredShortNumber</PreCondition></PreConditions>
@@ -2371,7 +2401,8 @@ It can only return false if there is no open session or if the last known RBC ha
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e7fc21dd-a91f-44fb-a8a0-321f2a70b430"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Use RBC id + phone number.</Comment>
+<PreConditions>
 <PreCondition
  Guid="a96e13e9-b470-4d73-9b24-98a3929baf63"
 >ContactOption == ContactOptionEnum.RBCIdAndPhoneNumber</PreCondition></PreConditions>
@@ -2418,6 +2449,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Close the session"
  Guid="b37006ef-5ce5-4c15-9dd8-55ec01214286"
 >
@@ -2425,6 +2457,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Close the session"
  Guid="4446a776-8c46-438a-8b89-c979faf871ba"
 >
@@ -2465,12 +2498,14 @@ It can only return false if there is no open session or if the last known RBC ha
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Contact RIU"
  Guid="41b28c18-f309-4e57-8d84-85c6374626b2"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Contact RIU"
  Guid="908bf858-c395-40d2-8235-08a1bc78e393"
 >
@@ -2513,6 +2548,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Handle trackside order"
  Guid="432c07cc-89ff-4dc7-aa9f-e8aacd9867d0"
 >
@@ -2781,6 +2817,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SR authorisation"
  Guid="d118d140-ad45-45ff-852f-8cb03f830fa2"
@@ -2937,6 +2974,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="List of balises for SH area received"
  Guid="1ac428d8-87fc-45d9-a277-e609c689b426"
 >
@@ -2992,6 +3030,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Mode profile received"
  Guid="009cc428-70b4-4b0a-b5df-468b677b743e"
 >
@@ -3019,6 +3058,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Route suitability data received"
  Guid="6d8f8b6c-44de-46a3-ad4e-fe9a3f8bd878"
 >
@@ -3190,6 +3230,7 @@ Default.MessageTypes.QScaleDistance(
  Name="Train has passed stop location"
  Guid="676caee5-da37-43fb-b10b-cfe4fbb2ac70"
 >
+<Comment>If the train has already passed the stop location, the emergency stop is rejected and the RBC is informed.</Comment>
 <PreConditions>
 <PreCondition
  Guid="d576cf7f-55e9-49ee-8461-75648e378b60"
@@ -3228,6 +3269,7 @@ Default.MessageTypes.QScaleDistance(
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Unconditional emergency stop"
  Guid="2c426004-97a7-4ae6-8fa9-767322005526"
 >
@@ -3260,6 +3302,7 @@ Default.MessageTypes.QScaleDistance(
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="General message"
  Guid="73ad08e9-e929-4ea4-93c0-5cb635407280"
@@ -3286,6 +3329,7 @@ Default.MessageTypes.QScaleDistance(
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Route suitability data received"
  Guid="c0c990ba-89d9-47e6-b458-c64d95c8112c"
 >
@@ -3418,6 +3462,7 @@ Default.MessageTypes.QScaleDistance(
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SH authorised"
  Guid="9df194d9-d435-4491-af34-2b1bdab6c098"
@@ -4012,7 +4057,12 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Name="RIU"
  Guid="65546b18-9082-469d-85f1-2f2a2c945818"
 >
-<Comment>RIU connection.</Comment>
+<ReqRef
+ Id="64296fc8-fe88-499d-b63e-d570a4a39744"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0bfec18e-8a2f-4476-a678-ac8e9ed363cb"
+>
+</ReqRef><Comment>RIU connection.</Comment>
 </Variable><Variable
  Type="RBCContactStruct"
  DefaultValue=""
@@ -4069,7 +4119,12 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Name="LastKnownNetworkId"
  Guid="4c27382c-64a2-4c88-8d58-ff66b400ad51"
 >
-<Comment>The last received Radio Network identity.</Comment>
+<ReqRef
+ Id="9bf96521-7fd6-4183-ab61-1276d48d3996"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e601cf1c-a807-4f9a-a762-522cf4cf6d78"
+>
+</ReqRef><Comment>The last received Radio Network identity.</Comment>
 </Variable><Variable
  Type="AvailableNetworksStruct"
  DefaultValue=""
