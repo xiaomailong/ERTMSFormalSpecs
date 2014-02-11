@@ -4292,7 +4292,27 @@ IN BTM.Linking.Linkings</Action></Actions>
 >
 <SubSteps>
 <SubStep
- Name="Sub-step 1 - Get an infill MA from a balise"
+ Name="Sub-step 1 - First balise in the BG, for direction"
+ Guid="a0dedd5b-4c5e-4b46-b727-7bf9c5140a87"
+>
+<Actions>
+<Action
+ Guid="8f0a47fd-16ea-4427-9196-d3cc52540867"
+>BTM.Message &lt;- Messages.EUROBALISE.Message{
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._1C,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 5460,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; []
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2 - Get an infill MA from a balise"
  Guid="e5f125f3-ad92-4c69-9d5c-1503a23c20e7"
 >
 <Actions>
@@ -4304,8 +4324,8 @@ IN BTM.Linking.Linkings</Action></Actions>
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
     M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
-    N_PIG =&gt; Messages.N_PIG._1C,
-    N_TOTAL =&gt; Messages.N_TOTAL._1_balise_in_groupC,
+    N_PIG =&gt; Messages.N_PIG._2C,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
     M_DUP =&gt; Messages.M_DUP.No_duplicates,
     M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
     NID_C =&gt; 85,
