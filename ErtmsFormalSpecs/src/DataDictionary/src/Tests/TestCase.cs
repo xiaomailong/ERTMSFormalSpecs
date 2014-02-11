@@ -17,7 +17,7 @@ using System;
 
 namespace DataDictionary.Tests
 {
-    public class TestCase : Generated.TestCase, TextualExplain
+    public class TestCase : Generated.TestCase, TextualExplain, ICommentable
     {
         public System.Collections.ArrayList Steps
         {
@@ -171,5 +171,15 @@ namespace DataDictionary.Tests
 
             return retVal;
         }
+
+        /// <summary>
+        /// The comment related to this element
+        /// </summary>
+        public string Comment
+        {
+            get { return getComment(); }
+            set { setComment(value); }
+        }
+
     }
 }

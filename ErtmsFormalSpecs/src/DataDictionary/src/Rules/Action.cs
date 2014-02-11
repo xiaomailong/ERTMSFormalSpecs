@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace DataDictionary.Rules
 {
-    public class Action : Generated.Action, IExpressionable, TextualExplain
+    public class Action : Generated.Action, IExpressionable, TextualExplain, ICommentable
     {
         public override string Name
         {
@@ -322,5 +322,15 @@ namespace DataDictionary.Rules
 
             return retVal;
         }
+
+        /// <summary>
+        /// The comment related to this element
+        /// </summary>
+        public string Comment
+        {
+            get { return getComment(); }
+            set { setComment(value); }
+        }
+
     }
 }

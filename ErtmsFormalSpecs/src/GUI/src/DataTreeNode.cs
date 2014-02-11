@@ -21,6 +21,7 @@ using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Specification;
 using GUI.SpecificationView;
+using System.Drawing.Design;
 
 namespace GUI
 {
@@ -989,7 +990,7 @@ namespace GUI
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class ModelElementTreeNode<T> : BaseTreeNode
-        where T : Utils.IModelElement
+        where T : class, Utils.IModelElement
     {
         /// <summary>
         /// An editor for an item. It is the responsibility of this class to implement attributes 
@@ -1168,6 +1169,32 @@ namespace GUI
             /// Constructor
             /// </summary>
             protected NamedEditor()
+            {
+            }
+        }
+
+        /// <summary>
+        /// The editor for a namable which can hold a comment
+        /// </summary>
+        public abstract class CommentableEditor : NamedEditor
+        {
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
+            public ICommentable Comment
+            {
+                get { return Item as ICommentable; }
+                set
+                {
+                    Item = value as T;
+                    RefreshNode();
+                }
+            }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            protected CommentableEditor()
             {
             }
         }

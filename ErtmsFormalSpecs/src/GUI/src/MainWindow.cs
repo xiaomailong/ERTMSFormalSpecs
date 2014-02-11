@@ -436,6 +436,11 @@ namespace GUI
 
             String windowTitle = "ERTMS Formal Spec Workbench (version " + versionNumber + ")";
 
+            foreach (DataDictionary.Dictionary dictioanry in EFSSystem.Dictionaries)
+            {
+                windowTitle += " " + dictioanry.FilePath;
+            }
+
             if (EFSSystem != null && EFSSystem.ShouldSave)
             {
                 windowTitle += " [modified]";
@@ -770,7 +775,7 @@ namespace GUI
 
             if (EFSSystem.ShouldSave)
             {
-                DialogResult result = MessageBox.Show("Model has been changed, do you want to save it", "Model changed", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                DialogResult result = MessageBox.Show("Model has been changed, do you want to save it ?", "Model changed", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 switch (result)
                 {
                     case System.Windows.Forms.DialogResult.Yes:

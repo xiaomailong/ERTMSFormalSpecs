@@ -9,6 +9,42 @@
 >
 <NameSpaces>
 </NameSpaces>
+<Functions>
+<Function
+ Type="Kernel.BaliseGroup"
+ Name="CreateBaliseGroup"
+ Guid="5ad1147d-dd23-44a6-a648-bbd2debb65cb"
+>
+<Parameters>
+<Parameter
+ Type="Messages.NID_BG"
+ Name="NID_BG"
+ Guid="6a088354-3592-4cf4-a2d7-bfd94262b16a"
+>
+</Parameter><Parameter
+ Type="Messages.Q_NEWCOUNTRY"
+ Name="NewCountry"
+ Guid="97c0d3ac-5a2e-471b-a2cf-5e0d6e931c05"
+>
+</Parameter><Parameter
+ Type="Messages.NID_C"
+ Name="NID_C"
+ Guid="c77efdfe-dd2d-4a44-81e1-5787e490a815"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Create balise group"
+ Guid="e4572715-6906-490e-ba3f-1f6492b2c144"
+>
+<Expression>BaliseGroup
+{
+    NewCountry =&gt; Q_NEWCOUNTRY_To_Bool ( NewCountry),
+    NID_C =&gt; NID_C,
+    NID_BG =&gt; NID_BG
+}</Expression>
+</Case></Cases>
+</Function></Functions>
 <Procedures>
 <Procedure
  Implemented="TRUE"

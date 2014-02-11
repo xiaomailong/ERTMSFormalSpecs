@@ -16,7 +16,7 @@
 
 namespace DataDictionary.Rules
 {
-    public class PreCondition : Generated.PreCondition, Utils.IPreCondition, IExpressionable, TextualExplain
+    public class PreCondition : Generated.PreCondition, Utils.IPreCondition, IExpressionable, TextualExplain, ICommentable
     {
         /// <summary>
         /// The precondition expression
@@ -290,6 +290,15 @@ namespace DataDictionary.Rules
             retVal.ExpressionText = ExpressionText;
 
             return retVal;
+        }
+
+        /// <summary>
+        /// The comment related to this element
+        /// </summary>
+        public string Comment
+        {
+            get { return getComment(); }
+            set { setComment(value); }
         }
     }
 }

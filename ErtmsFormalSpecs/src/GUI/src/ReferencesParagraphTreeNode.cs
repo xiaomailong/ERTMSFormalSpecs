@@ -27,7 +27,7 @@ namespace GUI
         /// <summary>
         /// The editor for message variables
         /// </summary>
-        protected class ReferencesParagraphEditor : NamedEditor
+        protected class ReferencesParagraphEditor : CommentableEditor
         {
             /// <summary>
             /// Constructor
@@ -35,19 +35,6 @@ namespace GUI
             protected ReferencesParagraphEditor()
                 : base()
             {
-            }
-
-            [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
-            public T Comment
-            {
-                get { return Item; }
-                set
-                {
-                    Item = value;
-                    RefreshNode();
-                }
             }
         }
 
