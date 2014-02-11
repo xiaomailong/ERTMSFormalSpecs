@@ -1583,7 +1583,7 @@ namespace GUI
             VersionSelector.VersionSelector selector = new VersionSelector.VersionSelector(dictionary);
             selector.ShowDialog();
 
-            UpdateBlameInformationOperation operation = new UpdateBlameInformationOperation(EFSSystem.HISTORY_FILE_NAME, dictionary, selector.Selected);
+            UpdateBlameInformationOperation operation = new UpdateBlameInformationOperation(dictionary, selector.Selected);
             operation.ExecuteUsingProgressDialog("Update blame information");
         }
     }

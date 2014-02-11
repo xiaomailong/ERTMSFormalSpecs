@@ -40,30 +40,32 @@ namespace GUI.LongOperations
         protected string DictionaryFileName { get { return Path.GetFileName(Dictionary.FilePath); } }
 
         /// <summary>
+        /// Provides the path of the repository
+        /// </summary>
+        protected string RepositoryPath { get; private set; }
+
+        /// <summary>
         /// Provides the repository related to the Dictionary directory
         /// </summary>
         /// <returns></returns>
-        protected Repository Repository
+        protected Repository getRepository()
         {
-            get
+            Repository retVal = null;
+
+            RepositoryPath = WorkingDir;
+            while (retVal == null && !String.IsNullOrEmpty(RepositoryPath))
             {
-                Repository retVal = null;
-
-                string directory = WorkingDir;
-                while (retVal == null && !String.IsNullOrEmpty(directory))
+                try
                 {
-                    try
-                    {
-                        retVal = new Repository(directory);
-                    }
-                    catch (Exception)
-                    {
-                        directory = Path.GetDirectoryName(directory);
-                    }
+                    retVal = new Repository(RepositoryPath);
                 }
-
-                return retVal;
+                catch (Exception)
+                {
+                    RepositoryPath = Path.GetDirectoryName(RepositoryPath);
+                }
             }
+
+            return retVal;
         }
 
         /// <summary>

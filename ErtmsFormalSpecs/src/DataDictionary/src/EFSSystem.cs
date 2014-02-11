@@ -88,11 +88,6 @@ namespace DataDictionary
         public Compiler Compiler { get; private set; }
 
         /// <summary>
-        /// The file name of the history file
-        /// </summary>
-        public const string HISTORY_FILE_NAME = "HistoryCache.hst";
-
-        /// <summary>
         /// Provides the history
         /// </summary>
         public Compare.History History { get; private set; }
@@ -109,7 +104,7 @@ namespace DataDictionary
 
             // Reads the history file and updates the blame information stored in it
             Compare.Factory historyFactory = DataDictionary.Compare.Factory.INSTANCE;
-            History = (Compare.History)HistoricalData.HistoryUtils.Load(HISTORY_FILE_NAME, historyFactory);
+            History = (Compare.History)HistoricalData.HistoryUtils.Load(Compare.History.HISTORY_FILE_NAME, historyFactory);
             if (History == null)
             {
                 History = (Compare.History)historyFactory.createHistory();

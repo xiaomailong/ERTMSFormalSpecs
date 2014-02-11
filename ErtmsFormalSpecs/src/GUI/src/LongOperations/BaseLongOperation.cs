@@ -23,6 +23,11 @@ namespace GUI.LongOperations
     public abstract class BaseLongOperation : ProgressHandler
     {
         /// <summary>
+        /// The dialog used to display progress to the user
+        /// </summary>
+        protected ProgressDialog Dialog { get; private set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public BaseLongOperation()
@@ -41,8 +46,8 @@ namespace GUI.LongOperations
             {
                 SynchronizerList.SuspendSynchronization();
 
-                ProgressDialog dialog = new ProgressDialog(message, this, allowCancel);
-                dialog.ShowDialog();
+                Dialog = new ProgressDialog(message, this, allowCancel);
+                Dialog.ShowDialog();
             }
             finally
             {
