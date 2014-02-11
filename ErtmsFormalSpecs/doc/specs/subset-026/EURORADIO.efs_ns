@@ -1414,7 +1414,8 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d37b22c1-9b7f-4129-a033-3e1fab068fc5"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment>Contains information needed to contact an RBC or an RIU.</Comment>
+<StructureElement
  TypeName="RBCIdStruct"
  Default=""
  Mode="Internal"
@@ -1500,48 +1501,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Guid="d966b111-ad3c-4937-9f9c-18b07bd04154"
 >
 </ReqRef><Comment>Indicates whether the order applies also to Sleeping units.</Comment>
-</StructureElement><StateMachines>
-<StateMachine
- InitialState="NotConnected"
- Name="ConnectionStateSM"
- Guid="18b25123-7b1d-4ca5-b70b-4a20f876f310"
->
-<States>
-<State
- Name="NotConnected"
- Guid="09e55ea7-fd74-4fea-96a1-688369c10cfa"
->
-<StateMachine
- InitialState=""
- Guid="8b36bbde-2e6e-40ef-84d3-8528420bad29"
->
-</StateMachine></State><State
- Name="Connecting"
- Guid="a8ddf426-23b6-4ec7-8d63-5a74fc3f564f"
->
-<StateMachine
- InitialState=""
- Guid="06cad34b-0874-4344-9b0c-15f3486de434"
->
-</StateMachine></State><State
- Name="Connected"
- Guid="9fd4c87f-04d1-4ce8-91d2-9fa8f81b952b"
->
-<StateMachine
- InitialState=""
- Guid="857952e5-2bc8-4ea9-9639-d3ebeb81cf2c"
->
-</StateMachine></State><State
- Name="Disconnecting"
- Guid="58ff52dc-3eb3-4d43-af96-42dc1d0f0655"
->
-<StateMachine
- InitialState=""
- Guid="b9825236-5d62-4c20-ac3a-6519069532be"
->
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
+</StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="RIUStruct"
  Guid="b15198c3-238e-44cf-bd78-8b40d48ea78f"
@@ -1646,9 +1606,11 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 >
 <Comment>Is set to true when, during the termination of the communication session procedure, on-board receives the acknowledgement of termination from the RBC.</Comment>
 </StructureElement></Structure><Structure
+ Implemented="TRUE"
  Name="RBCIdStruct"
  Guid="06bc7e20-822b-4896-a367-bc92333c4911"
 >
+<Comment>Identity of an RBC.</Comment>
 <StructureElement
  TypeName="Messages.NID_C"
  Default=""
@@ -1701,9 +1663,16 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 >
 <Comment>Data state of the contact information.</Comment>
 </StructureElement></Structure><Structure
+ Implemented="TRUE"
  Name="MobileTerminalStruct"
  Guid="d55c89a9-b712-45c6-a15c-1829f68822b8"
 >
+<ReqRef
+ Id="865bbdd6-2010-4869-ab3e-bc538ce5fe4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9d479d3a-f46e-441c-92ba-733d4471c6c5"
+>
+</ReqRef><Comment>Represents a mobile terminal.</Comment>
 <StructureElement
  TypeName="String"
  Default="&apos;&apos;"
@@ -1772,23 +1741,34 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 >
 <Comment>Collection of available and allowed networks.</Comment>
 </StructureElement></Structure><Structure
+ Implemented="TRUE"
  Name="SystemVersionStruct"
  Guid="d57ddcfd-645d-4096-81d5-c12c41bd57bb"
 >
+<ReqRef
+ Id="02f20f26-3445-49b9-95cf-a6948ab029b8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="97b05239-dbfb-447a-953a-e1fbb1608040"
+>
+</ReqRef><Comment>Represents the system version received from the trackside.</Comment>
 <StructureElement
  TypeName="SystemVersionEnum"
  Default="SystemVersionEnum.Version2_0"
  Mode="Internal"
+ Implemented="TRUE"
  Name="Value"
  Guid="6b92d905-fc0e-4c7c-8f01-e8ea9c2663a8"
 >
+<Comment>The value of the system version.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.DataState"
  Default="Default.DataState.Unknown"
  Mode="Internal"
+ Implemented="TRUE"
  Name="DataState"
  Guid="1d98ef8a-fbe4-4fe6-affb-c0d0d99bb986"
 >
+<Comment>The data state of the system version.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -1804,6 +1784,25 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Guid="8d18e7fe-9416-4292-a792-535d3df5e1e8"
 >
 </ReqRef><Comment>List of available and allowed networks.</Comment>
+</Collection><Collection
+ TypeName="SystemVersionEnum"
+ MaxSize="3"
+ Default="[]"
+ Implemented="TRUE"
+ Name="SystemVersionsCol"
+ Guid="44ac3d41-0bd0-4d96-b3e0-236b9806487b"
+>
+<ReqRef
+ Id="790cf49e-a85c-4110-b567-fc5d57052339"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="12a9527d-0bf4-441e-9f73-b172a6a10e83"
+>
+</ReqRef><ReqRef
+ Id="25af834a-3a24-459b-b5c8-97b85eddb2e8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9de807bb-b66f-4d46-9fb0-4bded8376599"
+>
+</ReqRef><Comment>Collection system versions supported by on-board.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -4146,7 +4145,12 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Name="Terminal1"
  Guid="b9169f5f-b1a9-481e-8d17-7b9aee24c60e"
 >
-<Comment>First terminal struct.</Comment>
+<ReqRef
+ Id="865bbdd6-2010-4869-ab3e-bc538ce5fe4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94da1534-d4e2-409f-94e9-6c7efcd8d7b5"
+>
+</ReqRef><Comment>First terminal struct.</Comment>
 </Variable><Variable
  Type="MobileTerminalStruct"
  VariableMode="InOut"
@@ -4154,7 +4158,12 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Name="Terminal2"
  Guid="14bc979c-299e-41a1-b18b-77e58ca89e59"
 >
-<Comment>Second mobile terminal.</Comment>
+<ReqRef
+ Id="865bbdd6-2010-4869-ab3e-bc538ce5fe4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6e9b5735-16ad-4ad3-89ff-7df9a6f5141b"
+>
+</ReqRef><Comment>Second mobile terminal.</Comment>
 </Variable><Variable
  Type="ContactOptionEnum"
  DefaultValue="ContactOptionEnum.ContactLastKnownRBC"
@@ -4163,7 +4172,22 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Name="ContactOption"
  Guid="81db5f5d-dec8-43d9-9546-57479127847f"
 >
-<Comment>Indicates how the RBC has to be contacted.</Comment>
+<ReqRef
+ Id="369d7ae0-50db-411b-9941-bbe30e354733"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89bfb0f7-0fbc-463d-8559-90146c0c036a"
+>
+</ReqRef><ReqRef
+ Id="40859515-77c4-46aa-96a5-12453cd171a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d790ef37-059b-46c9-98d4-26e098675485"
+>
+</ReqRef><ReqRef
+ Id="cebfc056-7b96-49d7-a6ff-1fdf0076bb9e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2a4a5158-6dd4-4d58-a1ac-ed6953f88826"
+>
+</ReqRef><Comment>Indicates how the RBC has to be contacted.</Comment>
 </Variable><Variable
  Type="String"
  DefaultValue="&apos;&apos;"
@@ -4183,5 +4207,24 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Guid="aa7dc0c0-dce3-4fb0-9217-e463d4e2fc72"
 >
 </ReqRef><Comment>Gives the values of the default radio network, to be used when no Radio Network identity was received from trackside or from driver.</Comment>
+</Variable><Variable
+ Type="SystemVersionsCol"
+ DefaultValue="[SystemVersionEnum.Version2_0]"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="SupportedSystemVersions"
+ Guid="e9003f47-af6c-4289-a33b-60b830bf4ccc"
+>
+<ReqRef
+ Id="790cf49e-a85c-4110-b567-fc5d57052339"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2acdb939-507a-4b5f-999c-19821626b9dd"
+>
+</ReqRef><ReqRef
+ Id="25af834a-3a24-459b-b5c8-97b85eddb2e8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e3520cf1-6680-45fb-adc6-d49129321b6d"
+>
+</ReqRef><Comment>System versions supported by the on-board.</Comment>
 </Variable></Variables>
 </NameSpace>
