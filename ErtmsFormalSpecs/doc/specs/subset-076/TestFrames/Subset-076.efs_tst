@@ -168,20 +168,9 @@ The on-board equipment changes to SB mode.</Description>
  DeadLine="1000"
  Name="Expectation"
  Guid="11a8f5c4-ad3f-4d95-85e7-fb7804ab028f"
->JRU.jru1.ReportModeChange.Mode == Mode.SB</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation..."
- Guid="996b25ae-c651-4ae1-be90-6c95e8fa041b"
->JRU.jru1.ReportModeChange.Request == Request.Request</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="91dc11c8-c1fb-4d41-928b-19a9f6de65cd"
->
-<Actions>
-<Action
- Guid="b6823b0d-bf03-4ddb-ba0c-4de69c21def5"
->JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
+    ModeInkernel=&gt;Default.Mode.SB
+)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -213,7 +202,7 @@ The on-board equipment changes to SB mode.</Description>
 <Actions>
 <Action
  Guid="4b74729b-6eec-4693-a215-659644fc67b0"
->DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
+>TIU.Cab1.IsActive &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="6"
@@ -1175,20 +1164,9 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  DeadLine="1000"
  Name="Expectation"
  Guid="bae6eb72-1c5a-4915-a648-28f9e7b76b4a"
->JRU.jru1.ReportModeChange.Mode == Mode.SR</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation..."
- Guid="6a81923c-b9dc-4232-bc3a-ad4e2a80ab46"
->JRU.jru1.ReportModeChange.Request == Request.Request</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="20ce49f9-c350-4f86-9ac1-8a8a369f71e5"
->
-<Actions>
-<Action
- Guid="8619e08a-deab-4197-95a4-c5784b4a0bc6"
->JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
+    ModeInkernel=&gt;Default.Mode.SR
+)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2122,20 +2100,9 @@ The driver is informed on the DMI of the change to FS mode.</Description>
  DeadLine="1000"
  Name="Expectation"
  Guid="1394842c-dd10-43a8-b542-b9755507fb5b"
->JRU.jru1.ReportModeChange.Mode == Mode.FS</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation..."
- Guid="6bc682a0-171d-4f00-9167-34d83c82baa2"
->JRU.jru1.ReportModeChange.Request == Request.Request</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="880ddf1d-12ea-4591-80a9-bf2850ac33a3"
->
-<Actions>
-<Action
- Guid="640802e1-43bf-4262-bd46-f1e010bc1302"
->JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
+    ModeInkernel=&gt;Default.Mode.FS
+)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -10215,20 +10182,9 @@ The on-board equipment changes to SB mode.</Description>
  DeadLine="1000"
  Name="Expectation"
  Guid="4c395c71-69a3-4526-bfe6-58a9e748441c"
->JRU.jru1.ReportModeChange.Mode == Mode.SB</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation..."
- Guid="e8b78c06-fa4a-4861-9594-c51654d0cfac"
->JRU.jru1.ReportModeChange.Request == Request.Request</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="6221213e-6aac-4a9b-8363-926f3b05b7e6"
->
-<Actions>
-<Action
- Guid="925306fd-07c2-4ea1-8d5d-3c84c4edcc4b"
->JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
+    ModeInkernel=&gt;Default.Mode.SB
+)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -10260,7 +10216,7 @@ The on-board equipment changes to SB mode.</Description>
 <Actions>
 <Action
  Guid="f360cd32-49c7-428c-bbcf-943fe8edf202"
->DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
+>TIU.CabA.IsActive &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="6"
@@ -11211,20 +11167,9 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  DeadLine="1000"
  Name="Expectation"
  Guid="d1dcfae0-2f8b-40a0-bbd1-00cce06c9d22"
->JRU.jru1.ReportModeChange.Mode == Mode.SR</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation..."
- Guid="db14c20a-8dee-414a-a9e0-3ac21c5f92c2"
->JRU.jru1.ReportModeChange.Request == Request.Request</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="5ad7811e-8fdb-4314-9469-d7e610cda680"
->
-<Actions>
-<Action
- Guid="bec935e7-2d20-4fc2-a5c7-3e7818a60df4"
->JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
+    ModeInkernel=&gt;Default.Mode.SR
+)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="62"
@@ -15935,20 +15880,9 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  DeadLine="1000"
  Name="Expectation"
  Guid="dbfee95d-b09a-4ca2-b250-591aba5f304a"
->JRU.jru1.ReportModeChange.Mode == Mode.SR</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation..."
- Guid="b983a5b3-b97e-42ec-bb78-f0929d02ff2a"
->JRU.jru1.ReportModeChange.Request == Request.Request</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="39c823f0-90b2-4155-87ed-547c2c44629c"
->
-<Actions>
-<Action
- Guid="3c46011a-e950-4e01-b506-181728046be8"
->JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
+    ModeInkernel=&gt;Default.Mode.SR
+)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="241"
