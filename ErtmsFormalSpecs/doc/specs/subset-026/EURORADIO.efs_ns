@@ -1034,19 +1034,24 @@
     NID_ENGINE =&gt; Kernel.NidEngine,
     Sequence1 =&gt;
     [
-        Messages.PACKET.TRAIN_TO_TRACK.ONBOARD_TELEPHONE_NUMBERS.Message
+        Messages.MESSAGE.TRAIN_TO_TRACK.SESSION_ESTABLISHED.SubStructure1
         {
-            NID_PACKET =&gt; 3,
-            L_PACKET =&gt; 0,
-            N_ITER =&gt; 1,
-            Sequence1 =&gt; []
+            ONBOARD_TELEPHONE_NUMBERS =&gt; Messages.PACKET.TRAIN_TO_TRACK.ONBOARD_TELEPHONE_NUMBERS.Message
+            {
+                NID_PACKET =&gt; 3,
+                L_PACKET =&gt; 0,
+                N_ITER =&gt; 1,
+                Sequence1 =&gt;
+                [
+                    Messages.PACKET.TRAIN_TO_TRACK.ONBOARD_TELEPHONE_NUMBERS.SubStructure1
+                    {
+                        NID_RADIO =&gt; CurrentRBCConnection().ContactData.PhoneNumber
+                    }
+                ]
+            }
         }
     ]
-}
-
-
-
-</Action></Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1465,6 +1470,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Check system version compatibility"
  Guid="dd86dead-77a9-4f8b-8cf7-09ade389a1aa"
 >
