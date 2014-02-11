@@ -948,6 +948,7 @@
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Send No compatible version supported"
  Guid="0269a304-8752-4b82-9957-0b5c6cc003be"
 >
@@ -955,6 +956,7 @@
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Send No compatible version supported"
  Guid="f4e38116-bf3c-4e86-9001-c5d9ce85e396"
 >
@@ -970,6 +972,81 @@
     T_TRAIN =&gt; MessageTypes.UnResolveTime ( time =&gt; Kernel.CurrentTime ),
     NID_ENGINE =&gt; Kernel.NidEngine
 }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendSessionEstablishmentReport"
+ Guid="8a87e368-0048-4948-a952-145ff82d525e"
+>
+<ReqRef
+ Id="790cf49e-a85c-4110-b567-fc5d57052339"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="045a9dff-e27f-4410-881c-b9700ce1f271"
+>
+</ReqRef><Comment>Sends the Session establishment report message.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="d4bdb090-dcbc-4828-9a82-becf0ea7fc4a"
+>
+<Comment>If the outgoing message is EMPTY, it has to be initialized</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initialize message"
+ Guid="4500a613-abb9-4a56-838d-c3d8c4705256"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5e12d8df-0bef-46ba-98ed-6197ab27501a"
+>InitializeOutMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send session establishment report"
+ Guid="ed5c2007-058f-4692-b9ea-961e40c496c9"
+>
+<Comment>Fills the structure corresponding to the Session establishment report.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send session establishment report"
+ Guid="3cc3532a-4813-4743-bb3e-60f08e181b5c"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="1f5b8c56-d5aa-4705-8653-1f7558f6dad4"
+>MessageOut.SESSION_ESTABLISHED &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.SESSION_ESTABLISHED.Message
+{
+    NID_MESSAGE =&gt; 159,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; MessageTypes.UnResolveTime ( time =&gt; Kernel.CurrentTime ),
+    NID_ENGINE =&gt; Kernel.NidEngine,
+    Sequence1 =&gt;
+    [
+        Messages.PACKET.TRAIN_TO_TRACK.ONBOARD_TELEPHONE_NUMBERS.Message
+        {
+            NID_PACKET =&gt; 3,
+            L_PACKET =&gt; 0,
+            N_ITER =&gt; 1,
+            Sequence1 =&gt; []
+        }
+    ]
+}
+
+
+
+</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1395,6 +1472,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="System version compatible"
  Guid="5546f28b-42bb-4732-aafe-81cf2d61613d"
 >
@@ -1403,7 +1481,8 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="15232b13-7aea-4fce-9832-446ada9900d3"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the trackside system version is compatible with the system version of the on-board, then the on-board sends the session establishment report and considers the session as established.</Comment>
+<PreConditions>
 <PreCondition
  Guid="debc6364-ddf5-4ed8-82bb-c87f6321ac7b"
 >SystemVersionIsCompatible ( SessionManagementData.SystemVersion.Value )</PreCondition></PreConditions>
@@ -1412,7 +1491,9 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
  Guid="978de328-21de-467f-af05-cca4f3410a75"
 >SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
  Guid="b4f25d0d-6815-4c2d-ae03-b9c5f4fe9298"
->THIS &lt;- Connected</Action></Actions>
+>THIS &lt;- Connected</Action><Action
+ Guid="14daf0db-62ec-4f22-8031-4c28c232386d"
+>SendSessionEstablishmentReport()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="System version not compatible"
