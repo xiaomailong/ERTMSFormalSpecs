@@ -24,6 +24,11 @@ namespace HistoricalData
     public class History : Generated.History
     {
         /// <summary>
+        /// The file name of the history file
+        /// </summary>
+        public const string HISTORY_FILE_NAME = "HistoryCache.hst";
+
+        /// <summary>
         /// All the commits in this history
         /// </summary>
         public ArrayList Commits
@@ -179,6 +184,11 @@ namespace HistoricalData
             }
 
             return retVal;
+        }
+
+        public void save()
+        {
+            save(HISTORY_FILE_NAME);
         }
     }
 }

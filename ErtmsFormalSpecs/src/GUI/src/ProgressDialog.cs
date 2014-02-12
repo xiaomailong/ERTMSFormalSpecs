@@ -31,6 +31,11 @@ namespace GUI
         /// </summary>
         private ProgressHandler Work { get; set; }
 
+        /// <summary>
+        /// Handles a cancel event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ManageCancel(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -78,6 +83,23 @@ namespace GUI
             backgroundWorker1.DoWork += new DoWorkEventHandler(ManageCancel);
         }
 
+        /// <summary>
+        /// Updates the message displayed to the user
+        /// </summary>
+        /// <param name="message"></param>
+        public void UpdateMessage(string message)
+        {
+            Invoke((MethodInvoker)delegate
+            {
+                label1.Text = message;
+            });
+        }
+
+        /// <summary>
+        /// Handles the escape key touch
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void ProgressDialog_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -88,6 +110,11 @@ namespace GUI
             }
         }
 
+        /// <summary>
+        /// Handles the Cancel event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             label1.Text = "Cancel pending";

@@ -73,7 +73,13 @@ namespace GUI.DataDictionaryView
         {
             DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
             rule.Name = "<Rule" + (GetNodeCount(false) + 1) + ">";
-            AddRule(rule);
+
+            DataDictionary.Rules.RuleCondition condition = (DataDictionary.Rules.RuleCondition)DataDictionary.Generated.acceptor.getFactory().createRuleCondition();
+            condition.Name = "<Condition1>";
+            rule.appendConditions(condition);
+
+            RuleTreeNode node = AddRule(rule);
+            node.ExpandAll();
         }
 
         /// <summary>

@@ -1015,6 +1015,11 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5f525ce1-f6fd-45db-a9bc-14e85abac630"
 >
+</ReqRef><ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="551dbd77-2393-41c7-9fed-40126a123a95"
+>
 </ReqRef><Comment>Handles Session Management packet, if available.</Comment>
 <PreConditions>
 <PreCondition
@@ -1023,7 +1028,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 <Actions>
 <Action
  Guid="8e4e8741-f67b-46ff-a5e6-fcfa1ce7192f"
->EURORADIO.HandleTracksideOrderedSession(Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT)</Action></Actions>
+>EURORADIO.TracksideOrderedSessionReceived(Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Conditional Level Transition Order"

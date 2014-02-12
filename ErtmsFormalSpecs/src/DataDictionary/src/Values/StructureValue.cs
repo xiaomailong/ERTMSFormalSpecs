@@ -37,19 +37,27 @@ namespace DataDictionary.Values
         {
             Enclosing = structure;
 
-            foreach (Types.StructureElement element in Structure.Elements)
+            try
             {
-                Variables.Variable variable = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
-                if (element.Type != null)
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                foreach (Types.StructureElement element in Structure.Elements)
                 {
-                    variable.Type = element.Type;
+                    Variables.Variable variable = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+                    if (element.Type != null)
+                    {
+                        variable.Type = element.Type;
+                    }
+                    variable.Name = element.Name;
+                    variable.Mode = element.Mode;
+                    variable.Default = element.Default;
+                    variable.Enclosing = enclosing;
+                    variable.Enclosing = this;
+                    set(variable);
                 }
-                variable.Name = element.Name;
-                variable.Mode = element.Mode;
-                variable.Default = element.Default;
-                variable.Enclosing = enclosing;
-                variable.Enclosing = this;
-                set(variable);
+            }
+            finally
+            {
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
             }
         }
 

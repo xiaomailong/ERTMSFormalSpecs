@@ -88,11 +88,6 @@ namespace DataDictionary
         public Compiler Compiler { get; private set; }
 
         /// <summary>
-        /// The file name of the history file
-        /// </summary>
-        public const string HISTORY_FILE_NAME = "HistoryCache.hst";
-
-        /// <summary>
         /// Provides the history
         /// </summary>
         public Compare.History History { get; private set; }
@@ -109,7 +104,7 @@ namespace DataDictionary
 
             // Reads the history file and updates the blame information stored in it
             Compare.Factory historyFactory = DataDictionary.Compare.Factory.INSTANCE;
-            History = (Compare.History)HistoricalData.HistoryUtils.Load(HISTORY_FILE_NAME, historyFactory);
+            History = (Compare.History)HistoricalData.HistoryUtils.Load(Compare.History.HISTORY_FILE_NAME, historyFactory);
             if (History == null)
             {
                 History = (Compare.History)historyFactory.createHistory();
@@ -744,36 +739,45 @@ namespace DataDictionary
         {
             DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
 
-            Utils.ISubDeclaratorUtils.AppendNamable(this, EmptyValue);
-            foreach (Types.Type type in PredefinedTypes.Values)
+            try
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, type);
-            }
-            foreach (Functions.PredefinedFunctions.PredefinedFunction function in PredefinedFunctions.Values)
-            {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, function);
-            }
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
 
-            // Adds the namable from the default namespace as directly accessible
-            foreach (Dictionary dictionary in Dictionaries)
-            {
-                foreach (NameSpace nameSpace in dictionary.NameSpaces)
+                Utils.ISubDeclaratorUtils.AppendNamable(this, EmptyValue);
+                foreach (Types.Type type in PredefinedTypes.Values)
                 {
-                    if (nameSpace.Name.CompareTo("Default") == 0)
+                    Utils.ISubDeclaratorUtils.AppendNamable(this, type);
+                }
+                foreach (Functions.PredefinedFunctions.PredefinedFunction function in PredefinedFunctions.Values)
+                {
+                    Utils.ISubDeclaratorUtils.AppendNamable(this, function);
+                }
+
+                // Adds the namable from the default namespace as directly accessible
+                foreach (Dictionary dictionary in Dictionaries)
+                {
+                    foreach (NameSpace nameSpace in dictionary.NameSpaces)
                     {
-                        if (nameSpace.DeclaredElements == null)
+                        if (nameSpace.Name.CompareTo("Default") == 0)
                         {
-                            nameSpace.InitDeclaredElements();
-                        }
-                        foreach (List<Utils.INamable> namables in nameSpace.DeclaredElements.Values)
-                        {
-                            foreach (Utils.INamable namable in namables)
+                            if (nameSpace.DeclaredElements == null)
                             {
-                                Utils.ISubDeclaratorUtils.AppendNamable(this, namable);
+                                nameSpace.InitDeclaredElements();
+                            }
+                            foreach (List<Utils.INamable> namables in nameSpace.DeclaredElements.Values)
+                            {
+                                foreach (Utils.INamable namable in namables)
+                                {
+                                    Utils.ISubDeclaratorUtils.AppendNamable(this, namable);
+                                }
                             }
                         }
                     }
                 }
+            }
+            finally
+            {
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
             }
         }
 

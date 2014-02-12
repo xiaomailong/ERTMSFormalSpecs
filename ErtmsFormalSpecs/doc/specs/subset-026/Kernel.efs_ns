@@ -641,6 +641,11 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c45f7560-3262-4295-b4ac-92a257d0edb8"
 >
+</ReqRef><ReqRef
+ Id="ae649b47-cdfc-4223-b13d-4b1efaef612d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c55ee9c5-7a13-473c-9bb8-b979bdf99d99"
+>
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1765,6 +1770,16 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="08728734-17a6-4a4a-91c5-50467e7232a8"
 >
+</ReqRef><ReqRef
+ Id="0d0678a7-632a-4a9e-9a4a-87d46d1383b1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f6f58b1b-cd87-435a-90f1-327a8cb36bad"
+>
+</ReqRef><ReqRef
+ Id="865bbdd6-2010-4869-ab3e-bc538ce5fe4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="672c32d1-9580-474c-b93c-5a3a2b311fec"
+>
 </ReqRef><Comment>If the Radio Network id has changed, the RBC connection data state is set to uknown and the new radio terminal is registered.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1780,12 +1795,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >DMI.MasterDMI().In_RBCContactInformation.SelectedNetwork != EURORADIO.LastKnownNetworkId</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="cac3db6f-4414-4a16-8142-65789dff9874"
->EURORADIO.LastKnownNetworkId &lt;- DMI.MasterDMI().In_RBCContactInformation.SelectedNetwork</Action><Action
  Guid="198cb14a-02da-4a00-8f9c-b5ddffc80be8"
 >EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Unknown</Action><Action
  Guid="525893e1-c192-4679-9788-b1b77c5b89c3"
->EURORADIO.RegisterMobileTerminals()</Action></Actions>
+>EURORADIO.RegisterMobileTerminals ( DMI.MasterDMI().In_RBCContactInformation.SelectedNetwork )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -5105,7 +5118,12 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Desk is closed"
  Guid="6faedef6-abe1-4b11-9da2-4dfc0cab22ad"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="83709cd5-3863-48a0-8264-34f65a482b28"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a2dec042-c1a9-4efc-8b8e-a0404ee12cdf"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
