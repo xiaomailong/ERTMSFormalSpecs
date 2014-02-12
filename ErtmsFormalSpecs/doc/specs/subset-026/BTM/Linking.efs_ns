@@ -157,7 +157,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7c9afe0e-4a9b-4d5c-94ac-357c1cfaa428"
 >
-</ReqRef><Comment>Collection of linking elements.</Comment>
+</ReqRef><Comment>Collection of Linking elements.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -235,14 +235,22 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="5aa027b1-5c1a-4773-a56d-e795d43847fb"
+ Id="6edb366e-d115-4216-b96e-7b30170c1b1b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c00492b0-e7ab-4cae-8743-b49438642892"
+ Guid="770da8b0-963b-4b05-9d57-4d7e0e76ccce"
 >
-<Comment></Comment>
 </ReqRef><Comment>Returns true if the current BaliseGroup is linked + stored in our Linking database and within reach of the onboard antenna</Comment>
 <Cases>
 <Case
+ Name="Expectation window for Unknown BG ID"
+ Guid="4a644f5f-09fa-4cf8-868e-62d0f628f3c7"
+>
+<PreConditions>
+<PreCondition
+ Guid="2425f7be-2891-4d2c-a000-e3d04864b4b4"
+>(FIRST_IN Linkings).BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN</PreCondition></PreConditions>
+<Expression>AntennaPosition(Default.DistanceInterval.Min) &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy</Expression>
+</Case><Case
  Name="Check the expectation window"
  Guid="0bfe0cf6-52e4-46b8-a258-00e1f3aa67c4"
 >
@@ -446,7 +454,7 @@ BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
 <PreCondition
  Guid="7fb25cc6-4417-4b2f-9e39-4c8c7ca670ef"
 >NOT ( LinkingApplicable() )</PreCondition></PreConditions>
-<Expression>Boolean.True</Expression>
+<Expression>True</Expression>
 </Case><Case
  Name="Current BG is marked as unlinked =&gt; it has to be considered"
  Guid="fb1b0b2c-93dd-4823-8957-7304f7d349e8"
@@ -766,45 +774,129 @@ IN Linkings</Action></Actions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="CleanLinkingInfo"
- Guid="2959fbb4-e4a1-42f4-8370-fe198ce97294"
+ Name="StopExpectingCurrentBG"
+ Guid="daa0e49f-223d-401a-b2e6-4c43a5fed628"
 >
 <ReqRef
- Id="3ab48b20-0a96-4f02-93ac-64071624c979"
+ Id="b431b905-df98-4c23-9ff8-3da3b92a7a29"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="08d261f7-f732-4da9-9abb-fbefa6e263a7"
+ Guid="70edeac1-29cf-4a67-a25d-a8bb10e21bd7"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
- Id="5aa027b1-5c1a-4773-a56d-e795d43847fb"
+ Id="259e3c43-f68a-4c80-8402-32349f27172d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fa65f0a9-4116-4a16-8ed9-6aa23e99e126"
+ Guid="34f2596f-54be-4597-bd2c-07f7ad17bc75"
 >
-</ReqRef><Comment>Clear all Linking information which expectation window has passed safe antenna position.</Comment>
+</ReqRef><Comment>BGs are only considered in the order the linking was given to the train. This means that only the first element should ever be deleted.
+This function is called whenever it is appropriate, so it does not need any preconditions to its action.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="ClearLinkingInfo"
- Guid="a38d2cde-17fb-4d90-9fb9-b511ea42385a"
+ Name="Stop expecting current BG"
+ Guid="662b3dc5-53fd-490d-9fa5-d31299970ac2"
 >
-<Comment>Clear all Linking information which expectation window has passed safe antenna position.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="FilterLinkings"
- Guid="28e0ff8b-0934-45c4-b9bc-eb112fec4e6d"
+ Name="Stop expecting current BG"
+ Guid="09f3424d-b8ae-43d8-904d-a185c3e22c58"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="8fd68685-2c50-44e2-8c63-633c9323f735"
->Linkings &lt;- MAP Linkings | ( AntennaPosition ( Default.DistanceInterval.Min ) &lt;= (X.Distance + X.LocationAccuracy) ) USING X</Action></Actions>
+ Guid="f5e1d966-d547-4ac0-9400-f7ab8627a792"
+>Linkings &lt;- MAP Linkings | (NOT (X == FIRST_IN Linkings))
+  USING X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="ApplyLinkingReaction"
+ Guid="6ec21532-1ddc-4a6e-81f8-749ef96463da"
+>
+<ReqRef
+ Id="a58464f1-c74b-420f-ad30-03d671b764c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4d57e55f-a085-43be-bf91-2bba7177339b"
+>
+</ReqRef><ReqRef
+ Id="e301f9da-607b-45f9-a74b-a6d53cbfc408"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3e6d3dc8-dd65-4727-bbf7-01e58c414f9b"
+>
+</ReqRef><ReqRef
+ Id="277ee440-7786-4aac-8364-7e60a82e94a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="34595bf7-d0da-4fc1-96fd-b215075ebcf4"
+>
+</ReqRef><ReqRef
+ Id="52ed2710-9a35-46d3-9d62-825665d41e0d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="91bdbfd2-34e5-4202-90ee-7b96a2db43f5"
+>
+</ReqRef><ReqRef
+ Id="e529be25-15db-4250-b937-0f076614ae46"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b2a0e8e-0483-4c77-bd46-b8ebf8c72509"
+>
+</ReqRef><Comment>Apply the prescribed reaction if there is a data consistency problem</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Apply linking reaction"
+ Guid="b7705540-c896-4991-ac91-962e6c50429d"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Service brake"
+ Guid="91f4a7b1-c086-45e2-b630-7b518494ff43"
+>
+<ReqRef
+ Id="52ed2710-9a35-46d3-9d62-825665d41e0d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c1fe9c45-0721-43c6-a471-701c705f41ba"
+>
+</ReqRef><Comment>Linking reaction: command service brake.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="225b3eaa-79f0-47b8-8242-2b45e9e0c7bf"
+>CurrentLinking().Reaction == Linking.LinkingReaction.CommandServiceBrake</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c25a0dde-94bd-4b8a-b757-7297f7ccdab2"
+>Kernel.SpeedAndDistanceMonitoring.TriggerSBCommand()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Train trip"
+ Guid="5dfb84c4-496e-4117-8cdc-1135596dbfc3"
+>
+<ReqRef
+ Id="a0f4b0d4-ee6d-40d4-94b4-05dd94f6bcd2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dda3ddef-eebf-4f41-bdd0-3d9252e6dea4"
+>
+</ReqRef><ReqRef
+ Id="277ee440-7786-4aac-8364-7e60a82e94a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="872f330f-0838-473c-84f7-bb3c3f1f02dc"
+>
+</ReqRef><Comment>Linking reaction: train trip.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d3c0f416-233f-434b-9809-11711134aff6"
+>CurrentLinking().Reaction == Linking.LinkingReaction.TrainTrip</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="59e35c85-e437-4258-93af-28a87f6548e3"
+>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -826,4 +918,80 @@ IN Linkings</Action></Actions>
 >
 </ReqRef><Comment>Stores the next linking data as provided by the balises</Comment>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ Name="Clean Up Linking Info"
+ Guid="49b7a1ca-68f8-4859-8837-4c266bf70522"
+>
+<ReqRef
+ Id="c534dda4-ea81-40b7-a27b-c229e935a20e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48d690d3-c817-4fc1-9394-d4f8f60e5bd4"
+>
+</ReqRef><ReqRef
+ Id="75b64f27-a0f0-421e-a6c1-37f2dd27860f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68d706aa-fcac-4d7d-9558-3027b4dd53ef"
+>
+</ReqRef><ReqRef
+ Id="b431b905-df98-4c23-9ff8-3da3b92a7a29"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="80d3a922-6d46-48cc-a32c-0d23cca616bd"
+>
+</ReqRef><ReqRef
+ Id="2c84de1b-61c3-4555-b485-6b4eae58ae90"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3a071496-1755-4625-8f4d-a75cdcf02046"
+>
+</ReqRef><ReqRef
+ Id="0547edfa-b17d-4b79-8cad-2fba135b2d95"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f875d24-7fb2-41de-9ef2-e1c2e39d6f94"
+>
+</ReqRef><Comment>If the current linking&apos;s expectation window has been passed, removes it from the linkings and applies its reaction</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Check the train has passed the expected BG&apos;s expectation window"
+ Guid="698f6885-1eec-46b4-87fa-7ad3439243f9"
+>
+<Comment>Apply the linking reaction</Comment>
+<PreConditions>
+<PreCondition
+ Guid="6d3b2490-aa01-4121-8abb-e05a55a842cc"
+>LinkingApplicable()
+  AND
+AntennaPosition ( Default.DistanceInterval.Min ) &gt; (CurrentLinking().Distance + CurrentLinking().LocationAccuracy)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d3d59ef2-1780-4145-90f8-d8a3cf0dfbcc"
+>ApplyLinkingReaction()</Action></Actions>
+<SubRules>
+<Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ Name="Stop expecting that BG"
+ Guid="adc6cb4b-3a76-4d7b-9e80-fef0b0f8d69e"
+>
+<Comment>Remove the BG from Linkings</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove the passed BG from the list of expected BGs"
+ Guid="09fca6f8-f0c8-4331-9ee5-c65f911b4665"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="8fd68685-2c50-44e2-8c63-633c9323f735"
+>StopExpectingCurrentBG()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>

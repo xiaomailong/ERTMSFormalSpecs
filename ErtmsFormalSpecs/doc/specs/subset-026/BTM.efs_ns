@@ -1641,29 +1641,6 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Clear linking information"
- Guid="808fa76e-0ab1-4997-8e54-aa7de7f24158"
->
-<Comment>First of all, clear all Linking information which expectation window has passed safe antenna position.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Clear linking information"
- Guid="81a14f0a-5ae2-4723-b089-37713cbdff10"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="22831d19-90c3-4414-8a4d-302ed4f59006"
->Linking.CleanLinkingInfo()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="LRBG change"
  Guid="2eaeddca-034e-4016-956e-16066b1645ba"
 >
@@ -2025,72 +2002,13 @@ If all the messages of the current balise group have been received, calls Handle
 >
 <Comment>If the linking information is not consistent, the linking reaction is applied.</Comment>
 <PreConditions>
-</PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Apply linking reaction"
- Guid="4df4b0bf-3417-4cf7-aac1-ab4426ffbfcc"
->
-<ReqRef
- Id="e529be25-15db-4250-b937-0f076614ae46"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c516d68c-00d1-4f39-8efd-44056d990ce9"
->
-</ReqRef><Comment>If the balise group is not received within its expectation window, the linking reaction, if specified, is applied.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Service brake"
- Guid="91f4a7b1-c086-45e2-b630-7b518494ff43"
->
-<ReqRef
- Id="52ed2710-9a35-46d3-9d62-825665d41e0d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c1fe9c45-0721-43c6-a471-701c705f41ba"
->
-</ReqRef><Comment>Linking reaction: command service brake.</Comment>
-<PreConditions>
 <PreCondition
- Guid="225b3eaa-79f0-47b8-8242-2b45e9e0c7bf"
->(FIRST_IN BTM.Linking.Linkings).Reaction == Linking.LinkingReaction.CommandServiceBrake</PreCondition></PreConditions>
+ Guid="8f5a0f1c-c414-4eb4-9e97-36ecfe20d486"
+>NOT Linking.ConsiderBG()</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="c25a0dde-94bd-4b8a-b757-7297f7ccdab2"
->Kernel.SpeedAndDistanceMonitoring.TriggerSBCommand()</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Train trip"
- Guid="5dfb84c4-496e-4117-8cdc-1135596dbfc3"
->
-<ReqRef
- Id="a0f4b0d4-ee6d-40d4-94b4-05dd94f6bcd2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="dda3ddef-eebf-4f41-bdd0-3d9252e6dea4"
->
-</ReqRef><ReqRef
- Id="277ee440-7786-4aac-8364-7e60a82e94a1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="872f330f-0838-473c-84f7-bb3c3f1f02dc"
->
-</ReqRef><Comment>Linking reaction: train trip.</Comment>
-<PreConditions>
-<PreCondition
- Guid="d3c0f416-233f-434b-9809-11711134aff6"
->(FIRST_IN BTM.Linking.Linkings).Reaction == Linking.LinkingReaction.TrainTrip</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="59e35c85-e437-4258-93af-28a87f6548e3"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+ Guid="947e4646-fe86-4fdd-962c-9fcece6b0261"
+>Linking.ApplyLinkingReaction()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2340,6 +2258,16 @@ If all the messages of the current balise group have been received, calls Handle
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="396410a3-bfa4-4b05-898b-ee479d120e88"
 >
+</ReqRef><ReqRef
+ Id="b431b905-df98-4c23-9ff8-3da3b92a7a29"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="12db6d9c-127e-4a6e-8edf-a922e1d02640"
+>
+</ReqRef><ReqRef
+ Id="259e3c43-f68a-4c80-8402-32349f27172d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b52a946c-2496-40c6-b33a-54e8ecc1597c"
+>
 </ReqRef><Comment>After processing the new telegram its content is deleted.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -2385,6 +2313,33 @@ If all the messages of the current balise group have been received, calls Handle
 <Action
  Guid="74d5488e-85d4-48e9-8de8-43a12dd4b955"
 >CurrentBaliseGroup &lt;- []</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Clear linking of BG if announced"
+ Guid="17d101f7-a80d-4b11-bc1a-396d97dca7cb"
+>
+<Comment>If the BG was announced, clear the associated linking information</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Clear linking of BG if announced"
+ Guid="6f770981-d099-4162-ac46-571534fead2e"
+>
+<PreConditions>
+<PreCondition
+ Guid="24b53d36-c897-4009-9243-171e8c673de7"
+>( THERE_IS_IN Linking.Linkings )
+  AND
+( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linking.Linkings).BaliseGroupIdentifier )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="80792b85-827f-4b1b-a9fe-08834006c658"
+>Linking.StopExpectingCurrentBG()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
