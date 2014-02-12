@@ -184,7 +184,7 @@ namespace GUI.TestRunnerView
                 {
                     SynchronizerList.SuspendSynchronization();
                     Window.setSubSequence(SubSequence);
-                    EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(SubSequence, false);
+                    EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(SubSequence, true, false);
                     EFSSystem.Runner.RunUntilStep(null);
                     SynchronizerList.ResumeSynchronization();
                 }

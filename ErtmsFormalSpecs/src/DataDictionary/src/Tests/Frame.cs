@@ -45,15 +45,22 @@ namespace DataDictionary.Tests
         {
             int retVal = 0;
 
-            foreach (DataDictionary.Tests.SubSequence subSequence in SubSequences)
+            try
             {
-                EFSSystem.Runner = new Runner.Runner(subSequence, false);
-                int testCasesFailed = subSequence.ExecuteAllTestCases(EFSSystem.Runner);
-                if (testCasesFailed > 0)
+                foreach (DataDictionary.Tests.SubSequence subSequence in SubSequences)
                 {
-                    subSequence.AddError("Execution failed");
-                    retVal += 1;
+                    EFSSystem.Runner = new Runner.Runner(subSequence, false, false);
+                    int testCasesFailed = subSequence.ExecuteAllTestCases(EFSSystem.Runner);
+                    if (testCasesFailed > 0)
+                    {
+                        subSequence.AddError("Execution failed");
+                        retVal += 1;
+                    }
                 }
+            }
+            finally
+            {
+                EFSSystem.Runner = null;
             }
 
             return retVal;

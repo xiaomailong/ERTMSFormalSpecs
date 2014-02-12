@@ -110,6 +110,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="changes">The changes performed by this statement</param>
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
-        public abstract void GetChanges(Interpreter.InterpretationContext context, ChangeList changes, Interpreter.ExplanationPart explanation, bool apply, bool log);
+        /// <param name="runner"></param>
+        public abstract void GetChanges(Interpreter.InterpretationContext context, ChangeList changes, Interpreter.ExplanationPart explanation, bool apply, Tests.Runner.Runner runner);
     }
 }
