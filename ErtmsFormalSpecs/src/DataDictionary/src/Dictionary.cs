@@ -700,15 +700,23 @@ namespace DataDictionary
         /// </summary>
         public void CheckRules()
         {
-            ClearMessages();
+            try
+            {
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                ClearMessages();
 
-            // Rebuilds everything
-            EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
-            EFSSystem.ShouldRebuild = false;
+                // Rebuilds everything
+                EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
+                EFSSystem.ShouldRebuild = false;
 
-            // Check rules
-            RuleCheckerVisitor visitor = new RuleCheckerVisitor(this);
-            visitor.visit(this, true);
+                // Check rules
+                RuleCheckerVisitor visitor = new RuleCheckerVisitor(this);
+                visitor.visit(this, true);
+            }
+            finally
+            {
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+            }
         }
 
         private class UnimplementedItemVisitor : Generated.Visitor

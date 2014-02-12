@@ -206,7 +206,8 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="changes">The list to fill with the changes</param>
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
-        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, bool log)
+        /// <param name="runner"></param>
+        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Tests.Runner.Runner runner)
         {
             Variables.IVariable variable = ListExpression.GetVariable(context);
             if (variable != null)
@@ -226,7 +227,7 @@ namespace DataDictionary.Interpreter.Statement
                             IteratorVariable.Value = value;
                             if (conditionSatisfied(context))
                             {
-                                Call.GetChanges(context, changes, explanation, apply, log);
+                                Call.GetChanges(context, changes, explanation, apply, runner);
                             }
                         }
                     }

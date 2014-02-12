@@ -739,36 +739,45 @@ namespace DataDictionary
         {
             DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
 
-            Utils.ISubDeclaratorUtils.AppendNamable(this, EmptyValue);
-            foreach (Types.Type type in PredefinedTypes.Values)
+            try
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, type);
-            }
-            foreach (Functions.PredefinedFunctions.PredefinedFunction function in PredefinedFunctions.Values)
-            {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, function);
-            }
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
 
-            // Adds the namable from the default namespace as directly accessible
-            foreach (Dictionary dictionary in Dictionaries)
-            {
-                foreach (NameSpace nameSpace in dictionary.NameSpaces)
+                Utils.ISubDeclaratorUtils.AppendNamable(this, EmptyValue);
+                foreach (Types.Type type in PredefinedTypes.Values)
                 {
-                    if (nameSpace.Name.CompareTo("Default") == 0)
+                    Utils.ISubDeclaratorUtils.AppendNamable(this, type);
+                }
+                foreach (Functions.PredefinedFunctions.PredefinedFunction function in PredefinedFunctions.Values)
+                {
+                    Utils.ISubDeclaratorUtils.AppendNamable(this, function);
+                }
+
+                // Adds the namable from the default namespace as directly accessible
+                foreach (Dictionary dictionary in Dictionaries)
+                {
+                    foreach (NameSpace nameSpace in dictionary.NameSpaces)
                     {
-                        if (nameSpace.DeclaredElements == null)
+                        if (nameSpace.Name.CompareTo("Default") == 0)
                         {
-                            nameSpace.InitDeclaredElements();
-                        }
-                        foreach (List<Utils.INamable> namables in nameSpace.DeclaredElements.Values)
-                        {
-                            foreach (Utils.INamable namable in namables)
+                            if (nameSpace.DeclaredElements == null)
                             {
-                                Utils.ISubDeclaratorUtils.AppendNamable(this, namable);
+                                nameSpace.InitDeclaredElements();
+                            }
+                            foreach (List<Utils.INamable> namables in nameSpace.DeclaredElements.Values)
+                            {
+                                foreach (Utils.INamable namable in namables)
+                                {
+                                    Utils.ISubDeclaratorUtils.AppendNamable(this, namable);
+                                }
                             }
                         }
                     }
                 }
+            }
+            finally
+            {
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
             }
         }
 

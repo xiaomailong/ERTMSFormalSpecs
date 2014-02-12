@@ -56,20 +56,30 @@ namespace GUI.DataDictionaryView
         /// Adds a rule in this set of sub rules
         /// </summary>
         /// <param name="rule"></param>
-        public void AddRule(DataDictionary.Rules.Rule rule)
+        public RuleTreeNode AddRule(DataDictionary.Rules.Rule rule)
         {
+            RuleTreeNode retVal = new RuleTreeNode(rule, true);
+
             Item.appendSubRules(rule);
-            Nodes.Add(new RuleTreeNode(rule, true));
+            Nodes.Add(retVal);
             SortSubNodes();
 
             Item.setVerified(false);
+
+            return retVal;
         }
 
         public void AddHandler(object sender, EventArgs args)
         {
             DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
             rule.Name = "<Rule" + (GetNodeCount(false) + 1) + ">";
-            AddRule(rule);
+
+            DataDictionary.Rules.RuleCondition condition = (DataDictionary.Rules.RuleCondition)DataDictionary.Generated.acceptor.getFactory().createRuleCondition();
+            condition.Name = "<Condition1>";
+            rule.appendConditions(condition);
+
+            RuleTreeNode node = AddRule(rule);
+            node.ExpandAll();
         }
 
         /// <summary>

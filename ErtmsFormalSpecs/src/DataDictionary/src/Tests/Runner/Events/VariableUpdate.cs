@@ -49,19 +49,28 @@ namespace DataDictionary.Tests.Runner.Events
         /// Computes the changes related to this event
         /// </summary>
         /// <param name="apply">Indicates that the changes should be applied directly</param>
-        public override bool ComputeChanges(bool apply, bool log)
+        /// <param name="runner"></param>
+        public override bool ComputeChanges(bool apply, Runner runner)
         {
-            bool retVal = base.ComputeChanges(apply, log);
+            bool retVal = base.ComputeChanges(apply, runner);
 
             if (retVal)
             {
-                Explanation = new Interpreter.ExplanationPart(Action);
-                Explanation.Message = "Action " + Action.Name;
+                if (runner.Explain)
+                {
+                    Explanation = new Interpreter.ExplanationPart(Action);
+                    Explanation.Message = "Action " + Action.Name;
+                }
+
                 Interpreter.InterpretationContext context = new Interpreter.InterpretationContext(Instance);
                 Changes = new ChangeList();
-                Action.GetChanges(context, Changes, Explanation, apply, log);
+                Action.GetChanges(context, Changes, Explanation, apply, runner);
                 Changes.CheckChanges(Action);
-                Message = Explanation.ToString();
+
+                if (runner.Explain)
+                {
+                    Message = Explanation.ToString();
+                }
             }
 
             return retVal;
@@ -71,10 +80,11 @@ namespace DataDictionary.Tests.Runner.Events
         /// Performs the variable change
         /// </summary>
         /// <param name="context">The execution context used to compute the values</param>
-        public override void Apply(bool log)
+        /// <param name="runner"></param>
+        public override void Apply(Runner runner)
         {
-            base.Apply(log);
-            Changes.Apply(log);
+            base.Apply(runner);
+            Changes.Apply(runner);
         }
 
         /// <summary>

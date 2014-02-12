@@ -113,14 +113,37 @@
 >PreviousSpeedAndDistanceSuppervisionType &lt;- Kernel.SpeedAndDistanceMonitoring.Monitoring</Action><Action
  Guid="58633a81-4072-494e-a17d-19e34b04acc0"
 >PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><Action
- Guid="9bc80e3a-1a1a-429f-98aa-42c1d4d761ce"
->PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</Action><Action
  Guid="d461f9a5-7f7b-482b-8ffa-2ca4aed6d474"
 >PreviousTargetSpeed &lt;- DMI.MasterDMI().Out_TargetSpeed.Speed</Action><Action
  Guid="cc02b5bb-d96c-46dd-a3bf-abe2b314c992"
 >PreviousTargetDistance &lt;- Kernel.TargetDistance</Action><Action
  Guid="0eb30b56-c6ab-4c4d-800f-f09532b1c04c"
 >PreviousReleaseSpeed &lt;- DMI.MasterDMI().Out_ReleaseSpeed.Speed</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update FLOI"
+ Guid="34845207-c16f-4605-b6be-776a620afa66"
+>
+<Comment>FLOI value can only be accessed during target speed monitoring.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update FLOI"
+ Guid="1daf6c7f-b2f7-473b-9358-cd415058af78"
+>
+<PreConditions>
+<PreCondition
+ Guid="f5d3dccb-474d-4877-afbc-cf2657785d82"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9bc80e3a-1a1a-429f-98aa-42c1d4d761ce"
+>PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5942,7 +5965,9 @@ V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
 <PreConditions>
 <PreCondition
  Guid="13358226-042e-4eb7-a8e9-c752639ee537"
->jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target
+  AND
+jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="TargetSpeedChanged"

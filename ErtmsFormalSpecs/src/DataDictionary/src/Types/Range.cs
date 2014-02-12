@@ -575,7 +575,15 @@ namespace DataDictionary.Types
             {
                 if (castFunction == null)
                 {
-                    castFunction = new Functions.PredefinedFunctions.Cast(this);
+                    try
+                    {
+                        DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                        castFunction = new Functions.PredefinedFunctions.Cast(this);
+                    }
+                    finally
+                    {
+                        DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                    }
                 }
 
                 return castFunction;
