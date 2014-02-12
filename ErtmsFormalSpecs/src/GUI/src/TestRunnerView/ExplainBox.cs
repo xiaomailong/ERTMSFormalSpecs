@@ -38,7 +38,11 @@ namespace GUI.TestRunnerView
             public ExplainTreeNode(ExplanationPart explanation)
             {
                 Explanation = explanation;
-                Text = explanation.Message;
+
+                if (explanation != null)
+                {
+                    Text = explanation.Message;
+                }
             }
 
             /// <summary>
@@ -57,7 +61,7 @@ namespace GUI.TestRunnerView
             /// </summary>
             public void SelectModel(bool selectModel)
             {
-                if (Explanation.Element != null)
+                if (Explanation != null && Explanation.Element != null)
                 {
                     if (selectModel)
                     {
@@ -110,9 +114,12 @@ namespace GUI.TestRunnerView
         public void setExplanation(DataDictionary.Interpreter.ExplanationPart explanation)
         {
             explainTreeView.Nodes.Clear();
-            ExplainTreeNode node = new ExplainTreeNode(explanation);
-            innerSetExplanation(explanation, node, 0);
-            explainTreeView.Nodes.Add(node);
+            if (explanation != null)
+            {
+                ExplainTreeNode node = new ExplainTreeNode(explanation);
+                innerSetExplanation(explanation, node, 0);
+                explainTreeView.Nodes.Add(node);
+            }
         }
 
         /// <summary>

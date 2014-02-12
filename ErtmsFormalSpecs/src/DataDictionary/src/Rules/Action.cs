@@ -213,8 +213,9 @@ namespace DataDictionary.Rules
         /// <param name="changes">The list of changes to be updated</param>
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
+        /// <param name="runner"></param>
         /// <returns>The list to fill with the changes</param>
-        public void GetChanges(Interpreter.InterpretationContext context, ChangeList changes, Interpreter.ExplanationPart explanation, bool apply, bool log)
+        public void GetChanges(Interpreter.InterpretationContext context, ChangeList changes, Interpreter.ExplanationPart explanation, bool apply, Tests.Runner.Runner runner)
         {
             long start = System.Environment.TickCount;
 
@@ -222,7 +223,7 @@ namespace DataDictionary.Rules
             {
                 if (Statement != null)
                 {
-                    Statement.GetChanges(context, changes, explanation, apply, log);
+                    Statement.GetChanges(context, changes, explanation, apply, runner);
                 }
                 else
                 {
