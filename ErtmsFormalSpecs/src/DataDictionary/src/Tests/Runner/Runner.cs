@@ -40,6 +40,11 @@ namespace DataDictionary.Tests.Runner
         public bool LogEvents { get; set; }
 
         /// <summary>
+        /// Indicates whether an explanation should be provided to all actions
+        /// </summary>
+        public bool Explain { get; set; }
+
+        /// <summary>
         /// The data dictionary
         /// </summary>
         public virtual EFSSystem EFSSystem
@@ -148,13 +153,15 @@ namespace DataDictionary.Tests.Runner
         /// Constructor
         /// </summary>
         /// <param name="subSequence"></param>
+        /// <param name="explain"></param>
         /// <param name="logEvents">Indicates whether events should be logged</param>
-        public Runner(SubSequence subSequence, bool logEvents = true)
+        public Runner(SubSequence subSequence, bool explain, bool logEvents)
         {
             EventTimeLine = new Events.EventTimeLine();
             SubSequence = subSequence;
             EFSSystem.Runner = this;
             LogEvents = logEvents;
+            Explain = explain;
 
             // Compile everything
             EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
@@ -166,7 +173,7 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// A simple runner
         /// </summary>
-        public Runner(bool logEvents = false, int step = 100, int storeEventCount = 0)
+        public Runner(bool explain, bool logEvents, int step = 100, int storeEventCount = 0)
         {
             EventTimeLine = new Events.EventTimeLine();
             SubSequence = null;
@@ -403,7 +410,7 @@ namespace DataDictionary.Tests.Runner
                         {
                             case Utils.ElementLog.LevelEnum.Error:
                                 ModelInterpretationFailure modelInterpretationFailure = new ModelInterpretationFailure(log, pair.Key as Utils.INamable);
-                                EventTimeLine.AddModelEvent(modelInterpretationFailure, false);
+                                EventTimeLine.AddModelEvent(modelInterpretationFailure, this);
                                 break;
 
                             case Utils.ElementLog.LevelEnum.Warning:
@@ -443,7 +450,7 @@ namespace DataDictionary.Tests.Runner
             {
                 foreach (DataDictionary.Types.NameSpace nameSpace in dictionary.NameSpaces)
                 {
-                    SetupNameSpaceActivations(priority, activations, nameSpace, null, LogEvents);
+                    SetupNameSpaceActivations(priority, activations, nameSpace, null, this);
                 }
             }
 
@@ -487,21 +494,21 @@ namespace DataDictionary.Tests.Runner
         /// <param name="activations">The set of activations to be filled</param>
         /// <param name="nameSpace">The namespace to consider</param>
         /// <param name="explanation">The explanation part to be filled</param>
-        /// <param name="log">Indicates that a log should be performed</param>
+        /// <param name="runner"></param>
         /// <returns></returns>
-        protected void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace, ExplanationPart explanation, bool log)
+        protected void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace, ExplanationPart explanation, Tests.Runner.Runner runner)
         {
             // Finds all activations in sub namespaces
             foreach (Types.NameSpace subNameSpace in nameSpace.NameSpaces)
             {
-                SetupNameSpaceActivations(priority, activations, subNameSpace, explanation, log);
+                SetupNameSpaceActivations(priority, activations, subNameSpace, explanation, runner);
             }
 
             List<Rules.RuleCondition> rules = new List<Rules.RuleCondition>();
             foreach (Rule rule in nameSpace.Rules)
             {
                 rules.Clear();
-                rule.Evaluate(this, priority, rule, rules, explanation, log);
+                rule.Evaluate(this, priority, rule, rules, explanation);
                 Activation.RegisterRules(activations, rules, nameSpace);
             }
 
@@ -514,7 +521,7 @@ namespace DataDictionary.Tests.Runner
 
             foreach (Variables.IVariable variable in nameSpace.Variables)
             {
-                EvaluateVariable(priority, activations, variable, explanation, log);
+                EvaluateVariable(priority, activations, variable, explanation, runner);
             }
         }
 
@@ -525,8 +532,8 @@ namespace DataDictionary.Tests.Runner
         /// <param name="activations">The activation list result of this evaluation</param>
         /// <param name="variable">The variable to evaluate</param>
         /// <param name="explanation">The explanation part to be filled</param>
-        /// <param name="log">Indicates that events should be logged</param>
-        private void EvaluateVariable(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Variables.IVariable variable, ExplanationPart explanation, bool log)
+        /// <param name="runner"></param>
+        private void EvaluateVariable(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Variables.IVariable variable, ExplanationPart explanation, Tests.Runner.Runner runner)
         {
             if (variable != null)
             {
@@ -536,7 +543,7 @@ namespace DataDictionary.Tests.Runner
                     Types.Structure structure = variable.Type as Types.Structure;
                     foreach (Rule rule in structure.Rules)
                     {
-                        rule.Evaluate(this, priority, variable, rules, explanation, log);
+                        rule.Evaluate(this, priority, variable, rules, explanation);
                     }
                     Activation.RegisterRules(activations, rules, variable);
 
@@ -545,14 +552,14 @@ namespace DataDictionary.Tests.Runner
                     {
                         foreach (Variables.IVariable subVariable in value.SubVariables.Values)
                         {
-                            EvaluateVariable(priority, activations, subVariable, explanation, log);
+                            EvaluateVariable(priority, activations, subVariable, explanation, runner);
                         }
                     }
                 }
                 else if (variable.Type is Types.StateMachine)
                 {
                     List<Rules.RuleCondition> rules = new List<RuleCondition>();
-                    EvaluateStateMachine(rules, priority, variable, explanation, log);
+                    EvaluateStateMachine(rules, priority, variable, explanation, runner);
                     Activation.RegisterRules(activations, rules, variable);
                 }
                 else if (variable.Type is Types.Collection)
@@ -571,7 +578,7 @@ namespace DataDictionary.Tests.Runner
                                 tmp.Name = variable.Name + '[' + i + ']';
                                 tmp.Type = collectionType.Type;
                                 tmp.Value = subVal;
-                                EvaluateVariable(priority, activations, tmp, explanation, log);
+                                EvaluateVariable(priority, activations, tmp, explanation, runner);
                                 i = i + 1;
                             }
                         }
@@ -600,8 +607,8 @@ namespace DataDictionary.Tests.Runner
         /// <param name="priority">The priority when this evaluation occurs</param>
         /// <param name="currentStateVariable">The variable which holds the current state of the procedure</param>
         /// <param name="explanation">The explanation part to be filled</param>
-        /// <param name="log">Indicates that events should be logged</param>
-        private void EvaluateStateMachine(List<Rules.RuleCondition> ruleConditions, Generated.acceptor.RulePriority priority, Variables.IVariable currentStateVariable, ExplanationPart explanation, bool log)
+        /// <param name="runner"></param>
+        private void EvaluateStateMachine(List<Rules.RuleCondition> ruleConditions, Generated.acceptor.RulePriority priority, Variables.IVariable currentStateVariable, ExplanationPart explanation, Tests.Runner.Runner runner)
         {
             if (currentStateVariable != null)
             {
@@ -611,7 +618,7 @@ namespace DataDictionary.Tests.Runner
                 {
                     foreach (Rule rule in currentStateMachine.Rules)
                     {
-                        rule.Evaluate(this, priority, currentStateVariable, ruleConditions, explanation, log);
+                        rule.Evaluate(this, priority, currentStateVariable, ruleConditions, explanation);
                     }
                     currentStateMachine = currentStateMachine.EnclosingStateMachine;
                 }
@@ -634,7 +641,7 @@ namespace DataDictionary.Tests.Runner
                 {
                     // Register the fact that a rule has been triggered
                     Events.RuleFired ruleFired = new Events.RuleFired(activation.RuleCondition);
-                    EventTimeLine.AddModelEvent(ruleFired, LogEvents);
+                    EventTimeLine.AddModelEvent(ruleFired, this);
 
                     // Registers all model updates due to this rule triggering
                     foreach (Rules.Action action in activation.RuleCondition.Actions)
@@ -642,7 +649,7 @@ namespace DataDictionary.Tests.Runner
                         if (action.Statement != null)
                         {
                             Events.VariableUpdate variableUpdate = new Events.VariableUpdate(action, activation.Instance);
-                            EventTimeLine.AddModelEvent(variableUpdate, LogEvents);
+                            EventTimeLine.AddModelEvent(variableUpdate, this);
                             ruleFired.AddVariableUpdate(variableUpdate);
                         }
                         else
@@ -669,7 +676,7 @@ namespace DataDictionary.Tests.Runner
                 // No setup can occur when some expectations are still active
                 if (ActiveBlockingExpectations().Count == 0)
                 {
-                    EventTimeLine.AddModelEvent(new SubStepActivated(subStep), LogEvents);
+                    EventTimeLine.AddModelEvent(new SubStepActivated(subStep), this);
                 }
             }
             finally
@@ -723,12 +730,12 @@ namespace DataDictionary.Tests.Runner
                         case Generated.acceptor.ExpectationKind.aInstantaneous:
                         case Generated.acceptor.ExpectationKind.defaultExpectationKind:
                             // Instantaneous expectation who raised its deadling
-                            EventTimeLine.AddModelEvent(new FailedExpectation(expect), LogEvents);
+                            EventTimeLine.AddModelEvent(new FailedExpectation(expect), this);
                             break;
 
                         case Generated.acceptor.ExpectationKind.aContinuous:
                             // Continuous expectation who raised its deadline
-                            EventTimeLine.AddModelEvent(new ExpectationReached(expect), LogEvents);
+                            EventTimeLine.AddModelEvent(new ExpectationReached(expect), this);
                             break;
                     }
                 }
@@ -743,7 +750,7 @@ namespace DataDictionary.Tests.Runner
                                 if (getBoolValue(expectation, expectation.ExpressionTree))
                                 {
                                     // An instantaneous expectation who reached its satisfactory condition
-                                    EventTimeLine.AddModelEvent(new ExpectationReached(expect), LogEvents);
+                                    EventTimeLine.AddModelEvent(new ExpectationReached(expect), this);
                                 }
                                 break;
 
@@ -753,14 +760,14 @@ namespace DataDictionary.Tests.Runner
                                     if (!getBoolValue(expectation, expectation.ConditionTree))
                                     {
                                         // An continuous expectation who reached its satisfactory condition
-                                        EventTimeLine.AddModelEvent(new ExpectationReached(expect), LogEvents);
+                                        EventTimeLine.AddModelEvent(new ExpectationReached(expect), this);
                                     }
                                     else
                                     {
                                         if (!getBoolValue(expectation, expectation.ExpressionTree))
                                         {
                                             // A continuous expectation who reached a case where it is not satisfied
-                                            EventTimeLine.AddModelEvent(new FailedExpectation(expect), LogEvents);
+                                            EventTimeLine.AddModelEvent(new FailedExpectation(expect), this);
                                         }
                                     }
                                 }
@@ -769,7 +776,7 @@ namespace DataDictionary.Tests.Runner
                                     if (!getBoolValue(expectation, expectation.ExpressionTree))
                                     {
                                         // A continuous expectation who reached a case where it is not satisfied
-                                        EventTimeLine.AddModelEvent(new FailedExpectation(expect), LogEvents);
+                                        EventTimeLine.AddModelEvent(new FailedExpectation(expect), this);
                                     }
                                 }
                                 break;

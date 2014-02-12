@@ -76,9 +76,10 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// Adds this expectation in the list of active expectations in the time line
         /// </summary>
-        public override void Apply(bool log)
+        /// <param name="runner"></param>
+        public override void Apply(Runner runner)
         {
-            base.Apply(log);
+            base.Apply(runner);
             TimeLine.ActiveExpectations.Add(this);
         }
 

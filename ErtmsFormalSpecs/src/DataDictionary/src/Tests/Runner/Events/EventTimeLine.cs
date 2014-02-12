@@ -78,12 +78,13 @@ namespace DataDictionary.Tests.Runner.Events
         /// Adds a new event in the list of events
         /// </summary>
         /// <param name="modelEvent"></param>
-        public void AddModelEvent(ModelEvent modelEvent, bool log)
+        /// <param name="runner"></param>
+        public void AddModelEvent(ModelEvent modelEvent, Runner runner)
         {
             modelEvent.Time = CurrentTime;
             modelEvent.TimeLine = this;
             modelEvents.Add(modelEvent);
-            modelEvent.Apply(log);
+            modelEvent.Apply(runner);
         }
 
         /// <summary>
