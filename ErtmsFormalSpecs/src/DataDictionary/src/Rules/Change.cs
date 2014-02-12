@@ -64,11 +64,12 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Applies the change if it has not yet been applied
         /// </summary>
-        public void Apply(bool log)
+        /// <param name="runner"></param>
+        public void Apply(Tests.Runner.Runner runner)
         {
             if (!Applied)
             {
-                if (log)
+                if (runner.LogEvents)
                 {
                     Log.Info(Variable.FullName + "<-" + NewValue.LiteralName);
                 }
@@ -113,7 +114,8 @@ namespace DataDictionary.Rules
         /// </summary>
         /// <param name="change">The change to add</param>
         /// <param name="apply">Indicates whether the change should be applied immediately</param>
-        public void Add(Change change, bool apply, bool log)
+        /// <param name="runner"></param>
+        public void Add(Change change, bool apply, Tests.Runner.Runner runner)
         {
             Changes.Add(change);
             if (apply)
@@ -123,7 +125,7 @@ namespace DataDictionary.Rules
                 // However, this contradicts a invariant : the state of the system does not change as long as all changes have not been computed
                 // To fix this, changes should be unapplied at the end of the procedure call change evaluation to be applied back 
                 // during the activation application.
-                change.Apply(log);
+                change.Apply(runner);
             }
         }
 
@@ -145,11 +147,12 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Apply all changes
         /// </summary>
-        public void Apply(bool log)
+        /// <param name="runner"></param>
+        public void Apply(Tests.Runner.Runner runner)
         {
             foreach (DataDictionary.Rules.Change change in Changes)
             {
-                change.Apply(log);
+                change.Apply(runner);
             }
         }
 

@@ -236,7 +236,8 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="changes">The list to fill with the changes</param>
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
-        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, bool log)
+        /// <param name="runner"></param>
+        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Tests.Runner.Runner runner)
         {
             int index = context.LocalScope.PushContext();
             context.LocalScope.setVariable(IteratorVariable);
@@ -270,8 +271,12 @@ namespace DataDictionary.Interpreter.Statement
                         {
                             newListValue.Val[i] = value;
                             Rules.Change change = new Rules.Change(variable, variable.Value, newListValue);
-                            changes.Add(change, apply, log);
-                            explanation.SubExplanations.Add(new ExplanationPart(Root, change));
+                            changes.Add(change, apply, runner);
+
+                            if (explanation != null)
+                            {
+                                explanation.SubExplanations.Add(new ExplanationPart(Root, change));
+                            }
                         }
                         else
                         {

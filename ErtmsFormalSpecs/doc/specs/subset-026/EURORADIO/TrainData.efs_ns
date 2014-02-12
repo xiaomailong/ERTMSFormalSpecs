@@ -9,10 +9,10 @@
 </NameSpaces>
 <Enumerations>
 <Enum
- Default="TrainEnd.MaxSafeFrontEnd"
+ Default="TrainEndEnum.MaxSafeFrontEnd"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="TrainEnd"
+ Name="TrainEndEnum"
  Guid="1c419445-1887-48ef-87ed-f441cc99f884"
 >
 <ReqRef
@@ -40,7 +40,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d6527102-1dc7-4b08-9311-d393654f91e9"
 >
-</ReqRef><Values>
+</ReqRef><Comment>The possible values of train end.</Comment>
+<Values>
 <EnumValue
  Value="1"
  Name="MaxSafeFrontEnd"
@@ -75,7 +76,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="936ffb90-c1ad-4973-9594-9acbefa002bb"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Fills the train data structure that will be sent to the RBC.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="482bd376-472b-4618-8b45-bbab3b9de39d"
@@ -105,6 +107,7 @@
  Name="FillAirtightSystem"
  Guid="2161c7a0-aaca-45bd-a02b-67f3b829d0c7"
 >
+<Comment>Fills the airtight system information in format that will be sent to the RBC.</Comment>
 <Cases>
 <Case
  Name="Train is fitted with an airtight system"
@@ -128,6 +131,7 @@
  Name="FillLaudingGauge"
  Guid="2d650e8d-cf30-4061-bcbe-3973f6ccabe3"
 >
+<Comment>Fills the lauding gauge information in format that will be sent to the RBC.</Comment>
 <Cases>
 </Cases>
 </Function><Function
@@ -137,6 +141,7 @@
  Name="CreateTractionSystem"
  Guid="540e4d1a-f5ac-4990-9775-d2dfa8c83f4c"
 >
+<Comment>Creates the traction system structure that will be sent to the RBC.</Comment>
 <Parameters>
 <Parameter
  Type="Kernel.TrainData.TractionSystem"
@@ -167,7 +172,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="075733f9-43cd-4d7c-b13c-0f3e918ecc59"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Fills the other international train categories information in format that will be sent to the RBC.</Comment>
+<Cases>
 <Case
  Name="Freight in P, freight in G, passanger"
  Guid="7541b57c-4ec7-4c23-b4cd-581853a4c25d"

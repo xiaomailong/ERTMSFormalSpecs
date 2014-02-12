@@ -17,7 +17,7 @@
 
 namespace DataDictionary.Tests
 {
-    public class SubStep : Generated.SubStep, TextualExplain
+    public class SubStep : Generated.SubStep, TextualExplain, ICommentable
     {
         /// <summary>
         /// This step changes
@@ -198,5 +198,15 @@ namespace DataDictionary.Tests
 
             return retVal;
         }
+
+        /// <summary>
+        /// The comment related to this element
+        /// </summary>
+        public string Comment
+        {
+            get { return getComment(); }
+            set { setComment(value); }
+        }
+
     }
 }

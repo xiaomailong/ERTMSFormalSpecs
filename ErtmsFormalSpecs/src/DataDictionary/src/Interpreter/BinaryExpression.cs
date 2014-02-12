@@ -1049,25 +1049,30 @@ namespace DataDictionary.Interpreter
             if (Operation == OPERATOR.EQUAL)
             {
                 Types.Type leftType = Left.GetExpressionType();
-                Types.Type rightType = Right.GetExpressionType();
-
-                if (leftType is Types.StateMachine && rightType is Types.StateMachine)
+                if (leftType != null)
                 {
-                    AddWarning("IN operator should be used instead of == between " + Left.ToString() + " and " + Right.ToString());
-                }
-
-                if (Right.Ref == EFSSystem.EmptyValue)
-                {
-                    if (leftType is Types.Collection)
+                    Types.Type rightType = Right.GetExpressionType();
+                    if (rightType != null)
                     {
-                        AddError("Cannot collections with " + Right.Ref.Name + ". Use [] instead");
-                    }
-                }
+                        if (leftType is Types.StateMachine && rightType is Types.StateMachine)
+                        {
+                            AddWarning("IN operator should be used instead of == between " + Left.ToString() + " and " + Right.ToString());
+                        }
 
-                if (!leftType.ValidBinaryOperation(Operation, rightType)
-                    && !rightType.ValidBinaryOperation(Operation, leftType))
-                {
-                    AddError("Cannot perform " + Operation + " operation between " + Left + "(" + leftType.Name + ") and " + Right + "(" + rightType.Name + ")");
+                        if (Right.Ref == EFSSystem.EmptyValue)
+                        {
+                            if (leftType is Types.Collection)
+                            {
+                                AddError("Cannot collections with " + Right.Ref.Name + ". Use [] instead");
+                            }
+                        }
+
+                        if (!leftType.ValidBinaryOperation(Operation, rightType)
+                            && !rightType.ValidBinaryOperation(Operation, leftType))
+                        {
+                            AddError("Cannot perform " + Operation + " operation between " + Left + "(" + leftType.Name + ") and " + Right + "(" + rightType.Name + ")");
+                        }
+                    }
                 }
             }
 

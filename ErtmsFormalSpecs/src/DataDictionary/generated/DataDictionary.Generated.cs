@@ -3392,6 +3392,7 @@ public partial class NameSpace
 {
 public  override  bool find(Object search){
 if (search is String ) {
+if(getComment().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -5226,6 +5227,17 @@ public  void setHidden(bool v) {
 }
 
 
+private   string  aComment;
+
+public   string  getComment() { return aComment;}
+
+public  void setComment( string  v) {
+  aComment = v;
+  __setDirty(true);
+  NotifyControllers(null);
+}
+
+
 public NameSpace()
 {
 NameSpace obj = this;
@@ -5245,6 +5257,7 @@ aHeight=(0);
 aX=(0);
 aY=(0);
 aHidden=(false);
+aComment=(null);
 }
 
 public void copyTo(NameSpace other)
@@ -5266,6 +5279,7 @@ other.aHeight = aHeight;
 other.aX = aX;
 other.aY = aY;
 other.aHidden = aHidden;
+other.aComment = aComment;
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -5281,32 +5295,33 @@ char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
 bool fl254;
-NameSpace fl256;
-NameSpaceRef fl268;
-bool fl279;
-Range fl281;
-bool fl292;
-Enum fl294;
-bool fl305;
-Structure fl307;
-bool fl318;
-Collection fl320;
-bool fl331;
-StateMachine fl333;
-bool fl344;
-Function fl346;
-bool fl357;
-Procedure fl359;
-bool fl370;
-Variable fl372;
-bool fl383;
-Rule fl385;
+bool fl255;
+NameSpace fl257;
+NameSpaceRef fl269;
+bool fl280;
+Range fl282;
+bool fl293;
+Enum fl295;
+bool fl306;
+Structure fl308;
+bool fl319;
+Collection fl321;
+bool fl332;
+StateMachine fl334;
+bool fl345;
+Function fl347;
+bool fl358;
+Procedure fl360;
+bool fl371;
+Variable fl373;
+bool fl384;
+Rule fl386;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
 ctxt.skipWhiteSpace();
 // Optional Enclosed
-if (ctxt.lookAheadOpeningTag("<NameSpaces")){
+if (ctxt.lookAheadOpeningTag("<Comment")){
 ctxt.skipWhiteSpace();
 fl254 = true ; 
 while (fl254) { // BeginLoop 
@@ -5323,6 +5338,34 @@ ctxt.skipWhiteSpace();
 fl254 = false ; 
 } // If
 } // While
+ctxt.accept('>');
+// Indicator
+// Parse PC data
+this.setComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
+// Regexp
+ctxt.skipWhiteSpace();
+ctxt.acceptString ("</Comment>");
+} // If
+// End enclosed
+ctxt.skipWhiteSpace();
+// Optional Enclosed
+if (ctxt.lookAheadOpeningTag("<NameSpaces")){
+ctxt.skipWhiteSpace();
+fl255 = true ; 
+while (fl255) { // BeginLoop 
+ctxt.skipWhiteSpace();
+if (ctxt.isAlNum()){
+ctxt.skipTill ('=');
+ctxt.advance();
+ctxt.skipWhiteSpace();
+quoteChar = ctxt.acceptQuote();
+ctxt.skipTill (quoteChar);
+ctxt.accept(quoteChar);
+ctxt.skipWhiteSpace();
+} else {
+fl255 = false ; 
+} // If
+} // While
 if (ctxt.current() == '/'){
 ctxt.advance();
 ctxt.accept('>');
@@ -5330,19 +5373,19 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl256 = null;
+fl257 = null;
 while(ctxt.lookAheadOpeningTag ("<NameSpace")) {
-fl256 = acceptor.lAccept_NameSpace(ctxt, "</NameSpace>");
-appendNameSpaces(fl256);
+fl257 = acceptor.lAccept_NameSpace(ctxt, "</NameSpace>");
+appendNameSpaces(fl257);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
 // Repeat
 ctxt.skipWhiteSpace();
-fl268 = null;
+fl269 = null;
 while(ctxt.lookAheadOpeningTag ("<NameSpaceRef")) {
-fl268 = acceptor.lAccept_NameSpaceRef(ctxt, "</NameSpaceRef>");
-appendNameSpaceRefs(fl268);
+fl269 = acceptor.lAccept_NameSpaceRef(ctxt, "</NameSpaceRef>");
+appendNameSpaceRefs(fl269);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -5355,8 +5398,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Ranges")){
 ctxt.skipWhiteSpace();
-fl279 = true ; 
-while (fl279) { // BeginLoop 
+fl280 = true ; 
+while (fl280) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -5367,7 +5410,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl279 = false ; 
+fl280 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -5377,10 +5420,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl281 = null;
+fl282 = null;
 while(ctxt.lookAheadOpeningTag ("<Range")) {
-fl281 = acceptor.lAccept_Range(ctxt, "</Range>");
-appendRanges(fl281);
+fl282 = acceptor.lAccept_Range(ctxt, "</Range>");
+appendRanges(fl282);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -5393,8 +5436,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Enumerations")){
 ctxt.skipWhiteSpace();
-fl292 = true ; 
-while (fl292) { // BeginLoop 
+fl293 = true ; 
+while (fl293) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -5405,7 +5448,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl292 = false ; 
+fl293 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -5415,10 +5458,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl294 = null;
+fl295 = null;
 while(ctxt.lookAheadOpeningTag ("<Enum")) {
-fl294 = acceptor.lAccept_Enum(ctxt, "</Enum>");
-appendEnumerations(fl294);
+fl295 = acceptor.lAccept_Enum(ctxt, "</Enum>");
+appendEnumerations(fl295);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -5431,8 +5474,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Structures")){
 ctxt.skipWhiteSpace();
-fl305 = true ; 
-while (fl305) { // BeginLoop 
+fl306 = true ; 
+while (fl306) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -5443,7 +5486,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl305 = false ; 
+fl306 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -5453,10 +5496,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl307 = null;
+fl308 = null;
 while(ctxt.lookAheadOpeningTag ("<Structure")) {
-fl307 = acceptor.lAccept_Structure(ctxt, "</Structure>");
-appendStructures(fl307);
+fl308 = acceptor.lAccept_Structure(ctxt, "</Structure>");
+appendStructures(fl308);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -5469,8 +5512,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Collections")){
 ctxt.skipWhiteSpace();
-fl318 = true ; 
-while (fl318) { // BeginLoop 
+fl319 = true ; 
+while (fl319) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -5481,7 +5524,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl318 = false ; 
+fl319 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -5491,10 +5534,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl320 = null;
+fl321 = null;
 while(ctxt.lookAheadOpeningTag ("<Collection")) {
-fl320 = acceptor.lAccept_Collection(ctxt, "</Collection>");
-appendCollections(fl320);
+fl321 = acceptor.lAccept_Collection(ctxt, "</Collection>");
+appendCollections(fl321);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -5507,8 +5550,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<StateMachines")){
 ctxt.skipWhiteSpace();
-fl331 = true ; 
-while (fl331) { // BeginLoop 
+fl332 = true ; 
+while (fl332) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -5519,7 +5562,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl331 = false ; 
+fl332 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -5529,10 +5572,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl333 = null;
+fl334 = null;
 while(ctxt.lookAheadOpeningTag ("<StateMachine")) {
-fl333 = acceptor.lAccept_StateMachine(ctxt, "</StateMachine>");
-appendStateMachines(fl333);
+fl334 = acceptor.lAccept_StateMachine(ctxt, "</StateMachine>");
+appendStateMachines(fl334);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -5545,8 +5588,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Functions")){
 ctxt.skipWhiteSpace();
-fl344 = true ; 
-while (fl344) { // BeginLoop 
+fl345 = true ; 
+while (fl345) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -5557,7 +5600,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl344 = false ; 
+fl345 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -5567,10 +5610,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl346 = null;
+fl347 = null;
 while(ctxt.lookAheadOpeningTag ("<Function")) {
-fl346 = acceptor.lAccept_Function(ctxt, "</Function>");
-appendFunctions(fl346);
+fl347 = acceptor.lAccept_Function(ctxt, "</Function>");
+appendFunctions(fl347);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -5583,8 +5626,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Procedures")){
 ctxt.skipWhiteSpace();
-fl357 = true ; 
-while (fl357) { // BeginLoop 
+fl358 = true ; 
+while (fl358) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -5595,7 +5638,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl357 = false ; 
+fl358 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -5605,10 +5648,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl359 = null;
+fl360 = null;
 while(ctxt.lookAheadOpeningTag ("<Procedure")) {
-fl359 = acceptor.lAccept_Procedure(ctxt, "</Procedure>");
-appendProcedures(fl359);
+fl360 = acceptor.lAccept_Procedure(ctxt, "</Procedure>");
+appendProcedures(fl360);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -5621,8 +5664,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Variables")){
 ctxt.skipWhiteSpace();
-fl370 = true ; 
-while (fl370) { // BeginLoop 
+fl371 = true ; 
+while (fl371) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -5633,7 +5676,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl370 = false ; 
+fl371 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -5643,10 +5686,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl372 = null;
+fl373 = null;
 while(ctxt.lookAheadOpeningTag ("<Variable")) {
-fl372 = acceptor.lAccept_Variable(ctxt, "</Variable>");
-appendVariables(fl372);
+fl373 = acceptor.lAccept_Variable(ctxt, "</Variable>");
+appendVariables(fl373);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -5659,8 +5702,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Rules")){
 ctxt.skipWhiteSpace();
-fl383 = true ; 
-while (fl383) { // BeginLoop 
+fl384 = true ; 
+while (fl384) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -5671,7 +5714,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl383 = false ; 
+fl384 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -5681,10 +5724,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl385 = null;
+fl386 = null;
 while(ctxt.lookAheadOpeningTag ("<Rule")) {
-fl385 = acceptor.lAccept_Rule(ctxt, "</Rule>");
-appendRules(fl385);
+fl386 = acceptor.lAccept_Rule(ctxt, "</Rule>");
+appendRules(fl386);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -5708,7 +5751,6 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl396;
 bool fl397;
 bool fl398;
 bool fl399;
@@ -5716,28 +5758,29 @@ bool fl400;
 bool fl401;
 bool fl402;
 bool fl403;
+bool fl404;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl396 = false ; 
 fl397 = false ; 
 fl398 = false ; 
 fl399 = false ; 
 fl400 = false ; 
 fl401 = false ; 
 fl402 = false ; 
-fl403 = true ; 
-while (fl403) { // BeginLoop 
+fl403 = false ; 
+fl404 = true ; 
+while (fl404) { // BeginLoop 
 switch (ctxt.current()) {
 case 'Y':
 {
 ctxt.advance();
 if (ctxt.lookAhead1('=')){
-indicator = 397;
+indicator = 398;
 } else {
-indicator = 404;
+indicator = 405;
 } // If
 break;
 } // Case
@@ -5745,9 +5788,9 @@ case 'X':
 {
 ctxt.advance();
 if (ctxt.lookAhead1('=')){
-indicator = 396;
+indicator = 397;
 } else {
-indicator = 404;
+indicator = 405;
 } // If
 break;
 } // Case
@@ -5755,9 +5798,9 @@ case 'W':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("idth=")){
-indicator = 398;
+indicator = 399;
 } else {
-indicator = 404;
+indicator = 405;
 } // If
 break;
 } // Case
@@ -5765,9 +5808,9 @@ case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 401;
+indicator = 402;
 } else {
-indicator = 404;
+indicator = 405;
 } // If
 break;
 } // Case
@@ -5779,9 +5822,9 @@ case 'i':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("dden=")){
-indicator = 400;
+indicator = 401;
 } else {
-indicator = 404;
+indicator = 405;
 } // If
 break;
 } // Case
@@ -5789,14 +5832,14 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ight=")){
-indicator = 399;
+indicator = 400;
 } else {
-indicator = 404;
+indicator = 405;
 } // If
 break;
 } // Case
 default:
-indicator = 404;
+indicator = 405;
 break;
 } // Switch
 break;
@@ -5805,102 +5848,102 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 402;
+indicator = 403;
 } else {
-indicator = 404;
+indicator = 405;
 } // If
 break;
 } // Case
 default:
-indicator = 404;
+indicator = 405;
 break;
 } // Switch
 switch (indicator) {
-case 396: {
+case 397: {
 // Handling attribute X
 // Also handles alien attributes with prefix X
-if (fl396){
+if (fl397){
 ctxt.fail ("Duplicate attribute: X");
 } // If
-fl396 = true ; 
+fl397 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setX(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 397: {
+case 398: {
 // Handling attribute Y
 // Also handles alien attributes with prefix Y
-if (fl397){
+if (fl398){
 ctxt.fail ("Duplicate attribute: Y");
 } // If
-fl397 = true ; 
+fl398 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setY(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 398: {
+case 399: {
 // Handling attribute Width
 // Also handles alien attributes with prefix Width
-if (fl398){
+if (fl399){
 ctxt.fail ("Duplicate attribute: Width");
 } // If
-fl398 = true ; 
+fl399 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setWidth(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 399: {
+case 400: {
 // Handling attribute Height
 // Also handles alien attributes with prefix Height
-if (fl399){
+if (fl400){
 ctxt.fail ("Duplicate attribute: Height");
 } // If
-fl399 = true ; 
+fl400 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setHeight(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 400: {
+case 401: {
 // Handling attribute Hidden
 // Also handles alien attributes with prefix Hidden
-if (fl400){
+if (fl401){
 ctxt.fail ("Duplicate attribute: Hidden");
 } // If
-fl400 = true ; 
+fl401 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setHidden(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 401: {
+case 402: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl401){
+if (fl402){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl401 = true ; 
+fl402 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 402: {
+case 403: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl402){
+if (fl403){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl402 = true ; 
+fl403 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -5908,7 +5951,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 404: {
+case 405: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -5919,22 +5962,22 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl396){
+if (!fl397){
 this.setX(0);
 } // If
-if (!fl397){
+if (!fl398){
 this.setY(0);
 } // If
-if (!fl398){
+if (!fl399){
 this.setWidth(0);
 } // If
-if (!fl399){
+if (!fl400){
 this.setHeight(0);
 } // If
-if (!fl400){
+if (!fl401){
 this.setHidden( false);
 } // If
-fl403 = false ; 
+fl404 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -6034,6 +6077,17 @@ int i;
 #pragma warning restore 0168, 0219
 
 base.unParseBody(pw);
+// Unparsing Enclosed
+// Testing for empty content: Comment
+if (this.getComment() != null){
+pw.Write("<Comment>");
+// Unparsing PcData
+acceptor.unParsePcData(pw, this.getComment());
+pw.Write("</Comment>");
+// Father is not a mixed
+pw.Write('\n');
+} // If
+// After Testing for empty content: Comment
 // Unparsing Enclosed
 pw.Write("<NameSpaces>");
 pw.Write('\n');
@@ -6293,7 +6347,7 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl414;
+bool fl415;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -6301,8 +6355,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Comment")){
 ctxt.skipWhiteSpace();
-fl414 = true ; 
-while (fl414) { // BeginLoop 
+fl415 = true ; 
+while (fl415) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -6313,7 +6367,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl414 = false ; 
+fl415 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -6340,28 +6394,28 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl415;
 bool fl416;
 bool fl417;
 bool fl418;
+bool fl419;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl415 = false ; 
 fl416 = false ; 
 fl417 = false ; 
-fl418 = true ; 
-while (fl418) { // BeginLoop 
+fl418 = false ; 
+fl419 = true ; 
+while (fl419) { // BeginLoop 
 switch (ctxt.current()) {
 case 'S':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("pecId=")){
-indicator = 416;
+indicator = 417;
 } else {
-indicator = 419;
+indicator = 420;
 } // If
 break;
 } // Case
@@ -6369,9 +6423,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAhead2('d','=')){
-indicator = 415;
+indicator = 416;
 } else {
-indicator = 419;
+indicator = 420;
 } // If
 break;
 } // Case
@@ -6379,50 +6433,50 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 417;
+indicator = 418;
 } else {
-indicator = 419;
+indicator = 420;
 } // If
 break;
 } // Case
 default:
-indicator = 419;
+indicator = 420;
 break;
 } // Switch
 switch (indicator) {
-case 415: {
+case 416: {
 // Handling attribute Id
 // Also handles alien attributes with prefix Id
-if (fl415){
+if (fl416){
 ctxt.fail ("Duplicate attribute: Id");
 } // If
-fl415 = true ; 
+fl416 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setId((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 416: {
+case 417: {
 // Handling attribute SpecId
 // Also handles alien attributes with prefix SpecId
-if (fl416){
+if (fl417){
 ctxt.fail ("Duplicate attribute: SpecId");
 } // If
-fl416 = true ; 
+fl417 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setSpecId((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 417: {
+case 418: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl417){
+if (fl418){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl417 = true ; 
+fl418 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -6430,7 +6484,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 419: {
+case 420: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -6441,10 +6495,10 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl415){
+if (!fl416){
 ctxt.fail ("Mandatory attribute missing: Id in ReqRef");
 } // If
-fl418 = false ; 
+fl419 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -6616,34 +6670,34 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl424;
 bool fl425;
 bool fl426;
 bool fl427;
 bool fl428;
 bool fl429;
 bool fl430;
+bool fl431;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl424 = false ; 
 fl425 = false ; 
 fl426 = false ; 
 fl427 = false ; 
 fl428 = false ; 
 fl429 = false ; 
-fl430 = true ; 
-while (fl430) { // BeginLoop 
+fl430 = false ; 
+fl431 = true ; 
+while (fl431) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("erified=")){
-indicator = 426;
+indicator = 427;
 } else {
-indicator = 431;
+indicator = 432;
 } // If
 break;
 } // Case
@@ -6655,9 +6709,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 427;
+indicator = 428;
 } else {
-indicator = 431;
+indicator = 432;
 } // If
 break;
 } // Case
@@ -6665,14 +6719,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 428;
+indicator = 429;
 } else {
-indicator = 431;
+indicator = 432;
 } // If
 break;
 } // Case
 default:
-indicator = 431;
+indicator = 432;
 break;
 } // Switch
 break;
@@ -6681,9 +6735,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 425;
+indicator = 426;
 } else {
-indicator = 431;
+indicator = 432;
 } // If
 break;
 } // Case
@@ -6691,9 +6745,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 429;
+indicator = 430;
 } else {
-indicator = 431;
+indicator = 432;
 } // If
 break;
 } // Case
@@ -6701,89 +6755,89 @@ case 'D':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("efault=")){
-indicator = 424;
+indicator = 425;
 } else {
-indicator = 431;
+indicator = 432;
 } // If
 break;
 } // Case
 default:
-indicator = 431;
+indicator = 432;
 break;
 } // Switch
 switch (indicator) {
-case 424: {
+case 425: {
 // Handling attribute Default
 // Also handles alien attributes with prefix Default
-if (fl424){
+if (fl425){
 ctxt.fail ("Duplicate attribute: Default");
 } // If
-fl424 = true ; 
+fl425 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setDefault((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 425: {
+case 426: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl425){
+if (fl426){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl425 = true ; 
+fl426 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 426: {
+case 427: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl426){
+if (fl427){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl426 = true ; 
+fl427 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 427: {
+case 428: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl427){
+if (fl428){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl427 = true ; 
+fl428 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 428: {
+case 429: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl428){
+if (fl429){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl428 = true ; 
+fl429 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 429: {
+case 430: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl429){
+if (fl430){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl429 = true ; 
+fl430 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -6791,7 +6845,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 431: {
+case 432: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -6802,16 +6856,16 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl425){
+if (!fl426){
 this.setImplemented( false);
 } // If
-if (!fl426){
+if (!fl427){
 this.setVerified( false);
 } // If
-if (!fl427){
+if (!fl428){
 this.setNeedsRequirement( true);
 } // If
-fl430 = false ; 
+fl431 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -7286,10 +7340,10 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl440;
-EnumValue fl442;
-bool fl453;
-Enum fl455;
+bool fl441;
+EnumValue fl443;
+bool fl454;
+Enum fl456;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -7297,8 +7351,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Values")){
 ctxt.skipWhiteSpace();
-fl440 = true ; 
-while (fl440) { // BeginLoop 
+fl441 = true ; 
+while (fl441) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -7309,7 +7363,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl440 = false ; 
+fl441 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -7319,10 +7373,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl442 = null;
+fl443 = null;
 while(ctxt.lookAheadOpeningTag ("<EnumValue")) {
-fl442 = acceptor.lAccept_EnumValue(ctxt, "</EnumValue>");
-appendValues(fl442);
+fl443 = acceptor.lAccept_EnumValue(ctxt, "</EnumValue>");
+appendValues(fl443);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -7335,8 +7389,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<SubEnums")){
 ctxt.skipWhiteSpace();
-fl453 = true ; 
-while (fl453) { // BeginLoop 
+fl454 = true ; 
+while (fl454) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -7347,7 +7401,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl453 = false ; 
+fl454 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -7357,10 +7411,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl455 = null;
+fl456 = null;
 while(ctxt.lookAheadOpeningTag ("<Enum")) {
-fl455 = acceptor.lAccept_Enum(ctxt, "</Enum>");
-appendSubEnums(fl455);
+fl456 = acceptor.lAccept_Enum(ctxt, "</Enum>");
+appendSubEnums(fl456);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -7384,34 +7438,34 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl466;
 bool fl467;
 bool fl468;
 bool fl469;
 bool fl470;
 bool fl471;
 bool fl472;
+bool fl473;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl466 = false ; 
 fl467 = false ; 
 fl468 = false ; 
 fl469 = false ; 
 fl470 = false ; 
 fl471 = false ; 
-fl472 = true ; 
-while (fl472) { // BeginLoop 
+fl472 = false ; 
+fl473 = true ; 
+while (fl473) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("erified=")){
-indicator = 468;
+indicator = 469;
 } else {
-indicator = 473;
+indicator = 474;
 } // If
 break;
 } // Case
@@ -7423,9 +7477,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 469;
+indicator = 470;
 } else {
-indicator = 473;
+indicator = 474;
 } // If
 break;
 } // Case
@@ -7433,14 +7487,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 470;
+indicator = 471;
 } else {
-indicator = 473;
+indicator = 474;
 } // If
 break;
 } // Case
 default:
-indicator = 473;
+indicator = 474;
 break;
 } // Switch
 break;
@@ -7449,9 +7503,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 467;
+indicator = 468;
 } else {
-indicator = 473;
+indicator = 474;
 } // If
 break;
 } // Case
@@ -7459,9 +7513,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 471;
+indicator = 472;
 } else {
-indicator = 473;
+indicator = 474;
 } // If
 break;
 } // Case
@@ -7469,89 +7523,89 @@ case 'D':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("efault=")){
-indicator = 466;
+indicator = 467;
 } else {
-indicator = 473;
+indicator = 474;
 } // If
 break;
 } // Case
 default:
-indicator = 473;
+indicator = 474;
 break;
 } // Switch
 switch (indicator) {
-case 466: {
+case 467: {
 // Handling attribute Default
 // Also handles alien attributes with prefix Default
-if (fl466){
+if (fl467){
 ctxt.fail ("Duplicate attribute: Default");
 } // If
-fl466 = true ; 
+fl467 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setDefault((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 467: {
+case 468: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl467){
+if (fl468){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl467 = true ; 
+fl468 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 468: {
+case 469: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl468){
+if (fl469){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl468 = true ; 
+fl469 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 469: {
+case 470: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl469){
+if (fl470){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl469 = true ; 
+fl470 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 470: {
+case 471: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl470){
+if (fl471){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl470 = true ; 
+fl471 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 471: {
+case 472: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl471){
+if (fl472){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl471 = true ; 
+fl472 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -7559,7 +7613,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 473: {
+case 474: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -7570,16 +7624,16 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl467){
+if (!fl468){
 this.setImplemented( false);
 } // If
-if (!fl468){
+if (!fl469){
 this.setVerified( false);
 } // If
-if (!fl469){
+if (!fl470){
 this.setNeedsRequirement( true);
 } // If
-fl472 = false ; 
+fl473 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -7792,28 +7846,28 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl482;
 bool fl483;
 bool fl484;
 bool fl485;
+bool fl486;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl482 = false ; 
 fl483 = false ; 
 fl484 = false ; 
-fl485 = true ; 
-while (fl485) { // BeginLoop 
+fl485 = false ; 
+fl486 = true ; 
+while (fl486) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("alue=")){
-indicator = 482;
+indicator = 483;
 } else {
-indicator = 486;
+indicator = 487;
 } // If
 break;
 } // Case
@@ -7821,9 +7875,9 @@ case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 483;
+indicator = 484;
 } else {
-indicator = 486;
+indicator = 487;
 } // If
 break;
 } // Case
@@ -7831,50 +7885,50 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 484;
+indicator = 485;
 } else {
-indicator = 486;
+indicator = 487;
 } // If
 break;
 } // Case
 default:
-indicator = 486;
+indicator = 487;
 break;
 } // Switch
 switch (indicator) {
-case 482: {
+case 483: {
 // Handling attribute Value
 // Also handles alien attributes with prefix Value
-if (fl482){
+if (fl483){
 ctxt.fail ("Duplicate attribute: Value");
 } // If
-fl482 = true ; 
+fl483 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setValue((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 483: {
+case 484: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl483){
+if (fl484){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl483 = true ; 
+fl484 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 484: {
+case 485: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl484){
+if (fl485){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl484 = true ; 
+fl485 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -7882,7 +7936,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 486: {
+case 487: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -7893,10 +7947,10 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl482){
+if (!fl483){
 this.setValue("0");
 } // If
-fl485 = false ; 
+fl486 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -8248,8 +8302,8 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl491;
-EnumValue fl493;
+bool fl492;
+EnumValue fl494;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -8257,8 +8311,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<SpecialValues")){
 ctxt.skipWhiteSpace();
-fl491 = true ; 
-while (fl491) { // BeginLoop 
+fl492 = true ; 
+while (fl492) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -8269,7 +8323,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl491 = false ; 
+fl492 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -8279,10 +8333,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl493 = null;
+fl494 = null;
 while(ctxt.lookAheadOpeningTag ("<EnumValue")) {
-fl493 = acceptor.lAccept_EnumValue(ctxt, "</EnumValue>");
-appendSpecialValues(fl493);
+fl494 = acceptor.lAccept_EnumValue(ctxt, "</EnumValue>");
+appendSpecialValues(fl494);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -8306,7 +8360,6 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl504;
 bool fl505;
 bool fl506;
 bool fl507;
@@ -8316,12 +8369,12 @@ bool fl510;
 bool fl511;
 bool fl512;
 bool fl513;
+bool fl514;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl504 = false ; 
 fl505 = false ; 
 fl506 = false ; 
 fl507 = false ; 
@@ -8330,16 +8383,17 @@ fl509 = false ;
 fl510 = false ; 
 fl511 = false ; 
 fl512 = false ; 
-fl513 = true ; 
-while (fl513) { // BeginLoop 
+fl513 = false ; 
+fl514 = true ; 
+while (fl514) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("erified=")){
-indicator = 509;
+indicator = 510;
 } else {
-indicator = 514;
+indicator = 515;
 } // If
 break;
 } // Case
@@ -8347,9 +8401,9 @@ case 'P':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("recision=")){
-indicator = 506;
+indicator = 507;
 } else {
-indicator = 514;
+indicator = 515;
 } // If
 break;
 } // Case
@@ -8361,9 +8415,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 510;
+indicator = 511;
 } else {
-indicator = 514;
+indicator = 515;
 } // If
 break;
 } // Case
@@ -8371,14 +8425,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 511;
+indicator = 512;
 } else {
-indicator = 514;
+indicator = 515;
 } // If
 break;
 } // Case
 default:
-indicator = 514;
+indicator = 515;
 break;
 } // Switch
 break;
@@ -8391,9 +8445,9 @@ case 'i':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("nValue=")){
-indicator = 504;
+indicator = 505;
 } else {
-indicator = 514;
+indicator = 515;
 } // If
 break;
 } // Case
@@ -8401,14 +8455,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("xValue=")){
-indicator = 505;
+indicator = 506;
 } else {
-indicator = 514;
+indicator = 515;
 } // If
 break;
 } // Case
 default:
-indicator = 514;
+indicator = 515;
 break;
 } // Switch
 break;
@@ -8417,9 +8471,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 508;
+indicator = 509;
 } else {
-indicator = 514;
+indicator = 515;
 } // If
 break;
 } // Case
@@ -8427,9 +8481,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 512;
+indicator = 513;
 } else {
-indicator = 514;
+indicator = 515;
 } // If
 break;
 } // Case
@@ -8437,128 +8491,128 @@ case 'D':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("efault=")){
-indicator = 507;
+indicator = 508;
 } else {
-indicator = 514;
+indicator = 515;
 } // If
 break;
 } // Case
 default:
-indicator = 514;
+indicator = 515;
 break;
 } // Switch
 switch (indicator) {
-case 504: {
+case 505: {
 // Handling attribute MinValue
 // Also handles alien attributes with prefix MinValue
-if (fl504){
+if (fl505){
 ctxt.fail ("Duplicate attribute: MinValue");
 } // If
-fl504 = true ; 
+fl505 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setMinValue((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 505: {
+case 506: {
 // Handling attribute MaxValue
 // Also handles alien attributes with prefix MaxValue
-if (fl505){
+if (fl506){
 ctxt.fail ("Duplicate attribute: MaxValue");
 } // If
-fl505 = true ; 
+fl506 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setMaxValue((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 506: {
+case 507: {
 // Handling attribute Precision
 // Also handles alien attributes with prefix Precision
-if (fl506){
+if (fl507){
 ctxt.fail ("Duplicate attribute: Precision");
 } // If
-fl506 = true ; 
+fl507 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setPrecision(acceptor.lAcceptEnum_PrecisionEnum(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 507: {
+case 508: {
 // Handling attribute Default
 // Also handles alien attributes with prefix Default
-if (fl507){
+if (fl508){
 ctxt.fail ("Duplicate attribute: Default");
 } // If
-fl507 = true ; 
+fl508 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setDefault((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 508: {
+case 509: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl508){
+if (fl509){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl508 = true ; 
+fl509 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 509: {
+case 510: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl509){
+if (fl510){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl509 = true ; 
+fl510 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 510: {
+case 511: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl510){
+if (fl511){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl510 = true ; 
+fl511 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 511: {
+case 512: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl511){
+if (fl512){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl511 = true ; 
+fl512 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 512: {
+case 513: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl512){
+if (fl513){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl512 = true ; 
+fl513 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -8566,7 +8620,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 514: {
+case 515: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -8577,25 +8631,25 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl504){
+if (!fl505){
 ctxt.fail ("Mandatory attribute missing: MinValue in Range");
 } // If
-if (!fl505){
+if (!fl506){
 ctxt.fail ("Mandatory attribute missing: MaxValue in Range");
 } // If
-if (!fl506){
+if (!fl507){
 this.setPrecision(acceptor.PrecisionEnum.aIntegerPrecision);
 } // If
-if (!fl508){
+if (!fl509){
 this.setImplemented( false);
 } // If
-if (!fl509){
+if (!fl510){
 this.setVerified( false);
 } // If
-if (!fl510){
+if (!fl511){
 this.setNeedsRequirement( true);
 } // If
-fl513 = false ; 
+fl514 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -9427,13 +9481,13 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl527;
-Rule fl529;
-bool fl540;
-Procedure fl542;
-StructureElement fl554;
-bool fl565;
-StateMachine fl567;
+bool fl528;
+Rule fl530;
+bool fl541;
+Procedure fl543;
+StructureElement fl555;
+bool fl566;
+StateMachine fl568;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -9441,8 +9495,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Rules")){
 ctxt.skipWhiteSpace();
-fl527 = true ; 
-while (fl527) { // BeginLoop 
+fl528 = true ; 
+while (fl528) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -9453,7 +9507,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl527 = false ; 
+fl528 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -9463,10 +9517,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl529 = null;
+fl530 = null;
 while(ctxt.lookAheadOpeningTag ("<Rule")) {
-fl529 = acceptor.lAccept_Rule(ctxt, "</Rule>");
-appendRules(fl529);
+fl530 = acceptor.lAccept_Rule(ctxt, "</Rule>");
+appendRules(fl530);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -9479,8 +9533,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Procedures")){
 ctxt.skipWhiteSpace();
-fl540 = true ; 
-while (fl540) { // BeginLoop 
+fl541 = true ; 
+while (fl541) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -9491,7 +9545,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl540 = false ; 
+fl541 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -9501,10 +9555,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl542 = null;
+fl543 = null;
 while(ctxt.lookAheadOpeningTag ("<Procedure")) {
-fl542 = acceptor.lAccept_Procedure(ctxt, "</Procedure>");
-appendProcedures(fl542);
+fl543 = acceptor.lAccept_Procedure(ctxt, "</Procedure>");
+appendProcedures(fl543);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -9515,10 +9569,10 @@ ctxt.acceptString ("</Procedures>");
 // End enclosed
 // Repeat
 ctxt.skipWhiteSpace();
-fl554 = null;
+fl555 = null;
 while(ctxt.lookAheadOpeningTag ("<StructureElement")) {
-fl554 = acceptor.lAccept_StructureElement(ctxt, "</StructureElement>");
-appendElements(fl554);
+fl555 = acceptor.lAccept_StructureElement(ctxt, "</StructureElement>");
+appendElements(fl555);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -9526,8 +9580,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<StateMachines")){
 ctxt.skipWhiteSpace();
-fl565 = true ; 
-while (fl565) { // BeginLoop 
+fl566 = true ; 
+while (fl566) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -9538,7 +9592,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl565 = false ; 
+fl566 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -9548,10 +9602,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl567 = null;
+fl568 = null;
 while(ctxt.lookAheadOpeningTag ("<StateMachine")) {
-fl567 = acceptor.lAccept_StateMachine(ctxt, "</StateMachine>");
-appendStateMachines(fl567);
+fl568 = acceptor.lAccept_StateMachine(ctxt, "</StateMachine>");
+appendStateMachines(fl568);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -9575,34 +9629,34 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl578;
 bool fl579;
 bool fl580;
 bool fl581;
 bool fl582;
 bool fl583;
 bool fl584;
+bool fl585;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl578 = false ; 
 fl579 = false ; 
 fl580 = false ; 
 fl581 = false ; 
 fl582 = false ; 
 fl583 = false ; 
-fl584 = true ; 
-while (fl584) { // BeginLoop 
+fl584 = false ; 
+fl585 = true ; 
+while (fl585) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("erified=")){
-indicator = 580;
+indicator = 581;
 } else {
-indicator = 585;
+indicator = 586;
 } // If
 break;
 } // Case
@@ -9614,9 +9668,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 581;
+indicator = 582;
 } else {
-indicator = 585;
+indicator = 586;
 } // If
 break;
 } // Case
@@ -9624,14 +9678,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 582;
+indicator = 583;
 } else {
-indicator = 585;
+indicator = 586;
 } // If
 break;
 } // Case
 default:
-indicator = 585;
+indicator = 586;
 break;
 } // Switch
 break;
@@ -9640,9 +9694,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 579;
+indicator = 580;
 } else {
-indicator = 585;
+indicator = 586;
 } // If
 break;
 } // Case
@@ -9650,9 +9704,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 583;
+indicator = 584;
 } else {
-indicator = 585;
+indicator = 586;
 } // If
 break;
 } // Case
@@ -9660,89 +9714,89 @@ case 'D':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("efault=")){
-indicator = 578;
+indicator = 579;
 } else {
-indicator = 585;
+indicator = 586;
 } // If
 break;
 } // Case
 default:
-indicator = 585;
+indicator = 586;
 break;
 } // Switch
 switch (indicator) {
-case 578: {
+case 579: {
 // Handling attribute Default
 // Also handles alien attributes with prefix Default
-if (fl578){
+if (fl579){
 ctxt.fail ("Duplicate attribute: Default");
 } // If
-fl578 = true ; 
+fl579 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setDefault((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 579: {
+case 580: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl579){
+if (fl580){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl579 = true ; 
+fl580 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 580: {
+case 581: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl580){
+if (fl581){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl580 = true ; 
+fl581 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 581: {
+case 582: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl581){
+if (fl582){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl581 = true ; 
+fl582 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 582: {
+case 583: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl582){
+if (fl583){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl582 = true ; 
+fl583 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 583: {
+case 584: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl583){
+if (fl584){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl583 = true ; 
+fl584 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -9750,7 +9804,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 585: {
+case 586: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -9761,16 +9815,16 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl579){
+if (!fl580){
 this.setImplemented( false);
 } // If
-if (!fl580){
+if (!fl581){
 this.setVerified( false);
 } // If
-if (!fl581){
+if (!fl582){
 this.setNeedsRequirement( true);
 } // If
-fl584 = false ; 
+fl585 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -10049,7 +10103,6 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl594;
 bool fl595;
 bool fl596;
 bool fl597;
@@ -10058,12 +10111,12 @@ bool fl599;
 bool fl600;
 bool fl601;
 bool fl602;
+bool fl603;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl594 = false ; 
 fl595 = false ; 
 fl596 = false ; 
 fl597 = false ; 
@@ -10071,16 +10124,17 @@ fl598 = false ;
 fl599 = false ; 
 fl600 = false ; 
 fl601 = false ; 
-fl602 = true ; 
-while (fl602) { // BeginLoop 
+fl602 = false ; 
+fl603 = true ; 
+while (fl603) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("erified=")){
-indicator = 598;
+indicator = 599;
 } else {
-indicator = 603;
+indicator = 604;
 } // If
 break;
 } // Case
@@ -10088,9 +10142,9 @@ case 'T':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ypeName=")){
-indicator = 594;
+indicator = 595;
 } else {
-indicator = 603;
+indicator = 604;
 } // If
 break;
 } // Case
@@ -10102,9 +10156,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 599;
+indicator = 600;
 } else {
-indicator = 603;
+indicator = 604;
 } // If
 break;
 } // Case
@@ -10112,14 +10166,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 600;
+indicator = 601;
 } else {
-indicator = 603;
+indicator = 604;
 } // If
 break;
 } // Case
 default:
-indicator = 603;
+indicator = 604;
 break;
 } // Switch
 break;
@@ -10128,9 +10182,9 @@ case 'M':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ode=")){
-indicator = 596;
+indicator = 597;
 } else {
-indicator = 603;
+indicator = 604;
 } // If
 break;
 } // Case
@@ -10138,9 +10192,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 597;
+indicator = 598;
 } else {
-indicator = 603;
+indicator = 604;
 } // If
 break;
 } // Case
@@ -10148,9 +10202,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 601;
+indicator = 602;
 } else {
-indicator = 603;
+indicator = 604;
 } // If
 break;
 } // Case
@@ -10158,115 +10212,115 @@ case 'D':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("efault=")){
-indicator = 595;
+indicator = 596;
 } else {
-indicator = 603;
+indicator = 604;
 } // If
 break;
 } // Case
 default:
-indicator = 603;
+indicator = 604;
 break;
 } // Switch
 switch (indicator) {
-case 594: {
+case 595: {
 // Handling attribute TypeName
 // Also handles alien attributes with prefix TypeName
-if (fl594){
+if (fl595){
 ctxt.fail ("Duplicate attribute: TypeName");
 } // If
-fl594 = true ; 
+fl595 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setTypeName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 595: {
+case 596: {
 // Handling attribute Default
 // Also handles alien attributes with prefix Default
-if (fl595){
+if (fl596){
 ctxt.fail ("Duplicate attribute: Default");
 } // If
-fl595 = true ; 
+fl596 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setDefault((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 596: {
+case 597: {
 // Handling attribute Mode
 // Also handles alien attributes with prefix Mode
-if (fl596){
+if (fl597){
 ctxt.fail ("Duplicate attribute: Mode");
 } // If
-fl596 = true ; 
+fl597 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setMode(acceptor.lAcceptEnum_VariableModeEnumType(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 597: {
+case 598: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl597){
+if (fl598){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl597 = true ; 
+fl598 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 598: {
+case 599: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl598){
+if (fl599){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl598 = true ; 
+fl599 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 599: {
+case 600: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl599){
+if (fl600){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl599 = true ; 
+fl600 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 600: {
+case 601: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl600){
+if (fl601){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl600 = true ; 
+fl601 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 601: {
+case 602: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl601){
+if (fl602){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl601 = true ; 
+fl602 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -10274,7 +10328,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 603: {
+case 604: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -10285,25 +10339,25 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl594){
+if (!fl595){
 ctxt.fail ("Mandatory attribute missing: TypeName in StructureElement");
 } // If
-if (!fl595){
+if (!fl596){
 this.setDefault("");
 } // If
-if (!fl596){
+if (!fl597){
 this.setMode(acceptor.VariableModeEnumType.aInternal);
 } // If
-if (!fl597){
+if (!fl598){
 this.setImplemented( false);
 } // If
-if (!fl598){
+if (!fl599){
 this.setVerified( false);
 } // If
-if (!fl599){
+if (!fl600){
 this.setNeedsRequirement( true);
 } // If
-fl602 = false ; 
+fl603 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -10508,7 +10562,6 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl614;
 bool fl615;
 bool fl616;
 bool fl617;
@@ -10517,12 +10570,12 @@ bool fl619;
 bool fl620;
 bool fl621;
 bool fl622;
+bool fl623;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl614 = false ; 
 fl615 = false ; 
 fl616 = false ; 
 fl617 = false ; 
@@ -10530,16 +10583,17 @@ fl618 = false ;
 fl619 = false ; 
 fl620 = false ; 
 fl621 = false ; 
-fl622 = true ; 
-while (fl622) { // BeginLoop 
+fl622 = false ; 
+fl623 = true ; 
+while (fl623) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("erified=")){
-indicator = 618;
+indicator = 619;
 } else {
-indicator = 623;
+indicator = 624;
 } // If
 break;
 } // Case
@@ -10547,9 +10601,9 @@ case 'T':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ypeName=")){
-indicator = 614;
+indicator = 615;
 } else {
-indicator = 623;
+indicator = 624;
 } // If
 break;
 } // Case
@@ -10561,9 +10615,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 619;
+indicator = 620;
 } else {
-indicator = 623;
+indicator = 624;
 } // If
 break;
 } // Case
@@ -10571,14 +10625,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 620;
+indicator = 621;
 } else {
-indicator = 623;
+indicator = 624;
 } // If
 break;
 } // Case
 default:
-indicator = 623;
+indicator = 624;
 break;
 } // Switch
 break;
@@ -10587,9 +10641,9 @@ case 'M':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("axSize=")){
-indicator = 615;
+indicator = 616;
 } else {
-indicator = 623;
+indicator = 624;
 } // If
 break;
 } // Case
@@ -10597,9 +10651,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 617;
+indicator = 618;
 } else {
-indicator = 623;
+indicator = 624;
 } // If
 break;
 } // Case
@@ -10607,9 +10661,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 621;
+indicator = 622;
 } else {
-indicator = 623;
+indicator = 624;
 } // If
 break;
 } // Case
@@ -10617,115 +10671,115 @@ case 'D':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("efault=")){
-indicator = 616;
+indicator = 617;
 } else {
-indicator = 623;
+indicator = 624;
 } // If
 break;
 } // Case
 default:
-indicator = 623;
+indicator = 624;
 break;
 } // Switch
 switch (indicator) {
-case 614: {
+case 615: {
 // Handling attribute TypeName
 // Also handles alien attributes with prefix TypeName
-if (fl614){
+if (fl615){
 ctxt.fail ("Duplicate attribute: TypeName");
 } // If
-fl614 = true ; 
+fl615 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setTypeName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 615: {
+case 616: {
 // Handling attribute MaxSize
 // Also handles alien attributes with prefix MaxSize
-if (fl615){
+if (fl616){
 ctxt.fail ("Duplicate attribute: MaxSize");
 } // If
-fl615 = true ; 
+fl616 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setMaxSize(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 616: {
+case 617: {
 // Handling attribute Default
 // Also handles alien attributes with prefix Default
-if (fl616){
+if (fl617){
 ctxt.fail ("Duplicate attribute: Default");
 } // If
-fl616 = true ; 
+fl617 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setDefault((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 617: {
+case 618: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl617){
+if (fl618){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl617 = true ; 
+fl618 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 618: {
+case 619: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl618){
+if (fl619){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl618 = true ; 
+fl619 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 619: {
+case 620: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl619){
+if (fl620){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl619 = true ; 
+fl620 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 620: {
+case 621: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl620){
+if (fl621){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl620 = true ; 
+fl621 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 621: {
+case 622: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl621){
+if (fl622){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl621 = true ; 
+fl622 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -10733,7 +10787,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 623: {
+case 624: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -10744,22 +10798,22 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl614){
+if (!fl615){
 ctxt.fail ("Mandatory attribute missing: TypeName in Collection");
 } // If
-if (!fl615){
+if (!fl616){
 this.setMaxSize(10);
 } // If
-if (!fl617){
+if (!fl618){
 this.setImplemented( false);
 } // If
-if (!fl618){
+if (!fl619){
 this.setVerified( false);
 } // If
-if (!fl619){
+if (!fl620){
 this.setNeedsRequirement( true);
 } // If
-fl622 = false ; 
+fl623 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -11271,10 +11325,10 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl634;
-Parameter fl636;
-bool fl647;
-Case fl649;
+bool fl635;
+Parameter fl637;
+bool fl648;
+Case fl650;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -11282,8 +11336,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Parameters")){
 ctxt.skipWhiteSpace();
-fl634 = true ; 
-while (fl634) { // BeginLoop 
+fl635 = true ; 
+while (fl635) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -11294,7 +11348,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl634 = false ; 
+fl635 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -11304,10 +11358,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl636 = null;
+fl637 = null;
 while(ctxt.lookAheadOpeningTag ("<Parameter")) {
-fl636 = acceptor.lAccept_Parameter(ctxt, "</Parameter>");
-appendParameters(fl636);
+fl637 = acceptor.lAccept_Parameter(ctxt, "</Parameter>");
+appendParameters(fl637);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -11323,8 +11377,8 @@ if (ctxt.isAlNum()){
 ctxt.fail ("White space expected after TAG");
 } // If
 ctxt.skipWhiteSpace();
-fl647 = true ; 
-while (fl647) { // BeginLoop 
+fl648 = true ; 
+while (fl648) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -11335,7 +11389,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl647 = false ; 
+fl648 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -11345,10 +11399,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl649 = null;
+fl650 = null;
 while(ctxt.lookAheadOpeningTag ("<Case")) {
-fl649 = acceptor.lAccept_Case(ctxt, "</Case>");
-appendCases(fl649);
+fl650 = acceptor.lAccept_Case(ctxt, "</Case>");
+appendCases(fl650);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -11371,7 +11425,6 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl660;
 bool fl661;
 bool fl662;
 bool fl663;
@@ -11380,12 +11433,12 @@ bool fl665;
 bool fl666;
 bool fl667;
 bool fl668;
+bool fl669;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl660 = false ; 
 fl661 = false ; 
 fl662 = false ; 
 fl663 = false ; 
@@ -11393,16 +11446,17 @@ fl664 = false ;
 fl665 = false ; 
 fl666 = false ; 
 fl667 = false ; 
-fl668 = true ; 
-while (fl668) { // BeginLoop 
+fl668 = false ; 
+fl669 = true ; 
+while (fl669) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("erified=")){
-indicator = 664;
+indicator = 665;
 } else {
-indicator = 669;
+indicator = 670;
 } // If
 break;
 } // Case
@@ -11410,9 +11464,9 @@ case 'T':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ype=")){
-indicator = 660;
+indicator = 661;
 } else {
-indicator = 669;
+indicator = 670;
 } // If
 break;
 } // Case
@@ -11424,9 +11478,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 665;
+indicator = 666;
 } else {
-indicator = 669;
+indicator = 670;
 } // If
 break;
 } // Case
@@ -11434,14 +11488,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 666;
+indicator = 667;
 } else {
-indicator = 669;
+indicator = 670;
 } // If
 break;
 } // Case
 default:
-indicator = 669;
+indicator = 670;
 break;
 } // Switch
 break;
@@ -11450,9 +11504,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 663;
+indicator = 664;
 } else {
-indicator = 669;
+indicator = 670;
 } // If
 break;
 } // Case
@@ -11460,9 +11514,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 667;
+indicator = 668;
 } else {
-indicator = 669;
+indicator = 670;
 } // If
 break;
 } // Case
@@ -11470,9 +11524,9 @@ case 'D':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("efault=")){
-indicator = 662;
+indicator = 663;
 } else {
-indicator = 669;
+indicator = 670;
 } // If
 break;
 } // Case
@@ -11480,115 +11534,115 @@ case 'C':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("acheable=")){
-indicator = 661;
+indicator = 662;
 } else {
-indicator = 669;
+indicator = 670;
 } // If
 break;
 } // Case
 default:
-indicator = 669;
+indicator = 670;
 break;
 } // Switch
 switch (indicator) {
-case 660: {
+case 661: {
 // Handling attribute Type
 // Also handles alien attributes with prefix Type
-if (fl660){
+if (fl661){
 ctxt.fail ("Duplicate attribute: Type");
 } // If
-fl660 = true ; 
+fl661 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setTypeName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 661: {
+case 662: {
 // Handling attribute Cacheable
 // Also handles alien attributes with prefix Cacheable
-if (fl661){
+if (fl662){
 ctxt.fail ("Duplicate attribute: Cacheable");
 } // If
-fl661 = true ; 
+fl662 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setCacheable(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 662: {
+case 663: {
 // Handling attribute Default
 // Also handles alien attributes with prefix Default
-if (fl662){
+if (fl663){
 ctxt.fail ("Duplicate attribute: Default");
 } // If
-fl662 = true ; 
+fl663 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setDefault((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 663: {
+case 664: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl663){
+if (fl664){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl663 = true ; 
+fl664 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 664: {
+case 665: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl664){
+if (fl665){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl664 = true ; 
+fl665 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 665: {
+case 666: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl665){
+if (fl666){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl665 = true ; 
+fl666 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 666: {
+case 667: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl666){
+if (fl667){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl666 = true ; 
+fl667 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 667: {
+case 668: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl667){
+if (fl668){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl667 = true ; 
+fl668 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -11596,7 +11650,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 669: {
+case 670: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -11607,19 +11661,19 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl661){
+if (!fl662){
 this.setCacheable( false);
 } // If
-if (!fl663){
+if (!fl664){
 this.setImplemented( false);
 } // If
-if (!fl664){
+if (!fl665){
 this.setVerified( false);
 } // If
-if (!fl665){
+if (!fl666){
 this.setNeedsRequirement( true);
 } // If
-fl668 = false ; 
+fl669 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -11834,28 +11888,28 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl680;
 bool fl681;
 bool fl682;
 bool fl683;
+bool fl684;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl680 = false ; 
 fl681 = false ; 
 fl682 = false ; 
-fl683 = true ; 
-while (fl683) { // BeginLoop 
+fl683 = false ; 
+fl684 = true ; 
+while (fl684) { // BeginLoop 
 switch (ctxt.current()) {
 case 'T':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ype=")){
-indicator = 680;
+indicator = 681;
 } else {
-indicator = 684;
+indicator = 685;
 } // If
 break;
 } // Case
@@ -11863,9 +11917,9 @@ case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 681;
+indicator = 682;
 } else {
-indicator = 684;
+indicator = 685;
 } // If
 break;
 } // Case
@@ -11873,50 +11927,50 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 682;
+indicator = 683;
 } else {
-indicator = 684;
+indicator = 685;
 } // If
 break;
 } // Case
 default:
-indicator = 684;
+indicator = 685;
 break;
 } // Switch
 switch (indicator) {
-case 680: {
+case 681: {
 // Handling attribute Type
 // Also handles alien attributes with prefix Type
-if (fl680){
+if (fl681){
 ctxt.fail ("Duplicate attribute: Type");
 } // If
-fl680 = true ; 
+fl681 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setTypeName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 681: {
+case 682: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl681){
+if (fl682){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl681 = true ; 
+fl682 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 682: {
+case 683: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl682){
+if (fl683){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl682 = true ; 
+fl683 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -11924,7 +11978,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 684: {
+case 685: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -11935,10 +11989,10 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl680){
+if (!fl681){
 ctxt.fail ("Mandatory attribute missing: Type in Parameter");
 } // If
-fl683 = false ; 
+fl684 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -12038,6 +12092,7 @@ public partial class Case
 public  override  bool find(Object search){
 if (search is String ) {
 if(getExpression().CompareTo((String) search) == 0)return true;
+if(getComment().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -12218,11 +12273,23 @@ public  void setExpression( string  v) {
 }
 
 
+private   string  aComment;
+
+public   string  getComment() { return aComment;}
+
+public  void setComment( string  v) {
+  aComment = v;
+  __setDirty(true);
+  NotifyControllers(null);
+}
+
+
 public Case()
 {
 Case obj = this;
 aPreConditions=(null);
 aExpression=(null);
+aComment=(null);
 }
 
 public void copyTo(Case other)
@@ -12230,6 +12297,7 @@ public void copyTo(Case other)
 base.copyTo(other);
 other.aPreConditions = aPreConditions;
 other.aExpression = aExpression;
+other.aComment = aComment;
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -12244,18 +12312,19 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl689;
-PreCondition fl691;
-bool fl702;
+bool fl690;
+bool fl691;
+PreCondition fl693;
+bool fl704;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
 ctxt.skipWhiteSpace();
 // Optional Enclosed
-if (ctxt.lookAheadOpeningTag("<PreConditions")){
+if (ctxt.lookAheadOpeningTag("<Comment")){
 ctxt.skipWhiteSpace();
-fl689 = true ; 
-while (fl689) { // BeginLoop 
+fl690 = true ; 
+while (fl690) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -12266,7 +12335,35 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl689 = false ; 
+fl690 = false ; 
+} // If
+} // While
+ctxt.accept('>');
+// Indicator
+// Parse PC data
+this.setComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
+// Regexp
+ctxt.skipWhiteSpace();
+ctxt.acceptString ("</Comment>");
+} // If
+// End enclosed
+ctxt.skipWhiteSpace();
+// Optional Enclosed
+if (ctxt.lookAheadOpeningTag("<PreConditions")){
+ctxt.skipWhiteSpace();
+fl691 = true ; 
+while (fl691) { // BeginLoop 
+ctxt.skipWhiteSpace();
+if (ctxt.isAlNum()){
+ctxt.skipTill ('=');
+ctxt.advance();
+ctxt.skipWhiteSpace();
+quoteChar = ctxt.acceptQuote();
+ctxt.skipTill (quoteChar);
+ctxt.accept(quoteChar);
+ctxt.skipWhiteSpace();
+} else {
+fl691 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -12276,10 +12373,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl691 = null;
+fl693 = null;
 while(ctxt.lookAheadOpeningTag ("<PreCondition")) {
-fl691 = acceptor.lAccept_PreCondition(ctxt, "</PreCondition>");
-appendPreConditions(fl691);
+fl693 = acceptor.lAccept_PreCondition(ctxt, "</PreCondition>");
+appendPreConditions(fl693);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -12295,8 +12392,8 @@ if (ctxt.isAlNum()){
 ctxt.fail ("White space expected after TAG");
 } // If
 ctxt.skipWhiteSpace();
-fl702 = true ; 
-while (fl702) { // BeginLoop 
+fl704 = true ; 
+while (fl704) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -12307,7 +12404,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl702 = false ; 
+fl704 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -12333,26 +12430,26 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl703;
-bool fl704;
 bool fl705;
+bool fl706;
+bool fl707;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl703 = false ; 
-fl704 = false ; 
-fl705 = true ; 
-while (fl705) { // BeginLoop 
+fl705 = false ; 
+fl706 = false ; 
+fl707 = true ; 
+while (fl707) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 703;
+indicator = 705;
 } else {
-indicator = 706;
+indicator = 708;
 } // If
 break;
 } // Case
@@ -12360,37 +12457,37 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 704;
-} else {
 indicator = 706;
+} else {
+indicator = 708;
 } // If
 break;
 } // Case
 default:
-indicator = 706;
+indicator = 708;
 break;
 } // Switch
 switch (indicator) {
-case 703: {
+case 705: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl703){
+if (fl705){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl703 = true ; 
+fl705 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 704: {
+case 706: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl704){
+if (fl706){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl704 = true ; 
+fl706 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -12398,7 +12495,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 706: {
+case 708: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -12409,7 +12506,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl705 = false ; 
+fl707 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -12473,6 +12570,17 @@ int i;
 #pragma warning restore 0168, 0219
 
 base.unParseBody(pw);
+// Unparsing Enclosed
+// Testing for empty content: Comment
+if (this.getComment() != null){
+pw.Write("<Comment>");
+// Unparsing PcData
+acceptor.unParsePcData(pw, this.getComment());
+pw.Write("</Comment>");
+// Father is not a mixed
+pw.Write('\n');
+} // If
+// After Testing for empty content: Comment
 // Unparsing Enclosed
 // Testing for empty content: PreConditions
 if (countPreConditions() > 0){
@@ -12893,10 +13001,10 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl710;
-Parameter fl712;
-bool fl723;
-Rule fl725;
+bool fl712;
+Parameter fl714;
+bool fl725;
+Rule fl727;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -12904,8 +13012,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Parameters")){
 ctxt.skipWhiteSpace();
-fl710 = true ; 
-while (fl710) { // BeginLoop 
+fl712 = true ; 
+while (fl712) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -12916,7 +13024,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl710 = false ; 
+fl712 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -12926,10 +13034,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl712 = null;
+fl714 = null;
 while(ctxt.lookAheadOpeningTag ("<Parameter")) {
-fl712 = acceptor.lAccept_Parameter(ctxt, "</Parameter>");
-appendParameters(fl712);
+fl714 = acceptor.lAccept_Parameter(ctxt, "</Parameter>");
+appendParameters(fl714);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -12942,8 +13050,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Rules")){
 ctxt.skipWhiteSpace();
-fl723 = true ; 
-while (fl723) { // BeginLoop 
+fl725 = true ; 
+while (fl725) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -12954,7 +13062,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl723 = false ; 
+fl725 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -12964,10 +13072,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl725 = null;
+fl727 = null;
 while(ctxt.lookAheadOpeningTag ("<Rule")) {
-fl725 = acceptor.lAccept_Rule(ctxt, "</Rule>");
-appendRules(fl725);
+fl727 = acceptor.lAccept_Rule(ctxt, "</Rule>");
+appendRules(fl727);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -13001,32 +13109,32 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl736;
-bool fl737;
 bool fl738;
 bool fl739;
 bool fl740;
 bool fl741;
+bool fl742;
+bool fl743;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl736 = false ; 
-fl737 = false ; 
 fl738 = false ; 
 fl739 = false ; 
 fl740 = false ; 
-fl741 = true ; 
-while (fl741) { // BeginLoop 
+fl741 = false ; 
+fl742 = false ; 
+fl743 = true ; 
+while (fl743) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("erified=")){
-indicator = 737;
+indicator = 739;
 } else {
-indicator = 742;
+indicator = 744;
 } // If
 break;
 } // Case
@@ -13038,9 +13146,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 738;
+indicator = 740;
 } else {
-indicator = 742;
+indicator = 744;
 } // If
 break;
 } // Case
@@ -13048,14 +13156,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 739;
+indicator = 741;
 } else {
-indicator = 742;
+indicator = 744;
 } // If
 break;
 } // Case
 default:
-indicator = 742;
+indicator = 744;
 break;
 } // Switch
 break;
@@ -13064,9 +13172,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 736;
+indicator = 738;
 } else {
-indicator = 742;
+indicator = 744;
 } // If
 break;
 } // Case
@@ -13074,76 +13182,76 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 740;
-} else {
 indicator = 742;
+} else {
+indicator = 744;
 } // If
 break;
 } // Case
 default:
-indicator = 742;
+indicator = 744;
 break;
 } // Switch
 switch (indicator) {
-case 736: {
+case 738: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl736){
+if (fl738){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl736 = true ; 
+fl738 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 737: {
+case 739: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl737){
+if (fl739){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl737 = true ; 
+fl739 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 738: {
+case 740: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl738){
+if (fl740){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl738 = true ; 
+fl740 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 739: {
+case 741: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl739){
+if (fl741){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl739 = true ; 
+fl741 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 740: {
+case 742: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl740){
+if (fl742){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl740 = true ; 
+fl742 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -13151,7 +13259,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 742: {
+case 744: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -13162,16 +13270,16 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl736){
+if (!fl738){
 this.setImplemented( false);
 } // If
-if (!fl737){
+if (!fl739){
 this.setVerified( false);
 } // If
-if (!fl738){
+if (!fl740){
 this.setNeedsRequirement( true);
 } // If
-fl741 = false ; 
+fl743 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -13691,10 +13799,10 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl750;
-State fl752;
-bool fl763;
-Rule fl765;
+bool fl752;
+State fl754;
+bool fl765;
+Rule fl767;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -13702,8 +13810,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<States")){
 ctxt.skipWhiteSpace();
-fl750 = true ; 
-while (fl750) { // BeginLoop 
+fl752 = true ; 
+while (fl752) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -13714,7 +13822,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl750 = false ; 
+fl752 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -13724,10 +13832,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl752 = null;
+fl754 = null;
 while(ctxt.lookAheadOpeningTag ("<State")) {
-fl752 = acceptor.lAccept_State(ctxt, "</State>");
-appendStates(fl752);
+fl754 = acceptor.lAccept_State(ctxt, "</State>");
+appendStates(fl754);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -13740,8 +13848,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Rules")){
 ctxt.skipWhiteSpace();
-fl763 = true ; 
-while (fl763) { // BeginLoop 
+fl765 = true ; 
+while (fl765) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -13752,7 +13860,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl763 = false ; 
+fl765 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -13762,10 +13870,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl765 = null;
+fl767 = null;
 while(ctxt.lookAheadOpeningTag ("<Rule")) {
-fl765 = acceptor.lAccept_Rule(ctxt, "</Rule>");
-appendRules(fl765);
+fl767 = acceptor.lAccept_Rule(ctxt, "</Rule>");
+appendRules(fl767);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -13789,36 +13897,36 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl776;
-bool fl777;
 bool fl778;
 bool fl779;
 bool fl780;
 bool fl781;
 bool fl782;
 bool fl783;
+bool fl784;
+bool fl785;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl776 = false ; 
-fl777 = false ; 
 fl778 = false ; 
 fl779 = false ; 
 fl780 = false ; 
 fl781 = false ; 
 fl782 = false ; 
-fl783 = true ; 
-while (fl783) { // BeginLoop 
+fl783 = false ; 
+fl784 = false ; 
+fl785 = true ; 
+while (fl785) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("erified=")){
-indicator = 779;
+indicator = 781;
 } else {
-indicator = 784;
+indicator = 786;
 } // If
 break;
 } // Case
@@ -13830,9 +13938,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 780;
+indicator = 782;
 } else {
-indicator = 784;
+indicator = 786;
 } // If
 break;
 } // Case
@@ -13840,14 +13948,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 781;
+indicator = 783;
 } else {
-indicator = 784;
+indicator = 786;
 } // If
 break;
 } // Case
 default:
-indicator = 784;
+indicator = 786;
 break;
 } // Switch
 break;
@@ -13860,9 +13968,9 @@ case 'n':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("itialState=")){
-indicator = 776;
+indicator = 778;
 } else {
-indicator = 784;
+indicator = 786;
 } // If
 break;
 } // Case
@@ -13870,14 +13978,14 @@ case 'm':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("plemented=")){
-indicator = 778;
+indicator = 780;
 } else {
-indicator = 784;
+indicator = 786;
 } // If
 break;
 } // Case
 default:
-indicator = 784;
+indicator = 786;
 break;
 } // Switch
 break;
@@ -13886,9 +13994,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 782;
-} else {
 indicator = 784;
+} else {
+indicator = 786;
 } // If
 break;
 } // Case
@@ -13896,102 +14004,102 @@ case 'D':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("efault=")){
-indicator = 777;
+indicator = 779;
 } else {
-indicator = 784;
+indicator = 786;
 } // If
 break;
 } // Case
 default:
-indicator = 784;
+indicator = 786;
 break;
 } // Switch
 switch (indicator) {
-case 776: {
+case 778: {
 // Handling attribute InitialState
 // Also handles alien attributes with prefix InitialState
-if (fl776){
+if (fl778){
 ctxt.fail ("Duplicate attribute: InitialState");
 } // If
-fl776 = true ; 
+fl778 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setInitialState((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 777: {
+case 779: {
 // Handling attribute Default
 // Also handles alien attributes with prefix Default
-if (fl777){
+if (fl779){
 ctxt.fail ("Duplicate attribute: Default");
 } // If
-fl777 = true ; 
+fl779 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setDefault((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 778: {
+case 780: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl778){
+if (fl780){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl778 = true ; 
+fl780 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 779: {
+case 781: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl779){
+if (fl781){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl779 = true ; 
+fl781 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 780: {
+case 782: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl780){
+if (fl782){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl780 = true ; 
+fl782 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 781: {
+case 783: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl781){
+if (fl783){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl781 = true ; 
+fl783 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 782: {
+case 784: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl782){
+if (fl784){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl782 = true ; 
+fl784 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -13999,7 +14107,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 784: {
+case 786: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -14010,19 +14118,19 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl776){
+if (!fl778){
 ctxt.fail ("Mandatory attribute missing: InitialState in StateMachine");
 } // If
-if (!fl778){
+if (!fl780){
 this.setImplemented( false);
 } // If
-if (!fl779){
+if (!fl781){
 this.setVerified( false);
 } // If
-if (!fl780){
+if (!fl782){
 this.setNeedsRequirement( true);
 } // If
-fl783 = false ; 
+fl785 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -14303,8 +14411,6 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl795;
-bool fl796;
 bool fl797;
 bool fl798;
 bool fl799;
@@ -14313,13 +14419,13 @@ bool fl801;
 bool fl802;
 bool fl803;
 bool fl804;
+bool fl805;
+bool fl806;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl795 = false ; 
-fl796 = false ; 
 fl797 = false ; 
 fl798 = false ; 
 fl799 = false ; 
@@ -14327,16 +14433,18 @@ fl800 = false ;
 fl801 = false ; 
 fl802 = false ; 
 fl803 = false ; 
-fl804 = true ; 
-while (fl804) { // BeginLoop 
+fl804 = false ; 
+fl805 = false ; 
+fl806 = true ; 
+while (fl806) { // BeginLoop 
 switch (ctxt.current()) {
 case 'Y':
 {
 ctxt.advance();
 if (ctxt.lookAhead1('=')){
-indicator = 796;
+indicator = 798;
 } else {
-indicator = 805;
+indicator = 807;
 } // If
 break;
 } // Case
@@ -14344,9 +14452,9 @@ case 'X':
 {
 ctxt.advance();
 if (ctxt.lookAhead1('=')){
-indicator = 795;
+indicator = 797;
 } else {
-indicator = 805;
+indicator = 807;
 } // If
 break;
 } // Case
@@ -14354,9 +14462,9 @@ case 'W':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("idth=")){
-indicator = 797;
+indicator = 799;
 } else {
-indicator = 805;
+indicator = 807;
 } // If
 break;
 } // Case
@@ -14364,9 +14472,9 @@ case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("erified=")){
-indicator = 800;
+indicator = 802;
 } else {
-indicator = 805;
+indicator = 807;
 } // If
 break;
 } // Case
@@ -14378,9 +14486,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 801;
+indicator = 803;
 } else {
-indicator = 805;
+indicator = 807;
 } // If
 break;
 } // Case
@@ -14388,14 +14496,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 802;
+indicator = 804;
 } else {
-indicator = 805;
+indicator = 807;
 } // If
 break;
 } // Case
 default:
-indicator = 805;
+indicator = 807;
 break;
 } // Switch
 break;
@@ -14404,9 +14512,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 799;
+indicator = 801;
 } else {
-indicator = 805;
+indicator = 807;
 } // If
 break;
 } // Case
@@ -14414,9 +14522,9 @@ case 'H':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("eight=")){
-indicator = 798;
+indicator = 800;
 } else {
-indicator = 805;
+indicator = 807;
 } // If
 break;
 } // Case
@@ -14424,128 +14532,128 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 803;
-} else {
 indicator = 805;
+} else {
+indicator = 807;
 } // If
 break;
 } // Case
 default:
-indicator = 805;
+indicator = 807;
 break;
 } // Switch
 switch (indicator) {
-case 795: {
+case 797: {
 // Handling attribute X
 // Also handles alien attributes with prefix X
-if (fl795){
+if (fl797){
 ctxt.fail ("Duplicate attribute: X");
 } // If
-fl795 = true ; 
+fl797 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setX(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 796: {
+case 798: {
 // Handling attribute Y
 // Also handles alien attributes with prefix Y
-if (fl796){
+if (fl798){
 ctxt.fail ("Duplicate attribute: Y");
 } // If
-fl796 = true ; 
+fl798 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setY(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 797: {
+case 799: {
 // Handling attribute Width
 // Also handles alien attributes with prefix Width
-if (fl797){
+if (fl799){
 ctxt.fail ("Duplicate attribute: Width");
 } // If
-fl797 = true ; 
+fl799 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setWidth(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 798: {
+case 800: {
 // Handling attribute Height
 // Also handles alien attributes with prefix Height
-if (fl798){
+if (fl800){
 ctxt.fail ("Duplicate attribute: Height");
 } // If
-fl798 = true ; 
+fl800 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setHeight(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 799: {
+case 801: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl799){
+if (fl801){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl799 = true ; 
+fl801 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 800: {
+case 802: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl800){
+if (fl802){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl800 = true ; 
+fl802 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 801: {
+case 803: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl801){
+if (fl803){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl801 = true ; 
+fl803 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 802: {
+case 804: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl802){
+if (fl804){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl802 = true ; 
+fl804 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 803: {
+case 805: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl803){
+if (fl805){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl803 = true ; 
+fl805 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -14553,7 +14661,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 805: {
+case 807: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -14564,28 +14672,28 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl795){
+if (!fl797){
 this.setX(0);
 } // If
-if (!fl796){
+if (!fl798){
 this.setY(0);
 } // If
-if (!fl797){
+if (!fl799){
 this.setWidth(0);
 } // If
-if (!fl798){
+if (!fl800){
 this.setHeight(0);
 } // If
-if (!fl799){
+if (!fl801){
 this.setImplemented( false);
 } // If
-if (!fl800){
+if (!fl802){
 this.setVerified( false);
 } // If
-if (!fl801){
+if (!fl803){
 this.setNeedsRequirement( true);
 } // If
-fl804 = false ; 
+fl806 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -14978,8 +15086,8 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl817;
-Variable fl819;
+bool fl819;
+Variable fl821;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -14987,8 +15095,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<SubVariables")){
 ctxt.skipWhiteSpace();
-fl817 = true ; 
-while (fl817) { // BeginLoop 
+fl819 = true ; 
+while (fl819) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -14999,7 +15107,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl817 = false ; 
+fl819 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -15009,10 +15117,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl819 = null;
+fl821 = null;
 while(ctxt.lookAheadOpeningTag ("<Variable")) {
-fl819 = acceptor.lAccept_Variable(ctxt, "</Variable>");
-appendSubVariables(fl819);
+fl821 = acceptor.lAccept_Variable(ctxt, "</Variable>");
+appendSubVariables(fl821);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -15036,8 +15144,6 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl830;
-bool fl831;
 bool fl832;
 bool fl833;
 bool fl834;
@@ -15045,21 +15151,23 @@ bool fl835;
 bool fl836;
 bool fl837;
 bool fl838;
+bool fl839;
+bool fl840;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl830 = false ; 
-fl831 = false ; 
 fl832 = false ; 
 fl833 = false ; 
 fl834 = false ; 
 fl835 = false ; 
 fl836 = false ; 
 fl837 = false ; 
-fl838 = true ; 
-while (fl838) { // BeginLoop 
+fl838 = false ; 
+fl839 = false ; 
+fl840 = true ; 
+while (fl840) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
@@ -15069,9 +15177,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("rified=")){
-indicator = 834;
+indicator = 836;
 } else {
-indicator = 839;
+indicator = 841;
 } // If
 break;
 } // Case
@@ -15079,14 +15187,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("riableMode=")){
-indicator = 832;
+indicator = 834;
 } else {
-indicator = 839;
+indicator = 841;
 } // If
 break;
 } // Case
 default:
-indicator = 839;
+indicator = 841;
 break;
 } // Switch
 break;
@@ -15095,9 +15203,9 @@ case 'T':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ype=")){
-indicator = 830;
+indicator = 832;
 } else {
-indicator = 839;
+indicator = 841;
 } // If
 break;
 } // Case
@@ -15109,9 +15217,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 835;
+indicator = 837;
 } else {
-indicator = 839;
+indicator = 841;
 } // If
 break;
 } // Case
@@ -15119,14 +15227,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 836;
+indicator = 838;
 } else {
-indicator = 839;
+indicator = 841;
 } // If
 break;
 } // Case
 default:
-indicator = 839;
+indicator = 841;
 break;
 } // Switch
 break;
@@ -15135,9 +15243,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 833;
+indicator = 835;
 } else {
-indicator = 839;
+indicator = 841;
 } // If
 break;
 } // Case
@@ -15145,9 +15253,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 837;
-} else {
 indicator = 839;
+} else {
+indicator = 841;
 } // If
 break;
 } // Case
@@ -15155,115 +15263,115 @@ case 'D':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("efaultValue=")){
-indicator = 831;
+indicator = 833;
 } else {
-indicator = 839;
+indicator = 841;
 } // If
 break;
 } // Case
 default:
-indicator = 839;
+indicator = 841;
 break;
 } // Switch
 switch (indicator) {
-case 830: {
+case 832: {
 // Handling attribute Type
 // Also handles alien attributes with prefix Type
-if (fl830){
+if (fl832){
 ctxt.fail ("Duplicate attribute: Type");
 } // If
-fl830 = true ; 
+fl832 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setTypeName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 831: {
+case 833: {
 // Handling attribute DefaultValue
 // Also handles alien attributes with prefix DefaultValue
-if (fl831){
+if (fl833){
 ctxt.fail ("Duplicate attribute: DefaultValue");
 } // If
-fl831 = true ; 
+fl833 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setDefaultValue((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 832: {
+case 834: {
 // Handling attribute VariableMode
 // Also handles alien attributes with prefix VariableMode
-if (fl832){
+if (fl834){
 ctxt.fail ("Duplicate attribute: VariableMode");
 } // If
-fl832 = true ; 
+fl834 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVariableMode(acceptor.lAcceptEnum_VariableModeEnumType(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 833: {
+case 835: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl833){
+if (fl835){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl833 = true ; 
+fl835 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 834: {
+case 836: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl834){
+if (fl836){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl834 = true ; 
+fl836 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 835: {
+case 837: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl835){
+if (fl837){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl835 = true ; 
+fl837 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 836: {
+case 838: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl836){
+if (fl838){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl836 = true ; 
+fl838 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 837: {
+case 839: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl837){
+if (fl839){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl837 = true ; 
+fl839 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -15271,7 +15379,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 839: {
+case 841: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -15282,19 +15390,19 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl832){
+if (!fl834){
 this.setVariableMode(acceptor.VariableModeEnumType.aInternal);
 } // If
-if (!fl833){
+if (!fl835){
 this.setImplemented( false);
 } // If
-if (!fl834){
+if (!fl836){
 this.setVerified( false);
 } // If
-if (!fl835){
+if (!fl837){
 this.setNeedsRequirement( true);
 } // If
-fl838 = false ; 
+fl840 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -15665,9 +15773,9 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl851;
-bool fl852;
-RuleCondition fl854;
+bool fl853;
+bool fl854;
+RuleCondition fl856;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -15675,8 +15783,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<SubRules")){
 ctxt.skipWhiteSpace();
-fl851 = true ; 
-while (fl851) { // BeginLoop 
+fl853 = true ; 
+while (fl853) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -15687,7 +15795,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl851 = false ; 
+fl853 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -15703,8 +15811,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Conditions")){
 ctxt.skipWhiteSpace();
-fl852 = true ; 
-while (fl852) { // BeginLoop 
+fl854 = true ; 
+while (fl854) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -15715,7 +15823,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl852 = false ; 
+fl854 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -15725,10 +15833,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl854 = null;
+fl856 = null;
 while(ctxt.lookAheadOpeningTag ("<RuleCondition")) {
-fl854 = acceptor.lAccept_RuleCondition(ctxt, "</RuleCondition>");
-appendConditions(fl854);
+fl856 = acceptor.lAccept_RuleCondition(ctxt, "</RuleCondition>");
+appendConditions(fl856);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -15752,34 +15860,34 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl865;
-bool fl866;
 bool fl867;
 bool fl868;
 bool fl869;
 bool fl870;
 bool fl871;
+bool fl872;
+bool fl873;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl865 = false ; 
-fl866 = false ; 
 fl867 = false ; 
 fl868 = false ; 
 fl869 = false ; 
 fl870 = false ; 
-fl871 = true ; 
-while (fl871) { // BeginLoop 
+fl871 = false ; 
+fl872 = false ; 
+fl873 = true ; 
+while (fl873) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("erified=")){
-indicator = 867;
+indicator = 869;
 } else {
-indicator = 872;
+indicator = 874;
 } // If
 break;
 } // Case
@@ -15787,9 +15895,9 @@ case 'P':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("riority=")){
-indicator = 865;
+indicator = 867;
 } else {
-indicator = 872;
+indicator = 874;
 } // If
 break;
 } // Case
@@ -15801,9 +15909,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 868;
+indicator = 870;
 } else {
-indicator = 872;
+indicator = 874;
 } // If
 break;
 } // Case
@@ -15811,14 +15919,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 869;
+indicator = 871;
 } else {
-indicator = 872;
+indicator = 874;
 } // If
 break;
 } // Case
 default:
-indicator = 872;
+indicator = 874;
 break;
 } // Switch
 break;
@@ -15827,9 +15935,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 866;
+indicator = 868;
 } else {
-indicator = 872;
+indicator = 874;
 } // If
 break;
 } // Case
@@ -15837,89 +15945,89 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 870;
-} else {
 indicator = 872;
+} else {
+indicator = 874;
 } // If
 break;
 } // Case
 default:
-indicator = 872;
+indicator = 874;
 break;
 } // Switch
 switch (indicator) {
-case 865: {
+case 867: {
 // Handling attribute Priority
 // Also handles alien attributes with prefix Priority
-if (fl865){
+if (fl867){
 ctxt.fail ("Duplicate attribute: Priority");
 } // If
-fl865 = true ; 
+fl867 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setPriority(acceptor.lAcceptEnum_RulePriority(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 866: {
+case 868: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl866){
+if (fl868){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl866 = true ; 
+fl868 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 867: {
+case 869: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl867){
+if (fl869){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl867 = true ; 
+fl869 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 868: {
+case 870: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl868){
+if (fl870){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl868 = true ; 
+fl870 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 869: {
+case 871: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl869){
+if (fl871){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl869 = true ; 
+fl871 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 870: {
+case 872: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl870){
+if (fl872){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl870 = true ; 
+fl872 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -15927,7 +16035,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 872: {
+case 874: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -15938,16 +16046,16 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl866){
+if (!fl868){
 this.setImplemented( false);
 } // If
-if (!fl867){
+if (!fl869){
 this.setVerified( false);
 } // If
-if (!fl868){
+if (!fl870){
 this.setNeedsRequirement( true);
 } // If
-fl871 = false ; 
+fl873 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -16608,12 +16716,12 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl881;
-PreCondition fl883;
-bool fl894;
-Action fl896;
-bool fl907;
-Rule fl909;
+bool fl883;
+PreCondition fl885;
+bool fl896;
+Action fl898;
+bool fl909;
+Rule fl911;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -16621,8 +16729,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<PreConditions")){
 ctxt.skipWhiteSpace();
-fl881 = true ; 
-while (fl881) { // BeginLoop 
+fl883 = true ; 
+while (fl883) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -16633,7 +16741,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl881 = false ; 
+fl883 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -16643,10 +16751,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl883 = null;
+fl885 = null;
 while(ctxt.lookAheadOpeningTag ("<PreCondition")) {
-fl883 = acceptor.lAccept_PreCondition(ctxt, "</PreCondition>");
-appendPreConditions(fl883);
+fl885 = acceptor.lAccept_PreCondition(ctxt, "</PreCondition>");
+appendPreConditions(fl885);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -16659,8 +16767,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Actions")){
 ctxt.skipWhiteSpace();
-fl894 = true ; 
-while (fl894) { // BeginLoop 
+fl896 = true ; 
+while (fl896) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -16671,7 +16779,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl894 = false ; 
+fl896 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -16681,10 +16789,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl896 = null;
+fl898 = null;
 while(ctxt.lookAheadOpeningTag ("<Action")) {
-fl896 = acceptor.lAccept_Action(ctxt, "</Action>");
-appendActions(fl896);
+fl898 = acceptor.lAccept_Action(ctxt, "</Action>");
+appendActions(fl898);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -16697,8 +16805,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<SubRules")){
 ctxt.skipWhiteSpace();
-fl907 = true ; 
-while (fl907) { // BeginLoop 
+fl909 = true ; 
+while (fl909) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -16709,7 +16817,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl907 = false ; 
+fl909 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -16719,10 +16827,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl909 = null;
+fl911 = null;
 while(ctxt.lookAheadOpeningTag ("<Rule")) {
-fl909 = acceptor.lAccept_Rule(ctxt, "</Rule>");
-appendSubRules(fl909);
+fl911 = acceptor.lAccept_Rule(ctxt, "</Rule>");
+appendSubRules(fl911);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -16746,32 +16854,32 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl920;
-bool fl921;
 bool fl922;
 bool fl923;
 bool fl924;
 bool fl925;
+bool fl926;
+bool fl927;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl920 = false ; 
-fl921 = false ; 
 fl922 = false ; 
 fl923 = false ; 
 fl924 = false ; 
-fl925 = true ; 
-while (fl925) { // BeginLoop 
+fl925 = false ; 
+fl926 = false ; 
+fl927 = true ; 
+while (fl927) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("erified=")){
-indicator = 921;
+indicator = 923;
 } else {
-indicator = 926;
+indicator = 928;
 } // If
 break;
 } // Case
@@ -16783,9 +16891,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 922;
+indicator = 924;
 } else {
-indicator = 926;
+indicator = 928;
 } // If
 break;
 } // Case
@@ -16793,14 +16901,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 923;
+indicator = 925;
 } else {
-indicator = 926;
+indicator = 928;
 } // If
 break;
 } // Case
 default:
-indicator = 926;
+indicator = 928;
 break;
 } // Switch
 break;
@@ -16809,9 +16917,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 920;
+indicator = 922;
 } else {
-indicator = 926;
+indicator = 928;
 } // If
 break;
 } // Case
@@ -16819,76 +16927,76 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 924;
-} else {
 indicator = 926;
+} else {
+indicator = 928;
 } // If
 break;
 } // Case
 default:
-indicator = 926;
+indicator = 928;
 break;
 } // Switch
 switch (indicator) {
-case 920: {
+case 922: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl920){
+if (fl922){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl920 = true ; 
+fl922 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 921: {
+case 923: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl921){
+if (fl923){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl921 = true ; 
+fl923 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 922: {
+case 924: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl922){
+if (fl924){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl922 = true ; 
+fl924 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 923: {
+case 925: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl923){
+if (fl925){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl923 = true ; 
+fl925 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 924: {
+case 926: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl924){
+if (fl926){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl924 = true ; 
+fl926 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -16896,7 +17004,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 926: {
+case 928: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -16907,16 +17015,16 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl920){
+if (!fl922){
 this.setImplemented( false);
 } // If
-if (!fl921){
+if (!fl923){
 this.setVerified( false);
 } // If
-if (!fl922){
+if (!fl924){
 this.setNeedsRequirement( true);
 } // If
-fl925 = false ; 
+fl927 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -17070,6 +17178,7 @@ public partial class PreCondition
 public  override  bool find(Object search){
 if (search is String ) {
 if(getCondition().CompareTo((String) search) == 0)return true;
+if(getComment().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -17089,16 +17198,29 @@ public  void setCondition( string  v) {
 }
 
 
+private   string  aComment;
+
+public   string  getComment() { return aComment;}
+
+public  void setComment( string  v) {
+  aComment = v;
+  __setDirty(true);
+  NotifyControllers(null);
+}
+
+
 public PreCondition()
 {
 PreCondition obj = this;
 aCondition=(null);
+aComment=(null);
 }
 
 public void copyTo(PreCondition other)
 {
 base.copyTo(other);
 other.aCondition = aCondition;
+other.aComment = aComment;
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -17113,8 +17235,38 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
+bool fl936;
 
+ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
+ctxt.skipWhiteSpace();
+// Optional Enclosed
+if (ctxt.lookAheadOpeningTag("<Comment")){
+ctxt.skipWhiteSpace();
+fl936 = true ; 
+while (fl936) { // BeginLoop 
+ctxt.skipWhiteSpace();
+if (ctxt.isAlNum()){
+ctxt.skipTill ('=');
+ctxt.advance();
+ctxt.skipWhiteSpace();
+quoteChar = ctxt.acceptQuote();
+ctxt.skipTill (quoteChar);
+ctxt.accept(quoteChar);
+ctxt.skipWhiteSpace();
+} else {
+fl936 = false ; 
+} // If
+} // While
+ctxt.accept('>');
+// Indicator
+// Parse PC data
+this.setComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
+// Regexp
+ctxt.skipWhiteSpace();
+ctxt.acceptString ("</Comment>");
+} // If
+// End enclosed
 // Indicator
 // Parse PC data
 this.setCondition(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
@@ -17134,29 +17286,29 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl934;
-bool fl935;
+bool fl937;
+bool fl938;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl934 = false ; 
-fl935 = true ; 
-while (fl935) { // BeginLoop 
+fl937 = false ; 
+fl938 = true ; 
+while (fl938) { // BeginLoop 
 if (ctxt.lookAheadString("Guid=")){
-indicator = 934;
+indicator = 937;
 } else {
-indicator = 936;
+indicator = 939;
 } // If
 switch (indicator) {
-case 934: {
+case 937: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl934){
+if (fl937){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl934 = true ; 
+fl937 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -17164,7 +17316,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 936: {
+case 939: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -17175,7 +17327,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl935 = false ; 
+fl938 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -17232,6 +17384,17 @@ int i;
 #pragma warning restore 0168, 0219
 
 base.unParseBody(pw);
+// Unparsing Enclosed
+// Testing for empty content: Comment
+if (this.getComment() != null){
+pw.Write("<Comment>");
+// Unparsing PcData
+acceptor.unParsePcData(pw, this.getComment());
+pw.Write("</Comment>");
+// Father is not a mixed
+pw.Write('\n');
+} // If
+// After Testing for empty content: Comment
 // Unparsing PcData
 acceptor.unParsePcData(pw, this.getCondition());
 }
@@ -17260,6 +17423,7 @@ public partial class Action
 public  override  bool find(Object search){
 if (search is String ) {
 if(getExpression().CompareTo((String) search) == 0)return true;
+if(getComment().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -17279,16 +17443,29 @@ public  void setExpression( string  v) {
 }
 
 
+private   string  aComment;
+
+public   string  getComment() { return aComment;}
+
+public  void setComment( string  v) {
+  aComment = v;
+  __setDirty(true);
+  NotifyControllers(null);
+}
+
+
 public Action()
 {
 Action obj = this;
 aExpression=(null);
+aComment=(null);
 }
 
 public void copyTo(Action other)
 {
 base.copyTo(other);
 other.aExpression = aExpression;
+other.aComment = aComment;
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -17303,8 +17480,38 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
+bool fl941;
 
+ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
+ctxt.skipWhiteSpace();
+// Optional Enclosed
+if (ctxt.lookAheadOpeningTag("<Comment")){
+ctxt.skipWhiteSpace();
+fl941 = true ; 
+while (fl941) { // BeginLoop 
+ctxt.skipWhiteSpace();
+if (ctxt.isAlNum()){
+ctxt.skipTill ('=');
+ctxt.advance();
+ctxt.skipWhiteSpace();
+quoteChar = ctxt.acceptQuote();
+ctxt.skipTill (quoteChar);
+ctxt.accept(quoteChar);
+ctxt.skipWhiteSpace();
+} else {
+fl941 = false ; 
+} // If
+} // While
+ctxt.accept('>');
+// Indicator
+// Parse PC data
+this.setComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
+// Regexp
+ctxt.skipWhiteSpace();
+ctxt.acceptString ("</Comment>");
+} // If
+// End enclosed
 // Indicator
 // Parse PC data
 this.setExpression(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
@@ -17324,29 +17531,29 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl938;
-bool fl939;
+bool fl942;
+bool fl943;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl938 = false ; 
-fl939 = true ; 
-while (fl939) { // BeginLoop 
+fl942 = false ; 
+fl943 = true ; 
+while (fl943) { // BeginLoop 
 if (ctxt.lookAheadString("Guid=")){
-indicator = 938;
+indicator = 942;
 } else {
-indicator = 940;
+indicator = 944;
 } // If
 switch (indicator) {
-case 938: {
+case 942: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl938){
+if (fl942){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl938 = true ; 
+fl942 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -17354,7 +17561,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 940: {
+case 944: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -17365,7 +17572,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl939 = false ; 
+fl943 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -17422,6 +17629,17 @@ int i;
 #pragma warning restore 0168, 0219
 
 base.unParseBody(pw);
+// Unparsing Enclosed
+// Testing for empty content: Comment
+if (this.getComment() != null){
+pw.Write("<Comment>");
+// Unparsing PcData
+acceptor.unParsePcData(pw, this.getComment());
+pw.Write("</Comment>");
+// Father is not a mixed
+pw.Write('\n');
+} // If
+// After Testing for empty content: Comment
 // Unparsing PcData
 acceptor.unParsePcData(pw, this.getExpression());
 }
@@ -17497,26 +17715,26 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl942;
-bool fl943;
-bool fl944;
+bool fl946;
+bool fl947;
+bool fl948;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl942 = false ; 
-fl943 = false ; 
-fl944 = true ; 
-while (fl944) { // BeginLoop 
+fl946 = false ; 
+fl947 = false ; 
+fl948 = true ; 
+while (fl948) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 942;
+indicator = 946;
 } else {
-indicator = 945;
+indicator = 949;
 } // If
 break;
 } // Case
@@ -17524,37 +17742,37 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 943;
+indicator = 947;
 } else {
-indicator = 945;
+indicator = 949;
 } // If
 break;
 } // Case
 default:
-indicator = 945;
+indicator = 949;
 break;
 } // Switch
 switch (indicator) {
-case 942: {
+case 946: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl942){
+if (fl946){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl942 = true ; 
+fl946 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 943: {
+case 947: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl943){
+if (fl947){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl943 = true ; 
+fl947 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -17562,7 +17780,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 945: {
+case 949: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -17573,7 +17791,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl944 = false ; 
+fl948 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -17669,6 +17887,7 @@ public partial class Frame
 public  override  bool find(Object search){
 if (search is String ) {
 if(getCycleDuration().CompareTo((String) search) == 0)return true;
+if(getComment().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -17849,11 +18068,23 @@ public SubSequence getSubSequences(int idx)
   return (SubSequence) ( allSubSequences()[idx]);
 }
 
+private   string  aComment;
+
+public   string  getComment() { return aComment;}
+
+public  void setComment( string  v) {
+  aComment = v;
+  __setDirty(true);
+  NotifyControllers(null);
+}
+
+
 public Frame()
 {
 Frame obj = this;
 aCycleDuration=(null);
 aSubSequences=(null);
+aComment=(null);
 }
 
 public void copyTo(Frame other)
@@ -17861,6 +18092,7 @@ public void copyTo(Frame other)
 base.copyTo(other);
 other.aCycleDuration = aCycleDuration;
 other.aSubSequences = aSubSequences;
+other.aComment = aComment;
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -17875,17 +18107,18 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl949;
-SubSequence fl951;
+bool fl953;
+bool fl954;
+SubSequence fl956;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
 ctxt.skipWhiteSpace();
 // Optional Enclosed
-if (ctxt.lookAheadOpeningTag("<SubSequences")){
+if (ctxt.lookAheadOpeningTag("<Comment")){
 ctxt.skipWhiteSpace();
-fl949 = true ; 
-while (fl949) { // BeginLoop 
+fl953 = true ; 
+while (fl953) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -17896,7 +18129,35 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl949 = false ; 
+fl953 = false ; 
+} // If
+} // While
+ctxt.accept('>');
+// Indicator
+// Parse PC data
+this.setComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
+// Regexp
+ctxt.skipWhiteSpace();
+ctxt.acceptString ("</Comment>");
+} // If
+// End enclosed
+ctxt.skipWhiteSpace();
+// Optional Enclosed
+if (ctxt.lookAheadOpeningTag("<SubSequences")){
+ctxt.skipWhiteSpace();
+fl954 = true ; 
+while (fl954) { // BeginLoop 
+ctxt.skipWhiteSpace();
+if (ctxt.isAlNum()){
+ctxt.skipTill ('=');
+ctxt.advance();
+ctxt.skipWhiteSpace();
+quoteChar = ctxt.acceptQuote();
+ctxt.skipTill (quoteChar);
+ctxt.accept(quoteChar);
+ctxt.skipWhiteSpace();
+} else {
+fl954 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -17906,10 +18167,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl951 = null;
+fl956 = null;
 while(ctxt.lookAheadOpeningTag ("<SubSequence")) {
-fl951 = acceptor.lAccept_SubSequence(ctxt, "</SubSequence>");
-appendSubSequences(fl951);
+fl956 = acceptor.lAccept_SubSequence(ctxt, "</SubSequence>");
+appendSubSequences(fl956);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -17933,28 +18194,28 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl962;
-bool fl963;
-bool fl964;
-bool fl965;
+bool fl967;
+bool fl968;
+bool fl969;
+bool fl970;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl962 = false ; 
-fl963 = false ; 
-fl964 = false ; 
-fl965 = true ; 
-while (fl965) { // BeginLoop 
+fl967 = false ; 
+fl968 = false ; 
+fl969 = false ; 
+fl970 = true ; 
+while (fl970) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 963;
+indicator = 968;
 } else {
-indicator = 966;
+indicator = 971;
 } // If
 break;
 } // Case
@@ -17962,9 +18223,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 964;
+indicator = 969;
 } else {
-indicator = 966;
+indicator = 971;
 } // If
 break;
 } // Case
@@ -17972,50 +18233,50 @@ case 'C':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ycleDuration=")){
-indicator = 962;
+indicator = 967;
 } else {
-indicator = 966;
+indicator = 971;
 } // If
 break;
 } // Case
 default:
-indicator = 966;
+indicator = 971;
 break;
 } // Switch
 switch (indicator) {
-case 962: {
+case 967: {
 // Handling attribute CycleDuration
 // Also handles alien attributes with prefix CycleDuration
-if (fl962){
+if (fl967){
 ctxt.fail ("Duplicate attribute: CycleDuration");
 } // If
-fl962 = true ; 
+fl967 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setCycleDuration((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 963: {
+case 968: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl963){
+if (fl968){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl963 = true ; 
+fl968 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 964: {
+case 969: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl964){
+if (fl969){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl964 = true ; 
+fl969 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -18023,7 +18284,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 966: {
+case 971: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -18034,10 +18295,10 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl962){
+if (!fl967){
 this.setCycleDuration("0.1");
 } // If
-fl965 = false ; 
+fl970 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -18114,6 +18375,17 @@ int i;
 
 base.unParseBody(pw);
 // Unparsing Enclosed
+// Testing for empty content: Comment
+if (this.getComment() != null){
+pw.Write("<Comment>");
+// Unparsing PcData
+acceptor.unParsePcData(pw, this.getComment());
+pw.Write("</Comment>");
+// Father is not a mixed
+pw.Write('\n');
+} // If
+// After Testing for empty content: Comment
+// Unparsing Enclosed
 // Testing for empty content: SubSequences
 if (countSubSequences() > 0){
 pw.Write("<SubSequences>");
@@ -18163,6 +18435,7 @@ if(getQ_DIRTRAIN().CompareTo((String) search) == 0)return true;
 if(getQ_DLRBG().CompareTo((String) search) == 0)return true;
 if(getRBC_ID().CompareTo((String) search) == 0)return true;
 if(getRBCPhone().CompareTo((String) search) == 0)return true;
+if(getComment().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -18431,6 +18704,17 @@ public TestCase getTestCases(int idx)
   return (TestCase) ( allTestCases()[idx]);
 }
 
+private   string  aComment;
+
+public   string  getComment() { return aComment;}
+
+public  void setComment( string  v) {
+  aComment = v;
+  __setDirty(true);
+  NotifyControllers(null);
+}
+
+
 public SubSequence()
 {
 SubSequence obj = this;
@@ -18444,6 +18728,7 @@ aQ_DLRBG=(null);
 aRBC_ID=(null);
 aRBCPhone=(null);
 aTestCases=(null);
+aComment=(null);
 }
 
 public void copyTo(SubSequence other)
@@ -18459,6 +18744,7 @@ other.aQ_DLRBG = aQ_DLRBG;
 other.aRBC_ID = aRBC_ID;
 other.aRBCPhone = aRBCPhone;
 other.aTestCases = aTestCases;
+other.aComment = aComment;
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -18473,17 +18759,18 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl971;
-TestCase fl973;
+bool fl976;
+bool fl977;
+TestCase fl979;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
 ctxt.skipWhiteSpace();
 // Optional Enclosed
-if (ctxt.lookAheadOpeningTag("<TestCases")){
+if (ctxt.lookAheadOpeningTag("<Comment")){
 ctxt.skipWhiteSpace();
-fl971 = true ; 
-while (fl971) { // BeginLoop 
+fl976 = true ; 
+while (fl976) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -18494,7 +18781,35 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl971 = false ; 
+fl976 = false ; 
+} // If
+} // While
+ctxt.accept('>');
+// Indicator
+// Parse PC data
+this.setComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
+// Regexp
+ctxt.skipWhiteSpace();
+ctxt.acceptString ("</Comment>");
+} // If
+// End enclosed
+ctxt.skipWhiteSpace();
+// Optional Enclosed
+if (ctxt.lookAheadOpeningTag("<TestCases")){
+ctxt.skipWhiteSpace();
+fl977 = true ; 
+while (fl977) { // BeginLoop 
+ctxt.skipWhiteSpace();
+if (ctxt.isAlNum()){
+ctxt.skipTill ('=');
+ctxt.advance();
+ctxt.skipWhiteSpace();
+quoteChar = ctxt.acceptQuote();
+ctxt.skipTill (quoteChar);
+ctxt.accept(quoteChar);
+ctxt.skipWhiteSpace();
+} else {
+fl977 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -18504,10 +18819,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl973 = null;
+fl979 = null;
 while(ctxt.lookAheadOpeningTag ("<TestCase")) {
-fl973 = acceptor.lAccept_TestCase(ctxt, "</TestCase>");
-appendTestCases(fl973);
+fl979 = acceptor.lAccept_TestCase(ctxt, "</TestCase>");
+appendTestCases(fl979);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -18531,36 +18846,36 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl984;
-bool fl985;
-bool fl986;
-bool fl987;
-bool fl988;
-bool fl989;
 bool fl990;
 bool fl991;
 bool fl992;
 bool fl993;
 bool fl994;
 bool fl995;
+bool fl996;
+bool fl997;
+bool fl998;
+bool fl999;
+bool fl1000;
+bool fl1001;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl984 = false ; 
-fl985 = false ; 
-fl986 = false ; 
-fl987 = false ; 
-fl988 = false ; 
-fl989 = false ; 
 fl990 = false ; 
 fl991 = false ; 
 fl992 = false ; 
 fl993 = false ; 
 fl994 = false ; 
-fl995 = true ; 
-while (fl995) { // BeginLoop 
+fl995 = false ; 
+fl996 = false ; 
+fl997 = false ; 
+fl998 = false ; 
+fl999 = false ; 
+fl1000 = false ; 
+fl1001 = true ; 
+while (fl1001) { // BeginLoop 
 switch (ctxt.current()) {
 case 'R':
 {
@@ -18571,9 +18886,9 @@ case '_':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('I','D','=')){
-indicator = 991;
+indicator = 997;
 } else {
-indicator = 996;
+indicator = 1002;
 } // If
 break;
 } // Case
@@ -18581,18 +18896,18 @@ case 'P':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("hone=")){
-indicator = 992;
+indicator = 998;
 } else {
-indicator = 996;
+indicator = 1002;
 } // If
 break;
 } // Case
 default:
-indicator = 996;
+indicator = 1002;
 break;
 } // Switch
 } else {
-indicator = 996;
+indicator = 1002;
 } // If
 break;
 } // Case
@@ -18605,9 +18920,9 @@ case 'L':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("RBG=")){
-indicator = 990;
-} else {
 indicator = 996;
+} else {
+indicator = 1002;
 } // If
 break;
 } // Case
@@ -18620,9 +18935,9 @@ case 'T':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("RAIN=")){
-indicator = 989;
+indicator = 995;
 } else {
-indicator = 996;
+indicator = 1002;
 } // If
 break;
 } // Case
@@ -18630,27 +18945,27 @@ case 'L':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("RBG=")){
-indicator = 988;
+indicator = 994;
 } else {
-indicator = 996;
+indicator = 1002;
 } // If
 break;
 } // Case
 default:
-indicator = 996;
+indicator = 1002;
 break;
 } // Switch
 } else {
-indicator = 996;
+indicator = 1002;
 } // If
 break;
 } // Case
 default:
-indicator = 996;
+indicator = 1002;
 break;
 } // Switch
 } else {
-indicator = 996;
+indicator = 1002;
 } // If
 break;
 } // Case
@@ -18662,9 +18977,9 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 993;
+indicator = 999;
 } else {
-indicator = 996;
+indicator = 1002;
 } // If
 break;
 } // Case
@@ -18672,14 +18987,14 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("D_LRBG=")){
-indicator = 987;
+indicator = 993;
 } else {
-indicator = 996;
+indicator = 1002;
 } // If
 break;
 } // Case
 default:
-indicator = 996;
+indicator = 1002;
 break;
 } // Switch
 break;
@@ -18688,9 +19003,9 @@ case 'M':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ode=")){
-indicator = 986;
+indicator = 992;
 } else {
-indicator = 996;
+indicator = 1002;
 } // If
 break;
 } // Case
@@ -18698,9 +19013,9 @@ case 'L':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("evel=")){
-indicator = 985;
+indicator = 991;
 } else {
-indicator = 996;
+indicator = 1002;
 } // If
 break;
 } // Case
@@ -18708,9 +19023,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 994;
+indicator = 1000;
 } else {
-indicator = 996;
+indicator = 1002;
 } // If
 break;
 } // Case
@@ -18718,154 +19033,154 @@ case 'D':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("_LRBG=")){
-indicator = 984;
+indicator = 990;
 } else {
-indicator = 996;
+indicator = 1002;
 } // If
 break;
 } // Case
 default:
-indicator = 996;
+indicator = 1002;
 break;
 } // Switch
 switch (indicator) {
-case 984: {
+case 990: {
 // Handling attribute D_LRBG
 // Also handles alien attributes with prefix D_LRBG
-if (fl984){
+if (fl990){
 ctxt.fail ("Duplicate attribute: D_LRBG");
 } // If
-fl984 = true ; 
+fl990 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setD_LRBG((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 985: {
+case 991: {
 // Handling attribute Level
 // Also handles alien attributes with prefix Level
-if (fl985){
+if (fl991){
 ctxt.fail ("Duplicate attribute: Level");
 } // If
-fl985 = true ; 
+fl991 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setLevel((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 986: {
+case 992: {
 // Handling attribute Mode
 // Also handles alien attributes with prefix Mode
-if (fl986){
+if (fl992){
 ctxt.fail ("Duplicate attribute: Mode");
 } // If
-fl986 = true ; 
+fl992 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setMode((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 987: {
+case 993: {
 // Handling attribute NID_LRBG
 // Also handles alien attributes with prefix NID_LRBG
-if (fl987){
+if (fl993){
 ctxt.fail ("Duplicate attribute: NID_LRBG");
 } // If
-fl987 = true ; 
+fl993 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNID_LRBG((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 988: {
+case 994: {
 // Handling attribute Q_DIRLRBG
 // Also handles alien attributes with prefix Q_DIRLRBG
-if (fl988){
+if (fl994){
 ctxt.fail ("Duplicate attribute: Q_DIRLRBG");
 } // If
-fl988 = true ; 
+fl994 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setQ_DIRLRBG((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 989: {
+case 995: {
 // Handling attribute Q_DIRTRAIN
 // Also handles alien attributes with prefix Q_DIRTRAIN
-if (fl989){
+if (fl995){
 ctxt.fail ("Duplicate attribute: Q_DIRTRAIN");
 } // If
-fl989 = true ; 
+fl995 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setQ_DIRTRAIN((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 990: {
+case 996: {
 // Handling attribute Q_DLRBG
 // Also handles alien attributes with prefix Q_DLRBG
-if (fl990){
+if (fl996){
 ctxt.fail ("Duplicate attribute: Q_DLRBG");
 } // If
-fl990 = true ; 
+fl996 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setQ_DLRBG((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 991: {
+case 997: {
 // Handling attribute RBC_ID
 // Also handles alien attributes with prefix RBC_ID
-if (fl991){
+if (fl997){
 ctxt.fail ("Duplicate attribute: RBC_ID");
 } // If
-fl991 = true ; 
+fl997 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setRBC_ID((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 992: {
+case 998: {
 // Handling attribute RBCPhone
 // Also handles alien attributes with prefix RBCPhone
-if (fl992){
+if (fl998){
 ctxt.fail ("Duplicate attribute: RBCPhone");
 } // If
-fl992 = true ; 
+fl998 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setRBCPhone((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 993: {
+case 999: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl993){
+if (fl999){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl993 = true ; 
+fl999 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 994: {
+case 1000: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl994){
+if (fl1000){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl994 = true ; 
+fl1000 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -18873,7 +19188,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 996: {
+case 1002: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -18884,34 +19199,34 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl984){
+if (!fl990){
 this.setD_LRBG("");
 } // If
-if (!fl985){
+if (!fl991){
 this.setLevel("");
 } // If
-if (!fl986){
+if (!fl992){
 this.setMode("");
 } // If
-if (!fl987){
+if (!fl993){
 this.setNID_LRBG("");
 } // If
-if (!fl988){
+if (!fl994){
 this.setQ_DIRLRBG("");
 } // If
-if (!fl989){
+if (!fl995){
 this.setQ_DIRTRAIN("");
 } // If
-if (!fl990){
+if (!fl996){
 this.setQ_DLRBG("");
 } // If
-if (!fl991){
+if (!fl997){
 this.setRBC_ID("");
 } // If
-if (!fl992){
+if (!fl998){
 this.setRBCPhone("");
 } // If
-fl995 = false ; 
+fl1001 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -19036,6 +19351,17 @@ int i;
 
 base.unParseBody(pw);
 // Unparsing Enclosed
+// Testing for empty content: Comment
+if (this.getComment() != null){
+pw.Write("<Comment>");
+// Unparsing PcData
+acceptor.unParsePcData(pw, this.getComment());
+pw.Write("</Comment>");
+// Father is not a mixed
+pw.Write('\n');
+} // If
+// After Testing for empty content: Comment
+// Unparsing Enclosed
 // Testing for empty content: TestCases
 if (countTestCases() > 0){
 pw.Write("<TestCases>");
@@ -19076,6 +19402,7 @@ public partial class TestCase
 {
 public  override  bool find(Object search){
 if (search is String ) {
+if(getComment().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -19267,12 +19594,24 @@ public Step getSteps(int idx)
   return (Step) ( allSteps()[idx]);
 }
 
+private   string  aComment;
+
+public   string  getComment() { return aComment;}
+
+public  void setComment( string  v) {
+  aComment = v;
+  __setDirty(true);
+  NotifyControllers(null);
+}
+
+
 public TestCase()
 {
 TestCase obj = this;
 aFeature=(0);
 aCase=(0);
 aSteps=(null);
+aComment=(null);
 }
 
 public void copyTo(TestCase other)
@@ -19281,6 +19620,7 @@ base.copyTo(other);
 other.aFeature = aFeature;
 other.aCase = aCase;
 other.aSteps = aSteps;
+other.aComment = aComment;
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -19295,17 +19635,18 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1013;
-Step fl1015;
+bool fl1019;
+bool fl1020;
+Step fl1022;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
 ctxt.skipWhiteSpace();
 // Optional Enclosed
-if (ctxt.lookAheadOpeningTag("<Steps")){
+if (ctxt.lookAheadOpeningTag("<Comment")){
 ctxt.skipWhiteSpace();
-fl1013 = true ; 
-while (fl1013) { // BeginLoop 
+fl1019 = true ; 
+while (fl1019) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -19316,7 +19657,35 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1013 = false ; 
+fl1019 = false ; 
+} // If
+} // While
+ctxt.accept('>');
+// Indicator
+// Parse PC data
+this.setComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
+// Regexp
+ctxt.skipWhiteSpace();
+ctxt.acceptString ("</Comment>");
+} // If
+// End enclosed
+ctxt.skipWhiteSpace();
+// Optional Enclosed
+if (ctxt.lookAheadOpeningTag("<Steps")){
+ctxt.skipWhiteSpace();
+fl1020 = true ; 
+while (fl1020) { // BeginLoop 
+ctxt.skipWhiteSpace();
+if (ctxt.isAlNum()){
+ctxt.skipTill ('=');
+ctxt.advance();
+ctxt.skipWhiteSpace();
+quoteChar = ctxt.acceptQuote();
+ctxt.skipTill (quoteChar);
+ctxt.accept(quoteChar);
+ctxt.skipWhiteSpace();
+} else {
+fl1020 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -19326,10 +19695,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1015 = null;
+fl1022 = null;
 while(ctxt.lookAheadOpeningTag ("<Step")) {
-fl1015 = acceptor.lAccept_Step(ctxt, "</Step>");
-appendSteps(fl1015);
+fl1022 = acceptor.lAccept_Step(ctxt, "</Step>");
+appendSteps(fl1022);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -19353,36 +19722,36 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1026;
-bool fl1027;
-bool fl1028;
-bool fl1029;
-bool fl1030;
-bool fl1031;
-bool fl1032;
 bool fl1033;
+bool fl1034;
+bool fl1035;
+bool fl1036;
+bool fl1037;
+bool fl1038;
+bool fl1039;
+bool fl1040;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1026 = false ; 
-fl1027 = false ; 
-fl1028 = false ; 
-fl1029 = false ; 
-fl1030 = false ; 
-fl1031 = false ; 
-fl1032 = false ; 
-fl1033 = true ; 
-while (fl1033) { // BeginLoop 
+fl1033 = false ; 
+fl1034 = false ; 
+fl1035 = false ; 
+fl1036 = false ; 
+fl1037 = false ; 
+fl1038 = false ; 
+fl1039 = false ; 
+fl1040 = true ; 
+while (fl1040) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("erified=")){
-indicator = 1029;
+indicator = 1036;
 } else {
-indicator = 1034;
+indicator = 1041;
 } // If
 break;
 } // Case
@@ -19394,9 +19763,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edsRequirement=")){
-indicator = 1030;
+indicator = 1037;
 } else {
-indicator = 1034;
+indicator = 1041;
 } // If
 break;
 } // Case
@@ -19404,14 +19773,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('m','e','=')){
-indicator = 1031;
+indicator = 1038;
 } else {
-indicator = 1034;
+indicator = 1041;
 } // If
 break;
 } // Case
 default:
-indicator = 1034;
+indicator = 1041;
 break;
 } // Switch
 break;
@@ -19420,9 +19789,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 1028;
+indicator = 1035;
 } else {
-indicator = 1034;
+indicator = 1041;
 } // If
 break;
 } // Case
@@ -19430,9 +19799,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1032;
+indicator = 1039;
 } else {
-indicator = 1034;
+indicator = 1041;
 } // If
 break;
 } // Case
@@ -19440,9 +19809,9 @@ case 'F':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("eature=")){
-indicator = 1026;
+indicator = 1033;
 } else {
-indicator = 1034;
+indicator = 1041;
 } // If
 break;
 } // Case
@@ -19450,102 +19819,102 @@ case 'C':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ase=")){
-indicator = 1027;
-} else {
 indicator = 1034;
+} else {
+indicator = 1041;
 } // If
 break;
 } // Case
 default:
-indicator = 1034;
+indicator = 1041;
 break;
 } // Switch
 switch (indicator) {
-case 1026: {
+case 1033: {
 // Handling attribute Feature
 // Also handles alien attributes with prefix Feature
-if (fl1026){
+if (fl1033){
 ctxt.fail ("Duplicate attribute: Feature");
 } // If
-fl1026 = true ; 
+fl1033 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setFeature(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1027: {
+case 1034: {
 // Handling attribute Case
 // Also handles alien attributes with prefix Case
-if (fl1027){
+if (fl1034){
 ctxt.fail ("Duplicate attribute: Case");
 } // If
-fl1027 = true ; 
+fl1034 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setCase(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1028: {
+case 1035: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl1028){
+if (fl1035){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl1028 = true ; 
+fl1035 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1029: {
+case 1036: {
 // Handling attribute Verified
 // Also handles alien attributes with prefix Verified
-if (fl1029){
+if (fl1036){
 ctxt.fail ("Duplicate attribute: Verified");
 } // If
-fl1029 = true ; 
+fl1036 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVerified(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1030: {
+case 1037: {
 // Handling attribute NeedsRequirement
 // Also handles alien attributes with prefix NeedsRequirement
-if (fl1030){
+if (fl1037){
 ctxt.fail ("Duplicate attribute: NeedsRequirement");
 } // If
-fl1030 = true ; 
+fl1037 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setNeedsRequirement(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1031: {
+case 1038: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1031){
+if (fl1038){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1031 = true ; 
+fl1038 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1032: {
+case 1039: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1032){
+if (fl1039){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1032 = true ; 
+fl1039 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -19553,7 +19922,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1034: {
+case 1041: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -19564,22 +19933,22 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1026){
+if (!fl1033){
 this.setFeature(9999);
 } // If
-if (!fl1027){
+if (!fl1034){
 this.setCase(9999);
 } // If
-if (!fl1028){
+if (!fl1035){
 this.setImplemented( false);
 } // If
-if (!fl1029){
+if (!fl1036){
 this.setVerified( false);
 } // If
-if (!fl1030){
+if (!fl1037){
 this.setNeedsRequirement( true);
 } // If
-fl1033 = false ; 
+fl1040 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -19679,6 +20048,17 @@ int i;
 #pragma warning restore 0168, 0219
 
 base.unParseBody(pw);
+// Unparsing Enclosed
+// Testing for empty content: Comment
+if (this.getComment() != null){
+pw.Write("<Comment>");
+// Unparsing PcData
+acceptor.unParsePcData(pw, this.getComment());
+pw.Write("</Comment>");
+// Father is not a mixed
+pw.Write('\n');
+} // If
+// After Testing for empty content: Comment
 // Unparsing Enclosed
 // Testing for empty content: Steps
 if (countSteps() > 0){
@@ -20350,13 +20730,13 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1044;
-bool fl1045;
-bool fl1046;
-bool fl1047;
-SubStep fl1049;
-bool fl1060;
-DBMessage fl1062;
+bool fl1051;
+bool fl1052;
+bool fl1053;
+bool fl1054;
+SubStep fl1056;
+bool fl1067;
+DBMessage fl1069;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -20364,8 +20744,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Description")){
 ctxt.skipWhiteSpace();
-fl1044 = true ; 
-while (fl1044) { // BeginLoop 
+fl1051 = true ; 
+while (fl1051) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -20376,7 +20756,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1044 = false ; 
+fl1051 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -20392,8 +20772,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Comment")){
 ctxt.skipWhiteSpace();
-fl1045 = true ; 
-while (fl1045) { // BeginLoop 
+fl1052 = true ; 
+while (fl1052) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -20404,7 +20784,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1045 = false ; 
+fl1052 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -20420,8 +20800,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<UserComment")){
 ctxt.skipWhiteSpace();
-fl1046 = true ; 
-while (fl1046) { // BeginLoop 
+fl1053 = true ; 
+while (fl1053) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -20432,7 +20812,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1046 = false ; 
+fl1053 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -20448,8 +20828,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<SubSteps")){
 ctxt.skipWhiteSpace();
-fl1047 = true ; 
-while (fl1047) { // BeginLoop 
+fl1054 = true ; 
+while (fl1054) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -20460,7 +20840,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1047 = false ; 
+fl1054 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -20470,10 +20850,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1049 = null;
+fl1056 = null;
 while(ctxt.lookAheadOpeningTag ("<SubStep")) {
-fl1049 = acceptor.lAccept_SubStep(ctxt, "</SubStep>");
-appendSubSteps(fl1049);
+fl1056 = acceptor.lAccept_SubStep(ctxt, "</SubStep>");
+appendSubSteps(fl1056);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -20486,8 +20866,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Messsages")){
 ctxt.skipWhiteSpace();
-fl1060 = true ; 
-while (fl1060) { // BeginLoop 
+fl1067 = true ; 
+while (fl1067) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -20498,7 +20878,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1060 = false ; 
+fl1067 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -20508,10 +20888,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1062 = null;
+fl1069 = null;
 while(ctxt.lookAheadOpeningTag ("<DBMessage")) {
-fl1062 = acceptor.lAccept_DBMessage(ctxt, "</DBMessage>");
-appendMessages(fl1062);
+fl1069 = acceptor.lAccept_DBMessage(ctxt, "</DBMessage>");
+appendMessages(fl1069);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -20535,36 +20915,36 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1073;
-bool fl1074;
-bool fl1075;
-bool fl1076;
-bool fl1077;
-bool fl1078;
-bool fl1079;
 bool fl1080;
 bool fl1081;
 bool fl1082;
 bool fl1083;
 bool fl1084;
+bool fl1085;
+bool fl1086;
+bool fl1087;
+bool fl1088;
+bool fl1089;
+bool fl1090;
+bool fl1091;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1073 = false ; 
-fl1074 = false ; 
-fl1075 = false ; 
-fl1076 = false ; 
-fl1077 = false ; 
-fl1078 = false ; 
-fl1079 = false ; 
 fl1080 = false ; 
 fl1081 = false ; 
 fl1082 = false ; 
 fl1083 = false ; 
-fl1084 = true ; 
-while (fl1084) { // BeginLoop 
+fl1084 = false ; 
+fl1085 = false ; 
+fl1086 = false ; 
+fl1087 = false ; 
+fl1088 = false ; 
+fl1089 = false ; 
+fl1090 = false ; 
+fl1091 = true ; 
+while (fl1091) { // BeginLoop 
 switch (ctxt.current()) {
 case 'T':
 {
@@ -20579,9 +20959,9 @@ case 'i':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("onRequired=")){
-indicator = 1080;
+indicator = 1087;
 } else {
-indicator = 1085;
+indicator = 1092;
 } // If
 break;
 } // Case
@@ -20589,18 +20969,18 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAhead2('d','=')){
-indicator = 1081;
+indicator = 1088;
 } else {
-indicator = 1085;
+indicator = 1092;
 } // If
 break;
 } // Case
 default:
-indicator = 1085;
+indicator = 1092;
 break;
 } // Switch
 } else {
-indicator = 1085;
+indicator = 1092;
 } // If
 break;
 } // Case
@@ -20608,14 +20988,14 @@ case 'C':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("S_Order=")){
-indicator = 1073;
+indicator = 1080;
 } else {
-indicator = 1085;
+indicator = 1092;
 } // If
 break;
 } // Case
 default:
-indicator = 1085;
+indicator = 1092;
 break;
 } // Switch
 break;
@@ -20624,9 +21004,9 @@ case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1082;
+indicator = 1089;
 } else {
-indicator = 1085;
+indicator = 1092;
 } // If
 break;
 } // Case
@@ -20639,9 +21019,9 @@ case 'O':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('U','T','=')){
-indicator = 1079;
+indicator = 1086;
 } else {
-indicator = 1085;
+indicator = 1092;
 } // If
 break;
 } // Case
@@ -20649,18 +21029,18 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAhead2('N','=')){
-indicator = 1078;
-} else {
 indicator = 1085;
+} else {
+indicator = 1092;
 } // If
 break;
 } // Case
 default:
-indicator = 1085;
+indicator = 1092;
 break;
 } // Switch
 } else {
-indicator = 1085;
+indicator = 1092;
 } // If
 break;
 } // Case
@@ -20673,9 +21053,9 @@ case 'O':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('U','T','=')){
-indicator = 1077;
+indicator = 1084;
 } else {
-indicator = 1085;
+indicator = 1092;
 } // If
 break;
 } // Case
@@ -20683,18 +21063,18 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAhead2('N','=')){
-indicator = 1076;
+indicator = 1083;
 } else {
-indicator = 1085;
+indicator = 1092;
 } // If
 break;
 } // Case
 default:
-indicator = 1085;
+indicator = 1092;
 break;
 } // Switch
 } else {
-indicator = 1085;
+indicator = 1092;
 } // If
 break;
 } // Case
@@ -20702,9 +21082,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAhead2('O','=')){
-indicator = 1075;
+indicator = 1082;
 } else {
-indicator = 1085;
+indicator = 1092;
 } // If
 break;
 } // Case
@@ -20712,9 +21092,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1083;
+indicator = 1090;
 } else {
-indicator = 1085;
+indicator = 1092;
 } // If
 break;
 } // Case
@@ -20722,154 +21102,154 @@ case 'D':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("istance=")){
-indicator = 1074;
+indicator = 1081;
 } else {
-indicator = 1085;
+indicator = 1092;
 } // If
 break;
 } // Case
 default:
-indicator = 1085;
+indicator = 1092;
 break;
 } // Switch
 switch (indicator) {
-case 1073: {
+case 1080: {
 // Handling attribute TCS_Order
 // Also handles alien attributes with prefix TCS_Order
-if (fl1073){
+if (fl1080){
 ctxt.fail ("Duplicate attribute: TCS_Order");
 } // If
-fl1073 = true ; 
+fl1080 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setTCS_Order(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1074: {
+case 1081: {
 // Handling attribute Distance
 // Also handles alien attributes with prefix Distance
-if (fl1074){
+if (fl1081){
 ctxt.fail ("Duplicate attribute: Distance");
 } // If
-fl1074 = true ; 
+fl1081 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setDistance(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1075: {
+case 1082: {
 // Handling attribute IO
 // Also handles alien attributes with prefix IO
-if (fl1075){
+if (fl1082){
 ctxt.fail ("Duplicate attribute: IO");
 } // If
-fl1075 = true ; 
+fl1082 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setIO(acceptor.lAcceptEnum_ST_IO(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1076: {
+case 1083: {
 // Handling attribute LevelIN
 // Also handles alien attributes with prefix LevelIN
-if (fl1076){
+if (fl1083){
 ctxt.fail ("Duplicate attribute: LevelIN");
 } // If
-fl1076 = true ; 
+fl1083 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setLevelIN(acceptor.lAcceptEnum_ST_LEVEL(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1077: {
+case 1084: {
 // Handling attribute LevelOUT
 // Also handles alien attributes with prefix LevelOUT
-if (fl1077){
+if (fl1084){
 ctxt.fail ("Duplicate attribute: LevelOUT");
 } // If
-fl1077 = true ; 
+fl1084 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setLevelOUT(acceptor.lAcceptEnum_ST_LEVEL(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1078: {
+case 1085: {
 // Handling attribute ModeIN
 // Also handles alien attributes with prefix ModeIN
-if (fl1078){
+if (fl1085){
 ctxt.fail ("Duplicate attribute: ModeIN");
 } // If
-fl1078 = true ; 
+fl1085 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setModeIN(acceptor.lAcceptEnum_ST_MODE(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1079: {
+case 1086: {
 // Handling attribute ModeOUT
 // Also handles alien attributes with prefix ModeOUT
-if (fl1079){
+if (fl1086){
 ctxt.fail ("Duplicate attribute: ModeOUT");
 } // If
-fl1079 = true ; 
+fl1086 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setModeOUT(acceptor.lAcceptEnum_ST_MODE(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1080: {
+case 1087: {
 // Handling attribute TranslationRequired
 // Also handles alien attributes with prefix TranslationRequired
-if (fl1080){
+if (fl1087){
 ctxt.fail ("Duplicate attribute: TranslationRequired");
 } // If
-fl1080 = true ; 
+fl1087 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setTranslationRequired(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1081: {
+case 1088: {
 // Handling attribute Translated
 // Also handles alien attributes with prefix Translated
-if (fl1081){
+if (fl1088){
 ctxt.fail ("Duplicate attribute: Translated");
 } // If
-fl1081 = true ; 
+fl1088 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setTranslated(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1082: {
+case 1089: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1082){
+if (fl1089){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1082 = true ; 
+fl1089 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1083: {
+case 1090: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1083){
+if (fl1090){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1083 = true ; 
+fl1090 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -20877,7 +21257,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1085: {
+case 1092: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -20888,34 +21268,34 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1073){
+if (!fl1080){
 this.setTCS_Order(0);
 } // If
-if (!fl1074){
+if (!fl1081){
 this.setDistance(0);
 } // If
-if (!fl1075){
+if (!fl1082){
 this.setIO(acceptor.ST_IO.StIO_NA);
 } // If
-if (!fl1076){
+if (!fl1083){
 this.setLevelIN(acceptor.ST_LEVEL.StLevel_NA);
 } // If
-if (!fl1077){
+if (!fl1084){
 this.setLevelOUT(acceptor.ST_LEVEL.StLevel_NA);
 } // If
-if (!fl1078){
+if (!fl1085){
 this.setModeIN(acceptor.ST_MODE.Mode_NA);
 } // If
-if (!fl1079){
+if (!fl1086){
 this.setModeOUT(acceptor.ST_MODE.Mode_NA);
 } // If
-if (!fl1080){
+if (!fl1087){
 this.setTranslationRequired( true);
 } // If
-if (!fl1081){
+if (!fl1088){
 this.setTranslated( false);
 } // If
-fl1084 = false ; 
+fl1091 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -21134,6 +21514,7 @@ public partial class SubStep
 {
 public  override  bool find(Object search){
 if (search is String ) {
+if(getComment().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -21475,12 +21856,24 @@ public  void setSkipEngine(bool v) {
 }
 
 
+private   string  aComment;
+
+public   string  getComment() { return aComment;}
+
+public  void setComment( string  v) {
+  aComment = v;
+  __setDirty(true);
+  NotifyControllers(null);
+}
+
+
 public SubStep()
 {
 SubStep obj = this;
 aActions=(null);
 aExpectations=(null);
 aSkipEngine=(false);
+aComment=(null);
 }
 
 public void copyTo(SubStep other)
@@ -21489,6 +21882,7 @@ base.copyTo(other);
 other.aActions = aActions;
 other.aExpectations = aExpectations;
 other.aSkipEngine = aSkipEngine;
+other.aComment = aComment;
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -21503,19 +21897,20 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1102;
-Action fl1104;
-bool fl1115;
-Expectation fl1117;
+bool fl1109;
+bool fl1110;
+Action fl1112;
+bool fl1123;
+Expectation fl1125;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
 ctxt.skipWhiteSpace();
 // Optional Enclosed
-if (ctxt.lookAheadOpeningTag("<Actions")){
+if (ctxt.lookAheadOpeningTag("<Comment")){
 ctxt.skipWhiteSpace();
-fl1102 = true ; 
-while (fl1102) { // BeginLoop 
+fl1109 = true ; 
+while (fl1109) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -21526,7 +21921,35 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1102 = false ; 
+fl1109 = false ; 
+} // If
+} // While
+ctxt.accept('>');
+// Indicator
+// Parse PC data
+this.setComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
+// Regexp
+ctxt.skipWhiteSpace();
+ctxt.acceptString ("</Comment>");
+} // If
+// End enclosed
+ctxt.skipWhiteSpace();
+// Optional Enclosed
+if (ctxt.lookAheadOpeningTag("<Actions")){
+ctxt.skipWhiteSpace();
+fl1110 = true ; 
+while (fl1110) { // BeginLoop 
+ctxt.skipWhiteSpace();
+if (ctxt.isAlNum()){
+ctxt.skipTill ('=');
+ctxt.advance();
+ctxt.skipWhiteSpace();
+quoteChar = ctxt.acceptQuote();
+ctxt.skipTill (quoteChar);
+ctxt.accept(quoteChar);
+ctxt.skipWhiteSpace();
+} else {
+fl1110 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -21536,10 +21959,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1104 = null;
+fl1112 = null;
 while(ctxt.lookAheadOpeningTag ("<Action")) {
-fl1104 = acceptor.lAccept_Action(ctxt, "</Action>");
-appendActions(fl1104);
+fl1112 = acceptor.lAccept_Action(ctxt, "</Action>");
+appendActions(fl1112);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -21552,8 +21975,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Expectations")){
 ctxt.skipWhiteSpace();
-fl1115 = true ; 
-while (fl1115) { // BeginLoop 
+fl1123 = true ; 
+while (fl1123) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -21564,7 +21987,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1115 = false ; 
+fl1123 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -21574,10 +21997,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1117 = null;
+fl1125 = null;
 while(ctxt.lookAheadOpeningTag ("<Expectation")) {
-fl1117 = acceptor.lAccept_Expectation(ctxt, "</Expectation>");
-appendExpectations(fl1117);
+fl1125 = acceptor.lAccept_Expectation(ctxt, "</Expectation>");
+appendExpectations(fl1125);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -21601,28 +22024,28 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1128;
-bool fl1129;
-bool fl1130;
-bool fl1131;
+bool fl1136;
+bool fl1137;
+bool fl1138;
+bool fl1139;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1128 = false ; 
-fl1129 = false ; 
-fl1130 = false ; 
-fl1131 = true ; 
-while (fl1131) { // BeginLoop 
+fl1136 = false ; 
+fl1137 = false ; 
+fl1138 = false ; 
+fl1139 = true ; 
+while (fl1139) { // BeginLoop 
 switch (ctxt.current()) {
 case 'S':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("kipEngine=")){
-indicator = 1128;
+indicator = 1136;
 } else {
-indicator = 1132;
+indicator = 1140;
 } // If
 break;
 } // Case
@@ -21630,9 +22053,9 @@ case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1129;
+indicator = 1137;
 } else {
-indicator = 1132;
+indicator = 1140;
 } // If
 break;
 } // Case
@@ -21640,50 +22063,50 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1130;
+indicator = 1138;
 } else {
-indicator = 1132;
+indicator = 1140;
 } // If
 break;
 } // Case
 default:
-indicator = 1132;
+indicator = 1140;
 break;
 } // Switch
 switch (indicator) {
-case 1128: {
+case 1136: {
 // Handling attribute SkipEngine
 // Also handles alien attributes with prefix SkipEngine
-if (fl1128){
+if (fl1136){
 ctxt.fail ("Duplicate attribute: SkipEngine");
 } // If
-fl1128 = true ; 
+fl1136 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setSkipEngine(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1129: {
+case 1137: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1129){
+if (fl1137){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1129 = true ; 
+fl1137 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1130: {
+case 1138: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1130){
+if (fl1138){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1130 = true ; 
+fl1138 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -21691,7 +22114,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1132: {
+case 1140: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -21702,10 +22125,10 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1128){
+if (!fl1136){
 this.setSkipEngine( false);
 } // If
-fl1131 = false ; 
+fl1139 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -21782,6 +22205,17 @@ int i;
 
 base.unParseBody(pw);
 // Unparsing Enclosed
+// Testing for empty content: Comment
+if (this.getComment() != null){
+pw.Write("<Comment>");
+// Unparsing PcData
+acceptor.unParsePcData(pw, this.getComment());
+pw.Write("</Comment>");
+// Father is not a mixed
+pw.Write('\n');
+} // If
+// After Testing for empty content: Comment
+// Unparsing Enclosed
 // Testing for empty content: Actions
 if (countActions() > 0){
 pw.Write("<Actions>");
@@ -21840,6 +22274,7 @@ public  override  bool find(Object search){
 if (search is String ) {
 if(getValue().CompareTo((String) search) == 0)return true;
 if(getCondition().CompareTo((String) search) == 0)return true;
+if(getComment().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -21920,6 +22355,17 @@ public  void setCondition( string  v) {
 }
 
 
+private   string  aComment;
+
+public   string  getComment() { return aComment;}
+
+public  void setComment( string  v) {
+  aComment = v;
+  __setDirty(true);
+  NotifyControllers(null);
+}
+
+
 public Expectation()
 {
 Expectation obj = this;
@@ -21928,6 +22374,7 @@ aBlocking=(false);
 aKind=(0);
 aDeadLine=(0.0);
 aCondition=(null);
+aComment=(null);
 }
 
 public void copyTo(Expectation other)
@@ -21938,6 +22385,7 @@ other.aBlocking = aBlocking;
 other.aKind = aKind;
 other.aDeadLine = aDeadLine;
 other.aCondition = aCondition;
+other.aComment = aComment;
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -21952,20 +22400,17 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1137;
+bool fl1145;
+bool fl1146;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
-// Indicator
-// Parse PC data
-this.setValue(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
-// Regexp
 ctxt.skipWhiteSpace();
 // Optional Enclosed
-if (ctxt.lookAheadOpeningTag("<Condition")){
+if (ctxt.lookAheadOpeningTag("<Comment")){
 ctxt.skipWhiteSpace();
-fl1137 = true ; 
-while (fl1137) { // BeginLoop 
+fl1145 = true ; 
+while (fl1145) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -21976,7 +22421,39 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1137 = false ; 
+fl1145 = false ; 
+} // If
+} // While
+ctxt.accept('>');
+// Indicator
+// Parse PC data
+this.setComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
+// Regexp
+ctxt.skipWhiteSpace();
+ctxt.acceptString ("</Comment>");
+} // If
+// End enclosed
+// Indicator
+// Parse PC data
+this.setValue(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
+// Regexp
+ctxt.skipWhiteSpace();
+// Optional Enclosed
+if (ctxt.lookAheadOpeningTag("<Condition")){
+ctxt.skipWhiteSpace();
+fl1146 = true ; 
+while (fl1146) { // BeginLoop 
+ctxt.skipWhiteSpace();
+if (ctxt.isAlNum()){
+ctxt.skipTill ('=');
+ctxt.advance();
+ctxt.skipWhiteSpace();
+quoteChar = ctxt.acceptQuote();
+ctxt.skipTill (quoteChar);
+ctxt.accept(quoteChar);
+ctxt.skipWhiteSpace();
+} else {
+fl1146 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -22003,32 +22480,32 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1138;
-bool fl1139;
-bool fl1140;
-bool fl1141;
-bool fl1142;
-bool fl1143;
+bool fl1147;
+bool fl1148;
+bool fl1149;
+bool fl1150;
+bool fl1151;
+bool fl1152;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1138 = false ; 
-fl1139 = false ; 
-fl1140 = false ; 
-fl1141 = false ; 
-fl1142 = false ; 
-fl1143 = true ; 
-while (fl1143) { // BeginLoop 
+fl1147 = false ; 
+fl1148 = false ; 
+fl1149 = false ; 
+fl1150 = false ; 
+fl1151 = false ; 
+fl1152 = true ; 
+while (fl1152) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1141;
+indicator = 1150;
 } else {
-indicator = 1144;
+indicator = 1153;
 } // If
 break;
 } // Case
@@ -22036,9 +22513,9 @@ case 'K':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ind=")){
-indicator = 1138;
+indicator = 1147;
 } else {
-indicator = 1144;
+indicator = 1153;
 } // If
 break;
 } // Case
@@ -22046,9 +22523,9 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1142;
+indicator = 1151;
 } else {
-indicator = 1144;
+indicator = 1153;
 } // If
 break;
 } // Case
@@ -22056,9 +22533,9 @@ case 'D':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("eadLine=")){
-indicator = 1140;
+indicator = 1149;
 } else {
-indicator = 1144;
+indicator = 1153;
 } // If
 break;
 } // Case
@@ -22066,76 +22543,76 @@ case 'B':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("locking=")){
-indicator = 1139;
+indicator = 1148;
 } else {
-indicator = 1144;
+indicator = 1153;
 } // If
 break;
 } // Case
 default:
-indicator = 1144;
+indicator = 1153;
 break;
 } // Switch
 switch (indicator) {
-case 1138: {
+case 1147: {
 // Handling attribute Kind
 // Also handles alien attributes with prefix Kind
-if (fl1138){
+if (fl1147){
 ctxt.fail ("Duplicate attribute: Kind");
 } // If
-fl1138 = true ; 
+fl1147 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setKind(acceptor.lAcceptEnum_ExpectationKind(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1139: {
+case 1148: {
 // Handling attribute Blocking
 // Also handles alien attributes with prefix Blocking
-if (fl1139){
+if (fl1148){
 ctxt.fail ("Duplicate attribute: Blocking");
 } // If
-fl1139 = true ; 
+fl1148 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setBlocking(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1140: {
+case 1149: {
 // Handling attribute DeadLine
 // Also handles alien attributes with prefix DeadLine
-if (fl1140){
+if (fl1149){
 ctxt.fail ("Duplicate attribute: DeadLine");
 } // If
-fl1140 = true ; 
+fl1149 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setDeadLine(ctxt.fetchDouble());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1141: {
+case 1150: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1141){
+if (fl1150){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1141 = true ; 
+fl1150 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1142: {
+case 1151: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1142){
+if (fl1151){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1142 = true ; 
+fl1151 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -22143,7 +22620,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1144: {
+case 1153: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -22154,16 +22631,16 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1138){
+if (!fl1147){
 this.setKind(acceptor.ExpectationKind.aInstantaneous);
 } // If
-if (!fl1139){
+if (!fl1148){
 this.setBlocking( true);
 } // If
-if (!fl1140){
+if (!fl1149){
 this.setDeadLine(0.0);
 } // If
-fl1143 = false ; 
+fl1152 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -22245,6 +22722,17 @@ int i;
 #pragma warning restore 0168, 0219
 
 base.unParseBody(pw);
+// Unparsing Enclosed
+// Testing for empty content: Comment
+if (this.getComment() != null){
+pw.Write("<Comment>");
+// Unparsing PcData
+acceptor.unParsePcData(pw, this.getComment());
+pw.Write("</Comment>");
+// Father is not a mixed
+pw.Write('\n');
+} // If
+// After Testing for empty content: Comment
 // Unparsing PcData
 acceptor.unParsePcData(pw, this.getValue());
 // Unparsing Enclosed
@@ -22682,10 +23170,10 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1151;
-DBField fl1153;
-bool fl1164;
-DBPacket fl1166;
+bool fl1160;
+DBField fl1162;
+bool fl1173;
+DBPacket fl1175;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -22693,8 +23181,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Fields")){
 ctxt.skipWhiteSpace();
-fl1151 = true ; 
-while (fl1151) { // BeginLoop 
+fl1160 = true ; 
+while (fl1160) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -22705,7 +23193,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1151 = false ; 
+fl1160 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -22715,10 +23203,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1153 = null;
+fl1162 = null;
 while(ctxt.lookAheadOpeningTag ("<DBField")) {
-fl1153 = acceptor.lAccept_DBField(ctxt, "</DBField>");
-appendFields(fl1153);
+fl1162 = acceptor.lAccept_DBField(ctxt, "</DBField>");
+appendFields(fl1162);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -22731,8 +23219,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Packets")){
 ctxt.skipWhiteSpace();
-fl1164 = true ; 
-while (fl1164) { // BeginLoop 
+fl1173 = true ; 
+while (fl1173) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -22743,7 +23231,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1164 = false ; 
+fl1173 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -22753,10 +23241,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1166 = null;
+fl1175 = null;
 while(ctxt.lookAheadOpeningTag ("<DBPacket")) {
-fl1166 = acceptor.lAccept_DBPacket(ctxt, "</DBPacket>");
-appendPackets(fl1166);
+fl1175 = acceptor.lAccept_DBPacket(ctxt, "</DBPacket>");
+appendPackets(fl1175);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -22780,30 +23268,30 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1177;
-bool fl1178;
-bool fl1179;
-bool fl1180;
-bool fl1181;
+bool fl1186;
+bool fl1187;
+bool fl1188;
+bool fl1189;
+bool fl1190;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1177 = false ; 
-fl1178 = false ; 
-fl1179 = false ; 
-fl1180 = false ; 
-fl1181 = true ; 
-while (fl1181) { // BeginLoop 
+fl1186 = false ; 
+fl1187 = false ; 
+fl1188 = false ; 
+fl1189 = false ; 
+fl1190 = true ; 
+while (fl1190) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1179;
+indicator = 1188;
 } else {
-indicator = 1182;
+indicator = 1191;
 } // If
 break;
 } // Case
@@ -22816,9 +23304,9 @@ case 'T':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ype=")){
-indicator = 1178;
+indicator = 1187;
 } else {
-indicator = 1182;
+indicator = 1191;
 } // If
 break;
 } // Case
@@ -22826,18 +23314,18 @@ case 'O':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("rder=")){
-indicator = 1177;
+indicator = 1186;
 } else {
-indicator = 1182;
+indicator = 1191;
 } // If
 break;
 } // Case
 default:
-indicator = 1182;
+indicator = 1191;
 break;
 } // Switch
 } else {
-indicator = 1182;
+indicator = 1191;
 } // If
 break;
 } // Case
@@ -22845,63 +23333,63 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1180;
+indicator = 1189;
 } else {
-indicator = 1182;
+indicator = 1191;
 } // If
 break;
 } // Case
 default:
-indicator = 1182;
+indicator = 1191;
 break;
 } // Switch
 switch (indicator) {
-case 1177: {
+case 1186: {
 // Handling attribute MessageOrder
 // Also handles alien attributes with prefix MessageOrder
-if (fl1177){
+if (fl1186){
 ctxt.fail ("Duplicate attribute: MessageOrder");
 } // If
-fl1177 = true ; 
+fl1186 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setMessageOrder(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1178: {
+case 1187: {
 // Handling attribute MessageType
 // Also handles alien attributes with prefix MessageType
-if (fl1178){
+if (fl1187){
 ctxt.fail ("Duplicate attribute: MessageType");
 } // If
-fl1178 = true ; 
+fl1187 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setMessageType(acceptor.lAcceptEnum_DBMessageType(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1179: {
+case 1188: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1179){
+if (fl1188){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1179 = true ; 
+fl1188 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1180: {
+case 1189: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1180){
+if (fl1189){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1180 = true ; 
+fl1189 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -22909,7 +23397,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1182: {
+case 1191: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -22920,13 +23408,13 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1177){
+if (!fl1186){
 this.setMessageOrder(0);
 } // If
-if (!fl1178){
+if (!fl1187){
 this.setMessageType(acceptor.DBMessageType.aEUROBALISE);
 } // If
-fl1181 = false ; 
+fl1190 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -23259,8 +23747,8 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1189;
-DBField fl1191;
+bool fl1198;
+DBField fl1200;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -23268,8 +23756,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Fields")){
 ctxt.skipWhiteSpace();
-fl1189 = true ; 
-while (fl1189) { // BeginLoop 
+fl1198 = true ; 
+while (fl1198) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -23280,7 +23768,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1189 = false ; 
+fl1198 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -23290,10 +23778,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1191 = null;
+fl1200 = null;
 while(ctxt.lookAheadOpeningTag ("<DBField")) {
-fl1191 = acceptor.lAccept_DBField(ctxt, "</DBField>");
-appendFields(fl1191);
+fl1200 = acceptor.lAccept_DBField(ctxt, "</DBField>");
+appendFields(fl1200);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -23317,26 +23805,26 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1202;
-bool fl1203;
-bool fl1204;
+bool fl1211;
+bool fl1212;
+bool fl1213;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1202 = false ; 
-fl1203 = false ; 
-fl1204 = true ; 
-while (fl1204) { // BeginLoop 
+fl1211 = false ; 
+fl1212 = false ; 
+fl1213 = true ; 
+while (fl1213) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1202;
+indicator = 1211;
 } else {
-indicator = 1205;
+indicator = 1214;
 } // If
 break;
 } // Case
@@ -23344,37 +23832,37 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1203;
+indicator = 1212;
 } else {
-indicator = 1205;
+indicator = 1214;
 } // If
 break;
 } // Case
 default:
-indicator = 1205;
+indicator = 1214;
 break;
 } // Switch
 switch (indicator) {
-case 1202: {
+case 1211: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1202){
+if (fl1211){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1202 = true ; 
+fl1211 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1203: {
+case 1212: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1203){
+if (fl1212){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1203 = true ; 
+fl1212 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -23382,7 +23870,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1205: {
+case 1214: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -23393,7 +23881,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1204 = false ; 
+fl1213 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -23561,7 +24049,7 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1209;
+bool fl1218;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -23569,8 +24057,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Variable")){
 ctxt.skipWhiteSpace();
-fl1209 = true ; 
-while (fl1209) { // BeginLoop 
+fl1218 = true ; 
+while (fl1218) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -23581,7 +24069,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1209 = false ; 
+fl1218 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -23608,28 +24096,28 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1210;
-bool fl1211;
-bool fl1212;
-bool fl1213;
+bool fl1219;
+bool fl1220;
+bool fl1221;
+bool fl1222;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1210 = false ; 
-fl1211 = false ; 
-fl1212 = false ; 
-fl1213 = true ; 
-while (fl1213) { // BeginLoop 
+fl1219 = false ; 
+fl1220 = false ; 
+fl1221 = false ; 
+fl1222 = true ; 
+while (fl1222) { // BeginLoop 
 switch (ctxt.current()) {
 case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("alue=")){
-indicator = 1210;
+indicator = 1219;
 } else {
-indicator = 1214;
+indicator = 1223;
 } // If
 break;
 } // Case
@@ -23637,9 +24125,9 @@ case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1211;
+indicator = 1220;
 } else {
-indicator = 1214;
+indicator = 1223;
 } // If
 break;
 } // Case
@@ -23647,50 +24135,50 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1212;
+indicator = 1221;
 } else {
-indicator = 1214;
+indicator = 1223;
 } // If
 break;
 } // Case
 default:
-indicator = 1214;
+indicator = 1223;
 break;
 } // Switch
 switch (indicator) {
-case 1210: {
+case 1219: {
 // Handling attribute Value
 // Also handles alien attributes with prefix Value
-if (fl1210){
+if (fl1219){
 ctxt.fail ("Duplicate attribute: Value");
 } // If
-fl1210 = true ; 
+fl1219 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setValue(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1211: {
+case 1220: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1211){
+if (fl1220){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1211 = true ; 
+fl1220 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1212: {
+case 1221: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1212){
+if (fl1221){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1212 = true ; 
+fl1221 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -23698,7 +24186,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1214: {
+case 1223: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -23709,10 +24197,10 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1210){
+if (!fl1219){
 this.setValue(0);
 } // If
-fl1213 = false ; 
+fl1222 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -24180,10 +24668,10 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1219;
-Folder fl1221;
-bool fl1232;
-Translation fl1234;
+bool fl1228;
+Folder fl1230;
+bool fl1241;
+Translation fl1243;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -24191,8 +24679,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Folders")){
 ctxt.skipWhiteSpace();
-fl1219 = true ; 
-while (fl1219) { // BeginLoop 
+fl1228 = true ; 
+while (fl1228) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -24203,7 +24691,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1219 = false ; 
+fl1228 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -24213,10 +24701,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1221 = null;
+fl1230 = null;
 while(ctxt.lookAheadOpeningTag ("<Folder")) {
-fl1221 = acceptor.lAccept_Folder(ctxt, "</Folder>");
-appendFolders(fl1221);
+fl1230 = acceptor.lAccept_Folder(ctxt, "</Folder>");
+appendFolders(fl1230);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -24229,8 +24717,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Translations")){
 ctxt.skipWhiteSpace();
-fl1232 = true ; 
-while (fl1232) { // BeginLoop 
+fl1241 = true ; 
+while (fl1241) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -24241,7 +24729,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1232 = false ; 
+fl1241 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -24251,10 +24739,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1234 = null;
+fl1243 = null;
 while(ctxt.lookAheadOpeningTag ("<Translation")) {
-fl1234 = acceptor.lAccept_Translation(ctxt, "</Translation>");
-appendTranslations(fl1234);
+fl1243 = acceptor.lAccept_Translation(ctxt, "</Translation>");
+appendTranslations(fl1243);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -24278,26 +24766,26 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1245;
-bool fl1246;
-bool fl1247;
+bool fl1254;
+bool fl1255;
+bool fl1256;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1245 = false ; 
-fl1246 = false ; 
-fl1247 = true ; 
-while (fl1247) { // BeginLoop 
+fl1254 = false ; 
+fl1255 = false ; 
+fl1256 = true ; 
+while (fl1256) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1245;
+indicator = 1254;
 } else {
-indicator = 1248;
+indicator = 1257;
 } // If
 break;
 } // Case
@@ -24305,37 +24793,37 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1246;
+indicator = 1255;
 } else {
-indicator = 1248;
+indicator = 1257;
 } // If
 break;
 } // Case
 default:
-indicator = 1248;
+indicator = 1257;
 break;
 } // Switch
 switch (indicator) {
-case 1245: {
+case 1254: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1245){
+if (fl1254){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1245 = true ; 
+fl1254 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1246: {
+case 1255: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1246){
+if (fl1255){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1246 = true ; 
+fl1255 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -24343,7 +24831,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1248: {
+case 1257: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -24354,7 +24842,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1247 = false ; 
+fl1256 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -24837,10 +25325,10 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1252;
-Folder fl1254;
-bool fl1265;
-Translation fl1267;
+bool fl1261;
+Folder fl1263;
+bool fl1274;
+Translation fl1276;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -24848,8 +25336,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Folders")){
 ctxt.skipWhiteSpace();
-fl1252 = true ; 
-while (fl1252) { // BeginLoop 
+fl1261 = true ; 
+while (fl1261) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -24860,7 +25348,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1252 = false ; 
+fl1261 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -24870,10 +25358,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1254 = null;
+fl1263 = null;
 while(ctxt.lookAheadOpeningTag ("<Folder")) {
-fl1254 = acceptor.lAccept_Folder(ctxt, "</Folder>");
-appendFolders(fl1254);
+fl1263 = acceptor.lAccept_Folder(ctxt, "</Folder>");
+appendFolders(fl1263);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -24886,8 +25374,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Translations")){
 ctxt.skipWhiteSpace();
-fl1265 = true ; 
-while (fl1265) { // BeginLoop 
+fl1274 = true ; 
+while (fl1274) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -24898,7 +25386,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1265 = false ; 
+fl1274 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -24908,10 +25396,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1267 = null;
+fl1276 = null;
 while(ctxt.lookAheadOpeningTag ("<Translation")) {
-fl1267 = acceptor.lAccept_Translation(ctxt, "</Translation>");
-appendTranslations(fl1267);
+fl1276 = acceptor.lAccept_Translation(ctxt, "</Translation>");
+appendTranslations(fl1276);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -24935,26 +25423,26 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1278;
-bool fl1279;
-bool fl1280;
+bool fl1287;
+bool fl1288;
+bool fl1289;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1278 = false ; 
-fl1279 = false ; 
-fl1280 = true ; 
-while (fl1280) { // BeginLoop 
+fl1287 = false ; 
+fl1288 = false ; 
+fl1289 = true ; 
+while (fl1289) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1278;
+indicator = 1287;
 } else {
-indicator = 1281;
+indicator = 1290;
 } // If
 break;
 } // Case
@@ -24962,37 +25450,37 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1279;
+indicator = 1288;
 } else {
-indicator = 1281;
+indicator = 1290;
 } // If
 break;
 } // Case
 default:
-indicator = 1281;
+indicator = 1290;
 break;
 } // Switch
 switch (indicator) {
-case 1278: {
+case 1287: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1278){
+if (fl1287){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1278 = true ; 
+fl1287 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1279: {
+case 1288: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1279){
+if (fl1288){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1279 = true ; 
+fl1288 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -25000,7 +25488,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1281: {
+case 1290: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -25011,7 +25499,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1280 = false ; 
+fl1289 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -25521,11 +26009,11 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1285;
-SourceText fl1287;
-bool fl1298;
-SubStep fl1300;
-bool fl1311;
+bool fl1294;
+SourceText fl1296;
+bool fl1307;
+SubStep fl1309;
+bool fl1320;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -25533,8 +26021,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<SourceTexts")){
 ctxt.skipWhiteSpace();
-fl1285 = true ; 
-while (fl1285) { // BeginLoop 
+fl1294 = true ; 
+while (fl1294) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -25545,7 +26033,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1285 = false ; 
+fl1294 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -25555,10 +26043,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1287 = null;
+fl1296 = null;
 while(ctxt.lookAheadOpeningTag ("<SourceText")) {
-fl1287 = acceptor.lAccept_SourceText(ctxt, "</SourceText>");
-appendSourceTexts(fl1287);
+fl1296 = acceptor.lAccept_SourceText(ctxt, "</SourceText>");
+appendSourceTexts(fl1296);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -25571,8 +26059,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<SubSteps")){
 ctxt.skipWhiteSpace();
-fl1298 = true ; 
-while (fl1298) { // BeginLoop 
+fl1307 = true ; 
+while (fl1307) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -25583,7 +26071,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1298 = false ; 
+fl1307 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -25593,10 +26081,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1300 = null;
+fl1309 = null;
 while(ctxt.lookAheadOpeningTag ("<SubStep")) {
-fl1300 = acceptor.lAccept_SubStep(ctxt, "</SubStep>");
-appendSubSteps(fl1300);
+fl1309 = acceptor.lAccept_SubStep(ctxt, "</SubStep>");
+appendSubSteps(fl1309);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -25609,8 +26097,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Comment")){
 ctxt.skipWhiteSpace();
-fl1311 = true ; 
-while (fl1311) { // BeginLoop 
+fl1320 = true ; 
+while (fl1320) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -25621,7 +26109,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1311 = false ; 
+fl1320 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -25648,28 +26136,28 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1312;
-bool fl1313;
-bool fl1314;
-bool fl1315;
+bool fl1321;
+bool fl1322;
+bool fl1323;
+bool fl1324;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1312 = false ; 
-fl1313 = false ; 
-fl1314 = false ; 
-fl1315 = true ; 
-while (fl1315) { // BeginLoop 
+fl1321 = false ; 
+fl1322 = false ; 
+fl1323 = false ; 
+fl1324 = true ; 
+while (fl1324) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1313;
+indicator = 1322;
 } else {
-indicator = 1316;
+indicator = 1325;
 } // If
 break;
 } // Case
@@ -25677,9 +26165,9 @@ case 'I':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("mplemented=")){
-indicator = 1312;
+indicator = 1321;
 } else {
-indicator = 1316;
+indicator = 1325;
 } // If
 break;
 } // Case
@@ -25687,50 +26175,50 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1314;
+indicator = 1323;
 } else {
-indicator = 1316;
+indicator = 1325;
 } // If
 break;
 } // Case
 default:
-indicator = 1316;
+indicator = 1325;
 break;
 } // Switch
 switch (indicator) {
-case 1312: {
+case 1321: {
 // Handling attribute Implemented
 // Also handles alien attributes with prefix Implemented
-if (fl1312){
+if (fl1321){
 ctxt.fail ("Duplicate attribute: Implemented");
 } // If
-fl1312 = true ; 
+fl1321 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplemented(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1313: {
+case 1322: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1313){
+if (fl1322){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1313 = true ; 
+fl1322 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1314: {
+case 1323: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1314){
+if (fl1323){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1314 = true ; 
+fl1323 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -25738,7 +26226,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1316: {
+case 1325: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -25749,10 +26237,10 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1312){
+if (!fl1321){
 this.setImplemented( false);
 } // If
-fl1315 = false ; 
+fl1324 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -25944,26 +26432,26 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1321;
-bool fl1322;
-bool fl1323;
+bool fl1330;
+bool fl1331;
+bool fl1332;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1321 = false ; 
-fl1322 = false ; 
-fl1323 = true ; 
-while (fl1323) { // BeginLoop 
+fl1330 = false ; 
+fl1331 = false ; 
+fl1332 = true ; 
+while (fl1332) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1321;
+indicator = 1330;
 } else {
-indicator = 1324;
+indicator = 1333;
 } // If
 break;
 } // Case
@@ -25971,37 +26459,37 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1322;
+indicator = 1331;
 } else {
-indicator = 1324;
+indicator = 1333;
 } // If
 break;
 } // Case
 default:
-indicator = 1324;
+indicator = 1333;
 break;
 } // Switch
 switch (indicator) {
-case 1321: {
+case 1330: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1321){
+if (fl1330){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1321 = true ; 
+fl1330 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1322: {
+case 1331: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1322){
+if (fl1331){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1322 = true ; 
+fl1331 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -26009,7 +26497,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1324: {
+case 1333: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -26020,7 +26508,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1323 = false ; 
+fl1332 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -26471,10 +26959,10 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1328;
-ShortcutFolder fl1330;
-bool fl1341;
-Shortcut fl1343;
+bool fl1337;
+ShortcutFolder fl1339;
+bool fl1350;
+Shortcut fl1352;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -26482,8 +26970,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Folders")){
 ctxt.skipWhiteSpace();
-fl1328 = true ; 
-while (fl1328) { // BeginLoop 
+fl1337 = true ; 
+while (fl1337) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -26494,7 +26982,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1328 = false ; 
+fl1337 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -26504,10 +26992,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1330 = null;
+fl1339 = null;
 while(ctxt.lookAheadOpeningTag ("<ShortcutFolder")) {
-fl1330 = acceptor.lAccept_ShortcutFolder(ctxt, "</ShortcutFolder>");
-appendFolders(fl1330);
+fl1339 = acceptor.lAccept_ShortcutFolder(ctxt, "</ShortcutFolder>");
+appendFolders(fl1339);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -26520,8 +27008,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Shortcuts")){
 ctxt.skipWhiteSpace();
-fl1341 = true ; 
-while (fl1341) { // BeginLoop 
+fl1350 = true ; 
+while (fl1350) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -26532,7 +27020,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1341 = false ; 
+fl1350 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -26542,10 +27030,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1343 = null;
+fl1352 = null;
 while(ctxt.lookAheadOpeningTag ("<Shortcut")) {
-fl1343 = acceptor.lAccept_Shortcut(ctxt, "</Shortcut>");
-appendShortcuts(fl1343);
+fl1352 = acceptor.lAccept_Shortcut(ctxt, "</Shortcut>");
+appendShortcuts(fl1352);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -26569,26 +27057,26 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1354;
-bool fl1355;
-bool fl1356;
+bool fl1363;
+bool fl1364;
+bool fl1365;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1354 = false ; 
-fl1355 = false ; 
-fl1356 = true ; 
-while (fl1356) { // BeginLoop 
+fl1363 = false ; 
+fl1364 = false ; 
+fl1365 = true ; 
+while (fl1365) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1354;
+indicator = 1363;
 } else {
-indicator = 1357;
+indicator = 1366;
 } // If
 break;
 } // Case
@@ -26596,37 +27084,37 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1355;
+indicator = 1364;
 } else {
-indicator = 1357;
+indicator = 1366;
 } // If
 break;
 } // Case
 default:
-indicator = 1357;
+indicator = 1366;
 break;
 } // Switch
 switch (indicator) {
-case 1354: {
+case 1363: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1354){
+if (fl1363){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1354 = true ; 
+fl1363 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1355: {
+case 1364: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1355){
+if (fl1364){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1355 = true ; 
+fl1364 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -26634,7 +27122,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1357: {
+case 1366: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -26645,7 +27133,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1356 = false ; 
+fl1365 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -27128,10 +27616,10 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1361;
-ShortcutFolder fl1363;
-bool fl1374;
-Shortcut fl1376;
+bool fl1370;
+ShortcutFolder fl1372;
+bool fl1383;
+Shortcut fl1385;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -27139,8 +27627,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Folders")){
 ctxt.skipWhiteSpace();
-fl1361 = true ; 
-while (fl1361) { // BeginLoop 
+fl1370 = true ; 
+while (fl1370) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -27151,7 +27639,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1361 = false ; 
+fl1370 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -27161,10 +27649,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1363 = null;
+fl1372 = null;
 while(ctxt.lookAheadOpeningTag ("<ShortcutFolder")) {
-fl1363 = acceptor.lAccept_ShortcutFolder(ctxt, "</ShortcutFolder>");
-appendFolders(fl1363);
+fl1372 = acceptor.lAccept_ShortcutFolder(ctxt, "</ShortcutFolder>");
+appendFolders(fl1372);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -27177,8 +27665,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Shortcuts")){
 ctxt.skipWhiteSpace();
-fl1374 = true ; 
-while (fl1374) { // BeginLoop 
+fl1383 = true ; 
+while (fl1383) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -27189,7 +27677,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1374 = false ; 
+fl1383 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -27199,10 +27687,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1376 = null;
+fl1385 = null;
 while(ctxt.lookAheadOpeningTag ("<Shortcut")) {
-fl1376 = acceptor.lAccept_Shortcut(ctxt, "</Shortcut>");
-appendShortcuts(fl1376);
+fl1385 = acceptor.lAccept_Shortcut(ctxt, "</Shortcut>");
+appendShortcuts(fl1385);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -27226,26 +27714,26 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1387;
-bool fl1388;
-bool fl1389;
+bool fl1396;
+bool fl1397;
+bool fl1398;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1387 = false ; 
-fl1388 = false ; 
-fl1389 = true ; 
-while (fl1389) { // BeginLoop 
+fl1396 = false ; 
+fl1397 = false ; 
+fl1398 = true ; 
+while (fl1398) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1387;
+indicator = 1396;
 } else {
-indicator = 1390;
+indicator = 1399;
 } // If
 break;
 } // Case
@@ -27253,37 +27741,37 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1388;
+indicator = 1397;
 } else {
-indicator = 1390;
+indicator = 1399;
 } // If
 break;
 } // Case
 default:
-indicator = 1390;
+indicator = 1399;
 break;
 } // Switch
 switch (indicator) {
-case 1387: {
+case 1396: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1387){
+if (fl1396){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1387 = true ; 
+fl1396 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1388: {
+case 1397: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1388){
+if (fl1397){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1388 = true ; 
+fl1397 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -27291,7 +27779,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1390: {
+case 1399: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -27302,7 +27790,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1389 = false ; 
+fl1398 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -27473,7 +27961,7 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1394;
+bool fl1403;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -27481,8 +27969,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<ShortcutName")){
 ctxt.skipWhiteSpace();
-fl1394 = true ; 
-while (fl1394) { // BeginLoop 
+fl1403 = true ; 
+while (fl1403) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -27493,7 +27981,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1394 = false ; 
+fl1403 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -27520,26 +28008,26 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1395;
-bool fl1396;
-bool fl1397;
+bool fl1404;
+bool fl1405;
+bool fl1406;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1395 = false ; 
-fl1396 = false ; 
-fl1397 = true ; 
-while (fl1397) { // BeginLoop 
+fl1404 = false ; 
+fl1405 = false ; 
+fl1406 = true ; 
+while (fl1406) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1395;
+indicator = 1404;
 } else {
-indicator = 1398;
+indicator = 1407;
 } // If
 break;
 } // Case
@@ -27547,37 +28035,37 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1396;
+indicator = 1405;
 } else {
-indicator = 1398;
+indicator = 1407;
 } // If
 break;
 } // Case
 default:
-indicator = 1398;
+indicator = 1407;
 break;
 } // Switch
 switch (indicator) {
-case 1395: {
+case 1404: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1395){
+if (fl1404){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1395 = true ; 
+fl1404 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1396: {
+case 1405: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1396){
+if (fl1405){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1396 = true ; 
+fl1405 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -27585,7 +28073,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1398: {
+case 1407: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -27596,7 +28084,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1397 = false ; 
+fl1406 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -28072,26 +28560,26 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-Chapter fl1403;
-ChapterRef fl1415;
+Chapter fl1412;
+ChapterRef fl1424;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
 // Repeat
 ctxt.skipWhiteSpace();
-fl1403 = null;
+fl1412 = null;
 while(ctxt.lookAheadOpeningTag ("<Chapter")) {
-fl1403 = acceptor.lAccept_Chapter(ctxt, "</Chapter>");
-appendChapters(fl1403);
+fl1412 = acceptor.lAccept_Chapter(ctxt, "</Chapter>");
+appendChapters(fl1412);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
 // Repeat
 ctxt.skipWhiteSpace();
-fl1415 = null;
+fl1424 = null;
 while(ctxt.lookAheadOpeningTag ("<ChapterRef")) {
-fl1415 = acceptor.lAccept_ChapterRef(ctxt, "</ChapterRef>");
-appendChapterRefs(fl1415);
+fl1424 = acceptor.lAccept_ChapterRef(ctxt, "</ChapterRef>");
+appendChapterRefs(fl1424);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -28110,28 +28598,28 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1426;
-bool fl1427;
-bool fl1428;
-bool fl1429;
+bool fl1435;
+bool fl1436;
+bool fl1437;
+bool fl1438;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1426 = false ; 
-fl1427 = false ; 
-fl1428 = false ; 
-fl1429 = true ; 
-while (fl1429) { // BeginLoop 
+fl1435 = false ; 
+fl1436 = false ; 
+fl1437 = false ; 
+fl1438 = true ; 
+while (fl1438) { // BeginLoop 
 switch (ctxt.current()) {
 case 'v':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ersion=")){
-indicator = 1426;
+indicator = 1435;
 } else {
-indicator = 1430;
+indicator = 1439;
 } // If
 break;
 } // Case
@@ -28139,9 +28627,9 @@ case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1427;
+indicator = 1436;
 } else {
-indicator = 1430;
+indicator = 1439;
 } // If
 break;
 } // Case
@@ -28149,50 +28637,50 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1428;
+indicator = 1437;
 } else {
-indicator = 1430;
+indicator = 1439;
 } // If
 break;
 } // Case
 default:
-indicator = 1430;
+indicator = 1439;
 break;
 } // Switch
 switch (indicator) {
-case 1426: {
+case 1435: {
 // Handling attribute version
 // Also handles alien attributes with prefix version
-if (fl1426){
+if (fl1435){
 ctxt.fail ("Duplicate attribute: version");
 } // If
-fl1426 = true ; 
+fl1435 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVersion((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1427: {
+case 1436: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1427){
+if (fl1436){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1427 = true ; 
+fl1436 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1428: {
+case 1437: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1428){
+if (fl1437){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1428 = true ; 
+fl1437 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -28200,7 +28688,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1430: {
+case 1439: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -28211,7 +28699,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1429 = false ; 
+fl1438 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -28372,26 +28860,26 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1435;
-bool fl1436;
-bool fl1437;
+bool fl1444;
+bool fl1445;
+bool fl1446;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1435 = false ; 
-fl1436 = false ; 
-fl1437 = true ; 
-while (fl1437) { // BeginLoop 
+fl1444 = false ; 
+fl1445 = false ; 
+fl1446 = true ; 
+while (fl1446) { // BeginLoop 
 switch (ctxt.current()) {
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1435;
+indicator = 1444;
 } else {
-indicator = 1438;
+indicator = 1447;
 } // If
 break;
 } // Case
@@ -28399,37 +28887,37 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1436;
+indicator = 1445;
 } else {
-indicator = 1438;
+indicator = 1447;
 } // If
 break;
 } // Case
 default:
-indicator = 1438;
+indicator = 1447;
 break;
 } // Switch
 switch (indicator) {
-case 1435: {
+case 1444: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1435){
+if (fl1444){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1435 = true ; 
+fl1444 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1436: {
+case 1445: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1436){
+if (fl1445){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1436 = true ; 
+fl1445 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -28437,7 +28925,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1438: {
+case 1447: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -28448,7 +28936,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1437 = false ; 
+fl1446 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -28913,26 +29401,26 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-Paragraph fl1443;
-TypeSpec fl1455;
+Paragraph fl1452;
+TypeSpec fl1464;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
 // Repeat
 ctxt.skipWhiteSpace();
-fl1443 = null;
+fl1452 = null;
 while(ctxt.lookAheadOpeningTag ("<Paragraph")) {
-fl1443 = acceptor.lAccept_Paragraph(ctxt, "</Paragraph>");
-appendParagraphs(fl1443);
+fl1452 = acceptor.lAccept_Paragraph(ctxt, "</Paragraph>");
+appendParagraphs(fl1452);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
 // Repeat
 ctxt.skipWhiteSpace();
-fl1455 = null;
+fl1464 = null;
 while(ctxt.lookAheadOpeningTag ("<TypeSpec")) {
-fl1455 = acceptor.lAccept_TypeSpec(ctxt, null);
-appendTypeSpecs(fl1455);
+fl1464 = acceptor.lAccept_TypeSpec(ctxt, null);
+appendTypeSpecs(fl1464);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -28951,28 +29439,28 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1466;
-bool fl1467;
-bool fl1468;
-bool fl1469;
+bool fl1475;
+bool fl1476;
+bool fl1477;
+bool fl1478;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1466 = false ; 
-fl1467 = false ; 
-fl1468 = false ; 
-fl1469 = true ; 
-while (fl1469) { // BeginLoop 
+fl1475 = false ; 
+fl1476 = false ; 
+fl1477 = false ; 
+fl1478 = true ; 
+while (fl1478) { // BeginLoop 
 switch (ctxt.current()) {
 case 'i':
 {
 ctxt.advance();
 if (ctxt.lookAhead2('d','=')){
-indicator = 1466;
+indicator = 1475;
 } else {
-indicator = 1470;
+indicator = 1479;
 } // If
 break;
 } // Case
@@ -28980,9 +29468,9 @@ case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1467;
+indicator = 1476;
 } else {
-indicator = 1470;
+indicator = 1479;
 } // If
 break;
 } // Case
@@ -28990,50 +29478,50 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1468;
+indicator = 1477;
 } else {
-indicator = 1470;
+indicator = 1479;
 } // If
 break;
 } // Case
 default:
-indicator = 1470;
+indicator = 1479;
 break;
 } // Switch
 switch (indicator) {
-case 1466: {
+case 1475: {
 // Handling attribute id
 // Also handles alien attributes with prefix id
-if (fl1466){
+if (fl1475){
 ctxt.fail ("Duplicate attribute: id");
 } // If
-fl1466 = true ; 
+fl1475 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setId((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1467: {
+case 1476: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1467){
+if (fl1476){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1467 = true ; 
+fl1476 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1468: {
+case 1477: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1468){
+if (fl1477){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1468 = true ; 
+fl1477 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -29041,7 +29529,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1470: {
+case 1479: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -29052,10 +29540,10 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1466){
+if (!fl1475){
 ctxt.fail ("Mandatory attribute missing: id in Chapter");
 } // If
-fl1469 = false ; 
+fl1478 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -29832,9 +30320,9 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1475;
-Paragraph fl1477;
-TypeSpec fl1489;
+bool fl1484;
+Paragraph fl1486;
+TypeSpec fl1498;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -29866,8 +30354,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Sub")){
 ctxt.skipWhiteSpace();
-fl1475 = true ; 
-while (fl1475) { // BeginLoop 
+fl1484 = true ; 
+while (fl1484) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -29878,7 +30366,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1475 = false ; 
+fl1484 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -29888,10 +30376,10 @@ ctxt.accept('>');
 ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
-fl1477 = null;
+fl1486 = null;
 while(ctxt.lookAheadOpeningTag ("<Paragraph")) {
-fl1477 = acceptor.lAccept_Paragraph(ctxt, "</Paragraph>");
-appendParagraphs(fl1477);
+fl1486 = acceptor.lAccept_Paragraph(ctxt, "</Paragraph>");
+appendParagraphs(fl1486);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -29902,10 +30390,10 @@ ctxt.acceptString ("</Sub>");
 // End enclosed
 // Repeat
 ctxt.skipWhiteSpace();
-fl1489 = null;
+fl1498 = null;
 while(ctxt.lookAheadOpeningTag ("<TypeSpec")) {
-fl1489 = acceptor.lAccept_TypeSpec(ctxt, null);
-appendTypeSpecs(fl1489);
+fl1498 = acceptor.lAccept_TypeSpec(ctxt, null);
+appendTypeSpecs(fl1498);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -29924,15 +30412,6 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1500;
-bool fl1501;
-bool fl1502;
-bool fl1503;
-bool fl1504;
-bool fl1505;
-bool fl1506;
-bool fl1507;
-bool fl1508;
 bool fl1509;
 bool fl1510;
 bool fl1511;
@@ -29944,20 +30423,20 @@ bool fl1516;
 bool fl1517;
 bool fl1518;
 bool fl1519;
+bool fl1520;
+bool fl1521;
+bool fl1522;
+bool fl1523;
+bool fl1524;
+bool fl1525;
+bool fl1526;
+bool fl1527;
+bool fl1528;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1500 = false ; 
-fl1501 = false ; 
-fl1502 = false ; 
-fl1503 = false ; 
-fl1504 = false ; 
-fl1505 = false ; 
-fl1506 = false ; 
-fl1507 = false ; 
-fl1508 = false ; 
 fl1509 = false ; 
 fl1510 = false ; 
 fl1511 = false ; 
@@ -29968,16 +30447,25 @@ fl1515 = false ;
 fl1516 = false ; 
 fl1517 = false ; 
 fl1518 = false ; 
-fl1519 = true ; 
-while (fl1519) { // BeginLoop 
+fl1519 = false ; 
+fl1520 = false ; 
+fl1521 = false ; 
+fl1522 = false ; 
+fl1523 = false ; 
+fl1524 = false ; 
+fl1525 = false ; 
+fl1526 = false ; 
+fl1527 = false ; 
+fl1528 = true ; 
+while (fl1528) { // BeginLoop 
 switch (ctxt.current()) {
 case 'v':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ersion=")){
-indicator = 1509;
+indicator = 1518;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
@@ -29989,9 +30477,9 @@ case 'y':
 {
 ctxt.advance();
 if (ctxt.lookAhead3('p','e','=')){
-indicator = 1502;
+indicator = 1511;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
@@ -29999,14 +30487,14 @@ case 'r':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ackside=")){
-indicator = 1515;
+indicator = 1524;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
 default:
-indicator = 1520;
+indicator = 1529;
 break;
 } // Switch
 break;
@@ -30019,9 +30507,9 @@ case 't':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("atus=")){
-indicator = 1508;
+indicator = 1517;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
@@ -30029,9 +30517,9 @@ case 'p':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ecIssue=")){
-indicator = 1511;
-} else {
 indicator = 1520;
+} else {
+indicator = 1529;
 } // If
 break;
 } // Case
@@ -30039,14 +30527,14 @@ case 'c':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ope=")){
-indicator = 1503;
+indicator = 1512;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
 default:
-indicator = 1520;
+indicator = 1529;
 break;
 } // Switch
 break;
@@ -30059,9 +30547,9 @@ case 'o':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("llinkstock=")){
-indicator = 1516;
+indicator = 1525;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
@@ -30069,14 +30557,14 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("viewed=")){
-indicator = 1507;
+indicator = 1516;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
 default:
-indicator = 1520;
+indicator = 1529;
 break;
 } // Switch
 break;
@@ -30089,9 +30577,9 @@ case 'p':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("tional=")){
-indicator = 1505;
+indicator = 1514;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
@@ -30099,14 +30587,14 @@ case 'n':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("board=")){
-indicator = 1514;
+indicator = 1523;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
 default:
-indicator = 1520;
+indicator = 1529;
 break;
 } // Switch
 break;
@@ -30115,9 +30603,9 @@ case 'n':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1506;
+indicator = 1515;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
@@ -30129,9 +30617,9 @@ case 'n':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("foRequired=")){
-indicator = 1510;
+indicator = 1519;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
@@ -30139,14 +30627,14 @@ case 'd':
 {
 ctxt.advance();
 if (ctxt.lookAhead1('=')){
-indicator = 1500;
+indicator = 1509;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
 default:
-indicator = 1520;
+indicator = 1529;
 break;
 } // Switch
 break;
@@ -30155,9 +30643,9 @@ case 'g':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1501;
+indicator = 1510;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
@@ -30170,24 +30658,24 @@ case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1513;
+indicator = 1522;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
 case '=':
 {
 ctxt.advance();
-indicator = 1512;
+indicator = 1521;
 break;
 } // Case
 default:
-indicator = 1520;
+indicator = 1529;
 break;
 } // Switch
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
@@ -30195,9 +30683,9 @@ case 'b':
 {
 ctxt.advance();
 if (ctxt.lookAhead2('l','=')){
-indicator = 1504;
+indicator = 1513;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
@@ -30205,9 +30693,9 @@ case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1517;
+indicator = 1526;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
@@ -30215,258 +30703,258 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1518;
+indicator = 1527;
 } else {
-indicator = 1520;
+indicator = 1529;
 } // If
 break;
 } // Case
 default:
-indicator = 1520;
+indicator = 1529;
 break;
 } // Switch
 switch (indicator) {
-case 1500: {
+case 1509: {
 // Handling attribute id
 // Also handles alien attributes with prefix id
-if (fl1500){
+if (fl1509){
 ctxt.fail ("Duplicate attribute: id");
 } // If
-fl1500 = true ; 
+fl1509 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setId((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1501: {
+case 1510: {
 // Handling attribute guid
 // Also handles alien attributes with prefix guid
-if (fl1501){
+if (fl1510){
 ctxt.fail ("Duplicate attribute: guid");
 } // If
-fl1501 = true ; 
+fl1510 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setObsoleteGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1502: {
+case 1511: {
 // Handling attribute type
 // Also handles alien attributes with prefix type
-if (fl1502){
+if (fl1511){
 ctxt.fail ("Duplicate attribute: type");
 } // If
-fl1502 = true ; 
+fl1511 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setType(acceptor.lAcceptEnum_Paragraph_type(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1503: {
+case 1512: {
 // Handling attribute scope
 // Also handles alien attributes with prefix scope
-if (fl1503){
+if (fl1512){
 ctxt.fail ("Duplicate attribute: scope");
 } // If
-fl1503 = true ; 
+fl1512 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setScope(acceptor.lAcceptEnum_Paragraph_scope(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1504: {
+case 1513: {
 // Handling attribute bl
 // Also handles alien attributes with prefix bl
-if (fl1504){
+if (fl1513){
 ctxt.fail ("Duplicate attribute: bl");
 } // If
-fl1504 = true ; 
+fl1513 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setBl((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1505: {
+case 1514: {
 // Handling attribute optional
 // Also handles alien attributes with prefix optional
-if (fl1505){
+if (fl1514){
 ctxt.fail ("Duplicate attribute: optional");
 } // If
-fl1505 = true ; 
+fl1514 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setOptional(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1506: {
+case 1515: {
 // Handling attribute name
 // Also handles alien attributes with prefix name
-if (fl1506){
+if (fl1515){
 ctxt.fail ("Duplicate attribute: name");
 } // If
-fl1506 = true ; 
+fl1515 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1507: {
+case 1516: {
 // Handling attribute reviewed
 // Also handles alien attributes with prefix reviewed
-if (fl1507){
+if (fl1516){
 ctxt.fail ("Duplicate attribute: reviewed");
 } // If
-fl1507 = true ; 
+fl1516 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setReviewed(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1508: {
+case 1517: {
 // Handling attribute status
 // Also handles alien attributes with prefix status
-if (fl1508){
+if (fl1517){
 ctxt.fail ("Duplicate attribute: status");
 } // If
-fl1508 = true ; 
+fl1517 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setImplementationStatus(acceptor.lAcceptEnum_SPEC_IMPLEMENTED_ENUM(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1509: {
+case 1518: {
 // Handling attribute version
 // Also handles alien attributes with prefix version
-if (fl1509){
+if (fl1518){
 ctxt.fail ("Duplicate attribute: version");
 } // If
-fl1509 = true ; 
+fl1518 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVersion((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1510: {
+case 1519: {
 // Handling attribute infoRequired
 // Also handles alien attributes with prefix infoRequired
-if (fl1510){
+if (fl1519){
 ctxt.fail ("Duplicate attribute: infoRequired");
 } // If
-fl1510 = true ; 
+fl1519 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setMoreInfoRequired(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1511: {
+case 1520: {
 // Handling attribute specIssue
 // Also handles alien attributes with prefix specIssue
-if (fl1511){
+if (fl1520){
 ctxt.fail ("Duplicate attribute: specIssue");
 } // If
-fl1511 = true ; 
+fl1520 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setSpecIssue(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1512: {
+case 1521: {
 // Handling attribute functionalBlock
 // Also handles alien attributes with prefix functionalBlock
-if (fl1512){
+if (fl1521){
 ctxt.fail ("Duplicate attribute: functionalBlock");
 } // If
-fl1512 = true ; 
+fl1521 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setFunctionalBlock(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1513: {
+case 1522: {
 // Handling attribute functionalBlockName
 // Also handles alien attributes with prefix functionalBlockName
-if (fl1513){
+if (fl1522){
 ctxt.fail ("Duplicate attribute: functionalBlockName");
 } // If
-fl1513 = true ; 
+fl1522 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setFunctionalBlockName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1514: {
+case 1523: {
 // Handling attribute onboard
 // Also handles alien attributes with prefix onboard
-if (fl1514){
+if (fl1523){
 ctxt.fail ("Duplicate attribute: onboard");
 } // If
-fl1514 = true ; 
+fl1523 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setScopeOnBoard(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1515: {
+case 1524: {
 // Handling attribute trackside
 // Also handles alien attributes with prefix trackside
-if (fl1515){
+if (fl1524){
 ctxt.fail ("Duplicate attribute: trackside");
 } // If
-fl1515 = true ; 
+fl1524 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setScopeTrackside(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1516: {
+case 1525: {
 // Handling attribute rollinkstock
 // Also handles alien attributes with prefix rollinkstock
-if (fl1516){
+if (fl1525){
 ctxt.fail ("Duplicate attribute: rollinkstock");
 } // If
-fl1516 = true ; 
+fl1525 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setScopeRollingStock(acceptor.lAcceptBoolean(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1517: {
+case 1526: {
 // Handling attribute Name
 // Also handles alien attributes with prefix Name
-if (fl1517){
+if (fl1526){
 ctxt.fail ("Duplicate attribute: Name");
 } // If
-fl1517 = true ; 
+fl1526 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1518: {
+case 1527: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1518){
+if (fl1527){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1518 = true ; 
+fl1527 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -30474,7 +30962,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1520: {
+case 1529: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -30485,58 +30973,58 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1500){
+if (!fl1509){
 ctxt.fail ("Mandatory attribute missing: id in Paragraph");
 } // If
-if (!fl1501){
+if (!fl1510){
 this.setObsoleteGuid("");
 } // If
-if (!fl1502){
+if (!fl1511){
 this.setType(acceptor.Paragraph_type.aREQUIREMENT);
 } // If
-if (!fl1503){
+if (!fl1512){
 this.setScope(acceptor.Paragraph_scope.aOBU_AND_TRACK);
 } // If
-if (!fl1504){
+if (!fl1513){
 this.setBl("");
 } // If
-if (!fl1505){
+if (!fl1514){
 this.setOptional( true);
 } // If
-if (!fl1506){
+if (!fl1515){
 this.setName("");
 } // If
-if (!fl1507){
+if (!fl1516){
 this.setReviewed( false);
 } // If
-if (!fl1508){
+if (!fl1517){
 this.setImplementationStatus(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
 } // If
-if (!fl1509){
+if (!fl1518){
 this.setVersion("3.0.0");
 } // If
-if (!fl1510){
+if (!fl1519){
 this.setMoreInfoRequired( false);
 } // If
-if (!fl1511){
+if (!fl1520){
 this.setSpecIssue( false);
 } // If
-if (!fl1512){
+if (!fl1521){
 this.setFunctionalBlock( false);
 } // If
-if (!fl1513){
+if (!fl1522){
 this.setFunctionalBlockName("");
 } // If
-if (!fl1514){
+if (!fl1523){
 this.setScopeOnBoard( false);
 } // If
-if (!fl1515){
+if (!fl1524){
 this.setScopeTrackside( false);
 } // If
-if (!fl1516){
+if (!fl1525){
 this.setScopeRollingStock( false);
 } // If
-fl1519 = false ; 
+fl1528 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -31011,15 +31499,15 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-MsgVariable fl1548;
+MsgVariable fl1557;
 
 ctxt.skipWhiteSpace();
 // Repeat
 ctxt.skipWhiteSpace();
-fl1548 = null;
+fl1557 = null;
 while(ctxt.lookAheadOpeningTag ("<MsgVariable")) {
-fl1548 = acceptor.lAccept_MsgVariable(ctxt, null);
-appendMsgVariables(fl1548);
+fl1557 = acceptor.lAccept_MsgVariable(ctxt, null);
+appendMsgVariables(fl1557);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -31038,28 +31526,28 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1559;
-bool fl1560;
-bool fl1561;
-bool fl1562;
+bool fl1568;
+bool fl1569;
+bool fl1570;
+bool fl1571;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1559 = false ; 
-fl1560 = false ; 
-fl1561 = false ; 
-fl1562 = true ; 
-while (fl1562) { // BeginLoop 
+fl1568 = false ; 
+fl1569 = false ; 
+fl1570 = false ; 
+fl1571 = true ; 
+while (fl1571) { // BeginLoop 
 switch (ctxt.current()) {
 case 'm':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("edia=")){
-indicator = 1560;
+indicator = 1569;
 } else {
-indicator = 1563;
+indicator = 1572;
 } // If
 break;
 } // Case
@@ -31067,9 +31555,9 @@ case 'd':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("escription=")){
-indicator = 1559;
+indicator = 1568;
 } else {
-indicator = 1563;
+indicator = 1572;
 } // If
 break;
 } // Case
@@ -31077,50 +31565,50 @@ case 'b':
 {
 ctxt.advance();
 if (ctxt.lookAhead2('l','=')){
-indicator = 1561;
+indicator = 1570;
 } else {
-indicator = 1563;
+indicator = 1572;
 } // If
 break;
 } // Case
 default:
-indicator = 1563;
+indicator = 1572;
 break;
 } // Switch
 switch (indicator) {
-case 1559: {
+case 1568: {
 // Handling attribute description
 // Also handles alien attributes with prefix description
-if (fl1559){
+if (fl1568){
 ctxt.fail ("Duplicate attribute: description");
 } // If
-fl1559 = true ; 
+fl1568 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setDescription((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1560: {
+case 1569: {
 // Handling attribute media
 // Also handles alien attributes with prefix media
-if (fl1560){
+if (fl1569){
 ctxt.fail ("Duplicate attribute: media");
 } // If
-fl1560 = true ; 
+fl1569 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setMedia(acceptor.lAcceptEnum_Message_media(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1561: {
+case 1570: {
 // Handling attribute bl
 // Also handles alien attributes with prefix bl
-if (fl1561){
+if (fl1570){
 ctxt.fail ("Duplicate attribute: bl");
 } // If
-fl1561 = true ; 
+fl1570 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setBl((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -31128,7 +31616,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1563: {
+case 1572: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -31139,13 +31627,13 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1559){
+if (!fl1568){
 ctxt.fail ("Mandatory attribute missing: description in Message");
 } // If
-if (!fl1560){
+if (!fl1569){
 ctxt.fail ("Mandatory attribute missing: media in Message");
 } // If
-fl1562 = false ; 
+fl1571 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -31492,15 +31980,15 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-MsgVariable fl1569;
+MsgVariable fl1578;
 
 ctxt.skipWhiteSpace();
 // Repeat
 ctxt.skipWhiteSpace();
-fl1569 = null;
+fl1578 = null;
 while(ctxt.lookAheadOpeningTag ("<MsgVariable")) {
-fl1569 = acceptor.lAccept_MsgVariable(ctxt, null);
-appendMsgVariables(fl1569);
+fl1578 = acceptor.lAccept_MsgVariable(ctxt, null);
+appendMsgVariables(fl1578);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
@@ -31519,30 +32007,30 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1580;
-bool fl1581;
-bool fl1582;
-bool fl1583;
-bool fl1584;
+bool fl1589;
+bool fl1590;
+bool fl1591;
+bool fl1592;
+bool fl1593;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1580 = false ; 
-fl1581 = false ; 
-fl1582 = false ; 
-fl1583 = false ; 
-fl1584 = true ; 
-while (fl1584) { // BeginLoop 
+fl1589 = false ; 
+fl1590 = false ; 
+fl1591 = false ; 
+fl1592 = false ; 
+fl1593 = true ; 
+while (fl1593) { // BeginLoop 
 switch (ctxt.current()) {
 case 'n':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
-indicator = 1580;
+indicator = 1589;
 } else {
-indicator = 1585;
+indicator = 1594;
 } // If
 break;
 } // Case
@@ -31550,9 +32038,9 @@ case 'l':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ength=")){
-indicator = 1581;
+indicator = 1590;
 } else {
-indicator = 1585;
+indicator = 1594;
 } // If
 break;
 } // Case
@@ -31560,9 +32048,9 @@ case 'c':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("omment=")){
-indicator = 1582;
+indicator = 1591;
 } else {
-indicator = 1585;
+indicator = 1594;
 } // If
 break;
 } // Case
@@ -31570,63 +32058,63 @@ case 'b':
 {
 ctxt.advance();
 if (ctxt.lookAhead2('l','=')){
-indicator = 1583;
+indicator = 1592;
 } else {
-indicator = 1585;
+indicator = 1594;
 } // If
 break;
 } // Case
 default:
-indicator = 1585;
+indicator = 1594;
 break;
 } // Switch
 switch (indicator) {
-case 1580: {
+case 1589: {
 // Handling attribute name
 // Also handles alien attributes with prefix name
-if (fl1580){
+if (fl1589){
 ctxt.fail ("Duplicate attribute: name");
 } // If
-fl1580 = true ; 
+fl1589 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1581: {
+case 1590: {
 // Handling attribute length
 // Also handles alien attributes with prefix length
-if (fl1581){
+if (fl1590){
 ctxt.fail ("Duplicate attribute: length");
 } // If
-fl1581 = true ; 
+fl1590 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setLength((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1582: {
+case 1591: {
 // Handling attribute comment
 // Also handles alien attributes with prefix comment
-if (fl1582){
+if (fl1591){
 ctxt.fail ("Duplicate attribute: comment");
 } // If
-fl1582 = true ; 
+fl1591 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setComment((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1583: {
+case 1592: {
 // Handling attribute bl
 // Also handles alien attributes with prefix bl
-if (fl1583){
+if (fl1592){
 ctxt.fail ("Duplicate attribute: bl");
 } // If
-fl1583 = true ; 
+fl1592 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setBl((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -31634,7 +32122,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1585: {
+case 1594: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -31645,13 +32133,13 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1580){
+if (!fl1589){
 ctxt.fail ("Mandatory attribute missing: name in MsgVariable");
 } // If
-if (!fl1582){
+if (!fl1591){
 ctxt.fail ("Mandatory attribute missing: comment in MsgVariable");
 } // If
-fl1584 = false ; 
+fl1593 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -31971,18 +32459,18 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1591;
-bool fl1592;
-bool fl1593;
-int fl1596;
+bool fl1600;
+bool fl1601;
+bool fl1602;
+int fl1605;
 
 ctxt.skipWhiteSpace();
 ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<short-description")){
 ctxt.skipWhiteSpace();
-fl1591 = true ; 
-while (fl1591) { // BeginLoop 
+fl1600 = true ; 
+while (fl1600) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -31993,7 +32481,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1591 = false ; 
+fl1600 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -32009,8 +32497,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Description")){
 ctxt.skipWhiteSpace();
-fl1592 = true ; 
-while (fl1592) { // BeginLoop 
+fl1601 = true ; 
+while (fl1601) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -32021,7 +32509,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1592 = false ; 
+fl1601 = false ; 
 } // If
 } // While
 if (ctxt.current() == '/'){
@@ -32042,8 +32530,8 @@ ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<reference")){
 ctxt.skipWhiteSpace();
-fl1593 = true ; 
-while (fl1593) { // BeginLoop 
+fl1602 = true ; 
+while (fl1602) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -32054,7 +32542,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1593 = false ; 
+fl1602 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -32069,7 +32557,7 @@ ctxt.acceptString ("</reference>");
 // Disjunct
 ctxt.skipWhiteSpace();
 // Nullable formula
-fl1596 = ctxt.getPtr();
+fl1605 = ctxt.getPtr();
 switch (ctxt.current()) {
 case '<':
 {
@@ -32079,10 +32567,10 @@ case 'c':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("har-value")){
-indicator = 1595;
+indicator = 1604;
 } else {
 ctxt.moveBack(1);
-indicator = 1597;
+indicator = 1606;
 } // If
 break;
 } // Case
@@ -32090,26 +32578,26 @@ case 'V':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("alues")){
-indicator = 1594;
+indicator = 1603;
 } else {
 ctxt.moveBack(1);
-indicator = 1597;
+indicator = 1606;
 } // If
 break;
 } // Case
 default:
-indicator = 1597;
+indicator = 1606;
 break;
 } // Switch
 break;
 } // Case
 default:
-indicator = 1597;
+indicator = 1606;
 break;
 } // Switch
 switch (indicator) {
 // Dispatch Lablel
-case 1594: {
+case 1603: {
 ctxt.moveBack(7);
 // Element Ref : Values
 ctxt.skipWhiteSpace();
@@ -32124,7 +32612,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Dispatch Lablel
-case 1595: {
+case 1604: {
 ctxt.moveBack(11);
 // Element Ref : char-value
 ctxt.skipWhiteSpace();
@@ -32139,8 +32627,8 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Optional of PCdata
-case 1597: {
-ctxt.setPtr(fl1596);
+case 1606: {
+ctxt.setPtr(fl1605);
 // Doing nothing, optional disj
 break;
 } // End of dispatch label
@@ -32161,36 +32649,36 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1602;
-bool fl1603;
-bool fl1604;
-bool fl1605;
-bool fl1606;
-bool fl1607;
-bool fl1608;
-bool fl1609;
+bool fl1611;
+bool fl1612;
+bool fl1613;
+bool fl1614;
+bool fl1615;
+bool fl1616;
+bool fl1617;
+bool fl1618;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1602 = false ; 
-fl1603 = false ; 
-fl1604 = false ; 
-fl1605 = false ; 
-fl1606 = false ; 
-fl1607 = false ; 
-fl1608 = false ; 
-fl1609 = true ; 
-while (fl1609) { // BeginLoop 
+fl1611 = false ; 
+fl1612 = false ; 
+fl1613 = false ; 
+fl1614 = false ; 
+fl1615 = false ; 
+fl1616 = false ; 
+fl1617 = false ; 
+fl1618 = true ; 
+while (fl1618) { // BeginLoop 
 switch (ctxt.current()) {
 case 'r':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("esolution_formula=")){
-indicator = 1605;
+indicator = 1614;
 } else {
-indicator = 1610;
+indicator = 1619;
 } // If
 break;
 } // Case
@@ -32202,9 +32690,9 @@ case 'i':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("nimum_value=")){
-indicator = 1603;
+indicator = 1612;
 } else {
-indicator = 1610;
+indicator = 1619;
 } // If
 break;
 } // Case
@@ -32212,14 +32700,14 @@ case 'a':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ximum_value=")){
-indicator = 1604;
+indicator = 1613;
 } else {
-indicator = 1610;
+indicator = 1619;
 } // If
 break;
 } // Case
 default:
-indicator = 1610;
+indicator = 1619;
 break;
 } // Switch
 break;
@@ -32228,9 +32716,9 @@ case 'l':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ength=")){
-indicator = 1602;
+indicator = 1611;
 } else {
-indicator = 1610;
+indicator = 1619;
 } // If
 break;
 } // Case
@@ -32238,9 +32726,9 @@ case 'i':
 {
 ctxt.advance();
 if (ctxt.lookAhead2('d','=')){
-indicator = 1606;
+indicator = 1615;
 } else {
-indicator = 1610;
+indicator = 1619;
 } // If
 break;
 } // Case
@@ -32248,9 +32736,9 @@ case 'e':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("rtms-type=")){
-indicator = 1607;
+indicator = 1616;
 } else {
-indicator = 1610;
+indicator = 1619;
 } // If
 break;
 } // Case
@@ -32258,102 +32746,102 @@ case 'b':
 {
 ctxt.advance();
 if (ctxt.lookAhead2('l','=')){
-indicator = 1608;
+indicator = 1617;
 } else {
-indicator = 1610;
+indicator = 1619;
 } // If
 break;
 } // Case
 default:
-indicator = 1610;
+indicator = 1619;
 break;
 } // Switch
 switch (indicator) {
-case 1602: {
+case 1611: {
 // Handling attribute length
 // Also handles alien attributes with prefix length
-if (fl1602){
+if (fl1611){
 ctxt.fail ("Duplicate attribute: length");
 } // If
-fl1602 = true ; 
+fl1611 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setLength(ctxt.fetchInteger());
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1603: {
+case 1612: {
 // Handling attribute minimum_value
 // Also handles alien attributes with prefix minimum_value
-if (fl1603){
+if (fl1612){
 ctxt.fail ("Duplicate attribute: minimum_value");
 } // If
-fl1603 = true ; 
+fl1612 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setMinimum_value((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1604: {
+case 1613: {
 // Handling attribute maximum_value
 // Also handles alien attributes with prefix maximum_value
-if (fl1604){
+if (fl1613){
 ctxt.fail ("Duplicate attribute: maximum_value");
 } // If
-fl1604 = true ; 
+fl1613 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setMaximum_value((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1605: {
+case 1614: {
 // Handling attribute resolution_formula
 // Also handles alien attributes with prefix resolution_formula
-if (fl1605){
+if (fl1614){
 ctxt.fail ("Duplicate attribute: resolution_formula");
 } // If
-fl1605 = true ; 
+fl1614 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setResolution_formula((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1606: {
+case 1615: {
 // Handling attribute id
 // Also handles alien attributes with prefix id
-if (fl1606){
+if (fl1615){
 ctxt.fail ("Duplicate attribute: id");
 } // If
-fl1606 = true ; 
+fl1615 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setId((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1607: {
+case 1616: {
 // Handling attribute ertms-type
 // Also handles alien attributes with prefix ertms-type
-if (fl1607){
+if (fl1616){
 ctxt.fail ("Duplicate attribute: ertms-type");
 } // If
-fl1607 = true ; 
+fl1616 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setErtms_type(acceptor.lAcceptEnum_TypeSpec_ertms_type(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1608: {
+case 1617: {
 // Handling attribute bl
 // Also handles alien attributes with prefix bl
-if (fl1608){
+if (fl1617){
 ctxt.fail ("Duplicate attribute: bl");
 } // If
-fl1608 = true ; 
+fl1617 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setBl((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -32361,7 +32849,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1610: {
+case 1619: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -32372,10 +32860,10 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1602){
+if (!fl1611){
 ctxt.fail ("Mandatory attribute missing: length in TypeSpec");
 } // If
-fl1609 = false ; 
+fl1618 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -32622,7 +33110,7 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-int fl1622;
+int fl1631;
 
 ctxt.skipWhiteSpace();
 // Element Ref : resolution-formula
@@ -32638,7 +33126,7 @@ ctxt.skipWhiteSpace();
 // Disjunct
 ctxt.skipWhiteSpace();
 // Nullable formula
-fl1622 = ctxt.getPtr();
+fl1631 = ctxt.getPtr();
 switch (ctxt.current()) {
 case '<':
 {
@@ -32648,26 +33136,26 @@ switch (ctxt.current()) {
 case 's':
 {
 ctxt.advance();
-indicator = 1620;
+indicator = 1629;
 break;
 } // Case
 default:
-indicator = 1621;
+indicator = 1630;
 break;
 } // Switch
 } else {
 ctxt.moveBack(1);
-indicator = 1623;
+indicator = 1632;
 } // If
 break;
 } // Case
 default:
-indicator = 1623;
+indicator = 1632;
 break;
 } // Switch
 switch (indicator) {
 // Dispatch Lablel
-case 1620: {
+case 1629: {
 ctxt.moveBack(27);
 // Element Ref : special-or-reserved-values
 ctxt.skipWhiteSpace();
@@ -32682,7 +33170,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Dispatch Lablel
-case 1621: {
+case 1630: {
 ctxt.moveBack(26);
 // Element Ref : special-or-reserved-value
 ctxt.skipWhiteSpace();
@@ -32697,8 +33185,8 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Optional of PCdata
-case 1623: {
-ctxt.setPtr(fl1622);
+case 1632: {
+ctxt.setPtr(fl1631);
 // Doing nothing, optional disj
 break;
 } // End of dispatch label
@@ -32719,12 +33207,12 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1627;
+bool fl1636;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
-fl1627 = true ; 
-while (fl1627) { // BeginLoop 
+fl1636 = true ; 
+while (fl1636) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -32735,7 +33223,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1627 = false ; 
+fl1636 = false ; 
 } // If
 } // While
 ctxt.skipWhiteSpace();
@@ -33021,18 +33509,18 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-special_or_reserved_value fl1629;
+special_or_reserved_value fl1638;
 
 ctxt.skipWhiteSpace();
 // Repeat
 ctxt.skipWhiteSpace();
-fl1629 = null;
+fl1638 = null;
 while(ctxt.lookAheadOpeningTag ("<special-or-reserved-value")) {
-fl1629 = acceptor.lAccept_special_or_reserved_value(ctxt, null);
-appendSpecial_or_reserved_values(fl1629);
+fl1638 = acceptor.lAccept_special_or_reserved_value(ctxt, null);
+appendSpecial_or_reserved_values(fl1638);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
-if (fl1629 == null){
+if (fl1638 == null){
 ctxt.fail ("At least one element expected in repetition");
 } // If
 // EndRepeat
@@ -33051,12 +33539,12 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1640;
+bool fl1649;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
-fl1640 = true ; 
-while (fl1640) { // BeginLoop 
+fl1649 = true ; 
+while (fl1649) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -33067,7 +33555,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1640 = false ; 
+fl1649 = false ; 
 } // If
 } // While
 ctxt.skipWhiteSpace();
@@ -33249,7 +33737,7 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-int fl1643;
+int fl1652;
 
 ctxt.skipWhiteSpace();
 // Element Ref : mask
@@ -33265,7 +33753,7 @@ ctxt.skipWhiteSpace();
 // Disjunct
 ctxt.skipWhiteSpace();
 // Nullable formula
-fl1643 = ctxt.getPtr();
+fl1652 = ctxt.getPtr();
 switch (ctxt.current()) {
 case '<':
 {
@@ -33276,30 +33764,30 @@ case '-':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("range")){
-indicator = 1642;
+indicator = 1651;
 } else {
 ctxt.moveBack(1);
-indicator = 1641;
+indicator = 1650;
 } // If
 break;
 } // Case
 default:
-indicator = 1641;
+indicator = 1650;
 break;
 } // Switch
 } else {
 ctxt.moveBack(1);
-indicator = 1644;
+indicator = 1653;
 } // If
 break;
 } // Case
 default:
-indicator = 1644;
+indicator = 1653;
 break;
 } // Switch
 switch (indicator) {
 // Dispatch Lablel
-case 1641: {
+case 1650: {
 ctxt.moveBack(6);
 // Element Ref : match
 ctxt.skipWhiteSpace();
@@ -33314,7 +33802,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Dispatch Lablel
-case 1642: {
+case 1651: {
 ctxt.moveBack(12);
 // Element Ref : match-range
 ctxt.skipWhiteSpace();
@@ -33329,8 +33817,8 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Optional of PCdata
-case 1644: {
-ctxt.setPtr(fl1643);
+case 1653: {
+ctxt.setPtr(fl1652);
 // Doing nothing, optional disj
 break;
 } // End of dispatch label
@@ -33371,12 +33859,12 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1648;
+bool fl1657;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
-fl1648 = true ; 
-while (fl1648) { // BeginLoop 
+fl1657 = true ; 
+while (fl1657) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -33387,7 +33875,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1648 = false ; 
+fl1657 = false ; 
 } // If
 } // While
 ctxt.skipWhiteSpace();
@@ -33554,12 +34042,12 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1649;
+bool fl1658;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
-fl1649 = true ; 
-while (fl1649) { // BeginLoop 
+fl1658 = true ; 
+while (fl1658) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -33570,7 +34058,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1649 = false ; 
+fl1658 = false ; 
 } // If
 } // While
 ctxt.skipWhiteSpace();
@@ -33701,12 +34189,12 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1650;
+bool fl1659;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
-fl1650 = true ; 
-while (fl1650) { // BeginLoop 
+fl1659 = true ; 
+while (fl1659) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -33717,7 +34205,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1650 = false ; 
+fl1659 = false ; 
 } // If
 } // While
 ctxt.skipWhiteSpace();
@@ -33892,26 +34380,26 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1651;
-bool fl1652;
-bool fl1653;
+bool fl1660;
+bool fl1661;
+bool fl1662;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1651 = false ; 
-fl1652 = false ; 
-fl1653 = true ; 
-while (fl1653) { // BeginLoop 
+fl1660 = false ; 
+fl1661 = false ; 
+fl1662 = true ; 
+while (fl1662) { // BeginLoop 
 switch (ctxt.current()) {
 case 't':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ype=")){
-indicator = 1651;
+indicator = 1660;
 } else {
-indicator = 1654;
+indicator = 1663;
 } // If
 break;
 } // Case
@@ -33919,37 +34407,37 @@ case 'b':
 {
 ctxt.advance();
 if (ctxt.lookAhead2('l','=')){
-indicator = 1652;
+indicator = 1661;
 } else {
-indicator = 1654;
+indicator = 1663;
 } // If
 break;
 } // Case
 default:
-indicator = 1654;
+indicator = 1663;
 break;
 } // Switch
 switch (indicator) {
-case 1651: {
+case 1660: {
 // Handling attribute type
 // Also handles alien attributes with prefix type
-if (fl1651){
+if (fl1660){
 ctxt.fail ("Duplicate attribute: type");
 } // If
-fl1651 = true ; 
+fl1660 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setType(acceptor.lAcceptEnum_meaning_type(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1652: {
+case 1661: {
 // Handling attribute bl
 // Also handles alien attributes with prefix bl
-if (fl1652){
+if (fl1661){
 ctxt.fail ("Duplicate attribute: bl");
 } // If
-fl1652 = true ; 
+fl1661 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setBl((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -33957,7 +34445,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1654: {
+case 1663: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -33968,10 +34456,10 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1651){
+if (!fl1660){
 ctxt.fail ("Mandatory attribute missing: type in meaning");
 } // If
-fl1653 = false ; 
+fl1662 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -34136,8 +34624,8 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-bool fl1658;
-bool fl1659;
+bool fl1667;
+bool fl1668;
 
 ctxt.skipWhiteSpace();
 ctxt.skipWhiteSpace();
@@ -34147,8 +34635,8 @@ if (ctxt.isAlNum()){
 ctxt.fail ("White space expected after TAG");
 } // If
 ctxt.skipWhiteSpace();
-fl1658 = true ; 
-while (fl1658) { // BeginLoop 
+fl1667 = true ; 
+while (fl1667) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -34159,7 +34647,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1658 = false ; 
+fl1667 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -34177,8 +34665,8 @@ if (ctxt.isAlNum()){
 ctxt.fail ("White space expected after TAG");
 } // If
 ctxt.skipWhiteSpace();
-fl1659 = true ; 
-while (fl1659) { // BeginLoop 
+fl1668 = true ; 
+while (fl1668) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -34189,7 +34677,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1659 = false ; 
+fl1668 = false ; 
 } // If
 } // While
 ctxt.accept('>');
@@ -34216,12 +34704,12 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1660;
+bool fl1669;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
-fl1660 = true ; 
-while (fl1660) { // BeginLoop 
+fl1669 = true ; 
+while (fl1669) { // BeginLoop 
 ctxt.skipWhiteSpace();
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -34232,7 +34720,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1660 = false ; 
+fl1669 = false ; 
 } // If
 } // While
 ctxt.skipWhiteSpace();
@@ -34424,29 +34912,29 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1661;
-bool fl1662;
+bool fl1670;
+bool fl1671;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1661 = false ; 
-fl1662 = true ; 
-while (fl1662) { // BeginLoop 
+fl1670 = false ; 
+fl1671 = true ; 
+while (fl1671) { // BeginLoop 
 if (ctxt.lookAheadString("units=")){
-indicator = 1661;
+indicator = 1670;
 } else {
-indicator = 1663;
+indicator = 1672;
 } // If
 switch (indicator) {
-case 1661: {
+case 1670: {
 // Handling attribute units
 // Also handles alien attributes with prefix units
-if (fl1661){
+if (fl1670){
 ctxt.fail ("Duplicate attribute: units");
 } // If
-fl1661 = true ; 
+fl1670 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setUnits(acceptor.lAcceptEnum_resolution_formula_units(ctxt));
 ctxt.accept(quoteChar);
@@ -34454,7 +34942,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1663: {
+case 1672: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -34465,7 +34953,7 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-fl1662 = false ; 
+fl1671 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -34629,29 +35117,29 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1665;
-bool fl1666;
+bool fl1674;
+bool fl1675;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1665 = false ; 
-fl1666 = true ; 
-while (fl1666) { // BeginLoop 
+fl1674 = false ; 
+fl1675 = true ; 
+while (fl1675) { // BeginLoop 
 if (ctxt.lookAheadString("units=")){
-indicator = 1665;
+indicator = 1674;
 } else {
-indicator = 1667;
+indicator = 1676;
 } // If
 switch (indicator) {
-case 1665: {
+case 1674: {
 // Handling attribute units
 // Also handles alien attributes with prefix units
-if (fl1665){
+if (fl1674){
 ctxt.fail ("Duplicate attribute: units");
 } // If
-fl1665 = true ; 
+fl1674 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setUnits((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -34659,7 +35147,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1667: {
+case 1676: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -34670,10 +35158,10 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1665){
+if (!fl1674){
 ctxt.fail ("Mandatory attribute missing: units in value");
 } // If
-fl1666 = false ; 
+fl1675 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -34810,29 +35298,29 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1669;
-bool fl1670;
+bool fl1678;
+bool fl1679;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1669 = false ; 
-fl1670 = true ; 
-while (fl1670) { // BeginLoop 
+fl1678 = false ; 
+fl1679 = true ; 
+while (fl1679) { // BeginLoop 
 if (ctxt.lookAheadString("encoding=")){
-indicator = 1669;
+indicator = 1678;
 } else {
-indicator = 1671;
+indicator = 1680;
 } // If
 switch (indicator) {
-case 1669: {
+case 1678: {
 // Handling attribute encoding
 // Also handles alien attributes with prefix encoding
-if (fl1669){
+if (fl1678){
 ctxt.fail ("Duplicate attribute: encoding");
 } // If
-fl1669 = true ; 
+fl1678 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setEncoding((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -34840,7 +35328,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1671: {
+case 1680: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -34851,10 +35339,10 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1669){
+if (!fl1678){
 ctxt.fail ("Mandatory attribute missing: encoding in char-value");
 } // If
-fl1670 = false ; 
+fl1679 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -35014,26 +35502,26 @@ public  override  void parse(XmlBContext ctxt,  string  endingTag)
 int indicator = 0;
 char quoteChar;
  string  tempStr = null;
-bool fl1673;
-bool fl1674;
-bool fl1675;
+bool fl1682;
+bool fl1683;
+bool fl1684;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
 {
 // Accept Attributes
-fl1673 = false ; 
-fl1674 = false ; 
-fl1675 = true ; 
-while (fl1675) { // BeginLoop 
+fl1682 = false ; 
+fl1683 = false ; 
+fl1684 = true ; 
+while (fl1684) { // BeginLoop 
 switch (ctxt.current()) {
 case 'v':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ersion=")){
-indicator = 1673;
+indicator = 1682;
 } else {
-indicator = 1676;
+indicator = 1685;
 } // If
 break;
 } // Case
@@ -35041,37 +35529,37 @@ case 'G':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("uid=")){
-indicator = 1674;
+indicator = 1683;
 } else {
-indicator = 1676;
+indicator = 1685;
 } // If
 break;
 } // Case
 default:
-indicator = 1676;
+indicator = 1685;
 break;
 } // Switch
 switch (indicator) {
-case 1673: {
+case 1682: {
 // Handling attribute version
 // Also handles alien attributes with prefix version
-if (fl1673){
+if (fl1682){
 ctxt.fail ("Duplicate attribute: version");
 } // If
-fl1673 = true ; 
+fl1682 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setVersion((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
-case 1674: {
+case 1683: {
 // Handling attribute Guid
 // Also handles alien attributes with prefix Guid
-if (fl1674){
+if (fl1683){
 ctxt.fail ("Duplicate attribute: Guid");
 } // If
-fl1674 = true ; 
+fl1683 = true ; 
 quoteChar = ctxt.acceptQuote();
 this.setGuid((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
@@ -35079,7 +35567,7 @@ ctxt.skipWhiteSpace();
 break;
 } // End of dispatch label
 // Final default label
-case 1676: {
+case 1685: {
 // Taking ignorable attributes into account
 if (ctxt.isAlNum()){
 ctxt.skipTill ('=');
@@ -35090,10 +35578,10 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl1673){
+if (!fl1682){
 ctxt.fail ("Mandatory attribute missing: version in ParagraphRevision");
 } // If
-fl1675 = false ; 
+fl1684 = false ; 
 } // If
 break;
 } // End of dispatch label
@@ -35709,7 +36197,7 @@ res = Paragraph_type.aTABLE_HEADER;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1683)");
+ctxt.recoverableFail ("Other character expected (1692)");
 break;
 } // Switch
 break;
@@ -35767,7 +36255,7 @@ res = Paragraph_type.aDEFINITION;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1690)");
+ctxt.recoverableFail ("Other character expected (1699)");
 break;
 } // Switch
 } else {
@@ -35979,7 +36467,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1700)");
+ctxt.recoverableFail ("Other character expected (1709)");
 break;
 } // Switch
 break;
@@ -36042,7 +36530,7 @@ res = Message_media.aBalise_loop;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1708)");
+ctxt.recoverableFail ("Other character expected (1717)");
 break;
 } // Switch
 } else {
@@ -36176,7 +36664,7 @@ res = TypeSpec_ertms_type.atext;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1714)");
+ctxt.recoverableFail ("Other character expected (1723)");
 break;
 } // Switch
 break;
@@ -36371,7 +36859,7 @@ res = meaning_type.ainfinite;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1727)");
+ctxt.recoverableFail ("Other character expected (1736)");
 break;
 } // Switch
 } else {
@@ -36468,7 +36956,7 @@ res = maximum_Value.a254;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1734)");
+ctxt.recoverableFail ("Other character expected (1743)");
 break;
 } // Switch
 } else {
@@ -36510,7 +36998,7 @@ res = maximum_Value.a125;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1741)");
+ctxt.recoverableFail ("Other character expected (1750)");
 break;
 } // Switch
 break;
@@ -36536,7 +37024,7 @@ res = maximum_Value.a1_55;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1745)");
+ctxt.recoverableFail ("Other character expected (1754)");
 break;
 } // Switch
 break;
@@ -36701,7 +37189,7 @@ res = resolution_formula_units.abit;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1756)");
+ctxt.recoverableFail ("Other character expected (1765)");
 break;
 } // Switch
 break;
@@ -36845,7 +37333,7 @@ res = resolution_formula_Value.aBinary_Coded_Decimal;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1765)");
+ctxt.recoverableFail ("Other character expected (1774)");
 break;
 } // Switch
 } else {
@@ -36894,7 +37382,7 @@ res = resolution_formula_Value.a0_02;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1772)");
+ctxt.recoverableFail ("Other character expected (1781)");
 break;
 } // Switch
 } else {
@@ -37012,7 +37500,7 @@ res = VariableModeEnumType.aInOut;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1778)");
+ctxt.recoverableFail ("Other character expected (1787)");
 break;
 } // Switch
 } else {
@@ -37148,7 +37636,7 @@ res = MessageEnumType.aTrain_InitiationOfACommunicationSession;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1789)");
+ctxt.recoverableFail ("Other character expected (1798)");
 break;
 } // Switch
 break;
@@ -37175,7 +37663,7 @@ res = MessageEnumType.aTrainAccepted;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1793)");
+ctxt.recoverableFail ("Other character expected (1802)");
 break;
 } // Switch
 break;
@@ -37212,19 +37700,19 @@ res = MessageEnumType.aTrackAheadFreeGranted;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1799)");
+ctxt.recoverableFail ("Other character expected (1808)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1800)");
+ctxt.recoverableFail ("Other character expected (1809)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1801)");
+ctxt.recoverableFail ("Other character expected (1810)");
 break;
 } // Switch
 } else {
@@ -37256,7 +37744,7 @@ res = MessageEnumType.aSoMPositionReport;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1806)");
+ctxt.recoverableFail ("Other character expected (1815)");
 break;
 } // Switch
 break;
@@ -37287,13 +37775,13 @@ res = MessageEnumType.aSHAuthorized;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1811)");
+ctxt.recoverableFail ("Other character expected (1820)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1812)");
+ctxt.recoverableFail ("Other character expected (1821)");
 break;
 } // Switch
 break;
@@ -37343,7 +37831,7 @@ res = MessageEnumType.aRequestToShortenMAIsGranted;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1821)");
+ctxt.recoverableFail ("Other character expected (1830)");
 break;
 } // Switch
 } else {
@@ -37366,7 +37854,7 @@ res = MessageEnumType.aRequestForShunting;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1823)");
+ctxt.recoverableFail ("Other character expected (1832)");
 break;
 } // Switch
 break;
@@ -37379,7 +37867,7 @@ res = MessageEnumType.aRecognitionOfExitFromTripMode;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1825)");
+ctxt.recoverableFail ("Other character expected (1834)");
 break;
 } // Switch
 break;
@@ -37399,7 +37887,7 @@ res = MessageEnumType.aRBCRIUSystemVersion;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1828)");
+ctxt.recoverableFail ("Other character expected (1837)");
 break;
 } // Switch
 break;
@@ -37434,13 +37922,13 @@ res = MessageEnumType.aMARequest;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1834)");
+ctxt.recoverableFail ("Other character expected (1843)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1835)");
+ctxt.recoverableFail ("Other character expected (1844)");
 break;
 } // Switch
 break;
@@ -37491,7 +37979,7 @@ res = MessageEnumType.aEurobalise;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1842)");
+ctxt.recoverableFail ("Other character expected (1851)");
 break;
 } // Switch
 break;
@@ -37504,7 +37992,7 @@ res = MessageEnumType.aEndOfMission;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1844)");
+ctxt.recoverableFail ("Other character expected (1853)");
 break;
 } // Switch
 break;
@@ -37560,7 +38048,7 @@ res = MessageEnumType.aAcknowledgementOfTerminationOfACommunicationSession;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1853)");
+ctxt.recoverableFail ("Other character expected (1862)");
 break;
 } // Switch
 break;
@@ -37573,7 +38061,7 @@ res = MessageEnumType.aAcknowledgementOfEmergencyStop;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1855)");
+ctxt.recoverableFail ("Other character expected (1864)");
 break;
 } // Switch
 } else {
@@ -37589,7 +38077,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1856)");
+ctxt.recoverableFail ("Other character expected (1865)");
 break;
 } // Switch
 break;
@@ -37801,7 +38289,7 @@ res = MessageDirectionEnumType.aTrackToTrain;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1860)");
+ctxt.recoverableFail ("Other character expected (1869)");
 break;
 } // Switch
 } else {
@@ -37874,7 +38362,7 @@ res = SPEC_IMPLEMENTED_ENUM.Impl_NA;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1865)");
+ctxt.recoverableFail ("Other character expected (1874)");
 break;
 } // Switch
 break;
@@ -38166,7 +38654,7 @@ res = ST_LEVEL.StLevel_L0;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1882)");
+ctxt.recoverableFail ("Other character expected (1891)");
 break;
 } // Switch
 break;
@@ -38289,7 +38777,7 @@ res = ST_MODE.Mode_SB;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1892)");
+ctxt.recoverableFail ("Other character expected (1901)");
 break;
 } // Switch
 break;
@@ -38323,7 +38811,7 @@ res = ST_MODE.Mode_PSH;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1897)");
+ctxt.recoverableFail ("Other character expected (1906)");
 break;
 } // Switch
 break;
@@ -38362,7 +38850,7 @@ res = ST_MODE.Mode_NA;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1903)");
+ctxt.recoverableFail ("Other character expected (1912)");
 break;
 } // Switch
 break;
@@ -38534,7 +39022,7 @@ res = RulePriority.aUpdateINTERNAL;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1911)");
+ctxt.recoverableFail ("Other character expected (1920)");
 break;
 } // Switch
 } else {
@@ -38704,7 +39192,7 @@ res = DBMessageType.aEUROBALISE;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1920)");
+ctxt.recoverableFail ("Other character expected (1929)");
 break;
 } // Switch
 } else {
@@ -38862,7 +39350,7 @@ res = false;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1929)");
+ctxt.recoverableFail ("Other character expected (1938)");
 break;
 } // Switch
 break;
@@ -38929,7 +39417,7 @@ res = true;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1938)");
+ctxt.recoverableFail ("Other character expected (1947)");
 break;
 } // Switch
 break;
@@ -38965,7 +39453,7 @@ res = false;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1944)");
+ctxt.recoverableFail ("Other character expected (1953)");
 break;
 } // Switch
 break;
@@ -39005,7 +39493,7 @@ res = false;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1950)");
+ctxt.recoverableFail ("Other character expected (1959)");
 break;
 } // Switch
 break;
@@ -39023,7 +39511,7 @@ res = false;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1953)");
+ctxt.recoverableFail ("Other character expected (1962)");
 break;
 } // Switch
 return res;
@@ -41692,28 +42180,28 @@ case 'q':
 {
 ctxt.advance();
 ctxt.acceptString ("uot;");
-indicator = 2106;
+indicator = 2115;
 break;
 } // Case
 case 'n':
 {
 ctxt.advance();
 ctxt.acceptString ("bsp;");
-indicator = 2105;
+indicator = 2114;
 break;
 } // Case
 case 'l':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 2103;
+indicator = 2112;
 break;
 } // Case
 case 'g':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 2104;
+indicator = 2113;
 break;
 } // Case
 case 'a':
@@ -41724,18 +42212,18 @@ case 'p':
 {
 ctxt.advance();
 ctxt.accept3('o','s',';');
-indicator = 2107;
+indicator = 2116;
 break;
 } // Case
 case 'm':
 {
 ctxt.advance();
 ctxt.accept2('p',';');
-indicator = 2102;
+indicator = 2111;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2115)");
+ctxt.recoverableFail ("Other character expected (2124)");
 break;
 } // Switch
 break;
@@ -41744,39 +42232,39 @@ case '#':
 {
 ctxt.advance();
 ctxt.accept('x');
-indicator = 2108;
+indicator = 2117;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2117)");
+ctxt.recoverableFail ("Other character expected (2126)");
 break;
 } // Switch
 switch (indicator) {
-case 2102: {
+case 2111: {
 c = XMLB_AMPERSAND;
 break;
 } // End of dispatch label
-case 2103: {
+case 2112: {
 c = XMLB_LESS;
 break;
 } // End of dispatch label
-case 2104: {
+case 2113: {
 c = XMLB_GREATER;
 break;
 } // End of dispatch label
-case 2105: {
+case 2114: {
 c = XMLB_NBSP;
 break;
 } // End of dispatch label
-case 2106: {
+case 2115: {
 c = XMLB_QUOT;
 break;
 } // End of dispatch label
-case 2107: {
+case 2116: {
 c = XMLB_APOS;
 break;
 } // End of dispatch label
-case 2108: {
+case 2117: {
 c = (char) ctxt.acceptHexa();
 ctxt.accept(';');
 break;
@@ -43300,7 +43788,7 @@ ctxt.acceptString ("stCase");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2125)");
+ctxt.recoverableFail ("Other character expected (2134)");
 break;
 } // Switch
 break;
@@ -43329,7 +43817,7 @@ ctxt.acceptString ("quence");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2130)");
+ctxt.recoverableFail ("Other character expected (2139)");
 break;
 } // Switch
 break;
@@ -43388,7 +43876,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2137)");
+ctxt.recoverableFail ("Other character expected (2146)");
 break;
 } // Switch
 break;
@@ -43439,7 +43927,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2143)");
+ctxt.recoverableFail ("Other character expected (2152)");
 break;
 } // Switch
 break;
@@ -43494,7 +43982,7 @@ ctxt.accept3('n','g','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2150)");
+ctxt.recoverableFail ("Other character expected (2159)");
 break;
 } // Switch
 break;
@@ -43522,7 +44010,7 @@ ctxt.acceptString ("Condition");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2155)");
+ctxt.recoverableFail ("Other character expected (2164)");
 break;
 } // Switch
 break;
@@ -43561,13 +44049,13 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2160)");
+ctxt.recoverableFail ("Other character expected (2169)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2161)");
+ctxt.recoverableFail ("Other character expected (2170)");
 break;
 } // Switch
 break;
@@ -43633,7 +44121,7 @@ ctxt.acceptString ("lder");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2169)");
+ctxt.recoverableFail ("Other character expected (2178)");
 break;
 } // Switch
 break;
@@ -43671,7 +44159,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2174)");
+ctxt.recoverableFail ("Other character expected (2183)");
 break;
 } // Switch
 break;
@@ -43713,13 +44201,13 @@ ctxt.acceptString ("ield");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2181)");
+ctxt.recoverableFail ("Other character expected (2190)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2182)");
+ctxt.recoverableFail ("Other character expected (2191)");
 break;
 } // Switch
 break;
@@ -43764,7 +44252,7 @@ ctxt.accept2('s','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2188)");
+ctxt.recoverableFail ("Other character expected (2197)");
 break;
 } // Switch
 break;
@@ -43777,13 +44265,13 @@ ctxt.acceptString ("ction");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2190)");
+ctxt.recoverableFail ("Other character expected (2199)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2191)");
+ctxt.recoverableFail ("Other character expected (2200)");
 break;
 } // Switch
 return res;

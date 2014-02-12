@@ -496,6 +496,16 @@ namespace Utils
         }
 
         /// <summary>
+        /// Unregisters a finder
+        /// </summary>
+        /// <param name="finder"></param>
+        public void UnRegister(IFinder finder)
+        {
+            finder.ClearCache();
+            finders.Remove(finder);
+        }
+
+        /// <summary>
         /// The finder repository instance
         /// </summary>
         public static FinderRepository INSTANCE = new FinderRepository();

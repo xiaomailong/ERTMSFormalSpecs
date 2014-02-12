@@ -31,6 +31,16 @@ namespace GUI
         /// </summary>
         private ProgressHandler Work { get; set; }
 
+        /// <summary>
+        /// Indicates that the work has been canceled
+        /// </summary>
+        public bool Canceled { get; private set; }
+
+        /// <summary>
+        /// Handles a cancel event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ManageCancel(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -72,12 +82,30 @@ namespace GUI
             btnCancel.Enabled = allowCancel;
             KeyUp += new KeyEventHandler(ProgressDialog_KeyUp);
 
+            Canceled = false;
             Work = work;
             Text = reason;
             label1.Text = reason;
             backgroundWorker1.DoWork += new DoWorkEventHandler(ManageCancel);
         }
 
+        /// <summary>
+        /// Updates the message displayed to the user
+        /// </summary>
+        /// <param name="message"></param>
+        public void UpdateMessage(string message)
+        {
+            Invoke((MethodInvoker)delegate
+            {
+                label1.Text = message;
+            });
+        }
+
+        /// <summary>
+        /// Handles the escape key touch
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void ProgressDialog_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -88,8 +116,14 @@ namespace GUI
             }
         }
 
+        /// <summary>
+        /// Handles the Cancel event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            Canceled = true;
             label1.Text = "Cancel pending";
             backgroundWorker1.CancelAsync();
             btnCancel.Enabled = false;

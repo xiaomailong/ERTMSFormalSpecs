@@ -26,7 +26,7 @@ namespace GUI.TestRunnerView
         /// <summary>
         /// The value editor
         /// </summary>
-        private class ItemEditor : NamedEditor
+        private class ItemEditor : CommentableEditor
         {
             /// <summary>
             /// Constructor
@@ -227,7 +227,11 @@ namespace GUI.TestRunnerView
             {
                 runtimeErrors += "Errors were raised while executing sub sequences(s).\n";
             }
-            System.Windows.Forms.MessageBox.Show(Item.SubSequences.Count + " sub sequence(s) executed, " + executeTestsOperation.Failed + " sub sequence(s) failed.\n" + runtimeErrors + "Test duration : " + Math.Round(executeTestsOperation.Span.TotalSeconds) + " seconds", "Execution report");
+
+            if (!executeTestsOperation.Dialog.Canceled)
+            {
+                System.Windows.Forms.MessageBox.Show(Item.SubSequences.Count + " sub sequence(s) executed, " + executeTestsOperation.Failed + " sub sequence(s) failed.\n" + runtimeErrors + "Test duration : " + Math.Round(executeTestsOperation.Span.TotalSeconds) + " seconds", "Execution report");
+            }
         }
 
         #endregion

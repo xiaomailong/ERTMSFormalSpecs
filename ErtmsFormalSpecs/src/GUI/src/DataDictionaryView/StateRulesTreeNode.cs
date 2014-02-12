@@ -33,16 +33,26 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
+        {
+            base.BuildSubNodes(buildSubNodes);
+
+            foreach (DataDictionary.Rules.Rule rule in Item.StateMachine.Rules)
+            {
+                Nodes.Add(new RuleTreeNode(rule, buildSubNodes));
+            }
+        }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
         public StateRulesTreeNode(DataDictionary.Constants.State item, bool buildSubNodes)
             : base(item, buildSubNodes, "Rules", true, false)
         {
-            foreach (DataDictionary.Rules.Rule rule in item.StateMachine.Rules)
-            {
-                Nodes.Add(new RuleTreeNode(rule, buildSubNodes));
-            }
         }
 
         /// <summary>
@@ -75,6 +85,13 @@ namespace GUI.DataDictionaryView
         {
             DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
             rule.Name = "<Rule" + (GetNodeCount(false) + 1) + ">";
+
+            DataDictionary.Rules.RuleCondition condition = (DataDictionary.Rules.RuleCondition)DataDictionary.Generated.acceptor.getFactory().createRuleCondition();
+            condition.Name = "<Condition1>";
+            rule.appendConditions(condition);
+
+            RuleTreeNode node = AddRule(rule);
+            node.ExpandAll();
             AddRule(rule);
         }
 

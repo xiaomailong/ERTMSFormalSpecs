@@ -98,21 +98,29 @@ namespace DataDictionary.Interpreter
             {
                 retVal = new Values.StructureValue(structureType, Root);
 
-                foreach (KeyValuePair<string, Expression> pair in Associations)
+                try
                 {
-                    Values.IValue val = pair.Value.GetValue(new InterpretationContext(context));
-                    if (val != null)
+                    DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                    foreach (KeyValuePair<string, Expression> pair in Associations)
                     {
-                        Variables.Variable var = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
-                        var.Name = pair.Key;
-                        var.Value = val;
-                        var.Enclosing = retVal;
-                        retVal.set(var);
+                        Values.IValue val = pair.Value.GetValue(new InterpretationContext(context));
+                        if (val != null)
+                        {
+                            Variables.Variable var = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
+                            var.Name = pair.Key;
+                            var.Value = val;
+                            var.Enclosing = retVal;
+                            retVal.set(var);
+                        }
+                        else
+                        {
+                            AddError("Cannot evaluate value for " + pair.Value);
+                        }
                     }
-                    else
-                    {
-                        AddError("Cannot evaluate value for " + pair.Value);
-                    }
+                }
+                finally
+                {
+                    DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
                 }
             }
             else

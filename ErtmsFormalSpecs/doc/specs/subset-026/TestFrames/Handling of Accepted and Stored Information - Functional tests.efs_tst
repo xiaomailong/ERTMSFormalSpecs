@@ -1828,9 +1828,9 @@
  Guid="8510dc2a-8eff-4669-9057-3069e1b20408"
 >Kernel.Mode &lt;- Mode.SB</Action><Action
  Guid="1e22f75b-d368-4b15-b575-88fc0576e081"
->EURORADIO.RbcRiuSystemVersion.Value &lt;- &apos;RBC RIU system version&apos;</Action><Action
+>EURORADIO.CurrentRBCConnection().SessionManagementData.SystemVersion.Value &lt;- EURORADIO.SystemVersionEnum.Version1_1</Action><Action
  Guid="14cac277-5ad6-4ee2-8a87-dd8e96c8ad71"
->EURORADIO.RbcRiuSystemVersion.DataState &lt;- DataState.Valid</Action></Actions>
+>EURORADIO.CurrentRBCConnection().SessionManagementData.SystemVersion.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1854,10 +1854,10 @@
 <Expectation
  Kind="Instantaneous"
  Guid="4d2f2087-ca7a-479d-aa01-c7fb50fc0fde"
->EURORADIO.RbcRiuSystemVersion.DataState == DataState.Valid</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().SessionManagementData.SystemVersion.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
  Guid="62c41188-d716-4692-9b3d-43dcf0f393a3"
->EURORADIO.RbcRiuSystemVersion.Value == &apos;RBC RIU system version&apos;</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().SessionManagementData.SystemVersion.Value == EURORADIO.SystemVersionEnum.Version1_1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -4802,7 +4802,7 @@
  Guid="00704f4c-acdc-4e73-886c-b59883febefb"
 >EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.LRBG</Action><Action
  Guid="5ae9326d-91d4-47b4-b346-1f087800837e"
->EURORADIO.PositionReport.PositionReportParameters.Values.Locations &lt;- [EURORADIO.PositionReport.PositionLocation{Distance=&gt;1040.0,TrainEnd=&gt;EURORADIO.TrainData.TrainEnd.MinSafeRearEnd}]</Action></Actions>
+>EURORADIO.PositionReport.PositionReportParameters.Values.Locations &lt;- [EURORADIO.PositionReport.PositionLocation{Distance=&gt;1040.0,TrainEnd=&gt;EURORADIO.TrainData.TrainEndEnum.MinSafeRearEnd}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4826,7 +4826,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="ca77e333-c67b-4c41-8a65-f7b1263f92a3"
->(FIRST_IN EURORADIO.PositionReport.PositionReportParameters.Values.Locations).TrainEnd == EURORADIO.TrainData.TrainEnd.MinSafeRearEnd</Expectation><Expectation
+>(FIRST_IN EURORADIO.PositionReport.PositionReportParameters.Values.Locations).TrainEnd == EURORADIO.TrainData.TrainEndEnum.MinSafeRearEnd</Expectation><Expectation
  Kind="Instantaneous"
  Guid="7f3b5bdd-b786-4c1f-a023-503e23d67ce6"
 >EURORADIO.PositionReport.PositionReportParameters.Values.DistanceInterval == 1000.0</Expectation><Expectation

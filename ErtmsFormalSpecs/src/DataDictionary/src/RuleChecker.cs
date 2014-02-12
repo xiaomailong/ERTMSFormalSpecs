@@ -269,6 +269,26 @@ namespace DataDictionary
                     requiresComment = stateMachine.EnclosingStateMachine == null;
                 }
 
+                Rules.RuleCondition ruleCondition = commentable as Rules.RuleCondition;
+                if (ruleCondition != null)
+                {
+                    requiresComment = ruleCondition.EnclosingRule.RuleConditions.Count > 1;
+                }
+
+                if (commentable is DataDictionary.Types.NameSpace
+                    || commentable is DataDictionary.Functions.Case
+                    || commentable is DataDictionary.Rules.PreCondition
+                    || commentable is DataDictionary.Rules.Action)
+                {
+                    requiresComment = false;
+                }
+
+                Rules.Rule rule = commentable as Rules.Rule;
+                if (rule != null && rule.EnclosingProcedure != null)
+                {
+                    requiresComment = rule.EnclosingProcedure.Rules.Count > 1;
+                }
+
                 if (requiresComment)
                 {
                     ((ModelElement)commentable).AddInfo("This element should be documented");

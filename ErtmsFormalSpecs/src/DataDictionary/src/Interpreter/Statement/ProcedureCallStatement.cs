@@ -238,7 +238,8 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="changes">The list to fill with the changes</param>
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
-        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, bool log)
+        /// <param name="runner"></param>
+        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Tests.Runner.Runner runner)
         {
             if (Call != null)
             {
@@ -246,9 +247,13 @@ namespace DataDictionary.Interpreter.Statement
                 Functions.Procedure procedure = Call.getProcedure(ctxt);
                 if (procedure != null)
                 {
-                    ExplanationPart part = new ExplanationPart(Root);
-                    part.Message = procedure.FullName;
-                    explanation.SubExplanations.Add(part);
+                    ExplanationPart part = null;
+                    if (explanation != null)
+                    {
+                        part = new ExplanationPart(Root);
+                        part.Message = procedure.FullName;
+                        explanation.SubExplanations.Add(part);
+                    }
 
                     int token = ctxt.LocalScope.PushContext();
                     foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in Call.AssignParameterValues(context, procedure, true))
@@ -258,7 +263,7 @@ namespace DataDictionary.Interpreter.Statement
 
                     foreach (Rules.Rule rule in Rules)
                     {
-                        ApplyRule(rule, changes, ctxt, part, log);
+                        ApplyRule(rule, changes, ctxt, part, runner);
                     }
 
                     ctxt.LocalScope.PopContext(token);
@@ -280,7 +285,9 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="rule"></param>
         /// <param name="changes"></param>
         /// <param name="ctxt"></param>
-        private void ApplyRule(Rules.Rule rule, ChangeList changes, InterpretationContext ctxt, ExplanationPart explanation, bool log)
+        /// <param name="explanation"></param>
+        /// <param name="runner"></param>
+        private void ApplyRule(Rules.Rule rule, ChangeList changes, InterpretationContext ctxt, ExplanationPart explanation, Tests.Runner.Runner runner)
         {
             foreach (Rules.RuleCondition condition in rule.RuleConditions)
             {
@@ -291,24 +298,24 @@ namespace DataDictionary.Interpreter.Statement
                     explanation.SubExplanations.Add(conditionExplanation);
                 }
 
-                if (condition.EvaluatePreConditions(ctxt, conditionExplanation, log))
+                if (condition.EvaluatePreConditions(ctxt, conditionExplanation, runner))
                 {
                     if (conditionExplanation != null)
                     {
                         conditionExplanation.Message = "SATISIFIED " + rule.Name + "." + condition.Name;
                     }
-                    if (log)
+                    if (runner.LogEvents)
                     {
                         Log.Info("SATISIFIED " + rule.Name + "." + condition.Name);
                     }
                     foreach (Rules.Action action in condition.Actions)
                     {
-                        action.GetChanges(ctxt, changes, conditionExplanation, true, log);
+                        action.GetChanges(ctxt, changes, conditionExplanation, true, runner);
                     }
 
                     foreach (Rules.Rule subRule in condition.SubRules)
                     {
-                        ApplyRule(subRule, changes, ctxt, conditionExplanation, log);
+                        ApplyRule(subRule, changes, ctxt, conditionExplanation, runner);
                     }
                     break;
                 }

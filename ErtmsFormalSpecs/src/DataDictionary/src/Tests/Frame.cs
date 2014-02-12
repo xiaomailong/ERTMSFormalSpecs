@@ -19,7 +19,7 @@ using System;
 
 namespace DataDictionary.Tests
 {
-    public class Frame : Generated.Frame
+    public class Frame : Generated.Frame, ICommentable
     {
         /// <summary>
         /// The frame sub sequences
@@ -45,15 +45,22 @@ namespace DataDictionary.Tests
         {
             int retVal = 0;
 
-            foreach (DataDictionary.Tests.SubSequence subSequence in SubSequences)
+            try
             {
-                EFSSystem.Runner = new Runner.Runner(subSequence, false);
-                int testCasesFailed = subSequence.ExecuteAllTestCases(EFSSystem.Runner);
-                if (testCasesFailed > 0)
+                foreach (DataDictionary.Tests.SubSequence subSequence in SubSequences)
                 {
-                    subSequence.AddError("Execution failed");
-                    retVal += 1;
+                    EFSSystem.Runner = new Runner.Runner(subSequence, false, false);
+                    int testCasesFailed = subSequence.ExecuteAllTestCases(EFSSystem.Runner);
+                    if (testCasesFailed > 0)
+                    {
+                        subSequence.AddError("Execution failed");
+                        retVal += 1;
+                    }
                 }
+            }
+            finally
+            {
+                EFSSystem.Runner = null;
             }
 
             return retVal;
@@ -173,5 +180,15 @@ namespace DataDictionary.Tests
         /// The frameref which instanciated this frame
         /// </summary>
         public FrameRef FrameRef { get; set; }
+
+        /// <summary>
+        /// The comment related to this element
+        /// </summary>
+        public string Comment
+        {
+            get { return getComment(); }
+            set { setComment(value); }
+        }
+
     }
 }

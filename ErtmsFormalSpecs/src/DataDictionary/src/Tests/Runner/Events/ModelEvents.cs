@@ -84,8 +84,9 @@ namespace DataDictionary.Tests.Runner.Events
         /// Computes the changes related to this event
         /// </summary>
         /// <param name="apply">Indicates that the changes should be applied directly</param>
+        /// <param name="runner"></param>
         /// <returns>True if changes should be computed</returns>
-        public virtual bool ComputeChanges(bool apply, bool log)
+        public virtual bool ComputeChanges(bool apply, Runner runner)
         {
             bool retVal = !changesComputed;
 
@@ -97,11 +98,12 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// Applies the changes related to this event
         /// </summary>
-        public virtual void Apply(bool log)
+        /// <param name="runner"></param>
+        public virtual void Apply(Runner runner)
         {
             if (!changesComputed)
             {
-                ComputeChanges(false, log);
+                ComputeChanges(false, runner);
             }
         }
 

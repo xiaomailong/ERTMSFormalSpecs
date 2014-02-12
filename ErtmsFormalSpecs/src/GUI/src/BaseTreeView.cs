@@ -196,6 +196,8 @@ namespace GUI
 
             KeepTrackOfSelection = true;
             DoubleBuffered = true;
+
+            Selecting = false;
         }
 
         void BaseTreeView_KeyUp(object sender, KeyEventArgs e)
@@ -213,6 +215,11 @@ namespace GUI
         }
 
         /// <summary>
+        /// Indicates that an expand all operation is currently being done
+        /// </summary>
+        bool ExpandingAll = false;
+
+        /// <summary>
         /// Handles an expand event
         /// </summary>
         /// <param name="sender"></param>
@@ -223,7 +230,22 @@ namespace GUI
             {
                 GUIUtils.MDIWindow.HandlingSelection = true;
                 Selected = e.Node as BaseTreeNode;
-                Selected.HandleExpand();
+                if (Control.ModifierKeys == Keys.Control && !ExpandingAll && !Selecting)
+                {
+                    try
+                    {
+                        ExpandingAll = true;
+                        Selected.ExpandAll();
+                    }
+                    finally
+                    {
+                        ExpandingAll = false;
+                    }
+                }
+                else
+                {
+                    Selected.HandleExpand();
+                }
             }
             finally
             {
@@ -506,6 +528,11 @@ namespace GUI
         }
 
         /// <summary>
+        /// Indicates that a programatic selection is currently occuring
+        /// </summary>
+        private bool Selecting { get; set; }
+
+        /// <summary>
         /// Selects the node which references the element provided
         /// </summary>
         /// <param name="element"></param>
@@ -515,19 +542,27 @@ namespace GUI
         {
             BaseTreeNode retVal = null;
 
-            if (element != null)
+            try
             {
-                retVal = FindNode(element);
-                if (retVal != null)
+                Selecting = true;
+                if (element != null)
                 {
-                    Selected = retVal;
-
-                    if (getFocus)
+                    retVal = FindNode(element);
+                    if (retVal != null)
                     {
-                        Form form = GUIUtils.EnclosingFinder<Form>.find(this);
-                        form.BringToFront();
+                        Selected = retVal;
+
+                        if (getFocus)
+                        {
+                            Form form = GUIUtils.EnclosingFinder<Form>.find(this);
+                            form.BringToFront();
+                        }
                     }
                 }
+            }
+            finally
+            {
+                Selecting = false;
             }
 
             return retVal;

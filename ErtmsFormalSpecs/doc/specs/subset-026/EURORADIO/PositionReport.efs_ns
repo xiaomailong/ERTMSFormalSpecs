@@ -33,7 +33,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="593d4130-2967-47da-b2a0-de195360ab2d"
 >
-</ReqRef><Values>
+</ReqRef><Comment>The possible values of position report special locations.</Comment>
+<Values>
 <EnumValue
  Value="0"
  Name="DoNotSend"
@@ -123,6 +124,7 @@
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HasActiveSession"
  Guid="0e42fee9-39f2-4da3-bf59-40f56503187f"
@@ -315,7 +317,7 @@
  Guid="387b6c06-2c64-4504-a351-bef01392fb73"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="TrainData.TrainEnd"
+ TypeName="TrainData.TrainEndEnum"
  Default=""
  Mode="Incoming"
  Implemented="TRUE"
@@ -1140,6 +1142,7 @@ TIU.TrainIntegrity.Status in [
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="UpdatePositionReportParameters"
  Guid="f5b9ed0c-e0fd-4357-b628-f628b1584cdf"
 >

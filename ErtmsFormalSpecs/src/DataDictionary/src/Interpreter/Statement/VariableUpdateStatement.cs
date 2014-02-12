@@ -222,7 +222,8 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="changes">The list to fill with the changes</param>
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
-        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, bool log)
+        /// <param name="runner"></param>
+        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Tests.Runner.Runner runner)
         {
             Variables.IVariable var = VariableIdentification.GetVariable(context);
             if (var != null)
@@ -234,10 +235,14 @@ namespace DataDictionary.Interpreter.Statement
                     value = value.RightSide(var, true);
                 }
                 Rules.Change change = new Rules.Change(var, var.Value, value);
-                changes.Add(change, apply, log);
-                ExplanationPart part = new ExplanationPart(Root, change);
-                part.SubExplanations.Add(Expression.Explain(context));
-                explanation.SubExplanations.Add(part);
+                changes.Add(change, apply, runner);
+
+                if (explanation != null)
+                {
+                    ExplanationPart part = new ExplanationPart(Root, change);
+                    part.SubExplanations.Add(Expression.Explain(context));
+                    explanation.SubExplanations.Add(part);
+                }
             }
             else
             {

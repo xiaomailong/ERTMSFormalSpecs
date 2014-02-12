@@ -1268,6 +1268,10 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Hidden", other.getHidden().ToString(), obj.getHidden().ToString()) );
             }
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
+            }
         }
 
         /// <summary>
@@ -2031,6 +2035,10 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Expression", other.getExpression(), obj.getExpression()) );
             }
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
+            }
         }
 
         /// <summary>
@@ -2705,6 +2713,10 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Condition", other.getCondition(), obj.getCondition()) );
             }
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
+            }
         }
 
         /// <summary>
@@ -2723,6 +2735,10 @@ namespace DataDictionary.Compare
             if ( !CompareUtil.canonicalStringEquality(obj.getExpression(), other.getExpression()) )
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Expression", other.getExpression(), obj.getExpression()) );
+            }
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
             }
         }
 
@@ -2820,6 +2836,10 @@ namespace DataDictionary.Compare
                         diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubSequences", otherElement.Name) );
                     }
                 }
+            }
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
             }
         }
 
@@ -2933,6 +2953,10 @@ namespace DataDictionary.Compare
                     }
                 }
             }
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
+            }
         }
 
         /// <summary>
@@ -3016,6 +3040,10 @@ namespace DataDictionary.Compare
                         diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Steps", otherElement.Name) );
                     }
                 }
+            }
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
             }
         }
 
@@ -3307,6 +3335,10 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "SkipEngine", other.getSkipEngine().ToString(), obj.getSkipEngine().ToString()) );
             }
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
+            }
         }
 
         /// <summary>
@@ -3343,6 +3375,10 @@ namespace DataDictionary.Compare
             if ( !CompareUtil.canonicalStringEquality(obj.getCondition(), other.getCondition()) )
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Condition", other.getCondition(), obj.getCondition()) );
+            }
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
             }
         }
 
@@ -11572,6 +11608,10 @@ namespace DataDictionary.Compare
                     searchRule ( subElement, searchString, occurences );
                 }
             }
+            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
         }
 
         /// <summary>
@@ -11835,6 +11875,10 @@ namespace DataDictionary.Compare
             {
                 occurences.Add ( obj );
             }
+            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
         }
 
         /// <summary>
@@ -12011,6 +12055,10 @@ namespace DataDictionary.Compare
             {
                 occurences.Add ( obj );
             }
+            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
         }
 
         /// <summary>
@@ -12023,6 +12071,10 @@ namespace DataDictionary.Compare
         public static void searchAction(Generated.Action obj, string searchString, List<ModelElement> occurences)
         {
             if ( obj.getExpression() != null && obj.getExpression().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
             }
@@ -12062,6 +12114,10 @@ namespace DataDictionary.Compare
                 {
                     searchSubSequence ( subElement, searchString, occurences );
                 }
+            }
+            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
             }
         }
 
@@ -12119,6 +12175,10 @@ namespace DataDictionary.Compare
                     searchTestCase ( subElement, searchString, occurences );
                 }
             }
+            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
         }
 
         /// <summary>
@@ -12138,6 +12198,10 @@ namespace DataDictionary.Compare
                 {
                     searchStep ( subElement, searchString, occurences );
                 }
+            }
+            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
             }
         }
 
@@ -12205,6 +12269,10 @@ namespace DataDictionary.Compare
                     searchExpectation ( subElement, searchString, occurences );
                 }
             }
+            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
         }
 
         /// <summary>
@@ -12223,6 +12291,10 @@ namespace DataDictionary.Compare
                 occurences.Add ( obj );
             }
             if ( obj.getCondition() != null && obj.getCondition().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
             }

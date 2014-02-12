@@ -187,8 +187,9 @@ namespace DataDictionary.Variables
             }
             set
             {
-                type = null;
                 setTypeName(value);
+                type = null;
+                theValue = null;
             }
         }
 

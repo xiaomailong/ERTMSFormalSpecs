@@ -84,6 +84,7 @@
  Name="Position"
  Guid="64e0dbf9-512d-4f1f-aa55-215d81ca22df"
 >
+<Comment>Estimated position of the train.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="0.0"
@@ -93,6 +94,7 @@
  Name="UnderReadingAmountOdo"
  Guid="4a1d4052-682d-4b7f-89d2-163862a190b8"
 >
+<Comment>The under-reading amount.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="0.0"
@@ -102,6 +104,7 @@
  Name="OverReadingAmountOdo"
  Guid="a4915afe-ad95-4ea9-aac7-b511eb5fe837"
 >
+<Comment>The over-reading amount.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -856,7 +859,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ba4ae04f-33e3-467c-86c7-c8b361bb570f"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles National Values packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="5ba39e2d-0d86-4404-b853-53b808070955"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.NATIONAL_VALUES.Q_DIR )</PreCondition></PreConditions>
@@ -879,7 +883,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="82c4cc0c-66ea-4a14-b302-490fb733c5a2"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles linking packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="740ed4a7-b7cc-46f8-b0c9-dd3a37c4a2c5"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LINKING.Q_DIR )</PreCondition></PreConditions>
@@ -889,7 +894,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 >Linking.LinkingInformationReceived ( Packet.TRACK_TO_TRAIN.LINKING )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Repositioning information available"
+ Name="Repositioning Information available"
  Guid="36a11ebc-d5b0-4502-aa98-6972b7158392"
 >
 <ReqRef
@@ -907,10 +912,13 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6a5c4a18-a8d3-4e4a-ae6b-b79ef9b41293"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Repositioning information packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="a5ae63f6-8d36-44a3-bbd2-212a49b20d81"
->ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR )</PreCondition></PreConditions>
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR )</PreCondition><PreCondition
+ Guid="d86ad34c-f29d-4680-8d17-fef9ba598939"
+>Linking.CurrentLinking().BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="11ff0426-7369-4b98-8ea9-b7674aadda0c"
@@ -935,7 +943,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a423c1f2-fcdf-4a40-9abb-3af782c6c62e"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Gradient packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="707ec8bf-fadd-4254-9e70-04791d061d52"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.GRADIENT_PROFILE.Q_DIR )</PreCondition></PreConditions>
@@ -963,7 +972,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d3dcf489-908e-4a6e-9dd8-2675337864fa"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Static Speed Profile packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="f883aba6-4c27-4a72-b986-d0388d7577cd"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Q_DIR )</PreCondition></PreConditions>
@@ -981,7 +991,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="64b3e369-2c27-433f-9a56-493e2d8a0586"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Handles Level Transition packet, if available.</Comment>
 <PreConditions>
 <PreCondition
  Guid="c940ee63-1009-40f4-b256-70ec1695af0e"
@@ -992,7 +1002,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 >Kernel.LevelTransition.LTOReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Session management available"
+ Name="Session Management available"
  Guid="68003d12-e6dc-4138-a684-695bf74a4f41"
 >
 <ReqRef
@@ -1005,14 +1015,20 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5f525ce1-f6fd-45db-a9bc-14e85abac630"
 >
-</ReqRef><PreConditions>
+</ReqRef><ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="551dbd77-2393-41c7-9fed-40126a123a95"
+>
+</ReqRef><Comment>Handles Session Management packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="e5602e17-2393-423c-b397-89dcba576dcf"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8e4e8741-f67b-46ff-a5e6-fcfa1ce7192f"
->EURORADIO.HandleTracksideOrderedSession(Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT)</Action></Actions>
+>EURORADIO.TracksideOrderedSessionReceived(Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Conditional Level Transition Order"
@@ -1023,7 +1039,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0bc128a5-192b-44fe-9d95-5b1cb7d5232d"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Conditionan Level Transition Order packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="7d08f93b-f3cf-41fe-8d7c-ded1a543e64d"
 >ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition></PreConditions>
@@ -1046,7 +1063,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c48f8f17-8039-45f7-a699-bc4853b11bff"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles List of Balises for SH packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="90ab8949-4dbb-4fdc-973b-d6f4b75d9912"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Q_DIR )</PreCondition></PreConditions>
@@ -1074,7 +1092,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fd48f242-0f6e-42c2-b2b6-a5833d9a5635"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Axle Load packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="7e4e2969-37b5-42c9-be79-a5cabaec81d7"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Q_DIR )</PreCondition></PreConditions>
@@ -1102,7 +1121,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d50e4849-9617-4801-84b7-431e4ada478b"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Permitted Braking Distance Information packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="ce7592d3-5d36-42a6-a430-0f02f26d87b3"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Q_DIR )</PreCondition></PreConditions>
@@ -1125,7 +1145,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ac60629c-9a25-4729-a760-e04a89fcd270"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Temporary Speed Restriction packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="695bdf97-2135-4805-808a-b6281c1da123"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Q_DIR )</PreCondition></PreConditions>
@@ -1148,7 +1169,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="80044d87-8774-474a-9c14-55493631c929"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handes Temporary Speed Restriction Revocation packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="673297fe-8eba-443e-93e0-6cde374acf93"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Q_DIR )</PreCondition></PreConditions>
@@ -1176,7 +1198,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c81bae62-b211-4262-abf9-f2e877c51023"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Track Condition packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="0d34e791-f010-453b-b97f-105cc27ebddb"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TRACK_CONDITION.Q_DIR )</PreCondition></PreConditions>
@@ -1204,7 +1227,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d30b80de-ed78-424d-b01f-acd191b04430"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Route Suitability packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="41f1baa5-c1ed-48ea-91a9-de8a5b5fbaef"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Q_DIR )</PreCondition></PreConditions>
@@ -1242,7 +1266,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="03a19c5e-5b39-4b5f-9eb0-7f9546959a7b"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Adhesion Factor packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="3df15a50-e4cd-4343-8a41-cb8d3cec0b37"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ADHESION_FACTOR.Q_DIR )</PreCondition></PreConditions>
@@ -1280,7 +1305,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="60c748c4-6ffd-48db-8256-509ca1d5e9df"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Mode Profile packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="7c611cdb-ccf2-4f3c-a343-9d77f47c5412"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE.Q_DIR )</PreCondition></PreConditions>
@@ -1303,7 +1329,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ed90fe7b-8bf5-48ae-9e67-71af60a9e0cc"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Level Crossing packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="e44772b8-5ec5-4de6-9609-3ddde969f874"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Q_DIR )</PreCondition></PreConditions>
@@ -1332,7 +1359,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="40c37b43-b142-4a45-bf63-f0b684dba908"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Infill packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="b66421ab-9225-4b66-9b32-ae12ae206ffc"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Q_DIR )</PreCondition><PreCondition
@@ -1344,7 +1372,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 >Kernel.Infill.InfillReceived ( Packet.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Reversing area information available"
+ Name="Reversing Area Information available"
  Guid="8c565102-6dfc-467b-bba2-7bdae0720fa5"
 >
 <ReqRef
@@ -1372,7 +1400,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0f217554-67f7-4f8b-8222-39736c4f1466"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Reversion Area Information packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="229f8b76-fd9c-43fc-9e81-d3eeef35a300"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition><PreCondition
@@ -1388,7 +1417,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Reversing supervision information available"
+ Name="Reversing Supervision Information available"
  Guid="b14b8020-8f06-4cd3-9875-0f6272c057e0"
 >
 <ReqRef
@@ -1406,7 +1435,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d9f75ebc-0a77-4f54-b9f8-26439dc73299"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Reverising Supervision Information, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="84dbb76c-bf59-462a-9f3c-525182a0b7cf"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</PreCondition><PreCondition
@@ -1421,7 +1451,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Default gradient for TSR available"
+ Name="Default Gradient for TSR available"
  Guid="18227d52-0953-4a2b-bce9-bb1eb4ee7ea6"
 >
 <ReqRef
@@ -1434,7 +1464,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="89d8594e-bd6d-487b-b2f1-030bd881ea7b"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Handles Default Gradient for TSR packet, if available.</Comment>
+<PreConditions>
 <PreCondition
  Guid="547b3821-fa99-449c-83b4-8d095143005d"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION.Q_DIR )</PreCondition></PreConditions>
@@ -1753,6 +1784,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Name="Infill available, before MA"
  Guid="11f4f9e8-af21-4088-9785-72b6d7de5354"
 >
+<Comment>If the infill information is available, then the mode profil has to be deleted only beyond the reference location of the infill information.</Comment>
 <PreConditions>
 <PreCondition
  Guid="fc87ca94-5038-495f-bb98-55cc12ef4807"
@@ -1773,6 +1805,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Name="Infill available, after MA"
  Guid="78820e91-8f55-4038-84e6-c0149d7833b1"
 >
+<Comment>If an infill packet is available, but is situated after the MA packet, the MA packet is not considered to be sent by infill =&gt; the previous information is deleted.</Comment>
 <PreConditions>
 <PreCondition
  Guid="150d01b7-c7c8-40f9-82e9-d1683cc8c103"
@@ -1786,6 +1819,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Name="No infill available"
  Guid="5bec5fe9-140e-4dce-9b69-67f9a5aa7de3"
 >
+<Comment>If no infill information is available, the previous mode profile is deleted.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -1972,7 +2006,7 @@ If all the messages of the current balise group have been received, calls Handle
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="72e935d9-3309-4156-9849-a90b3f47f5bc"
 >
-</ReqRef><Comment>If the linking information is consistent, the message is handled. Otherwise the linking reaction is applied.</Comment>
+</ReqRef><Comment>The message is processed only if the linking information is consistent.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1980,6 +2014,7 @@ If all the messages of the current balise group have been received, calls Handle
  Name="Balise group can be accepted"
  Guid="4ebc2216-3fa0-4125-8bd5-800bd0d7ea8c"
 >
+<Comment>If the linking information is consistent, the message is handled.</Comment>
 <PreConditions>
 <PreCondition
  Guid="9e315ce1-165d-436b-b001-82979c9d42cc"
@@ -1993,6 +2028,7 @@ If all the messages of the current balise group have been received, calls Handle
  Name="Apply linking reaction"
  Guid="fe8ae465-d9f7-4c3e-a389-81dc7c05b5ad"
 >
+<Comment>If the linking information is not consistent, the linking reaction is applied.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -2005,7 +2041,12 @@ If all the messages of the current balise group have been received, calls Handle
  Name="Apply linking reaction"
  Guid="4df4b0bf-3417-4cf7-aac1-ab4426ffbfcc"
 >
-<Comment>If the balise group is not received within its expectation window, the linking reaction is applied.</Comment>
+<ReqRef
+ Id="e529be25-15db-4250-b937-0f076614ae46"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c516d68c-00d1-4f39-8efd-44056d990ce9"
+>
+</ReqRef><Comment>If the balise group is not received within its expectation window, the linking reaction, if specified, is applied.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2014,6 +2055,12 @@ If all the messages of the current balise group have been received, calls Handle
  Name="Service brake"
  Guid="91f4a7b1-c086-45e2-b630-7b518494ff43"
 >
+<ReqRef
+ Id="52ed2710-9a35-46d3-9d62-825665d41e0d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c1fe9c45-0721-43c6-a471-701c705f41ba"
+>
+</ReqRef><Comment>Linking reaction: command service brake.</Comment>
 <PreConditions>
 <PreCondition
  Guid="225b3eaa-79f0-47b8-8242-2b45e9e0c7bf"
@@ -2033,7 +2080,13 @@ If all the messages of the current balise group have been received, calls Handle
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dda3ddef-eebf-4f41-bdd0-3d9252e6dea4"
 >
-</ReqRef><PreConditions>
+</ReqRef><ReqRef
+ Id="277ee440-7786-4aac-8364-7e60a82e94a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="872f330f-0838-473c-84f7-bb3c3f1f02dc"
+>
+</ReqRef><Comment>Linking reaction: train trip.</Comment>
+<PreConditions>
 <PreCondition
  Guid="d3c0f416-233f-434b-9809-11711134aff6"
 >(FIRST_IN BTM.Linking.Linkings).Reaction == Linking.LinkingReaction.TrainTrip</PreCondition></PreConditions>
@@ -2077,7 +2130,7 @@ If all the messages of the current balise group have been received, calls Handle
  Name="Handle new MA"
  Guid="27f968b8-6c75-4806-a96d-44abe1a92a13"
 >
-<Comment>Processes the received information about the movement authority (for level 1 or levels 2 or 3).</Comment>
+<Comment>Processes the received information about the movement authority.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2105,7 +2158,8 @@ If all the messages of the current balise group have been received, calls Handle
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="935b840f-0f34-460d-ad5e-dfeb473503a5"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Processes the MA for level 1.</Comment>
+<PreConditions>
 <PreCondition
  Guid="5277d858-f9be-415e-b52c-0e742bb35c08"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>
@@ -2142,7 +2196,8 @@ If all the messages of the current balise group have been received, calls Handle
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9bd63f47-593a-4a23-801a-56399ecc8a2e"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Processes the MA for level 2 or 3.</Comment>
+<PreConditions>
 <PreCondition
  Guid="682b5aef-b5b4-47f0-9e12-3213da50a84b"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>

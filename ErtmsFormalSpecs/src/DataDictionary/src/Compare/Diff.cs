@@ -35,10 +35,6 @@ namespace DataDictionary.Compare
             {
                 return GuidCache.INSTANCE.GetModel(Guid);
             }
-            private set
-            {
-                Guid = value.Guid;
-            }
         }
 
         /// <summary>
@@ -48,7 +44,6 @@ namespace DataDictionary.Compare
         public Diff(ModelElement model, HistoricalData.Generated.acceptor.ChangeOperationEnum action, string field = "", string before = "", string after = "") :
             base(model.Guid, action, field, before, after)
         {
-            Model = model;
         }
 
         /// <summary>
