@@ -25,7 +25,7 @@ namespace GUI.LongOperations
         /// <summary>
         /// The dialog used to display progress to the user
         /// </summary>
-        protected ProgressDialog Dialog { get; private set; }
+        public ProgressDialog Dialog { get; private set; }
 
         /// <summary>
         /// Constructor
