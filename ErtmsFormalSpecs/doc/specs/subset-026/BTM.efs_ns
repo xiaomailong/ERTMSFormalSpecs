@@ -2009,7 +2009,7 @@ If all the messages of the current balise group have been received, calls Handle
 <PreConditions>
 <PreCondition
  Guid="8f5a0f1c-c414-4eb4-9e97-36ecfe20d486"
->NOT Linking.ConsiderBG()</PreCondition></PreConditions>
+>Linking.ConsistencyError( Message =&gt; Message )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="947e4646-fe86-4fdd-962c-9fcece6b0261"

@@ -597,6 +597,56 @@ CountBalises() &gt;= 2</Expression>
 >
 <Expression>THERE_IS_IN Message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="ConsistencyError"
+ Guid="de79a9cc-73a2-4121-a5ba-eca8a13d75f2"
+>
+<Comment>Returns true if there is a linking consistency error with the BG</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.EUROBALISE.Message"
+ Name="Message"
+ Guid="5c7c2cea-b080-4260-a2d5-2f4c01a4c1fd"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="BG encountered before expectation window"
+ Guid="f75ed45e-36a7-4447-9107-f0fd905886ed"
+>
+<Comment>The location reference of the linked BG is found before its expectation window</Comment>
+<PreConditions>
+<PreCondition
+ Guid="9395d930-3de6-407a-9481-58901353982a"
+>LinkingApplicable()
+  AND  
+(Message.NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
+  AND  
+(FirstBalisePosition.Position &lt; (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Later BG found first"
+ Guid="dba1d2b8-aea3-4fe4-941e-b73d8398de2e"
+>
+<Comment>The detected BG is announced, but it is in the expectation window of a previous announced BG</Comment>
+<PreConditions>
+<PreCondition
+ Guid="eefad305-9f3a-4973-a898-0f076af71e89"
+>LinkingApplicable()
+  AND  
+(THERE_IS_IN Linkings | 
+    ((X != FIRST_IN Linkings) AND (Message.NID_BG == X.BaliseGroupIdentifier))
+)
+  AND  
+CurrentBGWithinFrame()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="dcf583f1-b5ed-4a68-a8eb-3b35040387c8"
+>
+<Expression>False</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -898,6 +948,27 @@ This function is called whenever it is appropriate, so it does not need any prec
  Guid="59e35c85-e437-4258-93af-28a87f6548e3"
 >Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Stop considering the current linking"
+ Guid="abece41c-6c5a-45c1-9766-acbffdc19074"
+>
+<Comment>When there is a linking consistency error the train stops expecting the associated linked balise group</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Stop considering the current linking"
+ Guid="8bafb47f-b72c-4fa2-9d11-d2b97d92ca1e"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a80ff0f5-ee68-4f40-9ce2-024e84980e16"
+>StopExpectingCurrentBG()</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <Variables>
@@ -955,7 +1026,7 @@ This function is called whenever it is appropriate, so it does not need any prec
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Check the train has passed the expected BG&apos;s expectation window"
+ Name="Check the train has passed the expected BG&apos;s expectation window and if it has, apply the reaction and stop expecting it"
  Guid="698f6885-1eec-46b4-87fa-7ad3439243f9"
 >
 <Comment>Apply the linking reaction</Comment>
@@ -963,35 +1034,12 @@ This function is called whenever it is appropriate, so it does not need any prec
 <PreCondition
  Guid="6d3b2490-aa01-4121-8abb-e05a55a842cc"
 >LinkingApplicable()
-  AND
+  AND  
 AntennaPosition ( Default.DistanceInterval.Min ) &gt; (CurrentLinking().Distance + CurrentLinking().LocationAccuracy)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d3d59ef2-1780-4145-90f8-d8a3cf0dfbcc"
 >ApplyLinkingReaction()</Action></Actions>
-<SubRules>
-<Rule
- Priority="CleanUp"
- Implemented="TRUE"
- Name="Stop expecting that BG"
- Guid="adc6cb4b-3a76-4d7b-9e80-fef0b0f8d69e"
->
-<Comment>Remove the BG from Linkings</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Remove the passed BG from the list of expected BGs"
- Guid="09fca6f8-f0c8-4331-9ee5-c65f911b4665"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="8fd68685-2c50-44e2-8c63-633c9323f735"
->StopExpectingCurrentBG()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

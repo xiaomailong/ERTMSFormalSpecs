@@ -1029,14 +1029,14 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
  trackside="TRUE"
  Name=""
  Guid="d21eb5fe-a454-453e-a6e8-c6b1608799c2"
-><Sub>
+>Behaviour at stop location<Sub>
 <Paragraph
  id="A1.1.19.1"
  guid=""
@@ -1052,6 +1052,34 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
  Guid="e0cce2b4-2341-4ff7-8496-f341142799d3"
 >In paragraph 3.10.2.2, the train&apos;s behaviour is defined for when it has passed a stop location and for when it has not yet passed the stop location. We have decided to consider that when it is at the specified location, it is to behave as if it had passed it.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="A1.1.20"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="f3394756-afc8-40d0-b76f-9d3574e9a491"
+>Meaning of &quot;in rear of&quot;<Sub>
+<Paragraph
+ id="A1.1.20.1"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="7e2eedb2-843c-49cc-baec-39383388af08"
+>Requirement 3.16.2.3.1.a) says that the action must take place &quot;in rear of&quot; the expectation window. As it doesn&apos;t make sense for this to occur after the expctation window has been passed we have decided that &quot;in rear of&quot; means &quot;before it is entered&quot; in this case.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.2"
