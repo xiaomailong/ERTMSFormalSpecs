@@ -459,34 +459,34 @@ namespace GUI
         /// <returns></returns>
         public void AddChildWindow(Form window, DockAreas dockArea = DockAreas.Document)
         {
-            InitialRectangle[window] = new Rectangle(new Point(50, 50), window.Size);
-
-            DockContent docContent = window as DockContent;
-            if (docContent != null)
+            if (window != null)
             {
-                SubForms.Add(docContent);
+                InitialRectangle[window] = new Rectangle(new Point(50, 50), window.Size);
+
+                DockContent docContent = window as DockContent;
+                if (docContent != null)
+                {
+                    SubForms.Add(docContent);
 
 
-                if (dockArea == DockAreas.DockLeft)
-                {
-                    docContent.Show(dockPanel, DockState.DockLeftAutoHide);
-                }
-                else if (dockArea == DockAreas.DockRight)
-                {
-                    docContent.Show(dockPanel, DockState.DockRightAutoHide);
-                }
-                else if (dockArea == DockAreas.Float)
-                {
-                    docContent.Show(dockPanel, DockState.Float);
+                    if (dockArea == DockAreas.DockLeft)
+                    {
+                        docContent.Show(dockPanel, DockState.DockLeftAutoHide);
+                    }
+                    else if (dockArea == DockAreas.DockRight)
+                    {
+                        docContent.Show(dockPanel, DockState.DockRightAutoHide);
+                    }
+                    else if (dockArea == DockAreas.Float)
+                    {
+                        docContent.Show(dockPanel, DockState.Float);
+                    }
+                    else
+                    {
+                        docContent.Show(dockPanel);
+                    }
                 }
                 else
-                {
-                    docContent.Show(dockPanel);
-                }
-            }
-            else
-            {
-                if (window != null)
                 {
                     SubForms.Add(window);
                     window.MdiParent = this;
