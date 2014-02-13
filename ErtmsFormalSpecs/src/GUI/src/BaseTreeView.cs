@@ -705,7 +705,14 @@ namespace GUI
                 toSelect = RecursivelySelectNext(null, Nodes[0] as BaseTreeNode, levelEnum, true);
             }
 
-            Selected = toSelect;
+            if (toSelect != null)
+            {
+                Selected = toSelect;
+            }
+            else
+            {
+                MessageBox.Show("No more element found", "End of selection");
+            }
         }
     }
 
