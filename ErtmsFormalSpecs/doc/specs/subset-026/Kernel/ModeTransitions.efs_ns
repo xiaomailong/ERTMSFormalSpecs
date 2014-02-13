@@ -1690,7 +1690,19 @@ Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
  Name="Value"
  Guid="e2fb9afb-64d9-485c-8440-c499c2a9fb91"
 >
-<Expression>False</Expression>
+<Expression>BTM.Linking.LinkingApplicable()
+
+  AND  
+
+( BTM.CurrentBaliseGroup != [] )
+
+  AND  
+
+( (FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == (FIRST_IN BTM.CurrentBaliseGroup).NID_BG )
+
+  AND  
+
+( NOT BTM.Linking.BGOrientationIsValid() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
