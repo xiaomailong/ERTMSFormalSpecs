@@ -27,6 +27,7 @@ namespace DataDictionary.Types
         {
         }
 
+
         /// <summary>
         /// The file name which corresponds to this namespace ref
         /// </summary>
@@ -42,7 +43,7 @@ namespace DataDictionary.Types
                     current = current.Enclosing as IModelElement;
                 }
 
-                return Dictionary.BasePath + Path.DirectorySeparatorChar + retVal;
+                return Dictionary.BasePath + Path.DirectorySeparatorChar + Util.validFilePath(retVal);
             }
         }
 

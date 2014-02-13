@@ -42,7 +42,7 @@ namespace DataDictionary.Tests
                     current = current.Enclosing as IModelElement;
                 }
 
-                return Dictionary.BasePath + Path.DirectorySeparatorChar + "TestFrames" + Path.DirectorySeparatorChar + retVal;
+                return Dictionary.BasePath + Path.DirectorySeparatorChar + "TestFrames" + Path.DirectorySeparatorChar + Util.validFilePath(retVal);
             }
         }
 

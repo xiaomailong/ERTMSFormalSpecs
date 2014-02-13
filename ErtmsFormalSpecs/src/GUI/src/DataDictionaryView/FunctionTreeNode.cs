@@ -187,25 +187,34 @@ namespace GUI.DataDictionaryView
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.AddRange(base.GetMenuItems());
 
-            DataDictionary.Interpreter.InterpretationContext context = new DataDictionary.Interpreter.InterpretationContext(Item);
-            if (Item.FormalParameters.Count == 1)
+            bool previousSilentMode = ModelElement.BeSilent;
+            try
             {
-                Parameter parameter = (Parameter)Item.FormalParameters[0];
-                DataDictionary.Functions.Graph graph = Item.createGraph(context, parameter);
-                if (graph != null && graph.Segments.Count != 0)
+                ModelElement.BeSilent = true;
+                DataDictionary.Interpreter.InterpretationContext context = new DataDictionary.Interpreter.InterpretationContext(Item);
+                if (Item.FormalParameters.Count == 1)
                 {
-                    retVal.Insert(7, new MenuItem("Display", new EventHandler(DisplayHandler)));
-                    retVal.Insert(8, new MenuItem("-"));
+                    Parameter parameter = (Parameter)Item.FormalParameters[0];
+                    DataDictionary.Functions.Graph graph = Item.createGraph(context, parameter);
+                    if (graph != null && graph.Segments.Count != 0)
+                    {
+                        retVal.Insert(7, new MenuItem("Display", new EventHandler(DisplayHandler)));
+                        retVal.Insert(8, new MenuItem("-"));
+                    }
+                }
+                else if (Item.FormalParameters.Count == 2)
+                {
+                    DataDictionary.Functions.Surface surface = Item.createSurface(context);
+                    if (surface != null && surface.Segments.Count != 0)
+                    {
+                        retVal.Insert(7, new MenuItem("Display", new EventHandler(DisplayHandler)));
+                        retVal.Insert(8, new MenuItem("-"));
+                    }
                 }
             }
-            else if (Item.FormalParameters.Count == 2)
+            finally
             {
-                DataDictionary.Functions.Surface surface = Item.createSurface(context);
-                if (surface != null && surface.Segments.Count != 0)
-                {
-                    retVal.Insert(7, new MenuItem("Display", new EventHandler(DisplayHandler)));
-                    retVal.Insert(8, new MenuItem("-"));
-                }
+                ModelElement.BeSilent = previousSilentMode;
             }
 
             return retVal;

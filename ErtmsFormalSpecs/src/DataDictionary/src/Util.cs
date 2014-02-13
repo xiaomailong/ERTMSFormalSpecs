@@ -714,5 +714,50 @@ namespace DataDictionary
             MessageInfoVisitor visitor = new MessageInfoVisitor();
             visitor.UpdateMessageInfo(modelElement);
         }
+
+        /// <summary>
+        /// Indicates that the character is a valid character for a file path
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        private static bool validChar(char c)
+        {
+            bool retVal = true;
+
+            foreach (char other in Path.GetInvalidPathChars())
+            {
+                if (other == c)
+                {
+                    retVal = false;
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Creates a valid file path for the path provided
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string validFilePath(string path)
+        {
+            string retVal = "";
+
+            foreach (char c in path)
+            {
+                if (!validChar(c))
+                {
+                    retVal += "_";
+                }
+                else
+                {
+                    retVal += c;
+                }
+            }
+
+            return retVal;
+        }
     }
 }

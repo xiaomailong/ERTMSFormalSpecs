@@ -152,7 +152,7 @@ namespace DataDictionary.Types
         {
             get
             {
-                Values.StructureValue retVal = new Values.StructureValue(this, NameSpace);
+                Values.StructureValue retVal = new Values.StructureValue(this);
 
                 return retVal;
             }

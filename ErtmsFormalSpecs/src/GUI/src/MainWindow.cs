@@ -165,7 +165,7 @@ namespace GUI
                     }
                 }
 
-                return null;
+                return new HistoryView.Window();
             }
         }
 
@@ -459,34 +459,34 @@ namespace GUI
         /// <returns></returns>
         public void AddChildWindow(Form window, DockAreas dockArea = DockAreas.Document)
         {
-            InitialRectangle[window] = new Rectangle(new Point(50, 50), window.Size);
-
-            DockContent docContent = window as DockContent;
-            if (docContent != null)
+            if (window != null)
             {
-                SubForms.Add(docContent);
+                InitialRectangle[window] = new Rectangle(new Point(50, 50), window.Size);
+
+                DockContent docContent = window as DockContent;
+                if (docContent != null)
+                {
+                    SubForms.Add(docContent);
 
 
-                if (dockArea == DockAreas.DockLeft)
-                {
-                    docContent.Show(dockPanel, DockState.DockLeftAutoHide);
-                }
-                else if (dockArea == DockAreas.DockRight)
-                {
-                    docContent.Show(dockPanel, DockState.DockRightAutoHide);
-                }
-                else if (dockArea == DockAreas.Float)
-                {
-                    docContent.Show(dockPanel, DockState.Float);
+                    if (dockArea == DockAreas.DockLeft)
+                    {
+                        docContent.Show(dockPanel, DockState.DockLeftAutoHide);
+                    }
+                    else if (dockArea == DockAreas.DockRight)
+                    {
+                        docContent.Show(dockPanel, DockState.DockRightAutoHide);
+                    }
+                    else if (dockArea == DockAreas.Float)
+                    {
+                        docContent.Show(dockPanel, DockState.Float);
+                    }
+                    else
+                    {
+                        docContent.Show(dockPanel);
+                    }
                 }
                 else
-                {
-                    docContent.Show(dockPanel);
-                }
-            }
-            else
-            {
-                if (window != null)
                 {
                     SubForms.Add(window);
                     window.MdiParent = this;
@@ -1385,6 +1385,7 @@ namespace GUI
 
             // Retrieve the hash tag and the corresponding dictionary version
             VersionSelector.VersionSelector selector = new VersionSelector.VersionSelector(dictionary);
+            selector.Text = "Compare current version with with repository version";
             selector.ShowDialog();
             if (selector.Selected != null)
             {
@@ -1581,10 +1582,16 @@ namespace GUI
 
             // Retrieve the hash tag
             VersionSelector.VersionSelector selector = new VersionSelector.VersionSelector(dictionary);
+            selector.Text = "Select the version up to which blame mode should be built";
             selector.ShowDialog();
 
             UpdateBlameInformationOperation operation = new UpdateBlameInformationOperation(dictionary, selector.Selected);
             operation.ExecuteUsingProgressDialog("Update blame information");
+        }
+
+        private void showHistoryViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddChildWindow(HistoryWindow, DockAreas.Document);
         }
     }
 }
