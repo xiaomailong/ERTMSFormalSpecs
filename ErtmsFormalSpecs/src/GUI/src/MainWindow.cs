@@ -1385,6 +1385,7 @@ namespace GUI
 
             // Retrieve the hash tag and the corresponding dictionary version
             VersionSelector.VersionSelector selector = new VersionSelector.VersionSelector(dictionary);
+            selector.Text = "Compare current version with with repository version";
             selector.ShowDialog();
             if (selector.Selected != null)
             {
@@ -1581,6 +1582,7 @@ namespace GUI
 
             // Retrieve the hash tag
             VersionSelector.VersionSelector selector = new VersionSelector.VersionSelector(dictionary);
+            selector.Text = "Select the version up to which blame mode should be built";
             selector.ShowDialog();
 
             UpdateBlameInformationOperation operation = new UpdateBlameInformationOperation(dictionary, selector.Selected);
