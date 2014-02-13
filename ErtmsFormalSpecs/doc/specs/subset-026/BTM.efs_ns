@@ -1998,20 +1998,6 @@ If all the messages of the current balise group have been received, calls Handle
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Balise group can be accepted"
- Guid="4ebc2216-3fa0-4125-8bd5-800bd0d7ea8c"
->
-<Comment>If the linking information is consistent, the message is handled.</Comment>
-<PreConditions>
-<PreCondition
- Guid="9e315ce1-165d-436b-b001-82979c9d42cc"
->Linking.ConsiderBG()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ac4ffbb4-40a0-469d-8b50-d2b94e18efe2"
->APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
  Name="Apply linking reaction"
  Guid="fe8ae465-d9f7-4c3e-a389-81dc7c05b5ad"
 >
@@ -2024,6 +2010,28 @@ If all the messages of the current balise group have been received, calls Handle
 <Action
  Guid="947e4646-fe86-4fdd-962c-9fcece6b0261"
 >Linking.ApplyLinkingReaction()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Balise group can be accepted"
+ Guid="211dc786-5299-4ebf-8c4d-12b2b498c4a1"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Balise group can be accepted"
+ Guid="4ebc2216-3fa0-4125-8bd5-800bd0d7ea8c"
+>
+<Comment>If the linking information is consistent, the message is handled.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="9e315ce1-165d-436b-b001-82979c9d42cc"
+>Linking.ConsiderBG()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ac4ffbb4-40a0-469d-8b50-d2b94e18efe2"
+>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
