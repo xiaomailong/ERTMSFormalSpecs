@@ -601,7 +601,7 @@ namespace GUI
                     HandlingSelection = true;
                     bool allowErrors = false;
                     OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem, allowErrors, true);
-                    openFileOperation.ExecuteInBackgroundThread();
+                    openFileOperation.ExecuteUsingProgressDialog("Opening file", true);
 
                     // Open the windows
                     if (openFileOperation.Dictionary != null)
@@ -666,7 +666,7 @@ namespace GUI
 
                         SetCoverageStatus(EFSSystem);
                     }
-                    else
+                    else if (!openFileOperation.Dialog.Canceled)
                     {
                         MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
