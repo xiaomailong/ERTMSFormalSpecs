@@ -2226,6 +2226,11 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="1d0493ee-770c-4c5c-b06f-f2b060a66944"
 >
+</ReqRef><ReqRef
+ Id="1e4ca98b-fcef-4737-b4e3-38bfc4715927"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="755fe533-f7a0-4821-8a30-cbe8ad0e7caa"
+>
 </ReqRef><Comment>Function which will determine if a NEW JRU Message has to be sent</Comment>
 <Parameters>
 <Parameter
@@ -2290,7 +2295,9 @@ OR
 OR
 ( SendNationalSystemIsolationMessage(jru) )
 OR
-( SendMTCOMessage(jru) )</PreCondition></PreConditions>
+( SendMTCOMessage(jru) )</PreCondition><PreCondition
+ Guid="07a9b9fc-3c5f-4545-acc0-68ead56b0325"
+>Kernel.ActiveFunctions.ProvideJuridicalData()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
