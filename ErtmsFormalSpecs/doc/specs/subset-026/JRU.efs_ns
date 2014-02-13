@@ -44,11 +44,11 @@
 <PreConditions>
 <PreCondition
  Guid="c7be3f63-444c-4d7c-8b71-dd667a30c684"
->SendJruNewMessage(THIS) == True</PreCondition></PreConditions>
+>SendNewMessage(THIS) == True</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ceacc66c-5e57-4024-81f9-daf7d248fcdf"
->JRU.SendJruMessage()</Action></Actions>
+>JRU.InitializeMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -167,7 +167,7 @@
 <Actions>
 <Action
  Guid="30019192-a227-4b3b-b4bc-9ff99059d11b"
->JRU.SendJruMessage()</Action><Action
+>JRU.InitializeMessage()</Action><Action
  Guid="1dd375f4-1c36-44bc-8f3f-fbd3204b191e"
 >JRU.JRU1.PreviousTime &lt;- Kernel.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
@@ -175,7 +175,7 @@
 <Procedures>
 <Procedure
  Implemented="TRUE"
- Name="SendJruMessage"
+ Name="InitializeMessage"
  Guid="850cfa57-2727-4b9a-8ef7-5f5fa4f69fd7"
 >
 <ReqRef
@@ -292,7 +292,7 @@ GENERAL_MESSAGE =&gt; CreateGeneralMessage()
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="SendTrainDataJruMessage"
+ Name="SendTrainDataMessage"
  Guid="e14c160a-f079-4098-acd4-ae5c59173e72"
 >
 <ReqRef
@@ -322,7 +322,7 @@ GENERAL_MESSAGE =&gt; CreateGeneralMessage()
 <PreConditions>
 <PreCondition
  Guid="5281ff5a-9ae0-47a7-8732-83dc0445fdc2"
->SendTrainDataJruMessage(THIS)</PreCondition></PreConditions>
+>SendTrainDataMessage(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="53c8185c-b1db-4c4c-9778-c8c65d4d4c47"
@@ -843,7 +843,7 @@ NON_LEADING_INPUT =&gt; CreateNonLeadingJruMessage()
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="SendJruRegenerativeBrakesStatus"
+ Name="SendRegenerativeBrakesStatus"
  Guid="d5e5d9d4-6410-44eb-82a3-589fe56ac2d3"
 >
 <ReqRef
@@ -863,9 +863,7 @@ NON_LEADING_INPUT =&gt; CreateNonLeadingJruMessage()
 <PreConditions>
 <PreCondition
  Guid="053ebf6f-8042-41ab-a9f6-a53e7919366d"
->SendJruRegenerativeBrakeStatusMessage(
-    jru=&gt;THIS
-)</PreCondition></PreConditions>
+>SendRegenerativeBrakeStatusMessage(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="844bc5aa-92db-4693-8c5e-3d2ee7a3c480"
@@ -901,7 +899,7 @@ REGENERATIVE_BRAKE_STATUS =&gt; CreateJruRegenerativeBrakeStatusMessage()
 <PreConditions>
 <PreCondition
  Guid="f2b231a2-e8f0-44c5-af05-4961b21c827e"
->SendJruMagneticShoeBrakeStatusMessage(THIS)</PreCondition></PreConditions>
+>SendMagneticShoeBrakeStatusMessage(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f1a52ee0-0a77-4bb8-86df-f584ed7fc2dd"
@@ -927,7 +925,7 @@ MAGNETIC_SHOE_BRAKE_STATUS =&gt; CreateMagneticShoeBrakeStatusJruMessage()
 <PreConditions>
 <PreCondition
  Guid="2bbe675e-f657-4946-beb1-9dfb35b59d33"
->SendJruEddyCurrentBrakeStatusMessage(THIS)</PreCondition></PreConditions>
+>SendEddyCurrentBrakeStatusMessage(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="92d7691a-d1bf-471a-8835-30c3ec7d1a52"
@@ -963,7 +961,7 @@ EDDY_CURRENT_BRAKE_STATUS =&gt; CreateJruEddyCurrentBrakeStatusMessage()
 <PreConditions>
 <PreCondition
  Guid="db6515dc-f306-4242-96ee-bdd2c91b10b3"
->SendJruElectroPneumaticBrakeStatusMessage (THIS)</PreCondition></PreConditions>
+>SendElectroPneumaticBrakeStatusMessage (THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9d2308b5-c95a-4278-9929-d43ffd2fa509"
@@ -999,7 +997,7 @@ ELECTRO_PNEUMATIC_BRAKE_STATUS =&gt; CreateJruElectroPneumaticBrakeStatus()
 <PreConditions>
 <PreCondition
  Guid="598e145c-af44-42c6-93ea-b8305d8d0051"
->SendJruAdditionalBrakeStatusMessage (THIS)</PreCondition></PreConditions>
+>SendAdditionalBrakeStatusMessage (THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="fbdb564d-451c-4808-a07e-dad7af2ceff3"
@@ -2098,7 +2096,7 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendJruNewMessage"
+ Name="SendNewMessage"
  Guid="0b310333-5920-48db-b09d-f00052cdad46"
 >
 <ReqRef
@@ -2277,13 +2275,13 @@ OR
 OR
 (SendNonLeadingMessage(jru))
 OR
-(SendJruRegenerativeBrakeStatusMessage(jru))
+(SendRegenerativeBrakeStatusMessage(jru))
 OR
-(SendJruMagneticShoeBrakeStatusMessage(jru))
+(SendMagneticShoeBrakeStatusMessage(jru))
 OR
-(SendJruElectroPneumaticBrakeStatusMessage(jru))
+(SendElectroPneumaticBrakeStatusMessage(jru))
 OR
-( SendJruAdditionalBrakeStatusMessage(jru) )
+( SendAdditionalBrakeStatusMessage(jru) )
 OR
 (SendCabStatusMessage(jru))
 OR
@@ -3274,7 +3272,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruEBCommanded()
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendTrainDataJruMessage"
+ Name="SendTrainDataMessage"
  Guid="3ab09d11-2939-4759-9ae4-4720b8542ee2"
 >
 <ReqRef
@@ -3307,12 +3305,8 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruEBCommanded()
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="9e6ff57a-4c5e-4fa5-8104-85e32db99474"
+ Guid="da0fdcde-ae17-49bf-90c5-47b2b67313eb"
 >
-<PreConditions>
-<PreCondition
- Guid="c74fd7b3-db82-4651-b9ea-a2500222b712"
->(TrainDataHaveChanged(jru) != True) OR (TrainDataVerified() != True)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -3663,12 +3657,8 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="d1b29f39-4a26-42c9-b2e9-4cc75f2bd637"
+ Guid="5773c35d-c222-4efa-a0ae-594c47fe6a73"
 >
-<PreConditions>
-<PreCondition
- Guid="b3c5b48a-2f61-42c4-ae99-7b811c754545"
->BTM.Message == EMPTY</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -3995,7 +3985,7 @@ M_CAB_A_STATUS =&gt;ToJruCabAStatus(),
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="cf3231bb-fc1f-4ec2-9caf-8ea505708969"
 >
-</ReqRef><Comment>Function used to determine which will the value which will fill the Q_Cab field on a CabStatus JRU Message</Comment>
+</ReqRef><Comment>Function used to determine which value will fill the Q_Cab field on a CabStatus JRU Message</Comment>
 <Cases>
 <Case
  Name="SetCabBStatusIfThereIsCabB"
@@ -4135,7 +4125,7 @@ OR
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="457e84bd-3a60-4f93-b688-05a250b482fe"
 >
-</ReqRef><Comment>Function used to determine which will the value which will fill the Q_SINGLEDESK field on a CabStatus JRU Message</Comment>
+</ReqRef><Comment>Function used to determine which value will fill the Q_SINGLEDESK field on a CabStatus JRU Message</Comment>
 <Cases>
 <Case
  Name="SingleDeskYes"
@@ -4733,15 +4723,6 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="NationalSystemIsolationHasChanged"
- Guid="60a6c355-2000-4272-b0de-56078eb35c64"
->
-<PreConditions>
-<PreCondition
- Guid="981d9859-c5b4-4e85-a2a7-642699d93479"
->TIU.NTCIsolated != jru.PreviousNationalSystemIsolationStatus</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
  Name="AtStartUp"
  Guid="fcc3e04f-9f3e-4aa8-bc03-256709cbfb03"
 >
@@ -4749,6 +4730,15 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 <PreCondition
  Guid="f6cc93d5-391e-49ec-996b-60113667e0b0"
 >(IsStartUp(jru) == True ) AND ( Kernel.Level.Value == Default.Level.LNTC )</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NationalSystemIsolationHasChanged"
+ Guid="60a6c355-2000-4272-b0de-56078eb35c64"
+>
+<PreConditions>
+<PreCondition
+ Guid="981d9859-c5b4-4e85-a2a7-642699d93479"
+>TIU.NTCIsolated != jru.PreviousNationalSystemIsolationStatus</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -5012,7 +5002,7 @@ M_SLEEPING =&gt; ToJruSleepingInput()
 <PreConditions>
 <PreCondition
  Guid="1ba7755d-8a48-4e6f-92ec-da399cac0943"
->((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP))</PreCondition></PreConditions>
+>(IsStartUp(jru) == True)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="PassiveShuntingStateChanged"
@@ -5229,7 +5219,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendJruRegenerativeBrakeStatusMessage"
+ Name="SendRegenerativeBrakeStatusMessage"
  Guid="7c497b9d-e45b-4ab4-967b-a0badb0ff8f4"
 >
 <ReqRef
@@ -5334,7 +5324,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendJruMagneticShoeBrakeStatusMessage"
+ Name="SendMagneticShoeBrakeStatusMessage"
  Guid="8b8957b5-e016-44a3-987c-83d1826cd71a"
 >
 <ReqRef
@@ -5438,7 +5428,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendJruEddyCurrentBrakeStatusMessage"
+ Name="SendEddyCurrentBrakeStatusMessage"
  Guid="109ff4ac-ece9-4811-b91b-073d91db3961"
 >
 <ReqRef
@@ -5574,7 +5564,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendJruElectroPneumaticBrakeStatusMessage"
+ Name="SendElectroPneumaticBrakeStatusMessage"
  Guid="7560b854-b250-4d0c-acc0-cf0d8ee7c187"
 >
 <ReqRef
@@ -5678,7 +5668,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendJruAdditionalBrakeStatusMessage"
+ Name="SendAdditionalBrakeStatusMessage"
  Guid="21b48e05-4a16-4717-93c4-d325e8b3ee87"
 >
 <ReqRef
@@ -5686,7 +5676,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="153ddef7-05c6-4324-9ef8-0fdabce18f43"
 >
-</ReqRef><Comment>Will determine if it is necessary to send the EddyCurrentBrakeStatus JRU Message</Comment>
+</ReqRef><Comment>Will determine if it is necessary to send the ADDITIONAL_BRKAE_STATUS JRU Message</Comment>
 <Parameters>
 <Parameter
  Type="JRU.JRU"
