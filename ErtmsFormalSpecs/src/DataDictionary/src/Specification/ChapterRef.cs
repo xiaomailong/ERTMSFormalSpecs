@@ -43,7 +43,7 @@ namespace DataDictionary.Specification
                     current = current.Enclosing as IModelElement;
                 }
 
-                retVal = Dictionary.BasePath + Path.DirectorySeparatorChar + "Specifications" + Path.DirectorySeparatorChar + retVal;
+                retVal = Dictionary.BasePath + Path.DirectorySeparatorChar + "Specifications" + Path.DirectorySeparatorChar + Util.validFilePath(retVal);
 
                 return retVal;
             }
