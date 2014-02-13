@@ -165,7 +165,7 @@ namespace GUI
                     }
                 }
 
-                return null;
+                return new HistoryView.Window();
             }
         }
 
@@ -1585,6 +1585,11 @@ namespace GUI
 
             UpdateBlameInformationOperation operation = new UpdateBlameInformationOperation(dictionary, selector.Selected);
             operation.ExecuteUsingProgressDialog("Update blame information");
+        }
+
+        private void showHistoryViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddChildWindow(HistoryWindow, DockAreas.Document);
         }
     }
 }

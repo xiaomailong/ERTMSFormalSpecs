@@ -166,6 +166,7 @@ namespace GUI
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.showHistoryViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -376,6 +377,7 @@ namespace GUI
             this.showShortcutsViewToolStripMenuItem,
             this.showTestsToolStripMenuItem,
             this.showTranslationViewToolStripMenuItem,
+            this.showHistoryViewToolStripMenuItem,
             this.toolStripSeparator22,
             this.dockedToolStripMenuItem,
             this.toolStripSeparator12,
@@ -544,7 +546,7 @@ namespace GUI
             // 
             // reviewedToolStripMenuItem
             // 
-            this.reviewedToolStripMenuItem.Name = "verifiedToolStripMenuItem";
+            this.reviewedToolStripMenuItem.Name = "reviewedToolStripMenuItem";
             this.reviewedToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
             this.reviewedToolStripMenuItem.Text = "Mark reviewed";
             this.reviewedToolStripMenuItem.Click += new System.EventHandler(this.reviewedToolStripMenuItem_Click);
@@ -1074,6 +1076,13 @@ namespace GUI
             this.dockPanel.Skin = dockPanelSkin1;
             this.dockPanel.TabIndex = 4;
             // 
+            // showHistoryViewToolStripMenuItem
+            // 
+            this.showHistoryViewToolStripMenuItem.Name = "showHistoryViewToolStripMenuItem";
+            this.showHistoryViewToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.showHistoryViewToolStripMenuItem.Text = "Show history view";
+            this.showHistoryViewToolStripMenuItem.Click += new System.EventHandler(this.showHistoryViewToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1208,6 +1217,7 @@ namespace GUI
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem blameUntilToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showHistoryViewToolStripMenuItem;
     }
 }
 
