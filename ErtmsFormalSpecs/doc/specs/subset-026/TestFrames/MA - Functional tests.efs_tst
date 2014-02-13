@@ -6007,7 +6007,7 @@ IN BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5a2849a0-250c-471c-9187-734b08739f3f"
->EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.T_TRAIN == Default.MessageTypes.Time(Kernel.CurrentTime)</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.T_TRAIN == Default.MessageTypes.UnResolveTime ( Kernel.CurrentTime )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

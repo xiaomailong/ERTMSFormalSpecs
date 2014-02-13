@@ -32,6 +32,11 @@ namespace GUI
         private ProgressHandler Work { get; set; }
 
         /// <summary>
+        /// Indicates that the work has been canceled
+        /// </summary>
+        public bool Canceled { get; private set; }
+
+        /// <summary>
         /// Handles a cancel event
         /// </summary>
         /// <param name="sender"></param>
@@ -77,6 +82,7 @@ namespace GUI
             btnCancel.Enabled = allowCancel;
             KeyUp += new KeyEventHandler(ProgressDialog_KeyUp);
 
+            Canceled = false;
             Work = work;
             Text = reason;
             label1.Text = reason;
@@ -117,6 +123,7 @@ namespace GUI
         /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            Canceled = true;
             label1.Text = "Cancel pending";
             backgroundWorker1.CancelAsync();
             btnCancel.Enabled = false;
