@@ -1368,6 +1368,8 @@
         <META NAME="Key"/> 
         <META NAME="DoNotCompare"/> 
       </FIELD>
+      <FIELD NAME="Tested"               TYPE="BOOLEAN">
+      </FIELD>
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="id"                  TARGET="Id"/>
@@ -1379,6 +1381,7 @@
       <ATTR NAME="name"                TARGET="Name" OPTIONAL="TRUE" DEFAULT="" />
       <ATTR NAME="reviewed"            TARGET="Reviewed" OPTIONAL="TRUE" DEFAULT="FALSE" />
       <ATTR NAME="status"              TARGET="ImplementationStatus" OPTIONAL="TRUE" DEFAULT="NA" />
+      <ATTR NAME="tested"              TARGET="Tested" OPTIONAL="TRUE" DEFAULT="FALSE"/>
       <ATTR NAME="version"             TARGET="Version" OPTIONAL="TRUE" DEFAULT="3.0.0"/>
       <ATTR NAME="infoRequired"        TARGET="MoreInfoRequired" OPTIONAL="TRUE" DEFAULT="FALSE" />
       <ATTR NAME="specIssue"           TARGET="SpecIssue" OPTIONAL="TRUE" DEFAULT="FALSE" />

@@ -75,16 +75,6 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Executes the operation in a background thread
-        /// </summary>
-        public void ExecuteInBackgroundThread()
-        {
-            ProgressDialog dialog = new ProgressDialog("Opening file", this);
-            dialog.ShowDialog();
-            DisplayErrors();
-        }
-
-        /// <summary>
         /// Performs the job as a background task
         /// </summary>
         /// <param name="arg"></param>

@@ -75,12 +75,29 @@ namespace GUI
         /// <param name="paragraph"></param>
         public void CreateReqRef(Paragraph paragraph)
         {
-            DataDictionary.ReqRef req = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
-            req.Paragraph = paragraph;
-            Item.appendRequirements(req);
-            Nodes.Add(new ReqRefTreeNode(req, true, true));
-            SortSubNodes();
-            RefreshNode();
+            bool found = false;
+            foreach (DataDictionary.ReqRef reqRef in Item.Requirements)
+            {
+                if (reqRef.Paragraph == paragraph)
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                DataDictionary.ReqRef req = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                req.Paragraph = paragraph;
+                Item.appendRequirements(req);
+                Nodes.Add(new ReqRefTreeNode(req, true, true));
+                SortSubNodes();
+                RefreshNode();
+            }
+            else
+            {
+                MessageBox.Show("Reference to paragraph " + paragraph.FullId + " has not been added because it already exists.");
+            }
         }
 
         /// <summary>

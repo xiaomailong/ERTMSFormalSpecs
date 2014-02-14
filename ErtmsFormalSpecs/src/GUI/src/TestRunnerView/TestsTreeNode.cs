@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DataDictionary;
+using System.Collections;
 
 namespace GUI.TestRunnerView
 {
@@ -101,7 +102,7 @@ namespace GUI.TestRunnerView
         }
 
         #region Execute tests
-        private class ExecuteTestsHandler : Utils.ProgressHandler
+        private class ExecuteTestsHandler : LongOperations.BaseLongOperation
         {
             /// <summary>
             /// The window for which theses tests should be executed
@@ -148,7 +149,19 @@ namespace GUI.TestRunnerView
                 DateTime start = DateTime.Now;
 
                 SynchronizerList.SuspendSynchronization();
-                Failed = Dictionary.ExecuteAllTests();
+
+                Failed = 0;
+                ArrayList tests = Dictionary.Tests;
+                tests.Sort();
+                foreach (DataDictionary.Tests.Frame frame in tests)
+                {
+                    Dialog.UpdateMessage("Executing " + frame.Name);
+                    int failedFrames = frame.ExecuteAllTests();
+                    if (failedFrames > 0)
+                    {
+                        Failed += 1;
+                    }
+                }
                 Dictionary.EFSSystem.Runner = null;
                 SynchronizerList.ResumeSynchronization();
 
@@ -167,10 +180,12 @@ namespace GUI.TestRunnerView
             ClearMessages();
 
             ExecuteTestsHandler executeTestsHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
-            ProgressDialog dialog = new ProgressDialog("Executing test frames", executeTestsHandler);
-            dialog.ShowDialog();
+            executeTestsHandler.ExecuteUsingProgressDialog("Executing test frames");
 
-            System.Windows.Forms.MessageBox.Show(Item.Tests.Count + " test frame(s) executed, " + executeTestsHandler.Failed + " test frame(s) failed.\nTest duration : " + Math.Round(executeTestsHandler.Span.TotalSeconds) + " seconds", "Execution report");
+            if (!executeTestsHandler.Dialog.Canceled)
+            {
+                System.Windows.Forms.MessageBox.Show(Item.Tests.Count + " test frame(s) executed, " + executeTestsHandler.Failed + " test frame(s) failed.\nTest duration : " + Math.Round(executeTestsHandler.Span.TotalSeconds) + " seconds", "Execution report");
+            }
         }
         #endregion
 

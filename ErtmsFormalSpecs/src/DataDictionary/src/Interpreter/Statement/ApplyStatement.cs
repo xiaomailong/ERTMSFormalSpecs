@@ -163,15 +163,13 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public override void CheckStatement()
         {
-            InterpretationContext context = new InterpretationContext(Root);
             Types.Collection listExpressionType = ListExpression.GetExpressionType() as Types.Collection;
             if (listExpressionType == null)
             {
                 Root.AddError("Target does not references a list variable");
             }
 
-            context.LocalScope.setVariable(IteratorVariable);
-            Call.CheckStatement(context);
+            Call.CheckStatement();
         }
 
         /// <summary>
