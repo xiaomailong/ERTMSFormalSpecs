@@ -1080,9 +1080,6 @@
  Guid="4dc326f3-41ad-4b1b-b89a-9acaa18a9b5f"
 >NOT Available ( BTM.LRBG )</Expectation><Expectation
  Kind="Instantaneous"
- Guid="bd6814a6-bc8f-40ce-aee6-988c91b4ec0a"
->BTM.CountBalises() == 3</Expectation><Expectation
- Kind="Instantaneous"
  Guid="a95b1950-6311-4ab1-aa8a-07d4411ebcc7"
 >( COUNT BTM.CurrentBaliseGroup ) == 3</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -1136,236 +1133,6 @@
  Kind="Instantaneous"
  Guid="a90a5241-f3ef-4abc-a215-a6f2eff1951f"
 >( COUNT BTM.CurrentBaliseGroup ) == 1</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="Count messages in current BG"
- Guid="6f9f3b6f-0500-48fb-9951-78ec09d8bb93"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- NeedsRequirement="FALSE"
- Name="No duplicates"
- Guid="2f32e30c-0149-4e16-9757-cf9765f1dedd"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Initialize train data"
- Guid="3a73c9fb-a8a5-48a1-aa78-4883fdac3a26"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="5a040655-d0f8-47f6-b6f1-9adbae2b39c0"
->
-<Actions>
-<Action
- Guid="a3890a9d-e8df-4f06-ba5e-a68cc9b441f4"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step2 - Balise group received"
- Guid="7f647981-ea43-43fc-809f-11bd1e05a95b"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="1c2f97de-0b12-4e6b-b098-e4f8b38c4bc5"
->
-<Actions>
-<Action
- Guid="2204c4a1-27bd-45fc-a69f-ab0d8cbe7335"
->BTM.CurrentBaliseGroup &lt;- 
-[ 
-  Messages.EUROBALISE.Message
-  {
-      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-      M_VERSION=&gt;1,
-      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-      N_PIG=&gt;1,
-      N_TOTAL=&gt;2,
-      M_DUP=&gt;Messages.M_DUP.No_duplicates,
-      M_MCOUNT=&gt;3,
-      NID_C=&gt;140,
-      NID_BG=&gt;2125,
-      Q_LINK=&gt;Messages.Q_LINK.Linked,
-      Sequence1=&gt; []
-  },
-  Messages.EUROBALISE.Message
-  {
-      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-      M_VERSION=&gt;1,
-      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-      N_PIG=&gt;2,
-      N_TOTAL=&gt;2,
-      M_DUP=&gt;Messages.M_DUP.No_duplicates,
-      M_MCOUNT=&gt;3,
-      NID_C=&gt;140,
-      NID_BG=&gt;2125,
-      Q_LINK=&gt;Messages.Q_LINK.Linked,
-      Sequence1=&gt; []
-  },
-  Messages.EUROBALISE.Message
-  {
-      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-      M_VERSION=&gt;1,
-      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-      N_PIG=&gt;3,
-      N_TOTAL=&gt;2,
-      M_DUP=&gt;Messages.M_DUP.No_duplicates,
-      M_MCOUNT=&gt;3,
-      NID_C=&gt;140,
-      NID_BG=&gt;2125,
-      Q_LINK=&gt;Messages.Q_LINK.Linked,
-      Sequence1=&gt; []
-  }
-]
-</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="f7afc19d-06ee-4091-bcac-c059556960bf"
->BTM.CountBalises() == 3</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- NeedsRequirement="FALSE"
- Name="Duplicates messages"
- Guid="0795baea-a393-419b-8328-6f29834f59ae"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 : missing next duplicate"
- Guid="061dbdab-d9bd-4638-bc17-48170cea3765"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="be0d0287-65a2-4575-b13a-4c21509ae209"
->
-<Actions>
-<Action
- Guid="762172ac-d2f7-4c7a-a5df-0be5383dd874"
->BTM.CurrentBaliseGroup &lt;- 
-[ 
-  Messages.EUROBALISE.Message
-  {
-      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-      M_VERSION=&gt;1,
-      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-      N_PIG=&gt;1,
-      N_TOTAL=&gt;2,
-      M_DUP=&gt;Messages.M_DUP.This_balise_is_a_duplicate_of_the_next_balise__seen_in_the_nominal_direction_of_the_balise_group,
-      M_MCOUNT=&gt;3,
-      NID_C=&gt;140,
-      NID_BG=&gt;2125,
-      Q_LINK=&gt;Messages.Q_LINK.Linked,
-      Sequence1=&gt; []
-  },
-  Messages.EUROBALISE.Message
-  {
-      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-      M_VERSION=&gt;1,
-      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-      N_PIG=&gt;3,
-      N_TOTAL=&gt;2,
-      M_DUP=&gt;Messages.M_DUP.No_duplicates,
-      M_MCOUNT=&gt;3,
-      NID_C=&gt;140,
-      NID_BG=&gt;2125,
-      Q_LINK=&gt;Messages.Q_LINK.Linked,
-      Sequence1=&gt; []
-  }
-]</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="7fdc6769-9e46-4311-b775-7dbcf5ff7922"
->BTM.CountBalises() == 3</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 : missing previous duplicate"
- Guid="79ac9bae-5efd-44c2-baa2-86b4dcfc52af"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="b811456d-ac02-4c49-907c-9cec1ccca70f"
->
-<Actions>
-<Action
- Guid="eb67e2b7-a7c7-4017-aa0c-ba1b2a8dc723"
->BTM.CurrentBaliseGroup &lt;- 
-[ 
-  Messages.EUROBALISE.Message
-  {
-      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-      M_VERSION=&gt;1,
-      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-      N_PIG=&gt;2,
-      N_TOTAL=&gt;2,
-      M_DUP=&gt;Messages.M_DUP.This_balise_is_a_duplicate_of_the_previous_balise__seen_in_the_nominal_direction_of_the_balise_group,
-      M_MCOUNT=&gt;4,
-      NID_C=&gt;140,
-      NID_BG=&gt;2125,
-      Q_LINK=&gt;Messages.Q_LINK.Linked,
-      Sequence1=&gt; []
-  },
-  Messages.EUROBALISE.Message
-  {
-      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-      M_VERSION=&gt;1,
-      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-      N_PIG=&gt;3,
-      N_TOTAL=&gt;2,
-      M_DUP=&gt;Messages.M_DUP.No_duplicates,
-      M_MCOUNT=&gt;4,
-      NID_C=&gt;140,
-      NID_BG=&gt;2125,
-      Q_LINK=&gt;Messages.Q_LINK.Linked,
-      Sequence1=&gt; []
-  }
-]</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="5cd5bb88-e14f-429b-bc38-9f9c3ce756db"
->BTM.CountBalises() == 3</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1460,7 +1227,7 @@
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;3,
+    N_TOTAL=&gt;4,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -1547,10 +1314,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="7317dc84-1cb4-4990-8d7d-dae77c44f763"
->( COUNT BTM.CurrentBaliseGroup ) == 2</Expectation><Expectation
- Kind="Instantaneous"
- Guid="c1c0b1c9-d452-4fb8-b2b9-d914f4d7d387"
->BTM.CountBalises() == 3</Expectation></Expectations>
+>( COUNT BTM.CurrentBaliseGroup ) == 2</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1599,9 +1363,6 @@
  Kind="Instantaneous"
  Guid="9f5d9607-20c1-469d-beec-a402516b818b"
 >BTM.LRBG.Orientation == Orientation.Nominal</Expectation><Expectation
- Kind="Instantaneous"
- Guid="877a90da-9978-4b58-b3b2-dab7ffb4c8b7"
->BTM.CountBalises() == 4</Expectation><Expectation
  Kind="Instantaneous"
  Guid="050763d4-c458-4ba4-8526-14011c6a2251"
 >( COUNT BTM.CurrentBaliseGroup ) == 3</Expectation></Expectations>

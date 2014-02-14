@@ -259,14 +259,14 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 <PreCondition
  Guid="2425f7be-2891-4d2c-a000-e3d04864b4b4"
 >(FIRST_IN Linkings).BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN</PreCondition></PreConditions>
-<Expression>FirstBalisePosition.Position - FirstBalisePosition.OverReadingAmountOdo &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy</Expression>
+<Expression>BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy</Expression>
 </Case><Case
  Name="Check the expectation window"
  Guid="0bfe0cf6-52e4-46b8-a258-00e1f3aa67c4"
 >
-<Expression>(FirstBalisePosition.Position + FirstBalisePosition.UnderReadingAmountOdo &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
+<Expression>(BGLocationReference.Position + BGLocationReference.UnderReadingAmountOdo &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
 AND
-(FirstBalisePosition.Position - FirstBalisePosition.OverReadingAmountOdo &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</Expression>
+(BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</Expression>
 </Case></Cases>
 </Function><Function
  Type="LinkingData"
@@ -454,6 +454,11 @@ BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="001c07ea-7aa0-4b72-aa4e-847e4d3f140f"
 >
+</ReqRef><ReqRef
+ Id="572df3cf-8b3b-4e6d-b78e-c0ff6690a2cb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e85cad30-48e1-4dd9-be02-754110c32362"
+>
 </ReqRef><Comment>Returns for the current BaliseGroup if it is to be taken into account</Comment>
 <Cases>
 <Case
@@ -555,7 +560,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 >
 <Expression>NOT CurrentBGIsLinked()
   AND
-CountBalises() &gt;= 2</Expression>
+(COUNT CurrentBaliseGroup) &gt;= 2</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -639,7 +644,7 @@ CountBalises() &gt;= 2</Expression>
   AND  
 (Message.NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
   AND  
-(FirstBalisePosition.Position &lt; (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
+(BGLocationReference.Position &lt; (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Later BG found first"
