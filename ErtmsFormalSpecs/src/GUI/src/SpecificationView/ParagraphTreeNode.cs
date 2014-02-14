@@ -104,6 +104,16 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
+            /// Indicates if the paragraph has been tested
+            /// </summary>
+            [Category("Meta data")]
+            public virtual bool Tested
+            {
+                get { return Item.getTested(); }
+                set { Item.setTested(value); }
+            }
+
+            /// <summary>
             /// Indicates that more information is required to understand the requirement
             /// </summary>
             [Category("Meta data")]

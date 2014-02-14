@@ -88,6 +88,7 @@ namespace GUI
             this.showShortcutsViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showTestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showTranslationViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showHistoryViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
             this.dockedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
@@ -166,7 +167,7 @@ namespace GUI
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.showHistoryViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markNotTestedButFunctionalTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -423,6 +424,13 @@ namespace GUI
             this.showTranslationViewToolStripMenuItem.Text = "Show translation view";
             this.showTranslationViewToolStripMenuItem.Click += new System.EventHandler(this.showTranslationViewToolStripMenuItem_Click);
             // 
+            // showHistoryViewToolStripMenuItem
+            // 
+            this.showHistoryViewToolStripMenuItem.Name = "showHistoryViewToolStripMenuItem";
+            this.showHistoryViewToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.showHistoryViewToolStripMenuItem.Text = "Show history view";
+            this.showHistoryViewToolStripMenuItem.Click += new System.EventHandler(this.showHistoryViewToolStripMenuItem_Click);
+            // 
             // toolStripSeparator22
             // 
             this.toolStripSeparator22.Name = "toolStripSeparator22";
@@ -505,6 +513,7 @@ namespace GUI
             this.reviewedToolStripMenuItem,
             this.markNotImplementedButImplementationExistsToolStripMenuItem,
             this.markImplementedButNoFunctionalTestToolStripMenuItem,
+            this.markNotTestedButFunctionalTestToolStripMenuItem,
             this.markSpecIssuesToolStripMenuItem,
             this.markParagraphsFromNewRevisionToolStripMenuItem,
             this.toolStripSeparator20,
@@ -562,7 +571,7 @@ namespace GUI
             // 
             this.markImplementedButNoFunctionalTestToolStripMenuItem.Name = "markImplementedButNoFunctionalTestToolStripMenuItem";
             this.markImplementedButNoFunctionalTestToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.markImplementedButNoFunctionalTestToolStripMenuItem.Text = "Mark implemented but no functional test";
+            this.markImplementedButNoFunctionalTestToolStripMenuItem.Text = "Mark implemented but no functional test exists";
             this.markImplementedButNoFunctionalTestToolStripMenuItem.Click += new System.EventHandler(this.markImplementedButNoFunctionalTestToolStripMenuItem_Click);
             // 
             // markSpecIssuesToolStripMenuItem
@@ -1076,12 +1085,12 @@ namespace GUI
             this.dockPanel.Skin = dockPanelSkin1;
             this.dockPanel.TabIndex = 4;
             // 
-            // showHistoryViewToolStripMenuItem
+            // markNotTestedButFunctionalTestToolStripMenuItem
             // 
-            this.showHistoryViewToolStripMenuItem.Name = "showHistoryViewToolStripMenuItem";
-            this.showHistoryViewToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-            this.showHistoryViewToolStripMenuItem.Text = "Show history view";
-            this.showHistoryViewToolStripMenuItem.Click += new System.EventHandler(this.showHistoryViewToolStripMenuItem_Click);
+            this.markNotTestedButFunctionalTestToolStripMenuItem.Name = "markNotTestedButFunctionalTestToolStripMenuItem";
+            this.markNotTestedButFunctionalTestToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
+            this.markNotTestedButFunctionalTestToolStripMenuItem.Text = "Mark not tested but functional test exists";
+            this.markNotTestedButFunctionalTestToolStripMenuItem.Click += new System.EventHandler(this.markNotTestedButFunctionalTestToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
@@ -1218,6 +1227,7 @@ namespace GUI
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem blameUntilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showHistoryViewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem markNotTestedButFunctionalTestToolStripMenuItem;
     }
 }
 

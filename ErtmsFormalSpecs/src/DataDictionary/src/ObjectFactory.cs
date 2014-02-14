@@ -212,6 +212,7 @@ namespace DataDictionary
             obj.setName("");
             obj.setReviewed(false);
             obj.setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
+            obj.setTested(false);
             obj.setVersion("3.0.0");
             obj.setMoreInfoRequired(false);
             obj.setSpecIssue(false);

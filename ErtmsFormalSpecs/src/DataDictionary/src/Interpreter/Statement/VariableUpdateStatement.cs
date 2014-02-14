@@ -149,6 +149,11 @@ namespace DataDictionary.Interpreter.Statement
                 Root.AddError("Cannot assign a value to a parameter (" + VariableIdentification.ToString() + ")");
             }
 
+            if (VariableIdentification.Ref == null)
+            {
+                Root.AddError("Cannot assign a value to " + VariableIdentification.ToString());
+            }
+
             Types.Type targetType = VariableIdentification.GetExpressionType();
             if (targetType == null)
             {
