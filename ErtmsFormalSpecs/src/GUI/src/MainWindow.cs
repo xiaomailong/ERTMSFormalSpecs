@@ -1593,5 +1593,21 @@ namespace GUI
         {
             AddChildWindow(HistoryWindow, DockAreas.Document);
         }
+
+        private void markNotTestedButFunctionalTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+            {
+                dictionary.ClearMessages();
+                if (dictionary.Specifications != null)
+                {
+                    foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                    {
+                        specification.CheckNotTestedWithFunctionalTests();
+                    }
+                }
+            }
+            Refresh();
+        }
     }
 }
