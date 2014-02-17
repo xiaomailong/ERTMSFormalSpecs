@@ -91,8 +91,6 @@ namespace GUI.DataDictionaryView
             rule.appendConditions(condition);
 
             RuleTreeNode node = AddRule(rule);
-            node.ExpandAll();
-            AddRule(rule);
         }
 
         /// <summary>
