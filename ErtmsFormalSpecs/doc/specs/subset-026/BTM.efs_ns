@@ -1739,8 +1739,6 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 >
 <PreConditions>
 <PreCondition
- Guid="4e41bb05-d47e-4072-8937-8e19f9943016"
->Linking.ConsiderBG()</PreCondition><PreCondition
  Guid="dffaadac-5831-46c5-bf77-91ce6270c379"
 >THERE_IS_IN Message.Sequence1 | ( Available ( X.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY ) OR Available ( X.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY ) )</PreCondition></PreConditions>
 <Actions>
@@ -1972,61 +1970,9 @@ If all the messages of the current balise group have been received, calls Handle
   (     X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT 
   OR X.M_MCOUNT == Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group )</PreCondition></PreConditions>
 <Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Verify linking"
- Guid="b8bb73c2-f11f-4ea6-8cbf-f11352ae1148"
->
-<ReqRef
- Id="0547edfa-b17d-4b79-8cad-2fba135b2d95"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="72e935d9-3309-4156-9849-a90b3f47f5bc"
->
-</ReqRef><Comment>The message is processed only if the linking information is consistent.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Apply linking reaction"
- Guid="fe8ae465-d9f7-4c3e-a389-81dc7c05b5ad"
->
-<Comment>If the linking information is not consistent, the linking reaction is applied.</Comment>
-<PreConditions>
-<PreCondition
- Guid="8f5a0f1c-c414-4eb4-9e97-36ecfe20d486"
->Linking.ConsistencyError( Message =&gt; Message )</PreCondition></PreConditions>
-<Actions>
 <Action
- Guid="947e4646-fe86-4fdd-962c-9fcece6b0261"
->Linking.ApplyLinkingReaction()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Balise group can be accepted"
- Guid="211dc786-5299-4ebf-8c4d-12b2b498c4a1"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Balise group can be accepted"
- Guid="4ebc2216-3fa0-4125-8bd5-800bd0d7ea8c"
->
-<Comment>If the linking information is consistent, the message is handled.</Comment>
-<PreConditions>
-<PreCondition
- Guid="9e315ce1-165d-436b-b001-82979c9d42cc"
->Linking.ConsiderBG()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ac4ffbb4-40a0-469d-8b50-d2b94e18efe2"
->APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup | (BaliseMessageToBeHandled(Message=&gt;X) == True)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+ Guid="e7bdbad0-03e6-4eab-af45-686bb9024af6"
+>Linking.CheckBGBeforeHandling()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2255,7 +2201,7 @@ If all the messages of the current balise group have been received, calls Handle
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="000ae04c-6645-4522-ac18-7bc3b854db77"
 >
-</ReqRef><Comment>This is the position of the first balise (N_PIG == 1) in the balise group</Comment>
+</ReqRef><Comment>This is the position of the first balise (N_PIG == 0) in the balise group</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
  DefaultValue="0.0"
@@ -2283,16 +2229,6 @@ If all the messages of the current balise group have been received, calls Handle
  Id="299e44cd-9a5e-4f38-8721-bad782668787"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="396410a3-bfa4-4b05-898b-ee479d120e88"
->
-</ReqRef><ReqRef
- Id="b431b905-df98-4c23-9ff8-3da3b92a7a29"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="12db6d9c-127e-4a6e-8edf-a922e1d02640"
->
-</ReqRef><ReqRef
- Id="259e3c43-f68a-4c80-8402-32349f27172d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b52a946c-2496-40c6-b33a-54e8ecc1597c"
 >
 </ReqRef><Comment>After processing the new telegram its content is deleted.</Comment>
 <SubRules></SubRules>
@@ -2339,33 +2275,6 @@ If all the messages of the current balise group have been received, calls Handle
 <Action
  Guid="74d5488e-85d4-48e9-8de8-43a12dd4b955"
 >CurrentBaliseGroup &lt;- []</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Clear linking of BG if announced"
- Guid="17d101f7-a80d-4b11-bc1a-396d97dca7cb"
->
-<Comment>If the BG was announced, clear the associated linking information</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Clear linking of BG if announced"
- Guid="6f770981-d099-4162-ac46-571534fead2e"
->
-<PreConditions>
-<PreCondition
- Guid="24b53d36-c897-4009-9243-171e8c673de7"
->( THERE_IS_IN Linking.Linkings )
-  AND
-( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linking.Linkings).BaliseGroupIdentifier )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="80792b85-827f-4b1b-a9fe-08834006c658"
->Linking.StopExpectingCurrentBG()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

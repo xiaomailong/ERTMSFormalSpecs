@@ -198,7 +198,35 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  trackside="TRUE"
  Name=""
  Guid="88930fd0-2a41-48f8-ac88-35d8c1d60f47"
->We assume that each Messages.EUROBALISE.SubStructure1 received by the BTM contains at most one packet. Otherwise the order of packets within a balise message would not be respected (a case which is pointless).</Paragraph></Sub>
+>We assume that each Messages.EUROBALISE.SubStructure1 received by the BTM contains at most one packet. Otherwise the order of packets within a balise message would not be respected (a case which is pointless).</Paragraph><Paragraph
+ id="A1.1.3.4"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="28f1e529-5fb5-41b7-a535-07e75aac675c"
+>Linking information<Sub>
+<Paragraph
+ id="A1.1.3.4.1"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="689ab6d6-cac9-4667-86bf-c6be70fefd43"
+>As balises are expected in the order given by linking information, BTM.Linking.Linkings is assumed to be listed in order of ascending distance</Paragraph></Sub>
+</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.4"
  guid=""
