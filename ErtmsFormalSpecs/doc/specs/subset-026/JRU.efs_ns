@@ -2366,7 +2366,7 @@ OR
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Five Seconds Have Passed"
+ Name="Period Has Passed"
  Guid="b301eb6a-e5a2-4959-98dc-d35c98b846f5"
 >
 <PreConditions>
@@ -2375,7 +2375,7 @@ OR
 >jru.PreviousTime + 5.0 &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="Five Seconds Has not Passed"
+ Name="Period Has not Passed"
  Guid="85b3652b-f811-4c81-9551-755140e412d8"
 >
 <Expression>False</Expression>

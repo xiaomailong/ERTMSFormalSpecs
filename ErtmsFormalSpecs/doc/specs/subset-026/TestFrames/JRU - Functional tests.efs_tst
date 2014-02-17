@@ -4037,5 +4037,96 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Test SendMessagePeriodically Function"
+ Guid="4f202ce7-1ac7-487d-bd28-328208a6cf6b"
+>
+<TestCases>
+<TestCase
+ Name="Testing Send Periocidcally Message Function"
+ Guid="3e2d0fa9-e249-4564-8818-15a95a67a0b3"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+ Guid="0142cc7d-16f3-4ddb-9e3a-dc95b25e45c6"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="cea1b27b-b1c1-4043-a0d6-ed2ba80aad91"
+>
+<Actions>
+<Action
+ Guid="1a50177f-0764-4b37-8ede-ffcf2a004d3b"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="6"
+ Guid="6ea64d3a-78cd-4d99-91f6-592984721ce8"
+>JRU.SendMessagePeriodically (JRU.JRU1) == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Verify the function resturn false"
+ Guid="6e56a44a-f0db-4a7b-95a4-b35a613f7a56"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="86b11297-fd75-4647-b80c-e665eceb6ee3"
+>
+<Expectations>
+<Expectation
+ DeadLine="0,4"
+ Guid="4b17e632-aff6-4ab9-a6c7-8c9c4aee7bf4"
+>JRU.SendMessagePeriodically(
+    jru=&gt;JRU.JRU1
+) == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4"
+ Guid="062ab618-9e9c-422b-9bf1-800d85f731e6"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7f63fdf0-1a40-4526-b6f9-f04a022f89d8"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="0,4"
+ Guid="0db05a30-aa07-470d-834c-7c19c785190c"
+>JRU.SendMessagePeriodically(
+    jru=&gt;JRU.JRU1
+) == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
