@@ -245,6 +245,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  Name="Expectation window for Unknown BG ID"
  Guid="4a644f5f-09fa-4cf8-868e-62d0f628f3c7"
 >
+<Comment>Implementation of 3.4.4.4.4: Only take into account the end location of the frame for BGs marked as UNKNOWN</Comment>
 <PreConditions>
 <PreCondition
  Guid="2425f7be-2891-4d2c-a000-e3d04864b4b4"
@@ -569,7 +570,7 @@ CountBalises() &gt;= 2</Expression>
  Name="Value"
  Guid="1389d65e-f43e-4c52-bbc2-a0b9bff9a25c"
 >
-<Expression>CurrentLinking().BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG</Expression>
+<Expression>THERE_IS_IN Linkings | X.BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -808,8 +809,8 @@ This function is called whenever it is appropriate, so it does not need any prec
 <Actions>
 <Action
  Guid="f5e1d966-d547-4ac0-9400-f7ab8627a792"
->Linkings &lt;- MAP Linkings | (NOT (X == FIRST_IN Linkings))
-  USING X</Action></Actions>
+>REMOVE ALL (X == FIRST_IN Linkings)
+  IN Linkings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
