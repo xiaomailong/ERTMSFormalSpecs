@@ -32,7 +32,7 @@ namespace DataDictionary.Values
         /// Constructor
         /// </summary>
         /// <param name="structure"></param>
-        public StructureValue(Types.Structure structure, Utils.INamable enclosing)
+        public StructureValue(Types.Structure structure)
             : base(structure, new Dictionary<string, Utils.INamable>())
         {
             Enclosing = structure;
@@ -43,6 +43,7 @@ namespace DataDictionary.Values
                 foreach (Types.StructureElement element in Structure.Elements)
                 {
                     Variables.Variable variable = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+                    variable.Enclosing = this;
                     if (element.Type != null)
                     {
                         variable.Type = element.Type;
@@ -50,14 +51,15 @@ namespace DataDictionary.Values
                     variable.Name = element.Name;
                     variable.Mode = element.Mode;
                     variable.Default = element.Default;
-                    variable.Enclosing = enclosing;
-                    variable.Enclosing = this;
+                    variable.Value = variable.DefaultValue;
                     set(variable);
                 }
             }
             finally
             {
                 DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+
+                DeclaredElements = null;
             }
         }
 
@@ -92,6 +94,8 @@ namespace DataDictionary.Values
                     set(var2);
                 }
             }
+
+            DeclaredElements = null;
         }
 
         /// <summary>

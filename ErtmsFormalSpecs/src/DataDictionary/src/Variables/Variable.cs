@@ -364,7 +364,7 @@ namespace DataDictionary.Variables
 
             if (Value != null)
             {
-                retVal = retVal + Name + " = " + Value.LiteralName;
+                retVal = retVal + Name + " : " + TypeName + " = " + Value.LiteralName;
             }
 
             return TextualExplainUtilities.Encapsule(retVal);
@@ -372,7 +372,7 @@ namespace DataDictionary.Variables
 
         public override string ToString()
         {
-            string retVal = "Variable " + Name;
+            string retVal = "Variable " + Name + " : " + TypeName;
             if (Value != null)
             {
                 retVal += " = " + Value.ToString();

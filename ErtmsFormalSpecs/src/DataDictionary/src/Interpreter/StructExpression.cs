@@ -96,7 +96,7 @@ namespace DataDictionary.Interpreter
             Types.Structure structureType = Structure.GetExpressionType() as Types.Structure;
             if (structureType != null)
             {
-                retVal = new Values.StructureValue(structureType, Root);
+                retVal = new Values.StructureValue(structureType);
 
                 try
                 {

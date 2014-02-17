@@ -4728,6 +4728,10 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "FunctionalBlockName", other.getFunctionalBlockName(), obj.getFunctionalBlockName()) );
             }
+            if ( obj.getTested() != other.getTested() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Tested", other.getTested().ToString(), obj.getTested().ToString()) );
+            }
         }
 
         /// <summary>

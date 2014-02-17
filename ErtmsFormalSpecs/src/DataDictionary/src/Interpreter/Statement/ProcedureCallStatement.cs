@@ -202,19 +202,11 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public override void CheckStatement()
         {
-            InterpretationContext context = getContext(new InterpretationContext(Root));
-            CheckStatement(context);
-        }
-
-        /// <summary>
-        /// Checks the statement for semantical errors
-        /// </summary>
-        public void CheckStatement(InterpretationContext context)
-        {
-            Call.checkExpression();
             if (Call != null)
             {
-                Functions.Procedure procedure = Call.getProcedure(context);
+                Call.checkExpression();
+
+                Functions.Procedure procedure = Call.Called.Ref as Functions.Procedure;
                 if (procedure != null)
                 {
 

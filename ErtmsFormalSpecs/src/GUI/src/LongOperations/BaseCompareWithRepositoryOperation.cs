@@ -107,11 +107,27 @@ namespace GUI.LongOperations
                     _processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                     Process myProcess = Process.Start(_processStartInfo);
                     myProcess.WaitForExit();
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(
+                        "Exception raised during operation " + exception.Message + "\nPlease make sure that git is available in your path",
+                        "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
+                try
+                {
                     // Unzip the archive
                     ICSharpCode.SharpZipLib.Zip.FastZip zip = new ICSharpCode.SharpZipLib.Zip.FastZip();
                     zip.ExtractZip(tempDirectory + "\\specs.zip", tempDirectory, null);
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show("Exception raised during operation " + exception.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
+                try
+                {
                     // Open the dictionary but do not store it in the EFS System
                     bool allowErrors = true;
                     bool updateGuid = false;
@@ -123,17 +139,16 @@ namespace GUI.LongOperations
                 {
                     MessageBox.Show("Exception raised during operation " + exception.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                finally
+
+                try
                 {
-                    try
-                    {
-                        Directory.Delete(tempDirectory, true);
-                    }
-                    catch (Exception exception2)
-                    {
-                        MessageBox.Show("Exception raised during operation " + exception2.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    Directory.Delete(tempDirectory, true);
                 }
+                catch (Exception exception2)
+                {
+                    MessageBox.Show("Exception raised during operation " + exception2.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
 
             return retVal;

@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Utils;
+using System.Collections;
 
 namespace GUI.TestRunnerView
 {
@@ -201,7 +202,28 @@ namespace GUI.TestRunnerView
                 if (Window != null)
                 {
                     Window.setFrame(Frame);
-                    Failed = Frame.ExecuteAllTests();
+
+                    try
+                    {
+                        Failed = 0;
+                        ArrayList subSequences = Frame.SubSequences;
+                        subSequences.Sort();
+                        foreach (DataDictionary.Tests.SubSequence subSequence in subSequences)
+                        {
+                            Dialog.UpdateMessage("Executing " + subSequence.Name);
+                            Frame.EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(subSequence, false, false);
+                            int testCasesFailed = subSequence.ExecuteAllTestCases(Frame.EFSSystem.Runner);
+                            if (testCasesFailed > 0)
+                            {
+                                subSequence.AddError("Execution failed");
+                                Failed += 1;
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        Frame.EFSSystem.Runner = null;
+                    }
                 }
                 SynchronizerList.ResumeSynchronization();
 

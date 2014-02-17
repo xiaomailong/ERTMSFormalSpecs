@@ -528,62 +528,63 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
+        /// Provides all ReqReferences
+        /// </summary>
+        private class AllReferences : Generated.Visitor
+        {
+            /// <summary>
+            /// Provides the list of references found
+            /// </summary>
+            public List<ReqRef> References { get; private set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public AllReferences()
+            {
+                References = new List<ReqRef>();
+            }
+
+            public override void visit(Generated.ReqRef obj, bool visitSubNodes)
+            {
+                References.Add((ReqRef)obj);
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// The set of paragraph which have a functional test defined
+            /// </summary>
+            public HashSet<Paragraph> TestedParagraphs { get; private set; }
+
+            /// <summary>
+            /// Set up the TestedParagraphs cache
+            /// </summary>
+            /// <param name="dictionary">Initialises this class according to the dictionary provided</param>
+            public void Initialize(Dictionary dictionary)
+            {
+                foreach (Tests.Frame frame in dictionary.Tests)
+                {
+                    visit(frame);
+                }
+
+                TestedParagraphs = new HashSet<Paragraph>();
+                foreach (ReqRef reqRef in References)
+                {
+                    Paragraph paragraph = reqRef.Paragraph;
+                    if (paragraph != null)
+                    {
+                        TestedParagraphs.Add(paragraph);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Provides the paragraph which are implemented but where no functional test is present
         /// </summary>
         private class ImplementedWithNoFunctionalTestVisitor : Generated.Visitor
         {
-            /// <summary>
-            /// Provides all ReqReferences
-            /// </summary>
-            private class AllReferences : Generated.Visitor
-            {
-                /// <summary>
-                /// Provides the list of references found
-                /// </summary>
-                public List<ReqRef> References { get; private set; }
-
-                /// <summary>
-                /// Constructor
-                /// </summary>
-                public AllReferences()
-                {
-                    References = new List<ReqRef>();
-                }
-
-                public override void visit(Generated.ReqRef obj, bool visitSubNodes)
-                {
-                    References.Add((ReqRef)obj);
-
-                    base.visit(obj, visitSubNodes);
-                }
-
-                /// <summary>
-                /// The set of paragraph which have a functional test defined
-                /// </summary>
-                public HashSet<Paragraph> TestedParagraphs { get; private set; }
-
-                /// <summary>
-                /// Set up the TestedParagraphs cache
-                /// </summary>
-                /// <param name="dictionary">Initialises this class according to the dictionary provided</param>
-                public void Initialize(Dictionary dictionary)
-                {
-                    foreach (Tests.Frame frame in dictionary.Tests)
-                    {
-                        visit(frame);
-                    }
-
-                    TestedParagraphs = new HashSet<Paragraph>();
-                    foreach (ReqRef reqRef in References)
-                    {
-                        Paragraph paragraph = reqRef.Paragraph;
-                        if (paragraph != null)
-                        {
-                            TestedParagraphs.Add(paragraph);
-                        }
-                    }
-                }
-            }
 
             /// <summary>
             /// Provides references to all functional tests
@@ -624,6 +625,54 @@ namespace DataDictionary.Specification
         public void CheckImplementedWithNoFunctionalTest()
         {
             ImplementedWithNoFunctionalTestVisitor visitor = new ImplementedWithNoFunctionalTestVisitor(this);
+            visitor.visit(this);
+        }
+
+
+        /// <summary>
+        /// Provides the paragraph which are not set as tested but where a functional test is present
+        /// </summary>
+        private class NotTestedWithFunctionalTestVisitor : Generated.Visitor
+        {
+            /// <summary>
+            /// Provides references to all functional tests
+            /// </summary>
+            private AllReferences FunctionalTests { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public NotTestedWithFunctionalTestVisitor(Specification specification)
+            {
+                FunctionalTests = new AllReferences();
+                foreach (DataDictionary.Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
+                {
+                    FunctionalTests.Initialize(dictionary);
+                }
+            }
+
+            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+            {
+                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)obj;
+
+                if (!paragraph.getTested())
+                {
+                    if (FunctionalTests.TestedParagraphs.Contains(paragraph))
+                    {
+                        paragraph.AddInfo("Paragraph is not marked as tested, but is already associated functional test(s)");
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
+        /// Mark paragraphs that are implemented, but where there is no test to validate this implementation
+        /// </summary>
+        public void CheckNotTestedWithFunctionalTests()
+        {
+            NotTestedWithFunctionalTestVisitor visitor = new NotTestedWithFunctionalTestVisitor(this);
             visitor.visit(this);
         }
 

@@ -709,7 +709,10 @@ namespace GUI
         /// <param name="args"></param>
         public void ShowHistoryHandler(object sender, EventArgs args)
         {
-            GUIUtils.MDIWindow.HistoryWindow.Model = Model;
+            if (GUIUtils.MDIWindow.HistoryWindow != null)
+            {
+                GUIUtils.MDIWindow.HistoryWindow.Model = Model;
+            }
         }
 
         /// <summary>

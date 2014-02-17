@@ -1,0 +1,43 @@
+<NameSpace
+ Name="Test"
+ Guid="7c0651b3-02e0-4d00-8c9f-cf55287be9d9"
+>
+<NameSpaces>
+</NameSpaces>
+<Variables>
+<Variable
+ Type="Boolean"
+ DefaultValue="True"
+ VariableMode="Internal"
+ Name="v1"
+ Guid="d30ce22b-f2f0-49f7-b605-b9eb2a5b2ac7"
+>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="True"
+ VariableMode="Internal"
+ Name="v2"
+ Guid="a3b1c9f7-c2ef-404c-8d15-825124298d78"
+>
+</Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="&lt;Rule1&gt;"
+ Guid="79130c39-194b-4bf8-b237-2212a0d8141a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="&lt;Condition1&gt;"
+ Guid="de217fc2-6973-4dfe-8207-87afc578f1d9"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a51eecd2-fbd6-4e84-a119-ebced5b7080e"
+>v1 AND v2 &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>
