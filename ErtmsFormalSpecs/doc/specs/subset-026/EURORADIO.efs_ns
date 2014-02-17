@@ -4991,5 +4991,76 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Guid="2e7a9c6a-4a8a-47ce-95f5-e7fd726a7c40"
 >
 </ReqRef><Comment>&quot;Connection status&quot; timer for safe radio connection indication.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="PreviousRadioHoleValue"
+ Guid="a944cb38-559b-41c2-bbfa-47fd48fbe8f5"
+>
+<ReqRef
+ Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55d11522-989c-4245-8159-1406f46e0f9f"
+>
+</ReqRef><Comment>Stores the previous value of IsRadioHole function, in order to detect when the train reaches the end of an announced radio hole.</Comment>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ Name="Radio hole tracker"
+ Guid="adf6dbcd-ad07-408a-8dad-224dd5fc060e"
+>
+<ReqRef
+ Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d0f20dea-cfa5-4737-b58f-4584cf17231e"
+>
+</ReqRef><Comment>Stores the previous value of IsRadioHoleFunction in order to determine that the train reached the ned of an announced radio hole.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Radio hole tracker"
+ Guid="3070261a-afeb-45e8-8581-af4dedcc7835"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c93d190a-c792-451a-9620-7daaf7b6faa1"
+>PreviousRadioHoleValue &lt;- Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle radio holes"
+ Guid="aa07ff03-6f7f-4a34-b670-071990efb6e5"
+>
+<ReqRef
+ Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fe7bdae4-7b35-4bc1-99df-fc324b0a2940"
+>
+</ReqRef><Comment>Opens an RBC session when the end of an announced radio hole is reached.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle radio holes"
+ Guid="0a92b508-5118-4453-8410-9fb1eafdad5c"
+>
+<PreConditions>
+<PreCondition
+ Guid="afcdf675-0f63-4287-91c9-be240194d87c"
+>PreviousRadioHoleValue != Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition><PreCondition
+ Guid="9bd93c77-5503-4db2-887d-a9bf1f7dca29"
+>NOT Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="90ffc76d-d9cd-411a-b66b-a120aad513df"
+>OpenRBCSession()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>
