@@ -1099,7 +1099,7 @@
 </StructureElement><StructureElement
  TypeName="SafeRadioConnectionStatusEnum"
  Default="SafeRadioConnectionStatusEnum.NoConnection"
- Mode="Internal"
+ Mode="Incoming"
  Implemented="TRUE"
  Name="SafeRadioConnectionStatus"
  Guid="ea1f0ade-0a84-48f2-a86e-2206d337446f"
@@ -1313,11 +1313,9 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 <PreConditions>
 <PreCondition
  Guid="28c2e922-3c7a-4a58-861a-33bc2615f866"
->SessionManagementData.ResponseReceived</PreCondition></PreConditions>
+>SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="623e6269-823f-4126-b491-ac074c895b43"
->SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
  Guid="31c885c9-1ac7-49b7-9f05-81c99f333f80"
 >SendInitiationOfCommunicationSession()</Action><Action
  Guid="f271b7b7-9884-4aed-a1ee-b9027d4cad7d"
@@ -1401,8 +1399,6 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 <Action
  Guid="947cdfdd-e42c-4684-9dd1-65abb983fad5"
 >THIS &lt;- Inactive</Action><Action
- Guid="c12bd255-c050-4efb-9c03-4e77c4f2b055"
->SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action><Action
  Guid="d6469a14-111f-45b4-846e-e000f91ba652"
 >NumberOfSentRequests &lt;- 0</Action></Actions>
 </RuleCondition></Conditions>
@@ -1494,8 +1490,6 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 >SystemVersionIsCompatible ( SessionManagementData.SystemVersion.Value )</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="978de328-21de-467f-af05-cca4f3410a75"
->SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
  Guid="b4f25d0d-6815-4c2d-ae03-b9c5f4fe9298"
 >THIS &lt;- Connected</Action><Action
  Guid="14daf0db-62ec-4f22-8031-4c28c232386d"
@@ -1556,8 +1550,6 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 <Action
  Guid="005fe0c4-14fe-4ed1-8754-5011041d3708"
 >THIS &lt;- Inactive</Action><Action
- Guid="11826692-aff7-4c8a-8411-5a0c1d254194"
->SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action><Action
  Guid="4566df66-8602-481b-8e43-9d6cee572241"
 >ReinitializeCommunicationInformation()</Action></Actions>
 </RuleCondition></Conditions>
@@ -1752,8 +1744,6 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 <Action
  Guid="ca565153-dca3-42f4-a94e-b62cfede617a"
 >THIS &lt;- Inactive</Action><Action
- Guid="eb00bc7c-9434-485a-a33c-1463adc14358"
->SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action><Action
  Guid="f3f8fa5b-bb54-459b-836d-86a309a18c16"
 >ReinitializeCommunicationInformation()</Action></Actions>
 </RuleCondition></Conditions>
@@ -1963,16 +1953,6 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Guid="82825918-5104-41e8-b1bb-34f14260e879"
 >
 </ReqRef><Comment>The system version of the trackside.</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="Boolean.False"
- Mode="Incoming"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ResponseReceived"
- Guid="c17b46b9-59d6-4f7e-8701-92890b16dc3f"
->
-<Comment>Is set to True when the safe radio connection is established.</Comment>
 </StructureElement><StructureElement
  TypeName="ContactActionEnum"
  Default="ContactActionEnum.Establish"
@@ -4704,5 +4684,19 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Guid="e3520cf1-6680-45fb-adc6-d49129321b6d"
 >
 </ReqRef><Comment>System versions supported by the on-board.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="300.0"
+ VariableMode="Constant"
+ Implemented="TRUE"
+ Name="MaxTimeToMaintainACommunicationSession"
+ Guid="50a37fad-675b-4798-af5d-2505564629c5"
+>
+<ReqRef
+ Id="b2ce7f07-bb0c-45fb-b2f9-3a864e344795"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c113b3d1-f0fd-4952-80a2-1dd8ac647e44"
+>
+</ReqRef><Comment>Maximum time to maintain a communication session in case of failed re-connection attempts.</Comment>
 </Variable></Variables>
 </NameSpace>
