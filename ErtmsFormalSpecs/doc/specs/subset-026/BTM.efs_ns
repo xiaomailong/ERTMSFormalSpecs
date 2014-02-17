@@ -1940,7 +1940,7 @@ If all the messages of the current balise group have been received, calls Handle
 <PreConditions>
 <PreCondition
  Guid="68fd0a29-085c-46b8-8d7a-13d05c0df54b"
->Message.N_PIG == 0</PreCondition></PreConditions>
+>IsLocationReference ( Message =&gt; Message )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2b0bea2f-701c-4d39-b9fb-f12ed87bc4e4"
