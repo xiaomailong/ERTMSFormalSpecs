@@ -165,7 +165,7 @@ namespace GUI
                     }
                 }
 
-                return new HistoryView.Window();
+                return null;
             }
         }
 
@@ -1591,7 +1591,11 @@ namespace GUI
 
         private void showHistoryViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddChildWindow(HistoryWindow, DockAreas.Document);
+            if (HistoryWindow == null)
+            {
+                HistoryView.Window window = new HistoryView.Window();
+                AddChildWindow(window, DockAreas.Document);
+            }
         }
 
         private void markNotTestedButFunctionalTestToolStripMenuItem_Click(object sender, EventArgs e)
