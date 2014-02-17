@@ -1416,6 +1416,11 @@ namespace GUI
                 {
                     ((StateDiagram.StateDiagramWindow)form).RefreshAfterStep();
                 }
+                if (form is TestRunnerView.Window)
+                {
+                    ((TestRunnerView.Window)form).RefreshAfterStep();
+                }
+
             }
         }
 

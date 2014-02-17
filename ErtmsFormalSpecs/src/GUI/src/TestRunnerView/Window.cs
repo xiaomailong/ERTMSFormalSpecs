@@ -443,5 +443,10 @@ namespace GUI.TestRunnerView
 
             Refresh();
         }
+
+        public void RefreshAfterStep()
+        {
+            Refresh();
+        }
     }
 }
