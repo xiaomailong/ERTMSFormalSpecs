@@ -49,6 +49,37 @@
 <Action
  Guid="ceacc66c-5e57-4024-81f9-daf7d248fcdf"
 >JRU.InitializeMessage()</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="UpdateJruTimePeriodically"
+ Guid="8ad1879e-790d-44df-b7f1-2c7edbf5cc7f"
+>
+<ReqRef
+ Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2e0259f6-ca38-467f-ab03-28f393ecb53a"
+>
+</ReqRef><Comment>Every 5 seconds a General JRU Message has to be sent</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="UpdateTime"
+ Guid="82202276-9547-45f4-8495-0353695ff6dc"
+>
+<Comment>Update the Time on the JRU.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="bd5e4bf2-8113-464b-8859-58726f368827"
+>SendMessagePeriodically(THIS)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1dd375f4-1c36-44bc-8f3f-fbd3204b191e"
+>JRU.JRU1.PreviousTime &lt;- Kernel.CurrentTime</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -144,32 +175,6 @@
 >PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="UpdateJRUTime"
- Guid="2cefdd03-1df3-4a9c-8fce-54dfb01f7a19"
->
-<Comment>Update Time value in the JRU</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="UpdateTime"
- Guid="82202276-9547-45f4-8495-0353695ff6dc"
->
-<Comment>Update the Time on the JRU.</Comment>
-<PreConditions>
-<PreCondition
- Guid="bd5e4bf2-8113-464b-8859-58726f368827"
->SendMessagePeriodically(THIS)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="30019192-a227-4b3b-b4bc-9ff99059d11b"
->JRU.InitializeMessage()</Action><Action
- Guid="1dd375f4-1c36-44bc-8f3f-fbd3204b191e"
->JRU.JRU1.PreviousTime &lt;- Kernel.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
