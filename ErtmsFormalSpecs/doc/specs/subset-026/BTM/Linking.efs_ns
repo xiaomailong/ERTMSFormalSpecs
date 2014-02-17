@@ -255,6 +255,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  Name="Expectation window for Unknown BG ID"
  Guid="4a644f5f-09fa-4cf8-868e-62d0f628f3c7"
 >
+<Comment>Implementation of 3.4.4.4.4: Only take into account the end location of the frame for BGs marked as UNKNOWN</Comment>
 <PreConditions>
 <PreCondition
  Guid="2425f7be-2891-4d2c-a000-e3d04864b4b4"
@@ -484,10 +485,10 @@ BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
  Guid="61e517d8-9b27-462b-b7ec-6caf0cbf5dbc"
 >
 <Expression>CurrentBGIsLinked()
-  AND  
-( (BGIdentityIsValid() AND BGOrientationIsValid()) 
-  OR  
-BGIsUnknownWithRepositioningPacketValidForDirection() )</Expression>
+  AND
+( BGIdentityIsValid() OR BGIsUnknownWithRepositioningPacketValidForDirection() )
+  AND
+Linking.CurrentBGWithinFrame()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -584,7 +585,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  Name="Value"
  Guid="1389d65e-f43e-4c52-bbc2-a0b9bff9a25c"
 >
-<Expression>CurrentLinking().BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG</Expression>
+<Expression>THERE_IS_IN Linkings | X.BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -897,8 +898,8 @@ This function is called whenever it is appropriate, so it does not need any prec
 <Actions>
 <Action
  Guid="f5e1d966-d547-4ac0-9400-f7ab8627a792"
->Linkings &lt;- MAP Linkings | (NOT (X == FIRST_IN Linkings))
-  USING X</Action></Actions>
+>REMOVE ALL (X == FIRST_IN Linkings)
+  IN Linkings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -931,17 +932,11 @@ This function is called whenever it is appropriate, so it does not need any prec
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7b2a0e8e-0483-4c77-bd46-b8ebf8c72509"
 >
-</ReqRef><ReqRef
- Id="2c84de1b-61c3-4555-b485-6b4eae58ae90"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="29d27f3f-8c82-486d-b182-e96c372e9ca5"
->
 </ReqRef><Comment>Apply the prescribed reaction if there is a data consistency problem</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="Apply linking reaction"
  Guid="b7705540-c896-4991-ac91-962e6c50429d"
 >
@@ -992,27 +987,6 @@ This function is called whenever it is appropriate, so it does not need any prec
 <Action
  Guid="59e35c85-e437-4258-93af-28a87f6548e3"
 >Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Stop considering the current linking"
- Guid="abece41c-6c5a-45c1-9766-acbffdc19074"
->
-<Comment>When there is a linking consistency error the train stops expecting the associated linked balise group</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Stop considering the current linking"
- Guid="8bafb47f-b72c-4fa2-9d11-d2b97d92ca1e"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="a80ff0f5-ee68-4f40-9ce2-024e84980e16"
->StopExpectingCurrentBG()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1071,7 +1045,7 @@ This function is called whenever it is appropriate, so it does not need any prec
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Check the train has passed the expected BG&apos;s expectation window and if it has, apply the reaction and stop expecting it"
+ Name="Check the train has passed the expected BG&apos;s expectation window"
  Guid="698f6885-1eec-46b4-87fa-7ad3439243f9"
 >
 <Comment>Apply the linking reaction</Comment>
@@ -1079,12 +1053,35 @@ This function is called whenever it is appropriate, so it does not need any prec
 <PreCondition
  Guid="6d3b2490-aa01-4121-8abb-e05a55a842cc"
 >LinkingApplicable()
-  AND  
+  AND
 AntennaPosition ( Default.DistanceInterval.Min ) &gt; (CurrentLinking().Distance + CurrentLinking().LocationAccuracy)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d3d59ef2-1780-4145-90f8-d8a3cf0dfbcc"
 >ApplyLinkingReaction()</Action></Actions>
+<SubRules>
+<Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ Name="Stop expecting that BG"
+ Guid="adc6cb4b-3a76-4d7b-9e80-fef0b0f8d69e"
+>
+<Comment>Remove the BG from Linkings</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove the passed BG from the list of expected BGs"
+ Guid="09fca6f8-f0c8-4331-9ee5-c65f911b4665"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="8fd68685-2c50-44e2-8c63-633c9323f735"
+>StopExpectingCurrentBG()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
