@@ -1677,6 +1677,7 @@ Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="Condition66"
  Guid="d235d312-ca94-498a-994a-8e987fd0de6d"
 >
@@ -1685,16 +1686,21 @@ Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="108256cd-ff81-47e0-b072-4b2cc142f7b5"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Implementation of mode transition condition 66</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="e2fb9afb-64d9-485c-8440-c499c2a9fb91"
 >
+<Comment>This returns True if the expected balise group was passed over in the wrong direction.
+LinkingApplicable() and Available(CurrentBaliseGroup) protect against errors from accessing empty collections.
+BaliseGroupIdentifier == NID.BG is also protection, ensuring that the balise group received was the expected one.
+BGOrientationIsValid is a function that returns true if the orientation of the received BG matches the orientation announced in Linkings</Comment>
 <Expression>BTM.Linking.LinkingApplicable()
 
   AND  
 
-( BTM.CurrentBaliseGroup != [] )
+BTM.CurrentBaliseGroup != []
 
   AND  
 
