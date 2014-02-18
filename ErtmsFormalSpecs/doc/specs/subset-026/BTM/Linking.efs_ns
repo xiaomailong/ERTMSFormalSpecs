@@ -326,6 +326,11 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="da1eb59e-f13c-4a97-b6aa-45b539db349f"
 >
+</ReqRef><ReqRef
+ Id="572df3cf-8b3b-4e6d-b78e-c0ff6690a2cb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05114846-8886-40e7-9147-4b7339d43065"
+>
 </ReqRef><Comment>If the current balise group was announced by linking as &quot;unknown&quot;, then it will only be considered if it contains the repositioning information valid for the train orientation.</Comment>
 <Cases>
 <Case
@@ -553,6 +558,11 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="496b2144-20a6-48db-8cbc-b2372ae80ee3"
 >
+</ReqRef><ReqRef
+ Id="572df3cf-8b3b-4e6d-b78e-c0ff6690a2cb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b7ed145-02e6-4aa7-b962-a858e2003488"
+>
 </ReqRef><Comment>Returns true if there is a linking consistency error with the BG</Comment>
 <Cases>
 <Case
@@ -565,9 +575,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  Guid="9395d930-3de6-407a-9481-58901353982a"
 >( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
   AND  
-(BGLocationReference.Position + BGLocationReference.UnderReadingAmountOdo &lt; (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)</PreCondition><PreCondition
- Guid="55d4f795-49dc-4a13-8711-70f99740bd69"
->(FIRST_IN Linkings).BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG</PreCondition></PreConditions>
+(BGLocationReference.Position + BGLocationReference.UnderReadingAmountOdo &lt; (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="BG encountered after expectation window"
@@ -579,9 +587,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  Guid="1ca081c2-aa92-4133-9d3f-f95d293eff35"
 >( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
   AND  
-(BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &gt; (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</PreCondition><PreCondition
- Guid="ec61159d-de12-4584-ae19-4d06ce57dc96"
->(FIRST_IN Linkings).BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG</PreCondition></PreConditions>
+(BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &gt; (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Later BG found first"
@@ -620,7 +626,7 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  Name="Value"
  Guid="e8cfc917-3918-4465-9013-4236335bcc82"
 >
-<Expression>(FIRST_IN BTM.Linking.Linkings).Orientation == BTM.BaliseGroupOrientation()</Expression>
+<Expression>CurrentLinking().Orientation == BTM.BaliseGroupOrientation()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -968,6 +974,7 @@ This function is called whenever it is appropriate, so it does not need any prec
  Name="Apply linking reaction"
  Guid="b7705540-c896-4991-ac91-962e6c50429d"
 >
+<Comment>First, apply the linking reaction of the linked BG</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1022,6 +1029,7 @@ This function is called whenever it is appropriate, so it does not need any prec
  Name="Stop expecting the inconsistent BG"
  Guid="d28fd530-6d88-4aee-952e-4508fddee9da"
 >
+<Comment>Then stop expecting that BG</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1338,6 +1346,7 @@ If the BG was passed in the right direction, handle the message. If not, the tra
  Name="EarlyReception"
  Guid="a1513d6f-1d74-495a-aacc-e2a73cfc5ad0"
 >
+<Comment>Used when a received BG is the second one announced, and so should be handled after the expected BG&apos;s linking</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="False"
@@ -1351,10 +1360,13 @@ If the BG was passed in the right direction, handle the message. If not, the tra
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7bd42be7-80a5-4df1-b521-8ca1a2e61a97"
 >
-</ReqRef></Variable></Variables>
+</ReqRef><Comment>Indicates that the train should be tripped due to a linking consistency error (mode transition condition 17)</Comment>
+</Variable></Variables>
 <Rules>
 <Rule
  Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="CleanUpLinkingReaction"
  Guid="2e4fbfea-4178-41a0-82bf-73e46d001309"
 >
@@ -1362,6 +1374,8 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Train trip"
  Guid="98ca2a07-69e4-4b6f-b8e6-110f14c11cd5"
 >
