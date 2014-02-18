@@ -198,7 +198,37 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  trackside="TRUE"
  Name=""
  Guid="88930fd0-2a41-48f8-ac88-35d8c1d60f47"
->We assume that each Messages.EUROBALISE.SubStructure1 received by the BTM contains at most one packet. Otherwise the order of packets within a balise message would not be respected (a case which is pointless).</Paragraph></Sub>
+>We assume that each Messages.EUROBALISE.SubStructure1 received by the BTM contains at most one packet. Otherwise the order of packets within a balise message would not be respected (a case which is pointless).</Paragraph><Paragraph
+ id="A1.1.3.4"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="28f1e529-5fb5-41b7-a535-07e75aac675c"
+>Linking information<Sub>
+<Paragraph
+ id="A1.1.3.4.1"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="689ab6d6-cac9-4667-86bf-c6be70fefd43"
+>As balises are expected in the order given by linking information, BTM.Linking.Linkings is assumed to be listed in order of ascending distance</Paragraph></Sub>
+</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.4"
  guid=""
@@ -1029,16 +1059,46 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
  trackside="TRUE"
  Name=""
  Guid="d21eb5fe-a454-453e-a6e8-c6b1608799c2"
-><Sub>
+>Behaviour at stop location<Sub>
 <Paragraph
  id="A1.1.19.1"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="e0cce2b4-2341-4ff7-8496-f341142799d3"
+>In paragraph 3.10.2.2, the train&apos;s behaviour is defined for when it has passed a stop location and for when it has not yet passed the stop location. We have decided to consider that when it is at the specified location, it is to behave as if it had passed it.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="A1.1.20"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="f3394756-afc8-40d0-b76f-9d3574e9a491"
+>Meaning of &quot;in rear of&quot;<Sub>
+<Paragraph
+ id="A1.1.20.1"
  guid=""
  type="REQUIREMENT"
  scope="FLAGS"
@@ -1050,8 +1110,8 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  onboard="TRUE"
  trackside="TRUE"
  Name=""
- Guid="e0cce2b4-2341-4ff7-8496-f341142799d3"
->In paragraph 3.10.2.2, the train&apos;s behaviour is defined for when it has passed a stop location and for when it has not yet passed the stop location. We have decided to consider that when it is at the specified location, it is to behave as if it had passed it.</Paragraph></Sub>
+ Guid="7e2eedb2-843c-49cc-baec-39383388af08"
+>Requirement 3.16.2.3.1.a) says that the action must take place &quot;in rear of&quot; the expectation window. As it doesn&apos;t make sense for this to occur after the expctation window has been passed we have decided that &quot;in rear of&quot; means &quot;before it is entered&quot; in this case.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.2"

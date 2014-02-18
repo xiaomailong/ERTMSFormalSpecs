@@ -1677,6 +1677,7 @@ Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="Condition66"
  Guid="d235d312-ca94-498a-994a-8e987fd0de6d"
 >
@@ -1685,12 +1686,39 @@ Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="108256cd-ff81-47e0-b072-4b2cc142f7b5"
 >
-</ReqRef><Cases>
+</ReqRef><ReqRef
+ Id="3520c91c-8938-4bdf-b683-bc1fd7071fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="10289fc2-db86-4494-a971-03359f5d9652"
+>
+</ReqRef><ReqRef
+ Id="277ee440-7786-4aac-8364-7e60a82e94a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="51fb8f19-c1b9-44bd-be71-65d4110e044d"
+>
+</ReqRef><Comment>Implementation of mode transition condition 66</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="e2fb9afb-64d9-485c-8440-c499c2a9fb91"
 >
-<Expression>False</Expression>
+<Comment>This returns True if the expected balise group was passed over in the wrong direction.
+LinkingApplicable() and Available(CurrentBaliseGroup) protect against errors from accessing empty collections.
+BaliseGroupIdentifier == NID.BG is also protection, ensuring that the balise group received was the expected one.
+BGOrientationIsValid is a function that returns true if the orientation of the received BG matches the orientation announced in Linkings</Comment>
+<Expression>BTM.Linking.LinkingApplicable()
+
+  AND  
+
+BTM.CurrentBaliseGroup != []
+
+  AND  
+
+( (FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == (FIRST_IN BTM.CurrentBaliseGroup).NID_BG )
+
+  AND  
+
+( NOT BTM.Linking.BGOrientationIsValid() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1943,6 +1971,7 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="Condition17"
  Guid="2a64e634-3fd7-4111-8590-880a93f8b3b9"
 >
@@ -1951,12 +1980,14 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="74d69ce0-b4e7-477d-a521-7dc08544b74a"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>A linking reaction set to &quot;Trip&quot; is activated</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="54e58d84-4d5d-41e0-b70d-1312a684cd21"
 >
-<Expression>False</Expression>
+<Comment>The variable BTM.Linking.TrainTripDueToLinkingInconsistency is set to True when the train activates a &quot;Trip&quot; linking reaction</Comment>
+<Expression>BTM.Linking.TrainTripDueToLinkingInconsistency</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -3379,6 +3410,16 @@ TIU.NonLeadingPermitted</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0d71600e-f1bb-44b6-a714-52cc8d78421c"
 >
+</ReqRef><ReqRef
+ Id="3520c91c-8938-4bdf-b683-bc1fd7071fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d139bc7-1fbb-4fd0-afd4-e4b0b650fb7c"
+>
+</ReqRef><ReqRef
+ Id="277ee440-7786-4aac-8364-7e60a82e94a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d402fdbc-cc87-4cee-90d9-9248e3aa2fc6"
+>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="7a25fda4-c429-4fde-8b17-6923aff1259a"
@@ -3886,6 +3927,16 @@ TIU.NonLeadingPermitted</Expression>
  Id="57170c34-fdd6-4c7a-96b4-267f63401692"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7a8489ca-88c3-4b8d-907e-7c48bc65c9de"
+>
+</ReqRef><ReqRef
+ Id="3520c91c-8938-4bdf-b683-bc1fd7071fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c0a3489-3b1c-435c-9e79-e89008cc2c7a"
+>
+</ReqRef><ReqRef
+ Id="277ee440-7786-4aac-8364-7e60a82e94a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cf7d0b87-a463-4807-8d54-aef4ee297a99"
 >
 </ReqRef><PreConditions>
 <PreCondition
@@ -4725,6 +4776,16 @@ TIU.NonLeadingPermitted</Expression>
  Id="57170c34-fdd6-4c7a-96b4-267f63401692"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3bd249a6-0bcf-442d-9a8c-6dd4262e7313"
+>
+</ReqRef><ReqRef
+ Id="3520c91c-8938-4bdf-b683-bc1fd7071fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c13ee4da-b459-4cbb-8a9d-cfc24d65a3c0"
+>
+</ReqRef><ReqRef
+ Id="277ee440-7786-4aac-8364-7e60a82e94a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b66fab51-b6b5-4711-b0b8-9277a82095df"
 >
 </ReqRef><PreConditions>
 <PreCondition
