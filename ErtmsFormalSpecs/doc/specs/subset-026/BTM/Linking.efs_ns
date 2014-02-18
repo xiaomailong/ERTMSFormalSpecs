@@ -556,10 +556,38 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 </ReqRef><Comment>Returns true if there is a linking consistency error with the BG</Comment>
 <Cases>
 <Case
+ Name="BG encountered before expectation window"
+ Guid="f75ed45e-36a7-4447-9107-f0fd905886ed"
+>
+<Comment>The location reference of the linked BG is found before its expectation window, corresponding to req. 3.16.2.3.1.a)</Comment>
+<PreConditions>
+<PreCondition
+ Guid="9395d930-3de6-407a-9481-58901353982a"
+>( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
+  AND  
+(BGLocationReference.Position + BGLocationReference.UnderReadingAmountOdo &lt; (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)</PreCondition><PreCondition
+ Guid="55d4f795-49dc-4a13-8711-70f99740bd69"
+>(FIRST_IN Linkings).BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="BG encountered after expectation window"
+ Guid="00b17942-d650-4e86-8076-43a6e460ab8d"
+>
+<Comment>The location reference of the expected BG is found after the end of its expectation window, corresponding to req. 3.16.2.3.1.b)...</Comment>
+<PreConditions>
+<PreCondition
+ Guid="1ca081c2-aa92-4133-9d3f-f95d293eff35"
+>( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
+  AND  
+(BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &gt; (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</PreCondition><PreCondition
+ Guid="ec61159d-de12-4584-ae19-4d06ce57dc96"
+>(FIRST_IN Linkings).BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
  Name="Later BG found first"
  Guid="dba1d2b8-aea3-4fe4-941e-b73d8398de2e"
 >
-<Comment>The detected BG is announced, but it is in the expectation window of a previous announced BG</Comment>
+<Comment>The detected BG is announced, but it is in the expectation window of a previous announced BG, corresponding to req. 3.16.2.3.1.c)</Comment>
 <PreConditions>
 <PreCondition
  Guid="eefad305-9f3a-4973-a898-0f076af71e89"
@@ -568,33 +596,6 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 )
   AND  
 CurrentBGWithinFrame()</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="BG encountered before expectation window"
- Guid="f75ed45e-36a7-4447-9107-f0fd905886ed"
->
-<Comment>The location reference of the linked BG is found before its expectation window</Comment>
-<PreConditions>
-<PreCondition
- Guid="9395d930-3de6-407a-9481-58901353982a"
->( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
-  AND  
-(BGLocationReference.Position + BGLocationReference.UnderReadingAmountOdo &lt; (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)</PreCondition><PreCondition
- Guid="55d4f795-49dc-4a13-8711-70f99740bd69"
-></PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="BG encountered after expectation window"
- Guid="00b17942-d650-4e86-8076-43a6e460ab8d"
->
-<Comment>The location reference of the expected BG is found after the end of its expectation window, corresponding to 3.16.2.3.1.b)
-Note: this case is already covered by the rule Clean Up Linking Info, it is here mostly to mirror the specs</Comment>
-<PreConditions>
-<PreCondition
- Guid="1ca081c2-aa92-4133-9d3f-f95d293eff35"
->( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
-  AND  
-(BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &gt; (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1017,12 +1018,14 @@ This function is called whenever it is appropriate, so it does not need any prec
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Stop expecting the inconsistent BG"
  Guid="d28fd530-6d88-4aee-952e-4508fddee9da"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Stop expecting the inconsistent BG"
  Guid="008d8432-2e3a-47d2-afeb-308763c39c36"
 >
