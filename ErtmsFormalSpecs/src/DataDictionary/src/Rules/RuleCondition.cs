@@ -271,7 +271,7 @@ namespace DataDictionary.Rules
             {
                 try
                 {
-                    Interpreter.Expression expression = preCondition.ExpressionTree;
+                    Interpreter.Expression expression = preCondition.Expression;
 
                     ExplanationPart previous = null;
                     if (explanation != null)

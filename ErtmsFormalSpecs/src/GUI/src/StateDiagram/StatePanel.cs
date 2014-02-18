@@ -193,7 +193,7 @@ namespace GUI.StateDiagram
                 rule.appendConditions(ruleCondition);
 
                 DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)factory.createAction();
-                action.Expression = "THIS <- " + ((State)StateMachine.States[1]).LiteralName;
+                action.ExpressionText = "THIS <- " + ((State)StateMachine.States[1]).LiteralName;
                 ruleCondition.appendActions(action);
 
                 if (GUIUtils.MDIWindow.DataDictionaryWindow != null)

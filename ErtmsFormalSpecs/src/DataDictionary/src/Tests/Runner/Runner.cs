@@ -747,7 +747,7 @@ namespace DataDictionary.Tests.Runner
                         {
                             case Generated.acceptor.ExpectationKind.aInstantaneous:
                             case Generated.acceptor.ExpectationKind.defaultExpectationKind:
-                                if (getBoolValue(expectation, expectation.ExpressionTree))
+                                if (getBoolValue(expectation, expectation.Expression))
                                 {
                                     // An instantaneous expectation who reached its satisfactory condition
                                     EventTimeLine.AddModelEvent(new ExpectationReached(expect), this);
@@ -764,7 +764,7 @@ namespace DataDictionary.Tests.Runner
                                     }
                                     else
                                     {
-                                        if (!getBoolValue(expectation, expectation.ExpressionTree))
+                                        if (!getBoolValue(expectation, expectation.Expression))
                                         {
                                             // A continuous expectation who reached a case where it is not satisfied
                                             EventTimeLine.AddModelEvent(new FailedExpectation(expect), this);
@@ -773,7 +773,7 @@ namespace DataDictionary.Tests.Runner
                                 }
                                 else
                                 {
-                                    if (!getBoolValue(expectation, expectation.ExpressionTree))
+                                    if (!getBoolValue(expectation, expectation.Expression))
                                     {
                                         // A continuous expectation who reached a case where it is not satisfied
                                         EventTimeLine.AddModelEvent(new FailedExpectation(expect), this);

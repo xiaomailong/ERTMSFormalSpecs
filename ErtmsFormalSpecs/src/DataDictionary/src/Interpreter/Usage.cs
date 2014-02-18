@@ -34,7 +34,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The access mode to the element
         /// </summary>
-        public enum ModeEnum { Read, Write, ReadAndWrite, Call, Type };
+        public enum ModeEnum { Read, Write, ReadAndWrite, Call, Type, Parameter };
 
         /// <summary>
         /// Provides the usage mode for this element

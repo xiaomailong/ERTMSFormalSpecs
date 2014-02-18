@@ -100,8 +100,10 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="enclosing">the enclosing tree node</param>
         /// <param name="image">The designator image</param>
-        public Designator(ModelElement root, ModelElement log, string image)
-            : base(root, log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public Designator(ModelElement root, ModelElement log, string image, int start, int end)
+            : base(root, log, start, end)
         {
             Image = image;
         }
@@ -315,7 +317,7 @@ namespace DataDictionary.Interpreter
         /// The model element referenced by this designator.
         /// This value can be null. In that case, reference should be done by dereferencing each argument of the Deref expression
         /// </summary>
-        public INamable Ref { get; private set; }
+        public INamable Ref { get; set; }
 
         /// <summary>
         /// Performs the semantic analysis of the term

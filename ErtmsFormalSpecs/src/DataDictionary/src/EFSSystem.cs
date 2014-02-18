@@ -1108,7 +1108,7 @@ namespace DataDictionary
             {
                 PreCondition preCondition = (PreCondition)obj;
 
-                ConsiderExpression(preCondition.ExpressionTree);
+                ConsiderExpression(preCondition.Expression);
 
                 base.visit(obj, visitSubNodes);
             }
@@ -1122,7 +1122,7 @@ namespace DataDictionary
             {
                 Tests.Expectation expectation = (Tests.Expectation)obj;
 
-                ConsiderExpression(expectation.ExpressionTree);
+                ConsiderExpression(expectation.Expression);
 
                 base.visit(obj, visitSubNodes);
             }

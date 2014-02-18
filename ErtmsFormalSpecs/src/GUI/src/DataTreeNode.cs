@@ -982,7 +982,12 @@ namespace GUI
         {
             if (newLabel != null && newLabel != "")
             {
-                Model.Name = newLabel;
+                if (Model.Name != newLabel)
+                {
+                    EFSSystem.INSTANCE.Compiler.Compile_Synchronous(false, true);
+                    Model.Name = newLabel;
+                    EFSSystem.INSTANCE.Compiler.Refactor(Model as ModelElement);
+                }
             }
         }
     }

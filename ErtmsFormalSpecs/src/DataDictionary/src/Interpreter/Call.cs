@@ -80,14 +80,14 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The list of named actual parameters
         /// </summary>
-        private Dictionary<string, Expression> namedActualParameters;
-        public Dictionary<string, Expression> NamedActualParameters
+        private Dictionary<Designator, Expression> namedActualParameters;
+        public Dictionary<Designator, Expression> NamedActualParameters
         {
             get
             {
                 if (namedActualParameters == null)
                 {
-                    namedActualParameters = new Dictionary<string, Expression>();
+                    namedActualParameters = new Dictionary<Designator, Expression>();
                 }
                 return namedActualParameters;
             }
@@ -104,8 +104,10 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="root">The root element for which this element is built</param>
         /// <param name="called">The called function</param>
-        public Call(ModelElement root, ModelElement log, Expression called)
-            : base(root, log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public Call(ModelElement root, ModelElement log, Expression called, int start, int end)
+            : base(root, log, start, end)
         {
             Called = called;
             Called.Enclosing = this;
@@ -130,23 +132,32 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Adds an expression as a parameter
         /// </summary>
-        /// <param name="name">the name of the actual parameter</param>
+        /// <param name="designator">the name of the actual parameter</param>
         /// <param name="expression">the actual parameter value</param>
-        public void AddActualParameter(string name, Expression expression)
+        public void AddActualParameter(Designator designator, Expression expression)
         {
-            if (name == null)
+            if (designator == null)
             {
                 ActualParameters.Add(expression);
             }
             else
             {
-                if (!NamedActualParameters.ContainsKey(name))
+                bool found = false;
+                foreach (KeyValuePair<Designator, Expression> pair in NamedActualParameters)
                 {
-                    NamedActualParameters[name] = expression;
+                    if (pair.Key.Image == designator.Image)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    NamedActualParameters[designator] = expression;
                 }
                 else
                 {
-                    AddError("Actual parameter " + name + " is bound twice");
+                    AddError("Actual parameter " + designator.Image + " is bound twice");
                 }
             }
 
@@ -225,10 +236,22 @@ namespace DataDictionary.Interpreter
                 StaticUsage.AddUsages(Called.StaticUsage, Usage.ModeEnum.Call);
 
                 // Actual parameters
-                foreach (Expression actual in AllParameters)
+                foreach (Expression actual in ActualParameters)
                 {
                     actual.SemanticAnalysis(instance, IsActualParameter.INSTANCE);
                     StaticUsage.AddUsages(actual.StaticUsage, Usage.ModeEnum.Read);
+                }
+
+                foreach (KeyValuePair<Designator, Expression> pair in NamedActualParameters)
+                {
+                    ICallable called = Called.Ref as ICallable;
+                    if (Called != null)
+                    {
+                        pair.Key.Ref = called.getFormalParameter(pair.Key.Image);
+                        StaticUsage.AddUsage(pair.Key.Ref, Root, Usage.ModeEnum.Parameter);
+                    }
+                    pair.Value.SemanticAnalysis(instance, IsActualParameter.INSTANCE);
+                    StaticUsage.AddUsages(pair.Value.StaticUsage, Usage.ModeEnum.Read);
                 }
 
                 ParameterAssociation = createParameterAssociation(Called.Ref as ICallable);
@@ -260,9 +283,9 @@ namespace DataDictionary.Interpreter
                         i = i + 1;
                     }
 
-                    foreach (KeyValuePair<string, Expression> pair in NamedActualParameters)
+                    foreach (KeyValuePair<Designator, Expression> pair in NamedActualParameters)
                     {
-                        Parameter parameter = callable.getFormalParameter(pair.Key);
+                        Parameter parameter = callable.getFormalParameter(pair.Key.Image);
                         if (parameter != null)
                         {
                             retVal.Add(parameter, pair.Value);
@@ -497,9 +520,9 @@ namespace DataDictionary.Interpreter
                     i = i + 1;
                 }
 
-                foreach (KeyValuePair<string, Expression> pair in NamedActualParameters)
+                foreach (KeyValuePair<Designator, Expression> pair in NamedActualParameters)
                 {
-                    Parameter parameter = callable.getFormalParameter(pair.Key);
+                    Parameter parameter = callable.getFormalParameter(pair.Key.Image);
                     Values.IValue val = pair.Value.GetValue(context);
                     if (val != null)
                     {
@@ -551,7 +574,7 @@ namespace DataDictionary.Interpreter
                 first = false;
                 retVal += argument.ToString();
             }
-            foreach (KeyValuePair<string, Expression> pair in NamedActualParameters)
+            foreach (KeyValuePair<Designator, Expression> pair in NamedActualParameters)
             {
                 if (!first)
                 {
@@ -593,9 +616,9 @@ namespace DataDictionary.Interpreter
                         i = i + 1;
                     }
 
-                    foreach (KeyValuePair<string, Expression> pair in NamedActualParameters)
+                    foreach (KeyValuePair<Designator, Expression> pair in NamedActualParameters)
                     {
-                        string name = pair.Key;
+                        string name = pair.Key.Image;
                         Expression expression = pair.Value;
                         Parameter parameter = called.getFormalParameter(name);
                         if (parameter == null)

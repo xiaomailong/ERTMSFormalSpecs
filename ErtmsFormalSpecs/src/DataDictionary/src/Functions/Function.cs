@@ -343,9 +343,9 @@ namespace DataDictionary.Functions
 
             foreach (Rules.PreCondition preCondition in cas.PreConditions)
             {
-                if (!ExpressionBasedOnParameter(parameter, preCondition.ExpressionTree))
+                if (!ExpressionBasedOnParameter(parameter, preCondition.Expression))
                 {
-                    Values.BoolValue boolValue = preCondition.ExpressionTree.GetValue(context) as Values.BoolValue;
+                    Values.BoolValue boolValue = preCondition.Expression.GetValue(context) as Values.BoolValue;
                     if (boolValue == null)
                     {
                         throw new Exception("Cannot evaluate precondition " + preCondition.Name);
@@ -425,7 +425,7 @@ namespace DataDictionary.Functions
 
             if (parameter != null)
             {
-                Interpreter.BinaryExpression expression = preCondition.ExpressionTree as Interpreter.BinaryExpression;
+                Interpreter.BinaryExpression expression = preCondition.Expression as Interpreter.BinaryExpression;
                 if (ExpressionBasedOnParameter(parameter, expression))
                 {
                     Values.IValue val;
@@ -508,7 +508,7 @@ namespace DataDictionary.Functions
                 {
                     if (!ExpressionBasedOnPlaceHolder(context, expression))
                     {
-                        Values.BoolValue value = preCondition.ExpressionTree.GetValue(context) as Values.BoolValue;
+                        Values.BoolValue value = preCondition.Expression.GetValue(context) as Values.BoolValue;
                         if (value != null && value.Val)
                         {
                             retVal.Add(new Graph.Segment(0, double.MaxValue, new Graph.Segment.Curve()));
@@ -777,9 +777,9 @@ namespace DataDictionary.Functions
 
             foreach (Rules.PreCondition preCondition in cas.PreConditions)
             {
-                if (!ExpressionBasedOnParameter(x, preCondition.ExpressionTree) && !ExpressionBasedOnParameter(y, preCondition.ExpressionTree))
+                if (!ExpressionBasedOnParameter(x, preCondition.Expression) && !ExpressionBasedOnParameter(y, preCondition.Expression))
                 {
-                    Values.BoolValue boolValue = preCondition.ExpressionTree.GetValue(context) as Values.BoolValue;
+                    Values.BoolValue boolValue = preCondition.Expression.GetValue(context) as Values.BoolValue;
                     if (boolValue == null)
                     {
                         throw new Exception("Cannot evaluate precondition " + preCondition.Name);
@@ -907,7 +907,7 @@ namespace DataDictionary.Functions
                 {
                     foreach (Rules.PreCondition preCondition in cas.PreConditions)
                     {
-                        if (ExpressionBasedOnParameter(parameter, preCondition.ExpressionTree))
+                        if (ExpressionBasedOnParameter(parameter, preCondition.Expression))
                         {
                             if (retVal == null)
                             {

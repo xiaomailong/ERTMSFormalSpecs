@@ -13,18 +13,39 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace DataDictionary
+namespace DataDictionary.Interpreter.Filter
 {
-    public interface IExpressionable
+    using Utils;
+
+    /// <summary>
+    /// Predicates which indicates that the namable is a formal parameter
+    /// </summary>
+    public class IsFormalParameter : BaseFilter
     {
         /// <summary>
-        /// The expression text for this expressionable
+        /// Constructor
         /// </summary>
-        string ExpressionText { get; set; }
+        protected IsFormalParameter()
+            : base()
+        {
+        }
 
         /// <summary>
-        /// The corresponding expression tree
+        /// Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
         /// </summary>
-        Interpreter.InterpreterTreeNode Tree { get; }
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public override bool AcceptableChoice(INamable value)
+        {
+            bool retVal = value is Parameter;
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Singleton
+        /// </summary>
+        public static new IsFormalParameter INSTANCE = new IsFormalParameter();
+
     }
 }

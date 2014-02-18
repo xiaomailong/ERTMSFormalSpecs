@@ -67,7 +67,7 @@ namespace GUI.DataDictionaryView
         public void AddHandler(object sender, EventArgs args)
         {
             DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
-            action.Expression = "";
+            action.ExpressionText = "";
             AddAction(action);
         }
 

@@ -47,8 +47,10 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="root">The root element for which this element is built</param>
         /// <param name="call">The corresponding function call designator</param>
         /// <param name="parameters">The expressions used to compute the parameters</param>
-        public ApplyStatement(ModelElement root, ModelElement log, ProcedureCallStatement call, Expression listExpression, Expression conditionExpression)
-            : base(root, log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public ApplyStatement(ModelElement root, ModelElement log, ProcedureCallStatement call, Expression listExpression, Expression conditionExpression, int start, int end)
+            : base(root, log, start, end)
         {
             DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
 

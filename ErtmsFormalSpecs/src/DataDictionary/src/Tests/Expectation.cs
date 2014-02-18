@@ -18,20 +18,6 @@ namespace DataDictionary.Tests
 {
     public class Expectation : Generated.Expectation, IExpressionable, TextualExplain
     {
-        public override string ExpressionText
-        {
-            get
-            {
-                string retVal = Value;
-                if (retVal == null)
-                {
-                    retVal = "";
-                }
-                return retVal;
-            }
-            set { Value = value; }
-        }
-
         /// <summary>
         /// The enclosing step, if any
         /// </summary>
@@ -81,7 +67,7 @@ namespace DataDictionary.Tests
             set
             {
                 setValue(value);
-                expressionTree = null;
+                __expression = null;
             }
         }
 
@@ -102,32 +88,40 @@ namespace DataDictionary.Tests
             get { return getDeadLine(); }
             set { setDeadLine(value); }
         }
-
-        /// <summary>
-        /// The expectation expression
-        /// </summary>
-        public string Expression
-        {
-            get { return Value; }
-            set { Value = value; }
-        }
-
-        public Interpreter.Expression expressionTree;
-        public Interpreter.Expression ExpressionTree
+        
+        public override string ExpressionText
         {
             get
             {
-                if (expressionTree == null)
+                string retVal = Value;
+                if (retVal == null)
                 {
-                    expressionTree = EFSSystem.Parser.Expression(this, Expression);
+                    retVal = "";
                 }
-                return expressionTree;
+                return retVal;
+            }
+            set { Value = value; }
+        }
+
+        public Interpreter.Expression __expression;
+        public Interpreter.Expression Expression
+        {
+            get
+            {
+                if (__expression == null)
+                {
+                    __expression = EFSSystem.Parser.Expression(this, ExpressionText);
+                }
+                return __expression;
             }
             set
             {
-                expressionTree = value;
+                __expression = value;
             }
         }
+
+        public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
+
 
         public Interpreter.Expression conditionTree;
         public Interpreter.Expression ConditionTree
@@ -148,7 +142,7 @@ namespace DataDictionary.Tests
 
         public override string Name
         {
-            get { return Expression; }
+            get { return ExpressionText; }
             set { }
         }
 
@@ -175,7 +169,7 @@ namespace DataDictionary.Tests
         {
             Interpreter.Designator retVal = null;
 
-            Interpreter.BinaryExpression binaryExpression = ExpressionTree as Interpreter.BinaryExpression;
+            Interpreter.BinaryExpression binaryExpression = Expression as Interpreter.BinaryExpression;
             if (binaryExpression != null)
             {
                 Interpreter.UnaryExpression unaryExpression = binaryExpression.Left as Interpreter.UnaryExpression;

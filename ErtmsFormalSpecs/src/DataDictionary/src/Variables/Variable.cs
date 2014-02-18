@@ -190,6 +190,9 @@ namespace DataDictionary.Variables
                 setTypeName(value);
                 type = null;
                 theValue = null;
+
+                // Ensure types and typename are synchronized
+                type = Type;
             }
         }
 

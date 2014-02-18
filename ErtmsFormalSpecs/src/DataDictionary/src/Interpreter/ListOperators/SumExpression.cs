@@ -46,8 +46,10 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="condition"></param>
         /// <param name="expression"></param>
         /// <param name="root">the root element for which this expression should be parsed</param>
-        public SumExpression(ModelElement root, ModelElement log, Expression listExpression, Expression condition, Expression expression)
-            : base(root, log, listExpression, condition, expression)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public SumExpression(ModelElement root, ModelElement log, Expression listExpression, Expression condition, Expression expression, int start, int end)
+            : base(root, log, listExpression, condition, expression, start, end)
         {
             AccumulatorVariable = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
             AccumulatorVariable.Enclosing = this;
@@ -57,7 +59,7 @@ namespace DataDictionary.Interpreter.ListOperators
             DefinedAccumulator = expression;
             DefinedAccumulator.Enclosing = this;
 
-            Accumulator = new BinaryExpression(Root, RootLog, DefinedAccumulator, BinaryExpression.OPERATOR.ADD, new UnaryExpression(Root, RootLog, new Term(Root, RootLog, new Designator(Root, RootLog, "RESULT"))));
+            Accumulator = new BinaryExpression(Root, RootLog, DefinedAccumulator, BinaryExpression.OPERATOR.ADD, new UnaryExpression(Root, RootLog, new Term(Root, RootLog, new Designator(Root, RootLog, "RESULT", -1, -1), -1, -1), -1, -1), -1, -1);
             Accumulator.Enclosing = this;
         }
 

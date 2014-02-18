@@ -22,13 +22,21 @@ namespace DataDictionary.Rules
     {
         public override string Name
         {
-            get { return Expression; }
+            get { return ExpressionText; }
             set { }
         }
 
-        public string Expression
+        public string ExpressionText
         {
-            get { return getExpression(); }
+            get
+            {
+                string retVal = getExpression();
+                if (retVal == null)
+                {
+                    retVal = "";
+                }
+                return retVal;
+            }
             set
             {
                 setExpression(value);
@@ -47,7 +55,7 @@ namespace DataDictionary.Rules
             {
                 if (statement == null)
                 {
-                    statement = EFSSystem.ParseStatement(this, Expression);
+                    statement = EFSSystem.ParseStatement(this, ExpressionText);
                 }
                 return statement;
             }
@@ -57,19 +65,7 @@ namespace DataDictionary.Rules
             }
         }
 
-        public override string ExpressionText
-        {
-            get
-            {
-                string retVal = Expression;
-                if (retVal == null)
-                {
-                    retVal = "";
-                }
-                return retVal;
-            }
-            set { Expression = value; }
-        }
+        public Interpreter.InterpreterTreeNode Tree { get { return Statement; } }
 
         /// <summary>
         /// The enclosing Rule, if any
@@ -252,7 +248,7 @@ namespace DataDictionary.Rules
         /// <returns></returns>
         public override string getExplain()
         {
-            string retVal = Expression;
+            string retVal = ExpressionText;
 
             return retVal;
         }

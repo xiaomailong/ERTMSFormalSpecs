@@ -84,9 +84,24 @@ namespace DataDictionary.Types
         /// </summary>
         public string TypeName
         {
-            get { return getTypeName(); }
-            set { setTypeName(value); }
+            get
+            {
+                return getTypeName();
+            }
+            set
+            {
+                Type = null;
+                setTypeName(value);
+
+                // Ensure types and typename are synchronized
+                __type = Type;
+            }
         }
+
+        /// <summary>
+        /// The cached type
+        /// </summary>
+        private Type __type;
 
         /// <summary>
         /// The type associated to this structure element
@@ -95,30 +110,35 @@ namespace DataDictionary.Types
         {
             get
             {
-                Type retVal = null;
-
-                // Find the corresponding state machine in the structure's state machines
-                Structure structure = (Structure)Enclosing;
-                List<Utils.INamable> tmp = new List<Utils.INamable>();
-                structure.Find(getTypeName(), tmp);
-                foreach (Utils.INamable namable in tmp)
-                {
-                    StateMachine stateMachine = namable as StateMachine;
-                    if (stateMachine != null)
-                    {
-                        retVal = stateMachine;
-                        break;
-                    }
-                }
+                Type retVal = __type;
 
                 if (retVal == null)
                 {
-                    retVal = EFSSystem.findType(NameSpace, getTypeName());
+                    // Find the corresponding state machine in the structure's state machines
+                    Structure structure = (Structure)Enclosing;
+                    List<Utils.INamable> tmp = new List<Utils.INamable>();
+                    structure.Find(getTypeName(), tmp);
+                    foreach (Utils.INamable namable in tmp)
+                    {
+                        StateMachine stateMachine = namable as StateMachine;
+                        if (stateMachine != null)
+                        {
+                            retVal = stateMachine;
+                            break;
+                        }
+                    }
+
+                    if (retVal == null)
+                    {
+                        retVal = EFSSystem.findType(NameSpace, getTypeName());
+                    }
                 }
+
                 return retVal;
             }
             set
             {
+                __type = value;
                 if (value != null)
                 {
                     setTypeName(value.getName());

@@ -424,7 +424,7 @@ namespace DataDictionary.Types
                                         foreach (Rules.PreCondition preCondition in ruleCondition.AllPreConditions)
                                         {
                                             // A transition from one state to another has been found
-                                            foreach (Constants.State stt2 in GetStates(preCondition.ExpressionTree))
+                                            foreach (Constants.State stt2 in GetStates(preCondition.Expression))
                                             {
                                                 filteredOut = filteredOut || AddTransition(update, stt1, preCondition, stt2);
                                             }

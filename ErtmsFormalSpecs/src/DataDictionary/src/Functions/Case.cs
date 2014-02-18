@@ -84,6 +84,8 @@ namespace DataDictionary.Functions
             set { expression = value; }
         }
 
+        public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
+
         /// <summary>
         /// The enclosing collection of the parameter
         /// </summary>
@@ -103,7 +105,7 @@ namespace DataDictionary.Functions
             bool retVal = true;
             foreach (DataDictionary.Rules.PreCondition preCondition in PreConditions)
             {
-                Interpreter.Expression expression = preCondition.ExpressionTree;
+                Interpreter.Expression expression = preCondition.Expression;
                 Values.BoolValue value = expression.GetValue(context) as Values.BoolValue;
 
                 if (value != null)
@@ -226,9 +228,9 @@ namespace DataDictionary.Functions
 
             foreach (PreCondition preCondition in PreConditions)
             {
-                if (preCondition.ExpressionTree != null)
+                if (preCondition.Expression != null)
                 {
-                    retVal.AddRange(preCondition.ExpressionTree.GetLiterals());
+                    retVal.AddRange(preCondition.Expression.GetLiterals());
                 }
             }
 

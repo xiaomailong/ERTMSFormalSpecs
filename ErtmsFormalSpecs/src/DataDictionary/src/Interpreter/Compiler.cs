@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Threading;
+using System.Collections.Generic;
 namespace DataDictionary.Interpreter
 {
     /// <summary>
@@ -256,11 +257,11 @@ namespace DataDictionary.Interpreter
 
             if (CurrentCompile.Rebuild)
             {
-                preCondition.ExpressionTree = null;
+                preCondition.Expression = null;
             }
 
             // Side effect : compiles or recompiles the expression
-            DataDictionary.Interpreter.Expression expression = preCondition.ExpressionTree;
+            DataDictionary.Interpreter.Expression expression = preCondition.Expression;
 
             base.visit(obj, visitSubNodes);
         }
@@ -271,12 +272,12 @@ namespace DataDictionary.Interpreter
 
             if (CurrentCompile.Rebuild)
             {
-                expectation.ExpressionTree = null;
+                expectation.Expression = null;
                 expectation.ConditionTree = null;
             }
 
             // Side effect : compiles or recompiles the expressions
-            DataDictionary.Interpreter.Expression expression = expectation.ExpressionTree;
+            DataDictionary.Interpreter.Expression expression = expectation.Expression;
             DataDictionary.Interpreter.Expression condition = expectation.ConditionTree;
 
             base.visit(obj, visitSubNodes);
@@ -320,6 +321,33 @@ namespace DataDictionary.Interpreter
             namable.ClearFullName();
 
             base.visit(obj, visitSubNodes);
+        }
+        #endregion
+
+        #region Refactoring
+        public void Refactor(ModelElement element)
+        {
+            List<Usage> usages = element.EFSSystem.FindReferences(element);
+            foreach (Usage usage in usages)
+            {
+                IExpressionable expressionable = usage.User as IExpressionable;
+                if (expressionable != null)
+                {
+                    string name = element.ReferenceName(usage.User as ModelElement);
+
+                    Refactor.RefactorTree refactorer = new Refactor.RefactorTree(expressionable.Tree, expressionable.ExpressionText, element, name);
+                    if (refactorer.Text != expressionable.ExpressionText)
+                    {
+                        expressionable.ExpressionText = refactorer.Text;
+                    }
+                }
+
+                Types.ITypedElement typedElement = usage.User as Types.ITypedElement;
+                if ((typedElement != null) && (typedElement.Type == element))
+                {
+                    typedElement.TypeName = element.ReferenceName(usage.User as ModelElement);
+                }
+            }
         }
         #endregion
     }

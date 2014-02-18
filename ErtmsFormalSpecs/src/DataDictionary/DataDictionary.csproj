@@ -74,6 +74,7 @@
     <Compile Include="src\IExpressionable.cs" />
     <Compile Include="src\IGraphicalDisplay.cs" />
     <Compile Include="src\Interpreter\Compiler.cs" />
+    <Compile Include="src\Interpreter\Filter\IsFormalParameter.cs" />
     <Compile Include="src\Interpreter\Filter\IsLiteral.cs" />
     <Compile Include="src\Interpreter\Filter\IsCallableOrIsVariable.cs" />
     <Compile Include="src\Interpreter\Filter\BaseFilter.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="src\Interpreter\Filter\IsVariable.cs" />
     <Compile Include="src\Interpreter\Filter\IsStrictVariableOrValue.cs" />
     <Compile Include="src\Interpreter\NumberExpression.cs" />
+    <Compile Include="src\Interpreter\Refactor\RefactorTree.cs" />
     <Compile Include="src\Interpreter\StringExpression.cs" />
     <Compile Include="src\Interpreter\ListExpression.cs" />
     <Compile Include="src\Interpreter\ExplanationPart.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="src\Interpreter\Statement\InsertStatement.cs" />
     <Compile Include="src\Interpreter\StructExpression.cs" />
     <Compile Include="src\Interpreter\Usage.cs" />
+    <Compile Include="src\Interpreter\Visitor.cs" />
     <Compile Include="src\MessageCounter.cs" />
     <Compile Include="src\ReferencesParagraph.cs" />
     <Compile Include="src\Functions\Case.cs" />

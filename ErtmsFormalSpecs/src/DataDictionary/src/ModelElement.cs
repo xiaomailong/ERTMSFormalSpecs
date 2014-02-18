@@ -82,6 +82,69 @@ namespace DataDictionary
                 return getGuid();
             }
         }
+
+        /// <summary>
+        ///  Provides the common prefix between s1 and s2
+        /// </summary>
+        /// <param name="s1"></param>
+        /// <param name="s2"></param>
+        /// <returns></returns>
+        private string CommonPrefix(string s1, string s2)
+        {
+            int i = 0;
+            while (i < s1.Length && i < s2.Length && s1[i] == s2[i])
+            {
+                i += 1;
+            }
+
+            do
+            {
+                i -= 1;
+            } while (i >= 0 && s1[i] != '.');
+            i += 1;
+
+            return s1.Substring(0, i);
+        }
+
+        /// <summary>
+        /// Provides the name of this model element when accessing it from the other model element (provided as parameter)
+        /// </summary>
+        /// <param name="modelElement"></param>
+        /// <returns></returns>
+        public virtual string ReferenceName(ModelElement modelElement)
+        {
+            string retVal = FullName;
+
+            string prefix = "";
+            Constants.State state1 = Utils.EnclosingFinder<Constants.State>.find(this, true);
+            Constants.State state2 = Utils.EnclosingFinder<Constants.State>.find(modelElement, true);
+
+            if (state1 != null && state2 != null)
+            {
+                prefix = CommonPrefix(state1.FullName + ".", state2.FullName + ".");
+            }
+            else
+            {
+                Types.Structure structure1 = Utils.EnclosingFinder<Types.Structure>.find(this);
+                Types.Structure structure2 = Utils.EnclosingFinder<Types.Structure>.find(modelElement);
+                if (structure1 != null && structure2 != null)
+                {
+                    prefix = CommonPrefix(structure1.FullName + ".", structure2.FullName + ".");
+                }
+                else
+                {
+                    Types.NameSpace nameSpace1 = Utils.EnclosingFinder<Types.NameSpace>.find(this);
+                    Types.NameSpace nameSpace2 = Utils.EnclosingFinder<Types.NameSpace>.find(modelElement);
+
+                    if (nameSpace1 != null && nameSpace2 != null)
+                    {
+                        prefix = CommonPrefix(nameSpace1.FullName + ".", nameSpace2.FullName + ".");
+                    }
+                }
+            }
+
+            return retVal.Substring(prefix.Length);
+        }
     }
 
     public interface TextualExplain
