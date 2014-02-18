@@ -63,11 +63,30 @@ namespace DataDictionary.Interpreter.Refactor
 
         protected override void VisitDerefExpression(DerefExpression derefExpression)
         {
+            bool replaced = false;
+
             if (derefExpression.Ref == Ref)
             {
                 ReplaceText(derefExpression.Start + Delta, derefExpression.End + Delta);
+                replaced = true;
             }
             else
+            {
+                foreach (Expression expression in derefExpression.Arguments)
+                {
+                    if (expression != null)
+                    {
+                        if (expression.Ref == Ref)
+                        {
+                            ReplaceText(derefExpression.Start + Delta, expression.End + Delta);
+                            replaced = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (!replaced)
             {
                 base.VisitDerefExpression(derefExpression);
             }

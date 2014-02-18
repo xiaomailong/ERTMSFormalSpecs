@@ -325,28 +325,90 @@ namespace DataDictionary.Interpreter
         #endregion
 
         #region Refactoring
+        /// <summary>
+        /// Replaces all occurences of namespaces in the system
+        /// </summary>
+        private class NameSpaceRefactorer : Generated.Visitor
+        {
+            /// <summary>
+            /// The namespace that has been modified, and for which the process is launched
+            /// </summary>
+            private Types.NameSpace NameSpace { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="dictionary"></param>
+            public NameSpaceRefactorer(Types.NameSpace nameSpace)
+            {
+                NameSpace = nameSpace;
+            }
+
+            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            {
+                RefactorIExpressionable(NameSpace, obj as IExpressionable);
+                RefactorTypedElement(NameSpace, obj as Types.ITypedElement);
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
+        /// Modifies the system according to the new element definition
+        /// </summary>
+        /// <param name="element">The element that has been modified, and for which refactoring is done</param>
         public void Refactor(ModelElement element)
         {
-            List<Usage> usages = element.EFSSystem.FindReferences(element);
-            foreach (Usage usage in usages)
+            Types.NameSpace nameSpace = element as Types.NameSpace;
+            if (nameSpace != null)
             {
-                IExpressionable expressionable = usage.User as IExpressionable;
-                if (expressionable != null)
+                NameSpaceRefactorer refactorer = new NameSpaceRefactorer(nameSpace);
+                foreach (DataDictionary.Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
                 {
-                    string name = element.ReferenceName(usage.User as ModelElement);
-
-                    Refactor.RefactorTree refactorer = new Refactor.RefactorTree(expressionable.Tree, expressionable.ExpressionText, element, name);
-                    if (refactorer.Text != expressionable.ExpressionText)
-                    {
-                        expressionable.ExpressionText = refactorer.Text;
-                    }
+                    refactorer.visit(dictionary);
                 }
-
-                Types.ITypedElement typedElement = usage.User as Types.ITypedElement;
-                if ((typedElement != null) && (typedElement.Type == element))
+            }
+            else
+            {
+                // the system keeps track where the element is used
+                List<Usage> usages = element.EFSSystem.FindReferences(element);
+                foreach (Usage usage in usages)
                 {
-                    typedElement.TypeName = element.ReferenceName(usage.User as ModelElement);
+                    RefactorIExpressionable(element, usage.User as IExpressionable);
+                    RefactorTypedElement(element, usage.User as Types.ITypedElement);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Refactors an element which can hold an expression
+        /// </summary>
+        /// <param name="element">The element that has been modified, and for which refactoring is done</param>
+        /// <param name="user">The user, which can hold an expression</param>
+        private static void RefactorIExpressionable(ModelElement element, IExpressionable user)
+        {
+            if (user != null)
+            {
+                string name = element.ReferenceName(user as ModelElement);
+
+                Refactor.RefactorTree refactorer = new Refactor.RefactorTree(user.Tree, user.ExpressionText, element, name);
+                if (refactorer.Text != user.ExpressionText)
+                {
+                    user.ExpressionText = refactorer.Text;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Refactors an element which has a type
+        /// </summary>
+        /// <param name="element">The element that has been modified</param>
+        /// <param name="user">The user which references this type</param>
+        private static void RefactorTypedElement(ModelElement element, Types.ITypedElement user)
+        {
+            if ((user != null) && (user.Type == element))
+            {
+                user.TypeName = element.ReferenceName(user as ModelElement);
             }
         }
         #endregion
