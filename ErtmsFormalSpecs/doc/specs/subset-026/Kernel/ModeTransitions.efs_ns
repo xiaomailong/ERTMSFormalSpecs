@@ -1961,6 +1961,7 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="Condition17"
  Guid="2a64e634-3fd7-4111-8590-880a93f8b3b9"
 >
@@ -1969,12 +1970,14 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="74d69ce0-b4e7-477d-a521-7dc08544b74a"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>A linking reaction set to &quot;Trip&quot; is activated</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="54e58d84-4d5d-41e0-b70d-1312a684cd21"
 >
-<Expression>False</Expression>
+<Comment>The variable BTM.Linking.TrainTripDueToLinkingInconsistency is set to True when the train activates a &quot;Trip&quot; linking reaction</Comment>
+<Expression>BTM.Linking.TrainTripDueToLinkingInconsistency</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

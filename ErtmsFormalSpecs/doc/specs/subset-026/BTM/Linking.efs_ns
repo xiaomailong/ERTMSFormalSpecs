@@ -579,13 +579,16 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  Guid="9395d930-3de6-407a-9481-58901353982a"
 >( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
   AND  
-(BGLocationReference.Position + BGLocationReference.UnderReadingAmountOdo &lt; (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
+(BGLocationReference.Position + BGLocationReference.UnderReadingAmountOdo &lt; (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)</PreCondition><PreCondition
+ Guid="55d4f795-49dc-4a13-8711-70f99740bd69"
+></PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="BG encountered after expectation window"
  Guid="00b17942-d650-4e86-8076-43a6e460ab8d"
 >
-<Comment>The location reference of the expected BG is found after the end of its expectation window</Comment>
+<Comment>The location reference of the expected BG is found after the end of its expectation window, corresponding to 3.16.2.3.1.b)
+Note: this case is already covered by the rule Clean Up Linking Info, it is here mostly to mirror the specs</Comment>
 <PreConditions>
 <PreCondition
  Guid="1ca081c2-aa92-4133-9d3f-f95d293eff35"
@@ -941,6 +944,21 @@ This function is called whenever it is appropriate, so it does not need any prec
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7b2a0e8e-0483-4c77-bd46-b8ebf8c72509"
 >
+</ReqRef><ReqRef
+ Id="b431b905-df98-4c23-9ff8-3da3b92a7a29"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="14476290-54b5-47b8-8662-e1632407f417"
+>
+</ReqRef><ReqRef
+ Id="2c84de1b-61c3-4555-b485-6b4eae58ae90"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="289263a4-8987-4c9e-9cc7-6040fef1adfb"
+>
+</ReqRef><ReqRef
+ Id="a0f4b0d4-ee6d-40d4-94b4-05dd94f6bcd2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cb7ed44c-27a7-469e-b15b-e24e7567ed69"
+>
 </ReqRef><Comment>Apply the prescribed reaction if there is a data consistency problem</Comment>
 <Rules>
 <Rule
@@ -995,7 +1013,25 @@ This function is called whenever it is appropriate, so it does not need any prec
 <Actions>
 <Action
  Guid="59e35c85-e437-4258-93af-28a87f6548e3"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+>TrainTripDueToLinkingInconsistency &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Stop expecting the inconsistent BG"
+ Guid="d28fd530-6d88-4aee-952e-4508fddee9da"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Stop expecting the inconsistent BG"
+ Guid="008d8432-2e3a-47d2-afeb-308763c39c36"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3d1509f7-2827-41ac-8a3b-3b3057810dd2"
+>StopExpectingCurrentBG()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1156,7 +1192,9 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 <Actions>
 <Action
  Guid="6f9ef685-68b5-4cf8-ab5b-fe3765ff7cb1"
->APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup | (BaliseMessageToBeHandled(Message=&gt;X) == True)</Action></Actions>
+>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup | (BaliseMessageToBeHandled(Message=&gt;X) == True)</Action><Action
+ Guid="73f60427-194a-4f61-9082-16f71fa2409d"
+>StopExpectingCurrentBG()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="There is an error in the linking consistency of the current BG"
@@ -1212,44 +1250,6 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="If the current BG was linked, stop expecting the first linked BG"
- Guid="93bf6b13-955e-4afe-b08e-5ebb370cb1e9"
->
-<ReqRef
- Id="b431b905-df98-4c23-9ff8-3da3b92a7a29"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="06be903d-754f-4c8c-942d-66fcd0943b1a"
->
-</ReqRef><ReqRef
- Id="259e3c43-f68a-4c80-8402-32349f27172d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2122c0c3-51cb-41ef-97c5-528811d22a85"
->
-</ReqRef><ReqRef
- Id="2c84de1b-61c3-4555-b485-6b4eae58ae90"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b5621525-0c60-43ca-9bf4-d418f2bfef90"
->
-</ReqRef><Comment>Either it was encountered or there was a linking consistency error, and in both cases the first element is removed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="If the current BG was linked, stop expecting the first linked BG"
- Guid="22f1edbb-b09a-4f82-87c6-6bdcd4418ec9"
->
-<PreConditions>
-<PreCondition
- Guid="c41caa0e-cacf-4655-9157-6cb1b7be20c9"
->ConsiderBGWithLinking()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="16d8a274-6530-4c15-871b-b65c7078ba11"
->StopExpectingCurrentBG()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1335,81 +1335,39 @@ If the BG was passed in the right direction, handle the message. If not, the tra
  Name="EarlyReception"
  Guid="a1513d6f-1d74-495a-aacc-e2a73cfc5ad0"
 >
-</Variable></Variables>
-<Rules>
-<Rule
- Priority="Processing"
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
  Implemented="TRUE"
- Name="Clean Up Linking Info"
- Guid="49b7a1ca-68f8-4859-8837-4c266bf70522"
+ Name="TrainTripDueToLinkingInconsistency"
+ Guid="59b44451-8f40-4f77-9cd0-735dfe0b317b"
 >
 <ReqRef
- Id="c534dda4-ea81-40b7-a27b-c229e935a20e"
+ Id="a0f4b0d4-ee6d-40d4-94b4-05dd94f6bcd2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="48d690d3-c817-4fc1-9394-d4f8f60e5bd4"
+ Guid="7bd42be7-80a5-4df1-b521-8ca1a2e61a97"
 >
-</ReqRef><ReqRef
- Id="75b64f27-a0f0-421e-a6c1-37f2dd27860f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="68d706aa-fcac-4d7d-9558-3027b4dd53ef"
->
-</ReqRef><ReqRef
- Id="b431b905-df98-4c23-9ff8-3da3b92a7a29"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="80d3a922-6d46-48cc-a32c-0d23cca616bd"
->
-</ReqRef><ReqRef
- Id="2c84de1b-61c3-4555-b485-6b4eae58ae90"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3a071496-1755-4625-8f4d-a75cdcf02046"
->
-</ReqRef><ReqRef
- Id="0547edfa-b17d-4b79-8cad-2fba135b2d95"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9f875d24-7fb2-41de-9ef2-e1c2e39d6f94"
->
-</ReqRef><Comment>If the current linking&apos;s expectation window has been passed, removes it from the linkings and applies its reaction</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Check the train has passed the expected BG&apos;s expectation window"
- Guid="698f6885-1eec-46b4-87fa-7ad3439243f9"
->
-<Comment>Apply the linking reaction</Comment>
-<PreConditions>
-<PreCondition
- Guid="6d3b2490-aa01-4121-8abb-e05a55a842cc"
->LinkingApplicable()
-  AND
-AntennaPosition ( Default.DistanceInterval.Min ) &gt; (CurrentLinking().Distance + CurrentLinking().LocationAccuracy)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="d3d59ef2-1780-4145-90f8-d8a3cf0dfbcc"
->ApplyLinkingReaction()</Action></Actions>
-<SubRules>
+</ReqRef></Variable></Variables>
+<Rules>
 <Rule
  Priority="CleanUp"
- Implemented="TRUE"
- Name="Stop expecting that BG"
- Guid="adc6cb4b-3a76-4d7b-9e80-fef0b0f8d69e"
+ Name="CleanUpLinkingReaction"
+ Guid="2e4fbfea-4178-41a0-82bf-73e46d001309"
 >
-<Comment>Remove the BG from Linkings</Comment>
+<Comment>Resets the values of the linking reaction variable, TrainTripDurToLinkingInconsistency</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Implemented="TRUE"
- Name="Remove the passed BG from the list of expected BGs"
- Guid="09fca6f8-f0c8-4331-9ee5-c65f911b4665"
+ Name="Train trip"
+ Guid="98ca2a07-69e4-4b6f-b8e6-110f14c11cd5"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="8fd68685-2c50-44e2-8c63-633c9323f735"
->StopExpectingCurrentBG()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+ Guid="a4712cfb-db0c-4f4d-bec4-dedbd6e4bb7a"
+>TrainTripDueToLinkingInconsistency &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
