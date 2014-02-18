@@ -13640,7 +13640,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6c795dd9-cfd6-4c71-9695-cc2210c5bcaf"
->ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatus()</Action></Actions>
+>ConnectionStatus &lt;- EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
