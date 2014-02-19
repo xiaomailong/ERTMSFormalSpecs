@@ -600,10 +600,6 @@ namespace DataDictionary.Interpreter
 
         public void checkExpression()
         {
-            if (Location == LocationEnum.NotDefined)
-            {
-                throw new Exception("Cannot find location of " + ToString());
-            }
         }
 
         public override string ToString()

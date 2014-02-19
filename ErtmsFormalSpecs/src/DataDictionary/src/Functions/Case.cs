@@ -77,7 +77,7 @@ namespace DataDictionary.Functions
             {
                 if (expression == null)
                 {
-                    expression = EFSSystem.Parser.Expression(EnclosingFunction, ExpressionText);
+                    expression = EFSSystem.Parser.Expression(this, ExpressionText);
                 }
                 return expression;
             }
