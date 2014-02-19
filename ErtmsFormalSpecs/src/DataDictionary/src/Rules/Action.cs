@@ -68,6 +68,23 @@ namespace DataDictionary.Rules
         public Interpreter.InterpreterTreeNode Tree { get { return Statement; } }
 
         /// <summary>
+        /// Clears the statement tree to ensure new compilation
+        /// </summary>
+        public void CleanCompilation()
+        {
+            Statement = null;
+        }
+
+        /// <summary>
+        /// Creates the tree according to the statement text
+        /// </summary>
+        public void Compile()
+        {
+            // Side effect, builds the statement if it is not already built
+            Interpreter.InterpreterTreeNode tree = Tree;
+        }
+
+        /// <summary>
         /// The enclosing Rule, if any
         /// </summary>
         public Rule Rule

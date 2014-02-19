@@ -86,6 +86,24 @@ namespace DataDictionary.Functions
 
         public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
 
+
+        /// <summary>
+        /// Clears the expression tree to ensure new compilation
+        /// </summary>
+        public void CleanCompilation()
+        {
+            Expression = null;
+        }
+
+        /// <summary>
+        /// Creates the tree according to the expression text
+        /// </summary>
+        public void Compile()
+        {
+            // Side effect, builds the statement if it is not already built
+            Interpreter.InterpreterTreeNode tree = Tree;
+        }
+
         /// <summary>
         /// The enclosing collection of the parameter
         /// </summary>

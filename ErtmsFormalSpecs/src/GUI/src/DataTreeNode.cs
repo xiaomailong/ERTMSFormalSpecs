@@ -227,6 +227,17 @@ namespace GUI
         }
 
         /// <summary>
+        /// Indicates whether the explain box should be displayed
+        /// </summary>
+        /// <returns></returns>
+        private bool ShouldExplain()
+        {
+            bool retVal = (Model is DataDictionary.Types.IDefaultValueElement) || !(Model is IExpressionable);
+
+            return retVal;
+        }
+
+        /// <summary>
         /// Refreshes the view according to the model
         /// </summary>
         /// <param name="baseForm"></param>
@@ -270,7 +281,7 @@ namespace GUI
             }
 
             // By default, the explain text box is visible
-            if (baseForm.ExplainTextBox != null && !(Model is IExpressionable))
+            if (baseForm.ExplainTextBox != null && ShouldExplain())
             {
                 if (!(baseForm.ExplainTextBox.ContainsFocus && ignoreFocused))
                 {
@@ -342,7 +353,7 @@ namespace GUI
                 if (!(baseForm.ExpressionEditorTextBox.ContainsFocus && ignoreFocused))
                 {
                     IExpressionable expressionable = Model as IExpressionable;
-                    if (expressionable != null)
+                    if (expressionable != null && !ShouldExplain())
                     {
                         baseForm.ExpressionEditorTextBox.Instance = Model as DataDictionary.ModelElement;
                         baseForm.ExpressionEditorTextBox.Text = expressionable.ExpressionText;

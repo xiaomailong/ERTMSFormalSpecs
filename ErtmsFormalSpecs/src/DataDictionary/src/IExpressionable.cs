@@ -26,5 +26,15 @@ namespace DataDictionary
         /// The corresponding expression tree
         /// </summary>
         Interpreter.InterpreterTreeNode Tree { get; }
+
+        /// <summary>
+        /// Clears the expression tree to ensure new compilation
+        /// </summary>
+        void CleanCompilation();
+
+        /// <summary>
+        /// Creates the tree according to the expression text
+        /// </summary>
+        void Compile();
     }
 }

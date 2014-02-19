@@ -88,7 +88,7 @@ namespace DataDictionary.Tests
             get { return getDeadLine(); }
             set { setDeadLine(value); }
         }
-        
+
         public override string ExpressionText
         {
             get
@@ -122,6 +122,25 @@ namespace DataDictionary.Tests
 
         public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
 
+
+        /// <summary>
+        /// Clears the tree to ensure new compilation
+        /// </summary>
+        public void CleanCompilation()
+        {
+            Expression = null;
+            ConditionTree = null;
+        }
+
+        /// <summary>
+        /// Creates the tree according to the expression text
+        /// </summary>
+        public void Compile()
+        {
+            // Side effect, builds the expressions if they are not already built
+            Interpreter.InterpreterTreeNode tree = Tree;
+            Interpreter.Expression expression = ConditionTree;
+        }
 
         public Interpreter.Expression conditionTree;
         public Interpreter.Expression ConditionTree

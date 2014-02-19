@@ -236,80 +236,27 @@ namespace DataDictionary.Interpreter
         }
 
         #region Compilation
-        public override void visit(Generated.Action obj, bool visitSubNodes)
+        public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
         {
-            Rules.Action action = (Rules.Action)obj;
-
-            if (CurrentCompile.Rebuild)
+            IExpressionable expressionnable = obj as IExpressionable;
+            if (expressionnable != null)
             {
-                action.Statement = null;
+                // In case of rebuild, cleans the previously constructed tree
+                if (CurrentCompile.Rebuild)
+                {
+                    expressionnable.CleanCompilation();
+                }
+
+                // Ensures that the expressionable is compiled
+                expressionnable.Compile();
             }
 
-            // Side effect : compiles or recompiles the statement
-            DataDictionary.Interpreter.Statement.Statement statement = action.Statement;
-
-            base.visit(obj, visitSubNodes);
-        }
-
-        public override void visit(Generated.PreCondition obj, bool visitSubNodes)
-        {
-            Rules.PreCondition preCondition = (Rules.PreCondition)obj;
-
-            if (CurrentCompile.Rebuild)
+            Types.ITypedElement typedElement = obj as Types.ITypedElement;
+            if (typedElement != null)
             {
-                preCondition.Expression = null;
+                // Ensures that the type of the corresponding element is cached
+                Types.Type type = typedElement.Type;
             }
-
-            // Side effect : compiles or recompiles the expression
-            DataDictionary.Interpreter.Expression expression = preCondition.Expression;
-
-            base.visit(obj, visitSubNodes);
-        }
-
-        public override void visit(Generated.Expectation obj, bool visitSubNodes)
-        {
-            Tests.Expectation expectation = (Tests.Expectation)obj;
-
-            if (CurrentCompile.Rebuild)
-            {
-                expectation.Expression = null;
-                expectation.ConditionTree = null;
-            }
-
-            // Side effect : compiles or recompiles the expressions
-            DataDictionary.Interpreter.Expression expression = expectation.Expression;
-            DataDictionary.Interpreter.Expression condition = expectation.ConditionTree;
-
-            base.visit(obj, visitSubNodes);
-        }
-
-        public override void visit(Generated.Case obj, bool visitSubNodes)
-        {
-            Functions.Case cas = (Functions.Case)obj;
-
-            if (CurrentCompile.Rebuild)
-            {
-                cas.Expression = null;
-            }
-
-            // Side effect : compiles or recompiles the expressions
-            DataDictionary.Interpreter.Expression expression = cas.Expression;
-
-            base.visit(obj, visitSubNodes);
-        }
-
-        public override void visit(Generated.Frame obj, bool visitSubNodes)
-        {
-            Tests.Frame frame = (Tests.Frame)obj;
-
-            if (CurrentCompile.Rebuild)
-            {
-                frame.CycleDuration = null;
-            }
-
-            // Side effect : compiles or recompiles the expression
-            DataDictionary.Interpreter.Expression expression = frame.CycleDuration;
-
 
             base.visit(obj, visitSubNodes);
         }
@@ -325,6 +272,21 @@ namespace DataDictionary.Interpreter
         #endregion
 
         #region Refactoring
+        /// <summary>
+        /// Cleans the caches of the full names
+        /// </summary>
+        private class FullNameCleaner : Generated.Visitor
+        {
+            public override void visit(Generated.Namable obj, bool visitSubNodes)
+            {
+                Namable namable = (Namable)obj;
+
+                namable.ClearFullName();
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
         /// <summary>
         /// Replaces all occurences of namespaces in the system
         /// </summary>
@@ -359,6 +321,13 @@ namespace DataDictionary.Interpreter
         /// <param name="element">The element that has been modified, and for which refactoring is done</param>
         public void Refactor(ModelElement element)
         {
+            // Cleans fullname cache
+            FullNameCleaner cleaner = new FullNameCleaner();
+            foreach (DataDictionary.Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
+            {
+                cleaner.visit(dictionary);
+            }
+
             Types.NameSpace nameSpace = element as Types.NameSpace;
             if (nameSpace != null)
             {
@@ -378,6 +347,8 @@ namespace DataDictionary.Interpreter
                     RefactorTypedElement(element, usage.User as Types.ITypedElement);
                 }
             }
+
+            Compile_Synchronous(true);
         }
 
         /// <summary>
@@ -389,12 +360,19 @@ namespace DataDictionary.Interpreter
         {
             if (user != null)
             {
-                string name = element.ReferenceName(user as ModelElement);
-
-                Refactor.RefactorTree refactorer = new Refactor.RefactorTree(user.Tree, user.ExpressionText, element, name);
-                if (refactorer.Text != user.ExpressionText)
+                try
                 {
-                    user.ExpressionText = refactorer.Text;
+                    string name = element.ReferenceName(user as ModelElement);
+
+                    Refactor.RefactorTree refactorer = new Refactor.RefactorTree(user.Tree, user.ExpressionText, element, name);
+                    if (refactorer.Text != user.ExpressionText)
+                    {
+                        user.ExpressionText = refactorer.Text;
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    ((ModelElement)user).AddError("Cannot refactor this element, reason = " + e.Message);
                 }
             }
         }
@@ -406,9 +384,31 @@ namespace DataDictionary.Interpreter
         /// <param name="user">The user which references this type</param>
         private static void RefactorTypedElement(ModelElement element, Types.ITypedElement user)
         {
-            if ((user != null) && (user.Type == element))
+            if (user != null)
             {
-                user.TypeName = element.ReferenceName(user as ModelElement);
+                try
+                {
+                    if ((user.Type == element))
+                    {
+                        user.TypeName = element.ReferenceName(user as ModelElement);
+                    }
+                    else if (element is Types.NameSpace)
+                    {
+                        Functions.Function function = user as Functions.Function;
+                        if (function != null)
+                        {
+                            user.TypeName = function.ReturnType.ReferenceName(element);
+                        }
+                        else
+                        {
+                            user.TypeName = user.Type.ReferenceName(user as ModelElement);
+                        }
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    ((ModelElement)user).AddError("Cannot refactor this element, reason = " + e.Message);
+                }
             }
         }
         #endregion

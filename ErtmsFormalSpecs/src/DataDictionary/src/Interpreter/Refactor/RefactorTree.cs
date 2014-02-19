@@ -114,7 +114,10 @@ namespace DataDictionary.Interpreter.Refactor
             ReplacementValue = replacementValue;
             Delta = 0;
 
-            VisitInterpreterTreeNode(interpreterTreeNode);
+            if (interpreterTreeNode != null)
+            {
+                VisitInterpreterTreeNode(interpreterTreeNode);
+            }
         }
     }
 }

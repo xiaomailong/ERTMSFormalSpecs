@@ -28,6 +28,8 @@ namespace DataDictionary.Values
             get { return Type as Types.Structure; }
         }
 
+        static int depth = 0;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -39,6 +41,11 @@ namespace DataDictionary.Values
 
             try
             {
+                depth += 1;
+                if (depth > 100)
+                {
+                    throw new System.Exception("Possible structure recursion found");
+                }
                 DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
                 foreach (Types.StructureElement element in Structure.Elements)
                 {
@@ -59,6 +66,7 @@ namespace DataDictionary.Values
             {
                 DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
 
+                depth -= 1;
                 DeclaredElements = null;
             }
         }

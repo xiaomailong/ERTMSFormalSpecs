@@ -19,7 +19,7 @@ using System;
 
 namespace DataDictionary.Tests
 {
-    public class Frame : Generated.Frame, ICommentable
+    public class Frame : Generated.Frame, IExpressionable, ICommentable
     {
         /// <summary>
         /// The frame sub sequences
@@ -159,6 +159,43 @@ namespace DataDictionary.Tests
             {
                 __cycleTime = null;
             }
+        }
+
+        /// <summary>
+        /// The expression text for this expressionable
+        /// </summary>
+        public string ExpressionText
+        {
+            get
+            {
+                return getCycleDuration();
+            }
+            set
+            {
+                CycleDuration = null;
+                setCycleDuration(value);
+            }
+        }
+
+        /// <summary>
+        /// The corresponding expression tree
+        /// </summary>
+        public Interpreter.InterpreterTreeNode Tree { get { return CycleDuration; } }
+
+        /// <summary>
+        /// Clears the expression tree to ensure new compilation
+        /// </summary>
+        public void CleanCompilation()
+        {
+            CycleDuration = null;
+        }
+
+        /// <summary>
+        /// Creates the tree according to the expression text
+        /// </summary>
+        public void Compile()
+        {
+            Expression cycleDuration = CycleDuration;
         }
 
         /// <summary>

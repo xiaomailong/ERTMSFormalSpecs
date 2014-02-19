@@ -245,7 +245,7 @@ namespace DataDictionary.Interpreter
                 foreach (KeyValuePair<Designator, Expression> pair in NamedActualParameters)
                 {
                     ICallable called = Called.Ref as ICallable;
-                    if (Called != null)
+                    if (called != null)
                     {
                         pair.Key.Ref = called.getFormalParameter(pair.Key.Image);
                         StaticUsage.AddUsage(pair.Key.Ref, Root, Usage.ModeEnum.Parameter);
