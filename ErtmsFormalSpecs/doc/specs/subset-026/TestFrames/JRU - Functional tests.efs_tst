@@ -78,7 +78,7 @@
 <Expectations>
 <Expectation
  Kind="Continuous"
- DeadLine="3,9"
+ DeadLine="4,4"
  Guid="99ee9222-a9a8-488c-9db2-03ef220465e0"
 >JRU.SendMessagePeriodically(
     jru=&gt; JRU.JRU1
@@ -106,27 +106,15 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1"
- Guid="794b8f25-4a22-4e79-b6f1-bc2d2d5bd460"
->( THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY ) AND ( JRU.SendMessagePeriodically(
-    jru=&gt;JRU.JRU1
-) == True)</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
+ DeadLine="0,1"
  Guid="58f7e436-6515-41d6-80ba-aecb5fd535b0"
->(THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY)</Expectation><Expectation
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="98890196-f12a-4d9d-afb6-aaa34bb770d9"
 >JRU.SendMessagePeriodically(
     jru=&gt;JRU.JRU1
-) == True</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="4a1b2cb0-0a7e-4446-b1da-26d4b3218d1a"
->JRU.SendNewGeneralMessage(
-    jru=&gt;JRU.JRU1
-)</Expectation></Expectations>
+) == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -145,9 +133,15 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="5,5"
+ DeadLine="1"
  Guid="0ae3e0ce-8ad4-413f-8d00-812d58b7b84c"
->FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
+>FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
+ Kind="Continuous"
+ DeadLine="4,4"
+ Guid="79059aee-71f9-408b-8c7e-87692fce4ade"
+>JRU.SendMessagePeriodically(
+    jru=&gt; JRU.JRU1
+) == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -167,11 +161,15 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="5,5"
- Guid="23c0a9f2-e52c-4ebd-bdf8-22c33b2c83bd"
->(THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY )  AND ( JRU.SendMessagePeriodically(
+ DeadLine="1"
+ Guid="1d302f0e-4f52-46ba-9686-431b30b46c0c"
+>JRU.SendMessagePeriodically(
     jru=&gt;JRU.JRU1
-))</Expectation></Expectations>
+) == True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="0,1"
+ Guid="23c0a9f2-e52c-4ebd-bdf8-22c33b2c83bd"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
