@@ -71,7 +71,7 @@ namespace DataDictionary.Tests.Runner.Events
         public EventTimeLine()
         {
             CurrentTime = 0;
-            MaxNumberOfEvents = 1000;
+            MaxNumberOfEvents = 10000;
         }
 
         /// <summary>

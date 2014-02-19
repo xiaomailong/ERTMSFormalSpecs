@@ -111,6 +111,7 @@ namespace DataDictionary
             }
             History.UpdateBlame();
 
+            MaxExplainSize = 5000;
             Generated.ControllersManager.BaseModelElementController.Listeners.Insert(0, new BaseModelElementChangeListener(this));
         }
 
@@ -1308,5 +1309,10 @@ namespace DataDictionary
         /// Indicates if the element holds messages, or is part of a path to a message 
         /// </summary>
         public Utils.MessagePathInfoEnum MessagePathInfo { get { return Utils.MessagePathInfoEnum.Nothing; } }
+
+        /// <summary>
+        /// The maximum size of an explain part message
+        /// </summary>
+        public int MaxExplainSize { get; set; }
     }
 }

@@ -222,7 +222,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             MySuspendLayout();
             if (TimeLine != null)
             {
-                if (TimeLine.Events.Count != lastCount)
+                if (TimeLine.Events.Count != lastCount || TimeLine.Events.Count == TimeLine.MaxNumberOfEvents)
                 {
                     lastCount = TimeLine.Events.Count;
                     SynchronizeWithTimeLine();
@@ -252,11 +252,6 @@ namespace GUI.TestRunnerView.TimeLineControl
             }
             HandledEvents.Clear();
         }
-
-        /// <summary>
-        /// The maximum number of events that can be displayed in the time line
-        /// </summary>
-        private static int MAX_NUMBER_OF_EVENTS = 1000;
 
         /// <summary>
         /// Synchronizes the EventControls with the Events located in the time line
@@ -299,35 +294,28 @@ namespace GUI.TestRunnerView.TimeLineControl
                     {
                         if (!HandledEvents.ContainsKey(modelEvent))
                         {
-                            if (HandledEvents.Count <= MAX_NUMBER_OF_EVENTS)
+                            EventControl eventControl = new EventControl(this, modelEvent);
+                            eventControl.Top = EventTop(modelEvent);
+                            eventControl.Left = EventLeft(modelEvent);
+                            SetPanelSize(eventControl);
+                            Controls.Add(eventControl);
+
+                            string msg = modelEvent.Message;
+                            if (msg.Length > 1000)
                             {
-                                EventControl eventControl = new EventControl(this, modelEvent);
-                                eventControl.Top = EventTop(modelEvent);
-                                eventControl.Left = EventLeft(modelEvent);
-                                SetPanelSize(eventControl);
-                                Controls.Add(eventControl);
-
-                                string msg = modelEvent.Message;
-                                if (msg.Length > 1000)
-                                {
-                                    // Message is too big for tool tips, reduce it.
-                                    msg = msg.Substring(0, 1000) + "...";
-                                }
-                                ToolTip.SetToolTip(eventControl, msg);
-
-                                // TODO : I do not understand this one... 
-                                if (!HandledEvents.ContainsKey(modelEvent))
-                                {
-                                    HandledEvents[modelEvent] = eventControl;
-                                }
-                                RegisterEventAtTime(eventControl);
-
-                                if (HandledEvents.Count == MAX_NUMBER_OF_EVENTS)
-                                {
-                                    MessageBox.Show("Too many events displayed.\nDisplaying only the " + MAX_NUMBER_OF_EVENTS + " first events.\nPlease consider filtering out events.", "Too many events", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
+                                // Message is too big for tool tips, reduce it.
+                                msg = msg.Substring(0, 1000) + "...";
                             }
+                            ToolTip.SetToolTip(eventControl, msg);
+
+                            // TODO : I do not understand this one... 
+                            if (!HandledEvents.ContainsKey(modelEvent))
+                            {
+                                HandledEvents[modelEvent] = eventControl;
+                            }
+                            RegisterEventAtTime(eventControl);
                         }
+
                     }
                 }
             }
