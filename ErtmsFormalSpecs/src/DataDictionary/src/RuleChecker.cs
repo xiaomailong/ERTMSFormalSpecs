@@ -638,7 +638,7 @@ namespace DataDictionary
                             expect.AddError("Expression type should be Boolean");
                         }
                     }
-                    if (expect.getCondition() != null && !expect.getCondition().Contains("%"))
+                    if (!string.IsNullOrEmpty(expect.getCondition()) && !expect.getCondition().Contains("%"))
                     {
                         Interpreter.Expression expression = checkExpression(expect, expect.getCondition());
                         if (expression != null)

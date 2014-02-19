@@ -1,5 +1,5 @@
 <Frame
- CycleDuration="0.1"
+ CycleDuration="0.34"
  Name="JRU - Functional tests"
  Guid="c23d41f7-9d94-44fd-864d-ce1a1fbd3ed1"
 >
@@ -77,9 +77,15 @@
 >
 <Expectations>
 <Expectation
- Kind="Instantaneous"
- DeadLine="5,5"
+ Kind="Continuous"
+ DeadLine="4,4"
  Guid="99ee9222-a9a8-488c-9db2-03ef220465e0"
+>JRU.SendMessagePeriodically(
+    jru=&gt; JRU.JRU1
+) == False</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7eeb4c6f-1783-4659-afc4-30193df23401"
 >FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -100,9 +106,15 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="5,5"
- Guid="794b8f25-4a22-4e79-b6f1-bc2d2d5bd460"
->( THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY ) AND ( 4.8 &lt; Kernel.CurrentTime ) AND ( Kernel.CurrentTime &lt; 5.2 )</Expectation></Expectations>
+ DeadLine="0,1"
+ Guid="58f7e436-6515-41d6-80ba-aecb5fd535b0"
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="0,1"
+ Guid="98890196-f12a-4d9d-afb6-aaa34bb770d9"
+>JRU.SendMessagePeriodically(
+    jru=&gt;JRU.JRU1
+) == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -121,9 +133,15 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="5,5"
+ DeadLine="1"
  Guid="0ae3e0ce-8ad4-413f-8d00-812d58b7b84c"
->FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
+>FORALL_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
+ Kind="Continuous"
+ DeadLine="4,4"
+ Guid="79059aee-71f9-408b-8c7e-87692fce4ade"
+>JRU.SendMessagePeriodically(
+    jru=&gt; JRU.JRU1
+) == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -143,9 +161,15 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="5,5"
+ DeadLine="0,1"
+ Guid="1d302f0e-4f52-46ba-9686-431b30b46c0c"
+>JRU.SendMessagePeriodically(
+    jru=&gt;JRU.JRU1
+) == True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="0,1"
  Guid="23c0a9f2-e52c-4ebd-bdf8-22c33b2c83bd"
->(THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY ) AND ( 9.8 &lt; Kernel.CurrentTime ) AND ( Kernel.CurrentTime &lt; 10.2 )</Expectation></Expectations>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -4006,7 +4030,9 @@
 <Actions>
 <Action
  Guid="54d6c3cb-a4e0-4df7-82de-84fe0dee2d10"
->Kernel.SupervisionStatus &lt;- Kernel.SupervisionStatus.Overspeed</Action></Actions>
+>Kernel.SupervisionStatus &lt;- Kernel.SupervisionStatus.Overspeed</Action><Action
+ Guid="dae936c9-82a8-4afe-ac16-27e68272bac3"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring &lt;- Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
