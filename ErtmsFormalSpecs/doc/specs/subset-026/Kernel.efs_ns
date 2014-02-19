@@ -3852,7 +3852,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="dbfb1ceb-17f2-417f-a80c-6e1d98ff2c85"
->DMI.MasterDMI().DisplaySafeRadioConnectionIndication(EURORADIO.SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed)</Action><Action
+>DMI.MasterDMI().DisplaySafeRadioConnectionIndication( EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus )</Action><Action
  Guid="b8f2f399-bcea-4824-8a83-ebaca850d2c5"
 >THIS &lt;- HandleModeChange.StartOfMission.S10</Action></Actions>
 </RuleCondition></Conditions>
@@ -9352,6 +9352,52 @@ INITIAL_VALUE EmergencyStop
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="EndOfLinkingExpectationWindow"
+ Guid="ed7ec36f-0544-4ec7-b13f-df040e8b4162"
+>
+<ReqRef
+ Id="0547edfa-b17d-4b79-8cad-2fba135b2d95"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e85cef6e-1d30-442a-97a5-9a68693eb207"
+>
+</ReqRef><ReqRef
+ Id="c534dda4-ea81-40b7-a27b-c229e935a20e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="beecb795-005b-401b-8218-0c80ff6507c2"
+>
+</ReqRef><ReqRef
+ Id="b431b905-df98-4c23-9ff8-3da3b92a7a29"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4d699990-054f-460e-8592-c659753537bb"
+>
+</ReqRef><ReqRef
+ Id="2c84de1b-61c3-4555-b485-6b4eae58ae90"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b09ca036-7e41-41e9-9050-8e7a8d242004"
+>
+</ReqRef><Comment>Handles the linking consistency error when a train reaches the end of the currently expected balise&apos;s expectation window without encountering it</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Check the train has passed the expected BG&apos;s expectation window"
+ Guid="698f6885-1eec-46b4-87fa-7ad3439243f9"
+>
+<Comment>Apply the linking reaction and remove the linking from the list</Comment>
+<PreConditions>
+<PreCondition
+ Guid="6d3b2490-aa01-4121-8abb-e05a55a842cc"
+>BTM.Linking.LinkingApplicable()
+  AND  
+BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLinking().Distance + BTM.Linking.CurrentLinking().LocationAccuracy)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d3d59ef2-1780-4145-90f8-d8a3cf0dfbcc"
+>BTM.Linking.ApplyLinkingReaction()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleBTMInputs"
  Guid="1ba806ee-8de8-4b1e-bb93-49c5dce8f696"
@@ -9460,7 +9506,7 @@ INITIAL_VALUE EmergencyStop
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Name="UpdateEOAandSvL"
+ Name="UpdateEOA"
  Guid="930bec6a-53b0-4496-b3b9-1d82d5aafcfc"
 >
 <SubRules></SubRules>

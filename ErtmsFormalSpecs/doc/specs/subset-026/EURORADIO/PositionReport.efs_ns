@@ -59,12 +59,12 @@
  Name="PositionReportEventsTracker"
  Guid="e4d7d885-b4b0-4a2f-84fe-fd83278d8dac"
 >
+<Comment>Keeps the information that can provode the sending of a new position report.</Comment>
 <StructureElement
  TypeName="Messages.Q_LENGTH"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="TrainIntegrityStatus"
  Guid="702a47f2-b548-4920-90c2-c9af032dad2d"
 >
@@ -78,12 +78,12 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="597cf4ba-39be-4e74-b946-c07ad32f1204"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Contains the previous value of the train integrity status in order to know if that value has changed.</Comment>
+</StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="Speed"
  Guid="cd628589-9d93-4fae-9f68-1214b8f86c72"
 >
@@ -92,12 +92,12 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="422ed2ff-d3b2-4b9d-b93a-f653b27905a1"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Contains the previous value of the speed of the train in order to know if the train has reached standstill.</Comment>
+</StructureElement><StructureElement
  TypeName="Default.Level"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="Level"
  Guid="dfe14e8f-60f2-41d1-a4e2-bfe45f5b2d64"
 >
@@ -106,12 +106,12 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="88fb8d10-2186-4fd5-bc3a-eec65b47cdd8"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Contains the previous value of the level in order to know if that value has changed.</Comment>
+</StructureElement><StructureElement
  TypeName="Default.Mode"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="Mode"
  Guid="0fe0a95b-e6d2-4b3f-a065-860c0a2cea17"
 >
@@ -120,15 +120,21 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3354f402-f79e-41af-9fff-c6f5a9ad88db"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Contains the previous value of the mode in order to know if that value has changed.</Comment>
+</StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="HasActiveSession"
  Guid="0e42fee9-39f2-4da3-bf59-40f56503187f"
 >
+<ReqRef
+ Id="7650e199-5792-467e-8851-48660d18ee90"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f2fc389c-163a-409a-ab50-88248ccf891e"
+>
+</ReqRef><Comment>Contains the previous value of session state in order to know if that value has changed.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="PositionReportParametersValues"
@@ -164,7 +170,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="511735ab-525d-47db-826e-f23458a0a87e"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>The periodic time interval when a position report has to be sent.</Comment>
+</StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
@@ -178,7 +185,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="947e0a12-8289-4d58-8073-ff08878f96f4"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>The periodic distance interval when a position report has to be sent.</Comment>
 </StructureElement><StructureElement
  TypeName="PositionReportSpecialLocation"
  Default=""
@@ -204,7 +211,8 @@
  Guid="ad05d477-180f-4a70-83e0-713dc9b6cbbd"
 >
 <Comment>This requirement is always satisfied because the value of the field PositionReportSpecialLocation can be either LRBG or Now and never the both together.</Comment>
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>A special location when a position report has to be sent.</Comment>
+</StructureElement><StructureElement
  TypeName="PositionReportLocations"
  Default=""
  Mode="Incoming"
@@ -218,11 +226,13 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="23a80406-b674-43a5-9e8a-129b78b93722"
 >
-</ReqRef></StructureElement></Structure><Structure
+</ReqRef><Comment>The locations where the position report has to be sent.</Comment>
+</StructureElement></Structure><Structure
  NeedsRequirement="FALSE"
  Name="PositionReportParameters"
  Guid="dafba94d-6433-44d4-9e3f-ba35ffadb8ea"
 >
+<Comment>Contains position report parameters given by the RBC.</Comment>
 <StructureElement
  TypeName="Default.DataState"
  Default=""
@@ -231,6 +241,7 @@
  Name="DataState"
  Guid="05e8cb01-1d61-4e80-bcaa-11d314b7ab34"
 >
+<Comment>The data state of report parameters.</Comment>
 </StructureElement><StructureElement
  TypeName="PositionReportParametersValues"
  Default=""
@@ -239,12 +250,14 @@
  Name="Values"
  Guid="e3fce09b-5758-403f-8751-cb7438db0924"
 >
+<Comment>The position report parameters.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="LastPositionReportInformation"
  Guid="f69c4eae-36c3-4704-8ae3-4d74ffbed1b7"
 >
+<Comment>Keeps the information about the last report.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Time"
  Default="0.0"
@@ -264,7 +277,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5252e3f0-2439-46a0-8345-93770c0310b1"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>The time of the last position report.</Comment>
+</StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
@@ -278,7 +292,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="53833c15-3196-4533-b745-9e2e693d6384"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>The position of the last position report.</Comment>
+</StructureElement><StructureElement
  TypeName="BTM.BaliseGroup"
  Default=""
  Mode="Internal"
@@ -292,7 +307,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3d95f0aa-14a5-4a75-94a3-f22873d343a9"
 >
-</ReqRef></StructureElement></Structure><Structure
+</ReqRef><Comment>The LRBG according to which the last position report was sent.</Comment>
+</StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="PositionLocation"
  Guid="22647d7a-ba05-4975-8cb5-f8392fab6640"
@@ -302,7 +318,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4decd675-9b9a-4e99-9a7b-cf36f4681375"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment>The specified location that, once passed by the train, should provoke the sending of a new position report.</Comment>
+<StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Incoming"
@@ -316,7 +333,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="387b6c06-2c64-4504-a351-bef01392fb73"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Distance that has to be passed in order to send a new position report.</Comment>
+</StructureElement><StructureElement
  TypeName="TrainData.TrainEndEnum"
  Default=""
  Mode="Incoming"
@@ -330,7 +348,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8f51a051-7939-4734-8130-1af784799527"
 >
-</ReqRef></StructureElement></Structure></Structures>
+</ReqRef><Comment>Indicates if the distance has to be passed with the max safe front end or the min safe rear end of the train.</Comment>
+</StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="PositionLocation"
@@ -344,7 +363,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7f0b3f25-c0de-4842-b980-b8655e5ce454"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>List of locations where a position report has to be sent.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -358,9 +377,10 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5357decc-14e6-459a-86b1-8c8348764169"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if a position report has to be sent due to communication session establishment.</Comment>
+<Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="38910f57-eaaa-45c2-8562-0f00ec822b4b"
 >
 <Expression>PositionReportEventsTracker.HasActiveSession == Boolean.False</Expression>
@@ -377,22 +397,13 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4b9d39f9-3b1e-4fe4-827a-e87370db6bba"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Indicates if a position report has to be sent due to the level change.</Comment>
 <Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="2267941e-218a-4012-9fe6-34f016f07663"
 >
 <Expression>PositionReportEventsTracker.Level != Kernel.Level.Value</Expression>
-</Case><Case
- Name="DoNotSend"
- Guid="66fc2856-0c33-498f-a5a8-904e29c1a15e"
->
-<PreConditions>
-<PreCondition
- Guid="87775add-1503-4d81-9951-61bdb65e8361"
->PositionReportEventsTracker.Level == Kernel.Level.Value</PreCondition></PreConditions>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -406,9 +417,10 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="51b45c95-767f-4a31-b29a-59105f7378a7"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if a position report has to be sent due to loss of train integrity.</Comment>
+<Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="971ecd82-8414-41b3-b1b4-7dd8e9b80181"
 >
 <Expression>PositionReportEventsTracker.TrainIntegrityStatus != TIU.TrainIntegrity.Status
@@ -448,10 +460,10 @@ TIU.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ae6e296d-103d-44de-8009-4cbbd5d73d8e"
 >
-</ReqRef><Comment>Determines if the train has to send a position report to the RBC due to the mode change. If the report has to be sent, the function returns the mode to be sent with the report. In not, the function returns EMPTY.</Comment>
+</ReqRef><Comment>Indicates if a position report has to be sent due to the mode change.</Comment>
 <Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="5dceb123-fe06-4e6a-8ded-c6c2984cebe4"
 >
 <Expression>PositionReportEventsTracker.Mode != Kernel.Mode</Expression>
@@ -468,9 +480,10 @@ TIU.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0b40b0f5-773a-4ef1-bdcf-49f0eda24ff2"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if a position report has to be sent due to time to send a position report reached.</Comment>
+<Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="aaa72c64-bb2e-466c-93eb-5bf924372ffc"
 >
 <Expression>Kernel.CurrentTime &gt;= LastPositionReport.Time + PositionReportParameters.Values.TimeInterval AND PositionReportParameters.DataState == Default.DataState.Valid AND PositionReportParameters.Values.TimeInterval != 0.0</Expression>
@@ -487,10 +500,10 @@ TIU.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d2543aac-c3e4-43c4-a662-302e248412bd"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Indicates if a position report has to be sent due to position report distance reached.</Comment>
 <Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="3bcde522-0efd-4e95-9c56-00ee9dbe3059"
 >
 <Expression>(Odometry.NominalDistance &gt;= (LastPositionReport.Position + PositionReportParameters.Values.DistanceInterval)) AND (PositionReportParameters.DataState == Default.DataState.Valid) AND (PositionReportParameters.Values.DistanceInterval != Default.BaseTypes.Distance.Infinity)</Expression>
@@ -507,9 +520,10 @@ TIU.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="510261da-dfb8-4672-9c08-b3af809ece5f"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if a position report has to be sent due to special location Now.</Comment>
+<Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="d39cbac2-cb23-4eef-a013-bccca1716554"
 >
 <Expression>PositionReportParameters.Values.SpecialLocation == PositionReportSpecialLocation.Now</Expression>
@@ -526,9 +540,10 @@ TIU.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2690fd19-425e-42e0-a919-981196c4b422"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if a position report has to be sent due to standstill reached.</Comment>
+<Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="9067bdff-9b40-4532-9e37-c911b007f3db"
 >
 <Expression>PositionReportEventsTracker.Speed != Odometry.EstimatedSpeed AND Odometry.EstimatedSpeed == 0.0</Expression>
@@ -545,9 +560,10 @@ TIU.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bdf155da-5c71-4289-aebc-c341580be424"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if a position report has to be sent due to train integrity confirmed by driver.</Comment>
+<Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="b4a5f2d7-356a-4eb5-b5c5-e979531e600f"
 >
 <Expression>PositionReportEventsTracker.TrainIntegrityStatus != TIU.TrainIntegrity.Status
@@ -568,10 +584,10 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6f918740-1a48-431c-acd4-c2a538ae69ea"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Indicates if a position report has to be sent due to the passage of an RBC border with max safe front end.</Comment>
 <Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="3f13f59b-b0a0-40f5-83c2-df74ce33945b"
 >
 <Expression>False</Expression>
@@ -593,9 +609,10 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c3e0b5f6-c7df-47bb-8ab6-f48f8104a2ae"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if a position report has to be sent due to position report special location reached.</Comment>
+<Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="8e7cde14-f71d-4b3b-afd0-3d60e81ba553"
 >
 <Expression>SendReportDueToSpecialLocationNow() OR SendReportDueToSpecialLocationLRBGCompliantBG()</Expression>
@@ -611,9 +628,10 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b460c865-7b34-4273-877d-3c856f516c91"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if a position report has to be sent due to passage of an RBC border with min safe rear end.</Comment>
+<Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="1c36a158-5055-418e-ba11-de0eb40fa197"
 >
 <Expression>False</Expression>
@@ -629,9 +647,10 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e3f5328b-dc54-4bf5-bd3b-1427750e89ce"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if a position report has to be sent due to the passage of an LRBG compliant BG.</Comment>
+<Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="48204b28-2e0f-4a18-b93d-684c07d63427"
 >
 <Expression>False</Expression>
@@ -647,9 +666,10 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="73e27a1b-0ae1-443d-9777-8fde6f13b382"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if a position report has to be sent due to the passage of level transition border with the min safe rear end.</Comment>
+<Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="3cdf6774-c76a-42dd-9aa8-76d918c9c115"
 >
 <Expression>False</Expression>
@@ -665,10 +685,10 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8c9c00f8-b393-48a5-9501-fcde47bfb4a2"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Indicates if a position report has to be sent due to special location LRBG compliant BG.</Comment>
 <Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="e924629c-bec5-4c78-b137-ec70b26429ef"
 >
 <Expression>False</Expression>
@@ -778,7 +798,7 @@ TIU.TrainIntegrity.Status in [
 </ReqRef><Comment>Determines if the train has to send a position report to the RBC now.</Comment>
 <Cases>
 <Case
- Name="Condition"
+ Name="Value"
  Guid="95b790d2-b1f1-40e6-808f-05b60c4e9d13"
 >
 <Expression>(
@@ -810,6 +830,7 @@ TIU.TrainIntegrity.Status in [
  Name="ERTMSSpecialLocationConverter"
  Guid="2520f1c3-f3e2-4a0b-a0a7-5a80ee8960a5"
 >
+<Comment>Used to convert M_LOC values to PositionReport.SpecialLocation values.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.M_LOC"
@@ -858,7 +879,8 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3feb3140-77d4-4847-8aa1-b42141f5cb26"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Provides the level to be sent in the position report packet.</Comment>
+<Cases>
 <Case
  Name="LevelChanged"
  Guid="22ea3887-4ad7-458d-a9c9-eeffa9810c0e"
@@ -890,7 +912,8 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8e2100a6-7137-4c5d-9c32-e4432ba30b8d"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Provides the mode to be sent in the position report packet.</Comment>
+<Cases>
 <Case
  Name="ModeChanged"
  Guid="e7641b93-82d8-42c7-a415-7557e99b5b30"
@@ -932,7 +955,8 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3a671f53-219a-47a0-9e6d-b97e0a032c03"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Provides the train integrity information to be sent in the position report packet.</Comment>
+<Cases>
 <Case
  Name="TrainIntegrityConfirmed"
  Guid="80908703-517b-405d-8f22-d1ad760f9266"
@@ -979,7 +1003,7 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dbce64e2-3e18-409c-a6ce-5a3696b7426f"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Creates a position report packet.</Comment>
 <Cases>
 <Case
  Name="One BG"
@@ -1050,7 +1074,7 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f7039c91-c473-43fc-8e54-7f90563e2d58"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Provides the status of train position data to be sent in the position report packet.</Comment>
 <Cases>
 <Case
  Name="Valid"
@@ -1091,7 +1115,8 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d4db1506-206b-4a5e-8e4c-92086bebeefa"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Provides the distance to be sent in the position report packet.</Comment>
+<Cases>
 <Case
  Name="Distance unknown"
  Guid="73cc0be4-5aa2-4f8a-a502-c66462dd8d01"
@@ -1119,7 +1144,7 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5dcd3caf-a4bc-49ca-8144-1453dc04e357"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Updates the position report parameters with newly received values.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.POSITION_REPORT_PARAMETERS.Message"
@@ -1261,6 +1286,7 @@ TIU.TrainIntegrity.Status in [
  Name="PositionReportEventsTrackerCleanUp"
  Guid="728c26b7-570e-4d32-b6cb-6af762241ac4"
 >
+<Comment>Updates the followers of events that could trigger the sending of position report parameters.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1280,6 +1306,7 @@ TIU.TrainIntegrity.Status in [
  Name="CommunicationSessionState"
  Guid="fa75f6c0-aad1-4de7-adb8-492e75acb2e8"
 >
+<Comment>Updates the state of the communication session.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1304,6 +1331,7 @@ TIU.TrainIntegrity.Status in [
  Name="Level"
  Guid="013b22f0-ed85-42da-8942-a930b0fde9a8"
 >
+<Comment>Updates the value of the level.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1328,6 +1356,7 @@ TIU.TrainIntegrity.Status in [
  Name="Mode"
  Guid="f2ebd5e5-3246-4fba-8332-76750bd830db"
 >
+<Comment>Updates the value of the mode.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1352,6 +1381,7 @@ TIU.TrainIntegrity.Status in [
  Name="TrainIntegrity"
  Guid="f163185a-7782-4814-bf5d-1e1dafbe8b9f"
 >
+<Comment>Updates the value of the train integrity.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1376,6 +1406,7 @@ TIU.TrainIntegrity.Status in [
  Name="Speed"
  Guid="a38605ca-42a6-452b-a2cd-0b106c885156"
 >
+<Comment>Updates the value of the speed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1400,6 +1431,7 @@ TIU.TrainIntegrity.Status in [
  Name="SpecialLocation"
  Guid="49997566-1993-4362-a440-57073f46cf9b"
 >
+<Comment>If a position report was sent due to a special location Now, retain that it doesn&apos;t have to be sent again due to this event.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1428,6 +1460,7 @@ TIU.TrainIntegrity.Status in [
  Name="PositionReportTimeInterval"
  Guid="9e80ddfb-8e45-4e20-a552-20cfbf31531e"
 >
+<Comment>If a position report was sent due to the position report time interval reached, the current time is stored.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1452,6 +1485,7 @@ TIU.TrainIntegrity.Status in [
  Name="PositionReportDistanceInterval"
  Guid="d04487bb-928e-4ac0-a152-e5eee431f3c9"
 >
+<Comment>If a position report was sent due to the position report distance interval reached, the current distance is stored.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1502,7 +1536,8 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0ff53960-e822-431f-b184-d3682bad6225"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If one of conditions to send the position report is satisfied, the rule sends a position report.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1532,7 +1567,8 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bb1705dd-c8fc-49d2-914a-30d6ffd6a5cb"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If a mode change, not considered as an End of Mission, has to be reorted to the RBC (only if level 2 or 3), a communication session has to be opened with the RBC.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
