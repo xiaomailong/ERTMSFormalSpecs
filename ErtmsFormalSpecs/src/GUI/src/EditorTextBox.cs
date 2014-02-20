@@ -600,6 +600,7 @@ namespace GUI
         {
             List<ObjectReference> retVal = new List<ObjectReference>();
 
+            EFSSystem.INSTANCE.Compiler.Compile_Synchronous(false, true);
             string enclosingName;
             List<Utils.INamable> possibleInstances = PossibleInstances(text, out prefix, out enclosingName);
 
