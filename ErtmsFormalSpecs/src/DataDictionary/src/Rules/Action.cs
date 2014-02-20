@@ -26,7 +26,7 @@ namespace DataDictionary.Rules
             set { }
         }
 
-        public string ExpressionText
+        public override string ExpressionText
         {
             get
             {

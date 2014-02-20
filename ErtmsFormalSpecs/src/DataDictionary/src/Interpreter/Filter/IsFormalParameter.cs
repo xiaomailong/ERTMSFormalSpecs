@@ -45,7 +45,7 @@ namespace DataDictionary.Interpreter.Filter
         /// <summary>
         /// Singleton
         /// </summary>
-        public static new IsFormalParameter INSTANCE = new IsFormalParameter();
+        public static IsFormalParameter INSTANCE = new IsFormalParameter();
 
     }
 }

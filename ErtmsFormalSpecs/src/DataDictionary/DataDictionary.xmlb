@@ -555,7 +555,9 @@
             <ELEMENTREF NAME="Rule" />
           </REPEAT>
         </ENCLOSED>
-        <ELEMENTREF NAME="StateMachine" TARGET="StateMachine" OPTIONAL="TRUE" />
+        <ELEMENTREF NAME="StateMachine" TARGET="StateMachine" OPTIONAL="TRUE">
+	  <META NAME="Obsolete" />
+	</ELEMENTREF>
       </CONCAT>
     </FORMULA>
   </ELEMENT>
@@ -570,7 +572,9 @@
       <FIELD NAME="Rules"        REFTYPE="Rule"  MODE="DEFAULT" />
     </FIELDS>
     <ATTRIBUTES>
-      <ATTR NAME="InitialState" TARGET="InitialState" />
+      <ATTR NAME="InitialState" TARGET="InitialState" OPTIONAL="TRUE">
+        <META NAME="Obsolete" />
+      </ATTR>
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
@@ -841,7 +845,6 @@
       <FIELD NAME="Feature" TYPE="INTEGER" />
       <FIELD NAME="Case"    TYPE="INTEGER" />
       <FIELD NAME="Steps"   REFTYPE="Step" MODE="DEFAULT"/>
-      <FIELD NAME="Comment" TYPE="PCHAR" />
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="Feature" TARGET="Feature" OPTIONAL="TRUE" DEFAULT="9999" />

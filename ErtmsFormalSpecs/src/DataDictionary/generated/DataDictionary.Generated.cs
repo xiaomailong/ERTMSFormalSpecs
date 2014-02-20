@@ -14118,9 +14118,6 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
-if (!fl778){
-ctxt.fail ("Mandatory attribute missing: InitialState in StateMachine");
-} // If
 if (!fl780){
 this.setImplemented( false);
 } // If
@@ -14171,10 +14168,12 @@ if (typeId){
 pw.Write(" xsi:type=\"StateMachine\"");
 } // If
 pw.Write('\n');
+if (this.getInitialState() != null){
 pw.Write(" InitialState=\"");
 acceptor.unParsePcData(pw, this.getInitialState());
 pw.Write('"');
 pw.Write('\n');
+} // If
 if (this.getDefault() != null){
 pw.Write(" Default=\"");
 acceptor.unParsePcData(pw, this.getDefault());
@@ -19402,7 +19401,6 @@ public partial class TestCase
 {
 public  override  bool find(Object search){
 if (search is String ) {
-if(getComment().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -19594,24 +19592,12 @@ public Step getSteps(int idx)
   return (Step) ( allSteps()[idx]);
 }
 
-private   string  aComment;
-
-public   string  getComment() { return aComment;}
-
-public  void setComment( string  v) {
-  aComment = v;
-  __setDirty(true);
-  NotifyControllers(null);
-}
-
-
 public TestCase()
 {
 TestCase obj = this;
 aFeature=(0);
 aCase=(0);
 aSteps=(null);
-aComment=(null);
 }
 
 public void copyTo(TestCase other)
@@ -19620,7 +19606,6 @@ base.copyTo(other);
 other.aFeature = aFeature;
 other.aCase = aCase;
 other.aSteps = aSteps;
-other.aComment = aComment;
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -20049,16 +20034,12 @@ int i;
 
 base.unParseBody(pw);
 // Unparsing Enclosed
-// Testing for empty content: Comment
-if (this.getComment() != null){
 pw.Write("<Comment>");
 // Unparsing PcData
 acceptor.unParsePcData(pw, this.getComment());
 pw.Write("</Comment>");
 // Father is not a mixed
 pw.Write('\n');
-} // If
-// After Testing for empty content: Comment
 // Unparsing Enclosed
 // Testing for empty content: Steps
 if (countSteps() > 0){

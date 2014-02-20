@@ -3041,10 +3041,6 @@ namespace DataDictionary.Compare
                     }
                 }
             }
-            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
-            {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
-            }
         }
 
         /// <summary>
@@ -12206,10 +12202,6 @@ namespace DataDictionary.Compare
                 {
                     searchStep ( subElement, searchString, occurences );
                 }
-            }
-            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
-            {
-                occurences.Add ( obj );
             }
         }
 

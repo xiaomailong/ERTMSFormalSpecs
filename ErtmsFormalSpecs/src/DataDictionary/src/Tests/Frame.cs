@@ -164,7 +164,7 @@ namespace DataDictionary.Tests
         /// <summary>
         /// The expression text for this expressionable
         /// </summary>
-        public string ExpressionText
+        public override string ExpressionText
         {
             get
             {
