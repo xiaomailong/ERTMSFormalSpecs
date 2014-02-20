@@ -3292,10 +3292,10 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Guid="08a1d375-0436-4d6f-a892-d6dc21a15a89"
 >d &lt; 
 REDUCE Kernel.TrackDescription.TrackConditions.TCProfile | (
-                    X.Distance &gt; aTrackCondition.Distance AND 
-                    X.Value.SwitchOffRegenerativeBrake != aTrackCondition.Value.SwitchOffRegenerativeBrake AND 
-                    X.Value.SwitchOffMagneticShoeBrake != aTrackCondition.Value.SwitchOffMagneticShoeBrake AND 
-                    X.Value.SwitchOffEddyCurrentBrakeForEB != aTrackCondition.Value.SwitchOffEddyCurrentBrakeForEB )
+                    X.Distance &gt; aTrackCondition.Distance AND (
+                    X.Value.SwitchOffRegenerativeBrake != aTrackCondition.Value.SwitchOffRegenerativeBrake OR 
+                    X.Value.SwitchOffMagneticShoeBrake != aTrackCondition.Value.SwitchOffMagneticShoeBrake OR 
+                    X.Value.SwitchOffEddyCurrentBrakeForEB != aTrackCondition.Value.SwitchOffEddyCurrentBrakeForEB ) )
     USING Default.BaseTypes.MinDistance(
         X1=&gt;X.Distance
         X2=&gt;RESULT
@@ -3643,10 +3643,10 @@ REDUCE Kernel.TrackDescription.TrackConditions.TCProfile | (
  Guid="358ef9c4-e1a3-4cba-b203-8a64fe3681cd"
 >d &lt; 
 REDUCE Kernel.TrackDescription.TrackConditions.TCProfile | (
-                    X.Distance &gt; aTrackCondition.Distance AND 
-                    X.Value.SwitchOffRegenerativeBrake != aTrackCondition.Value.SwitchOffRegenerativeBrake AND 
-                    X.Value.SwitchOffMagneticShoeBrake != aTrackCondition.Value.SwitchOffMagneticShoeBrake AND 
-                    X.Value.SwitchOffEddyCurrentBrakeForEB != aTrackCondition.Value.SwitchOffEddyCurrentBrakeForEB )
+                    X.Distance &gt; aTrackCondition.Distance AND (
+                    X.Value.SwitchOffRegenerativeBrake != aTrackCondition.Value.SwitchOffRegenerativeBrake OR 
+                    X.Value.SwitchOffMagneticShoeBrake != aTrackCondition.Value.SwitchOffMagneticShoeBrake OR 
+                    X.Value.SwitchOffEddyCurrentBrakeForEB != aTrackCondition.Value.SwitchOffEddyCurrentBrakeForEB ) )
     USING Default.BaseTypes.MinDistance(
         X1=&gt;X.Distance
         X2=&gt;RESULT
@@ -4185,10 +4185,10 @@ REDUCE Kernel.TrackDescription.TrackConditions.TCProfile | (
  Guid="898e92ea-c148-4e98-acdf-c9c3bcda7754"
 >d &lt; 
 REDUCE Kernel.TrackDescription.TrackConditions.TCProfile | (
-                    X.Distance &gt; aTrackCondition.Distance AND 
-                    X.Value.SwitchOffRegenerativeBrake != aTrackCondition.Value.SwitchOffRegenerativeBrake AND 
-                    X.Value.SwitchOffMagneticShoeBrake != aTrackCondition.Value.SwitchOffMagneticShoeBrake AND 
-                    X.Value.SwitchOffEddyCurrentBrakeForEB != aTrackCondition.Value.SwitchOffEddyCurrentBrakeForEB )
+                    X.Distance &gt; aTrackCondition.Distance AND (
+                    X.Value.SwitchOffRegenerativeBrake != aTrackCondition.Value.SwitchOffRegenerativeBrake OR 
+                    X.Value.SwitchOffMagneticShoeBrake != aTrackCondition.Value.SwitchOffMagneticShoeBrake OR 
+                    X.Value.SwitchOffEddyCurrentBrakeForEB != aTrackCondition.Value.SwitchOffEddyCurrentBrakeForEB ) )
     USING Default.BaseTypes.MinDistance(
         X1=&gt;X.Distance
         X2=&gt;RESULT
