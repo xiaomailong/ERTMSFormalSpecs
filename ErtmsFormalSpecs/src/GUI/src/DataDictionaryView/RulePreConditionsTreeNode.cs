@@ -67,7 +67,7 @@ namespace GUI.DataDictionaryView
         public void AddHandler(object sender, EventArgs args)
         {
             DataDictionary.Rules.PreCondition preCondition = (DataDictionary.Rules.PreCondition)DataDictionary.Generated.acceptor.getFactory().createPreCondition();
-            preCondition.Condition = "<empty>";
+            preCondition.Condition = "";
             AddPreCondition(preCondition);
         }
 

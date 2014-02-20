@@ -257,7 +257,12 @@ namespace DataDictionary.Rules
         /// <returns></returns>
         public string getExplain(int level)
         {
-            string retVal = Expression.ToString();
+            string retVal = "";
+
+            if (Expression != null)
+            {
+                retVal = Expression.ToString();
+            }
 
             return retVal;
         }
