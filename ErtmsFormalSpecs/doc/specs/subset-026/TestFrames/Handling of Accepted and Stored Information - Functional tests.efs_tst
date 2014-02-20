@@ -1470,7 +1470,7 @@
  Guid="0ffd51b6-1232-4587-a38b-e9b649e47d99"
 >Kernel.Mode &lt;- Mode.SB</Action><Action
  Guid="a11fcdb3-9502-4bb1-9dee-11b9484dbec5"
->EURORADIO.CurrentTerminal().NetworkId &lt;- &apos;Network_Id&apos;</Action><Action
+>EURORADIO.CurrentTerminal().RegisteredNetworkId &lt;- &apos;Network_Id&apos;</Action><Action
  Guid="23f770dd-03ac-45fe-8192-c29a2bea7f9d"
 >EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
@@ -1499,7 +1499,7 @@
 >EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2c58bd77-cc0a-4f8e-9aee-617c8cdd40a1"
->EURORADIO.CurrentTerminal().NetworkId == &apos;Network_Id&apos;</Expectation></Expectations>
+>EURORADIO.CurrentTerminal().RegisteredNetworkId == &apos;Network_Id&apos;</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
