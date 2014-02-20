@@ -318,28 +318,19 @@ namespace GUI
                 }
                 else
                 {
-                    List<Paragraph> relatedParagraphs = new List<Paragraph>();
-                    Utils.IModelElement current = Model;
-                    while (current != null)
+                    ReqRelated reqRelated = Utils.EnclosingFinder<ReqRelated>.find(Model, true);
+                    if (reqRelated != null)
                     {
-                        ReqRelated reqRelated = current as ReqRelated;
-                        if (reqRelated != null)
+                        foreach (Paragraph paragraph in reqRelated.ModeledParagraphs)
                         {
-                            reqRelated.findRelatedParagraphsRecursively(relatedParagraphs);
-                        }
-                        current = current.Enclosing as Utils.IModelElement;
-                    }
-
-                    relatedParagraphs.Sort();
-                    foreach (Paragraph paragraph in relatedParagraphs)
-                    {
-                        if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
-                        {
-                            requirements += paragraph.FullId + ", ";
-                        }
-                        else
-                        {
-                            requirements += paragraph.FullId + ":" + paragraph.getText() + "\n\n";
+                            if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
+                            {
+                                requirements += paragraph.FullId + ", ";
+                            }
+                            else
+                            {
+                                requirements += paragraph.FullId + ":" + paragraph.getText() + "\n\n";
+                            }
                         }
                     }
                 }
