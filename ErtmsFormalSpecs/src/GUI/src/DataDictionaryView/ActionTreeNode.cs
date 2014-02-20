@@ -142,8 +142,8 @@ namespace GUI.DataDictionaryView
                 DataDictionary.Interpreter.StructExpression structExpression = expression as DataDictionary.Interpreter.StructExpression;
                 if (structExpression != null)
                 {
-                    Dictionary<string, DataDictionary.Interpreter.Expression> associations = structExpression.Associations;
-                    foreach (KeyValuePair<string, DataDictionary.Interpreter.Expression> value in associations)
+                    Dictionary<DataDictionary.Interpreter.Designator, DataDictionary.Interpreter.Expression> associations = structExpression.Associations;
+                    foreach (KeyValuePair<DataDictionary.Interpreter.Designator, DataDictionary.Interpreter.Expression> value in associations)
                     {
                         DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
                         action.ExpressionText = structExpression.Structure.ToString() + "." + value.Key + " <- " + value.Value.ToString();
