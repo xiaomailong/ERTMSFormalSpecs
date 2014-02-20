@@ -65,22 +65,25 @@ namespace DataDictionary.Interpreter.Refactor
         {
             bool replaced = false;
 
-            if (derefExpression.Ref == Ref)
+            if (!(Ref is Types.StructureElement))
             {
-                ReplaceText(derefExpression.Start + Delta, derefExpression.End + Delta);
-                replaced = true;
-            }
-            else
-            {
-                foreach (Expression expression in derefExpression.Arguments)
+                if (derefExpression.Ref == Ref)
                 {
-                    if (expression != null)
+                    ReplaceText(derefExpression.Start + Delta, derefExpression.End + Delta);
+                    replaced = true;
+                }
+                else
+                {
+                    foreach (Expression expression in derefExpression.Arguments)
                     {
-                        if (expression.Ref == Ref)
+                        if (expression != null)
                         {
-                            ReplaceText(derefExpression.Start + Delta, expression.End + Delta);
-                            replaced = true;
-                            break;
+                            if (expression.Ref == Ref)
+                            {
+                                ReplaceText(derefExpression.Start + Delta, expression.End + Delta);
+                                replaced = true;
+                                break;
+                            }
                         }
                     }
                 }

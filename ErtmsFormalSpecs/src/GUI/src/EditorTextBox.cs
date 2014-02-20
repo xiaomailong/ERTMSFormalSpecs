@@ -514,6 +514,11 @@ namespace GUI
                 i = i - 1;
             }
 
+            while (i >= 0 && Char.IsSeparator(EditionTextBox.Text[i]))
+            {
+                i = i - 1;
+            }
+
             while (i >= 0 && !Char.IsSeparator(EditionTextBox.Text[i]))
             {
                 retVal = EditionTextBox.Text[i] + retVal;
@@ -595,6 +600,7 @@ namespace GUI
         {
             List<ObjectReference> retVal = new List<ObjectReference>();
 
+            EFSSystem.INSTANCE.Compiler.Compile_Synchronous(false, true);
             string enclosingName;
             List<Utils.INamable> possibleInstances = PossibleInstances(text, out prefix, out enclosingName);
 

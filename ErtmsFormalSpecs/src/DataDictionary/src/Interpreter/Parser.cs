@@ -410,7 +410,7 @@ namespace DataDictionary.Interpreter
                 if (LookAhead("{"))
                 {
                     Match("{");
-                    Dictionary<string, Expression> associations = new Dictionary<string, Interpreter.Expression>();
+                    Dictionary<Designator, Expression> associations = new Dictionary<Designator, Interpreter.Expression>();
 
                     if (LookAhead("}"))
                     {
@@ -421,14 +421,17 @@ namespace DataDictionary.Interpreter
                     {
                         while (true)
                         {
+                            skipWhiteSpaces();
+                            int startId = Index;
                             string id = Identifier();
                             if (id != null)
                             {
+                                Designator designator = new Designator(Root, RootLog, id, startId, startId + id.Length);
                                 Match("=>");
                                 Expression expression = Expression(0);
                                 if (expression != null)
                                 {
-                                    associations[id] = expression;
+                                    associations[designator] = expression;
                                 }
                                 else
                                 {

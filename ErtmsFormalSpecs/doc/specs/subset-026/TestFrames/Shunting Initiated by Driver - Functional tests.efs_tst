@@ -14,6 +14,1566 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
+ Name="A045: Request for Shunting message"
+ Guid="133a03a4-965b-47b5-afde-a6e8846c1823"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+ Guid="e46356f4-823e-413c-b0ba-c5ec52e47007"
+>
+<Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="c79c10e1-ae4c-4efd-9423-3ae9ef51750a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="4e8513fa-1ea5-46e6-9150-20c486207d7d"
+>
+<Actions>
+<Action
+ Guid="f0c0f2fa-5c61-4a09-aa06-cffd709c97cd"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Send Request for Shunting, position is known"
+ Guid="1fae2188-63ee-4f05-ac19-71ec2ea3d19d"
+>
+<ReqRef
+ Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7fd7605e-7fcf-43aa-9063-5cd9cbf0d2a5"
+>
+</ReqRef><ReqRef
+ Id="3e2e1297-75d8-4cb1-86a6-44e815a1d9cf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="06e86836-58ab-49c1-9d54-4bae6f9b6ca1"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Send Request for Shunting, position is known"
+ Guid="f7373be1-dbe3-46f1-95e1-a81dc8566aab"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="2ce9a69b-c8eb-425c-ab42-9adc1369c8ba"
+>
+<Actions>
+<Action
+ Guid="30cee3b2-31ed-4e53-b719-cab59d8a8cd0"
+>Odometry.NominalDistance &lt;- 1040.0</Action><Action
+ Guid="44c98ed9-0320-4b7f-bbfe-ade1b9c6a4bd"
+>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    Position =&gt; BTM.Position
+    {
+        Position =&gt; 870.0,
+        UnderReadingAmountOdo =&gt; 5.0,
+        OverReadingAmountOdo =&gt; 4.0
+    },
+    NID =&gt; 7896,
+    Orientation =&gt; Orientation.Nominal
+}</Action><Action
+ Guid="a711d0f2-85e7-45e5-ac6c-0c44291ac769"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A045</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="31917e75-fa22-4839-b21d-f09896c44470"
+>Available ( EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING )</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="08297e63-d50e-4743-a487-131b1caef282"
+>Available ( EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT )</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="cd36919c-e791-48d2-a0ab-1a02c188b6c0"
+>Available ( EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT.POSITION_REPORT )</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="c8734efa-398d-4f81-b7b9-998484d4fc04"
+>EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT.POSITION_REPORT.D_LRBG == 170</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="09dde367-cfdb-449e-8e83-b36863391132"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.S050</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Name="Send Request for Shunting, position is uknown"
+ Guid="4cb715ee-1a2f-4f9c-b364-a3c9937268b7"
+>
+<ReqRef
+ Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d8b97a5-ae43-4870-b2af-8560c1a166e8"
+>
+</ReqRef><ReqRef
+ Id="3e2e1297-75d8-4cb1-86a6-44e815a1d9cf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="441d7089-fd5f-4fd8-bad3-aa21bd505b7c"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Send Request for Shunting, position is unknown"
+ Guid="63fef859-8799-49f4-9ed0-3a5947c9aa42"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="68762658-84db-4da6-867e-0b6798724394"
+>
+<Actions>
+<Action
+ Guid="a053a6a8-a208-4846-830e-c66a1b581de1"
+>Odometry.NominalDistance &lt;- 1060.0</Action><Action
+ Guid="2db6cf92-1956-4908-90a3-b0c42baca126"
+>BTM.LRBG &lt;- EMPTY</Action><Action
+ Guid="dc685f5f-8218-43bc-81ed-d9341c31f970"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A045</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="87fbfa9c-d5ca-4542-b8e4-8b5642065068"
+>Available ( EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING )</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="a7595a90-7e93-43c9-b3f0-930da74af5e1"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.S050</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="e050cdcc-9f41-4b32-8734-8dff81b58902"
+>Available ( EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT.POSITION_REPORT )</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="b01af4c6-2d57-4e13-b7b9-a0132b848898"
+>Available ( EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT )</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="c5d98aa2-ce88-4b75-b28b-1f9f74618ba1"
+>EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT.POSITION_REPORT.D_LRBG == MessageTypes.Distance.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A095: Report mode change to the RBC"
+ Guid="5b200413-aa2b-4978-bcf0-627931beb623"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+ Guid="d14628f4-adfc-4d1d-ba94-4dea5c352928"
+>
+<Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="6dae3d3b-be0e-4c0e-af84-0697582a6ecf"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Initialize test environment"
+ Guid="aa7ef349-4155-44f9-9167-6757b8d8116c"
+>
+<Actions>
+<Action
+ Guid="b0950e0a-dc15-4fab-a588-8291f16b650e"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize communication session"
+ Guid="3dc219bc-6522-4c8d-8b7a-877203ffac72"
+>
+<Actions>
+<Action
+ Guid="d154a5a2-41ee-4dc6-ba2c-69550dd02b04"
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
+ Guid="a7d0a78a-943a-493c-8243-4ba9c353cd3b"
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
+ Guid="47f77dc4-ef04-464d-83f0-80199ced97ea"
+>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="0caaf1ce-7f82-430b-9d36-605f000504c9"
+>EURORADIO.HasActiveSession()</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Change the mode and verify it is reported"
+ Guid="45e1cca8-9288-47d8-ae41-8c13b8ff8dd4"
+>
+<ReqRef
+ Id="cd15246a-5c87-478b-bc9e-36ed9f2f9127"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c9326a68-6751-4d50-a65a-bbbde165cac9"
+>
+</ReqRef><ReqRef
+ Id="6f5b08a4-6fc6-431d-926a-e1b6bfaa34e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae82127c-df3e-4ff3-acfc-043c6332e665"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Change the mode and verify it is reported"
+ Guid="37fc9adf-f700-4da3-914f-2693a2d1ad60"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="317cc896-efb9-4802-bdd8-507b63f5a593"
+>
+<Actions>
+<Action
+ Guid="7e950e85-5b7e-411d-9320-d0257eaef74b"
+>Kernel.Mode &lt;- Mode.SH</Action><Action
+ Guid="bf5160a5-fdea-4251-9963-12eee6a9530e"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A095</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="99bb46c9-22c9-4166-84b7-1c2789752e28"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.S100</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="da3e6840-ed56-45fe-a009-678eeca7d148"
+>Available ( EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT )</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="3a5b8619-a2a7-4426-93a0-b25c96451268"
+>EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Messages.M_MODE.Shunting</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A100: Go to End of Mission"
+ Guid="0bc456d8-c29a-432c-a1c4-da2009e61055"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+ Guid="7d28ef1f-86ef-44a7-a846-e8d1edf8c496"
+>
+<Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="c999da17-895b-49b3-8e52-479a6948f083"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d9a19865-e22a-431d-8f8e-dfe262cea683"
+>
+<Actions>
+<Action
+ Guid="9940bfaf-6e4a-4561-a0db-4205f31523da"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Go to EndOfMission"
+ Guid="1e33d13a-21ce-4a3e-9e43-bf43f27f31b2"
+>
+<ReqRef
+ Id="7ca0878c-f3b5-45ba-ad1f-001f5cf3180d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f291f4b-9f00-40b2-b389-23d1fb77c833"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Go to EndOfMission"
+ Guid="5a480fa5-1b15-42af-aa0e-f95397e0c46b"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="77365de8-3185-461b-9a6d-9949a017ae3a"
+>
+<Actions>
+<Action
+ Guid="775fe6b1-5ebd-4d13-9d01-3257858bd586"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A100</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="5d64f112-4f45-402e-9f3d-ffb9c01819d9"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.EndOfMission</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A115: Termination of communication session"
+ Guid="456e2917-7fab-4e28-81dd-961357174b73"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+ Guid="07d10051-9818-43c7-aa3e-b82cc1103812"
+>
+<Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="5ff96509-818d-400d-9211-95943c728b9b"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Initialize test environment"
+ Guid="301a5afc-2656-4f48-b86f-bc5e00baea5d"
+>
+<Actions>
+<Action
+ Guid="2b327064-d45c-4805-935d-208db8fb7327"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize communication session"
+ Guid="b151c4f1-22de-499f-99c4-c25bc711a87e"
+>
+<Actions>
+<Action
+ Guid="4cc62806-bc7a-42e3-8abe-b2209ccfcff2"
+>Kernel.Level.Value &lt;- Level.L2</Action><Action
+ Guid="1ab99b18-084a-475f-bc22-1a1172d7beda"
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
+ Guid="cd8d2c92-29c6-4cc5-a96a-96e7a2709b00"
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
+ Guid="0eebaa8a-574f-4fee-bace-11e8b0066a46"
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action><Action
+ Guid="9ff65b14-0cfc-4710-a665-6601ac2b9783"
+>EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.MobileTerminalStruct.RegistrationStateSM.Registered</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="26a10e49-0751-4dc3-a5c5-4112065c3ca8"
+>EURORADIO.HasActiveSession()</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Terminate communication session and end the process"
+ Guid="1b94a9cf-d157-41cd-808a-75e9d180547d"
+>
+<ReqRef
+ Id="27f88b30-f620-4d1c-aae4-860de3b3a7df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1f0f2856-10b7-4595-91dd-b3aeb0aedf86"
+>
+</ReqRef><ReqRef
+ Id="29c239c8-dea5-47f0-9916-581993980f9f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="276e839a-ae4c-4fae-a711-bd1dbc8380bd"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Terminate communication session and end process"
+ Guid="9b661877-769a-4f6e-8299-d84c1033cc69"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="5e5f6d00-67cb-469f-b251-55ca1c6644eb"
+>
+<Actions>
+<Action
+ Guid="4314b745-6af9-41e3-aa75-baf2ac2b184e"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A115</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="389e35bf-e97b-444d-ace3-41a5bb49a925"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="964990c8-c9d2-40a9-abcb-a6694ada24e2"
+>EURORADIO.CurrentRBCConnection().ConnectionState in EURORADIO.RBCStruct.ConnectionStateSM.Terminating</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A220: Indicate to the driver SH refused by the RBC"
+ Guid="1188b4d9-bcbc-4007-9790-21f789f8b3a1"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+ Guid="00d953a2-9e92-428f-bbdc-5bf9b92b72ef"
+>
+<Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="e9b80aef-f07d-423d-8b6f-6f988842327b"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="30245ee6-92b6-4972-937c-b71005f36ec5"
+>
+<Actions>
+<Action
+ Guid="bf7a6186-86f0-4c18-9fbd-98432242119d"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="d89379c2-7c06-4f5f-9420-059d6bb3a647"
+>Kernel.Mode &lt;- Mode.SB</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Mode FS"
+ Guid="0e08fd08-1cc0-496e-a409-98922b506e64"
+>
+<ReqRef
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="43289bd8-6e71-4f95-86fd-c4658be26559"
+>
+</ReqRef><ReqRef
+ Id="209690fa-85f2-4338-98b6-c636b00a1007"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e6c4cde1-6787-4ed6-bc49-6522ac01330a"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Mode FS"
+ Guid="84b28df5-07cb-444c-b117-59ef079dfb93"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="58150d11-3d8a-4835-83be-aa0d14a12716"
+>
+<Actions>
+<Action
+ Guid="7422ad74-a3d5-4e8a-a317-eaf6c0715e01"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
+ Guid="98d05541-1682-459b-a3b1-70024d2460a4"
+>Kernel.Mode &lt;- Mode.FS</Action><Action
+ Guid="fb831ad2-0978-4e06-b2f4-87b6d6280a42"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action><Action
+ Guid="b32a719c-c895-4619-81b4-deb261d98ceb"
+>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="21a0fa9a-5459-45c5-99f7-2a93a7bff153"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="92b64364-5c43-4d44-9948-f46c56864fb5"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Mode LS"
+ Guid="05e863e6-61c4-4868-acdf-b66b10b78188"
+>
+<ReqRef
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d37eb311-1991-4090-9adb-ccfe6e742c44"
+>
+</ReqRef><ReqRef
+ Id="209690fa-85f2-4338-98b6-c636b00a1007"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3f2fb914-fb14-43ae-a522-1f04a63f33af"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Mode LS"
+ Guid="a529fc9c-5eaa-4072-b8c2-60dfc837b209"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7159bcd0-64b9-4fa0-b420-29fc474f09f7"
+>
+<Actions>
+<Action
+ Guid="f1da4315-bf42-47f6-a65f-3d73b6369bb7"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
+ Guid="8c6a1282-1a68-4b98-b551-1ffd9ac99cd4"
+>Kernel.Mode &lt;- Mode.LS</Action><Action
+ Guid="672808d1-6672-4a00-a127-a8ae04c42f49"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="d660dd41-0d02-464f-901f-eb0b5f31f9f9"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="8cf51cb5-8b6b-44e2-850e-5513353848f7"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Mode OS"
+ Guid="7ed7c78e-b163-41cf-a8c1-8821cc93d7c3"
+>
+<ReqRef
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a13b8454-0291-40ed-8186-4a73c0575a63"
+>
+</ReqRef><ReqRef
+ Id="209690fa-85f2-4338-98b6-c636b00a1007"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="50343adf-1ed9-4c3d-94df-17230b358468"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Mode OS"
+ Guid="c0687e8c-4c12-4245-a9b0-543fb5aa4393"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="2f0ea2e5-e271-491c-960f-0a42e341aec4"
+>
+<Actions>
+<Action
+ Guid="abe7a57f-06ce-4c83-93cb-f484e74455b0"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
+ Guid="2d925583-999e-4ab1-990c-fadac7a816ca"
+>Kernel.Mode &lt;- Mode.OS</Action><Action
+ Guid="c99b9b1d-b21a-4ee9-a7b2-b95c25a12bce"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="0cde2395-ed2d-4634-9650-4d8e87d04a8e"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4b5fe688-28c1-4b7c-8ffa-7f586f4b346b"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Mode SR"
+ Guid="e0d97e3e-b5bf-435c-9732-a79f1b5f9233"
+>
+<ReqRef
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="61def1d6-c17f-4740-aac1-4367191f9a0f"
+>
+</ReqRef><ReqRef
+ Id="209690fa-85f2-4338-98b6-c636b00a1007"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="74dae154-6516-4e83-9d17-1776f1627ddc"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Mode SR"
+ Guid="628fde47-7c69-4327-b4f3-2fb24ae6b754"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="bfae97b0-ca88-48eb-a6f8-7481843e4d3f"
+>
+<Actions>
+<Action
+ Guid="9deaae59-8b2a-4808-bd39-2385eefffc59"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
+ Guid="843ae2ba-462b-43b7-b31d-78f3b0807460"
+>Kernel.Mode &lt;- Mode.SR</Action><Action
+ Guid="664f5dce-95eb-4a28-b5a4-9ee99dfca0f9"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="2b8cf1a5-d5be-4127-b71f-d243ae178743"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="fb127666-7189-4c29-81ce-1be1839cb409"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Mode PT (E165)"
+ Guid="8c0818c3-bd81-4fbf-8046-9fda358011b3"
+>
+<ReqRef
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4da7f91-d024-4722-a209-8dc011a75ab8"
+>
+</ReqRef><ReqRef
+ Id="e4f509dd-fcb0-4205-8e6b-921aae447bca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d5a9bad5-1c85-4c86-8980-1365062bedac"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Mode PT (E165)"
+ Guid="ebdce81a-ecf1-4a23-a2c7-1929de0720d0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="b8bf881d-7807-4c51-8091-49a3c1c333e1"
+>
+<Actions>
+<Action
+ Guid="5f3d41e9-9277-43fd-b429-fecb388c992e"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
+ Guid="4609cee0-2d28-4a64-8391-eed07fd3eb4c"
+>Kernel.Mode &lt;- Mode.PT</Action><Action
+ Guid="d1973753-b84a-4a35-a958-9c1429f6f62c"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="ac6b6f6a-16bf-4576-a795-8d86e3e71614"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S140</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="077c5f6e-7730-49c0-b866-18381c934ccf"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Mode SB (E13)"
+ Guid="2d903903-676a-4196-965c-2d95f8e7147b"
+>
+<ReqRef
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b952401e-b150-4ca5-be49-91594a79f27c"
+>
+</ReqRef><ReqRef
+ Id="2e9f9917-e8f9-49b1-89ca-a25dc8ef2e05"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a849537e-df04-4098-97db-e5c782bc954f"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Mode SB (E13)"
+ Guid="07f75238-0c8f-4545-bfbe-d4972a10d640"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7d95f024-5eda-401b-a006-eb666372b27b"
+>
+<Actions>
+<Action
+ Guid="72880cc9-3bbf-4116-8117-8311a227a821"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
+ Guid="84f2ed3c-5286-402e-84ec-4eddcf1664bd"
+>Kernel.Mode &lt;- Mode.SB</Action><Action
+ Guid="0a0702b2-a388-44d9-972b-073015e1d576"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="b55c0ef8-520e-43e0-9e56-bb2f29c9aff0"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="77bead76-5b60-4f71-94e3-6c01761e56f5"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D020: Branch by level"
+ Guid="53b371ff-10e7-436d-abfc-de5c3a20e663"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+ Guid="f82c655d-509f-47c7-93b5-a99a1c52dc0d"
+>
+<Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="e99a8984-3c83-4a60-b680-e22fd48a966a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="a6f14580-4d65-445f-b733-f03bb0373b5b"
+>
+<Actions>
+<Action
+ Guid="58b825dd-d2ba-47e0-b503-872dc2581a36"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Level 0"
+ Guid="e5e3b556-8911-44c5-a665-5d4c1d8a1770"
+>
+<ReqRef
+ Id="e890e98d-15ce-46e7-ba5f-e5a0c704d832"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="71d26112-3b1d-404e-8c3f-40efabdd2e14"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Level 0"
+ Guid="d1c52dc4-aee2-449b-b658-09737392f6aa"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="5d11105b-2f93-4e1a-8853-d85ab15909a1"
+>
+<Actions>
+<Action
+ Guid="ac7ddc80-ebfb-4d59-8edf-26684a540760"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action><Action
+ Guid="1b6d57f5-c5ad-473e-ba6e-694ce297018e"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="ed7a4b52-677f-4a26-9b5d-cdb48195a9cc"
+>Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="723e6945-e04e-43aa-b7bc-6b13cb67eb9b"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A050</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Level 1"
+ Guid="74c53d83-73ac-43c8-912c-e8a95059cac2"
+>
+<ReqRef
+ Id="e890e98d-15ce-46e7-ba5f-e5a0c704d832"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="391d0bf5-16db-438b-82e6-bdc0a451cc82"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Level 1"
+ Guid="01d2f81f-1964-4734-965b-da5d3f55e61f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="caf028c2-e1f6-4853-8064-aa8deef0efb9"
+>
+<Actions>
+<Action
+ Guid="63744f9e-8415-4228-84df-123243a0462c"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action><Action
+ Guid="9eadd0f2-c382-4e4d-a57e-6519bb692959"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="725d5bb5-7443-4637-a8df-fa29aad16388"
+>Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="15c48e0a-c580-493b-a109-23b287b2d182"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A050</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Level 2"
+ Guid="1ff2ded1-50e1-4005-9b90-6cc51e71505a"
+>
+<ReqRef
+ Id="42a7e2ab-4f12-4436-8a10-d922ea35b779"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1f96d433-4f28-4326-b88a-c8d6dd4f6a08"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Level 2"
+ Guid="a76bc11d-c734-4956-abad-8a87bf23cf8d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d4641bd9-0a46-46da-8934-563c7d510d30"
+>
+<Actions>
+<Action
+ Guid="a05a75e6-337e-425f-a743-88a7664f24dd"
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
+ Guid="8f9f0bd7-71e2-447d-bb31-2959af4bb3b8"
+>Kernel.Level.Value &lt;- Level.L2</Action><Action
+ Guid="fffbf1d1-abde-46b7-ae00-a3e438fef97c"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="51d0fe28-1c24-4f7a-a1b6-acd9dc3fc79e"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A045</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Level 3"
+ Guid="474cca16-fa22-437c-9626-5e11b9bb7e69"
+>
+<ReqRef
+ Id="42a7e2ab-4f12-4436-8a10-d922ea35b779"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b4503bee-b29e-4c3a-9fac-7f39740ac254"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Level 3"
+ Guid="b428b4a5-87ea-46a2-9dc6-f715c13bf612"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="8290b6b6-20eb-477b-8d4b-946ba1156f62"
+>
+<Actions>
+<Action
+ Guid="d1be6f2e-7762-4a95-8a2b-0c3bf9e3f233"
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
+ Guid="2b6963e1-2a78-4cfe-bf24-f52609988fa0"
+>Kernel.Level.Value &lt;- Level.L3</Action><Action
+ Guid="5aa91cb6-35f5-43fe-84e7-3e41359f18f4"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="c944e936-9cd5-4a8d-a6f2-465bb84bfc09"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A045</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Level NTC"
+ Guid="0dcec05d-394c-49dd-95b9-e5e82ee82538"
+>
+<ReqRef
+ Id="e890e98d-15ce-46e7-ba5f-e5a0c704d832"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="97707180-ffe3-4b91-99b8-ab8792429807"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Level NTC"
+ Guid="e920d841-e88b-4664-b681-5789feb91320"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="4f91e276-0408-4ee4-a2aa-2dc5f46cee44"
+>
+<Actions>
+<Action
+ Guid="33bd7a2b-7cf5-4248-b56e-7ba03e642e7a"
+>Kernel.Level.Value &lt;- Level.LNTC</Action><Action
+ Guid="920321da-17fa-4e53-8cb9-92304ae0c0c4"
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
+ Guid="89a6ceda-aa92-4308-8276-05f96f46b829"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action><Action
+ Guid="b73a4eeb-e9ec-43b8-bc46-82817a1b73c3"
+>Kernel.NationalSystemId &lt;- 254</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="5af40846-10aa-4dd5-8c70-2e36c45c83ee"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A050</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D040: Branch by mission state"
+ Guid="1ce3d5e9-097b-469d-8d1d-f942243afbeb"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+ Guid="74719a1b-e5f2-4af3-8a52-02c5c11d1459"
+>
+<Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="af6a29df-da71-4cc4-b454-19c35cd52ede"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="73cbf6f9-c0df-43cb-947d-646dddf5766d"
+>
+<Actions>
+<Action
+ Guid="b7a5c027-76a1-4d08-acca-52b0969f4a84"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Mission is on-going"
+ Guid="a8bdaa05-482f-4d83-8477-46a19ec5d9dd"
+>
+<ReqRef
+ Id="5aeb9959-1698-4ea4-a60e-da2bb3797ccf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9143a108-6c9c-4d5f-a01e-2f3671d19e01"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Mission is on-going"
+ Guid="1f15a489-517b-44c6-8f0f-1d1390422198"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="0e13668d-27ef-4e37-8795-5d738ecc1fc6"
+>
+<Actions>
+<Action
+ Guid="2acb1b2e-f34f-4fd0-9131-24290b5d66a5"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D040</Action><Action
+ Guid="07b46d01-4614-4ab0-9322-3b6690026f06"
+>Kernel.MissionIsOnGoing &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="cae1c2f9-caf1-4d52-aa47-0325576c1256"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A100</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="No on-going mission"
+ Guid="80c0d5a3-10d9-4531-a977-e599070d11e0"
+>
+<ReqRef
+ Id="68435f48-b3c4-4b8d-ae9d-1d5a4a33dd0b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ea688f8d-cfdc-4155-8b15-344ffe26e071"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - No on-going mission"
+ Guid="6a1c14df-d75e-47e8-833e-9d18f48f09dc"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="1597e063-30d0-4bbd-a0c7-9bafc8646f51"
+>
+<Actions>
+<Action
+ Guid="9676d095-91c0-4a98-9cb2-b3983e810720"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D040</Action><Action
+ Guid="591f347e-2bf2-41da-be35-d5fe7e6f6406"
+>Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="90549254-8426-4a39-830a-21197ceb490b"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D080: Branch by level"
+ Guid="29a9ee5d-b49d-40a2-8192-8d3e5c0129c4"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+ Guid="b2b0902c-4bd9-4f7e-923a-8dd54ace67aa"
+>
+<Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="3de42bb6-2b01-41cf-9b74-71323b66092d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="9367ec49-6b0a-4484-8097-f345dbbde513"
+>
+<Actions>
+<Action
+ Guid="bdf61351-1b95-4f88-b4eb-21c7fdbb3a25"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Level 0"
+ Guid="741009de-0559-44ca-84dd-a329a42db1a9"
+>
+<ReqRef
+ Id="465fdc06-3913-4ca5-89e8-36b2eec18509"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="856fd1c5-9d57-4823-befa-7cead00225c5"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Level 0"
+ Guid="70149281-122c-4ab0-a954-a47a877565a2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="9106b1ed-e31b-45c8-8864-a6b1747c095e"
+>
+<Actions>
+<Action
+ Guid="6a5e9c94-37ab-4b98-834d-f0f066a13484"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action><Action
+ Guid="24b29ef1-1dc0-4078-a780-858a1ab0e8fc"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="fe9de549-b252-457b-9beb-b5df1178c98e"
+>Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="8046df48-e632-40ba-a3dc-4e9e7ca869e6"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Level 1"
+ Guid="e5831db3-713d-49d1-b0a1-9d4dd365ad79"
+>
+<ReqRef
+ Id="465fdc06-3913-4ca5-89e8-36b2eec18509"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d5729a9d-5970-4b6d-a04b-d125b9656b62"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Level 1"
+ Guid="84813212-2049-4d18-8899-af66425ebac8"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="4f15328d-bdf3-4257-8d37-275fe531e231"
+>
+<Actions>
+<Action
+ Guid="022d17ae-61ae-4b1f-a3c3-72ee2be2c0a8"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action><Action
+ Guid="0e7835dc-0e7f-40b6-a5a2-1ce0218c240a"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="69419b91-0121-49f3-a814-15ed37b136bf"
+>Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="85f9536a-79b4-4549-b49b-9981a12bdcd6"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Level 2"
+ Guid="f6b649b9-a7d2-4475-90d8-b3dea571d1c5"
+>
+<ReqRef
+ Id="0cd426d1-35bd-4be9-be23-a5f473998d40"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="297fb172-c047-4e82-a8de-c6a137003872"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Level 2"
+ Guid="239f3011-aa27-4755-b854-0c705208821c"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="18b841fb-27b5-4839-bbef-095c18e4d6a5"
+>
+<Actions>
+<Action
+ Guid="2a19c499-546f-4f8b-b85d-fcfc2b7e06dc"
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
+ Guid="cf977b7d-f2e7-4dbd-876c-470b33f92b5a"
+>Kernel.Level.Value &lt;- Level.L2</Action><Action
+ Guid="76025588-26fc-400f-b156-b6b40aeea302"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="2c73b9c6-4fca-4b08-ac2d-9d4491e49530"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A095</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Level 3"
+ Guid="9e181e58-641b-48e7-982c-2bfe9b537db2"
+>
+<ReqRef
+ Id="465fdc06-3913-4ca5-89e8-36b2eec18509"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d31162c4-a886-499c-bd2c-bbdd63585945"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Level 3"
+ Guid="d5e6f865-fea8-40c4-a6e2-63776ebb671a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="ff22c882-02fc-4115-b998-f167d2362be8"
+>
+<Actions>
+<Action
+ Guid="8e5b718c-af8d-470d-81f6-a2f4cf951cdb"
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
+ Guid="195c446a-5733-4312-9e03-e5a3b70c5dd4"
+>Kernel.Level.Value &lt;- Level.L3</Action><Action
+ Guid="960c0a60-4e92-4cd0-bace-625f68b148d9"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="119f63af-60c5-4d74-b750-644c23aed8e3"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A095</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Level NTC"
+ Guid="bf21f719-7881-432c-a9ee-9f2f1ea0e42e"
+>
+<ReqRef
+ Id="465fdc06-3913-4ca5-89e8-36b2eec18509"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a4c45a3b-1d2d-4e9b-ac4e-fa8b0d781e31"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Level NTC"
+ Guid="b1838167-19f8-43ab-809d-cac9605c5dbe"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="dbba50a3-3de0-46eb-aecd-f6f3b166412f"
+>
+<Actions>
+<Action
+ Guid="3abd1a28-802a-4fa2-9068-fc06d54a7c5e"
+>Kernel.Level.Value &lt;- Level.LNTC</Action><Action
+ Guid="10e744c6-fd94-4b2f-808c-91441f7d672b"
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
+ Guid="57f030b7-337d-4497-894d-8f9bcc3fd638"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action><Action
+ Guid="fea4c1d5-a533-47f4-8a46-a46814b1a279"
+>Kernel.NationalSystemId &lt;- 254</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="8a57065c-700a-405f-b179-cf8f7db72b73"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
  Name="S0: Initial state"
  Guid="67a6ba3c-0d86-4355-b26f-29178d80c6e9"
 >
@@ -555,460 +2115,6 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="D020: Branch by level"
- Guid="53b371ff-10e7-436d-abfc-de5c3a20e663"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Setup"
- Guid="f82c655d-509f-47c7-93b5-a99a1c52dc0d"
->
-<Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="e99a8984-3c83-4a60-b680-e22fd48a966a"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="a6f14580-4d65-445f-b733-f03bb0373b5b"
->
-<Actions>
-<Action
- Guid="58b825dd-d2ba-47e0-b503-872dc2581a36"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Level 0"
- Guid="e5e3b556-8911-44c5-a665-5d4c1d8a1770"
->
-<ReqRef
- Id="e890e98d-15ce-46e7-ba5f-e5a0c704d832"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="71d26112-3b1d-404e-8c3f-40efabdd2e14"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Level 0"
- Guid="d1c52dc4-aee2-449b-b658-09737392f6aa"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="5d11105b-2f93-4e1a-8853-d85ab15909a1"
->
-<Actions>
-<Action
- Guid="ac7ddc80-ebfb-4d59-8edf-26684a540760"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action><Action
- Guid="1b6d57f5-c5ad-473e-ba6e-694ce297018e"
->Kernel.Level.Value &lt;- Level.L0</Action><Action
- Guid="ed7a4b52-677f-4a26-9b5d-cdb48195a9cc"
->Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="723e6945-e04e-43aa-b7bc-6b13cb67eb9b"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A050</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Level 1"
- Guid="74c53d83-73ac-43c8-912c-e8a95059cac2"
->
-<ReqRef
- Id="e890e98d-15ce-46e7-ba5f-e5a0c704d832"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="391d0bf5-16db-438b-82e6-bdc0a451cc82"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Level 1"
- Guid="01d2f81f-1964-4734-965b-da5d3f55e61f"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="caf028c2-e1f6-4853-8064-aa8deef0efb9"
->
-<Actions>
-<Action
- Guid="63744f9e-8415-4228-84df-123243a0462c"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action><Action
- Guid="9eadd0f2-c382-4e4d-a57e-6519bb692959"
->Kernel.Level.Value &lt;- Level.L1</Action><Action
- Guid="725d5bb5-7443-4637-a8df-fa29aad16388"
->Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="15c48e0a-c580-493b-a109-23b287b2d182"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A050</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Level 2"
- Guid="1ff2ded1-50e1-4005-9b90-6cc51e71505a"
->
-<ReqRef
- Id="42a7e2ab-4f12-4436-8a10-d922ea35b779"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1f96d433-4f28-4326-b88a-c8d6dd4f6a08"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Level 2"
- Guid="a76bc11d-c734-4956-abad-8a87bf23cf8d"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="d4641bd9-0a46-46da-8934-563c7d510d30"
->
-<Actions>
-<Action
- Guid="a05a75e6-337e-425f-a743-88a7664f24dd"
->Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
- Guid="8f9f0bd7-71e2-447d-bb31-2959af4bb3b8"
->Kernel.Level.Value &lt;- Level.L2</Action><Action
- Guid="fffbf1d1-abde-46b7-ae00-a3e438fef97c"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="51d0fe28-1c24-4f7a-a1b6-acd9dc3fc79e"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A045</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Level 3"
- Guid="474cca16-fa22-437c-9626-5e11b9bb7e69"
->
-<ReqRef
- Id="42a7e2ab-4f12-4436-8a10-d922ea35b779"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b4503bee-b29e-4c3a-9fac-7f39740ac254"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Level 3"
- Guid="b428b4a5-87ea-46a2-9dc6-f715c13bf612"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="8290b6b6-20eb-477b-8d4b-946ba1156f62"
->
-<Actions>
-<Action
- Guid="d1be6f2e-7762-4a95-8a2b-0c3bf9e3f233"
->Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
- Guid="2b6963e1-2a78-4cfe-bf24-f52609988fa0"
->Kernel.Level.Value &lt;- Level.L3</Action><Action
- Guid="5aa91cb6-35f5-43fe-84e7-3e41359f18f4"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="c944e936-9cd5-4a8d-a6f2-465bb84bfc09"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A045</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Level NTC"
- Guid="0dcec05d-394c-49dd-95b9-e5e82ee82538"
->
-<ReqRef
- Id="e890e98d-15ce-46e7-ba5f-e5a0c704d832"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="97707180-ffe3-4b91-99b8-ab8792429807"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Level NTC"
- Guid="e920d841-e88b-4664-b681-5789feb91320"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="4f91e276-0408-4ee4-a2aa-2dc5f46cee44"
->
-<Actions>
-<Action
- Guid="33bd7a2b-7cf5-4248-b56e-7ba03e642e7a"
->Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="920321da-17fa-4e53-8cb9-92304ae0c0c4"
->Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
- Guid="89a6ceda-aa92-4308-8276-05f96f46b829"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action><Action
- Guid="b73a4eeb-e9ec-43b8-bc46-82817a1b73c3"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="5af40846-10aa-4dd5-8c70-2e36c45c83ee"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A050</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="A045: Request for Shunting message"
- Guid="133a03a4-965b-47b5-afde-a6e8846c1823"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Setup"
- Guid="e46356f4-823e-413c-b0ba-c5ec52e47007"
->
-<Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="c79c10e1-ae4c-4efd-9423-3ae9ef51750a"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="4e8513fa-1ea5-46e6-9150-20c486207d7d"
->
-<Actions>
-<Action
- Guid="f0c0f2fa-5c61-4a09-aa06-cffd709c97cd"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Send Request for Shunting, position is known"
- Guid="1fae2188-63ee-4f05-ac19-71ec2ea3d19d"
->
-<ReqRef
- Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7fd7605e-7fcf-43aa-9063-5cd9cbf0d2a5"
->
-</ReqRef><ReqRef
- Id="3e2e1297-75d8-4cb1-86a6-44e815a1d9cf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="06e86836-58ab-49c1-9d54-4bae6f9b6ca1"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Send Request for Shunting, position is known"
- Guid="f7373be1-dbe3-46f1-95e1-a81dc8566aab"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="2ce9a69b-c8eb-425c-ab42-9adc1369c8ba"
->
-<Actions>
-<Action
- Guid="30cee3b2-31ed-4e53-b719-cab59d8a8cd0"
->Odometry.NominalDistance &lt;- 1040.0</Action><Action
- Guid="44c98ed9-0320-4b7f-bbfe-ade1b9c6a4bd"
->BTM.LRBG &lt;- BTM.BaliseGroup
-{
-    Position =&gt; BTM.Position
-    {
-        Position =&gt; 870.0,
-        UnderReadingAmountOdo =&gt; 5.0,
-        OverReadingAmountOdo =&gt; 4.0
-    },
-    NID =&gt; 7896,
-    Orientation =&gt; Orientation.Nominal
-}</Action><Action
- Guid="a711d0f2-85e7-45e5-ac6c-0c44291ac769"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A045</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="31917e75-fa22-4839-b21d-f09896c44470"
->Available ( EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING )</Expectation><Expectation
- Kind="Instantaneous"
- Guid="08297e63-d50e-4743-a487-131b1caef282"
->Available ( EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT )</Expectation><Expectation
- Kind="Instantaneous"
- Guid="cd36919c-e791-48d2-a0ab-1a02c188b6c0"
->Available ( EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT.POSITION_REPORT )</Expectation><Expectation
- Kind="Instantaneous"
- Guid="c8734efa-398d-4f81-b7b9-998484d4fc04"
->EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT.POSITION_REPORT.D_LRBG == 170</Expectation><Expectation
- Kind="Instantaneous"
- Guid="09dde367-cfdb-449e-8e83-b36863391132"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.S050</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Name="Send Request for Shunting, position is uknown"
- Guid="4cb715ee-1a2f-4f9c-b364-a3c9937268b7"
->
-<ReqRef
- Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7d8b97a5-ae43-4870-b2af-8560c1a166e8"
->
-</ReqRef><ReqRef
- Id="3e2e1297-75d8-4cb1-86a6-44e815a1d9cf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="441d7089-fd5f-4fd8-bad3-aa21bd505b7c"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Send Request for Shunting, position is unknown"
- Guid="63fef859-8799-49f4-9ed0-3a5947c9aa42"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="68762658-84db-4da6-867e-0b6798724394"
->
-<Actions>
-<Action
- Guid="a053a6a8-a208-4846-830e-c66a1b581de1"
->Odometry.NominalDistance &lt;- 1060.0</Action><Action
- Guid="2db6cf92-1956-4908-90a3-b0c42baca126"
->BTM.LRBG &lt;- EMPTY</Action><Action
- Guid="dc685f5f-8218-43bc-81ed-d9341c31f970"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A045</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="87fbfa9c-d5ca-4542-b8e4-8b5642065068"
->Available ( EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING )</Expectation><Expectation
- Kind="Instantaneous"
- Guid="a7595a90-7e93-43c9-b3f0-930da74af5e1"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.S050</Expectation><Expectation
- Kind="Instantaneous"
- Guid="e050cdcc-9f41-4b32-8734-8dff81b58902"
->Available ( EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT.POSITION_REPORT )</Expectation><Expectation
- Kind="Instantaneous"
- Guid="b01af4c6-2d57-4e13-b7b9-a0132b848898"
->Available ( EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT )</Expectation><Expectation
- Kind="Instantaneous"
- Guid="c5d98aa2-ce88-4b75-b28b-1f9f74618ba1"
->EURORADIO.CurrentRBCConnection().MessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT.POSITION_REPORT.D_LRBG == MessageTypes.Distance.Unknown</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
  Name="S050 + A050: Reply to the SH request + mode change"
  Guid="0bf7012b-0766-4e23-a3e8-31856848f82a"
 >
@@ -1369,619 +2475,6 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="D040: Branch by mission state"
- Guid="1ce3d5e9-097b-469d-8d1d-f942243afbeb"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Setup"
- Guid="74719a1b-e5f2-4af3-8a52-02c5c11d1459"
->
-<Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="af6a29df-da71-4cc4-b454-19c35cd52ede"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="73cbf6f9-c0df-43cb-947d-646dddf5766d"
->
-<Actions>
-<Action
- Guid="b7a5c027-76a1-4d08-acca-52b0969f4a84"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Mission is on-going"
- Guid="a8bdaa05-482f-4d83-8477-46a19ec5d9dd"
->
-<ReqRef
- Id="5aeb9959-1698-4ea4-a60e-da2bb3797ccf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9143a108-6c9c-4d5f-a01e-2f3671d19e01"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Mission is on-going"
- Guid="1f15a489-517b-44c6-8f0f-1d1390422198"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="0e13668d-27ef-4e37-8795-5d738ecc1fc6"
->
-<Actions>
-<Action
- Guid="2acb1b2e-f34f-4fd0-9131-24290b5d66a5"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D040</Action><Action
- Guid="07b46d01-4614-4ab0-9322-3b6690026f06"
->Kernel.MissionIsOnGoing &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="cae1c2f9-caf1-4d52-aa47-0325576c1256"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A100</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="No on-going mission"
- Guid="80c0d5a3-10d9-4531-a977-e599070d11e0"
->
-<ReqRef
- Id="68435f48-b3c4-4b8d-ae9d-1d5a4a33dd0b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ea688f8d-cfdc-4155-8b15-344ffe26e071"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - No on-going mission"
- Guid="6a1c14df-d75e-47e8-833e-9d18f48f09dc"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="1597e063-30d0-4bbd-a0c7-9bafc8646f51"
->
-<Actions>
-<Action
- Guid="9676d095-91c0-4a98-9cb2-b3983e810720"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D040</Action><Action
- Guid="591f347e-2bf2-41da-be35-d5fe7e6f6406"
->Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="90549254-8426-4a39-830a-21197ceb490b"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="A100: Go to End of Mission"
- Guid="0bc456d8-c29a-432c-a1c4-da2009e61055"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Setup"
- Guid="7d28ef1f-86ef-44a7-a846-e8d1edf8c496"
->
-<Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="c999da17-895b-49b3-8e52-479a6948f083"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="d9a19865-e22a-431d-8f8e-dfe262cea683"
->
-<Actions>
-<Action
- Guid="9940bfaf-6e4a-4561-a0db-4205f31523da"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Go to EndOfMission"
- Guid="1e33d13a-21ce-4a3e-9e43-bf43f27f31b2"
->
-<ReqRef
- Id="7ca0878c-f3b5-45ba-ad1f-001f5cf3180d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8f291f4b-9f00-40b2-b389-23d1fb77c833"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Go to EndOfMission"
- Guid="5a480fa5-1b15-42af-aa0e-f95397e0c46b"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="77365de8-3185-461b-9a6d-9949a017ae3a"
->
-<Actions>
-<Action
- Guid="775fe6b1-5ebd-4d13-9d01-3257858bd586"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A100</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="5d64f112-4f45-402e-9f3d-ffb9c01819d9"
->Kernel.HandleModeChange in Kernel.HandleModeChange.EndOfMission</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="D080: Branch by level"
- Guid="29a9ee5d-b49d-40a2-8192-8d3e5c0129c4"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Setup"
- Guid="b2b0902c-4bd9-4f7e-923a-8dd54ace67aa"
->
-<Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="3de42bb6-2b01-41cf-9b74-71323b66092d"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="9367ec49-6b0a-4484-8097-f345dbbde513"
->
-<Actions>
-<Action
- Guid="bdf61351-1b95-4f88-b4eb-21c7fdbb3a25"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Level 0"
- Guid="741009de-0559-44ca-84dd-a329a42db1a9"
->
-<ReqRef
- Id="465fdc06-3913-4ca5-89e8-36b2eec18509"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="856fd1c5-9d57-4823-befa-7cead00225c5"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Level 0"
- Guid="70149281-122c-4ab0-a954-a47a877565a2"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="9106b1ed-e31b-45c8-8864-a6b1747c095e"
->
-<Actions>
-<Action
- Guid="6a5e9c94-37ab-4b98-834d-f0f066a13484"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action><Action
- Guid="24b29ef1-1dc0-4078-a780-858a1ab0e8fc"
->Kernel.Level.Value &lt;- Level.L0</Action><Action
- Guid="fe9de549-b252-457b-9beb-b5df1178c98e"
->Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="8046df48-e632-40ba-a3dc-4e9e7ca869e6"
->Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Level 1"
- Guid="e5831db3-713d-49d1-b0a1-9d4dd365ad79"
->
-<ReqRef
- Id="465fdc06-3913-4ca5-89e8-36b2eec18509"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d5729a9d-5970-4b6d-a04b-d125b9656b62"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Level 1"
- Guid="84813212-2049-4d18-8899-af66425ebac8"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="4f15328d-bdf3-4257-8d37-275fe531e231"
->
-<Actions>
-<Action
- Guid="022d17ae-61ae-4b1f-a3c3-72ee2be2c0a8"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action><Action
- Guid="0e7835dc-0e7f-40b6-a5a2-1ce0218c240a"
->Kernel.Level.Value &lt;- Level.L1</Action><Action
- Guid="69419b91-0121-49f3-a814-15ed37b136bf"
->Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="85f9536a-79b4-4549-b49b-9981a12bdcd6"
->Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Level 2"
- Guid="f6b649b9-a7d2-4475-90d8-b3dea571d1c5"
->
-<ReqRef
- Id="0cd426d1-35bd-4be9-be23-a5f473998d40"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="297fb172-c047-4e82-a8de-c6a137003872"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Level 2"
- Guid="239f3011-aa27-4755-b854-0c705208821c"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="18b841fb-27b5-4839-bbef-095c18e4d6a5"
->
-<Actions>
-<Action
- Guid="2a19c499-546f-4f8b-b85d-fcfc2b7e06dc"
->Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
- Guid="cf977b7d-f2e7-4dbd-876c-470b33f92b5a"
->Kernel.Level.Value &lt;- Level.L2</Action><Action
- Guid="76025588-26fc-400f-b156-b6b40aeea302"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="2c73b9c6-4fca-4b08-ac2d-9d4491e49530"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A095</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Level 3"
- Guid="9e181e58-641b-48e7-982c-2bfe9b537db2"
->
-<ReqRef
- Id="465fdc06-3913-4ca5-89e8-36b2eec18509"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d31162c4-a886-499c-bd2c-bbdd63585945"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Level 3"
- Guid="d5e6f865-fea8-40c4-a6e2-63776ebb671a"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="ff22c882-02fc-4115-b998-f167d2362be8"
->
-<Actions>
-<Action
- Guid="8e5b718c-af8d-470d-81f6-a2f4cf951cdb"
->Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
- Guid="195c446a-5733-4312-9e03-e5a3b70c5dd4"
->Kernel.Level.Value &lt;- Level.L3</Action><Action
- Guid="960c0a60-4e92-4cd0-bace-625f68b148d9"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="119f63af-60c5-4d74-b750-644c23aed8e3"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A095</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Level NTC"
- Guid="bf21f719-7881-432c-a9ee-9f2f1ea0e42e"
->
-<ReqRef
- Id="465fdc06-3913-4ca5-89e8-36b2eec18509"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a4c45a3b-1d2d-4e9b-ac4e-fa8b0d781e31"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Level NTC"
- Guid="b1838167-19f8-43ab-809d-cac9605c5dbe"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="dbba50a3-3de0-46eb-aecd-f6f3b166412f"
->
-<Actions>
-<Action
- Guid="3abd1a28-802a-4fa2-9068-fc06d54a7c5e"
->Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="10e744c6-fd94-4b2f-808c-91441f7d672b"
->Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
- Guid="57f030b7-337d-4497-894d-8f9bcc3fd638"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action><Action
- Guid="fea4c1d5-a533-47f4-8a46-a46814b1a279"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="8a57065c-700a-405f-b179-cf8f7db72b73"
->Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="A095: Report mode change to the RBC"
- Guid="5b200413-aa2b-4978-bcf0-627931beb623"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Setup"
- Guid="d14628f4-adfc-4d1d-ba94-4dea5c352928"
->
-<Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="6dae3d3b-be0e-4c0e-af84-0697582a6ecf"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1 - Initialize test environment"
- Guid="aa7ef349-4155-44f9-9167-6757b8d8116c"
->
-<Actions>
-<Action
- Guid="b0950e0a-dc15-4fab-a588-8291f16b650e"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2 - Initialize communication session"
- Guid="3dc219bc-6522-4c8d-8b7a-877203ffac72"
->
-<Actions>
-<Action
- Guid="d154a5a2-41ee-4dc6-ba2c-69550dd02b04"
->EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
- Guid="a7d0a78a-943a-493c-8243-4ba9c353cd3b"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
- Guid="47f77dc4-ef04-464d-83f0-80199ced97ea"
->Kernel.Level.Value &lt;- Level.L2</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="0caaf1ce-7f82-430b-9d36-605f000504c9"
->EURORADIO.HasActiveSession()</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Change the mode and verify it is reported"
- Guid="45e1cca8-9288-47d8-ae41-8c13b8ff8dd4"
->
-<ReqRef
- Id="cd15246a-5c87-478b-bc9e-36ed9f2f9127"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c9326a68-6751-4d50-a65a-bbbde165cac9"
->
-</ReqRef><ReqRef
- Id="6f5b08a4-6fc6-431d-926a-e1b6bfaa34e7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ae82127c-df3e-4ff3-acfc-043c6332e665"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Change the mode and verify it is reported"
- Guid="37fc9adf-f700-4da3-914f-2693a2d1ad60"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="317cc896-efb9-4802-bdd8-507b63f5a593"
->
-<Actions>
-<Action
- Guid="7e950e85-5b7e-411d-9320-d0257eaef74b"
->Kernel.Mode &lt;- Mode.SH</Action><Action
- Guid="bf5160a5-fdea-4251-9963-12eee6a9530e"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A095</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="99bb46c9-22c9-4166-84b7-1c2789752e28"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.S100</Expectation><Expectation
- Kind="Instantaneous"
- Guid="da3e6840-ed56-45fe-a009-678eeca7d148"
->Available ( EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT )</Expectation><Expectation
- Kind="Instantaneous"
- Guid="3a5b8619-a2a7-4426-93a0-b25c96451268"
->EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Messages.M_MODE.Shunting</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
  Name="S100: waiting for the order to terminate the communication session"
  Guid="671d7cb9-066e-4647-8864-b046fc1b4e9a"
 >
@@ -2091,497 +2584,6 @@
  Kind="Instantaneous"
  Guid="2188a208-a6a5-42e6-8449-8c666e34c1c6"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A115</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="A115: Termination of communication session"
- Guid="456e2917-7fab-4e28-81dd-961357174b73"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Setup"
- Guid="07d10051-9818-43c7-aa3e-b82cc1103812"
->
-<Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="5ff96509-818d-400d-9211-95943c728b9b"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1 - Initialize test environment"
- Guid="301a5afc-2656-4f48-b86f-bc5e00baea5d"
->
-<Actions>
-<Action
- Guid="2b327064-d45c-4805-935d-208db8fb7327"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2 - Initialize communication session"
- Guid="b151c4f1-22de-499f-99c4-c25bc711a87e"
->
-<Actions>
-<Action
- Guid="4cc62806-bc7a-42e3-8abe-b2209ccfcff2"
->Kernel.Level.Value &lt;- Level.L2</Action><Action
- Guid="1ab99b18-084a-475f-bc22-1a1172d7beda"
->EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
- Guid="cd8d2c92-29c6-4cc5-a96a-96e7a2709b00"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
- Guid="0eebaa8a-574f-4fee-bace-11e8b0066a46"
->EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="26a10e49-0751-4dc3-a5c5-4112065c3ca8"
->EURORADIO.HasActiveSession()</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Terminate communication session and end the process"
- Guid="1b94a9cf-d157-41cd-808a-75e9d180547d"
->
-<ReqRef
- Id="27f88b30-f620-4d1c-aae4-860de3b3a7df"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1f0f2856-10b7-4595-91dd-b3aeb0aedf86"
->
-</ReqRef><ReqRef
- Id="29c239c8-dea5-47f0-9916-581993980f9f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="276e839a-ae4c-4fae-a711-bd1dbc8380bd"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Terminate communication session and end process"
- Guid="9b661877-769a-4f6e-8299-d84c1033cc69"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="5e5f6d00-67cb-469f-b251-55ca1c6644eb"
->
-<Actions>
-<Action
- Guid="4314b745-6af9-41e3-aa75-baf2ac2b184e"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A115</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="389e35bf-e97b-444d-ace3-41a5bb49a925"
->Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="964990c8-c9d2-40a9-abcb-a6694ada24e2"
->EURORADIO.CurrentRBCConnection().ConnectionState in EURORADIO.RBCStruct.ConnectionStateSM.Terminating</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="A220: Indicate to the driver SH refused by the RBC"
- Guid="1188b4d9-bcbc-4007-9790-21f789f8b3a1"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Setup"
- Guid="00d953a2-9e92-428f-bbdc-5bf9b92b72ef"
->
-<Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="e9b80aef-f07d-423d-8b6f-6f988842327b"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="30245ee6-92b6-4972-937c-b71005f36ec5"
->
-<Actions>
-<Action
- Guid="bf7a6186-86f0-4c18-9fbd-98432242119d"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="d89379c2-7c06-4f5f-9420-059d6bb3a647"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Mode FS"
- Guid="0e08fd08-1cc0-496e-a409-98922b506e64"
->
-<ReqRef
- Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="43289bd8-6e71-4f95-86fd-c4658be26559"
->
-</ReqRef><ReqRef
- Id="209690fa-85f2-4338-98b6-c636b00a1007"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e6c4cde1-6787-4ed6-bc49-6522ac01330a"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Mode FS"
- Guid="84b28df5-07cb-444c-b117-59ef079dfb93"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="58150d11-3d8a-4835-83be-aa0d14a12716"
->
-<Actions>
-<Action
- Guid="7422ad74-a3d5-4e8a-a317-eaf6c0715e01"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
- Guid="98d05541-1682-459b-a3b1-70024d2460a4"
->Kernel.Mode &lt;- Mode.FS</Action><Action
- Guid="fb831ad2-0978-4e06-b2f4-87b6d6280a42"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action><Action
- Guid="b32a719c-c895-4619-81b4-deb261d98ceb"
->Kernel.Level.Value &lt;- Level.L2</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="21a0fa9a-5459-45c5-99f7-2a93a7bff153"
->Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="92b64364-5c43-4d44-9948-f46c56864fb5"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested == True</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Mode LS"
- Guid="05e863e6-61c4-4868-acdf-b66b10b78188"
->
-<ReqRef
- Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d37eb311-1991-4090-9adb-ccfe6e742c44"
->
-</ReqRef><ReqRef
- Id="209690fa-85f2-4338-98b6-c636b00a1007"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3f2fb914-fb14-43ae-a522-1f04a63f33af"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Mode LS"
- Guid="a529fc9c-5eaa-4072-b8c2-60dfc837b209"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="7159bcd0-64b9-4fa0-b420-29fc474f09f7"
->
-<Actions>
-<Action
- Guid="f1da4315-bf42-47f6-a65f-3d73b6369bb7"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
- Guid="8c6a1282-1a68-4b98-b551-1ffd9ac99cd4"
->Kernel.Mode &lt;- Mode.LS</Action><Action
- Guid="672808d1-6672-4a00-a127-a8ae04c42f49"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="d660dd41-0d02-464f-901f-eb0b5f31f9f9"
->Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="8cf51cb5-8b6b-44e2-850e-5513353848f7"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested == True</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Mode OS"
- Guid="7ed7c78e-b163-41cf-a8c1-8821cc93d7c3"
->
-<ReqRef
- Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a13b8454-0291-40ed-8186-4a73c0575a63"
->
-</ReqRef><ReqRef
- Id="209690fa-85f2-4338-98b6-c636b00a1007"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="50343adf-1ed9-4c3d-94df-17230b358468"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Mode OS"
- Guid="c0687e8c-4c12-4245-a9b0-543fb5aa4393"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="2f0ea2e5-e271-491c-960f-0a42e341aec4"
->
-<Actions>
-<Action
- Guid="abe7a57f-06ce-4c83-93cb-f484e74455b0"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
- Guid="2d925583-999e-4ab1-990c-fadac7a816ca"
->Kernel.Mode &lt;- Mode.OS</Action><Action
- Guid="c99b9b1d-b21a-4ee9-a7b2-b95c25a12bce"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="0cde2395-ed2d-4634-9650-4d8e87d04a8e"
->Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="4b5fe688-28c1-4b7c-8ffa-7f586f4b346b"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested == True</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Mode SR"
- Guid="e0d97e3e-b5bf-435c-9732-a79f1b5f9233"
->
-<ReqRef
- Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="61def1d6-c17f-4740-aac1-4367191f9a0f"
->
-</ReqRef><ReqRef
- Id="209690fa-85f2-4338-98b6-c636b00a1007"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="74dae154-6516-4e83-9d17-1776f1627ddc"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Mode SR"
- Guid="628fde47-7c69-4327-b4f3-2fb24ae6b754"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="bfae97b0-ca88-48eb-a6f8-7481843e4d3f"
->
-<Actions>
-<Action
- Guid="9deaae59-8b2a-4808-bd39-2385eefffc59"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
- Guid="843ae2ba-462b-43b7-b31d-78f3b0807460"
->Kernel.Mode &lt;- Mode.SR</Action><Action
- Guid="664f5dce-95eb-4a28-b5a4-9ee99dfca0f9"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="2b8cf1a5-d5be-4127-b71f-d243ae178743"
->Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="fb127666-7189-4c29-81ce-1be1839cb409"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested == True</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Mode PT (E165)"
- Guid="8c0818c3-bd81-4fbf-8046-9fda358011b3"
->
-<ReqRef
- Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e4da7f91-d024-4722-a209-8dc011a75ab8"
->
-</ReqRef><ReqRef
- Id="e4f509dd-fcb0-4205-8e6b-921aae447bca"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d5a9bad5-1c85-4c86-8980-1365062bedac"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Mode PT (E165)"
- Guid="ebdce81a-ecf1-4a23-a2c7-1929de0720d0"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="b8bf881d-7807-4c51-8091-49a3c1c333e1"
->
-<Actions>
-<Action
- Guid="5f3d41e9-9277-43fd-b429-fecb388c992e"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
- Guid="4609cee0-2d28-4a64-8391-eed07fd3eb4c"
->Kernel.Mode &lt;- Mode.PT</Action><Action
- Guid="d1973753-b84a-4a35-a958-9c1429f6f62c"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="ac6b6f6a-16bf-4576-a795-8d86e3e71614"
->Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S140</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="077c5f6e-7730-49c0-b866-18381c934ccf"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested == True</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Mode SB (E13)"
- Guid="2d903903-676a-4196-965c-2d95f8e7147b"
->
-<ReqRef
- Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b952401e-b150-4ca5-be49-91594a79f27c"
->
-</ReqRef><ReqRef
- Id="2e9f9917-e8f9-49b1-89ca-a25dc8ef2e05"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a849537e-df04-4098-97db-e5c782bc954f"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Mode SB (E13)"
- Guid="07f75238-0c8f-4545-bfbe-d4972a10d640"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="7d95f024-5eda-401b-a006-eb666372b27b"
->
-<Actions>
-<Action
- Guid="72880cc9-3bbf-4116-8117-8311a227a821"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
- Guid="84f2ed3c-5286-402e-84ec-4eddcf1664bd"
->Kernel.Mode &lt;- Mode.SB</Action><Action
- Guid="0a0702b2-a388-44d9-972b-073015e1d576"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="b55c0ef8-520e-43e0-9e56-bb2f29c9aff0"
->Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="77bead76-5b60-4f71-94e3-6c01761e56f5"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

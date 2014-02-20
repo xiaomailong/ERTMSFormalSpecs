@@ -162,6 +162,36 @@ namespace DataDictionary
 
                 base.visit(obj, visitSubNodes);
             }
+
+            /// <summary>
+            /// Remove the obsolete comments
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.TestCase obj, bool visitSubNodes)
+            {
+                if (!string.IsNullOrEmpty(obj.getObsoleteComment()))
+                {
+                    if (string.IsNullOrEmpty(obj.getComment()))
+                    {
+                        obj.setComment(obj.getObsoleteComment());
+                        obj.setObsoleteComment(null);
+                    }
+                    else
+                    {
+                        if (obj.getComment() == obj.getObsoleteComment())
+                        {
+                            obj.setObsoleteComment(null);
+                        }
+                        else
+                        {
+                            throw new Exception("Cannot mix both comments...");
+                        }
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
         }
 
         /// <summary>

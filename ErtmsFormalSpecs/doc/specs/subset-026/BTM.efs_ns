@@ -1032,6 +1032,35 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 >EURORADIO.TracksideOrderedSessionReceived(Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
+ Name="Radio Network registration available"
+ Guid="2b59e652-a400-4d6a-89c2-e13efd458d81"
+>
+<ReqRef
+ Id="6476afb5-0645-4298-926a-e67147752ddf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b32c1d05-cb39-483f-8534-e688a9e7a3f4"
+>
+</ReqRef><ReqRef
+ Id="031d12f5-b1df-4716-9eda-a3495861e160"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5aaf0fc4-3913-45e1-ad04-f0030332d4b7"
+>
+</ReqRef><ReqRef
+ Id="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4041e40-e667-4343-ba04-8dda9ee940ec"
+>
+</ReqRef><Comment>Handles Radio Network registration packet, if available.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="7dde0488-8df7-418d-95ee-21082e23dfa7"
+>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.RADIO_NETWORK_REGISTRATION.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="29555d56-e93d-4b03-bcd8-cd57ddaba9f7"
+>EURORADIO.RadioNetworkRegistrationReceived ( aPacket=&gt;Packet.TRACK_TO_TRAIN.RADIO_NETWORK_REGISTRATION )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Conditional Level Transition Order"
  Guid="0d362c8e-af10-4435-ab72-0549d5138943"
 >
@@ -1039,6 +1068,11 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Id="51ddbc44-360a-4339-9b7c-fc91347a5da2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0bc128a5-192b-44fe-9d95-5b1cb7d5232d"
+>
+</ReqRef><ReqRef
+ Id="377cc4cc-52bc-4bc6-8489-759a13078b63"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f8f13fbe-4d40-49a7-8358-0d5681997ea5"
 >
 </ReqRef><Comment>Handles Conditionan Level Transition Order packet, if available.</Comment>
 <PreConditions>

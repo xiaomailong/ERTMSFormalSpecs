@@ -261,7 +261,7 @@ namespace DataDictionary.Rules
 
             if (Expression != null)
             {
-                Expression.ToString();
+                retVal = Expression.ToString();
             }
 
             return retVal;

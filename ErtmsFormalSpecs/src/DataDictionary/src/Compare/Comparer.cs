@@ -12203,6 +12203,10 @@ namespace DataDictionary.Compare
                     searchStep ( subElement, searchString, occurences );
                 }
             }
+            if ( obj.getObsoleteComment() != null && obj.getObsoleteComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
         }
 
         /// <summary>

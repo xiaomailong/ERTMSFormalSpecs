@@ -28,7 +28,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The associations name <-> Expression that is used to initialize this structure
         /// </summary>
-        public Dictionary<string, Expression> Associations { get; private set; }
+        public Dictionary<Designator, Expression> Associations { get; private set; }
 
         /// <summary>
         /// Constructor
@@ -36,7 +36,7 @@ namespace DataDictionary.Interpreter
         /// <param name="root"></param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public StructExpression(ModelElement root, ModelElement log, Expression structure, Dictionary<string, Expression> associations, int start, int end)
+        public StructExpression(ModelElement root, ModelElement log, Expression structure, Dictionary<Designator, Expression> associations, int start, int end)
             : base(root, log, start, end)
         {
             Structure = structure;
@@ -63,11 +63,18 @@ namespace DataDictionary.Interpreter
                 Structure.SemanticAnalysis(instance, IsStructure.INSTANCE);
                 StaticUsage.AddUsages(Structure.StaticUsage, Usage.ModeEnum.Type);
 
+                Types.Structure structureType = Structure.Ref as Types.Structure;
                 // Structure field Association
-                foreach (Expression expr in Associations.Values)
+                foreach (KeyValuePair<Designator, Expression> pair in Associations)
                 {
-                    expr.SemanticAnalysis(instance, IsRightSide.INSTANCE);
-                    StaticUsage.AddUsages(expr.StaticUsage, Usage.ModeEnum.Read);
+                    if (structureType != null)
+                    {
+                        pair.Key.Ref = structureType.findStructureElement(pair.Key.Image);
+                        StaticUsage.AddUsage(pair.Key.Ref, Root, Usage.ModeEnum.Parameter);
+                    }
+
+                    pair.Value.SemanticAnalysis(instance, IsRightSide.INSTANCE);
+                    StaticUsage.AddUsages(pair.Value.StaticUsage, Usage.ModeEnum.Read);
                 }
             }
 
@@ -103,13 +110,13 @@ namespace DataDictionary.Interpreter
                 try
                 {
                     DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
-                    foreach (KeyValuePair<string, Expression> pair in Associations)
+                    foreach (KeyValuePair<Designator, Expression> pair in Associations)
                     {
                         Values.IValue val = pair.Value.GetValue(new InterpretationContext(context));
                         if (val != null)
                         {
                             Variables.Variable var = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
-                            var.Name = pair.Key;
+                            var.Name = pair.Key.Image;
                             var.Value = val;
                             var.Enclosing = retVal;
                             retVal.set(var);
@@ -171,7 +178,7 @@ namespace DataDictionary.Interpreter
             string indentText = indentAccolade + "    ";
             bool first = true;
             retVal = retVal + "\n" + indentAccolade + "{";
-            foreach (KeyValuePair<string, Expression> pair in Associations)
+            foreach (KeyValuePair<Designator, Expression> pair in Associations)
             {
                 if (first)
                 {
@@ -185,11 +192,11 @@ namespace DataDictionary.Interpreter
                 StructExpression expression = pair.Value as StructExpression;
                 if (expression != null)
                 {
-                    retVal = retVal + pair.Key + " => " + expression.ToString(indentLevel + 1);
+                    retVal = retVal + pair.Key.Image + " => " + expression.ToString(indentLevel + 1);
                 }
                 else
                 {
-                    retVal = retVal + pair.Key + " => " + pair.Value.ToString();
+                    retVal = retVal + pair.Key.Image + " => " + pair.Value.ToString();
                 }
             }
             retVal = retVal + "\n" + indentAccolade + "}";
@@ -205,13 +212,13 @@ namespace DataDictionary.Interpreter
             Types.Structure structureType = Structure.GetExpressionType() as Types.Structure;
             if (structureType != null)
             {
-                foreach (KeyValuePair<string, Expression> pair in Associations)
+                foreach (KeyValuePair<Designator, Expression> pair in Associations)
                 {
-                    string name = pair.Key;
+                    Designator name = pair.Key;
                     Expression expression = pair.Value;
 
                     List<Utils.INamable> targets = new List<Utils.INamable>();
-                    structureType.Find(name, targets);
+                    structureType.Find(name.Image, targets);
                     if (targets.Count > 0)
                     {
                         expression.checkExpression();
