@@ -2404,7 +2404,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Default="&apos;&apos;"
  Mode="Internal"
  Implemented="TRUE"
- Name="NetworkId"
+ Name="RegisteredNetworkId"
  Guid="a38f3a7d-5646-4e2c-9bf3-7329e3d2d746"
 >
 <Comment>Identifier of the network.</Comment>
@@ -2453,6 +2453,15 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Guid="1e98daa6-f5b1-4966-b1e0-819ebee8b313"
 >
 <Comment>Set to True when a request to register the mobile terminal is sent.</Comment>
+</StructureElement><StructureElement
+ TypeName="String"
+ Default="&apos;&apos;"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="NetworkIdToRegister"
+ Guid="44ce713d-dc37-4cd2-8042-0d7087e19d7d"
+>
+<Comment>Indicates which is the id of the network that has to be registered.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotRegistered"
@@ -2500,7 +2509,9 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Guid="9e7d5d30-f543-42e0-a83f-36e13134cba0"
 >THIS &lt;- Registering</Action><Action
  Guid="7ef1e2fe-d075-4c5b-becf-9767795c2a0e"
->RegistrationRequestIsSent &lt;- True</Action></Actions>
+>RegistrationRequestIsSent &lt;- True</Action><Action
+ Guid="03529777-8a74-4e2a-94dc-699b28efc826"
+>RegistrationOrderIsReceived &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2539,7 +2550,9 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 <Actions>
 <Action
  Guid="6df5355e-80ab-4d30-9c50-07679b269768"
->THIS &lt;- Registered</Action></Actions>
+>THIS &lt;- Registered</Action><Action
+ Guid="fc9c3c1f-c4be-4231-949b-288450751e54"
+>RegisteredNetworkId &lt;- NetworkIdToRegister</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2556,6 +2569,61 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Implemented="TRUE"
  Guid="f4eb8fe7-c356-4800-96ff-ac657fbcd4c7"
 >
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Registration order is received"
+ Guid="56426945-901b-44ba-9d61-d2a52a9c235d"
+>
+<ReqRef
+ Id="2faeb97f-3af1-456a-b8c7-70c5bfa05105"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0eae8d37-df7f-4e2d-9b66-969ac53d5804"
+>
+</ReqRef><ReqRef
+ Id="0717ecbb-ac03-4120-9e37-d836facf9136"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f815afc0-8e64-4f5d-a384-0743cd87fdc6"
+>
+</ReqRef><ReqRef
+ Id="fc32fb41-1c57-4753-a923-fe676aabf35d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5e1a9623-7adc-4b70-bf37-e767584c1323"
+>
+</ReqRef><ReqRef
+ Id="faeb3c32-a982-46f8-b780-09e1573916e8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="65ad2541-f826-414d-972d-6d0c2f266dea"
+>
+</ReqRef><Comment>If an order to register to a network is received from the trackside, when it is ignored if a safe radio connection is being set-up or a communication session is already established.
+
+Once the communication session is terminated and the safe radio connection is released, the radio network registration will be initiated for the requested network.
+
+Note: a safe radio connection can only be set-up when the RBC connection is in state Connecting or Connected.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Registration order is received"
+ Guid="00fe2530-9466-43d0-a4ea-93ff0660ebec"
+>
+<PreConditions>
+<PreCondition
+ Guid="750af1cd-78f4-49b1-912d-21c46b11e6fe"
+>RegistrationOrderIsReceived</PreCondition><PreCondition
+ Guid="b0ae7084-c070-4a83-88ad-3044024b465c"
+>RBCConnection.ConnectionState not in [ RBCStruct.ConnectionStateSM.Connecting, RBCStruct.ConnectionStateSM.Connected ]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="065155db-ddc9-4232-a264-ba308cf6546f"
+>THIS &lt;- Registering</Action><Action
+ Guid="16d4c11f-71c2-438c-aed7-a3050f42a226"
+>RegistrationRequestIsSent &lt;- True</Action><Action
+ Guid="6b794970-4b5b-4735-93d3-112b10af6e7d"
+>RegistrationOrderIsReceived &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></StateMachines>
 </Structure><Structure
@@ -3635,15 +3703,21 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
 <PreConditions>
 <PreCondition
  Guid="e65e63b1-fd62-4950-b031-05d1d1109e1c"
->aNetworkId != &apos;&apos;</PreCondition><PreCondition
- Guid="a2615e3a-f358-4066-9575-0d53fa70519f"
->Terminal1 != EMPTY</PreCondition></PreConditions>
+>aNetworkId != &apos;&apos;</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="78ee6641-812f-4c2a-afbe-b0e4ada5e038"
->Terminal1.NetworkId &lt;- aNetworkId</Action><Action
+>RegisterATerminal
+(
+    aTerminal=&gt; Terminal1,
+    aNetworkId=&gt; aNetworkId
+)</Action><Action
  Guid="c6f1daed-dbca-4284-aa54-e5ac33091cd8"
->Terminal1.RegistrationOrderIsReceived &lt;- True</Action></Actions>
+>RegisterATerminal
+(
+    aTerminal=&gt; Terminal2,
+    aNetworkId=&gt; aNetworkId
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Otherwise, use the default Radio Network id"
@@ -3658,66 +3732,21 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
 <PreConditions>
 <PreCondition
  Guid="301efa69-de1e-4a8d-a59f-c0c7afcbe928"
->DefaultRadioNetworkId != &apos;&apos;</PreCondition><PreCondition
- Guid="8b094c15-6938-4c4f-b906-3c58d7147db8"
->Terminal1 != EMPTY</PreCondition></PreConditions>
+>DefaultRadioNetworkId != &apos;&apos;</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="25c3fc69-9b60-4bb1-a2d1-b74d2cd381a9"
->Terminal1.NetworkId &lt;- DefaultRadioNetworkId</Action><Action
+>RegisterATerminal
+(
+    aTerminal=&gt; Terminal1,
+    aNetworkId=&gt; DefaultRadioNetworkId
+)</Action><Action
  Guid="e3be1ede-90b1-4290-b919-3187a1668b3c"
->Terminal1.RegistrationOrderIsReceived &lt;- True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Register Terminal 2"
- Guid="3c199b29-11fc-4460-97ea-901dc09a1fc1"
->
-<Comment>If the provided id is valid or the last known nework id is valid, then the mobile terminals are registered.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Provided id is valid"
- Guid="c8337903-86ab-46de-bdd2-e0a1ed4511b3"
->
-<Comment>If the provided id is valid, it is used to register the terminals.</Comment>
-<PreConditions>
-<PreCondition
- Guid="87592e9b-0089-4a10-915a-60e03e2558fa"
->aNetworkId != &apos;&apos;</PreCondition><PreCondition
- Guid="5ce4ba78-2335-41e2-bcb6-083ceef30a92"
->Terminal2 != EMPTY</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1197a187-743d-4ef8-b703-a450a2d894cc"
->Terminal2.NetworkId &lt;- aNetworkId</Action><Action
- Guid="783417b6-9503-41d0-a158-b3791b7b8643"
->Terminal2.RegistrationOrderIsReceived &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Otherwise, use the default Radio Network id"
- Guid="c7bcca58-db69-4318-9e91-c76f99c5a8a0"
->
-<ReqRef
- Id="5e068e1e-2be5-45b6-b9eb-d1151df93748"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3e314a60-41cd-4775-ae4c-b4f7f9139866"
->
-</ReqRef><Comment>Otherwise the default Radio Network id is used.</Comment>
-<PreConditions>
-<PreCondition
- Guid="d722156b-dc79-40ca-8d69-01d930277bb2"
->DefaultRadioNetworkId != &apos;&apos;</PreCondition><PreCondition
- Guid="0109cfd5-390b-40ed-b1f3-7677b2a7cd27"
->Terminal2 != EMPTY</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1cf19cc1-54b0-4e96-8416-8b15dbd3d02d"
->Terminal2.NetworkId &lt;- DefaultRadioNetworkId</Action><Action
- Guid="5b6ed105-875c-4340-bbb8-2016d256b5df"
->Terminal2.RegistrationOrderIsReceived &lt;- True</Action></Actions>
+>RegisterATerminal
+(
+    aTerminal=&gt; Terminal2,
+    aNetworkId=&gt; DefaultRadioNetworkId
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5140,6 +5169,65 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 <Action
  Guid="847054a6-9b00-4448-832a-5edaa16863c2"
 >RegisterMobileTerminals ( aPacket.NID_MN )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="RegisterATerminal"
+ Guid="91d65967-0ce4-4f16-86a3-05c2262bea89"
+>
+<ReqRef
+ Id="07af900f-f07f-4018-abe3-bab8be32b2a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6920acdb-a800-4874-b91e-7f52be773233"
+>
+</ReqRef><Comment>The procedure starts the registering of the provided mobile terminal to the provided network, except if the terminal is already registered to the provided netword.</Comment>
+<Parameters>
+<Parameter
+ Type="MobileTerminalStruct"
+ Name="aTerminal"
+ Guid="69f73909-1dca-46c6-a79f-e7d801022eb6"
+>
+</Parameter><Parameter
+ Type="String"
+ Name="aNetworkId"
+ Guid="16f25452-c7ca-4c62-8a7d-417fe5fdb16f"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Register a terminal"
+ Guid="0e7dcaaa-a043-4bc5-baf6-d4ab91873869"
+>
+<ReqRef
+ Id="fc32fb41-1c57-4753-a923-fe676aabf35d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b24901c-10ca-440f-b179-193bbaca3ef6"
+>
+</ReqRef><Comment>Requests the registering of the provided mobile terminal to the provided network, if it is not already registered to that network.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Register a terminal"
+ Guid="4bc4b088-a4d4-497a-949d-f269fbf04b8a"
+>
+<PreConditions>
+<PreCondition
+ Guid="b98357f2-9bff-490d-951c-a72293c7c303"
+>aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Registered
+  AND
+aTerminal.RegisteredNetworkId != aNetworkId</PreCondition><PreCondition
+ Guid="115781a3-1ed8-4502-9708-18c621902b3e"
+>aTerminal != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d0f0e831-08a8-4181-a47d-9d039b484d48"
+>aTerminal.NetworkIdToRegister &lt;- aNetworkId</Action><Action
+ Guid="503a9e82-74de-44aa-9897-753d7f0369c1"
+>aTerminal.RegistrationOrderIsReceived &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
