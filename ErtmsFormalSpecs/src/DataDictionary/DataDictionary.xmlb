@@ -842,9 +842,12 @@
     <META NAME="Package">test</META>
     <META NAME="Class">SingleTestCase</META>
     <FIELDS>
-      <FIELD NAME="Feature" TYPE="INTEGER" />
-      <FIELD NAME="Case"    TYPE="INTEGER" />
-      <FIELD NAME="Steps"   REFTYPE="Step" MODE="DEFAULT"/>
+      <FIELD NAME="Feature"           TYPE="INTEGER" />
+      <FIELD NAME="Case"              TYPE="INTEGER" />
+      <FIELD NAME="Steps"             REFTYPE="Step" MODE="DEFAULT"/>
+      <FIELD NAME="ObsoleteComment"   TYPE="PCHAR">
+        <META NAME="DoNotCompare" />
+      </FIELD>
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="Feature" TARGET="Feature" OPTIONAL="TRUE" DEFAULT="9999" />
@@ -853,7 +856,7 @@
     <FORMULA>
       <CONCAT>
         <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
-          <PCDATA TARGET="Comment"/>
+          <PCDATA TARGET="ObsoleteComment"/>
         </ENCLOSED>
         <ENCLOSED NAME="Steps" OPTIONAL="TRUE" >
           <REPEAT TARGET="Steps">

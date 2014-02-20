@@ -19401,6 +19401,7 @@ public partial class TestCase
 {
 public  override  bool find(Object search){
 if (search is String ) {
+if(getObsoleteComment().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -19592,12 +19593,24 @@ public Step getSteps(int idx)
   return (Step) ( allSteps()[idx]);
 }
 
+private   string  aObsoleteComment;
+
+public   string  getObsoleteComment() { return aObsoleteComment;}
+
+public  void setObsoleteComment( string  v) {
+  aObsoleteComment = v;
+  __setDirty(true);
+  NotifyControllers(null);
+}
+
+
 public TestCase()
 {
 TestCase obj = this;
 aFeature=(0);
 aCase=(0);
 aSteps=(null);
+aObsoleteComment=(null);
 }
 
 public void copyTo(TestCase other)
@@ -19606,6 +19619,7 @@ base.copyTo(other);
 other.aFeature = aFeature;
 other.aCase = aCase;
 other.aSteps = aSteps;
+other.aObsoleteComment = aObsoleteComment;
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -19648,7 +19662,7 @@ fl1019 = false ;
 ctxt.accept('>');
 // Indicator
 // Parse PC data
-this.setComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
+this.setObsoleteComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
 // Regexp
 ctxt.skipWhiteSpace();
 ctxt.acceptString ("</Comment>");
@@ -20034,12 +20048,16 @@ int i;
 
 base.unParseBody(pw);
 // Unparsing Enclosed
+// Testing for empty content: ObsoleteComment
+if (this.getObsoleteComment() != null){
 pw.Write("<Comment>");
 // Unparsing PcData
-acceptor.unParsePcData(pw, this.getComment());
+acceptor.unParsePcData(pw, this.getObsoleteComment());
 pw.Write("</Comment>");
 // Father is not a mixed
 pw.Write('\n');
+} // If
+// After Testing for empty content: ObsoleteComment
 // Unparsing Enclosed
 // Testing for empty content: Steps
 if (countSteps() > 0){
