@@ -3380,6 +3380,10 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
             }
+            if ( obj.getCyclePhase() != other.getCyclePhase() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "CyclePhase", other.getCyclePhase().ToString(), obj.getCyclePhase().ToString()) );
+            }
         }
 
         /// <summary>

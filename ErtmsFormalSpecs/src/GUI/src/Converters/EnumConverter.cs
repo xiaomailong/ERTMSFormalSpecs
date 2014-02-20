@@ -163,6 +163,20 @@ namespace GUI.Converters
         }
     }
 
+    public class CyclePhaseConverter : GenericEnumConverter<DataDictionary.Generated.acceptor.RulePriority>
+    {
+        public CyclePhaseConverter(Type type)
+            : base(type)
+        {
+            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.defaultRulePriority, "<default>"));
+            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aProcessing, "Processing"));
+            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aUpdateINTERNAL, "Update INTERNAL variables"));
+            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aUpdateOUT, "Update OUT variables"));
+            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aVerification, "INPUT Verification"));
+            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aCleanUp, "Clean Up"));
+        }
+    }
+
     public class RangePrecisionConverter : GenericEnumConverter<DataDictionary.Generated.acceptor.PrecisionEnum>
     {
         public RangePrecisionConverter(Type type)

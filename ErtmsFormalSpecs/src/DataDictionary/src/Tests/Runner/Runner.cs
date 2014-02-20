@@ -455,6 +455,7 @@ namespace DataDictionary.Tests.Runner
             }
 
             ApplyActivations(activations);
+            CheckExpectationsState(priority);
         }
         /// <summary>
         /// Executes the interpretation machine for one priority
@@ -659,8 +660,6 @@ namespace DataDictionary.Tests.Runner
                     }
                 }
             }
-
-            CheckExpectationsState();
         }
 
         /// <summary>
@@ -715,7 +714,8 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// Updates the expectation state according to the variables' value
         /// </summary>
-        private void CheckExpectationsState()
+        /// <param name="priority">The priority for which this check is performed</param>
+        private void CheckExpectationsState(Generated.acceptor.RulePriority priority)
         {
             // Update the state of the expectation according to system's state
             foreach (Events.Expect expect in ActiveExpectations())
@@ -743,24 +743,35 @@ namespace DataDictionary.Tests.Runner
                 {
                     try
                     {
-                        switch (expectation.getKind())
+                        if (expectation.getCyclePhase() == Generated.acceptor.RulePriority.defaultRulePriority || expectation.getCyclePhase() == priority)
                         {
-                            case Generated.acceptor.ExpectationKind.aInstantaneous:
-                            case Generated.acceptor.ExpectationKind.defaultExpectationKind:
-                                if (getBoolValue(expectation, expectation.Expression))
-                                {
-                                    // An instantaneous expectation who reached its satisfactory condition
-                                    EventTimeLine.AddModelEvent(new ExpectationReached(expect), this);
-                                }
-                                break;
-
-                            case Generated.acceptor.ExpectationKind.aContinuous:
-                                if (expectation.getCondition() != null)
-                                {
-                                    if (!getBoolValue(expectation, expectation.ConditionTree))
+                            switch (expectation.getKind())
+                            {
+                                case Generated.acceptor.ExpectationKind.aInstantaneous:
+                                case Generated.acceptor.ExpectationKind.defaultExpectationKind:
+                                    if (getBoolValue(expectation, expectation.Expression))
                                     {
-                                        // An continuous expectation who reached its satisfactory condition
+                                        // An instantaneous expectation who reached its satisfactory condition
                                         EventTimeLine.AddModelEvent(new ExpectationReached(expect), this);
+                                    }
+                                    break;
+
+                                case Generated.acceptor.ExpectationKind.aContinuous:
+                                    if (expectation.getCondition() != null)
+                                    {
+                                        if (!getBoolValue(expectation, expectation.ConditionTree))
+                                        {
+                                            // An continuous expectation who reached its satisfactory condition
+                                            EventTimeLine.AddModelEvent(new ExpectationReached(expect), this);
+                                        }
+                                        else
+                                        {
+                                            if (!getBoolValue(expectation, expectation.Expression))
+                                            {
+                                                // A continuous expectation who reached a case where it is not satisfied
+                                                EventTimeLine.AddModelEvent(new FailedExpectation(expect), this);
+                                            }
+                                        }
                                     }
                                     else
                                     {
@@ -770,16 +781,8 @@ namespace DataDictionary.Tests.Runner
                                             EventTimeLine.AddModelEvent(new FailedExpectation(expect), this);
                                         }
                                     }
-                                }
-                                else
-                                {
-                                    if (!getBoolValue(expectation, expectation.Expression))
-                                    {
-                                        // A continuous expectation who reached a case where it is not satisfied
-                                        EventTimeLine.AddModelEvent(new FailedExpectation(expect), this);
-                                    }
-                                }
-                                break;
+                                    break;
+                            }
                         }
                     }
                     catch (Exception e)
