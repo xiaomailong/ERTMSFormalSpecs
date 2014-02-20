@@ -54,11 +54,12 @@ namespace DataDictionary
         /// <summary>
         /// Provides the set of paragraphs modeled by this req related
         /// </summary>
-        public HashSet<Specification.Paragraph> ModeledParagraphs
+        public List<Specification.Paragraph> ModeledParagraphs
         {
             get
             {
-                HashSet<Specification.Paragraph> retVal = new HashSet<Specification.Paragraph>();
+                HashSet<Specification.Paragraph> paragraphs = new HashSet<Specification.Paragraph>();
+
                 ReferencesParagraph reqRelated = this;
                 while (reqRelated != null)
                 {
@@ -66,11 +67,15 @@ namespace DataDictionary
                     {
                         if (reqRef.Paragraph != null)
                         {
-                            retVal.Add(reqRef.Paragraph);
+                            paragraphs.Add(reqRef.Paragraph);
                         }
                     }
                     reqRelated = Utils.EnclosingFinder<DataDictionary.ReqRelated>.find(reqRelated);
                 }
+
+                List<Specification.Paragraph> retVal = new List<Specification.Paragraph>();
+                retVal.AddRange(paragraphs);
+                retVal.Sort();
                 return retVal;
             }
         }

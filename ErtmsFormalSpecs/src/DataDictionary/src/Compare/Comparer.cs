@@ -3041,10 +3041,6 @@ namespace DataDictionary.Compare
                     }
                 }
             }
-            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
-            {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
-            }
         }
 
         /// <summary>
@@ -3379,6 +3375,10 @@ namespace DataDictionary.Compare
             if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
+            }
+            if ( obj.getCyclePhase() != other.getCyclePhase() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "CyclePhase", other.getCyclePhase().ToString(), obj.getCyclePhase().ToString()) );
             }
         }
 
@@ -12203,7 +12203,7 @@ namespace DataDictionary.Compare
                     searchStep ( subElement, searchString, occurences );
                 }
             }
-            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            if ( obj.getObsoleteComment() != null && obj.getObsoleteComment().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
             }

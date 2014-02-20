@@ -34,8 +34,10 @@ namespace DataDictionary.Interpreter
         /// Constructor
         /// </summary>
         /// <param name="root"></param>
-        public StructExpression(ModelElement root, ModelElement log, Expression structure, Dictionary<string, Expression> associations)
-            : base(root, log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public StructExpression(ModelElement root, ModelElement log, Expression structure, Dictionary<string, Expression> associations, int start, int end)
+            : base(root, log, start, end)
         {
             Structure = structure;
             Associations = associations;

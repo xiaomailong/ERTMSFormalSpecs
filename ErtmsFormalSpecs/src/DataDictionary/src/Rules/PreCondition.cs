@@ -16,29 +16,14 @@
 
 namespace DataDictionary.Rules
 {
-    public class PreCondition : Generated.PreCondition, Utils.IPreCondition, IExpressionable, TextualExplain, ICommentable
+    public class PreCondition : Generated.PreCondition, IExpressionable, TextualExplain, ICommentable
     {
-        /// <summary>
-        /// The precondition expression
-        /// </summary>
-        public string Expression
-        {
-            get
-            {
-                return Condition;
-            }
-            set
-            {
-                Condition = value;
-            }
-        }
-
         /// <summary>
         /// The precondition display name
         /// </summary>
         public override string Name
         {
-            get { return Expression; }
+            get { return ExpressionText; }
             set { }
         }
 
@@ -51,28 +36,7 @@ namespace DataDictionary.Rules
             set
             {
                 setCondition(value);
-                expressionTree = null;
-            }
-        }
-
-        /// <summary>
-        /// Provides the expression tree associated to this action's expression
-        /// </summary>
-        private Interpreter.Expression expressionTree;
-        public Interpreter.Expression ExpressionTree
-        {
-            get
-            {
-                if (expressionTree == null)
-                {
-                    expressionTree = EFSSystem.Parser.Expression(this, Expression);
-                }
-
-                return expressionTree;
-            }
-            set
-            {
-                expressionTree = value;
+                __expression = null;
             }
         }
 
@@ -92,8 +56,49 @@ namespace DataDictionary.Rules
             set
             {
                 Condition = value;
-                expressionTree = null;
+                __expression = null;
             }
+        }
+
+        /// <summary>
+        /// Provides the expression tree associated to this action's expression
+        /// </summary>
+        private Interpreter.Expression __expression;
+        public Interpreter.Expression Expression
+        {
+            get
+            {
+                if (__expression == null)
+                {
+                    __expression = EFSSystem.Parser.Expression(this, ExpressionText);
+                }
+
+                return __expression;
+            }
+            set
+            {
+                __expression = value;
+            }
+        }
+
+        public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
+
+
+        /// <summary>
+        /// Clears the expression tree to ensure new compilation
+        /// </summary>
+        public void CleanCompilation()
+        {
+            Expression = null;
+        }
+
+        /// <summary>
+        /// Creates the tree according to the expression text
+        /// </summary>
+        public void Compile()
+        {
+            // Side effect, builds the statement if it is not already built
+            Interpreter.InterpreterTreeNode tree = Tree;
         }
 
         /// <summary>
@@ -180,9 +185,9 @@ namespace DataDictionary.Rules
         {
             bool retVal = false;
 
-            if (ExpressionTree != null)
+            if (Expression != null)
             {
-                foreach (Types.ITypedElement el in ExpressionTree.GetVariables())
+                foreach (Types.ITypedElement el in Expression.GetVariables())
                 {
                     if (el == variable)
                     {
@@ -193,7 +198,7 @@ namespace DataDictionary.Rules
 
                 if (!retVal)
                 {
-                    Interpreter.Call call = ExpressionTree as Interpreter.Call;
+                    Interpreter.Call call = Expression as Interpreter.Call;
                     if (call != null)
                     {
                         retVal = call.Reads(variable);

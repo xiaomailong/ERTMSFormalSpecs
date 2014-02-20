@@ -903,7 +903,7 @@ namespace DataDictionary
         /// <summary>
         /// Clear all marks
         /// </summary>
-        public void ClearMessages()
+        public new void ClearMessages()
         {
             ClearMarksVisitor visitor = new ClearMarksVisitor();
             visitor.visit(this, true);

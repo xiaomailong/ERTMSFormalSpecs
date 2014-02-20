@@ -227,6 +227,17 @@ namespace GUI
         }
 
         /// <summary>
+        /// Indicates whether the explain box should be displayed
+        /// </summary>
+        /// <returns></returns>
+        private bool ShouldExplain()
+        {
+            bool retVal = (Model is DataDictionary.Types.IDefaultValueElement) || !(Model is IExpressionable);
+
+            return retVal;
+        }
+
+        /// <summary>
         /// Refreshes the view according to the model
         /// </summary>
         /// <param name="baseForm"></param>
@@ -270,7 +281,7 @@ namespace GUI
             }
 
             // By default, the explain text box is visible
-            if (baseForm.ExplainTextBox != null && !(Model is IExpressionable))
+            if (baseForm.ExplainTextBox != null && ShouldExplain())
             {
                 if (!(baseForm.ExplainTextBox.ContainsFocus && ignoreFocused))
                 {
@@ -307,28 +318,19 @@ namespace GUI
                 }
                 else
                 {
-                    List<Paragraph> relatedParagraphs = new List<Paragraph>();
-                    Utils.IModelElement current = Model;
-                    while (current != null)
+                    ReqRelated reqRelated = Utils.EnclosingFinder<ReqRelated>.find(Model, true);
+                    if (reqRelated != null)
                     {
-                        ReqRelated reqRelated = current as ReqRelated;
-                        if (reqRelated != null)
+                        foreach (Paragraph paragraph in reqRelated.ModeledParagraphs)
                         {
-                            reqRelated.findRelatedParagraphsRecursively(relatedParagraphs);
-                        }
-                        current = current.Enclosing as Utils.IModelElement;
-                    }
-
-                    relatedParagraphs.Sort();
-                    foreach (Paragraph paragraph in relatedParagraphs)
-                    {
-                        if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
-                        {
-                            requirements += paragraph.FullId + ", ";
-                        }
-                        else
-                        {
-                            requirements += paragraph.FullId + ":" + paragraph.getText() + "\n\n";
+                            if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
+                            {
+                                requirements += paragraph.FullId + ", ";
+                            }
+                            else
+                            {
+                                requirements += paragraph.FullId + ":" + paragraph.getText() + "\n\n";
+                            }
                         }
                     }
                 }
@@ -342,7 +344,7 @@ namespace GUI
                 if (!(baseForm.ExpressionEditorTextBox.ContainsFocus && ignoreFocused))
                 {
                     IExpressionable expressionable = Model as IExpressionable;
-                    if (expressionable != null)
+                    if (expressionable != null && !ShouldExplain())
                     {
                         baseForm.ExpressionEditorTextBox.Instance = Model as DataDictionary.ModelElement;
                         baseForm.ExpressionEditorTextBox.Text = expressionable.ExpressionText;
@@ -982,7 +984,12 @@ namespace GUI
         {
             if (newLabel != null && newLabel != "")
             {
-                Model.Name = newLabel;
+                if (Model.Name != newLabel)
+                {
+                    EFSSystem.INSTANCE.Compiler.Compile_Synchronous(false, true);
+                    Model.Name = newLabel;
+                    EFSSystem.INSTANCE.Compiler.Refactor(Model as ModelElement);
+                }
             }
         }
     }

@@ -36,8 +36,10 @@ namespace DataDictionary.Interpreter
         /// <param name="left"></param>
         /// <param name="op"></param>
         /// <param name="right"></param>
-        public StringExpression(ModelElement root, ModelElement log, string value)
-            : base(root, log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public StringExpression(ModelElement root, ModelElement log, string value, int start, int end)
+            : base(root, log, start, end)
         {
             Image = value;
         }

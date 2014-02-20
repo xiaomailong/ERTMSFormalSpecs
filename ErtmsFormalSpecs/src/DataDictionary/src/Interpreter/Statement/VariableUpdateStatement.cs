@@ -35,8 +35,10 @@ namespace DataDictionary.Interpreter.Statement
         /// Constructor
         /// </summary>
         /// <param name="root">The root element for which this element is built</param>
-        public VariableUpdateStatement(ModelElement root, ModelElement log, Expression variableIdentification, Expression expression)
-            : base(root, log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public VariableUpdateStatement(ModelElement root, ModelElement log, Expression variableIdentification, Expression expression, int start, int end)
+            : base(root, log, start, end)
         {
             VariableIdentification = variableIdentification;
             VariableIdentification.Enclosing = this;

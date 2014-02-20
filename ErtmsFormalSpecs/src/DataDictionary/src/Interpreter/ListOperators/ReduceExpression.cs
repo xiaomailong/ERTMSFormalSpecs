@@ -1,4 +1,3 @@
-using System;
 // ------------------------------------------------------------------------------
 // -- Copyright ERTMS Solutions
 // -- Licensed under the EUPL V.1.1
@@ -14,6 +13,7 @@ using System;
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+using System;
 using Utils;
 using DataDictionary.Interpreter.Filter;
 
@@ -44,8 +44,10 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="function"></param>
         /// <param name="initialValue"></param>
         /// <param name="root">the root element for which this expression should be parsed</param>
-        public ReduceExpression(ModelElement root, ModelElement log, Expression listExpression, Expression condition, Expression function, Expression initialValue)
-            : base(root, log, listExpression, condition, function)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public ReduceExpression(ModelElement root, ModelElement log, Expression listExpression, Expression condition, Expression function, Expression initialValue, int start, int end)
+            : base(root, log, listExpression, condition, function, start, end)
         {
             InitialValue = initialValue;
             InitialValue.Enclosing = this;

@@ -52,8 +52,10 @@ namespace DataDictionary.Interpreter
         /// <param name="expression">The expression to stabilize</param>
         /// <param name="initialValue">The initial value for this stabilisation computation</param>
         /// <param name="condition">The condition which indicates that the stabilisation is not complete</param>
-        public StabilizeExpression(ModelElement root, ModelElement log, Expression expression, Expression initialValue, Expression condition)
-            : base(root, log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public StabilizeExpression(ModelElement root, ModelElement log, Expression expression, Expression initialValue, Expression condition, int start, int end)
+            : base(root, log, start, end)
         {
             Expression = expression;
             Expression.Enclosing = this;

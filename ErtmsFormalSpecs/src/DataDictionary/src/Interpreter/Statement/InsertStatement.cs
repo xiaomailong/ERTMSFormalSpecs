@@ -42,8 +42,10 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="root">The root element for which this element is built</param>
         /// <param name="call">The corresponding function call designator</param>
         /// <param name="parameters">The expressions used to compute the parameters</param>
-        public InsertStatement(ModelElement root, ModelElement log, Expression value, Expression listExpression, Expression replaceElement)
-            : base(root, log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public InsertStatement(ModelElement root, ModelElement log, Expression value, Expression listExpression, Expression replaceElement, int start, int end)
+            : base(root, log, start, end)
         {
             Value = value;
             Value.Enclosing = this;

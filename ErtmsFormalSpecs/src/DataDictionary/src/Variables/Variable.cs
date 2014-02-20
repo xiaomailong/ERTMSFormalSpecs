@@ -151,21 +151,65 @@ namespace DataDictionary.Variables
             set { setDefaultValue(value); }
         }
 
-        /// <summary>
-        /// The editable default value
-        /// </summary>
+
         public override string ExpressionText
         {
             get
             {
-                string retVal = getDefaultValue();
+                string retVal = Default;
+
                 if (retVal == null)
                 {
                     retVal = "";
                 }
+
                 return retVal;
             }
-            set { setDefaultValue(value); }
+            set
+            {
+                Default = value;
+                __expression = null;
+            }
+        }
+
+        /// <summary>
+        /// Provides the expression tree associated to this action's expression
+        /// </summary>
+        private Interpreter.Expression __expression;
+        public Interpreter.Expression Expression
+        {
+            get
+            {
+                if (__expression == null)
+                {
+                    __expression = EFSSystem.Parser.Expression(this, ExpressionText);
+                }
+
+                return __expression;
+            }
+            set
+            {
+                __expression = value;
+            }
+        }
+
+        public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
+
+        /// <summary>
+        /// Clears the expression tree to ensure new compilation
+        /// </summary>
+        public void CleanCompilation()
+        {
+            Expression = null;
+        }
+
+        /// <summary>
+        /// Creates the tree according to the expression text
+        /// </summary>
+        public void Compile()
+        {
+            // Side effect, builds the statement if it is not already built
+            Interpreter.InterpreterTreeNode tree = Tree;
         }
 
         public override System.Collections.ArrayList EnclosingCollection
@@ -190,6 +234,9 @@ namespace DataDictionary.Variables
                 setTypeName(value);
                 type = null;
                 theValue = null;
+
+                // Ensure types and typename are synchronized
+                type = Type;
             }
         }
 
@@ -259,10 +306,9 @@ namespace DataDictionary.Variables
                     else
                     {
                         // The variable defines a default value, try to interpret it
-                        Interpreter.Expression expression = EFSSystem.Parser.Expression(this, getDefaultValue(), null, true, this);
-                        if (expression != null)
+                        if (Expression != null)
                         {
-                            retVal = expression.GetValue(new Interpreter.InterpretationContext(Type));
+                            retVal = Expression.GetValue(new Interpreter.InterpretationContext(Type));
                             if (retVal != null && !Type.Match(retVal.Type))
                             {
                                 AddError("Default value type (" + retVal.Type.Name + ")does not match variable type (" + Type.Name + ")");

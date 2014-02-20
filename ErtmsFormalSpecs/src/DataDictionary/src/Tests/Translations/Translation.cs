@@ -293,7 +293,7 @@ namespace DataDictionary.Tests.Translations
         /// <param name="action"></param>
         private void Review(Rules.Action action)
         {
-            action.Expression = ReviewExpression(action.Step, action.Expression);
+            action.ExpressionText = ReviewExpression(action.Step, action.ExpressionText);
         }
 
         /// <summary>

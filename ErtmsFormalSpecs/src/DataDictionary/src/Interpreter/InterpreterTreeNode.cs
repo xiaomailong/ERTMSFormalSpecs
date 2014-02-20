@@ -48,15 +48,29 @@ namespace DataDictionary.Interpreter
         public Usages StaticUsage { get; protected set; }
 
         /// <summary>
+        /// The start character in the string for this expression
+        /// </summary>
+        public int Start { get; set; }
+
+        /// <summary>
+        /// The end character in the string for this expression
+        /// </summary>
+        public int End { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="root">The root element for which this interpreter tree node is created</param>
         /// <param name="enclosingNode">The enclosing expression node</param>
-        public InterpreterTreeNode(ModelElement root, ModelElement log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public InterpreterTreeNode(ModelElement root, ModelElement log, int start, int end)
         {
             Root = root;
             RootLog = log;
             StaticUsage = null;
+            Start = start;
+            End = end;
         }
 
         public string Name { get { return ToString(); } set { } }

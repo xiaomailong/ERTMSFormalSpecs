@@ -104,15 +104,6 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The state machine initial state
-        /// </summary>
-        public string InitialState
-        {
-            get { return getInitialState(); }
-            set { setInitialState(value); }
-        }
-
-        /// <summary>
         /// Provides the values whose name matches the name provided
         /// </summary>
         /// <param name="index">the index in names to consider</param>
@@ -242,12 +233,6 @@ namespace DataDictionary.Types
 
                 return cachedValues;
             }
-        }
-
-        // TODO : Remove the initial state
-        public override string Default
-        {
-            get { return InitialState; }
         }
 
         public override bool Contains(Values.IValue first, Values.IValue other)
@@ -424,7 +409,7 @@ namespace DataDictionary.Types
                                         foreach (Rules.PreCondition preCondition in ruleCondition.AllPreConditions)
                                         {
                                             // A transition from one state to another has been found
-                                            foreach (Constants.State stt2 in GetStates(preCondition.ExpressionTree))
+                                            foreach (Constants.State stt2 in GetStates(preCondition.Expression))
                                             {
                                                 filteredOut = filteredOut || AddTransition(update, stt1, preCondition, stt2);
                                             }
@@ -469,38 +454,69 @@ namespace DataDictionary.Types
             {
                 bool retVal = false;
 
-                Constants.State initialState = StateMachine.StateInThisStateMachine(initial);
-                // TargetState is the target state either in this state machine or in a sub state machine
-                Constants.State targetState = StateMachine.StateInThisStateMachine(target);
-
-                // Determine the rule condition (if any) related to this state machine
-                Rules.RuleCondition condition = null;
-                if (update != null)
+                if (SameParentStateMachine(initial, target))
                 {
-                    Rules.Action action = update.Root as Rules.Action;
-                    condition = action.RuleCondition;
+                    Constants.State initialState = StateMachine.StateInThisStateMachine(initial);
+                    // TargetState is the target state either in this state machine or in a sub state machine
+                    Constants.State targetState = StateMachine.StateInThisStateMachine(target);
+
+                    // Determine the rule condition (if any) related to this state machine
+                    Rules.RuleCondition condition = null;
+                    if (update != null)
+                    {
+                        Rules.Action action = update.Root as Rules.Action;
+                        condition = action.RuleCondition;
+                    }
+
+                    if (targetState != null || initialState != null)
+                    {
+                        // This transition is about this state machine.
+                        if (initialState != targetState && initialState != null)
+                        {
+                            // Check that the transition is not yet present
+                            // This case can occur when the same RuleCondition references two different states 
+                            // in a substate machine. Only draws the transition once.
+                            if (!findMatchingTransition(condition, initialState, targetState))
+                            {
+                                Transitions.Add(new Rules.Transition(preCondition, initialState, update, targetState));
+                            }
+                        }
+                        else
+                        {
+                            if (initialState == initial)
+                            {
+                                retVal = true;
+                            }
+                        }
+                    }
                 }
 
-                if (targetState != null || initialState != null)
+                return retVal;
+            }
+
+            /// <summary>
+            /// Indicates that the two states have the same outermost state machine
+            /// </summary>
+            /// <param name="state1"></param>
+            /// <param name="state2"></param>
+            /// <returns></returns>
+            private bool SameParentStateMachine(Constants.State state1, Constants.State state2)
+            {
+                return GetParentStateMachine(state1) == GetParentStateMachine(state2);
+            }
+
+            /// <summary>
+            /// Provides the outermost state machine enclosing the state provided
+            /// </summary>
+            /// <param name="state"></param>
+            /// <returns></returns>
+            private StateMachine GetParentStateMachine(Constants.State state)
+            {
+                StateMachine retVal = state.EnclosingStateMachine;
+
+                while (retVal.EnclosingStateMachine != null)
                 {
-                    // This transition is about this state machine.
-                    if (initialState != targetState && initialState != null)
-                    {
-                        // Check that the transition is not yet present
-                        // This case can occur when the same RuleCondition references two different states 
-                        // in a substate machine. Only draws the transition once.
-                        if (!findMatchingTransition(condition, initialState, targetState))
-                        {
-                            Transitions.Add(new Rules.Transition(preCondition, initialState, update, targetState));
-                        }
-                    }
-                    else
-                    {
-                        if (initialState == initial)
-                        {
-                            retVal = true;
-                        }
-                    }
+                    retVal = retVal.EnclosingStateMachine;
                 }
 
                 return retVal;
@@ -519,7 +535,7 @@ namespace DataDictionary.Types
 
                 foreach (Rules.Transition t in Transitions)
                 {
-                    if (t.RuleCondition == condition && t.Source == initialState && t.Target  == targetState)
+                    if (t.RuleCondition == condition && t.Source == initialState && t.Target == targetState)
                     {
                         retVal = true;
                         break;
@@ -644,7 +660,7 @@ namespace DataDictionary.Types
             StateMachine retVal = (StateMachine)Generated.acceptor.getFactory().createStateMachine();
             retVal.Name = Name;
             retVal.setFather(getFather());
-            retVal.InitialState = InitialState;
+            retVal.Default = Default;
             foreach (Constants.State state in States)
             {
                 Constants.State newState = state.duplicate();

@@ -555,7 +555,9 @@
             <ELEMENTREF NAME="Rule" />
           </REPEAT>
         </ENCLOSED>
-        <ELEMENTREF NAME="StateMachine" TARGET="StateMachine" OPTIONAL="TRUE" />
+        <ELEMENTREF NAME="StateMachine" TARGET="StateMachine" OPTIONAL="TRUE">
+	  <META NAME="Obsolete" />
+	</ELEMENTREF>
       </CONCAT>
     </FORMULA>
   </ELEMENT>
@@ -570,7 +572,9 @@
       <FIELD NAME="Rules"        REFTYPE="Rule"  MODE="DEFAULT" />
     </FIELDS>
     <ATTRIBUTES>
-      <ATTR NAME="InitialState" TARGET="InitialState" />
+      <ATTR NAME="InitialState" TARGET="InitialState" OPTIONAL="TRUE">
+        <META NAME="Obsolete" />
+      </ATTR>
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
@@ -838,10 +842,12 @@
     <META NAME="Package">test</META>
     <META NAME="Class">SingleTestCase</META>
     <FIELDS>
-      <FIELD NAME="Feature" TYPE="INTEGER" />
-      <FIELD NAME="Case"    TYPE="INTEGER" />
-      <FIELD NAME="Steps"   REFTYPE="Step" MODE="DEFAULT"/>
-      <FIELD NAME="Comment" TYPE="PCHAR" />
+      <FIELD NAME="Feature"           TYPE="INTEGER" />
+      <FIELD NAME="Case"              TYPE="INTEGER" />
+      <FIELD NAME="Steps"             REFTYPE="Step" MODE="DEFAULT"/>
+      <FIELD NAME="ObsoleteComment"   TYPE="PCHAR">
+        <META NAME="DoNotCompare" />
+      </FIELD>
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="Feature" TARGET="Feature" OPTIONAL="TRUE" DEFAULT="9999" />
@@ -850,7 +856,7 @@
     <FORMULA>
       <CONCAT>
         <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
-          <PCDATA TARGET="Comment"/>
+          <PCDATA TARGET="ObsoleteComment"/>
         </ENCLOSED>
         <ENCLOSED NAME="Steps" OPTIONAL="TRUE" >
           <REPEAT TARGET="Steps">
@@ -981,11 +987,13 @@
       </FIELD>
       <FIELD NAME="Condition"  TYPE="PCHAR"/>
       <FIELD NAME="Comment"    TYPE="PCHAR"/>
+      <FIELD NAME="CyclePhase" ENUMTYPE="RulePriority"/>
     </FIELDS>
     <ATTRIBUTES>
-      <ATTR NAME="Kind"     TARGET="Kind"     OPTIONAL="TRUE" DEFAULT="Instantaneous"/>
-      <ATTR NAME="Blocking" TARGET="Blocking" OPTIONAL="TRUE" DEFAULT="TRUE"/>
-      <ATTR NAME="DeadLine" TARGET="DeadLine" OPTIONAL="TRUE" DEFAULT="0"/>
+      <ATTR NAME="Kind"       TARGET="Kind"       OPTIONAL="TRUE" DEFAULT="Instantaneous"/>
+      <ATTR NAME="Blocking"   TARGET="Blocking"   OPTIONAL="TRUE" DEFAULT="TRUE"/>
+      <ATTR NAME="DeadLine"   TARGET="DeadLine"   OPTIONAL="TRUE" DEFAULT="0"/>
+      <ATTR NAME="CyclePhase" TARGET="CyclePhase" OPTIONAL="TRUE" />
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
