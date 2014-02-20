@@ -23,7 +23,7 @@ namespace DataDictionary.Interpreter.Refactor
     /// <summary>
     /// This visitor is used to handle refactoring of expressions.
     /// </summary>
-    public class RefactorTree : Interpreter.Visitor
+    public class RefactorTree : BaseRefactorTree
     {
         /// <summary>
         /// The model element which should be refactored
@@ -35,32 +35,6 @@ namespace DataDictionary.Interpreter.Refactor
         /// </summary>
         private string ReplacementValue { get; set; }
 
-        /// <summary>
-        /// The textual expression to be refactored
-        /// </summary>
-        public string Text { get; private set; }
-
-        /// <summary>
-        /// The delta in the indexes to be applied to take care 
-        /// of the size difference between the replacement text 
-        /// and the original text
-        /// </summary>
-        private int Delta { get; set; }
-
-        /// <summary>
-        /// Replace the text, between locations start and end with the replacement value
-        /// Update Delta according to this replacement
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        private void ReplaceText(int start, int end)
-        {
-            Text = Text.Substring(0, start) + ReplacementValue + Text.Substring(end, Text.Length - end);
-
-            int len = end - start;
-            Delta = Delta + (ReplacementValue.Length - len);
-        }
-
         protected override void VisitDerefExpression(DerefExpression derefExpression)
         {
             bool replaced = false;
@@ -69,7 +43,7 @@ namespace DataDictionary.Interpreter.Refactor
             {
                 if (derefExpression.Ref == Ref)
                 {
-                    ReplaceText(derefExpression.Start + Delta, derefExpression.End + Delta);
+                    ReplaceText(ReplacementValue, derefExpression.Start, derefExpression.End);
                     replaced = true;
                 }
                 else
@@ -80,7 +54,7 @@ namespace DataDictionary.Interpreter.Refactor
                         {
                             if (expression.Ref == Ref)
                             {
-                                ReplaceText(derefExpression.Start + Delta, expression.End + Delta);
+                                ReplaceText(ReplacementValue, derefExpression.Start, expression.End);
                                 replaced = true;
                                 break;
                             }
@@ -99,7 +73,7 @@ namespace DataDictionary.Interpreter.Refactor
         {
             if (designator.Ref == Ref && designator.Location != Designator.LocationEnum.This)
             {
-                ReplaceText(designator.Start + Delta, designator.End + Delta);
+                ReplaceText(ReplacementValue, designator.Start, designator.End);
             }
         }
 
@@ -111,16 +85,10 @@ namespace DataDictionary.Interpreter.Refactor
         /// <param name="reference"></param>
         /// <param name="replacementValue"></param>
         public RefactorTree(InterpreterTreeNode interpreterTreeNode, string text, ModelElement reference, string replacementValue)
+            : base(interpreterTreeNode, text)
         {
-            Text = text;
             Ref = reference;
             ReplacementValue = replacementValue;
-            Delta = 0;
-
-            if (interpreterTreeNode != null)
-            {
-                VisitInterpreterTreeNode(interpreterTreeNode);
-            }
         }
     }
 }
