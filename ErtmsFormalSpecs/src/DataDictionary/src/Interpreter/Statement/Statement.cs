@@ -24,8 +24,10 @@ namespace DataDictionary.Interpreter.Statement
         /// Constructor
         /// </summary>
         /// <param name="root">The root element for which this element is built</param>
-        public Statement(ModelElement root, ModelElement log)
-            : base(root, log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public Statement(ModelElement root, ModelElement log, int start, int end)
+            : base(root, log, start, end)
         {
         }
 

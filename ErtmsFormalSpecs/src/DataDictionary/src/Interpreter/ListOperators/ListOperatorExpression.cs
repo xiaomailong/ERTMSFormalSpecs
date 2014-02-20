@@ -57,8 +57,10 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="listExpression"></param>
         /// <param name="function"></param>
         /// <param name="root">the root element for which this expression should be parsed</param>
-        public ListOperatorExpression(ModelElement root, ModelElement log, Expression listExpression)
-            : base(root, log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public ListOperatorExpression(ModelElement root, ModelElement log, Expression listExpression, int start, int end)
+            : base(root, log, start, end)
         {
             ListExpression = listExpression;
             ListExpression.Enclosing = this;

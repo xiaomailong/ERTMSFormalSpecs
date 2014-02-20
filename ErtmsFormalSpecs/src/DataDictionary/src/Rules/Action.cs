@@ -22,13 +22,21 @@ namespace DataDictionary.Rules
     {
         public override string Name
         {
-            get { return Expression; }
+            get { return ExpressionText; }
             set { }
         }
 
-        public string Expression
+        public override string ExpressionText
         {
-            get { return getExpression(); }
+            get
+            {
+                string retVal = getExpression();
+                if (retVal == null)
+                {
+                    retVal = "";
+                }
+                return retVal;
+            }
             set
             {
                 setExpression(value);
@@ -47,7 +55,7 @@ namespace DataDictionary.Rules
             {
                 if (statement == null)
                 {
-                    statement = EFSSystem.ParseStatement(this, Expression);
+                    statement = EFSSystem.ParseStatement(this, ExpressionText);
                 }
                 return statement;
             }
@@ -57,18 +65,23 @@ namespace DataDictionary.Rules
             }
         }
 
-        public override string ExpressionText
+        public Interpreter.InterpreterTreeNode Tree { get { return Statement; } }
+
+        /// <summary>
+        /// Clears the statement tree to ensure new compilation
+        /// </summary>
+        public void CleanCompilation()
         {
-            get
-            {
-                string retVal = Expression;
-                if (retVal == null)
-                {
-                    retVal = "";
-                }
-                return retVal;
-            }
-            set { Expression = value; }
+            Statement = null;
+        }
+
+        /// <summary>
+        /// Creates the tree according to the statement text
+        /// </summary>
+        public void Compile()
+        {
+            // Side effect, builds the statement if it is not already built
+            Interpreter.InterpreterTreeNode tree = Tree;
         }
 
         /// <summary>
@@ -252,7 +265,7 @@ namespace DataDictionary.Rules
         /// <returns></returns>
         public override string getExplain()
         {
-            string retVal = Expression;
+            string retVal = ExpressionText;
 
             return retVal;
         }

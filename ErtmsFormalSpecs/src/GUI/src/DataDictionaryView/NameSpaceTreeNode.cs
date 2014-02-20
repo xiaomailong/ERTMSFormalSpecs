@@ -240,11 +240,15 @@ namespace GUI.DataDictionaryView
                 }
                 else if (SourceNode is NameSpaceTreeNode)
                 {
-                    NameSpaceTreeNode nameSpaceTreeNode = SourceNode as NameSpaceTreeNode;
-                    DataDictionary.Types.NameSpace nameSpace = nameSpaceTreeNode.Item;
+                    DialogResult result = MessageBox.Show("This will move the namespace, are you sure ? ", "Confirm moving the namespace", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.OK)
+                    {
+                        NameSpaceTreeNode nameSpaceTreeNode = SourceNode as NameSpaceTreeNode;
+                        DataDictionary.Types.NameSpace nameSpace = nameSpaceTreeNode.Item;
 
-                    nameSpaceTreeNode.Delete();
-                    AddNameSpace(nameSpace);
+                        nameSpaceTreeNode.Delete();
+                        AddNameSpace(nameSpace);
+                    }
                 }
             }
         }

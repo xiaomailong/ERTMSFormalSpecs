@@ -144,6 +144,24 @@ namespace DataDictionary
 
                 base.visit(obj, visitSubNodes);
             }
+
+            /// <summary>
+            /// Updates the state machine : initial state has been moved to the default value
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.StateMachine obj, bool visitSubNodes)
+            {
+                Types.StateMachine stateMachine = (Types.StateMachine)obj;
+
+                if (string.IsNullOrEmpty(stateMachine.getDefault()))
+                {
+                    stateMachine.setDefault(stateMachine.getInitialState());
+                }
+                stateMachine.setInitialState(null);
+
+                base.visit(obj, visitSubNodes);
+            }
         }
 
         /// <summary>

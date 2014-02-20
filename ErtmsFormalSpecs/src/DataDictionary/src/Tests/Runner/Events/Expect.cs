@@ -67,7 +67,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// </summary>
         /// <param name="id"></param>
         public Expect(Expectation expectation)
-            : base(expectation.Expression, expectation)
+            : base(expectation.ExpressionText, expectation)
         {
             Expectation = expectation;
             State = EventState.Active;

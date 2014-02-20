@@ -171,15 +171,5 @@ namespace DataDictionary.Tests
 
             return retVal;
         }
-
-        /// <summary>
-        /// The comment related to this element
-        /// </summary>
-        public string Comment
-        {
-            get { return getComment(); }
-            set { setComment(value); }
-        }
-
     }
 }

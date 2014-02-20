@@ -33,8 +33,10 @@ namespace DataDictionary.Interpreter
         /// <param name="left"></param>
         /// <param name="op"></param>
         /// <param name="right"></param>
-        public DerefExpression(ModelElement root, ModelElement log, List<Expression> arguments)
-            : base(root, log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public DerefExpression(ModelElement root, ModelElement log, List<Expression> arguments, int start, int end)
+            : base(root, log, start, end)
         {
             Arguments = arguments;
 

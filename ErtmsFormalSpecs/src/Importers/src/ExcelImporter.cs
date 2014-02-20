@@ -169,19 +169,19 @@ namespace Importers
             aStep.AddModelElement(aSubStep);
 
             TestAction powerOn = new TestAction();
-            powerOn.Expression = "Kernel.PowerOn <- True";
+            powerOn.ExpressionText = "Kernel.PowerOn <- True";
             aSubStep.AddModelElement(powerOn);
 
             TestAction modeInitialization = new TestAction();
-            modeInitialization.Expression = "Kernel.Mode <- Mode.FS";
+            modeInitialization.ExpressionText = "Kernel.Mode <- Mode.FS";
             aSubStep.AddModelElement(modeInitialization);
 
             TestAction levelInitialization = new TestAction();
-            levelInitialization.Expression = "Kernel.Level <- Kernel.LevelData\n{\n    Value => Level.L1,\n    DataState => DataState.Valid\n}";
+            levelInitialization.ExpressionText = "Kernel.Level <- Kernel.LevelData\n{\n    Value => Level.L1,\n    DataState => DataState.Valid\n}";
             aSubStep.AddModelElement(levelInitialization);
 
             TestAction odometryInitialization = new TestAction();
-            odometryInitialization.Expression = "Odometry.NominalDistance <- 0.0";
+            odometryInitialization.ExpressionText = "Odometry.NominalDistance <- 0.0";
             aSubStep.AddModelElement(odometryInitialization);
         }
 
@@ -1203,7 +1203,7 @@ namespace Importers
         private void addAction(SubStep aSubStep, string expression)
         {
             TestAction anAction = new TestAction();
-            anAction.Expression = expression;
+            anAction.ExpressionText = expression;
             aSubStep.AddModelElement(anAction);
         }
 
@@ -1212,7 +1212,7 @@ namespace Importers
         private void addExpectation(SubStep aSubStep, string expression)
         {
             Expectation anExpectation = new Expectation();
-            anExpectation.Expression = expression;
+            anExpectation.ExpressionText = expression;
             anExpectation.Blocking = true;
             aSubStep.AddModelElement(anExpectation);
         }
@@ -1234,7 +1234,7 @@ namespace Importers
                 if (values[i] != -1)
                 {
                     Expectation expectation = new Expectation();
-                    expectation.Expression = String.Format(CultureInfo.InvariantCulture, expression, Math.Round(speedValues[i], 2), Math.Round(values[i], 2));
+                    expectation.ExpressionText = String.Format(CultureInfo.InvariantCulture, expression, Math.Round(speedValues[i], 2), Math.Round(values[i], 2));
                     aSubStep.AddModelElement(expectation);
                 }
             }
@@ -1257,7 +1257,7 @@ namespace Importers
                 if (values[i] != -1)
                 {
                     Expectation expectation = new Expectation();
-                    expectation.Expression = String.Format(CultureInfo.InvariantCulture, expression, Math.Round(distanceValues[i], 2), Math.Round(speedValues[i], 2), Math.Round(values[i], 4));
+                    expectation.ExpressionText = String.Format(CultureInfo.InvariantCulture, expression, Math.Round(distanceValues[i], 2), Math.Round(speedValues[i], 2), Math.Round(values[i], 4));
                     aSubStep.AddModelElement(expectation);
                 }
             }

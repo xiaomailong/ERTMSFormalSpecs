@@ -101,9 +101,17 @@ namespace DataDictionary.Interpreter
         {
             string retVal = Message;
 
-            foreach (ExplanationPart part in SubExplanations)
+            if (retVal.Length < EFSSystem.INSTANCE.MaxExplainSize)
             {
-                retVal += "\n" + part.ToString();
+                foreach (ExplanationPart part in SubExplanations)
+                {
+                    retVal += "\n" + part.ToString();
+
+                    if (retVal.Length > EFSSystem.INSTANCE.MaxExplainSize)
+                    {
+                        break;
+                    }
+                }
             }
 
             return retVal;

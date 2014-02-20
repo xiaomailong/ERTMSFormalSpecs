@@ -77,11 +77,31 @@ namespace DataDictionary.Functions
             {
                 if (expression == null)
                 {
-                    expression = EFSSystem.Parser.Expression(EnclosingFunction, ExpressionText);
+                    expression = EFSSystem.Parser.Expression(this, ExpressionText);
                 }
                 return expression;
             }
             set { expression = value; }
+        }
+
+        public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
+
+
+        /// <summary>
+        /// Clears the expression tree to ensure new compilation
+        /// </summary>
+        public void CleanCompilation()
+        {
+            Expression = null;
+        }
+
+        /// <summary>
+        /// Creates the tree according to the expression text
+        /// </summary>
+        public void Compile()
+        {
+            // Side effect, builds the statement if it is not already built
+            Interpreter.InterpreterTreeNode tree = Tree;
         }
 
         /// <summary>
@@ -103,7 +123,7 @@ namespace DataDictionary.Functions
             bool retVal = true;
             foreach (DataDictionary.Rules.PreCondition preCondition in PreConditions)
             {
-                Interpreter.Expression expression = preCondition.ExpressionTree;
+                Interpreter.Expression expression = preCondition.Expression;
                 Values.BoolValue value = expression.GetValue(context) as Values.BoolValue;
 
                 if (value != null)
@@ -226,9 +246,9 @@ namespace DataDictionary.Functions
 
             foreach (PreCondition preCondition in PreConditions)
             {
-                if (preCondition.ExpressionTree != null)
+                if (preCondition.Expression != null)
                 {
-                    retVal.AddRange(preCondition.ExpressionTree.GetLiterals());
+                    retVal.AddRange(preCondition.Expression.GetLiterals());
                 }
             }
 

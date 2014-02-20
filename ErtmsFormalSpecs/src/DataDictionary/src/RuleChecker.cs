@@ -469,7 +469,7 @@ namespace DataDictionary
 
                     foreach (Rules.PreCondition preCondition in ruleCondition.PreConditions)
                     {
-                        Interpreter.BinaryExpression expression = checkExpression(preCondition, preCondition.Expression) as Interpreter.BinaryExpression;
+                        Interpreter.BinaryExpression expression = checkExpression(preCondition, preCondition.ExpressionText) as Interpreter.BinaryExpression;
                         if (expression != null)
                         {
                             if (expression.IsSimpleEquality())
@@ -607,9 +607,9 @@ namespace DataDictionary
                 try
                 {
                     action.Messages.Clear();
-                    if (!action.Expression.Contains('%'))
+                    if (!action.ExpressionText.Contains('%'))
                     {
-                        Interpreter.Statement.Statement statement = checkStatement(action, action.Expression);
+                        Interpreter.Statement.Statement statement = checkStatement(action, action.ExpressionText);
                     }
                 }
                 catch (Exception exception)
@@ -630,15 +630,15 @@ namespace DataDictionary
                 try
                 {
                     expect.Messages.Clear();
-                    if (!expect.Expression.Contains("%"))
+                    if (!expect.ExpressionText.Contains("%"))
                     {
-                        Interpreter.Expression expression = checkExpression(expect, expect.Expression);
+                        Interpreter.Expression expression = checkExpression(expect, expect.ExpressionText);
                         if (!expect.EFSSystem.BoolType.Match(expression.GetExpressionType()))
                         {
                             expect.AddError("Expression type should be Boolean");
                         }
                     }
-                    if (expect.getCondition() != null && !expect.getCondition().Contains("%"))
+                    if (!string.IsNullOrEmpty(expect.getCondition()) && !expect.getCondition().Contains("%"))
                     {
                         Interpreter.Expression expression = checkExpression(expect, expect.getCondition());
                         if (expression != null)
@@ -673,7 +673,7 @@ namespace DataDictionary
 
                 if (stateMachine.AllValues.Count > 0)
                 {
-                    if (Utils.Utils.isEmpty(stateMachine.InitialState))
+                    if (Utils.Utils.isEmpty(stateMachine.Default))
                     {
                         stateMachine.AddError("Empty initial state");
                     }

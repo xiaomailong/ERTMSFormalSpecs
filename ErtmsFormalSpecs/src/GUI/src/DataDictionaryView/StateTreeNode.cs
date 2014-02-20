@@ -51,8 +51,8 @@ namespace GUI.DataDictionaryView
             [Category("Default"), TypeConverter(typeof(InternalStateTypeConverter))]
             public string InitialState
             {
-                get { return Item.StateMachine.InitialState; }
-                set { Item.StateMachine.InitialState = value; }
+                get { return Item.StateMachine.Default; }
+                set { Item.StateMachine.Default = value; }
             }
         }
 

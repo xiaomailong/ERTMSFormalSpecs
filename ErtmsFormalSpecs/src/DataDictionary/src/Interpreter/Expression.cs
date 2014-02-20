@@ -441,8 +441,11 @@ namespace DataDictionary.Interpreter
         /// Constructor
         /// </summary>
         /// <param name="root">The root for which this expression should be evaluated</param>
-        public Expression(ModelElement root, ModelElement log)
-            : base(root, log)
+        /// <param name="log"></param>
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public Expression(ModelElement root, ModelElement log, int start, int end)
+            : base(root, log, start, end)
         {
         }
 

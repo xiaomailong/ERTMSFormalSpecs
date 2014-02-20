@@ -1,0 +1,293 @@
+<NameSpace
+ Name="Test"
+ Guid="3d3f9b4a-1bf2-483b-bc24-77563e8e2677"
+>
+<NameSpaces>
+</NameSpaces>
+<Ranges>
+<Range
+ MinValue="0"
+ MaxValue="100"
+ Precision="IntegerPrecision"
+ Default="1"
+ Name="range1"
+ Guid="1fe9ff70-eed4-4ff6-9a3f-3129ffebfe89"
+>
+</Range></Ranges>
+<Enumerations>
+<Enum
+ Default="v1"
+ Name="enum1"
+ Guid="196122af-061b-47da-8494-5d3f8fe0567e"
+>
+<Values>
+<EnumValue
+ Value=""
+ Name="v1"
+ Guid="39be71cd-e54f-42ec-b6ce-f5f8dbfdb3c5"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="v2"
+ Guid="eed25ed3-e2cb-4445-9dfb-c5febd8fa665"
+>
+</EnumValue></Values>
+<SubEnums>
+<Enum
+ Default="v1"
+ Name="enum1"
+ Guid="6f1389fc-5662-46b1-9b7e-06b07cf6bfde"
+>
+<Values>
+<EnumValue
+ Value=""
+ Name="v1"
+ Guid="f4c6575f-6b0d-4c85-b456-49fa9e850784"
+>
+</EnumValue></Values>
+</Enum></SubEnums>
+</Enum></Enumerations>
+<Structures>
+<Structure
+ Name="struct"
+ Guid="39aab2c3-0117-435b-ae23-65f6ea55f8c9"
+>
+<Procedures>
+<Procedure
+ Name="proc2"
+ Guid="f88748b5-562e-4ce3-bc67-a70c56d36e7c"
+>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="stateMachine2"
+ Default=""
+ Mode="Internal"
+ Name="str_stm"
+ Guid="712d1d8a-a079-400b-9a47-5d4af9442f1a"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Name="str_b"
+ Guid="57877d84-d05c-4d95-8d79-fa9028e0000f"
+>
+</StructureElement><StructureElement
+ TypeName="enum1"
+ Default=""
+ Mode="Internal"
+ Name="str_enum"
+ Guid="600d5aae-9997-4eee-aef8-ce2a616542a5"
+>
+</StructureElement><StructureElement
+ TypeName="range1"
+ Default=""
+ Mode="Internal"
+ Name="str_r"
+ Guid="4c187582-846c-43d1-ae8e-39dc14f73464"
+>
+</StructureElement><StateMachines>
+<StateMachine
+ InitialState="State1"
+ Name="stateMachine2"
+ Guid="62f7165d-d460-4bc0-85ff-2f8a626d1c07"
+>
+<States>
+<State
+ X="50"
+ Y="100"
+ Width="100"
+ Height="50"
+ Name="State1"
+ Guid="06227d1f-734c-4115-92c7-0da13438c378"
+>
+<StateMachine
+ InitialState=""
+ Guid="92a6faf2-3d36-4972-91f8-a37756165b5d"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Rule1"
+ Guid="51fd3b50-7bbd-453e-a6c3-8179df9663cf"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="RuleCondition1"
+ Guid="dcf91564-ee12-41d4-ae41-8d63b60f3b4f"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2c5c56d8-70c0-4ee5-8e13-928f801da3d7"
+>THIS &lt;- State2</Action><Action
+ Guid="b6984b3b-e9a1-4ac6-be82-7e28f8f14b75"
+>proc2()</Action><Action
+ Guid="f81c19bf-deb8-4d1b-be33-e5bcc52ebd81"
+>str_b &lt;- False</Action><Action
+ Guid="3d1bad64-9685-4d2f-88e6-04266eda741e"
+>str_enum &lt;- enum1.v2</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="280"
+ Y="100"
+ Width="100"
+ Height="50"
+ Name="State2"
+ Guid="3233759a-bbc4-4894-b339-e0c2b9ecef89"
+>
+<StateMachine
+ InitialState=""
+ Guid="9a446eb7-2721-4a8d-a6c7-a0cdbe9072db"
+>
+</StateMachine></State></States>
+</StateMachine></StateMachines>
+</Structure></Structures>
+<StateMachines>
+<StateMachine
+ InitialState="e1"
+ Name="stateMachine2"
+ Guid="67b16786-8ac6-450f-ad0e-d47bf4d83f83"
+>
+<States>
+<State
+ X="350"
+ Y="230"
+ Width="100"
+ Height="50"
+ Name="e1"
+ Guid="9b5b7f73-0017-4c18-821a-27d75115981a"
+>
+<StateMachine
+ InitialState=""
+ Guid="285cc810-d4fe-4752-9707-9197b8fad198"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Rule1"
+ Guid="573ecefb-6730-4974-a0ad-f5f48bca907f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="RuleCondition1"
+ Guid="ebb1eacb-d1e9-4945-afbf-56fbb98b3c99"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="fa11a767-deda-49d3-960e-f1440331cf41"
+>THIS &lt;- e2</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="580"
+ Y="230"
+ Width="100"
+ Height="50"
+ Name="e2"
+ Guid="02ad54b8-7dad-439e-a464-3bb25b702525"
+>
+<StateMachine
+ InitialState=""
+ Guid="ba389e33-57b9-49e0-8c05-afd56c210e7a"
+>
+</StateMachine></State></States>
+</StateMachine></StateMachines>
+<Functions>
+<Function
+ Type="Integer"
+ Name="func1"
+ Guid="393e84f5-25ea-4dda-9b1f-b1e8c7c02a6e"
+>
+<Parameters>
+<Parameter
+ Type="Integer"
+ Name="z"
+ Guid="06d62ee0-09f6-4c15-b53f-37427de87882"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="&lt;Case1&gt;"
+ Guid="cedd0104-e28d-4b76-870b-2a607a9dcb89"
+>
+<PreConditions>
+<PreCondition
+ Guid="6ec37c0b-c0ab-47ea-b665-a6081b6dc6e2"
+>z == 1</PreCondition></PreConditions>
+<Expression>2</Expression>
+</Case><Case
+ Name="&lt;Case2&gt;"
+ Guid="4fb95eba-83aa-45cb-aa27-efb460672a59"
+>
+<PreConditions>
+<PreCondition
+ Guid="c844ef22-0969-447f-86d1-9df5459f73a1"
+>z == 2</PreCondition></PreConditions>
+<Expression>3</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Name="proc2"
+ Guid="59fad7ed-0252-4752-8684-d6d75ea3d96b"
+>
+<Parameters>
+<Parameter
+ Type="Integer"
+ Name="z"
+ Guid="e8677c46-9906-4d45-b0d0-f0517bb9578f"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="&lt;Rule1&gt;"
+ Guid="f27900b6-8d39-409e-9800-35b69c4d213b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="&lt;Rule1&gt;"
+ Guid="1295ab0b-2150-47e9-bb12-87f3f3a9189a"
+>
+<PreConditions>
+<PreCondition
+ Guid="3459c71a-b7f7-4efc-9198-edfe16ee31b7"
+>z == 1</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="77192634-43c2-45cf-bc05-2a9c9c6e6069"
+>val_v &lt;- 3</Action><Action
+ Guid="345eaf4e-45f3-4dc1-a64b-ce9da12ae944"
+>val_v &lt;- func1( z =&gt; 4 )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<Variables>
+<Variable
+ Type="range1"
+ VariableMode="Internal"
+ Name="val_v"
+ Guid="9136cd4f-c95c-448c-b10f-a8b28092d541"
+>
+</Variable><Variable
+ Type="stateMachine2"
+ VariableMode="Internal"
+ Name="val_stm"
+ Guid="bda3ed56-67d3-4ed3-9980-b6b297420836"
+>
+</Variable><Variable
+ Type="enum1"
+ VariableMode="Internal"
+ Name="val_enum"
+ Guid="ab196326-55d4-4308-b226-62e10480ff6d"
+>
+</Variable></Variables>
+</NameSpace>

@@ -553,14 +553,14 @@ USING
 >
 <Expression>(REDUCE SSP 
     USING  
-        MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; StaticSpeedRestriction( aSSP =&gt; X, Distance =&gt; d ), 
+        MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; ComputeStaticSpeedRestriction( aSSP =&gt; X, Distance =&gt; d ), 
                   Second =&gt; RESULT )
 INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Implemented="TRUE"
- Name="StaticSpeedRestriction"
+ Name="ComputeStaticSpeedRestriction"
  Guid="8959058c-12eb-4e66-8f02-ae33b355cdb1"
 >
 <ReqRef

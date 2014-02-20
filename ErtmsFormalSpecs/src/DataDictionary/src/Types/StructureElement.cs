@@ -84,9 +84,24 @@ namespace DataDictionary.Types
         /// </summary>
         public string TypeName
         {
-            get { return getTypeName(); }
-            set { setTypeName(value); }
+            get
+            {
+                return getTypeName();
+            }
+            set
+            {
+                Type = null;
+                setTypeName(value);
+
+                // Ensure types and typename are synchronized
+                __type = Type;
+            }
         }
+
+        /// <summary>
+        /// The cached type
+        /// </summary>
+        private Type __type;
 
         /// <summary>
         /// The type associated to this structure element
@@ -95,30 +110,35 @@ namespace DataDictionary.Types
         {
             get
             {
-                Type retVal = null;
-
-                // Find the corresponding state machine in the structure's state machines
-                Structure structure = (Structure)Enclosing;
-                List<Utils.INamable> tmp = new List<Utils.INamable>();
-                structure.Find(getTypeName(), tmp);
-                foreach (Utils.INamable namable in tmp)
-                {
-                    StateMachine stateMachine = namable as StateMachine;
-                    if (stateMachine != null)
-                    {
-                        retVal = stateMachine;
-                        break;
-                    }
-                }
+                Type retVal = __type;
 
                 if (retVal == null)
                 {
-                    retVal = EFSSystem.findType(NameSpace, getTypeName());
+                    // Find the corresponding state machine in the structure's state machines
+                    Structure structure = (Structure)Enclosing;
+                    List<Utils.INamable> tmp = new List<Utils.INamable>();
+                    structure.Find(getTypeName(), tmp);
+                    foreach (Utils.INamable namable in tmp)
+                    {
+                        StateMachine stateMachine = namable as StateMachine;
+                        if (stateMachine != null)
+                        {
+                            retVal = stateMachine;
+                            break;
+                        }
+                    }
+
+                    if (retVal == null)
+                    {
+                        retVal = EFSSystem.findType(NameSpace, getTypeName());
+                    }
                 }
+
                 return retVal;
             }
             set
             {
+                __type = value;
                 if (value != null)
                 {
                     setTypeName(value.getName());
@@ -155,6 +175,66 @@ namespace DataDictionary.Types
             set { setDefault(value); }
         }
 
+        public override string ExpressionText
+        {
+            get
+            {
+                string retVal = Default;
+
+                if (retVal == null)
+                {
+                    retVal = "";
+                }
+
+                return retVal;
+            }
+            set
+            {
+                Default = value;
+                __expression = null;
+            }
+        }
+
+        /// <summary>
+        /// Provides the expression tree associated to this action's expression
+        /// </summary>
+        private Interpreter.Expression __expression;
+        public Interpreter.Expression Expression
+        {
+            get
+            {
+                if (__expression == null)
+                {
+                    __expression = EFSSystem.Parser.Expression(this, ExpressionText);
+                }
+
+                return __expression;
+            }
+            set
+            {
+                __expression = value;
+            }
+        }
+
+        public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
+
+        /// <summary>
+        /// Clears the expression tree to ensure new compilation
+        /// </summary>
+        public void CleanCompilation()
+        {
+            Expression = null;
+        }
+
+        /// <summary>
+        /// Creates the tree according to the expression text
+        /// </summary>
+        public void Compile()
+        {
+            // Side effect, builds the statement if it is not already built
+            Interpreter.InterpreterTreeNode tree = Tree;
+        }
+
         /// <summary>
         /// Provides the variable's default value
         /// </summary>
@@ -176,10 +256,9 @@ namespace DataDictionary.Types
 
                         if (retVal == null)
                         {
-                            Interpreter.Expression expression = EFSSystem.Parser.Expression(this, Default);
-                            if (expression != null)
+                            if (Expression != null)
                             {
-                                retVal = expression.GetValue(new Interpreter.InterpretationContext(this));
+                                retVal = Expression.GetValue(new Interpreter.InterpretationContext(this));
                                 if (retVal != null && !Type.Match(retVal.Type))
                                 {
                                     AddError("Default value type (" + retVal.Type.Name + ")does not match variable type (" + Type.Name + ")");
@@ -203,22 +282,6 @@ namespace DataDictionary.Types
             }
         }
 
-        public override string ExpressionText
-        {
-            get
-            {
-                string retVal = getDefault();
-                if (retVal == null)
-                {
-                    retVal = "";
-                }
-                return retVal;
-            }
-            set
-            {
-                setDefault(value);
-            }
-        }
         /// <summary>
         /// Adds a model element in this model element
         /// </summary>

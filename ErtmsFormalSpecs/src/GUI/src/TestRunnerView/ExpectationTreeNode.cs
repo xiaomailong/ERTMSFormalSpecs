@@ -85,6 +85,16 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
+            /// The item name
+            /// </summary>
+            [Category("Description"), TypeConverter(typeof(Converters.CyclePhaseConverter))]
+            public DataDictionary.Generated.acceptor.RulePriority CyclePhase
+            {
+                get { return Item.getCyclePhase(); }
+                set { Item.setCyclePhase(value); }
+            }
+
+            /// <summary>
             /// Updates the activation state of each entry, according to the values of the edited element
             /// </summary>
             protected override void UpdateActivation()

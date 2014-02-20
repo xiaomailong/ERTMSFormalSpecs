@@ -129,5 +129,17 @@ namespace DataDictionary
 
             return retVal;
         }
+
+        /// <summary>
+        /// Provides the name of this model element when accessing it from the other model element (provided as parameter)
+        /// </summary>
+        /// <param name="modelElement"></param>
+        /// <returns></returns>
+        public override string ReferenceName(ModelElement modelElement)
+        {
+            string retVal = Name;
+
+            return retVal;
+        }
     }
 }

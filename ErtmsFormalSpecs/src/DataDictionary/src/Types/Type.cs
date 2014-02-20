@@ -22,7 +22,7 @@ namespace DataDictionary.Types
     /// <summary>
     /// This is an element which has a default value
     /// </summary>
-    public interface IDefaultValueElement
+    public interface IDefaultValueElement : IExpressionable
     {
         string Default { get; set; }
     }
@@ -122,6 +122,67 @@ namespace DataDictionary.Types
             set { setDefault(value); }
         }
 
+
+        public override string ExpressionText
+        {
+            get
+            {
+                string retVal = Default;
+
+                if (retVal == null)
+                {
+                    retVal = "";
+                }
+
+                return retVal;
+            }
+            set
+            {
+                Default = value;
+                __expression = null;
+            }
+        }
+
+        /// <summary>
+        /// Provides the expression tree associated to this action's expression
+        /// </summary>
+        private Interpreter.Expression __expression;
+        public Interpreter.Expression Expression
+        {
+            get
+            {
+                if (__expression == null)
+                {
+                    __expression = EFSSystem.Parser.Expression(this, ExpressionText);
+                }
+
+                return __expression;
+            }
+            set
+            {
+                __expression = value;
+            }
+        }
+
+        public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
+
+        /// <summary>
+        /// Clears the expression tree to ensure new compilation
+        /// </summary>
+        public void CleanCompilation()
+        {
+            Expression = null;
+        }
+
+        /// <summary>
+        /// Creates the tree according to the expression text
+        /// </summary>
+        public void Compile()
+        {
+            // Side effect, builds the statement if it is not already built
+            Interpreter.InterpreterTreeNode tree = Tree;
+        }
+
         /// <summary>
         /// The default value
         /// </summary>
@@ -139,8 +200,10 @@ namespace DataDictionary.Types
 
                         if (retVal == null)
                         {
-                            Interpreter.Expression expression = EFSSystem.Parser.Expression(this, Default);
-                            retVal = expression.GetValue(new InterpretationContext(this));
+                            if (Expression != null)
+                            {
+                                retVal = Expression.GetValue(new InterpretationContext(this));
+                            }
                         }
                     }
                 }

@@ -35,8 +35,10 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="root">The root element for which this model is built</param>
         /// <param name="designator"></parparam>
-        public Term(ModelElement root, ModelElement log, Designator designator)
-            : base(root, log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public Term(ModelElement root, ModelElement log, Designator designator, int start, int end)
+            : base(root, log, start, end)
         {
             Designator = designator;
             Designator.Enclosing = this;
@@ -47,8 +49,10 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="root">The root element for which this model is built</param>
         /// <param name="literal"></param>
-        public Term(ModelElement root, ModelElement log, Expression literal)
-            : base(root, log)
+        /// <param name="start">The start character for this expression in the original string</param>
+        /// <param name="end">The end character for this expression in the original string</param>
+        public Term(ModelElement root, ModelElement log, Expression literal, int start, int end)
+            : base(root, log, start, end)
         {
             LiteralValue = literal;
         }

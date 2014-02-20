@@ -52,13 +52,17 @@ namespace Utils
         /// </summary>
         /// <param name="el"></param>
         /// <returns></returns>
-        public static T find(IEnclosed el)
+        public static T find(IEnclosed el, bool consiredThisOne = false)
         {
             object current = null;
 
-            if (el != null)
+            if (el != null && !consiredThisOne)
             {
                 current = el.Enclosing;
+            }
+            else
+            {
+                current = el;
             }
             while (current != null && !(current is T))
             {

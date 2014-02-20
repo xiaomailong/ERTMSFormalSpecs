@@ -198,6 +198,11 @@ namespace GUI.Converters
             }
             retVal.Sort();
 
+            if (retVal.Count == 0)
+            {
+                retVal.Add("");
+            }
+
             return new StandardValuesCollection(retVal);
         }
 

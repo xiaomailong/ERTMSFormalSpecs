@@ -22,160 +22,56 @@
 </ReqRef><Comment>It will represent the JRU structure for all its elements</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
+ Priority="Processing"
  Implemented="TRUE"
  Name="SendMessage"
- Guid="e099ac06-9929-4fb6-a309-f7dd215f858e"
+ Guid="5b350aa5-3c13-4952-ab53-44c7d5822a49"
 >
-<ReqRef
- Id="afff8a8f-43e0-4227-a33e-7bc28cb8661d"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="587d701b-115a-4739-a45e-310496596b2e"
->
-</ReqRef><Comment>Rule which be in charge of determening when is necessary to send a JRU Message</Comment>
+<Comment>This will call the procedure to send, update the internal variables involve in sending a JRU Message and cleaning up at the end of the cycle</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="SendMessage"
- Guid="6adace2d-8413-4265-a732-4cfc6ca754a5"
+ Guid="a7f33512-4c80-4318-90a3-c8d22b05e9af"
 >
-<Comment>This rule will be in charge of generating the right JRU massege and to fill it.</Comment>
+<Comment>If it is necessary to send a new JRU Message, it will be created, filled and sent. And the involved variables will be updated </Comment>
 <PreConditions>
 <PreCondition
  Guid="c7be3f63-444c-4d7c-8b71-dd667a30c684"
->SendJruNewMessage(THIS) == True</PreCondition></PreConditions>
+>SendNewMessage(THIS) == True</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ceacc66c-5e57-4024-81f9-daf7d248fcdf"
->JRU.SendJruMessage()</Action></Actions>
+>JRU.HandleMessagesOut()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
  Implemented="TRUE"
- Name="CleanUp"
- Guid="b805dd78-9b08-4e02-99a3-813033fa1785"
+ Name="DeleteStoredMessages"
+ Guid="8e013c77-ac47-468b-81fc-5ef21adc89b9"
 >
-<Comment>Getting ready for the next cycle</Comment>
+<Comment>Before the begining of a new cycle the list of messages should be deleted</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="CleanUp"
- Guid="b614f541-65ff-4dd9-8e90-7f36443832bd"
+ Name="DeleteStoredMessages"
+ Guid="0b1ab671-c10b-4e7c-af8d-916036cf916e"
 >
-<Comment>Do the CleanUp</Comment>
+<Comment>Before the begining of a new cycle the list of messages should be deleted</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="06d0091f-b48f-486b-8088-c41f6e231e53"
->PreviousSystemVersion &lt;- Kernel.OperatedSystemVersion.Value</Action><Action
- Guid="2530de24-0c40-4088-b0a4-1325135e6574"
->PreviousTrainData &lt;- Kernel.TrainData.TrainData.Value</Action><Action
- Guid="d1059a2b-c836-41a2-858f-bde87944278a"
->PreviousKernelMode &lt;- Kernel.Mode</Action><Action
- Guid="22c9d4de-9284-4627-9d4b-5a958d7d0250"
->PreviousKernelLevel &lt;- Kernel.Level.Value</Action><Action
- Guid="c4ddae0a-1491-4a0b-a46d-bd0947ad8b0e"
->PreviousEBStatus &lt;- TIU.EmergencyBrakeCommanded</Action><Action
- Guid="206fd4c8-709e-46c9-8eca-1a121a0cf55f"
->PreviousSBStatus &lt;- TIU.ServiceBrakeCommanded</Action><Action
- Guid="5c8c2f52-cb6b-4ce4-9022-2a9f1a863452"
->PreviousCabAStatus &lt;- TIU.CabA</Action><Action
- Guid="d5f33c9a-11a4-49ef-86a2-6ef2bf0421c0"
->PreviousCabAStatus &lt;- TIU.CabB</Action><Action
- Guid="98009e58-e7f0-47cc-b6c0-d7c27f77a971"
->PreviousDirectionController &lt;- TIU.DirectionControllerInformation</Action><Action
- Guid="03d54f80-2a40-47e9-855c-23efe6bcb38b"
->PreviousTractionStatus &lt;- TIU.TractionIsOn</Action><Action
- Guid="ff2fc6dd-632e-4346-b97b-a4415eb29d66"
->PreviousNationalSystemIsolationStatus &lt;- TIU.NTCIsolated</Action><Action
- Guid="1a56c4c3-7094-43ec-95b1-a199d7bdad13"
->PreviousTractionCutOffCommandStatus &lt;- TIU.CutOffTraction</Action><Action
- Guid="dada19b1-2cf5-48c2-8ba6-ec39706bed95"
->PreviousSleepingInput &lt;- TIU.SleepingRequested</Action><Action
- Guid="f094f37f-9354-4b5b-bad5-85e74959d207"
->PreviousRegenerativeBrakesStatus &lt;- TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive</Action><Action
- Guid="a4f7299c-9231-4697-aed9-2baf1aacd4bc"
->PreviousMagneticShoeBrakeStatus &lt;- TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive</Action><Action
- Guid="ac4c4305-a3dd-45af-9761-831aaa483ba3"
->PreviousEddyCurrentBrakeStatus &lt;- TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive</Action><Action
- Guid="b8e91c3e-a8f3-4376-9406-e24aff685950"
->PreviousElectroPneumaticBrakeStatus &lt;- TIU.SpecialBrakeStatus.EPBrakeIsActive</Action><Action
- Guid="f986b9dc-68c2-48f4-aa19-15bc06d987e7"
->PreviousAdditionalBrakeStatus &lt;- TIU.AdditionalBrakesActive</Action><Action
  Guid="dbfb4ce6-6e75-4ec4-9570-7ba16fe4a050"
->JRUMessages &lt;- []</Action><Action
- Guid="e147e5df-e42d-47f4-b4b4-bfe04454a4d4"
->PreviousSpeedAndDistanceSuppervisionStatus &lt;- Kernel.SupervisionStatus</Action><Action
- Guid="97c2a87c-d97d-488f-b296-648397ba8beb"
->PreviousSpeedAndDistanceSuppervisionType &lt;- Kernel.SpeedAndDistanceMonitoring.Monitoring</Action><Action
- Guid="58633a81-4072-494e-a17d-19e34b04acc0"
->PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><Action
- Guid="d461f9a5-7f7b-482b-8ffa-2ca4aed6d474"
->PreviousTargetSpeed &lt;- DMI.MasterDMI().Out_TargetSpeed.Speed</Action><Action
- Guid="cc02b5bb-d96c-46dd-a3bf-abe2b314c992"
->PreviousTargetDistance &lt;- Kernel.TargetDistance</Action><Action
- Guid="0eb30b56-c6ab-4c4d-800f-f09532b1c04c"
->PreviousReleaseSpeed &lt;- DMI.MasterDMI().Out_ReleaseSpeed.Speed</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Update FLOI"
- Guid="34845207-c16f-4605-b6be-776a620afa66"
->
-<Comment>FLOI value can only be accessed during target speed monitoring.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Update FLOI"
- Guid="1daf6c7f-b2f7-473b-9358-cd415058af78"
->
-<PreConditions>
-<PreCondition
- Guid="f5d3dccb-474d-4877-afbc-cf2657785d82"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="9bc80e3a-1a1a-429f-98aa-42c1d4d761ce"
->PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="UpdateJRUTime"
- Guid="2cefdd03-1df3-4a9c-8fce-54dfb01f7a19"
->
-<Comment>Update Time value in the JRU</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="UpdateTime"
- Guid="82202276-9547-45f4-8495-0353695ff6dc"
->
-<Comment>Update the Time on the JRU.</Comment>
-<PreConditions>
-<PreCondition
- Guid="bd5e4bf2-8113-464b-8859-58726f368827"
->SendMessagePeriodically(THIS)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="30019192-a227-4b3b-b4bc-9ff99059d11b"
->JRU.SendJruMessage()</Action><Action
- Guid="1dd375f4-1c36-44bc-8f3f-fbd3204b191e"
->JRU.JRU1.PreviousTime &lt;- Kernel.CurrentTime</Action></Actions>
+>JRUMessages &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
- Name="SendJruMessage"
+ Name="InitializeMessage"
  Guid="850cfa57-2727-4b9a-8ef7-5f5fa4f69fd7"
 >
 <ReqRef
@@ -292,7 +188,7 @@ GENERAL_MESSAGE =&gt; CreateGeneralMessage()
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="SendTrainDataJruMessage"
+ Name="SendTrainDataMessage"
  Guid="e14c160a-f079-4098-acd4-ae5c59173e72"
 >
 <ReqRef
@@ -322,7 +218,7 @@ GENERAL_MESSAGE =&gt; CreateGeneralMessage()
 <PreConditions>
 <PreCondition
  Guid="5281ff5a-9ae0-47a7-8732-83dc0445fdc2"
->SendTrainDataJruMessage(THIS)</PreCondition></PreConditions>
+>SendTrainDataMessage(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="53c8185c-b1db-4c4c-9778-c8c65d4d4c47"
@@ -843,7 +739,7 @@ NON_LEADING_INPUT =&gt; CreateNonLeadingJruMessage()
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="SendJruRegenerativeBrakesStatus"
+ Name="SendRegenerativeBrakesStatus"
  Guid="d5e5d9d4-6410-44eb-82a3-589fe56ac2d3"
 >
 <ReqRef
@@ -863,9 +759,7 @@ NON_LEADING_INPUT =&gt; CreateNonLeadingJruMessage()
 <PreConditions>
 <PreCondition
  Guid="053ebf6f-8042-41ab-a9f6-a53e7919366d"
->SendJruRegenerativeBrakeStatusMessage(
-    jru=&gt;THIS
-)</PreCondition></PreConditions>
+>SendRegenerativeBrakeStatusMessage(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="844bc5aa-92db-4693-8c5e-3d2ee7a3c480"
@@ -901,7 +795,7 @@ REGENERATIVE_BRAKE_STATUS =&gt; CreateJruRegenerativeBrakeStatusMessage()
 <PreConditions>
 <PreCondition
  Guid="f2b231a2-e8f0-44c5-af05-4961b21c827e"
->SendJruMagneticShoeBrakeStatusMessage(THIS)</PreCondition></PreConditions>
+>SendMagneticShoeBrakeStatusMessage(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f1a52ee0-0a77-4bb8-86df-f584ed7fc2dd"
@@ -927,7 +821,7 @@ MAGNETIC_SHOE_BRAKE_STATUS =&gt; CreateMagneticShoeBrakeStatusJruMessage()
 <PreConditions>
 <PreCondition
  Guid="2bbe675e-f657-4946-beb1-9dfb35b59d33"
->SendJruEddyCurrentBrakeStatusMessage(THIS)</PreCondition></PreConditions>
+>SendEddyCurrentBrakeStatusMessage(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="92d7691a-d1bf-471a-8835-30c3ec7d1a52"
@@ -963,7 +857,7 @@ EDDY_CURRENT_BRAKE_STATUS =&gt; CreateJruEddyCurrentBrakeStatusMessage()
 <PreConditions>
 <PreCondition
  Guid="db6515dc-f306-4242-96ee-bdd2c91b10b3"
->SendJruElectroPneumaticBrakeStatusMessage (THIS)</PreCondition></PreConditions>
+>SendElectroPneumaticBrakeStatusMessage (THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9d2308b5-c95a-4278-9929-d43ffd2fa509"
@@ -999,7 +893,7 @@ ELECTRO_PNEUMATIC_BRAKE_STATUS =&gt; CreateJruElectroPneumaticBrakeStatus()
 <PreConditions>
 <PreCondition
  Guid="598e145c-af44-42c6-93ea-b8305d8d0051"
->SendJruAdditionalBrakeStatusMessage (THIS)</PreCondition></PreConditions>
+>SendAdditionalBrakeStatusMessage (THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="fbdb564d-451c-4808-a07e-dad7af2ceff3"
@@ -1035,14 +929,162 @@ ADDITIONAL_BRAKE_STATUS =&gt; CreateJruAditionalBrakeStatusMessage()
 <PreConditions>
 <PreCondition
  Guid="b68fe90d-3f7f-4f71-be23-059f5f67cf38"
->SendSpeedAndDistanceMonitoringInformationMessage(THIS)</PreCondition></PreConditions>
+>SendSpeedAndDistanceMonitoringInformationMessage(THIS)</PreCondition><PreCondition
+ Guid="24051cc8-c099-4d23-ab52-61960bf5bf51"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e0adc517-5b2f-4309-ab4b-821bd1fbaf57"
 >INSERT Messages.JRU.MESSAGE.Message{
 SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitoringInformationMessage()
-}IN JRUMessages
-</Action></Actions>
+}IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleMessagesOut"
+ Guid="4af08c47-2a93-44e8-b46d-1aefdd295edd"
+>
+<Comment>This procedure will manage all the necessary operations for sending, cleaning and updating all the related elements in sending a JRU Message</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="SendMessage"
+ Guid="54bd0669-2609-4c57-9a66-9e513b28f7f0"
+>
+<Comment>This will be in charge of creating the JRU Message and filling its elements</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="SendMessage"
+ Guid="d17d6fe3-fddb-4a5b-895f-e6007f560bbf"
+>
+<Comment>This will create, fill and send a JRU Message</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="95a5ddb2-ef62-4681-a427-9aa9b06202c7"
+>JRU.JRU.InitializeMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="UpdateVariable"
+ Guid="a3d12684-f0d8-43f8-b546-1512bb42c76b"
+>
+<Comment>This will be in charge of updating the internal variables which must be updated at each cycle.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="UpdateVariables"
+ Guid="0ce50abe-e26f-46a5-ae53-8eb26b04953c"
+>
+<Comment>This will be in charge of updating the internal variables which must be updated at each cycle.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="b8e91c3e-a8f3-4376-9406-e24aff685950"
+>PreviousElectroPneumaticBrakeStatus &lt;- TIU.SpecialBrakeStatus.EPBrakeIsActive</Action><Action
+ Guid="f986b9dc-68c2-48f4-aa19-15bc06d987e7"
+>PreviousAdditionalBrakeStatus &lt;- TIU.AdditionalBrakesActive</Action><Action
+ Guid="e147e5df-e42d-47f4-b4b4-bfe04454a4d4"
+>PreviousSpeedAndDistanceSuppervisionStatus &lt;- Kernel.SupervisionStatus</Action><Action
+ Guid="97c2a87c-d97d-488f-b296-648397ba8beb"
+>PreviousSpeedAndDistanceSuppervisionType &lt;- Kernel.SpeedAndDistanceMonitoring.Monitoring</Action><Action
+ Guid="58633a81-4072-494e-a17d-19e34b04acc0"
+>PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><Action
+ Guid="d461f9a5-7f7b-482b-8ffa-2ca4aed6d474"
+>PreviousTargetSpeed &lt;- DMI.MasterDMI().Out_TargetSpeed.Speed</Action><Action
+ Guid="cc02b5bb-d96c-46dd-a3bf-abe2b314c992"
+>PreviousTargetDistance &lt;- Kernel.TargetDistance</Action><Action
+ Guid="0eb30b56-c6ab-4c4d-800f-f09532b1c04c"
+>PreviousReleaseSpeed &lt;- DMI.MasterDMI().Out_ReleaseSpeed.Speed</Action><Action
+ Guid="ac4c4305-a3dd-45af-9761-831aaa483ba3"
+>PreviousEddyCurrentBrakeStatus &lt;- TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive</Action><Action
+ Guid="a4f7299c-9231-4697-aed9-2baf1aacd4bc"
+>PreviousMagneticShoeBrakeStatus &lt;- TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive</Action><Action
+ Guid="f094f37f-9354-4b5b-bad5-85e74959d207"
+>PreviousRegenerativeBrakesStatus &lt;- TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive</Action><Action
+ Guid="dada19b1-2cf5-48c2-8ba6-ec39706bed95"
+>PreviousSleepingInput &lt;- TIU.SleepingRequested</Action><Action
+ Guid="1a56c4c3-7094-43ec-95b1-a199d7bdad13"
+>PreviousTractionCutOffCommandStatus &lt;- TIU.CutOffTraction</Action><Action
+ Guid="ff2fc6dd-632e-4346-b97b-a4415eb29d66"
+>PreviousNationalSystemIsolationStatus &lt;- TIU.NTCIsolated</Action><Action
+ Guid="03d54f80-2a40-47e9-855c-23efe6bcb38b"
+>PreviousTractionStatus &lt;- TIU.TractionIsOn</Action><Action
+ Guid="98009e58-e7f0-47cc-b6c0-d7c27f77a971"
+>PreviousDirectionController &lt;- TIU.DirectionControllerInformation</Action><Action
+ Guid="d5f33c9a-11a4-49ef-86a2-6ef2bf0421c0"
+>PreviousCabAStatus &lt;- TIU.CabB</Action><Action
+ Guid="5c8c2f52-cb6b-4ce4-9022-2a9f1a863452"
+>PreviousCabAStatus &lt;- TIU.CabA</Action><Action
+ Guid="206fd4c8-709e-46c9-8eca-1a121a0cf55f"
+>PreviousSBStatus &lt;- TIU.ServiceBrakeCommanded</Action><Action
+ Guid="c4ddae0a-1491-4a0b-a46d-bd0947ad8b0e"
+>PreviousEBStatus &lt;- TIU.EmergencyBrakeCommanded</Action><Action
+ Guid="22c9d4de-9284-4627-9d4b-5a958d7d0250"
+>PreviousKernelLevel &lt;- Kernel.Level.Value</Action><Action
+ Guid="d1059a2b-c836-41a2-858f-bde87944278a"
+>PreviousKernelMode &lt;- Kernel.Mode</Action><Action
+ Guid="2530de24-0c40-4088-b0a4-1325135e6574"
+>PreviousTrainData &lt;- Kernel.TrainData.TrainData.Value</Action><Action
+ Guid="06d0091f-b48f-486b-8088-c41f6e231e53"
+>PreviousSystemVersion &lt;- Kernel.OperatedSystemVersion.Value</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update FLOI"
+ Guid="34845207-c16f-4605-b6be-776a620afa66"
+>
+<Comment>FLOI value can only be accessed during target speed monitoring.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update FLOI"
+ Guid="1daf6c7f-b2f7-473b-9358-cd415058af78"
+>
+<PreConditions>
+<PreCondition
+ Guid="f5d3dccb-474d-4877-afbc-cf2657785d82"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9bc80e3a-1a1a-429f-98aa-42c1d4d761ce"
+>PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="UpdateTime"
+ Guid="1d363de1-fe97-49e2-881d-792cbcd438d2"
+>
+<Comment>This will update the value of the PreviousVariable when the condition is satisfied</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="UpdateTime"
+ Guid="4edeeb63-5e31-4a5a-a710-26055ed5458f"
+>
+<Comment>If the condition that the period has passesd is satisfied the PreviousTime variable will be updated</Comment>
+<PreConditions>
+<PreCondition
+ Guid="bd5e4bf2-8113-464b-8859-58726f368827"
+>SendMessagePeriodically(THIS)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1dd375f4-1c36-44bc-8f3f-fbd3204b191e"
+>JRU.JRU1.PreviousTime &lt;- Kernel.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2098,7 +2140,7 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendJruNewMessage"
+ Name="SendNewMessage"
  Guid="0b310333-5920-48db-b09d-f00052cdad46"
 >
 <ReqRef
@@ -2277,13 +2319,13 @@ OR
 OR
 (SendNonLeadingMessage(jru))
 OR
-(SendJruRegenerativeBrakeStatusMessage(jru))
+(SendRegenerativeBrakeStatusMessage(jru))
 OR
-(SendJruMagneticShoeBrakeStatusMessage(jru))
+(SendMagneticShoeBrakeStatusMessage(jru))
 OR
-(SendJruElectroPneumaticBrakeStatusMessage(jru))
+(SendElectroPneumaticBrakeStatusMessage(jru))
 OR
-( SendJruAdditionalBrakeStatusMessage(jru) )
+( SendAdditionalBrakeStatusMessage(jru) )
 OR
 (SendCabStatusMessage(jru))
 OR
@@ -2363,7 +2405,7 @@ OR
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Five Seconds Have Passed"
+ Name="Period Has Passed"
  Guid="b301eb6a-e5a2-4959-98dc-d35c98b846f5"
 >
 <PreConditions>
@@ -2372,7 +2414,7 @@ OR
 >jru.PreviousTime + 5.0 &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="Five Seconds Has not Passed"
+ Name="Period Has not Passed"
  Guid="85b3652b-f811-4c81-9551-755140e412d8"
 >
 <Expression>False</Expression>
@@ -3274,7 +3316,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruEBCommanded()
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendTrainDataJruMessage"
+ Name="SendTrainDataMessage"
  Guid="3ab09d11-2939-4759-9ae4-4720b8542ee2"
 >
 <ReqRef
@@ -3307,12 +3349,8 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruEBCommanded()
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="9e6ff57a-4c5e-4fa5-8104-85e32db99474"
+ Guid="da0fdcde-ae17-49bf-90c5-47b2b67313eb"
 >
-<PreConditions>
-<PreCondition
- Guid="c74fd7b3-db82-4651-b9ea-a2500222b712"
->(TrainDataHaveChanged(jru) != True) OR (TrainDataVerified() != True)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -3663,12 +3701,8 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="d1b29f39-4a26-42c9-b2e9-4cc75f2bd637"
+ Guid="5773c35d-c222-4efa-a0ae-594c47fe6a73"
 >
-<PreConditions>
-<PreCondition
- Guid="b3c5b48a-2f61-42c4-ae99-7b811c754545"
->BTM.Message == EMPTY</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -3995,7 +4029,7 @@ M_CAB_A_STATUS =&gt;ToJruCabAStatus(),
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="cf3231bb-fc1f-4ec2-9caf-8ea505708969"
 >
-</ReqRef><Comment>Function used to determine which will the value which will fill the Q_Cab field on a CabStatus JRU Message</Comment>
+</ReqRef><Comment>Function used to determine which value will fill the Q_Cab field on a CabStatus JRU Message</Comment>
 <Cases>
 <Case
  Name="SetCabBStatusIfThereIsCabB"
@@ -4135,7 +4169,7 @@ OR
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="457e84bd-3a60-4f93-b688-05a250b482fe"
 >
-</ReqRef><Comment>Function used to determine which will the value which will fill the Q_SINGLEDESK field on a CabStatus JRU Message</Comment>
+</ReqRef><Comment>Function used to determine which value will fill the Q_SINGLEDESK field on a CabStatus JRU Message</Comment>
 <Cases>
 <Case
  Name="SingleDeskYes"
@@ -4733,15 +4767,6 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="NationalSystemIsolationHasChanged"
- Guid="60a6c355-2000-4272-b0de-56078eb35c64"
->
-<PreConditions>
-<PreCondition
- Guid="981d9859-c5b4-4e85-a2a7-642699d93479"
->TIU.NTCIsolated != jru.PreviousNationalSystemIsolationStatus</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
  Name="AtStartUp"
  Guid="fcc3e04f-9f3e-4aa8-bc03-256709cbfb03"
 >
@@ -4749,6 +4774,15 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
 <PreCondition
  Guid="f6cc93d5-391e-49ec-996b-60113667e0b0"
 >(IsStartUp(jru) == True ) AND ( Kernel.Level.Value == Default.Level.LNTC )</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NationalSystemIsolationHasChanged"
+ Guid="60a6c355-2000-4272-b0de-56078eb35c64"
+>
+<PreConditions>
+<PreCondition
+ Guid="981d9859-c5b4-4e85-a2a7-642699d93479"
+>TIU.NTCIsolated != jru.PreviousNationalSystemIsolationStatus</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -5012,7 +5046,7 @@ M_SLEEPING =&gt; ToJruSleepingInput()
 <PreConditions>
 <PreCondition
  Guid="1ba7755d-8a48-4e6f-92ec-da399cac0943"
->((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP))</PreCondition></PreConditions>
+>(IsStartUp(jru) == True)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="PassiveShuntingStateChanged"
@@ -5229,7 +5263,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendJruRegenerativeBrakeStatusMessage"
+ Name="SendRegenerativeBrakeStatusMessage"
  Guid="7c497b9d-e45b-4ab4-967b-a0badb0ff8f4"
 >
 <ReqRef
@@ -5334,7 +5368,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendJruMagneticShoeBrakeStatusMessage"
+ Name="SendMagneticShoeBrakeStatusMessage"
  Guid="8b8957b5-e016-44a3-987c-83d1826cd71a"
 >
 <ReqRef
@@ -5438,7 +5472,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendJruEddyCurrentBrakeStatusMessage"
+ Name="SendEddyCurrentBrakeStatusMessage"
  Guid="109ff4ac-ece9-4811-b91b-073d91db3961"
 >
 <ReqRef
@@ -5574,7 +5608,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendJruElectroPneumaticBrakeStatusMessage"
+ Name="SendElectroPneumaticBrakeStatusMessage"
  Guid="7560b854-b250-4d0c-acc0-cf0d8ee7c187"
 >
 <ReqRef
@@ -5678,7 +5712,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="SendJruAdditionalBrakeStatusMessage"
+ Name="SendAdditionalBrakeStatusMessage"
  Guid="21b48e05-4a16-4717-93c4-d325e8b3ee87"
 >
 <ReqRef
@@ -5686,7 +5720,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="153ddef7-05c6-4324-9ef8-0fdabce18f43"
 >
-</ReqRef><Comment>Will determine if it is necessary to send the EddyCurrentBrakeStatus JRU Message</Comment>
+</ReqRef><Comment>Will determine if it is necessary to send the ADDITIONAL_BRKAE_STATUS JRU Message</Comment>
 <Parameters>
 <Parameter
  Type="JRU.JRU"
@@ -5844,7 +5878,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
  Guid="393b633c-2c88-4500-8f99-25bf3690af5e"
 >
 <Expression>Messages.JRU.MESSAGE.SPEED_AND_DISTANCE_MONITORING_INFORMATION.Message{
-    HEADER =&gt; CreateHeader(25),
+    HEADER =&gt; CreateHeader(20),
 M_SDMTYPE =&gt; ToJruSpeedAndDistanceMonitoringType(),
 M_SDMSUPSTAT =&gt; ToJruSpeedAndDistanceMonitoringsupervisionStatus(),
 V_PERM =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_PermittedSpeed.Speed ),
