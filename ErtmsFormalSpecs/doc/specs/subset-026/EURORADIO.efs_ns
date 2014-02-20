@@ -3067,7 +3067,12 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="18a671d3-8767-4b2f-ba96-f58870ebde49"
 >
-</ReqRef><Comment>Allows to establish/terminate the communication session with an RBC.</Comment>
+</ReqRef><ReqRef
+ Id="00910a19-7134-4f24-a20b-6c88aa996ff1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee1377e4-795f-4619-b479-83b10dd2243f"
+>
+</ReqRef><Comment>Allows to establish/terminate the communication session with an RBC. If no mobile temrinal is registered, the order is rejected.</Comment>
 <Parameters>
 <Parameter
  Type="ContactOrderStruct"
@@ -3094,7 +3099,9 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
 <PreConditions>
 <PreCondition
  Guid="8df44f1d-8bc6-47ea-9994-67dde1dc64c4"
->Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
+>Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition><PreCondition
+ Guid="731e47bf-fe1f-43a3-b984-7666dd780b26"
+>TerminalIsRegistered ( aTerminal=&gt; Terminal1 )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="fb0c323a-04ee-47a6-86cd-341b24a90ee3"
@@ -3106,7 +3113,9 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
 >
 <Comment>If the connection is already established on the second mobile terminal, then it will be closed and a new connection will be opened.</Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="7d44a24b-ff5e-4c89-b23a-89f0e9b55029"
+>TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2086e972-9bf9-41fd-bbac-eef71aecabe9"
@@ -3128,7 +3137,12 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7d4f24b0-92a9-4856-a71d-88e34d2d59ac"
 >
-</ReqRef><Comment>Allows to establish the communication session with an accepting RBC.</Comment>
+</ReqRef><ReqRef
+ Id="00910a19-7134-4f24-a20b-6c88aa996ff1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8f46699-f8ba-4513-b978-e524cdf50e85"
+>
+</ReqRef><Comment>Allows to establish the communication session with an accepting RBC. If no mobile terminal is registered, the order is rejected.</Comment>
 <Parameters>
 <Parameter
  Type="ContactOrderStruct"
@@ -3154,7 +3168,9 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
 <PreConditions>
 <PreCondition
  Guid="ffda9f58-de4b-460e-9459-f56d2e21d0d9"
->Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition></PreConditions>
+>Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition><PreCondition
+ Guid="33666d69-9750-4e02-a8e6-c569ffffe0fa"
+>TerminalIsRegistered ( aTerminal=&gt; Terminal1 )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="26ca8f48-278e-43b7-b3a9-85398b8d2fc7"
@@ -3172,7 +3188,9 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
 >
 <Comment>If the first mobile terminal is already connected, the connection will be established on the second one.</Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="1571691d-c431-48e0-9f63-1a441b77ffe8"
+>TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="73ee1e00-5c33-49e9-a6b2-2b8018da8475"
