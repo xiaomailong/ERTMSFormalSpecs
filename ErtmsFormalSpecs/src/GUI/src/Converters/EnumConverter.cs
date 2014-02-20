@@ -168,7 +168,7 @@ namespace GUI.Converters
         public CyclePhaseConverter(Type type)
             : base(type)
         {
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.defaultRulePriority, "<default>"));
+            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.defaultRulePriority, "All"));
             converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aProcessing, "Processing"));
             converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aUpdateINTERNAL, "Update INTERNAL variables"));
             converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aUpdateOUT, "Update OUT variables"));
