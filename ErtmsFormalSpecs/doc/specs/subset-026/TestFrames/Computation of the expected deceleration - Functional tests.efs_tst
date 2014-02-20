@@ -27,6 +27,7 @@
  Guid="1a83fcf8-48fe-4668-af06-ab3d113d160c"
 >
 <Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -270,6 +271,7 @@
  Guid="76d28325-7f7b-4629-aa92-bc4255681d2d"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -338,6 +340,7 @@
  Guid="c68929cb-b0a7-44e9-9260-c888e93fb0e5"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -451,6 +454,7 @@
  Guid="8bf2d128-ecbb-42d1-9968-cf59aa8f59d8"
 >
 <Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -488,34 +492,31 @@
 <Actions>
 <Action
  Guid="defb0655-b840-4a77-8287-2adaee824ae6"
->Kernel.TrackDescription.TrackConditions.TCProfile &lt;- Kernel.TrackDescription.TrackConditions.TrackConditionProfile
-{
-    Conditions =&gt; 
-    [
-        Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-        {
-            Distance =&gt; 1200.0,
-            Length =&gt; 100.0,
-            Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-            {
-                SwitchOffEddyCurrentBrakeForEB =&gt; True,
-                SwitchOffMagneticShoeBrake =&gt; False,
-                SwitchOffRegenerativeBrake =&gt; False
-            }
-        },
-        Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-        {
-            Distance =&gt; 2400.0,
-            Length =&gt; 300.0,
-            Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-            {
-                SwitchOffEddyCurrentBrakeForEB =&gt; False,
-                SwitchOffMagneticShoeBrake =&gt; False,
-                SwitchOffRegenerativeBrake =&gt; True
-            }
+>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- 
+[
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 1200.0,
+        Length =&gt; 100.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+       {
+            SwitchOffEddyCurrentBrakeForEB =&gt; True,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
         }
-    ]
-}</Action><Action
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 2400.0,
+        Length =&gt; 300.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; True
+        }
+    }
+]</Action><Action
  Guid="a356e2a1-d41b-4747-9ba1-b0145479f7cb"
 >Kernel.TrainData.TrainData.Value.RegenerativeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</Action><Action
  Guid="d8b17d45-897a-481d-9fab-d6cb0db93c6c"
@@ -739,6 +740,7 @@
  Guid="1130318a-86a5-4df8-8f46-d181a5df8604"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -817,10 +819,10 @@
 >Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 300.0, d =&gt; 1200.0 ) == 0.2</Expectation><Expectation
  Kind="Instantaneous"
  Guid="6fecaeb0-bad7-4a37-a9be-b228b753ede0"
->Kernel.TrainData.BrakingParameters.A_brk_service ( aTrackCondition =&gt; FIRST_IN Kernel.TrackDescription.TrackConditions.TCProfile.Conditions, V =&gt; 100.0, d =&gt; 1200.0 ) == 0.6</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.A_brk_service ( aTrackCondition =&gt; FIRST_IN Kernel.TrackDescription.TrackConditions.TCProfile, V =&gt; 100.0, d =&gt; 1200.0 ) == 0.6</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c58d3839-b4aa-4036-960d-72aee66541e5"
->Kernel.TrainData.BrakingParameters.A_brk_service ( aTrackCondition =&gt; FIRST_IN Kernel.TrackDescription.TrackConditions.TCProfile.Conditions, V =&gt; 50.0, d =&gt; 1200.0 ) == 0.7</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.A_brk_service ( aTrackCondition =&gt; FIRST_IN Kernel.TrackDescription.TrackConditions.TCProfile, V =&gt; 50.0, d =&gt; 1200.0 ) == 0.7</Expectation><Expectation
  Kind="Instantaneous"
  Guid="5e669392-8edf-434a-8975-3d9ff5ef8333"
 >Kernel.TrainData.BrakingParameters.Default_brk_service ( 50.0 ) == 0.81</Expectation><Expectation

@@ -27,6 +27,7 @@
  Guid="59b3aacc-5a77-45df-831e-d95ffba0f476"
 >
 <Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -250,6 +251,7 @@
  Guid="d5398051-67e3-479e-bedc-82c8f8434070"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -445,6 +447,7 @@
  Guid="08f6c349-b047-41b5-829a-b40c2a037cd7"
 >
 <Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -534,6 +537,7 @@
  Guid="8e56b772-ea45-4004-ac7f-a7acdf2d54ec"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -670,6 +674,7 @@
  Name="Setup"
  Guid="e9a80428-30f9-454f-ba8b-e04e3d1db03a"
 >
+<Comment></Comment>
 <Comment></Comment>
 <Steps>
 <Step
@@ -1080,6 +1085,7 @@
  Guid="025cd56c-c66c-4692-b1c2-ad7ebeb37286"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -1139,6 +1145,7 @@
  Guid="565c8a9b-6978-43b7-a0b2-8d1467cea33f"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -1319,6 +1326,7 @@
  Name="Setup"
  Guid="791a6055-9b2e-41ca-8fe7-4bdc8831f365"
 >
+<Comment></Comment>
 <Comment></Comment>
 <Steps>
 <Step
@@ -1619,6 +1627,7 @@
  Guid="4fc6a12b-245b-417b-8165-4edf76415063"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -1811,6 +1820,7 @@
  Name="Setup"
  Guid="01aef5c2-6af4-4dcf-8c9d-e64921cdbe0b"
 >
+<Comment></Comment>
 <Comment></Comment>
 <Steps>
 <Step
@@ -2023,6 +2033,7 @@
  Guid="3a162990-6161-4d9d-b830-91e8f58dfa50"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -2209,6 +2220,7 @@
  Guid="53548ac2-7e7d-4a3b-9e53-dfc1c61903ac"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -2279,6 +2291,7 @@
  Name="Setup"
  Guid="846c405d-2c55-44b6-8efc-05b109fad2d4"
 >
+<Comment></Comment>
 <Comment></Comment>
 <Steps>
 <Step
@@ -2467,6 +2480,7 @@
  Guid="163c4113-7ad4-4de7-a9a4-a4ad1618dd79"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -2530,6 +2544,7 @@
  Name="Setup"
  Guid="5a3291ce-6953-4ee5-9b2c-a443ce69d4e7"
 >
+<Comment></Comment>
 <Comment></Comment>
 <Steps>
 <Step
@@ -2986,6 +3001,7 @@
  Guid="78c9177d-ec80-484c-9f04-0d0ee98dba5f"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -3082,6 +3098,7 @@
  Guid="12409534-217f-48fe-8c6e-dba14860d2bb"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -3189,6 +3206,7 @@
  Guid="f372a03f-a270-4f7e-9a9b-4c1d1a210497"
 >
 <Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -3226,45 +3244,43 @@
 <Actions>
 <Action
  Guid="cc7ba8d7-eec7-48e1-b0e8-305e378c7fa4"
->Kernel.TrackDescription.TrackConditions.TCProfile &lt;- Kernel.TrackDescription.TrackConditions.TrackConditionProfile
-{
-    Conditions =&gt; 
-    [
-        Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+>Kernel.TrackDescription.TrackConditions.TCProfile &lt;-
+[
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 1700.0,
+        Length =&gt; 200.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
         {
-            Distance =&gt; 1700.0,
-            Length =&gt; 200.0,
-            Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-            {
-                SwitchOffEddyCurrentBrakeForEB =&gt; False,
-                SwitchOffMagneticShoeBrake =&gt; False,
-                SwitchOffRegenerativeBrake =&gt; True
-            }
-        },
-        Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-        {
-            Distance =&gt; 2500.0,
-            Length =&gt; 100.0,
-            Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-            {
-                SwitchOffEddyCurrentBrakeForEB =&gt; False,
-                SwitchOffMagneticShoeBrake =&gt; True,
-                SwitchOffRegenerativeBrake =&gt; False
-            }
-        },
-        Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-        {
-            Distance =&gt; 3000.0,
-            Length =&gt; 200.0,
-            Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-            {
-                SwitchOffEddyCurrentBrakeForEB =&gt; False,
-                SwitchOffMagneticShoeBrake =&gt; True,
-                SwitchOffRegenerativeBrake =&gt; True
-            }
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; True
         }
-    ]
-}</Action><Action
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 2500.0,
+        Length =&gt; 100.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; True,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 3000.0,
+        Length =&gt; 200.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; True,
+            SwitchOffRegenerativeBrake =&gt; True
+        }
+    }
+]
+</Action><Action
  Guid="6ef4fc7d-a80a-4bb9-957e-b03f6bd3db34"
 >Kernel.TrainData.TrainData.Value.RegenerativeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
  Guid="5f7890b7-2a65-490e-9af9-89752a19317b"
@@ -3601,6 +3617,7 @@
  Guid="b83fecba-9451-4a75-beb6-6e9467e7f7be"
 >
 </ReqRef><Comment></Comment>
+<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -3679,10 +3696,10 @@
 >Kernel.TrainData.BrakingParameters.A_brake_emergency ( V =&gt; 300.0, d =&gt; 1700.0 ) == 0.2</Expectation><Expectation
  Kind="Instantaneous"
  Guid="ca99b51d-4b60-407e-8040-53226430094b"
->Kernel.TrainData.BrakingParameters.A_brk_emergency ( aTrackCondition =&gt; FIRST_IN Kernel.TrackDescription.TrackConditions.TCProfile.Conditions, V =&gt; 100.0, d =&gt; 1700.0 ) == 0.6</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.A_brk_emergency ( aTrackCondition =&gt; FIRST_IN Kernel.TrackDescription.TrackConditions.TCProfile, V =&gt; 100.0, d =&gt; 1700.0 ) == 0.6</Expectation><Expectation
  Kind="Instantaneous"
  Guid="da4a4a40-48ae-4569-82fe-33e01cf70818"
->Kernel.TrainData.BrakingParameters.A_brk_emergency ( aTrackCondition =&gt; FIRST_IN Kernel.TrackDescription.TrackConditions.TCProfile.Conditions, V =&gt; 50.0, d =&gt; 1700.0 ) == 0.7</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.A_brk_emergency ( aTrackCondition =&gt; FIRST_IN Kernel.TrackDescription.TrackConditions.TCProfile, V =&gt; 50.0, d =&gt; 1700.0 ) == 0.7</Expectation><Expectation
  Kind="Instantaneous"
  Guid="e0ca6a9f-16ec-457d-a8fe-830d5cf1ac42"
 >Kernel.TrainData.BrakingParameters.Default_brk_emergency ( 50.0 ) == 0.95</Expectation><Expectation

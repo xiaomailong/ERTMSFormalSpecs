@@ -1196,7 +1196,6 @@
 >
 <Comment>When the state machine goes to inactive state, all the previously used information has to be reset to initial values.</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="f74552ab-4f62-44b7-a9fe-3f5a0bac2ccd"
 >
@@ -1236,7 +1235,6 @@
 >
 <Comment>The on-board waits for a new order to establish a communication session.</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="53befd56-da41-4f36-aa41-e9dc86e9c5c1"
 >
@@ -1304,7 +1302,6 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 >
 <Comment>The on-board waits until the safe radio connection is set-up.</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="5c8b60bd-8baa-4c41-9bb6-ffcca7cbdfc2"
 >
@@ -1481,7 +1478,6 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 >
 <Comment>The on-board waits for the system version of the trackside.</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="897a8348-e831-4898-bf12-d84289248eac"
 >
@@ -1625,7 +1621,6 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 >
 <Comment>The &quot;normal&quot; state.</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="2d47cea8-c618-4dda-b17f-7df153202e06"
 >
@@ -1748,7 +1743,6 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 >
 </ReqRef><Comment>When the safe radio connection is lost, the connection is considered as established during MaxTimeToMaintainACommunicationSession. During this time the process is in Connected.ConnectionLost state.</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="82475326-dfa6-48d1-98f9-27f6e63db277"
 >
@@ -1895,7 +1889,6 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 >
 <Comment>The connection is being terminated.</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="dfd5369b-7468-4e57-b4c3-591d53607134"
 >
@@ -2480,7 +2473,6 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 >
 <Comment>Initial state: the mobile terminal is not registered</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="df983598-b3b9-457b-a1d5-566901b957e1"
 >
@@ -2522,7 +2514,6 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 >
 <Comment>When an order to register the mobile terminal is received, it is in registering state</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="0d150d6b-3421-4277-8d94-8eadf4911f0d"
 >
@@ -2562,7 +2553,6 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 >
 <Comment>When the registration confirmation is received, the mobile network is in registered state</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="f4eb8fe7-c356-4800-96ff-ac657fbcd4c7"
 >

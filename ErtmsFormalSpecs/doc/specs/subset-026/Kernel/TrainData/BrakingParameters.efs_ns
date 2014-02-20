@@ -3360,7 +3360,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 >TrainData.Value.SBModels != EMPTY</PreCondition></PreConditions>
 <Expression>(
     REDUCE
-        TrackDescription.TrackConditions.TCProfile.Conditions
+        TrackDescription.TrackConditions.TCProfile
     USING
         Override
         (
@@ -3571,7 +3571,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 >TrainData.Value.EBModels != EMPTY</PreCondition></PreConditions>
 <Expression>(
     REDUCE
-        TrackDescription.TrackConditions.TCProfile.Conditions
+        TrackDescription.TrackConditions.TCProfile
     USING
         Override
         (
@@ -3910,7 +3910,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 >TrainData.Value.NormalServiceBrakeModels != EMPTY</PreCondition></PreConditions>
 <Expression>(
     REDUCE
-        TrackDescription.TrackConditions.TCProfile.Conditions
+        TrackDescription.TrackConditions.TCProfile
     USING
         Override
         (

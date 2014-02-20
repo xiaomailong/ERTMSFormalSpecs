@@ -209,19 +209,21 @@ namespace DataDictionary.Interpreter.Statement
                 Call.checkExpression();
 
                 Functions.Procedure procedure = Call.Called.Ref as Functions.Procedure;
-                if (procedure != null)
+                if (procedure == null)
                 {
-
-                }
-                else
-                {
-                    Root.AddError("Cannot determine called procedure (2)");
+                    if (Call.Called.Ref is Functions.Function)
+                    {
+                        Root.AddError("Invalid call : Function " + Call.Called + " called as a procedure" );
+                    }
+                    else
+                    {
+                        Root.AddError("Cannot determine called procedure " + Call.Called);
+                    }
                 }
             }
             else
             {
-                Root.AddError("Cannot determine called procedure (1)");
-
+                Root.AddError("Cannot parse called procedure for " + ToString());
             }
         }
 
