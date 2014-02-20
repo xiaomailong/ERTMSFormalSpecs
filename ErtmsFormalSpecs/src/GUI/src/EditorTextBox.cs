@@ -514,6 +514,11 @@ namespace GUI
                 i = i - 1;
             }
 
+            while (i >= 0 && Char.IsSeparator(EditionTextBox.Text[i]))
+            {
+                i = i - 1;
+            }
+
             while (i >= 0 && !Char.IsSeparator(EditionTextBox.Text[i]))
             {
                 retVal = EditionTextBox.Text[i] + retVal;
