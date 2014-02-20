@@ -14,6 +14,91 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
+ Name="Check initial state"
+ Guid="879ac57f-39d7-47be-89cc-934a6f096312"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Test case1"
+ Guid="5380c330-3b40-4d8e-bb0b-9f0f8d3194d3"
+>
+<ReqRef
+ Id="c0212afe-50dc-4499-9f13-e6a734ef08fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d48a89a-5b04-43ff-8d10-77a77c16f276"
+>
+</ReqRef><ReqRef
+ Id="1be737d0-fb4e-4643-926f-c5fcada702d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="181f0ecb-0c8f-499f-91ed-196c07950c7a"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="6e3070e0-07ec-491f-bfbe-1548d5494982"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="fb2a929c-4a70-436e-8b81-f07099e41b98"
+>
+<Actions>
+<Action
+ Guid="0f1cf408-c7d2-437c-bf2d-5f60a219606b"
+>Kernel.InitializeTestEnvironment(
+)</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Check for absence of restrictions"
+ Guid="5245e804-8af3-4093-9a13-0d607b756da7"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="b8beeb23-d969-402c-8674-5b0e09b1ed23"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d464f7ab-0613-4b52-811d-342f70729cb8"
+>Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions == []</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="189657f3-2162-456b-9c3f-24e5cc518bc5"
+>Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictions(
+    Distance=&gt;0.0
+) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
  Name="Send + store PBD message"
  Guid="f3939ef1-6f7e-4cc4-8755-ff67604843a3"
 >
@@ -221,91 +306,6 @@ pbd sr</Comment>
  DeadLine="1"
  Guid="0b1e6ff6-ebf5-4fb5-b069-e762feeb4d3b"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Location == 2000.0</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="Check initial state"
- Guid="879ac57f-39d7-47be-89cc-934a6f096312"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Test case1"
- Guid="5380c330-3b40-4d8e-bb0b-9f0f8d3194d3"
->
-<ReqRef
- Id="c0212afe-50dc-4499-9f13-e6a734ef08fe"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2d48a89a-5b04-43ff-8d10-77a77c16f276"
->
-</ReqRef><ReqRef
- Id="1be737d0-fb4e-4643-926f-c5fcada702d0"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="181f0ecb-0c8f-499f-91ed-196c07950c7a"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="6e3070e0-07ec-491f-bfbe-1548d5494982"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="fb2a929c-4a70-436e-8b81-f07099e41b98"
->
-<Actions>
-<Action
- Guid="0f1cf408-c7d2-437c-bf2d-5f60a219606b"
->Kernel.InitializeTestEnvironment(
-)</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step2 - Check for absence of restrictions"
- Guid="5245e804-8af3-4093-9a13-0d607b756da7"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="b8beeb23-d969-402c-8674-5b0e09b1ed23"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="d464f7ab-0613-4b52-811d-342f70729cb8"
->Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions == []</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="189657f3-2162-456b-9c3f-24e5cc518bc5"
->Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictions(
-    Distance=&gt;0.0
-) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
