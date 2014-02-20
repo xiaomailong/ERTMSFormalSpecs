@@ -673,7 +673,7 @@ namespace DataDictionary
 
                 if (stateMachine.AllValues.Count > 0)
                 {
-                    if (Utils.Utils.isEmpty(stateMachine.InitialState))
+                    if (Utils.Utils.isEmpty(stateMachine.Default))
                     {
                         stateMachine.AddError("Empty initial state");
                     }

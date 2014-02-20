@@ -981,11 +981,13 @@
       </FIELD>
       <FIELD NAME="Condition"  TYPE="PCHAR"/>
       <FIELD NAME="Comment"    TYPE="PCHAR"/>
+      <FIELD NAME="CyclePhase" ENUMTYPE="RulePriority"/>
     </FIELDS>
     <ATTRIBUTES>
-      <ATTR NAME="Kind"     TARGET="Kind"     OPTIONAL="TRUE" DEFAULT="Instantaneous"/>
-      <ATTR NAME="Blocking" TARGET="Blocking" OPTIONAL="TRUE" DEFAULT="TRUE"/>
-      <ATTR NAME="DeadLine" TARGET="DeadLine" OPTIONAL="TRUE" DEFAULT="0"/>
+      <ATTR NAME="Kind"       TARGET="Kind"       OPTIONAL="TRUE" DEFAULT="Instantaneous"/>
+      <ATTR NAME="Blocking"   TARGET="Blocking"   OPTIONAL="TRUE" DEFAULT="TRUE"/>
+      <ATTR NAME="DeadLine"   TARGET="DeadLine"   OPTIONAL="TRUE" DEFAULT="0"/>
+      <ATTR NAME="CyclePhase" TARGET="CyclePhase" OPTIONAL="TRUE" />
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>

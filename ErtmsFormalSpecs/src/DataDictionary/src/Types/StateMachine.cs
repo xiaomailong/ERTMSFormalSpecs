@@ -104,15 +104,6 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The state machine initial state
-        /// </summary>
-        public string InitialState
-        {
-            get { return getInitialState(); }
-            set { setInitialState(value); }
-        }
-
-        /// <summary>
         /// Provides the values whose name matches the name provided
         /// </summary>
         /// <param name="index">the index in names to consider</param>
@@ -242,12 +233,6 @@ namespace DataDictionary.Types
 
                 return cachedValues;
             }
-        }
-
-        // TODO : Remove the initial state
-        public override string Default
-        {
-            get { return InitialState; }
         }
 
         public override bool Contains(Values.IValue first, Values.IValue other)
@@ -675,7 +660,7 @@ namespace DataDictionary.Types
             StateMachine retVal = (StateMachine)Generated.acceptor.getFactory().createStateMachine();
             retVal.Name = Name;
             retVal.setFather(getFather());
-            retVal.InitialState = InitialState;
+            retVal.Default = Default;
             foreach (Constants.State state in States)
             {
                 Constants.State newState = state.duplicate();

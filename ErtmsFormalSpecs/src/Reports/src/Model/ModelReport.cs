@@ -334,7 +334,7 @@ namespace Reports.Model
                 foreach (DataDictionary.Constants.State state in aSM.States)
                 {
                     string comment = "";
-                    if (aSM.InitialState.Equals(state.Name))
+                    if (aSM.Default.Equals(state.Name))
                     {
                         comment = "Initial state";
                     }
