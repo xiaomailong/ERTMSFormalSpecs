@@ -2515,7 +2515,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="390"
+ X="370"
  Y="100"
  Width="100"
  Height="50"
@@ -2556,7 +2556,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="750"
+ X="670"
  Y="100"
  Width="100"
  Height="50"
@@ -5217,9 +5217,12 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 <PreConditions>
 <PreCondition
  Guid="b98357f2-9bff-490d-951c-a72293c7c303"
->aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Registered
-  AND
-aTerminal.RegisteredNetworkId != aNetworkId</PreCondition><PreCondition
+>NOT
+(
+  aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Registered
+    AND
+  aTerminal.RegisteredNetworkId != aNetworkId
+)</PreCondition><PreCondition
  Guid="115781a3-1ed8-4502-9708-18c621902b3e"
 >aTerminal != EMPTY</PreCondition></PreConditions>
 <Actions>
