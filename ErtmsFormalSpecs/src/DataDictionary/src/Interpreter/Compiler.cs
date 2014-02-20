@@ -347,8 +347,6 @@ namespace DataDictionary.Interpreter
                     RefactorTypedElement(element, usage.User as Types.ITypedElement);
                 }
             }
-
-            Compile_Synchronous(true);
         }
 
         /// <summary>
