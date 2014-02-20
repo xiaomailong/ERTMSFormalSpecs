@@ -296,11 +296,15 @@ namespace DataDictionary.Interpreter
             {
                 VisitExpression(structExpression.Structure);
             }
-            foreach (Expression expression in structExpression.Associations.Values)
+            foreach (KeyValuePair<Designator, Expression> pair in structExpression.Associations)
             {
-                if (expression != null)
+                if (pair.Key != null)
                 {
-                    VisitExpression(expression);
+                    VisitDesignator(pair.Key);
+                }
+                if (pair.Value != null)
+                {
+                    VisitExpression(pair.Value);
                 }
             }
         }

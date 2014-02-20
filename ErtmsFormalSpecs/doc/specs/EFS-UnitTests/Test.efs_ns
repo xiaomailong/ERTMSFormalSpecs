@@ -88,7 +88,7 @@
 >
 </StructureElement><StateMachines>
 <StateMachine
- InitialState="State1"
+ Default="State1"
  Name="stateMachine2"
  Guid="62f7165d-d460-4bc0-85ff-2f8a626d1c07"
 >
@@ -102,7 +102,6 @@
  Guid="06227d1f-734c-4115-92c7-0da13438c378"
 >
 <StateMachine
- InitialState=""
  Guid="92a6faf2-3d36-4972-91f8-a37756165b5d"
 >
 <Rules>
@@ -140,7 +139,6 @@
  Guid="3233759a-bbc4-4894-b339-e0c2b9ecef89"
 >
 <StateMachine
- InitialState=""
  Guid="9a446eb7-2721-4a8d-a6c7-a0cdbe9072db"
 >
 </StateMachine></State></States>
@@ -148,7 +146,7 @@
 </Structure></Structures>
 <StateMachines>
 <StateMachine
- InitialState="e1"
+ Default="e1"
  Name="stateMachine2"
  Guid="67b16786-8ac6-450f-ad0e-d47bf4d83f83"
 >
@@ -162,7 +160,6 @@
  Guid="9b5b7f73-0017-4c18-821a-27d75115981a"
 >
 <StateMachine
- InitialState=""
  Guid="285cc810-d4fe-4752-9707-9197b8fad198"
 >
 <Rules>
@@ -194,7 +191,6 @@
  Guid="02ad54b8-7dad-439e-a464-3bb25b702525"
 >
 <StateMachine
- InitialState=""
  Guid="ba389e33-57b9-49e0-8c05-afd56c210e7a"
 >
 </StateMachine></State></States>
@@ -232,6 +228,23 @@
 >z == 2</PreCondition></PreConditions>
 <Expression>3</Expression>
 </Case></Cases>
+</Function><Function
+ Type="struct"
+ Name="func2"
+ Guid="099a3152-cd5e-4f1a-a2b2-40bd207bb73e"
+>
+<Cases>
+<Case
+ Name="&lt;Case1&gt;"
+ Guid="aba4db25-2f7d-4af2-8aff-61d3fe070e23"
+>
+<Expression>struct{
+    str_stm =&gt; Test.struct.stateMachine2.State1,
+    str_b =&gt; Boolean.False,
+    str_enum =&gt; Test.enum1.v1,
+    str_r =&gt; 1
+}</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -266,7 +279,11 @@
  Guid="77192634-43c2-45cf-bc05-2a9c9c6e6069"
 >val_v &lt;- 3</Action><Action
  Guid="345eaf4e-45f3-4dc1-a64b-ce9da12ae944"
->val_v &lt;- func1( z =&gt; 4 )</Action></Actions>
+>val_v &lt;- func1( z =&gt; 4 )</Action><Action
+ Guid="20866434-ad5b-4399-9d97-16de589cd488"
+>val_struct.str_b &lt;- True</Action><Action
+ Guid="b653a568-6fd6-46ba-a085-9e04f6f5aa64"
+>func2().str_b &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -288,6 +305,12 @@
  VariableMode="Internal"
  Name="val_enum"
  Guid="ab196326-55d4-4308-b226-62e10480ff6d"
+>
+</Variable><Variable
+ Type="struct"
+ VariableMode="Internal"
+ Name="val_struct"
+ Guid="7f33ba9a-0f36-42e8-89c5-075be1ff11bf"
 >
 </Variable></Variables>
 </NameSpace>
