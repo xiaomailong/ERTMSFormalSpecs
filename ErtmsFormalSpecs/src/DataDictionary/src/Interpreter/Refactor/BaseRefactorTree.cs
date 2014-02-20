@@ -28,7 +28,7 @@ namespace DataDictionary.Interpreter.Refactor
         /// <summary>
         /// The textual expression to be refactored
         /// </summary>
-        public string Text { get; private set; }
+        protected string Text { get; private set; }
 
         /// <summary>
         /// The delta in the indexes to be applied to take care 
@@ -70,21 +70,27 @@ namespace DataDictionary.Interpreter.Refactor
         /// </summary>
         /// <param name="tree"></param>
         /// <param name="text"></param>
-        public BaseRefactorTree(InterpreterTreeNode tree, string text)
+        public BaseRefactorTree()
         {
-            Tree = tree;
-            Text = text;
             Delta = 0;
         }
 
         /// <summary>
         /// Executes the update and changes the corresponding Text field
         /// </summary>
-        public void PerformUpdate()
+        public void PerformUpdate(IExpressionable expressionable)
         {
-            if (Tree != null)
+            if (expressionable != null)
             {
-                VisitInterpreterTreeNode(Tree);
+                Text = expressionable.ExpressionText;
+                if (expressionable.Tree != null)
+                {
+                    VisitInterpreterTreeNode(expressionable.Tree);
+                    if (Text != expressionable.ExpressionText)
+                    {
+                        expressionable.ExpressionText = Text;
+                    }
+                }
             }
         }
     }
