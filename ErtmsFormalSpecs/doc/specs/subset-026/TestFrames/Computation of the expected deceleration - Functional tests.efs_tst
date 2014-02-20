@@ -14,6 +14,463 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
+ Name="Computation of A_brake_service"
+ Guid="1ee582af-b989-43c9-9df1-d88291dd71f4"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+ Guid="8bf2d128-ecbb-42d1-9968-cf59aa8f59d8"
+>
+<Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test environment"
+ Guid="0c577097-3879-4763-a91a-e604c12b9a30"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="3915e74f-e03a-4d82-96fe-0d5a577d18c7"
+>
+<Actions>
+<Action
+ Guid="c6239a9e-e8a6-4bd3-bd8d-c63470fa74f6"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Setup"
+ Guid="30808298-4c73-4a61-a8fe-716ce49c6efb"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="771b7a16-0bdb-4dd3-aa20-39edecfd9b99"
+>
+<Actions>
+<Action
+ Guid="defb0655-b840-4a77-8287-2adaee824ae6"
+>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- 
+[
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 1200.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+       {
+            SwitchOffEddyCurrentBrakeForEB =&gt; True,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 1300.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+       {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 2400.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; True
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 2700.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    }
+]</Action><Action
+ Guid="a356e2a1-d41b-4747-9ba1-b0145479f7cb"
+>Kernel.TrainData.TrainData.Value.RegenerativeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</Action><Action
+ Guid="d8b17d45-897a-481d-9fab-d6cb0db93c6c"
+>Kernel.TrainData.TrainData.Value.EddyCurrentBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</Action><Action
+ Guid="678f024d-dd0b-4f0e-903b-e86cad769ac4"
+>Kernel.TrainData.TrainData.Value.MagneticShoeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
+ Guid="2cc39384-9c2a-49bd-8244-0fb6c08ee3fb"
+>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="55524b9d-0ff6-42d3-9851-c2694ded3fe2"
+>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+{
+    ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
+    {
+        NoBrake =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.16
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.12
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 140.0,
+                Acceleration =&gt; 0.07
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.04
+            }
+        },
+        EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.8
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 30.0,
+                Acceleration =&gt; 0.65
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 60.0,
+                Acceleration =&gt; 0.49
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.38
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.31
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 180.0,
+                Acceleration =&gt; 0.27
+            },
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 240.0,
+                Acceleration =&gt; 0.2
+            }
+        },
+        Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.8
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 25.0,
+                Acceleration =&gt; 0.75
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 40.0,
+                Acceleration =&gt; 0.7
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.6
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.4
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 180.0,
+                Acceleration =&gt; 0.3
+            },
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 250.0,
+                Acceleration =&gt; 0.2
+            }
+        },
+        EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.92
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 40.0,
+                Acceleration =&gt; 0.81
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.6
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.46
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.27
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 190.0,
+                Acceleration =&gt; 0.22
+            },
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 220.0,
+                Acceleration =&gt; 0.11
+            }
+        },
+        EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.9
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 40.0,
+                Acceleration =&gt; 0.87
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.8
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.7
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 170.0,
+                Acceleration =&gt; 0.6
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 220.0,
+                Acceleration =&gt; 0.4
+            },
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 270.0,
+                Acceleration =&gt; 0.2
+            }
+        }
+    }
+}</Action><Action
+ Guid="cf4c0851-5a19-4420-9d60-bae09d08e8b1"
+>TIU.TrainIntegrity &lt;- TIU.TrainIntegrityStruct
+{
+    Status =&gt; Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
+    SafeTrainLength =&gt; 700.0,
+    DataState =&gt; DataState.Valid
+}</Action><Action
+ Guid="af349551-9c13-4b4b-afcf-67dae4a10f2e"
+>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive &lt;- True</Action><Action
+ Guid="4eb43908-bda0-4572-870f-41afbdce5e9b"
+>TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive &lt;- True</Action><Action
+ Guid="b56a813e-9219-40b2-9470-8ff8edf2abc7"
+>TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Check A_brake_service values"
+ Guid="630438fd-116c-4efd-9291-3ae6157859ea"
+>
+<ReqRef
+ Id="3a9da096-1d10-4e79-b034-4e42c821929e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="38117398-19d5-4137-b1c6-0dbb3875111f"
+>
+</ReqRef><ReqRef
+ Id="0d1804a4-9b7c-406f-bb28-e8e42df86344"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1130318a-86a5-4df8-8f46-d181a5df8604"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - No brakes switched off"
+ Guid="7a85f1ad-1179-4e95-afd9-93a39f0f243f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="b1401b30-4280-49a2-8a78-f4c6e72af9e8"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="c54e3784-8e05-4d35-b7de-4a32eab2164b"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 50.0, d =&gt; 1000.0 ) == 0.81</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="4af85a0d-ac46-47ea-b87d-84cd616f2b5f"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 150.0, d =&gt; 1000.0 ) == 0.27</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="6b92b609-0092-4174-868e-c5d30ad2bdbd"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 100.0, d =&gt; 1000.0 ) == 0.6</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="68fa6980-7ff6-4ba7-8e5f-42be37e84c41"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 200.0, d =&gt; 1000.0 ) == 0.22</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="694f847a-6f33-4759-a5ef-dc41ee37165f"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 0.0, d =&gt; 1000.0 ) == 0.92</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="6c85b9a7-2b38-43c0-a447-5b1edbd2d551"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 250.0, d =&gt; 1000.0 ) == 0.11</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="65342b53-b5c3-412f-85fc-0ac1ddab23f4"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 300.0, d =&gt; 1000.0 ) == 0.11</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Eddy Current brake switched off"
+ Guid="642d03be-d2f9-49a3-894b-5e333fbf73c8"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="54a763a8-3191-42bb-b6f3-6123431cbe4e"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="8efe1235-99a2-4419-b7ac-59a37599a073"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 50.0, d =&gt; 1200.0 ) == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="4684346b-f729-44d5-953a-1844fcc151f2"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 150.0, d =&gt; 1200.0 ) == 0.4</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="58fe476c-7e3a-4ccf-880c-a05b4221d64c"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 100.0, d =&gt; 1200.0 ) == 0.6</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="1f36681e-9991-472b-85c6-8b6cd37365f0"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 200.0, d =&gt; 1200.0 ) == 0.3</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="fe998363-b035-4816-b53f-e2ee7693ad6e"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 0.0, d =&gt; 1200.0 ) == 0.8</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="9159a441-1771-4dc9-8c51-15198ec70401"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 250.0, d =&gt; 1200.0 ) == 0.2</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="2e6c6622-665d-4f42-a339-c1f68ecf0161"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 300.0, d =&gt; 1200.0 ) == 0.2</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="6fecaeb0-bad7-4a37-a9be-b228b753ede0"
+>Kernel.TrainData.BrakingParameters.A_brk_service ( aTrackCondition =&gt; FIRST_IN Kernel.TrackDescription.TrackConditions.TCProfile, V =&gt; 100.0, d =&gt; 1200.0 ) == 0.6</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="c58d3839-b4aa-4036-960d-72aee66541e5"
+>Kernel.TrainData.BrakingParameters.A_brk_service ( aTrackCondition =&gt; FIRST_IN Kernel.TrackDescription.TrackConditions.TCProfile, V =&gt; 50.0, d =&gt; 1200.0 ) == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="5e669392-8edf-434a-8975-3d9ff5ef8333"
+>Kernel.TrainData.BrakingParameters.Default_brk_service ( 50.0 ) == 0.81</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="4503214d-48cf-4020-9173-f975bd87f3b4"
+>Kernel.TrainData.BrakingParameters.Default_brk_service ( 100.0 ) == 0.6</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Regenerative brake switched off"
+ Guid="71b5c17a-ee16-4b6e-bbf4-274a0f7b251a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="b9188277-32de-45cc-898b-183b4dbc05b6"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="a3d3261b-e77b-4491-b4a2-749d026872ba"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 50.0, d =&gt; 2500.0 ) == 0.65</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="8f63a4a3-4c9e-452d-b854-54d449eea46e"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 150.0, d =&gt; 2500.0 ) == 0.31</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="5ecd5573-9da0-430d-b995-a8d728cf1b6e"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 100.0, d =&gt; 2500.0 ) == 0.38</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="4cd2079b-f67a-43d1-9659-37d8185b5af0"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 200.0, d =&gt; 2500.0 ) == 0.27</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="9ef0ac7a-da83-48d3-b429-418e5d0a7605"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 0.0, d =&gt; 2500.0 ) == 0.8</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="1fd88111-9485-4769-8e9a-7a2c2a236279"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 250.0, d =&gt; 2500.0 ) == 0.2</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="f3e46c33-4f02-4a7e-a730-a825d4a7e06f"
+>Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 300.0, d =&gt; 2500.0 ) == 0.2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
  Name="Computation of A_expected"
  Guid="adb8ef14-f6b6-4fa2-9ef3-1108b0c7f53d"
 >
@@ -428,445 +885,6 @@
  Kind="Instantaneous"
  Guid="8c684353-7efd-4ec2-8cd2-793c4f831ddd"
 >Kernel.TrainData.BrakingParameters.A_expected ( V =&gt; 100.0, d =&gt; 1500.0 ) &gt; 1.12262 AND Kernel.TrainData.BrakingParameters.A_expected ( V =&gt; 100.0, d =&gt; 1500.0 ) &lt; 1.12263</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="Computation of A_brake_service"
- Guid="1ee582af-b989-43c9-9df1-d88291dd71f4"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Setup"
- Guid="8bf2d128-ecbb-42d1-9968-cf59aa8f59d8"
->
-<Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Initialize test environment"
- Guid="0c577097-3879-4763-a91a-e604c12b9a30"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="3915e74f-e03a-4d82-96fe-0d5a577d18c7"
->
-<Actions>
-<Action
- Guid="c6239a9e-e8a6-4bd3-bd8d-c63470fa74f6"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - Setup"
- Guid="30808298-4c73-4a61-a8fe-716ce49c6efb"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="771b7a16-0bdb-4dd3-aa20-39edecfd9b99"
->
-<Actions>
-<Action
- Guid="defb0655-b840-4a77-8287-2adaee824ae6"
->Kernel.TrackDescription.TrackConditions.TCProfile &lt;- 
-[
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 1200.0,
-        Length =&gt; 100.0,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-       {
-            SwitchOffEddyCurrentBrakeForEB =&gt; True,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 2400.0,
-        Length =&gt; 300.0,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; True
-        }
-    }
-]</Action><Action
- Guid="a356e2a1-d41b-4747-9ba1-b0145479f7cb"
->Kernel.TrainData.TrainData.Value.RegenerativeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</Action><Action
- Guid="d8b17d45-897a-481d-9fab-d6cb0db93c6c"
->Kernel.TrainData.TrainData.Value.EddyCurrentBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</Action><Action
- Guid="678f024d-dd0b-4f0e-903b-e86cad769ac4"
->Kernel.TrainData.TrainData.Value.MagneticShoeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
- Guid="2cc39384-9c2a-49bd-8244-0fb6c08ee3fb"
->Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
- Guid="55524b9d-0ff6-42d3-9851-c2694ded3fe2"
->Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
-{
-    ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
-    {
-        NoBrake =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
-        {
-            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 0.0,
-                Acceleration =&gt; 0.16
-            },
-            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 80.0,
-                Acceleration =&gt; 0.12
-            },
-            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 140.0,
-                Acceleration =&gt; 0.07
-            },
-            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 200.0,
-                Acceleration =&gt; 0.04
-            }
-        },
-        EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
-        {
-            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 0.0,
-                Acceleration =&gt; 0.8
-            },
-            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 30.0,
-                Acceleration =&gt; 0.65
-            },
-            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 60.0,
-                Acceleration =&gt; 0.49
-            },
-            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 100.0,
-                Acceleration =&gt; 0.38
-            },
-            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 150.0,
-                Acceleration =&gt; 0.31
-            },
-            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 180.0,
-                Acceleration =&gt; 0.27
-            },
-            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 240.0,
-                Acceleration =&gt; 0.2
-            }
-        },
-        Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
-        {
-            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 0.0,
-                Acceleration =&gt; 0.8
-            },
-            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 25.0,
-                Acceleration =&gt; 0.75
-            },
-            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 40.0,
-                Acceleration =&gt; 0.7
-            },
-            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 80.0,
-                Acceleration =&gt; 0.6
-            },
-            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 120.0,
-                Acceleration =&gt; 0.4
-            },
-            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 180.0,
-                Acceleration =&gt; 0.3
-            },
-            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 250.0,
-                Acceleration =&gt; 0.2
-            }
-        },
-        EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
-        {
-            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 0.0,
-                Acceleration =&gt; 0.92
-            },
-            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 40.0,
-                Acceleration =&gt; 0.81
-            },
-            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 80.0,
-                Acceleration =&gt; 0.6
-            },
-            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 120.0,
-                Acceleration =&gt; 0.46
-            },
-            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 150.0,
-                Acceleration =&gt; 0.27
-            },
-            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 190.0,
-                Acceleration =&gt; 0.22
-            },
-            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 220.0,
-                Acceleration =&gt; 0.11
-            }
-        },
-        EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
-        {
-            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 0.0,
-                Acceleration =&gt; 0.9
-            },
-            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 40.0,
-                Acceleration =&gt; 0.87
-            },
-            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 80.0,
-                Acceleration =&gt; 0.8
-            },
-            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 120.0,
-                Acceleration =&gt; 0.7
-            },
-            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 170.0,
-                Acceleration =&gt; 0.6
-            },
-            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 220.0,
-                Acceleration =&gt; 0.4
-            },
-            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
-            {
-                SpeedStep =&gt; 270.0,
-                Acceleration =&gt; 0.2
-            }
-        }
-    }
-}</Action><Action
- Guid="cf4c0851-5a19-4420-9d60-bae09d08e8b1"
->TIU.TrainIntegrity &lt;- TIU.TrainIntegrityStruct
-{
-    Status =&gt; Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
-    SafeTrainLength =&gt; 700.0,
-    DataState =&gt; DataState.Valid
-}</Action><Action
- Guid="af349551-9c13-4b4b-afcf-67dae4a10f2e"
->TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive &lt;- True</Action><Action
- Guid="4eb43908-bda0-4572-870f-41afbdce5e9b"
->TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive &lt;- True</Action><Action
- Guid="b56a813e-9219-40b2-9470-8ff8edf2abc7"
->TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive &lt;- True</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- NeedsRequirement="FALSE"
- Name="Check A_brake_service values"
- Guid="630438fd-116c-4efd-9291-3ae6157859ea"
->
-<ReqRef
- Id="3a9da096-1d10-4e79-b034-4e42c821929e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="38117398-19d5-4137-b1c6-0dbb3875111f"
->
-</ReqRef><ReqRef
- Id="0d1804a4-9b7c-406f-bb28-e8e42df86344"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1130318a-86a5-4df8-8f46-d181a5df8604"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - No brakes switched off"
- Guid="7a85f1ad-1179-4e95-afd9-93a39f0f243f"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="b1401b30-4280-49a2-8a78-f4c6e72af9e8"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="c54e3784-8e05-4d35-b7de-4a32eab2164b"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 50.0, d =&gt; 1000.0 ) == 0.81</Expectation><Expectation
- Kind="Instantaneous"
- Guid="4af85a0d-ac46-47ea-b87d-84cd616f2b5f"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 150.0, d =&gt; 1000.0 ) == 0.27</Expectation><Expectation
- Kind="Instantaneous"
- Guid="6b92b609-0092-4174-868e-c5d30ad2bdbd"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 100.0, d =&gt; 1000.0 ) == 0.6</Expectation><Expectation
- Kind="Instantaneous"
- Guid="68fa6980-7ff6-4ba7-8e5f-42be37e84c41"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 200.0, d =&gt; 1000.0 ) == 0.22</Expectation><Expectation
- Kind="Instantaneous"
- Guid="694f847a-6f33-4759-a5ef-dc41ee37165f"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 0.0, d =&gt; 1000.0 ) == 0.92</Expectation><Expectation
- Kind="Instantaneous"
- Guid="6c85b9a7-2b38-43c0-a447-5b1edbd2d551"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 250.0, d =&gt; 1000.0 ) == 0.11</Expectation><Expectation
- Kind="Instantaneous"
- Guid="65342b53-b5c3-412f-85fc-0ac1ddab23f4"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 300.0, d =&gt; 1000.0 ) == 0.11</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - Eddy Current brake switched off"
- Guid="642d03be-d2f9-49a3-894b-5e333fbf73c8"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="54a763a8-3191-42bb-b6f3-6123431cbe4e"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="8efe1235-99a2-4419-b7ac-59a37599a073"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 50.0, d =&gt; 1200.0 ) == 0.7</Expectation><Expectation
- Kind="Instantaneous"
- Guid="4684346b-f729-44d5-953a-1844fcc151f2"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 150.0, d =&gt; 1200.0 ) == 0.4</Expectation><Expectation
- Kind="Instantaneous"
- Guid="58fe476c-7e3a-4ccf-880c-a05b4221d64c"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 100.0, d =&gt; 1200.0 ) == 0.6</Expectation><Expectation
- Kind="Instantaneous"
- Guid="1f36681e-9991-472b-85c6-8b6cd37365f0"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 200.0, d =&gt; 1200.0 ) == 0.3</Expectation><Expectation
- Kind="Instantaneous"
- Guid="fe998363-b035-4816-b53f-e2ee7693ad6e"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 0.0, d =&gt; 1200.0 ) == 0.8</Expectation><Expectation
- Kind="Instantaneous"
- Guid="9159a441-1771-4dc9-8c51-15198ec70401"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 250.0, d =&gt; 1200.0 ) == 0.2</Expectation><Expectation
- Kind="Instantaneous"
- Guid="2e6c6622-665d-4f42-a339-c1f68ecf0161"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 300.0, d =&gt; 1200.0 ) == 0.2</Expectation><Expectation
- Kind="Instantaneous"
- Guid="6fecaeb0-bad7-4a37-a9be-b228b753ede0"
->Kernel.TrainData.BrakingParameters.A_brk_service ( aTrackCondition =&gt; FIRST_IN Kernel.TrackDescription.TrackConditions.TCProfile, V =&gt; 100.0, d =&gt; 1200.0 ) == 0.6</Expectation><Expectation
- Kind="Instantaneous"
- Guid="c58d3839-b4aa-4036-960d-72aee66541e5"
->Kernel.TrainData.BrakingParameters.A_brk_service ( aTrackCondition =&gt; FIRST_IN Kernel.TrackDescription.TrackConditions.TCProfile, V =&gt; 50.0, d =&gt; 1200.0 ) == 0.7</Expectation><Expectation
- Kind="Instantaneous"
- Guid="5e669392-8edf-434a-8975-3d9ff5ef8333"
->Kernel.TrainData.BrakingParameters.Default_brk_service ( 50.0 ) == 0.81</Expectation><Expectation
- Kind="Instantaneous"
- Guid="4503214d-48cf-4020-9173-f975bd87f3b4"
->Kernel.TrainData.BrakingParameters.Default_brk_service ( 100.0 ) == 0.6</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step3 - Regenerative brake switched off"
- Guid="71b5c17a-ee16-4b6e-bbf4-274a0f7b251a"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="b9188277-32de-45cc-898b-183b4dbc05b6"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="a3d3261b-e77b-4491-b4a2-749d026872ba"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 50.0, d =&gt; 2500.0 ) == 0.65</Expectation><Expectation
- Kind="Instantaneous"
- Guid="8f63a4a3-4c9e-452d-b854-54d449eea46e"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 150.0, d =&gt; 2500.0 ) == 0.31</Expectation><Expectation
- Kind="Instantaneous"
- Guid="5ecd5573-9da0-430d-b995-a8d728cf1b6e"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 100.0, d =&gt; 2500.0 ) == 0.38</Expectation><Expectation
- Kind="Instantaneous"
- Guid="4cd2079b-f67a-43d1-9659-37d8185b5af0"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 200.0, d =&gt; 2500.0 ) == 0.27</Expectation><Expectation
- Kind="Instantaneous"
- Guid="9ef0ac7a-da83-48d3-b429-418e5d0a7605"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 0.0, d =&gt; 2500.0 ) == 0.8</Expectation><Expectation
- Kind="Instantaneous"
- Guid="1fd88111-9485-4769-8e9a-7a2c2a236279"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 250.0, d =&gt; 2500.0 ) == 0.2</Expectation><Expectation
- Kind="Instantaneous"
- Guid="f3e46c33-4f02-4a7e-a730-a825d4a7e06f"
->Kernel.TrainData.BrakingParameters.A_brake_service ( V =&gt; 300.0, d =&gt; 2500.0 ) == 0.2</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

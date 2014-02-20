@@ -40,20 +40,6 @@
 >
 </ReqRef><Comment>Start location of the track condition</Comment>
 </StructureElement><StructureElement
- TypeName="Default.BaseTypes.Length"
- Default="0.0"
- Mode="Internal"
- Implemented="TRUE"
- Name="Length"
- Guid="d0a101ff-a9b7-490a-ad0a-6493788f4f0c"
->
-<ReqRef
- Id="d93685bd-18ea-422e-8641-3e9ed6427e66"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d7c075b4-88f5-41b1-93e4-c8a5cf7b5344"
->
-</ReqRef><Comment>Length of the track condition</Comment>
-</StructureElement><StructureElement
  TypeName="TrackCondition"
  Default=""
  Mode="Internal"
@@ -255,31 +241,6 @@
 </ReqRef></Collection></Collections>
 <Functions>
 <Function
- Type="Default.BaseTypes.Length"
- Implemented="TRUE"
- Name="ConditionLength"
- Guid="299116c3-6fb8-44a8-80bb-ab8d9615dfce"
->
-<ReqRef
- Id="dfc71e5b-2d0d-4dce-9a5c-f6e69ea53363"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d2ffc32d-5d4f-42e6-9f00-7cc1e52b1b44"
->
-</ReqRef><Parameters>
-<Parameter
- Type="TrackConditionInformation"
- Name="aCondition"
- Guid="6099ec0f-6eed-43c5-ae3b-ae059b85a251"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Value"
- Guid="1c332989-fa9e-422d-99c6-2b77a2e20ba4"
->
-<Expression>aCondition.Length + TrainData.TrainData.Value.TrainLength</Expression>
-</Case></Cases>
-</Function><Function
  Type="TrackConditionInformation"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -493,7 +454,7 @@
 <Parameters>
 <Parameter
  Type="TrackConditionInformation"
- Name="aCondition"
+ Name="ProfilePoint"
  Guid="cc6665c6-d1cb-443a-ab6a-b592278c3d7f"
 >
 </Parameter></Parameters>
@@ -502,7 +463,7 @@
  Name="RearEndPosition after TrackCond"
  Guid="24466bb5-b244-4a1a-b1ca-5a065f4c431c"
 >
-<Expression>TrainPosition.RearEndPosition(Default.DistanceInterval.Min) &gt; (aCondition.Distance + BaseTypes.LengthToDistance(aCondition.Length))</Expression>
+<Expression>TrainPosition.RearEndPosition(Default.DistanceInterval.Min) &gt; (ProfilePoint.Distance)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -554,7 +515,6 @@
 <Expression>TrackConditionInformation
 {
     Distance =&gt; TCPacket.Distance,
-    Length =&gt; TCPacket.Length,
     Value =&gt; TrackCondition
 { 
     NonStoppingArea =&gt; TCPacket.Value.NonStoppingArea ,
@@ -598,7 +558,6 @@
 <Expression>TrackConditionInformation
 {
     Distance =&gt; TCPacket.Distance,
-    Length =&gt; TCPacket.Length,
     Value =&gt; TrackCondition
 { 
     NonStoppingArea =&gt; False,
@@ -644,47 +603,6 @@
     X2=&gt;RESULT
 )
   INITIAL_VALUE Default.MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACKCOND, scale=&gt;Packet.Q_SCALE)</Expression>
-</Case></Cases>
-</Function><Function
- Type="Kernel.TrackDescription.TrackConditions.TrackCondition"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="CombineConditions"
- Guid="cdb883a1-a823-4a3b-97be-aba2523d2a2c"
->
-<Comment>Combines the conditions held in two Track Conditions that apply to the same section of track 
-(Condition A  OR  Condition B)</Comment>
-<Parameters>
-<Parameter
- Type="Kernel.TrackDescription.TrackConditions.TrackCondition"
- Name="Cond1"
- Guid="220bb303-b9c1-42d4-adf4-1bb0c6cd215f"
->
-</Parameter><Parameter
- Type="Kernel.TrackDescription.TrackConditions.TrackCondition"
- Name="Cond2"
- Guid="b9d5f32c-1487-43e8-b42f-7003f8b9ae4e"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Combine the conditions"
- Guid="77b3a239-c7bd-4ca8-bc67-4fb60795257a"
->
-<Expression>TrackCondition
-{
-    NonStoppingArea =&gt; (Cond1.NonStoppingArea OR Cond2.NonStoppingArea),
-    TunnelStoppingArea =&gt; (Cond1.TunnelStoppingArea OR Cond2.TunnelStoppingArea),
-    SoundHorn =&gt; (Cond1.SoundHorn OR Cond2.SoundHorn),
-    PowerlessSection_LowerPantograph =&gt; (Cond1.PowerlessSection_LowerPantograph OR Cond2.PowerlessSection_LowerPantograph),
-    RadioHole =&gt; (Cond1.RadioHole OR Cond2.RadioHole),
-    AirTightness =&gt; (Cond1.AirTightness OR Cond2.AirTightness),
-    SwitchOffRegenerativeBrake =&gt; (Cond1.SwitchOffRegenerativeBrake OR Cond2.SwitchOffRegenerativeBrake),
-    SwitchOffEddyCurrentBrakeForSB =&gt; (Cond1.SwitchOffEddyCurrentBrakeForSB OR Cond2.SwitchOffEddyCurrentBrakeForSB),
-    SwitchOffMagneticShoeBrake =&gt; (Cond1.SwitchOffMagneticShoeBrake OR Cond2.SwitchOffMagneticShoeBrake),
-    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; (Cond1.PowerlessSection_SwitchOffTheMainPowerSwitch OR Cond2.PowerlessSection_SwitchOffTheMainPowerSwitch),
-    SwitchOffEddyCurrentBrakeForEB =&gt; (Cond1.SwitchOffEddyCurrentBrakeForEB OR Cond2.SwitchOffEddyCurrentBrakeForEB)
-}</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -757,6 +675,106 @@
 >
 <Comment>There are no track conditions that apply before the requested distance</Comment>
 <Expression>TrackCondition { }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Kernel.TrackDescription.TrackConditions.TrackCondition"
+ Name="CombineConditions"
+ Guid="0aa6f792-317d-417a-9d75-100ac37e2858"
+>
+<Comment>Combines the conditions held in two Track Conditions that apply to the same section of track 
+(Condition A  OR  Condition B)</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.TrackDescription.TrackConditions.TrackCondition"
+ Name="Profile1"
+ Guid="fe7b67e3-89d5-4779-a638-0bb141b805ee"
+>
+</Parameter><Parameter
+ Type="Kernel.TrackDescription.TrackConditions.TrackCondition"
+ Name="Profile2"
+ Guid="b598db9e-9187-4717-8a79-2f0205c0e215"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Combine"
+ Guid="87af9430-62ad-49c7-b1ad-abd576e61c85"
+>
+<Comment>Returns the combination of the two profiles</Comment>
+<Expression>TrackCondition
+{
+    NonStoppingArea =&gt; (Profile1.NonStoppingArea OR Profile2.NonStoppingArea),
+    TunnelStoppingArea =&gt; (Profile1.TunnelStoppingArea OR Profile2.TunnelStoppingArea),
+    SoundHorn =&gt; (Profile1.SoundHorn OR Profile2.SoundHorn),
+    PowerlessSection_LowerPantograph =&gt; (Profile1.PowerlessSection_LowerPantograph OR Profile2.PowerlessSection_LowerPantograph),
+    RadioHole =&gt; (Profile1.RadioHole OR Profile2.RadioHole),
+    AirTightness =&gt; (Profile1.AirTightness OR Profile2.AirTightness),
+    SwitchOffRegenerativeBrake =&gt; (Profile1.SwitchOffRegenerativeBrake OR Profile2.SwitchOffRegenerativeBrake),
+    SwitchOffEddyCurrentBrakeForSB =&gt; (Profile1.SwitchOffEddyCurrentBrakeForSB OR Profile2.SwitchOffEddyCurrentBrakeForSB),
+    SwitchOffMagneticShoeBrake =&gt; (Profile1.SwitchOffMagneticShoeBrake OR Profile2.SwitchOffMagneticShoeBrake),
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; (Profile1.PowerlessSection_SwitchOffTheMainPowerSwitch OR Profile2.PowerlessSection_SwitchOffTheMainPowerSwitch),
+    SwitchOffEddyCurrentBrakeForEB =&gt; (Profile1.SwitchOffEddyCurrentBrakeForEB OR Profile2.SwitchOffEddyCurrentBrakeForEB)
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Kernel.TrackDescription.TrackConditions.TrackConditionInformation"
+ Name="UpdatedTCProfile"
+ Guid="4fb26885-3c76-4e5d-a634-a14c381f66a8"
+>
+<Comment>Takes a track condition profile point and data fram a track condition packet
+If the profile point is in the section of applicability of the new data, the function combines that with the profile point
+Otherwise, it just returns the profile point as it was</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.TrackDescription.TrackConditions.TrackConditionInformation"
+ Name="Profile"
+ Guid="5e72dc8c-9bf9-42d6-8475-f02835f4f524"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="e53c813a-a0df-4125-8e67-99aa76bf25e8"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Length"
+ Guid="4944568a-d745-4584-b44d-d3ae5f24b986"
+>
+</Parameter><Parameter
+ Type="Messages.M_TRACKCOND"
+ Name="TCType"
+ Guid="c9af5f25-9e8e-4eb4-9695-3b1daeed46a0"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Profile to be combined"
+ Guid="2bce27e9-b2ec-4f01-861f-b606243c3931"
+>
+<Comment>The profile is inside the section of track delimited by Distance and (Distance + Length)</Comment>
+<PreConditions>
+<PreCondition
+ Guid="1fa5ac73-cb6b-439b-b27c-59259d113e7d"
+>Profile.Distance &gt;= Distance</PreCondition><PreCondition
+ Guid="13ab1164-7246-493c-b844-37fd7b218a61"
+>Profile.Distance &lt; (Distance + Length)</PreCondition></PreConditions>
+<Expression>TrackConditionInformation
+{
+    Distance =&gt; Profile.Distance,
+    Value =&gt; CombineConditions(
+        Profile1 =&gt; Profile.Value,
+        Profile2 =&gt; TCProfilePoint(
+            TCType=&gt;TCType,
+            Distance=&gt;Distance,
+            EndOfSection=&gt;False
+        ).Value
+    )
+}</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="e16def7f-7165-4221-9cb5-8f8dbfb1754f"
+>
+<Expression>Profile</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -899,14 +917,6 @@ IN
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="AddNewTrackCondition2"
- Guid="4521e449-f592-4354-a772-14fa6d8b17e9"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-</Actions>
-</RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Insert first point in the track conditions profile"
@@ -937,14 +947,44 @@ IN
 <Actions>
 <Action
  Guid="ac96795b-c14a-4b35-9f61-1888f3f2ce6e"
->INSERT
-    TCProfilePoint(
-    EndOfSection=&gt;False,
-    TCType=&gt;Packet.M_TRACKCOND,
-    Distance=&gt;Default.MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACKCOND, scale=&gt;Packet.Q_SCALE)
-)
-IN
-    TCProfile</Action></Actions>
+>AddSectionToProfile(
+    Dist=&gt;Default.MessageTypes.QScaleDistance(
+        distance=&gt;Packet.D_TRACKCOND,
+        scale=&gt;Packet.Q_SCALE
+    )
+    ,
+    Length=&gt; Default.MessageTypes.QScaleDistance(
+        distance=&gt;Packet.L_TRACKCOND,
+        scale=&gt;Packet.Q_SCALE
+    )
+    ,
+    TCType=&gt;Packet.M_TRACKCOND
+)</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Insert further points in the track condition profile"
+ Guid="f825e64f-589c-4c0b-9bed-6757f77d7c26"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9f1d4d9f-5bbe-4618-a012-23fcf1167225"
+>APPLY
+    AddSectionToProfile(
+        Dist=&gt;Default.MessageTypes.QScaleDistance(
+        distance=&gt;X.D_TRACKCOND,
+        scale=&gt;Packet.Q_SCALE
+    )
+    ,
+        Length=&gt;Default.MessageTypes.QScaleDistance(
+        distance=&gt;X.L_TRACKCOND,
+        scale=&gt;Packet.Q_SCALE
+    )
+    ,
+        TCType=&gt;X.M_TRACKCOND
+    )
+ON
+    Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1012,7 +1052,8 @@ IN
  Name="Start of section is a new point"
  Guid="5dec3438-de77-49b3-bfe9-0dd5745bcb38"
 >
-<Comment>If the start of the section is a new point, add a TCProfilePoint to the TCProfile</Comment>
+<Comment>If the start of the section is a new point, add a TCProfilePoint to the TCProfile
+If there is already a point at the start of the section, its conditions will be merged with the new one in the following step</Comment>
 <PreConditions>
 <PreCondition
  Guid="e75ca188-658d-4763-a32d-985d6154454c"
@@ -1028,30 +1069,30 @@ IN
     )
 IN
     TCProfile</Action></Actions>
-</RuleCondition><RuleCondition
- Name="Start of section coincides with existing point"
- Guid="75a3fad0-4037-4236-9db2-1a9dc3a997a8"
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Combine with intermediate points"
+ Guid="0bcfb44a-1965-44ba-a1a6-c7e921aff7b7"
 >
-<Comment>If the start of the new section coincides with an existing TCProfilePoint,
-first make a new TC profile point with the new data
-then combine this new point with the existing one (which is the most recent profile point at the distance)</Comment>
+<Comment>Add the track condition to all the points inside the added section</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Combine with intermediate points"
+ Guid="a411a708-c6b6-4c0e-8c34-b4ab01ef08a6"
+>
 <PreConditions>
-<PreCondition
- Guid="64b36bcd-9954-4281-90d2-f8f4f39f8287"
->THERE_IS_IN TCProfile | X.Distance == Dist</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
- Guid="01000dab-9c10-4010-bc7d-886ee036770e"
->CombineConditions(
-    Cond1 =&gt; TCProfilePoint(
-            TCType=&gt;TCType,
-            Distance=&gt;Dist,
-            EndOfSection=&gt;False
-        ).Value,
-
-    Cond2 =&gt; ProfileAtDistance(
-            Distance=&gt;Dist
-        )
+ Guid="0c73a213-20bf-4acb-9a85-b05e04dcdd19"
+>TCProfile &lt;- MAP TCProfile
+    USING UpdatedTCProfile(
+    Profile=&gt;X,
+    Distance=&gt;Dist,
+    Length=&gt;Length,
+    TCType=&gt;TCType
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
