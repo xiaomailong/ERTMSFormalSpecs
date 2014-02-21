@@ -288,68 +288,6 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Replaces all occurences of namespaces in the system
-        /// </summary>
-        private class NameSpaceRefactorer : Generated.Visitor
-        {
-            /// <summary>
-            /// The namespace that has been modified, and for which the process is launched
-            /// </summary>
-            private Types.NameSpace NameSpace { get; set; }
-
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            /// <param name="dictionary"></param>
-            public NameSpaceRefactorer(Types.NameSpace nameSpace)
-            {
-                NameSpace = nameSpace;
-            }
-
-            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
-            {
-                RefactorIExpressionable(NameSpace, obj as IExpressionable);
-                RefactorTypedElement(NameSpace, obj as Types.ITypedElement);
-
-                base.visit(obj, visitSubNodes);
-            }
-        }
-
-        /// <summary>
-        /// Modifies the system according to the new element definition
-        /// </summary>
-        /// <param name="element">The element that has been modified, and for which refactoring is done</param>
-        public void Refactor(ModelElement element)
-        {
-            // Cleans fullname cache
-            FullNameCleaner cleaner = new FullNameCleaner();
-            foreach (DataDictionary.Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
-            {
-                cleaner.visit(dictionary);
-            }
-
-            Types.NameSpace nameSpace = element as Types.NameSpace;
-            if (nameSpace != null)
-            {
-                NameSpaceRefactorer refactorer = new NameSpaceRefactorer(nameSpace);
-                foreach (DataDictionary.Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
-                {
-                    refactorer.visit(dictionary);
-                }
-            }
-            else
-            {
-                // the system keeps track where the element is used
-                List<Usage> usages = element.EFSSystem.FindReferences(element);
-                foreach (Usage usage in usages)
-                {
-                    RefactorIExpressionable(element, usage.User as IExpressionable);
-                    RefactorTypedElement(element, usage.User as Types.ITypedElement);
-                }
-            }
-        }
-
-        /// <summary>
         /// Refactors an element which can hold an expression
         /// </summary>
         /// <param name="element">The element that has been modified, and for which refactoring is done</param>
@@ -362,11 +300,8 @@ namespace DataDictionary.Interpreter
                 {
                     string name = element.ReferenceName(user as ModelElement);
 
-                    Refactor.RefactorTree refactorer = new Refactor.RefactorTree(user.Tree, user.ExpressionText, element, name);
-                    if (refactorer.Text != user.ExpressionText)
-                    {
-                        user.ExpressionText = refactorer.Text;
-                    }
+                    Refactor.RefactorTree refactorer = new Refactor.RefactorTree(element, name);
+                    refactorer.PerformUpdate(user);
                 }
                 catch (System.Exception e)
                 {
@@ -407,6 +342,116 @@ namespace DataDictionary.Interpreter
                 {
                     ((ModelElement)user).AddError("Cannot refactor this element, reason = " + e.Message);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Replaces all occurences of namespaces in the system
+        /// </summary>
+        private class NameSpaceRefactorer : Generated.Visitor
+        {
+            /// <summary>
+            /// The namespace that has been modified, and for which the process is launched
+            /// </summary>
+            private Types.NameSpace NameSpace { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="dictionary"></param>
+            public NameSpaceRefactorer(Types.NameSpace nameSpace)
+            {
+                NameSpace = nameSpace;
+            }
+
+            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            {
+                RefactorIExpressionable(NameSpace, obj as IExpressionable);
+                RefactorTypedElement(NameSpace, obj as Types.ITypedElement);
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
+        /// Modifies the system according to the new element definition
+        /// </summary>
+        /// <param name="element">The element that has been modified, and for which refactoring is done</param>
+        public void Refactor(ModelElement element)
+        {
+            if (element != null)
+            {
+                // Cleans fullname cache
+                FullNameCleaner cleaner = new FullNameCleaner();
+                foreach (DataDictionary.Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
+                {
+                    cleaner.visit(dictionary);
+                }
+
+                Types.NameSpace nameSpace = element as Types.NameSpace;
+                if (nameSpace != null)
+                {
+                    NameSpaceRefactorer refactorer = new NameSpaceRefactorer(nameSpace);
+                    foreach (DataDictionary.Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
+                    {
+                        refactorer.visit(dictionary);
+                    }
+                }
+                else
+                {
+                    // the system keeps track where the element is used
+                    List<Usage> usages = element.EFSSystem.FindReferences(element);
+                    foreach (Usage usage in usages)
+                    {
+                        RefactorIExpressionable(element, usage.User as IExpressionable);
+                        RefactorTypedElement(element, usage.User as Types.ITypedElement);
+                    }
+                }
+            }
+        }
+
+        private class ReNameSpacerVisitor : Generated.Visitor
+        {
+            /// <summary>
+            /// The new location of the element
+            /// </summary>
+            private Types.NameSpace NewNameSpace { get; set; }
+
+            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            {
+                IExpressionable expressionable = obj as IExpressionable;
+                if (expressionable != null)
+                {
+                    Interpreter.Refactor.ReNameSpaceTree refactorer = new Refactor.ReNameSpaceTree(NewNameSpace);
+                    refactorer.PerformUpdate(expressionable);
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="newNameSpace"></param>
+            public ReNameSpacerVisitor(Types.NameSpace newNameSpace)
+            {
+                NewNameSpace = newNameSpace;
+            }
+        }
+
+        /// <summary>
+        /// Performs a refactoring of the model then ensure that the namespaces in its inner elements are correct
+        /// </summary>
+        /// <param name="model"></param>
+        public void RefactorAndReNameSpace(ModelElement model)
+        {
+            if (model != null)
+            {
+                Refactor(model);
+
+                Types.NameSpace newNameSpace = Utils.EnclosingFinder<Types.NameSpace>.find(model, true);
+                ReNameSpacerVisitor renamer = new ReNameSpacerVisitor(newNameSpace);
+                renamer.visit(model);
             }
         }
         #endregion
