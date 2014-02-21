@@ -1670,57 +1670,6 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Order to terminate the communication session is received"
- Guid="0f45f74c-edd2-48e5-af53-1c74c195841c"
->
-<ReqRef
- Id="bc41e5e5-6fff-4b96-a901-9bc45f108b16"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="212177a5-3051-4788-a2b8-6951db3634a5"
->
-</ReqRef><ReqRef
- Id="84374b3d-739e-4c5f-909d-4c138dedec38"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cd739b37-15fd-4303-9f0b-a1dbca0c6555"
->
-</ReqRef><ReqRef
- Id="e0a2f873-6bb3-4327-abdc-4444932d69aa"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="eb974e02-f7d4-476e-8b0f-f169719b35a4"
->
-</ReqRef><ReqRef
- Id="dc7b33b5-d923-42f3-be12-580edb475353"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ed4afeb4-ab44-419a-ac37-d7bf139bcba3"
->
-</ReqRef><Comment>When a connection to the RBC is established and a request to terminate the communication session is sent, on-board sends the Termination of communication session message to the RBC and goes to Terminating state.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Order to terminate the communication session is received"
- Guid="63fe5c9c-8eee-4877-90ab-bc7187858c4a"
->
-<PreConditions>
-<PreCondition
- Guid="45eed858-9748-4822-b4df-ef101907fd7c"
->ContactRBCOrder != EMPTY
-  AND
-ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="5ab8eb84-a856-41fe-81be-92cc80d83d99"
->SendTerminationOfCommunicationSession()</Action><Action
- Guid="37faeac1-ef2c-41c8-ab97-8497c4cfcec4"
->THIS &lt;- Terminating</Action><Action
- Guid="1a1a20cb-a8df-46b4-acc5-16faf2b26075"
->LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
- Guid="ef59530a-188c-48af-86c4-658498732214"
->NumberOfSentRequests &lt;- 0</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="Loss of the safe radio connection is detected"
  Guid="b6f6217c-72ba-43e7-bd6e-33cc9dce3d16"
 >
@@ -2042,6 +1991,59 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Order to terminate the communication session is received"
+ Guid="0f45f74c-edd2-48e5-af53-1c74c195841c"
+>
+<ReqRef
+ Id="bc41e5e5-6fff-4b96-a901-9bc45f108b16"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="212177a5-3051-4788-a2b8-6951db3634a5"
+>
+</ReqRef><ReqRef
+ Id="84374b3d-739e-4c5f-909d-4c138dedec38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cd739b37-15fd-4303-9f0b-a1dbca0c6555"
+>
+</ReqRef><ReqRef
+ Id="e0a2f873-6bb3-4327-abdc-4444932d69aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eb974e02-f7d4-476e-8b0f-f169719b35a4"
+>
+</ReqRef><ReqRef
+ Id="dc7b33b5-d923-42f3-be12-580edb475353"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ed4afeb4-ab44-419a-ac37-d7bf139bcba3"
+>
+</ReqRef><Comment>When a connection to the RBC is established and a request to terminate the communication session is sent, on-board sends the Termination of communication session message to the RBC and goes to Terminating state.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Order to terminate the communication session is received"
+ Guid="63fe5c9c-8eee-4877-90ab-bc7187858c4a"
+>
+<PreConditions>
+<PreCondition
+ Guid="45eed858-9748-4822-b4df-ef101907fd7c"
+>ContactRBCOrder != EMPTY
+  AND
+ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5ab8eb84-a856-41fe-81be-92cc80d83d99"
+>SendTerminationOfCommunicationSession()</Action><Action
+ Guid="37faeac1-ef2c-41c8-ab97-8497c4cfcec4"
+>THIS &lt;- Terminating</Action><Action
+ Guid="1a1a20cb-a8df-46b4-acc5-16faf2b26075"
+>LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+ Guid="ef59530a-188c-48af-86c4-658498732214"
+>NumberOfSentRequests &lt;- 0</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State><State
  X="130"
  Y="390"
@@ -3087,7 +3089,7 @@ Terminal2 != EMPTY</Expression>
 Terminal2.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Expression>
 </Case></Cases>
 </Function><Function
- Type="MobileTerminalStruct"
+ Type="TerminalStruct"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CurrentTerminal"
@@ -3282,6 +3284,50 @@ It can only return false if there is no open session or if the last known RBC ha
   AND
 aTerminal.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Expression>
 </Case></Cases>
+</Function><Function
+ Type="RBCStruct"
+ Name="SelectRBCToContact"
+ Guid="edc183ce-4765-4875-9d3a-fcdbb85d8b1d"
+>
+<ReqRef
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="927d2fea-b001-4d8b-b808-bac654cca437"
+>
+</ReqRef><Comment>Selects the RBC to contact according to the communication status. If no terminal is registered, then no RBC can be contacted.</Comment>
+<Cases>
+<Case
+ Name="RBC on terminal 1"
+ Guid="c2516180-752c-4b75-a604-42475c6ea10d"
+>
+<PreConditions>
+<PreCondition
+ Guid="bebfbaf8-71a7-4973-9307-24ea03553705"
+>Terminal1 != EMPTY
+  AND
+TerminalIsRegistered ( aTerminal=&gt; Terminal1 )</PreCondition><PreCondition
+ Guid="7bf2df5d-34de-4d11-bb4e-8236aef07917"
+>Terminal2 != EMPTY
+  AND
+Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
+<Expression>Terminal1.RBCConnection</Expression>
+</Case><Case
+ Name="RBC on terminal 2"
+ Guid="f38511fd-a55d-4afb-bb3f-d18237b53299"
+>
+<PreConditions>
+<PreCondition
+ Guid="19f821b0-8ffe-49e3-9f2d-c42d8184b33d"
+>Terminal2 != EMPTY
+  AND
+TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
+<Expression>Terminal2.RBCConnection</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="901f46f5-6f6d-49a8-a397-ade1263afd05"
+>
+<Expression>EMPTY</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -3329,34 +3375,18 @@ aTerminal.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Ex
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Terminal1"
+ Name="Select RBC"
  Guid="0e5a581a-1201-405e-b00a-40ae760b28f2"
 >
-<Comment>Terminal1 is the default terminal. If none of terminals are connected, then the connection will be established on the Terminal1. If the connection is already established on this terminal, then it will be closed and the new connection will be opened.</Comment>
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8df44f1d-8bc6-47ea-9994-67dde1dc64c4"
->Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition><PreCondition
- Guid="731e47bf-fe1f-43a3-b984-7666dd780b26"
->TerminalIsRegistered ( aTerminal=&gt; Terminal1 )</PreCondition></PreConditions>
+>SelectRBCToContact() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="fb0c323a-04ee-47a6-86cd-341b24a90ee3"
->Terminal1.RBCConnection.ContactRBCOrder &lt;- Order</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Terminal2"
- Guid="78b179e8-af95-448d-a830-a24a276f6974"
->
-<Comment>If the connection is already established on the second mobile terminal, then it will be closed and a new connection will be opened.</Comment>
-<PreConditions>
-<PreCondition
- Guid="7d44a24b-ff5e-4c89-b23a-89f0e9b55029"
->TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="2086e972-9bf9-41fd-bbac-eef71aecabe9"
->Terminal2.RBCConnection.ContactRBCOrder &lt;- Order</Action></Actions>
+>SelectRBCToContact().ContactRBCOrder &lt;- Order</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3606,7 +3636,7 @@ aTerminal.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Ex
  Name="Close the session"
  Guid="b37006ef-5ce5-4c15-9dd8-55ec01214286"
 >
-<Comment>TODO: to be implemented</Comment>
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3621,7 +3651,7 @@ aTerminal.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Ex
  Guid="9c41a20d-c457-4bed-8e73-8106d54cde3b"
 >ContactRBC
 (
-    Order =&gt; ContactOrderStruct
+    Order=&gt; ContactOrderStruct
     {
         Id =&gt; CurrentRBCConnection().ContactData.Id,
         PhoneNumber =&gt; CurrentRBCConnection().ContactData.PhoneNumber,
