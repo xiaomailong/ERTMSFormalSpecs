@@ -117,27 +117,27 @@ namespace DataDictionary
 
             string prefix = "";
 
-            Constants.State state1 = Utils.EnclosingFinder<Constants.State>.find(this, true);
-            Constants.State state2 = Utils.EnclosingFinder<Constants.State>.find(modelElement, true);
-            if (state1 != null && state2 != null)
+            if (this is Types.StructureElement || modelElement is Types.StructureElement)
             {
-                prefix = CommonPrefix(state1.FullName + ".", state2.FullName + ".");
+                Types.Structure structure1 = Utils.EnclosingFinder<Types.Structure>.find(this, true);
+                Types.Structure structure2 = Utils.EnclosingFinder<Types.Structure>.find(modelElement, true);
+                if (structure1 != null && structure2 != null)
+                {
+                    prefix = CommonPrefix(structure1.FullName + ".", structure2.FullName + ".");
+                }
+                else
+                {
+                    retVal = Name;
+                    prefix = "";
+                }
             }
             else
             {
-                if (this is Types.StructureElement)
+                Constants.State state1 = Utils.EnclosingFinder<Constants.State>.find(this, true);
+                Constants.State state2 = Utils.EnclosingFinder<Constants.State>.find(modelElement, true);
+                if (state1 != null && state2 != null)
                 {
-                    Types.Structure structure1 = Utils.EnclosingFinder<Types.Structure>.find(this, true);
-                    Types.Structure structure2 = Utils.EnclosingFinder<Types.Structure>.find(modelElement, true);
-                    if (structure1 != null && structure2 != null)
-                    {
-                        prefix = CommonPrefix(structure1.FullName + ".", structure2.FullName + ".");
-                    }
-                    else
-                    {
-                        retVal = Name;
-                        prefix = "";
-                    }
+                    prefix = CommonPrefix(state1.FullName + ".", state2.FullName + ".");
                 }
                 else
                 {
