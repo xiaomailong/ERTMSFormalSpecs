@@ -64,70 +64,6 @@
 >
 <Actions>
 <Action
- Guid="d8fd1e71-3c0b-43c0-8166-d8c848d4defe"
->Kernel.TrackDescription.TrackConditions.TCProfile &lt;- 
-[
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 700.0,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; True,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 1000.0+Kernel.TrainData.TrainData.Value.TrainLength,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 1800.0,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; True,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 2000.0+Kernel.TrainData.TrainData.Value.TrainLength,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 2400.0,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; True
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 2500.0+Kernel.TrainData.TrainData.Value.TrainLength,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    }
-]</Action><Action
  Guid="8caa222c-c2ab-436b-a739-a9715eb521fe"
 >Kernel.TrainData.TrainData.Value.RegenerativeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</Action><Action
  Guid="086a7604-ec01-40be-8dc6-88f9822ef4f6"
@@ -439,6 +375,76 @@
 >TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive &lt;- True</Action><Action
  Guid="6214a193-67c0-420b-9a0b-b1de2179b3ec"
 >TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive &lt;- True</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="19c36407-aa62-4ec9-8d0f-d0fbd652d42f"
+>
+<Actions>
+<Action
+ Guid="d8fd1e71-3c0b-43c0-8166-d8c848d4defe"
+>Kernel.TrackDescription.TrackConditions.TCProfile&lt;- 
+[
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 700.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; True,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 1000.0+Kernel.TrainData.TrainData.Value.TrainLength,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 1800.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; True,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 2000.0+Kernel.TrainData.TrainData.Value.TrainLength,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 2400.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; True
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 2500.0+Kernel.TrainData.TrainData.Value.TrainLength,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    }
+]</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -772,70 +778,6 @@
 >
 <Actions>
 <Action
- Guid="d37ac4d3-5825-479d-9d00-9e5bc5220b79"
->Kernel.TrackDescription.TrackConditions.TCProfile &lt;-
-[
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 700.0,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; True,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 1000.0+Kernel.TrainData.TrainData.Value.TrainLength,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 1800.0,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; True,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 2000.0+Kernel.TrainData.TrainData.Value.TrainLength,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 2400.0,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; True
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 2500.0+Kernel.TrainData.TrainData.Value.TrainLength,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    }
-]</Action><Action
  Guid="d2e3555a-6366-4389-a007-279befb903b3"
 >Kernel.TrainData.TrainData.Value.RegenerativeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</Action><Action
  Guid="9ad852d9-0243-45bf-9f23-55c2cbc0873d"
@@ -1149,6 +1091,76 @@
 >TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive &lt;- True</Action><Action
  Guid="e1d0fea4-dcbf-43ee-9cdc-dbb02aa9ceb6"
 >TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive &lt;- True</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="c19a2fe8-7941-42d2-97f2-fa4cea081164"
+>
+<Actions>
+<Action
+ Guid="d37ac4d3-5825-479d-9d00-9e5bc5220b79"
+>Kernel.TrackDescription.TrackConditions.TCProfile&lt;-
+[
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 700.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; True,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 1000.0+Kernel.TrainData.TrainData.Value.TrainLength,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 1800.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; True,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 2000.0+Kernel.TrainData.TrainData.Value.TrainLength,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 2400.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; True
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 2500.0+Kernel.TrainData.TrainData.Value.TrainLength,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    }
+]</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase

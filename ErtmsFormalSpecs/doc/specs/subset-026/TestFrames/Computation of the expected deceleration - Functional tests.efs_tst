@@ -64,50 +64,6 @@
 >
 <Actions>
 <Action
- Guid="defb0655-b840-4a77-8287-2adaee824ae6"
->Kernel.TrackDescription.TrackConditions.TCProfile &lt;- 
-[
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 1200.0,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-       {
-            SwitchOffEddyCurrentBrakeForEB =&gt; True,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 1300.0+Kernel.TrainData.TrainData.Value.TrainLength,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-       {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 2400.0,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; True
-        }
-    },
-    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
-    {
-        Distance =&gt; 2700.0+Kernel.TrainData.TrainData.Value.TrainLength,
-        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
-        {
-            SwitchOffEddyCurrentBrakeForEB =&gt; False,
-            SwitchOffMagneticShoeBrake =&gt; False,
-            SwitchOffRegenerativeBrake =&gt; False
-        }
-    }
-]</Action><Action
  Guid="a356e2a1-d41b-4747-9ba1-b0145479f7cb"
 >Kernel.TrainData.TrainData.Value.RegenerativeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</Action><Action
  Guid="d8b17d45-897a-481d-9fab-d6cb0db93c6c"
@@ -311,6 +267,56 @@
 >TIU.SpecialBrakeStatus.EddyCurrentBrakeIsActive &lt;- True</Action><Action
  Guid="b56a813e-9219-40b2-9470-8ff8edf2abc7"
 >TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive &lt;- True</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="194ef5c5-e592-4b08-abad-24820a0c9456"
+>
+<Actions>
+<Action
+ Guid="defb0655-b840-4a77-8287-2adaee824ae6"
+>Kernel.TrackDescription.TrackConditions.TCProfile&lt;- 
+[
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 1200.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+       {
+            SwitchOffEddyCurrentBrakeForEB =&gt; True,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 1300.0+Kernel.TrainData.TrainData.Value.TrainLength,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+       {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 2400.0,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; True
+        }
+    },
+    Kernel.TrackDescription.TrackConditions.TrackConditionInformation
+    {
+        Distance =&gt; 2700.0+Kernel.TrainData.TrainData.Value.TrainLength,
+        Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
+        {
+            SwitchOffEddyCurrentBrakeForEB =&gt; False,
+            SwitchOffMagneticShoeBrake =&gt; False,
+            SwitchOffRegenerativeBrake =&gt; False
+        }
+    }
+]</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
