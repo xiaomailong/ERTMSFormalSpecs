@@ -1015,7 +1015,7 @@ ON
  Name="Add end of section"
  Guid="fa1bee7b-7c72-483b-a7c7-f899c6b1b808"
 >
-<Comment>It&apos;s important that the end of the section be added first, so that the profile is reset properly</Comment>
+<Comment>It&apos;s important that the end of the section be added first, so that the profile is built properly</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1025,9 +1025,64 @@ ON
 <Comment>The end of the new section does not match any existing section boundaries
 If there is already at a point at the end location, the values will not be changed</Comment>
 <PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Condition ends when the rear of the train passes the end point"
+ Guid="f137783b-e822-4770-b79d-6b41f13b33e6"
+>
+<Comment>This is the case for most of the track conditions</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="End of train conditions"
+ Guid="058e577d-6aaf-4359-9a83-97b947b165a2"
+>
+<PreConditions>
+<PreCondition
+ Guid="cd0fb277-b7e0-4128-894c-2825fd488bef"
+>NOT (THERE_IS_IN TCProfile | X.Distance == Dist+Length+ Kernel.TrainData.TrainData.Value.TrainLength)</PreCondition><PreCondition
+ Guid="d467db20-a043-49d1-8f36-77aab81859ff"
+>(TCType != Messages.M_TRACKCOND.Powerless_section___lower_pantograph__Initial_state__not_powerless_section) OR 
+(TCType != Messages.M_TRACKCOND.Powerless_section___switch_off_the_main_power_switch__Initial_state__not_powerless_section) OR 
+(TCType != Messages.M_TRACKCOND.Sound_horn__Initial_state__no_request_for_sound_horn) OR 
+(TCType != Messages.M_TRACKCOND.Tunnel_stopping_area__Initial_state__no_tunnel_stopping_area)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d40512ce-8524-418c-b43d-f3da36a24f7f"
+>INSERT
+    TCProfilePoint(
+        TCType=&gt;TCType,
+        Distance=&gt;(Dist+Length+ Kernel.TrainData.TrainData.Value.TrainLength),
+        EndOfSection=&gt;True
+    )
+IN
+    TCProfile</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Condition ends when the front of the train passes the end point"
+ Guid="1e0ef183-7986-4db6-8c24-decc71e5888f"
+>
+<Comment>This applies to Powerless Sections, Tunnel Stopping Area and Sound Horn</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Front of train conditions"
+ Guid="53912990-0a2a-4f86-8267-0f48902af663"
+>
+<PreConditions>
 <PreCondition
  Guid="5c2fd295-1fa0-4273-8634-53b3ce87e09e"
->NOT (THERE_IS_IN TCProfile | X.Distance == Dist+Length)</PreCondition></PreConditions>
+>NOT (THERE_IS_IN TCProfile | X.Distance == Dist+Length)</PreCondition><PreCondition
+ Guid="e726feec-dd39-46aa-9945-f19d79932289"
+>(TCType == Messages.M_TRACKCOND.Powerless_section___lower_pantograph__Initial_state__not_powerless_section) OR 
+(TCType == Messages.M_TRACKCOND.Powerless_section___switch_off_the_main_power_switch__Initial_state__not_powerless_section) OR 
+(TCType == Messages.M_TRACKCOND.Sound_horn__Initial_state__no_request_for_sound_horn) OR 
+(TCType == Messages.M_TRACKCOND.Tunnel_stopping_area__Initial_state__no_tunnel_stopping_area)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4b054b67-3098-417b-8cab-bb8d689d1032"
@@ -1039,6 +1094,8 @@ If there is already at a point at the end location, the values will not be chang
     )
 IN
     TCProfile</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

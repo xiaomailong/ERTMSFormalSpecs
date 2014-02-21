@@ -79,7 +79,7 @@
     },
     Kernel.TrackDescription.TrackConditions.TrackConditionInformation
     {
-        Distance =&gt; 1300.0,
+        Distance =&gt; 1300.0+Kernel.TrainData.TrainData.Value.TrainLength,
         Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
        {
             SwitchOffEddyCurrentBrakeForEB =&gt; False,
@@ -99,7 +99,7 @@
     },
     Kernel.TrackDescription.TrackConditions.TrackConditionInformation
     {
-        Distance =&gt; 2700.0,
+        Distance =&gt; 2700.0+Kernel.TrainData.TrainData.Value.TrainLength,
         Value =&gt; Kernel.TrackDescription.TrackConditions.TrackCondition
         {
             SwitchOffEddyCurrentBrakeForEB =&gt; False,
