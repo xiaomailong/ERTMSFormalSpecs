@@ -8,8 +8,43 @@
 >
 <NameSpaces>
 </NameSpaces>
+<Enumerations>
+<Enum
+ Default="ConditionType.Conditions"
+ Name="ConditionType"
+ Guid="4fdffda5-083b-4121-aac5-6672a6d82bdd"
+>
+<Values>
+<EnumValue
+ Value=""
+ Name="Conditions"
+ Guid="2f7293bf-2382-4e66-8ce1-96392289c641"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="BigMetalMasses"
+ Guid="c172a3b2-dba9-435c-b7b6-079458e3db5e"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="StationPlatform"
+ Guid="b8d160ba-53dc-4580-bdba-ad91f5962e05"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="TractionSystem"
+ Guid="f3e83b8c-702a-4858-9946-41237c992284"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="CurrentConsumption"
+ Guid="f5ce97d5-093a-4465-a9cc-882f8c09e501"
+>
+</EnumValue></Values>
+</Enum></Enumerations>
 <Structures>
 <Structure
+ Implemented="TRUE"
  Name="TrackConditionInformation"
  Guid="b131c7c4-48fb-4898-b13b-188aab27e08c"
 >
@@ -47,38 +82,6 @@
  Guid="cb0a3a0e-53ac-46c5-8da4-fd9b78778a80"
 >
 </ReqRef><Comment>Which track conditions are in effect</Comment>
-</StructureElement><StructureElement
- TypeName="TCStationPlatform"
- Default=""
- Mode="Internal"
- Name="StationPlatform"
- Guid="4becde7f-d5e8-4fb5-bcc5-3abef374f9cb"
->
-<Comment>Parameters for station platforms</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="BigMetalMasses"
- Guid="ea1f62db-0dde-400f-8e2d-ba4db52ee3be"
->
-<Comment>Whether the train has to account for big metal masses on the track</Comment>
-</StructureElement><StructureElement
- TypeName="TCTractionSystem"
- Default=""
- Mode="Internal"
- Name="TractionSystem"
- Guid="74f6bb63-4e03-4ee6-bcaa-b0b3964d25a7"
->
-<Comment>The type and country identifier of the traction system the train has to change to</Comment>
-</StructureElement><StructureElement
- TypeName="Messages.M_CURRENT"
- Default="1023"
- Mode="Internal"
- Name="CurrentConsumption"
- Guid="23ac4cf0-a06c-47f4-9278-0cf0b20cb55b"
->
-<Comment>Gives the maximum current consumption in tens of Amps</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="TrackCondition"
@@ -245,7 +248,7 @@
 >
 </ReqRef><Comment>The eddy current brake should be disabled for the emergency brake</Comment>
 </StructureElement></Structure><Structure
- Name="TCTractionSystem"
+ Name="TractionSystem"
  Guid="44d803d3-4953-4340-b09a-f47f0ee996ef"
 >
 <Comment>Contains information about the traction system to switch to</Comment>
@@ -265,11 +268,125 @@
  Guid="7c1b02d5-b4b7-4ca4-84ad-72b1557cf98f"
 >
 </StructureElement></Structure><Structure
- Name="TCStationPlatform"
+ Name="StationPlatform"
  Guid="1d309980-5fef-4858-8509-9698eac509ae"
 >
 <Comment>Structure holding the information about upcoming platform parameters</Comment>
-</Structure></Structures>
+<StructureElement
+ TypeName="Messages.M_PLATFORM"
+ Default="0"
+ Mode="Internal"
+ Name="Side"
+ Guid="c2a42a47-3e24-4f7b-914f-090d0c5c30b3"
+>
+</StructureElement><StructureElement
+ TypeName="Messages.Q_PLATFORM"
+ Default="0"
+ Mode="Internal"
+ Name="Height"
+ Guid="98655f73-403c-4a3c-b30a-b6697c1c6edc"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="Enabled"
+ Guid="15cc9cab-fb00-4423-89fc-60764c6e5e41"
+>
+</StructureElement></Structure><Structure
+ Name="BigMetalMassInformation"
+ Guid="20f0007f-dcf5-4b3c-b52e-1de6cffe79d6"
+>
+<StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Name="Distance"
+ Guid="bd7c689a-7912-4dc8-90e8-2a7153fe27eb"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="Value"
+ Guid="9bc0dd19-9500-4d07-9f98-b08260bc6477"
+>
+</StructureElement></Structure><Structure
+ Name="TractionSystemInformation"
+ Guid="5881ab92-0757-408b-aece-398ffeb03a16"
+>
+<StructureElement
+ TypeName="TractionSystem"
+ Default=""
+ Mode="Internal"
+ Name="Value"
+ Guid="e634abff-5400-4599-9235-a9bee34e38ae"
+>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Distance"
+ Guid="7561ac50-931c-4ce9-9cad-892f57077bf7"
+>
+<ReqRef
+ Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d695282e-af9d-4030-a16f-5514ccddb344"
+>
+</ReqRef><Comment>Start location of the track condition</Comment>
+</StructureElement></Structure><Structure
+ Name="CurrentConsumptionInformation"
+ Guid="7a5297cd-00d0-4a5f-8ed4-c41cee5098e2"
+>
+<StructureElement
+ TypeName="Messages.M_CURRENT"
+ Default=""
+ Mode="Internal"
+ Name="Value"
+ Guid="ef9bd905-1557-46a0-a2bb-76f208aafe04"
+>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Distance"
+ Guid="36c65e77-0f18-467f-9cfc-98a7ebe2511e"
+>
+<ReqRef
+ Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3f8b4cc4-d275-490f-9fe7-5bfe9f6d2307"
+>
+</ReqRef><Comment>Start location of the track condition</Comment>
+</StructureElement></Structure><Structure
+ Name="StationPlatformInformation"
+ Guid="11a0f7bd-dbea-4a8c-b7af-4671a9a9da53"
+>
+<StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Distance"
+ Guid="b5758143-ed13-41b3-adce-808e924cc584"
+>
+<ReqRef
+ Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="37637962-58de-4cb5-8f5c-4a17309e0068"
+>
+</ReqRef><Comment>Start location of the track condition</Comment>
+</StructureElement><StructureElement
+ TypeName="StationPlatform"
+ Default=""
+ Mode="Internal"
+ Name="Value"
+ Guid="f42350ac-4fea-4531-9ccc-ad2d71443647"
+>
+</StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="TrackConditionInformation"
@@ -290,6 +407,30 @@
  Guid="ed25c3de-fddf-4846-a080-c5c953bd66d6"
 >
 </ReqRef><Comment>Collection of TrackConditionInformation items. Is the type of TCProfile</Comment>
+</Collection><Collection
+ TypeName="StationPlatformInformation"
+ Default="[]"
+ Name="StationPlatforms"
+ Guid="0bc848d5-8f1b-4f77-a50b-4e4ba9a8e68b"
+>
+</Collection><Collection
+ TypeName="CurrentConsumptionInformation"
+ Default="[]"
+ Name="CurrentConsumptions"
+ Guid="0a337071-652a-418d-9a3c-adb0810c1826"
+>
+</Collection><Collection
+ TypeName="TractionSystemInformation"
+ Default="[]"
+ Name="TractionSystems"
+ Guid="eeee0b74-18e8-4afd-8602-37a0b75099c2"
+>
+</Collection><Collection
+ TypeName="BigMetalMassInformation"
+ Default="[]"
+ Name="BigMetalMasses"
+ Guid="e0835a4f-f803-4848-b153-abf4979ae387"
+>
 </Collection></Collections>
 <Functions>
 <Function
@@ -339,12 +480,12 @@
 <PreCondition
  Guid="158d39b3-532d-4194-ade2-b55879fde745"
 >TCType == Messages.M_TRACKCOND.Air_tightness__Initial_state__no_request_for_air_tightness</PreCondition></PreConditions>
-<Expression>TrackConditionInformation
-{
+<Expression>TrackConditionInformation{
     Distance =&gt; Distance,
-    Value =&gt; TrackCondition{
-        AirTightness =&gt; True
-    }
+    Value =&gt; CombineConditions(
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+        Profile2=&gt;TrackCondition{AirTightness=&gt;True} 
+    )
 }</Expression>
 </Case><Case
  Name="NonStoppingArea"
@@ -354,12 +495,12 @@
 <PreCondition
  Guid="e0e6c996-6144-43d4-a85f-0dbfd3f32b7d"
 >TCType == Messages.M_TRACKCOND.Non_stopping_area___tunnel__Initial_state__stopping_permitted</PreCondition></PreConditions>
-<Expression>TrackConditionInformation
-{
+<Expression>TrackConditionInformation{
     Distance =&gt; Distance,
-    Value =&gt; TrackCondition{
-        NonStoppingArea =&gt; True
-    }
+    Value =&gt; CombineConditions(
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+        Profile2=&gt;TrackCondition{NonStoppingArea=&gt;True} 
+    )
 }</Expression>
 </Case><Case
  Name="PowerlessSection_LowerPantograph"
@@ -369,12 +510,12 @@
 <PreCondition
  Guid="144ceff9-9e3e-46b6-8e89-ef91a389cd51"
 >TCType == Messages.M_TRACKCOND.Powerless_section___lower_pantograph__Initial_state__not_powerless_section</PreCondition></PreConditions>
-<Expression>TrackConditionInformation
-{
+<Expression>TrackConditionInformation{
     Distance =&gt; Distance,
-    Value =&gt; TrackCondition{
-        PowerlessSection_LowerPantograph =&gt; True
-    }
+    Value =&gt; CombineConditions(
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+        Profile2=&gt;TrackCondition{PowerlessSection_LowerPantograph=&gt;True} 
+    )
 }</Expression>
 </Case><Case
  Name="PowerlessSection_SwitchOffTheMainPowerSwitch"
@@ -384,12 +525,12 @@
 <PreCondition
  Guid="dde20f85-6d5d-4e69-a9a5-b7e93ff39437"
 >TCType == Messages.M_TRACKCOND.Powerless_section___switch_off_the_main_power_switch__Initial_state__not_powerless_section</PreCondition></PreConditions>
-<Expression>TrackConditionInformation
-{
+<Expression>TrackConditionInformation{
     Distance =&gt; Distance,
-    Value =&gt; TrackCondition{
-        PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; True
-    }
+    Value =&gt; CombineConditions(
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+        Profile2=&gt;TrackCondition{PowerlessSection_SwitchOffTheMainPowerSwitch=&gt;True} 
+    )
 }</Expression>
 </Case><Case
  Name="RadioHole"
@@ -399,12 +540,12 @@
 <PreCondition
  Guid="8fc8792d-fc48-4bd4-8936-90484c256055"
 >TCType == Messages.M_TRACKCOND.Radio_hole__stop_supervising_T_NVCONTACT___Initial_state__supervise_T_NVCONTACT</PreCondition></PreConditions>
-<Expression>TrackConditionInformation
-{
+<Expression>TrackConditionInformation{
     Distance =&gt; Distance,
-    Value =&gt; TrackCondition{
-        RadioHole =&gt; True
-    }
+    Value =&gt; CombineConditions(
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+        Profile2=&gt;TrackCondition{RadioHole=&gt;True} 
+    )
 }</Expression>
 </Case><Case
  Name="SoundHorn"
@@ -414,12 +555,12 @@
 <PreCondition
  Guid="9fcd2282-2e72-4499-af37-7b619e32e280"
 >TCType == Messages.M_TRACKCOND.Sound_horn__Initial_state__no_request_for_sound_horn</PreCondition></PreConditions>
-<Expression>TrackConditionInformation
-{
+<Expression>TrackConditionInformation{
     Distance =&gt; Distance,
-    Value =&gt; TrackCondition{
-        SoundHorn =&gt; True
-    }
+    Value =&gt; CombineConditions(
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+        Profile2=&gt;TrackCondition{SoundHorn=&gt;True} 
+    )
 }</Expression>
 </Case><Case
  Name="SwitchOffEddyCurrentBrakeForEB"
@@ -429,12 +570,12 @@
 <PreCondition
  Guid="d7f70660-d556-4cdc-80b8-c7216f02f496"
 >TCType == Messages.M_TRACKCOND.Switch_off_eddy_current_brake_for_emergency_brake__Initial_state__eddy_current_brake_for_emergency_brake_on</PreCondition></PreConditions>
-<Expression>TrackConditionInformation
-{
+<Expression>TrackConditionInformation{
     Distance =&gt; Distance,
-    Value =&gt; TrackCondition{
-        SwitchOffEddyCurrentBrakeForEB =&gt; True
-    }
+    Value =&gt; CombineConditions(
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+        Profile2=&gt;TrackCondition{SwitchOffEddyCurrentBrakeForEB=&gt;True} 
+    )
 }</Expression>
 </Case><Case
  Name="SwitchOffEddyCurrentBrakeForSB"
@@ -444,12 +585,12 @@
 <PreCondition
  Guid="2cef8605-475c-4208-8ff7-23b85212d584"
 >TCType == Messages.M_TRACKCOND.Switch_off_eddy_current_brake_for_service_brake__Initial_state__eddy_current_brake_for_service_brake_on</PreCondition></PreConditions>
-<Expression>TrackConditionInformation
-{
+<Expression>TrackConditionInformation{
     Distance =&gt; Distance,
-    Value =&gt; TrackCondition{
-        SwitchOffEddyCurrentBrakeForSB =&gt; True
-    }
+    Value =&gt; CombineConditions(
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+        Profile2=&gt;TrackCondition{SwitchOffEddyCurrentBrakeForSB=&gt;True} 
+    )
 }</Expression>
 </Case><Case
  Name="SwitchOffMagneticShoeBrake"
@@ -459,12 +600,12 @@
 <PreCondition
  Guid="381a52ec-a69d-42a9-ad0d-c1dd0156bfc0"
 >TCType == Messages.M_TRACKCOND.Switch_off_magnetic_shoe_brake__Initial_state__magnetic_shoe_brake_on</PreCondition></PreConditions>
-<Expression>TrackConditionInformation
-{
+<Expression>TrackConditionInformation{
     Distance =&gt; Distance,
-    Value =&gt; TrackCondition{
-        SwitchOffMagneticShoeBrake=&gt; True
-    }
+    Value =&gt; CombineConditions(
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+        Profile2=&gt;TrackCondition{SwitchOffMagneticShoeBrake=&gt;True} 
+    )
 }</Expression>
 </Case><Case
  Name="SwitchOffRegenerativeBrake"
@@ -474,12 +615,12 @@
 <PreCondition
  Guid="a69c371f-bec7-428e-b998-08bf43054fff"
 >TCType == Messages.M_TRACKCOND.Switch_off_regenerative_brake__Initial_state__regenerative_brake_on</PreCondition></PreConditions>
-<Expression>TrackConditionInformation
-{
+<Expression>TrackConditionInformation{
     Distance =&gt; Distance,
-    Value =&gt; TrackCondition{
-        SwitchOffRegenerativeBrake =&gt; True
-    }
+    Value =&gt; CombineConditions(
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+        Profile2=&gt;TrackCondition{SwitchOffRegenerativeBrake=&gt;True} 
+    )
 }</Expression>
 </Case><Case
  Name="TunnelStoppingArea"
@@ -489,12 +630,12 @@
 <PreCondition
  Guid="8447cc3f-c1b7-4388-9540-0b4c613ef5a8"
 >TCType == Messages.M_TRACKCOND.Tunnel_stopping_area__Initial_state__no_tunnel_stopping_area</PreCondition></PreConditions>
-<Expression>TrackConditionInformation
-{
+<Expression>TrackConditionInformation{
     Distance =&gt; Distance,
-    Value =&gt; TrackCondition{
-        TunnelStoppingArea =&gt; True
-    }
+    Value =&gt; CombineConditions(
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+        Profile2=&gt;TrackCondition{TunnelStoppingArea=&gt;True} 
+    )
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -511,18 +652,63 @@
 </ReqRef><Comment>Returns True if the TCProfile point is no longer applicable, ie. if there is another profile point between it and the minimum distance of the train</Comment>
 <Parameters>
 <Parameter
- Type="TrackConditionInformation"
- Name="ProfilePoint"
+ Type="Default.BaseTypes.Distance"
+ Name="ProfilePointDistance"
  Guid="cc6665c6-d1cb-443a-ab6a-b592278c3d7f"
+>
+</Parameter><Parameter
+ Type="ConditionType"
+ Name="TrackCondition"
+ Guid="77b8efdb-5628-437b-aaea-d12785dff457"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="RearEndPosition after TrackCond"
+ Name="The track conditions are passed"
  Guid="24466bb5-b244-4a1a-b1ca-5a065f4c431c"
 >
 <Comment>Due to the way the track conditions are stored, profile points are all compared to the front of the train (even though the specs say rear, this is accounted for in AddSectionToProfile)</Comment>
-<Expression>THERE_IS_IN TCProfile | (X.Distance &gt; ProfilePoint.Distance) AND (X.Distance &lt; Kernel.TrainPosition.FrontEndPosition(PointOfInterest=&gt;DistanceInterval.Min))</Expression>
+<PreConditions>
+<PreCondition
+ Guid="63f5b8e4-1c3f-4267-a7e6-bfb62588b3c1"
+>TrackCondition == ConditionType.Conditions</PreCondition></PreConditions>
+<Expression>THERE_IS_IN TCProfile | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+</Case><Case
+ Name="Metal masses are passed"
+ Guid="b3adf906-b3aa-4a78-a2ef-cbfeae7a1c8e"
+>
+<PreConditions>
+<PreCondition
+ Guid="29415c07-8788-4a5d-b02d-9c1b80bec23e"
+>TrackCondition == ConditionType.BigMetalMasses</PreCondition></PreConditions>
+<Expression>THERE_IS_IN TCBigMetalMasses | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+</Case><Case
+ Name="Station platforms changed"
+ Guid="64950d25-0e2f-4ada-b68d-1237ec3a3bd5"
+>
+<PreConditions>
+<PreCondition
+ Guid="4a9c1660-1830-44a0-a016-13570282c74e"
+>TrackCondition == ConditionType.StationPlatform</PreCondition></PreConditions>
+<Expression>THERE_IS_IN TCStationPlatforms | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+</Case><Case
+ Name="Newer traction system condition has been applied"
+ Guid="6a9633c8-ab71-4b77-8b00-d8fe637fc740"
+>
+<PreConditions>
+<PreCondition
+ Guid="e9ab2926-47c5-4c27-b9f2-5f48fe6f086b"
+>TrackCondition == ConditionType.TractionSystem</PreCondition></PreConditions>
+<Expression>THERE_IS_IN TCTractionSystems | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+</Case><Case
+ Name="New current consumption limit has been applied"
+ Guid="2c584425-c82e-48bc-a4ff-a445749fa10b"
+>
+<PreConditions>
+<PreCondition
+ Guid="ec6f1c48-d0e2-40b6-98ef-5b4bc7e36db6"
+>TrackCondition == ConditionType.CurrentConsumption</PreCondition></PreConditions>
+<Expression>THERE_IS_IN TCCurrentConsumption | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -547,7 +733,7 @@
  Guid="d500abeb-937a-4158-bde3-df9a023e35ff"
 >
 <Comment>Returns True if the train is currently inside a RadioHole</Comment>
-<Expression>CurrentProfile().RadioHole</Expression>
+<Expression>CurrentConditions().RadioHole</Expression>
 </Case></Cases>
 </Function><Function
  Type="TrackConditionInformation"
@@ -703,9 +889,9 @@
   INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.TrackConditions.TrackCondition"
+ Type="TrackCondition"
  Implemented="TRUE"
- Name="CurrentProfile"
+ Name="CurrentConditions"
  Guid="fb96e527-60c0-4a0c-a1a9-051dc1c5cc85"
 >
 <ReqRef
@@ -724,49 +910,52 @@
  Name="Value"
  Guid="8b949ae1-4434-4dff-9942-d3de6084c8e3"
 >
+<Comment>For most profiles, the starting point is when the max safe front end of the train passes the location specified in the message and the end point is when the min safe rear end passes the location + the section length. (the exceptions to this are powerless sections (which use the min safe front end of the train for the end point), and tunnel stopping and sound horn areas (which use the estimated front end of the train).
+When this is recorded in TCProfile, the end points are adjusted so that they are measured with respect to the front end of the train.
+When the train passes over a profile point, it doesn&apos;t know if that point marks a start of section, end of section or even both. If it is a start of section, the condition takes effect as soon as the max safe front end of the train passes over it. If it is an end, the condition stays in effect until the min safe front end passes over it. So to account for all cases, each condition is given as the combination of the profile at the max safe front end and the min safe front end of most conditions, and the value at the estimated front end of the train for Tunnel Stopping Area and Sound Horn</Comment>
 <Expression>TrackCondition {
     NonStoppingArea =&gt; CombineConditions(
-    Profile1=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
-    Profile2=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
+    Profile1=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
+    Profile2=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
 ).NonStoppingArea,
-    TunnelStoppingArea =&gt; ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)).TunnelStoppingArea,
-    SoundHorn =&gt; ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)).SoundHorn,
+    TunnelStoppingArea =&gt; ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)).TunnelStoppingArea,
+    SoundHorn =&gt; ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)).SoundHorn,
     PowerlessSection_LowerPantograph =&gt; CombineConditions(
-    Profile1=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
-    Profile2=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
+    Profile1=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
+    Profile2=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
 ).PowerlessSection_LowerPantograph,
     RadioHole =&gt; CombineConditions(
-    Profile1=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
-    Profile2=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
+    Profile1=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
+    Profile2=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
 ).RadioHole,
     AirTightness =&gt; CombineConditions(
-    Profile1=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
-    Profile2=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
+    Profile1=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
+    Profile2=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
 ).AirTightness,
     SwitchOffRegenerativeBrake =&gt; CombineConditions(
-    Profile1=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
-    Profile2=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
+    Profile1=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
+    Profile2=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
 ).SwitchOffRegenerativeBrake,
     SwitchOffEddyCurrentBrakeForSB =&gt; CombineConditions(
-    Profile1=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
-    Profile2=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
+    Profile1=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
+    Profile2=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
 ).SwitchOffEddyCurrentBrakeForSB,
     SwitchOffMagneticShoeBrake =&gt; CombineConditions(
-    Profile1=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
-    Profile2=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
+    Profile1=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
+    Profile2=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
 ).SwitchOffMagneticShoeBrake,
     PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; CombineConditions(
-    Profile1=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
-    Profile2=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
+    Profile1=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
+    Profile2=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
 ).PowerlessSection_SwitchOffTheMainPowerSwitch,
     SwitchOffEddyCurrentBrakeForEB =&gt; CombineConditions(
-    Profile1=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
-    Profile2=&gt;ProfileAtDistance(Distance=&gt;Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
+    Profile1=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
+    Profile2=&gt;ProfileAtDistance(Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))
 ).SwitchOffEddyCurrentBrakeForEB 
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.TrackConditions.TrackCondition"
+ Type="TrackCondition"
  Implemented="TRUE"
  Name="ProfileAtDistance"
  Guid="439dae37-429f-4e83-b249-e8a4f50717b5"
@@ -805,7 +994,7 @@
 <Expression>TrackCondition { }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.TrackConditions.TrackCondition"
+ Type="TrackCondition"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CombineConditions"
@@ -815,12 +1004,12 @@
 (Condition A  OR  Condition B)</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.TrackConditions.TrackCondition"
+ Type="TrackCondition"
  Name="Profile1"
  Guid="fe7b67e3-89d5-4779-a638-0bb141b805ee"
 >
 </Parameter><Parameter
- Type="Kernel.TrackDescription.TrackConditions.TrackCondition"
+ Type="TrackCondition"
  Name="Profile2"
  Guid="b598db9e-9187-4717-8a79-2f0205c0e215"
 >
@@ -847,7 +1036,7 @@
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.TrackConditions.TrackConditionInformation"
+ Type="TrackConditionInformation"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="UpdatedTCProfile"
@@ -856,7 +1045,7 @@
 <Comment>Takes a track condition profile point and data from a track condition packet and merges them together</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.TrackConditions.TrackConditionInformation"
+ Type="TrackConditionInformation"
  Name="Profile"
  Guid="5e72dc8c-9bf9-42d6-8475-f02835f4f524"
 >
@@ -1262,6 +1451,8 @@ If there is already at a point at the end location, the values will not be chang
 <Action
  Guid="4b054b67-3098-417b-8cab-bb8d689d1032"
 ><Comment>EndSectionDistance provides the end location (in terms of the front end of the train) of the section</Comment>
+
+
 INSERT
     MakeTCProfilePoint(
         TCType=&gt;TCType,
@@ -1338,7 +1529,7 @@ IN
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="TrackConditions.TrackConditions"
+ Type="TrackConditions"
  DefaultValue=""
  VariableMode="Internal"
  Implemented="TRUE"
@@ -1386,13 +1577,38 @@ IN
  Guid="2124b7ca-ef8b-4550-a4dc-682e5fefe0eb"
 >
 </ReqRef><Comment>The list of track conditions received from the trackside.</Comment>
+</Variable><Variable
+ Type="StationPlatforms"
+ VariableMode="Internal"
+ Name="TCStationPlatforms"
+ Guid="f3a30586-937f-4cd8-a2a0-ea55dbd8f426"
+>
+</Variable><Variable
+ Type="CurrentConsumptions"
+ VariableMode="Internal"
+ Name="TCCurrentConsumption"
+ Guid="323e43d9-9821-4525-9267-5189729d3ef8"
+>
+</Variable><Variable
+ Type="TractionSystems"
+ VariableMode="Internal"
+ Name="TCTractionSystems"
+ Guid="5600ee48-6962-432b-88c3-54c6dc35db99"
+>
+</Variable><Variable
+ Type="BigMetalMasses"
+ VariableMode="Internal"
+ Name="TCBigMetalMasses"
+ Guid="b429b8d9-31f7-4370-8e74-13b074893895"
+>
+<Comment>Big Metal Masses track conditions profile</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="TrackConditionMonitor"
+ Name="TrackConditionsMonitor"
  Guid="cc34139d-3070-45e8-a515-b8e0e7c2fc14"
 >
 <Comment>Deletes old track conditions as they move out of their zone of applicability</Comment>
@@ -1408,11 +1624,59 @@ IN
 <PreConditions>
 <PreCondition
  Guid="350df558-dfb4-44a2-b044-e9392fd336bb"
->TCProfile != EMPTY</PreCondition></PreConditions>
+>TCProfile != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="effae0ff-821f-49a4-b156-ec9f0cd7cc5b"
->REMOVE ALL ConditionExitsApplicability ( X ) IN TCProfile</Action></Actions>
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.Conditions) IN TCProfile</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="BigMetalMassesMonitor"
+ Guid="ac8f64bd-5b2a-4b71-bcb2-163ccb52fca3"
+>
+<PreConditions>
+<PreCondition
+ Guid="79bfca4d-21b6-4382-916f-83a44be41948"
+>TCBigMetalMasses != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="eb5b3a2f-282d-4717-8657-32e14c2946e1"
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.BigMetalMasses) IN TCBigMetalMasses</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="StationPlatformsMonitor"
+ Guid="e6ff74b5-0e2f-48fb-ba67-9e5b9b6de50e"
+>
+<PreConditions>
+<PreCondition
+ Guid="fab1fc52-4404-46ac-91a5-c14ddbfe98e9"
+>TCStationPlatforms != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f91f5ae0-fd2c-40a7-94db-e97d81beb4b3"
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.StationPlatform) IN TCStationPlatforms</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="TractionSystemsMonitor"
+ Guid="215c4a33-651f-4ca6-bdbf-4e3cd722d678"
+>
+<PreConditions>
+<PreCondition
+ Guid="7bf80b57-15e8-4404-aba0-9948ea48ce59"
+>TCTractionSystems != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="feca3a28-9d9e-429e-85f6-3b5ea48dfbab"
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.TractionSystem) IN TCTractionSystems</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="CurrentConsumptionMonitor"
+ Guid="d5b94d8f-e552-4e00-b819-e4b44f789de8"
+>
+<PreConditions>
+<PreCondition
+ Guid="8fe692a7-c1df-49ba-9849-5df36cdefd96"
+>TCCurrentConsumption != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fd3b7fa2-96f7-45bd-807b-e499d62319bb"
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.CurrentConsumption) IN TCCurrentConsumption</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
