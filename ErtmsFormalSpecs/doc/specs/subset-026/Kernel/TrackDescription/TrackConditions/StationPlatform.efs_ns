@@ -11,14 +11,14 @@
 >
 <Comment>Structure holding the information about upcoming platform parameters</Comment>
 <StructureElement
- TypeName="Messages.M_PLATFORM"
+ TypeName="Messages.Q_PLATFORM"
  Default="0"
  Mode="Internal"
  Name="Side"
  Guid="c2a42a47-3e24-4f7b-914f-090d0c5c30b3"
 >
 </StructureElement><StructureElement
- TypeName="Messages.Q_PLATFORM"
+ TypeName="Messages.M_PLATFORM"
  Default="0"
  Mode="Internal"
  Name="Height"
@@ -60,11 +60,536 @@
 <Collections>
 <Collection
  TypeName="StationPlatform.StationPlatformInformation"
+ MaxSize="20"
  Default="[]"
  Name="StationPlatforms"
  Guid="0bc848d5-8f1b-4f77-a50b-4e4ba9a8e68b"
 >
 </Collection></Collections>
+<Functions>
+<Function
+ Type="StationPlatformInformation"
+ NeedsRequirement="FALSE"
+ Name="MakeSPProfilePoint"
+ Guid="1429955a-4b8e-467b-aa53-292d5c3c2928"
+>
+<Comment>Creates a TrackCondition structure from the value received from the trackside.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.M_PLATFORM"
+ Name="Height"
+ Guid="4288bd08-eced-411a-90c2-775865888ea5"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="c90c2ef8-7100-4159-ad3d-dcdc0b08e105"
+>
+</Parameter><Parameter
+ Type="Boolean"
+ Name="EndOfSection"
+ Guid="b12532d8-2277-417e-8e63-8a633fb60a5b"
+>
+</Parameter><Parameter
+ Type="Messages.Q_PLATFORM"
+ Name="Side"
+ Guid="bc8e6178-7101-416c-8a22-07e1f9651572"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="End of a received section, there are previous values to return to"
+ Guid="5e5901a4-7a53-4842-9d29-10a6c324b254"
+>
+<PreConditions>
+<PreCondition
+ Guid="7d07a912-fc3b-43b2-8ea2-e825af1ec19b"
+>EndOfSection</PreCondition><PreCondition
+ Guid="67429795-1282-4e3c-a209-83778b357b04"
+>SPAtDistance(Distance).Enabled</PreCondition></PreConditions>
+<Expression>StationPlatformInformation{
+    Distance =&gt; Distance,
+    Value =&gt;  SPAtDistance(Distance)
+}</Expression>
+</Case><Case
+ Name="No values to return to at the end of the section"
+ Guid="a0a36797-6e18-4cc2-9f00-2a2caefbb5b9"
+>
+<PreConditions>
+<PreCondition
+ Guid="481e085b-f884-40b1-906d-6de52751835a"
+>EndOfSection</PreCondition></PreConditions>
+<Expression>StationPlatformInformation{
+    Distance =&gt; Distance,
+    Value =&gt; StationPlatform{
+        Side =&gt; 0,
+        Height =&gt; 0,
+        Enabled =&gt; False
+    }
+}</Expression>
+</Case><Case
+ Name="Start of section"
+ Guid="6d2b0839-738c-46ee-8f64-861bc5226af8"
+>
+<Expression>StationPlatformInformation{
+    Distance =&gt; Distance,
+    Value =&gt; StationPlatform{
+        Side =&gt; Side,
+        Height =&gt; Height,
+        Enabled =&gt; True
+    }
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Name="SPSectionEnd"
+ Guid="624a6a0a-0d06-472e-8e14-3c10b530d8f9"
+>
+<ReqRef
+ Id="00dfa999-7dd3-4fe9-a2d0-8fab1506a7d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d781ae2-589b-44e8-915e-94dfa3dad86f"
+>
+</ReqRef><ReqRef
+ Id="71debd8d-545a-49ca-835b-4ce037e22fb7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0364493f-03ca-4711-8973-ef1e62297bf3"
+>
+</ReqRef><ReqRef
+ Id="75f0036b-52d0-4886-96af-89590c44b242"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="594a176b-404c-4002-bdf3-56ce2792529d"
+>
+</ReqRef><Comment>Returns the location of the end of the section, based on the start and the type of track condition</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="16a9079d-eeae-46cb-b9a6-b5c60a62cbb2"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Length"
+ Name="Length"
+ Guid="988f5bbb-62c7-469d-84a6-971f52097ea3"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Ends at back of train"
+ Guid="c9961ef2-4d0e-47c0-8dcd-bec9bb9364c9"
+>
+<Comment>All other track conditions end when the back of the train crosses the section end</Comment>
+<Expression>Distance + Default.BaseTypes.LengthToDistance(Length) + Kernel.TrainData.TrainData.Value.TrainLength</Expression>
+</Case></Cases>
+</Function><Function
+ Type="StationPlatform"
+ Name="SPAtDistance"
+ Guid="dd1482f8-b3f0-45cb-b664-2b54999b8470"
+>
+<ReqRef
+ Id="b25e8d2d-5034-4a5d-bf39-2ddf58ec8b98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4d5ea8f-625e-4b03-8b9f-e3f5fb6a6b06"
+>
+</ReqRef><Comment>Returns the profile for when the train position is the given distance</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="ad8bfb82-9d1d-4f78-9327-d0547ff855b7"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Previous conditions exist"
+ Guid="28014667-2c1f-4d20-a679-bb29ffde644d"
+>
+<Comment>There are track conditions prior to the requested distance</Comment>
+<PreConditions>
+<PreCondition
+ Guid="e92f1a3d-f7dc-457f-8125-b090db9ad12b"
+>THERE_IS_IN TCStationPlatforms | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
+<Expression>REDUCE TCStationPlatforms | (X.Distance == SPProfileStartLocation(Distance) )
+    USING X.Value
+  INITIAL_VALUE EMPTY</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="570cdb8c-639b-4935-b08a-7b1c6548fedb"
+>
+<Comment>There are no track conditions that apply before the requested distance</Comment>
+<Expression>StationPlatform { }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="StationPlatform"
+ Name="CurrentConditions"
+ Guid="939f5bc3-3549-4fe0-9107-c125fd161569"
+>
+<ReqRef
+ Id="00dfa999-7dd3-4fe9-a2d0-8fab1506a7d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a74c31fd-1888-4f76-ba70-4e9c6f38b68d"
+>
+</ReqRef><ReqRef
+ Id="75f0036b-52d0-4886-96af-89590c44b242"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4200eaa9-f585-4794-9152-c0a23804c58f"
+>
+</ReqRef><Comment>Gives the current track conditions</Comment>
+<Cases>
+<Case
+ Name="Enabled"
+ Guid="25197a48-6150-46f8-a52e-824cb9e322d3"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="f27ed2d7-e341-4f81-8280-767a73fabb6e"
+>SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)).Enabled
+  OR  
+SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabled</PreCondition></PreConditions>
+<Expression>SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Max))</Expression>
+</Case><Case
+ Name="Not enabled"
+ Guid="4d96d425-13d0-4aef-9741-b86bd3a02528"
+>
+<PreConditions>
+<PreCondition
+ Guid="4e64c35a-20a8-4049-8903-c2d110072549"
+>NOT (SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabled)</PreCondition></PreConditions>
+<Expression>SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))</Expression>
+</Case><Case
+ Name="No data (not enabled)"
+ Guid="33fba418-c0f8-4cad-b79c-0f54e97f693e"
+>
+<Expression></Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ NeedsRequirement="FALSE"
+ Name="SPProfileStartLocation"
+ Guid="c8cee0e5-4f9b-4640-b939-a9af4723be09"
+>
+<Comment>Returns the track conditions that apply at the given distance</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="adbce825-8b52-4ae9-aa8a-39b9677c3829"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="0d720338-4d37-4041-ae4b-aca9d358dd48"
+>
+<Comment>Returns the element in TCProfile with the largest distance that is less than or equal to the parameter</Comment>
+<Expression>REDUCE TCStationPlatforms | (X.Distance &lt;= Distance)
+    USING Default.BaseTypes.MaxDistance(
+        X1=&gt;X.Distance,
+        X2=&gt;RESULT)
+  INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Name="SPTrackConditionReceived"
+ Guid="4b9fe4e0-0d7c-4fce-ab51-67a28a19220c"
+>
+<ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="12813455-cac9-4046-9991-126e60b73f6b"
+>
+</ReqRef><ReqRef
+ Id="ee609856-411d-4bb2-ab88-76b574aa3013"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ec3e079-31a2-4841-980e-56eb66b4c61f"
+>
+</ReqRef><ReqRef
+ Id="9eb67bec-5e3a-407d-8b6e-e3d49d57e883"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="18773bbe-24dd-4f15-988a-664a50483569"
+>
+</ReqRef><Comment>This procedure is called when a new axle load profile is received. There are two cases:
+  - If the initial states have to be resumed, the distance to where they have to be resumed is saved
+  - If no initial states have to be resumed, the axle load profile is updated (done by the HandleNewAxleLoadProfile procedure)</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_STATION_PLATFORMS.Message"
+ Name="Packet"
+ Guid="48fdbd5d-af67-4b35-9910-e8d1a105600a"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateTrackConditions"
+ Guid="d3478906-2324-4326-9941-2c2e4d7ae371"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitialStatesToBeResumed"
+ Guid="3966ccb7-ddf5-449a-ae87-a655beab1bda"
+>
+<Comment>The packet contains &quot;reset track conditions&quot;</Comment>
+<PreConditions>
+<PreCondition
+ Guid="53a3ced1-5cf0-4cc5-8743-10de52901b6b"
+>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="af7c9459-722c-4c14-8b2c-79e47721c1d1"
+>REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance(
+    distance=&gt;Packet.D_TRACKINIT,
+    scale=&gt;Packet.Q_SCALE
+    )
+IN
+    TCStationPlatforms</Action><Action
+ Guid="b803cea3-2661-496d-8f0e-61206f6bed58"
+>INSERT StationPlatformInformation{
+    Distance =&gt; Default.MessageTypes.QScaleDistance(
+        distance=&gt;Packet.D_TRACKINIT,
+        scale=&gt;Packet.Q_SCALE
+        ),
+    Value =&gt; StationPlatform{
+        Enabled =&gt; Boolean.False
+    }
+}
+IN
+    TCStationPlatforms</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NoInitialStatesToBeResumed"
+ Guid="5764f8a2-5f2f-4e1a-82c9-05fe39f756a4"
+>
+<Comment>The packet contains track conditions information</Comment>
+<PreConditions>
+<PreCondition
+ Guid="071272eb-3f49-4ea9-9952-6b03f796837a"
+>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="59fc8af2-abfa-4737-91d5-557d93614ec2"
+>HandleNewSPTrackCondition( Packet )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="HandleNewSPTrackCondition"
+ Guid="a2b46b5c-5952-4906-aed0-cc2571c6e6c5"
+>
+<Comment>Updates the track conditions according to the values of the packet received as parameter.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_STATION_PLATFORMS.Message"
+ Name="Packet"
+ Guid="1c22f726-b8fa-4a4b-b3bf-e4b6fa463797"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AddNewTrackCondition"
+ Guid="1c34422a-33f0-494d-b96d-442eeec98235"
+>
+<Comment>Inserts the newly received track conditions in TCProfile</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Insert first point in the track conditions profile"
+ Guid="8f94f2f4-ed4d-4bd7-a2ea-236faab35de9"
+>
+<ReqRef
+ Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20fa0490-ffc6-48f8-91b5-1fab1fc30634"
+>
+</ReqRef><ReqRef
+ Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4e5d1eac-d885-4fab-a4b0-60b4e453cb85"
+>
+</ReqRef><ReqRef
+ Id="d93685bd-18ea-422e-8641-3e9ed6427e66"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="76f01833-bd1e-4364-b3da-54ed5c9dbe4a"
+>
+</ReqRef><ReqRef
+ Id="b95a22fb-0a06-4d2a-b9f8-73a082712d4c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a3c7fb42-f386-4cb3-9957-0229078be809"
+>
+</ReqRef><Comment>Handle the M_TRACKCOND, D_TRACKCOND and L_TRACKCOND fields in Packet</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="b8eee697-8bc2-43f6-826f-5af04be62daa"
+>AddSPToProfile(
+    Distance=&gt;Default.MessageTypes.QScaleDistance(
+        distance=&gt;Packet.D_TRACKCOND,
+        scale=&gt;Packet.Q_SCALE
+    )
+    ,
+    Length=&gt; Default.MessageTypes.QScaleLength(
+        length=&gt;Packet.L_TRACKCOND,
+        scale=&gt;Packet.Q_SCALE
+    )
+    ,
+    Side =&gt; Packet.Q_PLATFORM,
+    Height =&gt; Packet.M_PLATFORM
+)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Insert further points in the track condition profile"
+ Guid="dfed5bc8-68ae-4bd4-8e94-b8d49e5c8aab"
+>
+<Comment>Handle Sequence1 in Packet</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="941b3372-3df3-4a5d-ab39-3f67acff9ba1"
+>APPLY
+    AddSPToProfile(
+        Distance=&gt;Default.MessageTypes.QScaleDistance(
+        distance=&gt;X.D_TRACKCOND,
+        scale=&gt;Packet.Q_SCALE
+    )
+    ,
+        Length=&gt;Default.MessageTypes.QScaleLength(
+        length=&gt;X.L_TRACKCOND,
+        scale=&gt;Packet.Q_SCALE
+    )
+    ,
+        Side =&gt; X.Q_PLATFORM,
+        Height =&gt; X.M_PLATFORM
+    )
+ON
+    Packet.Sequence1</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="AddSPToProfile"
+ Guid="eca54a7b-4a2b-4d94-b590-1fc3389fc9a9"
+>
+<ReqRef
+ Id="00dfa999-7dd3-4fe9-a2d0-8fab1506a7d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8e829eb-e759-4c10-b0fa-79c0a2b38398"
+>
+</ReqRef><ReqRef
+ Id="75f0036b-52d0-4886-96af-89590c44b242"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="17c7e309-087e-49b5-83e2-62ba0a5c4af2"
+>
+</ReqRef><ReqRef
+ Id="71debd8d-545a-49ca-835b-4ce037e22fb7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6bdcdb3e-a17c-440b-8557-3f64db07f1bb"
+>
+</ReqRef><Comment>Takes a distance, a length and a track condition type and inserts them all in TCProfile</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="c65eaaa5-3bc5-4043-9144-95c7f009686e"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Length"
+ Name="Length"
+ Guid="9a464836-7475-402e-a23b-aa104218c360"
+>
+</Parameter><Parameter
+ Type="Messages.Q_PLATFORM"
+ Name="Side"
+ Guid="455c0c03-a3dd-439a-90b6-422a3e9b701c"
+>
+</Parameter><Parameter
+ Type="Messages.M_PLATFORM"
+ Name="Height"
+ Guid="3ef475ba-b949-4764-aab5-50e0b28776d9"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Add end of section"
+ Guid="c424f958-4e07-4093-99d7-615741cff04a"
+>
+<Comment>It&apos;s important that the end of the section be added first, so that the profile is built properly</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="End of section is a new point"
+ Guid="6d96d8e0-f0f0-4694-89de-043f898ed28a"
+>
+<Comment>The end of the new section does not match any existing section boundaries
+If there is already at a point at the end location, the values will not be changed</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="be4d0200-4e1f-4b95-a075-5f34fff7ade3"
+><Comment>EndSectionDistance provides the end location (in terms of the front end of the train) of the section</Comment>
+INSERT MakeSPProfilePoint(
+    Side=&gt;Side,
+    Height=&gt;Height,
+    Distance=&gt;SPSectionEnd(
+        Distance=&gt;Distance,
+        Length=&gt;Length
+    ),
+    EndOfSection=&gt;True
+)
+IN
+    TCStationPlatforms</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Add start of section"
+ Guid="4734c3de-6a73-4056-9951-a32c18be31d7"
+>
+<Comment>After the end of the section is added, the start is added too</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Start of section is a new point"
+ Guid="b6ce7bb4-1e40-484f-be98-cf982e64d59e"
+>
+<Comment>If the start of the section is a new point, add a TCProfilePoint to the TCProfile
+If there is already a point at the start of the section, its conditions will be merged with the new one in the following step</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="753a4045-ccf6-45c0-b0ef-190969ad8333"
+>INSERT MakeSPProfilePoint(
+    Side=&gt;Side,
+    Height=&gt;Height,
+    Distance=&gt;Distance,
+    EndOfSection=&gt;False
+    )
+IN
+    TCStationPlatforms</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <Variables>
 <Variable
  Type="StationPlatforms"

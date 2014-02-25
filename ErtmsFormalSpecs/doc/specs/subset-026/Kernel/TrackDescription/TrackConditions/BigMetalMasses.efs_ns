@@ -6,31 +6,51 @@
 </NameSpaces>
 <Structures>
 <Structure
+ Implemented="TRUE"
  Name="BigMetalMassesInformation"
  Guid="20f0007f-dcf5-4b3c-b52e-1de6cffe79d6"
 >
+<ReqRef
+ Id="ec0bce59-a3d5-4b8b-a212-306f267333cf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="473f7945-699d-44ef-aa79-d9357ce03e47"
+>
+</ReqRef><ReqRef
+ Id="b25e8d2d-5034-4a5d-bf39-2ddf58ec8b98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3fe0a8ee-f986-4669-bffe-34892cd6758b"
+>
+</ReqRef><Comment>Structure containing the information indicating whether big metal masses are present on the tracks</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="Distance"
  Guid="bd7c689a-7912-4dc8-90e8-2a7153fe27eb"
 >
+<Comment>Location of the start or end of section</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="False"
  Mode="Internal"
+ Implemented="TRUE"
  Name="Value"
  Guid="9bc0dd19-9500-4d07-9f98-b08260bc6477"
 >
+<Comment>Indicates whether big metal masses are present in the section starting at Distance</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="BigMetalMasses.BigMetalMassesInformation"
+ MaxSize="20"
  Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="BigMetalMasses"
  Guid="e0835a4f-f803-4848-b153-abf4979ae387"
 >
+<Comment>Collection BigMetalMassInformation structures. This is the type of TCBigMetalMasses</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -45,16 +65,11 @@
  Guid="e128a5db-3cb5-495c-8f1f-c4395a12c83c"
 >
 </ReqRef><ReqRef
- Id="71debd8d-545a-49ca-835b-4ce037e22fb7"
+ Id="ec6af520-2482-443f-9b90-23eb87eeaf06"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4c654917-4571-4046-adc2-148bcfcc529c"
+ Guid="c07f7075-f456-455e-8ede-2d008722822d"
 >
-</ReqRef><ReqRef
- Id="75f0036b-52d0-4886-96af-89590c44b242"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d48c8888-2942-4a5a-b589-28e9e3c75d05"
->
-</ReqRef><Comment>Returns the location of the end of the section, based on the start and the type of track condition</Comment>
+</ReqRef><Comment>Returns the location of the end of the section, based on the start and the section length</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -69,10 +84,10 @@
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Ends at front of train"
+ Name="Ends when the min safe antenna position passed the end of the section"
  Guid="ea72f321-a666-4fab-a59a-d3c3ba7af32f"
 >
-<Comment>The end of powerless sections, tunnel stopping areas and sound horns are when the front of the train reaches the end</Comment>
+<Comment>Big Metal Masses track conditions start and end when the max and min safe antenna positions pass the section limits</Comment>
 <Expression>Distance + Default.BaseTypes.LengthToDistance(Length) - BTM.ActiveAntennaPosition</Expression>
 </Case></Cases>
 </Function><Function
@@ -99,7 +114,7 @@
  Name="Previous conditions exist"
  Guid="ab487d20-209d-49a0-be75-7406c8252da9"
 >
-<Comment>There are track conditions prior to the requested distance</Comment>
+<Comment>TCBigMetalMasses contains a point prior to the requested distance</Comment>
 <PreConditions>
 <PreCondition
  Guid="832233ef-515a-48e0-b7e8-861ac3cdeea6"
@@ -121,7 +136,7 @@
  Name="BMMProfileStartLocation"
  Guid="ed1fab91-2392-4c6c-8fd6-e7d35c87ee60"
 >
-<Comment>Returns the track conditions that apply at the given distance</Comment>
+<Comment>Returns the start location of the applicable section at the given distance</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -134,8 +149,8 @@
  Name="Value"
  Guid="db14e75b-7d6d-486e-ac7f-ebe4ae49f3bd"
 >
-<Comment>Returns the element in TCProfile with the largest distance that is less than or equal to the parameter</Comment>
-<Expression>REDUCE TCBigMetalMasses | NOT(X.Distance &gt; Distance)
+<Comment>Returns the element in TCBigMetalMasses with the largest distance that is less than or equal to the parameter</Comment>
+<Expression>REDUCE TCBigMetalMasses | (X.Distance &lt;= Distance)
     USING Default.BaseTypes.MaxDistance(
         X1=&gt;X.Distance,
         X2=&gt;RESULT)
@@ -148,11 +163,11 @@
  Guid="10813a2a-daf4-4bdd-8981-2f5e866394c7"
 >
 <ReqRef
- Id="07495681-fe6b-45c8-b0b9-9768f78e0985"
+ Id="897e39c6-9f39-4e87-9704-4fa9966c392e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4f05a194-550b-4232-a2ac-9e6dbc932711"
+ Guid="fea2b082-3f88-481e-971c-f5ac6d34a75e"
 >
-</ReqRef><Comment>Returns the start location of the first element of a packet of Track Conditions</Comment>
+</ReqRef><Comment>Returns the start location of the first element of a packet of Track Conditions Big Metal Masses</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_BIG_METAL_MASSES.Message"
@@ -162,7 +177,7 @@
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="If the message contains track conditions, return the closest one"
+ Name="Return the closest track condition"
  Guid="e47808d7-2603-4a90-b6f9-9650043f9967"
 >
 <Comment>Returns the D_TRACKCOND in the Packet with the lowest value</Comment>
@@ -185,19 +200,17 @@
  Guid="d2f31e44-423d-4fad-9df9-0f33463caee2"
 >
 </ReqRef><ReqRef
- Id="75f0036b-52d0-4886-96af-89590c44b242"
+ Id="ec6af520-2482-443f-9b90-23eb87eeaf06"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d71fd714-1377-4e6e-ac3d-89b751ca94fb"
+ Guid="7f2c102a-592b-487c-91d2-44a0fc4fffaa"
 >
-</ReqRef><Comment>Gives the current track conditions</Comment>
+</ReqRef><Comment>Returns True if the train is currently accounting for big metal masses</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="210e3e31-9619-4f77-a0aa-d3297a0df930"
 >
-<Comment>For most profiles, the starting point is when the max safe front end of the train passes the location specified in the message and the end point is when the min safe rear end passes the location + the section length. (the exceptions to this are powerless sections (which use the min safe front end of the train for the end point), and tunnel stopping and sound horn areas (which use the estimated front end of the train).
-When this is recorded in TCProfile, the end points are adjusted so that they are measured with respect to the front end of the train.
-When the train passes over a profile point, it doesn&apos;t know if that point marks a start of section, end of section or even both. If it is a start of section, the condition takes effect as soon as the max safe front end of the train passes over it. If it is an end, the condition stays in effect until the min safe front end passes over it. So to account for all cases, each condition is given as the combination of the profile at the max safe front end and the min safe front end of most conditions, and the value at the estimated front end of the train for Tunnel Stopping Area and Sound Horn</Comment>
+<Comment>See TrackConditions.General.CurrentConditions() for justification of max OR min</Comment>
 <Expression>BMMAtDistance(Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;DistanceInterval.Max))
   OR  
 BMMAtDistance(Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;DistanceInterval.Min))</Expression>
@@ -205,11 +218,12 @@ BMMAtDistance(Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;D
 </Function></Functions>
 <Procedures>
 <Procedure
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleNewBMMTrackCondition"
  Guid="64859c59-8b18-4845-b9aa-7000c43e0a63"
 >
-<Comment>Updates the track conditions according to the values of the packet received as parameter.</Comment>
+<Comment>Updates the big metal masses track conditions according to the values of the packet received as parameter.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_BIG_METAL_MASSES.Message"
@@ -221,11 +235,15 @@ BMMAtDistance(Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;D
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="RemoveOldTrackConditions"
  Guid="26105147-399a-4834-bc91-9368bc37ca90"
 >
-<Comment>When new data is received, all old data starting from the start of the new data is overwritten</Comment>
+<ReqRef
+ Id="897e39c6-9f39-4e87-9704-4fa9966c392e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="60314788-28aa-42ba-be94-d4539f5295d6"
+>
+</ReqRef><Comment>When new data is received, all old data of the same type starting from the start of the new data is overwritten</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -254,7 +272,7 @@ BMMAtDistance(Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;D
  Name="AddNewTrackCondition"
  Guid="55335876-0359-4fb5-bde2-44596cb52a47"
 >
-<Comment>Inserts the newly received track conditions in TCProfile</Comment>
+<Comment>Inserts the newly received track conditions in TCBigMetalMasses</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -315,6 +333,7 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  Name="AddSectionToBMMs"
  Guid="df4ff79b-0983-4791-97fc-142934307075"
 >
@@ -324,16 +343,11 @@ ON
  Guid="b189a39b-7388-4b70-a4a7-9531024c6162"
 >
 </ReqRef><ReqRef
- Id="75f0036b-52d0-4886-96af-89590c44b242"
+ Id="ec6af520-2482-443f-9b90-23eb87eeaf06"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="49e5cae6-6d26-4b7e-bc30-0c68389cddb7"
+ Guid="1f581333-7bc2-4a40-9af3-69c2a784e25a"
 >
-</ReqRef><ReqRef
- Id="71debd8d-545a-49ca-835b-4ce037e22fb7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="acb03db4-cf06-457a-895d-690e1daf4040"
->
-</ReqRef><Comment>Takes a distance, a length and a track condition type and inserts them all in TCProfile</Comment>
+</ReqRef><Comment>Takes a distanceand a length and uses them to create a new pair of points in TCBigMetalMasses</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -358,23 +372,23 @@ ON
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="End of section is a new point"
+ Name="End of section"
  Guid="a4bcb40b-e8aa-4abd-827e-e78420e2b89c"
 >
-<Comment>The end of the new section does not match any existing section boundaries
-If there is already at a point at the end location, the values will not be changed</Comment>
+<Comment>The end of the section, where the train should not expect to detect big metal masses any more, is added to TCBigMetalMasses</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="f41e0e6b-f4f6-4efa-a83b-26fce22c0fa3"
 ><Comment>EndSectionDistance provides the end location (in terms of the front end of the train) of the section</Comment>
+
 INSERT BigMetalMassesInformation{
     Distance=&gt;BMMSectionEnd(
         Distance=&gt;Distance,
         Length=&gt;Length
         ),
-    Value=&gt;True
+    Value=&gt;False
     }
 IN
     TCBigMetalMasses</Action></Actions>
@@ -393,16 +407,16 @@ IN
  Name="Start of section is a new point"
  Guid="e34bee05-238a-48aa-8f79-2645fa362cf1"
 >
-<Comment>If the start of the section is a new point, add a TCProfilePoint to the TCProfile
-If there is already a point at the start of the section, its conditions will be merged with the new one in the following step</Comment>
+<Comment>Add a BMM profile point in TCBigMetalMasses
+The train is considered to be in the section starting from when the max antenna distance has passed the distance indicated as the start of the section</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="260a89f3-ee3a-4960-a54b-8bb92247e287"
 >INSERT BigMetalMassesInformation {
-    Distance=&gt;Distance,
-    Value=&gt;False
+    Distance=&gt;Distance - BTM.ActiveAntennaPosition,
+    Value=&gt;True
     }
 IN
     TCBigMetalMasses</Action></Actions>
@@ -413,9 +427,25 @@ IN
 <Variable
  Type="BigMetalMasses"
  VariableMode="Internal"
+ Implemented="TRUE"
  Name="TCBigMetalMasses"
  Guid="b429b8d9-31f7-4370-8e74-13b074893895"
 >
-<Comment>Big Metal Masses track conditions profile</Comment>
+<ReqRef
+ Id="ec0bce59-a3d5-4b8b-a212-306f267333cf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f0073758-04a6-4ef7-8c52-a47a0ee4a286"
+>
+</ReqRef><ReqRef
+ Id="ee609856-411d-4bb2-ab88-76b574aa3013"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="43b5edd2-10d2-4849-9dd3-7a3fb104c92c"
+>
+</ReqRef><ReqRef
+ Id="a013028b-ded7-4e9f-9521-43654f2cb992"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b771b485-d1d0-4631-b276-5933b6356045"
+>
+</ReqRef><Comment>Big Metal Masses track conditions profile</Comment>
 </Variable></Variables>
 </NameSpace>

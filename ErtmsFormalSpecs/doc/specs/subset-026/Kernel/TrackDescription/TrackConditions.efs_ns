@@ -9,31 +9,58 @@
 <NameSpaces>
 <NameSpaceRef
  Name="General"
- Guid="886f6566-db04-4a76-878d-4d9a7727a44c"
+ Guid="630981be-c192-4656-a7ca-e375c261c056"
 >
 </NameSpaceRef><NameSpaceRef
  Name="BigMetalMasses"
- Guid="594e67f2-973c-4834-8100-b524a065d4b4"
+ Guid="de10032b-513f-4b58-9045-b16ad955c648"
 >
 </NameSpaceRef><NameSpaceRef
  Name="TractionSystem"
- Guid="92603d9a-64bf-48fd-bedd-a766effa1bc3"
+ Guid="1a63083e-5f4c-4a03-b224-0f78f65a8ca2"
 >
 </NameSpaceRef><NameSpaceRef
  Name="CurrentConsumption"
- Guid="1eb35218-6b1c-4ab2-9e5b-f8b399424134"
+ Guid="5b153bd3-6304-4711-b2f6-cb2746139ac5"
 >
 </NameSpaceRef><NameSpaceRef
  Name="StationPlatform"
- Guid="e6b7e9e9-8f16-40df-a119-3b8a708d16ff"
+ Guid="d89d3967-4d65-4792-a8a0-872b8afadfba"
 >
 </NameSpaceRef></NameSpaces>
 <Enumerations>
 <Enum
  Default="ConditionType.Conditions"
+ Implemented="TRUE"
  Name="ConditionType"
  Guid="4fdffda5-083b-4121-aac5-6672a6d82bdd"
 >
+<ReqRef
+ Id="2559c745-3a6f-444a-b3bd-fb143a2a1fc6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d48ef907-d0f9-4323-a770-dd5e9fa63647"
+>
+</ReqRef><ReqRef
+ Id="3b292c0a-1360-49a7-9047-9707757f6e7b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26eebf61-1195-4089-baee-90bc47428b1f"
+>
+</ReqRef><ReqRef
+ Id="a013028b-ded7-4e9f-9521-43654f2cb992"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="81a716d3-61c6-41a0-916b-d70702a4a1ff"
+>
+</ReqRef><ReqRef
+ Id="46ff0663-ed84-4dea-af46-b87941a77c51"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1b861ef8-9c80-46e9-90c6-410f35e00522"
+>
+</ReqRef><ReqRef
+ Id="47c59e98-996c-4daa-84b7-bda20f4e45ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="de7d63a5-25b1-4707-ac02-4c9927068191"
+>
+</ReqRef><Comment>States whick packet type the track condition is from</Comment>
 <Values>
 <EnumValue
  Value=""
@@ -153,7 +180,7 @@
  Name="TrackConditionMonitor"
  Guid="ced5e120-84d3-467c-874d-c59f3295c395"
 >
-<Comment>The function ConditionExitsApplicability() returns True for all profile points that are no longer applicable</Comment>
+<Comment>The function ConditionExitsApplicability() returns True for all profile points of a particular type that are no longer applicable, these are then removed from General.TCProfile</Comment>
 <PreConditions>
 <PreCondition
  Guid="350df558-dfb4-44a2-b044-e9392fd336bb"
@@ -164,9 +191,11 @@
 >REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.Conditions) IN General.TCProfile</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="BigMetalMassesMonitor"
  Guid="ac8f64bd-5b2a-4b71-bcb2-163ccb52fca3"
 >
+<Comment>The function ConditionExitsApplicability() returns True for all profile points of a particular type that are no longer applicable, these are then removed from BigMetalMasses.TCBigMetalMasses</Comment>
 <PreConditions>
 <PreCondition
  Guid="79bfca4d-21b6-4382-916f-83a44be41948"
@@ -177,9 +206,11 @@
 >REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.BigMetalMasses) IN BigMetalMasses.TCBigMetalMasses</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="StationPlatformsMonitor"
  Guid="e6ff74b5-0e2f-48fb-ba67-9e5b9b6de50e"
 >
+<Comment>The function ConditionExitsApplicability() returns True for all profile points of a particular type that are no longer applicable, these are then removed from StationPlatform.TCStationPlatforms</Comment>
 <PreConditions>
 <PreCondition
  Guid="fab1fc52-4404-46ac-91a5-c14ddbfe98e9"
@@ -190,9 +221,11 @@
 >REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.StationPlatform) IN StationPlatform.TCStationPlatforms</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="TractionSystemsMonitor"
  Guid="215c4a33-651f-4ca6-bdbf-4e3cd722d678"
 >
+<Comment>The function ConditionExitsApplicability() returns True for all profile points of a particular type that are no longer applicable, these are then removed from TractionSystem.TCTractionSystems</Comment>
 <PreConditions>
 <PreCondition
  Guid="7bf80b57-15e8-4404-aba0-9948ea48ce59"
@@ -203,9 +236,11 @@
 >REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.TractionSystem) IN TractionSystem.TCTractionSystems</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="CurrentConsumptionMonitor"
  Guid="d5b94d8f-e552-4e00-b819-e4b44f789de8"
 >
+<Comment>The function ConditionExitsApplicability() returns True for all profile points of a particular type that are no longer applicable, these are then removed from CurrentConsumption.TCCurrentConsumption</Comment>
 <PreConditions>
 <PreCondition
  Guid="8fe692a7-c1df-49ba-9849-5df36cdefd96"

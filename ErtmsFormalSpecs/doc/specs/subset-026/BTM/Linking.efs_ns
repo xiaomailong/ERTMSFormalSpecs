@@ -1143,7 +1143,7 @@ This function is called whenever it is appropriate, so it does not need any prec
 <Actions>
 <Action
  Guid="da1b995b-2801-473b-9756-c1fe996e68d4"
->APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup | (BaliseMessageToBeHandled(Message=&gt;X) == True)</Action></Actions>
+>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup | BaliseMessageToBeHandled(Message=&gt;X)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1208,7 +1208,7 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 <Actions>
 <Action
  Guid="6f9ef685-68b5-4cf8-ab5b-fe3765ff7cb1"
->APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup | (BaliseMessageToBeHandled(Message=&gt;X) == True)</Action><Action
+>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup | BaliseMessageToBeHandled(Message=&gt;X)</Action><Action
  Guid="73f60427-194a-4f61-9082-16f71fa2409d"
 >StopExpectingCurrentBG()</Action></Actions>
 </RuleCondition><RuleCondition
@@ -1289,7 +1289,7 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 <PreConditions>
 <PreCondition
  Guid="bde9f4d3-b94e-4029-992c-55ad6fda20d6"
->EarlyReception == True</PreCondition></PreConditions>
+>EarlyReception</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1edfe423-26b8-44bf-ac53-0aac737c469b"
@@ -1318,7 +1318,7 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 <Actions>
 <Action
  Guid="df96badb-3bc3-40d3-b767-aa2ff7b5b2be"
->APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup | (BaliseMessageToBeHandled(Message=&gt;X) == True)</Action><Action
+>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup | BaliseMessageToBeHandled(Message=&gt;X)</Action><Action
  Guid="dfd4bb34-7648-44dd-8e1c-13528b2072da"
 >StopExpectingCurrentBG()</Action></Actions>
 </RuleCondition></Conditions>

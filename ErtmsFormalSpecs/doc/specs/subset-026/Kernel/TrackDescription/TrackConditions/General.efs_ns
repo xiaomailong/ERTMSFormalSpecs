@@ -180,7 +180,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="18c99035-99e3-42cf-9048-8bdafcea014e"
 >
-</ReqRef><Comment>Structure holding the information needed to create a section in which a track condition applies</Comment>
+</ReqRef><Comment>Structure holding the information indicating a change in the track conditions</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -578,7 +578,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
  Guid="075984f4-a690-4a84-8ced-fd83b88786b7"
 >
 <Comment>Returns the element in TCProfile with the largest distance that is less than or equal to the parameter</Comment>
-<Expression>REDUCE TCProfile| NOT(X.Distance &gt; Distance)
+<Expression>REDUCE TCProfile| (X.Distance &lt;= Distance)
     USING Default.BaseTypes.MaxDistance(
         X1=&gt;X.Distance,
         X2=&gt;RESULT)
@@ -653,7 +653,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
 <PreConditions>
 <PreCondition
  Guid="5420d501-031e-434a-99af-4f3b301f6c0f"
->EndOfSection == True</PreCondition></PreConditions>
+>EndOfSection</PreCondition></PreConditions>
 <Expression>TrackConditionInformation
 {
     Distance =&gt; Distance,
@@ -960,6 +960,8 @@ If there is already at a point at the end location, the values will not be chang
 <Action
  Guid="4b054b67-3098-417b-8cab-bb8d689d1032"
 ><Comment>EndSectionDistance provides the end location (in terms of the front end of the train) of the section</Comment>
+
+
 INSERT MakeTCProfilePoint(
 TCType=&gt;TCType,
 Distance=&gt;EndSectionDistance(
@@ -1048,7 +1050,6 @@ IN
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="RemoveOldTrackConditions"
  Guid="4c889b61-eb2b-4bd5-ba0d-91b2d6514374"
 >
