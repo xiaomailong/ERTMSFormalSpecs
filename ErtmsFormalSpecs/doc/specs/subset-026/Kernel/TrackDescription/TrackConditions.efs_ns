@@ -7,7 +7,27 @@
  Guid="ff6d9fd6-4e1f-4410-b064-97200bf8fb65"
 >
 <NameSpaces>
-</NameSpaces>
+<NameSpaceRef
+ Name="General"
+ Guid="bbf770fe-5866-460a-8ea2-08641e21ea3d"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="BigMetalMasses"
+ Guid="a7bbd8ca-37cb-4f25-bae9-a6d26457391c"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TractionSystem"
+ Guid="556db23d-6b65-4038-b963-0dec9eb43448"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="CurrentConsumption"
+ Guid="46c7b046-d067-4d14-ad33-9c7e1101f3a9"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="StationPlatform"
+ Guid="fe993a11-db9f-4986-8fae-471fa36c171d"
+>
+</NameSpaceRef></NameSpaces>
 <Enumerations>
 <Enum
  Default="ConditionType.Conditions"
@@ -672,7 +692,7 @@
 <PreCondition
  Guid="63f5b8e4-1c3f-4267-a7e6-bfb62588b3c1"
 >TrackCondition == ConditionType.Conditions</PreCondition></PreConditions>
-<Expression>THERE_IS_IN TCProfile | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+<Expression>THERE_IS_IN General.TCProfile | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
 </Case><Case
  Name="Metal masses are passed"
  Guid="b3adf906-b3aa-4a78-a2ef-cbfeae7a1c8e"
@@ -681,7 +701,7 @@
 <PreCondition
  Guid="29415c07-8788-4a5d-b02d-9c1b80bec23e"
 >TrackCondition == ConditionType.BigMetalMasses</PreCondition></PreConditions>
-<Expression>THERE_IS_IN TCBigMetalMasses | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+<Expression>THERE_IS_IN BigMetalMasses.TCBigMetalMasses | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
 </Case><Case
  Name="Station platforms changed"
  Guid="64950d25-0e2f-4ada-b68d-1237ec3a3bd5"
@@ -690,7 +710,7 @@
 <PreCondition
  Guid="4a9c1660-1830-44a0-a016-13570282c74e"
 >TrackCondition == ConditionType.StationPlatform</PreCondition></PreConditions>
-<Expression>THERE_IS_IN TCStationPlatforms | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+<Expression>THERE_IS_IN StationPlatform.TCStationPlatforms | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
 </Case><Case
  Name="Newer traction system condition has been applied"
  Guid="6a9633c8-ab71-4b77-8b00-d8fe637fc740"
@@ -699,7 +719,7 @@
 <PreCondition
  Guid="e9ab2926-47c5-4c27-b9f2-5f48fe6f086b"
 >TrackCondition == ConditionType.TractionSystem</PreCondition></PreConditions>
-<Expression>THERE_IS_IN TCTractionSystems | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+<Expression>THERE_IS_IN TractionSystem.TCTractionSystems | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
 </Case><Case
  Name="New current consumption limit has been applied"
  Guid="2c584425-c82e-48bc-a4ff-a445749fa10b"
@@ -708,7 +728,7 @@
 <PreCondition
  Guid="ec6f1c48-d0e2-40b6-98ef-5b4bc7e36db6"
 >TrackCondition == ConditionType.CurrentConsumption</PreCondition></PreConditions>
-<Expression>THERE_IS_IN TCCurrentConsumption | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+<Expression>THERE_IS_IN CurrentConsumption.TCCurrentConsumption | (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -882,7 +902,7 @@
  Guid="075984f4-a690-4a84-8ced-fd83b88786b7"
 >
 <Comment>Returns the element in TCProfile with the largest distance that is less than or equal to the parameter</Comment>
-<Expression>REDUCE TCProfile | NOT(X.Distance &gt; Distance)
+<Expression>REDUCE General.TCProfile | NOT(X.Distance &gt; Distance)
     USING Default.BaseTypes.MaxDistance(
         X1=&gt;X.Distance,
         X2=&gt;RESULT)
@@ -982,8 +1002,8 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
 <PreConditions>
 <PreCondition
  Guid="52fe1d2c-2078-4728-828e-aae8e72d359f"
->THERE_IS_IN TCProfile | NOT (X.Distance &gt; Distance)</PreCondition></PreConditions>
-<Expression>REDUCE TCProfile | (X.Distance == ProfileStartLocation(Distance=&gt;Distance) )
+>THERE_IS_IN General.TCProfile | NOT (X.Distance &gt; Distance)</PreCondition></PreConditions>
+<Expression>REDUCE General.TCProfile | (X.Distance == ProfileStartLocation(Distance=&gt;Distance) )
     USING X.Value
   INITIAL_VALUE EMPTY</Expression>
 </Case><Case
@@ -1223,7 +1243,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
 >REMOVE ALL 
     X.Distance &gt;= Default.MessageTypes.QScaleDistance(distance=&gt; Packet.D_TRACKINIT, scale=&gt; Packet.Q_SCALE)
 IN
-    TCProfile</Action><Action
+    General.TCProfile</Action><Action
  Guid="b5b87575-a081-4006-956f-527bfabc9dfd"
 >INSERT
     TrackConditionInformation
@@ -1231,7 +1251,7 @@ IN
         Distance =&gt; Default.MessageTypes.QScaleDistance(distance=&gt; Packet.D_TRACKINIT, scale=&gt; Packet.Q_SCALE)
     }
 IN
-    TCProfile</Action></Actions>
+    General.TCProfile</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1296,7 +1316,7 @@ IN
 <Action
  Guid="e442a836-0892-422d-9982-9577731091f3"
 >REMOVE ALL X.Distance &gt;= NewInfoStartLocation( Packet =&gt; Packet) 
-    IN TCProfile</Action></Actions>
+    IN General.TCProfile</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1441,7 +1461,7 @@ If there is already at a point at the end location, the values will not be chang
 <PreConditions>
 <PreCondition
  Guid="5c2fd295-1fa0-4273-8634-53b3ce87e09e"
->NOT (THERE_IS_IN TCProfile | X.Distance == EndSectionDistance(
+>NOT (THERE_IS_IN General.TCProfile | X.Distance == EndSectionDistance(
     TCType=&gt;TCType,
     Distance=&gt;Distance,
     Length=&gt;Length
@@ -1451,6 +1471,7 @@ If there is already at a point at the end location, the values will not be chang
 <Action
  Guid="4b054b67-3098-417b-8cab-bb8d689d1032"
 ><Comment>EndSectionDistance provides the end location (in terms of the front end of the train) of the section</Comment>
+
 
 
 INSERT
@@ -1464,7 +1485,7 @@ INSERT
         EndOfSection=&gt;True
     )
 IN
-    TCProfile</Action></Actions>
+    General.TCProfile</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1485,7 +1506,7 @@ If there is already a point at the start of the section, its conditions will be 
 <PreConditions>
 <PreCondition
  Guid="e75ca188-658d-4763-a32d-985d6154454c"
->NOT (THERE_IS_IN TCProfile | X.Distance == Distance)</PreCondition></PreConditions>
+>NOT (THERE_IS_IN General.TCProfile | X.Distance == Distance)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="be8dab85-6e95-4b9e-b7b4-0a9c8968a606"
@@ -1496,7 +1517,7 @@ If there is already a point at the start of the section, its conditions will be 
         EndOfSection=&gt;False
     )
 IN
-    TCProfile</Action></Actions>
+    General.TCProfile</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1517,8 +1538,8 @@ IN
 <Actions>
 <Action
  Guid="0c73a213-20bf-4acb-9a85-b05e04dcdd19"
->TCProfile &lt;- MAP TCProfile
-    USING UpdatedTCProfile(
+>General.TCProfile&lt;- MAP General.TCProfile
+  USING UpdatedTCProfile(
     Profile=&gt;X,
     Distance=&gt;Distance,
     Length=&gt;Length,
@@ -1527,82 +1548,6 @@ IN
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
-<Variables>
-<Variable
- Type="TrackConditions"
- DefaultValue=""
- VariableMode="Internal"
- Implemented="TRUE"
- Name="TCProfile"
- Guid="cccc0a77-8fa1-4a0d-a42d-ef124c77a533"
->
-<ReqRef
- Id="dfc71e5b-2d0d-4dce-9a5c-f6e69ea53363"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="873d386b-aff6-4f28-8601-bc8d49cc1a6e"
->
-</ReqRef><ReqRef
- Id="8306ee07-3124-4992-96a3-0cf3c84e47b7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="edc4183d-a273-4327-9256-6b9409ec4747"
->
-</ReqRef><ReqRef
- Id="0d1804a4-9b7c-406f-bb28-e8e42df86344"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="94fb2018-a948-446d-bf12-0a40d5d0147d"
->
-</ReqRef><ReqRef
- Id="c9386a51-4e30-4b1e-915c-aad5f1f5488f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="650f6c2d-1706-4dd4-8043-80e2fa0d9ec6"
->
-</ReqRef><ReqRef
- Id="a2d32abf-08a0-4bc5-b97e-117e6a4fd998"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b8e66afd-d19f-49f8-bc21-0f8f29d3a6e0"
->
-</ReqRef><ReqRef
- Id="444d11ee-84f0-4837-8c17-f111d045857d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="da5849cb-2a9c-4b1c-bc21-f13cf8f22a92"
->
-</ReqRef><ReqRef
- Id="ee609856-411d-4bb2-ab88-76b574aa3013"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="189783c6-52e9-4e03-8d17-c98f3d5ca55e"
->
-</ReqRef><ReqRef
- Id="46ff0663-ed84-4dea-af46-b87941a77c51"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2124b7ca-ef8b-4550-a4dc-682e5fefe0eb"
->
-</ReqRef><Comment>The list of track conditions received from the trackside.</Comment>
-</Variable><Variable
- Type="StationPlatforms"
- VariableMode="Internal"
- Name="TCStationPlatforms"
- Guid="f3a30586-937f-4cd8-a2a0-ea55dbd8f426"
->
-</Variable><Variable
- Type="CurrentConsumptions"
- VariableMode="Internal"
- Name="TCCurrentConsumption"
- Guid="323e43d9-9821-4525-9267-5189729d3ef8"
->
-</Variable><Variable
- Type="TractionSystems"
- VariableMode="Internal"
- Name="TCTractionSystems"
- Guid="5600ee48-6962-432b-88c3-54c6dc35db99"
->
-</Variable><Variable
- Type="BigMetalMasses"
- VariableMode="Internal"
- Name="TCBigMetalMasses"
- Guid="b429b8d9-31f7-4370-8e74-13b074893895"
->
-<Comment>Big Metal Masses track conditions profile</Comment>
-</Variable></Variables>
 <Rules>
 <Rule
  Priority="Processing"
@@ -1624,11 +1569,11 @@ IN
 <PreConditions>
 <PreCondition
  Guid="350df558-dfb4-44a2-b044-e9392fd336bb"
->TCProfile != []</PreCondition></PreConditions>
+>General.TCProfile != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="effae0ff-821f-49a4-b156-ec9f0cd7cc5b"
->REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.Conditions) IN TCProfile</Action></Actions>
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.Conditions) IN General.TCProfile</Action></Actions>
 </RuleCondition><RuleCondition
  Name="BigMetalMassesMonitor"
  Guid="ac8f64bd-5b2a-4b71-bcb2-163ccb52fca3"
@@ -1636,11 +1581,11 @@ IN
 <PreConditions>
 <PreCondition
  Guid="79bfca4d-21b6-4382-916f-83a44be41948"
->TCBigMetalMasses != []</PreCondition></PreConditions>
+>BigMetalMasses.TCBigMetalMasses != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="eb5b3a2f-282d-4717-8657-32e14c2946e1"
->REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.BigMetalMasses) IN TCBigMetalMasses</Action></Actions>
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.BigMetalMasses) IN BigMetalMasses.TCBigMetalMasses</Action></Actions>
 </RuleCondition><RuleCondition
  Name="StationPlatformsMonitor"
  Guid="e6ff74b5-0e2f-48fb-ba67-9e5b9b6de50e"
@@ -1648,11 +1593,11 @@ IN
 <PreConditions>
 <PreCondition
  Guid="fab1fc52-4404-46ac-91a5-c14ddbfe98e9"
->TCStationPlatforms != []</PreCondition></PreConditions>
+>StationPlatform.TCStationPlatforms != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f91f5ae0-fd2c-40a7-94db-e97d81beb4b3"
->REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.StationPlatform) IN TCStationPlatforms</Action></Actions>
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.StationPlatform) IN StationPlatform.TCStationPlatforms</Action></Actions>
 </RuleCondition><RuleCondition
  Name="TractionSystemsMonitor"
  Guid="215c4a33-651f-4ca6-bdbf-4e3cd722d678"
@@ -1660,11 +1605,11 @@ IN
 <PreConditions>
 <PreCondition
  Guid="7bf80b57-15e8-4404-aba0-9948ea48ce59"
->TCTractionSystems != []</PreCondition></PreConditions>
+>TractionSystem.TCTractionSystems != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="feca3a28-9d9e-429e-85f6-3b5ea48dfbab"
->REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.TractionSystem) IN TCTractionSystems</Action></Actions>
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.TractionSystem) IN TractionSystem.TCTractionSystems</Action></Actions>
 </RuleCondition><RuleCondition
  Name="CurrentConsumptionMonitor"
  Guid="d5b94d8f-e552-4e00-b819-e4b44f789de8"
@@ -1672,11 +1617,11 @@ IN
 <PreConditions>
 <PreCondition
  Guid="8fe692a7-c1df-49ba-9849-5df36cdefd96"
->TCCurrentConsumption != []</PreCondition></PreConditions>
+>CurrentConsumption.TCCurrentConsumption != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="fd3b7fa2-96f7-45bd-807b-e499d62319bb"
->REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.CurrentConsumption) IN TCCurrentConsumption</Action></Actions>
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.CurrentConsumption) IN CurrentConsumption.TCCurrentConsumption</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

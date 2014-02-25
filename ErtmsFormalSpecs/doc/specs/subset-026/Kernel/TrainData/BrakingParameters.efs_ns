@@ -3291,7 +3291,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <PreCondition
  Guid="08a1d375-0436-4d6f-a892-d6dc21a15a89"
 >d &lt; 
-REDUCE Kernel.TrackDescription.TrackConditions.TCProfile | (
+REDUCE TrackDescription.TrackConditions.General.TCProfile| (
                     X.Distance &gt; aTrackCondition.Distance AND (
                     X.Value.SwitchOffRegenerativeBrake != aTrackCondition.Value.SwitchOffRegenerativeBrake OR 
                     X.Value.SwitchOffMagneticShoeBrake != aTrackCondition.Value.SwitchOffMagneticShoeBrake OR 
@@ -3370,7 +3370,7 @@ REDUCE Kernel.TrackDescription.TrackConditions.TCProfile | (
 >TrainData.Value.SBModels != EMPTY</PreCondition></PreConditions>
 <Expression>(
     REDUCE
-        TrackDescription.TrackConditions.TCProfile
+        TrackDescription.TrackConditions.General.TCProfile
     USING
         Override
         (
@@ -3581,7 +3581,7 @@ REDUCE Kernel.TrackDescription.TrackConditions.TCProfile | (
 >TrainData.Value.EBModels != EMPTY</PreCondition></PreConditions>
 <Expression>(
     REDUCE
-        TrackDescription.TrackConditions.TCProfile
+        TrackDescription.TrackConditions.General.TCProfile
     USING
         Override
         (
@@ -3642,7 +3642,7 @@ REDUCE Kernel.TrackDescription.TrackConditions.TCProfile | (
 <PreCondition
  Guid="358ef9c4-e1a3-4cba-b203-8a64fe3681cd"
 >d &lt; 
-REDUCE Kernel.TrackDescription.TrackConditions.TCProfile | (
+REDUCE TrackDescription.TrackConditions.General.TCProfile| (
                     X.Distance &gt; aTrackCondition.Distance AND (
                     X.Value.SwitchOffRegenerativeBrake != aTrackCondition.Value.SwitchOffRegenerativeBrake OR 
                     X.Value.SwitchOffMagneticShoeBrake != aTrackCondition.Value.SwitchOffMagneticShoeBrake OR 
@@ -3930,7 +3930,7 @@ REDUCE Kernel.TrackDescription.TrackConditions.TCProfile | (
 >TrainData.Value.NormalServiceBrakeModels != EMPTY</PreCondition></PreConditions>
 <Expression>(
     REDUCE
-        TrackDescription.TrackConditions.TCProfile
+        TrackDescription.TrackConditions.General.TCProfile
     USING
         Override
         (
@@ -4184,7 +4184,7 @@ REDUCE Kernel.TrackDescription.TrackConditions.TCProfile | (
 <PreCondition
  Guid="898e92ea-c148-4e98-acdf-c9c3bcda7754"
 >d &lt; 
-REDUCE Kernel.TrackDescription.TrackConditions.TCProfile | (
+REDUCE TrackDescription.TrackConditions.General.TCProfile| (
                     X.Distance &gt; aTrackCondition.Distance AND (
                     X.Value.SwitchOffRegenerativeBrake != aTrackCondition.Value.SwitchOffRegenerativeBrake OR 
                     X.Value.SwitchOffMagneticShoeBrake != aTrackCondition.Value.SwitchOffMagneticShoeBrake OR 
