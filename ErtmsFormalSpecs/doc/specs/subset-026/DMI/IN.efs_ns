@@ -22,7 +22,41 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f3e2fa07-b8c1-44a9-bf94-e24a85572402"
 >
-</ReqRef><Procedures>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Open communication session"
+ Guid="51c7f69b-d934-4d7c-868e-1097d9dca6b2"
+>
+<ReqRef
+ Id="2beacd86-f3da-4d70-9f5b-c90738e82b4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2dfad422-bedb-4ed9-8fa0-9a587d8edb19"
+>
+</ReqRef><Comment>If the driver has manually changed the level to 2 or 3 and no communication session is established, the on-board has to establish a new communication session.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Open communication session"
+ Guid="4e52bf4c-6585-4d39-843c-6eebf9675521"
+>
+<PreConditions>
+<PreCondition
+ Guid="899257bb-ad06-4587-a62f-242a76900e2d"
+>InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="6f929bf6-4cae-4324-9cc4-cb3773da8e8d"
+>Level in [Level.L2, Level.L3]</PreCondition><PreCondition
+ Guid="816bea88-f7c1-4116-8b88-2ca3a0ad554b"
+>NOT EURORADIO.HasActiveSession()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="abb9b9dd-961c-4db9-b601-5176cfc924a5"
+>EURORADIO.OpenRBCSession()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<Procedures>
 <Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
