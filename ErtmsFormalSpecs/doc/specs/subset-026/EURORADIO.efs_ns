@@ -5426,7 +5426,7 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 <Actions>
 <Action
  Guid="c93d190a-c792-451a-9620-7daaf7b6faa1"
->PreviousRadioHoleValue &lt;- Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</Action></Actions>
+>PreviousRadioHoleValue &lt;- Kernel.TrackDescription.TrackConditions.General.IsInsideRadioHole()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5450,9 +5450,9 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 <PreConditions>
 <PreCondition
  Guid="afcdf675-0f63-4287-91c9-be240194d87c"
->PreviousRadioHoleValue != Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition><PreCondition
+>PreviousRadioHoleValue != Kernel.TrackDescription.TrackConditions.General.IsInsideRadioHole()</PreCondition><PreCondition
  Guid="9bd93c77-5503-4db2-887d-a9bf1f7dca29"
->NOT Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
+>NOT Kernel.TrackDescription.TrackConditions.General.IsInsideRadioHole()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="90ffc76d-d9cd-411a-b66b-a120aad513df"

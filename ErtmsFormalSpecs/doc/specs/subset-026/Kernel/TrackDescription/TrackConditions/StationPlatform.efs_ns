@@ -4,6 +4,67 @@
 >
 <NameSpaces>
 </NameSpaces>
+<Structures>
+<Structure
+ Name="StationPlatform"
+ Guid="1d309980-5fef-4858-8509-9698eac509ae"
+>
+<Comment>Structure holding the information about upcoming platform parameters</Comment>
+<StructureElement
+ TypeName="Messages.M_PLATFORM"
+ Default="0"
+ Mode="Internal"
+ Name="Side"
+ Guid="c2a42a47-3e24-4f7b-914f-090d0c5c30b3"
+>
+</StructureElement><StructureElement
+ TypeName="Messages.Q_PLATFORM"
+ Default="0"
+ Mode="Internal"
+ Name="Height"
+ Guid="98655f73-403c-4a3c-b30a-b6697c1c6edc"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="Enabled"
+ Guid="15cc9cab-fb00-4423-89fc-60764c6e5e41"
+>
+</StructureElement></Structure><Structure
+ Name="StationPlatformInformation"
+ Guid="11a0f7bd-dbea-4a8c-b7af-4671a9a9da53"
+>
+<StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Distance"
+ Guid="b5758143-ed13-41b3-adce-808e924cc584"
+>
+<ReqRef
+ Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="37637962-58de-4cb5-8f5c-4a17309e0068"
+>
+</ReqRef><Comment>Start location of the track condition</Comment>
+</StructureElement><StructureElement
+ TypeName="StationPlatform.StationPlatform"
+ Default=""
+ Mode="Internal"
+ Name="Value"
+ Guid="f42350ac-4fea-4531-9ccc-ad2d71443647"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="StationPlatform.StationPlatformInformation"
+ Default="[]"
+ Name="StationPlatforms"
+ Guid="0bc848d5-8f1b-4f77-a50b-4e4ba9a8e68b"
+>
+</Collection></Collections>
 <Variables>
 <Variable
  Type="StationPlatforms"

@@ -1257,7 +1257,7 @@
 </ReqRef><Comment>Selects the appropriate brake normal service model, according to the values of A_SB12 and A_SB01 and to the value of A_brk_service for zero speed and depending on a particular combination of special brakes depending on the track condition received as a parameter..</Comment>
 <Parameters>
 <Parameter
- Type="TrackDescription.TrackConditions.TrackConditionInformation"
+ Type="TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="aTrackCondition"
  Guid="a821cf12-2c57-46b8-9e3d-fdec649d2f44"
 >
@@ -3267,7 +3267,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </ReqRef><Comment>Provides the value of A_brake_emergency by taking into account one particular Track Condition.</Comment>
 <Parameters>
 <Parameter
- Type="TrackDescription.TrackConditions.TrackConditionInformation"
+ Type="TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="aTrackCondition"
  Guid="71064732-d8db-4258-9cef-9f04186da955"
 >
@@ -3618,7 +3618,7 @@ REDUCE TrackDescription.TrackConditions.General.TCProfile| (
 </ReqRef><Comment>Provides the value of A_brake__normal_service by taking into account one particular Track Condition.</Comment>
 <Parameters>
 <Parameter
- Type="TrackDescription.TrackConditions.TrackConditionInformation"
+ Type="TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="aTrackCondition"
  Guid="90b42be3-ee84-45b6-8f6d-f00c4ec5e6a0"
 >
@@ -4000,7 +4000,7 @@ REDUCE TrackDescription.TrackConditions.General.TCProfile| (
 </ReqRef><Comment>Provides the value of A_brake_service for zero speed by taking into account one particular Track Condition. Used to select the appropriate A_brake_normal_service. The condition on the distance of the track condition is verified earlier (by A_brk_normal_service(V)).</Comment>
 <Parameters>
 <Parameter
- Type="TrackDescription.TrackConditions.TrackConditionInformation"
+ Type="TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="aTrackCondition"
  Guid="b5e630ee-0b31-4f61-9176-ffe8c0bfacf0"
 >
@@ -4160,7 +4160,7 @@ REDUCE TrackDescription.TrackConditions.General.TCProfile| (
 </ReqRef><Comment>Provides the value of A_brake_service by taking into account one particular Track Condition.</Comment>
 <Parameters>
 <Parameter
- Type="TrackDescription.TrackConditions.TrackConditionInformation"
+ Type="TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="aTrackCondition"
  Guid="f4e3343a-3f6a-432e-b765-c7e81d25812a"
 >

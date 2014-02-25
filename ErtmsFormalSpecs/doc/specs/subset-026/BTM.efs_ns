@@ -1241,7 +1241,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 <Actions>
 <Action
  Guid="b347e32c-19e6-4ec5-8505-a3bae2deeed2"
->Kernel.TrackDescription.TrackConditions.TrackConditionReceived ( Packet.TRACK_TO_TRAIN.TRACK_CONDITION )</Action></Actions>
+>Kernel.TrackDescription.TrackConditions.General.TrackConditionReceived( Packet.TRACK_TO_TRAIN.TRACK_CONDITION )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Route Suitability available"
@@ -1508,6 +1508,30 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 <Action
  Guid="dd9b765f-3dcf-48d2-bac3-19ee389e9f1a"
 >Kernel.TrackDescription.Gradient.DefaultGradientForTSRReceived ( Packet.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Track Condition Big Metal Masses available"
+ Guid="ced1a7db-bddb-4b6e-9e46-0ea249622bfd"
+>
+<ReqRef
+ Id="a013028b-ded7-4e9f-9521-43654f2cb992"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d9fb7cb1-8637-4910-8436-7ce771958686"
+>
+</ReqRef><ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="551e1e38-b27e-4697-9dcc-60e0b422a7d6"
+>
+</ReqRef><Comment>Handles Track Condition Big Metal Masses packet, if available</Comment>
+<PreConditions>
+<PreCondition
+ Guid="a21202a1-5f8b-4294-a6a7-80d366dcaf78"
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TRACK_CONDITION_BIG_METAL_MASSES.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a8168c14-8dea-4896-9b29-5f71ec706278"
+>Kernel.TrackDescription.TrackConditions.BigMetalMasses.HandleNewBMMTrackCondition( Packet.TRACK_TO_TRAIN.TRACK_CONDITION_BIG_METAL_MASSES )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

@@ -4,6 +4,41 @@
 >
 <NameSpaces>
 </NameSpaces>
+<Structures>
+<Structure
+ Name="CurrentConsumptionInformation"
+ Guid="7a5297cd-00d0-4a5f-8ed4-c41cee5098e2"
+>
+<StructureElement
+ TypeName="Messages.M_CURRENT"
+ Default=""
+ Mode="Internal"
+ Name="Value"
+ Guid="ef9bd905-1557-46a0-a2bb-76f208aafe04"
+>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Distance"
+ Guid="36c65e77-0f18-467f-9cfc-98a7ebe2511e"
+>
+<ReqRef
+ Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3f8b4cc4-d275-490f-9fe7-5bfe9f6d2307"
+>
+</ReqRef><Comment>Start location of the track condition</Comment>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="CurrentConsumption.CurrentConsumptionInformation"
+ Default="[]"
+ Name="CurrentConsumptions"
+ Guid="0a337071-652a-418d-9a3c-adb0810c1826"
+>
+</Collection></Collections>
 <Variables>
 <Variable
  Type="CurrentConsumptions"
