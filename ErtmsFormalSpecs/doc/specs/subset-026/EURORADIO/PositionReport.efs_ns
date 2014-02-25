@@ -1554,43 +1554,6 @@ TIU.TrainIntegrity.Status in [
 <Action
  Guid="caed2442-a4dd-49e2-9bb4-55a01c80b907"
 >CurrentRBCConnection().SendPositionReport()</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Verified="TRUE"
- Name="Send report due to mode change"
- Guid="97905d43-d953-42a7-984d-22f5c47dd4f6"
->
-<ReqRef
- Id="fbaaf410-a59f-40cd-b972-aa1e84116831"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bb1705dd-c8fc-49d2-914a-30d6ffd6a5cb"
->
-</ReqRef><Comment>If a mode change, not considered as an End of Mission, has to be reorted to the RBC (only if level 2 or 3), a communication session has to be opened with the RBC.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Send report due to mode change"
- Guid="a87a0f40-5c61-4709-bb1e-3eff84c2ebb3"
->
-<PreConditions>
-<PreCondition
- Guid="0d631197-e276-4301-8fdf-95969ecff022"
->SendReportDueToModeChange()</PreCondition><PreCondition
- Guid="3851743c-a5c3-471c-b027-c563a75cabc0"
->NOT HasActiveSession()</PreCondition><PreCondition
- Guid="9c52a0e8-c2dd-498a-80b9-94ee30da49b3"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
- Guid="b6fefde5-0b7b-4b82-a3f6-8c30fabd8a56"
->Kernel.HandleModeChange not in Kernel.HandleModeChange.EndOfMission</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="b1aff9d2-712c-4f6e-acf7-546a1d29a74f"
->OpenRBCSession()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
