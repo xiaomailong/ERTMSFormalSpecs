@@ -1320,6 +1320,16 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="76238e6e-5374-4aec-bd6c-2e60ec86c787"
 >
+</ReqRef><ReqRef
+ Id="1be02ad3-ca38-452c-a795-e398d991b2da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0769f3b0-e796-43b9-9a63-8ed1e7e0cf33"
+>
+</ReqRef><ReqRef
+ Id="dd37c53c-3853-4b84-8080-c287bcf0cc25"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="01eb5402-0cee-4757-8e9e-8bdb0dc3687f"
+>
 </ReqRef><Comment>When an order to contact an RBC is received, the on-board requests the set-up of a safe radio connection with the trackside.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1343,6 +1353,53 @@
 >SessionManagementData.Action &lt;- ContactActionEnum.Establish</Action><Action
  Guid="36c208cd-4fdb-4529-aac3-4806d371c8a8"
 >ConnectionLostTime &lt;- Kernel.CurrentTime</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Establishment of communication session requested by trackside"
+ Guid="078e4aad-f6a1-48b9-999f-df3808876be3"
+>
+<ReqRef
+ Id="484b41b4-a894-43b4-9ee4-a7227ddfd3aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20784d49-0f83-447f-ab8b-bdb43f2465bf"
+>
+</ReqRef><ReqRef
+ Id="db4463dc-26c1-4af3-a988-31083e546a4c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bccfede5-1b36-4e0c-84c4-d59ef50c0188"
+>
+</ReqRef><ReqRef
+ Id="f070a20f-9665-470d-80ce-363bfa6c264a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="526f1300-ff99-4b0d-94ec-7f06e23068f4"
+>
+</ReqRef><ReqRef
+ Id="bf253010-f30e-4baf-a159-2b5214063f79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c39a1ce0-2cc7-4a90-a708-caa018244a67"
+>
+</ReqRef><Comment>If the trackisde requests the establishment of communication session, the on-board sets up the safe radio connection and waits for the message Initiation of communication session from the trackside.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Establishment of communication session requested by trackside"
+ Guid="50e554d4-aa95-4f7e-896c-80aa749af607"
+>
+<PreConditions>
+<PreCondition
+ Guid="7646887d-9f41-46be-afc8-7baa48bad286"
+>SessionManagementData.RequestIsReceived</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="acac9f9a-a9de-4efe-b716-f52130488da8"
+>THIS &lt;- Connecting.HandleRequestFromTrackside</Action><Action
+ Guid="ecf1a755-d1fb-4123-82de-4e8d7e3dad23"
+>SessionManagementData.ConnectionIsEstablished &lt;- True</Action><Action
+ Guid="e0c9fd6f-6e95-44d9-99ad-07fb09da4ad3"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -1371,7 +1428,7 @@
  Name="WaitForSetUp"
  Guid="06d57201-ba9b-46dd-9596-30944cc7cbb2"
 >
-<Comment>The on-board waits until the safe radio connection is set-up.</Comment>
+<Comment>If the request to establish the communication session was sent by the on-board, the on-board waits until the safe radio connection is set-up.</Comment>
 <StateMachine
  Implemented="TRUE"
  Guid="5c8b60bd-8baa-4c41-9bb6-ffcca7cbdfc2"
@@ -1683,6 +1740,53 @@
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</StateMachine></State><State
+ Implemented="TRUE"
+ Name="HandleRequestFromTrackside"
+ Guid="e52e1adb-7a12-454b-a949-67cbfb504da2"
+>
+<ReqRef
+ Id="bf253010-f30e-4baf-a159-2b5214063f79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64a3be3d-496c-4315-b995-9d369d1921c6"
+>
+</ReqRef><Comment>If the request to establish the communication session was asked by the trackside, the on-board waits for the message Initiation of the communication session from the trackside.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="d10a45d9-1390-4e31-8970-2532e3ffaea7"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Initiation of a communication session is received from the trackside"
+ Guid="4471e880-abfe-439b-a5a0-854dbd355825"
+>
+<ReqRef
+ Id="ca4b12ab-a31a-4af0-8bbc-bedfcba2e060"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d5d7215e-13c9-4c56-a492-1470ec7e1c87"
+>
+</ReqRef><Comment>When the on-board receives the Initiation of a communication session message from the trackside, it considers the session as established and sends Session establishment report.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initiation of a communication session is received from the trackside"
+ Guid="8b432caa-ce1c-4295-8592-63d839277421"
+>
+<PreConditions>
+<PreCondition
+ Guid="525fb74f-aecb-42f0-8285-5ad61fc9ea05"
+>SessionManagementData.InitiationOfACommunicationSessionReceived</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0ad99b4e-12a5-4395-bee8-9be7964dd2ca"
+>THIS &lt;- Connected</Action><Action
+ Guid="bfd4f69e-32ac-42e9-9e8e-1ce0785e25ec"
+>SendSessionEstablishmentReport()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State></States>
 <Rules>
 <Rule
@@ -1751,27 +1855,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Name="Loss of the safe radio connection is detected"
  Guid="b6f6217c-72ba-43e7-bd6e-33cc9dce3d16"
 >
-<ReqRef
- Id="308624ea-ea91-4451-b8c4-1cfbc9094f8e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8e535b6f-2b7d-471d-9fb0-ed7f5b37a32e"
->
-</ReqRef><ReqRef
- Id="529343f5-9881-4318-8dcc-53dade4fe1df"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0e4fdaaf-3619-4add-b6ae-c5ffda424154"
->
-</ReqRef><ReqRef
- Id="ac42de65-1111-47f1-904b-907bce323de2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c3e56bf1-aa63-4bfe-a0de-c226e021c853"
->
-</ReqRef><ReqRef
- Id="dd37c53c-3853-4b84-8080-c287bcf0cc25"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ce08f514-403d-4411-8de5-bc0b7796fab8"
->
-</ReqRef><Comment>When a loss of the safe radio connection is detected, the system goes to the state Connected.ConnectionLost an stores the current time, in order to know how long the safe radio connection has to be considered as established.</Comment>
+<Comment>When a loss of the safe radio connection is detected, the system goes to the state Connected.ConnectionLost an stores the current time, in order to know how long the safe radio connection has to be considered as established.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1797,7 +1881,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="The train is inside an announced radio hole"
+ Name="Connection lost, the train is inside an announced radio hole"
  Guid="271faf59-7b23-4404-b868-ed9ba537f3f4"
 >
 <ReqRef
@@ -1840,13 +1924,33 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 >SpecialCaseSessionEstablishmentReason &lt;- SpecialCaseSessionEstablishmentReasonEnum.EstablishDueToRadioHole</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Otherwise"
+ Name="Connection lost, the train is not inside an announced radio hole"
  Guid="13af3a5b-5f98-48b4-90c0-a46a36f84d3a"
 >
 <ReqRef
  Id="cd18a937-9dc2-456d-bee7-a61bcd564e32"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bbb6faeb-db9d-4974-b1c6-dd221e21af9b"
+>
+</ReqRef><ReqRef
+ Id="308624ea-ea91-4451-b8c4-1cfbc9094f8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="be8eff81-4014-45d1-b4e5-ca9ef2b8ea0f"
+>
+</ReqRef><ReqRef
+ Id="529343f5-9881-4318-8dcc-53dade4fe1df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b6326d63-de68-4338-aa3d-2e3bdbff8781"
+>
+</ReqRef><ReqRef
+ Id="ac42de65-1111-47f1-904b-907bce323de2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b979e6de-0060-4dbb-93bd-97f3a6ff0ffe"
+>
+</ReqRef><ReqRef
+ Id="dd37c53c-3853-4b84-8080-c287bcf0cc25"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f72da592-8ff0-45cf-89ef-e9f37c5f28b3"
 >
 </ReqRef><Comment>If the train is not inside a radio hole, it will try to establish the connection again.</Comment>
 <PreConditions>
@@ -1983,6 +2087,11 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Id="752d0832-7cfa-4424-96f7-d3fbb447a20e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e70499f3-2fba-4f3c-a3e3-b5c9e888ca12"
+>
+</ReqRef><ReqRef
+ Id="1be02ad3-ca38-452c-a795-e398d991b2da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ecc8719f-0efc-4af6-8aa3-ca0ed120665f"
 >
 </ReqRef><Comment>Otherwise, if the maximum time to maintain a communication session is reached, the connection is considered as lost.</Comment>
 <PreConditions>
@@ -2542,7 +2651,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="False"
- Mode="Incoming"
+ Mode="InOut"
  Implemented="TRUE"
  Name="ConnectionIsEstablished"
  Guid="1c04490a-d03a-492b-81ec-bbf9c60fd7db"
@@ -2553,6 +2662,34 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Guid="0f940401-02b0-4101-bebd-18261582bd51"
 >
 </ReqRef><Comment>Set to true if the safe radio connection is set-up.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="RequestIsReceived"
+ Guid="a6d33ff5-d083-45be-83a3-68ff4212ed87"
+>
+<ReqRef
+ Id="484b41b4-a894-43b4-9ee4-a7227ddfd3aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae52e345-9015-4eda-b625-9434ac9440d0"
+>
+</ReqRef><Comment>This variable is set to True when the on-board requests the establishment of communication session.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="InitiationOfACommunicationSessionReceived"
+ Guid="490547bc-7b30-4783-8531-e6fecdf5e3e1"
+>
+<ReqRef
+ Id="5553cd84-d563-49a7-8514-0b4890a35066"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd072b10-5c0e-46bf-b970-af90bc934bef"
+>
+</ReqRef><Comment>Indicates if the trackside has sent the Initiation of a communication session message.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="RBCIdStruct"
@@ -3463,6 +3600,11 @@ TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
  Id="752d0832-7cfa-4424-96f7-d3fbb447a20e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2c2f48f7-ee72-45fc-93e3-031eb4eab2c2"
+>
+</ReqRef><ReqRef
+ Id="1be02ad3-ca38-452c-a795-e398d991b2da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a75c0c3c-b69f-4142-b538-ccc0cebdffa5"
 >
 </ReqRef><Comment>Indicates if a communication session has to be established.</Comment>
 <Parameters>
@@ -5172,6 +5314,45 @@ Default.MessageTypes.QScaleDistance(
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="RBC/RIU system version"
+ Guid="72ea757d-52ec-42fa-bd6a-154f694dc4ae"
+>
+<ReqRef
+ Id="02f20f26-3445-49b9-95cf-a6948ab029b8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb6b5b48-be53-43e2-9e0c-154d5613bdd7"
+>
+</ReqRef><ReqRef
+ Id="71740f57-d219-41b2-93f8-319c302b1afa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="11c4849e-4311-4b6f-b7eb-f58c203eb04c"
+>
+</ReqRef><ReqRef
+ Id="2eda81e7-52ac-483d-91c9-169e8718de74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b022c87b-4aa3-482c-840a-fcc52d3a0394"
+>
+</ReqRef><Comment>Handles reception of the RBC/RIU system version.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RBC/RIU system version"
+ Guid="17ca29cb-fad8-4162-8eb4-95e27de49f9d"
+>
+<PreConditions>
+<PreCondition
+ Guid="4fa84a57-6d47-40db-a5af-2a05d082f8c1"
+>Available ( aMessage.RIU_SYSTEM_VERSION )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="edc7241a-b3a2-422c-bbe6-f815e0c132da"
+>HandleRBCRIUSystemVersion ( aMessage =&gt; aMessage.RIU_SYSTEM_VERSION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
  Name="Infill MA"
@@ -5309,36 +5490,40 @@ Default.MessageTypes.QScaleDistance(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="RBC/RIU system version"
- Guid="72ea757d-52ec-42fa-bd6a-154f694dc4ae"
+ Name="Initiation of a communication session"
+ Guid="3e9c2f71-7759-4362-8ed1-97a91010386c"
 >
 <ReqRef
- Id="02f20f26-3445-49b9-95cf-a6948ab029b8"
+ Id="5c22942d-5616-44c5-8707-c8edf2889ba9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bb6b5b48-be53-43e2-9e0c-154d5613bdd7"
+ Guid="1e499a6d-626e-4b40-8786-2c0ce268c05c"
 >
 </ReqRef><ReqRef
- Id="71740f57-d219-41b2-93f8-319c302b1afa"
+ Id="0e6b5d89-69d9-43ff-8971-5f84c02aa2d2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="11c4849e-4311-4b6f-b7eb-f58c203eb04c"
+ Guid="f3d9f4ac-c494-49dd-aca2-336102819dfe"
 >
-</ReqRef><Comment>Handles reception of the RBC/RIU system version.</Comment>
+</ReqRef><ReqRef
+ Id="5553cd84-d563-49a7-8514-0b4890a35066"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f978fd61-c163-44bb-9cb9-4a96cc73951f"
+>
+</ReqRef><Comment>Handles reception of the inifiation of a communication session.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RBC/RIU system version"
- Guid="17ca29cb-fad8-4162-8eb4-95e27de49f9d"
+ Name="Initiation of a communication session"
+ Guid="8a935a5f-97b3-472e-b592-2d1156866e13"
 >
 <PreConditions>
 <PreCondition
- Guid="4fa84a57-6d47-40db-a5af-2a05d082f8c1"
->Available ( aMessage.RIU_SYSTEM_VERSION )</PreCondition></PreConditions>
+ Guid="235a0300-92ec-446e-821a-89a960c55b93"
+>Available ( aMessage.INITIATION_OF_A_COMMUNICATION_SESSION )</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="edc7241a-b3a2-422c-bbe6-f815e0c132da"
->HandleRBCRIUSystemVersion ( aMessage =&gt; aMessage.RIU_SYSTEM_VERSION )</Action></Actions>
+ Guid="12ed8134-932c-460b-b43c-93b9450e806e"
+>HandleInitiationOfACommunicationSession ( aMessage =&gt; aMessage.INITIATION_OF_A_COMMUNICATION_SESSION )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5470,7 +5655,7 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 <PreConditions>
 <PreCondition
  Guid="e865f160-465a-4fa6-bbdf-5c4aa595c910"
->CurrentRBCConnection().ConnectionState not in RBCStruct.ConnectionStateSM.Connecting</PreCondition></PreConditions>
+>CurrentRBCConnection().ConnectionState not in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7ffe8131-5392-4ec9-a32e-1ad7d3cb2dcd"
@@ -5615,6 +5800,46 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 >aTerminal.NetworkIdToRegister &lt;- aNetworkId</Action><Action
  Guid="503a9e82-74de-44aa-9897-753d7f0369c1"
 >aTerminal.RegistrationOrderIsReceived &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleInitiationOfACommunicationSession"
+ Guid="e148b0a4-d11d-4f3d-aa7b-9d8a9065121c"
+>
+<ReqRef
+ Id="5553cd84-d563-49a7-8514-0b4890a35066"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dc57eeb8-ddae-467e-a5d7-89a5d8c3d293"
+>
+</ReqRef><Comment>When the Initiation of a communication session message is received, this information is stored.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.INITIATION_OF_A_COMMUNICATION_SESSION.Message"
+ Name="aMessage"
+ Guid="15dd081b-81bb-4708-9e41-0cde0f553038"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Indicate the message is received"
+ Guid="c0c8406e-c5a8-4498-9843-d5d8e450fa68"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Indicate the message is received"
+ Guid="7555654b-32ae-4b36-a935-25932d303ad0"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="719c1d19-13d5-4770-8ba1-1b886c2f4980"
+>CurrentRBCConnection().SessionManagementData.InitiationOfACommunicationSessionReceived &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
