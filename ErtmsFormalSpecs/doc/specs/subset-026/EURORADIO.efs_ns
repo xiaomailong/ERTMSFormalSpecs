@@ -1305,6 +1305,21 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5458231e-1df4-425e-8e8b-9b993b243cc4"
 >
+</ReqRef><ReqRef
+ Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="99a2dff6-373a-4b16-b222-68f88c8dd6ec"
+>
+</ReqRef><ReqRef
+ Id="752d0832-7cfa-4424-96f7-d3fbb447a20e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47c90c73-64b3-4eef-97b4-dee8e5f231cb"
+>
+</ReqRef><ReqRef
+ Id="558b2068-001d-4f9f-902b-2cd23fb269d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="76238e6e-5374-4aec-bd6c-2e60ec86c787"
+>
 </ReqRef><Comment>When an order to contact an RBC is received, the on-board requests the set-up of a safe radio connection with the trackside.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1317,7 +1332,7 @@
 <PreConditions>
 <PreCondition
  Guid="d70d315d-97c4-418f-a89b-173190c448b2"
->SessionHasToBeEstablished ( anRBC=&gt; THIS ) </PreCondition></PreConditions>
+>SessionHasToBeEstablished ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="30ffcf61-752f-4621-bd06-aae49937b224"
@@ -1764,55 +1779,53 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Name="Loss of the safe radio connection is detected"
  Guid="8779a660-1dd0-4176-80b8-c172f1e2b5ba"
 >
-<ReqRef
- Id="cd18a937-9dc2-456d-bee7-a61bcd564e32"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="664c8ef1-3152-4414-9167-ec22138e70f3"
->
-</ReqRef><PreConditions>
+<PreConditions>
 <PreCondition
  Guid="6222ed14-9c42-42d5-b29f-2e5222369f8c"
 >SessionManagementData.ConnectionIsEstablished == False</PreCondition></PreConditions>
 <Actions>
-<Action
- Guid="ed5c1847-6ece-4c06-a1fe-50505630488c"
->THIS &lt;- ConnectionLost</Action><Action
- Guid="31f3937f-b213-4f3e-ad34-8537395d0015"
->ConnectionLostTime &lt;- Kernel.CurrentTime</Action><Action
- Guid="bef7600f-38e6-4557-9a1d-4f08e07554dd"
->SessionManagementData.RequestIsSent &lt;- True</Action><Action
- Guid="c4a3e6fd-bbd3-4c4a-9592-37f17c96b1ac"
->LastRequestTime &lt;- Kernel.CurrentTime</Action></Actions>
+</Actions>
 <SubRules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Test if the train is inside an announced radio hole"
+ Name="Verify if the train is inside an announced radio hole."
  Guid="a74a6f9a-ffdb-4c21-8c7a-62e2a33eb02e"
 >
-<ReqRef
- Id="a977087b-cf09-465c-b072-4ac0d0903dc7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6dca347f-069a-4519-994b-8074272a0dd7"
->
-</ReqRef><ReqRef
- Id="faa589ef-1db3-49b8-b4e9-66bca10c1754"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="59e50f1a-d531-42b0-b018-d9f91f7ccd95"
->
-</ReqRef><ReqRef
- Id="ca032528-1cb2-4646-bcad-67c92912f36f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3c83cd31-3493-41b7-b3b2-2f863a52aa5b"
->
-</ReqRef><Comment>If the connection is lost when the train is inside an announced radio hole, the safe radio connection is considered as lost.</Comment>
+<Comment>If the connection is lost when the train is inside an announced radio hole, the safe radio connection is considered as lost.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Test if the train is inside an announced radio hole"
+ Name="The train is inside an announced radio hole"
  Guid="271faf59-7b23-4404-b868-ed9ba537f3f4"
 >
+<ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="239adfd0-723e-46e9-8479-a3a51fcd9711"
+>
+</ReqRef><ReqRef
+ Id="faa589ef-1db3-49b8-b4e9-66bca10c1754"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="23dd4add-24c0-4bdf-9a33-6ec6615aada5"
+>
+</ReqRef><ReqRef
+ Id="a977087b-cf09-465c-b072-4ac0d0903dc7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8cfd489e-bad9-4415-ba6c-e9914db45169"
+>
+</ReqRef><ReqRef
+ Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e85a1f8-f5a5-404f-ac29-eef9a50d4452"
+>
+</ReqRef><ReqRef
+ Id="558b2068-001d-4f9f-902b-2cd23fb269d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="78c2b289-ebb1-4c6e-ad26-791d5c4deb8d"
+>
+</ReqRef><Comment>If the train is inside an announced radio hole, the connection is considered as lost and new attempts to establish the communication session will be executed only when the radio hole end will be reached.</Comment>
 <PreConditions>
 <PreCondition
  Guid="98dfced5-c8e3-4402-9c30-42e6826e38b0"
@@ -1820,7 +1833,34 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 <Actions>
 <Action
  Guid="31e5f409-b9e6-446b-867c-b18a87681e9d"
->SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action></Actions>
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action><Action
+ Guid="6d4583aa-006a-45ae-9cda-74616d81d751"
+>THIS &lt;- Inactive</Action><Action
+ Guid="ec9f6b78-cb37-4e99-9057-9da349ca8a75"
+>SpecialCaseSessionEstablishmentReason &lt;- SpecialCaseSessionEstablishmentReasonEnum.EstablishDueToRadioHole</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Otherwise"
+ Guid="13af3a5b-5f98-48b4-90c0-a46a36f84d3a"
+>
+<ReqRef
+ Id="cd18a937-9dc2-456d-bee7-a61bcd564e32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bbb6faeb-db9d-4974-b1c6-dd221e21af9b"
+>
+</ReqRef><Comment>If the train is not inside a radio hole, it will try to establish the connection again.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="31f3937f-b213-4f3e-ad34-8537395d0015"
+>ConnectionLostTime &lt;- Kernel.CurrentTime</Action><Action
+ Guid="c4a3e6fd-bbd3-4c4a-9592-37f17c96b1ac"
+>LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+ Guid="bef7600f-38e6-4557-9a1d-4f08e07554dd"
+>SessionManagementData.RequestIsSent &lt;- True</Action><Action
+ Guid="ed5c1847-6ece-4c06-a1fe-50505630488c"
+>THIS &lt;- ConnectionLost</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1939,6 +1979,11 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="376cf966-7b5d-402a-a800-93d873ef7dce"
 >
+</ReqRef><ReqRef
+ Id="752d0832-7cfa-4424-96f7-d3fbb447a20e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e70499f3-2fba-4f3c-a3e3-b5c9e888ca12"
+>
 </ReqRef><Comment>Otherwise, if the maximum time to maintain a communication session is reached, the connection is considered as lost.</Comment>
 <PreConditions>
 <PreCondition
@@ -1949,7 +1994,9 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 <Actions>
 <Action
  Guid="2d58a44a-39a5-4bf5-9712-d9525d21cb8d"
->THIS &lt;- Inactive</Action></Actions>
+>THIS &lt;- Inactive</Action><Action
+ Guid="1e8ee9e1-e346-41b2-b922-608f09cb6551"
+>SpecialCaseSessionEstablishmentReason &lt;- SpecialCaseSessionEstablishmentReasonEnum.EstablishDueToLossOfConnection</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -3411,6 +3458,11 @@ TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
  Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1dd73c11-e996-4738-a8e5-cbb294030488"
+>
+</ReqRef><ReqRef
+ Id="752d0832-7cfa-4424-96f7-d3fbb447a20e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c2f48f7-ee72-45fc-93e3-031eb4eab2c2"
 >
 </ReqRef><Comment>Indicates if a communication session has to be established.</Comment>
 <Parameters>
