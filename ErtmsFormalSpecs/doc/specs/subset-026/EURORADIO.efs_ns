@@ -1547,7 +1547,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 <PreConditions>
 <PreCondition
  Guid="d70d315d-97c4-418f-a89b-173190c448b2"
->SessionHasToBeEstablished ( anRBC =&gt; THIS )</PreCondition></PreConditions>
+>SessionHasToBeEstablished ( anRBC =&gt; ENCLOSING )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="30ffcf61-752f-4621-bd06-aae49937b224"
@@ -1698,6 +1698,11 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="04c1239e-16fe-409f-9811-5d484ba073a2"
 >
+</ReqRef><ReqRef
+ Id="9b632443-f645-498c-9bf9-9771b26f19c6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ebe6193e-8ecd-4ccf-8fed-124173d88114"
+>
 </ReqRef><Comment>As soon as the safe radio connection is set-up, the on-board sends the message Initiation of communication session.</Comment>
 <PreConditions>
 <PreCondition
@@ -1819,40 +1824,6 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 >NumberOfSentRequests &lt;- 0</Action><Action
  Guid="dc483daa-7b07-4ae9-8b43-cbd205d1883a"
 >SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Connection is lost, &quot;connection status&quot; timer expired"
- Guid="6a118501-cac0-4a06-805f-b587d3b07391"
->
-<ReqRef
- Id="24cfec76-595f-41de-920e-42c8da108914"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="36cd5232-ba20-436f-88e2-3dcce107191a"
->
-</ReqRef><ReqRef
- Id="b15cc4d3-14ad-4f2e-b1d9-c70dc451cc6f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b98d3a36-7c9b-4be3-b497-938b79c88ee1"
->
-</ReqRef><ReqRef
- Id="ca032528-1cb2-4646-bcad-67c92912f36f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="09ce8a4b-841a-4c31-b520-949e25a1b3ff"
->
-</ReqRef><ReqRef
- Id="cd18a937-9dc2-456d-bee7-a61bcd564e32"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7e215cfa-63a1-4fcc-b8ae-5c48971015b9"
->
-</ReqRef><Comment>If the connection status timer is expired, the Safe Radio Connection setup is declared as failed.</Comment>
-<PreConditions>
-<PreCondition
- Guid="051b7c73-d993-4246-ac2a-5099ddc3c5a1"
->ConnectionLostTime + ConnectionStatusTimer &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7a967e85-a3aa-4740-a5be-0df764c85620"
->SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
@@ -1869,9 +1840,124 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 <PreConditions>
 </PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="16ba15f9-a1a0-4ae4-871b-0170a60aa6fb"
+>SessionManagementData.RequestIsSent &lt;- True</Action><Action
+ Guid="d32ceab3-f240-4971-86d9-06c897d9b505"
+>LastRequestTime &lt;- Kernel.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="&quot;Connection status&quot; timer expires"
+ Guid="ab14bc46-b49b-43c1-8445-196b2b39e1bd"
+>
+<ReqRef
+ Id="cd18a937-9dc2-456d-bee7-a61bcd564e32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="51eab676-3f08-48ad-ba12-d4fcf50c19cb"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8706b9b0-adfd-48fa-8bb2-902bbe274cda"
+>
+</ReqRef><ReqRef
+ Id="b15cc4d3-14ad-4f2e-b1d9-c70dc451cc6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9fc279c0-7fc3-42a4-b850-2e7b45f1f829"
+>
+</ReqRef><ReqRef
+ Id="24cfec76-595f-41de-920e-42c8da108914"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf7c1fbe-0bc3-4173-8376-bd2df73be0a6"
+>
+</ReqRef><Comment>If the connection status timer has expired, the Safe Radio Connection setup is declared as failed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="&quot;Connection status&quot; timer expires"
+ Guid="6a118501-cac0-4a06-805f-b587d3b07391"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="051b7c73-d993-4246-ac2a-5099ddc3c5a1"
+>ConnectionLostTime + ConnectionStatusTimer &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7a967e85-a3aa-4740-a5be-0df764c85620"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle conditions to stop requests"
+ Guid="9b91ee76-2784-4353-8149-ba61eb53cb1a"
+>
+<Comment>Handles the possible case to stop requests to set-up a safe radio connection, when the Kernel is not in the Start of Mission procedure.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="End of mission is performed"
+ Guid="646f3bec-8d5f-4ba4-9483-3bff2fc2e376"
+>
+<ReqRef
+ Id="5c68142d-4105-4fde-a021-ad914acbfe89"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a3ea32d-98c2-4599-9302-5ac2b63672dc"
+>
+</ReqRef><Comment>If End of Mission procedure is performed, the requests to establish a safe radio connection shall no more be repeated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="788ddb8c-f003-470b-9221-6ceab4d99a2f"
+>Kernel.HandleModeChange in Kernel.HandleModeChangeSM.EndOfMission</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2f2121c0-547a-4f28-920b-c73ac9de628c"
+>THIS &lt;- RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Level transition order is passed"
+ Guid="9baf68f6-558e-4e7e-b656-9c97e69df736"
+>
+<ReqRef
+ Id="358d0dbf-9187-4a9e-87a4-18c07fba71ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2926050c-3f94-48e6-95d6-ff87a3db3312"
+>
+</ReqRef><Comment>If the train has passed a level transition border to level 0, NTC or 1, the requests to establish a safe radio connection shall no more be repeated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="e83c3c3e-9cfa-4ec8-9613-96417be71c7d"
+>Kernel.LevelTransition.LTOtoProcess.TRLevel.Value in [Default.Level.L0, Default.Level.LNTC, Default.Level.L1]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b71b573b-1f53-4f37-97b5-3ea811c3a2c3"
+>THIS &lt;- RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Announced radio hole is passed"
+ Guid="3b2f67be-ebc7-4c66-b94c-5280f6238cf8"
+>
+<ReqRef
+ Id="ce7cdbeb-b49e-4146-a701-c8e36d770f29"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55d8e6e7-56aa-4194-a852-7e7ff2a4c0d2"
+>
+</ReqRef><Comment>If the train front passes the start of an announced radio hole, the requests to establish a safe radio connection shall no more be repeated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5e653953-1096-4f8d-8331-734cb465dff9"
+>Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="aa4d7c3e-e76d-40a7-9946-5e6162008c03"
+>THIS &lt;- RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2063,7 +2149,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Order to terminate the communication session is received"
+ Name="Order to contact an RBC is received"
  Guid="63704436-5af4-444f-a8e6-6349d2dee385"
 >
 <ReqRef
@@ -2071,26 +2157,58 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5a49a622-e287-4d4f-880a-26ce53166311"
 >
-</ReqRef><Comment>If an order to terminate the communication session is received in connecting state, the establishing of the communication session is aborted.</Comment>
+</ReqRef><ReqRef
+ Id="d870fe5c-bd41-4203-9dfc-5ace398ffd56"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ab02c3f7-807f-4a87-b47c-393893e559e4"
+>
+</ReqRef><ReqRef
+ Id="c434f0b2-9953-426f-ab6b-0c705da559de"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ddfcfe8e-9728-4092-a496-73514ef703ef"
+>
+</ReqRef><Comment>If an order to contact an RBC is received in connecting state, the establishing of the communication session is aborted.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Order to terminate the communication session is received"
+ Name="Order to contact an RBC is received"
  Guid="a42b1225-8802-4fe3-9b3b-1148d9802095"
 >
 <PreConditions>
 <PreCondition
  Guid="c94000a1-d7dc-4cd3-becf-159031484f3a"
->ContactRBCOrder != EMPTY
-  AND
-ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></PreConditions>
+>ContactRBCOrder != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="005fe0c4-14fe-4ed1-8754-5011041d3708"
->THIS &lt;- Inactive</Action><Action
- Guid="4566df66-8602-481b-8e43-9d6cee572241"
->ReinitializeCommunicationInformation()</Action></Actions>
+>THIS &lt;- Inactive</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle termination of communication session"
+ Guid="e250a5fc-cb9c-42c8-a172-616e6d91b036"
+>
+<Comment>If the order action to terminate the communication session, it has to be erased (since it is handled here).</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle termination of communication session"
+ Guid="88edf8c0-ea11-4695-9842-ab183cddd0df"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="e1c7b5e8-4fb5-4603-b585-16bee501b09c"
+>ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="01701ac8-5a57-4ab9-9aa1-ebfd9312b3ff"
+>ContactRBCOrder &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2548,7 +2666,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Guid="5ab8eb84-a856-41fe-81be-92cc80d83d99"
 >RBCStruct.SendTerminationOfCommunicationSession()</Action><Action
  Guid="37faeac1-ef2c-41c8-ab97-8497c4cfcec4"
->ConnectionState &lt;- RBCStruct.ConnectionStateSM.Terminating</Action></Actions>
+>THIS &lt;- Terminating</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
