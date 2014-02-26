@@ -3626,9 +3626,9 @@ Note: a safe radio connection can only be set-up when the RBC connection is in s
  Name="Value"
  Guid="10904d1f-8fc9-4d89-a374-c156b560a9fe"
 >
-<Expression>Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp
+<Expression>Terminal1.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Connected
   OR
-Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</Expression>
+Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Connected</Expression>
 </Case></Cases>
 </Function><Function
  Type="RBCStruct"
