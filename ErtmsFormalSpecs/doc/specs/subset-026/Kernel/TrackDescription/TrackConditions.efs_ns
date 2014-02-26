@@ -16,7 +16,7 @@
  Guid="de10032b-513f-4b58-9045-b16ad955c648"
 >
 </NameSpaceRef><NameSpaceRef
- Name="TractionSystem"
+ Name="TractionSystems"
  Guid="1a63083e-5f4c-4a03-b224-0f78f65a8ca2"
 >
 </NameSpaceRef><NameSpaceRef
@@ -147,20 +147,22 @@
  Name="Newer traction system condition has been applied"
  Guid="6a9633c8-ab71-4b77-8b00-d8fe637fc740"
 >
+<Comment>Traction systems are location data and are therefore only measured from the max safe front end of the train</Comment>
 <PreConditions>
 <PreCondition
  Guid="e9ab2926-47c5-4c27-b9f2-5f48fe6f086b"
 >TrackCondition == ConditionType.TractionSystem</PreCondition></PreConditions>
-<Expression>THERE_IS_IN TractionSystem.TCTractionSystems| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+<Expression>THERE_IS_IN TractionSystems.TCTractionSystems| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Max))</Expression>
 </Case><Case
  Name="New current consumption limit has been applied"
  Guid="2c584425-c82e-48bc-a4ff-a445749fa10b"
 >
+<Comment>Traction systems are location data and are therefore only measured from the max safe front end of the train</Comment>
 <PreConditions>
 <PreCondition
  Guid="ec6f1c48-d0e2-40b6-98ef-5b4bc7e36db6"
 >TrackCondition == ConditionType.CurrentConsumption</PreCondition></PreConditions>
-<Expression>THERE_IS_IN CurrentConsumption.TCCurrentConsumption| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+<Expression>THERE_IS_IN CurrentConsumption.TCCurrentConsumption| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Max))</Expression>
 </Case></Cases>
 </Function></Functions>
 <Rules>
@@ -229,11 +231,11 @@
 <PreConditions>
 <PreCondition
  Guid="7bf80b57-15e8-4404-aba0-9948ea48ce59"
->TractionSystem.TCTractionSystems != []</PreCondition></PreConditions>
+>TractionSystems.TCTractionSystems != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="feca3a28-9d9e-429e-85f6-3b5ea48dfbab"
->REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.TractionSystem) IN TractionSystem.TCTractionSystems</Action></Actions>
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackCondition=&gt;ConditionType.TractionSystem) IN TractionSystems.TCTractionSystems</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
