@@ -70,7 +70,7 @@ namespace DataDictionary.Interpreter.Refactor
         protected override void VisitDesignator(Designator designator)
         {
             ModelElement model = designator.Ref as ModelElement;
-            if (model != null && designator.Location != Designator.LocationEnum.This)
+            if (model != null && designator.IsPredefined())
             {
                 ReplaceText(model.ReferenceName(NewNameSpace), designator.Start, designator.End);
             }
