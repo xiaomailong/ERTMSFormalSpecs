@@ -1038,6 +1038,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="30c4a337-3b6c-4974-b6ea-bf3383053ae3"
 >
+</ReqRef><ReqRef
+ Id="dc7b33b5-d923-42f3-be12-580edb475353"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="144418d9-5285-412c-b6fe-6933d99065b7"
+>
 </ReqRef><Comment>Sends the termination of communication session message.</Comment>
 <Rules>
 <Rule
@@ -1057,7 +1062,9 @@
 <PreConditions>
 <PreCondition
  Guid="84bd5198-9d19-4348-b537-6f637bae715f"
->MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
+>MessageCanBeSent ( anRBC =&gt; THIS )
+  OR
+ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9025ba4e-91d5-4f92-8289-74df36138ac0"
@@ -1286,6 +1293,55 @@
         }
     ]
 }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="InitiateTerminatingOfCommunicationSession"
+ Guid="4a0ed985-1f41-422f-aeb9-eba7c3b0953c"
+>
+<ReqRef
+ Id="dc7b33b5-d923-42f3-be12-580edb475353"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4369c7fd-dba1-4575-8254-32e972dffa3c"
+>
+</ReqRef><ReqRef
+ Id="e0a2f873-6bb3-4327-abdc-4444932d69aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b3b1e423-d420-4b82-ba43-2f351a434453"
+>
+</ReqRef><ReqRef
+ Id="bc41e5e5-6fff-4b96-a901-9bc45f108b16"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="34f7f1b1-dce2-41b1-90bf-b6a1e4a5e45f"
+>
+</ReqRef><Comment>To terminate the communication session, the on-board sends the message &quot;Termination of communication session&quot; to the trackside and starts counters which will allow to send this message again, if needed.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Initiate terminating of communication session"
+ Guid="9acd73b9-4bec-4f4a-9852-146d4e3c79b6"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initiate terminating of communication session"
+ Guid="9d20fe19-df16-4485-843d-38e2283167fa"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="1a1a20cb-a8df-46b4-acc5-16faf2b26075"
+>LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+ Guid="ef59530a-188c-48af-86c4-658498732214"
+>NumberOfSentRequests &lt;- 0</Action><Action
+ Guid="5ab8eb84-a856-41fe-81be-92cc80d83d99"
+>RBCStruct.SendTerminationOfCommunicationSession()</Action><Action
+ Guid="37faeac1-ef2c-41c8-ab97-8497c4cfcec4"
+>ConnectionState &lt;- RBCStruct.ConnectionStateSM.Terminating</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1522,6 +1578,11 @@
  Id="dd37c53c-3853-4b84-8080-c287bcf0cc25"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="01eb5402-0cee-4757-8e9e-8bdb0dc3687f"
+>
+</ReqRef><ReqRef
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4ac1091d-9f1b-4a2a-b2df-175afdaa07be"
 >
 </ReqRef><Comment>When an order to contact an RBC is received, the on-board requests the set-up of a safe radio connection with the trackside.</Comment>
 <SubRules></SubRules>
@@ -1975,6 +2036,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="216a5269-acb9-4d77-8c67-d59d7b1eb902"
 >
+</ReqRef><ReqRef
+ Id="21b52bea-13d1-437e-9aec-4d66149f68d5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="026c6422-5ea2-4120-82c7-1d668d7213e3"
+>
 </ReqRef><Comment>If the trackside system version is not compatible, then the session is terminated, the driver is informed and the message &quot;No compatible version supported&quot; is sent to the RBC.</Comment>
 <PreConditions>
 </PreConditions>
@@ -1991,6 +2057,10 @@
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ X="330"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="HandleRequestFromTrackside"
  Guid="e52e1adb-7a12-454b-a949-67cbfb504da2"
@@ -2089,6 +2159,10 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 >
 <States>
 <State
+ X="130"
+ Y="100"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="InitialState"
  Guid="ad4e57e7-c527-4a6b-b01f-b9fbf7a1d9a8"
@@ -2220,6 +2294,10 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ X="570"
+ Y="100"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ConnectionLost"
  Guid="74427cf7-e4a2-4a0c-bdc7-bebc203329c8"
@@ -2469,30 +2547,10 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Order to terminate the communication session is received"
+ Name="Order to contact an RBC is received"
  Guid="0f45f74c-edd2-48e5-af53-1c74c195841c"
 >
-<ReqRef
- Id="bc41e5e5-6fff-4b96-a901-9bc45f108b16"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="212177a5-3051-4788-a2b8-6951db3634a5"
->
-</ReqRef><ReqRef
- Id="84374b3d-739e-4c5f-909d-4c138dedec38"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cd739b37-15fd-4303-9f0b-a1dbca0c6555"
->
-</ReqRef><ReqRef
- Id="e0a2f873-6bb3-4327-abdc-4444932d69aa"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="eb974e02-f7d4-476e-8b0f-f169719b35a4"
->
-</ReqRef><ReqRef
- Id="dc7b33b5-d923-42f3-be12-580edb475353"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ed4afeb4-ab44-419a-ac37-d7bf139bcba3"
->
-</ReqRef><Comment>When a connection to the RBC is established and a request to terminate the communication session is sent, on-board sends the Termination of communication session message to the RBC and goes to Terminating state.</Comment>
+<Comment>Handle orders to contact an RBC.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2500,6 +2558,17 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Name="Order to terminate the communication session is received"
  Guid="63fe5c9c-8eee-4877-90ab-bc7187858c4a"
 >
+<ReqRef
+ Id="84374b3d-739e-4c5f-909d-4c138dedec38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7ea5b70b-1d05-44d9-93c0-383691771072"
+>
+</ReqRef><ReqRef
+ Id="bc41e5e5-6fff-4b96-a901-9bc45f108b16"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="740ca6fd-4144-49a1-8730-59afd3852927"
+>
+</ReqRef><Comment>When a connection to the RBC is established and a request to terminate the communication session is received, the on-board sends the Termination of communication session message to the RBC and goes to Terminating state.</Comment>
 <PreConditions>
 <PreCondition
  Guid="45eed858-9748-4822-b4df-ef101907fd7c"
@@ -2508,14 +2577,69 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="5ab8eb84-a856-41fe-81be-92cc80d83d99"
->SendTerminationOfCommunicationSession()</Action><Action
- Guid="37faeac1-ef2c-41c8-ab97-8497c4cfcec4"
->THIS &lt;- Terminating</Action><Action
- Guid="1a1a20cb-a8df-46b4-acc5-16faf2b26075"
->LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
- Guid="ef59530a-188c-48af-86c4-658498732214"
->NumberOfSentRequests &lt;- 0</Action></Actions>
+ Guid="62878b9e-ea43-4053-b20f-03b31961e5cb"
+>InitiateTerminatingOfCommunicationSession()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Order to establish a communication session is received"
+ Guid="bbcef75d-55fe-4b06-be09-bf3d42b977e7"
+>
+<ReqRef
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46d8f244-483a-4af0-934f-92386bdf1324"
+>
+</ReqRef><Comment>When a connection to the RBC is established and a request to open a communication session is received, we have to cases to check:
+
+1. The RBC to contact is the same =&gt; the order is ignored.
+
+2. The RBC to contact is a new one =&gt; the communication session has to be closed and a new communication session will then be opened with the new RBC.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="be153e7b-004f-4a43-80ac-b0fc585417b4"
+>ContactRBCOrder != EMPTY
+  AND
+ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Verify id of the RBC"
+ Guid="cfb09188-1026-44b2-bfeb-55f96b78b5b4"
+>
+<Comment>Check if the id is the same or not.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Id is the same"
+ Guid="d20238f5-a036-4e4d-8aa4-551eb2bd4cd4"
+>
+<Comment>Case if: the id is the same. The order is ingored and removed.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="f53b4cba-091b-4fd9-ba9c-2b9f2981c9d3"
+>ContactRBCOrder.Id == ContactData.Id</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2ef58e6b-bbab-495a-9020-5b6982d4a801"
+>ContactRBCOrder &lt;- EMPTY</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Id is different"
+ Guid="ba839712-b8e9-4a60-b647-2f24a00350c3"
+>
+<Comment>Case 2: the id is different. The communication with the current RBC has to be closed a new session will be opened with the new RBC.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="29a14c0f-0542-4ff3-ac07-5bdd0a779808"
+>InitiateTerminatingOfCommunicationSession()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3931,7 +4055,12 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="aa2584bb-c269-46ca-841f-c36c01df6139"
 >
-</ReqRef><Comment>Indicates if an outgoing message can be sent. The only condition to be satisfied is to have an established session. A message can thus be sent during a loss of the safe radio connection if the connection state is still &quot;Connected&quot;.</Comment>
+</ReqRef><ReqRef
+ Id="4fdfab4a-e8a0-4311-8b70-2b8945cd0f7a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6bda043d-8cc2-4f54-925f-a0a80adf54f3"
+>
+</ReqRef><Comment>Indicates if an outgoing message can be sent. The only condition to be satisfied is to have an established session. A message can thus be sent during a loss of the safe radio connection if the connection state is still &quot;Connected&quot;. But no message can be sent after the message &quot;Termination of communication session&quot; since after having sent this message the system goes to &quot;Terminating&quot; state.</Comment>
 <Parameters>
 <Parameter
  Type="RBCStruct"
