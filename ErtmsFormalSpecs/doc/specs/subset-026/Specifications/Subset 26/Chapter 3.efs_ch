@@ -2135,13 +2135,20 @@ Order to establish communication session with a different RBC is received from t
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  functionalBlockName=""
  onboard="TRUE"
  Name=""
  Guid="db31b8b2-7e8c-4c37-ac8a-c0df7eda9f8d"
->A request shall be repeated immediately after EURORADIO has indicated that setting up the safe radio connection has failed.</Paragraph></Sub>
+><ReqRef
+ Id="ecf2af34-5e55-40e4-83a6-e6ec4827734c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c662ef3b-e165-498c-a79f-8179e54fb72d"
+>
+</ReqRef><Comment>Shall it be repeated for both cases (SoM and no SoM)? In case of SoM, if the maximum number of request was already sent, shall it be repeated anyway?</Comment>
+A request shall be repeated immediately after EURORADIO has indicated that setting up the safe radio connection has failed.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.5.3.7.b"
  guid=""
@@ -3277,7 +3284,7 @@ In case an order to terminate the communication session is received, while the s
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
