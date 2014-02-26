@@ -1112,6 +1112,33 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
  Guid="7e2eedb2-843c-49cc-baec-39383388af08"
 >Requirement 3.16.2.3.1.a) says that the action must take place &quot;in rear of&quot; the expectation window. As it doesn&apos;t make sense for this to occur after the expctation window has been passed we have decided that &quot;in rear of&quot; means &quot;before it is entered&quot; in this case.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="A1.1.21"
+ type="TITLE"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ Name=""
+ Guid="891fc4a4-b5d2-44e9-bab5-9c7213ad9d73"
+>Euroradio<Sub>
+<Paragraph
+ id="A1.1.21.1"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="ecf2af34-5e55-40e4-83a6-e6ec4827734c"
+>Paragraph 3.5.3.7.a.3 states &quot;A request shall be repeated immediately after EURORADIO has indicated that setting up the safe radio connection has failed.&quot; We suppose that the request has to be repeated for both cases (SoM and no SoM). In the case of ongoing SoM, it will be repeated even if the maximum number of requests was already sent.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.2"
