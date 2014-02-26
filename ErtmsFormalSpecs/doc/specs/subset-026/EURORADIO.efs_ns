@@ -1535,6 +1535,11 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4ac1091d-9f1b-4a2a-b2df-175afdaa07be"
 >
+</ReqRef><ReqRef
+ Id="69641afe-f1b0-4499-9b31-e3d7a164d492"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dee9ebb6-a343-433d-a245-a666c6a38e8c"
+>
 </ReqRef><Comment>When an order to contact an RBC is received, the on-board requests the set-up of a safe radio connection with the trackside.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1785,7 +1790,9 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
  Guid="6c9db820-9596-4dc3-b487-9fb6e343bc2b"
 >LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
  Guid="ba529648-8bde-4b6c-bab8-b53b04a493ea"
->SessionManagementData.RequestIsSent &lt;- True</Action></Actions>
+>SessionManagementData.RequestIsSent &lt;- True</Action><Action
+ Guid="00fc6a16-7c65-4f0a-b1b2-6b44b65edf9f"
+>NumberOfSentRequests &lt;- NumberOfSentRequests + 1</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Connection is lost, maximum number of requests reached"
@@ -1874,6 +1881,16 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bf7c1fbe-0bc3-4173-8376-bd2df73be0a6"
 >
+</ReqRef><ReqRef
+ Id="db31b8b2-7e8c-4c37-ac8a-c0df7eda9f8d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4049c1cc-144d-493b-9075-4c7598956982"
+>
+</ReqRef><ReqRef
+ Id="ecf2af34-5e55-40e4-83a6-e6ec4827734c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a37e606a-4a01-42f9-bfdd-b644b01459e2"
+>
 </ReqRef><Comment>If the connection status timer has expired, the Safe Radio Connection setup is declared as failed.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1890,7 +1907,13 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 <Actions>
 <Action
  Guid="7a967e85-a3aa-4740-a5be-0df764c85620"
->SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action></Actions>
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action><Action
+ Guid="066fa5b1-2e86-4ca6-93dd-e597e9fe9c21"
+>NumberOfSentRequests &lt;- NumberOfSentRequests + 1</Action><Action
+ Guid="30af9a7f-b3aa-438e-8e2c-8c3166dbfa4d"
+>LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+ Guid="f77d82ba-eaff-4fd1-81c0-2026665608aa"
+>SessionManagementData.RequestIsSent &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
