@@ -1532,6 +1532,30 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 <Action
  Guid="a8168c14-8dea-4896-9b29-5f71ec706278"
 >Kernel.TrackDescription.TrackConditions.BigMetalMasses.HandleNewBMMTrackCondition( Packet.TRACK_TO_TRAIN.TRACK_CONDITION_BIG_METAL_MASSES )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Track Condition Station Platforms available"
+ Guid="848f07ff-38f9-43db-a24b-426c19fd0b9f"
+>
+<ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86fe59f8-52b0-4db0-ac6a-f2b2dc6a5150"
+>
+</ReqRef><ReqRef
+ Id="47c59e98-996c-4daa-84b7-bda20f4e45ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fda02217-3575-4818-8aa9-e47e3ef07114"
+>
+</ReqRef><Comment>Handles Track Condition Station Platforms packet, if available</Comment>
+<PreConditions>
+<PreCondition
+ Guid="c3cf8574-ecaa-4d54-b4cf-cc3262950012"
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TRACK_CONDITION_STATION_PLATFORMS.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e37299ce-6e60-4015-9897-e33c8b3ca56c"
+>Kernel.TrackDescription.TrackConditions.StationPlatform.SPTrackConditionReceived( Packet.TRACK_TO_TRAIN.TRACK_CONDITION_STATION_PLATFORMS)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

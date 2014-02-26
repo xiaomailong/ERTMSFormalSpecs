@@ -293,7 +293,7 @@
  Guid="eef0771b-7324-4051-81e0-e895746a3697"
 >
 <Comment>All other track conditions end when the back of the train crosses the section end</Comment>
-<Expression>Distance + Default.BaseTypes.LengthToDistance(Length) + Kernel.TrainData.TrainData.Value.TrainLength</Expression>
+<Expression>Distance + Default.BaseTypes.LengthToDistance(Length) + Default.BaseTypes.LengthToDistance(Kernel.TrainData.TrainData.Value.TrainLength)</Expression>
 </Case></Cases>
 </Function><Function
  Type="TrackConditionInformation"
@@ -627,7 +627,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
  Name="MakeTCProfilePoint"
  Guid="4d777606-3c03-4815-8f35-4fe5cdec9500"
 >
-<Comment>Creates a TrackCondition structure from the value received from the trackside.</Comment>
+<Comment>Creates a TrackConditionInformation structure from the value received from the trackside.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.M_TRACKCOND"
@@ -962,6 +962,8 @@ If there is already at a point at the end location, the values will not be chang
 ><Comment>EndSectionDistance provides the end location (in terms of the front end of the train) of the section</Comment>
 
 
+
+
 INSERT MakeTCProfilePoint(
 TCType=&gt;TCType,
 Distance=&gt;EndSectionDistance(
@@ -1185,9 +1187,9 @@ ON
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="033872d3-39d7-4d42-811d-c8bbaee83e50"
 >
-</ReqRef><Comment>This procedure is called when a new axle load profile is received. There are two cases:
+</ReqRef><Comment>This procedure is called when a new track condition profile is received. There are two cases:
   - If the initial states have to be resumed, the distance to where they have to be resumed is saved
-  - If no initial states have to be resumed, the axle load profile is updated (done by the HandleNewAxleLoadProfile procedure)</Comment>
+  - If no initial states have to be resumed, the axle load profile is updated (done by the HandleNewTrackCondition procedure)</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION.Message"
