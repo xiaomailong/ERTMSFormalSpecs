@@ -6,36 +6,79 @@
 </NameSpaces>
 <Structures>
 <Structure
+ Implemented="TRUE"
  Name="TractionSystem"
  Guid="44d803d3-4953-4340-b09a-f47f0ee996ef"
 >
-<Comment>Contains information about the traction system to switch to</Comment>
+<ReqRef
+ Id="0cafa698-2f88-42be-a9e1-4a5b598db20c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eaf6c7fc-1059-43c1-a229-917bb2dbd05b"
+>
+</ReqRef><Comment>Contains information about the traction system the train will switch to</Comment>
 <StructureElement
  TypeName="Messages.NID_CTRACTION"
  Default="0"
  Mode="Internal"
+ Implemented="TRUE"
  Name="CountryIdentifier"
  Guid="3b18c44d-7595-44d4-875a-519fa242ec5c"
 >
-<Comment>Country identifier of the traction system to be used</Comment>
+<ReqRef
+ Id="3e473bc9-3037-4723-8378-f99625c4fc5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4ef527a-9cb8-4c9b-9291-1e5c646085de"
+>
+</ReqRef><Comment>Country identifier of the traction system to be used</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.M_VOLTAGE"
  Default="Messages.M_VOLTAGE.Line_not_fitted_with_any_traction_system"
  Mode="Internal"
+ Implemented="TRUE"
  Name="SystemType"
  Guid="7c1b02d5-b4b7-4ca4-84ad-72b1557cf98f"
 >
+<ReqRef
+ Id="3279c818-b689-4685-acc2-1390cd5331ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf78967e-57e5-4c6a-8808-91e60683812d"
+>
+</ReqRef><Comment>Traction system to be used</Comment>
 </StructureElement></Structure><Structure
+ Implemented="TRUE"
  Name="TractionSystemInformation"
  Guid="5881ab92-0757-408b-aece-398ffeb03a16"
 >
+<ReqRef
+ Id="0cafa698-2f88-42be-a9e1-4a5b598db20c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4830236c-96b4-4892-b899-0b5a9b85063c"
+>
+</ReqRef><ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a219484f-1875-4df6-a97c-baa45095c326"
+>
+</ReqRef><Comment>Contains traction system track condition information with its start location</Comment>
 <StructureElement
  TypeName="TractionSystems.TractionSystem"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="Value"
  Guid="e634abff-5400-4599-9235-a9bee34e38ae"
 >
+<ReqRef
+ Id="3279c818-b689-4685-acc2-1390cd5331ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f34277d9-2d31-42cd-b2c5-d05bf4a372c2"
+>
+</ReqRef><ReqRef
+ Id="3e473bc9-3037-4723-8378-f99625c4fc5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4dc0a0d-be47-4245-a535-686ba976a4e5"
+>
+</ReqRef><Comment>Information about the traction system to switch to at Distance</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -45,23 +88,32 @@
  Guid="7561ac50-931c-4ce9-9cad-892f57077bf7"
 >
 <ReqRef
- Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
+ Id="0ee36d8a-a637-4d9f-8195-47e71f70cd7c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d695282e-af9d-4030-a16f-5514ccddb344"
+ Guid="562cbf26-1e70-4dfe-be28-3f4d35fefb16"
 >
 </ReqRef><Comment>Start location of the track condition</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="TractionSystem.TractionSystemInformation"
+ TypeName="TractionSystems.TractionSystemInformation"
+ MaxSize="20"
  Default="[]"
+ Implemented="TRUE"
  Name="TractionSystems"
  Guid="eeee0b74-18e8-4afd-8602-37a0b75099c2"
 >
+<ReqRef
+ Id="0cafa698-2f88-42be-a9e1-4a5b598db20c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d35b58be-a9bc-44a7-b0e2-98b24094cd8d"
+>
+</ReqRef><Comment>Collection of TractionSystemInformation items. Is the type of TCTractionSystems</Comment>
 </Collection></Collections>
 <Functions>
 <Function
  Type="TractionSystem"
+ Implemented="TRUE"
  Name="CurrentTSConditions"
  Guid="2233537a-fd58-4324-aa5d-62e34a8d754d"
 >
@@ -70,26 +122,20 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fda794f8-7873-49bf-af05-8a9d7df6eae2"
 >
-</ReqRef><ReqRef
- Id="75f0036b-52d0-4886-96af-89590c44b242"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0bf54590-b624-4933-8726-42a0aff7d8d3"
->
 </ReqRef><Comment>Gives the current track conditions</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="c00cb58e-6829-4b88-9eef-d0abbebf3042"
 >
-<Comment>For most profiles, the starting point is when the max safe front end of the train passes the location specified in the message and the end point is when the min safe rear end passes the location + the section length. (the exceptions to this are powerless sections (which use the min safe front end of the train for the end point), and tunnel stopping and sound horn areas (which use the estimated front end of the train).
-When this is recorded in TCProfile, the end points are adjusted so that they are measured with respect to the front end of the train.
-When the train passes over a profile point, it doesn&apos;t know if that point marks a start of section, end of section or even both. If it is a start of section, the condition takes effect as soon as the max safe front end of the train passes over it. If it is an end, the condition stays in effect until the min safe front end passes over it. So to account for all cases, each condition is given as the combination of the profile at the max safe front end and the min safe front end of most conditions, and the value at the estimated front end of the train for Tunnel Stopping Area and Sound Horn</Comment>
+<Comment>The starting point is when the max safe front end of the train passes the location specified in the message</Comment>
 <Expression>TSAtDistance(
     Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;DistanceInterval.Max)
 )</Expression>
 </Case></Cases>
 </Function><Function
  Type="TractionSystem"
+ Implemented="TRUE"
  Name="TSAtDistance"
  Guid="038fe2b8-4470-4c67-af8d-0570a63018bc"
 >
@@ -97,6 +143,16 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
  Id="b25e8d2d-5034-4a5d-bf39-2ddf58ec8b98"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e027fc4e-e78b-4a50-8d6b-729b407394af"
+>
+</ReqRef><ReqRef
+ Id="25a80a36-9119-4055-83dd-328efcdcc20c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ef11124d-429a-4a51-bc5d-677968757ea4"
+>
+</ReqRef><ReqRef
+ Id="0cafa698-2f88-42be-a9e1-4a5b598db20c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7bb60dc9-8c94-484e-afb9-09a40b9afe28"
 >
 </ReqRef><Comment>Returns the profile for when the train position is the given distance</Comment>
 <Parameters>
@@ -111,7 +167,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
  Name="Previous conditions exist"
  Guid="397ba12e-93f2-4f10-a383-88aee8930e63"
 >
-<Comment>There are track conditions prior to the requested distance</Comment>
+<Comment>According to 3.12.1.3.g, this should always be the case</Comment>
 <PreConditions>
 <PreCondition
  Guid="eb420e4a-b35e-4d9b-8ab6-a8f9e8ba7043"
@@ -119,14 +175,25 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
 <Expression>REDUCE TCTractionSystems | (X.Distance == TSProfileStartLocation(Distance=&gt;Distance) )
     USING X.Value
   INITIAL_VALUE EMPTY</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="30b40833-011c-494f-bd47-713f9a91c456"
+>
+<Comment>Case created just to make the model work
+</Comment>
+<Expression>TractionSystem{
+    CountryIdentifier =&gt; Messages.NID_CTRACTION((FIRST_IN TrainData.TrainData.Value.TractionSystems).Country),
+    SystemType =&gt; (FIRST_IN TrainData.TrainData.Value.TractionSystems).Voltage
+}</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TSProfileStartLocation"
  Guid="f21bbb8b-a302-4b7e-9bec-426d7def7b51"
 >
-<Comment>Returns the track conditions that apply at the given distance</Comment>
+<Comment>Returns the traction system track conditions that apply at the given distance</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -139,7 +206,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
  Name="Value"
  Guid="593ec303-1a01-4e61-97f4-2e672f836a18"
 >
-<Comment>Returns the element in TCProfile with the largest distance that is less than or equal to the parameter</Comment>
+<Comment>Returns the element in TCTractionSystems with the largest distance that is less than or equal to the parameter</Comment>
 <Expression>REDUCE TCTractionSystems | (X.Distance &lt;= Distance)
     USING Default.BaseTypes.MaxDistance(
         X1=&gt;X.Distance,
@@ -149,11 +216,12 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
 </Function></Functions>
 <Procedures>
 <Procedure
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleNewTractionSystem"
  Guid="8885b5f9-281d-458f-b8b0-abad070ad8dd"
 >
-<Comment>Updates the track conditions according to the values of the packet received as parameter.</Comment>
+<Comment>Updates the traction system track conditions according to the values of the packet received as parameter.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM.Message"
@@ -205,7 +273,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
  Name="AddNewTrackCondition"
  Guid="7dd0b81b-c6b3-49bf-9f46-1e976d3e6f0d"
 >
-<Comment>Inserts the newly received track conditions in TCProfile</Comment>
+<Comment>Inserts the newly received track conditions in TCTractionSystems</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -255,8 +323,15 @@ IN
 <Variable
  Type="TractionSystems"
  VariableMode="Internal"
+ Implemented="TRUE"
  Name="TCTractionSystems"
  Guid="5600ee48-6962-432b-88c3-54c6dc35db99"
 >
+<ReqRef
+ Id="0cafa698-2f88-42be-a9e1-4a5b598db20c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ed983311-f518-428c-8ba3-f74e05039d6e"
+>
+</ReqRef><Comment>The list of the traction system track conditions received from trackside</Comment>
 </Variable></Variables>
 </NameSpace>

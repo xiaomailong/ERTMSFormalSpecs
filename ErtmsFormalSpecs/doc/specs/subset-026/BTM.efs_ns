@@ -1556,6 +1556,30 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 <Action
  Guid="e37299ce-6e60-4015-9897-e33c8b3ca56c"
 >Kernel.TrackDescription.TrackConditions.StationPlatform.SPTrackConditionReceived( Packet.TRACK_TO_TRAIN.TRACK_CONDITION_STATION_PLATFORMS)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Track Condition Change of Traction System available"
+ Guid="fc4e8dd5-7ad3-4fd2-b44a-13afc089db60"
+>
+<ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d812680-2c70-4fbf-a7a5-33665bb908ad"
+>
+</ReqRef><ReqRef
+ Id="2559c745-3a6f-444a-b3bd-fb143a2a1fc6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e664de52-c95e-45a0-8e42-e3bbcb3d67a1"
+>
+</ReqRef><Comment>Handles Track Condition Change of Traction System packet, if available</Comment>
+<PreConditions>
+<PreCondition
+ Guid="08e11111-2014-42e6-98f6-54a7fe1b3c8e"
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0720e95d-207d-40f6-9fb3-40fbbf1628f7"
+>Kernel.TrackDescription.TrackConditions.TractionSystems.HandleNewTractionSystem(Packet.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

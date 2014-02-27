@@ -20,6 +20,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3fe0a8ee-f986-4669-bffe-34892cd6758b"
 >
+</ReqRef><ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd55a0fa-19fa-4491-9bb0-355d01e45160"
+>
 </ReqRef><Comment>Structure containing the information indicating whether big metal masses are present on the tracks</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -46,11 +51,15 @@
  MaxSize="20"
  Default="[]"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="BigMetalMasses"
  Guid="e0835a4f-f803-4848-b153-abf4979ae387"
 >
-<Comment>Collection BigMetalMassInformation structures. This is the type of TCBigMetalMasses</Comment>
+<ReqRef
+ Id="ec0bce59-a3d5-4b8b-a212-306f267333cf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bd459b89-fe7a-43a3-8c9e-029bbe1b92b2"
+>
+</ReqRef><Comment>Collection BigMetalMassInformation structures. This is the type of TCBigMetalMasses</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -382,6 +391,10 @@ ON
 <Action
  Guid="f41e0e6b-f4f6-4efa-a83b-26fce22c0fa3"
 ><Comment>EndSectionDistance provides the end location (in terms of the front end of the train) of the section</Comment>
+
+
+
+
 
 
 

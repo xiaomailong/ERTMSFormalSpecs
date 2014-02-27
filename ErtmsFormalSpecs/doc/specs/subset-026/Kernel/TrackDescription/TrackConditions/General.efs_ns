@@ -180,6 +180,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="18c99035-99e3-42cf-9048-8bdafcea014e"
 >
+</ReqRef><ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fba870a3-6097-4b32-b2a1-aed150b7287d"
+>
 </ReqRef><Comment>Structure holding the information indicating a change in the track conditions</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -964,6 +969,10 @@ If there is already at a point at the end location, the values will not be chang
 
 
 
+
+
+
+
 INSERT MakeTCProfilePoint(
 TCType=&gt;TCType,
 Distance=&gt;EndSectionDistance(
@@ -1032,6 +1041,30 @@ IN
     Length=&gt;Length,
     TCType=&gt;TCType
 )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Display on DMI"
+ Guid="d9eb2ecf-9250-456e-b3c4-b75145be794a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Track conditions excluding sound horn, non stopping areas and tunnel stopping areas"
+ Guid="664d8815-3fd6-47a5-b29a-f6a1eb4cc82d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+</RuleCondition><RuleCondition
+ Name="Track conditions sound horn, non stopping areas and tunnel stopping areas"
+ Guid="fe54fa1a-143b-4f67-9e3d-fdf06d6f0f9b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

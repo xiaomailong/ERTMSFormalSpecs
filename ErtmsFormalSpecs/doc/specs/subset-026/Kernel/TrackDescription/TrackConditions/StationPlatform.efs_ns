@@ -68,7 +68,12 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e128cee2-ceb0-4e9b-a8f0-b24e1a32d278"
 >
-</ReqRef><Comment>Contains track condition information with its start location</Comment>
+</ReqRef><ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2a1bca1c-4f50-4256-9ee3-4c61428fb9be"
+>
+</ReqRef><Comment>Contains station platform track condition information with its start location</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -80,7 +85,7 @@
 <ReqRef
  Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="37637962-58de-4cb5-8f5c-4a17309e0068"
+ Guid="ca29b78c-c712-4a5b-98c7-ea52ba050a0f"
 >
 </ReqRef><Comment>Start location of the track condition</Comment>
 </StructureElement><StructureElement
@@ -99,12 +104,12 @@
 </ReqRef><ReqRef
  Id="c8a2dcf3-6c49-482e-9025-e8c542c2ffa2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9dda5da0-7b79-49fc-9280-e037f5b10e20"
+ Guid="70a5d725-d1bb-4a79-a302-f4c99c75391c"
 >
 </ReqRef><ReqRef
  Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a5232a45-8821-4392-b1f0-c78dff2653d4"
+ Guid="9d574fbd-276f-4eac-8186-a40a08f7ed5c"
 >
 </ReqRef><Comment>Information about the track conditions over the rails starting at Distance</Comment>
 </StructureElement></Structure></Structures>
@@ -579,6 +584,10 @@ ON
 <Action
  Guid="be4d0200-4e1f-4b95-a075-5f34fff7ade3"
 ><Comment>EndSectionDistance provides the end location (in terms of the front end of the train) of the section</Comment>
+
+
+
+
 INSERT MakeSPProfilePoint(
     Side=&gt;Side,
     Height=&gt;Height,
