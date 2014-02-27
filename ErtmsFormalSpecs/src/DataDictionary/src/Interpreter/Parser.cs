@@ -727,7 +727,7 @@ namespace DataDictionary.Interpreter
                         string invalidDeref = expressionLeft + (new String(Buffer).Substring(first, Index - first));
                         RootLog.AddWarning("Invalid deref expression for [" + invalidDeref + "] skipping empty dereference");
                     }
-                    current = new DerefExpression(Root, RootLog, tmp, expressionLeft.Start, Index);
+                    current = new DerefExpression(Root, RootLog, tmp, expressionLeft.Start, tmp[tmp.Count - 1].End);
                 }
 
                 while (LookAhead("("))

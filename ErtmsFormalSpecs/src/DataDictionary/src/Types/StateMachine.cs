@@ -19,6 +19,39 @@ namespace DataDictionary.Types
 {
     public class StateMachine : Generated.StateMachine, IEnumerateValues, Utils.ISubDeclarator, Utils.IFinder
     {
+        public override string FullName
+        {
+            get
+            {
+                string retVal = "";
+
+                StateMachine current = this;
+                while (current.EnclosingStateMachine != null)
+                {
+                    if (string.IsNullOrEmpty(retVal))
+                    {
+                        retVal = current.EnclosingState.Name;
+                    }
+                    else
+                    {
+                        retVal = current.EnclosingState.Name + "." + retVal;
+                    }
+                    current = current.EnclosingStateMachine;
+                }
+
+                // Current.EnclosingStateMachine is null
+                if (string.IsNullOrEmpty(retVal))
+                {
+                    retVal = ((Utils.INamable)current.Enclosing).FullName + "." + current.Name;
+                }
+                else
+                {
+                    retVal = ((Utils.INamable)current.Enclosing).FullName + "." + current.Name + "." + retVal;
+                }
+
+                return retVal;
+            }
+        }
 
         /// <summary>
         /// Indicates if this StateMachine contains implemented sub-elements

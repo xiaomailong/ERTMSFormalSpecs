@@ -410,19 +410,19 @@ namespace DataDictionary.Interpreter
             }
         }
 
-        private class ReNameSpacerVisitor : Generated.Visitor
+        private class RelocateVisitor : Generated.Visitor
         {
             /// <summary>
             /// The new location of the element
             /// </summary>
-            private Types.NameSpace NewNameSpace { get; set; }
+            private ModelElement BaseLocation { get; set; }
 
             public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
             {
                 IExpressionable expressionable = obj as IExpressionable;
                 if (expressionable != null)
                 {
-                    Interpreter.Refactor.ReNameSpaceTree refactorer = new Refactor.ReNameSpaceTree(NewNameSpace);
+                    Interpreter.Refactor.RelocateTree refactorer = new Refactor.RelocateTree(BaseLocation);
                     refactorer.PerformUpdate(expressionable);
                 }
 
@@ -433,9 +433,16 @@ namespace DataDictionary.Interpreter
             /// Constructor
             /// </summary>
             /// <param name="newNameSpace"></param>
-            public ReNameSpacerVisitor(Types.NameSpace newNameSpace)
+            public RelocateVisitor(ModelElement modelElement)
             {
-                NewNameSpace = newNameSpace;
+                ModelElement current = modelElement;
+
+                while (current != null && !(current is Types.Type) && !(current is Types.NameSpace))
+                {
+                    current = current.Enclosing as ModelElement;
+                }
+
+                BaseLocation = current;
             }
         }
 
@@ -449,9 +456,8 @@ namespace DataDictionary.Interpreter
             {
                 Refactor(model);
 
-                Types.NameSpace newNameSpace = Utils.EnclosingFinder<Types.NameSpace>.find(model, true);
-                ReNameSpacerVisitor renamer = new ReNameSpacerVisitor(newNameSpace);
-                renamer.visit(model);
+                RelocateVisitor relocator = new RelocateVisitor(model);
+                relocator.visit(model);
             }
         }
         #endregion

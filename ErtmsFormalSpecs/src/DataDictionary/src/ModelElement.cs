@@ -115,45 +115,52 @@ namespace DataDictionary
         {
             string retVal = FullName;
 
-            string prefix = "";
-
-            if (this is Types.StructureElement || modelElement is Types.StructureElement)
+            if (modelElement != null)
             {
-                Types.Structure structure1 = Utils.EnclosingFinder<Types.Structure>.find(this, true);
-                Types.Structure structure2 = Utils.EnclosingFinder<Types.Structure>.find(modelElement, true);
-                if (structure1 != null && structure2 != null)
+                string prefix = "";
+
+                if (this is Types.StructureElement || modelElement is Types.StructureElement)
                 {
-                    prefix = CommonPrefix(structure1.FullName + ".", structure2.FullName + ".");
+                    Types.Structure structure1 = Utils.EnclosingFinder<Types.Structure>.find(this, true);
+                    Types.Structure structure2 = Utils.EnclosingFinder<Types.Structure>.find(modelElement, true);
+                    if (structure1 != null && structure2 != null)
+                    {
+                        prefix = CommonPrefix(structure1.FullName + ".", structure2.FullName + ".");
+                    }
+                    else
+                    {
+                        retVal = Name;
+                        prefix = "";
+                    }
+                }
+                else
+                {
+                    Types.StateMachine stateMachine1 = Utils.EnclosingFinder<Types.StateMachine>.find(this, true);
+                    Types.StateMachine stateMachine2 = Utils.EnclosingFinder<Types.StateMachine>.find(modelElement, true);
+                    if (stateMachine1 != null && stateMachine2 != null)
+                    {
+                        prefix = CommonPrefix(stateMachine1.FullName + ".", stateMachine2.FullName + ".");
+                    }
+                    else
+                    {
+                        Types.NameSpace nameSpace1 = Utils.EnclosingFinder<Types.NameSpace>.find(this, true);
+                        Types.NameSpace nameSpace2 = Utils.EnclosingFinder<Types.NameSpace>.find(modelElement, true);
+
+                        if (nameSpace1 != null && nameSpace2 != null)
+                        {
+                            prefix = CommonPrefix(nameSpace1.FullName + ".", nameSpace2.FullName + ".");
+                        }
+                    }
+                }
+
+                if (prefix.Length < retVal.Length)
+                {
+                    retVal = retVal.Substring(prefix.Length);
                 }
                 else
                 {
                     retVal = Name;
-                    prefix = "";
                 }
-            }
-            else
-            {
-                Constants.State state1 = Utils.EnclosingFinder<Constants.State>.find(this, true);
-                Constants.State state2 = Utils.EnclosingFinder<Constants.State>.find(modelElement, true);
-                if (state1 != null && state2 != null)
-                {
-                    prefix = CommonPrefix(state1.FullName + ".", state2.FullName + ".");
-                }
-                else
-                {
-                    Types.NameSpace nameSpace1 = Utils.EnclosingFinder<Types.NameSpace>.find(this, true);
-                    Types.NameSpace nameSpace2 = Utils.EnclosingFinder<Types.NameSpace>.find(modelElement, true);
-
-                    if (nameSpace1 != null && nameSpace2 != null)
-                    {
-                        prefix = CommonPrefix(nameSpace1.FullName + ".", nameSpace2.FullName + ".");
-                    }
-                }
-            }
-
-            if (prefix.Length < retVal.Length)
-            {
-                retVal = retVal.Substring(prefix.Length);
             }
 
             return retVal;

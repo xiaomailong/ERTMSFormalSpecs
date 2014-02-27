@@ -177,10 +177,35 @@ namespace DataDictionary.Types
         /// <summary>
         /// Creates the tree according to the expression text
         /// </summary>
-        public void Compile()
+        public Interpreter.InterpreterTreeNode Compile()
         {
             // Side effect, builds the statement if it is not already built
-            Interpreter.InterpreterTreeNode tree = Tree;
+            return Tree;
+        }
+
+
+        /// <summary>
+        /// Indicates that the expression is valid for this IExpressionable
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public bool checkValidExpression(string expression)
+        {
+            bool retVal = false;
+
+            bool silentMode = ModelElement.BeSilent;
+            try
+            {
+                ModelElement.BeSilent = true;
+                Expression tree = EFSSystem.Parser.Expression(this, expression, null, false);
+                retVal = tree != null;
+            }
+            finally
+            {
+                ModelElement.BeSilent = silentMode;
+            }
+
+            return retVal;
         }
 
         /// <summary>

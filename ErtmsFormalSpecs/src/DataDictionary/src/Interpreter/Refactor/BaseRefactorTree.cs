@@ -83,12 +83,21 @@ namespace DataDictionary.Interpreter.Refactor
             if (expressionable != null)
             {
                 Text = expressionable.ExpressionText;
+
                 if (expressionable.Tree != null)
                 {
                     VisitInterpreterTreeNode(expressionable.Tree);
                     if (Text != expressionable.ExpressionText)
                     {
-                        expressionable.ExpressionText = Text;
+                        if (expressionable.checkValidExpression(Text))
+                        {
+                            expressionable.ExpressionText = Text;
+                        }
+                        else
+                        {
+                            ModelElement model = expressionable as ModelElement;
+                            model.AddError("Refactoring aborded for expression " + expressionable.ExpressionText);
+                        }
                     }
                 }
             }

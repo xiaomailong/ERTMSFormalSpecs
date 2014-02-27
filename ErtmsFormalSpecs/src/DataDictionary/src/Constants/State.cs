@@ -105,9 +105,15 @@ namespace DataDictionary.Constants
                     stt = stt.EnclosingState;
                 }
 
-                if (EnclosingStateMachine != null)
+                Types.StateMachine parentStateMachine = EnclosingStateMachine;
+                while (parentStateMachine.EnclosingStateMachine != null)
                 {
-                    retVal = EnclosingStateMachine.FullName + "." + retVal;
+                    parentStateMachine = parentStateMachine.EnclosingStateMachine;
+                }
+
+                if (parentStateMachine != null)
+                {
+                    retVal = parentStateMachine.FullName + "." + retVal;
                 }
 
                 return retVal;
