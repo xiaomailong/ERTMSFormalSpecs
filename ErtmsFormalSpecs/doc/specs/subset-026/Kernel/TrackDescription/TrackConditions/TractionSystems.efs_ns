@@ -317,6 +317,37 @@
 IN
     TCTractionSystems</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Display on DMI"
+ Guid="eaeaea51-45c4-4cbe-bbf9-8a87eea24937"
+>
+<ReqRef
+ Id="f1130a3d-ce18-4a20-9daa-8951a06f2d27"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e439c1a9-45d8-4e65-9324-d0beec4ebf35"
+>
+</ReqRef><ReqRef
+ Id="e7b803d0-32ff-44d5-ae54-a7a3a3cac6fd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="50c58ae9-47d8-4eab-8bc9-577dab2edbfd"
+>
+</ReqRef><Comment>Once the track condition has been received, indicate it on the DMI</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display the change of traction system"
+ Guid="a13f2950-4893-47ae-b412-f83d5c76b3ca"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="29585674-2fa6-4a76-9dbd-4686d3916b49"
+>DMI.DMIStruct.DisplayTrackConditionsWithoutSoundHorn()</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <Variables>
