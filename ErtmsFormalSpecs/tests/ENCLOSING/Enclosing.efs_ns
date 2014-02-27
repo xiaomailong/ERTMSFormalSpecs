@@ -1,0 +1,111 @@
+<NameSpace
+ Name="Enclosing"
+ Guid="7db08112-3138-4942-bf85-0bb5e67ea1a3"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Name="Struct"
+ Guid="c2cf20cd-30fb-4039-972f-4d295701668d"
+>
+<StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Name="A"
+ Guid="1b5d6fd1-e7b4-469c-be1c-61b611c50190"
+>
+</StructureElement><StructureElement
+ TypeName="Stt"
+ Default=""
+ Mode="Internal"
+ Name="Stm"
+ Guid="163a1e1e-e76b-430e-a3c0-e4a458677676"
+>
+</StructureElement><StateMachines>
+<StateMachine
+ Default="State1"
+ Name="Stt"
+ Guid="cd6a6cd7-21b2-4188-b844-e612ac22ce48"
+>
+<States>
+<State
+ X="30"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="State1"
+ Guid="9c827c71-1a63-4b99-92ae-624902a2b532"
+>
+<StateMachine
+ Guid="e713fa55-d6ea-4d5f-a268-84482ebf1d7a"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Rule1"
+ Guid="f21bf034-f12a-4609-ba0d-e1d62e8ac1a2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="RuleCondition1"
+ Guid="d3f97b00-0e5b-47f4-8485-f257ba1742db"
+>
+<PreConditions>
+<PreCondition
+ Guid="34e33fb6-fb59-4145-9007-b4dc8557c4f2"
+>ENCLOSING.A</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c14fe10b-4a7e-4fa2-bd85-4d9c0f7d926e"
+>THIS &lt;- State2</Action><Action
+ Guid="2696720b-c259-431d-b041-78eee11db64d"
+>A &lt;- f( ENCLOSING )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="240"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="State2"
+ Guid="8d20faf2-56b4-48dd-a217-74057caa4641"
+>
+<StateMachine
+ Guid="e93c528b-4278-4cd9-bfaf-4f219f69555f"
+>
+</StateMachine></State></States>
+</StateMachine></StateMachines>
+</Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Name="f"
+ Guid="35c4d9ee-f8d8-4fea-91b4-52173ed7d837"
+>
+<Parameters>
+<Parameter
+ Type="Struct"
+ Name="s"
+ Guid="d4a6cc1a-6cfb-429e-8f38-54df5b9c24c6"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="&lt;Case1&gt;"
+ Guid="33b50aa0-7ee0-443f-ad6f-c3221e2521be"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function></Functions>
+<Variables>
+<Variable
+ Type="Struct"
+ VariableMode="Internal"
+ Name="v"
+ Guid="46f696a5-dcb6-40e0-b724-e0137a979287"
+>
+</Variable></Variables>
+</NameSpace>
