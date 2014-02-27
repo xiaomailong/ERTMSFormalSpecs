@@ -274,13 +274,7 @@ namespace DataDictionary.Interpreter
                         tmp.Add(element);
                     }
                 }
-
-                // HaCK : If tmp is empty, this indicates that the filter above is too restrictive. 
-                // Keep the original set
-                if (tmp.Count > 0)
-                {
-                    Values = tmp;
-                }
+                Values = tmp;
             }
 
             // Build a new list with the filtered out elements

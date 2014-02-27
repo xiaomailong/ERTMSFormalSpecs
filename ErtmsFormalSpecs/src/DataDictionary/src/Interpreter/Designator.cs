@@ -28,34 +28,17 @@ namespace DataDictionary.Interpreter
         public string Image { get; private set; }
 
         /// <summary>
-        /// Predefined designators
-        /// </summary>
-        public const string THIS = "THIS";
-        public const string ENCLOSING = "ENCLOSING";
-
-        /// <summary>
-        /// Indicates that the designator is predefined
-        /// </summary>
-        /// <returns></returns>
-        public bool IsPredefined()
-        {
-            return Image == THIS || Image == ENCLOSING;
-        }
-
-        /// <summary>
         /// Indicates whether this designator references
         ///   - an element from the stack 
         ///   - an element from the model
         ///   - an element from the current instance
-        ///   - reference to THIS
-        ///   - reference to the enclosing structure
         /// </summary>
-        public enum LocationEnum { NotDefined, Stack, Model, Instance, This, Enclosing };
+        public enum LocationEnum { NotDefined, Stack, Model, Instance, This };
 
         /// <summary>
         /// The location referenced by this designator
         /// </summary>
-        private LocationEnum Location
+        public LocationEnum Location
         {
             get
             {
@@ -63,13 +46,9 @@ namespace DataDictionary.Interpreter
 
                 if (Ref != null)
                 {
-                    if (Image == THIS)
+                    if (Image.CompareTo("THIS") == 0)
                     {
                         retVal = LocationEnum.This;
-                    }
-                    else if (Image == ENCLOSING)
-                    {
-                        retVal = LocationEnum.Enclosing;
                     }
                     else if (Ref is Parameter)
                     {
@@ -142,8 +121,8 @@ namespace DataDictionary.Interpreter
 
             if (instance == null)
             {
-                // Special handling for THIS or ENCLOSING
-                if (Image == THIS || Image == ENCLOSING)
+                // Special handling for THIS
+                if (Image.CompareTo("THIS") == 0)
                 {
                     INamable currentElem = Root;
                     while (currentElem != null)
@@ -157,14 +136,8 @@ namespace DataDictionary.Interpreter
                                 type = stateMachine;
                                 stateMachine = stateMachine.EnclosingStateMachine;
                             }
-
-
-                            // Enclosing does not references state machines. 
-                            if (!(Image == ENCLOSING && type is Types.StateMachine))
-                            {
-                                retVal.Add(type);
-                                return retVal;
-                            }
+                            retVal.Add(type);
+                            return retVal;
                         }
                         currentElem = enclosing(currentElem);
                     }
@@ -356,7 +329,7 @@ namespace DataDictionary.Interpreter
         public void SemanticAnalysis(Utils.INamable instance, BaseFilter expectation, bool lastElement)
         {
             ReturnValue tmp = getReferences(instance, expectation, lastElement);
-            if (Image != THIS && Image != ENCLOSING)
+            if (Image.CompareTo("THIS") != 0)
             {
                 tmp.filter(expectation);
             }
@@ -423,24 +396,6 @@ namespace DataDictionary.Interpreter
                 case LocationEnum.This:
                     retVal = context.Instance;
                     break;
-
-                case LocationEnum.Enclosing:
-                    Types.ITypedElement typedElement = context.Instance as Types.ITypedElement;
-                    while (typedElement != null && !(typedElement.Type is Types.Structure))
-                    {
-                        IEnclosed enclosed = typedElement as IEnclosed;
-                        if (enclosed != null)
-                        {
-                            typedElement = enclosed.Enclosing as Types.ITypedElement;
-                        }
-                        else
-                        {
-                            typedElement = null;
-                        }
-                    }
-                    retVal = typedElement;
-                    break;
-
 
                 case LocationEnum.Model:
                     retVal = Ref;

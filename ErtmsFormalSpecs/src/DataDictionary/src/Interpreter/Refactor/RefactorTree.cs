@@ -71,7 +71,7 @@ namespace DataDictionary.Interpreter.Refactor
 
         protected override void VisitDesignator(Designator designator)
         {
-            if (designator.Ref == Ref && !designator.IsPredefined())
+            if (designator.Ref == Ref && designator.Location != Designator.LocationEnum.This)
             {
                 ReplaceText(ReplacementValue, designator.Start, designator.End);
             }

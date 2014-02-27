@@ -356,7 +356,7 @@
  Guid="62819b3b-bd97-49f8-9f67-6011a903e109"
 >Kernel.Mode &lt;- Mode.SB</Action><Action
  Guid="f013eef3-2616-4c2b-8cab-1c8874036d6d"
->EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.TerminalStruct.RegistrationStateSM.Registered</Action></Actions>
+>EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.MobileTerminalStruct.RegistrationStateSM.Registered</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1173,7 +1173,7 @@
  Guid="456dd84d-a88c-4910-b08b-35af4db8f3d6"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action
  Guid="f24aad16-75b0-43d2-9b50-76ae63d32179"
->EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.TerminalStruct.RegistrationStateSM.Registered</Action></Actions>
+>EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.MobileTerminalStruct.RegistrationStateSM.Registered</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3"
  Guid="0c3f7b09-652f-468f-b03f-eb3b3d7f97dd"
@@ -3083,7 +3083,7 @@
 <Actions>
 <Action
  Guid="d9f241b0-52e3-455a-8b0a-9a8ffa998edd"
->EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.TerminalStruct.RegistrationStateSM.Registered</Action><Action
+>EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.MobileTerminalStruct.RegistrationStateSM.Registered</Action><Action
  Guid="fd97e784-d046-4e8a-a210-c36517298178"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D7</Action></Actions>
 <Expectations>
@@ -3113,7 +3113,7 @@
 <Actions>
 <Action
  Guid="33c0993a-e6e1-4fb5-b89f-8415aa5f2ba6"
->EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.TerminalStruct.RegistrationStateSM.NotRegistered</Action><Action
+>EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.MobileTerminalStruct.RegistrationStateSM.NotRegistered</Action><Action
  Guid="9310b283-e39f-45d8-81de-fd89846ce52d"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D7</Action></Actions>
 <Expectations>
@@ -9631,10 +9631,10 @@
  Kind="Instantaneous"
  DeadLine="0,5"
  Guid="58aa63b2-7d0a-46b4-abb6-85ede7d5f8b3"
->EURORADIO.CurrentTerminal().RegistrationState in EURORADIO.TerminalStruct.RegistrationStateSM.Registering</Expectation><Expectation
+>EURORADIO.CurrentTerminal().RegistrationState in EURORADIO.MobileTerminalStruct.RegistrationStateSM.Registering</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3dcbcc07-2915-4a0e-a50e-d7fc3dd903ac"
->EURORADIO.CurrentTerminal().NetworkIdToRegister == &apos;4562&apos;</Expectation><Expectation
+>EURORADIO.CurrentTerminal().NetworkId == &apos;4562&apos;</Expectation><Expectation
  Kind="Instantaneous"
  Guid="32feb283-e0e1-4056-bd4d-37eb016592eb"
 >EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Unknown</Expectation></Expectations>
@@ -9656,7 +9656,7 @@
 <Actions>
 <Action
  Guid="f5111435-abcf-45d9-adea-24c7e1d15d57"
->EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.TerminalStruct.RegistrationStateSM.Registered</Action></Actions>
+>EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.MobileTerminalStruct.RegistrationStateSM.Registered</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9742,7 +9742,7 @@
  Guid="9f0a5edc-ad74-471b-afea-d04aaa4c8b64"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Action><Action
  Guid="f5c662f4-fab7-43dc-904f-a4328eaeff34"
->EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.TerminalStruct.RegistrationStateSM.Registered</Action><Action
+>EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.MobileTerminalStruct.RegistrationStateSM.Registered</Action><Action
  Guid="6396f662-5eba-46a8-932c-3473c823120c"
 >EURORADIO.CurrentRBCConnection().ContactData.Id.Id &lt;- 6543</Action><Action
  Guid="8b42ddef-0b0a-4513-846c-d14c5c92be7d"
@@ -9788,7 +9788,7 @@
  Guid="10bff51d-36cf-4f52-96d7-3488803a4b1a"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Action><Action
  Guid="46905405-653d-4779-a78e-59fffc305ff7"
->EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.TerminalStruct.RegistrationStateSM.Registered</Action><Action
+>EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.MobileTerminalStruct.RegistrationStateSM.Registered</Action><Action
  Guid="68efa288-04ab-4fc9-83a5-df1e9c17a58f"
 >EURORADIO.CurrentRBCConnection().ContactData.Id.Id &lt;- 7654</Action><Action
  Guid="192cd99f-d578-437e-adb4-90c6802247d3"
@@ -9832,7 +9832,7 @@
  Guid="ab3d83ae-ef80-4e1d-be9f-30e9719adda5"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Action><Action
  Guid="a7d8e6f4-db1c-455c-9125-e4b1f2e6f8d7"
->EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.TerminalStruct.RegistrationStateSM.Registered</Action><Action
+>EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.MobileTerminalStruct.RegistrationStateSM.Registered</Action><Action
  Guid="cecf1275-73c7-43d9-98e2-c1620437d190"
 >EURORADIO.CurrentRBCConnection().ContactData.Id.Id &lt;- 6541</Action><Action
  Guid="d264f81e-3c5a-4094-bcc5-3498325dda8c"
