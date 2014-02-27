@@ -28,6 +28,13 @@ namespace DataDictionary
         Interpreter.InterpreterTreeNode Tree { get; }
 
         /// <summary>
+        /// Indicates that the expression is valid for this IExpressionable
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        bool checkValidExpression(string expression);
+
+        /// <summary>
         /// Clears the expression tree to ensure new compilation
         /// </summary>
         void CleanCompilation();
@@ -35,6 +42,6 @@ namespace DataDictionary
         /// <summary>
         /// Creates the tree according to the expression text
         /// </summary>
-        void Compile();
+        Interpreter.InterpreterTreeNode Compile();
     }
 }

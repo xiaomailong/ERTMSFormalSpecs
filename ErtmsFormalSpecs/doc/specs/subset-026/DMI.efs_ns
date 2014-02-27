@@ -701,66 +701,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateLevelEntryRequest"
- Guid="0706a33a-3f79-470c-8cf0-630e9bd259e2"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="db026482-3d7f-478a-b414-28e83e1054e0"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2e390107-76d5-4abe-a44f-06c5ee8c55ed"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="ed530ea2-176b-4239-94c7-ac3262ebc2c0"
->
-<PreConditions>
-<PreCondition
- Guid="e3d8627f-6a39-42e9-a9a3-796ca9b2f278"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="68ac9eeb-35b3-43d7-9a62-8513ecb5936b"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="86fe9b10-5414-4164-a906-cf0a9f053dae"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="6ad2c880-74ea-4611-b6ff-88f4dd456735"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="cf4fb628-f5fc-4f86-8ac3-deafc997ba54"
->In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="b6f8215a-f9f5-4c0c-9791-bf50d95cfe83"
->In_ErtmsEtcsLevelEntryRequest.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="InitiateStartRequest"
  Guid="d05ed3ec-51dd-4d26-986a-cf3c564deaea"
 >
@@ -9539,19 +9479,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Id="63c4543b-5430-4f3e-a524-ce48d640aead"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d90501a6-0ee7-4b9b-bdbc-275dd6fbefa8"
->
-</ReqRef></StructureElement><StructureElement
- TypeName="IN.ErtmsEtcsLevelEntryRequest"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- Name="In_ErtmsEtcsLevelEntryRequest"
- Guid="b40f4340-01d1-4eeb-8b60-71a37e49c999"
->
-<ReqRef
- Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3fe29256-c020-4984-ad4a-cf11fc2d3c68"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="DMI.IN.DriverId"

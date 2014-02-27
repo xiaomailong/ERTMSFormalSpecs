@@ -410,7 +410,7 @@ namespace DataDictionary.Interpreter
                 if (LookAhead("{"))
                 {
                     Match("{");
-                    Dictionary<string, Expression> associations = new Dictionary<string, Interpreter.Expression>();
+                    Dictionary<Designator, Expression> associations = new Dictionary<Designator, Interpreter.Expression>();
 
                     if (LookAhead("}"))
                     {
@@ -421,14 +421,17 @@ namespace DataDictionary.Interpreter
                     {
                         while (true)
                         {
+                            skipWhiteSpaces();
+                            int startId = Index;
                             string id = Identifier();
                             if (id != null)
                             {
+                                Designator designator = new Designator(Root, RootLog, id, startId, startId + id.Length);
                                 Match("=>");
                                 Expression expression = Expression(0);
                                 if (expression != null)
                                 {
-                                    associations[id] = expression;
+                                    associations[designator] = expression;
                                 }
                                 else
                                 {
@@ -724,7 +727,7 @@ namespace DataDictionary.Interpreter
                         string invalidDeref = expressionLeft + (new String(Buffer).Substring(first, Index - first));
                         RootLog.AddWarning("Invalid deref expression for [" + invalidDeref + "] skipping empty dereference");
                     }
-                    current = new DerefExpression(Root, RootLog, tmp, expressionLeft.Start, Index);
+                    current = new DerefExpression(Root, RootLog, tmp, expressionLeft.Start, tmp[tmp.Count - 1].End);
                 }
 
                 while (LookAhead("("))

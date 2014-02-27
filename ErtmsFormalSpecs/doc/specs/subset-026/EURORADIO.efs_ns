@@ -144,6 +144,45 @@
  Guid="e2610b4d-3509-49f9-bb90-82315bcfe068"
 >
 </EnumValue></Values>
+</Enum><Enum
+ Default="DoNotEstablish"
+ Implemented="TRUE"
+ Name="SpecialCaseSessionEstablishmentReasonEnum"
+ Guid="205157d3-e3d5-4060-8439-329289efb6d9"
+>
+<ReqRef
+ Id="752d0832-7cfa-4424-96f7-d3fbb447a20e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd9be4e8-c89a-4f1f-9884-24c1c72593bd"
+>
+</ReqRef><ReqRef
+ Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e2bd3a2b-8e66-4417-8ce5-b57742fe72d3"
+>
+</ReqRef><Comment>If a communication session has to be established, this enum indicates why it has to be established.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="DoNotEstablish"
+ Guid="da2bfe4b-c5ce-49be-8c38-1b0be8e6a929"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="EstablishDueToLossOfConnection"
+ Guid="bba21269-f466-4cd8-9c35-a758a5872258"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="EstablishDueToRadioHole"
+ Guid="e66584f1-3758-4b8b-88fc-04937d7e7201"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="EstablishDueToModeChangeReport"
+ Guid="582d1927-ae02-4bbf-b7c2-2c10234069af"
+>
+</EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
 <Structure
@@ -187,49 +226,71 @@
  Name="SendPositionReport"
  Guid="d551c0f2-3853-4033-86fa-bb55a4747107"
 >
-<Comment>Sends the Position report message.</Comment>
+<ReqRef
+ Id="3bb3db5b-9c3d-4113-bc32-973de664a85a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="11feaa20-6859-4c99-ab39-3827646c0c43"
+>
+</ReqRef><ReqRef
+ Id="7a161d4e-9daf-4632-afbc-9c0ba1b37e6c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="09327bdb-9d58-4926-b3a2-1027c8bdccdf"
+>
+</ReqRef><ReqRef
+ Id="8512700f-a6d7-4b0c-a289-782c95b3ff9c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d08954a5-8ebe-44c6-adbf-88347835cb98"
+>
+</ReqRef><ReqRef
+ Id="57f6f903-9f6e-4b2c-8772-6ba6ca0aec3f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7cc47f49-8040-44c9-85fc-80683474352c"
+>
+</ReqRef><ReqRef
+ Id="1ad3279a-9643-4da5-9373-74edaa89c5fb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c2f5041-bbeb-4b22-bca7-b8b8e02d22bb"
+>
+</ReqRef><ReqRef
+ Id="2cede8a1-5372-48a2-b195-db43cc0d3c3f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4a848f6-728b-40c5-9b16-6b080357e43f"
+>
+</ReqRef><ReqRef
+ Id="6133d02d-e7a6-49f8-b647-7da1e187169e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d482b5b-0de4-4111-8690-895b041abc8c"
+>
+</ReqRef><ReqRef
+ Id="1bf8b9b6-79f5-474e-b31e-1e946b2adaf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="337f2199-195a-474f-b7cb-4fc34bd60c52"
+>
+</ReqRef><Comment>Sends the Position report message.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="1e838a0b-1365-4864-a698-9b6294d2c77d"
 >
-<Comment>If the outgoing message is EMPTY, it has to be initialized</Comment>
+<Comment>If the outgoing message is EMPTY, it has to be initialized and then the corresponding field is filled.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Initialize message"
+ Name="The message can be sent"
  Guid="1326e3c1-f9f4-4e39-a552-d0f91ba0ed9e"
 >
+<Comment>In the case the communication session is opened, the message is sent.</Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="0322d270-b2d6-49d2-ac91-1123f4364021"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d36b5e14-701a-47f8-a07f-2c20c9a57a79"
->InitializeOutMessage()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Send position report"
- Guid="82ce2511-2a70-4ca7-8582-7a7414817805"
->
-<Comment>Fills the structure corresponding to the Position report message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Send position report"
- Guid="b7be9954-2e9c-4bfa-b6d1-db8342f482c8"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
+>InitializeOutMessage()</Action><Action
  Guid="79dbebec-3f39-4331-b8b2-edabf9c5149b"
 >MessageOut.TRAIN_POSITION_REPORT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.TRAIN_POSITION_REPORT.Message
 {
@@ -238,8 +299,31 @@
     NID_MESSAGE =&gt; 136,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport(),
     Sequence1 =&gt; EMPTY,
-    T_TRAIN =&gt; MessageTypes.UnResolveTime ( time =&gt; Kernel.CurrentTime )
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime)
 }</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="The message cannot be sent"
+ Guid="dd2c92ac-da7a-4d3b-9279-fd1cf283922a"
+>
+<ReqRef
+ Id="fbaaf410-a59f-40cd-b972-aa1e84116831"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="67eccd8c-dae4-4c14-a3eb-147b9f08ccc2"
+>
+</ReqRef><Comment>In the case the communication session is not open, and the position report is sent due to mode change not considered as end of mission, a new session will be opened and the message will then be sent.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="aba612e6-4965-48ec-b40a-4541e169456d"
+>PositionReport.SendReportDueToModeChange()</PreCondition><PreCondition
+ Guid="6fb82fcc-1dd5-40c1-a0a7-87279e71cf42"
+>Kernel.HandleModeChange not in Kernel.HandleModeChangeSM.EndOfMission</PreCondition><PreCondition
+ Guid="5367589d-d8aa-4929-8097-c8ee899fbb19"
+>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d67963d3-60e6-4eed-8fac-e91efefafe50"
+>SpecialCaseSessionEstablishmentReason &lt;- SpecialCaseSessionEstablishmentReasonEnum.EstablishDueToModeChangeReport</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -257,47 +341,75 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e4dccb90-05ce-4571-9f3f-3523708d0a38"
 >
+</ReqRef><ReqRef
+ Id="dff3b2f7-dd70-412e-8eef-75f2fefa03c9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb20a6c3-3ed9-4fe0-a1f0-8c592dfaa248"
+>
+</ReqRef><ReqRef
+ Id="fd5c097e-b4c0-466b-850d-99f930692988"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1134427a-c5d3-4ec0-b45a-6466e4654205"
+>
+</ReqRef><ReqRef
+ Id="7d3615d3-8bd3-4134-8d72-fcfc017f1749"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="12f43f32-bf6f-4c8a-9d86-82374158c0f9"
+>
+</ReqRef><ReqRef
+ Id="4608349b-50d4-4c14-9c72-18d03706ed89"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3897d6ee-b98b-434e-9ac9-ac77e749e0ce"
+>
+</ReqRef><ReqRef
+ Id="9f0eacfe-16d9-4bf2-936d-fe62a645918e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d8990a7a-0edf-4046-8552-36fe5fbe3074"
+>
+</ReqRef><ReqRef
+ Id="21f08a64-2ded-47ef-b209-47e6f1df9f9f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="39451b82-9ea9-4cd9-8062-d8e060923a21"
+>
+</ReqRef><ReqRef
+ Id="bbaed3c1-8068-4694-b20d-a574f61aff20"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="09ec1b86-50a8-4254-83e9-52a2ffa7d300"
+>
+</ReqRef><ReqRef
+ Id="0cec34e4-d359-4da6-bf72-ec307144efab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ce5682ad-b177-4039-9281-20d06800207a"
+>
+</ReqRef><ReqRef
+ Id="f3ff7f4d-3f24-4101-8ad4-d2902c011869"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4bf359f-5f00-45c6-8992-f01ef6401d54"
+>
 </ReqRef><Comment>Sends the Start of Mission position report message.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="a12be67a-f112-414a-af20-7873c6b0671e"
 >
-<Comment>If the outgoing message is EMPTY, it has to be initialized</Comment>
+<Comment>If the outgoing message is EMPTY, it has to be initialized and then the corresponding field is filled.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="3c9531c1-a642-4e1b-b3dd-dc4e7ab35d2c"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="51eef2a5-c279-4323-a925-b48791cf1653"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ad87a631-5eb9-4189-b1f9-c830843481d2"
->InitializeOutMessage()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Send SOM position report"
- Guid="e7b63b93-4c09-4afe-94e5-e1b9c3117f37"
->
-<Comment>Fills the structure corresponding to the Start of Mission position report message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Send SOM position report"
- Guid="4e90bb91-75ed-4086-9d9f-15cbf50dc8d1"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
+>InitializeOutMessage()</Action><Action
  Guid="ee5a0c21-596d-4adf-9f6e-f3f46a1437d7"
 >MessageOut.SOM_POSITION_REPORT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.SOM_POSITION_REPORT.Message
 {
@@ -307,7 +419,7 @@
     Q_STATUS =&gt; PositionReport.FillQStatus(),
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport(),
     Sequence1 =&gt; EMPTY,
-    T_TRAIN =&gt; MessageTypes.UnResolveTime ( time =&gt; Kernel.CurrentTime )
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime)
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -376,54 +488,67 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d24f2133-00f7-4fd4-9180-c9bafc9b71cf"
 >
+</ReqRef><ReqRef
+ Id="4c109f90-966c-4202-93f8-a66c21964f25"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6192bf3a-a828-43bc-aff9-fb8bc84fe6d5"
+>
+</ReqRef><ReqRef
+ Id="c394072b-5ccc-4f02-83ca-030f9a7b59d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd4739ac-f629-470a-bc72-cdf7cfbeef99"
+>
+</ReqRef><ReqRef
+ Id="3ac64b50-c74e-4254-be73-259fb5466b4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dc7b1350-2296-41c7-bf1f-9760b7d6dd73"
+>
+</ReqRef><ReqRef
+ Id="7c52a141-a336-45c4-8933-e8521c8b7522"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="96beaa60-c788-47a9-8113-30cf0565860c"
+>
+</ReqRef><ReqRef
+ Id="03f798fa-1890-4c9a-b975-9d37d4cbfd71"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6a52c3a5-ce83-44b6-8e64-cc9d991ca352"
+>
+</ReqRef><ReqRef
+ Id="d00ed482-4e7b-4dc9-a857-b5fb171adf5b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b868e49e-7e87-4bef-8ecd-89c45e26dd4c"
+>
 </ReqRef><Comment>Sends the train data message.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="511ff74f-c4b6-4b78-810c-99f0123510ee"
 >
-<Comment>If the outgoing message is EMPTY, it has to be initialized</Comment>
+<Comment>If the outgoing message is EMPTY, it has to be initialized and then the corresponding field is filled.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="2687b67a-4497-4efc-b70d-2d91183ff1bd"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="43a64c64-9f21-4ab1-a3d9-84265343cd86"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5e0b679f-e1cd-4f2e-a08e-c29838eb1d21"
->InitializeOutMessage()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Send train data"
- Guid="872d1f42-9012-45ab-851c-1d031e37d13a"
->
-<Comment>Fills the structure corresponding to the Train data message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Send train data"
- Guid="02987fbb-6adb-49ac-926b-9a702a9f3ceb"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
+>InitializeOutMessage()</Action><Action
  Guid="f26165a7-1b31-4afe-b6c9-ea1f49fa06de"
 >MessageOut.VALIDATED_TRAIN_DATA &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message
 {
     L_MESSAGE =&gt; 0,
     NID_ENGINE =&gt; Kernel.NidEngine,
     NID_MESSAGE =&gt; 129,
-    T_TRAIN =&gt; MessageTypes.UnResolveTime ( time =&gt; Kernel.CurrentTime ),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
     VALIDATED_TRAIN_DATA =&gt; TrainData.CreateTrainData()
 }</Action></Actions>
 </RuleCondition></Conditions>
@@ -443,55 +568,68 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e46bb61e-928d-4a62-8c22-bff1af3712ac"
 >
+</ReqRef><ReqRef
+ Id="3178d11d-e209-47c2-ab1a-54caa8ca5545"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e79a48b8-726e-4fd0-bcd7-d2270ec25638"
+>
+</ReqRef><ReqRef
+ Id="32e9bb4f-cc73-4be6-8a71-c4006cf68928"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e5948595-1a6b-476f-851e-b749574582aa"
+>
+</ReqRef><ReqRef
+ Id="194a6507-f64b-4bf2-9881-d8497cb30d7a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3b5cb308-d93b-43c8-8eb3-cc3b770dc419"
+>
+</ReqRef><ReqRef
+ Id="7e2d6d39-15b7-4051-b3d6-102637c8ee8c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8bca4f0a-e58c-4c28-88ba-0a98950bd9bd"
+>
+</ReqRef><ReqRef
+ Id="6b12d15c-87f2-48ff-849a-2279b0777014"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6e712a5a-7062-4332-8512-27b007ccc13d"
+>
+</ReqRef><ReqRef
+ Id="d3955e28-f016-43ba-aa05-ed187deb9195"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="29725e8b-3481-4f24-b563-6e1a6bb15b1d"
+>
 </ReqRef><Comment>Sends the End of Mission report message.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="3eabc145-1193-4620-be32-ebc6cf35c2b4"
 >
-<Comment>If the outgoing message is EMPTY, it has to be initialized</Comment>
+<Comment>If the outgoing message is EMPTY, it has to be initialized and then the corresponding field is filled.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="144933fc-e9f1-4489-911e-e6bf16b8ad3b"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="dcd16c79-c050-4122-bc72-ff483044e164"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="159f8be9-e901-46cd-b31a-91728b854d33"
->InitializeOutMessage()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Send EoM report"
- Guid="5a3dfb27-b6e9-43df-b30b-358a19f04fb9"
->
-<Comment>Fills the structure corresponding to the End of Mission report message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Send EoM report"
- Guid="548bd947-dca9-48ba-910e-f261128b06b6"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
+>InitializeOutMessage()</Action><Action
  Guid="5d5990b8-a350-4843-9667-b01f3a4ae06c"
 >MessageOut.END_OF_MISSION &lt;-Messages.MESSAGE.TRAIN_TO_TRACK.END_OF_MISSION.Message
 {
     NID_MESSAGE =&gt; 150,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; MessageTypes.UnResolveTime ( time =&gt; Kernel.CurrentTime ),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
     NID_ENGINE =&gt; 0,
-    POSITION_REPORT =&gt; EURORADIO.PositionReport.CreatePositionReport()
+    POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -505,54 +643,71 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="376abddb-f246-4e20-8cd6-b3fb29cb373c"
 >
+</ReqRef><ReqRef
+ Id="acf47cdb-9433-4fbe-b66f-419fece778bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0a32a91e-6c50-4e85-9685-2830643a7e43"
+>
+</ReqRef><ReqRef
+ Id="ec079598-670c-4c4c-9b4b-522eb377eacf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f51d6c92-1fb0-43d5-902e-9f67a1c2d8c8"
+>
+</ReqRef><ReqRef
+ Id="ae8e9b38-1f8d-4043-9b1a-47e161fb1d55"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5921274b-a754-4ad7-92f2-095031860002"
+>
+</ReqRef><ReqRef
+ Id="d6b2c059-6bf8-4097-bbec-0c06656b3e70"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="edd101eb-c1c2-4015-9110-0791773084e1"
+>
+</ReqRef><ReqRef
+ Id="381e47f5-126e-425d-82ca-c6bd3f298786"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b6c0ee79-234a-4485-8ac4-4d6bbeeb2d20"
+>
+</ReqRef><ReqRef
+ Id="f6a07df8-0a38-405a-ac82-e476c6f8f49b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aef8d650-527d-47ed-bb67-e54467233740"
+>
+</ReqRef><ReqRef
+ Id="4538d3bf-abc5-49c0-b3df-d7179bd3fe54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7510bff0-cdae-41dd-bdac-ca8a29f83d09"
+>
 </ReqRef><Comment>Sends the Request for Shunting message.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="aae94d1a-4576-49d7-ab43-e61a40efe9e9"
 >
-<Comment>If the outgoing message is EMPTY, it has to be initialized</Comment>
+<Comment>If the outgoing message is EMPTY, it has to be initialized and then the corresponding field is filled.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="31f1450c-9cfd-4568-8768-521f7b2f72e5"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="90577e69-faf5-403a-8ad8-3b0225de321b"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="22e1fb48-7194-41fa-9413-884aed465214"
->InitializeOutMessage()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Send Request for Shunting"
- Guid="592cdc3a-a9ac-4116-8e09-d56c9311fe9e"
->
-<Comment>Fills the structure corresponding to the Request for Shunting message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Send Request for Shunting"
- Guid="f43c3579-ea00-4730-b1f4-763eea38dcc9"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
+>InitializeOutMessage()</Action><Action
  Guid="7297c0d3-1229-4d0e-9a96-f81af5183fa9"
 >MessageOut.REQUEST_FOR_SHUNTING &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.REQUEST_FOR_SHUNTING.Message
 {
     NID_MESSAGE =&gt; 130,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; MessageTypes.UnResolveTime ( time =&gt; Kernel.CurrentTime ),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
 }</Action></Actions>
@@ -568,6 +723,51 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="21b60f86-6bac-4cab-822c-a49daf822344"
 >
+</ReqRef><ReqRef
+ Id="e0cc7640-41db-4f00-b6f3-086b5cf064f6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="71895e28-aac6-4907-ba44-c8bec8872c2c"
+>
+</ReqRef><ReqRef
+ Id="8de66288-ba8b-49f2-a9cc-e1cd1b848fa3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f2fa5f59-147d-452b-9d65-6e710b7e4a3b"
+>
+</ReqRef><ReqRef
+ Id="562e9d9d-f160-4726-9fdd-0192ae0ac13a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a8d78ace-abbb-4447-9aca-0587ddc7f619"
+>
+</ReqRef><ReqRef
+ Id="422bfd78-6a90-4d9b-8000-8670a93a76db"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1d9e958-d593-476a-ae1d-44cc0139f325"
+>
+</ReqRef><ReqRef
+ Id="00db9178-25bc-425f-9d84-def8931cd919"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="74acd841-63b3-4718-b30b-552fb19a9e5c"
+>
+</ReqRef><ReqRef
+ Id="706d4b2b-fef4-4426-a33a-c820303c26bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d43b367f-6567-40e0-a317-a51739f8a135"
+>
+</ReqRef><ReqRef
+ Id="60fb8ae5-aecd-4fcf-aa69-ec41649b9c2f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7a5db18c-6c03-460a-801a-42c98f6947c8"
+>
+</ReqRef><ReqRef
+ Id="c127eb4e-6c45-4dbe-8365-8279e347b15c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9b4d7c0c-688c-4e35-aaf3-58bfeea7b5e4"
+>
+</ReqRef><ReqRef
+ Id="09bd805d-47dc-47e1-9489-e5fb2e24f885"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b8139c8-9858-4f97-9ad4-60549457b180"
+>
 </ReqRef><Comment>Sends the MA request message.</Comment>
 <Parameters>
 <Parameter
@@ -580,50 +780,31 @@
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="d3b68b75-987a-41d6-99f1-fb0772635b9e"
 >
-<Comment>If the outgoing message is EMPTY, it has to be initialized</Comment>
+<Comment>If the outgoing message is EMPTY, it has to be initialized and then the corresponding field is filled.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="4e0423b2-ff99-457f-bc39-7ee3fbd568f4"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="48295035-e9ad-4544-9df0-05b1d725b286"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bd0bff4f-a385-4604-9275-9ca2e8029bb5"
->InitializeOutMessage()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Send MA request"
- Guid="32efbbf1-f2da-49ca-8d3a-de8db9f9a608"
->
-<Comment>Fills the structure corresponding to MA request message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Send MA request"
- Guid="5453c885-e136-49b5-8072-69a3f4e899ac"
->
-<Comment></Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
+>InitializeOutMessage()</Action><Action
  Guid="f105e56b-cf2d-4016-b30e-0ea135442f31"
 >MessageOut.MA_REQUEST &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.MA_REQUEST.Message
 {
     NID_MESSAGE =&gt; 132,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; MessageTypes.UnResolveTime ( time =&gt; Kernel.CurrentTime ),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     Q_MARQSTREASON =&gt; aReason,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
@@ -639,6 +820,51 @@
  Id="4f290d49-e10d-41ae-a385-d9a756df04d3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="90a03ff5-462d-42bf-9ca2-65cd7a0f9ed0"
+>
+</ReqRef><ReqRef
+ Id="d0c52cba-95a5-4b9f-a459-f68e07f13e33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89bc609b-a585-404a-925c-8802256245c9"
+>
+</ReqRef><ReqRef
+ Id="c99e85b2-17b6-42ce-9b97-dbb17591f957"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f3c5c499-cb3b-4646-855c-12e052a84523"
+>
+</ReqRef><ReqRef
+ Id="353d80f7-d37e-4952-87d6-c993f0d146d7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9acaae9b-63e8-497b-bd35-7cf4a8476960"
+>
+</ReqRef><ReqRef
+ Id="2021b9de-fee0-4e23-89ca-1093a14beb16"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4339af52-7d16-4261-9970-6f51ffefc24c"
+>
+</ReqRef><ReqRef
+ Id="71443874-c4de-4da6-9d2f-f6668f13b126"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f275038e-5b5c-4727-8f81-5367d732ee64"
+>
+</ReqRef><ReqRef
+ Id="077dae9c-0d63-4b59-b4e5-ac197edca727"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="12413d65-df03-40a1-a297-be7706affd45"
+>
+</ReqRef><ReqRef
+ Id="9e5ae867-ff49-400d-8172-3bc629e506d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ce8097f1-6d77-4366-b987-6902b416ab6f"
+>
+</ReqRef><ReqRef
+ Id="944df599-e5d3-4360-9b07-6e36bc0025f4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3c336995-6061-4022-923e-b9c7392134d9"
+>
+</ReqRef><ReqRef
+ Id="1d5d1613-e3b5-4dc3-ac17-1785740b57a4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e5b22d91-4bc3-47a4-ad42-3bf8fb90337a"
 >
 </ReqRef><Comment>Sends the acknowledgement of emergency stop message</Comment>
 <Parameters>
@@ -657,10 +883,10 @@
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="ac03dd37-e4fd-465d-893a-8278a0376598"
 >
-<Comment>If the outgoing message is EMPTY, it has to be initialized</Comment>
+<Comment>If the outgoing message is EMPTY, it has to be initialized and then the corresponding field is filled.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -669,36 +895,19 @@
  Guid="61954d2d-de18-46d5-90c5-adb4d2c9e3ba"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="b9bcf8d4-dd8a-4dbf-8d77-1f95a1ddbeae"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3977b5c4-e5bf-434c-932e-ed4d7cff72f5"
->InitializeOutMessage()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Send emergency stop rejection"
- Guid="ad4c4384-48b9-4066-9332-2b21328ef512"
->
-<Comment>Fills the structure corresponding to the acknowledgement of emergency stop message</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Send emergency stop rejection"
- Guid="cc544e71-6e86-430d-a549-2df2df9aa045"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
+>InitializeOutMessage()</Action><Action
  Guid="bf04e5dc-64f2-41c2-8382-b29798e0e305"
 >MessageOut.ACKNOWLEDGEMENT_OF_EMERGENCY_STOP &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.ACKNOWLEDGEMENT_OF_EMERGENCY_STOP.Message
  {
     NID_MESSAGE =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_MESSAGE,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime ),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     NID_EM =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_EM,
     Q_EMERGENCYSTOP =&gt; Qualifier,
@@ -716,80 +925,72 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4ea5e0d5-0e85-46a1-acd4-cda08bdc398a"
 >
+</ReqRef><ReqRef
+ Id="58da8d69-4dcb-45db-96ea-d5985a650330"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="564ff098-736c-424c-a6b9-8ab1f4f34c0e"
+>
+</ReqRef><ReqRef
+ Id="193e4ff3-c085-4881-89f4-4bba951aae20"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="19d0964b-09a8-46dd-ac20-133862b2d634"
+>
+</ReqRef><ReqRef
+ Id="f122a1cb-426c-4f27-b1b2-521eeb9d7655"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="347b8598-d913-4c68-9f41-16e9c1d15889"
+>
+</ReqRef><ReqRef
+ Id="974dafe8-70ad-409f-a13c-435c0f1b8be1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21c07ed6-3de8-42ca-82ad-34d42e3f416e"
+>
+</ReqRef><ReqRef
+ Id="4faba43d-d002-4947-afce-02a4abef7460"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f3095d51-c343-4d2f-a394-aafd8bf10422"
+>
+</ReqRef><ReqRef
+ Id="9934dc4b-5b76-4e42-9f4c-b7efb6c87c30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a044b5df-0fbc-45df-ab89-1fa05e3a2ce2"
+>
+</ReqRef><ReqRef
+ Id="e5b845f3-54de-4120-8f98-f59e56625654"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6c24a0d9-b735-412a-a342-3b06b59d532a"
+>
 </ReqRef><Comment>Sends the initiation of communication session message.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="fbc287fc-61e7-449e-9d9f-a7e57f921c47"
 >
-<Comment>If the outgoing message is EMPTY, it has to be initialized</Comment>
+<Comment>If the outgoing message is EMPTY, it has to be initialized and then the corresponding field is filled.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="ca61f4f9-df8c-4f72-9d2d-f52350d0ef01"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="d112e636-6a6c-44a8-894b-ef7e12c2f473"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e922975d-2e7e-4fb8-ae7b-2051e81118c1"
->InitializeOutMessage()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Send initiation of communication session"
- Guid="260229b4-4a1b-4342-b26a-aa625424c480"
->
-<ReqRef
- Id="193e4ff3-c085-4881-89f4-4bba951aae20"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4d11307b-519f-45b9-85b0-e7d2884db4b6"
->
-</ReqRef><ReqRef
- Id="f122a1cb-426c-4f27-b1b2-521eeb9d7655"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7f396564-f2af-4c95-9a90-f6386e4f3c99"
->
-</ReqRef><ReqRef
- Id="974dafe8-70ad-409f-a13c-435c0f1b8be1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="14b27deb-8f05-4314-a01e-04f7a1441fcd"
->
-</ReqRef><ReqRef
- Id="4faba43d-d002-4947-afce-02a4abef7460"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8d3e83cf-9906-4399-bc49-4407f109d051"
->
-</ReqRef><ReqRef
- Id="58da8d69-4dcb-45db-96ea-d5985a650330"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="65a17490-e8c7-4eff-9f06-b2eedb78bdac"
->
-</ReqRef><Comment>Fills the structure corresponding to the communication session message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Send initiation of communication session"
- Guid="cd51079a-9b65-4b6c-9bb5-5dc87ddac17a"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
+>InitializeOutMessage()</Action><Action
  Guid="5496a749-0788-45c7-917c-9edb136dfa0c"
 >MessageOut.INITIATION_OF_A_COMMUNICATION_SESSION &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.INITIATION_OF_A_COMMUNICATION_SESSION.Message
 {
     NID_MESSAGE =&gt; 155,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; MessageTypes.UnResolveTime ( time =&gt; Kernel.CurrentTime ),
-    NID_ENGINE =&gt; Kernel.NidEngine
-}</Action></Actions>
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
+    NID_ENGINE =&gt; Kernel.NidEngine}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -802,81 +1003,79 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="693180ad-3698-4e96-a0da-37ed0402c784"
 >
+</ReqRef><ReqRef
+ Id="a74ee6b4-a0ba-40bb-b83f-fd66efae3fb1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="748b65ee-f643-4256-8559-fa33ad0a4456"
+>
+</ReqRef><ReqRef
+ Id="8c9ce563-d6d0-4490-a402-5a4bcf54598c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a9faee19-4354-4f80-b3df-4ae338698057"
+>
+</ReqRef><ReqRef
+ Id="a4fe513a-ba78-4d81-a472-2d562542fef9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9c6e2d50-82c0-4dbe-9e82-d54508720b99"
+>
+</ReqRef><ReqRef
+ Id="4d45f289-023e-4ed4-a8b2-f23bc5f23bbf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c18b279e-229b-49df-b38c-69ebe7b613f9"
+>
+</ReqRef><ReqRef
+ Id="78ebe076-c514-44ee-869e-00b94b6a4377"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f1bf4ed-1bd9-45ff-a356-468cfba43a0d"
+>
+</ReqRef><ReqRef
+ Id="19c4b8ef-f85a-4b84-8eff-203e8b462604"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f29d8644-94fe-43a1-a707-057f05af3bff"
+>
+</ReqRef><ReqRef
+ Id="2a8dff3a-71d3-4a6e-9d2b-85f6c568cd25"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="30c4a337-3b6c-4974-b6ea-bf3383053ae3"
+>
+</ReqRef><ReqRef
+ Id="dc7b33b5-d923-42f3-be12-580edb475353"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="144418d9-5285-412c-b6fe-6933d99065b7"
+>
 </ReqRef><Comment>Sends the termination of communication session message.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="abadcaa6-e65d-4b7d-bbcb-b0cfdae0dd85"
 >
-<Comment>If the outgoing message is EMPTY, it has to be initialized</Comment>
+<Comment>If the outgoing message is EMPTY, it has to be initialized and then the corresponding field is filled.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="8334b1bb-9709-4418-a6e3-507dd7a6b908"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="84bd5198-9d19-4348-b537-6f637bae715f"
+>MessageCanBeSent ( anRBC =&gt; THIS )
+  OR
+ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9025ba4e-91d5-4f92-8289-74df36138ac0"
->InitializeOutMessage()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Send termination of communication session"
- Guid="e7da29c3-449f-4dab-b416-9f5dd4524bc5"
->
-<ReqRef
- Id="a74ee6b4-a0ba-40bb-b83f-fd66efae3fb1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="58762fff-a603-4708-9ec1-d30a91abc678"
->
-</ReqRef><ReqRef
- Id="8c9ce563-d6d0-4490-a402-5a4bcf54598c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e354eeae-9a16-49a0-96f9-dec793c48066"
->
-</ReqRef><ReqRef
- Id="a4fe513a-ba78-4d81-a472-2d562542fef9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d9c377d0-7f52-4cd8-9f11-7257ca89df4f"
->
-</ReqRef><ReqRef
- Id="4d45f289-023e-4ed4-a8b2-f23bc5f23bbf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1576da1c-6e2c-41b6-84fd-ec3dd7110c26"
->
-</ReqRef><ReqRef
- Id="78ebe076-c514-44ee-869e-00b94b6a4377"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="aaf76c16-6214-4a5c-8558-d2afc429ec91"
->
-</ReqRef><Comment>Fills the structure corresponding to the Termination of communication session message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Send termination of communication session"
- Guid="46369c42-16c2-4020-9add-b41e20b7948f"
->
-<Comment>Sends the termination of cummnication session message.</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
+>InitializeOutMessage()</Action><Action
  Guid="1069c60a-1628-4196-9f66-c7cb41b5fed5"
 >MessageOut.TERMINATION_OF_A_COMMUNICATION_SESSION &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.TERMINATION_OF_A_COMMUNICATION_SESSION.Message
 {
     NID_MESSAGE =&gt; 156,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; MessageTypes.UnResolveTime ( time =&gt; Kernel.CurrentTime ),
-    NID_ENGINE =&gt; Kernel.NidEngine
-}</Action></Actions>
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
+    NID_ENGINE =&gt; Kernel.NidEngine}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -893,7 +1092,12 @@
  Name="Reinitialize communication information"
  Guid="6da01d9a-0a55-4ae4-be3e-0eb9708c6062"
 >
-<Comment>When a communicatino session is terminated, all the information is reset to default values.</Comment>
+<ReqRef
+ Id="66901d6f-fcdd-4ddb-89e1-57f86cb9fcce"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3aab9954-d945-4ab9-813b-616cbd06538e"
+>
+</ReqRef><Comment>When a communicatino session is terminated, all the information is reset to default values.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -910,7 +1114,9 @@
  Guid="f86651e7-1ebb-49de-8053-907c88f5741d"
 >NumberOfSentRequests &lt;- 0</Action><Action
  Guid="3d5afa42-b712-4474-af54-81ae258173b2"
->SessionManagementData.SystemVersion.DataState &lt;- DataState.Unknown</Action></Actions>
+>SessionManagementData.SystemVersion.DataState &lt;- DataState.Unknown</Action><Action
+ Guid="9687e639-b5c6-470d-813a-f17940cd2731"
+>ConnectionLostTime &lt;- BaseTypes.Time.Infinity</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -923,55 +1129,72 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="61feaf2f-7590-4018-ae7b-a2db4d2e2ff4"
 >
+</ReqRef><ReqRef
+ Id="a7e6ae33-fe52-489d-90a6-0563e959f98f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="283ef404-b315-4cdf-825d-1be794889951"
+>
+</ReqRef><ReqRef
+ Id="180abffc-1e69-479f-9d27-b361a511b724"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cc0c1cd7-4d71-4088-a4bd-0e68ad48cdc6"
+>
+</ReqRef><ReqRef
+ Id="771097a5-70ee-4e32-ad57-cc3370e9c2df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="22c694e3-c942-49dc-b73f-c9141ca87276"
+>
+</ReqRef><ReqRef
+ Id="5fa92a17-4bdd-45f7-af50-8fb767b1f5df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a899759e-6714-48e6-bb6e-08c17e851abb"
+>
+</ReqRef><ReqRef
+ Id="be83abf1-33e3-48e8-81f5-7272786632ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eabe68f3-c3db-4f70-ad3d-e559cb02333a"
+>
+</ReqRef><ReqRef
+ Id="29ac8b57-887f-4420-8b7b-91bb1e505d65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bc240a90-6151-4ff4-881a-ae5d89b497f6"
+>
+</ReqRef><ReqRef
+ Id="e5b845f3-54de-4120-8f98-f59e56625654"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cce15516-ff7d-484b-a528-4bb42e1adfea"
+>
 </ReqRef><Comment>Sends No ocmpatible version supported message.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="1244adad-26bd-4648-a76e-d5556c06a19d"
 >
-<Comment>If the outgoing message is EMPTY, it has to be initialized</Comment>
+<Comment>If the outgoing message is EMPTY, it has to be initialized and then the corresponding field is filled.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="42bee79c-70ca-43ec-80e9-3f05cf18c656"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="ccdbc887-50da-463a-8631-8c3ad89ca42a"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="85c99237-2ff3-4b7b-aacc-47f1527582f4"
->InitializeOutMessage()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Send No compatible version supported"
- Guid="0269a304-8752-4b82-9957-0b5c6cc003be"
->
-<Comment>Fills the structure corresponding to No compatible version supported message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Send No compatible version supported"
- Guid="f4e38116-bf3c-4e86-9001-c5d9ce85e396"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
+>InitializeOutMessage()</Action><Action
  Guid="18250444-a45a-46a1-8101-7880251ca79d"
 >MessageOut.NO_COMPATIBLE_VERSION_SUPPORTED &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.NO_COMPATIBLE_VERSION_SUPPORTED.Message
 {
     NID_MESSAGE =&gt; 154,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; MessageTypes.UnResolveTime ( time =&gt; Kernel.CurrentTime ),
-    NID_ENGINE =&gt; Kernel.NidEngine
-}</Action></Actions>
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
+    NID_ENGINE =&gt; Kernel.NidEngine}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -984,53 +1207,71 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="045a9dff-e27f-4410-881c-b9700ce1f271"
 >
+</ReqRef><ReqRef
+ Id="83a95861-1254-445f-a687-abfbc0ecc275"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4d240a01-57cc-4941-a04c-f1e1ed34ec0a"
+>
+</ReqRef><ReqRef
+ Id="6d607aea-ecdf-49ba-94cf-820077be16f5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1b8a5425-07a4-445c-acc0-3b98fb6b1ed5"
+>
+</ReqRef><ReqRef
+ Id="da48d790-6e99-4ede-b382-33683f89734e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eb6ec88d-4649-4ada-a0cf-bb3600b0311a"
+>
+</ReqRef><ReqRef
+ Id="034e6081-8324-46a4-8701-9547536400ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb0890c2-c5fd-4dc0-84b1-379a8178fa4b"
+>
+</ReqRef><ReqRef
+ Id="81482df6-4bcd-4d73-987a-cd90bcffe361"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2e2258c8-8ab4-4fe1-8b1d-23c16b3f57de"
+>
+</ReqRef><ReqRef
+ Id="f5760847-4b49-4c61-8ca9-da687dc787ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="327d1585-08a4-4c5e-bc96-d78d15637c36"
+>
+</ReqRef><ReqRef
+ Id="6db08158-68d4-49a4-9b0c-24890ae05196"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7363d3d4-1875-4ed8-aaf7-da8e9b75f604"
+>
 </ReqRef><Comment>Sends the Session establishment report message.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="d4bdb090-dcbc-4828-9a82-becf0ea7fc4a"
 >
-<Comment>If the outgoing message is EMPTY, it has to be initialized</Comment>
+<Comment>If the outgoing message is EMPTY, it has to be initialized and then the corresponding field is filled.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Initialize message"
+ Name="Handle sending of the message"
  Guid="4500a613-abb9-4a56-838d-c3d8c4705256"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="4b25cc29-6b61-46d2-b51e-3caa2964d74f"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5e12d8df-0bef-46ba-98ed-6197ab27501a"
->InitializeOutMessage()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Send session establishment report"
- Guid="ed5c2007-058f-4692-b9ea-961e40c496c9"
->
-<Comment>Fills the structure corresponding to the Session establishment report.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Send session establishment report"
- Guid="3cc3532a-4813-4743-bb3e-60f08e181b5c"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
+>InitializeOutMessage()</Action><Action
  Guid="1f5b8c56-d5aa-4705-8653-1f7558f6dad4"
 >MessageOut.SESSION_ESTABLISHED &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.SESSION_ESTABLISHED.Message
 {
     NID_MESSAGE =&gt; 159,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; MessageTypes.UnResolveTime ( time =&gt; Kernel.CurrentTime ),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     Sequence1 =&gt;
     [
@@ -1143,7 +1384,7 @@
 <Comment>Number of sent requests (to establish a safe radio connection or to terminate the communication session).</Comment>
 </StructureElement><StructureElement
  TypeName="BaseTypes.Time"
- Default="0.0"
+ Default="BaseTypes.Time.Infinity"
  Mode="Internal"
  Implemented="TRUE"
  Name="ConnectionLostTime"
@@ -1160,6 +1401,15 @@
  Guid="54b058ba-2130-451d-9219-0522297724ca"
 >
 </ReqRef><Comment>Stores the time when the safe radio connection has been lost.</Comment>
+</StructureElement><StructureElement
+ TypeName="SpecialCaseSessionEstablishmentReasonEnum"
+ Default="SpecialCaseSessionEstablishmentReasonEnum.DoNotEstablish"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SpecialCaseSessionEstablishmentReason"
+ Guid="19025708-2326-463f-8934-0ac263dc7feb"
+>
+<Comment>If a communication session has to be established, this variable indicates why it has to be estabilshed.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="Inactive"
@@ -1170,10 +1420,10 @@
 <Comment>Handles the different processes of the connection according to its current state.</Comment>
 <States>
 <State
- X="170"
- Y="100"
+ X="180"
+ Y="70"
  Width="100"
- Height="80"
+ Height="200"
  Implemented="TRUE"
  Name="Inactive"
  Guid="d33370b3-b877-475d-b1da-b15d3eaca819"
@@ -1206,7 +1456,12 @@
  Name="Initialize data"
  Guid="f1311ac8-e7e8-43aa-be23-ac629849efc8"
 >
-<Comment>Sets all the previously used information to its default values.</Comment>
+<ReqRef
+ Id="66901d6f-fcdd-4ddb-89e1-57f86cb9fcce"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3bc3cb12-e2ed-441b-8c14-758f32f5b0dc"
+>
+</ReqRef><Comment>Sets all the previously used information to its default values.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1219,7 +1474,7 @@
 <Actions>
 <Action
  Guid="f93ec21b-cae5-40cb-a111-eb24e0fe252a"
->THIS &lt;- WaitForConnectionOrder</Action><Action
+>THIS &lt;- WaitForConnectionRequest</Action><Action
  Guid="33b79703-10dd-46c9-945b-43bf5f8746b1"
 >ReinitializeCommunicationInformation()</Action></Actions>
 </RuleCondition></Conditions>
@@ -1230,7 +1485,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="WaitForConnectionOrder"
+ Name="WaitForConnectionRequest"
  Guid="9ae31fb0-9855-4c50-84bb-3f34ca2678d3"
 >
 <Comment>The on-board waits for a new order to establish a communication session.</Comment>
@@ -1250,6 +1505,41 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5458231e-1df4-425e-8e8b-9b993b243cc4"
 >
+</ReqRef><ReqRef
+ Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="99a2dff6-373a-4b16-b222-68f88c8dd6ec"
+>
+</ReqRef><ReqRef
+ Id="752d0832-7cfa-4424-96f7-d3fbb447a20e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47c90c73-64b3-4eef-97b4-dee8e5f231cb"
+>
+</ReqRef><ReqRef
+ Id="558b2068-001d-4f9f-902b-2cd23fb269d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="76238e6e-5374-4aec-bd6c-2e60ec86c787"
+>
+</ReqRef><ReqRef
+ Id="1be02ad3-ca38-452c-a795-e398d991b2da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0769f3b0-e796-43b9-9a63-8ed1e7e0cf33"
+>
+</ReqRef><ReqRef
+ Id="dd37c53c-3853-4b84-8080-c287bcf0cc25"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="01eb5402-0cee-4757-8e9e-8bdb0dc3687f"
+>
+</ReqRef><ReqRef
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4ac1091d-9f1b-4a2a-b2df-175afdaa07be"
+>
+</ReqRef><ReqRef
+ Id="69641afe-f1b0-4499-9b31-e3d7a164d492"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dee9ebb6-a343-433d-a245-a666c6a38e8c"
+>
 </ReqRef><Comment>When an order to contact an RBC is received, the on-board requests the set-up of a safe radio connection with the trackside.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1258,12 +1548,11 @@
  Name="RBC contact order received"
  Guid="16010e1f-582d-4673-a08f-e652d867206d"
 >
+<Comment>The time of initialisation of the requset is stored in ConnectionLostTime, in order to update the Safe Radio Connection status if the connection is not established within the time defined by ConnectionStatusTimer.</Comment>
 <PreConditions>
 <PreCondition
  Guid="d70d315d-97c4-418f-a89b-173190c448b2"
->ContactRBCOrder != EMPTY
-  AND
-ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></PreConditions>
+>SessionHasToBeEstablished ( anRBC =&gt; ENCLOSING )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="30ffcf61-752f-4621-bd06-aae49937b224"
@@ -1271,15 +1560,89 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
  Guid="0435a548-28e2-45b2-b8f8-0711b2fc3498"
 >SessionManagementData.RequestIsSent &lt;- True</Action><Action
  Guid="5c7318a3-3c2a-4a71-85c0-c1617d2d9134"
->SessionManagementData.Action &lt;- ContactActionEnum.Establish</Action></Actions>
+>SessionManagementData.Action &lt;- ContactActionEnum.Establish</Action><Action
+ Guid="36c208cd-4fdb-4529-aac3-4806d371c8a8"
+>ConnectionLostTime &lt;- Kernel.CurrentTime</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Reset session establishment data for special cases"
+ Guid="9d941ace-d89d-42ef-a2c8-ff54038d7219"
+>
+<Comment>If the session was opened due to a special case, then reset its value. If the special case was &quot;due to mode change&quot;, it will be reset once the mode change report has been sent.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Reset session establishment data for special cases"
+ Guid="757516e3-bab5-418e-97fd-87981cb95161"
+>
+<PreConditions>
+<PreCondition
+ Guid="71577537-bec3-47e6-8f53-baaa30b75738"
+>SpecialCaseSessionEstablishmentReason != SpecialCaseSessionEstablishmentReasonEnum.EstablishDueToModeChangeReport</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="33377292-d119-402b-ae2d-61db25cf4847"
+>SpecialCaseSessionEstablishmentReason &lt;- SpecialCaseSessionEstablishmentReasonEnum.DoNotEstablish</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Establishment of communication session requested by trackside"
+ Guid="078e4aad-f6a1-48b9-999f-df3808876be3"
+>
+<ReqRef
+ Id="484b41b4-a894-43b4-9ee4-a7227ddfd3aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20784d49-0f83-447f-ab8b-bdb43f2465bf"
+>
+</ReqRef><ReqRef
+ Id="db4463dc-26c1-4af3-a988-31083e546a4c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bccfede5-1b36-4e0c-84c4-d59ef50c0188"
+>
+</ReqRef><ReqRef
+ Id="f070a20f-9665-470d-80ce-363bfa6c264a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="526f1300-ff99-4b0d-94ec-7f06e23068f4"
+>
+</ReqRef><ReqRef
+ Id="bf253010-f30e-4baf-a159-2b5214063f79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c39a1ce0-2cc7-4a90-a708-caa018244a67"
+>
+</ReqRef><Comment>If the trackisde requests the establishment of communication session, the on-board sets up the safe radio connection and waits for the message Initiation of communication session from the trackside.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Establishment of communication session requested by trackside"
+ Guid="50e554d4-aa95-4f7e-896c-80aa749af607"
+>
+<PreConditions>
+<PreCondition
+ Guid="7646887d-9f41-46be-afc8-7baa48bad286"
+>SessionManagementData.RequestIsReceived</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="acac9f9a-a9de-4efe-b716-f52130488da8"
+>THIS &lt;- Connecting.HandleRequestFromTrackside</Action><Action
+ Guid="ecf1a755-d1fb-4123-82de-4e8d7e3dad23"
+>SessionManagementData.ConnectionIsEstablished &lt;- True</Action><Action
+ Guid="e0c9fd6f-6e95-44d9-99ad-07fb09da4ad3"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
- X="690"
- Y="100"
+ X="800"
+ Y="70"
  Width="100"
- Height="80"
+ Height="200"
  Implemented="TRUE"
  Name="Connecting"
  Guid="620d737c-d8e3-43c2-8cda-c9b1ca68371a"
@@ -1292,15 +1655,15 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 >
 <States>
 <State
- X="100"
+ X="90"
  Y="80"
- Width="100"
+ Width="200"
  Height="50"
  Implemented="TRUE"
  Name="WaitForSetUp"
  Guid="06d57201-ba9b-46dd-9596-30944cc7cbb2"
 >
-<Comment>The on-board waits until the safe radio connection is set-up.</Comment>
+<Comment>If the request to establish the communication session was sent by the on-board, the on-board waits until the safe radio connection is set-up.</Comment>
 <StateMachine
  Implemented="TRUE"
  Guid="5c8b60bd-8baa-4c41-9bb6-ffcca7cbdfc2"
@@ -1334,6 +1697,16 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
  Id="f070a20f-9665-470d-80ce-363bfa6c264a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4bbed78a-f859-49a0-9ff0-df77ea8595e0"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="04c1239e-16fe-409f-9811-5d484ba073a2"
+>
+</ReqRef><ReqRef
+ Id="9b632443-f645-498c-9bf9-9771b26f19c6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ebe6193e-8ecd-4ccf-8fed-124173d88114"
 >
 </ReqRef><Comment>As soon as the safe radio connection is set-up, the on-board sends the message Initiation of communication session.</Comment>
 <PreConditions>
@@ -1404,7 +1777,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Send new request"
+ Name="Connection is lost, send new request"
  Guid="6ee281d8-5947-4fd2-b6ea-4a61e0f5d896"
 >
 <Comment>If the request has to be repeated and the maximum number of requests is not reached it, a new request is sent.</Comment>
@@ -1417,10 +1790,12 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
  Guid="6c9db820-9596-4dc3-b487-9fb6e343bc2b"
 >LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
  Guid="ba529648-8bde-4b6c-bab8-b53b04a493ea"
->SessionManagementData.RequestIsSent &lt;- True</Action></Actions>
+>SessionManagementData.RequestIsSent &lt;- True</Action><Action
+ Guid="00fc6a16-7c65-4f0a-b1b2-6b44b65edf9f"
+>NumberOfSentRequests &lt;- NumberOfSentRequests + 1</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Maximum number of requests sent"
+ Name="Connection is lost, maximum number of requests reached"
  Guid="301af69a-abcb-4f58-bb23-313539119ff7"
 >
 <ReqRef
@@ -1431,7 +1806,17 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 </ReqRef><ReqRef
  Id="b15cc4d3-14ad-4f2e-b1d9-c70dc451cc6f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="44cddd06-373e-43ce-911b-2acee2d818f8"
+ Guid="792443e1-a9d6-48cd-9fac-4b74750f8bbb"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c59792f-c11e-45cc-9a1a-36971481d8ff"
+>
+</ReqRef><ReqRef
+ Id="66901d6f-fcdd-4ddb-89e1-57f86cb9fcce"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1605f95a-cc99-4637-90f6-f944c5374c37"
 >
 </ReqRef><Comment>If the request has to be repeated but the maximum number of requests is already reached, RBC declares that the setup has failed and goes to inactive state.</Comment>
 <PreConditions>
@@ -1462,15 +1847,146 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 <PreConditions>
 </PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="16ba15f9-a1a0-4ae4-871b-0170a60aa6fb"
+>SessionManagementData.RequestIsSent &lt;- True</Action><Action
+ Guid="d32ceab3-f240-4971-86d9-06c897d9b505"
+>LastRequestTime &lt;- Kernel.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="&quot;Connection status&quot; timer expires"
+ Guid="ab14bc46-b49b-43c1-8445-196b2b39e1bd"
+>
+<ReqRef
+ Id="cd18a937-9dc2-456d-bee7-a61bcd564e32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="51eab676-3f08-48ad-ba12-d4fcf50c19cb"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8706b9b0-adfd-48fa-8bb2-902bbe274cda"
+>
+</ReqRef><ReqRef
+ Id="b15cc4d3-14ad-4f2e-b1d9-c70dc451cc6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9fc279c0-7fc3-42a4-b850-2e7b45f1f829"
+>
+</ReqRef><ReqRef
+ Id="24cfec76-595f-41de-920e-42c8da108914"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf7c1fbe-0bc3-4173-8376-bd2df73be0a6"
+>
+</ReqRef><ReqRef
+ Id="db31b8b2-7e8c-4c37-ac8a-c0df7eda9f8d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4049c1cc-144d-493b-9075-4c7598956982"
+>
+</ReqRef><ReqRef
+ Id="ecf2af34-5e55-40e4-83a6-e6ec4827734c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a37e606a-4a01-42f9-bfdd-b644b01459e2"
+>
+</ReqRef><Comment>If the connection status timer has expired, the Safe Radio Connection setup is declared as failed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="&quot;Connection status&quot; timer expires"
+ Guid="6a118501-cac0-4a06-805f-b587d3b07391"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="051b7c73-d993-4246-ac2a-5099ddc3c5a1"
+>ConnectionLostTime + ConnectionStatusTimer &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7a967e85-a3aa-4740-a5be-0df764c85620"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action><Action
+ Guid="066fa5b1-2e86-4ca6-93dd-e597e9fe9c21"
+>NumberOfSentRequests &lt;- NumberOfSentRequests + 1</Action><Action
+ Guid="30af9a7f-b3aa-438e-8e2c-8c3166dbfa4d"
+>LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+ Guid="f77d82ba-eaff-4fd1-81c0-2026665608aa"
+>SessionManagementData.RequestIsSent &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle conditions to stop requests"
+ Guid="9b91ee76-2784-4353-8149-ba61eb53cb1a"
+>
+<Comment>Handles the possible case to stop requests to set-up a safe radio connection, when the Kernel is not in the Start of Mission procedure.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="End of mission is performed"
+ Guid="646f3bec-8d5f-4ba4-9483-3bff2fc2e376"
+>
+<ReqRef
+ Id="5c68142d-4105-4fde-a021-ad914acbfe89"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a3ea32d-98c2-4599-9302-5ac2b63672dc"
+>
+</ReqRef><Comment>If End of Mission procedure is performed, the requests to establish a safe radio connection shall no more be repeated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="788ddb8c-f003-470b-9221-6ceab4d99a2f"
+>Kernel.HandleModeChange in Kernel.HandleModeChangeSM.EndOfMission</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2f2121c0-547a-4f28-920b-c73ac9de628c"
+>THIS &lt;- RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Level transition order is passed"
+ Guid="9baf68f6-558e-4e7e-b656-9c97e69df736"
+>
+<ReqRef
+ Id="358d0dbf-9187-4a9e-87a4-18c07fba71ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2926050c-3f94-48e6-95d6-ff87a3db3312"
+>
+</ReqRef><Comment>If the train has passed a level transition border to level 0, NTC or 1, the requests to establish a safe radio connection shall no more be repeated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="e83c3c3e-9cfa-4ec8-9613-96417be71c7d"
+>Kernel.LevelTransition.LTOtoProcess.TRLevel.Value in [Default.Level.L0, Default.Level.LNTC, Default.Level.L1]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b71b573b-1f53-4f37-97b5-3ea811c3a2c3"
+>THIS &lt;- RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Announced radio hole is passed"
+ Guid="3b2f67be-ebc7-4c66-b94c-5280f6238cf8"
+>
+<ReqRef
+ Id="ce7cdbeb-b49e-4146-a701-c8e36d770f29"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55d8e6e7-56aa-4194-a852-7e7ff2a4c0d2"
+>
+</ReqRef><Comment>If the train front passes the start of an announced radio hole, the requests to establish a safe radio connection shall no more be repeated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5e653953-1096-4f8d-8331-734cb465dff9"
+>Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="aa4d7c3e-e76d-40a7-9946-5e6162008c03"
+>THIS &lt;- RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="500"
+ X="510"
  Y="80"
- Width="120"
+ Width="200"
  Height="50"
  Implemented="TRUE"
  Name="WaitForSystemVersion"
@@ -1538,6 +2054,38 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 >THIS &lt;- Connected</Action><Action
  Guid="14daf0db-62ec-4f22-8031-4c28c232386d"
 >SendSessionEstablishmentReport()</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="If the session was opened due to mode change, report the mode change"
+ Guid="1b0f33d5-b59b-404c-ab25-69c870a007a0"
+>
+<ReqRef
+ Id="fbaaf410-a59f-40cd-b972-aa1e84116831"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b64c888c-4b8d-4bd7-92c8-5226575e1973"
+>
+</ReqRef><Comment>If the session was opened due to mode change, then the position report has to be sent.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="If the session was opened due to mode change, report the mode change"
+ Guid="90cfe581-fa1b-4e6c-b98e-027ba721d64e"
+>
+<PreConditions>
+<PreCondition
+ Guid="4bffab3a-5169-4aed-9ee7-64261867f61f"
+>SpecialCaseSessionEstablishmentReason == SpecialCaseSessionEstablishmentReasonEnum.EstablishDueToModeChangeReport</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="52d6dbeb-bd94-41bc-ac4f-a65bcb5bd1e2"
+>SendPositionReport()</Action><Action
+ Guid="89958712-60ea-4c06-b42e-a461b1a64e10"
+>SpecialCaseSessionEstablishmentReason &lt;- SpecialCaseSessionEstablishmentReasonEnum.DoNotEstablish</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="System version not compatible"
@@ -1547,6 +2095,11 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
  Id="25af834a-3a24-459b-b5c8-97b85eddb2e8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="216a5269-acb9-4d77-8c67-d59d7b1eb902"
+>
+</ReqRef><ReqRef
+ Id="21b52bea-13d1-437e-9aec-4d66149f68d5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="026c6422-5ea2-4120-82c7-1d668d7213e3"
 >
 </ReqRef><Comment>If the trackside system version is not compatible, then the session is terminated, the driver is informed and the message &quot;No compatible version supported&quot; is sent to the RBC.</Comment>
 <PreConditions>
@@ -1563,12 +2116,63 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</StateMachine></State><State
+ X="360"
+ Y="330"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="HandleRequestFromTrackside"
+ Guid="e52e1adb-7a12-454b-a949-67cbfb504da2"
+>
+<ReqRef
+ Id="bf253010-f30e-4baf-a159-2b5214063f79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64a3be3d-496c-4315-b995-9d369d1921c6"
+>
+</ReqRef><Comment>If the request to establish the communication session was asked by the trackside, the on-board waits for the message Initiation of the communication session from the trackside.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="d10a45d9-1390-4e31-8970-2532e3ffaea7"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Initiation of a communication session is received from the trackside"
+ Guid="4471e880-abfe-439b-a5a0-854dbd355825"
+>
+<ReqRef
+ Id="ca4b12ab-a31a-4af0-8bbc-bedfcba2e060"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d5d7215e-13c9-4c56-a492-1470ec7e1c87"
+>
+</ReqRef><Comment>When the on-board receives the Initiation of a communication session message from the trackside, it considers the session as established and sends Session establishment report.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initiation of a communication session is received from the trackside"
+ Guid="8b432caa-ce1c-4295-8592-63d839277421"
+>
+<PreConditions>
+<PreCondition
+ Guid="525fb74f-aecb-42f0-8285-5ad61fc9ea05"
+>SessionManagementData.InitiationOfACommunicationSessionReceived</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0ad99b4e-12a5-4395-bee8-9be7964dd2ca"
+>THIS &lt;- Connected</Action><Action
+ Guid="bfd4f69e-32ac-42e9-9e8e-1ce0785e25ec"
+>SendSessionEstablishmentReport()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State></States>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Order to terminate the communication session is received"
+ Name="Order to contact an RBC is received"
  Guid="63704436-5af4-444f-a8e6-6349d2dee385"
 >
 <ReqRef
@@ -1576,31 +2180,63 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5a49a622-e287-4d4f-880a-26ce53166311"
 >
-</ReqRef><Comment>If an order to terminate the communication session is received in connecting state, the establishing of the communication session is aborted.</Comment>
+</ReqRef><ReqRef
+ Id="d870fe5c-bd41-4203-9dfc-5ace398ffd56"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ab02c3f7-807f-4a87-b47c-393893e559e4"
+>
+</ReqRef><ReqRef
+ Id="c434f0b2-9953-426f-ab6b-0c705da559de"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ddfcfe8e-9728-4092-a496-73514ef703ef"
+>
+</ReqRef><Comment>If an order to contact an RBC is received in connecting state, the establishing of the communication session is aborted.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Order to terminate the communication session is received"
+ Name="Order to contact an RBC is received"
  Guid="a42b1225-8802-4fe3-9b3b-1148d9802095"
 >
 <PreConditions>
 <PreCondition
  Guid="c94000a1-d7dc-4cd3-becf-159031484f3a"
->ContactRBCOrder != EMPTY
-  AND
-ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></PreConditions>
+>ContactRBCOrder != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="005fe0c4-14fe-4ed1-8754-5011041d3708"
->THIS &lt;- Inactive</Action><Action
- Guid="4566df66-8602-481b-8e43-9d6cee572241"
->ReinitializeCommunicationInformation()</Action></Actions>
+>THIS &lt;- Inactive</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle termination of communication session"
+ Guid="e250a5fc-cb9c-42c8-a172-616e6d91b036"
+>
+<Comment>If the order action to terminate the communication session, it has to be erased (since it is handled here).</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle termination of communication session"
+ Guid="88edf8c0-ea11-4695-9842-ab183cddd0df"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="e1c7b5e8-4fb5-4603-b585-16bee501b09c"
+>ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="01701ac8-5a57-4ab9-9aa1-ebfd9312b3ff"
+>ContactRBCOrder &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="650"
- Y="390"
+ X="810"
+ Y="430"
  Width="100"
  Height="80"
  Implemented="TRUE"
@@ -1615,6 +2251,10 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 >
 <States>
 <State
+ X="130"
+ Y="100"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="InitialState"
  Guid="ad4e57e7-c527-4a6b-b01f-b9fbf7a1d9a8"
@@ -1628,81 +2268,10 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Order to terminate the communication session is received"
- Guid="0f45f74c-edd2-48e5-af53-1c74c195841c"
->
-<ReqRef
- Id="bc41e5e5-6fff-4b96-a901-9bc45f108b16"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="212177a5-3051-4788-a2b8-6951db3634a5"
->
-</ReqRef><ReqRef
- Id="84374b3d-739e-4c5f-909d-4c138dedec38"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cd739b37-15fd-4303-9f0b-a1dbca0c6555"
->
-</ReqRef><ReqRef
- Id="e0a2f873-6bb3-4327-abdc-4444932d69aa"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="eb974e02-f7d4-476e-8b0f-f169719b35a4"
->
-</ReqRef><ReqRef
- Id="dc7b33b5-d923-42f3-be12-580edb475353"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ed4afeb4-ab44-419a-ac37-d7bf139bcba3"
->
-</ReqRef><Comment>When a connection to the RBC is established and a request to terminate the communication session is sent, on-board sends the Termination of communication session message to the RBC and goes to Terminating state.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Order to terminate the communication session is received"
- Guid="63fe5c9c-8eee-4877-90ab-bc7187858c4a"
->
-<PreConditions>
-<PreCondition
- Guid="45eed858-9748-4822-b4df-ef101907fd7c"
->ContactRBCOrder != EMPTY
-  AND
-ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="5ab8eb84-a856-41fe-81be-92cc80d83d99"
->SendTerminationOfCommunicationSession()</Action><Action
- Guid="37faeac1-ef2c-41c8-ab97-8497c4cfcec4"
->THIS &lt;- Terminating</Action><Action
- Guid="1a1a20cb-a8df-46b4-acc5-16faf2b26075"
->LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
- Guid="ef59530a-188c-48af-86c4-658498732214"
->NumberOfSentRequests &lt;- 0</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="Loss of the safe radio connection is detected"
  Guid="b6f6217c-72ba-43e7-bd6e-33cc9dce3d16"
 >
-<ReqRef
- Id="308624ea-ea91-4451-b8c4-1cfbc9094f8e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8e535b6f-2b7d-471d-9fb0-ed7f5b37a32e"
->
-</ReqRef><ReqRef
- Id="529343f5-9881-4318-8dcc-53dade4fe1df"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0e4fdaaf-3619-4add-b6ae-c5ffda424154"
->
-</ReqRef><ReqRef
- Id="ac42de65-1111-47f1-904b-907bce323de2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c3e56bf1-aa63-4bfe-a0de-c226e021c853"
->
-</ReqRef><ReqRef
- Id="dd37c53c-3853-4b84-8080-c287bcf0cc25"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ce08f514-403d-4411-8de5-bc0b7796fab8"
->
-</ReqRef><Comment>When a loss of the safe radio connection is detected, the system goes to the state Connected.ConnectionLost an stores the current time, in order to know how long the safe radio connection has to be considered as established.</Comment>
+<Comment>When a loss of the safe radio connection is detected, the system goes to the state Connected.ConnectionLost an stores the current time, in order to know how long the safe radio connection has to be considered as established.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1710,28 +2279,117 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Name="Loss of the safe radio connection is detected"
  Guid="8779a660-1dd0-4176-80b8-c172f1e2b5ba"
 >
+<PreConditions>
+<PreCondition
+ Guid="6222ed14-9c42-42d5-b29f-2e5222369f8c"
+>SessionManagementData.ConnectionIsEstablished == False</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Verify if the train is inside an announced radio hole."
+ Guid="a74a6f9a-ffdb-4c21-8c7a-62e2a33eb02e"
+>
+<Comment>If the connection is lost when the train is inside an announced radio hole, the safe radio connection is considered as lost.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Connection lost, the train is inside an announced radio hole"
+ Guid="271faf59-7b23-4404-b868-ed9ba537f3f4"
+>
+<ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="239adfd0-723e-46e9-8479-a3a51fcd9711"
+>
+</ReqRef><ReqRef
+ Id="faa589ef-1db3-49b8-b4e9-66bca10c1754"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="23dd4add-24c0-4bdf-9a33-6ec6615aada5"
+>
+</ReqRef><ReqRef
+ Id="a977087b-cf09-465c-b072-4ac0d0903dc7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8cfd489e-bad9-4415-ba6c-e9914db45169"
+>
+</ReqRef><ReqRef
+ Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e85a1f8-f5a5-404f-ac29-eef9a50d4452"
+>
+</ReqRef><ReqRef
+ Id="558b2068-001d-4f9f-902b-2cd23fb269d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="78c2b289-ebb1-4c6e-ad26-791d5c4deb8d"
+>
+</ReqRef><Comment>If the train is inside an announced radio hole, the connection is considered as lost and new attempts to establish the communication session will be executed only when the radio hole end will be reached.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="98dfced5-c8e3-4402-9c30-42e6826e38b0"
+>Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="31e5f409-b9e6-446b-867c-b18a87681e9d"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action><Action
+ Guid="6d4583aa-006a-45ae-9cda-74616d81d751"
+>THIS &lt;- Inactive</Action><Action
+ Guid="ec9f6b78-cb37-4e99-9057-9da349ca8a75"
+>SpecialCaseSessionEstablishmentReason &lt;- SpecialCaseSessionEstablishmentReasonEnum.EstablishDueToRadioHole</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Connection lost, the train is not inside an announced radio hole"
+ Guid="13af3a5b-5f98-48b4-90c0-a46a36f84d3a"
+>
 <ReqRef
  Id="cd18a937-9dc2-456d-bee7-a61bcd564e32"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="664c8ef1-3152-4414-9167-ec22138e70f3"
+ Guid="bbb6faeb-db9d-4974-b1c6-dd221e21af9b"
 >
-</ReqRef><PreConditions>
-<PreCondition
- Guid="6222ed14-9c42-42d5-b29f-2e5222369f8c"
->SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</PreCondition></PreConditions>
+</ReqRef><ReqRef
+ Id="308624ea-ea91-4451-b8c4-1cfbc9094f8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="be8eff81-4014-45d1-b4e5-ca9ef2b8ea0f"
+>
+</ReqRef><ReqRef
+ Id="529343f5-9881-4318-8dcc-53dade4fe1df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b6326d63-de68-4338-aa3d-2e3bdbff8781"
+>
+</ReqRef><ReqRef
+ Id="ac42de65-1111-47f1-904b-907bce323de2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b979e6de-0060-4dbb-93bd-97f3a6ff0ffe"
+>
+</ReqRef><ReqRef
+ Id="dd37c53c-3853-4b84-8080-c287bcf0cc25"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f72da592-8ff0-45cf-89ef-e9f37c5f28b3"
+>
+</ReqRef><Comment>If the train is not inside a radio hole, it will try to establish the connection again.</Comment>
+<PreConditions>
+</PreConditions>
 <Actions>
 <Action
- Guid="ed5c1847-6ece-4c06-a1fe-50505630488c"
->THIS &lt;- ConnectionLost</Action><Action
  Guid="31f3937f-b213-4f3e-ad34-8537395d0015"
 >ConnectionLostTime &lt;- Kernel.CurrentTime</Action><Action
+ Guid="c4a3e6fd-bbd3-4c4a-9592-37f17c96b1ac"
+>LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
  Guid="bef7600f-38e6-4557-9a1d-4f08e07554dd"
 >SessionManagementData.RequestIsSent &lt;- True</Action><Action
- Guid="c4a3e6fd-bbd3-4c4a-9592-37f17c96b1ac"
->LastRequestTime &lt;- Kernel.CurrentTime</Action></Actions>
+ Guid="ed5c1847-6ece-4c06-a1fe-50505630488c"
+>THIS &lt;- ConnectionLost</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ X="570"
+ Y="100"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ConnectionLost"
  Guid="74427cf7-e4a2-4a0c-bdc7-bebc203329c8"
@@ -1780,6 +2438,11 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Id="a4a65f87-d77f-4542-967b-9e1f99a0ecde"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1375e83d-46bf-4d79-9821-9f8a86f32624"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="373380bc-4ca2-4f14-84c9-0ef715eaad4d"
 >
 </ReqRef><Comment>If the connection is up again, the system goes back to the state Connected.InitialState.</Comment>
 <PreConditions>
@@ -1835,20 +2498,109 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8d657961-233b-43be-b2ca-09f72b334000"
 >
+</ReqRef><ReqRef
+ Id="66901d6f-fcdd-4ddb-89e1-57f86cb9fcce"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="376cf966-7b5d-402a-a800-93d873ef7dce"
+>
+</ReqRef><ReqRef
+ Id="752d0832-7cfa-4424-96f7-d3fbb447a20e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e70499f3-2fba-4f3c-a3e3-b5c9e888ca12"
+>
+</ReqRef><ReqRef
+ Id="1be02ad3-ca38-452c-a795-e398d991b2da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ecc8719f-0efc-4af6-8aa3-ca0ed120665f"
+>
 </ReqRef><Comment>Otherwise, if the maximum time to maintain a communication session is reached, the connection is considered as lost.</Comment>
 <PreConditions>
 <PreCondition
  Guid="d8e25a87-d35c-437f-864a-def0637bce1e"
 >NOT SessionManagementData.ConnectionIsEstablished</PreCondition><PreCondition
  Guid="0a7021de-e191-4898-b26d-a0940b487b89"
->MaxTimeToMaintainACommunicationSession + ConnectionLostTime &gt;= Kernel.CurrentTime</PreCondition></PreConditions>
+>ConnectionLostTime + MaxTimeToMaintainACommunicationSession &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2d58a44a-39a5-4bf5-9712-d9525d21cb8d"
->THIS &lt;- Inactive</Action></Actions>
+>THIS &lt;- Inactive</Action><Action
+ Guid="1e8ee9e1-e346-41b2-b922-608f09cb6551"
+>SpecialCaseSessionEstablishmentReason &lt;- SpecialCaseSessionEstablishmentReasonEnum.EstablishDueToLossOfConnection</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle safe radio connection status"
+ Guid="6bcaa9e4-5510-4317-8477-dd9b27e5beb6"
+>
+<Comment>According to the current status of the safe radio connection, it may be declared or not as terminated.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Previous status was Connection Up"
+ Guid="fba1350e-b81c-4076-a474-a74e0261e185"
+>
+<ReqRef
+ Id="cf256420-4b87-4caf-a1cb-8e8e17d3bdca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb6f1e9f-5224-4ce9-b96a-a37db310ee6a"
+>
+</ReqRef><ReqRef
+ Id="faa589ef-1db3-49b8-b4e9-66bca10c1754"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4f1e422-9e52-45e3-b907-5681fb28c087"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bc1b0ad8-793c-4f38-acf2-a61098aba54a"
+>
+</ReqRef><Comment>If the previous status of the safe radio connection was &quot;Connection Up&quot;, then the safe radio connection is declared as terminated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="fdf0690f-8c7b-4ea5-b89d-cd31b038a0f6"
+>SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a81c9085-62ed-47f6-91c1-9573073688c8"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Connection lost, &quot;connection status&quot; timer expired"
+ Name="Previous status was Connection Lost or Setup Failed"
+ Guid="ae37f4d1-cda8-4873-8ece-d9937e3b399b"
+>
+<ReqRef
+ Id="e9e7d5c2-c94d-4bb6-8aea-136e28beafd2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a5f5b60c-10ba-463d-8b00-4e0e07fefd7a"
+>
+</ReqRef><ReqRef
+ Id="0f9d860a-2cb9-472d-95ee-28c1c9bd5062"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dbf4abd4-5d2e-480a-826e-4fc5ce1c2e78"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5244d5d4-048d-486c-b5c7-c83e17a9e58e"
+>
+</ReqRef><Comment>If the safe radio connection was already declared as Lost, then, if no Start of Mission procedure is on-going, the safe radio connection is declared as terminated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b57d3086-f161-4390-bbfd-d8c3b479dc8b"
+>SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</PreCondition><PreCondition
+ Guid="11f53a2e-cad9-47b3-bf29-0e89837f3128"
+>Kernel.HandleModeChange not in Kernel.HandleModeChangeSM.StartOfMission</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="516bc76f-b39a-46ad-98de-6bb086ab71b2"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Connection is lost, &quot;connection status&quot; timer expired"
  Guid="87b4c89c-376f-4991-a150-e2ab9347ed7d"
 >
 <ReqRef
@@ -1866,11 +2618,16 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="81f579e5-4764-4325-958b-01fd681a9d2c"
 >
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="888a3649-ffc6-4f6b-9e2e-453a267f07c5"
+>
 </ReqRef><Comment>If the connection is still lost and the &quot;connection status&quot; timer expires, the safe radio connection is considered as lost.</Comment>
 <PreConditions>
 <PreCondition
  Guid="064e51ea-ce48-42f7-ab9e-bdc921765caa"
->ConnectionLostTime + ConnectionStatusTimer &lt; Kernel.CurrentTime</PreCondition></PreConditions>
+>ConnectionLostTime + ConnectionStatusTimer &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2b49902b-8504-4950-bc31-02fe3e8b403d"
@@ -1878,9 +2635,91 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Order to contact an RBC is received"
+ Guid="0f45f74c-edd2-48e5-af53-1c74c195841c"
+>
+<ReqRef
+ Id="dc7b33b5-d923-42f3-be12-580edb475353"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa514d6c-987d-4d07-95e8-853b7bbf8fdb"
+>
+</ReqRef><ReqRef
+ Id="e0a2f873-6bb3-4327-abdc-4444932d69aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="92fe33e1-3eb4-4288-bade-44471e8a276c"
+>
+</ReqRef><ReqRef
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="345712ec-f586-4161-a260-7c2b7c4eb719"
+>
+</ReqRef><ReqRef
+ Id="84374b3d-739e-4c5f-909d-4c138dedec38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64d1fe74-9c45-451b-8b5e-74c20552440e"
+>
+</ReqRef><ReqRef
+ Id="bc41e5e5-6fff-4b96-a901-9bc45f108b16"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f56dd0f-e588-4cc0-9e6b-bd50c23eb281"
+>
+</ReqRef><Comment>Handle orders to contact an RBC.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Order to contact an RBC is received"
+ Guid="63fe5c9c-8eee-4877-90ab-bc7187858c4a"
+>
+<Comment>When a connection to the RBC is established and a request to contact an RBC is received, the on-board sends the Termination of communication session message to the RBC and goes to Terminating state.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="45eed858-9748-4822-b4df-ef101907fd7c"
+>ContactRBCOrder != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1a1a20cb-a8df-46b4-acc5-16faf2b26075"
+>LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+ Guid="ef59530a-188c-48af-86c4-658498732214"
+>NumberOfSentRequests &lt;- 0</Action><Action
+ Guid="5ab8eb84-a856-41fe-81be-92cc80d83d99"
+>RBCStruct.SendTerminationOfCommunicationSession()</Action><Action
+ Guid="37faeac1-ef2c-41c8-ab97-8497c4cfcec4"
+>THIS &lt;- Terminating</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle termination of communication session"
+ Guid="db567429-aa30-4cff-a4f1-1a09b8cb0be8"
+>
+<Comment>If the order action to terminate the communication session, it has to be erased (since it is handled here).</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle termination of communication session"
+ Guid="5dd79cd1-199b-4099-9a8c-fcec0a041144"
+>
+<PreConditions>
+<PreCondition
+ Guid="a5ebfacd-6ea2-49c1-9d34-4a9492fec07c"
+>ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="157b5e2a-e5c0-466b-937c-94f2fbf3214e"
+>ContactRBCOrder &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State><State
- X="130"
- Y="390"
+ X="180"
+ Y="430"
  Width="100"
  Height="80"
  Implemented="TRUE"
@@ -1928,6 +2767,11 @@ The information related to the current communication session is reinitialized.</
  Id="faa589ef-1db3-49b8-b4e9-66bca10c1754"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="62bdc20c-6def-4e42-88b8-ffe432a254d9"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f248e6ac-9eae-4dc8-a660-50aa7c178025"
 >
 </ReqRef><Comment>When the acknowledgement of termination of the communication session is received, the session is considered as terminated and the on-board requests the release of the safe radio connection with trackside.</Comment>
 <PreConditions>
@@ -2256,7 +3100,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="False"
- Mode="Incoming"
+ Mode="InOut"
  Implemented="TRUE"
  Name="ConnectionIsEstablished"
  Guid="1c04490a-d03a-492b-81ec-bbf9c60fd7db"
@@ -2267,6 +3111,34 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Guid="0f940401-02b0-4101-bebd-18261582bd51"
 >
 </ReqRef><Comment>Set to true if the safe radio connection is set-up.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="RequestIsReceived"
+ Guid="a6d33ff5-d083-45be-83a3-68ff4212ed87"
+>
+<ReqRef
+ Id="484b41b4-a894-43b4-9ee4-a7227ddfd3aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae52e345-9015-4eda-b625-9434ac9440d0"
+>
+</ReqRef><Comment>This variable is set to True when the on-board requests the establishment of communication session.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="InitiationOfACommunicationSessionReceived"
+ Guid="490547bc-7b30-4783-8531-e6fecdf5e3e1"
+>
+<ReqRef
+ Id="5553cd84-d563-49a7-8514-0b4890a35066"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd072b10-5c0e-46bf-b970-af90bc934bef"
+>
+</ReqRef><Comment>Indicates if the trackside has sent the Initiation of a communication session message.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="RBCIdStruct"
@@ -2358,7 +3230,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </ReqRef><Comment>Data state of the contact information.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
- Name="MobileTerminalStruct"
+ Name="TerminalStruct"
  Guid="d55c89a9-b712-45c6-a15c-1829f68822b8"
 >
 <ReqRef
@@ -2453,6 +3325,15 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Guid="1e98daa6-f5b1-4966-b1e0-819ebee8b313"
 >
 <Comment>Set to True when a request to register the mobile terminal is sent.</Comment>
+</StructureElement><StructureElement
+ TypeName="String"
+ Default="&apos;&apos;"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="NetworkIdToRegister"
+ Guid="44ce713d-dc37-4cd2-8042-0d7087e19d7d"
+>
+<Comment>Indicates which is the id of the network that has to be registered.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotRegistered"
@@ -2500,11 +3381,13 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Guid="9e7d5d30-f543-42e0-a83f-36e13134cba0"
 >THIS &lt;- Registering</Action><Action
  Guid="7ef1e2fe-d075-4c5b-becf-9767795c2a0e"
->RegistrationRequestIsSent &lt;- True</Action></Actions>
+>RegistrationRequestIsSent &lt;- True</Action><Action
+ Guid="03529777-8a74-4e2a-94dc-699b28efc826"
+>RegistrationOrderIsReceived &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="390"
+ X="370"
  Y="100"
  Width="100"
  Height="50"
@@ -2539,11 +3422,13 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 <Actions>
 <Action
  Guid="6df5355e-80ab-4d30-9c50-07679b269768"
->THIS &lt;- Registered</Action></Actions>
+>THIS &lt;- Registered</Action><Action
+ Guid="fc9c3c1f-c4be-4231-949b-288450751e54"
+>NetworkId &lt;- NetworkIdToRegister</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="750"
+ X="670"
  Y="100"
  Width="100"
  Height="50"
@@ -2556,6 +3441,61 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Implemented="TRUE"
  Guid="f4eb8fe7-c356-4800-96ff-ac657fbcd4c7"
 >
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Registration order is received"
+ Guid="56426945-901b-44ba-9d61-d2a52a9c235d"
+>
+<ReqRef
+ Id="2faeb97f-3af1-456a-b8c7-70c5bfa05105"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0eae8d37-df7f-4e2d-9b66-969ac53d5804"
+>
+</ReqRef><ReqRef
+ Id="0717ecbb-ac03-4120-9e37-d836facf9136"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f815afc0-8e64-4f5d-a384-0743cd87fdc6"
+>
+</ReqRef><ReqRef
+ Id="fc32fb41-1c57-4753-a923-fe676aabf35d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5e1a9623-7adc-4b70-bf37-e767584c1323"
+>
+</ReqRef><ReqRef
+ Id="faeb3c32-a982-46f8-b780-09e1573916e8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="65ad2541-f826-414d-972d-6d0c2f266dea"
+>
+</ReqRef><Comment>If an order to register to a network is received from the trackside, when it is ignored if a safe radio connection is being set-up or a communication session is already established.
+
+Once the communication session is terminated and the safe radio connection is released, the radio network registration will be initiated for the requested network.
+
+Note: a safe radio connection can only be set-up when the RBC connection is in state Connecting or Connected.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Registration order is received"
+ Guid="00fe2530-9466-43d0-a4ea-93ff0660ebec"
+>
+<PreConditions>
+<PreCondition
+ Guid="750af1cd-78f4-49b1-912d-21c46b11e6fe"
+>RegistrationOrderIsReceived</PreCondition><PreCondition
+ Guid="b0ae7084-c070-4a83-88ad-3044024b465c"
+>RBCConnection.ConnectionState not in [ RBCStruct.ConnectionStateSM.Connecting, RBCStruct.ConnectionStateSM.Connected ]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="065155db-ddc9-4232-a264-ba308cf6546f"
+>THIS &lt;- Registering</Action><Action
+ Guid="16d4c11f-71c2-438c-aed7-a3050f42a226"
+>RegistrationRequestIsSent &lt;- True</Action><Action
+ Guid="6b794970-4b5b-4735-93d3-112b10af6e7d"
+>RegistrationOrderIsReceived &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></StateMachines>
 </Structure><Structure
@@ -2686,9 +3626,9 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Name="Value"
  Guid="10904d1f-8fc9-4d89-a374-c156b560a9fe"
 >
-<Expression>Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp
+<Expression>Terminal1.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Connected
   OR
-Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</Expression>
+Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Connected</Expression>
 </Case></Cases>
 </Function><Function
  Type="RBCStruct"
@@ -2845,12 +3785,12 @@ Terminal2 != EMPTY</Expression>
  Name="Value"
  Guid="8d5b3f0d-e99a-4b78-a893-b7f25eb488a9"
 >
-<Expression>Terminal1.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Registered
+<Expression>Terminal1.RegistrationState in TerminalStruct.RegistrationStateSM.Registered
   OR
-Terminal2.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Registered</Expression>
+Terminal2.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Expression>
 </Case></Cases>
 </Function><Function
- Type="MobileTerminalStruct"
+ Type="TerminalStruct"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CurrentTerminal"
@@ -3031,7 +3971,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <Comment>Indicates if the provided terminal is registered.</Comment>
 <Parameters>
 <Parameter
- Type="MobileTerminalStruct"
+ Type="TerminalStruct"
  Name="aTerminal"
  Guid="12711288-b128-4515-ac14-d0435e91c454"
 >
@@ -3043,7 +3983,173 @@ It can only return false if there is no open session or if the last known RBC ha
 >
 <Expression>aTerminal != EMPTY
   AND
-aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Registered</Expression>
+aTerminal.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Expression>
+</Case></Cases>
+</Function><Function
+ Type="RBCStruct"
+ Implemented="TRUE"
+ Name="SelectRBCToContact"
+ Guid="edc183ce-4765-4875-9d3a-fcdbb85d8b1d"
+>
+<ReqRef
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="927d2fea-b001-4d8b-b808-bac654cca437"
+>
+</ReqRef><Comment>Selects the RBC to contact according to the communication status. If no terminal is registered, then no RBC can be contacted.</Comment>
+<Cases>
+<Case
+ Name="RBC on terminal 1"
+ Guid="c2516180-752c-4b75-a604-42475c6ea10d"
+>
+<PreConditions>
+<PreCondition
+ Guid="bebfbaf8-71a7-4973-9307-24ea03553705"
+>Terminal1 != EMPTY
+  AND
+TerminalIsRegistered ( aTerminal=&gt; Terminal1 )</PreCondition><PreCondition
+ Guid="7bf2df5d-34de-4d11-bb4e-8236aef07917"
+>Terminal2 != EMPTY
+  AND
+Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
+<Expression>Terminal1.RBCConnection</Expression>
+</Case><Case
+ Name="RBC on terminal 2"
+ Guid="f38511fd-a55d-4afb-bb3f-d18237b53299"
+>
+<PreConditions>
+<PreCondition
+ Guid="19f821b0-8ffe-49e3-9f2d-c42d8184b33d"
+>Terminal2 != EMPTY
+  AND
+TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
+<Expression>Terminal2.RBCConnection</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="901f46f5-6f6d-49a8-a397-ade1263afd05"
+>
+<Expression>EMPTY</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SessionHasToBeEstablished"
+ Guid="5038c7fd-eeb6-4629-878c-aa6f52c39063"
+>
+<ReqRef
+ Id="a9881801-963e-4a33-98f1-1962fc249f4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55de055d-d65c-4ff7-b87a-80135a988920"
+>
+</ReqRef><ReqRef
+ Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1dd73c11-e996-4738-a8e5-cbb294030488"
+>
+</ReqRef><ReqRef
+ Id="752d0832-7cfa-4424-96f7-d3fbb447a20e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c2f48f7-ee72-45fc-93e3-031eb4eab2c2"
+>
+</ReqRef><ReqRef
+ Id="1be02ad3-ca38-452c-a795-e398d991b2da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a75c0c3c-b69f-4142-b538-ccc0cebdffa5"
+>
+</ReqRef><ReqRef
+ Id="fbaaf410-a59f-40cd-b972-aa1e84116831"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9c8529a4-5198-4de6-9483-8f90ac636979"
+>
+</ReqRef><Comment>Indicates if a communication session has to be established.</Comment>
+<Parameters>
+<Parameter
+ Type="RBCStruct"
+ Name="anRBC"
+ Guid="6c09e0fd-ecb7-47eb-aaaf-39f94e0970ee"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Establishment order is received"
+ Guid="d9f492df-d0da-4799-98d2-f92e8dab335b"
+>
+<Comment>First case: an order to establish the communication session is received</Comment>
+<PreConditions>
+<PreCondition
+ Guid="88494b47-b4df-49dd-9cac-c8aeaad524e3"
+>anRBC.ContactRBCOrder != EMPTY
+  AND
+anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Establish session due to loss of safe radio connection"
+ Guid="23a1d6c0-14c5-4f08-ae93-3f738cc84c23"
+>
+<Comment>Second case: if the safe radio connection was lost, the session has to be established again.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="85bd9e76-4cd8-4247-afe6-1fd60098e58e"
+>anRBC.SpecialCaseSessionEstablishmentReason == SpecialCaseSessionEstablishmentReasonEnum.EstablishDueToLossOfConnection</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Establish session due to end of announced radio hole"
+ Guid="baf8a056-2659-4ab8-9879-bdb8602f0a74"
+>
+<Comment>Third case: if the connection was last due to an announced radio hole and the train has reached its end, the session has to be established again.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b5e8db11-f4d9-426b-915b-6324ac7b9956"
+>anRBC.SpecialCaseSessionEstablishmentReason == SpecialCaseSessionEstablishmentReasonEnum.EstablishDueToRadioHole</PreCondition><PreCondition
+ Guid="44942523-b06e-4e90-94c0-c6d3f71ab6f8"
+>NOT Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Establish session due to mode change report"
+ Guid="b68914c4-d26d-49c5-96df-f2f08fbebbeb"
+>
+<Comment>Fourth case: the mode change report has to be sent.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="a510e0d1-2f90-4b43-aea2-0b0b2e446ee2"
+>anRBC.SpecialCaseSessionEstablishmentReason == SpecialCaseSessionEstablishmentReasonEnum.EstablishDueToModeChangeReport</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="74c5d7e9-13ef-45ae-9e1e-ae77e6ec2b8d"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="MessageCanBeSent"
+ Guid="e4578232-0a7b-4b6d-82f8-34004ee84e07"
+>
+<ReqRef
+ Id="0495c96f-8aa3-4cc5-b09d-99f5379d6fcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aa2584bb-c269-46ca-841f-c36c01df6139"
+>
+</ReqRef><ReqRef
+ Id="4fdfab4a-e8a0-4311-8b70-2b8945cd0f7a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6bda043d-8cc2-4f54-925f-a0a80adf54f3"
+>
+</ReqRef><Comment>Indicates if an outgoing message can be sent. The only condition to be satisfied is to have an established session. A message can thus be sent during a loss of the safe radio connection if the connection state is still &quot;Connected&quot;. But no message can be sent after the message &quot;Termination of communication session&quot; since after having sent this message the system goes to &quot;Terminating&quot; state.</Comment>
+<Parameters>
+<Parameter
+ Type="RBCStruct"
+ Name="anRBC"
+ Guid="b40133ab-d13d-4324-bde5-7de83839347c"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="89ac9c68-8258-4a49-ae9d-2281f7d8966a"
+>
+<Expression>anRBC.ConnectionState in RBCStruct.ConnectionStateSM.Connected</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -3067,11 +4173,16 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="18a671d3-8767-4b2f-ba96-f58870ebde49"
 >
-</ReqRef><Comment>Allows to establish/terminate the communication session with an RBC.</Comment>
+</ReqRef><ReqRef
+ Id="00910a19-7134-4f24-a20b-6c88aa996ff1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee1377e4-795f-4619-b479-83b10dd2243f"
+>
+</ReqRef><Comment>Allows to establish/terminate the communication session with an RBC. If no mobile temrinal is registered, the order is rejected.</Comment>
 <Parameters>
 <Parameter
  Type="ContactOrderStruct"
- Name="Order"
+ Name="anOrder"
  Guid="bd7c227e-3f2a-4591-b2f2-0261dead5db0"
 >
 </Parameter></Parameters>
@@ -3087,30 +4198,18 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Terminal1"
+ Name="Select RBC"
  Guid="0e5a581a-1201-405e-b00a-40ae760b28f2"
 >
-<Comment>Terminal1 is the default terminal. If none of terminals are connected, then the connection will be established on the Terminal1. If the connection is already established on this terminal, then it will be closed and the new connection will be opened.</Comment>
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8df44f1d-8bc6-47ea-9994-67dde1dc64c4"
->Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
+>SelectRBCToContact() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="fb0c323a-04ee-47a6-86cd-341b24a90ee3"
->Terminal1.RBCConnection.ContactRBCOrder &lt;- Order</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Terminal2"
- Guid="78b179e8-af95-448d-a830-a24a276f6974"
->
-<Comment>If the connection is already established on the second mobile terminal, then it will be closed and a new connection will be opened.</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="2086e972-9bf9-41fd-bbac-eef71aecabe9"
->Terminal2.RBCConnection.ContactRBCOrder &lt;- Order</Action></Actions>
+>SelectRBCToContact().ContactRBCOrder &lt;- anOrder</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3128,7 +4227,12 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7d4f24b0-92a9-4856-a71d-88e34d2d59ac"
 >
-</ReqRef><Comment>Allows to establish the communication session with an accepting RBC.</Comment>
+</ReqRef><ReqRef
+ Id="00910a19-7134-4f24-a20b-6c88aa996ff1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8f46699-f8ba-4513-b978-e524cdf50e85"
+>
+</ReqRef><Comment>Allows to establish the communication session with an accepting RBC. If no mobile terminal is registered, the order is rejected.</Comment>
 <Parameters>
 <Parameter
  Type="ContactOrderStruct"
@@ -3154,7 +4258,9 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
 <PreConditions>
 <PreCondition
  Guid="ffda9f58-de4b-460e-9459-f56d2e21d0d9"
->Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition></PreConditions>
+>Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition><PreCondition
+ Guid="33666d69-9750-4e02-a8e6-c569ffffe0fa"
+>TerminalIsRegistered ( aTerminal=&gt; Terminal1 )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="26ca8f48-278e-43b7-b3a9-85398b8d2fc7"
@@ -3172,7 +4278,9 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
 >
 <Comment>If the first mobile terminal is already connected, the connection will be established on the second one.</Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="1571691d-c431-48e0-9f63-1a441b77ffe8"
+>TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="73ee1e00-5c33-49e9-a6b2-2b8018da8475"
@@ -3255,7 +4363,7 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
  Guid="2078f218-6c1c-485a-9a00-f77a91524075"
 >ContactRBC
 (
-    Order =&gt; ContactOrderStruct
+    anOrder =&gt; ContactOrderStruct
     {
         Id =&gt; LastKnownRBC.Id,
         PhoneNumber =&gt; LastKnownRBC.PhoneNumber,
@@ -3282,7 +4390,7 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
  Guid="5dd1dd73-af6c-4f90-99d8-db129a45167f"
 >ContactRBC
 (
-    Order =&gt; ContactOrderStruct
+    anOrder =&gt; ContactOrderStruct
     {
         Id =&gt; CurrentRBCConnection().ContactData.Id,
         PhoneNumber =&gt; ShortNumber,
@@ -3309,7 +4417,7 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
  Guid="9f928072-675b-4a55-a3b6-da40798f6286"
 >ContactRBC
 (
-    Order =&gt; ContactOrderStruct
+    anOrder =&gt; ContactOrderStruct
     {
         Id =&gt; CurrentRBCConnection().ContactData.Id,
         PhoneNumber =&gt; CurrentRBCConnection().ContactData.PhoneNumber,
@@ -3351,7 +4459,7 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
  Name="Close the session"
  Guid="b37006ef-5ce5-4c15-9dd8-55ec01214286"
 >
-<Comment>TODO: to be implemented</Comment>
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3366,7 +4474,7 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
  Guid="9c41a20d-c457-4bed-8e73-8106d54cde3b"
 >ContactRBC
 (
-    Order =&gt; ContactOrderStruct
+    anOrder=&gt; ContactOrderStruct
     {
         Id =&gt; CurrentRBCConnection().ContactData.Id,
         PhoneNumber =&gt; CurrentRBCConnection().ContactData.PhoneNumber,
@@ -3475,7 +4583,7 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
  Guid="a6ebac2e-aa73-4d15-b591-4cdeeb13852b"
 >ContactRBC
 (
-    Order =&gt; ContactOrderStruct
+    anOrder =&gt; ContactOrderStruct
     {
         Id =&gt; RBCIdStruct
         {
@@ -3519,7 +4627,7 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
  Guid="21f26d0a-7720-431b-a2c8-aa7386d415c0"
 >ContactRBC
 (
-    Order =&gt; ContactOrderStruct
+    anOrder =&gt; ContactOrderStruct
     {
         Id =&gt; RBCIdStruct
         {
@@ -3561,7 +4669,7 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
  Guid="81f8e818-3b94-4484-9cb1-2ae9a62240e9"
 >ContactRBC
 (
-    Order =&gt; ContactOrderStruct
+    anOrder =&gt; ContactOrderStruct
     {
         Id =&gt; RBCIdStruct
         {
@@ -3617,15 +4725,21 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
 <PreConditions>
 <PreCondition
  Guid="e65e63b1-fd62-4950-b031-05d1d1109e1c"
->aNetworkId != &apos;&apos;</PreCondition><PreCondition
- Guid="a2615e3a-f358-4066-9575-0d53fa70519f"
->Terminal1 != EMPTY</PreCondition></PreConditions>
+>aNetworkId != &apos;&apos;</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="78ee6641-812f-4c2a-afbe-b0e4ada5e038"
->Terminal1.NetworkId &lt;- aNetworkId</Action><Action
+>RegisterATerminal
+(
+    aTerminal=&gt; Terminal1,
+    aNetworkId=&gt; aNetworkId
+)</Action><Action
  Guid="c6f1daed-dbca-4284-aa54-e5ac33091cd8"
->Terminal1.RegistrationOrderIsReceived &lt;- True</Action></Actions>
+>RegisterATerminal
+(
+    aTerminal=&gt; Terminal2,
+    aNetworkId=&gt; aNetworkId
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Otherwise, use the default Radio Network id"
@@ -3640,66 +4754,21 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
 <PreConditions>
 <PreCondition
  Guid="301efa69-de1e-4a8d-a59f-c0c7afcbe928"
->DefaultRadioNetworkId != &apos;&apos;</PreCondition><PreCondition
- Guid="8b094c15-6938-4c4f-b906-3c58d7147db8"
->Terminal1 != EMPTY</PreCondition></PreConditions>
+>DefaultRadioNetworkId != &apos;&apos;</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="25c3fc69-9b60-4bb1-a2d1-b74d2cd381a9"
->Terminal1.NetworkId &lt;- DefaultRadioNetworkId</Action><Action
+>RegisterATerminal
+(
+    aTerminal=&gt; Terminal1,
+    aNetworkId=&gt; DefaultRadioNetworkId
+)</Action><Action
  Guid="e3be1ede-90b1-4290-b919-3187a1668b3c"
->Terminal1.RegistrationOrderIsReceived &lt;- True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Register Terminal 2"
- Guid="3c199b29-11fc-4460-97ea-901dc09a1fc1"
->
-<Comment>If the provided id is valid or the last known nework id is valid, then the mobile terminals are registered.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Provided id is valid"
- Guid="c8337903-86ab-46de-bdd2-e0a1ed4511b3"
->
-<Comment>If the provided id is valid, it is used to register the terminals.</Comment>
-<PreConditions>
-<PreCondition
- Guid="87592e9b-0089-4a10-915a-60e03e2558fa"
->aNetworkId != &apos;&apos;</PreCondition><PreCondition
- Guid="5ce4ba78-2335-41e2-bcb6-083ceef30a92"
->Terminal2 != EMPTY</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1197a187-743d-4ef8-b703-a450a2d894cc"
->Terminal2.NetworkId &lt;- aNetworkId</Action><Action
- Guid="783417b6-9503-41d0-a158-b3791b7b8643"
->Terminal2.RegistrationOrderIsReceived &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Otherwise, use the default Radio Network id"
- Guid="c7bcca58-db69-4318-9e91-c76f99c5a8a0"
->
-<ReqRef
- Id="5e068e1e-2be5-45b6-b9eb-d1151df93748"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3e314a60-41cd-4775-ae4c-b4f7f9139866"
->
-</ReqRef><Comment>Otherwise the default Radio Network id is used.</Comment>
-<PreConditions>
-<PreCondition
- Guid="d722156b-dc79-40ca-8d69-01d930277bb2"
->DefaultRadioNetworkId != &apos;&apos;</PreCondition><PreCondition
- Guid="0109cfd5-390b-40ed-b1f3-7677b2a7cd27"
->Terminal2 != EMPTY</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1cf19cc1-54b0-4e96-8416-8b15dbd3d02d"
->Terminal2.NetworkId &lt;- DefaultRadioNetworkId</Action><Action
- Guid="5b6ed105-875c-4340-bbb8-2016d256b5df"
->Terminal2.RegistrationOrderIsReceived &lt;- True</Action></Actions>
+>RegisterATerminal
+(
+    aTerminal=&gt; Terminal2,
+    aNetworkId=&gt; DefaultRadioNetworkId
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -4015,6 +5084,44 @@ aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Register
 <Action
  Guid="6408d9ba-f07f-4dc0-8df8-e66f89eca5d8"
 >Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST_IN aMessage.MOVEMENT_AUTHORITY.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Radio Network registration received"
+ Guid="96b96609-5d4c-4603-a2e3-29ec0bcb9cdd"
+>
+<ReqRef
+ Id="031d12f5-b1df-4716-9eda-a3495861e160"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="315467c8-d88a-4ab6-85ef-78b9b47ae330"
+>
+</ReqRef><ReqRef
+ Id="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6b0d3032-81c0-4e4c-9422-b71f50d6cb2a"
+>
+</ReqRef><ReqRef
+ Id="6476afb5-0645-4298-926a-e67147752ddf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="efb5419f-ac91-49f7-b965-88678009460f"
+>
+</ReqRef><Comment>Handles reception of radio network registration orders received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Radio Network registration received"
+ Guid="0e2ca957-6839-4b3f-afce-aa28d95dbfbd"
+>
+<PreConditions>
+<PreCondition
+ Guid="efefa7ba-fa7c-487d-999b-161436ccdd38"
+>THERE_IS_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3f635080-161d-4765-998e-7bc79357fae7"
+>RadioNetworkRegistrationReceived ( aPacket =&gt; ( FIRST_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )).RADIO_NETWORK_REGISTRATION )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -4385,6 +5492,44 @@ Default.MessageTypes.QScaleDistance(
  Guid="864aed8d-656b-44ab-97d1-b019cba9aeef"
 >TracksideOrderedSessionReceived ( Packet =&gt; ( FIRST_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )).SESSION_MANAGEMENT )</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Radio Network registration received"
+ Guid="ed7d1e6a-a0a3-49c9-8fd4-be819eba3a56"
+>
+<ReqRef
+ Id="031d12f5-b1df-4716-9eda-a3495861e160"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e91e2170-ac05-410c-94da-1aaa6ead98d4"
+>
+</ReqRef><ReqRef
+ Id="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1df085a5-8517-41ca-9675-668ec9da5395"
+>
+</ReqRef><ReqRef
+ Id="6476afb5-0645-4298-926a-e67147752ddf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a70cd81c-1509-4100-9065-62c294fe5476"
+>
+</ReqRef><Comment>Handles reception of radio network registration orders received with the general message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Radio Network registration received"
+ Guid="e4a85e4e-5316-41c0-ab53-2952ce6faafd"
+>
+<PreConditions>
+<PreCondition
+ Guid="0832c897-e755-49da-b609-cfa0c2859a59"
+>THERE_IS_IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f7218da0-0535-4404-9004-e803bf961c91"
+>RadioNetworkRegistrationReceived ( aPacket =&gt; ( FIRST_IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )).RADIO_NETWORK_REGISTRATION )</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -4624,7 +5769,84 @@ Default.MessageTypes.QScaleDistance(
  Guid="7a4b291e-cb8d-40bf-9dc9-423cd269c364"
 >TracksideOrderedSessionReceived ( Packet =&gt; ( FIRST_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )).SESSION_MANAGEMENT )</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Radio Network registration received"
+ Guid="1c416e5c-9d36-4cc6-92dd-ca8df880cd0a"
+>
+<ReqRef
+ Id="031d12f5-b1df-4716-9eda-a3495861e160"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dc289318-0099-4bf3-8b38-4c1ca8028708"
+>
+</ReqRef><ReqRef
+ Id="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a47c17c8-3ee6-4d2a-978b-3bf7d3f268e5"
+>
+</ReqRef><ReqRef
+ Id="6476afb5-0645-4298-926a-e67147752ddf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3aaf0c56-8636-4293-9ed7-18ef7d85dcc4"
+>
+</ReqRef><Comment>Handles reception of radio network registration orders received with MA with shifted location reference.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Radio Network registration received"
+ Guid="51fe263c-fe6c-4016-8b7b-47def8f0e4f3"
+>
+<PreConditions>
+<PreCondition
+ Guid="d544c340-ceb7-48e8-8446-f88615d47da1"
+>THERE_IS_IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bdb60228-bfad-43d2-ac1e-e6bbbac30872"
+>RadioNetworkRegistrationReceived ( aPacket =&gt; ( FIRST_IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )).RADIO_NETWORK_REGISTRATION )</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="RBC/RIU system version"
+ Guid="72ea757d-52ec-42fa-bd6a-154f694dc4ae"
+>
+<ReqRef
+ Id="02f20f26-3445-49b9-95cf-a6948ab029b8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb6b5b48-be53-43e2-9e0c-154d5613bdd7"
+>
+</ReqRef><ReqRef
+ Id="71740f57-d219-41b2-93f8-319c302b1afa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="11c4849e-4311-4b6f-b7eb-f58c203eb04c"
+>
+</ReqRef><ReqRef
+ Id="2eda81e7-52ac-483d-91c9-169e8718de74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b022c87b-4aa3-482c-840a-fcc52d3a0394"
+>
+</ReqRef><Comment>Handles reception of the RBC/RIU system version.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RBC/RIU system version"
+ Guid="17ca29cb-fad8-4162-8eb4-95e27de49f9d"
+>
+<PreConditions>
+<PreCondition
+ Guid="4fa84a57-6d47-40db-a5af-2a05d082f8c1"
+>Available ( aMessage.RIU_SYSTEM_VERSION )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="edc7241a-b3a2-422c-bbe6-f815e0c132da"
+>HandleRBCRIUSystemVersion ( aMessage =&gt; aMessage.RIU_SYSTEM_VERSION )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -4764,36 +5986,40 @@ Default.MessageTypes.QScaleDistance(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="RBC/RIU system version"
- Guid="72ea757d-52ec-42fa-bd6a-154f694dc4ae"
+ Name="Initiation of a communication session"
+ Guid="3e9c2f71-7759-4362-8ed1-97a91010386c"
 >
 <ReqRef
- Id="02f20f26-3445-49b9-95cf-a6948ab029b8"
+ Id="5c22942d-5616-44c5-8707-c8edf2889ba9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bb6b5b48-be53-43e2-9e0c-154d5613bdd7"
+ Guid="1e499a6d-626e-4b40-8786-2c0ce268c05c"
 >
 </ReqRef><ReqRef
- Id="71740f57-d219-41b2-93f8-319c302b1afa"
+ Id="0e6b5d89-69d9-43ff-8971-5f84c02aa2d2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="11c4849e-4311-4b6f-b7eb-f58c203eb04c"
+ Guid="f3d9f4ac-c494-49dd-aca2-336102819dfe"
 >
-</ReqRef><Comment>Handles reception of the RBC/RIU system version.</Comment>
+</ReqRef><ReqRef
+ Id="5553cd84-d563-49a7-8514-0b4890a35066"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f978fd61-c163-44bb-9cb9-4a96cc73951f"
+>
+</ReqRef><Comment>Handles reception of the inifiation of a communication session.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RBC/RIU system version"
- Guid="17ca29cb-fad8-4162-8eb4-95e27de49f9d"
+ Name="Initiation of a communication session"
+ Guid="8a935a5f-97b3-472e-b592-2d1156866e13"
 >
 <PreConditions>
 <PreCondition
- Guid="4fa84a57-6d47-40db-a5af-2a05d082f8c1"
->Available ( aMessage.RIU_SYSTEM_VERSION )</PreCondition></PreConditions>
+ Guid="235a0300-92ec-446e-821a-89a960c55b93"
+>Available ( aMessage.INITIATION_OF_A_COMMUNICATION_SESSION )</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="edc7241a-b3a2-422c-bbe6-f815e0c132da"
->HandleRBCRIUSystemVersion ( aMessage =&gt; aMessage.RIU_SYSTEM_VERSION )</Action></Actions>
+ Guid="12ed8134-932c-460b-b43c-93b9450e806e"
+>HandleInitiationOfACommunicationSession ( aMessage =&gt; aMessage.INITIATION_OF_A_COMMUNICATION_SESSION )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4848,6 +6074,11 @@ Default.MessageTypes.QScaleDistance(
  Id="e094e23a-bd94-4440-8632-705782494f35"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7f014caa-eade-494b-9fcd-4a5adf0777d8"
+>
+</ReqRef><ReqRef
+ Id="2a8dff3a-71d3-4a6e-9d2b-85f6c568cd25"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="945ce21f-e5eb-4ed2-b142-5559468f4524"
 >
 </ReqRef><Comment>Indicates that the acknowledgement has been received.</Comment>
 <Parameters>
@@ -4925,7 +6156,7 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 <PreConditions>
 <PreCondition
  Guid="e865f160-465a-4fa6-bbdf-5c4aa595c910"
->CurrentRBCConnection().ConnectionState not in RBCStruct.ConnectionStateSM.Connecting</PreCondition></PreConditions>
+>CurrentRBCConnection().ConnectionState not in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7ffe8131-5392-4ec9-a32e-1ad7d3cb2dcd"
@@ -4963,6 +6194,158 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 <Action
  Guid="757ae52c-3581-4ad8-bd4d-bdc6a6dad180"
 >HandleAcknowledgementOfTerminationOfACommunicationSession ( aMessage =&gt; aMessage.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="RadioNetworkRegistrationReceived"
+ Guid="0b3f4004-daf2-4f22-a675-61269508d61e"
+>
+<ReqRef
+ Id="865bbdd6-2010-4869-ab3e-bc538ce5fe4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f1efa44-e607-4495-a768-a7e92c45951a"
+>
+</ReqRef><ReqRef
+ Id="031d12f5-b1df-4716-9eda-a3495861e160"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2188301b-ce9b-461c-be01-a945fc88e97d"
+>
+</ReqRef><Comment>Handles reception of network registration order received from the trackside.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.RADIO_NETWORK_REGISTRATION.Message"
+ Name="aPacket"
+ Guid="9770ebbd-df05-4fdc-800f-a32ef4ebd176"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle radio network registration"
+ Guid="51e0899c-678f-4938-8150-70c6f5208527"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle radio network registration"
+ Guid="925227fc-89b7-43b1-886e-679d77350bf4"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="847054a6-9b00-4448-832a-5edaa16863c2"
+>RegisterMobileTerminals ( aPacket.NID_MN )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="RegisterATerminal"
+ Guid="91d65967-0ce4-4f16-86a3-05c2262bea89"
+>
+<ReqRef
+ Id="07af900f-f07f-4018-abe3-bab8be32b2a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6920acdb-a800-4874-b91e-7f52be773233"
+>
+</ReqRef><Comment>The procedure starts the registering of the provided mobile terminal to the provided network, except if the terminal is already registered to the provided netword.</Comment>
+<Parameters>
+<Parameter
+ Type="TerminalStruct"
+ Name="aTerminal"
+ Guid="69f73909-1dca-46c6-a79f-e7d801022eb6"
+>
+</Parameter><Parameter
+ Type="String"
+ Name="aNetworkId"
+ Guid="16f25452-c7ca-4c62-8a7d-417fe5fdb16f"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Register a terminal"
+ Guid="0e7dcaaa-a043-4bc5-baf6-d4ab91873869"
+>
+<ReqRef
+ Id="fc32fb41-1c57-4753-a923-fe676aabf35d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b24901c-10ca-440f-b179-193bbaca3ef6"
+>
+</ReqRef><Comment>Requests the registering of the provided mobile terminal to the provided network, if it is not already registered to that network.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Register a terminal"
+ Guid="4bc4b088-a4d4-497a-949d-f269fbf04b8a"
+>
+<PreConditions>
+<PreCondition
+ Guid="b98357f2-9bff-490d-951c-a72293c7c303"
+>NOT
+(
+  aTerminal.RegistrationState in TerminalStruct.RegistrationStateSM.Registered
+    AND
+  aTerminal.NetworkId != aNetworkId
+)</PreCondition><PreCondition
+ Guid="115781a3-1ed8-4502-9708-18c621902b3e"
+>aTerminal != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d0f0e831-08a8-4181-a47d-9d039b484d48"
+>aTerminal.NetworkIdToRegister &lt;- aNetworkId</Action><Action
+ Guid="503a9e82-74de-44aa-9897-753d7f0369c1"
+>aTerminal.RegistrationOrderIsReceived &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleInitiationOfACommunicationSession"
+ Guid="e148b0a4-d11d-4f3d-aa7b-9d8a9065121c"
+>
+<ReqRef
+ Id="5553cd84-d563-49a7-8514-0b4890a35066"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dc57eeb8-ddae-467e-a5d7-89a5d8c3d293"
+>
+</ReqRef><ReqRef
+ Id="e5b845f3-54de-4120-8f98-f59e56625654"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5c365964-b047-4477-95dd-7596ce4eeed3"
+>
+</ReqRef><Comment>When the Initiation of a communication session message is received, this information is stored.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.INITIATION_OF_A_COMMUNICATION_SESSION.Message"
+ Name="aMessage"
+ Guid="15dd081b-81bb-4708-9e41-0cde0f553038"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Indicate the message is received"
+ Guid="c0c8406e-c5a8-4498-9843-d5d8e450fa68"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Indicate the message is received"
+ Guid="7555654b-32ae-4b36-a935-25932d303ad0"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="719c1d19-13d5-4770-8ba1-1b886c2f4980"
+>CurrentRBCConnection().SessionManagementData.InitiationOfACommunicationSessionReceived &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -5085,7 +6468,7 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 >
 </ReqRef><Comment>Allows to request the list of available and allowed networks.</Comment>
 </Variable><Variable
- Type="MobileTerminalStruct"
+ Type="TerminalStruct"
  VariableMode="InOut"
  Implemented="TRUE"
  Name="Terminal1"
@@ -5098,7 +6481,7 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 >
 </ReqRef><Comment>First terminal struct.</Comment>
 </Variable><Variable
- Type="MobileTerminalStruct"
+ Type="TerminalStruct"
  VariableMode="InOut"
  Implemented="TRUE"
  Name="Terminal2"
@@ -5210,76 +6593,5 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Guid="2e7a9c6a-4a8a-47ce-95f5-e7fd726a7c40"
 >
 </ReqRef><Comment>&quot;Connection status&quot; timer for safe radio connection indication.</Comment>
-</Variable><Variable
- Type="Boolean"
- VariableMode="Internal"
- Implemented="TRUE"
- Name="PreviousRadioHoleValue"
- Guid="a944cb38-559b-41c2-bbfa-47fd48fbe8f5"
->
-<ReqRef
- Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="55d11522-989c-4245-8159-1406f46e0f9f"
->
-</ReqRef><Comment>Stores the previous value of IsRadioHole function, in order to detect when the train reaches the end of an announced radio hole.</Comment>
 </Variable></Variables>
-<Rules>
-<Rule
- Priority="CleanUp"
- Implemented="TRUE"
- Name="Radio hole tracker"
- Guid="adf6dbcd-ad07-408a-8dad-224dd5fc060e"
->
-<ReqRef
- Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d0f20dea-cfa5-4737-b58f-4584cf17231e"
->
-</ReqRef><Comment>Stores the previous value of IsRadioHoleFunction in order to determine that the train reached the ned of an announced radio hole.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Radio hole tracker"
- Guid="3070261a-afeb-45e8-8581-af4dedcc7835"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="c93d190a-c792-451a-9620-7daaf7b6faa1"
->PreviousRadioHoleValue &lt;- Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Handle radio holes"
- Guid="aa07ff03-6f7f-4a34-b670-071990efb6e5"
->
-<ReqRef
- Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fe7bdae4-7b35-4bc1-99df-fc324b0a2940"
->
-</ReqRef><Comment>Opens an RBC session when the end of an announced radio hole is reached.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Handle radio holes"
- Guid="0a92b508-5118-4453-8410-9fb1eafdad5c"
->
-<PreConditions>
-<PreCondition
- Guid="afcdf675-0f63-4287-91c9-be240194d87c"
->PreviousRadioHoleValue != Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition><PreCondition
- Guid="9bd93c77-5503-4db2-887d-a9bf1f7dca29"
->NOT Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="90ffc76d-d9cd-411a-b66b-a120aad513df"
->OpenRBCSession()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 </NameSpace>

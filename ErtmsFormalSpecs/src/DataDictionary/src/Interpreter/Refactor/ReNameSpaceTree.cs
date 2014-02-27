@@ -23,27 +23,23 @@ namespace DataDictionary.Interpreter.Refactor
     /// <summary>
     /// This visitor is used to handle refactoring of expressions.
     /// </summary>
-    public class RefactorTree : BaseRefactorTree
+    public class RelocateTree : BaseRefactorTree
     {
         /// <summary>
-        /// The model element which should be refactored
+        /// The new location of the element
         /// </summary>
-        private ModelElement Ref { get; set; }
-
-        /// <summary>
-        /// By what should be replaced the referenced
-        /// </summary>
-        private string ReplacementValue { get; set; }
+        private ModelElement BaseLocation { get; set; }
 
         protected override void VisitDerefExpression(DerefExpression derefExpression)
         {
             bool replaced = false;
 
-            if (!(Ref is Types.StructureElement))
+            if (!(derefExpression.Ref is Types.StructureElement))
             {
-                if (derefExpression.Ref == Ref)
+                ModelElement model = derefExpression.Ref as ModelElement;
+                if (model != null)
                 {
-                    ReplaceText(ReplacementValue, derefExpression.Start, derefExpression.End);
+                    ReplaceText(model.ReferenceName(BaseLocation), derefExpression.Start, derefExpression.End);
                     replaced = true;
                 }
                 else
@@ -52,9 +48,10 @@ namespace DataDictionary.Interpreter.Refactor
                     {
                         if (expression != null)
                         {
-                            if (expression.Ref == Ref)
+                            model = expression.Ref as ModelElement;
+                            if (model != null)
                             {
-                                ReplaceText(ReplacementValue, derefExpression.Start, expression.End);
+                                ReplaceText(model.ReferenceName(BaseLocation), derefExpression.Start, expression.End);
                                 replaced = true;
                                 break;
                             }
@@ -65,15 +62,16 @@ namespace DataDictionary.Interpreter.Refactor
 
             if (!replaced)
             {
-                base.VisitDerefExpression(derefExpression);
+                VisitExpression(derefExpression.Arguments[0]);
             }
         }
 
         protected override void VisitDesignator(Designator designator)
         {
-            if (designator.Ref == Ref && !designator.IsPredefined())
+            ModelElement model = designator.Ref as ModelElement;
+            if (model != null && !designator.IsPredefined())
             {
-                ReplaceText(ReplacementValue, designator.Start, designator.End);
+                ReplaceText(model.ReferenceName(BaseLocation), designator.Start, designator.End);
             }
         }
 
@@ -84,11 +82,10 @@ namespace DataDictionary.Interpreter.Refactor
         /// <param name="text"></param>
         /// <param name="reference"></param>
         /// <param name="replacementValue"></param>
-        public RefactorTree(ModelElement reference, string replacementValue)
+        public RelocateTree(ModelElement baseLocation)
             : base()
         {
-            Ref = reference;
-            ReplacementValue = replacementValue;
+            BaseLocation = baseLocation;
         }
     }
 }

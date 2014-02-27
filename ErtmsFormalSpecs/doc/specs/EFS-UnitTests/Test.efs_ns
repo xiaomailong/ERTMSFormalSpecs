@@ -3,7 +3,11 @@
  Guid="3d3f9b4a-1bf2-483b-bc24-77563e8e2677"
 >
 <NameSpaces>
-</NameSpaces>
+<NameSpaceRef
+ Name="Test3"
+ Guid="d4e91c6e-9c3b-412b-a7fb-2cb34498076d"
+>
+</NameSpaceRef></NameSpaces>
 <Ranges>
 <Range
  MinValue="0"
@@ -88,7 +92,7 @@
 >
 </StructureElement><StateMachines>
 <StateMachine
- InitialState="State1"
+ Default="State1"
  Name="stateMachine2"
  Guid="62f7165d-d460-4bc0-85ff-2f8a626d1c07"
 >
@@ -102,7 +106,6 @@
  Guid="06227d1f-734c-4115-92c7-0da13438c378"
 >
 <StateMachine
- InitialState=""
  Guid="92a6faf2-3d36-4972-91f8-a37756165b5d"
 >
 <Rules>
@@ -140,15 +143,50 @@
  Guid="3233759a-bbc4-4894-b339-e0c2b9ecef89"
 >
 <StateMachine
- InitialState=""
  Guid="9a446eb7-2721-4a8d-a6c7-a0cdbe9072db"
 >
 </StateMachine></State></States>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="&lt;Rule1&gt;"
+ Guid="6a14ea6c-e63f-43db-9815-f8e874f18a73"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="&lt;Rule1&gt;"
+ Guid="64496e67-424f-4a30-85b5-8386b7457180"
+>
+<PreConditions>
+<PreCondition
+ Guid="e0d94ddc-958b-4b34-b0df-f5f8433f2287"
+>THIS in State2</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="098e8a6c-a406-44a9-a38c-578c01a8fc1b"
+>THIS &lt;- State2</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="&lt;Rule2&gt;"
+ Guid="eb12aa5e-c2a5-4f38-9f84-deaa1d6d7ba1"
+>
+<SubRules></SubRules>
+</Rule></Rules>
 </StateMachine></StateMachines>
 </Structure></Structures>
+<Collections>
+<Collection
+ TypeName="Boolean"
+ Default="[]"
+ Name="Coll"
+ Guid="dc61eca2-db59-46c5-9858-8788aa35b77e"
+>
+</Collection></Collections>
 <StateMachines>
 <StateMachine
- InitialState="e1"
+ Default="e1"
  Name="stateMachine2"
  Guid="67b16786-8ac6-450f-ad0e-d47bf4d83f83"
 >
@@ -162,7 +200,6 @@
  Guid="9b5b7f73-0017-4c18-821a-27d75115981a"
 >
 <StateMachine
- InitialState=""
  Guid="285cc810-d4fe-4752-9707-9197b8fad198"
 >
 <Rules>
@@ -194,9 +231,49 @@
  Guid="02ad54b8-7dad-439e-a464-3bb25b702525"
 >
 <StateMachine
- InitialState=""
  Guid="ba389e33-57b9-49e0-8c05-afd56c210e7a"
 >
+</StateMachine></State></States>
+</StateMachine><StateMachine
+ Default="e1"
+ Name="stateMachine1"
+ Guid="1c134cb5-8010-4d0c-91f3-1d85f15f00c5"
+>
+<States>
+<State
+ Name="e1"
+ Guid="d22dcc38-0ca1-44c7-bc9c-cdf6f3e696f8"
+>
+<StateMachine
+ Guid="f368b362-5ad4-4276-b658-e8ad79d8c202"
+>
+</StateMachine></State><State
+ Name="e2"
+ Guid="eb19fda7-4643-475c-878a-880f2fa3bc82"
+>
+<StateMachine
+ Guid="c644e644-ee4f-4080-a738-36b41d2083d7"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="&lt;Rule1&gt;"
+ Guid="313ab44a-d244-4a3b-9c03-501ca5d1168b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="&lt;Condition1&gt;"
+ Guid="d20c51a2-559d-40da-a5db-f4c6ef6debeb"
+>
+<PreConditions>
+<PreCondition
+ Guid="91a69d72-ca0c-4259-b1fa-c05ad60e4d00"
+>val_stm in stateMachine2.e1</PreCondition></PreConditions>
+<Actions>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></StateMachines>
 <Functions>
@@ -232,6 +309,23 @@
 >z == 2</PreCondition></PreConditions>
 <Expression>3</Expression>
 </Case></Cases>
+</Function><Function
+ Type="struct"
+ Name="func2"
+ Guid="099a3152-cd5e-4f1a-a2b2-40bd207bb73e"
+>
+<Cases>
+<Case
+ Name="&lt;Case1&gt;"
+ Guid="aba4db25-2f7d-4af2-8aff-61d3fe070e23"
+>
+<Expression>struct{
+    str_stm =&gt; Test.struct.stateMachine2.State1,
+    str_b =&gt; Boolean.False,
+    str_enum =&gt; Test.enum1.v1,
+    str_r =&gt; 1
+}</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -266,7 +360,11 @@
  Guid="77192634-43c2-45cf-bc05-2a9c9c6e6069"
 >val_v &lt;- 3</Action><Action
  Guid="345eaf4e-45f3-4dc1-a64b-ce9da12ae944"
->val_v &lt;- func1( z =&gt; 4 )</Action></Actions>
+>val_v &lt;- func1( z =&gt; 4 )</Action><Action
+ Guid="20866434-ad5b-4399-9d97-16de589cd488"
+>val_struct.str_b &lt;- True</Action><Action
+ Guid="b653a568-6fd6-46ba-a085-9e04f6f5aa64"
+>func2().str_b &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -289,5 +387,38 @@
  Name="val_enum"
  Guid="ab196326-55d4-4308-b226-62e10480ff6d"
 >
+</Variable><Variable
+ Type="struct"
+ VariableMode="Internal"
+ Name="val_struct"
+ Guid="7f33ba9a-0f36-42e8-89c5-075be1ff11bf"
+>
+</Variable><Variable
+ Type="Coll"
+ DefaultValue="[]"
+ VariableMode="Internal"
+ Name="var_coll"
+ Guid="5604328c-1bea-48d3-9dec-35622b8d864d"
+>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="&lt;Rule2&gt;"
+ Guid="db476fe2-5b9c-486f-b85a-8cfda35aef44"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="&lt;Condition1&gt;"
+ Guid="25b86987-2730-4dae-9d6f-29a03816dab4"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ab21d1a9-7be1-43dd-b336-f402a31deebb"
+>var_coll &lt;- MAP var_coll USING NOT X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>

@@ -330,7 +330,11 @@ namespace GUI
                     }
                     else
                     {
+                        DataDictionary.Interpreter.Compiler compiler = DataDictionary.EFSSystem.INSTANCE.Compiler;
+
+                        compiler.Compile_Synchronous(false, true);
                         DestinationNode.AcceptDrop(SourceNode);
+                        compiler.RefactorAndReNameSpace(SourceNode.Model as DataDictionary.ModelElement);
                     }
                 }
             }

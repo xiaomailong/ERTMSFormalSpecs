@@ -2289,55 +2289,57 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
 <PreConditions>
 <PreCondition
  Guid="e932afe8-ba36-4cdd-b2b8-0c4a04bebf4e"
->( LevelChanged(jru) )
+>LevelChanged(jru)
   OR
-( SendMessagePeriodically(jru) )
-OR
-( ModeChanged(jru) )
-OR
-( SystemVersionChanged(jru) )
-OR
+SendMessagePeriodically(jru)
+  OR
+ModeChanged(jru)
+  OR
+SystemVersionChanged(jru)
+  OR
 ( JRU.TrainDataHaveChanged(jru) ) OR (TrainDataVerified() == True )
-OR
-(JRU.EmergencyBrakeStatusChanged(jru) )
-OR
-(JRU.ServiceBrakeStatusChanged(jru) )
-OR
-( TelegramFromBaliseRecieved() )
-OR
- (MessageFromRbcRecieved(EURORADIO.CurrentRBCConnection() ) )
-OR
-( MessageToRbcReady(EURORADIO.CurrentRBCConnection()) )
-OR
-(LevelChangedToNtc(jru))
-OR
-(SendSpeedAndDistanceMonitoringInformationMessage(jru) )
-OR
-(SendSleppingInput(jru))
-OR
-(SendPassiveShuntingMessage(jru))
-OR
-(SendNonLeadingMessage(jru))
-OR
-(SendRegenerativeBrakeStatusMessage(jru))
-OR
-(SendMagneticShoeBrakeStatusMessage(jru))
-OR
-(SendElectroPneumaticBrakeStatusMessage(jru))
-OR
-( SendAdditionalBrakeStatusMessage(jru) )
-OR
-(SendCabStatusMessage(jru))
-OR
-(SendTrainDirectionControllerMessage(jru))
-OR
-(SendTractionStatusMessage(jru) )
-OR
-( SendTrainDataEntry(jru) )
-OR
-( SendNationalSystemIsolationMessage(jru) )
-OR
-( SendMTCOMessage(jru) )</PreCondition><PreCondition
+  OR
+JRU.EmergencyBrakeStatusChanged(jru)
+  OR
+JRU.ServiceBrakeStatusChanged(jru)
+  OR
+TelegramFromBaliseRecieved()
+  OR
+MessageFromRbcRecieved(EURORADIO.CurrentRBCConnection() )
+  OR
+MessageToRbcReady(EURORADIO.CurrentRBCConnection())
+  OR
+LevelChangedToNtc(jru)
+  OR
+SendSpeedAndDistanceMonitoringInformationMessage(jru)
+  OR
+SendSleppingInput(jru)
+  OR
+SendPassiveShuntingMessage(jru)
+  OR
+SendNonLeadingMessage(jru)
+  OR
+SendRegenerativeBrakeStatusMessage(jru)
+  OR
+SendMagneticShoeBrakeStatusMessage(jru)
+  OR
+SendEddyCurrentBrakeStatusMessage(jru)
+  OR
+SendElectroPneumaticBrakeStatusMessage(jru)
+  OR
+SendAdditionalBrakeStatusMessage(jru)
+  OR
+SendCabStatusMessage(jru)
+  OR
+SendTrainDirectionControllerMessage(jru)
+  OR
+SendTractionStatusMessage(jru)
+  OR
+SendTrainDataEntry(jru)
+  OR
+SendNationalSystemIsolationMessage(jru)
+  OR
+SendMTCOMessage(jru)</PreCondition><PreCondition
  Guid="07a9b9fc-3c5f-4545-acc0-68ead56b0325"
 >Kernel.ActiveFunctions.ProvideJuridicalData()</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -3780,10 +3782,7 @@ TELEGRAM=&gt; BTM.Message
 HEADER =&gt; CreateHeader(9),
 NID_C =&gt; RBCContactIbnformation.Country,
 NID_RBC =&gt; RBCContactIbnformation.Id,
-TELEGRAM =&gt; Messages.MESSAGE.Message
-{
-    TRACK_TO_TRAIN =&gt;RbcInfo.MessageIn
-}
+TELEGRAM =&gt; RbcInfo.MessageIn
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -3830,10 +3829,7 @@ TELEGRAM =&gt; Messages.MESSAGE.Message
 HEADER =&gt; CreateHeader(10),
 NID_C =&gt; RBCContactIbnformation.Country,
 NID_RBC =&gt; RBCContactIbnformation.Id,
-TELEGRAM =&gt; Messages.MESSAGE.Message
-{
-    TRAIN_TO_TRACK=&gt; RbcInfo.MessageOut
-}
+TELEGRAM =&gt; RbcInfo.MessageOut
 }</Expression>
 </Case></Cases>
 </Function><Function

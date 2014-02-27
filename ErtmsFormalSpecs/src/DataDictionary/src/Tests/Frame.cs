@@ -193,9 +193,34 @@ namespace DataDictionary.Tests
         /// <summary>
         /// Creates the tree according to the expression text
         /// </summary>
-        public void Compile()
+        public Interpreter.InterpreterTreeNode Compile()
         {
-            Expression cycleDuration = CycleDuration;
+            return CycleDuration;
+        }
+
+
+        /// <summary>
+        /// Indicates that the expression is valid for this IExpressionable
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public bool checkValidExpression(string expression)
+        {
+            bool retVal = false;
+
+            bool silentMode = ModelElement.BeSilent;
+            try
+            {
+                ModelElement.BeSilent = true;
+                Expression tree = EFSSystem.Parser.Expression(this, expression, null, false);
+                retVal = tree != null;
+            }
+            finally
+            {
+                ModelElement.BeSilent = silentMode;
+            }
+
+            return retVal;
         }
 
         /// <summary>

@@ -5460,11 +5460,16 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="752efb16-fd0d-4e3a-a8d4-514912453887"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="eff502a6-8c0a-43e4-9cf9-693106460776"
->DMI.MasterDMI().InitiateLevelEntryRequest()</Action></Actions>
+>DMI.MasterDMI().InitiateLevelRequest
+(
+    Level =&gt; Kernel.Level.Value,
+    Enter =&gt; True,
+    ReValidate =&gt; False
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -5474,11 +5479,11 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="ae7ab92d-f97e-4ee2-b50a-3137e1b17946"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="97e2fe25-4b7b-4194-a1a6-5980b8d2cea7"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="d43762ba-cc41-48b3-be35-302b460560c2"
 >THIS &lt;- S2</Action></Actions>
 <SubRules>
