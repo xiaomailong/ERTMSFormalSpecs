@@ -3290,17 +3290,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <PreConditions>
 <PreCondition
  Guid="08a1d375-0436-4d6f-a892-d6dc21a15a89"
->d &lt; 
-REDUCE TrackDescription.TrackConditions.General.TCProfile| (
-                    X.Distance &gt; aTrackCondition.Distance AND (
-                    X.Value.SwitchOffRegenerativeBrake != aTrackCondition.Value.SwitchOffRegenerativeBrake OR 
-                    X.Value.SwitchOffMagneticShoeBrake != aTrackCondition.Value.SwitchOffMagneticShoeBrake OR 
-                    X.Value.SwitchOffEddyCurrentBrakeForEB != aTrackCondition.Value.SwitchOffEddyCurrentBrakeForEB ) )
-    USING Default.BaseTypes.MinDistance(
-        X1=&gt;X.Distance
-        X2=&gt;RESULT
-    )
-    INITIAL_VALUE Default.BaseTypes.Distance.Infinity</PreCondition><PreCondition
+>d &lt; TrackDescription.TrackConditions.BrakingConditionLength(aTrackCondition)</PreCondition><PreCondition
  Guid="79804f23-ad2c-4ddc-9597-42c34545125c"
 >aTrackCondition.Distance &lt;= d</PreCondition></PreConditions>
 <Expression>BrakingModelFunction
@@ -3641,17 +3631,7 @@ REDUCE TrackDescription.TrackConditions.General.TCProfile| (
 <PreConditions>
 <PreCondition
  Guid="358ef9c4-e1a3-4cba-b203-8a64fe3681cd"
->d &lt; 
-REDUCE TrackDescription.TrackConditions.General.TCProfile| (
-                    X.Distance &gt; aTrackCondition.Distance AND (
-                    X.Value.SwitchOffRegenerativeBrake != aTrackCondition.Value.SwitchOffRegenerativeBrake OR 
-                    X.Value.SwitchOffMagneticShoeBrake != aTrackCondition.Value.SwitchOffMagneticShoeBrake OR 
-                    X.Value.SwitchOffEddyCurrentBrakeForEB != aTrackCondition.Value.SwitchOffEddyCurrentBrakeForEB ) )
-    USING Default.BaseTypes.MinDistance(
-        X1=&gt;X.Distance
-        X2=&gt;RESULT
-    )
-    INITIAL_VALUE Default.BaseTypes.Distance.Infinity</PreCondition><PreCondition
+>d &lt; TrackDescription.TrackConditions.BrakingConditionLength(aTrackCondition)</PreCondition><PreCondition
  Guid="7b2f1e2f-c31a-4f00-8dbb-0e4112c5823f"
 >aTrackCondition.Distance &lt;= d</PreCondition></PreConditions>
 <Expression>BrakingModelFunction
@@ -4183,17 +4163,7 @@ REDUCE TrackDescription.TrackConditions.General.TCProfile| (
 <PreConditions>
 <PreCondition
  Guid="898e92ea-c148-4e98-acdf-c9c3bcda7754"
->d &lt; 
-REDUCE TrackDescription.TrackConditions.General.TCProfile| (
-                    X.Distance &gt; aTrackCondition.Distance AND (
-                    X.Value.SwitchOffRegenerativeBrake != aTrackCondition.Value.SwitchOffRegenerativeBrake OR 
-                    X.Value.SwitchOffMagneticShoeBrake != aTrackCondition.Value.SwitchOffMagneticShoeBrake OR 
-                    X.Value.SwitchOffEddyCurrentBrakeForEB != aTrackCondition.Value.SwitchOffEddyCurrentBrakeForEB ) )
-    USING Default.BaseTypes.MinDistance(
-        X1=&gt;X.Distance
-        X2=&gt;RESULT
-    )
-    INITIAL_VALUE Default.BaseTypes.Distance.Infinity</PreCondition><PreCondition
+>d &lt; TrackDescription.TrackConditions.BrakingConditionLength(aTrackCondition)</PreCondition><PreCondition
  Guid="4a2c514c-e06b-42ec-b04a-517b1baabdfd"
 >aTrackCondition.Distance &lt;= d</PreCondition></PreConditions>
 <Expression>BrakingModelFunction

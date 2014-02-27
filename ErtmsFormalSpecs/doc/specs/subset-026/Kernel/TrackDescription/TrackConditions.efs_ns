@@ -164,6 +164,40 @@
 >TrackCondition == ConditionType.CurrentConsumption</PreCondition></PreConditions>
 <Expression>THERE_IS_IN CurrentConsumption.TCCurrentConsumption| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Max))</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="BrakingConditionLength"
+ Guid="fca2f758-90e2-4a6c-869e-a9c6048b182b"
+>
+<Comment>Given a StartPoint, returns the end of the section with a particular combination of enabled brakes</Comment>
+<Parameters>
+<Parameter
+ Type="General.TrackConditionInformation"
+ Name="StartPoint"
+ Guid="63563ea6-13ba-46d9-82cb-e387ef467fb1"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Distance to a change in the braking parameters"
+ Guid="609b02a2-7851-4f27-9409-a01afb41dc62"
+>
+<Comment>Returns the lowest Distance value amongst the points in TCProfile which has
+a) a distance greater than StartPoint
+b) a different combination of enabled braking systems</Comment>
+<Expression>REDUCE General.TCProfile| (
+                   X.Distance &gt; StartPoint.Distance AND (
+                    X.Value.SwitchOffRegenerativeBrake != StartPoint.Value.SwitchOffRegenerativeBrake OR 
+                    X.Value.SwitchOffMagneticShoeBrake != StartPoint.Value.SwitchOffMagneticShoeBrake OR 
+                    X.Value.SwitchOffEddyCurrentBrakeForEB != StartPoint.Value.SwitchOffEddyCurrentBrakeForEB ) )
+    USING Default.BaseTypes.MinDistance(
+        X1=&gt;X.Distance
+        X2=&gt;RESULT
+    )
+    INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
+</Case></Cases>
 </Function></Functions>
 <Rules>
 <Rule
