@@ -1258,6 +1258,7 @@
  Name="RBC contact order received"
  Guid="16010e1f-582d-4673-a08f-e652d867206d"
 >
+<Comment>The time of initialisation of the requset is stored in ConnectionLostTime, in order to update the Safe Radio Connection status if the connection is not established within the time defined by ConnectionStatusTimer.</Comment>
 <PreConditions>
 <PreCondition
  Guid="d70d315d-97c4-418f-a89b-173190c448b2"
@@ -1271,7 +1272,9 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
  Guid="0435a548-28e2-45b2-b8f8-0711b2fc3498"
 >SessionManagementData.RequestIsSent &lt;- True</Action><Action
  Guid="5c7318a3-3c2a-4a71-85c0-c1617d2d9134"
->SessionManagementData.Action &lt;- ContactActionEnum.Establish</Action></Actions>
+>SessionManagementData.Action &lt;- ContactActionEnum.Establish</Action><Action
+ Guid="36c208cd-4fdb-4529-aac3-4806d371c8a8"
+>ConnectionLostTime &lt;- Kernel.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -1334,6 +1337,11 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
  Id="f070a20f-9665-470d-80ce-363bfa6c264a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4bbed78a-f859-49a0-9ff0-df77ea8595e0"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="04c1239e-16fe-409f-9811-5d484ba073a2"
 >
 </ReqRef><Comment>As soon as the safe radio connection is set-up, the on-board sends the message Initiation of communication session.</Comment>
 <PreConditions>
@@ -1404,7 +1412,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Send new request"
+ Name="Connection is lost, send new request"
  Guid="6ee281d8-5947-4fd2-b6ea-4a61e0f5d896"
 >
 <Comment>If the request has to be repeated and the maximum number of requests is not reached it, a new request is sent.</Comment>
@@ -1420,7 +1428,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 >SessionManagementData.RequestIsSent &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Maximum number of requests sent"
+ Name="Connection is lost, maximum number of requests reached"
  Guid="301af69a-abcb-4f58-bb23-313539119ff7"
 >
 <ReqRef
@@ -1431,7 +1439,12 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
 </ReqRef><ReqRef
  Id="b15cc4d3-14ad-4f2e-b1d9-c70dc451cc6f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="44cddd06-373e-43ce-911b-2acee2d818f8"
+ Guid="792443e1-a9d6-48cd-9fac-4b74750f8bbb"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c59792f-c11e-45cc-9a1a-36971481d8ff"
 >
 </ReqRef><Comment>If the request has to be repeated but the maximum number of requests is already reached, RBC declares that the setup has failed and goes to inactive state.</Comment>
 <PreConditions>
@@ -1445,6 +1458,35 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreCondition></P
  Guid="d6469a14-111f-45b4-846e-e000f91ba652"
 >NumberOfSentRequests &lt;- 0</Action><Action
  Guid="dc483daa-7b07-4ae9-8b43-cbd205d1883a"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Connection is lost, &quot;connection status&quot; timer expired"
+ Guid="6a118501-cac0-4a06-805f-b587d3b07391"
+>
+<ReqRef
+ Id="24cfec76-595f-41de-920e-42c8da108914"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="36cd5232-ba20-436f-88e2-3dcce107191a"
+>
+</ReqRef><ReqRef
+ Id="b15cc4d3-14ad-4f2e-b1d9-c70dc451cc6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b98d3a36-7c9b-4be3-b497-938b79c88ee1"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="09ce8a4b-841a-4c31-b520-949e25a1b3ff"
+>
+</ReqRef><Comment>If the connection status timer is expired, the Safe Radio Connection setup is declared as failed.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="051b7c73-d993-4246-ac2a-5099ddc3c5a1"
+>ConnectionLostTime + ConnectionStatusTimer &lt; Kernel.CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7a967e85-a3aa-4740-a5be-0df764c85620"
 >SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -1718,7 +1760,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 </ReqRef><PreConditions>
 <PreCondition
  Guid="6222ed14-9c42-42d5-b29f-2e5222369f8c"
->SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</PreCondition></PreConditions>
+>SessionManagementData.ConnectionIsEstablished == False</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ed5c1847-6ece-4c06-a1fe-50505630488c"
@@ -1729,6 +1771,46 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 >SessionManagementData.RequestIsSent &lt;- True</Action><Action
  Guid="c4a3e6fd-bbd3-4c4a-9592-37f17c96b1ac"
 >LastRequestTime &lt;- Kernel.CurrentTime</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Test if the train is inside an announced radio hole"
+ Guid="a74a6f9a-ffdb-4c21-8c7a-62e2a33eb02e"
+>
+<ReqRef
+ Id="a977087b-cf09-465c-b072-4ac0d0903dc7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6dca347f-069a-4519-994b-8074272a0dd7"
+>
+</ReqRef><ReqRef
+ Id="faa589ef-1db3-49b8-b4e9-66bca10c1754"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="59e50f1a-d531-42b0-b018-d9f91f7ccd95"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3c83cd31-3493-41b7-b3b2-2f863a52aa5b"
+>
+</ReqRef><Comment>If the connection is lost when the train is inside an announced radio hole, the safe radio connection is considered as lost.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Test if the train is inside an announced radio hole"
+ Guid="271faf59-7b23-4404-b868-ed9ba537f3f4"
+>
+<PreConditions>
+<PreCondition
+ Guid="98dfced5-c8e3-4402-9c30-42e6826e38b0"
+>Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="31e5f409-b9e6-446b-867c-b18a87681e9d"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1780,6 +1862,11 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Id="a4a65f87-d77f-4542-967b-9e1f99a0ecde"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1375e83d-46bf-4d79-9821-9f8a86f32624"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="373380bc-4ca2-4f14-84c9-0ef715eaad4d"
 >
 </ReqRef><Comment>If the connection is up again, the system goes back to the state Connected.InitialState.</Comment>
 <PreConditions>
@@ -1846,9 +1933,81 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 <Action
  Guid="2d58a44a-39a5-4bf5-9712-d9525d21cb8d"
 >THIS &lt;- Inactive</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle safe radio connection status"
+ Guid="6bcaa9e4-5510-4317-8477-dd9b27e5beb6"
+>
+<Comment>According to the current status of the safe radio connection, it may be declared or not as terminated.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Previous status was Connection Up"
+ Guid="fba1350e-b81c-4076-a474-a74e0261e185"
+>
+<ReqRef
+ Id="cf256420-4b87-4caf-a1cb-8e8e17d3bdca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb6f1e9f-5224-4ce9-b96a-a37db310ee6a"
+>
+</ReqRef><ReqRef
+ Id="faa589ef-1db3-49b8-b4e9-66bca10c1754"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4f1e422-9e52-45e3-b907-5681fb28c087"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bc1b0ad8-793c-4f38-acf2-a61098aba54a"
+>
+</ReqRef><Comment>If the previous status of the safe radio connection was &quot;Connection Up&quot;, then the safe radio connection is declared as terminated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="fdf0690f-8c7b-4ea5-b89d-cd31b038a0f6"
+>SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a81c9085-62ed-47f6-91c1-9573073688c8"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Connection lost, &quot;connection status&quot; timer expired"
+ Name="Previous status was Connection Lost or Setup Failed"
+ Guid="ae37f4d1-cda8-4873-8ece-d9937e3b399b"
+>
+<ReqRef
+ Id="e9e7d5c2-c94d-4bb6-8aea-136e28beafd2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a5f5b60c-10ba-463d-8b00-4e0e07fefd7a"
+>
+</ReqRef><ReqRef
+ Id="0f9d860a-2cb9-472d-95ee-28c1c9bd5062"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dbf4abd4-5d2e-480a-826e-4fc5ce1c2e78"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5244d5d4-048d-486c-b5c7-c83e17a9e58e"
+>
+</ReqRef><Comment>If the safe radio connection was already declared as Lost, then, if no Start of Mission procedure is on-going, the safe radio connection is declared as terminated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b57d3086-f161-4390-bbfd-d8c3b479dc8b"
+>SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</PreCondition><PreCondition
+ Guid="11f53a2e-cad9-47b3-bf29-0e89837f3128"
+>Kernel.HandleModeChange not in Kernel.HandleModeChangeSM.StartOfMission</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="516bc76f-b39a-46ad-98de-6bb086ab71b2"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Connection is lost, &quot;connection status&quot; timer expired"
  Guid="87b4c89c-376f-4991-a150-e2ab9347ed7d"
 >
 <ReqRef
@@ -1865,6 +2024,11 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Id="e59a9c78-fdeb-4660-8f4c-3bb03d6b2bd6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="81f579e5-4764-4325-958b-01fd681a9d2c"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="888a3649-ffc6-4f6b-9e2e-453a267f07c5"
 >
 </ReqRef><Comment>If the connection is still lost and the &quot;connection status&quot; timer expires, the safe radio connection is considered as lost.</Comment>
 <PreConditions>
@@ -1928,6 +2092,11 @@ The information related to the current communication session is reinitialized.</
  Id="faa589ef-1db3-49b8-b4e9-66bca10c1754"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="62bdc20c-6def-4e42-88b8-ffe432a254d9"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f248e6ac-9eae-4dc8-a660-50aa7c178025"
 >
 </ReqRef><Comment>When the acknowledgement of termination of the communication session is received, the session is considered as terminated and the on-board requests the release of the safe radio connection with trackside.</Comment>
 <PreConditions>
@@ -2358,7 +2527,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </ReqRef><Comment>Data state of the contact information.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
- Name="MobileTerminalStruct"
+ Name="TerminalStruct"
  Guid="d55c89a9-b712-45c6-a15c-1829f68822b8"
 >
 <ReqRef
@@ -2539,7 +2708,9 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 <Actions>
 <Action
  Guid="6df5355e-80ab-4d30-9c50-07679b269768"
->THIS &lt;- Registered</Action></Actions>
+>THIS &lt;- Registered</Action><Action
+ Guid="fc9c3c1f-c4be-4231-949b-288450751e54"
+>NetworkId &lt;- NetworkIdToRegister</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2845,9 +3016,9 @@ Terminal2 != EMPTY</Expression>
  Name="Value"
  Guid="8d5b3f0d-e99a-4b78-a893-b7f25eb488a9"
 >
-<Expression>Terminal1.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Registered
+<Expression>Terminal1.RegistrationState in TerminalStruct.RegistrationStateSM.Registered
   OR
-Terminal2.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Registered</Expression>
+Terminal2.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Expression>
 </Case></Cases>
 </Function><Function
  Type="MobileTerminalStruct"
@@ -3031,7 +3202,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <Comment>Indicates if the provided terminal is registered.</Comment>
 <Parameters>
 <Parameter
- Type="MobileTerminalStruct"
+ Type="TerminalStruct"
  Name="aTerminal"
  Guid="12711288-b128-4515-ac14-d0435e91c454"
 >
@@ -3043,7 +3214,7 @@ It can only return false if there is no open session or if the last known RBC ha
 >
 <Expression>aTerminal != EMPTY
   AND
-aTerminal.RegistrationState in MobileTerminalStruct.RegistrationStateSM.Registered</Expression>
+aTerminal.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -5142,6 +5313,68 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 >RegisterMobileTerminals ( aPacket.NID_MN )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="RegisterATerminal"
+ Guid="91d65967-0ce4-4f16-86a3-05c2262bea89"
+>
+<ReqRef
+ Id="07af900f-f07f-4018-abe3-bab8be32b2a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6920acdb-a800-4874-b91e-7f52be773233"
+>
+</ReqRef><Comment>The procedure starts the registering of the provided mobile terminal to the provided network, except if the terminal is already registered to the provided netword.</Comment>
+<Parameters>
+<Parameter
+ Type="TerminalStruct"
+ Name="aTerminal"
+ Guid="69f73909-1dca-46c6-a79f-e7d801022eb6"
+>
+</Parameter><Parameter
+ Type="String"
+ Name="aNetworkId"
+ Guid="16f25452-c7ca-4c62-8a7d-417fe5fdb16f"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Register a terminal"
+ Guid="0e7dcaaa-a043-4bc5-baf6-d4ab91873869"
+>
+<ReqRef
+ Id="fc32fb41-1c57-4753-a923-fe676aabf35d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b24901c-10ca-440f-b179-193bbaca3ef6"
+>
+</ReqRef><Comment>Requests the registering of the provided mobile terminal to the provided network, if it is not already registered to that network.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Register a terminal"
+ Guid="4bc4b088-a4d4-497a-949d-f269fbf04b8a"
+>
+<PreConditions>
+<PreCondition
+ Guid="b98357f2-9bff-490d-951c-a72293c7c303"
+>NOT
+(
+  aTerminal.RegistrationState in TerminalStruct.RegistrationStateSM.Registered
+    AND
+  aTerminal.NetworkId != aNetworkId
+)</PreCondition><PreCondition
+ Guid="115781a3-1ed8-4502-9708-18c621902b3e"
+>aTerminal != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d0f0e831-08a8-4181-a47d-9d039b484d48"
+>aTerminal.NetworkIdToRegister &lt;- aNetworkId</Action><Action
+ Guid="503a9e82-74de-44aa-9897-753d7f0369c1"
+>aTerminal.RegistrationOrderIsReceived &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -5262,7 +5495,7 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 >
 </ReqRef><Comment>Allows to request the list of available and allowed networks.</Comment>
 </Variable><Variable
- Type="MobileTerminalStruct"
+ Type="TerminalStruct"
  VariableMode="InOut"
  Implemented="TRUE"
  Name="Terminal1"
@@ -5275,7 +5508,7 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 >
 </ReqRef><Comment>First terminal struct.</Comment>
 </Variable><Variable
- Type="MobileTerminalStruct"
+ Type="TerminalStruct"
  VariableMode="InOut"
  Implemented="TRUE"
  Name="Terminal2"
