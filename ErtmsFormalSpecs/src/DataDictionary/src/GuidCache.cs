@@ -75,17 +75,20 @@ namespace DataDictionary
                 ModelElement element = (ModelElement)obj;
 
                 string guid = element.Guid;
-                ModelElement cachedElement;
-                if (Dictionary.TryGetValue(guid, out cachedElement))
+                if (guid != null)
                 {
-                    if (element != cachedElement)
+                    ModelElement cachedElement;
+                    if (Dictionary.TryGetValue(guid, out cachedElement))
                     {
-                        throw new Exception("Model element collision found");
+                        if (element != cachedElement)
+                        {
+                            throw new Exception("Model element collision found");
+                        }
                     }
-                }
-                else
-                {
-                    Dictionary[element.Guid] = element;
+                    else
+                    {
+                        Dictionary[element.Guid] = element;
+                    }
                 }
 
                 base.visit(obj, visitSubNodes);

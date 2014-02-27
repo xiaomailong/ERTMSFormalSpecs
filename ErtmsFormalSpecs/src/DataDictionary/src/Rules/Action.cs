@@ -15,6 +15,7 @@ using System;
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using DataDictionary.Interpreter;
 
 namespace DataDictionary.Rules
 {
@@ -78,10 +79,34 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Creates the tree according to the statement text
         /// </summary>
-        public void Compile()
+        public Interpreter.InterpreterTreeNode Compile()
         {
             // Side effect, builds the statement if it is not already built
-            Interpreter.InterpreterTreeNode tree = Tree;
+            return Tree;
+        }
+
+        /// <summary>
+        /// Indicates that the expression is valid for this IExpressionable
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public bool checkValidExpression(string expression)
+        {
+            bool retVal = false;
+
+            bool silentMode = ModelElement.BeSilent;
+            try
+            {
+                ModelElement.BeSilent = true;
+                Interpreter.Statement.Statement tree = EFSSystem.Parser.Statement(this, expression);
+                retVal = tree != null;
+            }
+            finally
+            {
+                ModelElement.BeSilent = silentMode;
+            }
+
+            return retVal;
         }
 
         /// <summary>

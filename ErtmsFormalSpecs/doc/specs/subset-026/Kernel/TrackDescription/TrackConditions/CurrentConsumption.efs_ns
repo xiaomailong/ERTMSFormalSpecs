@@ -1,0 +1,228 @@
+<NameSpace
+ Name="CurrentConsumption"
+ Guid="d946f545-9a01-46a6-a499-0f1763c1411c"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ Name="CurrentConsumptionInformation"
+ Guid="7a5297cd-00d0-4a5f-8ed4-c41cee5098e2"
+>
+<ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="65694532-a6ef-47a3-8618-517954825eaf"
+>
+</ReqRef><ReqRef
+ Id="f2a08799-3d45-4481-a358-160725cb1508"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="edcf54c5-9bc5-4b82-ac3b-6328290ccc00"
+>
+</ReqRef><Comment>Structure containing the information about the location of a change in the maximum allowed current consumption</Comment>
+<StructureElement
+ TypeName="Messages.M_CURRENT"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Value"
+ Guid="ef9bd905-1557-46a0-a2bb-76f208aafe04"
+>
+<ReqRef
+ Id="56b9c520-38ab-486b-885c-a66d5e99a45e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="071b58b1-2322-4e70-8d2e-d0b100825126"
+>
+</ReqRef><Comment>Gives the maximum allowed current consumption</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Distance"
+ Guid="36c65e77-0f18-467f-9cfc-98a7ebe2511e"
+>
+<ReqRef
+ Id="ae0b8930-d36a-4a15-a997-eaa29644fb68"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9c4d43c7-329c-4b17-888d-c3a9150b96b9"
+>
+</ReqRef><Comment>Start location of the track condition</Comment>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="CurrentConsumption.CurrentConsumptionInformation"
+ Default="[]"
+ Implemented="TRUE"
+ Name="CurrentConsumptions"
+ Guid="0a337071-652a-418d-9a3c-adb0810c1826"
+>
+<ReqRef
+ Id="f2a08799-3d45-4481-a358-160725cb1508"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="19af0190-46c6-423a-9b32-77e63a5a3810"
+>
+</ReqRef><Comment>Collection CurrentConsumptionInformation structures. This is the type of TCCurrentConsumption</Comment>
+</Collection></Collections>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CCProfileStartLocation"
+ Guid="e060304c-56dd-4403-aff4-c44eb11cc757"
+>
+<Comment>Returns the maximum current consumption track conditions that apply at the given distance</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="30767335-c429-495f-99cb-bae2545cb344"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="0d925f86-4a0c-406b-9e9e-b11f22e1f1ad"
+>
+<Comment>Returns the element in TCCurrentConsumption with the largest distance that is less than or equal to the parameter</Comment>
+<Expression>REDUCE TCCurrentConsumption | (X.Distance &lt;= Distance)
+    USING Default.BaseTypes.MaxDistance(
+        X1=&gt;X.Distance,
+        X2=&gt;RESULT)
+  INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.M_CURRENT"
+ Implemented="TRUE"
+ Name="CCAtDistance"
+ Guid="eceb13fd-b0d1-4aaa-8b83-bb8c3f0794d1"
+>
+<ReqRef
+ Id="b25e8d2d-5034-4a5d-bf39-2ddf58ec8b98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="01a461c6-31d1-436e-8179-b42d8ec5c82f"
+>
+</ReqRef><ReqRef
+ Id="f2a08799-3d45-4481-a358-160725cb1508"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8bbaebb5-3e7c-4769-80a9-8b204f502a8d"
+>
+</ReqRef><Comment>Returns the maximum current consumption when the train position is the given distance</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="ff8645c0-e9e1-485b-b7cb-a55b36ebb471"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Previous conditions exist"
+ Guid="8631fe04-6f5a-481a-a2a4-117983dc2357"
+>
+<Comment>There are maximum current consumption track conditions prior to Distance. This should always be the case according to 3.12.1.3.h</Comment>
+<PreConditions>
+<PreCondition
+ Guid="fe703eb9-0bfa-4767-ad0c-4c1a9a1884d0"
+>THERE_IS_IN TCCurrentConsumption | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
+<Expression>REDUCE TCCurrentConsumption | (X.Distance == CCProfileStartLocation(Distance=&gt;Distance) )
+    USING X.Value
+  INITIAL_VALUE EMPTY</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="92e6a955-2b99-423a-a556-0ee84bbb954f"
+>
+<Comment>Case created just to make the model work</Comment>
+<Expression>Messages.M_CURRENT.No_restriction_for_current_consumption</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.M_CURRENT"
+ Implemented="TRUE"
+ Name="CurrentCCConditions"
+ Guid="81439991-0207-4ce9-af00-eb75745b35d1"
+>
+<ReqRef
+ Id="00dfa999-7dd3-4fe9-a2d0-8fab1506a7d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e44b3963-d47d-499c-96e1-2f9da0302ea5"
+>
+</ReqRef><Comment>Gives the current maximum current consumption track conditions</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="c6832b65-f57e-4525-bfaa-5fcfb8eed17e"
+>
+<Comment>The starting point is when the max safe front end of the train passes the location specified in the message</Comment>
+<Expression>CCAtDistance(
+    Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;DistanceInterval.Max)
+)</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HandleNewCCTrackCondition"
+ Guid="32cab16c-0348-494b-8fee-b52a0f0175ec"
+>
+<Comment>Updates the maximum current consumption track conditions according to the values of the packet received as parameter.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_ALLOWED_CURRENT_CONSUMPTION.Message"
+ Name="Packet"
+ Guid="d2f4a048-48db-446b-9506-8dba8ae0b2b5"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AddNewTrackCondition"
+ Guid="8948347c-5efd-484f-a895-42c355f9276a"
+>
+<Comment>Inserts the newly received track conditions in TCCurrentConsumption</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Insert a change in the profile"
+ Guid="9b7a7239-d27b-4252-bc22-ad65ae66d5be"
+>
+<Comment>Handle the M_TRACKCOND, D_TRACKCOND and L_TRACKCOND fields in Packet</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="23fc9e26-c1cc-4080-9e64-18004abd3b5f"
+>INSERT CurrentConsumptionInformation{
+    Distance=&gt;Default.MessageTypes.QScaleDistance(
+        distance=&gt;Packet.D_CURRENT,
+        scale=&gt;Packet.Q_SCALE
+    ),
+    Value=&gt;Packet.M_CURRENT
+}
+IN
+    TCCurrentConsumption</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<Variables>
+<Variable
+ Type="CurrentConsumptions"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="TCCurrentConsumption"
+ Guid="323e43d9-9821-4525-9267-5189729d3ef8"
+>
+<ReqRef
+ Id="f2a08799-3d45-4481-a358-160725cb1508"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="123808c5-18f9-4ff7-8867-48e01f67c814"
+>
+</ReqRef><Comment>The list of the maximum current consumption track conditions received from trackside</Comment>
+</Variable></Variables>
+</NameSpace>

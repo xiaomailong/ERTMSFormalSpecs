@@ -23,12 +23,12 @@ namespace DataDictionary.Interpreter.Refactor
     /// <summary>
     /// This visitor is used to handle refactoring of expressions.
     /// </summary>
-    public class ReNameSpaceTree : BaseRefactorTree
+    public class RelocateTree : BaseRefactorTree
     {
         /// <summary>
         /// The new location of the element
         /// </summary>
-        private Types.NameSpace NewNameSpace { get; set; }
+        private ModelElement BaseLocation { get; set; }
 
         protected override void VisitDerefExpression(DerefExpression derefExpression)
         {
@@ -39,7 +39,7 @@ namespace DataDictionary.Interpreter.Refactor
                 ModelElement model = derefExpression.Ref as ModelElement;
                 if (model != null)
                 {
-                    ReplaceText(model.ReferenceName(NewNameSpace), derefExpression.Start, derefExpression.End);
+                    ReplaceText(model.ReferenceName(BaseLocation), derefExpression.Start, derefExpression.End);
                     replaced = true;
                 }
                 else
@@ -51,19 +51,18 @@ namespace DataDictionary.Interpreter.Refactor
                             model = expression.Ref as ModelElement;
                             if (model != null)
                             {
-                                ReplaceText(model.ReferenceName(NewNameSpace), derefExpression.Start, expression.End);
+                                ReplaceText(model.ReferenceName(BaseLocation), derefExpression.Start, expression.End);
                                 replaced = true;
                                 break;
                             }
                         }
-
                     }
                 }
             }
 
             if (!replaced)
             {
-                base.VisitDerefExpression(derefExpression);
+                VisitExpression(derefExpression.Arguments[0]);
             }
         }
 
@@ -72,7 +71,7 @@ namespace DataDictionary.Interpreter.Refactor
             ModelElement model = designator.Ref as ModelElement;
             if (model != null && !designator.IsPredefined())
             {
-                ReplaceText(model.ReferenceName(NewNameSpace), designator.Start, designator.End);
+                ReplaceText(model.ReferenceName(BaseLocation), designator.Start, designator.End);
             }
         }
 
@@ -83,10 +82,10 @@ namespace DataDictionary.Interpreter.Refactor
         /// <param name="text"></param>
         /// <param name="reference"></param>
         /// <param name="replacementValue"></param>
-        public ReNameSpaceTree(Types.NameSpace newNameSpace)
+        public RelocateTree(ModelElement baseLocation)
             : base()
         {
-            NewNameSpace = newNameSpace;
+            BaseLocation = baseLocation;
         }
     }
 }

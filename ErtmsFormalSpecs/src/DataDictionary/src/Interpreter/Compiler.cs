@@ -64,7 +64,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The EFS system that need to be compiled
         /// </summary>
-        public EFSSystem System { get; set; }
+        public EFSSystem EFSSystem { get; set; }
 
         /// <summary>
         /// Indicates that the compilation should be performed
@@ -124,7 +124,7 @@ namespace DataDictionary.Interpreter
         /// <param name="rebuild"></param>
         public Compiler(EFSSystem system)
         {
-            System = system;
+            EFSSystem = system;
 
             DoCompile = true;
             CompilerThread = new Thread(CompileContinuously);
@@ -161,10 +161,10 @@ namespace DataDictionary.Interpreter
                 ModelElement.BeSilent = options.SilentCompile;
 
                 // Initialises the declared eleemnts
-                InitDeclaredElements initDeclaredElements = new InitDeclaredElements(System);
+                InitDeclaredElements initDeclaredElements = new InitDeclaredElements(EFSSystem);
 
                 // Compiles each expression and each statement encountered in the nodes
-                foreach (DataDictionary.Dictionary dictionary in System.Dictionaries)
+                foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
                 {
                     visit(dictionary, true);
                 }
@@ -323,18 +323,22 @@ namespace DataDictionary.Interpreter
                 {
                     if ((user.Type == element))
                     {
-                        user.TypeName = element.ReferenceName(user as ModelElement);
+                        string newName = element.ReferenceName(user as ModelElement);
+                        user.TypeName = newName;
                     }
                     else if (element is Types.NameSpace)
                     {
+                        string newName;
                         Functions.Function function = user as Functions.Function;
                         if (function != null)
                         {
-                            user.TypeName = function.ReturnType.ReferenceName(element);
+                            newName = function.ReturnType.ReferenceName(element);
+                            user.TypeName = newName;
                         }
                         else
                         {
-                            user.TypeName = user.Type.ReferenceName(user as ModelElement);
+                            newName = user.Type.ReferenceName(user as ModelElement);
+                            user.TypeName = newName;
                         }
                     }
                 }
@@ -410,19 +414,19 @@ namespace DataDictionary.Interpreter
             }
         }
 
-        private class ReNameSpacerVisitor : Generated.Visitor
+        private class RelocateVisitor : Generated.Visitor
         {
             /// <summary>
             /// The new location of the element
             /// </summary>
-            private Types.NameSpace NewNameSpace { get; set; }
+            private ModelElement BaseLocation { get; set; }
 
             public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
             {
                 IExpressionable expressionable = obj as IExpressionable;
                 if (expressionable != null)
                 {
-                    Interpreter.Refactor.ReNameSpaceTree refactorer = new Refactor.ReNameSpaceTree(NewNameSpace);
+                    Interpreter.Refactor.RelocateTree refactorer = new Refactor.RelocateTree(BaseLocation);
                     refactorer.PerformUpdate(expressionable);
                 }
 
@@ -433,9 +437,16 @@ namespace DataDictionary.Interpreter
             /// Constructor
             /// </summary>
             /// <param name="newNameSpace"></param>
-            public ReNameSpacerVisitor(Types.NameSpace newNameSpace)
+            public RelocateVisitor(ModelElement modelElement)
             {
-                NewNameSpace = newNameSpace;
+                ModelElement current = modelElement;
+
+                while (current != null && !(current is Types.Type) && !(current is Types.NameSpace))
+                {
+                    current = current.Enclosing as ModelElement;
+                }
+
+                BaseLocation = current;
             }
         }
 
@@ -443,15 +454,14 @@ namespace DataDictionary.Interpreter
         /// Performs a refactoring of the model then ensure that the namespaces in its inner elements are correct
         /// </summary>
         /// <param name="model"></param>
-        public void RefactorAndReNameSpace(ModelElement model)
+        public void RefactorAndRelocate(ModelElement model)
         {
             if (model != null)
             {
                 Refactor(model);
 
-                Types.NameSpace newNameSpace = Utils.EnclosingFinder<Types.NameSpace>.find(model, true);
-                ReNameSpacerVisitor renamer = new ReNameSpacerVisitor(newNameSpace);
-                renamer.visit(model);
+                RelocateVisitor relocator = new RelocateVisitor(model);
+                relocator.visit(model);
             }
         }
         #endregion
