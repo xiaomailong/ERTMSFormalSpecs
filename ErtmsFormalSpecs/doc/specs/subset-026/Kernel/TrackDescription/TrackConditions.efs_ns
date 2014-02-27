@@ -160,9 +160,153 @@
 <Comment>Traction systems are location data and are therefore only measured from the max safe front end of the train</Comment>
 <PreConditions>
 <PreCondition
- Guid="ec6f1c48-d0e2-40b6-98ef-5b4bc7e36db6"
->TrackCondition == ConditionType.CurrentConsumption</PreCondition></PreConditions>
-<Expression>THERE_IS_IN CurrentConsumption.TCCurrentConsumption| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Max))</Expression>
+ Guid="cad5d185-abdb-46c3-a98c-9a878dc04f9e"
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; aTrackCondition.Distance</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="False"
+ Guid="a206744e-7565-4bdd-aeb3-937e16794779"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ NeedsRequirement="FALSE"
+ Name="ConditionExitsApplicability"
+ Guid="873d51f3-eb83-48d8-a167-fd16e60ade7c"
+>
+<Parameters>
+<Parameter
+ Type="TrackConditionInformation"
+ Name="aCondition"
+ Guid="cc6665c6-d1cb-443a-ab6a-b592278c3d7f"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="RearEndPosition after TrackCond"
+ Guid="24466bb5-b244-4a1a-b1ca-5a065f4c431c"
+>
+<Expression>TrainPosition.RearEndPosition(Default.DistanceInterval.Min) &gt; (aCondition.Distance + BaseTypes.LengthToDistance(aCondition.Length))</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="IsInsideRadioHole"
+ Guid="0c0fb865-3ccc-4d90-b7ca-cbd61d842b50"
+>
+<ReqRef
+ Id="558b2068-001d-4f9f-902b-2cd23fb269d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5fd492e8-d3a2-4e29-a0d7-f7dc18d44964"
+>
+</ReqRef><ReqRef
+ Id="e36dd5fc-81ea-4253-8535-4e5b4afd1b54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6a6c240b-d646-4652-b75a-8ad149bc7cdc"
+>
+</ReqRef><ReqRef
+ Id="a977087b-cf09-465c-b072-4ac0d0903dc7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff810d31-f595-4749-b3a2-bc906f97e708"
+>
+</ReqRef><Comment>Indicates if there is an applicable track condition for radio hole</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="d500abeb-937a-4158-bde3-df9a023e35ff"
+>
+<Expression>THERE_IS_IN TCProfile.Conditions | ( X.Applied AND X.Value.RadioHole == True )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="TrackConditionInformation"
+ Implemented="TRUE"
+ Name="HandleTCPwhenEnteringGivenMode1"
+ Guid="35f10299-f5ff-4c0d-b4f8-f78b962452bf"
+>
+<ReqRef
+ Id="c1c2e72d-abfa-40cc-ab4e-10dd67d304e9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1f461114-8a3f-40d1-9dde-42626bb93364"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="TrackConditionInformation"
+ Name="TCPacket"
+ Guid="8504f3e3-f3fd-458e-bae5-f4e2cebad52c"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="HandleTCPwhenEnteringGivenMode1"
+ Guid="83a0413c-e973-46d1-9bda-92bad763fadb"
+>
+<Expression>TrackConditionInformation
+{
+    Distance =&gt; TCPacket.Distance,
+    Length =&gt; TCPacket.Length,
+    Value =&gt; TrackCondition
+{ 
+    NonStoppingArea =&gt; TCPacket.Value.NonStoppingArea ,
+    TunnelStoppingArea =&gt; TCPacket.Value.TunnelStoppingArea ,
+    SoundHorn =&gt; TCPacket.Value.SoundHorn ,
+    PowerlessSection_LowerPantograph =&gt; False,
+    RadioHole =&gt; False,
+    AirTightness =&gt; False,
+    SwitchOffRegenerativeBrake =&gt; False,
+    SwitchOffEddyCurrentBrakeForSB =&gt; False,
+    SwitchOffMagneticShoeBrake =&gt; False,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; False,
+    SwitchOffEddyCurrentBrakeForEB =&gt; False
+},
+    Applied =&gt; TCPacket.Applied
+
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="TrackConditionInformation"
+ Implemented="TRUE"
+ Name="HandleTCPwhenEnteringGivenMode2"
+ Guid="0483f942-5889-47b6-9389-754a7f066adf"
+>
+<ReqRef
+ Id="81e057d0-016b-449f-8994-c2a6d7b34729"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1c4d285a-6897-4408-85af-d49d8a9d95bf"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="TrackConditionInformation"
+ Name="TCPacket"
+ Guid="d9557982-b23b-4119-b4a0-6da78566f568"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="HandleTCPwhenEnteringGivenMode2"
+ Guid="e6321890-fcd5-4b05-a315-f53dc94bfef3"
+>
+<Expression>TrackConditionInformation
+{
+    Distance =&gt; TCPacket.Distance,
+    Length =&gt; TCPacket.Length,
+    Value =&gt; TrackCondition
+{ 
+    NonStoppingArea =&gt; False,
+    TunnelStoppingArea =&gt; False,
+    SoundHorn =&gt; False,
+    PowerlessSection_LowerPantograph =&gt; TCPacket.Value.PowerlessSection_LowerPantograph,
+    RadioHole =&gt;TCPacket.Value.RadioHole ,
+    AirTightness =&gt; TCPacket.Value.AirTightness ,
+    SwitchOffRegenerativeBrake =&gt;TCPacket.Value.SwitchOffRegenerativeBrake ,
+    SwitchOffEddyCurrentBrakeForSB =&gt; TCPacket.Value.SwitchOffEddyCurrentBrakeForSB ,
+    SwitchOffMagneticShoeBrake =&gt; TCPacket.Value.SwitchOffMagneticShoeBrake ,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; TCPacket.Value.PowerlessSection_SwitchOffTheMainPowerSwitch,
+    SwitchOffEddyCurrentBrakeForEB =&gt; TCPacket.Value.SwitchOffEddyCurrentBrakeForSB
+},
+    Applied =&gt; TCPacket.Applied
+
+}</Expression>
 </Case></Cases>
 </Function></Functions>
 <Rules>
