@@ -209,11 +209,7 @@ namespace DataDictionary.Interpreter.Statement
                 Call.checkExpression();
 
                 Functions.Procedure procedure = Call.Called.Ref as Functions.Procedure;
-                if (procedure != null)
-                {
-
-                }
-                else
+                if (procedure == null)
                 {
                     Root.AddError("Cannot determine called procedure (2)");
                 }
@@ -241,6 +237,34 @@ namespace DataDictionary.Interpreter.Statement
                 Functions.Procedure procedure = Call.getProcedure(ctxt);
                 if (procedure != null)
                 {
+                    // If the procedure has been defined in a structure, 
+                    // ensure that it is applied to an instance of that structure
+                    Types.Structure structure = procedure.Enclosing as Types.Structure;
+                    if (structure != null)
+                    {
+                        Types.ITypedElement current = ctxt.Instance as Types.ITypedElement;
+                        while (current != null)
+                        {
+                            if (current.Type != structure)
+                            {
+                                Utils.IEnclosed enclosed = current as Utils.IEnclosed;
+                                if (enclosed != null)
+                                {
+                                    current = enclosed.Enclosing as Types.ITypedElement;
+                                }
+                                else
+                                {
+                                    current = null;
+                                }
+                            }
+                            else
+                            {
+                                ctxt.Instance = current;
+                                current = null;
+                            }
+                        }
+                    }
+
                     ExplanationPart part = null;
                     if (explanation != null)
                     {
