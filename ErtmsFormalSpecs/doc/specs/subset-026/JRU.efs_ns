@@ -3782,10 +3782,7 @@ TELEGRAM=&gt; BTM.Message
 HEADER =&gt; CreateHeader(9),
 NID_C =&gt; RBCContactIbnformation.Country,
 NID_RBC =&gt; RBCContactIbnformation.Id,
-TELEGRAM =&gt; Messages.MESSAGE.Message
-{
-    TRACK_TO_TRAIN =&gt;RbcInfo.MessageIn
-}
+TELEGRAM =&gt; RbcInfo.MessageIn
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -3832,10 +3829,7 @@ TELEGRAM =&gt; Messages.MESSAGE.Message
 HEADER =&gt; CreateHeader(10),
 NID_C =&gt; RBCContactIbnformation.Country,
 NID_RBC =&gt; RBCContactIbnformation.Id,
-TELEGRAM =&gt; Messages.MESSAGE.Message
-{
-    TRAIN_TO_TRACK=&gt; RbcInfo.MessageOut
-}
+TELEGRAM =&gt; RbcInfo.MessageOut
 }</Expression>
 </Case></Cases>
 </Function><Function
