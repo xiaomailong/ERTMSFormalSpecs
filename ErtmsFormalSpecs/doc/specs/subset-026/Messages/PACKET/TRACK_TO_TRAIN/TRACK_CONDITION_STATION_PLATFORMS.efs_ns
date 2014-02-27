@@ -15,6 +15,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="65544ff1-8e36-448e-93fd-260e5f09b40e"
 >
+</ReqRef><ReqRef
+ Id="0be2ea06-0c8b-4622-9a32-bd8954c01555"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0f53bf31-0ba3-4da5-9779-55b40994ec86"
+>
 </ReqRef><Comment>The packet gives details concerning the location and height of station platforms for use by the train’s door control system</Comment>
 <StructureElement
  TypeName="NID_PACKET"
@@ -24,7 +29,12 @@
  Name="NID_PACKET"
  Guid="a039e962-b33a-4b36-a784-c9026b9caeb6"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0be2ea06-0c8b-4622-9a32-bd8954c01555"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0b772aa7-e25f-430b-978c-a6363363bcc8"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
@@ -32,7 +42,12 @@
  Name="Q_DIR"
  Guid="e447caf7-f9b2-45ca-b454-d9abbbdc74f6"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0be2ea06-0c8b-4622-9a32-bd8954c01555"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2da197ea-3746-4782-b916-153559c19523"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
@@ -40,7 +55,12 @@
  Name="L_PACKET"
  Guid="b7243bf1-2aff-4747-b612-fe4898b349f2"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0be2ea06-0c8b-4622-9a32-bd8954c01555"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="70c04583-54b8-4c65-941d-de4161a85f95"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
@@ -48,7 +68,12 @@
  Name="Q_SCALE"
  Guid="ca884ffc-3e97-4adf-81b4-afd5a6399649"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0be2ea06-0c8b-4622-9a32-bd8954c01555"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="586c97de-15aa-45b5-8c38-b4daca5df8bd"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_TRACKINIT"
  Default=""
  Mode="InOut"
@@ -56,7 +81,12 @@
  Name="Q_TRACKINIT"
  Guid="7d9279b6-982e-4c5d-ad4f-a6da2dc9f45c"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0be2ea06-0c8b-4622-9a32-bd8954c01555"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1bde4b61-6418-4c32-a93f-3f9986815e77"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
