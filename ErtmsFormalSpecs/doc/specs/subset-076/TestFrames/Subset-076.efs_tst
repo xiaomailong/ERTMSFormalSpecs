@@ -64,11 +64,11 @@
 <Actions>
 <Action
  Guid="9145d9c1-4776-44cd-8707-1777617b6224"
->EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="45e62230-8f34-4498-9a14-25a15efaa83b"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;1515&apos;</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.Id.Id &lt;- 1515</Action><Action
  Guid="b7ebbdf1-fd67-4b04-879a-20ac929c3179"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;1234 FFFF FFFF FFFF&apos;</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.PhoneNumber &lt;- &apos;1234 FFFF FFFF FFFF&apos;</Action><Action
  Guid="64f16624-d405-4e43-94f7-5276074921a6"
 >Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="20ed9b38-157a-4f5c-bd06-632259754152"
@@ -202,7 +202,7 @@ The on-board equipment changes to SB mode.</Description>
 <Actions>
 <Action
  Guid="4b74729b-6eec-4693-a215-659644fc67b0"
->TIU.Cab1.IsActive &lt;- True</Action></Actions>
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="6"
@@ -10078,11 +10078,11 @@ The new current mode is not indicated on the DMI</Description>
 <Actions>
 <Action
  Guid="f22c204d-6072-4cf0-8625-58a7d483e93d"
->EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="a8bec7e0-d4ec-400a-bbe2-2a225bc412e8"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;-1&apos;</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.Id.Id &lt;- -1</Action><Action
  Guid="d49c710f-7c06-48d5-b5a9-3bfac8cdf008"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;Unknown&apos;</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.PhoneNumber &lt;- &apos;Unknown&apos;</Action><Action
  Guid="9c22a5f2-b099-4dbe-9e8f-980ebc9868f7"
 >Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="1fefdd2a-1c6d-4c21-a3af-ec830ff83c53"
@@ -10216,7 +10216,7 @@ The on-board equipment changes to SB mode.</Description>
 <Actions>
 <Action
  Guid="f360cd32-49c7-428c-bbcf-943fe8edf202"
->TIU.CabA.IsActive &lt;- True</Action></Actions>
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="6"
