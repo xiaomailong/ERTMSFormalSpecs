@@ -123,14 +123,17 @@ namespace DataDictionary
                 {
                     Types.Structure structure1 = Utils.EnclosingFinder<Types.Structure>.find(this, true);
                     Types.Structure structure2 = Utils.EnclosingFinder<Types.Structure>.find(modelElement, true);
-                    if (structure1 != null && structure2 != null)
+                    if (structure1 != null)
                     {
-                        prefix = CommonPrefix(structure1.FullName + ".", structure2.FullName + ".");
-                    }
-                    else
-                    {
-                        retVal = Name;
-                        prefix = "";
+                        if (structure2 != null)
+                        {
+                            prefix = CommonPrefix(structure1.FullName + ".", structure2.FullName + ".");
+                        }
+                        else
+                        {
+                            retVal = Name;
+                            prefix = "";
+                        }
                     }
                 }
                 else
