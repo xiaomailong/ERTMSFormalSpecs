@@ -645,7 +645,9 @@
  Guid="ea478e16-1bfc-4eda-96e9-801b7acb1f4b"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A33</Action><Action
  Guid="40837a79-f9f1-4786-a4c2-21708bf4de41"
->Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action></Actions>
+>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action
+ Guid="5586665a-cd79-4372-a806-dedd7415d617"
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -748,7 +750,9 @@
  Guid="e9ba09cb-c199-4ec8-8c98-6abf83a173c9"
 >Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action
  Guid="c954a36a-c104-4bf8-988f-439cf33e3c2f"
->BTM.LRBG &lt;- EMPTY</Action></Actions>
+>BTM.LRBG &lt;- EMPTY</Action><Action
+ Guid="14aca83e-26ab-4b66-a20a-294634795802"
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1710,7 +1714,7 @@
 <Actions>
 <Action
  Guid="c6ae63f5-cb2a-40db-a69a-d7023e464dad"
->EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Check the state"
  Guid="17bed226-0b19-4f9c-b25d-1daccc7919c4"
@@ -1763,7 +1767,7 @@
 <Actions>
 <Action
  Guid="76853ac8-51f9-4091-9a20-48904c1099fa"
->EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.NoConnection</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Check the state"
  Guid="3bed7637-3e5c-4b0e-a4ba-067cef497f19"
@@ -4515,12 +4519,12 @@
  Guid="528d31e6-e5f0-4e56-8dc9-6dda9cded754"
 >Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="6c4eb403-de74-4da1-9ab5-45751f9500a2"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="aece57a4-94ca-49bd-bfdb-51dfd57b9915"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4539,7 +4543,7 @@
 <Actions>
 <Action
  Guid="76284da9-d3b1-446d-a5f1-2f5d18b06a8a"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="85ca8425-2f10-48b6-8ff5-e03a099d98e1"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action
  Guid="ec6507d5-8101-44ab-acef-d9675b4cfae1"
@@ -4550,7 +4554,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="d9c4e649-ebc6-4715-899b-c53c548b64db"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2b7a7356-fb4b-47d6-9718-1b1f52b3fa1f"
 >Kernel.Level.DataState == DataState.Invalid</Expectation><Expectation
@@ -4595,7 +4599,7 @@
 <Actions>
 <Action
  Guid="6b196797-6412-4577-ad66-a89909681aed"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="6befd417-0746-44a2-a638-812decf08a96"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action
  Guid="27679987-ed1f-4ab9-b04f-bbe801c59d65"
@@ -4606,7 +4610,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="b99c9438-aa12-4a4a-aa6d-6514e4f3fe84"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  Guid="38b8678e-7c6d-4765-9ce1-92ce8500f60e"
 >Kernel.Level.DataState == DataState.Unknown</Expectation><Expectation
@@ -4631,7 +4635,7 @@
 <Actions>
 <Action
  Guid="5fc773d5-275a-4fce-b1cf-891c66db9341"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="d85c680d-9109-48d8-b248-fe617064135b"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action
  Guid="5b0ecb24-6b35-4487-a902-ee0ac9c0550e"
@@ -4642,7 +4646,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="487f4bdf-c6ec-4abf-8b21-103bf5067a78"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a2af3c24-0c23-4772-a2b7-55931b2f991b"
 >Kernel.Level.DataState == DataState.Unknown</Expectation><Expectation
@@ -4698,7 +4702,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="9c37d1fd-8fd1-4cc7-a4bc-80763eb2d500"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4717,14 +4721,14 @@
 <Actions>
 <Action
  Guid="a6c101bd-3794-4a98-a526-e980681d8725"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="7b7bd3c3-c99e-4e3c-9f81-c826cf30c853"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="cec40e85-0d77-40a1-ac7d-324bff40289e"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4efefae8-5c01-494c-8e77-d768e53a6b8c"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S2</Expectation></Expectations>
@@ -6556,7 +6560,7 @@
  Guid="b13ab676-fae0-407c-ace8-76e1024e9a87"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S11</Action><Action
  Guid="97821d36-2b5a-4bae-a2ae-742f18eba138"
->EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7447,7 +7451,7 @@
  Guid="74922297-5d15-462b-a34d-b8822b6acdf1"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action
  Guid="658885a9-1aab-429f-a410-515855f0a57c"
->EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -7861,7 +7865,7 @@
  Guid="bf5e3052-e665-4579-b639-50bd79f8f09f"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action
  Guid="d4624dcb-3d9b-4029-bb5c-f9481559c9db"
->EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -9634,7 +9638,7 @@
 >EURORADIO.CurrentTerminal().RegistrationState in EURORADIO.TerminalStruct.RegistrationStateSM.Registering</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3dcbcc07-2915-4a0e-a50e-d7fc3dd903ac"
->EURORADIO.CurrentTerminal().NetworkId == &apos;4562&apos;</Expectation><Expectation
+>EURORADIO.CurrentTerminal().NetworkIdToRegister == &apos;4562&apos;</Expectation><Expectation
  Kind="Instantaneous"
  Guid="32feb283-e0e1-4056-bd4d-37eb016592eb"
 >EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Unknown</Expectation></Expectations>
