@@ -1976,7 +1976,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 <PreConditions>
 <PreCondition
  Guid="5e653953-1096-4f8d-8331-734cb465dff9"
->Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
+>Kernel.TrackDescription.TrackConditions.General.IsInsideRadioHole()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="aa4d7c3e-e76d-40a7-9946-5e6162008c03"
@@ -4102,7 +4102,7 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
  Guid="b5e8db11-f4d9-426b-915b-6324ac7b9956"
 >anRBC.SpecialCaseSessionEstablishmentReason == SpecialCaseSessionEstablishmentReasonEnum.EstablishDueToRadioHole</PreCondition><PreCondition
  Guid="44942523-b06e-4e90-94c0-c6d3f71ab6f8"
->NOT Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
+>NOT Kernel.TrackDescription.TrackConditions.General.IsInsideRadioHole()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Establish session due to mode change report"
