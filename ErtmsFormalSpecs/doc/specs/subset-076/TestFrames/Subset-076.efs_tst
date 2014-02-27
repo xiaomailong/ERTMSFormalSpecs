@@ -162,15 +162,6 @@ The on-board equipment changes to SB mode.</Description>
  Name="Sub-step1"
  Guid="1f138839-c46a-42b7-8a01-f40071c7991f"
 >
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation"
- Guid="11a8f5c4-ad3f-4d95-85e7-fb7804ab028f"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
-    ModeInkernel=&gt;Default.Mode.SB
-)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1158,15 +1149,6 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Name="Sub-step1"
  Guid="1a73ebbf-e542-4312-9e02-4037af99718d"
 >
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation"
- Guid="bae6eb72-1c5a-4915-a648-28f9e7b76b4a"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
-    ModeInkernel=&gt;Default.Mode.SR
-)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -10176,15 +10158,6 @@ The on-board equipment changes to SB mode.</Description>
  Name="Sub-step1"
  Guid="dcc9fe21-c5ab-40d7-805d-9ff6375b435b"
 >
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation"
- Guid="4c395c71-69a3-4526-bfe6-58a9e748441c"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
-    ModeInkernel=&gt;Default.Mode.SB
-)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
