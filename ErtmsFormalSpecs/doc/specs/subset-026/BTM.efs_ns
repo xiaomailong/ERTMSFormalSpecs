@@ -984,6 +984,54 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 >Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedProfileReceived ( Packet.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
+ Name="Track Condition Change of Traction System available"
+ Guid="fc4e8dd5-7ad3-4fd2-b44a-13afc089db60"
+>
+<ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d812680-2c70-4fbf-a7a5-33665bb908ad"
+>
+</ReqRef><ReqRef
+ Id="2559c745-3a6f-444a-b3bd-fb143a2a1fc6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e664de52-c95e-45a0-8e42-e3bbcb3d67a1"
+>
+</ReqRef><Comment>Handles Track Condition Change of Traction System packet, if available</Comment>
+<PreConditions>
+<PreCondition
+ Guid="08e11111-2014-42e6-98f6-54a7fe1b3c8e"
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0720e95d-207d-40f6-9fb3-40fbbf1628f7"
+>Kernel.TrackDescription.TrackConditions.TractionSystems.HandleNewTractionSystem(Packet.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Track Condition Change of allowed current consumption available"
+ Guid="8448c5a5-bbd8-48f5-ae84-e1b63f672c7d"
+>
+<ReqRef
+ Id="3b292c0a-1360-49a7-9047-9707757f6e7b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="190fb223-2c21-4e2f-abdd-bca79a7608e4"
+>
+</ReqRef><ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47ea4e15-5a4d-4581-b3fa-17ea4b4ab0fa"
+>
+</ReqRef><Comment>Handles Track Condition Change of allowed current consumption packet, if available</Comment>
+<PreConditions>
+<PreCondition
+ Guid="2ae476f8-85fe-405e-9228-8e0cf7bf9516"
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_ALLOWED_CURRENT_CONSUMPTION.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f3afa4bc-a50e-4fbb-818c-4f503b306e90"
+>Kernel.TrackDescription.TrackConditions.CurrentConsumption.HandleNewCCTrackCondition(Packet.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_ALLOWED_CURRENT_CONSUMPTION)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Level Transition available"
  Guid="cc3bb14f-546a-4511-9c25-40fdc32fa32d"
 >
@@ -1215,6 +1263,30 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 >Kernel.TSR.TemporarySpeedRestrictionRevocationReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION,NID_BG=&gt;NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
+ Name="Track Condition Big Metal Masses available"
+ Guid="ced1a7db-bddb-4b6e-9e46-0ea249622bfd"
+>
+<ReqRef
+ Id="a013028b-ded7-4e9f-9521-43654f2cb992"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d9fb7cb1-8637-4910-8436-7ce771958686"
+>
+</ReqRef><ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="551e1e38-b27e-4697-9dcc-60e0b422a7d6"
+>
+</ReqRef><Comment>Handles Track Condition Big Metal Masses packet, if available</Comment>
+<PreConditions>
+<PreCondition
+ Guid="a21202a1-5f8b-4294-a6a7-80d366dcaf78"
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TRACK_CONDITION_BIG_METAL_MASSES.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a8168c14-8dea-4896-9b29-5f71ec706278"
+>Kernel.TrackDescription.TrackConditions.BigMetalMasses.HandleNewBMMTrackCondition( Packet.TRACK_TO_TRAIN.TRACK_CONDITION_BIG_METAL_MASSES )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Track Condition available"
  Guid="288dd8f6-b8e0-484e-b5d9-84abc3b56c83"
 >
@@ -1241,7 +1313,31 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 <Actions>
 <Action
  Guid="b347e32c-19e6-4ec5-8505-a3bae2deeed2"
->Kernel.TrackDescription.TrackConditions.TrackConditionReceived ( Packet.TRACK_TO_TRAIN.TRACK_CONDITION )</Action></Actions>
+>Kernel.TrackDescription.TrackConditions.General.TrackConditionReceived( Packet.TRACK_TO_TRAIN.TRACK_CONDITION )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Track Condition Station Platforms available"
+ Guid="848f07ff-38f9-43db-a24b-426c19fd0b9f"
+>
+<ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86fe59f8-52b0-4db0-ac6a-f2b2dc6a5150"
+>
+</ReqRef><ReqRef
+ Id="47c59e98-996c-4daa-84b7-bda20f4e45ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fda02217-3575-4818-8aa9-e47e3ef07114"
+>
+</ReqRef><Comment>Handles Track Condition Station Platforms packet, if available</Comment>
+<PreConditions>
+<PreCondition
+ Guid="c3cf8574-ecaa-4d54-b4cf-cc3262950012"
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TRACK_CONDITION_STATION_PLATFORMS.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e37299ce-6e60-4015-9897-e33c8b3ca56c"
+>Kernel.TrackDescription.TrackConditions.StationPlatform.SPTrackConditionReceived( Packet.TRACK_TO_TRAIN.TRACK_CONDITION_STATION_PLATFORMS)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Route Suitability available"
