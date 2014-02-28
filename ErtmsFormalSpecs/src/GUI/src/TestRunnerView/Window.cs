@@ -448,5 +448,21 @@ namespace GUI.TestRunnerView
         {
             Refresh();
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (!EFSSystem.INSTANCE.Markings.selectPreviousMarking())
+            {
+                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            if (!EFSSystem.INSTANCE.Markings.selectNextMarking())
+            {
+                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

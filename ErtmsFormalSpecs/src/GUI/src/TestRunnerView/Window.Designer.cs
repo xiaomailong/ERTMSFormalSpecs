@@ -43,6 +43,7 @@ namespace GUI.TestRunnerView
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
@@ -80,6 +81,8 @@ namespace GUI.TestRunnerView
             this.evcTimeLineControl = new GUI.TestRunnerView.TimeLineControl.TimeLineControl();
             this.messagesGroupBox = new System.Windows.Forms.GroupBox();
             this.messageRichTextBox = new GUI.EditorTextBox();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -108,6 +111,8 @@ namespace GUI.TestRunnerView
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel3,
             this.toolStripSeparator1,
+            this.toolStripButton1,
+            this.toolStripButton2,
             this.nextErrortoolStripButton,
             this.nextWarningToolStripButton,
             this.nextInfoToolStripButton,
@@ -408,7 +413,7 @@ namespace GUI.TestRunnerView
             this.requirementsTextBox.ConsiderOnlyTypes = false;
             this.requirementsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requirementsTextBox.Instance = null;
-            this.requirementsTextBox.Lines = new string[] { };
+            this.requirementsTextBox.Lines = new string[] { "" };
             this.requirementsTextBox.Location = new System.Drawing.Point(0, 0);
             this.requirementsTextBox.Name = "requirementsTextBox";
             this.requirementsTextBox.ReadOnly = false;
@@ -423,7 +428,7 @@ namespace GUI.TestRunnerView
             this.expressionEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expressionEditorTextBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.expressionEditorTextBox.Instance = null;
-            this.expressionEditorTextBox.Lines = new string[] { };
+            this.expressionEditorTextBox.Lines = new string[] { "" };
             this.expressionEditorTextBox.Location = new System.Drawing.Point(0, 0);
             this.expressionEditorTextBox.Name = "expressionEditorTextBox";
             this.expressionEditorTextBox.ReadOnly = false;
@@ -438,7 +443,7 @@ namespace GUI.TestRunnerView
             this.explainTextBox.ConsiderOnlyTypes = false;
             this.explainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.explainTextBox.Instance = null;
-            this.explainTextBox.Lines = new string[] { };
+            this.explainTextBox.Lines = new string[] { "" };
             this.explainTextBox.Location = new System.Drawing.Point(0, 0);
             this.explainTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.explainTextBox.Name = "explainTextBox";
@@ -488,13 +493,35 @@ namespace GUI.TestRunnerView
             this.messageRichTextBox.ConsiderOnlyTypes = false;
             this.messageRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.messageRichTextBox.Instance = null;
-            this.messageRichTextBox.Lines = new string[] { };
+            this.messageRichTextBox.Lines = new string[] { "" };
             this.messageRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.messageRichTextBox.Name = "messageRichTextBox";
             this.messageRichTextBox.ReadOnly = false;
             this.messageRichTextBox.Rtf = resources.GetString("messageRichTextBox.Rtf");
             this.messageRichTextBox.Size = new System.Drawing.Size(611, 66);
             this.messageRichTextBox.TabIndex = 4;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.ToolTipText = "Select previous marking";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.ToolTipText = "Select next marking";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // Window
             // 
@@ -575,6 +602,8 @@ namespace GUI.TestRunnerView
         public System.Windows.Forms.TabControl tabControl1;
         public System.Windows.Forms.TabPage timeLineTabPage;
         public System.Windows.Forms.TabPage descriptionTabPage;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
 
     }
 }

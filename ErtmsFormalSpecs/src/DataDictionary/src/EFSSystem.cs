@@ -50,6 +50,11 @@ namespace DataDictionary
         public bool ShouldSave { get; set; }
 
         /// <summary>
+        /// The marking history
+        /// </summary>
+        public MarkingHistory Markings { get; private set; }
+
+        /// <summary>
         /// Listener to model changes
         /// </summary>
         public class BaseModelElementChangeListener : XmlBooster.IListener<DataDictionary.Generated.BaseModelElement>
@@ -101,6 +106,7 @@ namespace DataDictionary
 
             DataDictionary.Generated.acceptor.setFactory(new DataDictionary.ObjectFactory());
             Compiler = new Interpreter.Compiler(this);
+            Markings = new MarkingHistory(this);
 
             // Reads the history file and updates the blame information stored in it
             Compare.Factory historyFactory = DataDictionary.Compare.Factory.INSTANCE;
