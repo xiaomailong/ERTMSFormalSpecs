@@ -408,9 +408,7 @@ namespace GUI.TestRunnerView
             this.requirementsTextBox.ConsiderOnlyTypes = false;
             this.requirementsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requirementsTextBox.Instance = null;
-            this.requirementsTextBox.Lines = new string[] {
-        "",
-        ""};
+            this.requirementsTextBox.Lines = new string[] { };
             this.requirementsTextBox.Location = new System.Drawing.Point(0, 0);
             this.requirementsTextBox.Name = "requirementsTextBox";
             this.requirementsTextBox.ReadOnly = false;
@@ -425,9 +423,7 @@ namespace GUI.TestRunnerView
             this.expressionEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expressionEditorTextBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.expressionEditorTextBox.Instance = null;
-            this.expressionEditorTextBox.Lines = new string[] {
-        "",
-        ""};
+            this.expressionEditorTextBox.Lines = new string[] { };
             this.expressionEditorTextBox.Location = new System.Drawing.Point(0, 0);
             this.expressionEditorTextBox.Name = "expressionEditorTextBox";
             this.expressionEditorTextBox.ReadOnly = false;
@@ -442,9 +438,7 @@ namespace GUI.TestRunnerView
             this.explainTextBox.ConsiderOnlyTypes = false;
             this.explainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.explainTextBox.Instance = null;
-            this.explainTextBox.Lines = new string[] {
-        "",
-        ""};
+            this.explainTextBox.Lines = new string[] { };
             this.explainTextBox.Location = new System.Drawing.Point(0, 0);
             this.explainTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.explainTextBox.Name = "explainTextBox";
@@ -494,9 +488,7 @@ namespace GUI.TestRunnerView
             this.messageRichTextBox.ConsiderOnlyTypes = false;
             this.messageRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.messageRichTextBox.Instance = null;
-            this.messageRichTextBox.Lines = new string[] {
-        "",
-        ""};
+            this.messageRichTextBox.Lines = new string[] { };
             this.messageRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.messageRichTextBox.Name = "messageRichTextBox";
             this.messageRichTextBox.ReadOnly = false;
