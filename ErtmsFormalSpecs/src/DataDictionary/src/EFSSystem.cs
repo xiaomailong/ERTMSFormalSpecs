@@ -1230,24 +1230,35 @@ namespace DataDictionary
         /// <returns></returns>
         public List<Usage> FindReferences(ModelElement model)
         {
-            // Find references
-            ReferenceVisitor visitor = new ReferenceVisitor(model);
-            bool prev = ModelElement.BeSilent;
-            try
+            List<Usage> retVal;
+
+            if (model != null)
             {
-                ModelElement.BeSilent = true;
-                foreach (Dictionary dictionary in Dictionaries)
+                // Find references
+                ReferenceVisitor visitor = new ReferenceVisitor(model);
+                bool prev = ModelElement.BeSilent;
+                try
                 {
-                    visitor.visit(dictionary, true);
+                    ModelElement.BeSilent = true;
+                    foreach (Dictionary dictionary in Dictionaries)
+                    {
+                        visitor.visit(dictionary, true);
+                    }
+                    visitor.Usages.Sort();
                 }
-                visitor.Usages.Sort();
+                finally
+                {
+                    ModelElement.BeSilent = prev;
+                }
+
+                retVal = visitor.Usages;
             }
-            finally
+            else
             {
-                ModelElement.BeSilent = prev;
+                retVal = new List<Usage>();
             }
 
-            return visitor.Usages;
+            return retVal;
         }
 
 

@@ -719,6 +719,30 @@ namespace DataDictionary
             }
         }
 
+        /// <summary>
+        /// Checks the model for unused element
+        /// </summary>
+        public void CheckDeadModel()
+        {
+            try
+            {
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                ClearMessages();
+
+                // Rebuilds everything
+                EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
+                EFSSystem.ShouldRebuild = false;
+
+                // Check rules
+                UsageChecker visitor = new UsageChecker(this);
+                visitor.visit(this, true);
+            }
+            finally
+            {
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+            }
+        }
+
         private class UnimplementedItemVisitor : Generated.Visitor
         {
             public override void visit(Generated.ReqRelated obj, bool visitSubNodes)

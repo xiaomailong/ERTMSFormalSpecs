@@ -239,7 +239,7 @@ namespace DataDictionary.Interpreter.Statement
                 Values.IValue value = Expression.GetValue(context);
                 if (value != null)
                 {
-                    value = value.RightSide(var, true);
+                    value = value.RightSide(var, true, true);
                 }
                 Rules.Change change = new Rules.Change(var, var.Value, value);
                 changes.Add(change, apply, runner);

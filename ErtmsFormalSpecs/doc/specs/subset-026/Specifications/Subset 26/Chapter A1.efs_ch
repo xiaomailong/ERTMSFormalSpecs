@@ -1142,6 +1142,36 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
  Guid="ecf2af34-5e55-40e4-83a6-e6ec4827734c"
 >Paragraph 3.5.3.7.a.3 states &quot;A request shall be repeated immediately after EURORADIO has indicated that setting up the safe radio connection has failed.&quot; We suppose that the request has to be repeated for both cases (SoM and no SoM). In the case of ongoing SoM, it will be repeated even if the maximum number of requests was already sent.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="A1.1.22"
+ guid=""
+ type="TITLE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="d58dc0b2-1f87-4b19-96b9-61bb4874bb36"
+>Arbitrary default values when the spec does not state them<Sub>
+<Paragraph
+ id="A1.1.22.1"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ onboard="TRUE"
+ trackside="TRUE"
+ Name=""
+ Guid="25a80a36-9119-4055-83dd-328efcdcc20c"
+>In the track conditions 3.12.1, Change of traction system and Change of maximum allowed current consumption do not have initial states - the requirements just say that they always keep their old values. We defined a default value for each in the case where none has been specified yet.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.2"

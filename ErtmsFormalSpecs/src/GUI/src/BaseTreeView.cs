@@ -334,7 +334,7 @@ namespace GUI
 
                         compiler.Compile_Synchronous(false, true);
                         DestinationNode.AcceptDrop(SourceNode);
-                        compiler.RefactorAndReNameSpace(SourceNode.Model as DataDictionary.ModelElement);
+                        compiler.RefactorAndRelocate(SourceNode.Model as DataDictionary.ModelElement);
                     }
                 }
             }

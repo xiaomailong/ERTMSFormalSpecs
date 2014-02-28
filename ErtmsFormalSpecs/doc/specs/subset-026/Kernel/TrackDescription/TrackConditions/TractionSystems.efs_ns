@@ -1,0 +1,368 @@
+<NameSpace
+ Name="TractionSystems"
+ Guid="58374065-177d-4411-b299-d4bbda072366"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ Name="TractionSystem"
+ Guid="44d803d3-4953-4340-b09a-f47f0ee996ef"
+>
+<ReqRef
+ Id="0cafa698-2f88-42be-a9e1-4a5b598db20c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eaf6c7fc-1059-43c1-a229-917bb2dbd05b"
+>
+</ReqRef><Comment>Contains information about the traction system the train will switch to</Comment>
+<StructureElement
+ TypeName="Messages.NID_CTRACTION"
+ Default="0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="CountryIdentifier"
+ Guid="3b18c44d-7595-44d4-875a-519fa242ec5c"
+>
+<ReqRef
+ Id="3e473bc9-3037-4723-8378-f99625c4fc5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4ef527a-9cb8-4c9b-9291-1e5c646085de"
+>
+</ReqRef><Comment>Country identifier of the traction system to be used</Comment>
+</StructureElement><StructureElement
+ TypeName="Messages.M_VOLTAGE"
+ Default="Messages.M_VOLTAGE.Line_not_fitted_with_any_traction_system"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SystemType"
+ Guid="7c1b02d5-b4b7-4ca4-84ad-72b1557cf98f"
+>
+<ReqRef
+ Id="3279c818-b689-4685-acc2-1390cd5331ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf78967e-57e5-4c6a-8808-91e60683812d"
+>
+</ReqRef><Comment>Traction system to be used</Comment>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="TractionSystemInformation"
+ Guid="5881ab92-0757-408b-aece-398ffeb03a16"
+>
+<ReqRef
+ Id="0cafa698-2f88-42be-a9e1-4a5b598db20c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4830236c-96b4-4892-b899-0b5a9b85063c"
+>
+</ReqRef><ReqRef
+ Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a219484f-1875-4df6-a97c-baa45095c326"
+>
+</ReqRef><Comment>Contains traction system track condition information with its start location</Comment>
+<StructureElement
+ TypeName="TractionSystems.TractionSystem"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Value"
+ Guid="e634abff-5400-4599-9235-a9bee34e38ae"
+>
+<ReqRef
+ Id="3279c818-b689-4685-acc2-1390cd5331ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f34277d9-2d31-42cd-b2c5-d05bf4a372c2"
+>
+</ReqRef><ReqRef
+ Id="3e473bc9-3037-4723-8378-f99625c4fc5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4dc0a0d-be47-4245-a535-686ba976a4e5"
+>
+</ReqRef><Comment>Information about the traction system to switch to at Distance</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Distance"
+ Guid="7561ac50-931c-4ce9-9cad-892f57077bf7"
+>
+<ReqRef
+ Id="0ee36d8a-a637-4d9f-8195-47e71f70cd7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="562cbf26-1e70-4dfe-be28-3f4d35fefb16"
+>
+</ReqRef><Comment>Start location of the track condition</Comment>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="TractionSystems.TractionSystemInformation"
+ MaxSize="20"
+ Default="[]"
+ Implemented="TRUE"
+ Name="TractionSystems"
+ Guid="eeee0b74-18e8-4afd-8602-37a0b75099c2"
+>
+<ReqRef
+ Id="0cafa698-2f88-42be-a9e1-4a5b598db20c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d35b58be-a9bc-44a7-b0e2-98b24094cd8d"
+>
+</ReqRef><Comment>Collection of TractionSystemInformation items. Is the type of TCTractionSystems</Comment>
+</Collection></Collections>
+<Functions>
+<Function
+ Type="TractionSystem"
+ Implemented="TRUE"
+ Name="CurrentTSConditions"
+ Guid="2233537a-fd58-4324-aa5d-62e34a8d754d"
+>
+<ReqRef
+ Id="00dfa999-7dd3-4fe9-a2d0-8fab1506a7d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fda794f8-7873-49bf-af05-8a9d7df6eae2"
+>
+</ReqRef><Comment>Gives the current track conditions</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="c00cb58e-6829-4b88-9eef-d0abbebf3042"
+>
+<Comment>The starting point is when the max safe front end of the train passes the location specified in the message</Comment>
+<Expression>TSAtDistance(
+    Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;DistanceInterval.Max)
+)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="TractionSystem"
+ Implemented="TRUE"
+ Name="TSAtDistance"
+ Guid="038fe2b8-4470-4c67-af8d-0570a63018bc"
+>
+<ReqRef
+ Id="b25e8d2d-5034-4a5d-bf39-2ddf58ec8b98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e027fc4e-e78b-4a50-8d6b-729b407394af"
+>
+</ReqRef><ReqRef
+ Id="25a80a36-9119-4055-83dd-328efcdcc20c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ef11124d-429a-4a51-bc5d-677968757ea4"
+>
+</ReqRef><ReqRef
+ Id="0cafa698-2f88-42be-a9e1-4a5b598db20c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7bb60dc9-8c94-484e-afb9-09a40b9afe28"
+>
+</ReqRef><Comment>Returns the profile for when the train position is the given distance</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="4ad88712-818a-43e8-ad3a-9557b156a126"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Previous conditions exist"
+ Guid="397ba12e-93f2-4f10-a383-88aee8930e63"
+>
+<Comment>According to 3.12.1.3.g, this should always be the case</Comment>
+<PreConditions>
+<PreCondition
+ Guid="eb420e4a-b35e-4d9b-8ab6-a8f9e8ba7043"
+>THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
+<Expression>REDUCE TCTractionSystems | (X.Distance == TSProfileStartLocation(Distance=&gt;Distance) )
+    USING X.Value
+  INITIAL_VALUE EMPTY</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="30b40833-011c-494f-bd47-713f9a91c456"
+>
+<Comment>Case created just to make the model work
+</Comment>
+<Expression>TractionSystem{
+    CountryIdentifier =&gt; Messages.NID_CTRACTION((FIRST_IN TrainData.TrainData.Value.TractionSystems).Country),
+    SystemType =&gt; (FIRST_IN TrainData.TrainData.Value.TractionSystems).Voltage
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TSProfileStartLocation"
+ Guid="f21bbb8b-a302-4b7e-9bec-426d7def7b51"
+>
+<Comment>Returns the traction system track conditions that apply at the given distance</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="0902574d-d17c-470a-9b82-b5a37c836c96"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="593ec303-1a01-4e61-97f4-2e672f836a18"
+>
+<Comment>Returns the element in TCTractionSystems with the largest distance that is less than or equal to the parameter</Comment>
+<Expression>REDUCE TCTractionSystems | (X.Distance &lt;= Distance)
+    USING Default.BaseTypes.MaxDistance(
+        X1=&gt;X.Distance,
+        X2=&gt;RESULT)
+  INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HandleNewTractionSystem"
+ Guid="8885b5f9-281d-458f-b8b0-abad070ad8dd"
+>
+<Comment>Updates the traction system track conditions according to the values of the packet received as parameter.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM.Message"
+ Name="Packet"
+ Guid="c984cc7d-0b7f-4d18-a6e1-2eb842442687"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="RemoveOldTrackConditions"
+ Guid="bb164f2b-df86-42fb-a386-3ad5956336a7"
+>
+<ReqRef
+ Id="34e52b72-19f6-41be-90c8-e46ac315c822"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8446806d-8f2f-4529-bb5a-c2da403c2da2"
+>
+</ReqRef><Comment>When new data is received, all old data starting from the start of the new data is overwritten</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RemoveOldTrackConditions"
+ Guid="0dd7ba75-1d16-41e0-9de3-bd0c20a55c01"
+>
+<ReqRef
+ Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="514a5ae4-f914-428c-84a2-806287cc756e"
+>
+</ReqRef><PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5452dacd-9945-4b71-b5dc-92eec14d74eb"
+>REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance(
+    distance=&gt;Packet.D_TRACTION,
+    scale=&gt;Packet.Q_SCALE
+)
+    IN TCTractionSystems</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AddNewTrackCondition"
+ Guid="7dd0b81b-c6b3-49bf-9f46-1e976d3e6f0d"
+>
+<Comment>Inserts the newly received track conditions in TCTractionSystems</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Insert a change in the profile"
+ Guid="9bd8906e-3c6d-426f-802b-013b24336164"
+>
+<ReqRef
+ Id="0ee36d8a-a637-4d9f-8195-47e71f70cd7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dad90257-6e56-4381-b488-ab2cc2180015"
+>
+</ReqRef><ReqRef
+ Id="3279c818-b689-4685-acc2-1390cd5331ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e812cc71-73ad-4916-8aa1-b3d070f75642"
+>
+</ReqRef><ReqRef
+ Id="3e473bc9-3037-4723-8378-f99625c4fc5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4f086642-5e30-4c74-8434-7d8cb741737a"
+>
+</ReqRef><Comment>Handle the M_TRACKCOND, D_TRACKCOND and L_TRACKCOND fields in Packet</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="999301d6-e625-436c-b54d-0a413831fb96"
+>INSERT TractionSystemInformation{
+    Distance =&gt; Default.MessageTypes.QScaleDistance(
+        distance=&gt;Packet.D_TRACTION,
+        scale=&gt;Packet.Q_SCALE
+    ),
+    Value =&gt; TractionSystem{
+        CountryIdentifier =&gt; Packet.NID_CTRACTION,
+        SystemType =&gt; Packet.M_VOLTAGE
+    }
+}
+
+IN
+    TCTractionSystems</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Display on DMI"
+ Guid="eaeaea51-45c4-4cbe-bbf9-8a87eea24937"
+>
+<ReqRef
+ Id="f1130a3d-ce18-4a20-9daa-8951a06f2d27"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e439c1a9-45d8-4e65-9324-d0beec4ebf35"
+>
+</ReqRef><ReqRef
+ Id="e7b803d0-32ff-44d5-ae54-a7a3a3cac6fd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="50c58ae9-47d8-4eab-8bc9-577dab2edbfd"
+>
+</ReqRef><Comment>Once the track condition has been received, indicate it on the DMI</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display the change of traction system"
+ Guid="a13f2950-4893-47ae-b412-f83d5c76b3ca"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="29585674-2fa6-4a76-9dbd-4686d3916b49"
+>DMI.DMIStruct.DisplayTrackConditionsWithoutSoundHorn()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<Variables>
+<Variable
+ Type="TractionSystems"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="TCTractionSystems"
+ Guid="5600ee48-6962-432b-88c3-54c6dc35db99"
+>
+<ReqRef
+ Id="0cafa698-2f88-42be-a9e1-4a5b598db20c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ed983311-f518-428c-8ba3-f74e05039d6e"
+>
+</ReqRef><Comment>The list of the traction system track conditions received from trackside</Comment>
+</Variable></Variables>
+</NameSpace>

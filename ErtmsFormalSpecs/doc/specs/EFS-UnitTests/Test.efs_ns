@@ -413,12 +413,23 @@
  Name="&lt;Condition1&gt;"
  Guid="25b86987-2730-4dae-9d6f-29a03816dab4"
 >
-<PreConditions>
+<ReqRef
+ Id="7819356b-b65c-4c0a-b638-8a6d3ef5e5d1"
+ SpecId="3a6a8122-3ff5-49e1-83b6-4830850875d1"
+ Guid="5a7b5a27-6eb9-4e90-a648-08c4c9b830ba"
+>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="ab21d1a9-7be1-43dd-b336-f402a31deebb"
 >var_coll &lt;- MAP var_coll USING NOT X</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="&lt;Rule2&gt;"
+ Guid="972407a2-40d5-425a-a969-5f6783170cee"
+>
+<SubRules></SubRules>
 </Rule></Rules>
 </NameSpace>
