@@ -83,6 +83,9 @@ namespace GUI
             : base(item, buildSubNodes, name, isFolder)
         {
             HandleRequirements = addRequirements;
+
+            // State of the node changed, rebuild the subnodes.
+            BaseBuildSubNodes(buildSubNodes);
         }
 
         /// <summary>
