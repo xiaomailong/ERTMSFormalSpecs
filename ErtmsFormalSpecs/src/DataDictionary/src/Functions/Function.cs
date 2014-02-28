@@ -180,8 +180,9 @@ namespace DataDictionary.Functions
         /// </summary>
         /// <param name="variable">The target variable</param>
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
+        /// <param name="setEnclosing">Indicates that the new value enclosing element should be set</param>
         /// <returns></returns>
-        public Values.IValue RightSide(Variables.IVariable variable, bool duplicate)
+        public virtual Values.IValue RightSide(Variables.IVariable variable, bool duplicate, bool setEnclosing)
         {
             return this;
         }

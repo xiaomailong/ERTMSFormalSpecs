@@ -126,8 +126,9 @@ namespace DataDictionary.Values
         /// </summary>
         /// <param name="variable">The target variable</param>
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
+        /// <param name="setEnclosing">Indicates that the new value enclosing element should be set</param>
         /// <returns></returns>
-        public override Values.IValue RightSide(Variables.IVariable variable, bool duplicate)
+        public override Values.IValue RightSide(Variables.IVariable variable, bool duplicate, bool setEnclosing)
         {
             ListValue retVal = this;
 
@@ -141,7 +142,11 @@ namespace DataDictionary.Values
                     retVal.Val.Add(emptyValue);
                 }
             }
-            retVal.Enclosing = variable;
+
+            if (setEnclosing)
+            {
+                retVal.Enclosing = variable;
+            }
 
             return retVal;
         }
