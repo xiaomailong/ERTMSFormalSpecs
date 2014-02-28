@@ -1618,5 +1618,23 @@ namespace GUI
             }
             Refresh();
         }
+
+        private void checkModelToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CheckModelOperation operation = new CheckModelOperation(EFSSystem);
+            operation.ExecuteUsingProgressDialog("Check model");
+
+            MessageCounter counter = new MessageCounter(EFSSystem);
+            MessageBox.Show(counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info + " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void checkToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CheckDeadModelOperation operation = new CheckDeadModelOperation(EFSSystem);
+            operation.ExecuteUsingProgressDialog("Check dead model");
+
+            MessageCounter counter = new MessageCounter(EFSSystem);
+            MessageBox.Show(counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info + " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
