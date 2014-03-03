@@ -267,8 +267,17 @@ namespace GUI.Report
 
             Hide();
 
-            ProgressDialog dialog = new ProgressDialog("Generating report", reportHandler);
-            dialog.ShowDialog(Owner);
+            try
+            {
+                SynchronizerList.SuspendSynchronization();
+
+                ProgressDialog dialog = new ProgressDialog("Generating report", reportHandler);
+                dialog.ShowDialog(Owner);
+            }
+            finally
+            {
+                SynchronizerList.ResumeSynchronization();
+            }
         }
 
 
