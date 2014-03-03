@@ -4618,6 +4618,10 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ScopeRollingStock", other.getScopeRollingStock().ToString(), obj.getScopeRollingStock().ToString()) );
             }
+            if ( obj.getScopeSTM() != other.getScopeSTM() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ScopeSTM", other.getScopeSTM().ToString(), obj.getScopeSTM().ToString()) );
+            }
             if ( !CompareUtil.canonicalStringEquality(obj.getBl(), other.getBl()) )
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Bl", other.getBl(), obj.getBl()) );

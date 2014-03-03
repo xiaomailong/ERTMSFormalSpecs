@@ -1335,6 +1335,7 @@
       <FIELD NAME="ScopeOnBoard"         TYPE="BOOLEAN" />
       <FIELD NAME="ScopeTrackside"       TYPE="BOOLEAN" />
       <FIELD NAME="ScopeRollingStock"    TYPE="BOOLEAN" />
+      <FIELD NAME="ScopeSTM"             TYPE="BOOLEAN" />
       <FIELD NAME="Bl"                   TYPE="PCHAR">
         <META NAME="DoNotTranslate" />
       </FIELD>
@@ -1398,6 +1399,7 @@
       <ATTR NAME="onboard"             TARGET="ScopeOnBoard" OPTIONAL="TRUE" DEFAULT="FALSE"/>
       <ATTR NAME="trackside"           TARGET="ScopeTrackside" OPTIONAL="TRUE" DEFAULT="FALSE"/>
       <ATTR NAME="rollinkstock"        TARGET="ScopeRollingStock" OPTIONAL="TRUE" DEFAULT="FALSE"/>
+      <ATTR NAME="stm"                 TARGET="ScopeSTM" OPTIONAL="TRUE" DEFAULT="FALSE"/>
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>

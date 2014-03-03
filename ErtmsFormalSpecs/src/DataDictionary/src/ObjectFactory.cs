@@ -210,6 +210,7 @@ namespace DataDictionary
             obj.setScopeOnBoard(false);
             obj.setScopeTrackside(false);
             obj.setScopeRollingStock(false);
+            obj.setScopeSTM(false);
             obj.setBl("");
             obj.setOptional(true);
             obj.setName("");

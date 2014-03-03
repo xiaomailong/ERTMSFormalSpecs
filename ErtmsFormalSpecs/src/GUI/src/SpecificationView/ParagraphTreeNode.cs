@@ -84,6 +84,12 @@ namespace GUI.SpecificationView
             public bool RollingStock { get { return Item.getScopeRollingStock(); } set { Item.SetScopeRollingStockAndAlterImplementableStatus(value); } }
 
             /// <summary>
+            /// The STM scope
+            /// </summary>
+            [Category("\tScope")]
+            public bool STM { get { return Item.getScopeSTM(); } set { Item.setScopeSTM(value); } }
+
+            /// <summary>
             /// Indicates if the paragraph has been reviewed (content & structure)
             /// </summary>
             [Category("Meta data")]
