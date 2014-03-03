@@ -14,6 +14,7 @@
  Name="Acceleration"
  Guid="698b553f-65ef-4e4a-975d-983ac8d44c59"
 >
+<Comment>An acceleration received from EURORADIO messages</Comment>
 <SpecialValues>
 <EnumValue
  Value="32769"
@@ -35,6 +36,7 @@
  Name="Distance"
  Guid="4041b30c-7cb5-40cb-a725-27604ab35342"
 >
+<Comment>A distance received from EURORADIO messages</Comment>
 <SpecialValues>
 <EnumValue
  Value="2147483648"
@@ -61,6 +63,7 @@
  Name="Gradient"
  Guid="e50f7a0f-b3e2-4f0d-83e4-7f2e6b86393c"
 >
+<Comment>A gradient received from EURORADIO messages</Comment>
 </Range><Range
  MinValue="0"
  MaxValue="32769"
@@ -70,6 +73,7 @@
  Name="Length"
  Guid="cfa1f608-f2e8-497b-9b16-9c28342cde5c"
 >
+<Comment>A length received from EURORADIO messages</Comment>
 <SpecialValues>
 <EnumValue
  Value="32769"
@@ -91,6 +95,7 @@
  Name="Speed"
  Guid="7a00461d-6586-47d2-9d2d-393dce90de0f"
 >
+<Comment>A speed received from EURORADIO messages</Comment>
 <SpecialValues>
 <EnumValue
  Value="32769"
@@ -112,6 +117,7 @@
  Name="Time"
  Guid="be6e8f0e-e054-476d-99f5-d88da7c12ac9"
 >
+<Comment>A time received from EURORADIO messages</Comment>
 </Range></Ranges>
 <Functions>
 <Function
@@ -122,7 +128,7 @@
  Name="QLocAccLength"
  Guid="a30e6bfc-eb39-4896-abaa-63b8fdbbc2cc"
 >
-<Comment>Converts Messages.Q_LOCACC into BaseTypes.Length</Comment>
+<Comment>Converts an accuracy of the balise location received from incoming message into a BaseType.Length</Comment>
 <Parameters>
 <Parameter
  Type="Messages.Q_LOCACC"
@@ -143,7 +149,7 @@
  Name="QScaleGradient"
  Guid="01a12dce-9529-47a2-b7ca-32a4e9ec7879"
 >
-<Comment></Comment>
+<Comment>Converts a gradient received from incoming message into a BaseType.Gradient</Comment>
 <Parameters>
 <Parameter
  Type="MessageTypes.Gradient"
@@ -164,6 +170,7 @@
  Name="DecelerationResolution"
  Guid="06092188-a00c-4a15-9e63-e807f02ba265"
 >
+<Comment>Resolves a deceleration according to the resolution parameter</Comment>
 <Parameters>
 <Parameter
  Type="MessageTypes.Acceleration"
@@ -189,6 +196,7 @@
  Name="UnResolveSpeed"
  Guid="546594f2-b0e6-40f7-911a-30de489aa2a9"
 >
+<Comment>Converts a BaseTypes.Speed into its corresponding MessagesTypes.Speed, according to the resolution factor</Comment>
 <Parameters>
 <Parameter
  Type="BaseTypes.Speed"
@@ -223,6 +231,7 @@
  Name="UnScaleLength"
  Guid="82c0b878-e405-4ed0-a792-5f948c15f26a"
 >
+<Comment>Converts a BaseTypes.Length into its corresponding MessagesTypes.Length, according to the Q_Scale factor</Comment>
 <Parameters>
 <Parameter
  Type="BaseTypes.Length"
@@ -279,6 +288,7 @@
  Name="SpeedResolution"
  Guid="a6810c09-56df-4744-842f-023c0e59c92e"
 >
+<Comment>Converts a speed received from incoming message into a BaseType.Speed</Comment>
 <Parameters>
 <Parameter
  Type="MessageTypes.Speed"
@@ -304,6 +314,7 @@
  Name="QScaleLength"
  Guid="d939f01e-5aca-485a-90c1-a1ace317b34d"
 >
+<Comment>Converts a length received from incoming message into a BaseType.Length</Comment>
 <Parameters>
 <Parameter
  Type="MessageTypes.Length"
@@ -351,6 +362,7 @@
  Name="UnScaleDistance"
  Guid="09fb6390-d261-4af0-8873-a71af6b73b2d"
 >
+<Comment>Converts a BaseTypes.Distance into its corresponding MessagesTypes.Distance, according to the Q_Scale factor</Comment>
 <Parameters>
 <Parameter
  Type="BaseTypes.Distance"
@@ -409,7 +421,7 @@
  Name="QScaleDistance"
  Guid="e89036a0-0897-4ceb-b19b-f75aff95f1f4"
 >
-<Comment>Converts Distances as received from messages into BaseType.Distance for internal use</Comment>
+<Comment>Converts a distance received from incoming message into a BaseType.Distance</Comment>
 <Parameters>
 <Parameter
  Type="MessageTypes.Distance"
@@ -457,6 +469,7 @@
  Name="AccelerationResolution"
  Guid="6711c7a1-7622-4e08-acad-5fff44b95ae5"
 >
+<Comment>Resolves an acceleration according to the resolution parameter</Comment>
 <Parameters>
 <Parameter
  Type="MessageTypes.Acceleration"
@@ -478,9 +491,11 @@
 </Case></Cases>
 </Function><Function
  Type="MessageTypes.Time"
+ NeedsRequirement="FALSE"
  Name="UnResolveTime"
  Guid="796ab421-d591-4514-b5e3-3723d4109e32"
 >
+<Comment>Converts a BaseTypes.Time into its corresponding MessagesTypes.Time, according to the resolution factor</Comment>
 <Parameters>
 <Parameter
  Type="BaseTypes.Time"
@@ -510,6 +525,7 @@
  Name="TimeResolution"
  Guid="59622f5f-701b-40a7-a3d0-bdd43e4a531f"
 >
+<Comment>Converts a time received from incoming message into a BaseType.Time</Comment>
 <Parameters>
 <Parameter
  Type="MessageTypes.Time"
