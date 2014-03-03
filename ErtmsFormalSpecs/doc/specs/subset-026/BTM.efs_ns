@@ -23,7 +23,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5ce0cea6-f421-462c-9e62-f3b5e470f2ca"
 >
-</ReqRef><Comment> Represents the information about the Last Relevant Balise Group.</Comment>
+</ReqRef><Comment>Represents the information about the Last Relevant Balise Group.</Comment>
 <StructureElement
  TypeName="Position"
  Default=""
@@ -2429,13 +2429,13 @@ If all the messages of the current balise group have been received, calls Handle
  Guid="95d3af00-daf2-474d-a7c2-53f8614e06c6"
 >Available ( Message )</PreCondition><PreCondition
  Guid="ca2a5585-b8af-4d33-b11d-0f7a241172b0"
->(COUNT CurrentBaliseGroup ) &gt; 0 </PreCondition><PreCondition
+>(COUNT CurrentBaliseGroup ) &gt; 0</PreCondition><PreCondition
  Guid="facbef4e-0427-43dc-8246-9424d20c4b03"
 >Message.NID_BG != (FIRST_IN CurrentBaliseGroup).NID_BG</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c0bed554-3138-4c67-a342-dec6ad0a32dc"
->CurrentBaliseGroup &lt;- [] </Action></Actions>
+>CurrentBaliseGroup &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

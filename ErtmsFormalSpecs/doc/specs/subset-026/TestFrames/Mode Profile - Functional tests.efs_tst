@@ -219,7 +219,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Actions>
 <Action
  Guid="1cfafc51-3e01-455d-af93-bde127d0ee9a"
->Odometry.NominalDistance &lt;- 167.0 </Action></Actions>
+>Odometry.NominalDistance &lt;- 167.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1549,7 +1549,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="aff9551e-a94b-4bc1-89e5-ea7962a81bfc"
->Kernel.MA.ModeProfile.Profile != [] </Expectation><Expectation
+>Kernel.MA.ModeProfile.Profile != []</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f94e98b3-78ef-4118-a010-935645ba69a6"
@@ -1664,7 +1664,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4db40825-2cb1-43d7-afb8-15868eb511c7"
->Kernel.MA.ModeProfile.Profile != [] </Expectation><Expectation
+>Kernel.MA.ModeProfile.Profile != []</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="96f71285-245f-42e7-be71-8084d5efc18f"
@@ -2721,8 +2721,7 @@ IN Kernel.MA.ModeProfile.Profile</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ab7d3d03-22f3-45c0-af32-333aaf15829f"
->(FIRST_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Length == 500.0
- </Expectation><Expectation
+>(FIRST_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Length == 500.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="13d64d40-7650-4476-ae34-50b9afeb31aa"
@@ -2738,8 +2737,7 @@ IN Kernel.MA.ModeProfile.Profile</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="91e0099c-03bd-4c7c-89f8-6f80016345f0"
->(FIRST_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Distance == 750.0
- </Expectation></Expectations>
+>(FIRST_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Distance == 750.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

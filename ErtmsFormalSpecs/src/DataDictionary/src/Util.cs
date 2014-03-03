@@ -43,7 +43,7 @@ namespace DataDictionary
         /// <summary>
         /// Updates the dictionary contents
         /// </summary>
-        private class Updater : Generated.Visitor
+        private class Updater : Cleaner 
         {
             /// <summary>
             /// Indicates that GUID should be updated
@@ -528,6 +528,7 @@ namespace DataDictionary
                     try
                     {
                         Generated.ControllersManager.DesactivateAllNotifications();
+
                         Updater updater = new Updater(updateGuid);
                         updater.visit(retVal);
                     }

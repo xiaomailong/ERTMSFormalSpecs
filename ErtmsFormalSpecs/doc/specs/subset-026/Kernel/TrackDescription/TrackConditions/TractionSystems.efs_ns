@@ -179,8 +179,7 @@
  Name="Otherwise"
  Guid="30b40833-011c-494f-bd47-713f9a91c456"
 >
-<Comment>Case created just to make the model work
-</Comment>
+<Comment>Case created just to make the model work</Comment>
 <Expression>TractionSystem{
     CountryIdentifier =&gt; Messages.NID_CTRACTION((FIRST_IN TrainData.TrainData.Value.TractionSystems).Country),
     SystemType =&gt; (FIRST_IN TrainData.TrainData.Value.TractionSystems).Voltage
