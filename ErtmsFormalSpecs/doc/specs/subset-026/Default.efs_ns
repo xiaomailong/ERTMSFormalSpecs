@@ -341,10 +341,21 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="Language.EN"
+ Implemented="TRUE"
  Name="Language"
  Guid="f733bd2c-5ae3-4ecf-834a-5641bd254978"
 >
-<Comment>The display language</Comment>
+<ReqRef
+ Id="abc81335-d6aa-43d5-9c02-31fee5c65c38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a9ade741-07b6-40a1-8396-7baee5af1690"
+>
+</ReqRef><ReqRef
+ Id="3e266b65-8915-4dc3-befe-d6f4099f5a67"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2ce43138-b9df-42ff-af56-309e02865162"
+>
+</ReqRef><Comment>The display language</Comment>
 <Values>
 <EnumValue
  Value=""
@@ -364,10 +375,36 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="DistanceInterval.Nom"
+ Implemented="TRUE"
  Name="DistanceInterval"
  Guid="aa9a84dc-faad-4360-bc38-351be7113e9b"
 >
-<Comment>Used to represent some nominal distance and its associated max and min values. For example, to represent the safe front end of a train we use:
+<ReqRef
+ Id="bcb653a9-abe2-44a8-ac09-0df33ec9af30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7dbd76a5-0155-418f-b197-73cdff553b03"
+>
+</ReqRef><ReqRef
+ Id="2ecb1ec4-fc6b-4879-a45a-e1b1c55b41fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7bb55f03-42ac-4079-8f9a-2c0a3bfe0895"
+>
+</ReqRef><ReqRef
+ Id="4a9c97b2-dfca-4175-b297-9da9fc3d16fc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89ab3268-a988-43e5-a88e-4d003c4ed1af"
+>
+</ReqRef><ReqRef
+ Id="dfd8a050-ad00-42a4-969a-1da448625473"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a2ed144-f76a-466a-b314-909ec28045ea"
+>
+</ReqRef><ReqRef
+ Id="d61ea269-686c-486d-9852-1fd7e6f88c24"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c0847e4-9de2-4256-8226-6b8f1e95f3e0"
+>
+</ReqRef><Comment>Used to represent some nominal distance and its associated max and min values. For example, to represent the safe front end of a train we use:
 - DistanceInterval.Nom to represent the estimated front end
 - DistanceInterval.Min to represent the min safe front end
 - DistanceInterval.Max to represent the max safe front end</Comment>
