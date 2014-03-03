@@ -214,7 +214,7 @@ namespace DataDictionary.Interpreter.Statement
             {
                 // HacK : ensure that the value is a correct rigth side
                 // and keep the result of the right side operation
-                Values.ListValue listValue = variable.Value.RightSide(variable, false) as Values.ListValue;
+                Values.ListValue listValue = variable.Value.RightSide(variable, false, false) as Values.ListValue;
                 variable.Value = listValue;
                 if (listValue != null)
                 {

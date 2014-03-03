@@ -353,7 +353,7 @@ namespace DataDictionary.Variables
                 }
                 else
                 {
-                    retVal = retVal.RightSide(this, false);
+                    retVal = retVal.RightSide(this, false, true);
                 }
 
                 return retVal;

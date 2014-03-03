@@ -20,6 +20,7 @@ using Reports.Specs;
 using Reports.Tests;
 using DataDictionary.Specification;
 using System.Collections;
+using DataDictionary;
 
 namespace GUI.SpecificationView
 {
@@ -77,7 +78,7 @@ namespace GUI.SpecificationView
             Dictionary = dictionary;
 
             ResizeDescriptionArea(propertyGrid, 20);
-            
+
             Refresh();
 
             DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft;
@@ -148,6 +149,22 @@ namespace GUI.SpecificationView
         private void nextInfoToolStripButton_Click(object sender, EventArgs e)
         {
             TreeView.SelectNext(Utils.ElementLog.LevelEnum.Info);
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (!EFSSystem.INSTANCE.Markings.selectPreviousMarking())
+            {
+                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            if (!EFSSystem.INSTANCE.Markings.selectNextMarking())
+            {
+                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

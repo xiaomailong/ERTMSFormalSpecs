@@ -509,7 +509,7 @@ namespace DataDictionary.Interpreter
                     if (val != null)
                     {
                         Variables.Actual actual = parameter.createActual();
-                        val = val.RightSide(actual, false);
+                        val = val.RightSide(actual, false, false);
                         retVal.Add(actual, val);
                     }
                     else
@@ -527,7 +527,7 @@ namespace DataDictionary.Interpreter
                     if (val != null)
                     {
                         Variables.Actual actual = parameter.createActual();
-                        val = val.RightSide(actual, false);
+                        val = val.RightSide(actual, false, false);
                         actual.Value = val;
                         retVal.Add(actual, val);
                     }

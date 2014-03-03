@@ -50,6 +50,11 @@ namespace DataDictionary
         public bool ShouldSave { get; set; }
 
         /// <summary>
+        /// The marking history
+        /// </summary>
+        public MarkingHistory Markings { get; private set; }
+
+        /// <summary>
         /// Listener to model changes
         /// </summary>
         public class BaseModelElementChangeListener : XmlBooster.IListener<DataDictionary.Generated.BaseModelElement>
@@ -101,6 +106,7 @@ namespace DataDictionary
 
             DataDictionary.Generated.acceptor.setFactory(new DataDictionary.ObjectFactory());
             Compiler = new Interpreter.Compiler(this);
+            Markings = new MarkingHistory(this);
 
             // Reads the history file and updates the blame information stored in it
             Compare.Factory historyFactory = DataDictionary.Compare.Factory.INSTANCE;
@@ -1230,24 +1236,35 @@ namespace DataDictionary
         /// <returns></returns>
         public List<Usage> FindReferences(ModelElement model)
         {
-            // Find references
-            ReferenceVisitor visitor = new ReferenceVisitor(model);
-            bool prev = ModelElement.BeSilent;
-            try
+            List<Usage> retVal;
+
+            if (model != null)
             {
-                ModelElement.BeSilent = true;
-                foreach (Dictionary dictionary in Dictionaries)
+                // Find references
+                ReferenceVisitor visitor = new ReferenceVisitor(model);
+                bool prev = ModelElement.BeSilent;
+                try
                 {
-                    visitor.visit(dictionary, true);
+                    ModelElement.BeSilent = true;
+                    foreach (Dictionary dictionary in Dictionaries)
+                    {
+                        visitor.visit(dictionary, true);
+                    }
+                    visitor.Usages.Sort();
                 }
-                visitor.Usages.Sort();
+                finally
+                {
+                    ModelElement.BeSilent = prev;
+                }
+
+                retVal = visitor.Usages;
             }
-            finally
+            else
             {
-                ModelElement.BeSilent = prev;
+                retVal = new List<Usage>();
             }
 
-            return visitor.Usages;
+            return retVal;
         }
 
 

@@ -903,6 +903,7 @@ namespace GUI
                     }
                 }
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
             Refresh();
         }
 
@@ -936,8 +937,9 @@ namespace GUI
                         specification.CheckReview();
                     }
                 }
-                Refresh();
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
+            Refresh();
         }
 
         /// ------------------------------------------------------
@@ -974,6 +976,7 @@ namespace GUI
                     }
                 }
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
             Refresh();
         }
 
@@ -990,6 +993,7 @@ namespace GUI
                     }
                 }
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
             Refresh();
         }
 
@@ -1006,6 +1010,7 @@ namespace GUI
                     }
                 }
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
             Refresh();
         }
 
@@ -1022,6 +1027,7 @@ namespace GUI
                     }
                 }
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
             Refresh();
         }
 
@@ -1032,6 +1038,7 @@ namespace GUI
                 dictionary.ClearMessages();
                 dictionary.MarkUnimplementedTests();
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
 
             Refresh();
         }
@@ -1043,6 +1050,7 @@ namespace GUI
                 dictionary.ClearMessages();
                 dictionary.MarkNotTranslatedTests();
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
 
             Refresh();
         }
@@ -1054,6 +1062,7 @@ namespace GUI
                 dictionary.ClearMessages();
                 dictionary.MarkNotImplementedTranslations();
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
 
             Refresh();
         }
@@ -1071,6 +1080,7 @@ namespace GUI
                     }
                 }
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
             Refresh();
         }
 
@@ -1087,6 +1097,7 @@ namespace GUI
                     }
                 }
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
             Refresh();
         }
 
@@ -1340,8 +1351,9 @@ namespace GUI
                 {
                     specification.CheckNewRevision();
                 }
-                Refresh();
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
+            Refresh();
         }
 
         private void generateERTMSAcademyReportToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1616,7 +1628,26 @@ namespace GUI
                     }
                 }
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
             Refresh();
+        }
+
+        private void checkModelToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CheckModelOperation operation = new CheckModelOperation(EFSSystem);
+            operation.ExecuteUsingProgressDialog("Check model");
+
+            MessageCounter counter = new MessageCounter(EFSSystem);
+            MessageBox.Show(counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info + " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void checkToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CheckDeadModelOperation operation = new CheckDeadModelOperation(EFSSystem);
+            operation.ExecuteUsingProgressDialog("Check dead model");
+
+            MessageCounter counter = new MessageCounter(EFSSystem);
+            MessageBox.Show(counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info + " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

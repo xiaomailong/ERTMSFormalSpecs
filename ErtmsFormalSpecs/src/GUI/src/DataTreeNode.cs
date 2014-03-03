@@ -1091,6 +1091,15 @@ namespace GUI
             : base(item, name, isFolder)
         {
             Item = item;
+            BaseBuildSubNodes(buildSubNodes);
+        }
+
+        /// <summary>
+        /// Builds the sub nodes of this node if required
+        /// </summary>
+        /// <param name="buildSubNodes"></param>
+        protected void BaseBuildSubNodes(bool buildSubNodes)
+        {
             if (buildSubNodes)
             {
                 BuildSubNodes(false);

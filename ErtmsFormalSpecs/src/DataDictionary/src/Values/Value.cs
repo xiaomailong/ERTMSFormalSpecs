@@ -36,8 +36,9 @@ namespace DataDictionary.Values
         /// </summary>
         /// <param name="variable">The target variable</param>
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
+        /// <param name="setEnclosing">Indicates that the new value enclosing element should be set</param>
         /// <returns></returns>
-        IValue RightSide(Variables.IVariable variable, bool duplicate);
+        IValue RightSide(Variables.IVariable variable, bool duplicate, bool setEnclosing);
     }
 
     public abstract class Value : IValue, IEnclosed
@@ -87,10 +88,15 @@ namespace DataDictionary.Values
         /// </summary>
         /// <param name="variable">The target variable</param>
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
+        /// <param name="setEnclosing">Indicates that the new value enclosing element should be set</param>
         /// <returns></returns>
-        public virtual Values.IValue RightSide(Variables.IVariable variable, bool duplicate)
+        public virtual Values.IValue RightSide(Variables.IVariable variable, bool duplicate, bool setEnclosing)
         {
-            this.Enclosing = variable;
+            if (setEnclosing)
+            {
+                this.Enclosing = variable;
+            }
+
             return this;
         }
 
