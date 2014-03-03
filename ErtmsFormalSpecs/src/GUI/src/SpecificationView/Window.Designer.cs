@@ -43,6 +43,7 @@ namespace GUI.SpecificationView
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -63,6 +64,8 @@ namespace GUI.SpecificationView
             this.specBrowserRuleView = new GUI.SpecificationView.SpecificationTreeView();
             this.messagesGroupBox = new System.Windows.Forms.GroupBox();
             this.messagesRichTextBox = new GUI.EditorTextBox();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -87,6 +90,8 @@ namespace GUI.SpecificationView
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.toolStripSeparator1,
+            this.toolStripButton1,
+            this.toolStripButton2,
             this.nextErrortoolStripButton,
             this.nextWarningToolStripButton,
             this.nextInfoToolStripButton,
@@ -258,6 +263,7 @@ namespace GUI.SpecificationView
             this.specBrowserTextView.ConsiderOnlyTypes = false;
             this.specBrowserTextView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.specBrowserTextView.Instance = null;
+            this.specBrowserTextView.Lines = new string[] { "" };
             this.specBrowserTextView.Location = new System.Drawing.Point(2, 2);
             this.specBrowserTextView.Name = "specBrowserTextView";
             this.specBrowserTextView.ReadOnly = false;
@@ -272,7 +278,7 @@ namespace GUI.SpecificationView
             this.implementationTabPage.Margin = new System.Windows.Forms.Padding(2);
             this.implementationTabPage.Name = "implementationTabPage";
             this.implementationTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.implementationTabPage.Size = new System.Drawing.Size(344, 52);
+            this.implementationTabPage.Size = new System.Drawing.Size(344, 55);
             this.implementationTabPage.TabIndex = 1;
             this.implementationTabPage.Text = "Implementation";
             this.implementationTabPage.UseVisualStyleBackColor = true;
@@ -289,7 +295,7 @@ namespace GUI.SpecificationView
             this.specBrowserRuleView.Root = null;
             this.specBrowserRuleView.Selected = null;
             this.specBrowserRuleView.SelectedImageIndex = 0;
-            this.specBrowserRuleView.Size = new System.Drawing.Size(340, 48);
+            this.specBrowserRuleView.Size = new System.Drawing.Size(340, 51);
             this.specBrowserRuleView.TabIndex = 4;
             // 
             // messagesGroupBox
@@ -310,6 +316,7 @@ namespace GUI.SpecificationView
             this.messagesRichTextBox.ConsiderOnlyTypes = false;
             this.messagesRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.messagesRichTextBox.Instance = null;
+            this.messagesRichTextBox.Lines = new string[] { "" };
             this.messagesRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.messagesRichTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.messagesRichTextBox.Name = "messagesRichTextBox";
@@ -317,6 +324,28 @@ namespace GUI.SpecificationView
             this.messagesRichTextBox.Rtf = resources.GetString("messagesRichTextBox.Rtf");
             this.messagesRichTextBox.Size = new System.Drawing.Size(346, 63);
             this.messagesRichTextBox.TabIndex = 0;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.ToolTipText = "Select previous marking";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.ToolTipText = "Select next marking";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // Window
             // 
@@ -375,6 +404,8 @@ namespace GUI.SpecificationView
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.GroupBox messagesGroupBox;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
 
     }
 }

@@ -712,6 +712,7 @@ namespace DataDictionary
                 // Check rules
                 RuleCheckerVisitor visitor = new RuleCheckerVisitor(this);
                 visitor.visit(this, true);
+                EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
             }
             finally
             {
@@ -733,9 +734,10 @@ namespace DataDictionary
                 EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
                 EFSSystem.ShouldRebuild = false;
 
-                // Check rules
+                // Check dead model
                 UsageChecker visitor = new UsageChecker(this);
                 visitor.visit(this, true);
+                EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
             }
             finally
             {
@@ -834,6 +836,7 @@ namespace DataDictionary
             ClearMessages();
             UnimplementedItemVisitor visitor = new UnimplementedItemVisitor();
             visitor.visit(this, true);
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
         }
 
         private class NotVerifiedRuleVisitor : Generated.Visitor
@@ -859,6 +862,7 @@ namespace DataDictionary
             ClearMessages();
             NotVerifiedRuleVisitor visitor = new NotVerifiedRuleVisitor();
             visitor.visit(this, true);
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
         }
 
         /// <summary>

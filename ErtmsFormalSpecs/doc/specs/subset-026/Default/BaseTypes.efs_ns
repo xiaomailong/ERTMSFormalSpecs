@@ -14,7 +14,7 @@
  Name="Distance"
  Guid="6603780b-ee49-4ebc-b4c6-524cddcb0a76"
 >
-<Comment>Expressed in m</Comment>
+<Comment>Represents a distance, expressed in m</Comment>
 <SpecialValues>
 <EnumValue
  Value="2147483648.0"
@@ -36,7 +36,7 @@
  Name="Speed"
  Guid="0fcd646f-af1b-4e71-913a-4b80fe8e1e3e"
 >
-<Comment>Expressed in km/h</Comment>
+<Comment>Represents a speed, expressed in km/h</Comment>
 <SpecialValues>
 <EnumValue
  Value="32769.0"
@@ -73,7 +73,7 @@
  Name="Time"
  Guid="a4ee516e-7d6d-4cb3-9a18-b2a74ff1060d"
 >
-<Comment></Comment>
+<Comment>Represents a time, expressed in seconds</Comment>
 <SpecialValues>
 <EnumValue
  Value="9999999999.0"
@@ -95,7 +95,7 @@
  Name="Length"
  Guid="82c35ffb-5c64-410e-8e3c-a0432011067c"
 >
-<Comment>Expressed in m</Comment>
+<Comment>Represents a length, expressed in m</Comment>
 <SpecialValues>
 <EnumValue
  Value="32769.0"
@@ -117,7 +117,7 @@
  Name="Gradient"
  Guid="129c65cd-3ea8-491a-b022-81300cdfd599"
 >
-<Comment></Comment>
+<Comment>Represents a gradient, expressed in 1m per thousand</Comment>
 <SpecialValues>
 <EnumValue
  Value="100.0"
@@ -154,26 +154,6 @@
 </EnumValue></SpecialValues>
 </Range><Range
  MinValue="0"
- MaxValue="32767"
- Precision="IntegerPrecision"
- Default="0"
- NeedsRequirement="FALSE"
- Name="Number"
- Guid="e739e4c3-e1cc-4fa8-95d0-4541c43cdcce"
->
-<Comment></Comment>
-</Range><Range
- MinValue="0"
- MaxValue="32767"
- Precision="IntegerPrecision"
- Default="0"
- NeedsRequirement="FALSE"
- Name="Qualifier"
- Guid="aaccaf4d-1b88-42d5-b960-3f93a9c7c9f8"
->
-<Comment></Comment>
-</Range><Range
- MinValue="0"
  MaxValue="65535"
  Precision="IntegerPrecision"
  Default="0"
@@ -181,7 +161,7 @@
  Name="IdentityNumber"
  Guid="ad24279f-b340-4e67-8b65-b78576a491c2"
 >
-<Comment></Comment>
+<Comment>A message identity number</Comment>
 </Range></Ranges>
 <Functions>
 <Function
@@ -190,6 +170,7 @@
  Name="DistanceToLength"
  Guid="3183ca17-f2a7-4c82-92ba-291cce34a2bf"
 >
+<Comment>This function converts a distance into a length</Comment>
 <Parameters>
 <Parameter
  Type="BaseTypes.Distance"
@@ -225,6 +206,7 @@
  Name="LengthToDistance"
  Guid="54e75178-8c9b-4843-8821-d997840a91fb"
 >
+<Comment>This function converts a length into a distance</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Length"
@@ -255,38 +237,12 @@
 <Expression>Distance(Length)</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Length"
- NeedsRequirement="FALSE"
- Name="QualifierToLength"
- Guid="4be3966d-ab5a-4d13-83ca-afbe6243a8c2"
->
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Qualifier"
- Name="Qualifier"
- Guid="6dd3c400-a666-4c30-a9c4-ecc0d687fe11"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="ValidQualifier"
- Guid="e91f7ba6-c70f-4a01-9f38-2b8e90efac90"
->
-<PreConditions>
-<PreCondition
- Guid="145a2f9b-017c-43ac-a104-55ce2275cd56"
->Qualifier &gt;= 0</PreCondition><PreCondition
- Guid="2cd8583f-488f-41d8-af4f-c3e54d8af96f"
->Qualifier &lt; 32768</PreCondition></PreConditions>
-<Expression>Length(Qualifier)</Expression>
-</Case></Cases>
-</Function><Function
  Type="Gradient"
  NeedsRequirement="FALSE"
  Name="IndefiniteGradientFunction"
  Guid="800dfab5-6aa8-4ce2-a93c-a661bd3ac496"
 >
-<Comment></Comment>
+<Comment>This function provides the indefinie gradient</Comment>
 <Parameters>
 <Parameter
  Type="Double"
@@ -308,7 +264,7 @@
  Name="MinGradient"
  Guid="04ad8684-d11e-4bc7-9965-6a3cd81ea80e"
 >
-<Comment></Comment>
+<Comment>This function provides the minimum of two gradients</Comment>
 <Parameters>
 <Parameter
  Type="Gradient"
@@ -362,7 +318,7 @@
  Name="MinSpeed"
  Guid="95d26cd1-b4ae-4b95-9609-0dacbd327d84"
 >
-<Comment></Comment>
+<Comment>This function provides the minimum of two speeds</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -416,7 +372,7 @@
  Name="MaxSpeedFunction"
  Guid="63a521a6-c93e-4d65-91e0-b4420352fbcd"
 >
-<Comment></Comment>
+<Comment>This function provides the maximum speed</Comment>
 <Parameters>
 <Parameter
  Type="Double"
@@ -438,7 +394,7 @@
  Name="MinAcceleration"
  Guid="f74c05ff-2f82-4f5f-a117-5af8efc8c58e"
 >
-<Comment></Comment>
+<Comment>This function provides the minimum of two accelerations</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Acceleration"
@@ -492,6 +448,7 @@
  Name="AddDistance"
  Guid="6cc7541b-602c-462a-a607-3ab985e7431d"
 >
+<Comment>This function adds two distances and provide a new distance, according to distances special values</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -527,7 +484,7 @@
  Name="MinLength"
  Guid="6f28fe63-3db8-4cf4-a591-9d1b778b86da"
 >
-<Comment></Comment>
+<Comment>This function provides the minimum of two lengths</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Length"
@@ -581,7 +538,7 @@
  Name="MaxDistance"
  Guid="802ed84c-8308-4e99-9359-0e87e5b2917f"
 >
-<Comment></Comment>
+<Comment>This function provides the maximum of two distances</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -635,7 +592,7 @@
  Name="MaxSpeed"
  Guid="97b4d077-6c21-42c6-8d5b-5519bf3c1917"
 >
-<Comment></Comment>
+<Comment>This function provides the maximum of two speeds</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -689,7 +646,7 @@
  Name="MaxTime"
  Guid="a6c678fe-f4f0-4b7d-908c-c0c15cfae575"
 >
-<Comment></Comment>
+<Comment>This function provides the maximum of two times</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Time"
@@ -743,7 +700,7 @@
  Name="MaxAcceleration"
  Guid="e01cf441-5c66-45bb-8a22-f1a24fca024f"
 >
-<Comment></Comment>
+<Comment>This function provides the maximum of two accelerations</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Acceleration"
@@ -797,7 +754,7 @@
  Name="MinDistance"
  Guid="5d4cc48f-69a8-4f87-8f7a-b20a6c9b3ea2"
 >
-<Comment></Comment>
+<Comment>This function provides the minimum of two distances</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -851,6 +808,7 @@
  Name="AbsoluteSpeed"
  Guid="f3db063c-0cfa-4bd3-8875-1fd86653a71d"
 >
+<Comment>This function computes the absolute speed from the speed given</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -881,7 +839,7 @@
  Name="MaxLength"
  Guid="ccb33628-1978-47f2-a6d1-b905c67885dc"
 >
-<Comment></Comment>
+<Comment>This function provides the maximum of two lengths</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Length"
@@ -935,6 +893,7 @@
  Name="SpeedToMS"
  Guid="08620e10-a49d-4239-9f40-d4c94e4f2462"
 >
+<Comment>This function converts a km/h speed into a m/s speed</Comment>
 <Parameters>
 <Parameter
  Type="BaseTypes.Speed"
@@ -956,6 +915,7 @@
  Name="SpeedToKmH"
  Guid="8a3137f1-a885-4afb-861a-d756a0a98356"
 >
+<Comment>This function converts a m/s speed into a km/h speed</Comment>
 <Parameters>
 <Parameter
  Type="BaseTypes.Speed"

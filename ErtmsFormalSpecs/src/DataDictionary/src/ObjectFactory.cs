@@ -206,7 +206,10 @@ namespace DataDictionary
         {
             obj.setGuid("");
             obj.setType(Generated.acceptor.Paragraph_type.aREQUIREMENT);
-            obj.setScope(Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK);
+            obj.setScope(Generated.acceptor.Paragraph_scope.aFLAGS);
+            obj.setScopeOnBoard(false);
+            obj.setScopeTrackside(false);
+            obj.setScopeRollingStock(false);
             obj.setBl("");
             obj.setOptional(true);
             obj.setName("");

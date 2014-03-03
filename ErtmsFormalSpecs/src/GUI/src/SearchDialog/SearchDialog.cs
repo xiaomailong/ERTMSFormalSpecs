@@ -93,6 +93,7 @@ namespace GUI.SearchDialog
             {
                 element.AddInfo("Found " + searchString);
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
 
             if (occurences.Count == 0)
             {

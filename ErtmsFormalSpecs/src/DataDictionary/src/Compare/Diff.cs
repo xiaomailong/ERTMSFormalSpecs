@@ -96,6 +96,7 @@ namespace DataDictionary.Compare
             {
                 diff.markModel();
             }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
         }
     }
 }

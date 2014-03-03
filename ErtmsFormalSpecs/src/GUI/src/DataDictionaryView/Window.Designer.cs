@@ -43,6 +43,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -66,6 +67,8 @@ namespace GUI.DataDictionaryView
             this.usageTreeView = new GUI.DataDictionaryView.UsageTreeView.UsageTreeView();
             this.messagesGroupBox = new System.Windows.Forms.GroupBox();
             this.messagesRichTextBox = new GUI.EditorTextBox();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -94,6 +97,8 @@ namespace GUI.DataDictionaryView
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.toolStripSeparator2,
+            this.toolStripButton1,
+            this.toolStripButton2,
             this.nextErrortoolStripButton,
             this.nextWarningToolStripButton,
             this.nextInfoToolStripButton,
@@ -284,8 +289,7 @@ namespace GUI.DataDictionaryView
             this.requirementsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requirementsTextBox.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.requirementsTextBox.Instance = null;
-            this.requirementsTextBox.Lines = new string[] {
-        ""};
+            this.requirementsTextBox.Lines = new string[] {""};
             this.requirementsTextBox.Location = new System.Drawing.Point(0, 0);
             this.requirementsTextBox.Name = "requirementsTextBox";
             this.requirementsTextBox.ReadOnly = false;
@@ -299,8 +303,7 @@ namespace GUI.DataDictionaryView
             this.ruleExplainTextBox.ConsiderOnlyTypes = false;
             this.ruleExplainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ruleExplainTextBox.Instance = null;
-            this.ruleExplainTextBox.Lines = new string[] {
-        ""};
+            this.ruleExplainTextBox.Lines = new string[] {""};
             this.ruleExplainTextBox.Location = new System.Drawing.Point(0, 0);
             this.ruleExplainTextBox.Name = "ruleExplainTextBox";
             this.ruleExplainTextBox.ReadOnly = true;
@@ -315,8 +318,7 @@ namespace GUI.DataDictionaryView
             this.expressionEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expressionEditorTextBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.expressionEditorTextBox.Instance = null;
-            this.expressionEditorTextBox.Lines = new string[] {
-        ""};
+            this.expressionEditorTextBox.Lines = new string[] {""};
             this.expressionEditorTextBox.Location = new System.Drawing.Point(0, 0);
             this.expressionEditorTextBox.Name = "expressionEditorTextBox";
             this.expressionEditorTextBox.ReadOnly = false;
@@ -332,7 +334,7 @@ namespace GUI.DataDictionaryView
             this.usageTabPage.Margin = new System.Windows.Forms.Padding(2);
             this.usageTabPage.Name = "usageTabPage";
             this.usageTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.usageTabPage.Size = new System.Drawing.Size(609, 256);
+            this.usageTabPage.Size = new System.Drawing.Size(609, 248);
             this.usageTabPage.TabIndex = 3;
             this.usageTabPage.Text = "Usage";
             this.usageTabPage.UseVisualStyleBackColor = true;
@@ -350,7 +352,7 @@ namespace GUI.DataDictionaryView
             this.usageTreeView.Root = null;
             this.usageTreeView.Selected = null;
             this.usageTreeView.SelectedImageIndex = 0;
-            this.usageTreeView.Size = new System.Drawing.Size(605, 252);
+            this.usageTreeView.Size = new System.Drawing.Size(605, 244);
             this.usageTreeView.TabIndex = 0;
             // 
             // messagesGroupBox
@@ -370,8 +372,7 @@ namespace GUI.DataDictionaryView
             this.messagesRichTextBox.ConsiderOnlyTypes = false;
             this.messagesRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.messagesRichTextBox.Instance = null;
-            this.messagesRichTextBox.Lines = new string[] {
-        ""};
+            this.messagesRichTextBox.Lines = new string[] {""};
             this.messagesRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.messagesRichTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.messagesRichTextBox.Name = "messagesRichTextBox";
@@ -379,6 +380,28 @@ namespace GUI.DataDictionaryView
             this.messagesRichTextBox.Rtf = resources.GetString("messagesRichTextBox.Rtf");
             this.messagesRichTextBox.Size = new System.Drawing.Size(611, 66);
             this.messagesRichTextBox.TabIndex = 1;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.ToolTipText = "Select previous marking";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.ToolTipText = "Select next marking";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // Window
             // 
@@ -445,5 +468,7 @@ namespace GUI.DataDictionaryView
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.GroupBox messagesGroupBox;
         private EditorTextBox expressionEditorTextBox;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }
