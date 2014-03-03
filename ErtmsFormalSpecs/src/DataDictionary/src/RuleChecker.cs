@@ -290,6 +290,12 @@ namespace DataDictionary
                     requiresComment = rule.EnclosingProcedure.Rules.Count > 1;
                 }
 
+                Variables.Variable variable = commentable as Variables.Variable;
+                if (variable != null)
+                {
+                    requiresComment = false;
+                }
+
                 if (requiresComment)
                 {
                     ((ModelElement)commentable).AddInfo("This element should be documented");
