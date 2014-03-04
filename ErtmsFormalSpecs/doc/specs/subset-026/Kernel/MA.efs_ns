@@ -48,7 +48,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a3a19dfd-675a-47a7-a05e-124f6fa87627"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Represents the Movement Authority of the train</Comment>
 <StructureElement
  TypeName="BaseTypes.Speed"
  Default=""
@@ -174,7 +174,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c500a717-7b30-4c97-8a92-4ea4383116b6"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>The Location of the ReferenceBG</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="Section"
@@ -252,7 +252,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0f275a9c-5f80-4019-a34d-f9610ea70b90"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Represents the section time-out for reguler time-outs ans end section time-outs</Comment>
 <StructureElement
  TypeName="BaseTypes.Time"
  Default=""
@@ -306,7 +306,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="be8d438c-ce95-492f-bddb-997f4f6ae273"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Stores all the information relative to the final section of the MA</Comment>
 <StructureElement
  TypeName="SectionTimeOut"
  Default=""
@@ -592,6 +592,7 @@ Location stores the previous End of Movement Authority location.</Comment>
  Name="Location"
  Guid="3b031a74-bd3f-4780-957d-90c57a29cfbe"
 >
+<Comment>The location of the previous SvL (is &quot;Unknown&quot; if there was none)</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
@@ -600,6 +601,7 @@ Location stores the previous End of Movement Authority location.</Comment>
  Name="IsSvL"
  Guid="18c808fe-83c5-4bd0-86bd-a48d90be00d7"
 >
+<Comment>Records whether the previous MA was supervising a SvL or has a LOA</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -1934,10 +1936,10 @@ The information about the type of supervised target (SvL or LOA) is also stored,
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- NeedsRequirement="FALSE"
  Name="SvL"
  Guid="1bdb0b15-38b6-4e9f-9a51-94ff2db10a46"
 >
+<Comment>Store the previous SvL, if any, in ShorteningHandler to check for a MA shortening</Comment>
 <PreConditions>
 <PreCondition
  Guid="51bdba26-9465-413b-af5e-004242826ec0"
@@ -1956,6 +1958,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
  Name="LOA"
  Guid="12c3d848-e54b-474a-b939-e0c4b8b27b38"
 >
+<Comment>If the on-board was not supervising a SvL and one is received, this will always be considered a MA shortening</Comment>
 <PreConditions>
 <PreCondition
  Guid="fcd92312-44cd-4e8f-a36f-9d2e11fe0416"
@@ -1968,6 +1971,88 @@ SvL() != EMPTY</PreCondition></PreConditions>
     Location =&gt; BaseTypes.Distance.Unknown,
     IsSvL =&gt; False
 }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Check end section timer"
+ Guid="8dd58980-55ef-4bb2-b236-e4152bf43630"
+>
+<ReqRef
+ Id="1e99ff79-c41c-4625-9938-941b2814fbc6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6215fc65-1dc5-485d-b65a-3cf437cbfd26"
+>
+</ReqRef><ReqRef
+ Id="176a499e-e5d0-492b-bf95-b669d5df8beb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9e8e5a70-2e90-4b26-b1e2-7ad08823b50b"
+>
+</ReqRef><Comment>When a new MA is received, check for a new End Section timer in rear of the train</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="No old End Section timer and new End Section timer in rear of train"
+ Guid="a3d8ec2b-2f88-4a34-b5d1-1939d532a663"
+>
+<ReqRef
+ Id="7e423212-aebc-4610-85f4-e4a25b5e05c4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bde31faa-ad93-4f46-8ee6-12e8fb791df0"
+>
+</ReqRef><Comment>If the newly received MA has a End Section timer with the start location in rear of the train, and the train is not currently running an End Section timer, assumer that the time-out value has been reached.
+In this case, the EOA should be moved to the train&apos;s current position with no release speed.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="89cd5d8f-d68c-40d1-a0b9-4867e57f0be6"
+>NOT ( Available(EndSectionTimerStart) )</PreCondition><PreCondition
+ Guid="8318e86d-1fe7-4e37-a347-0e2fb6093309"
+>(Packet.Q_ENDTIMER == Messages.Q_ENDTIMER.End_section_timer_information_to_follow)
+  AND  
+( 
+  Default.MessageTypes.QScaleDistance(
+      distance=&gt;Packet.D_ENDTIMERSTARTLOC,
+      scale=&gt;Packet.Q_SCALE
+  ) &lt; TrainPosition.FrontEndPosition(DistanceInterval.Max)
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e5dd653d-5eb0-4e34-b050-c3abad8a6525"
+>INSERT CreateTarget(
+    aLength=&gt;Default.BaseTypes.Distance.Infinity,
+    aLocation=&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom),
+    aSpeed=&gt;0.0
+)
+IN EOAs</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Old End Section timer started and new End Section location in rear of train"
+ Guid="27750e5b-ffa2-44dd-a36d-24e5cb0c92a8"
+>
+<Comment>If the newly received MA has an end section timer that is in rear of the train, and the train is already running an End Section timer, update the time-out value (in MA.EndSection.EndSectionTimeOut).
+MA will be updated in the following rules, but to avoid resetting EndSectionTimerStart, the recorded start location is modified.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="63853879-5425-49f5-8da1-aa15f6f4c848"
+>(Packet.Q_ENDTIMER == Messages.Q_ENDTIMER.End_section_timer_information_to_follow)
+  AND  
+( 
+  Default.MessageTypes.QScaleDistance(
+      distance=&gt;Packet.D_ENDTIMERSTARTLOC,
+      scale=&gt;Packet.Q_SCALE
+  ) &lt; TrainPosition.FrontEndPosition(DistanceInterval.Max)
+)</PreCondition><PreCondition
+ Guid="2eb5bee8-0a84-4928-96bd-1290fec0a7ee"
+>Available(EndSectionTimerStart)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="759bb3f8-8a7e-4408-bf25-979e943d2a5f"
+>EndSectionTimerStart.Distance &lt;- 
+Default.MessageTypes.QScaleDistance(
+    distance=&gt;Packet.D_ENDTIMERSTARTLOC,
+    scale=&gt;Packet.Q_SCALE
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -1995,7 +2080,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7118476f-f5e7-41cd-a83b-2d10693a12d5"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Update the target speed and the time-out of the target speed</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2038,6 +2123,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
  Name="Handle information according to infill status"
  Guid="9dd23dbd-a238-4098-830f-ac2d73d2bea4"
 >
+<Comment>Fills the collection of Sections in MA regularly or as infill data and updates the reference BG</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2060,7 +2146,8 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="52485ec4-7a71-4a7f-b120-731b12b2b40e"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Update sections with infill data</Comment>
+<PreConditions>
 <PreCondition
  Guid="1e6e687c-5882-4108-bab0-9fc4a8b43011"
 >Kernel.Infill.Data != EMPTY</PreCondition></PreConditions>
@@ -2078,7 +2165,8 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fb4606fa-75a1-4722-8be7-4e6c01c72743"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Update sections with regular MA information</Comment>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action
@@ -2104,7 +2192,8 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fe502f9a-5032-42c4-bce3-ad6b48627296"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Replace the current sections with the ones received in Packet</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2112,7 +2201,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
  Name="SectionsAvailable"
  Guid="b8133cb8-fdf2-4828-9dc8-40dd276f41d9"
 >
-<Comment></Comment>
+<Comment>The packet contains MA sections, map them to MA.Sections</Comment>
 <PreConditions>
 <PreCondition
  Guid="d4ede40b-9fe9-4e43-970d-e6c57675d9b3"
@@ -2127,6 +2216,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
  Name="SectionsNotAvailable"
  Guid="a5cc82f2-6a55-4b71-a4bd-db31ffda3b10"
 >
+<Comment>The packet only contains an End Section, MA.Sections is empty</Comment>
 <PreConditions>
 <PreCondition
  Guid="90fa6c72-b1aa-4f87-899e-c0ff98eac4f5"
@@ -2164,7 +2254,8 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6fb400c6-3db1-4eca-ba93-1e1529da4233"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Update all the information relative to the End Section</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -2195,7 +2286,8 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9202bcf9-2841-44a5-9779-2ed6be58db83"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the End Section has a End Section Time-Out, store it</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2208,7 +2300,8 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="62abfdfa-8122-449b-9e99-ad60264bea69"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Store the End Section Time-Out</Comment>
+<PreConditions>
 <PreCondition
  Guid="af3b60ce-279f-43a8-a3eb-9e4140738495"
 >Packet.Q_ENDTIMER == Messages.Q_ENDTIMER.End_section_timer_information_to_follow</PreCondition></PreConditions>
@@ -2226,6 +2319,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
  Name="EndSectionTimeOutNotAvailable"
  Guid="b0b23c79-96f0-4b36-9956-a2da7ff274d0"
 >
+<Comment>If thre is no End Section Time-Out, remove any old End Section Time-Out information there may be</Comment>
 <PreConditions>
 <PreCondition
  Guid="b562f7d1-0273-4c11-a8ae-a02b7d08bc7d"
@@ -2257,7 +2351,8 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7e23977e-d9ed-4a07-a15b-00592873bc0b"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the End Section has a regular Section Time-Out, record it</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2270,7 +2365,8 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c592fc9c-27b1-40b9-9326-8b77fbde9c2f"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Store the Section time-Out for the End Section</Comment>
+<PreConditions>
 <PreCondition
  Guid="25bdcb96-339b-4531-a916-c85ce62be31c"
 >Packet.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow</PreCondition></PreConditions>
@@ -2288,6 +2384,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
  Name="TimeOutNotAvailable"
  Guid="6e5aec02-6784-4813-8c60-c6b6f8962c55"
 >
+<Comment>If thre is no Section Time-Out for the End Section, remove any old Time-Out information there may be</Comment>
 <PreConditions>
 <PreCondition
  Guid="9dbec42b-a000-45d1-97c3-843c4d509b70"
@@ -2319,7 +2416,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="932e17a2-668b-46d5-8ae0-652c49c0221f"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>If the Packet contains a Danger Point, record it</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2343,7 +2440,8 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="55b7cdc6-44e9-48ab-b042-4ec67cd17b9e"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If there is a Danger Point, store it</Comment>
+<PreConditions>
 <PreCondition
  Guid="f07ca779-84c5-4804-add0-0393d8d1866d"
 >Packet.Q_DANGERPOINT == Messages.Q_DANGERPOINT.Danger_point_information_to_follow</PreCondition></PreConditions>
@@ -2361,6 +2459,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
  Name="DangerPointNotAvailable"
  Guid="8d37cbcc-cb87-4278-87ce-e59e0642ce06"
 >
+<Comment>If thre is no Danger Point, remove any old Danger Point information there may be</Comment>
 <PreConditions>
 <PreCondition
  Guid="d0997cc0-b1a5-4e0d-b8ff-e797c75405a8"
@@ -2397,7 +2496,8 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d622832e-d82c-43e6-a465-0e396eff6c96"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the Packet announces an Overlap, record it</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2420,7 +2520,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="33e5ade6-f70d-46dc-bf90-1bf280b002e0"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Store the Overlap Information</Comment>
 <PreConditions>
 <PreCondition
  Guid="433bed91-4915-40d9-a18a-406f1c0654e7"
@@ -2441,6 +2541,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
  Name="OverlapNotAvailable"
  Guid="9d2398c9-6d75-498f-96dd-65a0e34ddf07"
 >
+<Comment>If thre is no Overlap, remove any old Overlap information there may be</Comment>
 <PreConditions>
 <PreCondition
  Guid="55a9dd0a-fb89-4503-83d3-6b4cb2eac2e1"
@@ -2869,6 +2970,43 @@ IN EOAs</Action></Actions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="End section Time-Out"
+ Guid="3c231673-484e-4b1f-8127-c2aebe5ace5a"
+>
+<ReqRef
+ Id="7e423212-aebc-4610-85f4-e4a25b5e05c4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="864d6637-2a3a-4a02-a244-fe7d34655bc1"
+>
+</ReqRef><Comment>If the end section timer vlue becomes greater than the time-out value</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="End section Time-Out"
+ Guid="3e46954a-1903-4156-8318-b10f70834a11"
+>
+<PreConditions>
+<PreCondition
+ Guid="7c58a301-5e31-4d0c-91de-e2e64df6d1f7"
+>Available(Element=&gt;MA.MA)
+  AND  
+Available(Element=&gt;MA.MA.EndSection)
+  AND  
+(Kernel.CurrentTime &gt; EndSectionTimerStart.TimeOut + MA.MA.EndSection.EndSectionTimeOut.TimeOut)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="87845b6e-e345-4f5d-b307-e656fca337bb"
+>INSERT CreateTarget(
+    aLength=&gt;Default.BaseTypes.Distance.Infinity,
+    aLocation=&gt;TrainPosition.FrontEndPosition(PointOfInterest=&gt;DistanceInterval.Nom),
+    aSpeed=&gt;0.0
+)
+IN EOAs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sections are defined in the MA"
  Guid="64e84d24-7541-455b-b8bf-c6234f657b89"
@@ -3272,6 +3410,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ NeedsRequirement="FALSE"
  Name="InitializeElementsForMA"
  Guid="308f7a88-e9cd-4e48-bbc1-66b9b6ccc0a1"
 >
@@ -3431,12 +3570,61 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 >
 <Comment>Time of reception of the MA, starting point of the section timers</Comment>
 </Variable><Variable
- Type="BaseTypes.Time"
- DefaultValue="0.0"
+ Type="SectionTimeOut"
+ DefaultValue=""
  VariableMode="Internal"
  Name="EndSectionTimerStart"
  Guid="bd5eb6a3-7ab7-4a25-9014-f553a218a7b8"
 >
-<Comment>Time when the end section timer is started</Comment>
+<ReqRef
+ Id="d15e3a89-8446-4ff9-823e-41677c3863b5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aafa1095-4136-4540-90c9-fd43bcbe6ca0"
+>
+</ReqRef><Comment>Time when the end section timer is started
+Note that the &quot;TimeOut&quot; here is not the End Section time-out value, but the time at which the End Section timer start location was passed.</Comment>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="StartEndSectionTimer"
+ Guid="96dde597-2950-4ce8-87b6-5472d73371df"
+>
+<ReqRef
+ Id="d15e3a89-8446-4ff9-823e-41677c3863b5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1ef9fc76-436c-460e-b0ba-a6ebb2bf46a7"
+>
+</ReqRef><Comment>Make sure the sections </Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Train passed the End Section timer start location"
+ Guid="6440297e-e737-4a5a-af1b-6e779572d01e"
+>
+<PreConditions>
+<PreCondition
+ Guid="6ca30b00-39b9-4c23-b458-4088373dd895"
+>Available(Element=&gt;MA)
+  AND  
+Available(Element=&gt;MA.MA.EndSection)
+  AND  
+(TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Nom) &gt; MA.MA.EndSection.EndSectionTimeOut.Distance)</PreCondition><PreCondition
+ Guid="22692d30-56a8-4f47-a757-885cf72f478f"
+><Comment>Doesn&apos;t reassign the End Section timer start once it has already been started</Comment>
+NOT(Available(EndSectionTimerStart))
+  OR  
+(EndSectionTimerStart.Distance != MA.MA.EndSection.EndSectionTimeOut.Distance)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b9c8841c-a50c-46ad-97ae-1da9976bb22e"
+>EndSectionTimerStart &lt;- SectionTimeOut{
+    TimeOut =&gt; CurrentTime,
+    Distance =&gt; MA.MA.EndSection.EndSectionTimeOut.Distance
+}
+</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>
