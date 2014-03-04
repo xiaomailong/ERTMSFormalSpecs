@@ -2760,6 +2760,7 @@ IN
  Name="Wipe the old EOAs"
  Guid="d1dfb0e0-0c44-4739-ad7b-cfd327d528fc"
 >
+<Comment>The end of authority remains in application for as long as the conditions defining it remain, so the EOAs should be recalculated every cycle to ensure that they remain up-to date</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2790,7 +2791,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fcfcfe12-9abc-47c1-a0bc-01e7cd883b41"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the route suitability conditions define an EOA, add it to the list &apos;EOAs&apos;</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2818,7 +2820,8 @@ IN EOAs</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f2fd6edd-1552-447f-a689-fd596fd3c551"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If a conditional emergency stop is applied, it creates an EOA</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2845,6 +2848,7 @@ IN EOAs</Action></Actions>
  Name="Mode profile EOA defined"
  Guid="1b9338c9-b013-49b9-9a10-c9bbbc7e933f"
 >
+<Comment>If the mode profile defines an EOA, it is added to the list</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2869,6 +2873,7 @@ IN EOAs</Action></Actions>
  Name="Sections are defined in the MA"
  Guid="64e84d24-7541-455b-b8bf-c6234f657b89"
 >
+<Comment>Standard EOA in the case when the MA has multiple sections</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2899,6 +2904,7 @@ IN EOAs</Action></Actions>
  Name="No sections are defined in the MA"
  Guid="7777f16f-e92e-4374-9647-86584bd158e1"
 >
+<Comment>Standard EOA in the case where the MA only has one section</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2928,6 +2934,7 @@ IN EOAs</Action></Actions>
  Name="No EOA received"
  Guid="ae6b3e38-8dd5-460c-8ad5-2b102ea9030a"
 >
+<Comment>If there are no EOAs defined on-board, generate a virtual one at infinity</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3019,7 +3026,7 @@ IN EOAs</Action></Actions>
  Name="MakeSvLs"
  Guid="c99a0d2f-7892-4169-a275-6b01cb25ef22"
 >
-<Comment>Put all the different SvLs into the collecion</Comment>
+<Comment>Put all the different SvLs into the collection</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3038,6 +3045,7 @@ IN EOAs</Action></Actions>
  Name="Route suitability SvL defined"
  Guid="61e6b7c2-b5bf-4299-9feb-a6acf9331eb0"
 >
+<Comment>If the route suitability conditions define a SvL, add it to the list</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3061,6 +3069,7 @@ IN SvLs</Action></Actions>
  Name="Mode Profile SvL defined"
  Guid="2f7536e1-df41-45eb-b4e0-eb52f6bd8bfe"
 >
+<Comment>If the mode profile defines a SvL, add it to the list</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3089,7 +3098,8 @@ IN SvLs</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1891bee3-6ea3-4dd0-aad2-4ec1aa018cc7"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If there is an overlap without danger point, that is the SvL</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3123,7 +3133,8 @@ IN SvLs</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="55a23945-3bc5-43a4-ac22-589e7d940e6c"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the MA includes a danger point, that is the SvL</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3160,7 +3171,8 @@ IN SvLs</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4e34979f-f382-4343-b957-f1aa0e10be7a"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the MA has an end of authority, that it the SvL</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3219,7 +3231,8 @@ In case the previous End of Authority was an LOA and the new MA has an SvL, this
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="751193e0-d3dc-496f-b5c1-a4ba25f90ed5"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Shortened MA when the old EOA was not the SvL</Comment>
+<PreConditions>
 <PreCondition
  Guid="19bccdbd-f627-4eb6-b555-242fd599ad68"
 >ShorteningHandler != EMPTY
@@ -3241,7 +3254,8 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fdd43860-3619-44d2-bc12-1eea6acc5a46"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Shortened MA when the old EOA was the SvL</Comment>
+<PreConditions>
 <PreCondition
  Guid="2f33e75d-0cbd-41cd-a3c1-be78ac425e45"
 >ShorteningHandler != EMPTY
@@ -3408,5 +3422,21 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
  Guid="f864823e-e761-4bb2-86c4-e7f5a9e70182"
 >
 <Comment>This variable is a collection holding all the locations designated as end of authority, along with the speed limit and distance of the EOA</Comment>
+</Variable><Variable
+ Type="BaseTypes.Time"
+ DefaultValue="0.0"
+ VariableMode="Internal"
+ Name="SectionTimerStart"
+ Guid="eadabd71-0e7f-4597-8d44-9574de6f8a1d"
+>
+<Comment>Time of reception of the MA, starting point of the section timers</Comment>
+</Variable><Variable
+ Type="BaseTypes.Time"
+ DefaultValue="0.0"
+ VariableMode="Internal"
+ Name="EndSectionTimerStart"
+ Guid="bd5eb6a3-7ab7-4a25-9014-f553a218a7b8"
+>
+<Comment>Time when the end section timer is started</Comment>
 </Variable></Variables>
 </NameSpace>
