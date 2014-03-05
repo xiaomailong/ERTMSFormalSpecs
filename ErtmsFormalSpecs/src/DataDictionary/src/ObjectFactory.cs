@@ -549,27 +549,27 @@ namespace DataDictionary
             return retVal;
         }
 
-        public override Generated.FunctionalBlock createFunctionalBlock()
+        public override Generated.RequirementSet createRequirementSet()
         {
-            Generated.FunctionalBlock retVal = new Specification.FunctionalBlock();
+            Generated.RequirementSet retVal = new Specification.RequirementSet();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.FunctionalBlockDependance createFunctionalBlockDependance()
+        public override Generated.RequirementSetDependance createRequirementSetDependance()
         {
-            Generated.FunctionalBlockDependance retVal = new Specification.FunctionalBlockDependance();
+            Generated.RequirementSetDependance retVal = new Specification.RequirementSetDependance();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.FunctionalBlockReference createFunctionalBlockReference()
+        public override Generated.RequirementSetReference createRequirementSetReference()
         {
-            Generated.FunctionalBlockReference retVal = new Specification.FunctionalBlockReference();
+            Generated.RequirementSetReference retVal = new Specification.RequirementSetReference();
 
             DefaultValueSetter.visit(retVal);
 

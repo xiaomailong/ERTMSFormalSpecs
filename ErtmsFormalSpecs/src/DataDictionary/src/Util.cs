@@ -141,22 +141,22 @@ namespace DataDictionary
                 }
                 paragraph.setScope(Generated.acceptor.Paragraph_scope.aFLAGS);
 
-                // Ensures the functional block exists
+                // Ensures the requirement set exists
                 if (!string.IsNullOrEmpty(paragraph.getFunctionalBlockName()))
                 {
-                    FunctionalBlock functionalBlock = paragraph.EFSSystem.findFunctionalBlock(paragraph.getFunctionalBlockName());
-                    if (functionalBlock == null)
+                    RequirementSet requirementSet = paragraph.EFSSystem.findRequirementSet(paragraph.getFunctionalBlockName());
+                    if (requirementSet == null)
                     {
-                        functionalBlock = (FunctionalBlock)Generated.acceptor.getFactory().createFunctionalBlock();
-                        functionalBlock.Name = paragraph.getFunctionalBlockName();
-                        paragraph.Dictionary.appendFunctionalBlocks(functionalBlock);
+                        requirementSet = (RequirementSet)Generated.acceptor.getFactory().createRequirementSet();
+                        requirementSet.Name = paragraph.getFunctionalBlockName();
+                        paragraph.Dictionary.appendRequirementSets(requirementSet);
                     }
 
-                    if (!paragraph.BelongsToFunctionalBlock(paragraph.getFunctionalBlockName()))
+                    if (!paragraph.BelongsToRequirementSet(paragraph.getFunctionalBlockName()))
                     {
-                        FunctionalBlockReference reference = (FunctionalBlockReference)Generated.acceptor.getFactory().createFunctionalBlockReference();
+                        RequirementSetReference reference = (RequirementSetReference)Generated.acceptor.getFactory().createRequirementSetReference();
                         reference.Name = paragraph.getFunctionalBlockName();
-                        paragraph.appendFunctionalBlocks(reference);
+                        paragraph.appendRequirementSets(reference);
                     }
                 }
 

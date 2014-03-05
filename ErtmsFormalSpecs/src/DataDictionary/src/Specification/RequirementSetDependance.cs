@@ -22,14 +22,14 @@ namespace DataDictionary.Specification
     using System.Text;
 
     /// <summary>
-    /// Represents a functional block
+    /// Represents a requirement set
     /// </summary>
-    public class FunctionalBlockDependance : Generated.FunctionalBlockDependance, IGraphicalArrow<FunctionalBlock>
+    public class RequirementSetDependance : Generated.RequirementSetDependance, IGraphicalArrow<RequirementSet>
     {
         /// <summary>
         /// The source of the arrow
         /// </summary>
-        public FunctionalBlock Source { get { return Enclosing as FunctionalBlock; } }
+        public RequirementSet Source { get { return Enclosing as RequirementSet; } }
 
         /// <summary>
         /// Sets the source box for this arrow
@@ -38,24 +38,24 @@ namespace DataDictionary.Specification
         public void SetInitialBox(IGraphicalDisplay initialBox)
         {
             Source.removeDependances(this);
-            FunctionalBlock newSource = (FunctionalBlock)initialBox;
+            RequirementSet newSource = (RequirementSet)initialBox;
             newSource.appendDependances(this);
         }
 
         /// <summary>
         /// The target of the arrow
         /// </summary>
-        public FunctionalBlock Target
+        public RequirementSet Target
         {
             get
             {
-                FunctionalBlock retVal = null;
+                RequirementSet retVal = null;
 
-                foreach (FunctionalBlock functionalBlock in EFSSystem.FunctionalBlocks)
+                foreach (RequirementSet requirementSet in EFSSystem.RequirementSets)
                 {
-                    if (functionalBlock.Name == getTarget())
+                    if (requirementSet.Name == getTarget())
                     {
-                        retVal = functionalBlock;
+                        retVal = requirementSet;
                         break;
                     }
                 }

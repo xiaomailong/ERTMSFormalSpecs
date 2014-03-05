@@ -13,19 +13,36 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+using DataDictionary.Rules;
+using DataDictionary.Types;
+using GUI.BoxArrowDiagram;
+using DataDictionary.Constants;
 using DataDictionary.Specification;
-namespace GUI.SpecificationView
-{
-    public class FunctionalBlocksTreeView : TypedTreeView<Paragraph>
-    {
-        protected override void BuildModel()
-        {
-            Nodes.Clear();
 
-            foreach (FunctionalBlockReference reference in Root.FunctionalBlockReferences)
-            {
-                Nodes.Add(new FunctionalBlockReferenceTreeNode(reference, true));
-            }
+namespace GUI.RequirementSetDiagram
+{
+    public partial class RequirementSetDependanceControl : ArrowControl<RequirementSet, RequirementSetDependance>
+    {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public RequirementSetDependanceControl()
+            : base()
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="container"></param>
+        public RequirementSetDependanceControl(IContainer container)
+            : base()
+        {
+            container.Add(this);
         }
     }
 }

@@ -84,6 +84,7 @@ namespace GUI
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.showSpecificationViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showFunctionalBlocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showModelViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showShortcutsViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showTestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -170,7 +171,6 @@ namespace GUI
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.showFunctionalBlocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -398,6 +398,13 @@ namespace GUI
             this.showSpecificationViewToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.showSpecificationViewToolStripMenuItem.Text = "Show specification view";
             this.showSpecificationViewToolStripMenuItem.Click += new System.EventHandler(this.showSpecificationViewToolStripMenuItem_Click_1);
+            // 
+            // showFunctionalBlocksToolStripMenuItem
+            // 
+            this.showFunctionalBlocksToolStripMenuItem.Name = "showFunctionalBlocksToolStripMenuItem";
+            this.showFunctionalBlocksToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.showFunctionalBlocksToolStripMenuItem.Text = "Show requirement sets";
+            this.showFunctionalBlocksToolStripMenuItem.Click += new System.EventHandler(this.showRequirementSetToolStripMenuItem_Click);
             // 
             // showModelViewToolStripMenuItem
             // 
@@ -1112,13 +1119,6 @@ namespace GUI
             dockPanelSkin1.DockPaneStripSkin = dockPaneStripSkin1;
             this.dockPanel.Skin = dockPanelSkin1;
             this.dockPanel.TabIndex = 4;
-            // 
-            // showFunctionalBlocksToolStripMenuItem
-            // 
-            this.showFunctionalBlocksToolStripMenuItem.Name = "showFunctionalBlocksToolStripMenuItem";
-            this.showFunctionalBlocksToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-            this.showFunctionalBlocksToolStripMenuItem.Text = "Show functional blocks";
-            this.showFunctionalBlocksToolStripMenuItem.Click += new System.EventHandler(this.showFunctionalBlocksToolStripMenuItem_Click);
             // 
             // MainWindow
             // 

@@ -27,11 +27,11 @@ using Utils;
 using DataDictionary;
 using DataDictionary.Specification;
 
-namespace GUI.FunctionalBlockDiagram
+namespace GUI.RequirementSetDiagram
 {
-    public class FunctionalBlockPanel : BoxArrowPanel<FunctionalBlock, FunctionalBlockDependance>
+    public class RequirementSetPanel : BoxArrowPanel<RequirementSet, RequirementSetDependance>
     {
-        private System.Windows.Forms.ToolStripMenuItem addFunctionalBlockMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addRequirementSetMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addDependanceMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectRequirementsMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
@@ -42,7 +42,7 @@ namespace GUI.FunctionalBlockDiagram
         /// </summary>
         public void InitializeStartMenu()
         {
-            addFunctionalBlockMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            addRequirementSetMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             addDependanceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             selectRequirementsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -50,16 +50,16 @@ namespace GUI.FunctionalBlockDiagram
             // 
             // addStateMenuItem
             // 
-            addFunctionalBlockMenuItem.Name = "addFunctionalBlockMenuItem";
-            addFunctionalBlockMenuItem.Size = new System.Drawing.Size(161, 22);
-            addFunctionalBlockMenuItem.Text = "Add functional block";
-            addFunctionalBlockMenuItem.Click += new System.EventHandler(addBoxMenuItem_Click);
+            addRequirementSetMenuItem.Name = "addRequirementSetMenuItem";
+            addRequirementSetMenuItem.Size = new System.Drawing.Size(161, 22);
+            addRequirementSetMenuItem.Text = "Add requirement set";
+            addRequirementSetMenuItem.Click += new System.EventHandler(addBoxMenuItem_Click);
             // 
             // addTransitionMenuItem
             // 
             addDependanceMenuItem.Name = "addDependanceMenuItem";
             addDependanceMenuItem.Size = new System.Drawing.Size(161, 22);
-            addDependanceMenuItem.Text = "Add functional block dependance";
+            addDependanceMenuItem.Text = "Add dependance";
             addDependanceMenuItem.Click += new System.EventHandler(addArrowMenuItem_Click);
             // 
             // toolStripSeparator1
@@ -82,7 +82,7 @@ namespace GUI.FunctionalBlockDiagram
             deleteMenuItem.Click += new System.EventHandler(deleteMenuItem1_Click);
 
             contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                addFunctionalBlockMenuItem,
+                addRequirementSetMenuItem,
                 addDependanceMenuItem,
                 toolStripSeparator,
                 selectRequirementsMenuItem,
@@ -93,7 +93,7 @@ namespace GUI.FunctionalBlockDiagram
         /// <summary>
         /// Constructor
         /// </summary>
-        public FunctionalBlockPanel()
+        public RequirementSetPanel()
             : base()
         {
             InitializeStartMenu();
@@ -103,7 +103,7 @@ namespace GUI.FunctionalBlockDiagram
         /// Constructor
         /// </summary>
         /// <param name="container"></param>
-        public FunctionalBlockPanel(IContainer container)
+        public RequirementSetPanel(IContainer container)
             : base()
         {
             container.Add(this);
@@ -116,9 +116,9 @@ namespace GUI.FunctionalBlockDiagram
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public override BoxControl<FunctionalBlock, FunctionalBlockDependance> createBox(FunctionalBlock model)
+        public override BoxControl<RequirementSet, RequirementSetDependance> createBox(RequirementSet model)
         {
-            BoxControl<FunctionalBlock, FunctionalBlockDependance> retVal = new FunctionalBlockControl();
+            BoxControl<RequirementSet, RequirementSetDependance> retVal = new RequirementSetControl();
             retVal.Model = model;
 
             return retVal;
@@ -129,9 +129,9 @@ namespace GUI.FunctionalBlockDiagram
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public override ArrowControl<FunctionalBlock, FunctionalBlockDependance> createArrow(FunctionalBlockDependance model)
+        public override ArrowControl<RequirementSet, RequirementSetDependance> createArrow(RequirementSetDependance model)
         {
-            ArrowControl<FunctionalBlock, FunctionalBlockDependance> retVal = new FunctionalDependanceControl();
+            ArrowControl<RequirementSet, RequirementSetDependance> retVal = new RequirementSetDependanceControl();
             retVal.Model = model;
 
             return retVal;
@@ -146,22 +146,22 @@ namespace GUI.FunctionalBlockDiagram
         /// Provides the boxes that need be displayed
         /// </summary>
         /// <returns></returns>
-        public override List<FunctionalBlock> getBoxes()
+        public override List<RequirementSet> getBoxes()
         {
-            return EFSSystem.FunctionalBlocks;
+            return EFSSystem.RequirementSets;
         }
 
         /// <summary>
         /// Provides the arrows that need be displayed
         /// </summary>
         /// <returns></returns>
-        public override List<FunctionalBlockDependance> getArrows()
+        public override List<RequirementSetDependance> getArrows()
         {
-            List<FunctionalBlockDependance> retVal = new List<FunctionalBlockDependance>();
+            List<RequirementSetDependance> retVal = new List<RequirementSetDependance>();
 
-            foreach (FunctionalBlock functionalBlock in EFSSystem.FunctionalBlocks)
+            foreach (RequirementSet requirementSet in EFSSystem.RequirementSets)
             {
-                foreach (FunctionalBlockDependance dependance in functionalBlock.Dependances)
+                foreach (RequirementSetDependance dependance in requirementSet.Dependances)
                 {
                     retVal.Add(dependance);
                 }
@@ -172,8 +172,8 @@ namespace GUI.FunctionalBlockDiagram
 
         private void addBoxMenuItem_Click(object sender, EventArgs e)
         {
-            FunctionalBlock functionalBlock = (FunctionalBlock)DataDictionary.Generated.acceptor.getFactory().createFunctionalBlock();
-            functionalBlock.Name = "<functional block " + (EFSSystem.FunctionalBlocks.Count + 1) + ">";
+            RequirementSet requirementSet = (RequirementSet)DataDictionary.Generated.acceptor.getFactory().createRequirementSet();
+            requirementSet.Name = "<set " + (EFSSystem.RequirementSets.Count + 1) + ">";
 
             DataDictionary.Dictionary dictionary;
             if (EFSSystem.Dictionaries.Count > 1)
@@ -189,7 +189,7 @@ namespace GUI.FunctionalBlockDiagram
 
             if (dictionary != null)
             {
-                dictionary.appendFunctionalBlocks(functionalBlock);
+                dictionary.appendRequirementSets(requirementSet);
             }
 
             RefreshControl();
@@ -197,45 +197,45 @@ namespace GUI.FunctionalBlockDiagram
 
         private void addArrowMenuItem_Click(object sender, EventArgs e)
         {
-            if (EFSSystem.FunctionalBlocks.Count > 1)
+            if (EFSSystem.RequirementSets.Count > 1)
             {
-                FunctionalBlock source = null;
-                FunctionalBlock target = null;
-                FunctionalBlockControl sourceControl = Selected as FunctionalBlockControl;
+                RequirementSet source = null;
+                RequirementSet target = null;
+                RequirementSetControl sourceControl = Selected as RequirementSetControl;
                 if (sourceControl != null)
                 {
                     source = sourceControl.Model;
-                    target = EFSSystem.FunctionalBlocks[0];
+                    target = EFSSystem.RequirementSets[0];
                     if (target == source)
                     {
-                        target = EFSSystem.FunctionalBlocks[1];
+                        target = EFSSystem.RequirementSets[1];
                     }
                 }
                 else
                 {
-                    source = EFSSystem.FunctionalBlocks[0];
-                    target = EFSSystem.FunctionalBlocks[1];
+                    source = EFSSystem.RequirementSets[0];
+                    target = EFSSystem.RequirementSets[1];
                 }
 
-                FunctionalBlockDependance dependance = (FunctionalBlockDependance)DataDictionary.Generated.acceptor.getFactory().createFunctionalBlockDependance();
+                RequirementSetDependance dependance = (RequirementSetDependance)DataDictionary.Generated.acceptor.getFactory().createRequirementSetDependance();
                 dependance.setTarget(target.Name);
                 source.appendDependances(dependance);
 
                 RefreshControl();
                 Refresh();
 
-                ArrowControl<FunctionalBlock, FunctionalBlockDependance> control = getArrowControl(dependance);
+                ArrowControl<RequirementSet, RequirementSetDependance> control = getArrowControl(dependance);
                 Select(control, false);
             }
         }
 
         private void selectRequirements_Click(object sender, EventArgs e)
         {
-            FunctionalBlockControl control = Selected as FunctionalBlockControl;
+            RequirementSetControl control = Selected as RequirementSetControl;
 
-            if ( control != null )
+            if (control != null)
             {
-                EFSSystem.MarkRequirementsForFunctionalBlock(control.Model);
+                EFSSystem.MarkRequirementsForRequirementSet(control.Model);
             }
         }
 

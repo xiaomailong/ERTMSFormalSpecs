@@ -22,9 +22,9 @@ namespace DataDictionary.Specification
     using System.Text;
 
     /// <summary>
-    /// Represents a functional block
+    /// Represents a reference to a requirement set
     /// </summary>
-    public class FunctionalBlockReference : Generated.FunctionalBlockReference
+    public class RequirementSetReference : Generated.RequirementSetReference
     {
         public override System.Collections.ArrayList EnclosingCollection
         {
@@ -32,7 +32,7 @@ namespace DataDictionary.Specification
             {
                 Paragraph paragraph = (Paragraph)Enclosing;
 
-                return paragraph.allFunctionalBlocks();
+                return paragraph.allRequirementSets();
             }
         }
     }

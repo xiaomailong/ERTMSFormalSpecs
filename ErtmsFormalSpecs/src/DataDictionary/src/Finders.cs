@@ -373,12 +373,12 @@ namespace DataDictionary
     /// <summary>
     /// Finds the State in the dictionary, based on the name provided
     /// </summary>
-    public class OverallFunctionalBlockFinder : Utils.OverallFinder<FunctionalBlock>
+    public class OverallRequirementSetFinder : Utils.OverallFinder<RequirementSet>
     {
         /// <summary>
         /// A static instance used to execute this finder
         /// </summary>
-        public static OverallFunctionalBlockFinder INSTANCE = new OverallFunctionalBlockFinder();
+        public static OverallRequirementSetFinder INSTANCE = new OverallRequirementSetFinder();
     }
 
     /// <summary>

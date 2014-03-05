@@ -23,14 +23,14 @@ using GUI.BoxArrowDiagram;
 using DataDictionary.Rules;
 using DataDictionary.Specification;
 
-namespace GUI.FunctionalBlockDiagram
+namespace GUI.RequirementSetDiagram
 {
-    public partial class FunctionalBlockControl : BoxControl<FunctionalBlock, FunctionalBlockDependance>
+    public partial class RequirementSetControl : BoxControl<RequirementSet, RequirementSetDependance>
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public FunctionalBlockControl()
+        public RequirementSetControl()
             : base()
         {
         }
@@ -39,7 +39,7 @@ namespace GUI.FunctionalBlockDiagram
         /// Constructor
         /// </summary>
         /// <param name="container"></param>
-        public FunctionalBlockControl(IContainer container)
+        public RequirementSetControl(IContainer container)
             : base(container)
         {
         }
@@ -48,15 +48,15 @@ namespace GUI.FunctionalBlockDiagram
         {
             base.AcceptDrop(element);
 
-            // Allows to allocate paragraphs in functional blocks
+            // Allows to allocate paragraphs in requirement sets
             Paragraph paragraph = element as Paragraph;
             if (paragraph != null)
             {
-                if (!paragraph.BelongsToFunctionalBlock(Model.Name))
+                if (!paragraph.BelongsToRequirementSet(Model.Name))
                 {
-                    FunctionalBlockReference reference = (FunctionalBlockReference) DataDictionary.Generated.acceptor.getFactory().createFunctionalBlockReference();
+                    RequirementSetReference reference = (RequirementSetReference)DataDictionary.Generated.acceptor.getFactory().createRequirementSetReference();
                     reference.Name = Model.Name;
-                    paragraph.appendFunctionalBlocks(reference);
+                    paragraph.appendRequirementSets(reference);
                 }
             }
         }

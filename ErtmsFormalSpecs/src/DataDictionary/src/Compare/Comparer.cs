@@ -219,18 +219,18 @@ namespace DataDictionary.Compare
                     }
                 }
             }
-            if ( obj.allFunctionalBlocks() != null )
+            if ( obj.allRequirementSets() != null )
             {
-                if ( other.allFunctionalBlocks() != null ) 
+                if ( other.allRequirementSets() != null ) 
                 {
-                    foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSet subElement in obj.allRequirementSets() )
                     {
                         bool compared = false;
-                        foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                        foreach ( Generated.RequirementSet otherElement in other.allRequirementSets() )
                         {
                             if ( subElement.Guid == otherElement.Guid )
                             {
-                                compareFunctionalBlock ( subElement, otherElement, diff );
+                                compareRequirementSet ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -238,14 +238,14 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "FunctionalBlocks", "", subElement.Name ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "RequirementSets", "", subElement.Name ) );
                         }
                     }
 
-                    foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSet otherElement in other.allRequirementSets() )
                     {
                         bool found = false;
-                        foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                        foreach ( Generated.RequirementSet subElement in obj.allRequirementSets() )
                         {
                             if ( subElement.Guid == otherElement.Guid )
                             {
@@ -256,25 +256,25 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "FunctionalBlocks", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "RequirementSets", otherElement.Name) );
                         }
                     }
                 }
                 else 
                 {
-                    foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSet subElement in obj.allRequirementSets() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "FunctionalBlocks", "", subElement.Name ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "RequirementSets", "", subElement.Name ) );
                     }
                 }
             }
             else 
             {
-                if ( other.allFunctionalBlocks() != null ) 
+                if ( other.allRequirementSets() != null ) 
                 {
-                    foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSet otherElement in other.allRequirementSets() )
                     {
-                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "FunctionalBlocks", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "RequirementSets", otherElement.Name) );
                     }
                 }
             }
@@ -4407,11 +4407,11 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
-        /// Compares two FunctionalBlock and annotates the differences on the first one
+        /// Compares two RequirementSet and annotates the differences on the first one
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareFunctionalBlock(Generated.FunctionalBlock obj, Generated.FunctionalBlock other, VersionDiff diff)
+        public static void compareRequirementSet(Generated.RequirementSet obj, Generated.RequirementSet other, VersionDiff diff)
         {
             if ( other == null )
             { 
@@ -4425,14 +4425,14 @@ namespace DataDictionary.Compare
             {
                 if ( other.allDependances() != null ) 
                 {
-                    foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                    foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
                     {
                         bool compared = false;
-                        foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                        foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
                         {
                             if ( subElement.Guid == otherElement.Guid )
                             {
-                                compareFunctionalBlockDependance ( subElement, otherElement, diff );
+                                compareRequirementSetDependance ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -4444,10 +4444,10 @@ namespace DataDictionary.Compare
                         }
                     }
 
-                    foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                    foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
                     {
                         bool found = false;
-                        foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                        foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
                         {
                             if ( subElement.Guid == otherElement.Guid )
                             {
@@ -4464,7 +4464,7 @@ namespace DataDictionary.Compare
                 }
                 else 
                 {
-                    foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                    foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
                     {
                         diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Dependances", "", subElement.Name ) );
                     }
@@ -4474,7 +4474,7 @@ namespace DataDictionary.Compare
             {
                 if ( other.allDependances() != null ) 
                 {
-                    foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                    foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
                     {
                         diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Dependances", otherElement.Name) );
                     }
@@ -4499,11 +4499,11 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
-        /// Compares two FunctionalBlockDependance and annotates the differences on the first one
+        /// Compares two RequirementSetDependance and annotates the differences on the first one
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareFunctionalBlockDependance(Generated.FunctionalBlockDependance obj, Generated.FunctionalBlockDependance other, VersionDiff diff)
+        public static void compareRequirementSetDependance(Generated.RequirementSetDependance obj, Generated.RequirementSetDependance other, VersionDiff diff)
         {
             if ( other == null )
             { 
@@ -4904,18 +4904,18 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "FunctionalBlockName", other.getFunctionalBlockName(), obj.getFunctionalBlockName()) );
             }
-            if ( obj.allFunctionalBlocks() != null )
+            if ( obj.allRequirementSets() != null )
             {
-                if ( other.allFunctionalBlocks() != null ) 
+                if ( other.allRequirementSets() != null ) 
                 {
-                    foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSetReference subElement in obj.allRequirementSets() )
                     {
                         bool compared = false;
-                        foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                        foreach ( Generated.RequirementSetReference otherElement in other.allRequirementSets() )
                         {
                             if ( subElement.Guid == otherElement.Guid )
                             {
-                                compareFunctionalBlockReference ( subElement, otherElement, diff );
+                                compareRequirementSetReference ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -4923,14 +4923,14 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "FunctionalBlocks", "", subElement.Name ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "RequirementSets", "", subElement.Name ) );
                         }
                     }
 
-                    foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSetReference otherElement in other.allRequirementSets() )
                     {
                         bool found = false;
-                        foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                        foreach ( Generated.RequirementSetReference subElement in obj.allRequirementSets() )
                         {
                             if ( subElement.Guid == otherElement.Guid )
                             {
@@ -4941,25 +4941,25 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "FunctionalBlocks", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "RequirementSets", otherElement.Name) );
                         }
                     }
                 }
                 else 
                 {
-                    foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSetReference subElement in obj.allRequirementSets() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "FunctionalBlocks", "", subElement.Name ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "RequirementSets", "", subElement.Name ) );
                     }
                 }
             }
             else 
             {
-                if ( other.allFunctionalBlocks() != null ) 
+                if ( other.allRequirementSets() != null ) 
                 {
-                    foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSetReference otherElement in other.allRequirementSets() )
                     {
-                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "FunctionalBlocks", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "RequirementSets", otherElement.Name) );
                     }
                 }
             }
@@ -4970,11 +4970,11 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
-        /// Compares two FunctionalBlockReference and annotates the differences on the first one
+        /// Compares two RequirementSetReference and annotates the differences on the first one
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareFunctionalBlockReference(Generated.FunctionalBlockReference obj, Generated.FunctionalBlockReference other, VersionDiff diff)
+        public static void compareRequirementSetReference(Generated.RequirementSetReference obj, Generated.RequirementSetReference other, VersionDiff diff)
         {
             if ( other == null )
             { 
@@ -5345,21 +5345,21 @@ namespace DataDictionary.Compare
                     }
                 }
             }
-            if ( obj.allFunctionalBlocks() != null )
+            if ( obj.allRequirementSets() != null )
             {
-                if ( other.allFunctionalBlocks() != null ) 
+                if ( other.allRequirementSets() != null ) 
                 {
-                    foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSet subElement in obj.allRequirementSets() )
                     {
                         bool found = false;
 
                         // Try first to assign Guid to elements which do not have a guid
                         // This helps handling duplicated in lists
-                        foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                        foreach ( Generated.RequirementSet otherElement in other.allRequirementSets() )
                         {
                             if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
                             {
-                                ensureGuidFunctionalBlock ( subElement, otherElement );
+                                ensureGuidRequirementSet ( subElement, otherElement );
                                 found = true;
                                 break;
                             }
@@ -5367,11 +5367,11 @@ namespace DataDictionary.Compare
 
                         if ( !found ) 
                         {
-                            foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                            foreach ( Generated.RequirementSet otherElement in other.allRequirementSets() )
                             {
                                 if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                                 {
-                                    ensureGuidFunctionalBlock ( subElement, otherElement );
+                                    ensureGuidRequirementSet ( subElement, otherElement );
                                     found = true;
                                     break;
                                 }
@@ -5380,14 +5380,14 @@ namespace DataDictionary.Compare
 
                         if ( !found ) 
                         {
-                            ensureGuidFunctionalBlock ( subElement, null );
+                            ensureGuidRequirementSet ( subElement, null );
                         }
                     }
 
-                    foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSet otherElement in other.allRequirementSets() )
                     {
                         bool found = false;
-                        foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                        foreach ( Generated.RequirementSet subElement in obj.allRequirementSets() )
                         {
                             if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
@@ -5398,25 +5398,25 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            ensureGuidFunctionalBlock ( null, otherElement );
+                            ensureGuidRequirementSet ( null, otherElement );
                         }
                     }
                 }
                 else 
                 {
-                    foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSet subElement in obj.allRequirementSets() )
                     {
-                        ensureGuidFunctionalBlock ( subElement, null );
+                        ensureGuidRequirementSet ( subElement, null );
                     }
                 }
             }
             else 
             {
-                if ( other.allFunctionalBlocks() != null ) 
+                if ( other.allRequirementSets() != null ) 
                 {
-                    foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSet otherElement in other.allRequirementSets() )
                     {
-                        ensureGuidFunctionalBlock ( null, otherElement );
+                        ensureGuidRequirementSet ( null, otherElement );
                     }
                 }
             }
@@ -11162,14 +11162,14 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
-        /// Ensures that two FunctionalBlock have matching GUID, and recursively.
+        /// Ensures that two RequirementSet have matching GUID, and recursively.
         /// obj is the leader for Guid. If other doesn't match obj guid, 
         ///   1. other does not have a guid, in that case, other should have the same guid as obj
         ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void ensureGuidFunctionalBlock(Generated.FunctionalBlock obj, Generated.FunctionalBlock other)
+        public static void ensureGuidRequirementSet(Generated.RequirementSet obj, Generated.RequirementSet other)
         {
             if ( obj == null )
             { 
@@ -11211,17 +11211,17 @@ namespace DataDictionary.Compare
             {
                 if ( other.allDependances() != null ) 
                 {
-                    foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                    foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
                     {
                         bool found = false;
 
                         // Try first to assign Guid to elements which do not have a guid
                         // This helps handling duplicated in lists
-                        foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                        foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
                         {
                             if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
                             {
-                                ensureGuidFunctionalBlockDependance ( subElement, otherElement );
+                                ensureGuidRequirementSetDependance ( subElement, otherElement );
                                 found = true;
                                 break;
                             }
@@ -11229,11 +11229,11 @@ namespace DataDictionary.Compare
 
                         if ( !found ) 
                         {
-                            foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                            foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
                             {
                                 if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                                 {
-                                    ensureGuidFunctionalBlockDependance ( subElement, otherElement );
+                                    ensureGuidRequirementSetDependance ( subElement, otherElement );
                                     found = true;
                                     break;
                                 }
@@ -11242,14 +11242,14 @@ namespace DataDictionary.Compare
 
                         if ( !found ) 
                         {
-                            ensureGuidFunctionalBlockDependance ( subElement, null );
+                            ensureGuidRequirementSetDependance ( subElement, null );
                         }
                     }
 
-                    foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                    foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
                     {
                         bool found = false;
-                        foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                        foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
                         {
                             if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
@@ -11260,15 +11260,15 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            ensureGuidFunctionalBlockDependance ( null, otherElement );
+                            ensureGuidRequirementSetDependance ( null, otherElement );
                         }
                     }
                 }
                 else 
                 {
-                    foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                    foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
                     {
-                        ensureGuidFunctionalBlockDependance ( subElement, null );
+                        ensureGuidRequirementSetDependance ( subElement, null );
                     }
                 }
             }
@@ -11276,23 +11276,23 @@ namespace DataDictionary.Compare
             {
                 if ( other.allDependances() != null ) 
                 {
-                    foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                    foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
                     {
-                        ensureGuidFunctionalBlockDependance ( null, otherElement );
+                        ensureGuidRequirementSetDependance ( null, otherElement );
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Ensures that two FunctionalBlockDependance have matching GUID, and recursively.
+        /// Ensures that two RequirementSetDependance have matching GUID, and recursively.
         /// obj is the leader for Guid. If other doesn't match obj guid, 
         ///   1. other does not have a guid, in that case, other should have the same guid as obj
         ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void ensureGuidFunctionalBlockDependance(Generated.FunctionalBlockDependance obj, Generated.FunctionalBlockDependance other)
+        public static void ensureGuidRequirementSetDependance(Generated.RequirementSetDependance obj, Generated.RequirementSetDependance other)
         {
             if ( obj == null )
             { 
@@ -11823,21 +11823,21 @@ namespace DataDictionary.Compare
                 }
             }
             ensureGuidParagraphRevision ( obj.getRevision(), other.getRevision() );
-            if ( obj.allFunctionalBlocks() != null )
+            if ( obj.allRequirementSets() != null )
             {
-                if ( other.allFunctionalBlocks() != null ) 
+                if ( other.allRequirementSets() != null ) 
                 {
-                    foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSetReference subElement in obj.allRequirementSets() )
                     {
                         bool found = false;
 
                         // Try first to assign Guid to elements which do not have a guid
                         // This helps handling duplicated in lists
-                        foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                        foreach ( Generated.RequirementSetReference otherElement in other.allRequirementSets() )
                         {
                             if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
                             {
-                                ensureGuidFunctionalBlockReference ( subElement, otherElement );
+                                ensureGuidRequirementSetReference ( subElement, otherElement );
                                 found = true;
                                 break;
                             }
@@ -11845,11 +11845,11 @@ namespace DataDictionary.Compare
 
                         if ( !found ) 
                         {
-                            foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                            foreach ( Generated.RequirementSetReference otherElement in other.allRequirementSets() )
                             {
                                 if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                                 {
-                                    ensureGuidFunctionalBlockReference ( subElement, otherElement );
+                                    ensureGuidRequirementSetReference ( subElement, otherElement );
                                     found = true;
                                     break;
                                 }
@@ -11858,14 +11858,14 @@ namespace DataDictionary.Compare
 
                         if ( !found ) 
                         {
-                            ensureGuidFunctionalBlockReference ( subElement, null );
+                            ensureGuidRequirementSetReference ( subElement, null );
                         }
                     }
 
-                    foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSetReference otherElement in other.allRequirementSets() )
                     {
                         bool found = false;
-                        foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                        foreach ( Generated.RequirementSetReference subElement in obj.allRequirementSets() )
                         {
                             if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
@@ -11876,39 +11876,39 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            ensureGuidFunctionalBlockReference ( null, otherElement );
+                            ensureGuidRequirementSetReference ( null, otherElement );
                         }
                     }
                 }
                 else 
                 {
-                    foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSetReference subElement in obj.allRequirementSets() )
                     {
-                        ensureGuidFunctionalBlockReference ( subElement, null );
+                        ensureGuidRequirementSetReference ( subElement, null );
                     }
                 }
             }
             else 
             {
-                if ( other.allFunctionalBlocks() != null ) 
+                if ( other.allRequirementSets() != null ) 
                 {
-                    foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                    foreach ( Generated.RequirementSetReference otherElement in other.allRequirementSets() )
                     {
-                        ensureGuidFunctionalBlockReference ( null, otherElement );
+                        ensureGuidRequirementSetReference ( null, otherElement );
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Ensures that two FunctionalBlockReference have matching GUID, and recursively.
+        /// Ensures that two RequirementSetReference have matching GUID, and recursively.
         /// obj is the leader for Guid. If other doesn't match obj guid, 
         ///   1. other does not have a guid, in that case, other should have the same guid as obj
         ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void ensureGuidFunctionalBlockReference(Generated.FunctionalBlockReference obj, Generated.FunctionalBlockReference other)
+        public static void ensureGuidRequirementSetReference(Generated.RequirementSetReference obj, Generated.RequirementSetReference other)
         {
             if ( obj == null )
             { 
@@ -12062,11 +12062,11 @@ namespace DataDictionary.Compare
                     searchSpecification ( subElement, searchString, occurences );
                 }
             }
-            if ( obj.allFunctionalBlocks() != null )
+            if ( obj.allRequirementSets() != null )
             {
-                foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                foreach ( Generated.RequirementSet subElement in obj.allRequirementSets() )
                 {
-                    searchFunctionalBlock ( subElement, searchString, occurences );
+                    searchRequirementSet ( subElement, searchString, occurences );
                 }
             }
             if ( obj.allRuleDisablings() != null )
@@ -13166,33 +13166,33 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
-        /// Searches a specific string in FunctionalBlock and updates the list 
+        /// Searches a specific string in RequirementSet and updates the list 
         /// of model element with all the elements in which that string is found
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="obj">The string to search for</param>
         /// <param name="occurences">The list of model elements which hold the searched string</param>
-        public static void searchFunctionalBlock(Generated.FunctionalBlock obj, string searchString, List<ModelElement> occurences)
+        public static void searchRequirementSet(Generated.RequirementSet obj, string searchString, List<ModelElement> occurences)
         {
             searchNamable (obj, searchString, occurences);
 
             if ( obj.allDependances() != null )
             {
-                foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
                 {
-                    searchFunctionalBlockDependance ( subElement, searchString, occurences );
+                    searchRequirementSetDependance ( subElement, searchString, occurences );
                 }
             }
         }
 
         /// <summary>
-        /// Searches a specific string in FunctionalBlockDependance and updates the list 
+        /// Searches a specific string in RequirementSetDependance and updates the list 
         /// of model element with all the elements in which that string is found
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="obj">The string to search for</param>
         /// <param name="occurences">The list of model elements which hold the searched string</param>
-        public static void searchFunctionalBlockDependance(Generated.FunctionalBlockDependance obj, string searchString, List<ModelElement> occurences)
+        public static void searchRequirementSetDependance(Generated.RequirementSetDependance obj, string searchString, List<ModelElement> occurences)
         {
             searchNamable (obj, searchString, occurences);
 
@@ -13312,11 +13312,11 @@ namespace DataDictionary.Compare
             {
                 occurences.Add ( obj );
             }
-            if ( obj.allFunctionalBlocks() != null )
+            if ( obj.allRequirementSets() != null )
             {
-                foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                foreach ( Generated.RequirementSetReference subElement in obj.allRequirementSets() )
                 {
-                    searchFunctionalBlockReference ( subElement, searchString, occurences );
+                    searchRequirementSetReference ( subElement, searchString, occurences );
                 }
             }
             if ( obj.getObsoleteGuid() != null && obj.getObsoleteGuid().Contains (searchString) ) 
@@ -13326,13 +13326,13 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
-        /// Searches a specific string in FunctionalBlockReference and updates the list 
+        /// Searches a specific string in RequirementSetReference and updates the list 
         /// of model element with all the elements in which that string is found
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="obj">The string to search for</param>
         /// <param name="occurences">The list of model elements which hold the searched string</param>
-        public static void searchFunctionalBlockReference(Generated.FunctionalBlockReference obj, string searchString, List<ModelElement> occurences)
+        public static void searchRequirementSetReference(Generated.RequirementSetReference obj, string searchString, List<ModelElement> occurences)
         {
             searchNamable (obj, searchString, occurences);
 

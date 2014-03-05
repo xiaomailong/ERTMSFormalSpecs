@@ -1650,12 +1650,12 @@ namespace GUI
             MessageBox.Show(counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info + " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void showFunctionalBlocksToolStripMenuItem_Click(object sender, EventArgs e)
+        private void showRequirementSetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FunctionalBlockDiagram.FunctionalDiagramWindow window = new FunctionalBlockDiagram.FunctionalDiagramWindow();
+            RequirementSetDiagram.RequirementSetDiagramWindow window = new RequirementSetDiagram.RequirementSetDiagramWindow();
             GUIUtils.MDIWindow.AddChildWindow(window);
             window.SetSystem(EFSSystem);
-            window.Text = "Functional blocks";
+            window.Text = "Requirement sets";
         }
     }
 }

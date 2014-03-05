@@ -1433,165 +1433,165 @@ public Specification getSpecifications(int idx)
   return (Specification) ( allSpecifications()[idx]);
 }
 
-private System.Collections.ArrayList aFunctionalBlocks;
+private System.Collections.ArrayList aRequirementSets;
 
-/// <summary>Part of the list interface for FunctionalBlocks</summary>
-/// <returns>a collection of all the elements in FunctionalBlocks</returns>
-public System.Collections.ArrayList allFunctionalBlocks()
+/// <summary>Part of the list interface for RequirementSets</summary>
+/// <returns>a collection of all the elements in RequirementSets</returns>
+public System.Collections.ArrayList allRequirementSets()
   {
-if (aFunctionalBlocks == null){
-    setAllFunctionalBlocks( new System.Collections.ArrayList() );
+if (aRequirementSets == null){
+    setAllRequirementSets( new System.Collections.ArrayList() );
 } // If
-    return aFunctionalBlocks;
+    return aRequirementSets;
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks</summary>
-/// <returns>a collection of all the elements in FunctionalBlocks</returns>
-private System.Collections.ArrayList getFunctionalBlocks()
+/// <summary>Part of the list interface for RequirementSets</summary>
+/// <returns>a collection of all the elements in RequirementSets</returns>
+private System.Collections.ArrayList getRequirementSets()
   {
-    return allFunctionalBlocks();
+    return allRequirementSets();
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks</summary>
+/// <summary>Part of the list interface for RequirementSets</summary>
 /// <param name="coll">a collection of elements which replaces 
-///        FunctionalBlocks's current content.</param>
-public void setAllFunctionalBlocks(System.Collections.ArrayList coll)
+///        RequirementSets's current content.</param>
+public void setAllRequirementSets(System.Collections.ArrayList coll)
   {
   __setDirty(true);
-    aFunctionalBlocks = coll;
+    aRequirementSets = coll;
     NotifyControllers(null);
   }
-public void setAllFunctionalBlocks(Lock aLock,System.Collections.ArrayList coll)
+public void setAllRequirementSets(Lock aLock,System.Collections.ArrayList coll)
   {
   __setDirty(true);
-    aFunctionalBlocks = coll;
+    aRequirementSets = coll;
 NotifyControllers(aLock);
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks</summary>
-/// <param name="el">a FunctionalBlock to add to the collection in 
-///           FunctionalBlocks</param>
-/// <seealso cref="appendFunctionalBlocks(System.Collections.IList)"/>
-public void appendFunctionalBlocks(FunctionalBlock el)
+/// <summary>Part of the list interface for RequirementSets</summary>
+/// <param name="el">a RequirementSet to add to the collection in 
+///           RequirementSets</param>
+/// <seealso cref="appendRequirementSets(System.Collections.IList)"/>
+public void appendRequirementSets(RequirementSet el)
   {
   __setDirty(true);
   el.__setDirty(true);
-  allFunctionalBlocks().Add(el);
+  allRequirementSets().Add(el);
   acceptor.connectSon (this, el);
 NotifyControllers(null);
   }
 
-public void appendFunctionalBlocks(Lock aLock,FunctionalBlock el)
+public void appendRequirementSets(Lock aLock,RequirementSet el)
   {
   __setDirty(true);
   el.__setDirty(true);
-  allFunctionalBlocks().Add(el);
+  allRequirementSets().Add(el);
   acceptor.connectSon (this, el);
 NotifyControllers(aLock);
   }
-/// <summary>Part of the list interface for FunctionalBlocks</summary>
-/// <param name="coll">a collection ofFunctionalBlocks to add to the collection in 
-///           FunctionalBlocks</param>
-/// <seealso cref="appendFunctionalBlocks(FunctionalBlock)"/>
-public void appendFunctionalBlocks(System.Collections.IList coll)
+/// <summary>Part of the list interface for RequirementSets</summary>
+/// <param name="coll">a collection ofRequirementSets to add to the collection in 
+///           RequirementSets</param>
+/// <seealso cref="appendRequirementSets(RequirementSet)"/>
+public void appendRequirementSets(System.Collections.IList coll)
   {
   __setDirty(true);
-  allFunctionalBlocks().AddRange(coll);
+  allRequirementSets().AddRange(coll);
   acceptor.connectSons (this, coll);
 NotifyControllers(null);
   }
 
-public void appendFunctionalBlocks(System.Collections.IList coll,Lock aLock)
+public void appendRequirementSets(System.Collections.IList coll,Lock aLock)
   {
   __setDirty(true);
-  allFunctionalBlocks().AddRange(coll);
+  allRequirementSets().AddRange(coll);
   acceptor.connectSons (this, coll);
 NotifyControllers(aLock);
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks
+/// <summary>Part of the list interface for RequirementSets
 /// This insertion function inserts a new element in the
-/// collection in FunctionalBlocks</summary>
+/// collection in RequirementSets</summary>
 /// <param name="idx">the index where the insertion must take place</param>
 /// <param name="el">the element to insert</param>
-public void insertFunctionalBlocks(int idx, FunctionalBlock el)
+public void insertRequirementSets(int idx, RequirementSet el)
   {
   __setDirty(true);
-  allFunctionalBlocks().Insert (idx, el);
+  allRequirementSets().Insert (idx, el);
 NotifyControllers(null);
   }
 
-public void insertFunctionalBlocks(int idx, FunctionalBlock el,Lock aLock)
+public void insertRequirementSets(int idx, RequirementSet el,Lock aLock)
   {
   __setDirty(true);
-  allFunctionalBlocks().Insert (idx, el);
+  allRequirementSets().Insert (idx, el);
 NotifyControllers(aLock);
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks
+/// <summary>Part of the list interface for RequirementSets
 /// This function returns the index of an element in
 /// the collection.</summary>
 /// <param name="el">the object to look for</param>
 /// <returns>the index where it is found, or -1 if it is not.</returns>
-public int indexOfFunctionalBlocks(IXmlBBase el)
+public int indexOfRequirementSets(IXmlBBase el)
   {
-  return ((System.Collections.IList) allFunctionalBlocks()).IndexOf (el);
+  return ((System.Collections.IList) allRequirementSets()).IndexOf (el);
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks
+/// <summary>Part of the list interface for RequirementSets
 /// This deletion function removes an element from the
-/// collection in FunctionalBlocks</summary>
+/// collection in RequirementSets</summary>
 /// <param name="idx">the index of the element to remove</param>
-public void deleteFunctionalBlocks(int idx)
+public void deleteRequirementSets(int idx)
   {
   __setDirty(true);
-  allFunctionalBlocks().RemoveAt(idx);
+  allRequirementSets().RemoveAt(idx);
 NotifyControllers(null);
   }
 
-public void deleteFunctionalBlocks(int idx,Lock aLock)
+public void deleteRequirementSets(int idx,Lock aLock)
   {
   __setDirty(true);
-  allFunctionalBlocks().RemoveAt(idx);
+  allRequirementSets().RemoveAt(idx);
 NotifyControllers(aLock);
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks
+/// <summary>Part of the list interface for RequirementSets
 /// This deletion function removes an element from the
-/// collection in FunctionalBlocks
+/// collection in RequirementSets
 /// If the object given in parameter is not found in the
 /// the collection, this function does nothing.</summary>
 /// <param name="obj">the object to remove</param>
-public void removeFunctionalBlocks(IXmlBBase obj)
+public void removeRequirementSets(IXmlBBase obj)
   {
-  int idx = indexOfFunctionalBlocks(obj);
-  if (idx >= 0) { deleteFunctionalBlocks(idx);
+  int idx = indexOfRequirementSets(obj);
+  if (idx >= 0) { deleteRequirementSets(idx);
 NotifyControllers(null);
    }
   }
 
-public void removeFunctionalBlocks(IXmlBBase obj,Lock aLock)
+public void removeRequirementSets(IXmlBBase obj,Lock aLock)
   {
-  int idx = indexOfFunctionalBlocks(obj);
-  if (idx >= 0) { deleteFunctionalBlocks(idx);
+  int idx = indexOfRequirementSets(obj);
+  if (idx >= 0) { deleteRequirementSets(idx);
 NotifyControllers(aLock);
   }}
 
-/// <summary>Part of the list interface for FunctionalBlocks</summary>
-/// <returns>the number of elements in FunctionalBlocks</returns>
-public int countFunctionalBlocks()
+/// <summary>Part of the list interface for RequirementSets</summary>
+/// <returns>the number of elements in RequirementSets</returns>
+public int countRequirementSets()
   {
-  return allFunctionalBlocks().Count;
+  return allRequirementSets().Count;
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks
+/// <summary>Part of the list interface for RequirementSets
 /// This function returns an element from the
-/// collection in FunctionalBlocks based on an index.</summary>
+/// collection in RequirementSets based on an index.</summary>
 /// <param name="idx">the index of the element to extract</param>
 /// <returns>the extracted element</returns>
-public FunctionalBlock getFunctionalBlocks(int idx)
+public RequirementSet getRequirementSets(int idx)
 {
-  return (FunctionalBlock) ( allFunctionalBlocks()[idx]);
+  return (RequirementSet) ( allRequirementSets()[idx]);
 }
 
 private System.Collections.ArrayList aRuleDisablings;
@@ -2453,7 +2453,7 @@ public Dictionary()
 {
 Dictionary obj = this;
 aSpecifications=(null);
-aFunctionalBlocks=(null);
+aRequirementSets=(null);
 aRuleDisablings=(null);
 aNameSpaces=(null);
 aNameSpaceRefs=(null);
@@ -2469,7 +2469,7 @@ public void copyTo(Dictionary other)
 {
 base.copyTo(other);
 other.aSpecifications = aSpecifications;
-other.aFunctionalBlocks = aFunctionalBlocks;
+other.aRequirementSets = aRequirementSets;
 other.aRuleDisablings = aRuleDisablings;
 other.aNameSpaces = aNameSpaces;
 other.aNameSpaceRefs = aNameSpaceRefs;
@@ -2495,7 +2495,7 @@ char quoteChar;
 #pragma warning restore 0168, 0219
 Specification fl147;
 bool fl158;
-FunctionalBlock fl160;
+RequirementSet fl160;
 bool fl171;
 RuleDisabling fl173;
 bool fl184;
@@ -2518,7 +2518,7 @@ ctxt.skipWhiteSpace();
 // EndRepeat
 ctxt.skipWhiteSpace();
 // Optional Enclosed
-if (ctxt.lookAheadOpeningTag("<FunctionalBlocks")){
+if (ctxt.lookAheadOpeningTag("<RequirementSets")){
 ctxt.skipWhiteSpace();
 fl158 = true ; 
 while (fl158) { // BeginLoop 
@@ -2543,14 +2543,14 @@ ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
 fl160 = null;
-while(ctxt.lookAheadOpeningTag ("<FunctionalBlock")) {
-fl160 = acceptor.lAccept_FunctionalBlock(ctxt, "</FunctionalBlock>");
-appendFunctionalBlocks(fl160);
+while(ctxt.lookAheadOpeningTag ("<RequirementSet")) {
+fl160 = acceptor.lAccept_RequirementSet(ctxt, "</RequirementSet>");
+appendRequirementSets(fl160);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
 ctxt.skipWhiteSpace();
-ctxt.acceptString ("</FunctionalBlocks>");
+ctxt.acceptString ("</RequirementSets>");
 } // If
 } // If
 // End enclosed
@@ -2910,18 +2910,18 @@ base.unParseBody(pw);
 // Unparsing repetition
 unParse(pw, this.getSpecifications(), false, "<Specification", "</Specification>");
 // Unparsing Enclosed
-// Testing for empty content: FunctionalBlocks
-if (countFunctionalBlocks() > 0){
-pw.Write("<FunctionalBlocks>");
+// Testing for empty content: RequirementSets
+if (countRequirementSets() > 0){
+pw.Write("<RequirementSets>");
 pw.Write('\n');
 // Unparsing Repeat
 // Unparsing repetition
-unParse(pw, this.getFunctionalBlocks(), false, "<FunctionalBlock", "</FunctionalBlock>");
-pw.Write("</FunctionalBlocks>");
+unParse(pw, this.getRequirementSets(), false, "<RequirementSet", "</RequirementSet>");
+pw.Write("</RequirementSets>");
 // Father is not a mixed
 pw.Write('\n');
 } // If
-// After Testing for empty content: FunctionalBlocks
+// After Testing for empty content: RequirementSets
 // Unparsing Enclosed
 // Testing for empty content: RuleDisablings
 if (countRuleDisablings() > 0){
@@ -2987,8 +2987,8 @@ public  override void subElements(ArrayList l)
 for (int i = 0; i < countSpecifications(); i++) {
   l.Add(getSpecifications(i));
 }
-for (int i = 0; i < countFunctionalBlocks(); i++) {
-  l.Add(getFunctionalBlocks(i));
+for (int i = 0; i < countRequirementSets(); i++) {
+  l.Add(getRequirementSets(i));
 }
 for (int i = 0; i < countRuleDisablings(); i++) {
   l.Add(getRuleDisablings(i));
@@ -28465,7 +28465,7 @@ public  override void subElements(ArrayList l)
 }
 
 }
-public partial class FunctionalBlock
+public partial class RequirementSet
 : DataDictionary.Namable
 {
 public  override  bool find(Object search){
@@ -28476,7 +28476,7 @@ return false;
 
 public  override  void NotifyControllers(Lock aLock){
 	base.NotifyControllers(aLock);
-	ControllersManager.FunctionalBlockController.alertChange(aLock, this);
+	ControllersManager.RequirementSetController.alertChange(aLock, this);
 }
 private System.Collections.ArrayList aDependances;
 
@@ -28514,10 +28514,10 @@ NotifyControllers(aLock);
   }
 
 /// <summary>Part of the list interface for Dependances</summary>
-/// <param name="el">a FunctionalBlockDependance to add to the collection in 
+/// <param name="el">a RequirementSetDependance to add to the collection in 
 ///           Dependances</param>
 /// <seealso cref="appendDependances(System.Collections.IList)"/>
-public void appendDependances(FunctionalBlockDependance el)
+public void appendDependances(RequirementSetDependance el)
   {
   __setDirty(true);
   el.__setDirty(true);
@@ -28526,7 +28526,7 @@ public void appendDependances(FunctionalBlockDependance el)
 NotifyControllers(null);
   }
 
-public void appendDependances(Lock aLock,FunctionalBlockDependance el)
+public void appendDependances(Lock aLock,RequirementSetDependance el)
   {
   __setDirty(true);
   el.__setDirty(true);
@@ -28535,9 +28535,9 @@ public void appendDependances(Lock aLock,FunctionalBlockDependance el)
 NotifyControllers(aLock);
   }
 /// <summary>Part of the list interface for Dependances</summary>
-/// <param name="coll">a collection ofFunctionalBlockDependances to add to the collection in 
+/// <param name="coll">a collection ofRequirementSetDependances to add to the collection in 
 ///           Dependances</param>
-/// <seealso cref="appendDependances(FunctionalBlockDependance)"/>
+/// <seealso cref="appendDependances(RequirementSetDependance)"/>
 public void appendDependances(System.Collections.IList coll)
   {
   __setDirty(true);
@@ -28559,14 +28559,14 @@ NotifyControllers(aLock);
 /// collection in Dependances</summary>
 /// <param name="idx">the index where the insertion must take place</param>
 /// <param name="el">the element to insert</param>
-public void insertDependances(int idx, FunctionalBlockDependance el)
+public void insertDependances(int idx, RequirementSetDependance el)
   {
   __setDirty(true);
   allDependances().Insert (idx, el);
 NotifyControllers(null);
   }
 
-public void insertDependances(int idx, FunctionalBlockDependance el,Lock aLock)
+public void insertDependances(int idx, RequirementSetDependance el,Lock aLock)
   {
   __setDirty(true);
   allDependances().Insert (idx, el);
@@ -28634,9 +28634,9 @@ public int countDependances()
 /// collection in Dependances based on an index.</summary>
 /// <param name="idx">the index of the element to extract</param>
 /// <returns>the extracted element</returns>
-public FunctionalBlockDependance getDependances(int idx)
+public RequirementSetDependance getDependances(int idx)
 {
-  return (FunctionalBlockDependance) ( allDependances()[idx]);
+  return (RequirementSetDependance) ( allDependances()[idx]);
 }
 
 private  int aWidth;
@@ -28683,9 +28683,9 @@ public  void setY(int v) {
 }
 
 
-public FunctionalBlock()
+public RequirementSet()
 {
-FunctionalBlock obj = this;
+RequirementSet obj = this;
 aDependances=(null);
 aWidth=(0);
 aHeight=(0);
@@ -28693,7 +28693,7 @@ aX=(0);
 aY=(0);
 }
 
-public void copyTo(FunctionalBlock other)
+public void copyTo(RequirementSet other)
 {
 base.copyTo(other);
 other.aDependances = aDependances;
@@ -28715,15 +28715,15 @@ int indicator=0;
 char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
-FunctionalBlockDependance fl1427;
+RequirementSetDependance fl1427;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
 // Repeat
 ctxt.skipWhiteSpace();
 fl1427 = null;
-while(ctxt.lookAheadOpeningTag ("<FunctionalBlockDependance")) {
-fl1427 = acceptor.lAccept_FunctionalBlockDependance(ctxt, "</FunctionalBlockDependance>");
+while(ctxt.lookAheadOpeningTag ("<RequirementSetDependance")) {
+fl1427 = acceptor.lAccept_RequirementSetDependance(ctxt, "</RequirementSetDependance>");
 appendDependances(fl1427);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
@@ -28963,13 +28963,13 @@ ctxt.acceptString(endingTag);
 int i;
 #pragma warning restore 0168, 0219
 if (headingTag == null) {
-  headingTag = "<FunctionalBlock";
-  endingTag = "</FunctionalBlock>";
+  headingTag = "<RequirementSet";
+  endingTag = "</RequirementSet>";
 }
 
 pw.Write(headingTag);
 if (typeId){
-pw.Write(" xsi:type=\"FunctionalBlock\"");
+pw.Write(" xsi:type=\"RequirementSet\"");
 } // If
 pw.Write('\n');
 if (this.getX() != 0){
@@ -29027,7 +29027,7 @@ int i;
 base.unParseBody(pw);
 // Unparsing Repeat
 // Unparsing repetition
-unParse(pw, this.getDependances(), false, "<FunctionalBlockDependance", "</FunctionalBlockDependance>");
+unParse(pw, this.getDependances(), false, "<RequirementSetDependance", "</RequirementSetDependance>");
 }
 public  override  void dispatch(XmlBBaseVisitor v)
 {
@@ -29051,7 +29051,7 @@ for (int i = 0; i < countDependances(); i++) {
 }
 
 }
-public partial class FunctionalBlockDependance
+public partial class RequirementSetDependance
 : DataDictionary.Namable
 {
 public  override  bool find(Object search){
@@ -29063,7 +29063,7 @@ return false;
 
 public  override  void NotifyControllers(Lock aLock){
 	base.NotifyControllers(aLock);
-	ControllersManager.FunctionalBlockDependanceController.alertChange(aLock, this);
+	ControllersManager.RequirementSetDependanceController.alertChange(aLock, this);
 }
 private   string  aTarget;
 
@@ -29076,13 +29076,13 @@ public  void setTarget( string  v) {
 }
 
 
-public FunctionalBlockDependance()
+public RequirementSetDependance()
 {
-FunctionalBlockDependance obj = this;
+RequirementSetDependance obj = this;
 aTarget=(null);
 }
 
-public void copyTo(FunctionalBlockDependance other)
+public void copyTo(RequirementSetDependance other)
 {
 base.copyTo(other);
 other.aTarget = aTarget;
@@ -29220,7 +29220,7 @@ ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
 if (!fl1453){
-ctxt.fail ("Mandatory attribute missing: Target in FunctionalBlockDependance");
+ctxt.fail ("Mandatory attribute missing: Target in RequirementSetDependance");
 } // If
 fl1456 = false ; 
 } // If
@@ -29254,13 +29254,13 @@ ctxt.acceptString(endingTag);
 int i;
 #pragma warning restore 0168, 0219
 if (headingTag == null) {
-  headingTag = "<FunctionalBlockDependance";
-  endingTag = "</FunctionalBlockDependance>";
+  headingTag = "<RequirementSetDependance";
+  endingTag = "</RequirementSetDependance>";
 }
 
 pw.Write(headingTag);
 if (typeId){
-pw.Write(" xsi:type=\"FunctionalBlockDependance\"");
+pw.Write(" xsi:type=\"RequirementSetDependance\"");
 } // If
 pw.Write('\n');
 pw.Write(" Target=\"");
@@ -31387,165 +31387,165 @@ public  void setFunctionalBlockName( string  v) {
 }
 
 
-private System.Collections.ArrayList aFunctionalBlocks;
+private System.Collections.ArrayList aRequirementSets;
 
-/// <summary>Part of the list interface for FunctionalBlocks</summary>
-/// <returns>a collection of all the elements in FunctionalBlocks</returns>
-public System.Collections.ArrayList allFunctionalBlocks()
+/// <summary>Part of the list interface for RequirementSets</summary>
+/// <returns>a collection of all the elements in RequirementSets</returns>
+public System.Collections.ArrayList allRequirementSets()
   {
-if (aFunctionalBlocks == null){
-    setAllFunctionalBlocks( new System.Collections.ArrayList() );
+if (aRequirementSets == null){
+    setAllRequirementSets( new System.Collections.ArrayList() );
 } // If
-    return aFunctionalBlocks;
+    return aRequirementSets;
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks</summary>
-/// <returns>a collection of all the elements in FunctionalBlocks</returns>
-private System.Collections.ArrayList getFunctionalBlocks()
+/// <summary>Part of the list interface for RequirementSets</summary>
+/// <returns>a collection of all the elements in RequirementSets</returns>
+private System.Collections.ArrayList getRequirementSets()
   {
-    return allFunctionalBlocks();
+    return allRequirementSets();
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks</summary>
+/// <summary>Part of the list interface for RequirementSets</summary>
 /// <param name="coll">a collection of elements which replaces 
-///        FunctionalBlocks's current content.</param>
-public void setAllFunctionalBlocks(System.Collections.ArrayList coll)
+///        RequirementSets's current content.</param>
+public void setAllRequirementSets(System.Collections.ArrayList coll)
   {
   __setDirty(true);
-    aFunctionalBlocks = coll;
+    aRequirementSets = coll;
     NotifyControllers(null);
   }
-public void setAllFunctionalBlocks(Lock aLock,System.Collections.ArrayList coll)
+public void setAllRequirementSets(Lock aLock,System.Collections.ArrayList coll)
   {
   __setDirty(true);
-    aFunctionalBlocks = coll;
+    aRequirementSets = coll;
 NotifyControllers(aLock);
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks</summary>
-/// <param name="el">a FunctionalBlockReference to add to the collection in 
-///           FunctionalBlocks</param>
-/// <seealso cref="appendFunctionalBlocks(System.Collections.IList)"/>
-public void appendFunctionalBlocks(FunctionalBlockReference el)
+/// <summary>Part of the list interface for RequirementSets</summary>
+/// <param name="el">a RequirementSetReference to add to the collection in 
+///           RequirementSets</param>
+/// <seealso cref="appendRequirementSets(System.Collections.IList)"/>
+public void appendRequirementSets(RequirementSetReference el)
   {
   __setDirty(true);
   el.__setDirty(true);
-  allFunctionalBlocks().Add(el);
+  allRequirementSets().Add(el);
   acceptor.connectSon (this, el);
 NotifyControllers(null);
   }
 
-public void appendFunctionalBlocks(Lock aLock,FunctionalBlockReference el)
+public void appendRequirementSets(Lock aLock,RequirementSetReference el)
   {
   __setDirty(true);
   el.__setDirty(true);
-  allFunctionalBlocks().Add(el);
+  allRequirementSets().Add(el);
   acceptor.connectSon (this, el);
 NotifyControllers(aLock);
   }
-/// <summary>Part of the list interface for FunctionalBlocks</summary>
-/// <param name="coll">a collection ofFunctionalBlockReferences to add to the collection in 
-///           FunctionalBlocks</param>
-/// <seealso cref="appendFunctionalBlocks(FunctionalBlockReference)"/>
-public void appendFunctionalBlocks(System.Collections.IList coll)
+/// <summary>Part of the list interface for RequirementSets</summary>
+/// <param name="coll">a collection ofRequirementSetReferences to add to the collection in 
+///           RequirementSets</param>
+/// <seealso cref="appendRequirementSets(RequirementSetReference)"/>
+public void appendRequirementSets(System.Collections.IList coll)
   {
   __setDirty(true);
-  allFunctionalBlocks().AddRange(coll);
+  allRequirementSets().AddRange(coll);
   acceptor.connectSons (this, coll);
 NotifyControllers(null);
   }
 
-public void appendFunctionalBlocks(System.Collections.IList coll,Lock aLock)
+public void appendRequirementSets(System.Collections.IList coll,Lock aLock)
   {
   __setDirty(true);
-  allFunctionalBlocks().AddRange(coll);
+  allRequirementSets().AddRange(coll);
   acceptor.connectSons (this, coll);
 NotifyControllers(aLock);
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks
+/// <summary>Part of the list interface for RequirementSets
 /// This insertion function inserts a new element in the
-/// collection in FunctionalBlocks</summary>
+/// collection in RequirementSets</summary>
 /// <param name="idx">the index where the insertion must take place</param>
 /// <param name="el">the element to insert</param>
-public void insertFunctionalBlocks(int idx, FunctionalBlockReference el)
+public void insertRequirementSets(int idx, RequirementSetReference el)
   {
   __setDirty(true);
-  allFunctionalBlocks().Insert (idx, el);
+  allRequirementSets().Insert (idx, el);
 NotifyControllers(null);
   }
 
-public void insertFunctionalBlocks(int idx, FunctionalBlockReference el,Lock aLock)
+public void insertRequirementSets(int idx, RequirementSetReference el,Lock aLock)
   {
   __setDirty(true);
-  allFunctionalBlocks().Insert (idx, el);
+  allRequirementSets().Insert (idx, el);
 NotifyControllers(aLock);
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks
+/// <summary>Part of the list interface for RequirementSets
 /// This function returns the index of an element in
 /// the collection.</summary>
 /// <param name="el">the object to look for</param>
 /// <returns>the index where it is found, or -1 if it is not.</returns>
-public int indexOfFunctionalBlocks(IXmlBBase el)
+public int indexOfRequirementSets(IXmlBBase el)
   {
-  return ((System.Collections.IList) allFunctionalBlocks()).IndexOf (el);
+  return ((System.Collections.IList) allRequirementSets()).IndexOf (el);
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks
+/// <summary>Part of the list interface for RequirementSets
 /// This deletion function removes an element from the
-/// collection in FunctionalBlocks</summary>
+/// collection in RequirementSets</summary>
 /// <param name="idx">the index of the element to remove</param>
-public void deleteFunctionalBlocks(int idx)
+public void deleteRequirementSets(int idx)
   {
   __setDirty(true);
-  allFunctionalBlocks().RemoveAt(idx);
+  allRequirementSets().RemoveAt(idx);
 NotifyControllers(null);
   }
 
-public void deleteFunctionalBlocks(int idx,Lock aLock)
+public void deleteRequirementSets(int idx,Lock aLock)
   {
   __setDirty(true);
-  allFunctionalBlocks().RemoveAt(idx);
+  allRequirementSets().RemoveAt(idx);
 NotifyControllers(aLock);
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks
+/// <summary>Part of the list interface for RequirementSets
 /// This deletion function removes an element from the
-/// collection in FunctionalBlocks
+/// collection in RequirementSets
 /// If the object given in parameter is not found in the
 /// the collection, this function does nothing.</summary>
 /// <param name="obj">the object to remove</param>
-public void removeFunctionalBlocks(IXmlBBase obj)
+public void removeRequirementSets(IXmlBBase obj)
   {
-  int idx = indexOfFunctionalBlocks(obj);
-  if (idx >= 0) { deleteFunctionalBlocks(idx);
+  int idx = indexOfRequirementSets(obj);
+  if (idx >= 0) { deleteRequirementSets(idx);
 NotifyControllers(null);
    }
   }
 
-public void removeFunctionalBlocks(IXmlBBase obj,Lock aLock)
+public void removeRequirementSets(IXmlBBase obj,Lock aLock)
   {
-  int idx = indexOfFunctionalBlocks(obj);
-  if (idx >= 0) { deleteFunctionalBlocks(idx);
+  int idx = indexOfRequirementSets(obj);
+  if (idx >= 0) { deleteRequirementSets(idx);
 NotifyControllers(aLock);
   }}
 
-/// <summary>Part of the list interface for FunctionalBlocks</summary>
-/// <returns>the number of elements in FunctionalBlocks</returns>
-public int countFunctionalBlocks()
+/// <summary>Part of the list interface for RequirementSets</summary>
+/// <returns>the number of elements in RequirementSets</returns>
+public int countRequirementSets()
   {
-  return allFunctionalBlocks().Count;
+  return allRequirementSets().Count;
   }
 
-/// <summary>Part of the list interface for FunctionalBlocks
+/// <summary>Part of the list interface for RequirementSets
 /// This function returns an element from the
-/// collection in FunctionalBlocks based on an index.</summary>
+/// collection in RequirementSets based on an index.</summary>
 /// <param name="idx">the index of the element to extract</param>
 /// <returns>the extracted element</returns>
-public FunctionalBlockReference getFunctionalBlocks(int idx)
+public RequirementSetReference getRequirementSets(int idx)
 {
-  return (FunctionalBlockReference) ( allFunctionalBlocks()[idx]);
+  return (RequirementSetReference) ( allRequirementSets()[idx]);
 }
 
 private   string  aObsoleteGuid;
@@ -31594,7 +31594,7 @@ aMoreInfoRequired=(false);
 aSpecIssue=(false);
 aFunctionalBlock=(false);
 aFunctionalBlockName=(null);
-aFunctionalBlocks=(null);
+aRequirementSets=(null);
 aObsoleteGuid=(null);
 aTested=(false);
 }
@@ -31623,7 +31623,7 @@ other.aMoreInfoRequired = aMoreInfoRequired;
 other.aSpecIssue = aSpecIssue;
 other.aFunctionalBlock = aFunctionalBlock;
 other.aFunctionalBlockName = aFunctionalBlockName;
-other.aFunctionalBlocks = aFunctionalBlocks;
+other.aRequirementSets = aRequirementSets;
 other.aObsoleteGuid = aObsoleteGuid;
 other.aTested = aTested;
 }
@@ -31644,7 +31644,7 @@ bool fl1535;
 Paragraph fl1537;
 TypeSpec fl1549;
 bool fl1560;
-FunctionalBlockReference fl1562;
+RequirementSetReference fl1562;
 
 ctxt.skipWhiteSpace();
 base.parseBody(ctxt);
@@ -31721,7 +31721,7 @@ ctxt.skipWhiteSpace();
 // EndRepeat
 ctxt.skipWhiteSpace();
 // Optional Enclosed
-if (ctxt.lookAheadOpeningTag("<FunctionalBlocks")){
+if (ctxt.lookAheadOpeningTag("<RequirementSets")){
 ctxt.skipWhiteSpace();
 fl1560 = true ; 
 while (fl1560) { // BeginLoop 
@@ -31746,14 +31746,14 @@ ctxt.accept('>');
 // Repeat
 ctxt.skipWhiteSpace();
 fl1562 = null;
-while(ctxt.lookAheadOpeningTag ("<FunctionalBlockReference")) {
-fl1562 = acceptor.lAccept_FunctionalBlockReference(ctxt, "</FunctionalBlockReference>");
-appendFunctionalBlocks(fl1562);
+while(ctxt.lookAheadOpeningTag ("<RequirementSetReference")) {
+fl1562 = acceptor.lAccept_RequirementSetReference(ctxt, "</RequirementSetReference>");
+appendRequirementSets(fl1562);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
 // EndRepeat
 ctxt.skipWhiteSpace();
-ctxt.acceptString ("</FunctionalBlocks>");
+ctxt.acceptString ("</RequirementSets>");
 } // If
 } // If
 // End enclosed
@@ -32655,18 +32655,18 @@ pw.Write('\n');
 // Unparsing repetition
 unParse(pw, this.getTypeSpecs(), false, null, null);
 // Unparsing Enclosed
-// Testing for empty content: FunctionalBlocks
-if (countFunctionalBlocks() > 0){
-pw.Write("<FunctionalBlocks>");
+// Testing for empty content: RequirementSets
+if (countRequirementSets() > 0){
+pw.Write("<RequirementSets>");
 pw.Write('\n');
 // Unparsing Repeat
 // Unparsing repetition
-unParse(pw, this.getFunctionalBlocks(), false, "<FunctionalBlockReference", "</FunctionalBlockReference>");
-pw.Write("</FunctionalBlocks>");
+unParse(pw, this.getRequirementSets(), false, "<RequirementSetReference", "</RequirementSetReference>");
+pw.Write("</RequirementSets>");
 // Father is not a mixed
 pw.Write('\n');
 } // If
-// After Testing for empty content: FunctionalBlocks
+// After Testing for empty content: RequirementSets
 }
 public  override  void dispatch(XmlBBaseVisitor v)
 {
@@ -32692,13 +32692,13 @@ for (int i = 0; i < countParagraphs(); i++) {
 }
 l.Add(this.getRevision());
 l.Add(this.getMessage());
-for (int i = 0; i < countFunctionalBlocks(); i++) {
-  l.Add(getFunctionalBlocks(i));
+for (int i = 0; i < countRequirementSets(); i++) {
+  l.Add(getRequirementSets(i));
 }
 }
 
 }
-public partial class FunctionalBlockReference
+public partial class RequirementSetReference
 : DataDictionary.Namable
 {
 public  override  bool find(Object search){
@@ -32709,14 +32709,14 @@ return false;
 
 public  override  void NotifyControllers(Lock aLock){
 	base.NotifyControllers(aLock);
-	ControllersManager.FunctionalBlockReferenceController.alertChange(aLock, this);
+	ControllersManager.RequirementSetReferenceController.alertChange(aLock, this);
 }
-public FunctionalBlockReference()
+public RequirementSetReference()
 {
-FunctionalBlockReference obj = this;
+RequirementSetReference obj = this;
 }
 
-public void copyTo(FunctionalBlockReference other)
+public void copyTo(RequirementSetReference other)
 {
 base.copyTo(other);
 }
@@ -32859,13 +32859,13 @@ ctxt.acceptString(endingTag);
 int i;
 #pragma warning restore 0168, 0219
 if (headingTag == null) {
-  headingTag = "<FunctionalBlockReference";
-  endingTag = "</FunctionalBlockReference>";
+  headingTag = "<RequirementSetReference";
+  endingTag = "</RequirementSetReference>";
 }
 
 pw.Write(headingTag);
 if (typeId){
-pw.Write(" xsi:type=\"FunctionalBlockReference\"");
+pw.Write(" xsi:type=\"RequirementSetReference\"");
 } // If
 pw.Write('\n');
 if (this.getName() != null){
@@ -37427,10 +37427,10 @@ public static Controller<ShortcutDictionary, IListener<ShortcutDictionary>> Shor
 public static Controller<ShortcutFolder, IListener<ShortcutFolder>> ShortcutFolderController = new Controller<ShortcutFolder, IListener<ShortcutFolder>>();
 //Shortcut  Shortcut
 public static Controller<Shortcut, IListener<Shortcut>> ShortcutController = new Controller<Shortcut, IListener<Shortcut>>();
-//FunctionalBlock  FunctionalBlock
-public static Controller<FunctionalBlock, IListener<FunctionalBlock>> FunctionalBlockController = new Controller<FunctionalBlock, IListener<FunctionalBlock>>();
-//FunctionalBlockDependance  FunctionalBlockDependance
-public static Controller<FunctionalBlockDependance, IListener<FunctionalBlockDependance>> FunctionalBlockDependanceController = new Controller<FunctionalBlockDependance, IListener<FunctionalBlockDependance>>();
+//RequirementSet  RequirementSet
+public static Controller<RequirementSet, IListener<RequirementSet>> RequirementSetController = new Controller<RequirementSet, IListener<RequirementSet>>();
+//RequirementSetDependance  RequirementSetDependance
+public static Controller<RequirementSetDependance, IListener<RequirementSetDependance>> RequirementSetDependanceController = new Controller<RequirementSetDependance, IListener<RequirementSetDependance>>();
 //Specification  Specification
 public static Controller<Specification, IListener<Specification>> SpecificationController = new Controller<Specification, IListener<Specification>>();
 //ChapterRef  ChapterRef
@@ -37439,8 +37439,8 @@ public static Controller<ChapterRef, IListener<ChapterRef>> ChapterRefController
 public static Controller<Chapter, IListener<Chapter>> ChapterController = new Controller<Chapter, IListener<Chapter>>();
 //Paragraph  Paragraph
 public static Controller<Paragraph, IListener<Paragraph>> ParagraphController = new Controller<Paragraph, IListener<Paragraph>>();
-//FunctionalBlockReference  FunctionalBlockReference
-public static Controller<FunctionalBlockReference, IListener<FunctionalBlockReference>> FunctionalBlockReferenceController = new Controller<FunctionalBlockReference, IListener<FunctionalBlockReference>>();
+//RequirementSetReference  RequirementSetReference
+public static Controller<RequirementSetReference, IListener<RequirementSetReference>> RequirementSetReferenceController = new Controller<RequirementSetReference, IListener<RequirementSetReference>>();
 //Message  Message
 public static Controller<Message, IListener<Message>> MessageController = new Controller<Message, IListener<Message>>();
 //MsgVariable  MsgVariable
@@ -37514,13 +37514,13 @@ SourceTextController.ActivateNotification();
 ShortcutDictionaryController.ActivateNotification();
 ShortcutFolderController.ActivateNotification();
 ShortcutController.ActivateNotification();
-FunctionalBlockController.ActivateNotification();
-FunctionalBlockDependanceController.ActivateNotification();
+RequirementSetController.ActivateNotification();
+RequirementSetDependanceController.ActivateNotification();
 SpecificationController.ActivateNotification();
 ChapterRefController.ActivateNotification();
 ChapterController.ActivateNotification();
 ParagraphController.ActivateNotification();
-FunctionalBlockReferenceController.ActivateNotification();
+RequirementSetReferenceController.ActivateNotification();
 MessageController.ActivateNotification();
 MsgVariableController.ActivateNotification();
 TypeSpecController.ActivateNotification();
@@ -37581,13 +37581,13 @@ SourceTextController.DesactivateNotification();
 ShortcutDictionaryController.DesactivateNotification();
 ShortcutFolderController.DesactivateNotification();
 ShortcutController.DesactivateNotification();
-FunctionalBlockController.DesactivateNotification();
-FunctionalBlockDependanceController.DesactivateNotification();
+RequirementSetController.DesactivateNotification();
+RequirementSetDependanceController.DesactivateNotification();
 SpecificationController.DesactivateNotification();
 ChapterRefController.DesactivateNotification();
 ChapterController.DesactivateNotification();
 ParagraphController.DesactivateNotification();
-FunctionalBlockReferenceController.DesactivateNotification();
+RequirementSetReferenceController.DesactivateNotification();
 MessageController.DesactivateNotification();
 MsgVariableController.DesactivateNotification();
 TypeSpecController.DesactivateNotification();
@@ -41502,9 +41502,62 @@ break;
 case 'e':
 {
 ctxt.advance();
-if (ctxt.lookAheadString("qRef")){
+if (ctxt.lookAhead1('q')){
+switch (ctxt.current()) {
+case 'u':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("irementSet")){
+switch (ctxt.current()) {
+case 'R':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("eference")){
+ctxt.accept(quoteChar);
+res = lAccept_RequirementSetReference(ctxt, endingTag);
+} else {
+ctxt.accept(quoteChar);
+res = lAccept_RequirementSet(ctxt, endingTag);
+} // If
+break;
+} // Case
+case 'D':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("ependance")){
+ctxt.accept(quoteChar);
+res = lAccept_RequirementSetDependance(ctxt, endingTag);
+} else {
+ctxt.accept(quoteChar);
+res = lAccept_RequirementSet(ctxt, endingTag);
+} // If
+break;
+} // Case
+default:
+ctxt.accept(quoteChar);
+res = lAccept_RequirementSet(ctxt, endingTag);
+break;
+} // Switch
+} else {
+res = null;
+} // If
+break;
+} // Case
+case 'R':
+{
+ctxt.advance();
+if (ctxt.lookAhead2('e','f')){
 ctxt.accept(quoteChar);
 res = lAccept_ReqRef(ctxt, endingTag);
+} else {
+res = null;
+} // If
+break;
+} // Case
+default:
+res = null;
+break;
+} // Switch
 } else {
 res = null;
 } // If
@@ -41656,52 +41709,8 @@ case 'u':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("nction")){
-switch (ctxt.current()) {
-case 'a':
-{
-ctxt.advance();
-if (ctxt.lookAheadString("lBlock")){
-switch (ctxt.current()) {
-case 'R':
-{
-ctxt.advance();
-if (ctxt.lookAheadString("eference")){
-ctxt.accept(quoteChar);
-res = lAccept_FunctionalBlockReference(ctxt, endingTag);
-} else {
-ctxt.accept(quoteChar);
-res = lAccept_FunctionalBlock(ctxt, endingTag);
-} // If
-break;
-} // Case
-case 'D':
-{
-ctxt.advance();
-if (ctxt.lookAheadString("ependance")){
-ctxt.accept(quoteChar);
-res = lAccept_FunctionalBlockDependance(ctxt, endingTag);
-} else {
-ctxt.accept(quoteChar);
-res = lAccept_FunctionalBlock(ctxt, endingTag);
-} // If
-break;
-} // Case
-default:
-ctxt.accept(quoteChar);
-res = lAccept_FunctionalBlock(ctxt, endingTag);
-break;
-} // Switch
-} else {
 ctxt.accept(quoteChar);
 res = lAccept_Function(ctxt, endingTag);
-} // If
-break;
-} // Case
-default:
-ctxt.accept(quoteChar);
-res = lAccept_Function(ctxt, endingTag);
-break;
-} // Switch
 } else {
 res = null;
 } // If
@@ -42238,6 +42247,45 @@ res = null;
 } // If
 break;
 } // Case
+case 'e':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("quirementSet")){
+switch (ctxt.current()) {
+case 'R':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("eference")){
+ctxt.accept(quoteChar);
+res = lAccept_RequirementSetReference(ctxt, endingTag);
+} else {
+ctxt.accept(quoteChar);
+res = lAccept_RequirementSet(ctxt, endingTag);
+} // If
+break;
+} // Case
+case 'D':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("ependance")){
+ctxt.accept(quoteChar);
+res = lAccept_RequirementSetDependance(ctxt, endingTag);
+} else {
+ctxt.accept(quoteChar);
+res = lAccept_RequirementSet(ctxt, endingTag);
+} // If
+break;
+} // Case
+default:
+ctxt.accept(quoteChar);
+res = lAccept_RequirementSet(ctxt, endingTag);
+break;
+} // Switch
+} else {
+res = null;
+} // If
+break;
+} // Case
 case 'a':
 {
 ctxt.advance();
@@ -42347,52 +42395,8 @@ case 'u':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("nction")){
-switch (ctxt.current()) {
-case 'a':
-{
-ctxt.advance();
-if (ctxt.lookAheadString("lBlock")){
-switch (ctxt.current()) {
-case 'R':
-{
-ctxt.advance();
-if (ctxt.lookAheadString("eference")){
-ctxt.accept(quoteChar);
-res = lAccept_FunctionalBlockReference(ctxt, endingTag);
-} else {
-ctxt.accept(quoteChar);
-res = lAccept_FunctionalBlock(ctxt, endingTag);
-} // If
-break;
-} // Case
-case 'D':
-{
-ctxt.advance();
-if (ctxt.lookAheadString("ependance")){
-ctxt.accept(quoteChar);
-res = lAccept_FunctionalBlockDependance(ctxt, endingTag);
-} else {
-ctxt.accept(quoteChar);
-res = lAccept_FunctionalBlock(ctxt, endingTag);
-} // If
-break;
-} // Case
-default:
-ctxt.accept(quoteChar);
-res = lAccept_FunctionalBlock(ctxt, endingTag);
-break;
-} // Switch
-} else {
 ctxt.accept(quoteChar);
 res = lAccept_Function(ctxt, endingTag);
-} // If
-break;
-} // Case
-default:
-ctxt.accept(quoteChar);
-res = lAccept_Function(ctxt, endingTag);
-break;
-} // Switch
 } else {
 res = null;
 } // If
@@ -43705,12 +43709,12 @@ if (endingTag == null) endingTag = "</Shortcut>";
 /// internally. Please refrain from using it, as it
 /// might produce unexpected results, and might change
 /// or even disappear in the future.</remarks>
-public static FunctionalBlock lAccept_FunctionalBlock (XmlBContext ctxt, 
+public static RequirementSet lAccept_RequirementSet (XmlBContext ctxt, 
                           string  endingTag)
 
   {
-if (endingTag == null) endingTag = "</FunctionalBlock>";
-  FunctionalBlock res = aFactory.createFunctionalBlock();
+if (endingTag == null) endingTag = "</RequirementSet>";
+  RequirementSet res = aFactory.createRequirementSet();
   res.parse(ctxt, endingTag);
   return res;
   }
@@ -43719,12 +43723,12 @@ if (endingTag == null) endingTag = "</FunctionalBlock>";
 /// internally. Please refrain from using it, as it
 /// might produce unexpected results, and might change
 /// or even disappear in the future.</remarks>
-public static FunctionalBlockDependance lAccept_FunctionalBlockDependance (XmlBContext ctxt, 
+public static RequirementSetDependance lAccept_RequirementSetDependance (XmlBContext ctxt, 
                           string  endingTag)
 
   {
-if (endingTag == null) endingTag = "</FunctionalBlockDependance>";
-  FunctionalBlockDependance res = aFactory.createFunctionalBlockDependance();
+if (endingTag == null) endingTag = "</RequirementSetDependance>";
+  RequirementSetDependance res = aFactory.createRequirementSetDependance();
   res.parse(ctxt, endingTag);
   return res;
   }
@@ -43789,12 +43793,12 @@ if (endingTag == null) endingTag = "</Paragraph>";
 /// internally. Please refrain from using it, as it
 /// might produce unexpected results, and might change
 /// or even disappear in the future.</remarks>
-public static FunctionalBlockReference lAccept_FunctionalBlockReference (XmlBContext ctxt, 
+public static RequirementSetReference lAccept_RequirementSetReference (XmlBContext ctxt, 
                           string  endingTag)
 
   {
-if (endingTag == null) endingTag = "</FunctionalBlockReference>";
-  FunctionalBlockReference res = aFactory.createFunctionalBlockReference();
+if (endingTag == null) endingTag = "</RequirementSetReference>";
+  RequirementSetReference res = aFactory.createRequirementSetReference();
   res.parse(ctxt, endingTag);
   return res;
   }
@@ -43995,28 +43999,28 @@ case 'q':
 {
 ctxt.advance();
 ctxt.acceptString ("uot;");
-indicator = 2197;
+indicator = 2198;
 break;
 } // Case
 case 'n':
 {
 ctxt.advance();
 ctxt.acceptString ("bsp;");
-indicator = 2196;
+indicator = 2197;
 break;
 } // Case
 case 'l':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 2194;
+indicator = 2195;
 break;
 } // Case
 case 'g':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 2195;
+indicator = 2196;
 break;
 } // Case
 case 'a':
@@ -44027,18 +44031,18 @@ case 'p':
 {
 ctxt.advance();
 ctxt.accept3('o','s',';');
-indicator = 2198;
+indicator = 2199;
 break;
 } // Case
 case 'm':
 {
 ctxt.advance();
 ctxt.accept2('p',';');
-indicator = 2193;
+indicator = 2194;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2206)");
+ctxt.recoverableFail ("Other character expected (2207)");
 break;
 } // Switch
 break;
@@ -44047,39 +44051,39 @@ case '#':
 {
 ctxt.advance();
 ctxt.accept('x');
-indicator = 2199;
+indicator = 2200;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2208)");
+ctxt.recoverableFail ("Other character expected (2209)");
 break;
 } // Switch
 switch (indicator) {
-case 2193: {
+case 2194: {
 c = XMLB_AMPERSAND;
 break;
 } // End of dispatch label
-case 2194: {
+case 2195: {
 c = XMLB_LESS;
 break;
 } // End of dispatch label
-case 2195: {
+case 2196: {
 c = XMLB_GREATER;
 break;
 } // End of dispatch label
-case 2196: {
+case 2197: {
 c = XMLB_NBSP;
 break;
 } // End of dispatch label
-case 2197: {
+case 2198: {
 c = XMLB_QUOT;
 break;
 } // End of dispatch label
-case 2198: {
+case 2199: {
 c = XMLB_APOS;
 break;
 } // End of dispatch label
-case 2199: {
+case 2200: {
 c = (char) ctxt.acceptHexa();
 ctxt.accept(';');
 break;
@@ -45357,22 +45361,22 @@ throw new XmlBException (ctxt.errorMessage());
   return res;
   }
 
-/// <summary>Top level function to parse an FunctionalBlock from 
+/// <summary>Top level function to parse an RequirementSet from 
 /// a context. This kind of function is only made
 /// available for elements marked as MAIN in the 
 /// metadefinition</summary>
 /// <seealso cref="accept"/>
-public static FunctionalBlock acceptFunctionalBlock(XmlBContext ctxt)
+public static RequirementSet acceptRequirementSet(XmlBContext ctxt)
 
   {
-FunctionalBlock res;
+RequirementSet res;
 ctxt.skipWhiteSpace();
 try {
-ctxt.acceptString ("<FunctionalBlock");
+ctxt.acceptString ("<RequirementSet");
 if (ctxt.isAlNum()){
 ctxt.fail ("White space expected after TAG");
 } // If
-  res = lAccept_FunctionalBlock(ctxt, "</FunctionalBlock>");
+  res = lAccept_RequirementSet(ctxt, "</RequirementSet>");
  } catch (XmlBRecoveryException e) {
   throw new XmlBException("Unexpected recovery exception: " +
      e.ToString());
@@ -45385,22 +45389,22 @@ throw new XmlBException (ctxt.errorMessage());
   return res;
   }
 
-/// <summary>Top level function to parse an FunctionalBlockDependance from 
+/// <summary>Top level function to parse an RequirementSetDependance from 
 /// a context. This kind of function is only made
 /// available for elements marked as MAIN in the 
 /// metadefinition</summary>
 /// <seealso cref="accept"/>
-public static FunctionalBlockDependance acceptFunctionalBlockDependance(XmlBContext ctxt)
+public static RequirementSetDependance acceptRequirementSetDependance(XmlBContext ctxt)
 
   {
-FunctionalBlockDependance res;
+RequirementSetDependance res;
 ctxt.skipWhiteSpace();
 try {
-ctxt.acceptString ("<FunctionalBlockDependance");
+ctxt.acceptString ("<RequirementSetDependance");
 if (ctxt.isAlNum()){
 ctxt.fail ("White space expected after TAG");
 } // If
-  res = lAccept_FunctionalBlockDependance(ctxt, "</FunctionalBlockDependance>");
+  res = lAccept_RequirementSetDependance(ctxt, "</RequirementSetDependance>");
  } catch (XmlBRecoveryException e) {
   throw new XmlBException("Unexpected recovery exception: " +
      e.ToString());
@@ -45497,22 +45501,22 @@ throw new XmlBException (ctxt.errorMessage());
   return res;
   }
 
-/// <summary>Top level function to parse an FunctionalBlockReference from 
+/// <summary>Top level function to parse an RequirementSetReference from 
 /// a context. This kind of function is only made
 /// available for elements marked as MAIN in the 
 /// metadefinition</summary>
 /// <seealso cref="accept"/>
-public static FunctionalBlockReference acceptFunctionalBlockReference(XmlBContext ctxt)
+public static RequirementSetReference acceptRequirementSetReference(XmlBContext ctxt)
 
   {
-FunctionalBlockReference res;
+RequirementSetReference res;
 ctxt.skipWhiteSpace();
 try {
-ctxt.acceptString ("<FunctionalBlockReference");
+ctxt.acceptString ("<RequirementSetReference");
 if (ctxt.isAlNum()){
 ctxt.fail ("White space expected after TAG");
 } // If
-  res = lAccept_FunctionalBlockReference(ctxt, "</FunctionalBlockReference>");
+  res = lAccept_RequirementSetReference(ctxt, "</RequirementSetReference>");
  } catch (XmlBRecoveryException e) {
   throw new XmlBException("Unexpected recovery exception: " +
      e.ToString());
@@ -45687,7 +45691,7 @@ ctxt.acceptString ("stCase");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2216)");
+ctxt.recoverableFail ("Other character expected (2217)");
 break;
 } // Switch
 break;
@@ -45716,7 +45720,7 @@ ctxt.acceptString ("quence");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2221)");
+ctxt.recoverableFail ("Other character expected (2222)");
 break;
 } // Switch
 break;
@@ -45775,7 +45779,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2228)");
+ctxt.recoverableFail ("Other character expected (2229)");
 break;
 } // Switch
 break;
@@ -45826,7 +45830,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2234)");
+ctxt.recoverableFail ("Other character expected (2235)");
 break;
 } // Switch
 break;
@@ -45869,8 +45873,50 @@ break;
 case 'e':
 {
 ctxt.advance();
-ctxt.acceptString ("qRef");
+ctxt.accept('q');
+switch (ctxt.current()) {
+case 'u':
+{
+ctxt.advance();
+ctxt.acceptString ("irementSet");
+switch (ctxt.current()) {
+case 'R':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("eference")){
+  res =  lAccept_RequirementSetReference(ctxt, "</RequirementSetReference>");
+} else {
+  res =  lAccept_RequirementSet(ctxt, "</RequirementSet>");
+} // If
+break;
+} // Case
+case 'D':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("ependance")){
+  res =  lAccept_RequirementSetDependance(ctxt, "</RequirementSetDependance>");
+} else {
+  res =  lAccept_RequirementSet(ctxt, "</RequirementSet>");
+} // If
+break;
+} // Case
+default:
+  res =  lAccept_RequirementSet(ctxt, "</RequirementSet>");
+break;
+} // Switch
+break;
+} // Case
+case 'R':
+{
+ctxt.advance();
+ctxt.accept2('e','f');
   res =  lAccept_ReqRef(ctxt, "</ReqRef>");
+break;
+} // Case
+default:
+ctxt.recoverableFail ("Other character expected (2245)");
+break;
+} // Switch
 break;
 } // Case
 case 'a':
@@ -45881,7 +45927,7 @@ ctxt.accept3('n','g','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2241)");
+ctxt.recoverableFail ("Other character expected (2247)");
 break;
 } // Switch
 break;
@@ -45909,7 +45955,7 @@ ctxt.acceptString ("Condition");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2246)");
+ctxt.recoverableFail ("Other character expected (2252)");
 break;
 } // Switch
 break;
@@ -45948,13 +45994,13 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2251)");
+ctxt.recoverableFail ("Other character expected (2257)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2252)");
+ctxt.recoverableFail ("Other character expected (2258)");
 break;
 } // Switch
 break;
@@ -45988,45 +46034,7 @@ case 'u':
 {
 ctxt.advance();
 ctxt.acceptString ("nction");
-switch (ctxt.current()) {
-case 'a':
-{
-ctxt.advance();
-if (ctxt.lookAheadString("lBlock")){
-switch (ctxt.current()) {
-case 'R':
-{
-ctxt.advance();
-if (ctxt.lookAheadString("eference")){
-  res =  lAccept_FunctionalBlockReference(ctxt, "</FunctionalBlockReference>");
-} else {
-  res =  lAccept_FunctionalBlock(ctxt, "</FunctionalBlock>");
-} // If
-break;
-} // Case
-case 'D':
-{
-ctxt.advance();
-if (ctxt.lookAheadString("ependance")){
-  res =  lAccept_FunctionalBlockDependance(ctxt, "</FunctionalBlockDependance>");
-} else {
-  res =  lAccept_FunctionalBlock(ctxt, "</FunctionalBlock>");
-} // If
-break;
-} // Case
-default:
-  res =  lAccept_FunctionalBlock(ctxt, "</FunctionalBlock>");
-break;
-} // Switch
-} else {
   res =  lAccept_Function(ctxt, "</Function>");
-} // If
-break;
-} // Case
-default:
-  res =  lAccept_Function(ctxt, "</Function>");
-break;
-} // Switch
 break;
 } // Case
 case 'r':
@@ -46058,7 +46066,7 @@ ctxt.acceptString ("lder");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2263)");
+ctxt.recoverableFail ("Other character expected (2266)");
 break;
 } // Switch
 break;
@@ -46096,7 +46104,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2268)");
+ctxt.recoverableFail ("Other character expected (2271)");
 break;
 } // Switch
 break;
@@ -46138,13 +46146,13 @@ ctxt.acceptString ("ield");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2275)");
+ctxt.recoverableFail ("Other character expected (2278)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2276)");
+ctxt.recoverableFail ("Other character expected (2279)");
 break;
 } // Switch
 break;
@@ -46189,7 +46197,7 @@ ctxt.accept2('s','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2282)");
+ctxt.recoverableFail ("Other character expected (2285)");
 break;
 } // Switch
 break;
@@ -46202,13 +46210,13 @@ ctxt.acceptString ("ction");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2284)");
+ctxt.recoverableFail ("Other character expected (2287)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2285)");
+ctxt.recoverableFail ("Other character expected (2288)");
 break;
 } // Switch
 return res;
@@ -46287,13 +46295,13 @@ public abstract SourceText createSourceText();
 public abstract ShortcutDictionary createShortcutDictionary();
 public abstract ShortcutFolder createShortcutFolder();
 public abstract Shortcut createShortcut();
-public abstract FunctionalBlock createFunctionalBlock();
-public abstract FunctionalBlockDependance createFunctionalBlockDependance();
+public abstract RequirementSet createRequirementSet();
+public abstract RequirementSetDependance createRequirementSetDependance();
 public abstract Specification createSpecification();
 public abstract ChapterRef createChapterRef();
 public abstract Chapter createChapter();
 public abstract Paragraph createParagraph();
-public abstract FunctionalBlockReference createFunctionalBlockReference();
+public abstract RequirementSetReference createRequirementSetReference();
 public abstract Message createMessage();
 public abstract MsgVariable createMsgVariable();
 public abstract TypeSpec createTypeSpec();
@@ -47114,12 +47122,12 @@ for (int i=0; i<Subs.Length; i++) {
 }
 }
 
-public virtual void visit(FunctionalBlock obj)
+public virtual void visit(RequirementSet obj)
 {
   visit(obj, true);
 }
 
-public virtual void visit(FunctionalBlock obj, bool visitSubNodes)
+public virtual void visit(RequirementSet obj, bool visitSubNodes)
 {
 visit ((Namable) obj, false);
 if (visitSubNodes){
@@ -47132,12 +47140,12 @@ for (int i=0; i<Subs.Length; i++) {
 }
 }
 
-public virtual void visit(FunctionalBlockDependance obj)
+public virtual void visit(RequirementSetDependance obj)
 {
   visit(obj, true);
 }
 
-public virtual void visit(FunctionalBlockDependance obj, bool visitSubNodes)
+public virtual void visit(RequirementSetDependance obj, bool visitSubNodes)
 {
 visit ((Namable) obj, false);
 if (visitSubNodes){
@@ -47222,12 +47230,12 @@ for (int i=0; i<Subs.Length; i++) {
 }
 }
 
-public virtual void visit(FunctionalBlockReference obj)
+public virtual void visit(RequirementSetReference obj)
 {
   visit(obj, true);
 }
 
-public virtual void visit(FunctionalBlockReference obj, bool visitSubNodes)
+public virtual void visit(RequirementSetReference obj, bool visitSubNodes)
 {
 visit ((Namable) obj, false);
 if (visitSubNodes){

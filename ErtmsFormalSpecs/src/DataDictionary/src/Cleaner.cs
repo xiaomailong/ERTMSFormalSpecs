@@ -705,7 +705,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="visitSubNodes"></param>
-        public override void visit(Generated.FunctionalBlock obj, bool visitSubNodes)
+        public override void visit(Generated.RequirementSet obj, bool visitSubNodes)
         {
 
           base.visit(obj, visitSubNodes);
@@ -716,7 +716,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="visitSubNodes"></param>
-        public override void visit(Generated.FunctionalBlockDependance obj, bool visitSubNodes)
+        public override void visit(Generated.RequirementSetDependance obj, bool visitSubNodes)
         {
           if ( obj.getTarget() != null )
           {
@@ -807,7 +807,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="visitSubNodes"></param>
-        public override void visit(Generated.FunctionalBlockReference obj, bool visitSubNodes)
+        public override void visit(Generated.RequirementSetReference obj, bool visitSubNodes)
         {
 
           base.visit(obj, visitSubNodes);

@@ -237,9 +237,9 @@ namespace GUI.Converters
     }
 
     /// <summary>
-    /// Provides the list of functional blocks
+    /// Provides the list of requirement sets
     /// </summary>
-    public class FunctionalBlockTypeConverter : TypeConverter
+    public class RequirementSetTypeConverter : TypeConverter
     {
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
         {
@@ -258,9 +258,9 @@ namespace GUI.Converters
             List<string> retVal = new List<string>();
             foreach (DataDictionary.Dictionary dictionary in system.Dictionaries)
             {
-                foreach (FunctionalBlock functionalBlock in dictionary.FunctionalBlocks)
+                foreach (RequirementSet requirementSet in dictionary.RequirementSets)
                 {
-                    retVal.Add(functionalBlock.Name);
+                    retVal.Add(requirementSet.Name);
                 }
             }
             retVal.Sort();

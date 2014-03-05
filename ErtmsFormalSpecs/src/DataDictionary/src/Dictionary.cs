@@ -355,13 +355,13 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The functional blocks related to this dictionary
+        /// The requirement set related to this dictionary
         /// </summary>
-        public ArrayList FunctionalBlocks
+        public ArrayList RequirementSets
         {
             get
             {
-                ArrayList retVal = allFunctionalBlocks();
+                ArrayList retVal = allRequirementSets();
 
                 if (retVal == null)
                 {

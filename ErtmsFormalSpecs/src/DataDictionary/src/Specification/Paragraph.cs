@@ -99,18 +99,18 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the functional block references for this paragraph
+        /// Provides the requirement set references for this paragraph
         /// </summary>
-        public ArrayList FunctionalBlockReferences
+        public ArrayList RequirementSetReferences
         {
             get
             {
-                if (allFunctionalBlocks() == null)
+                if (allRequirementSets() == null)
                 {
-                    setAllFunctionalBlocks(new ArrayList());
+                    setAllRequirementSets(new ArrayList());
                 }
 
-                return allFunctionalBlocks();
+                return allRequirementSets();
             }
         }
 
@@ -716,11 +716,11 @@ namespace DataDictionary.Specification
         /// Indicates whether this paragraphs belongs to the functionam block whose name is provided as parameter
         /// </summary>
         /// <param name="name"></param>
-        public bool BelongsToFunctionalBlock(string name)
+        public bool BelongsToRequirementSet(string name)
         {
             bool retVal = false;
 
-            foreach (FunctionalBlockReference reference in FunctionalBlockReferences)
+            foreach (RequirementSetReference reference in RequirementSetReferences)
             {
                 if (reference.Name == name)
                 {

@@ -1334,19 +1334,19 @@ namespace DataDictionary
         public int MaxExplainSize { get; set; }
 
         /// <summary>
-        /// Provides the list of functional blocks in the system
+        /// Provides the list of requirement sets in the system
         /// </summary>
-        public List<FunctionalBlock> FunctionalBlocks
+        public List<RequirementSet> RequirementSets
         {
             get
             {
-                List<FunctionalBlock> retVal = new List<FunctionalBlock>();
+                List<RequirementSet> retVal = new List<RequirementSet>();
 
                 foreach (DataDictionary.Dictionary dictionary in Dictionaries)
                 {
-                    foreach (FunctionalBlock functionalBlock in dictionary.FunctionalBlocks)
+                    foreach (RequirementSet requirementSet in dictionary.RequirementSets)
                     {
-                        retVal.Add(functionalBlock);
+                        retVal.Add(requirementSet);
                     }
                 }
 
@@ -1355,33 +1355,33 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Marks the requirements for a specific functional block
+        /// Marks the requirements for a specific requirement set
         /// </summary>
-        private class FunctionalBlockMarker : Generated.Visitor
+        private class RequirementSetMarker : Generated.Visitor
         {
             /// <summary>
-            /// The functional block for which marking is done
+            /// The requirement set for which marking is done
             /// </summary>
-            private FunctionalBlock FunctionalBlock { get; set; }
+            private RequirementSet RequirementSet { get; set; }
 
             /// <summary>
             /// Constructor
             /// </summary>
-            /// <param name="functionalBlock"></param>
-            public FunctionalBlockMarker(FunctionalBlock functionalBlock)
+            /// <param name="requirementSet"></param>
+            public RequirementSetMarker(RequirementSet requirementSet)
             {
-                FunctionalBlock = functionalBlock;
+                RequirementSet = requirementSet;
             }
 
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
                 Paragraph paragraph = (Paragraph)obj;
 
-                foreach (FunctionalBlockReference reference in paragraph.FunctionalBlockReferences)
+                foreach (RequirementSetReference reference in paragraph.RequirementSetReferences)
                 {
-                    if (reference.Name == FunctionalBlock.Name)
+                    if (reference.Name == RequirementSet.Name)
                     {
-                        obj.AddInfo("Functional block " + FunctionalBlock.Name);
+                        obj.AddInfo("Requirement set" + RequirementSet.Name);
                         break;
                     }
                 }
@@ -1391,12 +1391,12 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Marks the requirements which relate to the corresponding functional block 
+        /// Marks the requirements which relate to the corresponding requirement set
         /// </summary>
-        /// <param name="functionalBlock"></param>
-        public void MarkRequirementsForFunctionalBlock(FunctionalBlock functionalBlock)
+        /// <param name="requirementSet"></param>
+        public void MarkRequirementsForRequirementSet(RequirementSet requirementSet)
         {
-            FunctionalBlockMarker marker = new FunctionalBlockMarker(functionalBlock);
+            RequirementSetMarker marker = new RequirementSetMarker(requirementSet);
             foreach (DataDictionary.Dictionary dictionary in Dictionaries)
             {
                 dictionary.ClearMessages();
@@ -1406,21 +1406,21 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the function block whose name corresponds to the name provided
+        /// Provides the requirement set whose name corresponds to the name provided
         /// </summary>
-        /// <param name="functionalBlockName"></param>
+        /// <param name="name"></param>
         /// <returns></returns>
-        public FunctionalBlock findFunctionalBlock(string functionalBlockName)
+        public RequirementSet findRequirementSet(string name)
         {
-            FunctionalBlock retVal = null;
+            RequirementSet retVal = null;
 
             foreach (DataDictionary.Dictionary dictionary in Dictionaries)
             {
-                foreach (FunctionalBlock functionalBlock in dictionary.FunctionalBlocks)
+                foreach (RequirementSet requirementSet in dictionary.RequirementSets)
                 {
-                    if (functionalBlock.Name == functionalBlockName)
+                    if (requirementSet.Name == name)
                     {
-                        retVal = functionalBlock;
+                        retVal = requirementSet;
                         break;
                     }
                 }

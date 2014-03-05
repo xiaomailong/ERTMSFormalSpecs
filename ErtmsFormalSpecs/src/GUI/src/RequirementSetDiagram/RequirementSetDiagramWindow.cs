@@ -26,12 +26,12 @@ using Utils;
 using GUI.BoxArrowDiagram;
 using DataDictionary.Specification;
 
-namespace GUI.FunctionalBlockDiagram
+namespace GUI.RequirementSetDiagram
 {
-    public partial class FunctionalDiagramWindow : BoxArrowWindow<FunctionalBlock, FunctionalBlockDependance>
+    public partial class RequirementSetDiagramWindow : BoxArrowWindow<RequirementSet, RequirementSetDependance>
     {
         /// <summary>
-        /// The system for which the functional diagram is built
+        /// The system for which the requirement set diagram is built
         /// </summary>
         public EFSSystem EFSSystem { get; private set; }
 
@@ -47,7 +47,7 @@ namespace GUI.FunctionalBlockDiagram
         /// Constructor
         /// </summary>
         /// <param name="system"></param>
-        public FunctionalDiagramWindow()
+        public RequirementSetDiagramWindow()
             : base()
         {
         }
@@ -55,7 +55,7 @@ namespace GUI.FunctionalBlockDiagram
         /// <summary>
         /// The panel used to display the state diagram
         /// </summary>
-        private FunctionalBlockPanel FunctionalBlockPanel { get { return (FunctionalBlockPanel)BoxArrowContainerPanel; } }
+        private RequirementSetPanel Panel { get { return (RequirementSetPanel)BoxArrowContainerPanel; } }
 
         /// <summary>
         /// Sets the state machine type
@@ -65,13 +65,13 @@ namespace GUI.FunctionalBlockDiagram
         {
             EFSSystem = system;
 
-            FunctionalBlockPanel.EFSSystem = EFSSystem;
-            FunctionalBlockPanel.RefreshControl();
+            Panel.EFSSystem = EFSSystem;
+            Panel.RefreshControl();
         }
 
-        public override BoxArrowPanel<FunctionalBlock, FunctionalBlockDependance> createPanel()
+        public override BoxArrowPanel<RequirementSet, RequirementSetDependance> createPanel()
         {
-            BoxArrowPanel<FunctionalBlock, FunctionalBlockDependance> retVal = new FunctionalBlockPanel();
+            BoxArrowPanel<RequirementSet, RequirementSetDependance> retVal = new RequirementSetPanel();
 
             return retVal;
         }
@@ -79,13 +79,13 @@ namespace GUI.FunctionalBlockDiagram
         /// <summary>
         /// A box editor
         /// </summary>
-        protected class FunctionalBlockEditor : BoxEditor
+        protected class RequirementSetEditor : BoxEditor
         {
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="control"></param>
-            public FunctionalBlockEditor(BoxControl<FunctionalBlock, FunctionalBlockDependance> control)
+            public RequirementSetEditor(BoxControl<RequirementSet, RequirementSetDependance> control)
                 : base(control)
             {
             }
@@ -96,20 +96,20 @@ namespace GUI.FunctionalBlockDiagram
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        protected override BoxEditor createBoxEditor(BoxControl<FunctionalBlock, FunctionalBlockDependance> control)
+        protected override BoxEditor createBoxEditor(BoxControl<RequirementSet, RequirementSetDependance> control)
         {
-            BoxEditor retVal = new FunctionalBlockEditor(control);
+            BoxEditor retVal = new RequirementSetEditor(control);
 
             return retVal;
         }
 
-        protected class InternalFunctionalBlockTypeConverter : Converters.FunctionalBlockTypeConverter
+        protected class InternalRequirementSetTypeConverter : Converters.RequirementSetTypeConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)
             {
                 TransitionEditor instance = (TransitionEditor)context.Instance;
-                FunctionalBlockPanel panel = (FunctionalBlockPanel)instance.control.BoxArrowPanel;
+                RequirementSetPanel panel = (RequirementSetPanel)instance.control.BoxArrowPanel;
                 return GetValues(panel.EFSSystem);
             }
         }
@@ -123,12 +123,12 @@ namespace GUI.FunctionalBlockDiagram
             /// Constructor
             /// </summary>
             /// <param name="control"></param>
-            public TransitionEditor(ArrowControl<FunctionalBlock, FunctionalBlockDependance> control)
+            public TransitionEditor(ArrowControl<RequirementSet, RequirementSetDependance> control)
                 : base(control)
             {
             }
 
-            [Category("Description"), TypeConverter(typeof(InternalFunctionalBlockTypeConverter))]
+            [Category("Description"), TypeConverter(typeof(InternalRequirementSetTypeConverter))]
             public string Source
             {
                 get
@@ -143,18 +143,18 @@ namespace GUI.FunctionalBlockDiagram
                 }
                 set
                 {
-                    FunctionalDependanceControl transitionControl = (FunctionalDependanceControl)control;
-                    FunctionalBlockPanel panel = (FunctionalBlockPanel)transitionControl.Panel;
-                    FunctionalBlock functionalBlock = DataDictionary.OverallFunctionalBlockFinder.INSTANCE.findByName(panel.EFSSystem, value);
-                    if (functionalBlock != null)
+                    RequirementSetDependanceControl transitionControl = (RequirementSetDependanceControl)control;
+                    RequirementSetPanel panel = (RequirementSetPanel)transitionControl.Panel;
+                    RequirementSet requirementSet = DataDictionary.OverallRequirementSetFinder.INSTANCE.findByName(panel.EFSSystem, value);
+                    if (requirementSet != null)
                     {
-                        control.SetInitialBox(functionalBlock);
+                        control.SetInitialBox(requirementSet);
                         control.RefreshControl();
                     }
                 }
             }
 
-            [Category("Description"), TypeConverter(typeof(InternalFunctionalBlockTypeConverter))]
+            [Category("Description"), TypeConverter(typeof(InternalRequirementSetTypeConverter))]
             public string Target
             {
                 get
@@ -170,12 +170,12 @@ namespace GUI.FunctionalBlockDiagram
                 }
                 set
                 {
-                    FunctionalDependanceControl transitionControl = (FunctionalDependanceControl)control;
-                    FunctionalBlockPanel statePanel = (FunctionalBlockPanel)transitionControl.Panel;
-                    FunctionalBlock functionalBlock = DataDictionary.OverallFunctionalBlockFinder.INSTANCE.findByName(statePanel.EFSSystem, value);
-                    if (functionalBlock != null)
+                    RequirementSetDependanceControl transitionControl = (RequirementSetDependanceControl)control;
+                    RequirementSetPanel statePanel = (RequirementSetPanel)transitionControl.Panel;
+                    RequirementSet requirementSet = DataDictionary.OverallRequirementSetFinder.INSTANCE.findByName(statePanel.EFSSystem, value);
+                    if (requirementSet != null)
                     {
-                        control.SetTargetBox(functionalBlock);
+                        control.SetTargetBox(requirementSet);
                         control.RefreshControl();
                     }
                 }
@@ -187,7 +187,7 @@ namespace GUI.FunctionalBlockDiagram
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        protected override ArrowEditor createArrowEditor(ArrowControl<FunctionalBlock, FunctionalBlockDependance> control)
+        protected override ArrowEditor createArrowEditor(ArrowControl<RequirementSet, RequirementSetDependance> control)
         {
             ArrowEditor retVal = new TransitionEditor(control);
 

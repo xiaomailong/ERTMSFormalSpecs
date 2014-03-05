@@ -82,7 +82,7 @@
   <ELEMENT NAME="Dictionary" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <FIELDS>
       <FIELD NAME="Specifications"        REFTYPE="Specification" />
-      <FIELD NAME="FunctionalBlocks"      REFTYPE="FunctionalBlock" />
+      <FIELD NAME="RequirementSets"       REFTYPE="RequirementSet" />
       <FIELD NAME="RuleDisablings"        REFTYPE="RuleDisabling" />
       <FIELD NAME="NameSpaces"            REFTYPE="NameSpace" >
         <META NAME="TargetName">Namespaces</META>
@@ -113,9 +113,9 @@
         <REPEAT TARGET="Specifications">
           <ELEMENTREF NAME="Specification"/>
         </REPEAT>
-        <ENCLOSED NAME="FunctionalBlocks" OPTIONAL="TRUE">
-          <REPEAT TARGET="FunctionalBlocks">
-            <ELEMENTREF NAME="FunctionalBlock"/>
+        <ENCLOSED NAME="RequirementSets" OPTIONAL="TRUE">
+          <REPEAT TARGET="RequirementSets">
+            <ELEMENTREF NAME="RequirementSet"/>
           </REPEAT>
         </ENCLOSED>
         <ENCLOSED NAME="RuleDisabling" OPTIONAL="TRUE">
@@ -1259,12 +1259,12 @@
   </ELEMENT>
 
   <!-- ---------------- -->
-  <!-- Functional block -->
+  <!-- Requirement set  -->
   <!-- ---------------- -->
-  <ELEMENT NAME="FunctionalBlock" MAIN="TRUE" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
+  <ELEMENT NAME="RequirementSet" MAIN="TRUE" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">requirements</META>
     <FIELDS>
-      <FIELD NAME="Dependances"         REFTYPE="FunctionalBlockDependance" />
+      <FIELD NAME="Dependances"         REFTYPE="RequirementSetDependance" />
       <FIELD NAME="Width"               TYPE="INTEGER" />
       <FIELD NAME="Height"              TYPE="INTEGER" />
       <FIELD NAME="X"                   TYPE="INTEGER" />
@@ -1279,16 +1279,16 @@
     <FORMULA>
       <CONCAT>
         <REPEAT TARGET="Dependances">
-          <ELEMENTREF NAME="FunctionalBlockDependance"/>
+          <ELEMENTREF NAME="RequirementSetDependance"/>
         </REPEAT>
       </CONCAT>
     </FORMULA>
   </ELEMENT>
 
   <!-- --------------------------- -->
-  <!-- Functional block dependance -->
+  <!-- Requirement set dependance  -->
   <!-- --------------------------- -->
-  <ELEMENT NAME="FunctionalBlockDependance" MAIN="TRUE" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
+  <ELEMENT NAME="RequirementSetDependance" MAIN="TRUE" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">requirements</META>
     <FIELDS>
       <FIELD NAME="Target"     TYPE="PCHAR" />
@@ -1421,7 +1421,7 @@
         <META NAME="Obsolete" />
         <META NAME="DoNotTranslate" />
       </FIELD>
-      <FIELD NAME="FunctionalBlocks"     REFTYPE="FunctionalBlockReference" >
+      <FIELD NAME="RequirementSets"      REFTYPE="RequirementSetReference" >
       </FIELD>
       <FIELD NAME="ObsoleteGuid"         TYPE="PCHAR">
         <META NAME="Key"/> 
@@ -1464,9 +1464,9 @@
         <REPEAT TARGET="TypeSpecs" >
           <ELEMENTREF NAME="TypeSpec" />
         </REPEAT>
-        <ENCLOSED NAME="FunctionalBlocks" OPTIONAL="TRUE">
-          <REPEAT TARGET="FunctionalBlocks">
-            <ELEMENTREF NAME="FunctionalBlockReference"/>
+        <ENCLOSED NAME="RequirementSets" OPTIONAL="TRUE">
+          <REPEAT TARGET="RequirementSets">
+            <ELEMENTREF NAME="RequirementSetReference"/>
           </REPEAT>
         </ENCLOSED>
       </CONCAT>
@@ -1474,9 +1474,9 @@
   </ELEMENT>
 
   <!-- -------------------------- -->
-  <!-- Functional block reference -->
+  <!-- Requirement set reference  -->
   <!-- -------------------------- -->
-  <ELEMENT NAME="FunctionalBlockReference" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
+  <ELEMENT NAME="RequirementSetReference" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">requirements</META>
   </ELEMENT>
 

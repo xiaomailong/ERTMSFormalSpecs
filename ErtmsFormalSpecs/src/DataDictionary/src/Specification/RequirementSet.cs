@@ -23,12 +23,12 @@ namespace DataDictionary.Specification
     using System.Collections;
 
     /// <summary>
-    /// Represents a functional block
+    /// Represents a requirement set
     /// </summary>
-    public class FunctionalBlock : Generated.FunctionalBlock, IGraphicalDisplay, IHoldsParagraphs
+    public class RequirementSet : Generated.RequirementSet, IGraphicalDisplay, IHoldsParagraphs
     {
         /// <summary>
-        /// Provides all the dependances related to this functional block
+        /// Provides all the dependances related to this requirement set 
         /// </summary>
         public ArrayList Dependances
         {
@@ -83,12 +83,12 @@ namespace DataDictionary.Specification
             return Name;
         }
 
-        private class ParagraphForFunctionalBlock : Generated.Visitor
+        private class ParagraphForRequirementSet : Generated.Visitor
         {
             /// <summary>
-            /// The functional block for which the paragraphs should be found
+            /// The requirement set for which the paragraphs should be found
             /// </summary>
-            private FunctionalBlock FunctionalBlock { get; set; }
+            private RequirementSet RequirementSet { get; set; }
 
             /// <summary>
             /// The list of paragraphs to be filled
@@ -98,10 +98,10 @@ namespace DataDictionary.Specification
             /// <summary>
             /// Constructor
             /// </summary>
-            /// <param name="functionalBlock"></param>
-            public ParagraphForFunctionalBlock(FunctionalBlock functionalBlock, List<Paragraph> paragraphs)
+            /// <param name="requirementSet"></param>
+            public ParagraphForRequirementSet(RequirementSet requirementSet, List<Paragraph> paragraphs)
             {
-                FunctionalBlock = functionalBlock;
+                RequirementSet = requirementSet;
                 Paragraphs = paragraphs;
             }
 
@@ -109,7 +109,7 @@ namespace DataDictionary.Specification
             {
                 Paragraph paragraph = (Paragraph)obj;
 
-                if (paragraph.BelongsToFunctionalBlock(FunctionalBlock.Name))
+                if (paragraph.BelongsToRequirementSet(RequirementSet.Name))
                 {
                     Paragraphs.Add(paragraph);
 
@@ -124,12 +124,12 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the paragraphs related to this functional block 
+        /// Provides the paragraphs related to this requirement set 
         /// </summary>
         /// <param name="paragraphs"></param>
         public void GetParagraphs(List<Paragraph> paragraphs)
         {
-            ParagraphForFunctionalBlock gatherer = new ParagraphForFunctionalBlock(this, paragraphs);
+            ParagraphForRequirementSet gatherer = new ParagraphForRequirementSet(this, paragraphs);
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 gatherer.visit(dictionary);

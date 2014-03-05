@@ -20,7 +20,7 @@ using System.Windows.Forms;
 
 namespace GUI.SpecificationView
 {
-    public class FunctionalBlockReferenceTreeNode : ModelElementTreeNode<DataDictionary.Specification.FunctionalBlockReference>
+    public class RequirementSetReferenceTreeNode : ModelElementTreeNode<DataDictionary.Specification.RequirementSetReference>
     {
         /// <summary>
         /// The value editor
@@ -40,7 +40,7 @@ namespace GUI.SpecificationView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public FunctionalBlockReferenceTreeNode(DataDictionary.Specification.FunctionalBlockReference item, bool buildSubNodes)
+        public RequirementSetReferenceTreeNode(DataDictionary.Specification.RequirementSetReference item, bool buildSubNodes)
             : base(item, buildSubNodes, null, true)
         {
         }
@@ -90,7 +90,7 @@ namespace GUI.SpecificationView
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)
-        { 
+        {
         }
     }
 }
