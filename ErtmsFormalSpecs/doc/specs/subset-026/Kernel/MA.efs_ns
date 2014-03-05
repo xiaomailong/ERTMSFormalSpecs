@@ -1700,6 +1700,24 @@ Default.BaseTypes.LengthToDistance(
 >
 <Expression>Target1</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="AcceptedShortenedMA"
+ Guid="1891bebe-22be-4c1a-89f9-80a427758759"
+>
+<ReqRef
+ Id="26d39c75-1c24-46e6-b725-d71bd2fbd1c3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="824425e1-3a34-448f-8987-803cd6e72e2e"
+>
+</ReqRef><Comment>Indicates whether the shortened MA sent by RBC is accepted</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="9481bd1d-6bc4-4ebc-8167-a44b76beb265"
+>
+<Expression>False</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -3581,7 +3599,12 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
  Name="SectionTimerStart"
  Guid="eadabd71-0e7f-4597-8d44-9574de6f8a1d"
 >
-<Comment>Time of reception of the MA, starting point of the section timers</Comment>
+<ReqRef
+ Id="d833d8f6-90b9-499b-bdb1-408971c2cbfe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5d38ff66-ed89-4de5-98f5-3c04a6ae6687"
+>
+</ReqRef><Comment>Time of reception of the MA, starting point of the section timers</Comment>
 </Variable><Variable
  Type="SectionTimeOut"
  DefaultValue=""
