@@ -73,8 +73,18 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="65495958-5586-4c2d-bdc9-6c96c541466e"
 >
+</ReqRef><ReqRef
+ Id="c44f8cfc-0e9b-4bbd-bf2c-2a0ef937a651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6116f7a0-a849-4ccc-a533-452203d1fc83"
+>
 </ReqRef><Cases>
-</Cases>
+<Case
+ Name="Value"
+ Guid="ab03d2a6-b80a-4c48-9d8e-6e53a442c8ef"
+>
+<Expression>EndSectionTimeOutShortensMA</Expression>
+</Case></Cases>
 </Function><Function
  Type="Boolean"
  Name="SituationF"
@@ -233,6 +243,24 @@
  Guid="c49c78e7-962c-4727-b632-31756e984747"
 >
 </ReqRef><Comment>Indicates if the on-board received a shortened MA regardless of SvL location.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="EndSectionTimeOutShortensMA"
+ Guid="94e1aa3f-5366-4ad3-95b2-6b0fec3c107e"
+>
+<ReqRef
+ Id="7e423212-aebc-4610-85f4-e4a25b5e05c4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fcaba4d5-d963-491a-8d83-96fd7e7c415f"
+>
+</ReqRef><ReqRef
+ Id="e199cc01-44ca-4dc8-bc13-df147bf2bf53"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94f19253-8138-431c-9d22-54c49c6095d6"
+>
+</ReqRef><Comment>Indicates if the End Section timer reaches the time-out value, causing an MA shortening (Situation e)</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
