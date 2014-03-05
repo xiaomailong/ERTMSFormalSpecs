@@ -256,13 +256,67 @@ namespace GUI.SpecificationView
         public void AddParagraphHandler(object sender, EventArgs args)
         {
             DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)DataDictionary.Generated.acceptor.getFactory().createParagraph();
-            paragraph.FullId = Item.GetNewSubParagraphId();
+            paragraph.FullId = Item.GetNewSubParagraphId(false);
             paragraph.Text = "";
             paragraph.setType(DataDictionary.Generated.acceptor.Paragraph_type.aREQUIREMENT);
             paragraph.setScopeOnBoard(true);
             paragraph.setScopeTrackside(true);
             paragraph.setScopeRollingStock(false);
             AddParagraph(paragraph);
+        }
+
+        public void AddParagraphFromClipboardHandler(object sender, EventArgs args)
+        {
+            if (Clipboard.ContainsText())
+            {
+                string text = Clipboard.GetText(TextDataFormat.Text);
+
+                string id;
+                string data;
+
+                int i = text.IndexOf(' ');
+                int j = text.IndexOf('\n');
+                if (i < 0)
+                {
+                    i = j;
+                }
+                else
+                {
+                    if (j > 0)
+                    {
+                        i = Math.Min(i, j);
+                    }
+                }
+                if (i > 0)
+                {
+                    id = text.Substring(0, i).Trim();
+                    if (id.Length > 0 && char.IsDigit(id[0]))
+                    {
+                        data = text.Substring(i + 1);
+                    }
+                    else
+                    {
+                        id = Item.GetNewSubParagraphId(true);
+                        data = text;
+                    }
+                }
+                else
+                {
+                    id = Item.GetNewSubParagraphId(true);
+                    data = text;
+                }
+                data = data.Replace("\r", "");
+                data = data.Replace("\n", "");
+
+                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)DataDictionary.Generated.acceptor.getFactory().createParagraph();
+                paragraph.FullId = id;
+                paragraph.Text = data;
+                paragraph.setType(DataDictionary.Generated.acceptor.Paragraph_type.aREQUIREMENT);
+                paragraph.setScopeOnBoard(true);
+                paragraph.setScopeTrackside(true);
+                paragraph.setScopeRollingStock(false);
+                AddParagraph(paragraph);
+            }
         }
 
         /// <summary>
@@ -338,6 +392,7 @@ namespace GUI.SpecificationView
             List<MenuItem> retVal = new List<MenuItem>();
 
             retVal.Add(new MenuItem("Add paragraph", new EventHandler(AddParagraphHandler)));
+            retVal.Add(new MenuItem("Add paragraph from clipboard", new EventHandler(AddParagraphFromClipboardHandler)));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.AddRange(base.GetMenuItems());
             MenuItem newItem = new MenuItem("Mark as...");

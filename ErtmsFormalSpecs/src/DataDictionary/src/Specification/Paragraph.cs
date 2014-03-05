@@ -332,17 +332,34 @@ namespace DataDictionary.Specification
         /// <summary>
         /// The sub paragraphs of this paragraph
         /// </summary>
-        public string GetNewSubParagraphId()
+        /// <param name="letter">Indicates that the paragraph id should be terminated by a letter</param>
+        public string GetNewSubParagraphId(bool letter)
         {
-            string retVal = this.FullId + ".1";
+            string retVal;
+            if (letter)
+            {
+                retVal = this.FullId + ".a";
+            }
+            else
+            {
+                retVal = this.FullId + ".1";
+            }
+
             if (SubParagraphs.Count > 0)
             {
                 Paragraph lastParagraph = SubParagraphs[SubParagraphs.Count - 1] as Paragraph;
                 int[] ids = lastParagraph.Id;
                 int lastId = ids[ids.Length - 1];
-                retVal = this.FullId + "." + (lastId + 1).ToString();
-                //int lastId = lastParagraph.FullId.Split(".");  Item.FullId + "." + (Item.SubParagraphs.Count + 1).ToString()
+                if (letter)
+                {
+                    retVal = this.FullId + "." + (char)('a' + (lastId + 1));
+                }
+                else
+                {
+                    retVal = this.FullId + "." + (lastId + 1).ToString();
+                }
             }
+
             return retVal;
         }
 
