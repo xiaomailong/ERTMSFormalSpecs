@@ -2178,44 +2178,6 @@ If all the messages of the current balise group have been received, calls Handle
     Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY,
     NID_BG =&gt; NID_BG
 )</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="MA Lvl2or3 available"
- Guid="bc808b01-3a2d-44f8-a630-ca95f1b01a60"
->
-<ReqRef
- Id="ab5117d0-92b0-4488-9084-9e07dba02cec"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="702dfb22-7ae4-48ba-a4f9-4f8ceed58824"
->
-</ReqRef><ReqRef
- Id="f4723221-15fd-4636-851f-08a437cc18e6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="57f835fe-898b-44f2-bef2-5d29077da947"
->
-</ReqRef><ReqRef
- Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="575ee435-6b8d-411a-a391-fdea3a9e6f8b"
->
-</ReqRef><ReqRef
- Id="200c6541-d8d8-43b9-b5c0-4f586318bbce"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9bd63f47-593a-4a23-801a-56399ecc8a2e"
->
-</ReqRef><Comment>Processes the MA for level 2 or 3.</Comment>
-<PreConditions>
-<PreCondition
- Guid="682b5aef-b5b4-47f0-9e12-3213da50a84b"
->ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="e6aabdd3-be04-45f7-a366-8bc7983a3449"
->Kernel.MA.MALvl2or3Received
-(
-    Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY,
-    NID_BG =&gt; NID_BG
-)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
