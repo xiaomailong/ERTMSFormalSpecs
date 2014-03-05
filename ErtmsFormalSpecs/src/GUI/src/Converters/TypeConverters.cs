@@ -251,17 +251,14 @@ namespace GUI.Converters
             return true; // drop-down vs combo
         }
 
-        public StandardValuesCollection GetValues(DataDictionary.EFSSystem system)
+        public StandardValuesCollection GetValues(IHoldsRequirementSets enclosing)
         {
             Utils.FinderRepository.INSTANCE.ClearCache();
 
             List<string> retVal = new List<string>();
-            foreach (DataDictionary.Dictionary dictionary in system.Dictionaries)
+            foreach (RequirementSet requirementSet in enclosing.RequirementSets)
             {
-                foreach (RequirementSet requirementSet in dictionary.RequirementSets)
-                {
-                    retVal.Add(requirementSet.Name);
-                }
+                retVal.Add(requirementSet.Name);
             }
             retVal.Sort();
 

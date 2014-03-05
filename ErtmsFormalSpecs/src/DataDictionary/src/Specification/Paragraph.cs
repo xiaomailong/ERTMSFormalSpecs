@@ -715,14 +715,14 @@ namespace DataDictionary.Specification
         /// <summary>
         /// Indicates whether this paragraphs belongs to the functionam block whose name is provided as parameter
         /// </summary>
-        /// <param name="name"></param>
-        public bool BelongsToRequirementSet(string name)
+        /// <param name="fullName"></param>
+        public bool BelongsToRequirementSet(string fullName)
         {
             bool retVal = false;
 
             foreach (RequirementSetReference reference in RequirementSetReferences)
             {
-                if (reference.Name == name)
+                if (reference.Name == fullName)
                 {
                     retVal = true;
                     break;

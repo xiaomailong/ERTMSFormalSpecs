@@ -67,7 +67,7 @@ namespace GUI.BoxArrowDiagram
         /// The model for this control
         /// </summary>
         private BoxModel __model;
-        public BoxModel Model
+        public virtual BoxModel Model
         {
             get { return __model; }
             set
@@ -115,7 +115,7 @@ namespace GUI.BoxArrowDiagram
         /// Sets the color of the control
         /// </summary>
         /// <param name="color"></param>
-        private void SetColor(Color color)
+        protected void SetColor(Color color)
         {
             if (BoxMode == BoxModeEnum.RoundedCorners)
             {
@@ -174,7 +174,7 @@ namespace GUI.BoxArrowDiagram
         /// Draws the box within the box-arrow panel
         /// </summary>
         /// <param name="e"></param>
-        public void PaintInBoxArrowPanel(PaintEventArgs e)
+        public virtual void PaintInBoxArrowPanel(PaintEventArgs e)
         {
             // Select the right pen, according to the model
             Pen pen;

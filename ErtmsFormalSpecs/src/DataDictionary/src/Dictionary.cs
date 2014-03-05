@@ -23,7 +23,7 @@ using Utils;
 
 namespace DataDictionary
 {
-    public class Dictionary : Generated.Dictionary, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces, IHoldsParagraphs
+    public class Dictionary : Generated.Dictionary, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces, IHoldsParagraphs, IHoldsRequirementSets
     {
         /// <summary>
         /// The file path associated to the dictionary
@@ -354,23 +354,6 @@ namespace DataDictionary
             }
         }
 
-        /// <summary>
-        /// The requirement set related to this dictionary
-        /// </summary>
-        public ArrayList RequirementSets
-        {
-            get
-            {
-                ArrayList retVal = allRequirementSets();
-
-                if (retVal == null)
-                {
-                    retVal = new ArrayList();
-                }
-
-                return retVal;
-            }
-        }
         /// <summary>
         /// The rule disablings related to this rule set
         /// </summary>
@@ -1184,6 +1167,57 @@ namespace DataDictionary
 
                 return retVal;
             }
+        }
+
+        /// <summary>
+        /// Provides the list of requirement sets in the system
+        /// </summary>
+        public List<RequirementSet> RequirementSets
+        {
+            get
+            {
+                List<RequirementSet> retVal = new List<RequirementSet>();
+
+                if (allRequirementSets() != null)
+                {
+                    foreach (RequirementSet requirementSet in allRequirementSets())
+                    {
+                        retVal.Add(requirementSet);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Provides the requirement set whose name corresponds to the name provided
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public RequirementSet findRequirementSet(string name)
+        {
+            RequirementSet retVal = null;
+
+            foreach (RequirementSet requirementSet in RequirementSets)
+            {
+                if (requirementSet.Name == name)
+                {
+                    retVal = requirementSet;
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Adds a new requirement set to this list of requirement sets
+        /// </summary>
+        /// <param name="requirementSet"></param>
+        public void AddRequirementSet(RequirementSet requirementSet)
+        {
+            appendRequirementSets(requirementSet);
         }
     }
 }

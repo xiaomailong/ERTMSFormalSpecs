@@ -109,6 +109,7 @@ namespace DataDictionary
                 base.visit(obj, visitSubNodes);
             }
 
+            private const string FUNCTIONAL_BLOCK_NAME = "Functional blocs";
             /// <summary>
             /// Replaces the paragraph scope by the corresponding flags
             /// </summary>
@@ -144,12 +145,21 @@ namespace DataDictionary
                 // Ensures the requirement set exists
                 if (!string.IsNullOrEmpty(paragraph.getFunctionalBlockName()))
                 {
-                    RequirementSet requirementSet = paragraph.EFSSystem.findRequirementSet(paragraph.getFunctionalBlockName());
+                    string fullName = FUNCTIONAL_BLOCK_NAME + "." + paragraph.getFunctionalBlockName();
+                    RequirementSet requirementSet = paragraph.EFSSystem.findRequirementSet(fullName);
                     if (requirementSet == null)
                     {
+                        RequirementSet functionalBlocks = paragraph.Dictionary.findRequirementSet(FUNCTIONAL_BLOCK_NAME);
+                        if (functionalBlocks == null)
+                        {
+                            functionalBlocks = (RequirementSet)Generated.acceptor.getFactory().createRequirementSet();
+                            functionalBlocks.Name = FUNCTIONAL_BLOCK_NAME;
+                            paragraph.Dictionary.appendRequirementSets(functionalBlocks);
+                        }
+
                         requirementSet = (RequirementSet)Generated.acceptor.getFactory().createRequirementSet();
                         requirementSet.Name = paragraph.getFunctionalBlockName();
-                        paragraph.Dictionary.appendRequirementSets(requirementSet);
+                        functionalBlocks.appendSubSets(requirementSet);
                     }
 
                     if (!paragraph.BelongsToRequirementSet(paragraph.getFunctionalBlockName()))

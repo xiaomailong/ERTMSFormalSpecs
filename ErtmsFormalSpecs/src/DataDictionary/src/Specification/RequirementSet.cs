@@ -25,21 +25,37 @@ namespace DataDictionary.Specification
     /// <summary>
     /// Represents a requirement set
     /// </summary>
-    public class RequirementSet : Generated.RequirementSet, IGraphicalDisplay, IHoldsParagraphs
+    public class RequirementSet : Generated.RequirementSet, IGraphicalDisplay, IHoldsParagraphs, IHoldsRequirementSets
     {
         /// <summary>
         /// Provides all the dependances related to this requirement set 
         /// </summary>
-        public ArrayList Dependances
+        public ArrayList Dependancies
         {
             get
             {
-                if (allDependances() == null)
+                if (allDependancies() == null)
                 {
-                    setAllDependances(new ArrayList());
+                    setAllDependancies(new ArrayList());
                 }
 
-                return allDependances();
+                return allDependancies();
+            }
+        }
+
+        /// <summary>
+        /// Provides all the sub set of this requirement set 
+        /// </summary>
+        public ArrayList SubSets
+        {
+            get
+            {
+                if (allSubSets() == null)
+                {
+                    setAllSubSets(new ArrayList());
+                }
+
+                return allSubSets();
             }
         }
 
@@ -134,6 +150,54 @@ namespace DataDictionary.Specification
             {
                 gatherer.visit(dictionary);
             }
+        }
+
+        /// <summary>
+        /// Provides the list of requirement sets in the system
+        /// </summary>
+        public List<RequirementSet> RequirementSets
+        {
+            get
+            {
+                List<RequirementSet> retVal = new List<RequirementSet>();
+
+                foreach (RequirementSet requirementSet in SubSets)
+                {
+                    retVal.Add(requirementSet);
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Provides the requirement set whose name corresponds to the name provided
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public RequirementSet findRequirementSet(string name)
+        {
+            RequirementSet retVal = null;
+
+            foreach (RequirementSet requirementSet in SubSets)
+            {
+                if (requirementSet.Name == name)
+                {
+                    retVal = requirementSet;
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Adds a new requirement set to this list of requirement sets
+        /// </summary>
+        /// <param name="requirementSet"></param>
+        public void AddRequirementSet(RequirementSet requirementSet)
+        {
+            appendSubSets(requirementSet);
         }
     }
 }

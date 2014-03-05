@@ -410,21 +410,30 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
+        /// Holds metrics computed on a set of paragraphs
+        /// </summary>
+        public struct ParagraphSetMetrics
+        {
+            public int subParagraphCount;
+            public int implementableCount;
+            public int implementedCount;
+            public int unImplementedCount;
+            public int notImplementable;
+            public int newRevisionAvailable;
+            public int testedCount;
+        }
+
+        /// <summary>
         /// Creates the stat message according to the list of paragraphs provided
         /// </summary>
         /// <param name="efsSystem"></param>
         /// <param name="paragraphs"></param>
-        /// <param name="indicateSelected">Indicates that there are selected requirements</param>
         /// <returns></returns>
-        public static string CreateStatMessage(EFSSystem efsSystem, List<DataDictionary.Specification.Paragraph> paragraphs, bool indicateSelected)
+        public static ParagraphSetMetrics CreateParagraphSetMetrics(EFSSystem efsSystem, List<DataDictionary.Specification.Paragraph> paragraphs)
         {
-            int subParagraphCount = paragraphs.Count;
-            int implementableCount = 0;
-            int implementedCount = 0;
-            int unImplementedCount = 0;
-            int notImplementable = 0;
-            int newRevisionAvailable = 0;
-            int testedCount = 0;
+            ParagraphSetMetrics retVal = new ParagraphSetMetrics();
+
+            retVal.subParagraphCount = paragraphs.Count;
 
             Dictionary<DataDictionary.Specification.Paragraph, List<ReqRef>> paragraphsReqRefDictionary = null;
             foreach (DataDictionary.Specification.Paragraph p in paragraphs)
@@ -437,7 +446,7 @@ namespace GUI.SpecificationView
                 switch (p.getImplementationStatus())
                 {
                     case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented:
-                        implementableCount += 1;
+                        retVal.implementableCount += 1;
 
                         bool implemented = true;
                         if (paragraphsReqRefDictionary.ContainsKey(p))
@@ -459,27 +468,27 @@ namespace GUI.SpecificationView
                         }
                         if (implemented)
                         {
-                            implementedCount += 1;
+                            retVal.implementedCount += 1;
                         }
                         else
                         {
-                            unImplementedCount += 1;
+                            retVal.unImplementedCount += 1;
                         }
                         break;
 
                     case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA:
                     case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM:
-                        implementableCount += 1;
-                        unImplementedCount += 1;
+                        retVal.implementableCount += 1;
+                        retVal.unImplementedCount += 1;
                         break;
 
                     case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable:
-                        notImplementable += 1;
+                        retVal.notImplementable += 1;
                         break;
 
                     case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable:
-                        implementableCount += 1;
-                        newRevisionAvailable += 1;
+                        retVal.implementableCount += 1;
+                        retVal.newRevisionAvailable += 1;
                         break;
                 }
             }
@@ -498,20 +507,34 @@ namespace GUI.SpecificationView
             {
                 if (testedParagraphs.Contains(p))
                 {
-                    testedCount += 1;
+                    retVal.testedCount += 1;
                 }
             }
 
+            return retVal;
+        }
+
+        /// <summary>
+        /// Creates the stat message according to the list of paragraphs provided
+        /// </summary>
+        /// <param name="efsSystem"></param>
+        /// <param name="paragraphs"></param>
+        /// <param name="indicateSelected">Indicates that there are selected requirements</param>
+        /// <returns></returns>
+        public static string CreateStatMessage(EFSSystem efsSystem, List<DataDictionary.Specification.Paragraph> paragraphs, bool indicateSelected)
+        {
             string retVal = "Statistics : ";
 
-            if (subParagraphCount > 0 && implementableCount > 0)
+            ParagraphSetMetrics metrics = CreateParagraphSetMetrics(efsSystem, paragraphs);
+
+            if (metrics.subParagraphCount > 0 && metrics.implementableCount > 0)
             {
-                retVal += subParagraphCount + (indicateSelected ? " selected" : "") + " requirements, ";
-                retVal += +implementableCount + " implementable (" + Math.Round(((float)implementableCount / subParagraphCount * 100), 2) + "%), ";
-                retVal += implementedCount + " implemented (" + Math.Round(((float)implementedCount / implementableCount * 100), 2) + "%), ";
-                retVal += +unImplementedCount + " not implemented (" + Math.Round(((float)unImplementedCount / implementableCount * 100), 2) + "%), ";
-                retVal += newRevisionAvailable + " with new revision (" + Math.Round(((float)newRevisionAvailable / implementableCount * 100), 2) + "%), ";
-                retVal += testedCount + " tested (" + Math.Round(((float)testedCount / implementableCount * 100), 2) + "%)";
+                retVal += metrics.subParagraphCount + (indicateSelected ? " selected" : "") + " requirements, ";
+                retVal += +metrics.implementableCount + " implementable (" + Math.Round(((float)metrics.implementableCount / metrics.subParagraphCount * 100), 2) + "%), ";
+                retVal += metrics.implementedCount + " implemented (" + Math.Round(((float)metrics.implementedCount / metrics.implementableCount * 100), 2) + "%), ";
+                retVal += +metrics.unImplementedCount + " not implemented (" + Math.Round(((float)metrics.unImplementedCount / metrics.implementableCount * 100), 2) + "%), ";
+                retVal += metrics.newRevisionAvailable + " with new revision (" + Math.Round(((float)metrics.newRevisionAvailable / metrics.implementableCount * 100), 2) + "%), ";
+                retVal += metrics.testedCount + " tested (" + Math.Round(((float)metrics.testedCount / metrics.implementableCount * 100), 2) + "%)";
             }
             else
             {

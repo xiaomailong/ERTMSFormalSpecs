@@ -25,12 +25,12 @@ using DataDictionary.Specification;
 
 namespace GUI.RequirementSetDiagram
 {
-    public partial class RequirementSetDependanceControl : ArrowControl<RequirementSet, RequirementSetDependance>
+    public partial class RequirementSetDependancyControl : ArrowControl<RequirementSet, RequirementSetDependancy>
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public RequirementSetDependanceControl()
+        public RequirementSetDependancyControl()
             : base()
         {
         }
@@ -39,7 +39,7 @@ namespace GUI.RequirementSetDiagram
         /// Constructor
         /// </summary>
         /// <param name="container"></param>
-        public RequirementSetDependanceControl(IContainer container)
+        public RequirementSetDependancyControl(IContainer container)
             : base()
         {
             container.Add(this);

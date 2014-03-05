@@ -24,7 +24,7 @@ namespace DataDictionary.Specification
     /// <summary>
     /// Represents a requirement set
     /// </summary>
-    public class RequirementSetDependance : Generated.RequirementSetDependance, IGraphicalArrow<RequirementSet>
+    public class RequirementSetDependancy : Generated.RequirementSetDependancy, IGraphicalArrow<RequirementSet>
     {
         /// <summary>
         /// The source of the arrow
@@ -37,9 +37,9 @@ namespace DataDictionary.Specification
         /// <param name="initialBox"></param>
         public void SetInitialBox(IGraphicalDisplay initialBox)
         {
-            Source.removeDependances(this);
+            Source.removeDependancies(this);
             RequirementSet newSource = (RequirementSet)initialBox;
-            newSource.appendDependances(this);
+            newSource.appendDependancies(this);
         }
 
         /// <summary>

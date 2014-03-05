@@ -1264,7 +1264,8 @@
   <ELEMENT NAME="RequirementSet" MAIN="TRUE" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">requirements</META>
     <FIELDS>
-      <FIELD NAME="Dependances"         REFTYPE="RequirementSetDependance" />
+      <FIELD NAME="Dependancies"        REFTYPE="RequirementSetDependancy" />
+      <FIELD NAME="SubSets"             REFTYPE="RequirementSet" />
       <FIELD NAME="Width"               TYPE="INTEGER" />
       <FIELD NAME="Height"              TYPE="INTEGER" />
       <FIELD NAME="X"                   TYPE="INTEGER" />
@@ -1278,9 +1279,16 @@
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
-        <REPEAT TARGET="Dependances">
-          <ELEMENTREF NAME="RequirementSetDependance"/>
-        </REPEAT>
+        <ENCLOSED NAME="Dependancies">
+          <REPEAT TARGET="Dependancies">
+            <ELEMENTREF NAME="RequirementSetDependancy"/>
+          </REPEAT>
+        </ENCLOSED>
+        <ENCLOSED NAME="SubSets">
+          <REPEAT TARGET="SubSets">
+            <ELEMENTREF NAME="RequirementSet"/>
+          </REPEAT>
+        </ENCLOSED>
       </CONCAT>
     </FORMULA>
   </ELEMENT>
@@ -1288,7 +1296,7 @@
   <!-- --------------------------- -->
   <!-- Requirement set dependance  -->
   <!-- --------------------------- -->
-  <ELEMENT NAME="RequirementSetDependance" MAIN="TRUE" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
+  <ELEMENT NAME="RequirementSetDependancy" MAIN="TRUE" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">requirements</META>
     <FIELDS>
       <FIELD NAME="Target"     TYPE="PCHAR" />

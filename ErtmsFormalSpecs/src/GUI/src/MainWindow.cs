@@ -1654,8 +1654,10 @@ namespace GUI
         {
             RequirementSetDiagram.RequirementSetDiagramWindow window = new RequirementSetDiagram.RequirementSetDiagramWindow();
             GUIUtils.MDIWindow.AddChildWindow(window);
-            window.SetSystem(EFSSystem);
-            window.Text = "Requirement sets";
+
+            DataDictionary.Dictionary dictionary = GUIUtils.MDIWindow.GetActiveDictionary();
+            window.SetEnclosing(dictionary);
+            window.Text = "Requirement sets for " + dictionary.Name;
         }
     }
 }

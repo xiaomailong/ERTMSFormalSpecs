@@ -4421,18 +4421,18 @@ namespace DataDictionary.Compare
 
             compareNamable (obj, other, diff);
 
-            if ( obj.allDependances() != null )
+            if ( obj.allDependancies() != null )
             {
-                if ( other.allDependances() != null ) 
+                if ( other.allDependancies() != null ) 
                 {
-                    foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
+                    foreach ( Generated.RequirementSetDependancy subElement in obj.allDependancies() )
                     {
                         bool compared = false;
-                        foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
+                        foreach ( Generated.RequirementSetDependancy otherElement in other.allDependancies() )
                         {
                             if ( subElement.Guid == otherElement.Guid )
                             {
-                                compareRequirementSetDependance ( subElement, otherElement, diff );
+                                compareRequirementSetDependancy ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -4440,14 +4440,14 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Dependances", "", subElement.Name ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Dependancies", "", subElement.Name ) );
                         }
                     }
 
-                    foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
+                    foreach ( Generated.RequirementSetDependancy otherElement in other.allDependancies() )
                     {
                         bool found = false;
-                        foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
+                        foreach ( Generated.RequirementSetDependancy subElement in obj.allDependancies() )
                         {
                             if ( subElement.Guid == otherElement.Guid )
                             {
@@ -4458,25 +4458,84 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Dependances", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Dependancies", otherElement.Name) );
                         }
                     }
                 }
                 else 
                 {
-                    foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
+                    foreach ( Generated.RequirementSetDependancy subElement in obj.allDependancies() )
                     {
-                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Dependances", "", subElement.Name ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Dependancies", "", subElement.Name ) );
                     }
                 }
             }
             else 
             {
-                if ( other.allDependances() != null ) 
+                if ( other.allDependancies() != null ) 
                 {
-                    foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
+                    foreach ( Generated.RequirementSetDependancy otherElement in other.allDependancies() )
                     {
-                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Dependances", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Dependancies", otherElement.Name) );
+                    }
+                }
+            }
+            if ( obj.allSubSets() != null )
+            {
+                if ( other.allSubSets() != null ) 
+                {
+                    foreach ( Generated.RequirementSet subElement in obj.allSubSets() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.RequirementSet otherElement in other.allSubSets() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                compareRequirementSet ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSets", "", subElement.Name ) );
+                        }
+                    }
+
+                    foreach ( Generated.RequirementSet otherElement in other.allSubSets() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.RequirementSet subElement in obj.allSubSets() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubSets", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.RequirementSet subElement in obj.allSubSets() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSets", "", subElement.Name ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allSubSets() != null ) 
+                {
+                    foreach ( Generated.RequirementSet otherElement in other.allSubSets() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubSets", otherElement.Name) );
                     }
                 }
             }
@@ -4499,11 +4558,11 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
-        /// Compares two RequirementSetDependance and annotates the differences on the first one
+        /// Compares two RequirementSetDependancy and annotates the differences on the first one
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareRequirementSetDependance(Generated.RequirementSetDependance obj, Generated.RequirementSetDependance other, VersionDiff diff)
+        public static void compareRequirementSetDependancy(Generated.RequirementSetDependancy obj, Generated.RequirementSetDependancy other, VersionDiff diff)
         {
             if ( other == null )
             { 
@@ -11207,21 +11266,21 @@ namespace DataDictionary.Compare
 
             ensureGuidNamable (obj, other);
 
-            if ( obj.allDependances() != null )
+            if ( obj.allDependancies() != null )
             {
-                if ( other.allDependances() != null ) 
+                if ( other.allDependancies() != null ) 
                 {
-                    foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
+                    foreach ( Generated.RequirementSetDependancy subElement in obj.allDependancies() )
                     {
                         bool found = false;
 
                         // Try first to assign Guid to elements which do not have a guid
                         // This helps handling duplicated in lists
-                        foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
+                        foreach ( Generated.RequirementSetDependancy otherElement in other.allDependancies() )
                         {
                             if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
                             {
-                                ensureGuidRequirementSetDependance ( subElement, otherElement );
+                                ensureGuidRequirementSetDependancy ( subElement, otherElement );
                                 found = true;
                                 break;
                             }
@@ -11229,11 +11288,11 @@ namespace DataDictionary.Compare
 
                         if ( !found ) 
                         {
-                            foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
+                            foreach ( Generated.RequirementSetDependancy otherElement in other.allDependancies() )
                             {
                                 if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                                 {
-                                    ensureGuidRequirementSetDependance ( subElement, otherElement );
+                                    ensureGuidRequirementSetDependancy ( subElement, otherElement );
                                     found = true;
                                     break;
                                 }
@@ -11242,14 +11301,14 @@ namespace DataDictionary.Compare
 
                         if ( !found ) 
                         {
-                            ensureGuidRequirementSetDependance ( subElement, null );
+                            ensureGuidRequirementSetDependancy ( subElement, null );
                         }
                     }
 
-                    foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
+                    foreach ( Generated.RequirementSetDependancy otherElement in other.allDependancies() )
                     {
                         bool found = false;
-                        foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
+                        foreach ( Generated.RequirementSetDependancy subElement in obj.allDependancies() )
                         {
                             if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
@@ -11260,39 +11319,114 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            ensureGuidRequirementSetDependance ( null, otherElement );
+                            ensureGuidRequirementSetDependancy ( null, otherElement );
                         }
                     }
                 }
                 else 
                 {
-                    foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
+                    foreach ( Generated.RequirementSetDependancy subElement in obj.allDependancies() )
                     {
-                        ensureGuidRequirementSetDependance ( subElement, null );
+                        ensureGuidRequirementSetDependancy ( subElement, null );
                     }
                 }
             }
             else 
             {
-                if ( other.allDependances() != null ) 
+                if ( other.allDependancies() != null ) 
                 {
-                    foreach ( Generated.RequirementSetDependance otherElement in other.allDependances() )
+                    foreach ( Generated.RequirementSetDependancy otherElement in other.allDependancies() )
                     {
-                        ensureGuidRequirementSetDependance ( null, otherElement );
+                        ensureGuidRequirementSetDependancy ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allSubSets() != null )
+            {
+                if ( other.allSubSets() != null ) 
+                {
+                    foreach ( Generated.RequirementSet subElement in obj.allSubSets() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.RequirementSet otherElement in other.allSubSets() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidRequirementSet ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.RequirementSet otherElement in other.allSubSets() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidRequirementSet ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidRequirementSet ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.RequirementSet otherElement in other.allSubSets() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.RequirementSet subElement in obj.allSubSets() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidRequirementSet ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.RequirementSet subElement in obj.allSubSets() )
+                    {
+                        ensureGuidRequirementSet ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allSubSets() != null ) 
+                {
+                    foreach ( Generated.RequirementSet otherElement in other.allSubSets() )
+                    {
+                        ensureGuidRequirementSet ( null, otherElement );
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Ensures that two RequirementSetDependance have matching GUID, and recursively.
+        /// Ensures that two RequirementSetDependancy have matching GUID, and recursively.
         /// obj is the leader for Guid. If other doesn't match obj guid, 
         ///   1. other does not have a guid, in that case, other should have the same guid as obj
         ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void ensureGuidRequirementSetDependance(Generated.RequirementSetDependance obj, Generated.RequirementSetDependance other)
+        public static void ensureGuidRequirementSetDependancy(Generated.RequirementSetDependancy obj, Generated.RequirementSetDependancy other)
         {
             if ( obj == null )
             { 
@@ -13176,23 +13310,30 @@ namespace DataDictionary.Compare
         {
             searchNamable (obj, searchString, occurences);
 
-            if ( obj.allDependances() != null )
+            if ( obj.allDependancies() != null )
             {
-                foreach ( Generated.RequirementSetDependance subElement in obj.allDependances() )
+                foreach ( Generated.RequirementSetDependancy subElement in obj.allDependancies() )
                 {
-                    searchRequirementSetDependance ( subElement, searchString, occurences );
+                    searchRequirementSetDependancy ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allSubSets() != null )
+            {
+                foreach ( Generated.RequirementSet subElement in obj.allSubSets() )
+                {
+                    searchRequirementSet ( subElement, searchString, occurences );
                 }
             }
         }
 
         /// <summary>
-        /// Searches a specific string in RequirementSetDependance and updates the list 
+        /// Searches a specific string in RequirementSetDependancy and updates the list 
         /// of model element with all the elements in which that string is found
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="obj">The string to search for</param>
         /// <param name="occurences">The list of model elements which hold the searched string</param>
-        public static void searchRequirementSetDependance(Generated.RequirementSetDependance obj, string searchString, List<ModelElement> occurences)
+        public static void searchRequirementSetDependancy(Generated.RequirementSetDependancy obj, string searchString, List<ModelElement> occurences)
         {
             searchNamable (obj, searchString, occurences);
 

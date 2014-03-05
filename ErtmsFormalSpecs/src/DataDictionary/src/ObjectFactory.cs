@@ -558,9 +558,9 @@ namespace DataDictionary
             return retVal;
         }
 
-        public override Generated.RequirementSetDependance createRequirementSetDependance()
+        public override Generated.RequirementSetDependancy createRequirementSetDependancy()
         {
-            Generated.RequirementSetDependance retVal = new Specification.RequirementSetDependance();
+            Generated.RequirementSetDependancy retVal = new Specification.RequirementSetDependancy();
 
             DefaultValueSetter.visit(retVal);
 

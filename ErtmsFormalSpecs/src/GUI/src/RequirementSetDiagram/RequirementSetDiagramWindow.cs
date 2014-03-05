@@ -28,12 +28,12 @@ using DataDictionary.Specification;
 
 namespace GUI.RequirementSetDiagram
 {
-    public partial class RequirementSetDiagramWindow : BoxArrowWindow<RequirementSet, RequirementSetDependance>
+    public partial class RequirementSetDiagramWindow : BoxArrowWindow<RequirementSet, RequirementSetDependancy>
     {
         /// <summary>
-        /// The system for which the requirement set diagram is built
+        /// The enclosing for which the requirement set diagram is built
         /// </summary>
-        public EFSSystem EFSSystem { get; private set; }
+        public IHoldsRequirementSets Enclosing { get; private set; }
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -58,20 +58,20 @@ namespace GUI.RequirementSetDiagram
         private RequirementSetPanel Panel { get { return (RequirementSetPanel)BoxArrowContainerPanel; } }
 
         /// <summary>
-        /// Sets the state machine type
+        /// Sets the system for this diagram
         /// </summary>
-        /// <param name="stateMachine"></param>
-        public void SetSystem(EFSSystem system)
+        /// <param name="enclosing"></param>
+        public void SetEnclosing(IHoldsRequirementSets enclosing)
         {
-            EFSSystem = system;
+            Enclosing = enclosing;
 
-            Panel.EFSSystem = EFSSystem;
+            Panel.Enclosing = enclosing;
             Panel.RefreshControl();
         }
 
-        public override BoxArrowPanel<RequirementSet, RequirementSetDependance> createPanel()
+        public override BoxArrowPanel<RequirementSet, RequirementSetDependancy> createPanel()
         {
-            BoxArrowPanel<RequirementSet, RequirementSetDependance> retVal = new RequirementSetPanel();
+            BoxArrowPanel<RequirementSet, RequirementSetDependancy> retVal = new RequirementSetPanel();
 
             return retVal;
         }
@@ -85,7 +85,7 @@ namespace GUI.RequirementSetDiagram
             /// Constructor
             /// </summary>
             /// <param name="control"></param>
-            public RequirementSetEditor(BoxControl<RequirementSet, RequirementSetDependance> control)
+            public RequirementSetEditor(BoxControl<RequirementSet, RequirementSetDependancy> control)
                 : base(control)
             {
             }
@@ -96,7 +96,7 @@ namespace GUI.RequirementSetDiagram
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        protected override BoxEditor createBoxEditor(BoxControl<RequirementSet, RequirementSetDependance> control)
+        protected override BoxEditor createBoxEditor(BoxControl<RequirementSet, RequirementSetDependancy> control)
         {
             BoxEditor retVal = new RequirementSetEditor(control);
 
@@ -110,7 +110,7 @@ namespace GUI.RequirementSetDiagram
             {
                 TransitionEditor instance = (TransitionEditor)context.Instance;
                 RequirementSetPanel panel = (RequirementSetPanel)instance.control.BoxArrowPanel;
-                return GetValues(panel.EFSSystem);
+                return GetValues(panel.Enclosing);
             }
         }
 
@@ -123,7 +123,7 @@ namespace GUI.RequirementSetDiagram
             /// Constructor
             /// </summary>
             /// <param name="control"></param>
-            public TransitionEditor(ArrowControl<RequirementSet, RequirementSetDependance> control)
+            public TransitionEditor(ArrowControl<RequirementSet, RequirementSetDependancy> control)
                 : base(control)
             {
             }
@@ -143,9 +143,9 @@ namespace GUI.RequirementSetDiagram
                 }
                 set
                 {
-                    RequirementSetDependanceControl transitionControl = (RequirementSetDependanceControl)control;
+                    RequirementSetDependancyControl transitionControl = (RequirementSetDependancyControl)control;
                     RequirementSetPanel panel = (RequirementSetPanel)transitionControl.Panel;
-                    RequirementSet requirementSet = DataDictionary.OverallRequirementSetFinder.INSTANCE.findByName(panel.EFSSystem, value);
+                    RequirementSet requirementSet = DataDictionary.OverallRequirementSetFinder.INSTANCE.findByName(panel.Enclosing, value);
                     if (requirementSet != null)
                     {
                         control.SetInitialBox(requirementSet);
@@ -170,9 +170,9 @@ namespace GUI.RequirementSetDiagram
                 }
                 set
                 {
-                    RequirementSetDependanceControl transitionControl = (RequirementSetDependanceControl)control;
+                    RequirementSetDependancyControl transitionControl = (RequirementSetDependancyControl)control;
                     RequirementSetPanel statePanel = (RequirementSetPanel)transitionControl.Panel;
-                    RequirementSet requirementSet = DataDictionary.OverallRequirementSetFinder.INSTANCE.findByName(statePanel.EFSSystem, value);
+                    RequirementSet requirementSet = DataDictionary.OverallRequirementSetFinder.INSTANCE.findByName(statePanel.Enclosing, value);
                     if (requirementSet != null)
                     {
                         control.SetTargetBox(requirementSet);
@@ -187,7 +187,7 @@ namespace GUI.RequirementSetDiagram
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        protected override ArrowEditor createArrowEditor(ArrowControl<RequirementSet, RequirementSetDependance> control)
+        protected override ArrowEditor createArrowEditor(ArrowControl<RequirementSet, RequirementSetDependancy> control)
         {
             ArrowEditor retVal = new TransitionEditor(control);
 

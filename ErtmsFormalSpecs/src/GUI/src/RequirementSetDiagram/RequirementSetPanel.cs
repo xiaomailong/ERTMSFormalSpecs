@@ -29,7 +29,7 @@ using DataDictionary.Specification;
 
 namespace GUI.RequirementSetDiagram
 {
-    public class RequirementSetPanel : BoxArrowPanel<RequirementSet, RequirementSetDependance>
+    public class RequirementSetPanel : BoxArrowPanel<RequirementSet, RequirementSetDependancy>
     {
         private System.Windows.Forms.ToolStripMenuItem addRequirementSetMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addDependanceMenuItem;
@@ -116,9 +116,9 @@ namespace GUI.RequirementSetDiagram
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public override BoxControl<RequirementSet, RequirementSetDependance> createBox(RequirementSet model)
+        public override BoxControl<RequirementSet, RequirementSetDependancy> createBox(RequirementSet model)
         {
-            BoxControl<RequirementSet, RequirementSetDependance> retVal = new RequirementSetControl();
+            BoxControl<RequirementSet, RequirementSetDependancy> retVal = new RequirementSetControl();
             retVal.Model = model;
 
             return retVal;
@@ -129,18 +129,18 @@ namespace GUI.RequirementSetDiagram
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public override ArrowControl<RequirementSet, RequirementSetDependance> createArrow(RequirementSetDependance model)
+        public override ArrowControl<RequirementSet, RequirementSetDependancy> createArrow(RequirementSetDependancy model)
         {
-            ArrowControl<RequirementSet, RequirementSetDependance> retVal = new RequirementSetDependanceControl();
+            ArrowControl<RequirementSet, RequirementSetDependancy> retVal = new RequirementSetDependancyControl();
             retVal.Model = model;
 
             return retVal;
         }
 
         /// <summary>
-        /// The EFSSystem for which this panel is built
+        /// The enclosing element, which holds requirement setsEFSSystem for which this panel is built
         /// </summary>
-        public EFSSystem EFSSystem { get; set; }
+        public IHoldsRequirementSets Enclosing { get; set; }
 
         /// <summary>
         /// Provides the boxes that need be displayed
@@ -148,20 +148,22 @@ namespace GUI.RequirementSetDiagram
         /// <returns></returns>
         public override List<RequirementSet> getBoxes()
         {
-            return EFSSystem.RequirementSets;
+            List<RequirementSet> retVal = Enclosing.RequirementSets;
+
+            return retVal;
         }
 
         /// <summary>
         /// Provides the arrows that need be displayed
         /// </summary>
         /// <returns></returns>
-        public override List<RequirementSetDependance> getArrows()
+        public override List<RequirementSetDependancy> getArrows()
         {
-            List<RequirementSetDependance> retVal = new List<RequirementSetDependance>();
+            List<RequirementSetDependancy> retVal = new List<RequirementSetDependancy>();
 
-            foreach (RequirementSet requirementSet in EFSSystem.RequirementSets)
+            foreach (RequirementSet requirementSet in Enclosing.RequirementSets)
             {
-                foreach (RequirementSetDependance dependance in requirementSet.Dependances)
+                foreach (RequirementSetDependancy dependance in requirementSet.Dependancies)
                 {
                     retVal.Add(dependance);
                 }
@@ -173,31 +175,15 @@ namespace GUI.RequirementSetDiagram
         private void addBoxMenuItem_Click(object sender, EventArgs e)
         {
             RequirementSet requirementSet = (RequirementSet)DataDictionary.Generated.acceptor.getFactory().createRequirementSet();
-            requirementSet.Name = "<set " + (EFSSystem.RequirementSets.Count + 1) + ">";
+            requirementSet.Name = "<set " + (Enclosing.RequirementSets.Count + 1) + ">";
 
-            DataDictionary.Dictionary dictionary;
-            if (EFSSystem.Dictionaries.Count > 1)
-            {
-                DictionarySelector.DictionarySelector selector = new DictionarySelector.DictionarySelector(EFSSystem);
-                selector.ShowDialog();
-                dictionary = selector.Selected;
-            }
-            else
-            {
-                dictionary = EFSSystem.Dictionaries[0];
-            }
-
-            if (dictionary != null)
-            {
-                dictionary.appendRequirementSets(requirementSet);
-            }
-
+            Enclosing.AddRequirementSet(requirementSet);
             RefreshControl();
         }
 
         private void addArrowMenuItem_Click(object sender, EventArgs e)
         {
-            if (EFSSystem.RequirementSets.Count > 1)
+            if (Enclosing.RequirementSets.Count > 1)
             {
                 RequirementSet source = null;
                 RequirementSet target = null;
@@ -205,26 +191,26 @@ namespace GUI.RequirementSetDiagram
                 if (sourceControl != null)
                 {
                     source = sourceControl.Model;
-                    target = EFSSystem.RequirementSets[0];
+                    target = Enclosing.RequirementSets[0];
                     if (target == source)
                     {
-                        target = EFSSystem.RequirementSets[1];
+                        target = Enclosing.RequirementSets[1];
                     }
                 }
                 else
                 {
-                    source = EFSSystem.RequirementSets[0];
-                    target = EFSSystem.RequirementSets[1];
+                    source = Enclosing.RequirementSets[0];
+                    target = Enclosing.RequirementSets[1];
                 }
 
-                RequirementSetDependance dependance = (RequirementSetDependance)DataDictionary.Generated.acceptor.getFactory().createRequirementSetDependance();
-                dependance.setTarget(target.Name);
-                source.appendDependances(dependance);
+                RequirementSetDependancy dependancy = (RequirementSetDependancy)DataDictionary.Generated.acceptor.getFactory().createRequirementSetDependancy();
+                dependancy.setTarget(target.Name);
+                source.appendDependancies(dependancy);
 
                 RefreshControl();
                 Refresh();
 
-                ArrowControl<RequirementSet, RequirementSetDependance> control = getArrowControl(dependance);
+                ArrowControl<RequirementSet, RequirementSetDependancy> control = getArrowControl(dependancy);
                 Select(control, false);
             }
         }
@@ -235,7 +221,7 @@ namespace GUI.RequirementSetDiagram
 
             if (control != null)
             {
-                EFSSystem.MarkRequirementsForRequirementSet(control.Model);
+                EFSSystem.INSTANCE.MarkRequirementsForRequirementSet(control.Model);
             }
         }
 

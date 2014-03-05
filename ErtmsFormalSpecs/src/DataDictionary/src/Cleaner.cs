@@ -716,7 +716,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="visitSubNodes"></param>
-        public override void visit(Generated.RequirementSetDependance obj, bool visitSubNodes)
+        public override void visit(Generated.RequirementSetDependancy obj, bool visitSubNodes)
         {
           if ( obj.getTarget() != null )
           {
