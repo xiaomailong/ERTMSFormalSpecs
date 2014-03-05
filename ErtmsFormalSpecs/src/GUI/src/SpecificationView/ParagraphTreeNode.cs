@@ -221,6 +221,9 @@ namespace GUI.SpecificationView
                 {
                     window.specBrowserRuleView.Nodes.Add(new ReqRefTreeNode(reqRef, true, false, reqRef.Model.Name));
                 }
+
+                window.functionalBlocksTreeView.SetRoot(Model);
+                window.functionalBlocksTreeView.RefreshModel();
             }
 
             GUIUtils.MDIWindow.SetCoverageStatus(Item);

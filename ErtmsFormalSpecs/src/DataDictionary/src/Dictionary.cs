@@ -337,7 +337,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The specifications related to this rule set
+        /// The specifications related to this dictionary
         /// </summary>
         public ArrayList Specifications
         {
@@ -354,6 +354,23 @@ namespace DataDictionary
             }
         }
 
+        /// <summary>
+        /// The functional blocks related to this dictionary
+        /// </summary>
+        public ArrayList FunctionalBlocks
+        {
+            get
+            {
+                ArrayList retVal = allFunctionalBlocks();
+
+                if (retVal == null)
+                {
+                    retVal = new ArrayList();
+                }
+
+                return retVal;
+            }
+        }
         /// <summary>
         /// The rule disablings related to this rule set
         /// </summary>

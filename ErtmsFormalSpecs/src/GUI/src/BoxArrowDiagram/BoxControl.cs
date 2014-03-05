@@ -19,6 +19,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using DataDictionary.Constants;
 using DataDictionary.Variables;
+using Utils;
 
 namespace GUI.BoxArrowDiagram
 {
@@ -276,7 +277,7 @@ namespace GUI.BoxArrowDiagram
         /// <summary>
         /// Selects the current box 
         /// </summary>
-        public void SelectBox()
+        public virtual void SelectBox()
         {
             Panel.Select(this, Control.ModifierKeys == Keys.Control);
         }
@@ -383,7 +384,6 @@ namespace GUI.BoxArrowDiagram
             }
         }
 
-
         /// <summary>
         /// Handles a mouse click event
         /// </summary>
@@ -408,6 +408,14 @@ namespace GUI.BoxArrowDiagram
         public Span YSpan
         {
             get { return new Span(Location.Y, Location.Y + Height); }
+        }
+
+        /// <summary>
+        /// Accepts a drop event from a model element
+        /// </summary>
+        /// <param name="element"></param>
+        public virtual void AcceptDrop(ModelElement element)
+        {
         }
     }
 }

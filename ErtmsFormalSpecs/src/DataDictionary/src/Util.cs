@@ -43,7 +43,7 @@ namespace DataDictionary
         /// <summary>
         /// Updates the dictionary contents
         /// </summary>
-        private class Updater : Cleaner 
+        private class Updater : Cleaner
         {
             /// <summary>
             /// Indicates that GUID should be updated
@@ -118,6 +118,7 @@ namespace DataDictionary
             {
                 Specification.Paragraph paragraph = (Specification.Paragraph)obj;
 
+                // Ensures the scope is located in the flags
                 switch (paragraph.getScope())
                 {
                     case Generated.acceptor.Paragraph_scope.aOBU:
@@ -137,10 +138,27 @@ namespace DataDictionary
                     case Generated.acceptor.Paragraph_scope.aROLLING_STOCK:
                         paragraph.setScopeRollingStock(true);
                         break;
-
                 }
-
                 paragraph.setScope(Generated.acceptor.Paragraph_scope.aFLAGS);
+
+                // Ensures the functional block exists
+                if (!string.IsNullOrEmpty(paragraph.getFunctionalBlockName()))
+                {
+                    FunctionalBlock functionalBlock = paragraph.EFSSystem.findFunctionalBlock(paragraph.getFunctionalBlockName());
+                    if (functionalBlock == null)
+                    {
+                        functionalBlock = (FunctionalBlock)Generated.acceptor.getFactory().createFunctionalBlock();
+                        functionalBlock.Name = paragraph.getFunctionalBlockName();
+                        paragraph.Dictionary.appendFunctionalBlocks(functionalBlock);
+                    }
+
+                    if (!paragraph.BelongsToFunctionalBlock(paragraph.getFunctionalBlockName()))
+                    {
+                        FunctionalBlockReference reference = (FunctionalBlockReference)Generated.acceptor.getFactory().createFunctionalBlockReference();
+                        reference.Name = paragraph.getFunctionalBlockName();
+                        paragraph.appendFunctionalBlocks(reference);
+                    }
+                }
 
                 base.visit(obj, visitSubNodes);
             }

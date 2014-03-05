@@ -91,6 +91,18 @@
     <Compile Include="src\BoxArrowDiagram\ArrowControl.Designer.cs">
       <DependentUpon>ArrowControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\FunctionalBlockDiagram\FunctionalBlockControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\FunctionalBlockDiagram\FunctionalBlockDiagramWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\FunctionalBlockDiagram\FunctionalBlockPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\FunctionalBlockDiagram\FunctionalDependanceControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\DataDictionaryView\StateRulesTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StateSubStatesTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StructureProceduresTreeNode.cs" />
@@ -319,10 +331,14 @@
     <Compile Include="src\Shortcuts\Window.Designer.cs">
       <DependentUpon>Window.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\SpecificationView\FunctionalBlockReferenceTreeNode.cs" />
     <Compile Include="src\SpecificationView\SpecificationsTreeNode.cs" />
     <Compile Include="src\SpecificationView\SpecificationTreeNode.cs" />
     <Compile Include="src\SpecificationView\ParagraphTreeNode.cs" />
     <Compile Include="src\SpecificationView\SpecificationTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\SpecificationView\FunctionalBlocksTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\StateDiagram\StateControl.cs">
@@ -450,6 +466,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\BoxArrowDiagram\ArrowControl.resx">
       <DependentUpon>ArrowControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\FunctionalBlockDiagram\FunctionalBlockDiagramWindow.resx">
+      <DependentUpon>FunctionalBlockDiagramWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\FunctionalBlockDiagram\FunctionalDependanceControl.resx">
+      <DependentUpon>FunctionalDependanceControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\DataDictionaryView\CustomAction.resx">
       <DependentUpon>CustomAction.cs</DependentUpon>

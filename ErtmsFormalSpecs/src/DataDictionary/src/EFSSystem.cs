@@ -23,6 +23,7 @@ namespace DataDictionary
     using DataDictionary.Interpreter.Statement;
     using DataDictionary.Specification;
     using DataDictionary.Interpreter.Filter;
+    using System.Collections;
 
     /// <summary>
     /// A complete system, along with all dictionaries
@@ -1331,5 +1332,101 @@ namespace DataDictionary
         /// The maximum size of an explain part message
         /// </summary>
         public int MaxExplainSize { get; set; }
+
+        /// <summary>
+        /// Provides the list of functional blocks in the system
+        /// </summary>
+        public List<FunctionalBlock> FunctionalBlocks
+        {
+            get
+            {
+                List<FunctionalBlock> retVal = new List<FunctionalBlock>();
+
+                foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+                {
+                    foreach (FunctionalBlock functionalBlock in dictionary.FunctionalBlocks)
+                    {
+                        retVal.Add(functionalBlock);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Marks the requirements for a specific functional block
+        /// </summary>
+        private class FunctionalBlockMarker : Generated.Visitor
+        {
+            /// <summary>
+            /// The functional block for which marking is done
+            /// </summary>
+            private FunctionalBlock FunctionalBlock { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="functionalBlock"></param>
+            public FunctionalBlockMarker(FunctionalBlock functionalBlock)
+            {
+                FunctionalBlock = functionalBlock;
+            }
+
+            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+            {
+                Paragraph paragraph = (Paragraph)obj;
+
+                foreach (FunctionalBlockReference reference in paragraph.FunctionalBlockReferences)
+                {
+                    if (reference.Name == FunctionalBlock.Name)
+                    {
+                        obj.AddInfo("Functional block " + FunctionalBlock.Name);
+                        break;
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
+        /// Marks the requirements which relate to the corresponding functional block 
+        /// </summary>
+        /// <param name="functionalBlock"></param>
+        public void MarkRequirementsForFunctionalBlock(FunctionalBlock functionalBlock)
+        {
+            FunctionalBlockMarker marker = new FunctionalBlockMarker(functionalBlock);
+            foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+            {
+                dictionary.ClearMessages();
+                marker.visit(dictionary);
+            }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
+        }
+
+        /// <summary>
+        /// Provides the function block whose name corresponds to the name provided
+        /// </summary>
+        /// <param name="functionalBlockName"></param>
+        /// <returns></returns>
+        public FunctionalBlock findFunctionalBlock(string functionalBlockName)
+        {
+            FunctionalBlock retVal = null;
+
+            foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+            {
+                foreach (FunctionalBlock functionalBlock in dictionary.FunctionalBlocks)
+                {
+                    if (functionalBlock.Name == functionalBlockName)
+                    {
+                        retVal = functionalBlock;
+                        break;
+                    }
+                }
+            }
+
+            return retVal;
+        }
     }
 }

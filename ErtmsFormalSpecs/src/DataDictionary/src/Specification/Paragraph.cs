@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace DataDictionary.Specification
 {
@@ -94,6 +95,22 @@ namespace DataDictionary.Specification
                 }
 
                 return base.Guid;
+            }
+        }
+
+        /// <summary>
+        /// Provides the functional block references for this paragraph
+        /// </summary>
+        public ArrayList FunctionalBlockReferences
+        {
+            get
+            {
+                if (allFunctionalBlocks() == null)
+                {
+                    setAllFunctionalBlocks(new ArrayList());
+                }
+
+                return allFunctionalBlocks();
             }
         }
 
@@ -693,6 +710,26 @@ namespace DataDictionary.Specification
             }
 
             base.Delete();
+        }
+
+        /// <summary>
+        /// Indicates whether this paragraphs belongs to the functionam block whose name is provided as parameter
+        /// </summary>
+        /// <param name="name"></param>
+        public bool BelongsToFunctionalBlock(string name)
+        {
+            bool retVal = false;
+
+            foreach (FunctionalBlockReference reference in FunctionalBlockReferences)
+            {
+                if (reference.Name == name)
+                {
+                    retVal = true;
+                    break;
+                }
+            }
+
+            return retVal;
         }
     }
 }

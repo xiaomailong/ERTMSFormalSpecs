@@ -20,6 +20,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using DataDictionary.Constants;
 using DataDictionary.Types;
+using DataDictionary;
 
 namespace GUI.BoxArrowDiagram
 {
@@ -55,6 +56,56 @@ namespace GUI.BoxArrowDiagram
             MouseDown += new MouseEventHandler(BoxArrowPanel_MouseDown);
             MouseMove += new MouseEventHandler(BoxArrowPanel_MouseMove);
             MouseUp += new MouseEventHandler(BoxArrowPanel_MouseUp);
+
+            DragEnter += new DragEventHandler(DragEnterHandler);
+            DragDrop += new DragEventHandler(DragDropHandler);
+            AllowDrop = true;
+        }
+
+        /// <summary>
+        /// Called to initiate a drag & drop operation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void DragEnterHandler(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private const int CTRL = 8;
+        private const int ALT = 32;
+
+        /// <summary>
+        /// Called when the drop operation is performed on a node
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void DragDropHandler(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
+            {
+                BaseTreeNode SourceNode = e.Data.GetData("WindowsForms10PersistentObject") as BaseTreeNode;
+                if (SourceNode != null)
+                {
+                    BoxControl<BoxModel, ArrowModel> target = null;
+
+                    foreach (BoxControl<BoxModel, ArrowModel> box in boxes.Values)
+                    {
+                        Rectangle rectangle = box.DisplayRectangle;
+                        rectangle.Offset(box.PointToScreen(Location));
+                        if (rectangle.Contains(e.X, e.Y))
+                        {
+                            target = box;
+                            break;
+                        }
+                    }
+
+                    if (target != null)
+                    {
+                        target.AcceptDrop(SourceNode.Model as ModelElement);
+                    }
+                }
+            }
         }
 
         /// <summary>

@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using DataDictionary.Specification;
 
 namespace DataDictionary
 {
@@ -367,6 +368,17 @@ namespace DataDictionary
         /// A static instance used to execute this finder
         /// </summary>
         public static OverallStateFinder INSTANCE = new OverallStateFinder();
+    }
+
+    /// <summary>
+    /// Finds the State in the dictionary, based on the name provided
+    /// </summary>
+    public class OverallFunctionalBlockFinder : Utils.OverallFinder<FunctionalBlock>
+    {
+        /// <summary>
+        /// A static instance used to execute this finder
+        /// </summary>
+        public static OverallFunctionalBlockFinder INSTANCE = new OverallFunctionalBlockFinder();
     }
 
     /// <summary>

@@ -13,7 +13,8 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace DataDictionary
+
+namespace DataDictionary.Specification
 {
     using System;
     using System.Collections.Generic;
@@ -21,78 +22,64 @@ namespace DataDictionary
     using System.Text;
 
     /// <summary>
-    /// Something that can be graphically displayed
+    /// Represents a functional block
     /// </summary>
-    public interface IGraphicalDisplay : Utils.IModelElement, Utils.INamable, TextualExplain
-    {
-        /// <summary>
-        /// The X position
-        /// </summary>
-        int X { get; set; }
-
-        /// <summary>
-        /// The Y position
-        /// </summary>
-        int Y { get; set; }
-
-        /// <summary>
-        /// The width
-        /// </summary>
-        int Width { get; set; }
-
-        /// <summary>
-        /// The height
-        /// </summary>
-        int Height { get; set; }
-
-        /// <summary>
-        /// The name to be displayed
-        /// </summary>
-        string GraphicalName { get; }
-
-        /// <summary>
-        /// Indicates that the element is hiddent
-        /// </summary>
-        bool Hidden { get; set; }
-    }
-
-    /// <summary>
-    /// Something that can be graphically displayed
-    /// </summary>
-    public interface IGraphicalArrow<Ending>
-        where Ending : IGraphicalDisplay
+    public class FunctionalBlockDependance : Generated.FunctionalBlockDependance, IGraphicalArrow<FunctionalBlock>
     {
         /// <summary>
         /// The source of the arrow
         /// </summary>
-        Ending Source { get; }
+        public FunctionalBlock Source { get { return Enclosing as FunctionalBlock; } }
 
         /// <summary>
         /// Sets the source box for this arrow
         /// </summary>
         /// <param name="initialBox"></param>
-        void SetInitialBox(IGraphicalDisplay initialBox);
+        public void SetInitialBox(IGraphicalDisplay initialBox)
+        {
+            Source.removeDependances(this);
+            FunctionalBlock newSource = (FunctionalBlock)initialBox;
+            newSource.appendDependances(this);
+        }
 
         /// <summary>
         /// The target of the arrow
         /// </summary>
-        Ending Target { get; }
+        public FunctionalBlock Target
+        {
+            get
+            {
+                FunctionalBlock retVal = null;
+
+                foreach (FunctionalBlock functionalBlock in EFSSystem.FunctionalBlocks)
+                {
+                    if (functionalBlock.Name == getTarget())
+                    {
+                        retVal = functionalBlock;
+                        break;
+                    }
+                }
+                return retVal;
+            }
+        }
 
         /// <summary>
         /// Sets the target box for this arrow
         /// </summary>
         /// <param name="targetBox"></param>
-        void SetTargetBox(IGraphicalDisplay targetBox);
+        public void SetTargetBox(IGraphicalDisplay targetBox)
+        {
+            setTarget(targetBox.Name);
+        }
 
         /// <summary>
         /// The name to be displayed
         /// </summary>
-        string GraphicalName { get; }
+        public string GraphicalName { get { return Name; } }
 
         /// <summary>
         /// The model element which is referenced by this arrow
         /// </summary>
-        ModelElement ReferencedModel { get; }
-
+        public ModelElement ReferencedModel { get { return this; } }
     }
 }

@@ -705,6 +705,32 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="visitSubNodes"></param>
+        public override void visit(Generated.FunctionalBlock obj, bool visitSubNodes)
+        {
+
+          base.visit(obj, visitSubNodes);
+        }
+
+        /// <summary>
+        /// Cleans all text fields in this element
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="visitSubNodes"></param>
+        public override void visit(Generated.FunctionalBlockDependance obj, bool visitSubNodes)
+        {
+          if ( obj.getTarget() != null )
+          {
+            obj.setTarget(obj.getTarget().Trim());
+          }
+
+          base.visit(obj, visitSubNodes);
+        }
+
+        /// <summary>
+        /// Cleans all text fields in this element
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="visitSubNodes"></param>
         public override void visit(Generated.Specification obj, bool visitSubNodes)
         {
           if ( obj.getVersion() != null )
@@ -772,6 +798,17 @@ namespace DataDictionary
           {
             obj.setObsoleteGuid(obj.getObsoleteGuid().Trim());
           }
+
+          base.visit(obj, visitSubNodes);
+        }
+
+        /// <summary>
+        /// Cleans all text fields in this element
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="visitSubNodes"></param>
+        public override void visit(Generated.FunctionalBlockReference obj, bool visitSubNodes)
+        {
 
           base.visit(obj, visitSubNodes);
         }

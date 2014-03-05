@@ -549,6 +549,33 @@ namespace DataDictionary
             return retVal;
         }
 
+        public override Generated.FunctionalBlock createFunctionalBlock()
+        {
+            Generated.FunctionalBlock retVal = new Specification.FunctionalBlock();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
+        }
+
+        public override Generated.FunctionalBlockDependance createFunctionalBlockDependance()
+        {
+            Generated.FunctionalBlockDependance retVal = new Specification.FunctionalBlockDependance();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
+        }
+
+        public override Generated.FunctionalBlockReference createFunctionalBlockReference()
+        {
+            Generated.FunctionalBlockReference retVal = new Specification.FunctionalBlockReference();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
+        }
+
         public override Generated.Chapter createChapter()
         {
             Generated.Chapter retVal = new Specification.Chapter();

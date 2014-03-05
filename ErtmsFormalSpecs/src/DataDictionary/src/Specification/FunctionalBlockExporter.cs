@@ -20,7 +20,7 @@ using System.IO;
 
 namespace DataDictionary.Specification
 {
-    public class FunctionalBlock
+    public class FunctionalBlockItem
     {
         public string Name { set; get; }
         public List<Paragraph> Paragraphs { set; get; }
@@ -33,7 +33,7 @@ namespace DataDictionary.Specification
         /// <summary>
         /// Constructor
         /// </summary>
-        public FunctionalBlock(Paragraph aParagraph)
+        public FunctionalBlockItem(Paragraph aParagraph)
         {
             Paragraphs = new List<Paragraph>();
             Paragraphs.Add(aParagraph);
@@ -101,15 +101,9 @@ namespace DataDictionary.Specification
         }
     }
 
-
-
-
-
     public class FunctionalBlockExporter
     {
         private Specification specification;
-
-
 
         /// <summary>
         /// Constructor
@@ -120,18 +114,17 @@ namespace DataDictionary.Specification
             specification = aSpecification;
         }
 
-
         /// <summary>
         /// Exports the informations related to the functional blocks into a .cvs file
         /// </summary>
         public void Export(string path)
         {
-            List<FunctionalBlock> functionalBlocks = CreateFunctionalBlocks();
+            List<FunctionalBlockItem> functionalBlocks = CreateFunctionalBlocks();
 
             TextWriter tw = new StreamWriter(path);
             tw.WriteLine("Name\tImplemented paragraphs\tApplicableParagraphs\tImplementedPercentage\tEstimatedTime");
 
-            foreach (FunctionalBlock fb in functionalBlocks)
+            foreach (FunctionalBlockItem fb in functionalBlocks)
             {
                 fb.ComputeStats();
                 tw.WriteLine(fb.ToString());
@@ -145,14 +138,14 @@ namespace DataDictionary.Specification
         /// Creates the list of functional blocks of the specification
         /// </summary>
         /// <returns></returns>
-        private List<FunctionalBlock> CreateFunctionalBlocks()
+        private List<FunctionalBlockItem> CreateFunctionalBlocks()
         {
-            List<FunctionalBlock> retVal = new List<FunctionalBlock>();
+            List<FunctionalBlockItem> retVal = new List<FunctionalBlockItem>();
             List<Paragraph> paragraphs = CreateFunctionalBlockParagraphs();
 
             foreach (Paragraph paragraph in paragraphs)
             {
-                FunctionalBlock aFB = null;
+                FunctionalBlockItem aFB = null;
                 for (int i = 0; i < retVal.Count && aFB == null; i++)
                 {
                     if (retVal[i].Name.Equals(paragraph.getFunctionalBlockName()))
@@ -166,7 +159,7 @@ namespace DataDictionary.Specification
                 }
                 else
                 {
-                    retVal.Add(new FunctionalBlock(paragraph));
+                    retVal.Add(new FunctionalBlockItem(paragraph));
                 }
             }
 

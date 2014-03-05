@@ -21,13 +21,11 @@ using DataDictionary.Constants;
 using DataDictionary.Variables;
 using GUI.BoxArrowDiagram;
 using DataDictionary.Rules;
-using DataDictionary.Types;
-using DataDictionary.Types.AccessMode;
 using DataDictionary.Specification;
 
-namespace GUI.FunctionalView
+namespace GUI.FunctionalBlockDiagram
 {
-    public partial class FunctionalBlockControl : BoxControl<NameSpace, AccessMode>
+    public partial class FunctionalBlockControl : BoxControl<FunctionalBlock, FunctionalBlockDependance>
     {
         /// <summary>
         /// Constructor
@@ -35,9 +33,6 @@ namespace GUI.FunctionalView
         public FunctionalBlockControl()
             : base()
         {
-            BoxMode = BoxModeEnum.RoundedCorners;
-            BackColor = System.Drawing.Color.Transparent;
-            MouseDoubleClick += new MouseEventHandler(HandleMouseDoubleClick);
         }
 
         /// <summary>
@@ -47,28 +42,30 @@ namespace GUI.FunctionalView
         public FunctionalBlockControl(IContainer container)
             : base(container)
         {
-            BoxMode = BoxModeEnum.RoundedCorners;
-            BackColor = System.Drawing.Color.Transparent;
-            MouseDoubleClick += new MouseEventHandler(HandleMouseDoubleClick);
         }
 
-        /// <summary>
-        /// Handles a double click event on the control
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void HandleMouseDoubleClick(object sender, MouseEventArgs e)
+        public override void AcceptDrop(Utils.ModelElement element)
         {
-            SelectBox();
+            base.AcceptDrop(element);
 
-            FunctionalAnalysisPanel panel = (FunctionalAnalysisPanel)Panel;
-            if (panel != null)
+            // Allows to allocate paragraphs in functional blocks
+            Paragraph paragraph = element as Paragraph;
+            if (paragraph != null)
             {
-                FunctionalAnalysisWindow window = new FunctionalAnalysisWindow();
-                GUIUtils.MDIWindow.AddChildWindow(window);
-                window.SetNameSpaceContainer(Model);
-                window.Text = Model.Name + " functional analysis";
+                if (!paragraph.BelongsToFunctionalBlock(Model.Name))
+                {
+                    FunctionalBlockReference reference = (FunctionalBlockReference) DataDictionary.Generated.acceptor.getFactory().createFunctionalBlockReference();
+                    reference.Name = Model.Name;
+                    paragraph.appendFunctionalBlocks(reference);
+                }
             }
+        }
+
+        public override void SelectBox()
+        {
+            base.SelectBox();
+
+            GUIUtils.MDIWindow.SetCoverageStatus(Model);
         }
     }
 }

@@ -48,6 +48,8 @@ namespace GUI.SpecificationView
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.nextErrortoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.nextWarningToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.nextInfoToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -64,8 +66,8 @@ namespace GUI.SpecificationView
             this.specBrowserRuleView = new GUI.SpecificationView.SpecificationTreeView();
             this.messagesGroupBox = new System.Windows.Forms.GroupBox();
             this.messagesRichTextBox = new GUI.EditorTextBox();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.functionalBlocksTabPage = new System.Windows.Forms.TabPage();
+            this.functionalBlocksTreeView = new GUI.SpecificationView.FunctionalBlocksTreeView();
             this.toolStrip3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -83,6 +85,7 @@ namespace GUI.SpecificationView
             this.specTabPage.SuspendLayout();
             this.implementationTabPage.SuspendLayout();
             this.messagesGroupBox.SuspendLayout();
+            this.functionalBlocksTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip3
@@ -112,6 +115,28 @@ namespace GUI.SpecificationView
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.ToolTipText = "Select previous marking";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.ToolTipText = "Select next marking";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // nextErrortoolStripButton
             // 
@@ -236,6 +261,7 @@ namespace GUI.SpecificationView
             // 
             this.tabControl1.Controls.Add(this.specTabPage);
             this.tabControl1.Controls.Add(this.implementationTabPage);
+            this.tabControl1.Controls.Add(this.functionalBlocksTabPage);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
@@ -325,27 +351,24 @@ namespace GUI.SpecificationView
             this.messagesRichTextBox.Size = new System.Drawing.Size(346, 63);
             this.messagesRichTextBox.TabIndex = 0;
             // 
-            // toolStripButton1
+            // functionalBlocksTabPage
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.ToolTipText = "Select previous marking";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.functionalBlocksTabPage.Controls.Add(this.functionalBlocksTreeView);
+            this.functionalBlocksTabPage.Location = new System.Drawing.Point(4, 22);
+            this.functionalBlocksTabPage.Name = "functionalBlocksTabPage";
+            this.functionalBlocksTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.functionalBlocksTabPage.Size = new System.Drawing.Size(344, 55);
+            this.functionalBlocksTabPage.TabIndex = 2;
+            this.functionalBlocksTabPage.Text = "Functional blocks";
+            this.functionalBlocksTabPage.UseVisualStyleBackColor = true;
             // 
-            // toolStripButton2
+            // functionalBlocksTreeView
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.ToolTipText = "Select next marking";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.functionalBlocksTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.functionalBlocksTreeView.Location = new System.Drawing.Point(3, 3);
+            this.functionalBlocksTreeView.Name = "functionalBlocksTreeView";
+            this.functionalBlocksTreeView.Size = new System.Drawing.Size(338, 49);
+            this.functionalBlocksTreeView.TabIndex = 0;
             // 
             // Window
             // 
@@ -378,6 +401,7 @@ namespace GUI.SpecificationView
             this.specTabPage.ResumeLayout(false);
             this.implementationTabPage.ResumeLayout(false);
             this.messagesGroupBox.ResumeLayout(false);
+            this.functionalBlocksTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,6 +430,8 @@ namespace GUI.SpecificationView
         private System.Windows.Forms.GroupBox messagesGroupBox;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.TabPage functionalBlocksTabPage;
+        public GUI.SpecificationView.FunctionalBlocksTreeView functionalBlocksTreeView;
 
     }
 }

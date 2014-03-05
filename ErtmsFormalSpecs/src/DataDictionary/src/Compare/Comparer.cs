@@ -219,6 +219,65 @@ namespace DataDictionary.Compare
                     }
                 }
             }
+            if ( obj.allFunctionalBlocks() != null )
+            {
+                if ( other.allFunctionalBlocks() != null ) 
+                {
+                    foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                compareFunctionalBlock ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "FunctionalBlocks", "", subElement.Name ) );
+                        }
+                    }
+
+                    foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "FunctionalBlocks", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "FunctionalBlocks", "", subElement.Name ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allFunctionalBlocks() != null ) 
+                {
+                    foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "FunctionalBlocks", otherElement.Name) );
+                    }
+                }
+            }
             if ( obj.allRuleDisablings() != null )
             {
                 if ( other.allRuleDisablings() != null ) 
@@ -4348,6 +4407,119 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
+        /// Compares two FunctionalBlock and annotates the differences on the first one
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void compareFunctionalBlock(Generated.FunctionalBlock obj, Generated.FunctionalBlock other, VersionDiff diff)
+        {
+            if ( other == null )
+            { 
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
+                return;
+            }
+
+            compareNamable (obj, other, diff);
+
+            if ( obj.allDependances() != null )
+            {
+                if ( other.allDependances() != null ) 
+                {
+                    foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                compareFunctionalBlockDependance ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Dependances", "", subElement.Name ) );
+                        }
+                    }
+
+                    foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Dependances", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Dependances", "", subElement.Name ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allDependances() != null ) 
+                {
+                    foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Dependances", otherElement.Name) );
+                    }
+                }
+            }
+            if ( obj.getWidth() != other.getWidth() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Width", other.getWidth().ToString(), obj.getWidth().ToString()) );
+            }
+            if ( obj.getHeight() != other.getHeight() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Height", other.getHeight().ToString(), obj.getHeight().ToString()) );
+            }
+            if ( obj.getX() != other.getX() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "X", other.getX().ToString(), obj.getX().ToString()) );
+            }
+            if ( obj.getY() != other.getY() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Y", other.getY().ToString(), obj.getY().ToString()) );
+            }
+        }
+
+        /// <summary>
+        /// Compares two FunctionalBlockDependance and annotates the differences on the first one
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void compareFunctionalBlockDependance(Generated.FunctionalBlockDependance obj, Generated.FunctionalBlockDependance other, VersionDiff diff)
+        {
+            if ( other == null )
+            { 
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
+                return;
+            }
+
+            compareNamable (obj, other, diff);
+
+            if ( !CompareUtil.canonicalStringEquality(obj.getTarget(), other.getTarget()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Target", other.getTarget(), obj.getTarget()) );
+            }
+        }
+
+        /// <summary>
         /// Compares two Specification and annotates the differences on the first one
         /// </summary>
         /// <param name="obj"></param>
@@ -4732,10 +4904,86 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "FunctionalBlockName", other.getFunctionalBlockName(), obj.getFunctionalBlockName()) );
             }
+            if ( obj.allFunctionalBlocks() != null )
+            {
+                if ( other.allFunctionalBlocks() != null ) 
+                {
+                    foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                compareFunctionalBlockReference ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "FunctionalBlocks", "", subElement.Name ) );
+                        }
+                    }
+
+                    foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "FunctionalBlocks", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "FunctionalBlocks", "", subElement.Name ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allFunctionalBlocks() != null ) 
+                {
+                    foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "FunctionalBlocks", otherElement.Name) );
+                    }
+                }
+            }
             if ( obj.getTested() != other.getTested() )
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Tested", other.getTested().ToString(), obj.getTested().ToString()) );
             }
+        }
+
+        /// <summary>
+        /// Compares two FunctionalBlockReference and annotates the differences on the first one
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void compareFunctionalBlockReference(Generated.FunctionalBlockReference obj, Generated.FunctionalBlockReference other, VersionDiff diff)
+        {
+            if ( other == null )
+            { 
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
+                return;
+            }
+
+            compareNamable (obj, other, diff);
+
         }
 
         /// <summary>
@@ -5094,6 +5342,81 @@ namespace DataDictionary.Compare
                     foreach ( Generated.Specification otherElement in other.allSpecifications() )
                     {
                         ensureGuidSpecification ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allFunctionalBlocks() != null )
+            {
+                if ( other.allFunctionalBlocks() != null ) 
+                {
+                    foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidFunctionalBlock ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidFunctionalBlock ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidFunctionalBlock ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidFunctionalBlock ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                    {
+                        ensureGuidFunctionalBlock ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allFunctionalBlocks() != null ) 
+                {
+                    foreach ( Generated.FunctionalBlock otherElement in other.allFunctionalBlocks() )
+                    {
+                        ensureGuidFunctionalBlock ( null, otherElement );
                     }
                 }
             }
@@ -10839,6 +11162,177 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
+        /// Ensures that two FunctionalBlock have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidFunctionalBlock(Generated.FunctionalBlock obj, Generated.FunctionalBlock other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allDependances() != null )
+            {
+                if ( other.allDependances() != null ) 
+                {
+                    foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidFunctionalBlockDependance ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidFunctionalBlockDependance ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidFunctionalBlockDependance ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidFunctionalBlockDependance ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                    {
+                        ensureGuidFunctionalBlockDependance ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allDependances() != null ) 
+                {
+                    foreach ( Generated.FunctionalBlockDependance otherElement in other.allDependances() )
+                    {
+                        ensureGuidFunctionalBlockDependance ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two FunctionalBlockDependance have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidFunctionalBlockDependance(Generated.FunctionalBlockDependance obj, Generated.FunctionalBlockDependance other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+        }
+
+        /// <summary>
         /// Ensures that two Specification have matching GUID, and recursively.
         /// obj is the leader for Guid. If other doesn't match obj guid, 
         ///   1. other does not have a guid, in that case, other should have the same guid as obj
@@ -11329,6 +11823,129 @@ namespace DataDictionary.Compare
                 }
             }
             ensureGuidParagraphRevision ( obj.getRevision(), other.getRevision() );
+            if ( obj.allFunctionalBlocks() != null )
+            {
+                if ( other.allFunctionalBlocks() != null ) 
+                {
+                    foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidFunctionalBlockReference ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidFunctionalBlockReference ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidFunctionalBlockReference ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidFunctionalBlockReference ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                    {
+                        ensureGuidFunctionalBlockReference ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allFunctionalBlocks() != null ) 
+                {
+                    foreach ( Generated.FunctionalBlockReference otherElement in other.allFunctionalBlocks() )
+                    {
+                        ensureGuidFunctionalBlockReference ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two FunctionalBlockReference have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidFunctionalBlockReference(Generated.FunctionalBlockReference obj, Generated.FunctionalBlockReference other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
         }
 
         /// <summary>
@@ -11443,6 +12060,13 @@ namespace DataDictionary.Compare
                 foreach ( Generated.Specification subElement in obj.allSpecifications() )
                 {
                     searchSpecification ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allFunctionalBlocks() != null )
+            {
+                foreach ( Generated.FunctionalBlock subElement in obj.allFunctionalBlocks() )
+                {
+                    searchFunctionalBlock ( subElement, searchString, occurences );
                 }
             }
             if ( obj.allRuleDisablings() != null )
@@ -12542,6 +13166,43 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
+        /// Searches a specific string in FunctionalBlock and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchFunctionalBlock(Generated.FunctionalBlock obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.allDependances() != null )
+            {
+                foreach ( Generated.FunctionalBlockDependance subElement in obj.allDependances() )
+                {
+                    searchFunctionalBlockDependance ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in FunctionalBlockDependance and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchFunctionalBlockDependance(Generated.FunctionalBlockDependance obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.getTarget() != null && obj.getTarget().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
         /// Searches a specific string in Specification and updates the list 
         /// of model element with all the elements in which that string is found
         /// </summary>
@@ -12651,10 +13312,30 @@ namespace DataDictionary.Compare
             {
                 occurences.Add ( obj );
             }
+            if ( obj.allFunctionalBlocks() != null )
+            {
+                foreach ( Generated.FunctionalBlockReference subElement in obj.allFunctionalBlocks() )
+                {
+                    searchFunctionalBlockReference ( subElement, searchString, occurences );
+                }
+            }
             if ( obj.getObsoleteGuid() != null && obj.getObsoleteGuid().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
             }
+        }
+
+        /// <summary>
+        /// Searches a specific string in FunctionalBlockReference and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchFunctionalBlockReference(Generated.FunctionalBlockReference obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
         }
 
         /// <summary>

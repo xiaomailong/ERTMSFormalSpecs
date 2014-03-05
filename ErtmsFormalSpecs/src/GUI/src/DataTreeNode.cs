@@ -577,6 +577,10 @@ namespace GUI
 
                 DataDictionary.Generated.ControllersManager.BaseModelElementController.alertChange(null, null);
             }
+            else
+            {
+                Model.Delete();
+            }
         }
 
         /// <summary>
