@@ -839,7 +839,7 @@ INITIAL_VALUE CreateTarget (
  Name="DangerPointLocation"
  Guid="6b92f0de-4a87-4291-a6a9-248f1326e7e9"
 >
-<Comment></Comment>
+<Comment>Returns the Danger Point location, if any, in the new MA</Comment>
 <Cases>
 <Case
  Name="Danger Point available"
@@ -864,7 +864,7 @@ INITIAL_VALUE CreateTarget (
  Name="OverlapLocation"
  Guid="c6b10ea9-e38f-4c8c-87dc-39e218ace10c"
 >
-<Comment></Comment>
+<Comment>Returns the Overlap location, if any, in the new MA</Comment>
 <Cases>
 <Case
  Name="Overlap available"
@@ -1062,7 +1062,7 @@ INITIAL_VALUE CreateTarget (
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="94298eb1-0458-4526-ae4c-a02d03d1301d"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Returns the maximum speed permitted by the MA</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -1184,7 +1184,7 @@ INITIAL_VALUE CreateTarget (
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="215e2d91-c545-47d5-83ee-b9a859ca88f7"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Gets the release speed from the MA packet</Comment>
 <Parameters>
 <Parameter
  Type="Default.MessageTypes.Speed"
@@ -1457,7 +1457,7 @@ USING
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a36361aa-5603-4d2c-9d48-20b02576001e"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Converts a received level 2 or 3 MA into a level 1 MA so that they can all be handled by the same procedures</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message"
@@ -1590,7 +1590,8 @@ Default.BaseTypes.LengthToDistance(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d2904bf6-1131-4253-aad3-a1b8f26d9f43"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Indicates whether the MA received in the handled packet is valid</Comment>
+<Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
  Name="Packet"
@@ -1804,7 +1805,7 @@ Default.BaseTypes.LengthToDistance(
  Name="Store information"
  Guid="59782eb8-89ce-4ed7-a9e4-be2e7479b21f"
 >
-<Comment></Comment>
+<Comment>Updates the stored MA with the information from the packet</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1851,7 +1852,7 @@ Default.BaseTypes.LengthToDistance(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="080ffc52-67c5-4270-857f-817ac767d00f"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Initiates a train trip if the received MA orders it</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1898,7 +1899,7 @@ Default.BaseTypes.LengthToDistance(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="93da8eab-c16d-4e10-af07-b5464a42a64b"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Updates the stored MA with the information from a new level 1 (or converted level 2 or 3) movement authority</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
@@ -2559,7 +2560,7 @@ Default.MessageTypes.QScaleDistance(
  Name="Update release speed"
  Guid="647e47fc-77bb-4324-a035-94fa77e8c514"
 >
-<Comment></Comment>
+<Comment>Store the release speed</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2662,6 +2663,7 @@ IN MA.Sections</Action></Actions>
  Name="Insert new sections"
  Guid="cc275007-a24c-4052-b8a4-9889e1de0b08"
 >
+<Comment>Adds the infill sections to the list of sections</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2687,7 +2689,7 @@ IN MA.Sections</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="84cd2f51-3416-4f6e-9ff1-37130af463d1"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Adds a MA section from the received movement authority to MA.Sections</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.SubStructure1"
@@ -2740,7 +2742,7 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="81120dae-f5fe-44f7-9435-fe9816c767f5"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Handles a REPOSITIONING_INFORMATION packet</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Message"
@@ -2773,7 +2775,7 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="60c621ea-4f64-46fb-b51a-2bc159ca92e9"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Updates the length of the first section of the MA, if there are multiple sections</Comment>
 <PreConditions>
 <PreCondition
  Guid="8ca2de13-4875-4b41-8ee8-bf5d34b237c6"
@@ -2787,6 +2789,7 @@ IN
  Name="One section available"
  Guid="6ca58f29-f4a7-4e32-8bd5-772a34ecc1f5"
 >
+<Comment>Updates the lengths of the End Section if that is the only section</Comment>
 <PreConditions>
 <PreCondition
  Guid="03a63234-cc66-4102-9072-1c51e26cfced"
@@ -2978,6 +2981,11 @@ IN EOAs</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="864d6637-2a3a-4a02-a244-fe7d34655bc1"
 >
+</ReqRef><ReqRef
+ Id="e199cc01-44ca-4dc8-bc13-df147bf2bf53"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="563d5650-81f1-478d-8915-22d5fcfb05e9"
+>
 </ReqRef><Comment>If the end section timer vlue becomes greater than the time-out value</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -3002,7 +3010,9 @@ Available(Element=&gt;MA.MA.EndSection)
     aLocation=&gt;TrainPosition.FrontEndPosition(PointOfInterest=&gt;DistanceInterval.Nom),
     aSpeed=&gt;0.0
 )
-IN EOAs</Action></Actions>
+IN EOAs</Action><Action
+ Guid="a54a01c8-60c3-4dff-9b28-5075998c6a6b"
+>HandlingOfAcceptedAndStoredInformation.EndSectionTimeOutShortensMA &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3414,15 +3424,18 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
  Name="InitializeElementsForMA"
  Guid="308f7a88-e9cd-4e48-bbc1-66b9b6ccc0a1"
 >
+<Comment>Sets default values for tests involving the Movement Authority</Comment>
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Initialize SSP + Gradients"
  Guid="1e2c9bd5-c3d2-4d13-aada-2bd07896904a"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Initialize SSP + Gradients"
  Guid="d7839432-4eec-4ec7-971d-4648f059b30c"
 >
@@ -3431,33 +3444,33 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3615ce68-522a-4f37-9745-49d04c0543b3"
->Kernel.TrackDescription.Gradient.Gradients &lt;-
+>TrackDescription.Gradient.Gradients &lt;-
 [
-    Kernel.TrackDescription.Gradient.GradientInfo
+    TrackDescription.Gradient.GradientInfo
     {
         Distance =&gt; 0.0,
         Gradient =&gt; 0.7
     },
-    Kernel.TrackDescription.Gradient.GradientInfo
+    TrackDescription.Gradient.GradientInfo
     {
         Distance =&gt; 4800.0,
         Gradient =&gt; 0.94
     }
 ]</Action><Action
  Guid="1613d496-73f3-4873-ac23-ca4bc8624aa1"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
+>TrackDescription.StaticSpeedProfile.SSP &lt;-
 [
-    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
     {
         Distance =&gt; 0.0,
         BasicSpeed =&gt; 70.0,
         TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
         Categories =&gt;
         [
-            Kernel.TrackDescription.StaticSpeedProfile.SSPCategory
+            TrackDescription.StaticSpeedProfile.SSPCategory
             {
                 CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_130_mm,
-                OtherSpecific =&gt; Kernel.TrainData.TrainCategory.FreightTrainInG,
+                OtherSpecific =&gt; TrainData.TrainCategory.FreightTrainInG,
                 Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category ,
                 Speed =&gt; 70.0
             }
@@ -3573,6 +3586,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
  Type="SectionTimeOut"
  DefaultValue=""
  VariableMode="Internal"
+ Implemented="TRUE"
  Name="EndSectionTimerStart"
  Guid="bd5eb6a3-7ab7-4a25-9014-f553a218a7b8"
 >
@@ -3580,6 +3594,16 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
  Id="d15e3a89-8446-4ff9-823e-41677c3863b5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="aafa1095-4136-4540-90c9-fd43bcbe6ca0"
+>
+</ReqRef><ReqRef
+ Id="e199cc01-44ca-4dc8-bc13-df147bf2bf53"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="49fd2f91-f568-4a2c-849e-0b9a754f46fb"
+>
+</ReqRef><ReqRef
+ Id="7e423212-aebc-4610-85f4-e4a25b5e05c4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a5c5d879-61a1-466b-a43c-242ae6c1e910"
 >
 </ReqRef><Comment>Time when the end section timer is started
 Note that the &quot;TimeOut&quot; here is not the End Section time-out value, but the time at which the End Section timer start location was passed.</Comment>
@@ -3596,7 +3620,7 @@ Note that the &quot;TimeOut&quot; here is not the End Section time-out value, bu
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1ef9fc76-436c-460e-b0ba-a6ebb2bf46a7"
 >
-</ReqRef><Comment>Make sure the sections </Comment>
+</ReqRef><Comment>Make sure the sections</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3623,8 +3647,7 @@ NOT(Available(EndSectionTimerStart))
 >EndSectionTimerStart &lt;- SectionTimeOut{
     TimeOut =&gt; CurrentTime,
     Distance =&gt; MA.MA.EndSection.EndSectionTimeOut.Distance
-}
-</Action></Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
