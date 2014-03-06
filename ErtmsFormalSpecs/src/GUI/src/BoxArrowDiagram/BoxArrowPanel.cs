@@ -374,6 +374,7 @@ namespace GUI.BoxArrowDiagram
             try
             {
                 refreshingControl = true;
+                pleaseWaitLabel.Visible = true;
                 SuspendLayout();
 
                 foreach (BoxControl<BoxModel, ArrowModel> control in boxes.Values)
@@ -415,11 +416,13 @@ namespace GUI.BoxArrowDiagram
                         arrows[model] = arrowControl;
                     }
                 }
+
                 UpdateArrowPosition();
             }
             finally
             {
                 refreshingControl = false;
+                pleaseWaitLabel.Visible = false;
                 ResumeLayout(true);
             }
 
