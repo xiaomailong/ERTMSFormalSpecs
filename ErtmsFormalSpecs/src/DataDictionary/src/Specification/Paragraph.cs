@@ -715,14 +715,14 @@ namespace DataDictionary.Specification
         /// <summary>
         /// Indicates whether this paragraphs belongs to the functionam block whose name is provided as parameter
         /// </summary>
-        /// <param name="fullName"></param>
-        public bool BelongsToRequirementSet(string fullName)
+        /// <param name="requirementSet"></param>
+        public bool BelongsToRequirementSet(RequirementSet requirementSet)
         {
             bool retVal = false;
 
             foreach (RequirementSetReference reference in RequirementSetReferences)
             {
-                if (reference.Name == fullName)
+                if (reference.Name == requirementSet.FullName)
                 {
                     retVal = true;
                     break;
@@ -730,6 +730,20 @@ namespace DataDictionary.Specification
             }
 
             return retVal;
+        }
+
+        /// <summary>
+        /// Appends this paragraph to the requirement set if it does not belong to it already
+        /// </summary>
+        /// <param name="requirementSet"></param>
+        public void AppendToRequirementSet(RequirementSet requirementSet)
+        {
+            if (!BelongsToRequirementSet(requirementSet))
+            {
+                RequirementSetReference reference = (RequirementSetReference)Generated.acceptor.getFactory().createRequirementSetReference();
+                reference.Name = requirementSet.FullName;
+                appendRequirementSets(reference);
+            }
         }
     }
 }

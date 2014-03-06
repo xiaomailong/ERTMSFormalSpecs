@@ -109,7 +109,31 @@ namespace DataDictionary
                 base.visit(obj, visitSubNodes);
             }
 
+            /// <summary>
+            /// The name of the requirement set for functional blocs
+            /// </summary>
             private const string FUNCTIONAL_BLOCK_NAME = "Functional blocs";
+
+            /// <summary>
+            /// The name of the requireement set for scoping information
+            /// </summary>
+            private const string SCOPE_NAME = "Scope";
+
+            /// <summary>
+            /// The name of the requireement set for scoping information
+            /// </summary>
+            private const string ONBOARD_SCOPE_NAME = "Onboard";
+
+            /// <summary>
+            /// The name of the requireement set for scoping information
+            /// </summary>
+            private const string TRACKSIDE_SCOPE_NAME = "Trackside";
+
+            /// <summary>
+            /// The name of the requireement set for scoping information
+            /// </summary>
+            private const string ROLLING_STOCK_SCOPE_NAME = "Rolling";
+
             /// <summary>
             /// Replaces the paragraph scope by the corresponding flags
             /// </summary>
@@ -119,6 +143,7 @@ namespace DataDictionary
             {
                 Specification.Paragraph paragraph = (Specification.Paragraph)obj;
 
+                // WARNING : This phase is completed by the next phase to place all requirement in requirement sets
                 // Ensures the scope is located in the flags
                 switch (paragraph.getScope())
                 {
@@ -142,32 +167,39 @@ namespace DataDictionary
                 }
                 paragraph.setScope(Generated.acceptor.Paragraph_scope.aFLAGS);
 
-                // Ensures the requirement set exists
+                // WARNING : do not remove the preceding phase since it still required for previous versions of EFS files
+                // Based on the flag information, place the requirements in their corresponding requirement set
+                // STM was never used, this information is discarded
+                RequirementSet scope = paragraph.Dictionary.findRequirementSet(SCOPE_NAME, true);
+
+                if (paragraph.getScopeOnBoard())
+                {
+                    RequirementSet onBoard = scope.findRequirementSet(ONBOARD_SCOPE_NAME, true);
+                    onBoard.setRecursiveSelection(false);
+                    paragraph.AppendToRequirementSet(onBoard);
+                }
+
+                if (paragraph.getScopeTrackside())
+                {
+                    RequirementSet trackSide = scope.findRequirementSet(TRACKSIDE_SCOPE_NAME, true);
+                    trackSide.setRecursiveSelection(false);
+                    paragraph.AppendToRequirementSet(trackSide);
+                }
+
+                if (paragraph.getScopeRollingStock())
+                {
+                    RequirementSet rollingStock = scope.findRequirementSet(ROLLING_STOCK_SCOPE_NAME, true);
+                    rollingStock.setRecursiveSelection(false);
+                    paragraph.AppendToRequirementSet(rollingStock);
+                }
+
+                // Updates the functional block information based on the FunctionalBlockName field
                 if (!string.IsNullOrEmpty(paragraph.getFunctionalBlockName()))
                 {
-                    string fullName = FUNCTIONAL_BLOCK_NAME + "." + paragraph.getFunctionalBlockName();
-                    RequirementSet requirementSet = paragraph.EFSSystem.findRequirementSet(fullName);
-                    if (requirementSet == null)
-                    {
-                        RequirementSet functionalBlocks = paragraph.Dictionary.findRequirementSet(FUNCTIONAL_BLOCK_NAME);
-                        if (functionalBlocks == null)
-                        {
-                            functionalBlocks = (RequirementSet)Generated.acceptor.getFactory().createRequirementSet();
-                            functionalBlocks.Name = FUNCTIONAL_BLOCK_NAME;
-                            paragraph.Dictionary.appendRequirementSets(functionalBlocks);
-                        }
-
-                        requirementSet = (RequirementSet)Generated.acceptor.getFactory().createRequirementSet();
-                        requirementSet.Name = paragraph.getFunctionalBlockName();
-                        functionalBlocks.appendSubSets(requirementSet);
-                    }
-
-                    if (!paragraph.BelongsToRequirementSet(paragraph.getFunctionalBlockName()))
-                    {
-                        RequirementSetReference reference = (RequirementSetReference)Generated.acceptor.getFactory().createRequirementSetReference();
-                        reference.Name = paragraph.getFunctionalBlockName();
-                        paragraph.appendRequirementSets(reference);
-                    }
+                    RequirementSet allFunctionalBlocks = paragraph.Dictionary.findRequirementSet(FUNCTIONAL_BLOCK_NAME, true);
+                    RequirementSet functionalBlock = allFunctionalBlocks.findRequirementSet(paragraph.getFunctionalBlockName(), true);
+                    functionalBlock.setRecursiveSelection(true);
+                    paragraph.AppendToRequirementSet(functionalBlock);
                 }
 
                 base.visit(obj, visitSubNodes);

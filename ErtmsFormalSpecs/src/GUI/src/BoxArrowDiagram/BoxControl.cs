@@ -38,11 +38,6 @@ namespace GUI.BoxArrowDiagram
         protected BoxModeEnum BoxMode { get; set; }
 
         /// <summary>
-        /// The size of an box control button
-        /// </summary>
-        public static Size DEFAULT_SIZE = new Size(100, 50);
-
-        /// <summary>
         /// The grid size used to place boxes
         /// </summary>
         public int GRID_SIZE = 10;
@@ -83,8 +78,8 @@ namespace GUI.BoxArrowDiagram
         {
             if (Model.Width == 0 || Model.Height == 0)
             {
-                Model.Width = DEFAULT_SIZE.Width;
-                Model.Height = DEFAULT_SIZE.Height;
+                Model.Width = Panel.DefaultBoxSize.Width;
+                Model.Height = Panel.DefaultBoxSize.Height;
             }
             Size = new Size(Model.Width, Model.Height);
 

@@ -1373,20 +1373,42 @@ namespace DataDictionary
                 RequirementSet = requirementSet;
             }
 
+            /// <summary>
+            /// Marks the paragraph
+            /// </summary>
+            /// <param name="paragraph"></param>
+            /// <param name="recursively">Indicates that the paragraph should be marked recursively</param>
+            /// <returns>true if marking recursively was applied</returns>
+            private bool MarkParagraph(Paragraph paragraph, bool recursively)
+            {
+                paragraph.AddInfo("Requirement set" + RequirementSet.Name);
+                if (recursively)
+                {
+                    foreach (Paragraph subParagraph in paragraph.SubParagraphs)
+                    {
+                        MarkParagraph(subParagraph, recursively);
+                    }
+                }
+
+                return recursively;
+            }
+
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
                 Paragraph paragraph = (Paragraph)obj;
 
-                foreach (RequirementSetReference reference in paragraph.RequirementSetReferences)
+
+                if (paragraph.BelongsToRequirementSet(RequirementSet))
                 {
-                    if (reference.Name == RequirementSet.Name)
+                    if (!MarkParagraph(paragraph, RequirementSet.getRecursiveSelection()))
                     {
-                        obj.AddInfo("Requirement set" + RequirementSet.Name);
-                        break;
+                        base.visit(obj, visitSubNodes);
                     }
                 }
-
-                base.visit(obj, visitSubNodes);
+                else
+                {
+                    base.visit(obj, visitSubNodes);
+                }
             }
         }
 

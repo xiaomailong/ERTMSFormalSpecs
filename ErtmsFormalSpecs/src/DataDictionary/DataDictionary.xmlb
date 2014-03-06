@@ -1270,12 +1270,14 @@
       <FIELD NAME="Height"              TYPE="INTEGER" />
       <FIELD NAME="X"                   TYPE="INTEGER" />
       <FIELD NAME="Y"                   TYPE="INTEGER" />
+      <FIELD NAME="RecursiveSelection"  TYPE="BOOLEAN" />
     </FIELDS>
     <ATTRIBUTES>
-      <ATTR NAME="X"      TARGET="X"      OPTIONAL="TRUE" DEFAULT="0" />
-      <ATTR NAME="Y"      TARGET="Y"      OPTIONAL="TRUE" DEFAULT="0" />
-      <ATTR NAME="Width"  TARGET="Width"  OPTIONAL="TRUE" DEFAULT="0" />
-      <ATTR NAME="Height" TARGET="Height" OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="X"       TARGET="X"       OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Y"       TARGET="Y"       OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Width"   TARGET="Width"   OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Height"  TARGET="Height"  OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Recurse" TARGET="Recurse" OPTIONAL="TRUE" DEFAULT="FALSE" />
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>

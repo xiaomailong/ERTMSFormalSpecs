@@ -34,8 +34,9 @@ namespace DataDictionary.Specification
         /// Provides the requirement set whose name corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="create">Indicates that the requirement set should be created if it does not exists</param>
         /// <returns></returns>
-        RequirementSet findRequirementSet(string name);
+        RequirementSet findRequirementSet(string name, bool create);
 
         /// <summary>
         /// Adds a new requirement set to this list of requirement sets

@@ -46,6 +46,11 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
+        /// The size of an box control button
+        /// </summary>
+        public Size DefaultBoxSize = new Size(100, 50);
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public BoxArrowPanel()
@@ -637,8 +642,6 @@ namespace GUI.BoxArrowDiagram
         }
 
         private Point currentPosition = new Point(1, 1);
-        private static int X_OFFSET = BoxControl<BoxModel, ArrowModel>.DEFAULT_SIZE.Width + 10;
-        private static int Y_OFFSET = BoxControl<BoxModel, ArrowModel>.DEFAULT_SIZE.Height + 10;
 
         /// <summary>
         /// Provides the next available position in the box-arrow diagram
@@ -648,8 +651,11 @@ namespace GUI.BoxArrowDiagram
         {
             Point retVal = new Point(currentPosition.X, currentPosition.Y);
 
+            int X_OFFSET = DefaultBoxSize.Width + 10;
+            int Y_OFFSET = DefaultBoxSize.Height + 10;
+
             currentPosition.Offset(X_OFFSET, 0);
-            if (currentPosition.X > Size.Width - BoxControl<BoxModel, ArrowModel>.DEFAULT_SIZE.Width)
+            if (currentPosition.X > Size.Width - DefaultBoxSize.Width)
             {
                 currentPosition = new Point(1, currentPosition.Y + Y_OFFSET);
             }

@@ -1194,8 +1194,9 @@ namespace DataDictionary
         /// Provides the requirement set whose name corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="create">Indicates that the requirement set should be created if it does not exists</param>
         /// <returns></returns>
-        public RequirementSet findRequirementSet(string name)
+        public RequirementSet findRequirementSet(string name, bool create)
         {
             RequirementSet retVal = null;
 
@@ -1206,6 +1207,13 @@ namespace DataDictionary
                     retVal = requirementSet;
                     break;
                 }
+            }
+
+            if (retVal == null && create)
+            {
+                retVal = (RequirementSet)Generated.acceptor.getFactory().createRequirementSet();
+                retVal.Name = name;
+                appendRequirementSets(retVal);
             }
 
             return retVal;

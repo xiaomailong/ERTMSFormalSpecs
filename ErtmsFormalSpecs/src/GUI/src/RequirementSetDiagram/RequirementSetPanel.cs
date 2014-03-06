@@ -91,12 +91,21 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
+        /// Initialises the component
+        /// </summary>
+        private void Init()
+        {
+            InitializeStartMenu();
+            DefaultBoxSize = new Size(150, 75);
+        }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public RequirementSetPanel()
             : base()
         {
-            InitializeStartMenu();
+            Init();
         }
 
         /// <summary>
@@ -108,7 +117,7 @@ namespace GUI.RequirementSetDiagram
         {
             container.Add(this);
 
-            InitializeStartMenu();
+            Init();
         }
 
         /// <summary>

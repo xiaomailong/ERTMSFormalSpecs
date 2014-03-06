@@ -4555,6 +4555,10 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Y", other.getY().ToString(), obj.getY().ToString()) );
             }
+            if ( obj.getRecursiveSelection() != other.getRecursiveSelection() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "RecursiveSelection", other.getRecursiveSelection().ToString(), obj.getRecursiveSelection().ToString()) );
+            }
         }
 
         /// <summary>

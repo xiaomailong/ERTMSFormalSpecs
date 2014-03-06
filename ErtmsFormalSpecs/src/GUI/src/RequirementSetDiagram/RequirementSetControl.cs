@@ -72,12 +72,7 @@ namespace GUI.RequirementSetDiagram
             Paragraph paragraph = element as Paragraph;
             if (paragraph != null)
             {
-                if (!paragraph.BelongsToRequirementSet(Model.Name))
-                {
-                    RequirementSetReference reference = (RequirementSetReference)DataDictionary.Generated.acceptor.getFactory().createRequirementSetReference();
-                    reference.Name = Model.FullName;
-                    paragraph.appendRequirementSets(reference);
-                }
+                paragraph.AppendToRequirementSet(Model);
             }
         }
 
@@ -113,21 +108,45 @@ namespace GUI.RequirementSetDiagram
         public static Color IMPLEMENTED_COLOR = Color.Green;
         public static Pen IMPLEMENTED_PEN = new Pen(IMPLEMENTED_COLOR);
 
+        /// <summary>
+        /// Tested color
+        /// </summary>
+        public static Color TESTED_COLOR = Color.Yellow;
+        public static Pen TESTED_PEN = new Pen(TESTED_COLOR);
+
+        /// <summary>
+        /// Draws the box within the box-arrow panel
+        /// </summary>
+        /// <param name="e"></param>
         public override void PaintInBoxArrowPanel(PaintEventArgs e)
         {
             SetColor(Color.Transparent);
+
+            // Draws the enclosing box
             e.Graphics.FillRectangle(new SolidBrush(NORMAL_COLOR), Location.X, Location.Y, Width, Height);
             e.Graphics.DrawRectangle(NORMAL_PEN, Location.X, Location.Y, Width, Height);
 
-            double ratio = 1;
-            if (Metrics.implementableCount > 0)
-            {
-                ratio = (double)Metrics.implementedCount / (double)Metrics.implementableCount;
-            }
-
-            int length = (int)((Width - 20) * ratio);
+            // Draws the completion box
             e.Graphics.DrawRectangle(NORMAL_PEN, Location.X + 10, Location.Y + Height - 20, Width - 20, 10);
-            e.Graphics.FillRectangle(new SolidBrush(IMPLEMENTED_COLOR), Location.X + 10, Location.Y + Height - 20, length, 10);
+            FillCompletion(e, Metrics.implementedCount, Metrics.implementableCount, IMPLEMENTED_COLOR, 10);
+            FillCompletion(e, Metrics.testedCount, Metrics.implementableCount, TESTED_COLOR, 5);
+        }
+
+        /// <summary>
+        /// Fills the progression bar according to the task ratio completed
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="performed"></param>
+        /// <param name="total"></param>
+        /// <param name="color"></param>
+        private void FillCompletion(PaintEventArgs e, int performed, int total, Color color, int width)
+        {
+            double ratio = 1;
+            if (total > 0)
+            {
+                ratio = (double)performed / (double)total;
+            }
+            e.Graphics.FillRectangle(new SolidBrush(color), Location.X + 10 + 1, Location.Y + Height - 20 + 10 - width + 1, (int)((Width - 20) * ratio) - 1, width - 1);
         }
     }
 }
