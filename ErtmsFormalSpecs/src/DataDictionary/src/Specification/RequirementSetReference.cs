@@ -35,5 +35,16 @@ namespace DataDictionary.Specification
                 return paragraph.allRequirementSets();
             }
         }
+
+        /// <summary>
+        /// Provides the requirement set referenced by this requirement set reference
+        /// </summary>
+        public RequirementSet Ref
+        {
+            get
+            {
+                return EFSSystem.findRequirementSet(Name);
+            }
+        }
     }
 }

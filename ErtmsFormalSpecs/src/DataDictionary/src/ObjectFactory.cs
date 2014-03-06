@@ -206,11 +206,10 @@ namespace DataDictionary
         {
             obj.setGuid("");
             obj.setType(Generated.acceptor.Paragraph_type.aREQUIREMENT);
-            obj.setScope(Generated.acceptor.Paragraph_scope.aFLAGS);
-            obj.setScopeOnBoard(false);
-            obj.setScopeTrackside(false);
-            obj.setScopeRollingStock(false);
-            obj.setScopeSTM(false);
+            obj.setObsoleteScope(Generated.acceptor.Paragraph_scope.aFLAGS);
+            obj.setObsoleteScopeOnBoard(false);
+            obj.setObsoleteScopeTrackside(false);
+            obj.setObsoleteScopeRollingStock(false);
             obj.setBl("");
             obj.setOptional(true);
             obj.setName("");
@@ -220,8 +219,8 @@ namespace DataDictionary
             obj.setVersion("3.0.0");
             obj.setMoreInfoRequired(false);
             obj.setSpecIssue(false);
-            obj.setFunctionalBlock(false);
-            obj.setFunctionalBlockName("");
+            obj.setObsoleteFunctionalBlock(false);
+            obj.setObsoleteFunctionalBlockName("");
 
             base.visit(obj, visitSubNodes);
         }

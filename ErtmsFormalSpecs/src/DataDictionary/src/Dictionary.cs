@@ -1227,5 +1227,17 @@ namespace DataDictionary
         {
             appendRequirementSets(requirementSet);
         }
+
+
+        /// <summary>
+        /// The name of the requirement set for functional blocs
+        /// </summary>
+        public const string FUNCTIONAL_BLOCK_NAME = "Functional blocs";
+
+        /// <summary>
+        /// The name of the requireement set for scoping information
+        /// </summary>
+        public const string SCOPE_NAME = "Scope";
+
     }
 }

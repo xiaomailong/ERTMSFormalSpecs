@@ -790,9 +790,9 @@ namespace DataDictionary
           {
             obj.setVersion(obj.getVersion().Trim());
           }
-          if ( obj.getFunctionalBlockName() != null )
+          if ( obj.getObsoleteFunctionalBlockName() != null )
           {
-            obj.setFunctionalBlockName(obj.getFunctionalBlockName().Trim());
+            obj.setObsoleteFunctionalBlockName(obj.getObsoleteFunctionalBlockName().Trim());
           }
           if ( obj.getObsoleteGuid() != null )
           {

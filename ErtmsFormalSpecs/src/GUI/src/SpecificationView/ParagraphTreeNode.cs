@@ -19,6 +19,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary;
 using System.Threading;
+using DataDictionary.Specification;
 
 namespace GUI.SpecificationView
 {
@@ -64,30 +65,6 @@ namespace GUI.SpecificationView
                     RefreshNode();
                 }
             }
-
-            /// <summary>
-            /// The onboard scope
-            /// </summary>
-            [Category("\tScope")]
-            public bool OnBoard { get { return Item.getScopeOnBoard(); } set { Item.SetScopeOnBoardAndAlterImplementableStatus(value); } }
-
-            /// <summary>
-            /// The trackside scope
-            /// </summary>
-            [Category("\tScope")]
-            public bool Trackside { get { return Item.getScopeTrackside(); } set { Item.SetScopeTracksideAndAlterImplementableStatus(value); } }
-
-            /// <summary>
-            /// The rolling stock scope
-            /// </summary>
-            [Category("\tScope")]
-            public bool RollingStock { get { return Item.getScopeRollingStock(); } set { Item.SetScopeRollingStockAndAlterImplementableStatus(value); } }
-
-            /// <summary>
-            /// The STM scope
-            /// </summary>
-            [Category("\tScope")]
-            public bool STM { get { return Item.getScopeSTM(); } set { Item.setScopeSTM(value); } }
 
             /// <summary>
             /// Indicates if the paragraph has been reviewed (content & structure)
@@ -137,37 +114,6 @@ namespace GUI.SpecificationView
             {
                 get { return Item.getSpecIssue(); }
                 set { Item.setSpecIssue(value); }
-            }
-
-            /// <summary>
-            /// Indicates if the paragraph is functional block
-            /// </summary>
-            [Category("Meta data")]
-            [Browsable(false)]
-            public virtual bool IsFunctionalBlock
-            {
-                get { return Item.getFunctionalBlock(); }
-                set { Item.setFunctionalBlock(value); }
-            }
-
-            /// <summary>
-            /// The name of functional block, if any
-            /// </summary>
-            [Category("Meta data")]
-            [Browsable(false)]
-            public string FunctionalBlockName
-            {
-                get
-                {
-                    if (Item.getFunctionalBlock() && Item.getFunctionalBlockName().Equals(""))
-                        Item.setFunctionalBlockName(Item.Text);
-                    return Item.getFunctionalBlockName();
-                }
-                set
-                {
-                    Item.setFunctionalBlockName(value);
-                    RefreshNode();
-                }
             }
         }
 
@@ -262,10 +208,21 @@ namespace GUI.SpecificationView
             paragraph.FullId = Item.GetNewSubParagraphId(false);
             paragraph.Text = "";
             paragraph.setType(DataDictionary.Generated.acceptor.Paragraph_type.aREQUIREMENT);
-            paragraph.setScopeOnBoard(true);
-            paragraph.setScopeTrackside(true);
-            paragraph.setScopeRollingStock(false);
+
+            SetupDefaultRequirementSets(paragraph);
+
             AddParagraph(paragraph);
+        }
+
+        private void SetupDefaultRequirementSets(DataDictionary.Specification.Paragraph paragraph)
+        {
+            foreach (RequirementSet requirementSet in Item.EFSSystem.RequirementSets)
+            {
+                if (requirementSet.getDefault())
+                {
+                    paragraph.AppendToRequirementSet(requirementSet);
+                }
+            }
         }
 
         public void AddParagraphFromClipboardHandler(object sender, EventArgs args)
@@ -315,9 +272,7 @@ namespace GUI.SpecificationView
                 paragraph.FullId = id;
                 paragraph.Text = data;
                 paragraph.setType(DataDictionary.Generated.acceptor.Paragraph_type.aREQUIREMENT);
-                paragraph.setScopeOnBoard(true);
-                paragraph.setScopeTrackside(true);
-                paragraph.setScopeRollingStock(false);
+                SetupDefaultRequirementSets(paragraph);
                 AddParagraph(paragraph);
             }
         }

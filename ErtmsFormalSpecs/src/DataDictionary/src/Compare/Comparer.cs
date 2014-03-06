@@ -4559,6 +4559,14 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "RecursiveSelection", other.getRecursiveSelection().ToString(), obj.getRecursiveSelection().ToString()) );
             }
+            if ( obj.getRequirementsStatus() != other.getRequirementsStatus() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "RequirementsStatus", other.getRequirementsStatus().ToString(), obj.getRequirementsStatus().ToString()) );
+            }
+            if ( obj.getDefault() != other.getDefault() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Default", other.getDefault().ToString(), obj.getDefault().ToString()) );
+            }
         }
 
         /// <summary>
@@ -4841,21 +4849,17 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Type", other.getType().ToString(), obj.getType().ToString()) );
             }
-            if ( obj.getScopeOnBoard() != other.getScopeOnBoard() )
+            if ( obj.getObsoleteScopeOnBoard() != other.getObsoleteScopeOnBoard() )
             {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ScopeOnBoard", other.getScopeOnBoard().ToString(), obj.getScopeOnBoard().ToString()) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ObsoleteScopeOnBoard", other.getObsoleteScopeOnBoard().ToString(), obj.getObsoleteScopeOnBoard().ToString()) );
             }
-            if ( obj.getScopeTrackside() != other.getScopeTrackside() )
+            if ( obj.getObsoleteScopeTrackside() != other.getObsoleteScopeTrackside() )
             {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ScopeTrackside", other.getScopeTrackside().ToString(), obj.getScopeTrackside().ToString()) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ObsoleteScopeTrackside", other.getObsoleteScopeTrackside().ToString(), obj.getObsoleteScopeTrackside().ToString()) );
             }
-            if ( obj.getScopeRollingStock() != other.getScopeRollingStock() )
+            if ( obj.getObsoleteScopeRollingStock() != other.getObsoleteScopeRollingStock() )
             {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ScopeRollingStock", other.getScopeRollingStock().ToString(), obj.getScopeRollingStock().ToString()) );
-            }
-            if ( obj.getScopeSTM() != other.getScopeSTM() )
-            {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ScopeSTM", other.getScopeSTM().ToString(), obj.getScopeSTM().ToString()) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ObsoleteScopeRollingStock", other.getObsoleteScopeRollingStock().ToString(), obj.getObsoleteScopeRollingStock().ToString()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getBl(), other.getBl()) )
             {
@@ -4959,13 +4963,13 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "SpecIssue", other.getSpecIssue().ToString(), obj.getSpecIssue().ToString()) );
             }
-            if ( obj.getFunctionalBlock() != other.getFunctionalBlock() )
+            if ( obj.getObsoleteFunctionalBlock() != other.getObsoleteFunctionalBlock() )
             {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "FunctionalBlock", other.getFunctionalBlock().ToString(), obj.getFunctionalBlock().ToString()) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ObsoleteFunctionalBlock", other.getObsoleteFunctionalBlock().ToString(), obj.getObsoleteFunctionalBlock().ToString()) );
             }
-            if ( !CompareUtil.canonicalStringEquality(obj.getFunctionalBlockName(), other.getFunctionalBlockName()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getObsoleteFunctionalBlockName(), other.getObsoleteFunctionalBlockName()) )
             {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "FunctionalBlockName", other.getFunctionalBlockName(), obj.getFunctionalBlockName()) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ObsoleteFunctionalBlockName", other.getObsoleteFunctionalBlockName(), obj.getObsoleteFunctionalBlockName()) );
             }
             if ( obj.allRequirementSets() != null )
             {
@@ -13453,7 +13457,7 @@ namespace DataDictionary.Compare
             {
                 searchParagraphRevision ( obj.getRevision(), searchString, occurences );
             }
-            if ( obj.getFunctionalBlockName() != null && obj.getFunctionalBlockName().Contains (searchString) ) 
+            if ( obj.getObsoleteFunctionalBlockName() != null && obj.getObsoleteFunctionalBlockName().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
             }

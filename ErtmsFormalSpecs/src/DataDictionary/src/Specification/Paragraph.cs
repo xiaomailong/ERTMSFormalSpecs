@@ -223,61 +223,20 @@ namespace DataDictionary.Specification
             get { return getFather() as Paragraph; }
         }
 
-        public bool SubParagraphScopeOnboard
+        public bool SubParagraphBelongsToRequirementSet(RequirementSet requirementSet)
         {
-            get
+            bool retVal = false;
+
+            foreach (Paragraph p in SubParagraphs)
             {
-                bool retVal = false;
-
-                foreach (Paragraph p in SubParagraphs)
+                retVal = p.BelongsToRequirementSet(requirementSet) || p.SubParagraphBelongsToRequirementSet(requirementSet);
+                if (retVal)
                 {
-                    retVal = p.getScopeOnBoard() || p.SubParagraphScopeOnboard;
-                    if (retVal)
-                    {
-                        break;
-                    }
+                    break;
                 }
-
-                return retVal;
             }
-        }
 
-        public bool SubParagraphScopeTrackside
-        {
-            get
-            {
-                bool retVal = false;
-
-                foreach (Paragraph p in SubParagraphs)
-                {
-                    retVal = p.getScopeTrackside() || p.SubParagraphScopeTrackside;
-                    if (retVal)
-                    {
-                        break;
-                    }
-                }
-
-                return retVal;
-            }
-        }
-
-        public bool SubParagraphScopeRollingStock
-        {
-            get
-            {
-                bool retVal = false;
-
-                foreach (Paragraph p in SubParagraphs)
-                {
-                    retVal = p.getScopeRollingStock() || p.SubParagraphScopeRollingStock;
-                    if (retVal)
-                    {
-                        break;
-                    }
-                }
-
-                return retVal;
-            }
+            return retVal;
         }
 
         public void SetType(DataDictionary.Generated.acceptor.Paragraph_type Type)
@@ -286,11 +245,15 @@ namespace DataDictionary.Specification
             switch (Type)
             {
                 case Generated.acceptor.Paragraph_type.aREQUIREMENT:
-                    if (getScopeOnBoard() == true)
+                    foreach (RequirementSet requirementSet in ApplicableRequirementSets)
                     {
-                        setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
+                        if (requirementSet.getRequirementsStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM)
+                        {
+                            setImplementationStatus(requirementSet.getRequirementsStatus());
+                        }
                     }
                     break;
+
                 default:
                     setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
                     break;
@@ -486,9 +449,14 @@ namespace DataDictionary.Specification
          */
         public bool isApplicable()
         {
-            bool retVal;
-            retVal = getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT;
-            retVal = retVal && getScopeOnBoard();
+            bool retVal = false;
+
+            if (getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
+            {
+                retVal = getImplementationStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM
+                    && getImplementationStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable;
+            }
+
             return retVal;
         }
 
@@ -642,33 +610,6 @@ namespace DataDictionary.Specification
             }
         }
 
-        public void SetScopeOnBoardAndAlterImplementableStatus(bool value)
-        {
-            setScopeOnBoard(value);
-            if (value && getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
-            {
-                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
-            }
-        }
-
-        public void SetScopeTracksideAndAlterImplementableStatus(bool value)
-        {
-            setScopeTrackside(value);
-            if (value && !getScopeOnBoard())
-            {
-                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
-            }
-        }
-
-        public void SetScopeRollingStockAndAlterImplementableStatus(bool value)
-        {
-            setScopeRollingStock(value);
-            if (value && !getScopeOnBoard())
-            {
-                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
-            }
-        }
-
         private class RemoveReqRef : Generated.Visitor
         {
             /// <summary>
@@ -720,12 +661,24 @@ namespace DataDictionary.Specification
         {
             bool retVal = false;
 
-            foreach (RequirementSetReference reference in RequirementSetReferences)
+            if (requirementSet != null)
             {
-                if (reference.Name == requirementSet.FullName)
+                foreach (RequirementSetReference reference in RequirementSetReferences)
                 {
-                    retVal = true;
-                    break;
+                    if (reference.Name == requirementSet.FullName)
+                    {
+                        retVal = true;
+                        break;
+                    }
+                }
+
+                if (!retVal && requirementSet.getRecursiveSelection())
+                {
+                    Paragraph enclosing = EnclosingParagraph;
+                    if (enclosing != null)
+                    {
+                        retVal = enclosing.BelongsToRequirementSet(requirementSet);
+                    }
                 }
             }
 
@@ -743,6 +696,53 @@ namespace DataDictionary.Specification
                 RequirementSetReference reference = (RequirementSetReference)Generated.acceptor.getFactory().createRequirementSetReference();
                 reference.Name = requirementSet.FullName;
                 appendRequirementSets(reference);
+
+                if (getImplementationStatus() == Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM)
+                {
+                    if (requirementSet.getRequirementsStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM)
+                    {
+                        setImplementationStatus(requirementSet.getRequirementsStatus());
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Provides the list of applicable requirement sets
+        /// </summary>
+        /// <returns></returns>
+        public HashSet<RequirementSet> ApplicableRequirementSets
+        {
+            get
+            {
+                HashSet<RequirementSet> retVal = new HashSet<RequirementSet>();
+
+                FillApplicableRequirementSets(retVal, false);
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Provides the list of applicable requirement sets
+        /// </summary>
+        /// <param name="applicableRequirementSets"></param>
+        /// <param name="onlyConsiderRecursiveRequirementSets">Indicates that only recursive requirement sets should be considered</param>
+        private void FillApplicableRequirementSets(HashSet<RequirementSet> applicableRequirementSets, bool onlyConsiderRecursiveRequirementSets)
+        {
+            foreach (RequirementSetReference reference in RequirementSetReferences)
+            {
+                RequirementSet requirementSet = reference.Ref;
+                if (requirementSet != null)
+                {
+                    applicableRequirementSets.Add(reference.Ref);
+                }
+            }
+
+            Paragraph enclosing = EnclosingParagraph;
+            if (enclosing != null)
+            {
+                enclosing.FillApplicableRequirementSets(applicableRequirementSets, true);
             }
         }
     }

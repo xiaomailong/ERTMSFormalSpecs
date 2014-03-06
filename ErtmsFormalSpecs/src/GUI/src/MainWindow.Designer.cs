@@ -112,7 +112,6 @@ namespace GUI
             this.markSpecIssuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markParagraphsFromNewRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
-            this.exportFunctionalBlocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.generateCoverageReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateSpecIssuesReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -545,7 +544,6 @@ namespace GUI
             this.markSpecIssuesToolStripMenuItem,
             this.markParagraphsFromNewRevisionToolStripMenuItem,
             this.toolStripSeparator20,
-            this.exportFunctionalBlocksToolStripMenuItem,
             this.toolStripSeparator15,
             this.generateCoverageReportToolStripMenuItem,
             this.generateSpecIssuesReportToolStripMenuItem});
@@ -628,14 +626,6 @@ namespace GUI
             this.toolStripSeparator20.Name = "toolStripSeparator20";
             this.toolStripSeparator20.Size = new System.Drawing.Size(333, 6);
             this.toolStripSeparator20.Visible = false;
-            // 
-            // exportFunctionalBlocksToolStripMenuItem
-            // 
-            this.exportFunctionalBlocksToolStripMenuItem.Name = "exportFunctionalBlocksToolStripMenuItem";
-            this.exportFunctionalBlocksToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.exportFunctionalBlocksToolStripMenuItem.Text = "Export functional blocks";
-            this.exportFunctionalBlocksToolStripMenuItem.Visible = false;
-            this.exportFunctionalBlocksToolStripMenuItem.Click += new System.EventHandler(this.exportFunctionalBlocksToolStripMenuItem_Click);
             // 
             // toolStripSeparator15
             // 
@@ -1225,7 +1215,6 @@ namespace GUI
         private System.Windows.Forms.ToolStripMenuItem markNotImplementedButImplementationExistsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem markNonApplicableParagraphsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
-        private System.Windows.Forms.ToolStripMenuItem exportFunctionalBlocksToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem markNotTranslatedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem markNotImplementedTranslationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showRulePerformancesToolStripMenuItem;

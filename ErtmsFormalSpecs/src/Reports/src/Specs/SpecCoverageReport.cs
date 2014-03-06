@@ -21,6 +21,7 @@ using DataDictionary.Variables;
 
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
+using DataDictionary.Specification;
 
 namespace Reports.Specs
 {
@@ -260,7 +261,12 @@ namespace Reports.Specs
             AddTableHeader("Requirement", "Target", "Type", "Implementation status");
             foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.AllParagraphs)
             {
-                AddRow(paragraph.FullId, paragraph.getScope_AsString(), paragraph.getType_AsString(), paragraph.getImplementationStatus_AsString());
+                string requirementSets = "";
+                foreach (RequirementSet requirementSet in paragraph.ApplicableRequirementSets)
+                {
+                    requirementSets += requirementSet.Name + " ";
+                }
+                AddRow(paragraph.FullId, requirementSets, paragraph.getType_AsString(), paragraph.getImplementationStatus_AsString());
             }
         }
 

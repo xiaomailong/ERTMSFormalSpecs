@@ -213,5 +213,21 @@ namespace DataDictionary.Specification
         {
             appendSubSets(requirementSet);
         }
+
+
+        /// <summary>
+        /// The name of the requireement set for scoping information
+        /// </summary>
+        public const string ONBOARD_SCOPE_NAME = "Onboard";
+
+        /// <summary>
+        /// The name of the requireement set for scoping information
+        /// </summary>
+        public const string TRACKSIDE_SCOPE_NAME = "Trackside";
+
+        /// <summary>
+        /// The name of the requireement set for scoping information
+        /// </summary>
+        public const string ROLLING_STOCK_SCOPE_NAME = "Rolling";
     }
 }

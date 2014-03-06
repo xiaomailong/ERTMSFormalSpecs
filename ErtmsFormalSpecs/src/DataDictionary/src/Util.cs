@@ -110,31 +110,6 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// The name of the requirement set for functional blocs
-            /// </summary>
-            private const string FUNCTIONAL_BLOCK_NAME = "Functional blocs";
-
-            /// <summary>
-            /// The name of the requireement set for scoping information
-            /// </summary>
-            private const string SCOPE_NAME = "Scope";
-
-            /// <summary>
-            /// The name of the requireement set for scoping information
-            /// </summary>
-            private const string ONBOARD_SCOPE_NAME = "Onboard";
-
-            /// <summary>
-            /// The name of the requireement set for scoping information
-            /// </summary>
-            private const string TRACKSIDE_SCOPE_NAME = "Trackside";
-
-            /// <summary>
-            /// The name of the requireement set for scoping information
-            /// </summary>
-            private const string ROLLING_STOCK_SCOPE_NAME = "Rolling";
-
-            /// <summary>
             /// Replaces the paragraph scope by the corresponding flags
             /// </summary>
             /// <param name="obj"></param>
@@ -145,60 +120,77 @@ namespace DataDictionary
 
                 // WARNING : This phase is completed by the next phase to place all requirement in requirement sets
                 // Ensures the scope is located in the flags
-                switch (paragraph.getScope())
+                switch (paragraph.getObsoleteScope())
                 {
                     case Generated.acceptor.Paragraph_scope.aOBU:
-                        paragraph.setScopeOnBoard(true);
+                        paragraph.setObsoleteScopeOnBoard(true);
                         break;
 
                     case Generated.acceptor.Paragraph_scope.aTRACK:
-                        paragraph.setScopeTrackside(true);
+                        paragraph.setObsoleteScopeTrackside(true);
                         break;
 
                     case Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK:
                     case Generated.acceptor.Paragraph_scope.defaultParagraph_scope:
-                        paragraph.setScopeOnBoard(true);
-                        paragraph.setScopeTrackside(true);
+                        paragraph.setObsoleteScopeOnBoard(true);
+                        paragraph.setObsoleteScopeTrackside(true);
                         break;
 
                     case Generated.acceptor.Paragraph_scope.aROLLING_STOCK:
-                        paragraph.setScopeRollingStock(true);
+                        paragraph.setObsoleteScopeRollingStock(true);
                         break;
                 }
-                paragraph.setScope(Generated.acceptor.Paragraph_scope.aFLAGS);
+                paragraph.setObsoleteScope(Generated.acceptor.Paragraph_scope.aFLAGS);
 
                 // WARNING : do not remove the preceding phase since it still required for previous versions of EFS files
                 // Based on the flag information, place the requirements in their corresponding requirement set
                 // STM was never used, this information is discarded
-                RequirementSet scope = paragraph.Dictionary.findRequirementSet(SCOPE_NAME, true);
+                RequirementSet scope = paragraph.Dictionary.findRequirementSet(Dictionary.SCOPE_NAME, true);
 
-                if (paragraph.getScopeOnBoard())
+                if (paragraph.getObsoleteScopeOnBoard())
                 {
-                    RequirementSet onBoard = scope.findRequirementSet(ONBOARD_SCOPE_NAME, true);
-                    onBoard.setRecursiveSelection(false);
+                    RequirementSet onBoard = scope.findRequirementSet(RequirementSet.ONBOARD_SCOPE_NAME, false);
+                    if (onBoard == null)
+                    {
+                        onBoard = scope.findRequirementSet(RequirementSet.ONBOARD_SCOPE_NAME, true);
+                        onBoard.setRecursiveSelection(false);
+                        onBoard.setDefault(true);
+                        onBoard.setRequirementsStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
+                    }
                     paragraph.AppendToRequirementSet(onBoard);
                 }
 
-                if (paragraph.getScopeTrackside())
+                if (paragraph.getObsoleteScopeTrackside())
                 {
-                    RequirementSet trackSide = scope.findRequirementSet(TRACKSIDE_SCOPE_NAME, true);
-                    trackSide.setRecursiveSelection(false);
+                    RequirementSet trackSide = scope.findRequirementSet(RequirementSet.TRACKSIDE_SCOPE_NAME, false);
+                    if (trackSide == null)
+                    {
+                        trackSide = scope.findRequirementSet(RequirementSet.TRACKSIDE_SCOPE_NAME, true);
+                        trackSide.setRecursiveSelection(false);
+                        trackSide.setDefault(true);
+                    }
                     paragraph.AppendToRequirementSet(trackSide);
                 }
 
-                if (paragraph.getScopeRollingStock())
+                if (paragraph.getObsoleteScopeRollingStock())
                 {
-                    RequirementSet rollingStock = scope.findRequirementSet(ROLLING_STOCK_SCOPE_NAME, true);
-                    rollingStock.setRecursiveSelection(false);
+                    RequirementSet rollingStock = scope.findRequirementSet(RequirementSet.ROLLING_STOCK_SCOPE_NAME, false);
+                    if (rollingStock == null)
+                    {
+                        rollingStock = scope.findRequirementSet(RequirementSet.ROLLING_STOCK_SCOPE_NAME, true);
+                        rollingStock.setRecursiveSelection(false);
+                        rollingStock.setDefault(false);
+                    }
                     paragraph.AppendToRequirementSet(rollingStock);
                 }
 
                 // Updates the functional block information based on the FunctionalBlockName field
-                if (!string.IsNullOrEmpty(paragraph.getFunctionalBlockName()))
+                if (!string.IsNullOrEmpty(paragraph.getObsoleteFunctionalBlockName()))
                 {
-                    RequirementSet allFunctionalBlocks = paragraph.Dictionary.findRequirementSet(FUNCTIONAL_BLOCK_NAME, true);
-                    RequirementSet functionalBlock = allFunctionalBlocks.findRequirementSet(paragraph.getFunctionalBlockName(), true);
+                    RequirementSet allFunctionalBlocks = paragraph.Dictionary.findRequirementSet(Dictionary.FUNCTIONAL_BLOCK_NAME, true);
+                    RequirementSet functionalBlock = allFunctionalBlocks.findRequirementSet(paragraph.getObsoleteFunctionalBlockName(), true);
                     functionalBlock.setRecursiveSelection(true);
+                    functionalBlock.setDefault(false);
                     paragraph.AppendToRequirementSet(functionalBlock);
                 }
 

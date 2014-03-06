@@ -1231,18 +1231,6 @@ namespace GUI
             RefreshModel();
         }
 
-        private void exportFunctionalBlocksToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
-            {
-                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
-                {
-                    DataDictionary.Specification.FunctionalBlockExporter fbExporter = new DataDictionary.Specification.FunctionalBlockExporter(specification);
-                    fbExporter.Export("../" + specification.Name + "FunctionalBlocks.csv");
-                }
-            }
-        }
-
         private void showRulePerformancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RulePerformances.RulesPerformances rulePerformances = new RulePerformances.RulesPerformances(EFSSystem);
