@@ -72,7 +72,10 @@ namespace GUI.RequirementSetDiagram
             Paragraph paragraph = element as Paragraph;
             if (paragraph != null)
             {
-                paragraph.AppendToRequirementSet(Model);
+                if (!paragraph.AppendToRequirementSet(Model))
+                {
+                    MessageBox.Show("Paragraph not added to the requirement set because it already belongs to it", "Paragraph not added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 GUIUtils.MDIWindow.SpecificationWindow.TreeView.Selected.SelectionChanged(false);
             }
         }

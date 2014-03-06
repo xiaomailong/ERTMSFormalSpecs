@@ -80,15 +80,12 @@ namespace GUI.BoxArrowDiagram
             {
                 Model.Width = Panel.DefaultBoxSize.Width;
                 Model.Height = Panel.DefaultBoxSize.Height;
-            }
-            Size = new Size(Model.Width, Model.Height);
 
-            if (Model.X == 0 || Model.Y == 0)
-            {
                 Point p = Panel.GetNextPosition();
                 Model.X = p.X;
                 Model.Y = p.Y;
             }
+            Size = new Size(Model.Width, Model.Height);
             SetPosition(Model.X, Model.Y);
 
             TextAlign = ContentAlignment.MiddleCenter;

@@ -705,10 +705,13 @@ namespace DataDictionary.Specification
         /// Appends this paragraph to the requirement set if it does not belong to it already
         /// </summary>
         /// <param name="requirementSet"></param>
-        public void AppendToRequirementSet(RequirementSet requirementSet)
+        public bool AppendToRequirementSet(RequirementSet requirementSet)
         {
+            bool retVal = false;
+
             if (!BelongsToRequirementSet(requirementSet))
             {
+                retVal = true;
                 RequirementSetReference reference = (RequirementSetReference)Generated.acceptor.getFactory().createRequirementSetReference();
                 reference.Name = requirementSet.FullName;
                 appendRequirementSets(reference);
@@ -721,6 +724,8 @@ namespace DataDictionary.Specification
                     }
                 }
             }
+
+            return retVal;
         }
 
         /// <summary>

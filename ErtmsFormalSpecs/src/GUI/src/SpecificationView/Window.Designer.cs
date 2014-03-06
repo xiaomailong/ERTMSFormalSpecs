@@ -289,44 +289,7 @@ namespace GUI.SpecificationView
             this.specBrowserTextView.ConsiderOnlyTypes = false;
             this.specBrowserTextView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.specBrowserTextView.Instance = null;
-            this.specBrowserTextView.Lines = new string[] {
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""};
+            this.specBrowserTextView.Lines = new string[] {""};
             this.specBrowserTextView.Location = new System.Drawing.Point(2, 2);
             this.specBrowserTextView.Name = "specBrowserTextView";
             this.specBrowserTextView.ReadOnly = false;
@@ -405,44 +368,7 @@ namespace GUI.SpecificationView
             this.messagesRichTextBox.ConsiderOnlyTypes = false;
             this.messagesRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.messagesRichTextBox.Instance = null;
-            this.messagesRichTextBox.Lines = new string[] {
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""};
+            this.messagesRichTextBox.Lines = new string[] {""};
             this.messagesRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.messagesRichTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.messagesRichTextBox.Name = "messagesRichTextBox";
