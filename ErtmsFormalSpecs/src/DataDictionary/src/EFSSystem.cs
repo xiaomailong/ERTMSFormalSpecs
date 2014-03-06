@@ -1365,12 +1365,20 @@ namespace DataDictionary
             private RequirementSet RequirementSet { get; set; }
 
             /// <summary>
+            /// Indicates if the requirement must belong to the requirement set, or not
+            /// </summary>
+            private bool Belonging { get; set; }
+
+            /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="requirementSet"></param>
-            public RequirementSetMarker(RequirementSet requirementSet)
+            /// <param name="belonging">Indicates whether the paragraph should belong to the requirement set 
+            /// or whether the requirement should not belong to that requirement set</param>
+            public RequirementSetMarker(RequirementSet requirementSet, bool belonging)
             {
                 RequirementSet = requirementSet;
+                Belonging = belonging;
             }
 
             /// <summary>
@@ -1379,14 +1387,14 @@ namespace DataDictionary
             /// <param name="paragraph"></param>
             /// <param name="recursively">Indicates that the paragraph should be marked recursively</param>
             /// <returns>true if marking recursively was applied</returns>
-            private bool MarkParagraph(Paragraph paragraph, bool recursively)
+            private bool MarkBelongingParagraph(Paragraph paragraph, bool recursively)
             {
                 paragraph.AddInfo("Requirement set" + RequirementSet.Name);
                 if (recursively)
                 {
                     foreach (Paragraph subParagraph in paragraph.SubParagraphs)
                     {
-                        MarkParagraph(subParagraph, recursively);
+                        MarkBelongingParagraph(subParagraph, recursively);
                     }
                 }
 
@@ -1400,14 +1408,28 @@ namespace DataDictionary
 
                 if (paragraph.BelongsToRequirementSet(RequirementSet))
                 {
-                    if (!MarkParagraph(paragraph, RequirementSet.getRecursiveSelection()))
+                    if (Belonging)
+                    {
+                        if (!MarkBelongingParagraph(paragraph, RequirementSet.getRecursiveSelection()))
+                        {
+                            base.visit(obj, visitSubNodes);
+                        }
+                    }
+                    else
                     {
                         base.visit(obj, visitSubNodes);
                     }
                 }
                 else
                 {
-                    base.visit(obj, visitSubNodes);
+                    if (!Belonging)
+                    {
+                        if (paragraph.getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
+                        {
+                            paragraph.AddInfo("Requirement does not belong to requirement set " + RequirementSet.Name);
+                        }
+                        base.visit(obj, visitSubNodes);
+                    }
                 }
             }
         }
@@ -1418,7 +1440,22 @@ namespace DataDictionary
         /// <param name="requirementSet"></param>
         public void MarkRequirementsForRequirementSet(RequirementSet requirementSet)
         {
-            RequirementSetMarker marker = new RequirementSetMarker(requirementSet);
+            RequirementSetMarker marker = new RequirementSetMarker(requirementSet, true);
+            foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+            {
+                dictionary.ClearMessages();
+                marker.visit(dictionary);
+            }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
+        }
+
+        /// <summary>
+        /// Marks the requirements which relate to the corresponding requirement set
+        /// </summary>
+        /// <param name="requirementSet"></param>
+        public void MarkRequirementsWhichDoNotBelongToRequirementSet(RequirementSet requirementSet)
+        {
+            RequirementSetMarker marker = new RequirementSetMarker(requirementSet, false);
             foreach (DataDictionary.Dictionary dictionary in Dictionaries)
             {
                 dictionary.ClearMessages();

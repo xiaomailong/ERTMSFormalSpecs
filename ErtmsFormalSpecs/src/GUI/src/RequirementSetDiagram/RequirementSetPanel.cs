@@ -33,7 +33,8 @@ namespace GUI.RequirementSetDiagram
     {
         private System.Windows.Forms.ToolStripMenuItem addRequirementSetMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addDependanceMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem selectRequirementsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectParagraphsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectRequirementsWhichDoNotBelongMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripMenuItem deleteMenuItem;
 
@@ -44,7 +45,8 @@ namespace GUI.RequirementSetDiagram
         {
             addRequirementSetMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             addDependanceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            selectRequirementsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            selectParagraphsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            selectRequirementsWhichDoNotBelongMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             deleteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             // 
@@ -69,10 +71,17 @@ namespace GUI.RequirementSetDiagram
             // 
             // select requirements
             // 
-            selectRequirementsMenuItem.Name = "selectRequirementsMenuItem";
-            selectRequirementsMenuItem.Size = new System.Drawing.Size(161, 22);
-            selectRequirementsMenuItem.Text = "Select requirements";
-            selectRequirementsMenuItem.Click += new System.EventHandler(selectRequirements_Click);
+            selectParagraphsMenuItem.Name = "selectParagraphsMenuItem";
+            selectParagraphsMenuItem.Size = new System.Drawing.Size(161, 22);
+            selectParagraphsMenuItem.Text = "Select paragraphs";
+            selectParagraphsMenuItem.Click += new System.EventHandler(selectRequirements_Click);
+            // 
+            // select requirements which do not belong
+            // 
+            selectRequirementsWhichDoNotBelongMenuItem.Name = "selectRequirementsWhichDoNotBelongMenuItem";
+            selectRequirementsWhichDoNotBelongMenuItem.Size = new System.Drawing.Size(161, 22);
+            selectRequirementsWhichDoNotBelongMenuItem.Text = "Select requirements which do not belong to requirement set";
+            selectRequirementsWhichDoNotBelongMenuItem.Click += new System.EventHandler(selectRequirementsWhichDoNotBelongMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -85,7 +94,8 @@ namespace GUI.RequirementSetDiagram
                 addRequirementSetMenuItem,
                 addDependanceMenuItem,
                 toolStripSeparator,
-                selectRequirementsMenuItem,
+                selectParagraphsMenuItem,
+                selectRequirementsWhichDoNotBelongMenuItem,
                 toolStripSeparator,
                 deleteMenuItem});
         }
@@ -231,6 +241,16 @@ namespace GUI.RequirementSetDiagram
             if (control != null)
             {
                 EFSSystem.INSTANCE.MarkRequirementsForRequirementSet(control.Model);
+            }
+        }
+
+        private void selectRequirementsWhichDoNotBelongMenuItem_Click(object sender, EventArgs e)
+        {
+            RequirementSetControl control = Selected as RequirementSetControl;
+
+            if (control != null)
+            {
+                EFSSystem.INSTANCE.MarkRequirementsWhichDoNotBelongToRequirementSet(control.Model);
             }
         }
 

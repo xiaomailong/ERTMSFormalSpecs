@@ -73,6 +73,7 @@ namespace GUI.RequirementSetDiagram
             if (paragraph != null)
             {
                 paragraph.AppendToRequirementSet(Model);
+                GUIUtils.MDIWindow.SpecificationWindow.TreeView.Selected.SelectionChanged(false);
             }
         }
 

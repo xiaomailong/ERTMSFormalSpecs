@@ -228,6 +228,6 @@ namespace DataDictionary.Specification
         /// <summary>
         /// The name of the requireement set for scoping information
         /// </summary>
-        public const string ROLLING_STOCK_SCOPE_NAME = "Rolling";
+        public const string ROLLING_STOCK_SCOPE_NAME = "Rolling stock";
     }
 }

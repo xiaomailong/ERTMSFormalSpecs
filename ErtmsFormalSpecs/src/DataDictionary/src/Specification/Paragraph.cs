@@ -663,6 +663,7 @@ namespace DataDictionary.Specification
 
             if (requirementSet != null)
             {
+                // Try to find a reference to this requirement set
                 foreach (RequirementSetReference reference in RequirementSetReferences)
                 {
                     if (reference.Name == requirementSet.FullName)
@@ -672,12 +673,27 @@ namespace DataDictionary.Specification
                     }
                 }
 
+                // Maybe a parent paragraph references this requirement set 
+                // (only if the requirement set specifies that selection is recursive)
                 if (!retVal && requirementSet.getRecursiveSelection())
                 {
                     Paragraph enclosing = EnclosingParagraph;
                     if (enclosing != null)
                     {
                         retVal = enclosing.BelongsToRequirementSet(requirementSet);
+                    }
+                }
+
+                // Try if the requirement belong to a sub requirement set
+                if (!retVal)
+                {
+                    foreach (RequirementSet subSet in requirementSet.SubSets)
+                    {
+                        if (BelongsToRequirementSet(subSet))
+                        {
+                            retVal = true;
+                            break;
+                        }
                     }
                 }
             }

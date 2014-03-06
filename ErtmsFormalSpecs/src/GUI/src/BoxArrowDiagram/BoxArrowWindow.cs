@@ -115,7 +115,7 @@ namespace GUI.BoxArrowDiagram
                 }
             }
 
-            [Category("Hidden")]
+            [Category("Description")]
             public bool Hidden
             {
                 get { return control.Model.Hidden; }

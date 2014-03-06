@@ -89,6 +89,36 @@ namespace GUI.RequirementSetDiagram
                 : base(control)
             {
             }
+
+            [Category("Related Requirements behaviour")]
+            public bool Recursive
+            {
+                get { return control.Model.getRecursiveSelection(); }
+                set
+                {
+                    control.Model.setRecursiveSelection(value);
+                }
+            }
+
+            [Category("Related Requirements behaviour")]
+            public bool Default
+            {
+                get { return control.Model.getDefault(); }
+                set
+                {
+                    control.Model.setDefault(value);
+                }
+            }
+
+            /// <summary>
+            /// Indicates if the paragraph can be implemented by the EFS
+            /// </summary>
+            [Category("Related Requirements behaviour"), TypeConverter(typeof(Converters.ImplementationStatusConverterWithDefault))]
+            public virtual DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM ImplementationStatus
+            {
+                get { return control.Model.getRequirementsStatus(); }
+                set { control.Model.setRequirementsStatus(value); }
+            }
         }
 
         /// <summary>
