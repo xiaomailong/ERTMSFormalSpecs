@@ -175,16 +175,6 @@
  Guid="c500a717-7b30-4c97-8a92-4ea4383116b6"
 >
 </ReqRef><Comment>The Location of the ReferenceBG</Comment>
-</StructureElement><StructureElement
- TypeName="BaseTypes.Distance"
- Default="0.0"
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="StartLocation"
- Guid="743e2ac5-fee7-4b15-9575-c8d01e5f2356"
->
-<Comment>Keeps the train&apos;s position when the MA was received</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="Section"
@@ -218,7 +208,7 @@
 </ReqRef><Comment>Represents the length of the section.</Comment>
 </StructureElement><StructureElement
  TypeName="SectionTimeOut"
- Default=""
+ Default="EMPTY"
  Mode="Internal"
  Implemented="TRUE"
  Verified="TRUE"
@@ -319,7 +309,7 @@
 </ReqRef><Comment>Stores all the information relative to the final section of the MA</Comment>
 <StructureElement
  TypeName="SectionTimeOut"
- Default=""
+ Default="EMPTY"
  Mode="Internal"
  Implemented="TRUE"
  Verified="TRUE"
@@ -346,7 +336,7 @@
 </ReqRef><Comment>Represents the end section time-out, if any.</Comment>
 </StructureElement><StructureElement
  TypeName="SectionTimeOut"
- Default=""
+ Default="EMPTY"
  Mode="Internal"
  Implemented="TRUE"
  Verified="TRUE"
@@ -392,7 +382,7 @@
 </ReqRef><Comment>Represents the length of the section.</Comment>
 </StructureElement><StructureElement
  TypeName="DangerPoint"
- Default=""
+ Default="EMPTY"
  Mode="Internal"
  Implemented="TRUE"
  Verified="TRUE"
@@ -419,7 +409,7 @@
 </ReqRef><Comment>Represents a location beyond the EOA that can be reached by the front end of the train without a risk for a hazardous situation.</Comment>
 </StructureElement><StructureElement
  TypeName="Overlap"
- Default=""
+ Default="EMPTY"
  Mode="Internal"
  Implemented="TRUE"
  Verified="TRUE"
@@ -1759,7 +1749,7 @@ X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  is
   AND  
 MA.Sections != []
   AND  
-THERE_IS_IN MA.Sections | (TimeOutDistance(X) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  AND  X.TimeOut.TimeOut + SectionTimerStart &lt; CurrentTime)</PreCondition></PreConditions>
+THERE_IS_IN MA.Sections | (Available(X.TimeOut) AND TimeOutDistance(X) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  AND  X.TimeOut.TimeOut + SectionTimerStart &lt; CurrentTime)</PreCondition></PreConditions>
 <Expression>FIRST_IN MA.Sections | 
 (   TimeOutDistance(X) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)
   AND  
@@ -1787,6 +1777,12 @@ Available(MA.EndSection.TimeOut)
     Length =&gt; MA.EndSection.Length,
     TimeOut =&gt; MA.EndSection.TimeOut
 }</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="0d717df1-5d45-4c7d-8589-9fee946d5cfa"
+>
+<Comment>If there are no timed out sections, return EMPTY</Comment>
+<Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
  Type="BaseTypes.Distance"
@@ -1830,7 +1826,7 @@ INITIAL_VALUE MA.ReferenceBGLocation)
  Guid="829dec25-32aa-482b-9bc2-38ede5dc94c4"
 >
 <Comment>If the section has no time-out, returns -1000 so that the distance is always in rear of the train</Comment>
-<Expression>-1000.0</Expression>
+<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
  Type="BaseTypes.Distance"
@@ -3218,9 +3214,11 @@ SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeedValue(
 <PreConditions>
 <PreCondition
  Guid="7c58a301-5e31-4d0c-91de-e2e64df6d1f7"
->Available(Element=&gt;MA)
+>Available(MA)
   AND  
-Available(Element=&gt;MA.MA.EndSection)
+Available(MA.MA.EndSection)
+  AND  
+Available(MA.MA.EndSection.EndSectionTimeOut)
   AND  
 (CurrentTime &gt; EndSectionTimerStart.TimeOut + MA.MA.EndSection.EndSectionTimeOut.TimeOut)</PreCondition></PreConditions>
 <Actions>
