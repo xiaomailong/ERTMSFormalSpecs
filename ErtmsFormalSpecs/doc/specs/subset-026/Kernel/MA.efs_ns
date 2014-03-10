@@ -1600,32 +1600,36 @@ Default.BaseTypes.LengthToDistance(
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="YES"
+ Name="Full track description not available"
  Guid="e0b694f9-3a5f-48cd-93c8-06424ca09f3f"
 >
 <PreConditions>
 <PreCondition
  Guid="00d7cd05-a9ec-410b-84e7-e65a24ffc933"
->FullTrackDescriptionAvailable(Packet =&gt; Packet)</PreCondition><PreCondition
+>NOT FullTrackDescriptionAvailable(Packet =&gt; Packet)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="The train is tripped"
+ Guid="550702ae-e019-451f-8b45-c5e05f21be0c"
+>
+<PreConditions>
+<PreCondition
  Guid="df6aa353-159b-4d1e-aab6-259ec49faed8"
->Mode != Mode.TR</PreCondition><PreCondition
- Guid="7cbeaba0-126c-4a06-9a3a-0d64c43c9762"
->(
-  Infill.Data == EMPTY
-    OR
-    ( Infill.Data != EMPTY
+>Mode == Default.Mode.TR</PreCondition></PreConditions>
+<Expression>Boolean.False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="604836d9-ccc9-41e8-b9d5-a815ab25a7f2"
+>
+<Expression>Infill.Data == EMPTY
+  OR
+  (
+    Infill.Data != EMPTY
       AND
     Kernel.Mode in [ Mode.FS, Mode.LS ] 
       AND
     BTM.Linking.DistanceToBaliseGroup ( Infill.Data.NID_BG ) != BaseTypes.Distance.Unknown
-  )
-)</PreCondition></PreConditions>
-<Expression>Boolean.True</Expression>
-</Case><Case
- Name="NO"
- Guid="550702ae-e019-451f-8b45-c5e05f21be0c"
->
-<Expression>Boolean.False</Expression>
+  )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
