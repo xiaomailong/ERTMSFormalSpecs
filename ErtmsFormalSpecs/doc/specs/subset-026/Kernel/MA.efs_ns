@@ -1702,7 +1702,7 @@ Default.BaseTypes.LengthToDistance(
 </Case></Cases>
 </Function><Function
  Type="Boolean"
- Name="AcceptedShortenedMA"
+ Name="ShortenedMAIsAccepted"
  Guid="1891bebe-22be-4c1a-89f9-80a427758759"
 >
 <ReqRef
@@ -1749,9 +1749,11 @@ X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  is
   AND  
 MA.Sections != []
   AND  
-THERE_IS_IN MA.Sections | (Available(X.TimeOut) AND TimeOutDistance(X) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  AND  X.TimeOut.TimeOut + SectionTimerStart &lt; CurrentTime)</PreCondition></PreConditions>
+THERE_IS_IN MA.Sections | (Available(X.TimeOut) AND SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  AND  X.TimeOut.TimeOut + SectionTimerStart &lt; CurrentTime)</PreCondition></PreConditions>
 <Expression>FIRST_IN MA.Sections | 
-(   TimeOutDistance(X) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)
+(   Available(X.TimeOut)
+  AND
+    SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)
   AND  
     X.TimeOut.TimeOut + SectionTimerStart &lt; CurrentTime )</Expression>
 </Case><Case
@@ -1787,7 +1789,7 @@ Available(MA.EndSection.TimeOut)
 </Function><Function
  Type="BaseTypes.Distance"
  Implemented="TRUE"
- Name="TimeOutDistance"
+ Name="SectionStartLocation"
  Guid="ee87661a-2b01-46a0-9be2-7aac8b6724c0"
 >
 <ReqRef
@@ -1795,7 +1797,7 @@ Available(MA.EndSection.TimeOut)
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="be688a17-08c2-45ac-860d-4946c45dceb8"
 >
-</ReqRef><Comment>Returns the distance to time-out for a section of the MA</Comment>
+</ReqRef><Comment>Returns the start location of a section of the MA</Comment>
 <Parameters>
 <Parameter
  Type="Section"
@@ -1813,14 +1815,18 @@ Available(MA.EndSection.TimeOut)
 <PreCondition
  Guid="4eac2e45-7574-4136-bb08-8a29aea90f05"
 >Available(aSection.TimeOut)</PreCondition></PreConditions>
-<Expression>(REDUCE MA.Sections | Before(
-    ExpectedFirst=&gt;X,
-    ExpectedSecond=&gt;aSection,
-    Collection=&gt;MA.Sections
-)
-  USING BaseTypes.LengthToDistance(X.Length)
-INITIAL_VALUE MA.ReferenceBGLocation)
-+ aSection.TimeOut.Distance</Expression>
+<Expression>MA.ReferenceBGLocation
++ 
+BaseTypes.LengthToDistance
+(
+    SUM MA.Sections | 
+        Before(
+            ExpectedFirst=&gt;X,
+            ExpectedSecond=&gt;aSection,
+            Collection=&gt;MA.Sections
+        )
+    USING X.Length
+)</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="829dec25-32aa-482b-9bc2-38ede5dc94c4"
@@ -1845,7 +1851,7 @@ INITIAL_VALUE MA.ReferenceBGLocation)
  Name="Value"
  Guid="4f7b33ad-902b-457a-89ac-0bb702f70a92"
 >
-<Expression>TimeOutDistance(TimedOutSection()) - TimedOutSection().TimeOut.Distance</Expression>
+<Expression>SectionStartLocation(TimedOutSection())</Expression>
 </Case></Cases>
 </Function><Function
  Type="BaseTypes.Distance"
@@ -1996,6 +2002,16 @@ INITIAL_VALUE MA.ReferenceBGLocation)
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7ef76590-6199-4b24-8ff8-2a6bb2c90930"
 >
+</ReqRef><ReqRef
+ Id="d833d8f6-90b9-499b-bdb1-408971c2cbfe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0f31c8ce-57e8-48e3-a5b6-3506a69a8199"
+>
+</ReqRef><ReqRef
+ Id="0d501890-d967-43e6-b663-c526a3371860"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3a4ca2cf-0b50-4c9b-b314-f32a554ec7aa"
+>
 </ReqRef><Comment></Comment>
 <PreConditions>
 <PreCondition
@@ -2006,40 +2022,10 @@ INITIAL_VALUE MA.ReferenceBGLocation)
  Guid="0b32d029-1703-4f17-9be3-7ba6576b3c68"
 >UpdateMA ( Packet =&gt; Packet, NID_BG =&gt; NID_BG )</Action><Action
  Guid="f8a42f47-6bf7-4155-9ad4-52eb896fbff6"
->SignallingRelatedSpeedRestriction &lt;- Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Current BG time of passage becomes section timer start"
- Guid="9aefeed8-6936-42a1-ae35-e8065572bc8a"
->
-<ReqRef
- Id="d833d8f6-90b9-499b-bdb1-408971c2cbfe"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f2ea77bd-a41f-4c07-acc3-3c3942c3dc18"
->
-</ReqRef><ReqRef
- Id="0d501890-d967-43e6-b663-c526a3371860"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7c8ca44c-489c-446f-bafb-0d43a268678c"
->
-</ReqRef><Comment>Save CurrgentBGTimeOfPassage in SectionTimerStart</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Current BG time of passage becomes section timer start"
- Guid="2df317c7-79ed-45d7-87f0-5a81e6cbb1f4"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
+>SignallingRelatedSpeedRestriction &lt;- Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action><Action
  Guid="80edc04f-5273-4997-8bd5-e5b012a9c650"
->SectionTimerStart &lt;- CurrentBGTimeOfPassage</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+><Comment>Current BG time of passage becomes section timer start</Comment>
+SectionTimerStart &lt;- CurrentBGTimeOfPassage</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2358,17 +2344,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
  Name="Check end section timer"
  Guid="8dd58980-55ef-4bb2-b236-e4152bf43630"
 >
-<ReqRef
- Id="1e99ff79-c41c-4625-9938-941b2814fbc6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6215fc65-1dc5-485d-b65a-3cf437cbfd26"
->
-</ReqRef><ReqRef
- Id="176a499e-e5d0-492b-bf95-b669d5df8beb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9e8e5a70-2e90-4b26-b1e2-7ad08823b50b"
->
-</ReqRef><Comment>When a new MA is received, check for a new End Section timer in rear of the train</Comment>
+<Comment>When a new MA is received, check for a new End Section timer in rear of the train</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2376,7 +2352,12 @@ SvL() != EMPTY</PreCondition></PreConditions>
  Name="Old End Section timer started and new End Section location in rear of train"
  Guid="27750e5b-ffa2-44dd-a36d-24e5cb0c92a8"
 >
-<Comment>If the newly received MA has an end section timer that is in rear of the train, and the train is already running an End Section timer, update the time-out value (in MA.EndSection.EndSectionTimeOut).
+<ReqRef
+ Id="176a499e-e5d0-492b-bf95-b669d5df8beb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1cf5f239-d603-4769-9d2c-ec0754ce5b8e"
+>
+</ReqRef><Comment>If the newly received MA has an end section timer that is in rear of the train, and the train is already running an End Section timer, update the time-out value (in MA.EndSection.EndSectionTimeOut).
 MA will be updated in the following rules, but to avoid resetting EndSectionTimerStart, the recorded start location is modified.</Comment>
 <PreConditions>
 <PreCondition
@@ -2418,6 +2399,11 @@ Default.MessageTypes.QScaleDistance(
  Id="c6215fef-5d78-4d0c-bab4-b041b7e0c571"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8092c8a9-b72e-41e1-be9e-1449ed98f4ee"
+>
+</ReqRef><ReqRef
+ Id="1e99ff79-c41c-4625-9938-941b2814fbc6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="27e5ad78-79ba-4326-88a9-8b5a2736d0b3"
 >
 </ReqRef><Comment>If the newly received MA has a End Section timer with the start location in rear of the train, and the train is not currently running an End Section timer, assumer that the time-out value has been reached.
 In this case, the EOA should be moved to the train&apos;s current position with no release speed.</Comment>
@@ -2671,7 +2657,7 @@ In this case, the EOA should be moved to the train&apos;s current position with 
  Name="DangerPointNotAvailable"
  Guid="8d37cbcc-cb87-4278-87ce-e59e0642ce06"
 >
-<Comment>If thre is no Danger Point, remove any old Danger Point information there may be</Comment>
+<Comment>If there is no Danger Point, remove any old Danger Point information there may be</Comment>
 <PreConditions>
 <PreCondition
  Guid="d0997cc0-b1a5-4e0d-b8ff-e797c75405a8"
@@ -3305,7 +3291,7 @@ IN EOAs</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="732974e8-1a81-4fee-9758-ff263328c599"
 >
-</ReqRef><Comment>If the train receives a MA with an End Section timer, and the timer start location is in rear of the train position, and the train is not currently running an End Section timer, the train&apos;s location when it receives the new MA becomes the EOA with no release speed</Comment>
+</ReqRef><Comment>When the train receives a MA corresponding to this case, it will set the EndSectionTimerStart time-out value to NA.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
