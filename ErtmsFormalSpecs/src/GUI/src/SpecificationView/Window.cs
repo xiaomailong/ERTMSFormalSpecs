@@ -77,7 +77,7 @@ namespace GUI.SpecificationView
             Visible = false;
             Dictionary = dictionary;
 
-            ResizeDescriptionArea(propertyGrid, 20);
+            ResizeDescriptionArea(propertyGrid, 0);
 
             Refresh();
 
