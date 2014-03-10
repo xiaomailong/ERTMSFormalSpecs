@@ -2077,6 +2077,39 @@ If all the messages of the current balise group have been received, calls Handle
 >BGLocationReference &lt;- PositionFromOdometry()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Keep time of first encountered balise in the group"
+ Guid="7e3f7eb7-4732-4b05-aee5-6838c06ed5c5"
+>
+<ReqRef
+ Id="d833d8f6-90b9-499b-bdb1-408971c2cbfe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f89dfca-3c06-48c5-9856-722c6ae3d688"
+>
+</ReqRef><ReqRef
+ Id="0d501890-d967-43e6-b663-c526a3371860"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="92afe681-91f8-4fdf-99b8-fcd57aee9371"
+>
+</ReqRef><Comment>The time is used for the MA section time-outs</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Keep time of first encountered balise in the group"
+ Guid="93775a88-0ffa-44f4-a42b-82fc8503f81f"
+>
+<PreConditions>
+<PreCondition
+ Guid="8fe19c66-0b4c-4f8b-9c03-95f752905437"
+>CurrentBaliseGroup == []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a11e1a7b-5620-4f84-b0a8-20ae6f967732"
+>Kernel.MA.CurrentBGTimeOfPassage &lt;- Kernel.CurrentTime</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2176,44 +2209,6 @@ If all the messages of the current balise group have been received, calls Handle
 >Kernel.MA.MALvl1Received
 (
     Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY,
-    NID_BG =&gt; NID_BG
-)</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="MA Lvl2or3 available"
- Guid="bc808b01-3a2d-44f8-a630-ca95f1b01a60"
->
-<ReqRef
- Id="ab5117d0-92b0-4488-9084-9e07dba02cec"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="702dfb22-7ae4-48ba-a4f9-4f8ceed58824"
->
-</ReqRef><ReqRef
- Id="f4723221-15fd-4636-851f-08a437cc18e6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="57f835fe-898b-44f2-bef2-5d29077da947"
->
-</ReqRef><ReqRef
- Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="575ee435-6b8d-411a-a391-fdea3a9e6f8b"
->
-</ReqRef><ReqRef
- Id="200c6541-d8d8-43b9-b5c0-4f586318bbce"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9bd63f47-593a-4a23-801a-56399ecc8a2e"
->
-</ReqRef><Comment>Processes the MA for level 2 or 3.</Comment>
-<PreConditions>
-<PreCondition
- Guid="682b5aef-b5b4-47f0-9e12-3213da50a84b"
->ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="e6aabdd3-be04-45f7-a366-8bc7983a3449"
->Kernel.MA.MALvl2or3Received
-(
-    Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY,
     NID_BG =&gt; NID_BG
 )</Action></Actions>
 </RuleCondition></Conditions>
