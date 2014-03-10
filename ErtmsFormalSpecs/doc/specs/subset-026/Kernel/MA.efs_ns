@@ -1831,7 +1831,7 @@ BaseTypes.LengthToDistance
  Name="Otherwise"
  Guid="829dec25-32aa-482b-9bc2-38ede5dc94c4"
 >
-<Comment>If the section has no time-out, returns -1000 so that the distance is always in rear of the train</Comment>
+<Comment>If the section has no time-out, returns unknown</Comment>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
@@ -3222,7 +3222,9 @@ IN EOAs</Action></Actions>
 )
 IN EOAs</Action><Action
  Guid="4a877f2e-ffe8-4dd8-b245-926bded39f26"
->HandlingOfAcceptedAndStoredInformation.SectionTimeOutShortensMA &lt;- True</Action></Actions>
+>HandlingOfAcceptedAndStoredInformation.SectionTimeOutShortensMA &lt;- True</Action><Action
+ Guid="4c4fc0db-b651-45f3-9bcc-b947f3342dc6"
+>SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
