@@ -33628,6 +33628,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  scope="FLAGS"
  bl="3.1.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -33647,6 +33648,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -33658,15 +33660,20 @@ An indication shall be given to the driver to indicate when the brakes can be re
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="71332070-75c9-434b-8d2c-e8f28ffbf0c7"
 >
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="2c796ce4-8293-4d15-9f9c-7cec11d1c85e"
+>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.15.1.1.3"
  guid=""
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -33681,18 +33688,18 @@ An indication shall be given to the driver to indicate when the brakes can be re
 </Paragraph><Paragraph
  id="3.15.1.1.4"
  guid=""
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
  Name=""
  Guid="bd829f59-8bac-42a9-a5aa-04efeb93bb9b"
->In level 3, trains following the one with one communication session available will always suffer performance penalties since no more position reports will be issued from the disconnection from the Handing Over RBC until the connection to the Accepting
-	RBC.<RequirementSets>
+>In level 3, trains following the one with one communication session available will always suffer performance penalties since no more position reports will be issued from the disconnection from the Handing Over RBC until the connection to the Accepting RBC.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2560cef0-1a6d-4311-8cae-52868a73fc19"
@@ -33703,6 +33710,10 @@ An indication shall be given to the driver to indicate when the brakes can be re
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2346243d-8b4d-4f39-b26f-237e5286821a"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="55500970-3f15-4145-8665-a0ce58a9ec03"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -33728,23 +33739,60 @@ An indication shall be given to the driver to indicate when the brakes can be re
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
  Name=""
  Guid="a2abd1db-57d6-45c6-a475-3e0f9ac97ef0"
->When the Handing Over RBC detects that a route is set for a train to enter another RBC area, it shall send:
-	a) Intentionally deleted.
-	b) To the Accepting RBC the following information:
-	- The ETCS identity of the on-board equipment;
-	- The border location that will be passed by the train when entering the Accepting RBC area;
-	- Current mode of the on-board equipment;
-	- Optionally, Train Data;
-	- Optionally, for a non-leading engine, the ETCS identity of the leading engine.<RequirementSets>
+>When the Handing Over RBC detects that a route is set for a train to enter another RBC area, it shall send:<Sub>
+<Paragraph
+ id="3.15.1.2.1.a"
+ type="DELETED"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="d143b4d5-3773-4ce6-9534-61e3b2731a60"
+>Intentionally deleted.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="8e771a5a-3709-41ce-9ae9-4a2d1504c192"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="429fa22d-e099-44ba-869d-e5717666ec53"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.15.1.2.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="ca3a691a-d481-4098-9fe2-af2b34c93563"
+>To the Accepting RBC the following information:
+- The ETCS identity of the on-board equipment;
+- The border location that will be passed by the train when entering the Accepting RBC area;
+- Current mode of the on-board equipment;
+- Optionally, Train Data;
+- Optionally, for a non-leading engine, the ETCS identity of the leading engine.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="58ffad1e-4e41-4e9a-b183-08fd1b5a82ab"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="18ade8e0-20f6-4c4f-96c5-e7dca426c543"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -33754,7 +33802,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -33762,8 +33811,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="2d72a594-4693-4b16-9f51-3b403c8e2579"
 >The Handing Over RBC shall not send information to an on-board equipment concerning the route in advance of the border without receiving the corresponding information from the Accepting RBC.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="e8aa7806-f9a3-443b-b4a2-5d2e3d92ca8d"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="9c3bcb63-5ac5-4356-a774-2955d4118e34"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -33773,7 +33822,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -33805,7 +33855,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -33813,8 +33863,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="1c286ed2-f0c8-4c8f-9a26-ae702ffe0df9"
 >Movement authorities<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="4140d868-0ef0-49f5-801e-c361622f7781"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="71882694-52a9-4865-b65d-23763b8aece3"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -33826,7 +33876,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -33834,8 +33884,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="77741414-84ab-4f6c-bee7-daaa008d06d5"
 >Linking<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="d199d20c-4fb9-4cce-9f19-49b56708627d"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="dfb7af7d-30cb-4fa5-b22c-ecf14e14757e"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -33847,7 +33897,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -33855,8 +33905,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="425ffcb5-5e4c-4ebd-b28b-0328ff4c6ee0"
 >International static speed profiles<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="f9d8a66b-555d-48b0-95a3-aba2a1162ebe"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="6d477640-a935-4e82-a48f-c02fd0d991fc"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -33868,7 +33918,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -33876,8 +33926,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="054435eb-ecc0-413a-a7bd-9b8651929712"
 >Axle Load Speed profiles<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="53ec4f61-a5f1-4549-a2c3-96c7fcaaeb58"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="e3778464-05d1-4997-aec9-b6c0d5a1c423"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -33889,7 +33939,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -33897,8 +33947,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="ab0653c2-9fb0-474d-8719-f28bae0eed56"
 >Gradients<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="5484e919-ae8a-45d9-9bab-b2d88e007cde"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="f508c07d-7ef3-4d64-aaa4-fbe4a7462262"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -33910,7 +33960,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -33918,8 +33968,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="10319413-abbd-4ad4-9e3d-25a19cca713f"
 >Temporary speed restrictions<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="eba826cd-2bc4-4cf6-b1c4-b938ebe7d3d9"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b803238f-593d-46b5-9784-ced3578ea849"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -33931,7 +33981,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -33939,8 +33989,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="03e9416f-9f19-4885-82d2-06bef7c6a047"
 >Mode profiles<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="fefffa63-de00-496b-a250-747af4f179e3"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="a7ddfc86-cebb-49e9-927a-1e746c016629"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -33960,8 +34010,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="56a4e10c-9b33-4ac2-a4c7-29adf473680e"
 >Intentionally deleted<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="fb3e06c3-a67a-46a3-b52f-5e755f5c46f1"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b4641dca-7ebc-41a8-9adc-acf3a2e25955"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -33973,7 +34023,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -33981,8 +34031,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="426e25bc-b15d-4f0d-82d6-03ed469bd320"
 >Track Conditions<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="05992e37-733f-4b21-aca8-af5ad07e65a4"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b75524ed-bc5f-4fde-b742-a6bb4a786099"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -33994,7 +34044,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -34002,20 +34052,20 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="f375db09-b8ed-4534-b461-c8aa2a49da46"
 >Level Transition orders<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="3b998b8b-0c79-4822-8048-d26ffa97f103"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="9d79665f-fa32-4f6f-9896-e97d8a1ca833"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.15.1.2.3.1.k"
  guid=""
- type="REQUIREMENT"
+ type="DELETED"
  scope="FLAGS"
  bl=""
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -34023,8 +34073,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="5780027f-d336-4ff1-8b6e-dfe5dbfa428b"
 >Intentionally deleted<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="0d4c79ee-7bc2-4bd7-8e33-c6a8eb51e920"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="ace7d6b5-7716-47de-93c9-b33e62847293"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -34036,7 +34086,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -34044,8 +34094,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="8fc334c3-1f17-4746-a58e-9e447d8e8c29"
 >Route Suitability Data<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="cc49553d-10fb-4eee-9655-53beaec78b65"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="132d3394-cb31-45b9-afa6-52529129181b"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -34057,7 +34107,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -34065,8 +34115,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="f6546dec-6f79-48aa-b395-b0d46f179d55"
 >National Values<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="06d64a80-8cbc-4dc6-868b-0410aae1b600"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="dd76536f-20dc-402b-947e-8b3e780d117b"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -34078,7 +34128,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -34086,8 +34136,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="40e727d6-f68d-4836-a4c3-00829f3ba992"
 >Adhesion Factor<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="83aaa395-a153-4a70-a800-2937eee99bd9"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="df2c8f4f-c2ad-4bcd-b232-1e1b9b7e9d39"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -34099,7 +34149,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -34107,8 +34157,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="f94750a8-0c5f-45e5-9b61-d053a9a14047"
 >Level Crossings<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="4c5f66b7-f456-43a1-9103-eb113d843194"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="ddc62c6c-f836-4ac5-997d-40c28d32d0d8"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -34120,7 +34170,7 @@ An indication shall be given to the driver to indicate when the brakes can be re
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -34128,15 +34178,15 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="20b3fc9d-2ba8-4951-985c-3cb2c5673ef7"
 >Permitted Braking Distance Information<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="1169e241-941a-4106-8f1c-1674b7c8884b"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="afc3971a-4d5c-4576-876d-0ba27cc09fce"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="9aa02b32-2314-40d1-ab25-921645b47db0"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="63c5766a-90a7-4d2f-bff4-5ec6cae7564a"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -34156,10 +34206,6 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="8743cfee-ccae-463e-a1e1-583cacc52b9b"
 >Note: The amount of information to be sent between the RBCs is depending on the implementation trackside.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="d8642edd-848d-4490-b8ca-00529df560c3"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="65ceaf0e-ac87-451f-ba3a-39042cf36e18"
 >
@@ -34167,10 +34213,6 @@ An indication shall be given to the driver to indicate when the brakes can be re
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="3fb19437-0d08-415c-9617-442f4a81f65d"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="8370a1f5-3ce9-403f-ac8a-e99c38b6e926"
 >
@@ -34194,6 +34236,10 @@ An indication shall be given to the driver to indicate when the brakes can be re
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5359e772-be94-42c2-9a9a-2a8efac5f05b"
 >
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="6fc0ea0e-6b51-44ca-a110-afc78ce1d27e"
+>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.15.1.2.5"
@@ -34214,6 +34260,10 @@ An indication shall be given to the driver to indicate when the brakes can be re
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7ad2c6ad-5377-4cd0-ba8b-203b726fa912"
 >
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="1569d1fb-5797-4a39-a286-9a5db7f08227"
+>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.15.1.2.6"
@@ -34222,7 +34272,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  scope="FLAGS"
  bl="3.1.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -34245,15 +34296,15 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="db6389b8-8913-4d0c-aea7-8cda84e7beee"
 >Note: This information might be needed to inform the signalman of the Accepting RBC that the train has entered the Accepting RBC area.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="0637ab3e-80c8-43b3-a936-57b7bc3c9bc1"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="f5c359b9-5bad-4966-b966-3d9d07e7120e"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="9a35e1de-4e96-4ba0-bd77-a20dfc7594c6"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b51028c5-86dc-41e8-80f9-622922fa0495"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -34263,7 +34314,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -34271,8 +34323,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="86409b39-d233-45f1-aa95-339a5789ae88"
 >When the Handing Over RBC receives a position report and detects that the minimum safe rear end of the train has crossed the border, it shall send a disconnection order to the on-board equipment.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="03c75e34-ed31-4cab-84ca-cd49e121c522"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="2563eae5-4b23-4148-98c3-29fd03a26345"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -34282,7 +34334,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -34290,8 +34343,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  Guid="8ddaea83-ab1b-40be-82d2-527c84d04f28"
 >When the Accepting RBC informs the Handing Over RBC that it has taken over the responsibility, the latter shall stop sending route related information to the on-board equipment.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="8423147e-d8f1-49a9-8809-693b9b94e041"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="8ef4314e-ebb0-4a8a-818f-c5d45003ce2f"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -34301,7 +34354,8 @@ An indication shall be given to the driver to indicate when the brakes can be re
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  onboard="TRUE"
@@ -34326,15 +34380,15 @@ An indication shall be given to the driver to indicate when the brakes can be re
 	- Change to a route which does no more include the border;
 	- The sending of an &quot;end of mission&quot; information from the on-board equipment.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="81a13ad7-8448-4837-a465-c7e5d83abb4c"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b87a3de8-fc97-4cc6-a946-0c08d35d2a12"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="cbd8f6b3-4fba-4979-8a72-52aa9c93e741"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="c74a2f59-ffdb-4008-b988-fe72627aa553"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
