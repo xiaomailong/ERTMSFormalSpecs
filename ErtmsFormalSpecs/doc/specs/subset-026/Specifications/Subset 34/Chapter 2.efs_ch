@@ -33,7 +33,17 @@
  rollinkstock="TRUE"
  Name=""
  Guid="97f12209-d1b7-4e8a-a4e2-3288c14f780e"
->This chapter describes the functional requirements on all information which is exchanged between ERTMS/ETCS onboard and the Vehicle via the Train Interface.</Paragraph><Paragraph
+>This chapter describes the functional requirements on all information which is exchanged between ERTMS/ETCS onboard and the Vehicle via the Train Interface.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="70bd1cbc-d11d-4698-a765-41e0ae7845e0"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="9f149ed3-9f31-4177-90df-8365bf5e1ba8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.1.1.2"
  guid=""
  type="DEFINITION"
@@ -48,7 +58,17 @@
  rollinkstock="TRUE"
  Name=""
  Guid="53acd6ba-79b4-4e17-a613-759cd440eb4b"
->The information which is exchanged between ERTMS/ETCS onboard and the Vehicle is based on the functionality defined by the ERTMS/ETCS SRS [1]</Paragraph><Paragraph
+>The information which is exchanged between ERTMS/ETCS onboard and the Vehicle is based on the functionality defined by the ERTMS/ETCS SRS [1]<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b0b57e7e-c208-438c-9761-c175f7a24dab"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="d602b982-3ccc-4e76-bbd5-80fd6af59c3b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.1.1.3"
  guid=""
  type="DEFINITION"
@@ -63,7 +83,17 @@
  rollinkstock="TRUE"
  Name=""
  Guid="ad1c2fc2-3eec-4076-b323-52d765bce3a8"
->Note: Due to its complexity and characteristics, the specification of the interface between ERTMS/ETCS onboard and the recording device in the train is defined in a separate interface specification and therefore not part of the train interface specification.</Paragraph><Paragraph
+>Note: Due to its complexity and characteristics, the specification of the interface between ERTMS/ETCS onboard and the recording device in the train is defined in a separate interface specification and therefore not part of the train interface specification.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="17984c62-1ac9-4352-afdb-c4a9d036da70"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="12033d38-bb14-4655-86d9-7cef189d0566"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.1.1.4"
  guid=""
  type="DEFINITION"
@@ -80,7 +110,17 @@
  Guid="ce143023-d9f6-4de4-8e42-6e8d7ea36cef"
 >With reference to the Train Interface:
 - Input is defined as data flow from Vehicle to ERTMS/ETCS onboard
-- Output is defined as data flow from ERTMS/ETCS onboard to Vehicle.</Paragraph><Paragraph
+- Output is defined as data flow from ERTMS/ETCS onboard to Vehicle.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ab1b1a56-c76e-4608-aca8-dc0ae7424f3f"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="8bdc2509-60dc-40ad-957d-92fcc73168b2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.1.1.5"
  guid=""
  type="DEFINITION"
@@ -95,7 +135,27 @@
  rollinkstock="TRUE"
  Name=""
  Guid="a5661e0f-3e68-4fe9-8013-a0c212879ec8"
->In this chapter all functional requirements are written as mandatory principles, i.e. using the word &quot;shall&quot;. Whether a function is used in a specific implementation of the Train Interface may depend on the characteristics of the Vehicle.</Paragraph></Sub>
+>In this chapter all functional requirements are written as mandatory principles, i.e. using the word &quot;shall&quot;. Whether a function is used in a specific implementation of the Train Interface may depend on the characteristics of the Vehicle.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ac7fd866-9eb2-4143-aabf-92961ef4b0cd"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="87f1ccac-f067-4b22-b833-13abc2c6c0ce"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1937ad85-c6d8-4a5a-aaf2-5c0a9071ddae"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="16f8aa12-24de-4496-81d1-dfd91e136663"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2"
  guid=""
@@ -145,7 +205,17 @@
  Guid="9bd34b9e-1275-4b1d-b8bd-f7d43514a97f"
 >The sleeping information is defined as a two state input with the following values:
 - Sleeping requested
-- Sleeping not requested.</Paragraph><Paragraph
+- Sleeping not requested.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a19fefbc-d5c0-46f6-91a9-7f4f75816da6"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="1341cec4-c4e0-46da-8992-b5fca92be42d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.2.1.2"
  guid=""
  type="REQUIREMENT"
@@ -159,7 +229,13 @@
  onboard="TRUE"
  Name=""
  Guid="705d58b9-e6bf-4033-9442-3c725365f693"
->Note: The input value &quot;Sleeping requested&quot; is used by ERTMS/ETCS onboard as one of the conditions for the transition to Sleeping mode. The other two conditions are &quot;standstill&quot;, which is managed internally in the ERTMS/ETCS onboard and &quot;All desks connected to the ERTMS/ETCS onboard equipment are closed&quot;, equivalent to &quot;All cabs connected to the ERTMS/ETCS onboard equipment are not active&quot;, which is generated internally in the ERTMS/ETCS onboard based on the input values &quot;Cab not active&quot; as defined in 2.5.1 of this document. See also the SRS references in 2.8.</Paragraph><Paragraph
+>Note: The input value &quot;Sleeping requested&quot; is used by ERTMS/ETCS onboard as one of the conditions for the transition to Sleeping mode. The other two conditions are &quot;standstill&quot;, which is managed internally in the ERTMS/ETCS onboard and &quot;All desks connected to the ERTMS/ETCS onboard equipment are closed&quot;, equivalent to &quot;All cabs connected to the ERTMS/ETCS onboard equipment are not active&quot;, which is generated internally in the ERTMS/ETCS onboard based on the input values &quot;Cab not active&quot; as defined in 2.5.1 of this document. See also the SRS references in 2.8.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8e6f3a33-b4fa-4e8f-b7b2-c528e5d92b9b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.2.1.3"
  guid=""
  type="REQUIREMENT"
@@ -203,7 +279,19 @@
  rollinkstock="TRUE"
  Name=""
  Guid="6e7ef4e6-2a10-45f0-b613-1dea421cea9a"
->Exception: The ERTMS/ETCS onboard connected via the cab status input (see 2.5.1) with the active cab may be excluded from getting the &quot;Sleeping requested&quot; information because it is not relevant for this ERTMS/ETCS onboard.</Paragraph></Sub>
+>Exception: The ERTMS/ETCS onboard connected via the cab status input (see 2.5.1) with the active cab may be excluded from getting the &quot;Sleeping requested&quot; information because it is not relevant for this ERTMS/ETCS onboard.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="1630be7b-c25a-42ce-bdcc-a2b3c8b38967"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="e28d1796-6b01-4724-abdb-b29079a7afc8"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.1.3.2"
  guid=""
@@ -218,7 +306,13 @@
  rollinkstock="TRUE"
  Name=""
  Guid="2a74e194-a693-42bc-bac7-ff75e7e642d9"
->If no active cab exists in the train, this information shall be communicated train-wide to all ERTMS/ETCS onboard units by means of the value &quot;Sleeping not requested&quot;.</Paragraph><Paragraph
+>If no active cab exists in the train, this information shall be communicated train-wide to all ERTMS/ETCS onboard units by means of the value &quot;Sleeping not requested&quot;.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="a09d7ca0-c85a-42ae-8633-a5e812a63277"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.2.1.3.3"
  guid=""
  type="NOTE"
@@ -232,8 +326,30 @@
  rollinkstock="TRUE"
  Name=""
  Guid="ac3ce3fc-a133-44c2-9895-2f775ee38a32"
->Note: By means of this configuration of the sleeping input it is ensured that the ERTMS/ETCS onboard will only go to sleeping mode if another cab in the train is active, i.e. another train control system (ETCS or national) provides the supervision of the train movement.</Paragraph></Sub>
+>Note: By means of this configuration of the sleeping input it is ensured that the ERTMS/ETCS onboard will only go to sleeping mode if another cab in the train is active, i.e. another train control system (ETCS or national) provides the supervision of the train movement.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="2973950d-9eea-4b50-a88f-d7bce2b5f047"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="9ddf3989-70e8-4170-a249-bb08cff5b7ac"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="364f5003-c526-4861-9473-6532996c14aa"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="1b4b3fc7-639f-4f75-acfd-fb74f787fd81"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.2"
  guid=""
@@ -267,7 +383,17 @@
  Guid="1e916e21-6a94-4e75-aeaa-8857ea37acf7"
 >The passive shunting information is defined as a two state input with the following values:
 - Passive shunting permitted
-- Passive shunting not permitted.</Paragraph><Paragraph
+- Passive shunting not permitted.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="bc26c982-3874-4c72-9f36-c07b7fe11d68"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="399cd060-fa93-4ba7-b64f-753140bb2a0b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.2.2.2"
  guid=""
  type="REQUIREMENT"
@@ -281,7 +407,13 @@
  onboard="TRUE"
  Name=""
  Guid="df56552b-73ea-4617-bea7-d04ca4234fc4"
->Note: The input value &quot;Passive shunting permitted&quot; is used by ERTMS/ETCS onboard as one of the conditions for the transition to Passive Shunting mode. The other two conditions are &quot;desks are closed&quot;, equivalent to &quot;Cabs are not active&quot;, which is generated internally in the ERTMS/ETCS onboard from the input values &quot;cab not active&quot; as defined in 2.5.1 of this document, and &quot;Continue Shunting on desk closure&quot; function is active, which is generated internally in ERTMS/ETCS onboard from driver input. See also the SRS references in 2.7.</Paragraph><Paragraph
+>Note: The input value &quot;Passive shunting permitted&quot; is used by ERTMS/ETCS onboard as one of the conditions for the transition to Passive Shunting mode. The other two conditions are &quot;desks are closed&quot;, equivalent to &quot;Cabs are not active&quot;, which is generated internally in the ERTMS/ETCS onboard from the input values &quot;cab not active&quot; as defined in 2.5.1 of this document, and &quot;Continue Shunting on desk closure&quot; function is active, which is generated internally in ERTMS/ETCS onboard from driver input. See also the SRS references in 2.7.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3529043e-b0c0-4c2d-ad21-352dcf4f8c2d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.2.2.3"
  guid=""
  type="REQUIREMENT"
@@ -326,7 +458,13 @@
  Name=""
  Guid="a41ce0a4-caf5-4aa5-96e8-e5ed3310d234"
 >Vehicle local (i.e. no data communication between vehicles in the train requested): full service brake applied AND drivers train brake controller isolated (for enabling the release of the train brake in other cab);
-OR</Paragraph><Paragraph
+OR<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="5a2532d2-dc54-47f1-a0af-efd84864d025"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.2.2.3.1.b"
  guid=""
  type="REQUIREMENT"
@@ -340,7 +478,19 @@ OR</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="48928a85-b343-4d56-a08c-14c5114b0972"
->Train-wide (i.e. data communication between vehicles in the train requested): Brakes other than the train brake applied (e.g. holding or parking brake), IF they can be released by train-wide command.</Paragraph></Sub>
+>Train-wide (i.e. data communication between vehicles in the train requested): Brakes other than the train brake applied (e.g. holding or parking brake), IF they can be released by train-wide command.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="4021ed0a-86cc-42ec-ab2d-e75ead368cc0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="77bc2ef5-d914-434b-aa1d-23cd3eb38aab"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.2.3.2"
  guid=""
@@ -355,7 +505,13 @@ OR</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="33aa9df2-40c2-4f63-b9c2-a54ade97c129"
->If none of the conditions in 2.2.2.3.1 is fulfilled, the passive shunting input shall have the value &quot;Passive shunting not permitted&quot;.</Paragraph><Paragraph
+>If none of the conditions in 2.2.2.3.1 is fulfilled, the passive shunting input shall have the value &quot;Passive shunting not permitted&quot;.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="a131a260-b490-4976-888d-e7954ca81422"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.2.2.3.3"
  guid=""
  type="REQUIREMENT"
@@ -369,8 +525,30 @@ OR</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="9c2f013f-9e3e-490c-b219-39ac7e225169"
->It shall be allowed to configure the passive shunting input permanently as &quot;Passive shunting not permitted&quot;. This is a decision made only by the Railway Undertaking e.g. based on the characteristics of the vehicle.</Paragraph></Sub>
+>It shall be allowed to configure the passive shunting input permanently as &quot;Passive shunting not permitted&quot;. This is a decision made only by the Railway Undertaking e.g. based on the characteristics of the vehicle.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="9fe164ba-541e-421b-a27a-bac1a37fc15e"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="a4734d04-f759-41c2-b641-e38c619ec397"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3ef2f2da-3479-49e0-8343-b73504bfe924"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="ec5f56b6-4689-48fe-b6e2-7670b32e4e58"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.3"
  guid=""
@@ -404,7 +582,17 @@ OR</Paragraph><Paragraph
  Guid="99c18997-e909-4f87-bb31-4cb0656ef216"
 >The non-leading information is defined as a two state input with the following values:
 - Non-leading permitted
-- Non-leading not permitted.</Paragraph><Paragraph
+- Non-leading not permitted.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c809e259-f092-4f46-98f0-26ded029ed29"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="6f620d0a-f8ac-4ed1-8b7f-ccd9932b1648"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.2.3.2"
  guid=""
  type="REQUIREMENT"
@@ -418,7 +606,13 @@ OR</Paragraph><Paragraph
  onboard="TRUE"
  Name=""
  Guid="14a0113e-9a92-4745-9790-56bec28eace5"
->Note: The input value &quot;Non-leading permitted&quot; is used by ERTMS/ETCS onboard as one of the conditions for the transition to Non Leading mode. The other two conditions are &quot;standstill&quot; and &quot;Driver selects Non Leading via the DMI&quot; which are managed internally in the ERTMS/ETCS onboard. See also the SRS references in 2.7</Paragraph><Paragraph
+>Note: The input value &quot;Non-leading permitted&quot; is used by ERTMS/ETCS onboard as one of the conditions for the transition to Non Leading mode. The other two conditions are &quot;standstill&quot; and &quot;Driver selects Non Leading via the DMI&quot; which are managed internally in the ERTMS/ETCS onboard. See also the SRS references in 2.7<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a6ef6b23-d4e4-4909-aa95-6b4f0919ed78"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.2.3.3"
  guid=""
  type="REQUIREMENT"
@@ -463,7 +657,13 @@ OR</Paragraph><Paragraph
  Name=""
  Guid="b1291c5a-530f-47ee-8bc7-9df4f5205984"
 >Drivers train brake controller isolated
-AND</Paragraph><Paragraph
+AND<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="0f22174c-2788-4e1a-9cb0-69bdaf8b9263"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.2.3.3.1.b"
  guid=""
  type="REQUIREMENT"
@@ -477,7 +677,19 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="3018a589-c75e-443b-8e53-71918781d9e9"
->Travel direction selected</Paragraph></Sub>
+>Travel direction selected<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="af7cef2c-1968-451c-9595-81246070503c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="26143045-4eb7-422a-8d0f-614830e9ad95"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.3.3.2"
  guid=""
@@ -492,8 +704,30 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="f69d81ce-4490-417c-a6d5-bf202234d2a4"
->If at least one of the conditions in 2.2.3.3.1 is not fulfilled, the non-leading input shall have the value &quot;Non-leading not permitted&quot;.</Paragraph></Sub>
+>If at least one of the conditions in 2.2.3.3.1 is not fulfilled, the non-leading input shall have the value &quot;Non-leading not permitted&quot;.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="90f9f980-edc3-466a-ab4d-695fd082918f"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="eaac3fce-b420-4920-b941-365c7bb4a22f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="618f9be8-d039-4fee-9909-b81ba4decea7"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="8595b79d-a36e-416f-bc1d-4a3bda7ec3ef"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.4"
  guid=""
@@ -527,7 +761,17 @@ AND</Paragraph><Paragraph
  Guid="e14a2a36-a1c5-4316-b05f-600097f91329"
 >The isolation information is defined as a two state output with the following values:
 - ETCS isolated
-- ETCS not isolated.</Paragraph><Paragraph
+- ETCS not isolated.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cbd1ea23-90a9-4122-bf1b-561c72527541"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="3fce0f2b-e1d8-4974-afaf-0d7b9464b0cf"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.2.4.2"
  guid=""
  type="NOTE"
@@ -542,8 +786,38 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="e39e401b-dc61-47be-aa16-9c916012cf8d"
->Note: The isolation output is generated by ERTMS/ETCS onboard to inform the Vehicle that the ERTMS/ETCS onboard is in Isolation mode. This information may be used e.g. to isolate the ERTMS/ETCS onboard from brakes and from some other onboard equipment/systems (see SRS clause 4.4.3.1.1).</Paragraph></Sub>
+>Note: The isolation output is generated by ERTMS/ETCS onboard to inform the Vehicle that the ERTMS/ETCS onboard is in Isolation mode. This information may be used e.g. to isolate the ERTMS/ETCS onboard from brakes and from some other onboard equipment/systems (see SRS clause 4.4.3.1.1).<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="63923447-fc9a-4187-9944-2c0f21fabae9"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="23e55dad-fa4a-469d-b0e6-eea35342a0ef"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6f59c84a-60ed-4cb4-91b8-35939b2bcae0"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="bb6ab5de-edbf-4ea0-834c-18819c7f2fde"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9a93e022-a066-417a-9b95-9ecd9718e3b4"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="cf4dc68a-9907-4981-be07-77518704d3f8"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3"
  guid=""
@@ -593,7 +867,17 @@ AND</Paragraph><Paragraph
  Guid="329a7f27-1bd7-4cd4-a3c6-c54b2e0342d5"
 >The service brake command (SBC) is defined as a two state output with the following values:
 - Service brake commanded
-- Service brake not commanded.</Paragraph><Paragraph
+- Service brake not commanded.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f9fc03d5-aa1c-4c02-af4f-dd279f86e7f8"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="18e24908-bf4e-4063-b3ba-3b71ca437c63"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.1.2"
  guid=""
  type="NOTE"
@@ -608,7 +892,17 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="bfc16fe6-2364-4975-8d7c-ad98326d1b25"
->Note: The SBC output is generated by ERTMS/ETCS onboard to command the service brake and to revoke this command.</Paragraph><Paragraph
+>Note: The SBC output is generated by ERTMS/ETCS onboard to command the service brake and to revoke this command.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f9ccf9ac-f304-49ce-a981-f9613c31a39d"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="6694d3f8-eb8c-403d-a6f9-bd742c63cf59"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.1.3"
  guid=""
  type="REQUIREMENT"
@@ -637,7 +931,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="7057d9c0-dca3-4254-b52a-4bfe92452fd5"
->The SBC output value &quot;Service brake commanded&quot; shall result in the train applying the full service brake and cutting off the traction.</Paragraph><Paragraph
+>The SBC output value &quot;Service brake commanded&quot; shall result in the train applying the full service brake and cutting off the traction.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="e8f467e8-1cdc-46ab-81c9-5c579ae16991"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.1.3.2"
  guid=""
  type="REQUIREMENT"
@@ -651,7 +951,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="a0b5a287-67d7-43ea-aae5-37e7772e2f87"
->Note: Full service brake means application of 100% of the installed braking performance of the train.</Paragraph><Paragraph
+>Note: Full service brake means application of 100% of the installed braking performance of the train.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="ec57f3d7-c58f-4816-9e95-74daae5eaae6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.1.3.3"
  guid=""
  type="REQUIREMENT"
@@ -665,7 +971,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="8ecd522b-24a8-4154-98cb-742652adcf99"
->The SBC output value &quot;Service brake not commanded&quot; shall result in a release of the service brake, but only to the highest brake level currently commanded by other application(s) or by the driver, and shall permit the traction power to be switched on.</Paragraph><Paragraph
+>The SBC output value &quot;Service brake not commanded&quot; shall result in a release of the service brake, but only to the highest brake level currently commanded by other application(s) or by the driver, and shall permit the traction power to be switched on.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="df6f912c-10ef-448e-820d-50d834bd805b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.1.3.4"
  guid=""
  type="REQUIREMENT"
@@ -679,7 +991,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="ac74e4b9-5cb6-496f-84cc-b63c7437e7b5"
->Note 1: the traction power can be switched on again only after the driver has cancelled the traction command (i.e. after a 0-position-acknowledgement by the traction controller).</Paragraph><Paragraph
+>Note 1: the traction power can be switched on again only after the driver has cancelled the traction command (i.e. after a 0-position-acknowledgement by the traction controller).<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="57a19c9f-fda4-45f7-9172-dc7d432159de"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.1.3.5"
  guid=""
  type="REQUIREMENT"
@@ -693,7 +1011,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="e160c73d-094f-4a38-a4a6-7f4a98f5433a"
->Note 2: In case of no SB manually applied by the driver and in case of no ASC activated, the SB released by ETCS will automatically cancel the brake application on the train. In case of a gradient, it is possible to have forward movement which must be controlled by driver with his own action on brake. This is acceptable as it is the same situation today (without ETCS).</Paragraph><Paragraph
+>Note 2: In case of no SB manually applied by the driver and in case of no ASC activated, the SB released by ETCS will automatically cancel the brake application on the train. In case of a gradient, it is possible to have forward movement which must be controlled by driver with his own action on brake. This is acceptable as it is the same situation today (without ETCS).<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="7d050eea-058b-4426-b14a-3a66f15df077"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.1.3.6"
  guid=""
  type="REQUIREMENT"
@@ -707,8 +1031,30 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="9f0f9ecc-0e79-4748-acf2-c97c8d29ac54"
->Note 3: The full service brake may be actuated by various brake systems depending on the rolling stock brake architecture (e.g. dynamic brake by substitution, blending or superposition principle with the UIC air brake).</Paragraph></Sub>
+>Note 3: The full service brake may be actuated by various brake systems depending on the rolling stock brake architecture (e.g. dynamic brake by substitution, blending or superposition principle with the UIC air brake).<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="881d0b2b-4a5b-4ed7-8eff-44a63fe6300f"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="bd472a43-3a12-4f99-9e4f-ff2ecddc7e97"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2f5bb03b-db11-455c-87f9-1a779226ff94"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="a8e61f8f-c944-4206-80ac-24f3786c8c5f"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.2"
  guid=""
@@ -741,7 +1087,17 @@ AND</Paragraph><Paragraph
  Name=""
  Guid="f549b249-bf4b-4d17-a7cb-df8b47ffd37a"
 >The brake pressure information is defined as a composite input with the following values:
-- A range from 0 to 6 bar in steps of 0.1 bar.</Paragraph><Paragraph
+- A range from 0 to 6 bar in steps of 0.1 bar.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3bacb379-e710-4fdd-a6e6-e29739efb9da"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="1bb7aae2-ea34-4aa9-9ca4-612985c072d3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.2.2"
  guid=""
  type="REQUIREMENT"
@@ -755,7 +1111,13 @@ AND</Paragraph><Paragraph
  onboard="TRUE"
  Name=""
  Guid="6ea52912-6ef6-43dd-93a4-8cd0603b56a0"
->Note: The brake pressure input is used by ERTMS/ETCS onboard in the service brake feedback model in [1].</Paragraph><Paragraph
+>Note: The brake pressure input is used by ERTMS/ETCS onboard in the service brake feedback model in [1].<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ddfd88f6-cab9-43c6-882a-665692116ebe"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.2.3"
  guid=""
  type="REQUIREMENT"
@@ -785,7 +1147,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="5da99ec2-7aab-47ef-840b-e8b05116f1ba"
->The value of the brake pressure input shall represent either the pressure in the main brake pipe or in the brake cylinder.</Paragraph><Paragraph
+>The value of the brake pressure input shall represent either the pressure in the main brake pipe or in the brake cylinder.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="224c45d0-4bc7-4945-815d-5a5d0b2db1fa"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.2.3.2"
  guid=""
  type="REQUIREMENT"
@@ -800,8 +1168,38 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="15427759-9430-4f02-9810-ccbd8e230f0a"
->Note: The ERTMS/ETCS onboard has to be configured for one of these two input parameters.</Paragraph></Sub>
+>Note: The ERTMS/ETCS onboard has to be configured for one of these two input parameters.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="50637635-5a3e-460e-8d7f-64ab02fad672"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="2734c9da-e33c-4b03-8c6a-217c264dc5e2"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="018986ff-3b93-483f-84b4-305bdb632bed"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="98362463-8552-4079-843e-3510897bbdb1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5952cc8c-baae-4f24-ac70-92b05afc37ac"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="d19a13c1-7936-4ac7-b475-a41bc080dbd7"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.3"
  guid=""
@@ -835,7 +1233,17 @@ AND</Paragraph><Paragraph
  Guid="07aa4451-7a3c-41ac-8176-3eab54039e3c"
 >The emergency brake command (EBC) is defined as a two state output with the following values:
 - Emergency brake commanded
-- Emergency brake not commanded.</Paragraph><Paragraph
+- Emergency brake not commanded.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="58474a76-5739-49e6-bf14-40dfed268aaa"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="4fc23677-b8a8-40ef-b26f-05d1c5323d06"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.3.2"
  guid=""
  type="NOTE"
@@ -849,7 +1257,13 @@ AND</Paragraph><Paragraph
  onboard="TRUE"
  Name=""
  Guid="983169a7-091c-42ff-9ade-6b4e7172f06b"
->Note: The EBC output is generated by ERTMS/ETCS onboard to command the emergency brake and to revoke this command.</Paragraph><Paragraph
+>Note: The EBC output is generated by ERTMS/ETCS onboard to command the emergency brake and to revoke this command.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="26cce988-2f7c-4999-a184-1f2a2e5af479"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.3.3"
  guid=""
  type="REQUIREMENT"
@@ -878,7 +1292,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="5552dcbb-67b4-4719-b7ea-74d92fa3a017"
->The EBC output value &quot;Emergency brake commanded&quot; shall result in the train applying the emergency brake and cutting off the traction.</Paragraph><Paragraph
+>The EBC output value &quot;Emergency brake commanded&quot; shall result in the train applying the emergency brake and cutting off the traction.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="3051fedd-cba3-4399-aab6-7ed88380380d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.3.3.2"
  guid=""
  type="REQUIREMENT"
@@ -892,7 +1312,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="3c432473-4ad8-4b8c-aea0-3fe0b4e9aad6"
->The EBC output value &quot;Emergency brake not commanded&quot; shall permit release of the emergency brake (implementation dependent if brake is released automatically or not, decision made by operator) and shall permit the traction power to be switched on.</Paragraph><Paragraph
+>The EBC output value &quot;Emergency brake not commanded&quot; shall permit release of the emergency brake (implementation dependent if brake is released automatically or not, decision made by operator) and shall permit the traction power to be switched on.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="69b8ca64-adf8-448a-890c-394dea54401d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.3.3.3"
  guid=""
  type="REQUIREMENT"
@@ -906,8 +1332,30 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="e3a8fa70-ac9d-45d1-be1e-92747ea4e865"
->Note: the traction power can be switched on again only after the driver has cancelled the traction command (i.e. after a 0-position-acknowledgement by the traction controller).</Paragraph></Sub>
+>Note: the traction power can be switched on again only after the driver has cancelled the traction command (i.e. after a 0-position-acknowledgement by the traction controller).<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="0d955bc0-814e-4e4e-9153-f2663ff5e5e4"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="25e228ae-cf0d-49f7-8d64-a6b6a1e76aed"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0b8d0bba-1154-4b07-a357-1518afafbe44"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="4a33391d-96e2-4776-883d-b46ff94d0db5"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.4"
  guid=""
@@ -939,7 +1387,27 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="aa3a7b1e-3003-4547-8cc7-6f9f347fdb76"
->To be harmonized.</Paragraph></Sub>
+>To be harmonized.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a656fc79-1d84-4b24-9928-2c0f251fa134"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="4c319ed7-b04c-42e9-9517-a79f5880918a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c26d7d62-e39f-4092-bb15-df7ab0ffc591"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="ea0aac24-89e3-47ed-b840-2a7ae85aff0a"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.5"
  guid=""
@@ -975,7 +1443,17 @@ AND</Paragraph><Paragraph
 - Regenerative brake
 - Magnetic shoe brake
 - Eddy current brake for emergency braking
-- Eddy current brake for service braking.</Paragraph><Paragraph
+- Eddy current brake for service braking.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f1141f21-bd2f-4628-8fa9-7bf69e6a423c"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="2eb48167-3362-4ded-bb7d-95477b0d3aae"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.5.2"
  guid=""
  type="REQUIREMENT"
@@ -992,7 +1470,17 @@ AND</Paragraph><Paragraph
  Guid="ee8241a4-8aa5-4163-8de2-20ca4e6ad70a"
 >This special brake information is defined for each special brake as a two state output with the following values:
 - Not inhibited
-- Inhibited.</Paragraph><Paragraph
+- Inhibited.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="43e65a29-fb38-4e2e-a58c-611fc9321b4d"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="feccb1f3-bea5-46b0-ad17-b62c186725ba"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.5.3"
  guid=""
  type="NOTE"
@@ -1007,7 +1495,27 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="d191b4a8-10a8-438c-845b-17487db311f9"
->Note: This special brake inhibit output is generated by the ERTMS/ETCS onboard to inform the train that the respective special brake application is to be allowed / inhibited due to an order from STM.</Paragraph></Sub>
+>Note: This special brake inhibit output is generated by the ERTMS/ETCS onboard to inform the train that the respective special brake application is to be allowed / inhibited due to an order from STM.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a5ab8395-57f1-4605-91d8-a2debe8c662d"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="1f9842e1-a875-4e15-a9b9-7b387d2f3cc6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ee34a764-06c7-4d2c-b4cb-b4cab57597aa"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="afbbb78d-20d2-4686-b465-95ebe7543f15"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.6"
  guid=""
@@ -1043,7 +1551,17 @@ AND</Paragraph><Paragraph
 - Regenerative brake
 - Magnetic shoe brake
 - Eddy current brake
-- Electro Pneumatic (EP) brake.</Paragraph><Paragraph
+- Electro Pneumatic (EP) brake.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f0944a73-c188-487d-9212-fc74005891e6"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="fed31015-3268-4871-b2b6-8760647c3a83"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.6.2"
  guid=""
  type="NOTE"
@@ -1058,7 +1576,17 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="b71f094b-9dd3-45f5-92f3-a39fd870cb1b"
->Note: The specifications for the status of these special brakes are exactly the same and therefore given only once.</Paragraph><Paragraph
+>Note: The specifications for the status of these special brakes are exactly the same and therefore given only once.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b6bfc0b1-e2bb-427b-9614-cd32fb5f26ec"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="144b3974-990b-41f5-b709-216cfe2eef6d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.6.3"
  guid=""
  type="REQUIREMENT"
@@ -1075,7 +1603,17 @@ AND</Paragraph><Paragraph
  Guid="dc456af4-f303-4870-a171-ef1d7085b9c0"
 >The special brake status information is defined as a two state input with the following values:
 - Special brake active
-- Special brake not active.</Paragraph><Paragraph
+- Special brake not active.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f28134bf-85df-4e2f-907d-b238eb980b0f"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="3554932c-5fa0-44e8-821d-509ece2b86bc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.6.4"
  guid=""
  type="REQUIREMENT"
@@ -1090,7 +1628,17 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="03cde933-89e7-47e7-9145-df57f955e647"
->Note: The special brake status input is used by ERTMS/ETCS onboard to adapt the braking curve model for the characteristics of the service brake, the emergency brake, or both, according to the possible configurations of ERTMS/ETCS onboard as defined in [1].</Paragraph><Paragraph
+>Note: The special brake status input is used by ERTMS/ETCS onboard to adapt the braking curve model for the characteristics of the service brake, the emergency brake, or both, according to the possible configurations of ERTMS/ETCS onboard as defined in [1].<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="63991750-8ecb-43bf-b69d-93affd5ca79a"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="e22a08e4-a2d4-4032-af00-19585fa43e99"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.6.5"
  guid=""
  type="REQUIREMENT"
@@ -1119,7 +1667,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="58591906-95a2-4114-9175-01e04940dee2"
->The special brake status input shall have the value &quot;Special brake active&quot; if the special brake is available, i.e. in working condition and not inhibited.</Paragraph><Paragraph
+>The special brake status input shall have the value &quot;Special brake active&quot; if the special brake is available, i.e. in working condition and not inhibited.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="9061fb60-78d2-448e-a6c6-6f0f1bd2c25a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.6.5.2"
  guid=""
  type="REQUIREMENT"
@@ -1133,8 +1687,30 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="80c833b6-8a72-48eb-a0e2-97457bbcb4b1"
->The special brake status input shall have the value &quot;Special brake not active&quot; if the special brake is not available, i.e. not in working condition or inhibited.</Paragraph></Sub>
+>The special brake status input shall have the value &quot;Special brake not active&quot; if the special brake is not available, i.e. not in working condition or inhibited.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="6b627f82-618a-4956-a3ff-549cac563741"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="8ea4d8a3-7c07-4153-82e2-971c2161da84"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3cc5c5bd-12e9-41d5-9903-08dbcc71b0cb"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="171a18d3-6fe8-429d-88c3-1a82cedc7bf2"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.7"
  guid=""
@@ -1168,7 +1744,17 @@ AND</Paragraph><Paragraph
  Guid="39f2f6b9-101e-4160-b324-b2c4c3b64bbc"
 >The additional brake status information (ABS) is defined as a two state input with the following values:
 - Additional brakes active
-- Additional brakes not active.</Paragraph><Paragraph
+- Additional brakes not active.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="58ce9db5-dcc2-4631-bea6-558ff792ed36"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="fe69f373-421c-4cd6-b09e-f280236018cb"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.7.2"
  guid=""
  type="DEFINITION"
@@ -1183,7 +1769,17 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="dd174716-d385-4fbd-be0e-1ccf329bf059"
->The &quot;additional brakes&quot; are defined as any brakes in the train which are independent of wheel/rail adhesion.</Paragraph><Paragraph
+>The &quot;additional brakes&quot; are defined as any brakes in the train which are independent of wheel/rail adhesion.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ebbbcfad-9869-4bb4-b535-a728b971d4dd"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="aab2fb4b-0fe0-45db-a92c-6759a745740f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.7.3"
  guid=""
  type="REQUIREMENT"
@@ -1197,7 +1793,13 @@ AND</Paragraph><Paragraph
  onboard="TRUE"
  Name=""
  Guid="cb88b506-7ed8-46a9-988e-3cd7ea95ef7a"
->Note: The ABS input is used by ERTMS/ETCS onboard to adapt the braking curve model for the characteristics of the additional brakes independent of wheel/rail adhesions, as defined in [1].</Paragraph><Paragraph
+>Note: The ABS input is used by ERTMS/ETCS onboard to adapt the braking curve model for the characteristics of the additional brakes independent of wheel/rail adhesions, as defined in [1].<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0b3f8881-bc70-449e-a24b-b903e2692170"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.7.4"
  guid=""
  type="REQUIREMENT"
@@ -1226,7 +1828,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="9009bf82-5cb0-4f38-98a1-c69ce36d3845"
->The ABS input shall have the value &quot;additional brakes active&quot; if the additional brake(s) is/are available, i.e. in working condition and not inhibited.</Paragraph><Paragraph
+>The ABS input shall have the value &quot;additional brakes active&quot; if the additional brake(s) is/are available, i.e. in working condition and not inhibited.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="202c441d-a3d5-463d-8137-f742580a8407"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.3.7.4.2"
  guid=""
  type="REQUIREMENT"
@@ -1240,9 +1848,41 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="3dafa686-a62d-4a1b-914d-8f8745423727"
->The ABS input shall have the value &quot;additional brakes not active&quot; if the additional brake(s) is/are not available, i.e. not in working condition or inhibited.</Paragraph></Sub>
+>The ABS input shall have the value &quot;additional brakes not active&quot; if the additional brake(s) is/are not available, i.e. not in working condition or inhibited.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="43dfa979-8207-4370-9c0e-1d598d39c051"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="7dee56f3-0be9-43a1-bca9-2feafc64b90b"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="888954eb-c7a9-4082-af3c-cc24780e5017"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="a21f3be4-6c38-4579-af23-a7d35ab57d62"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8ecd812c-1ddd-409c-91b0-8475703e4a7f"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="d05a4132-d2b9-43ed-ad9f-7d5c2896c059"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4"
  guid=""
@@ -1290,7 +1930,27 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="d07b2f9e-c8f3-4389-be7f-633d830fcec0"
->To be harmonized.</Paragraph></Sub>
+>To be harmonized.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2aa893af-a858-4e1e-b2f9-bc583c9c14d0"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="16eadad6-aa47-42a0-b544-457470dacacf"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6cabee5b-eeac-4a50-9598-8931443e921a"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="b5b68967-2992-4981-bfe2-bfb313e73518"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.2"
  guid=""
@@ -1322,7 +1982,27 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="5aeaf1f3-c6de-4bdb-a7c2-ea809236e366"
->To be harmonized.</Paragraph></Sub>
+>To be harmonized.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e89198da-b85a-4ea8-9e65-4aacb0aca34c"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="6c5198b6-d639-48c0-ae4e-ec4c89e27535"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f0ff5bc2-9f29-4c9d-ae99-5b4437d4f70d"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="f6010206-7934-44ec-90ce-2c4191f4f2bf"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.3"
  guid=""
@@ -1356,7 +2036,17 @@ AND</Paragraph><Paragraph
  Guid="64796bcb-a745-4f75-99bf-47778270abbd"
 >This pantograph information is defined as a two state output with the following values:
 - Raise
-- Lower.</Paragraph><Paragraph
+- Lower.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="679b0a78-e1e1-4e77-bbfc-7142585e1fdd"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="5bb46c6a-8093-4257-81b1-4dd6136a1e95"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.4.3.2"
  guid=""
  type="REQUIREMENT"
@@ -1371,7 +2061,27 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="00387b66-c459-4ea1-af5c-fea7a1609c86"
->Note: This pantograph output is generated by the ERTMS/ETCS onboard to inform the train that the pantograph has to be raised / lowered immediately due to an order from STM.</Paragraph></Sub>
+>Note: This pantograph output is generated by the ERTMS/ETCS onboard to inform the train that the pantograph has to be raised / lowered immediately due to an order from STM.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="83cfca32-0089-4a68-89e3-042c169c0b5c"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="38157370-e986-442e-988b-64622da2d301"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2d787095-c016-4571-acca-2e343448ecc7"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="a5859717-6fc9-45c2-afd2-5b201a26323c"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.4"
  guid=""
@@ -1403,7 +2113,27 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="31cedb73-fb37-4bb0-8dfd-3373de85aca3"
->To be harmonized.</Paragraph></Sub>
+>To be harmonized.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="742434c4-174a-4c76-b606-326fc88b5b0b"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="a8c1993b-088d-4f6d-bb24-946142b6d73a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d51a2bae-240e-46e8-bf26-4c9b37194a4d"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="34abf7c4-3e85-4b19-a339-59276f196f5d"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.5"
  guid=""
@@ -1437,7 +2167,17 @@ AND</Paragraph><Paragraph
  Guid="e864835c-d370-4254-abe0-f0231ef53296"
 >This air tightness information is defined as a two state output with the following values:
 - Open
-- Close.</Paragraph><Paragraph
+- Close.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d779266a-b2dc-4eb8-87f4-0eb4ea9aa27b"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="6beb28b0-69c1-4dcb-a79b-4410771b32f0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.4.5.2"
  guid=""
  type="REQUIREMENT"
@@ -1452,7 +2192,27 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="411c6431-5cd6-44de-bca8-459584dad124"
->Note: This air tightness output is generated by the ERTMS/ETCS onboard to inform the train that the flap has to be open / closed immediately due to an order from STM.</Paragraph></Sub>
+>Note: This air tightness output is generated by the ERTMS/ETCS onboard to inform the train that the flap has to be open / closed immediately due to an order from STM.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3b68275d-2580-4208-aa60-ed4f2e667250"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="549808cc-ca87-4924-ae8a-50bedb6646b8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="13b2c2e0-ff99-40f3-bbf7-2cd2fca45ddb"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="0e032eb0-5e86-46ce-b8b7-0633d99e4cc9"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.6"
  guid=""
@@ -1484,7 +2244,27 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="e943ce31-72bc-4ab6-b53b-dab2cb1c9a76"
->To be harmonized.</Paragraph></Sub>
+>To be harmonized.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1213cdbf-5354-4aa9-a448-8e5b7c1df757"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="f298fde0-a6a2-4ce4-b592-5d341c3d2e60"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="017fc526-90a8-4c84-b3e8-1c1b196ac70d"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="14b1f9e6-a77a-437a-9f69-1ae6f6b74152"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.7"
  guid=""
@@ -1516,7 +2296,27 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="6ed868c3-d43b-47dd-8775-d6a819c8ca53"
->To be harmonized.</Paragraph></Sub>
+>To be harmonized.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4da63ced-082f-4462-804c-f6f40be0421f"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="e7f30e19-1c58-4c35-a64a-c081cb66860b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3945cf5d-ba2a-4a2a-889d-171a678c0e12"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="ce458e45-6d80-4472-9838-3deb6a480745"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.8"
  guid=""
@@ -1550,7 +2350,17 @@ AND</Paragraph><Paragraph
  Guid="a206f1ba-bef5-40dd-b305-c2cb46cab517"
 >This main power switch information is defined as a two state output with the following values:
 - Open
-- Close.</Paragraph><Paragraph
+- Close.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7c42b0af-6e4f-4531-aec8-370ca46a5c8e"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="924857ea-3a32-4037-b120-1a5894e47847"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.4.8.2"
  guid=""
  type="REQUIREMENT"
@@ -1565,7 +2375,27 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="e491c678-743e-49e8-9ab6-f935f09bceda"
->Note: This main power switch output is generated by the ERTMS/ETCS onboard to inform the train that the main switch has to be open / closed immediately due to an order from STM.</Paragraph></Sub>
+>Note: This main power switch output is generated by the ERTMS/ETCS onboard to inform the train that the main switch has to be open / closed immediately due to an order from STM.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="068165a7-c7f7-4f2c-9304-76a62422f702"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="be20f16c-4b3b-4489-9b5a-ebb12ab63626"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4adfcbb5-171c-4ebb-b6d2-4b2677871c13"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="315061a8-8575-403f-9b22-0555a29f6f57"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.9"
  guid=""
@@ -1599,7 +2429,17 @@ AND</Paragraph><Paragraph
  Guid="150c63c0-f112-408f-bb6c-1ea9c8c0d98a"
 >The traction cut off information (TCO) is defined as a two state output with the following values:
 - Cut off traction
-- Do not cut off traction.</Paragraph><Paragraph
+- Do not cut off traction.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c95824ca-526a-4d19-87a9-523af4107ae2"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="5c338833-dad0-49b9-8527-bd14216be5b8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.4.9.2"
  guid=""
  type="REQUIREMENT"
@@ -1614,7 +2454,17 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="54fc5d9e-849c-4ae7-9f7d-bfcfe12ee72d"
->Note: The TCO output is generated by ERTMS/ETCS onboard to cut the traction as soon as it passes the warning limit of the braking curve model as defined in [1] or as a consequence of an STM command.</Paragraph><Paragraph
+>Note: The TCO output is generated by ERTMS/ETCS onboard to cut the traction as soon as it passes the warning limit of the braking curve model as defined in [1] or as a consequence of an STM command.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fd64fe92-80f6-422c-9631-ff28ae049533"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="0786be51-643b-454c-b32a-72c4e76e198a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.4.9.3"
  guid=""
  type="REQUIREMENT"
@@ -1643,7 +2493,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="70e73fa7-dc62-4ac5-815d-6b05f9b4b92a"
->The TCO output value &quot;Cut off traction&quot; shall be used by the train to cut off the traction power.</Paragraph><Paragraph
+>The TCO output value &quot;Cut off traction&quot; shall be used by the train to cut off the traction power.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="489b1a37-f2a3-4312-b09b-fa7172913997"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.4.9.3.2"
  guid=""
  type="REQUIREMENT"
@@ -1657,8 +2513,30 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="3ddb9299-36d8-4adf-b558-944c610e4089"
->The TCO output value &quot;Do not cut off traction&quot; shall allow the driver or an automatic system (ASC) to apply traction power.</Paragraph></Sub>
+>The TCO output value &quot;Do not cut off traction&quot; shall allow the driver or an automatic system (ASC) to apply traction power.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="b9c80cc5-b213-476f-8555-19ff9011d0c5"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="6413d85a-bd87-4d34-862d-b7e5ccaf3e6b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8c359b22-2938-4cf9-8547-2546b0966090"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="d0371a0d-534b-4175-bc1b-7db907f53e13"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.10"
  guid=""
@@ -1690,8 +2568,38 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="52bc04f7-19ed-4547-8be6-bf9f4b8100ad"
->To be harmonized.</Paragraph></Sub>
+>To be harmonized.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="dc31aa9b-a3dc-422c-8b0c-6236135d39c0"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="96ed3afd-6f17-411d-9b08-60c7691011c9"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2dc7ba91-e088-48ed-9eb0-cc504a3bfc9c"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="68a38248-8f57-451d-b576-ab5f05402ae4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ef9e725b-f0c0-45eb-915c-9f0bec98d78b"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="384a24c5-2f74-445e-b653-01d4d7286831"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5"
  guid=""
@@ -1741,7 +2649,17 @@ AND</Paragraph><Paragraph
  Guid="deed4628-97e4-4181-8665-7509256de3fa"
 >The cab status information is defined as a two state input with the following values:
 - Cab active
-- Cab not active.</Paragraph><Paragraph
+- Cab not active.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4d358f78-549d-4aee-9f65-753bd8160939"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="f54067a6-2863-49ef-a8a5-e0aa094e04e5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.1.2"
  guid=""
  type="REQUIREMENT"
@@ -1755,7 +2673,13 @@ AND</Paragraph><Paragraph
  onboard="TRUE"
  Name=""
  Guid="4e985ff8-d185-48ce-8afd-6944a286b13a"
->Note 1: The cab status input is used by ERTMS/ETCS onboard for various purposes as defined in [1] or by an STM as defined in [3]. The expression &quot;desk open&quot; in [1] is equivalent to &quot;Cab active&quot; and &quot;desk closed&quot; in [1] is equivalent to &quot;Cab not active&quot;.</Paragraph><Paragraph
+>Note 1: The cab status input is used by ERTMS/ETCS onboard for various purposes as defined in [1] or by an STM as defined in [3]. The expression &quot;desk open&quot; in [1] is equivalent to &quot;Cab active&quot; and &quot;desk closed&quot; in [1] is equivalent to &quot;Cab not active&quot;.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fa2c9199-53fe-4dab-a8f9-e2d42181482d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.1.3"
  guid=""
  type="REQUIREMENT"
@@ -1770,7 +2694,17 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="839d8340-fe74-4358-8e90-bbcbf37f22e7"
->If there is more than one cab connected to a single ERTMS/ETCS onboard unit, each cab will be connected to its individual input.</Paragraph><Paragraph
+>If there is more than one cab connected to a single ERTMS/ETCS onboard unit, each cab will be connected to its individual input.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="49c01dc9-130e-4028-b793-f40a88b2385e"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="edcf7763-96a4-463d-9034-ae934f4f1d4e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.1.4"
  guid=""
  type="REQUIREMENT"
@@ -1799,7 +2733,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="940fcf76-9d94-4edc-9b7f-15982740e30b"
->The cab status input shall have the value &quot;Cab active&quot; if the cab connected to this input is active.</Paragraph><Paragraph
+>The cab status input shall have the value &quot;Cab active&quot; if the cab connected to this input is active.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="cd9ccc4e-882a-4556-94f0-ed86856eac80"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.1.4.2"
  guid=""
  type="NOTE"
@@ -1813,7 +2753,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="a6becdcf-9e47-4430-b668-fe727b9e29e9"
->Note: The active cab is the cab from which the traction is controlled.</Paragraph><Paragraph
+>Note: The active cab is the cab from which the traction is controlled.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="b73d3316-6ef8-4a93-8166-a707ffd9086c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.1.4.3"
  guid=""
  type="REQUIREMENT"
@@ -1827,7 +2773,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="6ace0263-f3e3-4b80-802f-7ef76f67ec2d"
->The cab status input shall have the value &quot;Cab not active&quot; if the cab connected to this input is not active.</Paragraph><Paragraph
+>The cab status input shall have the value &quot;Cab not active&quot; if the cab connected to this input is not active.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="8dbd067c-fdb0-4dea-81a6-9ec0b4968d96"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.1.4.4"
  guid=""
  type="REQUIREMENT"
@@ -1841,7 +2793,13 @@ AND</Paragraph><Paragraph
  rollinkstock="TRUE"
  Name=""
  Guid="2285ede8-d6ee-4335-ad56-8651d6bcf99c"
->For single cab locos with two desks, each related to a different train orientation, each desk will be connected to its individual cab status input.</Paragraph><Paragraph
+>For single cab locos with two desks, each related to a different train orientation, each desk will be connected to its individual cab status input.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="f2377f30-f636-41c2-921c-5174d787e2dd"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.1.4.5"
  guid=""
  type="REQUIREMENT"
@@ -1857,7 +2815,13 @@ AND</Paragraph><Paragraph
  Guid="639e4b78-6508-4b15-8ce2-176c73314ca5"
 >For single cab locos with only one desk, the cab status shall be combined with the train orientation information to define two virtual cab status signals, connected to their individual inputs.
 Virtual Cab A active = (Cab active) AND (train orientation direction A)
-Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragraph><Paragraph
+Virtual Cab B active = (Cab active) AND (train orientation direction B)<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="0ed01695-acd0-47c3-a0e7-b787134136c2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.1.4.6"
  guid=""
  type="NOTE"
@@ -1871,7 +2835,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  rollinkstock="TRUE"
  Name=""
  Guid="f601c872-0d40-422d-a9ed-92b3d10c28c7"
->Note: The train orientation may be obtained from e.g. the head lights of the train.</Paragraph><Paragraph
+>Note: The train orientation may be obtained from e.g. the head lights of the train.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="2dc78c5a-e2fa-4206-8c3e-7b500752ba8c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.1.4.7"
  guid=""
  type="REQUIREMENT"
@@ -1885,8 +2855,30 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  rollinkstock="TRUE"
  Name=""
  Guid="afc11076-89df-4f73-ab8a-4305e755d70a"
->Regardless of the vehicle layout the rolling stock shall ensure that only one cab or virtual cab is reported active at any time to a single ERTMS/ETCS onboard equipment.</Paragraph></Sub>
+>Regardless of the vehicle layout the rolling stock shall ensure that only one cab or virtual cab is reported active at any time to a single ERTMS/ETCS onboard equipment.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="0a3774fa-6335-439b-98c6-82ac43b1073d"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="f98acb8a-ee69-4db3-8a93-4d6d1cdca793"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ebd8274a-73ca-4dad-b61b-550684544db4"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="8de9c73a-f66a-4fb6-8c69-2e0bfd465b42"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.2"
  guid=""
@@ -1921,7 +2913,17 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 >The direction controller information is defined as a three state input with the following values:
 - Forward
 - Neutral
-- Backward.</Paragraph><Paragraph
+- Backward.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4d9d1cb5-84f5-4ff8-85b5-0d36ba69842a"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="7dcc26d9-a448-4a25-a726-6ef5b6bc5456"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.2.2"
  guid=""
  type="DEFINITION"
@@ -1936,7 +2938,17 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  rollinkstock="TRUE"
  Name=""
  Guid="e3570366-8e7e-4a12-b8eb-61b004744ca2"
->The notion of forward direction shall correspond to the train orientation defined by the active (virtual) cab as defined in 2.5.1, i.e. when the direction controller is in forward position, this means that the train movement will be in the direction of the active (virtual) cab.</Paragraph><Paragraph
+>The notion of forward direction shall correspond to the train orientation defined by the active (virtual) cab as defined in 2.5.1, i.e. when the direction controller is in forward position, this means that the train movement will be in the direction of the active (virtual) cab.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2bd61944-549c-43d4-919d-8853e6f543ca"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="ec5b65d5-2ec7-4d34-852f-a40498ed07e4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.2.3"
  guid=""
  type="REQUIREMENT"
@@ -1951,7 +2963,17 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  rollinkstock="TRUE"
  Name=""
  Guid="bf9fab91-97bd-4886-a748-5fe11405b73f"
->If no cab is active the direction controller information may have any value, but shall be ignored by ERTMS/ETCS onboard.</Paragraph><Paragraph
+>If no cab is active the direction controller information may have any value, but shall be ignored by ERTMS/ETCS onboard.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e26375fc-8553-4af7-9521-747335d8b009"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="61318afe-0623-4be4-b180-f623bb7d3e71"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.2.4"
  guid=""
  type="REQUIREMENT"
@@ -1965,7 +2987,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="172da1f2-b135-469b-b39a-5f6fb0fabb49"
->Note: The direction controller input is used by ERTMS/ETCS onboard to prevent train movement which conflicts with the current position of the direction controller in the active cab and to detect the driver&apos;s intention to reverse, which is one of the conditions for entering Reversing mode. The direction controller input is also used by an STM as defined in [3].</Paragraph><Paragraph
+>Note: The direction controller input is used by ERTMS/ETCS onboard to prevent train movement which conflicts with the current position of the direction controller in the active cab and to detect the driver&apos;s intention to reverse, which is one of the conditions for entering Reversing mode. The direction controller input is also used by an STM as defined in [3].<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="77f411a6-4feb-4e16-9e4f-f98cb6ea5fba"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.2.5"
  guid=""
  type="REQUIREMENT"
@@ -1994,8 +3022,30 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  rollinkstock="TRUE"
  Name=""
  Guid="a4f7bea9-e655-4f41-ade9-5093a2d45abb"
->If the ERTMS/ETCS onboard is connected to more than one cab, it is the responsibility of the rolling stock to relate the direction controller information to the active cab.</Paragraph></Sub>
+>If the ERTMS/ETCS onboard is connected to more than one cab, it is the responsibility of the rolling stock to relate the direction controller information to the active cab.<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="003b2dd7-f4ed-42f5-9706-02f5817a42a9"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="a9876bf0-19dd-4cbf-9ed5-cf34ec559f09"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2bedc03c-0c46-4eff-9bc5-2a6f143d2a6d"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="02593a61-1de7-470f-bc65-8361115fc870"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.3"
  guid=""
@@ -2027,7 +3077,27 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  rollinkstock="TRUE"
  Name=""
  Guid="f9e20546-588d-4a20-b2e2-bbbad853bafe"
->To be harmonized.</Paragraph></Sub>
+>To be harmonized.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f452e39d-b210-488e-b13c-20558403d259"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="a44711e9-5d85-4832-a29e-7bbadac92a3f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4f6ecf9d-800e-4492-9412-d0c0294291ce"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="4e06e1ee-de50-402f-8ed7-7f21acd9ff75"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.4"
  guid=""
@@ -2061,7 +3131,17 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  Guid="51935dba-7b50-4bd2-b935-b00e566f76f9"
 >The traction status information is defined as a two state input with the following values:
 - On
-- Off.</Paragraph><Paragraph
+- Off.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c6f58554-5869-4741-a678-c9c04523cfec"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="b5e2d6a5-e03c-4754-a56b-cb200b845a9e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.5.4.2"
  guid=""
  type="REQUIREMENT"
@@ -2075,8 +3155,34 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="6123d1a4-d41e-4c0f-a278-9fd4b38e47fd"
->Note: This traction status information is forwarded by the ERTMS/ETCS onboard to the STM.</Paragraph></Sub>
+>Note: This traction status information is forwarded by the ERTMS/ETCS onboard to the STM.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="041a051b-0278-4473-b3ac-3355500de8ed"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="61834fae-cf0e-4aac-8d40-e84b31fc87d4"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="5792bc31-95c8-4a8c-a31c-50c9a0286e77"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d429e58f-20f3-43d7-86ea-f2c6e11e65ff"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="0e97e25e-a646-4665-8e5b-d7e63bcaff90"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.6"
  guid=""
@@ -2127,7 +3233,27 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
 >The type of train data entry information is defined as a three state input with the following values:
 - Fixed
 - Flexible
-- Switchable.</Paragraph></Sub>
+- Switchable.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fff840d6-772b-4b60-91d6-f063d43752da"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="082fa205-353e-4586-ae0b-c18f3d840b94"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="121ff34f-6e2d-47bd-be08-3e55a7eb6f78"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="b92a9b92-977d-41e3-973f-0f3d9efc1993"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.6.2"
  guid=""
@@ -2159,8 +3285,38 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  rollinkstock="TRUE"
  Name=""
  Guid="6f69ab57-55b8-4acb-9707-b343c59e7799"
->To be harmonized.</Paragraph></Sub>
+>To be harmonized.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ad36aa2b-a4a3-43fc-9d98-39c3f389ea29"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="482ca510-5c4e-4802-9e82-132e2cc6fc8c"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="da674bd9-1cba-497d-8d63-e7bc90c47e46"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="1f94b5bd-7b87-4641-ba41-fd16cfc7b58a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="649dd67c-903e-43bc-8f93-39615d662214"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="26f81b5f-a8a9-45cc-a237-c4caf8945dfc"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.7"
  guid=""
@@ -2194,7 +3350,17 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  Guid="f2a86c31-9afa-4835-9476-eef3285affd4"
 >The National System isolation information is defined as a two state input with the following values:
 - NTC isolated
-- NTC not isolated.</Paragraph><Paragraph
+- NTC not isolated.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0a952caa-5354-482b-b10b-585f987e2f3e"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="f5db4f35-e4b1-4787-8088-efb6162f880d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="2.7.1.2"
  guid=""
  type="REQUIREMENT"
@@ -2208,7 +3374,23 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="f528ddec-a4ac-4385-a599-5f3a1d27ea24"
->A NTC isolation input shall be used by the ERTMS/ETCS on-board equipment in case it is interfaced to the National System through an STM and this National System requires isolation of the STM to be implemented.</Paragraph></Sub>
+>A NTC isolation input shall be used by the ERTMS/ETCS on-board equipment in case it is interfaced to the National System through an STM and this National System requires isolation of the STM to be implemented.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="647746db-0a5a-420c-8286-50aab5d4cc40"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7d4c8bc2-aac7-43ed-ab6f-dd7c6f62c449"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="4472a3fd-e877-4728-96ee-60234aa8cee6"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.8"
  guid=""
@@ -2269,7 +3451,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="a9c6b185-a766-4976-8adf-60d8d7f236ee"
->2.2.1; Sleeping; 4.4.6 / 4.6.3; Input</Paragraph><Paragraph
+>2.2.1; Sleeping; 4.4.6 / 4.6.3; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7e23e5e9-182a-42c6-aeb0-b62c9f4d04de"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.2"
  guid=""
  type="REQUIREMENT"
@@ -2283,7 +3471,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="11299e1d-f740-44c3-9a5c-50226f32690c"
->2.2.2; Passive shunting; 4.4.20 / 4.6.3; Input</Paragraph><Paragraph
+>2.2.2; Passive shunting; 4.4.20 / 4.6.3; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ee7a3e1b-9122-4e8c-b6fe-ac4cfd88de20"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.3"
  guid=""
  type="REQUIREMENT"
@@ -2297,7 +3491,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="09309e8a-82d8-45db-a8f2-7030647f8485"
->2.2.3; Non Leading; 4.4.15 / 4.6.3; Input</Paragraph><Paragraph
+>2.2.3; Non Leading; 4.4.15 / 4.6.3; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fae6cd7a-2aed-429c-bfd5-fbfa6b297f7e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.4"
  guid=""
  type="REQUIREMENT"
@@ -2311,7 +3511,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="9dfafd4f-0c79-451b-8b8d-1974082706e4"
->2.2.4; Isolation; 4.4.3.1.1; Output</Paragraph><Paragraph
+>2.2.4; Isolation; 4.4.3.1.1; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="42626a84-ac8b-4d17-a4ac-5003dedec77a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.5"
  guid=""
  type="REQUIREMENT"
@@ -2325,7 +3531,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="43c2eea2-abf4-4dc8-b6fd-38ecc4df7f71"
->2.3.1; Service brake command; 3.13.2.2.7; Output</Paragraph><Paragraph
+>2.3.1; Service brake command; 3.13.2.2.7; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="816c7642-21ac-49c8-93fe-7b9e9935570f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.6"
  guid=""
  type="REQUIREMENT"
@@ -2339,7 +3551,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="b854037d-8d2f-42cc-9058-9dccf18f20e9"
->2.3.2; Brake pressure; 3.13.2.2.7 / A.3.10; Input</Paragraph><Paragraph
+>2.3.2; Brake pressure; 3.13.2.2.7 / A.3.10; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1ec4a2f0-d929-4e3e-9302-a05681b306f1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.7"
  guid=""
  type="REQUIREMENT"
@@ -2353,7 +3571,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="c9c519e4-c37e-43f8-a6a1-18a0dda26016"
->2.3.3; Emergency brake command; 3.13.10 / 3.14.1 / 4.4.4 / 4.4.5 / 4.4.13; Output</Paragraph><Paragraph
+>2.3.3; Emergency brake command; 3.13.10 / 3.14.1 / 4.4.4 / 4.4.5 / 4.4.13; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2020434e-7052-4503-a3ce-001cdb8c3b67"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.8"
  guid=""
  type="REQUIREMENT"
@@ -2367,7 +3591,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="b6739afe-d52f-4017-a97b-b84801c452d6"
->2.3.4; Special brake inhibit; 3.12.1; Output</Paragraph><Paragraph
+>2.3.4; Special brake inhibit; 3.12.1; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="63640ec7-e1aa-45ac-be92-a67a2033a282"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.9"
  guid=""
  type="REQUIREMENT"
@@ -2381,7 +3611,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="4ad37f33-d9ef-4674-a9fb-b6ab30846c4a"
->2.3.6; Special brake status; 3.13; Input</Paragraph><Paragraph
+>2.3.6; Special brake status; 3.13; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b5c48ecc-060e-4a9c-a175-8588ef324ff2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.10"
  guid=""
  type="REQUIREMENT"
@@ -2395,7 +3631,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="02cb1f03-d196-4076-b127-090974ab08a1"
->2.3.7; Additional brake status; 3.13; Input</Paragraph><Paragraph
+>2.3.7; Additional brake status; 3.13; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3df4ab8a-0a29-4e92-9c03-fa6bab7b0205"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.11"
  guid=""
  type="REQUIREMENT"
@@ -2409,7 +3651,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="b9532a1e-8ec7-4679-b610-25d407400191"
->2.4.1; Change of traction system; 3.12.1; Output</Paragraph><Paragraph
+>2.4.1; Change of traction system; 3.12.1; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a8c2e9e0-4e2f-432e-ae94-c8be3745fd0e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.12"
  guid=""
  type="REQUIREMENT"
@@ -2423,7 +3671,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="6e93f083-ce98-468f-ab66-d7bae503f92c"
->2.4.2; Pantograph; 3.12.1; Output</Paragraph><Paragraph
+>2.4.2; Pantograph; 3.12.1; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0c49f2d9-0046-4a96-b5e1-224a224436f3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.13"
  guid=""
  type="REQUIREMENT"
@@ -2437,7 +3691,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="58c71da3-6b23-4051-822d-a8456381b0e7"
->2.4.4; Air tightness; 3.12.1; Output</Paragraph><Paragraph
+>2.4.4; Air tightness; 3.12.1; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4be16d68-3931-456a-888c-97b9fd766a73"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.14"
  guid=""
  type="REQUIREMENT"
@@ -2451,7 +3711,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="3cb0d222-655b-4c2b-95d0-034b929254d4"
->2.4.6; Passenger Door; 3.12.1; Output</Paragraph><Paragraph
+>2.4.6; Passenger Door; 3.12.1; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="653d6bae-ce42-4458-9d77-63aeb33cc2d5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.15"
  guid=""
  type="REQUIREMENT"
@@ -2465,7 +3731,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="930cca9b-293c-47ed-beed-7b4881fb0000"
->2.4.7; Main Power Switch; 3.12.1; Output</Paragraph><Paragraph
+>2.4.7; Main Power Switch; 3.12.1; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d4209657-4150-4fa3-bf6e-6a96f70d8acf"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.16"
  guid=""
  type="REQUIREMENT"
@@ -2479,7 +3751,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="3108ce9e-f990-4004-b30a-8202345f7b50"
->2.4.9; Traction Cut Off; 3.13.2.2.8; Output</Paragraph><Paragraph
+>2.4.9; Traction Cut Off; 3.13.2.2.8; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3b6b045f-5211-4fc5-9460-9f0a6915f899"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.17"
  guid=""
  type="REQUIREMENT"
@@ -2493,7 +3771,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="25b8ff07-e4bd-4601-81dd-1596a15c93ad"
->2.4.10; Change of allowed current consumption; 3.12.1; Output</Paragraph><Paragraph
+>2.4.10; Change of allowed current consumption; 3.12.1; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="494b2dfd-a218-463a-ad29-103cd2a09c3a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.18"
  guid=""
  type="REQUIREMENT"
@@ -2507,7 +3791,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
->2.5.1; Cab Status; 4.6.3; Input</Paragraph><Paragraph
+>2.5.1; Cab Status; 4.6.3; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0ace7f34-46d6-42b0-af61-2ad5ff1a55d6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.19"
  guid=""
  type="REQUIREMENT"
@@ -2521,7 +3811,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="35f550fb-10f0-4111-a118-44203ac2ec76"
->2.5.2; Direction Controller; 3.14.2 / 5.13.1.4; Input</Paragraph><Paragraph
+>2.5.2; Direction Controller; 3.14.2 / 5.13.1.4; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1c9c4490-023a-4f14-9bcc-3450fd7804b3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.20"
  guid=""
  type="REQUIREMENT"
@@ -2535,7 +3831,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="ef800618-551f-4333-aa9f-a92d9bd7e925"
->2.5.3; Train Integrity; 3.6.5.2.1; Input</Paragraph><Paragraph
+>2.5.3; Train Integrity; 3.6.5.2.1; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="553b3b90-c777-48e5-97cb-1cd996f25f7a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.1.21"
  guid=""
  type="REQUIREMENT"
@@ -2549,7 +3851,19 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="88d5dc1c-7304-44be-96b3-8b9fa33d5fbb"
->2.6.2; Train Data information; 3.18.3; 5.17; Input</Paragraph></Sub>
+>2.6.2; Train Data information; 3.18.3; 5.17; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7d065855-1e78-4694-a7d2-b93e31471ed6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="17054627-d935-44b8-b34e-6be350741b74"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Table 2.8.1.1.2"
  guid=""
@@ -2579,7 +3893,19 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="50b5afc2-0c13-4c13-b6e1-94fa6422afe2"
->2.6.1; Type of train data entry; 10.3.9.6; Input</Paragraph></Sub>
+>2.6.1; Type of train data entry; 10.3.9.6; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4c092c37-7411-4710-b35d-50aa16629d4c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0e12dd71-523e-4f98-a720-b3a18f062a32"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Table 2.8.1.1.3"
  guid=""
@@ -2609,7 +3935,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="7c3d617a-afee-40e5-9466-6d964f6957f2"
->2.3.1; Service brake command; 5.2.5; Output</Paragraph><Paragraph
+>2.3.1; Service brake command; 5.2.5; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="98f81828-1b18-4aab-9189-737a7a597cf4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.3.2"
  guid=""
  type="REQUIREMENT"
@@ -2623,7 +3955,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="dee8e232-1844-4559-bba2-ac49c6326aac"
->2.3.3; Emergency brake command; 5.2.5; Output</Paragraph><Paragraph
+>2.3.3; Emergency brake command; 5.2.5; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="933ecae2-edf9-475e-b7e2-31f21be630b2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.3.3"
  guid=""
  type="REQUIREMENT"
@@ -2637,7 +3975,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="8c3e0f42-e351-40c3-821f-9aed58b51042"
->2.3.5; Special brake inhibit; 5.2.4.3; Output</Paragraph><Paragraph
+>2.3.5; Special brake inhibit; 5.2.4.3; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="21abea93-74d8-4425-ae83-145e724e8b46"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.3.4"
  guid=""
  type="REQUIREMENT"
@@ -2651,7 +3995,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="528f15a5-a8b2-42aa-ad33-05ec68006ff4"
->2.4.3; Pantograph; 5.2.4.3; Output</Paragraph><Paragraph
+>2.4.3; Pantograph; 5.2.4.3; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="914b6ce4-83fb-4865-93ff-6f7010765818"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.3.5"
  guid=""
  type="REQUIREMENT"
@@ -2665,7 +4015,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="b82b4a22-c145-48f7-89b2-4ad0ce47cf18"
->2.4.5; Air tightness; 5.2.4.3; Output</Paragraph><Paragraph
+>2.4.5; Air tightness; 5.2.4.3; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="170373ab-33a4-4099-8bb0-a6ccc6d85de8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.3.6"
  guid=""
  type="REQUIREMENT"
@@ -2679,7 +4035,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="5bd6c5a9-f5dc-4981-bdf8-068976ad0fe5"
->2.4.8; Main power switch; 5.2.4.3; Output</Paragraph><Paragraph
+>2.4.8; Main power switch; 5.2.4.3; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6a00bc36-3e89-48a4-b7aa-90683d9100d9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.3.7"
  guid=""
  type="REQUIREMENT"
@@ -2693,7 +4055,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="0e6f8e3b-f65d-4cda-ab7b-d190ea997ec8"
->2.4.9; Traction Cut Off; 5.2.4.3; Output</Paragraph><Paragraph
+>2.4.9; Traction Cut Off; 5.2.4.3; Output<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="02e1b792-323f-4f3f-bbc6-3514680b3a4c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.3.8"
  guid=""
  type="REQUIREMENT"
@@ -2707,7 +4075,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="66282cb8-6a84-4da5-af95-53eee714721f"
->2.5.1; Cab Status; 5.2.4.4; Input</Paragraph><Paragraph
+>2.5.1; Cab Status; 5.2.4.4; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9ec6625a-6a06-4b16-8894-3b86a273eaaa"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.3.9"
  guid=""
  type="REQUIREMENT"
@@ -2721,7 +4095,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="93654409-3e42-4c14-af80-509643a42bc2"
->2.5.2; Direction Controller; 5.2.4.4; Input</Paragraph><Paragraph
+>2.5.2; Direction Controller; 5.2.4.4; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5c1000f3-68cb-47f7-977b-e7791b070815"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.3.10"
  guid=""
  type="REQUIREMENT"
@@ -2735,7 +4115,13 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="373a6c93-f1ff-40bd-ab0a-911a8f48c8af"
->2.5.4; Traction status; 5.2.4.4; Input</Paragraph><Paragraph
+>2.5.4; Traction status; 5.2.4.4; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0be64897-367e-4ade-b98f-d454216600aa"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 2.8.1.1.3.11"
  guid=""
  type="REQUIREMENT"
@@ -2749,7 +4135,35 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)</Paragra
  onboard="TRUE"
  Name=""
  Guid="ea06d299-7e78-4243-b2ba-f57975a51bda"
->2.7; National System isolation; 10.3.3.5, 10.3.3.6. e), 10.14.1.2; Input</Paragraph></Sub>
+>2.7; National System isolation; 10.3.3.5, 10.3.3.6. e), 10.14.1.2; Input<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="68f256ba-86e9-48ef-afba-890fb0d357fa"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4d3a217e-e226-4172-a610-aeb6103caa46"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="aaae602f-cb5e-4bb3-b97c-a128003fc623"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="de42b9bf-d013-4536-b1ba-c268a348be25"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="585a83c4-2031-4ffd-a3c0-acef47b71122"
+ Guid="3dbec3a3-21bc-4d93-ae60-09ad91ab9da4"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Chapter>
