@@ -809,6 +809,10 @@ namespace DataDictionary
         /// <param name="visitSubNodes"></param>
         public override void visit(Generated.RequirementSetReference obj, bool visitSubNodes)
         {
+          if ( obj.getTarget() != null )
+          {
+            obj.setTarget(obj.getTarget().Trim());
+          }
 
           base.visit(obj, visitSubNodes);
         }

@@ -223,7 +223,7 @@ namespace GUI.RequirementSetDiagram
                 }
 
                 RequirementSetDependancy dependancy = (RequirementSetDependancy)DataDictionary.Generated.acceptor.getFactory().createRequirementSetDependancy();
-                dependancy.setTarget(target.Name);
+                dependancy.setTarget(target.Guid);
                 source.appendDependancies(dependancy);
 
                 RefreshControl();

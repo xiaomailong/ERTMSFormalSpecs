@@ -33061,10 +33061,11 @@ for (int i = 0; i < countRequirementSets(); i++) {
 
 }
 public partial class RequirementSetReference
-: DataDictionary.Namable
+: ModelElement
 {
 public  override  bool find(Object search){
 if (search is String ) {
+if(getTarget().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -33073,14 +33074,27 @@ public  override  void NotifyControllers(Lock aLock){
 	base.NotifyControllers(aLock);
 	ControllersManager.RequirementSetReferenceController.alertChange(aLock, this);
 }
+private   string  aTarget;
+
+public   string  getTarget() { return aTarget;}
+
+public  void setTarget( string  v) {
+  aTarget = v;
+  __setDirty(true);
+  NotifyControllers(null);
+}
+
+
 public RequirementSetReference()
 {
 RequirementSetReference obj = this;
+aTarget=(null);
 }
 
 public void copyTo(RequirementSetReference other)
 {
 base.copyTo(other);
+other.aTarget = aTarget;
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -33126,10 +33140,10 @@ fl1644 = false ;
 fl1645 = true ; 
 while (fl1645) { // BeginLoop 
 switch (ctxt.current()) {
-case 'N':
+case 'R':
 {
 ctxt.advance();
-if (ctxt.lookAheadString("ame=")){
+if (ctxt.lookAheadString("efId=")){
 indicator = 1643;
 } else {
 indicator = 1646;
@@ -33152,14 +33166,14 @@ break;
 } // Switch
 switch (indicator) {
 case 1643: {
-// Handling attribute Name
-// Also handles alien attributes with prefix Name
+// Handling attribute RefId
+// Also handles alien attributes with prefix RefId
 if (fl1643){
-ctxt.fail ("Duplicate attribute: Name");
+ctxt.fail ("Duplicate attribute: RefId");
 } // If
 fl1643 = true ; 
 quoteChar = ctxt.acceptQuote();
-this.setName((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
+this.setTarget((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
@@ -33189,6 +33203,9 @@ ctxt.skipTill (quoteChar);
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
+if (!fl1643){
+ctxt.fail ("Mandatory attribute missing: RefId in RequirementSetReference");
+} // If
 fl1645 = false ; 
 } // If
 break;
@@ -33230,12 +33247,10 @@ if (typeId){
 pw.Write(" xsi:type=\"RequirementSetReference\"");
 } // If
 pw.Write('\n');
-if (this.getName() != null){
-pw.Write(" Name=\"");
-acceptor.unParsePcData(pw, this.getName());
+pw.Write(" RefId=\"");
+acceptor.unParsePcData(pw, this.getTarget());
 pw.Write('"');
 pw.Write('\n');
-} // If
 if (this.getGuid() != null){
 pw.Write(" Guid=\"");
 acceptor.unParsePcData(pw, this.getGuid());
@@ -42614,18 +42629,6 @@ case 'e':
 ctxt.advance();
 if (ctxt.lookAheadString("quirementSet")){
 switch (ctxt.current()) {
-case 'R':
-{
-ctxt.advance();
-if (ctxt.lookAheadString("eference")){
-ctxt.accept(quoteChar);
-res = lAccept_RequirementSetReference(ctxt, endingTag);
-} else {
-ctxt.accept(quoteChar);
-res = lAccept_RequirementSet(ctxt, endingTag);
-} // If
-break;
-} // Case
 case 'D':
 {
 ctxt.advance();
@@ -44361,28 +44364,28 @@ case 'q':
 {
 ctxt.advance();
 ctxt.acceptString ("uot;");
-indicator = 2216;
+indicator = 2215;
 break;
 } // Case
 case 'n':
 {
 ctxt.advance();
 ctxt.acceptString ("bsp;");
-indicator = 2215;
+indicator = 2214;
 break;
 } // Case
 case 'l':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 2213;
+indicator = 2212;
 break;
 } // Case
 case 'g':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 2214;
+indicator = 2213;
 break;
 } // Case
 case 'a':
@@ -44393,18 +44396,18 @@ case 'p':
 {
 ctxt.advance();
 ctxt.accept3('o','s',';');
-indicator = 2217;
+indicator = 2216;
 break;
 } // Case
 case 'm':
 {
 ctxt.advance();
 ctxt.accept2('p',';');
-indicator = 2212;
+indicator = 2211;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2225)");
+ctxt.recoverableFail ("Other character expected (2224)");
 break;
 } // Switch
 break;
@@ -44413,39 +44416,39 @@ case '#':
 {
 ctxt.advance();
 ctxt.accept('x');
-indicator = 2218;
+indicator = 2217;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2227)");
+ctxt.recoverableFail ("Other character expected (2226)");
 break;
 } // Switch
 switch (indicator) {
-case 2212: {
+case 2211: {
 c = XMLB_AMPERSAND;
 break;
 } // End of dispatch label
-case 2213: {
+case 2212: {
 c = XMLB_LESS;
 break;
 } // End of dispatch label
-case 2214: {
+case 2213: {
 c = XMLB_GREATER;
 break;
 } // End of dispatch label
-case 2215: {
+case 2214: {
 c = XMLB_NBSP;
 break;
 } // End of dispatch label
-case 2216: {
+case 2215: {
 c = XMLB_QUOT;
 break;
 } // End of dispatch label
-case 2217: {
+case 2216: {
 c = XMLB_APOS;
 break;
 } // End of dispatch label
-case 2218: {
+case 2217: {
 c = (char) ctxt.acceptHexa();
 ctxt.accept(';');
 break;
@@ -46053,7 +46056,7 @@ ctxt.acceptString ("stCase");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2235)");
+ctxt.recoverableFail ("Other character expected (2234)");
 break;
 } // Switch
 break;
@@ -46082,7 +46085,7 @@ ctxt.acceptString ("quence");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2240)");
+ctxt.recoverableFail ("Other character expected (2239)");
 break;
 } // Switch
 break;
@@ -46141,7 +46144,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2247)");
+ctxt.recoverableFail ("Other character expected (2246)");
 break;
 } // Switch
 break;
@@ -46192,7 +46195,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2253)");
+ctxt.recoverableFail ("Other character expected (2252)");
 break;
 } // Switch
 break;
@@ -46276,7 +46279,7 @@ ctxt.accept2('e','f');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2263)");
+ctxt.recoverableFail ("Other character expected (2262)");
 break;
 } // Switch
 break;
@@ -46289,7 +46292,7 @@ ctxt.accept3('n','g','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2265)");
+ctxt.recoverableFail ("Other character expected (2264)");
 break;
 } // Switch
 break;
@@ -46317,7 +46320,7 @@ ctxt.acceptString ("Condition");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2270)");
+ctxt.recoverableFail ("Other character expected (2269)");
 break;
 } // Switch
 break;
@@ -46356,13 +46359,13 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2275)");
+ctxt.recoverableFail ("Other character expected (2274)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2276)");
+ctxt.recoverableFail ("Other character expected (2275)");
 break;
 } // Switch
 break;
@@ -46428,7 +46431,7 @@ ctxt.acceptString ("lder");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2284)");
+ctxt.recoverableFail ("Other character expected (2283)");
 break;
 } // Switch
 break;
@@ -46466,7 +46469,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2289)");
+ctxt.recoverableFail ("Other character expected (2288)");
 break;
 } // Switch
 break;
@@ -46508,13 +46511,13 @@ ctxt.acceptString ("ield");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2296)");
+ctxt.recoverableFail ("Other character expected (2295)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2297)");
+ctxt.recoverableFail ("Other character expected (2296)");
 break;
 } // Switch
 break;
@@ -46559,7 +46562,7 @@ ctxt.accept2('s','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2303)");
+ctxt.recoverableFail ("Other character expected (2302)");
 break;
 } // Switch
 break;
@@ -46572,13 +46575,13 @@ ctxt.acceptString ("ction");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2305)");
+ctxt.recoverableFail ("Other character expected (2304)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2306)");
+ctxt.recoverableFail ("Other character expected (2305)");
 break;
 } // Switch
 return res;
@@ -47599,7 +47602,7 @@ public virtual void visit(RequirementSetReference obj)
 
 public virtual void visit(RequirementSetReference obj, bool visitSubNodes)
 {
-visit ((Namable) obj, false);
+visit ((BaseModelElement) obj, false);
 if (visitSubNodes){
 IXmlBBase[] Subs  = acceptor.subElements((IXmlBBase)obj);
 if (Subs != null){

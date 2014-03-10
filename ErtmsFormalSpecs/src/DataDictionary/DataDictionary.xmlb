@@ -1392,9 +1392,15 @@
         <META NAME="DoNotTranslate" />
         <META NAME="DoNotCompare" />
       </FIELD>
-      <FIELD NAME="ObsoleteScopeOnBoard"       TYPE="BOOLEAN" />
-      <FIELD NAME="ObsoleteScopeTrackside"     TYPE="BOOLEAN" />
-      <FIELD NAME="ObsoleteScopeRollingStock"  TYPE="BOOLEAN" />
+      <FIELD NAME="ObsoleteScopeOnBoard"       TYPE="BOOLEAN">
+        <META NAME="DoNotCompare"/>
+      </FIELD>
+      <FIELD NAME="ObsoleteScopeTrackside"     TYPE="BOOLEAN">
+        <META NAME="DoNotCompare"/>
+      </FIELD>
+      <FIELD NAME="ObsoleteScopeRollingStock"  TYPE="BOOLEAN">
+        <META NAME="DoNotCompare"/>
+      </FIELD>
       <FIELD NAME="Bl"                         TYPE="PCHAR">
         <META NAME="DoNotTranslate" />
       </FIELD>
@@ -1429,12 +1435,15 @@
       <FIELD NAME="ObsoleteFunctionalBlock"     TYPE="BOOLEAN" >
         <META NAME="Obsolete" />
         <META NAME="DoNotTranslate" />
+        <META NAME="DoNotCompare"/>
       </FIELD>
       <FIELD NAME="ObsoleteFunctionalBlockName" TYPE="PCHAR" >
         <META NAME="Obsolete" />
         <META NAME="DoNotTranslate" />
+        <META NAME="DoNotCompare"/>
       </FIELD>
       <FIELD NAME="RequirementSets"             REFTYPE="RequirementSetReference" >
+        <META NAME="DoNotCompare"/>
       </FIELD>
       <FIELD NAME="ObsoleteGuid"                TYPE="PCHAR">
         <META NAME="Key"/> 
@@ -1488,8 +1497,15 @@
   <!-- -------------------------- -->
   <!-- Requirement set reference  -->
   <!-- -------------------------- -->
-  <ELEMENT NAME="RequirementSetReference" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
+  <ELEMENT NAME="RequirementSetReference" BASEELEMENT="BaseModelElement" BASECLASS="ModelElement" MAIN="TRUE">
     <META NAME="Package">requirements</META>
+    <FIELDS>
+      <FIELD NAME="Target"      TYPE="PCHAR">
+      </FIELD>
+    </FIELDS>
+    <ATTRIBUTES>
+      <ATTR NAME="RefId"     TARGET="Target"/>
+    </ATTRIBUTES>
   </ELEMENT>
 
   <!-- ------- -->

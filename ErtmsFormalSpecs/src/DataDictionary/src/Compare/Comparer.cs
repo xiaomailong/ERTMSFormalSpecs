@@ -4849,18 +4849,6 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Type", other.getType().ToString(), obj.getType().ToString()) );
             }
-            if ( obj.getObsoleteScopeOnBoard() != other.getObsoleteScopeOnBoard() )
-            {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ObsoleteScopeOnBoard", other.getObsoleteScopeOnBoard().ToString(), obj.getObsoleteScopeOnBoard().ToString()) );
-            }
-            if ( obj.getObsoleteScopeTrackside() != other.getObsoleteScopeTrackside() )
-            {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ObsoleteScopeTrackside", other.getObsoleteScopeTrackside().ToString(), obj.getObsoleteScopeTrackside().ToString()) );
-            }
-            if ( obj.getObsoleteScopeRollingStock() != other.getObsoleteScopeRollingStock() )
-            {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ObsoleteScopeRollingStock", other.getObsoleteScopeRollingStock().ToString(), obj.getObsoleteScopeRollingStock().ToString()) );
-            }
             if ( !CompareUtil.canonicalStringEquality(obj.getBl(), other.getBl()) )
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Bl", other.getBl(), obj.getBl()) );
@@ -4963,14 +4951,6 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "SpecIssue", other.getSpecIssue().ToString(), obj.getSpecIssue().ToString()) );
             }
-            if ( obj.getObsoleteFunctionalBlock() != other.getObsoleteFunctionalBlock() )
-            {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ObsoleteFunctionalBlock", other.getObsoleteFunctionalBlock().ToString(), obj.getObsoleteFunctionalBlock().ToString()) );
-            }
-            if ( !CompareUtil.canonicalStringEquality(obj.getObsoleteFunctionalBlockName(), other.getObsoleteFunctionalBlockName()) )
-            {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ObsoleteFunctionalBlockName", other.getObsoleteFunctionalBlockName(), obj.getObsoleteFunctionalBlockName()) );
-            }
             if ( obj.allRequirementSets() != null )
             {
                 if ( other.allRequirementSets() != null ) 
@@ -5049,8 +5029,10 @@ namespace DataDictionary.Compare
                 return;
             }
 
-            compareNamable (obj, other, diff);
-
+            if ( !CompareUtil.canonicalStringEquality(obj.getTarget(), other.getTarget()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Target", other.getTarget(), obj.getTarget()) );
+            }
         }
 
         /// <summary>
@@ -12086,8 +12068,6 @@ namespace DataDictionary.Compare
                 }
             }
 
-            ensureGuidNamable (obj, other);
-
         }
 
         /// <summary>
@@ -13483,8 +13463,10 @@ namespace DataDictionary.Compare
         /// <param name="occurences">The list of model elements which hold the searched string</param>
         public static void searchRequirementSetReference(Generated.RequirementSetReference obj, string searchString, List<ModelElement> occurences)
         {
-            searchNamable (obj, searchString, occurences);
-
+            if ( obj.getTarget() != null && obj.getTarget().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
         }
 
         /// <summary>

@@ -49,17 +49,7 @@ namespace DataDictionary.Specification
         {
             get
             {
-                RequirementSet retVal = null;
-
-                foreach (RequirementSet requirementSet in EFSSystem.RequirementSets)
-                {
-                    if (requirementSet.Name == getTarget())
-                    {
-                        retVal = requirementSet;
-                        break;
-                    }
-                }
-                return retVal;
+                return GuidCache.INSTANCE.GetModel(getTarget()) as RequirementSet;
             }
         }
 

@@ -26,6 +26,24 @@ namespace DataDictionary.Specification
     /// </summary>
     public class RequirementSetReference : Generated.RequirementSetReference
     {
+        public override string Name
+        {
+            get
+            {
+                string retVal = "<unknown>";
+
+                if (Ref != null)
+                {
+                    retVal = Ref.Name;
+                }
+
+                return retVal;
+            }
+            set
+            {
+            }
+        }
+
         public override System.Collections.ArrayList EnclosingCollection
         {
             get
@@ -43,7 +61,7 @@ namespace DataDictionary.Specification
         {
             get
             {
-                return EFSSystem.findRequirementSet(Name);
+                return GuidCache.INSTANCE.GetModel(getTarget()) as RequirementSet;
             }
         }
     }

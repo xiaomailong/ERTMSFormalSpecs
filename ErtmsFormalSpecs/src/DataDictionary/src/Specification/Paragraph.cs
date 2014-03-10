@@ -666,7 +666,7 @@ namespace DataDictionary.Specification
                 // Try to find a reference to this requirement set
                 foreach (RequirementSetReference reference in RequirementSetReferences)
                 {
-                    if (reference.Name == requirementSet.FullName)
+                    if (reference.Ref == requirementSet)
                     {
                         retVal = true;
                         break;
@@ -713,7 +713,7 @@ namespace DataDictionary.Specification
             {
                 retVal = true;
                 RequirementSetReference reference = (RequirementSetReference)Generated.acceptor.getFactory().createRequirementSetReference();
-                reference.Name = requirementSet.FullName;
+                reference.setTarget(requirementSet.Guid);
                 appendRequirementSets(reference);
 
                 if (getImplementationStatus() == Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM)
