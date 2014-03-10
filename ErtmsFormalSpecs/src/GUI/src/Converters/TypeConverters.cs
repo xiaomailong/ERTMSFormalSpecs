@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using DataDictionary.Specification;
 
 namespace GUI.Converters
 {
@@ -234,4 +235,40 @@ namespace GUI.Converters
             return new StandardValuesCollection(DataDictionary.Interpreter.BinaryExpression.OperatorsImages);
         }
     }
+
+    /// <summary>
+    /// Provides the list of requirement sets
+    /// </summary>
+    public class RequirementSetTypeConverter : TypeConverter
+    {
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
+        {
+            return true; // display drop
+        }
+
+        public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
+        {
+            return true; // drop-down vs combo
+        }
+
+        public StandardValuesCollection GetValues(IHoldsRequirementSets enclosing)
+        {
+            Utils.FinderRepository.INSTANCE.ClearCache();
+
+            List<string> retVal = new List<string>();
+            foreach (RequirementSet requirementSet in enclosing.RequirementSets)
+            {
+                retVal.Add(requirementSet.Name);
+            }
+            retVal.Sort();
+
+            if (retVal.Count == 0)
+            {
+                retVal.Add("");
+            }
+
+            return new StandardValuesCollection(retVal);
+        }
+    }
+
 }

@@ -19,6 +19,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using DataDictionary.Constants;
 using DataDictionary.Variables;
+using Utils;
 
 namespace GUI.BoxArrowDiagram
 {
@@ -35,11 +36,6 @@ namespace GUI.BoxArrowDiagram
         /// The mode of displaying boxes
         /// </summary>
         protected BoxModeEnum BoxMode { get; set; }
-
-        /// <summary>
-        /// The size of an box control button
-        /// </summary>
-        public static Size DEFAULT_SIZE = new Size(100, 50);
 
         /// <summary>
         /// The grid size used to place boxes
@@ -66,7 +62,7 @@ namespace GUI.BoxArrowDiagram
         /// The model for this control
         /// </summary>
         private BoxModel __model;
-        public BoxModel Model
+        public virtual BoxModel Model
         {
             get { return __model; }
             set
@@ -82,17 +78,14 @@ namespace GUI.BoxArrowDiagram
         {
             if (Model.Width == 0 || Model.Height == 0)
             {
-                Model.Width = DEFAULT_SIZE.Width;
-                Model.Height = DEFAULT_SIZE.Height;
-            }
-            Size = new Size(Model.Width, Model.Height);
+                Model.Width = Panel.DefaultBoxSize.Width;
+                Model.Height = Panel.DefaultBoxSize.Height;
 
-            if (Model.X == 0 || Model.Y == 0)
-            {
                 Point p = Panel.GetNextPosition();
                 Model.X = p.X;
                 Model.Y = p.Y;
             }
+            Size = new Size(Model.Width, Model.Height);
             SetPosition(Model.X, Model.Y);
 
             TextAlign = ContentAlignment.MiddleCenter;
@@ -114,7 +107,7 @@ namespace GUI.BoxArrowDiagram
         /// Sets the color of the control
         /// </summary>
         /// <param name="color"></param>
-        private void SetColor(Color color)
+        protected void SetColor(Color color)
         {
             if (BoxMode == BoxModeEnum.RoundedCorners)
             {
@@ -173,7 +166,7 @@ namespace GUI.BoxArrowDiagram
         /// Draws the box within the box-arrow panel
         /// </summary>
         /// <param name="e"></param>
-        public void PaintInBoxArrowPanel(PaintEventArgs e)
+        public virtual void PaintInBoxArrowPanel(PaintEventArgs e)
         {
             // Select the right pen, according to the model
             Pen pen;
@@ -276,7 +269,7 @@ namespace GUI.BoxArrowDiagram
         /// <summary>
         /// Selects the current box 
         /// </summary>
-        public void SelectBox()
+        public virtual void SelectBox()
         {
             Panel.Select(this, Control.ModifierKeys == Keys.Control);
         }
@@ -383,7 +376,6 @@ namespace GUI.BoxArrowDiagram
             }
         }
 
-
         /// <summary>
         /// Handles a mouse click event
         /// </summary>
@@ -408,6 +400,14 @@ namespace GUI.BoxArrowDiagram
         public Span YSpan
         {
             get { return new Span(Location.Y, Location.Y + Height); }
+        }
+
+        /// <summary>
+        /// Accepts a drop event from a model element
+        /// </summary>
+        /// <param name="element"></param>
+        public virtual void AcceptDrop(ModelElement element)
+        {
         }
     }
 }

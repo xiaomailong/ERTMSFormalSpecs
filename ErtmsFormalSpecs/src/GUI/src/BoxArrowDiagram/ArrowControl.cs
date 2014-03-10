@@ -574,7 +574,17 @@ namespace GUI.BoxArrowDiagram
         /// Provides the name of the target state
         /// </summary>
         /// <returns></returns>
-        public abstract string getTargetName();
+        public virtual string getTargetName()
+        {
+            string retVal = "<unknown>";
+
+            if (Model.Target != null)
+            {
+                retVal = Model.Target.Name;
+            }
+
+            return retVal;
+        }
 
         /// <summary>
         /// Sets the initial box of the arrow controlled by this arrow control

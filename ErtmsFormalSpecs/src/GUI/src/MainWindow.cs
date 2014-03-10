@@ -1231,18 +1231,6 @@ namespace GUI
             RefreshModel();
         }
 
-        private void exportFunctionalBlocksToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
-            {
-                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
-                {
-                    DataDictionary.Specification.FunctionalBlockExporter fbExporter = new DataDictionary.Specification.FunctionalBlockExporter(specification);
-                    fbExporter.Export("../" + specification.Name + "FunctionalBlocks.csv");
-                }
-            }
-        }
-
         private void showRulePerformancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RulePerformances.RulesPerformances rulePerformances = new RulePerformances.RulesPerformances(EFSSystem);
@@ -1648,6 +1636,16 @@ namespace GUI
 
             MessageCounter counter = new MessageCounter(EFSSystem);
             MessageBox.Show(counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info + " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void showRequirementSetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RequirementSetDiagram.RequirementSetDiagramWindow window = new RequirementSetDiagram.RequirementSetDiagramWindow();
+            GUIUtils.MDIWindow.AddChildWindow(window);
+
+            DataDictionary.Dictionary dictionary = GUIUtils.MDIWindow.GetActiveDictionary();
+            window.SetEnclosing(dictionary);
+            window.Text = "Requirement sets for " + dictionary.Name;
         }
     }
 }

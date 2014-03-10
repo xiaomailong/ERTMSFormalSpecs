@@ -23,6 +23,7 @@ using GUI.BoxArrowDiagram;
 using DataDictionary.Rules;
 using DataDictionary.Types;
 using DataDictionary.Types.AccessMode;
+using DataDictionary.Specification;
 
 namespace GUI.FunctionalView
 {

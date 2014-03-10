@@ -206,7 +206,10 @@ namespace DataDictionary
         {
             obj.setGuid("");
             obj.setType(Generated.acceptor.Paragraph_type.aREQUIREMENT);
-            obj.setScope(Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK);
+            obj.setObsoleteScope(Generated.acceptor.Paragraph_scope.aFLAGS);
+            obj.setObsoleteScopeOnBoard(false);
+            obj.setObsoleteScopeTrackside(false);
+            obj.setObsoleteScopeRollingStock(false);
             obj.setBl("");
             obj.setOptional(true);
             obj.setName("");
@@ -216,8 +219,8 @@ namespace DataDictionary
             obj.setVersion("3.0.0");
             obj.setMoreInfoRequired(false);
             obj.setSpecIssue(false);
-            obj.setFunctionalBlock(false);
-            obj.setFunctionalBlockName("");
+            obj.setObsoleteFunctionalBlock(false);
+            obj.setObsoleteFunctionalBlockName("");
 
             base.visit(obj, visitSubNodes);
         }
@@ -539,6 +542,33 @@ namespace DataDictionary
         public override Generated.Specification createSpecification()
         {
             Generated.Specification retVal = new Specification.Specification();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
+        }
+
+        public override Generated.RequirementSet createRequirementSet()
+        {
+            Generated.RequirementSet retVal = new Specification.RequirementSet();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
+        }
+
+        public override Generated.RequirementSetDependancy createRequirementSetDependancy()
+        {
+            Generated.RequirementSetDependancy retVal = new Specification.RequirementSetDependancy();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
+        }
+
+        public override Generated.RequirementSetReference createRequirementSetReference()
+        {
+            Generated.RequirementSetReference retVal = new Specification.RequirementSetReference();
 
             DefaultValueSetter.visit(retVal);
 

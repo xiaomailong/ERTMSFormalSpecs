@@ -20,6 +20,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using DataDictionary.Constants;
 using DataDictionary.Types;
+using DataDictionary;
 
 namespace GUI.BoxArrowDiagram
 {
@@ -45,6 +46,11 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
+        /// The size of an box control button
+        /// </summary>
+        public Size DefaultBoxSize = new Size(100, 50);
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public BoxArrowPanel()
@@ -55,6 +61,56 @@ namespace GUI.BoxArrowDiagram
             MouseDown += new MouseEventHandler(BoxArrowPanel_MouseDown);
             MouseMove += new MouseEventHandler(BoxArrowPanel_MouseMove);
             MouseUp += new MouseEventHandler(BoxArrowPanel_MouseUp);
+
+            DragEnter += new DragEventHandler(DragEnterHandler);
+            DragDrop += new DragEventHandler(DragDropHandler);
+            AllowDrop = true;
+        }
+
+        /// <summary>
+        /// Called to initiate a drag & drop operation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void DragEnterHandler(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private const int CTRL = 8;
+        private const int ALT = 32;
+
+        /// <summary>
+        /// Called when the drop operation is performed on a node
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void DragDropHandler(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
+            {
+                BaseTreeNode SourceNode = e.Data.GetData("WindowsForms10PersistentObject") as BaseTreeNode;
+                if (SourceNode != null)
+                {
+                    BoxControl<BoxModel, ArrowModel> target = null;
+
+                    foreach (BoxControl<BoxModel, ArrowModel> box in boxes.Values)
+                    {
+                        Rectangle rectangle = box.DisplayRectangle;
+                        rectangle.Offset(box.PointToScreen(Location));
+                        if (rectangle.Contains(e.X, e.Y))
+                        {
+                            target = box;
+                            break;
+                        }
+                    }
+
+                    if (target != null)
+                    {
+                        target.AcceptDrop(SourceNode.Model as ModelElement);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -318,6 +374,7 @@ namespace GUI.BoxArrowDiagram
             try
             {
                 refreshingControl = true;
+                pleaseWaitLabel.Visible = true;
                 SuspendLayout();
 
                 foreach (BoxControl<BoxModel, ArrowModel> control in boxes.Values)
@@ -359,11 +416,13 @@ namespace GUI.BoxArrowDiagram
                         arrows[model] = arrowControl;
                     }
                 }
+
                 UpdateArrowPosition();
             }
             finally
             {
                 refreshingControl = false;
+                pleaseWaitLabel.Visible = false;
                 ResumeLayout(true);
             }
 
@@ -586,8 +645,6 @@ namespace GUI.BoxArrowDiagram
         }
 
         private Point currentPosition = new Point(1, 1);
-        private static int X_OFFSET = BoxControl<BoxModel, ArrowModel>.DEFAULT_SIZE.Width + 10;
-        private static int Y_OFFSET = BoxControl<BoxModel, ArrowModel>.DEFAULT_SIZE.Height + 10;
 
         /// <summary>
         /// Provides the next available position in the box-arrow diagram
@@ -597,8 +654,11 @@ namespace GUI.BoxArrowDiagram
         {
             Point retVal = new Point(currentPosition.X, currentPosition.Y);
 
+            int X_OFFSET = DefaultBoxSize.Width + 10;
+            int Y_OFFSET = DefaultBoxSize.Height + 10;
+
             currentPosition.Offset(X_OFFSET, 0);
-            if (currentPosition.X > Size.Width - BoxControl<BoxModel, ArrowModel>.DEFAULT_SIZE.Width)
+            if (currentPosition.X > Size.Width - DefaultBoxSize.Width)
             {
                 currentPosition = new Point(1, currentPosition.Y + Y_OFFSET);
             }

@@ -23,6 +23,7 @@ namespace DataDictionary
     using DataDictionary.Interpreter.Statement;
     using DataDictionary.Specification;
     using DataDictionary.Interpreter.Filter;
+    using System.Collections;
 
     /// <summary>
     /// A complete system, along with all dictionaries
@@ -1331,5 +1332,160 @@ namespace DataDictionary
         /// The maximum size of an explain part message
         /// </summary>
         public int MaxExplainSize { get; set; }
+
+        /// <summary>
+        /// Provides the list of requirement sets in the system
+        /// </summary>
+        public List<RequirementSet> RequirementSets
+        {
+            get
+            {
+                List<RequirementSet> retVal = new List<RequirementSet>();
+
+                foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+                {
+                    foreach (RequirementSet requirementSet in dictionary.RequirementSets)
+                    {
+                        retVal.Add(requirementSet);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Marks the requirements for a specific requirement set
+        /// </summary>
+        private class RequirementSetMarker : Generated.Visitor
+        {
+            /// <summary>
+            /// The requirement set for which marking is done
+            /// </summary>
+            private RequirementSet RequirementSet { get; set; }
+
+            /// <summary>
+            /// Indicates if the requirement must belong to the requirement set, or not
+            /// </summary>
+            private bool Belonging { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="requirementSet"></param>
+            /// <param name="belonging">Indicates whether the paragraph should belong to the requirement set 
+            /// or whether the requirement should not belong to that requirement set</param>
+            public RequirementSetMarker(RequirementSet requirementSet, bool belonging)
+            {
+                RequirementSet = requirementSet;
+                Belonging = belonging;
+            }
+
+            /// <summary>
+            /// Marks the paragraph
+            /// </summary>
+            /// <param name="paragraph"></param>
+            /// <param name="recursively">Indicates that the paragraph should be marked recursively</param>
+            /// <returns>true if marking recursively was applied</returns>
+            private bool MarkBelongingParagraph(Paragraph paragraph, bool recursively)
+            {
+                paragraph.AddInfo("Requirement set" + RequirementSet.Name);
+                if (recursively)
+                {
+                    foreach (Paragraph subParagraph in paragraph.SubParagraphs)
+                    {
+                        MarkBelongingParagraph(subParagraph, recursively);
+                    }
+                }
+
+                return recursively;
+            }
+
+            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+            {
+                Paragraph paragraph = (Paragraph)obj;
+
+
+                if (paragraph.BelongsToRequirementSet(RequirementSet))
+                {
+                    if (Belonging)
+                    {
+                        if (!MarkBelongingParagraph(paragraph, RequirementSet.getRecursiveSelection()))
+                        {
+                            base.visit(obj, visitSubNodes);
+                        }
+                    }
+                    else
+                    {
+                        base.visit(obj, visitSubNodes);
+                    }
+                }
+                else
+                {
+                    if (!Belonging)
+                    {
+                        if (paragraph.getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
+                        {
+                            paragraph.AddInfo("Requirement does not belong to requirement set " + RequirementSet.Name);
+                        }
+                        base.visit(obj, visitSubNodes);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Marks the requirements which relate to the corresponding requirement set
+        /// </summary>
+        /// <param name="requirementSet"></param>
+        public void MarkRequirementsForRequirementSet(RequirementSet requirementSet)
+        {
+            RequirementSetMarker marker = new RequirementSetMarker(requirementSet, true);
+            foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+            {
+                dictionary.ClearMessages();
+                marker.visit(dictionary);
+            }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
+        }
+
+        /// <summary>
+        /// Marks the requirements which relate to the corresponding requirement set
+        /// </summary>
+        /// <param name="requirementSet"></param>
+        public void MarkRequirementsWhichDoNotBelongToRequirementSet(RequirementSet requirementSet)
+        {
+            RequirementSetMarker marker = new RequirementSetMarker(requirementSet, false);
+            foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+            {
+                dictionary.ClearMessages();
+                marker.visit(dictionary);
+            }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
+        }
+
+        /// <summary>
+        /// Provides the requirement set whose name corresponds to the name provided
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public RequirementSet findRequirementSet(string name)
+        {
+            RequirementSet retVal = null;
+
+            foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+            {
+                foreach (RequirementSet requirementSet in dictionary.RequirementSets)
+                {
+                    if (requirementSet.Name == name)
+                    {
+                        retVal = requirementSet;
+                        break;
+                    }
+                }
+            }
+
+            return retVal;
+        }
     }
 }

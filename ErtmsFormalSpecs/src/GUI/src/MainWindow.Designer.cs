@@ -45,21 +45,21 @@ namespace GUI
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin3 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
-            WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin3 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient7 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient15 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin3 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient16 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient8 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient17 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient18 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient19 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient9 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient20 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient21 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin1 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
+            WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin1 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient1 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient2 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient2 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient3 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient4 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient5 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient6 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,6 +84,7 @@ namespace GUI
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.showSpecificationViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showFunctionalBlocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showModelViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showShortcutsViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showTestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,6 +97,9 @@ namespace GUI
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.clearMarksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkModelToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.specificationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markApplicableParagraphsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markNonApplicableParagraphsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,7 +112,6 @@ namespace GUI
             this.markSpecIssuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markParagraphsFromNewRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
-            this.exportFunctionalBlocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.generateCoverageReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateSpecIssuesReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -167,9 +170,6 @@ namespace GUI
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.checkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkModelToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -376,6 +376,7 @@ namespace GUI
             // 
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showSpecificationViewToolStripMenuItem,
+            this.showFunctionalBlocksToolStripMenuItem,
             this.showModelViewToolStripMenuItem,
             this.showShortcutsViewToolStripMenuItem,
             this.showTestsToolStripMenuItem,
@@ -396,6 +397,13 @@ namespace GUI
             this.showSpecificationViewToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.showSpecificationViewToolStripMenuItem.Text = "Show specification view";
             this.showSpecificationViewToolStripMenuItem.Click += new System.EventHandler(this.showSpecificationViewToolStripMenuItem_Click_1);
+            // 
+            // showFunctionalBlocksToolStripMenuItem
+            // 
+            this.showFunctionalBlocksToolStripMenuItem.Name = "showFunctionalBlocksToolStripMenuItem";
+            this.showFunctionalBlocksToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.showFunctionalBlocksToolStripMenuItem.Text = "Show requirement sets";
+            this.showFunctionalBlocksToolStripMenuItem.Click += new System.EventHandler(this.showRequirementSetToolStripMenuItem_Click);
             // 
             // showModelViewToolStripMenuItem
             // 
@@ -497,6 +505,31 @@ namespace GUI
             this.clearMarksToolStripMenuItem.Text = "Clear marks";
             this.clearMarksToolStripMenuItem.Click += new System.EventHandler(this.clearMarksToolStripMenuItem_Click);
             // 
+            // checkToolStripMenuItem
+            // 
+            this.checkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.checkModelToolStripMenuItem1,
+            this.checkToolStripMenuItem1});
+            this.checkToolStripMenuItem.Name = "checkToolStripMenuItem";
+            this.checkToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.checkToolStripMenuItem.Text = "Check";
+            // 
+            // checkModelToolStripMenuItem1
+            // 
+            this.checkModelToolStripMenuItem1.Name = "checkModelToolStripMenuItem1";
+            this.checkModelToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.checkModelToolStripMenuItem1.Size = new System.Drawing.Size(233, 22);
+            this.checkModelToolStripMenuItem1.Text = "Check model";
+            this.checkModelToolStripMenuItem1.Click += new System.EventHandler(this.checkModelToolStripMenuItem1_Click);
+            // 
+            // checkToolStripMenuItem1
+            // 
+            this.checkToolStripMenuItem1.Name = "checkToolStripMenuItem1";
+            this.checkToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.checkToolStripMenuItem1.Size = new System.Drawing.Size(233, 22);
+            this.checkToolStripMenuItem1.Text = "Check for dead model";
+            this.checkToolStripMenuItem1.Click += new System.EventHandler(this.checkToolStripMenuItem1_Click);
+            // 
             // specificationsToolStripMenuItem
             // 
             this.specificationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -511,7 +544,6 @@ namespace GUI
             this.markSpecIssuesToolStripMenuItem,
             this.markParagraphsFromNewRevisionToolStripMenuItem,
             this.toolStripSeparator20,
-            this.exportFunctionalBlocksToolStripMenuItem,
             this.toolStripSeparator15,
             this.generateCoverageReportToolStripMenuItem,
             this.generateSpecIssuesReportToolStripMenuItem});
@@ -594,14 +626,6 @@ namespace GUI
             this.toolStripSeparator20.Name = "toolStripSeparator20";
             this.toolStripSeparator20.Size = new System.Drawing.Size(333, 6);
             this.toolStripSeparator20.Visible = false;
-            // 
-            // exportFunctionalBlocksToolStripMenuItem
-            // 
-            this.exportFunctionalBlocksToolStripMenuItem.Name = "exportFunctionalBlocksToolStripMenuItem";
-            this.exportFunctionalBlocksToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.exportFunctionalBlocksToolStripMenuItem.Text = "Export functional blocks";
-            this.exportFunctionalBlocksToolStripMenuItem.Visible = false;
-            this.exportFunctionalBlocksToolStripMenuItem.Click += new System.EventHandler(this.exportFunctionalBlocksToolStripMenuItem_Click);
             // 
             // toolStripSeparator15
             // 
@@ -1038,78 +1062,53 @@ namespace GUI
             this.dockPanel.Location = new System.Drawing.Point(0, 49);
             this.dockPanel.Name = "dockPanel";
             this.dockPanel.Size = new System.Drawing.Size(864, 382);
-            dockPanelGradient7.EndColor = System.Drawing.SystemColors.ControlLight;
-            dockPanelGradient7.StartColor = System.Drawing.SystemColors.ControlLight;
-            autoHideStripSkin3.DockStripGradient = dockPanelGradient7;
-            tabGradient15.EndColor = System.Drawing.SystemColors.Control;
-            tabGradient15.StartColor = System.Drawing.SystemColors.Control;
-            tabGradient15.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-            autoHideStripSkin3.TabGradient = tabGradient15;
-            autoHideStripSkin3.TextFont = new System.Drawing.Font("Segoe UI", 9F);
-            dockPanelSkin3.AutoHideStripSkin = autoHideStripSkin3;
-            tabGradient16.EndColor = System.Drawing.SystemColors.ControlLightLight;
-            tabGradient16.StartColor = System.Drawing.SystemColors.ControlLightLight;
-            tabGradient16.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripGradient3.ActiveTabGradient = tabGradient16;
-            dockPanelGradient8.EndColor = System.Drawing.SystemColors.Control;
-            dockPanelGradient8.StartColor = System.Drawing.SystemColors.Control;
-            dockPaneStripGradient3.DockStripGradient = dockPanelGradient8;
-            tabGradient17.EndColor = System.Drawing.SystemColors.ControlLight;
-            tabGradient17.StartColor = System.Drawing.SystemColors.ControlLight;
-            tabGradient17.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripGradient3.InactiveTabGradient = tabGradient17;
-            dockPaneStripSkin3.DocumentGradient = dockPaneStripGradient3;
-            dockPaneStripSkin3.TextFont = new System.Drawing.Font("Segoe UI", 9F);
-            tabGradient18.EndColor = System.Drawing.SystemColors.ActiveCaption;
-            tabGradient18.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            tabGradient18.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
-            tabGradient18.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dockPaneStripToolWindowGradient3.ActiveCaptionGradient = tabGradient18;
-            tabGradient19.EndColor = System.Drawing.SystemColors.Control;
-            tabGradient19.StartColor = System.Drawing.SystemColors.Control;
-            tabGradient19.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripToolWindowGradient3.ActiveTabGradient = tabGradient19;
-            dockPanelGradient9.EndColor = System.Drawing.SystemColors.ControlLight;
-            dockPanelGradient9.StartColor = System.Drawing.SystemColors.ControlLight;
-            dockPaneStripToolWindowGradient3.DockStripGradient = dockPanelGradient9;
-            tabGradient20.EndColor = System.Drawing.SystemColors.InactiveCaption;
-            tabGradient20.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            tabGradient20.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            tabGradient20.TextColor = System.Drawing.SystemColors.InactiveCaptionText;
-            dockPaneStripToolWindowGradient3.InactiveCaptionGradient = tabGradient20;
-            tabGradient21.EndColor = System.Drawing.Color.Transparent;
-            tabGradient21.StartColor = System.Drawing.Color.Transparent;
-            tabGradient21.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-            dockPaneStripToolWindowGradient3.InactiveTabGradient = tabGradient21;
-            dockPaneStripSkin3.ToolWindowGradient = dockPaneStripToolWindowGradient3;
-            dockPanelSkin3.DockPaneStripSkin = dockPaneStripSkin3;
-            this.dockPanel.Skin = dockPanelSkin3;
+            dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
+            autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
+            tabGradient1.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient1.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient1.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            autoHideStripSkin1.TabGradient = tabGradient1;
+            autoHideStripSkin1.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            dockPanelSkin1.AutoHideStripSkin = autoHideStripSkin1;
+            tabGradient2.EndColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient2.StartColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient2.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient1.ActiveTabGradient = tabGradient2;
+            dockPanelGradient2.EndColor = System.Drawing.SystemColors.Control;
+            dockPanelGradient2.StartColor = System.Drawing.SystemColors.Control;
+            dockPaneStripGradient1.DockStripGradient = dockPanelGradient2;
+            tabGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient3.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient1.InactiveTabGradient = tabGradient3;
+            dockPaneStripSkin1.DocumentGradient = dockPaneStripGradient1;
+            dockPaneStripSkin1.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            tabGradient4.EndColor = System.Drawing.SystemColors.ActiveCaption;
+            tabGradient4.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient4.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
+            tabGradient4.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dockPaneStripToolWindowGradient1.ActiveCaptionGradient = tabGradient4;
+            tabGradient5.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient5.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient5.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripToolWindowGradient1.ActiveTabGradient = tabGradient5;
+            dockPanelGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
+            dockPaneStripToolWindowGradient1.DockStripGradient = dockPanelGradient3;
+            tabGradient6.EndColor = System.Drawing.SystemColors.InactiveCaption;
+            tabGradient6.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient6.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            tabGradient6.TextColor = System.Drawing.SystemColors.InactiveCaptionText;
+            dockPaneStripToolWindowGradient1.InactiveCaptionGradient = tabGradient6;
+            tabGradient7.EndColor = System.Drawing.Color.Transparent;
+            tabGradient7.StartColor = System.Drawing.Color.Transparent;
+            tabGradient7.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            dockPaneStripToolWindowGradient1.InactiveTabGradient = tabGradient7;
+            dockPaneStripSkin1.ToolWindowGradient = dockPaneStripToolWindowGradient1;
+            dockPanelSkin1.DockPaneStripSkin = dockPaneStripSkin1;
+            this.dockPanel.Skin = dockPanelSkin1;
             this.dockPanel.TabIndex = 4;
-            // 
-            // checkToolStripMenuItem
-            // 
-            this.checkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.checkModelToolStripMenuItem1,
-            this.checkToolStripMenuItem1});
-            this.checkToolStripMenuItem.Name = "checkToolStripMenuItem";
-            this.checkToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.checkToolStripMenuItem.Text = "Check";
-            // 
-            // checkModelToolStripMenuItem1
-            // 
-            this.checkModelToolStripMenuItem1.Name = "checkModelToolStripMenuItem1";
-            this.checkModelToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.checkModelToolStripMenuItem1.Size = new System.Drawing.Size(233, 22);
-            this.checkModelToolStripMenuItem1.Text = "Check model";
-            this.checkModelToolStripMenuItem1.Click += new System.EventHandler(this.checkModelToolStripMenuItem1_Click);
-            // 
-            // checkToolStripMenuItem1
-            // 
-            this.checkToolStripMenuItem1.Name = "checkToolStripMenuItem1";
-            this.checkToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.checkToolStripMenuItem1.Size = new System.Drawing.Size(233, 22);
-            this.checkToolStripMenuItem1.Text = "Check for dead model";
-            this.checkToolStripMenuItem1.Click += new System.EventHandler(this.checkToolStripMenuItem1_Click);
             // 
             // MainWindow
             // 
@@ -1216,7 +1215,6 @@ namespace GUI
         private System.Windows.Forms.ToolStripMenuItem markNotImplementedButImplementationExistsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem markNonApplicableParagraphsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
-        private System.Windows.Forms.ToolStripMenuItem exportFunctionalBlocksToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem markNotTranslatedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem markNotImplementedTranslationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showRulePerformancesToolStripMenuItem;
@@ -1249,6 +1247,7 @@ namespace GUI
         private System.Windows.Forms.ToolStripMenuItem checkToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkModelToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem checkToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem showFunctionalBlocksToolStripMenuItem;
     }
 }
 

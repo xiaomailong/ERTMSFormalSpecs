@@ -66,6 +66,14 @@ namespace DataDictionary
         /// </summary>
         public static bool BeSilent { get; set; }
 
+        public void EnsureGuid()
+        {
+            if (string.IsNullOrEmpty(getGuid()))
+            {
+                setGuid(System.Guid.NewGuid().ToString());
+            }
+        }
+
         /// <summary>
         /// Provides the Guid of the paragraph and creates one if it is not yet set
         /// </summary>
@@ -74,9 +82,9 @@ namespace DataDictionary
             get
             {
                 ObjectFactory factory = (ObjectFactory)Generated.acceptor.getFactory();
-                if (string.IsNullOrEmpty(getGuid()) && factory.AutomaticallyGenerateGuid)
+                if (string.IsNullOrEmpty(getGuid()))
                 {
-                    setGuid(System.Guid.NewGuid().ToString());
+                    EnsureGuid();
                 }
 
                 return getGuid();

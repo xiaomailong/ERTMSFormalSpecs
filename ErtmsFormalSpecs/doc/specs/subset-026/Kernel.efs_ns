@@ -2104,7 +2104,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="8851da30-5b10-432e-84a4-4d4e819e55ba"
->EURORADIO.ContactOption &lt;- EURORADIO.ContactOptionEnum.RBCIdAndPhoneNumber </Action></Actions>
+>EURORADIO.ContactOption &lt;- EURORADIO.ContactOptionEnum.RBCIdAndPhoneNumber</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -4207,7 +4207,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="RBC informs that it rejects the train "
+ Name="RBC informs that it rejects the train"
  Guid="ced9440b-46bc-44c4-90e2-a73d5131b77d"
 >
 <Comment></Comment>
@@ -5240,7 +5240,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="7e8aca9e-bed4-4228-a2b5-d53dc47080f8"
->THIS in [S10, S20] </PreCondition><PreCondition
+>THIS in [S10, S20]</PreCondition><PreCondition
  Guid="e5583ad4-e0b3-48b8-968c-2ff42b9ff8df"
 >Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
@@ -5294,7 +5294,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="f7bcca77-5a28-4e46-8ce1-2317bbe5a0e5"
->THIS in [S10, S20] </PreCondition></PreConditions>
+>THIS in [S10, S20]</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -5366,7 +5366,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="ad61ad9c-55da-4750-92f4-c49c4757ee53"
->THIS in [S10, S20] </PreCondition></PreConditions>
+>THIS in [S10, S20]</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -5438,7 +5438,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="e387c081-c5c9-4dd7-93cb-9d18d9a4790c"
->THIS in [S10, S20] </PreCondition></PreConditions>
+>THIS in [S10, S20]</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -9427,7 +9427,7 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 <Actions>
 <Action
  Guid="c6f59ebe-03a7-4ee2-aea3-8fe999bbfc7a"
->Kernel.MA.HandleEOAs()</Action></Actions>
+>MA.HandleEOAs()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9512,7 +9512,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 {
     Position =&gt; BTM.Position
     {
-        Position =&gt; 150.0,
+        Position =&gt; 50.0,
         UnderReadingAmountOdo =&gt; 2.0,
         OverReadingAmountOdo =&gt; 1.0
     },

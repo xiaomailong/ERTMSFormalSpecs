@@ -19,6 +19,7 @@ using System.Linq;
 using DataDictionary.Functions;
 using System.Collections;
 using DataDictionary.Interpreter;
+using DataDictionary.Specification;
 
 namespace DataDictionary
 {
@@ -288,6 +289,12 @@ namespace DataDictionary
                 if (rule != null && rule.EnclosingProcedure != null)
                 {
                     requiresComment = rule.EnclosingProcedure.Rules.Count > 1;
+                }
+
+                Variables.Variable variable = commentable as Variables.Variable;
+                if (variable != null)
+                {
+                    requiresComment = false;
                 }
 
                 if (requiresComment)
@@ -847,21 +854,33 @@ namespace DataDictionary
                     }
                 }
 
-                if ((!paragraph.getScopeOnBoard()) && paragraph.SubParagraphScopeOnboard)
+                RequirementSet scope = Dictionary.findRequirementSet(Dictionary.SCOPE_NAME, false);
+                if (scope != null)
                 {
-                    paragraph.AddWarning("Paragraph scope should be On Board, according to its sub-paragraphs");
-                }
-                if ((!paragraph.getScopeTrackside()) && paragraph.SubParagraphScopeTrackside)
-                {
-                    paragraph.AddWarning("Paragraph scope should be Trackside, according to its sub-paragraphs");
-                }
-                if ((!paragraph.getScopeRollingStock()) && paragraph.SubParagraphScopeRollingStock)
-                {
-                    paragraph.AddWarning("Paragraph scope should be Rolling Stock, according to its sub-paragraphs");
-                }
-                if (!paragraph.getScopeOnBoard() && !paragraph.getScopeTrackside() && !paragraph.getScopeRollingStock())
-                {
-                    paragraph.AddWarning("Paragraph scope not set");
+                    RequirementSet onBoard = scope.findRequirementSet(RequirementSet.ONBOARD_SCOPE_NAME, false);
+                    if ((!paragraph.BelongsToRequirementSet(onBoard)) && paragraph.SubParagraphBelongsToRequirementSet(onBoard))
+                    {
+                        paragraph.AddWarning("Paragraph scope should be On Board, according to its sub-paragraphs");
+                    }
+
+                    RequirementSet trackside = scope.findRequirementSet(RequirementSet.TRACKSIDE_SCOPE_NAME, false);
+                    if ((!paragraph.BelongsToRequirementSet(trackside)) && paragraph.SubParagraphBelongsToRequirementSet(trackside))
+                    {
+                        paragraph.AddWarning("Paragraph scope should be Trackside, according to its sub-paragraphs");
+                    }
+
+                    RequirementSet rollingStock = scope.findRequirementSet(RequirementSet.ROLLING_STOCK_SCOPE_NAME, false);
+                    if ((!paragraph.BelongsToRequirementSet(rollingStock)) && paragraph.SubParagraphBelongsToRequirementSet(rollingStock))
+                    {
+                        paragraph.AddWarning("Paragraph scope should be Rolling Stock, according to its sub-paragraphs");
+                    }
+
+                    if (!paragraph.BelongsToRequirementSet(onBoard)
+                        && !paragraph.BelongsToRequirementSet(trackside)
+                        && !paragraph.BelongsToRequirementSet(rollingStock))
+                    {
+                        paragraph.AddWarning("Paragraph scope not set");
+                    }
                 }
             }
 
