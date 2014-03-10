@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using DataDictionary.Specification;
 
 namespace GUI.SpecificationView
 {
@@ -132,6 +133,17 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
+        /// Recursively marks all model elements as verified
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void RemoveRequirementSets(object sender, EventArgs e)
+        {
+            RequirementSetReference.RemoveReferencesVisitor remover = new RequirementSetReference.RemoveReferencesVisitor();
+            remover.visit(Item);
+        }
+
+        /// <summary>
         /// The menu items for this tree node
         /// </summary>
         /// <returns></returns>
@@ -144,6 +156,13 @@ namespace GUI.SpecificationView
             retVal.Add(new MenuItem("Change 'Requirement' to 'Note'", new EventHandler(ChangeRequirementToNoteHandler)));
             retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+
+            MenuItem recursiveActions = retVal.Find(x => x.Text.StartsWith("Recursive"));
+            if (recursiveActions != null)
+            {
+                recursiveActions.MenuItems.Add(new MenuItem("-"));
+                recursiveActions.MenuItems.Add(new MenuItem("Remove requirement sets", new EventHandler(RemoveRequirementSets)));
+            }
 
             return retVal;
         }
