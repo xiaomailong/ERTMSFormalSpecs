@@ -4886,6 +4886,11 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="eac3e3bf-733f-427a-8d04-fe84a6b58c8a"
 >
+</ReqRef><ReqRef
+ Id="f0c86934-5f4c-4832-bb8d-5fce455e3e7e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d5fb7916-0ab9-4d5d-9d3d-3d810023d757"
+>
 </ReqRef><Comment>Handles reception of the MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -5238,7 +5243,12 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b5481b1a-2e32-494e-80ec-405882131302"
 >
-</ReqRef><Comment>If th eMA is accepted, it is handled normally and the section timer will be started</Comment>
+</ReqRef><ReqRef
+ Id="f0c86934-5f4c-4832-bb8d-5fce455e3e7e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d45e8c84-d628-48f9-89b7-7969ac7f5b82"
+>
+</ReqRef><Comment>If the MA is accepted, it is handled normally and the section timer will be started</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5655,6 +5665,11 @@ Default.MessageTypes.QScaleDistance(
  Id="d833d8f6-90b9-499b-bdb1-408971c2cbfe"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5fbeb28a-e767-429f-b689-781bdadbc096"
+>
+</ReqRef><ReqRef
+ Id="f0c86934-5f4c-4832-bb8d-5fce455e3e7e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0a17f545-62a2-415b-9648-05f864f135d4"
 >
 </ReqRef><Comment>Handles reception of MA with shifted location reference.</Comment>
 <SubRules></SubRules>
