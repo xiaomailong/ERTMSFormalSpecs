@@ -4923,7 +4923,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Session management received"
+ Name="Session management available"
  Guid="8ad12600-a556-4799-9fac-e2046bd24f25"
 >
 <ReqRef
@@ -4942,7 +4942,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Session management received"
+ Name="Session management available"
  Guid="6abe06d6-af4e-4e14-890c-086b61321719"
 >
 <PreConditions>
@@ -4957,7 +4957,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
- Name="Report parameters received"
+ Name="Report parameters available"
  Guid="6952e078-ee86-43d6-84ef-44a7987c6f51"
 >
 <ReqRef
@@ -4970,7 +4970,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Report parameters received"
+ Name="Report parameters available"
  Guid="b3006b05-322a-4ec3-adaf-f31c462e909a"
 >
 <ReqRef
@@ -4996,7 +4996,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="List of balises for SH area received"
+ Name="List of balises for SH area available"
  Guid="fcf5520f-ce3c-4f17-b984-02a819e47adb"
 >
 <ReqRef
@@ -5009,7 +5009,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="List of balises for SH area received"
+ Name="List of balises for SH area available"
  Guid="1ac428d8-87fc-45d9-a277-e609c689b426"
 >
 <PreConditions>
@@ -5024,7 +5024,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Level transition order received"
+ Name="Level transition order available"
  Guid="7cc3a1d4-5397-46fd-b656-d5b84b928e94"
 >
 <ReqRef
@@ -5037,7 +5037,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Level transition order received"
+ Name="Level transition order available"
  Guid="1ef92a16-cc7b-4664-9d2b-b735ff9588a4"
 >
 <PreConditions>
@@ -5052,7 +5052,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Mode profile received"
+ Name="Mode profile available"
  Guid="77eaf966-192f-4c0e-9990-7e4897dad4af"
 >
 <ReqRef
@@ -5065,7 +5065,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Mode profile received"
+ Name="Mode profile available"
  Guid="009cc428-70b4-4b0a-b5df-468b677b743e"
 >
 <PreConditions>
@@ -5080,7 +5080,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Route suitability data received"
+ Name="Route suitability data available"
  Guid="e83a4b79-7e77-45ec-b306-cc4f23787f6e"
 >
 <ReqRef
@@ -5093,7 +5093,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Route suitability data received"
+ Name="Route suitability data available"
  Guid="6d8f8b6c-44de-46a3-ad4e-fe9a3f8bd878"
 >
 <PreConditions>
@@ -5108,7 +5108,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Radio Network registration received"
+ Name="Radio Network registration available"
  Guid="96b96609-5d4c-4603-a2e3-29ec0bcb9cdd"
 >
 <ReqRef
@@ -5131,7 +5131,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Radio Network registration received"
+ Name="Radio Network registration available"
  Guid="0e2ca957-6839-4b3f-afce-aa28d95dbfbd"
 >
 <PreConditions>
@@ -5142,6 +5142,34 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Action
  Guid="3f635080-161d-4765-998e-7bc79357fae7"
 >RadioNetworkRegistrationReceived ( aPacket =&gt; ( FIRST_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )).RADIO_NETWORK_REGISTRATION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="RBC transition order available"
+ Guid="0fb335bd-44e1-47e2-bd89-4c942a224204"
+>
+<ReqRef
+ Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a8ee6670-f850-4b69-9ac9-1de24bf53d57"
+>
+</ReqRef><Comment>Handles reception of RBC transition orders received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="RBC transition order available"
+ Guid="db797869-4bf5-44a7-b3cf-5e84cb162cde"
+>
+<PreConditions>
+<PreCondition
+ Guid="a5973c27-9a81-4636-8455-18ae68e3355c"
+>THERE_IS_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d9dcdaf4-23f3-4f1d-84c9-b114fd1fb949"
+>RBCTransitionOrderReceived ( aPacket =&gt; ( FIRST_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )).RBC_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -5202,7 +5230,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Mode profile received"
+ Name="Mode profile available"
  Guid="0118014c-9220-4336-9541-bf8317e774e2"
 >
 <ReqRef
@@ -5220,7 +5248,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Mode profile received"
+ Name="Mode profile available"
  Guid="a57d89cc-ee5f-47b4-9486-73125c45cc4d"
 >
 <PreConditions>
@@ -5430,7 +5458,7 @@ Default.MessageTypes.QScaleDistance(
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Route suitability data received"
+ Name="Route suitability data available"
  Guid="4aa1a01f-4254-4958-b0e8-99b5cb30cc20"
 >
 <ReqRef
@@ -5443,7 +5471,7 @@ Default.MessageTypes.QScaleDistance(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Route suitability data received"
+ Name="Route suitability data available"
  Guid="c0c990ba-89d9-47e6-b458-c64d95c8112c"
 >
 <PreConditions>
@@ -5458,7 +5486,7 @@ Default.MessageTypes.QScaleDistance(
 </Rule><Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
- Name="Report parameters received"
+ Name="Report parameters available"
  Guid="935df013-36d5-46e2-8fd1-1c22e87f3dfc"
 >
 <ReqRef
@@ -5471,7 +5499,7 @@ Default.MessageTypes.QScaleDistance(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Report parameters received"
+ Name="Report parameters available"
  Guid="8f6b94f8-5ebc-4d66-9acf-ddf51ba1d957"
 >
 <ReqRef
@@ -5494,7 +5522,7 @@ Default.MessageTypes.QScaleDistance(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Level transition order received"
+ Name="Level transition order available"
  Guid="36e96b58-9f40-4919-9b4e-07c2b3fbed30"
 >
 <ReqRef
@@ -5507,7 +5535,7 @@ Default.MessageTypes.QScaleDistance(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Level transition order received"
+ Name="Level transition order available"
  Guid="492fa7fb-64bb-408c-99de-c1b404915089"
 >
 <PreConditions>
@@ -5522,7 +5550,7 @@ Default.MessageTypes.QScaleDistance(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Session management received"
+ Name="Session management available"
  Guid="617c0d85-e001-4ba2-9a2e-7ed40b53d7d6"
 >
 <ReqRef
@@ -5541,7 +5569,7 @@ Default.MessageTypes.QScaleDistance(
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Session management received"
+ Name="Session management available"
  Guid="1535de84-4fd0-4408-a56b-3b0d008655c4"
 >
 <PreConditions>
@@ -5556,7 +5584,7 @@ Default.MessageTypes.QScaleDistance(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Radio Network registration received"
+ Name="Radio Network registration available"
  Guid="ed7d1e6a-a0a3-49c9-8fd4-be819eba3a56"
 >
 <ReqRef
@@ -5579,7 +5607,7 @@ Default.MessageTypes.QScaleDistance(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Radio Network registration received"
+ Name="Radio Network registration available"
  Guid="e4a85e4e-5316-41c0-ab53-2952ce6faafd"
 >
 <PreConditions>
@@ -5590,6 +5618,34 @@ Default.MessageTypes.QScaleDistance(
 <Action
  Guid="f7218da0-0535-4404-9004-e803bf961c91"
 >RadioNetworkRegistrationReceived ( aPacket =&gt; ( FIRST_IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )).RADIO_NETWORK_REGISTRATION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="RBC transition order available"
+ Guid="bbd085cd-6114-4a8e-9372-7befdce23b2b"
+>
+<ReqRef
+ Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7371c655-70ff-4786-8af1-47e54b325fbc"
+>
+</ReqRef><Comment>Handles reception of RBC transition orders received with the general message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="RBC transition order available"
+ Guid="53418cea-2cd8-4707-94b4-ccdc60514170"
+>
+<PreConditions>
+<PreCondition
+ Guid="e93e740d-2bf8-41d0-ab39-9fb5c7ea7fe3"
+>THERE_IS_IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9465d11b-3c0d-4be2-a91e-883e806e5d57"
+>RBCTransitionOrderReceived ( aPacket =&gt; ( FIRST_IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )).RBC_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -5703,7 +5759,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Mode profile received"
+ Name="Mode profile available"
  Guid="d438dc8b-7936-4bcf-8833-97af765a4527"
 >
 <ReqRef
@@ -5716,7 +5772,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Mode profile received"
+ Name="Mode profile available"
  Guid="5fd08ada-39f6-43b7-bb09-1af3639e5a10"
 >
 <PreConditions>
@@ -5731,7 +5787,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Level transition order received"
+ Name="Level transition order available"
  Guid="2daa150e-f714-4954-9c73-3b6086131c5a"
 >
 <ReqRef
@@ -5744,7 +5800,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Level transition order received"
+ Name="Level transition order available"
  Guid="8a7303b3-edcf-4f4a-a210-3b5a94aa69a9"
 >
 <PreConditions>
@@ -5759,7 +5815,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
- Name="Report parameters received"
+ Name="Report parameters available"
  Guid="41514341-5275-4457-b6e1-3d0cdf73210d"
 >
 <ReqRef
@@ -5772,7 +5828,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Report parameters received"
+ Name="Report parameters available"
  Guid="a072a522-be55-470d-ac59-e4904cf1245c"
 >
 <ReqRef
@@ -5797,7 +5853,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Route suitability data received"
+ Name="Route suitability data available"
  Guid="d1763cf0-854a-43b9-890b-65362093d1e5"
 >
 <ReqRef
@@ -5810,7 +5866,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Route suitability data received"
+ Name="Route suitability data available"
  Guid="05c6c904-72ce-4e9f-b546-00d44c02eb79"
 >
 <PreConditions>
@@ -5825,7 +5881,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Session management received"
+ Name="Session management available"
  Guid="06578948-29db-4a5a-9791-be18d6e3069e"
 >
 <ReqRef
@@ -5844,7 +5900,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Session management received"
+ Name="Session management available"
  Guid="705b0473-0854-424b-b540-bd89e9a8fd20"
 >
 <PreConditions>
@@ -5859,7 +5915,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Radio Network registration received"
+ Name="Radio Network registration available"
  Guid="1c416e5c-9d36-4cc6-92dd-ca8df880cd0a"
 >
 <ReqRef
@@ -5882,7 +5938,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Radio Network registration received"
+ Name="Radio Network registration available"
  Guid="51fe263c-fe6c-4016-8b7b-47def8f0e4f3"
 >
 <PreConditions>
@@ -5893,6 +5949,34 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Action
  Guid="bdb60228-bfad-43d2-ac1e-e6bbbac30872"
 >RadioNetworkRegistrationReceived ( aPacket =&gt; ( FIRST_IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )).RADIO_NETWORK_REGISTRATION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="RBC transition order available"
+ Guid="a8af2694-8a1a-4a7b-bcdf-1b0a2fc65759"
+>
+<ReqRef
+ Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20491a0d-e1d0-4c4c-a1d7-8521af2fb735"
+>
+</ReqRef><Comment>Handles reception of RBC transition orders received with MA with shifted location reference.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="RBC transition order available"
+ Guid="e55e6bdc-afac-476b-a86e-1249de5ea4d2"
+>
+<PreConditions>
+<PreCondition
+ Guid="8723be7a-426d-477a-a43a-230a0faa8ca3"
+>THERE_IS_IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fe627e78-cc1a-46c9-b978-a68996f61e55"
+>RBCTransitionOrderReceived ( aPacket =&gt; ( FIRST_IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )).RBC_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -5987,7 +6071,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Route suitability data received"
+ Name="Route suitability data available"
  Guid="1cfcd676-857b-4365-ae5e-e92d658219b7"
 >
 <ReqRef
@@ -6000,7 +6084,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Route suitability data received"
+ Name="Route suitability data available"
  Guid="cfe0f284-c660-462a-b15f-f16501bcb05d"
 >
 <PreConditions>
@@ -6015,7 +6099,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Mode profile received"
+ Name="Mode profile available"
  Guid="ba5e7903-74f0-416c-ace9-cdc1392a7a73"
 >
 <ReqRef
@@ -6028,7 +6112,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Mode profile received"
+ Name="Mode profile available"
  Guid="5723e1bb-1530-43ae-b94a-8989fd2a71a0"
 >
 <PreConditions>
@@ -6043,7 +6127,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Level transition order received"
+ Name="Level transition order available"
  Guid="1e3c7c24-198c-43ed-975b-dbe5a441caf3"
 >
 <ReqRef
@@ -6056,7 +6140,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Level transition order received"
+ Name="Level transition order available"
  Guid="b23111b6-dc5d-4ef3-bcdc-8872f1653ec4"
 >
 <PreConditions>
@@ -6435,6 +6519,17 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 >CurrentRBCConnection().SessionManagementData.InitiationOfACommunicationSessionReceived &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Name="RBCTransitionOrderReceived"
+ Guid="1e2006a9-a669-4dac-9b18-73a3b410b9a4"
+>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER.Message"
+ Name="aPacket"
+ Guid="6dec5918-04af-49bc-86dd-f155782a3cf8"
+>
+</Parameter></Parameters>
 </Procedure></Procedures>
 <Variables>
 <Variable

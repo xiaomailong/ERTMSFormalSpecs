@@ -1497,6 +1497,35 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 >Kernel.LX.LXReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION, NID_BG=&gt;NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
+ Name="RBC Transition Order available"
+ Guid="70731a0e-ba5f-484f-a027-c4d09e290b80"
+>
+<ReqRef
+ Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1bc2eb0c-ef5d-4f83-9cb0-c80ca1ee51b0"
+>
+</ReqRef><ReqRef
+ Id="f69899f9-70f7-4f0e-bc95-d9d97964dc81"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a4dd1bba-b81d-4621-b98b-0832708d52cf"
+>
+</ReqRef><ReqRef
+ Id="813504ec-6af8-4d96-be72-5e3b6b595a0a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bfd9533a-7171-4d80-8b95-5dc0b2eb2741"
+>
+</ReqRef><Comment>Handles RBC Transition order packet, if available.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="61f518c1-008f-4e7d-ac92-f0ede5ce7df0"
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="05bdf5ca-1d21-43e2-bb2e-7ef9acba75c3"
+>EURORADIO.RBCTransitionOrderReceived ( aPacket=&gt;Packet.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Infill available"
  Guid="8e2593a0-4d11-4587-9407-2b308ebfcce2"
