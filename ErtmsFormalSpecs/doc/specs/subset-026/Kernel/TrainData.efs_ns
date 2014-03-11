@@ -34,7 +34,7 @@
 <Enum
  Default="FreightTrainInG"
  Implemented="TRUE"
- Name="TrainCategory"
+ Name="TrainCategoryEnum"
  Guid="65ca8804-0dd2-4a11-a5e1-0b66cc57a1e8"
 >
 <ReqRef
@@ -64,7 +64,7 @@
 <Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="TrainCategories"
+ Name="TrainCategoriesStruct"
  Guid="ca4f188b-696b-4cfe-9689-c29ccde63c20"
 >
 <ReqRef
@@ -154,7 +154,7 @@
 >
 </ReqRef><Comment>Represents the train data that shall be acquired by the ERTMS/ETCS on-board equipment of a leading machine before starting a mission.</Comment>
 <StructureElement
- TypeName="TrainCategories"
+ TypeName="TrainCategoriesStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1067,7 +1067,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="TrainCategory"
+ TypeName="TrainCategoryEnum"
  MaxSize="15"
  Default="[]"
  Implemented="TRUE"

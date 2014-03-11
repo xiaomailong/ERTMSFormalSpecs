@@ -158,10 +158,10 @@
  Guid="7f700801-acee-4ba1-b35d-32ce56d839b8"
 >Kernel.TrainData.TrainData.Value.RegenerativeBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</Action><Action
  Guid="57bfafbc-15e1-42dd-9cf8-8a0ee1f6ad08"
->Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
+>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategoriesStruct
 {
     CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_210_mm,
-    OtherInternational =&gt; [Kernel.TrainData.TrainCategory.FreightTrainInP]
+    OtherInternational =&gt; [Kernel.TrainData.TrainCategoryEnum.FreightTrainInP]
 }</Action><Action
  Guid="03792f5c-fdc3-4125-b8d3-c5098afa284b"
 >Kernel.TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet
@@ -710,7 +710,7 @@
             Kernel.TrackDescription.StaticSpeedProfile.SSPCategory
             {
                 CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_130_mm,
-                OtherSpecific =&gt; Kernel.TrainData.TrainCategory.FreightTrainInG,
+                OtherSpecific =&gt; Kernel.TrainData.TrainCategoryEnum.FreightTrainInG,
                 Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category ,
                 Speed =&gt; 190.0
             }
