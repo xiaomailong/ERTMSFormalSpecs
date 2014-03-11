@@ -1405,7 +1405,6 @@ namespace DataDictionary
             {
                 Paragraph paragraph = (Paragraph)obj;
 
-
                 if (paragraph.BelongsToRequirementSet(RequirementSet))
                 {
                     if (Belonging)
@@ -1428,8 +1427,8 @@ namespace DataDictionary
                         {
                             paragraph.AddInfo("Requirement does not belong to requirement set " + RequirementSet.Name);
                         }
-                        base.visit(obj, visitSubNodes);
                     }
+                    base.visit(obj, visitSubNodes);
                 }
             }
         }

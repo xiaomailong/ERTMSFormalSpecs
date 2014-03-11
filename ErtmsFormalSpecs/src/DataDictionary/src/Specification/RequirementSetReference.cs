@@ -64,5 +64,25 @@ namespace DataDictionary.Specification
                 return GuidCache.INSTANCE.GetModel(getTarget()) as RequirementSet;
             }
         }
+
+        /// <summary>
+        /// This visitor can be used to recursively remove all requirement set references
+        /// </summary>
+        public class RemoveReferencesVisitor : DataDictionary.Generated.Visitor
+        {
+            public override void visit(DataDictionary.Generated.Paragraph obj, bool visitSubNodes)
+            {
+                Paragraph paragraph = (Paragraph)obj;
+
+                while (paragraph.RequirementSetReferences.Count > 0)
+                {
+                    RequirementSetReference reference = (RequirementSetReference)paragraph.RequirementSetReferences[0];
+                    reference.Delete();
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
     }
 }

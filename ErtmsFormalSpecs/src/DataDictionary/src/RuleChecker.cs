@@ -857,27 +857,21 @@ namespace DataDictionary
                 RequirementSet scope = Dictionary.findRequirementSet(Dictionary.SCOPE_NAME, false);
                 if (scope != null)
                 {
-                    RequirementSet onBoard = scope.findRequirementSet(RequirementSet.ONBOARD_SCOPE_NAME, false);
-                    if ((!paragraph.BelongsToRequirementSet(onBoard)) && paragraph.SubParagraphBelongsToRequirementSet(onBoard))
+                    bool scopeFound = false;
+                    foreach (RequirementSet requirementSet in scope.SubSets)
                     {
-                        paragraph.AddWarning("Paragraph scope should be On Board, according to its sub-paragraphs");
+                        if (paragraph.BelongsToRequirementSet(requirementSet))
+                        {
+                            scopeFound = true;
+                        }
+
+                        if ((!paragraph.BelongsToRequirementSet(requirementSet)) && paragraph.SubParagraphBelongsToRequirementSet(requirementSet))
+                        {
+                            paragraph.AddWarning("Paragraph scope should be " + requirementSet.Name + ", according to its sub-paragraphs");
+                        }
                     }
 
-                    RequirementSet trackside = scope.findRequirementSet(RequirementSet.TRACKSIDE_SCOPE_NAME, false);
-                    if ((!paragraph.BelongsToRequirementSet(trackside)) && paragraph.SubParagraphBelongsToRequirementSet(trackside))
-                    {
-                        paragraph.AddWarning("Paragraph scope should be Trackside, according to its sub-paragraphs");
-                    }
-
-                    RequirementSet rollingStock = scope.findRequirementSet(RequirementSet.ROLLING_STOCK_SCOPE_NAME, false);
-                    if ((!paragraph.BelongsToRequirementSet(rollingStock)) && paragraph.SubParagraphBelongsToRequirementSet(rollingStock))
-                    {
-                        paragraph.AddWarning("Paragraph scope should be Rolling Stock, according to its sub-paragraphs");
-                    }
-
-                    if (!paragraph.BelongsToRequirementSet(onBoard)
-                        && !paragraph.BelongsToRequirementSet(trackside)
-                        && !paragraph.BelongsToRequirementSet(rollingStock))
+                    if (!scopeFound && !(paragraph.getType() == Generated.acceptor.Paragraph_type.aDELETED))
                     {
                         paragraph.AddWarning("Paragraph scope not set");
                     }
