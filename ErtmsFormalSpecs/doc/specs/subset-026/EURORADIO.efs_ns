@@ -1116,7 +1116,9 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
  Guid="3d5afa42-b712-4474-af54-81ae258173b2"
 >SessionManagementData.SystemVersion.DataState &lt;- DataState.Unknown</Action><Action
  Guid="9687e639-b5c6-470d-813a-f17940cd2731"
->ConnectionLostTime &lt;- BaseTypes.Time.Infinity</Action></Actions>
+>ConnectionLostTime &lt;- BaseTypes.Time.Infinity</Action><Action
+ Guid="ff4c1c3d-36bb-4e52-ae97-a17eabff757a"
+>IsAcceptingRBC &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1410,6 +1412,25 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
  Guid="19025708-2326-463f-8934-0ac263dc7feb"
 >
 <Comment>If a communication session has to be established, this variable indicates why it has to be estabilshed.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="IsAcceptingRBC"
+ Guid="444f2d37-dd13-4003-a447-b57d250c6b4a"
+>
+<ReqRef
+ Id="67f28124-01be-4b0b-ae62-e6274818f522"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="57561fde-5f2f-4982-911c-60e7b470dbd4"
+>
+</ReqRef><ReqRef
+ Id="83fd016d-a290-41a0-b91a-d21bdb12a3d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="544a29d3-5331-4a54-98ef-3e0cfaf0b074"
+>
+</ReqRef><Comment>Indicates if this RBC is accepting or handing over, in case of RBC/RBC handover.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="Inactive"
@@ -1539,6 +1560,16 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
  Id="69641afe-f1b0-4499-9b31-e3d7a164d492"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dee9ebb6-a343-433d-a245-a666c6a38e8c"
+>
+</ReqRef><ReqRef
+ Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7847ad76-9c4f-4975-b1fa-1d812a30dd8a"
+>
+</ReqRef><ReqRef
+ Id="dd006294-7250-4fc8-b4b1-f4e62eb12cf3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46a11136-91d9-4a7a-a0c9-68a5f22a00f3"
 >
 </ReqRef><Comment>When an order to contact an RBC is received, the on-board requests the set-up of a safe radio connection with the trackside.</Comment>
 <SubRules></SubRules>
@@ -4151,6 +4182,48 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 >
 <Expression>anRBC.ConnectionState in RBCStruct.ConnectionStateSM.Connected</Expression>
 </Case></Cases>
+</Function><Function
+ Type="RBCStruct"
+ Implemented="TRUE"
+ Name="AcceptingRBC"
+ Guid="74ee579a-acba-4659-83ae-89dc0f8c11b6"
+>
+<ReqRef
+ Id="67f28124-01be-4b0b-ae62-e6274818f522"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="491c7b5b-2e29-4ed0-bbba-b408c39115bb"
+>
+</ReqRef><ReqRef
+ Id="83fd016d-a290-41a0-b91a-d21bdb12a3d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1213961e-335f-474e-81b6-b7844d73415c"
+>
+</ReqRef><Comment>Provides the accepting RBC, if any.</Comment>
+<Cases>
+<Case
+ Name="RBC1"
+ Guid="d7fd8869-52aa-46c6-bf2a-d3322c31b18e"
+>
+<PreConditions>
+<PreCondition
+ Guid="b6505431-2fc2-4a36-a175-574b65e91b1a"
+>Terminal1.RBCConnection.IsAcceptingRBC</PreCondition></PreConditions>
+<Expression>Terminal1.RBCConnection</Expression>
+</Case><Case
+ Name="RBC2"
+ Guid="b8b2bbbd-f511-4026-80a0-20692f3adcf3"
+>
+<PreConditions>
+<PreCondition
+ Guid="079486c9-1e87-4e44-b1fc-f3931340f14c"
+>Terminal2.RBCConnection.IsAcceptingRBC</PreCondition></PreConditions>
+<Expression>Terminal2.RBCConnection</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="bd8987f4-2817-4121-9791-f02667f5eb21"
+>
+<Expression>EMPTY</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -4232,6 +4305,16 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b8f46699-f8ba-4513-b978-e524cdf50e85"
 >
+</ReqRef><ReqRef
+ Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c0862a6-1f7d-4cf0-a7ec-9db804412f74"
+>
+</ReqRef><ReqRef
+ Id="dd006294-7250-4fc8-b4b1-f4e62eb12cf3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b68bc667-9958-46c4-9f7b-3197d9cf7df9"
+>
 </ReqRef><Comment>Allows to establish the communication session with an accepting RBC. If no mobile terminal is registered, the order is rejected.</Comment>
 <Parameters>
 <Parameter
@@ -4270,7 +4353,9 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
     PhoneNumber =&gt; Order.PhoneNumber,
     ActionToPerform =&gt; ContactActionEnum.Establish,
     AppliesToSleepingUnits =&gt; Order.AppliesToSleepingUnits
-}</Action></Actions>
+}</Action><Action
+ Guid="572f87f2-555f-462a-97db-7317329f2b76"
+>Terminal1.RBCConnection.IsAcceptingRBC &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Terminal2"
@@ -4290,7 +4375,9 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
     PhoneNumber =&gt; Order.PhoneNumber,
     ActionToPerform =&gt; ContactActionEnum.Establish,
     AppliesToSleepingUnits =&gt; Order.AppliesToSleepingUnits
-}</Action></Actions>
+}</Action><Action
+ Guid="6a072cf5-55b9-435d-a43b-965a6f7e705b"
+>Terminal2.RBCConnection.IsAcceptingRBC &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -6520,9 +6607,26 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  Name="RBCTransitionOrderReceived"
  Guid="1e2006a9-a669-4dac-9b18-73a3b410b9a4"
 >
+<ReqRef
+ Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="57a29e9f-b0b9-4fb9-8f95-2c7c99006a38"
+>
+</ReqRef><ReqRef
+ Id="dd006294-7250-4fc8-b4b1-f4e62eb12cf3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="84ac7d36-6459-4483-a805-1aeeba067baa"
+>
+</ReqRef><ReqRef
+ Id="8d7f7c64-ed35-4ee2-a511-68029a576144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb2531bd-299e-48b8-8773-e4053600cacc"
+>
+</ReqRef><Comment>Handles the reception of RBC transition order.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER.Message"
@@ -6530,6 +6634,47 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Guid="6dec5918-04af-49bc-86dd-f155782a3cf8"
 >
 </Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle RBC transition order"
+ Guid="fec91845-5ab0-45e8-9030-039e43156b41"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle RBC transition order"
+ Guid="f3f1f4d2-821a-4f89-a412-c9ed748cc203"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c0382dd7-53dc-4905-9aa6-af132fc3f8ca"
+>ContactAcceptingRBC
+(
+    Order =&gt; ContactOrderStruct
+    {
+        Id =&gt; EURORADIO.RBCIdStruct
+        {
+            Country =&gt; aPacket.NID_C,
+            Id =&gt; aPacket.NID_RBC
+        },
+        PhoneNumber =&gt; aPacket.NID_RADIO,
+        ActionToPerform =&gt; EURORADIO.ContactActionEnum.Establish,
+        AppliesToSleepingUnits =&gt; ConvertAppliesToSleepingUnits ( aValue =&gt; aPacket.Q_SLEEPSESSION )
+    }
+)</Action><Action
+ Guid="d3c6cdf9-9747-4381-9c1e-6895964348f9"
+>PositionReport.RBCTransitionLocation &lt;- MessageTypes.QScaleDistance
+(
+    distance =&gt; aPacket.D_RBCTR,
+    scale =&gt; aPacket.Q_SCALE
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable

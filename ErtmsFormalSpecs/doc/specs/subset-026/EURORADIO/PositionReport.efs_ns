@@ -1278,20 +1278,67 @@ TIU.TrainIntegrity.Status in [
  Guid="d40edde6-c9f0-4baf-839f-22175651a6e4"
 >
 </ReqRef><Comment>Indicates the number of sent position report repetitions.</Comment>
+</Variable><Variable
+ Type="BaseTypes.Distance"
+ DefaultValue="Default.BaseTypes.Distance.Unknown"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="RBCTransitionLocation"
+ Guid="97a617dd-10c7-4bb5-b80a-041544ca0de1"
+>
+<ReqRef
+ Id="67f28124-01be-4b0b-ae62-e6274818f522"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1f7ae591-86b1-4030-b01b-bf668e2f7a42"
+>
+</ReqRef><ReqRef
+ Id="83fd016d-a290-41a0-b91a-d21bdb12a3d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="868c740c-a2c8-432e-b9ca-8a55c8cb739b"
+>
+</ReqRef><ReqRef
+ Id="8d7f7c64-ed35-4ee2-a511-68029a576144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ff0ec4d-25ae-4543-85fb-63c732c79b73"
+>
+</ReqRef><Comment>Location of the transition to the accepting RBC.</Comment>
+</Variable><Variable
+ Type="Integer"
+ DefaultValue="0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="NumberOfReportsSentToAcceptingRBC"
+ Guid="58fe0255-aaa1-42f1-a66a-123f4836e334"
+>
+<ReqRef
+ Id="67f28124-01be-4b0b-ae62-e6274818f522"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55aa6103-e49d-4b92-8df4-9a4406a7e969"
+>
+</ReqRef><ReqRef
+ Id="83fd016d-a290-41a0-b91a-d21bdb12a3d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0220b530-97e4-4192-b39a-d5a9408d3ce8"
+>
+</ReqRef><Comment>Indicates the number of position reports that were already sent to the accepting RBC.
+
+It is used to detect if the first report was already sent (when the maximum safe front end of the train has crossed the RBC transition location).</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
  Priority="CleanUp"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="PositionReportEventsTrackerCleanUp"
+ Name="Clean up"
  Guid="728c26b7-570e-4d32-b6cb-6af762241ac4"
 >
 <Comment>Updates the followers of events that could trigger the sending of position report parameters.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="PositionReportEventsCleanUp"
+ Name="Clean up"
  Guid="5a196179-422d-4e6b-becf-bf5ada482ed1"
 >
 <PreConditions>
@@ -1503,6 +1550,31 @@ TIU.TrainIntegrity.Status in [
  Guid="62ca8361-552c-4f8d-a5af-7a2d6bd64455"
 >LastPositionReport.Position &lt;- Odometry.NominalDistance</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Position reports to accepting RBC counter clean up"
+ Guid="d3685868-86bc-4006-af6f-ec75b28ff7cf"
+>
+<Comment>If both reports were sent, reset the counter to 0.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Position reports to accepting RBC counter clean up"
+ Guid="51c9c7c6-e513-4d1f-9e2f-dec478354657"
+>
+<PreConditions>
+<PreCondition
+ Guid="9e597c5e-8972-45f9-9d7b-02b17dd66b8c"
+>NumberOfReportsSentToAcceptingRBC == 2</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ba49bc15-c471-41a1-b203-6cf28b8868a4"
+>NumberOfReportsSentToAcceptingRBC &lt;- 0</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -1554,6 +1626,52 @@ TIU.TrainIntegrity.Status in [
 <Action
  Guid="caed2442-a4dd-49e2-9bb4-55a01c80b907"
 >CurrentRBCConnection().SendPositionReport()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send position report to accepting RBC"
+ Guid="b15c3ab8-23bc-4e0f-a957-d3185d5147a9"
+>
+<ReqRef
+ Id="67f28124-01be-4b0b-ae62-e6274818f522"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48fdc0fc-f68e-4758-9a2b-5fc66014aeb6"
+>
+</ReqRef><ReqRef
+ Id="83fd016d-a290-41a0-b91a-d21bdb12a3d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5189b4cf-16e7-4e1e-841f-a99bae210a87"
+>
+</ReqRef><ReqRef
+ Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6df0126b-54ef-40ca-80f9-a4d5608dc86d"
+>
+</ReqRef><Comment>Sends position reports to accepting RBC, when crossing the RBC transition location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send position report to accepting RBC"
+ Guid="9eb43706-bd78-4e42-a70b-c528bc4cee15"
+>
+<PreConditions>
+<PreCondition
+ Guid="cc94de57-2606-4809-bda3-c967e720e436"
+>NumberOfReportsSentToAcceptingRBC == 1
+  AND
+Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; DistanceInterval.Min ) &gt;= RBCTransitionLocation</PreCondition><PreCondition
+ Guid="12730f8d-2325-4816-a1d2-228d2cfb0c5a"
+>NumberOfReportsSentToAcceptingRBC == 0
+  AND
+Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.Max ) &gt;= RBCTransitionLocation</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d0ab71e1-786d-4e01-9233-28f40c29267a"
+>AcceptingRBC().SendPositionReport()</Action><Action
+ Guid="89164f10-4804-45f9-b404-1ba1447d422b"
+>NumberOfReportsSentToAcceptingRBC &lt;- NumberOfReportsSentToAcceptingRBC + 1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
