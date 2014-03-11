@@ -13,8 +13,6 @@
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e9f610b2-9f7c-4d8b-84ab-5df84d887bee"
 >Components of ERTMS/ETCS Language<Sub>
@@ -29,8 +27,6 @@
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b93df38d-ef3b-44aa-84b6-93bc48ef83f9"
 >Introduction<Sub>
@@ -45,8 +41,6 @@
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cead0c44-6366-4ca2-a626-e00cfa850f8b"
 >The ERTMS/ETCS language is used in transmitting information over the radio, balise and loop airgaps.<RequirementSets>
@@ -70,8 +64,6 @@
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cafd0c0e-3d25-481a-b449-a3a57d96e195"
 >The ERTMS/ETCS language is based on variables, packets, messages and telegrams (variables and packets are described in this section, while telegrams and messages are described in chapter 8).<RequirementSets>
@@ -95,8 +87,6 @@
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cb130e9e-45de-400a-9e0c-bcf909fbfafe"
 >Note: A number of variables contain values which have to be assigned. Some of these values have to be unique to ensure that the system functions properly. A centralised handling of this assignment is therefore required (nationally or internationally, depending on the variable). The variables concerned have been marked. The values included in this document for these variables are therefore not to be used without prior verification of their validity. See SUBSET-054 for further details.<RequirementSets>
@@ -131,8 +121,6 @@
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0d0ea551-98f0-4819-854b-b8d400091e86"
 >Definition of Variables<Sub>
@@ -147,8 +135,6 @@
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7899e28c-6242-4b5a-8681-ff9907971822"
 ><Comment></Comment>
@@ -173,8 +159,6 @@ Variables shall be used to encode single data values. Variables cannot be split 
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c3751c5d-48dc-4aa7-842d-4e89db7ca37f"
 >Variables may have special values which are related to the basic meaning of the variable.<RequirementSets>
@@ -198,8 +182,6 @@ Variables shall be used to encode single data values. Variables cannot be split 
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4fa3b8ce-a8e9-48e6-bcb2-e49ccb90c8af"
 >Special values have always the highest values in a variable (eg. 11...111 = &quot;unknown&quot;).<RequirementSets>
@@ -223,8 +205,6 @@ Variables shall be used to encode single data values. Variables cannot be split 
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2f2541af-c981-42bc-bd64-651a34bd0764"
 >Spare values shall be located between the normal and special values in the variable range<RequirementSets>
@@ -249,8 +229,6 @@ Variables shall be used to encode single data values. Variables cannot be split 
  version="3.0.0"
  specIssue="TRUE"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3d9dd9db-f48a-4c38-b03d-ed1a1def7a34"
 ><Comment>This requirement is not respected by sections 7 and 8</Comment>
@@ -275,8 +253,6 @@ Names of variables are unique. A variable is used in context with the meaning as
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4a1f6f04-14eb-42df-a560-541fa0c610d3"
 ><Comment></Comment>
@@ -301,8 +277,6 @@ All variable definitions shall be independent of the transport media over which 
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d2c5f05b-2d5e-4efb-ae6b-dc35d977f858"
 ><Comment>Encoding is not handled in the applicative layer</Comment>
@@ -327,8 +301,6 @@ Signed values shall be encoded as 2&apos;s complement.<RequirementSets>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3ea608f6-95f0-4913-90cc-f79ee6e9fb6d"
 ><Comment>Encoding is not handled in the applicative layer</Comment>
@@ -353,8 +325,6 @@ One bit variables (Boolean) shall always use 0 for false and 1 for true.<Require
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ee54cb5f-34f9-4c81-a887-a0f2c974219f"
 ><Comment></Comment>
@@ -379,8 +349,6 @@ Offsets for numerical values shall be avoided (0 shall be used for 0, 1 for 1, e
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9f70ebe8-f1a6-41c6-8609-88a9fb3af04c"
 ><Comment>Encoding is not handled in the applicative layer</Comment>
@@ -405,8 +373,6 @@ When transmitting over the different transmission media, the most significant bi
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2e3f2739-7d41-4690-989f-f9710af30b1f"
 ><Comment></Comment>
@@ -422,8 +388,6 @@ All Variables have one of the following prefixes:<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="25d3ff81-92f4-44d6-b2e0-7b1cf06ba4cd"
 >A_; Acceleration<RequirementSets>
@@ -447,8 +411,6 @@ All Variables have one of the following prefixes:<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6cb7e7d2-85e2-4c3d-a8fb-33195840d16f"
 >D_; distance<RequirementSets>
@@ -472,8 +434,6 @@ All Variables have one of the following prefixes:<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7f569cb6-0f41-4ef8-9f39-3b3067d5f858"
 >G_; Gradient<RequirementSets>
@@ -497,8 +457,6 @@ All Variables have one of the following prefixes:<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c7158ae6-c7b0-445a-9a05-2c49557334aa"
 >L_; length<RequirementSets>
@@ -522,8 +480,6 @@ All Variables have one of the following prefixes:<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="41724ea3-4599-4f79-809b-11edb3540ead"
 >M_; Miscellaneous<RequirementSets>
@@ -547,8 +503,6 @@ All Variables have one of the following prefixes:<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="08c3b05c-e9a6-473b-84b1-648bb81b1feb"
 >N_; Number<RequirementSets>
@@ -572,8 +526,6 @@ All Variables have one of the following prefixes:<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4cedb917-c9ef-4585-a893-a599d2771ed8"
 >NC_; class number<RequirementSets>
@@ -597,8 +549,6 @@ All Variables have one of the following prefixes:<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="44bcd3f4-27e3-4dcc-9ec7-043c5c0f1e5c"
 >NID_; identity number<RequirementSets>
@@ -622,8 +572,6 @@ All Variables have one of the following prefixes:<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9f91becb-656b-41d4-893e-3e3c5f4fb433"
 >Q_; Qualifier<RequirementSets>
@@ -647,8 +595,6 @@ All Variables have one of the following prefixes:<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b8b4a8d5-5f84-403b-812c-a2e86a699704"
 >T_; time/date<RequirementSets>
@@ -672,8 +618,6 @@ All Variables have one of the following prefixes:<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4d0b6089-abe7-431d-bb06-defa203b5bae"
 >V_; Speed<RequirementSets>
@@ -697,8 +641,6 @@ All Variables have one of the following prefixes:<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8cc78721-f428-4f11-9b6b-66db6512bbff"
 >X_; Text<RequirementSets>
@@ -744,8 +686,6 @@ All Variables have one of the following prefixes:<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="794733e8-5513-4352-8938-2499e74ddb9e"
 ><Comment></Comment>
@@ -761,8 +701,6 @@ Definition of Packets<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fa71b8d0-bd5c-44bd-9e4b-e7045518936f"
 >Packets are multiple variables grouped into a single unit, with a defined internal structure.<RequirementSets>
@@ -786,8 +724,6 @@ Definition of Packets<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2923169b-9b31-4899-9f16-a16c86866ff9"
 >This structure consists of a packet header with:<Sub>
@@ -803,8 +739,6 @@ Definition of Packets<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8dc7c34b-de4a-45e2-8a1d-77fe8b3068ab"
 >- Track to Train: a unique packet number, the length of the packet in bits, the orientation information, optionally the distance scale and an information section containing a defined set of variables. The packet structure is as follows:<Sub>
@@ -819,8 +753,6 @@ Definition of Packets<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1ccbb429-ed95-4488-9a7c-ea855f2d7a70"
 >Number; NID_PACKET; Packet identifier<RequirementSets>
@@ -844,8 +776,6 @@ Definition of Packets<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="edefd6ab-796c-4dde-98b9-e13f9cfe54d9"
 >Direction; Q_DIR; Specifies the validity direction of transmitted data<RequirementSets>
@@ -869,8 +799,6 @@ Definition of Packets<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d5792dd6-f9eb-4d79-b8d4-4182b31b1540"
 >Length; L_PACKET; Number of bits in the packet<RequirementSets>
@@ -894,8 +822,6 @@ Definition of Packets<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="37bb4b3d-fcbe-4bca-96dc-626ca7c23800"
 >Scale; Q_SCALE; Specifies which distance scale is used for all distance information within the packet.
@@ -920,8 +846,6 @@ Definition of Packets<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ad297d2e-ff7e-4d91-abf0-217ef51bf23e"
 >Information; ......; Well defined set(s) of variables.<RequirementSets>
@@ -956,8 +880,6 @@ Definition of Packets<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="526a07c3-626a-45db-b1e3-cd69b111be10"
 >- Train to Track: a unique packet number, the length of the packet in bits, optionally the distance scale and an information section containing a defined set of variables. The packet structure is as follows:<Sub>
@@ -972,8 +894,6 @@ Definition of Packets<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f7e86070-aa6a-473f-bbb6-b12499b484e7"
 >Number; NID_PACKET; Packet identifier<RequirementSets>
@@ -997,8 +917,6 @@ Definition of Packets<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d00b23ec-bf67-4ad8-9c04-f3cb53e23620"
 >Length; L_PACKET; Number of bits in the packet<RequirementSets>
@@ -1022,8 +940,6 @@ Definition of Packets<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f0b43fc4-68c8-4b99-b8ea-b3f1b269e5af"
 >Scale; Q_SCALE; Specifies which distance scale is used for all distance information within the packet.
@@ -1048,8 +964,6 @@ Definition of Packets<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c4cb5cd2-cbd7-47b3-a69a-42f4ac441410"
 >Information; ......; Well defined set(s) of variables.<RequirementSets>
@@ -1095,8 +1009,6 @@ Definition of Packets<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2f7f414c-d89e-421b-8678-efe87407d56d"
 >The packet definition does not change when transmitted over different transmission media.<RequirementSets>
@@ -1120,8 +1032,6 @@ Definition of Packets<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c1a950f7-31d2-4480-8a03-97e4bbff8247"
 ><Comment></Comment>
@@ -1147,8 +1057,6 @@ All currently not defined packet identifiers are reserved for future use and sha
  version="3.2.0"
  infoRequired="TRUE"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="91ddf20a-0b05-4c68-9f01-8e78c086ba53"
 ><Comment>How are these packets different?</Comment>
@@ -1174,8 +1082,6 @@ Exception: Packet 0 &quot;Virtual Balise Cover marker&quot; and Packet 255: &quo
  version="3.0.0"
  infoRequired="TRUE"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="15b42f07-15ab-49ad-a6e2-84d0764ede40"
 ><Comment>How many iteration an N_ITER variable may hold ? (in other words, what is the maximum size of the following table ? )</Comment>
@@ -1200,8 +1106,6 @@ N_ITER specifies the number of iterations of a variable or group of variables wh
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="92da1be1-004d-448e-86f4-44df6078e18c"
 >If N_ITER is 0 then no variables follow.<RequirementSets>
@@ -1225,8 +1129,6 @@ N_ITER specifies the number of iterations of a variable or group of variables wh
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1494a64f-93a5-4669-a0e3-58a6a3ba3d7a"
 >Two nested levels of iterations can exist.<RequirementSets>
@@ -1250,8 +1152,6 @@ N_ITER specifies the number of iterations of a variable or group of variables wh
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d3a42de6-3c9d-4b36-bfbf-43fec63a1bfc"
 >If, depending on the value of a previous qualifier variable in the packet, a variable is optional, it is written indented in the packet definition<RequirementSets>
@@ -1275,8 +1175,6 @@ N_ITER specifies the number of iterations of a variable or group of variables wh
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8d9b282b-a952-44e5-8628-7078a34da1cc"
 >Note: Row &quot;Transmitted by&quot; in the description of a packet specifies which ERTMS/ETCS trackside device (balise, loop, RIU, RBC) can transmit this packet. &quot;Any&quot; means that the packet can be transmitted by a balise, a loop, an RBC and a RIU.<Sub>
@@ -1291,8 +1189,6 @@ N_ITER specifies the number of iterations of a variable or group of variables wh
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e6e59fcc-6336-449d-98ce-f4a8f5fb31e5"
 >Note: Row &quot;Transmitted to&quot; in the description of a packet specifies to which ERTMS/ETCS trackside device the packet can be transmitted.<RequirementSets>
@@ -1349,8 +1245,6 @@ N_ITER specifies the number of iterations of a variable or group of variables wh
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="64c34c9e-cff6-4981-b982-a869794d59ce"
 ><Comment></Comment>
@@ -1366,8 +1260,6 @@ PACKETS<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="39d28171-60b7-4ea1-b46d-082c3a16462a"
 >List of Packets<Sub>
@@ -1382,8 +1274,6 @@ PACKETS<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="00fef264-805c-44ef-85ad-4ce6643c0260"
 >Track to Train
@@ -1400,8 +1290,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="NA"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1209edc4-e79f-4665-92db-b7bdbec5ed1e"
 ><Comment></Comment>
@@ -1426,8 +1314,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7a2d478a-8db9-4380-9a12-04cc8d22cf6a"
 >2; System Version order; 11<RequirementSets>
@@ -1451,8 +1337,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="967fe971-b137-4079-b900-5f6c1f5f25ff"
 >3; National Values; 11<RequirementSets>
@@ -1476,8 +1360,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4ae178ee-6db4-474c-aa88-d5f8bd8ea1d7"
 >5; Linking; 14<RequirementSets>
@@ -1502,8 +1384,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="NA"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e3da46a5-96c4-40d3-9e8d-24a6c6bc8f12"
 ><Comment></Comment>
@@ -1528,8 +1408,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ab682687-0117-4289-925f-65a6680a3644"
 >12; Level 1 Movement Authority; 15<RequirementSets>
@@ -1553,8 +1431,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="97d89d9f-5e50-4833-b2d7-a8d16c30ac35"
 >13; Staff Responsible distance information from loop; 17<RequirementSets>
@@ -1578,8 +1454,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="200c6541-d8d8-43b9-b5c0-4f586318bbce"
 >15; Level 2/3 Movement Authority; 17<RequirementSets>
@@ -1603,8 +1477,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="08e951b3-e2c5-45bd-a768-68580e2d4307"
 >16; Repositioning Information; 18<RequirementSets>
@@ -1628,8 +1500,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="91c896f9-c3d0-473b-bb99-e2dfb219ae1d"
 >21; Gradient Profile; 18<RequirementSets>
@@ -1653,8 +1523,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9570bc20-fe09-49cb-8e1d-d7adbb5fdfbc"
 >27; International Static Speed Profile; 18<RequirementSets>
@@ -1678,8 +1546,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2559c745-3a6f-444a-b3bd-fb143a2a1fc6"
 >39; Track Condition Change of traction system; 19<RequirementSets>
@@ -1703,8 +1569,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3b292c0a-1360-49a7-9047-9707757f6e7b"
 >40; Track Condition Change of allowed current consumption; 20<RequirementSets>
@@ -1728,8 +1592,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6b26f38c-d98d-4eee-a314-ae6b48256d36"
 >41; Level Transition Order; 20<RequirementSets>
@@ -1753,8 +1615,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ff45f18e-7a7b-412e-8847-569b6605d632"
 >42; Session Management; 21<RequirementSets>
@@ -1778,8 +1638,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6df398cf-cf5e-4d82-81d0-2f1cf9a373dd"
 >44; Data used by applications outside the ERTMS/ETCS system.; 21<RequirementSets>
@@ -1803,8 +1661,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6476afb5-0645-4298-926a-e67147752ddf"
 >45; Radio Network registration; 21<RequirementSets>
@@ -1828,8 +1684,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="51ddbc44-360a-4339-9b7c-fc91347a5da2"
 >46; Conditional Level Transition Order; 21<RequirementSets>
@@ -1853,8 +1707,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d52b6935-7a67-4676-ae5b-0c905452c8d3"
 >49; List of balises for SH Area; 22<RequirementSets>
@@ -1878,8 +1730,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a3345820-31df-4b78-835f-d02b8d42d3bc"
 >51; Axle load Speed Profile; 22<RequirementSets>
@@ -1903,8 +1753,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1b02a3e8-5313-4a1e-8209-c203e96ab40f"
 >52; Permitted Braking Distance Information; 23<RequirementSets>
@@ -1928,8 +1776,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3a8b8f9a-8f3d-48b3-a57f-4955397ec4cb"
 >57; Movement Authority Request Parameters; 24<RequirementSets>
@@ -1953,8 +1799,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0536f7d3-e066-46cf-b0ad-1cbd509d2e5d"
 >58; Position Report Parameters; 24<RequirementSets>
@@ -1978,8 +1822,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="24114d6c-706d-4acb-bc98-e1729e311f76"
 >63; List of Balises in SR Authority; 25<RequirementSets>
@@ -2003,8 +1845,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="21e37f96-9722-47c7-aa9c-e34cbf92f441"
 >64; Inhibition of revocable TSRs from balises in L2/3; 25<RequirementSets>
@@ -2028,8 +1868,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="37cb1c8d-6ea0-43c6-85a9-6ce724bf590e"
 >65; Temporary Speed Restriction; 25<RequirementSets>
@@ -2053,8 +1891,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fcf6574b-fd16-4246-81d9-07cda44db502"
 >66; Temporary Speed Restriction Revocation; 26<RequirementSets>
@@ -2078,8 +1914,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a013028b-ded7-4e9f-9521-43654f2cb992"
 >67; Track Condition Big Metal Masses; 26<RequirementSets>
@@ -2103,8 +1937,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="46ff0663-ed84-4dea-af46-b87941a77c51"
 >68; Track Condition; 26<RequirementSets>
@@ -2128,8 +1960,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="47c59e98-996c-4daa-84b7-bda20f4e45ac"
 >69; Track Condition Station Platforms; 27<RequirementSets>
@@ -2153,8 +1983,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="655cd82d-364d-40cf-9540-62e1d8292f94"
 >70; Route Suitability Data; 27<RequirementSets>
@@ -2178,8 +2006,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7ee3b877-7ff2-4541-aa86-6af70c0cb7c6"
 >71; Adhesion Factor; 28<RequirementSets>
@@ -2203,8 +2029,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cc1f66d4-6eec-4fe4-a302-2e6287ccb3f0"
 >72; Packet for sending plain text messages; 29<RequirementSets>
@@ -2228,8 +2052,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="85fef952-5e74-4514-b7d4-1c70f23587c0"
 >76; Packet for sending fixed text messages; 29<RequirementSets>
@@ -2253,8 +2075,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="16e1df6b-c27b-4c82-8dcf-37b394753241"
 >79; Geographical Position Information; 30<RequirementSets>
@@ -2278,8 +2098,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="98b78c68-b649-45c4-9dd8-6bfbf4a8f9c1"
 >80; Mode profile; 31<RequirementSets>
@@ -2303,8 +2121,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8a060a51-4b93-4eb7-aa9b-5b5c264b6820"
 >88; Level crossing information; 32<RequirementSets>
@@ -2328,8 +2144,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="864033cc-a0bd-4284-9de8-2572cad9faf5"
 >90; Track Ahead Free up to level 2/3 transition location; 32<RequirementSets>
@@ -2353,8 +2167,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="813504ec-6af8-4d96-be72-5e3b6b595a0a"
 >131; RBC transition order; 32<RequirementSets>
@@ -2378,8 +2190,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="48f89af6-963e-401c-b92f-a9358f6df7a4"
 >132; Danger for Shunting information; 33<RequirementSets>
@@ -2403,8 +2213,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f3c31ac1-3728-48ff-a099-c2f6808712b0"
 >133; Radio infill area information; 33<RequirementSets>
@@ -2428,8 +2236,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1375894a-1b97-4d13-876d-a091b245a852"
 >134; EOLM Packet; 33<RequirementSets>
@@ -2453,8 +2259,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="af105028-3643-45a9-b6f2-a80c426a9b7d"
 >135; Stop Shunting on desk opening; 34<RequirementSets>
@@ -2478,8 +2282,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="041247c0-323f-4ba8-8e1f-5b5a3232d83b"
 >136; Infill location reference; 34<RequirementSets>
@@ -2503,8 +2305,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="31fb455b-2925-497c-b09a-b8b9573a81ff"
 >137; Stop if in Staff Responsible; 34<RequirementSets>
@@ -2528,8 +2328,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f32ad7de-67d9-4075-bb38-75a13996ad98"
 >138; Reversing area information; 35<RequirementSets>
@@ -2553,8 +2351,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c93e250c-fc42-406f-9706-6ec7488b8982"
 >139; Reversing supervision information; 35<RequirementSets>
@@ -2578,8 +2374,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f2880676-9271-4b14-ae51-9d4a0aa02802"
 >140; Train running number from RBC; 35<RequirementSets>
@@ -2603,8 +2397,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e7979a56-555a-422e-9a04-9210ecca2b25"
 >141; Default Gradient for Temporary Speed Restriction; 35<RequirementSets>
@@ -2628,8 +2420,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2eea8192-52be-4f30-ba17-905285f1c136"
 >143; Session Management with neighbouring Radio Infill Unit; 36<RequirementSets>
@@ -2653,8 +2443,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a75f8e41-42b7-4bc1-a2c2-27a5f6e2b0e2"
 >145; Inhibition of balise group message consistency reaction; 36<RequirementSets>
@@ -2678,8 +2466,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5c7f8e6f-d144-42ee-91a5-5bc97116d06d"
 >254; Default balise, loop or RIU information; 36<RequirementSets>
@@ -2714,8 +2500,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="67ff717c-b462-4e6f-af86-d041ca9ad9da"
 >Train to Track
@@ -2731,8 +2515,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c777f0b7-86fb-438a-91dc-20b12ceec0b0"
 >0; Position Report; 37<RequirementSets>
@@ -2756,8 +2538,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="bc9d05af-2451-4f8c-8e90-24b256a572fa"
 >1; Position Report based on two balise groups; 37<RequirementSets>
@@ -2781,8 +2561,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a0a1a643-5cf9-4392-b573-9ea14a76a3e7"
 >3; Onboard telephone numbers; 38<RequirementSets>
@@ -2806,8 +2584,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="65c0616d-9c81-42f1-907b-c71e0d73d3ff"
 >4; Error Reporting; 38<RequirementSets>
@@ -2831,8 +2607,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="dff427f0-8487-4b4d-992a-860128460d6b"
 >5; Train running number; 39<RequirementSets>
@@ -2856,8 +2630,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5eb8fd0b-fa1d-4294-8ba2-e2a4359a4e3c"
 >9; Level 2/3 transition information; 39<RequirementSets>
@@ -2881,8 +2653,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="314a65fb-2b09-4631-8372-2420970cec84"
 >11; Validated train data; 39<RequirementSets>
@@ -2906,8 +2676,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="79f79f5a-e612-4268-83b6-9a5dfd6139e7"
 >44; Data used by applications outside the ERTMS/ETCS system.; 40<RequirementSets>
@@ -2942,8 +2710,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="95636721-c91a-4fe4-82fa-2c970030eb88"
 >Track to Train or Train to Track
@@ -2959,8 +2725,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="df496927-2909-4fff-ba6f-c4530291fd70"
 >255; End of information; 41<RequirementSets>
@@ -3006,8 +2770,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a0a21fc8-8b8e-454a-9f0e-87b61f136f05"
 >PACKETS: TRACK TO TRAIN<Sub>
@@ -3022,8 +2784,6 @@ Packet Number; Packet Name; Page No<Sub>
  status="Implemented"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="051a842c-7967-4892-ad06-21afb6d50037"
 ><Comment></Comment>
@@ -3040,8 +2800,6 @@ Packet Number 0: Virtual Balise Cover marker<Sub>
  status="Implemented"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9dcdb590-f824-4791-82f7-63f568f50b6e"
 ><Comment></Comment>
@@ -3079,8 +2837,6 @@ Indication to on-board that the telegram can be ignored according to a VBC
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6b466805-f74c-4207-8050-c9c9d0ea869c"
 >Packet Number 2: System Version order<Sub>
@@ -3095,8 +2851,6 @@ Indication to on-board that the telegram can be ignored according to a VBC
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e7c6d479-1029-4d12-b716-519a8f5f0127"
 >This packet is used to tell the on-board which is the operated system version
@@ -3153,8 +2907,6 @@ Indication to on-board that the telegram can be ignored according to a VBC
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="da594ef9-d8e9-4553-af3e-77f9102ec171"
 >Packet Number 3: National Values<Sub>
@@ -3169,8 +2921,6 @@ Indication to on-board that the telegram can be ignored according to a VBC
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="86613569-b418-4761-a265-6f41ee455350"
 ><Comment></Comment>
@@ -3676,8 +3426,6 @@ Downloads a set of National Values to the train
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0d145136-9c1d-4c04-bd9a-5987931ed765"
 ><Comment></Comment>
@@ -3693,8 +3441,6 @@ Packet Number 5: Linking<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a2be2a09-2e06-47f9-a2ce-80988f54f3f7"
 >Linking Information.
@@ -3858,8 +3604,6 @@ Packet Number 5: Linking<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c7942b2d-7ebd-4feb-904d-0b6f4653b2a9"
 >Packet Number 6: Virtual Balise Cover order<Sub>
@@ -3875,8 +3619,6 @@ Packet Number 5: Linking<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fdc18da5-75f4-41f3-b1ed-1b29978a559c"
 >The packet sets/removes a Virtual Balise Cover.
@@ -3929,8 +3671,6 @@ Packet Number 5: Linking<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="20241a08-e360-4144-b573-5a0e657dd9a2"
 ><Comment></Comment>
@@ -3946,8 +3686,6 @@ Packet Number 12: Level 1 Movement Authority<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="024e56c3-ee12-47e7-9c88-debeb1870367"
 ><Comment></Comment>
@@ -4168,8 +3906,6 @@ Transmission of a movement authority for level 1.
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="82d5bd61-4bef-4cfb-a68a-312446d79df1"
 ><Comment></Comment>
@@ -4185,8 +3921,6 @@ Packet Number 13: Staff Responsible distance Information from loop<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="78ec9c10-8c5f-47ab-aad8-c1185d7c1b6d"
 >Information for trains in staff responsible mode
@@ -4349,8 +4083,6 @@ Packet Number 13: Staff Responsible distance Information from loop<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9f918f6f-f470-4613-ab97-374dc595ce7c"
 ><Comment></Comment>
@@ -4366,8 +4098,6 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e63ca8af-18f8-432f-9c22-f989952a9561"
 >Transmission of a movement authority for levels 2/3.
@@ -4591,8 +4321,6 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c786d14c-c637-4877-8d02-28ce94f66515"
 >Packet Number 16: Repositioning Information<Sub>
@@ -4607,8 +4335,6 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c04aa14a-8dcf-42cb-b5c5-45b07ab4ac39"
 >Transmission of the update of the current distance
@@ -4683,8 +4409,6 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4396f131-3dd7-4601-be15-b4827d98bf32"
 >Packet Number 21: Gradient Profile<Sub>
@@ -4699,8 +4423,6 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="dd117d62-07c6-4dc3-b4bb-233d2cbcd84a"
 >Transmission of the gradient. D_GRADIENT gives the distance to the next change of the gradient value. The gradient value is the minimum gradient for the given distance.
@@ -4817,8 +4539,6 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9e0c6d45-0f4a-482d-9a28-dbe1f41746ed"
 >Packet Number 27: International Static Speed Profile<Sub>
@@ -4833,8 +4553,6 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a3ac36c4-3d89-44f1-81b7-c601a5576fc2"
 >Static speed profile and optionally speed limits depending on the international train category.
@@ -5021,8 +4739,6 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
  status="Implemented"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9221690b-b0bc-4a5c-9307-9de49243cfef"
 ><Comment></Comment>
@@ -5038,8 +4754,6 @@ Packet Number 39: Track Condition Change of traction system<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="99893b62-5a1a-4fcc-b32f-8571ea0320d4"
 ><Comment></Comment>
@@ -5120,8 +4834,6 @@ The packet gives information about change of the traction system.
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="526da681-fc2c-4e56-908e-7d41f5632d7e"
 ><Comment></Comment>
@@ -5137,8 +4849,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3f2d3291-514e-4efb-b4a1-395a0222593b"
 >The packet gives information about change of the allowed current consumption.
@@ -5231,8 +4941,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3c872475-fbad-4a03-b13a-a6fa51c6a722"
 >Packet Number 41: Level Transition Order<Sub>
@@ -5247,8 +4955,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
 >Packet to identify where a level transition shall take place. In case of mixed levels, the successive M_LEVELTR&apos;s go from the highest priority level to the lowest one.
@@ -5374,8 +5080,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
 >Packet Number 42: Session Management<Sub>
@@ -5390,8 +5094,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="490ff9a0-7846-47b5-8013-612c14283239"
 >Packet to give the identity and telephone number of the RBC with which a session shall be established or terminated.
@@ -5488,8 +5190,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2cc818c4-64df-4750-9f06-829e7ed446d8"
 >Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
@@ -5504,8 +5204,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="46e44695-6900-4593-8b3e-e9b671d8809c"
 >Messages between trackside and on-board devices, which contain information used by applications outside the ERTMS/ETCS system.
@@ -5577,8 +5275,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
 >Packet Number 45: Radio Network registration<Sub>
@@ -5593,8 +5289,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0b59c0f4-e40a-435a-92a4-9c70b6b857dd"
 >Packet to give the identity of the Radio Network to which a registration shall be enforced.
@@ -5663,8 +5357,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="377cc4cc-52bc-4bc6-8489-759a13078b63"
 >Packet Number 46: Conditional Level Transition Order<Sub>
@@ -5679,8 +5371,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f4234e8e-5580-4552-8e45-6e515b2db2c3"
 >Packet for a conditional level transition. The successive M_LEVELTR&apos;s go from the highest priority level to the lowest one.
@@ -5790,8 +5480,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e915fc9d-2b27-4f90-b3bb-ca784a55e1ab"
 >Packet Number 49: List of balises for SH Area<Sub>
@@ -5806,8 +5494,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7cd019db-a6fa-4bee-8ca3-7956499ca123"
 >Used to list balise group(s) which the train can pass over in SH mode
@@ -5897,8 +5583,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9e4cc30b-7c23-4202-aa4b-87839eea29a1"
 ><Comment></Comment>
@@ -5914,8 +5598,6 @@ Packet Number 51: Axle Load Speed Profile<Sub>
  status="Implemented"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
 ><Comment></Comment>
@@ -6081,8 +5763,6 @@ This packet gives the speed restrictions for trains with axle load category high
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="faca2edb-7220-4d55-bebe-f367d8f8d94a"
 >Packet 52: Permitted Braking Distance Information<Sub>
@@ -6097,8 +5777,6 @@ This packet gives the speed restrictions for trains with axle load category high
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="39016576-7686-4e14-9c1a-13bd7dd28045"
 ><Comment></Comment>
@@ -6283,8 +5961,6 @@ This packet requests the on-board calculation of speed restrictions which ensure
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b67273e4-3130-454e-8325-67246db078fe"
 ><Comment></Comment>
@@ -6300,8 +5976,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1684f6ad-c7c2-42db-b17b-b3b24f030364"
 >This packet is intended to give parameters telling when and how often the train has to ask for a movement authority.
@@ -6384,8 +6058,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="45c177ff-55f5-4aec-ae11-0629e0ae14d1"
 >Packet Number 58: Position Report Parameters<Sub>
@@ -6400,8 +6072,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
 >This packet is intended to give parameters telling when and how often the position has to be reported.
@@ -6511,8 +6181,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6ebbe822-9518-4f7a-98cd-13c5408e9af3"
 >Packet Number 63: List of Balises in SR Authority<Sub>
@@ -6527,8 +6195,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="68cd28df-2e04-4c96-addc-62db4e6f99d6"
 >Used to list balise group(s) which the train can pass over in SR mode
@@ -6608,8 +6274,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cad48305-bd82-4eb5-888a-002e9591ce42"
 >Packet Number 64: Inhibition of revocable TSRs from balises in L2/3<Sub>
@@ -6624,8 +6288,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4af6b629-5929-44f2-ac7b-cde39ce9cce9"
 >This packet is used to inhibit revocable TSRs from balises in level 2 or 3.
@@ -6698,8 +6360,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2d4205fe-a62e-4306-88c0-fa8ed50b9d93"
 >Packet Number 65: Temporary Speed Restriction<Sub>
@@ -6714,8 +6374,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b5f18a88-808f-47eb-8d48-7a9e213ab086"
 >Transmission of temporary speed restriction.
@@ -6818,8 +6476,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a12cbea0-bfe5-4f24-ae74-56261d93466b"
 >Packet Number 66: Temporary Speed Restriction Revocation<Sub>
@@ -6834,8 +6490,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cbe2e9f2-ef31-49b9-aa7c-8fe676a8d6c4"
 >Transmission of temporary speed restriction revocation.
@@ -6903,8 +6557,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="32b93913-0b12-48e8-8867-1fabfb0ae322"
 >Packet Number 67: Track Condition Big Metal Masses<Sub>
@@ -6919,8 +6571,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1c36ab5e-99c8-4e82-846b-81b5eaa033b3"
 >The packet gives details concerning where to ignore integrity check alarms of balise transmission due to big metal masses trackside.
@@ -7023,8 +6673,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9eb67bec-5e3a-407d-8b6e-e3d49d57e883"
 >Packet Number 68: Track Condition<Sub>
@@ -7039,8 +6687,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="006df659-0a95-45ce-80fa-278ce4765d17"
 >The packet gives details concerning the track ahead to support the driver when e.g. lower pantograph
@@ -7160,8 +6806,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0be2ea06-0c8b-4622-9a32-bd8954c01555"
 >Packet Number 69: Track Condition Station Platforms<Sub>
@@ -7176,8 +6820,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="275e3334-82a3-444d-8ca5-4d7482268ea0"
 >The packet gives details concerning the location and height of station platforms for use by the train&apos;s door control system
@@ -7333,8 +6975,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="21443e68-000d-4c84-b4f4-17c5373d0a4e"
 >Packet Number 70:  Route Suitability Data<Sub>
@@ -7349,8 +6989,6 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="80557bc0-c47d-4cda-9a7b-6ee9a84c939e"
 ><Comment></Comment>
@@ -7530,8 +7168,6 @@ The packet gives the characteristics needed to enter a route.
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="903134a0-7b20-4b2e-ab42-30cae27fea81"
 ><Comment></Comment>
@@ -7547,8 +7183,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4d70e8b6-9e84-4816-bfe8-565433e79731"
 >This packet is used when the trackside requests a change of the adhesion factor to be used in the brake model.
@@ -7637,8 +7271,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2b4cc227-208a-49c5-8f4c-a566e7eac74b"
 >Packet Number 72: Packet for sending plain text messages<Sub>
@@ -7653,8 +7285,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e91b13a3-b6ab-47c3-ad17-2955980bfb9c"
 >NID_PACKET  [8]
@@ -7857,8 +7487,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="52943307-1c06-4cc3-94d3-f778ce8dd8d6"
 >Packet Number 76: Packet for sending fixed text messages<Sub>
@@ -7873,8 +7501,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3e390a1a-2e9c-45b1-b446-9f367435aa2b"
 >NID_PACKET  [8]
@@ -8070,8 +7696,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3f471e44-8594-4731-ba67-b7173dc06106"
 >Packet Number 79: Geographical Position Information<Sub>
@@ -8086,8 +7710,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5f18c863-0780-4cbd-8960-633822d1844b"
 >This packet gives geographical location information for one or multiple references to the train.
@@ -8248,8 +7870,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6f370d19-a99b-404b-9718-80331a17d9d4"
 >Packet Number 80: Mode profile<Sub>
@@ -8264,8 +7884,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e87f5f72-a2a6-4dc1-b7d6-604e99cdfd05"
 >Mode profile associated to an MA
@@ -8413,8 +8031,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4744429f-fce3-4833-817a-c0cd74ffcd7f"
 >Packet Number 88: Level Crossing information<Sub>
@@ -8429,8 +8045,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="09955e19-89e5-4073-8a7b-b17cb637603a"
 >Level Crossing information
@@ -8547,8 +8161,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7ae2241b-9a89-4829-8cca-c5d8339cd425"
 >Packet Number 90: Track Ahead Free up to level 2/3 transition location<Sub>
@@ -8563,8 +8175,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="097a4da5-66e3-4f77-8027-d50c94554d2c"
 >Notification to on-board that track ahead is free from the balise group transmitting this information up to the level 2/3 transition location
@@ -8657,8 +8267,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f69899f9-70f7-4f0e-bc95-d9d97964dc81"
 >Packet Number 131: RBC transition order<Sub>
@@ -8673,8 +8281,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="11b7f19b-6d24-498d-8449-24944eab8b45"
 >Packet to order an RBC transition
@@ -8778,8 +8384,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7fc85086-374e-4ffb-8cf2-1b9f49820e19"
 >Packet Number 132: Danger for Shunting information<Sub>
@@ -8794,8 +8398,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e8915ec1-4704-4464-b3d6-896e14e3005e"
 >Transmission of the aspect of a shunting signal
@@ -8863,8 +8465,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="89d222f6-f28e-4bb0-bf58-ea01e26eb239"
 >Packet Number 133: Radio infill area information<Sub>
@@ -8879,8 +8479,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="23f7417f-e71e-46c4-96d0-a05812982b98"
 >NID_PACKET  [8]
@@ -8996,8 +8594,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="474556c2-0607-4586-9b68-7a963de350a1"
 >Packet Number 134: EOLM Packet<Sub>
@@ -9012,8 +8608,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5762e4f2-149b-48a8-bcd9-eb1703a14bc6"
 >This packet announces a loop. 
@@ -9116,8 +8710,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="76c3a195-7916-42df-919d-5bcdaac41d30"
 >Packet Number 135: Stop Shunting on desk opening<Sub>
@@ -9132,8 +8724,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c254fb8a-10ad-4df8-a7a4-a6094488608d"
 >Packet to stop Shunting on desk opening.
@@ -9194,8 +8784,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f06259b6-d59f-4a89-bfb0-45036e0d87bb"
 >Packet Number 136: Infill location reference<Sub>
@@ -9210,8 +8798,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="708569b5-eeab-47fc-903f-c436cb1036bb"
 >Defines location reference for all data contained in the same radio message or balise/loop telegram respectively, following this packet.
@@ -9294,8 +8880,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="06ef59af-bb51-412c-87ce-d6392fed31d6"
 >Packet Number 137: Stop if in Staff Responsible<Sub>
@@ -9310,8 +8894,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1224f470-5a85-489a-825d-3c5f8c46acd4"
 >Information to stop a train in staff responsible.
@@ -9379,8 +8961,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="690dfc40-042d-4c8d-9e60-17b85d455fd3"
 >Packet Number 138: Reversing area information<Sub>
@@ -9395,8 +8975,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1ae6444b-a835-402b-8bcb-d8f22f5d6aab"
 >Used to send start and length of reversing area to the on-board
@@ -9478,8 +9056,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f08e576d-1c61-4c2b-b742-29f729a5728f"
 >Packet Number 139: Reversing supervision information<Sub>
@@ -9494,8 +9070,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1fc082d9-dd7b-437d-98f2-570cb6d352e0"
 >Used to send supervision parameters (distance to run, speed) of reversing area to the on-board
@@ -9577,8 +9151,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="32254363-45b8-4ccb-a355-520ea5d66a76"
 >Packet Number 140: Train running number from RBC<Sub>
@@ -9593,8 +9165,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="755a0939-24dc-4161-b404-0127925901f1"
 >Train running number from RBC
@@ -9663,8 +9233,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e1e65985-7379-4bca-be54-78d665b5f59b"
 >Packet Number 141: Default Gradient for Temporary Speed Restriction<Sub>
@@ -9679,8 +9247,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8a4c3456-cd50-47c3-a0dc-03e1093bb818"
 >It defines a default gradient to be used for TSR supervision when no gradient profile (packet 21) is available
@@ -9744,8 +9310,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e391d9c1-08a4-4335-8248-2150b37535d7"
 >Packet Number 143: Session Management with neighbouring Radio Infill Unit<Sub>
@@ -9760,8 +9324,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="84a03796-cfdf-4b22-9bd7-80a5ee63ea02"
 >Packet to give the identity and telephone number of the neighbouring Radio Infill Unit with which a session shall be established or terminated.
@@ -9851,8 +9413,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="edd66dcd-afe0-4315-8892-06477a24808f"
 >Packet Number 145: Inhibition of balise group message consistency reaction<Sub>
@@ -9867,8 +9427,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e362155d-3e5a-4b76-ba72-59b33ec33248"
 >Indication to on-board that the balise group message consistency reaction (service brake command) can be inhibited for this balise group message only, in case one or more balise telegram(s) of the group is/are missed or is/are detected but not decoded.
@@ -9940,8 +9498,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1a6846b4-9a48-4736-9f1f-2a673a197d91"
 >Packet Number 254: Default balise, loop or RIU information<Sub>
@@ -9956,8 +9512,6 @@ Packet number 71: Adhesion factor<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="85b13442-9909-4126-88e7-3e59bf2edbcf"
 >Indication to on-board that balise telegram, loop message or RIU information contains default information due to a fault of the trackside equipment.
@@ -10030,8 +9584,6 @@ Packet number 71: Adhesion factor<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="02bc989e-eb89-440b-be2a-80dd7c3e342c"
 ><Comment></Comment>
@@ -10047,8 +9599,6 @@ PACKETS: TRAIN TO TRACK<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="53a6f7f6-fea5-40a1-8d58-a40fa642022f"
 ><Comment></Comment>
@@ -10064,8 +9614,6 @@ Packet Number 0: Position Report<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1b5d3174-e90a-42a4-8da3-c7ade895d5d2"
 ><Comment></Comment>
@@ -10220,8 +9768,6 @@ This packet is used to report the train position and speed as well as some addit
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7481e941-1b42-49cb-8cfd-e80d9da9949b"
 >Packet Number 1: Position Report based on two balise groups<Sub>
@@ -10236,8 +9782,6 @@ This packet is used to report the train position and speed as well as some addit
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f20ec9e0-b487-46ab-8145-dcde0dbb9ea6"
 >This packet is an extension of the &apos;standard position report &apos; packet 0. It is used in case of single balise groups if the orientation of the LRBG is unknown but the on-board equipment is able to report a second balise group (the one detected before) to give a direction reference for the directional information in the position report.
@@ -10398,8 +9942,6 @@ This packet is used to report the train position and speed as well as some addit
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="67f2325a-594b-4d1d-aeb3-677ca275d48f"
 >Packet Number 3: Onboard telephone numbers<Sub>
@@ -10414,8 +9956,6 @@ This packet is used to report the train position and speed as well as some addit
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9e4929e3-897b-4131-b0eb-142c34a7ae90"
 >Telephone numbers associated to the onboard equipment
@@ -10484,8 +10024,6 @@ This packet is used to report the train position and speed as well as some addit
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="25a9a61a-cb48-4ecc-9297-199f5897d32b"
 >Packet Number 4: Error reporting<Sub>
@@ -10500,8 +10038,6 @@ This packet is used to report the train position and speed as well as some addit
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c21d56c0-44b1-47b4-af70-d1c914ed3a66"
 >Error reporting to the RBC
@@ -10552,8 +10088,6 @@ This packet is used to report the train position and speed as well as some addit
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cdca0dec-410f-4a59-89f0-ed75f2bdc5e0"
 >Packet Number 5: Train running number<Sub>
@@ -10568,8 +10102,6 @@ This packet is used to report the train position and speed as well as some addit
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="962e7f3c-55dd-4d2b-b99e-8854f18f9566"
 >Train running number
@@ -10631,8 +10163,6 @@ This packet is used to report the train position and speed as well as some addit
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="aced057f-bb2f-4cbd-a442-1175c8db9a04"
 >Packet Number 9: Level 2/3 transition information<Sub>
@@ -10647,8 +10177,6 @@ This packet is used to report the train position and speed as well as some addit
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ecc2259f-a855-42b4-a8e9-b76d4b4ae511"
 >Identity of the level 2/3 transition balise group
@@ -10721,8 +10249,6 @@ This packet is used to report the train position and speed as well as some addit
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c145e7f4-406f-43e2-9d62-1b55e23be537"
 >Packet Number 11: Validated train data<Sub>
@@ -10737,8 +10263,6 @@ This packet is used to report the train position and speed as well as some addit
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9c08d216-8c15-4740-b1f1-4f7def27c4ae"
 ><Comment></Comment>
@@ -10889,8 +10413,6 @@ Validated train data.
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="48a0d518-f25f-4e4a-ba44-20606eb6e3f9"
 ><Comment></Comment>
@@ -10906,8 +10428,6 @@ Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2b759953-6b7f-4d95-b8ec-e22a8e420be0"
 >Messages between on-board and trackside devices, which contain information used by applications outside the ERTMS/ETCS system.
@@ -10987,8 +10507,6 @@ Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f1f6f03b-04d9-4ee3-ad73-a495dff01111"
 >PACKETS: TRACK TO TRAIN or TRAIN TO TRACK<Sub>
@@ -11003,8 +10521,6 @@ Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="117f3df9-02c0-4205-bab3-6ed6b524e368"
 >Packet Number 255: End of Information<Sub>
@@ -11019,8 +10535,6 @@ Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d565892a-adaf-4bc2-a9b2-8210b62ae6c2"
 >This packet consists only of NID_PACKET containing 8 bit 1s&amp;#xD;&amp;#xA;It acts as a finish flag; the receiver will stop reading the remaining part of the message/telegram when receiving eight bits set to one in the NID_PACKET field.
@@ -11090,9 +10604,6 @@ Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlock="TRUE"
- functionalBlockName="7.5 Definitions of Variables"
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="94cdbb18-8f44-400c-a016-8a2fd726cd03"
 ><Comment></Comment>
@@ -11109,8 +10620,6 @@ Definitions of Variables<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a38503d3-c6e8-484f-b3ee-2240011b04e5"
 ><Comment></Comment>
@@ -11127,8 +10636,6 @@ Definitions of Variables<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="86beb9b7-fb95-4f76-9905-f06c23fc5bde"
 >Id: A_NVMAXREDADH1
@@ -11180,8 +10687,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4bfe23d7-61e5-4f3f-9bb4-d5fb75fc444b"
 >Id: A_NVMAXREDADH2
@@ -11233,8 +10738,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="92725790-baa9-4e3f-8eb5-c98f2fc4a4ae"
 >Id: A_NVMAXREDADH3
@@ -11286,8 +10789,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fbdcb28a-c055-45bb-b4c1-a01bea9d6381"
 >Id: A_NVP12
@@ -11335,8 +10836,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d0cbfbce-4629-4a24-99d8-d7e0e8876516"
 >Id: A_NVP23
@@ -11395,8 +10894,6 @@ Values:
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e4f31271-c541-45d7-ae51-9bc1a25b0783"
 ><Comment></Comment>
@@ -11413,8 +10910,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ccc10575-c1d8-403c-b336-fbdfac275064"
 ><Comment></Comment>
@@ -11459,8 +10954,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0b4c179e-a381-412e-bdad-451bda6066e4"
 ><Comment></Comment>
@@ -11483,8 +10976,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ae0b8930-d36a-4a15-a997-eaa29644fb68"
 >Id: D_CURRENT
@@ -11552,8 +11043,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="58b84566-cf66-4195-ae7a-4520abe69a4b"
 ><Comment></Comment>
@@ -11578,8 +11067,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9b3441a8-e9f9-4454-9abf-615f89ed85bc"
 >SpecialOrReservedValues:
@@ -11642,8 +11129,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1b773b1d-8ba0-43bd-abfb-9c45b0550e35"
 >Id: D_DP
@@ -11687,8 +11172,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="239472c9-bb24-4f55-8863-b46c0bf26ae1"
 >Id: D_EMERGENCYSTOP
@@ -11735,8 +11218,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="00bf308a-22d5-43c9-9211-8f761f8ae624"
 >Id: D_ENDTIMERSTARTLOC
@@ -11780,8 +11261,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="dc821743-5d36-4c62-b839-0f3f211a52a2"
 >Id: D_GRADIENT
@@ -11825,8 +11304,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b849aed5-5803-45de-af86-61cb06ebf5a1"
 >Id: D_INFILL
@@ -11871,8 +11348,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="48cd2e35-67c2-46a5-9f39-4d543c9361d0"
 >Id: D_LEVELTR
@@ -11894,8 +11369,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="16d5ce3a-e06c-4cc7-a8fa-986b5d3d0007"
 >SpecialOrReservedValues:
@@ -11957,8 +11430,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ce44b3b9-c89b-4be3-b31e-3981095a71eb"
 >Id: D_LINK
@@ -12002,8 +11473,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="26b2f0b0-1aee-4778-99cf-b5d01eb56627"
 >Id: D_LOC
@@ -12047,8 +11516,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="76b37bac-08d4-40a9-b525-f22f3013a413"
 >Id: D_LOOP
@@ -12072,8 +11539,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9d0db968-b3af-400d-a9a2-67635f84ffc4"
 >SpecialOrReservedValues:
@@ -12136,8 +11601,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a8706524-cb3c-4b18-9e56-f161fee54a3e"
 ><Comment></Comment>
@@ -12160,8 +11623,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="07d04b83-5819-4fa3-819c-1321217264bb"
 >SpecialOrReservedValues:
@@ -12191,8 +11652,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4788d498-2e49-46e4-b9ef-ab4371ff454b"
 >Id: D_LX
@@ -12255,8 +11714,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="89925322-dec9-4aa4-8555-37decb3284a8"
 ><Comment></Comment>
@@ -12301,8 +11758,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3b45e80b-a449-42bb-99ca-f5c456e19e88"
 >Id: D_NVOVTRP
@@ -12349,8 +11804,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="39d12626-e17b-4eb2-bc01-a6489eea87e4"
 >Id: D_NVPOTRP
@@ -12397,8 +11850,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="bee21e04-9e34-4b84-aa41-a4957a8dcb71"
 >Id: D_NVROLL
@@ -12422,8 +11873,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="477e2ae7-9377-47a4-ac1a-c6d682fb710e"
 >SpecialOrReservedValues:
@@ -12486,8 +11935,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0b11d351-f4d6-4885-a839-fd32a3c44518"
 >Id: D_NVSTFF
@@ -12511,8 +11958,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3d674150-d04c-457d-a25d-785406224384"
 >SpecialOrReservedValues:
@@ -12575,8 +12020,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="326cbd94-a19c-4b09-941b-6c0795e922f2"
 ><Comment></Comment>
@@ -12599,8 +12042,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="53a67aa1-ae7b-4091-a29f-1206dcc4e68c"
 ><Comment></Comment>
@@ -12645,8 +12086,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="295b2ae9-224d-4ce8-bc0a-a3be0c749a5f"
 >Id: D_PBDSR
@@ -12701,8 +12140,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d803e95b-6cad-4960-a6a8-ea864513abaa"
 ><Comment></Comment>
@@ -12750,8 +12187,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8d7f7c64-ed35-4ee2-a511-68029a576144"
 >Id: D_RBCTR
@@ -12796,8 +12231,6 @@ Values:
  version="3.0.0"
  infoRequired="TRUE"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6b0d22c5-f1ec-49b5-a58e-e47de5a3895a"
 ><Comment>Review the negative processing</Comment>
@@ -12822,8 +12255,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0a37ba8f-8e24-49c0-b44e-40197b31238d"
 >SpecialOrReservedValues:
@@ -12886,8 +12317,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9576c9d7-f121-46e0-aae3-27170e0d7846"
 ><Comment></Comment>
@@ -12912,8 +12341,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8f0a692a-a7a5-41de-9bd7-9d5527de54d6"
 >SpecialOrReservedValues:
@@ -12976,8 +12403,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b796c06e-efd9-4a35-abfc-9983a477fc35"
 >Id: D_SECTIONTIMERSTOPLOC
@@ -13021,8 +12446,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d8632ccb-b0f8-4888-91e6-be81999032e1"
 >Id: D_SR
@@ -13046,8 +12469,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cb0c6618-4b43-48a3-ba82-8c1c2d62d7e2"
 >SpecialOrReservedValues:
@@ -13110,8 +12531,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="747d021b-8bdf-43c7-8a0a-a3f568408c72"
 >Id: D_STARTOL
@@ -13155,8 +12574,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="440cd70b-ba2e-4784-94eb-e86061e6397c"
 >Id: D_STARTREVERSE
@@ -13200,8 +12617,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d15c6258-268a-45c4-838f-e367029786bd"
 >Id: D_STATIC
@@ -13245,8 +12660,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4d109261-01fb-4710-810c-a2cfe1ade139"
 >Id: D_SUITABILITY
@@ -13293,8 +12706,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ba1fb5c4-6678-4ee8-93a6-eb199f78f16c"
 >Id: D_TAFDISPLAY
@@ -13338,8 +12749,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9394282f-c3d9-4e14-8d89-991f0acb3bf8"
 >Id: D_TEXTDISPLAY
@@ -13361,8 +12770,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1e9b154d-41c5-4d93-879e-e358e2ee5cff"
 >SpecialOrReservedValues:
@@ -13424,8 +12831,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="35ef498a-1c12-4203-b283-26436d281f11"
 >Id: D_TRACKINIT
@@ -13472,8 +12877,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
 >Id: D_TRACKCOND
@@ -13520,8 +12923,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0ee36d8a-a637-4d9f-8195-47e71f70cd7c"
 >Id: D_TRACTION
@@ -13565,8 +12966,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ff58fb6c-9219-4719-b50b-d1e185f06137"
 >Id: D_TSR
@@ -13610,8 +13009,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="bf6ebc6c-63eb-4df0-b095-b0df1c590886"
 >Id: D_VALIDNV
@@ -13633,8 +13030,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6f8b41be-2d49-45f4-a3ee-ff96340f1d67"
 ><Comment></Comment>
@@ -13697,8 +13092,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f0811b08-c419-42d2-b69e-a1505a823496"
 ><Comment>Not percent, but per-thousand</Comment>
@@ -13723,8 +13116,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="79afcf7b-52b5-4eff-a6f8-5b6af8d6c1bc"
 ><Comment></Comment>
@@ -13755,8 +13146,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2bfc2474-36f9-4c5e-85b5-7a15a5ce1e4f"
 ><Comment></Comment>
@@ -13823,8 +13212,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="eb50f43e-0899-4f55-80bc-bc0065b188aa"
 ><Comment></Comment>
@@ -13872,8 +13259,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8dc3adec-c4e6-489e-849a-d05eac8ee50b"
 >Id: L_ACKLEVELTR
@@ -13917,8 +13302,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e91cb267-376b-429f-8918-4d597fdcc562"
 >Id: L_ACKMAMODE
@@ -13962,8 +13345,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="665f9555-a334-4d13-b5eb-ee0c9f55a8a1"
 >Id: L_ADHESION
@@ -14010,8 +13391,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1a02feaa-c003-44ae-bbc0-6685c3aab8d7"
 >Id: L_AXLELOAD
@@ -14055,8 +13434,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b9fa14b8-a3ab-4985-94e8-43e238b99449"
 >Id: L_DOUBTOVER
@@ -14080,8 +13457,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="09c8f15e-b76e-4f1a-9cf2-d516f155e05a"
 >SpecialOrReservedValues:
@@ -14145,8 +13520,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="47cac2f8-392d-4460-b642-63aebba6e1fb"
 >Id: L_DOUBTUNDER
@@ -14170,8 +13543,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a4918f52-8576-4b2a-a227-84bff1fa5366"
 >SpecialOrReservedValues:
@@ -14235,8 +13606,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6429b85c-2e6f-4225-8997-9701a98eacd4"
 >Id: L_ENDSECTION
@@ -14280,8 +13649,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1a6f1ba0-1f7f-46a1-b12e-6604d7f4dbf8"
 ><Comment></Comment>
@@ -14305,8 +13672,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b63b6bde-da02-4d76-96f2-997b37699a8f"
 >SpecialOrReservedValues:
@@ -14336,8 +13701,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="29a4f8d4-9f89-4bd3-9a47-729f68635b19"
 >Id: L_LX
@@ -14414,8 +13777,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d4f0c125-9a62-4674-b0f5-bcba928f4835"
 ><Comment></Comment>
@@ -14438,8 +13799,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="66e9aab5-9c52-45ac-a31c-2e4ac3048888"
 >SpecialOrReservedValues:
@@ -14501,8 +13860,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d66f69c5-654f-4d31-b841-74a24b55168f"
 ><Comment></Comment>
@@ -14527,8 +13884,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="27dfcb22-8585-47d7-84e0-9c64c168b74a"
 >Id: L_NVKRINT
@@ -14548,8 +13903,6 @@ Length: 5 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2116a507-f6d4-42d8-bf4d-4624c66e0ecf"
 >SpecialOrReservedValues:
@@ -14723,8 +14076,6 @@ Length: 5 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ba8fe597-f174-4898-8d67-3009935075f7"
 ><Comment></Comment>
@@ -14749,8 +14100,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="be88793f-f209-4aef-b2ee-385ea2193212"
 >Id: L_PBDSR
@@ -14819,8 +14168,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="faec86d1-d6e7-42ac-88c2-a547be018a65"
 ><Comment></Comment>
@@ -14865,8 +14212,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="71df462f-9b71-4b35-add6-5ded11f964a3"
 >Id: L_SECTION
@@ -14888,8 +14233,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ece82958-6f94-4168-b5b1-f3fe24058435"
 >Id: L_STOPLX
@@ -14957,8 +14300,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3fe4ee9c-41b8-472e-b3cd-284b830ad3fb"
 ><Comment></Comment>
@@ -15003,8 +14344,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cd43b147-622c-45e6-b933-b1ee98259224"
 >Id: L_TEXT
@@ -15051,8 +14390,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ce29575f-35e6-4bb1-8aa2-c6bbf8b3848b"
 >Id: L_TEXTDISPLAY
@@ -15074,8 +14411,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c545400b-55c3-4d7f-a244-464d995144b8"
 >SpecialOrReservedValues:
@@ -15137,8 +14472,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d93685bd-18ea-422e-8641-3e9ed6427e66"
 >Id: L_TRACKCOND
@@ -15182,8 +14515,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ef66dece-3a1c-452b-a80b-07fd6b0f8d6d"
 >Id: L_TRAIN
@@ -15230,8 +14561,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="31dcf868-9a8e-4513-9ec7-fd5b5fd3c81a"
 >Id: L_TRAININT
@@ -15275,8 +14604,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="33595950-84c6-4825-bcab-bfdc5c53742c"
 >Id: L_TSR
@@ -15320,8 +14647,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="117a6b4a-9556-404c-bc34-6b3464b5ab95"
 >Id: M_ACK
@@ -15341,8 +14666,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="33970ce8-30b5-4eaf-a43e-0f2dbdb4a4be"
 >SpecialOrReservedValues:
@@ -15413,8 +14736,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d21bb69f-7c66-4b3e-9618-3f97c16a306d"
 >Id: M_ADHESION
@@ -15432,8 +14753,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7f66ce7c-ce46-4e9d-aae5-cddb68b36965"
 >SpecialOrReservedValues:
@@ -15503,8 +14822,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8e351843-1a66-4ea0-a412-de119ddfc6fa"
 >Id: M_AIRTIGHT
@@ -15524,8 +14841,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cb0f829b-e44a-4f1d-83d0-87aef0c19b1b"
 >SpecialOrReservedValues:
@@ -15618,8 +14933,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0fb117ff-1235-410b-998a-c63b1d3a86ed"
 ><Comment></Comment>
@@ -15642,8 +14955,6 @@ Length: 7 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="40db5d49-e04d-4e66-b64b-1a07f43d457f"
 >ResolutionFormula: value: , units: defaultresolution_formula_units
@@ -15739,8 +15050,6 @@ Length: 7 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="56b9c520-38ab-486b-885c-a66d5e99a45e"
 >Id: M_CURRENT
@@ -15764,8 +15073,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="447362c4-825e-4c01-9039-681efe9a804a"
 >SpecialOrReservedValues:
@@ -15919,8 +15226,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8e5fb4c7-4e32-45f6-999f-dbdc99c92769"
 >Id: M_DUP
@@ -15940,8 +15245,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d15c3334-3d73-42e3-a7d2-91713e915d8f"
 >SpecialOrReservedValues:
@@ -16034,8 +15337,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="573a4929-1cc3-465b-bd3c-de9f85841744"
 ><Comment></Comment>
@@ -16054,8 +15355,6 @@ Length: 8 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c431121f-eb76-44c2-8d1e-37d182affa45"
 >SpecialOrReservedValues:
@@ -16216,8 +15515,6 @@ Length: 8 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="be6c26b3-7f04-451a-9f8e-2fd45f315471"
 ><Comment></Comment>
@@ -16237,8 +15534,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="92dc91b7-5daf-4037-9df8-d9b6a799418f"
 ><Comment></Comment>
@@ -16357,8 +15652,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a61f6341-e2cc-4123-94da-07f6ec9bbd4e"
 ><Comment></Comment>
@@ -16380,8 +15673,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="68300a10-bd33-42b9-b12f-283c8a668cfd"
 ><Comment></Comment>
@@ -16512,8 +15803,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a59e0f85-7d70-426a-a85c-75592258286f"
 ><Comment></Comment>
@@ -16533,8 +15822,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4fd388ab-ce79-4ee6-abf3-0858722cff41"
 ><Comment></Comment>
@@ -16590,8 +15877,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="78f382d2-f2b3-49c3-887a-d8543da41a47"
 ><Comment></Comment>
@@ -16613,8 +15898,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6af059ec-9811-47aa-82fa-6a4dbc6a8379"
 >SpecialOrReservedValues:
@@ -16753,8 +16036,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e89147b6-73d5-4f16-b160-56dab9df494d"
 ><Comment></Comment>
@@ -16776,8 +16057,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="75ba5bb5-1098-4587-a41b-4d8b2471008a"
 ><Comment></Comment>
@@ -16897,8 +16176,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="83966f12-95e0-4bd1-a94c-f51c035af1c1"
 ><Comment></Comment>
@@ -16917,8 +16194,6 @@ Length: 3 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="abff4fdc-23d3-4a00-ba4d-d4b2296ad07b"
 ><Comment></Comment>
@@ -17014,8 +16289,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8f6cbd01-6f4a-4a45-9b12-053cfa6bbf95"
 ><Comment></Comment>
@@ -17034,8 +16307,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a15bf1f3-40f4-4caf-a1ae-b42823b046f7"
 >SpecialOrReservedValues:
@@ -17127,8 +16398,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="89bff75d-357d-439e-aa39-0e7452545c3b"
 >Id: M_MCOUNT
@@ -17151,8 +16420,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ad276549-c145-407d-82c3-281f576d9308"
 >SpecialOrReservedValues:
@@ -17224,8 +16491,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4b16c6e2-9016-4309-b040-e13423bcf8ce"
 ><Comment></Comment>
@@ -17244,8 +16509,6 @@ Length: 4 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="36eaea91-f9af-4edc-bcd8-0a422d05bcc3"
 >SpecialOrReservedValues:
@@ -17471,8 +16734,6 @@ Length: 4 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f51cc60c-f63b-4ea5-a5d2-c790f7505a3e"
 >Id: M_MODETEXTDISPLAY
@@ -17492,8 +16753,6 @@ Length: 4 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fee9481d-e100-4f62-86a8-be2ffe73fb8d"
 >SpecialOrReservedValues:
@@ -17598,8 +16857,6 @@ Length: 4 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f9e113f1-d592-489b-9eff-d8ebeb91e758"
 >Id: M_NVAVADH
@@ -17623,8 +16880,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="56e3f1b8-f5c1-4923-9d98-534b456b821d"
 >SpecialOrReservedValues:
@@ -17785,8 +17040,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6edf9ef8-827e-491f-9cf9-57b74e4cd982"
 >Id: M_NVCONTACT
@@ -17807,8 +17060,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d4792624-9c42-436c-9c80-80b60d1baef8"
 >SpecialOrReservedValues:
@@ -17902,8 +17153,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3cebe2c9-7f92-4bcc-bee0-8d7eeea8c4ec"
 >Id: M_NVDERUN
@@ -17923,8 +17172,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a3ae6fa1-d271-4728-85aa-3383fb89fa77"
 >SpecialOrReservedValues:
@@ -17959,8 +17206,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e4cb58c4-7c41-470c-a4a5-43eb3968b258"
 >Id: M_NVEBCL
@@ -17983,8 +17228,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="53a5d545-3ea1-4ebc-b233-62015c5f7894"
 >SpecialOrReservedValues:
@@ -18076,8 +17319,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="17f6811a-7a8d-4f41-8498-e029bc8af7ae"
 >Id: M_NVKRINT
@@ -18113,8 +17354,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0479c97d-7d3a-4a73-8a4d-ab1a35d677fc"
 >Id: M_NVKTINT
@@ -18147,8 +17386,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="87af3dac-1ee2-462a-8c96-a5e5250c3fcc"
 >Id: M_NVKVINT
@@ -18184,8 +17421,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="aecdec18-5e27-4192-98e9-52708aac826b"
 >Id: M_PLATFORM
@@ -18205,8 +17440,6 @@ Length: 4 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="99d8d5e3-4d24-402e-8baa-99fbef119464"
 >SpecialOrReservedValues:
@@ -18353,8 +17586,6 @@ Length: 4 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5c5cc0e5-ec68-48f0-b9d8-17de2cf0bcbf"
 ><Comment></Comment>
@@ -18379,8 +17610,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="39a0638c-e20b-4213-8d59-132a29567391"
 >SpecialOrReservedValues:
@@ -18448,8 +17677,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b95a22fb-0a06-4d2a-b9f8-73a082712d4c"
 >Id: M_TRACKCOND
@@ -18467,8 +17694,6 @@ Length: 4 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b418e2a0-b0eb-4a80-88b2-d885af7e7082"
 >SpecialOrReservedValues:
@@ -18655,8 +17880,6 @@ Length: 4 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3279c818-b689-4685-acc2-1390cd5331ca"
 >Id: M_VOLTAGE
@@ -18678,8 +17901,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d1e33376-b717-4319-ac4d-f92b986de71e"
 >SpecialOrReservedValues:
@@ -18810,8 +18031,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e3806294-c226-451a-b5c2-70b79a84dded"
 ><Comment></Comment>
@@ -18836,8 +18055,6 @@ Length: 7 bits<Sub>
  version="3.0.0"
  infoRequired="TRUE"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="19a0469a-d8bc-421c-bb3a-a8e7f3a18a36"
 ><Comment>Review the matching mechanism</Comment>
@@ -18903,8 +18120,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="72ead3dc-a7c4-4e42-870d-8fcb2cac08ee"
 >Id: N_AXLE
@@ -18928,8 +18143,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4fb3ceb5-b30e-4215-a179-504311b04cf1"
 >SpecialOrReservedValue: 
@@ -19044,8 +18257,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="76b164fa-a561-4508-a3a7-39794c4c5403"
 ><Comment></Comment>
@@ -19092,8 +18303,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="361f0d2f-bd63-43fd-9706-2f3d6e02dd36"
 >Id: N_PIG
@@ -19113,8 +18322,6 @@ Length: 3 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="497bcb2a-0841-4fd5-a527-5aaeb647e49d"
 >SpecialOrReservedValues:
@@ -19251,8 +18458,6 @@ Length: 3 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0d4c2715-af4d-433a-bff9-ee1121e82e42"
 >Id: N_TOTAL
@@ -19270,8 +18475,6 @@ Length: 3 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="27fd944b-bd7e-4f05-8a1a-69a9d4479221"
 >SpecialOrReservedValues:
@@ -19336,8 +18539,6 @@ Length: 3 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="968938fa-6a64-41cb-9406-2036110d6747"
 >Id: NC_CDDIFF
@@ -19360,8 +18561,6 @@ Maximum value: 15<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6fbd4b93-8e60-49f2-a366-02b9b096de5e"
 >SpecialOrReservedValues:
@@ -19463,8 +18662,6 @@ Maximum value: 15<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="19c6ae96-63bb-4cdb-9405-689f1d7c43fd"
 >Id: NC_CDTRAIN
@@ -19488,8 +18685,6 @@ Maximum value: 15<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d8afef85-ca39-406e-863c-89c1205b76c6"
 >SpecialOrReservedValues:
@@ -19662,8 +18857,6 @@ Maximum value: 15<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3dfb6b48-a52e-4097-89f5-65ada9dbcbe5"
 >Id: NC_DIFF
@@ -19689,8 +18882,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f00e74e9-7a14-47af-8ac9-23af05d4296d"
 >SpecialOrReservedValues:
@@ -19796,8 +18987,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d1064b23-7377-4cb2-b7ca-5cec6c1f6c69"
 >Id: NC_TRAIN
@@ -19823,8 +19012,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5f10839f-b8cb-4707-b0b8-5b1b9eab4db3"
 >SpecialOrReservedValues:
@@ -20084,8 +19271,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ef732c20-6a53-4b9e-89de-31fa7cc8792d"
 >Id: NID_BG (Values to be assigned according to 7.3.1.3)
@@ -20109,8 +19294,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6bb968a6-21ff-4885-a21f-86476116ba75"
 >SpecialOrReservedValues:
@@ -20173,8 +19356,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="22004407-7b7e-41ef-b2a0-17762884662f"
 >Id: NID_C (Values to be assigned according to 7.3.1.3)
@@ -20198,8 +19379,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3e473bc9-3037-4723-8378-f99625c4fc5e"
 >Id: NID_CTRACTION (Values to be assigned according to 7.3.1.3)
@@ -20270,8 +19449,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cfee696a-706e-4517-ab23-0429ac92d10a"
 >Id: NID_EM
@@ -20312,8 +19489,6 @@ Length: 4 bits<TypeSpec
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9384cdfc-0445-4aa5-886f-e7b5a34f359c"
 >Id: NID_ENGINE (Values to be assigned according to 7.3.1.3)
@@ -20353,8 +19528,6 @@ Length: 24 bits<TypeSpec
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="64fe2915-3527-4fff-8c7c-b351a1791452"
 >Id: NID_LOOP (Values to be assigned according to 7.3.1.3)
@@ -20399,8 +19572,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1a2d8383-787f-4c77-9833-3c39e73c0b0a"
 >Id: NID_LRBG
@@ -20420,8 +19591,6 @@ Length: 24 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="336d173f-8415-4f27-b57b-0aa48cc07174"
 >SpecialOrReservedValues:
@@ -20451,8 +19620,6 @@ Length: 24 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="581a08d8-b383-4697-ab28-b0e80f76c407"
 >Id: NID_LTRBG
@@ -20482,8 +19649,6 @@ Length: 24 bits<RequirementSets>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d0a00d26-268e-4fe4-87b9-1b3331051606"
 >Id: NID_LX
@@ -20505,8 +19670,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="dab73e4d-9742-4b92-b5a1-1d189578bbf7"
 >SpecialOrReservedValues:
@@ -20582,8 +19745,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="59d51987-ed8e-4b53-b0fe-89a9813326c1"
 >Id: NID_MESSAGE
@@ -20607,8 +19768,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="24c5b6a0-14e5-47ad-907d-683ba45456fd"
 ><Comment></Comment>
@@ -20633,8 +19792,6 @@ Values:
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="64498a27-9b9a-41a5-a70b-3e655c1c9483"
 ><Comment></Comment>
@@ -20736,8 +19893,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="dac86bcd-dbc3-4022-866e-6ede3aa58dbd"
 ><Comment></Comment>
@@ -20762,8 +19917,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d9f1ac56-1351-4307-8cf8-2d6ddfda91b0"
 ><Comment></Comment>
@@ -20852,8 +20005,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c9900553-3a72-4ccb-8bd4-a243c18f6850"
 ><Comment></Comment>
@@ -20900,8 +20051,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d5f16a72-9a08-412c-9d92-ecc0346cc807"
 >Id: NID_PRVBG
@@ -20922,8 +20071,6 @@ Length: 24 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5be8174c-99f3-45d3-9851-238f98735f1c"
 >SpecialOrReservedValues:
@@ -20984,8 +20131,6 @@ Length: 24 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8de750b3-478b-4567-9feb-e25053941e7a"
 ><Comment></Comment>
@@ -21012,8 +20157,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7f4b0683-09ab-4b59-a0fa-bc60e4bce8c5"
 >SpecialOrReservedValues:
@@ -21102,8 +20245,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="816c0d6e-276a-4016-ad89-124dca81531d"
 ><Comment></Comment>
@@ -21129,8 +20270,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9b3bb187-4a2d-49fa-9d97-e08673f45abf"
 >SpecialOrReservedValues:
@@ -21190,8 +20329,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3c0693cf-9e59-4032-91d3-61ccb4a12ea8"
 >Id: NID_RIU (Values to be assigned according to 7.3.1.3)
@@ -21225,8 +20362,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="957132d4-ee44-447a-8bae-75d858cd1963"
 ><Comment></Comment>
@@ -21249,8 +20384,6 @@ Maximum value: 255<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f7f0b16c-bd1d-474a-97e2-b04ba14bf332"
 >Id: 7.5.1.98.1 NID_TEXTMESSAGE
@@ -21317,8 +20450,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="791d81bb-d47e-4805-901f-1ced394ba425"
 ><Comment></Comment>
@@ -21341,8 +20472,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="31b94d91-e23e-4dd9-9b3f-ebdcdb51f392"
 ><Comment></Comment>
@@ -21383,8 +20512,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a33ec561-88de-4200-973e-56cffd7dc0ab"
 ><Comment></Comment>
@@ -21465,8 +20592,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1af31797-71d5-4645-afe5-8bdd328f8864"
 ><Comment></Comment>
@@ -21513,8 +20638,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="398b786b-7f1c-42e5-a176-ae34a3e39500"
 >Id: Q_ASPECT
@@ -21532,8 +20655,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="37c03cd0-b9a8-4d50-97aa-413018e1473a"
 >SpecialOrReservedValues:
@@ -21568,8 +20689,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ce67bb99-49d3-4865-91b1-5f1d46844e9f"
 >Id: Q_CONFTEXTDISPLAY
@@ -21589,8 +20708,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="140dd0c2-ba32-44d8-80e1-4c0be707dfa2"
 >SpecialOrReservedValues:
@@ -21696,8 +20813,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="30dda18a-b11e-4bbe-a761-8fe4113de2e5"
 >Id: Q_DANGERPOINT
@@ -21717,8 +20832,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="389411c8-ebc2-476d-ba86-9a6a58191318"
 >SpecialOrReservedValues:
@@ -21753,8 +20866,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d4d1dca3-3feb-42f4-9fb0-78e4de18d3a1"
 >Id: Q_DIFF
@@ -21775,8 +20886,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="97820250-11ae-43f2-8b84-dd28da8bda95"
 >SpecialOrReservedValues:
@@ -21868,8 +20977,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="377174b6-5ade-4ea3-ab23-4c7f1eae2570"
 >Id: Q_DIR
@@ -21889,8 +20996,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="473b4206-fc8f-4f21-b22a-65fd8d0fd212"
 >SpecialOrReservedValues:
@@ -21983,8 +21088,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c9768b2a-a9de-41d1-b3e9-2d4ad2ba3b9b"
 >Id: Q_DIRLRBG
@@ -22002,8 +21105,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8bddd4d1-cc64-448a-9d5e-a8c50ca30557"
 >SpecialOrReservedValues:
@@ -22095,8 +21196,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="eeda2a87-ac48-4626-8f06-27870112f7ea"
 >Id: Q_DIRTRAIN
@@ -22114,8 +21213,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="441d511a-2bce-40d1-a5b4-e163a5efee59"
 >SpecialOrReservedValues:
@@ -22207,8 +21304,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e5c1e056-6432-4e22-aa13-0daf77e8639a"
 >Id: Q_DLRBG
@@ -22226,8 +21321,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e92cb13a-b4e2-4667-ab1d-27b51f55f91b"
 >SpecialOrReservedValues:
@@ -22319,8 +21412,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5406573f-c517-44ae-8dcc-ce1344531dd1"
 >Id: Q_EMERGENCYSTOP
@@ -22340,8 +21431,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1e9dfb5f-39ec-40ab-b3d0-afdbc2a0294e"
 >SpecialOrReservedValues:
@@ -22434,8 +21523,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="86b0e1e8-53c9-4a9f-9b60-1863f04939ec"
 >Id: Q_ENDTIMER
@@ -22453,8 +21540,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c3b1768e-9e76-41da-971c-25fa59fe4a57"
 >SpecialOrReservedValues:
@@ -22524,8 +21609,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4721d317-67ec-4171-b836-61c80b2d2d4c"
 >Id: Q_FRONT
@@ -22545,8 +21628,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="dba39ff7-bca3-40a3-9190-07ae4549bdf5"
 >SpecialOrReservedValues:
@@ -22617,8 +21698,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e9675d44-de8d-42cb-806e-6c5e0ac6a326"
 >Id: Q_GDIR
@@ -22636,8 +21715,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ba435eb7-fdf4-412f-8414-c4ffb1f18993"
 >SpecialOrReservedValues:
@@ -22707,8 +21784,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b8e16026-b835-481d-9ad9-bad0f5f437a0"
 >Id: Q_INFILL
@@ -22726,8 +21801,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="709c883d-3e8c-4f81-b274-c992c1689624"
 >SpecialOrReservedValues:
@@ -22797,8 +21870,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8d3a84fe-262b-4674-b398-294eba214a14"
 >Id: Q_LENGTH
@@ -22818,8 +21889,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9b46e3b8-2851-43fd-94b9-924e527d4603"
 >SpecialOrReservedValues:
@@ -22912,8 +21981,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e5ec5ab9-bbf7-43ce-aee2-703517236f43"
 >Id: Q_LGTLOC
@@ -22933,8 +22000,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0d6b6822-0e2f-4bd0-b806-8a68da523bed"
 >SpecialOrReservedValues:
@@ -23005,8 +22070,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c40fed85-fc66-4b03-b83c-2fa46277542d"
 >Id: Q_LINK
@@ -23026,8 +22089,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d5a9199b-cc21-46c3-bed7-fe5a009b1a6e"
 >SpecialOrReservedValues:
@@ -23098,8 +22159,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="11fbe67b-af1e-4200-8ca5-a6f376d9824e"
 >Id: Q_LOCACC
@@ -23146,8 +22205,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b75cc4b2-b3d7-4464-8f3b-1fccaac3998c"
 >Id: Q_LINKORIENTATION
@@ -23167,8 +22224,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4b89fc0e-809d-407a-b73b-3293f80a8e69"
 >SpecialOrReservedValues:
@@ -23239,8 +22294,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8ad103dd-9ced-402f-840b-8bce421521ae"
 >Id: Q_LINKREACTION
@@ -23260,8 +22313,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="99bb38cb-b088-48da-b41f-bdcb900c0078"
 >SpecialOrReservedValues:
@@ -23354,8 +22405,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ebb2e879-aa99-468d-bee0-783c3ff4a9d8"
 >Id: Q_LOOPDIR
@@ -23375,8 +22424,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="612b2736-9da9-4c55-b651-88cbcc2d95db"
 ><Comment></Comment>
@@ -23412,8 +22459,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="829b0ec7-e41b-4dbb-ac6a-fd2079cd565c"
 >Id: Q_LXSTATUS
@@ -23433,8 +22478,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c47f275c-20ee-4e5f-a71d-4b873d78114b"
 >SpecialOrReservedValues:
@@ -23480,8 +22523,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1eede305-f64b-4f63-a204-1c83dcb1ed2f"
 ><Comment></Comment>
@@ -23502,8 +22543,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="73e818af-0a57-47df-95d0-d7d3207f55dc"
 >SpecialOrReservedValues:
@@ -23549,8 +22588,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ce63b2b4-4e7c-4e86-9688-aeae21ce4af9"
 ><Comment></Comment>
@@ -23573,8 +22610,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d563b4fd-fbd5-4985-b766-e657f241d070"
 >SpecialOrReservedValues:
@@ -23671,8 +22706,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8aa44250-8181-401a-a7ff-0484d435bca7"
 ><Comment></Comment>
@@ -23693,8 +22726,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7a9b920c-2d14-4ebb-81e9-be21400ab2d9"
 >SpecialOrReservedValues:
@@ -23765,8 +22796,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="77703c80-fefa-4820-a54b-191604cf0b0f"
 >Id: Q_MPOSITION
@@ -23788,8 +22817,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9365b764-cc23-4c5f-a3c0-ec331fae5ebd"
 >SpecialOrReservedValues:
@@ -23860,8 +22887,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7ec45979-d2e8-4661-a8e1-09e937013367"
 >Id: Q_NEWCOUNTRY
@@ -23882,8 +22907,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="52de94db-0bca-41ad-bb7a-5c29c737daee"
 >SpecialOrReservedValues:
@@ -23954,8 +22977,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a931d562-5efa-4a29-8d7a-1dd02becb4ce"
 >Id: Q_NDRIVER_ADHES
@@ -23974,8 +22995,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2aacd12f-169f-42b1-b29c-c411bb9239ab"
 >SpecialOrReservedValues:
@@ -24021,8 +23040,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="08dc72eb-ecb2-41b1-83d2-b41c73552c0e"
 >Id: Q_NVEMRRLS
@@ -24043,8 +23060,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d24573b8-7e64-4ac6-bd55-37fe5747eacc"
 >SpecialOrReservedValues:
@@ -24079,8 +23094,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="56c38799-4919-4c9f-b8b3-7124f2eb4b68"
 >Id: Q_NVGUIPERM
@@ -24100,8 +23113,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2abcd758-9f83-4688-9102-895563dac77b"
 >SpecialOrReservedValues:
@@ -24147,8 +23158,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d9b47b3d-166e-4da8-8d02-22873b75a4c0"
 >Id: Q_NVINHSMICPERM
@@ -24170,8 +23179,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fca2cea5-e9bb-4966-9c8e-243b4f5d4b12"
 >SpecialOrReservedValues:
@@ -24217,8 +23224,6 @@ Baseline: 3.2.0<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2f4bc68e-67a9-4ca1-8983-ac2c1947cd88"
 >Id: Q_NVKINT
@@ -24238,8 +23243,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b8d814f8-ac42-4018-9b32-bfeee7f92ce4"
 >SpecialOrReservedValues:
@@ -24285,8 +23288,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="40ddb39c-2b38-4dcd-9bc0-73ee1e8a2349"
 >Id: Q_NVKVINTSET
@@ -24304,8 +23305,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c88969d8-7ec7-4fc6-92dd-f66ac9e964ff"
 >SpecialOrReservedValues:
@@ -24356,8 +23355,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="daf0fbd3-894f-4c05-b6e4-836f21d1a7bb"
 >Id: Q_NVLOCACC
@@ -24390,8 +23387,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="71a36b95-cdea-42d1-a0ae-e280dd577887"
 >Id: Q_NVSBFBPERM
@@ -24411,8 +23406,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1a073198-bf9e-406d-9fdb-f7e011a6ab3e"
 >SpecialOrReservedValues:
@@ -24495,8 +23488,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d08d85e7-45e2-4342-84f8-a39335d02388"
 ><Comment></Comment>
@@ -24517,8 +23508,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1764dece-e6bb-4b48-af04-b45b223f2121"
 >SpecialOrReservedValues:
@@ -24589,8 +23578,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ff60d83e-dc19-4b2d-acfb-0fbfd30458f0"
 >Id: Q_ORIENTATION
@@ -24610,8 +23597,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fc74eb9a-74f5-4e62-a567-77837402373b"
 >SpecialOrReservedValues:
@@ -24682,8 +23667,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b3845192-4c2b-4425-bdb0-c0a568c940ea"
 >Id: Q_OVERLAP
@@ -24703,8 +23686,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0db73e06-7cc7-43c5-81c3-2a72062ff7bf"
 >SpecialOrReservedValues:
@@ -24739,8 +23720,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="29875feb-36aa-465e-bbe9-34bae47c5b43"
 >Id: Q_PBDSR
@@ -24760,8 +23739,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="64b6278f-3586-4cf8-87a6-754be4d4c1b1"
 >SpecialOrReservedValues:
@@ -24807,8 +23784,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c8a2dcf3-6c49-482e-9025-e8c542c2ffa2"
 >Id: Q_PLATFORM
@@ -24826,8 +23801,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3323ab6a-d084-4dc4-abd3-f44a5f9a1f3d"
 >SpecialOrReservedValues:
@@ -24919,8 +23892,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="794015cd-d812-4e29-993d-34bd06b6df3e"
 >Id: Q_RBC
@@ -24938,8 +23909,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7e786f7c-24ee-4207-ae19-f7d512a669ad"
 >SpecialOrReservedValues:
@@ -25009,8 +23978,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7695ae2a-7c2a-47ab-8c8a-b5c5f417c219"
 >Id: Q_RIU
@@ -25028,8 +23995,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4e0b022a-bfcc-4b11-8474-40bb9192c0b0"
 >SpecialOrReservedValues:
@@ -25099,8 +24064,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e2936e54-2130-4bc1-a264-7a69f0cfd51b"
 >Id: Q_SCALE
@@ -25120,8 +24083,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6a3631d1-c4d5-436b-9bcd-687e386d294c"
 >SpecialOrReservedValues:
@@ -25226,8 +24187,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3ea65cb2-f46e-4d0e-885e-8ae8c75b4a06"
 >Id: Q_SECTIONTIMER
@@ -25245,8 +24204,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c91eadf4-ffc4-48b4-9ace-942eede747d9"
 >SpecialOrReservedValues:
@@ -25317,8 +24274,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="83ef17f0-5bea-435b-bc83-59be244ae065"
 >Id: Q_SLEEPSESSION
@@ -25338,8 +24293,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="635f54ae-4254-498f-aeda-9c069e34a534"
 >SpecialOrReservedValues:
@@ -25410,8 +24363,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6021142e-29b5-4c7f-b88b-43fab801f08d"
 >Id: Q_SRSTOP
@@ -25431,8 +24382,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="318f80a9-3197-46c0-800f-cb8b08547c0b"
 >SpecialOrReservedValues:
@@ -25503,8 +24452,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="eaf530c7-a387-4b25-ba2b-e1393392d633"
 >Id: Q_SSCODE
@@ -25526,8 +24473,6 @@ Length: 4 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2da7823a-b858-4004-bb5a-05cda550538c"
 >SpecialOrReservedValues:
@@ -25587,8 +24532,6 @@ Length: 4 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="de506732-8e45-4f39-add2-7011c076a134"
 >Id: Q_STATUS
@@ -25608,8 +24551,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0a67c6b4-4709-4760-9a1e-eb63b3a806e1"
 >SpecialOrReservedValues:
@@ -25654,8 +24595,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fbae4639-91c7-4474-bfc1-2e930f72239f"
 >Id: Q_STOPLX
@@ -25675,8 +24614,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="893b642f-2b0c-423d-821e-ddc2a796e11c"
 >SpecialOrReservedValues:
@@ -25795,8 +24732,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cbe72d69-19e0-428f-99dc-6595e037250d"
 >Id: Q_SUITABILITY
@@ -25814,8 +24749,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="23d78723-324a-433e-ad17-373c8bfa875e"
 ><Comment></Comment>
@@ -25910,8 +24843,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2a5dd62b-f334-4654-aa1f-24768ebd26f6"
 ><Comment></Comment>
@@ -25934,8 +24865,6 @@ Maximum value: 255<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="03709a74-6470-4f26-a417-78dc30b54d4b"
 ><Comment></Comment>
@@ -26021,8 +24950,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9ce3aa6a-cb5f-4afa-a70e-e97007b49e44"
 ><Comment></Comment>
@@ -26043,8 +24970,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e4e4df9c-072b-4144-8769-2cacee50facf"
 >SpecialOrReservedValues:
@@ -26137,8 +25062,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="015777b0-e9ec-47e3-9bb3-f72cc75ba742"
 >Id: Q_TEXTCONFIRM
@@ -26156,8 +25079,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e75bf9f9-591b-4944-a274-c41e19ed8e88"
 >SpecialOrReservedValues:
@@ -26249,8 +25170,6 @@ Length: 2 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2a70f5e2-5c00-4c08-a8aa-43bdcfca9366"
 >Id: Q_TEXTDISPLAY
@@ -26270,8 +25189,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a49534dd-343b-4636-a25f-d5fd71a33d0e"
 >SpecialOrReservedValues:
@@ -26342,8 +25259,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="61f2c6f2-b3b6-4cc3-ae9e-ae04034ffb38"
 >Id: Q_TEXTREPORT
@@ -26361,8 +25276,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0749c751-c9ed-442d-8f00-c52bff9fc663"
 >SpecialOrReservedValues:
@@ -26432,8 +25345,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
 >Id: Q_TRACKINIT
@@ -26451,8 +25362,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ba214ce7-bb0e-44f8-8d6e-53f306154a61"
 >SpecialOrReservedValues:
@@ -26522,8 +25431,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="60cca817-0743-41eb-b8e3-016a8064231a"
 >Id: Q_UPDOWN
@@ -26543,8 +25450,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fa921386-24a6-4a65-b1ff-df9189e8417b"
 >SpecialOrReservedValues:
@@ -26578,8 +25483,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5e76c0e2-5ba4-402d-a344-d885cf3ce9f8"
 ><Comment></Comment>
@@ -26599,8 +25502,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f0abf324-924d-4555-bb01-5b5e4326bc40"
 >SpecialOrReservedValues:
@@ -26682,8 +25583,6 @@ Length: 1 bits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="158a4560-10f9-449d-a58b-02c43291845a"
 >Id: T_CYCLOC
@@ -26707,8 +25606,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="52dafb9f-086a-448d-97b4-b73cb0bb4607"
 >SpecialOrReservedValues:
@@ -26771,8 +25668,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ecd0acf3-52c6-488c-a1d4-ed1e35869e6f"
 >Id: T_CYCRQST
@@ -26796,8 +25691,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0526fc2f-9c60-4daa-801f-569c45e2639f"
 >SpecialOrReservedValues:
@@ -26860,8 +25753,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9e5ace3a-6786-4a54-925a-cf334ff92a80"
 >Id: T_ENDTIMER
@@ -26885,8 +25776,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5697074f-9452-4efa-bf14-9e7a4095690c"
 >SpecialOrReservedValues:
@@ -26949,8 +25838,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a774525d-0597-4d00-a2f5-3148dcf359bd"
 >Id: T_LOA
@@ -26974,8 +25861,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="044e7141-ed28-488d-b06a-72e52b836b11"
 >SpecialOrReservedValues:
@@ -27038,8 +25923,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="05cf6799-8b56-48cb-9adc-a464323c5a84"
 >Id: T_MAR
@@ -27061,8 +25944,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="016b1c52-2f2b-4b3c-8726-4e6311731b34"
 >SpecialOrReservedValues:
@@ -27124,8 +26005,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fc1e9309-39da-4f10-9e92-f8cd8cc291c4"
 >Id: T_NVCONTACT
@@ -27150,8 +26029,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="43721c2d-c602-479f-839b-41b085dc1ca1"
 >SpecialOrReservedValues:
@@ -27215,8 +26092,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c8dfa8cf-6c66-477a-8bfe-19933933952a"
 >Id: T_NVOVTRP
@@ -27263,8 +26138,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1a00d073-a908-4fc4-9ec3-4652a955b351"
 >Id: T_OL
@@ -27288,8 +26161,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="04a03aea-1bbb-466a-a346-e6fe6d1abbe5"
 >SpecialOrReservedValues:
@@ -27352,8 +26223,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7482e58a-6251-4406-8216-75bed0eec39a"
 >Id: T_SECTIONTIMER
@@ -27377,8 +26246,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f9b4b7cc-b88d-44be-84ee-1612f719b904"
 >SpecialOrReservedValues:
@@ -27441,8 +26308,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="30f4558c-7729-4ea5-b816-e0ded766d3d9"
 ><Comment></Comment>
@@ -27465,8 +26330,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="beaa1d56-23ca-4df6-93aa-119f7fb42c6b"
 ><Comment></Comment>
@@ -27529,8 +26392,6 @@ SpecialOrReservedValues:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="62880846-6786-43c3-84fe-79a4b98b3fd8"
 ><Comment></Comment>
@@ -27553,8 +26414,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="134e66d7-d8ce-44c9-a981-f7e6fa323743"
 >SpecialOrReservedValues:
@@ -27616,8 +26475,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3e72c194-3b24-4828-931a-5861f7de9d3b"
 >Id: T_TRAIN
@@ -27641,8 +26498,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="999ea4eb-d4ce-4ba0-968b-d960df28c5a8"
 >SpecialOrReservedValues:
@@ -27672,8 +26527,6 @@ Values:
  status="Implemented"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b282a6ca-44f9-4f0c-bad1-3ed7007e41e1"
 ><Comment></Comment>
@@ -27737,8 +26590,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4947d3fc-1665-47ff-a945-9900318dce54"
 >Id: V_AXLELOAD
@@ -27759,8 +26610,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7dd094df-efd6-4f9b-9da7-78c436b5a1ae"
 >SpecialOrReservedValues:
@@ -27801,8 +26650,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ddc9bc3c-f8fd-43a4-b45f-0a7b49ab9c74"
 >Id: V_DIFF
@@ -27824,8 +26671,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e551ae66-fefb-4e4e-aaf9-78e3ec4d5717"
 >SpecialOrReservedValues:
@@ -27890,8 +26735,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="03cd0321-724a-4dbf-ae18-99839cda8019"
 ><Comment></Comment>
@@ -27914,8 +26757,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="781a4f0b-fb3a-4c9c-9c09-0480b8d07c90"
 >SpecialOrReservedValues:
@@ -27945,8 +26786,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="35deca04-3db3-4618-8a5b-13f4cdd1478c"
 >Id: V_LX
@@ -27970,8 +26809,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2c7b467f-07df-488b-a890-377e73064a94"
 >SpecialOrReservedValues:
@@ -28047,8 +26884,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="40e65850-da07-4c7a-bd9f-43c30f8a20a5"
 >Id: V_MAIN
@@ -28070,8 +26905,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8c086287-3454-4b36-8382-3b59a0debda0"
 >SpecialOrReservedValues:
@@ -28141,8 +26974,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="64e2f87a-5cf2-41b5-880c-dd026169eb44"
 >Id: V_MAMODE
@@ -28164,8 +26995,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d2ddd6a4-4c33-45a5-a596-27232819b185"
 >SpecialOrReservedValues:
@@ -28241,8 +27070,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f248b04f-3a74-4b74-8c15-836ba750d9d2"
 >Id: V_MAXTRAIN
@@ -28264,8 +27091,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b2930d82-34d9-465f-975e-39390438d065"
 >SpecialOrReservedValues:
@@ -28331,8 +27156,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="053912bd-a061-43ec-b52b-3ba9cd8dfc8b"
 >Id: V_NVALLOWOVTRP
@@ -28356,8 +27179,6 @@ Values:
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3e68a6c0-8004-44a0-9a51-3b4a441f3f46"
 >SpecialOrReservedValues:
@@ -28387,8 +27208,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e16301ba-d9c2-4fd8-9fd8-0b603b157f8f"
 >Id: V_NVKVINT
@@ -28412,8 +27231,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c603e39f-5e62-499b-8610-ddd8f98af057"
 >SpecialOrReservedValues:
@@ -28454,8 +27271,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="707ab5a2-317f-45c9-89ed-217261c6853a"
 >Id: V_NVLIMSUPERV
@@ -28479,8 +27294,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cece928f-107d-48b7-9108-0bc7e15d21c9"
 >SpecialOrReservedValues:
@@ -28557,8 +27370,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6b617094-55ed-49b7-9b1a-8aadb52bd34f"
 >Id: V_NVONSIGHT
@@ -28582,8 +27393,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="36e10b4f-ca3d-4866-b5dd-af93add517fd"
 >SpecialOrReservedValues:
@@ -28649,8 +27458,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9185fb46-775d-4cef-9c17-801d7b615a1c"
 >Id: V_NVSUPOVTRP
@@ -28674,8 +27481,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="106d1d54-3e12-40b3-92d7-166bc4d4ab09"
 >SpecialOrReservedValues:
@@ -28741,8 +27546,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d135c1cd-b62c-406a-95ab-1bfd691e1653"
 >Id: V_NVREL
@@ -28766,8 +27569,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3caef94d-7803-45a9-99b5-a030205f3661"
 >SpecialOrReservedValues:
@@ -28833,8 +27634,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c2e32710-2873-4ef6-b302-59e42906a32d"
 >Id: V_NVSHUNT
@@ -28858,8 +27657,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8d45db96-4652-4f73-b921-17109b5df26f"
 >SpecialOrReservedValues:
@@ -28925,8 +27722,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1eddc0a4-11f9-4033-a1b4-0256f2693c43"
 >Id: V_NVSTFF
@@ -28950,8 +27745,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="52bd7d66-7747-4a3f-83d1-fc88175f7a72"
 >SpecialOrReservedValues:
@@ -29017,8 +27810,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9760b087-0192-4d33-a84a-4e7678ab8e37"
 >Id: V_NVUNFIT
@@ -29042,8 +27833,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="06562505-ed02-40ad-a572-17343cc884f7"
 >SpecialOrReservedValues:
@@ -29109,8 +27898,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="530b6e5d-9ed2-460a-bc4f-9e158ad1c0b1"
 >Id: V_RELEASEDP
@@ -29132,8 +27919,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fd8ad766-e2af-4dec-8c00-61b7e5d9b49c"
 >SpecialOrReservedValues:
@@ -29220,8 +28005,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="887d1614-89c2-401e-8b28-d47db2b19981"
 >Id: V_RELEASEOL
@@ -29243,8 +28026,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="76f867cd-faea-4765-a0a3-22abe280a92c"
 >SpecialOrReservedValues:
@@ -29331,8 +28112,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="46aa1e33-5007-43a9-9c7f-3241bba8bbed"
 >Id: V_REVERSE
@@ -29354,8 +28133,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c9019867-09d3-4dde-bd3c-8add52d0d281"
 >SpecialOrReservedValues:
@@ -29420,8 +28197,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="51a2d119-ce1a-4cb1-9eec-ab1079e376a3"
 >Id: V_STATIC
@@ -29445,8 +28220,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e475882b-f9a1-42e9-8001-c3a154f9acf3"
 >SpecialOrReservedValues:
@@ -29523,8 +28296,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3e250195-c2c5-46d1-8e98-b1c85c5eb58c"
 >Id: V_TRAIN
@@ -29546,8 +28317,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a27a6239-9c28-492b-989e-08a95f9f692c"
 >SpecialOrReservedValues:
@@ -29613,8 +28382,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c6f1fbe8-ebe1-4587-95c7-5eefd09cf5cb"
 >Id: V_TSR
@@ -29636,8 +28403,6 @@ Values:
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7bf11871-41ab-49ee-900a-c4b4a1ab91cf"
 >SpecialOrReservedValues:
@@ -29703,8 +28468,6 @@ Values:
  version="3.0.0"
  infoRequired="TRUE"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9a57bb28-5e4c-42e3-94f7-ecd35a72d2ec"
 ><Comment>Review the translation of this variable in EFS</Comment>

@@ -13,8 +13,6 @@
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="adce1607-6b33-4ece-af27-6227c8d50a06"
 >Introduction<Sub>
@@ -28,8 +26,6 @@
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="89ce262b-f87b-45a1-b414-316cf806bfe2"
 >Scope and Purpose<Sub>
@@ -44,8 +40,6 @@
  status="NotImplementable"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="18c5aa29-da4d-4228-b0a4-7e5c868d3c47"
 ><Comment></Comment>
@@ -69,8 +63,6 @@ This chapter defines the format and content of messages necessary for ERTMS/ETCS
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a1c4b458-57d9-4703-9f67-b06d9cf70331"
 >Concerning the transmission media, this chapter does not cover considerations such as medium-specific use constraints (e.g. distance between track-circuit and balise), as well as functions (e.g. detection of balise reference, time and location stamp, identifying type of receiving balise, Key Management, Releasing/maintaining a radio connection) and performance of the transmission media.<RequirementSets>
@@ -104,8 +96,6 @@ This chapter defines the format and content of messages necessary for ERTMS/ETCS
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6c2bb07b-c4a2-4400-814c-18aaaa244b9e"
 >Definitions<Sub>
@@ -120,8 +110,6 @@ This chapter defines the format and content of messages necessary for ERTMS/ETCS
  status="NotImplementable"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="504caf87-958a-4a5b-82c5-351a92feeea1"
 ><Comment></Comment>
@@ -145,8 +133,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="01a0a58b-b9ce-46f7-b84c-b4c99280a89c"
 >A message includes user data (application level) and protocol data (depending on the transmission medium).<RequirementSets>
@@ -169,8 +155,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a12e7295-b996-4ac6-b3ca-1da20370ae00"
 >A Eurobalise message is the information sent by a balise group (i.e. the message is composed of one or several telegrams, sorted by balise number in the group (telegram from balise number 1 first), each telegram is transmitted by a Eurobalise). A Eurobalise telegram contains one header and an identified and coherent set of Packets.<RequirementSets>
@@ -193,8 +177,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="bce8954b-117a-4017-b1ad-89d8f411d3a9"
 >A Euroradio message contains one header and an identified and coherent set of variables (if needed) and Packets.<RequirementSets>
@@ -217,8 +199,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e00ffa97-a3af-4524-83fb-4a3ef625993e"
 >A Euroloop message contains one header and an identified and coherent set of Packets.<RequirementSets>
@@ -264,8 +244,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="bec1e13e-395b-4daa-9e8c-97be245b796b"
 >Rules<Sub>
@@ -279,8 +257,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="652d5e92-5e11-4e33-8b01-bd327b68df1e"
 >Common Rules<Sub>
@@ -294,8 +270,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f04469fb-5e57-4620-98bc-67d0e9bd38b2"
 >A message (Euroradio/Euroloop) or telegram (Eurobalise) shall be composed of
@@ -322,8 +296,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="04373058-2f44-4857-a462-2da1803b8e71"
 >The transmission order shall respect the order of data elements listed in the message format (from top to bottom).<RequirementSets>
@@ -346,8 +318,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="812997a6-8ab5-4272-86ed-4adf6fd60404"
 >The behaviour of the receiver shall not depend on the sequence of the Packets given by the message.<Sub>
@@ -361,8 +331,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="374dfd6c-8df4-4ffd-bb09-c40385a6a953"
 >Exception for Infill information: The locations given in the packets following packet 136 (Infill Location Reference) shall be referred to the balise group indicated in such packet.<RequirementSets>
@@ -385,8 +353,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d6fb33a3-70f1-41c9-8a9a-f69600277a9f"
 >Note: orientations are in any case always referred to the directionality of balise group (balise transmission), directionality of loop (Euroloop transmission) or directionality of LRBG (radio transmission).<RequirementSets>
@@ -420,8 +386,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="bfc8eaed-659b-4a63-9e2b-52dca586a727"
 >It shall be forbidden to send more instances of the same packet type for the same direction in the same message.<Sub>
@@ -435,8 +399,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="76d9ab69-938a-4e46-9794-ede4e90427bc"
 >Exception 1: A message can contain several packets 44 (Data used by applications outside the ERTMS/ETCS system).<RequirementSets>
@@ -459,8 +421,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="30760274-e4bd-455d-9f46-5acd0d55850f"
 >Exception 2: A message can contain several packets 65 (Temporary Speed Restriction). In case of revocable TSRs, the identities of the corresponding temporary speed restrictions (variable NID_TSR) transmitted in the same message shall be different.<RequirementSets>
@@ -483,8 +443,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6ccb4b9a-503f-401a-b5a9-677e72a770c9"
 >Exception 3: A message can contain several packets 66 (TSR Revocation). The identities of the corresponding temporary speed restrictions (variable NID_TSR) transmitted in the same message shall be different.<RequirementSets>
@@ -507,8 +465,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d0998160-1f71-42dd-b9e9-ca9b69a73225"
 >Exception 4: A message transmitted by a balise group can contain one packet 136 per balise telegram per direction. Each packet 136 indicates which part of that telegram is to be considered as part of the infill information. Multiple packets 136 in balises of a balise group shall have identical content per direction.<RequirementSets>
@@ -531,8 +487,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="020a897d-1be0-4fbf-b38d-91e3010007a1"
 >Exception 5: A message can contain several packets 88 (Level Crossing information). The identities of the corresponding Level Crossings (variable NID_LX) transmitted in the same message shall be different.<RequirementSets>
@@ -555,8 +509,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="80554aa2-cb28-4a2c-9fc8-fff06c4841f9"
 >Exception 6: A message transmitted by a balise group can contain several packets 254 (default balise, loop or RIU information).<RequirementSets>
@@ -579,8 +531,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2cea63d4-f285-4201-b88e-41d4ef3a5c1f"
 >Exception 7: A message transmitted by a balise group can contain several packets 145 (Inhibition of balise group message consistency reaction).<RequirementSets>
@@ -604,8 +554,6 @@ Transmission media considered hereafter are standard ERTMS/ETCS transmission med
  status="NA"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3b6cd3da-5c8d-494d-b1e7-0d0926d50bff"
 ><Comment></Comment>
@@ -630,8 +578,6 @@ Exception 8: A message transmitted by a balise group can contain several packets
  status="NA"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f21a40a8-281b-4e39-a989-02f2c806938f"
 ><Comment></Comment>
@@ -677,8 +623,6 @@ Exception 9: A message transmitted by a balise group can contain several packets
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="67083101-0489-492f-850e-43d17a56f269"
 >Rules for Eurobalise telegrams<Sub>
@@ -692,8 +636,6 @@ Exception 9: A message transmitted by a balise group can contain several packets
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="40df2d39-ea7c-45a4-a8f3-c97b159f6bbd"
 >The format of the telegram to be transmitted by each balise is as follows:<Sub>
@@ -707,8 +649,6 @@ Exception 9: A message transmitted by a balise group can contain several packets
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="17a72e06-c944-4443-beaf-1db6a4005e71"
 >General Format of Balise Telegram
@@ -724,8 +664,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6afed108-d128-4d48-89b8-ad2eb13f6755"
 >1; Q_UPDOWN; 1; Defines the direction of the information: 
@@ -751,8 +689,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="61182e3e-48cf-4832-b38a-f8d84d9259d3"
 >2; M_VERSION; 7; Version of the ERTMS/ETCS system.<RequirementSets>
@@ -776,8 +712,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6f5f4b8d-a859-403c-803e-34a58d726b3c"
 >3; Q_MEDIA; 1; Defines the type of media: Balise (0)<RequirementSets>
@@ -801,8 +735,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ad9fe629-2f69-4c61-b144-050a6c68b09c"
 >4; N_PIG; 3; Position in the group. Defines the position of the balise in the balise group.<RequirementSets>
@@ -826,8 +758,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e7019673-e23b-45be-8395-0baaf09d22b3"
 >5; N_TOTAL; 3; Total number of balises in the balise group<RequirementSets>
@@ -851,8 +781,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="eb812e3a-a93b-4ff7-9ea5-d892aa71c0ee"
 >6; M_DUP; 2; Used to indicate whether the information of the balise is a duplicate of the balise before or after this one.<RequirementSets>
@@ -876,8 +804,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ac5bba2d-7d1b-41f7-a629-8091ef690191"
 >7; M_MCOUNT; 8; Message counter (M_MCOUNT) - 8 bits. To enable detection of a change of balise group message during passage of the balise group.<RequirementSets>
@@ -901,8 +827,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6a27dd53-022e-45be-b8e4-5fa7c2bcca60"
 >8; NID_C; 10; Country or region.<RequirementSets>
@@ -926,8 +850,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6b818eec-206e-4e2b-84de-8402d8972de9"
 >9; NID_BG; 14; Identity of the balise group.<RequirementSets>
@@ -951,8 +873,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="79e13368-ea44-4522-b910-7aa3e8ac6a48"
 >10; Q_LINK; 1; Marks the balise group as linked (Q_LINK = 1) or unlinked (Q_LINK = 0)<RequirementSets>
@@ -976,8 +896,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="da915691-76d4-4e65-a5aa-2e6f86807fb9"
 ><Comment></Comment>
@@ -1002,8 +920,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c44c150b-f254-4b99-8020-e591f160b83a"
 >; Information; Variable; This information is composed according to the rules applicable for packets.<RequirementSets>
@@ -1027,8 +943,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c12bb4be-8066-4917-ace6-ac17ba4bf834"
 >; Packet 255; 8; Finishing flag of the telegram<RequirementSets>
@@ -1063,8 +977,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d95f5f02-9e36-4c0a-acb0-f5ef9d79e419"
 >Number of bits in balise header: 50<RequirementSets>
@@ -1098,8 +1010,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f4a3e7a1-702d-45a1-ab46-a200b58ff121"
 >The user information transmitted by a balise shall contain complete packets, i.e. splitting a packet between two balises is forbidden.<RequirementSets>
@@ -1123,8 +1033,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.2.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ead77f35-358b-40d9-b45d-adca9df15363"
 ><Comment></Comment>
@@ -1159,8 +1067,6 @@ When used, the packet 0 shall be transmitted as the first packet of the telegram
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c5b6e6ba-7072-4863-94b9-2b4ae6ebd915"
 >Rules for Euroloop messages<Sub>
@@ -1174,8 +1080,6 @@ When used, the packet 0 shall be transmitted as the first packet of the telegram
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1de7ad35-581e-4823-902b-05cc061064ae"
 >The format of the message to be transmitted by each loop is as follows:<Sub>
@@ -1189,8 +1093,6 @@ When used, the packet 0 shall be transmitted as the first packet of the telegram
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c00c0bae-8f7a-4c3c-b090-1eb75aff1858"
 >General Format of Loop Message
@@ -1206,8 +1108,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5fded786-bbc1-4823-a302-1e77340f4c90"
 >1; Q_UPDOWN; 1; Defines the direction of the information: 
@@ -1233,8 +1133,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8a9c92c5-28ec-4d69-b3f8-03d287f3841c"
 >2; M_VERSION; 7; Version of the ERTMS/ETCS system.<RequirementSets>
@@ -1258,8 +1156,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e1b9482b-f530-4463-b277-57b4776563fd"
 >3; Q_MEDIA; 1; Defines the type of media: Loop   (1)<RequirementSets>
@@ -1283,8 +1179,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8066b640-2b8d-4a84-a081-ca21cfc9a7e6"
 >4; NID_C; 10; Country or region.<RequirementSets>
@@ -1308,8 +1202,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="de28839f-fea0-4119-86b2-b44e47275671"
 >5; NID_LOOP; 14; Identity of Euroloop.<RequirementSets>
@@ -1333,8 +1225,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a421cda3-4eb0-41d2-a06f-d4f9b7b9c9f6"
 >; Information; Variable; This information is composed according to the rules applicable for packets.<RequirementSets>
@@ -1358,8 +1248,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c61a86a9-6322-4213-bc4a-eadebd7388cc"
 >; Packet 255; 8; Finishing flag of the message<RequirementSets>
@@ -1394,8 +1282,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0dfb3a76-39b2-405c-ac07-d7c6e4d89e69"
 >Number of bits in loop header: 33<RequirementSets>
@@ -1430,8 +1316,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="74ffe0e2-95de-47de-94ee-a72838d40490"
 >Intentionally deleted.<RequirementSets>
@@ -1465,8 +1349,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2623de7b-cf1d-4549-a1e3-1393add2baa7"
 >Rules for Euroradio messages<Sub>
@@ -1480,8 +1362,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7582f56c-216d-4c5c-9dc5-025ab43ecdfc"
 >The message identifier is unique (variable NID_MESSAGE).<Sub>
@@ -1495,8 +1375,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="97754587-1f9f-4988-98d8-5f52ea8c19f1"
 >All currently not defined message identifiers are reserved for future use and shall be considered as invalid values (i.e. like spare values). Exception: reception of information only differing by Y with regards to the highest system version number X supported by on-board (refer to section 3.17.3.11 b)).<RequirementSets>
@@ -1530,8 +1408,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d824f5ac-f470-4a6f-8b4f-c9aaf0c21ca9"
 >Each message shall indicate its own length through the use of the variable L_MESSAGE.<Sub>
@@ -1545,8 +1421,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ced03d3b-a422-480e-9758-f526dc8d9704"
 >If the computed length of the message is not equal to the length given by L_MESSAGE, the entire message shall be rejected.<RequirementSets>
@@ -1580,8 +1454,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d4cb2e77-1960-4e01-847a-cba74a0c2bbb"
 >The messages shall be composed of predefined variables and packets.<RequirementSets>
@@ -1604,8 +1476,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="db5b93e7-ce12-4f78-85e6-50cd5771ad28"
 >For some messages, it shall be possible to add optional packets at the end of the message.<Sub>
@@ -1619,8 +1489,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f0c05ba2-b27a-4311-a316-ab17ee528c13"
 >The track to train messages possibly including optional packets are listed hereafter:<Sub>
@@ -1635,8 +1503,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e083e2cf-cfe8-40b1-a9cd-62b04beda2aa"
 >Track to Train message; Mess. ID; Optional packets<Sub>
@@ -1651,8 +1517,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6dc87cd2-d3b8-4d7f-a8f0-26e60b30a71e"
 >SR Authorisation; 2; 63<RequirementSets>
@@ -1676,8 +1540,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="34124e11-dd20-40b4-8914-44b6b7397ff1"
 >Movement Authority; 3; 21, 27, 49, 80, plus common optional packets<RequirementSets>
@@ -1701,8 +1563,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8430bb84-5228-4341-b64b-f578dfc94604"
 >Request To Shorten MA; 9; 49, 80<RequirementSets>
@@ -1726,8 +1586,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4dea631e-f3ef-4f67-8232-6d867ebc7c34"
 >General Message; 24; From RBC: 21, 27, plus common optional packets
@@ -1752,8 +1610,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a9c3b99f-ed94-4e53-9926-e303c3898b8a"
 >SH authorised; 28; 3, 44, 49<RequirementSets>
@@ -1777,8 +1633,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="17ca4691-52af-4571-83b8-d4e345bcc557"
 >MA with Shifted Location Reference; 33; 21, 27, 49, 80, plus common optional packets<RequirementSets>
@@ -1802,8 +1656,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="eca6c9fc-15bb-4b61-8142-88af3b8e685f"
 >Infill MA; 37; 5, 21, 27, 39, 40, 41, 44, 49, 51, 65, 66, 68, 69, 70, 71, 80, 88, 138, 139<RequirementSets>
@@ -1838,8 +1690,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4f1c87c4-e4ca-4713-8aab-10813b7b539c"
 >The common optional packets are the following ones:<Sub>
@@ -1854,8 +1704,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4146bbc7-6fd4-4a52-936a-edde9a4a9de8"
 >Common optional packets: 3, 5, 39, 40, 51, 41, 42, 44, 45, 52, 57, 58, 64, 65, 66, 68, 69, 70, 71, 72, 76, 79, 88, 131, 138, 139, 140<RequirementSets>
@@ -1900,8 +1748,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9e2c2d2b-5db5-4ed7-ac2d-0ff95a23e76f"
 >The train to track message 136 (Train Position Report) and 157 (SoM Position Report) may optionally include the following packets:
@@ -1927,8 +1773,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a2476658-20a9-49f0-acbb-06c1e19be244"
 >The train to track message 159 (Session Established) may optionally include the following packets:
@@ -1952,8 +1796,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="90bce21e-3afe-431c-8700-6c7fe2de45d1"
 >The train to track message 132 (MA request) may optionally include the following packet:
@@ -1988,8 +1830,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7d71a355-e521-4949-bfde-5875d67b24da"
 >If needed to obtain an integer number of bytes, padding shall be added at the end of the message.<RequirementSets>
@@ -2012,8 +1852,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="81df97da-0055-4182-8cfa-2e7151d418a2"
 >Standard format of a radio message from track to train :<Sub>
@@ -2027,8 +1865,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5c903f7a-3a0b-4f2c-b5d6-539511db107f"
 >Format:<Sub>
@@ -2042,8 +1878,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f0076437-9fda-4458-ba32-6828f45b673e"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -2066,8 +1900,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cf2805c4-5a4b-4523-83fe-cdb8a237ae02"
 >1; NID_MESSAGE; Message Identification Number<RequirementSets>
@@ -2090,8 +1922,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="82e7d2b9-7454-4477-86cb-56c4284c5805"
 >2; L_MESSAGE; Message length including everything (from field 1 to padding inclusive).<RequirementSets>
@@ -2114,8 +1944,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8a3dc688-6e8e-4b82-9f18-b620f2563da4"
 >3; T_TRAIN; Time Stamp from RBC (see sections 3.16.3.2 &amp; 3.16.3.3).<RequirementSets>
@@ -2138,8 +1966,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="02fbe773-2f2b-44cb-af6d-ad5a1007bc21"
 >4; M_ACK; Indicates whether the message must be acknowledged (or not) by the on-board equipment (message no 146).<RequirementSets>
@@ -2162,8 +1988,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e468c62e-2f44-4537-8f05-a2cb54053c5f"
 >5; NID_LRBG; Identification Number of LRBG.<RequirementSets>
@@ -2186,8 +2010,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d20524c1-6ba4-480a-bd24-bc7974a75bae"
 >; variables as required by NID_MESSAGE; If needed for this message. Used when sending variables which are not included in a packet.<RequirementSets>
@@ -2210,8 +2032,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="03beec16-ee17-413a-9ab6-918853fa0365"
 >; packets as required by NID_MESSAGE; If needed for this message.<RequirementSets>
@@ -2234,8 +2054,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c016a7eb-8e9f-437b-81e0-3199105e99d5"
 >; Optional packets; Refer to section 8.4.4.4 of this document.<RequirementSets>
@@ -2258,8 +2076,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4c8a4132-7bb4-4f31-a722-243029ade997"
 >; Padding; If required.<RequirementSets>
@@ -2293,8 +2109,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="afc8b8af-1acf-4aef-9196-e2b3c2cb08c7"
 >Note: In section 8.7 giving the contents of the messages, the padding information is intentionally omitted.<RequirementSets>
@@ -2317,8 +2131,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8b05174c-7418-4aa3-8266-be449e34d9a9"
 >The track to train message 39 (Acknowledgement of termination of a communication session) shall include the variable M_ACK set to 0. Justification: see 3.5.5.3.<RequirementSets>
@@ -2352,8 +2164,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4f862598-5b52-40f8-aacb-9a69788354f6"
 >Standard format of a radio message from train to track:<Sub>
@@ -2367,8 +2177,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7edd2a86-182f-43d6-8e59-5142559a4ff3"
 >Format:<Sub>
@@ -2382,8 +2190,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8c07bab1-7775-4047-b494-6d8a76f921b2"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -2406,8 +2212,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="da7cc842-3a09-477b-99d8-40a002b87654"
 >1; NID_MESSAGE; Message Identification Number<RequirementSets>
@@ -2430,8 +2234,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="011c880b-289b-4a14-9aac-6be390fb2d5e"
 >2; L_MESSAGE; Message length including everything (from field 1 to padding inclusive).<RequirementSets>
@@ -2454,8 +2256,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5756b4c0-e9f6-4178-9165-7c85cd475bff"
 >3; T_TRAIN; Time Stamp from Train (see chapter 3 - Data Consistency).<RequirementSets>
@@ -2478,8 +2278,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5c6c2aa3-8235-435f-b1cb-f509abcd2faf"
 >4; NID_ENGINE; Identity of the train.<RequirementSets>
@@ -2502,8 +2300,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="914ccc2d-ceea-45e5-bdae-3ee2555a8bd7"
 >5; variables as required by NID_MESSAGE; If needed for this message. Used when sending variables which are not included in a packet.<RequirementSets>
@@ -2526,8 +2322,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d8641a6b-2102-4978-b459-3cc6cde67e1d"
 >6; Packet 0 or 1; Train-to-track packet type 0 - Position report, or packet type 1 - Position report based on two balise groups. Not included in messages 146, 154, 155, 156 and 159.<RequirementSets>
@@ -2550,8 +2344,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e5e54c3e-22f4-4fbc-bd0d-344787729291"
 >7; Other Packets as required by NID_MESSAGE; (only for message 129)<RequirementSets>
@@ -2574,8 +2366,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="89109b62-03f3-40e7-9c47-adc40d01df20"
 >8; Optional packets;<RequirementSets>
@@ -2598,8 +2388,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b3d07008-3960-4acf-8011-4bd38e047f9c"
 >; Padding; If required.<RequirementSets>
@@ -2633,8 +2421,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d7886176-05a3-40fb-ae8b-72173520a373"
 >Exception:  The position report (packet 0 or packet 1) shall not be included in the following messages:
@@ -2663,8 +2449,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c97061bc-5341-473d-b864-bbba102b8297"
 >Note: In section 8.6 giving the contents of the messages, the padding information is intentionally omitted.<RequirementSets>
@@ -2721,8 +2505,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f0d232ed-e430-4633-bfff-7025cfa2ee21"
 >List of radio Messages<Sub>
@@ -2736,8 +2518,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a665720c-74b7-441d-98f1-a809a4df01e0"
 >Introduction<Sub>
@@ -2751,8 +2531,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="061101db-6ff7-4abd-a31b-be3208894a8b"
 >This section identifies the radio messages with corresponding Message Identifier (&quot;Mes. Id.&quot;) and Message Name. It also gives a list of the version-invariant messages.<RequirementSets>
@@ -2775,8 +2553,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a827fe0e-7282-41ae-bb34-6c8b76aa2abe"
 >&quot;Type&quot; defines whether a message is to be sent as normal priority (N) or as high priority data (E), as defined in Euroradio specifications.<RequirementSets>
@@ -2810,8 +2586,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d61fa21a-8857-4213-9ba2-a1e1919bc6bd"
 >Train to Track radio messages<Sub>
@@ -2825,8 +2599,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7343e974-e768-4f1d-8cfe-b92d91de8bb4"
 >Mes. Id.; Message Name; Type; Invariant; Transmitted to<RequirementSets>
@@ -2849,8 +2621,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d00ed482-4e7b-4dc9-a857-b5fb171adf5b"
 >129; Validated Train Data; N; No; RBC<RequirementSets>
@@ -2873,8 +2643,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4538d3bf-abc5-49c0-b3df-d7179bd3fe54"
 >130; Request for Shunting; N; No; RBC<RequirementSets>
@@ -2897,8 +2665,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="09bd805d-47dc-47e1-9489-e5fb2e24f885"
 >132; MA Request; N; No; RBC<RequirementSets>
@@ -2921,8 +2687,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1bf8b9b6-79f5-474e-b31e-1e946b2adaf1"
 >136; Train Position Report; N; No; RBC, RIU<RequirementSets>
@@ -2945,8 +2709,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6dfcd9dd-db04-495f-96eb-7eb953e4b3c9"
 >137; Request to shorten MA is granted; N; No; RBC<RequirementSets>
@@ -2969,8 +2731,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6d1732ea-861d-4c65-954c-3c26b0a99c1b"
 >138; Request to shorten MA is rejected; N; No; RBC<RequirementSets>
@@ -2993,8 +2753,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3f4bddf9-98d3-42ec-9139-6a3d3913523d"
 >146; Acknowledgement; N; No; RBC, RIU<RequirementSets>
@@ -3017,8 +2775,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1d5d1613-e3b5-4dc3-ac17-1785740b57a4"
 >147; Acknowledgement of Emergency Stop; N; No; RBC<RequirementSets>
@@ -3041,8 +2797,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2255259b-9293-4048-ad34-6b1e307f7472"
 >149; Track Ahead Free Granted; N; No; RBC<RequirementSets>
@@ -3065,8 +2819,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d3955e28-f016-43ba-aa05-ed187deb9195"
 >150; End of Mission; N; No; RBC<RequirementSets>
@@ -3089,8 +2841,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cdb98225-48c8-4f17-90bd-9983218915d7"
 >153; Radio infill request; N; No; RIU<RequirementSets>
@@ -3113,8 +2863,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="29ac8b57-887f-4420-8b7b-91bb1e505d65"
 >154; No compatible version supported; N; Yes; RBC, RIU<RequirementSets>
@@ -3137,8 +2885,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9934dc4b-5b76-4e42-9f4c-b7efb6c87c30"
 >155; Initiation of a communication session; N; Yes; RBC, RIU<RequirementSets>
@@ -3161,8 +2907,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="19c4b8ef-f85a-4b84-8eff-203e8b462604"
 >156; Termination of a communication session; N; Yes; RBC, RIU<RequirementSets>
@@ -3185,8 +2929,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f3ff7f4d-3f24-4101-8ad4-d2902c011869"
 >157; SoM Position Report; N; No; RBC<RequirementSets>
@@ -3209,8 +2951,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4c2b803e-1b6e-406f-b450-45c71272cd6b"
 >158; Text message acknowledged by driver; N; No; RBC<RequirementSets>
@@ -3233,8 +2973,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6db08158-68d4-49a4-9b0c-24890ae05196"
 >159; Session Established; N; No; RBC, RIU<RequirementSets>
@@ -3268,8 +3006,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1d81d0cb-d507-4c7b-9d7d-f159644f96f0"
 >Track to Train radio messages<Sub>
@@ -3283,8 +3019,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="62358e11-608f-4b04-af53-14c7ae4bacc2"
 >Mes. Id.; Message Name; Type; Invariant; Transmitted by<RequirementSets>
@@ -3307,8 +3041,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d97a231f-6ef1-4300-9bd9-d3dba7d434bd"
 >2; SR Authorisation; N; No; RBC<RequirementSets>
@@ -3331,8 +3063,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c04116c0-24b6-4d81-ae02-cff4fa993bef"
 >3; Movement Authority; N; No; RBC<RequirementSets>
@@ -3355,8 +3085,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="21c031bd-8f98-4fee-9fc5-f8c7a8b94fc3"
 >6; Recognition of exit from TRIP mode; N; No; RBC<RequirementSets>
@@ -3379,8 +3107,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="64dae4f0-7a7b-4908-8fa8-6f082446f198"
 >8; Acknowledgement of Train Data; N; No; RBC<RequirementSets>
@@ -3403,8 +3129,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="20a7a00d-396e-453b-8cd0-0a2ec8f83340"
 >9; Request to Shorten MA; N; No; RBC<RequirementSets>
@@ -3427,8 +3151,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f6e5eaf6-2bea-486e-b3f7-3e854c745b5d"
 >15; Conditional Emergency Stop; E or N; No; RBC<RequirementSets>
@@ -3451,8 +3173,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0043347f-c382-4046-b7ae-6c3e73575ec6"
 >16; Unconditional Emergency Stop; E or N; No; RBC<RequirementSets>
@@ -3475,8 +3195,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a911a02d-c12c-41f6-9111-27edfeceb382"
 >18; Revocation of Emergency Stop; N; No; RBC<RequirementSets>
@@ -3499,8 +3217,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7791130c-94a3-4a45-9437-4a4835707e9a"
 >24; General message; N; No; RBC, RIU<RequirementSets>
@@ -3523,8 +3239,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a2ff07ed-af73-4d18-8233-2001d2d071a4"
 >27; SH Refused; N; No; RBC<RequirementSets>
@@ -3547,8 +3261,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="38d45e49-f55c-4765-9dfc-1faf09f9a446"
 >28; SH Authorised; N; No; RBC<RequirementSets>
@@ -3571,8 +3283,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="97eca6f5-ba51-4c2e-a71f-3e5752290f21"
 >33; MA with Shifted Location Reference; N; No; RBC<RequirementSets>
@@ -3595,8 +3305,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2c9bebd4-e758-4982-ae9b-92e657bfcba2"
 >34; Track Ahead Free Request; N; No; RBC<RequirementSets>
@@ -3619,8 +3327,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6e740969-1d8d-40d5-bcaf-7bf18e08aa4b"
 >37; Infill MA; N; No; RIU<RequirementSets>
@@ -3643,8 +3349,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="bc294642-8437-469e-8c66-7be2171440c5"
 >40; Train Rejected; N; No; RBC<RequirementSets>
@@ -3667,8 +3371,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="71740f57-d219-41b2-93f8-319c302b1afa"
 >32; RBC/RIU System Version; N; Yes; RBC, RIU<RequirementSets>
@@ -3691,8 +3393,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5c22942d-5616-44c5-8707-c8edf2889ba9"
 >38; Initiation of a communication session; N; Yes; RBC<RequirementSets>
@@ -3715,8 +3415,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6091731d-92bd-4133-aff2-790f6f482dbf"
 >39; Acknowledgement of termination of a communication session; N; Yes; RBC, RIU<RequirementSets>
@@ -3739,8 +3437,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ea01ea66-b8e6-438d-93a4-4207dbd3797f"
 >41; Train Accepted; N; No; RBC<RequirementSets>
@@ -3763,8 +3459,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="54a97260-e9dd-4150-8cba-095ed5a8f0d6"
 >43; SoM position report confirmed by RBC; N; No; RBC<RequirementSets>
@@ -3787,8 +3481,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8de65de0-6db2-4a35-9c6c-94bdb2aa4cc5"
 >45; Assignment of coordinate system; N; No; RBC<RequirementSets>
@@ -3834,8 +3526,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="28c7aa97-a924-4388-89ab-d7fbda1d7c1a"
 >Definition of Radio Messages from Train to Track<Sub>
@@ -3849,8 +3539,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="230ba662-a277-415f-bcf3-6add4edfc710"
 >Message 129: Validated Train Data<Sub>
@@ -3864,8 +3552,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c130446d-d4d4-4a39-8b29-53c5df3b5177"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -3888,8 +3574,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4c109f90-966c-4202-93f8-a66c21964f25"
 >1; NID_MESSAGE;<RequirementSets>
@@ -3912,8 +3596,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c394072b-5ccc-4f02-83ca-030f9a7b59d6"
 >2; L_MESSAGE;<RequirementSets>
@@ -3936,8 +3618,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="51682c39-49ab-4ed1-875d-e244f8b91b95"
 >3; T_TRAIN;<RequirementSets>
@@ -3960,8 +3640,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3ac64b50-c74e-4254-be73-259fb5466b4f"
 >4; NID_ENGINE;<RequirementSets>
@@ -3984,8 +3662,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7c52a141-a336-45c4-8933-e8521c8b7522"
 >5; Packet 0 or 1;<RequirementSets>
@@ -4008,8 +3684,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="03f798fa-1890-4c9a-b975-9d37d4cbfd71"
 >6; Train data; Train - track packet type 11.<RequirementSets>
@@ -4043,8 +3717,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="acf47cdb-9433-4fbe-b66f-419fece778bd"
 >Message 130: Request for Shunting<Sub>
@@ -4058,8 +3730,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3347adb1-9177-4398-a0f5-061fe50d35cb"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -4082,8 +3752,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ec079598-670c-4c4c-9b4b-522eb377eacf"
 >1; NID_MESSAGE;<RequirementSets>
@@ -4106,8 +3774,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ae8e9b38-1f8d-4043-9b1a-47e161fb1d55"
 >2; L_MESSAGE;<RequirementSets>
@@ -4130,8 +3796,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d6b2c059-6bf8-4097-bbec-0c06656b3e70"
 >3; T_TRAIN;<RequirementSets>
@@ -4154,8 +3818,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="381e47f5-126e-425d-82ca-c6bd3f298786"
 >4; NID_ENGINE;<RequirementSets>
@@ -4178,8 +3840,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f6a07df8-0a38-405a-ac82-e476c6f8f49b"
 >5; Packet 0 or 1;<RequirementSets>
@@ -4213,8 +3873,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e0cc7640-41db-4f00-b6f3-086b5cf064f6"
 >Message 132: MA Request<Sub>
@@ -4228,8 +3886,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ed655b1d-193c-41db-b47e-7181f34bcf93"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -4252,8 +3908,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8de66288-ba8b-49f2-a9cc-e1cd1b848fa3"
 >1; NID_MESSAGE;<RequirementSets>
@@ -4276,8 +3930,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="562e9d9d-f160-4726-9fdd-0192ae0ac13a"
 >2; L_MESSAGE;<RequirementSets>
@@ -4300,8 +3952,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="422bfd78-6a90-4d9b-8000-8670a93a76db"
 >3; T_TRAIN;<RequirementSets>
@@ -4324,8 +3974,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="00db9178-25bc-425f-9d84-def8931cd919"
 >4; NID_ENGINE;<RequirementSets>
@@ -4348,8 +3996,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="706d4b2b-fef4-4426-a33a-c820303c26bd"
 >5; Q_MARQSTREASON;<RequirementSets>
@@ -4372,8 +4018,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="60fb8ae5-aecd-4fcf-aa69-ec41649b9c2f"
 >6; Packet 0 or 1;<RequirementSets>
@@ -4396,8 +4040,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c127eb4e-6c45-4dbe-8365-8279e347b15c"
 >7; Optional packets;<RequirementSets>
@@ -4431,8 +4073,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3bb3db5b-9c3d-4113-bc32-973de664a85a"
 >Message 136: Train Position Report<Sub>
@@ -4446,8 +4086,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b1c8fd49-21cc-4ec8-aebb-67e446dba542"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -4470,8 +4108,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7a161d4e-9daf-4632-afbc-9c0ba1b37e6c"
 >1; NID_MESSAGE;<RequirementSets>
@@ -4494,8 +4130,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8512700f-a6d7-4b0c-a289-782c95b3ff9c"
 >2; L_MESSAGE;<RequirementSets>
@@ -4518,8 +4152,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="57f6f903-9f6e-4b2c-8772-6ba6ca0aec3f"
 >3; T_TRAIN;<RequirementSets>
@@ -4542,8 +4174,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1ad3279a-9643-4da5-9373-74edaa89c5fb"
 >4; NID_ENGINE;<RequirementSets>
@@ -4566,8 +4196,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2cede8a1-5372-48a2-b195-db43cc0d3c3f"
 >5; Packet 0 or 1;<RequirementSets>
@@ -4590,8 +4218,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6133d02d-e7a6-49f8-b647-7da1e187169e"
 >6; Optional packets;<RequirementSets>
@@ -4625,8 +4251,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a923ad08-9cd1-4b6d-9132-8fec6102d784"
 >Message 137: Request to Shorten MA is granted<Sub>
@@ -4640,8 +4264,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="34310828-fe10-4774-8849-b61825750a0c"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -4664,8 +4286,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5e4ad049-6ea4-405f-bfa5-b4c2d8e45cb0"
 >1; NID_MESSAGE;<RequirementSets>
@@ -4688,8 +4308,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="261a475b-d31f-4ce5-9afb-00261f97690d"
 >2; L_MESSAGE;<RequirementSets>
@@ -4712,8 +4330,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8a717d40-be67-4c40-9ad3-906f1dc858dc"
 >3; T_TRAIN;<RequirementSets>
@@ -4736,8 +4352,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4c77a394-0e97-4f72-8d22-f453f4fa543c"
 >4; NID_ENGINE;<RequirementSets>
@@ -4760,8 +4374,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b5366a6e-553d-41fb-ad64-011480b5e94b"
 >5; T_TRAIN; Time stamp contained in the request.<RequirementSets>
@@ -4784,8 +4396,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0889b917-7df0-4f96-a8ea-95d3dd0f861a"
 >6; Packet 0 or 1;<RequirementSets>
@@ -4819,8 +4429,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e69fe417-33db-4400-94f9-091961d6b6db"
 >Message 138: Request to Shorten MA is rejected<Sub>
@@ -4834,8 +4442,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f80e2fd8-18ba-4d65-8d01-b3b7d02188eb"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -4858,8 +4464,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="96878f91-b582-496f-91e0-5487c3e4e59a"
 >1; NID_MESSAGE;<RequirementSets>
@@ -4882,8 +4486,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="198efbaa-a8cc-4791-8049-8a0299b36d63"
 >2; L_MESSAGE;<RequirementSets>
@@ -4906,8 +4508,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="eefac400-820c-4a97-8ac7-987e21cf3830"
 >3; T_TRAIN;<RequirementSets>
@@ -4930,8 +4530,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f671c941-c8dc-478e-9e1f-915872850992"
 >4; NID_ENGINE;<RequirementSets>
@@ -4954,8 +4552,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e39baccd-996a-49f1-a03e-644ef897d97b"
 >5; T_TRAIN; Time stamp contained in the request.<RequirementSets>
@@ -4978,8 +4574,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2c9b762d-4604-476c-a9af-5f9ed8798635"
 >6; Packet 0 or 1;<RequirementSets>
@@ -5013,8 +4607,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1195dd4d-4d7b-47af-8412-ae87da2cc594"
 >Message 146: Acknowledgement<Sub>
@@ -5028,8 +4620,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7939126b-8875-473e-9dbd-875ba788ef19"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -5052,8 +4642,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="840e412d-463b-47f7-9f1d-cccb059efb62"
 >1; NID_MESSAGE;<RequirementSets>
@@ -5076,8 +4664,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e5667077-5de2-4c3e-af86-68a5be08a113"
 >2; L_MESSAGE;<RequirementSets>
@@ -5100,8 +4686,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4f75e0bd-10ea-4605-aaf5-c2b8f7d5d38d"
 >3; T_TRAIN;<RequirementSets>
@@ -5124,8 +4708,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="edc5e32c-257d-4832-877f-8cfb5dfc00f6"
 >4; NID_ENGINE;<RequirementSets>
@@ -5148,8 +4730,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fa9b34c3-9a6a-4a02-b094-d8188d254f8d"
 >5; T_TRAIN; Time stamp contained in the message that is acknowledged.<RequirementSets>
@@ -5183,8 +4763,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d0c52cba-95a5-4b9f-a459-f68e07f13e33"
 >Message 147: Acknowledgement of Emergency Stop<Sub>
@@ -5198,8 +4776,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f2f984e0-e20e-4092-8f92-a188ddc12068"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -5222,8 +4798,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c99e85b2-17b6-42ce-9b97-dbb17591f957"
 >1; NID_MESSAGE;<RequirementSets>
@@ -5246,8 +4820,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="353d80f7-d37e-4952-87d6-c993f0d146d7"
 >2; L_MESSAGE;<RequirementSets>
@@ -5270,8 +4842,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2021b9de-fee0-4e23-89ca-1093a14beb16"
 >3; T_TRAIN;<RequirementSets>
@@ -5294,8 +4864,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="71443874-c4de-4da6-9d2f-f6668f13b126"
 >4; NID_ENGINE;<RequirementSets>
@@ -5318,8 +4886,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="077dae9c-0d63-4b59-b4e5-ac197edca727"
 >5; NID_EM; Identification Number of the acknowledged Emergency Message.<RequirementSets>
@@ -5342,8 +4908,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9e5ae867-ff49-400d-8172-3bc629e506d6"
 >6; Q_EMERGENCYSTOP;<RequirementSets>
@@ -5366,8 +4930,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="944df599-e5d3-4360-9b07-6e36bc0025f4"
 >7; Packet 0 or 1;<RequirementSets>
@@ -5401,8 +4963,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2d050b09-6a5c-4bb4-bf0f-c438a6b5741c"
 >Message 149: Track Ahead Free Granted<Sub>
@@ -5416,8 +4976,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="81d3699d-ff41-49c0-ae3d-036dd8efa31c"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -5440,8 +4998,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="aebab1a5-d7eb-4483-b1fb-4d494d19ece9"
 >1; NID_MESSAGE;<RequirementSets>
@@ -5464,8 +5020,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="73d010ae-6637-4f5a-aa4c-0b6dbe9f3c2a"
 >2; L_MESSAGE;<RequirementSets>
@@ -5488,8 +5042,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="14cdaf65-b7b4-48bd-be26-ab3a6c03f33b"
 >3; T_TRAIN;<RequirementSets>
@@ -5512,8 +5064,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="14a35615-f26c-4b61-a906-f2e64cb6ac19"
 >4; NID_ENGINE;<RequirementSets>
@@ -5536,8 +5086,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="81e40582-8c1f-4854-b6a4-c389c5b3ff6b"
 >5; Packet 0 or 1;<RequirementSets>
@@ -5571,8 +5119,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3178d11d-e209-47c2-ab1a-54caa8ca5545"
 >Message 150: End of Mission<Sub>
@@ -5586,8 +5132,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9ccac481-92ba-433d-b21c-6d6ee8951df4"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -5610,8 +5154,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="32e9bb4f-cc73-4be6-8a71-c4006cf68928"
 >1; NID_MESSAGE;<RequirementSets>
@@ -5634,8 +5176,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="194a6507-f64b-4bf2-9881-d8497cb30d7a"
 >2; L_MESSAGE;<RequirementSets>
@@ -5658,8 +5198,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7e2d6d39-15b7-4051-b3d6-102637c8ee8c"
 >3; T_TRAIN;<RequirementSets>
@@ -5682,8 +5220,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ab60cd45-b6cb-478d-863b-d24b5d00c448"
 >4; NID_ENGINE;<RequirementSets>
@@ -5706,8 +5242,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6b12d15c-87f2-48ff-849a-2279b0777014"
 >5; Packet 0 or 1;<RequirementSets>
@@ -5741,8 +5275,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="af528fe1-fc95-44fc-a0df-6d10538bab14"
 >Message 153: Radio infill request<Sub>
@@ -5756,8 +5288,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="58786d62-5ed3-4c81-ab4a-1bd4748693a8"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -5780,8 +5310,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="53f12506-daee-4c85-9053-02c8bf17af0b"
 >1; NID_MESSAGE;<RequirementSets>
@@ -5804,8 +5332,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="eedf8dd8-1bb9-4731-b5a8-893561261572"
 >2; L_MESSAGE;<RequirementSets>
@@ -5828,8 +5354,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0d1d67de-b4a4-42bb-a50b-f282fc413af7"
 >3; T_TRAIN;<RequirementSets>
@@ -5852,8 +5376,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="320e774e-8a78-49e6-adf8-05ac649a873f"
 >4; NID_ENGINE;<RequirementSets>
@@ -5876,8 +5398,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="584989db-990b-4f2d-987b-dcdb0b50cd1f"
 >5; NID_C; identity of the country of the &quot;target&quot; main balise group<RequirementSets>
@@ -5900,8 +5420,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e853e743-549d-456a-b585-1e8370ab45c8"
 >6; NID_BG; identity of the &quot;target&quot; main balise group<RequirementSets>
@@ -5924,8 +5442,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4208500d-8fd0-4c2f-8199-7c0ac6e67083"
 >7; Q_INFILL; start; end of infill<RequirementSets>
@@ -5948,8 +5464,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9690488f-2920-478c-b49d-6223a8bba390"
 >8; Packet 0 or 1;<RequirementSets>
@@ -5983,8 +5497,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a7e6ae33-fe52-489d-90a6-0563e959f98f"
 >Message 154: No compatible version supported<Sub>
@@ -5998,8 +5510,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e51a6acc-ae90-4320-8b51-423d35a3614f"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -6022,8 +5532,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="180abffc-1e69-479f-9d27-b361a511b724"
 >1; NID_MESSAGE;<RequirementSets>
@@ -6046,8 +5554,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="771097a5-70ee-4e32-ad57-cc3370e9c2df"
 >2; L_MESSAGE;<RequirementSets>
@@ -6070,8 +5576,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5fa92a17-4bdd-45f7-af50-8fb767b1f5df"
 >3; T_TRAIN;<RequirementSets>
@@ -6094,8 +5598,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="be83abf1-33e3-48e8-81f5-7272786632ac"
 >4; NID_ENGINE;<RequirementSets>
@@ -6129,8 +5631,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="58da8d69-4dcb-45db-96ea-d5985a650330"
 >Message 155: Initiation of a communication session<Sub>
@@ -6144,8 +5644,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a91fb729-b2aa-4310-999e-ba9a3fd00496"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -6168,8 +5666,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="193e4ff3-c085-4881-89f4-4bba951aae20"
 >1; NID_MESSAGE;<RequirementSets>
@@ -6192,8 +5688,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f122a1cb-426c-4f27-b1b2-521eeb9d7655"
 >2; L_MESSAGE;<RequirementSets>
@@ -6216,8 +5710,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="974dafe8-70ad-409f-a13c-435c0f1b8be1"
 >3; T_TRAIN;<RequirementSets>
@@ -6240,8 +5732,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4faba43d-d002-4947-afce-02a4abef7460"
 >4; NID_ENGINE;<RequirementSets>
@@ -6275,8 +5765,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a74ee6b4-a0ba-40bb-b83f-fd66efae3fb1"
 >Message 156: Termination of a communication session<Sub>
@@ -6290,8 +5778,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1aa078d1-2055-429a-a7a0-2c917203f444"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -6314,8 +5800,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8c9ce563-d6d0-4490-a402-5a4bcf54598c"
 >1; NID_MESSAGE;<RequirementSets>
@@ -6338,8 +5822,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a4fe513a-ba78-4d81-a472-2d562542fef9"
 >2; L_MESSAGE;<RequirementSets>
@@ -6362,8 +5844,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4d45f289-023e-4ed4-a8b2-f23bc5f23bbf"
 >3; T_TRAIN;<RequirementSets>
@@ -6386,8 +5866,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="78ebe076-c514-44ee-869e-00b94b6a4377"
 >4; NID_ENGINE;<RequirementSets>
@@ -6421,8 +5899,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="dff3b2f7-dd70-412e-8eef-75f2fefa03c9"
 >Message 157: SoM Position Report<Sub>
@@ -6436,8 +5912,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0c345b71-9eb8-4cd3-8911-29017704cf21"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -6460,8 +5934,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fd5c097e-b4c0-466b-850d-99f930692988"
 >1; NID_MESSAGE;<RequirementSets>
@@ -6484,8 +5956,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7d3615d3-8bd3-4134-8d72-fcfc017f1749"
 >2; L_MESSAGE;<RequirementSets>
@@ -6508,8 +5978,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4608349b-50d4-4c14-9c72-18d03706ed89"
 >3; T_TRAIN;<RequirementSets>
@@ -6532,8 +6000,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9f0eacfe-16d9-4bf2-936d-fe62a645918e"
 >4; NID_ENGINE;<RequirementSets>
@@ -6556,8 +6022,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="21f08a64-2ded-47ef-b209-47e6f1df9f9f"
 >5; Q_STATUS;<RequirementSets>
@@ -6580,8 +6044,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="bbaed3c1-8068-4694-b20d-a574f61aff20"
 >6; Packet 0 or 1;<RequirementSets>
@@ -6604,8 +6066,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0cec34e4-d359-4da6-bf72-ec307144efab"
 >7; Optional packets;<RequirementSets>
@@ -6639,8 +6099,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e806cca0-de83-4ab3-bc0d-a597cceedaa8"
 >Message 158: Text Message Acknowledged by Driver<Sub>
@@ -6654,8 +6112,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="697efb9a-8bcd-430e-a5e5-7aae2c7a1821"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -6678,8 +6134,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="26e127ec-3ecd-43a3-ae47-c2704005b4a4"
 >1; NID_MESSAGE;<RequirementSets>
@@ -6702,8 +6156,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a3ce8670-24f4-4e73-bd2f-994f7a301d88"
 >2; L_MESSAGE;<RequirementSets>
@@ -6726,8 +6178,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="eae00cc5-369e-42f3-93f9-359ac766060d"
 >3; T_TRAIN;<RequirementSets>
@@ -6750,8 +6200,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d0240bd3-94f2-46e9-82b8-06962f660f26"
 >4; NID_ENGINE;<RequirementSets>
@@ -6774,8 +6222,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="252f27c1-d5e8-4400-b26b-ae4c8ed381f3"
 >5; NID_TEXTMESSAGE; Identity of the text message that the driver has acknowledged.<RequirementSets>
@@ -6798,8 +6244,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c431d34d-e06e-4a5a-b181-1d1dcc4aca3b"
 >6; Packet 0 or 1;<RequirementSets>
@@ -6833,8 +6277,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="83a95861-1254-445f-a687-abfbc0ecc275"
 >Message 159: Session established<Sub>
@@ -6848,8 +6290,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1a0f1113-45c3-4846-8b62-cbd6e3fec98d"
 >Field No.; VARIABLE/ PACKET; Remarks<RequirementSets>
@@ -6872,8 +6312,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6d607aea-ecdf-49ba-94cf-820077be16f5"
 >1; NID_MESSAGE;<RequirementSets>
@@ -6896,8 +6334,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="da48d790-6e99-4ede-b382-33683f89734e"
 >2; L_MESSAGE;<RequirementSets>
@@ -6920,8 +6356,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="034e6081-8324-46a4-8701-9547536400ac"
 >3; T_TRAIN;<RequirementSets>
@@ -6944,8 +6378,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="81482df6-4bcd-4d73-987a-cd90bcffe361"
 >4; NID_ENGINE;<RequirementSets>
@@ -6968,8 +6400,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f5760847-4b49-4c61-8ca9-da687dc787ac"
 >5; Optional Packet;<RequirementSets>
@@ -7015,8 +6445,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d0b494bd-7957-4cdf-919f-a68726e4c31e"
 >Definition of Radio Messages from Track to Train<Sub>
@@ -7030,8 +6458,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="96e35d16-4055-40b8-811e-cb6738efd0c2"
 >Message 2: SR Authorisation<Sub>
@@ -7045,8 +6471,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cbfee9c2-2140-45a7-a66f-63c7cefedf60"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -7069,8 +6493,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0f2e193e-66b4-4dcf-9a50-b6e963e9c732"
 >1; NID_MESSAGE;<RequirementSets>
@@ -7093,8 +6515,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="231451ee-7b28-4033-9fbd-5d6a8545e926"
 >2; L_MESSAGE;<RequirementSets>
@@ -7117,8 +6537,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="388712c2-fe27-4991-a909-304753dbaa70"
 >3; T_TRAIN;<RequirementSets>
@@ -7141,8 +6559,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="98e62c6d-a6f1-4f99-af53-6d0ec0259a41"
 >4; M_ACK;<RequirementSets>
@@ -7165,8 +6581,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f516cf0b-ccbd-47ba-835e-74361fcc3c42"
 >5; NID_LRBG;<RequirementSets>
@@ -7189,8 +6603,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f10f8728-1e96-49c1-bc72-2a7ed7dca14a"
 >6; Q_SCALE;<RequirementSets>
@@ -7213,8 +6625,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="13ab2c85-748e-4895-a3c6-95ec5c0d9f08"
 >7; D_SR;<RequirementSets>
@@ -7237,8 +6647,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f281a173-764d-4113-9c05-01d56d592fee"
 >8; Optional packets;<RequirementSets>
@@ -7272,8 +6680,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e8c6ee53-8d52-44a6-9106-d841973941fd"
 >Message 3: Movement Authority<Sub>
@@ -7287,8 +6693,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5bbe54ae-db9c-441b-97ae-842e838baaa5"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -7311,8 +6715,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="52cc612c-a6d6-4c5a-9def-5688e665d963"
 >1; NID_MESSAGE;<RequirementSets>
@@ -7335,8 +6737,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4369669d-b85a-4789-aa03-c76dd2a0b3c3"
 >2; L_MESSAGE;<RequirementSets>
@@ -7359,8 +6759,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="60e404c2-dacc-4710-a28b-1c60922c2b37"
 >3; T_TRAIN;<RequirementSets>
@@ -7383,8 +6781,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="28502483-d264-4a9d-9ddb-a1bd2df1ce8a"
 >4; M_ACK;<RequirementSets>
@@ -7407,8 +6803,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8fcff81a-7fac-412d-81f0-35e0add73c2e"
 >5; NID_LRBG;<RequirementSets>
@@ -7431,8 +6825,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9701e3a2-ed1c-4b54-b3d4-25d45a3fe95e"
 >6; Level 2/3 Movement Authority; Packet 15<RequirementSets>
@@ -7455,8 +6847,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0f523029-412d-47d0-a85e-1a32fb383f3c"
 >7; Optional packets;<RequirementSets>
@@ -7490,8 +6880,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="51b5930a-1ad2-409e-9f84-5443e8f154d0"
 >Message 6: Recognition of exit from TRIP mode<Sub>
@@ -7505,8 +6893,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0709792b-7f5b-4fc2-b113-f1b825cb2407"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -7529,8 +6915,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="08a7f1c5-9976-4070-a898-08dd660c8bc4"
 >1; NID_MESSAGE;<RequirementSets>
@@ -7553,8 +6937,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b08e4d21-ec80-4e61-a419-776f847e1f52"
 >2; L_MESSAGE;<RequirementSets>
@@ -7577,8 +6959,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6654c019-1b7a-4ac5-9f0d-e51083328d7f"
 >3; T_TRAIN;<RequirementSets>
@@ -7601,8 +6981,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fd5e3e66-0f25-4f48-af63-33752b6ab316"
 >4; M_ACK;<RequirementSets>
@@ -7625,8 +7003,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6d8edc78-5194-4613-98f7-31b2c2f78d41"
 >5; NID_LRBG;<RequirementSets>
@@ -7660,8 +7036,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2cee38e9-4ac3-4eb5-a235-17b2c0e36064"
 >Message 8: Acknowledgement of Train Data<Sub>
@@ -7675,8 +7049,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2102371d-b5f6-4588-adbc-9de2c33b3530"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -7699,8 +7071,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="30f9a54a-7f8f-420c-a389-ab8e98e1629a"
 >1; NID_MESSAGE;<RequirementSets>
@@ -7723,8 +7093,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d1c0f221-242a-484c-b275-a23081cb8295"
 >2; L_MESSAGE;<RequirementSets>
@@ -7747,8 +7115,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5017a53b-9228-4e75-89f0-2b9ce47d67e3"
 >3; T_TRAIN;<RequirementSets>
@@ -7771,8 +7137,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="24e6f3b7-b31d-4630-9361-82a2e8240aa2"
 >4; M_ACK;<RequirementSets>
@@ -7795,8 +7159,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4408ebe1-8134-4a83-94bb-635fddc70dc5"
 >5; NID_LRBG;<RequirementSets>
@@ -7819,8 +7181,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5a7dbbbc-5fc9-418e-a4cc-5856cfd41bf5"
 >6; T_TRAIN; Reference to received train data message<RequirementSets>
@@ -7854,8 +7214,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a7c70cd2-b836-4684-9ca8-e4ee4cf4f621"
 >Message 9: Request to Shorten MA<Sub>
@@ -7869,8 +7227,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0df02762-0c16-4459-aec2-18494e862ef2"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -7893,8 +7249,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b42e44cb-53b4-478a-b1fb-db5b5aefcbe3"
 >1; NID_MESSAGE;<RequirementSets>
@@ -7917,8 +7271,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="83a87141-eea5-4cd9-bb89-9849ed4c644e"
 >2; L_MESSAGE;<RequirementSets>
@@ -7941,8 +7293,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6dc8487f-7d73-4fc0-870c-0050b6678ba4"
 >3; T_TRAIN;<RequirementSets>
@@ -7965,8 +7315,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="973f9ef1-d90e-4e03-8a97-5ba862847988"
 >4; M_ACK;<RequirementSets>
@@ -7989,8 +7337,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5712d3b0-7b0f-49aa-babe-aa622c859e7a"
 >5; NID_LRBG;<RequirementSets>
@@ -8013,8 +7359,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="57d61b1c-3b97-4a2b-9885-bcf7d03e30fb"
 >6; Level 2/3 Movement Authority; Packet 15<RequirementSets>
@@ -8037,8 +7381,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d175558d-2bb2-4e19-aba0-4c4a8ee41667"
 >7; Optional packet; Packet 80<RequirementSets>
@@ -8072,8 +7414,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="33e62917-dd34-4df6-ad24-d4c5147a5987"
 >Message 15: Conditional Emergency Stop<Sub>
@@ -8087,8 +7427,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="38862028-8311-41d9-ad73-71233b00b698"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -8111,8 +7449,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="00d90111-8cf5-4205-9605-58e3b735e252"
 >1; NID_MESSAGE;<RequirementSets>
@@ -8135,8 +7471,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0374f1f1-0f73-46da-9cee-b3d8f5b9fbe5"
 >2; L_MESSAGE;<RequirementSets>
@@ -8159,8 +7493,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3b6d4d7a-c1c6-45a1-9a13-2f58f543ffce"
 >3; T_TRAIN;<RequirementSets>
@@ -8183,8 +7515,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="81be1455-8b57-4735-9d15-0a2d9cc22723"
 >4; M_ACK;<RequirementSets>
@@ -8207,8 +7537,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7ba7ff83-7ac6-4bfc-866a-832356f678cd"
 >5; NID_LRBG;<RequirementSets>
@@ -8231,8 +7559,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ba99fd87-1d73-40cd-b9e7-163c1a5b7f68"
 >6; NID_EM; Identification Number of the Emergency Stop Message.<RequirementSets>
@@ -8255,8 +7581,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d9c316ae-8c31-49c3-9189-ed83e1563e90"
 >7; Q_SCALE;<RequirementSets>
@@ -8279,8 +7603,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c0a0302c-ec2f-45fa-abf1-9eb80ba59d58"
 >8; D_REF;<RequirementSets>
@@ -8303,8 +7625,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8fd9bb19-c087-475c-9925-1135b7e2523a"
 >9; Q_DIR;<RequirementSets>
@@ -8327,8 +7647,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="074e011d-e0b6-4a3d-bb02-9e4d5de7934a"
 >10; D_EMERGENCYSTOP; Distance between LRBG and the position reference to the emergency stop.<RequirementSets>
@@ -8362,8 +7680,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5b84aa5e-12e2-49e0-bafe-11832a934de5"
 >Message 16: Unconditional Emergency Stop<Sub>
@@ -8377,8 +7693,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="15d900b4-ccfd-41b8-b2b2-d7bd2ff3712d"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -8401,8 +7715,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b4e5ad7f-e469-4ac1-a5ed-a715a8993961"
 >1; NID_MESSAGE;<RequirementSets>
@@ -8425,8 +7737,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="28c9f95f-f65f-4bff-a969-4a2e7a925e8f"
 >2; L_MESSAGE;<RequirementSets>
@@ -8449,8 +7759,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="570efa27-51cf-4f8c-a87f-4fa92c9822a0"
 >3; T_TRAIN;<RequirementSets>
@@ -8473,8 +7781,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="975626bf-5783-4959-8d64-2043d7031210"
 >4; M_ACK;<RequirementSets>
@@ -8497,8 +7803,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="802ecd9f-a134-47c9-9042-4f31bbd166e5"
 >5; NID_LRBG;<RequirementSets>
@@ -8521,8 +7825,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c807a8d7-385f-4a00-8b35-2381ab4d5801"
 >6; NID_EM; Identification Number of the Emergency Stop Message.<RequirementSets>
@@ -8556,8 +7858,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5ce0c851-ac56-420a-a310-02c29ec898ca"
 >Message 18: Revocation of Emergency Stop<Sub>
@@ -8571,8 +7871,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ed1b7e34-17fc-49a9-ac99-f62a0a1afc30"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -8595,8 +7893,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="38476b93-c284-4743-b820-5a32db31deeb"
 >1; NID_MESSAGE;<RequirementSets>
@@ -8619,8 +7915,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="59631027-3100-4b17-8b0f-9b4c25f2280c"
 >2; L_MESSAGE;<RequirementSets>
@@ -8643,8 +7937,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9734bf29-4783-41c8-a83d-b5dd1f9e59ff"
 >3; T_TRAIN;<RequirementSets>
@@ -8667,8 +7959,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="70b07924-a97c-4387-a658-118ee1e11735"
 >4; M_ACK;<RequirementSets>
@@ -8691,8 +7981,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3c021d46-d475-455d-89f1-964a18cf302b"
 >5; NID_LRBG;<RequirementSets>
@@ -8715,8 +8003,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e4525d99-e97d-4e9a-9e3c-ae8524b5ba6a"
 >6; NID_EM; Identification Number of the Emergency Stop Message.<RequirementSets>
@@ -8750,8 +8036,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b6bf5b80-f375-47d6-b7b5-a9f901be75f0"
 >Message 24: General message<Sub>
@@ -8765,8 +8049,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d42d159d-399c-4f0c-b64f-5d84b07eb1df"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -8789,8 +8071,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fc2b0d6b-8022-4c97-896c-1dfbf82fc1d8"
 >1; NID_MESSAGE;<RequirementSets>
@@ -8813,8 +8093,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="96bce90f-dea0-4c7e-8202-faac9770b7f9"
 >2; L_MESSAGE;<RequirementSets>
@@ -8837,8 +8115,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6e8f4323-2b4b-4d94-b604-8a5b082a9bfc"
 >3; T_TRAIN;<RequirementSets>
@@ -8861,8 +8137,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f5555eef-435e-40bf-a703-0a51fce09fd0"
 >4; M_ACK;<RequirementSets>
@@ -8885,8 +8159,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="fe5b6f60-a8a9-4847-b47e-c864ee470f7b"
 >5; NID_LRBG;<RequirementSets>
@@ -8909,8 +8181,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c990aff2-1386-4c14-b420-3a11c78ae887"
 >6; Optional packets;<RequirementSets>
@@ -8944,8 +8214,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e3e20e24-efe7-4dde-bbe1-ef4ec96c445f"
 >Message 27: SH Refused<Sub>
@@ -8959,8 +8227,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e0f07bb2-eac0-48a3-8dd0-c48644a93498"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -8983,8 +8249,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c1921f01-652a-43a0-90fb-a6c43b15c41d"
 >1; NID_MESSAGE;<RequirementSets>
@@ -9007,8 +8271,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f19b89ce-b2ff-42a6-a420-f8bfa90c1373"
 >2; L_MESSAGE;<RequirementSets>
@@ -9031,8 +8293,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="533aef01-a7b0-47c3-9657-ee1ae797a0f6"
 >3; T_TRAIN;<RequirementSets>
@@ -9055,8 +8315,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a24929c8-0101-4521-824f-265e13107369"
 >4; M_ACK;<RequirementSets>
@@ -9079,8 +8337,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="544c55b8-4adb-437d-a42f-10c3d86a172a"
 >5; NID_LRBG;<RequirementSets>
@@ -9103,8 +8359,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="92c02ed3-64c4-4254-8066-3505ec5dadfb"
 >6; T_TRAIN; Time stamp of the shunting request.<RequirementSets>
@@ -9138,8 +8392,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e092d627-9a93-4224-bacf-76290eea5837"
 >Message 28: SH Authorised<Sub>
@@ -9153,8 +8405,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="80291550-b611-4b49-bcdc-2fcf8e0017e8"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -9177,8 +8427,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1a78f8c3-1473-411d-b230-cfa3bc7ab867"
 >1; NID_MESSAGE;<RequirementSets>
@@ -9201,8 +8449,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0253bf5e-de26-4478-8ba8-7c206576f048"
 >2; L_MESSAGE;<RequirementSets>
@@ -9225,8 +8471,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="11afceae-cbc2-4058-98e0-fa38e56c8dcf"
 >3; T_TRAIN;<RequirementSets>
@@ -9249,8 +8493,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a70d69eb-cab7-4570-8b23-010311ef0f56"
 >4; M_ACK;<RequirementSets>
@@ -9273,8 +8515,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a911a453-6ab6-42cc-b680-1b5050b88825"
 >5; NID_LRBG;<RequirementSets>
@@ -9297,8 +8537,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3a33cec6-ce20-4658-b166-8106a9728f15"
 >6; T_TRAIN; Time stamp of the shunting request.<RequirementSets>
@@ -9321,8 +8559,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ae8fbe10-57bd-4247-bb7b-2e50a9d059f7"
 >7; Optional packets;<RequirementSets>
@@ -9356,8 +8592,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2eda81e7-52ac-483d-91c9-169e8718de74"
 >Message 32: RBC/RIU System Version<Sub>
@@ -9371,8 +8605,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="dc46f4d9-6147-44d2-b26c-e999eb9ab223"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -9395,8 +8627,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="479f1579-c6c4-4d37-bca6-65c2fa12bb97"
 >1; NID_MESSAGE;<RequirementSets>
@@ -9419,8 +8649,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="22e91507-5c0f-42f8-9dab-1349ee87c523"
 >2; L_MESSAGE;<RequirementSets>
@@ -9443,8 +8671,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="607a3a22-f47d-4067-b5de-64b67056c023"
 >3; T_TRAIN;<RequirementSets>
@@ -9467,8 +8693,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7654ffdb-f6fc-418e-a613-6aff3e5da4f9"
 >4; M_ACK;<RequirementSets>
@@ -9491,8 +8715,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a649082f-fada-4d44-8eaf-dcdec5c4fa59"
 >5; NID_LRBG;<RequirementSets>
@@ -9515,8 +8737,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="298115e2-18d6-4747-8158-9c5ddf32a8c0"
 >6; M_VERSION; Version of the ERTMS/ETCS system.<RequirementSets>
@@ -9550,8 +8770,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e3117105-3ce2-4744-9f44-b3d27fe82522"
 >Message 33: MA with Shifted Location Reference<Sub>
@@ -9565,8 +8783,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ed6fa897-1be1-4025-9d03-ab3c0f48cdd1"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -9589,8 +8805,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0123c08b-279e-4b7a-83ba-538a77d3f2c6"
 >1; NID_MESSAGE;<RequirementSets>
@@ -9613,8 +8827,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4a3f40b4-9ecf-48d4-aa65-82156d5d1704"
 >2; L_MESSAGE;<RequirementSets>
@@ -9637,8 +8849,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="58db2e34-781f-4cf7-a190-e9735078853a"
 >3; T_TRAIN;<RequirementSets>
@@ -9661,8 +8871,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1eac02a7-f65f-491c-b129-64af269dda72"
 >4; M_ACK;<RequirementSets>
@@ -9685,8 +8893,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6d4f4840-da84-41cf-a910-29f79bd5a91d"
 >5; NID_LRBG;<RequirementSets>
@@ -9709,8 +8915,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="419d10d3-b696-49ee-9a6c-6815c48a59a1"
 >6; Q_SCALE;<RequirementSets>
@@ -9733,8 +8937,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e01dd30e-e06e-4bf6-a4ea-64228e0ff0c6"
 >7; D_REF; Reference Distance<RequirementSets>
@@ -9757,8 +8959,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f642eb96-8b1e-40fe-bd75-33c93ec8f0f8"
 >8; Level 2/3 Movement Authority; Packet 15<RequirementSets>
@@ -9781,8 +8981,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
 >9; Optional packets;<RequirementSets>
@@ -9816,8 +9014,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9f590dd5-5917-4dd1-bc6d-a17f6fff66a8"
 >Message 34: Track Ahead Free Request<Sub>
@@ -9831,8 +9027,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0c374445-fc23-42de-b8c0-beb8d32cc660"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -9855,8 +9049,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a8e1749b-687c-4f1f-9a0a-0d0a57a57753"
 >1; NID_MESSAGE;<RequirementSets>
@@ -9879,8 +9071,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a4864287-79ef-4dc8-8557-29df87f10031"
 >2; L_MESSAGE;<RequirementSets>
@@ -9903,8 +9093,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1e61e20d-a6d4-48b9-85e2-9ed7fb895367"
 >3; T_TRAIN;<RequirementSets>
@@ -9927,8 +9115,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="03b2263d-8a37-4293-99be-e6e4eb8f74a0"
 >4; M_ACK;<RequirementSets>
@@ -9951,8 +9137,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0f45a7b6-8329-4a07-81b6-9adaec8d94bf"
 >5; NID_LRBG;<RequirementSets>
@@ -9975,8 +9159,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="33dde37a-3f1e-483b-a868-d015ef1bac56"
 >6; Q_SCALE;<RequirementSets>
@@ -9999,8 +9181,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="29f36dd7-c647-40cf-9030-9f463cf415a7"
 >7; D_REF;<RequirementSets>
@@ -10023,8 +9203,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="edaf3b97-1fa8-4cac-9444-ef095299ccfe"
 >8; Q_DIR;<RequirementSets>
@@ -10047,8 +9225,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="53054485-2282-4b77-af7c-25fdf2c537b5"
 >9; D_TAFDISPLAY;<RequirementSets>
@@ -10071,8 +9247,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0cfa9536-6121-4619-a303-0054dd38ccbc"
 >10; L_TAFDISPLAY;<RequirementSets>
@@ -10106,8 +9280,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="00d98bf0-9d6e-4e2d-a5fb-90d444caf626"
 >Message 37: Infill MA<Sub>
@@ -10121,8 +9293,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1729a6a7-7ed6-4472-87b2-0c1792c912f9"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -10145,8 +9315,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e3bc53a0-c005-4a4f-b7ab-dd2b459c825d"
 >1; NID_MESSAGE;<RequirementSets>
@@ -10169,8 +9337,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="319453ba-ed99-4c93-8cf7-6dcf1bd5af75"
 >2; L_MESSAGE;<RequirementSets>
@@ -10193,8 +9359,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="037af489-8dec-41a9-97a7-0470e38d9512"
 >3; T_TRAIN;<RequirementSets>
@@ -10217,8 +9381,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6e4bd0d6-6e57-478e-ab35-ca9d380ddbf4"
 >4; M_ACK;<RequirementSets>
@@ -10241,8 +9403,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e07dc8f9-c375-4749-8624-70e32f014e6c"
 >5; NID_LRBG;<RequirementSets>
@@ -10265,8 +9425,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="522da3a6-5606-4157-a56b-8aaf15c0e080"
 >6; Infill Location Reference; Packet 136<RequirementSets>
@@ -10289,8 +9447,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="68874ec2-b9ba-4dbc-8c09-237df06879e8"
 >7; Level 1 Movement Authority; Packet 12<RequirementSets>
@@ -10313,8 +9469,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ff3f4cab-9a41-48d9-8f4a-097ad6efc249"
 >8; Optional packets;<RequirementSets>
@@ -10348,8 +9502,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0e6b5d89-69d9-43ff-8971-5f84c02aa2d2"
 >Message 38: Initiation of a communication session<Sub>
@@ -10363,8 +9515,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e7d25027-e072-4ed7-b0fc-db49a6e1b7a7"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -10387,8 +9537,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="98d6cd49-9a26-46aa-995e-8a64cca7cec7"
 >1; NID_MESSAGE;<RequirementSets>
@@ -10411,8 +9559,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="96dad3cb-0f5f-45aa-95c8-f58ce4e44d5f"
 >2; L_MESSAGE;<RequirementSets>
@@ -10435,8 +9581,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="25cdefa6-72ed-4ae5-a192-28e214e976dd"
 >3; T_TRAIN; always set to unknown<RequirementSets>
@@ -10459,8 +9603,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0e220815-8ec5-4409-83e7-b4cefe7834d5"
 >4; M_ACK;<RequirementSets>
@@ -10483,8 +9625,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3317fe6d-f571-4549-b9a8-cac37e1c1eaa"
 >5; NID_LRBG; always set to unknown<RequirementSets>
@@ -10518,8 +9658,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1cc80620-3b71-4701-bf52-e5356ffd6ac3"
 >Message 39: Acknowledgement of termination of a communication session<Sub>
@@ -10533,8 +9671,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e07afa7a-838a-41e4-ae05-017662fda0ef"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -10557,8 +9693,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b351109f-973f-42b5-b93a-2c11ae369ab1"
 >1; NID_MESSAGE;<RequirementSets>
@@ -10581,8 +9715,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="267f4994-3c66-4c86-a8f2-cfba232a5622"
 >2; L_MESSAGE;<RequirementSets>
@@ -10605,8 +9737,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="36648251-031c-4183-9b57-39976b6a0a30"
 >3; T_TRAIN;<RequirementSets>
@@ -10629,8 +9759,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f868e8e8-7036-4ad2-b54f-b2b69ce62b88"
 >4; M_ACK; always set to 0<RequirementSets>
@@ -10653,8 +9781,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="934d961d-018f-486d-b12c-78a4282ba2d0"
 >5; NID_LRBG;<RequirementSets>
@@ -10688,8 +9814,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d6dbb7aa-ca5a-47c1-a518-ad6e56320195"
 >Message 40: Train Rejected<Sub>
@@ -10703,8 +9827,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5eae31ef-81cd-4034-9c3e-b3a4c4eb6bc8"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -10727,8 +9849,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a590a041-642b-460c-bec7-677c7ba21bf2"
 >1; NID_MESSAGE;<RequirementSets>
@@ -10751,8 +9871,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c6116d7e-c3a6-40b5-81f7-4d8a984ea121"
 >2; L_MESSAGE;<RequirementSets>
@@ -10775,8 +9893,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b0115eeb-c047-4cc9-9411-9048e6a397d6"
 >3; T_TRAIN;<RequirementSets>
@@ -10799,8 +9915,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="75ca0bf3-adc6-4162-968a-07f6b3d61211"
 >4; M_ACK;<RequirementSets>
@@ -10823,8 +9937,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="bb71341e-5536-41c1-828f-360958a2407f"
 >5; NID_LRBG;<RequirementSets>
@@ -10858,8 +9970,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7c2005be-ddda-445e-89ca-07171e96ad2a"
 >Message 41: Train Accepted<Sub>
@@ -10873,8 +9983,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c496135d-2c8f-43bd-8f56-6a77671b6d40"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -10897,8 +10005,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ed8a8a47-6b0f-46d4-a31e-66432f3bd7b6"
 >1; NID_MESSAGE;<RequirementSets>
@@ -10921,8 +10027,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b18c7d8b-3079-4f06-929a-05ca5e8b2e89"
 >2; L_MESSAGE;<RequirementSets>
@@ -10945,8 +10049,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9ff84447-bca6-4d93-a246-f1e5122fcaf2"
 >3; T_TRAIN;<RequirementSets>
@@ -10969,8 +10071,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1af886d0-4cca-476e-9d54-33a91fe2330a"
 >4; M_ACK;<RequirementSets>
@@ -10993,8 +10093,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cdc46474-23b5-4174-82e9-dae9b2c54b50"
 >5; NID_LRBG;<RequirementSets>
@@ -11028,8 +10126,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1eb1c828-8b69-4c5e-bd8d-2ed082e877fc"
 >Intentionally deleted<RequirementSets>
@@ -11052,8 +10148,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a43e367f-4794-4f8e-bba1-d7384958d7b5"
 >Message 43: SoM position report confirmed by RBC<Sub>
@@ -11067,8 +10161,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="10de8bc3-b311-4768-9849-dfa2f5ec269f"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -11091,8 +10183,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0b531e78-3531-49ff-9047-bdb1d79716cd"
 >1; NID_MESSAGE;<RequirementSets>
@@ -11115,8 +10205,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="99ce84ee-4b3e-4cb8-937c-230f6d35dc3c"
 >2; L_MESSAGE;<RequirementSets>
@@ -11139,8 +10227,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f6710b9a-fd34-4ba5-bd93-ed44f5bd4650"
 >3; T_TRAIN;<RequirementSets>
@@ -11163,8 +10249,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="806423e8-08f3-4d5f-9255-15dc00d6dc8e"
 >4; M_ACK;<RequirementSets>
@@ -11187,8 +10271,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9078dde0-d7bc-485c-9cdf-f8111a31ad3b"
 >5; NID_LRBG;<RequirementSets>
@@ -11222,8 +10304,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1bba2305-7437-4e04-bd1f-dbb625fe8a9f"
 >Message 45: Assignment of coordinate system<Sub>
@@ -11237,8 +10317,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="92bc611a-f923-4ddb-ba8a-117ec5a95031"
 >Field No.; VARIABLE; Remarks<RequirementSets>
@@ -11261,8 +10339,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="904eea23-8183-44f2-bc1a-9cd164e6a7d2"
 >1; NID_MESSAGE;<RequirementSets>
@@ -11285,8 +10361,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7fd481cf-6829-4a1b-8148-dab4e4144a2b"
 >2; L_MESSAGE;<RequirementSets>
@@ -11309,8 +10383,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b766d982-24ee-47d9-b7c4-a661d0ec79dc"
 >3; T_TRAIN;<RequirementSets>
@@ -11333,8 +10405,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1a3f73ad-aa94-4e0b-ab3f-1d85a74ab67a"
 >4; M_ACK;<RequirementSets>
@@ -11357,8 +10427,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="0079b85c-7fb3-43a0-aafb-c38c573c0803"
 >5; NID_LRBG;<RequirementSets>
@@ -11381,8 +10449,6 @@ Field No.; VARIABLE; Length ( bits); Remarks<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="433922ed-3175-4da4-894c-6789ebddbffd"
 >6; Q_ORIENTATION;<RequirementSets>

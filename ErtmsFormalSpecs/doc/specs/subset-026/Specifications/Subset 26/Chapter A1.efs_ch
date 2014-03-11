@@ -12,8 +12,6 @@
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="dc369175-6dd9-47b3-b8a0-a21aa91fdb5e"
 ><Comment></Comment>
@@ -28,8 +26,6 @@ Design choices<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="750e9130-01ae-4988-a364-e8ebcf67eb84"
 ><Comment></Comment>
@@ -44,8 +40,6 @@ Intelligent DMI<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8b8ea3a5-12ac-4d39-a0c7-11e4836910a0"
 >The DMI shall only send information that alter the DMI display. If the same information is provided over the cycles, it shall only be provided once.<RequirementSets>
@@ -81,8 +75,6 @@ Intelligent DMI<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c8b2a526-dacf-4793-9763-58aa85180ac2"
 >Odometry messages specification<Sub>
@@ -97,8 +89,6 @@ Intelligent DMI<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="b774cb9b-3ed7-4270-b69a-b81066add7a1"
 >The messages provided by the Odometry are specified by the Subset 58 v 211 (STM Application Layer).<RequirementSets>
@@ -134,8 +124,6 @@ Intelligent DMI<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="93f379fa-c236-4752-9ffd-9ea61694202d"
 ><Comment></Comment>
@@ -151,8 +139,6 @@ Balise groups<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="29095085-0fb7-4b73-9d32-ae4ead9cd37e"
 ><Comment></Comment>
@@ -177,8 +163,6 @@ The balise group location detection error (required by the paragraph 3.6.4.2.a f
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="36513693-3b8c-4f23-855d-81c89d6c4038"
 ><Comment>These requirements are deduced from the requirement 3.4.2.4.1</Comment>
@@ -195,8 +179,6 @@ Duplicate balises<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4e07491f-516f-4494-87d7-96cf0ecef9d8"
 >N_PIG given in each balise of a balise group are uniques, even for duplicate balises<RequirementSets>
@@ -221,8 +203,6 @@ Duplicate balises<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="959db099-bb83-4fab-ad64-7f985d306fb6"
 ><Comment></Comment>
@@ -248,8 +228,6 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="55ed41db-cdd9-49da-80a2-b84fd2b4c659"
 >The first balise of a pair of duplicate balise contains the information &quot;duplicate next balise in the nominal direction&quot;. The second duplicated balise in the group contains the information &quot;duplicate previous balise in the nominal direction&quot;<RequirementSets>
@@ -284,8 +262,6 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="88930fd0-2a41-48f8-ac88-35d8c1d60f47"
 >We assume that each Messages.EUROBALISE.SubStructure1 received by the BTM contains at most one packet. Otherwise the order of packets within a balise message would not be respected (a case which is pointless).<RequirementSets>
@@ -308,8 +284,6 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="28f1e529-5fb5-41b7-a535-07e75aac675c"
 >Linking information<Sub>
@@ -323,8 +297,6 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="689ab6d6-cac9-4667-86bf-c6be70fefd43"
 >As balises are expected in the order given by linking information, BTM.Linking.Linkings is assumed to be listed in order of ascending distance<RequirementSets>
@@ -371,8 +343,6 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ae62b461-7ceb-4376-860a-80ae021abda6"
 >Train Trip<Sub>
@@ -388,8 +358,6 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9f33f81f-8311-4e08-b43d-80816d35a690"
 >In the state S140, we assume that &quot;train data has been previously entered&quot; means that the train data is Valid.<RequirementSets>
@@ -414,8 +382,6 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6114bfb9-055b-4951-93ea-75d62541b167"
 >In the state S140, we assume that when a START is received, the Shunting request to the driver is no more relevant, and vice versa : when the SHUNTING is received, the Start request is no more relevant.<RequirementSets>
@@ -450,8 +416,6 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="79acd98b-df28-4996-a288-17a07893f875"
 ><Sub>
@@ -467,8 +431,6 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="10cc3f12-c2b4-45a6-b67a-18195d3de671"
 >For the Table A.3.4.1.3.1, we assume the following things:
@@ -495,8 +457,6 @@ d) &quot;data is to be revalidated&quot; means that the status of the correspond
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5fd9abb2-0712-4c70-a573-7668ecb3a103"
 >In the case where the train has multiple EOAs or SvLs, we decided that it would regard the closest one as the &quot;true&quot; target.<RequirementSets>
@@ -531,8 +491,6 @@ d) &quot;data is to be revalidated&quot; means that the status of the correspond
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="bedfe719-99c8-418f-9ac1-2ac180810fe3"
 >MA<Sub>
@@ -547,8 +505,6 @@ d) &quot;data is to be revalidated&quot; means that the status of the correspond
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="53112051-c9a4-48b5-8dac-6447ef865504"
 >Deleted<RequirementSets>
@@ -572,7 +528,6 @@ d) &quot;data is to be revalidated&quot; means that the status of the correspond
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
  Name=""
  Guid="5fff9a06-3432-4ce9-b8e0-9b36de116805"
 ><ReqRef
@@ -600,7 +555,6 @@ This is mandatory to ensure that all preconditions for an MA (which may have bee
  infoRequired="TRUE"
  specIssue="TRUE"
  functionalBlockName=""
- onboard="TRUE"
  Name=""
  Guid="ce639b26-fec6-4218-86a0-c7449b82eafd"
 ><ReqRef
@@ -644,8 +598,6 @@ Signalling related speed restrictions and Mode profiles are not considered as pa
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="152eb75f-a1f5-48c9-862a-298dd3f11fdf"
 >Braking models<Sub>
@@ -660,8 +612,6 @@ Signalling related speed restrictions and Mode profiles are not considered as pa
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d4425f99-d283-4faf-ba1a-eef44feb9002"
 ><Comment></Comment>
@@ -697,8 +647,6 @@ The paragraph 3.13.2.2.6.2 indicates that the selection of brake parameter for A
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f11ae94f-cee2-4043-9354-0747027cc50c"
 ><Comment></Comment>
@@ -714,8 +662,6 @@ Static speed profile<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7b939cca-c775-4101-b7dd-1944169ceeb2"
 >The requirement 7.5.1.171 specifies that if the value of V_STATIC, representing the base speed for static speed profile, equals 127, that means that the static speed profile description ends at the next discontinuity. We assume that it means that there will be no more speed restriction due to the static speed profile.<RequirementSets>
@@ -750,8 +696,6 @@ Static speed profile<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ecdb4977-6495-4924-bf35-d373cd3235d1"
 ><Comment></Comment>
@@ -767,8 +711,6 @@ A_brake_service<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="60ba4e77-5948-4505-83fc-e13ee0244e31"
 >According to Paragraph 3.13.6.3.1.3, the value of A_expected(V, d) equals A_brake_service(V, d) + A_gradient(d). We assume that if the conversion model is used, the value of A_expected(V, d) will be equal to A_brake_service(V) + A_gradient(d), with A_brake_service(V) provided by the conversion model (according to Paragraph 3.13.6.3.2.a).<RequirementSets>
@@ -803,8 +745,6 @@ A_brake_service<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f5390da9-a84a-47ff-bb66-4a0e3ad8477b"
 ><Comment></Comment>
@@ -820,8 +760,6 @@ Supervision limits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4e10c5a1-f415-44fc-b597-8b1a359c2c25"
 >The computation of V_delta0rs is done based on the Paragraph 5.3.1.2 of the Subset-041 v 2.1.0 (&quot;+/-2km/h for speed lower than 30km/h, then increasing linearly up to +/-12km/h at 500km/h&quot;).<RequirementSets>
@@ -846,8 +784,6 @@ Supervision limits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ae24dcec-0c75-48cd-b842-4d34ef229a22"
 >The computation of V_delta0int is done based on the Paragraph 5.3.1.2 of the Subset-041 v 2.1.0 (&quot;+/-2km/h for speed lower than 30km/h, then increasing linearly up to +/-12km/h at 500km/h&quot;).<RequirementSets>
@@ -872,8 +808,6 @@ Supervision limits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="92e9a363-c16c-40c0-9622-49031126869d"
 >The computation of V_delta0lx is done based on the Paragraph 5.3.1.2 of the Subset-041 v 2.1.0 (&quot;+/-2km/h for speed lower than 30km/h, then increasing linearly up to +/-12km/h at 500km/h&quot;).<RequirementSets>
@@ -897,8 +831,6 @@ Supervision limits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="14b50fc8-d11d-4f00-a819-56def9d260b0"
 >The computation of V_delta0t is done based on the Paragraph 5.3.1.2 of the Subset-041 v 2.1.0 (&quot;+/-2km/h for speed lower than 30km/h, then increasing linearly up to +/-12km/h at 500km/h&quot;).<RequirementSets>
@@ -933,8 +865,6 @@ Supervision limits<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="6b855f0a-214a-4315-b8b7-bd807ba6acc1"
 >Data memorised on-board<Sub>
@@ -949,8 +879,6 @@ Supervision limits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d701e3bf-8b71-4b6f-84c0-9b64aa641498"
 >Requirement 4.3.2.1.a of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of MA sections memorised on-board is 6. In addition the MA includes an End Section which is not included in the above numbers.<RequirementSets>
@@ -974,8 +902,6 @@ Supervision limits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="70632e82-a390-4696-a790-49fc7e83e650"
 >Requirement 4.3.2.1.d of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of locations with changes of SSP memorised on-board is 50.<RequirementSets>
@@ -999,8 +925,6 @@ Supervision limits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2b873c77-fe37-4efb-bbb9-7f6570ed6a6f"
 >Requirement 4.3.2.1.e of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of TSRs memorised on-board is 30.<RequirementSets>
@@ -1024,8 +948,6 @@ Supervision limits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="80268ed0-b391-4741-8200-f28c5bffebf6"
 >Requirement 4.3.2.1.f of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of changes of gradient memorised on-board is 50.<RequirementSets>
@@ -1049,8 +971,6 @@ Supervision limits<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="50c53fbd-5b3e-40cd-a4f2-75801157fd7d"
 >Requirement 4.3.2.1.g of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of text messages memorised on-board is 5 plain text + 5 fixed text.<RequirementSets>
@@ -1074,8 +994,6 @@ Supervision limits<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="4ab4eb51-5945-4fe4-aa12-eac7e8138282"
 >Requirement 4.3.2.1.i of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of linked balise groups memorised on-board is 30.<RequirementSets>
@@ -1099,8 +1017,6 @@ Supervision limits<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="2edc3825-0958-45be-b7ba-c2498d0c660e"
 >Requirement 4.3.2.1.j of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Track Conditions Change of traction power memorised on-board is 1.<RequirementSets>
@@ -1124,8 +1040,6 @@ Supervision limits<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d1a6e54f-d79f-4ea4-b672-c9aaff6a76ba"
 >Requirement 4.3.2.1.k of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Track Conditions Big Metal masses memorised on-board is 5.<RequirementSets>
@@ -1149,8 +1063,6 @@ Supervision limits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7dc8d485-8ec6-42c9-8941-24c0652f1455"
 >Requirement 4.3.2.1.l of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Track Conditions memorised on-board is 20.<RequirementSets>
@@ -1174,8 +1086,6 @@ Supervision limits<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c2a337ec-7eae-46cc-8650-55616fe47b86"
 >Requirement 4.3.2.1.m of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Numbers of Route suitability data memorised on-board is 3, however not more than one of each type (loading gauge, axle load, traction system type).<RequirementSets>
@@ -1199,8 +1109,6 @@ Supervision limits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e0ecf6c6-baf4-4601-a121-23e3946830d7"
 >Requirement 4.3.2.1.o of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Axle load speed profile segments memorised on-board is 30.<RequirementSets>
@@ -1224,8 +1132,6 @@ Supervision limits<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8a3c6fed-4035-4e98-8c91-d62ad50c9ef2"
 >Requirement 4.3.2.1.q of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Numbers of adhesion profiles memorised on-board is 10.<RequirementSets>
@@ -1249,8 +1155,6 @@ Supervision limits<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="65b30702-1fb1-4a4a-9f95-15a687c5840a"
 >Requirement 4.3.2.1.r of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Numbers of reversing area memorised on-board is 1.<RequirementSets>
@@ -1273,7 +1177,6 @@ Supervision limits<Sub>
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
  Name=""
  Guid="c08f77bf-5b9d-4ae0-a1c2-eb3a2d07fc64"
 >Requirement 2.6.2.1 of the Subset-026 v320: The number of storable values of Levels/NTCs onboard is limited to 10<RequirementSets>
@@ -1304,8 +1207,6 @@ Supervision limits<Sub>
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e7b793cf-d95e-422b-a606-7d382b70a384"
 >Train passes the EOA/LOA location before receiving an MA.<Sub>
@@ -1320,8 +1221,6 @@ Supervision limits<Sub>
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9a2c09f8-7df9-4251-9530-ae098d435bc9"
 ><Comment></Comment>
@@ -1357,8 +1256,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="83fd5859-d5fa-4744-a441-47f1cf01b8c2"
 >Current ERTMS/ETCS level is always displayed on DMI in modes SB,TR and SF when it is valid.<Sub>
@@ -1373,8 +1270,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c94b2902-c098-481b-bf05-b0bed5a2c1c6"
 >The Step 49 of Feature 262, Test Case 3 of the Subset-076 v2.3.0 states that the level shall be displayed on DMI (while the train is SB mode). We assume that the level will always be displayed if its value is valid and if its display is Active or Available (see Requirement 4.7.2 of Subset-026 v3.2.0)<RequirementSets>
@@ -1409,8 +1304,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c630cd1e-fd64-4925-a407-90b3ef73ed47"
 >Missing verification of the train data consistency<Sub>
@@ -1425,8 +1318,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ff8c90f4-4cde-43ef-83cf-5ff2d392c194"
 >A verification process should be executed after initialization of the train data. If one of the tests fails, the system should go to Failure state. The following tests need to be done:<Sub>
@@ -1441,8 +1332,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="cebd434e-de63-4765-a196-95e72be91d23"
 >Verify that eather the braking models are defined in the train data, or the conversion model is applicable.<RequirementSets>
@@ -1488,8 +1377,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c5e9631b-7e16-4817-a2bd-848b9a4eaebf"
 >Mode transitions<Sub>
@@ -1504,8 +1391,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="68290e3a-68aa-485c-9b80-ad0a6da08d3f"
 >Conditions 34 and 40 of the Section 4.6 are implemented in the same way due to the Paragraph 5.9.4.1 which states that the mode profile with regards to an OS area is only evaluated in levels 1, 2 and 3. Thus, the test on the level was included directly to the function DistanceIsWithinAModeProfile, called by the function ModeProfileIsApplicable. Note: the condition 40 is triggered only from the modes FS or SR, and according to the parapgraps 4.4.9.2 and 4.4.11.2, these modes are used only in levels 1, 2 or 3, this why the level is not explicitely tested for that case.<RequirementSets>
@@ -1540,8 +1425,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="27ffe239-90ae-4c0c-b69a-171a48481101"
 >Start of Mission state machine<Sub>
@@ -1556,8 +1439,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="bf37b119-5096-4de9-ab78-802635ad57c3"
 >The state machine of the procedure Start of Mission contains several states related to the trackside (D33, D22, A35, A23 and A38). Since we are only interested in implementation of the on-board, these states weren&apos;t implemented. The state A34 implements the behavoir of the states D33, D22, A35, A23 and A38 from the on-board point of view. The &quot;decision&quot; states D33 and D22 are not present on the state diagram (since the decision to select the outgoing transition from these states can only be taken by the trackside), and the &quot;action&quot; states are present but only implement the actions taken by the on-board.<RequirementSets>
@@ -1592,8 +1473,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="a66270ab-2733-4daa-8ac9-0fde1637dafd"
 >Shunting Initiated by Driver degraded situation<Sub>
@@ -1608,8 +1487,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c4552b18-7c1b-4778-a53c-1272271bb392"
 >The Paragraph 5.6.4.3 describes a degraded situation where no order to terminate the communication session was received from the RBC after a given number of position report sendings. It states that in that case the ERTMS/ETCS onboard equipment shall terminate the session. But there is no information about the state change after this action and we decided that the process shall end.<RequirementSets>
@@ -1643,7 +1520,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
  Name=""
  Guid="87cf5e17-bf65-40d1-8fde-74479a34c7ca"
 >JRU<Sub>
@@ -1657,7 +1533,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
  Name=""
  Guid="1fc880ed-12b0-4b3a-9b18-232e2d8aa5cd"
 >We do not know what to do when the NID_STM is not applicable and should provided to the JRU. We assume that this situation never occurs<RequirementSets>
@@ -1683,8 +1558,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d21eb5fe-a454-453e-a6e8-c6b1608799c2"
 >Behaviour at stop location<Sub>
@@ -1698,8 +1571,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e0cce2b4-2341-4ff7-8496-f341142799d3"
 >In paragraph 3.10.2.2, the train&apos;s behaviour is defined for when it has passed a stop location and for when it has not yet passed the stop location. We have decided to consider that when it is at the specified location, it is to behave as if it had passed it.<RequirementSets>
@@ -1733,8 +1604,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="f3394756-afc8-40d0-b76f-9d3574e9a491"
 >Meaning of &quot;in rear of&quot;<Sub>
@@ -1748,8 +1617,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="7e2eedb2-843c-49cc-baec-39383388af08"
 >Requirement 3.16.2.3.1.a) says that the action must take place &quot;in rear of&quot; the expectation window. As it doesn&apos;t make sense for this to occur after the expctation window has been passed we have decided that &quot;in rear of&quot; means &quot;before it is entered&quot; in this case.<RequirementSets>
@@ -1783,8 +1650,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="891fc4a4-b5d2-44e9-bab5-9c7213ad9d73"
 >Euroradio<Sub>
@@ -1798,8 +1663,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="ecf2af34-5e55-40e4-83a6-e6ec4827734c"
 >Paragraph 3.5.3.7.a.3 states &quot;A request shall be repeated immediately after EURORADIO has indicated that setting up the safe radio connection has failed.&quot; We suppose that the request has to be repeated for both cases (SoM and no SoM). In the case of ongoing SoM, it will be repeated even if the maximum number of requests was already sent.<RequirementSets>
@@ -1833,8 +1696,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="d58dc0b2-1f87-4b19-96b9-61bb4874bb36"
 >Arbitrary default values when the spec does not state them<Sub>
@@ -1848,8 +1709,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="25a80a36-9119-4055-83dd-328efcdcc20c"
 >In the track conditions 3.12.1, Change of traction system and Change of maximum allowed current consumption do not have initial states - the requirements just say that they always keep their old values. We defined a default value for each in the case where none has been specified yet.<RequirementSets>
@@ -1895,8 +1754,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="aa320f83-b634-4d58-b98a-22db6c8ac764"
 >Hypothesis to prove<Sub>
@@ -1911,8 +1768,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e36e003a-a532-420f-b4e1-13080dc0ae64"
 >Mode transitions vs procedures<Sub>
@@ -1927,8 +1782,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="27b5d611-8fd6-4f2a-9391-595a9844dab3"
 >Start of mission<Sub>
@@ -1943,8 +1796,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="8d4bca45-40ed-4ff2-9225-d87067e371b6"
 >SB -&gt; NL: Prove that the transition E10 of Start of Mission corresponds to the Condition 46.<RequirementSets>
@@ -1968,8 +1819,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="96acedcb-697b-4a9f-8c62-b01df8f31f77"
 >SB -&gt; SR: Prove that the transition E32 of Start of Mission corresponds to the Condition 8.<RequirementSets>
@@ -1993,8 +1842,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="1ddf180b-6ef1-4795-94bd-116943f8ce63"
 >SB -&gt; FS: Prove that the transition E29 of Start of Mission corresponds to the Condition 10.<RequirementSets>
@@ -2018,8 +1865,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="bc849108-dc17-4e38-aafd-be4995db9f82"
 >SB -&gt; OS/LS/SH: Prove that the transition E33 of Start of Mission corresponds either to the Condition 15, or Condition 70 or Condition 50.<RequirementSets>
@@ -2043,8 +1888,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="e4ffa67a-4fa2-4956-8893-7e3626e80e04"
 >SB -&gt; SN: Prove that the transition E30 of Start of Mission corresponds to the Condition 58.<RequirementSets>
@@ -2068,8 +1911,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="bdc170e3-e586-41a7-9483-e63ba019c92f"
 >SB -&gt; UN: Prove that the transition E31 of Start of Mission corresponds to the Condition 60.<RequirementSets>
@@ -2104,8 +1945,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5bfc43b6-76b7-4755-8878-6d0671574ff0"
 >Train trip<Sub>
@@ -2120,8 +1959,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="c07f87bc-9695-4de2-9711-0785c2be5e0f"
 >TR -&gt; SH: Prove that being in the state A140 corresponds to the Condition 68.<RequirementSets>
@@ -2145,8 +1982,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="3201c894-f04f-4c57-97c5-2f8a5c33cad1"
 >TR -&gt; UN: Prove that being in the state A145 corresponds to the Condition 62.<RequirementSets>
@@ -2170,8 +2005,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="36a5f675-e085-4644-a66e-482120cab435"
 >TR -&gt; SN: Prove that being in the state A150 corresponds to the Condition 63.<RequirementSets>
@@ -2195,8 +2028,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9061a410-98ec-4e01-86db-9e1ca5b8f777"
 >PT -&gt; SR: Prove that the transition E180 of Train Trip corresponds to the Condition 8.<RequirementSets>
@@ -2220,8 +2051,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="9b0bf055-ffec-4417-b3b2-6ad55ca298d1"
 >PT -&gt; FS: Prove that the transition E170 corresponds to the Condition 31.<RequirementSets>
@@ -2245,8 +2074,6 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  status="NA"
  version="3.0.0"
  functionalBlockName=""
- onboard="TRUE"
- trackside="TRUE"
  Name=""
  Guid="5f9b351d-def6-4d69-bd03-588e8929f683"
 >PT -&gt; OS/LS/SH: Prove that the transition E185 corresponds either to the Condition 15, or Condition 70 or Condition 50.<RequirementSets>
