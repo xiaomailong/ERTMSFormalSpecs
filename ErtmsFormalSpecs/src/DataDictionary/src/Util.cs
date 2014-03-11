@@ -158,6 +158,7 @@ namespace DataDictionary
                         onBoard.setRequirementsStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
                     }
                     paragraph.AppendToRequirementSet(onBoard);
+                    paragraph.setObsoleteScopeOnBoard(false);
                 }
 
                 if (paragraph.getObsoleteScopeTrackside())
@@ -170,6 +171,7 @@ namespace DataDictionary
                         trackSide.setDefault(true);
                     }
                     paragraph.AppendToRequirementSet(trackSide);
+                    paragraph.setObsoleteScopeTrackside(false);
                 }
 
                 if (paragraph.getObsoleteScopeRollingStock())
@@ -182,6 +184,7 @@ namespace DataDictionary
                         rollingStock.setDefault(false);
                     }
                     paragraph.AppendToRequirementSet(rollingStock);
+                    paragraph.setObsoleteScopeRollingStock(false);
                 }
 
                 // Updates the functional block information based on the FunctionalBlockName field
@@ -192,6 +195,7 @@ namespace DataDictionary
                     functionalBlock.setRecursiveSelection(true);
                     functionalBlock.setDefault(false);
                     paragraph.AppendToRequirementSet(functionalBlock);
+                    paragraph.setObsoleteFunctionalBlockName(null);
                 }
 
                 base.visit(obj, visitSubNodes);
