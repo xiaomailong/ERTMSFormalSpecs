@@ -489,7 +489,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
- Name="LevelData"
+ Name="LevelDataStruct"
  Guid="2b9ee99d-8e9b-47be-ae9a-4f4b8189bae1"
 >
 <ReqRef
@@ -511,7 +511,7 @@
  Name="NTC"
  Guid="cd8dbd64-d3e3-46e6-bc84-61e66e882ea7"
 >
-<Comment>only applicable if Value == Level.LNTC #morido, 13/10/10</Comment>
+<Comment>only applicable if Value == Level.LNTC</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Level"
  Default="Default.Level.Unknown"
@@ -524,7 +524,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="LevelData"
+ TypeName="LevelDataStruct"
  Default="EMPTY"
  Implemented="TRUE"
  Name="Levels"
