@@ -20,7 +20,21 @@ namespace DataDictionary.Values
     {
         public override string Name
         {
-            get { return "'" + Val + "'"; }
+            get
+            {
+                string retVal = Val;
+
+                if (!retVal.StartsWith("'"))
+                {
+                    retVal = "'" + retVal;
+                }
+                if (!retVal.EndsWith("'"))
+                {
+                    retVal = retVal + "'";
+                }
+
+                return retVal;
+            }
         }
 
         /// <summary>
