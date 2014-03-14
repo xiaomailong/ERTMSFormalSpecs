@@ -20,12 +20,27 @@ namespace DataDictionary.Specification
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Collections;
 
     /// <summary>
     /// Represents a requirement set
     /// </summary>
     public class RequirementSetDependancy : Generated.RequirementSetDependancy, IGraphicalArrow<RequirementSet>
     {
+        /// <summary>
+        /// The name of the dependancy (always the same)
+        /// </summary>
+        public override string Name
+        {
+            get
+            {
+                return "Depends on";
+            }
+            set
+            {
+            }
+        }
+
         /// <summary>
         /// The source of the arrow
         /// </summary>
@@ -59,7 +74,8 @@ namespace DataDictionary.Specification
         /// <param name="targetBox"></param>
         public void SetTargetBox(IGraphicalDisplay targetBox)
         {
-            setTarget(targetBox.Name);
+            RequirementSet target = (RequirementSet)targetBox;
+            setTarget(target.Guid);
         }
 
         /// <summary>
@@ -71,5 +87,19 @@ namespace DataDictionary.Specification
         /// The model element which is referenced by this arrow
         /// </summary>
         public ModelElement ReferencedModel { get { return this; } }
+
+        /// <summary>
+        /// The collection in which this model element lies
+        /// </summary>
+        public override ArrayList EnclosingCollection
+        {
+            get
+            {
+                ArrayList retVal = Source.allDependancies();
+
+                return retVal;
+            }
+        }
+
     }
 }
