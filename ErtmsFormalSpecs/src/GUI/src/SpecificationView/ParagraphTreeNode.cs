@@ -235,6 +235,11 @@ namespace GUI.SpecificationView
                 string data;
 
                 int i = text.IndexOf(' ');
+                int k = text.IndexOf('\t');
+                if (k < i)
+                {
+                    i = k;
+                }
                 int j = text.IndexOf('\n');
                 if (i < 0)
                 {
