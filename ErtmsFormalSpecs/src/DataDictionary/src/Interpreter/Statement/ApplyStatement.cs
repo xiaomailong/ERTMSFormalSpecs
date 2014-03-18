@@ -165,13 +165,33 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public override void CheckStatement()
         {
-            Types.Collection listExpressionType = ListExpression.GetExpressionType() as Types.Collection;
-            if (listExpressionType == null)
+            if (ListExpression != null)
             {
-                Root.AddError("Target does not references a list variable");
+                ListExpression.checkExpression();
+                Types.Collection listExpressionType = ListExpression.GetExpressionType() as Types.Collection;
+                if (listExpressionType == null)
+                {
+                    Root.AddError("Target does not references a list");
+                }
+            }
+            else
+            {
+                Root.AddError("List should be specified");
             }
 
-            Call.CheckStatement();
+            if (ConditionExpression != null)
+            {
+                ConditionExpression.checkExpression();
+            }
+
+            if (Call != null)
+            {
+                Call.CheckStatement();
+            }
+            else
+            {
+                Root.AddError("Procedure should be specified in the APPLY statement");
+            }
         }
 
         /// <summary>
