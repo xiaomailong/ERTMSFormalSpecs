@@ -1009,16 +1009,16 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Takes the statement into consideration
+            /// Takes an interpreter tree into consideration
             /// </summary>
             /// <param name="statement"></param>
-            private void ConsiderStatement(Statement statement)
+            private void ConsiderInterpreterTreeNode(InterpreterTreeNode tree)
             {
-                if (statement != null && statement.StaticUsage != null)
+                if (tree != null && tree.StaticUsage != null)
                 {
                     if (Model != null)
                     {
-                        List<Usage> usages = statement.StaticUsage.Find(Model);
+                        List<Usage> usages = tree.StaticUsage.Find(Model);
                         foreach (Usage usage in usages)
                         {
                             Usages.Add(usage);
@@ -1026,36 +1026,7 @@ namespace DataDictionary
                     }
                     else
                     {
-                        foreach (Usage usage in statement.StaticUsage.AllUsages)
-                        {
-                            if (Filter.AcceptableChoice(usage.Referenced))
-                            {
-                                Usages.Add(usage);
-                            }
-                        }
-                    }
-                }
-            }
-
-            /// <summary>
-            /// Takes the expression into consideration
-            /// </summary>
-            /// <param name="expression"></param>
-            private void ConsiderExpression(Expression expression)
-            {
-                if (expression != null && expression.StaticUsage != null)
-                {
-                    if (Model != null)
-                    {
-                        List<Usage> usages = expression.StaticUsage.Find(Model);
-                        foreach (Usage usage in usages)
-                        {
-                            Usages.Add(usage);
-                        }
-                    }
-                    else
-                    {
-                        foreach (Usage usage in expression.StaticUsage.AllUsages)
+                        foreach (Usage usage in tree.StaticUsage.AllUsages)
                         {
                             if (Filter.AcceptableChoice(usage.Referenced))
                             {
@@ -1093,135 +1064,20 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Walk through actions
+            /// Walk through all elements
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Action obj, bool visitSubNodes)
+            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
             {
-                DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)obj;
-
-                ConsiderStatement(action.Statement);
-
-                base.visit(obj, visitSubNodes);
-            }
-
-            /// <summary>
-            /// Walk through Preconditions
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.PreCondition obj, bool visitSubNodes)
-            {
-                PreCondition preCondition = (PreCondition)obj;
-
-                ConsiderExpression(preCondition.Expression);
-
-                base.visit(obj, visitSubNodes);
-            }
-
-            /// <summary>
-            /// Walk through Expectations
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Expectation obj, bool visitSubNodes)
-            {
-                Tests.Expectation expectation = (Tests.Expectation)obj;
-
-                ConsiderExpression(expectation.Expression);
-
-                base.visit(obj, visitSubNodes);
-            }
-
-            /// <summary>
-            /// Walk through Cases
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Case obj, bool visitSubNodes)
-            {
-                Functions.Case cas = (Functions.Case)obj;
-
-                ConsiderExpression(cas.Expression);
-
-                base.visit(obj, visitSubNodes);
-            }
-
-            /// <summary>
-            /// Walk through Collections declaration
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Collection obj, bool visitSubNodes)
-            {
-                Types.Collection collection = (Types.Collection)obj;
-
-                ConsiderTypeOfElement(collection);
-
-                base.visit(obj, visitSubNodes);
-            }
-
-            /// <summary>
-            /// Walk through Variables declaration
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Variable obj, bool visitSubNodes)
-            {
-                Variables.Variable variable = (Variables.Variable)obj;
-
-                ConsiderTypeOfElement(variable);
-
-                base.visit(obj, visitSubNodes);
-            }
-
-            /// <summary>
-            /// Walk through Functions declaration
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Function obj, bool visitSubNodes)
-            {
-                Functions.Function function = (Functions.Function)obj;
-
-                ConsiderTypeOfElement(function);
-
-                foreach (Parameter parameter in function.FormalParameters)
+                IExpressionable expressionable = obj as IExpressionable;
+                if (expressionable != null)
                 {
-                    ConsiderTypeOfElement(parameter);
+                    ConsiderInterpreterTreeNode(expressionable.Tree);
                 }
 
-                base.visit(obj, visitSubNodes);
-            }
-
-            /// <summary>
-            /// Walk through Procedure declaration
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Procedure obj, bool visitSubNodes)
-            {
-                Functions.Procedure procedure = (Functions.Procedure)obj;
-
-                foreach (Parameter parameter in procedure.FormalParameters)
-                {
-                    ConsiderTypeOfElement(parameter);
-                }
-
-                base.visit(obj, visitSubNodes);
-            }
-
-            /// <summary>
-            /// Walk through a structure declaration
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Structure obj, bool visitSubNodes)
-            {
-                Types.Structure structure = (Types.Structure)obj;
-
-                foreach (StructureElement element in structure.Elements)
+                ITypedElement element = obj as ITypedElement;
+                if (element != null)
                 {
                     ConsiderTypeOfElement(element);
                 }
