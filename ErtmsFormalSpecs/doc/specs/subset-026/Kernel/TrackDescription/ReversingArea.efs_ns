@@ -387,6 +387,20 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt; ReversingAreaProfil
 >DMI.MasterDMI().InitiateAcknOfRVMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
+</RuleCondition><RuleCondition
+ Name="Stop displaying reversing"
+ Guid="90328f0a-2643-46c8-8557-a501d97d34d2"
+>
+<PreConditions>
+<PreCondition
+ Guid="1113e21c-9e1a-49e0-a1f1-181177c541a7"
+>NOT (Odometry.TrainIsAtStandstill())</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="693639f6-da52-48b4-9947-750a66a4dcf4"
+>DMI.MasterDMI().HideReversingAllowed()</Action><Action
+ Guid="315ca243-f3b2-480f-87b3-9bdefeaa17b1"
+>DMI.MasterDMI().DisableAcknOfRVMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
