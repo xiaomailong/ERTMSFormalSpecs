@@ -174,12 +174,15 @@ namespace GUI.RequirementSetDiagram
                 set
                 {
                     RequirementSetDependancyControl transitionControl = (RequirementSetDependancyControl)control;
-                    RequirementSetPanel panel = (RequirementSetPanel)transitionControl.Panel;
-                    RequirementSet requirementSet = DataDictionary.OverallRequirementSetFinder.INSTANCE.findByName(panel.Enclosing, value);
-                    if (requirementSet != null)
+                    IHoldsRequirementSets enclosing = transitionControl.Model.Source.Enclosing as IHoldsRequirementSets;
+                    if (enclosing != null)
                     {
-                        control.SetInitialBox(requirementSet);
-                        control.RefreshControl();
+                        RequirementSet newSource = enclosing.findRequirementSet(value, false);
+                        if (newSource != null)
+                        {
+                            control.SetInitialBox(newSource);
+                            control.RefreshControl();
+                        }
                     }
                 }
             }
@@ -201,12 +204,15 @@ namespace GUI.RequirementSetDiagram
                 set
                 {
                     RequirementSetDependancyControl transitionControl = (RequirementSetDependancyControl)control;
-                    RequirementSetPanel statePanel = (RequirementSetPanel)transitionControl.Panel;
-                    RequirementSet requirementSet = DataDictionary.OverallRequirementSetFinder.INSTANCE.findByName(statePanel.Enclosing, value);
-                    if (requirementSet != null)
+                    IHoldsRequirementSets enclosing = transitionControl.Model.Source.Enclosing as IHoldsRequirementSets;
+                    if (enclosing != null)
                     {
-                        control.SetTargetBox(requirementSet);
-                        control.RefreshControl();
+                        RequirementSet newTarget = enclosing.findRequirementSet(value, false);
+                        if (newTarget != null)
+                        {
+                            control.SetTargetBox(newTarget);
+                            control.RefreshControl();
+                        }
                     }
                 }
             }

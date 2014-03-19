@@ -50,14 +50,14 @@ namespace GUI.RequirementSetDiagram
             toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             deleteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             // 
-            // addStateMenuItem
+            // addRequirementSetMenuItem
             // 
             addRequirementSetMenuItem.Name = "addRequirementSetMenuItem";
             addRequirementSetMenuItem.Size = new System.Drawing.Size(161, 22);
             addRequirementSetMenuItem.Text = "Add requirement set";
             addRequirementSetMenuItem.Click += new System.EventHandler(addBoxMenuItem_Click);
             // 
-            // addTransitionMenuItem
+            // addDependanceMenuItem
             // 
             addDependanceMenuItem.Name = "addDependanceMenuItem";
             addDependanceMenuItem.Size = new System.Drawing.Size(161, 22);
@@ -69,14 +69,14 @@ namespace GUI.RequirementSetDiagram
             toolStripSeparator.Name = "toolStripSeparator1";
             toolStripSeparator.Size = new System.Drawing.Size(158, 6);
             // 
-            // select requirements
+            // selectParagraphsMenuItem
             // 
             selectParagraphsMenuItem.Name = "selectParagraphsMenuItem";
             selectParagraphsMenuItem.Size = new System.Drawing.Size(161, 22);
             selectParagraphsMenuItem.Text = "Select paragraphs";
             selectParagraphsMenuItem.Click += new System.EventHandler(selectRequirements_Click);
             // 
-            // select requirements which do not belong
+            // selectRequirementsWhichDoNotBelongMenuItem
             // 
             selectRequirementsWhichDoNotBelongMenuItem.Name = "selectRequirementsWhichDoNotBelongMenuItem";
             selectRequirementsWhichDoNotBelongMenuItem.Size = new System.Drawing.Size(161, 22);
@@ -258,36 +258,18 @@ namespace GUI.RequirementSetDiagram
         {
             IModelElement model = null;
 
-            if (Selected is BoxControl<State, Transition>)
+            if (Selected is BoxControl<RequirementSet, RequirementSetDependancy>)
             {
-                model = (Selected as BoxControl<State, Transition>).Model;
+                model = (Selected as BoxControl<RequirementSet, RequirementSetDependancy>).Model;
             }
-            else if (Selected is ArrowControl<State, Transition>)
+            else if (Selected is ArrowControl<RequirementSet, RequirementSetDependancy>)
             {
-                ArrowControl<State, Transition> control = Selected as ArrowControl<State, Transition>;
-                RuleCondition ruleCondition = control.Model.RuleCondition;
-                Rule rule = ruleCondition.EnclosingRule;
-                if (rule.countConditions() == 1)
-                {
-                    model = rule;
-                }
-                else
-                {
-                    model = ruleCondition;
-                }
+                ArrowControl<RequirementSet, RequirementSetDependancy> control = Selected as ArrowControl<RequirementSet, RequirementSetDependancy>;
+                model = control.Model;
+            }
+            model.Delete();
 
-            }
-
-            if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
-            {
-                BaseTreeNode node = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode(model);
-                if (node != null)
-                {
-                    node.Delete();
-                }
-            }
             Select(null, false);
-
             RefreshControl();
             Refresh();
         }

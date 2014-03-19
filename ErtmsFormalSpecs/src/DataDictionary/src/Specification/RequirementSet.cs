@@ -99,6 +99,29 @@ namespace DataDictionary.Specification
             return Name;
         }
 
+        /// <summary>
+        /// The collection in which this model element lies
+        /// </summary>
+        public override ArrayList EnclosingCollection
+        {
+            get
+            {
+                ArrayList retVal = null;
+
+                RequirementSet enclosingSet = Enclosing as RequirementSet;
+                if (enclosingSet != null)
+                {
+                    retVal = enclosingSet.allSubSets();
+                }
+                else
+                {
+                    retVal = Dictionary.allRequirementSets();
+                }
+
+                return retVal;
+            }
+        }
+
         private class ParagraphForRequirementSet : Generated.Visitor
         {
             /// <summary>
