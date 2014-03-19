@@ -106,7 +106,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="797da7fc-90d7-4510-9295-58118f0940d3"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Handles a new reversing supervision information packet if a new reversing area was not defined with it</Comment>
+<Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Message"
  Name="RVSupervisionPacket"
@@ -198,7 +199,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2edbf224-42dd-42e1-8f15-87d08bb16c93"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Handles a new reversing area information packet with the accompanying reversing supervision information</Comment>
+<Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Message"
  Name="RVAreaPacket"
@@ -335,11 +337,11 @@
 >
 <PreConditions>
 <PreCondition
- Guid="8ba44520-e3d7-4c54-8fc4-6ab2a846a671"
->Available ( ReversingAreaProfile )</PreCondition><PreCondition
  Guid="3a60ad8a-066b-4032-aad4-7f219f88137c"
->ReversingAreaProfile.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
-  AND
+>Available ( ReversingAreaProfile )
+  AND  
+ReversingAreaProfile.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
+  AND  
 TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt; ReversingAreaProfile.Distance + BaseTypes.LengthToDistance ( ReversingAreaProfile.Length )</PreCondition><PreCondition
  Guid="e2780f24-dfce-4f80-a1ed-40804c6f02f9"
 >Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>

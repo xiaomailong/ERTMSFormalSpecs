@@ -831,6 +831,110 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 >
 <Expression>FIRST_IN aTelegram.Sequence1 | X.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY  != EMPTY</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="HasRevSupervisionInfo"
+ Guid="1a1f56fd-2bca-4f91-8a90-d02c1d34904e"
+>
+<ReqRef
+ Id="bfc8eaed-659b-4a63-9e2b-52dca586a727"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="776cc102-c320-45b4-830b-b8189af452ff"
+>
+</ReqRef><ReqRef
+ Id="796923a0-8b8a-4e7b-8af3-43f3398b27dd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cebd3778-349b-4050-93a8-a0dfd8d2e4c2"
+>
+</ReqRef><ReqRef
+ Id="f4d58bfc-b004-4e15-9756-926a4d1205e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f8e437a8-dde7-4808-8770-089c08dda5c3"
+>
+</ReqRef><ReqRef
+ Id="93098cba-bfd3-4dc4-ba29-a6f4fdc5a8cb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5597689f-4307-4c4f-8fe7-8c75b0597f58"
+>
+</ReqRef><Comment>Indicates whether a balise telegram contains a Reversing Supervision Information packet</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.EUROBALISE.Message"
+ Name="Message"
+ Guid="4688b46d-e4e8-466b-aad0-200c946f0564"
+>
+</Parameter><Parameter
+ Type="Messages.EUROBALISE.SubStructure1"
+ Name="Packet"
+ Guid="10045d99-d5b4-427b-ba89-032256bac96d"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="b4fdb318-b4e0-4c4b-b434-1bdd7551b194"
+>
+<Expression>THERE_IS_IN Message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="HasRevAreaInfo"
+ Guid="3e1ec123-1277-43e1-8020-f53b8b7b36ee"
+>
+<ReqRef
+ Id="bfc8eaed-659b-4a63-9e2b-52dca586a727"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a9b2f062-cc58-466d-9320-d4f34f0d8890"
+>
+</ReqRef><ReqRef
+ Id="53afec70-5418-4e7d-9064-ba5f0d67662c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1e583727-4512-4797-a4f4-45b5da707d06"
+>
+</ReqRef><Comment>Indicates whether a balise telegram contains a Reversing Area Information packet</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.EUROBALISE.Message"
+ Name="Message"
+ Guid="613ee0bb-d29c-42e6-8428-b617bc90c20b"
+>
+</Parameter><Parameter
+ Type="Messages.EUROBALISE.SubStructure1"
+ Name="Packet"
+ Guid="666ebdb3-9cbb-4383-bf21-1541b816c4dd"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="9ac75977-fe1c-450f-b401-f49ef5704cd6"
+>
+<Expression>THERE_IS_IN Message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.PACKET.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Message"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RevSupervisionPacket"
+ Guid="efd345de-9a3d-4acd-8130-8374e0a4e556"
+>
+<Comment>Returns the Reversing Supervision Information packet contained in a balise telegram</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.EUROBALISE.Message"
+ Name="Message"
+ Guid="26b316b0-4f2b-4f56-b2bd-c5a13a7b0f63"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="e23f384e-04ed-4772-979f-42235888b0a5"
+>
+<Expression>(FIRST_IN Message.Sequence1 | ConsiderPacket(X.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR) ).TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -1563,14 +1667,14 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Guid="229f8b76-fd9c-43fc-9e81-d3eeef35a300"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition><PreCondition
  Guid="63b7ef27-bbc6-42a7-8bf2-d97a8e0a60c8"
->ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</PreCondition></PreConditions>
+>THERE_IS_IN CurrentBaliseGroup | HasRevSupervisionInfo(Message=&gt;X)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1ee33c0c-afa3-45e6-af12-67634aef90fc"
 >Kernel.TrackDescription.ReversingArea.ReversingAreaInformationReceived
 (
     RVAreaPacket =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION,
-    RVSupervisionPacket =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION
+    RVSupervisionPacket =&gt; RevSupervisionPacket(FIRST_IN CurrentBaliseGroup | HasRevSupervisionInfo(X))
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -1598,7 +1702,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Guid="84dbb76c-bf59-462a-9f3c-525182a0b7cf"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</PreCondition><PreCondition
  Guid="248dc82c-f2d7-416f-ae54-eab951eba3be"
->NOT ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition></PreConditions>
+>NOT ( THERE_IS_IN CurrentBaliseGroup | HasRevAreaInfo(Message=&gt;X) )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a1a7e48f-51d5-472f-856b-f4e81ce62319"
