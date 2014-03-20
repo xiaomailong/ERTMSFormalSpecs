@@ -142,6 +142,8 @@ namespace GUI.Report
 
             reportHandler.AddSpecIssues = CB_ShowIssues.Checked;
             reportHandler.AddDesignChoices = CB_ShowDesignChoices.Checked;
+            reportHandler.AddInformationNeeded = moreInformationNeededCheckBox.Checked;
+            reportHandler.AddComments = assumptionsAndCommentsCheckBox.Checked;
 
             Hide();
 

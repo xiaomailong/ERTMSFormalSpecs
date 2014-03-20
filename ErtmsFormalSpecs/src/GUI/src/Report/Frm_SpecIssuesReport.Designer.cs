@@ -49,17 +49,21 @@ namespace GUI.Report
             this.TxtB_Path = new System.Windows.Forms.TextBox();
             this.Btn_SelectFile = new System.Windows.Forms.Button();
             this.Btn_CreateReport = new System.Windows.Forms.Button();
+            this.moreInformationNeededCheckBox = new System.Windows.Forms.CheckBox();
+            this.assumptionsAndCommentsCheckBox = new System.Windows.Forms.CheckBox();
             this.GrB_Options.SuspendLayout();
             this.SuspendLayout();
             // 
             // GrB_Options
             // 
+            this.GrB_Options.Controls.Add(this.assumptionsAndCommentsCheckBox);
+            this.GrB_Options.Controls.Add(this.moreInformationNeededCheckBox);
             this.GrB_Options.Controls.Add(this.CB_ShowDesignChoices);
             this.GrB_Options.Controls.Add(this.CB_ShowIssues);
             this.GrB_Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GrB_Options.Location = new System.Drawing.Point(13, 13);
             this.GrB_Options.Name = "GrB_Options";
-            this.GrB_Options.Size = new System.Drawing.Size(388, 72);
+            this.GrB_Options.Size = new System.Drawing.Size(388, 126);
             this.GrB_Options.TabIndex = 0;
             this.GrB_Options.TabStop = false;
             this.GrB_Options.Text = "Options";
@@ -92,14 +96,14 @@ namespace GUI.Report
             // 
             // TxtB_Path
             // 
-            this.TxtB_Path.Location = new System.Drawing.Point(13, 91);
+            this.TxtB_Path.Location = new System.Drawing.Point(12, 148);
             this.TxtB_Path.Name = "TxtB_Path";
             this.TxtB_Path.Size = new System.Drawing.Size(200, 20);
             this.TxtB_Path.TabIndex = 7;
             // 
             // Btn_SelectFile
             // 
-            this.Btn_SelectFile.Location = new System.Drawing.Point(219, 91);
+            this.Btn_SelectFile.Location = new System.Drawing.Point(221, 145);
             this.Btn_SelectFile.Name = "Btn_SelectFile";
             this.Btn_SelectFile.Size = new System.Drawing.Size(87, 23);
             this.Btn_SelectFile.TabIndex = 6;
@@ -109,7 +113,7 @@ namespace GUI.Report
             // 
             // Btn_CreateReport
             // 
-            this.Btn_CreateReport.Location = new System.Drawing.Point(312, 91);
+            this.Btn_CreateReport.Location = new System.Drawing.Point(314, 145);
             this.Btn_CreateReport.Name = "Btn_CreateReport";
             this.Btn_CreateReport.Size = new System.Drawing.Size(87, 23);
             this.Btn_CreateReport.TabIndex = 5;
@@ -117,11 +121,37 @@ namespace GUI.Report
             this.Btn_CreateReport.UseVisualStyleBackColor = true;
             this.Btn_CreateReport.Click += new System.EventHandler(this.Btn_CreateReport_Click);
             // 
+            // moreInformationNeededCheckBox
+            // 
+            this.moreInformationNeededCheckBox.AutoSize = true;
+            this.moreInformationNeededCheckBox.Checked = true;
+            this.moreInformationNeededCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.moreInformationNeededCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moreInformationNeededCheckBox.Location = new System.Drawing.Point(6, 66);
+            this.moreInformationNeededCheckBox.Name = "moreInformationNeededCheckBox";
+            this.moreInformationNeededCheckBox.Size = new System.Drawing.Size(143, 17);
+            this.moreInformationNeededCheckBox.TabIndex = 2;
+            this.moreInformationNeededCheckBox.Text = "More information needed";
+            this.moreInformationNeededCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // assumptionsAndCommentsCheckBox
+            // 
+            this.assumptionsAndCommentsCheckBox.AutoSize = true;
+            this.assumptionsAndCommentsCheckBox.Checked = true;
+            this.assumptionsAndCommentsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.assumptionsAndCommentsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.assumptionsAndCommentsCheckBox.Location = new System.Drawing.Point(6, 89);
+            this.assumptionsAndCommentsCheckBox.Name = "assumptionsAndCommentsCheckBox";
+            this.assumptionsAndCommentsCheckBox.Size = new System.Drawing.Size(157, 17);
+            this.assumptionsAndCommentsCheckBox.TabIndex = 3;
+            this.assumptionsAndCommentsCheckBox.Text = "Assumptions and comments";
+            this.assumptionsAndCommentsCheckBox.UseVisualStyleBackColor = true;
+            // 
             // SpecIssuesReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 124);
+            this.ClientSize = new System.Drawing.Size(413, 180);
             this.Controls.Add(this.TxtB_Path);
             this.Controls.Add(this.Btn_SelectFile);
             this.Controls.Add(this.Btn_CreateReport);
@@ -145,5 +175,7 @@ namespace GUI.Report
         private System.Windows.Forms.Button Btn_CreateReport;
         private System.Windows.Forms.CheckBox CB_ShowDesignChoices;
         private System.Windows.Forms.CheckBox CB_ShowIssues;
+        private System.Windows.Forms.CheckBox moreInformationNeededCheckBox;
+        private System.Windows.Forms.CheckBox assumptionsAndCommentsCheckBox;
     }
 }
