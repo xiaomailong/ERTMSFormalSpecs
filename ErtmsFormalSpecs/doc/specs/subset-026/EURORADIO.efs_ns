@@ -5143,6 +5143,88 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  Guid="3f635080-161d-4765-998e-7bc79357fae7"
 >RadioNetworkRegistrationReceived ( aPacket =&gt; ( FIRST_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )).RADIO_NETWORK_REGISTRATION )</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Reversing supervision information received"
+ Guid="bb38b62d-8393-4c0c-8583-a2328cdf4a99"
+>
+<ReqRef
+ Id="c93e250c-fc42-406f-9706-6ec7488b8982"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b12f8d4-fa42-4a76-8cb3-332637d44d4b"
+>
+</ReqRef><ReqRef
+ Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="be3a49b5-e92f-4002-92ee-65bb016ffafd"
+>
+</ReqRef><Comment>Handles reception of reversing supervision information received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Reversing supervision information received"
+ Guid="a7becc3f-aaae-4ad1-892a-e83089dfbd83"
+>
+<PreConditions>
+<PreCondition
+ Guid="703fe00a-713a-4063-961f-bcc9d8b2e820"
+>THERE_IS_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="389ce891-2d4b-4139-be13-958c71407137"
+>Kernel.TrackDescription.ReversingArea.ReversingSupervisionInformationReceived(RVSupervisionPacket =&gt;  ( FIRST_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Reversing area information received"
+ Guid="fdcd9485-afad-4a31-be39-570d9d7e20e4"
+>
+<ReqRef
+ Id="690dfc40-042d-4c8d-9e60-17b85d455fd3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="18d9ee6e-0662-44cf-adb1-3a99427cc5a4"
+>
+</ReqRef><ReqRef
+ Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64a59513-0075-494d-a938-07ddba56a48c"
+>
+</ReqRef><ReqRef
+ Id="f32ad7de-67d9-4075-bb38-75a13996ad98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2a389595-6d7f-461b-a006-578e4ec4cd87"
+>
+</ReqRef><ReqRef
+ Id="c93e250c-fc42-406f-9706-6ec7488b8982"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1e655817-3e22-4028-af9e-773549e2af03"
+>
+</ReqRef><Comment>Handles reception of reversing area information received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Reversing area information received"
+ Guid="3add805d-16f9-4c58-844e-8268deb08969"
+>
+<PreConditions>
+<PreCondition
+ Guid="3cfbaa2e-aead-4c62-87c7-dc0a0e2307b5"
+>THERE_IS_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.REVERSING_AREA_INFORMATION)</PreCondition><PreCondition
+ Guid="660f4149-1743-44df-81e3-9d06c31ec070"
+>THERE_IS_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c74651c6-f7b1-4041-aa6b-c49679a122ff"
+>Kernel.TrackDescription.ReversingArea.ReversingAreaInformationReceived
+(
+    RVAreaPacket =&gt; ( FIRST_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available (X.REVERSING_AREA_INFORMATION)).REVERSING_AREA_INFORMATION,
+    RVSupervisionPacket =&gt; ( FIRST_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION
+)</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -5591,6 +5673,88 @@ Default.MessageTypes.QScaleDistance(
  Guid="f7218da0-0535-4404-9004-e803bf961c91"
 >RadioNetworkRegistrationReceived ( aPacket =&gt; ( FIRST_IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )).RADIO_NETWORK_REGISTRATION )</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Reversing supervision information received"
+ Guid="28f5a732-ce0a-4051-bbf4-03e0557c4a7b"
+>
+<ReqRef
+ Id="c93e250c-fc42-406f-9706-6ec7488b8982"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b0c86519-5005-4a55-ba21-787201b11562"
+>
+</ReqRef><ReqRef
+ Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="005e242c-9fab-496a-8cc4-ba3c58514f36"
+>
+</ReqRef><Comment>Handles reception of reversing supervision information received with the general message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Reversing supervision information received"
+ Guid="af2c5570-7a4d-4054-82ad-57ef1d45427e"
+>
+<PreConditions>
+<PreCondition
+ Guid="193d11a0-6c10-4e95-88ed-a9e108627cb4"
+>THERE_IS_IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="44c794a5-cbc0-4338-8222-edf600f1a426"
+>Kernel.TrackDescription.ReversingArea.ReversingSupervisionInformationReceived(RVSupervisionPacket =&gt;  ( FIRST_IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Reversing area information received"
+ Guid="d991fd29-3448-414c-b173-d33dc950f456"
+>
+<ReqRef
+ Id="690dfc40-042d-4c8d-9e60-17b85d455fd3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="695cbd0a-2d60-4273-9207-4f12b4517f07"
+>
+</ReqRef><ReqRef
+ Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a0a0e4a-59f6-4ba6-8a44-24afc8156a17"
+>
+</ReqRef><ReqRef
+ Id="f32ad7de-67d9-4075-bb38-75a13996ad98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b472d4e9-95b2-4baf-9db7-ee6c4fc212ff"
+>
+</ReqRef><ReqRef
+ Id="c93e250c-fc42-406f-9706-6ec7488b8982"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="089b9fba-2bb7-463a-8dda-057dea445026"
+>
+</ReqRef><Comment>Handles reception of reversing area information received with the general message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Reversing area information received"
+ Guid="8a00d353-62fa-4dcf-986c-2ccf3f3da7bf"
+>
+<PreConditions>
+<PreCondition
+ Guid="2060598f-0aa3-4dff-9cfc-d591ff131003"
+>THERE_IS_IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.REVERSING_AREA_INFORMATION)</PreCondition><PreCondition
+ Guid="dd515f89-a7ca-4ad5-8028-653e08841979"
+>THERE_IS_IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="80535626-724a-4983-90b1-d0fe24394982"
+>Kernel.TrackDescription.ReversingArea.ReversingAreaInformationReceived
+(
+    RVAreaPacket =&gt; ( FIRST_IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.REVERSING_AREA_INFORMATION)).REVERSING_AREA_INFORMATION,
+    RVSupervisionPacket =&gt; ( FIRST_IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION
+)</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -5893,6 +6057,88 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Action
  Guid="bdb60228-bfad-43d2-ac1e-e6bbbac30872"
 >RadioNetworkRegistrationReceived ( aPacket =&gt; ( FIRST_IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )).RADIO_NETWORK_REGISTRATION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Reversing supervision information received"
+ Guid="0e37d4b1-e6f0-4c40-946d-2440c15b6c3d"
+>
+<ReqRef
+ Id="c93e250c-fc42-406f-9706-6ec7488b8982"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2df957a8-7b34-4b00-b67c-e2f40bc49fc1"
+>
+</ReqRef><ReqRef
+ Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="002437a3-173c-4b37-90ab-d72d47d3ff93"
+>
+</ReqRef><Comment>Handles reception of reversing supervision information received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Reversing supervision information received"
+ Guid="530d4fa3-09f2-48f4-b5c9-2f77bc42c524"
+>
+<PreConditions>
+<PreCondition
+ Guid="e13745ef-2428-495d-8e94-d1900f3d0b06"
+>THERE_IS_IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6c9233fc-46fd-477b-b385-92185e9c87f8"
+>Kernel.TrackDescription.ReversingArea.ReversingSupervisionInformationReceived(RVSupervisionPacket =&gt;  ( FIRST_IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Reversing area information received"
+ Guid="5fa0cf49-a89a-40a2-89ef-208552c8cd41"
+>
+<ReqRef
+ Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="675febca-aac6-4952-92e8-71e94b07197f"
+>
+</ReqRef><ReqRef
+ Id="690dfc40-042d-4c8d-9e60-17b85d455fd3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bfe02d07-7e16-4e5f-a2d4-92aa2c71f04d"
+>
+</ReqRef><ReqRef
+ Id="f32ad7de-67d9-4075-bb38-75a13996ad98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d385ae54-7961-422f-9cce-09968706a841"
+>
+</ReqRef><ReqRef
+ Id="c93e250c-fc42-406f-9706-6ec7488b8982"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7fea26d-2b01-4850-9105-493b0eb9cb04"
+>
+</ReqRef><Comment>Handles reception of reversing area information received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Reversing area information received"
+ Guid="329fce04-6965-44b9-9443-07b14c6864f3"
+>
+<PreConditions>
+<PreCondition
+ Guid="7c3dda02-5f70-4935-a8bb-3e7142b5a436"
+>THERE_IS_IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.REVERSING_AREA_INFORMATION)</PreCondition><PreCondition
+ Guid="c2bb5cf8-a873-439c-b8bf-5ee87b780afe"
+>THERE_IS_IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="62cf574b-ea96-48c5-8621-6c6e0c6b62ac"
+>Kernel.TrackDescription.ReversingArea.ReversingAreaInformationReceived
+(
+    RVAreaPacket =&gt; ( FIRST_IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available (X.REVERSING_AREA_INFORMATION)).REVERSING_AREA_INFORMATION,
+    RVSupervisionPacket =&gt; ( FIRST_IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
