@@ -741,7 +741,7 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - At standstill outside of accepted area"
  Guid="71d3f0fe-6a7c-47e9-b755-5c05fd70895e"
 >
 <Actions>
@@ -749,7 +749,8 @@
  Guid="391337fe-714a-46ce-8987-27c997236ecd"
 >Odometry.NominalDistance &lt;- 1500.0</Action><Action
  Guid="98e04246-5355-4769-95cc-7cfbc946e794"
->DMI.MasterDMI().HideReversingAllowed()</Action></Actions>
+><Comment>Reset the state of the </Comment>
+DMI.MasterDMI().HideReversingAllowed()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -869,7 +870,7 @@
  Guid="257c390f-1b07-44d5-a774-6c1fb40b6293"
 >NOT (DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested)</Expectation></Expectations>
 </SubStep><SubStep
- Name="Sub-step2"
+ Name="Sub-step2 - Driver tries reversing in motion"
  Guid="6b99ea27-0b5c-48e8-bb02-ed44b9a0b572"
 >
 <Actions>

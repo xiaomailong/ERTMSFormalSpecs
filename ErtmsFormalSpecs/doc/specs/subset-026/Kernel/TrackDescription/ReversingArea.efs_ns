@@ -374,13 +374,16 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt; ReversingAreaProfil
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Ask acknowledge of RV mode"
  Guid="ff334cc3-7e39-49af-8b39-e6763492aa47"
 >
 <PreConditions>
 <PreCondition
  Guid="02c224ed-0cc3-46ef-b8e8-dec3d21df680"
->DriverTriesReversing</PreCondition></PreConditions>
+>DriverTriesReversing</PreCondition><PreCondition
+ Guid="a87006bb-b89e-40ff-a62f-44b80838edb8"
+>NOT (DMI.MasterDMI().In_AcknOfRVMode.InputInformation.DisplayRequested)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ed5d42aa-ccad-44b5-b83e-130460638fea"
@@ -388,9 +391,11 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt; ReversingAreaProfil
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Stop displaying reversing"
  Guid="90328f0a-2643-46c8-8557-a501d97d34d2"
 >
+<Comment>If the train starts moving forwards again after stopping in a reversing area, stop displaying the reversing acknowledgements on the DMI</Comment>
 <PreConditions>
 <PreCondition
  Guid="1113e21c-9e1a-49e0-a1f1-181177c541a7"
