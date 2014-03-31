@@ -29,6 +29,8 @@ namespace Reports.Specs
             createFileName("SpecificationIssuesReport");
             AddSpecIssues = false;
             AddDesignChoices = false;
+            AddInformationNeeded = false;
+            AddComments = false;
         }
 
         /// <summary>
@@ -45,6 +47,11 @@ namespace Reports.Specs
             retVal.Info.Subject = "Specification issues report";
 
             SpecIssuesReport report = new SpecIssuesReport(retVal);
+            if (AddInformationNeeded)
+            {
+                Log.Info("..generating information needed");
+                report.CreateMoreInformationArticle(this);
+            }
             if (AddSpecIssues)
             {
                 Log.Info("..generating spec issues");
@@ -55,12 +62,19 @@ namespace Reports.Specs
                 Log.Info("..generating design choices");
                 report.CreateDesignChoicesArticle(this);
             }
+            if (AddComments)
+            {
+                Log.Info("..generating comments");
+                report.CreateMoreInformationArticle(this);
+            }
 
             return retVal;
         }
 
         public bool AddSpecIssues { set; get; }
         public bool AddDesignChoices { set; get; }
+        public bool AddInformationNeeded { set; get; }
+        public bool AddComments { set; get; }
     }
 }
 

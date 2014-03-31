@@ -1133,6 +1133,24 @@ namespace DataDictionary
             }
         }
 
+        public ICollection<Paragraph> MoreInformationNeeded
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Specification.Specification specification in Specifications)
+                {
+                    foreach (Paragraph paragraph in specification.MoreInformationNeeded)
+                    {
+                        retVal.Add(paragraph);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
         public ICollection<Paragraph> SpecIssues
         {
             get
@@ -1160,6 +1178,24 @@ namespace DataDictionary
                 foreach (Specification.Specification specification in Specifications)
                 {
                     foreach (Paragraph paragraph in specification.DesignChoices)
+                    {
+                        retVal.Add(paragraph);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        public ICollection<Paragraph> OnlyComments
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Specification.Specification specification in Specifications)
+                {
+                    foreach (Paragraph paragraph in specification.OnlyComments)
                     {
                         retVal.Add(paragraph);
                     }

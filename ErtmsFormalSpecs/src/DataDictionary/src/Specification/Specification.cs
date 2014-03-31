@@ -294,6 +294,30 @@ namespace DataDictionary.Specification
             }
         }
 
+        /// <summary>
+        /// Provides the paragraphs that are marked as needing more information
+        /// </summary>
+        public ICollection<Paragraph> MoreInformationNeeded
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Chapter c in Chapters)
+                {
+                    foreach (Paragraph p in c.applicableParagraphs())
+                    {
+                        if (p.getMoreInfoRequired() == true)
+                        {
+                            retVal.Add(p);
+                        }
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
 
         /// <summary>
         /// Provides the paragraphs that are marked as specification issues
@@ -337,6 +361,33 @@ namespace DataDictionary.Specification
                             retVal.Add(p);
                         }
                         break;
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Provides the paragraphs from the chapter Comments
+        /// </summary>
+        public ICollection<Paragraph> OnlyComments
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Chapter c in Chapters)
+                {
+                    foreach (Paragraph p in c.applicableParagraphs())
+                    {
+                        if (!string.IsNullOrEmpty(p.Comment))
+                        {
+                            if (!p.getSpecIssue() && !p.getMoreInfoRequired())
+                            {
+                                retVal.Add(p);
+                            }
+                        }
                     }
                 }
 

@@ -8377,6 +8377,117 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >Out_AcceptedEmergencyStops.OutputInformation.HideRequestStatus &lt;- Default.Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Name="HideReversingAllowed"
+ Guid="dda222e9-24a6-42dc-93ff-9ddfa8c43bd3"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Check mode change"
+ Guid="55d32b03-b169-4d7a-93fa-764a1af02571"
+>
+<ReqRef
+ Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d7ac7273-0f6b-4ae8-87b0-d90d5373a1c8"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Check mode change"
+ Guid="7cd0946f-b30a-4b77-ac27-38cc838cbe59"
+>
+<PreConditions>
+<PreCondition
+ Guid="dd086846-97c2-41a8-8a00-78e66b0c5500"
+>ModeChanged()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9414fb24-0529-4fdf-8f91-495f5382c247"
+>HandleModeChange()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Hide Information"
+ Guid="90ed7142-ab8a-4d12-807f-caa7d87c4589"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Hide Information"
+ Guid="3cb635cc-dddf-43b1-b6bf-b564c27cf82b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="567db4ab-33e8-43f0-b373-2de0a637e989"
+>Out_ReversingAllowed.OutputInformation.HideRequestStatus &lt;- Default.Request.Request</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="DisableAcknOfRVMode"
+ Guid="48d26940-848c-4e42-81b6-0afdcd7fc965"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Check mode change"
+ Guid="cd8ecd7f-0866-41b6-b7a1-5ae4cd6e452d"
+>
+<ReqRef
+ Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="511d3be6-eaba-46f6-aeb8-9148b5d6dfc6"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Check mode change"
+ Guid="b5e037c5-81b2-46ee-a9e0-6ded20b1e8d0"
+>
+<PreConditions>
+<PreCondition
+ Guid="fe8ab4e6-8f2f-4b1d-8df7-017064af3c79"
+>ModeChanged()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fd175372-3afc-4af8-a7d5-b10796fc3278"
+>HandleModeChange()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DisableRequest"
+ Guid="5df6263b-8305-49a5-bd93-b0b25094bd9a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="6168bf99-87af-44c8-97d4-c13170648d60"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="cfc0c5c7-0294-477e-a8ec-225c0a232d8c"
+>In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+ Guid="1dbb1009-c330-4200-9dfa-4d44e17c04e5"
+>In_AcknOfRVMode.InputInformation.DriverAnswered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="DMI.IN.TrainDataEntryRequest"
