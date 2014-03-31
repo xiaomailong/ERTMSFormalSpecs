@@ -511,6 +511,33 @@ INITIAL_VALUE
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ Name="Section time-out"
+ Guid="fa35354e-1628-4379-9b8c-c233d2693a53"
+>
+<ReqRef
+ Id="8298df3a-f507-437d-a5de-ceceaeedbead"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bff83381-1611-40fd-b540-265bc23d0e5a"
+>
+</ReqRef><ReqRef
+ Id="6e298525-0025-4c39-8c09-9a58a38729be"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="56dc620c-2461-49cb-b42c-3fc81f6723c3"
+>
+</ReqRef><Comment>If a section timer expires, the release speed returns to its default value</Comment>
+<PreConditions>
+<PreCondition
+ Guid="08e60ccf-2d2d-47ca-b4e4-b9f4c1c12b59"
+>Available(MA.TimedOutSection())</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8d371a70-ef2e-4e1b-8637-313df835dbd9"
+>ReleaseSpeed &lt;- 
+ReleaseSpeedValue(
+    Vrel=&gt;Default.BaseTypes.Speed.UseNVForReleaseSpeed
+)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Overlap"
  Guid="7757420e-906d-4475-b82f-d0b746202528"
 >

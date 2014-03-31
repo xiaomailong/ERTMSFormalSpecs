@@ -82,6 +82,7 @@
   <ELEMENT NAME="Dictionary" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <FIELDS>
       <FIELD NAME="Specifications"        REFTYPE="Specification" />
+      <FIELD NAME="RequirementSets"       REFTYPE="RequirementSet" />
       <FIELD NAME="RuleDisablings"        REFTYPE="RuleDisabling" />
       <FIELD NAME="NameSpaces"            REFTYPE="NameSpace" >
         <META NAME="TargetName">Namespaces</META>
@@ -112,6 +113,11 @@
         <REPEAT TARGET="Specifications">
           <ELEMENTREF NAME="Specification"/>
         </REPEAT>
+        <ENCLOSED NAME="RequirementSets" OPTIONAL="TRUE">
+          <REPEAT TARGET="RequirementSets">
+            <ELEMENTREF NAME="RequirementSet"/>
+          </REPEAT>
+        </ENCLOSED>
         <ENCLOSED NAME="RuleDisabling" OPTIONAL="TRUE">
           <REPEAT TARGET="RuleDisablings">
             <ELEMENTREF NAME="RuleDisabling"/>
@@ -1252,6 +1258,60 @@
     </FORMULA>
   </ELEMENT>
 
+  <!-- ---------------- -->
+  <!-- Requirement set  -->
+  <!-- ---------------- -->
+  <ELEMENT NAME="RequirementSet" MAIN="TRUE" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
+    <META NAME="Package">requirements</META>
+    <FIELDS>
+      <FIELD NAME="Dependancies"         REFTYPE="RequirementSetDependancy" />
+      <FIELD NAME="SubSets"              REFTYPE="RequirementSet" />
+      <FIELD NAME="Width"                TYPE="INTEGER" />
+      <FIELD NAME="Height"               TYPE="INTEGER" />
+      <FIELD NAME="X"                    TYPE="INTEGER" />
+      <FIELD NAME="Y"                    TYPE="INTEGER" />
+      <FIELD NAME="RecursiveSelection"   TYPE="BOOLEAN" />
+      <FIELD NAME="RequirementsStatus"   ENUMTYPE="SPEC_IMPLEMENTED_ENUM" />
+      <FIELD NAME="Default"              TYPE="BOOLEAN" />
+    </FIELDS>
+    <ATTRIBUTES>
+      <ATTR NAME="X"                   TARGET="X"                    OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Y"                   TARGET="Y"                    OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Width"               TARGET="Width"                OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Height"              TARGET="Height"               OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="RecursiveSelection"  TARGET="RecursiveSelection"   OPTIONAL="TRUE" DEFAULT="FALSE" />
+      <ATTR NAME="RequirementsStatus"  TARGET="RequirementsStatus"   OPTIONAL="TRUE" />
+      <ATTR NAME="Default"             TARGET="Default"              OPTIONAL="TRUE" DEFAULT="FALSE" />
+    </ATTRIBUTES>
+    <FORMULA>
+      <CONCAT>
+        <ENCLOSED NAME="Dependancies">
+          <REPEAT TARGET="Dependancies">
+            <ELEMENTREF NAME="RequirementSetDependancy"/>
+          </REPEAT>
+        </ENCLOSED>
+        <ENCLOSED NAME="SubSets">
+          <REPEAT TARGET="SubSets">
+            <ELEMENTREF NAME="RequirementSet"/>
+          </REPEAT>
+        </ENCLOSED>
+      </CONCAT>
+    </FORMULA>
+  </ELEMENT>
+
+  <!-- --------------------------- -->
+  <!-- Requirement set dependance  -->
+  <!-- --------------------------- -->
+  <ELEMENT NAME="RequirementSetDependancy" MAIN="TRUE" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
+    <META NAME="Package">requirements</META>
+    <FIELDS>
+      <FIELD NAME="Target"     TYPE="PCHAR" />
+    </FIELDS>
+    <ATTRIBUTES>
+      <ATTR NAME="Target"      TARGET="Target" />
+    </ATTRIBUTES>
+  </ELEMENT>
+
   <!-- ------------- -->
   <!-- Specification -->
   <!-- ------------- -->
@@ -1324,80 +1384,93 @@
   <ELEMENT NAME="Paragraph" BASEELEMENT="ReferencesParagraph" BASECLASS="DataDictionary.ReferencesParagraph" MAIN="TRUE">
     <META NAME="Package">requirements</META>
     <FIELDS>
-      <FIELD NAME="Id"                   TYPE="PCHAR">
+      <FIELD NAME="Id"                         TYPE="PCHAR">
         <META NAME="Key"/> 
       </FIELD>
-      <FIELD NAME="Type"                 ENUMTYPE="Paragraph_type" />
-      <FIELD NAME="Scope"                ENUMTYPE="Paragraph_scope" >
+      <FIELD NAME="Type"                       ENUMTYPE="Paragraph_type" />
+      <FIELD NAME="ObsoleteScope"              ENUMTYPE="Paragraph_scope" >
         <META NAME="DoNotTranslate" />
         <META NAME="DoNotCompare" />
       </FIELD>
-      <FIELD NAME="ScopeOnBoard"         TYPE="BOOLEAN" />
-      <FIELD NAME="ScopeTrackside"       TYPE="BOOLEAN" />
-      <FIELD NAME="ScopeRollingStock"    TYPE="BOOLEAN" />
-      <FIELD NAME="Bl"                   TYPE="PCHAR">
+      <FIELD NAME="ObsoleteScopeOnBoard"       TYPE="BOOLEAN">
+        <META NAME="DoNotCompare"/>
+      </FIELD>
+      <FIELD NAME="ObsoleteScopeTrackside"     TYPE="BOOLEAN">
+        <META NAME="DoNotCompare"/>
+      </FIELD>
+      <FIELD NAME="ObsoleteScopeRollingStock"  TYPE="BOOLEAN">
+        <META NAME="DoNotCompare"/>
+      </FIELD>
+      <FIELD NAME="Bl"                         TYPE="PCHAR">
         <META NAME="DoNotTranslate" />
       </FIELD>
-      <FIELD NAME="Optional"             TYPE="BOOLEAN" >
+      <FIELD NAME="Optional"                   TYPE="BOOLEAN" >
         <META NAME="DoNotTranslate" />
       </FIELD>
-      <FIELD NAME="TypeSpecs"            REFTYPE="TypeSpec" >
+      <FIELD NAME="TypeSpecs"                   REFTYPE="TypeSpec" >
       </FIELD>
-      <FIELD NAME="Text"                 TYPE="PCHAR" />     
-      <FIELD NAME="Version"              TYPE="PCHAR" >
+      <FIELD NAME="Text"                        TYPE="PCHAR" />     
+      <FIELD NAME="Version"                     TYPE="PCHAR" >
         <META NAME="DoNotTranslate" />
       </FIELD>
-      <FIELD NAME="Reviewed"             TYPE="BOOLEAN" >
+      <FIELD NAME="Reviewed"                    TYPE="BOOLEAN" >
         <META NAME="DoNotTranslate" />
       </FIELD>
-      <FIELD NAME="ImplementationStatus" ENUMTYPE="SPEC_IMPLEMENTED_ENUM" >
+      <FIELD NAME="ImplementationStatus"        ENUMTYPE="SPEC_IMPLEMENTED_ENUM" >
         <META NAME="DoNotTranslate" />
       </FIELD>
-      <FIELD NAME="Paragraphs"           REFTYPE="Paragraph" >
+      <FIELD NAME="Paragraphs"                  REFTYPE="Paragraph" >
         <META NAME="TargetName">SubParagraphs</META>
       </FIELD>
-      <FIELD NAME="Revision"             REFTYPE="ParagraphRevision">
+      <FIELD NAME="Revision"                    REFTYPE="ParagraphRevision">
         <META NAME="DoNotTranslate" />
       </FIELD>
-      <FIELD NAME="Message"              REFTYPE="Message" />
-      <FIELD NAME="MoreInfoRequired"     TYPE="BOOLEAN" >
+      <FIELD NAME="Message"                     REFTYPE="Message" />
+      <FIELD NAME="MoreInfoRequired"            TYPE="BOOLEAN" >
         <META NAME="DoNotTranslate" />
       </FIELD>
-      <FIELD NAME="SpecIssue"            TYPE="BOOLEAN" >
+      <FIELD NAME="SpecIssue"                   TYPE="BOOLEAN" >
         <META NAME="DoNotTranslate" />
       </FIELD>
-      <FIELD NAME="FunctionalBlock"      TYPE="BOOLEAN" >
+      <FIELD NAME="ObsoleteFunctionalBlock"     TYPE="BOOLEAN" >
+        <META NAME="Obsolete" />
         <META NAME="DoNotTranslate" />
+        <META NAME="DoNotCompare"/>
       </FIELD>
-      <FIELD NAME="FunctionalBlockName"  TYPE="PCHAR" >
+      <FIELD NAME="ObsoleteFunctionalBlockName" TYPE="PCHAR" >
+        <META NAME="Obsolete" />
         <META NAME="DoNotTranslate" />
+        <META NAME="DoNotCompare"/>
       </FIELD>
-      <FIELD NAME="ObsoleteGuid"         TYPE="PCHAR">
+      <FIELD NAME="RequirementSets"             REFTYPE="RequirementSetReference" >
+        <META NAME="DoNotCompare"/>
+      </FIELD>
+      <FIELD NAME="ObsoleteGuid"                TYPE="PCHAR">
         <META NAME="Key"/> 
         <META NAME="DoNotCompare"/> 
       </FIELD>
-      <FIELD NAME="Tested"               TYPE="BOOLEAN">
+      <FIELD NAME="Tested"                      TYPE="BOOLEAN">
       </FIELD>
     </FIELDS>
     <ATTRIBUTES>
-      <ATTR NAME="id"                  TARGET="Id"/>
-      <ATTR NAME="guid"                TARGET="ObsoleteGuid" OPTIONAL="TRUE" DEFAULT=""/>
-      <ATTR NAME="type"                TARGET="Type" OPTIONAL="TRUE" DEFAULT="REQUIREMENT" />
-      <ATTR NAME="scope"               TARGET="Scope" OPTIONAL="TRUE" DEFAULT="OBU_AND_TRACK" />
-      <ATTR NAME="bl"                  TARGET="Bl" OPTIONAL="TRUE" DEFAULT=""/>
-      <ATTR NAME="optional"            TARGET="Optional" OPTIONAL="TRUE" DEFAULT="TRUE" />
-      <ATTR NAME="name"                TARGET="Name" OPTIONAL="TRUE" DEFAULT="" />
-      <ATTR NAME="reviewed"            TARGET="Reviewed" OPTIONAL="TRUE" DEFAULT="FALSE" />
-      <ATTR NAME="status"              TARGET="ImplementationStatus" OPTIONAL="TRUE" DEFAULT="NA" />
-      <ATTR NAME="tested"              TARGET="Tested" OPTIONAL="TRUE" DEFAULT="FALSE"/>
-      <ATTR NAME="version"             TARGET="Version" OPTIONAL="TRUE" DEFAULT="3.0.0"/>
-      <ATTR NAME="infoRequired"        TARGET="MoreInfoRequired" OPTIONAL="TRUE" DEFAULT="FALSE" />
-      <ATTR NAME="specIssue"           TARGET="SpecIssue" OPTIONAL="TRUE" DEFAULT="FALSE" />
-      <ATTR NAME="functionalBlock"     TARGET="FunctionalBlock" OPTIONAL="TRUE" DEFAULT="FALSE" />
-      <ATTR NAME="functionalBlockName" TARGET="FunctionalBlockName" OPTIONAL="TRUE" DEFAULT=""/>
-      <ATTR NAME="onboard"             TARGET="ScopeOnBoard" OPTIONAL="TRUE" DEFAULT="FALSE"/>
-      <ATTR NAME="trackside"           TARGET="ScopeTrackside" OPTIONAL="TRUE" DEFAULT="FALSE"/>
-      <ATTR NAME="rollinkstock"        TARGET="ScopeRollingStock" OPTIONAL="TRUE" DEFAULT="FALSE"/>
+      <ATTR NAME="id"                         TARGET="Id"/>
+      <ATTR NAME="guid"                       TARGET="ObsoleteGuid" OPTIONAL="TRUE" DEFAULT=""/>
+      <ATTR NAME="type"                       TARGET="Type" OPTIONAL="TRUE" DEFAULT="REQUIREMENT" />
+      <ATTR NAME="scope"                      TARGET="ObsoleteScope" OPTIONAL="TRUE" DEFAULT="OBU_AND_TRACK" />
+      <ATTR NAME="bl"                         TARGET="Bl" OPTIONAL="TRUE" DEFAULT=""/>
+      <ATTR NAME="optional"                   TARGET="Optional" OPTIONAL="TRUE" DEFAULT="TRUE" />
+      <ATTR NAME="name"                       TARGET="Name" OPTIONAL="TRUE" DEFAULT="" />
+      <ATTR NAME="reviewed"                   TARGET="Reviewed" OPTIONAL="TRUE" DEFAULT="FALSE" />
+      <ATTR NAME="status"                     TARGET="ImplementationStatus" OPTIONAL="TRUE" DEFAULT="NA" />
+      <ATTR NAME="tested"                     TARGET="Tested" OPTIONAL="TRUE" DEFAULT="FALSE"/>
+      <ATTR NAME="version"                    TARGET="Version" OPTIONAL="TRUE" DEFAULT="3.0.0"/>
+      <ATTR NAME="infoRequired"               TARGET="MoreInfoRequired" OPTIONAL="TRUE" DEFAULT="FALSE" />
+      <ATTR NAME="specIssue"                  TARGET="SpecIssue" OPTIONAL="TRUE" DEFAULT="FALSE" />
+      <ATTR NAME="functionalBlock"            TARGET="ObsoleteFunctionalBlock" OPTIONAL="TRUE" DEFAULT="FALSE" />
+      <ATTR NAME="functionalBlockName"        TARGET="ObsoleteFunctionalBlockName" OPTIONAL="TRUE" DEFAULT=""/>
+      <ATTR NAME="onboard"                    TARGET="ObsoleteScopeOnBoard" OPTIONAL="TRUE" DEFAULT="FALSE"/>
+      <ATTR NAME="trackside"                  TARGET="ObsoleteScopeTrackside" OPTIONAL="TRUE" DEFAULT="FALSE"/>
+      <ATTR NAME="rollinkstock"               TARGET="ObsoleteScopeRollingStock" OPTIONAL="TRUE" DEFAULT="FALSE"/>
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
@@ -1412,8 +1485,27 @@
         <REPEAT TARGET="TypeSpecs" >
           <ELEMENTREF NAME="TypeSpec" />
         </REPEAT>
+        <ENCLOSED NAME="RequirementSets" OPTIONAL="TRUE">
+          <REPEAT TARGET="RequirementSets">
+            <ELEMENTREF NAME="RequirementSetReference"/>
+          </REPEAT>
+        </ENCLOSED>
       </CONCAT>
     </FORMULA>
+  </ELEMENT>
+
+  <!-- -------------------------- -->
+  <!-- Requirement set reference  -->
+  <!-- -------------------------- -->
+  <ELEMENT NAME="RequirementSetReference" BASEELEMENT="BaseModelElement" BASECLASS="ModelElement" MAIN="TRUE">
+    <META NAME="Package">requirements</META>
+    <FIELDS>
+      <FIELD NAME="Target"      TYPE="PCHAR">
+      </FIELD>
+    </FIELDS>
+    <ATTRIBUTES>
+      <ATTR NAME="RefId"     TARGET="Target"/>
+    </ATTRIBUTES>
   </ELEMENT>
 
   <!-- ------- -->

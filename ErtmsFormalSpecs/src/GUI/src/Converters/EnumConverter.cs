@@ -123,6 +123,15 @@ namespace GUI.Converters
         }
     }
 
+    public class ImplementationStatusConverterWithDefault : ImplementationStatusConverter
+    {
+        public ImplementationStatusConverterWithDefault(Type type)
+            : base(type)
+        {
+            converters.Add(new Converter(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM, "Default"));
+        }
+    }
+
     public class ScopeConverter : GenericEnumConverter<DataDictionary.Generated.acceptor.Paragraph_scope>
     {
         public ScopeConverter(Type type)
@@ -163,17 +172,12 @@ namespace GUI.Converters
         }
     }
 
-    public class CyclePhaseConverter : GenericEnumConverter<DataDictionary.Generated.acceptor.RulePriority>
+    public class CyclePhaseConverter : RulePriorityConverter
     {
         public CyclePhaseConverter(Type type)
             : base(type)
         {
             converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.defaultRulePriority, "All"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aProcessing, "Processing"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aUpdateINTERNAL, "Update INTERNAL variables"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aUpdateOUT, "Update OUT variables"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aVerification, "INPUT Verification"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aCleanUp, "Clean Up"));
         }
     }
 

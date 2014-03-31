@@ -43,6 +43,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Cleaner.cs" />
     <Compile Include="src\Compare\Comparer.cs" />
     <Compile Include="src\Compare\Diff.cs" />
     <Compile Include="src\Compare\CompareUtil.cs" />
@@ -110,6 +111,8 @@
     <Compile Include="src\Interpreter\StructExpression.cs" />
     <Compile Include="src\Interpreter\Usage.cs" />
     <Compile Include="src\Interpreter\Visitor.cs" />
+    <Compile Include="src\Marking.cs" />
+    <Compile Include="src\MarkingHistory.cs" />
     <Compile Include="src\MessageCounter.cs" />
     <Compile Include="src\ReferencesParagraph.cs" />
     <Compile Include="src\Functions\Case.cs" />
@@ -143,6 +146,10 @@
     <Compile Include="src\ReqRef.cs" />
     <Compile Include="src\ReqRelated.cs" />
     <Compile Include="src\RuleChecker.cs" />
+    <Compile Include="src\Specification\IHoldsRequirementSets.cs" />
+    <Compile Include="src\Specification\RequirementSet.cs" />
+    <Compile Include="src\Specification\RequirementSetDependancy.cs" />
+    <Compile Include="src\Specification\RequirementSetReference.cs" />
     <Compile Include="src\UsageChecker.cs" />
     <Compile Include="src\Rules\Action.cs" />
     <Compile Include="src\Rules\Change.cs" />
@@ -157,7 +164,6 @@
     <Compile Include="src\Specification\Chapter.cs" />
     <Compile Include="src\Specification\CharValue.cs" />
     <Compile Include="src\Specification\ChapterRef.cs" />
-    <Compile Include="src\Specification\FunctionalBlockExporter.cs" />
     <Compile Include="src\Specification\IHoldsParagraphs.cs" />
     <Compile Include="src\Specification\Mask.cs" />
     <Compile Include="src\Specification\Match.cs" />

@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace DataDictionary.Specification
 {
@@ -94,6 +95,22 @@ namespace DataDictionary.Specification
                 }
 
                 return base.Guid;
+            }
+        }
+
+        /// <summary>
+        /// Provides the requirement set references for this paragraph
+        /// </summary>
+        public ArrayList RequirementSetReferences
+        {
+            get
+            {
+                if (allRequirementSets() == null)
+                {
+                    setAllRequirementSets(new ArrayList());
+                }
+
+                return allRequirementSets();
             }
         }
 
@@ -206,61 +223,20 @@ namespace DataDictionary.Specification
             get { return getFather() as Paragraph; }
         }
 
-        public bool SubParagraphScopeOnboard
+        public bool SubParagraphBelongsToRequirementSet(RequirementSet requirementSet)
         {
-            get
+            bool retVal = false;
+
+            foreach (Paragraph p in SubParagraphs)
             {
-                bool retVal = false;
-
-                foreach (Paragraph p in SubParagraphs)
+                retVal = p.BelongsToRequirementSet(requirementSet) || p.SubParagraphBelongsToRequirementSet(requirementSet);
+                if (retVal)
                 {
-                    retVal = p.getScopeOnBoard() || p.SubParagraphScopeOnboard;
-                    if (retVal)
-                    {
-                        break;
-                    }
+                    break;
                 }
-
-                return retVal;
             }
-        }
 
-        public bool SubParagraphScopeTrackside
-        {
-            get
-            {
-                bool retVal = false;
-
-                foreach (Paragraph p in SubParagraphs)
-                {
-                    retVal = p.getScopeTrackside() || p.SubParagraphScopeTrackside;
-                    if (retVal)
-                    {
-                        break;
-                    }
-                }
-
-                return retVal;
-            }
-        }
-
-        public bool SubParagraphScopeRollingStock
-        {
-            get
-            {
-                bool retVal = false;
-
-                foreach (Paragraph p in SubParagraphs)
-                {
-                    retVal = p.getScopeRollingStock() || p.SubParagraphScopeRollingStock;
-                    if (retVal)
-                    {
-                        break;
-                    }
-                }
-
-                return retVal;
-            }
+            return retVal;
         }
 
         public void SetType(DataDictionary.Generated.acceptor.Paragraph_type Type)
@@ -269,11 +245,15 @@ namespace DataDictionary.Specification
             switch (Type)
             {
                 case Generated.acceptor.Paragraph_type.aREQUIREMENT:
-                    if (getScopeOnBoard() == true)
+                    foreach (RequirementSet requirementSet in ApplicableRequirementSets)
                     {
-                        setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
+                        if (requirementSet.getRequirementsStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM)
+                        {
+                            setImplementationStatus(requirementSet.getRequirementsStatus());
+                        }
                     }
                     break;
+
                 default:
                     setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
                     break;
@@ -332,17 +312,34 @@ namespace DataDictionary.Specification
         /// <summary>
         /// The sub paragraphs of this paragraph
         /// </summary>
-        public string GetNewSubParagraphId()
+        /// <param name="letter">Indicates that the paragraph id should be terminated by a letter</param>
+        public string GetNewSubParagraphId(bool letter)
         {
-            string retVal = this.FullId + ".1";
+            string retVal;
+            if (letter)
+            {
+                retVal = this.FullId + ".a";
+            }
+            else
+            {
+                retVal = this.FullId + ".1";
+            }
+
             if (SubParagraphs.Count > 0)
             {
                 Paragraph lastParagraph = SubParagraphs[SubParagraphs.Count - 1] as Paragraph;
                 int[] ids = lastParagraph.Id;
                 int lastId = ids[ids.Length - 1];
-                retVal = this.FullId + "." + (lastId + 1).ToString();
-                //int lastId = lastParagraph.FullId.Split(".");  Item.FullId + "." + (Item.SubParagraphs.Count + 1).ToString()
+                if (letter)
+                {
+                    retVal = this.FullId + "." + (char)('a' + (lastId + 1));
+                }
+                else
+                {
+                    retVal = this.FullId + "." + (lastId + 1).ToString();
+                }
             }
+
             return retVal;
         }
 
@@ -452,9 +449,14 @@ namespace DataDictionary.Specification
          */
         public bool isApplicable()
         {
-            bool retVal;
-            retVal = getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT;
-            retVal = retVal && getScopeOnBoard();
+            bool retVal = false;
+
+            if (getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
+            {
+                retVal = getImplementationStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM
+                    && getImplementationStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable;
+            }
+
             return retVal;
         }
 
@@ -608,33 +610,6 @@ namespace DataDictionary.Specification
             }
         }
 
-        public void SetScopeOnBoardAndAlterImplementableStatus(bool value)
-        {
-            setScopeOnBoard(value);
-            if (value && getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
-            {
-                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
-            }
-        }
-
-        public void SetScopeTracksideAndAlterImplementableStatus(bool value)
-        {
-            setScopeTrackside(value);
-            if (value && !getScopeOnBoard())
-            {
-                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
-            }
-        }
-
-        public void SetScopeRollingStockAndAlterImplementableStatus(bool value)
-        {
-            setScopeRollingStock(value);
-            if (value && !getScopeOnBoard())
-            {
-                setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
-            }
-        }
-
         private class RemoveReqRef : Generated.Visitor
         {
             /// <summary>
@@ -676,6 +651,120 @@ namespace DataDictionary.Specification
             }
 
             base.Delete();
+        }
+
+        /// <summary>
+        /// Indicates whether this paragraphs belongs to the functionam block whose name is provided as parameter
+        /// </summary>
+        /// <param name="requirementSet"></param>
+        public bool BelongsToRequirementSet(RequirementSet requirementSet)
+        {
+            bool retVal = false;
+
+            if (requirementSet != null)
+            {
+                // Try to find a reference to this requirement set
+                foreach (RequirementSetReference reference in RequirementSetReferences)
+                {
+                    if (reference.Ref == requirementSet)
+                    {
+                        retVal = true;
+                        break;
+                    }
+                }
+
+                // Maybe a parent paragraph references this requirement set 
+                // (only if the requirement set specifies that selection is recursive)
+                if (!retVal && requirementSet.getRecursiveSelection())
+                {
+                    Paragraph enclosing = EnclosingParagraph;
+                    if (enclosing != null)
+                    {
+                        retVal = enclosing.BelongsToRequirementSet(requirementSet);
+                    }
+                }
+
+                // Try if the requirement belong to a sub requirement set
+                if (!retVal)
+                {
+                    foreach (RequirementSet subSet in requirementSet.SubSets)
+                    {
+                        if (BelongsToRequirementSet(subSet))
+                        {
+                            retVal = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Appends this paragraph to the requirement set if it does not belong to it already
+        /// </summary>
+        /// <param name="requirementSet"></param>
+        public bool AppendToRequirementSet(RequirementSet requirementSet)
+        {
+            bool retVal = false;
+
+            if (!BelongsToRequirementSet(requirementSet))
+            {
+                retVal = true;
+                RequirementSetReference reference = (RequirementSetReference)Generated.acceptor.getFactory().createRequirementSetReference();
+                reference.setTarget(requirementSet.Guid);
+                appendRequirementSets(reference);
+
+                if (getImplementationStatus() == Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM)
+                {
+                    if (requirementSet.getRequirementsStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM)
+                    {
+                        setImplementationStatus(requirementSet.getRequirementsStatus());
+                    }
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides the list of applicable requirement sets
+        /// </summary>
+        /// <returns></returns>
+        public HashSet<RequirementSet> ApplicableRequirementSets
+        {
+            get
+            {
+                HashSet<RequirementSet> retVal = new HashSet<RequirementSet>();
+
+                FillApplicableRequirementSets(retVal, false);
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Provides the list of applicable requirement sets
+        /// </summary>
+        /// <param name="applicableRequirementSets"></param>
+        /// <param name="onlyConsiderRecursiveRequirementSets">Indicates that only recursive requirement sets should be considered</param>
+        private void FillApplicableRequirementSets(HashSet<RequirementSet> applicableRequirementSets, bool onlyConsiderRecursiveRequirementSets)
+        {
+            foreach (RequirementSetReference reference in RequirementSetReferences)
+            {
+                RequirementSet requirementSet = reference.Ref;
+                if (requirementSet != null)
+                {
+                    applicableRequirementSets.Add(reference.Ref);
+                }
+            }
+
+            Paragraph enclosing = EnclosingParagraph;
+            if (enclosing != null)
+            {
+                enclosing.FillApplicableRequirementSets(applicableRequirementSets, true);
+            }
         }
     }
 }

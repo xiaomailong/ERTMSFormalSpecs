@@ -473,7 +473,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="222f4bcd-2a1c-413f-a896-71284a305776"
 >
-</ReqRef><Comment>Gives the current track conditions</Comment>
+</ReqRef><Comment>Gives the current track conditions
+This function is explained in ErtmsFormalSpecs/doc/specs/ModellingNotes</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -632,7 +633,8 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
  Name="MakeTCProfilePoint"
  Guid="4d777606-3c03-4815-8f35-4fe5cdec9500"
 >
-<Comment>Creates a TrackConditionInformation structure from the value received from the trackside.</Comment>
+<Comment>Creates a TrackConditionInformation structure from the value received from the trackside.
+The use of profile points and the functions in this namespace can be found in ErtmsFormalSpecs/doc/specs/ModellingNotes</Comment>
 <Parameters>
 <Parameter
  Type="Messages.M_TRACKCOND"
@@ -965,15 +967,6 @@ If there is already at a point at the end location, the values will not be chang
 <Action
  Guid="4b054b67-3098-417b-8cab-bb8d689d1032"
 ><Comment>EndSectionDistance provides the end location (in terms of the front end of the train) of the section</Comment>
-
-
-
-
-
-
-
-
-
 INSERT MakeTCProfilePoint(
 TCType=&gt;TCType,
 Distance=&gt;EndSectionDistance(
@@ -1085,7 +1078,7 @@ IN
  Name="Track conditions sound horn, non stopping areas and tunnel stopping areas"
  Guid="fe54fa1a-143b-4f67-9e3d-fdf06d6f0f9b"
 >
-<Comment>If the </Comment>
+<Comment>If the</Comment>
 <PreConditions>
 <PreCondition
  Guid="1c45e183-0768-4fb1-8443-db846aa4639d"
@@ -1106,7 +1099,8 @@ TCType == Messages.M_TRACKCOND.Tunnel_stopping_area__Initial_state__no_tunnel_st
  Name="HandleNewTrackCondition"
  Guid="f1d8b1e1-a151-4f17-94f5-0d5c099b6a36"
 >
-<Comment>Updates the track conditions according to the values of the packet received as parameter.</Comment>
+<Comment>Updates the track conditions according to the values of the packet received as parameter.
+The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/ModellingNotes</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION.Message"

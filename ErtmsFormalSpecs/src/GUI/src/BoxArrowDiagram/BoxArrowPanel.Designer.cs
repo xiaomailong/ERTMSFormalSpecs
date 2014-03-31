@@ -43,20 +43,36 @@ namespace GUI.BoxArrowDiagram
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            AutoScroll = true;
+            this.components = new System.ComponentModel.Container();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextMenu.SuspendLayout();
-            this.ContextMenuStrip = this.contextMenu;
+            this.pleaseWaitLabel = new System.Windows.Forms.Label();
+            this.SuspendLayout();
             // 
             // contextMenu
             // 
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(154, 98);
-            this.contextMenu.ResumeLayout(false);
+            this.contextMenu.Size = new System.Drawing.Size(61, 4);
+            // 
+            // pleaseWaitLabel
+            // 
+            this.pleaseWaitLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pleaseWaitLabel.Location = new System.Drawing.Point(0, 0);
+            this.pleaseWaitLabel.Name = "pleaseWaitLabel";
+            this.pleaseWaitLabel.Size = new System.Drawing.Size(100, 23);
+            this.pleaseWaitLabel.TabIndex = 0;
+            this.pleaseWaitLabel.Text = "Building model, please wait...";
+            this.pleaseWaitLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // BoxArrowPanel
+            // 
+            this.AutoScroll = true;
+            this.ContextMenuStrip = this.contextMenu;
+            this.ResumeLayout(false);
+
         }
 
         protected System.Windows.Forms.ContextMenuStrip contextMenu;
         #endregion
+        private System.Windows.Forms.Label pleaseWaitLabel;
     }
 }

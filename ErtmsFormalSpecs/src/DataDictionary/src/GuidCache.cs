@@ -112,8 +112,17 @@ namespace DataDictionary
                 {
                     visitor.visit(dictionary, true);
                 }
+
+                cache.TryGetValue(guid, out retVal);
+                if (retVal == null)
+                {
+                    cache[guid] = null;
+                }
             }
-            cache.TryGetValue(guid, out retVal);
+            else
+            {
+                cache.TryGetValue(guid, out retVal);
+            }
 
             return retVal;
         }

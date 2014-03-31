@@ -23,7 +23,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5ce0cea6-f421-462c-9e62-f3b5e470f2ca"
 >
-</ReqRef><Comment> Represents the information about the Last Relevant Balise Group.</Comment>
+</ReqRef><Comment>Represents the information about the Last Relevant Balise Group.</Comment>
 <StructureElement
  TypeName="Position"
  Default=""
@@ -566,7 +566,7 @@ NOT Available ( Linking.CurrentLinking() ) AND THERE_IS_IN CurrentBaliseGroup | 
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="BaliseMessageToBeHandled"
+ Name="BaliseTelegramToBeHandled"
  Guid="5784ea65-414e-4412-8db7-bad78ec32edf"
 >
 <ReqRef
@@ -580,7 +580,7 @@ NOT Available ( Linking.CurrentLinking() ) AND THERE_IS_IN CurrentBaliseGroup | 
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3fdc02d1-8ed0-4ea8-9f3f-78aada4d9680"
 >
-</ReqRef><Comment>This function indicates whether a single balise needs to processed. Only the second of a pair of duplicate balises is handled.</Comment>
+</ReqRef><Comment>This function indicates whether a single balise needs to be processed. Only the second of a pair of duplicate balises is handled.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.Message"
@@ -804,6 +804,126 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Guid="cc8cac42-85a1-48e5-b8ad-78149207795f"
 >
 <Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.EUROBALISE.SubStructure1"
+ Implemented="TRUE"
+ Name="MAOfTelegram"
+ Guid="93fca8b1-bdc9-42c4-ae84-3f961d540f93"
+>
+<ReqRef
+ Id="5fff9a06-3432-4ce9-b8e0-9b36de116805"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05e60619-cf07-4bf6-b3e5-894ac1958f33"
+>
+</ReqRef><Comment>Provides the movement authority sent in the balise telegram, if any.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.EUROBALISE.Message"
+ Name="aTelegram"
+ Guid="c6038b4e-df19-4246-a1cd-61f2ace4a7c1"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="4ee689aa-f596-4543-b312-4d096e591647"
+>
+<Expression>FIRST_IN aTelegram.Sequence1 | X.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY  != EMPTY</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="HasRevSupervisionInfo"
+ Guid="1a1f56fd-2bca-4f91-8a90-d02c1d34904e"
+>
+<ReqRef
+ Id="bfc8eaed-659b-4a63-9e2b-52dca586a727"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="776cc102-c320-45b4-830b-b8189af452ff"
+>
+</ReqRef><ReqRef
+ Id="796923a0-8b8a-4e7b-8af3-43f3398b27dd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cebd3778-349b-4050-93a8-a0dfd8d2e4c2"
+>
+</ReqRef><ReqRef
+ Id="f4d58bfc-b004-4e15-9756-926a4d1205e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f8e437a8-dde7-4808-8770-089c08dda5c3"
+>
+</ReqRef><ReqRef
+ Id="93098cba-bfd3-4dc4-ba29-a6f4fdc5a8cb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5597689f-4307-4c4f-8fe7-8c75b0597f58"
+>
+</ReqRef><Comment>Indicates whether a balise telegram contains a Reversing Supervision Information packet</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.EUROBALISE.Message"
+ Name="Message"
+ Guid="4688b46d-e4e8-466b-aad0-200c946f0564"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="b4fdb318-b4e0-4c4b-b434-1bdd7551b194"
+>
+<Expression>THERE_IS_IN Message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="HasRevAreaInfo"
+ Guid="3e1ec123-1277-43e1-8020-f53b8b7b36ee"
+>
+<ReqRef
+ Id="bfc8eaed-659b-4a63-9e2b-52dca586a727"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a9b2f062-cc58-466d-9320-d4f34f0d8890"
+>
+</ReqRef><ReqRef
+ Id="53afec70-5418-4e7d-9064-ba5f0d67662c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1e583727-4512-4797-a4f4-45b5da707d06"
+>
+</ReqRef><Comment>Indicates whether a balise telegram contains a Reversing Area Information packet</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.EUROBALISE.Message"
+ Name="Message"
+ Guid="613ee0bb-d29c-42e6-8428-b617bc90c20b"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="9ac75977-fe1c-450f-b401-f49ef5704cd6"
+>
+<Expression>THERE_IS_IN Message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.PACKET.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Message"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RevSupervisionPacket"
+ Guid="efd345de-9a3d-4acd-8130-8374e0a4e556"
+>
+<Comment>Returns the Reversing Supervision Information packet contained in a balise telegram</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.EUROBALISE.Message"
+ Name="Message"
+ Guid="26b316b0-4f2b-4f56-b2bd-c5a13a7b0f63"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="e23f384e-04ed-4772-979f-42235888b0a5"
+>
+<Expression>(FIRST_IN Message.Sequence1 | ConsiderPacket(X.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR) ).TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -1537,14 +1657,14 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Guid="229f8b76-fd9c-43fc-9e81-d3eeef35a300"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition><PreCondition
  Guid="63b7ef27-bbc6-42a7-8bf2-d97a8e0a60c8"
->ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</PreCondition></PreConditions>
+>THERE_IS_IN CurrentBaliseGroup | HasRevSupervisionInfo(Message=&gt;X)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1ee33c0c-afa3-45e6-af12-67634aef90fc"
 >Kernel.TrackDescription.ReversingArea.ReversingAreaInformationReceived
 (
     RVAreaPacket =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION,
-    RVSupervisionPacket =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION
+    RVSupervisionPacket =&gt; RevSupervisionPacket(FIRST_IN CurrentBaliseGroup | HasRevSupervisionInfo(X))
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -1572,7 +1692,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Guid="84dbb76c-bf59-462a-9f3c-525182a0b7cf"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</PreCondition><PreCondition
  Guid="248dc82c-f2d7-416f-ae54-eab951eba3be"
->NOT ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition></PreConditions>
+>NOT ( THERE_IS_IN CurrentBaliseGroup | HasRevAreaInfo(Message=&gt;X) )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a1a7e48f-51d5-472f-856b-f4e81ce62319"
@@ -1759,7 +1879,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleBaliseMessage"
+ Name="HandleBaliseTelegram"
  Guid="99858b9d-1417-47df-8644-63e0b422c4ff"
 >
 <Comment>Handles a new complete balise group message (when all its balise messages have been received). There are several steps:
@@ -1944,16 +2064,16 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleBaliseMessage"
+ Name="Handle balise telegram"
  Guid="f6523a73-b90d-4f95-8f4c-448ca057bd7d"
 >
-<Comment>Handles the packets received within the current message and applies the linking reaction, if any.</Comment>
+<Comment>Handles the packets received within the current balise telegram and applies the linking reaction, if any.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleBaliseMessage"
+ Name="Handle balise telegram"
  Guid="fe32348d-91f9-476a-97ec-c3c2f59fcb40"
 >
 <Comment></Comment>
@@ -1966,37 +2086,6 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
   Packet=&gt;X, 
   NID_BG=&gt;Message.NID_BG,
   NID_C=&gt;Message.NID_C
-) 
-ON Message.Sequence1</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="HandleMAofBaliseMessage"
- Guid="a327ac40-41eb-49dd-8d2e-5e56603ccdee"
->
-<ReqRef
- Id="5fff9a06-3432-4ce9-b8e0-9b36de116805"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="11cfd1f9-494c-440e-960a-a80376b0ac9c"
->
-</ReqRef><Comment>An MA is always considered after all other packets of a message have been processed. This is mandatory to ensure that all preconditions for an MA (which may have been transmitted within this message as well) can be evaluated before the evaluation of the MA.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="HandleBaliseMessage"
- Guid="07873378-d43b-4dd7-8c2f-d1c0fd8aca29"
->
-<Comment>This is structurally equal to BTM.HandleBaliseMessage.HandleBaliseMessage.HandleBaliseMessage but only considers MAs #morido, 13/10/24</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="671f604a-1d3c-4371-a68d-9bbae9a1400c"
->APPLY HandleNewPacketMA(
-  Packet=&gt;X, 
-  NID_BG=&gt;Message.NID_BG
 ) 
 ON Message.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
@@ -2075,6 +2164,39 @@ If all the messages of the current balise group have been received, calls Handle
 <Action
  Guid="2b0bea2f-701c-4d39-b9fb-f12ed87bc4e4"
 >BGLocationReference &lt;- PositionFromOdometry()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Keep time of first encountered balise in the group"
+ Guid="7e3f7eb7-4732-4b05-aee5-6838c06ed5c5"
+>
+<ReqRef
+ Id="d833d8f6-90b9-499b-bdb1-408971c2cbfe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f89dfca-3c06-48c5-9856-722c6ae3d688"
+>
+</ReqRef><ReqRef
+ Id="0d501890-d967-43e6-b663-c526a3371860"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="92afe681-91f8-4fdf-99b8-fcd57aee9371"
+>
+</ReqRef><Comment>The time is used for the MA section time-outs</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Keep time of first encountered balise in the group"
+ Guid="93775a88-0ffa-44f4-a42b-82fc8503f81f"
+>
+<PreConditions>
+<PreCondition
+ Guid="8fe19c66-0b4c-4f8b-9c03-95f752905437"
+>CurrentBaliseGroup == []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a11e1a7b-5620-4f84-b0a8-20ae6f967732"
+>Kernel.MA.CurrentBGTimeOfPassage &lt;- Kernel.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -2178,44 +2300,66 @@ If all the messages of the current balise group have been received, calls Handle
     Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY,
     NID_BG =&gt; NID_BG
 )</Action></Actions>
-</RuleCondition><RuleCondition
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
  Implemented="TRUE"
- Name="MA Lvl2or3 available"
- Guid="bc808b01-3a2d-44f8-a630-ca95f1b01a60"
+ Name="HandleBaliseMessage"
+ Guid="48414d07-b40a-4ad6-be9e-77b423eb55fe"
 >
 <ReqRef
- Id="ab5117d0-92b0-4488-9084-9e07dba02cec"
+ Id="5fff9a06-3432-4ce9-b8e0-9b36de116805"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="702dfb22-7ae4-48ba-a4f9-4f8ceed58824"
+ Guid="317e2736-b0b7-47c7-9014-449ecf227483"
 >
-</ReqRef><ReqRef
- Id="f4723221-15fd-4636-851f-08a437cc18e6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="57f835fe-898b-44f2-bef2-5d29077da947"
+</ReqRef><Comment>Movement authority has to be considered after all other packets of a message have been processed, since some preconditions to accept MA can be transmitted in the same message.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle packets in balise telegrams"
+ Guid="afdc7b3a-9acf-4598-a628-bdf218a7beb3"
 >
-</ReqRef><ReqRef
- Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="575ee435-6b8d-411a-a391-fdea3a9e6f8b"
+<Comment>First, handle the &quot;non-MA&quot; packets in all the telegrams.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle packets in balise telegrams"
+ Guid="e7516273-ac16-4172-b145-c531401e38e3"
 >
-</ReqRef><ReqRef
- Id="200c6541-d8d8-43b9-b5c0-4f586318bbce"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9bd63f47-593a-4a23-801a-56399ecc8a2e"
->
-</ReqRef><Comment>Processes the MA for level 2 or 3.</Comment>
 <PreConditions>
-<PreCondition
- Guid="682b5aef-b5b4-47f0-9e12-3213da50a84b"
->ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
- Guid="e6aabdd3-be04-45f7-a366-8bc7983a3449"
->Kernel.MA.MALvl2or3Received
+ Guid="71fe05ea-2e2a-441e-a4c5-fa8e04162cb8"
+>APPLY HandleBaliseTelegram ( X ) ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( Message =&gt; X )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle MA packets in balise telegrams"
+ Guid="8bf64490-ce74-42a8-aa77-fcbf0d2bf6c9"
+>
+<Comment>Then, handle the movement authority packet.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle MA packets in balise messages"
+ Guid="ae268b7a-92cb-4598-bc02-a2f04005d973"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2b02118c-1658-46b1-bae6-dc0ff97ec611"
+>APPLY HandleNewPacketMA
 (
-    Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY,
-    NID_BG =&gt; NID_BG
-)</Action></Actions>
+    Packet =&gt; MAOfTelegram ( aTelegram=&gt; X ) ,
+    NID_BG =&gt; X.NID_BG
+  )
+ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2429,13 +2573,13 @@ If all the messages of the current balise group have been received, calls Handle
  Guid="95d3af00-daf2-474d-a7c2-53f8614e06c6"
 >Available ( Message )</PreCondition><PreCondition
  Guid="ca2a5585-b8af-4d33-b11d-0f7a241172b0"
->(COUNT CurrentBaliseGroup ) &gt; 0 </PreCondition><PreCondition
+>(COUNT CurrentBaliseGroup ) &gt; 0</PreCondition><PreCondition
  Guid="facbef4e-0427-43dc-8246-9424d20c4b03"
 >Message.NID_BG != (FIRST_IN CurrentBaliseGroup).NID_BG</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c0bed554-3138-4c67-a342-dec6ad0a32dc"
->CurrentBaliseGroup &lt;- [] </Action></Actions>
+>CurrentBaliseGroup &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

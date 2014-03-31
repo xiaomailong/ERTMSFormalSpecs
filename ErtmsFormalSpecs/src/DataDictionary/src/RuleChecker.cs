@@ -19,6 +19,7 @@ using System.Linq;
 using DataDictionary.Functions;
 using System.Collections;
 using DataDictionary.Interpreter;
+using DataDictionary.Specification;
 
 namespace DataDictionary
 {
@@ -288,6 +289,12 @@ namespace DataDictionary
                 if (rule != null && rule.EnclosingProcedure != null)
                 {
                     requiresComment = rule.EnclosingProcedure.Rules.Count > 1;
+                }
+
+                Variables.Variable variable = commentable as Variables.Variable;
+                if (variable != null)
+                {
+                    requiresComment = false;
                 }
 
                 if (requiresComment)
@@ -847,21 +854,27 @@ namespace DataDictionary
                     }
                 }
 
-                if ((!paragraph.getScopeOnBoard()) && paragraph.SubParagraphScopeOnboard)
+                RequirementSet scope = Dictionary.findRequirementSet(Dictionary.SCOPE_NAME, false);
+                if (scope != null)
                 {
-                    paragraph.AddWarning("Paragraph scope should be On Board, according to its sub-paragraphs");
-                }
-                if ((!paragraph.getScopeTrackside()) && paragraph.SubParagraphScopeTrackside)
-                {
-                    paragraph.AddWarning("Paragraph scope should be Trackside, according to its sub-paragraphs");
-                }
-                if ((!paragraph.getScopeRollingStock()) && paragraph.SubParagraphScopeRollingStock)
-                {
-                    paragraph.AddWarning("Paragraph scope should be Rolling Stock, according to its sub-paragraphs");
-                }
-                if (!paragraph.getScopeOnBoard() && !paragraph.getScopeTrackside() && !paragraph.getScopeRollingStock())
-                {
-                    paragraph.AddWarning("Paragraph scope not set");
+                    bool scopeFound = false;
+                    foreach (RequirementSet requirementSet in scope.SubSets)
+                    {
+                        if (paragraph.BelongsToRequirementSet(requirementSet))
+                        {
+                            scopeFound = true;
+                        }
+
+                        if ((!paragraph.BelongsToRequirementSet(requirementSet)) && paragraph.SubParagraphBelongsToRequirementSet(requirementSet))
+                        {
+                            paragraph.AddWarning("Paragraph scope should be " + requirementSet.Name + ", according to its sub-paragraphs");
+                        }
+                    }
+
+                    if (!scopeFound && !(paragraph.getType() == Generated.acceptor.Paragraph_type.aDELETED))
+                    {
+                        paragraph.AddWarning("Paragraph scope not set");
+                    }
                 }
             }
 

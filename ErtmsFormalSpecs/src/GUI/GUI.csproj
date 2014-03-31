@@ -91,6 +91,18 @@
     <Compile Include="src\BoxArrowDiagram\ArrowControl.Designer.cs">
       <DependentUpon>ArrowControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\RequirementSetDiagram\RequirementSetControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\RequirementSetDiagram\RequirementSetDiagramWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\RequirementSetDiagram\RequirementSetPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\RequirementSetDiagram\RequirementSetDependancyControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\DataDictionaryView\StateRulesTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StateSubStatesTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StructureProceduresTreeNode.cs" />
@@ -319,10 +331,14 @@
     <Compile Include="src\Shortcuts\Window.Designer.cs">
       <DependentUpon>Window.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\SpecificationView\RequirementSetReferenceTreeNode.cs" />
     <Compile Include="src\SpecificationView\SpecificationsTreeNode.cs" />
     <Compile Include="src\SpecificationView\SpecificationTreeNode.cs" />
     <Compile Include="src\SpecificationView\ParagraphTreeNode.cs" />
     <Compile Include="src\SpecificationView\SpecificationTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\SpecificationView\RequirementSetsTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\StateDiagram\StateControl.cs">
@@ -445,11 +461,20 @@
     <EmbeddedResource Include="src\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\BoxArrowDiagram\BoxArrowPanel.resx">
+      <DependentUpon>BoxArrowPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\BoxArrowDiagram\BoxArrowWindow.resx">
       <DependentUpon>BoxArrowWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\BoxArrowDiagram\ArrowControl.resx">
       <DependentUpon>ArrowControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\RequirementSetDiagram\RequirementSetDiagramWindow.resx">
+      <DependentUpon>RequirementSetDiagramWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\RequirementSetDiagram\RequirementSetDependancyControl.resx">
+      <DependentUpon>RequirementSetDependancyControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\DataDictionaryView\CustomAction.resx">
       <DependentUpon>CustomAction.cs</DependentUpon>

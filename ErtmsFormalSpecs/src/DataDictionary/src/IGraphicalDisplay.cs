@@ -93,5 +93,6 @@ namespace DataDictionary
         /// The model element which is referenced by this arrow
         /// </summary>
         ModelElement ReferencedModel { get; }
+
     }
 }

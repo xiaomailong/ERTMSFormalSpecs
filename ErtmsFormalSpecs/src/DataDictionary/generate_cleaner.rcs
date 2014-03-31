@@ -1,0 +1,150 @@
+MODULE GenerateComparer;
+
+-- Create a valid C# name
+PROCEDURE ValidName ( name )
+BEGIN
+  RESULT := name;
+  RESULT := STR.Replace ( RESULT, "-", "_" );
+  RESULT := STR.Replace ( RESULT, "/", "_" );
+  RESULT := STR.Replace ( RESULT, ".", "_" );
+  RESULT := STR.Replace ( RESULT, " ", "_" );
+END ValidName;
+
+-- Generates the class which trims all texts
+PROCEDURE GenerateTextTrimmerClass ( doc )
+BEGIN
+  FILE1.Redirect ("src/Cleaner.cs");
+  FILE1.WriteList ({
+`// ------------------------------------------------------------------------------
+`// -- Copyright ERTMS Solutions
+`// -- Licensed under the EUPL V.1.1
+`// -- http://joinup.ec.europa.eu/software/page/eupl/licence-eupl
+`// --
+`// -- This file is part of ERTMSFormalSpec software and documentation
+`// --
+`// --  ERTMSFormalSpec is free software: you can redistribute it and/or modify
+`// --  it under the terms of the EUPL General Public License, v.1.1
+`// --
+`// -- ERTMSFormalSpec is distributed in the hope that it will be useful,
+`// -- but WITHOUT ANY WARRANTY; without even the implied warranty of
+`// -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+`// --
+`// ------------------------------------------------------------------------------
+`
+`namespace DataDictionary
+`{
+`    using System.Collections.Generic;
+`
+`    /// <summary>
+`    /// This class is used to clean up all string entries in the dictionary
+`    ///
+`    /// WARNING!!! 
+`    /// This class is generated, please refrain from altering it manually
+`    /// WARNING!!! 
+`    /// </summary>
+`    public class Cleaner : Generated.Visitor
+`    {
+  });
+
+  -- 
+  -- Generate clean up methods
+  -- 
+  FOR element IN doc.RecursiveGetElementChildNodes("ELEMENT") DO  
+
+    IF InheritsFrom(element, "ModelElement") THEN
+      FILE1.WriteList ({
+`        /// <summary>
+`        /// Cleans all text fields in this element
+`        /// </summary>
+`        /// <param name="obj"></param>
+`        /// <param name="visitSubNodes"></param>
+`        public override void visit(Generated.`ValidName (element.NAME)` obj, bool visitSubNodes)
+`        {
+      });
+
+      FOR field IN element.RecursiveGetElementChildNodes ("FIELD") DO
+        IF ( field CAN TYPE ) THEN
+          IF ( field!TYPE = "STRING" OR field!TYPE = "PCHAR" ) THEN
+            FILE1.WriteList ({
+`          if ( obj.get`ValidName(field.NAME)`() != null )
+`          {
+`            obj.set`ValidName(field.NAME)`(obj.get`ValidName(field.NAME)`().Trim());
+`          }
+            });
+          END; -- IF
+        END; -- IF
+      END; -- FOR field
+      FILE1.WriteList ({
+`
+`          base.visit(obj, visitSubNodes);
+`        }
+`
+      });
+    END; -- IF
+  END; -- FOR element
+  FILE1.WriteList ({
+`    }
+`  }
+  });
+END GenerateTextTrimmerClass;
+
+VAR
+  Elements;
+
+-- Creates the symbol table for the elements of the system
+PROCEDURE PopulateSymbols( doc )
+BEGIN
+  Elements := ASSOC.New;
+  FOR IN doc.RecursiveGetElementChildNodes("ELEMENT") DO
+    Elements[X.NAME] := X;
+  END;
+END PopulateSymbols;
+
+PROCEDURE CreateClassHierarchy ( doc )
+BEGIN
+  FOR IN doc.RecursiveGetElementChildNodes("ELEMENT") DO
+    IF X CAN BASEELEMENT THEN
+      X.BaseElement := Elements[X.BASEELEMENT];
+    END;
+  END;
+END;
+
+PROCEDURE InheritsFrom(Element, BaseElement)
+VAR 
+  current;
+BEGIN
+  RESULT := FALSE;
+  current := Element;
+  WHILE ( current <> VOID ) AND NOT RESULT DO
+--    OUT.WriteLn (' -- ' & current.NAME &' '& current!BASECLASS &' =?= '& BaseElement &' -> '& RESULT);
+    RESULT := current!BASECLASS == BaseElement;
+    current := current!BaseElement;
+  END;
+END;
+
+PROCEDURE TERMINATE;
+VAR 
+  doc;
+BEGIN
+  OUT.WriteLn ("Starting process");
+  doc := XML.LoadFile ( SYS.Args[1] );
+  OUT.WriteLn ("XML document read");
+  IF doc <> VOID THEN
+    doc := doc.GetDocumentElement;
+
+    OUT.WriteLn ("Populate symbols");
+    PopulateSymbols( doc );
+
+    OUT.WriteLn ("Create class hierarchy");
+    CreateClassHierarchy ( doc );
+
+    OUT.WriteLn ("Generate text cleaner class");
+    GenerateTextTrimmerClass ( doc );
+    
+  ELSE
+    ERR.WriteLn ( "Cannot read file " & SYS.Args[1] );
+  END;
+
+  OUT.WriteLn ("Done");
+END TERMINATE;
+

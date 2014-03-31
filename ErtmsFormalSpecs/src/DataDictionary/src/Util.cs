@@ -43,7 +43,7 @@ namespace DataDictionary
         /// <summary>
         /// Updates the dictionary contents
         /// </summary>
-        private class Updater : Generated.Visitor
+        private class Updater : Cleaner
         {
             /// <summary>
             /// Indicates that GUID should be updated
@@ -118,29 +118,85 @@ namespace DataDictionary
             {
                 Specification.Paragraph paragraph = (Specification.Paragraph)obj;
 
-                switch (paragraph.getScope())
+                // WARNING : This phase is completed by the next phase to place all requirement in requirement sets
+                // Ensures the scope is located in the flags
+                switch (paragraph.getObsoleteScope())
                 {
                     case Generated.acceptor.Paragraph_scope.aOBU:
-                        paragraph.setScopeOnBoard(true);
+                        paragraph.setObsoleteScopeOnBoard(true);
                         break;
 
                     case Generated.acceptor.Paragraph_scope.aTRACK:
-                        paragraph.setScopeTrackside(true);
+                        paragraph.setObsoleteScopeTrackside(true);
                         break;
 
                     case Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK:
                     case Generated.acceptor.Paragraph_scope.defaultParagraph_scope:
-                        paragraph.setScopeOnBoard(true);
-                        paragraph.setScopeTrackside(true);
+                        paragraph.setObsoleteScopeOnBoard(true);
+                        paragraph.setObsoleteScopeTrackside(true);
                         break;
 
                     case Generated.acceptor.Paragraph_scope.aROLLING_STOCK:
-                        paragraph.setScopeRollingStock(true);
+                        paragraph.setObsoleteScopeRollingStock(true);
                         break;
+                }
+                paragraph.setObsoleteScope(Generated.acceptor.Paragraph_scope.aFLAGS);
 
+                // WARNING : do not remove the preceding phase since it still required for previous versions of EFS files
+                // Based on the flag information, place the requirements in their corresponding requirement set
+                // STM was never used, this information is discarded
+                RequirementSet scope = paragraph.Dictionary.findRequirementSet(Dictionary.SCOPE_NAME, true);
+
+                if (paragraph.getObsoleteScopeOnBoard())
+                {
+                    RequirementSet onBoard = scope.findRequirementSet(RequirementSet.ONBOARD_SCOPE_NAME, false);
+                    if (onBoard == null)
+                    {
+                        onBoard = scope.findRequirementSet(RequirementSet.ONBOARD_SCOPE_NAME, true);
+                        onBoard.setRecursiveSelection(false);
+                        onBoard.setDefault(true);
+                        onBoard.setRequirementsStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
+                    }
+                    paragraph.AppendToRequirementSet(onBoard);
+                    paragraph.setObsoleteScopeOnBoard(false);
                 }
 
-                paragraph.setScope(Generated.acceptor.Paragraph_scope.aFLAGS);
+                if (paragraph.getObsoleteScopeTrackside())
+                {
+                    RequirementSet trackSide = scope.findRequirementSet(RequirementSet.TRACKSIDE_SCOPE_NAME, false);
+                    if (trackSide == null)
+                    {
+                        trackSide = scope.findRequirementSet(RequirementSet.TRACKSIDE_SCOPE_NAME, true);
+                        trackSide.setRecursiveSelection(false);
+                        trackSide.setDefault(true);
+                    }
+                    paragraph.AppendToRequirementSet(trackSide);
+                    paragraph.setObsoleteScopeTrackside(false);
+                }
+
+                if (paragraph.getObsoleteScopeRollingStock())
+                {
+                    RequirementSet rollingStock = scope.findRequirementSet(RequirementSet.ROLLING_STOCK_SCOPE_NAME, false);
+                    if (rollingStock == null)
+                    {
+                        rollingStock = scope.findRequirementSet(RequirementSet.ROLLING_STOCK_SCOPE_NAME, true);
+                        rollingStock.setRecursiveSelection(false);
+                        rollingStock.setDefault(false);
+                    }
+                    paragraph.AppendToRequirementSet(rollingStock);
+                    paragraph.setObsoleteScopeRollingStock(false);
+                }
+
+                // Updates the functional block information based on the FunctionalBlockName field
+                if (!string.IsNullOrEmpty(paragraph.getObsoleteFunctionalBlockName()))
+                {
+                    RequirementSet allFunctionalBlocks = paragraph.Dictionary.findRequirementSet(Dictionary.FUNCTIONAL_BLOCK_NAME, true);
+                    RequirementSet functionalBlock = allFunctionalBlocks.findRequirementSet(paragraph.getObsoleteFunctionalBlockName(), true);
+                    functionalBlock.setRecursiveSelection(true);
+                    functionalBlock.setDefault(false);
+                    paragraph.AppendToRequirementSet(functionalBlock);
+                    paragraph.setObsoleteFunctionalBlockName(null);
+                }
 
                 base.visit(obj, visitSubNodes);
             }
@@ -528,6 +584,7 @@ namespace DataDictionary
                     try
                     {
                         Generated.ControllersManager.DesactivateAllNotifications();
+
                         Updater updater = new Updater(updateGuid);
                         updater.visit(retVal);
                     }

@@ -6,7 +6,7 @@
 <SubSequences>
 <SubSequence
  D_LRBG="32767 (Unknown)"
- Level="1 (Level 0) To be revalidated and asumed as condition after reset "
+ Level="1 (Level 0) To be revalidated and asumed as condition after reset"
  Mode="No Power"
  NID_LRBG="16777215 (Unknown)"
  Q_DIRLRBG="2 (Unknown)"
@@ -64,11 +64,11 @@
 <Actions>
 <Action
  Guid="9145d9c1-4776-44cd-8707-1777617b6224"
->EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="45e62230-8f34-4498-9a14-25a15efaa83b"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;1515&apos;</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.Id.Id &lt;- 1515</Action><Action
  Guid="b7ebbdf1-fd67-4b04-879a-20ac929c3179"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;1234 FFFF FFFF FFFF&apos;</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.PhoneNumber &lt;- &apos;1234 FFFF FFFF FFFF&apos;</Action><Action
  Guid="64f16624-d405-4e43-94f7-5276074921a6"
 >Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="20ed9b38-157a-4f5c-bd06-632259754152"
@@ -162,15 +162,6 @@ The on-board equipment changes to SB mode.</Description>
  Name="Sub-step1"
  Guid="1f138839-c46a-42b7-8a01-f40071c7991f"
 >
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation"
- Guid="11a8f5c4-ad3f-4d95-85e7-fb7804ab028f"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
-    ModeInkernel=&gt;Default.Mode.SB
-)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -202,7 +193,7 @@ The on-board equipment changes to SB mode.</Description>
 <Actions>
 <Action
  Guid="4b74729b-6eec-4693-a215-659644fc67b0"
->TIU.Cab1.IsActive &lt;- True</Action></Actions>
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="6"
@@ -232,7 +223,7 @@ The on-board equipment changes to SB mode.</Description>
  Kind="Instantaneous"
  DeadLine="1000"
  Guid="e50d955f-f838-4e41-b062-6f4bde5664f2"
->DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested </Expectation></Expectations>
+>DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="7"
@@ -495,8 +486,7 @@ Triggered by : Data Entry completed</Comment>
  Guid="25a8fa58-f1ca-48d5-bd6b-974c529d8d62"
 >
 <Description>The driver modifies the ERTMS/ETCS Level data (e.g. a new valid data is input).</Description>
-<Comment>The on-board equipment allows the driver to modify an existing ERTMS/ETCS Level data.
-</Comment>
+<Comment>The on-board equipment allows the driver to modify an existing ERTMS/ETCS Level data.</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
@@ -589,8 +579,7 @@ The On-Board equipment still allows the driver to validate it.</Description>
  Guid="08a5d13a-7bea-415e-b953-e69aa4351f2d"
 >
 <Description>Driver?s validation action is recorded on the JRU.</Description>
-<Comment>Triggered by : The driver acts on the on-board MMI.
-</Comment>
+<Comment>Triggered by : The driver acts on the on-board MMI.</Comment>
 </Step><Step
  TCS_Order="25"
  IO="NA"
@@ -641,8 +630,7 @@ The On-Board equipment still allows the driver to validate it.</Description>
  Name="Step 27"
  Guid="1655ca41-e3da-4b3a-b561-a04e2ae08c7c"
 >
-<Description>LSTM: The On-Board equipment requests the driver to select the STM Id corresponding to the mission.
-</Description>
+<Description>LSTM: The On-Board equipment requests the driver to select the STM Id corresponding to the mission.</Description>
 </Step><Step
  TCS_Order="28"
  IO="NA"
@@ -1158,15 +1146,6 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Name="Sub-step1"
  Guid="1a73ebbf-e542-4312-9e02-4037af99718d"
 >
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation"
- Guid="bae6eb72-1c5a-4915-a648-28f9e7b76b4a"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
-    ModeInkernel=&gt;Default.Mode.SR
-)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2817,8 +2796,7 @@ Service Brake is APPLIED.</Description>
  Guid="ad18069b-991b-4570-94b9-a8767a7d97d9"
 >
 <Description>An indication for driver intervention is given.</Description>
-<Comment>Before the Permitted Speed (P) begins to decrease.
-</Comment>
+<Comment>Before the Permitted Speed (P) begins to decrease.</Comment>
 </Step></Steps>
 </TestCase><TestCase
  Feature="288"
@@ -3958,8 +3936,7 @@ The Telegram and packet 65 is accepted by the on-board</Description>
  Guid="ab16d7f4-4408-49ce-9944-c5a11a2bc4f7"
 >
 <Description>An indication for driver intervention is given.</Description>
-<Comment>Before the Permitted Speed (P) begins to decrease.
-</Comment>
+<Comment>Before the Permitted Speed (P) begins to decrease.</Comment>
 </Step></Steps>
 </TestCase><TestCase
  Feature="288"
@@ -6374,7 +6351,7 @@ V_TSR (1) &lt; V_TSR (2)</Comment>
 <Description>The BG sends a Telegram including packet 65:
 The Telegram and packet 65 is accepted by the on-board</Description>
 <Comment>Complete Telegram is ACCEPTED and stored</Comment>
-<UserComment>The order of the allowed speeds in this TSR and the following one have been altered to prove that both TSR are completed since on the contrary and due to the  train speed supervision curve it can&apos;t be observed correctly. </UserComment>
+<UserComment>The order of the allowed speeds in this TSR and the following one have been altered to prove that both TSR are completed since on the contrary and due to the  train speed supervision curve it can&apos;t be observed correctly.</UserComment>
 <Messsages>
 <DBMessage
  MessageOrder="1"
@@ -7052,8 +7029,7 @@ The on-board equipment receives a new Temporary Speed Restriction (TSR) (2) with
  Name="Step 255"
  Guid="a73fe873-3841-42fc-ba6c-1974732c9d87"
 >
-<Description>
-A packet 65 with Qfront=0 has been received and the train is running in the TSR area</Description>
+<Description>A packet 65 with Qfront=0 has been received and the train is running in the TSR area</Description>
 </Step></Steps>
 </TestCase><TestCase
  Feature="91"
@@ -10078,11 +10054,11 @@ The new current mode is not indicated on the DMI</Description>
 <Actions>
 <Action
  Guid="f22c204d-6072-4cf0-8625-58a7d483e93d"
->EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="a8bec7e0-d4ec-400a-bbe2-2a225bc412e8"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;-1&apos;</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.Id.Id &lt;- -1</Action><Action
  Guid="d49c710f-7c06-48d5-b5a9-3bfac8cdf008"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;Unknown&apos;</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.PhoneNumber &lt;- &apos;Unknown&apos;</Action><Action
  Guid="9c22a5f2-b099-4dbe-9e8f-980ebc9868f7"
 >Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="1fefdd2a-1c6d-4c21-a3af-ec830ff83c53"
@@ -10176,15 +10152,6 @@ The on-board equipment changes to SB mode.</Description>
  Name="Sub-step1"
  Guid="dcc9fe21-c5ab-40d7-805d-9ff6375b435b"
 >
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation"
- Guid="4c395c71-69a3-4526-bfe6-58a9e748441c"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
-    ModeInkernel=&gt;Default.Mode.SB
-)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -10216,7 +10183,7 @@ The on-board equipment changes to SB mode.</Description>
 <Actions>
 <Action
  Guid="f360cd32-49c7-428c-bbcf-943fe8edf202"
->TIU.CabA.IsActive &lt;- True</Action></Actions>
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="6"
@@ -10246,7 +10213,7 @@ The on-board equipment changes to SB mode.</Description>
  Kind="Instantaneous"
  DeadLine="1000"
  Guid="7bf8893e-eafe-48a3-9848-41dca4172ce0"
->DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested </Expectation></Expectations>
+>DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="7"
@@ -10507,8 +10474,7 @@ Triggered by : Data Entry completed</Comment>
  Name="Step 21"
  Guid="38c6ea44-0b1e-4240-8435-0ba807fd54b8"
 >
-<Description>The on-board equipment requires the driver to enter all Train Data unknown by the on-board equipment and prevents the driver from performing any other actions. Those data includes the train running number (always), 
-</Description>
+<Description>The on-board equipment requires the driver to enter all Train Data unknown by the on-board equipment and prevents the driver from performing any other actions. Those data includes the train running number (always),</Description>
 <Comment>Starting conditions</Comment>
 </Step><Step
  TCS_Order="22"
@@ -11298,8 +11264,7 @@ until the driver requests it</Description>
  Guid="9ec5ab88-a00e-4879-a1e6-e13ccdca7354"
 >
 <Description>In SR mode after driver request, temporarily and correct cab signalling is displayed which is:
-Permitted speed
-</Description>
+Permitted speed</Description>
 </Step><Step
  TCS_Order="71"
  IO="NA"
@@ -11367,9 +11332,7 @@ Permitted speed
 <Description>The train receives a message including a packet 80 Mode profile with :
 NID_PACKET  = 80: Mode Profile 
 M_MAMODE = 00: On sight</Description>
-<Comment>Reception of the mode transition announcement  (mode transition order at  current location)
-
-</Comment>
+<Comment>Reception of the mode transition announcement  (mode transition order at  current location)</Comment>
 <Messsages>
 <DBMessage
  MessageOrder="1"
@@ -12044,9 +12007,7 @@ M_MAMODE = 00: On sight</Description>
 <Description>The train receives a message including a packet 80 Mode profile with :
 NID_PACKET  = 80: Mode Profile 
 M_MAMODE = 00: On sight</Description>
-<Comment>Reception of the mode transition announcement  (mode transition order at  current location)
-
-</Comment>
+<Comment>Reception of the mode transition announcement  (mode transition order at  current location)</Comment>
 </Step><Step
  TCS_Order="77"
  Distance="500"
@@ -12315,8 +12276,7 @@ Use_F#186.</Comment>
 <Description>An announcement of level transition  to Level 0 (Packet 41) is RECEIVED from Balise Group BGa:
 D_LEVELTR &lt;&gt; 0 and &lt;&gt; 32767
 M_LEVELTR= 0 (Level 0)</Description>
-<Comment>Order to switch to level 0 at further location 
-</Comment>
+<Comment>Order to switch to level 0 at further location</Comment>
 <Messsages>
 <DBMessage
  MessageOrder="1"
@@ -12711,8 +12671,7 @@ M_LEVELTR= 0 (Level 0)</Description>
  Guid="4393ea8a-48b8-4ee6-8874-fc2c7290d196"
 >
 <Description>An indication of Announcement of Level 0 is DISPLAYED.</Description>
-<Comment>Except if in SL and SB mode
-</Comment>
+<Comment>Except if in SL and SB mode</Comment>
 </Step><Step
  TCS_Order="98"
  Distance="1500"
@@ -12725,8 +12684,7 @@ M_LEVELTR= 0 (Level 0)</Description>
  Guid="ebd071a3-38e8-40cf-ae12-fcff543a4d29"
 >
 <Description>An indication of Announcement of Level 0 is RECORDED</Description>
-<Comment>Except if in SL and SB mode
-</Comment>
+<Comment>Except if in SL and SB mode</Comment>
 </Step><Step
  TCS_Order="99"
  Distance="1500"
@@ -14762,8 +14720,7 @@ FT#123 (Supervision of shunting speed defined by trackside)</Comment>
  Name="Step 160"
  Guid="34ce4f18-b51c-41d3-bdc6-0a4963641894"
 >
-<Description>
-The warning (Trip alarm) is DISPLAYED
+<Description>The warning (Trip alarm) is DISPLAYED
 The Trip mode (TR) is permanently DISPLAYED</Description>
 </Step><Step
  TCS_Order="161"
@@ -14776,9 +14733,7 @@ The Trip mode (TR) is permanently DISPLAYED</Description>
  Name="Step 161"
  Guid="a68ed3ff-b211-43af-9cc5-27ddb2505d66"
 >
-<Description>
-The corresponding warning (Trip Alarm) is RECORDED
-</Description>
+<Description>The corresponding warning (Trip Alarm) is RECORDED</Description>
 </Step></Steps>
 </TestCase><TestCase
  Feature="635"
@@ -15044,8 +14999,7 @@ When a communication is opened, the On-Board reports the mode change to the trac
  Name="Step 185"
  Guid="3f8e8376-362d-4c5b-a60c-e87fbe384655"
 >
-<Description>The driver selects &apos;Shunting&apos;
-</Description>
+<Description>The driver selects &apos;Shunting&apos;</Description>
 </Step><Step
  TCS_Order="186"
  Distance="5920"
@@ -16393,9 +16347,7 @@ UN mode is DISPLAYED.</Description>
 D_LEVELTR &lt;&gt; 0 and &lt;&gt; 32767
 M_LEVELTR= 2 (Level 1)</Description>
 <Comment>Order to switch to level 1 at further location</Comment>
-<UserComment>an MA is also sent
-
-</UserComment>
+<UserComment>an MA is also sent</UserComment>
 <Messsages>
 <DBMessage
  MessageOrder="1"
@@ -17206,8 +17158,7 @@ Announcement of Level 1 is NOT DISPLAYED</Description>
  Name="Step 272"
  Guid="82c6f641-d27c-4ac7-8f21-4d1d22d4c031"
 >
-<Description>At the level border the order to switch to ETCS level 1,2 or 3 immediately is RECEIVED. 
-</Description>
+<Description>At the level border the order to switch to ETCS level 1,2 or 3 immediately is RECEIVED.</Description>
 </Step><Step
  TCS_Order="273"
  IO="NA"
@@ -18606,9 +18557,7 @@ The telegram and packet 80 is accepted by the on-board</Description>
 >
 <Description>The train passes over the balise group BGa and reads the message</Description>
 <Comment>NID_BG variable in BGa message is different from NID_BG values in the list of balises for SH stored on board OR the list of balises for SH is empty.</Comment>
-<UserComment>nothing is sent in this balise
-
-</UserComment>
+<UserComment>nothing is sent in this balise</UserComment>
 <Messsages>
 <DBMessage
  MessageOrder="1"
@@ -18800,8 +18749,7 @@ The telegram and packet 80 is accepted by the on-board</Description>
  Name="Step 302"
  Guid="b64684d5-db77-4e19-a4a7-1e1bcdb0d26a"
 >
-<Description>
-The warning (Trip alarm) is DISPLAYED
+<Description>The warning (Trip alarm) is DISPLAYED
 The Trip mode (TR) is permanently DISPLAYED</Description>
 </Step><Step
  TCS_Order="303"
@@ -18814,9 +18762,7 @@ The Trip mode (TR) is permanently DISPLAYED</Description>
  Name="Step 303"
  Guid="e41daf7e-39cd-4363-a84d-7a3d5f34aed6"
 >
-<Description>
-The corresponding warning (Trip Alarm) is RECORDED
-</Description>
+<Description>The corresponding warning (Trip Alarm) is RECORDED</Description>
 </Step></Steps>
 </TestCase><TestCase
  Feature="570"
@@ -19092,8 +19038,7 @@ The apply emergency brake revocation command is immediately transmitted to train
  Name="Step 328"
  Guid="bddb0c77-501e-4ccb-bd9b-a130fcf81eaa"
 >
-<Description>The driver selects &apos;Shunting&apos;
-</Description>
+<Description>The driver selects &apos;Shunting&apos;</Description>
 </Step><Step
  TCS_Order="329"
  Distance="9480"

@@ -23,7 +23,7 @@ using Utils;
 
 namespace DataDictionary
 {
-    public class Dictionary : Generated.Dictionary, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces, IHoldsParagraphs
+    public class Dictionary : Generated.Dictionary, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces, IHoldsParagraphs, IHoldsRequirementSets
     {
         /// <summary>
         /// The file path associated to the dictionary
@@ -337,7 +337,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The specifications related to this rule set
+        /// The specifications related to this dictionary
         /// </summary>
         public ArrayList Specifications
         {
@@ -712,6 +712,7 @@ namespace DataDictionary
                 // Check rules
                 RuleCheckerVisitor visitor = new RuleCheckerVisitor(this);
                 visitor.visit(this, true);
+                EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
             }
             finally
             {
@@ -733,9 +734,10 @@ namespace DataDictionary
                 EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
                 EFSSystem.ShouldRebuild = false;
 
-                // Check rules
+                // Check dead model
                 UsageChecker visitor = new UsageChecker(this);
                 visitor.visit(this, true);
+                EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
             }
             finally
             {
@@ -834,6 +836,7 @@ namespace DataDictionary
             ClearMessages();
             UnimplementedItemVisitor visitor = new UnimplementedItemVisitor();
             visitor.visit(this, true);
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
         }
 
         private class NotVerifiedRuleVisitor : Generated.Visitor
@@ -859,6 +862,7 @@ namespace DataDictionary
             ClearMessages();
             NotVerifiedRuleVisitor visitor = new NotVerifiedRuleVisitor();
             visitor.visit(this, true);
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
         }
 
         /// <summary>
@@ -1129,6 +1133,24 @@ namespace DataDictionary
             }
         }
 
+        public ICollection<Paragraph> MoreInformationNeeded
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Specification.Specification specification in Specifications)
+                {
+                    foreach (Paragraph paragraph in specification.MoreInformationNeeded)
+                    {
+                        retVal.Add(paragraph);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
         public ICollection<Paragraph> SpecIssues
         {
             get
@@ -1164,5 +1186,94 @@ namespace DataDictionary
                 return retVal;
             }
         }
+
+        public ICollection<Paragraph> OnlyComments
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Specification.Specification specification in Specifications)
+                {
+                    foreach (Paragraph paragraph in specification.OnlyComments)
+                    {
+                        retVal.Add(paragraph);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Provides the list of requirement sets in the system
+        /// </summary>
+        public List<RequirementSet> RequirementSets
+        {
+            get
+            {
+                List<RequirementSet> retVal = new List<RequirementSet>();
+
+                if (allRequirementSets() != null)
+                {
+                    foreach (RequirementSet requirementSet in allRequirementSets())
+                    {
+                        retVal.Add(requirementSet);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Provides the requirement set whose name corresponds to the name provided
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="create">Indicates that the requirement set should be created if it does not exists</param>
+        /// <returns></returns>
+        public RequirementSet findRequirementSet(string name, bool create)
+        {
+            RequirementSet retVal = null;
+
+            foreach (RequirementSet requirementSet in RequirementSets)
+            {
+                if (requirementSet.Name == name)
+                {
+                    retVal = requirementSet;
+                    break;
+                }
+            }
+
+            if (retVal == null && create)
+            {
+                retVal = (RequirementSet)Generated.acceptor.getFactory().createRequirementSet();
+                retVal.Name = name;
+                appendRequirementSets(retVal);
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Adds a new requirement set to this list of requirement sets
+        /// </summary>
+        /// <param name="requirementSet"></param>
+        public void AddRequirementSet(RequirementSet requirementSet)
+        {
+            appendRequirementSets(requirementSet);
+        }
+
+
+        /// <summary>
+        /// The name of the requirement set for functional blocs
+        /// </summary>
+        public const string FUNCTIONAL_BLOCK_NAME = "Functional blocs";
+
+        /// <summary>
+        /// The name of the requireement set for scoping information
+        /// </summary>
+        public const string SCOPE_NAME = "Scope";
+
     }
 }

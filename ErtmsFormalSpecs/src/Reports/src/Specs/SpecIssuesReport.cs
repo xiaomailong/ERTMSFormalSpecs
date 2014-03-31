@@ -32,6 +32,36 @@ namespace Reports.Specs
         }
 
         /// <summary>
+        /// Counts the number of requirements where more information is needed
+        /// </summary>
+        /// <param name="dictionary"></param>
+        /// <returns></returns>
+        private static int CountMoreInformationNeeded(Dictionary dictionary)
+        {
+            int retVal = 0;
+
+            foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+            {
+                retVal += specification.MoreInformationNeeded.Count;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Creates an article with the requirements which require more information 
+        /// </summary>
+        /// <param name="aReportConfig">The report config containing user's choices</param>
+        /// <returns></returns>
+        public void CreateMoreInformationArticle(SpecIssuesReportHandler aReportConfig)
+        {
+            AddSubParagraph("More information needed");
+            AddParagraph("This report describes the requirements " + CountMoreInformationNeeded(aReportConfig.Dictionary) + " that are not sufficiently precise and require more information. ");
+            GenerateMoreInformationNeeded(aReportConfig.Dictionary);
+            CloseSubParagraph();
+        }
+
+        /// <summary>
         /// Counts the number of spec issues in a dictionary
         /// </summary>
         /// <param name="dictionary"></param>
@@ -92,6 +122,55 @@ namespace Reports.Specs
         }
 
         /// <summary>
+        /// Counts the number of design choices in a dictionary
+        /// </summary>
+        /// <param name="dictionary"></param>
+        /// <returns></returns>
+        private static int CountComments(Dictionary dictionary)
+        {
+            int retVal = 0;
+
+            foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+            {
+                retVal += specification.OnlyComments.Count;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Creates an article with the comments on the requirements
+        /// </summary>
+        /// <param name="aReportConfig">The report config containing user's choices</param>
+        /// <returns></returns>
+        public void CreateCommentsArticle(SpecIssuesReportHandler aReportConfig)
+        {
+            AddSubParagraph("Comments on requirements");
+            AddParagraph("This report describes the " + CountComments(aReportConfig.Dictionary) + " comments we made on the requirements requirements.");
+            GenerateComments(aReportConfig.Dictionary);
+            CloseSubParagraph();
+        }
+
+        /// <summary>
+        /// Creates a table for more information needed
+        /// </summary>
+        /// <param name="aDictionary">The model</param>
+        /// <returns></returns>
+        private void GenerateMoreInformationNeeded(Dictionary aDictionary)
+        {
+            AddSubParagraph("More information needed");
+            foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.MoreInformationNeeded)
+            {
+                AddSubParagraph(paragraph.FullId + " is not precise enough");
+                AddTable(new string[] { paragraph.FullId }, new int[] { 30, 100 });
+                AddRow("Description", paragraph.Text);
+                AddRow("Comment", paragraph.Comment);
+                CloseSubParagraph();
+            }
+            CloseSubParagraph();
+        }
+
+        /// <summary>
         /// Creates a table for specification issues
         /// </summary>
         /// <param name="aDictionary">The model</param>
@@ -123,6 +202,25 @@ namespace Reports.Specs
                 AddSubParagraph("Design choice " + paragraph.FullId);
                 AddTable(new string[] { "Design choice " + paragraph.FullId }, new int[] { 30, 100 });
                 AddRow(paragraph.Text);
+                CloseSubParagraph();
+            }
+            CloseSubParagraph();
+        }
+
+        /// <summary>
+        /// Creates a table for comments
+        /// </summary>
+        /// <param name="aDictionary">The model</param>
+        /// <returns></returns>
+        private void GenerateComments(Dictionary aDictionary)
+        {
+            AddSubParagraph("Design choices");
+            foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.OnlyComments)
+            {
+                AddSubParagraph("Comments for " + paragraph.FullId);
+                AddTable(new string[] { paragraph.FullId }, new int[] { 30, 100 });
+                AddRow("Description", paragraph.Text);
+                AddRow("Comment", paragraph.Comment);
                 CloseSubParagraph();
             }
             CloseSubParagraph();

@@ -3415,7 +3415,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="Value"
  Guid="00b90531-3eac-4f03-ba0f-8d2fe2139eb9"
 >
-<Expression>A_brake_safe ( d =&gt; d, V =&gt; V ) + TrackDescription.Gradient.A_gradient ( d ) </Expression>
+<Expression>A_brake_safe ( d =&gt; d, V =&gt; V ) + TrackDescription.Gradient.A_gradient ( d )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -4118,7 +4118,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <PreConditions>
 <PreCondition
  Guid="397b2e9b-e49f-4161-90d7-860c6be85662"
->TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt; Default_brk_service  ( V =&gt; 0.0 ) </PreCondition></PreConditions>
+>TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt; Default_brk_service  ( V =&gt; 0.0 )</PreCondition></PreConditions>
 <Expression>SelectBNSModelSet().BNS_2</Expression>
 </Case></Cases>
 </Function><Function

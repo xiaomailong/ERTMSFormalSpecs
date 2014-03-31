@@ -35,7 +35,7 @@
  Name="SendMessage"
  Guid="a7f33512-4c80-4318-90a3-c8d22b05e9af"
 >
-<Comment>If it is necessary to send a new JRU Message, it will be created, filled and sent. And the involved variables will be updated </Comment>
+<Comment>If it is necessary to send a new JRU Message, it will be created, filled and sent. And the involved variables will be updated</Comment>
 <PreConditions>
 <PreCondition
  Guid="c7be3f63-444c-4d7c-8b71-dd667a30c684"
@@ -5011,8 +5011,7 @@ M_SLEEPING =&gt; ToJruSleepingInput()
 <PreConditions>
 <PreCondition
  Guid="36c053fe-0571-4507-bb09-f9a75fe931e9"
->TIU.PassiveShuntingPermitted == False
-</PreCondition></PreConditions>
+>TIU.PassiveShuntingPermitted == False</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_PASSIVE_SHUNTTING.Passive_shuntting_not_permitted</Expression>
 </Case></Cases>
 </Function><Function
@@ -5116,8 +5115,7 @@ M_PASSIVE_SHUNTTING =&gt; ToJruPassiveShunting()
 <PreConditions>
 <PreCondition
  Guid="fff8f30c-4666-4f0c-8863-b99a4fdebcb4"
->TIU.NonLeadingPermitted == False
-</PreCondition></PreConditions>
+>TIU.NonLeadingPermitted == False</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_NON_LEADING.Non_leading_not_permitted</Expression>
 </Case></Cases>
 </Function><Function
@@ -5323,8 +5321,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="0bdc2d52-5e10-4271-967e-864f8d695a1c"
->((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP))
-</PreCondition></PreConditions>
+>((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP))</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -5357,8 +5354,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="ca5f4b57-43e8-441e-9b1c-1223a44370be"
->TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive == False
-</PreCondition></PreConditions>
+>TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive == False</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_MSB_STATUS.Not_active</Expression>
 </Case></Cases>
 </Function><Function
@@ -5993,7 +5989,7 @@ V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
 <PreConditions>
 <PreCondition
  Guid="3ae2559e-29cc-4a70-9b6a-56703d25c603"
->jru.PreviousPermittedSpeed != DMI.MasterDMI().Out_PermittedSpeed.Speed </PreCondition></PreConditions>
+>jru.PreviousPermittedSpeed != DMI.MasterDMI().Out_PermittedSpeed.Speed</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="FLOISpeedChanged"

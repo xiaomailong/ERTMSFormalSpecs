@@ -24,50 +24,6 @@
 <Ranges>
 <Range
  MinValue="0"
- MaxValue="16383"
- Precision="IntegerPrecision"
- Default="0"
- Name="RBC_ID"
- Guid="f75cf5ea-b8e6-4e80-956f-6789c3b67d6c"
->
-<Comment></Comment>
-</Range><Range
- MinValue="0"
- MaxValue="9999"
- Precision="IntegerPrecision"
- Default="0"
- Name="PositionConfidenceInterval"
- Guid="fff8d3d2-156a-4cc8-9be0-5521041f36ff"
->
-</Range><Range
- MinValue="0"
- MaxValue="255"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- Name="NID_TSR"
- Guid="fb33990c-110b-4e0b-bd5f-fb5796898616"
->
-<ReqRef
- Id="1c1c2dc5-c171-456d-9a54-a4480effe5a4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1cc1d723-59dc-426d-9276-1ece1f605c8a"
->
-</ReqRef><ReqRef
- Id="1c03e6a2-328c-4a04-83b6-be1892d19f38"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cbc4fa1e-0b94-464e-a076-167529ad422f"
->
-</ReqRef><Comment></Comment>
-<SpecialValues>
-<EnumValue
- Value="255"
- Name="NonRevocable"
- Guid="c5eb167b-222e-40c1-be3e-8718a8e2ea3e"
->
-</EnumValue></SpecialValues>
-</Range><Range
- MinValue="0"
  MaxValue="251"
  Precision="DoublePrecision"
  Default="0.0"
@@ -76,6 +32,7 @@
  Name="Percentage"
  Guid="dabefe82-f5f3-42b0-80a2-69d06a065743"
 >
+<Comment>A percentage with the special value NA</Comment>
 <SpecialValues>
 <EnumValue
  Value="251.0"
@@ -123,7 +80,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f89805db-7897-4d5c-a977-9550cdb9106f"
 >
-</ReqRef><Values>
+</ReqRef><Comment>Represents the train level</Comment>
+<Values>
 <EnumValue
  Value="0"
  Name="L0"
@@ -275,7 +233,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bad45cbb-37d2-43b2-b539-95bbe6cbc88a"
 >
-</ReqRef><Values>
+</ReqRef><Comment>The mode selected by Mode Profile information</Comment>
+<Values>
 <EnumValue
  Value="0"
  Name="OS"
@@ -295,6 +254,7 @@
 </Enum></SubEnums>
 </Enum><Enum
  Default="DataState.Unknown"
+ NeedsRequirement="FALSE"
  Name="DataState"
  Guid="0eea0cae-3edb-4800-8c3e-cd190cf78b1e"
 >
@@ -303,7 +263,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="840d54dc-d585-4819-bd61-0de24ee3c3f6"
 >
-</ReqRef><Values>
+</ReqRef><Comment>Indicates whether the associated data is Valid, Invalid or Unknown</Comment>
+<Values>
 <EnumValue
  Value=""
  Name="Valid"
@@ -321,37 +282,12 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="Closed"
- Name="SessionState"
- Guid="36d1a45c-7a18-4af3-86b8-dc2ca10f2237"
->
-<Values>
-<EnumValue
- Value=""
- Name="Closed"
- Guid="0d6a67cb-0a7c-474d-88a6-c8cfb4df3150"
->
-</EnumValue><EnumValue
- Value=""
- Name="Established"
- Guid="993e85b3-dff3-46af-ac40-ce07fe6ca330"
->
-</EnumValue><EnumValue
- Value=""
- Name="Failed"
- Guid="63130850-2a8a-4d61-9a2e-8c83c9c79c87"
->
-</EnumValue><EnumValue
- Value=""
- Name="Establishing"
- Guid="fb52b4f4-5b2c-4803-95fe-3dcc8ca17e29"
->
-</EnumValue></Values>
-</Enum><Enum
  Default="Request.Disabled"
+ NeedsRequirement="FALSE"
  Name="Request"
  Guid="428df762-8178-4414-bd36-85f9dae6323c"
 >
+<Comment>Represents the state of a communication (not established, request sent, response received)</Comment>
 <Values>
 <EnumValue
  Value=""
@@ -370,91 +306,17 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="Unknown"
- Name="LeadingOrSlaveMode"
- Guid="9a28d36f-b10d-4ac6-a59c-3ca32c09839a"
->
-<Values>
-<EnumValue
- Value=""
- Name="Leading"
- Guid="acee9aa5-ef3b-4a40-a125-63f21b13f32d"
->
-</EnumValue><EnumValue
- Value=""
- Name="Slave"
- Guid="49fbfcf6-29ff-4a27-bd3b-7d564f596b9a"
->
-</EnumValue><EnumValue
- Value=""
- Name="Unknown"
- Guid="32e507cf-14b0-48fb-974f-44c543f08147"
->
-</EnumValue></Values>
-</Enum><Enum
- Default="Unknown"
- Name="SlaveEngineMode"
- Guid="84098cb2-3a00-4d92-8391-9b5940c811f9"
->
-<Values>
-<EnumValue
- Value=""
- Name="SL"
- Guid="c8d55e24-9a90-4bdb-b2ca-51fb3945df9b"
->
-</EnumValue><EnumValue
- Value=""
- Name="PS"
- Guid="87e7c0af-69a2-42e3-b031-aef585058e7d"
->
-</EnumValue><EnumValue
- Value=""
- Name="NL"
- Guid="64dd7493-c2ba-40de-bb94-5a5c7e67c2ac"
->
-</EnumValue><EnumValue
- Value=""
- Name="Unknown"
- Guid="344e6218-7c09-4672-b066-a11f1fac9624"
->
-</EnumValue></Values>
-</Enum><Enum
- Default="STM.Unknown"
- Name="STM"
- Guid="e40145fb-0c42-4131-89d5-7c7a088f41c8"
->
-<Values>
-<EnumValue
- Value=""
- Name="STM1"
- Guid="56e7a66f-ee46-43d3-a3c8-dc82c766b8ae"
->
-</EnumValue><EnumValue
- Value=""
- Name="STM2"
- Guid="9ab74e3a-c2c2-45d2-9210-a5a248863595"
->
-</EnumValue><EnumValue
- Value=""
- Name="STM3"
- Guid="a5dbf753-73b4-4df3-a210-14c8de5288ef"
->
-</EnumValue><EnumValue
- Value=""
- Name="STM4"
- Guid="7394f080-be7e-498e-8233-e3d65e2e0bbe"
->
-</EnumValue><EnumValue
- Value=""
- Name="Unknown"
- Guid="27fb9179-a3ae-48ea-b8c0-b00488e2c44f"
->
-</EnumValue></Values>
-</Enum><Enum
  Default="Orientation.Unknown"
+ Implemented="TRUE"
  Name="Orientation"
  Guid="ad49066d-e6fc-4cc5-9a75-61f61768710e"
 >
+<ReqRef
+ Id="5a70895f-ceeb-4c8f-9e52-f3de05ca5a83"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0c64b29f-0848-44e2-9d46-53523da7e122"
+>
+</ReqRef><Comment>Represents the balise group orientation</Comment>
 <Values>
 <EnumValue
  Value="1"
@@ -478,27 +340,22 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="NumberOfEVC.SingleEVC"
- Name="NumberOfEVC"
- Guid="d1195ce4-ed57-4a3e-bcc2-e61596f04ecd"
->
-<Values>
-<EnumValue
- Value=""
- Name="SingleEVC"
- Guid="c98ebbd9-d554-44bc-89a3-cf1d36f50ef3"
->
-</EnumValue><EnumValue
- Value=""
- Name="DualEVC"
- Guid="55af828d-bcd4-4b59-a7f0-348b4979f4b5"
->
-</EnumValue></Values>
-</Enum><Enum
  Default="Language.EN"
+ Implemented="TRUE"
  Name="Language"
  Guid="f733bd2c-5ae3-4ecf-834a-5641bd254978"
 >
+<ReqRef
+ Id="abc81335-d6aa-43d5-9c02-31fee5c65c38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a9ade741-07b6-40a1-8396-7baee5af1690"
+>
+</ReqRef><ReqRef
+ Id="3e266b65-8915-4dc3-befe-d6f4099f5a67"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2ce43138-b9df-42ff-af56-309e02865162"
+>
+</ReqRef><Comment>The display language</Comment>
 <Values>
 <EnumValue
  Value=""
@@ -518,10 +375,36 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="DistanceInterval.Nom"
+ Implemented="TRUE"
  Name="DistanceInterval"
  Guid="aa9a84dc-faad-4360-bc38-351be7113e9b"
 >
-<Comment>Used to represent some nominal distance and its associated max and min values. For example, to represent the safe front end of a train we use:
+<ReqRef
+ Id="bcb653a9-abe2-44a8-ac09-0df33ec9af30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7dbd76a5-0155-418f-b197-73cdff553b03"
+>
+</ReqRef><ReqRef
+ Id="2ecb1ec4-fc6b-4879-a45a-e1b1c55b41fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7bb55f03-42ac-4079-8f9a-2c0a3bfe0895"
+>
+</ReqRef><ReqRef
+ Id="4a9c97b2-dfca-4175-b297-9da9fc3d16fc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89ab3268-a988-43e5-a88e-4d003c4ed1af"
+>
+</ReqRef><ReqRef
+ Id="dfd8a050-ad00-42a4-969a-1da448625473"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a2ed144-f76a-466a-b314-909ec28045ea"
+>
+</ReqRef><ReqRef
+ Id="d61ea269-686c-486d-9852-1fd7e6f88c24"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c0847e4-9de2-4256-8226-6b8f1e95f3e0"
+>
+</ReqRef><Comment>Used to represent some nominal distance and its associated max and min values. For example, to represent the safe front end of a train we use:
 - DistanceInterval.Nom to represent the estimated front end
 - DistanceInterval.Min to represent the min safe front end
 - DistanceInterval.Max to represent the max safe front end</Comment>
@@ -554,7 +437,13 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c219e289-309c-4087-8697-74f44920cbb2"
 >
-</ReqRef><Values>
+</ReqRef><ReqRef
+ Id="78901f0f-a70f-415d-8d57-e5156f7206d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb759e5a-fc8f-4f05-875c-85e0a351f1e5"
+>
+</ReqRef><Comment>Holds the information L_DOUBTOVER / L_DOUBTUNDER of a confidence interval</Comment>
+<Values>
 <EnumValue
  Value="0"
  Name="L_DOUBTOVER"
@@ -564,23 +453,6 @@
  Value="1"
  Name="L_DOUBTUNDER"
  Guid="51e967bd-6be0-4392-a3a5-8eed276cb997"
->
-</EnumValue></Values>
-</Enum><Enum
- Default="TrainEnd.FrontEnd"
- Name="TrainEnd"
- Guid="bc562957-f8e7-4ceb-b7ae-5ee0a491b8bb"
->
-<Values>
-<EnumValue
- Value="0"
- Name="FrontEnd"
- Guid="515b9c6a-b235-41d0-b81c-f0aa5ccc5831"
->
-</EnumValue><EnumValue
- Value="1"
- Name="RearEnd"
- Guid="dfeb970a-3589-4a91-90a4-97789e010749"
 >
 </EnumValue></Values>
 </Enum><Enum
@@ -630,11 +502,12 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9857c863-4d11-4d64-9137-ec1cc50a5da4"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>The level information of the train</Comment>
 <StructureElement
  TypeName="Default.NID_NTC"
  Default="Default.NID_NTC.NOT_APPLICABLE"
  Mode="Internal"
+ Implemented="TRUE"
  Name="NTC"
  Guid="cd8dbd64-d3e3-46e6-bc84-61e66e882ea7"
 >
@@ -643,10 +516,11 @@
  TypeName="Default.Level"
  Default="Default.Level.Unknown"
  Mode="Internal"
+ Implemented="TRUE"
  Name="Value"
  Guid="aa1152c8-9d6c-44f2-97c6-316f05ef1276"
 >
-<Comment></Comment>
+<Comment>The level</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -925,7 +799,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="067ba62a-0090-405c-8181-ae7a01890f62"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>This function converts a Default.Orientation into its corresponding Messages.Q_DIRTRAIN</Comment>
+<Parameters>
 <Parameter
  Type="Default.Orientation"
  Name="Orientation"
@@ -983,7 +858,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="576ef70f-fec9-4de3-aaec-08f33cc7519c"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>This function converts a Default.Orientation into its corresponding Messages.Q_DIR</Comment>
+<Parameters>
 <Parameter
  Type="Default.Orientation"
  Name="Orientation"
@@ -1050,7 +926,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="21a3bffa-76e4-4e16-870f-46786df279f1"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>This function converts a Default.Orientation into its corresponding Messages.Q_DIRLRBG</Comment>
+<Parameters>
 <Parameter
  Type="Default.Orientation"
  Name="Orientation"
@@ -1108,7 +985,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6f6b67b1-7bb1-434e-a537-2469663aad50"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>This function converts a Default.Orientation into its corresponding Messages.Q_DLRBG</Comment>
+<Parameters>
 <Parameter
  Type="Default.Orientation"
  Name="Orientation"
@@ -1151,6 +1029,7 @@
  Name="BG_To_LRBG"
  Guid="fa29b0a3-c140-43d3-80c7-09eb1eb57acf"
 >
+<Comment>This function converts a BG into a LRBG</Comment>
 <Parameters>
 <Parameter
  Type="Messages.NID_BG"
@@ -1172,6 +1051,7 @@
  Name="NC_CTRAIN_to_NC_CDDIFF_Converter"
  Guid="9eb26fc2-8a00-4852-89ee-0f71e0340f38"
 >
+<Comment>This function converts a Messages.NC_CDTRAIN into its corresponding Messages.NC_CDDIFF</Comment>
 <Parameters>
 <Parameter
  Type="Messages.NC_CDTRAIN"
@@ -1291,7 +1171,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0d40e248-6c25-46e1-b5cb-5b87eb96a3d4"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>This function converts a Messages.L_NVKRINT into its corresponding BaseTypes.Length</Comment>
+<Parameters>
 <Parameter
  Type="Messages.L_NVKRINT"
  Name="length"
@@ -1594,7 +1475,7 @@
  Name="MinPercentage"
  Guid="f5e87be8-9ca1-434b-beca-9ccaba36810b"
 >
-<Comment></Comment>
+<Comment>This function provides the minimum of two percentages</Comment>
 <Parameters>
 <Parameter
  Type="Default.Percentage"
@@ -1647,6 +1528,7 @@
  Name="Q_NEWCOUNTRY_To_Bool"
  Guid="c361e3dc-1a1f-499f-8c68-4b751fa77f1f"
 >
+<Comment>This function indicates whether a new contry is present from Messages.Q_NEWCOUNTRY</Comment>
 <Parameters>
 <Parameter
  Type="Messages.Q_NEWCOUNTRY"

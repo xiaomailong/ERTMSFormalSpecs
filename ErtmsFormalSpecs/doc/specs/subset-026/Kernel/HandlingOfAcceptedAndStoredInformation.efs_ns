@@ -41,6 +41,7 @@
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="SituationC"
  Guid="41b554f7-9a81-47b3-b081-5bb0cd45c016"
 >
@@ -49,8 +50,14 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="83953255-fc5c-4d0f-a593-f89b3630e7a1"
 >
-</ReqRef><Cases>
-</Cases>
+</ReqRef><Comment>Returns the value of SectionTimeOutShortensMA, which is set to True if a MA is shortened due to a section time-out</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="bf416e2d-0a04-43fe-a967-b6e79d7de60c"
+>
+<Expression>SectionTimeOutShortensMA</Expression>
+</Case></Cases>
 </Function><Function
  Type="Boolean"
  Name="SituationD"
@@ -65,6 +72,7 @@
 </Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="SituationE"
  Guid="754d4b24-bef8-4020-86fd-a4041d1c391e"
 >
@@ -73,8 +81,19 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="65495958-5586-4c2d-bdc9-6c96c541466e"
 >
-</ReqRef><Cases>
-</Cases>
+</ReqRef><ReqRef
+ Id="c44f8cfc-0e9b-4bbd-bf2c-2a0ef937a651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6116f7a0-a849-4ccc-a533-452203d1fc83"
+>
+</ReqRef><Comment>Returns the value of EndSectionTimeOutShortensMA, which is set to True if a stored MA was shortened due to End Section time-out</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="ab03d2a6-b80a-4c48-9d8e-6e53a442c8ef"
+>
+<Expression>EndSectionTimeOutShortensMA</Expression>
+</Case></Cases>
 </Function><Function
  Type="Boolean"
  Name="SituationF"
@@ -233,6 +252,49 @@
  Guid="c49c78e7-962c-4727-b632-31756e984747"
 >
 </ReqRef><Comment>Indicates if the on-board received a shortened MA regardless of SvL location.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="EndSectionTimeOutShortensMA"
+ Guid="94e1aa3f-5366-4ad3-95b2-6b0fec3c107e"
+>
+<ReqRef
+ Id="7e423212-aebc-4610-85f4-e4a25b5e05c4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fcaba4d5-d963-491a-8d83-96fd7e7c415f"
+>
+</ReqRef><ReqRef
+ Id="e199cc01-44ca-4dc8-bc13-df147bf2bf53"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94f19253-8138-431c-9d22-54c49c6095d6"
+>
+</ReqRef><ReqRef
+ Id="f628074f-59c1-494b-b268-4ca4bf339038"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="227f8beb-8c7c-461f-975a-11b6663cbabb"
+>
+</ReqRef><Comment>Indicates if the End Section timer reaches the time-out value, causing an MA shortening (Situation e)</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="SectionTimeOutShortensMA"
+ Guid="8a8cbd8d-9a03-4943-8bbf-b0cd7d7dbb53"
+>
+<ReqRef
+ Id="8298df3a-f507-437d-a5de-ceceaeedbead"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64719a6b-516e-43b0-a80a-a6ffa5c53271"
+>
+</ReqRef><ReqRef
+ Id="430d4f07-d2b9-4364-a2e5-17353db2175e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e8b59214-3c92-48ee-bdfc-e779c253bd22"
+>
+</ReqRef><Comment>Indicates if a section timer reaches the time-out value, causing an MA shortening (Situation c)</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
