@@ -1307,7 +1307,7 @@ TIU.TrainIntegrity.Status in [
  DefaultValue="0"
  VariableMode="Internal"
  Implemented="TRUE"
- Name="NumberOfReportsSentToAcceptingRBC"
+ Name="NumberOfReportsSentToHandingOverRBC"
  Guid="58fe0255-aaa1-42f1-a66a-123f4836e334"
 >
 <ReqRef
@@ -1320,9 +1320,7 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0220b530-97e4-4192-b39a-d5a9408d3ce8"
 >
-</ReqRef><Comment>Indicates the number of position reports that were already sent to the accepting RBC.
-
-It is used to detect if the first report was already sent (when the maximum safe front end of the train has crossed the RBC transition location).</Comment>
+</ReqRef><Comment>Indicates the number of position reports that were already sent to the Handing Over RBC.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -1569,11 +1567,11 @@ It is used to detect if the first report was already sent (when the maximum safe
 <PreConditions>
 <PreCondition
  Guid="9e597c5e-8972-45f9-9d7b-02b17dd66b8c"
->NumberOfReportsSentToAcceptingRBC == 2</PreCondition></PreConditions>
+>NumberOfReportsSentToHandingOverRBC == 2</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ba49bc15-c471-41a1-b203-6cf28b8868a4"
->NumberOfReportsSentToAcceptingRBC &lt;- 0</Action></Actions>
+>NumberOfReportsSentToHandingOverRBC &lt;- 0</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1626,11 +1624,41 @@ It is used to detect if the first report was already sent (when the maximum safe
 <Action
  Guid="caed2442-a4dd-49e2-9bb4-55a01c80b907"
 >CurrentRBCConnection().SendPositionReport()</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Two RBC connections available"
+ Guid="8b99bed5-d9ad-4a6f-85b4-838f1489bd2d"
+>
+<ReqRef
+ Id="e48c27fe-8961-45a6-aa65-e8d83fd609ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ba2ef206-6817-4f16-af4f-2a9795f5d394"
+>
+</ReqRef><Comment>If the on-board has a communication session with an Accepting RBC, it sends position report to both RBC connections.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Two RBC connections available"
+ Guid="ac93f1c8-194f-4179-b1d1-5dbf6f7f9296"
+>
+<PreConditions>
+<PreCondition
+ Guid="a9c9c62a-a1ff-45f5-8f47-71e4e1b756dd"
+>AcceptingRBC() != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="44e5a4e8-73a9-4879-9844-f4bf9665e010"
+>AcceptingRBC().SendPositionReport()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Send position report to accepting RBC"
+ Name="Send position report to Handing Over RBC"
  Guid="b15c3ab8-23bc-4e0f-a957-d3185d5147a9"
 >
 <ReqRef
@@ -1648,30 +1676,32 @@ It is used to detect if the first report was already sent (when the maximum safe
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6df0126b-54ef-40ca-80f9-a4d5608dc86d"
 >
-</ReqRef><Comment>Sends position reports to accepting RBC, when crossing the RBC transition location.</Comment>
+</ReqRef><Comment>Sends position reports to the Handing Over RBC, when crossing the RBC transition location.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Send position report to accepting RBC"
+ Name="Send position report to Handing Over RBC"
  Guid="9eb43706-bd78-4e42-a70b-c528bc4cee15"
 >
 <PreConditions>
 <PreCondition
  Guid="cc94de57-2606-4809-bda3-c967e720e436"
->NumberOfReportsSentToAcceptingRBC == 1
+>NumberOfReportsSentToHandingOverRBC == 1
   AND
 Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; DistanceInterval.Min ) &gt;= RBCTransitionLocation</PreCondition><PreCondition
  Guid="12730f8d-2325-4816-a1d2-228d2cfb0c5a"
->NumberOfReportsSentToAcceptingRBC == 0
+>NumberOfReportsSentToHandingOverRBC == 0
   AND
-Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.Max ) &gt;= RBCTransitionLocation</PreCondition></PreConditions>
+Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.Max ) &gt;= RBCTransitionLocation</PreCondition><PreCondition
+ Guid="f7592304-ea69-4b57-bd4f-146e6f7e26c1"
+>RBCTransitionLocation != BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d0ab71e1-786d-4e01-9233-28f40c29267a"
->AcceptingRBC().SendPositionReport()</Action><Action
+>CurrentRBCConnection().SendPositionReport()</Action><Action
  Guid="89164f10-4804-45f9-b404-1ba1447d422b"
->NumberOfReportsSentToAcceptingRBC &lt;- NumberOfReportsSentToAcceptingRBC + 1</Action></Actions>
+>NumberOfReportsSentToHandingOverRBC &lt;- NumberOfReportsSentToHandingOverRBC + 1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
