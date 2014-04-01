@@ -13370,6 +13370,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -13392,6 +13393,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -13405,17 +13407,14 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="8622f08a-49f0-4eea-afed-355031c4428f"
 >In case of RBC/RBC handover including Radio Network border crossing, ERTMS/ETCS trackside is responsible for the sequence of orders to register to the new Radio Network and to contact the &quot;Accepting&quot; RBC, according to the Radio Network&apos;s configuration.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="163fab85-82fe-434b-b32b-07663dea68ad"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="03a784b0-20a2-4c93-80af-e20812c8f392"
 >
@@ -13484,7 +13483,8 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -13516,10 +13516,6 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="38a9c838-f212-470b-bd2a-902967fcbf4e"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="63ec7d1b-19fa-4112-be53-5f9c1e5db727"
 >
@@ -13531,6 +13527,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -13541,10 +13538,6 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2b52f251-8150-4bb6-9385-53579e03d3fc"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="3d9a53dd-d3e8-4edc-97b5-1b83fe6335be"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.15.1.5"
@@ -13553,6 +13546,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -13562,10 +13556,6 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1952091d-e38f-45bd-b17f-b9175648129a"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="2a6bcd91-3f8b-4438-a3f3-493d0edc64a8"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -13614,19 +13604,157 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="dba4721e-ecc7-46a8-945a-ca408198338c"
->In the normal operation, the main functional steps needed for running from one RBC area to another one are the following:
-	a) Pre-announcement of the transition by the &quot;Handing Over&quot; RBC;
-	b) Registration to the new Radio Network of second Mobile Terminal (optional) &amp; Establishment of the radio communication session with the &quot;Accepting&quot; RBC;
-	c) Generation of movement authorities including the border;
-	d) Announcement of the RBC transition
-	e) Transfer of train supervision to the &quot;Accepting&quot; RBC;
-	f) Termination of the session with &quot;Handing Over&quot; RBC.
-	g) Registration to the new Radio Network of first Mobile Terminal (optional)<RequirementSets>
+>In the normal operation, the main functional steps needed for running from one RBC area to another one are the following:<Sub>
+<Paragraph
+ id="5.15.2.1.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="9b4338b2-4f0d-4db1-a345-0be6f870c223"
+>Pre-announcement of the transition by the &quot;Handing Over&quot; RBC;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="a7420e18-0f40-446f-8cf0-10450019417d"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="41329436-d919-4c2b-b11e-95d2e160107d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.15.2.1.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="68a814aa-d977-4ba8-8329-54aaaec00081"
+>Registration to the new Radio Network of second Mobile Terminal (optional) &amp; Establishment of the radio communication session with the &quot;Accepting&quot; RBC;<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9d45eba0-2bc6-42ea-9240-87779c0ffaee"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="5dcca2a1-dd5f-49f3-8204-89a0bbe88cb7"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.15.2.1.1.c"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="068f1b21-277d-4474-aa8d-7c902b3e0233"
+>Generation of movement authorities including the border;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b9e28edc-119b-488d-906a-73b06d3465f2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.15.2.1.1.d"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="5a5b679d-1bf8-4a70-b313-599b2973a034"
+>Announcement of the RBC transition<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fa71384f-c474-41d0-8cba-42501f61c528"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="57de070c-f30a-4e20-82b1-8a0c3be10919"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.15.2.1.1.e"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="a79fc13c-411d-4d6e-8d78-062d87d76dd4"
+>Transfer of train supervision to the &quot;Accepting&quot; RBC;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="fe830284-4f96-4fae-b0a6-0238faa63bb9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.15.2.1.1.f"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="55343d73-fc95-4398-9bb4-d3d7afeea7b8"
+>Termination of the session with &quot;Handing Over&quot; RBC.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5e996848-6db7-47eb-aaf3-4a8bb9c428c9"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="6e75d067-12c6-47f3-b9fc-6ac56132b10c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.15.2.1.1.g"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="dcc51a42-0407-4ab9-855a-55dc04e2ce4e"
+>Registration to the new Radio Network of first Mobile Terminal (optional)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d41f8c71-b34b-4888-8b30-6eadb61900b3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="12bee647-586f-4305-bd81-07fc682b8953"
@@ -14747,6 +14875,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  scope="FLAGS"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -14757,10 +14886,6 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c5b689c5-e538-45d1-a6e4-b3f1e74d3112"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="947e6545-a3b3-43d2-9d39-5ffd60b2a557"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.15.4.4"
@@ -14769,6 +14894,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  scope="FLAGS"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -14778,10 +14904,6 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="63b3e89d-4206-4b63-902e-08199ceade12"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="eddf6392-f429-4255-80b4-d675fed9ff7d"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
