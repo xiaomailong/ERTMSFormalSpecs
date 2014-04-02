@@ -1129,7 +1129,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
  Guid="9687e639-b5c6-470d-813a-f17940cd2731"
 >ConnectionLostTime &lt;- BaseTypes.Time.Infinity</Action><Action
  Guid="ff4c1c3d-36bb-4e52-ae97-a17eabff757a"
->IsAcceptingRBC &lt;- False</Action></Actions>
+>IsMainConnection &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1425,13 +1425,13 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 <Comment>If a communication session has to be established, this variable indicates why it has to be estabilshed.</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
- Default="False"
+ Default="True"
  Mode="Internal"
  Implemented="TRUE"
- Name="IsAcceptingRBC"
+ Name="IsMainConnection"
  Guid="444f2d37-dd13-4003-a447-b57d250c6b4a"
 >
-<Comment>Indicates if this RBC is accepting or handing over, in case of RBC/RBC handover.</Comment>
+<Comment>In case of RBC/RBC handover with two simultaneous connections, this flag indicates which RBC is the main one. In the beginning of the handover the main RBC is the Handing Over RBC, but after the transfer of train supervision to the Accepting RBC, the latter becomes the main RBC.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="Inactive"
@@ -2349,7 +2349,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 <PreConditions>
 <PreCondition
  Guid="07e657aa-3707-4bda-a4f4-a6d13481015f"
->IsAcceptingRBC</PreCondition><PreCondition
+>NOT IsMainConnection</PreCondition><PreCondition
  Guid="22d43fd5-302a-4983-ae19-6ff1aa829b83"
 >Kernel.Mode not in [Mode.SL, Mode.NL]</PreCondition></PreConditions>
 <Actions>
@@ -3644,6 +3644,11 @@ Note: a safe radio connection can only be set-up when the RBC connection is in s
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="274b9d65-6332-44ab-bdcd-b33712d68d13"
 >
+</ReqRef><ReqRef
+ Id="68a814aa-d977-4ba8-8329-54aaaec00081"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8bddca7c-b9b3-455b-aec4-2f64d9558b23"
+>
 </ReqRef><Comment>Once the terminal is connected, it sends the request to contact the Accepting RBC to the on-board, if any.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -3661,7 +3666,7 @@ Note: a safe radio connection can only be set-up when the RBC connection is in s
  Guid="f8407011-1eed-4334-9e92-d8c9a1b3e94f"
 >RBCConnection.ContactRBCOrder &lt;- AcceptingRBCContactOrder</Action><Action
  Guid="5b7db2c9-656a-459c-a3ba-3fd1220b6bd9"
->RBCConnection.IsAcceptingRBC &lt;- True</Action></Actions>
+>RBCConnection.IsMainConnection &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3673,6 +3678,11 @@ Note: a safe radio connection can only be set-up when the RBC connection is in s
  Id="e0778e14-e6ea-4f06-8c69-56236250b636"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="372a25aa-3752-4992-99ef-e49175d21e84"
+>
+</ReqRef><ReqRef
+ Id="68a814aa-d977-4ba8-8329-54aaaec00081"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b9d9df2-fd5f-40f2-8f63-1f88c04bea52"
 >
 </ReqRef><Comment>If there is an Accepting RBC contact order and if it already was handled, then remove it.</Comment>
 <SubRules></SubRules>
@@ -3838,19 +3848,21 @@ Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Connected
 <Comment>Provides the current RBC connection. If none of terminals is connected, RBC1 is provided.</Comment>
 <Cases>
 <Case
- Name="RBC1"
- Guid="721da144-3a02-4f84-8e10-a29715edbe77"
->
-<PreConditions>
-<PreCondition
- Guid="d3cd7a0d-a9ee-430b-9f4b-b7438d4ee678"
->Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
-<Expression>Terminal1.RBCConnection</Expression>
-</Case><Case
  Name="RBC2"
  Guid="71411cb1-fbc3-4d56-8c9e-a2ac172c6983"
 >
+<PreConditions>
+<PreCondition
+ Guid="6acd04d4-6b9c-4314-b8d4-8803db268530"
+>Terminal2.RBCConnection.SafeRadioConnectionStatus != SafeRadioConnectionStatusEnum.NoConnection</PreCondition><PreCondition
+ Guid="c4173ff8-7228-40ee-9259-b9cbbef201ea"
+>Terminal2.RBCConnection.IsMainConnection</PreCondition></PreConditions>
 <Expression>Terminal2.RBCConnection</Expression>
+</Case><Case
+ Name="RBC1"
+ Guid="721da144-3a02-4f84-8e10-a29715edbe77"
+>
+<Expression>Terminal1.RBCConnection</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -4369,7 +4381,7 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 <PreConditions>
 <PreCondition
  Guid="b6505431-2fc2-4a36-a175-574b65e91b1a"
->Terminal1.RBCConnection.IsAcceptingRBC</PreCondition></PreConditions>
+>NOT Terminal1.RBCConnection.IsMainConnection</PreCondition></PreConditions>
 <Expression>Terminal1.RBCConnection</Expression>
 </Case><Case
  Name="RBC2"
@@ -4378,7 +4390,7 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 <PreConditions>
 <PreCondition
  Guid="079486c9-1e87-4e44-b1fc-f3931340f14c"
->Terminal2.RBCConnection.IsAcceptingRBC</PreCondition></PreConditions>
+>Terminal2.RBCConnection.IsMainConnection</PreCondition></PreConditions>
 <Expression>Terminal2.RBCConnection</Expression>
 </Case><Case
  Name="Otherwise"
@@ -7042,6 +7054,11 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Id="36ac93e3-3877-41a8-98dc-4bbdd6eff050"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3f4caabc-6cd1-477d-a2d2-bf4742108572"
+>
+</ReqRef><ReqRef
+ Id="68a814aa-d977-4ba8-8329-54aaaec00081"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="832b01ee-f945-4278-92c0-f3ee17daaf78"
 >
 </ReqRef><Comment>The procedure starts the registering of the provided mobile terminal to the provided network, except if the terminal is already registered to the provided netword.</Comment>
 <Parameters>

@@ -1185,6 +1185,93 @@ TIU.TrainIntegrity.Status in [
 >PositionReportParameters.Values.SpecialLocation &lt;- ERTMSSpecialLocationConverter(Packet.M_LOC)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="Send first RBC/RBC handover position report"
+ Guid="32c21d40-8ed4-4f0c-a8d6-15496fe4e247"
+>
+<ReqRef
+ Id="6a61aac6-3496-4cb7-8a7b-8b6d6ee37d62"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc86b48e-8a79-4bfe-bddb-c7afc04556b1"
+>
+</ReqRef><Comment>Handles the sending of the position report that has to be sent when the max safe front end reaches the transition border location.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send position report to the Handing Over RBC"
+ Guid="6486cfb7-05a5-4b21-8ff2-fe88b7333743"
+>
+<Comment>Handles the sending of the position report to the Handling Over RBC.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send position report to the Handing Over RBC"
+ Guid="60e15fef-2535-4020-9b03-d7e948afca7d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="89164f10-4804-45f9-b404-1ba1447d422b"
+>NumberOfReportsSentToHandingOverRBC &lt;- NumberOfReportsSentToHandingOverRBC + 1</Action><Action
+ Guid="7a5a51e3-0abe-4698-93ed-043abb09e4d1"
+>CurrentRBCConnection().SendPositionReport()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send position report to the Accepting RBC"
+ Guid="9761576a-1b6f-4ba1-9407-a38b7814261a"
+>
+<Comment>If the on-board is able to handle two RBC connections in parallel, it sends a position report to the accepting RBC as well.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send position report to the Accepting RBC"
+ Guid="fd17e342-c46a-4e8d-9cdd-e3ff7329a485"
+>
+<PreConditions>
+<PreCondition
+ Guid="7e956f6c-dace-46c8-908e-f325396dda0e"
+>AcceptingRBC() != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d0ab71e1-786d-4e01-9233-28f40c29267a"
+>AcceptingRBC().SendPositionReport()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Change the roles of RBCs"
+ Guid="0712c048-71d0-4c3d-9934-12959ae3ecfb"
+>
+<ReqRef
+ Id="377f8ed2-6fd9-420c-a7ae-e9f63416bd1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7fb04dcf-1d39-48df-827b-02a1a8487cb3"
+>
+</ReqRef><Comment>After the position report sending, the roles of the RBCs change (the Accepting RBC becomes the main RBC and the Handing Over RBC becomes the secondary).</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Change the roles of RBCs"
+ Guid="a377d14a-8dc9-4801-af46-590f9004e35d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="6b42c60f-a5af-4051-9bc2-4ed9a4530448"
+>Terminal1.RBCConnection.IsMainConnection &lt;- NOT Terminal1.RBCConnection.IsMainConnection</Action><Action
+ Guid="adfa2013-2b5f-4f01-9977-c806d55f77ab"
+>Terminal2.RBCConnection.IsMainConnection &lt;- NOT Terminal2.RBCConnection.IsMainConnection</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -1658,50 +1745,86 @@ TIU.TrainIntegrity.Status in [
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Send position report to Handing Over RBC"
- Guid="b15c3ab8-23bc-4e0f-a957-d3185d5147a9"
+ Name="Handle first RBC/RBC handover position report"
+ Guid="2337f4ba-61ce-4bb6-a87c-142256ffec21"
 >
 <ReqRef
- Id="67f28124-01be-4b0b-ae62-e6274818f522"
+ Id="6a61aac6-3496-4cb7-8a7b-8b6d6ee37d62"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="48fdc0fc-f68e-4758-9a2b-5fc66014aeb6"
->
-</ReqRef><ReqRef
- Id="83fd016d-a290-41a0-b91a-d21bdb12a3d1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5189b4cf-16e7-4e1e-841f-a99bae210a87"
+ Guid="7816945f-e6f1-45b6-a4c0-21a265fe149f"
 >
 </ReqRef><ReqRef
  Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6df0126b-54ef-40ca-80f9-a4d5608dc86d"
+ Guid="f8a726be-9e16-4613-8e71-45702cd6c487"
 >
-</ReqRef><Comment>Sends position reports to the Handing Over RBC, when crossing the RBC transition location.</Comment>
+</ReqRef><ReqRef
+ Id="67f28124-01be-4b0b-ae62-e6274818f522"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cbded3c7-635c-495f-a803-764110d5ef36"
+>
+</ReqRef><ReqRef
+ Id="5a5b679d-1bf8-4a70-b313-599b2973a034"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1fe99d63-565e-476f-a48e-bc6bfd3a0726"
+>
+</ReqRef><Comment>During the RBC/RBC handover, the first position report has to be sent when the max safe front end of the train passes the transition border location.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Send position report to Handing Over RBC"
- Guid="9eb43706-bd78-4e42-a70b-c528bc4cee15"
+ Name="Handle first RBC/RBC handover position report"
+ Guid="c18aa449-79fa-4a8c-94bb-9d212e2a9fc6"
 >
 <PreConditions>
 <PreCondition
- Guid="cc94de57-2606-4809-bda3-c967e720e436"
->NumberOfReportsSentToHandingOverRBC == 1
-  AND
-Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; DistanceInterval.Min ) &gt;= RBCTransitionLocation</PreCondition><PreCondition
- Guid="12730f8d-2325-4816-a1d2-228d2cfb0c5a"
+ Guid="8759fa6c-ccb2-4799-901c-da387590d178"
 >NumberOfReportsSentToHandingOverRBC == 0
   AND
 Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.Max ) &gt;= RBCTransitionLocation</PreCondition><PreCondition
- Guid="f7592304-ea69-4b57-bd4f-146e6f7e26c1"
+ Guid="8ddbf2b5-1a20-4b70-abcd-734965454ea6"
 >RBCTransitionLocation != BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="d0ab71e1-786d-4e01-9233-28f40c29267a"
->CurrentRBCConnection().SendPositionReport()</Action><Action
- Guid="89164f10-4804-45f9-b404-1ba1447d422b"
->NumberOfReportsSentToHandingOverRBC &lt;- NumberOfReportsSentToHandingOverRBC + 1</Action></Actions>
+ Guid="daf467de-6386-457f-8555-9fbf8706549b"
+>RBCStruct.SendPositionReport()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle second RBC/RBC handover position report"
+ Guid="cbe0655b-f287-403a-adcb-788c75b9a498"
+>
+<ReqRef
+ Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="354f8873-6fcc-4031-94f6-c7c7ab6eb642"
+>
+</ReqRef><ReqRef
+ Id="83fd016d-a290-41a0-b91a-d21bdb12a3d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f8bf3a3f-567d-4f80-b35d-7f222ac58ba6"
+>
+</ReqRef><Comment>During the RBC/RBC handover, the second position report has to be sent when the min safe rear end of the train passes the transition border location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle second RBC/RBC handover position report"
+ Guid="95a444e5-4527-473a-97cd-322a2a9fcd4e"
+>
+<PreConditions>
+<PreCondition
+ Guid="2e4c2276-a2dd-4f4c-8fcb-9857d72cb4c8"
+>RBCTransitionLocation != BaseTypes.Distance.Unknown</PreCondition><PreCondition
+ Guid="9e01e492-5354-4383-a8cf-c25c076c9526"
+>NumberOfReportsSentToHandingOverRBC == 1
+  AND
+Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; DistanceInterval.Min ) &gt;= RBCTransitionLocation</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="35b07ffe-860e-42d4-98bd-0a84888dd618"
+>AcceptingRBC().SendPositionReport()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
