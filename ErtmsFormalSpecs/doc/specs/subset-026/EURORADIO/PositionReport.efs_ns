@@ -1237,11 +1237,11 @@ TIU.TrainIntegrity.Status in [
 <PreConditions>
 <PreCondition
  Guid="7e956f6c-dace-46c8-908e-f325396dda0e"
->AcceptingRBC() != EMPTY</PreCondition></PreConditions>
+>SecondaryRBCConnection() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d0ab71e1-786d-4e01-9233-28f40c29267a"
->AcceptingRBC().SendPositionReport()</Action></Actions>
+>SecondaryRBCConnection().SendPositionReport()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1734,11 +1734,11 @@ TIU.TrainIntegrity.Status in [
 <PreConditions>
 <PreCondition
  Guid="a9c9c62a-a1ff-45f5-8f47-71e4e1b756dd"
->AcceptingRBC() != EMPTY</PreCondition></PreConditions>
+>SecondaryRBCConnection() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="44e5a4e8-73a9-4879-9844-f4bf9665e010"
->AcceptingRBC().SendPositionReport()</Action></Actions>
+>SecondaryRBCConnection().SendPositionReport()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1805,6 +1805,16 @@ Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.M
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f8bf3a3f-567d-4f80-b35d-7f222ac58ba6"
 >
+</ReqRef><ReqRef
+ Id="a10b0fd8-ce50-4ef2-ab36-c41dd3ac7321"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1a6d145d-ca0b-4e57-9d31-de395b00f2af"
+>
+</ReqRef><ReqRef
+ Id="55343d73-fc95-4398-9bb4-d3d7afeea7b8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35bad9b3-fed2-40b4-9c26-3e3cda9a054e"
+>
 </ReqRef><Comment>During the RBC/RBC handover, the second position report has to be sent when the min safe rear end of the train passes the transition border location.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1824,7 +1834,7 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; DistanceInterval.Mi
 <Actions>
 <Action
  Guid="35b07ffe-860e-42d4-98bd-0a84888dd618"
->AcceptingRBC().SendPositionReport()</Action></Actions>
+>SecondaryRBCConnection().SendPositionReport()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

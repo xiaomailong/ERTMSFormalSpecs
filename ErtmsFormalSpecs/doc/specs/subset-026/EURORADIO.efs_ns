@@ -3606,6 +3606,16 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="65ad2541-f826-414d-972d-6d0c2f266dea"
 >
+</ReqRef><ReqRef
+ Id="9f6c605e-3f76-4367-a7a4-7f4fa458ef67"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f8b3f5bf-0756-4503-b92b-40aa7e757ae4"
+>
+</ReqRef><ReqRef
+ Id="dcc51a42-0407-4ab9-855a-55dc04e2ce4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cfb4fa16-c9d5-430f-a413-d3142991bca5"
+>
 </ReqRef><Comment>If an order to register to a network is received from the trackside, when it is ignored if a safe radio connection is being set-up or a communication session is already established.
 
 Once the communication session is terminated and the safe radio connection is released, the radio network registration will be initiated for the requested network.
@@ -4364,7 +4374,7 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 </Function><Function
  Type="RBCStruct"
  Implemented="TRUE"
- Name="AcceptingRBC"
+ Name="SecondaryRBCConnection"
  Guid="74ee579a-acba-4659-83ae-89dc0f8c11b6"
 >
 <ReqRef
@@ -4545,26 +4555,21 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 <PreConditions>
 <PreCondition
  Guid="ffda9f58-de4b-460e-9459-f56d2e21d0d9"
->TerminalIsRegistered ( aTerminal=&gt; Terminal2 )
+>Terminal2 != EMPTY
   AND 
 Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition><PreCondition
  Guid="33666d69-9750-4e02-a8e6-c569ffffe0fa"
->TerminalIsRegistered ( aTerminal=&gt; Terminal1 )</PreCondition></PreConditions>
+>Terminal1 != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="65593694-8da7-42e4-8683-c928afe0a1cf"
->RegisterATerminal
-(
-    aTerminal =&gt; Terminal1,
-    aNetworkId =&gt; Order.PhoneNumber,
-    anAcceptingRBCContactOrder =&gt; ContactOrderStruct
-    {
-        Id =&gt; Order.Id,
-        PhoneNumber =&gt; Order.PhoneNumber,
-        ActionToPerform =&gt; ContactActionEnum.Establish,
-        AppliesToSleepingUnits =&gt; Order.AppliesToSleepingUnits
-    }
-)</Action></Actions>
+ Guid="6b1064e6-281a-4354-95d1-2000cd5ffd6b"
+>Terminal1.AcceptingRBCContactOrder &lt;- ContactOrderStruct
+{
+    Id =&gt; Order.Id,
+    PhoneNumber =&gt; Order.PhoneNumber,
+    ActionToPerform =&gt; ContactActionEnum.Establish,
+    AppliesToSleepingUnits =&gt; Order.AppliesToSleepingUnits
+}</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Two terminals available, Terminal 1 is connected"
@@ -4574,26 +4579,21 @@ Terminal2.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 <PreConditions>
 <PreCondition
  Guid="1571691d-c431-48e0-9f63-1a441b77ffe8"
->TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition><PreCondition
+>Terminal2 != EMPTY</PreCondition><PreCondition
  Guid="e79623a7-69b4-46ec-8e6f-2a6f0c3745c0"
->TerminalIsRegistered ( aTerminal=&gt; Terminal1 )
+>Terminal1 != EMPTY
   AND 
 Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEnum.ConnectionUp</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="852b15c6-aa27-4e22-a175-04e29e4033e3"
->RegisterATerminal
-(
-    aTerminal =&gt; Terminal2,
-    aNetworkId =&gt; Order.PhoneNumber,
-    anAcceptingRBCContactOrder =&gt; ContactOrderStruct
-    {
-        Id =&gt; Order.Id,
-        PhoneNumber =&gt; Order.PhoneNumber,
-        ActionToPerform =&gt; ContactActionEnum.Establish,
-        AppliesToSleepingUnits =&gt; Order.AppliesToSleepingUnits
-    }
-)</Action></Actions>
+>Terminal2.AcceptingRBCContactOrder &lt;- ContactOrderStruct
+{
+    Id =&gt; Order.Id,
+    PhoneNumber =&gt; Order.PhoneNumber,
+    ActionToPerform =&gt; ContactActionEnum.Establish,
+    AppliesToSleepingUnits =&gt; Order.AppliesToSleepingUnits
+}</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Only Terminal 1 is available"
@@ -4603,22 +4603,17 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 <PreConditions>
 <PreCondition
  Guid="6fc46360-c116-43b2-a7e3-220f5fc3e692"
->TerminalIsRegistered ( aTerminal=&gt; Terminal1 )</PreCondition></PreConditions>
+>Terminal1 != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="93e237a6-31dc-4023-91c6-21e6480057e2"
->RegisterATerminal
-(
-    aTerminal =&gt; Terminal1,
-    aNetworkId =&gt; Order.PhoneNumber,
-    anAcceptingRBCContactOrder =&gt; ContactOrderStruct
-    {
-        Id =&gt; Order.Id,
-        PhoneNumber =&gt; Order.PhoneNumber,
-        ActionToPerform =&gt; ContactActionEnum.Establish,
-        AppliesToSleepingUnits =&gt; Order.AppliesToSleepingUnits
-    }
-)</Action></Actions>
+>Terminal1.AcceptingRBCContactOrder &lt;- ContactOrderStruct
+{
+    Id =&gt; Order.Id,
+    PhoneNumber =&gt; Order.PhoneNumber,
+    ActionToPerform =&gt; ContactActionEnum.Establish,
+    AppliesToSleepingUnits =&gt; Order.AppliesToSleepingUnits
+}</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Only Terminal 2 is available"
@@ -4628,22 +4623,17 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 <PreConditions>
 <PreCondition
  Guid="7bf47d02-f543-4922-aa32-c82a9934af6b"
->TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
+>Terminal2 != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8431a2ae-506a-4f0f-91bd-73fe5661a3a5"
->RegisterATerminal
-(
-    aTerminal =&gt; Terminal2,
-    aNetworkId =&gt; Order.PhoneNumber,
-    anAcceptingRBCContactOrder =&gt; ContactOrderStruct
-    {
-        Id =&gt; Order.Id,
-        PhoneNumber =&gt; Order.PhoneNumber,
-        ActionToPerform =&gt; ContactActionEnum.Establish,
-        AppliesToSleepingUnits =&gt; Order.AppliesToSleepingUnits
-    }
-)</Action></Actions>
+>Terminal2.AcceptingRBCContactOrder &lt;- ContactOrderStruct
+{
+    Id =&gt; Order.Id,
+    PhoneNumber =&gt; Order.PhoneNumber,
+    ActionToPerform =&gt; ContactActionEnum.Establish,
+    AppliesToSleepingUnits =&gt; Order.AppliesToSleepingUnits
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4896,7 +4886,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="03c225c5-d245-4024-9654-d3747c342eb4"
 >
-</ReqRef><Comment>Handles reception of session management packet from the trackside. The procedure calls ContactRBC procedure wich order computed from the received information.</Comment>
+</ReqRef><Comment>Handles reception of session management packet from the trackside. The procedure calls ContactRBC procedure with order computed from the received information.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Message"
@@ -5051,6 +5041,26 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="384307ff-cbf9-4473-b59e-a03b4fa28aa9"
 >
+</ReqRef><ReqRef
+ Id="9f6c605e-3f76-4367-a7a4-7f4fa458ef67"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="053892f7-7928-480d-8a24-b7dfdd54ae64"
+>
+</ReqRef><ReqRef
+ Id="dcc51a42-0407-4ab9-855a-55dc04e2ce4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="03093ed4-945f-40bc-8369-806a295db5c7"
+>
+</ReqRef><ReqRef
+ Id="68a814aa-d977-4ba8-8329-54aaaec00081"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a52ee743-0de6-4d9f-86b6-2606224cf76c"
+>
+</ReqRef><ReqRef
+ Id="e0778e14-e6ea-4f06-8c69-56236250b636"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae2c75eb-5575-4a11-82ff-caec0db0bd2a"
+>
 </ReqRef><Comment>Registers the mobile terminals to a radio network.</Comment>
 <Parameters>
 <Parameter
@@ -5063,7 +5073,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Register Terminal 1"
+ Name="Register terminals"
  Guid="86956c33-030e-4d1f-8f75-ab22dffbfcdd"
 >
 <Comment>If the provided id is valid or the last known nework id is valid, then the mobile terminals are registered.</Comment>
@@ -5085,15 +5095,13 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 >RegisterATerminal
 (
     aTerminal=&gt; Terminal1,
-    aNetworkId=&gt; aNetworkId,
-    anAcceptingRBCContactOrder =&gt; EMPTY
+    aNetworkId=&gt; aNetworkId
 )</Action><Action
  Guid="c6f1daed-dbca-4284-aa54-e5ac33091cd8"
 >RegisterATerminal
 (
     aTerminal=&gt; Terminal2,
-    aNetworkId=&gt; aNetworkId,
-    anAcceptingRBCContactOrder =&gt; EMPTY
+    aNetworkId=&gt; aNetworkId
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -5116,15 +5124,13 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 >RegisterATerminal
 (
     aTerminal=&gt; Terminal1,
-    aNetworkId=&gt; DefaultRadioNetworkId,
-    anAcceptingRBCContactOrder =&gt; EMPTY
+    aNetworkId=&gt; DefaultRadioNetworkId
 )</Action><Action
  Guid="e3be1ede-90b1-4290-b919-3187a1668b3c"
 >RegisterATerminal
 (
     aTerminal=&gt; Terminal2,
-    aNetworkId=&gt; DefaultRadioNetworkId,
-    anAcceptingRBCContactOrder =&gt; EMPTY
+    aNetworkId=&gt; DefaultRadioNetworkId
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -6985,6 +6991,26 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2188301b-ce9b-461c-be01-a945fc88e97d"
 >
+</ReqRef><ReqRef
+ Id="68a814aa-d977-4ba8-8329-54aaaec00081"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="36e920c8-9a91-4d15-83c4-9402d1c70f6d"
+>
+</ReqRef><ReqRef
+ Id="e0778e14-e6ea-4f06-8c69-56236250b636"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1c00597-b875-43be-a6b1-b9727c36bf78"
+>
+</ReqRef><ReqRef
+ Id="9f6c605e-3f76-4367-a7a4-7f4fa458ef67"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cc235dda-70f6-4e15-b17d-83882a1010c6"
+>
+</ReqRef><ReqRef
+ Id="dcc51a42-0407-4ab9-855a-55dc04e2ce4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b7b3e488-4174-403c-9eab-07cabf6e2618"
+>
 </ReqRef><Comment>Handles reception of network registration order received from the trackside.</Comment>
 <Parameters>
 <Parameter
@@ -7031,34 +7057,19 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Guid="94e92411-7aaa-47d2-9a62-3c2e6c77a8f0"
 >
 </ReqRef><ReqRef
- Id="dd006294-7250-4fc8-b4b1-f4e62eb12cf3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="aae20d00-645b-454b-b9cb-32bf06b3611f"
->
-</ReqRef><ReqRef
- Id="adc412e3-1c5f-4c95-a667-303e6aabee27"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a33030e0-e28a-46e7-ab3e-3a012261c3e5"
->
-</ReqRef><ReqRef
- Id="6fa8d8fc-f346-4592-b64d-ce1831a6cc98"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3adc7ccf-5aea-47ab-92f1-8343a198e07e"
->
-</ReqRef><ReqRef
- Id="6a073136-951c-4624-92a2-1b2f704d25ed"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="32c70557-791d-4c3c-b6e5-38c62b1675bd"
->
-</ReqRef><ReqRef
- Id="36ac93e3-3877-41a8-98dc-4bbdd6eff050"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3f4caabc-6cd1-477d-a2d2-bf4742108572"
->
-</ReqRef><ReqRef
  Id="68a814aa-d977-4ba8-8329-54aaaec00081"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="832b01ee-f945-4278-92c0-f3ee17daaf78"
+>
+</ReqRef><ReqRef
+ Id="9f6c605e-3f76-4367-a7a4-7f4fa458ef67"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="04776bc6-432c-48f5-b474-809ce444a9d4"
+>
+</ReqRef><ReqRef
+ Id="dcc51a42-0407-4ab9-855a-55dc04e2ce4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="67e9c776-a853-4d0d-95a0-27d086dc8e16"
 >
 </ReqRef><Comment>The procedure starts the registering of the provided mobile terminal to the provided network, except if the terminal is already registered to the provided netword.</Comment>
 <Parameters>
@@ -7071,11 +7082,6 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  Type="String"
  Name="aNetworkId"
  Guid="16f25452-c7ca-4c62-8a7d-417fe5fdb16f"
->
-</Parameter><Parameter
- Type="ContactOrderStruct"
- Name="anAcceptingRBCContactOrder"
- Guid="b868983e-5cb2-42c0-9744-7bc21471413a"
 >
 </Parameter></Parameters>
 <Rules>
@@ -7101,22 +7107,20 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
 <PreConditions>
 <PreCondition
  Guid="b98357f2-9bff-490d-951c-a72293c7c303"
->NOT
+>aTerminal != EMPTY
+  AND
+NOT
 (
   aTerminal.RegistrationState in TerminalStruct.RegistrationStateSM.Registered
     AND
-  aTerminal.NetworkId != aNetworkId
-)</PreCondition><PreCondition
- Guid="115781a3-1ed8-4502-9708-18c621902b3e"
->aTerminal != EMPTY</PreCondition></PreConditions>
+  aTerminal.NetworkId == aNetworkId
+)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d0f0e831-08a8-4181-a47d-9d039b484d48"
 >aTerminal.NetworkIdToRegister &lt;- aNetworkId</Action><Action
  Guid="503a9e82-74de-44aa-9897-753d7f0369c1"
->aTerminal.RegistrationOrderIsReceived &lt;- True</Action><Action
- Guid="6dd7f6ce-5545-4e9f-b3e5-08671b351f5c"
->aTerminal.AcceptingRBCContactOrder &lt;- anAcceptingRBCContactOrder</Action></Actions>
+>aTerminal.RegistrationOrderIsReceived &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
