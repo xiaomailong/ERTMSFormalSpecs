@@ -1195,6 +1195,21 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fc86b48e-8a79-4bfe-bddb-c7afc04556b1"
 >
+</ReqRef><ReqRef
+ Id="2a5f115c-95a4-4e8f-b29e-965e2f49e9bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="205f6c84-231e-4bad-9b37-8f78c8646d75"
+>
+</ReqRef><ReqRef
+ Id="78114112-c363-4d6d-8e32-e31931e4a271"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1218db2b-1e32-4f8d-83e0-3ae4379fa7f1"
+>
+</ReqRef><ReqRef
+ Id="bd6563bc-06fe-447b-8afc-e210141cc921"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bc202c8d-245c-4f69-89ac-f284f2c163bb"
+>
 </ReqRef><Comment>Handles the sending of the position report that has to be sent when the max safe front end reaches the transition border location.</Comment>
 <Rules>
 <Rule
@@ -1263,7 +1278,9 @@ TIU.TrainIntegrity.Status in [
  Guid="a377d14a-8dc9-4801-af46-590f9004e35d"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="ddfadecd-e648-4e13-8408-4325274abb95"
+>SecondaryRBCConnection() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6b42c60f-a5af-4051-9bc2-4ed9a4530448"
@@ -1768,6 +1785,31 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1fe99d63-565e-476f-a48e-bc6bfd3a0726"
 >
+</ReqRef><ReqRef
+ Id="dba4721e-ecc7-46a8-945a-ca408198338c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a91b06a3-12d7-4552-a2eb-758e7d5c53ab"
+>
+</ReqRef><ReqRef
+ Id="2a5f115c-95a4-4e8f-b29e-965e2f49e9bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7575a941-9397-416d-9d60-8ea42926491b"
+>
+</ReqRef><ReqRef
+ Id="78114112-c363-4d6d-8e32-e31931e4a271"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a7595ec3-aa98-4170-bc7b-639e84e4ce07"
+>
+</ReqRef><ReqRef
+ Id="bd6563bc-06fe-447b-8afc-e210141cc921"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a785e4c8-71c4-4f34-83ad-5fa1fa09ee51"
+>
+</ReqRef><ReqRef
+ Id="e946be20-19a1-4857-a5d8-82474ef6d451"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f735e2b5-23af-4b66-8124-8a941cf86e56"
+>
 </ReqRef><Comment>During the RBC/RBC handover, the first position report has to be sent when the max safe front end of the train passes the transition border location.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1815,14 +1857,40 @@ Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.M
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="35bad9b3-fed2-40b4-9c26-3e3cda9a054e"
 >
+</ReqRef><ReqRef
+ Id="dba4721e-ecc7-46a8-945a-ca408198338c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8182b1e6-8e24-4f7c-acd6-a513e4f3c2fd"
+>
+</ReqRef><ReqRef
+ Id="55c1b4ba-8b68-4271-a308-24765057ea74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ec73871a-632c-42b0-a365-346538a44e24"
+>
+</ReqRef><ReqRef
+ Id="44972496-d7f5-4a3e-9e31-f4f3060bc841"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b6285c53-b761-4517-9f04-7d4056ce4cdb"
+>
+</ReqRef><ReqRef
+ Id="bd6563bc-06fe-447b-8afc-e210141cc921"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1480eb7b-23bd-484f-a5d7-d37ef0ded1b4"
+>
+</ReqRef><ReqRef
+ Id="e946be20-19a1-4857-a5d8-82474ef6d451"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b3a211e2-b232-4280-ac7a-421a0e932e3f"
+>
 </ReqRef><Comment>During the RBC/RBC handover, the second position report has to be sent when the min safe rear end of the train passes the transition border location.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Handle second RBC/RBC handover position report"
+ Name="Two RBC connections are available"
  Guid="95a444e5-4527-473a-97cd-322a2a9fcd4e"
 >
+<Comment>If two RBC connections are available, then the Handing Over RBC has already become the secondary connection.</Comment>
 <PreConditions>
 <PreCondition
  Guid="2e4c2276-a2dd-4f4c-8fcb-9857d72cb4c8"
@@ -1830,11 +1898,31 @@ Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.M
  Guid="9e01e492-5354-4383-a8cf-c25c076c9526"
 >NumberOfReportsSentToHandingOverRBC == 1
   AND
-Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; DistanceInterval.Min ) &gt;= RBCTransitionLocation</PreCondition></PreConditions>
+Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; DistanceInterval.Min ) &gt;= RBCTransitionLocation</PreCondition><PreCondition
+ Guid="e082201c-84ad-4853-91fb-329f7fb6a7b1"
+>SecondaryRBCConnection() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="35b07ffe-860e-42d4-98bd-0a84888dd618"
 >SecondaryRBCConnection().SendPositionReport()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Only one RBC connection is available"
+ Guid="61032958-e439-46fd-99fa-0ebd44f588ff"
+>
+<Comment>If only one RBC connection is available, then the Handing Over RBC is still the primary connection.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="e53ca7c8-ee5d-4470-8e15-c7b20c74cbc4"
+>NumberOfReportsSentToHandingOverRBC == 1
+  AND
+Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; DistanceInterval.Min ) &gt;= RBCTransitionLocation</PreCondition><PreCondition
+ Guid="8dad42f5-7595-4a95-b5bc-9227ceb091e9"
+>RBCTransitionLocation != BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4e660aad-b808-4b8f-af10-18728cbb118c"
+>CurrentRBCConnection().SendPositionReport()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
