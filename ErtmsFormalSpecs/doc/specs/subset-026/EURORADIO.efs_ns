@@ -4547,6 +4547,40 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 >
 <Expression>EMPTY</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="OrderToTerminateHandingOverRBCIsReceived"
+ Guid="c6080dad-e9ff-4072-b1d5-8700f0f8ca97"
+>
+<ReqRef
+ Id="17777577-ec39-4845-8347-17b8ec4c74d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c1356978-afb0-468b-868a-9df9458a623c"
+>
+</ReqRef><Comment>Indicates if the Handing Over RBC has sent an order to terminate the communication session.</Comment>
+<Cases>
+<Case
+ Name="Two terminals available"
+ Guid="33c52b57-ff79-4c7a-98b8-41d82e6a77a0"
+>
+<PreConditions>
+<PreCondition
+ Guid="fa959e0a-d306-48fc-aeb2-507a46af5cc6"
+>Terminal1 != EMPTY</PreCondition><PreCondition
+ Guid="9b982815-d940-4ef3-af12-b404546aa924"
+>Terminal2 != EMPTY</PreCondition></PreConditions>
+<Expression>SecondaryRBCConnection().ContactRBCOrder != EMPTY
+  AND
+SecondaryRBCConnection().ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</Expression>
+</Case><Case
+ Name="One terminal available"
+ Guid="45848e42-776d-4a90-9adc-a3a06ac157cc"
+>
+<Expression>CurrentRBCConnection().ContactRBCOrder != EMPTY
+  AND
+CurrentRBCConnection().ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -7488,7 +7522,9 @@ NOT
 (
     distance =&gt; aPacket.D_RBCTR,
     scale =&gt; aPacket.Q_SCALE
-)</Action></Actions>
+)</Action><Action
+ Guid="292b24e9-212c-45d5-b0f0-e37848e44ad8"
+>PositionReport.NumberOfReportsSentToHandingOverRBC &lt;- 0</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
