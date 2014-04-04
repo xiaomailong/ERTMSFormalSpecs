@@ -4477,7 +4477,7 @@ ID #; Requirements<Sub>
  functionalBlockName=""
  Name=""
  Guid="e890e98d-15ce-46e7-ba5f-e5a0c704d832"
->If the current ETCS Level of operation is 0, 1 or NTC, the process shall go to A050.<RequirementSets>
+>If the current ETCS Level of operation is 0 or 1, the process shall go to A050.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3e74e031-0fff-4b66-bff7-52af4973e1ab"
@@ -4503,6 +4503,25 @@ ID #; Requirements<Sub>
  Guid="e5b09326-e87e-4cdd-abb5-b5ce51416a67"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 5.6.2.2.D020.3"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="19dd42a7-eddc-4da0-bfdf-815a2abb1795"
+>If the current ETCS Level of operation is NTC, the process shall go to D030.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cad2dfc3-af26-4775-9447-e5f0907d7efe"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -4513,18 +4532,18 @@ ID #; Requirements<Sub>
 </Paragraph><Paragraph
  id="Entry 5.6.2.2.D030"
  guid=""
- type="REQUIREMENT"
+ type="TITLE"
  scope="FLAGS"
  bl=""
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="5c8448a3-da14-4f33-8469-90326aacfdaa"
->If there is an on-going National Trip procedure reported by the STM, the process shall go to A030<Sub>
+><Sub>
 <Paragraph
  id="Entry 5.6.2.2.D030.1"
  guid=""
@@ -4534,15 +4553,34 @@ ID #; Requirements<Sub>
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="7df12dee-2836-487c-b425-429f870ed1a2"
->Otherwise the process shall go to A050<RequirementSets>
+>If there is an on-going National Trip procedure reported by the STM, the process shall go to A030<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="442c0831-7fdf-4a05-a550-2d10da83f6d1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 5.6.2.2.D030.2"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="2b84288f-8f44-4b3d-bc37-e1534d27fc7a"
+>Otherwise the process shall go to A050<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="85253df7-e876-4ead-8b01-e05cdb30b9ef"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -4561,7 +4599,7 @@ ID #; Requirements<Sub>
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
