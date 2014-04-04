@@ -261,6 +261,20 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
+        /// Tells if the paragraph is of the selected type
+        /// </summary>
+        /// <param name="Type"></param>
+        /// <returns></returns>
+        public bool isTitle
+        {
+            get
+            {
+                return (getType() == DataDictionary.Generated.acceptor.Paragraph_type.aTITLE);
+            }
+        }
+
+
+        /// <summary>
         /// Looks for a specific paragraph
         /// </summary>
         /// <param name="id">The id of the paragraph to find</param>

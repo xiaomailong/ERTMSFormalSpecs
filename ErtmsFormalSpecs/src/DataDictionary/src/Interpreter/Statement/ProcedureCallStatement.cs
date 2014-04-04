@@ -213,11 +213,26 @@ namespace DataDictionary.Interpreter.Statement
                 {
                     if (Call.Called.Ref is Functions.Function)
                     {
-                        Root.AddError("Invalid call : Function " + Call.Called + " called as a procedure" );
+                        Root.AddError("Invalid call : Function " + Call.Called + " called as a procedure");
                     }
                     else
                     {
                         Root.AddError("Cannot determine called procedure " + Call.Called);
+                    }
+                }
+                else
+                {
+                    if (procedure.Enclosing is Types.Structure)
+                    {
+                        DerefExpression deref = Call.Called as DerefExpression;
+                        if (deref != null)
+                        {
+                            int count = deref.Arguments.Count;
+                            if ((deref.Arguments[count - 2].Ref is Types.NameSpace) || (deref.Arguments[count - 2].Ref is Types.Structure))
+                            {
+                                Root.AddError("Invalid procedure call : context should be the instance on which the call is performed");
+                            }
+                        }
                     }
                 }
             }
