@@ -2043,6 +2043,25 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 <Action
  Guid="aa4d7c3e-e76d-40a7-9946-5e6162008c03"
 >THIS &lt;- RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="RBC/RBC border is passed"
+ Guid="02568a26-f5b0-4587-ae56-9754a49e14cf"
+>
+<ReqRef
+ Id="3e905ad6-8df3-4561-b1b9-4d1ffb5b440f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7466439-2974-4413-bd13-68af6da33ccd"
+>
+</ReqRef><Comment>If the train front passes a RBC/RBC border, the requests to establish a safe radio connection shall no more be repeated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="a315cce6-b406-417c-9709-d00d567e3b73"
+>Kernel.TrainPosition.FrontEndPosition(PointOfInterest =&gt; DistanceInterval.Max) &gt;= PositionReport.RBCTransitionLocation</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7857191c-725b-4d50-9197-8c15c1d2f16a"
+>THIS &lt;- RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5089,6 +5108,11 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c464c89d-30b2-4d2c-961e-095a783058d7"
 >
+</ReqRef><ReqRef
+ Id="058ba686-ff06-4bed-b616-68b4fb4ea7fd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ac6e8ae-bd31-46ed-b594-c90e4b81b94e"
+>
 </ReqRef><Comment>Handles reception of session management packet from the trackside. The procedure calls ContactRBC procedure with order computed from the received information.</Comment>
 <Parameters>
 <Parameter
@@ -5268,6 +5292,11 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  Id="dba4721e-ecc7-46a8-945a-ca408198338c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9d02b08e-4621-48ca-9ca0-53130eac81ef"
+>
+</ReqRef><ReqRef
+ Id="fc32fb41-1c57-4753-a923-fe676aabf35d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9d437a7b-af72-4620-a9df-d2ca2686e1cb"
 >
 </ReqRef><Comment>Registers the mobile terminals to a radio network.</Comment>
 <Parameters>
@@ -7239,6 +7268,11 @@ Thus, the ignore condition will be &quot;state machine is not in Terminating sta
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bc40c72d-0651-46df-9b81-ede406c9b2b5"
 >
+</ReqRef><ReqRef
+ Id="fc32fb41-1c57-4753-a923-fe676aabf35d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ffa87291-19d7-49b9-86de-124c42e0c5ec"
+>
 </ReqRef><Comment>Handles reception of network registration order received from the trackside.</Comment>
 <Parameters>
 <Parameter
@@ -7475,6 +7509,16 @@ NOT
  Id="3ec1090f-7a64-43bd-ae4c-480f2959143c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="febd7402-717b-4c93-95a0-07fc083e6b9e"
+>
+</ReqRef><ReqRef
+ Id="dba00c16-82a7-40b8-b31c-2978dd6bbd82"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ecd5ea2d-f0ed-4dff-9b8f-2f1bc50522ab"
+>
+</ReqRef><ReqRef
+ Id="09eeadf1-fd15-4f7c-8f52-fb0f04b31d9c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="deb3eb45-c15c-4c64-afde-d4f94bce56d1"
 >
 </ReqRef><Comment>Handles the reception of RBC transition order.</Comment>
 <Parameters>

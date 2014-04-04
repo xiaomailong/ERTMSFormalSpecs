@@ -1165,6 +1165,11 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="04c8156f-bc4c-4040-8561-e54d361513a9"
 >
+</ReqRef><ReqRef
+ Id="09eeadf1-fd15-4f7c-8f52-fb0f04b31d9c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a2a18ba7-a87b-4334-bec6-9f52600fe14e"
+>
 </ReqRef><Comment>Handles the sending of the position report that has to be sent when the max safe front end reaches the transition border location.</Comment>
 <Rules>
 <Rule
@@ -1258,6 +1263,11 @@ TIU.TrainIntegrity.Status in [
  Id="55c1b4ba-8b68-4271-a308-24765057ea74"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c69c24db-8924-4f6a-b11b-a013e309d9b5"
+>
+</ReqRef><ReqRef
+ Id="09eeadf1-fd15-4f7c-8f52-fb0f04b31d9c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b101bac1-0a8f-4530-b863-dde5c603734b"
 >
 </ReqRef><Comment>Sends the position report to the Handing Over RBC, by selecting the right RBC connection according to the configuration of the on-board (one or two terminals available).</Comment>
 <Rules>
@@ -1850,6 +1860,16 @@ TIU.TrainIntegrity.Status in [
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f780cdf3-9a29-4c98-9b38-947f6bb24b46"
 >
+</ReqRef><ReqRef
+ Id="dba00c16-82a7-40b8-b31c-2978dd6bbd82"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89670bb6-f102-4efa-b638-117a6c86ef7c"
+>
+</ReqRef><ReqRef
+ Id="09eeadf1-fd15-4f7c-8f52-fb0f04b31d9c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b592b6c3-ada5-4b51-809b-9f3237e9b88a"
+>
 </ReqRef><Comment>During the RBC/RBC handover, the first position report has to be sent when the max safe front end of the train passes the transition border location.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1926,6 +1946,26 @@ Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.M
  Id="1d33b0f5-c87d-4d19-912f-cd058e370e5a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="795b31f5-e45d-4ac9-9168-e875cd6e8835"
+>
+</ReqRef><ReqRef
+ Id="dba00c16-82a7-40b8-b31c-2978dd6bbd82"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68f66f31-be48-4c3f-be9b-31749ee7abc5"
+>
+</ReqRef><ReqRef
+ Id="09eeadf1-fd15-4f7c-8f52-fb0f04b31d9c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ec9d6317-d8a2-4e6e-afa8-28514e3ee311"
+>
+</ReqRef><ReqRef
+ Id="65ee1a94-4e54-4675-a3fa-475b64b323d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4bc5080f-03a7-4e23-97c6-752936658ed9"
+>
+</ReqRef><ReqRef
+ Id="058ba686-ff06-4bed-b616-68b4fb4ea7fd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f78d90c-bc0b-45ac-b8c5-2d9aa3a216e7"
 >
 </ReqRef><Comment>During the RBC/RBC handover, the second position report has to be sent when the min safe rear end of the train passes the transition border location.</Comment>
 <SubRules></SubRules>
