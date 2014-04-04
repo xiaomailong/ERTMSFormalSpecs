@@ -2831,7 +2831,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
  Guid="ef59530a-188c-48af-86c4-658498732214"
 >NumberOfSentRequests &lt;- 0</Action><Action
  Guid="5ab8eb84-a856-41fe-81be-92cc80d83d99"
->RBCStruct.SendTerminationOfCommunicationSession()</Action><Action
+>SendTerminationOfCommunicationSession()</Action><Action
  Guid="37faeac1-ef2c-41c8-ab97-8497c4cfcec4"
 >THIS &lt;- Terminating</Action></Actions>
 <SubRules>
@@ -3850,7 +3850,7 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 <Actions>
 <Action
  Guid="4c9bfa8e-9202-472b-bf80-8e30b3ea5552"
->TerminalStruct.HandleAcceptingRBCContactOrder()</Action></Actions>
+>HandleAcceptingRBCContactOrder()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
