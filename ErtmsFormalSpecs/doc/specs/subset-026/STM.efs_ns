@@ -163,5 +163,19 @@
  Guid="1d7f71af-6bc7-4e68-9460-ebc1f325b3e3"
 >
 </ReqRef><Comment>This speed together with the &quot;STM system distance&quot; is to allow the STM, to request a given train speed at a given position (&quot;STM system distance&quot;) before the level transition border in order to be able to detect its national trackside.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="NationalTripProcedureIsOnGoing"
+ Guid="6b02f690-fe5f-4125-9365-f6f55755003f"
+>
+<ReqRef
+ Id="7df12dee-2836-487c-b425-429f870ed1a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e259367f-f0cf-498a-bd53-cbfd8c991162"
+>
+</ReqRef><Comment>Indicates if there is an on-going National Trip procedure.</Comment>
 </Variable></Variables>
 </NameSpace>
