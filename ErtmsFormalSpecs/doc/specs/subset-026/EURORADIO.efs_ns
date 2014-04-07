@@ -1389,12 +1389,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
  Name="Handle the message, secondary connection"
  Guid="5c981443-a14c-4e1a-8735-d1cb8b04caf0"
 >
-<ReqRef
- Id="1b789c83-4922-4842-985f-3dd14ff0843d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bc4fb103-0d32-4dc1-aca6-969b99d63074"
->
-</ReqRef><Comment>Handles messages from the secondary connection.</Comment>
+<Comment>Handles messages from the secondary connection.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1402,7 +1397,12 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
  Name="First position report not sent yet"
  Guid="6b911e1b-a6d2-41f8-bc49-863eea9699de"
 >
-<Comment>Before the first position report due to RBC/RBC handover is sent, the secondary connection is the Accepting RBC. All the messages are handled.</Comment>
+<ReqRef
+ Id="c887c56e-758e-426a-a728-cf723b3b2baf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="050dc9f6-b1e6-4344-adb0-a3e638388d19"
+>
+</ReqRef><Comment>Before the first position report due to RBC/RBC handover is sent, the secondary connection is the Accepting RBC. The messages have to be stored on-board, except the acknowledgement of Train Data.</Comment>
 <PreConditions>
 <PreCondition
  Guid="463e0b98-b0fb-4545-a160-7e6de88c2d9d"
@@ -1412,13 +1412,43 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 <Actions>
 <Action
  Guid="9e032a8e-c56d-4362-b6ed-8d69f6620598"
->ProcessIncomingMessages ( MessageIn )</Action></Actions>
+>INSERT MessageIn IN MessagesToHandle</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle Train Data acknowledgement"
+ Guid="51fa5900-7010-4dca-b3cc-08c3f6886630"
+>
+<Comment>The Acknowledgement of Train Data has to be handled immediately.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle Train Data Acknowledgement"
+ Guid="6fe69e0b-d4f0-4061-b4c4-34bc6daddbdb"
+>
+<PreConditions>
+<PreCondition
+ Guid="1ca3c59e-b767-47ad-8622-1b9ce4436495"
+>Available ( Element =&gt; MessageIn.ACKNOWLEDGEMENT_OF_TRAIN_DATA )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7e16bf07-3f0a-476e-a107-bf3d03af299e"
+>HandleAcknowledgementOfTrainData ( aMessage =&gt; MessageIn.ACKNOWLEDGEMENT_OF_TRAIN_DATA )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="First position report already sent"
  Guid="496a5d78-6a20-49a1-9572-f8ac5ae7b450"
 >
-<Comment>After the sending of the first position report due to RBC/RBC handover, the secondary connection becomes the Handing Over RBC. In that case, only the disconnection orders are accepted.</Comment>
+<ReqRef
+ Id="1b789c83-4922-4842-985f-3dd14ff0843d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="45490b43-c530-4c9c-af76-d82adbf7e8d9"
+>
+</ReqRef><Comment>After the sending of the first position report due to RBC/RBC handover, the secondary connection becomes the Handing Over RBC. In that case, only the disconnection orders are accepted.</Comment>
 <PreConditions>
 <PreCondition
  Guid="98ea9a9c-2ee4-4e8e-a1df-abd25b493ec0"
@@ -4165,6 +4195,19 @@ After that, if an order to contact an Accepting RBC was received, it will be han
  Guid="9de807bb-b66f-4d46-9fb0-4bded8376599"
 >
 </ReqRef><Comment>Collection system versions supported by on-board.</Comment>
+</Collection><Collection
+ TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
+ Default="[]"
+ Implemented="TRUE"
+ Name="IncomingMessagesCol"
+ Guid="283cbfc1-9561-4267-812a-14cff11444cf"
+>
+<ReqRef
+ Id="c887c56e-758e-426a-a728-cf723b3b2baf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="17c6665d-b5f5-425f-a574-812935437d9e"
+>
+</ReqRef><Comment>Stores the messages sent by the Accepting RBC before it becomes the supervising RBC.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -7727,6 +7770,59 @@ NOT
 >PositionReport.NumberOfReportsSentToHandingOverRBC &lt;- 0</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="HandleAcknowledgementOfTrainData"
+ Guid="b9c4dda4-49f5-4e3c-a939-d4fb62345afc"
+>
+<Comment>Handles acknowledgement of Train Data.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TRAIN_DATA.Message"
+ Name="aMessage"
+ Guid="c30efb3b-3805-400d-b6f3-db7feb68d8c7"
+>
+</Parameter></Parameters>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="RemoveAcknOfTrainDataFromMessage"
+ Guid="5bf5af4f-ca3b-4886-a2f7-634315c9a975"
+>
+<ReqRef
+ Id="c887c56e-758e-426a-a728-cf723b3b2baf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1631831e-a674-4479-8bc2-3fac7a8be03e"
+>
+</ReqRef><Comment>Removes Acknowledgement of Train Data from the message.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
+ Name="aMessage"
+ Guid="a024ac83-92fc-4c42-be6c-32bf34baccfd"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove Acknowledgement of Train Data from message"
+ Guid="1d9f0278-f821-4a69-9457-5de267cb854f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove Acknowledgement of Train Data from message"
+ Guid="4cd952f4-5d0e-44f2-ad7e-66a192579cb4"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0afb9105-bdf8-47d2-9a68-8ec3761547af"
+>aMessage.ACKNOWLEDGEMENT_OF_TRAIN_DATA &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -7972,5 +8068,19 @@ NOT
  Guid="2e7a9c6a-4a8a-47ce-95f5-e7fd726a7c40"
 >
 </ReqRef><Comment>&quot;Connection status&quot; timer for safe radio connection indication.</Comment>
+</Variable><Variable
+ Type="IncomingMessagesCol"
+ DefaultValue="[]"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="MessagesToHandle"
+ Guid="f2c2d0cc-af62-45b6-b849-b52dd4eb46dc"
+>
+<ReqRef
+ Id="c887c56e-758e-426a-a728-cf723b3b2baf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c900db09-2078-4202-9b78-6a61d34165d9"
+>
+</ReqRef><Comment>Stores the messages sent by the Accepting RBC before it becomes the supervising RBC.</Comment>
 </Variable></Variables>
 </NameSpace>

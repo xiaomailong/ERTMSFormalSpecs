@@ -1248,6 +1248,42 @@ TIU.TrainIntegrity.Status in [
  Guid="adfa2013-2b5f-4f01-9977-c806d55f77ab"
 >Terminal2.RBCConnection.IsMainConnection &lt;- NOT Terminal2.RBCConnection.IsMainConnection</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle messages receved from the Accepting RBC"
+ Guid="da4cfd87-69b6-47aa-a26e-4a56722f42ad"
+>
+<ReqRef
+ Id="c887c56e-758e-426a-a728-cf723b3b2baf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0faf02ab-bf77-4da9-9c84-dd7f27f06cf3"
+>
+</ReqRef><Comment>Before this position reports, the message received from the Accepting RBC were stored on-board. Now they can be processed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle messages receved from the Accepting RBC"
+ Guid="e676e181-4c24-4827-82dc-4411348519f0"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d8885373-70e7-414c-a68c-046684b5afc4"
+>APPLY
+  RemoveAcknOfTrainDataFromMessage( aMessage =&gt; X )
+ON
+  MessagesToHandle</Action><Action
+ Guid="6ea871df-0227-4589-bad1-f3714cb01665"
+>APPLY
+  ProcessIncomingMessages( aMessage =&gt; X )
+ON
+  MessagesToHandle</Action><Action
+ Guid="1d4538da-c21e-436a-80d7-72bfdba26f72"
+>MessagesToHandle &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
