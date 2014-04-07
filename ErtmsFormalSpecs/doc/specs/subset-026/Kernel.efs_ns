@@ -9540,27 +9540,49 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Handle Euroradio inputs"
- Guid="a44cdf33-d2d1-4a50-bee1-1e8a4d369e5e"
+ Name="Handle Euroradio inputs: current connection"
+ Guid="6a2115bc-b8ee-49c2-809f-4744f6c68146"
 >
-<Comment>When a new Euroradio message is received, its content is copied to EFS internal variables.</Comment>
+<Comment>Handles the message possibly received by the current RBC connection.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Handle Euroradio inputs"
- Guid="810401ba-03c4-413d-9f2f-e36d05cd1e2c"
+ Name="Handle message of current connection"
+ Guid="06a6283e-cac3-42cb-8f3c-747a97ff1b67"
 >
-<Comment></Comment>
 <PreConditions>
-<PreCondition
- Guid="35f4654b-992f-4b4c-9318-2ddf91f122cd"
->Available ( EURORADIO.CurrentRBCConnection().MessageIn )</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
- Guid="270355f9-a67e-4ee4-bd78-9be50017414d"
->EURORADIO.HandleEuroradioMessage ( EURORADIO.CurrentRBCConnection().MessageIn )</Action></Actions>
+ Guid="de49db01-c702-4a6c-80db-bb9c911035c1"
+>EURORADIO.CurrentRBCConnection().HandleIncomingMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Handle Euroradio inputs: secondary connection"
+ Guid="2e755da5-b35e-4557-a4e3-6661811f7db2"
+>
+<Comment>Handles the message possibly received by the Accepting RBC, if any.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Handle message of the secondary connection"
+ Guid="420b0a6e-d2e9-489e-b36c-f499923ad36b"
+>
+<PreConditions>
+<PreCondition
+ Guid="0615ef78-ba68-4316-9d28-7195f09d58c9"
+>EURORADIO.SecondaryRBCConnection() != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a9acaf82-0005-4df9-9136-1782918819f3"
+>EURORADIO.SecondaryRBCConnection().HandleIncomingMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9637,7 +9659,12 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Name="Update EOA"
  Guid="930bec6a-53b0-4496-b3b9-1d82d5aafcfc"
 >
-<Comment>Updates the list of Ends of Authority.</Comment>
+<ReqRef
+ Id="e0b44a69-1080-47e9-80b7-b635996f4239"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c27bfc1-d9e1-417d-81ae-c333a34f835a"
+>
+</ReqRef><Comment>Updates the list of Ends of Authority.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9658,7 +9685,12 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Name="Update SvL"
  Guid="323a7c8d-4b61-4042-af5c-a3ddbec32194"
 >
-<Comment>Updates the list of Supervision Limits.</Comment>
+<ReqRef
+ Id="dc0bc969-44fc-43da-bc2e-a002f4c15435"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="99dc5a41-5f26-4977-a282-e012f88166e2"
+>
+</ReqRef><Comment>Updates the list of Supervision Limits.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
