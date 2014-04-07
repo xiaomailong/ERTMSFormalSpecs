@@ -4600,6 +4600,50 @@ SecondaryRBCConnection().ContactRBCOrder.ActionToPerform == ContactActionEnum.Te
   AND
 CurrentRBCConnection().ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</Expression>
 </Case></Cases>
+</Function><Function
+ Type="SafeRadioConnectionStatusEnum"
+ Implemented="TRUE"
+ Name="SafeRadioConnectionStatusToDisplay"
+ Guid="01f97d52-632a-4415-ba9d-13258655f467"
+>
+<ReqRef
+ Id="03c854a9-637b-42ee-b747-173045437dd6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="caa80c65-6722-4958-bea9-c18f15b45052"
+>
+</ReqRef><ReqRef
+ Id="a5a3cbff-14ec-43ba-afca-63c2734d0414"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26657bbd-ad58-49b8-8b34-9533578476bf"
+>
+</ReqRef><ReqRef
+ Id="2be2d035-b42d-4e1b-9788-dded559e7f64"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46df6750-813d-4506-83c2-5cf995fe55a6"
+>
+</ReqRef><Comment>Provides the Safe Radio Connection Status to display.
+
+In normal cases, the Safe Radio Connection Status of the current connection is displayed.
+
+The only one case where the status to display is that of the secondary connection, is when the Accepting RBC has already become the supervising RBC, but the connection with the Handing Over RBC has not yet been released.</Comment>
+<Cases>
+<Case
+ Name="Status of secondary RBC connection"
+ Guid="bf82c512-40c9-460b-ad10-85f4fe30d0c5"
+>
+<PreConditions>
+<PreCondition
+ Guid="514190b9-00d9-4441-8105-a81690a45408"
+>SecondaryRBCConnection().SafeRadioConnectionStatus != SafeRadioConnectionStatusEnum.NoConnection</PreCondition><PreCondition
+ Guid="df0005db-e407-4bad-ac83-088c0c650916"
+>Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.Max ) &gt;= PositionReport.RBCTransitionLocation</PreCondition></PreConditions>
+<Expression>SecondaryRBCConnection().SafeRadioConnectionStatus</Expression>
+</Case><Case
+ Name="Status of primary RBC connection"
+ Guid="41e451b4-db69-4f57-9d05-fdef3cda4f86"
+>
+<Expression>CurrentRBCConnection().SafeRadioConnectionStatus</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure

@@ -13257,18 +13257,37 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b5c07d4a-6d7e-4492-bfff-b7d693c8aac8"
 >
-</ReqRef><Rules>
+</ReqRef><Comment>Handles display of information relative to the Safe Radio Connection Status.</Comment>
+<Rules>
 <Rule
  Priority="UpdateOUT"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdateValue"
+ Name="Update value"
  Guid="1eb433e9-8925-4864-a554-9b79504a5128"
 >
+<ReqRef
+ Id="03c854a9-637b-42ee-b747-173045437dd6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc5becfa-9fb3-4f50-836a-6afc30bc1725"
+>
+</ReqRef><ReqRef
+ Id="a5a3cbff-14ec-43ba-afca-63c2734d0414"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8536a165-0d62-4bd5-8086-20124c86ce76"
+>
+</ReqRef><ReqRef
+ Id="2be2d035-b42d-4e1b-9788-dded559e7f64"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="69ae7903-774a-47f8-9ad7-64d0e933cd7f"
+>
+</ReqRef><Comment>Updates the values that have to be displayed to the driver.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdateValue"
+ Name="Update value"
  Guid="af3fa51f-52af-4310-a35c-6eab9998c825"
 >
 <PreConditions>
@@ -13276,49 +13295,60 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6c795dd9-cfd6-4c71-9695-cc2210c5bcaf"
->ConnectionStatus &lt;- EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus</Action></Actions>
+>ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="OutputInformation"
  Guid="c5fd2b81-d0c8-4849-bd4c-86504f9ecc90"
 >
+<Comment>Information relative to the output of the structure.</Comment>
 </StructureElement><StructureElement
  TypeName="EURORADIO.SafeRadioConnectionStatusEnum"
  Default=""
  Mode="Outgoing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ConnectionStatus"
  Guid="e8a4985e-7d90-441c-b725-cda6a48ec337"
 >
+<Comment>The connection status of the radio connection.</Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureOutSM"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="ProcedureOut"
  Guid="c1649e6f-0913-48a9-a8d6-739838fa156f"
 >
+<Comment>The state machine handling the output information.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
+ Implemented="TRUE"
  Name="ProcedureOutSM"
  Guid="24ea04dc-74ef-453c-a1b5-8ae70232310d"
 >
+<Comment>The state machine handling the output information.</Comment>
 <States>
 <State
  X="230"
  Y="20"
  Width="140"
  Height="50"
+ Implemented="TRUE"
  Name="NotAvailable"
  Guid="ed8015e2-b118-43e8-a01e-0600b7b52a6e"
 >
+<Comment>Not available: ih that mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="568a380e-ae25-4d76-a762-d4c3762c3654"
 >
@@ -13328,10 +13358,13 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="InitialState"
  Guid="8c36e1d1-aef3-45f8-8e9b-b5f017c07e47"
 >
+<Comment>In that state, the information cannot be displayed.</Comment>
 <StateMachine
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="78c800cf-041e-4632-b96f-90fb808ca452"
 >
@@ -13343,9 +13376,11 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Name="UpdateVariables"
  Guid="8a395975-9c40-45ad-a302-67c1a4dca29f"
 >
+<Comment>In that state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="UpdateVariable"
  Guid="0544197c-c980-4426-8734-b4a25b29f873"
@@ -13365,10 +13400,13 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Idle"
  Guid="93a141c7-0fa9-48f1-9171-2f24d87167f3"
 >
+<Comment>In that state, the information cannot be displayed.</Comment>
 <StateMachine
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="86175479-2366-46ba-86e3-2ba75250ba0d"
 >
@@ -13378,11 +13416,14 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="120"
  Width="140"
  Height="50"
+ Implemented="TRUE"
  Name="NationalSystemAvailability"
  Guid="7bb4aa83-befd-40e3-91e4-299ea06a82ed"
 >
+<Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
  Default="InitialState"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="e1fb1993-f4fd-4ed9-93a6-6a8cd103f89d"
 >
@@ -13392,10 +13433,13 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="InitialState"
  Guid="8ac1c889-8bb3-4d91-bf39-75ad33128b8b"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="4ae2b0b2-fdf2-440e-9670-b2c7947ddd9f"
 >
@@ -13407,9 +13451,11 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Name="UpdateVariables"
  Guid="4be8ff03-34ee-4793-99cf-90d215350dfa"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="UpdateVariable"
  Guid="a34f9d4a-4b64-4c76-a5b1-1cdf33883718"
@@ -13429,10 +13475,13 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Idle"
  Guid="14f92777-815a-43bb-bce4-29db0befb79a"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="4041b264-c184-4044-939f-047b2277e6b6"
 >
@@ -13442,11 +13491,14 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="120"
  Width="140"
  Height="50"
+ Implemented="TRUE"
  Name="NotApplicable"
  Guid="83322188-2e7f-44b1-8f03-41c461d5c46e"
 >
+<Comment>Not applicable: in that state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="06080a63-53f6-474d-8006-6dbd19e93767"
 >
@@ -13456,10 +13508,13 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="InitialState"
  Guid="af56c155-e901-4087-8983-d229ccc8a6c3"
 >
+<Comment>In that state, the information cannot be displayed.</Comment>
 <StateMachine
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="08cf8d0e-7408-439a-bd1f-e56c44e98ad6"
 >
@@ -13471,9 +13526,11 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Name="UpdateVariables"
  Guid="cff37f0b-a796-4fa2-a89b-55930ab644ff"
 >
+<Comment>In that state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="UpdateVariable"
  Guid="0791d3fd-286a-48d1-965b-6fba8e7db5cf"
@@ -13493,10 +13550,13 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Idle"
  Guid="3f200b19-e591-418c-9db1-43ab0009e4d3"
 >
+<Comment>In that state, the information cannot be displayed.</Comment>
 <StateMachine
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="c3e391b7-0cdc-4652-9b90-d182dc0d843b"
 >
@@ -13506,11 +13566,14 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="230"
  Width="140"
  Height="50"
+ Implemented="TRUE"
  Name="Active"
  Guid="f341774b-99d0-48f8-9d99-c7cddacce75e"
 >
+<Comment>Active: in that mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
  Default="InitialState"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="cd7e9b1d-def1-4c75-ba9f-476c8c14034a"
 >
@@ -13520,10 +13583,13 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="InitialState"
  Guid="2d86bcf7-0b9b-4365-8ea3-1b85ca7c5d84"
 >
+<Comment>Initial state: the display is requested.</Comment>
 <StateMachine
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="712e4878-5274-4510-b83f-2e2f692e6218"
 >
@@ -13532,14 +13598,16 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Priority="UpdateOUT"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdateVariables"
+ Name="Update variables"
  Guid="7242e1e5-03b4-496f-9f5c-eb913a3a30d0"
 >
+<Comment>Display is requested.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdateVariable"
+ Name="Update variables"
  Guid="521f96f8-abe0-4754-98f2-390c15db380c"
 >
 <PreConditions>
@@ -13557,10 +13625,13 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Send"
  Guid="fbbefe0f-7c39-4317-8319-2690e4fe7183"
 >
+<Comment>Nothing to do, the display is always requested.</Comment>
 <StateMachine
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="e010d471-a9d1-4efd-baa8-10c21cbd6881"
 >
@@ -13570,11 +13641,14 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="230"
  Width="140"
  Height="50"
+ Implemented="TRUE"
  Name="Available"
  Guid="a2cbf72b-94ad-447b-a61c-44d993fb1882"
 >
+<Comment>Available: in that mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="c87c301e-3fe2-4a6f-bad9-0f4c2ac91b6c"
 >
@@ -13584,10 +13658,13 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Idle"
  Guid="42c3b5db-855b-49bd-aae9-80823871840f"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <StateMachine
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="f06f617a-6b24-4870-af37-5ff1b8563e72"
 >
@@ -13599,9 +13676,11 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Name="RequestActivated"
  Guid="4552dccf-0ff0-49a2-b29e-2b6558d3cda1"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RequestActivated"
  Guid="9f4a92db-c8aa-44aa-873b-00009a36f32c"
@@ -13625,10 +13704,13 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Send"
  Guid="17ac32ff-6d6f-4feb-8cf7-102dbb64c706"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <StateMachine
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="a4323465-68ef-4f68-97dc-09c8f9dfec2b"
 >
@@ -13640,9 +13722,11 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Name="DisableRequestActivated"
  Guid="b6d2fef2-8931-4dbc-bccd-d00439866ce8"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DisableRequestActivated"
  Guid="8206920f-12c8-4d29-9b6b-aebb9b1e6b20"
