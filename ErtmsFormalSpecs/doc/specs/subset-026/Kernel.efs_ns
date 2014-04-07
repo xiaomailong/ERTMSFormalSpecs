@@ -9431,24 +9431,27 @@ INITIAL_VALUE EmergencyStop
 </Function></Functions>
 <Procedures>
 <Procedure
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleInputs"
  Guid="584e61f2-ed38-4424-b1ba-2838e620ef92"
 >
+<Comment>This procedure handles the inputs from the trackside and updates some internal variables according to these inputs.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleOdometryInputs"
+ Name="Handle Odometry inputs"
  Guid="e4c388a2-a672-48e4-97a3-b3582fe5de15"
 >
 <Comment>When a new odometer message is received, its content is copied to EFS internal variables.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleOdometryInputs"
+ Name="Handle Odometry inputs"
  Guid="89da51a5-25d5-4e71-9880-7fe2360f042f"
 >
 <Comment></Comment>
@@ -9464,7 +9467,7 @@ INITIAL_VALUE EmergencyStop
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="EndOfLinkingExpectationWindow"
+ Name="End of linking expectation window"
  Guid="ed7ec36f-0544-4ec7-b13f-df040e8b4162"
 >
 <ReqRef
@@ -9511,15 +9514,16 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleBTMInputs"
+ Name="Handle BTM inputs"
  Guid="1ba806ee-8de8-4b1e-bb93-49c5dce8f696"
 >
 <Comment>When a new balise telegram is received, its content is copied to EFS internal variables.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleBTMInputs"
+ Name="Handle BTM inputs"
  Guid="7a73e5ba-e5fc-4096-af34-3907ed746ba0"
 >
 <Comment></Comment>
@@ -9534,16 +9538,18 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleEuroradioInputs"
+ Name="Handle Euroradio inputs"
  Guid="a44cdf33-d2d1-4a50-bee1-1e8a4d369e5e"
 >
 <Comment>When a new Euroradio message is received, its content is copied to EFS internal variables.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleEuroradioInputs"
+ Name="Handle Euroradio inputs"
  Guid="810401ba-03c4-413d-9f2f-e36d05cd1e2c"
 >
 <Comment></Comment>
@@ -9558,15 +9564,18 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdateKernelMode"
+ Name="Update kernel mode"
  Guid="5ef397e3-af33-402c-99eb-ed9d13e71490"
 >
+<Comment>Updates the mode of the kernel according to the new information.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdateKernelMode"
+ Name="Update kernel mode"
  Guid="45b9c95e-9f54-4abe-bbff-0871fc9b2d19"
 >
 <PreConditions>
@@ -9578,15 +9587,18 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdatePositionState"
+ Name="Update position state"
  Guid="93bb3397-8d79-479a-8b34-82019ceaf626"
 >
+<Comment>Updates the state of the position of the train according to the state of the LRBG.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdatePositionState"
+ Name="Update position state"
  Guid="a9a96b78-8a60-4a7e-a910-428dc529e983"
 >
 <PreConditions>
@@ -9598,15 +9610,18 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitializeInternalVariables"
+ Name="Update monitoring"
  Guid="6689bf93-bb50-4ebe-8a0a-cdddff0a3693"
 >
+<Comment>Updates speed and distance monitoring according to the received information.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitializeInternalVariables"
+ Name="Update monitoring"
  Guid="48d9f05a-c508-4f31-9cac-049a3c56b5c5"
 >
 <PreConditions>
@@ -9618,13 +9633,16 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Name="UpdateEOA"
+ Implemented="TRUE"
+ Name="Update EOA"
  Guid="930bec6a-53b0-4496-b3b9-1d82d5aafcfc"
 >
+<Comment>Updates the list of Ends of Authority.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="UpdateEOA"
+ Implemented="TRUE"
+ Name="Update EOA"
  Guid="d7ab7899-fe7e-4f3d-963b-654c6a62edda"
 >
 <PreConditions>
@@ -9636,13 +9654,16 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Name="UpdateSvL"
+ Implemented="TRUE"
+ Name="Update SvL"
  Guid="323a7c8d-4b61-4042-af5c-a3ddbec32194"
 >
+<Comment>Updates the list of Supervision Limits.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="UpdateSvL"
+ Implemented="TRUE"
+ Name="Update SvL"
  Guid="06bdb857-818e-49a7-9717-5767e306582a"
 >
 <PreConditions>
