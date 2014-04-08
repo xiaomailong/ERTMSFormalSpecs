@@ -1535,6 +1535,108 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="ExecuteEndOfMission"
+ Guid="292a1d52-1c62-46fc-a077-ac5027eb68a7"
+>
+<ReqRef
+ Id="7b63a22c-a47e-4e98-87a7-bb6800dbb38e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b12f4c7-3107-4180-a871-10d466cc44a7"
+>
+</ReqRef><ReqRef
+ Id="d59dd844-f144-4d73-a4eb-ba5f21dd2958"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="69eb59c6-0a56-4952-8659-c52cdd652c74"
+>
+</ReqRef><ReqRef
+ Id="e86b435b-86a1-4af1-a9af-e87aaca847d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1de7a7e7-2302-4b8e-af92-b8ff286e5fef"
+>
+</ReqRef><ReqRef
+ Id="b9145b48-24bf-42d2-a2ad-8283dc888f3b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="abbdde41-a097-4937-a20d-927518277c53"
+>
+</ReqRef><Comment>When the End of Mission procedure has to be executed, the on-board sends an End of Mission Position Report and a Termination of Communication Session message.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send End of Mission"
+ Guid="ed84ed3f-68ec-4db0-a48b-fae5b849e628"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send End of Mission"
+ Guid="4c198df6-1a24-4699-91e2-0034081e9dbc"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="fee0628a-3a16-4a1e-b4b7-32307d0154e3"
+>SendEoMReport()</Action><Action
+ Guid="ae7a5d9a-f7cc-436a-8054-cca8f1ca33a5"
+>LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+ Guid="77ff829d-067e-4e88-b189-763cb81bc53e"
+>NumberOfSentRequests  &lt;- 0</Action><Action
+ Guid="a61347f3-f3e0-46cb-9ece-aeb8eb30cdee"
+>ConnectionState &lt;- ConnectionStateSM.Terminating</Action><Action
+ Guid="863a5254-6b4f-4f17-ab0c-6b95df8f5d02"
+>SendTerminationOfCommunicationSession()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleAcknowledgementOfTerminationOfACommunicationSession"
+ Guid="02f670d2-b6dc-4079-80e8-8a75a9da20bc"
+>
+<ReqRef
+ Id="e094e23a-bd94-4440-8632-705782494f35"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f014caa-eade-494b-9fcd-4a5adf0777d8"
+>
+</ReqRef><ReqRef
+ Id="2a8dff3a-71d3-4a6e-9d2b-85f6c568cd25"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="945ce21f-e5eb-4ed2-b142-5559468f4524"
+>
+</ReqRef><Comment>Indicates that the acknowledgement has been received.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION.Message"
+ Name="aMessage"
+ Guid="5cd96caa-1ee6-45dc-8552-8ef78ae617ef"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Indicate acknowledgement has been received"
+ Guid="7f048ded-c30c-4e8a-8802-a96f2cadca26"
+>
+<Comment>Indicates that the acknowledgement has been received.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Indicate acknowledgement has been received"
+ Guid="80443d2e-265f-4f6e-b114-a68aeca1f97b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="7073da78-58f0-4a39-ae89-49ca19eb62dd"
+>SessionManagementData.AcknowledgementOfTerminationReceived &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
@@ -1612,7 +1714,22 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Name="LastRequestTime"
  Guid="40e6ba54-d9c4-498d-88f2-2ffb1157f4aa"
 >
-<Comment>Indicates the last time when a request to the RBC was sent.</Comment>
+<ReqRef
+ Id="4d7758a5-c99b-4537-8da4-a51b99dafd40"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bab219e0-b46d-46fd-be2a-82ffdd8f005b"
+>
+</ReqRef><ReqRef
+ Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="767ac768-3af2-4dda-a34e-567d3ec88d66"
+>
+</ReqRef><ReqRef
+ Id="dc7b33b5-d923-42f3-be12-580edb475353"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee51afb8-0e5a-4f32-8ea4-caafa9b45e04"
+>
+</ReqRef><Comment>Indicates the last time when a request to establish or terminate the communication session with the RBC was sent.</Comment>
 </StructureElement><StructureElement
  TypeName="Integer"
  Default="0"
@@ -1621,7 +1738,14 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Name="NumberOfSentRequests"
  Guid="03f193b2-8aea-4f04-b805-1de34a4398f8"
 >
-<Comment>Number of sent requests (to establish a safe radio connection or to terminate the communication session).</Comment>
+<ReqRef
+ Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aac10df8-63e1-42d5-9335-efaf72d6b142"
+>
+</ReqRef><Comment>Number of sent requests, that can be:
+- establishing of  a safe radio connection
+- termination the communication session</Comment>
 </StructureElement><StructureElement
  TypeName="BaseTypes.Time"
  Default="BaseTypes.Time.Infinity"
@@ -3215,6 +3339,11 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="13e5d684-7a46-4916-9f4f-f63351acf2f0"
 >
+</ReqRef><ReqRef
+ Id="4d7758a5-c99b-4537-8da4-a51b99dafd40"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b3a69e03-afb3-40db-a5be-a2c43f9b96d9"
+>
 </ReqRef><Comment>If the request has to be sent again and the maximum number of requests has not yet been achieved, the request is sent again.</Comment>
 <PreConditions>
 <PreCondition
@@ -3235,6 +3364,11 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Id="e0a2f873-6bb3-4327-abdc-4444932d69aa"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="23154fa5-ffb1-4040-b127-be2ffd711f99"
+>
+</ReqRef><ReqRef
+ Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5de2594f-32e2-4cbb-ab59-cd7f551162c6"
 >
 </ReqRef><Comment>If a new request has to be sent but the maximum number of reqeusts has already been achieved, the on-board considers the communication session as terminated.</Comment>
 <PreConditions>
@@ -7379,52 +7513,6 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 >CurrentRBCConnection().SessionManagementData.SystemVersion.Value &lt;- ConvertSystemVersion ( aVersion =&gt; aMessage.M_VERSION )</Action><Action
  Guid="8212c19a-2428-4a44-aa05-ed206845382b"
 >CurrentRBCConnection().SessionManagementData.SystemVersion.DataState &lt;- DataState.Valid</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- Name="HandleAcknowledgementOfTerminationOfACommunicationSession"
- Guid="02f670d2-b6dc-4079-80e8-8a75a9da20bc"
->
-<ReqRef
- Id="e094e23a-bd94-4440-8632-705782494f35"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7f014caa-eade-494b-9fcd-4a5adf0777d8"
->
-</ReqRef><ReqRef
- Id="2a8dff3a-71d3-4a6e-9d2b-85f6c568cd25"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="945ce21f-e5eb-4ed2-b142-5559468f4524"
->
-</ReqRef><Comment>Indicates that the acknowledgement has been received.</Comment>
-<Parameters>
-<Parameter
- Type="Messages.MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION.Message"
- Name="aMessage"
- Guid="5cd96caa-1ee6-45dc-8552-8ef78ae617ef"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Indicate acknowledgement has been received"
- Guid="7f048ded-c30c-4e8a-8802-a96f2cadca26"
->
-<Comment>Indicates that the acknowledgement has been received.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Indicate acknowledgement has been received"
- Guid="80443d2e-265f-4f6e-b114-a68aeca1f97b"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="7073da78-58f0-4a39-ae89-49ca19eb62dd"
->CurrentRBCConnection().SessionManagementData.AcknowledgementOfTerminationReceived &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

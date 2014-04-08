@@ -8869,7 +8869,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="506d51aa-ffb9-4859-8c5f-e8230a898149"
 >
 </ReqRef><StateMachine
- Default="Step1"
+ Default="HandleStoredData"
  NeedsRequirement="FALSE"
  Guid="4ccf6d96-0cea-4fdf-a8d9-beb8ff7b27b9"
 >
@@ -8884,8 +8884,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Y="50"
  Width="100"
  Height="50"
- Implemented="TRUE"
- Name="Step1"
+ Name="HandleStoredData"
  Guid="1567d30f-5183-48ce-b1a7-cade4622fd71"
 >
 <ReqRef
@@ -8893,26 +8892,18 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9e196481-77ec-4890-becd-caca5b8c8ada"
 >
-</ReqRef><StateMachine
- Default="Step1"
- Guid="719c5fb9-732b-4373-9bd1-64a299d6348f"
->
-<States>
-<State
- Implemented="TRUE"
- Name="Step1"
- Guid="dae928e5-f021-4d0a-ae41-5f3bf41fff18"
->
+</ReqRef><Comment>Delete MA, Track Description Data and Train Data</Comment>
 <StateMachine
- Guid="bf08df8a-3a2f-4bae-aa3a-96a746b27c69"
+ Implemented="TRUE"
+ Guid="719c5fb9-732b-4373-9bd1-64a299d6348f"
 >
 <Rules>
 <Rule
  Priority="Processing"
- Implemented="TRUE"
  Name="Check communcation sessions"
  Guid="9f6c5d1a-2206-45cf-ab5a-4e89313e28e1"
 >
+<Comment>Select next step according to status of communication sessions</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -8924,14 +8915,15 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c349d0dd-d541-4667-814a-3eb174f3a499"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If there is an RIU session =&gt; terminate it.</Comment>
+<PreConditions>
 <PreCondition
  Guid="d81d9ff0-6e30-4c4a-9960-b2307cb95a39"
 >False</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3633e19b-b668-45b2-bdab-c8a2960c36e1"
->THIS &lt;- Step2_RIU</Action></Actions>
+>THIS &lt;- HandleRIUConnection</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Euroradio session exists"
@@ -8942,14 +8934,15 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="732dfe67-7c31-46c4-bf87-9d265ee2246b"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If there is one or several RBC communication sessions =&gt; terminate them.</Comment>
+<PreConditions>
 <PreCondition
  Guid="688ad93f-5342-42f9-b1cf-7adfc4099978"
 >EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="749dbeb8-66b4-4e90-8f8b-95621be527ee"
->THIS &lt;- Step2_Euroradio</Action></Actions>
+>THIS &lt;- HandleRBCConnections</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No communication sessions"
@@ -8965,7 +8958,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7903f8d8-ec93-4864-8bfc-0fe35b988092"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If no communication session exists =&gt; go to exit state.</Comment>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action
@@ -8973,14 +8967,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >THIS &lt;- ExitState</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</StateMachine></State></States>
 </StateMachine></State><State
- X="690"
- Y="50"
+ X="680"
+ Y="270"
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="Step2_Euroradio"
+ Name="HandleRBCConnections"
  Guid="4a4442ff-24e6-4794-b7fd-8019ffe0568a"
 >
 <ReqRef
@@ -8988,58 +8981,159 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f88dd91-b701-4076-89c4-1dbae1faeeb9"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Handles the temrination of the RBC connection(s).</Comment>
+<StateMachine
+ Default="DisconnectPrimaryConnection"
+ Implemented="TRUE"
  Guid="2150b33f-5d47-4d14-9eed-4e50b52b58b8"
+>
+<States>
+<State
+ X="40"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DisconnectPrimaryConnection"
+ Guid="b1f5625e-2a07-4137-8062-491050cf3f50"
+>
+<ReqRef
+ Id="b9145b48-24bf-42d2-a2ad-8283dc888f3b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d502584c-2c43-4516-bd07-8c2c90a87f1e"
+>
+</ReqRef><Comment>First, disconnect the primary connection.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="ad7b0706-43ae-45cc-bfaf-4ca7cdf894e1"
 >
 <Rules>
 <Rule
  Priority="Processing"
- Name="Send End of Mission"
- Guid="ed84ed3f-68ec-4db0-a48b-fae5b849e628"
+ Implemented="TRUE"
+ Name="Disconnect primary connection"
+ Guid="b8383795-f3cb-45b2-bd4d-f1592f131b20"
 >
+<Comment>First, disconnect the primary connection.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Send End of Mission"
- Guid="4c198df6-1a24-4699-91e2-0034081e9dbc"
+ Implemented="TRUE"
+ Name="Disconnect primary connection"
+ Guid="41205200-c0d4-4b81-b5fe-8e93e6f72265"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="fee0628a-3a16-4a1e-b4b7-32307d0154e3"
->EURORADIO.CurrentRBCConnection().SendEoMReport()</Action><Action
- Guid="79f27736-0b0e-4f3f-8ea1-26db0a692105"
->THIS &lt;- Step3</Action><Action
- Guid="ae7a5d9a-f7cc-436a-8054-cca8f1ca33a5"
->LastEoMRequestTime &lt;- CurrentTime</Action><Action
- Guid="77ff829d-067e-4e88-b189-763cb81bc53e"
->NumberOfSentEoMRequestRepetitions  &lt;- 0</Action></Actions>
+ Guid="56427b99-34ca-4914-bbb0-ef26e4909131"
+>EURORADIO.CurrentRBCConnection().ExecuteEndOfMission()</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Post actions"
+ Guid="65d86c80-8e83-4b39-87fc-f4f1ddeef874"
+>
+<Comment>Handle next state.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Secondary connection exists"
+ Guid="ba75f38d-e941-45d0-82f5-c3e5ed006f49"
+>
+<Comment>If there is a secondary connection =&gt; terminate it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="74beabb9-3bd4-453c-88c9-a53147d14eec"
+>EURORADIO.SecondaryRBCConnection().SafeRadioConnectionStatus != EURORADIO.SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f8cdb70f-52fc-4596-8cbd-f9faf1e9fd23"
+>THIS &lt;- DisconnectSecondaryConnection</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Otherwise"
+ Guid="762656f3-e5ab-4283-893a-b79312c424f0"
+>
+<Comment>Otherwise, terminate the procedure.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a7d0b427-0ada-4944-b8c3-3e665a1577f8"
+>THIS &lt;- ExitState</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="370"
- Y="160"
- Width="100"
- Height="50"
- Name="Step2_RIU"
- Guid="8366468a-03b0-43fc-92d9-fbe146ea45af"
->
-<StateMachine
- Default="CloseSession"
- Guid="46cf0d6d-e5c4-4a0c-bd20-c90efd26f5f7"
->
-<States>
-<State
- X="50"
+ X="350"
  Y="60"
  Width="100"
  Height="50"
- Name="CloseSession"
- Guid="bcd99e34-a311-44c7-abbb-4f7c9f54100b"
+ Implemented="TRUE"
+ Name="DisconnectSecondaryConnection"
+ Guid="d38adbc8-9351-48c5-95cc-af3bda4a0709"
 >
+<ReqRef
+ Id="b9145b48-24bf-42d2-a2ad-8283dc888f3b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c24527f4-287f-4085-8c79-401cc66bd28f"
+>
+</ReqRef><Comment>Then disconnect the secondary connection, if any.</Comment>
 <StateMachine
- Guid="a6264b45-10c0-40db-bf79-fb5781af616b"
+ Implemented="TRUE"
+ Guid="b8bac2c1-6a0a-4457-8d95-314e367d41c3"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disconnect secondary connection"
+ Guid="2739c179-94b8-4598-87d1-198fc4e9f0a3"
+>
+<ReqRef
+ Id="c55df22b-a932-48aa-9c94-b034916ab339"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e6e55f81-129d-4ef9-915d-a790fe8233e8"
+>
+</ReqRef><Comment>Disconnects the secondary connection.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disconnect secondary connection"
+ Guid="956cbcbe-449d-4945-9bc2-2b4f1c6dba78"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ee48e81e-a69f-445f-8080-ba952daa3e4e"
+>EURORADIO.SecondaryRBCConnection().ExecuteEndOfMission()</Action><Action
+ Guid="655ec492-bb16-4404-8bf2-5e594a57e5ae"
+>THIS &lt;- ExitState</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="680"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="HandleRIUConnection"
+ Guid="8366468a-03b0-43fc-92d9-fbe146ea45af"
+>
+<ReqRef
+ Id="afd0107b-e36b-4b26-a0f0-1071084bc3e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ca58586-5432-4186-b211-b3e8721b176c"
+>
+</ReqRef><Comment>Handles the termination of the RIU connection.</Comment>
+<StateMachine
+ Guid="46cf0d6d-e5c4-4a0c-bd20-c90efd26f5f7"
 >
 <Rules>
 <Rule
@@ -9047,6 +9141,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Close the session"
  Guid="8098ccb4-7677-4854-af3c-c5bcc5db4f7d"
 >
+<Comment>Handle the termination of the RIU connection.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9056,36 +9151,15 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action
- Guid="4c2eef6c-7cac-4fcb-a3d3-85a5b06b34be"
->THIS &lt;- CheckEuroradio</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="290"
- Y="60"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="CheckEuroradio"
- Guid="50471b19-86f8-4ef9-b948-1f50ea595082"
->
-<ReqRef
- Id="219ceefb-8943-4c10-a74d-b6ef703ec766"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9c38b086-8d01-43b2-a925-32d200149df0"
->
-</ReqRef><StateMachine
- Implemented="TRUE"
- Guid="62f41bb5-570a-486e-8df7-51df85810923"
->
-<Rules>
+</Actions>
+<SubRules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Check Euroradio session"
  Guid="e77c920c-fabd-473c-8715-89e05546f874"
 >
+<Comment>Handle the termination of the RIU connection.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9098,14 +9172,15 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fd27af7d-cb84-481c-8908-cddd2c67e3cf"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If there is one or several active RBC connections =&gt; close them.</Comment>
+<PreConditions>
 <PreCondition
  Guid="966f5d84-2ebc-4c82-bc45-fb6b079b3ded"
 >EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="977f4308-39ae-456c-af15-8f71fee34958"
->THIS &lt;- Step2_Euroradio</Action></Actions>
+>THIS &lt;- HandleRBCConnections</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No Euroradio session"
@@ -9116,149 +9191,20 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9ae62e5c-b070-4206-844d-1796d32ed1f9"
 >
-</ReqRef><PreConditions>
+</ReqRef><ReqRef
+ Id="219ceefb-8943-4c10-a74d-b6ef703ec766"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6c177068-3166-47c8-aa0d-aeec5b1b1354"
+>
+</ReqRef><Comment>If no RBC connection is active =&gt; terminate the procedure.</Comment>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="38fe2543-4bcb-4733-bc17-100daa0af254"
 >THIS &lt;- ExitState</Action></Actions>
 </RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State><State
- X="690"
- Y="160"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Step3"
- Guid="b546d04b-2b38-4cfa-84dc-a3dcdc75191b"
->
-<ReqRef
- Id="d59dd844-f144-4d73-a4eb-ba5f21dd2958"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="78b19fed-4f6e-44e2-a339-30a7401a2dca"
->
-</ReqRef><StateMachine
- Implemented="TRUE"
- Guid="544c591b-25c2-4bd1-a8fa-9fca4cd757f0"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Wait the RBC acknowledgement"
- Guid="79451fce-4d8f-41ba-8356-4b151a8b941f"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Wait the RBC acknowledgement"
- Guid="edc963b9-4178-40c9-8217-6273839ebf4e"
->
-<ReqRef
- Id="d59dd844-f144-4d73-a4eb-ba5f21dd2958"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0da56be7-ed31-4193-ac65-59bf3f25fbeb"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="49691eaa-cac5-4022-999a-670821941aab"
->Available ( EURORADIO.CurrentRBCConnection().MessageIn.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="0e63c2e4-a55c-45be-9c65-78d94b3e6434"
->THIS &lt;- Step4</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="No answer, maximum number of requests reached"
- Guid="b556f96e-5c48-4a05-b99c-54225def3464"
->
-<ReqRef
- Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="71247933-7133-4d5f-97e4-bb9b809f52f4"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="914108b9-9fe1-4436-ac49-f064969316ff"
->LastEoMRequestTime + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition><PreCondition
- Guid="fe25eb63-29d2-45bb-a3f3-d7d1ec729cf1"
->NumberOfSentEoMRequestRepetitions == 3</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7c9db121-a667-4cdf-b45c-984dac803eb8"
->THIS &lt;- Step4</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="No answer, a new request can be sent"
- Guid="9241ccdb-7d0b-4eac-98ec-396d8a7d13eb"
->
-<ReqRef
- Id="4d7758a5-c99b-4537-8da4-a51b99dafd40"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a2c94069-b90b-46de-a82c-7460b8085380"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="f304703f-8e3d-48bd-8909-5f172aec3f29"
->LastEoMRequestTime + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7fbed012-8ff1-4b63-979e-ee7eb21cab89"
->EURORADIO.CurrentRBCConnection().SendEoMReport()</Action><Action
- Guid="12d67a3e-c1ff-4622-a75f-772f36316780"
->NumberOfSentEoMRequestRepetitions  &lt;- NumberOfSentEoMRequestRepetitions  + 1</Action><Action
- Guid="744e2793-5a3d-4c7e-87dc-a9d2d9055b21"
->LastEoMRequestTime &lt;- CurrentTime</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="690"
- Y="270"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Step4"
- Guid="f582c554-ac6d-4a93-aa9d-211585558e46"
->
-<ReqRef
- Id="e86b435b-86a1-4af1-a9af-e87aaca847d9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="313345cd-8c83-4709-9574-20e32d5023cb"
->
-</ReqRef><ReqRef
- Id="c55df22b-a932-48aa-9c94-b034916ab339"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="960c8850-4ebf-4c1a-a132-edf96256eefa"
->
-</ReqRef><StateMachine
- Implemented="TRUE"
- Guid="1ebede1f-860a-4d75-a534-b95932be62ed"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Terminate the communication session"
- Guid="a490b958-9dcc-4b3d-b358-30bc62ca140c"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Terminate the communication session"
- Guid="be7351bb-0071-494f-8cab-8ba824d44965"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="8045ba7f-dc4e-44fe-9d1f-e0e4bfb71a6c"
->EURORADIO.CloseRBCSession()</Action><Action
- Guid="1eb1065f-f872-4182-98ac-f4131874d547"
->THIS &lt;- ExitState</Action></Actions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9266,29 +9212,53 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Y="270"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="ExitState"
- Guid="7e384c49-e042-437c-9389-755f78cec11c"
+ Guid="7e478844-4ef1-4a43-9f49-dd2a3949152d"
 >
+<ReqRef
+ Id="c55df22b-a932-48aa-9c94-b034916ab339"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="274790c9-ab2a-4959-909c-e81a26bb4ea6"
+>
+</ReqRef><ReqRef
+ Id="6cb672e1-5b1b-46b0-86fb-2ea853009bd5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b1cd2418-7d72-44e5-b457-1141a2f7fae8"
+>
+</ReqRef><ReqRef
+ Id="f31f1b65-224b-4941-9951-eebbd7994a51"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="539c6468-14c0-40db-90ff-6feb005e617c"
+>
+</ReqRef><Comment>Terminates the procedure, if all the communication sessions are closed.</Comment>
 <StateMachine
- Guid="2358199a-4aec-4c4c-9214-6547abbdff8e"
+ Implemented="TRUE"
+ Guid="e636fcf5-25f8-44ee-ba88-9a8fccede424"
 >
 <Rules>
 <Rule
  Priority="Processing"
- Name="Go to NoProcedure"
- Guid="02964527-7a2a-483e-92ab-56908d8a1218"
+ Implemented="TRUE"
+ Name="Terminate the procedure"
+ Guid="71267c79-1ea1-478f-b92f-dbb20f2c623d"
 >
+<Comment>Terminates the procedure, if all the communication sessions are closed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Go to NoProcedure"
- Guid="82bd2c64-935f-4d2d-8fc5-24b460403728"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Terminate the procedure"
+ Guid="93baf038-47dc-42db-8f77-3c04f5124d38"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="a02606a4-37e3-46fe-a48a-3ab979fded76"
+>NOT EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="aaa190fc-eb53-4dac-890c-434b4714d0b8"
+ Guid="dec015ec-e2fa-4393-ab4a-ca4a8e6a72ca"
 >THIS &lt;- NoProcedure</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -10378,39 +10348,6 @@ Kernel.EmergencyStops</Action></Actions>
  Name="HandleModeChange"
  Guid="478d6d56-8c92-4b72-92ef-e4fe79d4ceda"
 >
-</Variable><Variable
- Type="Integer"
- DefaultValue="0"
- VariableMode="Internal"
- Implemented="TRUE"
- Name="NumberOfSentEoMRequestRepetitions"
- Guid="5981bbb6-c7ff-430f-8770-cb12e797ebd5"
->
-<ReqRef
- Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="85d08c62-ee9e-46f3-b854-01bbd368da67"
->
-</ReqRef><Comment>Represents the number of already sent EOM requests</Comment>
-</Variable><Variable
- Type="Default.BaseTypes.Time"
- DefaultValue="0.0"
- VariableMode="Internal"
- Implemented="TRUE"
- Name="LastEoMRequestTime"
- Guid="d28b4997-d6b1-4bcd-8ae4-c3f758b5a4c5"
->
-<ReqRef
- Id="4d7758a5-c99b-4537-8da4-a51b99dafd40"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0267166c-902e-4372-ae48-f200e001942e"
->
-</ReqRef><ReqRef
- Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fc32ebe9-6f74-4e23-b232-2261d06ceecc"
->
-</ReqRef><Comment>Represents the time when the last EoM request was sent</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="False"
