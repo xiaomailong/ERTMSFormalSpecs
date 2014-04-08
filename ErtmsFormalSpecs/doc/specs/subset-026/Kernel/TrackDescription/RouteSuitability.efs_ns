@@ -20,7 +20,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="97170351-bb99-4f29-9dce-a9f25b9646fa"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Represents the route suitability information.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -34,7 +34,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a1fdd389-07d6-4344-a91b-eb5d62c64aac"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Distance to start of empty profile.</Comment>
+</StructureElement><StructureElement
  TypeName="Messages.Q_TRACKINIT"
  Default=""
  Mode="Internal"
@@ -47,7 +48,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ef924bc6-ddd3-44e8-b4c6-fd8c66feb80d"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Indicates if the initial states have to be resumed.</Comment>
 </StructureElement><StructureElement
  TypeName="RouteSuitability.RouteSuitabilityItems"
  Default="[]"
@@ -57,12 +58,14 @@
  Name="Items"
  Guid="b14b3b07-9a6e-4524-bd22-9489892f4013"
 >
+<Comment>List of route suitability items.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RouteSuitabilityItem"
  Guid="193772c0-fe69-43ed-8d0e-986f0aaa4465"
 >
+<Comment>Represents a route suitability item.</Comment>
 <StructureElement
  TypeName="Messages.Q_SUITABILITY"
  Default=""
@@ -91,7 +94,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="40061f26-dd8d-41c5-aa5a-9bd111f56bf7"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Gives the type of the route suitability.</Comment>
+</StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
@@ -104,7 +108,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="af94e84d-35c0-4c7d-a746-87f46d21ad69"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>The distance at which is situated the item.</Comment>
+</StructureElement><StructureElement
  TypeName="Messages.M_LINEGAUGE"
  Default=""
  Mode="Internal"
@@ -122,7 +127,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="22bd9ea7-7a41-451a-970d-772d7a1b2ffe"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Information about the line gauge.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.M_AXLELOADCAT"
  Default=""
@@ -141,7 +146,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="931e4672-2ea6-4fd7-9cf1-8acb859ba680"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Information about the maximum axle load.</Comment>
+</StructureElement><StructureElement
  TypeName="Messages.M_VOLTAGE"
  Default=""
  Mode="Internal"
@@ -159,7 +165,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dbc8fdbf-2eaa-4b1d-acde-350b0f602597"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Information about the traction system.</Comment>
+</StructureElement><StructureElement
  TypeName="Messages.NID_CTRACTION"
  Default=""
  Mode="Internal"
@@ -177,7 +184,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3b1cdd26-1229-48fc-937f-75c9a4415d11"
 >
-</ReqRef></StructureElement></Structure></Structures>
+</ReqRef><Comment>Country identifier of the traction system.</Comment>
+</StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="RouteSuitability.RouteSuitabilityItem"
@@ -187,6 +195,7 @@
  Name="RouteSuitabilityItems"
  Guid="78c5dfd6-0b32-4fba-8186-eb35756f6093"
 >
+<Comment>Collection of route suitability items.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -274,7 +283,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4a6646bd-32d6-4a58-a569-4b1be1ed138e"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Indicates if the provided route suitability item is unsuitable.</Comment>
 <Parameters>
 <Parameter
  Type="RouteSuitabilityItem"
@@ -347,7 +356,13 @@ NOT THERE_IS_IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="30f351f1-2eff-4794-aec1-fc374daf6ee2"
 >
-</ReqRef><Cases>
+</ReqRef><ReqRef
+ Id="f27f67c3-6ff7-425e-8ab3-f3eb40f14326"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46ae93e0-cd6e-47c0-abe8-aa2c62867559"
+>
+</ReqRef><Comment>Provides the End of Authority associated to route unsuitabilities.</Comment>
+<Cases>
 <Case
  Name="EOA defined"
  Guid="68d67405-caf7-4094-b3e4-7f0058728b8e"
@@ -390,7 +405,8 @@ THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></P
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9a7bc8f9-c812-4ed7-8021-f2128fd131ae"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Provides the Supervision Limit associated to route unsuitabilities.</Comment>
+<Cases>
 <Case
  Name="SvL defined"
  Guid="ba04cd1a-0ae1-4333-82c5-b4571e9fca2d"
@@ -425,6 +441,7 @@ THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></P
  Name="GaugesMatch"
  Guid="1d44dc39-5432-4459-9c71-2bb64fd698dd"
 >
+<Comment>Indicates if the provided gauges match.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.M_LINEGAUGE"
@@ -510,7 +527,7 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fa601cb1-7fff-4af5-a434-ba1823678614"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Handles a new route suitability information.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message"
@@ -545,7 +562,7 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="eebe493e-e1f0-4dd1-8551-2fbfc8f433b0"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>If the initial states have to be resumed, this information is stored.</Comment>
 <PreConditions>
 <PreCondition
  Guid="c739346b-2d76-4838-9ef7-d353adce26df"
@@ -564,7 +581,7 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
  Name="NoInitialStatesToBeResumed"
  Guid="4f23e59f-7ac3-4c59-82da-5a5b6ed56e41"
 >
-<Comment></Comment>
+<Comment>Otherwise, the received route suitability information is handled.</Comment>
 <PreConditions>
 <PreCondition
  Guid="d49260da-af2e-4fca-9d32-9f48b35a6b24"
@@ -603,7 +620,7 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0c6892af-55d4-487c-ab64-6d8fe72e34cc"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>If the new information is about loading gauge, the old loading gauge information is removed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -634,10 +651,11 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Loading
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c233d1fc-874c-40e6-92dd-dfcadbdef9e5"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>If the new information is about traction system, the old traction system information is removed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Remove old traction system information"
  Guid="7d299e84-196c-44a8-b199-bededcb209e7"
 >
@@ -663,9 +681,11 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Tractio
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="50046fd1-2d50-4585-b0fd-c1d468daa544"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the new information is about axle load, the old axle load information is removed.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Remove old axle load information"
  Guid="520f00bf-8149-42fd-8b50-d3265dbc0282"
 >
@@ -717,7 +737,7 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axl
  Name="Insert first item"
  Guid="3b9ae9d8-ba3a-468a-8f3f-a4f3a07abceb"
 >
-<Comment></Comment>
+<Comment>The first item is inserted separately, since it is not contained in the sequence with the following items.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -775,7 +795,7 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b22d4182-8cd1-4f69-b475-c564f75bc9e2"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>The remaining items are inserted.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -806,9 +826,11 @@ ON
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1bd9e0ea-3dc1-42da-ba8d-40b75846ab2a"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If a route unsuitability is found, it is displayed to the driver.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Display route unsuitabilities"
  Guid="0d656aad-3889-48e4-9449-e9f4ed8bca2a"
 >
