@@ -7,7 +7,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
- Name="ModeProfile"
+ Name="ModeProfileStruct"
  Guid="75913f7d-934d-437f-be60-0a28d46d8587"
 >
 <ReqRef
@@ -106,7 +106,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="ModeProfile"
+ TypeName="ModeProfileStruct"
  MaxSize="20"
  Default="[]"
  Implemented="TRUE"
@@ -164,7 +164,7 @@
 >
 </ReqRef><Parameters>
 <Parameter
- Type="ModeProfile.ModeProfile"
+ Type="ModeProfileStruct"
  Name="aModeProfile"
  Guid="5f79a1a2-7e43-4b47-93b8-5f4067577550"
 >
@@ -265,7 +265,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
- Type="ModeProfile"
+ Type="ModeProfileStruct"
  Name="aProfile"
  Guid="30f1c5a6-0d93-409e-aef7-b8968e2caab2"
 >
@@ -303,7 +303,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 3. If the infill location is inside the profile, the latter is shortened until the infill location.</Comment>
 <Parameters>
 <Parameter
- Type="ModeProfile"
+ Type="ModeProfileStruct"
  Name="aProfile"
  Guid="5edee4a2-0bce-4cdb-b56b-560b902fb90a"
 >
@@ -336,7 +336,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Name="Infill location inside profile"
  Guid="64c1a003-f722-4380-8ac3-35d56678e659"
 >
-<Expression>ModeProfile
+<Expression>ModeProfileStruct
 {
     AcknLength =&gt; aProfile.AcknLength,
     Distance =&gt; aProfile.Distance,
@@ -413,7 +413,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 </ReqRef><Comment>Indicates if the acknowledgement area is reached for a given mode profile.</Comment>
 <Parameters>
 <Parameter
- Type="ModeProfile"
+ Type="ModeProfileStruct"
  Name="aProfile"
  Guid="3da9327d-dc53-4a47-89c8-678a6b8d12ed"
 >
@@ -809,7 +809,7 @@ ON
 <Action
  Guid="9344dddf-f9b7-44bf-8229-ecb9b436017f"
 >INSERT
-    ModeProfile
+    ModeProfileStruct
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
         Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ) + BTM.Linking.DistanceToBaliseGroup ( Kernel.Infill.Data.NID_BG ),
@@ -832,7 +832,7 @@ IN
 <Action
  Guid="68e9e673-7813-4947-b1d0-7efbeb20158e"
 >INSERT
-    ModeProfile
+    ModeProfileStruct
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
         Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ),
@@ -862,7 +862,7 @@ IN
 <Action
  Guid="fd905e47-15f3-4a3f-905a-8ef2acd85169"
 >INSERT
-    ModeProfile
+    ModeProfileStruct
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
         Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ) + BTM.Linking.DistanceToBaliseGroup ( Kernel.Infill.Data.NID_BG ),
@@ -883,7 +883,7 @@ IN
 <Action
  Guid="65882a47-d665-4ffa-8642-d5d84b9259ec"
 >INSERT
-    ModeProfile
+    ModeProfileStruct
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
         Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ),
