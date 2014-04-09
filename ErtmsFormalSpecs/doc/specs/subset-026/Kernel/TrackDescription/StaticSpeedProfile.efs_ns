@@ -848,7 +848,7 @@ INITIAL_VALUE
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="RemoveOldInformation"
+ Name="Remove old information"
  Guid="d16672d4-c19a-4a4f-9c40-379b9955fcc6"
 >
 <ReqRef
@@ -861,13 +861,18 @@ INITIAL_VALUE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="792160a3-52e4-4d11-b842-329a4776c3b2"
 >
+</ReqRef><ReqRef
+ Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e77e1efc-2db4-415f-b0f0-268a053eb6f5"
+>
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="RemoveOldAxleLoads"
+ Name="Remove old information"
  Guid="32b0ef9b-e1ed-4271-8527-6cd1d4dd0cec"
 >
 <PreConditions>
@@ -886,7 +891,7 @@ IN
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InsertFirstSSR"
+ Name="Insert first SSR"
  Guid="1a70db67-e6d6-45a0-a7c1-6c48294ee07b"
 >
 <ReqRef
@@ -910,7 +915,7 @@ IN
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="LastSSP"
+ Name="Last SSP"
  Guid="09131747-3e87-45b0-b635-9ea3150d0705"
 >
 <PreConditions>
@@ -967,7 +972,7 @@ IN
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InsertFollowingSSRs"
+ Name="Insert Following SSRs"
  Guid="dfe2766d-4ca1-4892-8819-77ec11e88335"
 >
 <SubRules></SubRules>
@@ -975,7 +980,7 @@ IN
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InsertFollowingSSRs"
+ Name="Insert following SSRs"
  Guid="b95f2783-aeb0-4f80-972f-fa17c79c395b"
 >
 <PreConditions>

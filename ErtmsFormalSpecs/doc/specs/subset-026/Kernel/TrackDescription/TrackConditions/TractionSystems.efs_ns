@@ -232,44 +232,40 @@
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="RemoveOldTrackConditions"
+ Name="Remove old information"
  Guid="bb164f2b-df86-42fb-a386-3ad5956336a7"
 >
 <ReqRef
- Id="34e52b72-19f6-41be-90c8-e46ac315c822"
+ Id="4ae582d0-1fbc-4c30-a164-ba2cde5c2d35"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8446806d-8f2f-4529-bb5a-c2da403c2da2"
+ Guid="ce79859f-d003-46f7-94bd-dc437be8f437"
 >
-</ReqRef><Comment>When new data is received, all old data starting from the start of the new data is overwritten</Comment>
+</ReqRef><ReqRef
+ Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0b715d0c-8606-4000-ad9a-a15529bff240"
+>
+</ReqRef><Comment>When new data is received, all old data is overwritten.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="RemoveOldTrackConditions"
+ Name="Remove old information"
  Guid="0dd7ba75-1d16-41e0-9de3-bd0c20a55c01"
 >
-<ReqRef
- Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="514a5ae4-f914-428c-84a2-806287cc756e"
->
-</ReqRef><PreConditions>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="5452dacd-9945-4b71-b5dc-92eec14d74eb"
->REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance(
-    distance=&gt;Packet.D_TRACTION,
-    scale=&gt;Packet.Q_SCALE
-)
-    IN TCTractionSystems</Action></Actions>
+>TCTractionSystems &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="AddNewTrackCondition"
+ Name="Add new track condition"
  Guid="7dd0b81b-c6b3-49bf-9f46-1e976d3e6f0d"
 >
 <Comment>Inserts the newly received track conditions in TCTractionSystems</Comment>

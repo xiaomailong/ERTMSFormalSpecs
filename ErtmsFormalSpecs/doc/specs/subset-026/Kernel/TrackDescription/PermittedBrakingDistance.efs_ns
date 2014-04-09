@@ -996,7 +996,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="InitialStatesToBeResumed"
+ Name="Initial states to be resumed"
  Guid="8736371c-0de4-4e11-90f4-992afb4049e1"
 >
 <ReqRef
@@ -1014,7 +1014,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="InitialStatesToBeResumed"
+ Name="Initial states to be resumed"
  Guid="6727d13b-c821-4b71-a78f-8168f27bad89"
 >
 <PreConditions>
@@ -1033,7 +1033,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="NoInitialStatesToBeResumed_RemoveOldRestrictions"
+ Name="No initial states to be resumed, remove old information"
  Guid="60476240-1db5-4e22-bcb0-ac7e15144c97"
 >
 <ReqRef
@@ -1041,12 +1041,17 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2249326a-57f6-4d63-98c6-3e269088a554"
 >
+</ReqRef><ReqRef
+ Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c2dc5d5-5b05-40bd-b3c8-073896896b80"
+>
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="NoInitialStatesToBeResumted_RemoveOldRestrictions"
+ Name="No initial states to be resumed, remove old information"
  Guid="a7ce0496-dee6-401b-b89e-fcd7547489f5"
 >
 <PreConditions>
@@ -1063,7 +1068,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="NoInitialStatesToBeResumed_InsertNewRestrictions"
+ Name="No initial states to be resumed, insert new restrictions"
  Guid="fc4c76b7-b61c-4b82-b6d6-b2c135af5759"
 >
 <ReqRef
@@ -1102,7 +1107,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="NoInitialStatesToBeResumed_InsertFirstRestriction"
+ Name="No initial states to be resumed, insert new restrictions"
  Guid="95df77ae-90e8-4994-9927-fd2ef95e53c9"
 >
 <PreConditions>
@@ -1132,7 +1137,7 @@ ON
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="SaveBrakingModels"
+ Name="Save braking models"
  Guid="fd009598-541a-43a3-97ef-193343e01593"
 >
 <ReqRef
@@ -1146,7 +1151,7 @@ ON
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="SaveBrakingModels"
+ Name="Save braking models"
  Guid="560a969f-0f52-4a98-8134-98ff378d757a"
 >
 <PreConditions>

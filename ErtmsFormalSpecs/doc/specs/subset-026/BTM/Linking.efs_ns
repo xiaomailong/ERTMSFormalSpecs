@@ -741,13 +741,18 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 <RuleCondition
  Implemented="TRUE"
  Verified="TRUE"
- Name="No infill"
+ Name="No infill, remove old information"
  Guid="7178bbc3-25d9-45a5-af00-1a77a210bae3"
 >
 <ReqRef
  Id="d98529ca-fda7-480c-8c31-33ce08d1b140"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9f6d2d00-0d68-434d-8d7a-a5c39e2dd1c1"
+>
+</ReqRef><ReqRef
+ Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="843b436c-8500-4679-a447-5cd90dacff45"
 >
 </ReqRef><Comment>In case the new linking information is not an infill data, all the previous information is cleared.</Comment>
 <PreConditions>
@@ -760,13 +765,18 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 >Linkings &lt;- []</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Infill"
+ Name="Infill, remove information after infill location"
  Guid="40ced0d3-c8a9-40b2-9ad4-699d0a45700a"
 >
 <ReqRef
  Id="f0ea8f90-356c-47de-a7fd-4827ae488f00"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9a065f3d-c980-4476-b0b6-b48e1435e101"
+>
+</ReqRef><ReqRef
+ Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48467b6c-4fc4-46fa-88cf-82fe5f53ca67"
 >
 </ReqRef><Comment>In case the new linking information is an infill data, only the elements beyond the infill location are removed.</Comment>
 <PreConditions>

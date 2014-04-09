@@ -176,6 +176,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fea2b082-3f88-481e-971c-f5ac6d34a75e"
 >
+</ReqRef><ReqRef
+ Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d92b4cbf-3902-4108-be81-257148e31350"
+>
 </ReqRef><Comment>Returns the start location of the first element of a packet of Track Conditions Big Metal Masses</Comment>
 <Parameters>
 <Parameter
@@ -244,7 +249,7 @@ BMMAtDistance(Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;D
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="RemoveOldTrackConditions"
+ Name="Remove old information"
  Guid="26105147-399a-4834-bc91-9368bc37ca90"
 >
 <ReqRef
@@ -252,13 +257,18 @@ BMMAtDistance(Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;D
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="60314788-28aa-42ba-be94-d4539f5295d6"
 >
+</ReqRef><ReqRef
+ Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6c06cc17-1be6-4790-a743-0f89ce201308"
+>
 </ReqRef><Comment>When new data is received, all old data of the same type starting from the start of the new data is overwritten</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="RemoveOldTrackConditions"
+ Name="Remove old information"
  Guid="c681f7bd-1680-4d57-bc4f-986f4b4c4eef"
 >
 <ReqRef
@@ -278,7 +288,7 @@ BMMAtDistance(Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;D
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="AddNewTrackCondition"
+ Name="Add new track condition"
  Guid="55335876-0359-4fb5-bde2-44596cb52a47"
 >
 <Comment>Inserts the newly received track conditions in TCBigMetalMasses</Comment>
