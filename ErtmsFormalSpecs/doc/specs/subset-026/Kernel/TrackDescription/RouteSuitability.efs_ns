@@ -361,6 +361,16 @@ NOT THERE_IS_IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="46ae93e0-cd6e-47c0-abe8-aa2c62867559"
 >
+</ReqRef><ReqRef
+ Id="86ca0a22-2ad7-480f-98ff-ffb673c6d427"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="73cb21d6-c643-4ee3-8007-11473535d055"
+>
+</ReqRef><ReqRef
+ Id="5b9cb291-20b3-4b57-b985-9777f8e49ebc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ecbfffbc-2a9a-4130-871c-759f2e5e0092"
+>
 </ReqRef><Comment>Provides the End of Authority associated to route unsuitabilities.</Comment>
 <Cases>
 <Case
@@ -404,6 +414,16 @@ THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></P
  Id="f7dd0ecc-078c-4434-8d46-4ebb4b1f44f2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9a7bc8f9-c812-4ed7-8021-f2128fd131ae"
+>
+</ReqRef><ReqRef
+ Id="86ca0a22-2ad7-480f-98ff-ffb673c6d427"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d51fe5bc-671a-412f-abcb-66c37498e575"
+>
+</ReqRef><ReqRef
+ Id="5b9cb291-20b3-4b57-b985-9777f8e49ebc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d39a43bf-808e-4a51-a778-fcc3acfc9974"
 >
 </ReqRef><Comment>Provides the Supervision Limit associated to route unsuitabilities.</Comment>
 <Cases>
@@ -944,7 +964,7 @@ IN
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitialStatesToBeResumed"
+ Name="Resume initial states"
  Guid="c4e55c76-a92d-4130-a798-593f6bade99e"
 >
 <ReqRef
@@ -958,13 +978,23 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b6fafcf9-bdac-460c-a344-e163824ae372"
 >
+</ReqRef><ReqRef
+ Id="86ca0a22-2ad7-480f-98ff-ffb673c6d427"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="08f8652e-f94c-4f56-88d3-d71cc07bea1b"
+>
+</ReqRef><ReqRef
+ Id="5b9cb291-20b3-4b57-b985-9777f8e49ebc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3ef1ed49-7048-4c78-a91d-09be4d618365"
+>
 </ReqRef><Comment>If the train reached the distance where the initial states have to be resumed, the axle load profile is deleted.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitialStatesToBeResumed"
+ Name="Resume initial states"
  Guid="288a2ffb-523b-4cf2-8ceb-33c442aed2bb"
 >
 <Comment></Comment>

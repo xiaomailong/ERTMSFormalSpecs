@@ -902,6 +902,16 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="61faa586-ed52-4515-8488-7a5ff1095682"
 >
+</ReqRef><ReqRef
+ Id="5acdc9a4-5967-4a58-a3a7-1189b09139c7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c7703e6b-afab-4be7-ae9f-d868bd5f5bdc"
+>
+</ReqRef><ReqRef
+ Id="5b9cb291-20b3-4b57-b985-9777f8e49ebc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee9c2497-7075-4421-a8a2-3f1afdd876a7"
+>
 </ReqRef><Comment>Provides the speed profile due to speed restrictions to ensure permitted braking distance.</Comment>
 <Parameters>
 <Parameter
@@ -1203,6 +1213,7 @@ ON
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InsertNewSpeedRestriction"
  Guid="5d7ec9d7-527d-4001-83cb-e2d5f5691e0c"
@@ -1210,6 +1221,7 @@ ON
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InsertNewSpeedRestriction"
  Guid="0af0c7cd-07f4-4a57-b3ee-0cab6f3f2536"
@@ -1251,6 +1263,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="UpdateSpeedRestriction"
  Guid="00a4fb9f-c75a-43bd-ab25-2608ba8419f4"
@@ -1328,7 +1341,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 <Rule
  Priority="CleanUp"
  Implemented="TRUE"
- Name="TrackBrakeCharacteristicsChange"
+ Name="Train brake characteristics change"
  Guid="eda7d7c2-6090-4a07-a068-b4f717a70e6d"
 >
 <ReqRef
@@ -1336,12 +1349,13 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bbabdeb7-7851-49a8-a317-290192b7767d"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>If the train brake characteristics change, the profile is updated.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="TrackBrakeCharacteristicsChange"
+ Name="Train brake characteristics change"
  Guid="62c68afa-4797-4cc2-b999-e0b345689ec5"
 >
 <Comment></Comment>
@@ -1364,6 +1378,58 @@ ON
 >PrevSBModels &lt;- TrainData.TrainData.Value.SBModels</Action><Action
  Guid="89055dbd-938e-45d3-90a9-42cb151bc8f0"
 >PrevEBModels &lt;- TrainData.TrainData.Value.EBModels</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Resume initial states"
+ Guid="ad604789-a2d8-405f-af6c-67eb3b68e03b"
+>
+<ReqRef
+ Id="1be737d0-fb4e-4643-926f-c5fcada702d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ab05174a-d8fd-4b73-8346-86a5130332f1"
+>
+</ReqRef><ReqRef
+ Id="5acdc9a4-5967-4a58-a3a7-1189b09139c7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ed58a36b-7e32-4e7a-a5c4-4bb3067607ee"
+>
+</ReqRef><ReqRef
+ Id="5b9cb291-20b3-4b57-b985-9777f8e49ebc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7a5c57c3-91d0-4faa-acc3-9c83364d08ba"
+>
+</ReqRef><ReqRef
+ Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6a867b46-8cec-460a-bd55-301e24e6de83"
+>
+</ReqRef><ReqRef
+ Id="35ef498a-1c12-4203-b283-26436d281f11"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="058e9061-7076-4d8b-aff4-2d74e733802e"
+>
+</ReqRef><Comment>If the initial state has to be resumed and the target distance is reached, the profile is erased.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Resume initial states"
+ Guid="3b923766-0772-4088-8ec2-7a1c3fb1cac6"
+>
+<PreConditions>
+<PreCondition
+ Guid="78be3145-3c25-4eee-8d51-da867970ffd2"
+>SpeedRestrictionsProfile.InitialState == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition><PreCondition
+ Guid="371ca729-718a-45bf-936c-877d3fa6dc55"
+>SpeedRestrictionsProfile.EmptyProfileDistance &lt;= TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.Nom )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="16926bd4-4cf4-4d72-a929-f1cf628266cb"
+>SpeedRestrictionsProfile.SpeedRestrictions &lt;- []</Action><Action
+ Guid="af776cb1-1756-4aea-871b-547067ee5c5e"
+>SpeedRestrictionsProfile.InitialState &lt;- Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

@@ -1281,10 +1281,20 @@ ON
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitialStatesToBeResumed"
+ Name="Initial states to be resumed"
  Guid="8cf096f7-b753-44fd-9730-942361ef7450"
 >
-<Comment>The packet contains &quot;reset track conditions&quot;</Comment>
+<ReqRef
+ Id="6b051981-5a69-4e3f-aabf-12c19aba8faa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1bcc618a-01fd-497f-9002-0385e19df895"
+>
+</ReqRef><ReqRef
+ Id="5b9cb291-20b3-4b57-b985-9777f8e49ebc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c9e4813-9b76-4011-9792-aff2dc3d390f"
+>
+</ReqRef><Comment>The packet contains &quot;reset track conditions&quot;</Comment>
 <PreConditions>
 <PreCondition
  Guid="8fabb5f7-5fa8-45f4-b36d-c0420a360baf"
@@ -1310,7 +1320,7 @@ IN
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="NoInitialStatesToBeResumed"
+ Name="No initial states to be resumed"
  Guid="3c74e934-0111-4385-92a4-03602e3e7b11"
 >
 <Comment>The packet contains track conditions information</Comment>

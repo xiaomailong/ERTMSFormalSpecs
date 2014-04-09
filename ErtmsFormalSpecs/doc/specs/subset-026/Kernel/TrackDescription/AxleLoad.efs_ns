@@ -256,6 +256,16 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="38255505-9aef-4133-86e1-fbc5bd12f9c1"
 >
+</ReqRef><ReqRef
+ Id="8f475e6f-ef11-49a2-9e54-9d3d12e55aa8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="37859044-c5e3-4be8-902f-c56f0d66121b"
+>
+</ReqRef><ReqRef
+ Id="5b9cb291-20b3-4b57-b985-9777f8e49ebc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="941b7bbf-dd29-4e65-8133-cab51b29089f"
+>
 </ReqRef><Comment>Provides the speed restrictions profile due to axle loads.</Comment>
 <Parameters>
 <Parameter
@@ -873,7 +883,7 @@ ON
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitialStatesToBeResumed"
+ Name="Resume initial states"
  Guid="50410267-7e4a-49e0-947c-c21a5a69a288"
 >
 <ReqRef
@@ -886,13 +896,28 @@ ON
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a12e86dc-2c22-4897-bd97-12d9e38b78d1"
 >
+</ReqRef><ReqRef
+ Id="fd20f88d-92bb-420d-b66e-a56c331b36a0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="79647270-f54e-42b5-a39f-3000e935961a"
+>
+</ReqRef><ReqRef
+ Id="8f475e6f-ef11-49a2-9e54-9d3d12e55aa8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55a18d49-2900-4af9-b3fa-7266ea48ee72"
+>
+</ReqRef><ReqRef
+ Id="5b9cb291-20b3-4b57-b985-9777f8e49ebc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="71ca36a3-7da6-4885-8190-7cd305d3fb5b"
+>
 </ReqRef><Comment>If the train reached the distance where the initial states have to be resumed, the axle load profile is deleted.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitialStatesToBeResumed"
+ Name="Resume initial states"
  Guid="a03d3367-fb14-45fa-9955-c16b87b36bfa"
 >
 <Comment></Comment>
