@@ -719,7 +719,12 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  Name="LinkingInformationReceived"
  Guid="b36d74ff-248d-4a64-ad82-dc33020344e9"
 >
-<Comment>Handles the reception of linking information and stores it in internal variables.</Comment>
+<ReqRef
+ Id="5e8ed861-509f-4d98-8c04-8bea3a8cd6c6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7ca3ea4-f1bb-4242-8e5c-8e8f40ff836f"
+>
+</ReqRef><Comment>Handles the reception of linking information and stores it in internal variables.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message"
@@ -1351,6 +1356,11 @@ If the BG was passed in the right direction, handle the message. If not, the tra
  Id="4ae178ee-6db4-474c-aa88-d5f8bd8ea1d7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="04216c23-661e-417d-83f6-9414d867e5d3"
+>
+</ReqRef><ReqRef
+ Id="5e8ed861-509f-4d98-8c04-8bea3a8cd6c6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b46e08a6-2387-4cc6-a9e0-55c6e04acb72"
 >
 </ReqRef><Comment>Stores the next linking data as provided by the balises</Comment>
 </Variable><Variable
