@@ -519,7 +519,7 @@ namespace GUI
                 i = i - 1;
             }
 
-            while (i >= 0 && !Char.IsSeparator(EditionTextBox.Text[i]))
+            while (i >= 0 && (Char.IsLetterOrDigit(EditionTextBox.Text[i]) || EditionTextBox.Text[i] == '.'))
             {
                 retVal = EditionTextBox.Text[i] + retVal;
                 i = i - 1;
