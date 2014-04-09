@@ -17,11 +17,59 @@ using System;
 using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
+using System.ServiceModel;
+using EFSIPCInterface;
+using System.ServiceModel.Description;
 
 namespace ERTMSFormalSpecs
 {
+
     public static class ErtmsFormalSpecGui
     {
+        /// <summary>
+        /// The EFS IPC service
+        /// </summary>
+        private static ServiceHost host = null;
+
+        /// <summary>
+        /// Hosts the EFS IPC service
+        /// </summary>
+        private static void HostEFSService()
+        {
+            Uri baseAddress = new Uri("http://localhost:5352/EFSService/");
+            host = new ServiceHost(typeof(EFSService), baseAddress);
+            try
+            {
+                // Sets the service endpoint.
+                host.AddServiceEndpoint(typeof(IEFSService), new WSHttpBinding(), "EFSService");
+
+                // Enable metadata exchange.
+                ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
+                smb.HttpGetEnabled = true;
+                host.Description.Behaviors.Add(smb);
+
+                // Start the service.
+                host.Open();
+            }
+            catch (CommunicationException ce)
+            {
+                Console.WriteLine("An exception occurred: {0}", ce.Message);
+                host.Abort();
+            }
+        }
+
+        /// <summary>
+        /// Closes the EFS IPC host service
+        /// </summary>
+        private static void CloseEFSService()
+        {
+            if (host != null)
+            {
+                // Close the ServiceHostBase to shutdown the service.
+                host.Close();
+            }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -48,8 +96,10 @@ namespace ERTMSFormalSpecs
                     }
                 }
 
+                HostEFSService();
                 GUI.MainWindow window = new GUI.MainWindow();
                 Application.Run(window);
+                CloseEFSService();
             }
             finally
             {
