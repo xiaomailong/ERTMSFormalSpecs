@@ -70,7 +70,15 @@ namespace DataDictionary.Interpreter
         public ExplanationPart(ModelElement element)
         {
             Element = element;
-            Message = "<No explanation yet>";
+            if (element != null)
+            {
+                Message = "<No explanation for " + element.Name + " of type " + element.GetType().ToString() + ">";
+            }
+            else
+            {
+                Message = "<No explanation for empty element>";
+            }
+
             SubExplanations = new List<ExplanationPart>();
         }
 
