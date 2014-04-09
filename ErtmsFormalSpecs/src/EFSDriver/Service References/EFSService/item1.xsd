@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EFSIPCInterface" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EFSIPCInterface" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EFSIPCInterface.Values" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EFSIPCInterface.Values" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:5352/EFSService/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="Value">
     <xs:sequence />
@@ -15,16 +15,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="DoubleValue" nillable="true" type="tns:DoubleValue" />
-  <xs:complexType name="StringValue">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:Value">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="StringValue" nillable="true" type="tns:StringValue" />
   <xs:complexType name="IntValue">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Value">
@@ -39,12 +29,22 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Value">
         <xs:sequence>
-          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Value" nillable="true" type="q1:ArrayOfKeyValueOfstringValueR7MU9zFr" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Value" nillable="true" type="q1:ArrayOfKeyValueOfstringValueTJWwzbrB" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="StructureValue" nillable="true" type="tns:StructureValue" />
+  <xs:complexType name="StringValue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringValue" nillable="true" type="tns:StringValue" />
   <xs:complexType name="ListValue">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Value">
@@ -71,14 +71,4 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="BoolValue" nillable="true" type="tns:BoolValue" />
-  <xs:simpleType name="Priority">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Verification" />
-      <xs:enumeration value="UpdateInternal" />
-      <xs:enumeration value="Process" />
-      <xs:enumeration value="UpdateOutput" />
-      <xs:enumeration value="CleanUp" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="Priority" nillable="true" type="tns:Priority" />
 </xs:schema>

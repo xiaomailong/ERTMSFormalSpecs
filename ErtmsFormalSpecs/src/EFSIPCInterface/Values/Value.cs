@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSIPCInterface
+namespace EFSIPCInterface.Values
 {
     using System;
     using System.Collections.Generic;
@@ -35,5 +35,12 @@ namespace EFSIPCInterface
         /// </summary>
         /// <returns></returns>
         public abstract string DisplayValue();
+
+        /// <summary>
+        /// Converts the value provided as an EFS value
+        /// </summary>
+        /// <param name="type">the value expected type</param>
+        /// <returns></returns>
+        public abstract DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type);
     }
 }

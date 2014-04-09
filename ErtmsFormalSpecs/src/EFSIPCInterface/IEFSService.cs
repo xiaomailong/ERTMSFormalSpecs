@@ -35,7 +35,7 @@ namespace EFSIPCInterface
         /// <param name="variableName"></param>
         /// <returns></returns>
         [OperationContract]
-        Value GetVariableValue(string variableName);
+        Values.Value GetVariableValue(string variableName);
 
         /// <summary>
         /// Sets the value of a specific variable
@@ -43,7 +43,7 @@ namespace EFSIPCInterface
         /// <param name="variableName"></param>
         /// <param name="value"></param>
         [OperationContract]
-        void SetVariableValue(string variableName, Value value);
+        void SetVariableValue(string variableName, Values.Value value);
 
         /// <summary>
         /// Activates the execution of a single cycle, as the given priority level

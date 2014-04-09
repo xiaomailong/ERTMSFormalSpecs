@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSIPCInterface
+namespace EFSIPCInterface.Values
 {
     using System;
     using System.Collections.Generic;
@@ -22,19 +22,19 @@ namespace EFSIPCInterface
     using System.Runtime.Serialization;
 
     [DataContract]
-    public class StructureValue : Value
+    public class ListValue : Value
     {
         /// <summary>
         /// The actual value
         /// </summary>
         [DataMember]
-        public Dictionary<string, Value> Value { get; private set; }
+        public List<Value> Value { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="value"></param>
-        public StructureValue(Dictionary<string, Value> value)
+        public ListValue(List<Value> value)
         {
             Value = value;
         }
@@ -45,22 +45,45 @@ namespace EFSIPCInterface
         /// <returns></returns>
         public override string DisplayValue()
         {
-            string retVal = "{";
+            string retVal = "[";
 
-            foreach (KeyValuePair<string, Value> item in Value)
+            foreach (Value item in Value)
             {
                 if (retVal.Length != 1)
                 {
                     retVal += ", ";
                 }
 
-                retVal += item.Key + " => " + item.Value.ToString();
+                retVal += item.ToString();
             }
 
-            retVal += "}";
+            retVal += "]";
 
             return retVal;
         }
 
+        /// <summary>
+        /// Converts the value provided as an EFS value
+        /// </summary>
+        /// <returns></returns>
+        public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
+        {
+            DataDictionary.Values.IValue retVal = null;
+
+            DataDictionary.Types.Collection collectionType = type as DataDictionary.Types.Collection;
+            if (collectionType != null)
+            {
+                List<DataDictionary.Values.IValue> values = new List<DataDictionary.Values.IValue>();
+
+                foreach (Value item in Value)
+                {
+                    values.Add(item.convertBack(collectionType.Type));
+                }
+
+                retVal = new DataDictionary.Values.ListValue(collectionType, values);
+            }
+
+            return retVal;
+        }
     }
 }

@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSIPCInterface
+namespace EFSIPCInterface.Values
 {
     using System;
     using System.Collections.Generic;
@@ -22,19 +22,19 @@ namespace EFSIPCInterface
     using System.Runtime.Serialization;
 
     [DataContract]
-    public class ListValue : Value
+    public class StringValue : Value
     {
         /// <summary>
         /// The actual value
         /// </summary>
         [DataMember]
-        public List<Value> Value { get; private set; }
+        public string Value { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="value"></param>
-        public ListValue(List<Value> value)
+        public StringValue(string value)
         {
             Value = value;
         }
@@ -45,19 +45,22 @@ namespace EFSIPCInterface
         /// <returns></returns>
         public override string DisplayValue()
         {
-            string retVal = "[";
+            return Value.ToString();
+        }
 
-            foreach (Value item in Value)
+        /// <summary>
+        /// Converts the value provided as an EFS value
+        /// </summary>
+        /// <returns></returns>
+        public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
+        {
+            DataDictionary.Values.IValue retVal = null;
+
+            DataDictionary.Types.StringType stringType = type as DataDictionary.Types.StringType;
+            if (stringType != null)
             {
-                if (retVal.Length != 1)
-                {
-                    retVal += ", ";
-                }
-
-                retVal += item.ToString();
+                retVal = new DataDictionary.Values.StringValue(stringType, Value);
             }
-
-            retVal += "]";
 
             return retVal;
         }

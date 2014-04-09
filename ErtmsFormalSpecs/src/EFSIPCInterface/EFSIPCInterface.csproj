@@ -42,16 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoolValue.cs" />
-    <Compile Include="StringValue.cs" />
-    <Compile Include="DoubleValue.cs" />
+    <Compile Include="Values\BoolValue.cs" />
+    <Compile Include="Values\StringValue.cs" />
+    <Compile Include="Values\DoubleValue.cs" />
     <Compile Include="EFSService.cs" />
     <Compile Include="IEFSService.cs" />
-    <Compile Include="IntValue.cs" />
-    <Compile Include="ListValue.cs" />
+    <Compile Include="Values\IntValue.cs" />
+    <Compile Include="Values\ListValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StructureValue.cs" />
-    <Compile Include="Value.cs" />
+    <Compile Include="Values\StructureValue.cs" />
+    <Compile Include="Values\Value.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataDictionary\DataDictionary.csproj">

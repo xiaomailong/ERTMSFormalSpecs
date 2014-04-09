@@ -77,6 +77,7 @@
             this.variableValueTextBox.Name = "variableValueTextBox";
             this.variableValueTextBox.Size = new System.Drawing.Size(339, 20);
             this.variableValueTextBox.TabIndex = 4;
+            this.variableValueTextBox.TextChanged += new System.EventHandler(this.variableValueTextBox_TextChanged);
             // 
             // EFSDriver
             // 

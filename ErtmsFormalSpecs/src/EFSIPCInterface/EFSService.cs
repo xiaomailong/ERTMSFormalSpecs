@@ -50,9 +50,9 @@ namespace EFSIPCInterface
         /// </summary>
         /// <param name="variableName"></param>
         /// <returns></returns>
-        public Value GetVariableValue(string variableName)
+        public Values.Value GetVariableValue(string variableName)
         {
-            Value retVal = null;
+            Values.Value retVal = null;
 
             DataDictionary.Variables.IVariable variable = EFSSystem.INSTANCE.findByFullName(variableName) as DataDictionary.Variables.IVariable;
             if (variable != null)
@@ -68,14 +68,14 @@ namespace EFSIPCInterface
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        private Value convertOut(DataDictionary.Values.IValue value)
+        private Values.Value convertOut(DataDictionary.Values.IValue value)
         {
             // Handles the boolean case
             {
                 DataDictionary.Values.BoolValue v = value as DataDictionary.Values.BoolValue;
                 if (v != null)
                 {
-                    return new BoolValue(v.Val);
+                    return new Values.BoolValue(v.Val);
                 }
             }
 
@@ -84,7 +84,7 @@ namespace EFSIPCInterface
                 DataDictionary.Values.IntValue v = value as DataDictionary.Values.IntValue;
                 if (v != null)
                 {
-                    return new IntValue(v.Val);
+                    return new Values.IntValue(v.Val);
                 }
             }
 
@@ -93,7 +93,7 @@ namespace EFSIPCInterface
                 DataDictionary.Values.DoubleValue v = value as DataDictionary.Values.DoubleValue;
                 if (v != null)
                 {
-                    return new DoubleValue(v.Val);
+                    return new Values.DoubleValue(v.Val);
                 }
             }
 
@@ -102,7 +102,7 @@ namespace EFSIPCInterface
                 DataDictionary.Values.StringValue v = value as DataDictionary.Values.StringValue;
                 if (v != null)
                 {
-                    return new StringValue(v.Val);
+                    return new Values.StringValue(v.Val);
                 }
             }
 
@@ -111,14 +111,14 @@ namespace EFSIPCInterface
                 DataDictionary.Values.ListValue v = value as DataDictionary.Values.ListValue;
                 if (v != null)
                 {
-                    List<Value> list = new List<Value>();
+                    List<Values.Value> list = new List<Values.Value>();
 
                     foreach (DataDictionary.Values.IValue item in v.Val)
                     {
                         list.Add(convertOut(item));
                     }
 
-                    return new ListValue(list);
+                    return new Values.ListValue(list);
                 }
             }
 
@@ -127,7 +127,7 @@ namespace EFSIPCInterface
                 DataDictionary.Values.StructureValue v = value as DataDictionary.Values.StructureValue;
                 if (v != null)
                 {
-                    Dictionary<string, Value> record = new Dictionary<string, Value>();
+                    Dictionary<string, Values.Value> record = new Dictionary<string, Values.Value>();
 
                     foreach (KeyValuePair<string, Utils.INamable> pair in v.Val)
                     {
@@ -138,7 +138,7 @@ namespace EFSIPCInterface
                         }
                     }
 
-                    return new StructureValue(record);
+                    return new Values.StructureValue(record);
                 }
             }
 
@@ -150,8 +150,14 @@ namespace EFSIPCInterface
         /// </summary>
         /// <param name="variableName"></param>
         /// <param name="value"></param>
-        public void SetVariableValue(string variableName, Value value)
+        public void SetVariableValue(string variableName, Values.Value value)
         {
+            DataDictionary.Variables.IVariable variable = Runner.EFSSystem.findByFullName(variableName) as DataDictionary.Variables.IVariable;
+
+            if (variable != null)
+            {
+                variable.Value = value.convertBack(variable.Type);
+            }
         }
 
         /// <summary>
@@ -160,7 +166,6 @@ namespace EFSIPCInterface
         /// <param name="priority"></param>
         public void Cycle(Priority priority)
         {
-
             Runner.ExecuteOnePriority(convertPriority(priority));
         }
 

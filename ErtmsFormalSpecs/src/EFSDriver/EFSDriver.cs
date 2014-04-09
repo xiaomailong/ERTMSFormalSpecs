@@ -49,18 +49,48 @@ namespace EFSDriver
         }
 
         /// <summary>
+        /// Indicates that changes in the UI should be propagated in the EFS system
+        /// </summary>
+        private bool Propagate = true;
+
+        /// <summary>
         /// Displays the value of the variable provided
         /// </summary>
         /// <param name="value"></param>
         private void DisplayVariableValue(Value value)
         {
-            if (value != null)
+            try
             {
-                variableValueTextBox.Text = value.DisplayValue();
+                Propagate = false;
+                if (value != null)
+                {
+                    variableValueTextBox.Text = value.DisplayValue();
+                }
+                else
+                {
+                    variableValueTextBox.Text = "<empty>";
+                }
             }
-            else
+            finally
             {
-                variableValueTextBox.Text = "<empty>";
+                Propagate = true;
+            }
+        }
+
+        private void variableValueTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (Propagate)
+            {
+                IntValue value = EFS.GetVariableValue(variableNameTextBox.Text) as IntValue;
+                if (value != null)
+                {
+                    int result;
+                    if (int.TryParse(variableValueTextBox.Text, out result))
+                    {
+                        value.Value = result;
+                        EFS.SetVariableValue(variableNameTextBox.Text, value);
+                    }
+                }
             }
         }
     }

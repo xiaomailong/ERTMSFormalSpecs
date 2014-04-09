@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSIPCInterface
+namespace EFSIPCInterface.Values
 {
     using System;
     using System.Collections.Generic;
@@ -22,19 +22,19 @@ namespace EFSIPCInterface
     using System.Runtime.Serialization;
 
     [DataContract]
-    public class BoolValue : Value
+    public class DoubleValue : Value
     {
         /// <summary>
         /// The actual value
         /// </summary>
         [DataMember]
-        public bool Value { get; private set; }
+        public double Value { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="value"></param>
-        public BoolValue(bool value)
+        public DoubleValue(double value)
         {
             Value = value;
         }
@@ -46,6 +46,15 @@ namespace EFSIPCInterface
         public override string DisplayValue()
         {
             return Value.ToString();
+        }
+
+        /// <summary>
+        /// Converts the value provided as an EFS value
+        /// </summary>
+        /// <returns></returns>
+        public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
+        {
+            return type.getValue(Value.ToString());
         }
 
     }
