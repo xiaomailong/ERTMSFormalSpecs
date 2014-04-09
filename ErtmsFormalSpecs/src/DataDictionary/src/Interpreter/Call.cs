@@ -599,10 +599,9 @@ namespace DataDictionary.Interpreter
             ICallable called = Called.getStaticCallable();
             if (called != null)
             {
-                if (called.FormalParameters.Count != NamedActualParameters.Count + ActualParameters.Count)
+                if (called.FormalParameters.Count != AllParameters.Count)
                 {
-                    AddError("Invalid number of arguments provided for function call " + ToString() + " expected " + called.FormalParameters.Count + " actual " + NamedActualParameters.Count);
-
+                    AddError("Invalid number of arguments provided for function call " + ToString() + " expected " + called.FormalParameters.Count + " actual " + AllParameters.Count);
                 }
                 else
                 {
