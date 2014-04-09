@@ -19,12 +19,34 @@ namespace EFSIPCInterface
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Runtime.Serialization;
 
-    public class BoolValue
+    [DataContract]
+    public class BoolValue : Value
     {
         /// <summary>
-        /// The corresponding value
+        /// The actual value
         /// </summary>
-        bool Value { get; set; }
+        [DataMember]
+        public bool Value { get; private set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="value"></param>
+        public BoolValue(bool value)
+        {
+            Value = value;
+        }
+
+        /// <summary>
+        /// Provides the display value of this value
+        /// </summary>
+        /// <returns></returns>
+        public override string DisplayValue()
+        {
+            return Value.ToString();
+        }
+
     }
 }

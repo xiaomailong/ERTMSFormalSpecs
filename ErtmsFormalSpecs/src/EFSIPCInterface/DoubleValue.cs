@@ -19,12 +19,33 @@ namespace EFSIPCInterface
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Runtime.Serialization;
 
+    [DataContract]
     public class DoubleValue : Value
     {
         /// <summary>
-        /// The corresponding value
+        /// The actual value
         /// </summary>
-        double Value { get; set; }
+        [DataMember]
+        public double Value { get; private set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="value"></param>
+        public DoubleValue(double value)
+        {
+            Value = value;
+        }
+
+        /// <summary>
+        /// Provides the display value of this value
+        /// </summary>
+        /// <returns></returns>
+        public override string DisplayValue()
+        {
+            return Value.ToString();
+        }
     }
 }

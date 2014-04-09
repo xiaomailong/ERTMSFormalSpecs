@@ -21,9 +21,30 @@ namespace EFSIPCInterface
     using System.Text;
     using DataDictionary.Tests.Runner;
     using DataDictionary;
+    using System.ServiceModel;
 
+    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class EFSService : IEFSService
     {
+        /// <summary>
+        /// Provides the runner on which the service is applied
+        /// </summary>
+        private Runner Runner
+        {
+            get
+            {
+                EFSSystem efsSystem = EFSSystem.INSTANCE;
+                if (efsSystem.Runner == null)
+                {
+                    bool explain = false;
+                    bool logEvents = true;
+                    efsSystem.Runner = new Runner(explain, logEvents, 100, 10000);
+                }
+
+                return efsSystem.Runner;
+            }
+        }
+
         /// <summary>
         /// Provides the value of a specific variable
         /// </summary>
@@ -31,6 +52,96 @@ namespace EFSIPCInterface
         /// <returns></returns>
         public Value GetVariableValue(string variableName)
         {
+            Value retVal = null;
+
+            DataDictionary.Variables.IVariable variable = EFSSystem.INSTANCE.findByFullName(variableName) as DataDictionary.Variables.IVariable;
+            if (variable != null)
+            {
+                retVal = convertOut(variable.Value);
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Converts a DataDictionary.Values.IValue into an EFSIPCInterface.Value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private Value convertOut(DataDictionary.Values.IValue value)
+        {
+            // Handles the boolean case
+            {
+                DataDictionary.Values.BoolValue v = value as DataDictionary.Values.BoolValue;
+                if (v != null)
+                {
+                    return new BoolValue(v.Val);
+                }
+            }
+
+            // Handles the integer case
+            {
+                DataDictionary.Values.IntValue v = value as DataDictionary.Values.IntValue;
+                if (v != null)
+                {
+                    return new IntValue(v.Val);
+                }
+            }
+
+            // Handles the double case
+            {
+                DataDictionary.Values.DoubleValue v = value as DataDictionary.Values.DoubleValue;
+                if (v != null)
+                {
+                    return new DoubleValue(v.Val);
+                }
+            }
+
+            // Handles the string case
+            {
+                DataDictionary.Values.StringValue v = value as DataDictionary.Values.StringValue;
+                if (v != null)
+                {
+                    return new StringValue(v.Val);
+                }
+            }
+
+            // Handles the list case
+            {
+                DataDictionary.Values.ListValue v = value as DataDictionary.Values.ListValue;
+                if (v != null)
+                {
+                    List<Value> list = new List<Value>();
+
+                    foreach (DataDictionary.Values.IValue item in v.Val)
+                    {
+                        list.Add(convertOut(item));
+                    }
+
+                    return new ListValue(list);
+                }
+            }
+
+            // Handles the structure case
+            {
+                DataDictionary.Values.StructureValue v = value as DataDictionary.Values.StructureValue;
+                if (v != null)
+                {
+                    Dictionary<string, Value> record = new Dictionary<string, Value>();
+
+                    foreach (KeyValuePair<string, Utils.INamable> pair in v.Val)
+                    {
+                        DataDictionary.Variables.IVariable variable = pair.Value as DataDictionary.Variables.IVariable;
+                        if (variable != null)
+                        {
+                            record.Add(variable.Name, convertOut(variable.Value));
+                        }
+                    }
+
+                    return new StructureValue(record);
+                }
+            }
+
             return null;
         }
 
@@ -49,15 +160,8 @@ namespace EFSIPCInterface
         /// <param name="priority"></param>
         public void Cycle(Priority priority)
         {
-            EFSSystem efsSystem = EFSSystem.INSTANCE;
-            if (efsSystem.Runner == null)
-            {
-                bool explain = false;
-                bool logEvents = true;
-                efsSystem.Runner = new Runner(explain, logEvents, 100, 10000);
-            }
 
-            efsSystem.Runner.ExecuteOnePriority(convertPriority(priority));
+            Runner.ExecuteOnePriority(convertPriority(priority));
         }
 
         /// <summary>

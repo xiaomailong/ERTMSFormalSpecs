@@ -4,6 +4,15 @@
 >
 <NameSpaces>
 </NameSpaces>
+<Variables>
+<Variable
+ Type="Integer"
+ DefaultValue="0"
+ VariableMode="Internal"
+ Name="v"
+ Guid="d8fe71fa-1362-4604-a66e-ea5b1ef24e10"
+>
+</Variable></Variables>
 <Rules>
 <Rule
  Priority="Processing"
@@ -21,7 +30,9 @@
 <Actions>
 <Action
  Guid="af30a9dc-7b55-41ae-82cd-39fc100ef726"
->Test.val_stm &lt;- Test.stateMachine2.e2</Action></Actions>
+>Test.val_stm &lt;- Test.stateMachine2.e2</Action><Action
+ Guid="a31f1aee-78d7-4292-bde2-fc55b0a780c5"
+>v &lt;- v + 1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

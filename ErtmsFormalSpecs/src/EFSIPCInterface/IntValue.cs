@@ -19,12 +19,33 @@ namespace EFSIPCInterface
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Runtime.Serialization;
 
+    [DataContract]
     public class IntValue : Value
     {
         /// <summary>
-        /// The corresponding value
+        /// The actual value
         /// </summary>
-        int Value { get; set; }
+        [DataMember]
+        public Decimal Value { get; private set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="value"></param>
+        public IntValue(Decimal value)
+        {
+            Value = value;
+        }
+
+        /// <summary>
+        /// Provides the display value of this value
+        /// </summary>
+        /// <returns></returns>
+        public override string DisplayValue()
+        {
+            return Value.ToString();
+        }
     }
 }

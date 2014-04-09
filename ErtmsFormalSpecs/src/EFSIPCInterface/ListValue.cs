@@ -19,12 +19,47 @@ namespace EFSIPCInterface
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Runtime.Serialization;
 
+    [DataContract]
     public class ListValue : Value
     {
         /// <summary>
-        /// The corresponding value
+        /// The actual value
         /// </summary>
-        List<Value> Value { get; set; }
+        [DataMember]
+        public List<Value> Value { get; private set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="value"></param>
+        public ListValue(List<Value> value)
+        {
+            Value = value;
+        }
+
+        /// <summary>
+        /// Provides the display value of this value
+        /// </summary>
+        /// <returns></returns>
+        public override string DisplayValue()
+        {
+            string retVal = "[";
+
+            foreach (Value item in Value)
+            {
+                if (retVal.Length != 1)
+                {
+                    retVal += ", ";
+                }
+
+                retVal += item.ToString();
+            }
+
+            retVal += "]";
+
+            return retVal;
+        }
     }
 }

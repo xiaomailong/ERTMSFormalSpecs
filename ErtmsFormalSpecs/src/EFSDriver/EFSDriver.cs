@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using EFSDriver.EFSService;
+using EFSService;
 
 namespace EFSDriver
 {
@@ -30,6 +30,38 @@ namespace EFSDriver
             EFS.Cycle(Priority.Process);
             EFS.Cycle(Priority.UpdateOutput);
             EFS.Cycle(Priority.CleanUp);
+
+            UpdateVariableValue();
+        }
+
+        private void variableNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateVariableValue();
+        }
+
+        /// <summary>
+        /// Updates the value of the variable referenced by the variable name text box
+        /// </summary>
+        private void UpdateVariableValue()
+        {
+            Value value = EFS.GetVariableValue(variableNameTextBox.Text);
+            DisplayVariableValue(value);
+        }
+
+        /// <summary>
+        /// Displays the value of the variable provided
+        /// </summary>
+        /// <param name="value"></param>
+        private void DisplayVariableValue(Value value)
+        {
+            if (value != null)
+            {
+                variableValueTextBox.Text = value.DisplayValue();
+            }
+            else
+            {
+                variableValueTextBox.Text = "<empty>";
+            }
         }
     }
 }

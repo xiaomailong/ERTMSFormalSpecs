@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSIPCInterface
+namespace EFSService
 {
     using System;
     using System.Collections.Generic;
@@ -21,24 +21,8 @@ namespace EFSIPCInterface
     using System.Text;
     using System.Runtime.Serialization;
 
-    [DataContract]
-    public class StructureValue : Value
+    public partial class StructureValue : Value
     {
-        /// <summary>
-        /// The actual value
-        /// </summary>
-        [DataMember]
-        public Dictionary<string, Value> Value { get; private set; }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="value"></param>
-        public StructureValue(Dictionary<string, Value> value)
-        {
-            Value = value;
-        }
-
         /// <summary>
         /// Provides the display value of this value
         /// </summary>

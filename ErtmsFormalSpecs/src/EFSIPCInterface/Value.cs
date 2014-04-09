@@ -22,7 +22,18 @@ namespace EFSIPCInterface
     using System.Runtime.Serialization;
 
     [DataContract]
+    [KnownType(typeof(BoolValue))]
+    [KnownType(typeof(IntValue))]
+    [KnownType(typeof(DoubleValue))]
+    [KnownType(typeof(StringValue))]
+    [KnownType(typeof(ListValue))]
+    [KnownType(typeof(StructureValue))]
     public abstract class Value
     {
+        /// <summary>
+        /// Provides the display value of this value
+        /// </summary>
+        /// <returns></returns>
+        public abstract string DisplayValue();
     }
 }

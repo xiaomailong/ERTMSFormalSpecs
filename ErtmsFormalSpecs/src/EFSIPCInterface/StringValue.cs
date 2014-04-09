@@ -22,19 +22,19 @@ namespace EFSIPCInterface
     using System.Runtime.Serialization;
 
     [DataContract]
-    public class StructureValue : Value
+    public class StringValue : Value
     {
         /// <summary>
         /// The actual value
         /// </summary>
         [DataMember]
-        public Dictionary<string, Value> Value { get; private set; }
+        public string Value { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="value"></param>
-        public StructureValue(Dictionary<string, Value> value)
+        public StringValue(string value)
         {
             Value = value;
         }
@@ -45,22 +45,7 @@ namespace EFSIPCInterface
         /// <returns></returns>
         public override string DisplayValue()
         {
-            string retVal = "{";
-
-            foreach (KeyValuePair<string, Value> item in Value)
-            {
-                if (retVal.Length != 1)
-                {
-                    retVal += ", ";
-                }
-
-                retVal += item.Key + " => " + item.Value.ToString();
-            }
-
-            retVal += "}";
-
-            return retVal;
+            return Value.ToString();
         }
-
     }
 }

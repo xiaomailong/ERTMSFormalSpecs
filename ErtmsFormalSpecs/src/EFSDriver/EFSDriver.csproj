@@ -59,6 +59,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Values\BoolValue.cs" />
+    <Compile Include="Values\DoubleValue.cs" />
+    <Compile Include="Values\IntValue.cs" />
+    <Compile Include="Values\ListValue.cs" />
+    <Compile Include="Values\StringValue.cs" />
+    <Compile Include="Values\StructureValue.cs" />
+    <Compile Include="Values\Value.cs" />
     <EmbeddedResource Include="EFSDriver.resx">
       <DependentUpon>EFSDriver.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +99,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\EFSService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EFSService\item3.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
