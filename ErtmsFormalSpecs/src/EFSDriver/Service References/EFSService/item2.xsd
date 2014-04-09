@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EFSIPCInterface" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EFSIPCInterface" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Value">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Value" nillable="true" type="tns:Value" />
+  <xs:simpleType name="Priority">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Verification" />
+      <xs:enumeration value="UpdateInternal" />
+      <xs:enumeration value="Process" />
+      <xs:enumeration value="UpdateOutput" />
+      <xs:enumeration value="CleanUp" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Priority" nillable="true" type="tns:Priority" />
+</xs:schema>
