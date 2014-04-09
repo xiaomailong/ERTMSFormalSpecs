@@ -137,8 +137,15 @@ namespace DataDictionary
                     }
                     else
                     {
-                        retVal = Name;
-                        prefix = "";
+                        if (!(this is Types.Structure))
+                        {
+                            retVal = Name;
+                            prefix = "";
+                        }
+                        else
+                        {
+                            retVal = FullName;
+                        }
                     }
                 }
                 else
