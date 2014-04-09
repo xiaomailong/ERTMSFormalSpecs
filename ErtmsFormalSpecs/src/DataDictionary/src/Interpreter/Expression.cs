@@ -585,7 +585,7 @@ namespace DataDictionary.Interpreter
 
             if (explain)
             {
-                ExplanationPart part = new ExplanationPart(Root);
+                ExplanationPart part = new ExplanationPart(Root, ToString());
                 currentExplanation.SubExplanations.Add(part);
                 currentExplanation = part;
             }
@@ -615,7 +615,7 @@ namespace DataDictionary.Interpreter
         {
             ExplanationPart retVal = currentExplanation;
 
-            currentExplanation = new ExplanationPart(Root);
+            currentExplanation = new ExplanationPart(Root, ToString());
             explain = true;
 
             return retVal;

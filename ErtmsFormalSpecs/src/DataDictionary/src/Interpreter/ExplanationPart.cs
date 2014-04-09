@@ -67,25 +67,6 @@ namespace DataDictionary.Interpreter
         /// Constructor
         /// </summary>
         /// <param name="element">The element for which this explanation part is created</param>
-        public ExplanationPart(ModelElement element)
-        {
-            Element = element;
-            if (element != null)
-            {
-                Message = "<No explanation for " + element.Name + " of type " + element.GetType().ToString() + ">";
-            }
-            else
-            {
-                Message = "<No explanation for empty element>";
-            }
-
-            SubExplanations = new List<ExplanationPart>();
-        }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="element">The element for which this explanation part is created</param>
         public ExplanationPart(ModelElement element, string message)
         {
             Element = element;

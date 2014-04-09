@@ -289,8 +289,7 @@ namespace DataDictionary.Interpreter.Statement
                     ExplanationPart part = null;
                     if (explanation != null)
                     {
-                        part = new ExplanationPart(Root);
-                        part.Message = procedure.FullName;
+                        part = new ExplanationPart(Root, procedure.FullName);
                         explanation.SubExplanations.Add(part);
                     }
 
@@ -333,7 +332,7 @@ namespace DataDictionary.Interpreter.Statement
                 ExplanationPart conditionExplanation = null;
                 if (explanation != null)
                 {
-                    conditionExplanation = new ExplanationPart(condition);
+                    conditionExplanation = new ExplanationPart(condition, condition.Name);
                     explanation.SubExplanations.Add(conditionExplanation);
                 }
 

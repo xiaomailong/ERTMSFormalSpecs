@@ -58,8 +58,7 @@ namespace DataDictionary.Tests.Runner.Events
             {
                 if (runner.Explain)
                 {
-                    Explanation = new Interpreter.ExplanationPart(Action);
-                    Explanation.Message = "Action " + Action.Name;
+                    Explanation = new Interpreter.ExplanationPart(Action, "Action " + Action.Name);
                 }
 
                 Interpreter.InterpretationContext context = new Interpreter.InterpretationContext(Instance);
