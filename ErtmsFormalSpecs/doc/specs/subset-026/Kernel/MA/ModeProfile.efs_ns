@@ -458,12 +458,12 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Guid="c4990a7c-151a-406f-8a0f-1d730706b1e6"
 >Profile != []</PreCondition><PreCondition
  Guid="72d9cd73-06fc-4d5b-abaa-ec05e4cb3dc7"
->( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ) != EMPTY</PreCondition></PreConditions>
+>FirstNonApplicableModeProfile() != EMPTY</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
-    Location =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Distance,
+    Location =&gt; ( FirstNonApplicableModeProfile() ).Distance,
     Speed =&gt; 0.0,
-    Length =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Length
+    Length =&gt; ( FirstNonApplicableModeProfile() ).Length
 }</Expression>
 </Case><Case
  Name="No Mode Profile EOA available"
@@ -499,25 +499,37 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 >
 <PreConditions>
 <PreCondition
- Guid="c12d56c2-e68e-492c-9d92-25d017e224b0"
->( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).SupervisionQualifier == Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA</PreCondition><PreCondition
  Guid="6360e380-3cc4-43da-8cdc-1b090db6045d"
->( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ) != EMPTY</PreCondition><PreCondition
+>FirstNonApplicableModeProfile() != EMPTY
+  AND
+( FirstNonApplicableModeProfile() ).SupervisionQualifier == Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA</PreCondition><PreCondition
  Guid="30aa3403-c8b3-4807-bd15-b549f015ae93"
 >Profile != []</PreCondition><PreCondition
  Guid="ae49b5bd-f40e-49bd-b5bd-ea562a6cde15"
 >Available ( MA.MA )</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
-    Location =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Distance,
+    Location =&gt; ( FirstNonApplicableModeProfile() ).Distance,
     Speed =&gt; 0.0,
-    Length =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Length
+    Length =&gt; ( FirstNonApplicableModeProfile() ).Length
 }</Expression>
 </Case><Case
  Name="No Mode Profile SvL available"
  Guid="aff5d04b-6d78-4293-b8f9-7d0d42286e48"
 >
 <Expression>EMPTY</Expression>
+</Case></Cases>
+</Function><Function
+ Type="ModeProfileStruct"
+ Name="FirstNonApplicableModeProfile"
+ Guid="547b6baa-ee4d-4b17-8252-0289749bf194"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="81ce4b17-e0fc-4fcf-b185-424a867a20b1"
+>
+<Expression>FIRST_IN Profile | NOT DistanceIsWithinAModeProfile ( X )</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
