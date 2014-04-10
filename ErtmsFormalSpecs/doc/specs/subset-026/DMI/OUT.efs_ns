@@ -20055,5 +20055,892 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></State></States>
 </StateMachine></State></States>
 </StateMachine></StateMachines>
+</Structure><Structure
+ Implemented="TRUE"
+ Name="FLOI"
+ Guid="13b7aaa8-f6c7-4600-996a-a27eb602319b"
+>
+<ReqRef
+ Id="9427a791-5126-401a-8a4c-c22ac729a3c7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="148f18ac-e0d9-4182-9fd4-c54e5f7ed9d4"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="f035b068-151b-4ba4-9e1c-eaeedd2641a4"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="84111a24-c1b5-4ecc-9522-559cc279d396"
+>
+<PreConditions>
+<PreCondition
+ Guid="a991d321-af52-474d-b962-cb7af3a8271d"
+>OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f0c8976c-c957-4f3d-a0a5-3295db9e7317"
+>Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StructureElement
+ TypeName="DMI.OutputInformation"
+ Default=""
+ Mode="Outgoing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="OutputInformation"
+ Guid="31d3637e-2796-43d4-9c8c-15f91e8ab818"
+>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default=""
+ Mode="Outgoing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Speed"
+ Guid="87c3d663-7934-466d-8d03-cc130b176a7c"
+>
+</StructureElement><StructureElement
+ TypeName="ProcedureOutSM"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="ProcedureOut"
+ Guid="cbec40b9-de8e-4347-8eac-01bdbad4e91a"
+>
+</StructureElement><StateMachines>
+<StateMachine
+ Default="NotAvailable"
+ Implemented="TRUE"
+ Name="ProcedureOutSM"
+ Guid="42a5c88e-9aac-47cc-8d34-3e6a06889260"
+>
+<States>
+<State
+ X="230"
+ Y="20"
+ Width="140"
+ Height="50"
+ Implemented="TRUE"
+ Name="NotAvailable"
+ Guid="87210d33-fd54-40da-b786-6e1be89bd797"
+>
+<StateMachine
+ Default="InitialState"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="c82ee106-d2bf-449e-8dbd-bd9638fd32f7"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="InitialState"
+ Guid="812df460-1deb-4afd-9bc5-cbffd4a94352"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="4748b863-f48a-4ef1-97da-518ef4ccd74e"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="085be7a2-c4d3-4e3e-918f-099bdf704b02"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+ Guid="d8724b1a-e0f9-449f-a5cd-9b2badb652e6"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="8d3e64d3-4d08-4457-864a-69abff3beb45"
+>THIS &lt;- NotAvailable.Idle</Action><Action
+ Guid="4cee0995-52f6-4887-99fd-b289d22b8c52"
+>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Idle"
+ Guid="e69f6cf9-9788-411e-bde2-4d7b82693d84"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="8920463a-2527-4f9d-88b4-2bbcd3e16406"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="50"
+ Y="120"
+ Width="140"
+ Height="50"
+ Implemented="TRUE"
+ Name="NationalSystemAvailability"
+ Guid="517dccbc-ec67-4642-8037-94d53c819a18"
+>
+<StateMachine
+ Default="InitialState"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="bb603053-30a1-452f-9cf0-036f1c8e5ebb"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="InitialState"
+ Guid="35558f4a-abca-4f4d-bbf8-baa116286aa4"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="64c46433-9cab-438b-a151-14602cf1eb9e"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="e4d20a08-22bf-4b08-8042-c3c186450fe5"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+ Guid="60c68166-1656-4604-9e12-7c9727be6d5d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ff6f9c99-7547-4305-a867-ba9383453946"
+>THIS &lt;- NationalSystemAvailability.Idle</Action><Action
+ Guid="c05ba471-9b9d-4055-b026-c816b8ef2e1b"
+>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Idle"
+ Guid="62cbc630-0ddc-471e-865e-42ca96f1a279"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="3ab08f78-74bd-426a-bd9f-d98a96e87b7f"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="410"
+ Y="120"
+ Width="140"
+ Height="50"
+ Implemented="TRUE"
+ Name="NotApplicable"
+ Guid="2f2a7464-c136-40a0-8635-96a6c8e50e91"
+>
+<StateMachine
+ Default="InitialState"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="22f272a2-cb30-454c-ae62-9150c9507fc6"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="InitialState"
+ Guid="a1712158-51db-447e-9232-f374e771455d"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="27af565b-60f5-44b2-93e3-ae5be80ff265"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="ddf611c1-07f8-4db7-b4ac-68b4c05173de"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+ Guid="acd12eb4-94f3-4423-9dd3-231da7b92fbe"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="6977f085-6232-40e8-a45f-f51c159a83d1"
+>THIS &lt;- NotApplicable.Idle</Action><Action
+ Guid="37a1e420-c55d-480b-bd30-55d1538b5a66"
+>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Idle"
+ Guid="72668f64-cdc0-4fa9-b02f-9af2f331fc94"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="dc2d6ba5-112e-435a-a199-95c40e5f9a26"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="50"
+ Y="230"
+ Width="140"
+ Height="50"
+ Implemented="TRUE"
+ Name="Active"
+ Guid="73b290c5-e219-46ac-a0b1-168b17fddcb3"
+>
+<StateMachine
+ Default="InitialState"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="02b47057-552f-4874-8f2f-58b77a3117ff"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="InitialState"
+ Guid="9a8b148a-48e8-490c-9171-bc67764ed487"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="e0ac45c0-7185-41aa-87c8-5f1f4044d8fa"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="04b1391e-ac30-4556-8355-f1c8f34ac612"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+ Guid="443e1fcf-cdcd-47cb-a146-b55ed6f06580"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3c6c2e10-a645-45f5-9a05-a4f3dcf2b603"
+>THIS &lt;- Active.Send</Action><Action
+ Guid="9bdfebfa-cc09-4904-ab48-f7db279a2cf8"
+>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Send"
+ Guid="612d0b85-1171-400f-92e7-58f5a61eb7f8"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="e34cc4f7-9dbd-4758-a424-410481ecb9b9"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="410"
+ Y="230"
+ Width="140"
+ Height="50"
+ Implemented="TRUE"
+ Name="Available"
+ Guid="2c5714a6-d3d4-4a6e-bfd1-ccea1e5ffe00"
+>
+<StateMachine
+ Default="Idle"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="d0f94643-eddb-49ab-98e3-fcf43f81a960"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Idle"
+ Guid="1740b27b-7707-416e-8898-c5c70faeff33"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="c7176c29-7a59-4a4e-acc9-d8dc61469e9f"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RequestActivated"
+ Guid="d6d42d81-41cf-4c46-8fb7-041f1e658f81"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RequestActivated"
+ Guid="32222a9f-be4c-4c65-816c-eaed9344f565"
+>
+<PreConditions>
+<PreCondition
+ Guid="b890be02-544f-4208-a965-a16d956207f7"
+>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="269d8c99-d657-4430-b1fa-23441fc79233"
+>THIS &lt;- Available.Send</Action><Action
+ Guid="10351692-e6d0-4c24-a8a5-c4dd447c8547"
+>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
+ Guid="52d89086-9f20-4d81-a6f8-6ebea2f52c96"
+>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Send"
+ Guid="457d9a54-d061-4398-b517-674bc867d69c"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="8a67473e-7f1c-4cb8-a949-2cff0616dd5e"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DisableRequestActivated"
+ Guid="e57a05fc-7128-4cdb-be68-73b3bdba8577"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DisableRequestActivated"
+ Guid="d7c9d5b4-1a7a-4766-881b-c2e95ed111bd"
+>
+<PreConditions>
+<PreCondition
+ Guid="6f43de01-ad61-482e-a797-672fe0cadb49"
+>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c6445829-36b0-4036-9597-d091b07cc78a"
+>THIS &lt;- Available.Idle</Action><Action
+ Guid="90b1f62a-1e43-4c1a-9a0f-bc76a20aa1f8"
+>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
+ Guid="36bd980f-daf7-45da-95f4-2f4dd8e5d074"
+>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State></States>
+</StateMachine></StateMachines>
+</Structure><Structure
+ Implemented="TRUE"
+ Name="VirtualBaliseCovers"
+ Guid="8d82b2e7-c222-4a96-8b3c-0c95390ca6d4"
+>
+<ReqRef
+ Id="d707ce86-136b-4d15-825e-ea898b0408ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7eb35b2d-181b-4894-b723-fea055d82961"
+>
+</ReqRef><StructureElement
+ TypeName="DMI.OutputInformation"
+ Default=""
+ Mode="Outgoing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="OutputInformation"
+ Guid="a38029a4-5491-4363-9561-e8d78c629e82"
+>
+</StructureElement><StructureElement
+ TypeName="ProcedureOutSM"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="ProcedureOut"
+ Guid="2751ca03-5c1d-45f5-af74-805e79f453e5"
+>
+</StructureElement><StateMachines>
+<StateMachine
+ Default="NotAvailable"
+ Implemented="TRUE"
+ Name="ProcedureOutSM"
+ Guid="6dfc1f12-f517-42e3-8899-75c0a04e57bd"
+>
+<States>
+<State
+ X="230"
+ Y="20"
+ Width="140"
+ Height="50"
+ Implemented="TRUE"
+ Name="NotAvailable"
+ Guid="844c1a43-e9e2-413b-b2af-d26bb5b7c0ab"
+>
+<StateMachine
+ Default="InitialState"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="66043bab-8ec3-428e-a11c-77730eafdfae"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="InitialState"
+ Guid="6317b4f7-40e8-4263-8df0-8b07a5e41629"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="3d275160-4673-4bf9-bf17-a18dcf80cdc7"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="7a883a47-b55c-4394-bd23-7bf626c8b021"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+ Guid="f73c946b-424b-4080-837e-18b2ffa0e627"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="1dab2460-c677-4f30-bb8e-82e4edafcc02"
+>THIS &lt;- NotAvailable.Idle</Action><Action
+ Guid="1ddcd189-7b1e-4a5b-ac6f-1ffd600663d3"
+>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Idle"
+ Guid="cf42f34d-6486-49fe-8a6d-1c0873290109"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="fbeddb6f-61f0-4a17-b07f-45b452aabd75"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="50"
+ Y="120"
+ Width="140"
+ Height="50"
+ Implemented="TRUE"
+ Name="NationalSystemAvailability"
+ Guid="ea4d7bb4-93a1-4cd1-b37e-efc51dafba93"
+>
+<StateMachine
+ Default="InitialState"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="436ec700-867b-49ef-9a9e-f57ffc8afbdb"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="InitialState"
+ Guid="8d6139fa-6f9e-49a1-849c-62b8911ddd7a"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="059e3269-55fd-4ad3-9d80-c443b132a54f"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="6ca22485-8da9-4186-b032-bc19124a289f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+ Guid="72942a38-967a-4d3e-9a56-556e6ac06f80"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="743fd981-a760-43ac-82c1-7a666bc07b71"
+>THIS &lt;- NationalSystemAvailability.Idle</Action><Action
+ Guid="77e78ebe-a2b4-4959-a8d0-65a5d25bb7e1"
+>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Idle"
+ Guid="a8e8b057-e82b-4705-8622-040e12dc1556"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="1e02f5fb-d868-46b5-b213-b4fa4612f3a2"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="410"
+ Y="120"
+ Width="140"
+ Height="50"
+ Implemented="TRUE"
+ Name="NotApplicable"
+ Guid="d3c49ab5-3547-4bfe-b89c-bc5c9a729569"
+>
+<StateMachine
+ Default="InitialState"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="e0f638e5-a242-483e-a94e-198e66fec7cf"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="InitialState"
+ Guid="ab53679f-b246-4cb5-93f2-9ba113fe967c"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="067f9441-5a56-43e5-9ed4-db36c172560b"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="74941d41-034c-4a7f-93ae-1e4d25a30aa5"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+ Guid="93ac92de-20a4-41ce-b26c-8b475531b13c"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9290f6b2-d361-40d2-b084-6c5663edee33"
+>THIS &lt;- NotApplicable.Idle</Action><Action
+ Guid="95bc37c6-5957-47b4-908d-b0479694c73f"
+>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Idle"
+ Guid="ad78c875-b3ac-467c-8bac-d9682ca7a8c9"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="adf16c16-c8c5-4f40-9744-4d4b852e6935"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="50"
+ Y="230"
+ Width="140"
+ Height="50"
+ Implemented="TRUE"
+ Name="Active"
+ Guid="3ff8e315-b1a0-4400-af88-e55db4ec9451"
+>
+<StateMachine
+ Default="InitialState"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="7c15d4e6-95c3-47dd-8704-c5dcdcff5421"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="InitialState"
+ Guid="04451b36-4e35-4077-83ce-39b8e2f9078c"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="b0fe1d47-476d-4df1-b45f-1e4f20355f70"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+ Guid="2b176f8d-0fcf-429a-8d01-1dccd0b60fb4"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+ Guid="d9ad7a79-4a0f-44a2-acc4-aaaf79a3adb6"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="fcd52190-66d3-41a4-8bae-4545c63be7d0"
+>THIS &lt;- Active.Send</Action><Action
+ Guid="af8b45f8-106d-4445-9a70-4a742d12d151"
+>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Send"
+ Guid="5f704aac-fe55-42e6-b346-a29daa203228"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="26b34d58-0da3-4805-81f3-bdd1546550fe"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="410"
+ Y="230"
+ Width="140"
+ Height="50"
+ Implemented="TRUE"
+ Name="Available"
+ Guid="0506e3cd-9cb1-42f3-84db-fb684ffa990d"
+>
+<StateMachine
+ Default="Idle"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="bff21558-c70c-462d-9e42-f556db4e192a"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Idle"
+ Guid="688ece1e-b75a-488f-aeb7-ce4df832fd54"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="889f521e-0fb5-49ad-9f8c-07ede34bfb25"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RequestActivated"
+ Guid="3dcf8c55-f8c4-429e-a886-c27f57b17b29"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RequestActivated"
+ Guid="6f632e1e-cd5e-4af1-b5eb-d233ebd84657"
+>
+<PreConditions>
+<PreCondition
+ Guid="bf32f300-3f75-4d60-8206-82d75f76b4e4"
+>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="dd3ebc50-1d26-4c70-a26c-e4b1c7ea7ff2"
+>THIS &lt;- Available.Send</Action><Action
+ Guid="833b6bea-87c7-4ecc-976e-8f17c8e4440f"
+>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
+ Guid="f21c62a8-f04d-4dde-97b3-a0836dd79e5f"
+>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Send"
+ Guid="f8279c9a-fc6a-4e7a-b747-f4663e97e332"
+>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="63ad96d0-c850-469e-94fc-dda97d7a4624"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DisableRequestActivated"
+ Guid="a8df12eb-5abc-4a8b-a6aa-fee077038c08"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DisableRequestActivated"
+ Guid="4d8d3a77-82ba-420a-b75b-df1fdb0caf47"
+>
+<PreConditions>
+<PreCondition
+ Guid="23c6a544-aa02-41dc-88c3-d861a92d3f21"
+>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a10d9403-dbac-4230-af0c-d918185b44b1"
+>THIS &lt;- Available.Idle</Action><Action
+ Guid="2c56b3c0-8ad3-4bb0-a9bf-a26337b952e4"
+>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
+ Guid="a0b618ec-e5b4-48fa-938d-d475504b5d9b"
+>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State></States>
+</StateMachine></StateMachines>
 </Structure></Structures>
 </NameSpace>
