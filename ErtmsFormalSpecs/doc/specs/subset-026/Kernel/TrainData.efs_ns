@@ -34,7 +34,7 @@
 <Enum
  Default="FreightTrainInG"
  Implemented="TRUE"
- Name="TrainCategory"
+ Name="TrainCategoryEnum"
  Guid="65ca8804-0dd2-4a11-a5e1-0b66cc57a1e8"
 >
 <ReqRef
@@ -44,19 +44,24 @@
 >
 </ReqRef><Values>
 <EnumValue
- Value="0"
+ Value="1"
  Name="FreightTrainInP"
  Guid="4a0fa528-76df-400d-a0ea-28d7d76933b4"
 >
 </EnumValue><EnumValue
- Value="1"
+ Value="2"
  Name="FreightTrainInG"
  Guid="8d6254e8-3b2d-461d-94df-c6cf7eef0a99"
 >
 </EnumValue><EnumValue
- Value="2"
+ Value="3"
  Name="PassengerTrain"
  Guid="a4c3f931-ea92-4857-9d64-dc91f4dfba2c"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="NoCategory"
+ Guid="f391123c-64da-409b-993b-67f769fcf785"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -64,7 +69,7 @@
 <Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="TrainCategories"
+ Name="TrainCategoriesStruct"
  Guid="ca4f188b-696b-4cfe-9689-c29ccde63c20"
 >
 <ReqRef
@@ -154,7 +159,7 @@
 >
 </ReqRef><Comment>Represents the train data that shall be acquired by the ERTMS/ETCS on-board equipment of a leading machine before starting a mission.</Comment>
 <StructureElement
- TypeName="TrainCategories"
+ TypeName="TrainCategoriesStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -915,19 +920,19 @@
 </StructureElement><StructureElement
  TypeName="Default.Levels"
  Default="[
-  Default.LevelData {
+  Default.LevelDataStruct {
      Value =&gt; Level.L1,
      NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
   },
-  Default.LevelData {
+  Default.LevelDataStruct {
      Value =&gt; Level.L2,
      NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
   },
-  Default.LevelData {
+  Default.LevelDataStruct {
      Value =&gt; Level.LNTC,
      NTC =&gt; 0
   },
-  Default.LevelData {
+  Default.LevelDataStruct {
      Value =&gt; Level.LNTC,
      NTC =&gt; 1
   }
@@ -1067,7 +1072,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="TrainCategory"
+ TypeName="TrainCategoryEnum"
  MaxSize="15"
  Default="[]"
  Implemented="TRUE"

@@ -234,13 +234,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Name="DisplaySafeRadioConnectionIndication"
  Guid="d6307365-8d30-4e2a-9fcf-3b3352326ce0"
 >
-<Parameters>
-<Parameter
- Type="EURORADIO.SafeRadioConnectionStatusEnum"
- Name="ConnectionStatus"
- Guid="b5c83aad-e34f-46aa-806f-c480e5474086"
->
-</Parameter></Parameters>
+<Comment>Displays the information relative to the Safe Radio Connection Indication on the DMI.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -254,7 +248,8 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d3fc4ae6-7738-4da0-aa4d-936ae89f08bd"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the mode has changed, update the state machine.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -278,9 +273,11 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Name="DisplayInformation"
  Guid="95cdfb7a-e0b9-4bbc-ab69-be735c6c85bb"
 >
+<Comment>Initialize the information to display.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DisplayInformation"
  Guid="17395850-5d3e-4e61-aad8-1c7373c67130"
@@ -290,9 +287,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 <Actions>
 <Action
  Guid="ab5492e2-dc5e-4b6f-a62d-902da0334a14"
->Out_SafeRadioConnectionIndication.OutputInformation.ShowRequestStatus &lt;- Request.Request</Action><Action
- Guid="121b68c9-a330-4b9c-a5b6-1e3b3514c0bc"
->Out_SafeRadioConnectionIndication.ConnectionStatus &lt;- ConnectionStatus</Action></Actions>
+>Out_SafeRadioConnectionIndication.OutputInformation.ShowRequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

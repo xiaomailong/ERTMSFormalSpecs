@@ -219,7 +219,7 @@ namespace DataDictionary.Rules
             ExplanationPart conditionExplanation = null;
             if (explanation != null)
             {
-                conditionExplanation = new ExplanationPart(this);
+                conditionExplanation = new ExplanationPart(this, Name);
                 explanation.SubExplanations.Add(conditionExplanation);
             }
 

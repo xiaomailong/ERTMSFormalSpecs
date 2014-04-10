@@ -107,10 +107,10 @@
  Guid="b1beb4b6-b347-4f9b-9b47-1a04ac8fabec"
 >Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- []</Action><Action
  Guid="c59a491a-47ad-4453-9574-c4c6a57d3d21"
->Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
+>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategoriesStruct
 {
     CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_150_mm,
-    OtherInternational =&gt; [Kernel.TrainData.TrainCategory.FreightTrainInP]
+    OtherInternational =&gt; [Kernel.TrainData.TrainCategoryEnum.FreightTrainInP]
 }</Action><Action
  Guid="6728dcb8-feb1-48de-a3b7-0a85f0480375"
 >BTM.LRBG&lt;- BTM.BaliseGroup
@@ -748,10 +748,10 @@ Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
     }
 }</Action><Action
  Guid="2909075a-701c-402a-b399-b6431cb3e3bb"
->Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
+>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategoriesStruct
 {
     CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_150_mm,
-    OtherInternational =&gt; [Kernel.TrainData.TrainCategory.FreightTrainInP]
+    OtherInternational =&gt; [Kernel.TrainData.TrainCategoryEnum.FreightTrainInP]
 }</Action><Action
  Guid="898464d4-d90b-4739-8573-5ca930c391ae"
 >Odometry.Accuracy &lt;- Odometry.OdometerAccuracy

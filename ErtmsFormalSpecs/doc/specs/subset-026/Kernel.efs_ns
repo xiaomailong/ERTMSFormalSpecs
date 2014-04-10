@@ -643,6 +643,11 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c55ee9c5-7a13-473c-9bb8-b979bdf99d99"
 >
+</ReqRef><ReqRef
+ Id="058ba686-ff06-4bed-b616-68b4fb4ea7fd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="da3c055f-f29b-4c93-92f7-a45bbe478b3c"
+>
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2652,7 +2657,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="c93836d3-b09a-4d4a-b58a-1cfad22208e6"
->EURORADIO.CurrentRBCConnection().SendTrainData()</Action><Action
+>EURORADIO.CurrentRBCConnection().SendValidatedTrainData()</Action><Action
  Guid="25234284-7931-4c74-95e3-64f894c62a48"
 >THIS &lt;- HandleModeChange.StartOfMission.S11.TrainDataSent</Action></Actions>
 </RuleCondition></Conditions>
@@ -3822,7 +3827,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="dbfb1ceb-17f2-417f-a80c-6e1d98ff2c85"
->DMI.MasterDMI().DisplaySafeRadioConnectionIndication( EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus )</Action><Action
+>DMI.MasterDMI().DisplaySafeRadioConnectionIndication()</Action><Action
  Guid="b8f2f399-bcea-4824-8a83-ebaca850d2c5"
 >THIS &lt;- HandleModeChange.StartOfMission.S10</Action></Actions>
 </RuleCondition></Conditions>
@@ -5073,6 +5078,11 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Id="83709cd5-3863-48a0-8264-34f65a482b28"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a2dec042-c1a9-4efc-8b8e-a0404ee12cdf"
+>
+</ReqRef><ReqRef
+ Id="058ba686-ff06-4bed-b616-68b4fb4ea7fd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e9960b09-de47-43e3-9f40-512447a679a4"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -7713,8 +7723,15 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="ShuntingInitiatedByDriver"
  Guid="5a7fa963-96b2-42be-8184-2cc360b711bb"
 >
+<ReqRef
+ Id="20733b5e-b944-4ff3-ba02-861e2acb6911"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e5e58675-2c5a-47dd-91a0-1fca9806011a"
+>
+</ReqRef><Comment>Procedure of selection of shunting by the driver.</Comment>
 <StateMachine
  Default="S0"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="e875fa5e-54c6-4251-8d93-3e40fcb5c46d"
 >
@@ -7725,7 +7742,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 </ReqRef><States>
 <State
- X="60"
+ X="340"
  Y="180"
  Width="100"
  Height="50"
@@ -7734,6 +7751,12 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D020"
  Guid="95067465-49bd-46e9-8e88-0b8fec0a7f75"
 >
+<ReqRef
+ Id="b80cbe68-fa35-407f-a0e0-6bd2ec431021"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1b34cc7f-1db2-45fc-a84d-77bac343342d"
+>
+</ReqRef><Comment>Selection of the next state according to the value of the level.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7747,11 +7770,12 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D020"
  Guid="9ce0a9a4-dded-4f14-8563-4c0f0a3d6eb5"
 >
+<Comment>Selection of the next state according to the value of the level.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Level 0, 1 or NTC"
+ Name="Level 0 or 1"
  Guid="73ff1112-04bf-4da6-8612-8bf58bab3de4"
 >
 <ReqRef
@@ -7759,10 +7783,11 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1b3d8825-4b55-4e07-9cef-8d1bbc01d72c"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>The level is 0 or 1 =&gt; go to state A050.</Comment>
+<PreConditions>
 <PreCondition
  Guid="ffa853eb-8045-483c-9238-3d411219528f"
->Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value in [Level.L0, Level.L1]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bef78fa3-f5bd-4faa-862c-979a5667c472"
@@ -7777,7 +7802,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="23c988ca-f536-48a5-b144-eda66ccc3b8a"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>The level is 2 or 3 =&gt; go to state A045.</Comment>
+<PreConditions>
 <PreCondition
  Guid="b2001e67-4fe2-4c52-881b-dea065f7d31c"
 >Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
@@ -7785,10 +7811,29 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Action
  Guid="952278d9-3147-4c88-843a-dc3b5e96cb2e"
 >THIS &lt;- ShuntingInitiatedByDriver.A045</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Level NTC"
+ Guid="f4c01e34-9b9b-48d6-b3c4-8ee0ac05180a"
+>
+<ReqRef
+ Id="19dd42a7-eddc-4da0-bfdf-815a2abb1795"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="576e987e-7f3a-4f62-9cb7-a25cc3b5f7d7"
+>
+</ReqRef><Comment>The level is NTC =&gt; go to state D030.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="bf16d39f-ea6c-48cc-a0c0-d6cf34945793"
+>Level.Value == Level.LNTC</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="393eaa91-d1d2-4d4c-ab2b-351100032613"
+>THIS &lt;- ShuntingInitiatedByDriver.D030</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="60"
+ X="340"
  Y="310"
  Width="100"
  Height="50"
@@ -7801,7 +7846,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="daccf528-ff16-41d4-a991-3ff842bcf6b9"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Handling the change of the mode.</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="99a0aaae-7b53-42f8-b325-c8b8800f4a38"
@@ -7823,7 +7869,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="18cbf140-868e-4319-a206-439cd4d83f27"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handling the change of the mode.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7831,6 +7878,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Transition to SH mode"
  Guid="442fb1aa-3f8c-4735-b124-0c53b99b8495"
 >
+<Comment>The mode of the kernel changes to SH.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -7849,7 +7897,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7b928e03-d1ca-48db-973a-0fd16d69383a"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handling the list of balises for SH mode.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7857,6 +7906,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="New list of balises received"
  Guid="4859e26e-bf53-4345-b287-d6c51a216c2a"
 >
+<Comment>If a new list of balises for SH area is received =&gt; replace the previous one by that list.</Comment>
 <PreConditions>
 <PreCondition
  Guid="fc2d9fa3-d834-42a2-8978-11653b10d672"
@@ -7871,6 +7921,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Balises not received"
  Guid="e656f476-87d2-4729-b734-be752aab5619"
 >
+<Comment>If the list of balises for SH area has not been received =&gt; clear the previously stored list.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -7882,7 +7933,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="360"
+ X="640"
  Y="180"
  Width="100"
  Height="50"
@@ -7895,7 +7946,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1f87655d-ba74-4c04-b5c7-13609c070a27"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Sending of Request for Shunting message to the RBC.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7928,7 +7979,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9d1860a2-7233-48d5-98d3-8a8abf91b3d6"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Sending of Request for Shunting message to the RBC.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7951,7 +8003,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="360"
+ X="640"
  Y="310"
  Width="100"
  Height="50"
@@ -7964,7 +8016,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3fb5be99-7354-40a5-ad11-dbabc46d8082"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Handling of RBC reply to Shunting request.</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="fc4bab8b-d4c9-43dc-b852-f72a29c05c85"
@@ -7981,7 +8034,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="69f582ba-0c1a-4628-bf27-ccf068c06313"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handling of RBC reply to Shunting request.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7993,7 +8047,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a5be16d0-80af-48b6-92e8-583bd9c2364f"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If shunting is authorised =&gt; go to state A050.</Comment>
+<PreConditions>
 <PreCondition
  Guid="d075df1e-8e73-44f1-a0a9-974b22889c71"
 >Available ( EURORADIO.CurrentRBCConnection().MessageIn.SH_AUTHORISED )</PreCondition></PreConditions>
@@ -8011,7 +8066,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="148ce468-0b87-4a22-8f5b-f6637d01709a"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If shunting is refused =&gt; go to state A220.</Comment>
+<PreConditions>
 <PreCondition
  Guid="93d54865-8d2f-441e-a570-f13e9e6ca697"
 >Available ( EURORADIO.CurrentRBCConnection().MessageIn.SH_REFUSED )</PreCondition></PreConditions>
@@ -8029,7 +8085,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a7102418-c7c7-4637-80bd-32196b172196"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>If no answer received and maximum number of requests sent =&gt; close the RBC session and inform the driver.</Comment>
 <PreConditions>
 <PreCondition
  Guid="a4e05313-ab68-48d5-baf5-b37b99f603b5"
@@ -8052,7 +8108,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f8c98e75-06a3-4047-8d98-b9d6c2bbf0f8"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If no answer is received and a new request can be sent =&gt; send it.</Comment>
+<PreConditions>
 <PreCondition
  Guid="703f0fc4-324a-46be-893f-ec651b9a63f0"
 >Shunting.TimeOfTheLastSentRequest + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition><PreCondition
@@ -8076,7 +8133,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9db70fb3-9039-48eb-ae66-90e0d9b45609"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If no answer can be received since there is no active RBC session =&gt; go to procedure Override.</Comment>
+<PreConditions>
 <PreCondition
  Guid="d6202868-bcf4-4f46-923c-0e55b57d2935"
 >NOT EURORADIO.HasActiveSession()</PreCondition></PreConditions>
@@ -8087,7 +8145,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="660"
+ X="940"
  Y="240"
  Width="100"
  Height="50"
@@ -8100,7 +8158,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="274e99ee-bf8c-466f-8e3b-35c34be28b3b"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Handling the indication of SH refused by RBC to the driver.</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="1ee9562c-cef1-4b8e-956e-0fb384bc9728"
@@ -8117,7 +8176,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="904dc73c-a5a6-4cb8-8318-0dd58e9647e8"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handling the indication of SH refused by RBC to the driver.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -8138,6 +8198,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Post action"
  Guid="62d75bd9-9e9b-46fd-8ced-170f9fafb470"
 >
+<Comment>Handling the rejection of SH or ending the procedure.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -8155,7 +8216,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="afa8da70-ce56-43c2-9416-8a7392a3fc1a"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If shunting was rejected by the RBC and the process was initiated by StartOfMission procedure =&gt; go back to the procedure StartOfMission.</Comment>
+<PreConditions>
 <PreCondition
  Guid="5d6491bd-29e9-4cf4-aef7-2175d77a52df"
 >Kernel.Mode == Mode.SB</PreCondition></PreConditions>
@@ -8173,7 +8235,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b55c00c2-c9a6-4d13-afcd-b22de9ae6a58"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If shunting was rejected by the RBC and the process was initiated by TrainTrip procedure =&gt; go back to the procedure TrainTrip.</Comment>
+<PreConditions>
 <PreCondition
  Guid="afd3f1fb-97b7-4c7f-8e71-de40a522db68"
 >Kernel.Mode == Mode.PT</PreCondition></PreConditions>
@@ -8191,7 +8254,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e4cf9c00-758a-45b9-9e8b-c9cdba972035"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Otherwise, the procedure ends.</Comment>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action
@@ -8202,7 +8266,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="60"
+ X="340"
  Y="440"
  Width="100"
  Height="50"
@@ -8211,6 +8275,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D040"
  Guid="32690c60-78f6-4253-abc0-14d33296596c"
 >
+<Comment>Selection of the next state according to the fact that a mission is on-going or not.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -8224,6 +8289,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D040"
  Guid="e229136f-c6df-42ed-a357-5d03c9e03016"
 >
+<Comment>Selection of the next state according to the fact that a mission is on-going or not.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -8236,7 +8302,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="38624254-624b-4f64-a8b7-c96d12a15148"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If there is an on-going mission =&gt; go to state A100.</Comment>
+<PreConditions>
 <PreCondition
  Guid="4edd262e-d96e-4f4d-b90b-ce3f18efbc27"
 >MissionIsOnGoing</PreCondition></PreConditions>
@@ -8254,7 +8321,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="05c48ee3-48d3-4a13-85ca-6120a19aa371"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If there is no on-going mission =&gt; go to state D080.</Comment>
+<PreConditions>
 <PreCondition
  Guid="de45559b-a7c3-469b-a3db-04d9651f32a6"
 >NOT MissionIsOnGoing</PreCondition></PreConditions>
@@ -8265,7 +8333,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="660"
+ X="940"
  Y="570"
  Width="100"
  Height="50"
@@ -8278,7 +8346,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9d8a829d-f6fc-4a2f-8414-f4ba07d66149"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Waiting for the RBC order to terminate the communication session.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -8301,7 +8369,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="df7cf555-db4c-4d70-bf62-1b18c82c5f04"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Waiting for the RBC order to terminate the communication session.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -8309,6 +8378,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E055: RBC order to terminate session"
  Guid="0c52b9e6-ecd6-48f2-94e1-19fb5aeeba69"
 >
+<Comment>If an order to terminate the communication session is received =&gt; go to state A115.</Comment>
 <PreConditions>
 <PreCondition
  Guid="c39189e5-1965-4459-a3a9-c5b49d00b0ad"
@@ -8332,7 +8402,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="959b34e2-b05b-4e1a-9342-2a2454491f3f"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If no order is received and maximum number of sent request has been reached =&gt; close the session and end the process.</Comment>
+<PreConditions>
 <PreCondition
  Guid="f83d0a79-efb0-4b17-a420-f110e0ec8e98"
 >EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition
@@ -8356,7 +8427,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c2fb3477-d7f0-4e19-8238-80f0cc6111f7"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If no order is received and maximum number of sent request not yet been reached =&gt; send a new position report.</Comment>
+<PreConditions>
 <PreCondition
  Guid="025ce385-7c44-4331-a241-95eda2d2b47f"
 >EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition
@@ -8373,7 +8445,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="360"
+ X="640"
  Y="570"
  Width="100"
  Height="50"
@@ -8386,7 +8458,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f6605446-f406-4ac7-b038-e2c5e750b5f1"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Handling the termination of communication session.</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="e354ba8a-60cc-4bd2-a3aa-01fb910c0531"
@@ -8408,7 +8481,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e9a771f5-dbc5-412c-9c84-d60f7193a3ac"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handling the termination of communication session.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -8427,7 +8501,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="60"
+ X="340"
  Y="570"
  Width="100"
  Height="50"
@@ -8440,7 +8514,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8514be0a-31af-42b1-97ad-8ec7fa0d1ea0"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>The process goes to EndOfMission procedure.</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="6ab22cb8-a055-4a4f-adc1-0ccc6387c9ad"
@@ -8457,7 +8532,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b3f55248-c77f-4a13-8730-3b28b95c1b3a"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>The process goes to EndOfMission procedure.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -8474,7 +8550,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="360"
+ X="640"
  Y="440"
  Width="100"
  Height="50"
@@ -8483,6 +8559,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D080"
  Guid="aa44865b-d148-4421-8e75-9534d4acc95d"
 >
+<Comment>Selection of the next state according to the value of the level.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -8496,6 +8573,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D080"
  Guid="b53b19a7-5eb2-46a7-b984-3790293d8701"
 >
+<Comment>Selection of the next state according to the value of the level.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -8508,7 +8586,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2ba57cb6-89a0-4efe-861f-93dece9abe68"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the level is 2 or 3 =&gt; go to A095.</Comment>
+<PreConditions>
 <PreCondition
  Guid="772df137-5869-413e-a9ca-58bca24c175a"
 >Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
@@ -8526,7 +8605,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1718c037-ab70-4bd7-b92a-f19c8266af84"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the level is 0, 1 or NTC =&gt; end the process.</Comment>
+<PreConditions>
 <PreCondition
  Guid="bd217358-4b3b-44c5-a07e-ff50d034ca15"
 >Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
@@ -8537,7 +8617,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="660"
+ X="940"
  Y="440"
  Width="100"
  Height="50"
@@ -8550,7 +8630,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="194165da-42ba-4403-a0c0-71a5c1283974"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Reporting of the mode change to the RBC.</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="41a8e49a-0abe-4b7c-965a-4c8af46ab74f"
@@ -8567,7 +8648,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dea28a27-2eef-4593-81e5-d70a73427c19"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Reporting of the mode change to the RBC.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -8584,7 +8666,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="60"
+ X="340"
  Y="50"
  Width="100"
  Height="50"
@@ -8593,6 +8675,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S0"
  Guid="f71656f0-0cae-4203-ba1c-ef505c76bd79"
 >
+<Comment>Initial state, no action.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -8615,7 +8698,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e9a71f02-3c04-4b75-97bd-f245a19f4eee"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Initial state, no action.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -8629,6 +8713,127 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Action
  Guid="2aeaa58b-0780-494f-b6a2-81fc67112263"
 >THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.D020</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="40"
+ Y="250"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="D030"
+ Guid="f0ae028f-dd4b-41c6-9922-ad36cc7ef4d9"
+>
+<ReqRef
+ Id="5c8448a3-da14-4f33-8469-90326aacfdaa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bdaf71db-e27c-43ae-8d1d-5965e7d60b1c"
+>
+</ReqRef><Comment>Selection of the next state according to the status of National Trip procedure.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="36621e76-b388-4fe6-8c71-f80fb77f1282"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="D030"
+ Guid="3e6ee612-39fe-4bd7-a7ff-c9d2255020a0"
+>
+<ReqRef
+ Id="5c8448a3-da14-4f33-8469-90326aacfdaa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="df079051-87e2-45ba-bca9-bfca208a7c55"
+>
+</ReqRef><Comment>Selection of the next state according to the status of National Trip procedure.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="A National Trip procedure is on-going"
+ Guid="1ee371ff-61f7-454d-8ed0-ed3b99390e70"
+>
+<ReqRef
+ Id="7df12dee-2836-487c-b425-429f870ed1a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae9c25b9-fc4c-4c70-8275-9ef046102434"
+>
+</ReqRef><Comment>If there is an on-going National Trip procedure =&gt; go to state A030.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="e32b210c-5d4e-46b7-a6c2-5701542c4676"
+>STM.NationalTripProcedureIsOnGoing</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3ef9358a-a7be-4dfa-bb4d-516474d07fcb"
+>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.A030</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="No National Trip procedure is on-going"
+ Guid="513d43c3-e87a-4edb-ba5a-eb7a04abce8c"
+>
+<ReqRef
+ Id="2b84288f-8f44-4b3d-bc37-e1534d27fc7a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5e195697-5e81-497c-8739-5292a56f8064"
+>
+</ReqRef><Comment>Otherwise =&gt; go to state A050.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e9e0c8ec-265d-4b83-b310-04864ead6e1e"
+>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.A050</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="40"
+ Y="440"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="A030"
+ Guid="7467068e-dbd4-4a09-9145-cc63df1de33f"
+>
+<ReqRef
+ Id="1e58eff1-39ce-4df0-89c9-6052cd28d07e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="90ce3c01-8c4f-4924-b2e6-caa6fc97a810"
+>
+</ReqRef><Comment>The process goes to TrainTrip procedure.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="07848af9-ef86-44b4-9e7c-581619a57846"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="A030"
+ Guid="285161fa-480d-4d01-96c1-ba6b6a558e43"
+>
+<ReqRef
+ Id="1e58eff1-39ce-4df0-89c9-6052cd28d07e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c695118a-cf4d-4343-81f1-cfbf29c75e37"
+>
+</ReqRef><Comment>The process goes to TrainTrip procedure.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="A030"
+ Guid="5d4c726b-e6c7-487e-af1b-230a7a1fd06b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="6b2d7720-aa46-4b65-8e47-5706510f74c8"
+>THIS &lt;- HandleModeChange.TrainTrip</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -8664,7 +8869,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="506d51aa-ffb9-4859-8c5f-e8230a898149"
 >
 </ReqRef><StateMachine
- Default="Step1"
+ Default="HandleStoredData"
  NeedsRequirement="FALSE"
  Guid="4ccf6d96-0cea-4fdf-a8d9-beb8ff7b27b9"
 >
@@ -8679,8 +8884,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Y="50"
  Width="100"
  Height="50"
- Implemented="TRUE"
- Name="Step1"
+ Name="HandleStoredData"
  Guid="1567d30f-5183-48ce-b1a7-cade4622fd71"
 >
 <ReqRef
@@ -8688,26 +8892,18 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9e196481-77ec-4890-becd-caca5b8c8ada"
 >
-</ReqRef><StateMachine
- Default="Step1"
- Guid="719c5fb9-732b-4373-9bd1-64a299d6348f"
->
-<States>
-<State
- Implemented="TRUE"
- Name="Step1"
- Guid="dae928e5-f021-4d0a-ae41-5f3bf41fff18"
->
+</ReqRef><Comment>Delete MA, Track Description Data and Train Data</Comment>
 <StateMachine
- Guid="bf08df8a-3a2f-4bae-aa3a-96a746b27c69"
+ Implemented="TRUE"
+ Guid="719c5fb9-732b-4373-9bd1-64a299d6348f"
 >
 <Rules>
 <Rule
  Priority="Processing"
- Implemented="TRUE"
  Name="Check communcation sessions"
  Guid="9f6c5d1a-2206-45cf-ab5a-4e89313e28e1"
 >
+<Comment>Select next step according to status of communication sessions</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -8719,14 +8915,15 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c349d0dd-d541-4667-814a-3eb174f3a499"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If there is an RIU session =&gt; terminate it.</Comment>
+<PreConditions>
 <PreCondition
  Guid="d81d9ff0-6e30-4c4a-9960-b2307cb95a39"
 >False</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3633e19b-b668-45b2-bdab-c8a2960c36e1"
->THIS &lt;- Step2_RIU</Action></Actions>
+>THIS &lt;- HandleRIUConnection</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Euroradio session exists"
@@ -8737,14 +8934,15 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="732dfe67-7c31-46c4-bf87-9d265ee2246b"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If there is one or several RBC communication sessions =&gt; terminate them.</Comment>
+<PreConditions>
 <PreCondition
  Guid="688ad93f-5342-42f9-b1cf-7adfc4099978"
 >EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="749dbeb8-66b4-4e90-8f8b-95621be527ee"
->THIS &lt;- Step2_Euroradio</Action></Actions>
+>THIS &lt;- HandleRBCConnections</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No communication sessions"
@@ -8760,7 +8958,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7903f8d8-ec93-4864-8bfc-0fe35b988092"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If no communication session exists =&gt; go to exit state.</Comment>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action
@@ -8768,14 +8967,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >THIS &lt;- ExitState</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</StateMachine></State></States>
 </StateMachine></State><State
- X="690"
- Y="50"
+ X="680"
+ Y="270"
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="Step2_Euroradio"
+ Name="HandleRBCConnections"
  Guid="4a4442ff-24e6-4794-b7fd-8019ffe0568a"
 >
 <ReqRef
@@ -8783,58 +8981,159 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f88dd91-b701-4076-89c4-1dbae1faeeb9"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Handles the temrination of the RBC connection(s).</Comment>
+<StateMachine
+ Default="DisconnectPrimaryConnection"
+ Implemented="TRUE"
  Guid="2150b33f-5d47-4d14-9eed-4e50b52b58b8"
+>
+<States>
+<State
+ X="40"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DisconnectPrimaryConnection"
+ Guid="b1f5625e-2a07-4137-8062-491050cf3f50"
+>
+<ReqRef
+ Id="b9145b48-24bf-42d2-a2ad-8283dc888f3b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d502584c-2c43-4516-bd07-8c2c90a87f1e"
+>
+</ReqRef><Comment>First, disconnect the primary connection.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="ad7b0706-43ae-45cc-bfaf-4ca7cdf894e1"
 >
 <Rules>
 <Rule
  Priority="Processing"
- Name="Send End of Mission"
- Guid="ed84ed3f-68ec-4db0-a48b-fae5b849e628"
+ Implemented="TRUE"
+ Name="Disconnect primary connection"
+ Guid="b8383795-f3cb-45b2-bd4d-f1592f131b20"
 >
+<Comment>First, disconnect the primary connection.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Send End of Mission"
- Guid="4c198df6-1a24-4699-91e2-0034081e9dbc"
+ Implemented="TRUE"
+ Name="Disconnect primary connection"
+ Guid="41205200-c0d4-4b81-b5fe-8e93e6f72265"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="fee0628a-3a16-4a1e-b4b7-32307d0154e3"
->EURORADIO.CurrentRBCConnection().SendEoMReport()</Action><Action
- Guid="79f27736-0b0e-4f3f-8ea1-26db0a692105"
->THIS &lt;- Step3</Action><Action
- Guid="ae7a5d9a-f7cc-436a-8054-cca8f1ca33a5"
->LastEoMRequestTime &lt;- CurrentTime</Action><Action
- Guid="77ff829d-067e-4e88-b189-763cb81bc53e"
->NumberOfSentEoMRequestRepetitions  &lt;- 0</Action></Actions>
+ Guid="56427b99-34ca-4914-bbb0-ef26e4909131"
+>EURORADIO.CurrentRBCConnection().ExecuteEndOfMission()</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Post actions"
+ Guid="65d86c80-8e83-4b39-87fc-f4f1ddeef874"
+>
+<Comment>Handle next state.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Secondary connection exists"
+ Guid="ba75f38d-e941-45d0-82f5-c3e5ed006f49"
+>
+<Comment>If there is a secondary connection =&gt; terminate it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="74beabb9-3bd4-453c-88c9-a53147d14eec"
+>EURORADIO.SecondaryRBCConnection().SafeRadioConnectionStatus != EURORADIO.SafeRadioConnectionStatusEnum.NoConnection</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f8cdb70f-52fc-4596-8cbd-f9faf1e9fd23"
+>THIS &lt;- DisconnectSecondaryConnection</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Otherwise"
+ Guid="762656f3-e5ab-4283-893a-b79312c424f0"
+>
+<Comment>Otherwise, terminate the procedure.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a7d0b427-0ada-4944-b8c3-3e665a1577f8"
+>THIS &lt;- ExitState</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="370"
- Y="160"
- Width="100"
- Height="50"
- Name="Step2_RIU"
- Guid="8366468a-03b0-43fc-92d9-fbe146ea45af"
->
-<StateMachine
- Default="CloseSession"
- Guid="46cf0d6d-e5c4-4a0c-bd20-c90efd26f5f7"
->
-<States>
-<State
- X="50"
+ X="350"
  Y="60"
  Width="100"
  Height="50"
- Name="CloseSession"
- Guid="bcd99e34-a311-44c7-abbb-4f7c9f54100b"
+ Implemented="TRUE"
+ Name="DisconnectSecondaryConnection"
+ Guid="d38adbc8-9351-48c5-95cc-af3bda4a0709"
 >
+<ReqRef
+ Id="b9145b48-24bf-42d2-a2ad-8283dc888f3b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c24527f4-287f-4085-8c79-401cc66bd28f"
+>
+</ReqRef><Comment>Then disconnect the secondary connection, if any.</Comment>
 <StateMachine
- Guid="a6264b45-10c0-40db-bf79-fb5781af616b"
+ Implemented="TRUE"
+ Guid="b8bac2c1-6a0a-4457-8d95-314e367d41c3"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disconnect secondary connection"
+ Guid="2739c179-94b8-4598-87d1-198fc4e9f0a3"
+>
+<ReqRef
+ Id="c55df22b-a932-48aa-9c94-b034916ab339"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e6e55f81-129d-4ef9-915d-a790fe8233e8"
+>
+</ReqRef><Comment>Disconnects the secondary connection.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disconnect secondary connection"
+ Guid="956cbcbe-449d-4945-9bc2-2b4f1c6dba78"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ee48e81e-a69f-445f-8080-ba952daa3e4e"
+>EURORADIO.SecondaryRBCConnection().ExecuteEndOfMission()</Action><Action
+ Guid="655ec492-bb16-4404-8bf2-5e594a57e5ae"
+>THIS &lt;- ExitState</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="680"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="HandleRIUConnection"
+ Guid="8366468a-03b0-43fc-92d9-fbe146ea45af"
+>
+<ReqRef
+ Id="afd0107b-e36b-4b26-a0f0-1071084bc3e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ca58586-5432-4186-b211-b3e8721b176c"
+>
+</ReqRef><Comment>Handles the termination of the RIU connection.</Comment>
+<StateMachine
+ Guid="46cf0d6d-e5c4-4a0c-bd20-c90efd26f5f7"
 >
 <Rules>
 <Rule
@@ -8842,6 +9141,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Close the session"
  Guid="8098ccb4-7677-4854-af3c-c5bcc5db4f7d"
 >
+<Comment>Handle the termination of the RIU connection.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -8851,36 +9151,15 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action
- Guid="4c2eef6c-7cac-4fcb-a3d3-85a5b06b34be"
->THIS &lt;- CheckEuroradio</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="290"
- Y="60"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="CheckEuroradio"
- Guid="50471b19-86f8-4ef9-b948-1f50ea595082"
->
-<ReqRef
- Id="219ceefb-8943-4c10-a74d-b6ef703ec766"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9c38b086-8d01-43b2-a925-32d200149df0"
->
-</ReqRef><StateMachine
- Implemented="TRUE"
- Guid="62f41bb5-570a-486e-8df7-51df85810923"
->
-<Rules>
+</Actions>
+<SubRules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Check Euroradio session"
  Guid="e77c920c-fabd-473c-8715-89e05546f874"
 >
+<Comment>Handle the termination of the RIU connection.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -8893,14 +9172,15 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fd27af7d-cb84-481c-8908-cddd2c67e3cf"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If there is one or several active RBC connections =&gt; close them.</Comment>
+<PreConditions>
 <PreCondition
  Guid="966f5d84-2ebc-4c82-bc45-fb6b079b3ded"
 >EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="977f4308-39ae-456c-af15-8f71fee34958"
->THIS &lt;- Step2_Euroradio</Action></Actions>
+>THIS &lt;- HandleRBCConnections</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No Euroradio session"
@@ -8911,149 +9191,20 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9ae62e5c-b070-4206-844d-1796d32ed1f9"
 >
-</ReqRef><PreConditions>
+</ReqRef><ReqRef
+ Id="219ceefb-8943-4c10-a74d-b6ef703ec766"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6c177068-3166-47c8-aa0d-aeec5b1b1354"
+>
+</ReqRef><Comment>If no RBC connection is active =&gt; terminate the procedure.</Comment>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="38fe2543-4bcb-4733-bc17-100daa0af254"
 >THIS &lt;- ExitState</Action></Actions>
 </RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State><State
- X="690"
- Y="160"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Step3"
- Guid="b546d04b-2b38-4cfa-84dc-a3dcdc75191b"
->
-<ReqRef
- Id="d59dd844-f144-4d73-a4eb-ba5f21dd2958"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="78b19fed-4f6e-44e2-a339-30a7401a2dca"
->
-</ReqRef><StateMachine
- Implemented="TRUE"
- Guid="544c591b-25c2-4bd1-a8fa-9fca4cd757f0"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Wait the RBC acknowledgement"
- Guid="79451fce-4d8f-41ba-8356-4b151a8b941f"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Wait the RBC acknowledgement"
- Guid="edc963b9-4178-40c9-8217-6273839ebf4e"
->
-<ReqRef
- Id="d59dd844-f144-4d73-a4eb-ba5f21dd2958"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0da56be7-ed31-4193-ac65-59bf3f25fbeb"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="49691eaa-cac5-4022-999a-670821941aab"
->Available ( EURORADIO.CurrentRBCConnection().MessageIn.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="0e63c2e4-a55c-45be-9c65-78d94b3e6434"
->THIS &lt;- Step4</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="No answer, maximum number of requests reached"
- Guid="b556f96e-5c48-4a05-b99c-54225def3464"
->
-<ReqRef
- Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="71247933-7133-4d5f-97e4-bb9b809f52f4"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="914108b9-9fe1-4436-ac49-f064969316ff"
->LastEoMRequestTime + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition><PreCondition
- Guid="fe25eb63-29d2-45bb-a3f3-d7d1ec729cf1"
->NumberOfSentEoMRequestRepetitions == 3</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7c9db121-a667-4cdf-b45c-984dac803eb8"
->THIS &lt;- Step4</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="No answer, a new request can be sent"
- Guid="9241ccdb-7d0b-4eac-98ec-396d8a7d13eb"
->
-<ReqRef
- Id="4d7758a5-c99b-4537-8da4-a51b99dafd40"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a2c94069-b90b-46de-a82c-7460b8085380"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="f304703f-8e3d-48bd-8909-5f172aec3f29"
->LastEoMRequestTime + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7fbed012-8ff1-4b63-979e-ee7eb21cab89"
->EURORADIO.CurrentRBCConnection().SendEoMReport()</Action><Action
- Guid="12d67a3e-c1ff-4622-a75f-772f36316780"
->NumberOfSentEoMRequestRepetitions  &lt;- NumberOfSentEoMRequestRepetitions  + 1</Action><Action
- Guid="744e2793-5a3d-4c7e-87dc-a9d2d9055b21"
->LastEoMRequestTime &lt;- CurrentTime</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="690"
- Y="270"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Step4"
- Guid="f582c554-ac6d-4a93-aa9d-211585558e46"
->
-<ReqRef
- Id="e86b435b-86a1-4af1-a9af-e87aaca847d9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="313345cd-8c83-4709-9574-20e32d5023cb"
->
-</ReqRef><ReqRef
- Id="c55df22b-a932-48aa-9c94-b034916ab339"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="960c8850-4ebf-4c1a-a132-edf96256eefa"
->
-</ReqRef><StateMachine
- Implemented="TRUE"
- Guid="1ebede1f-860a-4d75-a534-b95932be62ed"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Terminate the communication session"
- Guid="a490b958-9dcc-4b3d-b358-30bc62ca140c"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Terminate the communication session"
- Guid="be7351bb-0071-494f-8cab-8ba824d44965"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="8045ba7f-dc4e-44fe-9d1f-e0e4bfb71a6c"
->EURORADIO.CloseRBCSession()</Action><Action
- Guid="1eb1065f-f872-4182-98ac-f4131874d547"
->THIS &lt;- ExitState</Action></Actions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9061,29 +9212,53 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Y="270"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="ExitState"
- Guid="7e384c49-e042-437c-9389-755f78cec11c"
+ Guid="7e478844-4ef1-4a43-9f49-dd2a3949152d"
 >
+<ReqRef
+ Id="c55df22b-a932-48aa-9c94-b034916ab339"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="274790c9-ab2a-4959-909c-e81a26bb4ea6"
+>
+</ReqRef><ReqRef
+ Id="6cb672e1-5b1b-46b0-86fb-2ea853009bd5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b1cd2418-7d72-44e5-b457-1141a2f7fae8"
+>
+</ReqRef><ReqRef
+ Id="f31f1b65-224b-4941-9951-eebbd7994a51"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="539c6468-14c0-40db-90ff-6feb005e617c"
+>
+</ReqRef><Comment>Terminates the procedure, if all the communication sessions are closed.</Comment>
 <StateMachine
- Guid="2358199a-4aec-4c4c-9214-6547abbdff8e"
+ Implemented="TRUE"
+ Guid="e636fcf5-25f8-44ee-ba88-9a8fccede424"
 >
 <Rules>
 <Rule
  Priority="Processing"
- Name="Go to NoProcedure"
- Guid="02964527-7a2a-483e-92ab-56908d8a1218"
+ Implemented="TRUE"
+ Name="Terminate the procedure"
+ Guid="71267c79-1ea1-478f-b92f-dbb20f2c623d"
 >
+<Comment>Terminates the procedure, if all the communication sessions are closed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Go to NoProcedure"
- Guid="82bd2c64-935f-4d2d-8fc5-24b460403728"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Terminate the procedure"
+ Guid="93baf038-47dc-42db-8f77-3c04f5124d38"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="a02606a4-37e3-46fe-a48a-3ab979fded76"
+>NOT EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="aaa190fc-eb53-4dac-890c-434b4714d0b8"
+ Guid="dec015ec-e2fa-4393-ab4a-ca4a8e6a72ca"
 >THIS &lt;- NoProcedure</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -9226,24 +9401,27 @@ INITIAL_VALUE EmergencyStop
 </Function></Functions>
 <Procedures>
 <Procedure
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleInputs"
  Guid="584e61f2-ed38-4424-b1ba-2838e620ef92"
 >
+<Comment>This procedure handles the inputs from the trackside and updates some internal variables according to these inputs.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleOdometryInputs"
+ Name="Handle Odometry inputs"
  Guid="e4c388a2-a672-48e4-97a3-b3582fe5de15"
 >
 <Comment>When a new odometer message is received, its content is copied to EFS internal variables.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleOdometryInputs"
+ Name="Handle Odometry inputs"
  Guid="89da51a5-25d5-4e71-9880-7fe2360f042f"
 >
 <Comment></Comment>
@@ -9259,7 +9437,7 @@ INITIAL_VALUE EmergencyStop
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="EndOfLinkingExpectationWindow"
+ Name="End of linking expectation window"
  Guid="ed7ec36f-0544-4ec7-b13f-df040e8b4162"
 >
 <ReqRef
@@ -9306,15 +9484,16 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleBTMInputs"
+ Name="Handle BTM inputs"
  Guid="1ba806ee-8de8-4b1e-bb93-49c5dce8f696"
 >
 <Comment>When a new balise telegram is received, its content is copied to EFS internal variables.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleBTMInputs"
+ Name="Handle BTM inputs"
  Guid="7a73e5ba-e5fc-4096-af34-3907ed746ba0"
 >
 <Comment></Comment>
@@ -9329,39 +9508,66 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleEuroradioInputs"
- Guid="a44cdf33-d2d1-4a50-bee1-1e8a4d369e5e"
+ Name="Handle Euroradio inputs: current connection"
+ Guid="6a2115bc-b8ee-49c2-809f-4744f6c68146"
 >
-<Comment>When a new Euroradio message is received, its content is copied to EFS internal variables.</Comment>
+<Comment>Handles the message possibly received by the current RBC connection.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="HandleEuroradioInputs"
- Guid="810401ba-03c4-413d-9f2f-e36d05cd1e2c"
+ Name="Handle message of current connection"
+ Guid="06a6283e-cac3-42cb-8f3c-747a97ff1b67"
 >
-<Comment></Comment>
 <PreConditions>
-<PreCondition
- Guid="35f4654b-992f-4b4c-9318-2ddf91f122cd"
->Available ( EURORADIO.CurrentRBCConnection().MessageIn )</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
- Guid="270355f9-a67e-4ee4-bd78-9be50017414d"
->EURORADIO.HandleEuroradioMessage ( EURORADIO.CurrentRBCConnection().MessageIn )</Action></Actions>
+ Guid="de49db01-c702-4a6c-80db-bb9c911035c1"
+>EURORADIO.CurrentRBCConnection().HandleIncomingMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdateKernelMode"
- Guid="5ef397e3-af33-402c-99eb-ed9d13e71490"
+ Name="Handle Euroradio inputs: secondary connection"
+ Guid="2e755da5-b35e-4557-a4e3-6661811f7db2"
 >
+<Comment>Handles the message possibly received by the Accepting RBC, if any.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdateKernelMode"
+ Name="Handle message of the secondary connection"
+ Guid="420b0a6e-d2e9-489e-b36c-f499923ad36b"
+>
+<PreConditions>
+<PreCondition
+ Guid="0615ef78-ba68-4316-9d28-7195f09d58c9"
+>EURORADIO.SecondaryRBCConnection() != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a9acaf82-0005-4df9-9136-1782918819f3"
+>EURORADIO.SecondaryRBCConnection().HandleIncomingMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update kernel mode"
+ Guid="5ef397e3-af33-402c-99eb-ed9d13e71490"
+>
+<Comment>Updates the mode of the kernel according to the new information.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update kernel mode"
  Guid="45b9c95e-9f54-4abe-bbff-0871fc9b2d19"
 >
 <PreConditions>
@@ -9373,15 +9579,18 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdatePositionState"
+ Name="Update position state"
  Guid="93bb3397-8d79-479a-8b34-82019ceaf626"
 >
+<Comment>Updates the state of the position of the train according to the state of the LRBG.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdatePositionState"
+ Name="Update position state"
  Guid="a9a96b78-8a60-4a7e-a910-428dc529e983"
 >
 <PreConditions>
@@ -9393,15 +9602,18 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitializeInternalVariables"
+ Name="Update monitoring"
  Guid="6689bf93-bb50-4ebe-8a0a-cdddff0a3693"
 >
+<Comment>Updates speed and distance monitoring according to the received information.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitializeInternalVariables"
+ Name="Update monitoring"
  Guid="48d9f05a-c508-4f31-9cac-049a3c56b5c5"
 >
 <PreConditions>
@@ -9413,13 +9625,21 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Name="UpdateEOA"
+ Implemented="TRUE"
+ Name="Update EOA"
  Guid="930bec6a-53b0-4496-b3b9-1d82d5aafcfc"
 >
+<ReqRef
+ Id="e0b44a69-1080-47e9-80b7-b635996f4239"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c27bfc1-d9e1-417d-81ae-c333a34f835a"
+>
+</ReqRef><Comment>Updates the list of Ends of Authority.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="UpdateEOA"
+ Implemented="TRUE"
+ Name="Update EOA"
  Guid="d7ab7899-fe7e-4f3d-963b-654c6a62edda"
 >
 <PreConditions>
@@ -9431,13 +9651,21 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Name="UpdateSvL"
+ Implemented="TRUE"
+ Name="Update SvL"
  Guid="323a7c8d-4b61-4042-af5c-a3ddbec32194"
 >
+<ReqRef
+ Id="dc0bc969-44fc-43da-bc2e-a002f4c15435"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="99dc5a41-5f26-4977-a282-e012f88166e2"
+>
+</ReqRef><Comment>Updates the list of Supervision Limits.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="UpdateSvL"
+ Implemented="TRUE"
+ Name="Update SvL"
  Guid="06bdb857-818e-49a7-9717-5767e306582a"
 >
 <PreConditions>
@@ -10120,39 +10348,6 @@ Kernel.EmergencyStops</Action></Actions>
  Name="HandleModeChange"
  Guid="478d6d56-8c92-4b72-92ef-e4fe79d4ceda"
 >
-</Variable><Variable
- Type="Integer"
- DefaultValue="0"
- VariableMode="Internal"
- Implemented="TRUE"
- Name="NumberOfSentEoMRequestRepetitions"
- Guid="5981bbb6-c7ff-430f-8770-cb12e797ebd5"
->
-<ReqRef
- Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="85d08c62-ee9e-46f3-b854-01bbd368da67"
->
-</ReqRef><Comment>Represents the number of already sent EOM requests</Comment>
-</Variable><Variable
- Type="Default.BaseTypes.Time"
- DefaultValue="0.0"
- VariableMode="Internal"
- Implemented="TRUE"
- Name="LastEoMRequestTime"
- Guid="d28b4997-d6b1-4bcd-8ae4-c3f758b5a4c5"
->
-<ReqRef
- Id="4d7758a5-c99b-4537-8da4-a51b99dafd40"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0267166c-902e-4372-ae48-f200e001942e"
->
-</ReqRef><ReqRef
- Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fc32ebe9-6f74-4e23-b232-2261d06ceecc"
->
-</ReqRef><Comment>Represents the time when the last EoM request was sent</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="False"

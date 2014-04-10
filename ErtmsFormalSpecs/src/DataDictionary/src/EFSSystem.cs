@@ -1082,6 +1082,15 @@ namespace DataDictionary
                     ConsiderTypeOfElement(element);
                 }
 
+                Functions.Function function = obj as Functions.Function;
+                if (function != null)
+                {
+                    if (function.ReturnType == Model && function != Model)
+                    {
+                        Usages.Add(new Usage(element.Type, function, Usage.ModeEnum.Type));
+                    }
+                }
+
                 base.visit(obj, visitSubNodes);
             }
         }

@@ -202,9 +202,13 @@ namespace GUI.TestRunnerView
                         {
                             toolStripCurrentStepTextBox.Text = "<none>";
                         }
-                        Frame = EFSSystem.Runner.SubSequence.Frame;
-                        selectedFrame = EFSSystem.Runner.SubSequence.Frame.Name;
-                        selectedSequence = EFSSystem.Runner.SubSequence.Name;
+
+                        if (EFSSystem.Runner.SubSequence != null)
+                        {
+                            Frame = EFSSystem.Runner.SubSequence.Frame;
+                            selectedFrame = EFSSystem.Runner.SubSequence.Frame.Name;
+                            selectedSequence = EFSSystem.Runner.SubSequence.Name;
+                        }
                     }
 
                     testBrowserTreeView.Refresh();
@@ -350,7 +354,8 @@ namespace GUI.TestRunnerView
 
         private void testCaseSelectorComboBox_SelectionChanged(object sender, EventArgs e)
         {
-            if (EFSSystem.Runner != null && EFSSystem.Runner.SubSequence.Name.CompareTo(subSequenceSelectorComboBox.Text) != 0)
+            DataDictionary.Tests.Runner.Runner runner = EFSSystem.Runner;
+            if (runner != null && (runner.SubSequence == null || runner.SubSequence.Name.CompareTo(subSequenceSelectorComboBox.Text) != 0))
             {
                 EFSSystem.Runner = null;
             }

@@ -34,6 +34,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
     <Reference Include="LibGit2Sharp, Version=0.14.1.0, Culture=neutral, processorArchitecture=MSIL" />
@@ -46,6 +55,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL" />
@@ -584,6 +594,7 @@
       <DependentUpon>VersionSelector.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -598,6 +609,10 @@
     <ProjectReference Include="..\DataDictionary\DataDictionary.csproj">
       <Project>{0FF1E452-81CA-4E56-8ABE-295BF3604BE2}</Project>
       <Name>DataDictionary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EFSIPCInterface\EFSIPCInterface.csproj">
+      <Project>{96D1339E-6E3E-4FF6-87A7-2145589E5D29}</Project>
+      <Name>EFSIPCInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\ErtmsSolutions\ErtmsSolutions.csproj">
       <Project>{7A9B0694-8FCE-4F94-B380-219893B31DB9}</Project>

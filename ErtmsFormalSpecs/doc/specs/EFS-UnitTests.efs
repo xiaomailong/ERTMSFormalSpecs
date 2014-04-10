@@ -11,9 +11,39 @@
  Name="Chapter 1"
  Guid="6d207f81-09b2-4bb4-a49a-160a2b98efcd"
 >
-</ChapterRef></Specification><NameSpaces>
+</ChapterRef></Specification><RequirementSets>
+<RequirementSet
+ Name="Scope"
+ Guid="bcbd7939-6fc2-4143-a1a7-93d86a6320f6"
+>
+<Dependancies>
+</Dependancies>
+<SubSets>
+<RequirementSet
+ RequirementsStatus="NA"
+ Default="TRUE"
+ Name="Onboard"
+ Guid="c5fda42c-26f7-47f1-916b-dfd3af309eb6"
+>
+<Dependancies>
+</Dependancies>
+<SubSets>
+</SubSets>
+</RequirementSet><RequirementSet
+ Default="TRUE"
+ Name="Trackside"
+ Guid="db35d474-c3ad-483d-bd6d-4aca57c6c43f"
+>
+<Dependancies>
+</Dependancies>
+<SubSets>
+</SubSets>
+</RequirementSet></SubSets>
+</RequirementSet></RequirementSets>
+<NameSpaces>
 <NameSpaceRef
  Name="Test"
+ Guid="05edbed5-e7a3-4bce-b347-2e0f2ca1ea80"
 >
 </NameSpaceRef><NameSpaceRef
  Name="Test2"

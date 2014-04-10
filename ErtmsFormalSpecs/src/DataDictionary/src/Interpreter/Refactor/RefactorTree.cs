@@ -43,8 +43,24 @@ namespace DataDictionary.Interpreter.Refactor
             {
                 if (derefExpression.Ref == Ref)
                 {
-                    ReplaceText(ReplacementValue, derefExpression.Start, derefExpression.End);
-                    replaced = true;
+                    int count = derefExpression.Arguments.Count;
+                    if (derefExpression.Arguments[count - 2].Ref is DataDictionary.Types.NameSpace)
+                    {
+                        ReplaceText(ReplacementValue, derefExpression.Start, derefExpression.End);
+                        replaced = true;
+                    }
+                    else
+                    {
+                        string tmp = ReplacementValue;
+                        int index = ReplacementValue.LastIndexOf(".");
+                        if (index > 0)
+                        {
+                            ReplacementValue = ReplacementValue.Substring(index + 1);
+                        }
+                        VisitExpression(derefExpression.Arguments[count - 1]);
+                        ReplacementValue = tmp;
+                        replaced = true;
+                    }
                 }
                 else
                 {

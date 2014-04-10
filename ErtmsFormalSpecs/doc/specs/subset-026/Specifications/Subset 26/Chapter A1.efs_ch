@@ -536,44 +536,11 @@ d) &quot;data is to be revalidated&quot; means that the status of the correspond
  Guid="364bc287-12ec-492f-9fd7-9cf3b407b4c2"
 >
 </ReqRef><Comment></Comment>
-An MA is always considered after all other packets of a message have been processed.
+An MA and the corresponding mode profile are always considered after all other packets of a message have been processed.
 This is mandatory to ensure that all preconditions for an MA (which may have been transmitted within this message as well) can be evaluated.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="406fb8b9-b17e-4243-baef-d8e5776445b4"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
- id="A1.1.6.3"
- guid=""
- type="REQUIREMENT"
- scope="FLAGS"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
- functionalBlockName=""
- Name=""
- Guid="ce639b26-fec6-4218-86a0-c7449b82eafd"
-><ReqRef
- Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="55976682-6d74-4001-a246-453f42f3b51a"
->
-</ReqRef><ReqRef
- Id="9c420bdc-a561-406b-a479-9d6cbde196a6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="54f6e922-80ae-4bad-bf9c-74c7ed9f2787"
->
-</ReqRef><Comment>#morido, 13/11/13
-
-How about: Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed? #morido, 13/11/13</Comment>
-Signalling related speed restrictions and Mode profiles are not considered as part of an MA. Hence, they are accepted irrespectively of the acceptance of the MA.<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="bc336b3b-73ee-466f-a158-e41ae949a5c7"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>

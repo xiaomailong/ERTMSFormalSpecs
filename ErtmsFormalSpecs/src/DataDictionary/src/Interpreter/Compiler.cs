@@ -321,10 +321,15 @@ namespace DataDictionary.Interpreter
             {
                 try
                 {
+                    Functions.Function userFunction = user as Functions.Function;
                     if ((user.Type == element))
                     {
                         string newName = element.ReferenceName(user as ModelElement);
                         user.TypeName = newName;
+                    }
+                    else if (userFunction != null && userFunction.ReturnType == element)
+                    {
+                        userFunction.ReturnType = element as Types.Type;
                     }
                     else if (element is Types.NameSpace)
                     {
