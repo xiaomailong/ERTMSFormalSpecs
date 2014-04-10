@@ -1237,15 +1237,7 @@ namespace DataDictionary.Interpreter
                             {
                                 retVal = new Statement.ProcedureCallStatement(Root, RootLog, call, start, Index);
                             }
-                            else
-                            {
-                                RootLog.AddError("Cannot parse call expression");
-                            }
                         }
-                    }
-                    else
-                    {
-                        RootLog.AddError("Cannot parse expression");
                     }
                 }
             }

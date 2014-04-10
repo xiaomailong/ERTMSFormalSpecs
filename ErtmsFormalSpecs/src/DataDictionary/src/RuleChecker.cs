@@ -99,7 +99,14 @@ namespace DataDictionary
             try
             {
                 retVal = parser.Statement(model, expression);
-                retVal.CheckStatement();
+                if (retVal != null)
+                {
+                    retVal.CheckStatement();
+                }
+                else
+                {
+                    model.AddError("Cannot parse statement");
+                }
             }
             catch (Exception exception)
             {
