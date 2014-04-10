@@ -527,9 +527,9 @@ namespace GUI
 
             int parenthesis = 0;
             int start = end;
-            while (start > 0)
+            while (start >= 0)
             {
-                char current = EditionTextBox.Text[end];
+                char current = EditionTextBox.Text[start];
 
                 if (parenthesis == 0)
                 {
@@ -554,8 +554,13 @@ namespace GUI
 
                 start = start - 1;
             }
+            start = start + 1;
 
-            return EditionTextBox.Text.Substring(start, end - start + 1);
+            if (start <= end)
+            {
+                retVal = EditionTextBox.Text.Substring(start, end - start + 1);
+            }
+            return retVal;
         }
 
         /// <summary>
@@ -630,7 +635,7 @@ namespace GUI
         {
             List<ObjectReference> retVal = new List<ObjectReference>();
 
-            EFSSystem.INSTANCE.Compiler.Compile_Synchronous(false, true);
+            // EFSSystem.INSTANCE.Compiler.Compile_Synchronous(false, true);
             SearchOptions searchOptions = BuildSearchOptions(text);
             prefix = searchOptions.Prefix;
 
