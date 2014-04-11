@@ -485,7 +485,10 @@ namespace DataDictionary.Tests.Runner
                 DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
             }
 
-            EventTimeLine.CurrentTime += Step;
+            if (priority == Generated.acceptor.RulePriority.aCleanUp)
+            {
+                EventTimeLine.CurrentTime += Step;
+            }
         }
 
         /// <summary>
