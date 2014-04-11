@@ -15,7 +15,7 @@ namespace EFSDriver
         static void Main()
         {
             // Wait until GUI has launched
-            Thread.Sleep(1000);
+           // Thread.Sleep(1000);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
