@@ -96,6 +96,158 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IEFSService_set_Explain_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IEFSService_set_Explain_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IEFSService_set_LogEvents_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IEFSService_set_LogEvents_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IEFSService_set_CycleDuration_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IEFSService_set_CycleDuration_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IEFSService_set_KeepEventCount_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IEFSService_set_KeepEventCount_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_IEFSService_GetVariableValue_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -214,11 +366,35 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:5352/EFSService/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:5352/EFSService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:5352/EFSService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EFSIPCInterface.Values" />
+      <xsd:import schemaLocation="http://localhost:5352/EFSService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GUI.IPCInterface.Values" />
       <xsd:import schemaLocation="http://localhost:5352/EFSService/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://localhost:5352/EFSService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/EFSIPCInterface" />
+      <xsd:import schemaLocation="http://localhost:5352/EFSService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/GUI.IPCInterface" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IEFSService_set_Explain_InputMessage">
+    <wsdl:part name="parameters" element="tns:set_Explain" />
+  </wsdl:message>
+  <wsdl:message name="IEFSService_set_Explain_OutputMessage">
+    <wsdl:part name="parameters" element="tns:set_ExplainResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEFSService_set_LogEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:set_LogEvents" />
+  </wsdl:message>
+  <wsdl:message name="IEFSService_set_LogEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:set_LogEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEFSService_set_CycleDuration_InputMessage">
+    <wsdl:part name="parameters" element="tns:set_CycleDuration" />
+  </wsdl:message>
+  <wsdl:message name="IEFSService_set_CycleDuration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:set_CycleDurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEFSService_set_KeepEventCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:set_KeepEventCount" />
+  </wsdl:message>
+  <wsdl:message name="IEFSService_set_KeepEventCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:set_KeepEventCountResponse" />
+  </wsdl:message>
   <wsdl:message name="IEFSService_GetVariableValue_InputMessage">
     <wsdl:part name="parameters" element="tns:GetVariableValue" />
   </wsdl:message>
@@ -238,6 +414,22 @@
     <wsdl:part name="parameters" element="tns:CycleResponse" />
   </wsdl:message>
   <wsdl:portType name="IEFSService">
+    <wsdl:operation name="set_Explain">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEFSService/set_Explain" message="tns:IEFSService_set_Explain_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEFSService/set_ExplainResponse" message="tns:IEFSService_set_Explain_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="set_LogEvents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEFSService/set_LogEvents" message="tns:IEFSService_set_LogEvents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEFSService/set_LogEventsResponse" message="tns:IEFSService_set_LogEvents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="set_CycleDuration">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEFSService/set_CycleDuration" message="tns:IEFSService_set_CycleDuration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEFSService/set_CycleDurationResponse" message="tns:IEFSService_set_CycleDuration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="set_KeepEventCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEFSService/set_KeepEventCount" message="tns:IEFSService_set_KeepEventCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEFSService/set_KeepEventCountResponse" message="tns:IEFSService_set_KeepEventCount_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetVariableValue">
       <wsdl:input wsaw:Action="http://tempuri.org/IEFSService/GetVariableValue" message="tns:IEFSService_GetVariableValue_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEFSService/GetVariableValueResponse" message="tns:IEFSService_GetVariableValue_OutputMessage" />
@@ -254,6 +446,50 @@
   <wsdl:binding name="WSHttpBinding_IEFSService" type="tns:IEFSService">
     <wsp:PolicyReference URI="#WSHttpBinding_IEFSService_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="set_Explain">
+      <soap12:operation soapAction="http://tempuri.org/IEFSService/set_Explain" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IEFSService_set_Explain_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IEFSService_set_Explain_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_LogEvents">
+      <soap12:operation soapAction="http://tempuri.org/IEFSService/set_LogEvents" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IEFSService_set_LogEvents_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IEFSService_set_LogEvents_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_CycleDuration">
+      <soap12:operation soapAction="http://tempuri.org/IEFSService/set_CycleDuration" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IEFSService_set_CycleDuration_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IEFSService_set_CycleDuration_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_KeepEventCount">
+      <soap12:operation soapAction="http://tempuri.org/IEFSService/set_KeepEventCount" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IEFSService_set_KeepEventCount_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IEFSService_set_KeepEventCount_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetVariableValue">
       <soap12:operation soapAction="http://tempuri.org/IEFSService/GetVariableValue" style="document" />
       <wsdl:input>

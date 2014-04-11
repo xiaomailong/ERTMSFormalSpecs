@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace GUI.IPCInterface.Values
+namespace EFSService
 {
     using System;
     using System.Collections.Generic;
@@ -21,28 +21,15 @@ namespace GUI.IPCInterface.Values
     using System.Text;
     using System.Runtime.Serialization;
 
-    [DataContract]
-    [KnownType(typeof(BoolValue))]
-    [KnownType(typeof(IntValue))]
-    [KnownType(typeof(DoubleValue))]
-    [KnownType(typeof(StringValue))]
-    [KnownType(typeof(StateValue))]
-    [KnownType(typeof(EnumValue))]
-    [KnownType(typeof(ListValue))]
-    [KnownType(typeof(StructureValue))]
-    public abstract class Value
+    public partial class StateValue : Value
     {
         /// <summary>
         /// Provides the display value of this value
         /// </summary>
         /// <returns></returns>
-        public abstract string DisplayValue();
-
-        /// <summary>
-        /// Converts the value provided as an EFS value
-        /// </summary>
-        /// <param name="type">the value expected type</param>
-        /// <returns></returns>
-        public abstract DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type);
+        public override string DisplayValue()
+        {
+            return Name.ToString();
+        }
     }
 }

@@ -24,22 +24,54 @@ namespace GUI.IPCInterface
     using System.ServiceModel;
     using System.Windows.Forms;
 
-    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
+    [ServiceBehavior(
+        ConcurrencyMode = ConcurrencyMode.Single,
+        InstanceContextMode = InstanceContextMode.Single,
+        IncludeExceptionDetailInFaults = true)]
     public class EFSService : IEFSService
     {
         /// <summary>
+        /// Indicates that the explain view should be updated according to the scenario execution
+        /// </summary>
+        public bool Explain { get; set; }
+
+        /// <summary>
+        /// Indicates that the events should be logged
+        /// </summary>
+        public bool LogEvents { get; set; }
+
+        /// <summary>
+        /// The duration (in ms) of an execution cycle
+        /// </summary>
+        public int CycleDuration { get; set; }
+
+        /// <summary>
+        /// The number of events that should be kept in memory
+        /// </summary>
+        public int KeepEventCount { get; set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public EFSService()
+        {
+            Explain = true;
+            LogEvents = false;
+            CycleDuration = 100;
+            KeepEventCount = 10000;
+        }
+
+        /// <summary>
         /// Provides the runner on which the service is applied
         /// </summary>
-        private Runner Runner
+        public Runner Runner
         {
             get
             {
                 EFSSystem efsSystem = EFSSystem.INSTANCE;
                 if (efsSystem.Runner == null)
                 {
-                    bool explain = false;
-                    bool logEvents = true;
-                    efsSystem.Runner = new Runner(explain, logEvents, 100, 10000);
+                    efsSystem.Runner = new Runner(Explain, LogEvents, CycleDuration, KeepEventCount);
                 }
 
                 return efsSystem.Runner;
@@ -104,6 +136,24 @@ namespace GUI.IPCInterface
                 if (v != null)
                 {
                     return new Values.StringValue(v.Val);
+                }
+            }
+
+            // Handles the state case
+            {
+                DataDictionary.Constants.State v = value as DataDictionary.Constants.State;
+                if (v != null)
+                {
+                    return new Values.StateValue(v.FullName);
+                }
+            }
+
+            // Handles the enumeration value case
+            {
+                DataDictionary.Constants.EnumValue v = value as DataDictionary.Constants.EnumValue;
+                if (v != null)
+                {
+                    return new Values.EnumValue(v.FullName);
                 }
             }
 

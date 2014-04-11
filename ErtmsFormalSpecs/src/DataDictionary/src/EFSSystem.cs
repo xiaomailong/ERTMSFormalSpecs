@@ -39,9 +39,10 @@ namespace DataDictionary
         /// <summary>
         /// The runner currently set for the system
         /// </summary>
-        public Tests.Runner.Runner Runner { 
-            get {return __runner; } 
-            set { __runner = value; } 
+        public Tests.Runner.Runner Runner
+        {
+            get { return __runner; }
+            set { __runner = value; }
         }
 
         /// <summary>

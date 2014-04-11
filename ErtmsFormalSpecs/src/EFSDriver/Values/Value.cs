@@ -29,7 +29,7 @@ namespace EFSService
         /// <returns></returns>
         public virtual string DisplayValue()
         {
-            return "";
+            throw new NotImplementedException();
         }
     }
 }

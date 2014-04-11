@@ -335,7 +335,7 @@ namespace GUI.TestRunnerView
                 }
                 else
                 {
-                    EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(true, false, 100, 10000);
+                    EFSSystem.Runner = ERTMSFormalSpecs.ErtmsFormalSpecGui.EFSService.Runner;
                 }
             }
         }

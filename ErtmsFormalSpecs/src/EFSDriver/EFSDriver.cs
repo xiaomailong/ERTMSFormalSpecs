@@ -21,6 +21,10 @@ namespace EFSDriver
         {
             InitializeComponent();
             EFS = new EFSServiceClient();
+            EFS.set_Explain(true);
+            EFS.set_LogEvents(false);
+            EFS.set_CycleDuration(100);
+            EFS.set_KeepEventCount(10000);
         }
 
         private void cycleButton_Click(object sender, EventArgs e)

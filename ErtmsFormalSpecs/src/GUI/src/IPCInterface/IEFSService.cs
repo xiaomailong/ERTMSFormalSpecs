@@ -30,6 +30,42 @@ namespace GUI.IPCInterface
     public interface IEFSService
     {
         /// <summary>
+        /// Indicates that the explain view should be updated according to the scenario execution
+        /// </summary>        
+        bool Explain
+        {
+            [OperationContract]
+            set;
+        }
+
+        /// <summary>
+        /// Indicates that the events should be logged
+        /// </summary>
+        bool LogEvents
+        {
+            [OperationContract]
+            set;
+        }
+
+        /// <summary>
+        /// The duration (in ms) of an execution cycle
+        /// </summary>
+        int CycleDuration
+        {
+            [OperationContract]
+            set;
+        }
+
+        /// <summary>
+        /// The number of events that should be kept in memory
+        /// </summary>
+        int KeepEventCount
+        {
+            [OperationContract]
+            set;
+        }
+
+        /// <summary>
         /// Provides the value of a specific variable
         /// </summary>
         /// <param name="variableName"></param>
