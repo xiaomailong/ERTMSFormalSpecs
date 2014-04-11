@@ -219,7 +219,10 @@ namespace GUI.IPCInterface
         {
             Runner.ExecuteOnePriority(convertPriority(priority));
 
-            GUIUtils.MDIWindow.Invoke((MethodInvoker)delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
+            if (priority == Priority.CleanUp)
+            {
+                GUIUtils.MDIWindow.Invoke((MethodInvoker)delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
+            }
         }
 
         /// <summary>
