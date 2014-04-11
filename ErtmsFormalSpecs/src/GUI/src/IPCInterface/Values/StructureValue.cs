@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSIPCInterface.Values
+namespace GUI.IPCInterface.Values
 {
     using System;
     using System.Collections.Generic;
@@ -22,19 +22,19 @@ namespace EFSIPCInterface.Values
     using System.Runtime.Serialization;
 
     [DataContract]
-    public class IntValue : Value
+    public class StructureValue : Value
     {
         /// <summary>
         /// The actual value
         /// </summary>
         [DataMember]
-        public Decimal Value { get; private set; }
+        public Dictionary<string, Value> Value { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="value"></param>
-        public IntValue(Decimal value)
+        public StructureValue(Dictionary<string, Value> value)
         {
             Value = value;
         }
@@ -45,7 +45,21 @@ namespace EFSIPCInterface.Values
         /// <returns></returns>
         public override string DisplayValue()
         {
-            return Value.ToString();
+            string retVal = "{";
+
+            foreach (KeyValuePair<string, Value> item in Value)
+            {
+                if (retVal.Length != 1)
+                {
+                    retVal += ", ";
+                }
+
+                retVal += item.Key + " => " + item.Value.ToString();
+            }
+
+            retVal += "}";
+
+            return retVal;
         }
 
         /// <summary>
@@ -54,8 +68,27 @@ namespace EFSIPCInterface.Values
         /// <returns></returns>
         public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
         {
-            return type.getValue(Value.ToString());
-        }
+            DataDictionary.Values.StructureValue retVal = null;
 
+            DataDictionary.Types.Structure structureType = type as DataDictionary.Types.Structure;
+            if (structureType != null)
+            {
+                retVal = new DataDictionary.Values.StructureValue(structureType);
+
+                foreach (KeyValuePair<string, Value> pair in Value)
+                {
+                    DataDictionary.Types.StructureElement element = structureType.findStructureElement(pair.Key);
+                    if (element != null)
+                    {
+                        DataDictionary.Variables.Variable variable = (DataDictionary.Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+                        variable.Name = element.Name;
+                        variable.Value = pair.Value.convertBack(element.Type);
+                        retVal.set(variable);
+                    }
+                }
+            }
+
+            return retVal;
+        }
     }
 }

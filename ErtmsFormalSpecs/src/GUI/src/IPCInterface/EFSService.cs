@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSIPCInterface
+namespace GUI.IPCInterface
 {
     using System;
     using System.Collections.Generic;
@@ -22,6 +22,7 @@ namespace EFSIPCInterface
     using DataDictionary.Tests.Runner;
     using DataDictionary;
     using System.ServiceModel;
+    using System.Windows.Forms;
 
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class EFSService : IEFSService
@@ -167,6 +168,8 @@ namespace EFSIPCInterface
         public void Cycle(Priority priority)
         {
             Runner.ExecuteOnePriority(convertPriority(priority));
+
+            GUIUtils.MDIWindow.Invoke((MethodInvoker)delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
         }
 
         /// <summary>

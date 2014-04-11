@@ -18,8 +18,8 @@ using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
 using System.ServiceModel;
-using EFSIPCInterface;
 using System.ServiceModel.Description;
+using GUI.IPCInterface;
 
 namespace ERTMSFormalSpecs
 {

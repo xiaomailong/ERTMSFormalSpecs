@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSIPCInterface.Values
+namespace GUI.IPCInterface.Values
 {
     using System;
     using System.Collections.Generic;
@@ -22,19 +22,19 @@ namespace EFSIPCInterface.Values
     using System.Runtime.Serialization;
 
     [DataContract]
-    public class DoubleValue : Value
+    public class IntValue : Value
     {
         /// <summary>
         /// The actual value
         /// </summary>
         [DataMember]
-        public double Value { get; private set; }
+        public Decimal Value { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="value"></param>
-        public DoubleValue(double value)
+        public IntValue(Decimal value)
         {
             Value = value;
         }

@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSIPCInterface.Values
+namespace GUI.IPCInterface.Values
 {
     using System;
     using System.Collections.Generic;
@@ -22,39 +22,25 @@ namespace EFSIPCInterface.Values
     using System.Runtime.Serialization;
 
     [DataContract]
-    public class BoolValue : Value
+    [KnownType(typeof(BoolValue))]
+    [KnownType(typeof(IntValue))]
+    [KnownType(typeof(DoubleValue))]
+    [KnownType(typeof(StringValue))]
+    [KnownType(typeof(ListValue))]
+    [KnownType(typeof(StructureValue))]
+    public abstract class Value
     {
-        /// <summary>
-        /// The actual value
-        /// </summary>
-        [DataMember]
-        public bool Value { get; private set; }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="value"></param>
-        public BoolValue(bool value)
-        {
-            Value = value;
-        }
-
         /// <summary>
         /// Provides the display value of this value
         /// </summary>
         /// <returns></returns>
-        public override string DisplayValue()
-        {
-            return Value.ToString();
-        }
+        public abstract string DisplayValue();
 
         /// <summary>
         /// Converts the value provided as an EFS value
         /// </summary>
+        /// <param name="type">the value expected type</param>
         /// <returns></returns>
-        public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
-        {
-            return type.getValue(Value.ToString());
-        }
+        public abstract DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type);
     }
 }
