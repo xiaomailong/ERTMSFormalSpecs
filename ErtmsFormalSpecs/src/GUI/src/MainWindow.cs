@@ -545,9 +545,13 @@ namespace GUI
         {
             if (AllowRefresh)
             {
-                foreach (IBaseForm form in SubWindows)
+                foreach (Form form in SubForms)
                 {
-                    form.RefreshModel();
+                    IBaseForm baseForm = form as IBaseForm;
+                    if (baseForm != null)
+                    {
+                        baseForm.RefreshModel();
+                    }
                     form.Refresh();
                 }
             }

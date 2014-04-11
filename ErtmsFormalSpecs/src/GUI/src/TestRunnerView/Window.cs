@@ -302,10 +302,10 @@ namespace GUI.TestRunnerView
             {
                 EFSSystem.Runner.EndExecution();
                 EFSSystem.Runner = null;
+                Clear();
                 GUIUtils.MDIWindow.RefreshAfterStep();
             }
             tabControl1.SelectedTab = timeLineTabPage;
-            Clear();
         }
 
         public void Clear()
