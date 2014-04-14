@@ -55,7 +55,7 @@ namespace GUI.IPCInterface.Values
         /// <returns></returns>
         public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
         {
-            DataDictionary.Values.IValue retVal = type.getValue(Value.ToString());
+            DataDictionary.Values.IValue retVal = type.getValue(Value.ToString(System.Globalization.CultureInfo.InvariantCulture));
 
             if (retVal == null)
             {
