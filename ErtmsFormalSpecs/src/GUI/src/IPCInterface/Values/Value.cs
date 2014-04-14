@@ -20,6 +20,7 @@ namespace GUI.IPCInterface.Values
     using System.Linq;
     using System.Text;
     using System.Runtime.Serialization;
+    using System.ServiceModel;
 
     [DataContract]
     [KnownType(typeof(BoolValue))]
@@ -44,5 +45,18 @@ namespace GUI.IPCInterface.Values
         /// <param name="type">the value expected type</param>
         /// <returns></returns>
         public abstract DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type);
+
+        /// <summary>
+        /// Checks the return value for a conversion to EFS type
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="type"></param>
+        public void CheckReturnValue(DataDictionary.Values.IValue value, DataDictionary.Types.Type type)
+        {
+            if (value == null)
+            {
+                throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot convert to EFS value " + DisplayValue() + " for type " + type.FullName));
+            }
+        }
     }
 }
