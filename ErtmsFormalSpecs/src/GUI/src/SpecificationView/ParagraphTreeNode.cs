@@ -290,13 +290,26 @@ namespace GUI.SpecificationView
         {
             if (SourceNode is ParagraphTreeNode)
             {
-                if (MessageBox.Show("Are you sure you want to move the corresponding paragraph?", "Move paragraph", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                Paragraph current = Item;
+                while (current != null && current != SourceNode.Model)
                 {
-                    ParagraphTreeNode paragraphTreeNode = (ParagraphTreeNode)SourceNode;
+                    current = current.EnclosingParagraph;
+                }
 
-                    DataDictionary.Specification.Paragraph paragraph = paragraphTreeNode.Item;
-                    paragraphTreeNode.Delete();
-                    AddParagraph(paragraph);
+                if (current == null)
+                {
+                    if (MessageBox.Show("Are you sure you want to move the corresponding paragraph?", "Move paragraph", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        ParagraphTreeNode paragraphTreeNode = (ParagraphTreeNode)SourceNode;
+
+                        DataDictionary.Specification.Paragraph paragraph = paragraphTreeNode.Item;
+                        paragraphTreeNode.Delete();
+                        AddParagraph(paragraph);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Cannot move a paragraph in its sub paragraphs", "Move paragraph", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
