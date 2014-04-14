@@ -20,11 +20,33 @@ namespace GUI.IPCInterface
     using System.Linq;
     using System.Text;
     using System.ServiceModel;
+    using System.Runtime.Serialization;
 
     /// <summary>
     /// The cycle priority to execute
     /// </summary>
     public enum Priority { Verification, UpdateInternal, Process, UpdateOutput, CleanUp };
+
+    /// <summary>
+    /// A fault occured while executing a service function
+    /// </summary>
+    [DataContract]
+    public class EFSServiceFault
+    {
+        /// <summary>
+        /// The fault message
+        /// </summary>
+        public string Message { get; private set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message"></param>
+        public EFSServiceFault(string message)
+        {
+            Message = message;
+        }
+    }
 
     [ServiceContract]
     public interface IEFSService
@@ -71,6 +93,7 @@ namespace GUI.IPCInterface
         /// <param name="variableName"></param>
         /// <returns></returns>
         [OperationContract]
+        [FaultContractAttribute(typeof(EFSServiceFault))]
         Values.Value GetVariableValue(string variableName);
 
         /// <summary>
@@ -79,6 +102,7 @@ namespace GUI.IPCInterface
         /// <param name="variableName"></param>
         /// <param name="value"></param>
         [OperationContract]
+        [FaultContractAttribute(typeof(EFSServiceFault))]
         void SetVariableValue(string variableName, Values.Value value);
 
         /// <summary>
@@ -86,6 +110,7 @@ namespace GUI.IPCInterface
         /// </summary>
         /// <param name="priority"></param>
         [OperationContract]
+        [FaultContractAttribute(typeof(EFSServiceFault))]
         void Cycle(Priority priority);
     }
 }

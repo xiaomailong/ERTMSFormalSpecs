@@ -92,6 +92,10 @@ namespace GUI.IPCInterface
             {
                 retVal = convertOut(variable.Value);
             }
+            else
+            {
+                throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot find variable " + variableName));
+            }
 
             return retVal;
         }
@@ -193,7 +197,7 @@ namespace GUI.IPCInterface
                 }
             }
 
-            return null;
+            throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot convert value " + value.ToString()));
         }
 
         /// <summary>
@@ -208,6 +212,10 @@ namespace GUI.IPCInterface
             if (variable != null)
             {
                 variable.Value = value.convertBack(variable.Type);
+            }
+            else
+            {
+                throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot find variable " + variableName));
             }
         }
 

@@ -20,6 +20,7 @@ namespace GUI.IPCInterface.Values
     using System.Linq;
     using System.Text;
     using System.Runtime.Serialization;
+    using System.ServiceModel;
 
     [DataContract]
     public class StateValue : Value
@@ -54,7 +55,14 @@ namespace GUI.IPCInterface.Values
         /// <returns></returns>
         public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
         {
-            return type.getValue(Name);
+            DataDictionary.Values.IValue retVal = type.getValue(Name);
+
+            if (retVal == null)
+            {
+                throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot convert to EFS value " + DisplayValue()));
+            }
+
+            return retVal;
         }
     }
 }

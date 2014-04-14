@@ -20,6 +20,7 @@ namespace GUI.IPCInterface.Values
     using System.Linq;
     using System.Text;
     using System.Runtime.Serialization;
+    using System.ServiceModel;
 
     [DataContract]
     public class ListValue : Value
@@ -81,6 +82,11 @@ namespace GUI.IPCInterface.Values
                 }
 
                 retVal = new DataDictionary.Values.ListValue(collectionType, values);
+            }
+
+            if (retVal == null)
+            {
+                throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot convert to EFS value " + DisplayValue()));
             }
 
             return retVal;
