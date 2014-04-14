@@ -18,8 +18,9 @@ using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
 using System.ServiceModel;
-using EFSIPCInterface;
 using System.ServiceModel.Description;
+using GUI.IPCInterface;
+using DataDictionary;
 
 namespace ERTMSFormalSpecs
 {
@@ -32,12 +33,20 @@ namespace ERTMSFormalSpecs
         private static ServiceHost host = null;
 
         /// <summary>
+        /// The service hosting IPC communication
+        /// </summary>
+        public static EFSService EFSService { get; set; }
+
+        /// <summary>
         /// Hosts the EFS IPC service
         /// </summary>
+        /// <returns>The hosting service</returns>
         private static void HostEFSService()
         {
+            EFSService = new EFSService();
+
             Uri baseAddress = new Uri("http://localhost:5352/EFSService/");
-            host = new ServiceHost(typeof(EFSService), baseAddress);
+            host = new ServiceHost(EFSService, baseAddress);
             try
             {
                 // Sets the service endpoint.
@@ -96,8 +105,8 @@ namespace ERTMSFormalSpecs
                     }
                 }
 
-                HostEFSService();
                 GUI.MainWindow window = new GUI.MainWindow();
+                HostEFSService();
                 Application.Run(window);
                 CloseEFSService();
             }

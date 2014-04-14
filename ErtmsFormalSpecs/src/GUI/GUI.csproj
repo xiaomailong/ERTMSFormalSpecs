@@ -55,6 +55,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -101,6 +102,17 @@
     <Compile Include="src\BoxArrowDiagram\ArrowControl.Designer.cs">
       <DependentUpon>ArrowControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\IPCInterface\EFSService.cs" />
+    <Compile Include="src\IPCInterface\IEFSService.cs" />
+    <Compile Include="src\IPCInterface\Values\BoolValue.cs" />
+    <Compile Include="src\IPCInterface\Values\EnumValue.cs" />
+    <Compile Include="src\IPCInterface\Values\StateValue.cs" />
+    <Compile Include="src\IPCInterface\Values\DoubleValue.cs" />
+    <Compile Include="src\IPCInterface\Values\IntValue.cs" />
+    <Compile Include="src\IPCInterface\Values\ListValue.cs" />
+    <Compile Include="src\IPCInterface\Values\StringValue.cs" />
+    <Compile Include="src\IPCInterface\Values\StructureValue.cs" />
+    <Compile Include="src\IPCInterface\Values\Value.cs" />
     <Compile Include="src\RequirementSetDiagram\RequirementSetControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -609,10 +621,6 @@
     <ProjectReference Include="..\DataDictionary\DataDictionary.csproj">
       <Project>{0FF1E452-81CA-4E56-8ABE-295BF3604BE2}</Project>
       <Name>DataDictionary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EFSIPCInterface\EFSIPCInterface.csproj">
-      <Project>{96D1339E-6E3E-4FF6-87A7-2145589E5D29}</Project>
-      <Name>EFSIPCInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\ErtmsSolutions\ErtmsSolutions.csproj">
       <Project>{7A9B0694-8FCE-4F94-B380-219893B31DB9}</Project>

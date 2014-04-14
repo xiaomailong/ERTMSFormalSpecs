@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSService
+namespace GUI.IPCInterface.Values
 {
     using System;
     using System.Collections.Generic;
@@ -21,15 +21,41 @@ namespace EFSService
     using System.Text;
     using System.Runtime.Serialization;
 
-    public partial class Value
+    [DataContract]
+    public class IntValue : Value
     {
+        /// <summary>
+        /// The actual value
+        /// </summary>
+        [DataMember]
+        public Decimal Value { get; private set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="value"></param>
+        public IntValue(Decimal value)
+        {
+            Value = value;
+        }
+
         /// <summary>
         /// Provides the display value of this value
         /// </summary>
         /// <returns></returns>
-        public virtual string DisplayValue()
+        public override string DisplayValue()
         {
-            throw new NotImplementedException();
+            return Value.ToString();
         }
+
+        /// <summary>
+        /// Converts the value provided as an EFS value
+        /// </summary>
+        /// <returns></returns>
+        public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
+        {
+            return type.getValue(Value.ToString());
+        }
+
     }
 }

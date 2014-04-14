@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSIPCInterface.Values
+namespace GUI.IPCInterface.Values
 {
     using System;
     using System.Collections.Generic;
@@ -22,25 +22,39 @@ namespace EFSIPCInterface.Values
     using System.Runtime.Serialization;
 
     [DataContract]
-    [KnownType(typeof(BoolValue))]
-    [KnownType(typeof(IntValue))]
-    [KnownType(typeof(DoubleValue))]
-    [KnownType(typeof(StringValue))]
-    [KnownType(typeof(ListValue))]
-    [KnownType(typeof(StructureValue))]
-    public abstract class Value
+    public class EnumValue : Value
     {
+        /// <summary>
+        /// The actual value
+        /// </summary>
+        [DataMember]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="name"></param>
+        public EnumValue(string name)
+        {
+            Name = name;
+        }
+
         /// <summary>
         /// Provides the display value of this value
         /// </summary>
         /// <returns></returns>
-        public abstract string DisplayValue();
+        public override string DisplayValue()
+        {
+            return Name.ToString();
+        }
 
         /// <summary>
         /// Converts the value provided as an EFS value
         /// </summary>
-        /// <param name="type">the value expected type</param>
         /// <returns></returns>
-        public abstract DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type);
+        public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
+        {
+            return type.getValue(Name);
+        }
     }
 }

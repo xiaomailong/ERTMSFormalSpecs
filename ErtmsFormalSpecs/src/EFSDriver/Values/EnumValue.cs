@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSIPCInterface.Values
+namespace EFSService
 {
     using System;
     using System.Collections.Generic;
@@ -21,40 +21,15 @@ namespace EFSIPCInterface.Values
     using System.Text;
     using System.Runtime.Serialization;
 
-    [DataContract]
-    public class BoolValue : Value
+    public partial class EnumValue : Value
     {
-        /// <summary>
-        /// The actual value
-        /// </summary>
-        [DataMember]
-        public bool Value { get; private set; }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="value"></param>
-        public BoolValue(bool value)
-        {
-            Value = value;
-        }
-
         /// <summary>
         /// Provides the display value of this value
         /// </summary>
         /// <returns></returns>
         public override string DisplayValue()
         {
-            return Value.ToString();
-        }
-
-        /// <summary>
-        /// Converts the value provided as an EFS value
-        /// </summary>
-        /// <returns></returns>
-        public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
-        {
-            return type.getValue(Value.ToString());
+            return Name.ToString();
         }
     }
 }

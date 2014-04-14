@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSIPCInterface.Values
+namespace GUI.IPCInterface.Values
 {
     using System;
     using System.Collections.Generic;
@@ -22,19 +22,19 @@ namespace EFSIPCInterface.Values
     using System.Runtime.Serialization;
 
     [DataContract]
-    public class StringValue : Value
+    public class ListValue : Value
     {
         /// <summary>
         /// The actual value
         /// </summary>
         [DataMember]
-        public string Value { get; private set; }
+        public List<Value> Value { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="value"></param>
-        public StringValue(string value)
+        public ListValue(List<Value> value)
         {
             Value = value;
         }
@@ -45,7 +45,21 @@ namespace EFSIPCInterface.Values
         /// <returns></returns>
         public override string DisplayValue()
         {
-            return Value.ToString();
+            string retVal = "[";
+
+            foreach (Value item in Value)
+            {
+                if (retVal.Length != 1)
+                {
+                    retVal += ", ";
+                }
+
+                retVal += item.ToString();
+            }
+
+            retVal += "]";
+
+            return retVal;
         }
 
         /// <summary>
@@ -56,10 +70,17 @@ namespace EFSIPCInterface.Values
         {
             DataDictionary.Values.IValue retVal = null;
 
-            DataDictionary.Types.StringType stringType = type as DataDictionary.Types.StringType;
-            if (stringType != null)
+            DataDictionary.Types.Collection collectionType = type as DataDictionary.Types.Collection;
+            if (collectionType != null)
             {
-                retVal = new DataDictionary.Values.StringValue(stringType, Value);
+                List<DataDictionary.Values.IValue> values = new List<DataDictionary.Values.IValue>();
+
+                foreach (Value item in Value)
+                {
+                    values.Add(item.convertBack(collectionType.Type));
+                }
+
+                retVal = new DataDictionary.Values.ListValue(collectionType, values);
             }
 
             return retVal;

@@ -13,43 +13,49 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace EFSIPCInterface
+namespace GUI.IPCInterface.Values
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using System.ServiceModel;
+    using System.Runtime.Serialization;
 
-    /// <summary>
-    /// The cycle priority to execute
-    /// </summary>
-    public enum Priority { Verification, UpdateInternal, Process, UpdateOutput, CleanUp };
-
-    [ServiceContract]
-    public interface IEFSService
+    [DataContract]
+    public class DoubleValue : Value
     {
         /// <summary>
-        /// Provides the value of a specific variable
+        /// The actual value
         /// </summary>
-        /// <param name="variableName"></param>
-        /// <returns></returns>
-        [OperationContract]
-        Values.Value GetVariableValue(string variableName);
+        [DataMember]
+        public double Value { get; private set; }
 
         /// <summary>
-        /// Sets the value of a specific variable
+        /// Constructor
         /// </summary>
-        /// <param name="variableName"></param>
         /// <param name="value"></param>
-        [OperationContract]
-        void SetVariableValue(string variableName, Values.Value value);
+        public DoubleValue(double value)
+        {
+            Value = value;
+        }
 
         /// <summary>
-        /// Activates the execution of a single cycle, as the given priority level
+        /// Provides the display value of this value
         /// </summary>
-        /// <param name="priority"></param>
-        [OperationContract]
-        void Cycle(Priority priority);
+        /// <returns></returns>
+        public override string DisplayValue()
+        {
+            return Value.ToString();
+        }
+
+        /// <summary>
+        /// Converts the value provided as an EFS value
+        /// </summary>
+        /// <returns></returns>
+        public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
+        {
+            return type.getValue(Value.ToString());
+        }
+
     }
 }

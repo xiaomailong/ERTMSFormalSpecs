@@ -21,15 +21,15 @@ namespace EFSService
     using System.Text;
     using System.Runtime.Serialization;
 
-    public partial class Value
+    public partial class StateValue : Value
     {
         /// <summary>
         /// Provides the display value of this value
         /// </summary>
         /// <returns></returns>
-        public virtual string DisplayValue()
+        public override string DisplayValue()
         {
-            throw new NotImplementedException();
+            return Name.ToString();
         }
     }
 }

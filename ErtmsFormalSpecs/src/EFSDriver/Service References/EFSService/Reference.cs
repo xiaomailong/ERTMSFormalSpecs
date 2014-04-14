@@ -15,14 +15,16 @@ namespace EFSService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Value", Namespace="http://schemas.datacontract.org/2004/07/EFSIPCInterface.Values")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Value", Namespace="http://schemas.datacontract.org/2004/07/GUI.IPCInterface.Values")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EFSService.DoubleValue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EFSService.IntValue))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EFSService.StructureValue))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EFSService.StringValue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EFSService.ListValue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EFSService.BoolValue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EFSService.EnumValue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EFSService.StructureValue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EFSService.DoubleValue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EFSService.StringValue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EFSService.StateValue))]
     public partial class Value : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -50,30 +52,7 @@ namespace EFSService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DoubleValue", Namespace="http://schemas.datacontract.org/2004/07/EFSIPCInterface.Values")]
-    [System.SerializableAttribute()]
-    public partial class DoubleValue : EFSService.Value {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double ValueField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Value {
-            get {
-                return this.ValueField;
-            }
-            set {
-                if ((this.ValueField.Equals(value) != true)) {
-                    this.ValueField = value;
-                    this.RaisePropertyChanged("Value");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IntValue", Namespace="http://schemas.datacontract.org/2004/07/EFSIPCInterface.Values")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="IntValue", Namespace="http://schemas.datacontract.org/2004/07/GUI.IPCInterface.Values")]
     [System.SerializableAttribute()]
     public partial class IntValue : EFSService.Value {
         
@@ -96,7 +75,76 @@ namespace EFSService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StructureValue", Namespace="http://schemas.datacontract.org/2004/07/EFSIPCInterface.Values")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ListValue", Namespace="http://schemas.datacontract.org/2004/07/GUI.IPCInterface.Values")]
+    [System.SerializableAttribute()]
+    public partial class ListValue : EFSService.Value {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<EFSService.Value> ValueField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<EFSService.Value> Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValueField, value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BoolValue", Namespace="http://schemas.datacontract.org/2004/07/GUI.IPCInterface.Values")]
+    [System.SerializableAttribute()]
+    public partial class BoolValue : EFSService.Value {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ValueField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnumValue", Namespace="http://schemas.datacontract.org/2004/07/GUI.IPCInterface.Values")]
+    [System.SerializableAttribute()]
+    public partial class EnumValue : EFSService.Value {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StructureValue", Namespace="http://schemas.datacontract.org/2004/07/GUI.IPCInterface.Values")]
     [System.SerializableAttribute()]
     public partial class StructureValue : EFSService.Value {
         
@@ -119,7 +167,30 @@ namespace EFSService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StringValue", Namespace="http://schemas.datacontract.org/2004/07/EFSIPCInterface.Values")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DoubleValue", Namespace="http://schemas.datacontract.org/2004/07/GUI.IPCInterface.Values")]
+    [System.SerializableAttribute()]
+    public partial class DoubleValue : EFSService.Value {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double ValueField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StringValue", Namespace="http://schemas.datacontract.org/2004/07/GUI.IPCInterface.Values")]
     [System.SerializableAttribute()]
     public partial class StringValue : EFSService.Value {
         
@@ -142,52 +213,29 @@ namespace EFSService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ListValue", Namespace="http://schemas.datacontract.org/2004/07/EFSIPCInterface.Values")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StateValue", Namespace="http://schemas.datacontract.org/2004/07/GUI.IPCInterface.Values")]
     [System.SerializableAttribute()]
-    public partial class ListValue : EFSService.Value {
+    public partial class StateValue : EFSService.Value {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private EFSService.Value[] ValueField;
+        private string NameField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public EFSService.Value[] Value {
+        public string Name {
             get {
-                return this.ValueField;
+                return this.NameField;
             }
             set {
-                if ((object.ReferenceEquals(this.ValueField, value) != true)) {
-                    this.ValueField = value;
-                    this.RaisePropertyChanged("Value");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BoolValue", Namespace="http://schemas.datacontract.org/2004/07/EFSIPCInterface.Values")]
-    [System.SerializableAttribute()]
-    public partial class BoolValue : EFSService.Value {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool ValueField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Value {
-            get {
-                return this.ValueField;
-            }
-            set {
-                if ((this.ValueField.Equals(value) != true)) {
-                    this.ValueField = value;
-                    this.RaisePropertyChanged("Value");
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
                 }
             }
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Priority", Namespace="http://schemas.datacontract.org/2004/07/EFSIPCInterface")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Priority", Namespace="http://schemas.datacontract.org/2004/07/GUI.IPCInterface")]
     public enum Priority : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -209,6 +257,18 @@ namespace EFSService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="EFSService.IEFSService")]
     public interface IEFSService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEFSService/set_Explain", ReplyAction="http://tempuri.org/IEFSService/set_ExplainResponse")]
+        void set_Explain(bool value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEFSService/set_LogEvents", ReplyAction="http://tempuri.org/IEFSService/set_LogEventsResponse")]
+        void set_LogEvents(bool value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEFSService/set_CycleDuration", ReplyAction="http://tempuri.org/IEFSService/set_CycleDurationResponse")]
+        void set_CycleDuration(int value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEFSService/set_KeepEventCount", ReplyAction="http://tempuri.org/IEFSService/set_KeepEventCountResponse")]
+        void set_KeepEventCount(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEFSService/GetVariableValue", ReplyAction="http://tempuri.org/IEFSService/GetVariableValueResponse")]
         EFSService.Value GetVariableValue(string variableName);
@@ -245,6 +305,22 @@ namespace EFSService {
         
         public EFSServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public void set_Explain(bool value) {
+            base.Channel.set_Explain(value);
+        }
+        
+        public void set_LogEvents(bool value) {
+            base.Channel.set_LogEvents(value);
+        }
+        
+        public void set_CycleDuration(int value) {
+            base.Channel.set_CycleDuration(value);
+        }
+        
+        public void set_KeepEventCount(int value) {
+            base.Channel.set_KeepEventCount(value);
         }
         
         public EFSService.Value GetVariableValue(string variableName) {

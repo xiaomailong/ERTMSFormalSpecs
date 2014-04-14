@@ -235,7 +235,7 @@ namespace GUI.TestRunnerView
                     frameToolStripComboBox.Text = selectedFrame;
                     frameToolStripComboBox.ToolTipText = selectedFrame;
 
-                    if (Frame == null || frameToolStripComboBox.Text.CompareTo(Frame.Name) != 0)
+                    if (Frame != null && frameToolStripComboBox.Text.CompareTo(Frame.Name) != 0)
                     {
                         subSequenceSelectorComboBox.Items.Clear();
                         foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
@@ -261,7 +261,7 @@ namespace GUI.TestRunnerView
                         EFSSystem.Runner = null;
                     }
 
-                    if (EFSSystem.Runner != null)
+                    if (EFSSystem.Runner != null && EFSSystem.Runner.SubSequence != null)
                     {
                         subSequenceSelectorComboBox.Text = EFSSystem.Runner.SubSequence.Name;
                     }
@@ -302,10 +302,10 @@ namespace GUI.TestRunnerView
             {
                 EFSSystem.Runner.EndExecution();
                 EFSSystem.Runner = null;
-                GUIUtils.MDIWindow.RefreshAfterStep();
             }
-            tabControl1.SelectedTab = timeLineTabPage;
             Clear();
+            GUIUtils.MDIWindow.RefreshAfterStep();
+            tabControl1.SelectedTab = timeLineTabPage;
         }
 
         public void Clear()
@@ -332,6 +332,10 @@ namespace GUI.TestRunnerView
                     {
                         EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(subSequence, true, false);
                     }
+                }
+                else
+                {
+                    EFSSystem.Runner = ERTMSFormalSpecs.ErtmsFormalSpecGui.EFSService.Runner;
                 }
             }
         }

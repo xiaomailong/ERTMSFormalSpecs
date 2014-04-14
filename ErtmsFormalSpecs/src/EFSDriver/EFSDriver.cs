@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using EFSService;
+using System.ServiceModel;
+using System.Threading;
 
 namespace EFSDriver
 {
@@ -20,7 +22,23 @@ namespace EFSDriver
         public EFSDriver()
         {
             InitializeComponent();
-            EFS = new EFSServiceClient();
+            bool communicationEstablished = false;
+            while (!communicationEstablished)
+            {
+                EFS = new EFSServiceClient();
+                try
+                {
+                    EFS.set_Explain(true);
+                    EFS.set_LogEvents(false);
+                    EFS.set_CycleDuration(100);
+                    EFS.set_KeepEventCount(10000);
+                    communicationEstablished = true;
+                }
+                catch (CommunicationException e)
+                {
+                    Thread.Sleep(100);
+                }
+            }
         }
 
         private void cycleButton_Click(object sender, EventArgs e)
