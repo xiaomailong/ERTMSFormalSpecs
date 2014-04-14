@@ -39,6 +39,7 @@ namespace EFSDriver
                     Thread.Sleep(100);
                 }
             }
+            EFS.Restart();
         }
 
         private void cycleButton_Click(object sender, EventArgs e)

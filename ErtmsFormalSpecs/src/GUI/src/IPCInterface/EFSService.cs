@@ -62,6 +62,14 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
+        /// Restarts the engine with default values
+        /// </summary>
+        public void Restart()
+        {
+            EFSSystem.INSTANCE.Runner = new Runner(Explain, LogEvents, CycleDuration, KeepEventCount);
+        }
+
+        /// <summary>
         /// Provides the runner on which the service is applied
         /// </summary>
         public Runner Runner
@@ -71,7 +79,7 @@ namespace GUI.IPCInterface
                 EFSSystem efsSystem = EFSSystem.INSTANCE;
                 if (efsSystem.Runner == null)
                 {
-                    efsSystem.Runner = new Runner(Explain, LogEvents, CycleDuration, KeepEventCount);
+                    Restart();
                 }
 
                 return efsSystem.Runner;
