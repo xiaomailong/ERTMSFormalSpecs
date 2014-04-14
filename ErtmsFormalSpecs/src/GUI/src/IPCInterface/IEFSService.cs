@@ -36,6 +36,7 @@ namespace GUI.IPCInterface
         /// <summary>
         /// The fault message
         /// </summary>
+        [DataMember]
         public string Message { get; private set; }
 
         /// <summary>
@@ -112,5 +113,11 @@ namespace GUI.IPCInterface
         [OperationContract]
         [FaultContractAttribute(typeof(EFSServiceFault))]
         void Cycle(Priority priority);
+
+        /// <summary>
+        /// Restarts the engine with default values
+        /// </summary>
+        [OperationContract]
+        void Restart();
     }
 }
