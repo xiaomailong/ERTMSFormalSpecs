@@ -890,7 +890,7 @@ namespace DataDictionary.Tests.Runner
         {
             TestCase retVal = null;
 
-            if (currentTestCaseIndex != NO_MORE_STEP)
+            if (SubSequence != null && currentTestCaseIndex != NO_MORE_STEP)
             {
                 if (currentTestCaseIndex >= 0 && currentTestCaseIndex < SubSequence.TestCases.Count)
                 {

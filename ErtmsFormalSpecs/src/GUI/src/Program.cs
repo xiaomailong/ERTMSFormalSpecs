@@ -47,11 +47,23 @@ namespace ERTMSFormalSpecs
 
             Uri baseAddress = new Uri("http://localhost:5352/EFSService/");
             host = new ServiceHost(EFSService, baseAddress);
-            host.ManualFlowControlLimit = int.MaxValue;
             try
             {
-                // Sets the service endpoint.
-                host.AddServiceEndpoint(typeof(IEFSService), new WSHttpBinding(), "EFSService");
+                // Setup the endpoint
+                var endPointWithoutSSL = new BasicHttpBinding()
+                {
+                    MaxBufferSize = int.MaxValue,
+                    MaxReceivedMessageSize = int.MaxValue,
+                    MaxBufferPoolSize = int.MaxValue,
+                };
+
+                endPointWithoutSSL.ReaderQuotas.MaxStringContentLength = int.MaxValue;
+                endPointWithoutSSL.ReaderQuotas.MaxNameTableCharCount = int.MaxValue;
+                endPointWithoutSSL.ReaderQuotas.MaxDepth = int.MaxValue;
+                endPointWithoutSSL.ReaderQuotas.MaxBytesPerRead = int.MaxValue;
+                endPointWithoutSSL.ReaderQuotas.MaxArrayLength = int.MaxValue;
+
+                host.AddServiceEndpoint(typeof(IEFSService), endPointWithoutSSL, "EFSService");
 
                 // Enable metadata exchange.
                 ServiceMetadataBehavior smb = new ServiceMetadataBehavior();

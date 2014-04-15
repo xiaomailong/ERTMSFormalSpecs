@@ -6,9 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using EFSService;
 using System.ServiceModel;
 using System.Threading;
+using EFSService;
 
 namespace EFSDriver
 {
