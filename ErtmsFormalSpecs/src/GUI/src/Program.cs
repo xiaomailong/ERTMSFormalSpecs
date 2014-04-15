@@ -47,6 +47,7 @@ namespace ERTMSFormalSpecs
 
             Uri baseAddress = new Uri("http://localhost:5352/EFSService/");
             host = new ServiceHost(EFSService, baseAddress);
+            host.ManualFlowControlLimit = int.MaxValue;
             try
             {
                 // Sets the service endpoint.
