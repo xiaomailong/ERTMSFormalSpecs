@@ -26,10 +26,10 @@ namespace GUI.IPCInterface.Values
     public class IntValue : Value
     {
         /// <summary>
-        /// The actual value
+        /// The actual image value
         /// </summary>
         [DataMember]
-        public Decimal Value { get; private set; }
+        public string Image { get; private set; }
 
         /// <summary>
         /// Constructor
@@ -37,7 +37,16 @@ namespace GUI.IPCInterface.Values
         /// <param name="value"></param>
         public IntValue(Decimal value)
         {
-            Value = value;
+            Image = value.ToString(System.Globalization.CultureInfo.InvariantCulture); ;
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="value"></param>
+        public IntValue(string image)
+        {
+            Image = image;
         }
 
         /// <summary>
@@ -46,7 +55,7 @@ namespace GUI.IPCInterface.Values
         /// <returns></returns>
         public override string DisplayValue()
         {
-            return Value.ToString();
+            return Image;
         }
 
         /// <summary>
@@ -55,7 +64,7 @@ namespace GUI.IPCInterface.Values
         /// <returns></returns>
         public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
         {
-            DataDictionary.Values.IValue retVal = type.getValue(Value.ToString());
+            DataDictionary.Values.IValue retVal = type.getValue(Image);
 
             CheckReturnValue(retVal, type);
             return retVal;

@@ -102,12 +102,8 @@ namespace EFSDriver
                 IntValue value = EFS.GetVariableValue(variableNameTextBox.Text) as IntValue;
                 if (value != null)
                 {
-                    int result;
-                    if (int.TryParse(variableValueTextBox.Text, out result))
-                    {
-                        value.Value = result;
-                        EFS.SetVariableValue(variableNameTextBox.Text, value);
-                    }
+                    value.Image = variableValueTextBox.Text;
+                    EFS.SetVariableValue(variableNameTextBox.Text, value);
                 }
             }
         }
