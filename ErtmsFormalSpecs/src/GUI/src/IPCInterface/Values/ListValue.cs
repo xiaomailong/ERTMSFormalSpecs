@@ -76,19 +76,24 @@ namespace GUI.IPCInterface.Values
             {
                 List<DataDictionary.Values.IValue> values = new List<DataDictionary.Values.IValue>();
 
+                int i = 0;
                 foreach (Value item in Value)
                 {
-                    values.Add(item.convertBack(collectionType.Type));
+                    try
+                    {
+                        i += 1;
+                        values.Add(item.convertBack(collectionType.Type));
+                    }
+                    catch (FaultException<EFSServiceFault> exception)
+                    {
+                        throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot convert element " + i, exception.Detail));
+                    }
                 }
 
                 retVal = new DataDictionary.Values.ListValue(collectionType, values);
             }
 
-            if (retVal == null)
-            {
-                throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot convert to EFS value " + DisplayValue()));
-            }
-
+            CheckReturnValue(retVal, type);
             return retVal;
         }
     }

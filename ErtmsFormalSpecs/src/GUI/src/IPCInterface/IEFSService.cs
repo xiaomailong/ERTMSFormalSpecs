@@ -40,12 +40,30 @@ namespace GUI.IPCInterface
         public string Message { get; private set; }
 
         /// <summary>
+        /// Provides the inner reason for this exception
+        /// </summary>
+        [DataMember]
+        public EFSServiceFault InnerReason { get; private set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="message"></param>
         public EFSServiceFault(string message)
         {
             Message = message;
+            InnerReason = null;
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="innerReason"></param>
+        public EFSServiceFault(string message, EFSServiceFault innerReason)
+        {
+            Message = message;
+            InnerReason = innerReason;
         }
     }
 

@@ -57,11 +57,7 @@ namespace GUI.IPCInterface.Values
         {
             DataDictionary.Values.IValue retVal = type.getValue(Name);
 
-            if (retVal == null)
-            {
-                throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot convert to EFS value " + DisplayValue()));
-            }
-
+            CheckReturnValue(retVal, type);
             return retVal;
         }
     }
