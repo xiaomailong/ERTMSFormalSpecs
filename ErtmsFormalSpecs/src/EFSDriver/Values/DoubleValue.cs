@@ -29,7 +29,7 @@ namespace EFSService
         /// <returns></returns>
         public override string DisplayValue()
         {
-            return Value.ToString();
+            return Image;
         }
     }
 }
