@@ -402,16 +402,7 @@
     <Compile Include="src\TestRunnerView\TimeLineControl\Filtering.Designer.cs">
       <DependentUpon>Filtering.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\TestRunnerView\TimeLineControl\StepBack.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="src\TestRunnerView\TimeLineControl\StepOnce.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="src\TestRunnerView\TimeLineControl\EventControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="src\TestRunnerView\TimeLineControl\TimeLineButton.cs">
+    <Compile Include="src\TestRunnerView\TimeLineControl\TimeLineControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\TranslationRules\FolderTreeNode.cs" />
@@ -437,9 +428,6 @@
     </Compile>
     <Compile Include="src\DataDictionaryView\Window.Designer.cs">
       <DependentUpon>Window.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\TestRunnerView\TimeLineControl\TimeLineControl.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\MainWindow.cs">
       <SubType>Form</SubType>
@@ -579,20 +567,14 @@
     <EmbeddedResource Include="src\TestRunnerView\TimeLineControl\Filtering.resx">
       <DependentUpon>Filtering.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\TestRunnerView\TimeLineControl\StepBack.resx">
-      <DependentUpon>StepBack.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\TestRunnerView\TimeLineControl\StepOnce.resx">
-      <DependentUpon>StepOnce.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\TestRunnerView\TimeLineControl\TimeLineControl.resx">
-      <DependentUpon>TimeLineControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\SpecificationView\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\TestRunnerView\TimeLineControl\TimeLineControl.resx">
+      <DependentUpon>TimeLineControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\TestRunnerView\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
@@ -657,6 +639,20 @@
     <None Include="resources\folder_opened.gif" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\wheel.png" />
+    <None Include="resources\train.png" />
+    <None Include="resources\error.png" />
+    <None Include="resources\success.png" />
+    <None Include="resources\question_mark.png" />
+    <None Include="resources\antenna.png" />
+    <None Include="resources\balance.png" />
+    <None Include="resources\speed_control.png" />
+    <None Include="resources\in.png" />
+    <None Include="resources\out.png" />
+    <None Include="resources\in_out.png" />
+    <None Include="resources\internal.jpg" />
+    <None Include="resources\internal.png" />
+    <Content Include="resources\tools.png" />
     <None Include="resources\type_icon.png" />
     <None Include="resources\call_icon.png" />
     <Content Include="resources\model_icon.png" />

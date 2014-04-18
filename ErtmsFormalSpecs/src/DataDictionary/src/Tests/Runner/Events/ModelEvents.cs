@@ -54,14 +54,22 @@ namespace DataDictionary.Tests.Runner.Events
         public abstract Types.NameSpace NameSpace { get; }
 
         /// <summary>
+        /// The priority when the event occurs
+        /// </summary>
+        public Generated.acceptor.RulePriority? Priority { get; private set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="id"></param>
-        public ModelEvent(string id, Utils.INamable instance)
+        /// <param name="instance"></param>
+        /// <param name="priority"></param>
+        public ModelEvent(string id, Utils.INamable instance, Generated.acceptor.RulePriority? priority)
         {
             Id = id;
             Message = id;
             Instance = instance;
+            Priority = priority;
         }
 
         /// <summary>
@@ -69,10 +77,11 @@ namespace DataDictionary.Tests.Runner.Events
         /// </summary>
         /// <param name="id"></param>
         /// <param name="message"></param>
-        public ModelEvent(string id, string message)
+        public ModelEvent(string id, string message, Generated.acceptor.RulePriority? priority)
         {
             Id = id;
             Message = message;
+            Priority = priority;
         }
 
         /// <summary>

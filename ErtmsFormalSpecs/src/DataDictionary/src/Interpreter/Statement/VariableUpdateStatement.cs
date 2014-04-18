@@ -261,5 +261,52 @@ namespace DataDictionary.Interpreter.Statement
         {
             return VariableIdentification.ToString() + " <- " + Expression.ToString();
         }
+
+        /// <summary>
+        /// Provides a real short description of this statement
+        /// </summary>
+        /// <returns></returns>
+        public override string ShortShortDescription()
+        {
+            string retVal = "";
+
+            if (VariableIdentification.ToString().Trim() == "THIS")
+            {
+                retVal = Expression.ToString();
+            }
+            else
+            {
+                retVal = VariableIdentification.Name;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides the usage description done by this statement
+        /// </summary>
+        /// <returns></returns>
+        public override ModeEnum UsageDescription()
+        {
+            ModeEnum retVal = ModeEnum.Unknown;
+
+            Variables.IVariable variable = VariableIdentification.Ref as Variables.IVariable;
+            if (variable != null)
+            {
+                retVal = ConvertMode(variable.Mode);
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides the main model elemnt affected by this statement
+        /// </summary>
+        /// <returns></returns>
+        public override ModelElement AffectedElement()
+        {
+            return VariableIdentification.Ref as ModelElement;
+        }
+
     }
 }

@@ -164,13 +164,6 @@ namespace GUI.TestRunnerView
             });
         }
 
-        public override void SynchronizeForm()
-        {
-            base.SynchronizeForm();
-
-            evcTimeLineControl.Refresh();
-        }
-
         /// <summary>
         /// Refreshes the display
         /// </summary>
@@ -235,7 +228,7 @@ namespace GUI.TestRunnerView
                     frameToolStripComboBox.Text = selectedFrame;
                     frameToolStripComboBox.ToolTipText = selectedFrame;
 
-                    if (Frame != null && frameToolStripComboBox.Text.CompareTo(Frame.Name) != 0)
+                    if (Frame == null || frameToolStripComboBox.Text.CompareTo(Frame.Name) != 0)
                     {
                         subSequenceSelectorComboBox.Items.Clear();
                         foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
@@ -445,11 +438,10 @@ namespace GUI.TestRunnerView
 
         private void frameSelectorComboBox_SelectionChanged(object sender, EventArgs e)
         {
-            if (Frame != null && Frame.Name.CompareTo(frameToolStripComboBox.Text) != 0)
+            if (Frame == null || Frame.Name.CompareTo(frameToolStripComboBox.Text) != 0)
             {
                 EFSSystem.Runner = null;
             }
-
             Refresh();
         }
 
