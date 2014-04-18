@@ -76,7 +76,6 @@ namespace GUI.TestRunnerView.TimeLineControl
 
             Click += new EventHandler(TimeLineControl_Click);
             DoubleClick += new EventHandler(TimeLineControl_DoubleClick);
-            MouseWheel += new MouseEventHandler(TimeLineControl_MouseWheel);
 
             AutoScrollEnabler = new Label();
             AutoScrollEnabler.Text = "";
@@ -86,26 +85,12 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Handles the mouse wheel event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void TimeLineControl_MouseWheel(object sender, MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Middle)
-            {
-                VerticalScroll.Value = Math.Max(VerticalScroll.Minimum, Math.Min(VerticalScroll.Minimum, VerticalScroll.Value + (e.Delta * 10)));
-            }
-        }
-
-        /// <summary>
         /// Provides the event under the mouse pointer
         /// </summary>
         /// <returns></returns>
         private ModelEvent GetEventUnderMouse(MouseEventArgs e)
         {
             ModelEvent retVal = null;
-
 
             Point position = new Point(e.X + HorizontalScroll.Value, e.Y + VerticalScroll.Value);
             foreach (KeyValuePair<ModelEvent, Rectangle> pair in PositionHandler.EventPositions)
