@@ -158,7 +158,25 @@ namespace DataDictionary.Interpreter.Statement
         /// Provides the usage description done by this statement
         /// </summary>
         /// <returns></returns>
-        public abstract ModeEnum UsageDescription();
+        public virtual ModeEnum UsageDescription()
+        {
+            ModeEnum retVal = ModeEnum.Unknown;
+
+            ModelElement target = AffectedElement();
+            Variables.IVariable variable = target as Variables.IVariable;
+            if (variable != null)
+            {
+                retVal = ConvertMode(variable.Mode);
+            }
+
+            Types.StructureElement element = target as Types.StructureElement;
+            if (element != null)
+            {
+                retVal = ConvertMode(element.Mode);
+            }
+
+            return retVal;
+        }
 
         /// <summary>
         /// Provides the main model elemnt affected by this statement

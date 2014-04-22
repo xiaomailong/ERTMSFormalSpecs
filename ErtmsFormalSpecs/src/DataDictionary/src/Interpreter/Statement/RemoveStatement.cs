@@ -376,23 +376,6 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the usage description done by this statement
-        /// </summary>
-        /// <returns></returns>
-        public override ModeEnum UsageDescription()
-        {
-            ModeEnum retVal = ModeEnum.Unknown;
-
-            Variables.IVariable variable = ListExpression.Ref as Variables.IVariable;
-            if (variable != null)
-            {
-                retVal = ConvertMode(variable.Mode);
-            }
-
-            return retVal;
-        }
-
-        /// <summary>
         /// Provides the main model elemnt affected by this statement
         /// </summary>
         /// <returns></returns>
