@@ -113,21 +113,63 @@ namespace GUI
         }
 
         /// <summary>
+        /// Finds a  specific window in a collection of windows
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        private static class FindWindow<T>
+            where T : class
+        {
+            /// <summary>
+            /// Finds the specified element in the collection provided
+            /// </summary>
+            /// <param name="?"></param>
+            /// <returns></returns>
+            public static T find(ICollection<Form> subWindows)
+            {
+                T retVal = null;
+
+                foreach (Form form in subWindows)
+                {
+                    retVal = form as T;
+                    if (retVal != null)
+                    {
+                        break;
+                    }
+                }
+
+                return retVal;
+            }
+
+            /// <summary>
+            /// Finds the specified element in the collection provided
+            /// </summary>
+            /// <param name="?"></param>
+            /// <returns></returns>
+            public static T find(ICollection<IBaseForm> subWindows)
+            {
+                T retVal = null;
+
+                foreach (IBaseForm form in subWindows)
+                {
+                    retVal = form as T;
+                    if (retVal != null)
+                    {
+                        break;
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
         /// Provides a data dictionary window
         /// </summary>
         public DataDictionaryView.Window DataDictionaryWindow
         {
             get
             {
-                foreach (IBaseForm form in SubWindows)
-                {
-                    if (form is DataDictionaryView.Window)
-                    {
-                        return (DataDictionaryView.Window)form;
-                    }
-                }
-
-                return null;
+                return FindWindow<DataDictionaryView.Window>.find(SubWindows);
             }
         }
 
@@ -138,15 +180,7 @@ namespace GUI
         {
             get
             {
-                foreach (IBaseForm form in SubWindows)
-                {
-                    if (form is SpecificationView.Window)
-                    {
-                        return (SpecificationView.Window)form;
-                    }
-                }
-
-                return null;
+                return FindWindow<SpecificationView.Window>.find(SubWindows);
             }
         }
 
@@ -157,15 +191,7 @@ namespace GUI
         {
             get
             {
-                foreach (IBaseForm form in SubWindows)
-                {
-                    if (form is HistoryView.Window)
-                    {
-                        return (HistoryView.Window)form;
-                    }
-                }
-
-                return null;
+                return FindWindow<HistoryView.Window>.find(SubWindows);
             }
         }
 
@@ -176,15 +202,18 @@ namespace GUI
         {
             get
             {
-                foreach (IBaseForm form in SubWindows)
-                {
-                    if (form is TestRunnerView.Window)
-                    {
-                        return (TestRunnerView.Window)form;
-                    }
-                }
+                return FindWindow<TestRunnerView.Window>.find(SubWindows);
+            }
+        }
 
-                return null;
+        /// <summary>
+        /// Provides a watch window
+        /// </summary>
+        public TestRunnerView.Watch.Window WatchWindow
+        {
+            get
+            {
+                return FindWindow<TestRunnerView.Watch.Window>.find(SubWindows);
             }
         }
 
@@ -639,6 +668,16 @@ namespace GUI
                             {
                                 testWindow.RefreshModel();
                             }
+                        }
+
+                        IBaseForm watchWindow = WatchWindow;
+                        if (watchWindow == null)
+                        {
+                            AddChildWindow(new TestRunnerView.Watch.Window(), DockAreas.DockBottom);
+                        }
+                        else
+                        {
+                            watchWindow.RefreshModel();
                         }
 
                         // Only open the shortcuts window if there are some shortcuts defined
@@ -1410,12 +1449,10 @@ namespace GUI
                 {
                     ((GraphView.GraphView)form).RefreshAfterStep();
                 }
-
                 if (form is DataDictionaryView.Window)
                 {
                     ((DataDictionaryView.Window)form).RefreshAfterStep();
                 }
-
                 if (form is StateDiagram.StateDiagramWindow)
                 {
                     ((StateDiagram.StateDiagramWindow)form).RefreshAfterStep();
@@ -1424,7 +1461,10 @@ namespace GUI
                 {
                     ((TestRunnerView.Window)form).RefreshAfterStep();
                 }
-
+                if (form is TestRunnerView.Watch.Window)
+                {
+                    ((TestRunnerView.Watch.Window)form).RefreshAfterStep();
+                }
             }
         }
 

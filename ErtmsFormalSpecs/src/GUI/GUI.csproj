@@ -405,6 +405,12 @@
     <Compile Include="src\TestRunnerView\TimeLineControl\TimeLineControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\TestRunnerView\Watch\Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\TestRunnerView\Watch\Window.Designer.cs">
+      <DependentUpon>Window.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\TranslationRules\FolderTreeNode.cs" />
     <Compile Include="src\TranslationRules\SourceTextsTreeNode.cs" />
     <Compile Include="src\TranslationRules\SourceTextTreeNode.cs" />
@@ -575,6 +581,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\TestRunnerView\TimeLineControl\TimeLineControl.resx">
       <DependentUpon>TimeLineControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\TestRunnerView\Watch\Window.resx">
+      <DependentUpon>Window.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\TestRunnerView\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
