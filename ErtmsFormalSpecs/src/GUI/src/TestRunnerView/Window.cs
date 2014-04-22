@@ -27,11 +27,6 @@ namespace GUI.TestRunnerView
             get { return propertyGrid; }
         }
 
-        public override RichTextBox MessagesTextBox
-        {
-            get { return messageRichTextBox.TextBox; }
-        }
-
         public override EditorTextBox RequirementsTextBox
         {
             get { return requirementsTextBox; }
@@ -95,7 +90,6 @@ namespace GUI.TestRunnerView
         {
             InitializeComponent();
 
-            messageRichTextBox.AutoComplete = false;
             requirementsTextBox.AutoComplete = false;
             explainTextBox.AutoComplete = false;
 

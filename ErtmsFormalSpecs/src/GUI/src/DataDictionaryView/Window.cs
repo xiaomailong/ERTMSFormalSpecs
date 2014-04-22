@@ -26,21 +26,6 @@ namespace GUI.DataDictionaryView
             get { return dataDictPropertyGrid; }
         }
 
-        public override RichTextBox MessagesTextBox
-        {
-            get
-            {
-                if (messagesRichTextBox != null)
-                {
-                    return messagesRichTextBox.TextBox;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
-
         public override EditorTextBox RequirementsTextBox
         {
             get { return requirementsTextBox; }
@@ -89,7 +74,6 @@ namespace GUI.DataDictionaryView
         {
             InitializeComponent();
 
-            messagesRichTextBox.AutoComplete = false;
             requirementsTextBox.AutoComplete = false;
             ruleExplainTextBox.AutoComplete = false;
 

@@ -25,7 +25,7 @@ using DataDictionary.Variables;
 
 namespace GUI.TestRunnerView.Watch
 {
-    public partial class Window : DockContent, IBaseForm
+    public partial class Window : BaseForm
     {
         /// <summary>
         /// Constructor
@@ -316,51 +316,9 @@ namespace GUI.TestRunnerView.Watch
             Refresh();
         }
 
-        public MyPropertyGrid Properties
-        {
-            get { return null; }
-        }
-
-        public RichTextBox ExpressionTextBox
-        {
-            get { return null; }
-        }
-
-        public RichTextBox CommentsTextBox
-        {
-            get { return null; }
-        }
-
-        public RichTextBox MessagesTextBox
-        {
-            get { return null; }
-        }
-
-        public EditorTextBox RequirementsTextBox
-        {
-            get { return null; }
-        }
-
-        public EditorTextBox ExpressionEditorTextBox
-        {
-            get { return null; }
-        }
-
-        public BaseTreeView subTreeView
-        {
-            get { return null; }
-        }
-
-        public ExplainTextBox ExplainTextBox
-        {
-            get { return null; }
-        }
-
-        public BaseTreeView TreeView
-        {
-            get { return null; }
-        }
-
+        /// <summary>
+        /// Refreshes after a change in the system
+        /// </summary>
         public void RefreshAfterStep()
         {
             Refresh();
@@ -456,7 +414,7 @@ namespace GUI.TestRunnerView.Watch
                         if (expression != null)
                         {
                             Variable variable = expression.Ref as Variable;
-                            if (variable != null )
+                            if (variable != null)
                             {
                                 DataDictionary.Types.Type type = variable.Type;
                                 if (type != null)

@@ -244,37 +244,6 @@ namespace GUI
         /// <param name="ignoreFocused"></param>
         public void RefreshViewAccordingToModel(IBaseForm baseForm, bool ignoreFocused)
         {
-            if (baseForm.MessagesTextBox != null)
-            {
-                if (!(baseForm.MessagesTextBox.ContainsFocus && ignoreFocused))
-                {
-                    Utils.IModelElement current = Model;
-                    List<Utils.ElementLog> messages = new List<Utils.ElementLog>();
-                    BaseTreeNode parent = Parent as BaseTreeNode;
-                    if (parent != null && parent.Model != Model)
-                    {
-                        while (current != null)
-                        {
-                            if (current.Messages != null)
-                            {
-                                messages.AddRange(current.Messages);
-                            }
-
-                            if (EFSSystem.INSTANCE.DisplayEnclosingMessages)
-                            {
-                                current = current.Enclosing as Utils.IModelElement;
-                            }
-                            else
-                            {
-                                current = null;
-                            }
-                        }
-                    }
-                    baseForm.MessagesTextBox.Lines = Utils.Utils.toStrings(messages);
-                    baseForm.MessagesTextBox.ReadOnly = true;
-                }
-            }
-
             if (baseForm.subTreeView != null)
             {
                 baseForm.subTreeView.SetRoot(Model);
@@ -782,15 +751,6 @@ namespace GUI
         public virtual void RefreshNode()
         {
             UpdateText();
-
-            if (BaseForm != null && BaseForm.MessagesTextBox != null)
-            {
-                if (BaseForm.Selected == Model)
-                {
-                    BaseForm.MessagesTextBox.Lines = Utils.Utils.toStrings(Model.Messages);
-                    BaseForm.MessagesTextBox.ReadOnly = true;
-                }
-            }
         }
 
         /// <summary>

@@ -36,11 +36,6 @@ namespace GUI.SpecificationView
             get { return specBrowserTextView.TextBox; }
         }
 
-        public override RichTextBox MessagesTextBox
-        {
-            get { return messagesRichTextBox.TextBox; }
-        }
-
         public override BaseTreeView TreeView
         {
             get { return specBrowserTreeView; }
@@ -70,8 +65,6 @@ namespace GUI.SpecificationView
             InitializeComponent();
 
             specBrowserTextView.AutoComplete = false;
-            messagesRichTextBox.AutoComplete = false;
-
             specBrowserTextView.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;

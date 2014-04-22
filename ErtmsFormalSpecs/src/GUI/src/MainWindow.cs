@@ -163,6 +163,17 @@ namespace GUI
         }
 
         /// <summary>
+        /// Provides a message view window
+        /// </summary>
+        public MessagesView.Window MessagesWindow
+        {
+            get
+            {
+                return FindWindow<MessagesView.Window>.find(SubWindows);
+            }
+        }
+
+        /// <summary>
         /// Provides a data dictionary window
         /// </summary>
         public DataDictionaryView.Window DataDictionaryWindow
@@ -497,7 +508,6 @@ namespace GUI
                 {
                     SubForms.Add(docContent);
 
-
                     if (dockArea == DockAreas.DockLeft)
                     {
                         docContent.Show(dockPanel, DockState.DockLeftAutoHide);
@@ -670,15 +680,22 @@ namespace GUI
                             }
                         }
 
+                        // Display the messages window at the bottom of the main window
+                        IBaseForm messageWindow = MessagesWindow;
+                        if (messageWindow == null)
+                        {
+                            AddChildWindow(new MessagesView.Window(), DockAreas.DockBottom);
+                        }
+
+                        // Display the watch window at the bottom of the main window
                         IBaseForm watchWindow = WatchWindow;
                         if (watchWindow == null)
                         {
                             AddChildWindow(new TestRunnerView.Watch.Window(), DockAreas.DockBottom);
                         }
-                        else
-                        {
-                            watchWindow.RefreshModel();
-                        }
+
+                        // Display the message window over the watch window
+                        MessagesWindow.Show();
 
                         // Only open the shortcuts window if there are some shortcuts defined
                         if (dictionary.ShortcutsDictionary != null)
@@ -1487,6 +1504,12 @@ namespace GUI
                     {
                         HandlingSelection = true;
 
+                        MessagesView.Window messageView = MessagesWindow;
+                        if (messageView != null)
+                        {
+                            messageView.SetModel(selected);
+                        }
+
                         if (SelectionHistory.Count > MAX_SELECTION_HISTORY)
                         {
                             SelectionHistory.RemoveAt(SelectionHistory.Count - 1);
@@ -1690,6 +1713,32 @@ namespace GUI
             DataDictionary.Dictionary dictionary = GUIUtils.MDIWindow.GetActiveDictionary();
             window.SetEnclosing(dictionary);
             window.Text = "Requirement sets for " + dictionary.Name;
+        }
+
+        private void showWatchViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TestRunnerView.Watch.Window watchWindow = WatchWindow;
+            if (watchWindow == null)
+            {
+                AddChildWindow(new TestRunnerView.Watch.Window(), DockAreas.DockBottom);
+            }
+            else
+            {
+                watchWindow.Show();
+            }
+        }
+
+        private void showMessagesVoewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessagesView.Window messageWindow = MessagesWindow;
+            if (messageWindow == null)
+            {
+                AddChildWindow(new MessagesView.Window(), DockAreas.DockBottom);
+            }
+            else
+            {
+                messageWindow.Show();
+            }
         }
     }
 }
