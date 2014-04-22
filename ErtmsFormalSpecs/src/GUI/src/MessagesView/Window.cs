@@ -80,6 +80,9 @@ namespace GUI.MessagesView
 
             messagesDataGridView.DataSource = null;
             messagesDataGridView.DataSource = messages;
+
+            messagesDataGridView.Columns["Level"].FillWeight = 10F;
+            messagesDataGridView.Columns["Message"].FillWeight = 90F;
             Refresh();
         }
 
