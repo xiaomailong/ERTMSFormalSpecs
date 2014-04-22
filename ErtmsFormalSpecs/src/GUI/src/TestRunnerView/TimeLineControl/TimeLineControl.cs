@@ -92,7 +92,8 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             ModelEvent retVal = null;
 
-            Point position = new Point(e.X + HorizontalScroll.Value, e.Y + VerticalScroll.Value);
+            Point position = PointToClient(new Point(MousePosition.X, MousePosition.Y));
+            position.Offset(HorizontalScroll.Value, VerticalScroll.Value);
             foreach (KeyValuePair<ModelEvent, Rectangle> pair in PositionHandler.EventPositions)
             {
                 if (pair.Value.Contains(position))
@@ -261,7 +262,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             Images.Images.Add(GUI.Properties.Resources.out_icon);
             Images.Images.Add(GUI.Properties.Resources.in_out_icon);
             Images.Images.Add(GUI.Properties.Resources.internal_icon);
-            Images.Images.Add(GUI.Properties.Resources.call_icon);
+            Images.Images.Add(GUI.Properties.Resources.call);
         }
 
         /// <summary>
@@ -444,8 +445,15 @@ namespace GUI.TestRunnerView.TimeLineControl
 
                     foreach (Rectangle rectangle in EventPositions.Values)
                     {
-                        right = Math.Max(right, rectangle.Right);
-                        bottom = Math.Max(bottom, rectangle.Bottom);
+                        if (rectangle.Right > right)
+                        {
+                            right = rectangle.Right;
+                        }
+
+                        if (rectangle.Bottom > bottom)
+                        {
+                            bottom = rectangle.Bottom;
+                        }
                     }
 
                     return new Point(right, bottom);
@@ -516,7 +524,13 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         private void UpdatePanelSize()
         {
-            AutoScrollEnabler.Location = PositionHandler.BottomRightPosition;
+            Point bottomRightPosition = PositionHandler.BottomRightPosition;
+            Point locationWithoutScroll = new Point(
+                bottomRightPosition.X - HorizontalScroll.Value,
+                bottomRightPosition.Y - VerticalScroll.Value
+            );
+            AutoScrollEnabler.Location = locationWithoutScroll;
+            HorizontalScroll.Value = Math.Min(HorizontalScroll.Maximum, bottomRightPosition.X);
         }
 
         protected override void OnPaint(PaintEventArgs pe)
