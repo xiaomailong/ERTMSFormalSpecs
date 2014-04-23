@@ -94,5 +94,16 @@ namespace DataDictionary.Tests.Runner.Events
             base.RollBack();
             Changes.RollBack();
         }
+
+        /// <summary>
+        /// The explanation of the element
+        /// </summary>
+        /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
+        /// <returns></returns>
+        public override string getExplain(bool explainSubElements)
+        {
+            return TextualExplainUtilities.Encapsule(Changes.ToString());
+        }
+
     }
 }

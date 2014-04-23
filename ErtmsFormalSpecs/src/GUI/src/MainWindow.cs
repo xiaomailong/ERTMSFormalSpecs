@@ -174,6 +174,17 @@ namespace GUI
         }
 
         /// <summary>
+        /// Provides a message view window
+        /// </summary>
+        public MoreInfoView.Window MoreInfoWindow
+        {
+            get
+            {
+                return FindWindow<MoreInfoView.Window>.find(SubWindows);
+            }
+        }
+
+        /// <summary>
         /// Provides a data dictionary window
         /// </summary>
         public DataDictionaryView.Window DataDictionaryWindow
@@ -685,6 +696,13 @@ namespace GUI
                         if (messageWindow == null)
                         {
                             AddChildWindow(new MessagesView.Window(), DockAreas.DockBottom);
+                        }
+
+                        // Display the more info window at the bottom of the main window
+                        IBaseForm moreInfoWindow = MoreInfoWindow;
+                        if (moreInfoWindow == null)
+                        {
+                            AddChildWindow(new MoreInfoView.Window(), DockAreas.DockBottom);
                         }
 
                         // Display the watch window at the bottom of the main window
@@ -1510,6 +1528,12 @@ namespace GUI
                             messageView.SetModel(selected);
                         }
 
+                        MoreInfoView.Window moreInfoView = MoreInfoWindow;
+                        if (moreInfoView != null)
+                        {
+                            moreInfoView.SetModel(selected as TextualExplain);
+                        }
+
                         if (SelectionHistory.Count > MAX_SELECTION_HISTORY)
                         {
                             SelectionHistory.RemoveAt(SelectionHistory.Count - 1);
@@ -1738,6 +1762,19 @@ namespace GUI
             else
             {
                 messageWindow.Show();
+            }
+        }
+
+        private void showMoreInfoViewToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MoreInfoView.Window moreInfoWindow = MoreInfoWindow;
+            if (moreInfoWindow == null)
+            {
+                AddChildWindow(new MessagesView.Window(), DockAreas.DockBottom);
+            }
+            else
+            {
+                moreInfoWindow.Show();
             }
         }
     }

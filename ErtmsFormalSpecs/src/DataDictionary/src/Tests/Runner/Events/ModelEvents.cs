@@ -16,7 +16,7 @@
 
 namespace DataDictionary.Tests.Runner.Events
 {
-    public abstract class ModelEvent
+    public abstract class ModelEvent : TextualExplain
     {
         /// <summary>
         /// The event Id
@@ -130,6 +130,16 @@ namespace DataDictionary.Tests.Runner.Events
         public override string ToString()
         {
             return Time.ToString() + ": " + Message;
+        }
+
+        /// <summary>
+        /// The explanation of the element
+        /// </summary>
+        /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
+        /// <returns></returns>
+        public virtual string getExplain(bool explainSubElements)
+        {
+            return TextualExplainUtilities.Encapsule(Message);
         }
     }
 }
