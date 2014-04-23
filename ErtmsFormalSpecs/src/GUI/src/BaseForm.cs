@@ -229,8 +229,6 @@ namespace GUI
 
         }
 
-
-
         protected static void ResizeDescriptionArea(PropertyGrid grid, int height)
         {
             if (grid == null) throw new ArgumentNullException("grid");

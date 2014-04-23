@@ -163,10 +163,24 @@ namespace GUI.TestRunnerView.TimeLineControl
             SubStepActivated subStepActivated = evt as SubStepActivated;
             if (subStepActivated != null)
             {
-                if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
+                if (GUIUtils.MDIWindow.TestWindow != null)
                 {
                     GUIUtils.MDIWindow.TestWindow.TreeView.Select(subStepActivated.SubStep);
                 }
+            }
+
+            StepActivation stepActivation = evt as StepActivation;
+            if (stepActivation != null)
+            {
+                if (GUIUtils.MDIWindow.TestWindow != null)
+                {
+                    GUIUtils.MDIWindow.TestWindow.TreeView.Select(stepActivation.Step);
+                }
+            }
+
+            if (GUIUtils.MDIWindow.MoreInfoWindow != null)
+            {
+                GUIUtils.MDIWindow.MoreInfoWindow.SetModel(evt);
             }
         }
 
@@ -204,7 +218,6 @@ namespace GUI.TestRunnerView.TimeLineControl
                     GUIUtils.MDIWindow.AddChildWindow(explainTextBox);
                 }
             }
-
         }
 
         /// <summary>
@@ -286,6 +299,32 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
+        /// Synthetic class to represent a  Step activation
+        /// </summary>
+        private class StepActivation : ModelEvent
+        {
+            /// <summary>
+            /// The step that has been activated
+            /// </summary>
+            public Step Step { get; private set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="step"></param>
+            public StepActivation(Step step)
+                : base(step.Name, step, null)
+            {
+                Step = step;
+            }
+
+            /// <summary>
+            /// The namespace associated to this event
+            /// </summary>
+            public override DataDictionary.Types.NameSpace NameSpace { get { return null; } }
+        }
+
+        /// <summary>
         /// Handles the position of the events displayed by the time line
         /// </summary>
         private class EventPositionHandler
@@ -342,6 +381,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                 LastActivationTime = -1.0;
                 AllocatedPositions.Clear();
                 EventPositions.Clear();
+                LastStepActivation = null;
                 LastSubStepActivation = null;
             }
 
@@ -353,7 +393,12 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// <summary>
             /// The last sub step activation
             /// </summary>
-            SubStepActivated LastSubStepActivation { get; set; }
+            private SubStepActivated LastSubStepActivation { get; set; }
+
+            /// <summary>
+            /// The last step activation
+            /// </summary>
+            private StepActivation LastStepActivation { get; set; }
 
             /// <summary>
             /// The next Y position to place an event
@@ -388,32 +433,53 @@ namespace GUI.TestRunnerView.TimeLineControl
                     SubStepActivated currentSubStepActivation = evt as SubStepActivated;
                     if (currentSubStepActivation != null)
                     {
-                        NextY += STEP_BOX_HEIGHT;
                         if (LastSubStepActivation != null && LastSubStepActivation.SubStep.Step == currentSubStepActivation.SubStep.Step)
                         {
-                            // Increase the sub step activation size it is belongs to the same step
+                            // Extends the step size
+                            Rectangle lastRectangle = EventPositions[LastStepActivation];
+                            lastRectangle.Width = lastRectangle.Width + EVENT_MARGING.Width + STEP_SIZE.Width;
+                            EventPositions[LastStepActivation] = lastRectangle;
+                        }
+                        else
+                        {
+                            // Create a new step activation
+                            LastStepActivation = new StepActivation(currentSubStepActivation.SubStep.Step);
+                            Point location = new Point((AllocatedPositions.Count - 1) * (STEP_SIZE.Width + EVENT_MARGING.Width), NextY);
+                            events.Add(LastStepActivation);
+                            EventPositions.Add(LastStepActivation, new Rectangle(location, STEP_SIZE));
+                        }
+                        NextY += STEP_SIZE.Height;
+
+                        // Setup the substep activation size
+                        if (LastSubStepActivation != null && LastSubStepActivation.SubStep.Step == currentSubStepActivation.SubStep.Step)
+                        {
+                            // Increase the previous sub step activation size as it belongs to the same step
+                            // This is used to remove gaps between substeps of the same step
                             Rectangle lastRectangle = EventPositions[LastSubStepActivation];
                             lastRectangle.Width = lastRectangle.Width + (EVENT_MARGING.Width + 1) / 2;
                             EventPositions[LastSubStepActivation] = lastRectangle;
 
                             events.Add(evt);
                             Point location = new Point((AllocatedPositions.Count - 1) * (EVENT_SIZE.Width + EVENT_MARGING.Width) - (EVENT_MARGING.Width / 2), NextY);
-                            EventPositions.Add(evt, new Rectangle(location, new Size(STEP_ACTIVATION_EVENT_SIZE.Width + EVENT_MARGING.Width / 2, STEP_ACTIVATION_EVENT_SIZE.Height)));
+                            EventPositions.Add(evt, new Rectangle(location, new Size(SUBSTEP_SIZE.Width + EVENT_MARGING.Width / 2, SUBSTEP_SIZE.Height)));
                         }
                         else
                         {
                             events.Add(evt);
-                            Point location = new Point((AllocatedPositions.Count - 1) * (STEP_ACTIVATION_EVENT_SIZE.Width + EVENT_MARGING.Width), NextY);
-                            EventPositions.Add(evt, new Rectangle(location, STEP_ACTIVATION_EVENT_SIZE));
+                            Point location = new Point((AllocatedPositions.Count - 1) * (SUBSTEP_SIZE.Width + EVENT_MARGING.Width), NextY);
+                            EventPositions.Add(evt, new Rectangle(location, SUBSTEP_SIZE));
                         }
-                        NextY += STEP_ACTIVATION_EVENT_SIZE.Height + EVENT_MARGING.Height;
+                        NextY += SUBSTEP_SIZE.Height + EVENT_MARGING.Height;
                     }
                     else
                     {
-                        events.Add(evt);
-                        Point location = new Point((AllocatedPositions.Count - 1) * (EVENT_SIZE.Width + EVENT_MARGING.Width), NextY);
-                        EventPositions.Add(evt, new Rectangle(location, EVENT_SIZE));
-                        NextY += EVENT_SIZE.Height + EVENT_MARGING.Height;
+                        // Create the sub step activation
+                        {
+                            events.Add(evt);
+                            Point location = new Point((AllocatedPositions.Count - 1) * (EVENT_SIZE.Width + EVENT_MARGING.Width), NextY);
+                            EventPositions.Add(evt, new Rectangle(location, EVENT_SIZE));
+                            NextY += EVENT_SIZE.Height + EVENT_MARGING.Height;
+                        }
                     }
                 }
                 else
@@ -421,9 +487,9 @@ namespace GUI.TestRunnerView.TimeLineControl
                     if (evt == LastSubStepActivation)
                     {
                         // Extent the sub step activation
-                        Rectangle position = EventPositions[evt];
-                        position.Width = position.Width + EVENT_SIZE.Width + EVENT_MARGING.Width;
-                        EventPositions[evt] = position;
+                        Rectangle lastRectangle = EventPositions[evt];
+                        lastRectangle.Width = lastRectangle.Width + EVENT_SIZE.Width + EVENT_MARGING.Width;
+                        EventPositions[evt] = lastRectangle;
                     }
                 }
 
@@ -510,9 +576,14 @@ namespace GUI.TestRunnerView.TimeLineControl
         private static Size EVENT_SIZE = new Size(71, 44);
 
         /// <summary>
-        /// The size of an event
+        /// The size of a substep event
         /// </summary>
-        private static Size STEP_ACTIVATION_EVENT_SIZE = new Size(71, 33);
+        private static Size SUBSTEP_SIZE = new Size(71, 33);
+
+        /// <summary>
+        /// The size of a substep event
+        /// </summary>
+        private static Size STEP_SIZE = new Size(71, 20);
 
         /// <summary>
         /// The marging between events
@@ -564,8 +635,6 @@ namespace GUI.TestRunnerView.TimeLineControl
             {
                 drawEvent(pe, pair.Key, pair.Value);
             }
-
-            drawStep(pe);
         }
 
         /// <summary>
@@ -640,13 +709,13 @@ namespace GUI.TestRunnerView.TimeLineControl
                 switch (expect.State)
                 {
                     case Expect.EventState.Active:
-                        retVal = new EventDisplayAttributes(Color.Silver, new Pen(Color.Black), name, QuestionMarkImageIndex, -1, -1);
+                        retVal = new EventDisplayAttributes(Color.Silver, new Pen(Color.Black), name, -1, QuestionMarkImageIndex, -1);
                         break;
                     case Expect.EventState.Fullfilled:
-                        retVal = new EventDisplayAttributes(Color.LightGreen, new Pen(Color.Green), name, SuccessImageIndex, -1, -1);
+                        retVal = new EventDisplayAttributes(Color.LightGreen, new Pen(Color.Green), name, -1, SuccessImageIndex, -1);
                         break;
                     case Expect.EventState.TimeOut:
-                        retVal = new EventDisplayAttributes(Color.Red, new Pen(Color.DarkRed), name, ErrorImageIndex, -1, -1);
+                        retVal = new EventDisplayAttributes(Color.Red, new Pen(Color.DarkRed), name, -1, ErrorImageIndex, -1);
                         break;
                 }
             }
@@ -656,7 +725,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             {
                 string name = AdjustForDisplay(graphics, ShortName(ruleFired.RuleCondition.Name), EVENT_SIZE.Width - 4, BOTTOM_FONT);
 
-                retVal = new EventDisplayAttributes(Color.LightBlue, new Pen(Color.Blue), name, ToolsImageIndex, GetImageIndex(ruleFired.RuleCondition), -1);
+                retVal = new EventDisplayAttributes(Color.LightBlue, new Pen(Color.Blue), name, -1, GetImageIndex(ruleFired.RuleCondition), ToolsImageIndex);
             }
 
             VariableUpdate variableUpdate = evt as VariableUpdate;
@@ -762,12 +831,6 @@ namespace GUI.TestRunnerView.TimeLineControl
         private static Font BOTTOM_FONT = new Font(FontFamily.GenericSansSerif, 8.0f);
 
         /// <summary>
-        /// The first an last substep activation currently being displayed
-        /// </summary>
-        private SubStepActivated FirstSubStep;
-        private SubStepActivated LastSubStep;
-
-        /// <summary>
         /// Draws a single event
         /// </summary>
         /// <param name="pe"></param>
@@ -779,77 +842,67 @@ namespace GUI.TestRunnerView.TimeLineControl
             EventDisplayAttributes attributes = GetDisplayAttributes(pe.Graphics, evt);
             int CornerRadius = 5;
 
-            SubStepActivated subStepActivation = evt as SubStepActivated;
-            if (subStepActivation != null)
+            StepActivation stepActivation = evt as StepActivation;
+            if (stepActivation != null)
             {
-                if (FirstSubStep == null)
-                {
-                    FirstSubStep = subStepActivation;
-                    LastSubStep = subStepActivation;
-                }
-                else
-                {
-                    if (FirstSubStep.SubStep.Step == subStepActivation.SubStep.Step)
-                    {
-                        LastSubStep = subStepActivation;
-                    }
-                    else
-                    {
-                        // This is a new Step,draw the preceding one
-                        drawStep(pe);
-                        FirstSubStep = subStepActivation;
-                        LastSubStep = subStepActivation;
-                    }
-                }
-
-                pe.Graphics.FillRectangle(new SolidBrush(attributes.FillColor), bounds);
-                int index = subStepActivation.SubStep.EnclosingCollection.IndexOf(subStepActivation.SubStep) + 1;
-                if (index == 1)
-                {
-                    pe.Graphics.DrawString("Substep", BOTTOM_FONT, new SolidBrush(attributes.DrawPen.Color), new Point(bounds.Left + 2, bounds.Top + 2));
-                }
-                pe.Graphics.DrawString("" + index, BOTTOM_FONT, new SolidBrush(attributes.DrawPen.Color), new Point(bounds.Left + bounds.Width / 2, bounds.Bottom - 2 - BOTTOM_FONT.Height));
+                string name = AdjustForDisplay(pe.Graphics, stepActivation.Step.Name, bounds.Width - 4, TOP_FONT);
+                pe.Graphics.FillRectangle(STEP_BOX_PEN, bounds);
+                pe.Graphics.DrawString(
+                    name,
+                    TOP_FONT,
+                    new SolidBrush(STEP_BOX_COLOR),
+                    new Rectangle(new Point(bounds.Left + 2, bounds.Top + 2), new Size(bounds.Width - 4, Bounds.Height - 4)));
+                pe.Graphics.DrawLine(new Pen(STEP_BOX_COLOR), bounds.Left, bounds.Bottom - 1, bounds.Right - 1, bounds.Bottom - 1);
             }
             else
             {
-                int strokeOffset = Convert.ToInt32(Math.Ceiling(attributes.DrawPen.Width));
-                bounds = Rectangle.Inflate(bounds, -strokeOffset, -strokeOffset);
-
-                attributes.DrawPen.EndCap = attributes.DrawPen.StartCap = LineCap.Round;
-
-                GraphicsPath gfxPath = new GraphicsPath();
-                gfxPath.AddArc(bounds.X, bounds.Y, CornerRadius, CornerRadius, 180, 90);
-                gfxPath.AddArc(bounds.X + bounds.Width - CornerRadius, bounds.Y, CornerRadius, CornerRadius, 270, 90);
-                gfxPath.AddArc(bounds.X + bounds.Width - CornerRadius, bounds.Y + bounds.Height - CornerRadius, CornerRadius, CornerRadius, 0, 90);
-                gfxPath.AddArc(bounds.X, bounds.Y + bounds.Height - CornerRadius, CornerRadius, CornerRadius, 90, 90);
-                gfxPath.CloseAllFigures();
-
-                pe.Graphics.FillPath(new SolidBrush(attributes.FillColor), gfxPath);
-                pe.Graphics.DrawPath(attributes.DrawPen, gfxPath);
-
-                pe.Graphics.DrawString(attributes.BottomText, BOTTOM_FONT, new SolidBrush(attributes.DrawPen.Color), new Point(bounds.Left + 2, bounds.Bottom - 2 - BOTTOM_FONT.Height));
-
-                if (attributes.LeftIconImageIndex >= 0)
+                SubStepActivated subStepActivation = evt as SubStepActivated;
+                if (subStepActivation != null)
                 {
-                    pe.Graphics.DrawImage(Images.Images[attributes.LeftIconImageIndex], bounds.Left + 4, bounds.Top + 4, 20, 20);
+                    pe.Graphics.FillRectangle(new SolidBrush(attributes.FillColor), bounds);
+                    int index = subStepActivation.SubStep.EnclosingCollection.IndexOf(subStepActivation.SubStep) + 1;
+                    if (index == 1)
+                    {
+                        pe.Graphics.DrawString("Substep", BOTTOM_FONT, new SolidBrush(attributes.DrawPen.Color), new Point(bounds.Left + 2, bounds.Top + 2));
+                    }
+                    pe.Graphics.DrawString("" + index, BOTTOM_FONT, new SolidBrush(attributes.DrawPen.Color), new Point(bounds.Left + bounds.Width / 2, bounds.Bottom - 2 - BOTTOM_FONT.Height));
                 }
-
-                if (attributes.RightIconImageIndex >= 0)
+                else
                 {
-                    pe.Graphics.DrawImage(Images.Images[attributes.RightIconImageIndex], bounds.Right - 4 - 20, bounds.Top + 4, 20, 20);
-                }
+                    int strokeOffset = Convert.ToInt32(Math.Ceiling(attributes.DrawPen.Width));
+                    bounds = Rectangle.Inflate(bounds, -strokeOffset, -strokeOffset);
 
-                if (attributes.RightIconImageIndex >= 0 && attributes.RightIconModifierImageIndex >= 0)
-                {
-                    pe.Graphics.DrawImage(Images.Images[attributes.RightIconModifierImageIndex], bounds.Right - 4 - 30, bounds.Top + 10, 16, 16);
+                    attributes.DrawPen.EndCap = attributes.DrawPen.StartCap = LineCap.Round;
+
+                    GraphicsPath gfxPath = new GraphicsPath();
+                    gfxPath.AddArc(bounds.X, bounds.Y, CornerRadius, CornerRadius, 180, 90);
+                    gfxPath.AddArc(bounds.X + bounds.Width - CornerRadius, bounds.Y, CornerRadius, CornerRadius, 270, 90);
+                    gfxPath.AddArc(bounds.X + bounds.Width - CornerRadius, bounds.Y + bounds.Height - CornerRadius, CornerRadius, CornerRadius, 0, 90);
+                    gfxPath.AddArc(bounds.X, bounds.Y + bounds.Height - CornerRadius, CornerRadius, CornerRadius, 90, 90);
+                    gfxPath.CloseAllFigures();
+
+                    pe.Graphics.FillPath(new SolidBrush(attributes.FillColor), gfxPath);
+                    pe.Graphics.DrawPath(attributes.DrawPen, gfxPath);
+
+                    pe.Graphics.DrawString(attributes.BottomText, BOTTOM_FONT, new SolidBrush(attributes.DrawPen.Color), new Point(bounds.Left + 2, bounds.Bottom - 2 - BOTTOM_FONT.Height));
+
+                    if (attributes.LeftIconImageIndex >= 0)
+                    {
+                        pe.Graphics.DrawImage(Images.Images[attributes.LeftIconImageIndex], bounds.Left + 4, bounds.Top + 4, 20, 20);
+                    }
+
+                    if (attributes.RightIconImageIndex >= 0)
+                    {
+                        pe.Graphics.DrawImage(Images.Images[attributes.RightIconImageIndex], bounds.Right - 4 - 20, bounds.Top + 4, 20, 20);
+                    }
+
+                    if (attributes.RightIconImageIndex >= 0 && attributes.RightIconModifierImageIndex >= 0)
+                    {
+                        pe.Graphics.DrawImage(Images.Images[attributes.RightIconModifierImageIndex], bounds.Right - 4 - 30, bounds.Top + 10, 16, 16);
+                    }
                 }
             }
         }
-
-        /// <summary>
-        /// The height of the step box
-        /// </summary>
-        private const int STEP_BOX_HEIGHT = 20;
 
         /// <summary>
         /// The color used to display a step box
@@ -860,29 +913,6 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// The pen used to display a step box
         /// </summary>
         private static Brush STEP_BOX_PEN = new SolidBrush(Color.LightGray);
-
-        /// <summary>
-        /// Draws the step according to the FirstSubStep and LastSubStep values
-        /// </summary>
-        /// <param name="pe"></param>
-        private void drawStep(PaintEventArgs pe)
-        {
-            if (FirstSubStep != null && PositionHandler.EventPositions.ContainsKey(FirstSubStep))
-            {
-                Rectangle first = PositionHandler.EventPositions[FirstSubStep];
-                Rectangle last = PositionHandler.EventPositions[LastSubStep];
-                Rectangle bounds = new Rectangle(new Point(first.X, 0), new Size(last.X + last.Width - first.X, STEP_BOX_HEIGHT));
-
-                string name = AdjustForDisplay(pe.Graphics, FirstSubStep.SubStep.Step.Name, bounds.Width - 4, TOP_FONT);
-                pe.Graphics.FillRectangle(STEP_BOX_PEN, bounds);
-                pe.Graphics.DrawString(
-                    name,
-                    TOP_FONT,
-                    new SolidBrush(STEP_BOX_COLOR),
-                    new Rectangle(new Point(bounds.Left + 2, bounds.Top + 2), new Size(bounds.Width - 4, Bounds.Height - 4)));
-                pe.Graphics.DrawLine(new Pen(STEP_BOX_COLOR), bounds.Left, bounds.Bottom - 1, bounds.Right - 1, bounds.Bottom - 1);
-            }
-        }
 
         /// <summary>
         /// Adjust the text size according to the display size
