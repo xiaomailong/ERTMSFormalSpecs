@@ -530,7 +530,15 @@ namespace GUI.TestRunnerView.TimeLineControl
                 bottomRightPosition.Y - VerticalScroll.Value
             );
             AutoScrollEnabler.Location = locationWithoutScroll;
-            HorizontalScroll.Value = Math.Min(HorizontalScroll.Maximum, bottomRightPosition.X);
+
+            if (bottomRightPosition.X > Width)
+            {
+                HorizontalScroll.Value = Math.Min(HorizontalScroll.Maximum, bottomRightPosition.X);
+            }
+            else
+            {
+                HorizontalScroll.Value = 0;
+            }
         }
 
         protected override void OnPaint(PaintEventArgs pe)
@@ -922,7 +930,14 @@ namespace GUI.TestRunnerView.TimeLineControl
             {
                 if (retVal[i] == '(')
                 {
-                    parentCount += 1;
+                    if (string.IsNullOrEmpty(prefix))
+                    {
+                        parentCount += 1;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
                 if (retVal[i] == ')')
                 {
