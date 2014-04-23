@@ -38,6 +38,7 @@
             this.messagesDataGridView.AllowUserToDeleteRows = false;
             this.messagesDataGridView.AllowUserToOrderColumns = true;
             this.messagesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.messagesDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.messagesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.messagesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.messagesDataGridView.Location = new System.Drawing.Point(0, 0);

@@ -52,8 +52,10 @@ namespace GUI.TestRunnerView.Watch
             this.watchDataGridView.AllowDrop = true;
             this.watchDataGridView.AllowUserToOrderColumns = true;
             this.watchDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.watchDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.watchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.watchDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchDataGridView.GridColor = System.Drawing.SystemColors.Window;
             this.watchDataGridView.Location = new System.Drawing.Point(0, 0);
             this.watchDataGridView.Name = "watchDataGridView";
             this.watchDataGridView.Size = new System.Drawing.Size(1148, 210);
