@@ -692,17 +692,20 @@ namespace GUI
                         }
 
                         // Display the messages window at the bottom of the main window
-                        IBaseForm messageWindow = MessagesWindow;
+                        MessagesView.Window messageWindow = MessagesWindow;
                         if (messageWindow == null)
                         {
-                            AddChildWindow(new MessagesView.Window(), DockAreas.DockBottom);
+                            messageWindow = new MessagesView.Window();
+                            AddChildWindow(messageWindow, DockAreas.DockBottom);
                         }
 
                         // Display the more info window at the bottom of the main window
-                        IBaseForm moreInfoWindow = MoreInfoWindow;
+                        MoreInfoView.Window moreInfoWindow = MoreInfoWindow;
                         if (moreInfoWindow == null)
                         {
-                            AddChildWindow(new MoreInfoView.Window(), DockAreas.DockBottom);
+                            moreInfoWindow = new MoreInfoView.Window();
+                            AddChildWindow(moreInfoWindow, DockAreas.DockBottom);
+                            moreInfoWindow.Show(messageWindow.Pane, DockAlignment.Right, 0.5);
                         }
 
                         // Display the watch window at the bottom of the main window
@@ -712,8 +715,9 @@ namespace GUI
                             AddChildWindow(new TestRunnerView.Watch.Window(), DockAreas.DockBottom);
                         }
 
-                        // Display the message window over the watch window
+                        // Display the message and the more info window over the other windows 
                         MessagesWindow.Show();
+                        MoreInfoWindow.Show();
 
                         // Only open the shortcuts window if there are some shortcuts defined
                         if (dictionary.ShortcutsDictionary != null)
