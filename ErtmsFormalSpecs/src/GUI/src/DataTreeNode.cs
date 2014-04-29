@@ -51,6 +51,11 @@ namespace GUI
         }
 
         /// <summary>
+        /// The editor used to edit the node contents
+        /// </summary>
+        public BaseEditor NodeEditor { get; set; }
+
+        /// <summary>
         /// The fixed node name
         /// </summary>
         private string defaultName;
@@ -273,34 +278,14 @@ namespace GUI
                 ReqRef reqRef = Model as ReqRef;
                 if (reqRef != null && reqRef.Paragraph != null)
                 {
-                    if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
-                    {
-                        requirements = reqRef.Paragraph.FullId + ", ";
-                    }
-                    else
-                    {
-                        if (reqRef.Paragraph != null)
-                        {
-                            requirements = reqRef.Paragraph.FullId + ":" + reqRef.Paragraph.getText();
-                        }
-                    }
+                    requirements = reqRef.RequirementDescription();
                 }
                 else
                 {
                     ReqRelated reqRelated = Utils.EnclosingFinder<ReqRelated>.find(Model, true);
                     if (reqRelated != null)
                     {
-                        foreach (Paragraph paragraph in reqRelated.ModeledParagraphs)
-                        {
-                            if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
-                            {
-                                requirements += paragraph.FullId + ", ";
-                            }
-                            else
-                            {
-                                requirements += paragraph.FullId + ":" + paragraph.getText() + "\n\n";
-                            }
-                        }
+                        requirements = reqRelated.RequirementDescription();
                     }
                 }
 
@@ -1202,12 +1187,14 @@ namespace GUI
                 IBaseForm baseForm = BaseForm;
                 if (baseForm != null)
                 {
+                    Editor editor = createEditor();
+                    editor.Item = Item;
+                    editor.Node = this;
+                    NodeEditor = editor;
+
                     if (baseForm.Properties != null)
                     {
-                        Editor editor = createEditor();
-                        editor.Item = Item;
-                        editor.Node = this;
-                        baseForm.Properties.SelectedObject = editor;
+                        baseForm.Properties.SelectedObject = NodeEditor;
                     }
                 }
             }

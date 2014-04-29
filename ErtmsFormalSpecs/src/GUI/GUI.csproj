@@ -126,6 +126,12 @@
     <Compile Include="src\MoreInfoView\Window.Designer.cs">
       <DependentUpon>Window.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\PropertyView\Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\PropertyView\Window.Designer.cs">
+      <DependentUpon>Window.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\RequirementSetDiagram\RequirementSetControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -339,6 +345,12 @@
     <Compile Include="src\DictionarySelector\DictionarySelector.Designer.cs">
       <DependentUpon>DictionarySelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\RequirementsView\Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\RequirementsView\Window.Designer.cs">
+      <DependentUpon>Window.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\RulePerformances\RulesPerformances.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -475,6 +487,12 @@
     <Compile Include="src\TestRunnerView\Window.Designer.cs">
       <DependentUpon>Window.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\UsageView\Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\UsageView\Window.Designer.cs">
+      <DependentUpon>Window.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\VersionSelector\VersionSelector.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -510,6 +528,9 @@
       <DependentUpon>Window.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\MoreInfoView\Window.resx">
+      <DependentUpon>Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\PropertyView\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\RequirementSetDiagram\RequirementSetDiagramWindow.resx">
@@ -578,6 +599,9 @@
     <EmbeddedResource Include="src\DictionarySelector\DictionarySelector.resx">
       <DependentUpon>DictionarySelector.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\RequirementsView\Window.resx">
+      <DependentUpon>Window.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\RulePerformances\RulesPerformances.resx">
       <DependentUpon>RulesPerformances.cs</DependentUpon>
     </EmbeddedResource>
@@ -621,6 +645,9 @@
     <EmbeddedResource Include="src\TranslationRules\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\UsageView\Window.resx">
+      <DependentUpon>Window.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\VersionSelector\VersionSelector.resx">
       <DependentUpon>VersionSelector.cs</DependentUpon>

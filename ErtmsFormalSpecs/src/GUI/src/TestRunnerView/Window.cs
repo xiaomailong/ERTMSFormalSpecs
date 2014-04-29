@@ -86,7 +86,7 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="dictionary"></param>
-        public Window(DataDictionary.EFSSystem efsSystem)
+        public Window()
         {
             InitializeComponent();
 
@@ -100,7 +100,7 @@ namespace GUI.TestRunnerView
             expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Text = "System test view";
             Visible = false;
-            EFSSystem = efsSystem;
+            EFSSystem = EFSSystem.INSTANCE;
 
             ResizeDescriptionArea(propertyGrid, 20);
 

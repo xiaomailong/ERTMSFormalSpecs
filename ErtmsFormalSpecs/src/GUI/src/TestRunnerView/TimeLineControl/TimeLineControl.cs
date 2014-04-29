@@ -177,11 +177,6 @@ namespace GUI.TestRunnerView.TimeLineControl
                     GUIUtils.MDIWindow.TestWindow.TreeView.Select(stepActivation.Step);
                 }
             }
-
-            if (GUIUtils.MDIWindow.MoreInfoWindow != null)
-            {
-                GUIUtils.MDIWindow.MoreInfoWindow.SetModel(evt);
-            }
         }
 
         /// <summary>

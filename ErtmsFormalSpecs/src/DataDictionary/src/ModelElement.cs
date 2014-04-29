@@ -182,6 +182,24 @@ namespace DataDictionary
 
             return retVal;
         }
+
+        /// <summary>
+        /// Provides the description of the requirements related to this model element 
+        /// </summary>
+        /// <returns></returns>
+        public virtual string RequirementDescription()
+        {
+            string retVal = "";
+
+            ReqRelated reqRelated = Utils.EnclosingFinder<ReqRelated>.find(this, true);
+            if (reqRelated != null)
+            {
+                retVal = reqRelated.RequirementDescription();
+            }
+
+            return retVal;
+        }
+
     }
 
     public interface TextualExplain

@@ -42,39 +42,28 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// The rule set which is used to check the specifications
-        /// </summary>
-        private DataDictionary.Dictionary dictionary;
-        public DataDictionary.Dictionary Dictionary
-        {
-            get { return dictionary; }
-            private set
-            {
-                dictionary = value;
-                specBrowserTreeView.Root = dictionary;
-                Text = dictionary.Name + " specification view";
-            }
-        }
-
-        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="specification"></param>
-        public Window(DataDictionary.Dictionary dictionary)
+        public Window()
         {
             InitializeComponent();
+            SpecificInitialisation();
 
+            specBrowserTreeView.Root = EFSSystem.INSTANCE;
+        }
+
+        /// <summary>
+        /// Perform speicific initializations
+        /// </summary>
+        private void SpecificInitialisation()
+        {
             specBrowserTextView.AutoComplete = false;
             specBrowserTextView.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
-            Dictionary = dictionary;
-
-            ResizeDescriptionArea(propertyGrid, 0);
-
-            Refresh();
-
             DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft;
+            ResizeDescriptionArea(propertyGrid, 0);
         }
 
         void TextBox_TextChanged(object sender, EventArgs e)
@@ -102,7 +91,6 @@ namespace GUI.SpecificationView
         public override void Refresh()
         {
             specBrowserTreeView.Refresh();
-            int applicableCounter = Dictionary.ApplicableParagraphs.Count;
             base.Refresh();
         }
 

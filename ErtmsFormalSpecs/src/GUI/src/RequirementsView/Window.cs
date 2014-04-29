@@ -9,27 +9,31 @@ using System.Windows.Forms;
 using Utils;
 using DataDictionary;
 
-namespace GUI.MoreInfoView
+namespace GUI.RequirementsView
 {
     public partial class Window : BaseForm
     {
         /// <summary>
-        /// The element for which this message window is built
+        /// The editor used to edit these properties
         /// </summary>
-        private TextualExplain Model { get; set; }
+        private DataDictionary.ModelElement Model { get; set; }
 
+        /// <summary>
+        /// The empty RTF
+        /// </summary>
         private string EmptyRTF { get; set; }
-
         /// <summary>
         /// Constructor
         /// </summary>
+        /// 
         public Window()
         {
             InitializeComponent();
-            EmptyRTF = moreInfoRichTextBox.Rtf;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom;
+
+            EmptyRTF = richTextBox.Rtf;
         }
 
         /// <summary>
@@ -45,8 +49,8 @@ namespace GUI.MoreInfoView
         /// <summary>
         /// Sets the model element for which messages should be displayed
         /// </summary>
-        /// <param name="model"></param>
-        public void SetModel(TextualExplain model)
+        /// <param name="editor"></param>
+        public void SetModel(DataDictionary.ModelElement model)
         {
             Model = model;
             RefreshModel();
@@ -57,10 +61,13 @@ namespace GUI.MoreInfoView
         /// </summary>
         public override void RefreshModel()
         {
-            moreInfoRichTextBox.Rtf = EmptyRTF;
             if (Model != null)
             {
-                moreInfoRichTextBox.Rtf = TextualExplainUtilities.Encapsule(Model.getExplain(true));
+                richTextBox.Text = Model.RequirementDescription();
+            }
+            else
+            {
+                richTextBox.Rtf = EmptyRTF;
             }
             Refresh();
         }
