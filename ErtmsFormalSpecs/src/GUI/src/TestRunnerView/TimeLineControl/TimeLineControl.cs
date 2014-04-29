@@ -28,7 +28,7 @@ namespace GUI.TestRunnerView.TimeLineControl
     /// <summary>
     /// this control displays all execution events on a timeline
     /// </summary>
-    public class TimeLineControl : Panel
+    public abstract class TimeLineControl : Panel
     {
         /// <summary>
         /// Components for the tool tip
@@ -44,25 +44,6 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// The time line handled by this window
-        /// </summary>
-        public EventTimeLine TimeLine
-        {
-            get
-            {
-                EventTimeLine retVal = null;
-
-                Runner runner = DataDictionary.EFSSystem.INSTANCE.Runner;
-                if (runner != null)
-                {
-                    retVal = runner.EventTimeLine;
-                }
-
-                return retVal;
-            }
-        }
-
-        /// <summary>
         /// This label is used to allow auto scrolling by positionning it at the botton right bounds of the visible rectangle
         /// </summary>
         private Label AutoScrollEnabler { get; set; }
@@ -75,7 +56,6 @@ namespace GUI.TestRunnerView.TimeLineControl
             DoubleBuffered = true;
 
             Click += new EventHandler(TimeLineControl_Click);
-            DoubleClick += new EventHandler(TimeLineControl_DoubleClick);
 
             AutoScrollEnabler = new Label();
             AutoScrollEnabler.Text = "";
@@ -88,7 +68,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// Provides the event under the mouse pointer
         /// </summary>
         /// <returns></returns>
-        private ModelEvent GetEventUnderMouse(MouseEventArgs e)
+        protected ModelEvent GetEventUnderMouse(MouseEventArgs e)
         {
             ModelEvent retVal = null;
 
@@ -180,45 +160,9 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Handles a double click event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void TimeLineControl_DoubleClick(object sender, EventArgs e)
-        {
-            ModelEvent evt = GetEventUnderMouse((MouseEventArgs)e);
-
-            VariableUpdate variableUpdate = evt as VariableUpdate;
-            if (variableUpdate != null)
-            {
-                if (variableUpdate != null)
-                {
-                    DataDictionary.Interpreter.ExplanationPart explain = variableUpdate.Explanation;
-                    ExplainBox explainTextBox = new ExplainBox();
-                    explainTextBox.setExplanation(explain);
-                    GUIUtils.MDIWindow.AddChildWindow(explainTextBox);
-                }
-            }
-
-            Expect expect = evt as Expect;
-            if (expect != null)
-            {
-                DataDictionary.Tests.Expectation expectation = expect.Expectation;
-
-                if (expectation != null)
-                {
-                    DataDictionary.Interpreter.ExplanationPart explain = expectation.Expression.Explain();
-                    ExplainBox explainTextBox = new ExplainBox();
-                    explainTextBox.setExplanation(explain);
-                    GUIUtils.MDIWindow.AddChildWindow(explainTextBox);
-                }
-            }
-        }
-
-        /// <summary>
         /// The position handler for the events
         /// </summary>
-        private EventPositionHandler PositionHandler { get; set; }
+        protected EventPositionHandler PositionHandler { get; set; }
 
         /// <summary>
         /// The images used by this time line control
@@ -251,9 +195,6 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             InitializeComponent();
 
-            FilterConfiguration = new FilterConfiguration();
-            ContextMenu = new ContextMenu();
-            ContextMenu.MenuItems.Add(new MenuItem("Configure filter...", new EventHandler(OpenFilter)));
             PositionHandler = new EventPositionHandler(this);
 
             Images = new ImageList();
@@ -274,29 +215,9 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// The time line filtering configuration
-        /// </summary>
-        public FilterConfiguration FilterConfiguration { get; private set; }
-
-        /// <summary>
-        /// Opens the filtering dialog
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OpenFilter(object sender, EventArgs e)
-        {
-            Filtering filtering = new Filtering();
-            filtering.Configure(GUIUtils.MDIWindow.EFSSystem, FilterConfiguration);
-            filtering.ShowDialog(this);
-            filtering.UpdateConfiguration(FilterConfiguration);
-            CleanEventPositions();
-            Refresh();
-        }
-
-        /// <summary>
         /// Synthetic class to represent a  Step activation
         /// </summary>
-        private class StepActivation : ModelEvent
+        protected class StepActivation : ModelEvent
         {
             /// <summary>
             /// The step that has been activated
@@ -322,7 +243,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <summary>
         /// Handles the position of the events displayed by the time line
         /// </summary>
-        private class EventPositionHandler
+        protected class EventPositionHandler
         {
             /// <summary>
             /// Provides the cycle time of the engine
@@ -534,36 +455,9 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <summary>
         /// The number of events that were handled
         /// </summary>
-        private int HandledEvents = -1;
+        protected int HandledEvents = -1;
 
-        public override void Refresh()
-        {
-            if (TimeLine != null && TimeLine.Events.Count != HandledEvents)
-            {
-                UpdatePositionHandler();
-                UpdatePanelSize();
-                HandledEvents = TimeLine.Events.Count;
-                base.Refresh();
-            }
-        }
-
-        /// <summary>
-        /// Update the information stored in the position handler
-        /// </summary>
-        private void UpdatePositionHandler()
-        {
-            PositionHandler.CleanPositions();
-            if (TimeLine != null)
-            {
-                foreach (ModelEvent evt in TimeLine.Events)
-                {
-                    if (FilterConfiguration.VisibleEvent(evt) || evt is SubStepActivated)
-                    {
-                        PositionHandler.RegisterEvent(evt);
-                    }
-                }
-            }
-        }
+        protected abstract void UpdatePositionHandler();
 
         /// <summary>
         /// The size of an event
@@ -588,7 +482,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <summary>
         /// Updates the size of the panel according to the number of events to handle
         /// </summary>
-        private void UpdatePanelSize()
+        protected void UpdatePanelSize()
         {
             Point bottomRightPosition = PositionHandler.BottomRightPosition;
             Point locationWithoutScroll = new Point(
@@ -696,77 +590,94 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             EventDisplayAttributes retVal = new EventDisplayAttributes(Color.White, new Pen(Color.Black), "<undefined>", -1, -1, -1); ;
 
-            Expect expect = evt as Expect;
-            if (expect != null)
+            bool previousMode = ModelElement.BeSilent;
+            try
             {
-                string name = AdjustForDisplay(graphics, ShortName(expect.Expectation.Name), EVENT_SIZE.Width - 4, BOTTOM_FONT);
+                ModelElement.BeSilent = true;
 
-                switch (expect.State)
+
+                Expect expect = evt as Expect;
+                if (expect != null)
                 {
-                    case Expect.EventState.Active:
-                        retVal = new EventDisplayAttributes(Color.Silver, new Pen(Color.Black), name, -1, QuestionMarkImageIndex, -1);
-                        break;
-                    case Expect.EventState.Fullfilled:
-                        retVal = new EventDisplayAttributes(Color.LightGreen, new Pen(Color.Green), name, -1, SuccessImageIndex, -1);
-                        break;
-                    case Expect.EventState.TimeOut:
-                        retVal = new EventDisplayAttributes(Color.Red, new Pen(Color.DarkRed), name, -1, ErrorImageIndex, -1);
-                        break;
+                    string name = AdjustForDisplay(graphics, ShortName(expect.Expectation.Name), EVENT_SIZE.Width - 4, BOTTOM_FONT);
+
+                    switch (expect.State)
+                    {
+                        case Expect.EventState.Active:
+                            retVal = new EventDisplayAttributes(Color.Violet, new Pen(Color.Black), name, QuestionMarkImageIndex, GetImageIndex(expect.Expectation), -1);
+                            break;
+                        case Expect.EventState.Fullfilled:
+                            retVal = new EventDisplayAttributes(Color.LightGreen, new Pen(Color.Green), name, SuccessImageIndex, GetImageIndex(expect.Expectation), -1);
+                            break;
+                        case Expect.EventState.TimeOut:
+                            retVal = new EventDisplayAttributes(Color.Red, new Pen(Color.DarkRed), name, ErrorImageIndex, GetImageIndex(expect.Expectation), -1);
+                            break;
+                    }
+                }
+
+                RuleFired ruleFired = evt as RuleFired;
+                if (ruleFired != null)
+                {
+                    string name = AdjustForDisplay(graphics, ShortName(ruleFired.RuleCondition.Name), EVENT_SIZE.Width - 4, BOTTOM_FONT);
+
+                    retVal = new EventDisplayAttributes(Color.LightBlue, new Pen(Color.Blue), name, -1, GetImageIndex(ruleFired.RuleCondition), ToolsImageIndex);
+                }
+
+                VariableUpdate variableUpdate = evt as VariableUpdate;
+                if (variableUpdate != null)
+                {
+                    string name = variableUpdate.Action.ExpressionText;
+                    int rightIcon = -1;
+                    int rightModifier = -1;
+                    if (variableUpdate.Action.Statement != null)
+                    {
+                        name = variableUpdate.Action.Statement.ShortShortDescription();
+                        rightIcon = GetImageIndex(variableUpdate.Action.Statement.AffectedElement());
+
+                        switch (variableUpdate.Action.Statement.UsageDescription())
+                        {
+                            case DataDictionary.Interpreter.Statement.Statement.ModeEnum.Call:
+                                rightModifier = CallImageIndex;
+                                break;
+                            case DataDictionary.Interpreter.Statement.Statement.ModeEnum.In:
+                                rightModifier = InImageIndex;
+                                break;
+
+                            case DataDictionary.Interpreter.Statement.Statement.ModeEnum.InOut:
+                                rightModifier = InOutImageIndex;
+                                break;
+
+                            case DataDictionary.Interpreter.Statement.Statement.ModeEnum.Internal:
+                                rightModifier = InternalImageIndex;
+                                break;
+
+                            case DataDictionary.Interpreter.Statement.Statement.ModeEnum.Out:
+                                rightModifier = OutImageIndex;
+                                break;
+                        }
+                    }
+                    name = AdjustForDisplay(graphics, ShortName(name), EVENT_SIZE.Width - 4, BOTTOM_FONT);
+
+                    TestCase testCase = Utils.EnclosingFinder<TestCase>.find(variableUpdate.Action);
+                    if (testCase != null)
+                    {
+                        retVal = new EventDisplayAttributes(Color.LightGray, new Pen(Color.Black), name, -1, rightIcon, rightModifier);
+                    }
+                    else
+                    {
+                        retVal = new EventDisplayAttributes(Color.BlanchedAlmond, new Pen(Color.Black), name, -1, rightIcon, rightModifier);
+                    }
+                }
+
+                SubStepActivated subStepActivated = evt as SubStepActivated;
+                if (subStepActivated != null)
+                {
+                    retVal = new EventDisplayAttributes(Color.LightGray, new Pen(Color.Black), "SubStep", -1, -1, -1);
                 }
             }
-
-            RuleFired ruleFired = evt as RuleFired;
-            if (ruleFired != null)
+            finally
             {
-                string name = AdjustForDisplay(graphics, ShortName(ruleFired.RuleCondition.Name), EVENT_SIZE.Width - 4, BOTTOM_FONT);
-
-                retVal = new EventDisplayAttributes(Color.LightBlue, new Pen(Color.Blue), name, -1, GetImageIndex(ruleFired.RuleCondition), ToolsImageIndex);
-            }
-
-            VariableUpdate variableUpdate = evt as VariableUpdate;
-            if (variableUpdate != null)
-            {
-                string name = AdjustForDisplay(graphics, ShortName(variableUpdate.Action.Statement.ShortShortDescription()), EVENT_SIZE.Width - 4, BOTTOM_FONT);
-
-                int rightIcon = GetImageIndex(variableUpdate.Action.Statement.AffectedElement());
-                int rightModifier = -1;
-                switch (variableUpdate.Action.Statement.UsageDescription())
-                {
-                    case DataDictionary.Interpreter.Statement.Statement.ModeEnum.Call:
-                        rightModifier = CallImageIndex;
-                        break;
-                    case DataDictionary.Interpreter.Statement.Statement.ModeEnum.In:
-                        rightModifier = InImageIndex;
-                        break;
-
-                    case DataDictionary.Interpreter.Statement.Statement.ModeEnum.InOut:
-                        rightModifier = InOutImageIndex;
-                        break;
-
-                    case DataDictionary.Interpreter.Statement.Statement.ModeEnum.Internal:
-                        rightModifier = InternalImageIndex;
-                        break;
-
-                    case DataDictionary.Interpreter.Statement.Statement.ModeEnum.Out:
-                        rightModifier = OutImageIndex;
-                        break;
-                }
-
-                TestCase testCase = Utils.EnclosingFinder<TestCase>.find(variableUpdate.Action);
-                if (testCase != null)
-                {
-                    retVal = new EventDisplayAttributes(Color.LightGray, new Pen(Color.Black), name, -1, rightIcon, rightModifier);
-                }
-                else
-                {
-                    retVal = new EventDisplayAttributes(Color.BlanchedAlmond, new Pen(Color.Black), name, -1, rightIcon, rightModifier);
-                }
-            }
-
-            SubStepActivated subStepActivated = evt as SubStepActivated;
-            if (subStepActivated != null)
-            {
-                retVal = new EventDisplayAttributes(Color.LightGray, new Pen(Color.Black), "SubStep", -1, -1, -1);
+                ModelElement.BeSilent = previousMode;
             }
 
             return retVal;

@@ -70,32 +70,29 @@ namespace GUI.TestRunnerView
             this.toolStripCurrentStepTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.testBrowserTreeView = new GUI.TestRunnerView.TestTreeView();
-            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.propertyGrid = new GUI.MyPropertyGrid();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.testDescriptionTabPage = new System.Windows.Forms.TabPage();
+            this.testDescriptionTimeLineControl = new GUI.TestRunnerView.TimeLineControl.StaticTimeLineControl();
+            this.testExecutionTabPage = new System.Windows.Forms.TabPage();
+            this.testExecutionTimeLineControl = new GUI.TestRunnerView.TimeLineControl.DynamicTimeLineControl();
             this.descriptionTabPage = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.requirementsTextBox = new GUI.EditorTextBox();
             this.expressionEditorTextBox = new GUI.EditorTextBox();
             this.explainTextBox = new GUI.ExplainTextBox();
-            this.timeLineTabPage = new System.Windows.Forms.TabPage();
-            this.evcTimeLineControl = new GUI.TestRunnerView.TimeLineControl.TimeLineControl();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
-            this.splitContainer5.Panel1.SuspendLayout();
-            this.splitContainer5.Panel2.SuspendLayout();
-            this.splitContainer5.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.testDescriptionTabPage.SuspendLayout();
+            this.testExecutionTabPage.SuspendLayout();
             this.descriptionTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.timeLineTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip2
@@ -310,7 +307,7 @@ namespace GUI.TestRunnerView
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer5);
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
             this.splitContainer1.Size = new System.Drawing.Size(926, 548);
             this.splitContainer1.SplitterDistance = 306;
             this.splitContainer1.SplitterWidth = 3;
@@ -331,48 +328,65 @@ namespace GUI.TestRunnerView
             this.testBrowserTreeView.Size = new System.Drawing.Size(306, 548);
             this.testBrowserTreeView.TabIndex = 1;
             // 
-            // splitContainer5
-            // 
-            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer5.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainer5.Name = "splitContainer5";
-            this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer5.Panel1
-            // 
-            this.splitContainer5.Panel1.Controls.Add(this.propertyGrid);
-            // 
-            // splitContainer5.Panel2
-            // 
-            this.splitContainer5.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer5.Size = new System.Drawing.Size(617, 548);
-            this.splitContainer5.SplitterDistance = 217;
-            this.splitContainer5.SplitterWidth = 3;
-            this.splitContainer5.TabIndex = 1;
-            // 
-            // propertyGrid
-            // 
-            this.propertyGrid.AllowDrop = true;
-            this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid.Location = new System.Drawing.Point(0, 0);
-            this.propertyGrid.Margin = new System.Windows.Forms.Padding(2);
-            this.propertyGrid.Name = "propertyGrid";
-            this.propertyGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.propertyGrid.Size = new System.Drawing.Size(617, 217);
-            this.propertyGrid.TabIndex = 0;
-            // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.testDescriptionTabPage);
+            this.tabControl1.Controls.Add(this.testExecutionTabPage);
             this.tabControl1.Controls.Add(this.descriptionTabPage);
-            this.tabControl1.Controls.Add(this.timeLineTabPage);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(617, 328);
+            this.tabControl1.Size = new System.Drawing.Size(617, 548);
             this.tabControl1.TabIndex = 1;
+            // 
+            // testDescriptionTabPage
+            // 
+            this.testDescriptionTabPage.Controls.Add(this.testDescriptionTimeLineControl);
+            this.testDescriptionTabPage.Location = new System.Drawing.Point(4, 22);
+            this.testDescriptionTabPage.Name = "testDescriptionTabPage";
+            this.testDescriptionTabPage.Size = new System.Drawing.Size(609, 522);
+            this.testDescriptionTabPage.TabIndex = 4;
+            this.testDescriptionTabPage.Text = "Test description";
+            this.testDescriptionTabPage.UseVisualStyleBackColor = true;
+            // 
+            // testDescriptionTimeLineControl
+            // 
+            this.testDescriptionTimeLineControl.AutoScroll = true;
+            this.testDescriptionTimeLineControl.AutoSize = true;
+            this.testDescriptionTimeLineControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.testDescriptionTimeLineControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.testDescriptionTimeLineControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.testDescriptionTimeLineControl.Location = new System.Drawing.Point(0, 0);
+            this.testDescriptionTimeLineControl.Name = "testDescriptionTimeLineControl";
+            this.testDescriptionTimeLineControl.Size = new System.Drawing.Size(609, 522);
+            this.testDescriptionTimeLineControl.TabIndex = 0;
+            this.testDescriptionTimeLineControl.TestCase = null;
+            // 
+            // testExecutionTabPage
+            // 
+            this.testExecutionTabPage.Controls.Add(this.testExecutionTimeLineControl);
+            this.testExecutionTabPage.Location = new System.Drawing.Point(4, 22);
+            this.testExecutionTabPage.Margin = new System.Windows.Forms.Padding(2);
+            this.testExecutionTabPage.Name = "testExecutionTabPage";
+            this.testExecutionTabPage.Padding = new System.Windows.Forms.Padding(2);
+            this.testExecutionTabPage.Size = new System.Drawing.Size(609, 522);
+            this.testExecutionTabPage.TabIndex = 0;
+            this.testExecutionTabPage.Text = "Test execution";
+            this.testExecutionTabPage.UseVisualStyleBackColor = true;
+            // 
+            // testExecutionTimeLineControl
+            // 
+            this.testExecutionTimeLineControl.AutoScroll = true;
+            this.testExecutionTimeLineControl.AutoSize = true;
+            this.testExecutionTimeLineControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.testExecutionTimeLineControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.testExecutionTimeLineControl.Location = new System.Drawing.Point(2, 2);
+            this.testExecutionTimeLineControl.Name = "testExecutionTimeLineControl";
+            this.testExecutionTimeLineControl.Size = new System.Drawing.Size(605, 518);
+            this.testExecutionTimeLineControl.TabIndex = 1;
+            this.testExecutionTimeLineControl.Text = "evcTimeLineControl1";
             // 
             // descriptionTabPage
             // 
@@ -380,7 +394,7 @@ namespace GUI.TestRunnerView
             this.descriptionTabPage.Location = new System.Drawing.Point(4, 22);
             this.descriptionTabPage.Name = "descriptionTabPage";
             this.descriptionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.descriptionTabPage.Size = new System.Drawing.Size(609, 302);
+            this.descriptionTabPage.Size = new System.Drawing.Size(609, 522);
             this.descriptionTabPage.TabIndex = 3;
             this.descriptionTabPage.Text = "Description";
             this.descriptionTabPage.UseVisualStyleBackColor = true;
@@ -399,7 +413,7 @@ namespace GUI.TestRunnerView
             // 
             this.splitContainer2.Panel2.Controls.Add(this.expressionEditorTextBox);
             this.splitContainer2.Panel2.Controls.Add(this.explainTextBox);
-            this.splitContainer2.Size = new System.Drawing.Size(603, 296);
+            this.splitContainer2.Size = new System.Drawing.Size(603, 516);
             this.splitContainer2.SplitterDistance = 301;
             this.splitContainer2.TabIndex = 4;
             // 
@@ -414,7 +428,7 @@ namespace GUI.TestRunnerView
             this.requirementsTextBox.Name = "requirementsTextBox";
             this.requirementsTextBox.ReadOnly = false;
             this.requirementsTextBox.Rtf = resources.GetString("requirementsTextBox.Rtf");
-            this.requirementsTextBox.Size = new System.Drawing.Size(301, 296);
+            this.requirementsTextBox.Size = new System.Drawing.Size(301, 516);
             this.requirementsTextBox.TabIndex = 0;
             // 
             // expressionEditorTextBox
@@ -429,7 +443,7 @@ namespace GUI.TestRunnerView
             this.expressionEditorTextBox.Name = "expressionEditorTextBox";
             this.expressionEditorTextBox.ReadOnly = false;
             this.expressionEditorTextBox.Rtf = resources.GetString("expressionEditorTextBox.Rtf");
-            this.expressionEditorTextBox.Size = new System.Drawing.Size(298, 296);
+            this.expressionEditorTextBox.Size = new System.Drawing.Size(298, 516);
             this.expressionEditorTextBox.TabIndex = 4;
             this.expressionEditorTextBox.Visible = false;
             // 
@@ -445,32 +459,8 @@ namespace GUI.TestRunnerView
             this.explainTextBox.Name = "explainTextBox";
             this.explainTextBox.ReadOnly = false;
             this.explainTextBox.Rtf = resources.GetString("explainTextBox.Rtf");
-            this.explainTextBox.Size = new System.Drawing.Size(298, 296);
+            this.explainTextBox.Size = new System.Drawing.Size(298, 516);
             this.explainTextBox.TabIndex = 3;
-            // 
-            // timeLineTabPage
-            // 
-            this.timeLineTabPage.Controls.Add(this.evcTimeLineControl);
-            this.timeLineTabPage.Location = new System.Drawing.Point(4, 22);
-            this.timeLineTabPage.Margin = new System.Windows.Forms.Padding(2);
-            this.timeLineTabPage.Name = "timeLineTabPage";
-            this.timeLineTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.timeLineTabPage.Size = new System.Drawing.Size(609, 248);
-            this.timeLineTabPage.TabIndex = 0;
-            this.timeLineTabPage.Text = "Time line";
-            this.timeLineTabPage.UseVisualStyleBackColor = true;
-            // 
-            // evcTimeLineControl
-            // 
-            this.evcTimeLineControl.AutoScroll = true;
-            this.evcTimeLineControl.AutoSize = true;
-            this.evcTimeLineControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.evcTimeLineControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.evcTimeLineControl.Location = new System.Drawing.Point(2, 2);
-            this.evcTimeLineControl.Name = "evcTimeLineControl";
-            this.evcTimeLineControl.Size = new System.Drawing.Size(605, 244);
-            this.evcTimeLineControl.TabIndex = 1;
-            this.evcTimeLineControl.Text = "evcTimeLineControl1";
             // 
             // Window
             // 
@@ -491,18 +481,16 @@ namespace GUI.TestRunnerView
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.splitContainer5.Panel1.ResumeLayout(false);
-            this.splitContainer5.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
-            this.splitContainer5.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.testDescriptionTabPage.ResumeLayout(false);
+            this.testDescriptionTabPage.PerformLayout();
+            this.testExecutionTabPage.ResumeLayout(false);
+            this.testExecutionTabPage.PerformLayout();
             this.descriptionTabPage.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.timeLineTabPage.ResumeLayout(false);
-            this.timeLineTabPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,13 +501,10 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private TimeLineControl.TimeLineControl evcTimeLineControl;
+        private TimeLineControl.DynamicTimeLineControl testExecutionTimeLineControl;
         private TestTreeView testBrowserTreeView;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private MyPropertyGrid propertyGrid;
         private System.Windows.Forms.ToolStripTextBox toolStripTimeTextBox;
-        private System.Windows.Forms.SplitContainer splitContainer5;
-        public GUI.ExplainTextBox explainTextBox;
         private System.Windows.Forms.ToolStripButton StepOnceButton;
         private System.Windows.Forms.ToolStripButton RestartButton;
         private System.Windows.Forms.ToolStripButton rewindButton;
@@ -537,14 +522,17 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.ToolStripComboBox frameToolStripComboBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private EditorTextBox requirementsTextBox;
-        private EditorTextBox expressionEditorTextBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         public System.Windows.Forms.TabControl tabControl1;
-        public System.Windows.Forms.TabPage timeLineTabPage;
+        public System.Windows.Forms.TabPage testExecutionTabPage;
         public System.Windows.Forms.TabPage descriptionTabPage;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private EditorTextBox requirementsTextBox;
+        private EditorTextBox expressionEditorTextBox;
+        public ExplainTextBox explainTextBox;
+        private System.Windows.Forms.TabPage testDescriptionTabPage;
+        public TimeLineControl.StaticTimeLineControl testDescriptionTimeLineControl;
 
     }
 }

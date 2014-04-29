@@ -50,7 +50,7 @@ namespace DataDictionary
         {
             if (!BeSilent)
             {
-                Parameter enclosingParameter = Utils.EnclosingFinder<Parameter>.find(this);
+               Parameter enclosingParameter = Utils.EnclosingFinder<Parameter>.find(this);
                 if (enclosingParameter != null)
                 {
                     log.Log = "In " + FullName + ":" + log.Log;

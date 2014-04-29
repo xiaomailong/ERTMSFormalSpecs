@@ -427,12 +427,18 @@
     <Compile Include="src\TestRunnerView\TestTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\TestRunnerView\TimeLineControl\DynamicTimeLineControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\TestRunnerView\TimeLineControl\FilterConfiguration.cs" />
     <Compile Include="src\TestRunnerView\TimeLineControl\Filtering.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\TestRunnerView\TimeLineControl\Filtering.Designer.cs">
       <DependentUpon>Filtering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\TestRunnerView\TimeLineControl\StaticTimeLineControl.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\TestRunnerView\TimeLineControl\TimeLineControl.cs">
       <SubType>Component</SubType>

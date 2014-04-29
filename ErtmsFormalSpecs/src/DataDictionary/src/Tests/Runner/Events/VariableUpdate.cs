@@ -40,7 +40,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// </summary>
         /// <param name="action"The action which raised the variable update></param>
         public VariableUpdate(Rules.Action action, Utils.IModelElement instance, Generated.acceptor.RulePriority? priority)
-            : base(action.Statement.ToString(), instance, priority)
+            : base(action.ExpressionText, instance, priority)
         {
             Action = action;
         }

@@ -49,22 +49,25 @@ namespace GUI
             // editorTextBox
             // 
             this.editorTextBox.AutoComplete = true;
+            this.editorTextBox.ConsiderOnlyTypes = false;
             this.editorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.editorTextBox.Instance = null;
             this.editorTextBox.Lines = new string[0];
             this.editorTextBox.Location = new System.Drawing.Point(0, 0);
             this.editorTextBox.Name = "editorTextBox";
             this.editorTextBox.ReadOnly = false;
             this.editorTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
     "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs17\\par\r\n}\r\n";
-            this.editorTextBox.Size = new System.Drawing.Size(625, 324);
+            this.editorTextBox.Size = new System.Drawing.Size(699, 218);
             this.editorTextBox.TabIndex = 0;
             // 
             // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(625, 324);
+            this.ClientSize = new System.Drawing.Size(699, 218);
             this.Controls.Add(this.editorTextBox);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "EditorForm";
             this.Text = "Editor";

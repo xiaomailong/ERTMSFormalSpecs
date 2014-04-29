@@ -24,7 +24,7 @@ namespace GUI.TestRunnerView
     {
         public override MyPropertyGrid Properties
         {
-            get { return propertyGrid; }
+            get { return null; }
         }
 
         public override EditorTextBox RequirementsTextBox
@@ -101,9 +101,6 @@ namespace GUI.TestRunnerView
             Text = "System test view";
             Visible = false;
             EFSSystem = EFSSystem.INSTANCE;
-
-            ResizeDescriptionArea(propertyGrid, 20);
-
             Refresh();
         }
 
@@ -199,7 +196,8 @@ namespace GUI.TestRunnerView
                     }
 
                     testBrowserTreeView.Refresh();
-                    evcTimeLineControl.Refresh();
+                    testDescriptionTimeLineControl.Refresh();
+                    testExecutionTimeLineControl.Refresh();
 
                     frameToolStripComboBox.Items.Clear();
                     List<string> frames = new List<string>();
@@ -279,7 +277,7 @@ namespace GUI.TestRunnerView
 
         private void stepOnce_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = timeLineTabPage;
+            tabControl1.SelectedTab = testExecutionTabPage;
             StepOnce();
         }
 
@@ -292,7 +290,7 @@ namespace GUI.TestRunnerView
             }
             Clear();
             GUIUtils.MDIWindow.RefreshAfterStep();
-            tabControl1.SelectedTab = timeLineTabPage;
+            tabControl1.SelectedTab = testExecutionTabPage;
         }
 
         public void Clear()
@@ -329,7 +327,7 @@ namespace GUI.TestRunnerView
 
         private void rewindButton_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = timeLineTabPage;
+            tabControl1.SelectedTab = testExecutionTabPage;
             StepBack();
         }
 
