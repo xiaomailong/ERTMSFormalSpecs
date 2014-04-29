@@ -24,6 +24,8 @@ using DataDictionary.Interpreter;
 using DataDictionary.Types;
 using DataDictionary.Interpreter.ListOperators;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Interpreter.Statement;
+using DataDictionary.Values;
 namespace GUI
 {
     public partial class EditorTextBox : UserControl
@@ -163,6 +165,10 @@ namespace GUI
                 bool considerMouseMove = true;
                 ExplainAndShow(instances, location, considerMouseMove);
             }
+            else
+            {
+                contextMenuStrip1.Show(PointToScreen(MouseLocation));
+            }
         }
 
         /// <summary>
@@ -201,7 +207,7 @@ namespace GUI
                 if (start < end)
                 {
                     string identifier = EditionTextBox.Text.Substring(start, Math.Min(end - start + 1, EditionTextBox.Text.Length - start));
-                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, identifier, AllMatches.INSTANCE);
+                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, identifier, AllMatches.INSTANCE, true, null, true);
                     if (expression != null)
                     {
                         if (expression.Ref != null)
@@ -1295,6 +1301,117 @@ namespace GUI
                     EditionTextBox.Rtf = InitialRTF;
                     EditionTextBox.Text = value.Trim();
                 }
+            }
+        }
+
+
+        /// <summary>
+        /// Edits a structure value expression and provides the edited expression after user has performed his changes
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        private StructExpression EditStructureExpression(StructExpression expression)
+        {
+            StructExpression retVal = expression;
+
+            if (expression != null)
+            {
+                bool silentMode = ModelElement.BeSilent;
+                try
+                {
+                    ModelElement.BeSilent = true;
+
+                    InterpretationContext context = new InterpretationContext(Instance);
+                    context.UseDefaultValue = false;
+                    StructureValue value = expression.GetValue(context) as StructureValue;
+                    if (value != null)
+                    {
+                        StructureValueEditor.Window window = new StructureValueEditor.Window();
+                        window.SetModel(value);
+                        window.ShowDialog();
+
+                        string newExpression = value.ToExpressionWithDefault();
+                        bool doSemanticalAnalysis = true;
+                        bool silent = true;
+                        retVal = EFSSystem.INSTANCE.Parser.Expression((ModelElement)Instance, newExpression, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent) as StructExpression;
+                    }
+                }
+                finally
+                {
+                    ModelElement.BeSilent = silentMode;
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Browses through the expression to find the structure value to edit
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        private Expression VisitExpression(Expression expression)
+        {
+            Expression retVal = expression;
+
+            BinaryExpression binaryExpression = expression as BinaryExpression;
+            if (binaryExpression != null)
+            {
+                binaryExpression.Left = VisitExpression(binaryExpression.Left);
+                binaryExpression.Right = VisitExpression(binaryExpression.Right);
+            }
+
+            UnaryExpression unaryExpression = expression as UnaryExpression;
+            if (unaryExpression != null)
+            {
+                if (unaryExpression.Expression != null)
+                {
+                    unaryExpression.Expression = VisitExpression(unaryExpression.Expression);
+                }
+            }
+
+            StructExpression structExpression = expression as StructExpression;
+            if (structExpression != null)
+            {
+                retVal = EditStructureExpression(structExpression);
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Browses through the statement to find the structures to edit
+        /// </summary>
+        /// <param name="statement"></param>
+        private Statement VisitStatement(Statement statement)
+        {
+            Statement retVal = statement;
+
+            VariableUpdateStatement variableUpdateStatement = statement as VariableUpdateStatement;
+            if (variableUpdateStatement != null)
+            {
+                variableUpdateStatement.Expression = VisitExpression(variableUpdateStatement.Expression);
+            }
+
+            return retVal;
+        }
+
+        private void openStructureEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool doSemanticalAnalysis = true;
+            bool silent = true;
+            Expression expression = EFSSystem.INSTANCE.Parser.Expression(Instance as ModelElement, EditionTextBox.Text, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
+            if (expression != null)
+            {
+                expression = VisitExpression(expression);
+                EditionTextBox.Text = expression.ToString();
+            }
+
+            Statement statement = EFSSystem.INSTANCE.Parser.Statement(Instance as ModelElement, EditionTextBox.Text, silent);
+            if (statement != null)
+            {
+                statement = VisitStatement(statement);
+                EditionTextBox.Text = statement.ToString();
             }
         }
     }

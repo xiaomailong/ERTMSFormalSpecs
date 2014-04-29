@@ -203,6 +203,7 @@ namespace GUI.TestRunnerView
             Window window = BaseForm as Window;
             if (window != null)
             {
+                window.RefreshAfterStep();
                 window.tabControl1.SelectedTab = window.timeLineTabPage;
             }
         }

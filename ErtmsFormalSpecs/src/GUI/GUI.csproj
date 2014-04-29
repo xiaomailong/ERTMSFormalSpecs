@@ -47,6 +47,7 @@
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
     <Reference Include="LibGit2Sharp, Version=0.14.1.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL" />
+    <Reference Include="ObjectListView, Version=2.7.0.30628, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -387,6 +388,13 @@
     <Compile Include="src\StateDiagram\TransitionControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\StructureEditor\CustomizeTreeView.cs" />
+    <Compile Include="src\StructureEditor\Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\StructureEditor\Window.designer.cs">
+      <DependentUpon>Window.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\SynchronizationHandler.cs" />
     <Compile Include="src\TestRunnerView\ActionsTreeNode.cs" />
     <Compile Include="src\TestRunnerView\ExplainBox.cs">
@@ -584,6 +592,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\StateDiagram\TransitionControl.resx">
       <DependentUpon>TransitionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\StructureEditor\Window.resx">
+      <DependentUpon>Window.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\TestRunnerView\ExplainBox.resx">
       <DependentUpon>ExplainBox.cs</DependentUpon>

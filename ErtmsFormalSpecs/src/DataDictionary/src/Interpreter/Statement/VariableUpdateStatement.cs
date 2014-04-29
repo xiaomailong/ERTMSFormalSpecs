@@ -29,7 +29,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <summary>
         /// The expression expressing the value to set
         /// </summary>
-        public Expression Expression { get; private set; }
+        public Expression Expression { get; set; }
 
         /// <summary>
         /// Constructor
