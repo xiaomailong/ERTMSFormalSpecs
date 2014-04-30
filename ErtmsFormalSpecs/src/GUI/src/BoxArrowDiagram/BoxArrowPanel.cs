@@ -671,7 +671,6 @@ namespace GUI.BoxArrowDiagram
             base.OnPaint(e);
 
             SuspendLayout();
-            e.Graphics.TranslateTransform(AutoScrollPosition.X, AutoScrollPosition.Y);
             foreach (BoxControl<BoxModel, ArrowModel> control in boxes.Values)
             {
                 control.PaintInBoxArrowPanel(e);
