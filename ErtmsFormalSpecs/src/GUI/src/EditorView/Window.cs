@@ -147,6 +147,7 @@ namespace GUI.EditorView
             {
                 __textChangeHandler = null;
                 Text = EditorName;
+                editorTextBox.Text = "";
                 editorTextBox.Instance = null;
                 editorTextBox.Enabled = false;
             }
