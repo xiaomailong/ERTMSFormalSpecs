@@ -13,9 +13,9 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace GUI
+namespace GUI.EditorView
 {
-    partial class EditorForm
+    partial class Window
     {
         /// <summary>
         /// Required designer variable.
@@ -52,7 +52,6 @@ namespace GUI
             this.editorTextBox.ConsiderOnlyTypes = false;
             this.editorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.editorTextBox.Instance = null;
-            this.editorTextBox.Lines = new string[0];
             this.editorTextBox.Location = new System.Drawing.Point(0, 0);
             this.editorTextBox.Name = "editorTextBox";
             this.editorTextBox.ReadOnly = false;

@@ -29,6 +29,7 @@ namespace GUI
     using GUI.SpecificationView;
     using Utils;
     using WeifenLuo.WinFormsUI.Docking;
+    using GUI.EditorView;
 
     public partial class MainWindow : Form
     {
@@ -61,17 +62,17 @@ namespace GUI
         /// <summary>
         /// The editors opened in the MDI
         /// </summary>
-        public HashSet<EditorForm> Editors
+        public HashSet<EditorView.Window> Editors
         {
             get
             {
-                HashSet<EditorForm> retVal = new HashSet<EditorForm>();
+                HashSet<EditorView.Window> retVal = new HashSet<EditorView.Window>();
 
                 foreach (Form form in SubForms)
                 {
-                    if (form is EditorForm)
+                    if (form is EditorView.Window)
                     {
-                        retVal.Add((EditorForm)form);
+                        retVal.Add((EditorView.Window)form);
                     }
                 }
 
@@ -167,11 +168,13 @@ namespace GUI
             /// <param name="window"></param>
             /// <param name="subWindow"></param>
             /// <param name="area"></param>
+            /// <param name="force">Indicates that the doc area should be set before trying to open the window</param>
             public static void AddOrShow(MainWindow window, T subWindow, DockAreas area)
             {
                 if (subWindow == null)
                 {
-                    window.AddChildWindow(new T(), area);
+                    subWindow = new T();
+                    window.AddChildWindow(subWindow, area);
                 }
                 else
                 {
@@ -321,6 +324,29 @@ namespace GUI
         }
 
         /// <summary>
+        /// The editor window
+        /// </summary>
+        private EditorView.ExpressionWindow EditorWindow
+        {
+            get
+            {
+                return GenericWindowHandling<EditorView.ExpressionWindow>.find(SubWindows);
+            }
+        }
+
+        /// <summary>
+        /// The comment window
+        /// </summary>
+        private EditorView.CommentWindow CommentWindow
+        {
+            get
+            {
+                return GenericWindowHandling<EditorView.CommentWindow>.find(SubWindows);
+            }
+        }
+
+
+        /// <summary>
         /// The thread used to synchronize node names with their model
         /// </summary>
         private class Synchronizer : GenericSynchronizationHandler<MainWindow>
@@ -343,7 +369,7 @@ namespace GUI
                 instance.Invoke((MethodInvoker)delegate
                 {
                     instance.UpdateTitle();
-                    foreach (EditorForm editor in instance.Editors)
+                    foreach (EditorView.Window editor in instance.Editors)
                     {
                         if (!editor.EditorTextBoxHasFocus())
                         {
@@ -554,6 +580,7 @@ namespace GUI
                 {
                     SubForms.Add(docContent);
 
+                    docContent.DockAreas = dockArea;
                     if (dockArea == DockAreas.DockLeft)
                     {
                         docContent.Show(dockPanel, DockState.DockLeftAutoHide);
@@ -709,13 +736,14 @@ namespace GUI
 
                         // Display the views in the bottom pane
                         GenericWindowHandling<RequirementsView.Window>.AddOrShow(this, RequirementsWindow, DockAreas.DockBottom);
-
-                        GenericWindowHandling<TestRunnerView.Watch.Window>.AddOrShow(this, WatchWindow, DockAreas.DockBottom);
-                        WatchWindow.Show(RequirementsWindow.Pane, DockAlignment.Right, 0.5);
-                        GenericWindowHandling<MoreInfoView.Window>.AddOrShow(this, MoreInfoWindow, DockAreas.DockBottom);
-                        MoreInfoWindow.Show(WatchWindow.Pane, WatchWindow);
                         GenericWindowHandling<UsageView.Window>.AddOrShow(this, UsageWindow, DockAreas.DockBottom);
-                        MoreInfoWindow.Show(WatchWindow.Pane, WatchWindow);
+
+                        GenericWindowHandling<EditorView.ExpressionWindow>.AddOrShow(this, EditorWindow, DockAreas.DockBottom);
+                        EditorWindow.Show(RequirementsWindow.Pane, DockAlignment.Right, 0.5);
+                        GenericWindowHandling<EditorView.CommentWindow>.AddOrShow(this, CommentWindow, DockAreas.DockBottom);
+                        GenericWindowHandling<MoreInfoView.Window>.AddOrShow(this, MoreInfoWindow, DockAreas.DockBottom);
+                        GenericWindowHandling<TestRunnerView.Watch.Window>.AddOrShow(this, WatchWindow, DockAreas.DockBottom);
+                        MoreInfoWindow.Show();
 
                         // Display the views in the right pane
                         GenericWindowHandling<PropertyView.Window>.AddOrShow(this, PropertyWindow, DockAreas.DockRight);
@@ -723,8 +751,8 @@ namespace GUI
                         HistoryWindow.Show(PropertyWindow.Pane, DockAlignment.Bottom, 0.6);
                         GenericWindowHandling<Shortcuts.Window>.AddOrShow(this, ShortcutsWindow, DockAreas.DockRight);
                         ShortcutsWindow.Show(HistoryWindow.Pane, HistoryWindow);
-                        GenericWindowHandling<MessagesView.Window>.AddOrShow(this, MessagesWindow, DockAreas.DockBottom);
-                        MessagesWindow.Show(HistoryWindow.Pane, DockAlignment.Bottom, 0.5);
+                        GenericWindowHandling<MessagesView.Window>.AddOrShow(this, MessagesWindow, DockAreas.DockRight);
+                        MessagesWindow.Show(HistoryWindow.Pane, DockAlignment.Bottom, 0.3);
 
                         if (modelWindow != null)
                         {
@@ -1538,6 +1566,20 @@ namespace GUI
                         if (requirementsView != null)
                         {
                             requirementsView.SetModel((DataDictionary.ModelElement)model);
+                        }
+
+                        // Expression editor view
+                        EditorView.ExpressionWindow editorView = EditorWindow;
+                        if (editorView != null)
+                        {
+                            editorView.setChangeHandler(new ExpressionableTextChangeHandler((DataDictionary.ModelElement)(model as IExpressionable)));
+                        }
+
+                        // Comment editor view
+                        EditorView.CommentWindow commentView = CommentWindow;
+                        if (commentView != null)
+                        {
+                            commentView.setChangeHandler(new CommentableTextChangeHandler((DataDictionary.ModelElement)(model as ICommentable)));
                         }
 
                         // Uages 

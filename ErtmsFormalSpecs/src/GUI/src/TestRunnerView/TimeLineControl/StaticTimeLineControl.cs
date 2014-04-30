@@ -28,6 +28,7 @@ namespace GUI.TestRunnerView.TimeLineControl
     using DataDictionary.Interpreter.Filter;
     using DataDictionary.Interpreter;
     using DataDictionary.Values;
+    using GUI.EditorView;
 
     /// <summary>
     /// The static time line according to a test case
@@ -487,7 +488,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         /// <param name="instance"></param>
         /// <param name="value"></param>
-        private class IExpressionableTextChangeHandler : EditorForm.HandleTextChange
+        private class TimeLineExpressionableTextChangeHandler : ExpressionableTextChangeHandler
         {
             /// <summary>
             /// The time line control
@@ -498,26 +499,10 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// Constructor
             /// </summary>
             /// <param name="instance"></param>
-            public IExpressionableTextChangeHandler(StaticTimeLineControl timeLine, IExpressionable instance)
+            public TimeLineExpressionableTextChangeHandler(StaticTimeLineControl timeLine, IExpressionable instance)
                 : base(instance as DataDictionary.ModelElement)
             {
                 TimeLine = timeLine;
-            }
-
-            /// <summary>
-            /// The way text is retrieved from the instance
-            /// </summary>
-            /// <returns></returns>
-            public override string GetText()
-            {
-                string retVal = "";
-                IExpressionable expressionable = Instance as IExpressionable;
-
-                if (expressionable != null)
-                {
-                    retVal = expressionable.ExpressionText;
-                }
-                return retVal;
             }
 
             /// <summary>
@@ -526,12 +511,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// <returns></returns>
             public override void SetText(string text)
             {
-                IExpressionable expressionable = Instance as IExpressionable;
-
-                if (expressionable != null)
-                {
-                    expressionable.ExpressionText = text;
-                }
+                base.SetText(text);
                 TimeLine.Refresh();
             }
         }
@@ -548,8 +528,8 @@ namespace GUI.TestRunnerView.TimeLineControl
             VariableUpdate variableUpdate = evt as VariableUpdate;
             if (variableUpdate != null)
             {
-                EditorForm form = new EditorForm();
-                IExpressionableTextChangeHandler handler = new IExpressionableTextChangeHandler(this, variableUpdate.Action);
+                EditorView.Window form = new EditorView.Window();
+                TimeLineExpressionableTextChangeHandler handler = new TimeLineExpressionableTextChangeHandler(this, variableUpdate.Action);
                 form.setChangeHandler(handler);
                 GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
             }
@@ -557,8 +537,8 @@ namespace GUI.TestRunnerView.TimeLineControl
             Expect expect = evt as Expect;
             if (expect != null)
             {
-                EditorForm form = new EditorForm();
-                IExpressionableTextChangeHandler handler = new IExpressionableTextChangeHandler(this, expect.Expectation);
+                EditorView.Window form = new EditorView.Window();
+                TimeLineExpressionableTextChangeHandler handler = new TimeLineExpressionableTextChangeHandler(this, expect.Expectation);
                 form.setChangeHandler(handler);
                 GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
             }

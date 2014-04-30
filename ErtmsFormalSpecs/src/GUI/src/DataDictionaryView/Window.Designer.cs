@@ -285,7 +285,6 @@ namespace GUI.DataDictionaryView
             this.requirementsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requirementsTextBox.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.requirementsTextBox.Instance = null;
-            this.requirementsTextBox.Lines = new string[] {""};
             this.requirementsTextBox.Location = new System.Drawing.Point(0, 0);
             this.requirementsTextBox.Name = "requirementsTextBox";
             this.requirementsTextBox.ReadOnly = false;
@@ -299,7 +298,6 @@ namespace GUI.DataDictionaryView
             this.ruleExplainTextBox.ConsiderOnlyTypes = false;
             this.ruleExplainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ruleExplainTextBox.Instance = null;
-            this.ruleExplainTextBox.Lines = new string[] {""};
             this.ruleExplainTextBox.Location = new System.Drawing.Point(0, 0);
             this.ruleExplainTextBox.Name = "ruleExplainTextBox";
             this.ruleExplainTextBox.ReadOnly = true;
@@ -314,7 +312,6 @@ namespace GUI.DataDictionaryView
             this.expressionEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expressionEditorTextBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.expressionEditorTextBox.Instance = null;
-            this.expressionEditorTextBox.Lines = new string[] {""};
             this.expressionEditorTextBox.Location = new System.Drawing.Point(0, 0);
             this.expressionEditorTextBox.Name = "expressionEditorTextBox";
             this.expressionEditorTextBox.ReadOnly = false;

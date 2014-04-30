@@ -32,6 +32,8 @@ namespace GUI.RequirementsView
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom;
+            richTextBox.Enabled = true;
+            richTextBox.ReadOnly = true;
 
             EmptyRTF = richTextBox.Rtf;
         }

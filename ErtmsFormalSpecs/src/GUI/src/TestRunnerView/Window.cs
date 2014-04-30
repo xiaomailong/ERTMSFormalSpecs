@@ -29,12 +29,12 @@ namespace GUI.TestRunnerView
 
         public override EditorTextBox RequirementsTextBox
         {
-            get { return requirementsTextBox; }
+            get { return null; }
         }
 
         public override EditorTextBox ExpressionEditorTextBox
         {
-            get { return expressionEditorTextBox; }
+            get { return null; }
         }
 
 
@@ -45,7 +45,7 @@ namespace GUI.TestRunnerView
 
         public override ExplainTextBox ExplainTextBox
         {
-            get { return explainTextBox; }
+            get { return null; }
         }
 
         /// <summary>
@@ -90,27 +90,11 @@ namespace GUI.TestRunnerView
         {
             InitializeComponent();
 
-            requirementsTextBox.AutoComplete = false;
-            explainTextBox.AutoComplete = false;
-
-            requirementsTextBox.ReadOnly = true;
-            explainTextBox.ReadOnly = true;
-
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
-            expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Text = "System test view";
             Visible = false;
             EFSSystem = EFSSystem.INSTANCE;
             Refresh();
-        }
-
-        void TextBox_TextChanged(object sender, EventArgs e)
-        {
-            IExpressionable expressionable = Selected as IExpressionable;
-            if (expressionable != null && expressionable == expressionEditorTextBox.Instance)
-            {
-                expressionable.ExpressionText = expressionEditorTextBox.TextBox.Text;
-            }
         }
 
         /// <summary>

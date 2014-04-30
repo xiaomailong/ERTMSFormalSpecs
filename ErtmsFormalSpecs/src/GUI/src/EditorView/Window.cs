@@ -9,9 +9,9 @@ using System.Windows.Forms;
 using DataDictionary;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace GUI
+namespace GUI.EditorView
 {
-    public partial class EditorForm : DockContent
+    public partial class Window : BaseForm
     {
         /// <summary>
         /// Indicates the actions to be performed to get the text from the instance and to set it into the instance
@@ -24,12 +24,18 @@ namespace GUI
             public ModelElement Instance { get; private set; }
 
             /// <summary>
+            /// The messages that identifies the action that is performed in the instance
+            /// </summary>
+            public string IdentifyingMessage { get; private set; }
+
+            /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="instance"></param>
-            public HandleTextChange(ModelElement instance)
+            public HandleTextChange(ModelElement instance, string identifyingMessage)
             {
                 Instance = instance;
+                IdentifyingMessage = identifyingMessage;
             }
 
             /// <summary>
@@ -56,13 +62,14 @@ namespace GUI
         /// <summary>
         /// Constructor
         /// </summary>
-        public EditorForm()
+        public Window()
         {
             InitializeComponent();
 
             editorTextBox.TextBox.TextChanged += new EventHandler(TextChangedHandler);
             editorTextBox.TextBox.KeyUp += new KeyEventHandler(TextBox_KeyUp);
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
+            Text = EditorName;
         }
 
         void TextBox_KeyUp(object sender, KeyEventArgs e)
@@ -120,13 +127,29 @@ namespace GUI
         private HandleTextChange __textChangeHandler = null;
 
         /// <summary>
+        /// The name of the editor
+        /// </summary>
+        protected virtual string EditorName { get { return "Editor"; } }
+
+        /// <summary>
         /// The element on which this editor is built
         /// </summary>
         public void setChangeHandler(HandleTextChange handleTextChange)
         {
             __textChangeHandler = handleTextChange;
-            Text = "Editor for " + __textChangeHandler.Instance.FullName;
-            editorTextBox.Instance = __textChangeHandler.Instance;
+            if (__textChangeHandler != null && __textChangeHandler.Instance != null)
+            {
+                Text = __textChangeHandler.IdentifyingMessage + " " + __textChangeHandler.Instance.FullName;
+                editorTextBox.Instance = __textChangeHandler.Instance;
+                editorTextBox.Enabled = true;
+            }
+            else
+            {
+                __textChangeHandler = null;
+                Text = EditorName;
+                editorTextBox.Instance = null;
+                editorTextBox.Enabled = false;
+            }
             RefreshText();
         }
 
@@ -135,9 +158,12 @@ namespace GUI
         /// </summary>
         public void RefreshText()
         {
-            int start = editorTextBox.TextBox.SelectionStart;
-            Value = __textChangeHandler.GetText();
-            editorTextBox.TextBox.SelectionStart = start;
+            if (__textChangeHandler != null)
+            {
+                int start = editorTextBox.TextBox.SelectionStart;
+                Value = __textChangeHandler.GetText();
+                editorTextBox.TextBox.SelectionStart = start;
+            }
         }
 
         /// <summary>
@@ -167,7 +193,17 @@ namespace GUI
         /// </summary>
         public DataDictionary.Generated.BaseModelElement Instance
         {
-            get { return __textChangeHandler.Instance; }
+            get
+            {
+                DataDictionary.Generated.BaseModelElement retVal = null;
+
+                if (__textChangeHandler != null)
+                {
+                    retVal = __textChangeHandler.Instance;
+                }
+
+                return retVal;
+            }
         }
     }
 }

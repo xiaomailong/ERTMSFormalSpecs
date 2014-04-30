@@ -28,6 +28,9 @@ namespace GUI.MoreInfoView
             InitializeComponent();
             EmptyRTF = moreInfoRichTextBox.Rtf;
 
+            moreInfoRichTextBox.ReadOnly = true;
+            moreInfoRichTextBox.Enabled = true;
+
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom;
         }

@@ -75,11 +75,6 @@ namespace GUI.TestRunnerView
             this.testDescriptionTimeLineControl = new GUI.TestRunnerView.TimeLineControl.StaticTimeLineControl();
             this.testExecutionTabPage = new System.Windows.Forms.TabPage();
             this.testExecutionTimeLineControl = new GUI.TestRunnerView.TimeLineControl.DynamicTimeLineControl();
-            this.descriptionTabPage = new System.Windows.Forms.TabPage();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.requirementsTextBox = new GUI.EditorTextBox();
-            this.expressionEditorTextBox = new GUI.EditorTextBox();
-            this.explainTextBox = new GUI.ExplainTextBox();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -88,11 +83,6 @@ namespace GUI.TestRunnerView
             this.tabControl1.SuspendLayout();
             this.testDescriptionTabPage.SuspendLayout();
             this.testExecutionTabPage.SuspendLayout();
-            this.descriptionTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip2
@@ -332,7 +322,6 @@ namespace GUI.TestRunnerView
             // 
             this.tabControl1.Controls.Add(this.testDescriptionTabPage);
             this.tabControl1.Controls.Add(this.testExecutionTabPage);
-            this.tabControl1.Controls.Add(this.descriptionTabPage);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
@@ -353,6 +342,7 @@ namespace GUI.TestRunnerView
             // 
             // testDescriptionTimeLineControl
             // 
+            this.testDescriptionTimeLineControl.AllowDrop = true;
             this.testDescriptionTimeLineControl.AutoScroll = true;
             this.testDescriptionTimeLineControl.AutoSize = true;
             this.testDescriptionTimeLineControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -388,80 +378,6 @@ namespace GUI.TestRunnerView
             this.testExecutionTimeLineControl.TabIndex = 1;
             this.testExecutionTimeLineControl.Text = "evcTimeLineControl1";
             // 
-            // descriptionTabPage
-            // 
-            this.descriptionTabPage.Controls.Add(this.splitContainer2);
-            this.descriptionTabPage.Location = new System.Drawing.Point(4, 22);
-            this.descriptionTabPage.Name = "descriptionTabPage";
-            this.descriptionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.descriptionTabPage.Size = new System.Drawing.Size(609, 522);
-            this.descriptionTabPage.TabIndex = 3;
-            this.descriptionTabPage.Text = "Description";
-            this.descriptionTabPage.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.requirementsTextBox);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.expressionEditorTextBox);
-            this.splitContainer2.Panel2.Controls.Add(this.explainTextBox);
-            this.splitContainer2.Size = new System.Drawing.Size(603, 516);
-            this.splitContainer2.SplitterDistance = 301;
-            this.splitContainer2.TabIndex = 4;
-            // 
-            // requirementsTextBox
-            // 
-            this.requirementsTextBox.AutoComplete = true;
-            this.requirementsTextBox.ConsiderOnlyTypes = false;
-            this.requirementsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.requirementsTextBox.Instance = null;
-            this.requirementsTextBox.Lines = new string[] {""};
-            this.requirementsTextBox.Location = new System.Drawing.Point(0, 0);
-            this.requirementsTextBox.Name = "requirementsTextBox";
-            this.requirementsTextBox.ReadOnly = false;
-            this.requirementsTextBox.Rtf = resources.GetString("requirementsTextBox.Rtf");
-            this.requirementsTextBox.Size = new System.Drawing.Size(301, 516);
-            this.requirementsTextBox.TabIndex = 0;
-            // 
-            // expressionEditorTextBox
-            // 
-            this.expressionEditorTextBox.AutoComplete = true;
-            this.expressionEditorTextBox.ConsiderOnlyTypes = false;
-            this.expressionEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.expressionEditorTextBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expressionEditorTextBox.Instance = null;
-            this.expressionEditorTextBox.Lines = new string[] {""};
-            this.expressionEditorTextBox.Location = new System.Drawing.Point(0, 0);
-            this.expressionEditorTextBox.Name = "expressionEditorTextBox";
-            this.expressionEditorTextBox.ReadOnly = false;
-            this.expressionEditorTextBox.Rtf = resources.GetString("expressionEditorTextBox.Rtf");
-            this.expressionEditorTextBox.Size = new System.Drawing.Size(298, 516);
-            this.expressionEditorTextBox.TabIndex = 4;
-            this.expressionEditorTextBox.Visible = false;
-            // 
-            // explainTextBox
-            // 
-            this.explainTextBox.AutoComplete = true;
-            this.explainTextBox.ConsiderOnlyTypes = false;
-            this.explainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.explainTextBox.Instance = null;
-            this.explainTextBox.Lines = new string[] {""};
-            this.explainTextBox.Location = new System.Drawing.Point(0, 0);
-            this.explainTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.explainTextBox.Name = "explainTextBox";
-            this.explainTextBox.ReadOnly = false;
-            this.explainTextBox.Rtf = resources.GetString("explainTextBox.Rtf");
-            this.explainTextBox.Size = new System.Drawing.Size(298, 516);
-            this.explainTextBox.TabIndex = 3;
-            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -486,11 +402,6 @@ namespace GUI.TestRunnerView
             this.testDescriptionTabPage.PerformLayout();
             this.testExecutionTabPage.ResumeLayout(false);
             this.testExecutionTabPage.PerformLayout();
-            this.descriptionTabPage.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -521,16 +432,11 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.ToolStripLabel toolStripLabel5;
         private System.Windows.Forms.ToolStripComboBox frameToolStripComboBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         public System.Windows.Forms.TabControl tabControl1;
         public System.Windows.Forms.TabPage testExecutionTabPage;
-        public System.Windows.Forms.TabPage descriptionTabPage;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private EditorTextBox requirementsTextBox;
-        private EditorTextBox expressionEditorTextBox;
-        public ExplainTextBox explainTextBox;
         private System.Windows.Forms.TabPage testDescriptionTabPage;
         public TimeLineControl.StaticTimeLineControl testDescriptionTimeLineControl;
 

@@ -224,7 +224,6 @@ namespace GUI.TranslationRules
             this.sourceTextBox.ConsiderOnlyTypes = false;
             this.sourceTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sourceTextBox.Instance = null;
-            this.sourceTextBox.Lines = new string[] {""};
             this.sourceTextBox.Location = new System.Drawing.Point(0, 0);
             this.sourceTextBox.Name = "sourceTextBox";
             this.sourceTextBox.ReadOnly = false;
@@ -239,7 +238,6 @@ namespace GUI.TranslationRules
             this.explainTextBox.ConsiderOnlyTypes = false;
             this.explainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.explainTextBox.Instance = null;
-            this.explainTextBox.Lines = new string[] {""};
             this.explainTextBox.Location = new System.Drawing.Point(0, 0);
             this.explainTextBox.Name = "explainTextBox";
             this.explainTextBox.ReadOnly = false;
@@ -254,7 +252,6 @@ namespace GUI.TranslationRules
             this.expressionEditorTextBox.ConsiderOnlyTypes = false;
             this.expressionEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expressionEditorTextBox.Instance = null;
-            this.expressionEditorTextBox.Lines = new string[] {""};
             this.expressionEditorTextBox.Location = new System.Drawing.Point(0, 0);
             this.expressionEditorTextBox.Name = "expressionEditorTextBox";
             this.expressionEditorTextBox.ReadOnly = false;

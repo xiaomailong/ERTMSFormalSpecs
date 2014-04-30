@@ -69,7 +69,7 @@ namespace GUI.TestRunnerView.Watch
             }
         }
 
-        private class TextChangeHandler : GUI.EditorForm.HandleTextChange
+        private class TextChangeHandler : EditorView.Window.HandleTextChange
         {
             /// <summary>
             /// The expression supervised by this change handler
@@ -88,7 +88,7 @@ namespace GUI.TestRunnerView.Watch
             /// <param name="watch"></param>
             /// <param name="columnName"></param>
             public TextChangeHandler(ModelElement instance, WatchedExpression watch, string columnName)
-                : base(instance)
+                : base(instance, "Watch")
             {
                 Watch = watch;
                 ColumnName = columnName;
@@ -154,7 +154,7 @@ namespace GUI.TestRunnerView.Watch
                 if (selected != null)
                 {
                     DataGridViewCell selectedCell = watchDataGridView.SelectedCells[0];
-                    EditorForm form = new EditorForm();
+                    EditorView.Window form = new EditorView.Window();
                     form.AutoComplete = true;
                     TextChangeHandler handler = new TextChangeHandler(Instance, selected, selectedCell.OwningColumn.Name);
                     form.setChangeHandler(handler);

@@ -283,7 +283,6 @@ namespace GUI.SpecificationView
             this.specBrowserTextView.ConsiderOnlyTypes = false;
             this.specBrowserTextView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.specBrowserTextView.Instance = null;
-            this.specBrowserTextView.Lines = new string[] {""};
             this.specBrowserTextView.Location = new System.Drawing.Point(2, 2);
             this.specBrowserTextView.Name = "specBrowserTextView";
             this.specBrowserTextView.ReadOnly = false;

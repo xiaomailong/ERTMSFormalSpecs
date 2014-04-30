@@ -103,6 +103,17 @@
     <Compile Include="src\BoxArrowDiagram\ArrowControl.Designer.cs">
       <DependentUpon>ArrowControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\EditorView\CommentableTextChangeHandler.cs" />
+    <Compile Include="src\EditorView\CommentWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\EditorView\ExpressionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\EditorView\VariableValueTextChangeHandler.cs" />
+    <Compile Include="src\EditorView\TypeTextChangeHandler.cs" />
+    <Compile Include="src\EditorView\DefaultValueTextChangeHandler.cs" />
+    <Compile Include="src\EditorView\ExpressionableTextChangeHandler.cs" />
     <Compile Include="src\IPCInterface\EFSService.cs" />
     <Compile Include="src\IPCInterface\IEFSService.cs" />
     <Compile Include="src\IPCInterface\Values\BoolValue.cs" />
@@ -149,16 +160,16 @@
     <Compile Include="src\DataDictionaryView\StructureProceduresTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StructureStateMachinesTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StateMachinesTreeNode.cs" />
-    <Compile Include="src\EditorForm.cs">
+    <Compile Include="src\EditorView\Window.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\EditorForm.Designer.cs">
-      <DependentUpon>EditorForm.cs</DependentUpon>
+    <Compile Include="src\EditorView\Window.Designer.cs">
+      <DependentUpon>Window.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\EditorTextBox.cs">
+    <Compile Include="src\EditorView\EditorTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\EditorTextBox.Designer.cs">
+    <Compile Include="src\EditorView\EditorTextBox.Designer.cs">
       <DependentUpon>EditorTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Excel\Frm_ExcelImport.cs">
@@ -554,10 +565,10 @@
     <EmbeddedResource Include="src\DataDictionaryView\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\EditorForm.resx">
-      <DependentUpon>EditorForm.cs</DependentUpon>
+    <EmbeddedResource Include="src\EditorView\Window.resx">
+      <DependentUpon>Window.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\EditorTextBox.resx">
+    <EmbeddedResource Include="src\EditorView\EditorTextBox.resx">
       <DependentUpon>EditorTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Excel\Frm_ExcelImport.resx">

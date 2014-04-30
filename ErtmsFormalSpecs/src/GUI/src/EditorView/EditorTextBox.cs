@@ -1274,18 +1274,6 @@ namespace GUI
             }
         }
 
-        public string[] Lines
-        {
-            get
-            {
-                return EditionTextBox.Lines;
-            }
-            set
-            {
-                EditionTextBox.Lines = value;
-            }
-        }
-
         private string LastText = "";
         public override string Text
         {

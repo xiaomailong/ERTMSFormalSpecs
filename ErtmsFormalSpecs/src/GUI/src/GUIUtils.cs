@@ -38,7 +38,7 @@ namespace GUI
         {
             MDIWindow.Invoke((MethodInvoker)delegate
             {
-                foreach (EditorForm editor in MDIWindow.Editors)
+                foreach (EditorView.Window editor in MDIWindow.Editors)
                 {
                     if (editor.Instance == model)
                     {
