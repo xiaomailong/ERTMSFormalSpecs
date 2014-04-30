@@ -121,7 +121,7 @@
  Guid="655252ea-7cb3-454f-a70c-fc44b68fe324"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="TrainData.TrainCategory"
+ TypeName="Kernel.TrainData.TrainCategoryEnum"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -499,7 +499,7 @@ USING
  Guid="31c47ca2-f778-412f-94aa-bae30b5e6ed9"
 >
 </Parameter><Parameter
- Type="TrainData.TrainCategory"
+ Type="TrainData.TrainCategoryEnum"
  Name="OtherSpecific"
  Guid="198d728c-c591-4535-ab16-4ad372ce5752"
 >
@@ -727,7 +727,7 @@ INITIAL_VALUE
 </ReqRef><Comment>Indicates if the train belongs to the other specific category provided as parameter. Used to match the corresponding categories received by the trackside.</Comment>
 <Parameters>
 <Parameter
- Type="TrainData.TrainCategory"
+ Type="TrainData.TrainCategoryEnum"
  Name="Category"
  Guid="cb6b9b96-40cf-4c9d-b7bf-4f22136e6a22"
 >
@@ -776,7 +776,7 @@ INITIAL_VALUE
     BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrainData.TrainCategory"
+ Type="TrainData.TrainCategoryEnum"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ERTMSCategory_To_EFSCategory"
@@ -798,7 +798,7 @@ INITIAL_VALUE
 <PreCondition
  Guid="5cbb582c-d00b-4837-93bc-f0095b7a41f5"
 >aCategory == Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position</PreCondition></PreConditions>
-<Expression>TrainData.TrainCategory.FreightTrainInP</Expression>
+<Expression>TrainData.TrainCategoryEnum.FreightTrainInP</Expression>
 </Case><Case
  Name="Freight train in G"
  Guid="62203bb1-6a2d-444d-b836-4b0954c2b96f"
@@ -807,12 +807,12 @@ INITIAL_VALUE
 <PreCondition
  Guid="a4c20fad-c406-41e5-ae86-78005f34945d"
 >aCategory == Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__G__position</PreCondition></PreConditions>
-<Expression>TrainData.TrainCategory.FreightTrainInG</Expression>
+<Expression>TrainData.TrainCategoryEnum.FreightTrainInG</Expression>
 </Case><Case
  Name="Passenger train"
  Guid="d33744f8-9650-4bc2-8e19-c1a8cfe405ec"
 >
-<Expression>TrainData.TrainCategory.PassengerTrain</Expression>
+<Expression>TrainData.TrainCategoryEnum.PassengerTrain</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -848,7 +848,7 @@ INITIAL_VALUE
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="RemoveOldInformation"
+ Name="Remove old information"
  Guid="d16672d4-c19a-4a4f-9c40-379b9955fcc6"
 >
 <ReqRef
@@ -861,13 +861,18 @@ INITIAL_VALUE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="792160a3-52e4-4d11-b842-329a4776c3b2"
 >
+</ReqRef><ReqRef
+ Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e77e1efc-2db4-415f-b0f0-268a053eb6f5"
+>
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="RemoveOldAxleLoads"
+ Name="Remove old information"
  Guid="32b0ef9b-e1ed-4271-8527-6cd1d4dd0cec"
 >
 <PreConditions>
@@ -886,7 +891,7 @@ IN
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InsertFirstSSR"
+ Name="Insert first SSR"
  Guid="1a70db67-e6d6-45a0-a7c1-6c48294ee07b"
 >
 <ReqRef
@@ -910,7 +915,7 @@ IN
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="LastSSP"
+ Name="Last SSP"
  Guid="09131747-3e87-45b0-b635-9ea3150d0705"
 >
 <PreConditions>
@@ -967,7 +972,7 @@ IN
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InsertFollowingSSRs"
+ Name="Insert Following SSRs"
  Guid="dfe2766d-4ca1-4892-8819-77ec11e88335"
 >
 <SubRules></SubRules>
@@ -975,7 +980,7 @@ IN
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InsertFollowingSSRs"
+ Name="Insert following SSRs"
  Guid="b95f2783-aeb0-4f80-972f-fa17c79c395b"
 >
 <PreConditions>

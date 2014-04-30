@@ -44,7 +44,7 @@
  Guid="af193e56-1121-4498-a70f-d19d01f96aac"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.LevelData"
+ TypeName="Default.LevelDataStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -215,7 +215,7 @@
 </ReqRef><Comment>Level NTC remains a non-implemented case because we have no information here which NTC/STM is relevant (and how this is modelled).</Comment>
 <Parameters>
 <Parameter
- Type="Default.LevelData"
+ Type="Default.LevelDataStruct"
  Name="Level"
  Guid="46695204-7578-4c8a-9699-e0c5e4ed1123"
 >
@@ -331,7 +331,7 @@
 LevelTransition
 {
     AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
-    TRLevel =&gt; Default.LevelData {
+    TRLevel =&gt; Default.LevelDataStruct {
        Value =&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
        NTC =&gt; Default.NID_NTC(NID_NTC)
     }
@@ -353,7 +353,7 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
 LevelTransition
 {
     AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
-    TRLevel =&gt; Default.LevelData {
+    TRLevel =&gt; Default.LevelDataStruct {
        Value =&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
     }
@@ -433,7 +433,7 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
   [ 
       LevelTransition { 
           AcknLength =&gt; MessageTypes.QScaleLength( length=&gt;Packet.L_ACKLEVELTR,  scale=&gt;Packet.Q_SCALE ),
-          TRLevel =&gt; Default.LevelData {
+          TRLevel =&gt; Default.LevelDataStruct {
              Value =&gt; ERTMS_to_EFS_Level ( Packet.M_LEVELTR ) ,
              NTC =&gt; Packet.NID_NTC
          }
@@ -531,7 +531,7 @@ Packet.Sequence1</Action></Actions>
    LevelAndLength =&gt; [ 
       LevelTransition { 
          AcknLength =&gt;EMPTY, 
-         TRLevel =&gt; Default.LevelData {
+         TRLevel =&gt; Default.LevelDataStruct {
              Value =&gt; ERTMS_to_EFS_Level( LevelT =&gt;Packet.M_LEVELTR ),
              NTC =&gt; Packet.NID_NTC
          }

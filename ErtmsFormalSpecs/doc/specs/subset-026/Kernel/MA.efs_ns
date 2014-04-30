@@ -694,6 +694,11 @@ Location stores the previous End of Movement Authority location.</Comment>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c4a0368d-a5f1-480b-9340-9e047f9781f2"
 >
+</ReqRef><ReqRef
+ Id="f27f67c3-6ff7-425e-8ab3-f3eb40f14326"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="70b19684-f388-4c67-be54-9b1ac8c7ba6e"
+>
 </ReqRef><Comment>Gives the target corresponding to the End (or Limit) Of Authority. This is chosen to be the closest target in the EOAs collection</Comment>
 <Cases>
 <Case
@@ -1514,12 +1519,7 @@ USING
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a3599a2e-5b3f-4ae4-b506-f7fb8e2fc079"
 >
-</ReqRef><ReqRef
- Id="ce639b26-fec6-4218-86a0-c7449b82eafd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b034527d-1d24-4355-90e3-b5cbb86a49fb"
->
-</ReqRef><Comment>&quot;given together with the MA&quot; is not considered here because A1.1.6.2 ensures all relevant information has been processed at the time of evaluation of this function #morido, 13/10/23</Comment>
+</ReqRef><Comment>&quot;given together with the MA&quot; is not considered here because A1.1.6.2 ensures all relevant information has been processed at the time of evaluation of this function.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
@@ -2029,7 +2029,9 @@ BaseTypes.LengthToDistance
 >SignallingRelatedSpeedRestriction &lt;- Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action><Action
  Guid="80edc04f-5273-4997-8bd5-e5b012a9c650"
 ><Comment>Current BG time of passage becomes section timer start</Comment>
-SectionTimerStart &lt;- CurrentBGTimeOfPassage</Action></Actions>
+SectionTimerStart &lt;- CurrentBGTimeOfPassage</Action><Action
+ Guid="e1d644fe-308d-4060-a4cc-c14066ce2a1e"
+>MAIsAccepted &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3098,6 +3100,11 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fcfcfe12-9abc-47c1-a0bc-01e7cd883b41"
 >
+</ReqRef><ReqRef
+ Id="f27f67c3-6ff7-425e-8ab3-f3eb40f14326"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c91cf00-bd66-4e90-b320-7d489ff22b5d"
+>
 </ReqRef><Comment>If the route suitability conditions define an EOA, add it to the list &apos;EOAs&apos;</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -3817,7 +3824,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
             TrackDescription.StaticSpeedProfile.SSPCategory
             {
                 CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_130_mm,
-                OtherSpecific =&gt; TrainData.TrainCategory.FreightTrainInG,
+                OtherSpecific =&gt; TrainData.TrainCategoryEnum.FreightTrainInG,
                 Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category ,
                 Speed =&gt; 70.0
             }
@@ -3999,6 +4006,20 @@ Note that the &quot;TimeOut&quot; here is not the End Section time-out value, bu
  Guid="04bca44f-b79e-48e8-8afe-6a9a0bee0869"
 >
 </ReqRef><Comment>Stores the time of passage over the first balise encountered of any BG. If the BG contains an MA, this time is the section timer start for all section time-outs in that MA</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="MAIsAccepted"
+ Guid="e2e5ee29-3d1d-4597-abaa-7dc7252ecc33"
+>
+<ReqRef
+ Id="63f87a6b-8c3e-4333-b97e-9e417e3623d8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff3b50f9-1e06-4425-947f-9193f2285c92"
+>
+</ReqRef><Comment>Indicates if the MA was accepted. Used to determine if the corresponding mode profile can be accepted.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule

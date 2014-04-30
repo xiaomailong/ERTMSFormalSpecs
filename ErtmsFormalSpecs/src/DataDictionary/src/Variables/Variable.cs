@@ -222,17 +222,8 @@ namespace DataDictionary.Variables
         {
             bool retVal = false;
 
-            bool silentMode = ModelElement.BeSilent;
-            try
-            {
-                ModelElement.BeSilent = true;
-                Interpreter.Expression tree = EFSSystem.Parser.Expression(this, expression, null, false);
-                retVal = tree != null;
-            }
-            finally
-            {
-                ModelElement.BeSilent = silentMode;
-            }
+            Interpreter.Expression tree = EFSSystem.Parser.Expression(this, expression, null, false, null, true);
+            retVal = tree != null;
 
             return retVal;
         }
@@ -451,6 +442,22 @@ namespace DataDictionary.Variables
             else
             {
                 retVal += " is null";
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides the text of the default value
+        /// </summary>
+        /// <returns></returns>
+        public string GetDefaultValueText()
+        {
+            string retVal = getDefaultValue();
+
+            if (string.IsNullOrEmpty(retVal) && Type != null)
+            {
+                retVal = Type.getDefault();
             }
 
             return retVal;

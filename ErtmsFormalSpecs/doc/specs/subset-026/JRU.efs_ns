@@ -27,7 +27,12 @@
  Name="SendMessage"
  Guid="5b350aa5-3c13-4952-ab53-44c7d5822a49"
 >
-<Comment>This will call the procedure to send, update the internal variables involve in sending a JRU Message and cleaning up at the end of the cycle</Comment>
+<ReqRef
+ Id="d2655cc5-21f7-4522-96f9-bdfb23f40c80"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="08247f18-1f97-4fc3-ae1c-01fe9dd99775"
+>
+</ReqRef><Comment>This will call the procedure to send, update the internal variables involve in sending a JRU Message and cleaning up at the end of the cycle</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -43,7 +48,7 @@
 <Actions>
 <Action
  Guid="ceacc66c-5e57-4024-81f9-daf7d248fcdf"
->JRU.HandleMessagesOut()</Action></Actions>
+>HandleMessagesOut()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -967,7 +972,7 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitor
 <Actions>
 <Action
  Guid="95a5ddb2-ef62-4681-a427-9aa9b06202c7"
->JRU.JRU.InitializeMessage()</Action></Actions>
+>InitializeMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2619,12 +2624,12 @@ OR
 >
 <Expression>Messages.JRU.MESSAGE.TRAIN_DATA.Message{
 HEADER =&gt; CreateHeader(2),
- V_MAXTRAIN =&gt;  JRU.ToJruVMaxTrain( Kernel.TrainData.TrainData.Value.MaximumSpeed ),
+ V_MAXTRAIN =&gt; MessageTypes.UnResolveSpeed ( speed =&gt; Kernel.TrainData.TrainData.Value.MaximumSpeed, resolution =&gt; 5.0 ),
  NC_CDTRAIN =&gt;  Kernel.TrainData.TrainData.Value.TrainCategories.CantDeficiency,
  M_LOADINGGAUGE =&gt;  Kernel.TrainData.TrainData.Value.LoadingGauge,
  N_AXLE =&gt;  Kernel.TrainData.TrainData.Value.AxleNumber,
  N_AXLELOADCAT =&gt;  Kernel.TrainData.TrainData.Value.AxleLoadCategory, 
-L_TRAIN =&gt; 400,
+L_TRAIN =&gt; MessageTypes.UnScaleLength ( length =&gt; Kernel.TrainData.TrainData.Value.TrainLength, scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
  T_TRACTION_CUT_OFF=&gt; DoubleToInteger(Kernel.TrainData.BrakingParameters.T_traction_cut_off() ),
  M_BRAKE_POSITION =&gt; JRU.ToJruMbrakePosition(Kernel.TrainData.TrainData.Value.BrakePosition),
  M_NOM_ROT_MASS =&gt; ToJruNomRotMass( Kernel.TrainData.TrainData.Value.M_rotating_nom ),
@@ -2667,28 +2672,6 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
  Guid="16c91101-7797-4334-bf97-87485397c6b9"
 >
 <Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="MessageTypes.Speed"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ToJruVMaxTrain"
- Guid="353a5ca7-9df0-4922-89bd-e893032f58ce"
->
-<Comment>Function which will convert the input value into JRU MaxTrainSpeed</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Speed"
- Name="MaxTrainSpeed"
- Guid="adfa6953-1676-4e10-9cf2-2394303dc23e"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="NotStandStill"
- Guid="595c20cd-6b0d-4c65-a563-8d51b8adaf52"
->
-<Expression>Default.MessageTypes.UnResolveSpeed( MaxTrainSpeed, 5.0)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.M_BRAKE_POSITION"

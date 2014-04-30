@@ -24,6 +24,8 @@ using DataDictionary.Interpreter;
 using DataDictionary.Types;
 using DataDictionary.Interpreter.ListOperators;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Interpreter.Statement;
+using DataDictionary.Values;
 namespace GUI
 {
     public partial class EditorTextBox : UserControl
@@ -163,6 +165,10 @@ namespace GUI
                 bool considerMouseMove = true;
                 ExplainAndShow(instances, location, considerMouseMove);
             }
+            else
+            {
+                contextMenuStrip1.Show(PointToScreen(MouseLocation));
+            }
         }
 
         /// <summary>
@@ -201,7 +207,7 @@ namespace GUI
                 if (start < end)
                 {
                     string identifier = EditionTextBox.Text.Substring(start, Math.Min(end - start + 1, EditionTextBox.Text.Length - start));
-                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, identifier, AllMatches.INSTANCE);
+                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, identifier, AllMatches.INSTANCE, true, null, true);
                     if (expression != null)
                     {
                         if (expression.Ref != null)
@@ -425,10 +431,9 @@ namespace GUI
         /// Provides the list of available elements which match the prefix provided
         /// </summary>
         /// <param name="element">The element in which the possibilities should be found</param>
-        /// <param name="prefix">The prefix of the element to find</param>
-        /// <param name="enclosingName">The name of the enclosing structure</param>
+        /// <param name="searchOptions"></param>
         /// <returns></returns>
-        private HashSet<ObjectReference> getPossibilities(Utils.IModelElement element, string prefix, string enclosingName)
+        private HashSet<ObjectReference> GetPossibilities(Utils.IModelElement element, SearchOptions searchOptions)
         {
             HashSet<ObjectReference> retVal = new HashSet<ObjectReference>();
 
@@ -460,13 +465,13 @@ namespace GUI
                     foreach (KeyValuePair<string, List<Utils.INamable>> pair in subDeclarator.DeclaredElements)
                     {
                         string subElem = pair.Key;
-                        if (subElem.StartsWith(prefix))
+                        if (subElem.StartsWith(searchOptions.Prefix))
                         {
-                            if (enclosingName != null)
+                            if (searchOptions.EnclosingName != null)
                             {
                                 foreach (Utils.INamable namable in subDeclarator.DeclaredElements[subElem])
                                 {
-                                    if (namable.FullName.EndsWith(enclosingName + "." + subElem) || type || subDeclarator is StructureElement)
+                                    if (namable.FullName.EndsWith(searchOptions.EnclosingName + "." + subElem) || type || subDeclarator is StructureElement)
                                     {
                                         if (ConsiderOnlyTypes)
                                         {
@@ -494,7 +499,14 @@ namespace GUI
                     }
                 }
 
-                element = element.Enclosing as Utils.IModelElement;
+                if (searchOptions.ConsiderEnclosing)
+                {
+                    element = element.Enclosing as Utils.IModelElement;
+                }
+                else
+                {
+                    element = null;
+                }
             }
 
             return retVal;
@@ -508,23 +520,52 @@ namespace GUI
         {
             string retVal = "";
 
-            int i = EditionTextBox.SelectionStart - 1;
-            while (i >= EditionTextBox.Text.Length)
+            int end = EditionTextBox.SelectionStart - 1;
+            while (end >= EditionTextBox.Text.Length)
             {
-                i = i - 1;
+                end = end - 1;
             }
 
-            while (i >= 0 && Char.IsSeparator(EditionTextBox.Text[i]))
+            while (end >= 0 && Char.IsSeparator(EditionTextBox.Text[end]))
             {
-                i = i - 1;
+                end = end - 1;
             }
 
-            while (i >= 0 && !Char.IsSeparator(EditionTextBox.Text[i]))
+            int parenthesis = 0;
+            int start = end;
+            while (start >= 0)
             {
-                retVal = EditionTextBox.Text[i] + retVal;
-                i = i - 1;
-            }
+                char current = EditionTextBox.Text[start];
 
+                if (parenthesis == 0)
+                {
+                    if (Char.IsLetterOrDigit(current) || current == '.')
+                    {
+                        // Continue on
+                    }
+                    else if (current == ')')
+                    {
+                        parenthesis += 1;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                if (current == '(')
+                {
+                    parenthesis -= 1;
+                }
+
+                start = start - 1;
+            }
+            start = start + 1;
+
+            if (start <= end)
+            {
+                retVal = EditionTextBox.Text.Substring(start, end - start + 1);
+            }
             return retVal;
         }
 
@@ -600,27 +641,27 @@ namespace GUI
         {
             List<ObjectReference> retVal = new List<ObjectReference>();
 
-            EFSSystem.INSTANCE.Compiler.Compile_Synchronous(false, true);
-            string enclosingName;
-            List<Utils.INamable> possibleInstances = PossibleInstances(text, out prefix, out enclosingName);
+            // EFSSystem.INSTANCE.Compiler.Compile_Synchronous(false, true);
+            SearchOptions searchOptions = BuildSearchOptions(text);
+            prefix = searchOptions.Prefix;
 
             int value;
             bool isANumber = false;
-            if (!string.IsNullOrEmpty(enclosingName))
+            if (!string.IsNullOrEmpty(searchOptions.EnclosingName))
             {
-                isANumber = int.TryParse(enclosingName.Substring(0, enclosingName.Length - 1), out value);
+                isANumber = int.TryParse(searchOptions.EnclosingName.Substring(0, searchOptions.EnclosingName.Length - 1), out value);
             }
 
             if (!isANumber)
             {
                 // Handles references to model elements
-                foreach (Utils.INamable namable in possibleInstances)
+                foreach (Utils.INamable namable in searchOptions.Instances)
                 {
-                    retVal.AddRange(getPossibilities((Utils.IModelElement)namable, prefix, enclosingName));
+                    retVal.AddRange(GetPossibilities((Utils.IModelElement)namable, searchOptions));
                 }
 
                 // Handles code templates
-                if (string.IsNullOrEmpty(enclosingName))
+                if (searchOptions.ConsiderTemplates)
                 {
                     foreach (string template in TEMPLATES)
                     {
@@ -636,23 +677,64 @@ namespace GUI
             return retVal;
         }
 
+
         /// <summary>
-        /// Provides the list of possible instances according to the text provided 
+        /// The search options to be used
+        /// </summary>
+        private class SearchOptions
+        {
+            /// <summary>
+            /// Indicates that templates should be taken into consideration
+            /// </summary>
+            public bool ConsiderTemplates { get; set; }
+
+            /// <summary>
+            /// Indicates that the enclosing elements should be taken into consideration
+            /// </summary>
+            public bool ConsiderEnclosing { get; set; }
+
+            /// <summary>
+            /// The name of the enclosing element
+            /// </summary>
+            public string EnclosingName { get; set; }
+
+            /// <summary>
+            /// The prefix of the element to be found
+            /// </summary>
+            public string Prefix { get; set; }
+
+            /// <summary>
+            /// The list of instances on which the search should occur
+            /// </summary>
+            public List<Utils.INamable> Instances { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public SearchOptions()
+            {
+                ConsiderTemplates = true;
+                ConsiderEnclosing = true;
+                EnclosingName = "";
+                Prefix = "";
+                Instances = new List<Utils.INamable>();
+            }
+        }
+
+        /// <summary>
+        /// Provides the search options according to the text provided 
         /// </summary>
         /// <param name="text"></param>
-        /// <param name="prefix"></param>
-        /// <param name="enclosingName"></param>
         /// <returns></returns>
-        private List<Utils.INamable> PossibleInstances(string text, out string prefix, out string enclosingName)
+        private SearchOptions BuildSearchOptions(string text)
         {
-            // Also use the default namespace
-            List<Utils.INamable> retVal = new List<Utils.INamable>();
+            SearchOptions retVal = new SearchOptions();
 
             int lastDot = text.LastIndexOf('.');
             if (lastDot > 0)
             {
-                enclosingName = text.Substring(0, lastDot);
-
+                retVal.EnclosingName = text.Substring(0, lastDot);
+                retVal.ConsiderTemplates = string.IsNullOrEmpty(retVal.EnclosingName);
                 if (text.StartsWith("X."))
                 {
                     // Computes the location of the IN keyword
@@ -687,47 +769,64 @@ namespace GUI
                         if (modelElement != null)
                         {
                             Expression listExpression = EFSSystem.Parser.Expression(modelElement, EditionTextBox.Text.Substring(start, len), IsVariableOrValue.INSTANCE, false);
-                            Expression currentExpression = EFSSystem.Parser.Expression(modelElement, enclosingName, AllMatches.INSTANCE, false);
+                            Expression currentExpression = EFSSystem.Parser.Expression(modelElement, retVal.EnclosingName, AllMatches.INSTANCE, false);
                             Expression foreachExpression = new ForAllExpression(modelElement, modelElement, listExpression, currentExpression, -1, -1);
                             foreachExpression.SemanticAnalysis();
                             if (currentExpression.Ref != null)
                             {
-                                retVal.Add(currentExpression.Ref);
+                                retVal.Instances.Add(currentExpression.Ref);
                             }
                         }
                     }
                 }
+                else if (retVal.EnclosingName.Contains('('))
+                {
+                    // Is this a function call ? 
+                    int parentIndex = retVal.EnclosingName.IndexOf('(');
+                    string functionName = retVal.EnclosingName.Substring(0, parentIndex);
+
+                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, functionName, AllMatches.INSTANCE);
+                    DataDictionary.Functions.Function function = expression.Ref as DataDictionary.Functions.Function;
+                    if (function != null)
+                    {
+                        retVal.Instances.Add(function.ReturnType);
+                        retVal.EnclosingName = "";
+                        retVal.ConsiderTemplates = false;
+                        retVal.ConsiderEnclosing = false;
+                    }
+                }
                 else
                 {
-                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, enclosingName, AllMatches.INSTANCE);
+                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, retVal.EnclosingName, AllMatches.INSTANCE);
 
                     if (expression != null)
                     {
                         if (expression.Ref != null)
                         {
-                            retVal.Add(expression.Ref);
+                            retVal.Instances.Add(expression.Ref);
                         }
                         else
                         {
                             foreach (ReturnValueElement element in expression.getReferences(null, AllMatches.INSTANCE, false).Values)
                             {
-                                retVal.Add(element.Value);
+                                retVal.Instances.Add(element.Value);
                             }
                         }
                     }
                     else
                     {
-                        retVal.Add(Instance);
+                        retVal.Instances.Add(Instance);
                     }
                 }
 
-                prefix = text.Substring(lastDot + 1);
+                retVal.Prefix = text.Substring(lastDot + 1);
             }
             else
             {
-                retVal.Add(Instance);
-                enclosingName = null;
-                prefix = text;
+                retVal.Instances.Add(Instance);
+                retVal.EnclosingName = null;
+                retVal.Prefix = text;
+                retVal.ConsiderTemplates = true;
             }
 
             return retVal;
@@ -738,8 +837,8 @@ namespace GUI
         /// </summary>
         private void DisplayComboBox()
         {
-            string prefix;
-            List<ObjectReference> allChoices = AllChoices(CurrentPrefix().Trim(), out prefix);
+            string prefix = CurrentPrefix().Trim();
+            List<ObjectReference> allChoices = AllChoices(prefix, out prefix);
 
             if (prefix.Length <= EditionTextBox.SelectionStart)
             {
@@ -1202,6 +1301,117 @@ namespace GUI
                     EditionTextBox.Rtf = InitialRTF;
                     EditionTextBox.Text = value.Trim();
                 }
+            }
+        }
+
+
+        /// <summary>
+        /// Edits a structure value expression and provides the edited expression after user has performed his changes
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        private StructExpression EditStructureExpression(StructExpression expression)
+        {
+            StructExpression retVal = expression;
+
+            if (expression != null)
+            {
+                bool silentMode = ModelElement.BeSilent;
+                try
+                {
+                    ModelElement.BeSilent = true;
+
+                    InterpretationContext context = new InterpretationContext(Instance);
+                    context.UseDefaultValue = false;
+                    StructureValue value = expression.GetValue(context) as StructureValue;
+                    if (value != null)
+                    {
+                        StructureValueEditor.Window window = new StructureValueEditor.Window();
+                        window.SetModel(value);
+                        window.ShowDialog();
+
+                        string newExpression = value.ToExpressionWithDefault();
+                        bool doSemanticalAnalysis = true;
+                        bool silent = true;
+                        retVal = EFSSystem.INSTANCE.Parser.Expression((ModelElement)Instance, newExpression, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent) as StructExpression;
+                    }
+                }
+                finally
+                {
+                    ModelElement.BeSilent = silentMode;
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Browses through the expression to find the structure value to edit
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        private Expression VisitExpression(Expression expression)
+        {
+            Expression retVal = expression;
+
+            BinaryExpression binaryExpression = expression as BinaryExpression;
+            if (binaryExpression != null)
+            {
+                binaryExpression.Left = VisitExpression(binaryExpression.Left);
+                binaryExpression.Right = VisitExpression(binaryExpression.Right);
+            }
+
+            UnaryExpression unaryExpression = expression as UnaryExpression;
+            if (unaryExpression != null)
+            {
+                if (unaryExpression.Expression != null)
+                {
+                    unaryExpression.Expression = VisitExpression(unaryExpression.Expression);
+                }
+            }
+
+            StructExpression structExpression = expression as StructExpression;
+            if (structExpression != null)
+            {
+                retVal = EditStructureExpression(structExpression);
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Browses through the statement to find the structures to edit
+        /// </summary>
+        /// <param name="statement"></param>
+        private Statement VisitStatement(Statement statement)
+        {
+            Statement retVal = statement;
+
+            VariableUpdateStatement variableUpdateStatement = statement as VariableUpdateStatement;
+            if (variableUpdateStatement != null)
+            {
+                variableUpdateStatement.Expression = VisitExpression(variableUpdateStatement.Expression);
+            }
+
+            return retVal;
+        }
+
+        private void openStructureEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool doSemanticalAnalysis = true;
+            bool silent = true;
+            Expression expression = EFSSystem.INSTANCE.Parser.Expression(Instance as ModelElement, EditionTextBox.Text, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
+            if (expression != null)
+            {
+                expression = VisitExpression(expression);
+                EditionTextBox.Text = expression.ToString();
+            }
+
+            Statement statement = EFSSystem.INSTANCE.Parser.Statement(Instance as ModelElement, EditionTextBox.Text, silent);
+            if (statement != null)
+            {
+                statement = VisitStatement(statement);
+                EditionTextBox.Text = statement.ToString();
             }
         }
     }

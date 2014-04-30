@@ -24,12 +24,7 @@ namespace GUI.TestRunnerView
     {
         public override MyPropertyGrid Properties
         {
-            get { return propertyGrid; }
-        }
-
-        public override RichTextBox MessagesTextBox
-        {
-            get { return messageRichTextBox.TextBox; }
+            get { return null; }
         }
 
         public override EditorTextBox RequirementsTextBox
@@ -91,11 +86,10 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="dictionary"></param>
-        public Window(DataDictionary.EFSSystem efsSystem)
+        public Window()
         {
             InitializeComponent();
 
-            messageRichTextBox.AutoComplete = false;
             requirementsTextBox.AutoComplete = false;
             explainTextBox.AutoComplete = false;
 
@@ -106,10 +100,7 @@ namespace GUI.TestRunnerView
             expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Text = "System test view";
             Visible = false;
-            EFSSystem = efsSystem;
-
-            ResizeDescriptionArea(propertyGrid, 20);
-
+            EFSSystem = EFSSystem.INSTANCE;
             Refresh();
         }
 
@@ -164,13 +155,6 @@ namespace GUI.TestRunnerView
             });
         }
 
-        public override void SynchronizeForm()
-        {
-            base.SynchronizeForm();
-
-            evcTimeLineControl.Refresh();
-        }
-
         /// <summary>
         /// Refreshes the display
         /// </summary>
@@ -202,13 +186,18 @@ namespace GUI.TestRunnerView
                         {
                             toolStripCurrentStepTextBox.Text = "<none>";
                         }
-                        Frame = EFSSystem.Runner.SubSequence.Frame;
-                        selectedFrame = EFSSystem.Runner.SubSequence.Frame.Name;
-                        selectedSequence = EFSSystem.Runner.SubSequence.Name;
+
+                        if (EFSSystem.Runner.SubSequence != null)
+                        {
+                            Frame = EFSSystem.Runner.SubSequence.Frame;
+                            selectedFrame = EFSSystem.Runner.SubSequence.Frame.Name;
+                            selectedSequence = EFSSystem.Runner.SubSequence.Name;
+                        }
                     }
 
                     testBrowserTreeView.Refresh();
-                    evcTimeLineControl.Refresh();
+                    testDescriptionTimeLineControl.Refresh();
+                    testExecutionTimeLineControl.Refresh();
 
                     frameToolStripComboBox.Items.Clear();
                     List<string> frames = new List<string>();
@@ -257,7 +246,7 @@ namespace GUI.TestRunnerView
                         EFSSystem.Runner = null;
                     }
 
-                    if (EFSSystem.Runner != null)
+                    if (EFSSystem.Runner != null && EFSSystem.Runner.SubSequence != null)
                     {
                         subSequenceSelectorComboBox.Text = EFSSystem.Runner.SubSequence.Name;
                     }
@@ -288,7 +277,7 @@ namespace GUI.TestRunnerView
 
         private void stepOnce_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = timeLineTabPage;
+            tabControl1.SelectedTab = testExecutionTabPage;
             StepOnce();
         }
 
@@ -298,10 +287,10 @@ namespace GUI.TestRunnerView
             {
                 EFSSystem.Runner.EndExecution();
                 EFSSystem.Runner = null;
-                GUIUtils.MDIWindow.RefreshAfterStep();
             }
-            tabControl1.SelectedTab = timeLineTabPage;
             Clear();
+            GUIUtils.MDIWindow.RefreshAfterStep();
+            tabControl1.SelectedTab = testExecutionTabPage;
         }
 
         public void Clear()
@@ -329,12 +318,16 @@ namespace GUI.TestRunnerView
                         EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(subSequence, true, false);
                     }
                 }
+                else
+                {
+                    EFSSystem.Runner = ERTMSFormalSpecs.ErtmsFormalSpecGui.EFSService.Runner;
+                }
             }
         }
 
         private void rewindButton_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = timeLineTabPage;
+            tabControl1.SelectedTab = testExecutionTabPage;
             StepBack();
         }
 
@@ -350,7 +343,8 @@ namespace GUI.TestRunnerView
 
         private void testCaseSelectorComboBox_SelectionChanged(object sender, EventArgs e)
         {
-            if (EFSSystem.Runner != null && EFSSystem.Runner.SubSequence.Name.CompareTo(subSequenceSelectorComboBox.Text) != 0)
+            DataDictionary.Tests.Runner.Runner runner = EFSSystem.Runner;
+            if (runner != null && (runner.SubSequence == null || runner.SubSequence.Name.CompareTo(subSequenceSelectorComboBox.Text) != 0))
             {
                 EFSSystem.Runner = null;
             }
@@ -436,11 +430,10 @@ namespace GUI.TestRunnerView
 
         private void frameSelectorComboBox_SelectionChanged(object sender, EventArgs e)
         {
-            if (Frame != null && Frame.Name.CompareTo(frameToolStripComboBox.Text) != 0)
+            if (Frame == null || Frame.Name.CompareTo(frameToolStripComboBox.Text) != 0)
             {
                 EFSSystem.Runner = null;
             }
-
             Refresh();
         }
 

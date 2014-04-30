@@ -99,10 +99,10 @@
     }
 ]</Action><Action
  Guid="fc76f72b-5892-4bed-9d54-57c06badc74f"
->Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
+>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategoriesStruct
 {
     CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_210_mm,
-    OtherInternational =&gt; [Kernel.TrainData.TrainCategory.FreightTrainInP]
+    OtherInternational =&gt; [Kernel.TrainData.TrainCategoryEnum.FreightTrainInP]
 }</Action><Action
  Guid="86070ac4-4bf8-4755-bee7-186fc848cde4"
 >Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 110.0</Action><Action
@@ -125,7 +125,7 @@
             Kernel.TrackDescription.StaticSpeedProfile.SSPCategory
             {
                 CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_130_mm,
-                OtherSpecific =&gt; Kernel.TrainData.TrainCategory.FreightTrainInG,
+                OtherSpecific =&gt; Kernel.TrainData.TrainCategoryEnum.FreightTrainInG,
                 Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category ,
                 Speed =&gt; 180.0
             }

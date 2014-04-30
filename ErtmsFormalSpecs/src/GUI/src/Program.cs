@@ -17,11 +17,81 @@ using System;
 using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
+using System.ServiceModel;
+using System.ServiceModel.Description;
+using GUI.IPCInterface;
+using DataDictionary;
 
 namespace ERTMSFormalSpecs
 {
+
     public static class ErtmsFormalSpecGui
     {
+        /// <summary>
+        /// The EFS IPC service
+        /// </summary>
+        private static ServiceHost host = null;
+
+        /// <summary>
+        /// The service hosting IPC communication
+        /// </summary>
+        public static EFSService EFSService { get; set; }
+
+        /// <summary>
+        /// Hosts the EFS IPC service
+        /// </summary>
+        /// <returns>The hosting service</returns>
+        private static void HostEFSService()
+        {
+            EFSService = new EFSService();
+
+            Uri baseAddress = new Uri("http://localhost:5352/EFSService/");
+            host = new ServiceHost(EFSService, baseAddress);
+            try
+            {
+                // Setup the endpoint
+                var endPointWithoutSSL = new BasicHttpBinding()
+                {
+                    MaxBufferSize = int.MaxValue,
+                    MaxReceivedMessageSize = int.MaxValue,
+                    MaxBufferPoolSize = int.MaxValue,
+                };
+
+                endPointWithoutSSL.ReaderQuotas.MaxStringContentLength = int.MaxValue;
+                endPointWithoutSSL.ReaderQuotas.MaxNameTableCharCount = int.MaxValue;
+                endPointWithoutSSL.ReaderQuotas.MaxDepth = int.MaxValue;
+                endPointWithoutSSL.ReaderQuotas.MaxBytesPerRead = int.MaxValue;
+                endPointWithoutSSL.ReaderQuotas.MaxArrayLength = int.MaxValue;
+
+                host.AddServiceEndpoint(typeof(IEFSService), endPointWithoutSSL, "EFSService");
+
+                // Enable metadata exchange.
+                ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
+                smb.HttpGetEnabled = true;
+                host.Description.Behaviors.Add(smb);
+
+                // Start the service.
+                host.Open();
+            }
+            catch (CommunicationException ce)
+            {
+                Console.WriteLine("An exception occurred: {0}", ce.Message);
+                host.Abort();
+            }
+        }
+
+        /// <summary>
+        /// Closes the EFS IPC host service
+        /// </summary>
+        private static void CloseEFSService()
+        {
+            if (host != null)
+            {
+                // Close the ServiceHostBase to shutdown the service.
+                host.Close();
+            }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -49,7 +119,9 @@ namespace ERTMSFormalSpecs
                 }
 
                 GUI.MainWindow window = new GUI.MainWindow();
+                HostEFSService();
                 Application.Run(window);
+                CloseEFSService();
             }
             finally
             {

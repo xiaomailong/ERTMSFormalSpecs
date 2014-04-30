@@ -116,6 +116,7 @@ namespace DataDictionary.Interpreter.ListOperators
             Types.Type conditionType = null;
             if (Condition != null)
             {
+                Condition.checkExpression();
                 conditionType = Condition.GetExpressionType() as Types.BoolType;
                 if (conditionType == null)
                 {

@@ -58,7 +58,7 @@
 >
 <Procedures>
 <Procedure
- Name="proc2"
+ Name="proc"
  Guid="f88748b5-562e-4ce3-bc67-a70c56d36e7c"
 >
 </Procedure></Procedures>
@@ -92,7 +92,7 @@
 >
 </StructureElement><StateMachines>
 <StateMachine
- Default="State1"
+ Default="struct.stateMachine2.State1"
  Name="stateMachine2"
  Guid="62f7165d-d460-4bc0-85ff-2f8a626d1c07"
 >
@@ -125,9 +125,9 @@
 <Actions>
 <Action
  Guid="2c5c56d8-70c0-4ee5-8e13-928f801da3d7"
->THIS &lt;- State2</Action><Action
+>THIS &lt;- struct.stateMachine2.State2</Action><Action
  Guid="b6984b3b-e9a1-4ac6-be82-7e28f8f14b75"
->proc2()</Action><Action
+>proc()</Action><Action
  Guid="f81c19bf-deb8-4d1b-be33-e5bcc52ebd81"
 >str_b &lt;- False</Action><Action
  Guid="3d1bad64-9685-4d2f-88e6-04266eda741e"
@@ -161,11 +161,11 @@
 <PreConditions>
 <PreCondition
  Guid="e0d94ddc-958b-4b34-b0df-f5f8433f2287"
->THIS in State2</PreCondition></PreConditions>
+>THIS in struct.stateMachine2.State2</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="098e8a6c-a406-44a9-a38c-578c01a8fc1b"
->THIS &lt;- State2</Action></Actions>
+>THIS &lt;- struct.stateMachine2.State2</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -320,7 +320,7 @@
  Guid="aba4db25-2f7d-4af2-8aff-61d3fe070e23"
 >
 <Expression>struct{
-    str_stm =&gt; Test.struct.stateMachine2.State1,
+    str_stm =&gt; struct.stateMachine2.State1,
     str_b =&gt; Boolean.False,
     str_enum =&gt; Test.enum1.v1,
     str_r =&gt; 1
@@ -419,17 +419,15 @@
  Guid="5a7b5a27-6eb9-4e90-a648-08c4c9b830ba"
 >
 </ReqRef><PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="53f9d34f-499a-4db1-8afd-02cad1f8f3cd"
+>THERE_IS_IN var_coll | func1(3) == 5</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ab21d1a9-7be1-43dd-b336-f402a31deebb"
->var_coll &lt;- MAP var_coll USING NOT X</Action></Actions>
+>var_coll &lt;- MAP var_coll USING NOT X</Action><Action
+ Guid="6dd08ff7-0004-4102-bee3-e6143e5cf983"
+>val_struct.proc()</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="&lt;Rule2&gt;"
- Guid="972407a2-40d5-425a-a969-5f6783170cee"
->
-<SubRules></SubRules>
 </Rule></Rules>
 </NameSpace>

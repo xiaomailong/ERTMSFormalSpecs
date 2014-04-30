@@ -925,6 +925,32 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 >
 <Expression>(FIRST_IN Message.Sequence1 | ConsiderPacket(X.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR) ).TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Messages.EUROBALISE.SubStructure1"
+ Implemented="TRUE"
+ Name="ModeProfileOfTelegram"
+ Guid="56402f8b-c1d4-41d4-af27-16d374cf98af"
+>
+<ReqRef
+ Id="5fff9a06-3432-4ce9-b8e0-9b36de116805"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="890e771b-b580-439d-8c68-c8f2fdc19879"
+>
+</ReqRef><Comment>Provides the mode profile sent in the balise telegram, if any.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.EUROBALISE.Message"
+ Name="aTelegram"
+ Guid="364edc85-1964-448c-91cc-e4750682c605"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="c37b381a-04e7-4dc2-ba26-6fd4c86d5d81"
+>
+<Expression>FIRST_IN aTelegram.Sequence1 | X.TRACK_TO_TRAIN.MODE_PROFILE  != EMPTY</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -1003,6 +1029,11 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Id="4ae178ee-6db4-474c-aa88-d5f8bd8ea1d7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="82c4cc0c-66ea-4a14-b302-490fb733c5a2"
+>
+</ReqRef><ReqRef
+ Id="5e8ed861-509f-4d98-8c04-8bea3a8cd6c6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c406e150-d303-4dd6-a853-f797e41df06a"
 >
 </ReqRef><Comment>Handles linking packet, if available.</Comment>
 <PreConditions>
@@ -1528,45 +1559,6 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 >Kernel.TrackDescription.AdhesionFactors.AdhesionFactorReceived ( Packet.TRACK_TO_TRAIN.ADHESION_FACTOR )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Mode Profile available"
- Guid="423c865a-29c8-402c-807e-61b70a9a5867"
->
-<ReqRef
- Id="e6b9b34b-5183-45ec-96a2-8eef4909b34c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="19dec718-ae7c-4f9b-bf59-fe5f4a2ce5f5"
->
-</ReqRef><ReqRef
- Id="85399986-8b1a-4ee5-ba62-20eb7ca0a3b9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d5a8e89a-68af-46b9-8e80-d01bc69509be"
->
-</ReqRef><ReqRef
- Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b5a95273-5ea6-47fe-88d7-09f109a361f6"
->
-</ReqRef><ReqRef
- Id="2ef2992f-43ce-4f58-abf6-55560cf910bd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="be414b46-e05a-49d0-81d0-276ad0fd8fff"
->
-</ReqRef><ReqRef
- Id="98b78c68-b649-45c4-9dd8-6bfbf4a8f9c1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="60c748c4-6ffd-48db-8256-509ca1d5e9df"
->
-</ReqRef><Comment>Handles Mode Profile packet, if available.</Comment>
-<PreConditions>
-<PreCondition
- Guid="7c611cdb-ccf2-4f3c-a343-9d77f47c5412"
->ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE.Q_DIR )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="2db6933b-ffcd-41fc-b5ab-90177389d406"
->Kernel.MA.ModeProfile.ModeProfileReceived ( Packet=&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE )</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
  Name="Level Crossing available"
  Guid="3ca382d8-714f-4601-a04e-5e6340ece1bb"
 >
@@ -1589,6 +1581,40 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 <Action
  Guid="961a9459-5891-48f0-8de2-eddc845ec82f"
 >Kernel.LX.LXReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION, NID_BG=&gt;NID_BG )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="RBC Transition Order available"
+ Guid="70731a0e-ba5f-484f-a027-c4d09e290b80"
+>
+<ReqRef
+ Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1bc2eb0c-ef5d-4f83-9cb0-c80ca1ee51b0"
+>
+</ReqRef><ReqRef
+ Id="f69899f9-70f7-4f0e-bc95-d9d97964dc81"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a4dd1bba-b81d-4621-b98b-0832708d52cf"
+>
+</ReqRef><ReqRef
+ Id="813504ec-6af8-4d96-be72-5e3b6b595a0a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bfd9533a-7171-4d80-8b95-5dc0b2eb2741"
+>
+</ReqRef><ReqRef
+ Id="fb5cdb2c-826a-4be7-babf-d16c11e9720c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d9017d87-989b-4dcc-a391-96224434351b"
+>
+</ReqRef><Comment>Handles RBC Transition order packet, if available.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="61f518c1-008f-4e7d-ac92-f0ede5ce7df0"
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="05bdf5ca-1d21-43e2-bb2e-7ef9acba75c3"
+>EURORADIO.RBCTransitionOrderReceived ( aPacket=&gt;Packet.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2239,11 +2265,16 @@ If all the messages of the current balise group have been received, calls Handle
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a6f1cbf9-29c8-4649-9b08-544b1339877e"
 >
-</ReqRef><Comment>An MA is always considered after all other packets of a message have been processed. This is mandatory to ensure that all preconditions for an MA (which may have been transmitted within this message as well) can be evaluated before the evaluation of the MA.</Comment>
+</ReqRef><ReqRef
+ Id="5fff9a06-3432-4ce9-b8e0-9b36de116805"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8f11c54-8dc8-4a66-af11-81361ca406bc"
+>
+</ReqRef><Comment>The MA is always considered after all other packets of a message have been processed. This is mandatory to ensure that all preconditions for an MA (which may have been transmitted within this message as well) can be evaluated before the evaluation of the MA.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.SubStructure1"
- Name="Packet"
+ Name="aPacket"
  Guid="54997a24-4291-4c2b-af79-ec289b4ffc8f"
 >
 </Parameter><Parameter
@@ -2291,13 +2322,13 @@ If all the messages of the current balise group have been received, calls Handle
 <PreConditions>
 <PreCondition
  Guid="5277d858-f9be-415e-b52c-0e742bb35c08"
->ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>
+>ConsiderPacket ( PacketOrientation =&gt; aPacket.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e8f2e263-eb09-49d0-93f3-2f4d98af2694"
 >Kernel.MA.MALvl1Received
 (
-    Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY,
+    Packet =&gt; aPacket.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY,
     NID_BG =&gt; NID_BG
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -2338,7 +2369,7 @@ If all the messages of the current balise group have been received, calls Handle
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Handle MA packets in balise telegrams"
+ Name="Handle MA packet in balise telegrams"
  Guid="8bf64490-ce74-42a8-aa77-fcbf0d2bf6c9"
 >
 <Comment>Then, handle the movement authority packet.</Comment>
@@ -2346,7 +2377,7 @@ If all the messages of the current balise group have been received, calls Handle
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Handle MA packets in balise messages"
+ Name="Handle MA packet in balise messages"
  Guid="ae268b7a-92cb-4598-bc02-a2f04005d973"
 >
 <PreConditions>
@@ -2356,10 +2387,112 @@ If all the messages of the current balise group have been received, calls Handle
  Guid="2b02118c-1658-46b1-bae6-dc0ff97ec611"
 >APPLY HandleNewPacketMA
 (
-    Packet =&gt; MAOfTelegram ( aTelegram=&gt; X ) ,
+    aPacket =&gt; MAOfTelegram ( aTelegram=&gt; X ) ,
     NID_BG =&gt; X.NID_BG
-  )
+)
 ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle Mode Profile packet in balise telegram"
+ Guid="0df23762-fca4-4e00-9a26-27caab55459e"
+>
+<Comment>After the MA has been handled, the Mode Profile can eventually be accepted (only if the MA was accepted).</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle Mode Profile packet in balise telegram"
+ Guid="5f12ad32-9f33-4855-a8a7-0406c9644f44"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="42ecabaf-6fb9-4cf2-887a-2b6158ff1c6b"
+>APPLY HandleNewPacketModeProfile
+(
+    aPacket =&gt; ModeProfileOfTelegram ( aTelegram=&gt; X )
+)
+ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleNewPacketModeProfile"
+ Guid="1944fec5-3bdf-4188-bae3-2f4676823c84"
+>
+<ReqRef
+ Id="88930fd0-2a41-48f8-ac88-35d8c1d60f47"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="327fe63c-a58e-45b6-a4f7-aa9e9d058dca"
+>
+</ReqRef><ReqRef
+ Id="5fff9a06-3432-4ce9-b8e0-9b36de116805"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47e771f6-5cb8-418d-8a8f-d306bc4e0969"
+>
+</ReqRef><Comment>The mode profile can only be considered after the MA has been procedded, in order to know if it was accepted (otherwise the mode profile is not accepted).</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.EUROBALISE.SubStructure1"
+ Name="aPacket"
+ Guid="5c7546c7-4909-41d5-8d37-9e05094dbc02"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle new Mode Profile"
+ Guid="8067cb79-ba71-43b8-b67b-e757bdff0e4d"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle new Mode Profile"
+ Guid="423c865a-29c8-402c-807e-61b70a9a5867"
+>
+<ReqRef
+ Id="e6b9b34b-5183-45ec-96a2-8eef4909b34c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="19dec718-ae7c-4f9b-bf59-fe5f4a2ce5f5"
+>
+</ReqRef><ReqRef
+ Id="85399986-8b1a-4ee5-ba62-20eb7ca0a3b9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d5a8e89a-68af-46b9-8e80-d01bc69509be"
+>
+</ReqRef><ReqRef
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b5a95273-5ea6-47fe-88d7-09f109a361f6"
+>
+</ReqRef><ReqRef
+ Id="2ef2992f-43ce-4f58-abf6-55560cf910bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="be414b46-e05a-49d0-81d0-276ad0fd8fff"
+>
+</ReqRef><ReqRef
+ Id="98b78c68-b649-45c4-9dd8-6bfbf4a8f9c1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="60c748c4-6ffd-48db-8256-509ca1d5e9df"
+>
+</ReqRef><Comment>Handles Mode Profile packet, if available.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="7c611cdb-ccf2-4f3c-a343-9d77f47c5412"
+>ConsiderPacket ( PacketOrientation =&gt; aPacket.TRACK_TO_TRAIN.MODE_PROFILE.Q_DIR )</PreCondition><PreCondition
+ Guid="8d956f8e-378b-482f-bc27-26c54c49af35"
+>Kernel.MA.MAIsAccepted</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2db6933b-ffcd-41fc-b5ab-90177389d406"
+>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet=&gt; aPacket.TRACK_TO_TRAIN.MODE_PROFILE )</Action><Action
+ Guid="7355250c-96d1-4f1e-a143-54672cc5a095"
+>Kernel.MA.MAIsAccepted &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

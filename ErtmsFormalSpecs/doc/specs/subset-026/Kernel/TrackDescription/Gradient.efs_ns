@@ -992,7 +992,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Remove previous values"
+ Name="Remove old information"
  Guid="1e7c36be-807c-4c1f-85a3-9931791224de"
 >
 <ReqRef
@@ -1000,12 +1000,17 @@ Outside the distances provided by the gradient, the gradient value is defined as
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="48abb442-89db-41f3-9480-cc44783e8967"
 >
+</ReqRef><ReqRef
+ Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47cc1e0d-1c85-4eb5-8a65-5ac2c4cc961f"
+>
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Stores gradient profile info"
+ Name="Remove old information"
  Guid="68cdb357-8231-4362-860d-107718709ffc"
 >
 <PreConditions>

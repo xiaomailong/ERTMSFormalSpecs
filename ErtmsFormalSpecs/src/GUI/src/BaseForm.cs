@@ -28,11 +28,6 @@ namespace GUI
         MyPropertyGrid Properties { get; }
 
         /// <summary>
-        /// The text editor for messages
-        /// </summary>
-        RichTextBox MessagesTextBox { get; }
-
-        /// <summary>
         /// The requirements text box used to display the associated requirements
         /// </summary>
         EditorTextBox RequirementsTextBox { get; }
@@ -79,11 +74,6 @@ namespace GUI
         /// The property grid used to edit elements properties
         /// </summary>
         public virtual MyPropertyGrid Properties { get { return null; } }
-
-        /// <summary>
-        /// The text editor for messages
-        /// </summary>
-        public virtual RichTextBox MessagesTextBox { get { return null; } }
 
         /// <summary>
         /// The requirements text box used to display the associated requirements
@@ -238,8 +228,6 @@ namespace GUI
             this.ResumeLayout(false);
 
         }
-
-
 
         protected static void ResizeDescriptionArea(PropertyGrid grid, int height)
         {

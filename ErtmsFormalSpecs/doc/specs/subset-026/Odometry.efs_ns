@@ -206,15 +206,17 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="Default.BaseTypes.IdentityNumber"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="NID_PACKET"
  Guid="8d2552e6-a7a9-4fc6-9b0f-c3794526900b"
 >
 <Comment>Packet identifier. Value = 8.</Comment>
 </StructureElement><StructureElement
- TypeName="Default.BaseTypes.Length"
+ TypeName="MessageTypes.Length"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_PACKET"
  Guid="87a72885-83ac-4b7d-8f34-ae9e7544dacd"
@@ -224,6 +226,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="Q_SAFEDIR"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_SAFEDIR"
  Guid="71b3a6ef-f5bc-414b-b53b-aa3938e8c28c"
@@ -233,6 +236,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="Default.BaseTypes.Speed"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_MAX"
  Guid="43a38a7d-e564-4bfb-97c8-8da530587843"
@@ -242,6 +246,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="Default.BaseTypes.Speed"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_NOM"
  Guid="d3a1a087-af44-44fd-a03f-1c8644b2565b"
@@ -251,6 +256,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="Default.BaseTypes.Speed"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="V_MIN"
  Guid="b05c4b90-1700-4d80-8c82-a2daec15ae6b"
@@ -260,6 +266,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_MAX_ACCUM"
  Guid="2a8c1f6e-c898-4c2a-8068-92ecfec0b6ab"
@@ -269,6 +276,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_MAX"
  Guid="366938c3-6381-4573-a726-1797f295aa64"
@@ -278,6 +286,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_NOM"
  Guid="86d325c7-4300-4b3c-b446-62e6c228f149"
@@ -287,6 +296,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_MIN"
  Guid="28355a0f-6d93-40b1-b5a8-d7fa626fcd3f"
@@ -296,6 +306,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_MIN_ACCUM"
  Guid="10a2dddf-81e7-4798-ab02-5b74a9fd3b5f"
@@ -305,6 +316,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="Default.BaseTypes.Time"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="T_ODO"
  Guid="03f3d1c1-e7fe-4a68-9f72-5ce88e4c9bf9"
@@ -314,6 +326,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D_RES"
  Guid="d23f4b5e-b65f-489d-bce6-847418b638c2"
@@ -323,6 +336,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="Q_NOM_ODO"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Q_NOM_ODO"
  Guid="16a7ffd1-6637-403c-aa87-ae69e266541e"
@@ -332,6 +346,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="M_K_ETCS"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_K_ETCS"
  Guid="9f64f90f-a0a1-4b6d-bb04-47c4fefaf57b"
@@ -341,6 +356,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="M_MAXSUMVAR"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_MAXSUMVAR"
  Guid="c122fc7f-181e-4cec-833b-acb432d3530b"
@@ -350,6 +366,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  TypeName="M_MINSUMVAR"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_MINSUMVAR"
  Guid="b512cef3-11f2-460b-a2d0-a327d3b74373"
@@ -373,7 +390,8 @@ The confidence level (K) is defined as a level of probability that the true posi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5104351e-6732-4c76-884f-3f3ee3ba1d9b"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if the train is at standstill (its speed equals to zero).</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="47f0b7ea-e7fc-4f64-9fda-0b33c9abebe1"
@@ -383,10 +401,12 @@ The confidence level (K) is defined as a level of probability that the true posi
 </Function></Functions>
 <Procedures>
 <Procedure
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="StoreOdometerMessage"
  Guid="edb34d80-e449-491e-8f3b-aae9c289c55c"
 >
+<Comment>Stores the message provided by the odometry.</Comment>
 <Parameters>
 <Parameter
  Type="OdometerMulticastMessage"
@@ -397,6 +417,7 @@ The confidence level (K) is defined as a level of probability that the true posi
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="StoreOdometerMessage"
  Guid="f15825ae-0c78-48df-aab0-9b3baf63f43c"
@@ -404,6 +425,7 @@ The confidence level (K) is defined as a level of probability that the true posi
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="StoreOdometerMessage"
  Guid="52f7c34d-4689-4ac6-ac7b-52fbb49ce252"
@@ -424,7 +446,7 @@ The confidence level (K) is defined as a level of probability that the true posi
 >Odometry.EstimatedSpeed &lt;- Message.V_NOM</Action><Action
  Guid="24d8010e-c271-4470-96c1-5303813aaafe"
 >Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
--  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration ( Odometry.CurrentTime - Message.T_ODO )</Action><Action
+-  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration (  Message.T_ODO - PreviousTime)</Action><Action
  Guid="be1750f6-f121-4bb4-9192-25785d00bc32"
 >Odometry.Accuracy.V_ora &lt;- Message.V_NOM - Message.V_MIN</Action><Action
  Guid="7a4376a7-9f06-403b-87a3-14f47c6b2890"
@@ -537,6 +559,7 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ClearNewMessage"
  Guid="d20ef759-ed8a-4c29-a45d-346ee89326b2"

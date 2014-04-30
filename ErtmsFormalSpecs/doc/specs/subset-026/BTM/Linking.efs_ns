@@ -719,7 +719,12 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  Name="LinkingInformationReceived"
  Guid="b36d74ff-248d-4a64-ad82-dc33020344e9"
 >
-<Comment>Handles the reception of linking information and stores it in internal variables.</Comment>
+<ReqRef
+ Id="5e8ed861-509f-4d98-8c04-8bea3a8cd6c6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7ca3ea4-f1bb-4242-8e5c-8e8f40ff836f"
+>
+</ReqRef><Comment>Handles the reception of linking information and stores it in internal variables.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message"
@@ -741,13 +746,18 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 <RuleCondition
  Implemented="TRUE"
  Verified="TRUE"
- Name="No infill"
+ Name="No infill, remove old information"
  Guid="7178bbc3-25d9-45a5-af00-1a77a210bae3"
 >
 <ReqRef
  Id="d98529ca-fda7-480c-8c31-33ce08d1b140"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9f6d2d00-0d68-434d-8d7a-a5c39e2dd1c1"
+>
+</ReqRef><ReqRef
+ Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="843b436c-8500-4679-a447-5cd90dacff45"
 >
 </ReqRef><Comment>In case the new linking information is not an infill data, all the previous information is cleared.</Comment>
 <PreConditions>
@@ -760,13 +770,18 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 >Linkings &lt;- []</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Infill"
+ Name="Infill, remove information after infill location"
  Guid="40ced0d3-c8a9-40b2-9ad4-699d0a45700a"
 >
 <ReqRef
  Id="f0ea8f90-356c-47de-a7fd-4827ae488f00"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9a065f3d-c980-4476-b0b6-b48e1435e101"
+>
+</ReqRef><ReqRef
+ Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48467b6c-4fc4-46fa-88cf-82fe5f53ca67"
 >
 </ReqRef><Comment>In case the new linking information is an infill data, only the elements beyond the infill location are removed.</Comment>
 <PreConditions>
@@ -1341,6 +1356,11 @@ If the BG was passed in the right direction, handle the message. If not, the tra
  Id="4ae178ee-6db4-474c-aa88-d5f8bd8ea1d7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="04216c23-661e-417d-83f6-9414d867e5d3"
+>
+</ReqRef><ReqRef
+ Id="5e8ed861-509f-4d98-8c04-8bea3a8cd6c6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b46e08a6-2387-4cc6-a9e0-55c6e04acb72"
 >
 </ReqRef><Comment>Stores the next linking data as provided by the balises</Comment>
 </Variable><Variable

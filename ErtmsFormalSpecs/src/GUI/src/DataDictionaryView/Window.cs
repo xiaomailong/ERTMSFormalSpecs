@@ -26,21 +26,6 @@ namespace GUI.DataDictionaryView
             get { return dataDictPropertyGrid; }
         }
 
-        public override RichTextBox MessagesTextBox
-        {
-            get
-            {
-                if (messagesRichTextBox != null)
-                {
-                    return messagesRichTextBox.TextBox;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
-
         public override EditorTextBox RequirementsTextBox
         {
             get { return requirementsTextBox; }
@@ -80,6 +65,14 @@ namespace GUI.DataDictionaryView
                 Text = dictionary.Name + " model view";
             }
         }
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Window()
+        {
+            InitializeComponent();
+            SpecificInitialization();
+        }
 
         /// <summary>
         /// Constructor
@@ -88,8 +81,18 @@ namespace GUI.DataDictionaryView
         public Window(DataDictionary.Dictionary dictionary)
         {
             InitializeComponent();
+            SpecificInitialization();
 
-            messagesRichTextBox.AutoComplete = false;
+            Dictionary = dictionary;
+
+            Refresh();
+        }
+
+        /// <summary>
+        /// Perform specific initialization
+        /// </summary>
+        private void SpecificInitialization()
+        {
             requirementsTextBox.AutoComplete = false;
             ruleExplainTextBox.AutoComplete = false;
 
@@ -99,14 +102,7 @@ namespace GUI.DataDictionaryView
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Visible = false;
-            Dictionary = dictionary;
-
-            // TODO : Does not work yet
-            // GUIUtils.ResizePropertyGridSplitter(Properties, 25);
-
             ResizeDescriptionArea(dataDictPropertyGrid, 20);
-
-            Refresh();
         }
 
         void TextBox_TextChanged(object sender, EventArgs e)

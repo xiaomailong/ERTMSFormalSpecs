@@ -7,7 +7,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
- Name="ModeProfile"
+ Name="ModeProfileStruct"
  Guid="75913f7d-934d-437f-be60-0a28d46d8587"
 >
 <ReqRef
@@ -106,7 +106,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="ModeProfile"
+ TypeName="ModeProfileStruct"
  MaxSize="20"
  Default="[]"
  Implemented="TRUE"
@@ -164,7 +164,7 @@
 >
 </ReqRef><Parameters>
 <Parameter
- Type="ModeProfile.ModeProfile"
+ Type="ModeProfileStruct"
  Name="aModeProfile"
  Guid="5f79a1a2-7e43-4b47-93b8-5f4067577550"
 >
@@ -265,7 +265,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
- Type="ModeProfile"
+ Type="ModeProfileStruct"
  Name="aProfile"
  Guid="30f1c5a6-0d93-409e-aef7-b8968e2caab2"
 >
@@ -287,7 +287,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="ModeProfile"
+ Type="ModeProfileStruct"
  Implemented="TRUE"
  Name="ProfileForInfill"
  Guid="00b092f7-ea4d-4143-b544-b7d57cb8871b"
@@ -303,7 +303,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 3. If the infill location is inside the profile, the latter is shortened until the infill location.</Comment>
 <Parameters>
 <Parameter
- Type="ModeProfile"
+ Type="ModeProfileStruct"
  Name="aProfile"
  Guid="5edee4a2-0bce-4cdb-b56b-560b902fb90a"
 >
@@ -336,7 +336,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Name="Infill location inside profile"
  Guid="64c1a003-f722-4380-8ac3-35d56678e659"
 >
-<Expression>ModeProfile
+<Expression>ModeProfileStruct
 {
     AcknLength =&gt; aProfile.AcknLength,
     Distance =&gt; aProfile.Distance,
@@ -413,7 +413,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 </ReqRef><Comment>Indicates if the acknowledgement area is reached for a given mode profile.</Comment>
 <Parameters>
 <Parameter
- Type="ModeProfile"
+ Type="ModeProfileStruct"
  Name="aProfile"
  Guid="3da9327d-dc53-4a47-89c8-678a6b8d12ed"
 >
@@ -458,12 +458,12 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Guid="c4990a7c-151a-406f-8a0f-1d730706b1e6"
 >Profile != []</PreCondition><PreCondition
  Guid="72d9cd73-06fc-4d5b-abaa-ec05e4cb3dc7"
->( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ) != EMPTY</PreCondition></PreConditions>
+>FirstNonApplicableModeProfile() != EMPTY</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
-    Location =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Distance,
+    Location =&gt; ( FirstNonApplicableModeProfile() ).Distance,
     Speed =&gt; 0.0,
-    Length =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Length
+    Length =&gt; ( FirstNonApplicableModeProfile() ).Length
 }</Expression>
 </Case><Case
  Name="No Mode Profile EOA available"
@@ -499,25 +499,37 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 >
 <PreConditions>
 <PreCondition
- Guid="c12d56c2-e68e-492c-9d92-25d017e224b0"
->( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).SupervisionQualifier == Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA</PreCondition><PreCondition
  Guid="6360e380-3cc4-43da-8cdc-1b090db6045d"
->( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ) != EMPTY</PreCondition><PreCondition
+>FirstNonApplicableModeProfile() != EMPTY
+  AND
+( FirstNonApplicableModeProfile() ).SupervisionQualifier == Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA</PreCondition><PreCondition
  Guid="30aa3403-c8b3-4807-bd15-b549f015ae93"
 >Profile != []</PreCondition><PreCondition
  Guid="ae49b5bd-f40e-49bd-b5bd-ea562a6cde15"
 >Available ( MA.MA )</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
-    Location =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Distance,
+    Location =&gt; ( FirstNonApplicableModeProfile() ).Distance,
     Speed =&gt; 0.0,
-    Length =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Length
+    Length =&gt; ( FirstNonApplicableModeProfile() ).Length
 }</Expression>
 </Case><Case
  Name="No Mode Profile SvL available"
  Guid="aff5d04b-6d78-4293-b8f9-7d0d42286e48"
 >
 <Expression>EMPTY</Expression>
+</Case></Cases>
+</Function><Function
+ Type="ModeProfileStruct"
+ Name="FirstNonApplicableModeProfile"
+ Guid="547b6baa-ee4d-4b17-8252-0289749bf194"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="81ce4b17-e0fc-4fcf-b185-424a867a20b1"
+>
+<Expression>FIRST_IN Profile | NOT DistanceIsWithinAModeProfile ( X )</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -809,7 +821,7 @@ ON
 <Action
  Guid="9344dddf-f9b7-44bf-8229-ecb9b436017f"
 >INSERT
-    ModeProfile
+    ModeProfileStruct
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
         Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ) + BTM.Linking.DistanceToBaliseGroup ( Kernel.Infill.Data.NID_BG ),
@@ -832,7 +844,7 @@ IN
 <Action
  Guid="68e9e673-7813-4947-b1d0-7efbeb20158e"
 >INSERT
-    ModeProfile
+    ModeProfileStruct
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
         Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ),
@@ -862,7 +874,7 @@ IN
 <Action
  Guid="fd905e47-15f3-4a3f-905a-8ef2acd85169"
 >INSERT
-    ModeProfile
+    ModeProfileStruct
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
         Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ) + BTM.Linking.DistanceToBaliseGroup ( Kernel.Infill.Data.NID_BG ),
@@ -883,7 +895,7 @@ IN
 <Action
  Guid="65882a47-d665-4ffa-8642-d5d84b9259ec"
 >INSERT
-    ModeProfile
+    ModeProfileStruct
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
         Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ),

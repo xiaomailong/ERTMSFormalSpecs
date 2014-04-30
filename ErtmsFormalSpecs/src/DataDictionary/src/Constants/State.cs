@@ -419,5 +419,15 @@ namespace DataDictionary.Constants
             retVal.StateMachine = StateMachine.instanciate();
             return retVal;
         }
+
+        /// <summary>
+        /// Converts a structure value to its corresponding structure expression.
+        /// null entries correspond to the default value
+        /// </summary>
+        /// <returns></returns>
+        public string ToExpressionWithDefault()
+        {
+            return FullName;
+        }
     }
 }

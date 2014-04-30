@@ -99,7 +99,14 @@ namespace DataDictionary
             try
             {
                 retVal = parser.Statement(model, expression);
-                retVal.CheckStatement();
+                if (retVal != null)
+                {
+                    retVal.CheckStatement();
+                }
+                else
+                {
+                    model.AddError("Cannot parse statement");
+                }
             }
             catch (Exception exception)
             {
@@ -413,40 +420,54 @@ namespace DataDictionary
 
         public override void visit(Generated.ReqRelated obj, bool visitSubNodes)
         {
-            ReqRelated init = obj as ReqRelated;
             ReqRelated reqRelated = obj as ReqRelated;
-            if (init != null && init.NeedsRequirement)  // the object must be associated to a requirement
+
+            ReqRelated current = reqRelated;
+            if (reqRelated != null && reqRelated.NeedsRequirement)  // the object must be associated to a requirement
             {
-                bool noReq = true;  // no requirement found for this object
-                while (noReq && reqRelated != null)
+                // No requirement found (yet) for this object
+                bool requirementFound = false;
+
+                Types.StateMachine stateMachine = reqRelated as Types.StateMachine;
+                if (stateMachine != null && stateMachine.EnclosingStateMachine != null)
                 {
-                    for (int i = 0; i < reqRelated.Requirements.Count; i++)
+                    // We do not need requirements for a state machine since the traceability relationship
+                    // is deduced from its enclosing state
+                    requirementFound = true;
+                }
+
+                while (current != null && !requirementFound)
+                {
+                    for (int i = 0; i < current.Requirements.Count; i++)
                     {
-                        ReqRef reqRef = reqRelated.Requirements[i] as ReqRef;
+                        ReqRef reqRef = current.Requirements[i] as ReqRef;
                         if (reqRef.Paragraph == null)
                         {
                             reqRef.AddError("Cannot find paragraph corresponding to " + reqRef.getId());
                         }
                         else if (reqRef.Paragraph.getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
                         {
-                            noReq = false;  // found a requirement
+                            // A requirement has been found
+                            requirementFound = true;
                         }
                     }
-                    if (noReq)  // if no requirement found, we explore the requirements of the enclosing element
+
+                    // If no requirement found, we explore the requirements of the enclosing element
+                    if (!requirementFound)
                     {
-                        reqRelated = Utils.EnclosingFinder<DataDictionary.ReqRelated>.find(reqRelated);
+                        current = Utils.EnclosingFinder<DataDictionary.ReqRelated>.find(current);
                     }
                 }
-                if (noReq)
+                if (!requirementFound)
                 {
-                    init.AddInfo("No requirement found for element");
+                    reqRelated.AddInfo("No requirement found for element");
                 }
             }
 
-            reqRelated = init;
-            if (!reqRelated.getImplemented())
+            current = reqRelated;
+            if (!current.getImplemented())
             {
-                ModelElement parent = reqRelated.getFather() as ModelElement;
+                ModelElement parent = current.getFather() as ModelElement;
                 while (parent != null)
                 {
                     ReqRelated other = parent as ReqRelated;
@@ -454,7 +475,7 @@ namespace DataDictionary
                     {
                         if (other.getImplemented())
                         {
-                            other.AddWarning("This element is set as implemented whereas one of its children " + reqRelated.FullName + " is not");
+                            other.AddWarning("This element is set as implemented whereas one of its children " + current.FullName + " is not");
                         }
                     }
                     parent = parent.getFather() as ModelElement;

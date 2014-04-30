@@ -38,7 +38,7 @@ namespace DataDictionary
         /// <summary>
         /// The runner currently set for the system
         /// </summary>
-        public Tests.Runner.Runner Runner { get; set; }
+        public Tests.Runner.Runner Runner {get; set;}
 
         /// <summary>
         /// Indicates wheter the model should be recompiled (after a change or a load)
@@ -138,7 +138,7 @@ namespace DataDictionary
         /// <summary>
         /// The enclosing model element
         /// </summary>
-        public object Enclosing { get { return null; } }
+        public object Enclosing { get { return null; } set { } }
 
         /// <summary>
         /// The EFS System name
@@ -1080,6 +1080,15 @@ namespace DataDictionary
                 if (element != null)
                 {
                     ConsiderTypeOfElement(element);
+                }
+
+                Functions.Function function = obj as Functions.Function;
+                if (function != null)
+                {
+                    if (function.ReturnType == Model && function != Model)
+                    {
+                        Usages.Add(new Usage(element.Type, function, Usage.ModeEnum.Type));
+                    }
                 }
 
                 base.visit(obj, visitSubNodes);

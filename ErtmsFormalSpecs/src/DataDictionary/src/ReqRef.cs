@@ -159,5 +159,35 @@ namespace DataDictionary
         {
         }
 
+
+        /// <summary>
+        /// Provides the requirement description for this req ref
+        /// </summary>
+        /// <returns></returns>
+        public override string RequirementDescription()
+        {
+            string retVal = "";
+
+            if (Paragraph != null)
+            {
+                if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
+                {
+                    retVal = Paragraph.FullId + ", ";
+                }
+                else
+                {
+                    if (Paragraph != null)
+                    {
+                        retVal = Paragraph.FullId + ":" + Paragraph.getText();
+                    }
+                }
+            }
+            else
+            {
+                retVal = base.RequirementDescription();
+            }
+
+            return retVal;
+        }
     }
 }

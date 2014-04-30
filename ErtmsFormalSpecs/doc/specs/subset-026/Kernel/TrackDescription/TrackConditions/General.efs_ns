@@ -601,6 +601,11 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="678df2c8-62d1-4c3d-ac3d-4e5ec542fe72"
 >
+</ReqRef><ReqRef
+ Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="704477f2-9cda-4afd-83ba-031e42eed82d"
+>
 </ReqRef><Comment>Returns the start location of the first element of a packet of Track Conditions</Comment>
 <Parameters>
 <Parameter
@@ -1072,7 +1077,7 @@ IN
 <Actions>
 <Action
  Guid="87add067-1441-4e70-9892-e85aea063d0a"
->DMI.DMIStruct.DisplayTrackConditionsWithoutSoundHorn()</Action></Actions>
+>DMI.MasterDMI().DisplayTrackConditionsWithoutSoundHorn()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Track conditions sound horn, non stopping areas and tunnel stopping areas"
@@ -1112,7 +1117,7 @@ The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/Mode
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="RemoveOldTrackConditions"
+ Name="Remove old information"
  Guid="4c889b61-eb2b-4bd5-ba0d-91b2d6514374"
 >
 <ReqRef
@@ -1120,13 +1125,18 @@ The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/Mode
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2114f3d4-5e6c-4a8e-941e-7c8d23133337"
 >
+</ReqRef><ReqRef
+ Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e03551e6-c169-4fdd-9991-46963f574ccf"
+>
 </ReqRef><Comment>When new data is received, all old data starting from the start of the new data is overwritten</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="RemoveOldTrackConditions"
+ Name="Remove old information"
  Guid="23d47766-bd5e-4cae-a557-9102df6d5fc2"
 >
 <ReqRef
@@ -1146,7 +1156,7 @@ The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/Mode
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="AddNewTrackCondition"
+ Name="Add new track condition"
  Guid="65ddcb36-4bef-42bb-8990-277543a93ade"
 >
 <Comment>Inserts the newly received track conditions in TCProfile</Comment>
@@ -1271,10 +1281,20 @@ ON
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitialStatesToBeResumed"
+ Name="Initial states to be resumed"
  Guid="8cf096f7-b753-44fd-9730-942361ef7450"
 >
-<Comment>The packet contains &quot;reset track conditions&quot;</Comment>
+<ReqRef
+ Id="6b051981-5a69-4e3f-aabf-12c19aba8faa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1bcc618a-01fd-497f-9002-0385e19df895"
+>
+</ReqRef><ReqRef
+ Id="5b9cb291-20b3-4b57-b985-9777f8e49ebc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c9e4813-9b76-4011-9792-aff2dc3d390f"
+>
+</ReqRef><Comment>The packet contains &quot;reset track conditions&quot;</Comment>
 <PreConditions>
 <PreCondition
  Guid="8fabb5f7-5fa8-45f4-b36d-c0420a360baf"
@@ -1300,7 +1320,7 @@ IN
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="NoInitialStatesToBeResumed"
+ Name="No initial states to be resumed"
  Guid="3c74e934-0111-4385-92a4-03602e3e7b11"
 >
 <Comment>The packet contains track conditions information</Comment>
