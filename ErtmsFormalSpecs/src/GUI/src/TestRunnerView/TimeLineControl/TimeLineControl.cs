@@ -46,7 +46,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <summary>
         /// This label is used to allow auto scrolling by positionning it at the botton right bounds of the visible rectangle
         /// </summary>
-        private Label AutoScrollEnabler { get; set; }
+        protected Label AutoScrollEnabler { get; set; }
 
         private void InitializeComponent()
         {
@@ -482,7 +482,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <summary>
         /// Updates the size of the panel according to the number of events to handle
         /// </summary>
-        protected void UpdatePanelSize()
+        protected virtual void UpdatePanelSize()
         {
             Point bottomRightPosition = PositionHandler.BottomRightPosition;
             Point locationWithoutScroll = new Point(
@@ -490,15 +490,6 @@ namespace GUI.TestRunnerView.TimeLineControl
                 bottomRightPosition.Y - VerticalScroll.Value
             );
             AutoScrollEnabler.Location = locationWithoutScroll;
-
-            if (bottomRightPosition.X > Width)
-            {
-                HorizontalScroll.Value = Math.Min(HorizontalScroll.Maximum, bottomRightPosition.X);
-            }
-            else
-            {
-                HorizontalScroll.Value = 0;
-            }
         }
 
         protected override void OnPaint(PaintEventArgs pe)

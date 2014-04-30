@@ -145,5 +145,13 @@ namespace GUI.TestRunnerView.TimeLineControl
             }
         }
 
+        /// <summary>
+        /// Updates the size of the panel according to the number of events to handle
+        /// </summary>
+        protected override void UpdatePanelSize()
+        {
+            base.UpdatePanelSize();
+            ScrollControlIntoView(AutoScrollEnabler);
+        }
     }
 }
