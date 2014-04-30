@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.moreInfoRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.moreInfoRichTextBox = new EditorTextBox();
             this.SuspendLayout();
             // 
             // moreInfoRichTextBox
@@ -56,7 +56,7 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox moreInfoRichTextBox;
+        private EditorTextBox moreInfoRichTextBox;
 
     }
 }

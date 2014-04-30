@@ -63,6 +63,7 @@ namespace GUI.MoreInfoView
             moreInfoRichTextBox.Rtf = EmptyRTF;
             if (Model != null)
             {
+                moreInfoRichTextBox.Instance = Model as DataDictionary.ModelElement;
                 moreInfoRichTextBox.Rtf = TextualExplainUtilities.Encapsule(Model.getExplain(true));
             }
             Refresh();
