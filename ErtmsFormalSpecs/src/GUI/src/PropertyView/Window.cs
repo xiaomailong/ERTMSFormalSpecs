@@ -24,6 +24,7 @@ namespace GUI.PropertyView
         public Window()
         {
             InitializeComponent();
+            ResizeDescriptionArea(propertyGrid, 0);
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight;

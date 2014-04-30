@@ -87,7 +87,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <param name="e"></param>
         void TimeLineControl_DoubleClick(object sender, EventArgs e)
         {
-            ModelEvent evt = GetEventUnderMouse((MouseEventArgs)e);
+            ModelEvent evt = GetEventUnderMouse();
 
             VariableUpdate variableUpdate = evt as VariableUpdate;
             if (variableUpdate != null)

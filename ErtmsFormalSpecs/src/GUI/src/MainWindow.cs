@@ -316,24 +316,7 @@ namespace GUI
         {
             get
             {
-                foreach (IBaseForm form in SubWindows)
-                {
-                    if (form is Shortcuts.Window)
-                    {
-                        return (Shortcuts.Window)form;
-                    }
-                }
-
-                DataDictionary.Dictionary dictionary = GetActiveDictionary();
-                if (dictionary != null)
-                {
-                    Shortcuts.Window newWindow = new Shortcuts.Window(dictionary.ShortcutsDictionary);
-                    newWindow.Location = new System.Drawing.Point(Width - newWindow.Width - 20, 0);
-                    AddChildWindow(newWindow, DockAreas.DockRight);
-                    return newWindow;
-                }
-
-                return null;
+                return GenericWindowHandling<Shortcuts.Window>.find(SubWindows);
             }
         }
 
@@ -575,10 +558,6 @@ namespace GUI
                     {
                         docContent.Show(dockPanel, DockState.DockLeftAutoHide);
                     }
-                    else if (dockArea == DockAreas.DockRight)
-                    {
-                        docContent.Show(dockPanel, DockState.DockRightAutoHide);
-                    }
                     else if (dockArea == DockAreas.Float)
                     {
                         docContent.Show(dockPanel, DockState.Float);
@@ -715,12 +694,7 @@ namespace GUI
                         DataDictionary.Dictionary dictionary = openFileOperation.Dictionary;
                         DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
 
-                        // Only open the specification window if specifications are available in the opened file
-                        if (dictionary.Specifications != null && dictionary.AllParagraphs.Count > 0)
-                        {
-                            GenericWindowHandling<SpecificationView.Window>.AddOrShow(this, SpecificationWindow, DockAreas.DockLeft);
-                        }
-
+                        // Display the document views
                         // Only open the model view window if model elements are available in the opened file
                         DataDictionaryView.Window modelWindow = null;
                         if (dictionary.NameSpaces.Count > 0)
@@ -728,39 +702,29 @@ namespace GUI
                             modelWindow = new DataDictionaryView.Window(dictionary);
                             AddChildWindow(modelWindow, DockAreas.Document);
                         }
+                        GenericWindowHandling<TestRunnerView.Window>.AddOrShow(this, TestWindow, DockAreas.Document);
 
-                        // Only shold the tests window if tests are defined in the opened file
-                        if (dictionary.Tests.Count > 0)
-                        {
-                            GenericWindowHandling<TestRunnerView.Window>.AddOrShow(this, TestWindow, DockAreas.Document);
-                        }
+                        // Display the views in the left pane
+                        GenericWindowHandling<SpecificationView.Window>.AddOrShow(this, SpecificationWindow, DockAreas.DockLeft);
 
-                        // Display the several windows
-                        GenericWindowHandling<MessagesView.Window>.AddOrShow(this, MessagesWindow, DockAreas.DockBottom);
+                        // Display the views in the bottom pane
                         GenericWindowHandling<RequirementsView.Window>.AddOrShow(this, RequirementsWindow, DockAreas.DockBottom);
-                        RequirementsWindow.Show(MessagesWindow.Pane, MessagesWindow);
 
                         GenericWindowHandling<TestRunnerView.Watch.Window>.AddOrShow(this, WatchWindow, DockAreas.DockBottom);
-                        WatchWindow.Show(MessagesWindow.Pane, DockAlignment.Right, 0.5);
+                        WatchWindow.Show(RequirementsWindow.Pane, DockAlignment.Right, 0.5);
                         GenericWindowHandling<MoreInfoView.Window>.AddOrShow(this, MoreInfoWindow, DockAreas.DockBottom);
                         MoreInfoWindow.Show(WatchWindow.Pane, WatchWindow);
                         GenericWindowHandling<UsageView.Window>.AddOrShow(this, UsageWindow, DockAreas.DockBottom);
                         MoreInfoWindow.Show(WatchWindow.Pane, WatchWindow);
 
-                        GenericWindowHandling<HistoryView.Window>.AddOrShow(this, HistoryWindow, DockAreas.DockRight);
+                        // Display the views in the right pane
                         GenericWindowHandling<PropertyView.Window>.AddOrShow(this, PropertyWindow, DockAreas.DockRight);
-
-                        // Only open the shortcuts window if there are some shortcuts defined
-                        if (dictionary.ShortcutsDictionary != null)
-                        {
-                            IBaseForm shortcutsWindow = ShortcutsWindow;
-                            if (shortcutsWindow != null)
-                            {
-                                shortcutsWindow.RefreshModel();
-                            }
-                        }
-
-                        // PropertyWindow.Show(HistoryWindow.Pane, DockAlignment.Top, 0.5);
+                        GenericWindowHandling<HistoryView.Window>.AddOrShow(this, HistoryWindow, DockAreas.DockRight);
+                        HistoryWindow.Show(PropertyWindow.Pane, DockAlignment.Bottom, 0.6);
+                        GenericWindowHandling<Shortcuts.Window>.AddOrShow(this, ShortcutsWindow, DockAreas.DockRight);
+                        ShortcutsWindow.Show(HistoryWindow.Pane, HistoryWindow);
+                        GenericWindowHandling<MessagesView.Window>.AddOrShow(this, MessagesWindow, DockAreas.DockBottom);
+                        MessagesWindow.Show(HistoryWindow.Pane, DockAlignment.Bottom, 0.5);
 
                         if (modelWindow != null)
                         {
@@ -1674,7 +1638,7 @@ namespace GUI
 
         private void showShortcutsViewToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            AddChildWindow(ShortcutsWindow, DockAreas.DockRight);
+            GenericWindowHandling<Shortcuts.Window>.AddOrShow(this, ShortcutsWindow, DockAreas.DockRight);
         }
 
         private void showTestsToolStripMenuItem_Click_1(object sender, EventArgs e)

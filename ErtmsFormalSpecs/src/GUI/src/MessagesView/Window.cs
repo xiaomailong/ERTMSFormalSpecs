@@ -26,7 +26,7 @@ namespace GUI.MessagesView
             InitializeComponent();
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
-            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom;
+            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight;
         }
 
         /// <summary>

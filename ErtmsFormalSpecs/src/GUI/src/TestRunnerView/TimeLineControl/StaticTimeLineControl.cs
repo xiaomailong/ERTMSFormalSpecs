@@ -25,6 +25,9 @@ namespace GUI.TestRunnerView.TimeLineControl
     using DataDictionary;
     using Utils;
     using System.Collections;
+    using DataDictionary.Interpreter.Filter;
+    using DataDictionary.Interpreter;
+    using DataDictionary.Values;
 
     /// <summary>
     /// The static time line according to a test case
@@ -47,9 +50,149 @@ namespace GUI.TestRunnerView.TimeLineControl
         public StaticTimeLineControl()
             : base()
         {
+            AllowDrop = true;
+            DragEnter += new DragEventHandler(TimeLineControl_DragEnter);
+            DragDrop += new DragEventHandler(TimeLineControl_DragDrop);
+
             DoubleClick += new EventHandler(TimeLineControl_DoubleClick);
             MouseDown += new MouseEventHandler(StaticTimeLineControl_MouseDown);
             TestCase = null;
+        }
+
+        private const int CTRL = 8;
+
+        /// <summary>
+        /// Changes the cursor according to the modifier key when a drag & drop operation is performed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void TimeLineControl_DragEnter(object sender, DragEventArgs e)
+        {
+            if ((e.KeyState & CTRL) != 0)
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        /// <summary>
+        /// Handles a drop event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void TimeLineControl_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
+            {
+                BaseTreeNode SourceNode = (BaseTreeNode)e.Data.GetData("WindowsForms10PersistentObject");
+                if (SourceNode != null)
+                {
+                    DataDictionaryView.VariableTreeNode variableNode = SourceNode as DataDictionaryView.VariableTreeNode;
+                    if (variableNode != null)
+                    {
+                        SubStep subStep = SubStepRelatedToMousePosition();
+                        if (subStep != null)
+                        {
+                            // Create the default value
+                            IValue value = null;
+                            Expression expression = null;
+                            string defaultValue = variableNode.Item.GetDefaultValueText();
+                            if (defaultValue != null)
+                            {
+                                bool doSemanticalAnalysis = true;
+                                bool silent = true;
+                                expression = EFSSystem.INSTANCE.Parser.Expression(variableNode.Item, defaultValue, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
+                            }
+
+                            if (expression != null)
+                            {
+                                InterpretationContext context = new InterpretationContext();
+                                context.UseDefaultValue = false;
+                                value = expression.GetValue(context);
+                            }
+
+                            if (value == null || value is EmptyValue)
+                            {
+                                DataDictionary.Types.Structure structureType = variableNode.Item.Type as DataDictionary.Types.Structure;
+                                if (structureType != null)
+                                {
+                                    bool setDefaultValue = false;
+                                    value = new StructureValue(structureType, setDefaultValue);
+                                }
+                            }
+
+                            // Create the action or the expectation according to the keyboard modifier keys
+                            if (value != null)
+                            {
+                                if ((e.KeyState & CTRL) != 0)
+                                {
+                                    DataDictionary.Tests.Expectation expectation = (DataDictionary.Tests.Expectation)DataDictionary.Generated.acceptor.getFactory().createExpectation();
+                                    expectation.ExpressionText = variableNode.Item.FullName + " == " + value.FullName;
+                                    subStep.appendExpectations(expectation);
+                                }
+                                else
+                                {
+                                    DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
+                                    action.ExpressionText = variableNode.Item.FullName + " <- " + value.FullName;
+                                    subStep.appendActions(action);
+                                }
+                                RefreshTimeLineAndWindow();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Cannot evaluate variable default value", "Cannot create event", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// The sub step relative to the mouse position
+        /// </summary>
+        /// <returns></returns>
+        private SubStep SubStepRelatedToMousePosition()
+        {
+            SubStep retVal = null;
+
+            ModelEvent evt = GetEventUnderMouse();
+            if (evt != null && evt.Instance != null)
+            {
+                retVal = EnclosingFinder<SubStep>.find(evt.Instance as IEnclosed, true);
+                if (retVal == null)
+                {
+                    Step step = evt.Instance as Step;
+                    if (step != null && step.SubSteps.Count > 0)
+                    {
+                        retVal = (SubStep)step.SubSteps[step.SubSteps.Count - 1];
+                    }
+                }
+            }
+
+            if (retVal == null && TestCase.Steps.Count > 0)
+            {
+                Step step = (Step)TestCase.Steps[TestCase.Steps.Count - 1];
+                if (step.SubSteps.Count > 0)
+                {
+                    retVal = (SubStep)step.SubSteps[step.SubSteps.Count - 1];
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Refreshes the time line and the enclosing window
+        /// </summary>
+        private void RefreshTimeLineAndWindow()
+        {
+            HandledEvents = -1;
+            Window.RefreshModel();
+            Window.Refresh();
         }
 
         /// <summary>
@@ -129,9 +272,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// <param name="e"></param>
             protected override void OnClick(EventArgs e)
             {
-                TimeLineControl.HandledEvents = -1;
-                TimeLineControl.Window.RefreshModel();
-                TimeLineControl.Window.Refresh();
+                TimeLineControl.RefreshTimeLineAndWindow();
                 base.OnClick(e);
             }
         }
@@ -332,7 +473,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             ContextMenu = new ContextMenu();
 
-            ModelEvent evt = GetEventUnderMouse((MouseEventArgs)e);
+            ModelEvent evt = GetEventUnderMouse();
             ContextMenu.MenuItems.Add(new AddStepMenuItem(this, evt, TestCase));
             ContextMenu.MenuItems.Add(new AddSubStepMenuItem(this, evt, TestCase));
             ContextMenu.MenuItems.Add(new AddChangeMenuItem(this, evt, TestCase));
@@ -402,7 +543,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <param name="e"></param>
         void TimeLineControl_DoubleClick(object sender, EventArgs e)
         {
-            ModelEvent evt = GetEventUnderMouse((MouseEventArgs)e);
+            ModelEvent evt = GetEventUnderMouse();
 
             VariableUpdate variableUpdate = evt as VariableUpdate;
             if (variableUpdate != null)

@@ -24,8 +24,7 @@ namespace GUI.Shortcuts
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="dictionary"></param>
-        public Window(DataDictionary.Shortcuts.ShortcutDictionary dictionary)
+        public Window()
         {
             InitializeComponent();
 
@@ -33,8 +32,8 @@ namespace GUI.Shortcuts
             historyDataGridView.DoubleClick += new System.EventHandler(historyDataGridView_DoubleClick);
 
             Visible = false;
-            shortcutTreeView.Root = dictionary;
-            Text = dictionary.Dictionary.Name + " shortcuts view";
+            shortcutTreeView.Root = DataDictionary.EFSSystem.INSTANCE;
+            Text = "Shortcuts view";
 
             DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight;
             Refresh();

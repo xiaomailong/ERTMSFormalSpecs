@@ -68,7 +68,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// Provides the event under the mouse pointer
         /// </summary>
         /// <returns></returns>
-        protected ModelEvent GetEventUnderMouse(MouseEventArgs e)
+        protected ModelEvent GetEventUnderMouse()
         {
             ModelEvent retVal = null;
 
@@ -93,7 +93,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <param name="e"></param>
         void TimeLineControl_Click(object sender, EventArgs e)
         {
-            ModelEvent evt = GetEventUnderMouse((MouseEventArgs)e);
+            ModelEvent evt = GetEventUnderMouse();
 
             RuleFired ruleFired = evt as RuleFired;
             if (ruleFired != null)

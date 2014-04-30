@@ -460,6 +460,27 @@ namespace DataDictionary.Variables
                 retVal = Type.getDefault();
             }
 
+            if (string.IsNullOrEmpty(retVal))
+            {
+                Types.Structure structure = Type as Types.Structure;
+                if (structure != null)
+                {
+                    retVal = structure.FullName + "{}";
+                }
+                else
+                {
+                    Types.Collection collection = Type as Types.Collection;
+                    if (collection != null)
+                    {
+                        retVal = "[]";
+                    }
+                    else
+                    {
+                        retVal = "0";
+                    }
+                }
+            }
+
             return retVal;
         }
     }

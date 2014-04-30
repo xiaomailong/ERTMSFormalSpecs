@@ -69,11 +69,7 @@ namespace DataDictionary.Values
                     }
                     else
                     {
-                        string defaultValue = variable.getDefaultValue();
-                        if (string.IsNullOrEmpty(defaultValue))
-                        {
-                            defaultValue = variable.Type.getDefault();
-                        }
+                        string defaultValue = variable.GetDefaultValueText();
                         variable.Value = new DefaultValue(variable);
                     }
                     set(variable);
