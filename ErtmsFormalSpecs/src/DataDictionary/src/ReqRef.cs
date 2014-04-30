@@ -106,7 +106,7 @@ namespace DataDictionary
                         {
                             if (string.IsNullOrEmpty(getSpecId()) || getSpecId() == specification.Guid)
                             {
-                                retVal = specification.FindParagraphByNumber(getId());
+                                retVal = specification.FindParagraphByNumber(getId(), false);
 
                                 if (retVal != null)
                                 {
