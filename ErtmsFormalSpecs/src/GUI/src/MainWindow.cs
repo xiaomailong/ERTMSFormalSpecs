@@ -324,9 +324,21 @@ namespace GUI
         }
 
         /// <summary>
+        /// The selection history window
+        /// </summary>
+        private SelectionHistory.Window SelectionHistoryWindow
+        {
+            get
+            {
+                return GenericWindowHandling<SelectionHistory.Window>.find(SubWindows);
+            }
+        }
+
+
+        /// <summary>
         /// The editor window
         /// </summary>
-        private EditorView.ExpressionWindow EditorWindow
+        private EditorView.ExpressionWindow ExpressionEditorWindow
         {
             get
             {
@@ -337,7 +349,7 @@ namespace GUI
         /// <summary>
         /// The comment window
         /// </summary>
-        private EditorView.CommentWindow CommentWindow
+        private EditorView.CommentWindow CommentEditorWindow
         {
             get
             {
@@ -738,9 +750,9 @@ namespace GUI
                         GenericWindowHandling<RequirementsView.Window>.AddOrShow(this, RequirementsWindow, DockAreas.DockBottom);
                         GenericWindowHandling<UsageView.Window>.AddOrShow(this, UsageWindow, DockAreas.DockBottom);
 
-                        GenericWindowHandling<EditorView.ExpressionWindow>.AddOrShow(this, EditorWindow, DockAreas.DockBottom);
-                        EditorWindow.Show(RequirementsWindow.Pane, DockAlignment.Right, 0.5);
-                        GenericWindowHandling<EditorView.CommentWindow>.AddOrShow(this, CommentWindow, DockAreas.DockBottom);
+                        GenericWindowHandling<EditorView.ExpressionWindow>.AddOrShow(this, ExpressionEditorWindow, DockAreas.DockBottom);
+                        ExpressionEditorWindow.Show(RequirementsWindow.Pane, DockAlignment.Right, 0.5);
+                        GenericWindowHandling<EditorView.CommentWindow>.AddOrShow(this, CommentEditorWindow, DockAreas.DockBottom);
                         GenericWindowHandling<MoreInfoView.Window>.AddOrShow(this, MoreInfoWindow, DockAreas.DockBottom);
                         GenericWindowHandling<TestRunnerView.Watch.Window>.AddOrShow(this, WatchWindow, DockAreas.DockBottom);
                         MoreInfoWindow.Show();
@@ -751,6 +763,9 @@ namespace GUI
                         HistoryWindow.Show(PropertyWindow.Pane, DockAlignment.Bottom, 0.6);
                         GenericWindowHandling<Shortcuts.Window>.AddOrShow(this, ShortcutsWindow, DockAreas.DockRight);
                         ShortcutsWindow.Show(HistoryWindow.Pane, HistoryWindow);
+                        GenericWindowHandling<SelectionHistory.Window>.AddOrShow(this, SelectionHistoryWindow, DockAreas.DockRight);
+                        SelectionHistoryWindow.Show(HistoryWindow.Pane, HistoryWindow);
+
                         GenericWindowHandling<MessagesView.Window>.AddOrShow(this, MessagesWindow, DockAreas.DockRight);
                         MessagesWindow.Show(HistoryWindow.Pane, DockAlignment.Bottom, 0.3);
 
@@ -1569,14 +1584,14 @@ namespace GUI
                         }
 
                         // Expression editor view
-                        EditorView.ExpressionWindow editorView = EditorWindow;
+                        EditorView.ExpressionWindow editorView = ExpressionEditorWindow;
                         if (editorView != null)
                         {
                             editorView.setChangeHandler(new ExpressionableTextChangeHandler((DataDictionary.ModelElement)(model as IExpressionable)));
                         }
 
                         // Comment editor view
-                        EditorView.CommentWindow commentView = CommentWindow;
+                        EditorView.CommentWindow commentView = CommentEditorWindow;
                         if (commentView != null)
                         {
                             commentView.setChangeHandler(new CommentableTextChangeHandler((DataDictionary.ModelElement)(model as ICommentable)));
@@ -1598,14 +1613,10 @@ namespace GUI
                         if (SelectionHistory.Count == 0 || SelectionHistory[0] != model)
                         {
                             SelectionHistory.Insert(0, model);
-
-                            foreach (Form form in SubForms)
+                            SelectionHistory.Window selectionHistoryWindow = GenericWindowHandling<SelectionHistory.Window>.find(SubForms);
+                            if (selectionHistoryWindow != null)
                             {
-                                Shortcuts.Window shortcutWindow = form as Shortcuts.Window;
-                                if (shortcutWindow != null)
-                                {
-                                    shortcutWindow.RefreshModel();
-                                }
+                                selectionHistoryWindow.RefreshModel();
                             }
                         }
                     }
@@ -1808,6 +1819,21 @@ namespace GUI
         private void showUsageViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GenericWindowHandling<UsageView.Window>.AddOrShow(this, UsageWindow, DockAreas.DockBottom);
+        }
+
+        private void showSelectionHistoryViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GenericWindowHandling<SelectionHistory.Window>.AddOrShow(this, SelectionHistoryWindow, DockAreas.DockBottom);
+        }
+
+        private void showExpressionEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GenericWindowHandling<EditorView.ExpressionWindow>.AddOrShow(this, ExpressionEditorWindow, DockAreas.DockBottom);
+        }
+
+        private void showCommentEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GenericWindowHandling<EditorView.CommentWindow>.AddOrShow(this, CommentEditorWindow, DockAreas.DockBottom);
         }
     }
 }

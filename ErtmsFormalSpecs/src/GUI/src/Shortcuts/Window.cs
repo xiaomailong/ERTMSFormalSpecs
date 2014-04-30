@@ -19,7 +19,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.Shortcuts
 {
-    public partial class Window : DockContent, IBaseForm
+    public partial class Window : BaseForm
     {
         /// <summary>
         /// Constructor
@@ -29,7 +29,6 @@ namespace GUI.Shortcuts
             InitializeComponent();
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
-            historyDataGridView.DoubleClick += new System.EventHandler(historyDataGridView_DoubleClick);
 
             Visible = false;
             shortcutTreeView.Root = DataDictionary.EFSSystem.INSTANCE;
@@ -37,29 +36,6 @@ namespace GUI.Shortcuts
 
             DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight;
             Refresh();
-        }
-
-        void historyDataGridView_DoubleClick(object sender, System.EventArgs e)
-        {
-            DataDictionary.ModelElement selected = null;
-
-            if (historyDataGridView.SelectedCells.Count == 1)
-            {
-                selected = ((List<HistoryObject>)historyDataGridView.DataSource)[historyDataGridView.SelectedCells[0].OwningRow.Index].Reference;
-            }
-
-            if (selected != null)
-            {
-                int i = GUIUtils.MDIWindow.SelectionHistory.IndexOf(selected);
-                while (i > 0)
-                {
-                    GUIUtils.MDIWindow.SelectionHistory.RemoveAt(0);
-                    i -= 1;
-                }
-
-                GUIUtils.MDIWindow.Select(selected, true);
-                RefreshModel();
-            }
         }
 
         /// <summary>
@@ -78,67 +54,10 @@ namespace GUI.Shortcuts
         public void RefreshModel()
         {
             shortcutTreeView.RefreshModel();
-
-            if (GUIUtils.MDIWindow != null)
-            {
-                List<HistoryObject> history = new List<HistoryObject>();
-
-                foreach (Utils.IModelElement element in GUIUtils.MDIWindow.SelectionHistory)
-                {
-                    DataDictionary.ModelElement modelElement = element as DataDictionary.ModelElement;
-                    if (modelElement != null)
-                    {
-                        history.Add(new HistoryObject(modelElement));
-                    }
-                }
-
-                historyDataGridView.DataSource = history;
-            }
-
             Refresh();
         }
 
-        public MyPropertyGrid Properties
-        {
-            get { return null; }
-        }
-
-        public RichTextBox ExpressionTextBox
-        {
-            get { return null; }
-        }
-
-        public RichTextBox CommentsTextBox
-        {
-            get { return null; }
-        }
-
-        public RichTextBox MessagesTextBox
-        {
-            get { return null; }
-        }
-
-        public EditorTextBox RequirementsTextBox
-        {
-            get { return null; }
-        }
-
-        public EditorTextBox ExpressionEditorTextBox
-        {
-            get { return null; }
-        }
-
-        public BaseTreeView subTreeView
-        {
-            get { return null; }
-        }
-
-        public ExplainTextBox ExplainTextBox
-        {
-            get { return null; }
-        }
-
-        public BaseTreeView TreeView
+        public override BaseTreeView TreeView
         {
             get { return shortcutTreeView; }
         }
@@ -158,45 +77,6 @@ namespace GUI.Shortcuts
                 }
 
                 return retVal;
-            }
-        }
-
-        private class HistoryObject
-        {
-            /// <summary>
-            /// The object that is referenced for history
-            /// </summary>
-            [System.ComponentModel.Browsable(false)]
-            public DataDictionary.ModelElement Reference { get; private set; }
-
-            /// <summary>
-            /// The identification of the history element
-            /// </summary>
-            public string Model
-            {
-                get
-                {
-                    return Reference.Name;
-                }
-            }
-
-            /// <summary>
-            /// The type of the referenced object
-            /// </summary>
-            public string Type
-            {
-                get
-                {
-                    return Reference.GetType().Name;
-                }
-            }
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            /// <param name="reference"></param>
-            public HistoryObject(DataDictionary.ModelElement reference)
-            {
-                Reference = reference;
             }
         }
     }
