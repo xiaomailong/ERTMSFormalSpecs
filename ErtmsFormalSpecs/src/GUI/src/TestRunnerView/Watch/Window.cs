@@ -311,7 +311,7 @@ namespace GUI.TestRunnerView.Watch
         /// <summary>
         /// Refreshed the model of the window
         /// </summary>
-        public void RefreshModel()
+        public override void RefreshModel()
         {
             Refresh();
         }
@@ -322,19 +322,6 @@ namespace GUI.TestRunnerView.Watch
         public void RefreshAfterStep()
         {
             Refresh();
-        }
-
-        /// <summary>
-        /// Provides the model element currently selected in this IBaseForm
-        /// </summary>
-        public Utils.IModelElement Selected
-        {
-            get
-            {
-                Utils.IModelElement retVal = null;
-
-                return retVal;
-            }
         }
 
         private class WatchedExpression

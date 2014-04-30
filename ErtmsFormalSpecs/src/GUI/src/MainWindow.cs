@@ -764,7 +764,7 @@ namespace GUI
                         GenericWindowHandling<Shortcuts.Window>.AddOrShow(this, ShortcutsWindow, DockAreas.DockRight);
                         ShortcutsWindow.Show(HistoryWindow.Pane, HistoryWindow);
                         GenericWindowHandling<SelectionHistory.Window>.AddOrShow(this, SelectionHistoryWindow, DockAreas.DockRight);
-                        SelectionHistoryWindow.Show(HistoryWindow.Pane, HistoryWindow);
+                        SelectionHistoryWindow.Show(ShortcutsWindow.Pane, ShortcutsWindow);
 
                         GenericWindowHandling<MessagesView.Window>.AddOrShow(this, MessagesWindow, DockAreas.DockRight);
                         MessagesWindow.Show(HistoryWindow.Pane, DockAlignment.Bottom, 0.3);
@@ -1587,7 +1587,24 @@ namespace GUI
                         EditorView.ExpressionWindow editorView = ExpressionEditorWindow;
                         if (editorView != null)
                         {
-                            editorView.setChangeHandler(new ExpressionableTextChangeHandler((DataDictionary.ModelElement)(model as IExpressionable)));
+                            IExpressionable expressionable = model as IExpressionable;
+                            if (expressionable != null)
+                            {
+                                editorView.setChangeHandler(new ExpressionableTextChangeHandler((DataDictionary.ModelElement)expressionable));
+                            }
+                            else
+                            {
+                                Paragraph paragraph = model as Paragraph;
+                                if (paragraph != null)
+                                {
+                                    editorView.setChangeHandler(new ParagraphTextChangeHandler(paragraph));
+                                }
+
+                                else
+                                {
+                                    editorView.setChangeHandler(null);
+                                }
+                            }
                         }
 
                         // Comment editor view

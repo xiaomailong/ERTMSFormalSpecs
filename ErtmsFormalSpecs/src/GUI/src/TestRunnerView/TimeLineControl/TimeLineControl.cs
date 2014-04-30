@@ -494,15 +494,8 @@ namespace GUI.TestRunnerView.TimeLineControl
 
         protected override void OnPaint(PaintEventArgs pe)
         {
-            try
-            {
-                pe.Graphics.TranslateTransform(AutoScrollPosition.X, AutoScrollPosition.Y);
-                drawEvents(pe);
-            }
-            catch (Exception e)
-            {
-
-            }
+            pe.Graphics.TranslateTransform(AutoScrollPosition.X, AutoScrollPosition.Y);
+            drawEvents(pe);
         }
 
         /// <summary>

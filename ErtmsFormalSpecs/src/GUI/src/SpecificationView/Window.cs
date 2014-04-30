@@ -26,16 +26,6 @@ namespace GUI.SpecificationView
 {
     public partial class Window : BaseForm
     {
-        public override MyPropertyGrid Properties
-        {
-            get { return propertyGrid; }
-        }
-
-        public RichTextBox ExpressionTextBox
-        {
-            get { return specBrowserTextView.TextBox; }
-        }
-
         public override BaseTreeView TreeView
         {
             get { return specBrowserTreeView; }
@@ -58,24 +48,9 @@ namespace GUI.SpecificationView
         /// </summary>
         private void SpecificInitialisation()
         {
-            specBrowserTextView.AutoComplete = false;
-            specBrowserTextView.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
             DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft;
-            ResizeDescriptionArea(propertyGrid, 0);
-        }
-
-        void TextBox_TextChanged(object sender, EventArgs e)
-        {
-            Paragraph paragraph = Selected as Paragraph;
-            if (paragraph != null)
-            {
-                if (paragraph.Text.CompareTo(specBrowserTextView.Text) != 0)
-                {
-                    paragraph.Text = specBrowserTextView.Text;
-                }
-            }
         }
 
         /// <summary>

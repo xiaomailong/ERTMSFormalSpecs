@@ -19,7 +19,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.SelectionHistory
 {
-    public partial class Window : DockContent, IBaseForm
+    public partial class Window : BaseForm
     {
         /// <summary>
         /// Constructor
@@ -74,7 +74,7 @@ namespace GUI.SelectionHistory
         /// <summary>
         /// Refreshed the model of the window
         /// </summary>
-        public void RefreshModel()
+        public override void RefreshModel()
         {
             if (GUIUtils.MDIWindow != null)
             {
@@ -95,55 +95,10 @@ namespace GUI.SelectionHistory
             Refresh();
         }
 
-        public MyPropertyGrid Properties
-        {
-            get { return null; }
-        }
-
-        public RichTextBox ExpressionTextBox
-        {
-            get { return null; }
-        }
-
-        public RichTextBox CommentsTextBox
-        {
-            get { return null; }
-        }
-
-        public RichTextBox MessagesTextBox
-        {
-            get { return null; }
-        }
-
-        public EditorTextBox RequirementsTextBox
-        {
-            get { return null; }
-        }
-
-        public EditorTextBox ExpressionEditorTextBox
-        {
-            get { return null; }
-        }
-
-        public BaseTreeView subTreeView
-        {
-            get { return null; }
-        }
-
-        public ExplainTextBox ExplainTextBox
-        {
-            get { return null; }
-        }
-
-        public BaseTreeView TreeView
-        {
-            get { return null; }
-        }
-
         /// <summary>
         /// Provides the model element currently selected in this IBaseForm
         /// </summary>
-        public Utils.IModelElement Selected
+        public override Utils.IModelElement Selected
         {
             get
             {

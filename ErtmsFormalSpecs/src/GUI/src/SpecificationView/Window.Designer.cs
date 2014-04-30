@@ -57,14 +57,10 @@ namespace GUI.SpecificationView
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.specBrowserTreeView = new GUI.SpecificationView.SpecificationTreeView();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.propertyGrid = new GUI.MyPropertyGrid();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.specTabPage = new System.Windows.Forms.TabPage();
-            this.specBrowserTextView = new GUI.EditorTextBox();
-            this.implementationTabPage = new System.Windows.Forms.TabPage();
             this.specBrowserRuleView = new GUI.SpecificationView.SpecificationTreeView();
             this.functionalBlocksTreeView = new GUI.SpecificationView.RequirementSetsTreeView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.toolStrip3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -74,13 +70,8 @@ namespace GUI.SpecificationView
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.specTabPage.SuspendLayout();
-            this.implementationTabPage.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip3
@@ -184,7 +175,7 @@ namespace GUI.SpecificationView
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer4);
             this.splitContainer1.Size = new System.Drawing.Size(352, 733);
-            this.splitContainer1.SplitterDistance = 325;
+            this.splitContainer1.SplitterDistance = 387;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 5;
             // 
@@ -200,7 +191,7 @@ namespace GUI.SpecificationView
             this.specBrowserTreeView.Root = null;
             this.specBrowserTreeView.Selected = null;
             this.specBrowserTreeView.SelectedImageIndex = 0;
-            this.specBrowserTreeView.Size = new System.Drawing.Size(352, 325);
+            this.specBrowserTreeView.Size = new System.Drawing.Size(352, 387);
             this.specBrowserTreeView.TabIndex = 2;
             // 
             // splitContainer4
@@ -212,95 +203,14 @@ namespace GUI.SpecificationView
             // 
             // splitContainer4.Panel1
             // 
-            this.splitContainer4.Panel1.Controls.Add(this.splitContainer2);
+            this.splitContainer4.Panel1.Controls.Add(this.groupBox2);
             // 
             // splitContainer4.Panel2
             // 
-            this.splitContainer4.Panel2.Controls.Add(this.functionalBlocksTreeView);
-            this.splitContainer4.Size = new System.Drawing.Size(352, 405);
-            this.splitContainer4.SplitterDistance = 343;
+            this.splitContainer4.Panel2.Controls.Add(this.groupBox1);
+            this.splitContainer4.Size = new System.Drawing.Size(352, 343);
+            this.splitContainer4.SplitterDistance = 247;
             this.splitContainer4.TabIndex = 1;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.propertyGrid);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer2.Size = new System.Drawing.Size(352, 343);
-            this.splitContainer2.SplitterDistance = 218;
-            this.splitContainer2.SplitterWidth = 3;
-            this.splitContainer2.TabIndex = 0;
-            // 
-            // propertyGrid
-            // 
-            this.propertyGrid.AllowDrop = true;
-            this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid.Location = new System.Drawing.Point(0, 0);
-            this.propertyGrid.Margin = new System.Windows.Forms.Padding(2);
-            this.propertyGrid.Name = "propertyGrid";
-            this.propertyGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.propertyGrid.Size = new System.Drawing.Size(352, 218);
-            this.propertyGrid.TabIndex = 0;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.specTabPage);
-            this.tabControl1.Controls.Add(this.implementationTabPage);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(352, 122);
-            this.tabControl1.TabIndex = 5;
-            // 
-            // specTabPage
-            // 
-            this.specTabPage.Controls.Add(this.specBrowserTextView);
-            this.specTabPage.Location = new System.Drawing.Point(4, 22);
-            this.specTabPage.Margin = new System.Windows.Forms.Padding(2);
-            this.specTabPage.Name = "specTabPage";
-            this.specTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.specTabPage.Size = new System.Drawing.Size(344, 96);
-            this.specTabPage.TabIndex = 0;
-            this.specTabPage.Text = "Description";
-            this.specTabPage.UseVisualStyleBackColor = true;
-            // 
-            // specBrowserTextView
-            // 
-            this.specBrowserTextView.AllowDrop = true;
-            this.specBrowserTextView.AutoComplete = true;
-            this.specBrowserTextView.ConsiderOnlyTypes = false;
-            this.specBrowserTextView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.specBrowserTextView.Instance = null;
-            this.specBrowserTextView.Location = new System.Drawing.Point(2, 2);
-            this.specBrowserTextView.Name = "specBrowserTextView";
-            this.specBrowserTextView.ReadOnly = false;
-            this.specBrowserTextView.Rtf = resources.GetString("specBrowserTextView.Rtf");
-            this.specBrowserTextView.Size = new System.Drawing.Size(340, 92);
-            this.specBrowserTextView.TabIndex = 3;
-            // 
-            // implementationTabPage
-            // 
-            this.implementationTabPage.Controls.Add(this.specBrowserRuleView);
-            this.implementationTabPage.Location = new System.Drawing.Point(4, 22);
-            this.implementationTabPage.Margin = new System.Windows.Forms.Padding(2);
-            this.implementationTabPage.Name = "implementationTabPage";
-            this.implementationTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.implementationTabPage.Size = new System.Drawing.Size(344, 69);
-            this.implementationTabPage.TabIndex = 1;
-            this.implementationTabPage.Text = "Implementation";
-            this.implementationTabPage.UseVisualStyleBackColor = true;
             // 
             // specBrowserRuleView
             // 
@@ -309,12 +219,12 @@ namespace GUI.SpecificationView
             this.specBrowserRuleView.HideSelection = false;
             this.specBrowserRuleView.ImageIndex = 0;
             this.specBrowserRuleView.LabelEdit = true;
-            this.specBrowserRuleView.Location = new System.Drawing.Point(2, 2);
+            this.specBrowserRuleView.Location = new System.Drawing.Point(3, 16);
             this.specBrowserRuleView.Name = "specBrowserRuleView";
             this.specBrowserRuleView.Root = null;
             this.specBrowserRuleView.Selected = null;
             this.specBrowserRuleView.SelectedImageIndex = 0;
-            this.specBrowserRuleView.Size = new System.Drawing.Size(340, 65);
+            this.specBrowserRuleView.Size = new System.Drawing.Size(346, 228);
             this.specBrowserRuleView.TabIndex = 4;
             // 
             // functionalBlocksTreeView
@@ -324,13 +234,35 @@ namespace GUI.SpecificationView
             this.functionalBlocksTreeView.HideSelection = false;
             this.functionalBlocksTreeView.ImageIndex = 0;
             this.functionalBlocksTreeView.LabelEdit = true;
-            this.functionalBlocksTreeView.Location = new System.Drawing.Point(0, 0);
+            this.functionalBlocksTreeView.Location = new System.Drawing.Point(3, 16);
             this.functionalBlocksTreeView.Name = "functionalBlocksTreeView";
             this.functionalBlocksTreeView.Root = null;
             this.functionalBlocksTreeView.Selected = null;
             this.functionalBlocksTreeView.SelectedImageIndex = 0;
-            this.functionalBlocksTreeView.Size = new System.Drawing.Size(352, 58);
+            this.functionalBlocksTreeView.Size = new System.Drawing.Size(346, 73);
             this.functionalBlocksTreeView.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.functionalBlocksTreeView);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(352, 92);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Requirement sets";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.specBrowserRuleView);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(352, 247);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Traceability";
             // 
             // Window
             // 
@@ -355,13 +287,8 @@ namespace GUI.SpecificationView
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.specTabPage.ResumeLayout(false);
-            this.implementationTabPage.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,12 +299,6 @@ namespace GUI.SpecificationView
         private System.Windows.Forms.ToolStrip toolStrip3;
         private SpecificationTreeView specBrowserTreeView;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private MyPropertyGrid propertyGrid;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage specTabPage;
-        public EditorTextBox specBrowserTextView;
-        private System.Windows.Forms.TabPage implementationTabPage;
         public GUI.SpecificationView.SpecificationTreeView specBrowserRuleView;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -389,6 +310,8 @@ namespace GUI.SpecificationView
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         public GUI.SpecificationView.RequirementSetsTreeView functionalBlocksTreeView;
         private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
 
     }
 }

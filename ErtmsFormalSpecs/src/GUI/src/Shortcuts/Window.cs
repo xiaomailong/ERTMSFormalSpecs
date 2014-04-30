@@ -51,7 +51,7 @@ namespace GUI.Shortcuts
         /// <summary>
         /// Refreshed the model of the window
         /// </summary>
-        public void RefreshModel()
+        public override void RefreshModel()
         {
             shortcutTreeView.RefreshModel();
             Refresh();
@@ -65,7 +65,7 @@ namespace GUI.Shortcuts
         /// <summary>
         /// Provides the model element currently selected in this IBaseForm
         /// </summary>
-        public Utils.IModelElement Selected
+        public override Utils.IModelElement Selected
         {
             get
             {

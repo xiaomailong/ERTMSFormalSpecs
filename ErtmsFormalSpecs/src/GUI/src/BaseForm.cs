@@ -226,14 +226,19 @@ namespace GUI
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "BaseForm";
             this.ResumeLayout(false);
-
         }
 
+        /// <summary>
+        /// Resizes the description area of the property grid to be as small as possible
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="height"></param>
         protected static void ResizeDescriptionArea(PropertyGrid grid, int height)
         {
             if (grid == null) throw new ArgumentNullException("grid");
 
             foreach (Control control in grid.Controls)
+            {
                 if (control.GetType().Name == "DocComment")
                 {
                     System.Reflection.FieldInfo fieldInfo = control.GetType().BaseType.GetField("userSized",
@@ -243,6 +248,7 @@ namespace GUI
                     control.Height = height;
                     return;
                 }
+            }
         }
     }
 
