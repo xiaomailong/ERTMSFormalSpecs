@@ -50,7 +50,7 @@ namespace DataDictionary
         {
             if (!BeSilent)
             {
-               Parameter enclosingParameter = Utils.EnclosingFinder<Parameter>.find(this);
+                Parameter enclosingParameter = Utils.EnclosingFinder<Parameter>.find(this);
                 if (enclosingParameter != null)
                 {
                     log.Log = "In " + FullName + ":" + log.Log;
@@ -266,7 +266,7 @@ namespace DataDictionary
 
             foreach (string line in data.Split('\n'))
             {
-                retVal = retVal + Pad("{\\cf11//" + line + "}\\cf1\\par", padlen);
+                retVal = retVal + Pad("{\\cf11//" + line + "}\\cf1\\par ", padlen);
             }
 
             return retVal;
@@ -371,7 +371,12 @@ namespace DataDictionary
                     {
                         if (i < retVal.Length - 4)
                         {
-                            if (retVal[i + 1] != '\\')
+                            if (retVal[i + 1] == '{')
+                            {
+                                tmp.Append("{");
+                                braces.Push(BraceType.command);
+                            }
+                            else if (retVal[i + 1] != '\\')
                             {
                                 tmp.Append("\\{");
                                 braces.Push(BraceType.character);

@@ -169,7 +169,7 @@ namespace DataDictionary.Constants
                 retVal += " : " + getValue();
             }
 
-            return TextualExplainUtilities.Pad("{" + retVal + "}", indentLevel);
+            return TextualExplainUtilities.Pad(retVal, indentLevel);
         }
 
         /// <summary>

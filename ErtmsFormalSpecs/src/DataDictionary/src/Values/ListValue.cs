@@ -178,7 +178,7 @@ namespace DataDictionary.Values
         /// null entries correspond to the default value
         /// </summary>
         /// <returns></returns>
-        public virtual string ToExpressionWithDefault()
+        public override string ToExpressionWithDefault()
         {
             StringBuilder retVal = new StringBuilder();
 

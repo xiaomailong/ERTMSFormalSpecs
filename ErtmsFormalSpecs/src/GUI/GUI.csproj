@@ -104,6 +104,48 @@
       <DependentUpon>ArrowControl.cs</DependentUpon>
     </Compile>
     <Compile Include="src\EditorView\ParagraphTextChangeHandler.cs" />
+    <Compile Include="src\ModelDiagram\CollectionModelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ModelDiagram\TypeModelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ModelDiagram\RuleModelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ModelDiagram\StateMachineModelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ModelDiagram\EnumModelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ModelDiagram\RangeModelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ModelDiagram\StructureModelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ModelDiagram\ProcedureModelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ModelDiagram\FunctionModelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ModelDiagram\VariableModelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ModelDiagram\NameSpaceModelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ModelDiagram\ModelArrowControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ModelDiagram\ModelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\ModelDiagram\ModelDiagramPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\SelectionHistory\Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -731,6 +773,7 @@
     <None Include="resources\folder_opened.gif" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\unpin.png" />
     <None Include="resources\wheel.png" />
     <None Include="resources\train.png" />
     <None Include="resources\error.png" />
@@ -744,6 +787,7 @@
     <None Include="resources\in_out.png" />
     <None Include="resources\internal.png" />
     <None Include="resources\call.png" />
+    <None Include="resources\pin.png" />
     <Content Include="resources\tools.png" />
     <None Include="resources\type_icon.png" />
     <None Include="resources\call_icon.png" />

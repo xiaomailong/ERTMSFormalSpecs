@@ -21,34 +21,9 @@ namespace GUI.DataDictionaryView
 {
     public partial class Window : BaseForm
     {
-        public override MyPropertyGrid Properties
-        {
-            get { return dataDictPropertyGrid; }
-        }
-
-        public override EditorTextBox RequirementsTextBox
-        {
-            get { return requirementsTextBox; }
-        }
-
-        public override EditorTextBox ExpressionEditorTextBox
-        {
-            get { return expressionEditorTextBox; }
-        }
-
         public override BaseTreeView TreeView
         {
             get { return dataDictTree; }
-        }
-
-        public override BaseTreeView subTreeView
-        {
-            get { return usageTreeView; }
-        }
-
-        public override ExplainTextBox ExplainTextBox
-        {
-            get { return ruleExplainTextBox; }
         }
 
         /// <summary>
@@ -93,25 +68,8 @@ namespace GUI.DataDictionaryView
         /// </summary>
         private void SpecificInitialization()
         {
-            requirementsTextBox.AutoComplete = false;
-            ruleExplainTextBox.AutoComplete = false;
-
-            ruleExplainTextBox.ReadOnly = true;
-            requirementsTextBox.ReadOnly = true;
-
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
-            expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Visible = false;
-            ResizeDescriptionArea(dataDictPropertyGrid, 20);
-        }
-
-        void TextBox_TextChanged(object sender, EventArgs e)
-        {
-            IExpressionable expressionable = Selected as IExpressionable;
-            if (expressionable != null && expressionable == expressionEditorTextBox.Instance)
-            {
-                expressionable.ExpressionText = expressionEditorTextBox.Text;
-            }
         }
 
         /// <summary>

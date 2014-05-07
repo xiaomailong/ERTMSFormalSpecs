@@ -260,6 +260,11 @@ namespace DataDictionary.Constants
         public bool Hidden { get { return false; } set { } }
 
         /// <summary>
+        /// Indicates that the element is pinned
+        /// </summary>
+        public bool Pinned { get { return getPinned(); } set { setPinned(value); } }
+
+        /// <summary>
         /// The enclosing state machine
         /// </summary>
         public Types.StateMachine EnclosingStateMachine

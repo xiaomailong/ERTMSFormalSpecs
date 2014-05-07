@@ -583,7 +583,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                 Expect expect = evt as Expect;
                 if (expect != null)
                 {
-                    string name = AdjustForDisplay(graphics, ShortName(expect.Expectation.Name), EVENT_SIZE.Width - 4, BOTTOM_FONT);
+                    string name = GUIUtils.AdjustForDisplay(graphics, ShortName(expect.Expectation.Name), EVENT_SIZE.Width - 4, BOTTOM_FONT);
 
                     switch (expect.State)
                     {
@@ -602,7 +602,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                 RuleFired ruleFired = evt as RuleFired;
                 if (ruleFired != null)
                 {
-                    string name = AdjustForDisplay(graphics, ShortName(ruleFired.RuleCondition.Name), EVENT_SIZE.Width - 4, BOTTOM_FONT);
+                    string name = GUIUtils.AdjustForDisplay(graphics, ShortName(ruleFired.RuleCondition.Name), EVENT_SIZE.Width - 4, BOTTOM_FONT);
 
                     retVal = new EventDisplayAttributes(Color.LightBlue, new Pen(Color.Blue), name, -1, GetImageIndex(ruleFired.RuleCondition), ToolsImageIndex);
                 }
@@ -640,7 +640,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                                 break;
                         }
                     }
-                    name = AdjustForDisplay(graphics, ShortName(name), EVENT_SIZE.Width - 4, BOTTOM_FONT);
+                    name = GUIUtils.AdjustForDisplay(graphics, ShortName(name), EVENT_SIZE.Width - 4, BOTTOM_FONT);
 
                     TestCase testCase = Utils.EnclosingFinder<TestCase>.find(variableUpdate.Action);
                     if (testCase != null)
@@ -735,7 +735,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             StepActivation stepActivation = evt as StepActivation;
             if (stepActivation != null)
             {
-                string name = AdjustForDisplay(pe.Graphics, stepActivation.Step.Name, bounds.Width - 4, TOP_FONT);
+                string name = GUIUtils.AdjustForDisplay(pe.Graphics, stepActivation.Step.Name, bounds.Width - 4, TOP_FONT);
                 pe.Graphics.FillRectangle(STEP_BOX_PEN, bounds);
                 pe.Graphics.DrawString(
                     name,
@@ -803,36 +803,6 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// The pen used to display a step box
         /// </summary>
         private static Brush STEP_BOX_PEN = new SolidBrush(Color.LightGray);
-
-        /// <summary>
-        /// Adjust the text size according to the display size
-        /// </summary>
-        /// <param name="text"></param>
-        /// <param name="width"></param>
-        /// <param name="font"></param>
-        private string AdjustForDisplay(Graphics graphics, string text, int width, Font font)
-        {
-            string retVal = text;
-
-            if (graphics.MeasureString(text, font).Width > width)
-            {
-                width = (int)(width - graphics.MeasureString("...", font).Width);
-                int i = text.Length;
-                int step = i / 2;
-                while (graphics.MeasureString(text.Substring(0, i), font).Width > width)
-                {
-                    i = i - step;
-                    step = step / 2;
-                    while (graphics.MeasureString(text.Substring(0, i), font).Width < width && step > 0)
-                    {
-                        i = i + step;
-                    }
-                }
-                retVal = text.Substring(0, i) + "...";
-            }
-
-            return retVal;
-        }
 
         /// <summary>
         /// Reduces the string to the most important thing in it

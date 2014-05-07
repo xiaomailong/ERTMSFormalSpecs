@@ -316,7 +316,7 @@ namespace DataDictionary.Types
         {
             string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal += TextualExplainUtilities.Pad("{" + Name + " : " + TypeName + "}", indentLevel);
+            retVal += TextualExplainUtilities.Pad(Name + " : " + TypeName, indentLevel);
 
             return retVal;
         }

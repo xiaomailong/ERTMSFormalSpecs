@@ -58,7 +58,7 @@ namespace DataDictionary
         /// Provides the description of all requirements
         /// </summary>
         /// <returns></returns>
-        public string RequirementDescription()
+        public override string RequirementDescription()
         {
             string retVal = "";
 
