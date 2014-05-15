@@ -7,6 +7,7 @@
  Name="SpeedAndDistanceMonitoring"
  Guid="29ccd64e-2889-44e6-8b10-6499287bee06"
 >
+<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="CeilingSupervision"
@@ -27,54 +28,6 @@
 </NameSpaceRef></NameSpaces>
 <Enumerations>
 <Enum
- Default="Ceiling"
- X="70"
- Y="360"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="MonitoringType"
- Guid="2ac16c16-edca-4fb7-bbc0-d5da4e832e66"
->
-<ReqRef
- Id="8f743e52-5860-4a00-b1c3-1a25d8b01bcf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ebbb3490-1e34-47a6-90c5-7fd03936be06"
->
-</ReqRef><ReqRef
- Id="61609105-e374-4561-8058-cd995e0cac1a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="07907ab7-4e95-4a6a-9eac-32532338dc1b"
->
-</ReqRef><ReqRef
- Id="1bd536e2-b2c8-48c3-84b5-53f4fd75ad05"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="658a97c5-6d09-4249-b8cd-80dfff07e3f1"
->
-</ReqRef><ReqRef
- Id="52f69d6f-9efe-46a8-bf28-82cdbaf08617"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="812775a4-f2f7-474d-ac2d-22d81cdf07d2"
->
-</ReqRef><Comment></Comment>
-<Values>
-<EnumValue
- Value="0"
- Name="Ceiling"
- Guid="36d80b4f-9437-42d8-b4d2-05d8cf2fc248"
->
-</EnumValue><EnumValue
- Value="1"
- Name="Target"
- Guid="0f366445-dc78-4606-9338-a9256a5667fb"
->
-</EnumValue><EnumValue
- Value="2"
- Name="ReleaseSpeed"
- Guid="8a016740-7178-4c1f-94ce-3470af7ad622"
->
-</EnumValue></Values>
-</Enum><Enum
  Default="SupervisionStatus.Normal"
  X="200"
  Y="360"
@@ -118,6 +71,213 @@
 >
 </EnumValue></Values>
 </Enum></Enumerations>
+<StateMachines>
+<StateMachine
+ Default="Ceiling"
+ Width="100"
+ Height="50"
+ Name="MonitoringTypeSM"
+ Guid="435cb658-6129-43cc-b5ba-3145aff511f6"
+>
+<ReqRef
+ Id="52f69d6f-9efe-46a8-bf28-82cdbaf08617"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e39fc7e8-b8bf-448b-994c-daf7c21eda9c"
+>
+</ReqRef><ReqRef
+ Id="8f743e52-5860-4a00-b1c3-1a25d8b01bcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e55f7847-f325-4a1f-a7c5-b40e0b63aea1"
+>
+</ReqRef><ReqRef
+ Id="61609105-e374-4561-8058-cd995e0cac1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa184f4d-db22-46c7-ae7b-94499f44822a"
+>
+</ReqRef><ReqRef
+ Id="1bd536e2-b2c8-48c3-84b5-53f4fd75ad05"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dde05966-758d-48c9-be95-81f6e093170b"
+>
+</ReqRef><Comment>Lists the types of speed and distance monitoring and handles transitions between them</Comment>
+<States>
+<State
+ Name="Ceiling"
+ Guid="c7afbefc-cc25-4539-9b42-effc013c42cb"
+>
+<Comment></Comment>
+<StateMachine
+ Default="Start"
+ Guid="11f43511-b66c-40ff-9cd8-49fc31a1e9cd"
+>
+<States>
+<State
+ Name="Start"
+ Guid="85b510a2-816e-40c2-a07e-07b074579db2"
+>
+<Comment></Comment>
+<StateMachine
+ Default=""
+ Guid="0ad52c37-1598-4f03-ad37-88ab2b543f94"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Record Type Change"
+ Guid="e9022530-2a77-4a8b-b0e3-479efed8a498"
+>
+<Comment>When this state is entered, record that the supervision type was changed for the JRU</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Record Change"
+ Guid="06055916-4de7-4e04-91b0-6acfca8e7eed"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a21ce3f8-9147-429c-bfb5-3a82d328646a"
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Monitoring Ceiling Speed"
+ Guid="022f34d6-d6a3-4f6a-a8fc-0e61d786761a"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3dde4b50-ef4e-45cf-8795-4f1217c66e85"
+>THIS &lt;- Ceiling.MonitoringCeilingSpeed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ Name="MonitoringCeilingSpeed"
+ Guid="0c7baf12-191d-458e-b33d-fc84dde5b5a5"
+>
+<StateMachine
+ Default=""
+ Guid="d45e4a5e-c872-4ea3-ad19-4d0f5ec36313"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ Name="Target"
+ Guid="0784fa98-3aea-4f51-8153-d70ae0a50b40"
+>
+<StateMachine
+ Default="Start"
+ Guid="04526e41-51a0-49ff-a66a-c48d62f36411"
+>
+<States>
+<State
+ Name="MonitoringTargetSpeed"
+ Guid="ae5a2442-f7dd-431e-b013-7fd673523c4f"
+>
+<StateMachine
+ Default=""
+ Guid="93b94389-8aac-473d-974f-6334000ff2c8"
+>
+</StateMachine></State><State
+ Name="Start"
+ Guid="c4d1bfa3-561f-4d90-be02-669d6f3f09a8"
+>
+<Comment></Comment>
+<StateMachine
+ Default=""
+ Guid="106cc06b-db05-464e-a765-dad3372b86ab"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Record Type Change"
+ Guid="4cb62586-8162-4381-9d6c-0bd73738f532"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Record Change"
+ Guid="547cc102-3116-4b48-9f9b-9ee4484aea68"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e7a8e765-e6db-4c64-8421-9ae611130e63"
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Monitoring Target Speed"
+ Guid="a9be9161-cf57-43fc-a053-1e63d7ea5b91"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f56144fc-d490-42cf-9b0d-6f4f02dcff6f"
+>THIS &lt;- Target.MonitoringTargetSpeed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State><State
+ Name="ReleaseSpeed"
+ Guid="07de5e9f-788d-415d-8ebd-f5b04846c216"
+>
+<Comment></Comment>
+<StateMachine
+ Default="Start"
+ Guid="4c471652-a236-49b9-afdf-492ed8264c22"
+>
+<States>
+<State
+ Name="MonitoringReleaseSpeed"
+ Guid="eb7d32de-8cfa-4ab3-9166-78781b77a38f"
+>
+<StateMachine
+ Default=""
+ Guid="545aebdb-bc36-4743-bc7b-5ac63c6d5616"
+>
+</StateMachine></State><State
+ Name="Start"
+ Guid="578f3616-75f2-4df2-8536-5bf75508d62a"
+>
+<StateMachine
+ Default=""
+ Guid="ceab12e6-acb6-4834-accb-1d3568c93c4c"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Record Type Change"
+ Guid="12f97ad7-84a5-460f-8e1c-a906010df86a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Record Change"
+ Guid="8764fd16-244d-453f-9d41-3bcedbb658f4"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f4548707-2eb2-4d89-9653-5b4755e684c0"
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Monitoring Release Speed"
+ Guid="7d667790-fc5b-4fd2-9e66-d2f6c7278018"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="47f71217-2ed4-41e4-b059-fe6375b01867"
+>THIS &lt;- ReleaseSpeed.MonitoringReleaseSpeed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State></States>
+</StateMachine></StateMachines>
 <Functions>
 <Function
  Type="Default.BaseTypes.Speed"
@@ -293,7 +453,7 @@
 <PreConditions>
 <PreCondition
  Guid="5394d167-a030-4b1d-a096-b176e1075237"
->Monitoring == MonitoringType.Ceiling</PreCondition><PreCondition
+>Monitoring == Monitoring.Ceiling</PreCondition><PreCondition
  Guid="e902ee0f-8ed6-4c80-aafe-96b258b01056"
 >Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
 <Expression>CeilingSupervision.P ( Distance )</Expression>
@@ -304,7 +464,7 @@
 <PreConditions>
 <PreCondition
  Guid="c4529bc3-bd47-4ae9-8347-84a7d362d528"
->Monitoring == MonitoringType.Ceiling</PreCondition></PreConditions>
+>Monitoring == Monitoring.Ceiling</PreCondition></PreConditions>
 <Expression>CeilingSupervision.SBI ( Distance )</Expression>
 </Case><Case
  Name="TargetSpeedMonitoring_P"
@@ -313,7 +473,7 @@
 <PreConditions>
 <PreCondition
  Guid="5ba6a2ec-fce4-46ab-8e17-256f0a63ae84"
->Monitoring == MonitoringType.Target</PreCondition><PreCondition
+>Monitoring == Monitoring.Target</PreCondition><PreCondition
  Guid="b286ca0d-4051-4c4a-a610-a2615579bcac"
 >Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
 <Expression>TargetSupervision.V_P_DMI()</Expression>
@@ -324,7 +484,7 @@
 <PreConditions>
 <PreCondition
  Guid="7bfba49b-c9f5-492a-8afc-18d09cf1f725"
->Monitoring == MonitoringType.Target</PreCondition></PreConditions>
+>Monitoring == Monitoring.Target</PreCondition></PreConditions>
 <Expression>TargetSupervision.V_FLOI_DMI()</Expression>
 </Case></Cases>
 </Function></Functions>
@@ -372,11 +532,11 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0
   AND
 ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= Odometry.NominalDistance</PreCondition><PreCondition
  Guid="d0936740-8827-4152-93cf-3722e478afc0"
->Monitoring != MonitoringType.ReleaseSpeed</PreCondition></PreConditions>
+>Monitoring != Monitoring.ReleaseSpeed</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9fa14273-a356-4624-b65d-d653232c55c9"
->Monitoring &lt;- MonitoringType.ReleaseSpeed</Action></Actions>
+>Monitoring &lt;- Monitoring.ReleaseSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -544,8 +704,8 @@ ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= 
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="MonitoringType"
- DefaultValue="MonitoringType.Ceiling"
+ Type="MonitoringTypeSM"
+ DefaultValue="MonitoringTypeSM.Ceiling"
  VariableMode="Internal"
  X="70"
  Y="260"

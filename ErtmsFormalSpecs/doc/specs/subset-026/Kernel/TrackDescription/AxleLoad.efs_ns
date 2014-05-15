@@ -6,11 +6,14 @@
  Name="AxleLoad"
  Guid="2bb7594e-aee3-45d5-bcb6-092282828fe2"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AxleLoadProfile"
  Guid="7669fef7-c011-4007-bc1d-fc27e4e7bdfb"
@@ -75,6 +78,9 @@
 <Comment>The collection of axle load speed restrictions.</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AxleLoadValue"
  Guid="fa42ca0f-788f-48d1-b567-ecbeaaf5b60b"
@@ -116,6 +122,9 @@
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
+ X="220"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AxleLoad"
@@ -206,6 +215,9 @@
  TypeName="AxleLoadValue"
  MaxSize="20"
  Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AxleLoadValues"
  Guid="37ea60a7-1060-427c-8a92-a30a5d49e75f"
@@ -220,6 +232,10 @@
  TypeName="AxleLoad"
  MaxSize="30"
  Default="[]"
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AxleLoads"
@@ -236,6 +252,9 @@
 <Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SpeedRestrictions"
  Guid="ac5c9711-135a-4889-a8a9-19764bedb0f0"
@@ -250,6 +269,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="55040a00-9112-4c96-95a5-84aa2f1a9c52"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -292,6 +312,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="AxleLoad"
  Default=""
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateAxleLoad"
@@ -354,6 +378,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="AxleLoadValue"
  Default=""
+ X="220"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateAxleLoadValue"
@@ -386,6 +414,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="AxleLoad"
  Default=""
+ X="330"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateFirstAxleLoad"
@@ -433,6 +465,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="440"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AbsoluteDistance"
@@ -470,6 +506,10 @@ USING
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="550"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AxleLoadSpeedRestriction"
  Guid="9e74a7a7-7107-4423-a5d2-1e3d5bdb9d6b"
@@ -538,6 +578,10 @@ USING
 </Function><Function
  Type="Default.BaseTypes.Length"
  Default=""
+ X="660"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AxleLoadLength"
  Guid="28c9866a-7388-4e77-86f7-c371daab904c"
@@ -581,6 +625,9 @@ USING
 </Function></Functions>
 <Procedures>
 <Procedure
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AxleLoadProfileReceived"
  Guid="bd278863-a9e9-4f05-b449-c6b22bc23908"
@@ -671,6 +718,10 @@ USING
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AddAxleLoad"
@@ -724,6 +775,10 @@ IN
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="220"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleNewAxleLoadProfile"
@@ -867,6 +922,9 @@ ON
     ALs =&gt; []
 }"
  VariableMode="Internal"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ASP"
  Guid="bcd8e2e5-3222-4524-8d15-51f6d4b02c75"
@@ -891,6 +949,9 @@ ON
 <Rules>
 <Rule
  Priority="Processing"
+ Y="360"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Resume initial states"

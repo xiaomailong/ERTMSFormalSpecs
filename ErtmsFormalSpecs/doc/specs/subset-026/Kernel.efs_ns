@@ -7,6 +7,7 @@
  Name="Kernel"
  Guid="838d10c3-e56e-4b01-83ac-4480aa6fb8b8"
 >
+<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="ConfidenceInterval"
@@ -6854,7 +6855,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="d367c039-b4a7-42a3-a80f-a18eed86e4d4"
->Kernel.HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action><Action
+>HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action><Action
  Guid="180ce797-b671-4585-a52f-426f2fa4056b"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="c9cabf9b-e4f8-4ebb-ace5-dbab095ab111"
@@ -6996,7 +6997,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="7ddbbfa8-8c2a-423e-982b-b4feec5a94ae"
->Kernel.HandleModeChange &lt;- HandleModeChange.TrainTrip.S160</Action></Actions>
+>HandleModeChange &lt;- HandleModeChange.TrainTrip.S160</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="E175"
@@ -7031,7 +7032,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="6f1a6f0a-0a50-49dc-a9c6-9024364d3bd2"
->Kernel.HandleModeChange &lt;- HandleModeChange.TrainTrip.S170</Action></Actions>
+>HandleModeChange &lt;- HandleModeChange.TrainTrip.S170</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>

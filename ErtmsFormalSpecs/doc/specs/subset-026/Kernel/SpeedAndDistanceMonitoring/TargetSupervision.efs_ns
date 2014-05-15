@@ -1964,9 +1964,11 @@ V_P_EBD_Target
 <PreConditions>
 <PreCondition
  Guid="035eb855-04d7-4cb3-9e12-2df1736c11d6"
->Kernel.SpeedAndDistanceMonitoring.SpeedAndDistanceMonitoringIsActive</PreCondition><PreCondition
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.SpeedAndDistanceMonitoringIsActive</PreCondition><PreCondition
  Guid="734c0cfb-8504-4804-8e92-7d445b1644b3"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</PreCondition><PreCondition
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.Monitoring== Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition><PreCondition
  Guid="1d9d0f82-9b6e-4854-85b9-8c830b0881ef"
 >TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
