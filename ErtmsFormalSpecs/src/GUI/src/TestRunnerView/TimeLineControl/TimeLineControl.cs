@@ -579,7 +579,6 @@ namespace GUI.TestRunnerView.TimeLineControl
             {
                 ModelElement.BeSilent = true;
 
-
                 Expect expect = evt as Expect;
                 if (expect != null)
                 {
@@ -642,8 +641,8 @@ namespace GUI.TestRunnerView.TimeLineControl
                     }
                     name = GUIUtils.AdjustForDisplay(graphics, ShortName(name), EVENT_SIZE.Width - 4, BOTTOM_FONT);
 
-                    TestCase testCase = Utils.EnclosingFinder<TestCase>.find(variableUpdate.Action);
-                    if (testCase != null)
+                    DataDictionary.Types.NameSpace nameSpace = Utils.EnclosingFinder<DataDictionary.Types.NameSpace>.find(variableUpdate.Action);
+                    if (nameSpace == null)
                     {
                         retVal = new EventDisplayAttributes(Color.LightGray, new Pen(Color.Black), name, -1, rightIcon, rightModifier);
                     }
