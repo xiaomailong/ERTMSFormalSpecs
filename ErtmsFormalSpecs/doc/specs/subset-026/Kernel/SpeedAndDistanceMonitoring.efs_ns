@@ -89,6 +89,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e55f7847-f325-4a1f-a7c5-b40e0b63aea1"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="61609105-e374-4561-8058-cd995e0cac1a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -117,7 +118,6 @@
 >
 <Comment></Comment>
 <StateMachine
- Default=""
  Guid="0ad52c37-1598-4f03-ad37-88ab2b543f94"
 >
 <Rules>
@@ -157,10 +157,31 @@
  Guid="0c7baf12-191d-458e-b33d-fc84dde5b5a5"
 >
 <StateMachine
- Default=""
  Guid="d45e4a5e-c872-4ea3-ad19-4d0f5ec36313"
 >
 </StateMachine></State></States>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="ToTSM"
+ Guid="20f999bf-2d05-4b9e-83cc-867c3fc4d8d3"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Train passed pre-indication location"
+ Guid="96f51d81-7bf9-40c4-850f-8aafa0a90aa9"
+>
+<PreConditions>
+<PreCondition
+ Guid="d984a754-d9a0-4a30-ad3c-10001df8ecf0"
+>Condition1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="24551215-3f50-43dc-95d4-95a90ecbb76f"
+>THIS &lt;- Target.Start</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State><State
  Name="Target"
  Guid="0784fa98-3aea-4f51-8153-d70ae0a50b40"
@@ -175,7 +196,6 @@
  Guid="ae5a2442-f7dd-431e-b013-7fd673523c4f"
 >
 <StateMachine
- Default=""
  Guid="93b94389-8aac-473d-974f-6334000ff2c8"
 >
 </StateMachine></State><State
@@ -184,7 +204,6 @@
 >
 <Comment></Comment>
 <StateMachine
- Default=""
  Guid="106cc06b-db05-464e-a765-dad3372b86ab"
 >
 <Rules>
@@ -219,6 +238,28 @@
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="ToRSM"
+ Guid="6a193b04-c31d-4694-b93e-261621b55074"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Train passed RSM start location"
+ Guid="b95478f6-5491-4553-bb4e-1249f5752004"
+>
+<PreConditions>
+<PreCondition
+ Guid="8f62c233-1015-45b6-9369-1e69518a2b8a"
+>Condition2()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="44f973a1-f64e-4717-bc83-fcb6ae9ade4e"
+>THIS &lt;- ReleaseSpeed.Start</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State><State
  Name="ReleaseSpeed"
  Guid="07de5e9f-788d-415d-8ebd-f5b04846c216"
@@ -234,7 +275,6 @@
  Guid="eb7d32de-8cfa-4ab3-9166-78781b77a38f"
 >
 <StateMachine
- Default=""
  Guid="545aebdb-bc36-4743-bc7b-5ac63c6d5616"
 >
 </StateMachine></State><State
@@ -242,7 +282,6 @@
  Guid="578f3616-75f2-4df2-8536-5bf75508d62a"
 >
 <StateMachine
- Default=""
  Guid="ceab12e6-acb6-4834-accb-1d3568c93c4c"
 >
 <Rules>
@@ -453,7 +492,8 @@
 <PreConditions>
 <PreCondition
  Guid="5394d167-a030-4b1d-a096-b176e1075237"
->Monitoring == Monitoring.Ceiling</PreCondition><PreCondition
+><Comment></Comment>
+Monitoring in Monitoring.Ceiling</PreCondition><PreCondition
  Guid="e902ee0f-8ed6-4c80-aafe-96b258b01056"
 >Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
 <Expression>CeilingSupervision.P ( Distance )</Expression>
@@ -464,7 +504,7 @@
 <PreConditions>
 <PreCondition
  Guid="c4529bc3-bd47-4ae9-8347-84a7d362d528"
->Monitoring == Monitoring.Ceiling</PreCondition></PreConditions>
+>Monitoring in Monitoring.Ceiling</PreCondition></PreConditions>
 <Expression>CeilingSupervision.SBI ( Distance )</Expression>
 </Case><Case
  Name="TargetSpeedMonitoring_P"
@@ -473,7 +513,7 @@
 <PreConditions>
 <PreCondition
  Guid="5ba6a2ec-fce4-46ab-8e17-256f0a63ae84"
->Monitoring == Monitoring.Target</PreCondition><PreCondition
+>Monitoring in Monitoring.Target</PreCondition><PreCondition
  Guid="b286ca0d-4051-4c4a-a610-a2615579bcac"
 >Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
 <Expression>TargetSupervision.V_P_DMI()</Expression>
@@ -484,8 +524,60 @@
 <PreConditions>
 <PreCondition
  Guid="7bfba49b-c9f5-492a-8afc-18d09cf1f725"
->Monitoring == Monitoring.Target</PreCondition></PreConditions>
+>Monitoring in Monitoring.Target</PreCondition></PreConditions>
 <Expression>TargetSupervision.V_FLOI_DMI()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="Condition1"
+ Guid="6f7b540b-4441-4ce5-9081-32c38369a81c"
+>
+<Cases>
+<Case
+ Name="Train passed pre-indication location"
+ Guid="d246cb6e-5ad9-415b-a581-75b2b0b9263a"
+>
+<PreConditions>
+<PreCondition
+ Guid="699a6b10-e831-4c8a-a3ed-591f85155457"
+>TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="39491cf3-c180-4b5f-9fdb-2d5c5b334573"
+>
+<Comment></Comment>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Name="Condition2"
+ Guid="a41dd03f-2476-4bc0-b911-b4d3d756b71e"
+>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Front end passed RSM start location"
+ Guid="06d8c12a-e5d7-40f6-abec-0d47871c3cd2"
+>
+<PreConditions>
+<PreCondition
+ Guid="5acecc19-8795-458f-bf25-d3d7788ef394"
+><Comment></Comment>
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt;  ReleaseSpeedSupervision.StartRSM(TargetSupervision.MRDT().Speed)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="9b96ca59-f914-4805-9966-b093fbe6b969"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

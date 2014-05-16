@@ -942,7 +942,7 @@ ADDITIONAL_BRAKE_STATUS =&gt; CreateJruAditionalBrakeStatusMessage()
 >SendSpeedAndDistanceMonitoringInformationMessage(THIS)</PreCondition><PreCondition
  Guid="24051cc8-c099-4d23-ab52-61960bf5bf51"
 ><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition></PreConditions>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e0adc517-5b2f-4309-ab4b-821bd1fbaf57"
@@ -1060,10 +1060,11 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitor
  Name="Update FLOI"
  Guid="1daf6c7f-b2f7-473b-9358-cd415058af78"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f5d3dccb-474d-4877-afbc-cf2657785d82"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9bc80e3a-1a1a-429f-98aa-42c1d4d761ce"
@@ -6314,10 +6315,11 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
  Name="CSM"
  Guid="a60d076f-ce4a-4a1e-a276-1e3e7fc211b6"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1a616611-6e7d-4a54-ab2e-cc083381415a"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.Monitoring.Ceiling</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Ceiling</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Ceiling_speed_monitoring__CSM</Expression>
 </Case><Case
  Name="TSM"
@@ -6326,7 +6328,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="915ead74-5b53-434c-8c19-72d423b31cf2"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Target_speed_monitoring__TSM</Expression>
 </Case><Case
  Name="RSM"
@@ -6335,7 +6337,8 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="79088302-a61b-4499-9717-0db5a3e9ca11"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.Monitoring.ReleaseSpeed</PreCondition></PreConditions>
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.ReleaseSpeed</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Release_speed_monitoring_RSM</Expression>
 </Case><Case
  Name="PIM"
@@ -6520,7 +6523,7 @@ jru.SpeedAndDistanceSupervisionTypeChanged</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="13358226-042e-4eb7-a8e9-c752639ee537"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.Monitoring.Target
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target
   AND
 jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</PreCondition></PreConditions>
 <Expression>True</Expression>
