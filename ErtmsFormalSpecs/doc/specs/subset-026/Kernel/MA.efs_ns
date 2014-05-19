@@ -670,19 +670,6 @@ Location stores the previous End of Movement Authority location.</Comment>
  Guid="14420dcd-645e-4886-9f63-380fed6e3f3d"
 >
 </ReqRef><Comment>Represents MA sections.</Comment>
-</Collection><Collection
- TypeName="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
- Default="[EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]"
- X="170"
- Y="470"
- Width="100"
- Height="50"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TargetsCol"
- Guid="12ba0846-ca7e-4950-af35-aafe85e10270"
->
-<Comment>This collection is used to keep the EOAs and SvLs from different sources so that the most restrictive one can be accessed</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -756,6 +743,7 @@ Location stores the previous End of Movement Authority location.</Comment>
  Name="Returns the closest EOA"
  Guid="4c10b760-6b33-42af-8b63-16dfab10d6b2"
 >
+<Comment></Comment>
 <Expression>REDUCE EOAs
     USING ClosestTarget(
     Target1=&gt;X,
@@ -1469,6 +1457,7 @@ INITIAL_VALUE CreateTarget (
  Name="Return the closest SvL"
  Guid="c9018509-c2de-4033-826b-342a2bc196c4"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f439959e-927a-4352-9bad-9ee8aa4cf1d9"
@@ -4152,7 +4141,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 >
 </ReqRef><Comment>Allows to verify if the MA was shortened (possibly regardless of SvL location).</Comment>
 </Variable><Variable
- Type="Kernel.MA.TargetsCol"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Targets"
  DefaultValue=""
  VariableMode="Internal"
  X="20"
@@ -4166,7 +4155,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 >
 <Comment>This is a collection holding all the locations designated as supervision limit according to different external inputs</Comment>
 </Variable><Variable
- Type="Kernel.MA.TargetsCol"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Targets"
  DefaultValue=""
  VariableMode="Internal"
  X="20"
