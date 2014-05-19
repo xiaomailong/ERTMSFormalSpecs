@@ -199,7 +199,7 @@
 >
 <Comment>The value of the driver id.</Comment>
 </StructureElement><StructureElement
- TypeName="DataState"
+ TypeName="Default.DataState"
  Default="DataState.Unknown"
  Mode="Internal"
  Implemented="TRUE"
@@ -236,7 +236,7 @@
 >
 </ReqRef><Comment>Represents the ERTMS/ETCS level of the train.</Comment>
 <StructureElement
- TypeName="Level"
+ TypeName="Default.Level"
  Default="Level.L0"
  Mode="Internal"
  Implemented="TRUE"
@@ -245,7 +245,7 @@
 >
 <Comment>The value of the current ERTMS/ETCS level.</Comment>
 </StructureElement><StructureElement
- TypeName="DataState"
+ TypeName="Default.DataState"
  Default="DataState.Unknown"
  Mode="Internal"
  Implemented="TRUE"
@@ -293,7 +293,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <Comment>Value of the train running number.</Comment>
 </StructureElement><StructureElement
- TypeName="DataState"
+ TypeName="Default.DataState"
  Default="DataState.Unknown"
  Mode="Internal"
  Implemented="TRUE"
@@ -359,7 +359,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <Comment>The stop location of this emergency stop.</Comment>
 </StructureElement><StructureElement
- TypeName="Kernel.BrakeReason"
+ TypeName="BrakeReason"
  Default=""
  Mode="Internal"
  Name="Reason"
@@ -470,7 +470,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 </ReqRef><Comment>Collection holding structures of type Kernel.EmergencyStop</Comment>
 </Collection><Collection
- TypeName="BaliseGroup"
+ TypeName="Kernel.BaliseGroup"
  MaxSize="20"
  Default="[]"
  X="800"
@@ -9355,7 +9355,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </StateMachine></StateMachines>
 <Functions>
 <Function
- Type="EmergencyStop"
+ Type="Kernel.EmergencyStop"
  Default=""
  X="180"
  Y="90"
@@ -9422,7 +9422,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </ReqRef><Comment>Takes a collection of Emergency Stops and returns the closest conditional emergency stop</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.EmergencyStopsCol"
+ Type="EmergencyStopsCol"
  Name="aESCol"
  Guid="ac51e9d6-df83-443b-a2dc-d4b7dfa198c1"
 >
@@ -10120,7 +10120,7 @@ Kernel.EmergencyStops</Action></Actions>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="DriverId"
+ Type="Kernel.DriverId"
  DefaultValue=""
  VariableMode="Internal"
  X="800"
@@ -10169,7 +10169,7 @@ Kernel.EmergencyStops</Action></Actions>
 <Comment></Comment>
 </ReqRef><Comment>Indicates the state and the value of the current ERTMS/ETCS level of the train.</Comment>
 </Variable><Variable
- Type="Mode"
+ Type="Default.Mode"
  DefaultValue="Mode.NP"
  VariableMode="Internal"
  X="370"
@@ -10207,7 +10207,7 @@ Kernel.EmergencyStops</Action></Actions>
 >
 </ReqRef><Comment>Indicates whether the EVC is On or Off.</Comment>
 </Variable><Variable
- Type="TrainRunningNumber"
+ Type="Kernel.TrainRunningNumber"
  DefaultValue=""
  VariableMode="Internal"
  X="800"
@@ -10237,7 +10237,7 @@ Kernel.EmergencyStops</Action></Actions>
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
- Type="Kernel.EmergencyStopsCol"
+ Type="EmergencyStopsCol"
  DefaultValue=""
  VariableMode="Internal"
  X="420"
@@ -10310,7 +10310,7 @@ Kernel.EmergencyStops</Action></Actions>
 >
 </ReqRef><Comment>The indication location at MRSP speed.</Comment>
 </Variable><Variable
- Type="Kernel.SupervisionStatus"
+ Type="SupervisionStatus"
  DefaultValue=""
  VariableMode="Internal"
  X="420"
@@ -10397,7 +10397,7 @@ Kernel.EmergencyStops</Action></Actions>
 >
 </ReqRef><Comment>Represents the id of the current national system.</Comment>
 </Variable><Variable
- Type="OperatedSystemVersion"
+ Type="Kernel.OperatedSystemVersion"
  DefaultValue=""
  VariableMode="InOut"
  X="420"
@@ -10539,7 +10539,7 @@ Kernel.EmergencyStops</Action></Actions>
 >
 </ReqRef><Comment>Represents the trip raison, if any.</Comment>
 </Variable><Variable
- Type="Kernel.HandleModeChangeSM"
+ Type="HandleModeChangeSM"
  DefaultValue=""
  VariableMode="Internal"
  X="800"

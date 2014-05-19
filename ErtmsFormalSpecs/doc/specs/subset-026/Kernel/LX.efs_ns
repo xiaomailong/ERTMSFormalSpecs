@@ -204,7 +204,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="LevelCrossing"
+ TypeName="Kernel.LX.LevelCrossing"
  MaxSize="20"
  Default="[]"
  X="220"
@@ -321,7 +321,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>Provides the speed profile due to a level crossing.</Comment>
 <Parameters>
 <Parameter
- Type="LevelCrossing"
+ Type="Kernel.LX.LevelCrossing"
  Name="aLX"
  Guid="d7d85ea2-3ebc-4c2a-a4aa-8074be5f2f4e"
 >
@@ -380,7 +380,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>Provides the speed value during the level crossing. If the current LX is protected, the speed is not limited, if the current LX is not protected, the speed is limited to the value given by the LX.</Comment>
 <Parameters>
 <Parameter
- Type="LevelCrossing"
+ Type="Kernel.LX.LevelCrossing"
  Name="aLX"
  Guid="0cb48cb8-ea4e-4723-9582-e4719b7ee221"
 >
@@ -424,7 +424,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 3. Otherwise =&gt; there is no speed limit</Comment>
 <Parameters>
 <Parameter
- Type="LevelCrossing"
+ Type="Kernel.LX.LevelCrossing"
  Name="aLX"
  Guid="9369ff2c-f0da-45fc-98fc-62bebb888802"
 >
@@ -459,7 +459,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
- Type="LevelCrossing"
+ Type="Kernel.LX.LevelCrossing"
  Default=""
  X="260"
  Y="20"
@@ -494,7 +494,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>When a new LX is received, one have to check if it has the same id than an other LX received previously. In that case we have to replace the previously received TSR with the same id by the new one. This function takes a previously received LX in parameters and if it has the same id as the new one, it returns a new LX; in the other case it returnes the same TSR.</Comment>
 <Parameters>
 <Parameter
- Type="LevelCrossing"
+ Type="Kernel.LX.LevelCrossing"
  Name="aLevelCrossing"
  Guid="5c9e17d6-63b7-439f-8087-738f2b1c7f4a"
 >

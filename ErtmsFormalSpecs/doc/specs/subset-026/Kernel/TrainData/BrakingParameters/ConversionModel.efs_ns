@@ -261,7 +261,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
                                           ( L_sb() / 100.0 ) )</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorrectionFactor"
+ Type="TrainData.BrakingParameters.CorrectionFactor"
  Default=""
  Implemented="TRUE"
  Name="kto"
@@ -479,7 +479,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
 <Expression>BrakingModelFunction ( BrakingModel =&gt; A_brake_service, Speed =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Default=""
  Implemented="TRUE"
  Name="Lmax"
@@ -1102,7 +1102,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 </ReqRef><Comment>Computes A_safe from conversion model using the algorithm described in 3.A.3.7.</Comment>
 <Parameters>
 <Parameter
- Type="BrakingModel"
+ Type="Kernel.TrainData.BrakingParameters.BrakingModel"
  Name="aBrakingModel"
  Guid="c0d8df87-fa28-4ff9-8edd-04d8887bdabc"
 >
@@ -1590,7 +1590,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 >
 </ReqRef><Comment>The value of the equivalent service brake build up time to be used when the target speed (V_target) is different from zero.</Comment>
 </Variable><Variable
- Type="BrakingModel"
+ Type="Kernel.TrainData.BrakingParameters.BrakingModel"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  Implemented="TRUE"
@@ -1614,7 +1614,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 >
 </ReqRef><Comment>The speed dependent deceleration model for the emergency brake, derived from the brake percentage using the conversion model (if no speed dependent deceleration model for emergency brake was acquired as part of Train Data).</Comment>
 </Variable><Variable
- Type="BrakingModel"
+ Type="Kernel.TrainData.BrakingParameters.BrakingModel"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  Implemented="TRUE"

@@ -1775,7 +1775,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 - establishing of  a safe radio connection
 - termination the communication session</Comment>
 </StructureElement><StructureElement
- TypeName="BaseTypes.Time"
+ TypeName="Default.BaseTypes.Time"
  Default="BaseTypes.Time.Infinity"
  Mode="Internal"
  Implemented="TRUE"
@@ -4319,7 +4319,7 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 >
 <Comment>Allows to request the list of available and allowed networks.</Comment>
 </StructureElement><StructureElement
- TypeName="EURORADIO.AvailableNetworksCol"
+ TypeName="AvailableNetworksCol"
  Default="[]"
  Mode="Incoming"
  Implemented="TRUE"
@@ -4462,7 +4462,7 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Connected</Expression>
 </Case></Cases>
 </Function><Function
- Type="RBCStruct"
+ Type="EURORADIO.RBCStruct"
  Default=""
  X="110"
  Y="600"
@@ -4545,7 +4545,7 @@ Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Inactive<
 Terminal2 != EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="ContactActionEnum"
+ Type="EURORADIO.ContactActionEnum"
  Default=""
  Y="660"
  Width="100"
@@ -4652,7 +4652,7 @@ Terminal2 != EMPTY</Expression>
 Terminal2.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Expression>
 </Case></Cases>
 </Function><Function
- Type="TerminalStruct"
+ Type="EURORADIO.TerminalStruct"
  Default=""
  X="330"
  Y="660"
@@ -4744,7 +4744,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
- Type="SystemVersionEnum"
+ Type="EURORADIO.SystemVersionEnum"
  Default=""
  X="110"
  Y="720"
@@ -4857,7 +4857,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <Comment>Indicates if the provided terminal is registered.</Comment>
 <Parameters>
 <Parameter
- Type="TerminalStruct"
+ Type="EURORADIO.TerminalStruct"
  Name="aTerminal"
  Guid="12711288-b128-4515-ac14-d0435e91c454"
 >
@@ -4872,7 +4872,7 @@ It can only return false if there is no open session or if the last known RBC ha
 aTerminal.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Expression>
 </Case></Cases>
 </Function><Function
- Type="RBCStruct"
+ Type="EURORADIO.RBCStruct"
  Default=""
  Y="780"
  Width="100"
@@ -4959,7 +4959,7 @@ TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
 </ReqRef><Comment>Indicates if a communication session has to be established.</Comment>
 <Parameters>
 <Parameter
- Type="RBCStruct"
+ Type="EURORADIO.RBCStruct"
  Name="anRBC"
  Guid="6c09e0fd-ecb7-47eb-aaaf-39f94e0970ee"
 >
@@ -5039,7 +5039,7 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 </ReqRef><Comment>Indicates if an outgoing message can be sent. The only condition to be satisfied is to have an established session. A message can thus be sent during a loss of the safe radio connection if the connection state is still &quot;Connected&quot;. But no message can be sent after the message &quot;Termination of communication session&quot; since after having sent this message the system goes to &quot;Terminating&quot; state.</Comment>
 <Parameters>
 <Parameter
- Type="RBCStruct"
+ Type="EURORADIO.RBCStruct"
  Name="anRBC"
  Guid="b40133ab-d13d-4324-bde5-7de83839347c"
 >
@@ -5052,7 +5052,7 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 <Expression>anRBC.ConnectionState in RBCStruct.ConnectionStateSM.Connected</Expression>
 </Case></Cases>
 </Function><Function
- Type="RBCStruct"
+ Type="EURORADIO.RBCStruct"
  Default=""
  X="330"
  Y="780"
@@ -5132,7 +5132,7 @@ SecondaryRBCConnection().ContactRBCOrder.ActionToPerform == ContactActionEnum.Te
 CurrentRBCConnection().ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</Expression>
 </Case></Cases>
 </Function><Function
- Type="SafeRadioConnectionStatusEnum"
+ Type="EURORADIO.SafeRadioConnectionStatusEnum"
  Default=""
  X="110"
  Y="840"
@@ -5228,7 +5228,7 @@ The only one case where the status to display is that of the secondary connectio
 </ReqRef><Comment>Allows to establish/terminate the communication session with an RBC. If no mobile temrinal is registered, the order is rejected.</Comment>
 <Parameters>
 <Parameter
- Type="ContactOrderStruct"
+ Type="EURORADIO.ContactOrderStruct"
  Name="anOrder"
  Guid="bd7c227e-3f2a-4591-b2f2-0261dead5db0"
 >
@@ -5326,7 +5326,7 @@ The only one case where the status to display is that of the secondary connectio
 </ReqRef><Comment>Allows to establish the communication session with an accepting RBC. If no mobile terminal is registered, the order is rejected.</Comment>
 <Parameters>
 <Parameter
- Type="ContactOrderStruct"
+ Type="EURORADIO.ContactOrderStruct"
  Name="Order"
  Guid="36d1affc-3e90-44a1-bafa-74605373535b"
 >
@@ -5644,7 +5644,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </ReqRef><Comment>Allows to establish/terminate the communication session with an RIU.</Comment>
 <Parameters>
 <Parameter
- Type="ContactOrderStruct"
+ Type="EURORADIO.ContactOrderStruct"
  Name="Order"
  Guid="b9ea4cb2-277a-4de4-863a-f74f28a202a2"
 >
@@ -7831,7 +7831,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </ReqRef><Comment>The procedure starts the registering of the provided mobile terminal to the provided network, except if the terminal is already registered to the provided netword.</Comment>
 <Parameters>
 <Parameter
- Type="TerminalStruct"
+ Type="EURORADIO.TerminalStruct"
  Name="aTerminal"
  Guid="69f73909-1dca-46c6-a79f-e7d801022eb6"
 >
@@ -8167,7 +8167,7 @@ NOT
 >
 </ReqRef><Comment>Indicates the number of repetitions of radio messages (i.e. excluding the first sending).</Comment>
 </Variable><Variable
- Type="RIUStruct"
+ Type="EURORADIO.RIUStruct"
  VariableMode="InOut"
  X="220"
  Y="360"
@@ -8184,7 +8184,7 @@ NOT
 >
 </ReqRef><Comment>RIU connection.</Comment>
 </Variable><Variable
- Type="RBCContactStruct"
+ Type="EURORADIO.RBCContactStruct"
  DefaultValue=""
  VariableMode="Internal"
  X="330"
@@ -8257,7 +8257,7 @@ NOT
 >
 </ReqRef><Comment>The last received Radio Network identity.</Comment>
 </Variable><Variable
- Type="AvailableNetworksStruct"
+ Type="EURORADIO.AvailableNetworksStruct"
  DefaultValue=""
  VariableMode="InOut"
  X="220"
@@ -8275,7 +8275,7 @@ NOT
 >
 </ReqRef><Comment>Allows to request the list of available and allowed networks.</Comment>
 </Variable><Variable
- Type="TerminalStruct"
+ Type="EURORADIO.TerminalStruct"
  VariableMode="InOut"
  X="330"
  Y="420"
@@ -8292,7 +8292,7 @@ NOT
 >
 </ReqRef><Comment>First terminal struct.</Comment>
 </Variable><Variable
- Type="TerminalStruct"
+ Type="EURORADIO.TerminalStruct"
  VariableMode="InOut"
  Y="480"
  Width="100"
@@ -8404,7 +8404,7 @@ NOT
 >
 </ReqRef><Comment>Maximum time to maintain a communication session in case of failed re-connection attempts.</Comment>
 </Variable><Variable
- Type="BaseTypes.Time"
+ Type="Default.BaseTypes.Time"
  DefaultValue="45.0"
  VariableMode="Constant"
  X="110"

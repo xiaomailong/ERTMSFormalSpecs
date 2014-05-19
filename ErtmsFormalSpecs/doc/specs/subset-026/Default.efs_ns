@@ -555,7 +555,7 @@
 >
 </ReqRef><Comment>The level information of the train</Comment>
 <StructureElement
- TypeName="Default.NID_NTC"
+ TypeName="NID_NTC"
  Default="Default.NID_NTC.NOT_APPLICABLE"
  Mode="Internal"
  Implemented="TRUE"
@@ -564,7 +564,7 @@
 >
 <Comment>only applicable if Value == Level.LNTC</Comment>
 </StructureElement><StructureElement
- TypeName="Default.Level"
+ TypeName="Level"
  Default="Default.Level.Unknown"
  Mode="Internal"
  Implemented="TRUE"
@@ -575,7 +575,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="LevelDataStruct"
+ TypeName="Default.LevelDataStruct"
  Default="EMPTY"
  X="430"
  Y="400"
@@ -623,7 +623,7 @@
 </ReqRef><Comment>Converts an EFS level to the corresponding ERTMS level.</Comment>
 <Parameters>
 <Parameter
- Type="Default.Level"
+ Type="Level"
  Name="Level"
  Guid="81453d00-31ea-437f-853a-c1ca1ec3c5a9"
 >
@@ -695,7 +695,7 @@
 </ReqRef><Comment>Converts an EFS mode to the corresponding ERTMS mode. The values of NP and PS are not defined so these modes are mapped to the &quot;Spare&quot; value.</Comment>
 <Parameters>
 <Parameter
- Type="Default.Mode"
+ Type="Mode"
  Name="Mode"
  Guid="859740ca-2383-447d-ae89-5b09253cf77c"
 >
@@ -872,7 +872,7 @@
 </ReqRef><Comment>This function converts a Default.Orientation into its corresponding Messages.Q_DIRTRAIN</Comment>
 <Parameters>
 <Parameter
- Type="Default.Orientation"
+ Type="Orientation"
  Name="Orientation"
  Guid="d09c7ecb-8bed-41f7-874f-c4b05326f8f0"
 >
@@ -936,7 +936,7 @@
 </ReqRef><Comment>This function converts a Default.Orientation into its corresponding Messages.Q_DIR</Comment>
 <Parameters>
 <Parameter
- Type="Default.Orientation"
+ Type="Orientation"
  Name="Orientation"
  Guid="61c74885-8bc1-45bb-a42a-f1500ee7a0f8"
 >
@@ -1009,7 +1009,7 @@
 </ReqRef><Comment>This function converts a Default.Orientation into its corresponding Messages.Q_DIRLRBG</Comment>
 <Parameters>
 <Parameter
- Type="Default.Orientation"
+ Type="Orientation"
  Name="Orientation"
  Guid="ef25678f-b63d-45fc-8eee-bf3c91127b4c"
 >
@@ -1073,7 +1073,7 @@
 </ReqRef><Comment>This function converts a Default.Orientation into its corresponding Messages.Q_DLRBG</Comment>
 <Parameters>
 <Parameter
- Type="Default.Orientation"
+ Type="Orientation"
  Name="Orientation"
  Guid="6c74e62a-ac1c-4cef-aab7-e7ae20c4eaeb"
 >
@@ -1583,12 +1583,12 @@
 <Comment>This function provides the minimum of two percentages</Comment>
 <Parameters>
 <Parameter
- Type="Default.Percentage"
+ Type="Percentage"
  Name="X1"
  Guid="e71422a6-7b4f-45d8-bfbb-2dbd0f90d669"
 >
 </Parameter><Parameter
- Type="Default.Percentage"
+ Type="Percentage"
  Name="X2"
  Guid="a9dbb593-645e-4182-8eb6-bba11fe26b09"
 >
@@ -1654,7 +1654,7 @@
 <Expression>Qualifier == Messages.Q_NEWCOUNTRY.Not_the_same_country___railway_administration__NID_C_follows</Expression>
 </Case></Cases>
 </Function><Function
- Type="Orientation"
+ Type="Default.Orientation"
  Default=""
  X="380"
  Y="10"

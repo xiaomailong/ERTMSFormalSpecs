@@ -212,7 +212,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="AxleLoadValue"
+ TypeName="Kernel.TrackDescription.AxleLoad.AxleLoadValue"
  MaxSize="20"
  Default="[]"
  Y="60"
@@ -229,7 +229,7 @@
 >
 </ReqRef><Comment>Represents a set of axle load values.</Comment>
 </Collection><Collection
- TypeName="AxleLoad"
+ TypeName="Kernel.TrackDescription.AxleLoad.AxleLoad"
  MaxSize="30"
  Default="[]"
  X="110"
@@ -310,7 +310,7 @@
 INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Case></Cases>
 </Function><Function
- Type="AxleLoad"
+ Type="Kernel.TrackDescription.AxleLoad.AxleLoad"
  Default=""
  X="110"
  Y="180"
@@ -376,7 +376,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="AxleLoadValue"
+ Type="Kernel.TrackDescription.AxleLoad.AxleLoadValue"
  Default=""
  X="220"
  Y="180"
@@ -412,7 +412,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="AxleLoad"
+ Type="Kernel.TrackDescription.AxleLoad.AxleLoad"
  Default=""
  X="330"
  Y="180"
@@ -527,7 +527,7 @@ USING
 </ReqRef><Comment>Provides the speed restriction for a given level crossing. The speed restriction is applicable after the distance specified in the level crossing information and during its length. From all categories specified in the level crossing, only the categories lower than or equal to the train&apos;s category are chosen and among these categories the minimum speed value is chosen. In case when there is no category lower that or equal to the train&apos;s category, the maximum speed value is returned.</Comment>
 <Parameters>
 <Parameter
- Type="AxleLoad"
+ Type="Kernel.TrackDescription.AxleLoad.AxleLoad"
  Name="anAxleLoad"
  Guid="36b5a445-303c-4608-8735-26983e0c59d4"
 >
@@ -601,7 +601,7 @@ USING
 </ReqRef><Comment>Provides the length of an axle load together with the train&apos;s length, if needed.</Comment>
 <Parameters>
 <Parameter
- Type="AxleLoad"
+ Type="Kernel.TrackDescription.AxleLoad.AxleLoad"
  Name="anAxleLoad"
  Guid="06832e68-67d5-4537-877e-c2f9d8149056"
 >
@@ -914,7 +914,7 @@ ON
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="AxleLoadProfile"
+ Type="Kernel.TrackDescription.AxleLoad.AxleLoadProfile"
  DefaultValue="AxleLoadProfile
 {
     EmptyProfileDistance =&gt; 0.0,

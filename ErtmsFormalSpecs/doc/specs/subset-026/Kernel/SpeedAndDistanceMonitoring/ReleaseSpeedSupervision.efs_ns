@@ -340,7 +340,7 @@ BaseTypes.MaxDistance
 </ReqRef><Comment>Indicates if the release speed is applicable (a valid MA with a release speed has been received).</Comment>
 <Parameters>
 <Parameter
- Type="TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="aTarget"
  Guid="ec3ee1ea-fda2-4335-a503-5b58f2354cee"
 >
@@ -513,6 +513,7 @@ INITIAL_VALUE
  Name="Value"
  Guid="ccedf329-af56-4de8-8836-753af71472df"
 >
+<Comment></Comment>
 <Expression>REDUCE
     TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) |
         d_tripEOA() &lt;= X.Location AND X.Location &lt; MA.SvL().Location

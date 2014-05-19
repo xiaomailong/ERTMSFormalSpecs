@@ -13766,7 +13766,8 @@ In case the main signal is at danger in level 1, the on-board shall supervise th
  functionalBlockName=""
  Name=""
  Guid="a101326e-0577-4002-a13a-0313684f1162"
->Emergency Messages<Sub>
+><Comment></Comment>
+Emergency Messages<Sub>
 <Paragraph
  id="3.10.1"
  guid=""
@@ -28240,7 +28241,8 @@ Speed and distance monitoring commands<Sub>
  functionalBlockName=""
  Name=""
  Guid="7d9d0edb-ad9a-48db-a67e-e74e1be64d74"
->The emergency brake command, which is triggered instead of the service brake command when an SBI supervision limit is exceeded, shall be revoked according to the requirements specified for the revocation of service brake command, unless the emergency brake command has been also triggered due to an EBI supervision limit. In such case, the condition for revoking the emergency brake command due to EBI supervision limit shall prevail.<RequirementSets>
+><Comment></Comment>
+The emergency brake command, which is triggered instead of the service brake command when an SBI supervision limit is exceeded, shall be revoked according to the requirements specified for the revocation of service brake command, unless the emergency brake command has been also triggered due to an EBI supervision limit. In such case, the condition for revoking the emergency brake command due to EBI supervision limit shall prevail.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="79545e4b-c695-44de-be36-a8cfff0157dd"
@@ -30554,7 +30556,8 @@ Triggering condition #; Estimated speed; Location; TI Command revoked; Supervisi
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30582,7 +30585,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30600,7 +30604,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30618,13 +30623,13 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="c0c90876-1322-4533-951c-924804b80043"
->[3]; (The list of supervised targets is updated) AND (condition [1] is not fulfilled); REACHES CSM
-	REACHES CSM; LEAVES TSM ; LEAVES RSM<RequirementSets>
+>[3]; (The list of supervised targets is updated) AND (condition [1] is not fulfilled); REACHES CSM; LEAVES TSM ; LEAVES RSM<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="011e1e5b-5868-46c5-bef9-3bc21a375cd7"
@@ -30637,7 +30642,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30655,7 +30661,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30687,7 +30694,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  scope="FLAGS"
  bl="3.1.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30696,17 +30704,18 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
 <Paragraph
  id="3.13.10.6.2.1"
  guid=""
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="7adab04b-5492-402e-a6ed-3be503408c09"
->Note: This means that when the service brake is commanded in ceiling speed monitoring while it is not available in target speed monitoring, the service brake remains commanded when the on-board switches to target speed monitoring and is only revoked when the Permitted speed supervision limit is no longer exceeded.<RequirementSets>
+><Comment></Comment>
+Note: This means that when the service brake is commanded in ceiling speed monitoring while it is not available in target speed monitoring, the service brake remains commanded when the on-board switches to target speed monitoring and is only revoked when the Permitted speed supervision limit is no longer exceeded.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="990141c3-3686-4809-abe5-6c3c35493341"
@@ -30726,7 +30735,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30744,7 +30754,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30762,7 +30773,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  scope="FLAGS"
  bl="3.1.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""

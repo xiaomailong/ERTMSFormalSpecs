@@ -249,7 +249,7 @@ The confidence level (K) is defined as a level of probability that the true posi
 >
 <Comment>Packet identifier. Value = 8.</Comment>
 </StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="Default.MessageTypes.Length"
  Default=""
  Mode="Incoming"
  Implemented="TRUE"
@@ -456,7 +456,7 @@ The confidence level (K) is defined as a level of probability that the true posi
 <Comment>Stores the message provided by the odometry.</Comment>
 <Parameters>
 <Parameter
- Type="OdometerMulticastMessage"
+ Type="Odometry.OdometerMulticastMessage"
  Name="Message"
  Guid="c80158b8-7024-4537-9f24-a47f191474b7"
 >
@@ -503,7 +503,7 @@ The confidence level (K) is defined as a level of probability that the true posi
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="OdometerAccuracy"
+ Type="Odometry.OdometerAccuracy"
  DefaultValue="OdometerAccuracy
 {
     D_ura =&gt; 0.0,
@@ -545,7 +545,7 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
 >
 <Comment>The current time of the odometry.</Comment>
 </Variable><Variable
- Type="OdometerMulticastMessage"
+ Type="Odometry.OdometerMulticastMessage"
  DefaultValue="EMPTY"
  VariableMode="InOut"
  X="220"

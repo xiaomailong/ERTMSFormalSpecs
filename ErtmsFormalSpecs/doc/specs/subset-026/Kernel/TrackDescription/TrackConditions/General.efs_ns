@@ -210,7 +210,7 @@
 >
 </ReqRef><Comment>Start location of the track condition</Comment>
 </StructureElement><StructureElement
- TypeName="General.TrackCondition"
+ TypeName="TrackCondition"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -226,7 +226,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="General.TrackConditionInformation"
+ TypeName="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  MaxSize="20"
  Default="[]"
  Y="60"
@@ -317,7 +317,7 @@
 <Expression>Distance + Default.BaseTypes.LengthToDistance(Length) + Default.BaseTypes.LengthToDistance(Kernel.TrainData.TrainData.Value.TrainLength)</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Default=""
  X="110"
  Y="180"
@@ -335,7 +335,7 @@
 </ReqRef><Comment>On mode switch, resets a subset of the track conditions in all future profile points</Comment>
 <Parameters>
 <Parameter
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="TCPacket"
  Guid="8504f3e3-f3fd-458e-bae5-f4e2cebad52c"
 >
@@ -367,7 +367,7 @@
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Default=""
  X="220"
  Y="180"
@@ -385,7 +385,7 @@
 </ReqRef><Comment>On mode switch, resets a subset of the track conditions in all future profile points</Comment>
 <Parameters>
 <Parameter
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="TCPacket"
  Guid="d9557982-b23b-4119-b4a0-6da78566f568"
 >
@@ -447,7 +447,7 @@
 <Expression>CurrentConditions().RadioHole</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackCondition"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackCondition"
  Default=""
  X="440"
  Y="180"
@@ -462,12 +462,12 @@
 (Condition A  OR  Condition B)</Comment>
 <Parameters>
 <Parameter
- Type="TrackCondition"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackCondition"
  Name="Profile1"
  Guid="fe7b67e3-89d5-4779-a638-0bb141b805ee"
 >
 </Parameter><Parameter
- Type="TrackCondition"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackCondition"
  Name="Profile2"
  Guid="b598db9e-9187-4717-8a79-2f0205c0e215"
 >
@@ -494,7 +494,7 @@
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackCondition"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackCondition"
  Default=""
  Y="240"
  Width="100"
@@ -575,7 +575,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackCondition"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackCondition"
  Default=""
  X="110"
  Y="240"
@@ -707,7 +707,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
   INITIAL_VALUE Default.MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACKCOND, scale=&gt;Packet.Q_SCALE)</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Default=""
  X="440"
  Y="240"
@@ -918,7 +918,7 @@ The use of profile points and the functions in this namespace can be found in Er
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Default=""
  Y="300"
  Width="100"
@@ -931,7 +931,7 @@ The use of profile points and the functions in this namespace can be found in Er
 <Comment>Takes a track condition profile point and data from a track condition packet and merges them together</Comment>
 <Parameters>
 <Parameter
- Type="General.TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="Profile"
  Guid="5e72dc8c-9bf9-42d6-8475-f02835f4f524"
 >

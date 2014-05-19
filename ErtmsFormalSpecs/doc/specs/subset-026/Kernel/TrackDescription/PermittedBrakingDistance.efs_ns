@@ -145,7 +145,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="SRPB"
+ TypeName="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
  MaxSize="20"
  Default="[]"
  Y="60"
@@ -165,7 +165,7 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="SRPB"
+ Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
  Default=""
  Y="180"
  Width="100"
@@ -683,7 +683,7 @@
 </ReqRef><Comment>Provides value of A_safe for adhesion factor slippery rail with gradient 0.</Comment>
 <Parameters>
 <Parameter
- Type="TrackDescription.AdhesionFactors.AdhesionFactor"
+ Type="Kernel.TrackDescription.AdhesionFactors.AdhesionFactor"
  Name="anAdhFactor"
  Guid="ad9ff0e8-6784-4bcb-8310-c6ee0f1274dd"
 >
@@ -1021,7 +1021,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 <Comment>Provides the speed restriction for a certain request to calculate a speed restriction which ensures that the train stops within a given permitted braking distance.</Comment>
 <Parameters>
 <Parameter
- Type="SRPB"
+ Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
  Name="aSRPB"
  Guid="ada73484-df4f-465a-9111-63fb7a01cdf8"
 >
@@ -1338,7 +1338,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 >
 </ReqRef><Parameters>
 <Parameter
- Type="SRPB"
+ Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
  Name="aSRPB"
  Guid="3dcc62ba-b312-4a75-8474-65219553e4e0"
 >
@@ -1371,7 +1371,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="SRPBProfile"
+ Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPBProfile"
  DefaultValue="Kernel.TrackDescription.PermittedBrakingDistance.SRPBProfile
 {
     InitialState =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow, 
@@ -1403,7 +1403,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 >
 </ReqRef><Comment>Contains the speed restrictions due to permitted braking distance.</Comment>
 </Variable><Variable
- Type="TrainData.BrakingParameters.EBModelSet"
+ Type="Kernel.TrainData.BrakingParameters.EBModelSet"
  DefaultValue=""
  VariableMode="Internal"
  X="110"
@@ -1421,7 +1421,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 >
 </ReqRef><Comment>Contains the previous value of emergency braking models.</Comment>
 </Variable><Variable
- Type="TrainData.BrakingParameters.SBModelSet"
+ Type="Kernel.TrainData.BrakingParameters.SBModelSet"
  DefaultValue=""
  VariableMode="Internal"
  X="220"

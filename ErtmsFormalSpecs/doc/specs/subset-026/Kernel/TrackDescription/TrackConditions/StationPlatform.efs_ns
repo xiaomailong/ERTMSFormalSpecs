@@ -94,7 +94,7 @@
 >
 </ReqRef><Comment>Start location of the track condition</Comment>
 </StructureElement><StructureElement
- TypeName="StationPlatform.StationPlatform"
+ TypeName="StationPlatform"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -120,7 +120,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="StationPlatform.StationPlatformInformation"
+ TypeName="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformation"
  MaxSize="20"
  Default="[]"
  Implemented="TRUE"
@@ -136,7 +136,7 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="StationPlatformInformation"
+ Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformation"
  Default=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -236,7 +236,7 @@
 <Expression>Distance + Default.BaseTypes.LengthToDistance(Length) + Default.BaseTypes.LengthToDistance(Kernel.TrainData.TrainData.Value.TrainLength)</Expression>
 </Case></Cases>
 </Function><Function
- Type="StationPlatform"
+ Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatform"
  Default=""
  Implemented="TRUE"
  Name="SPAtDistance"
@@ -276,7 +276,7 @@
 <Expression>StationPlatform { }</Expression>
 </Case></Cases>
 </Function><Function
- Type="StationPlatform"
+ Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatform"
  Default=""
  Implemented="TRUE"
  Name="CurrentSPConditions"
