@@ -43,7 +43,7 @@
  Name="Always"
  Guid="a6ca2df8-da52-427a-b7f7-28931cba0cb5"
 >
-<Expression>( dV_ebi_max - dV_ebi_min ) / ( V_ebi_max - V_ebi_min )</Expression>
+<Expression>( CeilingSupervision.dV_ebi_max - CeilingSupervision.dV_ebi_min ) / ( CeilingSupervision.V_ebi_max - CeilingSupervision.V_ebi_min )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -79,7 +79,7 @@
  Name="Always"
  Guid="4cd4822e-4db0-42c0-9a92-4efa7ff57757"
 >
-<Expression>( dV_sbi_max - dV_sbi_min ) / ( V_sbi_max - V_sbi_min )</Expression>
+<Expression>( CeilingSupervision.dV_sbi_max - CeilingSupervision.dV_sbi_min ) / ( CeilingSupervision.V_sbi_max - CeilingSupervision.V_sbi_min )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -115,7 +115,7 @@
  Name="Always"
  Guid="46ab034c-51f8-4828-950e-823da37a4bd7"
 >
-<Expression>( dV_warning_max - dV_warning_min ) / ( V_warning_max - V_warning_min )</Expression>
+<Expression>( CeilingSupervision.dV_warning_max - CeilingSupervision.dV_warning_min ) / ( CeilingSupervision.V_warning_max - CeilingSupervision.V_warning_min )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -161,13 +161,13 @@
 <PreConditions>
 <PreCondition
  Guid="5f96f091-76ec-436e-97e2-191fcebebc1e"
->V &gt; V_warning_min</PreCondition></PreConditions>
-<Expression>BaseTypes.MinSpeed ( dV_warning_min + C_warning() * ( V - V_warning_min ), dV_warning_max )</Expression>
+>V &gt; CeilingSupervision.V_warning_min</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinSpeed ( CeilingSupervision.dV_warning_min + CeilingSupervision.C_warning() * ( V - CeilingSupervision.V_warning_min ), CeilingSupervision.dV_warning_max )</Expression>
 </Case><Case
  Name="V &lt;= V_warning_min"
  Guid="69b02327-f93e-48b1-9e66-f3c0fe3ce8c9"
 >
-<Expression>dV_warning_min</Expression>
+<Expression>CeilingSupervision.dV_warning_min</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -213,13 +213,13 @@
 <PreConditions>
 <PreCondition
  Guid="dea57d2f-dc75-4bfa-abc4-08d829d0fdaf"
->V &gt; V_ebi_min</PreCondition></PreConditions>
-<Expression>BaseTypes.MinSpeed ( dV_ebi_min + C_ebi() * ( V - V_ebi_min ), dV_ebi_max )</Expression>
+>V &gt; CeilingSupervision.V_ebi_min</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinSpeed ( CeilingSupervision.dV_ebi_min + CeilingSupervision.C_ebi() * ( V - CeilingSupervision.V_ebi_min ), CeilingSupervision.dV_ebi_max )</Expression>
 </Case><Case
  Name="V &lt;= V_ebi_min"
  Guid="605c01a1-da95-4901-a26e-86f35aa22b66"
 >
-<Expression>dV_ebi_min</Expression>
+<Expression>CeilingSupervision.dV_ebi_min</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -265,13 +265,13 @@
 <PreConditions>
 <PreCondition
  Guid="261b8cfe-5c4b-4a62-8deb-003a51a21e89"
->V &gt; V_sbi_min</PreCondition></PreConditions>
-<Expression>BaseTypes.MinSpeed ( dV_sbi_min + C_sbi() * ( V - V_sbi_min ), dV_sbi_max )</Expression>
+>V &gt; CeilingSupervision.V_sbi_min</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinSpeed ( CeilingSupervision.dV_sbi_min + CeilingSupervision.C_sbi() * ( V - CeilingSupervision.V_sbi_min ), CeilingSupervision.dV_sbi_max )</Expression>
 </Case><Case
  Name="V &lt;= V_sbi_min"
  Guid="fd3cbb6e-d144-4cdf-bf4d-a45e176fe5e7"
 >
-<Expression>dV_sbi_min</Expression>
+<Expression>CeilingSupervision.dV_sbi_min</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -367,6 +367,7 @@
  Name="Always"
  Guid="10689937-c663-4de7-8d80-214156b3d3b8"
 >
+<Comment></Comment>
 <Expression>MIN ( MIN ( MA.SpeedRestrictions, MRSP.SpeedRestrictions), NationalValues.MaxDistInSRSpeedRestriction ) (distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -407,9 +408,9 @@
 <PreConditions>
 <PreCondition
  Guid="06ac8f78-3db7-48f6-9384-4a9f597d0b2b"
->P ( distance ) &gt; 0.0</PreCondition></PreConditions>
+>CeilingSupervision.P ( distance ) &gt; 0.0</PreCondition></PreConditions>
 <Expression>AddIncrement (
-  Function =&gt; P, 
+  Function =&gt; CeilingSupervision.P, 
   Increment =&gt; CeilingSupervision.dV_warning
 ) (distance)</Expression>
 </Case><Case
@@ -454,13 +455,13 @@
 <PreConditions>
 <PreCondition
  Guid="579e1045-ba4d-4041-ba9c-804884d9ca61"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) ) &gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition></PreConditions>
-<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) )</Expression>
+>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) ) &gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition></PreConditions>
+<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) )</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="a737ca4f-968e-416a-badb-330077e71a71"
 >
-<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</Expression>
+<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -498,8 +499,8 @@
  Guid="abe701e4-9e3e-4857-806a-07f43f56fb7e"
 >
 <Expression>AddIncrement (
-  Function =&gt; P, 
-  Increment =&gt; dV_sbi
+  Function =&gt; CeilingSupervision.P, 
+  Increment =&gt; CeilingSupervision.dV_sbi
 ) ( Distance )</Expression>
 </Case></Cases>
 </Function><Function
@@ -558,18 +559,20 @@
  Name="Permitted speed is not zero"
  Guid="8d09c0fa-bea0-485f-ba54-0659f3cc249d"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0e5ea181-31f6-4423-93dd-5e7adf2f9157"
->P ( Distance ) &gt; 0.0</PreCondition></PreConditions>
+>CeilingSupervision.P ( Distance ) &gt; 0.0</PreCondition></PreConditions>
 <Expression>AddIncrement (
-  Function =&gt; P, 
-  Increment =&gt; dV_ebi
+  Function =&gt; CeilingSupervision.P, 
+  Increment =&gt; CeilingSupervision.dV_ebi
 ) ( Distance )</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="b4c5386a-c9f7-4d54-8a87-508baad79eca"
 >
+<Comment></Comment>
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function></Functions>

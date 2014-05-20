@@ -9708,7 +9708,8 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 <Actions>
 <Action
  Guid="f58ff8d3-2659-4992-92c1-4aa6cfb46808"
->SpeedAndDistanceMonitoring.UpdateMonitoring()</Action></Actions>
+><Comment></Comment>
+SpeedAndDistanceMonitoring.UpdateMonitoring()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9817,6 +9818,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Train position"
  Guid="f56351d1-ad26-469d-a848-02640e64e865"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9870,6 +9872,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Train data"
  Guid="5e656b5e-7ed2-486d-996f-eaadfee75e20"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9910,6 +9913,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Train integrity"
  Guid="4f1244da-71cc-4d18-8bcf-52621d1eff4b"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9930,6 +9934,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Power on"
  Guid="47ba31e2-ec3f-4faf-92d8-aea5dca9da87"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9943,6 +9948,41 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 <Action
  Guid="e2e35dfb-2542-4a77-afc3-0648bf2da90b"
 >PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set MA"
+ Guid="3f46b579-4ba8-4733-8327-9bd0a781347f"
+>
+<Comment>Include a MA in the standard test environment</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set MA"
+ Guid="d7556d82-136c-45f3-8c2c-9192589886c0"
+>
+<Comment>If a MA has not already been defined for the train, set a standard MA.
+This is to avoid overwriting a MA required for the test.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b7403f99-d772-4922-8555-3379623e2fc7"
+>NOT Available(Kernel.MA.MA)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d74d901f-a0ff-4b65-bb91-6716f94bb0e0"
+><Comment></Comment>
+MA.InitializeElementsForMA()</Action><Action
+ Guid="d75588bc-c4d9-4092-a0f1-4d763deadefe"
+><Comment></Comment>
+MA.MA &lt;- MA.MovementAuthority{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 5000.0
+    },
+    ReferenceBG =&gt; 1986,
+    ReferenceBGLocation =&gt; 0.0
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

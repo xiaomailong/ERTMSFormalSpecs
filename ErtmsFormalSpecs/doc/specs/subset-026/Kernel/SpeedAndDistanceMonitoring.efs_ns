@@ -73,7 +73,7 @@
 </Enum></Enumerations>
 <StateMachines>
 <StateMachine
- Default="Ceiling"
+ Default="MonitoringTypeSM.Ceiling"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -125,7 +125,7 @@
 >
 <Comment>Ceiling Speed Monitoring.</Comment>
 <StateMachine
- Default="Start"
+ Default="MonitoringTypeSM.Ceiling.Start"
  Implemented="TRUE"
  Guid="11f43511-b66c-40ff-9cd8-49fc31a1e9cd"
 >
@@ -161,7 +161,8 @@
 <Actions>
 <Action
  Guid="a21ce3f8-9147-429c-bfb5-3a82d328646a"
->JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+><Comment></Comment>
+JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Monitoring Ceiling Speed"
@@ -173,7 +174,7 @@
 <Actions>
 <Action
  Guid="3dde4b50-ef4e-45cf-8795-4f1217c66e85"
->THIS &lt;- Ceiling.MonitoringCeilingSpeed</Action><Action
+>THIS &lt;- MonitoringTypeSM.Ceiling.MonitoringCeilingSpeed</Action><Action
  Guid="929fe96c-120f-4740-a4e8-b92a4eb3d5d1"
 >DetermineSupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
@@ -207,11 +208,12 @@
 <PreConditions>
 <PreCondition
  Guid="d984a754-d9a0-4a30-ad3c-10001df8ecf0"
->Condition1()</PreCondition></PreConditions>
+><Comment></Comment>
+Condition1()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="24551215-3f50-43dc-95d4-95a90ecbb76f"
->THIS &lt;- Target.Start</Action></Actions>
+>THIS &lt;- MonitoringTypeSM.Target.Start</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -221,7 +223,7 @@
 >
 <Comment>Target Speed Monitoring.</Comment>
 <StateMachine
- Default="Start"
+ Default="MonitoringTypeSM.Target.Start"
  Implemented="TRUE"
  Guid="04526e41-51a0-49ff-a66a-c48d62f36411"
 >
@@ -279,7 +281,7 @@
 <Actions>
 <Action
  Guid="f56144fc-d490-42cf-9b0d-6f4f02dcff6f"
->THIS &lt;- Target.MonitoringTargetSpeed</Action><Action
+>THIS &lt;- MonitoringTypeSM.Target.MonitoringTargetSpeed</Action><Action
  Guid="543e8165-df83-432e-b4cd-95d43feb70a7"
 >DetermineSupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
@@ -307,7 +309,7 @@
 <Actions>
 <Action
  Guid="44f973a1-f64e-4717-bc83-fcb6ae9ade4e"
->THIS &lt;- ReleaseSpeed.Start</Action></Actions>
+>THIS &lt;- MonitoringTypeSM.ReleaseSpeed.Start</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -317,7 +319,7 @@
 >
 <Comment>Release Speed Monitoring.</Comment>
 <StateMachine
- Default="Start"
+ Default="MonitoringTypeSM.ReleaseSpeed.Start"
  Implemented="TRUE"
  Guid="4c471652-a236-49b9-afdf-492ed8264c22"
 >
@@ -375,7 +377,7 @@
 <Actions>
 <Action
  Guid="47f71217-2ed4-41e4-b059-fe6375b01867"
->THIS &lt;- ReleaseSpeed.MonitoringReleaseSpeed</Action><Action
+>THIS &lt;- MonitoringTypeSM.ReleaseSpeed.MonitoringReleaseSpeed</Action><Action
  Guid="953c08ed-e977-4766-9ca6-c5043644471e"
 >DetermineSupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
@@ -422,6 +424,7 @@
  Name="CheckSupervisedTargets"
  Guid="a03fee97-031e-4942-9848-c5b0d7fecc9c"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f0533ab6-40d0-43ae-a60c-64a801411bc9"
@@ -455,6 +458,7 @@ SupervisedTargets</PreCondition></PreConditions>
  Name="Condition 1 is not fulfilled"
  Guid="8483403d-dcf0-4682-b06f-5a2ae4fcfec4"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d6cc722b-4470-4618-b7ad-a8f6154e0bc8"
@@ -462,7 +466,8 @@ SupervisedTargets</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f9cfaf7b-b51a-4ff0-9e43-92e4082c6fbc"
->THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
+><Comment></Comment>
+THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -481,7 +486,7 @@ SupervisedTargets</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="968a3c7d-c0d9-4d05-b65e-d84a00f02458"
->THIS in Target</PreCondition></PreConditions>
+>THIS in MonitoringTypeSM.Target</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a364a045-8542-40c1-91b4-f4821eaa0ef2"
@@ -537,7 +542,7 @@ SupervisedTargets</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6de0a2d5-3cb9-49e5-ada3-7ac6f14df66a"
->THIS &lt;- ReleaseSpeed</Action></Actions>
+>THIS &lt;- MonitoringTypeSM.ReleaseSpeed</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -556,7 +561,7 @@ SupervisedTargets</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="21a7d41d-368f-48cb-9bd7-804eddb97e31"
->THIS in Target</PreCondition></PreConditions>
+>THIS in MonitoringTypeSM.Target</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -681,7 +686,8 @@ SupervisedTargets</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="5394b5c1-088b-4cd4-99d8-833a9ccb9b0e"
->V &lt; 30.0</PreCondition><PreCondition
+><Comment></Comment>
+V &lt; 30.0</PreCondition><PreCondition
  Guid="fc94aa76-153b-481d-a628-d5e5681681be"
 >NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition></PreConditions>
 <Expression>2.0</Expression>
@@ -779,7 +785,7 @@ SupervisedTargets</PreCondition></PreConditions>
 <PreCondition
  Guid="5394d167-a030-4b1d-a096-b176e1075237"
 ><Comment></Comment>
-Monitoring in Monitoring.Ceiling</PreCondition><PreCondition
+Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
  Guid="e902ee0f-8ed6-4c80-aafe-96b258b01056"
 >Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
 <Expression>CeilingSupervision.P ( Distance )</Expression>
@@ -790,7 +796,7 @@ Monitoring in Monitoring.Ceiling</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="c4529bc3-bd47-4ae9-8347-84a7d362d528"
->Monitoring in Monitoring.Ceiling</PreCondition></PreConditions>
+>Monitoring in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
 <Expression>CeilingSupervision.SBI ( Distance )</Expression>
 </Case><Case
  Name="TargetSpeedMonitoring_P"
@@ -799,7 +805,7 @@ Monitoring in Monitoring.Ceiling</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="5ba6a2ec-fce4-46ab-8e17-256f0a63ae84"
->Monitoring in Monitoring.Target</PreCondition><PreCondition
+>Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
  Guid="b286ca0d-4051-4c4a-a610-a2615579bcac"
 >Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
 <Expression>TargetSupervision.V_P_DMI()</Expression>
@@ -810,7 +816,7 @@ Monitoring in Monitoring.Ceiling</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="7bfba49b-c9f5-492a-8afc-18d09cf1f725"
->Monitoring in Monitoring.Target</PreCondition></PreConditions>
+>Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
 <Expression>TargetSupervision.V_FLOI_DMI()</Expression>
 </Case></Cases>
 </Function><Function
@@ -851,7 +857,8 @@ Monitoring in Monitoring.Ceiling</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="699a6b10-e831-4c8a-a3ed-591f85155457"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication()</PreCondition></PreConditions>
+><Comment></Comment>
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -895,7 +902,7 @@ Monitoring in Monitoring.Ceiling</PreCondition><PreCondition
 <PreCondition
  Guid="5acecc19-8795-458f-bf25-d3d7788ef394"
 ><Comment></Comment>
-TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt;  ReleaseSpeedSupervision.StartRSM(TargetSupervision.MRDT().Speed)</PreCondition></PreConditions>
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedSupervision.StartRSM(TargetSupervision.MRDT().Speed)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -948,11 +955,11 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0
   AND
 ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= Odometry.NominalDistance</PreCondition><PreCondition
  Guid="d0936740-8827-4152-93cf-3722e478afc0"
->Monitoring != Monitoring.ReleaseSpeed</PreCondition></PreConditions>
+>Monitoring != MonitoringTypeSM.ReleaseSpeed</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9fa14273-a356-4624-b65d-d653232c55c9"
->Monitoring &lt;- Monitoring.ReleaseSpeed</Action></Actions>
+>Monitoring &lt;- MonitoringTypeSM.ReleaseSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
