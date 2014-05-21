@@ -12,6 +12,8 @@
 <Structures>
 <Structure
  Default=""
+ X="190"
+ Y="30"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -53,7 +55,8 @@
  TypeName="Kernel.BaliseGroup"
  MaxSize="20"
  Default="[]"
- Y="60"
+ X="370"
+ Y="30"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -71,13 +74,15 @@
 <Function
  Type="SR.BaliseGroups"
  Default=""
- Y="180"
+ X="20"
+ Y="150"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
  Name="CreateBaliseGroups"
  Guid="f9550a10-747b-4726-934e-39d8fbcbc99a"
 >
+<Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.SR_AUTHORISATION.Collection1"
@@ -104,8 +109,8 @@
 </Function><Function
  Type="Kernel.BaliseGroup"
  Default=""
- X="110"
- Y="180"
+ X="20"
+ Y="210"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -134,8 +139,8 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="220"
- Y="180"
+ X="130"
+ Y="150"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -159,7 +164,8 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="240"
+ X="20"
+ Y="290"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -213,7 +219,8 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
  Type="Kernel.SR.SR"
  DefaultValue="EMPTY"
  VariableMode="Internal"
- Y="120"
+ X="20"
+ Y="30"
  Width="100"
  Height="50"
  Implemented="TRUE"

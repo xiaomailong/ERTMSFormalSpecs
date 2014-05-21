@@ -12,6 +12,8 @@
 <Structures>
 <Structure
  Default=""
+ X="350"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -146,7 +148,8 @@
  TypeName="Kernel.TSR.TemporarySpeedRestriction"
  MaxSize="30"
  Default="[]"
- Y="60"
+ X="180"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -169,7 +172,8 @@
 <Function
  Type="Default.BaseTypes.Length"
  Default=""
- Y="180"
+ X="20"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -213,8 +217,8 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="110"
- Y="180"
+ X="130"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -256,7 +260,7 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="220"
+ X="130"
  Y="180"
  Width="100"
  Height="50"
@@ -311,7 +315,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- X="330"
+ X="20"
  Y="180"
  Width="100"
  Height="50"
@@ -336,7 +340,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="240"
+ X="390"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -390,8 +395,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="110"
- Y="240"
+ X="390"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -522,7 +527,8 @@ IN TSRs</Action></Actions>
  Type="TemporarySpeedRestrictions"
  DefaultValue=""
  VariableMode="Internal"
- Y="120"
+ X="20"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -549,7 +555,8 @@ IN TSRs</Action></Actions>
 <Rules>
 <Rule
  Priority="CleanUp"
- Y="300"
+ X="20"
+ Y="270"
  Width="100"
  Height="50"
  Implemented="TRUE"

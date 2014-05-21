@@ -115,7 +115,8 @@
  Name="Always"
  Guid="46ab034c-51f8-4828-950e-823da37a4bd7"
 >
-<Expression>( CeilingSupervision.dV_warning_max - CeilingSupervision.dV_warning_min ) / ( CeilingSupervision.V_warning_max - CeilingSupervision.V_warning_min )</Expression>
+<Comment></Comment>
+<Expression>( dV_warning_max - dV_warning_min ) / ( V_warning_max - V_warning_min )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"

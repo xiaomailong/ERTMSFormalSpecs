@@ -13,8 +13,8 @@
 <Function
  Type="Boolean"
  Default=""
- X="50"
- Y="220"
+ X="30"
+ Y="20"
  Width="100"
  Height="50"
  Name="SituationA"
@@ -31,8 +31,8 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="80"
- Y="130"
+ X="30"
+ Y="80"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -54,8 +54,8 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="300"
- Y="80"
+ X="140"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -78,8 +78,8 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="60"
- Y="420"
+ X="140"
+ Y="80"
  Width="100"
  Height="50"
  Name="SituationD"
@@ -90,13 +90,14 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4abf47b8-fc6d-4f53-9979-92d2fe0904ea"
 >
-</ReqRef><Cases>
+</ReqRef><Comment></Comment>
+<Cases>
 </Cases>
 </Function><Function
  Type="Boolean"
  Default=""
- X="410"
- Y="120"
+ X="250"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -124,8 +125,8 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="340"
- Y="230"
+ X="250"
+ Y="80"
  Width="100"
  Height="50"
  Name="SituationF"
@@ -136,13 +137,14 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="533ca604-d837-4e29-bbd6-76e3352cd1da"
 >
-</ReqRef><Cases>
+</ReqRef><Comment></Comment>
+<Cases>
 </Cases>
 </Function><Function
  Type="Boolean"
  Default=""
- X="180"
- Y="230"
+ X="360"
+ Y="20"
  Width="100"
  Height="50"
  Name="SituationG"
@@ -158,8 +160,8 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="470"
- Y="330"
+ X="360"
+ Y="80"
  Width="100"
  Height="50"
  Name="SituationH"
@@ -175,8 +177,8 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="460"
- Y="220"
+ X="470"
+ Y="20"
  Width="100"
  Height="50"
  Name="SituationI"
@@ -192,8 +194,8 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="50"
- Y="320"
+ X="470"
+ Y="80"
  Width="100"
  Height="50"
  Name="SituationJ"
@@ -209,8 +211,8 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="190"
- Y="400"
+ X="580"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -222,7 +224,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="74405626-92a2-413d-878c-7687dc393ae0"
 >
-</ReqRef><Cases>
+</ReqRef><Comment></Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="51f08011-394d-4a16-bbbb-bca13af3e500"
@@ -232,8 +235,8 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="260"
- Y="430"
+ X="580"
+ Y="80"
  Width="100"
  Height="50"
  Name="SituationL"
@@ -250,8 +253,8 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="330"
- Y="400"
+ X="690"
+ Y="20"
  Width="100"
  Height="50"
  Name="SituationM"
@@ -267,8 +270,8 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="450"
- Y="420"
+ X="690"
+ Y="80"
  Width="100"
  Height="50"
  Name="SituationN"
@@ -287,8 +290,8 @@
  Type="Boolean"
  DefaultValue="Boolean.False"
  VariableMode="Internal"
- X="260"
- Y="530"
+ X="250"
+ Y="190"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -305,8 +308,8 @@
  Type="Boolean"
  DefaultValue="Boolean.False"
  VariableMode="Internal"
- X="100"
- Y="480"
+ X="30"
+ Y="190"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -323,8 +326,8 @@
  Type="Boolean"
  DefaultValue="Boolean.False"
  VariableMode="Internal"
- X="180"
- Y="510"
+ X="140"
+ Y="190"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -341,8 +344,8 @@
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
- X="330"
- Y="510"
+ X="470"
+ Y="190"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -369,8 +372,8 @@
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
- X="410"
- Y="480"
+ X="360"
+ Y="190"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -392,8 +395,8 @@
 <Rules>
 <Rule
  Priority="Processing"
- X="260"
- Y="320"
+ X="30"
+ Y="350"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -483,7 +486,7 @@
  Guid="1e112a4b-a3cd-4252-8970-0cb83708c03d"
 >NOT DMI.DeskIsOpen ( DMI.MasterDMI() )</PreCondition><PreCondition
  Guid="46593484-e99f-4994-8026-da3b3cf5dd50"
->HandleModeChange in HandleModeChange.StartOfMission</PreCondition></PreConditions>
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5183a819-6d26-4f7a-8a58-fcc7b3ac9d3a"
@@ -517,7 +520,7 @@
  Guid="13b2c09c-a7f9-413c-8c25-1bfbfac29f67"
 >NOT DMI.DeskIsOpen ( DMI.MasterDMI() )</PreCondition><PreCondition
  Guid="3e2ffa1b-0c4e-4415-bd5c-fe80f2861441"
->HandleModeChange in HandleModeChange.StartOfMission</PreCondition></PreConditions>
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="12f0804e-9a65-4f88-955f-9184c5baf184"
@@ -550,7 +553,7 @@
 </ReqRef><PreConditions>
 <PreCondition
  Guid="3ee69750-a840-4913-ac4a-75a3d2b8aae9"
->HandleModeChange in HandleModeChange.StartOfMission</PreCondition><PreCondition
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission</PreCondition><PreCondition
  Guid="cce7ebce-3131-4523-a9d8-066f25681916"
 >NOT DMI.DeskIsOpen ( DMI.MasterDMI() )</PreCondition></PreConditions>
 <Actions>
@@ -562,8 +565,8 @@
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
- X="190"
- Y="80"
+ X="140"
+ Y="350"
  Width="100"
  Height="50"
  Implemented="TRUE"
