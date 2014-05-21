@@ -27640,10 +27640,17 @@ Whenever the on-board reference location is updated (e.g. new LRBG), the release
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="bd0bbf49-07b6-4f28-b79d-0345ff48e184"
->Pre-indication location<Sub>
+><ReqRef
+ Id="ca47c45b-796c-4290-80a0-72dc3bbd732e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9e542d1f-49f2-4517-9e70-4d17adf9ceca"
+>
+</ReqRef><Comment>The EBD, Target and V_MRSP-n are not clearly specified. Implementation was done assuming hypothesis A1.2.2.1.1</Comment>
+Pre-indication location<Sub>
 <Paragraph
  id="3.13.9.5.1"
  guid=""
@@ -27673,10 +27680,17 @@ Whenever the on-board reference location is updated (e.g. new LRBG), the release
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="7436b38b-cdb4-4fc5-9d24-f45da79f42f5"
->For an EBD based target, the on-board shall calculate the pre-indication location as follows.<RequirementSets>
+><ReqRef
+ Id="ca47c45b-796c-4290-80a0-72dc3bbd732e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0cf8c246-38b0-42a2-860f-58ecdc2da12a"
+>
+</ReqRef><Comment>See parent paragraph, 3.13.9.5</Comment>
+For an EBD based target, the on-board shall calculate the pre-indication location as follows.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="352b85fd-9d0c-4895-abc5-8fd030f942df"
