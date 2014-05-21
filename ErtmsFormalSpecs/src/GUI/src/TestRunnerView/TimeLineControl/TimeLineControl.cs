@@ -598,6 +598,14 @@ namespace GUI.TestRunnerView.TimeLineControl
                     }
                 }
 
+                ModelInterpretationFailure modelInterpretationFailure = evt as ModelInterpretationFailure;
+                if (modelInterpretationFailure != null)
+                {
+                    string name = GUIUtils.AdjustForDisplay(graphics, modelInterpretationFailure.Message, EVENT_SIZE.Width - 4, BOTTOM_FONT);
+
+                    retVal = new EventDisplayAttributes(Color.Red, new Pen(Color.DarkRed), name, ErrorImageIndex, GetImageIndex(modelInterpretationFailure.Instance as ModelElement), -1);
+                }
+
                 RuleFired ruleFired = evt as RuleFired;
                 if (ruleFired != null)
                 {
