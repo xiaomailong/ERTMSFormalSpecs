@@ -245,7 +245,7 @@ MA.IsEOA ( MRSPnTarget )</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="92a5fe74-f56f-49fb-ad9b-59302ec14d54"
->d_I ( MRSPnTarget.Speed ) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition><PreCondition
+>d_I ( TargetSpeed(MRSPnTarget) ) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition><PreCondition
  Guid="78b9ae74-6271-4ba4-ba19-6547ce837dfe"
 >MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>d_I ( MRSPnTarget.Speed ) - MRSPnTarget.Speed * T_preindication</Expression>
@@ -259,10 +259,9 @@ MA.IsEOA ( MRSPnTarget )</PreCondition><PreCondition
  Guid="14678d4c-8a8c-49e3-99ba-0284c32a0363"
 >MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition><PreCondition
  Guid="fea3478d-454f-4a14-b807-f7c9564ad8a4"
->MRSPnEnd(MRSPnTarget) &lt; d_I ( MRSPnTarget.Speed )</PreCondition><PreCondition
+>MRSPnEnd(MRSPnTarget) &lt; d_I ( TargetSpeed(MRSPnTarget) )</PreCondition><PreCondition
  Guid="75a229f0-84ec-4f4b-aa86-b24afaa035d4"
 ><Comment></Comment>
-
 d_I( FirstTargetFromLocation(MRSPnTarget.Location).Speed) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition></PreConditions>
 <Expression>MRSPnEnd(MRSPnTarget)- TargetSpeed(MRSPnTarget) * T_preindication</Expression>
 </Case><Case
@@ -276,7 +275,7 @@ d_I( FirstTargetFromLocation(MRSPnTarget.Location).Speed) &lt;= MRSPnEnd(MRSPnTa
 ><Comment></Comment>
 d_I ( TargetSpeed(MRSPnTarget) ) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition><PreCondition
  Guid="a697db5b-8d80-4750-948c-b0b45689adc2"
->MRSPnStart(MRSPnTarget) &lt; d_I ( MRSPnTarget.Speed )</PreCondition><PreCondition
+>MRSPnStart(MRSPnTarget) &lt; d_I ( TargetSpeed(MRSPnTarget) )</PreCondition><PreCondition
  Guid="b45489d6-5cf3-4f02-83f3-ec715922f527"
 >MA.IsEOA ( MRSPnTarget )</PreCondition></PreConditions>
 <Expression>d_I_EOA ( TargetSpeed(MRSPnTarget) ) - TargetSpeed(MRSPnTarget) * T_preindication</Expression>
@@ -287,9 +286,9 @@ d_I ( TargetSpeed(MRSPnTarget) ) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition><PreC
 <PreConditions>
 <PreCondition
  Guid="77374c64-30fb-4792-b9cd-84aa69ffd20f"
->d_I ( MRSPnTarget.Speed ) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition><PreCondition
+>d_I ( TargetSpeed(MRSPnTarget) ) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition><PreCondition
  Guid="dcee462f-c5ab-4b6b-b370-8eb19ec9d5b9"
->MRSPnStart(MRSPnTarget) &lt; d_I ( MRSPnTarget.Speed )</PreCondition></PreConditions>
+>MRSPnStart(MRSPnTarget) &lt; d_I ( TargetSpeed(MRSPnTarget) )</PreCondition></PreConditions>
 <Expression>d_I ( MRSPnTarget.Speed ) - MRSPnTarget.Speed * T_preindication</Expression>
 </Case><Case
  Name="Second case"
@@ -301,7 +300,7 @@ d_I ( TargetSpeed(MRSPnTarget) ) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition><PreC
 ><Comment></Comment>
 d_I( FirstTargetFromLocation(MRSPnTarget.Location).Speed) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition><PreCondition
  Guid="ca3a5b34-272b-4664-a001-2443e4f76a1d"
->MRSPnEnd(MRSPnTarget) &lt; d_I ( MRSPnTarget.Speed )</PreCondition></PreConditions>
+>MRSPnEnd(MRSPnTarget) &lt; d_I ( TargetSpeed(MRSPnTarget) )</PreCondition></PreConditions>
 <Expression>MRSPnEnd(MRSPnTarget)- TargetSpeed(MRSPnTarget) * T_preindication</Expression>
 </Case></Cases>
 </Function><Function
@@ -437,6 +436,8 @@ TARGETS( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestricti
 </Function><Function
  Type="TargetSupervision.Target"
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="FirstTargetFromLocation"
@@ -476,6 +477,9 @@ INITIAL_VALUE TargetSupervision.Target{
 </Function><Function
  Type="TargetSupervision.Target"
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="LastTargetBeforeLocation"
@@ -515,6 +519,9 @@ INITIAL_VALUE TargetSupervision.Target{
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="220"
+ Width="100"
+ Height="50"
  Name="TargetSpeed"
  Guid="05c1bbb0-78af-4897-869a-9f35a6af1735"
 >
@@ -547,6 +554,9 @@ Target == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceInterva
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="330"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MRSPnStart"
@@ -582,6 +592,9 @@ MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceIn
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="440"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="MRSPnEnd"
  Guid="4a78452c-b5fc-4097-88d0-af70982d4d6d"
