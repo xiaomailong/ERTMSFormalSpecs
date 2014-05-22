@@ -63,6 +63,7 @@ namespace DataDictionary
         public override void visit(Generated.EnumValue obj, bool visitSubNodes)
         {
             obj.setValue("0");
+            obj.setForbidArithmeticOperation(false);
 
             base.visit(obj, visitSubNodes);
         }

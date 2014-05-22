@@ -1537,6 +1537,10 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Value", other.getValue(), obj.getValue()) );
             }
+            if ( obj.getForbidArithmeticOperation() != other.getForbidArithmeticOperation() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ForbidArithmeticOperation", other.getForbidArithmeticOperation().ToString(), obj.getForbidArithmeticOperation().ToString()) );
+            }
         }
 
         /// <summary>
