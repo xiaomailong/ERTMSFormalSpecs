@@ -162,7 +162,8 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <PreConditions>
 <PreCondition
  Guid="cf061e0e-d4c3-4801-88b0-96d5c524d68f"
->Position.DataState != DataState.Valid</PreCondition></PreConditions>
+><Comment></Comment>
+Position.DataState != Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Nominal"
@@ -172,7 +173,8 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <PreConditions>
 <PreCondition
  Guid="c61aea8d-3319-4f16-b8a6-d87e9c290890"
->PointOfInterest == Default.DistanceInterval.Nom</PreCondition></PreConditions>
+><Comment></Comment>
+PointOfInterest == Default.DistanceInterval.Nom</PreCondition></PreConditions>
 <Expression>Odometry.NominalDistance - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Maximum"

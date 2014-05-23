@@ -2545,7 +2545,8 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
 <PreConditions>
 <PreCondition
  Guid="9e40dae1-8a37-4f66-a5f0-710676b361e2"
->EstimatedTrainAcceleration + Default.BaseTypes.Acceleration(Gradient) &gt;= 0.0</PreCondition></PreConditions>
+><Comment></Comment>
+EstimatedTrainAcceleration + Default.BaseTypes.Acceleration(Gradient) &gt;= 0.0</PreCondition></PreConditions>
 <Expression>EstimatedTrainAcceleration + Default.BaseTypes.Acceleration(Gradient)</Expression>
 </Case><Case
  Name="Negative"

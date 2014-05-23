@@ -7653,7 +7653,7 @@
  Guid="f802a353-2e11-4d6b-b920-93a8eaca3f3c"
 >InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
  Guid="74a89b24-99bf-451f-a86b-8af51480cdca"
->InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action><Action
  Guid="e9a36992-dc5a-42d4-a473-5ff30a9a82cf"
 >ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
 </RuleCondition></Conditions>
@@ -7678,7 +7678,7 @@
 >
 </StructureElement><StateMachines>
 <StateMachine
- Default="NotAvailable"
+ Default="ProcedureInSM.NotAvailable"
  Implemented="TRUE"
  Name="ProcedureInSM"
  Guid="ae71d064-2fde-4c90-b1c3-e8dabf8d7620"
@@ -7694,7 +7694,7 @@
  Guid="0727169d-b02a-400a-9526-33276a375133"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureInSM.NotAvailable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="fb53c68a-ca98-463b-8d07-e9925e8a2389"
@@ -7735,11 +7735,11 @@
 <Actions>
 <Action
  Guid="75529429-c500-4e71-851d-122c57c62ee1"
->THIS &lt;- NotAvailable.Idle</Action><Action
+>THIS &lt;- ProcedureInSM.NotAvailable.Idle</Action><Action
  Guid="e898f39d-a263-4177-86da-7abe3ec730ad"
 >InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
  Guid="ba735b05-32fc-4f33-b797-acaebf4ff028"
->InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7767,7 +7767,7 @@
  Guid="81622aa3-3e0c-4e19-b396-2ee54373a77b"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureInSM.NationalSystemAvailability.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="a72b16ce-0163-4785-8513-26181394454c"
@@ -7808,11 +7808,11 @@
 <Actions>
 <Action
  Guid="934d3b28-c457-42d5-bd96-72cf507de9c5"
->THIS &lt;- NationalSystemAvailability.Idle</Action><Action
+>THIS &lt;- ProcedureInSM.NationalSystemAvailability.Idle</Action><Action
  Guid="9006ee04-aced-439b-8501-33c9c6845345"
 >InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
  Guid="b11ba98f-1988-41a3-956e-2b5d344abd4c"
->InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7840,7 +7840,7 @@
  Guid="7f2404c9-9502-4823-b295-de2f7fba2947"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureInSM.NotApplicable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="f6c15ecc-19c1-4890-baad-5ebbfddc98e6"
@@ -7881,11 +7881,11 @@
 <Actions>
 <Action
  Guid="6c7ba093-97dd-41f7-8ac4-c22590c63b87"
->THIS &lt;- NotApplicable.Idle</Action><Action
+>THIS &lt;- ProcedureInSM.NotApplicable.Idle</Action><Action
  Guid="4adddfe7-78e6-480b-b260-97e55f2f4b10"
 >InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
  Guid="55b290b1-d947-4813-a8f8-2951fe6faa27"
->InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7913,7 +7913,7 @@
  Guid="74073756-4f7e-4255-8f93-174930ab1cf2"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureInSM.Active.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="7e605813-19c2-4c49-90a7-725c5a264ba5"
@@ -7954,11 +7954,11 @@
 <Actions>
 <Action
  Guid="f863d029-78aa-4336-a486-fbb53499eba0"
->THIS &lt;- Active.Send</Action><Action
+>THIS &lt;- ProcedureInSM.Active.Send</Action><Action
  Guid="7a15f20d-59c8-4e18-a160-e8888caf05f1"
 >InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
  Guid="1dc4ddc7-bcb7-45f1-b7c7-4eee62038e10"
->InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>InputInformation.RequestStatus &lt;- Default.Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7998,7 +7998,7 @@
 <Actions>
 <Action
  Guid="893df983-0f71-4a18-8a64-6998f0b935bd"
->InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+>InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -8012,7 +8012,7 @@
  Guid="f9ad7df7-185f-4985-90c3-97cffa723bfc"
 >
 <StateMachine
- Default="Idle"
+ Default="ProcedureInSM.Available.Idle"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="5eaebedc-2113-463d-8460-7f0e03359ff3"
@@ -8051,11 +8051,11 @@
 <PreConditions>
 <PreCondition
  Guid="e4d29698-ac1f-4f22-aabb-93a656c9e527"
->InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
+>InputInformation.RequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="79d0373a-0661-4bfb-9c5c-b768b8d4a250"
->THIS &lt;- Available.Send</Action><Action
+>THIS &lt;- ProcedureInSM.Available.Send</Action><Action
  Guid="b13cf91b-6728-4873-a734-47a1dd18acf0"
 >InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
@@ -8097,9 +8097,9 @@
 <Actions>
 <Action
  Guid="4f30cdf2-5d71-43f3-8237-6c9e30c65e17"
->THIS &lt;- Available.Response</Action><Action
+>THIS &lt;- ProcedureInSM.Available.Response</Action><Action
  Guid="387ae300-6399-474b-9c1a-afda84193ec1"
->InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+>InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8135,11 +8135,11 @@
 <PreConditions>
 <PreCondition
  Guid="296ef94d-c9cb-4898-a8cf-b7c59947d9ac"
->InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+>InputInformation.RequestStatus == Default.Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bb23437b-da8a-46c9-bb60-ebeb8ef32e0d"
->THIS &lt;- Available.Idle</Action></Actions>
+>THIS &lt;- ProcedureInSM.Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
