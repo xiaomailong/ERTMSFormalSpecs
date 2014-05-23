@@ -116,6 +116,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="50c59557-ef97-4436-81ed-112527639ec8"
 >
+</ReqRef><ReqRef
+ Id="464dd6eb-f8c7-42fe-b8d9-c416ee775f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4b3f1b7e-25f1-40e1-bfb4-5b3d275ee41a"
+>
 </ReqRef><Comment>Lists the types of speed and distance monitoring and handles transitions between them</Comment>
 <States>
 <State
@@ -162,21 +167,12 @@
 <Action
  Guid="a21ce3f8-9147-429c-bfb5-3a82d328646a"
 ><Comment></Comment>
-JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Monitoring Ceiling Speed"
- Guid="022f34d6-d6a3-4f6a-a8fc-0e61d786761a"
->
-<Comment>Revise the supervision status and go to the regular state</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="3dde4b50-ef4e-45cf-8795-4f1217c66e85"
->THIS &lt;- MonitoringTypeSM.Ceiling.MonitoringCeilingSpeed</Action><Action
+JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
  Guid="929fe96c-120f-4740-a4e8-b92a4eb3d5d1"
->DetermineSupervisionStatus()</Action></Actions>
+><Comment></Comment>
+DetermineSupervisionStatus()</Action><Action
+ Guid="3dde4b50-ef4e-45cf-8795-4f1217c66e85"
+>THIS &lt;- MonitoringCeilingSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -269,21 +265,12 @@ Condition1()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e7a8e765-e6db-4c64-8421-9ae611130e63"
->JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Monitoring Target Speed"
- Guid="a9be9161-cf57-43fc-a053-1e63d7ea5b91"
->
-<Comment>Revise the supervision status and go to the regular state</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="f56144fc-d490-42cf-9b0d-6f4f02dcff6f"
->THIS &lt;- MonitoringTypeSM.Target.MonitoringTargetSpeed</Action><Action
+><Comment></Comment>
+JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
  Guid="543e8165-df83-432e-b4cd-95d43feb70a7"
->DetermineSupervisionStatus()</Action></Actions>
+>DetermineSupervisionStatus()</Action><Action
+ Guid="f56144fc-d490-42cf-9b0d-6f4f02dcff6f"
+>THIS &lt;- MonitoringTargetSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -302,14 +289,16 @@ Condition1()</PreCondition></PreConditions>
  Name="Train passed RSM start location"
  Guid="b95478f6-5491-4553-bb4e-1249f5752004"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8f62c233-1015-45b6-9369-1e69518a2b8a"
->Condition2()</PreCondition></PreConditions>
+><Comment></Comment>
+Condition2()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="44f973a1-f64e-4717-bc83-fcb6ae9ade4e"
->THIS &lt;- MonitoringTypeSM.ReleaseSpeed.Start</Action></Actions>
+>THIS &lt;- ReleaseSpeed.Start</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -365,24 +354,51 @@ Condition1()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f4548707-2eb2-4d89-9653-5b4755e684c0"
->JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Monitoring Release Speed"
- Guid="7d667790-fc5b-4fd2-9e66-d2f6c7278018"
->
-<Comment>Revise the supervision status and go to the regular state</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="47f71217-2ed4-41e4-b059-fe6375b01867"
->THIS &lt;- MonitoringTypeSM.ReleaseSpeed.MonitoringReleaseSpeed</Action><Action
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
  Guid="953c08ed-e977-4766-9ca6-c5043644471e"
->DetermineSupervisionStatus()</Action></Actions>
+><Comment></Comment>
+DetermineSupervisionStatus()</Action><Action
+ Guid="47f71217-2ed4-41e4-b059-fe6375b01867"
+>THIS &lt;- MonitoringReleaseSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
+</StateMachine></State><State
+ Implemented="TRUE"
+ Name="Idle"
+ Guid="1edf48d7-6c71-4956-a753-852a9d9d4bf9"
+>
+<Comment>This state corresponds to the cases when the train does not have speed and distance monitoring active</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="98ea433a-587b-40e7-8a72-c66ae4c4b16d"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="RestartSpeedAndDistanceMonitoring"
+ Guid="5083b87e-34c8-47eb-8d1e-d09514360921"
+>
+<Comment>When the train mode is FS, LS, or OS, start monitoring again</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Supervise Train Speed"
+ Guid="0b822837-96e0-4550-bd30-dcb12e0cfd29"
+>
+<PreConditions>
+<PreCondition
+ Guid="6bee5e64-dd3e-4190-b0cc-b9fecd7c8aa1"
+><Comment></Comment>
+ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="351c9b66-e0cc-4a58-9b1c-f39028235a8a"
+>THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State></States>
 <Rules>
 <Rule
@@ -434,7 +450,11 @@ Condition1()</PreCondition></PreConditions>
     Targets3=&gt;NationalValues.MaxDistInSRSpeedRestriction
 )
 !=
-SupervisedTargets</PreCondition></PreConditions>
+SupervisedTargets</PreCondition><PreCondition
+ Guid="6f2cc5a3-3453-4c20-acb8-221630d71332"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
+ Guid="c91265ff-507c-45ce-9fb3-e4bbc413a44e"
+>ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="774ac772-0f2b-46db-99c0-8963f899bb81"
@@ -508,6 +528,7 @@ THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
  Name="Condition 1 is fulfilled but not condition 2"
  Guid="89aaf7b5-70c3-44c6-82ed-7f18fd062b1a"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1889c002-6694-4e01-a062-4c76f5c65090"
@@ -604,6 +625,34 @@ THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="StopMonitoring"
+ Guid="428969a2-8771-4192-8c43-af7a7ffe185c"
+>
+<ReqRef
+ Id="464dd6eb-f8c7-42fe-b8d9-c416ee775f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b80ddb73-fa13-48fb-ba41-96b6721d9048"
+>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="StopMonitoring"
+ Guid="07a58c8a-35cc-4601-b3dd-e3ddd30c61aa"
+>
+<PreConditions>
+<PreCondition
+ Guid="d2c4fbd4-aea7-44fe-bab3-9fdd15bbb7be"
+>NOT ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="71258306-011a-4ab1-9a0a-397404946f9f"
+>THIS &lt;- MonitoringTypeSM.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></StateMachines>
@@ -785,9 +834,10 @@ V &lt; 30.0</PreCondition><PreCondition
 <PreCondition
  Guid="5394d167-a030-4b1d-a096-b176e1075237"
 ><Comment></Comment>
-Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
+Monitoring in Monitoring.Ceiling</PreCondition><PreCondition
  Guid="e902ee0f-8ed6-4c80-aafe-96b258b01056"
->Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
+><Comment></Comment>
+Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
 <Expression>CeilingSupervision.P ( Distance )</Expression>
 </Case><Case
  Name="CeilingSpeedMonitoring_SBI"
@@ -796,7 +846,7 @@ Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="c4529bc3-bd47-4ae9-8347-84a7d362d528"
->Monitoring in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
+>Monitoring in Monitoring.Ceiling</PreCondition></PreConditions>
 <Expression>CeilingSupervision.SBI ( Distance )</Expression>
 </Case><Case
  Name="TargetSpeedMonitoring_P"
@@ -851,6 +901,16 @@ Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
 </ReqRef><Comment>Condition for transition from Ceiling Speed Monitoring to Target Speed Monitoring.</Comment>
 <Cases>
 <Case
+ Name="Pre-indication location already in rear of train"
+ Guid="9e60f7bd-616e-4dcc-92ae-09b6b9a8c5e4"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="a9cf64fe-934f-41fc-b58b-190b853ccc0d"
+>PreIndicationLocation.d_preindication() == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
  Name="Train passed pre-indication location"
  Guid="d246cb6e-5ad9-415b-a581-75b2b0b9263a"
 >
@@ -896,13 +956,29 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; PreIndicationL
 </ReqRef><Comment>Condition for transition from Target Speed Monitoring to Release Speed Monitoring.</Comment>
 <Cases>
 <Case
+ Name="RSM already in rear of train"
+ Guid="af63e5cf-3a7e-44bd-bbd7-da0b3a74ef0a"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="35a78385-5ce1-4613-91ce-27ae1fc32d9e"
+><Comment></Comment>
+ReleaseSpeedSupervision.ReleaseSpeedSupervisionApplicable(TargetSupervision.MRDT())
+AND
+ReleaseSpeedSupervision.StartRSM(TargetSupervision.MRDT().Speed) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
  Name="Front end passed RSM start location"
  Guid="06d8c12a-e5d7-40f6-abec-0d47871c3cd2"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="5acecc19-8795-458f-bf25-d3d7788ef394"
 ><Comment></Comment>
+ReleaseSpeedSupervision.ReleaseSpeedSupervisionApplicable(TargetSupervision.MRDT())
+AND
 TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedSupervision.StartRSM(TargetSupervision.MRDT().Speed)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
@@ -1641,7 +1717,8 @@ EBI. Intervention status.</Comment>
  Guid="2000c917-1ae5-46ec-9768-6d88e3fa11f3"
 >Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
  Guid="0046535f-3d8c-400a-b35b-bae068e48182"
->SpeedAndDistanceMonitoringIsActive</PreCondition></PreConditions>
+><Comment></Comment>
+SpeedAndDistanceMonitoringIsActive</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
