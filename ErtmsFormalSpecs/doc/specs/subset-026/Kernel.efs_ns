@@ -3623,6 +3623,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D2"
  Guid="b7f45c15-92a0-4ebd-8b8f-d50275cb30fa"
 >
+<Comment></Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -9949,41 +9950,6 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Guid="e2e35dfb-2542-4a77-afc3-0648bf2da90b"
 >PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Set MA"
- Guid="3f46b579-4ba8-4733-8327-9bd0a781347f"
->
-<Comment>Include a MA in the standard test environment</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Set MA"
- Guid="d7556d82-136c-45f3-8c2c-9192589886c0"
->
-<Comment>If a MA has not already been defined for the train, set a standard MA.
-This is to avoid overwriting a MA required for the test.</Comment>
-<PreConditions>
-<PreCondition
- Guid="b7403f99-d772-4922-8555-3379623e2fc7"
->NOT Available(Kernel.MA.MA)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="d74d901f-a0ff-4b65-bb91-6716f94bb0e0"
-><Comment></Comment>
-MA.InitializeElementsForMA()</Action><Action
- Guid="d75588bc-c4d9-4092-a0f1-4d763deadefe"
-><Comment></Comment>
-MA.MA &lt;- MA.MovementAuthority{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 5000.0
-    },
-    ReferenceBG =&gt; 1986,
-    ReferenceBGLocation =&gt; 0.0
-}</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="30"
@@ -10649,7 +10615,8 @@ Kernel.EmergencyStops</Action></Actions>
 <Actions>
 <Action
  Guid="4d92d3d4-cacc-45f7-affb-7dd10a2b80ed"
->HandleInputs()</Action></Actions>
+><Comment></Comment>
+HandleInputs()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
