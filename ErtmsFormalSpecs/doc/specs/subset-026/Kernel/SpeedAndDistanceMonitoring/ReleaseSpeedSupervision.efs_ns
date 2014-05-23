@@ -35,19 +35,31 @@
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="d_SBI1 unknown"
+ Guid="7b3d4914-3789-4ecf-9cd1-9d0fbde5239c"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="bd4d5420-0862-4965-a023-b26895a549dc"
+>TargetSupervision.d_SBI1 ( V ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="d_SBI1"
  Guid="4c1a9b99-6a0a-4f9b-a33e-0cbe40c7680b"
 >
 <PreConditions>
 <PreCondition
  Guid="abbce78f-6895-49a0-a931-84443bad052d"
->TargetSupervision.d_SBI1 ( V ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) &lt;= ReleaseSpeedSupervision.d_SBI2 ( V ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSupervision.d_SBI1 ( V ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) &lt;= d_SBI2 ( V ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
 <Expression>TargetSupervision.d_SBI1 ( V )</Expression>
 </Case><Case
  Name="d_SBI2"
  Guid="d5c865b3-e560-45db-b300-a9fac42ae0b1"
 >
-<Expression>ReleaseSpeedSupervision.d_SBI2 ( V )</Expression>
+<Comment></Comment>
+<Expression>d_SBI2 ( V )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -386,10 +398,22 @@ Default.BaseTypes.MaxDistance
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="d_FLOI in rear of train"
+ Guid="333ff1c9-9204-427f-b40a-4d46ba0539aa"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="42efbf38-0e4d-4b05-b310-b2b3a7140599"
+><Comment></Comment>
+d_FLOI ( Vrelease ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="Value"
  Guid="0b1798da-f019-46e0-b3b0-7e38f14c1cbd"
 >
-<Expression>ReleaseSpeedSupervision.d_FLOI ( Vrelease )</Expression>
+<Comment></Comment>
+<Expression>d_FLOI ( Vrelease )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"

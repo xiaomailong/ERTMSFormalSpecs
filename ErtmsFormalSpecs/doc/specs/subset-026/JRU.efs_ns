@@ -942,7 +942,10 @@ ADDITIONAL_BRAKE_STATUS =&gt; CreateJruAditionalBrakeStatusMessage()
 >SendSpeedAndDistanceMonitoringInformationMessage(THIS)</PreCondition><PreCondition
  Guid="24051cc8-c099-4d23-ab52-61960bf5bf51"
 ><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition></PreConditions>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition><PreCondition
+ Guid="bd5ee00b-aacc-49ba-9111-eb883e795db7"
+><Comment></Comment>
+Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e0adc517-5b2f-4309-ab4b-821bd1fbaf57"
@@ -1064,7 +1067,9 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitor
 <PreConditions>
 <PreCondition
  Guid="f5d3dccb-474d-4877-afbc-cf2657785d82"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition><PreCondition
+ Guid="136dc8f7-706e-49f4-a35c-cc7fca27d68a"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9bc80e3a-1a1a-429f-98aa-42c1d4d761ce"
@@ -6378,6 +6383,7 @@ Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitorin
  Name="Value"
  Guid="393b633c-2c88-4500-8f99-25bf3690af5e"
 >
+<Comment></Comment>
 <Expression>Messages.JRU.MESSAGE.SPEED_AND_DISTANCE_MONITORING_INFORMATION.Message{
     HEADER =&gt; CreateHeader(20),
 M_SDMTYPE =&gt; ToJruSpeedAndDistanceMonitoringType(),
