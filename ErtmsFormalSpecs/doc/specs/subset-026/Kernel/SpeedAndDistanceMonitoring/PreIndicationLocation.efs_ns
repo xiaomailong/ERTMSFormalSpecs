@@ -258,6 +258,7 @@
  Name="d_I in rear of train"
  Guid="0e479194-ecac-4abe-bc9e-ca85dcaa8ba9"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="5a958cda-e0be-4be2-bd2b-8d2f74669d4e"
@@ -615,6 +616,16 @@ INITIAL_VALUE TargetSupervision.Target{
 Target == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Expression>
 </Case><Case
+ Name="The section ending at the target is not speed restricted"
+ Guid="19b306b3-2404-42ce-8135-a9cd9a1839e4"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="45beedbc-f467-47d2-8bf3-c143f1c8be4b"
+>NOT LocationIsInSpeedRestriction(MRSPnEnd(Target))</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+</Case><Case
  Name="Otherwise"
  Guid="35c09766-18ba-4b49-b7eb-7cf4f9834d95"
 >
@@ -684,6 +695,34 @@ MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceIn
 >
 <Comment></Comment>
 <Expression>MRSPnTarget.Location</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="LocationIsInSpeedRestriction"
+ Guid="9ec67ff1-9424-4fad-a766-c562a875bbde"
+>
+<Comment>Checks the list of TARGETS for any that englobe the distance provided as parameter</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Dist"
+ Guid="debcb987-8faf-4c20-ad94-137d4b228123"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Distance is in the range of a target"
+ Guid="7728236a-d7fe-40c3-9417-ee0dd230e10c"
+>
+<Comment>Dist is measured from the LRBG</Comment>
+<Expression>THERE_IS_IN TARGETS(
+    Targets1=&gt;MA.SpeedRestrictions,
+    Targets2=&gt;MRSP.SpeedRestrictions,
+    Targets3=&gt;NationalValues.MaxDistInSRSpeedRestriction
+)  |  (X.Location &lt; Dist) AND (X.Location + Default.BaseTypes.LengthToDistance(X.Length) &gt;= Dist)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
