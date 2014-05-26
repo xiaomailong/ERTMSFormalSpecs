@@ -163,7 +163,8 @@
  functionalBlockName=""
  Name=""
  Guid="11bb4709-443c-4aa3-ad4d-0007d972a7c2"
->Balise configuration and linking<Sub>
+><Comment></Comment>
+Balise configuration and linking<Sub>
 <Paragraph
  id="3.4.1"
  guid=""
@@ -19229,7 +19230,8 @@ In case the LX is not protected, ERTMS/ETCS on-board equipment shall be informed
  functionalBlockName=""
  Name=""
  Guid="4b756e9d-4e0d-4fd1-81a8-9244618a8547"
->at which speed the LX is allowed to be passed<RequirementSets>
+><Comment></Comment>
+at which speed the LX is allowed to be passed<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="973deea7-465a-4280-bfad-0e34c9ed5359"
@@ -25418,7 +25420,8 @@ Determination of the supervised targets<Sub>
  functionalBlockName=""
  Name=""
  Guid="5e616edd-93b3-48b1-9e3c-e0c863f4a609"
->The on-board shall continuously supervise a list of targets, which may include the following types of target:<Sub>
+><Comment></Comment>
+The on-board shall continuously supervise a list of targets, which may include the following types of target:<Sub>
 <Paragraph
  id="3.13.8.2.1.a"
  guid=""
@@ -25433,7 +25436,8 @@ Determination of the supervised targets<Sub>
  functionalBlockName=""
  Name=""
  Guid="04a0794a-23c9-4383-8869-f2d8e4aab882"
->the locations corresponding to a speed decrease of the MRSP (if any), which are in advance of the max safe front end of the train<RequirementSets>
+><Comment></Comment>
+the locations corresponding to a speed decrease of the MRSP (if any), which are in advance of the max safe front end of the train<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="f565a064-f602-4c1f-881e-edf28da6b448"
@@ -25554,7 +25558,7 @@ The list of supervised targets shall be re-evaluated when any of the elements it
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -26552,7 +26556,8 @@ with V_delta1 = A_est1 x T_traction and V_delta2 = A_est2 x T_berem<RequirementS
  functionalBlockName=""
  Name=""
  Guid="64f293f1-473e-4a19-b92d-2240f67c616e"
->If the service brake command is available for use and the service brake feedback is not available for use, T_bs1 and T_bs2 shall be equal to T_bs.<RequirementSets>
+><Comment></Comment>
+If the service brake command is available for use and the service brake feedback is not available for use, T_bs1 and T_bs2 shall be equal to T_bs.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="30300327-3590-4973-aabb-6c7caa4506a3"
@@ -26899,7 +26904,8 @@ d_P (Vest) = min { d_FLOI (Vest) - Vest * T_driver), d_GUI_FLOI (V_est) }<Requir
  functionalBlockName=""
  Name=""
  Guid="fdddd187-528c-44e6-9583-2900e0e2afca"
->In case the calculation of the GUI curve is inhibited, for display purpose only, the P speed related to SBD shall be calculated for the estimated train front end as follows:
+><Comment></Comment>
+In case the calculation of the GUI curve is inhibited, for display purpose only, the P speed related to SBD shall be calculated for the estimated train front end as follows:
 V_P_EOA (d_estfront) = V_SBD ( d_estfront + Vest * ( T_driver + T_bs1 ) )
 V_P_EOA (d_estfront)=0 if d_estfront + Vest * ( T_driver + T_bs1 ) &gt;= d_EOA<RequirementSets>
 <RequirementSetReference
@@ -27014,7 +27020,8 @@ With Dbec and Vbec calculated according to 3.13.9.3.2.10<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="972b621c-2a9e-4a94-8256-ae008ed01869"
->In order to determine the reference location of the target distance displayed to the driver and in order to determine the foot of the GUI curve (only if it is enabled) in case of target different from EOA/SvL, the location of the Permitted speed supervision limit, valid for the target speed, shall be calculated from the EBD, taking into account the following assumptions:<Sub>
+><Comment></Comment>
+In order to determine the reference location of the target distance displayed to the driver and in order to determine the foot of the GUI curve (only if it is enabled) in case of target different from EOA/SvL, the location of the Permitted speed supervision limit, valid for the target speed, shall be calculated from the EBD, taking into account the following assumptions:<Sub>
 <Paragraph
  id="3.13.9.3.5.9.a"
  guid=""
