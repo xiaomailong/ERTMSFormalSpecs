@@ -27578,12 +27578,13 @@ with epsilon = 1km/h<Sub>
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.2.0"
  functionalBlockName=""
  Name=""
  Guid="e53541e7-5ae6-44b2-84c2-db2d4c69d0bd"
-><Comment>Previous revision status was NA</Comment>
+><Comment>Previous revision status was NA.
+This requirement describes the behaviour of the algorithm in 3.13.9.4.8.2. If it is implemented, this adds noothing to the model, so it is a note.</Comment>
 Note: The above formulas are intended to prevent the calculated release speed from fluctuating, according to the distance, speed and acceleration measurements. It allows calculating the release speed only once, for a given on-board reference location, unless
 - the distance confidence interval exceeds a predicted one, which is based on the assumption that the whole distance between the current on-board reference location and the EOA would be travelled with SUBSET-041 odometer performance values and without any update of the on-board reference location, or
 - the speed under reading amount (V_ura) exceeds the SUBSET-041 performance value
