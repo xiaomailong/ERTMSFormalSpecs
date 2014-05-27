@@ -6333,7 +6333,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="915ead74-5b53-434c-8c19-72d423b31cf2"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target.TSM</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Target_speed_monitoring__TSM</Expression>
 </Case><Case
  Name="RSM"
@@ -6343,12 +6343,18 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreCondition
  Guid="79088302-a61b-4499-9717-0db5a3e9ca11"
 ><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.ReleaseSpeed</PreCondition></PreConditions>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Release_speed_monitoring_RSM</Expression>
 </Case><Case
  Name="PIM"
  Guid="06dabf03-731f-4ff7-a9c9-cbddddbaa6e3"
 >
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="a1bb5c9b-1fcd-446f-91ad-9562b156355f"
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target.PIM, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target.Start]</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Pre_indication_monitoring__PIM</Expression>
 </Case></Cases>
 </Function><Function

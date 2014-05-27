@@ -27653,6 +27653,7 @@ Whenever the on-board reference location is updated (e.g. new LRBG), the release
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9e542d1f-49f2-4517-9e70-4d17adf9ceca"
 >
+<Comment></Comment>
 </ReqRef><Comment>The EBD, Target and V_MRSP-n are not clearly specified. Implementation was done assuming hypothesis A1.2.2.1.1</Comment>
 Pre-indication location<Sub>
 <Paragraph
@@ -27668,7 +27669,8 @@ Pre-indication location<Sub>
  functionalBlockName=""
  Name=""
  Guid="b1bf47d0-d27a-404a-af99-2117b6bd616b"
->The purpose of the pre-indication is to inform the driver that he is approaching an area where he has to operate the service brake in order to brake to a target. The preindication is used to switch from ceiling speed monitoring to target speed monitoring.<RequirementSets>
+><Comment></Comment>
+The purpose of the pre-indication is to inform the driver that he is approaching an area where he has to operate the service brake in order to brake to a target. The preindication is used to switch from ceiling speed monitoring to target speed monitoring.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="ca188d7d-24c1-4efd-8602-dbe2df3c1ec6"
@@ -27693,6 +27695,7 @@ Pre-indication location<Sub>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0cf8c246-38b0-42a2-860f-58ecdc2da12a"
 >
+<Comment></Comment>
 </ReqRef><Comment>See parent paragraph, 3.13.9.5</Comment>
 For an EBD based target, the on-board shall calculate the pre-indication location as follows.<RequirementSets>
 <RequirementSetReference
@@ -27713,7 +27716,8 @@ For an EBD based target, the on-board shall calculate the pre-indication locatio
  functionalBlockName=""
  Name=""
  Guid="1c3a3e00-d5be-4e94-b8f4-d89e2b2970a6"
->Starting from the first element of the MRSP (i.e. from the start location of the on-board stored track description), the on-board shall calculate the location of the Indication supervision limit, valid for the speed of the MRSP element, taking into account the following assumptions:<Sub>
+><Comment></Comment>
+Starting from the first element of the MRSP (i.e. from the start location of the on-board stored track description), the on-board shall calculate the location of the Indication supervision limit, valid for the speed of the MRSP element, taking into account the following assumptions:<Sub>
 <Paragraph
  id="3.13.9.5.3.a"
  guid=""
@@ -27877,7 +27881,7 @@ Or d_P(V_MRSP-n) = min { ( d_SBI1(V_MRSP-n) - V_MRSP-n * Tdriver ), d_GUI(V_MRSP
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -27897,7 +27901,7 @@ If, in exceptional situation (e.g. after a shortening of MA), the calculation de
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -27922,7 +27926,8 @@ If, in exceptional situation (e.g. after a shortening of MA), the EBD, SBD or GU
  functionalBlockName=""
  Name=""
  Guid="2b4238a1-8763-47d9-8bc6-fc33c61430af"
->Note 1: For ergonomic reasons, the location of a pre-indication is independent of the estimated speed. If the pre-indication would be derived from an EBD or SBD curve according to the estimated speed, then when the train is running at low speed the driver would see the permitted speed already decrease while the DMI is still in ceiling speed display. That is not consistent for the driver and therefore the pre-indication is independent of the estimated speed.<RequirementSets>
+><Comment></Comment>
+Note 1: For ergonomic reasons, the location of a pre-indication is independent of the estimated speed. If the pre-indication would be derived from an EBD or SBD curve according to the estimated speed, then when the train is running at low speed the driver would see the permitted speed already decrease while the DMI is still in ceiling speed display. That is not consistent for the driver and therefore the pre-indication is independent of the estimated speed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d7dd0126-1e61-4f8b-8c10-1ea33b918b2c"
@@ -27955,7 +27960,7 @@ If, in exceptional situation (e.g. after a shortening of MA), the EBD, SBD or GU
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""

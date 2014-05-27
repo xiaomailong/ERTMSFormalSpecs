@@ -121,6 +121,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4b3f1b7e-25f1-40e1-bfb4-5b3d275ee41a"
 >
+</ReqRef><ReqRef
+ Id="3ca3f276-f7a0-4c16-8b02-755e929a4ae3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa581db5-42d7-473e-afd4-8485d5298f02"
+>
 </ReqRef><Comment>Lists the types of speed and distance monitoring and handles transitions between them</Comment>
 <States>
 <State
@@ -226,7 +231,7 @@ Condition1()</PreCondition></PreConditions>
 <States>
 <State
  Implemented="TRUE"
- Name="MonitoringTargetSpeed"
+ Name="TSM"
  Guid="ae5a2442-f7dd-431e-b013-7fd673523c4f"
 >
 <Comment>In TSM state</Comment>
@@ -270,7 +275,49 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
  Guid="543e8165-df83-432e-b4cd-95d43feb70a7"
 >DetermineSupervisionStatus()</Action><Action
  Guid="f56144fc-d490-42cf-9b0d-6f4f02dcff6f"
->THIS &lt;- MonitoringTargetSpeed</Action></Actions>
+><Comment></Comment>
+THIS &lt;- PIM</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ Implemented="TRUE"
+ Name="PIM"
+ Guid="e552da4c-28fd-400b-a579-e320c10e2b53"
+>
+<ReqRef
+ Id="3ca3f276-f7a0-4c16-8b02-755e929a4ae3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9d07dd4f-658e-411e-a6e6-ce03e5bddc2a"
+>
+</ReqRef><Comment>Pre Indication Monitoring, a sub-type of target speed monitoring betzeen the pre-indication location and the indication location</Comment>
+<StateMachine
+ Default=""
+ Implemented="TRUE"
+ Guid="f727d81e-5f5d-4cd0-8962-ea039bad1e56"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Transition to TSM"
+ Guid="da6b52aa-d250-4618-895c-17ebd8bf5670"
+>
+<Comment>When the train passes the indication location, the speed and distance monitoring passes from PIM to TSM</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Transition to TSM"
+ Guid="163d12c7-571a-498d-aacd-d9b6f9c27a35"
+>
+<PreConditions>
+<PreCondition
+ Guid="4f0943be-3c98-4372-a6ef-732f0cedd60c"
+>TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt;= PreIndicationLocation.d_I(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="47b90428-296a-4ccb-9909-a090ca81b971"
+>THIS &lt;- TSM</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
