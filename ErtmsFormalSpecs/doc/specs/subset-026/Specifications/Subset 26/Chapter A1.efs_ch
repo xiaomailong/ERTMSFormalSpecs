@@ -592,7 +592,19 @@ The paragraph 3.13.2.2.6.2 indicates that the selection of brake parameter for A
  Guid="c2abb9f2-aeac-49e6-a512-211ac436a8fa"
 >
 </RequirementSetReference></RequirementSets>
-</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="A1.1.7.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="dbce4b67-1a6f-4e35-ae83-e827c8a25a48"
+><Comment></Comment>
+Our implementation does not compute braking curves in rear of the current train position. To account for requirements 3.13.9.5.9 and 3.13.9.5.10, we first test that the deceleration curves are strictly below the MRSP speed and handle that case accordingly.</Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"

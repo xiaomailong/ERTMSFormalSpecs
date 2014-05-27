@@ -37,6 +37,16 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f3cede9b-4af3-405c-8b69-e270992d68bb"
 >
+</ReqRef><ReqRef
+ Id="de364883-d636-476b-8455-154f2ebd4444"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8818d9a-6013-4c77-921c-fda56989f114"
+>
+</ReqRef><ReqRef
+ Id="dbce4b67-1a6f-4e35-ae83-e827c8a25a48"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3ef276ec-40b4-40eb-95f9-2b3c84d6c74d"
+>
 </ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
 <Parameters>
 <Parameter
@@ -53,12 +63,9 @@
 <Comment>This case occurs when the EBD curve is less than the MRSP speed for all distances</Comment>
 <PreConditions>
 <PreCondition
- Guid="69709d61-2803-4520-9d8c-f55e34928e44"
->DistanceForSpeed ( 
-  Function =&gt; TargetSupervision.EBD, 
-  Speed =&gt; Vmrsp + f41 ( Vmrsp ) 
-) 
-== Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+ Guid="ca716097-705f-4c28-965c-88fbc74aea17"
+><Comment></Comment>
+TargetSupervision.EBD(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) &lt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
@@ -244,6 +251,21 @@
  Id="ca47c45b-796c-4290-80a0-72dc3bbd732e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1d54fba4-524a-4e13-b834-0ff1af6c76ac"
+>
+</ReqRef><ReqRef
+ Id="8e95d803-0ad3-43b6-b488-8471ea3f792a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a5d68bfe-054e-4e60-9a97-b7e2d3ee7c47"
+>
+</ReqRef><ReqRef
+ Id="de364883-d636-476b-8455-154f2ebd4444"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0a0bb64a-ee1a-4fb3-acb4-7cbeadeb7b35"
+>
+</ReqRef><ReqRef
+ Id="dbce4b67-1a6f-4e35-ae83-e827c8a25a48"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="365b4d6a-69a6-41d6-8746-ba7e8241d30b"
 >
 </ReqRef><Comment>Calculates the pre-indication location for the deceleration curve of the given target. The target MRSPn is placed at the start of the following section.</Comment>
 <Parameters>
@@ -699,6 +721,8 @@ MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceIn
 </Function><Function
  Type="Boolean"
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="LocationIsInSpeedRestriction"
