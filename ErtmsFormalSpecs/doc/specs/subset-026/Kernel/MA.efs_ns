@@ -756,6 +756,7 @@ Location stores the previous End of Movement Authority location.</Comment>
  Name="Returns the closest EOA"
  Guid="4c10b760-6b33-42af-8b63-16dfab10d6b2"
 >
+<Comment></Comment>
 <Expression>REDUCE EOAs
     USING ClosestTarget(
     Target1=&gt;X,
@@ -3337,6 +3338,7 @@ IN
  Name="Route suitability EOA defined"
  Guid="4d1b9a4b-cb43-4a54-8481-19d72ed594c0"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="c22fb301-b97b-4365-ae9b-88c418215162"
@@ -3366,6 +3368,7 @@ IN EOAs</Action></Actions>
  Name="Conditional emergency stop"
  Guid="199e8bb6-f70b-4b17-8aa9-6aed934ba089"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="a7d3e9eb-090c-464f-ad59-e3fdb77f9e29"
@@ -3402,6 +3405,48 @@ IN EOAs</Action></Actions>
 <Action
  Guid="6b2dd3e1-c005-4bc7-aa88-9d2b348dc7e3"
 >INSERT ModeProfile.EOA()
+IN EOAs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Non protected LX"
+ Guid="847e39f3-eb30-4f58-8528-968023595240"
+>
+<ReqRef
+ Id="d2ff8626-b129-41d0-afab-85c0e9977832"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="82693a36-2536-4332-a326-6e2eddba3708"
+>
+</ReqRef><ReqRef
+ Id="59bae633-99ce-4f69-992a-cec56e0b4c41"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2e28949e-c78f-4f2d-a422-1533aec5f79b"
+>
+</ReqRef><Comment>The start location of  a non protected level crossing with no stopping area shall be considered as both EOA and SvL until the train brakes to the LX permitted speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Upcoming non protected LX"
+ Guid="a8ce68a8-6c7b-4e39-8f4a-1ddb54892e6b"
+>
+<PreConditions>
+<PreCondition
+ Guid="839cbb33-f7e4-4233-b5fe-4fccc5a07519"
+><Comment></Comment>
+LX.NearestNonProtectedNonStoppingLX() != EMPTY
+  AND  
+(SpeedAndDistanceMonitoring.TargetSupervision.d_P(LX.NearestNonProtectedNonStoppingLX().Speed) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5d428056-d867-4dff-bc94-633a9ba1c635"
+><Comment></Comment>
+INSERT CreateTarget(
+    aLength=&gt;LX.NearestNonProtectedNonStoppingLX().Length,
+    aLocation=&gt;LX.NearestNonProtectedNonStoppingLX().Location,
+    aSpeed=&gt;0.0
+)
 IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -3541,7 +3586,7 @@ IN EOAs</Action><Action
  Guid="c68f4c28-e211-433e-b7ce-eedc5da9ffda"
 >Available(EndSectionTimerStart)
   AND  
-EndSectionTimerStart.TimeOut == BaseTypes.Time.NA</PreCondition></PreConditions>
+EndSectionTimerStart.TimeOut == Default.BaseTypes.Time.NA</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="90723a63-9c43-4536-83be-62cf9e78abd2"
@@ -3726,6 +3771,7 @@ IN EOAs</Action></Actions>
  Name="Make SvLs"
  Guid="8da11eed-5625-483a-baed-4fb1f16285b2"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -3925,6 +3971,48 @@ IN SvLs</Action></Actions>
     aLocation =&gt; EndOfMovementAuthority().Location,
     aSpeed =&gt; 0.0,
     aLength =&gt; BaseTypes.Length.Infinity
+)
+IN SvLs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Non protected LX"
+ Guid="043c8302-2385-4eaa-8096-529cf295b598"
+>
+<ReqRef
+ Id="59bae633-99ce-4f69-992a-cec56e0b4c41"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86b35dab-6268-4501-8f74-291792dbf7b9"
+>
+</ReqRef><ReqRef
+ Id="9b54b401-0857-45af-bbb3-1ec502f39d2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="77d408c1-1178-418b-bf3d-8ce10e3a06f5"
+>
+</ReqRef><Comment>The start location of  a non protected level crossing with no stopping area shall be considered as both EOA and SvL until the train brakes to the LX permitted speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Non protected LX"
+ Guid="f45c04fc-103c-4512-922c-e31745264171"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="95230fbf-fc08-4439-860f-125265afa0df"
+><Comment></Comment>
+LX.NearestNonProtectedNonStoppingLX() != EMPTY
+  AND  
+(SpeedAndDistanceMonitoring.TargetSupervision.d_P(LX.NearestNonProtectedNonStoppingLX().Speed) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9274d1c1-4a76-4102-970e-4758a11502ca"
+>INSERT CreateTarget(
+    aLength=&gt;LX.NearestNonProtectedNonStoppingLX().Length,
+    aLocation=&gt;LX.NearestNonProtectedNonStoppingLX().Location,
+    aSpeed=&gt;0.0
 )
 IN SvLs</Action></Actions>
 </RuleCondition></Conditions>
@@ -4307,7 +4395,7 @@ Note that the &quot;TimeOut&quot; here is not the End Section time-out value, bu
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1ef9fc76-436c-460e-b0ba-a6ebb2bf46a7"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>As soon as the train&apos;s location passes the End Section Timer Start Location, start the timer</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition

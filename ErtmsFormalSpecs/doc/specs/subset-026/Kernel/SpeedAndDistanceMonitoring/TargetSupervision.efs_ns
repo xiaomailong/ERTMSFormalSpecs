@@ -705,7 +705,8 @@ INITIAL_VALUE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="06f49efe-d784-4884-a95d-f7b60a29b220"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Provide the distance d_FLOI.</Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -1187,7 +1188,8 @@ INITIAL_VALUE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="307235e7-d376-4f8b-8f05-ecc74bf353ed"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Returns the closer target between the two parameters</Comment>
+<Parameters>
 <Parameter
  Type="Target"
  Name="X1"
@@ -1500,7 +1502,8 @@ V_P_EBD_Target
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3bf9e65e-8343-4e8d-b3ad-45ba28019117"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Provide the distance d_I.</Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -1558,6 +1561,7 @@ V_P_EBD_Target
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="52d2d9d2-2610-41f6-b713-3d948f282d57"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1573,7 +1577,8 @@ V_P_EBD_Target
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5122854e-3d17-40d6-9541-124e78420d91"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Provide the distance d_P.</Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -1637,7 +1642,8 @@ V_P_EBD_Target
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b600af38-89b2-4e8a-83ef-f8b6efabc4f3"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Provide the distance d_W.</Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -1953,7 +1959,8 @@ V_P_EBD_Target
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b80178a9-ceff-448a-bc9b-c3cdf615cca9"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles the transitions between the supervision statuses</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1983,7 +1990,8 @@ V_P_EBD_Target
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="401bd857-bf4e-4e70-b215-482420f46175"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If speed and distance monitoring is active, keep the supervision status correct</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1995,7 +2003,8 @@ V_P_EBD_Target
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="18777e08-24eb-4f7a-ae17-2baa984929b8"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment></Comment>
+<PreConditions>
 <PreCondition
  Guid="afbeabf3-73a0-480f-90b7-9ca035f36346"
 >MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition

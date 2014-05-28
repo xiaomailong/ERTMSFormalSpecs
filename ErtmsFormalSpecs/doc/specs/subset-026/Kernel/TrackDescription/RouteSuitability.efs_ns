@@ -11,6 +11,8 @@
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RouteSuitabilityInformation"
@@ -62,6 +64,9 @@
 <Comment>List of route suitability items.</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RouteSuitabilityItem"
@@ -192,6 +197,9 @@
 <Collection
  TypeName="RouteSuitability.RouteSuitabilityItem"
  Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RouteSuitabilityItems"
@@ -203,6 +211,9 @@
 <Function
  Type="RouteSuitability.RouteSuitabilityItem"
  Default=""
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CreateRouteSuitabilityItem"
  Guid="0e992176-c20e-4b2b-9ebc-f1466bacf9e3"
@@ -263,6 +274,10 @@
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="IsUnsuitable"
  Guid="c7deead7-d55a-45db-96a6-766ccd730dc2"
@@ -347,6 +362,10 @@ NOT THERE_IS_IN
 </Function><Function
  Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Default=""
+ X="220"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="EOA"
  Guid="dc03df9c-9b6f-45b0-ba1e-4e006afb39c5"
@@ -382,10 +401,12 @@ NOT THERE_IS_IN
  Name="EOA defined"
  Guid="68d67405-caf7-4094-b3e4-7f0058728b8e"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="cb68af68-0cb6-4298-98b1-fe36a552f264"
->RouteSuitabilityProfile != EMPTY
+><Comment></Comment>
+RouteSuitabilityProfile != EMPTY
   AND
 RouteSuitabilityProfile.Items != []
   AND
@@ -407,6 +428,10 @@ THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></P
 </Function><Function
  Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Default=""
+ X="330"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SvL"
  Guid="961d0614-6b17-450f-aba5-c86627fb1425"
@@ -462,6 +487,10 @@ THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></P
 </Function><Function
  Type="Boolean"
  Default=""
+ X="440"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Verified="TRUE"
  NeedsRequirement="FALSE"
@@ -535,6 +564,9 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
 </Function></Functions>
 <Procedures>
 <Procedure
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RouteSuitabilityReceived"
  Guid="77df88d8-346e-41a6-ad9b-de332d8f859c"
@@ -622,6 +654,10 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleNewRouteSuitabilityProfile"
@@ -749,7 +785,7 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axl
  Name="Create the route suitability profile"
  Guid="ce752460-e53f-4f33-b629-e2bfb148dca1"
 >
-<Comment>If the route suitability profile is EMPTY, initialize it -James</Comment>
+<Comment>If the route suitability profile is EMPTY, initialize it</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -887,6 +923,10 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="220"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AddRouteSuitability"
@@ -944,6 +984,9 @@ IN
  Type="RouteSuitabilityInformation"
  DefaultValue="EMPTY"
  VariableMode="Internal"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RouteSuitabilityProfile"
  Guid="b35fbd6f-3cfb-40d4-876b-13c11efc2172"
@@ -969,6 +1012,9 @@ IN
 <Rules>
 <Rule
  Priority="Processing"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Resume initial states"
