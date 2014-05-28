@@ -28191,12 +28191,13 @@ Speed and distance monitoring commands<Sub>
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="46fa293d-249a-454b-bbda-cdc527f79dc7"
->The train speed indicated to the driver shall be identical to the speed used for the speed monitoring (i.e. the estimated speed).<RequirementSets>
+><Comment></Comment>
+The train speed indicated to the driver shall be identical to the speed used for the speed monitoring (i.e. the estimated speed).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="616ffaed-083d-420f-92b6-fd0667c2f29b"
@@ -28215,7 +28216,8 @@ Speed and distance monitoring commands<Sub>
  functionalBlockName=""
  Name=""
  Guid="fb41e572-9cb9-4c36-8844-8019df4bd95e"
->Once a Train Interface command (traction cut-off, service brake or emergency brake) is triggered, the on-board shall apply it until its corresponding revocation condition is met.<RequirementSets>
+><Comment></Comment>
+Once a Train Interface command (traction cut-off, service brake or emergency brake) is triggered, the on-board shall apply it until its corresponding revocation condition is met.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2483ba9b-4869-45d8-8e9c-c1b757ecbf4b"
@@ -28253,7 +28255,8 @@ Speed and distance monitoring commands<Sub>
  functionalBlockName=""
  Name=""
  Guid="7d9d0edb-ad9a-48db-a67e-e74e1be64d74"
->The emergency brake command, which is triggered instead of the service brake command when an SBI supervision limit is exceeded, shall be revoked according to the requirements specified for the revocation of service brake command, unless the emergency brake command has been also triggered due to an EBI supervision limit. In such case, the condition for revoking the emergency brake command due to EBI supervision limit shall prevail.<RequirementSets>
+><Comment></Comment>
+The emergency brake command, which is triggered instead of the service brake command when an SBI supervision limit is exceeded, shall be revoked according to the requirements specified for the revocation of service brake command, unless the emergency brake command has been also triggered due to an EBI supervision limit. In such case, the condition for revoking the emergency brake command due to EBI supervision limit shall prevail.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="79545e4b-c695-44de-be36-a8cfff0157dd"
@@ -28272,7 +28275,8 @@ Speed and distance monitoring commands<Sub>
  functionalBlockName=""
  Name=""
  Guid="555a468e-5942-4038-bb7f-397fa43051f9"
->The on-board shall revoke the Intervention status only when no brake command is applied by the speed and distance monitoring function.<RequirementSets>
+><Comment></Comment>
+The on-board shall revoke the Intervention status only when no brake command is applied by the speed and distance monitoring function.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3e9cfcf4-7440-49e8-af4d-02953de3d3db"

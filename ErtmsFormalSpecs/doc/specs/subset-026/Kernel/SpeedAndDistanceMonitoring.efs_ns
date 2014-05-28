@@ -487,6 +487,41 @@ ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= 
  Name="RevokeEBCommand"
  Guid="4a1fb3de-7c1f-4285-9c15-c45bc8536ccf"
 >
+<ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b2d3b937-5b07-47ca-bd74-92a49ebd577a"
+>
+</ReqRef><ReqRef
+ Id="ec0c435b-0145-4656-99a6-3a16788797ff"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="000f01e1-a4c3-4c18-9935-90d340052d69"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="Revoke EB command"
+ Guid="f4bf398c-5f06-4c70-93cd-92d6fe4522aa"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Revoke EB command"
+ Guid="d7d95c99-6bcd-4e69-b30d-773ceda16c48"
+>
+<PreConditions>
+<PreCondition
+ Guid="865d3a24-9c10-46ca-ad61-7d6b83da4489"
+>NationalValues.ReleaseOfEBIsPermitted()
+  OR  
+Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2e40dc81-ff12-4049-a5eb-e1994b2236a5"
+><Comment></Comment>
+EBTriggered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure><Procedure
  X="830"
  Width="100"
@@ -501,6 +536,11 @@ ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= 
  Id="0f223275-ff77-4025-a194-a347f5ef0542"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4d17d182-2f66-480e-9253-75a9d717deb0"
+>
+</ReqRef><ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dc8b5631-3b3a-4b5f-a539-c6f41e5a68be"
 >
 </ReqRef><Rules>
 <Rule
@@ -523,7 +563,8 @@ ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= 
 <Actions>
 <Action
  Guid="2a6f82f8-80a2-4496-bfa4-445fd6c1d335"
->SBTriggered &lt;- False</Action><Action
+><Comment></Comment>
+SBTriggered &lt;- False</Action><Action
  Guid="4c3aacf3-5346-42c8-950b-be161a915d5f"
 >SBSpecified &lt;- False</Action></Actions>
 </RuleCondition><RuleCondition
@@ -541,6 +582,10 @@ ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= 
 >SBSpecified &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Name="RevokeSupervisionStatus"
+ Guid="d8417742-d2d9-471e-a41d-403cb94cc035"
+>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -588,6 +633,11 @@ ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= 
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e9555a1b-f367-4622-9faa-66996604960b"
 >
+</ReqRef><ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1fcc5fa9-c9cf-41dd-a448-30996a0eb7d1"
+>
 </ReqRef><Comment>Indicates if SB was triggered.</Comment>
 </Variable><Variable
  Type="Boolean"
@@ -616,6 +666,11 @@ ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= 
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e36e82e0-f29a-4357-bb33-8229c4305f00"
 >
+</ReqRef><ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6fb805d8-e377-4058-ab1b-cfd7d8e60c54"
+>
 </ReqRef><Comment>Indicates if EB was triggered (can be triggered either if EB was specified or if SB was specified but there is no on-board interface with the service brake or the use of the service brake command is not allowed by a National Value).</Comment>
 </Variable><Variable
  Type="Boolean"
@@ -638,6 +693,11 @@ ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= 
  Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7d304123-df8e-4e5b-9c01-015f289a1c6a"
+>
+</ReqRef><ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1a5f487-c094-4090-a348-d919c764003d"
 >
 </ReqRef><Comment>Indicates if the traction cuf-off command was triggered.</Comment>
 </Variable><Variable

@@ -20,6 +20,8 @@
 <Enumerations>
 <Enum
  Default="PerformedAction.ActionExecuted"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="PerformedAction"
@@ -40,6 +42,9 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="Desk1"
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CabDeskEnum"
  Guid="1ae7ec78-9a88-42c6-8c53-e8c620c6fb71"
@@ -64,6 +69,9 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="CabA"
+ X="220"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CabEnum"
  Guid="c31be23c-f234-4613-b335-2aaa6eaff85f"
@@ -88,6 +96,9 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="RBCContactActionEnum.ReenterNetworkId"
+ X="330"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RBCContactActionEnum"
  Guid="c399b535-c0a4-40b4-afd8-15d2660493c2"
@@ -149,6 +160,9 @@
 <Structures>
 <Structure
  Default=""
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DMIStruct"
@@ -9329,7 +9343,8 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4a21579d-6160-4b38-95ec-22f82c7e6a08"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment></Comment>
+</StructureElement><StructureElement
  TypeName="DMI.OUT.PermittedSpeed"
  Default=""
  Mode="Outgoing"
@@ -10076,6 +10091,10 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InputInformation"
@@ -10115,6 +10134,10 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 </StructureElement></Structure><Structure
  Default=""
+ X="220"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="OutputInformation"
@@ -10154,6 +10177,10 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 </StructureElement></Structure><Structure
  Default=""
+ X="330"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="DriverAction"
  Guid="5dd3c365-cb7f-4914-8bba-2ceab13ccfbc"
@@ -10188,6 +10215,10 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 </StructureElement></Structure><Structure
  Default=""
+ X="440"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InhibitionAction"
@@ -10214,6 +10245,10 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 </StructureElement></Structure><Structure
  Default=""
+ X="550"
+ Y="60"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="RbcIdNumberChoice"
  Guid="66eb7be5-8ed1-4123-a7e6-fd29a32f4100"
@@ -10253,6 +10288,9 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 </StructureElement></Structure><Structure
  Default=""
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DisplayLanguage"
@@ -10287,6 +10325,9 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  TypeName="RBCContactActionEnum"
  MaxSize="5"
  Default="[]"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RBCContactActionsCol"
  Guid="5e1d1909-0faa-4bc0-8f4a-4d733d378b24"
@@ -10317,6 +10358,9 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 <Function
  Type="DMI.DMIStruct"
  Default=""
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="MasterDMI"
  Guid="a73ed919-cd79-497a-a960-8ff0650d282c"
@@ -10350,6 +10394,10 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Function><Function
  Type="DMI.DMIStruct"
  Default=""
+ X="110"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SlaveDMI"
  Guid="c3252f0f-82fc-4a6d-9e59-635fe574107a"
@@ -10387,6 +10435,10 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Function><Function
  Type="Boolean"
  Default=""
+ X="220"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ModeChanged"
@@ -10403,6 +10455,10 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Function><Function
  Type="TIU.CabStruct"
  Default=""
+ X="330"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CabOfDMI"
@@ -10444,6 +10500,10 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Function><Function
  Type="Boolean"
  Default=""
+ X="440"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="DeskIsOpen"
  Guid="1849ab3d-c834-4645-a0dc-965e031fe2e0"
@@ -10489,6 +10549,10 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Function><Function
  Type="Boolean"
  Default=""
+ X="550"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="DesksAreClosed"
  Guid="7533be36-4dc9-4172-9b3f-9651d90522e8"
@@ -10534,6 +10598,9 @@ NOT DeskIsOpen ( DMI2 )</Expression>
  Type="DMI.DMIStruct"
  DefaultValue=""
  VariableMode="InOut"
+ Y="240"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="DMI1"
  Guid="28ce8946-56a4-49d5-8e04-47c5a0fbfbf1"
@@ -10547,6 +10614,10 @@ NOT DeskIsOpen ( DMI2 )</Expression>
  Type="DMI.DMIStruct"
  DefaultValue=""
  VariableMode="InOut"
+ X="110"
+ Y="240"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="DMI2"
  Guid="e4b10c27-aea8-46de-ab6a-0962b6bd5b65"
@@ -10560,6 +10631,9 @@ NOT DeskIsOpen ( DMI2 )</Expression>
 <Rules>
 <Rule
  Priority="Processing"
+ Y="420"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle mode change"

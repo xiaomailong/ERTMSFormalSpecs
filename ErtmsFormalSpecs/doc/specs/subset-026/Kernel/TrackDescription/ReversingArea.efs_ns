@@ -11,6 +11,8 @@
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ReversingAreaInformation"
@@ -83,6 +85,9 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Procedures>
 <Procedure
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ReversingSupervisionInformationReceived"
  Guid="b4e0a17b-bb01-4690-bfa1-d1cc1ae7a7ff"
@@ -161,6 +166,10 @@
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ReversingAreaInformationReceived"
  Guid="f8edd247-a1c3-4973-b7cb-cb278593e058"
@@ -278,6 +287,9 @@
  Type="ReversingArea.ReversingAreaInformation"
  DefaultValue="EMPTY"
  VariableMode="Internal"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ReversingAreaProfile"
  Guid="56008f14-0b02-47d7-be00-a5b02d6c7d92"
@@ -307,6 +319,10 @@
  Type="Boolean"
  DefaultValue="Boolean.False"
  VariableMode="Incoming"
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="DriverTriesReversing"
  Guid="8e6bc53c-889f-4e9e-802a-15a2c00d851e"
@@ -321,6 +337,9 @@
 <Rules>
 <Rule
  Priority="Processing"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Display reversing is possible"
  Guid="f30a4340-e68f-4699-8d96-297121cc4043"

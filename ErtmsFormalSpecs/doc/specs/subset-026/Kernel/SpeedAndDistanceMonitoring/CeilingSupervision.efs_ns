@@ -1034,6 +1034,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="becfa08a-aa7a-4b59-a7d9-560b6ae975de"
 >
+</ReqRef><ReqRef
+ Id="46fa293d-249a-454b-bbda-cdc527f79dc7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d2e3fcfe-9d39-4fbf-a019-97a97936075f"
+>
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1248,7 +1253,18 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bc2863f5-8dd1-438b-a8b2-d8bd24146cca"
 >
-</ReqRef><PreConditions>
+</ReqRef><ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5729e108-4caf-487c-9a94-857e90f8f414"
+>
+</ReqRef><ReqRef
+ Id="555a468e-5942-4038-bb7f-397fa43051f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3b3187bf-fc67-4d2f-bd0e-762064903223"
+>
+</ReqRef><Comment></Comment>
+<PreConditions>
 <PreCondition
  Guid="51e14c41-a88a-40af-af5b-9cf3f88e0f86"
 >Odometry.EstimatedSpeed &lt;= SupervisedSpeed()</PreCondition><PreCondition
@@ -1256,41 +1272,46 @@
 >Supervision != SupervisionStatus.Normal</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="af826a2f-855b-4980-843d-b088729a722e"
->Supervision &lt;- SupervisionStatus.Normal</Action><Action
  Guid="84c42893-f2cd-4903-b28f-e532ac4069e1"
 >SBTriggered &lt;- False</Action><Action
  Guid="49831efe-90f4-40f9-8fbe-fb22fcd620cc"
->RevokeSBCommand()</Action></Actions>
+>RevokeSBCommand()</Action><Action
+ Guid="a41cfc82-d25b-4253-a90a-157ce0df5384"
+>RevokeEBCommand()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
- Implemented="TRUE"
- Name="RevokeEB"
- Guid="0aa14cf1-8065-4f99-bcc4-dd031e9af9e4"
+ Name="Revoke status"
+ Guid="fa89acd7-f9aa-4d37-ae64-f3da194532a8"
 >
-<ReqRef
- Id="ec0c435b-0145-4656-99a6-3a16788797ff"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b3f6cb77-eaac-49f3-9f29-4daf4bc3992c"
->
-</ReqRef><SubRules></SubRules>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
- NeedsRequirement="FALSE"
- Name="RevokeEB"
- Guid="82b153fc-0c7b-469a-8a15-4dd7d924ebf7"
+ Name="Revoke non intervention status"
+ Guid="b66ef5d3-c453-4b11-9865-e2c289d24d24"
 >
 <PreConditions>
 <PreCondition
- Guid="649c3f88-8262-493c-b016-93b647dc82f2"
->NationalValues.ReleaseOfEBIsPermitted()</PreCondition></PreConditions>
+ Guid="2270512f-cc69-42a9-8c84-a607c93e8056"
+>Supervision != SupervisionStatus.Intervention</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="a41cfc82-d25b-4253-a90a-157ce0df5384"
->RevokeEBCommand()</Action><Action
- Guid="2e40dc81-ff12-4049-a5eb-e1994b2236a5"
->EBTriggered &lt;- False</Action></Actions>
+ Guid="5beb366b-253e-4aee-b9a5-b655a066ee93"
+>Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Revoke intervention status"
+ Guid="bec9884e-9447-4597-b777-b1a172e12a46"
+>
+<PreConditions>
+<PreCondition
+ Guid="7e554172-f2e0-443d-8b24-5dd1d62e28c0"
+>NOT EBTriggered</PreCondition><PreCondition
+ Guid="c6335253-1f09-4c77-b989-b9879c4f1136"
+>NOT SBTriggered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="57061930-3c7d-4da8-b93a-807c4ff8c8ab"
+>Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
@@ -1307,6 +1328,16 @@
  Id="644aa967-53f8-4d2c-b5ba-6a857c9cda54"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8a4fd652-11c7-4a14-b685-1e32a8c6352c"
+>
+</ReqRef><ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="31cf935f-c5a2-4bfc-a5bb-deda3178c506"
+>
+</ReqRef><ReqRef
+ Id="555a468e-5942-4038-bb7f-397fa43051f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae0f5559-4b9b-42c7-bb84-909f09cf164b"
 >
 </ReqRef><PreConditions>
 <PreCondition

@@ -1599,6 +1599,7 @@ V_P_EBD_Target
  Name="GUI is enabled"
  Guid="a2617cac-24b8-462a-b50f-024412f2faa6"
 >
+<Comment></Comment>
 <Expression>BaseTypes.MinDistance ( X1 =&gt; d_FLOI ( Vest ) - BaseTypes.SpeedToMS ( Vest ) * TargetSupervision.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; TargetSupervision.GUI, Speed =&gt; Vest ) )</Expression>
 </Case></Cases>
 </Function><Function
@@ -1686,6 +1687,7 @@ V_P_EBD_Target
  Name="Value"
  Guid="d216bbc6-a6ca-42c4-bba6-68c13b80c42c"
 >
+<Comment></Comment>
 <Expression>d_P ( V ) - BaseTypes.SpeedToMS ( V ) * TargetSupervision.T_indication ()</Expression>
 </Case></Cases>
 </Function><Function
@@ -1816,7 +1818,8 @@ V_P_EBD_Target
  Guid="9b28d836-1ed0-415b-9678-5c3beec361d5"
 >T_bs1 &lt;- TrainData.BrakingParameters.T_bs()</Action><Action
  Guid="877d64de-96f2-4618-8ae7-988535b274d7"
->T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></Actions>
+><Comment></Comment>
+T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="SBCommandNotAvailable"
@@ -1959,6 +1962,11 @@ V_P_EBD_Target
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b80178a9-ceff-448a-bc9b-c3cdf615cca9"
 >
+</ReqRef><ReqRef
+ Id="46fa293d-249a-454b-bbda-cdc527f79dc7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1100ee8e-70a0-41f3-8d93-277c1f5b9809"
+>
 </ReqRef><Comment>Handles the transitions between the supervision statuses</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -2089,7 +2097,8 @@ V_P_EBD_Target
  Guid="2a74a3aa-1b5b-4575-b485-6dce7ee409db"
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="56e375e7-c5e1-46e7-a199-6ae22019d736"
->TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
+><Comment></Comment>
+TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="93c187f7-8a69-4338-9c69-e8de1f01194e"
