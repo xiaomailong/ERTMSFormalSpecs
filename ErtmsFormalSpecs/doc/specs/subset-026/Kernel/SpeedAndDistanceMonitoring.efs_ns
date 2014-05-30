@@ -380,41 +380,6 @@ ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= 
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="830"
- Y="60"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TriggerEBCommand"
- Guid="6b62b8c5-ce72-4fd2-917e-c093976d77cb"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TriggerEBCommand"
- Guid="dc7d6796-19bd-466c-a5f0-0b9d08176961"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TriggerEBCommand"
- Guid="555aede7-2e21-4f63-9560-38ff5925a342"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="f1ce2fe3-5fe1-4732-bd7f-6a48f3aabc20"
->EBTriggered &lt;- True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
  X="610"
  Width="100"
  Height="50"
@@ -473,7 +438,7 @@ ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= 
 <Actions>
 <Action
  Guid="37d9f842-c365-4e03-8f5e-df6d7484dba6"
->TriggerEBCommand()</Action><Action
+>EBTriggered &lt;- True</Action><Action
  Guid="fd5d023f-77fd-4fd2-8faf-4daa2289d1ad"
 >SBSpecified &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
@@ -506,7 +471,7 @@ ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= 
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Revoke EB command"
+ Name="Revoke SB command, no SB available"
  Guid="d7d95c99-6bcd-4e69-b30d-773ceda16c48"
 >
 <PreConditions>
@@ -514,12 +479,54 @@ ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= 
  Guid="865d3a24-9c10-46ca-ad61-7d6b83da4489"
 >NationalValues.ReleaseOfEBIsPermitted()
   OR  
-Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
+Odometry.TrainIsAtStandstill()</PreCondition><PreCondition
+ Guid="cd7fb674-fa24-4c9b-97f4-babe1908226d"
+>NOT SBIsAvailableForUse()</PreCondition><PreCondition
+ Guid="2163ef71-6d83-4e67-aa6f-cd67c56ec838"
+>SBSpecified</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2e40dc81-ff12-4049-a5eb-e1994b2236a5"
 ><Comment></Comment>
-EBTriggered &lt;- False</Action></Actions>
+SBSpecified &lt;- False</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Revoke EB command"
+ Guid="38069d81-edcf-4cb6-baa6-b50e6797433b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Revoke EB command"
+ Guid="57726d91-ee94-44c3-be64-9f09a5339190"
+>
+<PreConditions>
+<PreCondition
+ Guid="d51098b6-4aca-4adb-a40e-cb63bc6a3de2"
+>NOT EBSpecified</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0d9b886e-0bc6-4a1e-b674-689aabe86f85"
+>EBTriggered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Name="Revoke EB command"
+ Guid="d4fc3fbf-c8ad-48db-87e8-14e970778c54"
+>
+<PreConditions>
+<PreCondition
+ Guid="1bdbbe3f-110e-40d0-b1fa-f58ed5a4738f"
+>NationalValues.ReleaseOfEBIsPermitted()
+  OR  
+Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c69226a6-2c28-4bc4-91a1-ff49993f5956"
+>EBSpecified &lt;- False</Action><Action
+ Guid="887e30d6-0424-450f-9820-8621c7adf272"
+>EBTriggered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -566,7 +573,8 @@ EBTriggered &lt;- False</Action></Actions>
 ><Comment></Comment>
 SBTriggered &lt;- False</Action><Action
  Guid="4c3aacf3-5346-42c8-950b-be161a915d5f"
->SBSpecified &lt;- False</Action></Actions>
+><Comment></Comment>
+SBSpecified &lt;- False</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Otherwise"
@@ -577,9 +585,7 @@ SBTriggered &lt;- False</Action><Action
 <Actions>
 <Action
  Guid="8e4ef373-8406-40ac-8590-06ac5a6d17e7"
->RevokeEBCommand()</Action><Action
- Guid="8a7deeeb-8de4-4d72-a6c2-3d915194084c"
->SBSpecified &lt;- False</Action></Actions>
+>RevokeEBCommand()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -620,9 +626,10 @@ SBTriggered &lt;- False</Action><Action
 <PreConditions>
 <PreCondition
  Guid="6455904d-1b08-46bf-8b25-c0f07e9e36d1"
->NOT EBTriggered</PreCondition><PreCondition
+><Comment></Comment>
+NOT EBSpecified</PreCondition><PreCondition
  Guid="300c884f-3ba0-42ec-b0a2-e40720d290f3"
->NOT SBTriggered</PreCondition></PreConditions>
+>NOT SBSpecified</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="576000fb-f85a-40e7-918a-4fb09ddcc398"
@@ -810,6 +817,7 @@ SBTriggered &lt;- False</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="95dd4898-2b4b-450a-8ef2-62b60ac891aa"
 >
+<Comment></Comment>
 </ReqRef><Comment>Indicates if the SB command was specified. Use to determine wheter EB command was triggered due to SBI supervision limit or EBI supervision limit.</Comment>
 </Variable><Variable
  Type="Boolean"
@@ -824,5 +832,18 @@ SBTriggered &lt;- False</Action><Action
  Guid="53d8badf-f08b-4d97-8f5e-710965ab272f"
 >
 <Comment>Indicates if the train is tripped.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue=""
+ VariableMode="Internal"
+ Name="EBSpecified"
+ Guid="38513e31-38e3-4623-ab69-c5992230339e"
+>
+<ReqRef
+ Id="7d9d0edb-ad9a-48db-a67e-e74e1be64d74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2131a0e3-d4fc-41f2-adf5-f73261accc1a"
+>
+</ReqRef><Comment></Comment>
 </Variable></Variables>
 </NameSpace>

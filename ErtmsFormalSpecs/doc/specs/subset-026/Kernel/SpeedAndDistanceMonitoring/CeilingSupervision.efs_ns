@@ -582,6 +582,8 @@
 </Function></Functions>
 <Procedures>
 <Procedure
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CSMStatusTriggers"
  Guid="754a8afc-edb7-42b9-a27f-1284b817ac07"
@@ -675,7 +677,9 @@
  Guid="69dbf7af-26e1-420a-a2be-d2624eed2eee"
 >Supervision &lt;- SupervisionStatus.Intervention</Action><Action
  Guid="08d3e61f-777a-454b-ba65-928ccd503713"
->TriggerEBCommand()</Action></Actions>
+>EBTriggered &lt;- True</Action><Action
+ Guid="223e840e-7826-4f01-bc2a-f01bdea32ceb"
+>EBSpecified &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t4"
@@ -791,6 +795,9 @@
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Width="100"
+ Height="50"
  Name="CSMStatusRevocation"
  Guid="181e3fbd-9e82-4f66-bc59-3824db2c584c"
 >
@@ -827,11 +834,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5729e108-4caf-487c-9a94-857e90f8f414"
 >
-</ReqRef><ReqRef
- Id="555a468e-5942-4038-bb7f-397fa43051f9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3b3187bf-fc67-4d2f-bd0e-762064903223"
->
 </ReqRef><Comment></Comment>
 <PreConditions>
 <PreCondition
@@ -844,7 +846,8 @@
  Guid="49831efe-90f4-40f9-8fbe-fb22fcd620cc"
 >RevokeSBCommand()</Action><Action
  Guid="a41cfc82-d25b-4253-a90a-157ce0df5384"
->RevokeEBCommand()</Action></Actions>
+><Comment></Comment>
+RevokeEBCommand()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -885,11 +888,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="31cf935f-c5a2-4bfc-a5bb-deda3178c506"
 >
-</ReqRef><ReqRef
- Id="555a468e-5942-4038-bb7f-397fa43051f9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ae0f5559-4b9b-42c7-bb84-909f09cf164b"
->
 </ReqRef><PreConditions>
 <PreCondition
  Guid="4e4830fc-a94d-426b-9f5e-b913436afab4"
@@ -898,8 +896,6 @@
 >Supervision == SupervisionStatus.Intervention</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="f8efea1f-aba7-4784-b942-e6a964f43b62"
->EBTriggered &lt;- False</Action><Action
  Guid="6d175e6c-da20-4473-a4af-64d640ac6605"
 >RevokeEBCommand()</Action></Actions>
 <SubRules>

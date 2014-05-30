@@ -2021,9 +2021,11 @@ T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></Actions>
 <Actions>
 <Action
  Guid="574ec616-674d-4716-90a5-ac23810d8236"
->TriggerEBCommand()</Action><Action
+>EBTriggered &lt;- True</Action><Action
  Guid="1c1b160c-a7ac-4d11-8228-3453a58ee5a6"
->Supervision &lt;- SupervisionStatus.Intervention</Action></Actions>
+>Supervision &lt;- SupervisionStatus.Intervention</Action><Action
+ Guid="73087f5d-b66e-4605-acd0-1294127d8995"
+>EBSpecified &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t13"
@@ -2047,9 +2049,11 @@ T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></Actions>
 <Actions>
 <Action
  Guid="4ec0659c-cb29-4181-ba15-eb5f876c2157"
->TriggerEBCommand()</Action><Action
+>EBTriggered &lt;- True</Action><Action
  Guid="0ecf8a7c-4a11-4ed2-9a5c-f5f4272518d9"
->Supervision &lt;- SupervisionStatus.Intervention</Action></Actions>
+>Supervision &lt;- SupervisionStatus.Intervention</Action><Action
+ Guid="42d88382-67f0-4036-9418-910cbcf6897c"
+>EBSpecified &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t12"
