@@ -636,6 +636,38 @@ NOT EBSpecified</PreCondition><PreCondition
 >Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Name="RevokeTCOCommand"
+ Guid="5eccd54e-61f0-4dca-abba-2b1483e3156b"
+>
+<ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="40f32121-e486-4d96-abc2-cb801d224c7e"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="Revoke traction cut-off"
+ Guid="44dbc74c-95a4-4339-939f-8853901bf5ab"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Revoke traction cut-off"
+ Guid="1e30f7cd-9c87-4ce0-8f3a-55f229b53d8b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="17ad79f6-81b6-4650-98ba-1e426ab801fc"
+>TCOSpecified &lt;- False</Action><Action
+ Guid="31729bba-04d1-4bd8-8b41-021c1f74a4af"
+><Comment></Comment>
+TCOTriggered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -731,7 +763,7 @@ NOT EBSpecified</PreCondition><PreCondition
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TractionCutOffTriggered"
+ Name="TCOTriggered"
  Guid="977c190f-a73a-4ed6-a0f3-3c8abe725756"
 >
 <ReqRef
