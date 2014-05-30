@@ -583,9 +583,52 @@ SBTriggered &lt;- False</Action><Action
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Width="100"
+ Height="50"
  Name="RevokeSupervisionStatus"
  Guid="d8417742-d2d9-471e-a41d-403cb94cc035"
 >
+<ReqRef
+ Id="555a468e-5942-4038-bb7f-397fa43051f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c429def-00c8-4ee3-b895-df73d7971553"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="Revoke status"
+ Guid="c2a70044-065d-4f63-89be-2d80bb4e22fb"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Indication, overspeed, warning"
+ Guid="af2303a8-d5a0-4f29-9c80-43510be4095a"
+>
+<PreConditions>
+<PreCondition
+ Guid="369abeb7-4547-401c-b06c-38662755c910"
+>Supervision != SupervisionStatus.Intervention</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="73acea9b-c90a-4128-b0d7-004e3e2bb365"
+>Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Intervention"
+ Guid="445fc4c8-19c3-4650-a23d-d410fdf4ce66"
+>
+<PreConditions>
+<PreCondition
+ Guid="6455904d-1b08-46bf-8b25-c0f07e9e36d1"
+>NOT EBTriggered</PreCondition><PreCondition
+ Guid="300c884f-3ba0-42ec-b0a2-e40720d290f3"
+>NOT SBTriggered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="576000fb-f85a-40e7-918a-4fb09ddcc398"
+>Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
