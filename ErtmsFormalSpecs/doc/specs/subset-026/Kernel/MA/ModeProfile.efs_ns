@@ -117,7 +117,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="ModeProfileStruct"
+ TypeName="Kernel.MA.ModeProfile.ModeProfileStruct"
  MaxSize="20"
  Default="[]"
  X="220"
@@ -187,7 +187,7 @@
 >
 </ReqRef><Parameters>
 <Parameter
- Type="ModeProfileStruct"
+ Type="Kernel.MA.ModeProfile.ModeProfileStruct"
  Name="aModeProfile"
  Guid="5f79a1a2-7e43-4b47-93b8-5f4067577550"
 >
@@ -306,7 +306,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
- Type="ModeProfileStruct"
+ Type="Kernel.MA.ModeProfile.ModeProfileStruct"
  Name="aProfile"
  Guid="30f1c5a6-0d93-409e-aef7-b8968e2caab2"
 >
@@ -328,7 +328,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="ModeProfileStruct"
+ Type="Kernel.MA.ModeProfile.ModeProfileStruct"
  Default=""
  X="40"
  Y="200"
@@ -350,7 +350,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 3. If the infill location is inside the profile, the latter is shortened until the infill location.</Comment>
 <Parameters>
 <Parameter
- Type="ModeProfileStruct"
+ Type="Kernel.MA.ModeProfile.ModeProfileStruct"
  Name="aProfile"
  Guid="5edee4a2-0bce-4cdb-b56b-560b902fb90a"
 >
@@ -472,7 +472,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 </ReqRef><Comment>Indicates if the acknowledgement area is reached for a given mode profile.</Comment>
 <Parameters>
 <Parameter
- Type="ModeProfileStruct"
+ Type="Kernel.MA.ModeProfile.ModeProfileStruct"
  Name="aProfile"
  Guid="3da9327d-dc53-4a47-89c8-678a6b8d12ed"
 >
@@ -485,7 +485,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Expression>aProfile.Distance - BaseTypes.LengthToDistance ( aProfile.AcknLength ) &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
 </Case></Cases>
 </Function><Function
- Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Default=""
  X="260"
  Y="80"
@@ -538,7 +538,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Default=""
  X="260"
  Y="140"
@@ -592,7 +592,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="ModeProfileStruct"
+ Type="Kernel.MA.ModeProfile.ModeProfileStruct"
  Default=""
  X="40"
  Y="140"

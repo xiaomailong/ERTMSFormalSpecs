@@ -120,7 +120,7 @@
 >
 <Comment></Comment>
 </StructureElement><StructureElement
- TypeName="Kernel.NationalValues.NationalDefaultData"
+ TypeName="NationalDefaultData"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1480,7 +1480,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Functions>
 <Function
- Type="NationalValues"
+ Type="Kernel.NationalValues.NationalValues"
  Default=""
  X="30"
  Y="300"
@@ -1928,7 +1928,7 @@
 <Expression>DefaultValues.MaxDecelValueUnderReducedAdhesionCond2</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKt"
+ Type="NationalValues.CorFactorKt"
  Default=""
  X="250"
  Width="100"
@@ -1959,7 +1959,7 @@
 <Expression>CorFactorKt ( 0.05 * KtValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="WeightFactor"
+ Type="NationalValues.WeightFactor"
  Default=""
  X="140"
  Y="60"
@@ -1996,7 +1996,7 @@
 <Expression>WeightFactor ( 0.05 * VadhValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKr"
+ Type="NationalValues.CorFactorKr"
  Default=""
  X="360"
  Width="100"
@@ -2027,7 +2027,7 @@
 <Expression>CorFactorKr ( 0.05 * KrValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKv"
+ Type="NationalValues.CorFactorKv"
  Default=""
  X="470"
  Width="100"
@@ -2058,7 +2058,7 @@
 <Expression>CorFactorKv ( 0.02 * KvValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKr"
+ Type="NationalValues.CorFactorKr"
  Default=""
  X="360"
  Y="60"
@@ -2082,7 +2082,7 @@
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
- Type="KrIntValueSet"
+ Type="Kernel.NationalValues.KrIntValueSet"
  Name="aKr_int"
  Guid="11dc3fba-3e8a-4661-a871-92eb53ccdd9e"
 >
@@ -2148,7 +2148,7 @@
 <Expression>aKr_int.Val4.Value</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKv"
+ Type="NationalValues.CorFactorKv"
  Default=""
  X="470"
  Y="60"
@@ -2172,7 +2172,7 @@
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
- Type="KvIntValueSet_FreightTrain"
+ Type="Kernel.NationalValues.KvIntValueSet_FreightTrain"
  Name="aKv_int"
  Guid="8937d5bf-fea1-4f6b-8062-3fd01d6dce55"
 >
@@ -2238,7 +2238,7 @@
 <Expression>aKv_int.Val4.Value</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKv"
+ Type="NationalValues.CorFactorKv"
  Default=""
  X="470"
  Y="180"
@@ -2267,7 +2267,7 @@
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
- Type="KvIntValueSet_PassengerTrain"
+ Type="Kernel.NationalValues.KvIntValueSet_PassengerTrain"
  Name="aKv_int"
  Guid="987b3fdd-4cf7-4e18-b912-70b13b27aa83"
 >
@@ -2747,6 +2747,7 @@
  Name="NationalValues_SpeedSupervisionLimitIsNoLongerExceeded"
  Guid="c42b9ca4-4e17-4e9c-8e6e-e9970071fd9c"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f7f7c12d-3963-40da-83ea-2d25e6986142"
@@ -2761,6 +2762,7 @@
  Name="DefaultValues_SpeedSupervisionLimitIsNoLongerExceeded"
  Guid="cb889c73-68c2-4ad3-8c17-9640a862ddaa"
 >
+<Comment></Comment>
 <Expression>Kernel.NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Expression>
 </Case></Cases>
 </Function><Function
@@ -2798,7 +2800,7 @@
 <Expression>DefaultValues.UseServiceBrakeInTargetSpeedMonitoring == Messages.Q_NVSBTSMPERM.No</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKt"
+ Type="NationalValues.CorFactorKt"
  Default=""
  X="30"
  Y="240"
@@ -3006,7 +3008,7 @@
  Guid="9d08d313-e77f-45c6-acdc-04caa6b05b61"
 >
 </Parameter><Parameter
- Type="NationalDefaultData"
+ Type="Kernel.NationalValues.NationalDefaultData"
  Name="NV"
  Guid="7ba74d48-4879-44a7-83a5-ec6dfae93e0f"
 >
@@ -3095,7 +3097,7 @@
  Guid="faa7f9c1-70c0-4e34-a12f-c01b6dab8ad7"
 >
 </Parameter><Parameter
- Type="NationalDefaultData"
+ Type="Kernel.NationalValues.NationalDefaultData"
  Name="NV"
  Guid="a143a52f-ff7f-4dde-8f0e-79938dc3c4be"
 >
@@ -3187,7 +3189,7 @@
  Guid="deec40c1-9f33-42e6-81af-03f1498fe670"
 >
 </Parameter><Parameter
- Type="NationalDefaultData"
+ Type="Kernel.NationalValues.NationalDefaultData"
  Name="NV"
  Guid="bd582510-8859-40dd-ac5b-90cdd3e07b36"
 >
@@ -3241,7 +3243,7 @@
  Guid="f152b83e-d894-4017-8836-beb77865bd25"
 >
 </Parameter><Parameter
- Type="KrIntValueSet"
+ Type="Kernel.NationalValues.KrIntValueSet"
  Name="KrInt"
  Guid="5b564ccd-1a47-4c55-a7f6-caad9af5bcfb"
 >
@@ -3339,7 +3341,7 @@
  Guid="bc7f4837-0193-49e9-85fe-ef6a49d94878"
 >
 </Parameter><Parameter
- Type="KvIntValueSet_FreightTrain"
+ Type="Kernel.NationalValues.KvIntValueSet_FreightTrain"
  Name="KvInt"
  Guid="6dcb0279-a53e-4c43-a096-c9815c3d8ce4"
 >
@@ -3438,7 +3440,7 @@
  Guid="45903244-9b5e-40e6-b7ff-ca917ef60781"
 >
 </Parameter><Parameter
- Type="KvIntValueSet_PassengerTrain"
+ Type="Kernel.NationalValues.KvIntValueSet_PassengerTrain"
  Name="KvInt"
  Guid="95dbbc80-2905-4e9b-84e3-910fdbd4e6ef"
 >
@@ -3525,7 +3527,7 @@
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="NationalValues"
+ Type="Kernel.NationalValues.NationalValues"
  DefaultValue=""
  VariableMode="Internal"
  X="100"
@@ -3558,7 +3560,7 @@
 >
 </Variable></SubVariables>
 </Variable><Variable
- Type="NationalValues"
+ Type="Kernel.NationalValues.NationalValues"
  DefaultValue=""
  VariableMode="Internal"
  X="100"
@@ -3593,7 +3595,7 @@
 >
 </ReqRef><Comment>Represents the national values currenty applicable on the train.</Comment>
 </Variable><Variable
- Type="NationalDefaultData"
+ Type="Kernel.NationalValues.NationalDefaultData"
  DefaultValue=""
  VariableMode="Internal"
  X="480"

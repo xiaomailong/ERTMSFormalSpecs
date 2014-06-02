@@ -11,6 +11,8 @@
 <Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="d_EBI"
  Guid="c1f6a3d5-d606-4f86-ab36-29fb5a886e2a"
@@ -53,6 +55,9 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="d_P"
  Guid="4ae86037-ce7f-4345-84d9-c47b3a56383b"
@@ -83,6 +88,9 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="220"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SpeedRestrictions"
  Guid="46dc90b5-4414-422d-b79e-c6dd04220757"
@@ -92,7 +100,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="08591f02-6587-40e1-ae68-9a43ef005b99"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment></Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
@@ -104,10 +113,12 @@
  Name="Value"
  Guid="ec5f07e9-4c6d-4a52-a890-b1a6d9b2dd3a"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2798b3c1-e09d-442c-a865-50f7fa1e6dd2"
->TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) != []</PreCondition></PreConditions>
+><Comment></Comment>
+TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) != []</PreCondition></PreConditions>
 <Expression>(REDUCE
     TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction )
  USING  
@@ -123,6 +134,9 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="330"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TargetSpeedRestriction"
  Guid="e086594b-5c91-4e58-b60e-8d04ee160e10"
@@ -134,7 +148,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >
 </ReqRef><Parameters>
 <Parameter
- Type="TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="aTarget"
  Guid="3d065125-f0c2-48d5-9f90-afe570a5f189"
 >

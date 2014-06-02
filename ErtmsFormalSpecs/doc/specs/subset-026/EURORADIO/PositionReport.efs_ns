@@ -357,7 +357,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="PositionLocation"
+ TypeName="EURORADIO.PositionReport.PositionLocation"
  MaxSize="32"
  Default="[]"
  Name="PositionReportLocations"
@@ -803,7 +803,7 @@ TIU.TrainIntegrity.Status in [
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="PositionReportSpecialLocation"
+ Type="EURORADIO.PositionReport.PositionReportSpecialLocation"
  Default=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1450,7 +1450,7 @@ ON
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="PositionReportParameters"
+ Type="EURORADIO.PositionReport.PositionReportParameters"
  DefaultValue=""
  VariableMode="Incoming"
  Implemented="TRUE"
@@ -1469,7 +1469,7 @@ ON
 >
 </ReqRef><Comment>This variable contains the position report parameters given by the RBC.</Comment>
 </Variable><Variable
- Type="PositionReportEventsTracker"
+ Type="EURORADIO.PositionReport.PositionReportEventsTracker"
  DefaultValue=""
  VariableMode="Internal"
  Implemented="TRUE"
@@ -1503,7 +1503,7 @@ ON
 >
 </ReqRef><Comment>This variable is used to detect changes of kernel variables (mode, level etc) that can require a position report to RBC.</Comment>
 </Variable><Variable
- Type="LastPositionReportInformation"
+ Type="EURORADIO.PositionReport.LastPositionReportInformation"
  DefaultValue=""
  VariableMode="Internal"
  Implemented="TRUE"
@@ -1541,7 +1541,7 @@ ON
 >
 </ReqRef><Comment>Indicates the number of sent position report repetitions.</Comment>
 </Variable><Variable
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  DefaultValue="Default.BaseTypes.Distance.Unknown"
  VariableMode="Internal"
  Implemented="TRUE"
@@ -1584,7 +1584,7 @@ ON
 >
 </ReqRef><Comment>Indicates the number of position reports that were already sent to the Handing Over RBC.</Comment>
 </Variable><Variable
- Type="BaseTypes.Time"
+ Type="Default.BaseTypes.Time"
  DefaultValue="0.0"
  VariableMode="Internal"
  Implemented="TRUE"

@@ -53,7 +53,7 @@
 >
 </ReqRef><Comment>Indicates if the initial states have to be resumed.</Comment>
 </StructureElement><StructureElement
- TypeName="RouteSuitability.RouteSuitabilityItems"
+ TypeName="RouteSuitabilityItems"
  Default="[]"
  Mode="Internal"
  Implemented="TRUE"
@@ -195,7 +195,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="RouteSuitability.RouteSuitabilityItem"
+ TypeName="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem"
  Default="[]"
  Y="60"
  Width="100"
@@ -209,7 +209,7 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="RouteSuitability.RouteSuitabilityItem"
+ Type="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem"
  Default=""
  Y="180"
  Width="100"
@@ -305,7 +305,7 @@
 </ReqRef><Comment>Indicates if the provided route suitability item is unsuitable.</Comment>
 <Parameters>
 <Parameter
- Type="RouteSuitabilityItem"
+ Type="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem"
  Name="anItem"
  Guid="07d449f2-ab67-42d7-a03a-9e03d1bda9fb"
 >
@@ -360,7 +360,7 @@ NOT THERE_IS_IN
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Default=""
  X="220"
  Y="180"
@@ -426,7 +426,7 @@ THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></P
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Default=""
  X="330"
  Y="180"
@@ -981,7 +981,7 @@ IN
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="RouteSuitabilityInformation"
+ Type="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityInformation"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  Y="120"

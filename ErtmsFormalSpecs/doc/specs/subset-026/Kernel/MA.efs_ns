@@ -57,7 +57,7 @@
 >
 </ReqRef><Comment>Represents the Movement Authority of the train</Comment>
 <StructureElement
- TypeName="BaseTypes.Speed"
+ TypeName="Default.BaseTypes.Speed"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -271,7 +271,7 @@
 >
 </ReqRef><Comment>Represents the section time-out for reguler time-outs ans end section time-outs</Comment>
 <StructureElement
- TypeName="BaseTypes.Time"
+ TypeName="Default.BaseTypes.Time"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -642,7 +642,7 @@ Location stores the previous End of Movement Authority location.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Section"
+ TypeName="Kernel.MA.Section"
  MaxSize="6"
  Default="[]"
  X="480"
@@ -686,7 +686,7 @@ Location stores the previous End of Movement Authority location.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
- Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Default=""
  X="30"
  Y="10"
@@ -769,7 +769,7 @@ INITIAL_VALUE CreateTarget (
  )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Section"
+ Type="Kernel.MA.Section"
  Default=""
  X="140"
  Y="10"
@@ -1362,7 +1362,7 @@ INITIAL_VALUE CreateTarget (
 </ReqRef><Comment>Indicates if a target is a supervision limit.</Comment>
 <Parameters>
 <Parameter
- Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="aTarget"
  Guid="67dba448-4631-4b0f-8f87-40417ba9fde8"
 >
@@ -1430,7 +1430,7 @@ INITIAL_VALUE CreateTarget (
 </ReqRef><Comment>Indicates if a target is an end of authority.</Comment>
 <Parameters>
 <Parameter
- Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="aTarget"
  Guid="4beac925-e434-459f-bfd5-6120b9bd9bdf"
 >
@@ -1452,7 +1452,7 @@ INITIAL_VALUE CreateTarget (
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Default=""
  X="360"
  Y="190"
@@ -1494,7 +1494,7 @@ INITIAL_VALUE CreateTarget (
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="Section"
+ Type="Kernel.MA.Section"
  Default=""
  X="360"
  Y="10"
@@ -1516,7 +1516,7 @@ INITIAL_VALUE CreateTarget (
  - The infill location is situated on the section, in this case the section is cut at the infill location.</Comment>
 <Parameters>
 <Parameter
- Type="Section"
+ Type="Kernel.MA.Section"
  Name="aSection"
  Guid="e46ae95a-41f4-40bf-80c2-08e5e7adde30"
 >
@@ -1576,7 +1576,7 @@ INITIAL_VALUE CreateTarget (
 </ReqRef><Comment>Provides the absolute distance (from the LRBG) to the beginning of the given section.</Comment>
 <Parameters>
 <Parameter
- Type="Section"
+ Type="Kernel.MA.Section"
  Name="aSection"
  Guid="77265b1e-4cf7-4df7-a1d7-5d3621b225c0"
 >
@@ -1836,7 +1836,7 @@ Default.BaseTypes.LengthToDistance(
  }</Expression>
 </Case></Cases>
 </Function><Function
- Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Default=""
  X="360"
  Y="250"
@@ -1900,7 +1900,7 @@ Default.BaseTypes.LengthToDistance(
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="Section"
+ Type="Kernel.MA.Section"
  Default=""
  X="580"
  Y="70"
@@ -1973,7 +1973,7 @@ Available(MA.EndSection.TimeOut)
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Default=""
  X="470"
  Y="190"
@@ -1991,7 +1991,7 @@ Available(MA.EndSection.TimeOut)
 </ReqRef><Comment>Returns the start location of a section of the MA</Comment>
 <Parameters>
 <Parameter
- Type="Section"
+ Type="Kernel.MA.Section"
  Name="aSection"
  Guid="c3fe6210-d819-4557-a8c0-2de313092a40"
 >
@@ -2026,7 +2026,7 @@ BaseTypes.LengthToDistance
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Default=""
  X="250"
  Y="250"
@@ -2050,7 +2050,7 @@ BaseTypes.LengthToDistance
 <Expression>SectionStartLocation(TimedOutSection())</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Default=""
  X="250"
  Y="190"
@@ -4156,7 +4156,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="MovementAuthority"
+ Type="Kernel.MA.MovementAuthority"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="160"
@@ -4220,7 +4220,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 >
 </ReqRef><Comment>Represents the signalling related speed restriction. Value = 0 corresponds to train trip.</Comment>
 </Variable><Variable
- Type="MA.MaShorteningHandler"
+ Type="Kernel.MA.MaShorteningHandler"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="20"
@@ -4243,7 +4243,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 >
 </ReqRef><Comment>Allows to verify if the MA was shortened (possibly regardless of SvL location).</Comment>
 </Variable><Variable
- Type="Kernel.MA.TargetsCol"
+ Type="TargetsCol"
  DefaultValue=""
  VariableMode="Internal"
  X="20"
@@ -4257,7 +4257,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 >
 <Comment>This is a collection holding all the locations designated as supervision limit according to different external inputs</Comment>
 </Variable><Variable
- Type="Kernel.MA.TargetsCol"
+ Type="TargetsCol"
  DefaultValue=""
  VariableMode="Internal"
  X="20"
@@ -4271,7 +4271,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 >
 <Comment>This variable is a collection holding all the locations designated as end of authority, along with the speed limit and distance of the EOA</Comment>
 </Variable><Variable
- Type="BaseTypes.Time"
+ Type="Default.BaseTypes.Time"
  DefaultValue="0.0"
  VariableMode="Internal"
  X="740"
@@ -4309,7 +4309,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 >
 </ReqRef><Comment>Time of reception of the MA, starting point of the section timers</Comment>
 </Variable><Variable
- Type="SectionTimeOut"
+ Type="Kernel.MA.SectionTimeOut"
  DefaultValue=""
  VariableMode="Internal"
  X="560"

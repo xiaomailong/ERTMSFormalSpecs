@@ -52,7 +52,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="BaliseGroup"
+ TypeName="Kernel.BaliseGroup"
  MaxSize="20"
  Default="[]"
  X="370"
@@ -72,7 +72,7 @@
 </ReqRef></Collection></Collections>
 <Functions>
 <Function
- Type="BaliseGroups"
+ Type="SR.BaliseGroups"
  Default=""
  X="20"
  Y="150"
@@ -107,7 +107,7 @@
 <Expression>MAP ( FIRST_IN ( BaliseGroups ) ).LIST_OF_BALISES_IN_SR_AUTHORITY.Sequence1 USING CreateBaliseGroup ( X )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaliseGroup"
+ Type="Kernel.BaliseGroup"
  Default=""
  X="20"
  Y="210"
@@ -216,7 +216,7 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="SR.SR"
+ Type="Kernel.SR.SR"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="20"

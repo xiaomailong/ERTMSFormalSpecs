@@ -159,7 +159,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Gradient.GradientInfo"
+ TypeName="Kernel.TrackDescription.Gradient.GradientInfo"
  MaxSize="50"
  Default="[]"
  Implemented="TRUE"
@@ -234,7 +234,7 @@
 2. Gradient value is different from 255 =&gt; the gradient end will be infinite</Comment>
 <Parameters>
 <Parameter
- Type="Gradient.GradientInfo"
+ Type="Kernel.TrackDescription.Gradient.GradientInfo"
  Name="Current"
  Guid="4dd83776-79ca-421c-802b-3e29e7a80c14"
 >
@@ -281,7 +281,7 @@ INITIAL_VALUE
 Outside the distances provided by the gradient, the gradient value is defined as Indefinite The gradient value is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
 <Parameters>
 <Parameter
- Type="Gradient.GradientInfo"
+ Type="Kernel.TrackDescription.Gradient.GradientInfo"
  Name="GradientInfo"
  Guid="8b5413f1-a3af-4611-afaa-ee7ff5415f08"
 >
@@ -679,7 +679,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 Outside the distances provided by the gradient, the gradient value is defined as Indefinite</Comment>
 <Parameters>
 <Parameter
- Type="Gradient.GradientInfo"
+ Type="Kernel.TrackDescription.Gradient.GradientInfo"
  Name="GradientInfo"
  Guid="e306ed33-b31a-405c-bcf7-b88ed5725021"
 >
@@ -834,7 +834,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Expression>KnMin ( V ) * GradientInfoProfileSummary_NonCompensated ( d )</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorrectionFactor"
+ Type="TrackDescription.Gradient.CorrectionFactor"
  Default=""
  Implemented="TRUE"
  Name="CorrectionFactorFunction"
@@ -853,7 +853,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 </ReqRef><Comment>Gives the deceleration due to braking depending on the current speed value.</Comment>
 <Parameters>
 <Parameter
- Type="CorFact"
+ Type="Kernel.TrackDescription.Gradient.CorFact"
  Name="aCorrectionFactor"
  Guid="7ae9bf94-515d-47c6-9389-a878a49003f0"
 >
@@ -919,7 +919,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Expression>aCorrectionFactor.Val4.Factor</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorrectionFactor"
+ Type="TrackDescription.Gradient.CorrectionFactor"
  Default=""
  Implemented="TRUE"
  Name="KnPlus"
@@ -946,7 +946,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Expression>CorrectionFactorFunction ( aCorrectionFactor =&gt; KnPlus, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorrectionFactor"
+ Type="TrackDescription.Gradient.CorrectionFactor"
  Default=""
  Implemented="TRUE"
  Name="KnMin"
@@ -1112,7 +1112,7 @@ ON Packet.Sequence1</Action></Actions>
 >
 <Parameters>
 <Parameter
- Type="GradientInfo"
+ Type="Kernel.TrackDescription.Gradient.GradientInfo"
  Name="Info"
  Guid="392cab3e-0003-43de-be28-1b310b5b924f"
 >
@@ -1273,7 +1273,7 @@ ON Packet.Sequence1</Action></Actions>
 >
 </ReqRef><Comment>Minimum possible rotating mass as a percentage of the total weight of the train: 2 %</Comment>
 </Variable><Variable
- Type="DefaultGradientForTSR"
+ Type="Kernel.TrackDescription.Gradient.DefaultGradientForTSR"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  Implemented="TRUE"
@@ -1288,7 +1288,7 @@ ON Packet.Sequence1</Action></Actions>
 >
 </ReqRef><Comment>Represents the default gradient for TSR supervision.</Comment>
 </Variable><Variable
- Type="CorFact"
+ Type="Kernel.TrackDescription.Gradient.CorFact"
  DefaultValue=""
  VariableMode="Internal"
  Implemented="TRUE"
@@ -1308,7 +1308,7 @@ ON Packet.Sequence1</Action></Actions>
 <Comment></Comment>
 </ReqRef><Comment>Represents the speed dependent correction factor for positive gradient on the normal service brake.</Comment>
 </Variable><Variable
- Type="CorFact"
+ Type="Kernel.TrackDescription.Gradient.CorFact"
  DefaultValue=""
  VariableMode="Internal"
  Implemented="TRUE"

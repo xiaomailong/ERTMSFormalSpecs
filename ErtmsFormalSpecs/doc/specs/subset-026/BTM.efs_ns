@@ -122,7 +122,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="BaliseGroup"
+ TypeName="BTM.BaliseGroup"
  MaxSize="8"
  Default="[]"
  X="700"
@@ -255,7 +255,7 @@
 <Expression>Odometry.NominalDistance - LRBG.Position.Position</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaliseGroup"
+ Type="BTM.BaliseGroup"
  Default=""
  X="40"
  Y="140"
@@ -283,7 +283,7 @@
   INITIAL_VALUE EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaliseGroup"
+ Type="BTM.BaliseGroup"
  Default=""
  X="40"
  Y="80"
@@ -298,12 +298,12 @@
 <Comment>Selects the balise group which is the nearer between the two balise groups provided</Comment>
 <Parameters>
 <Parameter
- Type="BaliseGroup"
+ Type="BTM.BaliseGroup"
  Name="bg1"
  Guid="8b6a601b-8730-44f5-846d-56bba22cc276"
 >
 </Parameter><Parameter
- Type="BaliseGroup"
+ Type="BTM.BaliseGroup"
  Name="bg2"
  Guid="3160361b-f9a7-4adb-bbcb-5ea66685108e"
 >
@@ -382,7 +382,7 @@
 <Expression>bg1</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaliseGroup"
+ Type="BTM.BaliseGroup"
  Default=""
  X="150"
  Y="80"
@@ -397,12 +397,12 @@
 <Comment>Selects the balise group which is the nearer between the two balise groups provided</Comment>
 <Parameters>
 <Parameter
- Type="BaliseGroup"
+ Type="BTM.BaliseGroup"
  Name="bg1"
  Guid="8ec1dd11-507e-4aef-b6e9-8c437c20b3c3"
 >
 </Parameter><Parameter
- Type="BaliseGroup"
+ Type="BTM.BaliseGroup"
  Name="bg2"
  Guid="81075d74-f8d2-46ee-9424-ee00d6302b4a"
 >
@@ -481,7 +481,7 @@
 <Expression>bg1</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaliseGroup"
+ Type="BTM.BaliseGroup"
  Default=""
  X="260"
  Y="140"
@@ -509,7 +509,7 @@
   INITIAL_VALUE EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="Position"
+ Type="BTM.Position"
  Default=""
  X="150"
  Y="20"
@@ -2721,7 +2721,7 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
 >
 </ReqRef><Comment>This variable holds the balise message to be processed.</Comment>
 </Variable><Variable
- Type="BaliseGroup"
+ Type="BTM.BaliseGroup"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="690"
@@ -2740,7 +2740,7 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
 >
 </ReqRef><Comment>This variable holds information about the LRBG</Comment>
 </Variable><Variable
- Type="Position"
+ Type="BTM.Position"
  DefaultValue=""
  VariableMode="Internal"
  X="560"
@@ -2795,7 +2795,7 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
 >
 <Comment>This variable holds the messages from the current balise group until the complete balise group has been encountered</Comment>
 </Variable><Variable
- Type="Position"
+ Type="BTM.Position"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="440"

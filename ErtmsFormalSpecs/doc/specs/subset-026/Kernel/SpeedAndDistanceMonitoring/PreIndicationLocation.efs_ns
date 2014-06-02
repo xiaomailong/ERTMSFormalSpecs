@@ -201,7 +201,7 @@
 >
 </ReqRef><Parameters>
 <Parameter
- Type="TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="MRSPn"
  Guid="157d4132-628f-4d83-ba3d-e059b7db2413"
 >
@@ -238,7 +238,8 @@
 <PreConditions>
 <PreCondition
  Guid="e0a60a90-5e23-4565-820e-7eeb897d42f6"
->PreIndicationLocation.d_I
+><Comment></Comment>
+PreIndicationLocation.d_I
 (
     REDUCE
         TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) | X.Location &gt; MRSPn.Location
@@ -361,6 +362,7 @@
  Name="Value"
  Guid="77b61b8d-bb27-49b3-95c5-027e22b5eba2"
 >
+<Comment></Comment>
 <Expression>Compute_d_preindication ( FIRST_IN TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) )</Expression>
 </Case></Cases>
 </Function></Functions>

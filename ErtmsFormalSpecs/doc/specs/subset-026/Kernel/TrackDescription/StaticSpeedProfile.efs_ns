@@ -11,6 +11,8 @@
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="StaticSpeedRestriction"
  Guid="cb90d3f3-a659-44e2-90dc-850a8fa9cf8c"
@@ -94,6 +96,9 @@
 >
 </StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SSPCategory"
  Guid="38e0f6db-7b3b-48d9-9975-5a3794f18d2d"
@@ -123,7 +128,7 @@
  Guid="655252ea-7cb3-454f-a70c-fc44b68fe324"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Kernel.TrainData.TrainCategoryEnum"
+ TypeName="TrainData.TrainCategoryEnum"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -176,9 +181,12 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="SSPCategory"
+ TypeName="Kernel.TrackDescription.StaticSpeedProfile.SSPCategory"
  MaxSize="30"
  Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SSPCategories"
@@ -186,9 +194,13 @@
 >
 <Comment>A collection of speed restrictions for train categories, received from the trackside.</Comment>
 </Collection><Collection
- TypeName="StaticSpeedRestriction"
+ TypeName="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
  MaxSize="50"
  Default="[]"
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="StaticSpeedRestrictions"
  Guid="e150645e-2133-46d1-a4ed-82ce79f51dff"
@@ -210,6 +222,9 @@
 <Function
  Type="Default.BaseTypes.Length"
  Default=""
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SSPLength"
  Guid="1d1987db-72f2-4a65-8392-ba68f79d7e76"
@@ -227,7 +242,7 @@
 </ReqRef><Comment>Provides the length of a static speed restriction together with the train&apos;s length, if needed.</Comment>
 <Parameters>
 <Parameter
- Type="StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
  Name="aSSP"
  Guid="737d63a4-ba8a-431b-83b0-d1a93b352e6a"
 >
@@ -251,6 +266,10 @@
 </Function><Function
  Type="Messages.NC_CDDIFF"
  Default=""
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SelectCantDeficiencyCategory"
  Guid="9ba5fb81-4abf-450f-a3df-e9c182a2325b"
@@ -273,7 +292,7 @@
 </ReqRef><Comment>Provides the highest Cant Deficiency value below the value of the train&apos;s &quot;Cant Deficiency&quot; train category.</Comment>
 <Parameters>
 <Parameter
- Type="StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
  Name="aSSR"
  Guid="b801973a-5099-4ab2-b810-01ca1067e7fd"
 >
@@ -293,6 +312,10 @@ INITIAL_VALUE
 </Function><Function
  Type="Messages.NC_CDTRAIN"
  Default=""
+ X="220"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MaxCategory"
@@ -348,6 +371,10 @@ INITIAL_VALUE
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="330"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CantDeficiencySpeedRestriction"
  Guid="ccb070e1-5c53-44fe-8e42-5b82c8e91f57"
@@ -360,7 +387,7 @@ INITIAL_VALUE
 </ReqRef><Comment>Provides the speed restriction for Cant Deficiency train category. If no speed restriction for Cant Deficiency categories were provided by the trackside, the function returns the basic speed associated to the current static speed restriction.</Comment>
 <Parameters>
 <Parameter
- Type="StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
  Name="aSSR"
  Guid="342a3b79-f226-4427-906f-5e0144fc557b"
 >
@@ -382,8 +409,12 @@ INITIAL_VALUE
 <Expression>(FIRST_IN aSSR.Categories | X.Qualifier == Messages.Q_DIFF.Cant_Deficiency_specific_category AND X.CantDeficiency == SelectCantDeficiencyCategory(aSSR)).Speed</Expression>
 </Case></Cases>
 </Function><Function
- Type="StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
  Default=""
+ X="440"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateFirstSSP"
@@ -448,6 +479,9 @@ INITIAL_VALUE
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AbsoluteDistance"
@@ -483,8 +517,12 @@ USING
     Default.MessageTypes.QScaleDistance ( distance =&gt; X.D_STATIC, scale =&gt; Scale)</Expression>
 </Case></Cases>
 </Function><Function
- Type="SSPCategory"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.SSPCategory"
  Default=""
+ X="110"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateSSPCategory"
@@ -529,6 +567,10 @@ USING
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="220"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SpeedRestrictions"
  Guid="01c090d3-dbc4-4806-a8f6-03ca3dd16197"
@@ -570,6 +612,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="330"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ComputeStaticSpeedRestriction"
  Guid="8959058c-12eb-4e66-8f02-ae33b355cdb1"
@@ -587,7 +633,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>Provides the speed profile due to a static speed restriction.</Comment>
 <Parameters>
 <Parameter
- Type="StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
  Name="aSSP"
  Guid="56feb81c-ddb2-42c4-a6fb-d5925061bfd2"
 >
@@ -636,6 +682,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="440"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SSPEnd"
@@ -654,7 +704,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>Provides the end of the current static speed restriction.</Comment>
 <Parameters>
 <Parameter
- Type="StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
  Name="Current"
  Guid="1f758756-d147-4b5d-a37d-377031c83a6f"
 >
@@ -683,6 +733,9 @@ INITIAL_VALUE
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SSPSpeed"
  Guid="e35705fa-d350-4ac8-a3e5-39fc13b64e89"
@@ -695,7 +748,7 @@ INITIAL_VALUE
 </ReqRef><Comment>Provides the speed value associated to the current static speed restrition, according to train categories values.</Comment>
 <Parameters>
 <Parameter
- Type="StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
  Name="aSSP"
  Guid="9723b4d6-987f-461d-a853-76ef74a11e00"
 >
@@ -724,6 +777,10 @@ INITIAL_VALUE
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="FindOSC"
  Guid="eaaba9ec-7584-494a-94d1-b127c98fd320"
@@ -756,6 +813,10 @@ INITIAL_VALUE
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="220"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="OtherSpecificSpeedRestriction"
  Guid="24b20a21-860c-4983-a904-dbbfa4c2b517"
@@ -773,7 +834,7 @@ INITIAL_VALUE
 </ReqRef><Comment>Provides the most restrictive speed restrictions associated to Other Specific train categories provided by the trackside mathing the Other International categories of the train.</Comment>
 <Parameters>
 <Parameter
- Type="StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
  Name="aSSP"
  Guid="07940cee-c6c5-43dd-9cad-a38350866b44"
 >
@@ -793,6 +854,10 @@ INITIAL_VALUE
 </Function><Function
  Type="TrainData.TrainCategoryEnum"
  Default=""
+ X="330"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ERTMSCategory_To_EFSCategory"
@@ -833,6 +898,9 @@ INITIAL_VALUE
 </Function></Functions>
 <Procedures>
 <Procedure
+ Y="360"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="StaticSpeedProfileReceived"
  Guid="a4455d75-40f1-4d65-8435-236f68b42c74"
@@ -1014,6 +1082,10 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Y="360"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AddSSP"
@@ -1126,9 +1198,12 @@ IN
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="StaticSpeedProfile.StaticSpeedRestrictions"
+ Type="StaticSpeedRestrictions"
  DefaultValue=""
  VariableMode="Internal"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SSP"
  Guid="68b202a8-76d1-4829-8fd4-c2ce4ed50af3"

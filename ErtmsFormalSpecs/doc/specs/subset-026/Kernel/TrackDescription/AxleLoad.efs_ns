@@ -11,6 +11,8 @@
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AxleLoadProfile"
  Guid="7669fef7-c011-4007-bc1d-fc27e4e7bdfb"
@@ -75,6 +77,9 @@
 <Comment>The collection of axle load speed restrictions.</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AxleLoadValue"
  Guid="fa42ca0f-788f-48d1-b567-ecbeaaf5b60b"
@@ -116,6 +121,9 @@
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
+ X="220"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AxleLoad"
@@ -203,9 +211,12 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="AxleLoadValue"
+ TypeName="Kernel.TrackDescription.AxleLoad.AxleLoadValue"
  MaxSize="20"
  Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AxleLoadValues"
  Guid="37ea60a7-1060-427c-8a92-a30a5d49e75f"
@@ -217,9 +228,13 @@
 >
 </ReqRef><Comment>Represents a set of axle load values.</Comment>
 </Collection><Collection
- TypeName="AxleLoad"
+ TypeName="Kernel.TrackDescription.AxleLoad.AxleLoad"
  MaxSize="30"
  Default="[]"
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AxleLoads"
@@ -236,6 +251,9 @@
 <Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SpeedRestrictions"
  Guid="ac5c9711-135a-4889-a8a9-19764bedb0f0"
@@ -290,8 +308,12 @@
 INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Case></Cases>
 </Function><Function
- Type="AxleLoad"
+ Type="Kernel.TrackDescription.AxleLoad.AxleLoad"
  Default=""
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateAxleLoad"
@@ -352,8 +374,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="AxleLoadValue"
+ Type="Kernel.TrackDescription.AxleLoad.AxleLoadValue"
  Default=""
+ X="220"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateAxleLoadValue"
@@ -384,8 +410,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="AxleLoad"
+ Type="Kernel.TrackDescription.AxleLoad.AxleLoad"
  Default=""
+ X="330"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateFirstAxleLoad"
@@ -433,6 +463,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="440"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AbsoluteDistance"
@@ -470,6 +504,9 @@ USING
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AxleLoadSpeedRestriction"
  Guid="9e74a7a7-7107-4423-a5d2-1e3d5bdb9d6b"
@@ -487,7 +524,7 @@ USING
 </ReqRef><Comment>Provides the speed restriction for a given level crossing. The speed restriction is applicable after the distance specified in the level crossing information and during its length. From all categories specified in the level crossing, only the categories lower than or equal to the train&apos;s category are chosen and among these categories the minimum speed value is chosen. In case when there is no category lower that or equal to the train&apos;s category, the maximum speed value is returned.</Comment>
 <Parameters>
 <Parameter
- Type="AxleLoad"
+ Type="Kernel.TrackDescription.AxleLoad.AxleLoad"
  Name="anAxleLoad"
  Guid="36b5a445-303c-4608-8735-26983e0c59d4"
 >
@@ -538,6 +575,10 @@ USING
 </Function><Function
  Type="Default.BaseTypes.Length"
  Default=""
+ X="110"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AxleLoadLength"
  Guid="28c9866a-7388-4e77-86f7-c371daab904c"
@@ -557,7 +598,7 @@ USING
 </ReqRef><Comment>Provides the length of an axle load together with the train&apos;s length, if needed.</Comment>
 <Parameters>
 <Parameter
- Type="AxleLoad"
+ Type="Kernel.TrackDescription.AxleLoad.AxleLoad"
  Name="anAxleLoad"
  Guid="06832e68-67d5-4537-877e-c2f9d8149056"
 >
@@ -581,6 +622,9 @@ USING
 </Function></Functions>
 <Procedures>
 <Procedure
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AxleLoadProfileReceived"
  Guid="bd278863-a9e9-4f05-b449-c6b22bc23908"
@@ -671,6 +715,10 @@ USING
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AddAxleLoad"
@@ -724,6 +772,10 @@ IN
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="220"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleNewAxleLoadProfile"
@@ -859,7 +911,7 @@ ON
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="AxleLoadProfile"
+ Type="Kernel.TrackDescription.AxleLoad.AxleLoadProfile"
  DefaultValue="AxleLoadProfile
 {
     EmptyProfileDistance =&gt; 0.0,
@@ -867,6 +919,9 @@ ON
     ALs =&gt; []
 }"
  VariableMode="Internal"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ASP"
  Guid="bcd8e2e5-3222-4524-8d15-51f6d4b02c75"
@@ -891,6 +946,9 @@ ON
 <Rules>
 <Rule
  Priority="Processing"
+ Y="360"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Resume initial states"

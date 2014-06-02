@@ -2039,7 +2039,7 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitor
 <Expression>Messages.M_MODE.Trip</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Speed"
+ Type="Default.MessageTypes.Speed"
  Default=""
  X="440"
  Y="180"
@@ -2333,7 +2333,7 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
 </ReqRef><Comment>Function which will determine if a NEW JRU Message has to be sent</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="307e6f9a-ff0e-4cb8-a2dc-7b2db6e82560"
 >
@@ -2426,7 +2426,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
 </ReqRef><Comment>Function to determine if the ERTMS Level has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="dede4b41-b990-42a8-9715-bbf29e7e4738"
 >
@@ -2467,7 +2467,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
 </ReqRef><Comment>Function which will determine if it is necessary to send a GENERAL JRU Message because the elapsed time is bigger or erqual to the requirement to send a periodical message</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="2d446e40-b2bf-4e62-aeee-36172bdb2531"
 >
@@ -2507,7 +2507,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
 </ReqRef><Comment>Function used to determine if the ERTMS mode has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="3b151fc9-e9f9-45e6-98a8-998d03553361"
 >
@@ -2548,7 +2548,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
 </ReqRef><Comment>Function which will determine if the System Version Changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="f1822896-8721-4b82-ba40-a7581f280652"
 >
@@ -2589,7 +2589,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
 </ReqRef><Comment>Function used to determine if the ERTMS Level has changed to NTC Level</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="68986f7f-2b6f-4a67-9b00-60b0d926ced5"
 >
@@ -2644,7 +2644,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
 </ReqRef><Comment>Function which will determine if a new GENERAL_MESSAGE has to be sent</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="a40e8cf7-f7e5-4d01-9517-815de8ba6103"
 >
@@ -3333,7 +3333,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </ReqRef><Comment>Function used to determine if the EB Status has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="81bbba4c-bf2d-4a39-985a-7898f03d2993"
 >
@@ -3443,7 +3443,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruEBCommanded()
 </ReqRef><Comment>Function which determines if the train data have changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="796d6185-28cf-4d6e-a71b-3d8ada5dd733"
 >
@@ -3491,7 +3491,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruEBCommanded()
 </ReqRef><Comment>Function which will determine if it is necessary to send a new TRAIN_DATA JRU Message</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="b98284df-8f57-4c6e-9d7f-974ba1764b75"
 >
@@ -3568,7 +3568,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 </ReqRef><Comment>Function which will determine if the SB Status has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="093a10c6-0bfc-4bb9-93a3-3d6c32f0eb78"
 >
@@ -3757,7 +3757,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 <Expression>Messages.JRU.Q_DIRLRBG.Uknown</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Length"
+ Type="Default.MessageTypes.Length"
  Default=""
  X="770"
  Y="360"
@@ -3784,7 +3784,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 <Expression>MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER), Q_SCALE)</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Length"
+ Type="Default.MessageTypes.Length"
  Default=""
  X="880"
  Y="360"
@@ -3811,7 +3811,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 <Expression>MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER), Q_SCALE)</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Distance"
+ Type="Default.MessageTypes.Distance"
  Default=""
  X="990"
  Y="360"
@@ -6390,7 +6390,7 @@ V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Speed"
+ Type="Default.MessageTypes.Speed"
  Default=""
  X="660"
  Y="720"
@@ -6426,7 +6426,7 @@ V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
 <Expression>0</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Distance"
+ Type="Default.MessageTypes.Distance"
  Default=""
  X="770"
  Y="720"
