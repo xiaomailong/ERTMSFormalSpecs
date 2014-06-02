@@ -353,6 +353,11 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
+        /// Indicates that this call is currently being evaluated
+        /// </summary>
+        private bool Evaluating = false;
+
+        /// <summary>
         /// Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
@@ -360,75 +365,91 @@ namespace DataDictionary.Interpreter
         public override Values.IValue GetValue(InterpretationContext context)
         {
             Values.IValue retVal = null;
-            ExplanationPart previous = SetupExplanation();
 
-            Functions.Function function = getFunction(context);
-            if (function != null)
+            try
             {
-                long start = System.Environment.TickCount;
-
-                Dictionary<Variables.Actual, Values.IValue> parameterValues = null;
-                try
+                if (!Evaluating)
                 {
-                    parameterValues = AssignParameterValues(context, function, true);
-                    List<Parameter> parameters = GetPlaceHolders(function, parameterValues);
-                    if (parameters == null)
+                    Evaluating = true;
+                    ExplanationPart previous = SetupExplanation();
+
+                    Functions.Function function = getFunction(context);
+                    if (function != null)
                     {
-                        retVal = function.Evaluate(context, parameterValues);
-                        if (retVal == null)
+                        long start = System.Environment.TickCount;
+
+                        Dictionary<Variables.Actual, Values.IValue> parameterValues = null;
+                        try
                         {
-                            AddErrorAndExplain("Call " + function.Name + " ( " + ParameterValues(parameterValues) + " ) returned nothing", context);
+                            parameterValues = AssignParameterValues(context, function, true);
+                            List<Parameter> parameters = GetPlaceHolders(function, parameterValues);
+                            if (parameters == null)
+                            {
+                                retVal = function.Evaluate(context, parameterValues);
+                                if (retVal == null)
+                                {
+                                    AddErrorAndExplain("Call " + function.Name + " ( " + ParameterValues(parameterValues) + " ) returned nothing", context);
+                                }
+                            }
+                            else if (parameters.Count == 1) // graph
+                            {
+                                int token = context.LocalScope.PushContext();
+                                context.LocalScope.setGraphParameter(parameters[0]);
+                                Functions.Graph graph = function.createGraphForParameter(context, parameters[0]);
+                                context.LocalScope.PopContext(token);
+                                if (graph != null)
+                                {
+                                    retVal = graph.Function;
+                                }
+                                else
+                                {
+                                    AddError("Cannot create graph on Call " + function.Name + " ( " + ParameterValues(parameterValues) + " )");
+                                }
+                            }
+                            else // surface
+                            {
+                                Functions.Surface surface = function.createSurfaceForParameters(context, parameters[0], parameters[1]);
+                                if (surface != null)
+                                {
+                                    retVal = surface.Function;
+                                }
+                                else
+                                {
+                                    AddError("Cannot create surface on Call " + function.Name + " ( " + ParameterValues(parameterValues) + " )");
+                                }
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            AddError("Cannot evaluate function call " + function.Name);
+                            throw new Exception("inner evaluation failure");
+                        }
+                        finally
+                        {
+                            long stop = System.Environment.TickCount;
+                            long span = (stop - start);
+                            function.ExecutionTimeInMilli += span;
+                            function.ExecutionCount += 1;
+
+                            if (explain)
+                            {
+                                CompleteExplanation(previous, function.Name + " ( " + ParameterValues(parameterValues) + " ) returned " + explainNamable(retVal) + "\n");
+                            }
                         }
                     }
-                    else if (parameters.Count == 1) // graph
+                    else
                     {
-                        int token = context.LocalScope.PushContext();
-                        context.LocalScope.setGraphParameter(parameters[0]);
-                        Functions.Graph graph = function.createGraphForParameter(context, parameters[0]);
-                        context.LocalScope.PopContext(token);
-                        if (graph != null)
-                        {
-                            retVal = graph.Function;
-                        }
-                        else
-                        {
-                            AddError("Cannot create graph on Call " + function.Name + " ( " + ParameterValues(parameterValues) + " )");
-                        }
-                    }
-                    else // surface
-                    {
-                        Functions.Surface surface = function.createSurfaceForParameters(context, parameters[0], parameters[1]);
-                        if (surface != null)
-                        {
-                            retVal = surface.Function;
-                        }
-                        else
-                        {
-                            AddError("Cannot create surface on Call " + function.Name + " ( " + ParameterValues(parameterValues) + " )");
-                        }
+                        AddError("Cannot find function " + ToString());
                     }
                 }
-                catch (Exception e)
+                else
                 {
-                    AddError("Cannot evaluate function call " + function.Name);
-                    throw new Exception("inner evaluation failure");
-                }
-                finally
-                {
-                    long stop = System.Environment.TickCount;
-                    long span = (stop - start);
-                    function.ExecutionTimeInMilli += span;
-                    function.ExecutionCount += 1;
-
-                    if (explain)
-                    {
-                        CompleteExplanation(previous, function.Name + " ( " + ParameterValues(parameterValues) + " ) returned " + explainNamable(retVal) + "\n");
-                    }
+                    throw new Exception("Recursive call detected " + this);
                 }
             }
-            else
+            finally
             {
-                AddError("Cannot find function " + ToString());
+                Evaluating = false;
             }
 
             return retVal;
