@@ -637,6 +637,9 @@ NOT EBSpecified</PreCondition><PreCondition
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Y="60"
+ Width="100"
+ Height="50"
  Name="RevokeTCOCommand"
  Guid="5eccd54e-61f0-4dca-abba-2b1483e3156b"
 >
@@ -783,7 +786,7 @@ TCOTriggered &lt;- False</Action></Actions>
 >
 </ReqRef><Comment>Indicates if the traction cuf-off command was triggered.</Comment>
 </Variable><Variable
- Type="SpeedAndDistanceMonitoring.SupervisionStatus"
+ Type="SupervisionStatus"
  DefaultValue="SupervisionStatus.Normal"
  VariableMode="Internal"
  X="200"
@@ -868,6 +871,8 @@ TCOTriggered &lt;- False</Action></Actions>
  Type="Boolean"
  DefaultValue=""
  VariableMode="Internal"
+ Width="100"
+ Height="50"
  Name="EBSpecified"
  Guid="38513e31-38e3-4623-ab69-c5992230339e"
 >

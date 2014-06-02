@@ -163,7 +163,7 @@
 <PreCondition
  Guid="5f96f091-76ec-436e-97e2-191fcebebc1e"
 >V &gt; V_warning_min</PreCondition></PreConditions>
-<Expression>BaseTypes.MinSpeed ( dV_warning_min + C_warning() * ( V - V_warning_min ), dV_warning_max )</Expression>
+<Expression>Default.BaseTypes.MinSpeed ( dV_warning_min + C_warning() * ( V - V_warning_min ), dV_warning_max )</Expression>
 </Case><Case
  Name="V &lt;= V_warning_min"
  Guid="69b02327-f93e-48b1-9e66-f3c0fe3ce8c9"
@@ -215,7 +215,7 @@
 <PreCondition
  Guid="dea57d2f-dc75-4bfa-abc4-08d829d0fdaf"
 >V &gt; V_ebi_min</PreCondition></PreConditions>
-<Expression>BaseTypes.MinSpeed ( dV_ebi_min + C_ebi() * ( V - V_ebi_min ), dV_ebi_max )</Expression>
+<Expression>Default.BaseTypes.MinSpeed ( dV_ebi_min + C_ebi() * ( V - V_ebi_min ), dV_ebi_max )</Expression>
 </Case><Case
  Name="V &lt;= V_ebi_min"
  Guid="605c01a1-da95-4901-a26e-86f35aa22b66"
@@ -267,7 +267,7 @@
 <PreCondition
  Guid="261b8cfe-5c4b-4a62-8deb-003a51a21e89"
 >V &gt; V_sbi_min</PreCondition></PreConditions>
-<Expression>BaseTypes.MinSpeed ( dV_sbi_min + C_sbi() * ( V - V_sbi_min ), dV_sbi_max )</Expression>
+<Expression>Default.BaseTypes.MinSpeed ( dV_sbi_min + C_sbi() * ( V - V_sbi_min ), dV_sbi_max )</Expression>
 </Case><Case
  Name="V &lt;= V_sbi_min"
  Guid="fd3cbb6e-d144-4cdf-bf4d-a45e176fe5e7"
@@ -417,7 +417,7 @@
 >P ( distance ) &gt; 0.0</PreCondition></PreConditions>
 <Expression>AddIncrement (
   Function =&gt; P, 
-  Increment =&gt; CeilingSupervision.dV_warning
+  Increment =&gt; dV_warning
 ) (distance)</Expression>
 </Case><Case
  Name="Otherwise"
@@ -461,13 +461,13 @@
 <PreConditions>
 <PreCondition
  Guid="579e1045-ba4d-4041-ba9c-804884d9ca61"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) ) &gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition></PreConditions>
-<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) )</Expression>
+>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) ) &gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition></PreConditions>
+<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) )</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="a737ca4f-968e-416a-badb-330077e71a71"
 >
-<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</Expression>
+<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -920,6 +920,68 @@ RevokeEBCommand()</Action></Actions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Name="UpdateSupervisionStatus"
+ Guid="ad0ed264-a25d-432e-9b77-e63c79b260ea"
+>
+<ReqRef
+ Id="46fa293d-249a-454b-bbda-cdc527f79dc7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f4a23dd5-ce76-4fea-926d-7145b12cb209"
+>
+</ReqRef><ReqRef
+ Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="81bb4a23-c00b-4da5-989b-4c036d9c313b"
+>
+</ReqRef><ReqRef
+ Id="3935be43-6132-47c6-8ef3-28195e4f690c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b843bef9-d3b4-484d-9b05-1369dcd9e346"
+>
+</ReqRef><ReqRef
+ Id="26d27752-70b9-46bf-ada7-95ba7bb47a3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="06b60fa2-1220-4daa-b754-a8b91ea984ac"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="Revoke CSM status"
+ Guid="6c2b82df-2ddb-4ca5-9771-c039c3089b06"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Revoke CSM status"
+ Guid="f6c73c3b-3cd9-4ac6-b72e-e6d0c37b945a"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5eddc63c-0de4-4312-a921-1b312e5d1478"
+>CSMStatusRevocation()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Trigger CSM status"
+ Guid="4a98f4f6-bc8b-4807-af58-cb16e93d3025"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Trigger CSM status"
+ Guid="90483b38-d602-4d5c-bc90-44b7a37802d3"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="7bc746ff-fb20-4373-991d-9a6035af94f6"
+>CSMStatusTriggers()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -1352,7 +1414,7 @@ RevokeEBCommand()</Action></Actions>
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="UpdateSupervisionStatus"
+ Name="SupervisionStatus"
  Guid="b2b37881-3fbf-443e-89d3-42e487c2305c"
 >
 <ReqRef
@@ -1391,33 +1453,13 @@ RevokeEBCommand()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="2000c917-1ae5-46ec-9768-6d88e3fa11f3"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Ceiling</PreCondition><PreCondition
+>Monitoring == MonitoringType.Ceiling</PreCondition><PreCondition
  Guid="0046535f-3d8c-400a-b35b-bae068e48182"
->Kernel.SpeedAndDistanceMonitoring.SpeedAndDistanceMonitoringIsActive</PreCondition></PreConditions>
+>SpeedAndDistanceMonitoringIsActive</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="5eddc63c-0de4-4312-a921-1b312e5d1478"
->CSMStatusRevocation()</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Name="Trigger"
- Guid="2a7a4c43-2007-4382-a333-640d3bc12b3e"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Trigger"
- Guid="ee0f20bb-2fc7-44bc-809c-51b52d38036a"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="7bc746ff-fb20-4373-991d-9a6035af94f6"
->CSMStatusTriggers()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+ Guid="1c47bf78-b10d-4766-b235-b1626305b26d"
+>UpdateSupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
