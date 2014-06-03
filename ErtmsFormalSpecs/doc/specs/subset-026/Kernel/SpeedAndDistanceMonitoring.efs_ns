@@ -118,6 +118,637 @@
 >
 </EnumValue></Values>
 </Enum></Enumerations>
+<StateMachines>
+<StateMachine
+ Default="MonitoringTypeSM.Ceiling"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="MonitoringTypeSM"
+ Guid="435cb658-6129-43cc-b5ba-3145aff511f6"
+>
+<ReqRef
+ Id="52f69d6f-9efe-46a8-bf28-82cdbaf08617"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e39fc7e8-b8bf-448b-994c-daf7c21eda9c"
+>
+</ReqRef><ReqRef
+ Id="8f743e52-5860-4a00-b1c3-1a25d8b01bcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e55f7847-f325-4a1f-a7c5-b40e0b63aea1"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="61609105-e374-4561-8058-cd995e0cac1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa184f4d-db22-46c7-ae7b-94499f44822a"
+>
+</ReqRef><ReqRef
+ Id="1bd536e2-b2c8-48c3-84b5-53f4fd75ad05"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dde05966-758d-48c9-be95-81f6e093170b"
+>
+</ReqRef><ReqRef
+ Id="32b65a6d-139f-482e-98ed-7dd88679ba95"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0da33471-5b51-4483-a52a-dbfcc00695c5"
+>
+</ReqRef><ReqRef
+ Id="5554abd5-d957-475f-aa3a-5ae657f9ccf3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8466f81b-d4b4-4083-8afd-dbe407d569a3"
+>
+</ReqRef><ReqRef
+ Id="452e7369-8988-4a04-9d16-d7e769201a71"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="50c59557-ef97-4436-81ed-112527639ec8"
+>
+</ReqRef><ReqRef
+ Id="464dd6eb-f8c7-42fe-b8d9-c416ee775f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4b3f1b7e-25f1-40e1-bfb4-5b3d275ee41a"
+>
+</ReqRef><ReqRef
+ Id="3ca3f276-f7a0-4c16-8b02-755e929a4ae3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa581db5-42d7-473e-afd4-8485d5298f02"
+>
+</ReqRef><Comment>Lists the types of speed and distance monitoring and handles transitions between them</Comment>
+<States>
+<State
+ Implemented="TRUE"
+ Name="Ceiling"
+ Guid="c7afbefc-cc25-4539-9b42-effc013c42cb"
+>
+<Comment>Ceiling Speed Monitoring.</Comment>
+<StateMachine
+ Default="MonitoringTypeSM.Ceiling.Start"
+ Implemented="TRUE"
+ Guid="11f43511-b66c-40ff-9cd8-49fc31a1e9cd"
+>
+<States>
+<State
+ Implemented="TRUE"
+ Name="Start"
+ Guid="85b510a2-816e-40c2-a07e-07b074579db2"
+>
+<Comment>Actions to take when entering the state.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="0ad52c37-1598-4f03-ad37-88ab2b543f94"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Record Type Change"
+ Guid="e9022530-2a77-4a8b-b0e3-479efed8a498"
+>
+<Comment>When this state is entered, record that the supervision type was changed for the JRU and revise the supervision status</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Record Change"
+ Guid="06055916-4de7-4e04-91b0-6acfca8e7eed"
+>
+<Comment>Indicates to the JRU that the monitoring type has changed</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a21ce3f8-9147-429c-bfb5-3a82d328646a"
+><Comment></Comment>
+JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
+ Guid="929fe96c-120f-4740-a4e8-b92a4eb3d5d1"
+><Comment></Comment>
+DetermineSupervisionStatus()</Action><Action
+ Guid="3dde4b50-ef4e-45cf-8795-4f1217c66e85"
+>THIS &lt;- MonitoringCeilingSpeed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ Implemented="TRUE"
+ Name="MonitoringCeilingSpeed"
+ Guid="0c7baf12-191d-458e-b33d-fc84dde5b5a5"
+>
+<Comment>In CSM state</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="d45e4a5e-c872-4ea3-ad19-4d0f5ec36313"
+>
+</StateMachine></State></States>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="ToTSM"
+ Guid="20f999bf-2d05-4b9e-83cc-867c3fc4d8d3"
+>
+<Comment>Rule for changing to target speed monitoring when the train passes the pre-indication location</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Train passed pre-indication location"
+ Guid="96f51d81-7bf9-40c4-850f-8aafa0a90aa9"
+>
+<PreConditions>
+<PreCondition
+ Guid="d984a754-d9a0-4a30-ad3c-10001df8ecf0"
+><Comment></Comment>
+Condition1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="24551215-3f50-43dc-95d4-95a90ecbb76f"
+>THIS &lt;- MonitoringTypeSM.Target.Start</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ Implemented="TRUE"
+ Name="Target"
+ Guid="0784fa98-3aea-4f51-8153-d70ae0a50b40"
+>
+<Comment>Target Speed Monitoring.</Comment>
+<StateMachine
+ Default="MonitoringTypeSM.Target.Start"
+ Implemented="TRUE"
+ Guid="04526e41-51a0-49ff-a66a-c48d62f36411"
+>
+<States>
+<State
+ Implemented="TRUE"
+ Name="TSM"
+ Guid="ae5a2442-f7dd-431e-b013-7fd673523c4f"
+>
+<Comment>In TSM state</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="93b94389-8aac-473d-974f-6334000ff2c8"
+>
+</StateMachine></State><State
+ Implemented="TRUE"
+ Name="Start"
+ Guid="c4d1bfa3-561f-4d90-be02-669d6f3f09a8"
+>
+<Comment>Actions to take when entering the state.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="106cc06b-db05-464e-a765-dad3372b86ab"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Record Type Change"
+ Guid="4cb62586-8162-4381-9d6c-0bd73738f532"
+>
+<Comment>When this state is entered, record that the supervision type was changed for the JRU and revise the supervision status</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Record Change"
+ Guid="547cc102-3116-4b48-9f9b-9ee4484aea68"
+>
+<Comment>Indicates to the JRU that the monitoring type has changed</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e7a8e765-e6db-4c64-8421-9ae611130e63"
+><Comment></Comment>
+JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
+ Guid="543e8165-df83-432e-b4cd-95d43feb70a7"
+>DetermineSupervisionStatus()</Action><Action
+ Guid="f56144fc-d490-42cf-9b0d-6f4f02dcff6f"
+><Comment></Comment>
+THIS &lt;- PIM</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ Implemented="TRUE"
+ Name="PIM"
+ Guid="e552da4c-28fd-400b-a579-e320c10e2b53"
+>
+<ReqRef
+ Id="3ca3f276-f7a0-4c16-8b02-755e929a4ae3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9d07dd4f-658e-411e-a6e6-ce03e5bddc2a"
+>
+</ReqRef><Comment>Pre Indication Monitoring, a sub-type of target speed monitoring betzeen the pre-indication location and the indication location</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="f727d81e-5f5d-4cd0-8962-ea039bad1e56"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Transition to TSM"
+ Guid="da6b52aa-d250-4618-895c-17ebd8bf5670"
+>
+<Comment>When the train passes the indication location, the speed and distance monitoring passes from PIM to TSM</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Transition to TSM"
+ Guid="163d12c7-571a-498d-aacd-d9b6f9c27a35"
+>
+<PreConditions>
+<PreCondition
+ Guid="4f0943be-3c98-4372-a6ef-732f0cedd60c"
+>TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt;= PreIndicationLocation.d_I(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="47b90428-296a-4ccb-9909-a090ca81b971"
+>THIS &lt;- TSM</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="ToRSM"
+ Guid="6a193b04-c31d-4694-b93e-261621b55074"
+>
+<Comment>Rule for changing to release speed monitoring when the train passes the RSM start location</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Train passed RSM start location"
+ Guid="b95478f6-5491-4553-bb4e-1249f5752004"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="8f62c233-1015-45b6-9369-1e69518a2b8a"
+><Comment></Comment>
+Condition2()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="44f973a1-f64e-4717-bc83-fcb6ae9ade4e"
+>THIS &lt;- ReleaseSpeed.Start</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ Implemented="TRUE"
+ Name="ReleaseSpeed"
+ Guid="07de5e9f-788d-415d-8ebd-f5b04846c216"
+>
+<Comment>Release Speed Monitoring.</Comment>
+<StateMachine
+ Default="MonitoringTypeSM.ReleaseSpeed.Start"
+ Implemented="TRUE"
+ Guid="4c471652-a236-49b9-afdf-492ed8264c22"
+>
+<States>
+<State
+ Implemented="TRUE"
+ Name="MonitoringReleaseSpeed"
+ Guid="eb7d32de-8cfa-4ab3-9166-78781b77a38f"
+>
+<Comment>In RSM state</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="545aebdb-bc36-4743-bc7b-5ac63c6d5616"
+>
+</StateMachine></State><State
+ Implemented="TRUE"
+ Name="Start"
+ Guid="578f3616-75f2-4df2-8536-5bf75508d62a"
+>
+<Comment>Actions to take when entering the state.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="ceab12e6-acb6-4834-accb-1d3568c93c4c"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Record Type Change"
+ Guid="12f97ad7-84a5-460f-8e1c-a906010df86a"
+>
+<Comment>When this state is entered, record that the supervision type was changed for the JRU and revise the supervision status</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Record Change"
+ Guid="8764fd16-244d-453f-9d41-3bcedbb658f4"
+>
+<Comment>Indicates to the JRU that the monitoring type has changed</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f4548707-2eb2-4d89-9653-5b4755e684c0"
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
+ Guid="953c08ed-e977-4766-9ca6-c5043644471e"
+><Comment></Comment>
+DetermineSupervisionStatus()</Action><Action
+ Guid="47f71217-2ed4-41e4-b059-fe6375b01867"
+>THIS &lt;- MonitoringReleaseSpeed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State><State
+ Implemented="TRUE"
+ Name="Idle"
+ Guid="1edf48d7-6c71-4956-a753-852a9d9d4bf9"
+>
+<Comment>This state corresponds to the cases when the train does not have speed and distance monitoring active</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="98ea433a-587b-40e7-8a72-c66ae4c4b16d"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="RestartSpeedAndDistanceMonitoring"
+ Guid="5083b87e-34c8-47eb-8d1e-d09514360921"
+>
+<Comment>When the train mode is FS, LS, or OS, start monitoring again</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Supervise Train Speed"
+ Guid="0b822837-96e0-4550-bd30-dcb12e0cfd29"
+>
+<PreConditions>
+<PreCondition
+ Guid="6bee5e64-dd3e-4190-b0cc-b9fecd7c8aa1"
+><Comment></Comment>
+ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="351c9b66-e0cc-4a58-9b1c-f39028235a8a"
+>THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="CheckSupervisedTargets"
+ Guid="304161d6-e7e8-4593-a5e7-cee6d8acb7ee"
+>
+<ReqRef
+ Id="4ef8d95d-9b39-4a31-af31-f673833b0f7b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b004b039-c19b-4b73-8fbb-92e9bce40ae9"
+>
+</ReqRef><ReqRef
+ Id="c0c90876-1322-4533-951c-924804b80043"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="60ab2067-a5a3-4b52-baf3-1ce8f0e03a03"
+>
+</ReqRef><ReqRef
+ Id="f966f396-c00e-4f6b-945d-6cde4527e814"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d23193c7-36c9-4fc7-9992-1cb2b5f71f55"
+>
+</ReqRef><ReqRef
+ Id="620d2411-2c42-403d-9139-cdb6a68c48b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0c1c75e3-fbe4-47fd-b4bd-ea9113c345ef"
+>
+</ReqRef><ReqRef
+ Id="16a2ffa9-a581-4832-8287-d3a982f4ddd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="14a6dc97-370b-4080-bc18-3ea25b839dac"
+>
+</ReqRef><Comment>When the list of supervised targets changes, the type of moitoring may change.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="CheckSupervisedTargets"
+ Guid="a03fee97-031e-4942-9848-c5b0d7fecc9c"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="f0533ab6-40d0-43ae-a60c-64a801411bc9"
+>TARGETS(
+    Targets1=&gt;MRSP.SpeedRestrictions,
+    Targets2=&gt;MA.SpeedRestrictions,
+    Targets3=&gt;NationalValues.MaxDistInSRSpeedRestriction
+)
+!=
+SupervisedTargets</PreCondition><PreCondition
+ Guid="6f2cc5a3-3453-4c20-acb8-221630d71332"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
+ Guid="c91265ff-507c-45ce-9fb3-e4bbc413a44e"
+>ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="774ac772-0f2b-46db-99c0-8963f899bb81"
+>SupervisedTargets &lt;- TARGETS(
+    Targets1=&gt;MRSP.SpeedRestrictions,
+    Targets2=&gt;MA.SpeedRestrictions,
+    Targets3=&gt;NationalValues.MaxDistInSRSpeedRestriction
+)</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Go to ceiling speed monitoring"
+ Guid="f86a11bf-c055-4ee0-a054-75949711b635"
+>
+<Comment>If condition 1 is not satisfied for the new targets, go to ceiling speed monitoring.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Condition 1 is not fulfilled"
+ Guid="8483403d-dcf0-4682-b06f-5a2ae4fcfec4"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="d6cc722b-4470-4618-b7ad-a8f6154e0bc8"
+>NOT Condition1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f9cfaf7b-b51a-4ff0-9e43-92e4082c6fbc"
+><Comment></Comment>
+THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="TransitionFromTSM"
+ Guid="ab964af1-2b30-461e-a94d-9c1eef3e2c16"
+>
+<Comment>If the transition occurs from TSM, revoke traction cut-off commands and service brake commands</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="If in TSM, immediately revoke any traction cut-off command"
+ Guid="35a7536e-2488-46fb-99bc-e4ceeb17b12c"
+>
+<PreConditions>
+<PreCondition
+ Guid="968a3c7d-c0d9-4d05-b65e-d84a00f02458"
+>THIS in MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a364a045-8542-40c1-91b4-f4821eaa0ef2"
+>RevokeTCOCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Go to target speed monitoring"
+ Guid="1801c074-2a70-4502-94b1-94b11aedd3bc"
+>
+<Comment>If condition 1 and condition 2 are satisfied for the new targets, go to release speed monitoring.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Condition 1 is fulfilled but not condition 2"
+ Guid="89aaf7b5-70c3-44c6-82ed-7f18fd062b1a"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="1889c002-6694-4e01-a062-4c76f5c65090"
+>NOT Condition2()</PreCondition><PreCondition
+ Guid="e9504089-b7d1-4d41-bf98-d1362f421406"
+>Condition1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f7b5bdb0-1344-4d1b-aae3-6ed3ca6f0683"
+>THIS &lt;- MonitoringTypeSM.Target</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Go to release speed monitoring"
+ Guid="8773148e-05e9-4782-8d8d-7a7fa4b79f1c"
+>
+<Comment>If condition 1 is satisfied but condition 2 is not for the new targets, go to target speed monitoring.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Conditions 1 and 2 are fulfilled"
+ Guid="8db73e0a-1dcf-4723-9386-bca94a1e706a"
+>
+<PreConditions>
+<PreCondition
+ Guid="119da225-e12b-42f7-9c8f-cebd45faa5b6"
+>Condition2()</PreCondition><PreCondition
+ Guid="733d87fc-f85e-4a60-a964-7db1c74dadcb"
+>Condition1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6de0a2d5-3cb9-49e5-ada3-7ac6f14df66a"
+>THIS &lt;- MonitoringTypeSM.ReleaseSpeed</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Transition from TSM"
+ Guid="9cb19cb6-1fda-4741-b38e-5c2a2f91e529"
+>
+<Comment>If the transition occurs from TSM, revoke traction cut-off commands and service brake commands</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Transition from TSM"
+ Guid="6eb4b3d8-2a24-4642-a6fe-18a1c26590d3"
+>
+<PreConditions>
+<PreCondition
+ Guid="21a7d41d-368f-48cb-9bd7-804eddb97e31"
+>THIS in MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Transition from TSM"
+ Guid="7ddf4344-14ce-4424-a2e8-eb70676f6da6"
+>
+<Comment>To apply when transitioning from TSM</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Revoke traction cut-off command"
+ Guid="3b9fcf9b-a96d-4ee3-87a1-5d68d8f03262"
+>
+<Comment>Revoke the traction cut-off command, if one is applied</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="4dc56041-0a8a-4880-a713-5879b5aaf620"
+>RevokeTCOCommand()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Revoke SB command"
+ Guid="0c1c9c7e-d520-49d7-b395-f68efeb38b93"
+>
+<Comment>Revoke the SB command, if one is applied</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="493126b8-f4a0-4317-933e-c8d819639f84"
+>RevokeSBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="StopMonitoring"
+ Guid="428969a2-8771-4192-8c43-af7a7ffe185c"
+>
+<ReqRef
+ Id="464dd6eb-f8c7-42fe-b8d9-c416ee775f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b80ddb73-fa13-48fb-ba41-96b6721d9048"
+>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="StopMonitoring"
+ Guid="07a58c8a-35cc-4601-b3dd-e3ddd30c61aa"
+>
+<PreConditions>
+<PreCondition
+ Guid="d2c4fbd4-aea7-44fe-bab3-9fdd15bbb7be"
+>NOT ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="71258306-011a-4ab1-9a0a-397404946f9f"
+>THIS &lt;- MonitoringTypeSM.Idle</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></StateMachines>
 <Functions>
 <Function
  Type="Default.BaseTypes.Speed"
