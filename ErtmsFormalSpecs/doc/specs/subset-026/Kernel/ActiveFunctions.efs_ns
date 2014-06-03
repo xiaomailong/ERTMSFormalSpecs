@@ -70,5 +70,23 @@
   Default.Mode.IS]</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="SuperviseTrainSpeed"
+ Guid="1e9a81a1-aa84-4ed9-9823-0441a00a0943"
+>
+<ReqRef
+ Id="464dd6eb-f8c7-42fe-b8d9-c416ee775f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f5df70ff-f7bf-4b28-90c3-5ad46b83f2fa"
+>
+</ReqRef><Cases>
+<Case
+ Name="Value"
+ Guid="ad9f6da4-b125-47f1-91d6-f5dfb320a6e4"
+>
+<Expression>Kernel.Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+</Case></Cases>
 </Function></Functions>
 </NameSpace>

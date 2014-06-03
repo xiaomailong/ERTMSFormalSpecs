@@ -950,7 +950,8 @@ RevokeEBCommand()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="06b60fa2-1220-4daa-b754-a8b91ea984ac"
 >
-</ReqRef><Rules>
+</ReqRef><Comment></Comment>
+<Rules>
 <Rule
  Priority="Processing"
  Name="Revoke CSM status"
@@ -1459,7 +1460,7 @@ RevokeEBCommand()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="2000c917-1ae5-46ec-9768-6d88e3fa11f3"
->Monitoring == MonitoringType.Ceiling</PreCondition><PreCondition
+>Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
  Guid="0046535f-3d8c-400a-b35b-bae068e48182"
 >SpeedAndDistanceMonitoringIsActive</PreCondition></PreConditions>
 <Actions>
