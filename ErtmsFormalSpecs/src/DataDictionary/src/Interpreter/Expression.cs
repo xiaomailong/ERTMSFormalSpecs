@@ -665,6 +665,9 @@ namespace DataDictionary.Interpreter
             {
                 value = GetValue(context);
             }
+            catch (Exception)
+            { 
+            }
             finally
             {
                 retVal = CompleteNewExplanation(previous);

@@ -967,6 +967,7 @@
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
+ X="220"
  Y="60"
  Width="100"
  Height="50"
@@ -1921,6 +1922,7 @@
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
+ X="440"
  Y="120"
  Width="100"
  Height="50"
@@ -2853,6 +2855,7 @@
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
+ X="660"
  Y="180"
  Width="100"
  Height="50"
@@ -2904,13 +2907,14 @@
 <PreConditions>
 <PreCondition
  Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
->Kernel.SpeedAndDistanceMonitoring.Monitoring != Kernel.SpeedAndDistanceMonitoring.MonitoringType.ReleaseSpeed</PreCondition><PreCondition
+>Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMonitoring.Monitoring.ReleaseSpeed, Kernel.SpeedAndDistanceMonitoring.Monitoring.Idle]</PreCondition><PreCondition
  Guid="27f43f3b-9d33-4f93-8af9-d46bf9c93913"
->Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
+>Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
->Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</Action></Actions>
+><Comment></Comment>
+Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -3856,6 +3860,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
+ X="880"
  Y="240"
  Width="100"
  Height="50"
@@ -3894,7 +3899,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ac88bf52-f540-44c2-8c94-930fb08165ef"
->Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed</Action></Actions>
+><Comment></Comment>
+Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -4788,7 +4794,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="300"
+ X="110"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5658,7 +5665,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="360"
+ X="330"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6088,8 +6096,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="360"
+ X="440"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6519,7 +6527,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="420"
+ X="550"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6949,8 +6958,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="420"
+ X="660"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7380,7 +7389,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="480"
+ X="770"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7810,8 +7820,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="480"
+ X="880"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8241,7 +8251,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="540"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8672,7 +8682,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </Structure><Structure
  Default=""
  X="110"
- Y="540"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9102,7 +9112,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="600"
+ X="220"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9532,8 +9543,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="600"
+ X="330"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9963,7 +9974,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="660"
+ X="440"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10431,8 +10443,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="660"
+ X="550"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10862,7 +10874,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="720"
+ X="660"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11300,8 +11313,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="720"
+ X="770"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11731,7 +11744,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="780"
+ X="880"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12607,7 +12621,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="840"
+ X="110"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -13037,8 +13052,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="840"
+ X="220"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -13468,7 +13483,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="900"
+ X="330"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -13898,8 +13914,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="900"
+ X="440"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -14338,7 +14354,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="960"
+ X="550"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -14768,8 +14785,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="960"
+ X="660"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -15279,7 +15296,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="1020"
+ X="770"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -15742,8 +15760,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="1020"
+ X="880"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -16206,7 +16224,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="1080"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -16671,7 +16689,7 @@ MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></
 </Structure><Structure
  Default=""
  X="110"
- Y="1080"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -17134,7 +17152,8 @@ MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="1140"
+ X="220"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -17597,8 +17616,8 @@ MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="1140"
+ X="330"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -18037,7 +18056,8 @@ MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="1200"
+ X="440"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -18467,8 +18487,8 @@ MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="1200"
+ X="550"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -18898,7 +18918,8 @@ MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="1260"
+ X="660"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -19336,8 +19357,8 @@ MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="1260"
+ X="770"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -19800,7 +19821,8 @@ MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="1320"
+ X="880"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -20729,7 +20751,8 @@ MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="1380"
+ X="110"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"

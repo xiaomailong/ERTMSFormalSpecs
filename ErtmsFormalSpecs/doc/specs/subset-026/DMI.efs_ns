@@ -7,6 +7,7 @@
  Name="DMI"
  Guid="27079fd5-b597-44b6-9a91-248896c6f707"
 >
+<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="IN"
@@ -10288,7 +10289,8 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 </StructureElement></Structure><Structure
  Default=""
- Y="120"
+ X="660"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10325,7 +10327,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  TypeName="RBCContactActionEnum"
  MaxSize="5"
  Default="[]"
- Y="180"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10358,7 +10360,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 <Function
  Type="DMI.DMIStruct"
  Default=""
- Y="300"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10395,7 +10397,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Type="DMI.DMIStruct"
  Default=""
  X="110"
- Y="300"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10436,7 +10438,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Type="Boolean"
  Default=""
  X="220"
- Y="300"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10456,7 +10458,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Type="TIU.CabStruct"
  Default=""
  X="330"
- Y="300"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10501,7 +10503,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Type="Boolean"
  Default=""
  X="440"
- Y="300"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10550,7 +10552,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Type="Boolean"
  Default=""
  X="550"
- Y="300"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10598,7 +10600,7 @@ NOT DeskIsOpen ( DMI2 )</Expression>
  Type="DMI.DMIStruct"
  DefaultValue=""
  VariableMode="InOut"
- Y="240"
+ Y="180"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -10615,7 +10617,7 @@ NOT DeskIsOpen ( DMI2 )</Expression>
  DefaultValue=""
  VariableMode="InOut"
  X="110"
- Y="240"
+ Y="180"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -10631,7 +10633,7 @@ NOT DeskIsOpen ( DMI2 )</Expression>
 <Rules>
 <Rule
  Priority="Processing"
- Y="420"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"

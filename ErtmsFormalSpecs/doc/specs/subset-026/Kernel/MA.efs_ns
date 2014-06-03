@@ -670,19 +670,6 @@ Location stores the previous End of Movement Authority location.</Comment>
  Guid="14420dcd-645e-4886-9f63-380fed6e3f3d"
 >
 </ReqRef><Comment>Represents MA sections.</Comment>
-</Collection><Collection
- TypeName="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
- Default="[EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]"
- X="170"
- Y="470"
- Width="100"
- Height="50"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TargetsCol"
- Guid="12ba0846-ca7e-4950-af35-aafe85e10270"
->
-<Comment>This collection is used to keep the EOAs and SvLs from different sources so that the most restrictive one can be accessed</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -1043,6 +1030,7 @@ INITIAL_VALUE CreateTarget (
  Name="Level 1"
  Guid="2e6b1009-f980-487a-849d-ebb6b37ddf03"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="882879c9-2057-45f9-afa8-3b11d5abd62a"
@@ -1052,6 +1040,7 @@ INITIAL_VALUE CreateTarget (
  Name="Otherwise"
  Guid="b5339113-60a7-4cec-9e60-c156ca255ef5"
 >
+<Comment></Comment>
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
@@ -1191,6 +1180,7 @@ INITIAL_VALUE CreateTarget (
  Name="No MA available"
  Guid="116fae04-3eb4-4678-9caa-e8684037bc76"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="765c0674-3659-40da-b982-66fd686466df"
@@ -1473,6 +1463,7 @@ INITIAL_VALUE CreateTarget (
  Name="Return the closest SvL"
  Guid="c9018509-c2de-4033-826b-342a2bc196c4"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f439959e-927a-4352-9bad-9ee8aa4cf1d9"
@@ -1865,6 +1856,7 @@ Default.BaseTypes.LengthToDistance(
  Name="Target1 &gt; Target2"
  Guid="02b5439b-5aed-4aee-be41-d98dc687b3dd"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="499fd9ac-9444-4444-9617-752e11984521"
@@ -2985,7 +2977,7 @@ In this case, the EOA should be moved to the train&apos;s current position with 
 <Actions>
 <Action
  Guid="e5e2fcba-251a-4e6f-9ae2-515d5363a592"
->Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action></Actions>
+>SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4132,7 +4124,8 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
     }
 ]</Action><Action
  Guid="1613d496-73f3-4873-ac23-ca4bc8624aa1"
->TrackDescription.StaticSpeedProfile.SSP &lt;-
+><Comment></Comment>
+TrackDescription.StaticSpeedProfile.SSP &lt;-
 [
     TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
     {
@@ -4243,7 +4236,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 >
 </ReqRef><Comment>Allows to verify if the MA was shortened (possibly regardless of SvL location).</Comment>
 </Variable><Variable
- Type="TargetsCol"
+ Type="SpeedAndDistanceMonitoring.TargetSupervision.Targets"
  DefaultValue=""
  VariableMode="Internal"
  X="20"
@@ -4257,7 +4250,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 >
 <Comment>This is a collection holding all the locations designated as supervision limit according to different external inputs</Comment>
 </Variable><Variable
- Type="TargetsCol"
+ Type="SpeedAndDistanceMonitoring.TargetSupervision.Targets"
  DefaultValue=""
  VariableMode="Internal"
  X="20"

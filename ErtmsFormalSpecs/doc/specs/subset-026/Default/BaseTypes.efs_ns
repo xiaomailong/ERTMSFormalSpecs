@@ -6,6 +6,7 @@
  Name="BaseTypes"
  Guid="2a7d1254-c37b-451b-83c4-3174d5d3a1c4"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Ranges>
@@ -29,6 +30,7 @@
 >
 </EnumValue><EnumValue
  Value="2147483647.0"
+ ForbidArithmeticOperation="TRUE"
  Name="Unknown"
  Guid="98dc64b2-68db-4321-8a80-12e40b5f2d2b"
 >
@@ -543,8 +545,7 @@
 </Function><Function
  Type="Default.BaseTypes.Length"
  Default=""
- X="880"
- Y="120"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -602,6 +603,7 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="110"
  Y="180"
  Width="100"
  Height="50"
@@ -660,7 +662,7 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="110"
+ X="220"
  Y="180"
  Width="100"
  Height="50"
@@ -719,7 +721,7 @@
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
- X="220"
+ X="330"
  Y="180"
  Width="100"
  Height="50"
@@ -778,7 +780,7 @@
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
- X="330"
+ X="440"
  Y="180"
  Width="100"
  Height="50"
@@ -837,7 +839,7 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="440"
+ X="550"
  Y="180"
  Width="100"
  Height="50"
@@ -873,6 +875,7 @@
  Name="X2 infinite"
  Guid="4c9d5caf-5c24-42fe-a53c-1270c2856810"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="cead10d5-d0ee-454f-971c-28dd212f30b4"
@@ -896,7 +899,7 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="550"
+ X="660"
  Y="180"
  Width="100"
  Height="50"
@@ -932,7 +935,7 @@
 </Function><Function
  Type="Default.BaseTypes.Length"
  Default=""
- X="660"
+ X="770"
  Y="180"
  Width="100"
  Height="50"
@@ -991,8 +994,7 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="770"
- Y="180"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1013,13 +1015,14 @@
  Name="Value"
  Guid="aafb6c95-f08e-425c-9fef-95e277dc9764"
 >
+<Comment></Comment>
 <Expression>Val / 3.6</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="880"
- Y="180"
+ X="110"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"

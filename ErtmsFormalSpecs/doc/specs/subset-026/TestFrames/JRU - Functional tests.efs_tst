@@ -3350,7 +3350,14 @@
  Guid="54d6c3cb-a4e0-4df7-82de-84fe0dee2d10"
 >Kernel.SupervisionStatus &lt;- Kernel.SupervisionStatus.Overspeed</Action><Action
  Guid="dae936c9-82a8-4afe-ac16-27e68272bac3"
->Kernel.SpeedAndDistanceMonitoring.Monitoring &lt;- Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</Action></Actions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring &lt;- Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</Action><Action
+ Guid="85637054-dc20-4bd3-bc85-695bea7c08b4"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; Default.Level.L1,
+    DataState =&gt; Default.DataState.Valid
+}</Action><Action
+ Guid="599e97a8-3a47-4b35-8b78-8255b84370ce"
+>Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

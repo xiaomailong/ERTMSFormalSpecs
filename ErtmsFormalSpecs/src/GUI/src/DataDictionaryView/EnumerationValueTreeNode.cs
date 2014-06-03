@@ -41,6 +41,16 @@ namespace GUI.DataDictionaryView
                 get { return Item.getValue(); }
                 set { Item.setValue(value); }
             }
+
+            /// <summary>
+            /// The item value
+            /// </summary>
+            [Category("Description")]
+            public bool ForbidArithmeticOperation
+            {
+                get { return Item.getForbidArithmeticOperation(); }
+                set { Item.setForbidArithmeticOperation(value); }
+            }
         }
 
         /// <summary>

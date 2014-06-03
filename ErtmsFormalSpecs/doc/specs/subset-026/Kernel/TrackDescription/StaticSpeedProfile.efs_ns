@@ -6,6 +6,7 @@
  Name="StaticSpeedProfile"
  Guid="37f49c98-ec42-40bc-82fe-e4efc8fb3ab6"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -249,9 +250,20 @@
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="SSPEnd Infinite"
+ Guid="bf5fa13a-c300-46f3-b99b-6c6c2a70a26b"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="9b4cb36a-1435-4349-a2a7-76e3f8f75425"
+>SSPEnd(aSSP)  == BaseTypes.Distance.Infinity</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Infinity</Expression>
+</Case><Case
  Name="TrainLengthDelay"
  Guid="edae9863-3316-4e77-a6d3-810db9a7e761"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7f6dc22b-756b-4bbd-a279-def78e406e66"
@@ -261,6 +273,7 @@
  Name="NoTrainLengthDelay"
  Guid="e5943792-4cfa-46ac-befd-3c30fe17d42b"
 >
+<Comment></Comment>
 <Expression>SSPEnd(aSSP) - Default.BaseTypes.LengthToDistance(aSSP.Distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -479,7 +492,8 @@ INITIAL_VALUE
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- Y="240"
+ X="550"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -519,8 +533,8 @@ USING
 </Function><Function
  Type="Kernel.TrackDescription.StaticSpeedProfile.SSPCategory"
  Default=""
- X="110"
- Y="240"
+ X="660"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -585,6 +599,7 @@ USING
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7382bd6e-22b2-4d5c-b5e6-6ad987db8373"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -612,7 +627,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="330"
+ X="110"
  Y="240"
  Width="100"
  Height="50"
@@ -682,7 +697,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="440"
+ X="220"
  Y="240"
  Width="100"
  Height="50"
@@ -733,7 +748,8 @@ INITIAL_VALUE
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- Y="300"
+ X="330"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -777,8 +793,8 @@ INITIAL_VALUE
 </Function><Function
  Type="Boolean"
  Default=""
- X="110"
- Y="300"
+ X="440"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -813,8 +829,8 @@ INITIAL_VALUE
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="220"
- Y="300"
+ X="550"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -854,8 +870,8 @@ INITIAL_VALUE
 </Function><Function
  Type="TrainData.TrainCategoryEnum"
  Default=""
- X="330"
- Y="300"
+ X="660"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1183,7 +1199,8 @@ IN
 <Actions>
 <Action
  Guid="65d681d5-c87b-4c85-b562-87d5fcd83f47"
->INSERT
+><Comment></Comment>
+INSERT
     StaticSpeedRestriction
     {
         Distance =&gt; Distance,

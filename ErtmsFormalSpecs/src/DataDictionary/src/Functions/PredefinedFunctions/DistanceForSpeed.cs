@@ -86,7 +86,19 @@ namespace DataDictionary.Functions.PredefinedFunctions
             if (graph != null)
             {
                 double speed = Functions.Function.getDoubleValue(context.findOnStack(Speed).Value);
-                retVal = Graph.createGraph(graph.SolutionX(speed));
+                double solutionX = graph.SolutionX(speed);
+                if (solutionX == double.MaxValue)
+                {
+                    // No value found, return Unknown
+                    Types.Range distanceType = (Types.Range)EFSSystem.findByFullName("Default.BaseTypes.Distance");
+                    Constants.EnumValue unknownDistance = distanceType.findEnumValue("Unknown");
+                    retVal = Graph.createGraph(distanceType.getValueAsDouble(unknownDistance));
+                }
+                else
+                {
+                    // Create the graph for this solution
+                    retVal = Graph.createGraph(solutionX);
+                }
             }
             else
             {
@@ -119,7 +131,16 @@ namespace DataDictionary.Functions.PredefinedFunctions
                 context.LocalScope.setGraphParameter(parameter);
                 Graph graph = function.createGraph(context, (Parameter)function.FormalParameters[0]);
                 context.LocalScope.PopContext(token2);
-                retVal = new Values.DoubleValue(EFSSystem.DoubleType, graph.SolutionX(speed));
+                double solutionX = graph.SolutionX(speed);
+                if ( solutionX == double.MaxValue )
+                {
+                    Types.Range distanceType = (Types.Range)EFSSystem.findByFullName("Default.BaseTypes.Distance");
+                    retVal = distanceType.findEnumValue("Unknown");
+                }
+                else
+                {
+                    retVal = new Values.DoubleValue(EFSSystem.DoubleType, solutionX);                
+                }
             }
             else
             {

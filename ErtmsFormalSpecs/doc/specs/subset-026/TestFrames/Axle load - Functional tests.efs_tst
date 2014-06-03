@@ -14,6 +14,260 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
+ Name="Axle load depending on train length"
+ Guid="1f68f476-fb8f-492b-a8b4-f7e8f146672c"
+>
+<Comment></Comment>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Axle load depending on train length"
+ Guid="76691364-6f36-4e89-82f6-34639880a17d"
+>
+<ReqRef
+ Id="ba5abe5a-c0c5-477f-9ab9-52ce07011bb1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ab4058e-1f80-4b92-9788-417f51bedfa2"
+>
+</ReqRef><ReqRef
+ Id="49595724-3359-4536-a90e-542bc90ffc8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b310c750-0ff3-4de2-ba08-dd86a2e8ac7f"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+ Guid="ad14aa66-7528-4dba-8469-070cf9d929cc"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="758f3fec-d299-48d4-aa82-6bfef10b84bf"
+>
+<Actions>
+<Action
+ Guid="7bc04814-c9cf-4acc-955d-967fa316d6b2"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="d714d31f-22d7-4bfa-ab40-4806a1c4c852"
+>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Provide axle load"
+ Guid="769ce524-7778-4a90-88e5-73654006a244"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="a6dbc2ac-0f10-4224-bc2a-cc1e8155f097"
+>
+<Actions>
+<Action
+ Guid="8029bee2-57c2-4f22-8605-df0c98d37597"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2100,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                AXLE_LOAD_SPEED_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message
+                {
+                    NID_PACKET =&gt; 88,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
+                    D_TRACKINIT =&gt; 0,
+                    D_AXLELOAD =&gt; 700,
+                    L_AXLELOAD =&gt; 40,
+                    Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
+                    Sequence1 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
+                        {
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
+                            V_AXLELOAD =&gt; 14
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
+                        {
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
+                            V_AXLELOAD =&gt; 12
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
+                        {
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
+                            V_AXLELOAD =&gt; 10
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
+                        {
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
+                            V_AXLELOAD =&gt; 8
+                        }
+                    ],
+                    Sequence3 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure2
+                        {
+                            D_AXLELOAD =&gt; 400,
+                            L_AXLELOAD =&gt; 20,
+                            Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
+                            Sequence2 =&gt;
+                            [
+                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
+                                    V_AXLELOAD =&gt; 16
+                                },
+                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
+                                    V_AXLELOAD =&gt; 14
+                                },
+                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
+                                    V_AXLELOAD =&gt; 12
+                                },
+                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
+                                    V_AXLELOAD =&gt; 8
+                                },
+                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
+                                    V_AXLELOAD =&gt; 6
+                                }
+                            ]
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure2
+                        {
+                            D_AXLELOAD =&gt; 600,
+                            L_AXLELOAD =&gt; 80,
+                            Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+                            Sequence2 =&gt;
+                            [
+                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
+                                    V_AXLELOAD =&gt; 18
+                                },
+                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
+                                    V_AXLELOAD =&gt; 16
+                                },
+                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
+                                    V_AXLELOAD =&gt; 14
+                                },
+                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
+                                    V_AXLELOAD =&gt; 12
+                                },
+                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
+                                    V_AXLELOAD =&gt; 10
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}</Action><Action
+ Guid="055fef29-b9d3-4474-9eb0-0fa6a560e795"
+>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.B2</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Check axle load length"
+ Guid="40ded011-7288-4dd7-a734-e44bbd3485df"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="488dfb5f-685b-47b7-9c79-dc384a56a50b"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="8f4e4929-aa8a-49c0-ad44-ae66ab4ce1a8"
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 699.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="e1cfe11a-73cb-4e6b-80eb-103636a9f87e"
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 700.0 ) == 60.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="cb162604-bc20-43e0-92fd-fca269191ba4"
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 859.0 ) == 60.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="3d936294-8469-4f9d-8495-531821331a95"
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 860.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="38f2ded7-ffdb-4834-9ca6-039c6ee0b1bb"
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1100.0 ) == 70.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="7d68ac42-b8d6-48f3-b1a9-77351b639db8"
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1239.0 ) == 70.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="5d9efa65-3803-4b31-9061-4eb938854534"
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1240.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="20571913-06bd-4366-92e3-405278e71324"
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1700.0 ) == 80.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="4054369f-8819-4e11-966d-41a3d9c0a100"
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1779.0 ) == 80.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="e5ee1a2c-43d9-46a1-a178-c1c3953fe04f"
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1780.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
  Name="Axle load profile received"
  Guid="52decb04-1c9a-4f82-a065-de767e8f25d0"
 >
@@ -281,7 +535,8 @@
  Guid="9103b5dd-5128-4002-93f7-bd84956858cc"
 >Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.B2</Action><Action
  Guid="18a1daeb-1a49-471e-bd35-bf5e03f2f813"
->Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action></Actions>
+><Comment></Comment>
+Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -899,259 +1154,6 @@
  Kind="Instantaneous"
  Guid="d19cef83-432d-4f39-963d-278bfdbd0212"
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1740.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="Axle load depending on train length"
- Guid="1f68f476-fb8f-492b-a8b4-f7e8f146672c"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Axle load depending on train length"
- Guid="76691364-6f36-4e89-82f6-34639880a17d"
->
-<ReqRef
- Id="ba5abe5a-c0c5-477f-9ab9-52ce07011bb1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5ab4058e-1f80-4b92-9788-417f51bedfa2"
->
-</ReqRef><ReqRef
- Id="49595724-3359-4536-a90e-542bc90ffc8e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b310c750-0ff3-4de2-ba08-dd86a2e8ac7f"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
- Guid="ad14aa66-7528-4dba-8469-070cf9d929cc"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="758f3fec-d299-48d4-aa82-6bfef10b84bf"
->
-<Actions>
-<Action
- Guid="7bc04814-c9cf-4acc-955d-967fa316d6b2"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="d714d31f-22d7-4bfa-ab40-4806a1c4c852"
->Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - Provide axle load"
- Guid="769ce524-7778-4a90-88e5-73654006a244"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="a6dbc2ac-0f10-4224-bc2a-cc1e8155f097"
->
-<Actions>
-<Action
- Guid="8029bee2-57c2-4f22-8605-df0c98d37597"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2100,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                AXLE_LOAD_SPEED_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message
-                {
-                    NID_PACKET =&gt; 88,
-                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
-                    L_PACKET =&gt; 400,
-                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
-                    Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
-                    D_TRACKINIT =&gt; 0,
-                    D_AXLELOAD =&gt; 700,
-                    L_AXLELOAD =&gt; 40,
-                    Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
-                    Sequence1 =&gt;
-                    [
-                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
-                        {
-                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
-                            V_AXLELOAD =&gt; 14
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
-                        {
-                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
-                            V_AXLELOAD =&gt; 12
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
-                        {
-                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
-                            V_AXLELOAD =&gt; 10
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
-                        {
-                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
-                            V_AXLELOAD =&gt; 8
-                        }
-                    ],
-                    Sequence3 =&gt;
-                    [
-                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure2
-                        {
-                            D_AXLELOAD =&gt; 400,
-                            L_AXLELOAD =&gt; 20,
-                            Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
-                            Sequence2 =&gt;
-                            [
-                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-                                {
-                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
-                                    V_AXLELOAD =&gt; 16
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-                                {
-                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
-                                    V_AXLELOAD =&gt; 14
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-                                {
-                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
-                                    V_AXLELOAD =&gt; 12
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-                                {
-                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
-                                    V_AXLELOAD =&gt; 8
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-                                {
-                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
-                                    V_AXLELOAD =&gt; 6
-                                }
-                            ]
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure2
-                        {
-                            D_AXLELOAD =&gt; 600,
-                            L_AXLELOAD =&gt; 80,
-                            Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-                            Sequence2 =&gt;
-                            [
-                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-                                {
-                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
-                                    V_AXLELOAD =&gt; 18
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-                                {
-                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
-                                    V_AXLELOAD =&gt; 16
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-                                {
-                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
-                                    V_AXLELOAD =&gt; 14
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-                                {
-                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
-                                    V_AXLELOAD =&gt; 12
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-                                {
-                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
-                                    V_AXLELOAD =&gt; 10
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
-        }
-    ]
-}</Action><Action
- Guid="055fef29-b9d3-4474-9eb0-0fa6a560e795"
->Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.B2</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step3 - Check axle load length"
- Guid="40ded011-7288-4dd7-a734-e44bbd3485df"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="488dfb5f-685b-47b7-9c79-dc384a56a50b"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="8f4e4929-aa8a-49c0-ad44-ae66ab4ce1a8"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 699.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
- Kind="Instantaneous"
- Guid="e1cfe11a-73cb-4e6b-80eb-103636a9f87e"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 700.0 ) == 60.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="cb162604-bc20-43e0-92fd-fca269191ba4"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 859.0 ) == 60.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="3d936294-8469-4f9d-8495-531821331a95"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 860.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
- Kind="Instantaneous"
- Guid="38f2ded7-ffdb-4834-9ca6-039c6ee0b1bb"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1100.0 ) == 70.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="7d68ac42-b8d6-48f3-b1a9-77351b639db8"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1239.0 ) == 70.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="5d9efa65-3803-4b31-9061-4eb938854534"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1240.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
- Kind="Instantaneous"
- Guid="20571913-06bd-4366-92e3-405278e71324"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1700.0 ) == 80.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="4054369f-8819-4e11-966d-41a3d9c0a100"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1779.0 ) == 80.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="e5ee1a2c-43d9-46a1-a178-c1c3953fe04f"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1780.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

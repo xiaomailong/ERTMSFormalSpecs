@@ -35,19 +35,31 @@
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="d_SBI1 unknown"
+ Guid="7b3d4914-3789-4ecf-9cd1-9d0fbde5239c"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="bd4d5420-0862-4965-a023-b26895a549dc"
+>TargetSupervision.d_SBI1 ( V ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="d_SBI1"
  Guid="4c1a9b99-6a0a-4f9b-a33e-0cbe40c7680b"
 >
 <PreConditions>
 <PreCondition
  Guid="abbce78f-6895-49a0-a931-84443bad052d"
->TargetSupervision.d_SBI1 ( V ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt;= ReleaseSpeedSupervision.d_SBI2 ( V ) - TrainPosition.FrontEndPosition ( DistanceInterval.Max )</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSupervision.d_SBI1 ( V ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) &lt;= d_SBI2 ( V ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
 <Expression>TargetSupervision.d_SBI1 ( V )</Expression>
 </Case><Case
  Name="d_SBI2"
  Guid="d5c865b3-e560-45db-b300-a9fac42ae0b1"
 >
-<Expression>ReleaseSpeedSupervision.d_SBI2 ( V )</Expression>
+<Comment></Comment>
+<Expression>d_SBI2 ( V )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -129,7 +141,7 @@ STOP_CONDITION
     Function =&gt;
         TargetSupervision.EBD,
         Speed =&gt; Vrelease + f41 ( Vrelease ) )
-- BaseTypes.SpeedToMS ( ( Vrelease + f41 ( Vrelease ) ) ) * ( TargetSupervision.T_berem() + TargetSupervision.T_traction() )</Expression>
+- Default.BaseTypes.SpeedToMS ( ( Vrelease + f41 ( Vrelease ) ) ) * ( TargetSupervision.T_berem() + TargetSupervision.T_traction() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -165,7 +177,7 @@ STOP_CONDITION
  Name="Value"
  Guid="17beface-fcb0-4eb8-b204-80baed457e28"
 >
-<Expression>( Vrelease + Vdelta0rsob ( Vrelease ) ) * ( TargetSupervision.T_traction() + TargetSupervision.T_berem() )</Expression>
+<Expression>( Vrelease + ReleaseSpeedSupervision.Vdelta0rsob ( Vrelease ) ) * ( TargetSupervision.T_traction() + TargetSupervision.T_berem() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -234,14 +246,14 @@ STOP_CONDITION
  Name="Value"
  Guid="9746676d-2b14-4bef-813d-dd69f85e4882"
 >
-<Expression>d_EOA()
+<Expression>ReleaseSpeedSupervision.d_EOA()
   +
-alpha() * BTM.AntennaPosition ( DistanceInterval.Nom )
+ReleaseSpeedSupervision.alpha() * BTM.AntennaPosition ( Default.DistanceInterval.Nom )
   +
-BaseTypes.MaxDistance
+Default.BaseTypes.MaxDistance
 (
-    X1 =&gt; ( 2.0 * BTM.BGLocationAccuracy() + 10.0 + 0.1 * d_EOA() ),
-    X2 =&gt; ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Min ) ) )</Expression>
+    X1 =&gt; ( 2.0 * BTM.BGLocationAccuracy() + 10.0 + 0.1 * ReleaseSpeedSupervision.d_EOA() ),
+    X2 =&gt; ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Min ) ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -272,7 +284,7 @@ BaseTypes.MaxDistance
  Name="Value"
  Guid="994729c8-aa58-4667-98b0-90ca2b055199"
 >
-<Expression>d_EBI ( Vrelease )  - BaseTypes.SpeedToMS ( Vrelease ) * TargetSupervision.T_bs2</Expression>
+<Expression>ReleaseSpeedSupervision.d_EBI ( Vrelease )  - Default.BaseTypes.SpeedToMS ( Vrelease ) * TargetSupervision.T_bs2</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -311,10 +323,10 @@ BaseTypes.MaxDistance
 <PreConditions>
 <PreCondition
  Guid="af631487-52d1-4c71-a33c-05b2ff35e1b4"
->d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
+>ReleaseSpeedSupervision.d_tripEOA() + ReleaseSpeedSupervision.Dbec ( Vrelease_prev ) &lt; DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
  Guid="b7339d74-9848-460e-b4e5-8cb15e9f1566"
->TargetSupervision.EBD ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ) &gt; Vtarget</PreCondition></PreConditions>
-<Expression>TargetSupervision.EBD ( d_tripEOA () + ReleaseSpeedSupervision.Dbec ( Vrelease_prev ) ) - Vdelta0rsob ( Vrelease_prev )</Expression>
+>TargetSupervision.EBD ( ReleaseSpeedSupervision.d_tripEOA() + ReleaseSpeedSupervision.Dbec ( Vrelease_prev ) - ReleaseSpeedSupervision.Vdelta0rsob ( Vrelease_prev ) ) &gt; Vtarget</PreCondition></PreConditions>
+<Expression>TargetSupervision.EBD ( ReleaseSpeedSupervision.d_tripEOA () + ReleaseSpeedSupervision.Dbec ( Vrelease_prev ) ) - ReleaseSpeedSupervision.Vdelta0rsob ( Vrelease_prev )</Expression>
 </Case><Case
  Name="Second case"
  Guid="40790e04-db87-45cd-b756-ba399d78f25b"
@@ -354,7 +366,7 @@ BaseTypes.MaxDistance
 <PreCondition
  Guid="866eeedb-a5c6-4e3c-8ebd-dc36fd0b41d8"
 >Available ( MA.MA )</PreCondition></PreConditions>
-<Expression>ReleaseSpeed != 0.0 AND ( MA.IsSvL ( aTarget ) OR MA.IsEOA ( aTarget) )</Expression>
+<Expression>ReleaseSpeedSupervision.ReleaseSpeed != 0.0 AND ( MA.IsSvL ( aTarget ) OR MA.IsEOA ( aTarget) )</Expression>
 </Case><Case
  Name="No MA available"
  Guid="adc1392e-9efe-4722-8768-64a0c90b707b"
@@ -386,10 +398,22 @@ BaseTypes.MaxDistance
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="d_FLOI in rear of train"
+ Guid="333ff1c9-9204-427f-b40a-4d46ba0539aa"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="42efbf38-0e4d-4b05-b310-b2b3a7140599"
+><Comment></Comment>
+d_FLOI ( Vrelease ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="Value"
  Guid="0b1798da-f019-46e0-b3b0-7e38f14c1cbd"
 >
-<Expression>ReleaseSpeedSupervision.d_FLOI ( Vrelease )</Expression>
+<Comment></Comment>
+<Expression>d_FLOI ( Vrelease )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -416,8 +440,8 @@ BaseTypes.MaxDistance
 <PreConditions>
 <PreCondition
  Guid="89ee1741-d547-4a82-847a-692db2e737da"
->MA.EndOfMovementAuthority().Location - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &gt;= 0.0</PreCondition></PreConditions>
-<Expression>MA.EndOfMovementAuthority().Location - TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
+>MA.EndOfMovementAuthority().Location - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) &gt;= 0.0</PreCondition></PreConditions>
+<Expression>MA.EndOfMovementAuthority().Location - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )</Expression>
 </Case><Case
  Name="EOA is passed"
  Guid="890f1525-e043-407f-a393-2f0ddeac1f0b"
@@ -462,16 +486,16 @@ BaseTypes.MaxDistance
 <PreConditions>
 <PreCondition
  Guid="285f2e84-9cb5-4250-a4ba-f84e839b607e"
->Vrel == BaseTypes.Speed.ComputeReleaseSpeedOnBoard</PreCondition></PreConditions>
+>Vrel == Default.BaseTypes.Speed.ComputeReleaseSpeedOnBoard</PreCondition></PreConditions>
 <Expression>REDUCE
     TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) |
-        StartRSM ( ComputeReleaseSpeed () ) &lt;= X.Location AND X.Location &lt;= d_tripEOA() OR
-        StartRSM ( ComputeReleaseSpeed () ) &lt;= X.Location + BaseTypes.LengthToDistance ( X.Length ) AND X.Location + BaseTypes.LengthToDistance ( X.Length ) &lt;= d_tripEOA() OR
-        X.Location &lt;= StartRSM ( ComputeReleaseSpeed () ) AND d_tripEOA() &lt;= X.Location + BaseTypes.LengthToDistance ( X.Length )
+        ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ComputeReleaseSpeed () ) &lt;= X.Location AND X.Location &lt;= ReleaseSpeedSupervision.d_tripEOA() OR
+        ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ComputeReleaseSpeed () ) &lt;= X.Location + Default.BaseTypes.LengthToDistance ( X.Length ) AND X.Location + Default.BaseTypes.LengthToDistance ( X.Length ) &lt;= ReleaseSpeedSupervision.d_tripEOA() OR
+        X.Location &lt;= ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ComputeReleaseSpeed () ) AND ReleaseSpeedSupervision.d_tripEOA() &lt;= X.Location + Default.BaseTypes.LengthToDistance ( X.Length )
 USING
-    BaseTypes.MinSpeed ( X1 =&gt; X.Speed, X2 =&gt; RESULT )
+    Default.BaseTypes.MinSpeed ( X1 =&gt; X.Speed, X2 =&gt; RESULT )
 INITIAL_VALUE
-    ComputeReleaseSpeed ()</Expression>
+    ReleaseSpeedSupervision.ComputeReleaseSpeed ()</Expression>
 </Case><Case
  Name="UseNV"
  Guid="473ac93a-a231-4196-ad90-c6d9f673cf56"
@@ -479,7 +503,7 @@ INITIAL_VALUE
 <PreConditions>
 <PreCondition
  Guid="a57188f2-6ae9-4e5f-8e9e-95878dfeab23"
->Vrel == BaseTypes.Speed.UseNVForReleaseSpeed</PreCondition></PreConditions>
+>Vrel == Default.BaseTypes.Speed.UseNVForReleaseSpeed</PreCondition></PreConditions>
 <Expression>NationalValues.ReleaseSpeed()</Expression>
 </Case><Case
  Name="FixedValue"
@@ -517,11 +541,11 @@ INITIAL_VALUE
 <Comment></Comment>
 <Expression>REDUCE
     TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) |
-        d_tripEOA() &lt;= X.Location AND X.Location &lt; MA.SvL().Location
+        ReleaseSpeedSupervision.d_tripEOA() &lt;= X.Location AND X.Location &lt; MA.SvL().Location
 USING
-    BaseTypes.MinSpeed ( X1 =&gt; ComputeReleaseSpeedForTarget ( X.Speed ), X2 =&gt; RESULT )
+    Default.BaseTypes.MinSpeed ( X1 =&gt; ReleaseSpeedSupervision.ComputeReleaseSpeedForTarget ( X.Speed ), X2 =&gt; RESULT )
 INITIAL_VALUE
-    BaseTypes.Speed.Infinity</Expression>
+    Default.BaseTypes.Speed.Infinity</Expression>
 </Case></Cases>
 </Function><Function
  Type="Double"
@@ -548,7 +572,7 @@ INITIAL_VALUE
 <PreConditions>
 <PreCondition
  Guid="6987e771-1b6a-40d7-86d1-6ee0972c1e4a"
->Kernel.Level.Value == Level.L1</PreCondition></PreConditions>
+>Kernel.Level.Value == Default.Level.L1</PreCondition></PreConditions>
 <Expression>1.0</Expression>
 </Case><Case
  Name="Level 2 or 3"
@@ -557,7 +581,7 @@ INITIAL_VALUE
 <PreConditions>
 <PreCondition
  Guid="c2818a11-3cd6-4d37-9f07-66a869d1737c"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Kernel.Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function></Functions>
@@ -606,8 +630,8 @@ INITIAL_VALUE
 <Actions>
 <Action
  Guid="8d371a70-ef2e-4e1b-8637-313df835dbd9"
->ReleaseSpeed &lt;- 
-ReleaseSpeedValue(
+>ReleaseSpeedSupervision.ReleaseSpeed &lt;- 
+ReleaseSpeedSupervision.ReleaseSpeedValue(
     Vrel=&gt;Default.BaseTypes.Speed.UseNVForReleaseSpeed
 )</Action></Actions>
 </RuleCondition><RuleCondition
@@ -629,7 +653,7 @@ ReleaseSpeedValue(
 <Actions>
 <Action
  Guid="bdeef7f9-b1e9-4712-8e10-b086f369f67d"
->ReleaseSpeed &lt;- ReleaseSpeedValue ( MA.MA.EndSection.Overlap.ReleaseSpeed )</Action></Actions>
+>ReleaseSpeedSupervision.ReleaseSpeed &lt;- ReleaseSpeedSupervision.ReleaseSpeedValue ( MA.MA.EndSection.Overlap.ReleaseSpeed )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="DangerPoint"
@@ -649,7 +673,7 @@ ReleaseSpeedValue(
 <Actions>
 <Action
  Guid="b92f4e34-c91d-4c82-ab5a-8de9b327c19f"
->ReleaseSpeed &lt;- ReleaseSpeedValue ( MA.MA.EndSection.DangerPoint.ReleaseSpeed )</Action></Actions>
+>ReleaseSpeedSupervision.ReleaseSpeed &lt;- ReleaseSpeedSupervision.ReleaseSpeedValue ( MA.MA.EndSection.DangerPoint.ReleaseSpeed )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="NoReleaseSpeed"
@@ -665,7 +689,7 @@ ReleaseSpeedValue(
 <Actions>
 <Action
  Guid="372aa3b8-cfb2-47c7-a29e-99cc9f9d0cd3"
->ReleaseSpeed &lt;- 0.0</Action></Actions>
+>ReleaseSpeedSupervision.ReleaseSpeed &lt;- 0.0</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -703,5 +727,6 @@ ReleaseSpeedValue(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="51c24a49-b799-4bac-b9d8-364331d8fbab"
 >
-</ReqRef></Variable></Variables>
+</ReqRef><Comment></Comment>
+</Variable></Variables>
 </NameSpace>
