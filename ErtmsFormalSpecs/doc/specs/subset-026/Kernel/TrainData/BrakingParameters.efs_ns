@@ -2545,8 +2545,7 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
 <PreConditions>
 <PreCondition
  Guid="9e40dae1-8a37-4f66-a5f0-710676b361e2"
-><Comment></Comment>
-EstimatedTrainAcceleration + Default.BaseTypes.Acceleration(Gradient) &gt;= 0.0</PreCondition></PreConditions>
+>EstimatedTrainAcceleration + Default.BaseTypes.Acceleration(Gradient) &gt;= 0.0</PreCondition></PreConditions>
 <Expression>EstimatedTrainAcceleration + Default.BaseTypes.Acceleration(Gradient)</Expression>
 </Case><Case
  Name="Negative"
@@ -3343,7 +3342,6 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b947d93d-78f5-41aa-9bcd-d0b1cd5bfbae"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="c7a43456-5326-4c4d-b89f-23b71a0240bf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -3543,7 +3541,6 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f7527eb-b3a3-43bb-8106-d66a91b84a78"
 >
-<Comment></Comment>
 </ReqRef><Comment>Computes the service brake full deceleration for given speed and distance, taking into account the track conditions having influence on the status of special brakes.</Comment>
 <Parameters>
 <Parameter
@@ -3770,7 +3767,6 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5fe9b29c-80f8-4626-af76-ab6592613d67"
 >
-<Comment></Comment>
 </ReqRef><Comment>Computes the emergency brake deceleration for given speed and distance, taking into account the track conditions having influence on the status of special brakes.</Comment>
 <Parameters>
 <Parameter
@@ -4140,7 +4136,6 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ea2a3301-9a71-4fcb-9891-b55bda6bc7fb"
 >
-<Comment></Comment>
 </ReqRef><Comment>Computes the service brake normal deceleration for given speed and distance, taking into account the track conditions having influence on the status of special brakes.</Comment>
 <Parameters>
 <Parameter
@@ -4597,7 +4592,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <Actions>
 <Action
  Guid="8ee34668-2266-41e4-84ac-2a60cd95921f"
->HandleModeChange &lt;- HandleModeChange.SystemFailure</Action></Actions>
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.SystemFailure</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

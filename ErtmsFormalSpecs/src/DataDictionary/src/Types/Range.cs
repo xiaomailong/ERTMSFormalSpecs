@@ -303,7 +303,7 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public Double getValueAsDouble(Values.IValue value)
+        private Double getValueAsDouble(Values.IValue value)
         {
             Double retVal;
 
@@ -366,8 +366,8 @@ namespace DataDictionary.Types
         {
             Values.IValue retVal = null;
 
-            left = derefEnumForArithmeticOperation(left);
-            right = derefEnumForArithmeticOperation(right);
+            left = derefEnum(left);
+            right = derefEnum(right);
 
             Values.IntValue int1 = left as Values.IntValue;
             Values.IntValue int2 = right as Values.IntValue;
@@ -379,31 +379,6 @@ namespace DataDictionary.Types
             else
             {
                 retVal = EFSSystem.IntegerType.PerformArithmericOperation(context, left, Operation, right);
-            }
-
-            return retVal;
-        }
-
-        /// <summary>
-        /// Performs the dereferencing and launches an exception if the enum cannot be used for arithmetic operations
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        private static Values.IValue derefEnumForArithmeticOperation(Values.IValue value)
-        {
-            Values.IValue retVal = value;
-
-            Constants.EnumValue enumValue = value as Constants.EnumValue;
-            if (enumValue != null)
-            {
-                if (enumValue.getForbidArithmeticOperation())
-                {
-                    throw new Exception("Cannot perform arithmetic operation with " + value.LiteralName);
-                }
-                else
-                {
-                    retVal = enumValue.Value;
-                }
             }
 
             return retVal;

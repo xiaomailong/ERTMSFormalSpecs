@@ -14,256 +14,6 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="New linking information replaces old one"
- Guid="5f7fbb82-9cb0-439c-abce-a903ef5a1bae"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Test case1"
- Guid="d0942366-4a12-41f7-91a3-1ffbe3071284"
->
-<ReqRef
- Id="d98529ca-fda7-480c-8c31-33ce08d1b140"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fdfe8743-253f-4678-9161-4764ecf9bf1f"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
- Guid="efc7dacb-4d77-4bb6-8a20-6e3fd55ab21b"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="d1567218-37a8-4a3c-ab76-a9244551c051"
->
-<Actions>
-<Action
- Guid="64d28a4e-68d4-43dd-8c74-724d1dc9aa02"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="64f3250b-e967-4f1f-98e0-983245897a2f"
->Odometry.NominalDistance &lt;- 0.0</Action><Action
- Guid="813d6313-ae9b-4c98-9f22-6eb6ab591a61"
->BTM.LRBG &lt;- EMPTY</Action><Action
- Guid="a727a771-2d3d-4bc0-b137-ce27a449463a"
->BTM.PreviousLRBGs &lt;- []</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="7b807639-dc27-4734-bfa2-1c8711696d34"
->(COUNT BTM.Linking.Linkings) == 0</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - Linking packet received"
- Guid="5d53f856-ceae-4d16-975a-7829ddb69575"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="bbc64403-eadb-4420-ae86-671efae747a3"
->
-<Actions>
-<Action
- Guid="5e65ae88-7311-405f-94c6-99010aa626e8"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;9618,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
-    Sequence1 =&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                LINKING =&gt;Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message
-                {
-                    NID_PACKET=&gt;5,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    D_LINK=&gt;3500,
-                    Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
-                    NID_BG=&gt;9620,
-Q_LINKORIENTATION=&gt;Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction,
-Q_LINKREACTION=&gt;Messages.Q_LINKREACTION.Apply_service_brake,
-Q_LOCACC=&gt;1,
-N_ITER=&gt;1,
-Sequence1 =&gt; [
-Messages.PACKET.TRACK_TO_TRAIN.LINKING.SubStructure1 {
- D_LINK=&gt;4500,
-                    Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
-                    NID_BG=&gt;9622,
-Q_LINKORIENTATION=&gt;Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction,
-Q_LINKREACTION=&gt;Messages.Q_LINKREACTION.Apply_service_brake,
-Q_LOCACC=&gt;1
-}
-]                  
-                    }
-            }
-        }
-    ]
-}</Action><Action
- Guid="90282563-247e-401c-8940-3230df020cea"
->BTM.LRBG &lt;- BTM.BaliseGroup
-{
-    NID =&gt; 9618,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position
-    {
-        OverReadingAmountOdo =&gt; 4.0,
-        Position =&gt; 2000.0,
-        UnderReadingAmountOdo =&gt; 4.0
-    }
-}</Action><Action
- Guid="5ece8d6d-5edd-476c-8cea-8dcb3a050d93"
->Odometry.NominalDistance &lt;- 3000.0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="83480082-d6a5-44eb-91e5-a31fd9e6013f"
->(COUNT BTM.Linking.Linkings) == 2</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="376625c1-2d7f-4289-ac89-fa310fbf3b45"
->(FIRST_IN BTM.Linking.Linkings).Distance == 3500.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="32e37fc4-5bfa-450e-a98a-ded68c5767a5"
->(LAST_IN BTM.Linking.Linkings).Distance == 4500.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="ccd5446e-d7c7-4349-a34c-7c5ca7fc9a07"
->(FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9620</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="ff87e43b-29f9-4878-9f35-7cea303ce6e5"
->(LAST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9622</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step3 - Another balise with linking information received"
- Guid="24da1be5-9b8d-4f70-8ae7-f8cc664bd8cd"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1 - First balise of unlinked balise group received"
- Guid="58bfd37a-b636-4e18-869c-055fd51d542a"
->
-<Actions>
-<Action
- Guid="e52824e6-64b3-4f56-a334-17f2990e831a"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;1,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;9618,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
-    Sequence1 =&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                LINKING =&gt;Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message
-                {
-                    NID_PACKET=&gt;5,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    D_LINK=&gt;1500,
-                    Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
-                    NID_BG=&gt;9620,
-Q_LINKORIENTATION=&gt;Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction,
-Q_LINKREACTION=&gt;Messages.Q_LINKREACTION.Apply_service_brake,
-Q_LOCACC=&gt;1,
-N_ITER=&gt;0                  
-                    }
-            }
-        }
-    ]
-}</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2 - Second balise of unlinked balise group received"
- Guid="47dddd21-22dc-4b53-a2ee-96d80b708b9c"
->
-<Actions>
-<Action
- Guid="6558d416-4f1b-417f-a4dd-740f05ca6c9e"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;1,
-    N_TOTAL=&gt;1,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;9618,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
-    Sequence1 =&gt; []
-}</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="ec8cb097-1878-4825-8368-a7901f0109ba"
->(COUNT BTM.Linking.Linkings) == 1</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="49e3ade1-8f51-4845-bc9d-671629bdcc83"
->(FIRST_IN BTM.Linking.Linkings).Distance == 1500.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="d5051944-2094-4bc6-89b1-5ea386bd3a62"
->(FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9620</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
  Name="Receive Linking Information"
  Guid="226579c5-8d1b-4d69-9e6c-e36fde9b3691"
 >
@@ -589,6 +339,256 @@ N_ITER=&gt;0
  Kind="Instantaneous"
  Guid="e3fc0bca-d291-4135-9962-6fcffa1af110"
 >(COUNT BTM.Linking.Linkings) == 0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="New linking information replaces old one"
+ Guid="5f7fbb82-9cb0-439c-abce-a903ef5a1bae"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Test case1"
+ Guid="d0942366-4a12-41f7-91a3-1ffbe3071284"
+>
+<ReqRef
+ Id="d98529ca-fda7-480c-8c31-33ce08d1b140"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fdfe8743-253f-4678-9161-4764ecf9bf1f"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+ Guid="efc7dacb-4d77-4bb6-8a20-6e3fd55ab21b"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d1567218-37a8-4a3c-ab76-a9244551c051"
+>
+<Actions>
+<Action
+ Guid="64d28a4e-68d4-43dd-8c74-724d1dc9aa02"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="64f3250b-e967-4f1f-98e0-983245897a2f"
+>Odometry.NominalDistance &lt;- 0.0</Action><Action
+ Guid="813d6313-ae9b-4c98-9f22-6eb6ab591a61"
+>BTM.LRBG &lt;- EMPTY</Action><Action
+ Guid="a727a771-2d3d-4bc0-b137-ce27a449463a"
+>BTM.PreviousLRBGs &lt;- []</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="7b807639-dc27-4734-bfa2-1c8711696d34"
+>(COUNT BTM.Linking.Linkings) == 0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Linking packet received"
+ Guid="5d53f856-ceae-4d16-975a-7829ddb69575"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="bbc64403-eadb-4420-ae86-671efae747a3"
+>
+<Actions>
+<Action
+ Guid="5e65ae88-7311-405f-94c6-99010aa626e8"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;9618,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LINKING =&gt;Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message
+                {
+                    NID_PACKET=&gt;5,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_LINK=&gt;3500,
+                    Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
+                    NID_BG=&gt;9620,
+Q_LINKORIENTATION=&gt;Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction,
+Q_LINKREACTION=&gt;Messages.Q_LINKREACTION.Apply_service_brake,
+Q_LOCACC=&gt;1,
+N_ITER=&gt;1,
+Sequence1 =&gt; [
+Messages.PACKET.TRACK_TO_TRAIN.LINKING.SubStructure1 {
+ D_LINK=&gt;4500,
+                    Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
+                    NID_BG=&gt;9622,
+Q_LINKORIENTATION=&gt;Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction,
+Q_LINKREACTION=&gt;Messages.Q_LINKREACTION.Apply_service_brake,
+Q_LOCACC=&gt;1
+}
+]                  
+                    }
+            }
+        }
+    ]
+}</Action><Action
+ Guid="90282563-247e-401c-8940-3230df020cea"
+>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9618,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 4.0,
+        Position =&gt; 2000.0,
+        UnderReadingAmountOdo =&gt; 4.0
+    }
+}</Action><Action
+ Guid="5ece8d6d-5edd-476c-8cea-8dcb3a050d93"
+>Odometry.NominalDistance &lt;- 3000.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="83480082-d6a5-44eb-91e5-a31fd9e6013f"
+>(COUNT BTM.Linking.Linkings) == 2</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="376625c1-2d7f-4289-ac89-fa310fbf3b45"
+>(FIRST_IN BTM.Linking.Linkings).Distance == 3500.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="32e37fc4-5bfa-450e-a98a-ded68c5767a5"
+>(LAST_IN BTM.Linking.Linkings).Distance == 4500.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ccd5446e-d7c7-4349-a34c-7c5ca7fc9a07"
+>(FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9620</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ff87e43b-29f9-4878-9f35-7cea303ce6e5"
+>(LAST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9622</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Another balise with linking information received"
+ Guid="24da1be5-9b8d-4f70-8ae7-f8cc664bd8cd"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - First balise of unlinked balise group received"
+ Guid="58bfd37a-b636-4e18-869c-055fd51d542a"
+>
+<Actions>
+<Action
+ Guid="e52824e6-64b3-4f56-a334-17f2990e831a"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;9618,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LINKING =&gt;Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message
+                {
+                    NID_PACKET=&gt;5,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_LINK=&gt;1500,
+                    Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
+                    NID_BG=&gt;9620,
+Q_LINKORIENTATION=&gt;Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction,
+Q_LINKREACTION=&gt;Messages.Q_LINKREACTION.Apply_service_brake,
+Q_LOCACC=&gt;1,
+N_ITER=&gt;0                  
+                    }
+            }
+        }
+    ]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Second balise of unlinked balise group received"
+ Guid="47dddd21-22dc-4b53-a2ee-96d80b708b9c"
+>
+<Actions>
+<Action
+ Guid="6558d416-4f1b-417f-a4dd-740f05ca6c9e"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;9618,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; []
+}</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ec8cb097-1878-4825-8368-a7901f0109ba"
+>(COUNT BTM.Linking.Linkings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="49e3ade1-8f51-4845-bc9d-671629bdcc83"
+>(FIRST_IN BTM.Linking.Linkings).Distance == 1500.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d5051944-2094-4bc6-89b1-5ea386bd3a62"
+>(FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9620</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

@@ -163,7 +163,6 @@
 </Enum><Enum
  Default="DoNotEstablish"
  X="440"
- Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3743,7 +3742,6 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 <Comment>Identifier of the RBC.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
  Y="180"
  Width="100"
  Height="50"
@@ -3808,7 +3806,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </ReqRef><Comment>Data state of the contact information.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="220"
+ X="110"
  Y="180"
  Width="100"
  Height="50"
@@ -4296,7 +4294,7 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="330"
+ X="220"
  Y="180"
  Width="100"
  Height="50"
@@ -4369,7 +4367,7 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 <Collection
  TypeName="String"
  Default="[]"
- Y="300"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4387,7 +4385,7 @@ After that, if an order to contact an Accepting RBC was received, it will be han
  MaxSize="3"
  Default="[]"
  X="110"
- Y="300"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4409,7 +4407,7 @@ After that, if an order to contact an Accepting RBC was received, it will be han
  TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
  Default="[]"
  X="220"
- Y="300"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4427,7 +4425,7 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 <Function
  Type="Boolean"
  Default=""
- Y="600"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4468,7 +4466,7 @@ Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Connected
  Type="EURORADIO.RBCStruct"
  Default=""
  X="110"
- Y="600"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4499,7 +4497,7 @@ Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Connected
  Type="Boolean"
  Default=""
  X="220"
- Y="600"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4525,7 +4523,7 @@ Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Inactive<
  Type="Boolean"
  Default=""
  X="330"
- Y="600"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4586,8 +4584,7 @@ Terminal2 != EMPTY</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- X="110"
- Y="660"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4622,8 +4619,8 @@ Terminal2 != EMPTY</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- X="220"
- Y="660"
+ X="110"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4658,8 +4655,8 @@ Terminal2.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Ex
 </Function><Function
  Type="EURORADIO.TerminalStruct"
  Default=""
- X="330"
- Y="660"
+ X="220"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4751,8 +4748,8 @@ It can only return false if there is no open session or if the last known RBC ha
 </Function><Function
  Type="EURORADIO.SystemVersionEnum"
  Default=""
- X="110"
- Y="720"
+ X="440"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4800,8 +4797,7 @@ It can only return false if there is no open session or if the last known RBC ha
 </Function><Function
  Type="Boolean"
  Default=""
- X="220"
- Y="720"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4850,8 +4846,8 @@ It can only return false if there is no open session or if the last known RBC ha
 </Function><Function
  Type="Boolean"
  Default=""
- X="330"
- Y="720"
+ X="110"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4929,8 +4925,8 @@ TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="110"
- Y="780"
+ X="330"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5024,8 +5020,8 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 </Function><Function
  Type="Boolean"
  Default=""
- X="220"
- Y="780"
+ X="440"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5060,8 +5056,7 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 </Function><Function
  Type="EURORADIO.RBCStruct"
  Default=""
- X="330"
- Y="780"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5141,8 +5136,8 @@ CurrentRBCConnection().ContactRBCOrder.ActionToPerform == ContactActionEnum.Term
 </Function><Function
  Type="EURORADIO.SafeRadioConnectionStatusEnum"
  Default=""
- X="110"
- Y="840"
+ X="220"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5190,7 +5185,7 @@ The only one case where the status to display is that of the secondary connectio
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="900"
+ Y="780"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5268,7 +5263,7 @@ The only one case where the status to display is that of the secondary connectio
 </Rule></Rules>
 </Procedure><Procedure
  X="110"
- Y="900"
+ Y="780"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5439,7 +5434,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </Rule></Rules>
 </Procedure><Procedure
  X="220"
- Y="900"
+ Y="780"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5576,7 +5571,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </Rule></Rules>
 </Procedure><Procedure
  X="330"
- Y="900"
+ Y="780"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5680,8 +5675,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="110"
- Y="960"
+ Y="840"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5864,8 +5858,8 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="220"
- Y="960"
+ X="110"
+ Y="840"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6012,8 +6006,8 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="330"
- Y="960"
+ X="220"
+ Y="840"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -7720,8 +7714,8 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="110"
- Y="1020"
+ X="440"
+ Y="840"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7799,8 +7793,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="220"
- Y="1020"
+ Y="900"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7890,8 +7883,8 @@ NOT
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="330"
- Y="1020"
+ X="110"
+ Y="900"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8079,8 +8072,8 @@ NOT
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="110"
- Y="1080"
+ X="330"
+ Y="900"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -8096,8 +8089,8 @@ NOT
 >
 </Parameter></Parameters>
 </Procedure><Procedure
- X="220"
- Y="1080"
+ X="440"
+ Y="900"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8145,7 +8138,7 @@ NOT
  Type="Default.BaseTypes.Time"
  DefaultValue="15.0"
  VariableMode="Constant"
- Y="360"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8163,7 +8156,7 @@ NOT
  DefaultValue="3"
  VariableMode="Constant"
  X="110"
- Y="360"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8180,7 +8173,7 @@ NOT
  Type="EURORADIO.RIUStruct"
  VariableMode="InOut"
  X="220"
- Y="360"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8198,7 +8191,7 @@ NOT
  DefaultValue=""
  VariableMode="Internal"
  X="330"
- Y="360"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8253,8 +8246,7 @@ NOT
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
- X="110"
- Y="420"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8271,8 +8263,8 @@ NOT
  Type="EURORADIO.AvailableNetworksStruct"
  DefaultValue=""
  VariableMode="InOut"
- X="220"
- Y="420"
+ X="110"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8288,8 +8280,8 @@ NOT
 </Variable><Variable
  Type="EURORADIO.TerminalStruct"
  VariableMode="InOut"
- X="330"
- Y="420"
+ X="220"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8323,8 +8315,8 @@ NOT
  Type="ContactOptionEnum"
  DefaultValue="ContactOptionEnum.ContactLastKnownRBC"
  VariableMode="Internal"
- X="110"
- Y="480"
+ X="440"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8351,8 +8343,7 @@ NOT
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
- X="220"
- Y="480"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8374,8 +8365,8 @@ NOT
  Type="SystemVersionsCol"
  DefaultValue="[SystemVersionEnum.Version2_0]"
  VariableMode="Internal"
- X="330"
- Y="480"
+ X="110"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8420,8 +8411,8 @@ NOT
  Type="Default.BaseTypes.Time"
  DefaultValue="45.0"
  VariableMode="Constant"
- X="110"
- Y="540"
+ X="330"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8443,8 +8434,8 @@ NOT
  Type="IncomingMessagesCol"
  DefaultValue="[]"
  VariableMode="Internal"
- X="220"
- Y="540"
+ X="440"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"

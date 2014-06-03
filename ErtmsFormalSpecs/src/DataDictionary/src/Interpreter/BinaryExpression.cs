@@ -332,7 +332,7 @@ namespace DataDictionary.Interpreter
             }
             catch (Exception e)
             {
-                AddErrorAndExplain("Cannot evaluate " + Left + ". Reason is " + e.Message, context);
+                AddError("Cannot evaluate " + Left + ". Reason is " + e.Message);
                 throw new Exception("inner evaluation failed");
             }
 
@@ -519,7 +519,7 @@ namespace DataDictionary.Interpreter
                             break;
 
                         case OPERATOR.IN:
-                            {                
+                            {
                                 rightValue = Right.GetValue(context);
                                 if (rightValue != null)
                                 {
@@ -528,10 +528,6 @@ namespace DataDictionary.Interpreter
                                 else
                                 {
                                     AddError("Error while computing value for " + Right.ToString());
-                                }
-                                if (Left.Name.Contains("EddyCurrentBrakeInterface"))
-                                {
-                                //    System.Diagnostics.Debugger.Break();
                                 }
                             }
                             break;
@@ -558,7 +554,7 @@ namespace DataDictionary.Interpreter
             }
             catch (Exception e)
             {
-                AddErrorAndExplain("Cannot evaluate " + Right + ". Reason is " + e.Message, context);
+                AddError("Cannot evaluate " + Right + ". Reason is " + e.Message);
                 throw new Exception("inner evaluation failed");
             }
             finally

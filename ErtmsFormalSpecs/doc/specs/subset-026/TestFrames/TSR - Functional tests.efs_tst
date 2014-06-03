@@ -14,177 +14,6 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Delete TSR when Orientation is changed"
- Guid="9c91950c-bc0b-4fa4-8822-289416d4d403"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Delete TSR when orientation is changed"
- Guid="ce250e9b-0134-4f29-9bd9-a89176a8957a"
->
-<ReqRef
- Id="291bf774-5d2e-4264-861b-84afd9fb4185"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="790c4df5-dda2-48a7-be08-fdbbbf96858b"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
- Guid="04eefd9a-ff03-4a79-9368-4f0582a1294f"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="5ee9985e-09ea-4210-afe4-fb4c120ecfa2"
->
-<Actions>
-<Action
- Guid="2aa1e2d4-b9f1-4f46-bae6-c77a9e4b7153"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - Provide TSR"
- Guid="b048779e-16b4-43c9-ad4b-3b3ad21b2694"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="dc872445-2f4e-49c2-87f2-bf0bc27436e5"
->
-<Actions>
-<Action
- Guid="9ce2b8e4-7fe0-4dbe-96b9-42c4bdc76a09"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
-                {
-                    NID_PACKET=&gt;8,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    D_TSR =&gt; 4000,
-                    L_TSR =&gt; 1500,
-                    NID_TSR =&gt; 1515,
-                    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element ,
-                    V_TSR =&gt; 5
-                }
-            }
-        }
-    ]
-}</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step3 - Data check"
- Guid="ae526998-cde0-4bce-b57d-105d65acba63"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="cd12a390-9c3d-4751-9592-954f6d1cbc84"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="846f5d72-b2be-479f-b4da-d83e2620a19d"
->Kernel.TSR.TSRs != []</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="07fa8dd9-8282-47e0-859f-287e2c20813e"
->THERE_IS_IN Kernel.TSR.TSRs | X.Id == 1515</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step4 Change Orientation -&gt; Mode RV"
- Guid="882ba6a3-5dff-4350-b739-6c4685b1dc38"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="a7e297ee-58d7-4e6c-877f-7d0d8c1c68e9"
->
-<Actions>
-<Action
- Guid="44f1ca78-8b36-4159-b1b4-815be97d0e44"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step5 Data check"
- Guid="890b1a39-c11a-4522-b44f-3e2ac6b7f8db"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="be1a9a3a-5538-479d-ac8e-a3a09f2eff64"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="ccf0ddbf-1096-4dfd-b1ab-b80e791e4739"
->Kernel.TSR.TSRs == []</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
  Name="Handle several TSRs"
  Guid="4aa44107-861c-425e-b54f-6cc05c821648"
 >
@@ -843,6 +672,525 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min 
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
+ Name="TSR depending on train length"
+ Guid="0dc08e59-a3e3-427f-8849-75294fae0a10"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="TSR depending on train length"
+ Guid="ea9c79bf-fcd0-4947-a3ac-9211c3fdb95e"
+>
+<ReqRef
+ Id="3dd078b7-9ad0-407d-a57a-510c8a7213ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="10399232-e6d6-44f0-b05f-ec4aec3501bb"
+>
+</ReqRef><ReqRef
+ Id="49595724-3359-4536-a90e-542bc90ffc8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="62843834-3e43-4a3d-bf32-d886849f9a85"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+ Guid="ef0a0dfc-fff6-4a88-8864-abca2706c611"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="1a552bf7-c813-4382-8d90-6b249a2bd109"
+>
+<Actions>
+<Action
+ Guid="f2123c43-bf25-4ce4-933d-bade8ad78278"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Provide TSR"
+ Guid="fe760e56-c7ee-4618-810e-47c4a8776f22"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="5ffe5fae-45c5-4383-8866-1a2011f600de"
+>
+<Actions>
+<Action
+ Guid="5889be2c-a884-48d9-9c5d-2cd234b08248"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
+                {
+                    NID_PACKET=&gt;8,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_TSR =&gt; 4000,
+                    L_TSR =&gt; 1500,
+                    NID_TSR =&gt; 1515,
+                    Q_FRONT =&gt;Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element ,
+                    V_TSR =&gt; 5
+                }
+            }
+        }
+    ]
+}</Action><Action
+ Guid="6651ee7c-9184-42c3-ac16-99c1733ffe82"
+>Odometry.NominalDistance &lt;- 2700.0</Action><Action
+ Guid="2b298f20-a339-4b70-b5f2-eeca0d359d61"
+>BTM.LRBG&lt;- BTM.BaliseGroup
+{
+    NID=&gt;9616,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 2.0,
+        Position =&gt; 2000.0,
+        UnderReadingAmountOdo =&gt; 1.0
+    }
+}</Action><Action
+ Guid="b6fd6292-b81c-4c1b-a57c-44040a3fad73"
+>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 150.0</Action><Action
+ Guid="158f9fed-8235-4e31-a375-3951c9e1f9d5"
+>Kernel.TSR.TSRs &lt;- []</Action><Action
+ Guid="1a073c75-9166-437b-b8c1-bb5b9914c0fc"
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Check TSR length"
+ Guid="69c1838f-6faa-4fab-a42b-ffe3e6c0915b"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="9f82841b-c626-4208-bac9-572447b51b16"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="a94a4c05-ecb6-4c9f-9796-54c4d5dffda2"
+>Kernel.TSR.SpeedRestrictions ( 3000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="cb6dde0c-f0f0-4f54-906e-dd82c5725f6f"
+>Kernel.TSR.SpeedRestrictions ( 4000.0 ) == 25.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="d023dc5c-e165-4d91-a4ff-d722a1c7a90b"
+>Kernel.TSR.SpeedRestrictions ( 5499.9 + 150.0 ) == 25.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="4edc63e1-1644-4553-9a0e-2ebdcd9e2da0"
+>Kernel.TSR.SpeedRestrictions ( 5500.0 + 150.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Delete TSR when Orientation is changed"
+ Guid="9c91950c-bc0b-4fa4-8822-289416d4d403"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Delete TSR when orientation is changed"
+ Guid="ce250e9b-0134-4f29-9bd9-a89176a8957a"
+>
+<ReqRef
+ Id="291bf774-5d2e-4264-861b-84afd9fb4185"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="790c4df5-dda2-48a7-be08-fdbbbf96858b"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+ Guid="04eefd9a-ff03-4a79-9368-4f0582a1294f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="5ee9985e-09ea-4210-afe4-fb4c120ecfa2"
+>
+<Actions>
+<Action
+ Guid="2aa1e2d4-b9f1-4f46-bae6-c77a9e4b7153"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Provide TSR"
+ Guid="b048779e-16b4-43c9-ad4b-3b3ad21b2694"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="dc872445-2f4e-49c2-87f2-bf0bc27436e5"
+>
+<Actions>
+<Action
+ Guid="9ce2b8e4-7fe0-4dbe-96b9-42c4bdc76a09"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
+                {
+                    NID_PACKET=&gt;8,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_TSR =&gt; 4000,
+                    L_TSR =&gt; 1500,
+                    NID_TSR =&gt; 1515,
+                    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element ,
+                    V_TSR =&gt; 5
+                }
+            }
+        }
+    ]
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Data check"
+ Guid="ae526998-cde0-4bce-b57d-105d65acba63"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="cd12a390-9c3d-4751-9592-954f6d1cbc84"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="846f5d72-b2be-479f-b4da-d83e2620a19d"
+>Kernel.TSR.TSRs != []</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="07fa8dd9-8282-47e0-859f-287e2c20813e"
+>THERE_IS_IN Kernel.TSR.TSRs | X.Id == 1515</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 Change Orientation -&gt; Mode RV"
+ Guid="882ba6a3-5dff-4350-b739-6c4685b1dc38"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="a7e297ee-58d7-4e6c-877f-7d0d8c1c68e9"
+>
+<Actions>
+<Action
+ Guid="44f1ca78-8b36-4159-b1b4-815be97d0e44"
+>Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 Data check"
+ Guid="890b1a39-c11a-4522-b44f-3e2ac6b7f8db"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="be1a9a3a-5538-479d-ac8e-a3a09f2eff64"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ccf0ddbf-1096-4dfd-b1ab-b80e791e4739"
+>Kernel.TSR.TSRs == []</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="TSR shall not replace another with same identity"
+ Guid="721a0341-5291-440b-b669-ce3d23d9bd95"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TSR shall not replace another with same identity"
+ Guid="7ed50794-e6ee-420e-b863-88191744dae1"
+>
+<ReqRef
+ Id="f7e20aa8-abb8-4da2-bb20-5ff57e4a56b9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="247f2df7-6172-4ba2-b5b3-2c23e45417db"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+ Guid="c3766e46-e8ab-4dab-9bf8-af1def32ae34"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="5d8805b8-9cab-401f-ab93-a06257c1c68c"
+>
+<Actions>
+<Action
+ Guid="da6f5fd1-9730-4bdb-8f3a-557df0db3815"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Provide TSR"
+ Guid="24d65018-122c-46c0-88f3-f87e9b3e9437"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="e723d7fd-7704-4205-a14d-78027ed59124"
+>
+<Actions>
+<Action
+ Guid="9b165abc-b71a-4d49-a9b9-f67ccf071d92"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
+                {
+                    NID_PACKET=&gt;8,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_TSR =&gt; 4000,
+                    L_TSR =&gt; 1500,
+                    NID_TSR =&gt; 1515,
+                    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element ,
+                    V_TSR =&gt; 5
+                }
+            }
+        }
+    ]
+}</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="393e4725-c1ca-46d8-b1be-5d2a80df358b"
+>Kernel.TSR.TSRs != []</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Provide a New TSR with different identity"
+ Guid="162f1099-2262-4f8b-8a59-b54e273064f7"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="5cd5d3c7-097b-44f6-aded-1f3ff0693a43"
+>
+<Actions>
+<Action
+ Guid="3e531cab-559f-497f-ab04-9b83b29dec2c"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
+                {
+                    NID_PACKET=&gt;8,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_TSR =&gt; 3000,
+                    L_TSR =&gt; 1000,
+                    NID_TSR =&gt; 1516,
+                    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element ,
+                    V_TSR =&gt; 5
+                }
+            }
+        }
+    ]
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - Data check"
+ Guid="2d378678-4cb0-4865-8ab5-21c2b39bfe5a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="678bab27-5860-4c90-a764-87e6b68cb36d"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="45fbee06-7cf8-4de6-a515-fc68760b7d15"
+>Kernel.TSR.TSRs != []</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="60d605f9-aec2-4265-8505-7f6e5a69acda"
+>THERE_IS_IN Kernel.TSR.TSRs | X.Id == 1515</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="bd528437-b96f-45eb-a5b6-1280c721ac97"
+>THERE_IS_IN Kernel.TSR.TSRs | X.Id == 1516</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
  Name="New TSR shall replaced old TSR except if non revocable"
  Guid="56dbe0d7-8c8d-4d4f-9f47-f6fb5b269a0c"
 >
@@ -1136,354 +1484,6 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min 
  DeadLine="1"
  Guid="4c773843-0b70-49db-9745-fcaaf775c9ab"
 >(COUNT Kernel.TSR.TSRs) == 3</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="TSR depending on train length"
- Guid="0dc08e59-a3e3-427f-8849-75294fae0a10"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="TSR depending on train length"
- Guid="ea9c79bf-fcd0-4947-a3ac-9211c3fdb95e"
->
-<ReqRef
- Id="3dd078b7-9ad0-407d-a57a-510c8a7213ad"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="10399232-e6d6-44f0-b05f-ec4aec3501bb"
->
-</ReqRef><ReqRef
- Id="49595724-3359-4536-a90e-542bc90ffc8e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="62843834-3e43-4a3d-bf32-d886849f9a85"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
- Guid="ef0a0dfc-fff6-4a88-8864-abca2706c611"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="1a552bf7-c813-4382-8d90-6b249a2bd109"
->
-<Actions>
-<Action
- Guid="f2123c43-bf25-4ce4-933d-bade8ad78278"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - Provide TSR"
- Guid="fe760e56-c7ee-4618-810e-47c4a8776f22"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="5ffe5fae-45c5-4383-8866-1a2011f600de"
->
-<Actions>
-<Action
- Guid="5889be2c-a884-48d9-9c5d-2cd234b08248"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
-                {
-                    NID_PACKET=&gt;8,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    D_TSR =&gt; 4000,
-                    L_TSR =&gt; 1500,
-                    NID_TSR =&gt; 1515,
-                    Q_FRONT =&gt;Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element ,
-                    V_TSR =&gt; 5
-                }
-            }
-        }
-    ]
-}</Action><Action
- Guid="6651ee7c-9184-42c3-ac16-99c1733ffe82"
->Odometry.NominalDistance &lt;- 2700.0</Action><Action
- Guid="2b298f20-a339-4b70-b5f2-eeca0d359d61"
->BTM.LRBG&lt;- BTM.BaliseGroup
-{
-    NID=&gt;9616,
-    Orientation=&gt;Orientation.Nominal,
-    Position=&gt;BTM.Position
-    {
-        OverReadingAmountOdo =&gt; 2.0,
-        Position =&gt; 2000.0,
-        UnderReadingAmountOdo =&gt; 1.0
-    }
-}</Action><Action
- Guid="b6fd6292-b81c-4c1b-a57c-44040a3fad73"
->Kernel.TrainData.TrainData.Value.TrainLength &lt;- 150.0</Action><Action
- Guid="158f9fed-8235-4e31-a375-3951c9e1f9d5"
->Kernel.TSR.TSRs &lt;- []</Action><Action
- Guid="1a073c75-9166-437b-b8c1-bb5b9914c0fc"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step3 - Check TSR length"
- Guid="69c1838f-6faa-4fab-a42b-ffe3e6c0915b"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="9f82841b-c626-4208-bac9-572447b51b16"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="a94a4c05-ecb6-4c9f-9796-54c4d5dffda2"
->Kernel.TSR.SpeedRestrictions ( 3000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
- Kind="Instantaneous"
- Guid="cb6dde0c-f0f0-4f54-906e-dd82c5725f6f"
->Kernel.TSR.SpeedRestrictions ( 4000.0 ) == 25.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="d023dc5c-e165-4d91-a4ff-d722a1c7a90b"
->Kernel.TSR.SpeedRestrictions ( 5499.9 + 150.0 ) == 25.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="4edc63e1-1644-4553-9a0e-2ebdcd9e2da0"
->Kernel.TSR.SpeedRestrictions ( 5500.0 + 150.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="TSR shall not replace another with same identity"
- Guid="721a0341-5291-440b-b669-ce3d23d9bd95"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TSR shall not replace another with same identity"
- Guid="7ed50794-e6ee-420e-b863-88191744dae1"
->
-<ReqRef
- Id="f7e20aa8-abb8-4da2-bb20-5ff57e4a56b9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="247f2df7-6172-4ba2-b5b3-2c23e45417db"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
- Guid="c3766e46-e8ab-4dab-9bf8-af1def32ae34"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="5d8805b8-9cab-401f-ab93-a06257c1c68c"
->
-<Actions>
-<Action
- Guid="da6f5fd1-9730-4bdb-8f3a-557df0db3815"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - Provide TSR"
- Guid="24d65018-122c-46c0-88f3-f87e9b3e9437"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="e723d7fd-7704-4205-a14d-78027ed59124"
->
-<Actions>
-<Action
- Guid="9b165abc-b71a-4d49-a9b9-f67ccf071d92"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
-                {
-                    NID_PACKET=&gt;8,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    D_TSR =&gt; 4000,
-                    L_TSR =&gt; 1500,
-                    NID_TSR =&gt; 1515,
-                    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element ,
-                    V_TSR =&gt; 5
-                }
-            }
-        }
-    ]
-}</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="393e4725-c1ca-46d8-b1be-5d2a80df358b"
->Kernel.TSR.TSRs != []</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step3 - Provide a New TSR with different identity"
- Guid="162f1099-2262-4f8b-8a59-b54e273064f7"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="5cd5d3c7-097b-44f6-aded-1f3ff0693a43"
->
-<Actions>
-<Action
- Guid="3e531cab-559f-497f-ab04-9b83b29dec2c"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
-                {
-                    NID_PACKET=&gt;8,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    D_TSR =&gt; 3000,
-                    L_TSR =&gt; 1000,
-                    NID_TSR =&gt; 1516,
-                    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element ,
-                    V_TSR =&gt; 5
-                }
-            }
-        }
-    ]
-}</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step4 - Data check"
- Guid="2d378678-4cb0-4865-8ab5-21c2b39bfe5a"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="678bab27-5860-4c90-a764-87e6b68cb36d"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="45fbee06-7cf8-4de6-a515-fc68760b7d15"
->Kernel.TSR.TSRs != []</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="60d605f9-aec2-4265-8505-7f6e5a69acda"
->THERE_IS_IN Kernel.TSR.TSRs | X.Id == 1515</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="bd528437-b96f-45eb-a5b6-1280c721ac97"
->THERE_IS_IN Kernel.TSR.TSRs | X.Id == 1516</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

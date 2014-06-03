@@ -304,7 +304,7 @@ namespace DataDictionary.Rules
                 }
                 catch (Exception e)
                 {
-                    preCondition.Expression.AddErrorAndExplain(e.Message, context);
+                    preCondition.AddError(e.Message);
                     retVal = false;
                     break;
                 }

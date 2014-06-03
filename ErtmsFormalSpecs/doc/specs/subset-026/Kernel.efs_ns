@@ -7,7 +7,6 @@
  Name="Kernel"
  Guid="838d10c3-e56e-4b01-83ac-4480aa6fb8b8"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="ConfidenceInterval"
@@ -3623,7 +3622,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D2"
  Guid="b7f45c15-92a0-4ebd-8b8f-d50275cb30fa"
 >
-<Comment></Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -6856,7 +6854,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="d367c039-b4a7-42a3-a80f-a18eed86e4d4"
->HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action><Action
+>Kernel.HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action><Action
  Guid="180ce797-b671-4585-a52f-426f2fa4056b"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="c9cabf9b-e4f8-4ebb-ace5-dbab095ab111"
@@ -6998,7 +6996,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="7ddbbfa8-8c2a-423e-982b-b4feec5a94ae"
->HandleModeChange &lt;- HandleModeChange.TrainTrip.S160</Action></Actions>
+>Kernel.HandleModeChange &lt;- HandleModeChange.TrainTrip.S160</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="E175"
@@ -7033,7 +7031,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="6f1a6f0a-0a50-49dc-a9c6-9024364d3bd2"
->HandleModeChange &lt;- HandleModeChange.TrainTrip.S170</Action></Actions>
+>Kernel.HandleModeChange &lt;- HandleModeChange.TrainTrip.S170</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -9709,8 +9707,7 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 <Actions>
 <Action
  Guid="f58ff8d3-2659-4992-92c1-4aa6cfb46808"
-><Comment></Comment>
-SpeedAndDistanceMonitoring.UpdateMonitoring()</Action></Actions>
+>SpeedAndDistanceMonitoring.UpdateMonitoring()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9819,7 +9816,6 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Train position"
  Guid="f56351d1-ad26-469d-a848-02640e64e865"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9873,7 +9869,6 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Train data"
  Guid="5e656b5e-7ed2-486d-996f-eaadfee75e20"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9914,7 +9909,6 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Train integrity"
  Guid="4f1244da-71cc-4d18-8bcf-52621d1eff4b"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9935,7 +9929,6 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Power on"
  Guid="47ba31e2-ec3f-4faf-92d8-aea5dca9da87"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -10615,8 +10608,7 @@ Kernel.EmergencyStops</Action></Actions>
 <Actions>
 <Action
  Guid="4d92d3d4-cacc-45f7-affb-7dd10a2b80ed"
-><Comment></Comment>
-HandleInputs()</Action></Actions>
+>HandleInputs()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"

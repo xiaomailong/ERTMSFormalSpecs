@@ -47,20 +47,9 @@
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="EBD below Vtarget for all distances"
- Guid="6c7181e3-ecff-414d-a20b-6074194a30c9"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="3434c69b-a099-4ad1-96c7-f015a3944df4"
->DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget + f41 ( Vtarget ) ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
-</Case><Case
  Name="Value"
  Guid="372b9a78-c790-4590-90ae-5fc9ed1a311e"
 >
-<Comment></Comment>
 <Expression>DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget + f41 ( Vtarget ) ) - ( Vtarget + f41 (Vtarget ) ) * ( T_berem() + T_traction() )</Expression>
 </Case></Cases>
 </Function><Function
@@ -78,8 +67,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bef57f63-a50b-48c6-a773-b4439f91f65b"
 >
-</ReqRef><Comment></Comment>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vtarget"
@@ -88,26 +76,14 @@
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="d_EBI unknown"
- Guid="d254c6da-b9a9-4862-b387-c94a8bb7cde2"
->
-<PreConditions>
-<PreCondition
- Guid="764c853d-bbf9-45f0-a869-80386fec93cf"
->NationalValues.ComputationOfGUIIsEnabled()</PreCondition><PreCondition
- Guid="cc1599c3-2c40-41fa-97c8-cf82b8972aef"
->d_EBI ( Vtarget ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
-</Case><Case
  Name="Value"
  Guid="7e0f93ea-6373-4564-a9fc-832150d2356b"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6860da27-cc47-40c6-ba21-60e0797f07ba"
 >NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>d_EBI ( Vtarget ) - Vtarget * ( T_driver + T_bs2 )</Expression>
+<Expression>GUI.d_EBI ( Vtarget ) - Vtarget * ( T_driver + T_bs2 )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -146,9 +122,9 @@ TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrict
 <Expression>(REDUCE
     TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction )
  USING  
-    MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; TargetSupervision.GUI.TargetSpeedRestriction( aTarget =&gt; X, Distance =&gt; d ), 
+    MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; TargetSpeedRestriction( aTarget =&gt; X, Distance =&gt; d ), 
                   Second =&gt; RESULT )
-INITIAL_VALUE Default.BaseTypes.MaxSpeedFunction) (Distance)</Expression>
+INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Case><Case
  Name="No targets"
  Guid="e5d6692f-cc2b-4d90-be1b-064439024aa0"
@@ -192,21 +168,10 @@ INITIAL_VALUE Default.BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Guid="bdcd4039-f786-429f-ba41-8e8ba5680349"
 >aTarget.Location &lt;= Distance</PreCondition><PreCondition
  Guid="52ef9e5b-a4ae-4429-a4ca-7166927e82cf"
->Distance &lt; aTarget.Location + Default.BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition><PreCondition
+>Distance &lt; aTarget.Location + BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition><PreCondition
  Guid="4f4aff81-9edd-42ef-a1e4-c1e421aac841"
 >MA.IsSvL ( aTarget )</PreCondition></PreConditions>
 <Expression>aTarget.Speed</Expression>
-</Case><Case
- Name="Durint target (other), d_EBI unknown"
- Guid="4d47b2be-8910-4dc5-b6ca-0f57c6c55358"
->
-<PreConditions>
-<PreCondition
- Guid="ef6cdb6b-f37f-499c-b0d3-b72adacf933f"
->Distance &lt; aTarget.Location + Default.BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition><PreCondition
- Guid="004dbb9f-6ef5-4a6f-862d-aa54a26cbc9a"
->d_P ( aTarget.Speed) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
-<Expression>0.0</Expression>
 </Case><Case
  Name="During target (other)"
  Guid="f7e71a99-335d-4fb6-a47a-5ef27931d198"
@@ -214,9 +179,9 @@ INITIAL_VALUE Default.BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <PreConditions>
 <PreCondition
  Guid="2a171c82-b995-4704-b3ec-b1b9353cbc2d"
->Distance &lt; aTarget.Location + Default.BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition><PreCondition
+>Distance &lt; aTarget.Location + BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition><PreCondition
  Guid="e1eb0537-a61d-41fb-96e6-629c3dfd32d6"
->d_P ( aTarget.Speed ) &lt;= Distance</PreCondition></PreConditions>
+>GUI.d_P ( aTarget.Speed ) &lt;= Distance</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="Outside"

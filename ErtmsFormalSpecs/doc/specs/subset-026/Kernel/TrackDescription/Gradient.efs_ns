@@ -14,8 +14,6 @@
  MaxValue="10"
  Precision="DoublePrecision"
  Default="0.0"
- Width="100"
- Height="50"
  Implemented="TRUE"
  Name="CorrectionFactor"
  Guid="ddba636f-074c-43be-b790-adc129a91d83"
@@ -29,9 +27,6 @@
 <Structures>
 <Structure
  Default=""
- Y="60"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="GradientInfo"
@@ -57,10 +52,6 @@
 >
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="60"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DefaultGradientForTSR"
@@ -77,10 +68,6 @@
 >
 </StructureElement></Structure><Structure
  Default=""
- X="220"
- Y="60"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CorFactValue"
@@ -108,10 +95,6 @@
 >
 </StructureElement></Structure><Structure
  Default=""
- X="330"
- Y="60"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CorFact"
@@ -179,9 +162,6 @@
  TypeName="Kernel.TrackDescription.Gradient.GradientInfo"
  MaxSize="50"
  Default="[]"
- Y="120"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Gradients"
@@ -197,9 +177,6 @@
 <Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- Y="300"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="GradientProfileWithDefaultValue"
@@ -237,10 +214,6 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="110"
- Y="300"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="GradientEnd"
@@ -290,10 +263,6 @@ INITIAL_VALUE
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- X="220"
- Y="300"
- Width="100"
- Height="50"
  Implemented="TRUE"
  Name="GradientInfoProfile_NonCompensated"
  Guid="fe442e63-2182-4938-b9f1-19a8cd772e42"
@@ -355,10 +324,6 @@ Outside the distances provided by the gradient, the gradient value is defined as
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- X="330"
- Y="300"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CreateGradient"
@@ -429,10 +394,6 @@ Outside the distances provided by the gradient, the gradient value is defined as
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="440"
- Y="300"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AbsoluteDistance"
@@ -470,9 +431,6 @@ USING
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- Y="360"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CompensateGradientWithRotatingMass"
@@ -561,10 +519,6 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
- X="110"
- Y="360"
- Width="100"
- Height="50"
  Implemented="TRUE"
  Name="A_gradient"
  Guid="d5c5b564-eea9-4148-93ea-4ffed87b2929"
@@ -617,10 +571,6 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- X="220"
- Y="360"
- Width="100"
- Height="50"
  Implemented="TRUE"
  Name="GradientInfoProfileSummary_NonCompensated"
  Guid="7b37d34e-061c-4bdf-86dc-3a39188e50c3"
@@ -655,10 +605,6 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- X="330"
- Y="360"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="GradientProfile"
@@ -709,10 +655,6 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- X="440"
- Y="360"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="GradientInfoProfile"
@@ -778,8 +720,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <PreConditions>
 <PreCondition
  Guid="55d1dd43-8bdd-4519-b0f6-3ff74b3c4c3c"
-><Comment></Comment>
-Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( TrainLength )</PreCondition></PreConditions>
+>Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( TrainLength )</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient.Indefinite</Expression>
 </Case><Case
  Name="Within gradient info"
@@ -790,9 +731,6 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- Y="420"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="GradientInfoProfileSummary"
@@ -823,10 +761,6 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- X="110"
- Y="420"
- Width="100"
- Height="50"
  Implemented="TRUE"
  Name="GradientProfile_NonCompensated"
  Guid="a3728098-b4c0-49c0-9ded-4ec3484e433b"
@@ -902,10 +836,6 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
 </Function><Function
  Type="TrackDescription.Gradient.CorrectionFactor"
  Default=""
- X="220"
- Y="420"
- Width="100"
- Height="50"
  Implemented="TRUE"
  Name="CorrectionFactorFunction"
  Guid="7de99599-e199-4386-ab35-d0718105e0f9"
@@ -991,10 +921,6 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
 </Function><Function
  Type="TrackDescription.Gradient.CorrectionFactor"
  Default=""
- X="330"
- Y="420"
- Width="100"
- Height="50"
  Implemented="TRUE"
  Name="KnPlus"
  Guid="8042f812-5300-4cd0-bf08-5d04c9348522"
@@ -1022,10 +948,6 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
 </Function><Function
  Type="TrackDescription.Gradient.CorrectionFactor"
  Default=""
- X="440"
- Y="420"
- Width="100"
- Height="50"
  Implemented="TRUE"
  Name="KnMin"
  Guid="51d26fca-6603-4fe9-8336-9e3da9ce5449"
@@ -1053,9 +975,6 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="540"
- Width="100"
- Height="50"
  Implemented="TRUE"
  Name="ProfileReceived"
  Guid="86fab488-8ba2-4158-839e-28fbba11aaf2"
@@ -1186,10 +1105,6 @@ ON Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="110"
- Y="540"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="StoreSingleProfileInfo"
@@ -1227,10 +1142,6 @@ ON Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="220"
- Y="540"
- Width="100"
- Height="50"
  Implemented="TRUE"
  Name="DefaultGradientForTSRReceived"
  Guid="e6fa18d1-c91a-40a8-894e-c721c95a86aa"
@@ -1290,9 +1201,6 @@ ON Packet.Sequence1</Action></Actions>
  Type="Gradients"
  DefaultValue="[]"
  VariableMode="Internal"
- Y="180"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Gradients"
@@ -1318,10 +1226,6 @@ ON Packet.Sequence1</Action></Actions>
  Type="Default.Percentage"
  DefaultValue="15.0"
  VariableMode="Internal"
- X="110"
- Y="180"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_rotating_max"
@@ -1347,10 +1251,6 @@ ON Packet.Sequence1</Action></Actions>
  Type="Default.Percentage"
  DefaultValue="2.0"
  VariableMode="Internal"
- X="220"
- Y="180"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="M_rotating_min"
@@ -1376,10 +1276,6 @@ ON Packet.Sequence1</Action></Actions>
  Type="Kernel.TrackDescription.Gradient.DefaultGradientForTSR"
  DefaultValue="EMPTY"
  VariableMode="Internal"
- X="330"
- Y="180"
- Width="100"
- Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DefaultGradientForTSR"
@@ -1395,10 +1291,6 @@ ON Packet.Sequence1</Action></Actions>
  Type="Kernel.TrackDescription.Gradient.CorFact"
  DefaultValue=""
  VariableMode="Internal"
- X="440"
- Y="180"
- Width="100"
- Height="50"
  Implemented="TRUE"
  Name="KnMin"
  Guid="2d457264-c39a-4b3c-beea-1803ea25aac3"
@@ -1419,9 +1311,6 @@ ON Packet.Sequence1</Action></Actions>
  Type="Kernel.TrackDescription.Gradient.CorFact"
  DefaultValue=""
  VariableMode="Internal"
- Y="240"
- Width="100"
- Height="50"
  Implemented="TRUE"
  Name="KnPlus"
  Guid="11db2b54-a7ac-42e4-a535-0156f8b2de59"
