@@ -54,6 +54,11 @@ namespace GUI.IPCInterface
         private Dictionary<Step, Mutex> StepAccess { get; set; }
 
         /// <summary>
+        /// Mutual exclusion for accessing EFS structures
+        /// </summary>
+        private Mutex EFSAccess { get; set; }
+
+        /// <summary>
         /// Keeps track of each connection status
         /// </summary>
         private class ConnectionStatus
@@ -140,6 +145,8 @@ namespace GUI.IPCInterface
 
             StepAccess = new Dictionary<Step, Mutex>();
             LaunchRunnerSynchronizer = new LaunchRunner(this, 10);
+
+            EFSAccess = new Mutex(false, "EFS access");
         }
 
         /// <summary>
@@ -173,12 +180,16 @@ namespace GUI.IPCInterface
         /// <param name="keepEventCount">The number of events that should be kept in memory</param>
         public int Connect(bool explain, bool logEvents, int cycleDuration, int keepEventCount)
         {
+            EFSAccess.WaitOne();
+
             int clientId = AddClient();
 
             Explain = explain;
             LogEvents = logEvents;
             CycleDuration = cycleDuration;
             KeepEventCount = keepEventCount;
+
+            EFSAccess.ReleaseMutex();
 
             return clientId;
         }
@@ -195,10 +206,8 @@ namespace GUI.IPCInterface
             }
             else
             {
-                if (!Connections[clientId].Active)
-                {
-                    throw new FaultException<EFSServiceFault>(new EFSServiceFault("Client connection has been closed by server"));
-                }
+                // The client is alive again. Reconnect it.
+                Connections[clientId].Active = true;
             }
         }
 
@@ -214,7 +223,11 @@ namespace GUI.IPCInterface
             // Checks that there are active connections
             foreach (ConnectionStatus status in Connections)
             {
-                retVal = retVal || status.Active;
+                if (status.Active)
+                {
+                    retVal = true;
+                    break;
+                }
             }
 
             if (retVal)
@@ -222,9 +235,10 @@ namespace GUI.IPCInterface
                 // Checks that all active connection have selected their next step
                 foreach (ConnectionStatus status in Connections)
                 {
-                    if (status.Active)
+                    if (status.Active && status.LastCycleRequest <= status.LastCycleResume)
                     {
-                        retVal = retVal && (status.LastCycleRequest > status.LastCycleResume);
+                        retVal = false;
+                        break;
                     }
                 }
             }
@@ -257,13 +271,15 @@ namespace GUI.IPCInterface
         /// <summary>
         /// 1s between each client decisions
         /// </summary>
-        private static TimeSpan MAX_DELTA = new TimeSpan(0, 0, 0, 30, 0);
+        private static TimeSpan MAX_DELTA = new TimeSpan(0, 0, 0, 5, 0);
 
         /// <summary>
         /// Performs a single cycle
         /// </summary>
         public void Cycle()
         {
+            EFSAccess.WaitOne();
+
             try
             {
                 DateTime now = DateTime.Now;
@@ -272,7 +288,7 @@ namespace GUI.IPCInterface
                 foreach (ConnectionStatus status in Connections)
                 {
                     TimeSpan delta = now - status.LastCycleRequest;
-                    if (status.LastCycleRequest > DateTime.MinValue && delta > MAX_DELTA)
+                    if (delta > MAX_DELTA)
                     {
                         status.Active = false;
                     }
@@ -305,6 +321,8 @@ namespace GUI.IPCInterface
             {
                 System.Diagnostics.Debugger.Break();
             }
+
+            EFSAccess.ReleaseMutex();
         }
 
         /// <summary>
@@ -329,11 +347,10 @@ namespace GUI.IPCInterface
             public override void Initialize(EFSService instance)
             {
                 // Allocates all critical section
-                instance.StepAccess[Step.CleanUp] = new Mutex(true, "CleanUp");
-                instance.StepAccess[Step.Verification] = new Mutex(true, "Verification");
-                instance.StepAccess[Step.UpdateInternal] = new Mutex(true, "UpdateInternal");
-                instance.StepAccess[Step.Process] = new Mutex(true, "Process");
-                instance.StepAccess[Step.UpdateOutput] = new Mutex(true, "UpdateOutput");
+                foreach (Step step in Enum.GetValues(typeof(Step)))
+                {
+                    instance.StepAccess[step] = new Mutex(true, step.ToString());
+                }
             }
 
             /// <summary>
@@ -370,7 +387,11 @@ namespace GUI.IPCInterface
         /// </summary>
         public void Restart()
         {
+            EFSAccess.WaitOne();
+
             EFSSystem.INSTANCE.Runner = new Runner(Explain, LogEvents, CycleDuration, KeepEventCount);
+
+            EFSAccess.ReleaseMutex();
         }
 
         /// <summary>
