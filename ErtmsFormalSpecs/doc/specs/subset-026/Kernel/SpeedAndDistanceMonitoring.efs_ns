@@ -273,7 +273,8 @@ Condition1()</PreCondition></PreConditions>
 ><Comment></Comment>
 JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
  Guid="543e8165-df83-432e-b4cd-95d43feb70a7"
->DetermineSupervisionStatus()</Action><Action
+><Comment></Comment>
+DetermineSupervisionStatus()</Action><Action
  Guid="f56144fc-d490-42cf-9b0d-6f4f02dcff6f"
 ><Comment></Comment>
 THIS &lt;- PIM</Action></Actions>
@@ -443,7 +444,7 @@ ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Action
  Guid="351c9b66-e0cc-4a58-9b1c-f39028235a8a"
 ><Comment></Comment>
-THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
+UpdateMonitoring()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -498,8 +499,6 @@ THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
 )
 !=
 SupervisedTargets</PreCondition><PreCondition
- Guid="6f2cc5a3-3453-4c20-acb8-221630d71332"
->Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
  Guid="c91265ff-507c-45ce-9fb3-e4bbc413a44e"
 >ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
@@ -509,169 +508,10 @@ SupervisedTargets</PreCondition><PreCondition
     Targets1=&gt;MRSP.SpeedRestrictions,
     Targets2=&gt;MA.SpeedRestrictions,
     Targets3=&gt;NationalValues.MaxDistInSRSpeedRestriction
-)</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Go to ceiling speed monitoring"
- Guid="f86a11bf-c055-4ee0-a054-75949711b635"
->
-<Comment>If condition 1 is not satisfied for the new targets, go to ceiling speed monitoring.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Condition 1 is not fulfilled"
- Guid="8483403d-dcf0-4682-b06f-5a2ae4fcfec4"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="d6cc722b-4470-4618-b7ad-a8f6154e0bc8"
->NOT Condition1()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f9cfaf7b-b51a-4ff0-9e43-92e4082c6fbc"
+)</Action><Action
+ Guid="ddb5319e-07c7-46aa-992d-e8ac18647f7e"
 ><Comment></Comment>
-THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="TransitionFromTSM"
- Guid="ab964af1-2b30-461e-a94d-9c1eef3e2c16"
->
-<Comment>If the transition occurs from TSM, revoke traction cut-off commands and service brake commands</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="If in TSM, immediately revoke any traction cut-off command"
- Guid="35a7536e-2488-46fb-99bc-e4ceeb17b12c"
->
-<PreConditions>
-<PreCondition
- Guid="968a3c7d-c0d9-4d05-b65e-d84a00f02458"
->THIS in MonitoringTypeSM.Target</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="a364a045-8542-40c1-91b4-f4821eaa0ef2"
->RevokeTCOCommand()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Go to target speed monitoring"
- Guid="1801c074-2a70-4502-94b1-94b11aedd3bc"
->
-<Comment>If condition 1 and condition 2 are satisfied for the new targets, go to release speed monitoring.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Condition 1 is fulfilled but not condition 2"
- Guid="89aaf7b5-70c3-44c6-82ed-7f18fd062b1a"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="1889c002-6694-4e01-a062-4c76f5c65090"
->NOT Condition2()</PreCondition><PreCondition
- Guid="e9504089-b7d1-4d41-bf98-d1362f421406"
->Condition1()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f7b5bdb0-1344-4d1b-aae3-6ed3ca6f0683"
->THIS &lt;- MonitoringTypeSM.Target</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Go to release speed monitoring"
- Guid="8773148e-05e9-4782-8d8d-7a7fa4b79f1c"
->
-<Comment>If condition 1 is satisfied but condition 2 is not for the new targets, go to target speed monitoring.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Conditions 1 and 2 are fulfilled"
- Guid="8db73e0a-1dcf-4723-9386-bca94a1e706a"
->
-<PreConditions>
-<PreCondition
- Guid="119da225-e12b-42f7-9c8f-cebd45faa5b6"
->Condition2()</PreCondition><PreCondition
- Guid="733d87fc-f85e-4a60-a964-7db1c74dadcb"
->Condition1()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="6de0a2d5-3cb9-49e5-ada3-7ac6f14df66a"
->THIS &lt;- MonitoringTypeSM.ReleaseSpeed</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Transition from TSM"
- Guid="9cb19cb6-1fda-4741-b38e-5c2a2f91e529"
->
-<Comment>If the transition occurs from TSM, revoke traction cut-off commands and service brake commands</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Transition from TSM"
- Guid="6eb4b3d8-2a24-4642-a6fe-18a1c26590d3"
->
-<PreConditions>
-<PreCondition
- Guid="21a7d41d-368f-48cb-9bd7-804eddb97e31"
->THIS in MonitoringTypeSM.Target</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Transition from TSM"
- Guid="7ddf4344-14ce-4424-a2e8-eb70676f6da6"
->
-<Comment>To apply when transitioning from TSM</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Revoke traction cut-off command"
- Guid="3b9fcf9b-a96d-4ee3-87a1-5d68d8f03262"
->
-<Comment>Revoke the traction cut-off command, if one is applied</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="4dc56041-0a8a-4880-a713-5879b5aaf620"
->RevokeTCOCommand()</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Revoke SB command"
- Guid="0c1c9c7e-d520-49d7-b395-f68efeb38b93"
->
-<Comment>Revoke the SB command, if one is applied</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="493126b8-f4a0-4317-933e-c8d819639f84"
->RevokeSBCommand()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+UpdateMonitoring()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -695,7 +535,8 @@ THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="d2c4fbd4-aea7-44fe-bab3-9fdd15bbb7be"
->NOT ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+><Comment></Comment>
+NOT ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="71258306-011a-4ab1-9a0a-397404946f9f"
@@ -1056,44 +897,167 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
  Name="UpdateMonitoring"
  Guid="3343f3ef-10d0-4a24-9849-d799ebf3c545"
 >
+<Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"
- NeedsRequirement="FALSE"
- Name="UpdateMonitoring"
- Guid="d68dc5dd-66dd-4df0-94ac-da7e387cd2c4"
+ Implemented="TRUE"
+ Name="Go to ceiling speed monitoring"
+ Guid="f86a11bf-c055-4ee0-a054-75949711b635"
 >
+<Comment>If condition 1 is not satisfied for the new targets, go to ceiling speed monitoring.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="ReleaseSpeed"
- Guid="cc74a824-206f-44a4-a2b6-31b96bfddc35"
+ Name="Condition 1 is not fulfilled"
+ Guid="8483403d-dcf0-4682-b06f-5a2ae4fcfec4"
 >
-<ReqRef
- Id="a387bd06-4306-436c-ae73-a3faa509f059"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c4fc58fb-68b2-4182-9837-200439de3372"
->
-</ReqRef><ReqRef
- Id="88ab50b9-74b8-45a8-b956-3f0754ac2824"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="94a7764e-b7e3-4d25-bba9-62497f43ca3a"
->
-</ReqRef><PreConditions>
+<Comment></Comment>
+<PreConditions>
 <PreCondition
- Guid="f0a73956-72ca-4e2a-833d-c64917c04a3d"
->MA.EOADefined()
-  AND
-ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0
-  AND
-ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= Odometry.NominalDistance</PreCondition><PreCondition
- Guid="d0936740-8827-4152-93cf-3722e478afc0"
->Monitoring not in MonitoringTypeSM.ReleaseSpeed</PreCondition></PreConditions>
+ Guid="d6cc722b-4470-4618-b7ad-a8f6154e0bc8"
+>NOT Condition1()</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="9fa14273-a356-4624-b65d-d653232c55c9"
+ Guid="f9cfaf7b-b51a-4ff0-9e43-92e4082c6fbc"
+><Comment></Comment>
+Monitoring &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="TransitionFromTSM"
+ Guid="ab964af1-2b30-461e-a94d-9c1eef3e2c16"
+>
+<Comment>If the transition occurs from TSM, revoke traction cut-off commands and service brake commands</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="If in TSM, immediately revoke any traction cut-off command"
+ Guid="35a7536e-2488-46fb-99bc-e4ceeb17b12c"
+>
+<PreConditions>
+<PreCondition
+ Guid="968a3c7d-c0d9-4d05-b65e-d84a00f02458"
+>Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a364a045-8542-40c1-91b4-f4821eaa0ef2"
+>RevokeTCOCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Go to target speed monitoring"
+ Guid="1801c074-2a70-4502-94b1-94b11aedd3bc"
+>
+<Comment>If condition 1 and condition 2 are satisfied for the new targets, go to release speed monitoring.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Condition 1 is fulfilled but not condition 2"
+ Guid="89aaf7b5-70c3-44c6-82ed-7f18fd062b1a"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="1889c002-6694-4e01-a062-4c76f5c65090"
+>NOT Condition2()</PreCondition><PreCondition
+ Guid="e9504089-b7d1-4d41-bf98-d1362f421406"
+>Condition1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f7b5bdb0-1344-4d1b-aae3-6ed3ca6f0683"
+>Monitoring &lt;- MonitoringTypeSM.Target</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Go to release speed monitoring"
+ Guid="8773148e-05e9-4782-8d8d-7a7fa4b79f1c"
+>
+<Comment>If condition 1 is satisfied but condition 2 is not for the new targets, go to target speed monitoring.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Conditions 1 and 2 are fulfilled"
+ Guid="8db73e0a-1dcf-4723-9386-bca94a1e706a"
+>
+<PreConditions>
+<PreCondition
+ Guid="119da225-e12b-42f7-9c8f-cebd45faa5b6"
+>Condition2()</PreCondition><PreCondition
+ Guid="733d87fc-f85e-4a60-a964-7db1c74dadcb"
+>Condition1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6de0a2d5-3cb9-49e5-ada3-7ac6f14df66a"
 >Monitoring &lt;- MonitoringTypeSM.ReleaseSpeed</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Transition from TSM"
+ Guid="9cb19cb6-1fda-4741-b38e-5c2a2f91e529"
+>
+<Comment>If the transition occurs from TSM, revoke traction cut-off commands and service brake commands</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Transition from TSM"
+ Guid="6eb4b3d8-2a24-4642-a6fe-18a1c26590d3"
+>
+<PreConditions>
+<PreCondition
+ Guid="21a7d41d-368f-48cb-9bd7-804eddb97e31"
+>Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Transition from TSM"
+ Guid="7ddf4344-14ce-4424-a2e8-eb70676f6da6"
+>
+<Comment>To apply when transitioning from TSM</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Revoke traction cut-off command"
+ Guid="3b9fcf9b-a96d-4ee3-87a1-5d68d8f03262"
+>
+<Comment>Revoke the traction cut-off command, if one is applied</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="4dc56041-0a8a-4880-a713-5879b5aaf620"
+>RevokeTCOCommand()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Revoke SB command"
+ Guid="0c1c9c7e-d520-49d7-b395-f68efeb38b93"
+>
+<Comment>Revoke the SB command, if one is applied</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="493126b8-f4a0-4317-933e-c8d819639f84"
+>RevokeSBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1343,7 +1307,7 @@ SBSpecified &lt;- False</Action></Actions>
 <PreCondition
  Guid="035eb855-04d7-4cb3-9e12-2df1736c11d6"
 ><Comment></Comment>
-SpeedAndDistanceMonitoringIsActive</PreCondition><PreCondition
+ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
  Guid="734c0cfb-8504-4804-8e92-7d445b1644b3"
 ><Comment></Comment>
 Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
@@ -1775,7 +1739,7 @@ EBI. Intervention status.</Comment>
 >Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
  Guid="0046535f-3d8c-400a-b35b-bae068e48182"
 ><Comment></Comment>
-SpeedAndDistanceMonitoringIsActive</PreCondition></PreConditions>
+ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -2198,24 +2162,6 @@ EBTriggered &lt;- False</Action></Actions>
 >
 <Comment></Comment>
 </ReqRef><Comment></Comment>
-</Variable><Variable
- Type="Boolean"
- DefaultValue="Boolean.False"
- VariableMode="Internal"
- X="290"
- Y="460"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SpeedAndDistanceMonitoringIsActive"
- Guid="f5e2bfa5-4c2a-4ac6-bdae-34426c0f9a9f"
->
-<ReqRef
- Id="8468de24-42eb-4959-a546-99c00cccb22a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3c1cee0a-e1ef-4f85-928f-93d05439ad66"
->
-</ReqRef><Comment>Indicates if the speed and distance monitoring function is active.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
