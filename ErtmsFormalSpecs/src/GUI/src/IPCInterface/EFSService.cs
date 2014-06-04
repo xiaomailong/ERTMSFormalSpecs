@@ -257,7 +257,7 @@ namespace GUI.IPCInterface
         /// <summary>
         /// 1s between each client decisions
         /// </summary>
-        private static TimeSpan MAX_DELTA = new TimeSpan(0, 0, 60, 0, 0);
+        private static TimeSpan MAX_DELTA = new TimeSpan(0, 0, 0, 30, 0);
 
         /// <summary>
         /// Performs a single cycle
@@ -272,7 +272,7 @@ namespace GUI.IPCInterface
                 foreach (ConnectionStatus status in Connections)
                 {
                     TimeSpan delta = now - status.LastCycleRequest;
-                    if (false && delta > MAX_DELTA)
+                    if (status.LastCycleRequest > DateTime.MinValue && delta > MAX_DELTA)
                     {
                         status.Active = false;
                     }
@@ -301,7 +301,7 @@ namespace GUI.IPCInterface
                     }
                 }
             }
-            catch ( Exception )
+            catch (Exception)
             {
                 System.Diagnostics.Debugger.Break();
             }

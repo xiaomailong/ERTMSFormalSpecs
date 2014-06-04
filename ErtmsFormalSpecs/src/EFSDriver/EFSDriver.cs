@@ -25,27 +25,34 @@ namespace EFSDriver
         private int ClientId { get; set; }
 
         /// <summary>
-        /// Indicates that the baground process must continue
-        /// </summary>
-        private bool DoCycle { get; set; }
-
-        /// <summary>
         /// Handles the background process
         /// </summary>
         private void HandleBackgroundProcess()
         {
-            while (DoCycle)
+            bool goOn = true;
+            while (goOn)
             {
                 if (cycleCheckBox.Checked)
                 {
-                    EstablishCommunication();
-                    Invoke((MethodInvoker)delegate { variableValueTextBox.Enabled = true; });
+                    try
+                    {
+                        EstablishCommunication();
+                        Invoke((MethodInvoker)delegate { variableValueTextBox.Enabled = true; });
 
-                    EFS.Cycle(ClientId, Step.CleanUp);
-                    Invoke((MethodInvoker)delegate { SetVariableValue(); });
+                        EFS.Cycle(ClientId, Step.CleanUp);
+                        Invoke((MethodInvoker)delegate { SetVariableValue(); });
 
-                    EFS.Cycle(ClientId, Step.UpdateOutput);
-                    Invoke((MethodInvoker)delegate { UpdateVariableValue(); });
+                        EFS.Cycle(ClientId, Step.UpdateOutput);
+                        Invoke((MethodInvoker)delegate { UpdateVariableValue(); });
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        goOn = false;
+                    }
+                    catch (Exception)
+                    {
+                        CommunicationEstablished = false;
+                    }
                 }
                 else
                 {
@@ -81,6 +88,8 @@ namespace EFSDriver
             }
         }
 
+        private Thread BackgroundThread { get; set; }
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -88,11 +97,10 @@ namespace EFSDriver
         {
             InitializeComponent();
             TopMost = true;
-            DoCycle = true;
             cycleCheckBox.Checked = false;
 
-            Thread cycleThread = new Thread((ThreadStart)HandleBackgroundProcess);
-            cycleThread.Start();
+            BackgroundThread = new Thread((ThreadStart)HandleBackgroundProcess);
+            BackgroundThread.Start();
         }
 
         /// <summary>
@@ -100,7 +108,7 @@ namespace EFSDriver
         /// </summary>
         ~EFSDriver()
         {
-            DoCycle = false;
+            BackgroundThread.Abort();
             EFS.Close();
         }
 
