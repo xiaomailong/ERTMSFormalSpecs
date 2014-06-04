@@ -36,7 +36,6 @@ namespace EFSDriver
         {
             while (DoCycle)
             {
-
                 if (cycleCheckBox.Checked)
                 {
                     EstablishCommunication();

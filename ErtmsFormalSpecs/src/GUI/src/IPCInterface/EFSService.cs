@@ -49,6 +49,11 @@ namespace GUI.IPCInterface
         public int KeepEventCount { get; private set; }
 
         /// <summary>
+        /// Resource protection
+        /// </summary>
+        private Dictionary<Step, Mutex> StepAccess { get; set; }
+
+        /// <summary>
         /// Keeps track of each connection status
         /// </summary>
         private class ConnectionStatus
@@ -59,19 +64,19 @@ namespace GUI.IPCInterface
             public bool Active { get; set; }
 
             /// <summary>
-            /// The last time an activity was performed by the client 
+            /// The step for which the client is waiting
             /// </summary>
-            public DateTime LastActivity { get; set; }
+            public Step ExpectedStep { get; set; }
 
             /// <summary>
-            /// The priority the server expects its client to be
+            /// The last time a cycle request has been performed
             /// </summary>
-            public Step? ExpectedStep { get; set; }
+            public DateTime LastCycleRequest { get; set; }
 
             /// <summary>
-            /// The thread that is listening to clients
+            /// The last time a cycle activity has been resumed
             /// </summary>
-            public Thread ListenerThread { get; set; }
+            public DateTime LastCycleResume { get; set; }
 
             /// <summary>
             /// Constructor
@@ -79,9 +84,8 @@ namespace GUI.IPCInterface
             public ConnectionStatus()
             {
                 Active = true;
-                LastActivity = DateTime.Now;
-                ExpectedStep = null;
-                ListenerThread = null;
+                LastCycleRequest = DateTime.MinValue;
+                LastCycleResume = DateTime.MinValue;
             }
         }
 
@@ -126,8 +130,6 @@ namespace GUI.IPCInterface
         /// </summary>
         public EFSService()
         {
-            DataDictionary.Tests.Runner.Runner.CycleExecutionTerminated += new DataDictionary.Tests.Runner.Runner.CycleExecutionTerminatedDelegate(Runner_CycleExecutionTerminated);
-
             Connections = new List<ConnectionStatus>();
             Explain = true;
             LogEvents = false;
@@ -136,6 +138,7 @@ namespace GUI.IPCInterface
 
             LastStep = Step.CleanUp;
 
+            StepAccess = new Dictionary<Step, Mutex>();
             LaunchRunnerSynchronizer = new LaunchRunner(this, 10);
         }
 
@@ -221,8 +224,30 @@ namespace GUI.IPCInterface
                 {
                     if (status.Active)
                     {
-                        retVal = retVal && (status.ExpectedStep != null);
+                        retVal = retVal && (status.LastCycleRequest > status.LastCycleResume);
                     }
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Indicates if there is a client pending for a specific step
+        /// </summary>
+        /// <param name="step"></param>
+        /// <returns></returns>
+        private bool pendingClients(Step step)
+        {
+            bool retVal = false;
+
+            // Checks that there are active connections
+            foreach (ConnectionStatus status in Connections)
+            {
+                if (status.ExpectedStep == step && status.LastCycleRequest > status.LastCycleResume)
+                {
+                    retVal = true;
+                    break;
                 }
             }
 
@@ -239,27 +264,46 @@ namespace GUI.IPCInterface
         /// </summary>
         public void Cycle()
         {
-            DateTime now = DateTime.Now;
-
-            // Close inactive connections
-            foreach (ConnectionStatus status in Connections)
+            try
             {
-                TimeSpan delta = now - status.LastActivity;
-                if (delta > MAX_DELTA)
+                DateTime now = DateTime.Now;
+
+                // Close inactive connections
+                foreach (ConnectionStatus status in Connections)
                 {
-                    status.Active = false;
+                    TimeSpan delta = now - status.LastCycleRequest;
+                    if (false && delta > MAX_DELTA)
+                    {
+                        status.Active = false;
+                    }
+                }
+
+                // Launches the runner when all active client have selected their next step
+                while (checkLaunch())
+                {
+                    LastStep = NextStep(LastStep);
+                    Runner.ExecuteOnePriority(convertStep2Priority(LastStep));
+                    if (LastStep == Step.CleanUp)
+                    {
+                        GUIUtils.MDIWindow.Invoke((MethodInvoker)delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
+                    }
+
+                    while (pendingClients(LastStep))
+                    {
+                        // Let the processes waiting for the end of this step run
+                        StepAccess[LastStep].ReleaseMutex();
+
+                        // Let the other processes wake up
+                        Thread.Sleep(1);
+
+                        // Wait until all processes for this step have executed their work
+                        StepAccess[LastStep].WaitOne();
+                    }
                 }
             }
-
-            // Launches the runner when all active client have selected their next step
-            while (checkLaunch())
+            catch ( Exception )
             {
-                LastStep = NextStep(LastStep);
-                Runner.ExecuteOnePriority(convertStep2Priority(LastStep));
-                if (LastStep == Step.CleanUp)
-                {
-                    GUIUtils.MDIWindow.Invoke((MethodInvoker)delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
-                }
+                System.Diagnostics.Debugger.Break();
             }
         }
 
@@ -276,6 +320,20 @@ namespace GUI.IPCInterface
             public LaunchRunner(EFSService service, int cycleTime)
                 : base(service, cycleTime)
             {
+            }
+
+            /// <summary>
+            /// Initialize the task 
+            /// </summary>
+            /// <param name="instance"></param>
+            public override void Initialize(EFSService instance)
+            {
+                // Allocates all critical section
+                instance.StepAccess[Step.CleanUp] = new Mutex(true, "CleanUp");
+                instance.StepAccess[Step.Verification] = new Mutex(true, "Verification");
+                instance.StepAccess[Step.UpdateInternal] = new Mutex(true, "UpdateInternal");
+                instance.StepAccess[Step.Process] = new Mutex(true, "Process");
+                instance.StepAccess[Step.UpdateOutput] = new Mutex(true, "UpdateOutput");
             }
 
             /// <summary>
@@ -297,31 +355,14 @@ namespace GUI.IPCInterface
         {
             checkClient(clientId);
 
-            Connections[clientId].ListenerThread = Thread.CurrentThread;
+            Connections[clientId].LastCycleRequest = DateTime.Now;
+            Connections[clientId].LastCycleResume = DateTime.MinValue;
             Connections[clientId].ExpectedStep = step;
 
-            // Suspend the current thread until it has been waken up after successful cycle execution
-            Thread.CurrentThread.Suspend();
-        }
+            StepAccess[step].WaitOne();
 
-        /// <summary>
-        /// Takes into account the fact that the runner has completed a subcycle
-        /// </summary>
-        /// <param name="runner"></param>
-        /// <param name="priority"></param>
-        private void Runner_CycleExecutionTerminated(Runner runner, DataDictionary.Generated.acceptor.RulePriority priority)
-        {
-            Step step = convertPriority2Step(priority);
-
-            // Wake up all waiting threads
-            foreach (ConnectionStatus status in Connections)
-            {
-                if (status.ExpectedStep == step)
-                {
-                    status.ExpectedStep = null;
-                    status.ListenerThread.Resume();
-                }
-            }
+            Connections[clientId].LastCycleResume = DateTime.Now;
+            StepAccess[step].ReleaseMutex();
         }
 
         /// <summary>
