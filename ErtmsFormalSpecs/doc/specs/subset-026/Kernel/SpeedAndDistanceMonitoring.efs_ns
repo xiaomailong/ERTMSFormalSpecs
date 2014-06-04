@@ -291,7 +291,6 @@ THIS &lt;- PIM</Action></Actions>
 >
 </ReqRef><Comment>Pre Indication Monitoring, a sub-type of target speed monitoring betzeen the pre-indication location and the indication location</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="f727d81e-5f5d-4cd0-8962-ea039bad1e56"
 >
@@ -443,7 +442,8 @@ ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="351c9b66-e0cc-4a58-9b1c-f39028235a8a"
->THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
+><Comment></Comment>
+THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>

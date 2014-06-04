@@ -1399,7 +1399,8 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="8f0a47fd-16ea-4427-9196-d3cc52540867"
->BTM.Message &lt;- Messages.EUROBALISE.Message{
+><Comment></Comment>
+BTM.Message &lt;- Messages.EUROBALISE.Message{
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
     M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
@@ -1419,7 +1420,8 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="990281b0-10d9-4719-9a91-9a9674fa64d6"
->BTM.Message &lt;- Messages.EUROBALISE.Message
+><Comment></Comment>
+BTM.Message &lt;- Messages.EUROBALISE.Message
  {
 
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
@@ -1461,8 +1463,8 @@ IN BTM.Linking.Linkings</Action></Actions>
                     Q_DIR =&gt; Messages.Q_DIR.Nominal,
                     L_PACKET =&gt; 0,
                     Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
-                    V_MAIN =&gt; 300,
-                    V_LOA =&gt; 70,
+                    V_MAIN =&gt; 60,
+                    V_LOA =&gt; 8,
                     T_LOA =&gt; 180,
 
                     N_ITER =&gt; 0,
@@ -3629,7 +3631,7 @@ IN BTM.Linking.Linkings</Action></Actions>
                     L_PACKET =&gt; 400,
                     Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                     V_MAIN =&gt; 25,
-                    V_LOA =&gt; 30,
+                    V_LOA =&gt; 6,
                     T_LOA =&gt; 150,
 
                     N_ITER =&gt; 0,
@@ -4325,7 +4327,9 @@ BTM.Linking.Linkings</Action><Action
     D_ora =&gt; 51.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action></Actions>
+}</Action><Action
+ Guid="97c7363b-626d-46de-90c8-55219bf90d9e"
+>Odometry.NominalDistance &lt;- 2200.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="f07d95bd-475d-44ce-94dc-2bd76309c56d"
@@ -4456,7 +4460,9 @@ BTM.Linking.Linkings</Action><Action
         Position =&gt; 3000.0,
         UnderReadingAmountOdo =&gt; 35.0
     }
-}</Action></Actions>
+}</Action><Action
+ Guid="07464e37-9fb6-4d99-9632-ac33af524195"
+>Odometry.NominalDistance &lt;- 3010.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4823,7 +4829,9 @@ BTM.Linking.Linkings</Action><Action
     D_ora =&gt; 51.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action></Actions>
+}</Action><Action
+ Guid="bac0898e-885e-4f36-86c2-778ddf1f55fb"
+>Odometry.NominalDistance &lt;- 2050.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="9c35c98b-a2cd-4d7a-bb72-5078bd102012"
@@ -4937,7 +4945,9 @@ BTM.Linking.Linkings</Action><Action
         Position =&gt; 3000.0,
         UnderReadingAmountOdo =&gt; 35.0
     }
-}</Action></Actions>
+}</Action><Action
+ Guid="305e83f7-b105-449f-88f2-5ca67bc66d7e"
+>Odometry.NominalDistance &lt;- 3150.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5276,7 +5286,9 @@ BTM.Linking.Linkings</Action><Action
     D_ora =&gt; 51.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action></Actions>
+}</Action><Action
+ Guid="a4e65a03-4ce8-49bf-9423-8ee65ad8cfad"
+>Odometry.NominalDistance &lt;- 2100.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="8b29f553-e364-49d3-9b57-37463e57efc8"
@@ -5403,7 +5415,9 @@ BTM.Linking.Linkings</Action><Action
         Position =&gt; 3000.0,
         UnderReadingAmountOdo =&gt; 35.0
     }
-}</Action></Actions>
+}</Action><Action
+ Guid="f5cfb24e-e3c0-4fe8-bced-ccc52510d0b8"
+>Odometry.NominalDistance &lt;- 3300.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
