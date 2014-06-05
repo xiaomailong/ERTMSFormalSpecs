@@ -350,6 +350,7 @@ NID_BG =&gt; 1313
  Name="Beginning/End of ModeProfile relates to Max/Min SafeFrontEnd"
  Guid="e456aa15-0b46-42b8-a6b9-55c7c9f8d4d8"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -1170,7 +1171,7 @@ Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
                    Q_DIR=&gt; Messages.Q_DIR.Nominal,
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                   V_MAMODE=&gt;1,
+                   V_MAMODE=&gt;10,
                    Sequence1=&gt;[] 
                }
           }
@@ -1406,7 +1407,9 @@ BTM.BaliseGroup {
     Length=&gt;1000.0,
     Mode=&gt;Default.Mode.ModeProfile.OS
 }
-IN Kernel.MA.ModeProfile.Profile</Action></Actions>
+IN Kernel.MA.ModeProfile.Profile</Action><Action
+ Guid="cf37ba8d-e325-4cb8-8e6b-eb5e6a1ab29e"
+>Odometry.NominalDistance &lt;- 1050.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1518,8 +1521,8 @@ IN Kernel.MA.ModeProfile.Profile</Action></Actions>
                     Q_DIR=&gt; Messages.Q_DIR.Nominal,
                     Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    V_MAMODE=&gt;1,
-                    Sequence1=&gt;[] 
+                    V_MAMODE=&gt;10,
+                    Sequence1=&gt;[]
                 }
             }
         }
@@ -2243,7 +2246,7 @@ Messages.EUROBALISE.SubStructure1
                    Q_DIR=&gt; Messages.Q_DIR.Nominal,
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                   V_MAMODE=&gt;1,
+                   V_MAMODE=&gt;10,
                    Sequence1=&gt;[] 
                 }
            }
@@ -2293,10 +2296,6 @@ Messages.EUROBALISE.SubStructure1
  DeadLine="1"
  Guid="3256599e-52f7-467e-ba2f-5d908da60664"
 >Kernel.MA.ModeProfile.ModeProfileIsApplicable() == Boolean.True</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="2d19ce8d-78cc-4960-ac59-3231fba0ec7a"
->
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2451,7 +2450,7 @@ Messages.EUROBALISE.SubStructure1
                    Q_DIR=&gt; Messages.Q_DIR.Nominal,
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                   V_MAMODE=&gt;1,
+                   V_MAMODE=&gt;10,
                    Sequence1=&gt;[] 
                 }
            }
@@ -2655,7 +2654,7 @@ Messages.EUROBALISE.SubStructure1
                    Q_DIR=&gt; Messages.Q_DIR.Nominal,
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                   V_MAMODE=&gt;1,
+                   V_MAMODE=&gt;10,
                    Sequence1=&gt;[] 
                }
           }
