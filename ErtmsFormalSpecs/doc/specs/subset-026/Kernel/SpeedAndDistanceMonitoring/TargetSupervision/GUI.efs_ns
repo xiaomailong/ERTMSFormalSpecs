@@ -139,9 +139,9 @@
 <PreConditions>
 <PreCondition
  Guid="2798b3c1-e09d-442c-a865-50f7fa1e6dd2"
->TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) != []</PreCondition></PreConditions>
+>TargetsList() != []</PreCondition></PreConditions>
 <Expression>(REDUCE
-    TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction )
+    TargetsList()
  USING  
     MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; TargetSupervision.GUI.TargetSpeedRestriction( aTarget =&gt; X, Distance =&gt; d ), 
                   Second =&gt; RESULT )

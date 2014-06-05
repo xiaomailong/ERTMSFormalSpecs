@@ -539,7 +539,7 @@ INITIAL_VALUE
 >
 <Comment></Comment>
 <Expression>REDUCE
-    TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) |
+    TargetsList() |
         ReleaseSpeedSupervision.d_tripEOA() &lt;= X.Location AND X.Location &lt; MA.SvL().Location
 USING
     Default.BaseTypes.MinSpeed ( X1 =&gt; ReleaseSpeedSupervision.ComputeReleaseSpeedForTarget ( X.Speed ), X2 =&gt; RESULT )

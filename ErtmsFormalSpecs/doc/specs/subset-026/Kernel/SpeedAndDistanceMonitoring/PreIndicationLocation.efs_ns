@@ -523,8 +523,8 @@ d_SBI2 ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreCondit
 <PreCondition
  Guid="3bf6d470-f45b-45d0-864a-c216d2eeb181"
 ><Comment></Comment>
-TARGETS( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) != []</PreCondition></PreConditions>
-<Expression>Compute_d_preindication(FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</Expression>
+TargetsList() != []</PreCondition></PreConditions>
+<Expression>Compute_d_preindication(FirstTargetFromLocation(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)))</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="2864273a-427e-4862-800f-f42bb985cd36"
@@ -555,10 +555,7 @@ TARGETS( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestricti
  Guid="19821ff7-4f2c-4fd6-98fd-3956af5e3468"
 >
 <Comment></Comment>
-<Expression>REDUCE TARGETS (
-    Targets1 =&gt; MRSP.SpeedRestrictions,
-    Targets2 =&gt; MA.SpeedRestrictions,
-    Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction)
+<Expression>REDUCE TargetsList()
     | X.Location &gt; Distance
 
 USING MA.ClosestTarget(
@@ -597,10 +594,7 @@ INITIAL_VALUE TargetSupervision.Target{
  Guid="b687c5ce-6563-4fe2-8d27-34b0eb533aa8"
 >
 <Comment></Comment>
-<Expression>REDUCE TARGETS (
-    Targets1 =&gt; MRSP.SpeedRestrictions,
-    Targets2 =&gt; MA.SpeedRestrictions,
-    Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction)
+<Expression>REDUCE TargetsList()
     | X.Location &lt; Distance
 
 USING MA.ClosestTarget(
@@ -748,11 +742,7 @@ MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceIn
  Guid="7728236a-d7fe-40c3-9417-ee0dd230e10c"
 >
 <Comment>Dist is measured from the LRBG</Comment>
-<Expression>THERE_IS_IN TARGETS(
-    Targets1=&gt;MA.SpeedRestrictions,
-    Targets2=&gt;MRSP.SpeedRestrictions,
-    Targets3=&gt;NationalValues.MaxDistInSRSpeedRestriction
-)  |  (X.Location &lt; Dist) AND (X.Location + Default.BaseTypes.LengthToDistance(X.Length) &gt;= Dist)</Expression>
+<Expression>THERE_IS_IN TargetsList() |  (X.Location &lt; Dist) AND (X.Location + Default.BaseTypes.LengthToDistance(X.Length) &gt;= Dist)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>

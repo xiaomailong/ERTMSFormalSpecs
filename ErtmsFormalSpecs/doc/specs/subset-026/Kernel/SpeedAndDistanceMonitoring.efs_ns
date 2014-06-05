@@ -492,23 +492,13 @@ UpdateMonitoring()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="f0533ab6-40d0-43ae-a60c-64a801411bc9"
->TARGETS(
-    Targets1=&gt;MRSP.SpeedRestrictions,
-    Targets2=&gt;MA.SpeedRestrictions,
-    Targets3=&gt;NationalValues.MaxDistInSRSpeedRestriction
-)
-!=
-SupervisedTargets</PreCondition><PreCondition
+>TargetsList() != SupervisedTargets</PreCondition><PreCondition
  Guid="c91265ff-507c-45ce-9fb3-e4bbc413a44e"
 >ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="774ac772-0f2b-46db-99c0-8963f899bb81"
->SupervisedTargets &lt;- TARGETS(
-    Targets1=&gt;MRSP.SpeedRestrictions,
-    Targets2=&gt;MA.SpeedRestrictions,
-    Targets3=&gt;NationalValues.MaxDistInSRSpeedRestriction
-)</Action><Action
+>SupervisedTargets &lt;- TargetsList()</Action><Action
  Guid="ddb5319e-07c7-46aa-992d-e8ac18647f7e"
 ><Comment></Comment>
 UpdateMonitoring()</Action></Actions>
@@ -524,7 +514,7 @@ UpdateMonitoring()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b80ddb73-fa13-48fb-ba41-96b6721d9048"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>If the train no longer needs to handle the speed and distance monitoring, go to Idle state</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -884,6 +874,34 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
  Guid="9b96ca59-f914-4805-9966-b093fbe6b969"
 >
 <Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="TargetSupervision.Targets"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TargetsList"
+ Guid="8b30ddc6-feb1-4306-817f-f149882e30b9"
+>
+<Comment>Returns the list of targets corresponding to a decrease in permitted speed for the train</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="8b3ebe95-851d-422f-b5c5-9d5fa7abf3f6"
+>
+<Comment></Comment>
+<Expression>TARGETS(
+    Targets1=&gt;
+    MIN(
+        MIN(MRSP.SpeedRestrictions, MA.SpeedRestrictions),
+        NationalValues.MaxDistInSRSpeedRestriction
+    ),
+
+    Targets2=&gt;EMPTY,
+    Targets3=&gt;EMPTY
+)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -1590,7 +1608,8 @@ EBI. Intervention status.</Comment>
  Guid="7f3594f9-bf9a-46d1-93f6-471444e639fc"
 >Supervision != SupervisionStatus.Overspeed</PreCondition><PreCondition
  Guid="a0662bd2-d674-48b2-a779-e47c84d847d9"
->TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= TargetSupervision.d_W ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
+><Comment></Comment>
+TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= TargetSupervision.d_W ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
  Guid="23ac3f1b-42d8-4f5e-a3c5-678b0265e2ab"
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="79d1c420-2608-4faa-a10d-461c0d543deb"
