@@ -81,7 +81,8 @@
  Guid="c2ceb03f-6b94-43a7-86a8-a55adfcc0ca7"
 >Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="b2fe8d8d-40f5-46c4-b7b2-c10f51747a0d"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+><Comment></Comment>
+Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="cac89291-edaf-4815-8dac-eb9987d85032"
 >Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep></SubSteps>
@@ -166,7 +167,7 @@
                    Q_DIR=&gt; Messages.Q_DIR.Nominal,
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                   V_MAMODE=&gt;1,
+                   V_MAMODE=&gt;10,
                    Sequence1=&gt;[] 
                }
           }
@@ -258,7 +259,7 @@ NID_BG =&gt; 1212
                    Q_DIR=&gt; Messages.Q_DIR.Nominal,
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                   V_MAMODE=&gt;1,
+                   V_MAMODE=&gt;10,
                    Sequence1=&gt;[] 
                }
           }
