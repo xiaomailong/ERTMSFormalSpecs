@@ -3441,14 +3441,25 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Y="880"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S24"
  Guid="15a7f2db-53a6-4e6c-813b-033d62d4ba86"
 >
 <StateMachine
+ Default="RequestDriverAck"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="2746c965-e48c-4126-ad91-fc328467e3a9"
+>
+<States>
+<State
+ Implemented="TRUE"
+ Name="RequestDriverAck"
+ Guid="f11ea33e-8286-45ae-802d-c8714b7c9349"
+>
+<StateMachine
+ Guid="26c58b42-a54c-4d39-92b0-2d2e6742ee86"
 >
 <Rules>
 <Rule
@@ -3473,13 +3484,24 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="b4ad20ab-c373-46bb-ab33-5b7101bde35c"
->DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7af6368a-0121-4c32-ba51-1820f2d758c5"
->DMI.MasterDMI().InitiateAcknOfSRMode()</Action></Actions>
+>DMI.MasterDMI().InitiateAcknOfSRMode()</Action><Action
+ Guid="b0bc1e94-01eb-4df2-a3b3-2c8eb95e51b7"
+>THIS &lt;- DriverAckRequested</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</StateMachine></State><State
+ Implemented="TRUE"
+ Name="DriverAckRequested"
+ Guid="4b76bcf7-89cd-48b9-b9e9-a1561d1dce94"
+>
+<StateMachine
+ Guid="008b8155-25d4-43be-9e66-bbe94e75976f"
+>
+</StateMachine></State></States>
 </StateMachine></State><State
  X="1030"
  Y="880"

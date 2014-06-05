@@ -9000,7 +9000,7 @@
 <Actions>
 <Action
  Guid="cef3bb4a-b7b0-4647-8078-d4e881b2aab1"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S24</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S24</Action><Action
  Guid="2c5be07e-c743-42d4-bcf5-6f23911ba6d3"
 >Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action
  Guid="68a6c75a-5fae-494c-beb2-b26171b1e609"
@@ -9009,6 +9009,14 @@
 >Kernel.MissionIsOnGoing &lt;- False</Action><Action
  Guid="b203366b-be94-472e-95b3-53dc6971678e"
 >BTM.LRBG &lt;- EMPTY</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="7b395496-b03c-41b9-9bd8-e8454463a44d"
+>
+<Actions>
+<Action
+ Guid="cef3bb4a-b7b0-4647-8078-d4e881b2aab1"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S24</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
