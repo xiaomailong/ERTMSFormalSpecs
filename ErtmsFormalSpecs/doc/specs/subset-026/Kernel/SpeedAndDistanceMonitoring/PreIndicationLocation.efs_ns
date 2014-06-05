@@ -513,6 +513,13 @@ d_SBI2 ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreCondit
  Guid="c7b2f4d3-ae9a-4d54-b7f8-275e38b731bc"
 >
 </ReqRef><Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Dist"
+ Guid="dd0e23cc-61ac-4b6c-b7ad-f514388faa4b"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
@@ -524,7 +531,7 @@ d_SBI2 ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreCondit
  Guid="3bf6d470-f45b-45d0-864a-c216d2eeb181"
 ><Comment></Comment>
 TargetsList() != []</PreCondition></PreConditions>
-<Expression>Compute_d_preindication(FirstTargetFromLocation(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)))</Expression>
+<Expression>Compute_d_preindication(FirstTargetFromLocation(Dist))</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="2864273a-427e-4862-800f-f42bb985cd36"

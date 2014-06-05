@@ -121,11 +121,20 @@
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="EBIvalue unknown"
+ Guid="6caabc93-dfe4-42b6-845e-3a05d61c3524"
+>
+<PreConditions>
+<PreCondition
+ Guid="a9d4c728-e23f-4e83-884d-b41a5a7f7494"
+>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="Value"
  Guid="fd21b39b-f325-40fa-a78d-5ff23258542b"
 >
 <Comment></Comment>
-<Expression>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget )  - Default.BaseTypes.SpeedToMS ( Vest ) * TargetSupervision.T_bs2</Expression>
+<Expression>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget )  - Default.BaseTypes.SpeedToMS ( Vest ) * T_bs2</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -684,6 +693,15 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Targe
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Vest below all the supervised target speeds"
+ Guid="30e99670-6938-4ffe-8626-22edbca60e82"
+>
+<PreConditions>
+<PreCondition
+ Guid="f3765bd0-74d9-4a3a-8931-9cd8e64befb5"
+>FORALL_IN TargetsList() | d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="Value"
  Guid="673e0526-d664-4d47-ac36-3e9fd64b13fc"
 >
@@ -691,7 +709,7 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Targe
 <Expression>REDUCE
     TargetsList()
 USING
-    Default.BaseTypes.MinDistance ( X1 =&gt; TargetSupervision.d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X ), X2 =&gt; RESULT )
+    Default.BaseTypes.MinDistance ( X1 =&gt; d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X ), X2 =&gt; RESULT )
 INITIAL_VALUE
     Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
@@ -1335,7 +1353,8 @@ TargetSupervision.V_P_EBD_Target
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="52a5d05b-f8e8-4d2b-a807-315d4cfd1200"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment></Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -1344,13 +1363,24 @@ TargetSupervision.V_P_EBD_Target
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="d_SBI1 and d_SBI2_MREBDT unknown"
+ Guid="a0f56999-394f-4b00-b423-9c6440c834cc"
+>
+<PreConditions>
+<PreCondition
+ Guid="7377911b-f405-40f5-a39e-636a7d591d5f"
+>d_SBI1 ( Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+ Guid="341f5ca9-bbd4-4d97-bbbd-a8d5307c471c"
+>d_SBI2_MREBDT ( Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case><Case
  Name="SBI1"
  Guid="8c95a8f9-eadc-47e4-84e8-3420e2c4a336"
 >
 <PreConditions>
 <PreCondition
  Guid="e862b7cc-9cf5-4c3a-afa3-53925d18277e"
->TargetSupervision.d_SBI1 ( Vest ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) &lt;= TargetSupervision.d_SBI2_MREBDT ( Vest ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
+>d_SBI1 ( Vest ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) &lt;= d_SBI2_MREBDT ( Vest ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
 <Expression>TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )</Expression>
 </Case><Case
  Name="SBI2"
@@ -1478,7 +1508,8 @@ TargetSupervision.V_P_EBD_Target
 <PreConditions>
 <PreCondition
  Guid="9e1abeb5-4d09-483c-8f53-24d85fe1e9da"
->DistanceForSpeed ( Function =&gt; SBD, Speed =&gt; Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+><Comment></Comment>
+DistanceForSpeed ( Function =&gt; SBD, Speed =&gt; Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
@@ -1746,6 +1777,19 @@ TargetSupervision.V_P_EBD_Target
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Unknown for given speed"
+ Guid="68852627-8a59-4a40-863f-f157164677e2"
+>
+<PreConditions>
+<PreCondition
+ Guid="b5f767c0-d69b-47fb-910e-58b4f9b0ec0b"
+>DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; EBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
+        Speed =&gt; Vbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed ) )
+== Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="Value"
  Guid="f6c71c64-a1ed-4e52-9eee-68edbd4d2eb7"
 >

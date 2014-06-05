@@ -796,7 +796,7 @@ Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, Sup
 <PreConditions>
 <PreCondition
  Guid="a9cf64fe-934f-41fc-b58b-190b853ccc0d"
->PreIndicationLocation.d_preindication() == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>PreIndicationLocation.d_preindication(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Train passed pre-indication location"
@@ -807,7 +807,7 @@ Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, Sup
 <PreCondition
  Guid="699a6b10-e831-4c8a-a3ed-591f85155457"
 ><Comment></Comment>
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication()</PreCondition></PreConditions>
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -877,6 +877,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
 </Case></Cases>
 </Function><Function
  Type="TargetSupervision.Targets"
+ Cacheable="TRUE"
  Default=""
  Width="100"
  Height="50"
