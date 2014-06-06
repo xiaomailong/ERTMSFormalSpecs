@@ -73,7 +73,7 @@
 </Enum></Enumerations>
 <StateMachines>
 <StateMachine
- Default="MonitoringTypeSM.Ceiling"
+ Default="Idle"
  X="70"
  Y="360"
  Width="100"
@@ -137,7 +137,7 @@
 >
 <Comment>Ceiling Speed Monitoring.</Comment>
 <StateMachine
- Default="MonitoringTypeSM.Ceiling.Start"
+ Default="Start"
  Implemented="TRUE"
  Guid="11f43511-b66c-40ff-9cd8-49fc31a1e9cd"
 >
@@ -226,7 +226,7 @@ Condition1()</PreCondition></PreConditions>
 >
 <Comment>Target Speed Monitoring.</Comment>
 <StateMachine
- Default="MonitoringTypeSM.Target.Start"
+ Default="Start"
  Implemented="TRUE"
  Guid="04526e41-51a0-49ff-a66a-c48d62f36411"
 >
@@ -357,7 +357,7 @@ Condition2()</PreCondition></PreConditions>
 >
 <Comment>Release Speed Monitoring.</Comment>
 <StateMachine
- Default="MonitoringTypeSM.ReleaseSpeed.Start"
+ Default="Start"
  Implemented="TRUE"
  Guid="4c471652-a236-49b9-afdf-492ed8264c22"
 >
@@ -1020,7 +1020,8 @@ Monitoring &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
 <Actions>
 <Action
  Guid="6de0a2d5-3cb9-49e5-ada3-7ac6f14df66a"
->Monitoring &lt;- MonitoringTypeSM.ReleaseSpeed</Action></Actions>
+><Comment></Comment>
+Monitoring &lt;- MonitoringTypeSM.ReleaseSpeed</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"

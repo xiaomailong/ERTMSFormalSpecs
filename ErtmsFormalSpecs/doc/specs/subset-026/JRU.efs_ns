@@ -49,7 +49,8 @@
 <PreConditions>
 <PreCondition
  Guid="c7be3f63-444c-4d7c-8b71-dd667a30c684"
->SendNewMessage(THIS) == True</PreCondition></PreConditions>
+><Comment></Comment>
+SendNewMessage(THIS) == True</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ceacc66c-5e57-4024-81f9-daf7d248fcdf"
@@ -939,10 +940,8 @@ ADDITIONAL_BRAKE_STATUS =&gt; CreateJruAditionalBrakeStatusMessage()
 <PreConditions>
 <PreCondition
  Guid="b68fe90d-3f7f-4f71-be23-059f5f67cf38"
->SendSpeedAndDistanceMonitoringInformationMessage(THIS)</PreCondition><PreCondition
- Guid="24051cc8-c099-4d23-ab52-61960bf5bf51"
 ><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition><PreCondition
+SendSpeedAndDistanceMonitoringInformationMessage(THIS)</PreCondition><PreCondition
  Guid="bd5ee00b-aacc-49ba-9111-eb883e795db7"
 ><Comment></Comment>
 Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
@@ -951,7 +950,9 @@ Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
  Guid="e0adc517-5b2f-4309-ab4b-821bd1fbaf57"
 >INSERT Messages.JRU.MESSAGE.Message{
 SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitoringInformationMessage()
-}IN JRUMessages</Action></Actions>
+}IN JRUMessages</Action><Action
+ Guid="1e73cc9f-11c6-4599-a75a-6acda1ef7430"
+>SpeedAndDistanceSupervisionTypeChanged &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -981,7 +982,8 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitor
 <Actions>
 <Action
  Guid="95a5ddb2-ef62-4681-a427-9aa9b06202c7"
->InitializeMessage()</Action></Actions>
+><Comment></Comment>
+InitializeMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2349,10 +2351,12 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  Name="SendMessage"
  Guid="367b9bad-5565-4488-957d-849ab291e91d"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e932afe8-ba36-4cdd-b2b8-0c4a04bebf4e"
->LevelChanged(jru)
+><Comment></Comment>
+LevelChanged(jru)
   OR
 SendMessagePeriodically(jru)
   OR
