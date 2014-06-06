@@ -74,6 +74,8 @@
 <StateMachines>
 <StateMachine
  Default="MonitoringTypeSM.Ceiling"
+ X="70"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -538,8 +540,8 @@ NOT ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="50"
- Y="10"
+ X="110"
+ Y="120"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -636,8 +638,7 @@ V &lt; 30.0</PreCondition><PreCondition
 </Function><Function
  Type="Boolean"
  Default=""
- X="50"
- Y="70"
+ Y="60"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -666,8 +667,7 @@ V &lt; 30.0</PreCondition><PreCondition
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="50"
- Y="130"
+ Y="120"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -750,6 +750,7 @@ Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, Sup
 </Function><Function
  Type="Boolean"
  Default=""
+ X="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -879,6 +880,8 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
  Type="TargetSupervision.Targets"
  Cacheable="TRUE"
  Default=""
+ X="110"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2231,6 +2234,8 @@ EBTriggered &lt;- False</Action></Actions>
  Type="TargetSupervision.Targets"
  DefaultValue=""
  VariableMode="Internal"
+ X="330"
+ Y="260"
  Width="100"
  Height="50"
  Implemented="TRUE"

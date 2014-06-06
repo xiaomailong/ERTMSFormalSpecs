@@ -219,6 +219,7 @@ d_EBI ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditi
  Name="GUI is enabled"
  Guid="e2ed0a38-959f-4ca1-af51-1fd4543d4a69"
 >
+<Comment></Comment>
 <Expression>Default.BaseTypes.MinDistance ( X1 =&gt; TargetSupervision.d_SBI1 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; TargetSupervision.GUI, Speed =&gt; Vmrsp ) )</Expression>
 </Case></Cases>
 </Function><Function
@@ -391,7 +392,8 @@ d_I( FirstTargetFromLocation(MRSPnTarget.Location).Speed) &lt;= MRSPnEnd(MRSPnTa
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4f0cf09c-99e9-4558-a36c-4918bebb9dae"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment></Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vmrsp"

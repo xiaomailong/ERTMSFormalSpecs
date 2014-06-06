@@ -35,24 +35,18 @@
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="d_SBI1 unknown"
- Guid="7b3d4914-3789-4ecf-9cd1-9d0fbde5239c"
+ Name="d_SBI1"
+ Guid="4c1a9b99-6a0a-4f9b-a33e-0cbe40c7680b"
 >
 <Comment></Comment>
 <PreConditions>
 <PreCondition
- Guid="bd4d5420-0862-4965-a023-b26895a549dc"
->TargetSupervision.d_SBI1 ( V ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
-</Case><Case
- Name="d_SBI1"
- Guid="4c1a9b99-6a0a-4f9b-a33e-0cbe40c7680b"
->
-<PreConditions>
-<PreCondition
  Guid="abbce78f-6895-49a0-a931-84443bad052d"
 ><Comment></Comment>
-TargetSupervision.d_SBI1 ( V ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) &lt;= d_SBI2 ( V ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
+TargetSupervision.SBI1BelowSBI2(
+    d_SBI1=&gt; TargetSupervision.d_SBI1 ( V ),
+    d_SBI2=&gt; d_SBI2 ( V )
+)</PreCondition></PreConditions>
 <Expression>TargetSupervision.d_SBI1 ( V )</Expression>
 </Case><Case
  Name="d_SBI2"

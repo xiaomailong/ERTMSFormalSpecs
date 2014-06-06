@@ -104,10 +104,15 @@
  Name="First case"
  Guid="a4c435e5-1ab5-4d6a-86aa-a06a7eaea6a3"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="3e2d6889-391c-4a1d-a663-915345b28131"
->TargetSupervision.LevelCrossing.d_SBI2 ( Vlx ) - TargetSupervision.d_SBI1 ( Vlx ) &gt;= TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )</PreCondition></PreConditions>
+><Comment></Comment>
+SBI1BelowSBI2(
+    d_SBI1=&gt; TargetSupervision.d_SBI1 ( Vlx ),
+    d_SBI2=&gt; TargetSupervision.LevelCrossing.d_SBI2 ( Vlx )
+)</PreCondition></PreConditions>
 <Expression>TargetSupervision.d_SBI1 ( Vlx )</Expression>
 </Case><Case
  Name="Second case"

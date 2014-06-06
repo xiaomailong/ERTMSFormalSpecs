@@ -614,6 +614,7 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Targe
  Name="Before EOA"
  Guid="d4be67a0-0946-485f-9fe2-e631a9aabcfd"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="bde98596-9ac7-46ec-90e4-42cd4ac651a0"
@@ -728,7 +729,8 @@ INITIAL_VALUE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="06f49efe-d784-4884-a95d-f7b60a29b220"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment></Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -737,19 +739,36 @@ INITIAL_VALUE
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="d_SBI1"
- Guid="b0d4bc0d-d9b2-4653-b671-f954bc79873b"
+ Name="d_SBI1 and d_SBI2_MREBDT unknown"
+ Guid="a7e5affa-24bb-421e-b1ef-4795b5e53604"
 >
 <PreConditions>
 <PreCondition
+ Guid="20e2ac7b-0ae7-4614-a72f-d0d09a41a77e"
+><Comment></Comment>
+d_SBI1 ( Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+ Guid="bc5154cc-8b2b-4252-8016-d2d82cdcf282"
+>d_SBI2_MREBDT ( Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case><Case
+ Name="d_SBI1"
+ Guid="b0d4bc0d-d9b2-4653-b671-f954bc79873b"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
  Guid="6a7b1947-677d-4020-8c74-d8e4a1dc4477"
->TargetSupervision.d_SBI1 ( Vest ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) &lt;= TargetSupervision.d_SBI2_MREBDT ( Vest ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
-<Expression>TargetSupervision.d_SBI1 ( Vest )</Expression>
+><Comment></Comment>
+SBI1BelowSBI2(
+    d_SBI1=&gt; d_SBI1( Vest ),
+    d_SBI2=&gt; d_SBI2_MREBDT( Vest )
+)</PreCondition></PreConditions>
+<Expression>d_SBI1 ( Vest )</Expression>
 </Case><Case
  Name="d_SBI2_MREBDT"
  Guid="50743961-25e5-4e27-8517-242f090e2b32"
 >
-<Expression>TargetSupervision.d_SBI2_MREBDT ( Vest )</Expression>
+<Expression>d_SBI2_MREBDT ( Vest )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -772,6 +791,7 @@ INITIAL_VALUE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="95a223bd-f060-420b-9ed5-7c2d3e655c0d"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="4a6a5396-38cf-4784-bd94-ba5c844bb58c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -787,7 +807,8 @@ INITIAL_VALUE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2a87d0d2-6795-4a7e-975f-4da7407478f4"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment></Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="d_estfront"
@@ -804,6 +825,7 @@ INITIAL_VALUE
  Name="GUI is inhibited, first case"
  Guid="bd651fd3-7709-4de5-bb0c-c3abea4c233e"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="3b40019d-ded4-4c90-874f-5655ba662c14"
@@ -958,6 +980,16 @@ DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; Vtarget )</
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Supervising LOA - no SBD"
+ Guid="8a69aae7-09da-458a-927c-b4d2e0e65039"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="53634c1c-2959-451a-949d-2699a79a286d"
+>NOT MA.EOADefined()</PreCondition></PreConditions>
+<Expression>BaseTypes.Speed.NA</Expression>
+</Case><Case
  Name="Value"
  Guid="0a8f603f-54a4-4931-a14b-bc70a2d89895"
 >
@@ -1017,12 +1049,26 @@ DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; Vtarget )</
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e23e205e-c96d-4701-8d67-907847c9d5e3"
 >
-</ReqRef><Cases>
+</ReqRef><Comment></Comment>
+<Cases>
 <Case
- Name="Value"
+ Name="MRDT is the EOA"
  Guid="da50275f-a949-4fe9-b3ab-e1285e86eb11"
 >
-<Expression>TargetSupervision.MRDT().Speed</Expression>
+<PreConditions>
+<PreCondition
+ Guid="178905dd-ce63-4fba-8a0b-3c4f22c9b159"
+>MA.IsEOA(MRDT())</PreCondition></PreConditions>
+<Expression>V_P_EOA(d_estfront=&gt;TrainPosition.FrontEndPosition(DistanceInterval.Nom), Vest=&gt;Odometry.EstimatedSpeed)</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="ce69f6f0-25b3-421d-b722-f59a85591ca8"
+>
+<Expression>TargetSupervision.V_P_EBD_Target(
+    d_maxsafefront =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Max),
+    Vtarget =&gt; MRDT().Speed,
+    Vest =&gt; Odometry.EstimatedSpeed
+)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -1215,7 +1261,8 @@ INITIAL_VALUE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="307235e7-d376-4f8b-8f05-ecc74bf353ed"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment></Comment>
+<Parameters>
 <Parameter
  Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="X1"
@@ -1369,7 +1416,8 @@ TargetSupervision.V_P_EBD_Target
 <PreConditions>
 <PreCondition
  Guid="7377911b-f405-40f5-a39e-636a7d591d5f"
->d_SBI1 ( Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+><Comment></Comment>
+d_SBI1 ( Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="341f5ca9-bbd4-4d97-bbbd-a8d5307c471c"
 >d_SBI2_MREBDT ( Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Infinity</Expression>
@@ -1380,7 +1428,11 @@ TargetSupervision.V_P_EBD_Target
 <PreConditions>
 <PreCondition
  Guid="e862b7cc-9cf5-4c3a-afa3-53925d18277e"
->d_SBI1 ( Vest ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) &lt;= d_SBI2_MREBDT ( Vest ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
+><Comment></Comment>
+SBI1BelowSBI2(
+    d_SBI1=&gt; d_SBI1 ( Vest ),
+    d_SBI2=&gt; d_SBI2_MREBDT ( Vest )
+)</PreCondition></PreConditions>
 <Expression>TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )</Expression>
 </Case><Case
  Name="SBI2"
@@ -1408,6 +1460,7 @@ TargetSupervision.V_P_EBD_Target
  Name="Value"
  Guid="3b2124db-7a45-4f5d-b030-095438388390"
 >
+<Comment></Comment>
 <Expression>Default.BaseTypes.MinSpeed ( X1 =&gt; Default.BaseTypes.MaxSpeed ( X1 =&gt; TargetSupervision.V_P_MRDT(), X2 =&gt; TargetSupervision.MRDT().Speed ), X2 =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</Expression>
 </Case></Cases>
 </Function><Function
@@ -1501,6 +1554,20 @@ TargetSupervision.V_P_EBD_Target
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="No SBD"
+ Guid="6633ad72-15a7-48d6-9009-484c09973fb6"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="8ccbaeff-7580-487f-bed3-10470968e535"
+><Comment></Comment>
+SBD(
+    Distance=&gt; TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Nom
+)) == BaseTypes.Speed.NA</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="SBD below Vest"
  Guid="c7b0d6a3-6808-4360-8991-791ced8b7632"
 >
@@ -1509,7 +1576,10 @@ TargetSupervision.V_P_EBD_Target
 <PreCondition
  Guid="9e1abeb5-4d09-483c-8f53-24d85fe1e9da"
 ><Comment></Comment>
-DistanceForSpeed ( Function =&gt; SBD, Speed =&gt; Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+DistanceForSpeed(
+    Function=&gt; SBD,
+    Speed=&gt; Vest
+) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
@@ -1639,6 +1709,7 @@ DistanceForSpeed ( Function =&gt; SBD, Speed =&gt; Vest ) == Default.BaseTypes.D
  Name="GUI is inhibited"
  Guid="bc1cd155-ba13-42c9-ad91-23841c16a0d6"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="70659c39-2759-4cb5-b0d4-fd30a601fc38"
@@ -1798,6 +1869,54 @@ DistanceForSpeed ( Function =&gt; SBD, Speed =&gt; Vest ) == Default.BaseTypes.D
         FUNCTION d : Default.BaseTypes.Distance =&gt; EBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
         Speed =&gt; Vbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed ) )
 - Dbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SBI1BelowSBI2"
+ Guid="4c03af12-8299-47f1-a36e-5ceafe500d01"
+>
+<ReqRef
+ Id="7525f72a-3b46-498c-8c48-1ed3ad888b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a089428b-43ef-4852-b96c-8fd5280e0e7f"
+>
+</ReqRef><ReqRef
+ Id="d542f99e-9462-4bb6-9087-35da9a233e06"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9bb4026c-f84c-4db5-bd43-c6cc4f1a26e1"
+>
+</ReqRef><Comment>Checks that the MA ends with a EOA and, if so, returns true if the SBD curve is closer than the EBD</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="d_SBI1"
+ Guid="dad67edd-3fe4-4175-a913-c3a4ad872b4b"
+>
+</Parameter><Parameter
+ Type="BaseTypes.Distance"
+ Name="d_SBI2"
+ Guid="175339e3-7d3f-4c7b-b400-62a0f1c45654"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="No EOA defined"
+ Guid="68dd7cc9-0d1c-45c8-bc0c-958e6b369768"
+>
+<PreConditions>
+<PreCondition
+ Guid="1f71df51-c1b0-48e4-a4f9-a4588272738b"
+>NOT MA.EOADefined()</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Value"
+ Guid="8bdc9210-c59d-4c1b-9357-b46432397840"
+>
+<Expression>d_SBI1 - TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &lt;= d_SBI2 - TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
