@@ -28749,12 +28749,12 @@ DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
 >DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested == True</Expectation><Expectation
  Kind="Instantaneous"
  Guid="b92c35f8-d83b-4300-b529-f01c914e081e"
->DMI.MasterDMI().Out_PermittedSpeed.Speed == 150.0</Expectation><Expectation
+>DMI.MasterDMI().Out_PermittedSpeed.Speed == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="241edbca-c11f-4d86-836a-aae340042de9"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.Monitoring.Ceiling, Kernel.SpeedAndDistanceMonitoring.Monitoring.Target]
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]
 AND
-Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) == 150.0</Expectation></Expectations>
+Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) == 40.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -28778,7 +28778,7 @@ Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosition.FrontEnd
 <Expectation
  Kind="Instantaneous"
  Guid="7dc91106-ccd2-417d-8a36-ba2fb55ff012"
->DMI.MasterDMI().Out_PermittedSpeed.Speed == 150.0</Expectation><Expectation
+>DMI.MasterDMI().Out_PermittedSpeed.Speed == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="53a9a7f0-1c94-4a3e-9bdb-c2180da4fe03"
 >DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested == True</Expectation></Expectations>
