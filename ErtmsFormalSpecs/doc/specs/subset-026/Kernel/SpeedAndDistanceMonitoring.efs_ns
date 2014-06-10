@@ -656,7 +656,7 @@ V &lt; 30.0</PreCondition><PreCondition
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b286a8d9-d73a-4c9b-b746-0bdd2e873eac"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Chacks if the service brake is present and whther its use is allowed in the national values</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -695,7 +695,7 @@ V &lt; 30.0</PreCondition><PreCondition
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f3f297e1-a2c6-47b7-b7e9-90e061ae4b1f"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Provides the current permitted speed of the train, accounting for the speed and distance monitoring.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -919,7 +919,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
  Name="UpdateMonitoring"
  Guid="3343f3ef-10d0-4a24-9849-d799ebf3c545"
 >
-<Comment></Comment>
+<Comment>Update the speed and distance monitoring type</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -927,7 +927,12 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
  Name="Go to ceiling speed monitoring"
  Guid="f86a11bf-c055-4ee0-a054-75949711b635"
 >
-<Comment>If condition 1 is not satisfied for the new targets, go to ceiling speed monitoring.</Comment>
+<ReqRef
+ Id="c0c90876-1322-4533-951c-924804b80043"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ab90257e-23e9-4496-a48e-3bad8ad39ecd"
+>
+</ReqRef><Comment>If condition 1 is not satisfied for the new targets, go to ceiling speed monitoring.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -977,7 +982,17 @@ Monitoring &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
  Name="Go to target speed monitoring"
  Guid="1801c074-2a70-4502-94b1-94b11aedd3bc"
 >
-<Comment>If condition 1 and condition 2 are satisfied for the new targets, go to release speed monitoring.</Comment>
+<ReqRef
+ Id="32b65a6d-139f-482e-98ed-7dd88679ba95"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5d8434c7-38f3-4764-b638-6ba712cc6c9d"
+>
+</ReqRef><ReqRef
+ Id="f966f396-c00e-4f6b-945d-6cde4527e814"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee63718c-489e-4a57-9499-62830cdba5fb"
+>
+</ReqRef><Comment>If condition 1 and condition 2 are satisfied for the new targets, go to release speed monitoring.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1003,7 +1018,17 @@ Monitoring &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
  Name="Go to release speed monitoring"
  Guid="8773148e-05e9-4782-8d8d-7a7fa4b79f1c"
 >
-<Comment>If condition 1 is satisfied but condition 2 is not for the new targets, go to target speed monitoring.</Comment>
+<ReqRef
+ Id="5554abd5-d957-475f-aa3a-5ae657f9ccf3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a4f73ae6-7983-4110-b727-a925a9c5c0bc"
+>
+</ReqRef><ReqRef
+ Id="620d2411-2c42-403d-9139-cdb6a68c48b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="92909b20-78da-4073-8f44-5f39510dcdf4"
+>
+</ReqRef><Comment>If condition 1 is satisfied but condition 2 is not for the new targets, go to target speed monitoring.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1094,7 +1119,7 @@ Monitoring &lt;- MonitoringTypeSM.ReleaseSpeed</Action></Actions>
  Name="TriggerEBCommand"
  Guid="6b62b8c5-ce72-4fd2-917e-c093976d77cb"
 >
-<Comment></Comment>
+<Comment>Procedure to trigger the emergency brake</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -1140,7 +1165,7 @@ EBTriggered &lt;- True</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="beccff75-037b-431f-857e-14268cb1f690"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Handles the service brake command by activating the service brake, if allowed, or the emergency brake.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -1268,7 +1293,7 @@ SBSpecified &lt;- False</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="151cd4c2-dc23-4157-ba0a-737d821dcda9"
 >
-</ReqRef><Comment>Hendles the revocation of the traction cut-off command</Comment>
+</ReqRef><Comment>Handles the revocation of the traction cut-off command</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -2227,6 +2252,7 @@ EBTriggered &lt;- False</Action></Actions>
  Width="100"
  Height="50"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="TrainTripped"
  Guid="53d8badf-f08b-4d97-8f5e-710965ab272f"
 >
