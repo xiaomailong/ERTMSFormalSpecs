@@ -816,6 +816,7 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
  Name="Always"
  Guid="0690ccc9-34ff-4b71-8628-e586415e8cbd"
 >
+<Comment></Comment>
 <Expression>(REDUCE Gradients 
     USING  MIN ( RESULT, FUNCTION d : BaseTypes.Distance =&gt; GradientInfoProfile( GradientInfo =&gt; X, Distance =&gt; d, TrainLength =&gt; TrainData.TrainData.Value.TrainLength ) )
   INITIAL_VALUE BaseTypes.IndefiniteGradientFunction) (Distance)</Expression>

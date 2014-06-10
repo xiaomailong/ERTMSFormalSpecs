@@ -211,6 +211,7 @@
  Name="Value"
  Guid="aeee2a9d-0dc9-46c1-819a-97c42f1e0772"
 >
+<Comment></Comment>
 <Expression>Default.BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - TargetSupervision.T_traction (), X2 =&gt; 0.0 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -370,7 +371,7 @@
  Name="Value"
  Guid="32aacacd-a015-4db8-9358-18b1f08b683a"
 >
-<Expression>TargetSupervision.Aest2() * TargetSupervision.T_berem()</Expression>
+<Expression>Aest2() * TargetSupervision.T_berem()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -1072,7 +1073,6 @@ DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; Vtarget )</
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
- Cacheable="TRUE"
  Default=""
  X="220"
  Y="600"
@@ -1916,6 +1916,7 @@ DistanceForSpeed(
  Name="Value"
  Guid="8bdc9210-c59d-4c1b-9357-b46432397840"
 >
+<Comment></Comment>
 <Expression>d_SBI1 - TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &lt;= d_SBI2 - TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)</Expression>
 </Case></Cases>
 </Function></Functions>

@@ -317,7 +317,8 @@ MA.IsEOA ( MRSPnTarget )</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="92a5fe74-f56f-49fb-ad9b-59302ec14d54"
->d_I ( TargetSpeed(MRSPnTarget) ) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition><PreCondition
+><Comment></Comment>
+d_I ( TargetSpeed(MRSPnTarget) ) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition><PreCondition
  Guid="78b9ae74-6271-4ba4-ba19-6547ce837dfe"
 >MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>d_I ( TargetSpeed(MRSPnTarget) ) - TargetSpeed(MRSPnTarget) * T_preindication</Expression>
