@@ -12,6 +12,7 @@
 <Functions>
 <Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="20"
  Y="160"
@@ -86,6 +87,7 @@ TargetSupervision.EBD(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) &lt;
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="20"
  Y="220"
@@ -130,6 +132,7 @@ d_EBI ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditi
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="240"
  Y="220"
@@ -182,6 +185,7 @@ d_EBI ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditi
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="130"
  Y="160"
@@ -224,6 +228,7 @@ d_EBI ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditi
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="130"
  Y="300"
@@ -378,6 +383,7 @@ d_I( FirstTargetFromLocation(MRSPnTarget.Location).Speed) &lt;= MRSPnEnd(MRSPnTa
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="130"
  Y="220"
@@ -410,6 +416,7 @@ d_I( FirstTargetFromLocation(MRSPnTarget.Location).Speed) &lt;= MRSPnEnd(MRSPnTa
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="240"
  Y="160"
@@ -480,6 +487,7 @@ d_SBI2 ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreCondit
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="20"
  Y="300"
@@ -543,6 +551,7 @@ TargetsList() != []</PreCondition></PreConditions>
 </Case></Cases>
 </Function><Function
  Type="TargetSupervision.Target"
+ Cacheable="TRUE"
  Default=""
  Width="100"
  Height="50"
@@ -581,6 +590,7 @@ INITIAL_VALUE TargetSupervision.Target{
 </Case></Cases>
 </Function><Function
  Type="TargetSupervision.Target"
+ Cacheable="TRUE"
  Default=""
  X="110"
  Width="100"
@@ -620,6 +630,7 @@ INITIAL_VALUE TargetSupervision.Target{
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
  Default=""
  X="220"
  Width="100"
@@ -666,6 +677,7 @@ Target == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceInterva
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="330"
  Width="100"
@@ -704,6 +716,7 @@ MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceIn
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="440"
  Width="100"
@@ -730,6 +743,7 @@ MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceIn
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Cacheable="TRUE"
  Default=""
  Width="100"
  Height="50"

@@ -978,6 +978,11 @@ namespace DataDictionary.Functions
         private Values.IValue CachedValue = null;
 
         /// <summary>
+        /// The cached results for this function
+        /// </summary>
+        private Dictionary<Values.IValue, Values.IValue> CachedResult = null;
+
+        /// <summary>
         /// Provides the value of the function
         /// </summary>
         /// <param name="instance">the instance on which the function is evaluated</param>
@@ -986,6 +991,26 @@ namespace DataDictionary.Functions
         public virtual Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals)
         {
             Values.IValue retVal = CachedValue;
+
+            Values.IValue cachingActual = null;
+            if (retVal == null)
+            {
+                if (getCacheable() && actuals.Count == 1)
+                {
+                    if (CachedResult == null)
+                    {
+                        CachedResult = new Dictionary<Values.IValue, Values.IValue>();
+                    }
+
+                    // Take the result according to the first parameter (there is only one parameter)
+                    foreach (Values.IValue actual in actuals.Values)
+                    {
+                        cachingActual = actual;
+                        CachedResult.TryGetValue(actual, out retVal);
+                        break;
+                    }
+                }
+            }
 
             if (retVal == null)
             {
@@ -996,6 +1021,20 @@ namespace DataDictionary.Functions
                     // Statically defined function
                     foreach (Case aCase in Cases)
                     {
+                        // Caches the function for this call if need be
+                        if (getCacheable())
+                        {
+                            Interpreter.Call call = aCase.Expression as Interpreter.Call;
+                            if (call != null)
+                            {
+                                if (call.CachedFunction == null)
+                                {
+                                    call.CachedFunction = call.getFunction(context);
+                                }
+                            }
+                        }
+
+                        // Evaluate the function
                         if (aCase.EvaluatePreConditions(context))
                         {
                             retVal = aCase.Expression.GetValue(context);
@@ -1044,9 +1083,16 @@ namespace DataDictionary.Functions
                 }
                 context.LocalScope.PopContext(token);
 
-                if (getCacheable() && actuals.Count == 0)
+                if (getCacheable())
                 {
-                    CachedValue = retVal;
+                    if (actuals.Count == 0)
+                    {
+                        CachedValue = retVal;
+                    }
+                    if (actuals.Count == 1)
+                    {
+                        CachedResult[cachingActual] = retVal;
+                    }
                 }
             }
 
@@ -1270,6 +1316,15 @@ namespace DataDictionary.Functions
         public void ClearCache()
         {
             CachedValue = null;
+            CachedResult = null;
+            foreach (Case aCase in Cases)
+            {
+                Interpreter.Call call = aCase.Expression as Interpreter.Call;
+                if (call != null)
+                {
+                    call.CachedFunction = null;
+                }
+            }
             Graph = null;
             Surface = null;
         }
