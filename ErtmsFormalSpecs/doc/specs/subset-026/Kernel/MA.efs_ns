@@ -1110,6 +1110,7 @@ INITIAL_VALUE CreateTarget (
  Name="EOA"
  Guid="7c9cf2ee-5868-4b21-85b0-08809d88d4a1"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0b34f057-a897-49ad-8c7c-70b508ae5178"
@@ -1144,6 +1145,7 @@ INITIAL_VALUE CreateTarget (
  Name="Value"
  Guid="e8cfa57a-9d6e-4848-96dc-49781bb162b5"
 >
+<Comment></Comment>
 <Expression>Available ( MA ) AND MA.TargetSpeed == 0.0</Expression>
 </Case></Cases>
 </Function><Function
@@ -1203,7 +1205,8 @@ INITIAL_VALUE CreateTarget (
 <PreConditions>
 <PreCondition
  Guid="61aaf608-32c4-4026-a55c-a9828eaacc69"
->Distance &lt; EndOfMovementAuthority().Location</PreCondition></PreConditions>
+><Comment></Comment>
+Distance &lt; EndOfMovementAuthority().Location</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="After LOA"

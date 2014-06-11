@@ -12,6 +12,7 @@
 <Functions>
 <Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  Y="60"
  Width="100"
@@ -38,10 +39,15 @@
  Name="d_SBI1"
  Guid="4c1a9b99-6a0a-4f9b-a33e-0cbe40c7680b"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="abbce78f-6895-49a0-a931-84443bad052d"
->TargetSupervision.d_SBI1 ( V ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt;= ReleaseSpeedSupervision.d_SBI2 ( V ) - TrainPosition.FrontEndPosition ( DistanceInterval.Max )</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSupervision.SBI1BelowSBI2(
+    d_SBI1=&gt; TargetSupervision.d_SBI1 ( V ),
+    d_SBI2=&gt; d_SBI2 ( V )
+)</PreCondition></PreConditions>
 <Expression>TargetSupervision.d_SBI1 ( V )</Expression>
 </Case><Case
  Name="d_SBI2"
@@ -88,6 +94,7 @@ STOP_CONDITION
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="220"
  Y="60"
@@ -133,6 +140,7 @@ STOP_CONDITION
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="330"
  Y="60"
@@ -214,6 +222,7 @@ STOP_CONDITION
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="550"
  Y="60"
@@ -245,6 +254,7 @@ BaseTypes.MaxDistance
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="660"
  Y="60"
@@ -363,6 +373,7 @@ BaseTypes.MaxDistance
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  Y="120"
  Width="100"
@@ -393,6 +404,7 @@ BaseTypes.MaxDistance
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="110"
  Y="120"
@@ -426,6 +438,7 @@ BaseTypes.MaxDistance
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
  Default=""
  X="220"
  Y="120"
@@ -516,8 +529,8 @@ INITIAL_VALUE
 >
 <Comment></Comment>
 <Expression>REDUCE
-    TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) |
-        d_tripEOA() &lt;= X.Location AND X.Location &lt; MA.SvL().Location
+    TargetsList() |
+        ReleaseSpeedSupervision.d_tripEOA() &lt;= X.Location AND X.Location &lt; MA.SvL().Location
 USING
     BaseTypes.MinSpeed ( X1 =&gt; ComputeReleaseSpeedForTarget ( X.Speed ), X2 =&gt; RESULT )
 INITIAL_VALUE

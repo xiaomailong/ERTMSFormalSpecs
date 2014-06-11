@@ -27332,7 +27332,8 @@ Tindication = max { ( 0.8 * Tbs ) , 5s }<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="f2fce73d-5175-4ff3-b291-e58c2a114765"
->Release speed supervision limits<Sub>
+><Comment></Comment>
+Release speed supervision limits<Sub>
 <Paragraph
  id="3.13.9.4.1"
  guid=""
@@ -28832,7 +28833,8 @@ Requirements for Target speed monitoring<Sub>
  functionalBlockName=""
  Name=""
  Guid="96719821-5827-4475-bf1c-8200e9c230e4"
->The on-board equipment shall display to the driver the information related to one target at a time: the Most Restrictive Displayed Target (MRDT). The MRDT shall be defined as the target of which the braking to target Permitted speed supervision limit (refer to section 3.13.9.3.5), calculated for the current position of the train, is the lowest one amongst the supervised targets:
+><Comment></Comment>
+The on-board equipment shall display to the driver the information related to one target at a time: the Most Restrictive Displayed Target (MRDT). The MRDT shall be defined as the target of which the braking to target Permitted speed supervision limit (refer to section 3.13.9.3.5), calculated for the current position of the train, is the lowest one amongst the supervised targets:
 V_P_MRDT = min { V_P_EOA (d_estfront), V_P_SvL (d_maxsafefront), V_P_Target1 (d_maxsafefront), ..., V_P_Targetn (d_maxsafefront) }<Sub>
 <Paragraph
  id="3.13.10.4.2.1"
@@ -30604,7 +30606,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  functionalBlockName=""
  Name=""
  Guid="32b65a6d-139f-482e-98ed-7dd88679ba95"
->[1]; (The train has passed with its max safe front end the pre-indication location calculated from an EBD) OR (The train has passed with its estimated front end the pre-indication location calculated from the SBD); LEAVES CSM; REACH TSM;<RequirementSets>
+><Comment></Comment>
+[1]; (The train has passed with its max safe front end the pre-indication location calculated from an EBD) OR (The train has passed with its estimated front end the pre-indication location calculated from the SBD); LEAVES CSM; REACH TSM;<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="8d142390-bc49-4d71-a6c5-3f0f36d63dbd"

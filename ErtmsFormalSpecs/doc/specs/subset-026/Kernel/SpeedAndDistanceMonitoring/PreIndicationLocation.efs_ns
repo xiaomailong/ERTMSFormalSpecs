@@ -12,6 +12,7 @@
 <Functions>
 <Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="20"
  Y="160"
@@ -54,6 +55,7 @@
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="20"
  Y="220"
@@ -79,6 +81,17 @@
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="EBD below Vmrsp"
+ Guid="b84a4309-4864-4808-b874-1bfb9199b206"
+>
+<Comment>This case occurs when the EBD curve is less than the MRSP speed for all distances</Comment>
+<PreConditions>
+<PreCondition
+ Guid="84471b54-f275-455e-92d5-7c7965c4c2ac"
+><Comment></Comment>
+d_EBI ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="Value"
  Guid="6f89c598-f655-4f78-82da-514e35c14b27"
 >
@@ -86,6 +99,7 @@
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="240"
  Y="220"
@@ -128,6 +142,7 @@
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="130"
  Y="160"
@@ -169,6 +184,7 @@
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="130"
  Y="300"
@@ -202,12 +218,66 @@
 </ReqRef><Parameters>
 <Parameter
  Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
- Name="MRSPn"
+ Name="MRSPnTarget"
  Guid="157d4132-628f-4d83-ba3d-e059b7db2413"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="d_I in rear of train"
+ Guid="0e479194-ecac-4abe-bc9e-ca85dcaa8ba9"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="5a958cda-e0be-4be2-bd2b-8d2f74669d4e"
+>d_I(TargetSpeed(MRSPnTarget)) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
+ Name="EOA, first case, first target"
+ Guid="eb671805-cce5-4414-a514-eed6e3bf85a1"
+>
+<Comment>The target, MRSPn, is the first supervised target. Check that the pre-indication location is before the target location and that the target corresponds to the EOA.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="fc16468a-6924-4133-b14a-ade23fc4a302"
+><Comment></Comment>
+d_I ( TargetSpeed(MRSPnTarget) ) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition><PreCondition
+ Guid="53520f03-8e9f-47cf-a003-6a8a5a346744"
+><Comment></Comment>
+MA.IsEOA ( MRSPnTarget )</PreCondition><PreCondition
+ Guid="6e0306cd-0b5a-4339-8626-25b6e5b0163b"
+>MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition></PreConditions>
+<Expression>d_I_EOA ( TargetSpeed(MRSPnTarget) ) - TargetSpeed(MRSPnTarget) * T_preindication</Expression>
+</Case><Case
+ Name="Other target, first case, first target"
+ Guid="36fb1b87-ff1a-4e42-8266-a19564ee33b2"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="92a5fe74-f56f-49fb-ad9b-59302ec14d54"
+><Comment></Comment>
+d_I ( TargetSpeed(MRSPnTarget) ) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition><PreCondition
+ Guid="78b9ae74-6271-4ba4-ba19-6547ce837dfe"
+>MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition></PreConditions>
+<Expression>d_I ( TargetSpeed(MRSPnTarget) ) - TargetSpeed(MRSPnTarget) * T_preindication</Expression>
+</Case><Case
+ Name="Second case, first target"
+ Guid="3189c7a3-2665-41cc-992e-f234cfbde7d0"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="14678d4c-8a8c-49e3-99ba-0284c32a0363"
+>MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition><PreCondition
+ Guid="fea3478d-454f-4a14-b807-f7c9564ad8a4"
+>MRSPnEnd(MRSPnTarget) &lt; d_I ( TargetSpeed(MRSPnTarget) )</PreCondition><PreCondition
+ Guid="75a229f0-84ec-4f4b-aa86-b24afaa035d4"
+><Comment></Comment>
+d_I( FirstTargetFromLocation(MRSPnTarget.Location).Speed) &lt;= MRSPnEnd(MRSPnTarget)</PreCondition></PreConditions>
+<Expression>MRSPnEnd(MRSPnTarget)- TargetSpeed(MRSPnTarget) * T_preindication</Expression>
+</Case><Case
  Name="EOA, first case"
  Guid="e4ed753d-ac09-403e-afd3-fb72a28b9706"
 >
@@ -254,6 +324,7 @@ PreIndicationLocation.d_I
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="130"
  Y="220"
@@ -269,7 +340,8 @@ PreIndicationLocation.d_I
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4f0cf09c-99e9-4558-a36c-4918bebb9dae"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment></Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vmrsp"
@@ -285,6 +357,7 @@ PreIndicationLocation.d_I
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="240"
  Y="160"
@@ -326,6 +399,7 @@ PreIndicationLocation.d_I
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="20"
  Y="300"
@@ -357,13 +431,249 @@ PreIndicationLocation.d_I
  Guid="169ec5bc-d765-443a-ab45-0d5c7dbbd232"
 >
 </ReqRef><Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Dist"
+ Guid="dd0e23cc-61ac-4b6c-b7ad-f514388faa4b"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
  Guid="77b61b8d-bb27-49b3-95c5-027e22b5eba2"
 >
 <Comment></Comment>
-<Expression>Compute_d_preindication ( FIRST_IN TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) )</Expression>
+<PreConditions>
+<PreCondition
+ Guid="3bf6d470-f45b-45d0-864a-c216d2eeb181"
+><Comment></Comment>
+TargetsList() != []</PreCondition></PreConditions>
+<Expression>Compute_d_preindication(FirstTargetFromLocation(Dist))</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="2864273a-427e-4862-800f-f42bb985cd36"
+>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case></Cases>
+</Function><Function
+ Type="TargetSupervision.Target"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FirstTargetFromLocation"
+ Guid="1bfac524-ef3a-4bec-ab1d-e335238c2eb3"
+>
+<Comment>Returns the closest supervised target starting from the given distance</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="95084f68-3dff-4058-9ea7-3a6ec38f061d"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="19821ff7-4f2c-4fd6-98fd-3956af5e3468"
+>
+<Comment></Comment>
+<Expression>REDUCE TargetsList()
+    | X.Location &gt; Distance
+
+USING MA.ClosestTarget(
+    Target1=&gt;X,
+    Target2=&gt;RESULT
+    )
+
+INITIAL_VALUE TargetSupervision.Target{
+    Location =&gt; Default.BaseTypes.Distance.Infinity,
+    Speed =&gt; 0.0,
+    Length =&gt; 0.0
+    }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="TargetSupervision.Target"
+ Cacheable="TRUE"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="LastTargetBeforeLocation"
+ Guid="9ed8902a-0e3a-4632-b9ba-f33bd06eabc0"
+>
+<Comment>Returns the closest supervised target prior to the given distance</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="3bbf31b7-6a4e-434f-8914-59260f9671ae"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="b687c5ce-6563-4fe2-8d27-34b0eb533aa8"
+>
+<Comment></Comment>
+<Expression>REDUCE TargetsList()
+    | X.Location &lt; Distance
+
+USING MA.ClosestTarget(
+    Target1=&gt;X,
+    Target2=&gt;RESULT
+    )
+
+INITIAL_VALUE TargetSupervision.Target{
+    Location =&gt; Default.BaseTypes.Distance.Infinity,
+    Speed =&gt; 0.0,
+    Length =&gt; 0.0
+    }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Name="TargetSpeed"
+ Guid="05c1bbb0-78af-4897-869a-9f35a6af1735"
+>
+<Comment>Returns the speed of the section prior to the given target</Comment>
+<Parameters>
+<Parameter
+ Type="TargetSupervision.Target"
+ Name="Target"
+ Guid="c8c68614-6f99-412d-82c4-e17eee5450af"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Target is the first supervised target"
+ Guid="7fa1ab9f-ed7c-4578-b42e-3a4f230aaf9e"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="6c89e2c5-c672-4783-b6b8-0d417cf0f735"
+><Comment></Comment>
+Target == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+<Expression>MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Expression>
+</Case><Case
+ Name="The section ending at the target is not speed restricted"
+ Guid="19b306b3-2404-42ce-8135-a9cd9a1839e4"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="45beedbc-f467-47d2-8bf3-c143f1c8be4b"
+>NOT LocationIsInSpeedRestriction(MRSPnEnd(Target))</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="35c09766-18ba-4b49-b7eb-7cf4f9834d95"
+>
+<Comment></Comment>
+<Expression>LastTargetBeforeLocation(Target.Location).Speed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ X="330"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MRSPnStart"
+ Guid="6563c271-64a9-49ee-bc23-84deb7b6c577"
+>
+<Comment>Returns the start of the section n of the MRSP</Comment>
+<Parameters>
+<Parameter
+ Type="TargetSupervision.Target"
+ Name="MRSPnTarget"
+ Guid="ccb79e6e-be9c-4165-a11d-92e054b266b0"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="First target"
+ Guid="05cacc0c-a6d9-4bea-a10a-1c28395dacc5"
+>
+<Comment>If the target provided is the end of the first section, returns the current train position</Comment>
+<PreConditions>
+<PreCondition
+ Guid="75c33eaf-bfaf-4252-b19c-44d3c2ff41eb"
+><Comment></Comment>
+MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+<Expression>TrainPosition.FrontEndPosition(DistanceInterval.Nom)</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="87f6d9cb-b75e-422b-9c16-26bce5e8782b"
+>
+<Comment>Otherwise, returns the start of the previous section</Comment>
+<Expression>LastTargetBeforeLocation(MRSPnTarget.Location).Location</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ X="440"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="MRSPnEnd"
+ Guid="4a78452c-b5fc-4097-88d0-af70982d4d6d"
+>
+<Comment>Provides the end of the section whose target is MRSPnTarget. That position is MRSPnTarget.Location.</Comment>
+<Parameters>
+<Parameter
+ Type="TargetSupervision.Target"
+ Name="MRSPnTarget"
+ Guid="a2bac124-a9bd-4d25-b70a-a1a749f16359"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="a63fe036-d18e-4155-8563-db3757062ac9"
+>
+<Comment></Comment>
+<Expression>MRSPnTarget.Location</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="LocationIsInSpeedRestriction"
+ Guid="9ec67ff1-9424-4fad-a766-c562a875bbde"
+>
+<Comment>Checks the list of TARGETS for any that englobe the distance provided as parameter</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Dist"
+ Guid="debcb987-8faf-4c20-ad94-137d4b228123"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Distance is in the range of a target"
+ Guid="7728236a-d7fe-40c3-9417-ee0dd230e10c"
+>
+<Comment>Dist is measured from the LRBG</Comment>
+<Expression>THERE_IS_IN TargetsList() |  (X.Location &lt; Dist) AND (X.Location + Default.BaseTypes.LengthToDistance(X.Length) &gt;= Dist)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>

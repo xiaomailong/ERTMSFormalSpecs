@@ -608,7 +608,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Name="Value"
  Guid="81ce4b17-e0fc-4fcf-b185-424a867a20b1"
 >
-<Expression>FIRST_IN Profile | NOT DistanceIsWithinAModeProfile ( X )</Expression>
+<Expression>FIRST_IN Profile | NOT DistanceIsWithinAModeProfile ( X ) AND (X.Mode != Mode)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

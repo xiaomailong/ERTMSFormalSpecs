@@ -28301,7 +28301,8 @@
  Guid="3f75235a-e323-43ef-9e0b-1ba067b76b84"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
  Guid="d485d2e1-a9ae-442c-842d-da21bf6981b1"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+><Comment></Comment>
+DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28327,7 +28328,7 @@
  Guid="22775692-dce2-456a-a9b0-a675d03bef8c"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="bebadbf7-9fe1-4176-bb96-03c0a707c2ab"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28479,7 +28480,7 @@
  Guid="20f4b467-78af-49d0-aecb-36100fc7c4d8"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
  Guid="8e189f11-5065-4e72-b720-1e1e9109afa7"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+>Kernel.Level.Value &lt;- Default.Level.L0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28601,7 +28602,7 @@
  Guid="46324595-9049-49c0-9ac9-01206454a0c0"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
  Guid="01fe8325-0fdd-4543-95e0-84013e7b46eb"
->Kernel.Level.Value &lt;- Level.LNTC</Action><Action
+>Kernel.Level.Value &lt;- Default.Level.LNTC</Action><Action
  Guid="b550d5c9-0f10-485b-9117-fd2cb5107d88"
 >Kernel.NationalSystemId &lt;- 254</Action></Actions>
 <Expectations>
@@ -28667,9 +28668,9 @@
 <Actions>
 <Action
  Guid="41d6038f-c364-47bb-a0d8-ce2dd04e521e"
->Kernel.Mode &lt;- Mode.FS</Action><Action
+>Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="b949af88-60f5-4a13-8af0-019dc65edcb1"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28680,10 +28681,12 @@
 >DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested == True</Expectation><Expectation
  Kind="Instantaneous"
  Guid="b92c35f8-d83b-4300-b529-f01c914e081e"
->DMI.MasterDMI().Out_PermittedSpeed.Speed == 150.0</Expectation><Expectation
+>DMI.MasterDMI().Out_PermittedSpeed.Speed == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="241edbca-c11f-4d86-836a-aae340042de9"
->Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) == 150.0</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]
+AND
+Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) == 40.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -28702,12 +28705,12 @@
 <Actions>
 <Action
  Guid="6da3ea39-289a-4a7f-a18f-d7b7b064483c"
->DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.ShowRequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="7dc91106-ccd2-417d-8a36-ba2fb55ff012"
->DMI.MasterDMI().Out_PermittedSpeed.Speed == 150.0</Expectation><Expectation
+>DMI.MasterDMI().Out_PermittedSpeed.Speed == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="53a9a7f0-1c94-4a3e-9bdb-c2180da4fe03"
 >DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested == True</Expectation></Expectations>
@@ -28729,7 +28732,7 @@
 <Actions>
 <Action
  Guid="ca62f2f2-0aec-4c18-8290-aa8d58d20721"
->DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.HideRequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.HideRequestStatus &lt;- Default.Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28772,7 +28775,7 @@
 <Actions>
 <Action
  Guid="22a6a211-8ec6-4545-baa9-bf83216205e3"
->Kernel.Mode &lt;- Mode.LS</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28799,7 +28802,7 @@
 <Actions>
 <Action
  Guid="e6db1ff6-6d53-4bb3-8d71-483ce5090db7"
->DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.ShowRequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28826,7 +28829,7 @@
 <Actions>
 <Action
  Guid="b8358914-8606-42a9-b005-10cc041f64f3"
->DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.HideRequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.HideRequestStatus &lt;- Default.Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28861,7 +28864,7 @@
 <Actions>
 <Action
  Guid="e046dee0-b796-4ab2-81c6-e4fd17e2f5e8"
->Kernel.Mode &lt;- Mode.SF</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28888,7 +28891,7 @@
 <Actions>
 <Action
  Guid="02fd715f-fd0d-47d6-b63f-9629eb49ca29"
->DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.ShowRequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28912,7 +28915,7 @@
 <Actions>
 <Action
  Guid="7ab6b8db-4d0b-4c5f-8f12-95ea7eb913fa"
->DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.HideRequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.HideRequestStatus &lt;- Default.Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28947,7 +28950,7 @@
 <Actions>
 <Action
  Guid="e5c9e501-65f1-4611-b108-d3a2817f48cb"
->Kernel.Mode &lt;- Mode.SN</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.SN</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28974,7 +28977,7 @@
 <Actions>
 <Action
  Guid="7913cbb0-bf27-43a7-8c37-b467d0610be0"
->DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.ShowRequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -29001,7 +29004,7 @@
 <Actions>
 <Action
  Guid="9dad9ada-a114-41fd-8edb-cfa6154ed37c"
->DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.HideRequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.HideRequestStatus &lt;- Default.Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

@@ -444,7 +444,8 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="8048d974-8d79-4ccd-a45c-69c329066a0a"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+><Comment></Comment>
+EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
 {
     MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
@@ -506,7 +507,7 @@ Messages.EUROBALISE.SubStructure1
                    Q_DIR=&gt; Messages.Q_DIR.Nominal,
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                   V_MAMODE=&gt;1,
+                   V_MAMODE=&gt;6,
                    Sequence1=&gt;[] 
                 }
 }
@@ -559,7 +560,8 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="8061d583-1e43-4cca-a541-fc2e1f0cefbf"
->Odometry.EstimatedSpeed &lt;- 60.0</Action><Action
+><Comment></Comment>
+Odometry.EstimatedSpeed &lt;- 60.0</Action><Action
  Guid="70cf7ff9-be6f-41f0-a81f-d6a2bd7c0d35"
 >EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
@@ -578,7 +580,7 @@ Messages.EUROBALISE.SubStructure1
         NID_PACKET =&gt; 15,
         Q_DIR =&gt; Messages.Q_DIR.Nominal,
         L_PACKET =&gt; 0,
-        Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
+        Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
         V_LOA =&gt; 0,
         T_LOA =&gt; 0,
         N_ITER =&gt; 1,
@@ -623,7 +625,7 @@ Messages.EUROBALISE.SubStructure1
                    Q_DIR=&gt; Messages.Q_DIR.Nominal,
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                   V_MAMODE=&gt;1,
+                   V_MAMODE=&gt;6,
                    Sequence1=&gt;[] 
                 }
 }

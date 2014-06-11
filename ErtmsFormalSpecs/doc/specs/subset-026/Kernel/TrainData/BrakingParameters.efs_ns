@@ -2637,6 +2637,7 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
  Name="Value"
  Guid="df4c2cd5-feb1-4ab0-84ee-921884ad8dae"
 >
+<Comment></Comment>
 <Expression>T_brake_build_upValue
 (
     aT_brake_build_upSet =&gt; TrainData.Value.T_brake_emergency,
@@ -3156,10 +3157,12 @@ TIU.AdditionalBrakesActive
  Name="From train data"
  Guid="d552fcb6-c877-4239-9b04-3d0536f09586"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="582da4e0-6e76-4b81-a447-5b6e54f765f4"
->TrainData.Value.EBModels != EMPTY</PreCondition></PreConditions>
+><Comment></Comment>
+TrainData.Value.EBModels != EMPTY</PreCondition></PreConditions>
 <Expression>Kdry_rst ( V =&gt; V, M_NVEBCL =&gt; NationalValues.ApplicableNationalValues.Value.ConfLevelForEmergBrakeSafeDecelerationOnDryRails ) * 
 (Kwet_rst ( V ) + NationalValues.ApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion *
 ( 1.0 - Kwet_rst ( V ) ) )  *
@@ -3715,6 +3718,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="Adhesion factor available (trackside)"
  Guid="1c725946-6c2b-41b4-bbdc-f777fe70b06d"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="88c8921b-90df-41a3-a96a-a6260d334476"
@@ -4056,7 +4060,8 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <PreConditions>
 <PreCondition
  Guid="dd999ea0-c422-414e-b803-3070d30c2252"
->TrainData.Value.T_brake_emergency != EMPTY</PreCondition></PreConditions>
+><Comment></Comment>
+TrainData.Value.T_brake_emergency != EMPTY</PreCondition></PreConditions>
 <Expression>T_brake_emergency ()</Expression>
 </Case><Case
  Name="From conversion model"

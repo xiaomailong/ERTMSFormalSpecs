@@ -210,11 +210,21 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
+        /// The cached function for this call
+        /// </summary>
+        public Function CachedFunction = null;
+
+        /// <summary>
         /// The function which is called by this call statement
         /// </summary>
         public Functions.Function getFunction(InterpretationContext context)
         {
-            Functions.Function retVal = getCalled(context) as Functions.Function;
+            Functions.Function retVal = CachedFunction;
+
+            if (retVal == null)
+            {
+                retVal = getCalled(context) as Functions.Function;
+            }
 
             return retVal;
         }
