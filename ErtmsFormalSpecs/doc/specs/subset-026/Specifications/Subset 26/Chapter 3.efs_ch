@@ -5208,7 +5208,8 @@ General<Sub>
  functionalBlockName=""
  Name=""
  Guid="e249c65e-2618-4df7-b69d-97ced56922b4"
->Data that refers only to a given location, referred to as Location data (e.g. level transition orders, linking)<RequirementSets>
+><Comment></Comment>
+Data that refers only to a given location, referred to as Location data (e.g. level transition orders, linking)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="ee6d6c5e-44e3-4761-9978-5143cce2f4d3"
@@ -5285,7 +5286,8 @@ General<Sub>
  functionalBlockName=""
  Name=""
  Guid="3dbd1b48-23b6-40f9-a38e-77df9cc1ed68"
->The Train Position information defines the position of the train front in relation to a balise group, which is called LRBG (the Last Relevant Balise Group). It includes:<Sub>
+><Comment></Comment>
+The Train Position information defines the position of the train front in relation to a balise group, which is called LRBG (the Last Relevant Balise Group). It includes:<Sub>
 <Paragraph
  id="3.6.1.3.1"
  guid=""
@@ -5350,7 +5352,8 @@ General<Sub>
  functionalBlockName=""
  Name=""
  Guid="4f6dd5a0-a24c-40f0-8757-8c0c86cc2c43"
->- Directional train position information in reference to the balise group orientation (see 3.4.2, also Figure 14) of the LRBG, regarding:<Sub>
+><Comment></Comment>
+- Directional train position information in reference to the balise group orientation (see 3.4.2, also Figure 14) of the LRBG, regarding:<Sub>
 <Paragraph
  id="3.6.1.3.3.1"
  guid=""
@@ -5478,7 +5481,7 @@ In case of an LRBG being a single balise group with no co-ordinate system assign
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5537,7 +5540,7 @@ In case of an LRBG being a single balise group with no co-ordinate system assign
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5597,7 +5600,8 @@ In case of an LRBG being a single balise group with no co-ordinate system assign
  functionalBlockName=""
  Name=""
  Guid="2769ca6b-79c5-4746-84a1-cf3b2700b103"
->Location of Data Transmitted to the On-Board Equipment<Sub>
+><Comment></Comment>
+Location of Data Transmitted to the On-Board Equipment<Sub>
 <Paragraph
  id="3.6.2.1"
  guid=""
@@ -5619,7 +5623,7 @@ In case of an LRBG being a single balise group with no co-ordinate system assign
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5647,7 +5651,8 @@ In case of an LRBG being a single balise group with no co-ordinate system assign
  functionalBlockName=""
  Name=""
  Guid="8b217b42-66a2-4d1c-91be-7e3f8fbf8eed"
->Exception: Regarding infill information see section 3.6.2.3.1.<RequirementSets>
+><Comment></Comment>
+Exception: Regarding infill information see section 3.6.2.3.1.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="913c5637-71d0-40c1-a3c2-e80affcab06b"
@@ -5694,7 +5699,8 @@ In case of an LRBG being a single balise group with no co-ordinate system assign
  functionalBlockName=""
  Name=""
  Guid="1800bf83-b2c2-4d37-8406-ca0c31b30f0b"
->All location and profile data transmitted from the RBC shall refer to the location reference and orientation of the LRBG given in the same message.<RequirementSets>
+><Comment></Comment>
+All location and profile data transmitted from the RBC shall refer to the location reference and orientation of the LRBG given in the same message.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7a4bce6b-36e3-4761-bc7d-de75de3adda6"
@@ -5739,7 +5745,8 @@ For the LRBG the following requirements have to be met:
  functionalBlockName=""
  Name=""
  Guid="e69a91d2-e0c4-4628-9343-c53594060aea"
->Exception to a): When on-board position is unknown or when position data has been deleted during SoM procedure, the on-board equipment shall use an LRBG identifier set to &quot;unknown&quot; until the onboard has validated its position again by passing a balise group.<RequirementSets>
+><Comment></Comment>
+Exception to a): When on-board position is unknown or when position data has been deleted during SoM procedure, the on-board equipment shall use an LRBG identifier set to &quot;unknown&quot; until the onboard has validated its position again by passing a balise group.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="38393982-d723-4d6c-92a4-46bafeeaad0a"
@@ -5903,7 +5910,8 @@ For the LRBG the following requirements have to be met:
  functionalBlockName=""
  Name=""
  Guid="1587a8a9-9373-4d3f-a6b8-b43556dcea18"
->Note: The orientation of infill information given by an infill device is defined in reference to (see also section 3.9):
+><Comment></Comment>
+Note: The orientation of infill information given by an infill device is defined in reference to (see also section 3.9):
 	- In case of a balise group, the orientation of the balise group sending the infill information 
 	- In case of loop, the orientation indicated by the End Of Loop Marker
 	- In case of radio, the orientation of the LRBG indicated in the message<RequirementSets>
@@ -6590,7 +6598,8 @@ All location related information transmitted from trackside equipment shall be u
  functionalBlockName=""
  Name=""
  Guid="8a1fe4ea-dcfd-4748-bc1e-b8b0be8aa8e0"
->On-board over-reading amount and under-reading amount (odometer accuracy plus the error in detection of the balise group location reference)<RequirementSets>
+><Comment></Comment>
+On-board over-reading amount and under-reading amount (odometer accuracy plus the error in detection of the balise group location reference)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a732ded0-1880-4a9e-b115-9c13d4834d82"
