@@ -519,7 +519,7 @@ namespace DataDictionary.Interpreter
                             break;
 
                         case OPERATOR.IN:
-                            {                
+                            {
                                 rightValue = Right.GetValue(context);
                                 if (rightValue != null)
                                 {
@@ -531,7 +531,7 @@ namespace DataDictionary.Interpreter
                                 }
                                 if (Left.Name.Contains("EddyCurrentBrakeInterface"))
                                 {
-                                //    System.Diagnostics.Debugger.Break();
+                                    //    System.Diagnostics.Debugger.Break();
                                 }
                             }
                             break;
@@ -565,7 +565,7 @@ namespace DataDictionary.Interpreter
             {
                 if (explain)
                 {
-                    CompleteExplanation(previous, Name + " = " + explainNamable(retVal));
+                    CompleteExplanation(previous, Name + " = ", retVal);
                 }
             }
 

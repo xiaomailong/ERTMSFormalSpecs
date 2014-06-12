@@ -992,10 +992,12 @@ namespace DataDictionary.Functions
         {
             Values.IValue retVal = CachedValue;
 
+            bool useCache = getCacheable() && !context.HasSideEffects;
+
             Values.IValue cachingActual = null;
             if (retVal == null)
             {
-                if (getCacheable() && actuals.Count == 1)
+                if (useCache && actuals.Count == 1)
                 {
                     if (CachedResult == null)
                     {
@@ -1022,7 +1024,7 @@ namespace DataDictionary.Functions
                     foreach (Case aCase in Cases)
                     {
                         // Caches the function for this call if need be
-                        if (getCacheable())
+                        if (useCache)
                         {
                             Interpreter.Call call = aCase.Expression as Interpreter.Call;
                             if (call != null)
@@ -1083,7 +1085,7 @@ namespace DataDictionary.Functions
                 }
                 context.LocalScope.PopContext(token);
 
-                if (getCacheable())
+                if (useCache)
                 {
                     if (actuals.Count == 0)
                     {

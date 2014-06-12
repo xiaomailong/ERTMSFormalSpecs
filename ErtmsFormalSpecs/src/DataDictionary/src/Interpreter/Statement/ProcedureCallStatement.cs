@@ -258,6 +258,8 @@ namespace DataDictionary.Interpreter.Statement
                 Functions.Procedure procedure = Call.getProcedure(ctxt);
                 if (procedure != null)
                 {
+                    ctxt.HasSideEffects = true;
+
                     // If the procedure has been defined in a structure, 
                     // ensure that it is applied to an instance of that structure
                     Types.Structure structure = procedure.Enclosing as Types.Structure;
