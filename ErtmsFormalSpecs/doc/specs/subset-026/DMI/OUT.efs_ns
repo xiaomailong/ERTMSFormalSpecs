@@ -2865,6 +2865,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="59591595-be1f-4ff6-b1b2-ae6dd16c7532"
 >
+</ReqRef><ReqRef
+ Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc07a549-5d16-45d6-b97e-f5ae67bc78a6"
+>
 </ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
@@ -2910,7 +2915,8 @@
 <Actions>
 <Action
  Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
->Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</Action></Actions>
+><Comment></Comment>
+Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement

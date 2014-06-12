@@ -6,6 +6,7 @@
  Name="CeilingSupervision"
  Guid="81bdbc9f-ad93-486d-b739-3c5d7f7e1987"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Functions>
@@ -73,7 +74,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="09f7987e-49db-4a3a-8f92-5deaaa989a2f"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>C_sbi</Comment>
 <Cases>
 <Case
  Name="Always"
@@ -109,7 +110,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="42852671-1ff7-4048-a16b-cf7bca8f1851"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>C_warning</Comment>
 <Cases>
 <Case
  Name="Always"
@@ -146,7 +147,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bf98918b-5c6b-495d-bfa8-125540956287"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>The delta speed to add to P in order to get the warning supervision limit</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -252,7 +253,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c75ecc6f-9d2a-4842-9ab1-d176dfb44b5d"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>The delta speed to add to P in order to get SBI</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -455,7 +456,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7c477d16-41d2-40bf-99a4-fbdeff189a96"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Provides the train supervised speed</Comment>
 <Cases>
 <Case
  Name="MRSP speed increases"
@@ -497,7 +498,7 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8124b3f4-5df4-4e72-8d4c-f630e20785bb"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Provides the service brake intervention curve based on the permitted speed</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -590,7 +591,6 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
 <Procedure
  Width="100"
  Height="50"
- Implemented="TRUE"
  Name="CSMStatusTriggers"
  Guid="754a8afc-edb7-42b9-a27f-1284b817ac07"
 >
@@ -599,6 +599,7 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f790a300-5319-4882-83e6-62f05f67e945"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -619,7 +620,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2d7530a4-a406-4bc9-9e9d-f951854013de"
 >
-</ReqRef><Rules>
+</ReqRef><Comment>Handles the application of supervision status trigger when the train is in ceiling supervision</Comment>
+<Rules>
 <Rule
  Priority="UpdateINTERNAL"
  Name="Trigger Supervision Status"
@@ -645,7 +647,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c84bf7ac-6784-4944-8c2b-b699190e9ab5"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -672,7 +675,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7842365c-7b85-4338-ac4b-4978edfb4e55"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger 5: V above V_MRSP + dV_ebi. Intervention Status.</Comment>
+<PreConditions>
 <PreCondition
  Guid="e03911e8-ee7e-4b91-8236-aa7bec72864a"
 >Odometry.EstimatedSpeed &gt; SupervisedSpeed() + dV_ebi ( SupervisedSpeed() )</PreCondition><PreCondition
@@ -711,7 +715,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ef5e9b2d-9d61-4454-bb17-2615956a126c"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger 4: V above V_MRSP + dV_sbi. Intervention Status.</Comment>
+<PreConditions>
 <PreCondition
  Guid="1ed453e9-b63f-40f6-8c7a-300c09d2bb6c"
 >Odometry.EstimatedSpeed &gt; SupervisedSpeed() + dV_sbi ( SupervisedSpeed() )</PreCondition><PreCondition
@@ -738,7 +743,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c68679ee-30e2-4d2c-9a04-bbc076d15676"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger 3: V above V_MRS + dV_Warning. Warning Status.</Comment>
+<PreConditions>
 <PreCondition
  Guid="e940b669-d832-47b6-b2ec-d3acfb263b56"
 >Odometry.EstimatedSpeed &gt; SupervisedSpeed() + dV_warning ( SupervisedSpeed() )</PreCondition><PreCondition
@@ -763,7 +769,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7abb947c-16f1-4cfd-958b-fff1610b36d2"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger 2: V above V_MRSP. Overspeed Status.</Comment>
+<PreConditions>
 <PreCondition
  Guid="14f14c8e-b9fc-49a4-9d2d-964604839bd0"
 >Odometry.EstimatedSpeed &gt; SupervisedSpeed()</PreCondition><PreCondition
@@ -788,7 +795,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a4621995-51a6-4d92-8939-adad5e3cd7b4"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger 1: V below V_MRSP. Normal status.</Comment>
+<PreConditions>
 <PreCondition
  Guid="bfd3501b-bedb-46b6-a428-19ade95d5c74"
 >Odometry.EstimatedSpeed &lt;= SupervisedSpeed()</PreCondition><PreCondition
@@ -804,15 +812,24 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  X="110"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="CSMStatusRevocation"
  Guid="181e3fbd-9e82-4f66-bc59-3824db2c584c"
 >
+<ReqRef
+ Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bc05a1bd-995f-4c21-9e73-e5ffc419d3b1"
+>
+</ReqRef><Comment>Handles the application of revocation of supervision statuses when the train is in ceiling supervision</Comment>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Revoke supervision status"
  Guid="8f76dbc5-8c87-457f-91a3-7fe7ab334343"
 >
+<Comment>Checks each condition and applies the revocation if necessary</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -840,13 +857,16 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5729e108-4caf-487c-9a94-857e90f8f414"
 >
-</ReqRef><Comment></Comment>
+<Comment></Comment>
+</ReqRef><Comment>Revocation condition 1: V below V_MRSP. revoke Indication, Overspeed, Warning and Intervention statuses.</Comment>
 <PreConditions>
 <PreCondition
  Guid="51e14c41-a88a-40af-af5b-9cf3f88e0f86"
->Odometry.EstimatedSpeed &lt;= SupervisedSpeed()</PreCondition><PreCondition
+><Comment></Comment>
+Odometry.EstimatedSpeed &lt;= SupervisedSpeed()</PreCondition><PreCondition
  Guid="699b51c8-ddd7-49a2-bad1-89c5dd491b6c"
->Supervision != SupervisionStatus.Normal</PreCondition></PreConditions>
+><Comment></Comment>
+Supervision != SupervisionStatus.Normal</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="49831efe-90f4-40f9-8fbe-fb22fcd620cc"
@@ -857,12 +877,15 @@ RevokeEBCommand()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Revoke status"
  Guid="fa89acd7-f9aa-4d37-ae64-f3da194532a8"
 >
+<Comment>Once the brake commands are revoked, reset the supervision status</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Revoke status"
  Guid="b66ef5d3-c453-4b11-9865-e2c289d24d24"
 >
@@ -894,7 +917,8 @@ RevokeEBCommand()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="31cf935f-c5a2-4bfc-a5bb-deda3178c506"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Revocation condition 0: Train at standstill, revoke Intervention Status.</Comment>
+<PreConditions>
 <PreCondition
  Guid="4e4830fc-a94d-426b-9f5e-b913436afab4"
 >Odometry.TrainIsAtStandstill()</PreCondition><PreCondition
@@ -907,12 +931,15 @@ RevokeEBCommand()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Revoke intervention status"
  Guid="86b9de37-f907-4710-bf64-412ed93e848d"
 >
+<Comment>Revoke intervention status</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Revoke intervention status"
  Guid="9d7e201d-500a-409c-b2a0-d2aaebee3cd6"
 >
@@ -929,15 +956,11 @@ RevokeEBCommand()</Action></Actions>
 </Procedure><Procedure
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="UpdateSupervisionStatus"
  Guid="ad0ed264-a25d-432e-9b77-e63c79b260ea"
 >
 <ReqRef
- Id="46fa293d-249a-454b-bbda-cdc527f79dc7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f4a23dd5-ce76-4fea-926d-7145b12cb209"
->
-</ReqRef><ReqRef
  Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="81bb4a23-c00b-4da5-989b-4c036d9c313b"
@@ -952,16 +975,19 @@ RevokeEBCommand()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="06b60fa2-1220-4daa-b754-a8b91ea984ac"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Procedure that handles the supervision status updates in ceiling speed monitoring</Comment>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Revoke CSM status"
  Guid="6c2b82df-2ddb-4ca5-9771-c039c3089b06"
 >
+<Comment>Check revocation conditions</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Revoke CSM status"
  Guid="f6c73c3b-3cd9-4ac6-b72e-e6d0c37b945a"
 >
@@ -970,16 +996,20 @@ RevokeEBCommand()</Action></Actions>
 <Actions>
 <Action
  Guid="5eddc63c-0de4-4312-a921-1b312e5d1478"
->CSMStatusRevocation()</Action></Actions>
+><Comment></Comment>
+CSMStatusRevocation()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger CSM status"
  Guid="4a98f4f6-bc8b-4807-af58-cb16e93d3025"
 >
+<Comment>Check triggers</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Trigger CSM status"
  Guid="90483b38-d602-4d5c-bc90-44b7a37802d3"
 >
@@ -1446,12 +1476,7 @@ RevokeEBCommand()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="becfa08a-aa7a-4b59-a7d9-560b6ae975de"
 >
-</ReqRef><ReqRef
- Id="46fa293d-249a-454b-bbda-cdc527f79dc7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d2e3fcfe-9d39-4fbf-a019-97a97936075f"
->
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Checks the triggers for the supervision statuses in ceiling speed monitoring</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1468,7 +1493,8 @@ RevokeEBCommand()</Action></Actions>
 <Actions>
 <Action
  Guid="1c47bf78-b10d-4766-b235-b1626305b26d"
->UpdateSupervisionStatus()</Action></Actions>
+><Comment></Comment>
+UpdateSupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
