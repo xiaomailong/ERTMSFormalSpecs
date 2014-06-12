@@ -5233,7 +5233,8 @@ Data that refers only to a given location, referred to as Location data (e.g. le
  functionalBlockName=""
  Name=""
  Guid="588756eb-1786-4776-86ae-3aaa296881a9"
->Data that remains valid for a certain distance, referred to as Profile data (e.g. SSP, gradient).<RequirementSets>
+><Comment></Comment>
+Data that remains valid for a certain distance, referred to as Profile data (e.g. SSP, gradient).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="97d4f62c-57e6-4305-8da5-edf638887ec4"
@@ -5267,7 +5268,8 @@ Data that refers only to a given location, referred to as Location data (e.g. le
  functionalBlockName=""
  Name=""
  Guid="d0c836ff-a408-4d7e-8cac-63bce5b3d6d1"
->Note: Determination of the Train Position is always longitudinal along the route, even though the route might be set through a complex track layout.<RequirementSets>
+><Comment></Comment>
+Note: Determination of the Train Position is always longitudinal along the route, even though the route might be set through a complex track layout.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="0001218d-9bc8-443f-b802-a76beac57883"
@@ -5623,7 +5625,7 @@ Location of Data Transmitted to the On-Board Equipment<Sub>
  scope="FLAGS"
  bl=""
  name=""
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5871,7 +5873,8 @@ Exception to a): When on-board position is unknown or when position data has bee
  functionalBlockName=""
  Name=""
  Guid="bd3f7106-e2c1-465f-be7e-f47543c5f94b"
->All location and profile data transmitted as infill information shall refer to the location reference of the balise group at the next main signal (identified by the infill information) and to the orientation given by the infill device. (See note after justification).<Sub>
+><Comment></Comment>
+All location and profile data transmitted as infill information shall refer to the location reference of the balise group at the next main signal (identified by the infill information) and to the orientation given by the infill device. (See note after justification).<Sub>
 <Paragraph
  id="3.6.2.3.1.1"
  guid=""
@@ -6583,7 +6586,8 @@ All location related information transmitted from trackside equipment shall be u
  functionalBlockName=""
  Name=""
  Guid="d7a377d0-4389-4441-8bda-036db6e7805a"
->The confidence interval to the train position shall refer to the distance to the LRBG and shall take into account<Sub>
+><Comment></Comment>
+The confidence interval to the train position shall refer to the distance to the LRBG and shall take into account<Sub>
 <Paragraph
  id="3.6.4.2.a"
  guid=""
@@ -6745,7 +6749,8 @@ When another balise group becomes the LRBG or when evaluating (see section 4.8) 
  functionalBlockName=""
  Name=""
  Guid="ee60d01b-a74d-40b9-88b2-c24f3198e572"
->the distance between the reference balise group of the location related information and the LRBG, retrieved from linking information if it is available and it includes both the reference balise group and the LRBG, OR<RequirementSets>
+><Comment></Comment>
+the distance between the reference balise group of the location related information and the LRBG, retrieved from linking information if it is available and it includes both the reference balise group and the LRBG, OR<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="151a1cbe-bfe1-4eca-b7c1-f4844eb5f1bd"

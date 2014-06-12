@@ -10,6 +10,8 @@
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TractionSystem"
  Guid="44d803d3-4953-4340-b09a-f47f0ee996ef"
@@ -50,6 +52,9 @@
 </ReqRef><Comment>Traction system to be used</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TractionSystemInformation"
  Guid="5881ab92-0757-408b-aece-398ffeb03a16"
@@ -63,6 +68,11 @@
  Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a219484f-1875-4df6-a97c-baa45095c326"
+>
+</ReqRef><ReqRef
+ Id="e249c65e-2618-4df7-b69d-97ced56922b4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d9b753e4-ccfe-45a9-9fdc-c1fd4f00bd89"
 >
 </ReqRef><Comment>Contains traction system track condition information with its start location</Comment>
 <StructureElement
@@ -104,6 +114,9 @@
  TypeName="TractionSystems.TractionSystemInformation"
  MaxSize="20"
  Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TractionSystems"
  Guid="eeee0b74-18e8-4afd-8602-37a0b75099c2"
@@ -119,6 +132,9 @@
 <Function
  Type="TractionSystem"
  Default=""
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CurrentTSConditions"
  Guid="2233537a-fd58-4324-aa5d-62e34a8d754d"
@@ -142,6 +158,10 @@
 </Function><Function
  Type="TractionSystem"
  Default=""
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TSAtDistance"
  Guid="038fe2b8-4470-4c67-af8d-0570a63018bc"
@@ -195,6 +215,10 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="220"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TSProfileStartLocation"
@@ -223,6 +247,9 @@
 </Function></Functions>
 <Procedures>
 <Procedure
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleNewTractionSystem"
@@ -357,6 +384,9 @@ IN
 <Variable
  Type="TractionSystems"
  VariableMode="Internal"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TCTractionSystems"
  Guid="5600ee48-6962-432b-88c3-54c6dc35db99"

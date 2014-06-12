@@ -11,12 +11,19 @@
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SRPB"
  Guid="a3778cf9-457b-4cab-b6de-40b9c7dae434"
 >
-<Comment>Represents a speed restriction to ensure permitted braking distance.</Comment>
+<ReqRef
+ Id="588756eb-1786-4776-86ae-3aaa296881a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47130d6d-d31a-46c2-aeb2-bddffa9cb33d"
+>
+</ReqRef><Comment>Represents a speed restriction to ensure permitted braking distance.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
@@ -95,6 +102,9 @@
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="SRPBProfile"
  Guid="2995ce6b-ecff-4aef-b477-4b3d72c29141"
@@ -142,6 +152,9 @@
  TypeName="SRPB"
  MaxSize="20"
  Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SRPBs"
  Guid="ee114266-3859-4cfd-ab85-c163a95cb319"
@@ -158,6 +171,9 @@
 <Function
  Type="SRPB"
  Default=""
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CreateNewSpeedRestriction"
  Guid="72a8b72d-3072-46bc-9ecf-9b4b82daabfa"
@@ -233,6 +249,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="EBSpeedRestrictions"
  Guid="137e9a66-3ec7-48f0-acf7-e86cd4b74f11"
@@ -285,6 +305,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="220"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ComputePermittedSpeed"
  Guid="fdda0714-2f08-468b-9aa5-db0b8389b3d4"
@@ -349,6 +373,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="330"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ComputeSBCeilingSpeedIntervention"
  Guid="51b7e8a2-a2f3-499f-9794-248e4bd4dff0"
@@ -405,6 +433,10 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="440"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Dbec"
  Guid="c21f881b-d886-45ff-bed7-bab1d5e1a2e8"
@@ -453,6 +485,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="550"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Vdelta0"
  Guid="25c05d76-e738-4198-b39e-efd3cdcbaefa"
@@ -507,6 +543,9 @@
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="A_safe"
  Guid="ff987aec-c295-4490-9d64-fa62fe5e15ba"
@@ -586,6 +625,10 @@
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
+ X="110"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="A_safe_forAdhesionFactor"
  Guid="dc41e8e5-5660-4ff8-9008-a987e8a87ecc"
@@ -690,6 +733,10 @@
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
+ X="220"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Default_A_safe"
  Guid="69eff3b7-a426-44c8-bd99-aa655ab5379d"
@@ -747,6 +794,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="330"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SBSpeedRestrictions"
  Guid="96960abf-ca14-404a-a50f-416490ef20c6"
@@ -799,6 +850,10 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="440"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SB_PBD"
  Guid="777a4305-497b-43fe-b1db-8f90284c21d6"
@@ -827,6 +882,10 @@
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
+ X="550"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="A_expected"
  Guid="5be61eb7-4d89-4255-92a2-d237529fc6fc"
@@ -903,6 +962,9 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SpeedRestrictions"
  Guid="9a44a992-4b4e-4f13-a03c-45b2bad776b4"
@@ -949,6 +1011,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="110"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="PBDSpeedRestriction"
@@ -988,6 +1054,9 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 </Function></Functions>
 <Procedures>
 <Procedure
+ Y="360"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="PermittedBrakingDistanceReceived"
  Guid="d4c0ee40-c93d-41e7-ac99-837086893c1a"
@@ -1193,6 +1262,10 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Y="360"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AddNewSpeedRestriction"
@@ -1252,6 +1325,10 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="220"
+ Y="360"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="UpdateSpeedRestriction"
  Guid="0260320b-5e34-491e-b4c8-2d3474395454"
@@ -1304,6 +1381,9 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
     SpeedRestrictions =&gt; []
 }"
  VariableMode="Internal"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SpeedRestrictionsProfile"
  Guid="88028282-54cb-4064-b04a-227dc87f734f"
@@ -1328,6 +1408,10 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  Type="TrainData.BrakingParameters.EBModelSet"
  DefaultValue=""
  VariableMode="Internal"
+ X="110"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="PrevEBModels"
  Guid="d4118264-ae0f-46e1-a265-34e6d854d846"
@@ -1342,6 +1426,10 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  Type="TrainData.BrakingParameters.SBModelSet"
  DefaultValue=""
  VariableMode="Internal"
+ X="220"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="PrevSBModels"
  Guid="d4f6207a-7599-4c13-bcb1-70c2869387fd"
@@ -1356,6 +1444,9 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 <Rules>
 <Rule
  Priority="CleanUp"
+ Y="420"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Train brake characteristics change"
  Guid="eda7d7c2-6090-4a07-a068-b4f717a70e6d"
@@ -1397,6 +1488,10 @@ ON
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ X="110"
+ Y="420"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Resume initial states"
  Guid="ad604789-a2d8-405f-af6c-67eb3b68e03b"

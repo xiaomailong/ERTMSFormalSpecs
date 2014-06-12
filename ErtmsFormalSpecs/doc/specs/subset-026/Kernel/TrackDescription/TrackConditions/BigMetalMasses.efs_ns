@@ -10,6 +10,8 @@
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="BigMetalMassesInformation"
  Guid="20f0007f-dcf5-4b3c-b52e-1de6cffe79d6"
@@ -28,6 +30,11 @@
  Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dd55a0fa-19fa-4491-9bb0-355d01e45160"
+>
+</ReqRef><ReqRef
+ Id="588756eb-1786-4776-86ae-3aaa296881a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9893e93e-463f-46b4-9277-67afaf28eb04"
 >
 </ReqRef><Comment>Structure containing the information indicating whether big metal masses are present on the tracks</Comment>
 <StructureElement
@@ -54,6 +61,9 @@
  TypeName="BigMetalMasses.BigMetalMassesInformation"
  MaxSize="20"
  Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="BigMetalMasses"
  Guid="e0835a4f-f803-4848-b153-abf4979ae387"
@@ -69,6 +79,9 @@
 <Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="BMMSectionEnd"
  Guid="611bd0c2-48fe-489f-8a43-364caca2b92a"
@@ -107,6 +120,10 @@
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="BMMAtDistance"
  Guid="e10781ac-cbff-4ff5-ac75-5a41400cf2d1"
@@ -147,6 +164,10 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="220"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="BMMProfileStartLocation"
@@ -175,6 +196,10 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="330"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="NewBMMInfoStartLocation"
  Guid="10813a2a-daf4-4bdd-8981-2f5e866394c7"
@@ -213,6 +238,10 @@
 </Function><Function
  Type="Boolean"
  Default=""
+ X="440"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CurrentBMMConditions"
  Guid="8f9dabf4-eecf-4c72-89e6-cfdda29dabba"
@@ -241,6 +270,9 @@ BMMAtDistance(Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;D
 </Function></Functions>
 <Procedures>
 <Procedure
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleNewBMMTrackCondition"
@@ -361,6 +393,10 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AddSectionToBMMs"
  Guid="df4ff79b-0983-4791-97fc-142934307075"
@@ -454,6 +490,9 @@ IN
 <Variable
  Type="BigMetalMasses"
  VariableMode="Internal"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TCBigMetalMasses"
  Guid="b429b8d9-31f7-4370-8e74-13b074893895"

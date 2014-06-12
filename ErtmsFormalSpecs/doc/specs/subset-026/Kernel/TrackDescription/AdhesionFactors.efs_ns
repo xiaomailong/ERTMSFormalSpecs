@@ -11,6 +11,8 @@
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AdhesionFactor"
  Guid="dbdade40-4de6-4418-bf4e-557f8840956b"
@@ -24,6 +26,11 @@
  Id="d3e2813d-25b4-419a-8bc7-765e8794c652"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a7c30330-4b7d-47ac-bbf8-0368c1ccfbce"
+>
+</ReqRef><ReqRef
+ Id="588756eb-1786-4776-86ae-3aaa296881a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac083baf-8ae2-4bcd-b4f9-a89d8a6b0884"
 >
 </ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -74,6 +81,9 @@
 <Collection
  TypeName="AdhesionFactor"
  Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AdhesionFactors"
  Guid="40262e54-b30b-4d17-9774-c5ab8b3ae51b"
@@ -88,6 +98,9 @@
 <Function
  Type="Default.BaseTypes.Length"
  Default=""
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AdhFactorLength"
  Guid="d076ad86-414a-4b43-8311-88e0eb0d2e07"
@@ -115,6 +128,10 @@
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AdhFactorModificationAllowed"
  Guid="008648ff-8694-4efb-a4e8-a2a26c30633b"
@@ -149,6 +166,9 @@
 </Function></Functions>
 <Procedures>
 <Procedure
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AdhesionFactorReceived"
  Guid="da980c6d-0fe5-4219-821a-397a3e297ea8"
@@ -210,6 +230,10 @@
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleNewAdhesionFactor"
@@ -320,6 +344,9 @@ IN
  Type="AdhesionFactors"
  DefaultValue=""
  VariableMode="Internal"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AdhFactors"
  Guid="35e5c627-aece-489c-a558-1e7ead62a0a7"
@@ -360,6 +387,10 @@ IN
  Type="Messages.M_ADHESION"
  DefaultValue="Messages.M_ADHESION.Non_slippery_rail"
  VariableMode="Internal"
+ X="110"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SlipperyRailSelectedByDriver"
  Guid="c2af278e-2841-4222-bd25-068482f3a1a1"
@@ -390,6 +421,9 @@ IN
 <Rules>
 <Rule
  Priority="CleanUp"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AdhFactorTracker"
  Guid="54e6743e-1c83-4ad5-92aa-34191c5e9766"
