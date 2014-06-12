@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using Utils;
+using DataDictionary.Interpreter;
 
 namespace DataDictionary.Functions
 {
@@ -194,6 +195,34 @@ namespace DataDictionary.Functions
         /// <param name="actualParameters">The parameters applied to this function call</param>
         public void additionalChecks(ModelElement root, Dictionary<string, Interpreter.Expression> actualParameters)
         {
+        }
+
+        /// <summary>
+        /// Indicates that binary operation is valid for this type and the other type 
+        /// </summary>
+        /// <param name="otherType"></param>
+        /// <returns></returns>
+        public override bool ValidBinaryOperation(BinaryExpression.OPERATOR operation, Types.Type otherType)
+        {
+            bool retVal = false;
+
+            if (ReturnType != null)
+            {
+                Function otherFunction = otherType as Function;
+                if (otherFunction != null)
+                {
+                    if (otherFunction.ReturnType != null)
+                    {
+                        retVal = ReturnType.ValidBinaryOperation(operation, otherFunction.ReturnType);
+                    }
+                }
+                else
+                {
+                    retVal = ReturnType.ValidBinaryOperation(operation, otherType);
+                }
+            }
+
+            return retVal;
         }
 
         /// <summary>

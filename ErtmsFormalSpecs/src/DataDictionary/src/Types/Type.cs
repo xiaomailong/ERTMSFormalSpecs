@@ -432,7 +432,26 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public virtual bool ValidBinaryOperation(BinaryExpression.OPERATOR operation, Type otherType)
         {
-            return Match(otherType);
+            bool retVal;
+
+            if (operation == BinaryExpression.OPERATOR.IN || operation == BinaryExpression.OPERATOR.NOT_IN)
+            {
+                Collection collectionType = otherType as Collection;
+                if (collectionType != null)
+                {
+                    retVal = Match(collectionType.Type);
+                }
+                else
+                {
+                    retVal = Match(otherType);
+                }
+            }
+            else
+            {
+                retVal = Match(otherType);
+            }
+
+            return retVal;
         }
 
         /// <summary>
