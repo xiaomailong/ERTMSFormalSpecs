@@ -1052,13 +1052,22 @@ namespace DataDictionary.Interpreter
         {
             base.checkExpression();
 
-            if (Operation == OPERATOR.EQUAL)
+            Left.checkExpression();
+            Right.checkExpression();
+
+            Types.Type leftType = Left.GetExpressionType();
+            if (leftType != null)
             {
-                Types.Type leftType = Left.GetExpressionType();
-                if (leftType != null)
+                Types.Type rightType = Right.GetExpressionType();
+                if (rightType != null)
                 {
-                    Types.Type rightType = Right.GetExpressionType();
-                    if (rightType != null)
+                    if (!leftType.ValidBinaryOperation(Operation, rightType)
+                        && !rightType.ValidBinaryOperation(Operation, leftType))
+                    {
+                        AddError("Cannot perform " + Operation + " operation between " + Left + "(" + leftType.Name + ") and " + Right + "(" + rightType.Name + ")");
+                    }
+
+                    if (Operation == OPERATOR.EQUAL)
                     {
                         if (leftType is Types.StateMachine && rightType is Types.StateMachine)
                         {
@@ -1069,21 +1078,12 @@ namespace DataDictionary.Interpreter
                         {
                             if (leftType is Types.Collection)
                             {
-                                AddError("Cannot collections with " + Right.Ref.Name + ". Use [] instead");
+                                AddError("Cannot compare collections with " + Right.Ref.Name + ". Use [] instead");
                             }
-                        }
-
-                        if (!leftType.ValidBinaryOperation(Operation, rightType)
-                            && !rightType.ValidBinaryOperation(Operation, leftType))
-                        {
-                            AddError("Cannot perform " + Operation + " operation between " + Left + "(" + leftType.Name + ") and " + Right + "(" + rightType.Name + ")");
                         }
                     }
                 }
             }
-
-            Left.checkExpression();
-            Right.checkExpression();
         }
 
         /// <summary>

@@ -19,7 +19,12 @@
  Name="SRPB"
  Guid="a3778cf9-457b-4cab-b6de-40b9c7dae434"
 >
-<Comment>Represents a speed restriction to ensure permitted braking distance.</Comment>
+<ReqRef
+ Id="588756eb-1786-4776-86ae-3aaa296881a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47130d6d-d31a-46c2-aeb2-bddffa9cb33d"
+>
+</ReqRef><Comment>Represents a speed restriction to ensure permitted braking distance.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
@@ -623,6 +628,7 @@
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
+ X="110"
  Y="240"
  Width="100"
  Height="50"

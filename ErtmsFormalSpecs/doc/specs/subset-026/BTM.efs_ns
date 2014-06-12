@@ -190,6 +190,7 @@
  Name="LinkingAvailable"
  Guid="66f967b2-9ea2-4470-830c-40f7d1dc1e60"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="fa49fa02-cf11-45fe-ad90-3229a3860cd5"
@@ -208,6 +209,7 @@
  Name="DefaultValue"
  Guid="639ec4cf-d197-42c9-a803-47a931faf986"
 >
+<Comment></Comment>
 <Expression>Default.BaseTypes.Length(Kernel.NationalValues.DefaultValues.DefaultLocationAccuracyOfABaliseGroup)</Expression>
 </Case></Cases>
 </Function><Function
@@ -631,12 +633,18 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3146fe0c-b11f-45af-bc81-e8769b3c977a"
 >
+</ReqRef><ReqRef
+ Id="675394d7-4475-4a7f-9846-627ae90086d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f5ae238c-42d9-470d-8cd7-2d31ad14f2a0"
+>
 </ReqRef><Comment>Indicates whether the Current Balise Group is a candidate for LRBG</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="e5500388-7ed0-4a1d-9efb-de0e559d6fd3"
 >
+<Comment></Comment>
 <Expression>Available ( Linking.CurrentLinking() ) AND Linking.CurrentBGWithinFrame()
   OR
 NOT Available ( Linking.CurrentLinking() ) AND THERE_IS_IN CurrentBaliseGroup | X.Q_LINK != Messages.Q_LINK.Linked</Expression>
@@ -753,6 +761,11 @@ NOT Available ( Linking.CurrentLinking() ) AND THERE_IS_IN CurrentBaliseGroup | 
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ceef2a99-20be-46d1-94bc-da30e82a6dd6"
 >
+</ReqRef><ReqRef
+ Id="ffdc9150-a628-4750-a762-a41c20c3dd26"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0baaa13d-730d-413e-b76e-c64599e61e5c"
+>
 </ReqRef><Comment>Returns true if the packet has to be considered, that is 
   - if the packet is available (hence its orientation is also available),
   - this is not an infill information, or the infill transmission media is available on-board and 
@@ -770,6 +783,7 @@ If the train direction is unknown, this function returns true only if the packet
  Name="Empty orientation"
  Guid="a74508a2-aed1-4cc4-9e6e-a2a30fcccc99"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="177c2d52-1519-43c6-bdba-f47ef81b1e79"
@@ -779,6 +793,7 @@ If the train direction is unknown, this function returns true only if the packet
  Name="Infill information but no infill transmission media"
  Guid="6afeb3c0-afbb-40ca-bd6b-e2bcb2619c8d"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="91243480-4428-4ba5-93ca-e72252c044da"
@@ -1101,7 +1116,13 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Name="HandleNewPacket"
  Guid="052d0827-c337-4549-9724-72afe831fafd"
 >
-<Comment>This procedure is called for each packet received with a balise telegram.</Comment>
+<ReqRef
+ Id="ffdc9150-a628-4750-a762-a41c20c3dd26"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d1a8168-b8bc-4b96-af40-5b9e285f9491"
+>
+<Comment></Comment>
+</ReqRef><Comment>This procedure is called for each packet received with a balise telegram.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.SubStructure1"
@@ -1131,6 +1152,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b1bac924-6dc6-4d14-bacc-59c1d6247393"
 >
+<Comment></Comment>
 </ReqRef><Comment>We suppose that an element of type Messages.EUROBALISE.SubStructure1 can only contain one field defined, representing a single packet. The rule looks for the first available element and when it is found, calls the corresponding routing to store the received information.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1153,7 +1175,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 <PreConditions>
 <PreCondition
  Guid="5ba39e2d-0d86-4404-b853-53b808070955"
->ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.NATIONAL_VALUES.Q_DIR )</PreCondition></PreConditions>
+><Comment></Comment>
+ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.NATIONAL_VALUES.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2719277d-f12f-479c-8278-abb173a2d862"
@@ -1969,6 +1992,11 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Guid="e90a4163-5b91-4747-8052-0602b8d6cd03"
 >
 <Comment></Comment>
+</ReqRef><ReqRef
+ Id="2296310f-3ab8-4332-9af3-424d5a85eb88"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3b875755-7cd2-49a6-a9f1-aef5fba0ca11"
+>
 </ReqRef><Comment>The LRBG position is updated with the current values of the odometer.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -2112,11 +2140,14 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 <PreConditions>
 <PreCondition
  Guid="f59f7d3d-8d42-4bdd-bbd8-4c554420d5a0"
->LRBG.NID != BG_To_LRBG(Message.NID_BG)</PreCondition><PreCondition
+><Comment></Comment>
+LRBG.NID != BG_To_LRBG(Message.NID_BG)</PreCondition><PreCondition
  Guid="cb8a8653-84b9-4caf-ae7e-a410b15b64ea"
->Message.N_PIG == 0</PreCondition><PreCondition
+><Comment></Comment>
+Message.N_PIG == 0</PreCondition><PreCondition
  Guid="9a0cc237-370c-4dcb-b53c-9bf804dd2a0d"
->LRBGCandidate( )</PreCondition></PreConditions>
+><Comment></Comment>
+LRBGCandidate( )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3c939d6a-99af-451a-b12d-368fece30c2a"
@@ -2251,7 +2282,13 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Name="Handle balise telegram"
  Guid="f6523a73-b90d-4f95-8f4c-448ca057bd7d"
 >
-<Comment>Handles the packets received within the current balise telegram and applies the linking reaction, if any.</Comment>
+<ReqRef
+ Id="ffdc9150-a628-4750-a762-a41c20c3dd26"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="84b9cb4b-0d98-4456-ba5b-3d807059f356"
+>
+<Comment></Comment>
+</ReqRef><Comment>Handles the packets received within the current balise telegram and applies the linking reaction, if any.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2537,7 +2574,8 @@ If all the messages of the current balise group have been received, calls Handle
 <Actions>
 <Action
  Guid="71fe05ea-2e2a-441e-a4c5-fa8e04162cb8"
->APPLY HandleBaliseTelegram ( X ) ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( Message =&gt; X )</Action></Actions>
+><Comment></Comment>
+APPLY HandleBaliseTelegram ( X ) ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( Message =&gt; X )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

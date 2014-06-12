@@ -355,6 +355,36 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// Indicates that binary operation is valid for this type and the other type 
+        /// </summary>
+        /// <param name="otherType"></param>
+        /// <returns></returns>
+        public override bool ValidBinaryOperation(BinaryExpression.OPERATOR operation, Type otherType)
+        {
+            bool retVal = base.ValidBinaryOperation(operation, otherType);
+
+            if (!retVal)
+            {
+                if (operation == BinaryExpression.OPERATOR.ADD || operation == BinaryExpression.OPERATOR.DIV || operation == BinaryExpression.OPERATOR.MULT || operation == BinaryExpression.OPERATOR.SUB)
+                {
+                    // Allow implicit conversions
+                    IntegerType integerType = otherType as IntegerType;
+                    if (integerType != null)
+                    {
+                        retVal = true;
+                    }
+                    else
+                    {
+                        DoubleType doubleType = otherType as DoubleType;
+                        retVal = (doubleType != null);
+                    }
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
         /// Performs the arithmetic operation based on the type of the result
         /// </summary>
         /// <param name="context">The context used to perform this operation</param>

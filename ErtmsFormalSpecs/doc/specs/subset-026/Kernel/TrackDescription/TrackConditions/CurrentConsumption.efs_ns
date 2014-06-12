@@ -5,11 +5,14 @@
  Name="CurrentConsumption"
  Guid="d946f545-9a01-46a6-a499-0f1763c1411c"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CurrentConsumptionInformation"
  Guid="7a5297cd-00d0-4a5f-8ed4-c41cee5098e2"
@@ -23,6 +26,11 @@
  Id="f2a08799-3d45-4481-a358-160725cb1508"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="edcf54c5-9bc5-4b82-ac3b-6328290ccc00"
+>
+</ReqRef><ReqRef
+ Id="e249c65e-2618-4df7-b69d-97ced56922b4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="25b3aa93-9f99-4fff-a7fc-02bef3f6ac22"
 >
 </ReqRef><Comment>Structure containing the information about the location of a change in the maximum allowed current consumption</Comment>
 <StructureElement
@@ -58,6 +66,9 @@
 <Collection
  TypeName="Kernel.TrackDescription.TrackConditions.CurrentConsumption.CurrentConsumptionInformation"
  Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CurrentConsumptions"
  Guid="0a337071-652a-418d-9a3c-adb0810c1826"
@@ -73,6 +84,9 @@
 <Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CCProfileStartLocation"
@@ -101,6 +115,10 @@
 </Function><Function
  Type="Messages.M_CURRENT"
  Default=""
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CCAtDistance"
  Guid="eceb13fd-b0d1-4aaa-8b83-bb8c3f0794d1"
@@ -146,6 +164,10 @@
 </Function><Function
  Type="Messages.M_CURRENT"
  Default=""
+ X="220"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CurrentCCConditions"
  Guid="81439991-0207-4ce9-af00-eb75745b35d1"
@@ -169,6 +191,9 @@
 </Function></Functions>
 <Procedures>
 <Procedure
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleNewCCTrackCondition"
@@ -221,6 +246,9 @@ IN
 <Variable
  Type="CurrentConsumptions"
  VariableMode="Internal"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TCCurrentConsumption"
  Guid="323e43d9-9821-4525-9267-5189729d3ef8"
