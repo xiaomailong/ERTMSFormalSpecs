@@ -14,6 +14,10 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using System.Text;
+using Utils;
+using DataDictionary.Functions;
+using DataDictionary.Values;
 namespace DataDictionary.Interpreter
 {
     /// <summary>
@@ -29,18 +33,35 @@ namespace DataDictionary.Interpreter
         {
             get
             {
-                if (_message == null && Change != null)
+                string retVal = _message;
+                if (retVal == null)
+                {
+                    retVal = "";
+                }
+
+                if (Change != null)
                 {
                     if (Change.NewValue != null)
                     {
-                        _message = Change.Variable.FullName + " <- " + Change.NewValue.FullName;
+                        retVal += Change.Variable.FullName + " <- " + explainNamable(Change.NewValue);
                     }
                     else
                     {
-                        _message += Change.Variable.FullName + " <- <cannot evaluate value>";
+                        retVal += Change.Variable.FullName + " <- <cannot evaluate value>";
                     }
                 }
-                return _message;
+
+                if (Expression != null)
+                {
+                    retVal += Expression.ToString();
+                }
+
+                if (Namable != null)
+                {
+                    retVal += explainNamable(Namable);
+                }
+
+                return retVal;
             }
             set
             {
@@ -64,13 +85,24 @@ namespace DataDictionary.Interpreter
         public DataDictionary.Rules.Change Change { get; private set; }
 
         /// <summary>
+        /// The (optional) expression for which this explanation part is created
+        /// </summary>
+        public Expression Expression { get; set; }
+
+        /// <summary>
+        /// The (optional) value for which this explanation part is created
+        /// </summary>
+        public INamable Namable { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="element">The element for which this explanation part is created</param>
-        public ExplanationPart(ModelElement element, string message)
+        public ExplanationPart(ModelElement element, string message, INamable namable = null)
         {
             Element = element;
             Message = message;
+            Namable = namable;
             SubExplanations = new List<ExplanationPart>();
         }
 
@@ -86,25 +118,54 @@ namespace DataDictionary.Interpreter
             SubExplanations = new List<ExplanationPart>();
         }
 
-        public override string ToString()
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="element">The element for which this explanation part is created</param>
+        public ExplanationPart(ModelElement element, Expression expression)
         {
-            string retVal = Message;
+            Element = element;
+            Expression = expression;
+            SubExplanations = new List<ExplanationPart>();
+        }
 
-            if (retVal.Length < EFSSystem.INSTANCE.MaxExplainSize)
+
+        /// <summary>
+        /// Provides the textual representation of the namable provided
+        /// </summary>
+        /// <param name="namable"></param>
+        /// <returns></returns>
+        private string explainNamable(INamable namable)
+        {
+            string retVal = "";
+
+            if (namable != null)
             {
-                foreach (ExplanationPart part in SubExplanations)
-                {
-                    retVal += "\n" + part.ToString();
+                retVal = namable.Name;
 
-                    if (retVal.Length > EFSSystem.INSTANCE.MaxExplainSize)
+                Function fonction = namable as Function;
+                if (fonction != null)
+                {
+                    if (fonction.Graph != null)
                     {
-                        break;
+                        retVal = fonction.Graph.ToString();
+                    }
+                    else if (fonction.Surface != null)
+                    {
+                        retVal = fonction.Surface.ToString();
+                    }
+                }
+                else
+                {
+                    Values.IValue value = namable as Values.IValue;
+                    if (value != null)
+                    {
+                        retVal = value.LiteralName;
                     }
                 }
             }
 
             return retVal;
         }
-
     }
 }

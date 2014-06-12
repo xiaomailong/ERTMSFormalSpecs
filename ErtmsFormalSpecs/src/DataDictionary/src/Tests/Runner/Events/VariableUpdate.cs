@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using DataDictionary.Rules;
+using System.Text;
 
 namespace DataDictionary.Tests.Runner.Events
 {
@@ -58,7 +59,7 @@ namespace DataDictionary.Tests.Runner.Events
             {
                 if (runner.Explain)
                 {
-                    Explanation = new Interpreter.ExplanationPart(Action, "Action " + Action.Name);
+                    Explanation = new Interpreter.ExplanationPart(Action, "Action ", Action);
                 }
 
                 Interpreter.InterpretationContext context = new Interpreter.InterpretationContext(Instance);
@@ -68,7 +69,7 @@ namespace DataDictionary.Tests.Runner.Events
 
                 if (runner.Explain)
                 {
-                    Message = Explanation.ToString();
+                    Message = Explanation.Message;
                 }
             }
 

@@ -186,7 +186,7 @@ namespace DataDictionary.Interpreter
             {
                 if (explain)
                 {
-                    CompleteExplanation(previous, Name + " = " + explainNamable(retVal));
+                    CompleteExplanation(previous, Name + " = ", retVal);
                 }
             }
 
