@@ -207,6 +207,10 @@ namespace DataDictionary
         /// </summary>
         public void ClearMessages()
         {
+            foreach (Dictionary dictionary in Dictionaries)
+            {
+                dictionary.ClearMessages();
+            }
         }
 
         /// <summary>

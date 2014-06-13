@@ -165,11 +165,6 @@ namespace GUI.TestRunnerView
             public int Failed { get; private set; }
 
             /// <summary>
-            /// Execution time span
-            /// </summary>
-            public TimeSpan Span { get; private set; }
-
-            /// <summary>
             /// The window in which the tests are executed
             /// </summary>
             private Window Window { get; set; }
@@ -196,8 +191,6 @@ namespace GUI.TestRunnerView
             /// <param name="arg"></param>
             public override void ExecuteWork()
             {
-                DateTime start = DateTime.Now;
-
                 SynchronizerList.SuspendSynchronization();
                 if (Window != null)
                 {
@@ -226,8 +219,6 @@ namespace GUI.TestRunnerView
                     }
                 }
                 SynchronizerList.ResumeSynchronization();
-
-                Span = DateTime.Now.Subtract(start);
             }
         }
 
@@ -245,7 +236,7 @@ namespace GUI.TestRunnerView
             executeTestsOperation.ExecuteUsingProgressDialog("Executing test sequences");
 
             string runtimeErrors = "";
-            if (Utils.ModelElement.Errors.Values.Count > 0)
+            if (Utils.ModelElement.LogCount > 0)
             {
                 runtimeErrors += "Errors were raised while executing sub sequences(s).\n";
             }

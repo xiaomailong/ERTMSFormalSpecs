@@ -1021,7 +1021,8 @@ namespace DataDictionary.Functions
         {
             Values.IValue retVal = CachedValue;
 
-            bool useCache = getCacheable() && !context.HasSideEffects;
+            // TODO : Ensure that context.HasSideEffects should not be used in the useCase computation.
+            bool useCache = getCacheable();
 
             Values.IValue cachingActual = null;
             if (retVal == null)

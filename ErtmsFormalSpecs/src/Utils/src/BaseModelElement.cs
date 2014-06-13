@@ -235,6 +235,10 @@ namespace Utils
         public virtual void ClearMessages()
         {
             LogCount -= Messages.Count;
+            if (LogCount < 0)
+            {
+                LogCount = 0;
+            }
             Messages.Clear();
         }
 
@@ -265,6 +269,7 @@ namespace Utils
                 if (other.CompareTo(log) == 0)
                 {
                     add = false;
+                    break;
                 }
             }
 
@@ -371,7 +376,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Counts the number of errors raised
+        /// Keeps track of the errors raised during the last cycle
         /// </summary>
         public static Dictionary<ModelElement, List<ElementLog>> Errors = new Dictionary<ModelElement, List<ElementLog>>();
 

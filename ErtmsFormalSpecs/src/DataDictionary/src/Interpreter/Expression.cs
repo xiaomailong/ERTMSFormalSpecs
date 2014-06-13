@@ -604,9 +604,15 @@ namespace DataDictionary.Interpreter
 
             if (explain)
             {
-                ExplanationPart part = new ExplanationPart(Root, ToString());
-                currentExplanation.SubExplanations.Add(part);
-                currentExplanation = part;
+                if (EFSSystem.Runner == null || EFSSystem.Runner.Explain)
+                {
+                    if (currentExplanation != null)
+                    {
+                        ExplanationPart part = new ExplanationPart(Root, ToString());
+                        currentExplanation.SubExplanations.Add(part);
+                        currentExplanation = part;
+                    }
+                }
             }
 
             return retVal;
@@ -636,8 +642,11 @@ namespace DataDictionary.Interpreter
         {
             ExplanationPart retVal = currentExplanation;
 
-            currentExplanation = new ExplanationPart(Root, this);
-            explain = true;
+            if (EFSSystem.Runner == null || EFSSystem.Runner.Explain)
+            {
+                currentExplanation = new ExplanationPart(Root, this);
+                explain = true;
+            }
 
             return retVal;
         }
@@ -708,16 +717,35 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
+        /// Indicates whether we are currently explaining an error.
+        /// When true, AddErrorAndExplain should not try to explain _again_ the error.
+        /// </summary>
+        private static bool ExplainingError = false;
+
+        /// <summary>
         /// Adds an error message to the root element and explains it
         /// </summary>
         /// <param name="message"></param>
         public override void AddErrorAndExplain(string message, InterpretationContext context)
         {
-            if (!explain)
+            if (!ExplainingError)
             {
-                if (RootLog != null)
+                try
                 {
-                    RootLog.AddErrorAndExplain(message, Explain(context));
+                    ExplainingError = true;
+                    if (RootLog != null)
+                    {
+                        ExplanationPart explain = Explain(context);
+                        RootLog.AddErrorAndExplain(message, explain);
+                    }
+                }
+                catch (Exception)
+                {
+                    RootLog.AddError(message);
+                }
+                finally
+                {
+                    ExplainingError = false;
                 }
             }
         }

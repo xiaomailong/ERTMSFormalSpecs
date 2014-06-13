@@ -452,11 +452,14 @@ namespace DataDictionary.Interpreter
         /// <returns></returns>
         private void AddParameterValuesToExplanation(Dictionary<Variables.Actual, Values.IValue> parameterValues)
         {
-            if (currentExplanation != null && parameterValues != null)
+            if (EFSSystem.Runner == null || EFSSystem.Runner.Explain)
             {
-                foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in parameterValues)
+                if (currentExplanation != null && parameterValues != null)
                 {
-                    currentExplanation.SubExplanations.Add(new ExplanationPart(pair.Key.Parameter, pair.Key.Parameter.Name, pair.Value));
+                    foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in parameterValues)
+                    {
+                        currentExplanation.SubExplanations.Add(new ExplanationPart(pair.Key.Parameter, pair.Key.Parameter.Name, pair.Value));
+                    }
                 }
             }
         }
