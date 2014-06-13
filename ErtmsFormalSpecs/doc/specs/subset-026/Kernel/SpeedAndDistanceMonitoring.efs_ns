@@ -273,7 +273,8 @@ Condition1()</PreCondition></PreConditions>
 ><Comment></Comment>
 JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
  Guid="543e8165-df83-432e-b4cd-95d43feb70a7"
->DetermineSupervisionStatus()</Action><Action
+><Comment></Comment>
+DetermineSupervisionStatus()</Action><Action
  Guid="f56144fc-d490-42cf-9b0d-6f4f02dcff6f"
 ><Comment></Comment>
 THIS &lt;- PIM</Action></Actions>
@@ -1487,7 +1488,8 @@ TCOTriggered &lt;- False</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="035eb855-04d7-4cb3-9e12-2df1736c11d6"
->SpeedAndDistanceMonitoringIsActive</PreCondition><PreCondition
+><Comment></Comment>
+ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
  Guid="734c0cfb-8504-4804-8e92-7d445b1644b3"
 >Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
  Guid="1d9d0f82-9b6e-4854-85b9-8c830b0881ef"
@@ -1889,7 +1891,22 @@ TCOSpecified &lt;- True</Action></Actions>
  Name="In ceiling supervision"
  Guid="db8c9718-1313-403d-b9ec-fec9cb15eb3c"
 >
-<Comment>Supervision status for train in CSM.</Comment>
+<ReqRef
+ Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c15fbe11-93af-4a36-b1ff-bcf6cae91363"
+>
+</ReqRef><ReqRef
+ Id="3935be43-6132-47c6-8ef3-28195e4f690c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c6f5d203-cf0f-4797-a148-1c6e96ada246"
+>
+</ReqRef><ReqRef
+ Id="26d27752-70b9-46bf-ada7-95ba7bb47a3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1c2c7fd1-341e-4386-985d-72ce97302f9d"
+>
+</ReqRef><Comment>Supervision status for train in CSM.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1902,11 +1919,13 @@ TCOSpecified &lt;- True</Action></Actions>
 ><Comment></Comment>
 Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
  Guid="abc9c37f-6318-4cfc-9dba-1855e5e9e0ed"
->SpeedAndDistanceMonitoringIsActive</PreCondition></PreConditions>
+><Comment></Comment>
+ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b1c0ff01-91ce-4c1f-9bcf-aaf67396cf63"
->CeilingSupervision.UpdateSupervisionStatus()</Action></Actions>
+><Comment></Comment>
+CeilingSupervision.UpdateSupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2044,24 +2063,6 @@ Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
- VariableMode="Internal"
- X="290"
- Y="460"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SpeedAndDistanceMonitoringIsActive"
- Guid="f5e2bfa5-4c2a-4ac6-bdae-34426c0f9a9f"
->
-<ReqRef
- Id="8468de24-42eb-4959-a546-99c00cccb22a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3c1cee0a-e1ef-4f85-928f-93d05439ad66"
->
-</ReqRef><Comment>Indicates if the speed and distance monitoring function is active.</Comment>
-</Variable><Variable
- Type="Boolean"
- DefaultValue="Boolean.False"
  VariableMode="Incoming"
  X="730"
  Y="460"
@@ -2144,4 +2145,36 @@ Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
 >
 <Comment>Indicates if the EB command was specified. Use to determine wheter EB command was triggered due to SBI supervision limit or EBI supervision limit.</Comment>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="UpdateINTERNAL"
+ Y="960"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="UpdateSupervisionStatus"
+ Guid="5c06c616-21d2-4288-8b8f-b2df2cbcd921"
+>
+<ReqRef
+ Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b80178a9-ceff-448a-bc9b-c3cdf615cca9"
+>
+<Comment></Comment>
+</ReqRef><Comment>Handles the transitions between the supervision statuses</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="UpdateSupervisionStatus"
+ Guid="201a33eb-5356-40a5-8805-755b33d8b4aa"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="4ce80bd9-5c27-4188-b64b-2ab7ddabba96"
+><Comment></Comment>
+DetermineSupervisionStatus()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>

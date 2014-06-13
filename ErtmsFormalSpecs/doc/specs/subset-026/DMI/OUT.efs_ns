@@ -2909,7 +2909,8 @@
 <PreConditions>
 <PreCondition
  Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
->Kernel.SpeedAndDistanceMonitoring.Monitoring not in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed</PreCondition><PreCondition
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle]</PreCondition><PreCondition
  Guid="27f43f3b-9d33-4f93-8af9-d46bf9c93913"
 >Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>

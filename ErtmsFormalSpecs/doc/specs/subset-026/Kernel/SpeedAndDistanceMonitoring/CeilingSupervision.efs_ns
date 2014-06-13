@@ -217,13 +217,13 @@
 <PreCondition
  Guid="dea57d2f-dc75-4bfa-abc4-08d829d0fdaf"
 >V &gt; V_ebi_min</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.MinSpeed ( dV_ebi_min + C_ebi() * ( V - V_ebi_min ), dV_ebi_max )</Expression>
+<Expression>BaseTypes.MinSpeed ( dV_ebi_min + C_ebi() * ( V - V_ebi_min ), dV_ebi_max )</Expression>
 </Case><Case
  Name="V &lt;= V_ebi_min"
  Guid="605c01a1-da95-4901-a26e-86f35aa22b66"
 >
 <Comment></Comment>
-<Expression>CeilingSupervision.dV_ebi_min</Expression>
+<Expression>dV_ebi_min</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -1444,57 +1444,4 @@ CSMStatusRevocation()</Action></Actions>
 >
 </ReqRef><Comment>Value of MRSP where dV_sbi starts to increase to dV_sbi_max</Comment>
 </Variable></Variables>
-<Rules>
-<Rule
- Priority="UpdateINTERNAL"
- X="580"
- Y="60"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- Name="SupervisionStatus"
- Guid="b2b37881-3fbf-443e-89d3-42e487c2305c"
->
-<ReqRef
- Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3a6a37da-9dd0-4d47-951f-031926258483"
->
-</ReqRef><ReqRef
- Id="3935be43-6132-47c6-8ef3-28195e4f690c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6a7853ee-11df-4020-9286-96f685544697"
->
-</ReqRef><ReqRef
- Id="26d27752-70b9-46bf-ada7-95ba7bb47a3c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="091b8949-5663-4df1-9771-8a2cf0da991e"
->
-</ReqRef><ReqRef
- Id="c8000537-75f6-4a09-8790-4dca0585d9f8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="becfa08a-aa7a-4b59-a7d9-560b6ae975de"
->
-</ReqRef><Comment>Checks the triggers for the supervision statuses in ceiling speed monitoring</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="CheckSpeedAndDistanceMonitoringStatus"
- Guid="7242cc11-af09-4be2-a07f-522ee9ce7205"
->
-<PreConditions>
-<PreCondition
- Guid="2000c917-1ae5-46ec-9768-6d88e3fa11f3"
->Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
- Guid="0046535f-3d8c-400a-b35b-bae068e48182"
->SpeedAndDistanceMonitoringIsActive</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1c47bf78-b10d-4766-b235-b1626305b26d"
-><Comment></Comment>
-UpdateSupervisionStatus()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 </NameSpace>

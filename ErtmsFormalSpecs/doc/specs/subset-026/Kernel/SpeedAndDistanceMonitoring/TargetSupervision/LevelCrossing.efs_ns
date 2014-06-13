@@ -10,6 +10,8 @@
 <Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="d_EBI"
  Guid="dcbd6c62-c25a-49db-8a5f-affcc526cab0"
@@ -47,6 +49,9 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="d_SBI2"
  Guid="14dc23e3-3a52-43d4-b0ec-ab1c829cbeef"
@@ -69,11 +74,14 @@
  Name="Value"
  Guid="cd33091b-5d2d-484f-ab69-73bf33860156"
 >
-<Expression>LevelCrossing.d_EBI ( Vlx )  - Vlx * TargetSupervision.T_bs2</Expression>
+<Expression>d_EBI ( Vlx )  - Vlx * TargetSupervision.T_bs2</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="d_FLOI"
  Guid="dab63110-7e4a-4214-afaf-99b99473537c"
@@ -110,11 +118,14 @@ SBI1BelowSBI2(
  Name="Second case"
  Guid="66fe368f-cdb5-4814-b8c1-4ae82d248190"
 >
-<Expression>LevelCrossing.d_SBI2 ( Vlx )</Expression>
+<Expression>d_SBI2 ( Vlx )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="d_P"
  Guid="b9678abe-a41b-49d3-83df-ef6febdf0de1"
@@ -146,12 +157,12 @@ SBI1BelowSBI2(
 <PreCondition
  Guid="d0519b17-df58-402b-9502-a7ac0a4c8a7f"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>LevelCrossing.d_FLOI ( Vlx ) - Vlx * T_driver</Expression>
+<Expression>d_FLOI ( Vlx ) - Vlx * T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
  Guid="5e8f7468-4031-46b1-a1b9-4e6df3b59ce5"
 >
-<Expression>BaseTypes.MinDistance ( X1 =&gt; LevelCrossing.d_FLOI ( Vlx ) - Vlx * T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; GUI, Speed =&gt; Vlx ) )</Expression>
+<Expression>BaseTypes.MinDistance ( X1 =&gt; d_FLOI ( Vlx ) - Vlx * T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; GUI, Speed =&gt; Vlx ) )</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
