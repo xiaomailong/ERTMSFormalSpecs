@@ -422,33 +422,6 @@ DetermineSupervisionStatus()</Action><Action
  Implemented="TRUE"
  Guid="98ea433a-587b-40e7-8a72-c66ae4c4b16d"
 >
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="RestartSpeedAndDistanceMonitoring"
- Guid="5083b87e-34c8-47eb-8d1e-d09514360921"
->
-<Comment>When the train mode is FS, LS, or OS, start monitoring again</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Supervise Train Speed"
- Guid="0b822837-96e0-4550-bd30-dcb12e0cfd29"
->
-<PreConditions>
-<PreCondition
- Guid="6bee5e64-dd3e-4190-b0cc-b9fecd7c8aa1"
-><Comment></Comment>
-ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="351c9b66-e0cc-4a58-9b1c-f39028235a8a"
-><Comment></Comment>
-UpdateMonitoring()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 </StateMachine></State></States>
 <Rules>
 <Rule
@@ -1006,7 +979,8 @@ Monitoring &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
  Guid="1889c002-6694-4e01-a062-4c76f5c65090"
 >NOT Condition2()</PreCondition><PreCondition
  Guid="e9504089-b7d1-4d41-bf98-d1362f421406"
->Condition1()</PreCondition></PreConditions>
+><Comment></Comment>
+Condition1()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f7b5bdb0-1344-4d1b-aae3-6ed3ca6f0683"

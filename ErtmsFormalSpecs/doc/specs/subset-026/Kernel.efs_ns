@@ -9582,7 +9582,8 @@ INITIAL_VALUE EmergencyStop
 <PreConditions>
 <PreCondition
  Guid="6d3b2490-aa01-4121-8abb-e05a55a842cc"
->BTM.Linking.LinkingApplicable()
+><Comment></Comment>
+BTM.Linking.LinkingApplicable()
   AND  
 BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLinking().Distance + BTM.Linking.CurrentLinking().LocationAccuracy)</PreCondition></PreConditions>
 <Actions>
@@ -9685,7 +9686,32 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 <Actions>
 <Action
  Guid="8652d86c-0773-4542-973d-ff53846170a7"
->ModeTransitions.UpdateMode()</Action></Actions>
+><Comment></Comment>
+ModeTransitions.UpdateMode()</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Speed and distance monitoring"
+ Guid="6855b834-d5db-4cd4-8134-71e646ae5bdd"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Start monitoring if required"
+ Guid="79423c20-147c-41ac-819b-6a7e42e43874"
+>
+<PreConditions>
+<PreCondition
+ Guid="2cc5b813-3d35-4889-a890-eb42ed47ff3b"
+>ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
+ Guid="ee4d3703-e480-48f3-87e0-63c40fc3770d"
+>SpeedAndDistanceMonitoring.Monitoring in SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f3ed2219-1964-4f3a-8255-fcbc71b7eb9f"
+>SpeedAndDistanceMonitoring.UpdateMonitoring()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9709,30 +9735,6 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 <Action
  Guid="3541b1a8-53a2-4bea-85f6-6c8136424cd0"
 >TrainPosition.UpdatePositionState()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Update monitoring"
- Guid="6689bf93-bb50-4ebe-8a0a-cdddff0a3693"
->
-<Comment>Updates speed and distance monitoring according to the received information.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Update monitoring"
- Guid="48d9f05a-c508-4f31-9cac-049a3c56b5c5"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="f58ff8d3-2659-4992-92c1-4aa6cfb46808"
-><Comment></Comment>
-SpeedAndDistanceMonitoring.UpdateMonitoring()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

@@ -948,7 +948,8 @@ Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e0adc517-5b2f-4309-ab4b-821bd1fbaf57"
->INSERT Messages.JRU.MESSAGE.Message{
+><Comment></Comment>
+INSERT Messages.JRU.MESSAGE.Message{
 SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitoringInformationMessage()
 }IN JRUMessages</Action><Action
  Guid="1e73cc9f-11c6-4599-a75a-6acda1ef7430"
@@ -6328,7 +6329,8 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="1a616611-6e7d-4a54-ab2e-cc083381415a"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Ceiling</PreCondition></PreConditions>
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling.Start, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling.MonitoringCeilingSpeed]</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Ceiling_speed_monitoring__CSM</Expression>
 </Case><Case
  Name="TSM"
@@ -6347,7 +6349,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreCondition
  Guid="79088302-a61b-4499-9717-0db5a3e9ca11"
 ><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed</PreCondition></PreConditions>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed.Start, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed.MonitoringReleaseSpeed]</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Release_speed_monitoring_RSM</Expression>
 </Case><Case
  Name="PIM"
