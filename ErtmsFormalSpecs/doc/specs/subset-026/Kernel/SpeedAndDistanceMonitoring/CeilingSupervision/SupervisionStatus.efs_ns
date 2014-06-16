@@ -9,13 +9,20 @@
 <Functions>
 <Function
  Type="Boolean"
+ Cacheable="TRUE"
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="t1"
  Guid="eaf4b2be-8138-4c73-9f81-6328e7f7416d"
 >
-<Comment></Comment>
+<ReqRef
+ Id="4715e18d-a2df-4bd6-ac06-759df725f4f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4a2053a1-3900-416f-aac0-f7228f557bf7"
+>
+</ReqRef><Comment>Trigger 1: V below V_MRSP. Normal status.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -25,13 +32,21 @@
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Cacheable="TRUE"
  Default=""
  X="110"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="t2"
  Guid="b991d5f4-9130-44a6-91ad-43c1fca67b1f"
 >
+<ReqRef
+ Id="af305487-640b-4993-8058-a5d544510580"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd9d10c2-8ea8-4877-881c-3c3078e561c2"
+>
+</ReqRef><Comment>Trigger 2: V above V_MRSP. Overspeed Status.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -41,13 +56,21 @@
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Cacheable="TRUE"
  Default=""
  X="220"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="t3"
  Guid="8fadbfb9-3654-4103-adc0-2f29bd99d1de"
 >
+<ReqRef
+ Id="baee7a52-b664-4831-ae79-468f1bfa2015"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c7701110-8e5f-46e5-98c8-b7b411effdd7"
+>
+</ReqRef><Comment>Trigger 3: V above V_MRS + dV_Warning. Warning Status.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -58,13 +81,21 @@
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Cacheable="TRUE"
  Default=""
  X="330"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="t4"
  Guid="c678b3f2-ab91-4818-b16c-eb8bcd977e5a"
 >
+<ReqRef
+ Id="d5e287e8-9591-4f40-9968-b9a12d5f800f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b392e9e-61d5-4e46-b424-955be272caf6"
+>
+</ReqRef><Comment>Trigger 4: V above V_MRSP + dV_sbi. Intervention Status.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -74,13 +105,21 @@
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Cacheable="TRUE"
  Default=""
  X="440"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="t5"
  Guid="fa22b3e3-278e-4761-8255-af95ed564f6c"
 >
+<ReqRef
+ Id="e4afc252-6ba4-4996-b8f6-072d60e63987"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4cd18cc2-1859-487b-a330-34bd72d195be"
+>
+</ReqRef><Comment>Trigger 5: V above V_MRSP + dV_ebi. Intervention Status.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -91,12 +130,20 @@
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Cacheable="TRUE"
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="r0"
  Guid="93dc9685-9dad-46d3-91fe-71fb8ae1da69"
 >
+<ReqRef
+ Id="4f24d434-b967-4e8b-b2b1-e0b3f4d6c2dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6a351c7a-5269-4726-81ac-4b0f3b4bb312"
+>
+</ReqRef><Comment>Revocation condition 0: Train at standstill, revoke Intervention Status.</Comment>
 <Cases>
 <Case
  Name="Train is in Intervention status"
@@ -115,14 +162,21 @@
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Cacheable="TRUE"
  Default=""
  X="110"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="r1"
  Guid="8b92e6d0-de15-40f3-b27a-ecf9a755d83e"
 >
-<Comment></Comment>
+<ReqRef
+ Id="ec0c435b-0145-4656-99a6-3a16788797ff"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4a9c1d60-ad56-4c59-b715-805a8ae78f13"
+>
+</ReqRef><Comment>Revocation condition 1: V below V_MRSP. revoke Indication, Overspeed, Warning and Intervention statuses.</Comment>
 <Cases>
 <Case
  Name="There is a status to be revoked"
@@ -301,7 +355,7 @@ CSMStatusRevocation()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="e03911e8-ee7e-4b91-8236-aa7bec72864a"
->t5</PreCondition></PreConditions>
+>t5()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="69dbf7af-26e1-420a-a2be-d2624eed2eee"
@@ -339,7 +393,8 @@ CSMStatusRevocation()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="1ed453e9-b63f-40f6-8c7a-300c09d2bb6c"
->t4</PreCondition></PreConditions>
+><Comment></Comment>
+t4()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7263bd8c-d804-4c52-9edd-5aa4d6b5f017"
