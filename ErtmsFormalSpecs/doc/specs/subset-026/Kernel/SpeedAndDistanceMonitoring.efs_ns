@@ -7,6 +7,7 @@
  Name="SpeedAndDistanceMonitoring"
  Guid="29ccd64e-2889-44e6-8b10-6499287bee06"
 >
+<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="CeilingSupervision"
@@ -174,9 +175,9 @@
 JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
  Guid="929fe96c-120f-4740-a4e8-b92a4eb3d5d1"
 ><Comment></Comment>
-DetermineSupervisionStatus()</Action><Action
+DetermineSupervisionStatus(MonitoringTypeSM.Ceiling)</Action><Action
  Guid="3dde4b50-ef4e-45cf-8795-4f1217c66e85"
->THIS &lt;- MonitoringCeilingSpeed</Action></Actions>
+>THIS &lt;- MonitoringTypeSM.Ceiling.MonitoringCeilingSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -274,10 +275,10 @@ Condition1()</PreCondition></PreConditions>
 JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
  Guid="543e8165-df83-432e-b4cd-95d43feb70a7"
 ><Comment></Comment>
-DetermineSupervisionStatus()</Action><Action
+DetermineSupervisionStatus(MonitoringTypeSM.Target)</Action><Action
  Guid="f56144fc-d490-42cf-9b0d-6f4f02dcff6f"
 ><Comment></Comment>
-THIS &lt;- PIM</Action></Actions>
+THIS &lt;- MonitoringTypeSM.Target.PIM</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -313,11 +314,11 @@ THIS &lt;- PIM</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="4f0943be-3c98-4372-a6ef-732f0cedd60c"
->TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt;= PreIndicationLocation.d_I(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition></PreConditions>
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt;= PreIndicationLocation.d_I(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)))</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="47b90428-296a-4ccb-9909-a090ca81b971"
->THIS &lt;- TSM</Action></Actions>
+>THIS &lt;- MonitoringTypeSM.Target.TSM</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -345,7 +346,7 @@ Condition2()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="44f973a1-f64e-4717-bc83-fcb6ae9ade4e"
->THIS &lt;- ReleaseSpeed.Start</Action></Actions>
+>THIS &lt;- MonitoringTypeSM.ReleaseSpeed.Start</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -404,9 +405,9 @@ Condition2()</PreCondition></PreConditions>
 >JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
  Guid="953c08ed-e977-4766-9ca6-c5043644471e"
 ><Comment></Comment>
-DetermineSupervisionStatus()</Action><Action
+DetermineSupervisionStatus(MonitoringTypeSM.ReleaseSpeed)</Action><Action
  Guid="47f71217-2ed4-41e4-b059-fe6375b01867"
->THIS &lt;- MonitoringReleaseSpeed</Action></Actions>
+>THIS &lt;- MonitoringTypeSM.ReleaseSpeed.MonitoringReleaseSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -500,7 +501,7 @@ ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 !=
 SupervisedTargets</PreCondition><PreCondition
  Guid="6f2cc5a3-3453-4c20-acb8-221630d71332"
->Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
+>ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
  Guid="c91265ff-507c-45ce-9fb3-e4bbc413a44e"
 >ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
@@ -965,7 +966,8 @@ THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="a9cf64fe-934f-41fc-b58b-190b853ccc0d"
->PreIndicationLocation.d_preindication(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+><Comment></Comment>
+PreIndicationLocation.d_preindication(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Train passed pre-indication location"
@@ -976,7 +978,7 @@ THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
 <PreCondition
  Guid="699a6b10-e831-4c8a-a3ed-591f85155457"
 ><Comment></Comment>
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1469,9 +1471,17 @@ TCOTriggered &lt;- False</Action></Actions>
  Guid="0c2fd63b-9ad1-474c-a4b6-060ceb67f368"
 >
 </ReqRef><Comment>Sets the supervision status according to the type of speed and distance monitoring</Comment>
+<Parameters>
+<Parameter
+ Type="MonitoringTypeSM"
+ Name="MonitoringType"
+ Guid="48561c68-d98c-4bb0-801d-1db3d690f533"
+>
+</Parameter></Parameters>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="In target supervision"
  Guid="60074a77-efbb-468c-ac79-6f3f207a3aec"
 >
@@ -1491,7 +1501,7 @@ TCOTriggered &lt;- False</Action></Actions>
 ><Comment></Comment>
 ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
  Guid="734c0cfb-8504-4804-8e92-7d445b1644b3"
->Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
+>MonitoringType in MonitoringTypeSM.Target</PreCondition><PreCondition
  Guid="1d9d0f82-9b6e-4854-85b9-8c830b0881ef"
 >TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
@@ -1532,11 +1542,9 @@ ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
 <Actions>
 <Action
  Guid="574ec616-674d-4716-90a5-ac23810d8236"
->EBTriggered &lt;- True</Action><Action
+>TriggerEBCommand()</Action><Action
  Guid="1c1b160c-a7ac-4d11-8228-3453a58ee5a6"
->Supervision &lt;- SupervisionStatus.Intervention</Action><Action
- Guid="73087f5d-b66e-4605-acd0-1294127d8995"
->EBSpecified &lt;- True</Action></Actions>
+>Supervision &lt;- SupervisionStatus.Intervention</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t13"
@@ -1561,11 +1569,9 @@ ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
 <Actions>
 <Action
  Guid="4ec0659c-cb29-4181-ba15-eb5f876c2157"
->EBTriggered &lt;- True</Action><Action
+>TriggerEBCommand()</Action><Action
  Guid="0ecf8a7c-4a11-4ed2-9a5c-f5f4272518d9"
->Supervision &lt;- SupervisionStatus.Intervention</Action><Action
- Guid="42d88382-67f0-4036-9418-910cbcf6897c"
->EBSpecified &lt;- True</Action></Actions>
+>Supervision &lt;- SupervisionStatus.Intervention</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t12"
@@ -1917,7 +1923,7 @@ TCOSpecified &lt;- True</Action></Actions>
 <PreCondition
  Guid="d670d6a1-c1ac-44f1-b831-99c4d17bd838"
 ><Comment></Comment>
-Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
+MonitoringType in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
  Guid="abc9c37f-6318-4cfc-9dba-1855e5e9e0ed"
 ><Comment></Comment>
 ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
@@ -1926,6 +1932,42 @@ ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
  Guid="b1c0ff01-91ce-4c1f-9bcf-aaf67396cf63"
 ><Comment></Comment>
 CeilingSupervision.UpdateSupervisionStatus()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TriggerEBCommand"
+ Guid="b38ceba8-4d8e-47dd-856e-bb7c4693d339"
+>
+<Comment>Handles an emergency brake command</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Activate EB"
+ Guid="ffdaef94-d5f3-40df-b177-aa1546de09bb"
+>
+<Comment>On reception, switch on the emergency brake</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Activate EB"
+ Guid="2d847d6f-2ae1-4b5d-b417-728152b82296"
+>
+<Comment>Switch on the brake and mark it as an emergency brake command</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5f2ab883-f8e5-4aed-ad31-ba3342346cd7"
+>EBTriggered &lt;- True</Action><Action
+ Guid="07dd4121-f8b5-4cd2-926b-3e6778eb77b2"
+><Comment></Comment>
+EBSpecified &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2174,7 +2216,7 @@ CeilingSupervision.UpdateSupervisionStatus()</Action></Actions>
 <Action
  Guid="4ce80bd9-5c27-4188-b64b-2ab7ddabba96"
 ><Comment></Comment>
-DetermineSupervisionStatus()</Action></Actions>
+DetermineSupervisionStatus(Monitoring)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
