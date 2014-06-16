@@ -28,13 +28,13 @@
 </NameSpaceRef></NameSpaces>
 <Enumerations>
 <Enum
- Default="SupervisionStatus.Normal"
+ Default="SupervisionStatusEnum.Normal"
  X="200"
  Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="SupervisionStatus"
+ Name="SupervisionStatusEnum"
  Guid="425b2655-5563-4f7d-a175-e9ccc940ac92"
 >
 <ReqRef
@@ -139,7 +139,6 @@
 >
 <Comment>Ceiling Speed Monitoring.</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="11f43511-b66c-40ff-9cd8-49fc31a1e9cd"
 >
@@ -186,7 +185,6 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 >
 <Comment>Target Speed Monitoring.</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="04526e41-51a0-49ff-a66a-c48d62f36411"
 >
@@ -234,7 +232,6 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 >
 <Comment>Release Speed Monitoring.</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="4c471652-a236-49b9-afdf-492ed8264c22"
 >
@@ -715,7 +712,7 @@ THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
  Guid="5394d167-a030-4b1d-a096-b176e1075237"
 >Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
  Guid="e902ee0f-8ed6-4c80-aafe-96b258b01056"
->Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
+>Supervision not in [ SupervisionStatusEnum.Overspeed, SupervisionStatusEnum.Warning, SupervisionStatusEnum.Intervention ]</PreCondition></PreConditions>
 <Expression>CeilingSupervision.P ( Distance )</Expression>
 </Case><Case
  Name="CeilingSpeedMonitoring_SBI"
@@ -736,7 +733,7 @@ THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
  Guid="5ba6a2ec-fce4-46ab-8e17-256f0a63ae84"
 >Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
  Guid="b286ca0d-4051-4c4a-a610-a2615579bcac"
->Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
+>Supervision not in [ SupervisionStatusEnum.Overspeed, SupervisionStatusEnum.Warning, SupervisionStatusEnum.Intervention ]</PreCondition></PreConditions>
 <Expression>TargetSupervision.V_P_DMI()</Expression>
 </Case><Case
  Name="TargetSpeedMonitoring_FLOI"
@@ -1295,11 +1292,11 @@ SBSpecified &lt;- False</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="369abeb7-4547-401c-b06c-38662755c910"
->Supervision != SupervisionStatus.Intervention</PreCondition></PreConditions>
+>Supervision != SupervisionStatusEnum.Intervention</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="73acea9b-c90a-4128-b0d7-004e3e2bb365"
->Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
+>Supervision &lt;- SupervisionStatusEnum.Normal</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Intervention"
@@ -1316,7 +1313,7 @@ NOT EBSpecified</PreCondition><PreCondition
 <Actions>
 <Action
  Guid="576000fb-f85a-40e7-918a-4fb09ddcc398"
->Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
+>Supervision &lt;- SupervisionStatusEnum.Normal</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1623,8 +1620,8 @@ EBSpecified &lt;- True</Action></Actions>
 >
 </ReqRef><Comment>Indicates if the traction cuf-off command was triggered.</Comment>
 </Variable><Variable
- Type="SupervisionStatus"
- DefaultValue="SupervisionStatus.Normal"
+ Type="SupervisionStatusEnum"
+ DefaultValue="SupervisionStatusEnum.Normal"
  VariableMode="Internal"
  X="200"
  Y="260"

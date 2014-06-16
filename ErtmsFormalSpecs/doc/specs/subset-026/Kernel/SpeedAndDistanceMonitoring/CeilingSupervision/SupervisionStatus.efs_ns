@@ -152,7 +152,7 @@
 <PreConditions>
 <PreCondition
  Guid="14d4cd8b-d721-4522-b012-41c05c76a7e1"
->Supervision == SupervisionStatus.Intervention</PreCondition></PreConditions>
+>Supervision == SupervisionStatusEnum.Intervention</PreCondition></PreConditions>
 <Expression>Odometry.TrainIsAtStandstill()</Expression>
 </Case><Case
  Name="Otherwise"
@@ -185,7 +185,7 @@
 <PreConditions>
 <PreCondition
  Guid="50a5faf3-9458-47f2-ae69-8d73e820671e"
->Supervision != SupervisionStatus.Normal</PreCondition></PreConditions>
+>Supervision != SupervisionStatusEnum.Normal</PreCondition></PreConditions>
 <Expression>Odometry.EstimatedSpeed &lt;= CeilingSupervision.SupervisedSpeed()</Expression>
 </Case><Case
  Name="Otherwise"
@@ -359,7 +359,7 @@ CSMStatusRevocation()</Action></Actions>
 <Actions>
 <Action
  Guid="69dbf7af-26e1-420a-a2be-d2624eed2eee"
->Supervision &lt;- SupervisionStatus.Intervention</Action><Action
+>Supervision &lt;- SupervisionStatusEnum.Intervention</Action><Action
  Guid="08d3e61f-777a-454b-ba65-928ccd503713"
 >EBTriggered &lt;- True</Action><Action
  Guid="223e840e-7826-4f01-bc2a-f01bdea32ceb"
@@ -398,7 +398,7 @@ t4()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7263bd8c-d804-4c52-9edd-5aa4d6b5f017"
->Supervision &lt;- SupervisionStatus.Intervention</Action><Action
+>Supervision &lt;- SupervisionStatusEnum.Intervention</Action><Action
  Guid="7ceb207e-63a4-41e8-8989-a1b3a0af95a2"
 >TriggerSBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
@@ -424,7 +424,7 @@ t4()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b67cc471-1329-4651-96a9-dde7de08b73a"
->Supervision &lt;- SupervisionStatus.Warning</Action></Actions>
+>Supervision &lt;- SupervisionStatusEnum.Warning</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t2"
@@ -448,7 +448,7 @@ t4()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a060f645-d849-461a-a141-c64effd5144a"
->Supervision &lt;- SupervisionStatus.Overspeed</Action></Actions>
+>Supervision &lt;- SupervisionStatusEnum.Overspeed</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t1"
@@ -472,7 +472,7 @@ t4()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="17f0041b-09e7-4c84-ba0c-757afaf714e0"
->Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
+>Supervision &lt;- SupervisionStatusEnum.Normal</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
