@@ -44,7 +44,7 @@
  Name="Always"
  Guid="a6ca2df8-da52-427a-b7f7-28931cba0cb5"
 >
-<Expression>( dV_ebi_max - dV_ebi_min ) / ( V_ebi_max - V_ebi_min )</Expression>
+<Expression>( CeilingSupervision.dV_ebi_max - CeilingSupervision.dV_ebi_min ) / ( CeilingSupervision.V_ebi_max - CeilingSupervision.V_ebi_min )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -80,7 +80,7 @@
  Name="Always"
  Guid="4cd4822e-4db0-42c0-9a92-4efa7ff57757"
 >
-<Expression>( dV_sbi_max - dV_sbi_min ) / ( V_sbi_max - V_sbi_min )</Expression>
+<Expression>( CeilingSupervision.dV_sbi_max - CeilingSupervision.dV_sbi_min ) / ( CeilingSupervision.V_sbi_max - CeilingSupervision.V_sbi_min )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -117,7 +117,7 @@
  Guid="46ab034c-51f8-4828-950e-823da37a4bd7"
 >
 <Comment></Comment>
-<Expression>( dV_warning_max - dV_warning_min ) / ( V_warning_max - V_warning_min )</Expression>
+<Expression>( CeilingSupervision.dV_warning_max - CeilingSupervision.dV_warning_min ) / ( CeilingSupervision.V_warning_max - CeilingSupervision.V_warning_min )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -163,13 +163,13 @@
 <PreConditions>
 <PreCondition
  Guid="5f96f091-76ec-436e-97e2-191fcebebc1e"
->V &gt; V_warning_min</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.MinSpeed ( dV_warning_min + C_warning() * ( V - V_warning_min ), dV_warning_max )</Expression>
+>V &gt; CeilingSupervision.V_warning_min</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinSpeed ( CeilingSupervision.dV_warning_min + CeilingSupervision.C_warning() * ( V - CeilingSupervision.V_warning_min ), CeilingSupervision.dV_warning_max )</Expression>
 </Case><Case
  Name="V &lt;= V_warning_min"
  Guid="69b02327-f93e-48b1-9e66-f3c0fe3ce8c9"
 >
-<Expression>dV_warning_min</Expression>
+<Expression>CeilingSupervision.dV_warning_min</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -216,14 +216,14 @@
 <PreConditions>
 <PreCondition
  Guid="dea57d2f-dc75-4bfa-abc4-08d829d0fdaf"
->V &gt; V_ebi_min</PreCondition></PreConditions>
-<Expression>BaseTypes.MinSpeed ( dV_ebi_min + C_ebi() * ( V - V_ebi_min ), dV_ebi_max )</Expression>
+>V &gt; CeilingSupervision.V_ebi_min</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinSpeed ( CeilingSupervision.dV_ebi_min + CeilingSupervision.C_ebi() * ( V - CeilingSupervision.V_ebi_min ), CeilingSupervision.dV_ebi_max )</Expression>
 </Case><Case
  Name="V &lt;= V_ebi_min"
  Guid="605c01a1-da95-4901-a26e-86f35aa22b66"
 >
 <Comment></Comment>
-<Expression>dV_ebi_min</Expression>
+<Expression>CeilingSupervision.dV_ebi_min</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -269,13 +269,13 @@
 <PreConditions>
 <PreCondition
  Guid="261b8cfe-5c4b-4a62-8deb-003a51a21e89"
->V &gt; V_sbi_min</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.MinSpeed ( dV_sbi_min + C_sbi() * ( V - V_sbi_min ), dV_sbi_max )</Expression>
+>V &gt; CeilingSupervision.V_sbi_min</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinSpeed ( CeilingSupervision.dV_sbi_min + CeilingSupervision.C_sbi() * ( V - CeilingSupervision.V_sbi_min ), CeilingSupervision.dV_sbi_max )</Expression>
 </Case><Case
  Name="V &lt;= V_sbi_min"
  Guid="fd3cbb6e-d144-4cdf-bf4d-a45e176fe5e7"
 >
-<Expression>dV_sbi_min</Expression>
+<Expression>CeilingSupervision.dV_sbi_min</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -418,10 +418,10 @@
 <PreConditions>
 <PreCondition
  Guid="06ac8f78-3db7-48f6-9384-4a9f597d0b2b"
->P ( distance ) &gt; 0.0</PreCondition></PreConditions>
+>CeilingSupervision.P ( distance ) &gt; 0.0</PreCondition></PreConditions>
 <Expression>AddIncrement (
-  Function =&gt; P, 
-  Increment =&gt; dV_warning
+  Function =&gt; CeilingSupervision.P, 
+  Increment =&gt; CeilingSupervision.dV_warning
 ) (distance)</Expression>
 </Case><Case
  Name="Otherwise"
@@ -512,8 +512,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Guid="abe701e4-9e3e-4857-806a-07f43f56fb7e"
 >
 <Expression>AddIncrement (
-  Function =&gt; P, 
-  Increment =&gt; dV_sbi
+  Function =&gt; CeilingSupervision.P, 
+  Increment =&gt; CeilingSupervision.dV_sbi
 ) ( Distance )</Expression>
 </Case></Cases>
 </Function><Function
@@ -575,10 +575,10 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
 <PreConditions>
 <PreCondition
  Guid="0e5ea181-31f6-4423-93dd-5e7adf2f9157"
->P ( Distance ) &gt; 0.0</PreCondition></PreConditions>
+>CeilingSupervision.P ( Distance ) &gt; 0.0</PreCondition></PreConditions>
 <Expression>AddIncrement (
-  Function =&gt; P, 
-  Increment =&gt; dV_ebi
+  Function =&gt; CeilingSupervision.P, 
+  Increment =&gt; CeilingSupervision.dV_ebi
 ) ( Distance )</Expression>
 </Case><Case
  Name="Otherwise"
@@ -679,7 +679,7 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
 <PreConditions>
 <PreCondition
  Guid="e03911e8-ee7e-4b91-8236-aa7bec72864a"
->Odometry.EstimatedSpeed &gt; SupervisedSpeed() + dV_ebi ( SupervisedSpeed() )</PreCondition><PreCondition
+>Odometry.EstimatedSpeed &gt; CeilingSupervision.SupervisedSpeed() + CeilingSupervision.dV_ebi ( CeilingSupervision.SupervisedSpeed() )</PreCondition><PreCondition
  Guid="b2e7644c-8d9d-4475-815b-90425cdbe7a4"
 >Supervision != SupervisionStatus.Intervention</PreCondition></PreConditions>
 <Actions>
@@ -719,7 +719,7 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
 <PreConditions>
 <PreCondition
  Guid="1ed453e9-b63f-40f6-8c7a-300c09d2bb6c"
->Odometry.EstimatedSpeed &gt; SupervisedSpeed() + dV_sbi ( SupervisedSpeed() )</PreCondition><PreCondition
+>Odometry.EstimatedSpeed &gt; CeilingSupervision.SupervisedSpeed() + CeilingSupervision.dV_sbi ( CeilingSupervision.SupervisedSpeed() )</PreCondition><PreCondition
  Guid="33ba4e0a-6c67-4655-9c66-f31aec6be9f9"
 >Supervision != SupervisionStatus.Intervention</PreCondition></PreConditions>
 <Actions>
@@ -747,7 +747,7 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
 <PreConditions>
 <PreCondition
  Guid="e940b669-d832-47b6-b2ec-d3acfb263b56"
->Odometry.EstimatedSpeed &gt; SupervisedSpeed() + dV_warning ( SupervisedSpeed() )</PreCondition><PreCondition
+>Odometry.EstimatedSpeed &gt; CeilingSupervision.SupervisedSpeed() + CeilingSupervision.dV_warning ( CeilingSupervision.SupervisedSpeed() )</PreCondition><PreCondition
  Guid="da6a2add-89d9-461c-ac1c-73809d8fbec0"
 >Supervision != SupervisionStatus.Warning</PreCondition></PreConditions>
 <Actions>
@@ -773,7 +773,7 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
 <PreConditions>
 <PreCondition
  Guid="14f14c8e-b9fc-49a4-9d2d-964604839bd0"
->Odometry.EstimatedSpeed &gt; SupervisedSpeed()</PreCondition><PreCondition
+>Odometry.EstimatedSpeed &gt; CeilingSupervision.SupervisedSpeed()</PreCondition><PreCondition
  Guid="bdc4071b-c62b-4133-aa88-60fe00ec3bd1"
 >Supervision != SupervisionStatus.Overspeed</PreCondition></PreConditions>
 <Actions>
@@ -799,7 +799,7 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
 <PreConditions>
 <PreCondition
  Guid="bfd3501b-bedb-46b6-a428-19ade95d5c74"
->Odometry.EstimatedSpeed &lt;= SupervisedSpeed()</PreCondition><PreCondition
+>Odometry.EstimatedSpeed &lt;= CeilingSupervision.SupervisedSpeed()</PreCondition><PreCondition
  Guid="ee02b5b4-4c3b-4885-b6f3-8441a6f705ff"
 >Supervision != SupervisionStatus.Normal</PreCondition></PreConditions>
 <Actions>
@@ -863,7 +863,7 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
 <PreCondition
  Guid="51e14c41-a88a-40af-af5b-9cf3f88e0f86"
 ><Comment></Comment>
-Odometry.EstimatedSpeed &lt;= SupervisedSpeed()</PreCondition><PreCondition
+Odometry.EstimatedSpeed &lt;= CeilingSupervision.SupervisedSpeed()</PreCondition><PreCondition
  Guid="699b51c8-ddd7-49a2-bad1-89c5dd491b6c"
 ><Comment></Comment>
 Supervision != SupervisionStatus.Normal</PreCondition></PreConditions>
@@ -997,7 +997,7 @@ RevokeEBCommand()</Action></Actions>
 <Action
  Guid="5eddc63c-0de4-4312-a921-1b312e5d1478"
 ><Comment></Comment>
-CSMStatusRevocation()</Action></Actions>
+CeilingSupervision.CSMStatusRevocation()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1018,7 +1018,7 @@ CSMStatusRevocation()</Action></Actions>
 <Actions>
 <Action
  Guid="7bc746ff-fb20-4373-991d-9a6035af94f6"
->CSMStatusTriggers()</Action></Actions>
+>CeilingSupervision.CSMStatusTriggers()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
