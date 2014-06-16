@@ -64,6 +64,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="747d463c-bc18-4d3b-a388-6f365db794cb"
 >
+</ReqRef><ReqRef
+ Id="e249c65e-2618-4df7-b69d-97ced56922b4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c703ad3-b20f-4adc-af9d-53ae8b083ccd"
+>
 </ReqRef><Comment>Represents the linking data provided by the trackside.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Length"
@@ -293,12 +298,14 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 <PreConditions>
 <PreCondition
  Guid="2425f7be-2891-4d2c-a000-e3d04864b4b4"
->(FIRST_IN Linkings).BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN</PreCondition></PreConditions>
+><Comment></Comment>
+(FIRST_IN Linkings).BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN</PreCondition></PreConditions>
 <Expression>BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy</Expression>
 </Case><Case
  Name="Check the expectation window"
  Guid="0bfe0cf6-52e4-46b8-a258-00e1f3aa67c4"
 >
+<Comment></Comment>
 <Expression>(BGLocationReference.Position + BGLocationReference.UnderReadingAmountOdo &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
 AND
 (BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</Expression>
@@ -725,12 +732,18 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2c593eb4-f871-46d1-a458-2abaee58f52a"
 >
+</ReqRef><ReqRef
+ Id="9ffb7f56-2bd6-43f5-8def-6aac968df073"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6aac8dd4-9edd-47c7-acfb-f7219d224d2f"
+>
 </ReqRef><Comment>Returns True if the announced BG&apos;s orientation matches the expected orientation</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="e8cfc917-3918-4465-9013-4236335bcc82"
 >
+<Comment></Comment>
 <Expression>CurrentLinking().Orientation == BTM.BaliseGroupOrientation()</Expression>
 </Case></Cases>
 </Function><Function
@@ -1353,7 +1366,8 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 <Actions>
 <Action
  Guid="6f9ef685-68b5-4cf8-ab5b-fe3765ff7cb1"
->HandleBaliseMessage()</Action><Action
+><Comment></Comment>
+HandleBaliseMessage()</Action><Action
  Guid="73f60427-194a-4f61-9082-16f71fa2409d"
 >StopExpectingCurrentBG()</Action></Actions>
 </RuleCondition><RuleCondition

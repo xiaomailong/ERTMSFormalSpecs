@@ -16,6 +16,7 @@
 using System.Collections.Generic;
 using DataDictionary.Functions;
 using Utils;
+using DataDictionary.Interpreter;
 
 namespace DataDictionary.Types
 {
@@ -196,6 +197,26 @@ namespace DataDictionary.Types
             base.AddModelElement(element);
         }
 
+        /// <summary>
+        /// Indicates that binary operation is valid for this type and the other type 
+        /// </summary>
+        /// <param name="otherType"></param>
+        /// <returns></returns>
+        public override bool ValidBinaryOperation(BinaryExpression.OPERATOR operation, Type otherType)
+        {
+            bool retVal;
+
+            if (operation == BinaryExpression.OPERATOR.LESS || operation == BinaryExpression.OPERATOR.LESS_OR_EQUAL || operation == BinaryExpression.OPERATOR.GREATER || operation == BinaryExpression.OPERATOR.GREATER_OR_EQUAL)
+            {
+                retVal = false;
+            }
+            else
+            {
+                retVal = base.ValidBinaryOperation(operation, otherType);
+            }
+
+            return retVal;
+        }
 
         public override bool CompareForEquality(Values.IValue left, Values.IValue right)  // left == right
         {

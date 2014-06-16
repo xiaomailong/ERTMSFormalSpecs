@@ -227,7 +227,11 @@ namespace GUI.TestRunnerView
                         {
                             subSequenceSelectorComboBox.Text = "";
                         }
-                        EFSSystem.Runner = null;
+
+                        if (EFSSystem.Runner != null && EFSSystem.Runner.SubSequence != null)
+                        {
+                            EFSSystem.Runner = null;
+                        }
                     }
 
                     if (EFSSystem.Runner != null && EFSSystem.Runner.SubSequence != null)
@@ -304,7 +308,7 @@ namespace GUI.TestRunnerView
                 }
                 else
                 {
-                    EFSSystem.Runner = ERTMSFormalSpecs.ErtmsFormalSpecGui.EFSService.Runner;
+                    EFSSystem.Runner = GUI.IPCInterface.EFSService.INSTANCE.Runner;
                 }
             }
         }

@@ -10,6 +10,8 @@
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="StationPlatform"
  Guid="1d309980-5fef-4858-8509-9698eac509ae"
@@ -64,6 +66,9 @@
 </ReqRef><Comment>Is True if the train needs to account for platform information</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="StationPlatformInformation"
  Guid="11a0f7bd-dbea-4a8c-b7af-4671a9a9da53"
@@ -77,6 +82,11 @@
  Id="dde16995-5fb1-4c80-8c2c-c9294aa46944"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2a1bca1c-4f50-4256-9ee3-4c61428fb9be"
+>
+</ReqRef><ReqRef
+ Id="e249c65e-2618-4df7-b69d-97ced56922b4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ee3708e-d80c-4890-96a8-53829a27d3fc"
 >
 </ReqRef><Comment>Contains station platform track condition information with its start location</Comment>
 <StructureElement
@@ -123,6 +133,9 @@
  TypeName="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformation"
  MaxSize="20"
  Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="StationPlatforms"
  Guid="0bc848d5-8f1b-4f77-a50b-4e4ba9a8e68b"
@@ -138,6 +151,9 @@
 <Function
  Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformation"
  Default=""
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MakeSPProfilePoint"
@@ -195,6 +211,10 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SPSectionEnd"
  Guid="624a6a0a-0d06-472e-8e14-3c10b530d8f9"
@@ -238,6 +258,10 @@
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatform"
  Default=""
+ X="220"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SPAtDistance"
  Guid="dd1482f8-b3f0-45cb-b664-2b54999b8470"
@@ -278,6 +302,10 @@
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatform"
  Default=""
+ X="330"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CurrentSPConditions"
  Guid="939f5bc3-3549-4fe0-9107-c125fd161569"
@@ -310,6 +338,10 @@ SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabl
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="440"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SPProfileStartLocation"
@@ -338,6 +370,9 @@ SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabl
 </Function></Functions>
 <Procedures>
 <Procedure
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SPTrackConditionReceived"
  Guid="4b9fe4e0-0d7c-4fce-ab51-67a28a19220c"
@@ -433,6 +468,10 @@ IN
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleNewSPTrackCondition"
@@ -540,6 +579,10 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="220"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AddSPToProfile"
  Guid="eca54a7b-4a2b-4d94-b590-1fc3389fc9a9"
@@ -641,6 +684,9 @@ IN
 <Variable
  Type="StationPlatforms"
  VariableMode="Internal"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TCStationPlatforms"
  Guid="f3a30586-937f-4cd8-a2a0-ea55dbd8f426"
