@@ -3349,23 +3349,23 @@
 <Action
  Guid="54d6c3cb-a4e0-4df7-82de-84fe0dee2d10"
 >Kernel.SupervisionStatus &lt;- Kernel.SupervisionStatus.Overspeed</Action><Action
- Guid="dae936c9-82a8-4afe-ac16-27e68272bac3"
->Kernel.SpeedAndDistanceMonitoring.Monitoring &lt;- Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target.PIM</Action><Action
  Guid="85637054-dc20-4bd3-bc85-695bea7c08b4"
 >Kernel.Level &lt;- Kernel.LevelData{
     Value =&gt; Default.Level.L1,
     DataState =&gt; Default.DataState.Valid
 }</Action><Action
  Guid="599e97a8-3a47-4b35-8b78-8255b84370ce"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="9e8db1de-6edb-4a42-b1a1-ec49e850cbe0"
->JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="50e58ce1-aeb3-4c57-b12d-e0fef0ddd120"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.SPEED_AND_DISTANCE_MONITORING_INFORMATION != EMPTY</Expectation></Expectations>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.SPEED_AND_DISTANCE_MONITORING_INFORMATION != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="05224c46-ad85-4e98-b0af-64d840450b19"
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

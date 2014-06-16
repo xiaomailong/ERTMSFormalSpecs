@@ -139,22 +139,10 @@
 >
 <Comment>Ceiling Speed Monitoring.</Comment>
 <StateMachine
- Default="MonitoringCeilingSpeed"
+ Default=""
  Implemented="TRUE"
  Guid="11f43511-b66c-40ff-9cd8-49fc31a1e9cd"
 >
-<States>
-<State
- Implemented="TRUE"
- Name="MonitoringCeilingSpeed"
- Guid="0c7baf12-191d-458e-b33d-fc84dde5b5a5"
->
-<Comment>In CSM state</Comment>
-<StateMachine
- Implemented="TRUE"
- Guid="d45e4a5e-c872-4ea3-ad19-4d0f5ec36313"
->
-</StateMachine></State></States>
 <Rules>
 <Rule
  Priority="Processing"
@@ -179,7 +167,7 @@ Condition1()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="24551215-3f50-43dc-95d4-95a90ecbb76f"
->THIS &lt;- MonitoringTypeSM.Target.PIM</Action><Action
+>THIS &lt;- MonitoringTypeSM.Target</Action><Action
  Guid="acffd539-8dfa-4740-9930-3f8c6adee307"
 >DetermineSupervisionStatus(MonitoringTypeSM.Target)</Action><Action
  Guid="5de6afb7-fad9-40ae-b54b-e37308759455"
@@ -198,62 +186,10 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 >
 <Comment>Target Speed Monitoring.</Comment>
 <StateMachine
- Default="PIM"
+ Default=""
  Implemented="TRUE"
  Guid="04526e41-51a0-49ff-a66a-c48d62f36411"
 >
-<States>
-<State
- Implemented="TRUE"
- Name="TSM"
- Guid="ae5a2442-f7dd-431e-b013-7fd673523c4f"
->
-<Comment>In TSM state</Comment>
-<StateMachine
- Implemented="TRUE"
- Guid="93b94389-8aac-473d-974f-6334000ff2c8"
->
-</StateMachine></State><State
- Implemented="TRUE"
- Name="PIM"
- Guid="e552da4c-28fd-400b-a579-e320c10e2b53"
->
-<ReqRef
- Id="3ca3f276-f7a0-4c16-8b02-755e929a4ae3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9d07dd4f-658e-411e-a6e6-ce03e5bddc2a"
->
-</ReqRef><Comment>Pre Indication Monitoring, a sub-type of target speed monitoring betzeen the pre-indication location and the indication location</Comment>
-<StateMachine
- Implemented="TRUE"
- Guid="f727d81e-5f5d-4cd0-8962-ea039bad1e56"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Transition to TSM"
- Guid="da6b52aa-d250-4618-895c-17ebd8bf5670"
->
-<Comment>When the train passes the indication location, the speed and distance monitoring passes from PIM to TSM</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Transition to TSM"
- Guid="163d12c7-571a-498d-aacd-d9b6f9c27a35"
->
-<PreConditions>
-<PreCondition
- Guid="4f0943be-3c98-4372-a6ef-732f0cedd60c"
->TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt;= PreIndicationLocation.d_I(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)))</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="47b90428-296a-4ccb-9909-a090ca81b971"
->THIS &lt;- MonitoringTypeSM.Target.TSM</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
 <Rules>
 <Rule
  Priority="Processing"
@@ -278,7 +214,8 @@ Condition2()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="44f973a1-f64e-4717-bc83-fcb6ae9ade4e"
->THIS &lt;- MonitoringTypeSM.ReleaseSpeed.MonitoringReleaseSpeed</Action><Action
+><Comment></Comment>
+THIS &lt;- MonitoringTypeSM.ReleaseSpeed</Action><Action
  Guid="47aa0936-dd4f-438f-981f-372a69f1a293"
 >DetermineSupervisionStatus(MonitoringTypeSM.ReleaseSpeed)</Action><Action
  Guid="7f6e4ac3-b449-424c-9f97-9e8bb1f56a73"
@@ -297,22 +234,10 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 >
 <Comment>Release Speed Monitoring.</Comment>
 <StateMachine
- Default="MonitoringReleaseSpeed"
+ Default=""
  Implemented="TRUE"
  Guid="4c471652-a236-49b9-afdf-492ed8264c22"
 >
-<States>
-<State
- Implemented="TRUE"
- Name="MonitoringReleaseSpeed"
- Guid="eb7d32de-8cfa-4ab3-9166-78781b77a38f"
->
-<Comment>In RSM state</Comment>
-<StateMachine
- Implemented="TRUE"
- Guid="545aebdb-bc36-4743-bc7b-5ac63c6d5616"
->
-</StateMachine></State></States>
 </StateMachine></State><State
  X="70"
  Y="40"
@@ -981,6 +906,32 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
     Targets3=&gt;EMPTY
 )</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="PIM"
+ Guid="12a5024e-a617-48a7-a39a-aa29e8e30cf1"
+>
+<Comment>Tells whether the supervision is in PIM or regular TSM</Comment>
+<Cases>
+<Case
+ Name="Monitoring in TSM"
+ Guid="44a8ecb8-f985-4ba3-84bc-5ddc59d6fe57"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="80f62c93-84a8-4735-b4de-c277d005e714"
+>Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Expression>TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &lt; PreIndicationLocation.d_I(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)))</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="50cbdcf9-5bd4-4b43-84f3-ae1faf217101"
+>
+<Expression>False</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -1027,7 +978,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
 <Actions>
 <Action
  Guid="9fa14273-a356-4624-b65d-d653232c55c9"
->Monitoring &lt;- MonitoringTypeSM.ReleaseSpeed.MonitoringReleaseSpeed</Action><Action
+>Monitoring &lt;- MonitoringTypeSM.ReleaseSpeed</Action><Action
  Guid="bcaf9d41-78d4-4ca2-aa31-aa323b2ff4bc"
 >JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
  Guid="d095cf2c-2765-4af6-bc8a-60344e916783"
@@ -1047,7 +998,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
 <Actions>
 <Action
  Guid="5958ef9e-9907-4aa3-a87a-6fde142da01b"
->Monitoring &lt;- MonitoringTypeSM.Target.PIM</Action><Action
+>Monitoring &lt;- MonitoringTypeSM.Target</Action><Action
  Guid="0e28281d-fafb-49e7-afdf-faad241eeea6"
 >JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
  Guid="786eb877-6be7-490d-8b50-0aa472786b58"
@@ -1066,7 +1017,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
 <Action
  Guid="deecb83d-3be9-418a-ab8d-8ac5f524776f"
 ><Comment></Comment>
-Monitoring &lt;- MonitoringTypeSM.Ceiling.MonitoringCeilingSpeed</Action><Action
+Monitoring &lt;- MonitoringTypeSM.Ceiling</Action><Action
  Guid="01b33342-99cc-4d02-a036-2aa5a1aa6f33"
 >JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
  Guid="766d43f5-e156-4a3d-83bd-0f2a6804e6c2"
@@ -1452,7 +1403,7 @@ ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
 <Actions>
 <Action
  Guid="646147c7-d863-488e-83c8-2dad26e8f09b"
->TargetSupervision.UpdateSupervisionStatus()</Action></Actions>
+>TargetSupervision.SupervisionStatus.UpdateSupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1493,7 +1444,7 @@ ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Action
  Guid="b1c0ff01-91ce-4c1f-9bcf-aaf67396cf63"
 ><Comment></Comment>
-CeilingSupervision.UpdateSupervisionStatus()</Action></Actions>
+CeilingSupervision.SupervisionStatus.UpdateSupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
