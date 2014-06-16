@@ -9703,11 +9703,15 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Guid="48d9f05a-c508-4f31-9cac-049a3c56b5c5"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="1259a90a-34f0-4615-8fdf-2fb95b569326"
+><Comment></Comment>
+ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f58ff8d3-2659-4992-92c1-4aa6cfb46808"
->SpeedAndDistanceMonitoring.UpdateMonitoring()</Action></Actions>
+><Comment></Comment>
+SpeedAndDistanceMonitoring.SelectMonitoringType()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
