@@ -18,6 +18,7 @@ using System.Collections.Generic;
 
 using DataDictionary.Values;
 using DataDictionary.Interpreter.Filter;
+using System.Threading;
 
 namespace DataDictionary.Interpreter
 {
@@ -40,6 +41,7 @@ namespace DataDictionary.Interpreter
         public Parser(EFSSystem efsSystem)
         {
             EFSSystem = efsSystem;
+            NoReentrance = new Mutex(false, "Parser mutex");
         }
 
         /// <summary>
@@ -1036,6 +1038,11 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
+        /// Ensures that the code is not reentrant
+        /// </summary>
+        private Mutex NoReentrance { get; set; }
+
+        /// <summary>
         /// Provides the parse tree according to the expression provided
         /// </summary>
         /// <param name="root">the element for which this expression should be parsed</param>
@@ -1052,6 +1059,7 @@ namespace DataDictionary.Interpreter
             bool previousSilentMode = ModelElement.BeSilent;
             try
             {
+                NoReentrance.WaitOne();
                 Generated.ControllersManager.DesactivateAllNotifications();
                 ModelElement.BeSilent = silent;
 
@@ -1097,6 +1105,7 @@ namespace DataDictionary.Interpreter
             }
             finally
             {
+                NoReentrance.ReleaseMutex();
                 ModelElement.BeSilent = previousSilentMode;
                 Generated.ControllersManager.ActivateAllNotifications();
             }
@@ -1117,6 +1126,8 @@ namespace DataDictionary.Interpreter
             int start = Index;
             try
             {
+                NoReentrance.WaitOne();
+
                 // Setup context
                 Root = root;
                 RootLog = log;
@@ -1248,6 +1259,10 @@ namespace DataDictionary.Interpreter
             catch (Exception e)
             {
                 Root.AddException(e);
+            }
+            finally
+            {
+                NoReentrance.ReleaseMutex();
             }
 
             return retVal;
