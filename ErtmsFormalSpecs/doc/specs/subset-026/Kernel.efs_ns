@@ -3273,7 +3273,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="a59bd1e1-eb5a-476d-9a84-03cc15848aba"
 >DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="bd8a96f5-556a-4544-aebd-9e1604aaf8e5"
->Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action><Action
+><Comment></Comment>
+Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action><Action
  Guid="a4ac237c-1c31-4a32-b94b-4140748d8b8b"
 >THIS &lt;- S12</Action></Actions>
 </RuleCondition></Conditions>
@@ -9669,6 +9670,30 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
+ Name="Update position state"
+ Guid="93bb3397-8d79-479a-8b34-82019ceaf626"
+>
+<Comment>Updates the state of the position of the train according to the state of the LRBG.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update position state"
+ Guid="a9a96b78-8a60-4a7e-a910-428dc529e983"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3541b1a8-53a2-4bea-85f6-6c8136424cd0"
+><Comment></Comment>
+TrainPosition.UpdatePositionState()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Update kernel mode"
  Guid="5ef397e3-af33-402c-99eb-ed9d13e71490"
 >
@@ -9712,29 +9737,6 @@ ModeTransitions.UpdateMode()</Action></Actions>
 >SpeedAndDistanceMonitoring.UpdateMonitoring()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Update position state"
- Guid="93bb3397-8d79-479a-8b34-82019ceaf626"
->
-<Comment>Updates the state of the position of the train according to the state of the LRBG.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Update position state"
- Guid="a9a96b78-8a60-4a7e-a910-428dc529e983"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="3541b1a8-53a2-4bea-85f6-6c8136424cd0"
->TrainPosition.UpdatePositionState()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9786,7 +9788,7 @@ ModeTransitions.UpdateMode()</Action></Actions>
 <Actions>
 <Action
  Guid="64c5dc89-646c-46a1-8e8c-b24814da8ae4"
->Kernel.MA.HandleSvLs()</Action></Actions>
+>MA.HandleSvLs()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
