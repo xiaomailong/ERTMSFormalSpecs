@@ -647,7 +647,7 @@
 <Comment></Comment>
 <Expression>Available ( Linking.CurrentLinking() ) AND Linking.CurrentBGWithinFrame()
   OR
-NOT Available ( Linking.CurrentLinking() ) AND THERE_IS_IN CurrentBaliseGroup | X.Q_LINK != Messages.Q_LINK.Linked</Expression>
+NOT Available ( Linking.CurrentLinking() ) AND FORALL_IN CurrentBaliseGroup | X.Q_LINK != Messages.Q_LINK.Unlinked</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -837,6 +837,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Name="Value"
  Guid="d62cbab2-876b-43a9-b9ef-9ab243cac385"
 >
+<Comment></Comment>
 <Expression>Kernel.TrainPosition.FrontEndPosition ( PointOfInterest ) - ActiveAntennaPosition</Expression>
 </Case></Cases>
 </Function><Function
@@ -1209,7 +1210,8 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.NATIONAL_VALUES.Q
 <Actions>
 <Action
  Guid="250427e6-8ddb-431d-a76d-b4432281374f"
->Linking.LinkingInformationReceived ( Packet.TRACK_TO_TRAIN.LINKING )</Action></Actions>
+><Comment></Comment>
+Linking.LinkingInformationReceived ( Packet.TRACK_TO_TRAIN.LINKING )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Repositioning Information available"
@@ -2012,7 +2014,8 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.NATIONAL_VALUES.Q
 <Actions>
 <Action
  Guid="0ed7fcdc-0c4d-4e64-b329-3a748a11b5b8"
->LRBG &lt;- BaliseGroup { 
+><Comment></Comment>
+LRBG &lt;- BaliseGroup { 
   NID =&gt; Nid_BG,
   Position =&gt; BGLocationReference,
   Orientation =&gt; BaliseGroupOrientation()
@@ -2151,7 +2154,8 @@ LRBGCandidate( )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3c939d6a-99af-451a-b12d-368fece30c2a"
->HandleNewLRBG(
+><Comment></Comment>
+HandleNewLRBG(
   Nid_BG=&gt;BG_To_LRBG(Message.NID_BG), 
   TravelledDistance=&gt;TravelledDistanceFromLRBG()
 )</Action></Actions>
