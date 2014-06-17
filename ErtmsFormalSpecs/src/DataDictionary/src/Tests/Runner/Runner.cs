@@ -200,6 +200,7 @@ namespace DataDictionary.Tests.Runner
             EventTimeLine.MaxNumberOfEvents = storeEventCount;
             EFSSystem.Runner = this;
             LogEvents = logEvents;
+            Explain = explain;
 
             // Compile everything
             EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);

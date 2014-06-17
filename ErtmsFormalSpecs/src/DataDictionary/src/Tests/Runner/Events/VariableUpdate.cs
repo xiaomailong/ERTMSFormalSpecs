@@ -66,11 +66,6 @@ namespace DataDictionary.Tests.Runner.Events
                 Changes = new ChangeList();
                 Action.GetChanges(context, Changes, Explanation, apply, runner);
                 Changes.CheckChanges(Action);
-
-                if (runner.Explain)
-                {
-                    Message = Explanation.Message;
-                }
             }
 
             return retVal;

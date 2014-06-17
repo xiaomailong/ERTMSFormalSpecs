@@ -26,7 +26,25 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The message associated to this event
         /// </summary>
-        public string Message { get; set; }
+        private string _message = null;
+        public string Message
+        {
+            get
+            {
+                string retVal = _message;
+
+                if (Explanation != null)
+                {
+                    retVal = Explanation.Message;
+                }
+
+                return retVal;
+            }
+            set
+            {
+                _message = value;
+            }
+        }
 
         /// <summary>
         /// The explanation about this model event
