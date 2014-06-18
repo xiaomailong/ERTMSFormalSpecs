@@ -124,6 +124,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             NamableTreeNode nameSpaceTreeNode = new NamableTreeNode(nameSpace);
             nameSpaceTreeNode.Checked = filterConfiguration.NameSpaces.Contains(nameSpace);
+            nameSpaceTreeNode.Collapse();
             treeNode.Nodes.Add(nameSpaceTreeNode);
 
             // Adds the variables to the selection
