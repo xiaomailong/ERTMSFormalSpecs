@@ -38,7 +38,9 @@
  Guid="2844d155-0eb3-4eb9-b635-aeca4b1f7cb9"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="7ee49310-9903-44ff-b7f4-90784f4c01d5"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="03ff2494-fd28-4b4b-80f1-40ae76f3d84b"
@@ -501,7 +503,9 @@
  Guid="f1a8852d-f15e-4a82-92a1-85b041cf5239"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="195b2dbf-22d7-4c63-b11d-4378c05d6123"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ae406ba3-7f28-4ecf-936e-37bb2932406f"
@@ -996,7 +1000,9 @@
  Guid="7079e769-b475-4285-8e8a-cf7d6e80e8ef"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="76ce8e08-b372-452c-a978-83f32c2a88dc"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3a7adecc-6646-4d3a-ab14-8b07e02c0e6f"
@@ -1459,7 +1465,9 @@
  Guid="74904580-ca74-4c2d-92d4-6e8639786244"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="03aa01ef-5c7e-41c1-adb9-bfa449a0ac08"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7856aaad-190f-4795-b48c-e29b2d53f82c"
@@ -1949,7 +1957,10 @@
  Guid="ea6f4be3-180c-4a57-81eb-85a5919853f3"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="8d1575a9-91fc-45c8-8f7e-c00f834120fe"
+><Comment></Comment>
+ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f3a9d8ce-e6a1-4172-b66b-5be711d63c3b"
@@ -2412,7 +2423,10 @@
  Guid="2390984d-fd81-4f13-9e63-70ec1f9db39c"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="18c0d73a-086d-4660-a053-8eabb5aef21d"
+><Comment></Comment>
+ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ef7b5877-7325-4951-994a-7959661cf001"
@@ -2886,6 +2900,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c0425da5-9178-4679-b61f-12c39989d2ad"
 >
+<Comment></Comment>
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2897,9 +2912,12 @@
 <PreConditions>
 <PreCondition
  Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
->Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMonitoring.Monitoring.ReleaseSpeed, Kernel.SpeedAndDistanceMonitoring.Monitoring.Idle]</PreCondition><PreCondition
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMonitoring.Monitoring.ReleaseSpeed, Kernel.SpeedAndDistanceMonitoring.Monitoring.Idle]</PreCondition><PreCondition
  Guid="27f43f3b-9d33-4f93-8af9-d46bf9c93913"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
+ Guid="6419b761-6bf8-4aa3-af63-9c94abdb9795"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
@@ -3411,11 +3429,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosit
 <PreConditions>
 <PreCondition
  Guid="cfab63ee-7d53-4866-889d-af9c47e77295"
->ProcedureOut not in ProcedureOutSM.NotAvailable
-  AND
-ProcedureOut not in ProcedureOutSM.NotApplicable
-  AND
-ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
+><Comment></Comment>
+ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c312fe49-c752-4ce5-8361-a09bc8d7ecab"
@@ -3883,7 +3898,9 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Guid="93030fc8-cde7-4a29-a4cb-79d4d8d45e7a"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="bfda245f-e56b-40df-b3fd-b22f703f58a4"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ac88bf52-f540-44c2-8c94-930fb08165ef"
@@ -4347,11 +4364,15 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="ee8f8820-7a3e-488c-940c-9b5393756831"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="63b462dd-77eb-421b-b645-7b971238f6ec"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ff5f5c50-07e9-4fef-b3f1-354e16f8124b"
->SupervisionStatus &lt;- Kernel.SupervisionStatus</Action></Actions>
+>SupervisionStatus &lt;- Kernel.SupervisionStatus</Action><Action
+ Guid="975c42a9-7e96-48dd-99bb-ee51294679d3"
+>Monitoring &lt;- Kernel.SpeedAndDistanceMonitoring.Monitoring</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -4379,6 +4400,14 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Implemented="TRUE"
  Name="ProcedureOut"
  Guid="c5163b6b-2717-479d-ac71-cbaaa15641fe"
+>
+</StructureElement><StructureElement
+ TypeName="Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Monitoring"
+ Guid="247963ff-a946-42ed-b70e-8c92fbe0eb46"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -9996,7 +10025,9 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="fb6d5e14-ea87-4906-99e1-2df7aeefb8e4"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="a137a28a-4a6e-47ee-aa22-6ac9d63eb392"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9815ae9e-cf79-4c63-8626-c190486f58da"
@@ -14823,7 +14854,9 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="af3fa51f-52af-4310-a35c-6eab9998c825"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="6fa32aae-e870-4175-8902-27fd2d816f22"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6c795dd9-cfd6-4c71-9695-cc2210c5bcaf"
@@ -15312,7 +15345,9 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="1ac88761-f8d9-459f-8ec8-217a6c6f500f"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="a3218da3-d4c8-4875-9c10-08223c2b7e82"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1142b13c-b3ac-4642-81b5-5adb7963db43"
@@ -15776,7 +15811,9 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="073eeb23-c47b-4f9c-b3d5-8e928445f9f4"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="b728deb1-78dd-4c6b-9369-824d0ce59ec2"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bd5f6858-eb55-4cc7-a633-8479451bf90c"
@@ -16239,11 +16276,13 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="64a50690-ad9b-41f6-94b9-8b44fe30b7d7"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="2d7e3394-01bd-4312-9c4f-39bae5bbbb99"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="f119faa0-7833-4f1f-a3f0-03a7f775729b"
->MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></Actions>
+ Guid="3001d028-535c-4c27-be26-f25714392403"
+>MRSP &lt;- DISCONT(Kernel.MRSP.SpeedRestrictions)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -16256,7 +16295,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="6beb2815-0cc8-429c-9879-d4a4afb093f4"
 >
 </StructureElement><StructureElement
- TypeName="Default.BaseTypes.Speed"
+ TypeName="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Targets"
  Default=""
  Mode="Outgoing"
  Implemented="TRUE"
@@ -16703,7 +16742,9 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="dedfc75e-8039-4cb5-b1a4-25400560f247"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="e7e23d27-d75d-4817-b027-fee6a8e4b996"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3b03cbd3-6227-48c2-89d6-d091e5d898dc"
@@ -17167,7 +17208,9 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="948831e8-2473-4708-875e-c8da74322cd8"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="ed8d828e-dac1-4e26-b829-678024c3a785"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="48b28eb0-1034-4e06-9c8e-4bc9d9fd35b3"
@@ -19372,7 +19415,9 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="463e57c3-09a7-4c0a-9506-917d7b2b22a0"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="08961521-d25e-4e1e-b5ab-f956b5d776fd"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4ec9e0a0-7cd1-4cc2-b31f-830372a7fab2"
@@ -19836,7 +19881,10 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="546af9fd-4098-4427-994b-8d9473c046b0"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="30046cbc-d85c-44a1-8a6d-6eaa4cb1a866"
+><Comment></Comment>
+ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7c4571e4-a3ac-499c-9dc9-b1dd1f630b2a"
@@ -20283,7 +20331,18 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="148f18ac-e0d9-4182-9fd4-c54e5f7ed9d4"
 >
-</ReqRef><Rules>
+</ReqRef><ReqRef
+ Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4fa0b52-9c1e-4992-80d8-ca48d0addad7"
+>
+</ReqRef><ReqRef
+ Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55fb1cb7-7087-4663-ba4a-49236d42e1c0"
+>
+</ReqRef><Comment></Comment>
+<Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -20299,14 +20358,26 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="UpdateValue"
  Guid="84111a24-c1b5-4ecc-9522-559cc279d396"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
- Guid="a991d321-af52-474d-b962-cb7af3a8271d"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
+ Guid="b2656408-99e7-4f0c-bc3a-526060dfebca"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]</PreCondition><PreCondition
+ Guid="859e941a-b30f-46f2-9d7b-1cc226cc0fbe"
+>Kernel.SpeedAndDistanceMonitoring.Supervision != Kernel.SpeedAndDistanceMonitoring.SupervisionStatus.Normal
+
+  AND  
+
+Kernel.SpeedAndDistanceMonitoring.Supervision != Kernel.SpeedAndDistanceMonitoring.SupervisionStatus.Indication</PreCondition><PreCondition
+ Guid="d5634a7b-6cad-4c6f-9dc8-a6a83557e821"
+>Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
+ Guid="104bfae1-3091-47e6-b63e-77df74bc368a"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f0c8976c-c957-4f3d-a0a5-3295db9e7317"
->Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</Action></Actions>
+>Speed &lt;- Kernel.SpeedAndDistanceMonitoring.FLOISpeed(
+Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement

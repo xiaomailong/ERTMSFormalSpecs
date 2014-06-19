@@ -514,6 +514,22 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// The predefined discontinuities function
+        /// </summary>
+        private Functions.PredefinedFunctions.Discontinuities discontPredefinedFunction;
+        public Functions.PredefinedFunctions.Discontinuities DiscontPredefinedFunction
+        {
+            get
+            {
+                if (discontPredefinedFunction == null)
+                {
+                    discontPredefinedFunction = new Functions.PredefinedFunctions.Discontinuities(this);
+                }
+                return discontPredefinedFunction;
+            }
+        }
+
+        /// <summary>
         /// The predefined RoundToMultiple function
         /// </summary>
         private Functions.PredefinedFunctions.RoundToMultiple roundToMultiplePredefinedFunction;
@@ -659,6 +675,7 @@ namespace DataDictionary
                     predefinedFunctions[MinSurfacePredefinedFunction.Name] = MinSurfacePredefinedFunction;
                     predefinedFunctions[MaxPredefinedFunction.Name] = MaxPredefinedFunction;
                     predefinedFunctions[TargetsPredefinedFunction.Name] = TargetsPredefinedFunction;
+                    predefinedFunctions[DiscontPredefinedFunction.Name] = DiscontPredefinedFunction;
                     predefinedFunctions[RoundToMultiplePredefinedFunction.Name] = RoundToMultiplePredefinedFunction;
                     predefinedFunctions[DoubleToIntegerPredefinedFunction.Name] = DoubleToIntegerPredefinedFunction;
                     predefinedFunctions[DecelerationProfilePredefinedFunction.Name] = DecelerationProfilePredefinedFunction;

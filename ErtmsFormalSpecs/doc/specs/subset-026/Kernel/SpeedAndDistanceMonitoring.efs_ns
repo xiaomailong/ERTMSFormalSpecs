@@ -653,20 +653,11 @@ V &lt; 30.0</PreCondition><PreCondition
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b8cf0ba7-f32e-4c2a-b835-6ba6cb0f32e1"
 >
-</ReqRef><ReqRef
- Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="07f9f820-4f2d-4f73-886c-d0fc8f968675"
->
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="74e64307-2966-461e-a976-9a0194ca8514"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f77e2edc-d3c3-4e18-9ba7-1dd5896b3583"
->
-</ReqRef><ReqRef
- Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f3f297e1-a2c6-47b7-b7e9-90e061ae4b1f"
 >
 </ReqRef><Comment>Provides the current permitted speed of the train, accounting for the speed and distance monitoring.</Comment>
 <Parameters>
@@ -681,24 +672,13 @@ V &lt; 30.0</PreCondition><PreCondition
  Name="CeilingSpeedMonitoring_P"
  Guid="9bcbf022-4599-40dc-ad8a-f5e831f6af26"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="5394d167-a030-4b1d-a096-b176e1075237"
 ><Comment></Comment>
-Monitoring in Monitoring.Ceiling</PreCondition><PreCondition
- Guid="e902ee0f-8ed6-4c80-aafe-96b258b01056"
-><Comment></Comment>
-Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
+Monitoring in Monitoring.Ceiling</PreCondition></PreConditions>
 <Expression>CeilingSupervision.P ( Distance )</Expression>
-</Case><Case
- Name="CeilingSpeedMonitoring_SBI"
- Guid="e4f40ce0-734c-4a1d-b8d4-68c346bc038b"
->
-<PreConditions>
-<PreCondition
- Guid="c4529bc3-bd47-4ae9-8347-84a7d362d528"
->Monitoring in Monitoring.Ceiling</PreCondition></PreConditions>
-<Expression>CeilingSupervision.SBI ( Distance )</Expression>
 </Case><Case
  Name="TargetSpeedMonitoring_P"
  Guid="c121bdd5-4b33-48ef-b069-9a042e43983d"
@@ -706,19 +686,8 @@ Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, Sup
 <PreConditions>
 <PreCondition
  Guid="5ba6a2ec-fce4-46ab-8e17-256f0a63ae84"
->Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
- Guid="b286ca0d-4051-4c4a-a610-a2615579bcac"
->Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
-<Expression>TargetSupervision.V_P_DMI()</Expression>
-</Case><Case
- Name="TargetSpeedMonitoring_FLOI"
- Guid="abb0b3d3-d383-4088-8c65-db4e81cadbae"
->
-<PreConditions>
-<PreCondition
- Guid="7bfba49b-c9f5-492a-8afc-18d09cf1f725"
 >Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
-<Expression>TargetSupervision.V_FLOI_DMI()</Expression>
+<Expression>TargetSupervision.V_P_DMI()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -879,6 +848,54 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
     Targets2=&gt;EMPTY,
     Targets3=&gt;EMPTY
 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="FLOISpeed"
+ Guid="a795979a-1be0-4dd7-9d76-953aaf006b62"
+>
+<ReqRef
+ Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4eb45864-0c9f-43b1-8c42-69ac4969464f"
+>
+</ReqRef><ReqRef
+ Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9fae7ce0-d3ba-4e82-9d48-7ebe90cd4ecc"
+>
+</ReqRef><Comment>Provides the current FLOI speed of the train, accounting for the speed and distance monitoring.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="515672d8-f729-4f68-922e-7105079961b5"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="CeilingSpeedMonitoring_SBI"
+ Guid="e4f40ce0-734c-4a1d-b8d4-68c346bc038b"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="c4529bc3-bd47-4ae9-8347-84a7d362d528"
+>Monitoring in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
+<Expression>CeilingSupervision.SBI ( Distance )</Expression>
+</Case><Case
+ Name="TargetSpeedMonitoring_FLOI"
+ Guid="abb0b3d3-d383-4088-8c65-db4e81cadbae"
+>
+<PreConditions>
+<PreCondition
+ Guid="7bfba49b-c9f5-492a-8afc-18d09cf1f725"
+>Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Expression>TargetSupervision.V_FLOI_DMI()</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
