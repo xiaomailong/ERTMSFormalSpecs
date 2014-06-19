@@ -121,46 +121,5 @@ namespace DataDictionary.Interpreter
                 RootLog.AddWarning(message);
             }
         }
-
-        /// <summary>
-        /// Provides the textual representation of the namable provided
-        /// </summary>
-        /// <param name="namable"></param>
-        /// <returns></returns>
-        public String explainNamable(INamable namable)
-        {
-            String retVal = "";
-
-            if (namable != null)
-            {
-                retVal = namable.Name;
-
-                Function fonction = namable as Function;
-                if (fonction != null)
-                {
-                    if (fonction.Graph != null)
-                    {
-                        retVal = fonction.Graph.ToString();
-                    }
-                    else if (fonction.Surface != null)
-                    {
-                        retVal = fonction.Surface.ToString();
-                    }
-                }
-                else
-                {
-                    Values.IValue value = namable as Values.IValue;
-                    if (value != null)
-                    {
-                        retVal = value.LiteralName;
-                    }
-
-                }
-            }
-
-            return retVal;
-
-        }
-
     }
 }

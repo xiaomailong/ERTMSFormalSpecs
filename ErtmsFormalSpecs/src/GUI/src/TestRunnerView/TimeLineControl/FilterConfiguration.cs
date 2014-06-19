@@ -21,6 +21,7 @@ using System.Text.RegularExpressions;
 
 using DataDictionary.Types;
 using DataDictionary.Tests.Runner.Events;
+using DataDictionary.Variables;
 
 namespace GUI.TestRunnerView.TimeLineControl
 {
@@ -47,6 +48,11 @@ namespace GUI.TestRunnerView.TimeLineControl
         public List<NameSpace> NameSpaces { get; private set; }
 
         /// <summary>
+        /// Variables that should be kept
+        /// </summary>
+        public List<Variable> Variables { get; private set; }
+
+        /// <summary>
         /// The regular expression used for filtering
         /// </summary>
         public string RegExp { get; set; }
@@ -60,6 +66,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             RuleFired = true;
             VariableUpdate = true;
             NameSpaces = new List<NameSpace>();
+            Variables = new List<Variable>();
         }
 
         /// <summary>
@@ -74,7 +81,34 @@ namespace GUI.TestRunnerView.TimeLineControl
             // Check event type
             retVal = retVal && (!(evt is Expect) || Expect);
             retVal = retVal && (!(evt is RuleFired) || RuleFired);
-            retVal = retVal && (!(evt is VariableUpdate) || VariableUpdate);
+
+            // Checks the variable update
+            if (retVal)
+            {
+                VariableUpdate variableUpdate = evt as VariableUpdate;
+                if (variableUpdate != null)
+                {
+                    if (VariableUpdate)
+                    {
+                        // Do not filter out variables updates for which the rule is not available
+                        // because these updates are related to test steps or external input (using EFS service)
+                        retVal = variableUpdate.Action != null && variableUpdate.Action.Rule == null;
+
+                        foreach (Variable variable in Variables)
+                        {
+                            retVal = variableUpdate.Changes.ImpactVariable(variable);
+                            if (retVal)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        retVal = false;
+                    }
+                }
+            }
 
             // Check event namespace
             if (retVal)

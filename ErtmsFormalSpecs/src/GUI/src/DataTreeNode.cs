@@ -739,15 +739,11 @@ namespace GUI
         }
 
         /// <summary>
-        /// Clears messages for all nodes under this node
+        /// Clears messages for all nodes of the system
         /// </summary>
         public void ClearMessages()
         {
-            Model.Messages.Clear();
-            foreach (BaseTreeNode node in Nodes)
-            {
-                node.ClearMessages();
-            }
+            EFSSystem.INSTANCE.ClearMessages();
         }
 
         /// <summary>

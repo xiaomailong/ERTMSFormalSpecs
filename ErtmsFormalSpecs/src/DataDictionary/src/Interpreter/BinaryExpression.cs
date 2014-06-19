@@ -332,7 +332,7 @@ namespace DataDictionary.Interpreter
             }
             catch (Exception e)
             {
-                AddError("Cannot evaluate " + Left + ". Reason is " + e.Message);
+                AddErrorAndExplain("Cannot evaluate " + Left + ". Reason is " + e.Message, context);
                 throw new Exception("inner evaluation failed");
             }
 
@@ -561,7 +561,7 @@ namespace DataDictionary.Interpreter
             {
                 if (explain)
                 {
-                    CompleteExplanation(previous, Name + " = " + explainNamable(retVal));
+                    CompleteExplanation(previous, Name + " = ", retVal);
                 }
             }
 

@@ -448,7 +448,7 @@
     M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
     NID_C =&gt; 85,
     NID_BG =&gt; 5462,
-    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
     Sequence1 =&gt; [
         Messages.EUROBALISE.SubStructure1 
         {
@@ -467,7 +467,13 @@
         }
     ],
     BitField =&gt; &apos;&apos;
-}</Action><Action
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Second balise in group"
+ Guid="be352d56-ee43-4fc4-9389-414b6e12f84f"
+>
+<Actions>
+<Action
  Guid="5317ecdf-a9fe-43c8-a9bc-4900d13f24e7"
 >BTM.Message &lt;- Messages.EUROBALISE.Message{
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
@@ -479,7 +485,7 @@
     M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
     NID_C =&gt; 85,
     NID_BG =&gt; 5462,
-    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
     Sequence1 =&gt; [],
     BitField =&gt; &apos;&apos;
 }</Action></Actions>
@@ -495,7 +501,7 @@
     Speed =&gt; 40.0
 }</Expectation></Expectations>
 </SubStep><SubStep
- Name="Sub-step2 - From RBC"
+ Name="Sub-step3 - From RBC"
  Guid="4178c6f5-7ef6-420d-9b46-97bfba70d5c7"
 >
 <Actions>

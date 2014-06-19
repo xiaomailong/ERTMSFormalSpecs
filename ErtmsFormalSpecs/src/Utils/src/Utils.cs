@@ -95,5 +95,24 @@ namespace Utils
             }
             return retVal;
         }
+
+        /// <summary>
+        /// Reduces the length of the provided value to the expected length.
+        /// Adds "..." at the end of the output string
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string ReduceSize(string value, int length)
+        {
+            string retVal = value;
+
+            if (retVal.Length > length && length > 3)
+            {
+                retVal = retVal.Substring(0, length - 3) + "...";
+            }
+
+            return retVal;
+        }
     }
 }

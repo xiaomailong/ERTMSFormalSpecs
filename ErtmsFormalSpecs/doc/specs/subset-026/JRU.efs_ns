@@ -948,7 +948,8 @@ Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e0adc517-5b2f-4309-ab4b-821bd1fbaf57"
->INSERT Messages.JRU.MESSAGE.Message{
+><Comment></Comment>
+INSERT Messages.JRU.MESSAGE.Message{
 SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitoringInformationMessage()
 }IN JRUMessages</Action><Action
  Guid="1e73cc9f-11c6-4599-a75a-6acda1ef7430"

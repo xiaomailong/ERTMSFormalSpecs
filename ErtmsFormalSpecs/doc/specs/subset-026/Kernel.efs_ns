@@ -3272,7 +3272,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="a59bd1e1-eb5a-476d-9a84-03cc15848aba"
 >DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="bd8a96f5-556a-4544-aebd-9e1604aaf8e5"
->Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action><Action
+><Comment></Comment>
+Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action><Action
  Guid="a4ac237c-1c31-4a32-b94b-4140748d8b8b"
 >THIS &lt;- S12</Action></Actions>
 </RuleCondition></Conditions>
@@ -9580,7 +9581,8 @@ INITIAL_VALUE EmergencyStop
 <PreConditions>
 <PreCondition
  Guid="6d3b2490-aa01-4121-8abb-e05a55a842cc"
->BTM.Linking.LinkingApplicable()
+><Comment></Comment>
+BTM.Linking.LinkingApplicable()
   AND  
 BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLinking().Distance + BTM.Linking.CurrentLinking().LocationAccuracy)</PreCondition></PreConditions>
 <Actions>
@@ -9666,29 +9668,6 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Update kernel mode"
- Guid="5ef397e3-af33-402c-99eb-ed9d13e71490"
->
-<Comment>Updates the mode of the kernel according to the new information.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Update kernel mode"
- Guid="45b9c95e-9f54-4abe-bbff-0871fc9b2d19"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="8652d86c-0773-4542-973d-ff53846170a7"
->ModeTransitions.UpdateMode()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="Update position state"
  Guid="93bb3397-8d79-479a-8b34-82019ceaf626"
 >
@@ -9706,29 +9685,51 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 <Actions>
 <Action
  Guid="3541b1a8-53a2-4bea-85f6-6c8136424cd0"
->TrainPosition.UpdatePositionState()</Action></Actions>
+><Comment></Comment>
+TrainPosition.UpdatePositionState()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Update monitoring"
- Guid="6689bf93-bb50-4ebe-8a0a-cdddff0a3693"
+ Name="Update kernel mode"
+ Guid="5ef397e3-af33-402c-99eb-ed9d13e71490"
 >
-<Comment>Updates speed and distance monitoring according to the received information.</Comment>
+<Comment>Updates the mode of the kernel according to the new information.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Update monitoring"
- Guid="48d9f05a-c508-4f31-9cac-049a3c56b5c5"
+ Name="Update kernel mode"
+ Guid="45b9c95e-9f54-4abe-bbff-0871fc9b2d19"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="8652d86c-0773-4542-973d-ff53846170a7"
+><Comment></Comment>
+ModeTransitions.UpdateMode()</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Speed and distance monitoring"
+ Guid="6855b834-d5db-4cd4-8134-71e646ae5bdd"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Start monitoring if required"
+ Guid="79423c20-147c-41ac-819b-6a7e42e43874"
 >
 <PreConditions>
 <PreCondition
  Guid="1259a90a-34f0-4615-8fdf-2fb95b569326"
 ><Comment></Comment>
-ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
+ Guid="ee4d3703-e480-48f3-87e0-63c40fc3770d"
+>SpeedAndDistanceMonitoring.Monitoring in SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f58ff8d3-2659-4992-92c1-4aa6cfb46808"
@@ -9785,7 +9786,7 @@ SpeedAndDistanceMonitoring.SelectMonitoringType()</Action></Actions>
 <Actions>
 <Action
  Guid="64c5dc89-646c-46a1-8e8c-b24814da8ae4"
->Kernel.MA.HandleSvLs()</Action></Actions>
+>MA.HandleSvLs()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

@@ -475,8 +475,7 @@ USING
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- X="550"
- Y="300"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -567,6 +566,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
+ X="110"
  Y="360"
  Width="100"
  Height="50"
@@ -622,7 +622,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- X="110"
+ X="220"
  Y="360"
  Width="100"
  Height="50"
@@ -660,7 +660,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- X="220"
+ X="330"
  Y="360"
  Width="100"
  Height="50"
@@ -714,7 +714,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- X="330"
+ X="440"
  Y="360"
  Width="100"
  Height="50"
@@ -783,6 +783,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <PreConditions>
 <PreCondition
  Guid="55d1dd43-8bdd-4519-b0f6-3ff74b3c4c3c"
+><Comment></Comment>
 >Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( TrainLength )</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient.Indefinite</Expression>
 </Case><Case
@@ -794,8 +795,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- X="440"
- Y="360"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -829,8 +829,8 @@ Outside the distances provided by the gradient, the gradient value is defined as
 </Function><Function
  Type="Default.BaseTypes.Gradient"
  Default=""
- X="550"
- Y="360"
+ X="110"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -908,6 +908,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 </Function><Function
  Type="TrackDescription.Gradient.CorrectionFactor"
  Default=""
+ X="220"
  Y="420"
  Width="100"
  Height="50"
@@ -996,7 +997,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 </Function><Function
  Type="TrackDescription.Gradient.CorrectionFactor"
  Default=""
- X="110"
+ X="330"
  Y="420"
  Width="100"
  Height="50"
@@ -1027,7 +1028,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 </Function><Function
  Type="TrackDescription.Gradient.CorrectionFactor"
  Default=""
- X="220"
+ X="440"
  Y="420"
  Width="100"
  Height="50"
@@ -1058,7 +1059,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="480"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1192,7 +1193,7 @@ ON Packet.Sequence1</Action></Actions>
 </Rule></Rules>
 </Procedure><Procedure
  X="110"
- Y="480"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1233,7 +1234,7 @@ ON Packet.Sequence1</Action></Actions>
 </Rule></Rules>
 </Procedure><Procedure
  X="220"
- Y="480"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1424,8 +1425,7 @@ ON Packet.Sequence1</Action></Actions>
  Type="Kernel.TrackDescription.Gradient.CorFact"
  DefaultValue=""
  VariableMode="Internal"
- X="550"
- Y="180"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"

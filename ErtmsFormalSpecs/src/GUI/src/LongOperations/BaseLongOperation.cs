@@ -16,12 +16,18 @@
 namespace GUI.LongOperations
 {
     using Utils;
+    using System;
 
     /// <summary>
     /// The base class used to handle long operations
     /// </summary>
     public abstract class BaseLongOperation : ProgressHandler
     {
+        /// <summary>
+        /// Execution time span
+        /// </summary>
+        public TimeSpan Span { get; private set; }
+
         /// <summary>
         /// Indicates that the dialog should be displayed
         /// </summary>
@@ -48,6 +54,8 @@ namespace GUI.LongOperations
         /// <param name="allowCancel">Indicates that the opeation can be canceled</param>
         public void ExecuteUsingProgressDialog(string message, bool allowCancel = true)
         {
+            DateTime start = DateTime.Now;
+
             try
             {
                 SynchronizerList.SuspendSynchronization();
@@ -64,6 +72,7 @@ namespace GUI.LongOperations
             }
             finally
             {
+                Span = DateTime.Now.Subtract(start);
                 SynchronizerList.ResumeSynchronization();
             }
         }
