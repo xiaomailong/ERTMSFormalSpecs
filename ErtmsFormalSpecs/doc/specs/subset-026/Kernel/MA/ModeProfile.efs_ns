@@ -185,7 +185,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="455d0908-c75c-4055-945d-7ffc5337ccf0"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>This function indicates whether a mode profile as requested by the trackside is applicable according to the train position and mode</Comment>
+<Parameters>
 <Parameter
  Type="Kernel.MA.ModeProfile.ModeProfileStruct"
  Name="aModeProfile"
@@ -602,7 +603,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Name="FirstNonApplicableModeProfile"
  Guid="547b6baa-ee4d-4b17-8252-0289749bf194"
 >
-<Comment></Comment>
+<Comment>This function provides the mode transition profile, as ordered by the trackside which is not yet applied to the train</Comment>
 <Cases>
 <Case
  Name="Value"

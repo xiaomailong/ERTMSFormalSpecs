@@ -1580,7 +1580,7 @@ namespace GUI
                         RequirementsView.Window requirementsView = RequirementsWindow;
                         if (requirementsView != null)
                         {
-                            requirementsView.SetModel((DataDictionary.ModelElement)model);
+                            requirementsView.SetModel(model as DataDictionary.ModelElement);
                         }
 
                         // Expression editor view
@@ -1618,7 +1618,7 @@ namespace GUI
                         UsageView.Window usageView = UsageWindow;
                         if (usageView != null)
                         {
-                            usageView.SetModel((DataDictionary.ModelElement)model);
+                            usageView.SetModel(model as DataDictionary.ModelElement);
                         }
 
                         // History

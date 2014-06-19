@@ -863,15 +863,21 @@ namespace GUI.BoxArrowDiagram
 
         private void BoxArrowPanel_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
-            foreach (BoxControl<BoxModel, ArrowModel> control in boxes.Values)
+            try
             {
-                control.PaintInBoxArrowPanel(g);
-            }
+                Graphics g = e.Graphics;
+                foreach (BoxControl<BoxModel, ArrowModel> control in boxes.Values)
+                {
+                    control.PaintInBoxArrowPanel(g);
+                }
 
-            foreach (ArrowControl<BoxModel, ArrowModel> control in arrows.Values)
+                foreach (ArrowControl<BoxModel, ArrowModel> control in arrows.Values)
+                {
+                    control.PaintInBoxArrowPanel(g);
+                }
+            }
+            catch (Exception)
             {
-                control.PaintInBoxArrowPanel(g);
             }
         }
 

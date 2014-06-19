@@ -104,7 +104,7 @@
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
     NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
 }</Action><Action
  Guid="3af58f36-7ed9-4b18-a581-edc3a117a8e3"
@@ -267,7 +267,7 @@
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
     NID_BG=&gt;2125,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
 }</Action><Action
  Guid="51aa591e-8f19-4958-9fc6-15d638819102"
@@ -327,6 +327,16 @@
  Id="d1944e18-a016-48f1-9817-9a6c415e92e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="070e631a-7a7b-4f15-bd07-8574ef6c838e"
+>
+</ReqRef><ReqRef
+ Id="675394d7-4475-4a7f-9846-627ae90086d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5c533d8c-e6bc-4b6e-a422-23b63c738dfb"
+>
+</ReqRef><ReqRef
+ Id="50574953-3247-4859-8de2-1049ab46e862"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9583203b-c62e-490e-a7ae-bd744c68f25f"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -403,6 +413,7 @@
  Name="Sub-step1"
  Guid="37e33b34-ac78-412c-bb2e-c90177a29f50"
 >
+<Comment></Comment>
 <Actions>
 <Action
  Guid="18cc0d5b-e409-44e5-8d17-feb310a51305"
@@ -445,7 +456,8 @@
 <Actions>
 <Action
  Guid="f85dc298-50a7-47a4-8af9-f2dbc6097dc4"
->BTM.Message &lt;- Messages.EUROBALISE.Message
+><Comment></Comment>
+BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -456,7 +468,7 @@
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
     NID_BG=&gt;2126,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
 }</Action><Action
  Guid="02040f3f-156b-426d-b34b-658c7ac61c00"
@@ -773,7 +785,7 @@
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
     NID_BG=&gt;2125,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
 }</Action><Action
  Guid="c645cd42-0eb2-4d28-93e5-b3b03ce425cd"
@@ -812,7 +824,7 @@
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
     NID_BG=&gt;2125,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
 }</Action><Action
  Guid="c66736ac-a517-4e5d-b4db-4e7a6a9b9683"
@@ -846,7 +858,7 @@
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
     NID_BG=&gt;2125,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
 }</Action><Action
  Guid="85ffc9ca-5608-4b97-bf20-785ae7e47d36"
@@ -879,13 +891,13 @@
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;4,
+    N_PIG=&gt;3,
     N_TOTAL=&gt;3,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
     NID_BG=&gt;2125,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
 }</Action><Action
  Guid="9fa77034-ffe9-4103-89a7-dcd78022276e"
