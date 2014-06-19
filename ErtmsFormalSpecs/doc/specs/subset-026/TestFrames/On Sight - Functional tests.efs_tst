@@ -61,12 +61,12 @@
  Guid="bdd61a93-0235-4ee8-b6c5-ffe9f42f2813"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2 - Initialize elements to accept MA"
- Guid="4dcb58ca-06b9-4898-b526-66737461e02f"
+ Name="Sub-step2 - Initialize elements to receive MA"
+ Guid="8c99db8d-cb19-4468-97a9-9853217315e0"
 >
 <Actions>
 <Action
- Guid="8e564aec-6990-4d51-ba35-206a59ed0e25"
+ Guid="a3375ec7-7e9e-4393-b6eb-1391d2a35c10"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -130,7 +130,7 @@
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
     NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
     Sequence1=&gt;
     [ 
        
@@ -247,7 +247,7 @@ Messages.EUROBALISE.SubStructure1
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
     NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
     Sequence1=&gt;
     [ 
        
@@ -388,12 +388,12 @@ Messages.EUROBALISE.SubStructure1
  Guid="1f6188e7-7f95-4369-b53a-502bf13f7a66"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2 - Initialize elements to accept MA"
- Guid="8d4fddf8-ac32-46ba-b810-26c98d8a804c"
+ Name="Sub-step2 - Initialize elements to receive MA"
+ Guid="02965c86-351c-4056-976f-330079794810"
 >
 <Actions>
 <Action
- Guid="dbcff68d-de2c-4272-b46d-b40a9741d691"
+ Guid="b5c70a87-9f99-4cd6-95c1-578219cbd46c"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -444,7 +444,8 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="8048d974-8d79-4ccd-a45c-69c329066a0a"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+><Comment></Comment>
+EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
 {
     MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
@@ -506,7 +507,7 @@ Messages.EUROBALISE.SubStructure1
                    Q_DIR=&gt; Messages.Q_DIR.Nominal,
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                   V_MAMODE=&gt;1,
+                   V_MAMODE=&gt;6,
                    Sequence1=&gt;[] 
                 }
 }
@@ -559,7 +560,8 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="8061d583-1e43-4cca-a541-fc2e1f0cefbf"
->Odometry.EstimatedSpeed &lt;- 60.0</Action><Action
+><Comment></Comment>
+Odometry.EstimatedSpeed &lt;- 60.0</Action><Action
  Guid="70cf7ff9-be6f-41f0-a81f-d6a2bd7c0d35"
 >EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
@@ -578,7 +580,7 @@ Messages.EUROBALISE.SubStructure1
         NID_PACKET =&gt; 15,
         Q_DIR =&gt; Messages.Q_DIR.Nominal,
         L_PACKET =&gt; 0,
-        Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
+        Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
         V_LOA =&gt; 0,
         T_LOA =&gt; 0,
         N_ITER =&gt; 1,
@@ -623,7 +625,7 @@ Messages.EUROBALISE.SubStructure1
                    Q_DIR=&gt; Messages.Q_DIR.Nominal,
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                   V_MAMODE=&gt;1,
+                   V_MAMODE=&gt;6,
                    Sequence1=&gt;[] 
                 }
 }
@@ -702,12 +704,12 @@ Messages.EUROBALISE.SubStructure1
  Guid="b8765871-1ceb-4b9c-916d-b81f711859d1"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2 - Initialize elements to accept MA"
- Guid="4fd3c159-e8a0-49a0-83f4-ace00ad16851"
+ Name="Sub-step2 - Initialize elements to receive MA"
+ Guid="7df8dd53-9c9f-49a1-8332-754c185c61f3"
 >
 <Actions>
 <Action
- Guid="2b067c14-23da-4cfe-ba4f-3138a1d6479b"
+ Guid="646289da-6b4c-492c-9e13-2dd0c4ca823d"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -765,7 +767,7 @@ Messages.EUROBALISE.SubStructure1
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
     NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
     Sequence1=&gt;
     [ 
        

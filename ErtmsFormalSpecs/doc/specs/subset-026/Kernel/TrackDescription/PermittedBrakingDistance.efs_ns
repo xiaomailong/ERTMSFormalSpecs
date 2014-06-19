@@ -6,6 +6,7 @@
  Name="PermittedBrakingDistance"
  Guid="04dc141f-d4cc-4fa5-881e-4b2bbd65f769"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -149,7 +150,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="SRPB"
+ TypeName="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
  MaxSize="20"
  Default="[]"
  Y="60"
@@ -169,7 +170,7 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="SRPB"
+ Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
  Default=""
  Y="180"
  Width="100"
@@ -543,7 +544,8 @@
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
- Y="240"
+ X="660"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -570,6 +572,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a9b0f30d-73e9-402d-900e-2773af70ac9e"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="c7a43456-5326-4c4d-b89f-23b71a0240bf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -686,7 +689,7 @@
 </ReqRef><Comment>Provides value of A_safe for adhesion factor slippery rail with gradient 0.</Comment>
 <Parameters>
 <Parameter
- Type="TrackDescription.AdhesionFactors.AdhesionFactor"
+ Type="Kernel.TrackDescription.AdhesionFactors.AdhesionFactor"
  Name="anAdhFactor"
  Guid="ad9ff0e8-6784-4bcb-8310-c6ee0f1274dd"
 >
@@ -733,7 +736,7 @@
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
- X="220"
+ X="110"
  Y="240"
  Width="100"
  Height="50"
@@ -794,7 +797,7 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="330"
+ X="220"
  Y="240"
  Width="100"
  Height="50"
@@ -850,7 +853,7 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="440"
+ X="330"
  Y="240"
  Width="100"
  Height="50"
@@ -882,7 +885,7 @@
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
- X="550"
+ X="440"
  Y="240"
  Width="100"
  Height="50"
@@ -962,7 +965,8 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- Y="300"
+ X="550"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1011,8 +1015,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="110"
- Y="300"
+ X="660"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1023,7 +1027,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 <Comment>Provides the speed restriction for a certain request to calculate a speed restriction which ensures that the train stops within a given permitted braking distance.</Comment>
 <Parameters>
 <Parameter
- Type="SRPB"
+ Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
  Name="aSRPB"
  Guid="ada73484-df4f-465a-9111-63fb7a01cdf8"
 >
@@ -1340,7 +1344,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 >
 </ReqRef><Parameters>
 <Parameter
- Type="SRPB"
+ Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
  Name="aSRPB"
  Guid="3dcc62ba-b312-4a75-8474-65219553e4e0"
 >
@@ -1373,7 +1377,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="SRPBProfile"
+ Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPBProfile"
  DefaultValue="Kernel.TrackDescription.PermittedBrakingDistance.SRPBProfile
 {
     InitialState =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow, 
@@ -1405,7 +1409,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 >
 </ReqRef><Comment>Contains the speed restrictions due to permitted braking distance.</Comment>
 </Variable><Variable
- Type="TrainData.BrakingParameters.EBModelSet"
+ Type="Kernel.TrainData.BrakingParameters.EBModelSet"
  DefaultValue=""
  VariableMode="Internal"
  X="110"
@@ -1423,7 +1427,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 >
 </ReqRef><Comment>Contains the previous value of emergency braking models.</Comment>
 </Variable><Variable
- Type="TrainData.BrakingParameters.SBModelSet"
+ Type="Kernel.TrainData.BrakingParameters.SBModelSet"
  DefaultValue=""
  VariableMode="Internal"
  X="220"

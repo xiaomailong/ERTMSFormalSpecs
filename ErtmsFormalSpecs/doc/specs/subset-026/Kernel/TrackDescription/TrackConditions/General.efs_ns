@@ -216,7 +216,7 @@
 >
 </ReqRef><Comment>Start location of the track condition</Comment>
 </StructureElement><StructureElement
- TypeName="General.TrackCondition"
+ TypeName="TrackCondition"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -232,7 +232,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="General.TrackConditionInformation"
+ TypeName="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  MaxSize="20"
  Default="[]"
  Y="60"
@@ -323,7 +323,7 @@
 <Expression>Distance + Default.BaseTypes.LengthToDistance(Length) + Default.BaseTypes.LengthToDistance(Kernel.TrainData.TrainData.Value.TrainLength)</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Default=""
  X="110"
  Y="180"
@@ -341,7 +341,7 @@
 </ReqRef><Comment>On mode switch, resets a subset of the track conditions in all future profile points</Comment>
 <Parameters>
 <Parameter
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="TCPacket"
  Guid="8504f3e3-f3fd-458e-bae5-f4e2cebad52c"
 >
@@ -373,7 +373,7 @@
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Default=""
  X="220"
  Y="180"
@@ -391,7 +391,7 @@
 </ReqRef><Comment>On mode switch, resets a subset of the track conditions in all future profile points</Comment>
 <Parameters>
 <Parameter
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="TCPacket"
  Guid="d9557982-b23b-4119-b4a0-6da78566f568"
 >
@@ -453,7 +453,7 @@
 <Expression>CurrentConditions().RadioHole</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackCondition"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackCondition"
  Default=""
  X="440"
  Y="180"
@@ -468,12 +468,12 @@
 (Condition A  OR  Condition B)</Comment>
 <Parameters>
 <Parameter
- Type="TrackCondition"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackCondition"
  Name="Profile1"
  Guid="fe7b67e3-89d5-4779-a638-0bb141b805ee"
 >
 </Parameter><Parameter
- Type="TrackCondition"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackCondition"
  Name="Profile2"
  Guid="b598db9e-9187-4717-8a79-2f0205c0e215"
 >
@@ -500,7 +500,7 @@
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackCondition"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackCondition"
  Default=""
  X="550"
  Y="180"
@@ -519,6 +519,16 @@
  Id="75f0036b-52d0-4886-96af-89590c44b242"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="222f4bcd-2a1c-413f-a896-71284a305776"
+>
+</ReqRef><ReqRef
+ Id="00a69e16-494d-4601-947a-02a6541733da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="265aae58-93c8-4322-b6ff-69df42a44e59"
+>
+</ReqRef><ReqRef
+ Id="a2d32abf-08a0-4bc5-b97e-117e6a4fd998"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa48ef82-a493-4822-bcb9-6a5f9f3f634e"
 >
 </ReqRef><Comment>Gives the current track conditions
 This function is explained in ErtmsFormalSpecs/doc/specs/ModellingNotes</Comment>
@@ -572,7 +582,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackCondition"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackCondition"
  Default=""
  X="660"
  Y="180"
@@ -586,6 +596,16 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
  Id="b25e8d2d-5034-4a5d-bf39-2ddf58ec8b98"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5df5cb37-7ff9-4e30-b3bd-e1e474f7931e"
+>
+</ReqRef><ReqRef
+ Id="00a69e16-494d-4601-947a-02a6541733da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="989ec66d-482e-4b1b-93ac-b771fb37108d"
+>
+</ReqRef><ReqRef
+ Id="a2d32abf-08a0-4bc5-b97e-117e6a4fd998"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a11029b5-9734-43e8-9c48-f563064455e2"
 >
 </ReqRef><Comment>Returns the profile for when the train position is the given distance</Comment>
 <Parameters>
@@ -694,7 +714,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
   INITIAL_VALUE Default.MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACKCOND, scale=&gt;Packet.Q_SCALE)</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Default=""
  Y="240"
  Width="100"
@@ -904,7 +924,7 @@ The use of profile points and the functions in this namespace can be found in Er
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Default=""
  X="110"
  Y="240"
@@ -918,7 +938,7 @@ The use of profile points and the functions in this namespace can be found in Er
 <Comment>Takes a track condition profile point and data from a track condition packet and merges them together</Comment>
 <Parameters>
 <Parameter
- Type="General.TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="Profile"
  Guid="5e72dc8c-9bf9-42d6-8475-f02835f4f524"
 >
@@ -1459,6 +1479,7 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="da5849cb-2a9c-4b1c-bc21-f13cf8f22a92"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="ee609856-411d-4bb2-ab88-76b574aa3013"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1468,6 +1489,11 @@ IN
  Id="46ff0663-ed84-4dea-af46-b87941a77c51"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2124b7ca-ef8b-4550-a4dc-682e5fefe0eb"
+>
+</ReqRef><ReqRef
+ Id="00a69e16-494d-4601-947a-02a6541733da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="da735426-7939-4917-b676-e820f9294618"
 >
 </ReqRef><Comment>The list of track conditions received from the trackside.</Comment>
 </Variable></Variables>

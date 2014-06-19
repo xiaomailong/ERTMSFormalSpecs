@@ -182,11 +182,9 @@ namespace GUI.TestRunnerView
             {
                 if (Window != null)
                 {
-                    SynchronizerList.SuspendSynchronization();
                     Window.setSubSequence(SubSequence);
                     EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(SubSequence, true, false);
                     EFSSystem.Runner.RunUntilStep(null);
-                    SynchronizerList.ResumeSynchronization();
                 }
             }
         }
@@ -207,6 +205,19 @@ namespace GUI.TestRunnerView
             {
                 window.tabControl1.SelectedTab = window.testExecutionTabPage;
             }
+
+            string runtimeErrors = "Succesful sub sequence execution.\n";
+            if (Utils.ModelElement.LogCount > 0)
+            {
+                runtimeErrors = "Errors were raised while executing sub sequence.\n";
+            }
+
+            if (!executeTestHandler.Dialog.Canceled)
+            {
+                System.Windows.Forms.MessageBox.Show("Sub sequence execution report.\n" + runtimeErrors + "Test duration : " + Math.Round(executeTestHandler.Span.TotalSeconds) + " seconds", "Execution report");
+            }
+
+            GUIUtils.MDIWindow.RefreshAfterStep();
         }
         #endregion
 

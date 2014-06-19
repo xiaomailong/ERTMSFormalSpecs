@@ -7,11 +7,14 @@
  Name="ModeRelatedSpeedLimits"
  Guid="89989471-9882-4745-8a2f-2c5d3d48cf9a"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TracksideModeRelatedSpeedRestrictions"
  Guid="523cf0fe-f3be-44f2-b067-220907fe2557"
@@ -65,6 +68,9 @@
 <Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="LSModeSpeedLimit"
  Guid="39bbb191-1abc-4cb2-a0bf-12035f821bc9"
@@ -93,6 +99,7 @@
  Name="ValueGivenByTrackside"
  Guid="bad4d621-448c-4df5-aa07-0df881850024"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7d59cd76-9a12-419a-95f2-b17b859a7e4f"
@@ -120,6 +127,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="110"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="OSModeSpeedLimit"
  Guid="d1912dc6-0d89-45cc-90bf-b90c6ce33b64"
@@ -148,6 +159,7 @@
  Name="ValueGivenByTrackside"
  Guid="8ea50509-79c0-4120-bb88-4f15f28d3422"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d7e584ef-18a8-49bc-842f-8697192e0102"
@@ -175,6 +187,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="220"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SpeedRestrictions"
@@ -191,6 +207,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="305127e7-049d-4d29-9016-235c6b8f57f6"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -219,10 +236,12 @@
  Name="SH"
  Guid="317649a2-fbab-44f8-81f2-d012ae88dfaf"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6e3ee52f-2d48-4517-bc28-80d1bf41d9d0"
->Kernel.Mode == Mode.SH</PreCondition></PreConditions>
+><Comment></Comment>
+Kernel.Mode == Mode.SH</PreCondition></PreConditions>
 <Expression>SHModeSpeedLimit()</Expression>
 </Case><Case
  Name="SR"
@@ -246,6 +265,7 @@
  Name="LS"
  Guid="bf3bf27f-1390-419f-bee7-cbc4fca893b1"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="18f22150-6820-406f-8fab-7751e3464e64"
@@ -278,6 +298,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="330"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RVModeSpeedLimit"
  Guid="c7416c45-7d6b-4d0b-ab9a-9cd473bfadbc"
@@ -313,6 +337,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="440"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SHModeSpeedLimit"
  Guid="d0e8fe21-b9ef-4d2f-8534-3a96ca1b5417"
@@ -363,6 +391,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="550"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SRModeSpeedLimit"
  Guid="be9c9a4d-1289-4c10-befe-194f50ec5723"
@@ -413,6 +445,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="660"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="UNModeSpeedLimit"
  Guid="47d1e243-9c5a-413f-b617-8184bb795278"
@@ -448,9 +484,12 @@
 </Function></Functions>
 <Variables>
 <Variable
- Type="TracksideModeRelatedSpeedRestrictions"
+ Type="Kernel.ModeRelatedSpeedLimits.TracksideModeRelatedSpeedRestrictions"
  DefaultValue=""
  VariableMode="Internal"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TracksideModeRelatedSpeedRestrictions"
  Guid="e6bda1a3-4d1c-45fb-9723-b1d6b5c96df2"

@@ -120,7 +120,7 @@
 >
 <Comment></Comment>
 </StructureElement><StructureElement
- TypeName="Kernel.NationalValues.NationalDefaultData"
+ TypeName="NationalDefaultData"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1475,7 +1475,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Functions>
 <Function
- Type="NationalValues"
+ Type="Kernel.NationalValues.NationalValues"
  Default=""
  X="30"
  Y="300"
@@ -1744,6 +1744,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3a3b9acf-62e8-4158-98f3-f3b48bcbe51b"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1767,7 +1768,7 @@
  Guid="3d5a36d0-595f-42e5-a36a-49a44199a640"
 >Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition><PreCondition
  Guid="97ff3cda-e064-42fd-9ef4-2561e441b7cc"
->Kernel.HandleModeChange in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
+>HandleModeChange in HandleModeChange.Override</PreCondition></PreConditions>
 <Expression>Kernel.NationalValues.ApplicableNationalValues.Value.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive</Expression>
 </Case><Case
  Name="DefaultValue"
@@ -1778,7 +1779,7 @@
  Guid="6fe49ff5-1abc-44f8-9fbe-0809314bf327"
 >Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition><PreCondition
  Guid="fdd71851-17b9-4fca-940a-4c6865621452"
->Kernel.HandleModeChange in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
+>HandleModeChange in HandleModeChange.Override</PreCondition></PreConditions>
 <Expression>Kernel.NationalValues.DefaultValues.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive</Expression>
 </Case><Case
  Name="OverrideNotActive"
@@ -1787,7 +1788,7 @@
 <PreConditions>
 <PreCondition
  Guid="14b28a32-c7d1-4f6a-9dfa-7147e1dbf61f"
->Kernel.HandleModeChange not in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
+>HandleModeChange not in HandleModeChange.Override</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
@@ -1923,7 +1924,7 @@
 <Expression>DefaultValues.MaxDecelValueUnderReducedAdhesionCond2</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKt"
+ Type="NationalValues.CorFactorKt"
  Default=""
  X="250"
  Width="100"
@@ -1954,7 +1955,7 @@
 <Expression>CorFactorKt ( 0.05 * KtValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="WeightFactor"
+ Type="NationalValues.WeightFactor"
  Default=""
  X="140"
  Y="60"
@@ -1991,7 +1992,7 @@
 <Expression>WeightFactor ( 0.05 * VadhValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKr"
+ Type="NationalValues.CorFactorKr"
  Default=""
  X="360"
  Width="100"
@@ -2022,7 +2023,7 @@
 <Expression>CorFactorKr ( 0.05 * KrValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKv"
+ Type="NationalValues.CorFactorKv"
  Default=""
  X="470"
  Width="100"
@@ -2053,7 +2054,7 @@
 <Expression>CorFactorKv ( 0.02 * KvValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKr"
+ Type="NationalValues.CorFactorKr"
  Default=""
  X="360"
  Y="60"
@@ -2077,7 +2078,7 @@
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
- Type="KrIntValueSet"
+ Type="Kernel.NationalValues.KrIntValueSet"
  Name="aKr_int"
  Guid="11dc3fba-3e8a-4661-a871-92eb53ccdd9e"
 >
@@ -2143,7 +2144,7 @@
 <Expression>aKr_int.Val4.Value</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKv"
+ Type="NationalValues.CorFactorKv"
  Default=""
  X="470"
  Y="60"
@@ -2167,7 +2168,7 @@
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
- Type="KvIntValueSet_FreightTrain"
+ Type="Kernel.NationalValues.KvIntValueSet_FreightTrain"
  Name="aKv_int"
  Guid="8937d5bf-fea1-4f6b-8062-3fd01d6dce55"
 >
@@ -2233,7 +2234,7 @@
 <Expression>aKv_int.Val4.Value</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKv"
+ Type="NationalValues.CorFactorKv"
  Default=""
  X="470"
  Y="180"
@@ -2262,7 +2263,7 @@
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
- Type="KvIntValueSet_PassengerTrain"
+ Type="Kernel.NationalValues.KvIntValueSet_PassengerTrain"
  Name="aKv_int"
  Guid="987b3fdd-4cf7-4e18-b912-70b13b27aa83"
 >
@@ -2554,6 +2555,7 @@
  Name="Stopping required"
  Guid="1d0a440f-d2a8-4126-875a-ebd4014ab524"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="3c8e6d4c-7d8f-4e62-833e-dcbdb643906f"
@@ -2733,6 +2735,7 @@
  Name="NationalValues_Standstill"
  Guid="779c4f9e-14ef-41b5-9896-f28f9f3d6f59"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="076e8f62-4c7e-40a8-ad88-47cc8bd4416c"
@@ -2793,7 +2796,7 @@
 <Expression>DefaultValues.UseServiceBrakeInTargetSpeedMonitoring == Messages.Q_NVSBTSMPERM.No</Expression>
 </Case></Cases>
 </Function><Function
- Type="CorFactorKt"
+ Type="NationalValues.CorFactorKt"
  Default=""
  X="30"
  Y="240"
@@ -3001,7 +3004,7 @@
  Guid="9d08d313-e77f-45c6-acdc-04caa6b05b61"
 >
 </Parameter><Parameter
- Type="NationalDefaultData"
+ Type="Kernel.NationalValues.NationalDefaultData"
  Name="NV"
  Guid="7ba74d48-4879-44a7-83a5-ec6dfae93e0f"
 >
@@ -3090,7 +3093,7 @@
  Guid="faa7f9c1-70c0-4e34-a12f-c01b6dab8ad7"
 >
 </Parameter><Parameter
- Type="NationalDefaultData"
+ Type="Kernel.NationalValues.NationalDefaultData"
  Name="NV"
  Guid="a143a52f-ff7f-4dde-8f0e-79938dc3c4be"
 >
@@ -3182,7 +3185,7 @@
  Guid="deec40c1-9f33-42e6-81af-03f1498fe670"
 >
 </Parameter><Parameter
- Type="NationalDefaultData"
+ Type="Kernel.NationalValues.NationalDefaultData"
  Name="NV"
  Guid="bd582510-8859-40dd-ac5b-90cdd3e07b36"
 >
@@ -3236,7 +3239,7 @@
  Guid="f152b83e-d894-4017-8836-beb77865bd25"
 >
 </Parameter><Parameter
- Type="KrIntValueSet"
+ Type="Kernel.NationalValues.KrIntValueSet"
  Name="KrInt"
  Guid="5b564ccd-1a47-4c55-a7f6-caad9af5bcfb"
 >
@@ -3334,7 +3337,7 @@
  Guid="bc7f4837-0193-49e9-85fe-ef6a49d94878"
 >
 </Parameter><Parameter
- Type="KvIntValueSet_FreightTrain"
+ Type="Kernel.NationalValues.KvIntValueSet_FreightTrain"
  Name="KvInt"
  Guid="6dcb0279-a53e-4c43-a096-c9815c3d8ce4"
 >
@@ -3433,7 +3436,7 @@
  Guid="45903244-9b5e-40e6-b7ff-ca917ef60781"
 >
 </Parameter><Parameter
- Type="KvIntValueSet_PassengerTrain"
+ Type="Kernel.NationalValues.KvIntValueSet_PassengerTrain"
  Name="KvInt"
  Guid="95dbbc80-2905-4e9b-84e3-910fdbd4e6ef"
 >
@@ -3520,7 +3523,7 @@
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="NationalValues"
+ Type="Kernel.NationalValues.NationalValues"
  DefaultValue=""
  VariableMode="Internal"
  X="100"
@@ -3553,7 +3556,7 @@
 >
 </Variable></SubVariables>
 </Variable><Variable
- Type="NationalValues"
+ Type="Kernel.NationalValues.NationalValues"
  DefaultValue=""
  VariableMode="Internal"
  X="100"
@@ -3588,7 +3591,7 @@
 >
 </ReqRef><Comment>Represents the national values currenty applicable on the train.</Comment>
 </Variable><Variable
- Type="NationalDefaultData"
+ Type="Kernel.NationalValues.NationalDefaultData"
  DefaultValue=""
  VariableMode="Internal"
  X="480"

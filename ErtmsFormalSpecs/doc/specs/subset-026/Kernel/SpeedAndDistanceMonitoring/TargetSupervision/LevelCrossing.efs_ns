@@ -10,6 +10,8 @@
 <Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="d_EBI"
  Guid="dcbd6c62-c25a-49db-8a5f-affcc526cab0"
@@ -42,11 +44,14 @@
  Name="Value"
  Guid="cb288d2b-56df-4ad4-8b86-d6cfdfe9f022"
 >
-<Expression>DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vlx + f41 ( Vlx ) ) - ( Vlx + f41 ( Vlx ) ) * ( T_berem() + T_traction() )</Expression>
+<Expression>DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; Vlx + f41 ( Vlx ) ) - ( Vlx + f41 ( Vlx ) ) * ( TargetSupervision.T_berem() + TargetSupervision.T_traction() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="d_SBI2"
  Guid="14dc23e3-3a52-43d4-b0ec-ab1c829cbeef"
@@ -69,11 +74,14 @@
  Name="Value"
  Guid="cd33091b-5d2d-484f-ab69-73bf33860156"
 >
-<Expression>LevelCrossing.d_EBI ( Vlx )  - Vlx * TargetSupervision.T_bs2</Expression>
+<Expression>TargetSupervision.LevelCrossing.d_EBI ( Vlx )  - Vlx * TargetSupervision.T_bs2</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="220"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="d_FLOI"
  Guid="dab63110-7e4a-4214-afaf-99b99473537c"
@@ -96,20 +104,28 @@
  Name="First case"
  Guid="a4c435e5-1ab5-4d6a-86aa-a06a7eaea6a3"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="3e2d6889-391c-4a1d-a663-915345b28131"
->LevelCrossing.d_SBI2 ( Vlx ) - d_SBI1 ( Vlx ) &gt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</PreCondition></PreConditions>
-<Expression>d_SBI1 ( Vlx )</Expression>
+><Comment></Comment>
+SBI1BelowSBI2(
+    d_SBI1=&gt; TargetSupervision.d_SBI1 ( Vlx ),
+    d_SBI2=&gt; TargetSupervision.LevelCrossing.d_SBI2 ( Vlx )
+)</PreCondition></PreConditions>
+<Expression>TargetSupervision.d_SBI1 ( Vlx )</Expression>
 </Case><Case
  Name="Second case"
  Guid="66fe368f-cdb5-4814-b8c1-4ae82d248190"
 >
-<Expression>LevelCrossing.d_SBI2 ( Vlx )</Expression>
+<Expression>TargetSupervision.LevelCrossing.d_SBI2 ( Vlx )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="330"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="d_P"
  Guid="b9678abe-a41b-49d3-83df-ef6febdf0de1"
@@ -141,12 +157,12 @@
 <PreCondition
  Guid="d0519b17-df58-402b-9502-a7ac0a4c8a7f"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>LevelCrossing.d_FLOI ( Vlx ) - Vlx * T_driver</Expression>
+<Expression>TargetSupervision.LevelCrossing.d_FLOI ( Vlx ) - Vlx * TargetSupervision.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
  Guid="5e8f7468-4031-46b1-a1b9-4e6df3b59ce5"
 >
-<Expression>BaseTypes.MinDistance ( X1 =&gt; LevelCrossing.d_FLOI ( Vlx ) - Vlx * T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; GUI, Speed =&gt; Vlx ) )</Expression>
+<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; TargetSupervision.LevelCrossing.d_FLOI ( Vlx ) - Vlx * TargetSupervision.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; TargetSupervision.GUI, Speed =&gt; Vlx ) )</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>

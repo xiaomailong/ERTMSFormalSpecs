@@ -18,6 +18,7 @@ namespace DataDictionary.Interpreter
     using System.Collections.Generic;
     using DataDictionary.Interpreter.Filter;
     using System;
+    using DataDictionary.Values;
 
     /// <summary>
     /// Stores the association between a interpreter tree node and a value
@@ -341,6 +342,11 @@ namespace DataDictionary.Interpreter
         public bool UseDefaultValue { get; set; }
 
         /// <summary>
+        /// Indicates that the enclosing element could cause side effects
+        /// </summary>
+        public bool HasSideEffects { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="instance">The instance on which interpretation should be performed</param>
@@ -349,6 +355,7 @@ namespace DataDictionary.Interpreter
             LocalScope = new SymbolTable();
             Instance = null;
             UseDefaultValue = true;
+            HasSideEffects = false;
         }
 
         /// <summary>
@@ -360,6 +367,7 @@ namespace DataDictionary.Interpreter
             LocalScope = new SymbolTable();
             Instance = instance;
             UseDefaultValue = true;
+            HasSideEffects = false;
         }
 
         /// <summary>
@@ -371,6 +379,7 @@ namespace DataDictionary.Interpreter
             LocalScope = other.LocalScope;
             Instance = other.Instance;
             UseDefaultValue = other.UseDefaultValue;
+            HasSideEffects = other.HasSideEffects;
         }
 
         /// <summary>
@@ -383,6 +392,7 @@ namespace DataDictionary.Interpreter
             LocalScope = other.LocalScope;
             Instance = instance;
             UseDefaultValue = true;
+            HasSideEffects = other.HasSideEffects;
         }
 
         /// <summary>
@@ -594,9 +604,15 @@ namespace DataDictionary.Interpreter
 
             if (explain)
             {
-                ExplanationPart part = new ExplanationPart(Root, ToString());
-                currentExplanation.SubExplanations.Add(part);
-                currentExplanation = part;
+                if (EFSSystem.Runner == null || EFSSystem.Runner.Explain)
+                {
+                    if (currentExplanation != null)
+                    {
+                        ExplanationPart part = new ExplanationPart(Root, ToString());
+                        currentExplanation.SubExplanations.Add(part);
+                        currentExplanation = part;
+                    }
+                }
             }
 
             return retVal;
@@ -605,13 +621,15 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Completes the explanation
         /// </summary>
-        /// <param name="message">the message to set to the current explanation</param>
         /// <param name="previous">the explanation for which this one is created</param>
-        protected void CompleteExplanation(ExplanationPart previous, string message)
+        /// <param name="message">the message to set to the current explanation</param>
+        /// <param name="value">the optional value to reference</param>
+        protected void CompleteExplanation(ExplanationPart previous, string message, Utils.INamable namable = null)
         {
             if (currentExplanation != null)
             {
                 currentExplanation.Message = message;
+                currentExplanation.Namable = namable;
                 currentExplanation = previous;
             }
         }
@@ -624,8 +642,11 @@ namespace DataDictionary.Interpreter
         {
             ExplanationPart retVal = currentExplanation;
 
-            currentExplanation = new ExplanationPart(Root, ToString());
-            explain = true;
+            if (EFSSystem.Runner == null || EFSSystem.Runner.Explain)
+            {
+                currentExplanation = new ExplanationPart(Root, this);
+                explain = true;
+            }
 
             return retVal;
         }
@@ -665,13 +686,17 @@ namespace DataDictionary.Interpreter
             {
                 value = GetValue(context);
             }
+            catch (Exception)
+            {
+            }
             finally
             {
                 retVal = CompleteNewExplanation(previous);
 
                 if (value != null)
                 {
-                    retVal.Message = ToString() + " = " + explainNamable(value);
+                    retVal.Expression = this;
+                    retVal.Namable = value;
                 }
                 else
                 {
@@ -692,16 +717,35 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
+        /// Indicates whether we are currently explaining an error.
+        /// When true, AddErrorAndExplain should not try to explain _again_ the error.
+        /// </summary>
+        private static bool ExplainingError = false;
+
+        /// <summary>
         /// Adds an error message to the root element and explains it
         /// </summary>
         /// <param name="message"></param>
         public override void AddErrorAndExplain(string message, InterpretationContext context)
         {
-            if (!explain)
+            if (!ExplainingError)
             {
-                if (RootLog != null)
+                try
                 {
-                    RootLog.AddErrorAndExplain(message, Explain(context));
+                    ExplainingError = true;
+                    if (RootLog != null)
+                    {
+                        ExplanationPart explain = Explain(context);
+                        RootLog.AddErrorAndExplain(message, explain);
+                    }
+                }
+                catch (Exception)
+                {
+                    RootLog.AddError(message);
+                }
+                finally
+                {
+                    ExplainingError = false;
                 }
             }
         }

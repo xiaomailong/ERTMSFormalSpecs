@@ -63,11 +63,12 @@
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
- Guid="a8e878a4-b34a-44a8-9f91-0428a0d27cd3"
+ Guid="ff971bfc-d529-4c86-a669-80c299b4d115"
 >
+<Comment></Comment>
 <Actions>
 <Action
- Guid="881401de-e9c9-4a2d-a021-44857c77c981"
+ Guid="5e34930b-9a50-4c19-b819-f734d42354f3"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -617,12 +618,12 @@ BTM.Linking.Linkings</Action></Actions>
 
 )</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2 - Initialize elements to accept MA"
- Guid="a58a93d8-8899-4314-a596-95b38c07d4a0"
+ Name="Sub-step2 - Initilize elements to accept MA"
+ Guid="b70d0c2a-c3e3-4b57-a7a4-a78ee7b28e03"
 >
 <Actions>
 <Action
- Guid="e8a97b53-9886-44f8-bd50-8b25490d96ca"
+ Guid="ee18db61-eeaa-4483-a874-de088f4391f4"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -965,11 +966,11 @@ BTM.Linking.Linkings</Action></Actions>
 )</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
- Guid="86b44a2b-67a1-4e1f-80b8-bf90aac3b45a"
+ Guid="57c81a21-c011-44cc-af7d-d53cda20a3be"
 >
 <Actions>
 <Action
- Guid="5189c256-08aa-44a2-9344-1999cc5e8277"
+ Guid="7b336115-754f-4295-8e74-49aa2bddd948"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -1304,12 +1305,12 @@ BTM.Linking.Linkings</Action></Actions>
  Guid="70d64647-6a83-4cb1-b705-d9888a212c0c"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Initialize elements for MA"
- Guid="d7fe1df8-1db8-4721-a59b-366bd41efbd6"
+ Name="Sub-step 2 - Initialize elements to accept MA"
+ Guid="059ea3df-79d8-405e-9491-686a27e3650d"
 >
 <Actions>
 <Action
- Guid="18a490ce-c903-4244-8f3d-eec3fee26936"
+ Guid="7e2020f4-3e0e-4c60-96e2-a9f5f35837fa"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 3 - Put the train in FS mode"
@@ -1398,7 +1399,8 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="8f0a47fd-16ea-4427-9196-d3cc52540867"
->BTM.Message &lt;- Messages.EUROBALISE.Message{
+><Comment></Comment>
+BTM.Message &lt;- Messages.EUROBALISE.Message{
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
     M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
@@ -1418,7 +1420,8 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="990281b0-10d9-4719-9a91-9a9674fa64d6"
->BTM.Message &lt;- Messages.EUROBALISE.Message
+><Comment></Comment>
+BTM.Message &lt;- Messages.EUROBALISE.Message
  {
 
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
@@ -1460,8 +1463,8 @@ IN BTM.Linking.Linkings</Action></Actions>
                     Q_DIR =&gt; Messages.Q_DIR.Nominal,
                     L_PACKET =&gt; 0,
                     Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
-                    V_MAIN =&gt; 300,
-                    V_LOA =&gt; 70,
+                    V_MAIN =&gt; 60,
+                    V_LOA =&gt; 8,
                     T_LOA =&gt; 180,
 
                     N_ITER =&gt; 0,
@@ -1552,12 +1555,12 @@ IN BTM.Linking.Linkings</Action></Actions>
  Guid="168dec10-d8af-4035-bd99-aab1fd05a951"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2 - Initialize elements to accept MA"
- Guid="2bdbca76-d4f2-4fbd-b5bc-347798263cf4"
+ Name="Sub-step 2 - Initialiez elements to accept MA"
+ Guid="2e159c9d-330a-4c30-a078-35fb1493c33b"
 >
 <Actions>
 <Action
- Guid="2ad58fa5-bd11-4941-af8d-fe25fe48ff01"
+ Guid="7ec31550-c44c-4c46-9416-6a66c76a0c25"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -1644,7 +1647,9 @@ IN BTM.Linking.Linkings</Action></Actions>
 
   
             
-}</Action></Actions>
+}</Action><Action
+ Guid="d4a51d10-221f-4fe8-949c-0f286b2cbcf0"
+>Odometry.NominalDistance &lt;- 4150.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="a84e4629-f2a4-40a2-83b3-8d5092086b4a"
@@ -1739,19 +1744,9 @@ IN BTM.Linking.Linkings</Action></Actions>
                     ],
                     L_ENDSECTION=&gt;1000,
                     Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
-                    T_SECTIONTIMER=&gt;0,
-                    D_SECTIONTIMERSTOPLOC=&gt;0,
                     Q_ENDTIMER=&gt;Messages.Q_ENDTIMER.No_End_section_timer_information,
-                    T_ENDTIMER=&gt;0,
-                    D_ENDTIMERSTARTLOC=&gt;0,
                     Q_DANGERPOINT=&gt;Messages.Q_DANGERPOINT.No_danger_point_information,
-                    D_DP=&gt;0,
-                    V_RELEASEDP=&gt;0,
-                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information,
-                    D_STARTOL=&gt;0,
-                    T_OL=&gt;0,
-                    D_OL=&gt;0,
-                    V_RELEASEOL=&gt;0
+                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information
                 }
             }
         }
@@ -1849,12 +1844,12 @@ IN BTM.Linking.Linkings</Action></Actions>
  Guid="8ac64e1b-ddeb-49b4-b220-ee7b7bf2e5b1"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2 - Initialize elements to accept MA"
- Guid="4ce61ee5-0b31-44de-ab4b-9b2de980f6d9"
+ Name="Sub-step 2 - Initialize elements to accept MA"
+ Guid="d0c970a3-8f30-41b9-87b1-fefb3fbd3a15"
 >
 <Actions>
 <Action
- Guid="c775fd1f-50f5-4b00-a2e6-dd4430de2f30"
+ Guid="cc37bd00-666a-4159-b5cf-c236360eec05"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -1944,7 +1939,9 @@ IN BTM.Linking.Linkings</Action></Actions>
     D_ora =&gt; 51.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action></Actions>
+}</Action><Action
+ Guid="42b13e57-0608-438f-b8dd-ec4f06523961"
+>Odometry.NominalDistance &lt;- 2100.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2100,12 +2097,12 @@ IN BTM.Linking.Linkings</Action></Actions>
  Guid="3bd1723b-f422-4840-87f4-1ce4bca51d1c"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2 - Initialize elements to accept MA"
- Guid="7fedee45-3836-479b-bdef-62956b69b93c"
+ Name="Sub-step 2 - Initialize elements for MA"
+ Guid="da958ac7-2c35-4876-af4f-970c39ea606c"
 >
 <Actions>
 <Action
- Guid="30196bf2-8e59-4d75-96a6-a9e4f4add9f6"
+ Guid="a1ef58a6-3a02-4262-a3b1-4e8b26f44837"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -2195,7 +2192,9 @@ IN BTM.Linking.Linkings</Action></Actions>
     D_ora =&gt; 48.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action></Actions>
+}</Action><Action
+ Guid="8d66faf8-38a2-40d8-a1ad-9262c8c28f07"
+>Odometry.NominalDistance &lt;- 2520.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2413,12 +2412,12 @@ IN BTM.Linking.Linkings</Action></Actions>
  Guid="ada25dbf-c1ad-42b5-8b70-656553572189"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2 - Initialize elements to accept MA"
- Guid="e7313022-6f18-4333-8426-97b7b1b504f1"
+ Name="Sub-step 2 - Initialize elements to accept MA"
+ Guid="8800ff28-c68c-49b7-85b3-2e0b0b25c64c"
 >
 <Actions>
 <Action
- Guid="a7e0273b-f9d3-4439-93ee-cfe19c713768"
+ Guid="b7f34836-715b-4b7b-b022-151f105e0919"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -2508,7 +2507,9 @@ IN BTM.Linking.Linkings</Action></Actions>
     D_ora =&gt; 75.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action></Actions>
+}</Action><Action
+ Guid="33d986f2-7b09-44ce-99e4-3c66247769f6"
+>Odometry.NominalDistance &lt;- 3050.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2659,11 +2660,11 @@ IN BTM.Linking.Linkings</Action></Actions>
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
- Guid="a789fa69-78e6-415b-ad88-c5da177e3fda"
+ Guid="c135c677-ccd1-4126-902f-83ed3644c5ac"
 >
 <Actions>
 <Action
- Guid="4c640555-2e59-4098-a650-bd431e0f102c"
+ Guid="d204cc54-9a6a-4ab0-a08e-ebc2b89071d6"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -2753,7 +2754,9 @@ IN BTM.Linking.Linkings</Action></Actions>
     D_ora =&gt; 36.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action></Actions>
+}</Action><Action
+ Guid="639c88c9-a927-40d5-803b-862fe8a76026"
+>Odometry.NominalDistance &lt;- 3570.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2935,11 +2938,11 @@ IN BTM.Linking.Linkings</Action></Actions>
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
- Guid="359c2b43-76af-4306-9d9f-efd5e485c7fc"
+ Guid="f3f92aae-ee0e-45fc-8ffd-22bc11743c86"
 >
 <Actions>
 <Action
- Guid="7025c03c-594a-4a68-9089-ed15fb7c1721"
+ Guid="2aed4951-e4e7-4f5b-b6bb-a6ef50beaa73"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -3059,7 +3062,9 @@ IN BTM.Linking.Linkings</Action></Actions>
     D_ora =&gt; 20.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action></Actions>
+}</Action><Action
+ Guid="c1fffee5-f070-42d7-ace5-cd0cca7bddd7"
+>Odometry.NominalDistance &lt;- 4020.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3278,11 +3283,12 @@ IN BTM.Linking.Linkings</Action></Actions>
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 2 - Initialize elements for MA"
- Guid="14353223-b296-43a4-9e1b-0eb79f1db4f6"
+ Guid="8c1ba0d8-b470-4464-b56e-5c0c343e79f9"
 >
+<Comment></Comment>
 <Actions>
 <Action
- Guid="107bbff6-500d-4b7f-ae85-d239ccc33bd8"
+ Guid="d110c9c6-2cbe-4613-ae25-f8458351afe6"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 3 - Set up a simple MA to work with"
@@ -3627,7 +3633,7 @@ IN BTM.Linking.Linkings</Action></Actions>
                     L_PACKET =&gt; 400,
                     Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                     V_MAIN =&gt; 25,
-                    V_LOA =&gt; 30,
+                    V_LOA =&gt; 6,
                     T_LOA =&gt; 150,
 
                     N_ITER =&gt; 0,
@@ -3770,12 +3776,12 @@ IN BTM.Linking.Linkings</Action></Actions>
  Guid="36f92aba-c6d0-4333-98c3-d169aa531756"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Initialize elements for MA"
- Guid="d3af7ffb-ba0e-4323-a0bd-f0919404817c"
+ Name="Sub-step 2 Initialize elements for MA"
+ Guid="db57b99d-925a-46bd-9c3d-8535a243e02e"
 >
 <Actions>
 <Action
- Guid="f5a0ac0a-4021-4bcf-a2cb-473c8e775a34"
+ Guid="b5ce77fa-38eb-4345-a99a-313accc0c2d2"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 3 - Give the train an MA"
@@ -4244,11 +4250,11 @@ BTM.Linking.Linkings</Action><Action
 )</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
- Guid="aae2eff5-49b9-45a1-a9e7-4c3112f577f8"
+ Guid="1651f48b-c54a-4149-9046-c7c45fd22c92"
 >
 <Actions>
 <Action
- Guid="d0ec3b6e-eab7-4c7d-9507-e8c07090a34f"
+ Guid="2ca13889-de70-4d48-b611-d13745a422bc"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -4323,7 +4329,9 @@ BTM.Linking.Linkings</Action><Action
     D_ora =&gt; 51.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action></Actions>
+}</Action><Action
+ Guid="97c7363b-626d-46de-90c8-55219bf90d9e"
+>Odometry.NominalDistance &lt;- 2200.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="f07d95bd-475d-44ce-94dc-2bd76309c56d"
@@ -4454,7 +4462,9 @@ BTM.Linking.Linkings</Action><Action
         Position =&gt; 3000.0,
         UnderReadingAmountOdo =&gt; 35.0
     }
-}</Action></Actions>
+}</Action><Action
+ Guid="07464e37-9fb6-4d99-9632-ac33af524195"
+>Odometry.NominalDistance &lt;- 3010.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4740,11 +4750,11 @@ BTM.Linking.Linkings</Action><Action
 )</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
- Guid="a2cf86fa-1ca4-4578-973f-8e5d3f3f24d8"
+ Guid="85cec847-bdfe-4a5e-a728-e3f3fcab53d7"
 >
 <Actions>
 <Action
- Guid="ff795c92-bec8-49aa-93b1-7e989a2dc607"
+ Guid="8567d5a5-4bc2-4188-b56d-05aed1ebbe74"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -4821,7 +4831,9 @@ BTM.Linking.Linkings</Action><Action
     D_ora =&gt; 51.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action></Actions>
+}</Action><Action
+ Guid="bac0898e-885e-4f36-86c2-778ddf1f55fb"
+>Odometry.NominalDistance &lt;- 2050.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="9c35c98b-a2cd-4d7a-bb72-5078bd102012"
@@ -4935,7 +4947,9 @@ BTM.Linking.Linkings</Action><Action
         Position =&gt; 3000.0,
         UnderReadingAmountOdo =&gt; 35.0
     }
-}</Action></Actions>
+}</Action><Action
+ Guid="305e83f7-b105-449f-88f2-5ca67bc66d7e"
+>Odometry.NominalDistance &lt;- 3150.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5193,11 +5207,11 @@ BTM.Linking.Linkings</Action><Action
 )</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
- Guid="31619091-b909-4aac-b1c2-6e916124f741"
+ Guid="e93d9d7b-8059-4f0a-9be3-9e49608bd4e9"
 >
 <Actions>
 <Action
- Guid="3a289672-5f51-4d70-b3c9-dac48c0c64cf"
+ Guid="e20764d4-2c9b-4e88-99a1-237cd5946bbd"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -5274,7 +5288,9 @@ BTM.Linking.Linkings</Action><Action
     D_ora =&gt; 51.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action></Actions>
+}</Action><Action
+ Guid="a4e65a03-4ce8-49bf-9423-8ee65ad8cfad"
+>Odometry.NominalDistance &lt;- 2100.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="8b29f553-e364-49d3-9b57-37463e57efc8"
@@ -5401,7 +5417,9 @@ BTM.Linking.Linkings</Action><Action
         Position =&gt; 3000.0,
         UnderReadingAmountOdo =&gt; 35.0
     }
-}</Action></Actions>
+}</Action><Action
+ Guid="f5cfb24e-e3c0-4fe8-bced-ccc52510d0b8"
+>Odometry.NominalDistance &lt;- 3300.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5701,11 +5719,11 @@ BTM.Linking.Linkings</Action><Action
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
- Guid="c98a8cf8-ac65-45d8-b1ef-42f342ebc209"
+ Guid="cf0ba8d4-2b16-42c0-a79e-13041fcf169f"
 >
 <Actions>
 <Action
- Guid="fc32d9c8-f8d1-46e6-b902-58ea286b51a0"
+ Guid="1e1328a5-895c-4af3-a877-09037be56e22"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -5793,7 +5811,9 @@ BTM.Linking.Linkings</Action><Action
     D_ora =&gt; 26.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action></Actions>
+}</Action><Action
+ Guid="1976a9eb-33f8-4dae-918a-6e660f25b1fe"
+>Odometry.NominalDistance &lt;- 4520.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6161,11 +6181,11 @@ BTM.Linking.Linkings</Action><Action
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
- Guid="d4e09fe6-4c83-4e36-824e-8be7c273f412"
+ Guid="61bc9081-a352-4c6b-857b-a56cafa4152f"
 >
 <Actions>
 <Action
- Guid="8e3f718f-9542-4d0d-b444-9f9ff5abc1e5"
+ Guid="f78bc43c-3e9f-4297-a378-a6e67e887582"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -6255,7 +6275,9 @@ BTM.Linking.Linkings</Action><Action
     D_ora =&gt; 17.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action></Actions>
+}</Action><Action
+ Guid="3cedd4e4-d1f8-4b39-bd66-3fef8f2aef49"
+>Odometry.NominalDistance &lt;- 5100.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6336,11 +6358,11 @@ BTM.Linking.Linkings</Action><Action
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
- Guid="f61659f1-0ad4-4a46-be0d-f7e850531e82"
+ Guid="2fd54047-f1c6-46ce-91a3-6e32fa779c6e"
 >
 <Actions>
 <Action
- Guid="865d7d8c-ef57-43e4-bbb1-af19291b23cb"
+ Guid="2c8d7faa-6d42-460d-b20e-c6c4e58b2a0c"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -6760,11 +6782,11 @@ BTM.Linking.Linkings</Action><Action
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
- Guid="36410df0-a9b7-4eab-9544-4900653b388c"
+ Guid="0bbf9520-2209-4c94-bc0f-213497bec037"
 >
 <Actions>
 <Action
- Guid="d2e9c961-b4ec-4961-9d9b-792c7ef57205"
+ Guid="58dcc54f-49d5-4679-99fb-1846c7ae792e"
 >Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step

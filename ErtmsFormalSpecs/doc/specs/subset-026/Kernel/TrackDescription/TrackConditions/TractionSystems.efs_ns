@@ -76,7 +76,7 @@
 >
 </ReqRef><Comment>Contains traction system track condition information with its start location</Comment>
 <StructureElement
- TypeName="TractionSystems.TractionSystem"
+ TypeName="TractionSystem"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -111,7 +111,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="TractionSystems.TractionSystemInformation"
+ TypeName="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformation"
  MaxSize="20"
  Default="[]"
  Y="60"
@@ -130,7 +130,7 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="TractionSystem"
+ Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystem"
  Default=""
  Y="180"
  Width="100"
@@ -156,7 +156,7 @@
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="TractionSystem"
+ Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystem"
  Default=""
  X="110"
  Y="180"

@@ -1013,7 +1013,7 @@
  Guid="5b0cf928-71a7-4bca-9973-4e5a98147857"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="TrainData.TrainDataValues"
+ TypeName="TrainDataValues"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1130,7 +1130,7 @@
 >
 </ReqRef><Comment>Represents a list of other specific train categories.</Comment>
 </Collection><Collection
- TypeName="TractionSystem"
+ TypeName="Kernel.TrainData.TractionSystem"
  MaxSize="20"
  Default="[]"
  X="530"
@@ -2079,7 +2079,7 @@
 <Actions>
 <Action
  Guid="0361adbf-b6aa-4058-87ae-8ada5224f5e6"
->Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action></Actions>
+>SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2099,13 +2099,13 @@
 <Actions>
 <Action
  Guid="0c072176-e823-4329-a6f7-99664157752b"
->Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action></Actions>
+>SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="TrainDataStruct"
+ Type="Kernel.TrainData.TrainDataStruct"
  DefaultValue=""
  VariableMode="Internal"
  X="850"

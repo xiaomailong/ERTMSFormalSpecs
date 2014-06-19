@@ -20,6 +20,8 @@
 <Enumerations>
 <Enum
  Default="SafeRadioConnectionStatusEnum.NoConnection"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SafeRadioConnectionStatusEnum"
  Guid="fe039c94-e8dc-416a-b815-f5ad8300c526"
@@ -49,6 +51,9 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="ContactActionEnum.Establish"
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ContactActionEnum"
  Guid="ea5b0cd8-a7cc-4aca-9390-c8842517ff24"
@@ -78,6 +83,9 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="SystemVersionEnum.Version2_0"
+ X="220"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SystemVersionEnum"
  Guid="e434ea8a-ec75-42f9-8347-85f8030caba3"
@@ -112,6 +120,9 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="ContactOptionEnum.ContactLastKnownRBC"
+ X="330"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ContactOptionEnum"
  Guid="7bab1523-0861-44c9-ad3b-364cd97fcc04"
@@ -151,6 +162,9 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="DoNotEstablish"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SpecialCaseSessionEstablishmentReasonEnum"
  Guid="205157d3-e3d5-4060-8439-329289efb6d9"
@@ -192,6 +206,9 @@
 <Structures>
 <Structure
  Default=""
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RBCStruct"
  Guid="a486085f-3201-4bf5-8db8-cf3027c03815"
@@ -1758,7 +1775,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 - establishing of  a safe radio connection
 - termination the communication session</Comment>
 </StructureElement><StructureElement
- TypeName="BaseTypes.Time"
+ TypeName="Default.BaseTypes.Time"
  Default="BaseTypes.Time.Infinity"
  Mode="Internal"
  Implemented="TRUE"
@@ -3400,6 +3417,10 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
+ X="110"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ContactOrderStruct"
  Guid="0b20f5b7-2179-44b2-b8c4-19c69efa393a"
@@ -3508,6 +3529,10 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </ReqRef><Comment>Indicates whether the order applies also to Sleeping units.</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="220"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RIUStruct"
  Guid="b15198c3-238e-44cf-bd78-8b40d48ea78f"
@@ -3538,6 +3563,10 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 <Comment>Identifier of the RIU.</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="330"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SessionManagementStruct"
  Guid="395169e1-4c72-48ca-950b-fa0d473758a1"
@@ -3679,6 +3708,9 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </ReqRef><Comment>Indicates if the trackside has sent the Initiation of a communication session message.</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RBCIdStruct"
  Guid="06bc7e20-822b-4896-a367-bc92333c4911"
@@ -3709,6 +3741,10 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 <Comment>Identifier of the RBC.</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RBCContactStruct"
  Guid="34a7c15c-662b-4a6d-a149-5587a333e7cf"
@@ -3770,6 +3806,10 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </ReqRef><Comment>Data state of the contact information.</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="220"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TerminalStruct"
  Guid="d55c89a9-b712-45c6-a15c-1829f68822b8"
@@ -4254,6 +4294,10 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
+ X="330"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AvailableNetworksStruct"
  Guid="e6849568-73f7-4b28-ae32-8b6bf0058e00"
@@ -4275,7 +4319,7 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 >
 <Comment>Allows to request the list of available and allowed networks.</Comment>
 </StructureElement><StructureElement
- TypeName="EURORADIO.AvailableNetworksCol"
+ TypeName="AvailableNetworksCol"
  Default="[]"
  Mode="Incoming"
  Implemented="TRUE"
@@ -4286,6 +4330,9 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 <Comment>Collection of available and allowed networks.</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SystemVersionStruct"
  Guid="d57ddcfd-645d-4096-81d5-c12c41bd57bb"
@@ -4319,6 +4366,9 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 <Collection
  TypeName="String"
  Default="[]"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AvailableNetworksCol"
  Guid="104401a1-8c78-4794-bf19-a0f04f17b077"
@@ -4333,6 +4383,10 @@ After that, if an order to contact an Accepting RBC was received, it will be han
  TypeName="SystemVersionEnum"
  MaxSize="3"
  Default="[]"
+ X="110"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SystemVersionsCol"
  Guid="44ac3d41-0bd0-4d96-b3e0-236b9806487b"
@@ -4351,6 +4405,10 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 </Collection><Collection
  TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
  Default="[]"
+ X="220"
+ Y="300"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="IncomingMessagesCol"
  Guid="283cbfc1-9561-4267-812a-14cff11444cf"
@@ -4366,6 +4424,9 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 <Function
  Type="Boolean"
  Default=""
+ Y="600"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="HasActiveSession"
  Guid="7b48d082-5d7b-4d27-8757-6e110b3f9f7d"
@@ -4401,8 +4462,12 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Connected</Expression>
 </Case></Cases>
 </Function><Function
- Type="RBCStruct"
+ Type="EURORADIO.RBCStruct"
  Default=""
+ X="110"
+ Y="600"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CurrentRBCConnection"
@@ -4430,6 +4495,10 @@ Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Connected
 </Function><Function
  Type="Boolean"
  Default=""
+ X="220"
+ Y="600"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AllSessionsClosed"
  Guid="d5ab709a-c73f-4f2a-bece-c9c7586dcde5"
@@ -4452,6 +4521,10 @@ Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Inactive<
 </Function><Function
  Type="Boolean"
  Default=""
+ X="330"
+ Y="600"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="OneMobileTerminalIsAvailable"
  Guid="e31f0ce4-5ca7-4615-9f01-e835968b6bb2"
@@ -4472,8 +4545,11 @@ Terminal2.RBCConnection.ConnectionState in RBCStruct.ConnectionStateSM.Inactive<
 Terminal2 != EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="ContactActionEnum"
+ Type="EURORADIO.ContactActionEnum"
  Default=""
+ Y="660"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ConvertActionToPerform"
@@ -4506,6 +4582,10 @@ Terminal2 != EMPTY</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="660"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ConvertAppliesToSleepingUnits"
@@ -4538,6 +4618,10 @@ Terminal2 != EMPTY</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="220"
+ Y="660"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="MobileTerminalRegisteredToNetwork"
  Guid="af2b63fd-7a74-4d0c-9dd5-640bccd97f2c"
@@ -4568,8 +4652,12 @@ Terminal2 != EMPTY</Expression>
 Terminal2.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Expression>
 </Case></Cases>
 </Function><Function
- Type="TerminalStruct"
+ Type="EURORADIO.TerminalStruct"
  Default=""
+ X="330"
+ Y="660"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="CurrentTerminal"
@@ -4613,6 +4701,9 @@ Terminal2.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Ex
 </Function><Function
  Type="Boolean"
  Default=""
+ Y="720"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SessionIsAlreadyEstablishedWithRequestedRBC"
  Guid="c4eccae5-0e53-41e7-af15-9608b3f9878d"
@@ -4653,8 +4744,12 @@ It can only return false if there is no open session or if the last known RBC ha
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
- Type="SystemVersionEnum"
+ Type="EURORADIO.SystemVersionEnum"
  Default=""
+ X="110"
+ Y="720"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ConvertSystemVersion"
@@ -4700,6 +4795,10 @@ It can only return false if there is no open session or if the last known RBC ha
 </Function><Function
  Type="Boolean"
  Default=""
+ X="220"
+ Y="720"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SystemVersionIsCompatible"
  Guid="28b8bd9c-0c28-4b56-8672-4510358507e8"
@@ -4746,6 +4845,10 @@ It can only return false if there is no open session or if the last known RBC ha
 </Function><Function
  Type="Boolean"
  Default=""
+ X="330"
+ Y="720"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TerminalIsRegistered"
@@ -4754,7 +4857,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <Comment>Indicates if the provided terminal is registered.</Comment>
 <Parameters>
 <Parameter
- Type="TerminalStruct"
+ Type="EURORADIO.TerminalStruct"
  Name="aTerminal"
  Guid="12711288-b128-4515-ac14-d0435e91c454"
 >
@@ -4769,8 +4872,11 @@ It can only return false if there is no open session or if the last known RBC ha
 aTerminal.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Expression>
 </Case></Cases>
 </Function><Function
- Type="RBCStruct"
+ Type="EURORADIO.RBCStruct"
  Default=""
+ Y="780"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SelectRBCToContact"
  Guid="edc183ce-4765-4875-9d3a-fcdbb85d8b1d"
@@ -4817,6 +4923,10 @@ TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="780"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SessionHasToBeEstablished"
  Guid="5038c7fd-eeb6-4629-878c-aa6f52c39063"
@@ -4849,7 +4959,7 @@ TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
 </ReqRef><Comment>Indicates if a communication session has to be established.</Comment>
 <Parameters>
 <Parameter
- Type="RBCStruct"
+ Type="EURORADIO.RBCStruct"
  Name="anRBC"
  Guid="6c09e0fd-ecb7-47eb-aaaf-39f94e0970ee"
 >
@@ -4908,6 +5018,10 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 </Function><Function
  Type="Boolean"
  Default=""
+ X="220"
+ Y="780"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="MessageCanBeSent"
  Guid="e4578232-0a7b-4b6d-82f8-34004ee84e07"
@@ -4925,7 +5039,7 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 </ReqRef><Comment>Indicates if an outgoing message can be sent. The only condition to be satisfied is to have an established session. A message can thus be sent during a loss of the safe radio connection if the connection state is still &quot;Connected&quot;. But no message can be sent after the message &quot;Termination of communication session&quot; since after having sent this message the system goes to &quot;Terminating&quot; state.</Comment>
 <Parameters>
 <Parameter
- Type="RBCStruct"
+ Type="EURORADIO.RBCStruct"
  Name="anRBC"
  Guid="b40133ab-d13d-4324-bde5-7de83839347c"
 >
@@ -4938,8 +5052,12 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 <Expression>anRBC.ConnectionState in RBCStruct.ConnectionStateSM.Connected</Expression>
 </Case></Cases>
 </Function><Function
- Type="RBCStruct"
+ Type="EURORADIO.RBCStruct"
  Default=""
+ X="330"
+ Y="780"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SecondaryRBCConnection"
  Guid="74ee579a-acba-4659-83ae-89dc0f8c11b6"
@@ -4978,6 +5096,9 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 </Function><Function
  Type="Boolean"
  Default=""
+ Y="840"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="OrderToTerminateHandingOverRBCIsReceived"
  Guid="c6080dad-e9ff-4072-b1d5-8700f0f8ca97"
@@ -5011,8 +5132,12 @@ SecondaryRBCConnection().ContactRBCOrder.ActionToPerform == ContactActionEnum.Te
 CurrentRBCConnection().ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</Expression>
 </Case></Cases>
 </Function><Function
- Type="SafeRadioConnectionStatusEnum"
+ Type="EURORADIO.SafeRadioConnectionStatusEnum"
  Default=""
+ X="110"
+ Y="840"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SafeRadioConnectionStatusToDisplay"
  Guid="01f97d52-632a-4415-ba9d-13258655f467"
@@ -5058,6 +5183,9 @@ The only one case where the status to display is that of the secondary connectio
 </Function></Functions>
 <Procedures>
 <Procedure
+ Y="900"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ContactRBC"
  Guid="d105e077-5c97-4b2b-97a0-538f17fd7201"
@@ -5100,7 +5228,7 @@ The only one case where the status to display is that of the secondary connectio
 </ReqRef><Comment>Allows to establish/terminate the communication session with an RBC. If no mobile temrinal is registered, the order is rejected.</Comment>
 <Parameters>
 <Parameter
- Type="ContactOrderStruct"
+ Type="EURORADIO.ContactOrderStruct"
  Name="anOrder"
  Guid="bd7c227e-3f2a-4591-b2f2-0261dead5db0"
 >
@@ -5132,6 +5260,10 @@ The only one case where the status to display is that of the secondary connectio
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Y="900"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ContactAcceptingRBC"
  Guid="9fc2337d-7e64-41d1-a72d-a19a466b8342"
@@ -5194,7 +5326,7 @@ The only one case where the status to display is that of the secondary connectio
 </ReqRef><Comment>Allows to establish the communication session with an accepting RBC. If no mobile terminal is registered, the order is rejected.</Comment>
 <Parameters>
 <Parameter
- Type="ContactOrderStruct"
+ Type="EURORADIO.ContactOrderStruct"
  Name="Order"
  Guid="36d1affc-3e90-44a1-bafa-74605373535b"
 >
@@ -5299,6 +5431,10 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="220"
+ Y="900"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="OpenRBCSession"
  Guid="1e3e4aab-936d-4b3e-90d0-c39dfa476afa"
@@ -5432,6 +5568,10 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="330"
+ Y="900"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="CloseRBCSession"
  Guid="2691fd9c-77e5-40c8-859a-310f132a7a1c"
@@ -5489,6 +5629,9 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Y="960"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ContactRIU"
  Guid="7d0b4122-12aa-4a02-83f7-9d7e322bfa8a"
@@ -5501,7 +5644,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </ReqRef><Comment>Allows to establish/terminate the communication session with an RIU.</Comment>
 <Parameters>
 <Parameter
- Type="ContactOrderStruct"
+ Type="EURORADIO.ContactOrderStruct"
  Name="Order"
  Guid="b9ea4cb2-277a-4de4-863a-f74f28a202a2"
 >
@@ -5529,6 +5672,10 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Y="960"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TracksideOrderedSessionReceived"
  Guid="aa947d6d-5ed0-4cb9-9175-d6bbf385946c"
@@ -5709,6 +5856,10 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="220"
+ Y="960"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RegisterMobileTerminals"
  Guid="51a30ec7-ce1f-46f1-a57c-72cb7965af62"
@@ -5853,6 +6004,10 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="330"
+ Y="960"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="ProcessIncomingMessages"
  Guid="b9ea4dd2-c1d7-457b-b33c-62e49af0c65b"
@@ -7510,6 +7665,9 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Y="1020"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="HandleRBCRIUSystemVersion"
  Guid="10dc8bf3-fb79-4fc2-987d-1b29ba45fa25"
@@ -7553,6 +7711,10 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Y="1020"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RadioNetworkRegistrationReceived"
  Guid="0b3f4004-daf2-4f22-a675-61269508d61e"
@@ -7628,6 +7790,10 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="220"
+ Y="1020"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RegisterATerminal"
  Guid="91d65967-0ce4-4f16-86a3-05c2262bea89"
@@ -7665,7 +7831,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </ReqRef><Comment>The procedure starts the registering of the provided mobile terminal to the provided network, except if the terminal is already registered to the provided netword.</Comment>
 <Parameters>
 <Parameter
- Type="TerminalStruct"
+ Type="EURORADIO.TerminalStruct"
  Name="aTerminal"
  Guid="69f73909-1dca-46c6-a79f-e7d801022eb6"
 >
@@ -7715,6 +7881,10 @@ NOT
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="330"
+ Y="1020"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="HandleInitiationOfACommunicationSession"
  Guid="e148b0a4-d11d-4f3d-aa7b-9d8a9065121c"
@@ -7760,6 +7930,9 @@ NOT
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Y="1080"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RBCTransitionOrderReceived"
  Guid="1e2006a9-a669-4dac-9b18-73a3b410b9a4"
@@ -7896,6 +8069,10 @@ NOT
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
+ Y="1080"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="HandleAcknowledgementOfTrainData"
  Guid="b9c4dda4-49f5-4e3c-a939-d4fb62345afc"
@@ -7909,6 +8086,10 @@ NOT
 >
 </Parameter></Parameters>
 </Procedure><Procedure
+ X="220"
+ Y="1080"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RemoveAcknOfTrainDataFromMessage"
  Guid="5bf5af4f-ca3b-4886-a2f7-634315c9a975"
@@ -7954,6 +8135,9 @@ NOT
  Type="Default.BaseTypes.Time"
  DefaultValue="15.0"
  VariableMode="Constant"
+ Y="360"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TimeBeforeMessageRepetition"
  Guid="7fb9905e-15ef-46c7-bd03-db851be58bc7"
@@ -7968,6 +8152,10 @@ NOT
  Type="Integer"
  DefaultValue="3"
  VariableMode="Constant"
+ X="110"
+ Y="360"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="NumberOfMessageRepetitions"
  Guid="c6fc6f21-c004-4e60-9413-a82917e94238"
@@ -7979,8 +8167,12 @@ NOT
 >
 </ReqRef><Comment>Indicates the number of repetitions of radio messages (i.e. excluding the first sending).</Comment>
 </Variable><Variable
- Type="RIUStruct"
+ Type="EURORADIO.RIUStruct"
  VariableMode="InOut"
+ X="220"
+ Y="360"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RIU"
  Guid="65546b18-9082-469d-85f1-2f2a2c945818"
@@ -7992,9 +8184,13 @@ NOT
 >
 </ReqRef><Comment>RIU connection.</Comment>
 </Variable><Variable
- Type="RBCContactStruct"
+ Type="EURORADIO.RBCContactStruct"
  DefaultValue=""
  VariableMode="Internal"
+ X="330"
+ Y="360"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="LastKnownRBC"
  Guid="871247fa-7189-4f13-874e-e3466aad155e"
@@ -8019,6 +8215,9 @@ NOT
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
+ Y="420"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ShortNumber"
  Guid="56e3a8ca-da3a-43e8-b3a9-ba7a9a8a6805"
@@ -8043,6 +8242,10 @@ NOT
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
+ X="110"
+ Y="420"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="LastKnownNetworkId"
  Guid="4c27382c-64a2-4c88-8d58-ff66b400ad51"
@@ -8054,9 +8257,13 @@ NOT
 >
 </ReqRef><Comment>The last received Radio Network identity.</Comment>
 </Variable><Variable
- Type="AvailableNetworksStruct"
+ Type="EURORADIO.AvailableNetworksStruct"
  DefaultValue=""
  VariableMode="InOut"
+ X="220"
+ Y="420"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="AvailableNetworks"
  Guid="f24775ac-92d1-48d2-8446-fcd2eb8c7467"
@@ -8068,8 +8275,12 @@ NOT
 >
 </ReqRef><Comment>Allows to request the list of available and allowed networks.</Comment>
 </Variable><Variable
- Type="TerminalStruct"
+ Type="EURORADIO.TerminalStruct"
  VariableMode="InOut"
+ X="330"
+ Y="420"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Terminal1"
  Guid="b9169f5f-b1a9-481e-8d17-7b9aee24c60e"
@@ -8081,8 +8292,11 @@ NOT
 >
 </ReqRef><Comment>First terminal struct.</Comment>
 </Variable><Variable
- Type="TerminalStruct"
+ Type="EURORADIO.TerminalStruct"
  VariableMode="InOut"
+ Y="480"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Terminal2"
  Guid="14bc979c-299e-41a1-b18b-77e58ca89e59"
@@ -8097,6 +8311,10 @@ NOT
  Type="ContactOptionEnum"
  DefaultValue="ContactOptionEnum.ContactLastKnownRBC"
  VariableMode="Internal"
+ X="110"
+ Y="480"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ContactOption"
  Guid="81db5f5d-dec8-43d9-9546-57479127847f"
@@ -8121,6 +8339,10 @@ NOT
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
+ X="220"
+ Y="480"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="DefaultRadioNetworkId"
  Guid="2899d0b5-6c7a-4333-b3c0-d5226c93ec7e"
@@ -8140,6 +8362,10 @@ NOT
  Type="SystemVersionsCol"
  DefaultValue="[SystemVersionEnum.Version2_0]"
  VariableMode="Internal"
+ X="330"
+ Y="480"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SupportedSystemVersions"
  Guid="e9003f47-af6c-4289-a33b-60b830bf4ccc"
@@ -8159,6 +8385,9 @@ NOT
  Type="Default.BaseTypes.Time"
  DefaultValue="300.0"
  VariableMode="Constant"
+ Y="540"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="MaxTimeToMaintainACommunicationSession"
  Guid="50a37fad-675b-4798-af5d-2505564629c5"
@@ -8175,9 +8404,13 @@ NOT
 >
 </ReqRef><Comment>Maximum time to maintain a communication session in case of failed re-connection attempts.</Comment>
 </Variable><Variable
- Type="BaseTypes.Time"
+ Type="Default.BaseTypes.Time"
  DefaultValue="45.0"
  VariableMode="Constant"
+ X="110"
+ Y="540"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ConnectionStatusTimer"
  Guid="65e21fb1-d0d3-454f-8133-56deba993df5"
@@ -8197,6 +8430,10 @@ NOT
  Type="IncomingMessagesCol"
  DefaultValue="[]"
  VariableMode="Internal"
+ X="220"
+ Y="540"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="MessagesToHandle"
  Guid="f2c2d0cc-af62-45b6-b849-b52dd4eb46dc"

@@ -14,6 +14,8 @@
  MaxValue="32769"
  Precision="IntegerPrecision"
  Default="0"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="Acceleration"
  Guid="698b553f-65ef-4e4a-975d-983ac8d44c59"
@@ -36,6 +38,9 @@
  MaxValue="2147483648"
  Precision="IntegerPrecision"
  Default="0"
+ X="110"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="Distance"
  Guid="4041b30c-7cb5-40cb-a725-27604ab35342"
@@ -63,6 +68,9 @@
  MaxValue="32767"
  Precision="IntegerPrecision"
  Default="0"
+ X="220"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="Gradient"
  Guid="e50f7a0f-b3e2-4f0d-83e4-7f2e6b86393c"
@@ -73,6 +81,9 @@
  MaxValue="32769"
  Precision="IntegerPrecision"
  Default="0"
+ X="330"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="Length"
  Guid="cfa1f608-f2e8-497b-9b16-9c28342cde5c"
@@ -95,6 +106,9 @@
  MaxValue="32769"
  Precision="IntegerPrecision"
  Default="0"
+ X="440"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="Speed"
  Guid="7a00461d-6586-47d2-9d2d-393dce90de0f"
@@ -117,6 +131,9 @@
  MaxValue="4294967295"
  Precision="IntegerPrecision"
  Default="0"
+ X="550"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="Time"
  Guid="be6e8f0e-e054-476d-99f5-d88da7c12ac9"
@@ -125,8 +142,11 @@
 </Range></Ranges>
 <Functions>
 <Function
- Type="BaseTypes.Length"
+ Type="Default.BaseTypes.Length"
  Default=""
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Verified="TRUE"
  NeedsRequirement="FALSE"
@@ -149,8 +169,12 @@
 <Expression>BaseTypes.Length ( length )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Gradient"
+ Type="Default.BaseTypes.Gradient"
  Default=""
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="QScaleGradient"
  Guid="01a12dce-9529-47a2-b7ca-32a4e9ec7879"
@@ -158,7 +182,7 @@
 <Comment>Converts a gradient received from incoming message into a BaseType.Gradient</Comment>
 <Parameters>
 <Parameter
- Type="MessageTypes.Gradient"
+ Type="Gradient"
  Name="gradient"
  Guid="6b4239fe-6876-498b-958a-e1d22bdb7ad9"
 >
@@ -171,8 +195,12 @@
 <Expression>BaseTypes.Gradient ( BaseTypes.Gradient ( gradient ) / 1000.0 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Acceleration"
+ Type="Default.BaseTypes.Acceleration"
  Default=""
+ X="220"
+ Y="60"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="DecelerationResolution"
  Guid="06092188-a00c-4a15-9e63-e807f02ba265"
@@ -180,7 +208,7 @@
 <Comment>Resolves a deceleration according to the resolution parameter</Comment>
 <Parameters>
 <Parameter
- Type="MessageTypes.Acceleration"
+ Type="Acceleration"
  Name="acceleration"
  Guid="a0d8f1b5-e298-481c-9a16-ff4205dff6db"
 >
@@ -198,8 +226,12 @@
 <Expression>- BaseTypes.Acceleration ( BaseTypes.Acceleration ( acceleration ) * resolution )</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Speed"
+ Type="Default.MessageTypes.Speed"
  Default=""
+ X="330"
+ Y="60"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="UnResolveSpeed"
  Guid="546594f2-b0e6-40f7-911a-30de489aa2a9"
@@ -234,8 +266,12 @@
 <Expression>MessageTypes.Speed ( speed / resolution )</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Length"
+ Type="Default.MessageTypes.Length"
  Default=""
+ X="440"
+ Y="60"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="UnScaleLength"
  Guid="82c0b878-e405-4ed0-a792-5f948c15f26a"
@@ -292,8 +328,12 @@
 <Expression>MessageTypes.Length ( length / 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Default=""
+ X="550"
+ Y="60"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="SpeedResolution"
  Guid="a6810c09-56df-4744-842f-023c0e59c92e"
@@ -301,7 +341,7 @@
 <Comment>Converts a speed received from incoming message into a BaseType.Speed</Comment>
 <Parameters>
 <Parameter
- Type="MessageTypes.Speed"
+ Type="Speed"
  Name="speed"
  Guid="ebfbea4a-03ac-484c-a4ee-f9d8d4b02474"
 >
@@ -319,8 +359,12 @@
 <Expression>BaseTypes.Speed ( BaseTypes.Speed ( speed ) * resolution )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Length"
+ Type="Default.BaseTypes.Length"
  Default=""
+ X="660"
+ Y="60"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="QScaleLength"
  Guid="d939f01e-5aca-485a-90c1-a1ace317b34d"
@@ -328,7 +372,7 @@
 <Comment>Converts a length received from incoming message into a BaseType.Length</Comment>
 <Parameters>
 <Parameter
- Type="MessageTypes.Length"
+ Type="Length"
  Name="length"
  Guid="a3bfc420-951a-4e75-900a-f021d44ba8b9"
 >
@@ -368,8 +412,12 @@
 <Expression>BaseTypes.Length ( BaseTypes.Length ( length ) * 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Distance"
+ Type="Default.MessageTypes.Distance"
  Default=""
+ X="770"
+ Y="60"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="UnScaleDistance"
  Guid="09fb6390-d261-4af0-8873-a71af6b73b2d"
@@ -426,8 +474,12 @@
 <Expression>MessageTypes.Distance ( distance / 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Default=""
+ X="880"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Verified="TRUE"
  NeedsRequirement="FALSE"
@@ -437,7 +489,7 @@
 <Comment>Converts a distance received from incoming message into a BaseType.Distance</Comment>
 <Parameters>
 <Parameter
- Type="MessageTypes.Distance"
+ Type="Distance"
  Name="distance"
  Guid="baaf20a8-ab03-472e-b8d9-f1a2898f02c1"
 >
@@ -477,8 +529,11 @@
 <Expression>BaseTypes.Distance ( BaseTypes.Distance ( distance ) * 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Acceleration"
+ Type="Default.BaseTypes.Acceleration"
  Default=""
+ Y="120"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="AccelerationResolution"
  Guid="6711c7a1-7622-4e08-acad-5fff44b95ae5"
@@ -486,7 +541,7 @@
 <Comment>Resolves an acceleration according to the resolution parameter</Comment>
 <Parameters>
 <Parameter
- Type="MessageTypes.Acceleration"
+ Type="Acceleration"
  Name="acceleration"
  Guid="20ae8604-dfcb-4a47-afd8-b63b489d0948"
 >
@@ -504,8 +559,12 @@
 <Expression>BaseTypes.Acceleration ( BaseTypes.Acceleration ( acceleration ) * resolution )</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Time"
+ Type="Default.MessageTypes.Time"
  Default=""
+ X="110"
+ Y="120"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="UnResolveTime"
  Guid="796ab421-d591-4514-b5e3-3723d4109e32"
@@ -535,8 +594,12 @@
 <Expression>MessageTypes.Time(time*100.0)</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Time"
+ Type="Default.BaseTypes.Time"
  Default=""
+ X="220"
+ Y="120"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="TimeResolution"
  Guid="59622f5f-701b-40a7-a3d0-bdd43e4a531f"
@@ -544,7 +607,7 @@
 <Comment>Converts a time received from incoming message into a BaseType.Time</Comment>
 <Parameters>
 <Parameter
- Type="MessageTypes.Time"
+ Type="Time"
  Name="time"
  Guid="8ed85dc2-7751-41f2-b173-22da127c5d05"
 >

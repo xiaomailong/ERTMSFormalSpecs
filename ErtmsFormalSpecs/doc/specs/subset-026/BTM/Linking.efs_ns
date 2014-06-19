@@ -166,7 +166,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="LinkingData"
+ TypeName="BTM.Linking.LinkingData"
  MaxSize="30"
  Default="[]"
  X="500"
@@ -188,7 +188,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </Collection></Collections>
 <Functions>
 <Function
- Type="LinkingData"
+ Type="BTM.Linking.LinkingData"
  Default=""
  X="170"
  Y="210"
@@ -311,7 +311,7 @@ AND
 (BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</Expression>
 </Case></Cases>
 </Function><Function
- Type="LinkingData"
+ Type="BTM.Linking.LinkingData"
  Default=""
  X="60"
  Y="30"
@@ -435,7 +435,7 @@ BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
- Type="LinkingReaction"
+ Type="BTM.Linking.LinkingReaction"
  Default=""
  X="60"
  Y="210"
@@ -551,6 +551,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  Name="Value"
  Guid="10d7ba53-fe0f-4e69-b2f8-e74a576996b1"
 >
+<Comment></Comment>
 <Expression>FORALL_IN CurrentBaliseGroup | X.Q_LINK == Messages.Q_LINK.Linked</Expression>
 </Case></Cases>
 </Function><Function

@@ -6,6 +6,7 @@
  Name="BaseTypes"
  Guid="2a7d1254-c37b-451b-83c4-3174d5d3a1c4"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Ranges>
@@ -14,6 +15,8 @@
  MaxValue="2147483648.0"
  Precision="DoublePrecision"
  Default="0.0"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="Distance"
  Guid="6603780b-ee49-4ebc-b4c6-524cddcb0a76"
@@ -27,6 +30,7 @@
 >
 </EnumValue><EnumValue
  Value="2147483647.0"
+ ForbidArithmeticOperation="TRUE"
  Name="Unknown"
  Guid="98dc64b2-68db-4321-8a80-12e40b5f2d2b"
 >
@@ -36,6 +40,9 @@
  MaxValue="32771.0"
  Precision="DoublePrecision"
  Default="0.0"
+ X="110"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="Speed"
  Guid="0fcd646f-af1b-4e71-913a-4b80fe8e1e3e"
@@ -73,6 +80,9 @@
  MaxValue="9999999999"
  Precision="DoublePrecision"
  Default="0.0"
+ X="220"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="Time"
  Guid="a4ee516e-7d6d-4cb3-9a18-b2a74ff1060d"
@@ -95,6 +105,9 @@
  MaxValue="32769.0"
  Precision="DoublePrecision"
  Default="0.0"
+ X="330"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="Length"
  Guid="82c35ffb-5c64-410e-8e3c-a0432011067c"
@@ -117,6 +130,9 @@
  MaxValue="100.0"
  Precision="DoublePrecision"
  Default="0.0"
+ X="440"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="Gradient"
  Guid="129c65cd-3ea8-491a-b022-81300cdfd599"
@@ -134,6 +150,9 @@
  MaxValue="32769"
  Precision="DoublePrecision"
  Default="0.0"
+ X="550"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="Acceleration"
  Guid="cc95a8d0-0cb1-429c-91fe-4f08895e038a"
@@ -161,6 +180,9 @@
  MaxValue="65535"
  Precision="IntegerPrecision"
  Default="0"
+ X="660"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="IdentityNumber"
  Guid="ad24279f-b340-4e67-8b65-b78576a491c2"
@@ -169,8 +191,11 @@
 </Range></Ranges>
 <Functions>
 <Function
- Type="BaseTypes.Length"
+ Type="Default.BaseTypes.Length"
  Default=""
+ Y="120"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="DistanceToLength"
  Guid="3183ca17-f2a7-4c82-92ba-291cce34a2bf"
@@ -178,7 +203,7 @@
 <Comment>This function converts a distance into a length</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Distance"
  Name="Distance"
  Guid="ff519043-dc17-4e58-892e-858aa855ab2c"
 >
@@ -208,6 +233,10 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="110"
+ Y="120"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="LengthToDistance"
  Guid="54e75178-8c9b-4843-8821-d997840a91fb"
@@ -215,7 +244,7 @@
 <Comment>This function converts a length into a distance</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Length"
+ Type="Length"
  Name="Length"
  Guid="257b37e0-dc06-4ed2-a123-644d9c3d5863"
 >
@@ -243,8 +272,12 @@
 <Expression>Distance(Length)</Expression>
 </Case></Cases>
 </Function><Function
- Type="Gradient"
+ Type="Default.BaseTypes.Gradient"
  Default=""
+ X="220"
+ Y="120"
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="IndefiniteGradientFunction"
  Guid="800dfab5-6aa8-4ce2-a93c-a661bd3ac496"
@@ -265,8 +298,12 @@
 <Expression>Gradient.Indefinite</Expression>
 </Case></Cases>
 </Function><Function
- Type="Gradient"
+ Type="Default.BaseTypes.Gradient"
  Default=""
+ X="330"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MinGradient"
@@ -322,6 +359,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="440"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MinSpeed"
@@ -330,12 +371,12 @@
 <Comment>This function provides the minimum of two speeds</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Speed"
+ Type="Speed"
  Name="X1"
  Guid="8c20da21-5316-45fe-a288-9e6976c1bfd8"
 >
 </Parameter><Parameter
- Type="Default.BaseTypes.Speed"
+ Type="Speed"
  Name="X2"
  Guid="bee70587-35f0-49dd-b971-5122a9aedcaa"
 >
@@ -377,6 +418,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="550"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MaxSpeedFunction"
@@ -400,6 +445,10 @@
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
+ X="660"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MinAcceleration"
@@ -408,12 +457,12 @@
 <Comment>This function provides the minimum of two accelerations</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Acceleration"
+ Type="Acceleration"
  Name="X1"
  Guid="c7096bc2-6864-4b1c-9871-7d4af7054e98"
 >
 </Parameter><Parameter
- Type="Default.BaseTypes.Acceleration"
+ Type="Acceleration"
  Name="X2"
  Guid="80d37143-cad7-4090-b785-72c46c85ece2"
 >
@@ -455,6 +504,10 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="770"
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AddDistance"
@@ -463,12 +516,12 @@
 <Comment>This function adds two distances and provide a new distance, according to distances special values</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Distance"
+ Type="Distance"
  Name="X1"
  Guid="459f1b36-00de-445d-b65a-204bbe096218"
 >
 </Parameter><Parameter
- Type="Default.BaseTypes.Distance"
+ Type="Distance"
  Name="X2"
  Guid="9b43a2f9-4952-4f4e-b6c4-caf38d15d26d"
 >
@@ -492,6 +545,9 @@
 </Function><Function
  Type="Default.BaseTypes.Length"
  Default=""
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MinLength"
@@ -500,12 +556,12 @@
 <Comment>This function provides the minimum of two lengths</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Length"
+ Type="Length"
  Name="X1"
  Guid="a3275694-8764-4f76-8f27-88ad601a400b"
 >
 </Parameter><Parameter
- Type="Default.BaseTypes.Length"
+ Type="Length"
  Name="X2"
  Guid="ede68300-34f4-474e-adff-e416ffe36246"
 >
@@ -547,6 +603,10 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MaxDistance"
@@ -555,12 +615,12 @@
 <Comment>This function provides the maximum of two distances</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Distance"
+ Type="Distance"
  Name="X1"
  Guid="2613c8f1-f24f-4ead-8eee-fb6c57b4418a"
 >
 </Parameter><Parameter
- Type="Default.BaseTypes.Distance"
+ Type="Distance"
  Name="X2"
  Guid="91f00c1a-96f5-4680-8511-60d30f440aaa"
 >
@@ -602,6 +662,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="220"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MaxSpeed"
@@ -610,12 +674,12 @@
 <Comment>This function provides the maximum of two speeds</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Speed"
+ Type="Speed"
  Name="X1"
  Guid="9b79a221-f334-4e8a-8da5-a2cc8488bc18"
 >
 </Parameter><Parameter
- Type="Default.BaseTypes.Speed"
+ Type="Speed"
  Name="X2"
  Guid="f49fac7f-9eb9-4225-8658-0abae3f50e88"
 >
@@ -657,6 +721,10 @@
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
+ X="330"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MaxTime"
@@ -665,12 +733,12 @@
 <Comment>This function provides the maximum of two times</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Time"
+ Type="Time"
  Name="X1"
  Guid="eedf25d4-cadd-48ba-8ceb-8ade82ecd7d0"
 >
 </Parameter><Parameter
- Type="Default.BaseTypes.Time"
+ Type="Time"
  Name="X2"
  Guid="9e5c0bac-c53e-4f5d-b2fb-049e22d64d5e"
 >
@@ -712,6 +780,10 @@
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
+ X="440"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MaxAcceleration"
@@ -720,12 +792,12 @@
 <Comment>This function provides the maximum of two accelerations</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Acceleration"
+ Type="Acceleration"
  Name="X1"
  Guid="1b55caaa-63c4-43c1-9397-4c93ef8ae55a"
 >
 </Parameter><Parameter
- Type="Default.BaseTypes.Acceleration"
+ Type="Acceleration"
  Name="X2"
  Guid="5dda9749-7c63-4e3d-8841-68c2f0f9a15d"
 >
@@ -767,6 +839,10 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
+ X="550"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MinDistance"
@@ -775,12 +851,12 @@
 <Comment>This function provides the minimum of two distances</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Distance"
+ Type="Distance"
  Name="X1"
  Guid="3da6e4e3-3e47-4f9a-be03-0299b585ead6"
 >
 </Parameter><Parameter
- Type="Default.BaseTypes.Distance"
+ Type="Distance"
  Name="X2"
  Guid="34f47e55-eb40-4fad-b7ca-7c10be53d905"
 >
@@ -799,6 +875,7 @@
  Name="X2 infinite"
  Guid="4c9d5caf-5c24-42fe-a53c-1270c2856810"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="cead10d5-d0ee-454f-971c-28dd212f30b4"
@@ -822,6 +899,10 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="660"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AbsoluteSpeed"
@@ -830,7 +911,7 @@
 <Comment>This function computes the absolute speed from the speed given</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Speed"
+ Type="Speed"
  Name="X"
  Guid="1f6e6ca4-1d10-4f33-b16b-7d6f3825442c"
 >
@@ -854,6 +935,10 @@
 </Function><Function
  Type="Default.BaseTypes.Length"
  Default=""
+ X="770"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MaxLength"
@@ -862,12 +947,12 @@
 <Comment>This function provides the maximum of two lengths</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Length"
+ Type="Length"
  Name="X1"
  Guid="da6d4da4-3a45-4288-998a-526610df1d13"
 >
 </Parameter><Parameter
- Type="Default.BaseTypes.Length"
+ Type="Length"
  Name="X2"
  Guid="f19349e1-9d71-42ae-b6da-ac48be2f0e56"
 >
@@ -907,8 +992,11 @@
 <Expression>X1</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Default=""
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SpeedToMS"
@@ -917,7 +1005,7 @@
 <Comment>This function converts a km/h speed into a m/s speed</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Speed"
+ Type="Speed"
  Name="Val"
  Guid="b4150a8b-a876-4268-ba9f-f049da4e4bce"
 >
@@ -927,11 +1015,16 @@
  Name="Value"
  Guid="aafb6c95-f08e-425c-9fef-95e277dc9764"
 >
+<Comment></Comment>
 <Expression>Val / 3.6</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Default=""
+ X="110"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SpeedToKmH"
@@ -940,7 +1033,7 @@
 <Comment>This function converts a m/s speed into a km/h speed</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Speed"
+ Type="Speed"
  Name="Val"
  Guid="2c8613e7-ecd7-4b53-8f19-19a35ffb892c"
 >
@@ -958,6 +1051,9 @@
  Type="Acceleration"
  DefaultValue="9.81"
  VariableMode="Internal"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Verified="TRUE"
  NeedsRequirement="FALSE"

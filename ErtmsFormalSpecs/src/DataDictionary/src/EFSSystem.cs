@@ -39,12 +39,7 @@ namespace DataDictionary
         /// <summary>
         /// The runner currently set for the system
         /// </summary>
-        public Tests.Runner.Runner Runner { 
-            get { return __runner; } 
-            set {
-                __runner = value;
-            }
-        }
+        public Tests.Runner.Runner Runner { get; set; }
 
         /// <summary>
         /// Indicates wheter the model should be recompiled (after a change or a load)
@@ -124,7 +119,6 @@ namespace DataDictionary
             }
             History.UpdateBlame();
 
-            MaxExplainSize = 5000;
             Generated.ControllersManager.BaseModelElementController.Listeners.Insert(0, new BaseModelElementChangeListener(this));
         }
 
@@ -213,6 +207,10 @@ namespace DataDictionary
         /// </summary>
         public void ClearMessages()
         {
+            foreach (Dictionary dictionary in Dictionaries)
+            {
+                dictionary.ClearMessages();
+            }
         }
 
         /// <summary>
@@ -1198,11 +1196,6 @@ namespace DataDictionary
         /// Indicates if the element holds messages, or is part of a path to a message 
         /// </summary>
         public Utils.MessagePathInfoEnum MessagePathInfo { get { return Utils.MessagePathInfoEnum.Nothing; } }
-
-        /// <summary>
-        /// The maximum size of an explain part message
-        /// </summary>
-        public int MaxExplainSize { get; set; }
 
         /// <summary>
         /// Provides the list of requirement sets in the system

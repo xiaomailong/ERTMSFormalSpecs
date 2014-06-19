@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Variables;
 
 namespace GUI.TestRunnerView.TimeLineControl
 {
@@ -123,8 +124,25 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             NamableTreeNode nameSpaceTreeNode = new NamableTreeNode(nameSpace);
             nameSpaceTreeNode.Checked = filterConfiguration.NameSpaces.Contains(nameSpace);
+            nameSpaceTreeNode.Collapse();
             treeNode.Nodes.Add(nameSpaceTreeNode);
 
+            // Adds the variables to the selection
+            List<Variable> variables = new List<Variable>();
+            foreach (Variable variable in nameSpace.Variables)
+            {
+                variables.Add(variable);
+            }
+            variables.Sort();
+
+            foreach (Variable variable in variables)
+            {
+                NamableTreeNode variableTreeNode = new NamableTreeNode(variable);
+                variableTreeNode.Checked = filterConfiguration.Variables.Contains(variable);
+                nameSpaceTreeNode.Nodes.Add(variableTreeNode);
+            }
+
+            // Adds the subnamespaces to the selection
             List<DataDictionary.Types.NameSpace> subNameSpaces = new List<DataDictionary.Types.NameSpace>();
             foreach (DataDictionary.Types.NameSpace otherNameSpace in nameSpace.NameSpaces)
             {
@@ -149,6 +167,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             filterConfiguration.VariableUpdate = variableUpdateCheckBox.Checked;
 
             filterConfiguration.NameSpaces.Clear();
+            filterConfiguration.Variables.Clear();
             foreach (NamableTreeNode node in nameSpaceTreeView.Nodes)
             {
                 UpdateConfiguration(node, filterConfiguration);
@@ -170,6 +189,15 @@ namespace GUI.TestRunnerView.TimeLineControl
                 if (node.Checked)
                 {
                     filterConfiguration.NameSpaces.Add(nameSpace);
+                }
+            }
+
+            Variable variable = node.Namable as Variable;
+            if (variable != null)
+            {
+                if (node.Checked)
+                {
+                    filterConfiguration.Variables.Add(variable);
                 }
             }
 

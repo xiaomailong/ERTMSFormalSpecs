@@ -187,7 +187,7 @@
 <Comment>Given a StartPoint, returns the end of the section with a particular combination of enabled brakes</Comment>
 <Parameters>
 <Parameter
- Type="General.TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="StartPoint"
  Guid="63563ea6-13ba-46d9-82cb-e387ef467fb1"
 >
@@ -248,7 +248,8 @@ b) a different combination of enabled braking systems</Comment>
 <Actions>
 <Action
  Guid="effae0ff-821f-49a4-b156-ec9f0cd7cc5b"
->REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackConditionType=&gt;ConditionType.Conditions) IN General.TCProfile</Action></Actions>
+><Comment></Comment>
+REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackConditionType=&gt;ConditionType.Conditions) IN General.TCProfile</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

@@ -6,6 +6,7 @@
  Name="TargetSupervision"
  Guid="cec82dde-4045-4785-a20d-9c2abe607506"
 >
+<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="LevelCrossing"
@@ -31,7 +32,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3dd56d31-d853-4199-97b4-4131ad0b9682"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment></Comment>
+<StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
  Mode="Internal"
@@ -61,7 +63,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Target"
+ TypeName="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  MaxSize="100"
  Default="[]"
  Y="120"
@@ -76,10 +78,12 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7467c00d-368c-4bd4-952f-b51ddf6093bb"
 >
-</ReqRef></Collection></Collections>
+</ReqRef><Comment></Comment>
+</Collection></Collections>
 <Functions>
 <Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  Y="300"
  Width="100"
@@ -111,17 +115,27 @@
  Guid="ef4e3d67-de48-4bd6-bc1c-dee6ea188efb"
 >
 </Parameter><Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="aTarget"
  Guid="fda9571d-8f47-429b-99a5-c0d911da3501"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="EBIvalue unknown"
+ Guid="6caabc93-dfe4-42b6-845e-3a05d61c3524"
+>
+<PreConditions>
+<PreCondition
+ Guid="a9d4c728-e23f-4e83-884d-b41a5a7f7494"
+>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="Value"
  Guid="fd21b39b-f325-40fa-a78d-5ff23258542b"
 >
-<Expression>TargetSupervision.EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget )  - BaseTypes.SpeedToMS ( Vest ) * T_bs2</Expression>
+<Comment></Comment>
+<Expression>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget )  - Default.BaseTypes.SpeedToMS ( Vest ) * T_bs2</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -145,7 +159,7 @@
  Name="Value"
  Guid="17f1ca46-76c5-4135-a9e6-bf0e63dddd19"
 >
-<Expression>BaseTypes.MinAcceleration ( X1 =&gt; 0.4, X2 =&gt; BaseTypes.MaxAcceleration ( X1 =&gt; 0.0, X2 =&gt; Odometry.EstimatedAcceleration ) )</Expression>
+<Expression>Default.BaseTypes.MinAcceleration ( X1 =&gt; 0.4, X2 =&gt; Default.BaseTypes.MaxAcceleration ( X1 =&gt; 0.0, X2 =&gt; Odometry.EstimatedAcceleration ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -198,7 +212,8 @@
  Name="Value"
  Guid="aeee2a9d-0dc9-46c1-819a-97c42f1e0772"
 >
-<Expression>BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - T_traction (), X2 =&gt; 0.0 )</Expression>
+<Comment></Comment>
+<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - TargetSupervision.T_traction (), X2 =&gt; 0.0 )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Time"
@@ -250,7 +265,7 @@
 <PreCondition
  Guid="cf6f9fc7-ccd1-4d65-a066-2ba3eebe0aad"
 >Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented</PreCondition></PreConditions>
-<Expression>BaseTypes.MaxTime ( X1 =&gt; ( TrainData.BrakingParameters.T_traction_cut_off () - ( T_warning + TargetSupervision.T_bs2 ) ), X2 =&gt; 0.0 )</Expression>
+<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; ( TrainData.BrakingParameters.T_traction_cut_off () - ( TargetSupervision.T_warning + TargetSupervision.T_bs2 ) ), X2 =&gt; 0.0 )</Expression>
 </Case><Case
  Name="Traction cut-off is not implemented"
  Guid="804ac0bb-4c17-41aa-97a4-accc7affd282"
@@ -328,7 +343,7 @@
  Name="Value"
  Guid="5065369d-4e58-4287-b086-1723c2fa31b5"
 >
-<Expression>Aest1() * T_traction()</Expression>
+<Expression>TargetSupervision.Aest1() * TargetSupervision.T_traction()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -357,7 +372,7 @@
  Name="Value"
  Guid="32aacacd-a015-4db8-9358-18b1f08b683a"
 >
-<Expression>Aest2() * T_berem()</Expression>
+<Expression>Aest2() * TargetSupervision.T_berem()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -392,10 +407,11 @@
  Name="Value"
  Guid="6a8616f4-c654-41eb-8c0b-dd85faaf713e"
 >
-<Expression>BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(), X2 =&gt; Vtarget ) + Vdelta2()</Expression>
+<Expression>Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + TargetSupervision.Vdelta0() + TargetSupervision.Vdelta1(), X2 =&gt; Vtarget ) + TargetSupervision.Vdelta2()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="110"
  Y="420"
@@ -433,11 +449,12 @@
  Name="Value"
  Guid="65053d1d-56ea-40c0-958e-a23368d66654"
 >
-<Expression>BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1() / 2.0, X2 =&gt; Vtarget ) ) * T_traction() +
-BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(), X2 =&gt; Vtarget ) + Vdelta2() / 2.0 )  * T_berem()</Expression>
+<Expression>Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + TargetSupervision.Vdelta0() + TargetSupervision.Vdelta1() / 2.0, X2 =&gt; Vtarget ) ) * TargetSupervision.T_traction() +
+Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + TargetSupervision.Vdelta0() + TargetSupervision.Vdelta1(), X2 =&gt; Vtarget ) + TargetSupervision.Vdelta2() / 2.0 )  * TargetSupervision.T_berem()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="220"
  Y="420"
@@ -475,7 +492,7 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
  Guid="5eef95c0-266d-4452-9c08-920bc4be143f"
 >
 </Parameter><Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="aTarget"
  Guid="75aff4e1-bc80-4c0c-ae1b-cd01e124a020"
 >
@@ -564,8 +581,8 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
 <PreConditions>
 <PreCondition
  Guid="af655905-681c-467c-8a8c-2b474bb03a43"
->Dmaxsafefrontend + Odometry.EstimatedSpeed * T_bs2 + Dbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget ) &lt; DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></PreConditions>
-<Expression>EBD ( Dmaxsafefrontend + Odometry.EstimatedSpeed * T_bs2 + Dbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget) ) - ( Vbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget ) - Odometry.EstimatedSpeed )</Expression>
+>Dmaxsafefrontend + Odometry.EstimatedSpeed * TargetSupervision.T_bs2 + TargetSupervision.Dbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget ) &lt; DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; Vtarget )</PreCondition></PreConditions>
+<Expression>TargetSupervision.EBD ( Dmaxsafefrontend + Odometry.EstimatedSpeed * TargetSupervision.T_bs2 + TargetSupervision.Dbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget) ) - ( TargetSupervision.Vbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget ) - Odometry.EstimatedSpeed )</Expression>
 </Case><Case
  Name="After EBD(Vtarget)"
  Guid="4284e6e0-7eb5-4a62-8c8f-0cbc28530501"
@@ -574,6 +591,7 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
  Default=""
  X="110"
  Y="480"
@@ -601,11 +619,12 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
  Name="Before EOA"
  Guid="d4be67a0-0946-485f-9fe2-e631a9aabcfd"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="bde98596-9ac7-46ec-90e4-42cd4ac651a0"
->Destfront + Odometry.EstimatedSpeed * T_bs1 &lt; MA.EndOfMovementAuthority().Location</PreCondition></PreConditions>
-<Expression>SBD ( Destfront + Odometry.EstimatedSpeed * T_bs1 )</Expression>
+>Destfront + Odometry.EstimatedSpeed * TargetSupervision.T_bs1 &lt; MA.EndOfMovementAuthority().Location</PreCondition></PreConditions>
+<Expression>TargetSupervision.SBD ( Destfront + Odometry.EstimatedSpeed * TargetSupervision.T_bs1 )</Expression>
 </Case><Case
  Name="After EOA"
  Guid="f573b2a7-2c7b-41d0-b632-c6954262beea"
@@ -646,16 +665,17 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
 <PreConditions>
 <PreCondition
  Guid="d7618572-5cc7-4892-84a7-af2d85d657e2"
->ServiceBrakeFeedbackAvailable ()</PreCondition></PreConditions>
+>TargetSupervision.ServiceBrakeFeedbackAvailable ()</PreCondition></PreConditions>
 <Expression>5.0</Expression>
 </Case><Case
  Name="SB feedback interface not available"
  Guid="b91d6f8c-55b0-4316-b754-68a920fca082"
 >
-<Expression>BaseTypes.MaxTime ( X1 =&gt; 0.8 * TrainData.BrakingParameters.T_bs(), X2 =&gt; 5.0 )</Expression>
+<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; 0.8 * TrainData.BrakingParameters.T_bs(), X2 =&gt; 5.0 )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="330"
  Y="480"
@@ -680,18 +700,29 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Vest below all the supervised target speeds"
+ Guid="30e99670-6938-4ffe-8626-22edbca60e82"
+>
+<PreConditions>
+<PreCondition
+ Guid="f3765bd0-74d9-4a3a-8931-9cd8e64befb5"
+>FORALL_IN TargetsList() | d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="Value"
  Guid="673e0526-d664-4d47-ac36-3e9fd64b13fc"
 >
+<Comment></Comment>
 <Expression>REDUCE
-    TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SvLSpeedRestriction, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction )
+    TargetsList()
 USING
-    BaseTypes.MinDistance ( X1 =&gt; TargetSupervision.d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X ), X2 =&gt; RESULT )
+    Default.BaseTypes.MinDistance ( X1 =&gt; d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X ), X2 =&gt; RESULT )
 INITIAL_VALUE
-    BaseTypes.Distance.Infinity</Expression>
+    Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  Y="540"
  Width="100"
@@ -705,7 +736,8 @@ INITIAL_VALUE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="06f49efe-d784-4884-a95d-f7b60a29b220"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment></Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -714,13 +746,30 @@ INITIAL_VALUE
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="d_SBI1"
- Guid="b0d4bc0d-d9b2-4653-b671-f954bc79873b"
+ Name="d_SBI1 and d_SBI2_MREBDT unknown"
+ Guid="a7e5affa-24bb-421e-b1ef-4795b5e53604"
 >
 <PreConditions>
 <PreCondition
+ Guid="20e2ac7b-0ae7-4614-a72f-d0d09a41a77e"
+><Comment></Comment>
+d_SBI1 ( Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+ Guid="bc5154cc-8b2b-4252-8016-d2d82cdcf282"
+>d_SBI2_MREBDT ( Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case><Case
+ Name="d_SBI1"
+ Guid="b0d4bc0d-d9b2-4653-b671-f954bc79873b"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
  Guid="6a7b1947-677d-4020-8c74-d8e4a1dc4477"
->d_SBI1 ( Vest ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt;= d_SBI2_MREBDT ( Vest ) - TrainPosition.FrontEndPosition ( DistanceInterval.Max )</PreCondition></PreConditions>
+><Comment></Comment>
+SBI1BelowSBI2(
+    d_SBI1=&gt; d_SBI1( Vest ),
+    d_SBI2=&gt; d_SBI2_MREBDT( Vest )
+)</PreCondition></PreConditions>
 <Expression>d_SBI1 ( Vest )</Expression>
 </Case><Case
  Name="d_SBI2_MREBDT"
@@ -749,6 +798,7 @@ INITIAL_VALUE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="95a223bd-f060-420b-9ed5-7c2d3e655c0d"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="4a6a5396-38cf-4784-bd94-ba5c844bb58c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -764,7 +814,8 @@ INITIAL_VALUE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2a87d0d2-6795-4a7e-975f-4da7407478f4"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment></Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="d_estfront"
@@ -781,13 +832,15 @@ INITIAL_VALUE
  Name="GUI is inhibited, first case"
  Guid="bd651fd3-7709-4de5-bb0c-c3abea4c233e"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="3b40019d-ded4-4c90-874f-5655ba662c14"
->d_estfront + Vest * ( T_driver + T_bs1 ) &lt; MA.EndOfMovementAuthority().Location</PreCondition><PreCondition
+><Comment></Comment>
+d_estfront + Vest * ( TargetSupervision.T_driver + TargetSupervision.T_bs1 ) &lt; MA.EndOfMovementAuthority().Location</PreCondition><PreCondition
  Guid="8b332ee1-e275-4c1d-b11c-5aaaf0880d71"
 >NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition></PreConditions>
-<Expression>SBD ( d_estfront + Vest * ( T_driver + T_bs1 ) )</Expression>
+<Expression>TargetSupervision.SBD ( d_estfront + Vest * ( TargetSupervision.T_driver + TargetSupervision.T_bs1 ) )</Expression>
 </Case><Case
  Name="GUI is enabled, first case"
  Guid="0c8c1aab-75c3-4d07-b159-af8a7433a06f"
@@ -797,8 +850,8 @@ INITIAL_VALUE
  Guid="25a8c888-2fbe-4c82-aeed-91f3341c0a3d"
 >NationalValues.ComputationOfGUIIsEnabled ()</PreCondition><PreCondition
  Guid="ae292cb2-e670-4c12-9ec0-b9244a86f5d1"
->d_estfront + Vest * ( T_driver + T_bs1 ) &lt; MA.EndOfMovementAuthority().Location</PreCondition></PreConditions>
-<Expression>BaseTypes.MinDistance ( X1 =&gt; SBD ( d_estfront + Vest * ( T_driver + T_bs1 ) ), X2 =&gt; GUI ( d_estfront ) )</Expression>
+>d_estfront + Vest * ( TargetSupervision.T_driver + TargetSupervision.T_bs1 ) &lt; MA.EndOfMovementAuthority().Location</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; TargetSupervision.SBD ( d_estfront + Vest * ( TargetSupervision.T_driver + TargetSupervision.T_bs1 ) ), X2 =&gt; TargetSupervision.GUI ( d_estfront ) )</Expression>
 </Case><Case
  Name="Second case"
  Guid="e154f4c7-5452-4307-a281-82156ab1a210"
@@ -867,12 +920,12 @@ INITIAL_VALUE
 <PreConditions>
 <PreCondition
  Guid="7b9f6890-4be7-49cf-9750-bc2b6d56cfb4"
->d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget )
+>d_maxsafefront + Vest * ( TargetSupervision.T_driver + TargetSupervision.T_bs2 ) + TargetSupervision.Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget )
   &lt;
-DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
+DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
  Guid="2784bf61-3ed4-4bb9-ba3c-cfa74d731b58"
 >NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition></PreConditions>
-<Expression>EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) ) - ( Vbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) - Vest )</Expression>
+<Expression>TargetSupervision.EBD ( d_maxsafefront + Vest * ( TargetSupervision.T_driver + TargetSupervision.T_bs2 ) + TargetSupervision.Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) ) - ( TargetSupervision.Vbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) - Vest )</Expression>
 </Case><Case
  Name="GUI is enabled, first case"
  Guid="ea008d5f-1c70-4000-a4d1-1f59f4575794"
@@ -882,10 +935,10 @@ DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition><PreC
  Guid="0eca90da-8457-4dee-9fe8-edd31394c8f9"
 >NationalValues.ComputationOfGUIIsEnabled ()</PreCondition><PreCondition
  Guid="b6dbd2ec-7f55-4672-b4b9-9c4635a43455"
->d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget )
+>d_maxsafefront + Vest * ( TargetSupervision.T_driver + TargetSupervision.T_bs2 ) + TargetSupervision.Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget )
   &lt;
-DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></PreConditions>
-<Expression>BaseTypes.MinDistance ( X1 =&gt; EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) ) - ( Vbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) - Vest ), X2 =&gt; GUI ( d_maxsafefront ) )</Expression>
+DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; Vtarget )</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; TargetSupervision.EBD ( d_maxsafefront + Vest * ( TargetSupervision.T_driver + TargetSupervision.T_bs2 ) + TargetSupervision.Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) ) - ( TargetSupervision.Vbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) - Vest ), X2 =&gt; TargetSupervision.GUI ( d_maxsafefront ) )</Expression>
 </Case><Case
  Name="Second case"
  Guid="37ee1eee-2b68-457d-9e98-2a3cf3de4ae6"
@@ -934,9 +987,20 @@ DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></Pre
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Supervising LOA - no SBD"
+ Guid="8a69aae7-09da-458a-927c-b4d2e0e65039"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="53634c1c-2959-451a-949d-2699a79a286d"
+>NOT MA.EOADefined()</PreCondition></PreConditions>
+<Expression>BaseTypes.Speed.NA</Expression>
+</Case><Case
  Name="Value"
  Guid="0a8f603f-54a4-4931-a14b-bc70a2d89895"
 >
+<Comment></Comment>
 <Expression>DecelerationProfile ( 
   SpeedRestrictions =&gt; MA.EOASpeedRestriction, 
   DecelerationFactor =&gt; TrainData.BrakingParameters.A_expected ) 
@@ -972,12 +1036,13 @@ DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></Pre
  Guid="97d73dd3-41c1-41ad-b682-8ea8dfad5174"
 >
 <Expression>DecelerationProfile ( 
-  SpeedRestrictions =&gt; GUI.SpeedRestrictions 
+  SpeedRestrictions =&gt; TargetSupervision.GUI.SpeedRestrictions 
   DecelerationFactor =&gt; TrainData.BrakingParameters.A_normal_service ) 
 ( Distance )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
  Default=""
  X="110"
  Y="600"
@@ -992,12 +1057,26 @@ DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e23e205e-c96d-4701-8d67-907847c9d5e3"
 >
-</ReqRef><Cases>
+</ReqRef><Comment></Comment>
+<Cases>
 <Case
- Name="Value"
+ Name="MRDT is the EOA"
  Guid="da50275f-a949-4fe9-b3ab-e1285e86eb11"
 >
-<Expression>MRDT().Speed</Expression>
+<PreConditions>
+<PreCondition
+ Guid="178905dd-ce63-4fba-8a0b-3c4f22c9b159"
+>MA.IsEOA(MRDT())</PreCondition></PreConditions>
+<Expression>V_P_EOA(d_estfront=&gt;TrainPosition.FrontEndPosition(DistanceInterval.Nom), Vest=&gt;Odometry.EstimatedSpeed)</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="ce69f6f0-25b3-421d-b722-f59a85591ca8"
+>
+<Expression>TargetSupervision.V_P_EBD_Target(
+    d_maxsafefront =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Max),
+    Vtarget =&gt; MRDT().Speed,
+    Vest =&gt; Odometry.EstimatedSpeed
+)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -1039,9 +1118,10 @@ DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></Pre
  Name="Value"
  Guid="1529fd2f-2eb1-49c8-94c8-feb16efd487c"
 >
+<Comment></Comment>
 <Expression>DecelerationProfile ( 
-  SpeedRestrictions =&gt; Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.EBI, 
-  DecelerationFactor =&gt; Kernel.TrainData.BrakingParameters.A_safe )
+  SpeedRestrictions =&gt; CeilingSupervision.EBI, 
+  DecelerationFactor =&gt; TrainData.BrakingParameters.A_safe )
 ( Distance )</Expression>
 </Case></Cases>
 </Function><Function
@@ -1078,7 +1158,7 @@ DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></Pre
  Guid="cd5be458-075b-4dc4-815b-076a138762c0"
 >
 </Parameter><Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="aTarget"
  Guid="8501f4ac-1027-438f-8b73-554bf6ce8129"
 >
@@ -1088,9 +1168,10 @@ DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></Pre
  Name="Value"
  Guid="e744ba80-63dc-46f3-837d-ede2f1c0ffb4"
 >
+<Comment></Comment>
 <Expression>DecelerationProfile ( 
-  SpeedRestrictions =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; TargetToGraph ( aTarget =&gt; aTarget, Distance =&gt; d ),
-  DecelerationFactor =&gt; Kernel.TrainData.BrakingParameters.A_safe )
+  SpeedRestrictions =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; TargetSupervision.TargetToGraph ( aTarget =&gt; aTarget, Distance =&gt; d ),
+  DecelerationFactor =&gt; TrainData.BrakingParameters.A_safe )
 ( Distance )</Expression>
 </Case></Cases>
 </Function><Function
@@ -1107,7 +1188,7 @@ DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></Pre
 <Comment>Creates a speed restriction associated to a given target, by adding the increment dV_ebi if the target speed is different from 0.</Comment>
 <Parameters>
 <Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="aTarget"
  Guid="5566a9f8-2b1f-4cec-a053-8f5c6b9f5b76"
 >
@@ -1126,7 +1207,7 @@ DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></Pre
 <PreCondition
  Guid="b5012344-b47b-4a0b-acf0-2a242533a19d"
 >Distance &lt; aTarget.Location</PreCondition></PreConditions>
-<Expression>BaseTypes.Speed.MaxSpeed</Expression>
+<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="Speed = 0"
  Guid="492d0aa2-1798-4d43-9896-da4b5ef20929"
@@ -1143,7 +1224,7 @@ DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></Pre
 <Expression>aTarget.Speed + CeilingSupervision.dV_ebi ( aTarget.Speed )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Cacheable="TRUE"
  Default=""
  X="110"
@@ -1159,20 +1240,21 @@ DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ded4780e-f8f3-459f-92ea-6561b63cdeaf"
 >
-</ReqRef><Cases>
+</ReqRef><Comment></Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="c3a48f3d-32bb-44b9-bad0-fd7ac0c82bb3"
 >
 <Expression>REDUCE
-    TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SvLSpeedRestriction, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction )
+    TargetsList()
 USING
-    MinTarget ( X1 =&gt; X, X2 =&gt; RESULT )
+    TargetSupervision.MinTarget ( X1 =&gt; X, X2 =&gt; RESULT )
 INITIAL_VALUE
     MA.EndOfMovementAuthority()</Expression>
 </Case></Cases>
 </Function><Function
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Default=""
  X="220"
  Y="660"
@@ -1187,14 +1269,15 @@ INITIAL_VALUE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="307235e7-d376-4f8b-8f05-ecc74bf353ed"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment></Comment>
+<Parameters>
 <Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="X1"
  Guid="99b4f72a-6815-4d7e-8399-67569b67864b"
 >
 </Parameter><Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="X2"
  Guid="03f9e4e0-748a-4af5-91fc-184584ea00dc"
 >
@@ -1209,7 +1292,8 @@ INITIAL_VALUE
  Guid="010a5d7a-5196-490a-935f-b9bdadea48cd"
 >MA.IsEOA ( X1 )</PreCondition><PreCondition
  Guid="77b343e7-476b-45bc-a3b8-04498de86352"
->V_P_EOA ( d_estfront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom ), Vest =&gt; Odometry.EstimatedSpeed ) &lt;= V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; X2.Speed, Vest =&gt; Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSupervision.V_P_EOA ( d_estfront =&gt; TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ), Vest =&gt; Odometry.EstimatedSpeed ) &lt;= TargetSupervision.V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ), Vtarget =&gt; X2.Speed, Vest =&gt; Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X1 is EOA, X1 &gt; X2"
@@ -1229,7 +1313,7 @@ INITIAL_VALUE
  Guid="d6d8640e-d60e-43ab-822d-adfba05c1520"
 >MA.IsEOA ( X2 )</PreCondition><PreCondition
  Guid="ce6619c4-cc2d-40cd-8daf-925648001d58"
->V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; X1.Speed, Vest =&gt; Odometry.EstimatedSpeed ) &lt;=  V_P_EOA ( d_estfront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom ), Vest =&gt; Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+>TargetSupervision.V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ), Vtarget =&gt; X1.Speed, Vest =&gt; Odometry.EstimatedSpeed ) &lt;=  TargetSupervision.V_P_EOA ( d_estfront =&gt; TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ), Vest =&gt; Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X2 is EOA, X1 &gt; X2"
@@ -1247,16 +1331,17 @@ INITIAL_VALUE
 <PreConditions>
 <PreCondition
  Guid="2e2cb67d-e986-47dd-9a32-d34ea033b11a"
->V_P_EBD_Target
+><Comment></Comment>
+TargetSupervision.V_P_EBD_Target
     (
-        d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ),
+        d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ),
         Vtarget =&gt; X1.Speed,
         Vest =&gt; Odometry.EstimatedSpeed
     )
   &lt;=
-V_P_EBD_Target
+TargetSupervision.V_P_EBD_Target
     (
-        d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ),
+        d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ),
         Vtarget =&gt; X2.Speed,
         Vest =&gt; Odometry.EstimatedSpeed
     )</PreCondition></PreConditions>
@@ -1269,6 +1354,7 @@ V_P_EBD_Target
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="330"
  Y="660"
@@ -1323,7 +1409,8 @@ V_P_EBD_Target
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="52a5d05b-f8e8-4d2b-a807-315d4cfd1200"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment></Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -1332,22 +1419,39 @@ V_P_EBD_Target
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="d_SBI1 and d_SBI2_MREBDT unknown"
+ Guid="a0f56999-394f-4b00-b423-9c6440c834cc"
+>
+<PreConditions>
+<PreCondition
+ Guid="7377911b-f405-40f5-a39e-636a7d591d5f"
+><Comment></Comment>
+d_SBI1 ( Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+ Guid="341f5ca9-bbd4-4d97-bbbd-a8d5307c471c"
+>d_SBI2_MREBDT ( Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case><Case
  Name="SBI1"
  Guid="8c95a8f9-eadc-47e4-84e8-3420e2c4a336"
 >
 <PreConditions>
 <PreCondition
  Guid="e862b7cc-9cf5-4c3a-afa3-53925d18277e"
->d_SBI1 ( Vest ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt;= d_SBI2_MREBDT ( Vest ) - TrainPosition.FrontEndPosition ( DistanceInterval.Max )</PreCondition></PreConditions>
-<Expression>TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
+><Comment></Comment>
+SBI1BelowSBI2(
+    d_SBI1=&gt; d_SBI1 ( Vest ),
+    d_SBI2=&gt; d_SBI2_MREBDT ( Vest )
+)</PreCondition></PreConditions>
+<Expression>TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )</Expression>
 </Case><Case
  Name="SBI2"
  Guid="5ffb4c20-ad36-48ae-b178-60417aa361bb"
 >
-<Expression>TrainPosition.FrontEndPosition ( DistanceInterval.Max )</Expression>
+<Expression>TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
  Default=""
  Y="720"
  Width="100"
@@ -1366,10 +1470,12 @@ V_P_EBD_Target
  Name="Value"
  Guid="3b2124db-7a45-4f5d-b030-095438388390"
 >
-<Expression>BaseTypes.MinSpeed ( X1 =&gt; BaseTypes.MaxSpeed ( X1 =&gt; V_P_MRDT(), X2 =&gt; MRDT().Speed ), X2 =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</Expression>
+<Comment></Comment>
+<Expression>Default.BaseTypes.MinSpeed ( X1 =&gt; Default.BaseTypes.MaxSpeed ( X1 =&gt; TargetSupervision.V_P_MRDT(), X2 =&gt; TargetSupervision.MRDT().Speed ), X2 =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
  Default=""
  X="110"
  Y="720"
@@ -1392,24 +1498,25 @@ V_P_EBD_Target
 <PreConditions>
 <PreCondition
  Guid="3a61714a-aa82-4215-b3f4-b42959f7132d"
->MA.IsEOA ( MRDT() ) OR MA.IsSvL ( MRDT() )</PreCondition></PreConditions>
-<Expression>BaseTypes.MinSpeed
+>MA.IsEOA ( TargetSupervision.MRDT() ) OR MA.IsSvL ( TargetSupervision.MRDT() )</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinSpeed
 (
-    X1 =&gt; BaseTypes.MaxSpeed
+    X1 =&gt; Default.BaseTypes.MaxSpeed
     (
-        X1 =&gt; CeilingSupervision.SBI ( MRDT().Location ),
+        X1 =&gt; CeilingSupervision.SBI ( TargetSupervision.MRDT().Location ),
         X2 =&gt; ReleaseSpeedSupervision.ReleaseSpeed
 ),
-    X2 =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )
+    X2 =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )
 )</Expression>
 </Case><Case
  Name="MRSP or LOA"
  Guid="17f240ad-5dcc-40f3-91f3-5e7506b17e0b"
 >
-<Expression>BaseTypes.MinSpeed ( X1 =&gt; BaseTypes.MaxSpeed ( X1 =&gt; CeilingSupervision.SBI ( MRDT().Location ), X2 =&gt; MRDT().Speed + CeilingSupervision.dV_sbi ( MRDT().Speed ) ), X2 =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) )</Expression>
+<Expression>Default.BaseTypes.MinSpeed ( X1 =&gt; Default.BaseTypes.MaxSpeed ( X1 =&gt; CeilingSupervision.SBI ( TargetSupervision.MRDT().Location ), X2 =&gt; TargetSupervision.MRDT().Speed + CeilingSupervision.dV_sbi ( TargetSupervision.MRDT().Speed ) ), X2 =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="220"
  Y="720"
@@ -1459,13 +1566,43 @@ V_P_EBD_Target
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="No SBD"
+ Guid="6633ad72-15a7-48d6-9009-484c09973fb6"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="8ccbaeff-7580-487f-bed3-10470968e535"
+><Comment></Comment>
+SBD(
+    Distance=&gt; TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Nom
+)) == BaseTypes.Speed.NA</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
+ Name="SBD below Vest"
+ Guid="c7b0d6a3-6808-4360-8991-791ced8b7632"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="9e1abeb5-4d09-483c-8f53-24d85fe1e9da"
+><Comment></Comment>
+DistanceForSpeed(
+    Function=&gt; SBD,
+    Speed=&gt; Vest
+) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="Value"
  Guid="38aef605-7d44-466d-a6ca-9d9140f030b8"
 >
-<Expression>DistanceForSpeed ( Function =&gt; TargetSupervision.SBD, Speed =&gt; Vest )  - BaseTypes.SpeedToMS ( Vest ) * TargetSupervision.T_bs1</Expression>
+<Comment></Comment>
+<Expression>DistanceForSpeed ( Function =&gt; SBD, Speed =&gt; Vest )  - Default.BaseTypes.SpeedToMS ( Vest ) * T_bs1</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="330"
  Y="720"
@@ -1500,7 +1637,8 @@ V_P_EBD_Target
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3bf9e65e-8343-4e8d-b3ad-45ba28019117"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment></Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -1515,16 +1653,17 @@ V_P_EBD_Target
 <PreConditions>
 <PreCondition
  Guid="b4b68ec6-cf44-41c5-b78d-2b39ad896f98"
->Vest &lt;= CeilingSupervision.P ( InterventionValue ( Vest ) )</PreCondition></PreConditions>
-<Expression>InterventionValue ( Vest )</Expression>
+>Vest &lt;= CeilingSupervision.P ( TargetSupervision.InterventionValue ( Vest ) )</PreCondition></PreConditions>
+<Expression>TargetSupervision.InterventionValue ( Vest )</Expression>
 </Case><Case
  Name="Above P"
  Guid="877d9731-6bca-451c-84b9-8f9445c63e6d"
 >
-<Expression>IntersectAt ( FunctionA =&gt; CeilingSupervision.P, FunctionB =&gt; InterventionValue )</Expression>
+<Expression>IntersectAt ( FunctionA =&gt; CeilingSupervision.P, FunctionB =&gt; TargetSupervision.InterventionValue )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  Y="780"
  Width="100"
@@ -1585,19 +1724,21 @@ V_P_EBD_Target
  Name="GUI is inhibited"
  Guid="bc1cd155-ba13-42c9-ad91-23841c16a0d6"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="70659c39-2759-4cb5-b0d4-fd30a601fc38"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>d_FLOI ( Vest ) - BaseTypes.SpeedToMS ( Vest ) * TargetSupervision.T_driver</Expression>
+<Expression>TargetSupervision.d_FLOI ( Vest ) - Default.BaseTypes.SpeedToMS ( Vest ) * TargetSupervision.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
  Guid="a2617cac-24b8-462a-b50f-024412f2faa6"
 >
-<Expression>BaseTypes.MinDistance ( X1 =&gt; d_FLOI ( Vest ) - BaseTypes.SpeedToMS ( Vest ) * TargetSupervision.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; TargetSupervision.GUI, Speed =&gt; Vest ) )</Expression>
+<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; TargetSupervision.d_FLOI ( Vest ) - Default.BaseTypes.SpeedToMS ( Vest ) * TargetSupervision.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; TargetSupervision.GUI, Speed =&gt; Vest ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="110"
  Y="780"
@@ -1649,10 +1790,11 @@ V_P_EBD_Target
  Name="Value"
  Guid="38379bd3-9c98-460e-ae6a-6e0ad0dae502"
 >
-<Expression>d_FLOI ( Vest ) - BaseTypes.SpeedToMS ( Vest ) * TargetSupervision.T_warning</Expression>
+<Expression>TargetSupervision.d_FLOI ( Vest ) - Default.BaseTypes.SpeedToMS ( Vest ) * TargetSupervision.T_warning</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  X="220"
  Y="780"
@@ -1680,7 +1822,7 @@ V_P_EBD_Target
  Name="Value"
  Guid="d216bbc6-a6ca-42c4-bba6-68c13b80c42c"
 >
-<Expression>d_P ( V ) - BaseTypes.SpeedToMS ( V ) * TargetSupervision.T_indication ()</Expression>
+<Expression>TargetSupervision.d_P ( V ) - Default.BaseTypes.SpeedToMS ( V ) * TargetSupervision.T_indication ()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -1716,13 +1858,26 @@ V_P_EBD_Target
  Guid="d1a8330c-ead3-4993-b78a-39e9eef5f008"
 >
 </Parameter><Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="aTarget"
  Guid="c9becbd7-3eaf-4f49-9887-db0a41cbd161"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Unknown for given speed"
+ Guid="68852627-8a59-4a40-863f-f157164677e2"
+>
+<PreConditions>
+<PreCondition
+ Guid="b5f767c0-d69b-47fb-910e-58b4f9b0ec0b"
+>DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; EBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
+        Speed =&gt; Vbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed ) )
+== Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="Value"
  Guid="f6c71c64-a1ed-4e52-9eee-68edbd4d2eb7"
 >
@@ -1731,6 +1886,55 @@ V_P_EBD_Target
         FUNCTION d : Default.BaseTypes.Distance =&gt; EBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
         Speed =&gt; Vbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed ) )
 - Dbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SBI1BelowSBI2"
+ Guid="4c03af12-8299-47f1-a36e-5ceafe500d01"
+>
+<ReqRef
+ Id="7525f72a-3b46-498c-8c48-1ed3ad888b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a089428b-43ef-4852-b96c-8fd5280e0e7f"
+>
+</ReqRef><ReqRef
+ Id="d542f99e-9462-4bb6-9087-35da9a233e06"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9bb4026c-f84c-4db5-bd43-c6cc4f1a26e1"
+>
+</ReqRef><Comment>Checks that the MA ends with a EOA and, if so, returns true if the SBD curve is closer than the EBD</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="d_SBI1"
+ Guid="dad67edd-3fe4-4175-a913-c3a4ad872b4b"
+>
+</Parameter><Parameter
+ Type="BaseTypes.Distance"
+ Name="d_SBI2"
+ Guid="175339e3-7d3f-4c7b-b400-62a0f1c45654"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="No EOA defined"
+ Guid="68dd7cc9-0d1c-45c8-bc0c-958e6b369768"
+>
+<PreConditions>
+<PreCondition
+ Guid="1f71df51-c1b0-48e4-a4f9-a4588272738b"
+>NOT MA.EOADefined()</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Value"
+ Guid="8bdc9210-c59d-4c1b-9357-b46432397840"
+>
+<Comment></Comment>
+<Expression>d_SBI1 - TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &lt;= d_SBI2 - TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -1786,9 +1990,9 @@ V_P_EBD_Target
 <Actions>
 <Action
  Guid="ec39334f-816b-488a-bb1e-4d56f2c8b2f2"
->T_bs1 &lt;- TrainData.BrakingParameters.T_bs()</Action><Action
+>TargetSupervision.T_bs1 &lt;- TrainData.BrakingParameters.T_bs()</Action><Action
  Guid="276948b7-fb73-404d-8430-160712fbc9ce"
->T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></Actions>
+>TargetSupervision.T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="SBCommandAvailable_SBFeedbackAvailable"
@@ -1808,9 +2012,9 @@ V_P_EBD_Target
 <Actions>
 <Action
  Guid="9b28d836-1ed0-415b-9678-5c3beec361d5"
->T_bs1 &lt;- TrainData.BrakingParameters.T_bs()</Action><Action
+>TargetSupervision.T_bs1 &lt;- TrainData.BrakingParameters.T_bs()</Action><Action
  Guid="877d64de-96f2-4618-8ae7-988535b274d7"
->T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></Actions>
+>TargetSupervision.T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="SBCommandNotAvailable"
@@ -1828,9 +2032,9 @@ V_P_EBD_Target
 <Actions>
 <Action
  Guid="21600fea-3d2a-4a8c-9139-88a840203244"
->T_bs1 &lt;- 0.0</Action><Action
+>TargetSupervision.T_bs1 &lt;- 0.0</Action><Action
  Guid="8769497b-45a7-46aa-b863-da689689dad5"
->T_bs2 &lt;- 0.0</Action></Actions>
+>TargetSupervision.T_bs2 &lt;- 0.0</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1953,390 +2157,22 @@ V_P_EBD_Target
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b80178a9-ceff-448a-bc9b-c3cdf615cca9"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="CheckSpeedAndDistanceMonitoringStatus"
- Guid="42b3eca4-28b5-42db-9a3d-d04f839b45ff"
->
-<PreConditions>
-<PreCondition
- Guid="035eb855-04d7-4cb3-9e12-2df1736c11d6"
->Kernel.SpeedAndDistanceMonitoring.SpeedAndDistanceMonitoringIsActive</PreCondition><PreCondition
- Guid="734c0cfb-8504-4804-8e92-7d445b1644b3"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</PreCondition><PreCondition
- Guid="1d9d0f82-9b6e-4854-85b9-8c830b0881ef"
->TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="UpdateINTERNAL"
  Implemented="TRUE"
  Name="UpdateSupervisionStatus"
- Guid="2850f7e2-6ecd-491c-bdb7-d114298982bd"
+ Guid="9fb3e1ea-556c-4181-a337-30dc56cd7afa"
 >
-<ReqRef
- Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="401bd857-bf4e-4e70-b215-482420f46175"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="t14"
- Guid="5c449f3c-02da-412e-9337-36c393a81f5c"
->
-<ReqRef
- Id="a77d9b43-ca07-4b88-99c9-aee4aac78473"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="18777e08-24eb-4f7a-ae17-2baa984929b8"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="afbeabf3-73a0-480f-90b7-9ca035f36346"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="5ebff022-19ff-4ed2-96a2-adf32b354df0"
->Supervision != SupervisionStatus.Intervention</PreCondition></PreConditions>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
 <Actions>
 <Action
- Guid="574ec616-674d-4716-90a5-ac23810d8236"
->TriggerEBCommand()</Action><Action
- Guid="1c1b160c-a7ac-4d11-8228-3453a58ee5a6"
->Supervision &lt;- SupervisionStatus.Intervention</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t13"
- Guid="64ece763-ded1-466c-86bb-dd69ff1f6b88"
->
-<ReqRef
- Id="6d9d71c4-5508-47ef-ab3d-c32522306769"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="60cac50d-0889-48cb-9208-f25269807780"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="ac178ee5-75c9-4017-a31b-77f5a5712b55"
->Supervision != SupervisionStatus.Intervention</PreCondition><PreCondition
- Guid="ba231a05-a050-403c-b375-d2c8333d8bc7"
->MRDT().Speed + Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.dV_ebi ( V =&gt; MRDT().Speed ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="eed3aab7-22ba-4c8b-8416-c2e82b2fd1cb"
->Odometry.EstimatedSpeed &lt;= Kernel.MRSP.SpeedRestrictions ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.dV_ebi ( V =&gt; Kernel.MRSP.SpeedRestrictions ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="1d4976bf-6883-4179-a20b-ff3557b6360c"
->Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI ( Vest =&gt; Odometry.EstimatedSpeed, aTarget =&gt; MRDT() )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="4ec0659c-cb29-4181-ba15-eb5f876c2157"
->TriggerEBCommand()</Action><Action
- Guid="0ecf8a7c-4a11-4ed2-9a5c-f5f4272518d9"
->Supervision &lt;- SupervisionStatus.Intervention</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t12"
- Guid="c71050dd-5f8e-469f-a6ef-30bcccc76c25"
->
-<ReqRef
- Id="e354be4a-8c30-493a-8607-87b51d1ac30c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="580ccb1d-8360-44b4-8ff6-44e64b94e868"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="02d427b2-62df-4767-a44e-af3a12981c9a"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="ec8b68cc-d914-4a9c-b549-e2a1fbecdb4d"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="9ba1c104-6df8-40b0-bf2c-219129357743"
->Supervision != SupervisionStatus.Intervention</PreCondition><PreCondition
- Guid="54504867-13a8-4cca-9739-14e54c19c24f"
->d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; TrainPosition.FrontEndPosition ( DistanceInterval.Max )</PreCondition><PreCondition
- Guid="9b5b5641-c692-4f1a-a925-9bd18513f887"
->TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &lt;= TargetSupervision.d_EBI ( Vest =&gt; Odometry.EstimatedSpeed, aTarget =&gt; MRDT() )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="12a98929-2436-4182-8500-9d8d9f8492b7"
->Supervision &lt;- SupervisionStatus.Intervention</Action><Action
- Guid="ea237c51-28f0-4c60-bcf5-0c10c2d072a3"
->TriggerSBCommand()</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t11"
- Guid="72f87e8f-5216-4a4f-b408-42b17f22afff"
->
-<ReqRef
- Id="b3b7e30c-6bb4-4cd9-8e6d-dfb514676cbd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9f1e9be4-4b71-4825-93bf-7621210e79f4"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="3502a24e-c239-4db7-a351-1f39c4803574"
->Supervision != SupervisionStatus.Intervention</PreCondition><PreCondition
- Guid="f3191952-180c-4387-8cd1-79a6b645edea"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="2a74a3aa-1b5b-4575-b485-6dce7ee409db"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="56e375e7-c5e1-46e7-a199-6ae22019d736"
->TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="93c187f7-8a69-4338-9c69-e8de1f01194e"
->Supervision &lt;- SupervisionStatus.Intervention</Action><Action
- Guid="6f376875-dd37-4749-8668-f2f46af84d83"
->TriggerSBCommand()</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t10"
- Guid="9c6c3a92-1143-4ebb-a7b1-0160e6314336"
->
-<ReqRef
- Id="49cb1ac1-74b3-4afe-865d-d6b4401719da"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0c464a14-6b23-49eb-aa7f-ba9b744d84a0"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="00b33504-cbcf-493a-b5fa-5e9b6ac7f200"
->Supervision != SupervisionStatus.Intervention</PreCondition><PreCondition
- Guid="f775a343-3e84-41b9-806b-619a7ba9c12c"
->MRDT().Speed + CeilingSupervision.dV_sbi ( MRDT().Speed ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="f9c78069-1a68-40f0-b9cc-907fcacd3346"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="6f49276c-a3e2-41fc-9e18-5d1b5d445b04"
->FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; TargetSupervision.d_FLOI ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="4bfeb7b4-8ba8-474c-b4f9-70788763aa70"
->Supervision &lt;- SupervisionStatus.Intervention</Action><Action
- Guid="22823a33-1036-45f9-b31b-e8904ef6078b"
->TriggerSBCommand()</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t9"
- Guid="227eeeb6-5dac-492f-a13e-fa4d02beea9f"
->
-<ReqRef
- Id="0342251f-d656-4d41-8ece-bde758fbfadf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="14e4348d-5bfc-4c90-9fda-17fe20a891a4"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="770fc75a-d345-449a-8fb1-1b27bbab2f6b"
->Supervision != SupervisionStatus.Warning</PreCondition><PreCondition
- Guid="46027e3c-658d-4afe-9d5a-fd9a5c1c51f8"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="7960a7bd-aa52-4d3d-8798-ee8036caba77"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="13c85266-668b-4739-b924-950683628d85"
->d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; FLOIComparedDistance ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
- Guid="6ec66168-2c16-4b1f-9a3e-efb6cdd7af1c"
->FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= TargetSupervision.d_FLOI ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="420ba468-44ec-45c0-8c9b-1540bc794370"
->Supervision &lt;- SupervisionStatus.Warning</Action><Action
- Guid="0f4026fe-ef7e-4265-84ef-06b47b92108b"
->TCOSpecified &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t8"
- Guid="68a9792e-2c34-457f-b05b-0e651574de88"
->
-<ReqRef
- Id="d916181f-d7a1-4043-9617-e814b97ae7b4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="57692308-60e5-414a-b578-d4e4bcc2f628"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="49687b67-8c5d-45cc-8bc0-9731b5b58f27"
->Supervision != SupervisionStatus.Warning</PreCondition><PreCondition
- Guid="eea23e66-d124-48b5-bdc9-6723dca2bb1a"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="e4c99a45-65ec-4585-95de-683bfd06fc32"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="bedb0b95-76c5-450c-8d99-e36eae71a2e9"
->FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="39a30a21-6f5e-484a-8db6-0d9134e53e25"
->Supervision &lt;- SupervisionStatus.Warning</Action><Action
- Guid="f1b68ce1-16fb-4124-9350-5d72c08bab65"
->TCOSpecified &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t7"
- Guid="4bb1c37b-2442-46b7-93d5-8301901cdb82"
->
-<ReqRef
- Id="d394cede-dff2-4764-b72a-288ee8d5617c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1cf3bb60-2074-48e9-a600-aab1aea772bc"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="fe6ca164-f3e8-407b-b9e8-5f535dbdb259"
->Supervision != SupervisionStatus.Warning</PreCondition><PreCondition
- Guid="c592c5c5-77b7-4efd-a378-4a924352da51"
->MRDT().Speed + CeilingSupervision.dV_warning ( MRDT().Speed ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="b500a741-0746-4a18-9ae0-1e85ef4271a1"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="39d15eb8-2682-4398-b90f-e09db7a20150"
->FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; d_W ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="a2466139-4a3c-4574-98cb-26591a56114f"
->Supervision &lt;- SupervisionStatus.Warning</Action><Action
- Guid="3017fa41-c24f-4afe-ba97-d79fcdb85e00"
->TCOSpecified &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t6"
- Guid="e6253ac2-8871-4b56-8e0d-c38de81999b7"
->
-<ReqRef
- Id="ac2002ec-cc04-4e25-8344-d90765ce4d29"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="32d802ed-9f99-4c56-a459-77ccb6f45e4b"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="27958052-efc1-4268-95a4-d66bbb1d6bf4"
->Supervision != SupervisionStatus.Overspeed</PreCondition><PreCondition
- Guid="9632ac61-4042-4456-8880-959d2578e443"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="413c079d-224c-4d95-8004-146c1419a9d8"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="19bb6ad6-bb93-4162-91b8-887f69b2f0c8"
->d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; FLOIComparedDistance ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
- Guid="c4d9e3c3-4232-47e2-9094-a10709e346c4"
->FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_W ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7b77c378-47f6-45b5-85a5-fa5f03393863"
->Supervision &lt;- SupervisionStatus.Overspeed</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t5"
- Guid="86f184bb-bca0-41c2-aedf-f353f531b395"
->
-<ReqRef
- Id="366c7bc8-9a83-43fb-b4e8-f41812946c97"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="38fb914e-d603-4d29-94b3-4e6a4e90d91d"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="7f3594f9-bf9a-46d1-93f6-471444e639fc"
->Supervision != SupervisionStatus.Overspeed</PreCondition><PreCondition
- Guid="a0662bd2-d674-48b2-a779-e47c84d847d9"
->FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_W ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
- Guid="23ac3f1b-42d8-4f5e-a3c5-678b0265e2ab"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="79d1c420-2608-4faa-a10d-461c0d543deb"
->FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="9afdcb59-ff06-473b-bf67-3aa17483b7dc"
->Supervision &lt;- SupervisionStatus.Overspeed</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t4"
- Guid="a806bee5-3064-4eed-9908-4c6232f4a3fd"
->
-<ReqRef
- Id="81b045fa-67f4-4abe-9d72-380cb0687a1d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b0ad8f80-14a2-4248-97ba-268c502023f5"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="5f52e663-5409-49b4-a7b4-4808006503f4"
->Supervision != SupervisionStatus.Overspeed</PreCondition><PreCondition
- Guid="0f1b6b31-a810-45c1-9216-78ca3ae96ddd"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition><PreCondition
- Guid="0ed05306-8475-4f3f-acea-a2d6579df2ae"
->FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; d_P ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
- Guid="792c9f4e-dec9-43d5-ad6d-038c3737a93f"
->MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="5b75c2de-0a03-4156-954a-a43169a452fd"
->Supervision &lt;- SupervisionStatus.Overspeed</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t3"
- Guid="63cb73fb-cbe3-42cc-8354-fd9b36a5750a"
->
-<ReqRef
- Id="fda34875-06ef-46a2-b272-8fdf00368ad5"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a0efb810-d1e9-4069-bd78-961dc0d6a172"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="897246a6-f676-4b64-806e-842f71fe5687"
->Supervision != SupervisionStatus.Indication</PreCondition><PreCondition
- Guid="f6c2ba45-7ec0-4824-baf0-f4ea6619575a"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition><PreCondition
- Guid="f7fc0c37-82b4-4ec6-ac20-288a66574987"
->MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="33dc0227-89ad-43e9-a44d-6490c5959c43"
->FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f5c3eb5f-3637-440d-a9f8-e8b104ab2c67"
->Supervision &lt;- SupervisionStatus.Indication</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t2"
- Guid="be939158-d7e9-4fa8-85af-7e3f14e0cb79"
->
-<ReqRef
- Id="235a2d43-f1f5-49b1-8517-1f6b17a29a4c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8d354fb7-b010-4dd3-b911-1c0c6da80616"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="290778ee-0b52-462f-9330-18f3cfc098c1"
->Supervision != SupervisionStatus.Normal</PreCondition><PreCondition
- Guid="7fabec05-34a0-4a41-99b1-d86203cd8292"
->MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="2d9bb92d-b2a1-4dfb-b458-cc00f9395f09"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition><PreCondition
- Guid="522edb9f-b6a7-4746-a2bb-beb31e76cec5"
->FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="dee54ca0-aa73-44b5-b9dc-ca095e4bba9e"
->Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t1"
- Guid="c4cd0b49-55ce-42ec-9ced-71ee7115c964"
->
-<ReqRef
- Id="c9726f4e-f5b9-4cb2-8c10-be51cb610a07"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="503396cd-748b-4343-8d23-6d73e0bc2bf3"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="b0ac274a-4882-45e8-aed3-666e8d073ad0"
->Supervision != SupervisionStatus.Normal</PreCondition><PreCondition
- Guid="5094c3fb-81d8-42bf-8394-8fb6ea048e1d"
->Odometry.EstimatedSpeed &lt;= MRDT().Speed</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="c6b49d0d-967e-4207-bdc5-c3a7c252a213"
->Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+ Guid="c4cbc13a-fb71-46ad-8f19-6ab36ca9d6cf"
+><Comment></Comment>
+DetermineSupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

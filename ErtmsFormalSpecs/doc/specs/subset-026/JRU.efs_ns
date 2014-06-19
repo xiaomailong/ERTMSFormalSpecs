@@ -49,7 +49,8 @@
 <PreConditions>
 <PreCondition
  Guid="c7be3f63-444c-4d7c-8b71-dd667a30c684"
->SendNewMessage(THIS) == True</PreCondition></PreConditions>
+><Comment></Comment>
+SendNewMessage(THIS) == True</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ceacc66c-5e57-4024-81f9-daf7d248fcdf"
@@ -939,15 +940,20 @@ ADDITIONAL_BRAKE_STATUS =&gt; CreateJruAditionalBrakeStatusMessage()
 <PreConditions>
 <PreCondition
  Guid="b68fe90d-3f7f-4f71-be23-059f5f67cf38"
->SendSpeedAndDistanceMonitoringInformationMessage(THIS)</PreCondition><PreCondition
- Guid="24051cc8-c099-4d23-ab52-61960bf5bf51"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</PreCondition></PreConditions>
+><Comment></Comment>
+SendSpeedAndDistanceMonitoringInformationMessage(THIS)</PreCondition><PreCondition
+ Guid="bd5ee00b-aacc-49ba-9111-eb883e795db7"
+><Comment></Comment>
+Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e0adc517-5b2f-4309-ab4b-821bd1fbaf57"
->INSERT Messages.JRU.MESSAGE.Message{
+><Comment></Comment>
+INSERT Messages.JRU.MESSAGE.Message{
 SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitoringInformationMessage()
-}IN JRUMessages</Action></Actions>
+}IN JRUMessages</Action><Action
+ Guid="1e73cc9f-11c6-4599-a75a-6acda1ef7430"
+>SpeedAndDistanceSupervisionTypeChanged &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -977,7 +983,8 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitor
 <Actions>
 <Action
  Guid="95a5ddb2-ef62-4681-a427-9aa9b06202c7"
->InitializeMessage()</Action></Actions>
+><Comment></Comment>
+InitializeMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1004,8 +1011,6 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitor
 >PreviousAdditionalBrakeStatus &lt;- TIU.AdditionalBrakesActive</Action><Action
  Guid="e147e5df-e42d-47f4-b4b4-bfe04454a4d4"
 >PreviousSpeedAndDistanceSuppervisionStatus &lt;- Kernel.SupervisionStatus</Action><Action
- Guid="97c2a87c-d97d-488f-b296-648397ba8beb"
->PreviousSpeedAndDistanceSuppervisionType &lt;- Kernel.SpeedAndDistanceMonitoring.Monitoring</Action><Action
  Guid="58633a81-4072-494e-a17d-19e34b04acc0"
 >PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><Action
  Guid="d461f9a5-7f7b-482b-8ffa-2ca4aed6d474"
@@ -1061,10 +1066,13 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitor
  Name="Update FLOI"
  Guid="1daf6c7f-b2f7-473b-9358-cd415058af78"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f5d3dccb-474d-4877-afbc-cf2657785d82"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition><PreCondition
+ Guid="136dc8f7-706e-49f4-a35c-cc7fca27d68a"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9bc80e3a-1a1a-429f-98aa-42c1d4d761ce"
@@ -1431,11 +1439,11 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitor
 >
 </ReqRef><Comment>Will store the previous additional brakes status</Comment>
 </StructureElement><StructureElement
- TypeName="Kernel.SpeedAndDistanceMonitoring.MonitoringType"
- Default=""
+ TypeName="Boolean"
+ Default="False"
  Mode="Internal"
  Implemented="TRUE"
- Name="PreviousSpeedAndDistanceSuppervisionType"
+ Name="SpeedAndDistanceSupervisionTypeChanged"
  Guid="f00ad418-1a9b-42a0-b5e5-f6a9aee1682c"
 >
 <ReqRef
@@ -1448,6 +1456,7 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitor
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="e94d2665-1917-4943-b0ed-1c591f8a9aa1"
 >
+<Comment></Comment>
 </ReqRef><Comment>Will store the previous value of the M_SDMTYPE variable</Comment>
 </StructureElement><StructureElement
  TypeName="Kernel.SupervisionStatus"
@@ -2039,7 +2048,7 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateJruSpeedAndDistanceMonitor
 <Expression>Messages.M_MODE.Trip</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Speed"
+ Type="Default.MessageTypes.Speed"
  Default=""
  X="440"
  Y="180"
@@ -2333,7 +2342,7 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
 </ReqRef><Comment>Function which will determine if a NEW JRU Message has to be sent</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="307e6f9a-ff0e-4cb8-a2dc-7b2db6e82560"
 >
@@ -2343,10 +2352,12 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  Name="SendMessage"
  Guid="367b9bad-5565-4488-957d-849ab291e91d"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e932afe8-ba36-4cdd-b2b8-0c4a04bebf4e"
->LevelChanged(jru)
+><Comment></Comment>
+LevelChanged(jru)
   OR
 SendMessagePeriodically(jru)
   OR
@@ -2426,7 +2437,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
 </ReqRef><Comment>Function to determine if the ERTMS Level has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="dede4b41-b990-42a8-9715-bbf29e7e4738"
 >
@@ -2467,7 +2478,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
 </ReqRef><Comment>Function which will determine if it is necessary to send a GENERAL JRU Message because the elapsed time is bigger or erqual to the requirement to send a periodical message</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="2d446e40-b2bf-4e62-aeee-36172bdb2531"
 >
@@ -2507,7 +2518,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
 </ReqRef><Comment>Function used to determine if the ERTMS mode has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="3b151fc9-e9f9-45e6-98a8-998d03553361"
 >
@@ -2548,7 +2559,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
 </ReqRef><Comment>Function which will determine if the System Version Changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="f1822896-8721-4b82-ba40-a7581f280652"
 >
@@ -2589,7 +2600,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
 </ReqRef><Comment>Function used to determine if the ERTMS Level has changed to NTC Level</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="68986f7f-2b6f-4a67-9b00-60b0d926ced5"
 >
@@ -2644,7 +2655,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
 </ReqRef><Comment>Function which will determine if a new GENERAL_MESSAGE has to be sent</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="a40e8cf7-f7e5-4d01-9517-815de8ba6103"
 >
@@ -3333,7 +3344,7 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
 </ReqRef><Comment>Function used to determine if the EB Status has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="81bbba4c-bf2d-4a39-985a-7898f03d2993"
 >
@@ -3443,7 +3454,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruEBCommanded()
 </ReqRef><Comment>Function which determines if the train data have changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="796d6185-28cf-4d6e-a71b-3d8ada5dd733"
 >
@@ -3491,7 +3502,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruEBCommanded()
 </ReqRef><Comment>Function which will determine if it is necessary to send a new TRAIN_DATA JRU Message</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="b98284df-8f57-4c6e-9d7f-974ba1764b75"
 >
@@ -3568,7 +3579,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 </ReqRef><Comment>Function which will determine if the SB Status has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU"
+ Type="JRU.JRU"
  Name="jru"
  Guid="093a10c6-0bfc-4bb9-93a3-3d6c32f0eb78"
 >
@@ -3757,7 +3768,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 <Expression>Messages.JRU.Q_DIRLRBG.Uknown</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Length"
+ Type="Default.MessageTypes.Length"
  Default=""
  X="770"
  Y="360"
@@ -3784,7 +3795,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 <Expression>MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER), Q_SCALE)</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Length"
+ Type="Default.MessageTypes.Length"
  Default=""
  X="880"
  Y="360"
@@ -3811,7 +3822,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 <Expression>MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER), Q_SCALE)</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Distance"
+ Type="Default.MessageTypes.Distance"
  Default=""
  X="990"
  Y="360"
@@ -6314,10 +6325,12 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
  Name="CSM"
  Guid="a60d076f-ce4a-4a1e-a276-1e3e7fc211b6"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1a616611-6e7d-4a54-ab2e-cc083381415a"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Ceiling</PreCondition></PreConditions>
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling.Start, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling.MonitoringCeilingSpeed]</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Ceiling_speed_monitoring__CSM</Expression>
 </Case><Case
  Name="TSM"
@@ -6326,7 +6339,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="915ead74-5b53-434c-8c19-72d423b31cf2"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target.TSM</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Target_speed_monitoring__TSM</Expression>
 </Case><Case
  Name="RSM"
@@ -6335,12 +6348,19 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="79088302-a61b-4499-9717-0db5a3e9ca11"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.ReleaseSpeed</PreCondition></PreConditions>
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed.Start, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed.MonitoringReleaseSpeed]</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Release_speed_monitoring_RSM</Expression>
 </Case><Case
  Name="PIM"
  Guid="06dabf03-731f-4ff7-a9c9-cbddddbaa6e3"
 >
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="a1bb5c9b-1fcd-446f-91ad-9562b156355f"
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target.PIM, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target.Start]</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Pre_indication_monitoring__PIM</Expression>
 </Case></Cases>
 </Function><Function
@@ -6375,6 +6395,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
  Name="Value"
  Guid="393b633c-2c88-4500-8f99-25bf3690af5e"
 >
+<Comment></Comment>
 <Expression>Messages.JRU.MESSAGE.SPEED_AND_DISTANCE_MONITORING_INFORMATION.Message{
     HEADER =&gt; CreateHeader(20),
 M_SDMTYPE =&gt; ToJruSpeedAndDistanceMonitoringType(),
@@ -6390,7 +6411,7 @@ V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Speed"
+ Type="Default.MessageTypes.Speed"
  Default=""
  X="660"
  Y="720"
@@ -6426,7 +6447,7 @@ V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
 <Expression>0</Expression>
 </Case></Cases>
 </Function><Function
- Type="MessageTypes.Distance"
+ Type="Default.MessageTypes.Distance"
  Default=""
  X="770"
  Y="720"
@@ -6492,7 +6513,8 @@ V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
 <PreConditions>
 <PreCondition
  Guid="cf7bc0f9-44ef-4ed0-8243-19b3e15e0791"
->jru.PreviousSpeedAndDistanceSuppervisionType != Kernel.SpeedAndDistanceMonitoring.Monitoring</PreCondition></PreConditions>
+><Comment></Comment>
+jru.SpeedAndDistanceSupervisionTypeChanged</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="MonitoringSupervisionStatusChanged"
@@ -6519,7 +6541,7 @@ V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
 <PreConditions>
 <PreCondition
  Guid="13358226-042e-4eb7-a8e9-c752639ee537"
->Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target
   AND
 jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</PreCondition></PreConditions>
 <Expression>True</Expression>

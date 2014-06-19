@@ -17,6 +17,7 @@
  Name="Braking to target supervision limits"
  Guid="7de2c6f2-ec7d-4d62-a185-1164cc216098"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -1958,7 +1959,8 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2 (
 <Actions>
 <Action
  Guid="fdc09a54-bd21-4427-b882-c5ed64d35e41"
->Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+><Comment></Comment>
+Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 14.0,
     D_ora =&gt; 12.0,
@@ -1967,9 +1969,12 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2 (
 }</Action><Action
  Guid="f93ad38c-595c-4af4-a3ef-08a21627dc3b"
 >INSERT 
-BTM.Linking.LinkingData
-{
-    LocationAccuracy =&gt; 1.0
+BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 1.0,
+    Orientation =&gt; Default.Orientation.Unknown,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 2200.0,
+    BaliseGroupIdentifier =&gt; 0
 }
 IN
     BTM.Linking.Linkings</Action><Action
@@ -2344,7 +2349,19 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P  ( 25.0 ) &lt; 6603.3684
 IN
     Kernel.TSR.TSRs</Action><Action
  Guid="de41502f-19bc-4fe3-b923-13f2fe064ac7"
->Odometry.NominalDistance &lt;- 1000.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 1000.0</Action><Action
+ Guid="800487fe-830a-438c-a852-2595fce5f9c8"
+>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    Position =&gt; BTM.Position
+    {
+        Position =&gt; 0.0,
+        UnderReadingAmountOdo =&gt; 6.0,
+        OverReadingAmountOdo =&gt; 2.0
+    },
+    NID =&gt; 1515,
+    Orientation =&gt; Orientation.Nominal
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2366,16 +2383,16 @@ IN
  Guid="ed9b1cfa-077b-4f0a-9044-35c3602273dd"
 >Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ) == 1011.0</Expectation><Expectation
  Kind="Instantaneous"
- Guid="8432bdd2-927f-4b0f-9c22-e4a5267d55c0"
->Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 100.0, Vtarget =&gt; 20.0 ) &gt; 59.6312 AND
-Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 100.0, Vtarget =&gt; 20.0 ) &lt; 59.6313</Expectation><Expectation
- Kind="Instantaneous"
  Guid="facff254-eb87-4105-9714-8f1b596b286a"
 >Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vbec ( Vest =&gt; 100.0, Vtarget =&gt; 20.0 ) == 103.416</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a870f685-207e-4548-af63-164572f6f9b2"
 >Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EBD_Target ( d_maxsafefront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 20.0, Vest =&gt; 100.0 ) &gt; 26.0216 AND
-Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EBD_Target ( d_maxsafefront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 20.0, Vest =&gt; 100.0 ) &lt; 26.0217</Expectation></Expectations>
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EBD_Target ( d_maxsafefront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 20.0, Vest =&gt; 100.0 ) &lt; 26.0217</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="8432bdd2-927f-4b0f-9c22-e4a5267d55c0"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 100.0, Vtarget =&gt; 20.0 ) &gt; 59.6312 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 100.0, Vtarget =&gt; 20.0 ) &lt; 59.6313</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

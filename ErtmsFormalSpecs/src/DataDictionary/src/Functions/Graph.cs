@@ -1336,13 +1336,14 @@ namespace DataDictionary.Functions
         /// <summary>
         /// Provides the first X coordinate where the Y corresponds to the parameter.
         /// In other words, we need to find the first x for which f(x) = y where 
-        ///   f(x) = sqtr ( v0*v0 - 2 a2 * ( d0 - x ) )
+        ///   f(x) = sqtr ( v0^2 - 2a ( d0 - x ) )
         /// </summary>
         /// <param name="Y">The y for which the x must be found</param>
-        /// <returns></returns>
+        /// <returns>double.MaxValue if no solution is found</returns>
         public double SolutionX(double Y)
         {
             double retVal = double.MaxValue;
+
             double upY = double.MaxValue;
             double downY = double.MinValue;
             double upX = 0;
@@ -1378,12 +1379,6 @@ namespace DataDictionary.Functions
                     retVal = segment.IntersectsAt(Y);
                     break;
                 }
-            }
-
-            if (retVal == double.MaxValue)
-            {
-                // TODO : check and activate
-                throw new Exception("Impossible to compute the solution X for the graph");
             }
 
             return retVal;

@@ -210,11 +210,21 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
+        /// The cached function for this call
+        /// </summary>
+        public Function CachedFunction = null;
+
+        /// <summary>
         /// The function which is called by this call statement
         /// </summary>
         public Functions.Function getFunction(InterpretationContext context)
         {
-            Functions.Function retVal = getCalled(context) as Functions.Function;
+            Functions.Function retVal = CachedFunction;
+
+            if (retVal == null)
+            {
+                retVal = getCalled(context) as Functions.Function;
+            }
 
             return retVal;
         }
@@ -422,7 +432,8 @@ namespace DataDictionary.Interpreter
 
                     if (explain)
                     {
-                        CompleteExplanation(previous, function.Name + " ( " + ParameterValues(parameterValues) + " ) returned " + explainNamable(retVal) + "\n");
+                        AddParameterValuesToExplanation(parameterValues);
+                        CompleteExplanation(previous, function.Name + " (...) returned ", retVal);
                     }
                 }
             }
@@ -432,6 +443,25 @@ namespace DataDictionary.Interpreter
             }
 
             return retVal;
+        }
+
+        /// <summary>
+        /// Provides the parameter's values along with their name
+        /// </summary>
+        /// <param name="parameterValues"></param>
+        /// <returns></returns>
+        private void AddParameterValuesToExplanation(Dictionary<Variables.Actual, Values.IValue> parameterValues)
+        {
+            if (EFSSystem.Runner == null || EFSSystem.Runner.Explain)
+            {
+                if (currentExplanation != null && parameterValues != null)
+                {
+                    foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in parameterValues)
+                    {
+                        currentExplanation.SubExplanations.Add(new ExplanationPart(pair.Key.Parameter, pair.Key.Parameter.Name, pair.Value));
+                    }
+                }
+            }
         }
 
         /// <summary>
