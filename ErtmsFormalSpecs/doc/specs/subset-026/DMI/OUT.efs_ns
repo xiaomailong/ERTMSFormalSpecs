@@ -21,7 +21,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3d3b6924-5b69-486d-9c56-98f398c941fd"
 >
-</ReqRef><Rules>
+</ReqRef><Comment></Comment>
+<Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -303,6 +304,7 @@
  Name="Active"
  Guid="be7f82fe-e854-4f80-8ac5-a03cf688bacd"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -577,6 +579,7 @@
  Name="ProcedureOutSM"
  Guid="2162a985-fcf8-4e10-97aa-208ed714d6c5"
 >
+<Comment>The state machine handling the output information.</Comment>
 <States>
 <State
  X="230"
@@ -587,6 +590,7 @@
  Name="NotAvailable"
  Guid="186c5b7b-bfde-4dab-b29b-0b5c70bf6b9d"
 >
+<Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -603,6 +607,7 @@
  Name="InitialState"
  Guid="9811d89e-0929-410a-bfa4-a121f989fa71"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -616,6 +621,7 @@
  Name="UpdateVariables"
  Guid="6e31b949-73bf-42c7-ab9e-cf85abea9d1c"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -643,6 +649,7 @@
  Name="Idle"
  Guid="071218de-0e45-49a8-aef4-1cccd7b533c2"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -658,6 +665,7 @@
  Name="NationalSystemAvailability"
  Guid="47b5dce0-ec0e-4f1b-b614-7344661754ba"
 >
+<Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -674,6 +682,7 @@
  Name="InitialState"
  Guid="9acb7541-0df2-4d9d-8a54-9c99030f9f6d"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -687,6 +696,7 @@
  Name="UpdateVariables"
  Guid="2b1b776b-9680-4a5c-ae8e-af03e16e8b29"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -714,6 +724,7 @@
  Name="Idle"
  Guid="5811ba03-6e8e-484e-bfd4-67ffc123fe9b"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -729,6 +740,7 @@
  Name="NotApplicable"
  Guid="130b16ae-ab06-4b26-8e9c-c9d28b0354cb"
 >
+<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -745,6 +757,7 @@
  Name="InitialState"
  Guid="748f03e3-33c9-4fe6-a4eb-5353c6973d37"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -758,6 +771,7 @@
  Name="UpdateVariables"
  Guid="2314ee0d-bfb6-4ccd-bfc3-94fbbccf76f0"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -785,6 +799,7 @@
  Name="Idle"
  Guid="a976635b-858c-4889-b7d4-b7bdd23c6234"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -800,6 +815,7 @@
  Name="Active"
  Guid="d162bbc5-36d3-4b25-a671-47167d57b5f4"
 >
+<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -816,6 +832,7 @@
  Name="InitialState"
  Guid="4e59882f-b33c-4f10-a170-e676b7fac915"
 >
+<Comment>Initial state: the display is requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -829,6 +846,7 @@
  Name="UpdateVariables"
  Guid="609e8bcc-e446-4186-9b7d-86def269f3be"
 >
+<Comment>Display is requested.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -856,6 +874,7 @@
  Name="Send"
  Guid="38b9674f-1276-45bc-91e2-91e68ff428e5"
 >
+<Comment>Nothing to do, the display is always requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -871,6 +890,7 @@
  Name="Available"
  Guid="847917e6-0bd2-491f-8e2d-b17a9bc701b5"
 >
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -887,6 +907,7 @@
  Name="Idle"
  Guid="3e273d70-3f8d-441b-8c15-34bc7ae13f30"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -900,6 +921,7 @@
  Name="RequestActivated"
  Guid="9623bcad-9c56-40b7-b5bc-f82fd1b91046"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -931,6 +953,7 @@
  Name="Send"
  Guid="cbd18ba6-23f1-4531-9340-c5be8c81622c"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -944,6 +967,7 @@
  Name="DisableRequestActivated"
  Guid="4f5c9f07-7285-48bf-a3af-8b55d1f83684"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -983,7 +1007,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="31e3a095-1dcc-4457-9a91-c12e8d6f9597"
 >
-</ReqRef><Rules>
+</ReqRef><Comment></Comment>
+<Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -1265,6 +1290,7 @@
  Name="Active"
  Guid="163aafcc-355b-4feb-bd83-a5b6d78c155b"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -1751,6 +1777,7 @@
  Name="Active"
  Guid="2b4b4d46-3f32-4397-a5bc-7ad7ee78ef1e"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -1940,7 +1967,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="58ad1909-3f6a-4674-82b3-ba72cb307bd6"
 >
-</ReqRef><Rules>
+</ReqRef><Comment></Comment>
+<Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -2000,6 +2028,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="ProcedureOutSM"
  Guid="c165db7b-4b47-411c-bde0-3506e1d626b3"
 >
+<Comment>The state machine handling the output information.</Comment>
 <States>
 <State
  X="230"
@@ -2010,6 +2039,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="NotAvailable"
  Guid="2e47fec0-e8d0-4f1a-bac4-b4e603f74499"
 >
+<Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -2026,6 +2056,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="InitialState"
  Guid="abeb9a7c-fe02-47fa-b387-dea3bd34cbe0"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2039,6 +2070,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="UpdateVariables"
  Guid="202c2c38-7cba-4654-8bdb-0d089108e7c4"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2066,6 +2098,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Idle"
  Guid="dfc67e13-85e7-4a28-a979-73e094638ffe"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2081,6 +2114,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="NationalSystemAvailability"
  Guid="4f253adb-d124-4403-8a79-88a95eb6e498"
 >
+<Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -2097,6 +2131,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="InitialState"
  Guid="bd8c8549-7eb0-4c06-9cab-0ae6de817868"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2110,6 +2145,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="UpdateVariables"
  Guid="178ca535-d983-440e-a910-81fada24433a"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2137,6 +2173,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Idle"
  Guid="7b416f50-c149-4895-a3f8-0c88078a0a68"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2152,6 +2189,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="NotApplicable"
  Guid="3c8294bf-8cf8-4bce-ad64-163857e8f85a"
 >
+<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -2168,6 +2206,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="InitialState"
  Guid="9264c88f-d081-4ea7-8768-1395a6450d92"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2181,6 +2220,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="UpdateVariables"
  Guid="6b4fcc70-a58b-4d70-a38c-941e1d4aedee"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2208,6 +2248,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Idle"
  Guid="5fa901a7-9a1f-4fbc-bb96-ae5299f171a2"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2223,6 +2264,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Active"
  Guid="7d67205f-19fe-497d-ae0c-0a2b5a69ac84"
 >
+<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -2239,6 +2281,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="InitialState"
  Guid="f3c2fc3e-0d18-4f70-865b-badfa47b796f"
 >
+<Comment>Initial state: the display is requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2252,6 +2295,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="UpdateVariables"
  Guid="a27d23d2-a277-47a0-ac42-356dc00212a1"
 >
+<Comment>Display is requested.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2279,6 +2323,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Send"
  Guid="c1d01984-f509-463e-90ed-1eb059d24e4c"
 >
+<Comment>Nothing to do, the display is always requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2294,6 +2339,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Available"
  Guid="e624ab71-f273-4c81-9c50-aa8db89faaf1"
 >
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -2310,6 +2356,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Idle"
  Guid="cd851094-1ce0-4f7d-bbc9-4cfb2fbfa41a"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2323,6 +2370,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="RequestActivated"
  Guid="9a4c2346-98ed-436a-804b-735d56a74edf"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2354,6 +2402,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Send"
  Guid="d7a84ff0-8175-4764-b7f5-9fb30296ef55"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2367,6 +2416,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="DisableRequestActivated"
  Guid="f995ba7a-e704-4ec5-992c-557d89b52302"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2466,6 +2516,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="ProcedureOutSM"
  Guid="d2694c20-382c-4d7a-8033-351ae2b11484"
 >
+<Comment>The state machine handling the output information.</Comment>
 <States>
 <State
  X="230"
@@ -2476,6 +2527,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="NotAvailable"
  Guid="9b8a7ff3-d128-4acb-9cd9-b6583339e391"
 >
+<Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -2492,6 +2544,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="InitialState"
  Guid="11e57990-e890-4e49-98c6-269dffad8a68"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2505,6 +2558,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="UpdateVariables"
  Guid="a1bb17e6-8418-49b7-82cd-020bb009df68"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2532,6 +2586,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Idle"
  Guid="f7fc288c-bb0d-491c-b73c-13733f4d86b3"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2547,6 +2602,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="NationalSystemAvailability"
  Guid="adf9db9a-8514-40a5-9fdb-a379d8f292fc"
 >
+<Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -2563,6 +2619,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="InitialState"
  Guid="7d8146ab-fa9b-43db-826c-47318bcb8224"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2576,6 +2633,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="UpdateVariables"
  Guid="d0711bf7-2e05-49b0-85f7-5e28254ae6c3"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2603,6 +2661,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Idle"
  Guid="49cea498-97dc-4cdd-83e7-11f873c7f46c"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2618,6 +2677,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="NotApplicable"
  Guid="da767bcb-2c9c-43c4-9e88-9ab242414bb4"
 >
+<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -2634,6 +2694,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="InitialState"
  Guid="ae12f2d2-846a-4465-a7ef-c63ab890ab5b"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2647,6 +2708,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="UpdateVariables"
  Guid="be34dffd-ad7d-4c9f-82a3-8416282bcb20"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2674,6 +2736,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Idle"
  Guid="93681839-c64f-4c81-84c7-4b6a3e8d1f73"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2689,6 +2752,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Active"
  Guid="15362cb3-01d4-4ef2-a566-1956b0205ae2"
 >
+<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -2705,6 +2769,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="InitialState"
  Guid="d5f9fad3-ad6a-40a3-b141-07129f2a6c25"
 >
+<Comment>Initial state: the display is requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2718,6 +2783,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="UpdateVariables"
  Guid="b686f3db-3ecf-47fd-a94f-30d748a91e3f"
 >
+<Comment>Display is requested.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2745,6 +2811,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Send"
  Guid="d295c34d-4892-4a83-b9a5-22d7297bc896"
 >
+<Comment>Nothing to do, the display is always requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2760,6 +2827,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Available"
  Guid="e5235eb1-8651-457f-9491-0238b4496bbd"
 >
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -2776,6 +2844,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Idle"
  Guid="311e7e66-9e62-46c7-8875-d0e8bfbca25c"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2789,6 +2858,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="RequestActivated"
  Guid="ce98b444-9292-470d-8667-4ed0712c0d43"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2820,6 +2890,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Send"
  Guid="ad41189d-c266-4599-9462-95c1f55c2ce1"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2833,6 +2904,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="DisableRequestActivated"
  Guid="d884f660-cb8e-4892-9a64-042e9e37f900"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3181,6 +3253,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosit
  Name="Active"
  Guid="ae36224e-6127-456a-a58a-3aa192afb87a"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -3430,7 +3503,9 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosit
 <PreCondition
  Guid="cfab63ee-7d53-4866-889d-af9c47e77295"
 ><Comment></Comment>
-ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition></PreConditions>
+ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition><PreCondition
+ Guid="718632bd-e801-4c45-95f0-2a3479af5bb4"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c312fe49-c752-4ce5-8361-a09bc8d7ecab"
@@ -4164,6 +4239,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="dc0135b6-8cd0-47bb-8c49-73a0620a3a51"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -4347,7 +4423,13 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f1ddbc36-6e02-4d5a-876a-f8070dc2e78d"
 >
-</ReqRef><Rules>
+</ReqRef><ReqRef
+ Id="01d5b677-947b-41a3-b122-755926f72f02"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3c10da92-8a32-49ac-8a1e-e4ba2c9ef806"
+>
+</ReqRef><Comment></Comment>
+<Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -4856,6 +4938,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOutSM"
  Guid="576253f9-d9d5-4995-aec7-ced3c28b81f1"
 >
+<Comment>The state machine handling the output information.</Comment>
 <States>
 <State
  X="230"
@@ -4866,6 +4949,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotAvailable"
  Guid="4a31a866-4879-44d2-9127-d251cf0e6b39"
 >
+<Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -4882,6 +4966,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="afdea1f9-eb31-4db0-a2fb-595f0a965669"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -4895,6 +4980,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="c7cb53c8-a62a-4b16-8a8e-f0860d68843d"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4922,6 +5008,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="fc54ab71-7d05-4740-8855-27b523a63d0c"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -4937,6 +5024,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NationalSystemAvailability"
  Guid="f12ac2cc-43f0-4bf2-b089-7debac364633"
 >
+<Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -4953,6 +5041,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="4f4302d3-46c6-4b01-9924-9e0b9aebddb8"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -4966,6 +5055,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="b84c2398-5c76-405e-abea-9b08443fee27"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4993,6 +5083,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="9a833b66-8c7c-4525-be19-5fc5079f553b"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -5008,6 +5099,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotApplicable"
  Guid="02e9de55-b837-47b0-bd67-2c6de4ec9731"
 >
+<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -5024,6 +5116,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="51e87443-56cf-4836-a5c7-ab8cba124450"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -5037,6 +5130,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="5bedc688-a444-45f5-89ea-f2e4c7a6e78e"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5064,6 +5158,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="3eec54a4-2c61-4a77-b70c-acf9009a2c0e"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -5079,6 +5174,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="1834c0d5-96ba-4f95-8f10-72f59c453618"
 >
+<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -5095,6 +5191,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="2fef6e07-e8f3-4a5e-a70a-52c6d1716d7e"
 >
+<Comment>Initial state: the display is requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -5108,6 +5205,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="c0ba55c4-7cb9-430f-9458-5cb27db0c269"
 >
+<Comment>Display is requested.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5135,6 +5233,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="cbaabddf-a8d7-4b35-af94-076cf907dd2e"
 >
+<Comment>Nothing to do, the display is always requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -5150,6 +5249,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Available"
  Guid="c5af7236-e8b8-47d2-8545-bcd08d7923a6"
 >
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -5166,6 +5266,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="1ab0adbd-cf5a-4fb0-b4d1-a5fbb7d5aa8b"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -5179,6 +5280,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="RequestActivated"
  Guid="dbebe1cf-c8d2-4ad8-aaf7-7ceca9ab29da"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5210,6 +5312,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="eee015fe-0dea-48b7-bffc-25df15a7ae64"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -5223,6 +5326,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="DisableRequestActivated"
  Guid="8120e139-cf7d-4e18-9b55-26968f571717"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5510,6 +5614,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="c98b7261-9b29-418e-8736-4c4ae5839d1d"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -5718,6 +5823,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOutSM"
  Guid="0975e72b-b69c-41ff-b8a2-880bb7a9c910"
 >
+<Comment></Comment>
 <States>
 <State
  X="230"
@@ -5941,6 +6047,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="1a84f84b-e1b9-49f9-b786-a16048036190"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -6372,6 +6479,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="a3962c0b-a7bb-4873-bbab-1e7c813f1642"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -6803,6 +6911,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="3136ca43-3cb3-4d09-aa2a-fcf2217e9769"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -7006,7 +7115,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 >
 </StructureElement><StateMachines>
 <StateMachine
- Default="NotAvailable"
+ Default="ProcedureOutSM.NotAvailable"
  Implemented="TRUE"
  Name="ProcedureOutSM"
  Guid="69900d4b-d093-4edd-b5b8-63c06a51fbe5"
@@ -7022,7 +7131,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="3328bd05-6cdd-4c2f-8ffc-864e9124f747"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NotAvailable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="f614d6e8-612a-4250-a01f-0d436af13a54"
@@ -7063,7 +7172,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <Actions>
 <Action
  Guid="29079d80-fc31-470b-bb8c-3dd0af170fbe"
->THIS &lt;- NotAvailable.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NotAvailable.Idle</Action><Action
  Guid="befdaf3b-117d-4483-9ca5-b7bddccd13d9"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -7093,7 +7202,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="872b0ddb-b90e-43e6-8a58-52e61c8f4b97"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NationalSystemAvailability.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="e2ead258-1874-4549-8fe1-9593725844c1"
@@ -7134,7 +7243,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <Actions>
 <Action
  Guid="1649b631-cae1-49de-afae-aa9d0612358b"
->THIS &lt;- NationalSystemAvailability.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NationalSystemAvailability.Idle</Action><Action
  Guid="04e47b64-da53-4f59-8e5c-f63dd1910fcf"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -7164,7 +7273,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="a50c0fcb-e6d7-4545-a874-bc4efef0946f"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NotApplicable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="1d7ceae6-d7fe-4ef8-893d-5ba674bd81c2"
@@ -7205,7 +7314,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <Actions>
 <Action
  Guid="5a19e8b9-b614-4b7a-b0c0-24551cc3320a"
->THIS &lt;- NotApplicable.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NotApplicable.Idle</Action><Action
  Guid="b38352f7-7296-4288-aea5-9ae3c83105d6"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -7235,7 +7344,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="c995a414-e687-4b79-acc6-3baca4acc75b"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.Active.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="7fc9aa2a-95e2-4bf1-a719-6428ca1babc2"
@@ -7276,7 +7385,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <Actions>
 <Action
  Guid="766b67fa-b4f3-4e7d-9ea0-fa1b1e9adfa2"
->THIS &lt;- Active.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Active.Send</Action><Action
  Guid="8f3da214-f731-4394-a9d4-bf6ebe72ade3"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
@@ -7306,7 +7415,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="2b9eb1b9-1b1c-4dae-8a45-19a37e34576b"
 >
 <StateMachine
- Default="Idle"
+ Default="ProcedureOutSM.Available.Idle"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="69591013-aa5f-45e4-b1d6-ee8ec7352576"
@@ -7345,15 +7454,15 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <PreConditions>
 <PreCondition
  Guid="52969ac8-3268-4ca6-ba3a-692d97910d3a"
->OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.ShowRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a488552f-2aef-4beb-b711-a8adfb519388"
->THIS &lt;- Available.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Send</Action><Action
  Guid="9dc4c68a-35fd-4542-a7fc-6d01fff01f07"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
  Guid="f43e7f96-6b0f-48b3-ae7e-d764b6b2be98"
->OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7389,15 +7498,15 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <PreConditions>
 <PreCondition
  Guid="fb124d7f-06f7-4050-bb54-3a336351431e"
->OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.HideRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9678800b-8d6f-4b59-a3fe-011c7662c12c"
->THIS &lt;- Available.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Idle</Action><Action
  Guid="faef8134-e32a-4ae5-9fa0-159a9be70c7b"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
  Guid="baecc250-a98c-4a7c-859e-9f7d863c8dd1"
->OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.HideRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -7442,6 +7551,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOutSM"
  Guid="9b2f9805-93e0-4118-926f-04337d50ec91"
 >
+<Comment>The state machine handling the output information.</Comment>
 <States>
 <State
  X="230"
@@ -7452,6 +7562,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotAvailable"
  Guid="7e5af95b-726f-4217-a24e-d4afb46ca1b9"
 >
+<Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -7468,6 +7579,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="381eb2cf-e4e8-4402-a385-83cc8e766b78"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7481,6 +7593,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="933c89c9-832a-4aa4-99e7-4922ccdde871"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7508,6 +7621,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="a5291d87-86b7-42ec-a6ad-8b18c23a67bd"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7523,6 +7637,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NationalSystemAvailability"
  Guid="97ef2436-e949-4200-8a44-3aaf6420f4d9"
 >
+<Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -7539,6 +7654,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="a0e7c7bc-e2e4-4d04-afdb-becf0085b9c7"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7552,6 +7668,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="1a337a2b-2fd0-44f3-aa91-d1c5d13198d2"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7579,6 +7696,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="3193f59b-ab8c-4119-82bb-5c1f11a7b73e"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7594,6 +7712,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotApplicable"
  Guid="c8cf916f-f23e-4aa0-bdd9-7974773d18fd"
 >
+<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -7610,6 +7729,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="698a708d-2d56-426b-a73a-aa87ef526192"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7623,6 +7743,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="9e8586f9-80ce-4e0c-b6fe-213004f28452"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7650,6 +7771,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="b23f1e04-c354-42b6-81dd-0c48b135086e"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7665,6 +7787,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="0a8f275e-8012-4c69-8173-e9eb3c7a8b1f"
 >
+<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -7681,6 +7804,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="c71f558d-16ee-43bf-8e2c-87167b5dc32e"
 >
+<Comment>Initial state: the display is requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7694,6 +7818,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="176ec7e3-2b5c-4da0-8ff2-346365576af8"
 >
+<Comment>Display is requested.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7721,6 +7846,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="14beaf1f-6cea-4054-99ce-d649bbc173f2"
 >
+<Comment>Nothing to do, the display is always requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7736,6 +7862,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Available"
  Guid="9380bc8b-d0d1-47e7-9d62-d27e93a819d8"
 >
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -7752,6 +7879,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="aa57f7c2-2b8a-447e-89a4-88f0f36e8a32"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7765,6 +7893,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="RequestActivated"
  Guid="f1539c2d-f7c3-4d51-a21c-a1e111fe25cb"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7796,6 +7925,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="78b60f42-b8f3-48cf-9c99-54bd8ab9e45f"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7809,6 +7939,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="DisableRequestActivated"
  Guid="8952983c-21d0-498e-98c0-ec9fd1ab956e"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -8096,6 +8227,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="e93e5d86-70fa-453f-931f-04af241a18b4"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -8526,6 +8658,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="eca230de-779f-460b-b943-93b2f14b23f4"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -8734,6 +8867,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOutSM"
  Guid="4099b007-f359-4979-8457-e39827fb3846"
 >
+<Comment></Comment>
 <States>
 <State
  X="230"
@@ -8957,6 +9091,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="6b055b70-1450-4e4f-a062-dcc5ed68e77e"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -9141,7 +9276,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="aaf79d6c-33e1-4a34-bf73-044a35515109"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment></Comment>
+<StructureElement
  TypeName="OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -10008,7 +10144,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f1a79f31-d740-4203-86e2-3d320b24e047"
 >
-</ReqRef><Rules>
+</ReqRef><Comment>Sends the list of accepted emergency stops to the driver</Comment>
+<Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -10016,6 +10153,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateValue"
  Guid="6ec43584-7fdc-4e7d-bceb-2d951aee4e6a"
 >
+<Comment>Keep the value of EmergencyStops up-to-date, but only if this information can be displayed</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -10043,6 +10181,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="OutputInformation"
  Guid="623777a8-7f2b-4baa-ac86-b56a3c6f0a4f"
 >
+<Comment>Provides the state of the information displayed to the driver</Comment>
 </StructureElement><StructureElement
  TypeName="Kernel.EmergencyStopsCol"
  Default=""
@@ -10052,6 +10191,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="EmergencyStops"
  Guid="ca724184-c941-4f06-b499-89cb16b3a7cd"
 >
+<Comment>The list of accepted emergency stops to be displayed.</Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureOutSM"
  Default=""
@@ -10060,6 +10200,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOut"
  Guid="013949dd-432d-4b2c-b0e8-35d860cc1f97"
 >
+<Comment>State machine handling the availability of information</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -10067,6 +10208,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOutSM"
  Guid="bc59fa40-f8bd-415a-b1c9-b58c2638fad2"
 >
+<Comment>The state machine handling the output information.</Comment>
 <States>
 <State
  X="230"
@@ -10077,6 +10219,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotAvailable"
  Guid="150a735d-3b52-44cd-9254-9c6ded76fd51"
 >
+<Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -10093,6 +10236,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="3dae46ca-d254-4417-aa51-2a188cdd1523"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -10106,6 +10250,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="f52ae364-7738-4aec-8d9d-a37fb9d24f1c"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -10133,6 +10278,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="1de0c740-11e2-4a91-8e02-07637b69f768"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -10148,6 +10294,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NationalSystemAvailability"
  Guid="1eb60449-6364-4d68-8599-ed74f5b7b01c"
 >
+<Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -10164,6 +10311,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="5d40c808-8e17-45b5-afa8-83abcd97fa99"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -10177,6 +10325,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="d6ebd36f-a5eb-44e0-8dba-b9caf3f1b30e"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -10204,6 +10353,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="dfe38bc3-7c78-4af5-93ce-ed2b4801de46"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -10219,6 +10369,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotApplicable"
  Guid="6b32d5dc-0326-4d8b-97bb-8299eaf5f7a5"
 >
+<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -10235,6 +10386,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="e52cb2db-195d-42d6-b62e-662cefb9e719"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -10248,6 +10400,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="0da35191-f933-44ad-bcda-01de49d8bd29"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -10275,6 +10428,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="475c44ba-5242-4a11-848a-facbcdec77f6"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -10290,6 +10444,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="935326f2-878b-4fd9-9b4f-4c535ed8c250"
 >
+<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -10306,6 +10461,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="cb38ca25-2e5c-4f6a-bcb1-51bb2ff87bb9"
 >
+<Comment>Initial state: the display is requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -10319,6 +10475,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="70b8deca-9996-446b-9a3e-a12c2474e79a"
 >
+<Comment>Display is requested.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -10346,6 +10503,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="4fba0089-7498-4e80-b200-1bda23a28838"
 >
+<Comment>Nothing to do, the display is always requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -10361,6 +10519,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Available"
  Guid="d3c1e830-4c76-4110-bc45-c7ff91f629e6"
 >
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -10377,6 +10536,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="ee228e57-dbde-47ce-86be-dc5a4dc454f0"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -10390,6 +10550,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="RequestActivated"
  Guid="402689cf-28ac-49fa-9ddd-df9f7a904cdf"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -10421,6 +10582,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="0df9a9e1-efdc-416b-bb07-d3b14aaa9c51"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -10434,6 +10596,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="DisableRequestActivated"
  Guid="0639bf28-b12f-46d0-a914-81ef530a82cd"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -10721,6 +10884,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="53b0d50d-f923-4e2c-a6e4-2c2c79fc5eab"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -11160,6 +11324,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="8e5e15e2-ae05-4bc5-aa59-e131e8c861eb"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -11231,6 +11396,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Available"
  Guid="bb5462e7-598e-4948-a36e-e58207b94eb8"
 >
+<Comment></Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -11775,7 +11941,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="da9aae09-aa16-4c2f-89ae-eebff6dd652d"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment></Comment>
+<StructureElement
  TypeName="OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -12022,6 +12189,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="19d34546-641f-488b-90cc-371ccb7a657b"
 >
+<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -12093,6 +12261,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Available"
  Guid="44509c84-619d-4ccb-8062-daf8ef54da21"
 >
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -12467,6 +12636,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="f71c2a19-9c15-4b7d-b5a9-2df9c4c38242"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -12898,6 +13068,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="2387e745-de33-4aeb-a1c6-f1369bf6f6d2"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -13106,6 +13277,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOutSM"
  Guid="c5996b1a-33b0-47c3-a413-88b3488f04a4"
 >
+<Comment>The state machine handling the output information.</Comment>
 <States>
 <State
  X="230"
@@ -13116,6 +13288,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotAvailable"
  Guid="801dd0f4-f379-4a1a-91b4-451d639f4247"
 >
+<Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -13132,6 +13305,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="fa555990-7887-41fb-b21b-38937b144e55"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -13145,6 +13319,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="baa6b67b-dca6-40df-9b25-092142cef810"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -13172,6 +13347,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="f1ba5a26-2655-4d10-823b-5b53933e9725"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -13187,6 +13363,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NationalSystemAvailability"
  Guid="5b237565-fe90-45d1-bdad-e349ec8fe689"
 >
+<Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -13203,6 +13380,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="7b02690a-8c99-43ec-9d2e-703c629ce7ca"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -13216,6 +13394,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="4825ad0b-5441-4e98-a6cd-84d294a63082"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -13243,6 +13422,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="ff91d41e-c101-4323-b67f-a0ed9adab66e"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -13258,6 +13438,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotApplicable"
  Guid="745a0a86-d915-4691-a7c1-60a33541e0f0"
 >
+<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -13274,6 +13455,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="39c7565d-bd82-419e-9540-64a3c2e2ac19"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -13287,6 +13469,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="5e3b1072-c4dc-45b2-bf1e-1d5b3ff6b99f"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -13314,6 +13497,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="9f0c7180-e0f3-4aaf-8b62-2b246ca109db"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -13329,6 +13513,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="b7f58abf-4187-499b-bd04-0c5f714c3aee"
 >
+<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -13345,6 +13530,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="614ca5b1-9e78-4d3e-9f9a-e108f298061f"
 >
+<Comment>Initial state: the display is requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -13358,6 +13544,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="633dd3b3-c06c-42b3-babc-b6b8b4093c52"
 >
+<Comment>Display is requested.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -13385,6 +13572,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="d468e609-6c39-4f3c-b478-792ce3cb914c"
 >
+<Comment>Nothing to do, the display is always requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -13400,6 +13588,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Available"
  Guid="dcda73ba-7f2e-4e22-9925-d2a91daed9d0"
 >
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -13416,6 +13605,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="a53a88ae-2e75-4c6f-9d2c-ff188c1bcbed"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -13429,6 +13619,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="RequestActivated"
  Guid="a844ea3f-3b0d-41dc-942f-d02700b0ac8e"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -13460,6 +13651,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="4e993774-a63a-4b91-9a16-e43157a8015f"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -13473,6 +13665,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="DisableRequestActivated"
  Guid="337748f7-519d-4527-8b4a-7ea56cef0257"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -13760,6 +13953,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="dcd48e84-5e08-4078-806e-dbda9a1b55b8"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -14200,6 +14394,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="62ea2e86-0d6b-4d27-907f-db6f63d399e2"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -14631,6 +14826,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="4d63d1a8-b0bf-47a6-91b3-288723aecbae"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -14910,7 +15106,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotAvailable"
  Guid="ed8015e2-b118-43e8-a01e-0600b7b52a6e"
 >
-<Comment>Not available: ih that mode, the output information is not displayed.</Comment>
+<Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -14927,7 +15123,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="8c36e1d1-aef3-45f8-8e9b-b5f017c07e47"
 >
-<Comment>In that state, the information cannot be displayed.</Comment>
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -14941,7 +15137,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="8a395975-9c40-45ad-a302-67c1a4dca29f"
 >
-<Comment>In that state, the information cannot be displayed.</Comment>
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -14969,7 +15165,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="93a141c7-0fa9-48f1-9171-2f24d87167f3"
 >
-<Comment>In that state, the information cannot be displayed.</Comment>
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -15060,7 +15256,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotApplicable"
  Guid="83322188-2e7f-44b1-8f03-41c461d5c46e"
 >
-<Comment>Not applicable: in that state the output information cannot be determined and nothing is displayed.</Comment>
+<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -15077,7 +15273,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="af56c155-e901-4087-8983-d229ccc8a6c3"
 >
-<Comment>In that state, the information cannot be displayed.</Comment>
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -15091,7 +15287,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="cff37f0b-a796-4fa2-a89b-55930ab644ff"
 >
-<Comment>In that state, the information cannot be displayed.</Comment>
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -15119,7 +15315,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="3f200b19-e591-418c-9db1-43ab0009e4d3"
 >
-<Comment>In that state, the information cannot be displayed.</Comment>
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -15135,9 +15331,9 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="f341774b-99d0-48f8-9d99-c7cddacce75e"
 >
-<Comment>Active: in that mode, the output information is always displayed to the driver.</Comment>
+<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.Active.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="cd7e9b1d-def1-4c75-ba9f-476c8c14034a"
@@ -15180,7 +15376,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <Actions>
 <Action
  Guid="db853648-a9ff-4715-a14f-aaa481847e1d"
->THIS &lt;- Active.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Active.Send</Action><Action
  Guid="31372261-a4a8-4d8f-ba4a-b48fb9eabf03"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
@@ -15210,7 +15406,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Available"
  Guid="a2cbf72b-94ad-447b-a61c-44d993fb1882"
 >
-<Comment>Available: in that mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -15610,6 +15806,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="b9f4352f-c48c-431c-88ef-1801e173d2cb"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -15681,6 +15878,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Available"
  Guid="5718d633-f0e0-4045-a4e4-d53f100b2ea5"
 >
+<Comment></Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -16076,6 +16274,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="e1d41fa9-efb1-4c76-90ff-41e1d8b2fb80"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -16259,7 +16458,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="69442ebe-cd66-4fdc-9662-61f56838f6f0"
 >
-</ReqRef><Rules>
+</ReqRef><Comment></Comment>
+<Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -16541,6 +16741,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="a3d63595-870b-4c0e-badc-36f25651e6f2"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -17007,6 +17208,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="26b852f5-8ea0-4694-bef2-4fbb638c069e"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -17473,6 +17675,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="5f58d910-a191-4e93-8d78-c2e6840916b9"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -17657,7 +17860,9 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0d3dbb84-f692-417c-b7df-fc48a29578a4"
 >
-</ReqRef><StructureElement
+<Comment></Comment>
+</ReqRef><Comment>Sends the brake reason to the driver</Comment>
+<StructureElement
  TypeName="OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -17666,6 +17871,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="OutputInformation"
  Guid="37924e38-cfb2-48b2-84f2-f2f138e99384"
 >
+<Comment>Provides the state of the information displayed to the driver</Comment>
 </StructureElement><StructureElement
  TypeName="Kernel.BrakeReason"
  Default=""
@@ -17675,6 +17881,9 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Reason"
  Guid="51587c5f-2f21-499c-af98-2bd9b817b51b"
 >
+<Comment>TODO: Find out what this is supposed to communicate to the DMI
+
+The brake reason.</Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureOutSM"
  Default=""
@@ -17683,6 +17892,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOut"
  Guid="cce75ff7-5b08-4b4a-aad7-36b14ebfcc96"
 >
+<Comment>State machine handling the availability of information</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -17690,6 +17900,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOutSM"
  Guid="a0fa120b-197c-4884-bb98-c70b4e24b727"
 >
+<Comment>The state machine handling the output information.</Comment>
 <States>
 <State
  X="230"
@@ -17700,6 +17911,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotAvailable"
  Guid="8b92f8af-b0ec-45dc-a2a8-d4a4ac5a5dee"
 >
+<Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -17716,6 +17928,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="1172af33-a51c-4ff1-9bcd-9b49af9ae036"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -17729,6 +17942,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="c6a40330-2b34-48d1-b75f-126e89aa8c73"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -17756,6 +17970,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="8e06f83e-2411-49de-aff0-2d2df858d509"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -17771,6 +17986,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NationalSystemAvailability"
  Guid="381e62bf-bbe3-4dff-88b5-a2249e175223"
 >
+<Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -17787,6 +18003,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="26b3f36c-db43-49f3-94a9-553025b693d6"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -17800,6 +18017,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="f1530962-a332-4dca-8de3-0cd634586b33"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -17827,6 +18045,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="01355591-df8e-48ca-a750-fb5118515f64"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -17842,6 +18061,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotApplicable"
  Guid="25a52be2-3b08-42f6-99df-41cd13d5dba4"
 >
+<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -17858,6 +18078,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="39d9dbb0-59ef-4596-b17f-c0c2dbcb3ea7"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -17871,6 +18092,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="67565486-8ad1-46a7-9b55-ff75987b6b1b"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -17898,6 +18120,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="de1a6dd6-514e-4729-b776-c36172413f10"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -17913,6 +18136,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="c5752686-d297-4e8f-9cea-03f4b46e831f"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -17929,6 +18153,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="55363d28-bb03-4e64-af21-b49310df425c"
 >
+<Comment>Initial state: the display is requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -17942,6 +18167,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="6cfbd00b-9fdb-4e38-9885-24e8e0846e22"
 >
+<Comment>Display is requested.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -17969,6 +18195,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="7a2b2f4d-026f-461f-aff9-ffc8599aaeb3"
 >
+<Comment>Nothing to do, the display is always requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -17984,6 +18211,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Available"
  Guid="bc264a80-52df-4117-84bf-e3459f90eb47"
 >
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -18000,6 +18228,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="b39f9eee-eb5a-40e4-a690-d73bf0b0c321"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18013,6 +18242,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="RequestActivated"
  Guid="5bcf33c8-757f-4ec8-a88e-d3eb50cc65ee"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -18044,6 +18274,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="d9548dca-23b2-4c18-8a6d-82190ebc6c63"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18057,6 +18288,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="DisableRequestActivated"
  Guid="aba4db02-1d38-4388-8d71-601c58488e5c"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -18121,6 +18353,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOutSM"
  Guid="6c140833-e91a-4042-8101-3bfd13b96baa"
 >
+<Comment>The state machine handling the output information.</Comment>
 <States>
 <State
  X="230"
@@ -18131,6 +18364,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotAvailable"
  Guid="8a8f0849-6def-4f0d-9cdd-fcdd4467211e"
 >
+<Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -18147,6 +18381,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="6ace3579-97fd-4f80-bc08-83fd391b6324"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18160,6 +18395,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="52ab8485-3e70-4c66-bcbf-ce359f18f6d1"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -18187,6 +18423,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="34ee3883-a371-4814-a1a3-0028af558e6a"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18202,6 +18439,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NationalSystemAvailability"
  Guid="bfc6ed7c-ebbc-4c10-871c-fe444acbaa53"
 >
+<Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -18218,6 +18456,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="22efd3fe-e652-4002-8c83-8479dba95844"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18231,6 +18470,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="179eb1de-9f67-4011-b13f-060449736f80"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -18258,6 +18498,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="8989a1ad-7811-4d6f-a1f0-43b52793e367"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18273,6 +18514,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotApplicable"
  Guid="2f74d0e2-70d1-4c32-a6ff-9b5232833799"
 >
+<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -18289,6 +18531,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="4b0bcb2f-af67-4ca0-a94b-34ec0ed08290"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18302,6 +18545,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="9e264eec-bdd0-45e8-a0d5-45b90a04e659"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -18329,6 +18573,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="dd268efd-073c-4fc8-b3e9-5e21e4d54872"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18344,6 +18589,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="619ef3b8-f9c8-42be-9550-5f0c679dd388"
 >
+<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -18360,6 +18606,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="75645820-3790-4446-b7f9-25c83a5555f1"
 >
+<Comment>Initial state: the display is requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18373,6 +18620,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="6e2f9677-32a0-4555-a390-5d0c3ca71d9a"
 >
+<Comment>Display is requested.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -18400,6 +18648,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="2ab723c3-d1b0-424a-9d95-f72069625a61"
 >
+<Comment>Nothing to do, the display is always requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18415,6 +18664,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Available"
  Guid="1cad94e3-d55b-4d1c-b6d0-37113ad62eac"
 >
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -18431,6 +18681,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="8398f043-0b2d-4872-8b57-baf1f9f52995"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18444,6 +18695,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="RequestActivated"
  Guid="19453863-d364-4ec0-9e57-7e40cef7b551"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -18475,6 +18727,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="5a6b4796-8b22-4e94-9fd8-a84aac96b785"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18488,6 +18741,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="DisableRequestActivated"
  Guid="629878ca-fbab-4814-8a46-2a9678eaf2eb"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -18552,6 +18806,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOutSM"
  Guid="b6b71795-c76c-400f-9e89-f42b11d44c4e"
 >
+<Comment>The state machine handling the output information.</Comment>
 <States>
 <State
  X="230"
@@ -18562,6 +18817,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotAvailable"
  Guid="1bf53aef-b591-4c86-9699-efbbd4d139cb"
 >
+<Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -18578,6 +18834,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="3c767950-b5fd-4edc-8209-c81919737030"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18591,6 +18848,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="09b28aa8-4389-4920-b270-b20836e9f39e"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -18618,6 +18876,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="5b6d307d-977b-4cd9-bad8-5a5a6cd5eb9d"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18633,6 +18892,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NationalSystemAvailability"
  Guid="218debf4-7cc8-4b8c-901b-d5324a688250"
 >
+<Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -18649,6 +18909,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="9bb700b4-4ab4-4837-9a9a-dc0f77bc0d71"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18662,6 +18923,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="a1bb0847-c567-44a7-82e6-c5bd501ad294"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -18689,6 +18951,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="113908d2-dd01-4b20-8841-bd58bf6b809c"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18704,6 +18967,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="NotApplicable"
  Guid="63145151-b36d-4868-a0de-454069a468fd"
 >
+<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -18720,6 +18984,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="98d3029e-13e5-4f0a-b182-74b70b1b85ed"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18733,6 +18998,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="edd2650c-8a70-40d9-aa28-789a9965e8e2"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -18760,6 +19026,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="52b8f205-b6aa-4004-bd5a-f438b3a4dc33"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18775,6 +19042,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="34d77d57-30f1-46e6-8e57-096e17eae8d2"
 >
+<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -18791,6 +19059,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="InitialState"
  Guid="b2b71d71-feff-4ae7-9340-d8151bdbada5"
 >
+<Comment>Initial state: the display is requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18804,6 +19073,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="UpdateVariables"
  Guid="1123ad1f-2e95-48bb-91bc-269b7dc1725d"
 >
+<Comment>Display is requested.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -18831,6 +19101,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="4f26bf07-da46-449c-b294-e9cb1e6cd729"
 >
+<Comment>Nothing to do, the display is always requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18846,6 +19117,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Available"
  Guid="dfca40a9-d931-45af-8e47-8d5f5db50f64"
 >
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -18862,6 +19134,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Idle"
  Guid="de20f80a-fc61-48b3-9e69-e870f79abe16"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18875,6 +19148,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="RequestActivated"
  Guid="4b48c1d1-b7c1-4865-b3ec-501899610818"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -18906,6 +19180,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Send"
  Guid="62b55d73-18f5-4028-a37d-8f92491d6005"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -18919,6 +19194,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="DisableRequestActivated"
  Guid="9b94ed1f-4ee3-4ab8-8cf3-13eade41defe"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -19214,6 +19490,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Active"
  Guid="48c83984-9cd7-4214-b2a8-e8ab820f9abd"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -19864,7 +20141,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="804a0dff-a212-44f5-a927-87b204dafc86"
 >
-</ReqRef><Rules>
+</ReqRef><Comment></Comment>
+<Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
@@ -19925,6 +20203,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="ProcedureOutSM"
  Guid="a5d47445-bd58-4b61-b0fc-6f33b17d2e19"
 >
+<Comment>The state machine handling the output information.</Comment>
 <States>
 <State
  X="230"
@@ -19935,6 +20214,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="NotAvailable"
  Guid="ec7e19dd-ebc4-4f22-92ad-fce99cd33714"
 >
+<Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -19951,6 +20231,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="InitialState"
  Guid="62828349-de57-4848-adce-8798d42747c0"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -19964,6 +20245,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="UpdateVariables"
  Guid="11398072-e9db-4c70-a119-3198d5c22e1f"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -19991,6 +20273,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="Idle"
  Guid="c816b366-b613-4bac-a3d8-3466f86ede44"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -20006,6 +20289,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="NationalSystemAvailability"
  Guid="f41fc4ec-d205-4304-bff6-b6fbfda6c8af"
 >
+<Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -20022,6 +20306,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="InitialState"
  Guid="8b8540b5-6690-4713-a518-380507937514"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -20035,6 +20320,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="UpdateVariables"
  Guid="504d4337-3441-4fe9-8d58-6e11398eab91"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -20062,6 +20348,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="Idle"
  Guid="835be31c-6b1e-4d75-a3e5-48dda008ab83"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -20077,6 +20364,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="NotApplicable"
  Guid="9943a852-79bd-4d30-9694-4f429828a41e"
 >
+<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -20093,6 +20381,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="InitialState"
  Guid="286e9f8c-f388-499a-b1a7-09411f06adc7"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -20106,6 +20395,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="UpdateVariables"
  Guid="6c6b6c34-cbd2-44b4-9df5-4a1d9295449d"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -20133,6 +20423,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="Idle"
  Guid="60f3634b-133a-4cde-98ab-0c318ae8fd02"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -20148,6 +20439,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="Active"
  Guid="9e07dea2-c032-4e20-a0eb-13e8b0762de2"
 >
+<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -20164,6 +20456,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="InitialState"
  Guid="80944fc9-199b-4ef5-97eb-9d648bc9217e"
 >
+<Comment>Initial state: the display is requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -20177,6 +20470,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="UpdateVariables"
  Guid="cf513c0c-75e9-48f5-b04a-cd4d9c5e1e7e"
 >
+<Comment>Display is requested.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -20204,6 +20498,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="Send"
  Guid="7c4b1d4c-3bf2-4fd2-88f6-644f852b76ff"
 >
+<Comment>Nothing to do, the display is always requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -20219,6 +20514,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="Available"
  Guid="560544bb-e521-4d01-a079-d697a52d0f72"
 >
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -20235,6 +20531,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="Idle"
  Guid="df837d73-5aac-4d13-8ed6-2da7ffc4a3c4"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -20248,6 +20545,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="RequestActivated"
  Guid="b90b6eab-5227-4e0f-bd4b-e03a792b189a"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -20279,6 +20577,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="Send"
  Guid="9d2eac78-ec33-44e4-bc58-3e644e939201"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -20292,6 +20591,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="DisableRequestActivated"
  Guid="9a674ddd-534d-4046-9727-d7e48ef9e64b"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -20636,6 +20936,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="Active"
  Guid="73b290c5-e219-46ac-a0b1-168b17fddcb3"
 >
+<Comment>The information is displayed on the DMI</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -20820,7 +21121,8 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7eb35b2d-181b-4894-b723-fea055d82961"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment></Comment>
+<StructureElement
  TypeName="OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -20844,6 +21146,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="ProcedureOutSM"
  Guid="6dfc1f12-f517-42e3-8899-75c0a04e57bd"
 >
+<Comment>The state machine handling the output information.</Comment>
 <States>
 <State
  X="230"
@@ -20854,6 +21157,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="NotAvailable"
  Guid="844c1a43-e9e2-413b-b2af-d26bb5b7c0ab"
 >
+<Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -20870,6 +21174,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="InitialState"
  Guid="6317b4f7-40e8-4263-8df0-8b07a5e41629"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -20883,6 +21188,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="UpdateVariables"
  Guid="7a883a47-b55c-4394-bd23-7bf626c8b021"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -20910,6 +21216,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="Idle"
  Guid="cf42f34d-6486-49fe-8a6d-1c0873290109"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -20925,6 +21232,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="NationalSystemAvailability"
  Guid="ea4d7bb4-93a1-4cd1-b37e-efc51dafba93"
 >
+<Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -20941,6 +21249,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="InitialState"
  Guid="8d6139fa-6f9e-49a1-849c-62b8911ddd7a"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -20954,6 +21263,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="UpdateVariables"
  Guid="6ca22485-8da9-4186-b032-bc19124a289f"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -20981,6 +21291,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="Idle"
  Guid="a8e8b057-e82b-4705-8622-040e12dc1556"
 >
+<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -20996,6 +21307,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="NotApplicable"
  Guid="d3c49ab5-3547-4bfe-b89c-bc5c9a729569"
 >
+<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -21012,6 +21324,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="InitialState"
  Guid="ab53679f-b246-4cb5-93f2-9ba113fe967c"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -21025,6 +21338,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="UpdateVariables"
  Guid="74941d41-034c-4a7f-93ae-1e4d25a30aa5"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -21052,6 +21366,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="Idle"
  Guid="ad78c875-b3ac-467c-8bac-d9682ca7a8c9"
 >
+<Comment>In this state, the information cannot be displayed.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -21067,6 +21382,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="Active"
  Guid="3ff8e315-b1a0-4400-af88-e55db4ec9451"
 >
+<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -21083,6 +21399,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="InitialState"
  Guid="04451b36-4e35-4077-83ce-39b8e2f9078c"
 >
+<Comment>Initial state: the display is requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -21096,6 +21413,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="UpdateVariables"
  Guid="2b176f8d-0fcf-429a-8d01-1dccd0b60fb4"
 >
+<Comment>Display is requested.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -21123,6 +21441,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="Send"
  Guid="5f704aac-fe55-42e6-b346-a29daa203228"
 >
+<Comment>Nothing to do, the display is always requested.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -21138,6 +21457,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="Available"
  Guid="0506e3cd-9cb1-42f3-84db-fb684ffa990d"
 >
+<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
@@ -21154,6 +21474,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="Idle"
  Guid="688ece1e-b75a-488f-aeb7-ce4df832fd54"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -21167,6 +21488,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="RequestActivated"
  Guid="3dcf8c55-f8c4-429e-a886-c27f57b17b29"
 >
+<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -21198,6 +21520,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="Send"
  Guid="f8279c9a-fc6a-4e7a-b747-f4663e97e332"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -21211,6 +21534,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="DisableRequestActivated"
  Guid="a8df12eb-5abc-4a8b-a6aa-fee077038c08"
 >
+<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition

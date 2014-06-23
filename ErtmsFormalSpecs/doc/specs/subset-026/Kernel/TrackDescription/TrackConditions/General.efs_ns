@@ -993,6 +993,33 @@ The use of profile points and the functions in this namespace can be found in Er
 <Comment>If the profile point is outside the section, it is unaffected by the new section</Comment>
 <Expression>Profile</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Time"
+ Default=""
+ Name="DriverReactionTime"
+ Guid="e3f12503-0282-4f78-b89d-6aeb18a434bb"
+>
+<ReqRef
+ Id="c8c32754-763b-4a64-a632-32a3602c83c1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="681391e4-93e4-4a7d-a3e4-1f034671808f"
+>
+</ReqRef><ReqRef
+ Id="221528df-6eae-4bf3-a88b-d972fde73639"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="acd47eb2-fd46-4bbe-95b0-5cbc532c1bb8"
+>
+</ReqRef><Comment>TODO: find actual reaction times for the different track conditions.
+
+Returns the time required by the driver to performs the necessary tasks before a track condition is applied</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="ba6b8ce6-862a-4bc4-9bad-e2f0f28df467"
+>
+<Comment></Comment>
+<Expression>5.0</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -1496,5 +1523,20 @@ IN
  Guid="da735426-7939-4917-b676-e820f9294618"
 >
 </ReqRef><Comment>The list of track conditions received from the trackside.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="4.0"
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Name="T_SoundHorn"
+ Guid="4fea4751-da92-4903-896f-7f1ddc8a4b6c"
+>
+<ReqRef
+ Id="1584ea94-55a5-467d-80a1-4927882da658"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0a39cc8c-c11a-4d4d-a6e3-d70f3d9f1900"
+>
+</ReqRef><Comment>Driver reaction time for sounding the horn. This value is also used as the reaction time for the other track conditions, as their value is not specified.</Comment>
 </Variable></Variables>
 </NameSpace>

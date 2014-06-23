@@ -13543,7 +13543,8 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  functionalBlockName=""
  Name=""
  Guid="57a404c3-3763-485e-a873-cc3d46cb48c9"
->Note: Balise groups are read in all levels and orders from balise groups are accepted independent of the level of operation. Also sleeping units read balise groups.<RequirementSets>
+><Comment></Comment>
+Note: Balise groups are read in all levels and orders from balise groups are accepted independent of the level of operation. Also sleeping units read balise groups.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="38bcc9f5-6063-43fc-9af4-1f3340492f27"
@@ -16287,10 +16288,17 @@ Intentionally deleted.<RequirementSets>
  name=""
  status="NA"
  version="3.0.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="221528df-6eae-4bf3-a88b-d972fde73639"
->This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.<RequirementSets>
+><ReqRef
+ Id="c8c32754-763b-4a64-a632-32a3602c83c1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f6adca39-98ad-436b-b62c-211e9959e4a8"
+>
+</ReqRef><Comment>The spec does not state anywhere how point C is to be calculated.</Comment>
+This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="b5f61b27-41db-4b50-b2d5-719febaa798f"
@@ -16356,7 +16364,8 @@ Intentionally deleted.<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="7ff9da00-1e5b-46f1-b270-f5f14d810fd9"
->When the max safe front end of the train reaches the start location (point D) of the powerless section:
+><Comment></Comment>
+When the max safe front end of the train reaches the start location (point D) of the powerless section:
 	- &quot;Lower pantograph announcement&quot; shall no longer be displayed to the driver,
 	- &quot;Lowered Pantograph&quot; information shall be displayed to the driver.<RequirementSets>
 <RequirementSetReference

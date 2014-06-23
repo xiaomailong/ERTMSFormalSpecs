@@ -1712,6 +1712,33 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Guid="6add61cb-6530-40ba-859e-29be8b1a178d"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.23"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="79cf885b-315d-408c-87cc-c16c3e53bc97"
+><Comment></Comment>
+Driver reaction time<Sub>
+<Paragraph
+ id="A1.1.23.1"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="c8c32754-763b-4a64-a632-32a3602c83c1"
+>For the indication of Track Conditions on the DMI, the conditions are announced in rear of their start location to allow the driver time to perform the required actions. As the spec does not state how to determine this, an arbitrary value has been chosen until a better implementation can be done.</Paragraph></Sub>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -2136,6 +2163,32 @@ The spec provides the calculation for the pre-indication location based on a tar
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 </Paragraph></Sub>
+</Paragraph><Paragraph
+ id="A1.2.3"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="e61eb334-9566-4cbb-bea5-863ccc426b66"
+>Information for DMI<Sub>
+<Paragraph
+ id="A1.2.3.1"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="01d5b677-947b-41a3-b122-755926f72f02"
+>The speed and distance monitoring supervision status, to be sent to the DMI, includes the speed and distance monitoring type. This information is necessary for the DMI but is not explicitely provided in the specs.</Paragraph></Sub>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
