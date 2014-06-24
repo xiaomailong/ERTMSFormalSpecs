@@ -601,7 +601,8 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 <Actions>
 <Action
  Guid="04b8fac6-2aaf-4551-8f5a-01d7436bab4e"
->INSERT Messages.JRU.MESSAGE.Message{
+><Comment></Comment>
+INSERT Messages.JRU.MESSAGE.Message{
 NATIONAL_SYSTEM_ISOLATION =&gt; CreateNationalSystemsIsolationMessage()
 }IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
@@ -2192,6 +2193,7 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  Name="Applicable"
  Guid="4a7cd6a3-b392-4e90-b513-402f4c54d9a1"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1bb2cf33-1d6c-4c74-85c6-b47085324c2d"
@@ -5131,6 +5133,7 @@ M_TRAIN_DATA_ENTRY=&gt;ToJruTrainDataEntry()
  Name="AtStartUp"
  Guid="fcc3e04f-9f3e-4aa8-bc03-256709cbfb03"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f6cc93d5-391e-49ec-996b-60113667e0b0"
