@@ -101,7 +101,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
                 Graph graph = function.Graph;
                 if (graph != null && graph.Segments.Count > 1)
                 {
-                    for (int i = 1; i < graph.Segments.Count; i++)
+                    for (int i = 0; i < graph.Segments.Count; i++)
                     {
                         Graph.Segment s = graph.Segments[i];
                         Types.Structure structureType = (Types.Structure)EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSupervision"), "Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target");
@@ -131,7 +131,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
                         length.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
                         length.Default = "0.0";
                         length.Enclosing = value;
-                        length.Value = new Values.DoubleValue(EFSSystem.DoubleType, s.End);
+                        length.Value = new Values.DoubleValue(EFSSystem.DoubleType, s.End - s.Start);
                         value.set(length);
 
                         collection.Val.Add(value);
