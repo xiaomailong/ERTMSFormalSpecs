@@ -229,6 +229,196 @@
  Guid="cb0a3a0e-53ac-46c5-8da4-fd9b78778a80"
 >
 </ReqRef><Comment>Which track conditions are in effect</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ Name="TrackConditionWithSoundHorn"
+ Guid="4bfc7dd3-7985-4f2a-8bcf-cf0866594af4"
+>
+<ReqRef
+ Id="72d98796-7871-4e90-85df-298a95950478"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b2c762dc-5512-49db-a293-3b0f0bd38a23"
+>
+</ReqRef><Comment>For use in the DMI, this structure contains the track conditions sound horn, non stopping area and tunnel stopping area</Comment>
+<StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SoundHorn"
+ Guid="775d6c62-5964-4706-a9da-ce9f34fc4e09"
+>
+<ReqRef
+ Id="55f1d2d0-00ef-4dfe-82a4-6a5f97d8f297"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a432bc0-3365-4c8b-8a75-3789ba2f0cf5"
+>
+</ReqRef><Comment>The driver should sound the hor,n as long as the train is in this section</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="TunnelStoppingArea"
+ Guid="127ffa9a-f81b-4076-aed8-0979eb0af484"
+>
+<ReqRef
+ Id="e99e7257-597e-43d5-a002-54bb45f5028c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="488b15f4-ead6-4f01-abee-efbf97f801ea"
+>
+</ReqRef><Comment>Area in a tunnel where the train is permitted to stop</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="NonStoppingArea"
+ Guid="a4ba630f-f470-4638-83e1-22d9cba859d6"
+>
+<ReqRef
+ Id="4fa2b4ab-63de-48d0-8aab-49412bba6dbd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5539cdf7-103b-4ad3-a89d-c18bbc59cd20"
+>
+</ReqRef><Comment>Are where the train is not permitted to stop</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Distance"
+ Guid="d5f0710e-527b-4947-a7f9-731bcb5db201"
+>
+<ReqRef
+ Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="66fc6c3c-a730-422c-b00d-3f2789766377"
+>
+</ReqRef><Comment>Start location of the track condition</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ Name="TrackConditionWithBrakeInhibition"
+ Guid="21138f5c-5501-4929-a88b-8242588bc71a"
+>
+<ReqRef
+ Id="88a9ba90-6c1e-47f7-bced-85484113e0fa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4539eca2-e5f3-4542-a2f6-60a94a565093"
+>
+</ReqRef><Comment>For use in the DMI, this structure contains the track conditions brake inhibition, power control, lower pantograph, air tightness and radio hole</Comment>
+<StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="AirTightness"
+ Guid="08756841-f9aa-425b-9c21-b0dc45a6d4cd"
+>
+<ReqRef
+ Id="a01c8799-5739-48a1-a667-753dbdb30d26"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cbfd97d2-2863-41d5-9c4a-d07a80cf8385"
+>
+</ReqRef><Comment>The air conditioning intake should be cut off</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PowerlessSection_LowerPantograph"
+ Guid="f3fb2e30-6f70-436f-8a7f-73d205138575"
+>
+<ReqRef
+ Id="7fb81a1f-d79e-4219-b000-e6ca80f0fad5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="40a15a00-e0de-48e4-b8b4-1cc361f6195b"
+>
+</ReqRef><Comment>The train&apos;s pantograph should be lowered in the upcoming powerless section</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PowerlessSection_SwitchOffTheMainPowerSwitch"
+ Guid="d7eda37f-cebf-427a-bb5a-a4c2e6af75bf"
+>
+<ReqRef
+ Id="ef395ab0-84e3-439a-9e7e-7ef8bb61984c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b5b34d34-7699-49aa-b2fd-24b59889956c"
+>
+</ReqRef><Comment>Powerless area where the main power switch should be turned off</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="RadioHole"
+ Guid="c326d458-aeab-45ae-ba06-7ba3dc5439c2"
+>
+<ReqRef
+ Id="ce600cdf-eced-43b6-addb-8f9bb1416880"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e7f30c76-414d-4446-a38d-d9afa4337aa4"
+>
+</ReqRef><Comment>No RBC connections in the area</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SwitchOffEddyCurrentBrake"
+ Guid="79e93ae5-d58f-4946-baea-35490933b3c9"
+>
+<ReqRef
+ Id="6eac506c-d1f4-4981-81f7-4f88b90d86a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b84e25e6-357c-4c8f-a3d9-5767702fbdc4"
+>
+</ReqRef><Comment>The eddy current brake should be disabled for the service brake</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SwitchOffMagneticShoeBrake"
+ Guid="107fa4a9-45a2-4fbc-a8cf-91564adca183"
+>
+<ReqRef
+ Id="fc19b494-1816-4d9e-b9a9-6452f06d0582"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4a6546ca-7db0-4c15-8bcc-d613f1472edf"
+>
+</ReqRef><Comment>The magnetic shoe brake should be disabled</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SwitchOffRegenerativeBrake"
+ Guid="e380607a-4ca8-46c8-8bc1-6a4fbd105223"
+>
+<ReqRef
+ Id="f15d27d3-b5ee-451f-8207-28272d95b5e3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="544aed55-423b-4eb3-b856-0ef8ee91d20b"
+>
+</ReqRef><Comment>The regenerative brake should be disabled</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Distance"
+ Guid="56eb5b7d-ecea-44dc-b90d-367a3c9d22fa"
+>
+<ReqRef
+ Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="44f7eef5-3fb7-4eb7-a7ce-85bb79e75e8b"
+>
+</ReqRef><Comment>Start location of the track condition</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -253,6 +443,46 @@
  Guid="ed25c3de-fddf-4846-a080-c5c953bd66d6"
 >
 </ReqRef><Comment>Collection of TrackConditionInformation items. Is the type of TCProfile</Comment>
+</Collection><Collection
+ TypeName="TrackConditionWithBrakeInhibition"
+ MaxSize="20"
+ Default="[]"
+ Name="TCBrakes"
+ Guid="f218cca7-8f46-48ed-b5fa-2845430d69db"
+>
+<ReqRef
+ Id="88a9ba90-6c1e-47f7-bced-85484113e0fa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="332c8a17-45f5-4518-ab82-5636bc48250e"
+>
+</ReqRef><Comment>Collection used to pass track condition information including inhibited brakes to the DMI</Comment>
+</Collection><Collection
+ TypeName="TrackConditionWithSoundHorn"
+ MaxSize="20"
+ Default="[]"
+ Name="TCSoundHorn"
+ Guid="e148decc-b70e-4ea3-b3ce-6aaea53f3415"
+>
+<ReqRef
+ Id="72d98796-7871-4e90-85df-298a95950478"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d80cc302-d4ec-483e-86f8-2d03ea56df5f"
+>
+</ReqRef><Comment>Collection used to pass track condition information including sound horn to the DMI</Comment>
+</Collection><Collection
+ TypeName="TrackConditionWithBrakeInhibition"
+ Default="[]"
+ Name="TCBrakesAnnouncements"
+ Guid="5326efb9-f33b-4cae-ad0d-9aecc33dd162"
+>
+<Comment></Comment>
+</Collection><Collection
+ TypeName="TrackConditionWithSoundHorn"
+ Default="[]"
+ Name="TCSoundHornAnnouncements"
+ Guid="ae1d661a-0efa-4dda-b9c7-6e6e86368b18"
+>
+<Comment>Collection announcing upcoming track condition start locations for sound horn, non stopping area and tunnel stopping area</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -996,6 +1226,8 @@ The use of profile points and the functions in this namespace can be found in Er
 </Function><Function
  Type="Default.BaseTypes.Time"
  Default=""
+ Width="100"
+ Height="50"
  Name="DriverReactionTime"
  Guid="e3f12503-0282-4f78-b89d-6aeb18a434bb"
 >
@@ -1009,9 +1241,21 @@ The use of profile points and the functions in this namespace can be found in Er
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="acd47eb2-fd46-4bbe-95b0-5cbc532c1bb8"
 >
+</ReqRef><ReqRef
+ Id="dd85b47a-25d2-4054-8287-3bd39b7603c3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f2073c1e-05f7-49b7-a5d8-91208f182ff3"
+>
 </ReqRef><Comment>TODO: find actual reaction times for the different track conditions.
 
 Returns the time required by the driver to performs the necessary tasks before a track condition is applied</Comment>
+<Parameters>
+<Parameter
+ Type="TrackCondition"
+ Name="TrackConditionType"
+ Guid="393a54a0-4d3b-4cfa-9f61-101631555fe6"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
@@ -1019,6 +1263,47 @@ Returns the time required by the driver to performs the necessary tasks before a
 >
 <Comment></Comment>
 <Expression>5.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ Name="AnnouncementLocation"
+ Guid="5080f214-5c31-4f7a-95b0-956b3f6e88cc"
+>
+<ReqRef
+ Id="c5c7a634-701c-4959-ae64-0522e9a953bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="604399d8-c79d-4655-acb2-893cc2efde8f"
+>
+</ReqRef><ReqRef
+ Id="221528df-6eae-4bf3-a88b-d972fde73639"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4de3885b-8ed7-46e5-8800-0b15f6f3a489"
+>
+</ReqRef><ReqRef
+ Id="6cbde49b-37af-4487-8711-54e2b5be1b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="95542c8d-45e0-4a6d-9467-7fbf3345b7e0"
+>
+</ReqRef><ReqRef
+ Id="dd85b47a-25d2-4054-8287-3bd39b7603c3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="00d16d20-15fc-437e-bf9b-208f40124290"
+>
+</ReqRef><Comment>Calculates the announcement location (used in the DMI) of a track condition at the train&apos;s current speed</Comment>
+<Parameters>
+<Parameter
+ Type="TrackCondition"
+ Name="TrackCondition"
+ Guid="00751af4-e31d-4466-bbce-25f0938e0bf5"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="9a9bfe54-98fb-4549-b01b-8d6d86f4ac13"
+>
+<Expression>Odometry.EstimatedSpeed * DriverReactionTime(TrackCondition)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

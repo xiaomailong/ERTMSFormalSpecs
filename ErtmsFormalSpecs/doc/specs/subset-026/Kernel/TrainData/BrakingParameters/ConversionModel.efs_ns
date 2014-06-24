@@ -6,6 +6,7 @@
  Name="ConversionModel"
  Guid="785a0e41-5ce3-4f0e-9075-e9d56cee7e2a"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Functions>
@@ -62,6 +63,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  Name="ConversionModelIsNotUsed"
  Guid="1eca3392-96f6-4459-a717-0e52d880c305"
 >
+<Comment></Comment>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -1533,7 +1535,8 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 <PreConditions>
 <PreCondition
  Guid="9d9968f1-7c51-4c22-b2be-1cdd9bf7a9ac"
->Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed()</PreCondition></PreConditions>
+><Comment></Comment>
+Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="035b7c8e-f585-4eba-90ae-4a8d9791308c"
@@ -1763,6 +1766,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
  Name="ConversionModelWasUsed"
  Guid="78c4e9b2-8599-4ea9-8ddc-6c0286912d95"
 >
+<Comment></Comment>
 </Variable></Variables>
 <Rules>
 <Rule
