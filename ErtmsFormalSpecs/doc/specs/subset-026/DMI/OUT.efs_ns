@@ -3425,7 +3425,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosit
 <PreConditions>
 <PreCondition
  Guid="cfab63ee-7d53-4866-889d-af9c47e77295"
->ProcedureOut not in ProcedureOutSM.NotAvailable
+>ProcedureOut in ProcedureOutSM.NotAvailable
   AND
 ProcedureOut not in ProcedureOutSM.NotApplicable
   AND
@@ -3897,7 +3897,9 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
  Guid="93030fc8-cde7-4a29-a4cb-79d4d8d45e7a"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="8038d0e6-78ca-47b8-8610-07535136491d"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ac88bf52-f540-44c2-8c94-930fb08165ef"
@@ -19356,6 +19358,11 @@ MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="962cd9d0-d0a6-4e8f-a6c1-89046eabead8"
 >
+</ReqRef><ReqRef
+ Id="220617b2-d0d2-4c8e-a475-e9d9a8761441"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="383a3a1b-a16a-4709-90b4-bb8ff8f77de5"
+>
 </ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
@@ -19372,8 +19379,11 @@ MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></
  Name="UpdateValue"
  Guid="463e57c3-09a7-4c0a-9506-917d7b2b22a0"
 >
+<Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="f4fa4704-a159-4fbe-9c68-7429576b316f"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4ec9e0a0-7cd1-4cc2-b31f-830372a7fab2"
