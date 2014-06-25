@@ -1322,9 +1322,11 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 <Actions>
 <Action
  Guid="a302e1a2-0224-4cba-929a-d8b95dae5eaf"
->A_brake_service &lt;- BrakingModel{}</Action><Action
+><Comment></Comment>
+A_brake_service &lt;- BrakingModel{}</Action><Action
  Guid="2f647c3e-ddf5-4d59-ae49-e30c06c092d7"
->ComputeA_safe ( aBrakingModel =&gt; A_brake_service, aBrakePercentage =&gt; MinPercentage ( TrainData.Value.BrakePercentage, 135.0 ) )</Action></Actions>
+><Comment></Comment>
+ComputeA_safe ( aBrakingModel =&gt; A_brake_service, aBrakePercentage =&gt; MinPercentage ( TrainData.Value.BrakePercentage, 135.0 ) )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1518,6 +1520,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
  Name="Initialize"
  Guid="37fb9f96-056f-470d-9256-419a57f6de37"
 >
+<Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"

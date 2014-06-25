@@ -2979,6 +2979,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="59591595-be1f-4ff6-b1b2-ae6dd16c7532"
 >
+<Comment></Comment>
 </ReqRef><Comment>Handles display of information relative to the train permitted speed.</Comment>
 <Rules>
 <Rule
@@ -2993,22 +2994,12 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="437dece3-cb84-449c-b094-c7141761144d"
 >
-</ReqRef><ReqRef
- Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e1f50546-a62f-4328-a61e-f19bd91f9143"
->
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="74e64307-2966-461e-a976-9a0194ca8514"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5c101f1a-5c44-4522-96fa-a040dc6b3fac"
 >
-</ReqRef><ReqRef
- Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c0425da5-9178-4679-b61f-12c39989d2ad"
->
-<Comment></Comment>
 </ReqRef><Comment>Keep the value of Speed up-to-date, but only if this information can be displayed</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -3037,20 +3028,28 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Train in SR mode"
+ Name="Train in SR, PT, SH, SN or RV modes"
  Guid="ceca03bb-563c-40a7-be1e-2646f21d018b"
 >
 <Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="04868972-8866-4251-934f-1527923ad496"
->Kernel.Mode == Default.Mode.SR</PreCondition></PreConditions>
+>Kernel.Mode == Default.Mode.SR
+  OR  
+Kernel.Mode == Default.Mode.PT
+  OR  
+Kernel.Mode == Default.Mode.SH
+  OR  
+Kernel.Mode == Default.Mode.SN
+  OR  
+Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f6842f02-0829-4aa9-8f87-595353483595"
 ><Comment></Comment>
 Speed &lt;- Kernel.ModeRelatedSpeedLimits.SRModeSpeedLimit()</Action><Action
- Guid="aec45ff6-3d12-4824-80fa-6cad876e2c3b"
+ Guid="fa977fee-280c-40d9-8961-ac5e8494d9ef"
 >OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Name="Otherwise"
@@ -3419,7 +3418,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosit
 >
 <Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.Available.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="fc57a2c2-677b-4387-8443-7e1192f95f64"
@@ -3460,15 +3459,15 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosit
 <PreConditions>
 <PreCondition
  Guid="998f5519-2c29-48f3-b54a-5f161e7cb930"
->OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.ShowRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dff82831-318d-47dd-8b65-5cbc038b95e2"
->THIS &lt;- Available.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Send</Action><Action
  Guid="77013d07-a02f-4981-aa4a-b4df4263530b"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
  Guid="529cda47-b11e-4b5f-beb9-7c73be4017bd"
->OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3506,15 +3505,15 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosit
 <PreConditions>
 <PreCondition
  Guid="6f56281c-17ed-4ae4-b504-034931019a3c"
->OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.HideRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="fa389899-e22b-4cf1-b3ab-2c9d39891b0b"
->THIS &lt;- Available.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Idle</Action><Action
  Guid="06a88cb8-eae2-4230-8c52-8af7a05d9d79"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
  Guid="cccc2804-b113-466d-9171-7ded3f5329ec"
->OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.HideRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3554,9 +3553,10 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosit
 <Actions>
 <Action
  Guid="320b9dfe-143f-41ad-9cab-134646e0b949"
->THIS &lt;- Available.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Idle</Action><Action
  Guid="965e0c42-283e-4158-8031-f2f974f77e7d"
->OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
+><Comment></Comment>
+OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -7223,7 +7223,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 >
 <Comment>The state machine handling the output information.</Comment>
 </StructureElement><StructureElement
- TypeName="Kernel.TrackDescription.TrackConditions.General.TCBrakes"
+ TypeName="Kernel.TrackDescription.TrackConditions.General.DMI.TCBrakes"
  Default=""
  Mode="Internal"
  Name="TrackConditions"
@@ -7231,7 +7231,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 >
 <Comment></Comment>
 </StructureElement><StructureElement
- TypeName="Boolean"
+ TypeName="Kernel.TrackDescription.TrackConditions.General.DMI.TCBrakesAnnouncements"
  Default=""
  Mode="Internal"
  Name="Announcements"
@@ -7698,14 +7698,15 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 >
 <Comment>The state machine handling the output information.</Comment>
 </StructureElement><StructureElement
- TypeName="Boolean"
+ TypeName="Kernel.TrackDescription.TrackConditions.General.DMI.TCSoundHorn"
  Default=""
  Mode="Internal"
  Name="TrackConditions"
  Guid="d173d1dc-fa75-4e91-8d2b-b378f6a9607a"
 >
+<Comment></Comment>
 </StructureElement><StructureElement
- TypeName="Boolean"
+ TypeName="Kernel.TrackDescription.TrackConditions.General.DMI.TCSoundHornAnnouncements"
  Default=""
  Mode="Internal"
  Name="Announcements"
@@ -8898,6 +8899,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="Available"
  Guid="337a82d6-6c22-4438-aba7-18cfa4cca840"
 >
+<Comment></Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
