@@ -3021,9 +3021,6 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <Comment></Comment>
 <PreConditions>
 <PreCondition
- Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
-><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMonitoring.Monitoring.ReleaseSpeed, Kernel.SpeedAndDistanceMonitoring.Monitoring.Idle]</PreCondition><PreCondition
  Guid="27f43f3b-9d33-4f93-8af9-d46bf9c93913"
 >Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
  Guid="6419b761-6bf8-4aa3-af63-9c94abdb9795"
@@ -3036,6 +3033,7 @@ Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMoni
  Name="Update variable"
  Guid="074eb3af-d97b-455d-bf4b-735c57352494"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3051,13 +3049,18 @@ Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMoni
 <Action
  Guid="f6842f02-0829-4aa9-8f87-595353483595"
 ><Comment></Comment>
-Speed &lt;- Kernel.ModeRelatedSpeedLimits.SRModeSpeedLimit()</Action></Actions>
+Speed &lt;- Kernel.ModeRelatedSpeedLimits.SRModeSpeedLimit()</Action><Action
+ Guid="aec45ff6-3d12-4824-80fa-6cad876e2c3b"
+>OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Name="Otherwise"
  Guid="3c0e9560-e579-4971-87cc-9fb0389c9b3a"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
