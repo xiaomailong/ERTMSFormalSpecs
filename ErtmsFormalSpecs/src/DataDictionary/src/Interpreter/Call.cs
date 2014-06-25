@@ -444,7 +444,7 @@ namespace DataDictionary.Interpreter
                             if (explain)
                             {
                                 AddParameterValuesToExplanation(parameterValues);
-                                CompleteExplanation(previous, function.Name + " ( " + ParameterValues(parameterValues) + " ) returned " + explainNamable(retVal) + "\n");
+                                CompleteExplanation(previous, function.Name + " (...) returned ", retVal);
                             }
                         }
                     }
