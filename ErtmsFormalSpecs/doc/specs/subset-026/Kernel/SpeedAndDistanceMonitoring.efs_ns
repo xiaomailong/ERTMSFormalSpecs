@@ -744,6 +744,7 @@ THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
  Name="TargetSpeedMonitoring_FLOI"
  Guid="abb0b3d3-d383-4088-8c65-db4e81cadbae"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7bfba49b-c9f5-492a-8afc-18d09cf1f725"
@@ -933,6 +934,42 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
  Guid="50cbdcf9-5bd4-4b43-84f3-ae1faf217101"
 >
 <Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Implemented="TRUE"
+ Name="DisplayReleaseSpeed"
+ Guid="0e03db57-f072-4c06-9f8d-37b08022f0ce"
+>
+<ReqRef
+ Id="da81dc9e-7c01-462c-ae9b-108704d780bc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26165586-b87b-4fc6-aef9-ec247e260bce"
+>
+</ReqRef><ReqRef
+ Id="ee7b5ecc-20f6-480c-aa0a-7836d5308d32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c84326fe-ff7d-48f4-a605-f443b22b4615"
+>
+</ReqRef><Comment>Determines whether the DMI should display a release speed.</Comment>
+<Cases>
+<Case
+ Name="Monitoring target speed"
+ Guid="c220ae83-9fd0-4062-b2dd-0b4508cc0570"
+>
+<PreConditions>
+<PreCondition
+ Guid="eae54f73-e54c-496a-b739-536763fd2530"
+>Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Expression>MA.IsEOA(TargetSupervision.MRDT())
+  OR  
+MA.IsSvL(TargetSupervision.MRDT())</Expression>
+</Case><Case
+ Name="Monitoring release speed"
+ Guid="08d09e11-9195-4651-b68a-5e2963886bc4"
+>
+<Expression>Monitoring in MonitoringTypeSM.ReleaseSpeed</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

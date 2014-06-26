@@ -28833,12 +28833,12 @@ Requirements for Target speed monitoring<Sub>
 <Paragraph
  id="3.13.10.4.1"
  guid=""
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -28952,7 +28952,8 @@ V_FLOI_DMI = min { max { V_SBI_MRDT, Vrelease }, V_MRSP + dV_SBI (V_MRSP) } in c
  functionalBlockName=""
  Name=""
  Guid="8d4fab49-4037-4cfa-8f33-33feb439c687"
->Note: the MRDT is needed to avoid jumps of displayed Permitted speed, when the SBD intersects an EBD or when the target to which the FLOI is related suddenly changes, due to the growth of the train position confidence interval. As a result the MRDT may temporarily not correspond to the target to which the FLOI is related, but this will never be the case when the train speed/location is reaching the supervision limit.<RequirementSets>
+><Comment></Comment>
+Note: the MRDT is needed to avoid jumps of displayed Permitted speed, when the SBD intersects an EBD or when the target to which the FLOI is related suddenly changes, due to the growth of the train position confidence interval. As a result the MRDT may temporarily not correspond to the target to which the FLOI is related, but this will never be the case when the train speed/location is reaching the supervision limit.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7af2ed39-0b3a-49ee-8864-68d4b88be526"
@@ -28966,7 +28967,7 @@ V_FLOI_DMI = min { max { V_SBI_MRDT, Vrelease }, V_MRSP + dV_SBI (V_MRSP) } in c
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""

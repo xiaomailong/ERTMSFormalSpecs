@@ -1467,13 +1467,14 @@ TargetSupervision.SBI1BelowSBI2(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="71de75da-dda1-4585-8b17-667aeea13130"
 >
-</ReqRef><Cases>
+</ReqRef><Comment></Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="3b2124db-7a45-4f5d-b030-095438388390"
 >
 <Comment></Comment>
-<Expression>Default.BaseTypes.MinSpeed ( X1 =&gt; Default.BaseTypes.MaxSpeed ( X1 =&gt; TargetSupervision.V_P_MRDT(), X2 =&gt; TargetSupervision.MRDT().Speed ), X2 =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</Expression>
+<Expression>Default.BaseTypes.MinSpeed ( X1 =&gt; Default.BaseTypes.MaxSpeed ( X1 =&gt; V_P_MRDT(), X2 =&gt; MRDT().Speed ), X2 =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -1946,6 +1947,26 @@ DistanceForSpeed(
 <Comment></Comment>
 <Expression>d_SBI1 - TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &lt;= d_SBI2 - TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ Name="TargetDistance"
+ Guid="e8c7c99b-8bfa-48ab-be05-e479c99d4026"
+>
+<Parameters>
+<Parameter
+ Type="Target"
+ Name="Target"
+ Guid="9a71a7af-09bd-4078-a82a-d5c039e9de87"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="PlaceholderBLAH"
+ Guid="82194262-9ba2-4fde-8a4d-317280711763"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -2023,7 +2044,8 @@ DistanceForSpeed(
 <Actions>
 <Action
  Guid="9b28d836-1ed0-415b-9678-5c3beec361d5"
->TargetSupervision.T_bs1 &lt;- TrainData.BrakingParameters.T_bs()</Action><Action
+><Comment></Comment>
+TargetSupervision.T_bs1 &lt;- TrainData.BrakingParameters.T_bs()</Action><Action
  Guid="877d64de-96f2-4618-8ae7-988535b274d7"
 ><Comment></Comment>
 TargetSupervision.T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></Actions>
