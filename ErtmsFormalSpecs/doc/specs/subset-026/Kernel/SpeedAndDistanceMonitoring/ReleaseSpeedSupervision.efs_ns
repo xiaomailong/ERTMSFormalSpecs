@@ -8,7 +8,11 @@
 >
 <Comment></Comment>
 <NameSpaces>
-</NameSpaces>
+<NameSpaceRef
+ Name="SupervisionStatus"
+ Guid="9f3f8245-8410-4ed2-ad4a-dcba3ffe96f3"
+>
+</NameSpaceRef></NameSpaces>
 <Functions>
 <Function
  Type="Default.BaseTypes.Distance"
@@ -630,7 +634,8 @@ Kernel.Level.Value == Default.Level.L1</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8d371a70-ef2e-4e1b-8637-313df835dbd9"
->ReleaseSpeedSupervision.ReleaseSpeed &lt;- 
+><Comment></Comment>
+ReleaseSpeedSupervision.ReleaseSpeed &lt;- 
 ReleaseSpeedSupervision.ReleaseSpeedValue(
     Vrel=&gt;Default.BaseTypes.Speed.UseNVForReleaseSpeed
 )</Action></Actions>
@@ -692,12 +697,6 @@ ReleaseSpeedSupervision.ReleaseSpeedValue(
 >ReleaseSpeedSupervision.ReleaseSpeed &lt;- 0.0</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</Procedure><Procedure
- Width="100"
- Height="50"
- Name="UpdateSupervisionStatus"
- Guid="c240167e-b0d8-45da-b9a2-08987c7d3af3"
->
 </Procedure></Procedures>
 <Variables>
 <Variable

@@ -256,7 +256,12 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
  Name="RestartSpeedAndDistanceMonitoring"
  Guid="5083b87e-34c8-47eb-8d1e-d09514360921"
 >
-<Comment>When the train mode is FS, LS, or OS, start monitoring again</Comment>
+<ReqRef
+ Id="ec29a885-8a5f-4c6e-82e7-4e5b41a7dd5d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="67553a48-9bea-4af6-8450-85c14f24593d"
+>
+</ReqRef><Comment>When the train mode is FS, LS, or OS, start monitoring again</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -272,7 +277,7 @@ ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="351c9b66-e0cc-4a58-9b1c-f39028235a8a"
->THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
+>SelectMonitoringType()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -941,7 +946,12 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
  Name="SelectMonitoringType"
  Guid="3343f3ef-10d0-4a24-9849-d799ebf3c545"
 >
-<Comment>Update the speed and distance monitoring type</Comment>
+<ReqRef
+ Id="ec29a885-8a5f-4c6e-82e7-4e5b41a7dd5d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9770b6b4-6db0-4f93-85c2-e61a194149cd"
+>
+</ReqRef><Comment>Update the speed and distance monitoring type</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -1274,6 +1284,7 @@ SBSpecified &lt;- False</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7c429def-00c8-4ee3-b895-df73d7971553"
 >
+<Comment></Comment>
 </ReqRef><Comment>Resets the supervision status to normal once a supervision status revocation condition has been fulfilled.</Comment>
 <Rules>
 <Rule
@@ -1364,6 +1375,11 @@ TCOTriggered &lt;- False</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0c2fd63b-9ad1-474c-a4b6-060ceb67f368"
 >
+</ReqRef><ReqRef
+ Id="896f9fb5-9ef6-459b-b93e-c681a1ec59d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8639b854-a19e-4c55-8679-26f5cd3f6eae"
+>
 </ReqRef><Comment>Sets the supervision status according to the type of speed and distance monitoring</Comment>
 <Parameters>
 <Parameter
@@ -1449,7 +1465,17 @@ CeilingSupervision.SupervisionStatus.UpdateSupervisionStatus()</Action></Actions
  Name="In release speed supervision"
  Guid="0bf1a7d9-00bf-4d6b-b328-2eb27ac44cc7"
 >
-<Comment></Comment>
+<ReqRef
+ Id="f71170cc-f625-404a-93f9-5cb4b527f0d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc5cc751-136b-45a4-9bcc-2d5e28debd98"
+>
+</ReqRef><ReqRef
+ Id="987011eb-4ef7-491c-8292-26c140669ff8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b56815d5-c61d-441d-90a6-213876835fd2"
+>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1465,7 +1491,8 @@ CeilingSupervision.SupervisionStatus.UpdateSupervisionStatus()</Action></Actions
 <Actions>
 <Action
  Guid="4984d1e4-bfdd-4b2a-aa8f-4885ab876f30"
->ReleaseSpeedSupervision.UpdateSupervisionStatus()</Action></Actions>
+><Comment></Comment>
+ReleaseSpeedSupervision.SupervisionStatus.UpdateSupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1590,6 +1617,11 @@ EBSpecified &lt;- True</Action></Actions>
  Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6fb805d8-e377-4058-ab1b-cfd7d8e60c54"
+>
+</ReqRef><ReqRef
+ Id="987011eb-4ef7-491c-8292-26c140669ff8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bbe65d1a-9c3f-42b9-bda2-895fa04e6a54"
 >
 </ReqRef><Comment>Indicates if EB was triggered (can be triggered either if EB was specified or if SB was specified but there is no on-board interface with the service brake or the use of the service brake command is not allowed by a National Value).</Comment>
 </Variable><Variable
@@ -1746,6 +1778,7 @@ EBSpecified &lt;- True</Action></Actions>
  Name="UpdateSupervisionStatus"
  Guid="201a33eb-5356-40a5-8805-755b33d8b4aa"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>

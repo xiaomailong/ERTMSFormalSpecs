@@ -661,6 +661,7 @@ Supervision != SupervisionStatusEnum.Normal</PreCondition><PreCondition
  Name="TSMStatusTriggers"
  Guid="ee21b76a-c4a5-4143-b069-19f25d32716e"
 >
+<Comment></Comment>
 <Rules>
 <Rule
  Priority="UpdateINTERNAL"
@@ -979,106 +980,50 @@ TCOSpecified &lt;- True</Action></Actions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="r3"
- Guid="2bea85df-8f28-4cfb-bdfc-6048fb2e27e1"
+ Name="r0"
+ Guid="07fdb7b9-424c-486a-85a5-0499ee48a4a9"
 >
 <PreConditions>
 <PreCondition
- Guid="ec514d12-8d7b-47b8-99dc-36849fe22e4a"
->r3()</PreCondition></PreConditions>
+ Guid="67bf55e0-0124-4d00-8977-42a54b3388aa"
+>r0()</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
 <Rule
  Priority="Processing"
- Name="Revoke brake and TCO commands"
- Guid="37cbb59c-51f0-46fd-906a-ae9b0cbb4e05"
+ Name="Revoke EB command"
+ Guid="06add78b-acf7-4584-af87-e713ba7e85c8"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Revoke EB, SB and TCO"
- Guid="4c3b5edc-614d-4784-8b24-794bf2adc6d4"
+ Name="Revoke EB command"
+ Guid="12028e95-11c9-4162-ae10-cdbd626bd93d"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="95634efa-8049-4ef8-a18e-900263bc7df8"
->RevokeEBCommand()</Action><Action
- Guid="8cf1acda-91fb-4aca-8061-2d62227c7f1b"
->RevokeSBCommand()</Action><Action
- Guid="4f41af56-d1d0-4dfa-83cd-10489022c240"
->RevokeTCOCommand()</Action></Actions>
+ Guid="2cb08036-5491-4cee-939c-e33d43edcd33"
+>RevokeEBCommand()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Name="Revoke supervision status"
- Guid="dc63ce50-0975-4616-b603-277054b5a2e6"
+ Name="Revoke intervention status"
+ Guid="a67de89a-c916-4566-915c-e90f35152e20"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Revoke supervision status"
- Guid="7f339cf0-b651-4108-af81-d0c0b2d7e192"
+ Name="Revoke intervention status"
+ Guid="5c3c712e-ad1a-4a2d-874a-a810775fb63c"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="ec1bceac-8700-4af0-87f4-d6154510642c"
->RevokeSupervisionStatus()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition><RuleCondition
- Name="r2"
- Guid="213cb725-2676-4353-9726-948015bfa79f"
->
-<PreConditions>
-<PreCondition
- Guid="af277a21-4b9d-44f2-a5ba-9d2999a695c2"
->r2()</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Name="Revoke brake and TCO commands"
- Guid="436ef5d9-258e-4a3c-94bd-5b18260855e5"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Revoke EB, SB and TCO"
- Guid="44ddf9f7-921e-46e9-a093-5411d8369ed9"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="a34456b5-4984-4d33-b256-fcaa84ac2f79"
->RevokeEBCommand()</Action><Action
- Guid="7f6543c8-60b8-4353-90b0-799413a822a5"
->RevokeSBCommand()</Action><Action
- Guid="4cac12c6-e948-42a0-ab33-af3d74f42245"
->RevokeTCOCommand()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Revoke supervision status"
- Guid="ec19d462-d07c-45cc-a187-bb9de21deb0b"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Revoke supervision status"
- Guid="9e2c6edd-07ac-4586-bbe5-14a91c0171be"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="d422c47b-95f4-4270-bdeb-d86c1c648a9e"
+ Guid="12ee9a55-3769-4c2d-a27b-a5c0ce26c9bd"
 >RevokeSupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -1135,50 +1080,106 @@ TCOSpecified &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
- Name="r0"
- Guid="07fdb7b9-424c-486a-85a5-0499ee48a4a9"
+ Name="r2"
+ Guid="213cb725-2676-4353-9726-948015bfa79f"
 >
 <PreConditions>
 <PreCondition
- Guid="67bf55e0-0124-4d00-8977-42a54b3388aa"
->r0()</PreCondition></PreConditions>
+ Guid="af277a21-4b9d-44f2-a5ba-9d2999a695c2"
+>r2()</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
 <Rule
  Priority="Processing"
- Name="Revoke EB command"
- Guid="06add78b-acf7-4584-af87-e713ba7e85c8"
+ Name="Revoke brake and TCO commands"
+ Guid="436ef5d9-258e-4a3c-94bd-5b18260855e5"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Revoke EB command"
- Guid="12028e95-11c9-4162-ae10-cdbd626bd93d"
+ Name="Revoke EB, SB and TCO"
+ Guid="44ddf9f7-921e-46e9-a093-5411d8369ed9"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="2cb08036-5491-4cee-939c-e33d43edcd33"
->RevokeEBCommand()</Action></Actions>
+ Guid="a34456b5-4984-4d33-b256-fcaa84ac2f79"
+>RevokeEBCommand()</Action><Action
+ Guid="7f6543c8-60b8-4353-90b0-799413a822a5"
+>RevokeSBCommand()</Action><Action
+ Guid="4cac12c6-e948-42a0-ab33-af3d74f42245"
+>RevokeTCOCommand()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Name="Revoke intervention status"
- Guid="a67de89a-c916-4566-915c-e90f35152e20"
+ Name="Revoke supervision status"
+ Guid="ec19d462-d07c-45cc-a187-bb9de21deb0b"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Revoke intervention status"
- Guid="5c3c712e-ad1a-4a2d-874a-a810775fb63c"
+ Name="Revoke supervision status"
+ Guid="9e2c6edd-07ac-4586-bbe5-14a91c0171be"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="12ee9a55-3769-4c2d-a27b-a5c0ce26c9bd"
+ Guid="d422c47b-95f4-4270-bdeb-d86c1c648a9e"
+>RevokeSupervisionStatus()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Name="r3"
+ Guid="2bea85df-8f28-4cfb-bdfc-6048fb2e27e1"
+>
+<PreConditions>
+<PreCondition
+ Guid="ec514d12-8d7b-47b8-99dc-36849fe22e4a"
+>r3()</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Revoke brake and TCO commands"
+ Guid="37cbb59c-51f0-46fd-906a-ae9b0cbb4e05"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Revoke EB, SB and TCO"
+ Guid="4c3b5edc-614d-4784-8b24-794bf2adc6d4"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="95634efa-8049-4ef8-a18e-900263bc7df8"
+>RevokeEBCommand()</Action><Action
+ Guid="8cf1acda-91fb-4aca-8061-2d62227c7f1b"
+>RevokeSBCommand()</Action><Action
+ Guid="4f41af56-d1d0-4dfa-83cd-10489022c240"
+>RevokeTCOCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Revoke supervision status"
+ Guid="dc63ce50-0975-4616-b603-277054b5a2e6"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Revoke supervision status"
+ Guid="7f339cf0-b651-4108-af81-d0c0b2d7e192"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ec1bceac-8700-4af0-87f4-d6154510642c"
 >RevokeSupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>

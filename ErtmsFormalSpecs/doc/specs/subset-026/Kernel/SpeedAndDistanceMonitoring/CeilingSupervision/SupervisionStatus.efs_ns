@@ -4,6 +4,7 @@
  Name="SupervisionStatus"
  Guid="a7d1bd34-950f-47c0-949f-31e7184ad78e"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Functions>
@@ -296,6 +297,7 @@ CSMStatusRevocation()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2d7530a4-a406-4bc9-9e9d-f951854013de"
 >
+<Comment></Comment>
 </ReqRef><Comment>Handles the application of supervision status trigger when the train is in ceiling supervision</Comment>
 <Rules>
 <Rule
@@ -317,11 +319,6 @@ CSMStatusRevocation()</Action></Actions>
  Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d65d6389-33d7-4407-8bf0-636ff32ca1d4"
->
-</ReqRef><ReqRef
- Id="3935be43-6132-47c6-8ef3-28195e4f690c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c84bf7ac-6784-4944-8c2b-b699190e9ab5"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -361,7 +358,8 @@ CSMStatusRevocation()</Action></Actions>
  Guid="69dbf7af-26e1-420a-a2be-d2624eed2eee"
 >Supervision &lt;- SupervisionStatusEnum.Intervention</Action><Action
  Guid="08d3e61f-777a-454b-ba65-928ccd503713"
->EBTriggered &lt;- True</Action><Action
+><Comment></Comment>
+EBTriggered &lt;- True</Action><Action
  Guid="223e840e-7826-4f01-bc2a-f01bdea32ceb"
 >EBSpecified &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
@@ -501,6 +499,79 @@ t4()</PreCondition></PreConditions>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ Name="r0"
+ Guid="c4307476-0bce-4017-8b43-060ce2599b77"
+>
+<ReqRef
+ Id="4f24d434-b967-4e8b-b2b1-e0b3f4d6c2dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0291a9ed-8988-4005-b65c-707d3b0f92b5"
+>
+</ReqRef><ReqRef
+ Id="644aa967-53f8-4d2c-b5ba-6a857c9cda54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a4fd652-11c7-4a14-b685-1e32a8c6352c"
+>
+</ReqRef><ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="31cf935f-c5a2-4bfc-a5bb-deda3178c506"
+>
+</ReqRef><Comment>Revocation condition 0: Train at standstill, revoke Intervention Status.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="4e4830fc-a94d-426b-9f5e-b913436afab4"
+><Comment></Comment>
+r0()</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Revoke intervention status"
+ Guid="86b9de37-f907-4710-bf64-412ed93e848d"
+>
+<Comment>Revoke intervention status</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Revoke intervention status"
+ Guid="9d7e201d-500a-409c-b2a0-d2aaebee3cd6"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="292dcc2b-5f14-4704-9498-c3afbeea2d95"
+><Comment></Comment>
+RevokeSupervisionStatus()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Revoke EB command"
+ Guid="9de1af4c-4516-4777-82c0-bb28efaf93ad"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="RevokeEBCommand"
+ Guid="f89ef6a2-a19e-4128-a39d-0fb2ec6b3810"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="6d175e6c-da20-4473-a4af-64d640ac6605"
+>RevokeEBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="r1"
  Guid="1f35326e-e380-4cd3-9f1f-2e24e78b1d44"
 >
@@ -574,77 +645,6 @@ RevokeEBCommand()</Action></Actions>
  Guid="5beb366b-253e-4aee-b9a5-b655a066ee93"
 ><Comment></Comment>
 RevokeSupervisionStatus()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="r0"
- Guid="c4307476-0bce-4017-8b43-060ce2599b77"
->
-<ReqRef
- Id="4f24d434-b967-4e8b-b2b1-e0b3f4d6c2dc"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0291a9ed-8988-4005-b65c-707d3b0f92b5"
->
-</ReqRef><ReqRef
- Id="644aa967-53f8-4d2c-b5ba-6a857c9cda54"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8a4fd652-11c7-4a14-b685-1e32a8c6352c"
->
-</ReqRef><ReqRef
- Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="31cf935f-c5a2-4bfc-a5bb-deda3178c506"
->
-</ReqRef><Comment>Revocation condition 0: Train at standstill, revoke Intervention Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="4e4830fc-a94d-426b-9f5e-b913436afab4"
->r0()</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Revoke intervention status"
- Guid="86b9de37-f907-4710-bf64-412ed93e848d"
->
-<Comment>Revoke intervention status</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Revoke intervention status"
- Guid="9d7e201d-500a-409c-b2a0-d2aaebee3cd6"
->
-<Comment></Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="292dcc2b-5f14-4704-9498-c3afbeea2d95"
-><Comment></Comment>
-RevokeSupervisionStatus()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Revoke EB command"
- Guid="9de1af4c-4516-4777-82c0-bb28efaf93ad"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="RevokeEBCommand"
- Guid="f89ef6a2-a19e-4128-a39d-0fb2ec6b3810"
->
-<Comment></Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="6d175e6c-da20-4473-a4af-64d640ac6605"
->RevokeEBCommand()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

@@ -1,0 +1,333 @@
+<NameSpace
+ Width="100"
+ Height="50"
+ Name="SupervisionStatus"
+ Guid="9ab78993-f6ea-4234-8c27-f3e7d81802c8"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="t1"
+ Guid="21173b5b-57fa-4cbe-a254-6c27357a44c1"
+>
+<ReqRef
+ Id="bbfaaf11-9b3a-4835-9998-6de8e5069412"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="49356c4c-79cb-458e-b29e-a02a4a90fcfc"
+>
+</ReqRef><Cases>
+<Case
+ Name="Value"
+ Guid="d05d8ee9-8d74-43cf-beb1-fbefcc2b09f4"
+>
+<Expression>Odometry.EstimatedSpeed &lt;= ReleaseSpeed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Name="t2"
+ Guid="800c4ece-1e6b-42f5-99e5-7e617ccc8ffe"
+>
+<ReqRef
+ Id="21b938e6-12e3-485f-ad6f-9dd55a927ce3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="506a386b-1d34-4c28-8541-edbc462abbb6"
+>
+</ReqRef><Cases>
+<Case
+ Name="Value"
+ Guid="e87ff07c-96e8-4624-84ad-c0161d738821"
+>
+<Expression>Odometry.EstimatedSpeed &gt; ReleaseSpeed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Name="r0"
+ Guid="75e31b62-b108-4d81-b064-eed24de4afa9"
+>
+<ReqRef
+ Id="9b034e20-6738-4ae4-ba40-0ac20a7bf5cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ba27403f-fe4b-4a61-b699-b98dc5d6a002"
+>
+</ReqRef><Cases>
+<Case
+ Name="Value"
+ Guid="10ede886-9c10-497e-afc8-27d479211645"
+>
+<Expression>Odometry.TrainIsAtStandstill()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="330"
+ Width="100"
+ Height="50"
+ Name="r1"
+ Guid="49cd08dd-5e2c-4686-97c7-f5025ca3a039"
+>
+<ReqRef
+ Id="be8b9dfd-79ae-4709-9168-749e7ed03cad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d5ca0b44-093b-4d85-a470-da2228564c63"
+>
+</ReqRef><Cases>
+<Case
+ Name="Value"
+ Guid="4d585853-7421-49b1-afc2-fef58639721d"
+>
+<Expression>Odometry.EstimatedSpeed &lt;= ReleaseSpeed</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Width="100"
+ Height="50"
+ Name="UpdateSupervisionStatus"
+ Guid="c240167e-b0d8-45da-b9a2-08987c7d3af3"
+>
+<ReqRef
+ Id="987011eb-4ef7-491c-8292-26c140669ff8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05b52571-d8e0-4023-af17-a7c679616d6a"
+>
+</ReqRef><ReqRef
+ Id="f71170cc-f625-404a-93f9-5cb4b527f0d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1c6e5b9c-ab52-4015-9def-c235079de58a"
+>
+</ReqRef></Procedure><Procedure
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="RSMStatusRevocation"
+ Guid="c311da9a-a953-4419-aeaf-8ce89d453dc3"
+>
+<ReqRef
+ Id="9d299cde-3608-48dc-b370-463f7a74b5e3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7327a771-313e-4ffd-938a-82ed178ef6fc"
+>
+</ReqRef><ReqRef
+ Id="dce4a4ca-1d9d-4bec-bbd0-b82a791c93bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f6afa419-c603-44ca-8889-945562212aac"
+>
+</ReqRef><ReqRef
+ Id="cc58f785-b8ad-4070-9b9a-b6ec8e0f6e2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4657d734-21af-415d-a490-6928b11c11cc"
+>
+</ReqRef><ReqRef
+ Id="b1282fd5-cab1-48c7-bdf8-26de1ac6a0f5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88f03bea-cdac-4d31-b110-ca7360aaa9d2"
+>
+</ReqRef><ReqRef
+ Id="f71170cc-f625-404a-93f9-5cb4b527f0d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="41f74bdf-69e1-4228-9286-71618a5314fe"
+>
+</ReqRef><ReqRef
+ Id="896f9fb5-9ef6-459b-b93e-c681a1ec59d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5cbfd244-2633-433e-851f-ecba9d725fd2"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="Revoke supervision status"
+ Guid="110e5c18-12a3-4c30-82b8-99031dd14b5a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="r0"
+ Guid="722fec14-697c-438b-a893-3edc6cf10442"
+>
+<ReqRef
+ Id="9b034e20-6738-4ae4-ba40-0ac20a7bf5cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="521f63a7-6f76-439a-97f3-dccb591eb46e"
+>
+</ReqRef><ReqRef
+ Id="dd0da099-d404-4f93-b840-c25c06defab7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="99b81fc9-4451-439b-b36e-3bb425fc541a"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="cfc4c3b0-3f11-40ab-8ce3-e4f6f25f932b"
+>r0()</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Revoke EB command"
+ Guid="bcd8bec2-b3cb-4ecc-8852-7ba9619650f4"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="RevokeEBCommand"
+ Guid="ad1f3077-5212-4050-a6c4-9417de1c7869"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="26333aaf-87fd-47f9-9047-8d73a8e65f4d"
+>RevokeEBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Revoke intervention status"
+ Guid="d364ff89-10ee-4e2b-82c7-6e15015e1555"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Revoke intervention status"
+ Guid="8e39e8eb-7e95-4e24-90b0-0e12a8727a97"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="eff4569e-9fd9-4f0a-a556-4b956c8b1e9e"
+><Comment></Comment>
+RevokeSupervisionStatus()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Name="r1"
+ Guid="936bfa28-8516-4851-80c9-00b99abe1af5"
+>
+<ReqRef
+ Id="be8b9dfd-79ae-4709-9168-749e7ed03cad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e0a4affc-511f-4a4b-9d1c-06ce1d918541"
+>
+</ReqRef><ReqRef
+ Id="dd0da099-d404-4f93-b840-c25c06defab7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="08fe45ca-c708-4e85-adc8-6a33cc3f8738"
+>
+</ReqRef><PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="110"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="RSMStatusTriggers"
+ Guid="0afaa75c-6892-4e2b-bfce-d7a8ba6e2aa3"
+>
+<ReqRef
+ Id="e8744363-1d19-41ea-8644-14b273e953b5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="08e98322-9810-4092-9132-c732a94838d3"
+>
+</ReqRef><ReqRef
+ Id="dce4a4ca-1d9d-4bec-bbd0-b82a791c93bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cd14d0c2-35e4-416e-bae5-a49b7d459990"
+>
+</ReqRef><ReqRef
+ Id="cc58f785-b8ad-4070-9b9a-b6ec8e0f6e2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6b3c3451-6535-4235-a494-bedeb0487fff"
+>
+</ReqRef><ReqRef
+ Id="b1282fd5-cab1-48c7-bdf8-26de1ac6a0f5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c38f9f2a-3008-47ba-9bb1-c482f6184ba7"
+>
+</ReqRef><ReqRef
+ Id="f71170cc-f625-404a-93f9-5cb4b527f0d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="76b3c174-3962-4a3a-81b8-8eb2e719c758"
+>
+</ReqRef><ReqRef
+ Id="896f9fb5-9ef6-459b-b93e-c681a1ec59d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dc908281-aa63-4980-bcf0-fe1985bffc49"
+>
+</ReqRef><Comment></Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Trigger supervision status"
+ Guid="44b10dbf-a1c0-43fe-998a-46d4e73bef57"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="t2"
+ Guid="3583026d-b5e3-4b99-9ba6-9c6a800eb502"
+>
+<ReqRef
+ Id="21b938e6-12e3-485f-ad6f-9dd55a927ce3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e88dff19-1bf8-452c-92d0-afb2fb95515e"
+>
+</ReqRef><ReqRef
+ Id="4bd9437c-f793-4471-b3f2-d0e50cda8c6a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="37742fa5-1184-4d09-85c5-c5b4756c147d"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="94bfb9a8-e6a5-4c87-98ff-036a5c768745"
+>t2()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f980166b-1c26-428b-a160-65f275b430d7"
+>EBTriggered &lt;- True</Action><Action
+ Guid="455aefe5-2f7b-411b-81af-448c8842d104"
+>EBSpecified &lt;- True</Action><Action
+ Guid="851e4bea-f02b-485b-af98-e25949607286"
+>Supervision &lt;- SupervisionStatusEnum.Intervention</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="t1"
+ Guid="460c2563-9ebe-43b3-9cfc-f30c7e83006f"
+>
+<ReqRef
+ Id="bbfaaf11-9b3a-4835-9998-6de8e5069412"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a5b38313-6230-427a-9c60-141ee0a1dabd"
+>
+</ReqRef><ReqRef
+ Id="dd0da099-d404-4f93-b840-c25c06defab7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9bd00bf4-74e6-4fad-a7e8-a2ae6949f808"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="1b905abe-c4a0-46ea-a5a4-0e6464808679"
+>t1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c5969fc7-ddfe-4c0a-b1d9-d2ca0dfbcd85"
+>Supervision &lt;- SupervisionStatusEnum.Indication</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+</NameSpace>
