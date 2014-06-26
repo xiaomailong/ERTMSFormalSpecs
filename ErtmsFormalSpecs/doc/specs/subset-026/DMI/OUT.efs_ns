@@ -3405,6 +3405,11 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosit
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f1539fc9-b2b8-4b17-84ee-d007d7ef10a2"
 >
+</ReqRef><ReqRef
+ Id="66b79932-5e84-4126-abe6-3094347749c2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6eee072c-bb0d-4dfe-bf2c-5398d5799d15"
+>
 </ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
@@ -3429,7 +3434,9 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosit
   AND
 ProcedureOut not in ProcedureOutSM.NotApplicable
   AND
-ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition></PreConditions>
+ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
+ Guid="78553180-bb98-4ae4-b78e-5c3c02ff6417"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c312fe49-c752-4ce5-8361-a09bc8d7ecab"
