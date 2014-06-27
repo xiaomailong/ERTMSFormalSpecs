@@ -181,7 +181,8 @@ Duplicate balises<Sub>
  functionalBlockName=""
  Name=""
  Guid="4e07491f-516f-4494-87d7-96cf0ecef9d8"
->N_PIG given in each balise of a balise group are uniques, even for duplicate balises<RequirementSets>
+><Comment></Comment>
+N_PIG given in each balise of a balise group are uniques, even for duplicate balises<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7deceea4-b766-4b97-a1ae-9bcc727eb190"
@@ -264,7 +265,8 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  functionalBlockName=""
  Name=""
  Guid="88930fd0-2a41-48f8-ac88-35d8c1d60f47"
->We assume that each Messages.EUROBALISE.SubStructure1 received by the BTM contains at most one packet. Otherwise the order of packets within a balise message would not be respected (a case which is pointless).<RequirementSets>
+><Comment></Comment>
+We assume that each Messages.EUROBALISE.SubStructure1 received by the BTM contains at most one packet. Otherwise the order of packets within a balise message would not be respected (a case which is pointless).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2eeb4acb-bdc5-4638-b8c3-e101c2f9b606"
@@ -605,7 +607,13 @@ The paragraph 3.13.2.2.6.2 indicates that the selection of brake parameter for A
  Name=""
  Guid="dbce4b67-1a6f-4e35-ae83-e827c8a25a48"
 ><Comment></Comment>
-Our implementation does not compute braking curves in rear of the current train position. To account for requirements 3.13.9.5.9 and 3.13.9.5.10, we first test that the deceleration curves are strictly below the MRSP speed and handle that case accordingly.</Paragraph></Sub>
+Our implementation does not compute braking curves in rear of the current train position. To account for requirements 3.13.9.5.9 and 3.13.9.5.10, we first test that the deceleration curves are strictly below the MRSP speed and handle that case accordingly.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="94d3b0d0-c84e-4198-b4d2-147114e78299"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -1599,7 +1607,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  functionalBlockName=""
  Name=""
  Guid="7e2eedb2-843c-49cc-baec-39383388af08"
->Requirement 3.16.2.3.1.a) says that the action must take place &quot;in rear of&quot; the expectation window. As it doesn&apos;t make sense for this to occur after the expctation window has been passed we have decided that &quot;in rear of&quot; means &quot;before it is entered&quot; in this case.<RequirementSets>
+>Requirement 3.16.2.3.1.a) says that the action must take place &quot;in rear of&quot; the expectation window. As there would be no benefit for this to occur after the expctation window has been passed we have decided that &quot;in rear of&quot; means &quot;before it is entered&quot; in this case.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="4dd284ad-c9b9-468f-8dfc-72b4731303be"
@@ -2126,7 +2134,13 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  functionalBlockName=""
  Name=""
  Guid="0da31c55-f161-4360-8db2-5796e62f6729"
->The spec provides the calculation for the pre-indication location based on a target, but the spec does not clearly state which target is used to calculate the EBD used with V_MRSP-n</Paragraph></Sub>
+>The spec provides the calculation for the pre-indication location based on a target, but it does not clearly state which target is used to calculate the EBD used with V_MRSP-n in a given section of the MRSP.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a5abaefc-83ae-4cbf-8dbc-0ebf67bd955c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph></Sub>
 <RequirementSets>
