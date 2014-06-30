@@ -1,0 +1,105 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Fisrt Line of Intervention Test"
+ Guid="460be35e-e21f-4cd5-81cf-141866817f4e"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="FLOI Test"
+ Guid="3cd95f1c-5358-4571-9020-d7d8ec7b0bfb"
+>
+<TestCases>
+<TestCase
+ Name="Set the FLOI speed"
+ Guid="6d57aee3-13e4-411e-b6c6-07b5533edf3d"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="baeb96a7-29f0-4821-8d7f-054533d3f81d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="bc4a5e69-5bff-4879-a37b-a3091259c92e"
+>
+<Actions>
+<Action
+ Guid="2ce62753-547a-423e-9347-7d1b75c9d908"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="5e03195e-c966-44e3-8e78-d09c2656612e"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="b443823b-c3e9-47b3-aceb-bd0183898871"
+>Kernel.Mode &lt;- Mode.FS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="fbdcc9d1-f88c-4784-9aef-398e3b48d99f"
+>Kernel.Level.Value == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2095413c-78da-42b5-bc3e-1384d1d6d5b6"
+>Kernel.Mode == Mode.FS</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set FLOI Speed"
+ Guid="8408cd0f-0ca1-47cc-80be-dfcda9627909"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="bd428d07-5058-4cb7-8fc5-23d9e4563894"
+>
+<Actions>
+<Action
+ Guid="cdec686b-542c-4ed9-8bfc-0e74fc7cd9a0"
+>DMI.MasterDMI().Out_FLOI.Speed &lt;- 130.5</Action><Action
+ Guid="5dedbe4b-14de-4a62-b5e2-8bed57a0ab4d"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Modify current Speed"
+ Guid="aa531c6d-1cda-4c9c-a8c5-6fb8d7415cea"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="3548ef90-04ab-492a-a252-b5d0c72b3048"
+>
+<Actions>
+<Action
+ Guid="69eafda2-9f7a-42cc-8722-0a728871f0e7"
+><Comment></Comment>
+Odometry.EstimatedSpeed &lt;- 150.5</Action><Action
+ Guid="0a65f625-ae26-4dbf-be29-7f44138e4782"
+>DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

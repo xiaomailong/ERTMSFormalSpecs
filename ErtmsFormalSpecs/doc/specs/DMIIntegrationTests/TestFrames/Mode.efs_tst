@@ -1,0 +1,79 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Mode"
+ Guid="351f6fd8-2ea3-4dad-af84-c32a047dcc5a"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Mode unitary test"
+ Guid="9351275a-cc5b-41e5-bc1a-7f245d2725ee"
+>
+<TestCases>
+<TestCase
+ Name="Mode Test"
+ Guid="94f6f623-24b8-449a-8405-be2f2816e6f7"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="31d1d2f4-2a0e-4945-8432-512889437aaa"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="c262849f-c25a-4bd6-a467-a2ff831e4fa9"
+>
+<Actions>
+<Action
+ Guid="52926259-28e7-4aab-b893-c2e40ec15421"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="7a1ff64f-5574-40c6-a9ad-5a8679882a76"
+>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1f1a79a5-efe7-4eac-bf03-ee82983ef5db"
+>Kernel.Level.Value == Level.L0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="64aeaf06-2b97-44c0-a85b-c5bdd9dd65ad"
+>Kernel.Mode != Mode.SB</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Mode change to UN"
+ Guid="13dd6a4f-b7b6-499f-a9c7-72761ccafe46"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="43f3368e-e542-4eed-af3d-3d02a2481a79"
+>
+<Actions>
+<Action
+ Guid="9483a3fa-a85c-4e35-bd21-47698cacbb77"
+>Kernel.Mode &lt;- Mode.UN</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

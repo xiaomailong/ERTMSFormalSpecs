@@ -1,0 +1,92 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Gradient Information"
+ Guid="121ca3a5-a106-4d1c-ad38-1bb72ec929c2"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Gradient information Test"
+ Guid="be347008-63ea-41a1-b1fe-bcd409fbb3ad"
+>
+<TestCases>
+<TestCase
+ Name="Gradient Information"
+ Guid="6dcfc0d0-0ba2-401f-af3d-05ee5b57d1b3"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="1b72bfc6-ed6a-42cf-8cb1-e955975e6ffe"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="79bbf647-ece6-41bb-aa94-6f616b2690ab"
+>
+<Actions>
+<Action
+ Guid="920d7492-d88a-4808-8824-b2728f23eea8"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="6a74d3a2-411a-4f0d-9b60-0db3ac5b7140"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="1e43e90a-b592-418e-b21e-d0d809cda6b3"
+>Kernel.Mode &lt;- Mode.FS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4b31dfd1-9ad1-410d-a672-ff202ad7fb88"
+>Kernel.Level.Value == Level.L1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set Gradient Values"
+ Guid="7d327273-3f7e-478a-a8f6-cc88d518f4c7"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="e2596f81-81aa-4851-8472-5e1229895a06"
+>
+<Actions>
+<Action
+ Guid="070f7924-e524-4aa2-8c12-f17705104466"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 1500.0,
+    Gradient =&gt; 5.0
+},Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 2500.0,
+    Gradient =&gt; -5.0
+}]</Action><Action
+ Guid="a5c28c37-6e8d-4e3a-97f6-40d67fe92acf"
+><Comment></Comment>
+DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="193b752a-015c-48d2-8250-2411b7d5a91d"
+>DMI.MasterDMI().Out_Gradient.GradientValues != []</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

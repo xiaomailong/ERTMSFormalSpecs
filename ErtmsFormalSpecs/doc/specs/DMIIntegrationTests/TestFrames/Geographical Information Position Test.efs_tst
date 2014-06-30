@@ -1,0 +1,81 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Geographical Information Position Test"
+ Guid="06d4f4cf-d432-4be9-871a-0bbd302a7921"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Geographical position"
+ Guid="5371e797-511d-4091-b979-f1a543cda327"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="11595579-c371-42fa-9db1-5c9244992ef2"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="44c424a3-f878-4c00-a705-54632e6dd177"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="724bf52d-99ae-48f8-8efd-3274e4bc6900"
+>
+<Actions>
+<Action
+ Guid="8e74426d-a54e-45bd-a199-7eda1f1e8aaf"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="e2d941dd-29d6-42c6-aff7-e392f8f2408e"
+>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0285697f-6a5f-4f2c-a389-82321ab0b465"
+>Kernel.Level.Value == Level.L0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="79d0d83a-0d0b-462c-8b38-89fbaa7ac1c7"
+>Kernel.Mode != Mode.SB</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set Geographical position"
+ Guid="648473c0-2fce-4dd4-ba50-17185eaa267f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="5f29165b-5bc3-4be9-b2ae-2e9ccde3557f"
+>
+<Actions>
+<Action
+ Guid="db99218f-c801-4e1e-8f4d-44691d793f77"
+>DMI.MasterDMI().Out_GeographicalPosition.Position &lt;- 14.525</Action><Action
+ Guid="a7ed2a63-b811-4fb3-a06a-2d62ae760d9f"
+>DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>
