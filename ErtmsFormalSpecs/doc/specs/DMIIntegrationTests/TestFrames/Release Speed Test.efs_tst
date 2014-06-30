@@ -1,0 +1,84 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Release Speed Test"
+ Guid="464b1c9a-a01d-4ee2-95de-cbdd8831c0ad"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Set Release Speed Parameter"
+ Guid="6225d2ab-e305-4280-b5f0-f08341ecaad5"
+>
+<TestCases>
+<TestCase
+ Name="Vrelease test"
+ Guid="64dd8f0f-1061-49ed-8b5a-5fe9e3b44052"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="839d26dc-4612-48b7-97cf-b01960d520fe"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="5e1af0e9-4924-4db0-96b7-0028c2df8a9f"
+>
+<Actions>
+<Action
+ Guid="e70b524c-88ae-4d04-8314-b0be5d1cda97"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="0f4c64dd-c33c-4bfd-a5b1-17d7a52efdf7"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="dfef07aa-63c0-4e93-af26-d4747b6b24dc"
+>Kernel.Mode &lt;- Mode.FS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="307eef33-8fdd-4d91-9eb7-77f5b5723830"
+>Kernel.Level.Value == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="203a878f-6f45-4db6-99af-b7b51f31d634"
+>Kernel.Mode == Mode.FS</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="set Release Speed"
+ Guid="0750a507-0242-4107-9938-6715d41cf7d7"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="0d133f81-a5d3-4ef1-ac7e-71b1096e95fc"
+>
+<Comment></Comment>
+<Actions>
+<Action
+ Guid="f1cc48f5-7c52-4399-b8ac-fe10dbc08f91"
+>Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed &lt;- 15.0</Action><Action
+ Guid="e4240f8d-fd03-4a1c-9de5-ee96d0893a7c"
+>DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

@@ -1,0 +1,102 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Brake Indication"
+ Guid="726747ca-3ddd-4fec-beeb-8676f692e761"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Brake Indication unitary test"
+ Guid="4c007ed0-6eda-4d8b-b453-04415185c0ab"
+>
+<TestCases>
+<TestCase
+ Name="Change Brake Indication Status"
+ Guid="3fb610f6-19c6-4913-9ea2-91e81c392b65"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="916204a2-b96f-4537-99ea-e80ce7449ed5"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d46ac256-04cb-42bd-8293-591f8907636b"
+>
+<Actions>
+<Action
+ Guid="69070913-f3a0-4c01-b6b8-8038f22f539b"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="1e513234-010e-414e-87ee-fc7f611da994"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="dc5cb4ef-9bc7-42ef-98e5-48c1bc70dda0"
+>Kernel.Mode &lt;- Mode.UN</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e301bf44-5f36-4788-95da-6936e4985cc5"
+>Kernel.Level.Value == Level.L0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="fb442197-40f8-47f7-9b0b-5063512d78af"
+>Kernel.Mode != Mode.SB</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set the Brake Indication"
+ Guid="e4968651-a8f4-4dab-950b-64fea4f5df2c"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="2084640a-ebf1-49ee-ad98-2c6b8c8fb8f6"
+>
+<Actions>
+<Action
+ Guid="c21b1e79-7503-45ed-a1a7-f6b67f7d72b8"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Brake Reason"
+ Guid="04c92c1a-bbb9-4b70-9885-1adbaa444efd"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="0c80a88b-a245-4fe9-95d7-0890346d4344"
+>
+<Actions>
+<Action
+ Guid="a2d66bf9-4ea1-4d42-aea3-88c6ffb54bd9"
+>DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
+ Guid="4cf6b6f1-797f-44c1-af2a-b8559c9152da"
+>DMI.MasterDMI().Out_BrakeReason.Reason &lt;- Kernel.BrakeReason.OrderFromRBC</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

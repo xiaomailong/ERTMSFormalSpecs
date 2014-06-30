@@ -1,0 +1,81 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Adhesion Factor Unitary Test"
+ Guid="a8cf11d3-9835-490d-9249-4c2dce790d7a"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Set the Adhesion Factor Value"
+ Guid="6e1522cd-77af-47be-9a59-1ac08d5f8543"
+>
+<TestCases>
+<TestCase
+ Name="Adhesion Factor"
+ Guid="6d79f8c6-9a7e-470e-b2d3-51295925d6e9"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="5be54c14-7d23-46ae-a486-d53c365ec2c1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="f12b8e76-73b8-4510-9fb9-720d55e0e408"
+>
+<Actions>
+<Action
+ Guid="cde7cedd-6cdf-4bbb-8bc6-651530aa6340"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="02ad3e1b-c842-4d18-82a4-d14d65735a42"
+>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="cbf326d8-53b5-497c-8013-4717db425932"
+>Kernel.Level.Value == Level.L0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ff57d74a-630d-44e8-8fdc-ba2a03f128f3"
+>Kernel.Mode != Mode.SB</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Establish the value for the Adhesion Factor"
+ Guid="ebc6a862-f7e8-4db5-8f61-e980e4f5ed3f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="abb433a4-8590-41f8-b98e-ee6fdbe38f9f"
+>
+<Actions>
+<Action
+ Guid="5ba0db33-ca0d-4554-a90a-e94fff9bb683"
+>DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.AdhFactor &lt;- True</Action><Action
+ Guid="5d94221a-0367-4fe5-9152-b48e5e011930"
+>DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

@@ -1,0 +1,81 @@
+<Frame
+ CycleDuration="0.1"
+ Name="reversing Allowed Test"
+ Guid="149114b8-76a5-48b2-8d49-bf75c3f523c3"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Reversing Allowed Unitary Test"
+ Guid="d027e92a-a613-4dd8-865b-392bf9b8bd28"
+>
+<TestCases>
+<TestCase
+ Name="Change the value of the Reversing Allowed Variable"
+ Guid="42789182-3f4c-4886-bfc1-57529b57ecce"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="229d5b38-62df-481d-b035-d0e02dcf9c5d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="59fe8c68-02d4-4c1b-98fa-6fad46de376a"
+>
+<Actions>
+<Action
+ Guid="a8549834-900a-48dc-b76d-f9d460d92a5b"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="cf40313e-ab21-4c09-9e75-9c0b686bc74f"
+>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="421bd1dc-03f2-43d2-be9b-459e2417cdc7"
+>Kernel.Level.Value == Level.L0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="eaaeb079-d15e-45f0-859e-b4f736def7cf"
+>Kernel.Mode != Mode.SB</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Modify Value of Reversing Allowed"
+ Guid="82386c30-a280-4c35-8de0-0f93c5c0eb37"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="0d6c3cd8-c77b-429e-ac49-abfbc58d55fc"
+>
+<Actions>
+<Action
+ Guid="7f0ad22f-8bac-4b87-8098-7bc347d82815"
+>DMI.MasterDMI().Out_ReversingAllowed.ReversingAllowed &lt;- Boolean.True</Action><Action
+ Guid="b912039e-1f6c-4d19-9dc6-a5190721f2b8"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

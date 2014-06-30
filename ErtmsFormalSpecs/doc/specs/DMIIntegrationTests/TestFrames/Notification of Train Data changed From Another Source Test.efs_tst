@@ -1,0 +1,79 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Notification of Train Data changed From Another Source Test"
+ Guid="9fa3050f-bceb-4608-954a-eb9a3505c8d0"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Train Data Changed From another Source"
+ Guid="08895431-5fd4-43f8-8e06-096ce488508b"
+>
+<TestCases>
+<TestCase
+ Name="Unitary Test Notification Of Train Data Changed From Another Source"
+ Guid="e06dc0b0-82c3-4494-890b-27b36890ce1c"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="d1624967-2b9a-4aa9-a416-f753a73f4056"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="f228f25f-3dee-4e28-9a89-1986e3e6b2e5"
+>
+<Actions>
+<Action
+ Guid="1f55202b-48a0-4349-9a66-dbbe4383efab"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="b9a79804-c9db-4393-8306-88c6283a68c1"
+>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="57d5b61f-7dd8-4473-a2b9-96128c1053c8"
+>Kernel.Level.Value == Level.L0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="5c8fc00c-3123-4085-a627-9cbfd80de332"
+>Kernel.Mode != Mode.SB</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Change Value Of Train Data Changed From Another Source"
+ Guid="4435f89d-29e8-49fb-ba19-0a4e66058134"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="0ad6c0eb-2ea2-4f9e-be3a-e6ce0ff96d26"
+>
+<Actions>
+<Action
+ Guid="77d389de-6c62-465c-b84e-dca998c1b213"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

@@ -1,0 +1,79 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Train Rejected Unitary Test"
+ Guid="b7f0d9bc-b61a-46ff-ac37-825d0482be80"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Train Rejected"
+ Guid="b8e35640-b575-44f3-8b28-f1c0f6ddf771"
+>
+<TestCases>
+<TestCase
+ Name="Set Train Rejected"
+ Guid="db6a942b-e2d2-4244-ad5d-c7503165c513"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="ab7554d2-c9bb-4dcb-9b2f-237563ce8588"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="153eff53-d70f-4aec-93de-38fab2a73308"
+>
+<Actions>
+<Action
+ Guid="0200dbab-63e8-4da4-8d18-615765a4d794"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="c0187a64-1eb2-4799-a553-bf8a02527f84"
+>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e3e59295-9dc2-4326-9106-b0dad533dbfa"
+>Kernel.Level.Value == Level.L0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="48e1ec10-e2a5-4235-a9a9-36c908cf69cd"
+>Kernel.Mode != Mode.SB</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set Train Rejected"
+ Guid="198145e9-5ea2-49f3-aca2-d0e9081bb364"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7d2df57a-0e2e-4f26-a17e-4bc143762edc"
+>
+<Actions>
+<Action
+ Guid="abdeac7d-0fde-4e49-9a89-2d1d7986bb7b"
+>DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

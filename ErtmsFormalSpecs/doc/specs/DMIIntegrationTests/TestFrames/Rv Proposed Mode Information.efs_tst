@@ -1,0 +1,69 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Rv Proposed Mode Information"
+ Guid="edf14b59-4688-4617-94fe-c842a2425f2e"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Proposed Rv Mode"
+ Guid="ac67ac8a-6d61-4578-a6eb-afeee65296ed"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="46925352-e2af-4a8c-8cea-c7c16c2a8a5c"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="67cd8017-0e8f-4f4c-9959-6af4b816e328"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="a4c0cd44-ba7b-4f06-a54b-e33752edf54e"
+>
+<Actions>
+<Action
+ Guid="e4547456-6169-4f91-8afb-f35dc9d31c07"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="d14cae19-4cec-4f6f-8462-cdd1a8632950"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set Rv Proposed Mode Variable"
+ Guid="784767e0-f447-4800-a642-705452d009bf"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="5eda4897-5e98-4ca7-9e7f-29b86f3f319f"
+>
+<Actions>
+<Action
+ Guid="9d2999d5-53d4-4bca-af26-8a42621dee05"
+>DMI.MasterDMI().Out_RVModeProposed.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

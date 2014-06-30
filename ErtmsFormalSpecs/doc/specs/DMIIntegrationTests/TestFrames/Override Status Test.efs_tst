@@ -1,0 +1,81 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Override Status Test"
+ Guid="2616109f-96fc-4d3b-9b27-905ee119105c"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Override Status Unitary Test"
+ Guid="a276c4b4-11a2-49d9-ab50-9fbabbf28242"
+>
+<TestCases>
+<TestCase
+ Name="Establish the value of the Override Status"
+ Guid="6292ca6c-c43a-4488-bccb-83f51157f1c9"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="f5a39593-600f-4fc1-91b4-43bff1d0ed4e"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="a1fe3be8-3568-4d85-9067-d71d5d8a0278"
+>
+<Actions>
+<Action
+ Guid="f4bc6ba8-1d90-436d-bcc4-127353254ed7"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="7234bcc7-0508-4d08-a7bf-abd1f546cbe1"
+>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="81be5478-4678-4e16-a75c-0553cc280923"
+>Kernel.Level.Value == Level.L0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4109702b-cded-4631-a8ae-ddab500475be"
+>Kernel.Mode != Mode.SB</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set OverrideStatus"
+ Guid="4db9934e-9ffa-402a-bb51-3280b57068ab"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="ec29c31b-fb96-4ff2-8e18-8692bc0dd0eb"
+>
+<Actions>
+<Action
+ Guid="a17e91ae-76b9-4cc8-862b-8a2e8f2d7149"
+>DMI.MasterDMI().Out_OverrideStatus.OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
+ Guid="6e54f42e-c02a-44d4-943d-86b044cf0333"
+>DMI.MasterDMI().Out_OverrideStatus.OverrideStatus &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

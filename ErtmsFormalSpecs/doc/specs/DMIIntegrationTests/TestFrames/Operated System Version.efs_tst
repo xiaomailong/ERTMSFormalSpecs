@@ -1,0 +1,81 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Operated System Version"
+ Guid="5f3897d6-82a1-4b24-ac78-3c854c51d119"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Operated System Version Test"
+ Guid="79ac1c39-a53b-4368-a940-bce3fd6b0931"
+>
+<TestCases>
+<TestCase
+ Name="Sets the Value of The Operated System Version"
+ Guid="b4dbc319-b4b3-461a-9d2b-056c2a0a6e9b"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="8ddfb484-8130-4032-9494-3d9fac646fc0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d9ec5e8e-5fb5-49c9-bf03-003abc06f0a4"
+>
+<Actions>
+<Action
+ Guid="170a93a5-e836-47e9-9c6e-e204abc1fa9c"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="8fc4fa97-a5fe-4f53-8426-3b63a977e3bd"
+>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4067c72b-1569-4479-ad2b-3d46f1918835"
+>Kernel.Level.Value == Level.L0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="fb08f463-2c5c-4344-aeae-16fdc492dc0d"
+>Kernel.Mode != Mode.SB</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Operated System Version SetUp"
+ Guid="20ff3f4a-d2a5-436a-afab-2a1fa1eb0525"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="192ae352-632a-42e9-affe-fae60ef0da78"
+>
+<Actions>
+<Action
+ Guid="0e348685-60ce-4de8-b2e5-df216d95a36a"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Version &lt;- &apos;Version 1.0&apos;</Action><Action
+ Guid="c536c327-47c1-40f9-9dfc-7f134f6a5473"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>
