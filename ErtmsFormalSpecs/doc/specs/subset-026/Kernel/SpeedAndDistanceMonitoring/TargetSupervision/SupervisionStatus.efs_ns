@@ -322,6 +322,7 @@
  Name="Trigger condition fulfilled"
  Guid="5c4828b1-0a48-4d0a-a431-c8d2e4d06db0"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f775a343-3e84-41b9-806b-619a7ba9c12c"
@@ -617,7 +618,37 @@ Supervision != SupervisionStatusEnum.Normal</PreCondition><PreCondition
  Name="UpdateSupervisionStatus"
  Guid="07ae0024-51e9-4f1a-ad03-1ffa8acb8ba0"
 >
-<Rules>
+<ReqRef
+ Id="db019e71-db84-41ad-a3fe-4bf8dae5a1a3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7e318471-d2cb-4fe5-a08b-2ccc1307cdf2"
+>
+</ReqRef><ReqRef
+ Id="a23ad28c-4aab-471e-a48b-97cc5e84f75a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="341bcfdb-2738-40d0-b576-2694b2d85a14"
+>
+</ReqRef><ReqRef
+ Id="c37a61a0-4999-47a6-a190-260324acdb40"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="db062a96-764c-401f-89a1-0418aa23a348"
+>
+</ReqRef><ReqRef
+ Id="f48b3d4c-0b20-4478-8d97-831556c6050e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="870999c3-afc9-4558-ad66-3def6a869c37"
+>
+</ReqRef><ReqRef
+ Id="e5f050bb-7e6e-461d-b803-0fddb0a89260"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e4177800-f4b6-4628-bed6-cc3ac9f21a98"
+>
+</ReqRef><ReqRef
+ Id="87168408-94a2-4eeb-8c4a-666507a95b45"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="841ed712-72e1-48bb-9c31-9aec8fd28f44"
+>
+</ReqRef><Rules>
 <Rule
  Priority="Processing"
  Name="Revoke TSM status"
@@ -661,7 +692,12 @@ Supervision != SupervisionStatusEnum.Normal</PreCondition><PreCondition
  Name="TSMStatusTriggers"
  Guid="ee21b76a-c4a5-4143-b069-19f25d32716e"
 >
-<Comment></Comment>
+<ReqRef
+ Id="6112d3b2-46f0-4ecb-8029-415b38396a4d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1a7f8d05-fbb4-4c14-b2c8-68a966e07a32"
+>
+</ReqRef><Comment></Comment>
 <Rules>
 <Rule
  Priority="UpdateINTERNAL"
@@ -971,7 +1007,12 @@ TCOSpecified &lt;- True</Action></Actions>
  Name="TSMStatusRevocation"
  Guid="158db4ba-80b7-4483-92ce-90f12043f176"
 >
-<Rules>
+<ReqRef
+ Id="6112d3b2-46f0-4ecb-8029-415b38396a4d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20be900d-4490-4515-bfe3-e003a3493a83"
+>
+</ReqRef><Rules>
 <Rule
  Priority="Processing"
  Name="Revoke supervision status"

@@ -653,6 +653,7 @@ THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="20f62c9a-5203-4f25-baf1-01ba9e1875ec"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="0f223275-ff77-4025-a194-a347f5ef0542"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -664,6 +665,7 @@ THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
  Name="Value"
  Guid="d01614d0-298f-4107-8b27-4e7ff976e5e9"
 >
+<Comment></Comment>
 <Expression>TrainData.TrainData.Value.SBCommandIsImplemented AND NOT NationalValues.UseOfSBIsInhibited()</Expression>
 </Case></Cases>
 </Function><Function
@@ -914,10 +916,15 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
  Default=""
  Width="100"
  Height="50"
- Name="PIM"
+ Name="InPIM"
  Guid="12a5024e-a617-48a7-a39a-aa29e8e30cf1"
 >
-<Comment>Tells whether the supervision is in PIM or regular TSM</Comment>
+<ReqRef
+ Id="b10067eb-6ad7-4c8c-9aab-ef1740ef0e13"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae563020-8e0f-4567-a1b4-94c77af70420"
+>
+</ReqRef><Comment>Tells whether the supervision is in PIM or regular TSM</Comment>
 <Cases>
 <Case
  Name="Monitoring in TSM"
@@ -933,6 +940,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
  Name="Otherwise"
  Guid="50cbdcf9-5bd4-4b43-84f3-ae1faf217101"
 >
+<Comment></Comment>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
