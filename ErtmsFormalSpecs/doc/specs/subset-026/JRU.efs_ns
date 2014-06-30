@@ -1016,7 +1016,8 @@ InitializeMessage()</Action></Actions>
  Guid="d461f9a5-7f7b-482b-8ffa-2ca4aed6d474"
 >PreviousTargetSpeed &lt;- DMI.MasterDMI().Out_TargetSpeed.Speed</Action><Action
  Guid="cc02b5bb-d96c-46dd-a3bf-abe2b314c992"
->PreviousTargetDistance &lt;- Kernel.TargetDistance</Action><Action
+><Comment></Comment>
+PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.TargetDistance()</Action><Action
  Guid="0eb30b56-c6ab-4c4d-800f-f09532b1c04c"
 >PreviousReleaseSpeed &lt;- DMI.MasterDMI().Out_ReleaseSpeed.Speed</Action><Action
  Guid="ac4c4305-a3dd-45af-9761-831aaa483ba3"
@@ -6382,6 +6383,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
  Name="Value"
  Guid="393b633c-2c88-4500-8f99-25bf3690af5e"
 >
+<Comment></Comment>
 <Expression>Messages.JRU.MESSAGE.SPEED_AND_DISTANCE_MONITORING_INFORMATION.Message{
     HEADER =&gt; CreateHeader(20),
 M_SDMTYPE =&gt; ToJruSpeedAndDistanceMonitoringType(),
@@ -6390,7 +6392,7 @@ V_PERM =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_PermittedSpeed.Speed ),
 V_FLOI=&gt;ToMessagesSpeed(Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()),
 V_TARGET =&gt;ToMessagesSpeed(DMI.MasterDMI().Out_TargetSpeed.Speed),
 D_TARGET=&gt; ToMessagesDistance(
-    distance=&gt;Kernel.TargetDistance,
+    distance=&gt;Kernel.SpeedAndDistanceMonitoring.TargetSupervision.TargetDistance(),
     scale=&gt;Messages.JRU.Q_SCALE._1_m_scaleC
 ),
 V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
@@ -6547,7 +6549,8 @@ jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_
 <PreConditions>
 <PreCondition
  Guid="c720d35c-be42-4990-831b-743cec7e607b"
->jru.PreviousTargetDistance != Kernel.TargetDistance</PreCondition></PreConditions>
+><Comment></Comment>
+jru.PreviousTargetDistance != Kernel.SpeedAndDistanceMonitoring.TargetSupervision.TargetDistance()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="ReleaseSpeedChanged"

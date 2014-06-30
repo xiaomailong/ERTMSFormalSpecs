@@ -1952,6 +1952,7 @@ DistanceForSpeed(
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="TargetDistance"
  Guid="e8c7c99b-8bfa-48ab-be05-e479c99d4026"
 >
@@ -1965,14 +1966,12 @@ DistanceForSpeed(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8df358b0-8c8c-4ec8-befd-2f3d05e9e64e"
 >
-</ReqRef><Parameters>
-<Parameter
- Type="Target"
- Name="Target"
- Guid="9a71a7af-09bd-4078-a82a-d5c039e9de87"
+</ReqRef><ReqRef
+ Id="c5c3fd28-41ac-4ad2-a5ea-ba3e63205382"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e1650ea1-6c4f-4465-b880-51632e1acd06"
 >
-</Parameter></Parameters>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="MRDT is EOA or SvL"
  Guid="82194262-9ba2-4fde-8a4d-317280711763"
@@ -1996,7 +1995,7 @@ MA.IsSvL(MRDT())</PreCondition></PreConditions>
  Guid="0ca3e6c9-dd75-4e99-834a-cff3a97950d4"
 >
 <Expression>Default.BaseTypes.MaxDistance(
-    X1=&gt; d_P(Target.Speed)-TrainPosition.FrontEndPosition(DistanceInterval.Max),
+    X1=&gt; d_P(MRDT().Speed)-TrainPosition.FrontEndPosition(DistanceInterval.Max),
     X2=&gt;0.0
 )</Expression>
 </Case></Cases>

@@ -3471,7 +3471,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
 >
 </StructureElement><StateMachines>
 <StateMachine
- Default="NotAvailable"
+ Default="ProcedureOutSM.NotAvailable"
  Implemented="TRUE"
  Name="ProcedureOutSM"
  Guid="b4dad98b-6187-447e-abf4-65c04ae305e5"
@@ -3487,7 +3487,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
  Guid="e0ac105b-c052-41e0-86c2-4d63c88339d8"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NotAvailable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="708f2bb2-b896-41cd-8c41-811a56bf4d92"
@@ -3528,7 +3528,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
 <Actions>
 <Action
  Guid="9d3ab7ae-b6b6-4d83-ad28-689e22ac798f"
->THIS &lt;- NotAvailable.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NotAvailable.Idle</Action><Action
  Guid="c60177ca-2ac9-45bb-a19c-beb99bf4ed21"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -3558,7 +3558,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
  Guid="a52596f4-b5ba-4fe3-9417-528ab6508f9a"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NationalSystemAvailability.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="c0e9a594-b895-48d3-9a33-e8e8fb239f29"
@@ -3599,7 +3599,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
 <Actions>
 <Action
  Guid="2d720773-a767-44eb-8c14-ee17b7a4fe9a"
->THIS &lt;- NationalSystemAvailability.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NationalSystemAvailability.Idle</Action><Action
  Guid="e844143f-51fb-4d5d-9275-86bed30bee36"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -3629,7 +3629,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
  Guid="9d409013-05e5-475c-bf13-4660b26fdbf7"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NotApplicable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="d01c6121-ebec-4abe-bc30-bdf5976a8933"
@@ -3670,7 +3670,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
 <Actions>
 <Action
  Guid="eda5c59a-d409-4463-853a-1205f9206729"
->THIS &lt;- NotApplicable.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NotApplicable.Idle</Action><Action
  Guid="ea85d52a-c8d7-4e96-9349-35681eb66dc9"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -3700,7 +3700,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
  Guid="d6107256-7d24-4659-9921-bc0e5bde919d"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.Active.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="b836d815-cee1-440a-b0bd-6ea49bf5e95a"
@@ -3741,7 +3741,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
 <Actions>
 <Action
  Guid="3a46eca0-c4bd-49b0-82bb-89bb0d186689"
->THIS &lt;- Active.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Active.Send</Action><Action
  Guid="b5ffc5a7-f27c-43e0-88f2-0134433f8502"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
@@ -3771,7 +3771,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
  Guid="c7da5b55-0cf4-489a-8302-aea5b007ee7a"
 >
 <StateMachine
- Default="Idle"
+ Default="ProcedureOutSM.Available.Idle"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="0b1121eb-711b-49a8-8d10-55006ce7a8bc"
@@ -3810,15 +3810,15 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="38a36287-3fb8-4541-b87e-6369dcbfbc6b"
->OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.ShowRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b8a960a1-6d00-459f-a592-a2344e7f86bc"
->THIS &lt;- Available.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Send</Action><Action
  Guid="688c3f97-750a-4758-90e3-f53b8e6b5a62"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
  Guid="fc0ae961-9da5-4421-951e-c05fd81fb327"
->OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3854,15 +3854,15 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="784a5bcf-5cdd-4d68-ac3a-6c005c48de4c"
->OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.HideRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2158dcc4-fa5b-4bf0-a415-ecd0e3c86c49"
->THIS &lt;- Available.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Idle</Action><Action
  Guid="8cd679df-f8f7-403c-be35-58046dc53bd5"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
  Guid="76ab81ee-05f0-48cd-ae84-336ba1d33c67"
->OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.HideRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -19394,7 +19394,8 @@ MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></
 <Actions>
 <Action
  Guid="4ec9e0a0-7cd1-4cc2-b31f-830372a7fab2"
->Distance &lt;- Kernel.TargetDistance</Action></Actions>
+><Comment></Comment>
+Distance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.TargetDistance()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
