@@ -1,0 +1,86 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Track Ahead Free"
+ Guid="7740d721-e8d3-41ba-9738-bf937660e589"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Track Ahead Free requested"
+ Guid="d980c14c-8985-43ea-9ec4-eebd233df83d"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="0db8b12c-1664-4cbb-a6df-cc0cc410d2bd"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="66d93565-2047-40ba-a57b-72a07fec8e62"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="16428c52-828e-43e4-8fa6-733f6902a504"
+>
+<Actions>
+<Action
+ Guid="c65b9387-be1c-4f11-91b3-63cf89426f14"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="3ca2daba-1677-4b7a-9c32-db9b3b2a7e70"
+><Comment></Comment>
+
+
+Kernel.Mode &lt;- Default.Mode.UN</Action><Action
+ Guid="c82d0dde-7c3e-4212-9941-e7f79d11408d"
+>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="5bccf1de-2fad-48a6-b946-f2820ee9cc0b"
+>Kernel.Level.Value == Level.L0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Is Trakc Ahead Free"
+ Guid="824800c9-3bc8-48f7-b994-767265a3657e"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="a946f8c9-71e3-4ba3-b279-414f9cfada39"
+>
+<Actions>
+<Action
+ Guid="9d22bf72-3552-4aa8-8d96-5575df2998ec"
+>DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="42e03c01-26ef-48be-9a96-2ffbfc914dc3"
+>DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested == Boolean.True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

@@ -1,0 +1,312 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Announcements"
+ Guid="d9b92a12-e0a8-4656-8259-819e75336d37"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Announcements Test DMI - EFS Without Sound Horn"
+ Guid="5067f98b-0796-4adc-9c28-bc39c03fc1a1"
+>
+<TestCases>
+<TestCase
+ Name="Retrieving the announcements WithOut Sound Horn"
+ Guid="fa59bd4e-07ae-4087-b35e-38e3f3d538ef"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="f024c2f4-cb5a-43f4-95d5-0b5bd788b1fa"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="70366a03-dfcb-4ef3-bfcc-2e28212923a1"
+>
+<Actions>
+<Action
+ Guid="f3646df3-b4f2-4b17-9cf9-204d483beef2"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="c7fcaf0c-4f67-4c30-9012-fd5df6435f7d"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+ Guid="305274c8-7e33-4de5-af6a-6b46ea212d96"
+>Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set Announcements"
+ Guid="ebf4ea8b-bfe5-4edc-a354-8300038433a4"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="2a072227-1b76-4b50-b1e6-8c05e1d76355"
+>
+<Comment></Comment>
+<Actions>
+<Action
+ Guid="4278017f-1c12-4a2f-a3e7-02d9a157d011"
+><Comment></Comment>
+DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.TrackConditions &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+{
+    AirTightness =&gt; Boolean.True,
+    PowerlessSection_LowerPantograph =&gt; Boolean.False,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; Boolean.False,
+    RadioHole =&gt; Boolean.False,
+    SwitchOffEddyCurrentBrake =&gt; Boolean.False,
+    SwitchOffMagneticShoeBrake =&gt; Boolean.False,
+    SwitchOffRegenerativeBrake =&gt; Boolean.False,
+    Distance =&gt; 500.0
+},
+Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+{
+    AirTightness =&gt; Boolean.False,
+    PowerlessSection_LowerPantograph =&gt; Boolean.True,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; Boolean.False,
+    RadioHole =&gt; Boolean.False,
+    SwitchOffEddyCurrentBrake =&gt; Boolean.False,
+    SwitchOffMagneticShoeBrake =&gt; Boolean.False,
+    SwitchOffRegenerativeBrake =&gt; Boolean.False,
+    Distance =&gt; 1000.0
+},
+Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+{
+    AirTightness =&gt; Boolean.False,
+    PowerlessSection_LowerPantograph =&gt; Boolean.False,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; Boolean.True,
+    RadioHole =&gt; Boolean.False,
+    SwitchOffEddyCurrentBrake =&gt; Boolean.False,
+    SwitchOffMagneticShoeBrake =&gt; Boolean.False,
+    SwitchOffRegenerativeBrake =&gt; Boolean.False,
+    Distance =&gt; 1500.0
+},
+Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+{
+    AirTightness =&gt; Boolean.False,
+    PowerlessSection_LowerPantograph =&gt; Boolean.False,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; Boolean.False,
+    RadioHole =&gt; Boolean.True,
+    SwitchOffEddyCurrentBrake =&gt; Boolean.False,
+    SwitchOffMagneticShoeBrake =&gt; Boolean.False,
+    SwitchOffRegenerativeBrake =&gt; Boolean.False,
+    Distance =&gt; 2000.0
+},
+Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+{
+    AirTightness =&gt; Boolean.False,
+    PowerlessSection_LowerPantograph =&gt; Boolean.False,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; Boolean.False,
+    RadioHole =&gt; Boolean.False,
+    SwitchOffEddyCurrentBrake =&gt; Boolean.True,
+    SwitchOffMagneticShoeBrake =&gt; Boolean.False,
+    SwitchOffRegenerativeBrake =&gt; Boolean.False,
+    Distance =&gt; 2500.0
+},
+Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+{
+    AirTightness =&gt; Boolean.False,
+    PowerlessSection_LowerPantograph =&gt; Boolean.False,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; Boolean.False,
+    RadioHole =&gt; Boolean.False,
+    SwitchOffEddyCurrentBrake =&gt; Boolean.False,
+    SwitchOffMagneticShoeBrake =&gt; Boolean.False,
+    SwitchOffRegenerativeBrake =&gt; Boolean.True,
+    Distance =&gt; 3000.0
+}]</Action><Action
+ Guid="8f39dfce-7b82-423c-b0be-4b04a99a07d4"
+><Comment></Comment>
+DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="190aafb1-3370-4bba-8083-f5317adda03e"
+>DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+{
+    AirTightness =&gt; Boolean.True,
+    PowerlessSection_LowerPantograph =&gt; Boolean.False,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; Boolean.False,
+    RadioHole =&gt; Boolean.False,
+    SwitchOffEddyCurrentBrake =&gt; Boolean.True,
+    SwitchOffMagneticShoeBrake =&gt; Boolean.True,
+    SwitchOffRegenerativeBrake =&gt; Boolean.False,
+    Distance =&gt; 0.0
+}]</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="34592e30-c68c-43a0-8eea-e87618572f39"
+>DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.TrackConditions != []</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Modifiy Announcements"
+ Guid="0ae39d95-a5b3-4e8d-81b6-1a2d81c3a838"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="fbec76a5-0caa-488f-b9b7-047db41e7223"
+>
+<Actions>
+<Action
+ Guid="33f2a0c6-32e0-428d-af1f-193e11f068da"
+>DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+{
+    AirTightness =&gt; Boolean.False,
+    PowerlessSection_LowerPantograph =&gt; Boolean.False,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; Boolean.False,
+    RadioHole =&gt; Boolean.False,
+    SwitchOffEddyCurrentBrake =&gt; Boolean.True,
+    SwitchOffMagneticShoeBrake =&gt; Boolean.True,
+    SwitchOffRegenerativeBrake =&gt; Boolean.False,
+    Distance =&gt; 0.0
+}]</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Announcements Test DMI - EFS With Sound Horn"
+ Guid="7baba827-2941-45c3-b5c8-10fc9bb3bf14"
+>
+<TestCases>
+<TestCase
+ Name="Retrieving the announcement With Sound Horn"
+ Guid="b17d11e0-f6a5-477d-9de4-e174689afcbf"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="e86b27aa-0379-4ab9-b940-abe667b72bc1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="07a7a615-96c1-4612-9c8d-4b968ac3fa21"
+>
+<Actions>
+<Action
+ Guid="9dfae22f-1e45-452c-8f1e-36511b773f5c"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="da7d2803-5cfe-46a6-95dd-0e0a56f28bce"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+ Guid="7951e0c1-815d-42a8-8923-e960a2ac6b7d"
+>Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set Announcements"
+ Guid="62146296-940b-44d8-86b9-c8199fdadb9a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="b0028aa5-6206-4f9c-b7e0-12aebfd52af1"
+>
+<Comment></Comment>
+<Actions>
+<Action
+ Guid="e734a9e1-8920-4dd6-9474-ee1aec423705"
+><Comment></Comment>
+DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.TrackConditions &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
+    SoundHorn =&gt; Boolean.True,
+    TunnelStoppingArea =&gt; Boolean.False,
+    NonStoppingArea =&gt; Boolean.False,
+    Distance =&gt; 250.0
+},
+Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
+    SoundHorn =&gt; Boolean.False,
+    TunnelStoppingArea =&gt; Boolean.True,
+    NonStoppingArea =&gt; Boolean.False,
+    Distance =&gt; 750.0
+},
+Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
+    SoundHorn =&gt; Boolean.False,
+    TunnelStoppingArea =&gt; Boolean.False,
+    NonStoppingArea =&gt; Boolean.True,
+    Distance =&gt; 1250.0
+}
+]</Action><Action
+ Guid="60d8d255-25e8-42ea-9d4d-5688bb2a9e41"
+><Comment></Comment>
+DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="b82a0740-7df4-4ec2-a29b-6d81a830ef85"
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
+    SoundHorn =&gt; Boolean.True,
+    TunnelStoppingArea =&gt; Boolean.True,
+    NonStoppingArea =&gt; Boolean.True,
+    Distance =&gt; 0.0
+}]</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0742d06a-8468-4220-bfb1-c8057ce25046"
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.TrackConditions != []</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Modifiy Announcements"
+ Guid="a1c839e9-01c3-47bc-a8d6-ef4f0b385cdd"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="00974ab1-2416-4db0-b5ea-c65c8485666d"
+>
+<Actions>
+<Action
+ Guid="9fe2818d-8a3d-45d8-a0d8-7c9c3c3b76fb"
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
+    SoundHorn =&gt; Boolean.False,
+    TunnelStoppingArea =&gt; Boolean.False,
+    NonStoppingArea =&gt; Boolean.False,
+    Distance =&gt; 0.0
+}
+]</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>
