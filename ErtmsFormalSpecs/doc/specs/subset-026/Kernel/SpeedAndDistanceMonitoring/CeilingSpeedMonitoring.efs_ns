@@ -1,0 +1,1016 @@
+<NameSpace
+ X="790"
+ Y="320"
+ Width="100"
+ Height="50"
+ Name="CeilingSpeedMonitoring"
+ Guid="81bdbc9f-ad93-486d-b739-3c5d7f7e1987"
+>
+<Comment></Comment>
+<NameSpaces>
+<NameSpaceRef
+ Name="SupervisionStatus"
+ Guid="79284a3e-2282-418d-9cc3-33256bdbd553"
+>
+</NameSpaceRef></NameSpaces>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="160"
+ Y="70"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="C_ebi"
+ Guid="2983da2a-da7e-48b2-a890-d89d53a9edbc"
+>
+<ReqRef
+ Id="14694d19-1131-47e3-a3fc-64e46838c433"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="66cb2bbe-c370-4d4c-ad6b-0bb4eacfce3e"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b60a816e-8839-4dd8-8be0-2531e02071fc"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8e4409c-95cd-4d12-aaec-88e653f4815d"
+>
+</ReqRef><Comment>C_ebi</Comment>
+<Cases>
+<Case
+ Name="Always"
+ Guid="a6ca2df8-da52-427a-b7f7-28931cba0cb5"
+>
+<Expression>( CeilingSpeedMonitoring.dV_ebi_max - CeilingSpeedMonitoring.dV_ebi_min ) / ( CeilingSpeedMonitoring.V_ebi_max - CeilingSpeedMonitoring.V_ebi_min )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="160"
+ Y="130"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="C_sbi"
+ Guid="f54119f6-bbf0-4848-b960-d71ced10e766"
+>
+<ReqRef
+ Id="8a3d92a1-d120-41ca-9ea6-d3402daa148d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0aab90a1-e72b-4e8f-b9e8-c5569a3bda3d"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c34e09c3-9974-4b54-86d6-22a09b610e29"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="09f7987e-49db-4a3a-8f92-5deaaa989a2f"
+>
+</ReqRef><Comment>C_sbi</Comment>
+<Cases>
+<Case
+ Name="Always"
+ Guid="4cd4822e-4db0-42c0-9a92-4efa7ff57757"
+>
+<Expression>( CeilingSpeedMonitoring.dV_sbi_max - CeilingSpeedMonitoring.dV_sbi_min ) / ( CeilingSpeedMonitoring.V_sbi_max - CeilingSpeedMonitoring.V_sbi_min )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="160"
+ Y="190"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="C_warning"
+ Guid="1190733b-a955-48f2-bb7b-05765d1cf4ee"
+>
+<ReqRef
+ Id="0a75129a-7479-45ac-9bfe-70f522bab05b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="df5fe3fc-d98f-45d9-9075-8c62155463b3"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c35d9815-c459-4a3c-8c41-df2deec1db2c"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="42852671-1ff7-4048-a16b-cf7bca8f1851"
+>
+</ReqRef><Comment>C_warning</Comment>
+<Cases>
+<Case
+ Name="Always"
+ Guid="46ab034c-51f8-4828-950e-823da37a4bd7"
+>
+<Comment></Comment>
+<Expression>( CeilingSpeedMonitoring.dV_warning_max - CeilingSpeedMonitoring.dV_warning_min ) / ( CeilingSpeedMonitoring.V_warning_max - CeilingSpeedMonitoring.V_warning_min )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="50"
+ Y="190"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_warning"
+ Guid="40f64b8a-6617-4a25-b690-1a0a7b2dedd8"
+>
+<ReqRef
+ Id="0a75129a-7479-45ac-9bfe-70f522bab05b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="db25cc7f-f499-4040-93d3-64dcfed4fa25"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68dab93a-616a-4b2a-8369-4a3e73ebc5a0"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf98918b-5c6b-495d-bfa8-125540956287"
+>
+</ReqRef><Comment>The delta speed to add to P in order to get the warning supervision limit</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+ Guid="5f86723b-c73d-4155-9e8d-36da2fc10ef1"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="V &gt; V_warning_min"
+ Guid="c435126f-18b0-4d6b-9139-7c854938a68c"
+>
+<PreConditions>
+<PreCondition
+ Guid="5f96f091-76ec-436e-97e2-191fcebebc1e"
+>V &gt; CeilingSpeedMonitoring.V_warning_min</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinSpeed ( CeilingSpeedMonitoring.dV_warning_min + CeilingSpeedMonitoring.C_warning() * ( V - CeilingSpeedMonitoring.V_warning_min ), CeilingSpeedMonitoring.dV_warning_max )</Expression>
+</Case><Case
+ Name="V &lt;= V_warning_min"
+ Guid="69b02327-f93e-48b1-9e66-f3c0fe3ce8c9"
+>
+<Expression>CeilingSpeedMonitoring.dV_warning_min</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="50"
+ Y="70"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_ebi"
+ Guid="0fa13a54-5c7f-4ace-950b-39c1330f03c4"
+>
+<ReqRef
+ Id="14694d19-1131-47e3-a3fc-64e46838c433"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc43c575-4249-4c4b-b640-0c27d7e8432b"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f6f1623c-43d8-4570-bf8a-6198b8f89b4a"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0725e78c-1ecc-47d7-93d9-bdedf278ebb2"
+>
+</ReqRef><Comment>The delta speed to add to P in order to get EBI</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+ Guid="b5a2daa9-9009-4202-8a3a-838c69d0786c"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="V &gt; V_ebi_min"
+ Guid="535aa63d-ef7e-4b7a-b9fd-28feb45e2718"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="dea57d2f-dc75-4bfa-abc4-08d829d0fdaf"
+>V &gt; CeilingSpeedMonitoring.V_ebi_min</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinSpeed ( CeilingSpeedMonitoring.dV_ebi_min + CeilingSpeedMonitoring.C_ebi() * ( V - CeilingSpeedMonitoring.V_ebi_min ), CeilingSpeedMonitoring.dV_ebi_max )</Expression>
+</Case><Case
+ Name="V &lt;= V_ebi_min"
+ Guid="605c01a1-da95-4901-a26e-86f35aa22b66"
+>
+<Comment></Comment>
+<Expression>CeilingSpeedMonitoring.dV_ebi_min</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="50"
+ Y="130"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_sbi"
+ Guid="8543021d-2b2a-4c8f-a618-07e8710fc8c2"
+>
+<ReqRef
+ Id="8a3d92a1-d120-41ca-9ea6-d3402daa148d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4b5e9439-00c8-47e0-83a4-722dc30ad263"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21497878-e6f2-4d1d-a252-cef66c194e08"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c75ecc6f-9d2a-4842-9ab1-d176dfb44b5d"
+>
+</ReqRef><Comment>The delta speed to add to P in order to get SBI</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+ Guid="6b3825d6-5cc8-4634-a066-90a9a05ee6e3"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="V &gt; V_sbi_min"
+ Guid="8954063e-1866-41c6-909c-a2d01e29cd3a"
+>
+<PreConditions>
+<PreCondition
+ Guid="261b8cfe-5c4b-4a62-8deb-003a51a21e89"
+>V &gt; CeilingSpeedMonitoring.V_sbi_min</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinSpeed ( CeilingSpeedMonitoring.dV_sbi_min + CeilingSpeedMonitoring.C_sbi() * ( V - CeilingSpeedMonitoring.V_sbi_min ), CeilingSpeedMonitoring.dV_sbi_max )</Expression>
+</Case><Case
+ Name="V &lt;= V_sbi_min"
+ Guid="fd3cbb6e-d144-4cdf-bf4d-a45e176fe5e7"
+>
+<Expression>CeilingSpeedMonitoring.dV_sbi_min</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="50"
+ Y="10"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ Name="P"
+ Guid="7f997819-31a5-4ba8-98df-a6c27c151e17"
+>
+<ReqRef
+ Id="6bec99f1-c63b-4029-8e0c-10a723b3ff86"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb270e69-087a-4fad-a58e-8e27b0cff367"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="da7b84c8-8f3b-4d51-bb0a-6dddb2b71112"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff62bc13-d3f1-49d7-8da2-4ff6488d8754"
+>
+</ReqRef><ReqRef
+ Id="e5c561b0-2de9-4aea-a8b3-0baa69ad471b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="74928199-d905-465d-9224-3df12bdb48ce"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="6765b559-5f02-43f0-814e-5c9a289e1f5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2f3722e2-4423-4fdd-9f5b-022c83413cf7"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="02854410-9ddb-4b94-993c-b26498a498bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="520a9828-d7d0-457a-a82e-4e181b275b01"
+>
+</ReqRef><ReqRef
+ Id="50a11b55-dc19-4427-b0fd-d81384417f79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="309635cd-8db1-4b21-b24e-38753f2792e3"
+>
+</ReqRef><ReqRef
+ Id="04a0794a-23c9-4383-8869-f2d8e4aab882"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e8e1283e-db9d-4ed3-94b6-1933fd297ae7"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="68cdb140-3c4e-4bdc-a122-88e2b2e22f7f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89e75576-62cd-4301-a1df-8527a2190228"
+>
+</ReqRef><ReqRef
+ Id="6f7286d5-47c8-4fc2-8fd3-ed4da2867417"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cbc6eb19-cef0-46a3-8c6f-b688c8a02b7a"
+>
+</ReqRef><ReqRef
+ Id="5e616edd-93b3-48b1-9e3c-e0c863f4a609"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="718fe8d8-959c-444e-837e-96b82dce7976"
+>
+</ReqRef><ReqRef
+ Id="3db576cb-65c4-4a7c-b6a3-7092c89448db"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8e6dabf8-d7c6-4be7-b179-6c49f9e3f5fe"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="22e031b2-e119-4b8b-bb4c-e1ed3946ed60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4a0f2d75-9f75-4997-97bb-be5cf1ae6e00"
+>
+</ReqRef><ReqRef
+ Id="33015d97-8a1a-438b-9a8c-1a12e876ade2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5cd7c1f0-dc0a-40b4-aa71-4c3ad60e2308"
+>
+</ReqRef><ReqRef
+ Id="ca1c598d-015e-44b0-9659-1a4c483f22b5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c5affbb-7af6-4e64-ae64-f91f86248327"
+>
+</ReqRef><Comment>The speed restriction applied to the train. This combines both MA and MRSP speed restrictions</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="distance"
+ Guid="5cedb7b6-1bdb-4462-a662-68c7fee2d996"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+ Guid="10689937-c663-4de7-8d80-214156b3d3b8"
+>
+<Comment></Comment>
+<Expression>MIN ( MIN ( MA.SpeedRestrictions, MRSP.SpeedRestrictions), NationalValues.MaxDistInSRSpeedRestriction ) (distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="270"
+ Y="190"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ Name="W"
+ Guid="781ab15d-a672-46ae-a68a-2847d66af653"
+>
+<ReqRef
+ Id="22e031b2-e119-4b8b-bb4c-e1ed3946ed60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e87e746d-efe3-4afc-8048-d661803f93ef"
+>
+</ReqRef><ReqRef
+ Id="6765b559-5f02-43f0-814e-5c9a289e1f5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="09ee8791-9c4a-47bd-885a-e5744bdd3871"
+>
+</ReqRef><Comment>Provides the tolerant speed restriction based on the MRSP speed restriction</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="distance"
+ Guid="6d9ee821-4746-49c3-a227-6eb11317eb0f"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Permitted speed is not zero"
+ Guid="3bc715af-e544-40e0-916a-0781ba8daa31"
+>
+<PreConditions>
+<PreCondition
+ Guid="06ac8f78-3db7-48f6-9384-4a9f597d0b2b"
+>CeilingSpeedMonitoring.P ( distance ) &gt; 0.0</PreCondition></PreConditions>
+<Expression>AddIncrement (
+  Function =&gt; CeilingSpeedMonitoring.P, 
+  Increment =&gt; CeilingSpeedMonitoring.dV_warning
+) (distance)</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="c973c1e5-a273-4e6a-95eb-d03697825c81"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="50"
+ Y="270"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ Name="SupervisedSpeed"
+ Guid="a3eaf16c-bef1-4884-88ff-219ad88ad06d"
+>
+<ReqRef
+ Id="26d27752-70b9-46bf-ada7-95ba7bb47a3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d6859f9f-1f00-4c19-a221-9abfee5e36c3"
+>
+</ReqRef><ReqRef
+ Id="1d80a2a9-35e8-42c0-b7af-767e7c110d32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86a48eb4-db24-4a85-9ae3-be98b0d95110"
+>
+</ReqRef><ReqRef
+ Id="0b1f3e7f-3acf-435f-8d5e-c7e079fd5ed6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c477d16-41d2-40bf-99a4-fbdeff189a96"
+>
+</ReqRef><Comment>Provides the train supervised speed</Comment>
+<Cases>
+<Case
+ Name="MRSP speed increases"
+ Guid="205dcdf8-afad-400a-8b0f-bd79283c1037"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="579e1045-ba4d-4041-ba9c-804884d9ca61"
+><Comment></Comment>
+MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) ) &gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition></PreConditions>
+<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) )</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="a737ca4f-968e-416a-badb-330077e71a71"
+>
+<Comment></Comment>
+<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="270"
+ Y="130"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ Name="SBI"
+ Guid="a82234d1-a73e-4bc9-9b75-ef1ea078b570"
+>
+<ReqRef
+ Id="6765b559-5f02-43f0-814e-5c9a289e1f5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b910870e-3282-4eff-a7db-10d09d0f899f"
+>
+</ReqRef><ReqRef
+ Id="22e031b2-e119-4b8b-bb4c-e1ed3946ed60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8124b3f4-5df4-4e72-8d4c-f630e20785bb"
+>
+</ReqRef><Comment>Provides the service brake intervention curve based on the permitted speed</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="f2f6a5fe-c1e5-4ae3-992d-9977c9f127b0"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="abe701e4-9e3e-4857-806a-07f43f56fb7e"
+>
+<Expression>AddIncrement (
+  Function =&gt; CeilingSpeedMonitoring.P, 
+  Increment =&gt; CeilingSpeedMonitoring.dV_sbi
+) ( Distance )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="270"
+ Y="70"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ Name="EBI"
+ Guid="b345fd15-c250-4356-bfc4-85fc682a9af3"
+>
+<ReqRef
+ Id="22e031b2-e119-4b8b-bb4c-e1ed3946ed60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8bd66382-ba78-4b61-b74a-1011da823f06"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="6765b559-5f02-43f0-814e-5c9a289e1f5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68d965d1-20ed-4854-8b1e-13beed162ac6"
+>
+</ReqRef><ReqRef
+ Id="690e9583-3caf-46eb-b721-bed7b3d89e9b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="759b1977-53ac-42c3-9cdb-7a914f211636"
+>
+</ReqRef><ReqRef
+ Id="2b4c3cb7-6f06-408a-bfd7-85f5c5069e00"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f94b4161-94bd-4c6b-9689-1ef47de98b50"
+>
+</ReqRef><ReqRef
+ Id="2c3d2e5e-98aa-4eda-9eb9-f2fd1ee0a60d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0a20874d-c1bc-4a85-a1dd-8859d7703cec"
+>
+</ReqRef><ReqRef
+ Id="33015d97-8a1a-438b-9a8c-1a12e876ade2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d6af4461-15e8-49ff-8d75-9fe692c98278"
+>
+</ReqRef><Comment>Provides the tolerant speed restriction based on the MRSP speed restriction, if the target belongs to the MRSP or is an LOA. If the target is an SvL of the maximum permitted distance to run in Staff Responsible, EBI returns 0.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="42e7007d-282c-4074-a40d-b7ecdb45d11b"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Permitted speed is not zero"
+ Guid="8d09c0fa-bea0-485f-ba54-0659f3cc249d"
+>
+<PreConditions>
+<PreCondition
+ Guid="0e5ea181-31f6-4423-93dd-5e7adf2f9157"
+>CeilingSpeedMonitoring.P ( Distance ) &gt; 0.0</PreCondition></PreConditions>
+<Expression>AddIncrement (
+  Function =&gt; CeilingSpeedMonitoring.P, 
+  Increment =&gt; CeilingSpeedMonitoring.dV_ebi
+) ( Distance )</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="b4c5386a-c9f7-4d54-8a87-508baad79eca"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function></Functions>
+<Variables>
+<Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="210.0"
+ VariableMode="Internal"
+ X="290"
+ Y="360"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_ebi_max"
+ Guid="7e6a8f85-441f-44e8-879a-679ce66b5942"
+>
+<ReqRef
+ Id="f6057f5b-19de-4012-a0c9-5a7ffca4f56a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9730b308-e6e7-46b0-92ae-eeb3cc37e89e"
+>
+</ReqRef><ReqRef
+ Id="91cd2941-8d33-4e00-852c-e81063898f33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5016bdea-c368-490e-b79c-80b328448628"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b375f455-1b78-4e0e-af66-a669f9820c67"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4a49241e-9adb-49f2-b7f4-fee7840a0f21"
+>
+</ReqRef><Comment>Value of MRSP where dV_ebi stops to increae to dV_ebi_max</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="5.0"
+ VariableMode="Internal"
+ X="680"
+ Y="360"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_warning_max"
+ Guid="4bc7b71d-8930-49e0-b440-5c95c55db217"
+>
+<ReqRef
+ Id="0a75129a-7479-45ac-9bfe-70f522bab05b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fad52d6e-6507-4c22-9f0e-87444320a7fe"
+>
+</ReqRef><ReqRef
+ Id="f21d3a8b-91c4-4e46-b6b2-fada6b7ffb9d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="75f9ab2a-5478-4004-a80f-a588dd0bb90e"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aef1f1ec-9766-4e90-8431-8cdcad7563e8"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="70a3ed7f-35b9-420c-9135-46a886863766"
+>
+</ReqRef><Comment>Speed difference between Permitted speed and Warning supervision limits, maximum value</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="110.0"
+ VariableMode="Internal"
+ X="290"
+ Y="470"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_ebi_min"
+ Guid="d4d091b1-277a-4557-a3fe-24acc9a992ca"
+>
+<ReqRef
+ Id="f6057f5b-19de-4012-a0c9-5a7ffca4f56a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd6d87c6-9410-4373-8c26-4ec2aadb1bf1"
+>
+</ReqRef><ReqRef
+ Id="88e4283b-5cb9-4b2a-9bde-489bed5f2685"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55424385-3104-4a1f-85f3-7db8ffc96230"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c6981c4f-5b2d-4c85-9c5f-11bbb5ad78ed"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="da653209-e2fe-4cee-8675-a9356c368d7d"
+>
+</ReqRef><Comment>Value of MRSP where dV_ebi starts to increase to dV_ebi_max</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="7.5"
+ VariableMode="Internal"
+ X="180"
+ Y="470"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_ebi_min"
+ Guid="cab9b285-e659-4b0b-8817-7ce3dda27dde"
+>
+<ReqRef
+ Id="f6057f5b-19de-4012-a0c9-5a7ffca4f56a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4dcdafc8-e0d5-433f-b2e3-a6c3a1613bc6"
+>
+</ReqRef><ReqRef
+ Id="9de9c184-cedb-4a19-aa3d-7bf61716ec3f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f813dbd6-4fa8-4de8-82f9-7755d4a34209"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3af5a7fb-11bb-4668-86e6-7832d545ca74"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="34b4d0c7-c69f-4c53-91de-33bd323bd34e"
+>
+</ReqRef><Comment>Speed difference between Permitted speed and Emergency Brake Intervention supervision limits, minimum value</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="4.0"
+ VariableMode="Internal"
+ X="680"
+ Y="470"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_warning_min"
+ Guid="6a94791e-e33c-4c11-a6ba-bd117118ee9a"
+>
+<ReqRef
+ Id="0a75129a-7479-45ac-9bfe-70f522bab05b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4bd446c1-55f2-4d8d-a985-0ce6ee6f998d"
+>
+</ReqRef><ReqRef
+ Id="28459511-5c15-4b7a-965f-498420b897b1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="709d3e56-3cf0-4e87-936a-b933cfd33ec6"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26f3b65e-6f9e-4c36-9244-d732cfe81ad4"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b7944dc2-7944-4dab-8187-3ed17fd2c3c1"
+>
+</ReqRef><Comment>Speed difference between Permitted speed and Warning supervision limits, minimum value</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="15.0"
+ VariableMode="Internal"
+ X="180"
+ Y="360"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_ebi_max"
+ Guid="1f994774-1ba4-49e9-befa-a7da21d64b9b"
+>
+<ReqRef
+ Id="f6057f5b-19de-4012-a0c9-5a7ffca4f56a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d5590f5-7535-4cb5-8ca0-fbd16f5e6d74"
+>
+</ReqRef><ReqRef
+ Id="fb5900b3-1114-480d-b8ed-59d3f74a75e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="69d7c518-7b55-4b8b-bf5c-5c774d51cc4e"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d176f6e5-ca2f-4554-8c23-276ebd46ea52"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8ac4c25e-74be-4d94-8397-fc1d0ba2e7b8"
+>
+</ReqRef><Comment>Speed difference between Permitted speed and Emergency Brake Intervention supervision limits, maximum value</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="140.0"
+ VariableMode="Internal"
+ X="790"
+ Y="360"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_warning_max"
+ Guid="a81af0ba-fc31-4b68-8371-79e94a9662a0"
+>
+<ReqRef
+ Id="0a75129a-7479-45ac-9bfe-70f522bab05b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6457c0ee-51f3-4572-87e1-5996e39f8928"
+>
+</ReqRef><ReqRef
+ Id="f813a3a6-4da1-4cfa-9fc3-0f0597f73132"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f15b71a-a137-40af-abed-56a6d1b6ed80"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="39adb382-1e5c-45ef-830f-f4ed35da2914"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="50623725-5b33-4dfc-9708-1295b5e98563"
+>
+</ReqRef><Comment>Value of MRSP where dV_warning stops to increase to dV_warning_max</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="110.0"
+ VariableMode="Internal"
+ X="790"
+ Y="470"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_warning_min"
+ Guid="dfa7aba6-17ac-4f36-b298-d0dd93341a80"
+>
+<ReqRef
+ Id="0a75129a-7479-45ac-9bfe-70f522bab05b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="440dfbe1-9494-4510-a4cf-86511c361735"
+>
+</ReqRef><ReqRef
+ Id="0425bd41-d1a0-462d-b5be-bc3c35e3aaf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3f08f5e8-b313-4840-90f5-2f1bd97304d3"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bcdcfbd8-ba60-4c79-a24a-ccf983242fde"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="320f8161-c636-48a5-a73d-ee03ffec0a06"
+>
+</ReqRef><Comment>Value of MRSP where dV_warning starts to increase to dV_warning_max</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="10.0"
+ VariableMode="Internal"
+ X="430"
+ Y="360"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_sbi_max"
+ Guid="f98d8c88-ff80-4dd9-be2a-754b928d7532"
+>
+<ReqRef
+ Id="8a3d92a1-d120-41ca-9ea6-d3402daa148d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94ca00ea-a3f5-497a-974d-05e9071f03cc"
+>
+</ReqRef><ReqRef
+ Id="045a780e-e9f0-4c3b-8728-60655f10b978"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fefb8899-a306-43f3-b13d-7c30057a49a9"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5134da4b-0922-4077-abf6-0111221ec897"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="209ea1b1-e8be-485a-bbce-408253cbf411"
+>
+</ReqRef><Comment>Speed difference between Permitted speed and Service Brake Intervention supervision limits, maximum value</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="5.5"
+ VariableMode="Internal"
+ X="430"
+ Y="470"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_sbi_min"
+ Guid="6959a4e4-ef45-4f0e-9bfd-8e2ed219cf62"
+>
+<ReqRef
+ Id="8a3d92a1-d120-41ca-9ea6-d3402daa148d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a5fba8fc-2988-4ab7-9479-4cc89c98c5bb"
+>
+</ReqRef><ReqRef
+ Id="b425695c-ac31-4d4e-9025-51702f1a4299"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff34fc5e-64e7-41ee-b063-527d31fc41d3"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8bc730ab-d984-4748-90fa-1d4764489b1c"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="93013d80-cdc7-4a9a-8ea9-ad8eacc4c563"
+>
+</ReqRef><Comment>Speed difference between Permitted speed and Service Brake Intervention supervision limits, minimum value</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="210.0"
+ VariableMode="Internal"
+ X="540"
+ Y="360"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_sbi_max"
+ Guid="0836dcb2-dbc3-44c2-bf03-4f91b64f5ffd"
+>
+<ReqRef
+ Id="8a3d92a1-d120-41ca-9ea6-d3402daa148d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="975fcaec-abec-4d9d-953b-65a7f04ff366"
+>
+</ReqRef><ReqRef
+ Id="0703ad0a-198e-4123-92ea-5eb7770da185"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d9235980-9ea6-4c94-ab55-c47731596419"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86a06b15-c2ce-437c-aa80-0f1bd9d6d4e9"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0bcc3e24-7d8b-4d5e-aff7-192c8e300145"
+>
+</ReqRef><Comment>Value of MRSP where dV_sbi stops to increase to dV_sbi_max</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="110.0"
+ VariableMode="Internal"
+ X="540"
+ Y="470"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_sbi_min"
+ Guid="e204db98-796b-4c95-b391-f833dc4ba6df"
+>
+<ReqRef
+ Id="8a3d92a1-d120-41ca-9ea6-d3402daa148d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a19a35e0-38d9-4b37-bf33-a320bcd35b00"
+>
+</ReqRef><ReqRef
+ Id="cd69199a-1506-4658-9b50-8f641dc163d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="15f02d46-01f3-4cd1-9595-5a5e7834281b"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47f79eaa-143b-451e-84d3-4cae2eeb1d98"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="77fd36d9-70fd-4d1d-be7e-a733013f171d"
+>
+</ReqRef><Comment>Value of MRSP where dV_sbi starts to increase to dV_sbi_max</Comment>
+</Variable></Variables>
+</NameSpace>

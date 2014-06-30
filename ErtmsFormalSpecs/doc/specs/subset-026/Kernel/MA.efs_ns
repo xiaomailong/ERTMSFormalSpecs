@@ -696,7 +696,7 @@ Location stores the previous End of Movement Authority location.</Comment>
 >
 </ReqRef><Comment>Represents MA sections.</Comment>
 </Collection><Collection
- TypeName="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ TypeName="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default="[EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]"
  X="170"
  Y="470"
@@ -711,7 +711,7 @@ Location stores the previous End of Movement Authority location.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="30"
  Y="10"
@@ -1390,7 +1390,7 @@ Distance &lt; EndOfMovementAuthority().Location</PreCondition></PreConditions>
 </ReqRef><Comment>Indicates if a target is a supervision limit.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="67dba448-4631-4b0f-8f87-40417ba9fde8"
 >
@@ -1458,7 +1458,7 @@ Distance &lt; EndOfMovementAuthority().Location</PreCondition></PreConditions>
 </ReqRef><Comment>Indicates if a target is an end of authority.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="4beac925-e434-459f-bfd5-6120b9bd9bdf"
 >
@@ -1480,7 +1480,7 @@ Distance &lt; EndOfMovementAuthority().Location</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="360"
  Y="190"
@@ -1822,7 +1822,7 @@ Default.BaseTypes.LengthToDistance(
   )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="470"
  Y="10"
@@ -1856,7 +1856,7 @@ Default.BaseTypes.LengthToDistance(
  Name="Create a Target item"
  Guid="007ca2b0-325c-4d7c-9d0d-91c1956a9c62"
 >
-<Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target 
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target 
 {
     Length =&gt; aLength,
     Location =&gt; aLocation,
@@ -1864,7 +1864,7 @@ Default.BaseTypes.LengthToDistance(
  }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="360"
  Y="250"
@@ -1878,12 +1878,12 @@ Default.BaseTypes.LengthToDistance(
 <Comment>Returns the Target, EOA or SvL, with the closest Location</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target1"
  Guid="c87fc4ae-7099-42f6-ac05-c31337c8482e"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target2"
  Guid="ab06e05e-c9e5-482d-b89c-212bfea05d5b"
 >
@@ -3013,7 +3013,7 @@ In this case, the EOA should be moved to the train&apos;s current position with 
 <Actions>
 <Action
  Guid="e5e2fcba-251a-4e6f-9ae2-515d5363a592"
->SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action></Actions>
+>SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.UpdateReleaseSpeed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3465,7 +3465,7 @@ IN EOAs</Action></Actions>
 ><Comment></Comment>
 LX.NearestNonProtectedNonStoppingLX() != EMPTY
   AND  
-(SpeedAndDistanceMonitoring.TargetSupervision.d_P(LX.NearestNonProtectedNonStoppingLX().Speed) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P(LX.NearestNonProtectedNonStoppingLX().Speed) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5d428056-d867-4dff-bc94-633a9ba1c635"
@@ -3532,7 +3532,7 @@ IN EOAs</Action><Action
  Guid="4a877f2e-ffe8-4dd8-b245-926bded39f26"
 >HandlingOfAcceptedAndStoredInformation.SectionTimeOutShortensMA &lt;- True</Action><Action
  Guid="4c4fc0db-b651-45f3-9bcc-b947f3342dc6"
->SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action></Actions>
+>SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.UpdateReleaseSpeed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -4033,7 +4033,7 @@ IN SvLs</Action></Actions>
 ><Comment></Comment>
 LX.NearestNonProtectedNonStoppingLX() != EMPTY
   AND  
-(SpeedAndDistanceMonitoring.TargetSupervision.d_P(LX.NearestNonProtectedNonStoppingLX().Speed) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P(LX.NearestNonProtectedNonStoppingLX().Speed) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9274d1c1-4a76-4102-970e-4758a11502ca"

@@ -365,7 +365,7 @@ NOT THERE_IS_IN
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="220"
  Y="180"
@@ -416,7 +416,7 @@ RouteSuitabilityProfile != EMPTY
 RouteSuitabilityProfile.Items != []
   AND
 THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></PreConditions>
-<Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
     Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitable ( X )
@@ -431,7 +431,7 @@ THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></P
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="330"
  Y="180"
@@ -475,7 +475,7 @@ THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></P
 RouteSuitabilityProfile.Items != []
   AND
 THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></PreConditions>
-<Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
     Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitable ( X )

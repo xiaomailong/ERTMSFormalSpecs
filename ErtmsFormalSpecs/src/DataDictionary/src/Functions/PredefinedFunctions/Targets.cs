@@ -44,7 +44,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// </summary>
         public override DataDictionary.Types.Type ReturnType
         {
-            get { return EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSupervision"), "Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Targets"); }
+            get { return EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"), "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets"); }
         }
 
         /// <summary>

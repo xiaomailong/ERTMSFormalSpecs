@@ -2910,7 +2910,7 @@
 <PreCondition
  Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
 ><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle]</PreCondition><PreCondition
+Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle]</PreCondition><PreCondition
  Guid="27f43f3b-9d33-4f93-8af9-d46bf9c93913"
 >Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
@@ -3436,11 +3436,11 @@ ProcedureOut not in ProcedureOutSM.NotApplicable
   AND
 ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
  Guid="78553180-bb98-4ae4-b78e-5c3c02ff6417"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed]</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c312fe49-c752-4ce5-8361-a09bc8d7ecab"
->Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_MRDT()</Action></Actions>
+>Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_P_MRDT()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -3910,7 +3910,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
 <Actions>
 <Action
  Guid="ac88bf52-f540-44c2-8c94-930fb08165ef"
->Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed</Action></Actions>
+>Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.ReleaseSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -19390,12 +19390,12 @@ MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></
 <PreConditions>
 <PreCondition
  Guid="f4fa4704-a159-4fbe-9c68-7429576b316f"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed]</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4ec9e0a0-7cd1-4cc2-b31f-830372a7fab2"
 ><Comment></Comment>
-Distance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.TargetDistance()</Action></Actions>
+Distance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -20325,7 +20325,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
 <Actions>
 <Action
  Guid="f0c8976c-c957-4f3d-a0a5-3295db9e7317"
->Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</Action></Actions>
+>Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_FLOI_DMI()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement

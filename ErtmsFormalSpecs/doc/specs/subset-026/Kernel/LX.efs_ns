@@ -681,13 +681,13 @@ INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.
  Guid="d4f210eb-abe8-409f-82c1-dcd63fef0895"
 ><Comment></Comment>
 NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>d_FLOI_ForLX ( aLX ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSupervision.T_driver</Expression>
+<Expression>d_FLOI_ForLX ( aLX ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
  Guid="b1346c7a-ac41-44d2-b6a3-b7c844cda78d"
 >
 <Comment></Comment>
-<Expression>BaseTypes.MinDistance ( X1 =&gt; d_FLOI_ForLX ( aLX ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSupervision.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; SpeedAndDistanceMonitoring.TargetSupervision.GUI, Speed =&gt; aLX.Speed ) )</Expression>
+<Expression>BaseTypes.MinDistance ( X1 =&gt; d_FLOI_ForLX ( aLX ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.GUI, Speed =&gt; aLX.Speed ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -717,24 +717,24 @@ NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <PreCondition
  Guid="c96572f1-d44c-4039-8be6-1eb9c3f44363"
 ><Comment></Comment>
-SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1 ( aLX.Speed ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )
+SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( aLX.Speed ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )
  &lt;= 
-SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2(
+SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2(
   Vest =&gt; aLX.Speed,
-  aTarget =&gt; SpeedAndDistanceMonitoring.TargetSupervision.Target{
+  aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
     Location =&gt; aLX.Location,
     Speed =&gt; 0.0,
     Length =&gt; aLX.Length
   }
 ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
-<Expression>SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1 ( aLX.Speed )</Expression>
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( aLX.Speed )</Expression>
 </Case><Case
  Name="d_SBI2"
  Guid="5b780a39-26ea-4c85-870c-c287b12e58f7"
 >
-<Expression>SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2(
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2(
   Vest =&gt; aLX.Speed,
-  aTarget =&gt; SpeedAndDistanceMonitoring.TargetSupervision.Target{
+  aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
     Location =&gt; aLX.Location,
     Speed =&gt; 0.0,
     Length =&gt; aLX.Length

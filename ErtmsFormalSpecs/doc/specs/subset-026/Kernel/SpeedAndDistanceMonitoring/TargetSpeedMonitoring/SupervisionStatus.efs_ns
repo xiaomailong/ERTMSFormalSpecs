@@ -487,19 +487,10 @@ TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &lt;= d_I ( MRSP
 </ReqRef><Comment></Comment>
 <Cases>
 <Case
- Name="Train is in Intervention status"
+ Name="Value"
  Guid="906c107b-7b02-4f3e-84f9-177932c58041"
 >
-<PreConditions>
-<PreCondition
- Guid="e182bd37-c9e4-418d-9b73-73ca90bc2c40"
->Supervision == SupervisionStatusEnum.Intervention</PreCondition></PreConditions>
 <Expression>Odometry.TrainIsAtStandstill()</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="8476ea66-ca04-4416-bf5b-809c7ada5ba1"
->
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -518,19 +509,10 @@ TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &lt;= d_I ( MRSP
 >
 </ReqRef><Cases>
 <Case
- Name="There is a status to be revoked"
+ Name="Value"
  Guid="5f0d2e6c-c8c4-477b-9126-235984081071"
 >
-<PreConditions>
-<PreCondition
- Guid="985502d9-ff1b-4900-935f-1a3cf7c2a7d7"
->Supervision != SupervisionStatusEnum.Normal</PreCondition></PreConditions>
 <Expression>Odometry.EstimatedSpeed &lt;= MRDT().Speed</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="82e6753c-df60-4c2e-bb5f-b2a55432950d"
->
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -554,9 +536,6 @@ TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &lt;= d_I ( MRSP
 >
 <PreConditions>
 <PreCondition
- Guid="da2b899f-46e8-4858-9990-f0440ccb7752"
-><Comment></Comment>
-Supervision != SupervisionStatusEnum.Normal</PreCondition><PreCondition
  Guid="66915af3-1dcb-48d1-9580-a93838c4771f"
 >MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
  Guid="f680c221-47b2-44ba-91c1-91c9737fd58e"
@@ -592,10 +571,6 @@ Supervision != SupervisionStatusEnum.Normal</PreCondition><PreCondition
 >
 <PreConditions>
 <PreCondition
- Guid="7f6af8e7-74b8-450f-8508-ef49642572e9"
->Supervision != SupervisionStatusEnum.Normal</PreCondition><PreCondition
- Guid="21bc5882-5253-4201-93d7-4e4e679f11ae"
->Supervision != SupervisionStatusEnum.Indication</PreCondition><PreCondition
  Guid="0b45ccfe-6beb-4923-b9e8-af79fba4eff4"
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition><PreCondition
  Guid="99cc373c-4cb4-4cfa-8fdc-4a2e6db789d1"
@@ -609,84 +584,143 @@ Supervision != SupervisionStatusEnum.Normal</PreCondition><PreCondition
 >
 <Expression>False</Expression>
 </Case></Cases>
-</Function></Functions>
-<Procedures>
-<Procedure
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="ToIntervention"
+ Guid="e4ca206b-e2f2-48fd-b674-16b0731ae18c"
+>
+<ReqRef
+ Id="e5f050bb-7e6e-461d-b803-0fddb0a89260"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cc0f3b7b-8284-43ae-8156-d8c755d18a44"
+>
+</ReqRef><Cases>
+<Case
+ Name="t14"
+ Guid="1f0d74ea-9c8f-4099-bae5-c702af59ec22"
+>
+<PreConditions>
+<PreCondition
+ Guid="580b3b2d-36bb-4191-a38c-53c30c97a931"
+>t14()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="t13"
+ Guid="962c5ca4-0980-405f-99b5-fee3236449cd"
+>
+<PreConditions>
+<PreCondition
+ Guid="1695c66a-aff2-46d1-9057-345f1c775a7e"
+>t13()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="t12"
+ Guid="b3e8c016-7a1b-4c19-9698-6ec4aba97220"
+>
+<PreConditions>
+<PreCondition
+ Guid="e602651b-5442-4bca-a964-df247c37b084"
+>t12()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="t11"
+ Guid="a7063e2d-7dd0-4222-b4c7-17c17b1dd455"
+>
+<PreConditions>
+<PreCondition
+ Guid="e136aa95-0948-45a7-b8d7-2b2b8107daad"
+>t11()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="t10"
+ Guid="c380206f-fc5b-4901-889d-82d41f3f2269"
+>
+<Expression>t10()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
  X="110"
  Width="100"
  Height="50"
- Name="UpdateSupervisionStatus"
- Guid="07ae0024-51e9-4f1a-ad03-1ffa8acb8ba0"
+ Name="ToOverspeed"
+ Guid="a1f9fc0e-f4ef-4429-b837-708f3a78060a"
 >
 <ReqRef
- Id="db019e71-db84-41ad-a3fe-4bf8dae5a1a3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7e318471-d2cb-4fe5-a08b-2ccc1307cdf2"
->
-</ReqRef><ReqRef
- Id="a23ad28c-4aab-471e-a48b-97cc5e84f75a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="341bcfdb-2738-40d0-b576-2694b2d85a14"
->
-</ReqRef><ReqRef
  Id="c37a61a0-4999-47a6-a190-260324acdb40"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="db062a96-764c-401f-89a1-0418aa23a348"
+ Guid="7f6ce7cf-4ad3-4737-afa1-8b754d3bf056"
 >
-</ReqRef><ReqRef
+</ReqRef><Cases>
+<Case
+ Name="t6"
+ Guid="68bd81f2-378d-42cd-98e9-98e9aa1f0f7f"
+>
+<PreConditions>
+<PreCondition
+ Guid="76f4a090-4ee9-497b-a2cf-1eeeaa6bae6d"
+>t6()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="t5"
+ Guid="bd0c4f83-a361-429a-b0fa-349f6d81bbb7"
+>
+<PreConditions>
+<PreCondition
+ Guid="e3e6297f-c434-4f39-9e02-7d9e461f1c4a"
+>t5()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="t4"
+ Guid="84352a9d-3e65-4a2c-b049-43fb36cfb418"
+>
+<Expression>t4()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Name="ToWarning"
+ Guid="297a0c1d-af86-4ea4-9876-f3bce2f9c4cd"
+>
+<ReqRef
  Id="f48b3d4c-0b20-4478-8d97-831556c6050e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="870999c3-afc9-4558-ad66-3def6a869c37"
+ Guid="a58b09b5-9e48-440e-beac-2d58ea257370"
 >
-</ReqRef><ReqRef
- Id="e5f050bb-7e6e-461d-b803-0fddb0a89260"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e4177800-f4b6-4628-bed6-cc3ac9f21a98"
->
-</ReqRef><ReqRef
- Id="87168408-94a2-4eeb-8c4a-666507a95b45"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="841ed712-72e1-48bb-9c31-9aec8fd28f44"
->
-</ReqRef><Rules>
-<Rule
- Priority="Processing"
- Name="Revoke TSM status"
- Guid="2cbdb575-2ee6-420d-bb9d-71fdd7d09223"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Revoke TSM status"
- Guid="78774ed4-2e56-4a04-960d-195527992f06"
+</ReqRef><Cases>
+<Case
+ Name="t9"
+ Guid="58726dc6-a9b9-43f5-9bcd-dcda7f25fc92"
 >
 <PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="b6f50c0c-13d0-4b50-be3e-727ef2b60c8a"
->TSMStatusRevocation()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Trigger TSM status"
- Guid="6edf9b42-53d1-48e5-b7eb-2a17dd2c03a7"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Trigger TSM status"
- Guid="bbb6f039-11ad-4cb5-98f0-0392c2fdd47a"
+<PreCondition
+ Guid="c97b7866-d3f0-4dc0-9f0f-29f2632a1857"
+>t9()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="t8"
+ Guid="49a0b35f-fb0f-4e2d-aa50-3c07361e9ab6"
 >
 <PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="66a97cc0-c1d8-4884-9e49-eaa5ca272468"
->TSMStatusTriggers()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
+<PreCondition
+ Guid="173b7a77-86e5-4483-92e3-8e1a2337a608"
+>t8()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="t7"
+ Guid="58c386ca-fcf5-427e-9f0e-bc21799f3caf"
+>
+<Expression>t7()</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
  Width="100"
  Height="50"
  Name="TSMStatusTriggers"
@@ -716,6 +750,45 @@ Supervision != SupervisionStatusEnum.Normal</PreCondition><PreCondition
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ Name="t2"
+ Guid="be939158-d7e9-4fa8-85af-7e3f14e0cb79"
+>
+<ReqRef
+ Id="235a2d43-f1f5-49b1-8517-1f6b17a29a4c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8d354fb7-b010-4dd3-b911-1c0c6da80616"
+>
+</ReqRef><Comment>Trigger 2: V between V_Release and _MRSP. Train front end position below d_I. Normal Status.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="290778ee-0b52-462f-9330-18f3cfc098c1"
+>t2()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="dee54ca0-aa73-44b5-b9dc-ca095e4bba9e"
+><Comment></Comment>
+Monitoring &lt;- MonitoringTypeSM.Target.Normal</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="t1"
+ Guid="c4cd0b49-55ce-42ec-9ced-71ee7115c964"
+>
+<ReqRef
+ Id="c9726f4e-f5b9-4cb2-8c10-be51cb610a07"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="503396cd-748b-4343-8d23-6d73e0bc2bf3"
+>
+</ReqRef><Comment>Trigger1: V below V_Release. Normal status.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5094c3fb-81d8-42bf-8394-8fb6ea048e1d"
+>t1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c6b49d0d-967e-4207-bdc5-c3a7c252a213"
+>Monitoring &lt;- MonitoringTypeSM.Target.Normal</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="t14"
  Guid="5c449f3c-02da-412e-9337-36c393a81f5c"
 >
@@ -734,7 +807,7 @@ Supervision != SupervisionStatusEnum.Normal</PreCondition><PreCondition
  Guid="574ec616-674d-4716-90a5-ac23810d8236"
 >TriggerEBCommand()</Action><Action
  Guid="1c1b160c-a7ac-4d11-8228-3453a58ee5a6"
->Supervision &lt;- SupervisionStatusEnum.Intervention</Action></Actions>
+>Monitoring &lt;- MonitoringTypeSM.Target.Intervention</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t13"
@@ -960,270 +1033,6 @@ TCOSpecified &lt;- True</Action></Actions>
 <Action
  Guid="f5c3eb5f-3637-440d-a9f8-e8b104ab2c67"
 >Supervision &lt;- SupervisionStatusEnum.Indication</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t2"
- Guid="be939158-d7e9-4fa8-85af-7e3f14e0cb79"
->
-<ReqRef
- Id="235a2d43-f1f5-49b1-8517-1f6b17a29a4c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8d354fb7-b010-4dd3-b911-1c0c6da80616"
->
-</ReqRef><Comment>Trigger 2: V between V_Release and _MRSP. Train front end position below d_I. Normal Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="290778ee-0b52-462f-9330-18f3cfc098c1"
->t2()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="dee54ca0-aa73-44b5-b9dc-ca095e4bba9e"
->Supervision &lt;- SupervisionStatusEnum.Normal</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t1"
- Guid="c4cd0b49-55ce-42ec-9ced-71ee7115c964"
->
-<ReqRef
- Id="c9726f4e-f5b9-4cb2-8c10-be51cb610a07"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="503396cd-748b-4343-8d23-6d73e0bc2bf3"
->
-</ReqRef><Comment>Trigger1: V below V_Release. Normal status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="5094c3fb-81d8-42bf-8394-8fb6ea048e1d"
->t1()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="c6b49d0d-967e-4207-bdc5-c3a7c252a213"
->Supervision &lt;- SupervisionStatusEnum.Normal</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- X="220"
- Width="100"
- Height="50"
- Name="TSMStatusRevocation"
- Guid="158db4ba-80b7-4483-92ce-90f12043f176"
->
-<ReqRef
- Id="6112d3b2-46f0-4ecb-8029-415b38396a4d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="20be900d-4490-4515-bfe3-e003a3493a83"
->
-</ReqRef><Rules>
-<Rule
- Priority="Processing"
- Name="Revoke supervision status"
- Guid="6bfb77ff-300c-4cfd-aa1c-8eaa9342837b"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="r0"
- Guid="07fdb7b9-424c-486a-85a5-0499ee48a4a9"
->
-<PreConditions>
-<PreCondition
- Guid="67bf55e0-0124-4d00-8977-42a54b3388aa"
->r0()</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Name="Revoke EB command"
- Guid="06add78b-acf7-4584-af87-e713ba7e85c8"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Revoke EB command"
- Guid="12028e95-11c9-4162-ae10-cdbd626bd93d"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="2cb08036-5491-4cee-939c-e33d43edcd33"
->RevokeEBCommand()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Revoke intervention status"
- Guid="a67de89a-c916-4566-915c-e90f35152e20"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Revoke intervention status"
- Guid="5c3c712e-ad1a-4a2d-874a-a810775fb63c"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="12ee9a55-3769-4c2d-a27b-a5c0ce26c9bd"
->RevokeSupervisionStatus()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition><RuleCondition
- Name="r1"
- Guid="ff8a4f4e-9e65-4326-bb1a-c0760a5c3c2c"
->
-<PreConditions>
-<PreCondition
- Guid="319649a0-4aa2-497d-b874-29f4a3fb2710"
->r1()</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Name="Revoke brake and TCO commands"
- Guid="4604e2c4-620c-413d-bc58-52b0fee22474"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Revoke EB, SB and TCO"
- Guid="60dbc10c-9574-4ef2-9f0a-25809ba69c79"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="ce6fb951-e8fb-4adf-8f89-acd07a619dd6"
->RevokeEBCommand()</Action><Action
- Guid="a7bdac08-33fa-43d3-bdf4-41c9fc600f19"
->RevokeSBCommand()</Action><Action
- Guid="53afefb9-71d6-4ad1-8274-730d345f80a6"
->RevokeTCOCommand()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Revoke supervision status"
- Guid="ab68602b-368a-4627-81bd-8a9eab52dbcd"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Revoke supervision status"
- Guid="9ac6c632-b28d-45b5-8d0f-3ee3a40f10f5"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="1e473eff-c90d-48f9-8890-a4eabe7c01fb"
->RevokeSupervisionStatus()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition><RuleCondition
- Name="r2"
- Guid="213cb725-2676-4353-9726-948015bfa79f"
->
-<PreConditions>
-<PreCondition
- Guid="af277a21-4b9d-44f2-a5ba-9d2999a695c2"
->r2()</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Name="Revoke brake and TCO commands"
- Guid="436ef5d9-258e-4a3c-94bd-5b18260855e5"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Revoke EB, SB and TCO"
- Guid="44ddf9f7-921e-46e9-a093-5411d8369ed9"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="a34456b5-4984-4d33-b256-fcaa84ac2f79"
->RevokeEBCommand()</Action><Action
- Guid="7f6543c8-60b8-4353-90b0-799413a822a5"
->RevokeSBCommand()</Action><Action
- Guid="4cac12c6-e948-42a0-ab33-af3d74f42245"
->RevokeTCOCommand()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Revoke supervision status"
- Guid="ec19d462-d07c-45cc-a187-bb9de21deb0b"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Revoke supervision status"
- Guid="9e2c6edd-07ac-4586-bbe5-14a91c0171be"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="d422c47b-95f4-4270-bdeb-d86c1c648a9e"
->RevokeSupervisionStatus()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition><RuleCondition
- Name="r3"
- Guid="2bea85df-8f28-4cfb-bdfc-6048fb2e27e1"
->
-<PreConditions>
-<PreCondition
- Guid="ec514d12-8d7b-47b8-99dc-36849fe22e4a"
->r3()</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Name="Revoke brake and TCO commands"
- Guid="37cbb59c-51f0-46fd-906a-ae9b0cbb4e05"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Revoke EB, SB and TCO"
- Guid="4c3b5edc-614d-4784-8b24-794bf2adc6d4"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="95634efa-8049-4ef8-a18e-900263bc7df8"
->RevokeEBCommand()</Action><Action
- Guid="8cf1acda-91fb-4aca-8061-2d62227c7f1b"
->RevokeSBCommand()</Action><Action
- Guid="4f41af56-d1d0-4dfa-83cd-10489022c240"
->RevokeTCOCommand()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Revoke supervision status"
- Guid="dc63ce50-0975-4616-b603-277054b5a2e6"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Revoke supervision status"
- Guid="7f339cf0-b651-4108-af81-d0c0b2d7e192"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="ec1bceac-8700-4af0-87f4-d6154510642c"
->RevokeSupervisionStatus()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

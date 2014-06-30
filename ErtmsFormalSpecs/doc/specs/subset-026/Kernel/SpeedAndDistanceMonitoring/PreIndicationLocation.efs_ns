@@ -71,14 +71,14 @@
 <PreCondition
  Guid="65e4ee15-8de3-4280-ab44-b313f03991f9"
 ><Comment></Comment>
-TargetSupervision.EBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) &lt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition></PreConditions>
+TargetSpeedMonitoring.EBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) &lt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="87bc3884-bbcf-40e7-891f-a35b2baa7c00"
 >
 <Comment>Standard case</Comment>
-<Expression>DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; f41 ( Vmrsp ) ) - ( Vmrsp + f41 ( Vmrsp ) ) * ( TargetSupervision.T_berem() + TargetSupervision.T_traction() )</Expression>
+<Expression>DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.EBD, Speed =&gt; f41 ( Vmrsp ) ) - ( Vmrsp + f41 ( Vmrsp ) ) * ( TargetSpeedMonitoring.T_berem() + TargetSpeedMonitoring.T_traction() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -123,7 +123,7 @@ PreIndicationLocation.d_EBI ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</Pre
  Guid="6f89c598-f655-4f78-82da-514e35c14b27"
 >
 <Comment>Standard case</Comment>
-<Expression>PreIndicationLocation.d_EBI ( Vmrsp )  - Vmrsp * TargetSupervision.T_bs2</Expression>
+<Expression>PreIndicationLocation.d_EBI ( Vmrsp )  - Vmrsp * TargetSpeedMonitoring.T_bs2</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -181,7 +181,7 @@ PreIndicationLocation.d_EBI ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</Pre
  Guid="24aaf0e5-5720-411a-ae32-9abd355f6ec5"
 >
 <Comment></Comment>
-<Expression>PreIndicationLocation.d_P ( Vmrsp ) - Vmrsp * TargetSupervision.T_indication()</Expression>
+<Expression>PreIndicationLocation.d_P ( Vmrsp ) - Vmrsp * TargetSpeedMonitoring.T_indication()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -218,12 +218,12 @@ PreIndicationLocation.d_EBI ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</Pre
 <PreCondition
  Guid="76ff14fe-1069-48b8-a935-8bfa9f50e6fc"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>TargetSupervision.d_SBI1 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver</Expression>
+<Expression>TargetSpeedMonitoring.d_SBI1 ( Vmrsp ) - Vmrsp * TargetSpeedMonitoring.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
  Guid="e2ed0a38-959f-4ca1-af51-1fd4543d4a69"
 >
-<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; TargetSupervision.d_SBI1 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; TargetSupervision.GUI, Speed =&gt; Vmrsp ) )</Expression>
+<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; TargetSpeedMonitoring.d_SBI1 ( Vmrsp ) - Vmrsp * TargetSpeedMonitoring.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.GUI, Speed =&gt; Vmrsp ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -282,7 +282,7 @@ PreIndicationLocation.d_EBI ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</Pre
 </ReqRef><Comment>Calculates the pre-indication location for the deceleration curve of the given target. The target MRSPn is placed at the start of the following section.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="MRSPnTarget"
  Guid="157d4132-628f-4d83-ba3d-e059b7db2413"
 >
@@ -410,7 +410,7 @@ PreIndicationLocation.d_I(PreIndicationLocation.FirstTargetFromLocation(MRSPnTar
  Name="Value"
  Guid="7c618fa6-806f-47d7-a5c8-bba444d4051f"
 >
-<Expression>PreIndicationLocation.d_P_EOA ( Vmrsp ) - Vmrsp * TargetSupervision.T_indication()</Expression>
+<Expression>PreIndicationLocation.d_P_EOA ( Vmrsp ) - Vmrsp * TargetSpeedMonitoring.T_indication()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -459,7 +459,7 @@ PreIndicationLocation.d_I(PreIndicationLocation.FirstTargetFromLocation(MRSPnTar
 <PreCondition
  Guid="dac95c93-f0c0-4ace-862c-c7475c858e6e"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>PreIndicationLocation.d_SBI2 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver</Expression>
+<Expression>PreIndicationLocation.d_SBI2 ( Vmrsp ) - Vmrsp * TargetSpeedMonitoring.T_driver</Expression>
 </Case><Case
  Name="GUI Enabled, GUI or EBD below Vmrsp"
  Guid="da424317-cfdd-4fb1-a4a2-fc243890d917"
@@ -468,7 +468,7 @@ PreIndicationLocation.d_I(PreIndicationLocation.FirstTargetFromLocation(MRSPnTar
 <PreConditions>
 <PreCondition
  Guid="5a134c95-d52f-4f4c-b96c-6001a9bd4881"
->DistanceForSpeed ( Function =&gt; TargetSupervision.GUI, Speed =&gt; Vmrsp ) == Default.BaseTypes.Distance.Unknown
+>DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.GUI, Speed =&gt; Vmrsp ) == Default.BaseTypes.Distance.Unknown
   OR  
 PreIndicationLocation.d_SBI2 ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
@@ -477,7 +477,7 @@ PreIndicationLocation.d_SBI2 ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</Pr
  Guid="ed419bb1-5c35-46f3-8791-27aa4b53b189"
 >
 <Comment></Comment>
-<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; PreIndicationLocation.d_SBI2 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; TargetSupervision.GUI, Speed =&gt; Vmrsp ) )</Expression>
+<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; PreIndicationLocation.d_SBI2 ( Vmrsp ) - Vmrsp * TargetSpeedMonitoring.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.GUI, Speed =&gt; Vmrsp ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -544,7 +544,7 @@ TargetsList() != []</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Cacheable="TRUE"
  Default=""
  Width="100"
@@ -576,14 +576,14 @@ USING MA.ClosestTarget(
     Target2=&gt;RESULT
     )
 
-INITIAL_VALUE Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target{
+INITIAL_VALUE TargetSpeedMonitoring.Target{
     Location =&gt; Default.BaseTypes.Distance.Infinity,
     Speed =&gt; 0.0,
     Length =&gt; 0.0
     }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Cacheable="TRUE"
  Default=""
  X="110"
@@ -616,7 +616,7 @@ USING MA.ClosestTarget(
     Target2=&gt;RESULT
     )
 
-INITIAL_VALUE Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target{
+INITIAL_VALUE TargetSpeedMonitoring.Target{
     Location =&gt; Default.BaseTypes.Distance.Infinity,
     Speed =&gt; 0.0,
     Length =&gt; 0.0
@@ -635,7 +635,7 @@ INITIAL_VALUE Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target{
 <Comment>Returns the speed of the section prior to the given target</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target"
  Guid="c8c68614-6f99-412d-82c4-e17eee5450af"
 >
@@ -684,7 +684,7 @@ Target == PreIndicationLocation.FirstTargetFromLocation(TrainPosition.FrontEndPo
 <Comment>Returns the start of the section n of the MRSP</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="MRSPnTarget"
  Guid="ccb79e6e-be9c-4165-a11d-92e054b266b0"
 >
@@ -722,7 +722,7 @@ MRSPnTarget == PreIndicationLocation.FirstTargetFromLocation(TrainPosition.Front
 <Comment>Provides the end of the section whose target is MRSPnTarget. That position is MRSPnTarget.Location.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="MRSPnTarget"
  Guid="a2bac124-a9bd-4d25-b70a-a1a749f16359"
 >

@@ -1017,7 +1017,7 @@ InitializeMessage()</Action></Actions>
 >PreviousTargetSpeed &lt;- DMI.MasterDMI().Out_TargetSpeed.Speed</Action><Action
  Guid="cc02b5bb-d96c-46dd-a3bf-abe2b314c992"
 ><Comment></Comment>
-PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.TargetDistance()</Action><Action
+PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</Action><Action
  Guid="0eb30b56-c6ab-4c4d-800f-f09532b1c04c"
 >PreviousReleaseSpeed &lt;- DMI.MasterDMI().Out_ReleaseSpeed.Speed</Action><Action
  Guid="ac4c4305-a3dd-45af-9761-831aaa483ba3"
@@ -1074,7 +1074,7 @@ PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision
 <Actions>
 <Action
  Guid="9bc80e3a-1a1a-429f-98aa-42c1d4d761ce"
->PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</Action></Actions>
+>PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_FLOI_DMI()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -6343,7 +6343,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="79088302-a61b-4499-9717-0db5a3e9ca11"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Release_speed_monitoring_RSM</Expression>
 </Case><Case
  Name="PIM"
@@ -6389,10 +6389,10 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 M_SDMTYPE =&gt; ToJruSpeedAndDistanceMonitoringType(),
 M_SDMSUPSTAT =&gt; ToJruSpeedAndDistanceMonitoringsupervisionStatus(),
 V_PERM =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_PermittedSpeed.Speed ),
-V_FLOI=&gt;ToMessagesSpeed(Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()),
+V_FLOI=&gt;ToMessagesSpeed(Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_FLOI_DMI()),
 V_TARGET =&gt;ToMessagesSpeed(DMI.MasterDMI().Out_TargetSpeed.Speed),
 D_TARGET=&gt; ToMessagesDistance(
-    distance=&gt;Kernel.SpeedAndDistanceMonitoring.TargetSupervision.TargetDistance(),
+    distance=&gt;Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance(),
     scale=&gt;Messages.JRU.Q_SCALE._1_m_scaleC
 ),
 V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
@@ -6531,7 +6531,7 @@ jru.SpeedAndDistanceSupervisionTypeChanged</PreCondition></PreConditions>
  Guid="13358226-042e-4eb7-a8e9-c752639ee537"
 >Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target
   AND
-jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</PreCondition></PreConditions>
+jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_FLOI_DMI()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="TargetSpeedChanged"
@@ -6550,7 +6550,7 @@ jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_
 <PreCondition
  Guid="c720d35c-be42-4990-831b-743cec7e607b"
 ><Comment></Comment>
-jru.PreviousTargetDistance != Kernel.SpeedAndDistanceMonitoring.TargetSupervision.TargetDistance()</PreCondition></PreConditions>
+jru.PreviousTargetDistance != Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="ReleaseSpeedChanged"
