@@ -6552,7 +6552,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="87f1713d-80d7-44ec-8ce5-2f5b7704203d"
 >
-</ReqRef><Procedures>
+</ReqRef><Comment></Comment>
+<Procedures>
 <Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -6604,6 +6605,15 @@
  Name="ProcedureIn"
  Guid="4efa4a84-93fe-4ead-b339-18a451eec8bf"
 >
+</StructureElement><StructureElement
+ TypeName="Default.Level"
+ Default=""
+ Mode="Outgoing"
+ Implemented="TRUE"
+ Name="Level"
+ Guid="ae7e46f1-c018-45e7-94c1-8a10237617fe"
+>
+<Comment>Contains the information about which is the level to perform the transition</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"

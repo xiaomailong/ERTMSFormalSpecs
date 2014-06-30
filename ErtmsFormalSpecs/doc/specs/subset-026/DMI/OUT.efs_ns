@@ -11275,7 +11275,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="31ab29d7-94a4-4e32-a733-ad5fb17146ae"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment></Comment>
+<StructureElement
  TypeName="OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -11294,12 +11295,13 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 >
 </StructureElement><StructureElement
  TypeName="Default.Level"
- Default=""
+ Default="Level.L0"
  Mode="Outgoing"
  Implemented="TRUE"
  Name="Level"
  Guid="4d8d624a-9012-4c1f-b0ec-1918d740a2fe"
 >
+<Comment>Target Level on the transition.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -16223,7 +16225,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <Actions>
 <Action
  Guid="bd5f6858-eb55-4cc7-a633-8479451bf90c"
->GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING X</Action></Actions>
+><Comment></Comment>
+GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
