@@ -26,51 +26,6 @@
  Guid="1694a829-9e08-4edb-b256-3f607da06326"
 >
 </NameSpaceRef></NameSpaces>
-<Enumerations>
-<Enum
- Default="SupervisionStatusEnum.Normal"
- X="200"
- Y="360"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SupervisionStatusEnum"
- Guid="425b2655-5563-4f7d-a175-e9ccc940ac92"
->
-<ReqRef
- Id="b8bd12fa-1398-4b7e-82b5-d9fea4894091"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="52b548fe-0bc1-4a21-b805-664ea56c1ccf"
->
-</ReqRef><Comment>Indicates the current supervision status of the train.</Comment>
-<Values>
-<EnumValue
- Value="0"
- Name="Normal"
- Guid="6b67c3eb-f991-4ad6-9b02-49f003cb70c3"
->
-</EnumValue><EnumValue
- Value="1"
- Name="Indication"
- Guid="26e7f129-502b-465c-b91e-62a92a2cfbc5"
->
-</EnumValue><EnumValue
- Value="2"
- Name="Overspeed"
- Guid="d89741f5-f481-44f1-8c4a-44403efbf242"
->
-</EnumValue><EnumValue
- Value="3"
- Name="Warning"
- Guid="1a5a94a3-fc6d-4ba4-bb7d-abc158d96508"
->
-</EnumValue><EnumValue
- Value="4"
- Name="Intervention"
- Guid="961451cc-ec43-4b91-ae94-3425c4dcd0e3"
->
-</EnumValue></Values>
-</Enum></Enumerations>
 <StateMachines>
 <StateMachine
  Default="MonitoringTypeSM.Ceiling"
@@ -2456,7 +2411,7 @@ ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
 <Actions>
 <Action
  Guid="646147c7-d863-488e-83c8-2dad26e8f09b"
->TargetSpeedMonitoring.SupervisionStatus.UpdateSupervisionStatus()</Action></Actions>
+>TargetSpeedMonitoring.SupervisionStatus.TSMStatusTriggers()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2497,7 +2452,7 @@ ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Action
  Guid="b1c0ff01-91ce-4c1f-9bcf-aaf67396cf63"
 ><Comment></Comment>
-CeilingSpeedMonitoring.SupervisionStatus.UpdateSupervisionStatus()</Action></Actions>
+CeilingSpeedMonitoring.SupervisionStatus.CSMStatusTriggers()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2531,7 +2486,7 @@ CeilingSpeedMonitoring.SupervisionStatus.UpdateSupervisionStatus()</Action></Act
 <Action
  Guid="4984d1e4-bfdd-4b2a-aa8f-4885ab876f30"
 ><Comment></Comment>
-ReleaseSpeedMonitoring.SupervisionStatus.UpdateSupervisionStatus()</Action></Actions>
+ReleaseSpeedMonitoring.SupervisionStatus.RSMStatusTriggers()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2573,6 +2528,8 @@ EBSpecified &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="TriggerTCOCommand"
  Guid="a58528c0-0cbd-4b03-be36-ebe63d37862f"
@@ -2719,24 +2676,6 @@ EBSpecified &lt;- True</Action></Actions>
  Guid="a1a5f487-c094-4090-a348-d919c764003d"
 >
 </ReqRef><Comment>Indicates if the traction cuf-off command was triggered.</Comment>
-</Variable><Variable
- Type="SupervisionStatusEnum"
- DefaultValue="SupervisionStatusEnum.Normal"
- VariableMode="Internal"
- X="200"
- Y="260"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Supervision"
- Guid="80030642-6eaa-408e-9f33-e3ecf28e70ce"
->
-<ReqRef
- Id="b8bd12fa-1398-4b7e-82b5-d9fea4894091"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e87a484a-d1e1-4938-9576-f0275e9d51b9"
->
-</ReqRef><Comment></Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"

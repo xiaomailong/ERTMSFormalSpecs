@@ -181,75 +181,6 @@
 <Procedure
  Width="100"
  Height="50"
- Implemented="TRUE"
- Name="UpdateSupervisionStatus"
- Guid="ad0ed264-a25d-432e-9b77-e63c79b260ea"
->
-<ReqRef
- Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="81bb4a23-c00b-4da5-989b-4c036d9c313b"
->
-</ReqRef><ReqRef
- Id="3935be43-6132-47c6-8ef3-28195e4f690c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b843bef9-d3b4-484d-9b05-1369dcd9e346"
->
-</ReqRef><ReqRef
- Id="26d27752-70b9-46bf-ada7-95ba7bb47a3c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="06b60fa2-1220-4daa-b754-a8b91ea984ac"
->
-</ReqRef><Comment>Procedure that handles the supervision status updates in ceiling speed monitoring</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Revoke CSM status"
- Guid="6c2b82df-2ddb-4ca5-9771-c039c3089b06"
->
-<Comment>Check revocation conditions</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Revoke CSM status"
- Guid="f6c73c3b-3cd9-4ac6-b72e-e6d0c37b945a"
->
-<Comment></Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="5eddc63c-0de4-4312-a921-1b312e5d1478"
-><Comment></Comment>
-CSMStatusRevocation()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Trigger CSM status"
- Guid="4a98f4f6-bc8b-4807-af58-cb16e93d3025"
->
-<Comment>Check triggers</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Trigger CSM status"
- Guid="90483b38-d602-4d5c-bc90-44b7a37802d3"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="7bc746ff-fb20-4373-991d-9a6035af94f6"
->CSMStatusTriggers()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Width="100"
- Height="50"
  Name="CSMStatusTriggers"
  Guid="754a8afc-edb7-42b9-a27f-1284b817ac07"
 >
@@ -307,6 +238,31 @@ CSMStatusRevocation()</Action></Actions>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ Name="t1"
+ Guid="8a6ea3f2-97bb-4cc6-a4b1-3ff5edf4c404"
+>
+<ReqRef
+ Id="4715e18d-a2df-4bd6-ac06-759df725f4f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86fa3669-eca9-48d4-9100-475e6f259901"
+>
+</ReqRef><ReqRef
+ Id="8468de24-42eb-4959-a546-99c00cccb22a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a4621995-51a6-4d92-8939-adad5e3cd7b4"
+>
+</ReqRef><Comment>Trigger 1: V below V_MRSP. Normal status.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="bfd3501b-bedb-46b6-a428-19ade95d5c74"
+>t1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="17f0041b-09e7-4c84-ba0c-757afaf714e0"
+><Comment></Comment>
+Monitoring &lt;- MonitoringTypeSM.Ceiling.Normal</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="t5"
  Guid="6401d65d-3e16-4a3a-8ba1-28df70b27775"
 >
@@ -338,7 +294,7 @@ CSMStatusRevocation()</Action></Actions>
 <Actions>
 <Action
  Guid="69dbf7af-26e1-420a-a2be-d2624eed2eee"
->Supervision &lt;- SupervisionStatusEnum.Intervention</Action><Action
+>Monitoring &lt;- MonitoringTypeSM.Ceiling.Intervention</Action><Action
  Guid="08d3e61f-777a-454b-ba65-928ccd503713"
 ><Comment></Comment>
 EBTriggered &lt;- True</Action><Action
@@ -378,7 +334,8 @@ t4()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7263bd8c-d804-4c52-9edd-5aa4d6b5f017"
->Supervision &lt;- SupervisionStatusEnum.Intervention</Action><Action
+><Comment></Comment>
+Monitoring &lt;- MonitoringTypeSM.Ceiling.Intervention</Action><Action
  Guid="7ceb207e-63a4-41e8-8989-a1b3a0af95a2"
 >TriggerSBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
@@ -404,7 +361,7 @@ t4()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b67cc471-1329-4651-96a9-dde7de08b73a"
->Supervision &lt;- SupervisionStatusEnum.Warning</Action></Actions>
+>Monitoring &lt;- MonitoringTypeSM.Ceiling.Warning</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t2"
@@ -428,207 +385,7 @@ t4()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a060f645-d849-461a-a141-c64effd5144a"
->Supervision &lt;- SupervisionStatusEnum.Overspeed</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t1"
- Guid="8a6ea3f2-97bb-4cc6-a4b1-3ff5edf4c404"
->
-<ReqRef
- Id="4715e18d-a2df-4bd6-ac06-759df725f4f9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="86fa3669-eca9-48d4-9100-475e6f259901"
->
-</ReqRef><ReqRef
- Id="8468de24-42eb-4959-a546-99c00cccb22a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a4621995-51a6-4d92-8939-adad5e3cd7b4"
->
-</ReqRef><Comment>Trigger 1: V below V_MRSP. Normal status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="bfd3501b-bedb-46b6-a428-19ade95d5c74"
->t1()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="17f0041b-09e7-4c84-ba0c-757afaf714e0"
->Supervision &lt;- SupervisionStatusEnum.Normal</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- X="110"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="CSMStatusRevocation"
- Guid="181e3fbd-9e82-4f66-bc59-3824db2c584c"
->
-<ReqRef
- Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bc05a1bd-995f-4c21-9e73-e5ffc419d3b1"
->
-</ReqRef><Comment>Handles the application of revocation of supervision statuses when the train is in ceiling supervision</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Revoke supervision status"
- Guid="8f76dbc5-8c87-457f-91a3-7fe7ab334343"
->
-<Comment>Checks each condition and applies the revocation if necessary</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="r0"
- Guid="c4307476-0bce-4017-8b43-060ce2599b77"
->
-<ReqRef
- Id="4f24d434-b967-4e8b-b2b1-e0b3f4d6c2dc"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0291a9ed-8988-4005-b65c-707d3b0f92b5"
->
-</ReqRef><ReqRef
- Id="644aa967-53f8-4d2c-b5ba-6a857c9cda54"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8a4fd652-11c7-4a14-b685-1e32a8c6352c"
->
-</ReqRef><ReqRef
- Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="31cf935f-c5a2-4bfc-a5bb-deda3178c506"
->
-</ReqRef><Comment>Revocation condition 0: Train at standstill, revoke Intervention Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="4e4830fc-a94d-426b-9f5e-b913436afab4"
-><Comment></Comment>
-r0()</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Revoke intervention status"
- Guid="86b9de37-f907-4710-bf64-412ed93e848d"
->
-<Comment>Revoke intervention status</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Revoke intervention status"
- Guid="9d7e201d-500a-409c-b2a0-d2aaebee3cd6"
->
-<Comment></Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="292dcc2b-5f14-4704-9498-c3afbeea2d95"
-><Comment></Comment>
-RevokeSupervisionStatus()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Revoke EB command"
- Guid="9de1af4c-4516-4777-82c0-bb28efaf93ad"
->
-<Comment></Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="RevokeEBCommand"
- Guid="f89ef6a2-a19e-4128-a39d-0fb2ec6b3810"
->
-<Comment></Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="6d175e6c-da20-4473-a4af-64d640ac6605"
->RevokeEBCommand()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="r1"
- Guid="1f35326e-e380-4cd3-9f1f-2e24e78b1d44"
->
-<ReqRef
- Id="ec0c435b-0145-4656-99a6-3a16788797ff"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9e0e0c10-0f15-4304-8c14-f4199d2672c7"
->
-</ReqRef><ReqRef
- Id="644aa967-53f8-4d2c-b5ba-6a857c9cda54"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fb6541e4-9acc-4e22-9ee3-ef219b4ca974"
->
-</ReqRef><ReqRef
- Id="da801456-beb5-47fa-b81e-22d23298cdb1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bc2863f5-8dd1-438b-a8b2-d8bd24146cca"
->
-</ReqRef><ReqRef
- Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5729e108-4caf-487c-9a94-857e90f8f414"
->
-<Comment></Comment>
-</ReqRef><Comment>Revocation condition 1: V below V_MRSP. revoke Indication, Overspeed, Warning and Intervention statuses.</Comment>
-<PreConditions>
-<PreCondition
- Guid="51e14c41-a88a-40af-af5b-9cf3f88e0f86"
-><Comment></Comment>
-r1()</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Name="Revoke brake commands"
- Guid="68c641f7-cbf1-4969-9a0d-5c71e420b999"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Revoke EB and SB commands"
- Guid="7c66d04a-2249-42b0-911d-08f9a2f4b566"
->
-<Comment></Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="49831efe-90f4-40f9-8fbe-fb22fcd620cc"
->RevokeSBCommand()</Action><Action
- Guid="a41cfc82-d25b-4253-a90a-157ce0df5384"
-><Comment></Comment>
-RevokeEBCommand()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Revoke supervision status"
- Guid="ecb3e400-ca2d-4ef2-9e04-78cd001be9ab"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Revoke supervision status"
- Guid="dae9059b-1950-4e9b-bd09-d75f1b1a90de"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="5beb366b-253e-4aee-b9a5-b655a066ee93"
-><Comment></Comment>
-RevokeSupervisionStatus()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+>Monitoring &lt;- MonitoringTypeSM.Ceiling.Overspeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

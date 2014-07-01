@@ -829,7 +829,7 @@ t13()</PreCondition></PreConditions>
  Guid="4ec0659c-cb29-4181-ba15-eb5f876c2157"
 >TriggerEBCommand()</Action><Action
  Guid="0ecf8a7c-4a11-4ed2-9a5c-f5f4272518d9"
->Supervision &lt;- SupervisionStatusEnum.Intervention</Action></Actions>
+>Monitoring &lt;- MonitoringTypeSM.Target.Intervention</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t12"
@@ -848,7 +848,7 @@ t13()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="12a98929-2436-4182-8500-9d8d9f8492b7"
->Supervision &lt;- SupervisionStatusEnum.Intervention</Action><Action
+>Monitoring &lt;- MonitoringTypeSM.Target.Intervention</Action><Action
  Guid="ea237c51-28f0-4c60-bcf5-0c10c2d072a3"
 >TriggerSBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
@@ -869,9 +869,10 @@ t13()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="93c187f7-8a69-4338-9c69-e8de1f01194e"
->Supervision &lt;- SupervisionStatusEnum.Intervention</Action><Action
+>Monitoring &lt;- MonitoringTypeSM.Target.Intervention</Action><Action
  Guid="6f376875-dd37-4749-8668-f2f46af84d83"
->TriggerSBCommand()</Action></Actions>
+><Comment></Comment>
+TriggerSBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t10"
@@ -890,7 +891,7 @@ t13()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4bfeb7b4-8ba8-474c-b4f9-70788763aa70"
->Supervision &lt;- SupervisionStatusEnum.Intervention</Action><Action
+>Monitoring &lt;- MonitoringTypeSM.Target.Intervention</Action><Action
  Guid="22823a33-1036-45f9-b31b-e8904ef6078b"
 >TriggerSBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
@@ -911,7 +912,7 @@ t13()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="420ba468-44ec-45c0-8c9b-1540bc794370"
->Supervision &lt;- SupervisionStatusEnum.Warning</Action><Action
+>Monitoring &lt;- MonitoringTypeSM.Target.Warning</Action><Action
  Guid="0f4026fe-ef7e-4265-84ef-06b47b92108b"
 >TCOSpecified &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
@@ -932,7 +933,7 @@ t13()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="39a30a21-6f5e-484a-8db6-0d9134e53e25"
->Supervision &lt;- SupervisionStatusEnum.Warning</Action><Action
+>Monitoring &lt;- MonitoringTypeSM.Target.Warning</Action><Action
  Guid="f1b68ce1-16fb-4124-9350-5d72c08bab65"
 >TCOSpecified &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
@@ -953,7 +954,7 @@ t13()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a2466139-4a3c-4574-98cb-26591a56114f"
->Supervision &lt;- SupervisionStatusEnum.Warning</Action><Action
+>Monitoring &lt;- MonitoringTypeSM.Target.Warning</Action><Action
  Guid="3017fa41-c24f-4afe-ba97-d79fcdb85e00"
 ><Comment></Comment>
 TCOSpecified &lt;- True</Action></Actions>
@@ -975,7 +976,7 @@ TCOSpecified &lt;- True</Action></Actions>
 <Actions>
 <Action
  Guid="7b77c378-47f6-45b5-85a5-fa5f03393863"
->Supervision &lt;- SupervisionStatusEnum.Overspeed</Action></Actions>
+>Monitoring &lt;- MonitoringTypeSM.Target.Overspeed</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t5"
@@ -994,7 +995,7 @@ TCOSpecified &lt;- True</Action></Actions>
 <Actions>
 <Action
  Guid="9afdcb59-ff06-473b-bf67-3aa17483b7dc"
->Supervision &lt;- SupervisionStatusEnum.Overspeed</Action></Actions>
+>Monitoring &lt;- MonitoringTypeSM.Target.Overspeed</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t4"
@@ -1013,7 +1014,7 @@ TCOSpecified &lt;- True</Action></Actions>
 <Actions>
 <Action
  Guid="5b75c2de-0a03-4156-954a-a43169a452fd"
->Supervision &lt;- SupervisionStatusEnum.Overspeed</Action></Actions>
+>Monitoring &lt;- MonitoringTypeSM.Target.Overspeed</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t3"
@@ -1032,7 +1033,7 @@ TCOSpecified &lt;- True</Action></Actions>
 <Actions>
 <Action
  Guid="f5c3eb5f-3637-440d-a9f8-e8b104ab2c67"
->Supervision &lt;- SupervisionStatusEnum.Indication</Action></Actions>
+>Monitoring &lt;- MonitoringTypeSM.Target.Indication</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
