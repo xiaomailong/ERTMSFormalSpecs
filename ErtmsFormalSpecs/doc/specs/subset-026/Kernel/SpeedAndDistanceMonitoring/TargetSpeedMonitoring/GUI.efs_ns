@@ -78,7 +78,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bef57f63-a50b-48c6-a773-b4439f91f65b"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Provides the location of the Permitted distance for a given target speed.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -94,7 +94,8 @@
 <PreConditions>
 <PreCondition
  Guid="d164c315-df41-48a4-aa11-d21cee4593c2"
->TargetSpeedMonitoring.GUI.d_EBI ( Vtarget ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+><Comment></Comment>
+TargetSpeedMonitoring.GUI.d_EBI ( Vtarget ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="089c769c-9cde-4d4f-ad6b-051682628614"
 >NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
@@ -102,6 +103,7 @@
  Name="Value"
  Guid="7e0f93ea-6373-4564-a9fc-832150d2356b"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6860da27-cc47-40c6-ba21-60e0797f07ba"
@@ -123,7 +125,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="08591f02-6587-40e1-ae68-9a43ef005b99"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Provides the profile of the most restrictive supervised target as a function of distance.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -168,7 +170,8 @@ INITIAL_VALUE Default.BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e2367d51-6ddb-4cfd-8751-ab74e3a0d1b8"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Used to get the profile in SpeedRestrictions, provides the full distance over which each target is applicable.</Comment>
+<Parameters>
 <Parameter
  Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
@@ -214,7 +217,7 @@ INITIAL_VALUE Default.BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Guid="2a171c82-b995-4704-b3ec-b1b9353cbc2d"
 >Distance &lt; aTarget.Location + Default.BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition><PreCondition
  Guid="e1eb0537-a61d-41fb-96e6-629c3dfd32d6"
->TargetSpeedMonitoring.GUI.d_P ( aTarget.Speed ) &lt;= Distance</PreCondition></PreConditions>
+>d_P ( aTarget.Speed ) &lt;= Distance</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="Outside"

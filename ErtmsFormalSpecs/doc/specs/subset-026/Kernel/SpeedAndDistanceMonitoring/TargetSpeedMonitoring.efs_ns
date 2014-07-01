@@ -9,10 +9,6 @@
 <Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
- Name="LevelCrossing"
- Guid="7fbef410-224f-4e84-8214-9e27c921d061"
->
-</NameSpaceRef><NameSpaceRef
  Name="GUI"
  Guid="ca162c39-085e-48b3-bc8d-3cad43f08aa7"
 >
@@ -36,7 +32,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3dd56d31-d853-4199-97b4-4131ad0b9682"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment>Structure defining a target: provides the start location, the maximum speed and the length over which the speed restriction takes effect.</Comment>
+<StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
  Mode="Internal"
@@ -45,6 +42,7 @@
  Name="Location"
  Guid="88225cf3-e583-44c0-a7f6-549db0535f7b"
 >
+<Comment>Start location of the target, measured from the LRBG reference location.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default="0.0"
@@ -54,6 +52,7 @@
  Name="Speed"
  Guid="b11369ec-bacd-41aa-908d-ce2d06353482"
 >
+<Comment>Speed restriction btween (Location) and (Location + Length)</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="0.0"
@@ -63,6 +62,7 @@
  Name="Length"
  Guid="356de4a2-3e92-44b2-b72b-958de1aac294"
 >
+<Comment>Length of the target</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -81,7 +81,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7467c00d-368c-4bd4-952f-b51ddf6093bb"
 >
-</ReqRef></Collection></Collections>
+</ReqRef><Comment>Collection of targets</Comment>
+</Collection></Collections>
 <Functions>
 <Function
  Type="Default.BaseTypes.Distance"
@@ -209,7 +210,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6e9ca8fd-f111-4f92-b2b3-477b7075f563"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Used in the calculation of the EBI curve from the EBD curve. T_berem is the time remaining in the safe brake build up time, T_be, after the traction has been fully cut off (which takes a time T_traction).</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -257,7 +258,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5634b0c6-40b9-4086-a7f8-b69a4a926cbf"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Once a brake command has been issued, T_traction is the time it takes for the train to cut off the traction.</Comment>
 <Cases>
 <Case
  Name="Traction cut-off is implemented"
@@ -300,7 +301,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="91d70d13-5f09-48e7-bf24-5064cf60316f"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>The compensation of the speed inaccuracy used in calculating the EBI supervision limit. It can be disabled by a national value.</Comment>
 <Cases>
 <Case
  Name="Compensation of speed inaccuracy is inhibited by NV"
@@ -540,7 +541,7 @@ ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable ( aTarget )</PreConditi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7edb4b2a-3e03-48a4-a13c-e31280181264"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Determines whether the service brake feedback is available for use.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -661,7 +662,8 @@ ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable ( aTarget )</PreConditi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="00403a97-909c-42ef-87ea-31461f32b7cc"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Time used to calculate the distance between the indication supervision limit and the permitted speed supervision limit.</Comment>
+<Cases>
 <Case
  Name="SB feedback interface available"
  Guid="c148aa95-1337-4c59-8850-b90875ac3c5c"
@@ -694,7 +696,7 @@ ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable ( aTarget )</PreConditi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d69bb437-5b84-4094-b96f-0af903e1a3f7"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Provides the SBI distance, calculated from the EBD curve, taken from the most restrictive target amongst the EBD based targets.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -818,7 +820,7 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2a87d0d2-6795-4a7e-975f-4da7407478f4"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>The permitted speed of an EOA target, as used in the calculation of the MRDT.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -897,7 +899,7 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6ce518f2-328d-4a52-a04f-a3b5b596fdfc"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>The permitted speed as used in the calculation of the MRDT.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -1059,7 +1061,7 @@ DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.EBD, Speed =&gt; Vtarget
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e23e205e-c96d-4701-8d67-907847c9d5e3"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>The permitted speed of the MRDT.</Comment>
 <Cases>
 <Case
  Name="MRDT is the EOA"
@@ -1242,7 +1244,7 @@ DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.EBD, Speed =&gt; Vtarget
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ded4780e-f8f3-459f-92ea-6561b63cdeaf"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Returns the most restrictive displayed target, the target for which the permitted speed (determined from the target location and the calculated braking curves) is smallest at the train&apos;s current position.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -1411,7 +1413,7 @@ TargetSpeedMonitoring.V_P_EBD_Target
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="52a5d05b-f8e8-4d2b-a807-315d4cfd1200"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Determines whether the FLOI should be calculated from the EBD or the SBD, depending on which provides the closer FLOI. Depending on which one is used, distances are compared to either the max safe front end of the train or the estimated front end of the train.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -1467,7 +1469,7 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="71de75da-dda1-4585-8b17-667aeea13130"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>The permitted speed as reported to the driver (through the DMI).</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -1493,7 +1495,8 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="36667119-10ab-4a96-887e-606d73ec3f7d"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>The FLOI speed as reported to the driver (through the DMI).</Comment>
+<Cases>
 <Case
  Name="EOA or SvL"
  Guid="20305c0b-b18d-4d3b-b937-1488474eccf8"
@@ -1819,7 +1822,7 @@ DistanceForSpeed(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6c8f1f29-0284-4bf8-8607-b73cf6da6603"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Provides the location corresponding to the intervention location for the provided speed.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -1861,7 +1864,7 @@ DistanceForSpeed(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c3f0c650-057a-43ec-85d8-8a0df7113e4d"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Returns the closest distance at which the EBI value is equal to a provided speed (calculated from Vest and aTarget.Speed).</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -1971,7 +1974,8 @@ DistanceForSpeed(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e1650ea1-6c4f-4465-b880-51632e1acd06"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Provides the distance to the MRDT. the calculation of this distance depends on whether the MRDT is EOA/SvL or another type of target.</Comment>
+<Cases>
 <Case
  Name="MRDT is EOA or SvL"
  Guid="82194262-9ba2-4fde-8a4d-317280711763"
@@ -1980,7 +1984,8 @@ DistanceForSpeed(
 <PreConditions>
 <PreCondition
  Guid="93e6226e-a005-4917-8b21-45a1a7127f27"
->MA.IsEOA(MRDT())
+><Comment></Comment>
+MA.IsEOA(MRDT())
   OR  
 MA.IsSvL(MRDT())</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.MaxDistance(
@@ -2024,7 +2029,7 @@ MA.IsSvL(MRDT())</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f0711f60-19ec-43a0-8553-56ba9cd8770c"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Initialize the time intervals for the service brake depending of whether the feedback is available.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -2033,6 +2038,7 @@ MA.IsSvL(MRDT())</PreCondition></PreConditions>
  Name="InitializeTimeIntervals"
  Guid="eb53f9d2-158f-4358-8084-af8988bbfdf3"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2045,7 +2051,8 @@ MA.IsSvL(MRDT())</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9c9e822c-1b6e-46ea-8601-2566e40a3bc1"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the feedback is not available, both the T_bs variables are given the same constant value.</Comment>
+<PreConditions>
 <PreCondition
  Guid="c14a5ddc-ef60-4e6e-99df-4784e3561cf5"
 >TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition><PreCondition
@@ -2056,7 +2063,8 @@ MA.IsSvL(MRDT())</PreCondition></PreConditions>
  Guid="ec39334f-816b-488a-bb1e-4d56f2c8b2f2"
 >TargetSpeedMonitoring.T_bs1 &lt;- TrainData.BrakingParameters.T_bs()</Action><Action
  Guid="276948b7-fb73-404d-8430-160712fbc9ce"
->TargetSpeedMonitoring.T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></Actions>
+><Comment></Comment>
+TargetSpeedMonitoring.T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="SBCommandAvailable_SBFeedbackAvailable"
@@ -2067,7 +2075,8 @@ MA.IsSvL(MRDT())</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="775dcbb3-caf7-42f9-924a-7cd5b784bd29"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the service brake feedback is available, the T_bs are both set to the same initial value, which will be decreased after the brakes are triggered.</Comment>
+<PreConditions>
 <PreCondition
  Guid="a9a8135c-652f-4435-977a-b2ca399a5d48"
 >TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition><PreCondition
@@ -2091,7 +2100,8 @@ TargetSpeedMonitoring.T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></A
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bac524f3-c36a-4466-a08a-d0815198a43d"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the service brake command is not available, set the time intervals to 0 by default.</Comment>
+<PreConditions>
 <PreCondition
  Guid="041c65ef-2817-4558-9639-1609416c920f"
 >NOT TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition></PreConditions>

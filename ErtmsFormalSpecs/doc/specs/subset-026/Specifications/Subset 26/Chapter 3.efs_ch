@@ -27161,7 +27161,8 @@ In case a non protected LX start location is supervised as both the EOA and SvL 
  functionalBlockName=""
  Name=""
  Guid="c6aacc41-0ade-4c43-a0c5-e212f9a6a52f"
->the estimated acceleration shall be set to &quot;zero&quot;<RequirementSets>
+><Comment></Comment>
+the estimated acceleration shall be set to &quot;zero&quot;<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="59a10e19-693e-447e-ac5a-461a8c13dc93"
@@ -28654,7 +28655,8 @@ Revocation condition #; Estimated speed; Location; TI Command revoked; Supervisi
  functionalBlockName=""
  Name=""
  Guid="644aa967-53f8-4d2c-b5ba-6a857c9cda54"
->Normal status; &lt; r1 -p1-; &lt; r1-p1-; &lt; r1-p1-; &lt; r0, r1-p1-<RequirementSets>
+><Comment></Comment>
+Normal status; &lt; r1 -p1-; &lt; r1-p1-; &lt; r1-p1-; &lt; r0, r1-p1-<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="9614af2f-e756-4ed6-98b4-f0e93d27ad16"
@@ -28673,7 +28675,8 @@ Revocation condition #; Estimated speed; Location; TI Command revoked; Supervisi
  functionalBlockName=""
  Name=""
  Guid="c8000537-75f6-4a09-8790-4dca0585d9f8"
->; Indication status; ; ;<RequirementSets>
+><Comment></Comment>
+; Indication status; ; ;<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a1977c17-a5fb-4cee-8853-4f412f8fc317"
@@ -29069,7 +29072,7 @@ Target distance = max { min { ( d_EOA - d_estfront ), ( d_SvL - d_maxsafefront )
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29438,7 +29441,8 @@ t14; Vest &gt; V_MRSP + dVebi(V_MRSP); Not relevant; EB; Intervention Status<Req
  functionalBlockName=""
  Name=""
  Guid="048d92b5-49be-4ccd-9d00-90c40085cb89"
->Table 9: Triggering of Train Interface commands and supervision statuses in target speed monitoring, EOA/SvL with release speed
+><Comment></Comment>
+Table 9: Triggering of Train Interface commands and supervision statuses in target speed monitoring, EOA/SvL with release speed
 Triggering condition #; Estimated speed; Train front end position (estimated and max safe); TI Command triggered; Supervision status triggered<Sub>
 <Paragraph
  id="Entry 3.13.10.4.10.2.1"
@@ -29448,7 +29452,7 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29468,12 +29472,13 @@ t1; Vest &lt;= Vrelease; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="1900c77e-8d93-44ae-a0c6-75c7b767420f"
->t2; Vrelease &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest) if FLOI(Vest)=SBI2(Vest)
+><Comment></Comment>
+t2; Vrelease &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest) if FLOI(Vest)=SBI2(Vest)
 	OR d_estfront &lt;= d_I(Vest) if FLOI(Vest)=SBI1(Vest); -; Normal Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -29488,7 +29493,7 @@ t1; Vest &lt;= Vrelease; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29508,7 +29513,7 @@ t1; Vest &lt;= Vrelease; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29528,7 +29533,7 @@ t1; Vest &lt;= Vrelease; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29548,7 +29553,7 @@ t1; Vest &lt;= Vrelease; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29570,12 +29575,13 @@ t1; Vest &lt;= Vrelease; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="024d5773-00f6-4c63-83dd-29b47ad8e8ff"
->t7; Vrelease &lt; Vest &lt;= V_MRSP + d_Vwarning(V_MRSP); d_maxsafefront &gt; d_W(Vest) if FLOI(Vest)=SBI2(Vest)
+><Comment></Comment>
+t7; Vrelease &lt; Vest &lt;= V_MRSP + d_Vwarning(V_MRSP); d_maxsafefront &gt; d_W(Vest) if FLOI(Vest)=SBI2(Vest)
 	OR d_estfront &gt; d_W(Vest) if FLOI(Vest)=SBI1(Vest); TCO; Warning Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -29590,7 +29596,7 @@ t1; Vest &lt;= Vrelease; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29610,7 +29616,7 @@ t1; Vest &lt;= Vrelease; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29632,12 +29638,13 @@ t1; Vest &lt;= Vrelease; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="8cbd8d63-d690-46a3-949e-0118624c0bda"
->t10; Vrelease &lt; Vest &lt;= V_MRSP + d_Vsbi(V_MRSP); d_maxsafefront &gt; d_FLOI(Vest) if FLOI(Vest)=SBI2(Vest)
+><Comment></Comment>
+t10; Vrelease &lt; Vest &lt;= V_MRSP + d_Vsbi(V_MRSP); d_maxsafefront &gt; d_FLOI(Vest) if FLOI(Vest)=SBI2(Vest)
 	OR d_estfront &gt;= d_FLOI(Vest) if FLOI(Vest)=SBI1(Vest); SB; Intervention Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -29652,12 +29659,13 @@ t1; Vest &lt;= Vrelease; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="f1638f47-91c3-47b5-95c8-929a83f2c89a"
->t11; V_MRSP + d_Vsbi(V_MRSP) &lt; Vest &lt;= V_MRSP + d_Vebi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); SB; Intervention Status(Pre-indication display area)<RequirementSets>
+><Comment></Comment>
+t11; V_MRSP + d_Vsbi(V_MRSP) &lt; Vest &lt;= V_MRSP + d_Vebi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); SB; Intervention Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="dad32073-37d1-487a-85a2-5897dc80676f"
@@ -29671,7 +29679,7 @@ t1; Vest &lt;= Vrelease; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29690,12 +29698,13 @@ t1; Vest &lt;= Vrelease; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="1230c827-9c0a-4903-80b2-609619e53d02"
->t13; Vrelease &lt; Vest &lt;= V_MRSP + d_Vebi(V_MRSP); d_maxsafefront &gt; d_EBI(Vest); EB; Intervention Status<RequirementSets>
+><Comment></Comment>
+t13; Vrelease &lt; Vest &lt;= V_MRSP + d_Vebi(V_MRSP); d_maxsafefront &gt; d_EBI(Vest); EB; Intervention Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="f7bbb4c0-beae-44de-8eec-bab3f2a814cf"
@@ -29709,7 +29718,7 @@ t1; Vest &lt;= Vrelease; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29790,12 +29799,13 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="775d91cf-e44c-4da5-964b-d0cb40ab524b"
->r0; Standstill; EB; Intervention Status<RequirementSets>
+><Comment></Comment>
+r0; Standstill; EB; Intervention Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="70e429f3-f9c5-4fc0-abbc-0c1464871dd0"
@@ -29809,7 +29819,7 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29833,7 +29843,7 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29858,7 +29868,7 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29904,7 +29914,7 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29923,7 +29933,7 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29947,7 +29957,7 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -29972,7 +29982,7 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30010,12 +30020,13 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="6112d3b2-46f0-4ecb-8029-415b38396a4d"
->In case of target EOA/SvL without any supervised release speed, the Table 9 and Table 11 shall be applied, by substituting V_release with the value 0.<RequirementSets>
+><Comment></Comment>
+In case of target EOA/SvL without any supervised release speed, the Table 9 and Table 11 shall be applied, by substituting V_release with the value 0.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3595d1b9-d5d3-4e83-b216-1c6871bb4995"
@@ -30048,7 +30059,7 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30078,7 +30089,7 @@ The on-board equipment shall execute the transitions between the different super
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30098,7 +30109,7 @@ Normal status; &lt; r1, r2 -p1-; &lt; r1, r2 -p1-; &lt; r1, r2 -p1-; &lt; r0, r1
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30117,7 +30128,7 @@ Normal status; &lt; r1, r2 -p1-; &lt; r1, r2 -p1-; &lt; r1, r2 -p1-; &lt; r0, r1
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30136,7 +30147,7 @@ Normal status; &lt; r1, r2 -p1-; &lt; r1, r2 -p1-; &lt; r1, r2 -p1-; &lt; r0, r1
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30155,7 +30166,7 @@ Normal status; &lt; r1, r2 -p1-; &lt; r1, r2 -p1-; &lt; r1, r2 -p1-; &lt; r0, r1
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30188,7 +30199,7 @@ Normal status; &lt; r1, r2 -p1-; &lt; r1, r2 -p1-; &lt; r1, r2 -p1-; &lt; r0, r1
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
