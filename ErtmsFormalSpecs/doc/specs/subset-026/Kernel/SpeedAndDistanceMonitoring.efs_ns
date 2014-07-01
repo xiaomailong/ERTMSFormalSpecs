@@ -100,6 +100,8 @@
 >
 <States>
 <State
+ Width="100"
+ Height="50"
  Name="Normal"
  Guid="9a91a3dd-9d67-45f1-aaf7-ca93ab42ca33"
 >
@@ -113,6 +115,7 @@
  Name="Update Supervision Status"
  Guid="aa198f35-bf50-428a-a070-cb002b1d031d"
 >
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -214,9 +217,13 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ X="110"
+ Width="100"
+ Height="50"
  Name="Overspeed"
  Guid="45e0bfcf-d273-4d7f-9f2e-301363f9d68b"
 >
+<Comment></Comment>
 <StateMachine
  Guid="e7f7e587-41ae-4d7b-8350-5d1f64d2faa8"
 >
@@ -226,6 +233,7 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  Name="Update Supervision Status"
  Guid="debab188-b9f4-492b-9851-4c18d095533c"
 >
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -330,9 +338,13 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ X="220"
+ Width="100"
+ Height="50"
  Name="Warning"
  Guid="fc18048a-c0fe-4ed9-aff4-afcfdad18e05"
 >
+<Comment></Comment>
 <StateMachine
  Guid="b37970a0-5c0a-4ac4-bf00-04fa9ce0dd85"
 >
@@ -342,6 +354,7 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  Name="Update Supervision Status"
  Guid="21557f49-bc5c-4c49-9b01-cff833cd85bd"
 >
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -430,9 +443,13 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ X="330"
+ Width="100"
+ Height="50"
  Name="Intervention"
  Guid="12c96138-24fa-468c-a28c-5873a73754c3"
 >
+<Comment></Comment>
 <StateMachine
  Guid="42d7f7a3-0ae5-49ec-8c3b-8dd602f38965"
 >
@@ -442,6 +459,7 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  Name="Update Supervision Status"
  Guid="5ef6a9db-c456-475a-a108-11cc8d77a9c0"
 >
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -565,6 +583,7 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 >
 <States>
 <State
+ Implemented="TRUE"
  Name="Normal"
  Guid="dc9b8e37-151c-4c98-b818-2fa70d29126d"
 >
@@ -573,19 +592,23 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="33901e28-a380-48fd-ac96-054de71de008"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Normal status.</Comment>
 <StateMachine
+ Implemented="TRUE"
  Guid="e32c4304-a33b-4af2-b073-7cf18a016480"
 >
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Update Supervision Status"
  Guid="28bd2002-39c1-446a-ae24-190e17a28298"
 >
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="To intervention status"
  Guid="c7774604-8e3c-47b1-a4aa-ae0fee95eff0"
 >
@@ -594,7 +617,8 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8d2ef01f-8d3c-49b8-bee0-3d52514ba707"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
+<PreConditions>
 <PreCondition
  Guid="96efee33-cf27-4dd5-a7aa-b1cec64d4cf4"
 >TargetSpeedMonitoring.SupervisionStatus.ToIntervention()</PreCondition></PreConditions>
@@ -605,12 +629,15 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger emergency brake"
  Guid="9d25885d-9280-40dd-866b-31f7e81717a8"
 >
+<Comment>Triggers t13 and t14 also trigger the emergency brake.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Emergency brake command"
  Guid="4988606b-67ae-4dd8-8b0d-25121f908ebe"
 >
@@ -627,12 +654,15 @@ TargetSpeedMonitoring.SupervisionStatus.t14()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger service brake"
  Guid="3d5b3363-06f3-4f98-a050-86fccccaca39"
 >
+<Comment>Triggers t10, t11 and t12 also trigger the service brake.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Service brake command"
  Guid="d6215020-3516-4889-a565-ff21c7d99ac8"
 >
@@ -651,6 +681,7 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To warning status"
  Guid="9659aa6d-7acb-47da-b8a1-a6b48c5cf4a9"
 >
@@ -659,7 +690,8 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a10ce3a1-70be-41a1-b444-1c19e5202d51"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger warning status, priority 2.</Comment>
+<PreConditions>
 <PreCondition
  Guid="0dc28c56-565a-4b93-95d1-5dfe4cfa1de9"
 >TargetSpeedMonitoring.SupervisionStatus.ToWarning()</PreCondition></PreConditions>
@@ -670,6 +702,7 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  Guid="b620c0fd-2bf7-463e-b8a9-52495ddd7756"
 >TriggerTCOCommand()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To overspeed status"
  Guid="680079f0-c759-4169-b1ae-f3e7f6494202"
 >
@@ -678,7 +711,8 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3adde15c-9549-49ee-b4df-1a9d52e8afaa"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger overspeed status, priority 3.</Comment>
+<PreConditions>
 <PreCondition
  Guid="b349ffd5-7e68-4e39-b91a-386f44a1bd2a"
 >TargetSpeedMonitoring.SupervisionStatus.ToOverspeed()</PreCondition></PreConditions>
@@ -687,6 +721,7 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  Guid="b3c54d10-3d95-4bbc-80aa-855845e9ef32"
 >THIS &lt;- Overspeed</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To indication status"
  Guid="9ec21dce-8f4a-4c6d-84c5-652157c37565"
 >
@@ -695,7 +730,8 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2e0134fa-0e94-4e97-be51-bbd4bf0b172c"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger indication status, priority 4.</Comment>
+<PreConditions>
 <PreCondition
  Guid="3ba9539b-74e0-44dc-8159-829adc3984f6"
 >TargetSpeedMonitoring.SupervisionStatus.t3()</PreCondition></PreConditions>
@@ -706,6 +742,7 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ Implemented="TRUE"
  Name="Indication"
  Guid="17e89b9b-905d-4d3f-81c4-c28ea57a14a5"
 >
@@ -714,19 +751,23 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6e612cd9-2ceb-43b7-9256-7dc898dfa2ce"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Indication status.</Comment>
 <StateMachine
+ Implemented="TRUE"
  Guid="3ee50a93-01db-44cb-90fb-61011172f50e"
 >
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Update Supervision Status"
  Guid="6cf65003-35ec-4e71-bc63-dc20a8c35dca"
 >
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="To normal status"
  Guid="8a24f01f-fb81-4d5b-81f3-d868a91656c5"
 >
@@ -735,7 +776,8 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="75272c1d-5dc9-4a16-93d5-7dd072315156"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Revoke indication status to normal status, priority 1.</Comment>
+<PreConditions>
 <PreCondition
  Guid="fa08245a-da47-4f3f-8b9e-f0e1296ad148"
 >TargetSpeedMonitoring.SupervisionStatus.r1()
@@ -752,6 +794,7 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
  Guid="7afb5b10-1372-4688-a460-73f4fbd1c190"
 >RevokeTCOCommand()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To intervention status"
  Guid="f62bfad1-3ce5-493b-b580-591e1bf4cf4b"
 >
@@ -760,7 +803,8 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4a97133e-b15e-4d46-b79e-4cb3d32883d0"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
+<PreConditions>
 <PreCondition
  Guid="5eafcee0-46fa-42a9-b134-5b6c946a525b"
 >TargetSpeedMonitoring.SupervisionStatus.ToIntervention()</PreCondition></PreConditions>
@@ -771,19 +815,23 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger emergency brake"
  Guid="facdd038-b1cd-493d-bb60-f99652650f8d"
 >
+<Comment>Triggers t13 and t14 also trigger the emergency brake.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Emergency brake command"
  Guid="8a901347-b429-48e6-b485-8d9063157c41"
 >
 <PreConditions>
 <PreCondition
  Guid="188ed1ba-e511-47d7-93cd-e70b0b052aeb"
->TargetSpeedMonitoring.SupervisionStatus.t13()
+><Comment></Comment>
+TargetSpeedMonitoring.SupervisionStatus.t13()
   OR  
 TargetSpeedMonitoring.SupervisionStatus.t14()</PreCondition></PreConditions>
 <Actions>
@@ -793,19 +841,23 @@ TargetSpeedMonitoring.SupervisionStatus.t14()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger service brake"
  Guid="944f38aa-10e3-46ea-8739-f14be26b3a02"
 >
+<Comment>Triggers t10, t11 and t12 also trigger the service brake.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Service brake command"
  Guid="d5adb379-3e47-4f08-8a2c-e7f84c4db59e"
 >
 <PreConditions>
 <PreCondition
  Guid="b0a4f1ae-3b0e-4b17-899c-db1ade2629b8"
->TargetSpeedMonitoring.SupervisionStatus.t10()
+><Comment></Comment>
+TargetSpeedMonitoring.SupervisionStatus.t10()
   OR  
 TargetSpeedMonitoring.SupervisionStatus.t11()
   OR  
@@ -817,6 +869,7 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To warning status"
  Guid="21bd55a2-ba4d-4669-a3b2-19adbcbaae17"
 >
@@ -825,7 +878,8 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5c889475-1ae3-46b9-a1c7-3697b5cf05bd"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger warning status, priority 2.</Comment>
+<PreConditions>
 <PreCondition
  Guid="34322efe-7f5c-4c14-8d08-15f66294ea81"
 >TargetSpeedMonitoring.SupervisionStatus.ToWarning()</PreCondition></PreConditions>
@@ -836,6 +890,7 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  Guid="82876995-e964-4d20-87b2-5e401e8a71eb"
 >TriggerTCOCommand()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To overspeed status"
  Guid="a26bed95-5b6b-4834-bcb8-6fee4901832a"
 >
@@ -844,7 +899,8 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="894b3c5f-5e52-4c7d-9deb-2ce752b555e9"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger overspeed status, priority 3.</Comment>
+<PreConditions>
 <PreCondition
  Guid="5d5ec35d-17cf-42d4-b349-521db10b473f"
 >TargetSpeedMonitoring.SupervisionStatus.ToOverspeed()</PreCondition></PreConditions>
@@ -855,6 +911,7 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ Implemented="TRUE"
  Name="Overspeed"
  Guid="33e0286f-fd8f-4757-9b71-fa43cf9731e1"
 >
@@ -863,18 +920,23 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3695529d-81a0-4cc2-831b-492dde07e6ae"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Overspeed status.</Comment>
+<StateMachine
+ Implemented="TRUE"
  Guid="91132084-fe99-4f56-b3ff-5ebb2357ec2b"
 >
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Update Supervision Status"
  Guid="23bf3819-abec-4055-b983-d1e9d3cba80f"
 >
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="To normal status"
  Guid="fc97d455-96e0-4b88-a25b-5bee78cd3f87"
 >
@@ -883,7 +945,8 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8bb203c8-8cdc-43f4-9beb-8adf8f395e85"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Revoke overspeed status to normal status, priority 1.</Comment>
+<PreConditions>
 <PreCondition
  Guid="e5aa2b38-c71b-4400-9ab7-da35b297947c"
 >TargetSpeedMonitoring.SupervisionStatus.r1()
@@ -900,6 +963,7 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
  Guid="ce4346a6-96eb-40c9-b8f9-fb657f9ebf2d"
 >RevokeTCOCommand()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To intervention status"
  Guid="87afe508-0553-401e-b637-257244d2a5cf"
 >
@@ -908,7 +972,8 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e1f61fc6-99c0-4ec7-ac75-fdb5cab3a4b8"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
+<PreConditions>
 <PreCondition
  Guid="7fa23ed1-ae9d-49e3-927c-f3d2da32b78b"
 >TargetSpeedMonitoring.SupervisionStatus.ToIntervention()</PreCondition></PreConditions>
@@ -919,12 +984,15 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger emergency brake"
  Guid="f4c712b0-05c0-4ac0-8d84-37bbad70cf64"
 >
+<Comment>Trigger t13 and t14 also trigger the emergency brake.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Emergency brake command"
  Guid="16df3a4b-4880-4cb4-b0a3-84c77f8b5978"
 >
@@ -941,12 +1009,15 @@ TargetSpeedMonitoring.SupervisionStatus.t14()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger service brake"
  Guid="d2e016cb-6527-4a1f-a606-67c0fcad8027"
 >
+<Comment>Triggers t10, t11 and t12 also trigger the service brake.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Service brake command"
  Guid="07df2567-6091-4e7a-bb7e-1d8667a1fa04"
 >
@@ -965,6 +1036,7 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To indication status"
  Guid="6f240fe6-b6b8-47b2-ba55-e59d2062df4a"
 >
@@ -973,7 +1045,8 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1122d942-73da-427c-a291-d78fa5712967"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Revoke overspeed status to indication status, priority 2.</Comment>
+<PreConditions>
 <PreCondition
  Guid="9a0ab609-66b4-4f48-ad75-d748613106d3"
 >TargetSpeedMonitoring.SupervisionStatus.r3()</PreCondition></PreConditions>
@@ -988,6 +1061,7 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  Guid="a576e695-8505-4635-a48d-3ac406fc8673"
 >RevokeSBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To warning status"
  Guid="64d10828-4293-4417-8f72-3792041ca92a"
 >
@@ -996,7 +1070,8 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6c7b9129-6498-461b-afdd-91cfadbadb43"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger warning status, priority 2.</Comment>
+<PreConditions>
 <PreCondition
  Guid="acd44053-6b13-4945-85f2-5086cf185af3"
 >TargetSpeedMonitoring.SupervisionStatus.ToWarning()</PreCondition></PreConditions>
@@ -1009,6 +1084,7 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ Implemented="TRUE"
  Name="Warning"
  Guid="62d08517-d2ba-4717-a60e-edf9e00b38e1"
 >
@@ -1017,18 +1093,23 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="94b0bfa4-210f-4a5d-b918-25a6228e7816"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Warning status.</Comment>
+<StateMachine
+ Implemented="TRUE"
  Guid="f52bc34a-605e-4f96-85dd-ee16736ea86b"
 >
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Update Supervision Status"
  Guid="8ea2a956-21d6-4df0-9285-dc34c6936b55"
 >
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="To normal status"
  Guid="0efa0664-8d58-4956-b9b5-013c20b28ffa"
 >
@@ -1037,7 +1118,8 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="181adc0a-dd98-4985-aec5-eab46e4c865b"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Revoke warning status to normal status, priority 1.</Comment>
+<PreConditions>
 <PreCondition
  Guid="16ec6714-3554-43a3-89b0-f281ca7c2248"
 >TargetSpeedMonitoring.SupervisionStatus.r1()
@@ -1054,6 +1136,7 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
  Guid="3debddf5-aa64-41ec-b30c-77f1d9160fc3"
 >RevokeEBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To intervention status"
  Guid="c7cd800f-b036-41e2-b923-b8ab6ad1c440"
 >
@@ -1062,7 +1145,8 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4b51a6c8-8d87-4595-b2fd-572c2b2630ac"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
+<PreConditions>
 <PreCondition
  Guid="334e8b10-3ca0-4846-b5b9-e6450318cfe2"
 >TargetSpeedMonitoring.SupervisionStatus.ToIntervention()</PreCondition></PreConditions>
@@ -1073,12 +1157,15 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger emergency brake"
  Guid="fb48bafc-f348-4289-a55b-c859f99f1ef5"
 >
+<Comment>Triggers t13 and t14 also trigger the emergency brake.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Emergency brake command"
  Guid="c2343f89-9e37-425d-8903-6358d49e23cb"
 >
@@ -1095,12 +1182,15 @@ TargetSpeedMonitoring.SupervisionStatus.t14()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger service brake"
  Guid="d46d6b3e-de9e-4787-8025-835dfeea50b8"
 >
+<Comment>Triggers t10, t11 and t12 also trigger the service brake.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Service brake command"
  Guid="0860e853-c246-47b3-9c64-770f59ed5890"
 >
@@ -1119,6 +1209,7 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To indication status"
  Guid="466c169b-6e1a-48fe-a2d7-89e62a122f15"
 >
@@ -1127,7 +1218,8 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="040ac2e6-0ea5-4749-8f57-703688592ccf"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Revoke warning status to indication status, priority2.</Comment>
+<PreConditions>
 <PreCondition
  Guid="af6b3e87-b970-4322-a880-0ef2d94ec876"
 >TargetSpeedMonitoring.SupervisionStatus.r3()</PreCondition></PreConditions>
@@ -1144,6 +1236,7 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ Implemented="TRUE"
  Name="Intervention"
  Guid="6575684f-86c7-47a8-88ac-4b33a05b066c"
 >
@@ -1152,21 +1245,27 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0039efaf-1509-41b3-9987-68b1c13ca4c1"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Intervention status.</Comment>
+<StateMachine
+ Implemented="TRUE"
  Guid="cb2d2858-5a12-42a5-bf9f-581fba853d36"
 >
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Update Supervision Status"
  Guid="85b269a8-f0d6-498b-9c81-d2c48976ca71"
 >
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="To normal status"
  Guid="569eaeb0-0f32-4bd0-a3f3-eab9aa5507cc"
 >
+<Comment>Revoke intervention status to normal status, priority 1.</Comment>
 <PreConditions>
 <PreCondition
  Guid="8ad546a7-3fae-409d-80a5-bd48d333a7a7"
@@ -1186,9 +1285,11 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
  Guid="ac57057f-8213-4914-82a5-635502a68fc6"
 >RevokeSBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To indication status"
  Guid="d1b111e0-4708-41ec-9ec9-bddfb55b36ff"
 >
+<Comment>Revoke intervention status to indication status, priority 2.</Comment>
 <PreConditions>
 <PreCondition
  Guid="7a0d66ec-a534-4378-ba44-c2553e18fa8d"
@@ -1269,6 +1370,7 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
  Name="Update Supervision Status"
  Guid="fb8f3dd3-1913-43c8-b06b-8fe5355c78d7"
 >
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1300,6 +1402,7 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
  Name="Update Supervision Status"
  Guid="323cdab9-8688-418b-ba26-83c82d726d7b"
 >
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1329,7 +1432,7 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
  Name="Idle"
  Guid="1edf48d7-6c71-4956-a753-852a9d9d4bf9"
 >
-<Comment>This state corresponds to the cases when the train does not have speed and distance monitoring active</Comment>
+<Comment>Speed and distance monitoring is inactive.</Comment>
 <StateMachine
  Implemented="TRUE"
  Guid="98ea433a-587b-40e7-8a72-c66ae4c4b16d"
@@ -1404,7 +1507,7 @@ ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="CheckSupervisedTargets"
+ Name="The list of supervised targets was updated"
  Guid="a03fee97-031e-4942-9848-c5b0d7fecc9c"
 >
 <Comment></Comment>
@@ -1420,8 +1523,6 @@ TARGETS(
 !=
 SupervisedTargets</PreCondition><PreCondition
  Guid="6f2cc5a3-3453-4c20-acb8-221630d71332"
->ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
- Guid="c91265ff-507c-45ce-9fb3-e4bbc413a44e"
 >ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
@@ -1430,169 +1531,9 @@ SupervisedTargets</PreCondition><PreCondition
     Targets1=&gt;MRSP.SpeedRestrictions,
     Targets2=&gt;MA.SpeedRestrictions,
     Targets3=&gt;NationalValues.MaxDistInSRSpeedRestriction
-)</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Go to ceiling speed monitoring"
- Guid="f86a11bf-c055-4ee0-a054-75949711b635"
->
-<Comment>If condition 1 is not satisfied for the new targets, go to ceiling speed monitoring.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Condition 1 is not fulfilled"
- Guid="8483403d-dcf0-4682-b06f-5a2ae4fcfec4"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="d6cc722b-4470-4618-b7ad-a8f6154e0bc8"
->NOT Condition1()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f9cfaf7b-b51a-4ff0-9e43-92e4082c6fbc"
-><Comment></Comment>
-THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="TransitionFromTSM"
- Guid="ab964af1-2b30-461e-a94d-9c1eef3e2c16"
->
-<Comment>If the transition occurs from TSM, revoke traction cut-off commands and service brake commands</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="If in TSM, immediately revoke any traction cut-off command"
- Guid="35a7536e-2488-46fb-99bc-e4ceeb17b12c"
->
-<PreConditions>
-<PreCondition
- Guid="968a3c7d-c0d9-4d05-b65e-d84a00f02458"
->THIS in MonitoringTypeSM.Target</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="a364a045-8542-40c1-91b4-f4821eaa0ef2"
->RevokeTCOCommand()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Go to target speed monitoring"
- Guid="1801c074-2a70-4502-94b1-94b11aedd3bc"
->
-<Comment>If condition 1 and condition 2 are satisfied for the new targets, go to release speed monitoring.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Condition 1 is fulfilled but not condition 2"
- Guid="89aaf7b5-70c3-44c6-82ed-7f18fd062b1a"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="1889c002-6694-4e01-a062-4c76f5c65090"
->NOT Condition2()</PreCondition><PreCondition
- Guid="e9504089-b7d1-4d41-bf98-d1362f421406"
->Condition1()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f7b5bdb0-1344-4d1b-aae3-6ed3ca6f0683"
->THIS &lt;- MonitoringTypeSM.Target</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Go to release speed monitoring"
- Guid="8773148e-05e9-4782-8d8d-7a7fa4b79f1c"
->
-<Comment>If condition 1 is satisfied but condition 2 is not for the new targets, go to target speed monitoring.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Conditions 1 and 2 are fulfilled"
- Guid="8db73e0a-1dcf-4723-9386-bca94a1e706a"
->
-<PreConditions>
-<PreCondition
- Guid="119da225-e12b-42f7-9c8f-cebd45faa5b6"
->Condition2()</PreCondition><PreCondition
- Guid="733d87fc-f85e-4a60-a964-7db1c74dadcb"
->Condition1()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="6de0a2d5-3cb9-49e5-ada3-7ac6f14df66a"
->THIS &lt;- MonitoringTypeSM.Release</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Transition from TSM"
- Guid="9cb19cb6-1fda-4741-b38e-5c2a2f91e529"
->
-<Comment>If the transition occurs from TSM, revoke traction cut-off commands and service brake commands</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Transition from TSM"
- Guid="6eb4b3d8-2a24-4642-a6fe-18a1c26590d3"
->
-<PreConditions>
-<PreCondition
- Guid="21a7d41d-368f-48cb-9bd7-804eddb97e31"
->THIS in MonitoringTypeSM.Target</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Transition from TSM"
- Guid="7ddf4344-14ce-4424-a2e8-eb70676f6da6"
->
-<Comment>To apply when transitioning from TSM</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Revoke traction cut-off command"
- Guid="3b9fcf9b-a96d-4ee3-87a1-5d68d8f03262"
->
-<Comment>Revoke the traction cut-off command, if one is applied</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="4dc56041-0a8a-4880-a713-5879b5aaf620"
->RevokeTCOCommand()</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Revoke SB command"
- Guid="0c1c9c7e-d520-49d7-b395-f68efeb38b93"
->
-<Comment>Revoke the SB command, if one is applied</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="493126b8-f4a0-4317-933e-c8d819639f84"
->RevokeSBCommand()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+)</Action><Action
+ Guid="495f9d03-e905-4e4c-82f4-b48208753eb2"
+>SelectMonitoringType()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1613,14 +1554,17 @@ THIS &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
  Name="StopMonitoring"
  Guid="07a58c8a-35cc-4601-b3dd-e3ddd30c61aa"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d2c4fbd4-aea7-44fe-bab3-9fdd15bbb7be"
->NOT ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+>NOT ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
+ Guid="28929f8b-8c89-4755-a7ef-914db92b35d2"
+>THIS not in Idle</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="71258306-011a-4ab1-9a0a-397404946f9f"
->THIS &lt;- MonitoringTypeSM.Idle</Action></Actions>
+>THIS &lt;- Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></StateMachines>
@@ -2084,12 +2028,17 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9770b6b4-6db0-4f93-85c2-e61a194149cd"
 >
+</ReqRef><ReqRef
+ Id="452e7369-8988-4a04-9d16-d7e769201a71"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="297b7ad0-755a-4117-ba8c-b8d0a2bbe8f1"
+>
 </ReqRef><Comment>Update the speed and distance monitoring type</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  NeedsRequirement="FALSE"
- Name="UpdateMonitoring"
+ Name="Update monitoring"
  Guid="d68dc5dd-66dd-4df0-94ac-da7e387cd2c4"
 >
 <SubRules></SubRules>
@@ -2164,6 +2113,53 @@ DetermineSupervisionStatus(MonitoringTypeSM.Ceiling)</Action><Action
 >JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
  Guid="766d43f5-e156-4a3d-83bd-0f2a6804e6c2"
 >DetermineSupervisionStatus(MonitoringTypeSM.Ceiling)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Revoke commands"
+ Guid="633bddbb-f48c-495d-9434-0ebf177a01a2"
+>
+<ReqRef
+ Id="4ef8d95d-9b39-4a31-af31-f673833b0f7b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e63ae8c7-d2b7-4aff-81e9-65190d512755"
+>
+</ReqRef><ReqRef
+ Id="16a2ffa9-a581-4832-8287-d3a982f4ddd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="11603de7-288b-454f-b12c-d38a4f0ae9a3"
+>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Revoke TCO and SB"
+ Guid="63e77da2-5072-4745-9380-d29004a03766"
+>
+<PreConditions>
+<PreCondition
+ Guid="45f18bce-f81d-4f4c-9c04-e09b52bca20c"
+>Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
+ Guid="dd4bbcaa-711f-4430-92d2-b231a4c42955"
+>Condition2()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="26a14c8c-2a37-48c9-bcb6-5f2bceeeca84"
+>RevokeTCOCommand()</Action><Action
+ Guid="ea5f6ece-dcce-4ae6-abad-20810e593cd8"
+>RevokeSBCommand()</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Revoke TCO"
+ Guid="209ce184-96ea-4cbf-9a87-bb99ffd22b2d"
+>
+<PreConditions>
+<PreCondition
+ Guid="3b919df2-96fd-46bd-be00-adfe57e283ab"
+>Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="68c2dfcd-31b1-4949-832f-b0467a5a94ca"
+>RevokeTCOCommand()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
