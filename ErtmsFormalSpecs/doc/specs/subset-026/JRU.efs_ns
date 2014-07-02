@@ -1010,7 +1010,7 @@ InitializeMessage()</Action></Actions>
  Guid="f986b9dc-68c2-48f4-aa19-15bc06d987e7"
 >PreviousAdditionalBrakeStatus &lt;- TIU.AdditionalBrakesActive</Action><Action
  Guid="e147e5df-e42d-47f4-b4b4-bfe04454a4d4"
->PreviousSpeedAndDistanceSuppervisionStatus &lt;- Kernel.SupervisionStatus</Action><Action
+>PreviousSpeedAndDistanceSupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action><Action
  Guid="58633a81-4072-494e-a17d-19e34b04acc0"
 >PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><Action
  Guid="d461f9a5-7f7b-482b-8ffa-2ca4aed6d474"
@@ -1460,7 +1460,7 @@ PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonito
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="PreviousSpeedAndDistanceSuppervisionStatus"
+ Name="PreviousSpeedAndDistanceSupervisionStatus"
  Guid="201ec3dc-44e2-48e3-aef0-755635fe2d0e"
 >
 <ReqRef
@@ -6165,8 +6165,8 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Function><Function
  Type="Messages.JRU.M_AB_STATUS"
  Default=""
- X="110"
- Y="720"
+ X="70"
+ Y="710"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6265,7 +6265,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="07ac1eae-7593-4e1e-a3da-e63d16ac8bcc"
->Kernel.SupervisionStatus == Kernel.SupervisionStatus.Normal</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Normal</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMSUPSTAT.Normal_status</Expression>
 </Case><Case
  Name="InticationsStatus"
@@ -6274,7 +6274,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="21f25c2e-9685-471a-97bb-041773f1f6be"
->Kernel.SupervisionStatus == Kernel.SupervisionStatus.Indication</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Indication</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMSUPSTAT.Indication_status</Expression>
 </Case><Case
  Name="OverspeedStatus"
@@ -6283,7 +6283,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="cdd52112-b870-4727-b72d-2133ff2c2508"
->Kernel.SupervisionStatus == Kernel.SupervisionStatus.Overspeed</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Overspeed</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMSUPSTAT.Overspeed_status</Expression>
 </Case><Case
  Name="WarningStatus"
@@ -6292,7 +6292,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="a57fe756-6732-4947-b79e-1c37a9943b9c"
->Kernel.SupervisionStatus == Kernel.SupervisionStatus.Warning</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Warning</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMSUPSTAT.Warning_status</Expression>
 </Case><Case
  Name="InterventionStatus"
@@ -6301,7 +6301,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="c8eec333-ca81-4140-b160-66111e8e215d"
->Kernel.SupervisionStatus == Kernel.SupervisionStatus.Intervention</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Intervention</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMSUPSTAT.Intervention_status</Expression>
 </Case></Cases>
 </Function><Function
@@ -6511,7 +6511,7 @@ jru.SpeedAndDistanceSupervisionTypeChanged</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="0f85d667-58cc-4f06-9c3a-6a0eea33498d"
->jru.PreviousSpeedAndDistanceSuppervisionStatus != Kernel.SupervisionStatus</PreCondition></PreConditions>
+>jru.PreviousSpeedAndDistanceSupervisionStatus != Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="PremittedSpeedChanged"

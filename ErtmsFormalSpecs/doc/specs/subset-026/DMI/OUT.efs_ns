@@ -4370,11 +4370,13 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
  Guid="ee8f8820-7a3e-488c-940c-9b5393756831"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="7488f13c-8a6e-4cf8-8931-dd021c1574b6"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ff5f5c50-07e9-4fef-b3f1-354e16f8124b"
->SupervisionStatus &lt;- Kernel.SupervisionStatus</Action></Actions>
+>SupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -4395,6 +4397,7 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
  Name="SupervisionStatus"
  Guid="05418ba3-2072-44cd-854f-981486368998"
 >
+<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureOutSM"
  Default=""
