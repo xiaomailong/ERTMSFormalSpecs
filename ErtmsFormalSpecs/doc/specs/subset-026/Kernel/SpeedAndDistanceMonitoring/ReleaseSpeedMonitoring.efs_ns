@@ -163,7 +163,7 @@ STOP_CONDITION
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a72951d1-9199-48e7-aead-09f9ead45380"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>The distance travelled in the time interval between a brake command being given and the brakes actually being applied.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -472,7 +472,7 @@ Default.BaseTypes.MaxDistance
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e8019d25-f8dc-4668-8401-6b119ee9af5b"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Calculates the value of the release speed.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -609,6 +609,7 @@ Kernel.Level.Value == Default.Level.L1</PreCondition></PreConditions>
  Name="UpdateReleaseSpeed"
  Guid="7ad0f6bc-36a7-4045-b3f3-10e5af9ba196"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -649,16 +650,19 @@ ReleaseSpeedMonitoring.ReleaseSpeedValue(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9e3af27e-b1cf-464f-8a4f-196cbcaa6c30"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the end section of the MA contains an overlap, this sets the release speed.</Comment>
+<PreConditions>
 <PreCondition
  Guid="63ee2938-1c1a-4777-96a9-abd7cce122a7"
 >Available ( MA.MA )</PreCondition><PreCondition
  Guid="5104ac8b-6652-4a39-aa1c-04a024112f3c"
->Kernel.MA.MA.EndSection.Overlap != EMPTY</PreCondition></PreConditions>
+><Comment></Comment>
+Kernel.MA.MA.EndSection.Overlap != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bdeef7f9-b1e9-4712-8e10-b086f369f67d"
->ReleaseSpeedMonitoring.ReleaseSpeed &lt;- ReleaseSpeedMonitoring.ReleaseSpeedValue ( MA.MA.EndSection.Overlap.ReleaseSpeed )</Action></Actions>
+><Comment></Comment>
+ReleaseSpeedMonitoring.ReleaseSpeed &lt;- ReleaseSpeedMonitoring.ReleaseSpeedValue ( MA.MA.EndSection.Overlap.ReleaseSpeed )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="DangerPoint"
@@ -669,7 +673,8 @@ ReleaseSpeedMonitoring.ReleaseSpeedValue(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="99a6a6a4-7152-4be6-bb61-cc713c5f4e25"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the end section of the MA contains a danger point (and no overlap) this sets the release speed.</Comment>
+<PreConditions>
 <PreCondition
  Guid="2dfb6bca-97de-4a27-9a24-87ed725e3a3f"
 >Available ( MA.MA )</PreCondition><PreCondition
@@ -689,7 +694,8 @@ ReleaseSpeedMonitoring.ReleaseSpeedValue(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0d08daad-f311-4e77-bc96-cf7846bb4322"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If nothing defines a release speed, its default value is 0.</Comment>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action
