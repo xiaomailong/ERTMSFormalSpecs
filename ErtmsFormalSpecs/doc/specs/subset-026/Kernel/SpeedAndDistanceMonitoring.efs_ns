@@ -102,16 +102,19 @@
 <State
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Normal"
  Guid="9a91a3dd-9d67-45f1-aaf7-ca93ab42ca33"
 >
-<Comment></Comment>
+<Comment>Normal status.</Comment>
 <StateMachine
+ Implemented="TRUE"
  Guid="5fc83163-4dab-4cba-845b-14e4cfd64b24"
 >
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Update Supervision Status"
  Guid="aa198f35-bf50-428a-a070-cb002b1d031d"
 >
@@ -119,6 +122,7 @@
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="To intervention status"
  Guid="59f2c155-8c18-4e27-b8b2-d96bbb771aed"
 >
@@ -127,7 +131,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6f7e8a90-767c-4074-bb64-c3e871975bf5"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
+<PreConditions>
 <PreCondition
  Guid="0a877799-74c6-43ee-a1f5-0da5e109a0b1"
 >CeilingSpeedMonitoring.SupervisionStatus.t4()
@@ -140,12 +145,15 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger emergency brake"
  Guid="9b46c59e-2c30-4830-a31b-6de455c43d8b"
 >
+<Comment>Trigger 5 also trigger the emergency brake command.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Emergency brake command"
  Guid="568ce468-3bc0-4eb1-98e4-c48bd8bdcd5c"
 >
@@ -160,12 +168,15 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger service brake"
  Guid="ff163483-29c3-4f5c-b15c-8223f3e2aea7"
 >
+<Comment>Trigger 4 also triggers the service brake command.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Service brake command"
  Guid="e2a1c349-f37d-4da3-9d2a-c2d20f1fdff5"
 >
@@ -180,6 +191,7 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To warning status"
  Guid="d6a6d61b-9ecd-43ed-a433-fb6d11a33010"
 >
@@ -188,7 +200,7 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b89fbb88-683c-4134-ad86-94d91c5c59d2"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Trigger warning status, priority 2.</Comment>
 <PreConditions>
 <PreCondition
  Guid="3f822123-8248-4847-bddb-d174e4e66ab7"
@@ -198,6 +210,7 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  Guid="ae30d053-d02c-4746-bc91-d38f997cf2ea"
 >THIS &lt;- Warning</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To overspeed status"
  Guid="6dad9d0d-a9b1-466d-ae7c-c2268c63892e"
 >
@@ -206,7 +219,8 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="33e28ba1-1ca3-47fd-be6e-b4d108bd9cf4"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger overspeed status, priority .</Comment>
+<PreConditions>
 <PreCondition
  Guid="c930ec8e-b48a-484d-980a-2852b8e7d897"
 >CeilingSpeedMonitoring.SupervisionStatus.t2()</PreCondition></PreConditions>
@@ -220,16 +234,19 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  X="110"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Overspeed"
  Guid="45e0bfcf-d273-4d7f-9f2e-301363f9d68b"
 >
-<Comment></Comment>
+<Comment>Overspeed status.</Comment>
 <StateMachine
+ Implemented="TRUE"
  Guid="e7f7e587-41ae-4d7b-8350-5d1f64d2faa8"
 >
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Update Supervision Status"
  Guid="debab188-b9f4-492b-9851-4c18d095533c"
 >
@@ -237,6 +254,7 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="To normal status"
  Guid="5acb2b2c-b019-4a3a-8bdf-efa4e439b6d7"
 >
@@ -245,7 +263,8 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4358e5de-10c9-45d8-bdf5-8c13eb7348e3"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Revoke overspeed status to normal status, priority 1.</Comment>
+<PreConditions>
 <PreCondition
  Guid="155a5826-4ca6-4c08-9969-8d9809cedddf"
 >CeilingSpeedMonitoring.SupervisionStatus.r1()</PreCondition></PreConditions>
@@ -258,6 +277,7 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  Guid="82c762f1-1a5c-4acf-baa9-4f3a88995b97"
 >RevokeEBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To intervention status"
  Guid="d47e3e9d-a4f7-43b8-b148-f83a4420bb21"
 >
@@ -266,7 +286,8 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8dd640ab-bf8e-45fa-b385-fb0e8bf87bf0"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
+<PreConditions>
 <PreCondition
  Guid="1706dc4d-7a55-4dff-8e48-18d6c78e2e98"
 >CeilingSpeedMonitoring.SupervisionStatus.t4()
@@ -279,12 +300,15 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger service brake"
  Guid="2989dfdc-0b1f-4437-a2bc-7362d7329000"
 >
+<Comment>Trigger 4 also triggers the cervice brake command.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Service brake command"
  Guid="52090681-f5f1-4fac-8bd3-3f8d408e5c2d"
 >
@@ -299,12 +323,15 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger emergency brake"
  Guid="f4d65d86-db6c-45d2-99b0-0fdfd7fe7335"
 >
+<Comment>Trigger 5 also triggers the emergnecy brake command.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Emergency brake command"
  Guid="414c2661-bcff-43c0-b27f-db8c86bf8483"
 >
@@ -319,6 +346,7 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To warning status"
  Guid="05aed128-7a36-4eba-bf13-f901a5a17fe7"
 >
@@ -327,7 +355,8 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f60a9be1-2f80-4cff-a173-a8c5d7d4b385"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger warning status, priority 2.</Comment>
+<PreConditions>
 <PreCondition
  Guid="d222a7d8-6a85-41f9-b9d7-3dfa8ee8a0f3"
 >CeilingSpeedMonitoring.SupervisionStatus.t3()</PreCondition></PreConditions>
@@ -341,16 +370,19 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  X="220"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Warning"
  Guid="fc18048a-c0fe-4ed9-aff4-afcfdad18e05"
 >
-<Comment></Comment>
+<Comment>Warning status.</Comment>
 <StateMachine
+ Implemented="TRUE"
  Guid="b37970a0-5c0a-4ac4-bf00-04fa9ce0dd85"
 >
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Update Supervision Status"
  Guid="21557f49-bc5c-4c49-9b01-cff833cd85bd"
 >
@@ -358,6 +390,7 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="To normal status"
  Guid="4b9b869f-f6f0-4240-bc8c-231f6425e2da"
 >
@@ -366,7 +399,8 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8649e022-2f5d-4da4-a014-9139c10289cd"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Revoke warning status to normal status, priority 1.</Comment>
+<PreConditions>
 <PreCondition
  Guid="bfbc37ce-9d92-402a-8bc2-55df87878fa5"
 >CeilingSpeedMonitoring.SupervisionStatus.r1()</PreCondition></PreConditions>
@@ -379,6 +413,7 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  Guid="817fa162-2296-4161-b34d-2ffdd44d1b74"
 >THIS &lt;- Normal</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="To intervention status"
  Guid="9107756d-ca80-49e6-9686-c698eb85651f"
 >
@@ -387,7 +422,7 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6a3eb4e9-b2fa-499b-bcf3-01cd3b01e1f7"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
 <PreConditions>
 <PreCondition
  Guid="cce87685-6ae3-4736-b400-e34d7c296b02"
@@ -401,12 +436,15 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger service brake"
  Guid="8128fe2a-7505-445d-b40e-4002b5e21008"
 >
+<Comment>Trigger 4 also triggers the cervice brake command.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Service brake command"
  Guid="cd2351ac-1466-4ff4-aa03-b32b76f9ea29"
 >
@@ -421,12 +459,15 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger emergency brake"
  Guid="201c89f4-74d9-4bdb-8b6c-9ad344b9296e"
 >
+<Comment>Trigger 5 also triggers the emergnecy brake command.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Emergency brake command"
  Guid="e45a1050-658d-44c9-a043-9eade98391ec"
 >
@@ -446,16 +487,19 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  X="330"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Intervention"
  Guid="12c96138-24fa-468c-a28c-5873a73754c3"
 >
-<Comment></Comment>
+<Comment>Intervention status.</Comment>
 <StateMachine
+ Implemented="TRUE"
  Guid="42d7f7a3-0ae5-49ec-8c3b-8dd602f38965"
 >
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Update Supervision Status"
  Guid="5ef6a9db-c456-475a-a108-11cc8d77a9c0"
 >
@@ -463,6 +507,7 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="To normal status"
  Guid="8d74bcbd-1eb0-4152-af49-a8af72f454f1"
 >
@@ -471,7 +516,8 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d277a5e6-fb3d-4fba-a0c1-cebedac35673"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Revoke intervention status to normal status, priority 1.</Comment>
+<PreConditions>
 <PreCondition
  Guid="52406f8d-f9c7-4772-82d9-fe1016c6c270"
 >CeilingSpeedMonitoring.SupervisionStatus.r0()
@@ -484,12 +530,15 @@ CeilingSpeedMonitoring.SupervisionStatus.r1()</PreCondition></PreConditions>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Revoke emergency brake"
  Guid="544eba29-9113-45cc-950f-5e2edb7d1412"
 >
+<Comment>Revocations 0 and 1 also revoke emergency brake commands.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Emergency brake command"
  Guid="c808d167-6474-40d9-b6a0-39693e5449f5"
 >
@@ -502,12 +551,15 @@ CeilingSpeedMonitoring.SupervisionStatus.r1()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Revoke service brake"
  Guid="eb9ad14e-1eb9-4aa8-82ce-44531fc2380b"
 >
+<Comment>Revocation 1 also revokes service brake commands</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Service brake command"
  Guid="44f7bc6a-ff6c-46cc-a3d2-e19f1665ee86"
 >
@@ -1284,14 +1336,58 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a2cc4766-eba5-416a-81e7-940a838dac07"
->THIS &lt;- Normal</Action><Action
- Guid="a166834a-d0b7-4b10-a293-aaeddb49f6ba"
-><Comment></Comment>
-TCOTriggered&lt;- False</Action><Action
- Guid="ebaef6d8-ef1d-4ff3-9ad4-26c7788cda64"
->RevokeEBCommand()</Action><Action
- Guid="ac57057f-8213-4914-82a5-635502a68fc6"
+>THIS &lt;- Normal</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Revoke emergency brake"
+ Guid="e3e1715a-641c-46b4-a093-ea0ef3c64444"
+>
+<Comment>Revocations 0, 1 and 2 also revoke emergency brake commands.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Emergency brake command"
+ Guid="ff114340-0ca8-4af3-9247-1979f1e707dd"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0242f129-75bb-4b22-8a7e-4eb495129f89"
+>RevokeEBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Revoke service brake and traction cut off"
+ Guid="412899dc-f694-41d7-82fd-32f0306a440b"
+>
+<Comment>Revocations 1 and 2 also revoke the service brake and traction cut off commands.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="SB and TCO commands"
+ Guid="a4073ab5-cef5-41ad-9bea-e0edc2c8e702"
+>
+<PreConditions>
+<PreCondition
+ Guid="6e3d0029-6073-4eb3-a2ac-b9f25f0f728a"
+>TargetSpeedMonitoring.SupervisionStatus.r1()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f3c53cde-2634-4974-b341-7160f20afab0"
+>TCOTriggered &lt;- False</Action><Action
+ Guid="ed3e99da-5b08-4436-a98a-2e924fc4442e"
 >RevokeSBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="To indication status"
@@ -2426,6 +2522,7 @@ RevokeEBCommand()</Action></Actions>
 </Procedure><Procedure
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="DetermineSupervisionStatus"
  Guid="e859e947-8a55-4351-a7e5-e7ed69d5e6a5"
 >
@@ -2434,12 +2531,6 @@ RevokeEBCommand()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0c2fd63b-9ad1-474c-a4b6-060ceb67f368"
 >
-</ReqRef><ReqRef
- Id="896f9fb5-9ef6-459b-b93e-c681a1ec59d4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8639b854-a19e-4c55-8679-26f5cd3f6eae"
->
-<Comment></Comment>
 </ReqRef><Comment>Sets the supervision status according to the type of speed and distance monitoring</Comment>
 <Parameters>
 <Parameter
@@ -2478,6 +2569,7 @@ RevokeEBCommand()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="In ceiling supervision"
  Guid="db8c9718-1313-403d-b9ec-fec9cb15eb3c"
 >
@@ -2500,6 +2592,7 @@ RevokeEBCommand()</Action></Actions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="In ceiling supervision"
  Guid="bf480f4b-8d14-44e7-bd0d-cf2fcf2c1b3d"
 >
