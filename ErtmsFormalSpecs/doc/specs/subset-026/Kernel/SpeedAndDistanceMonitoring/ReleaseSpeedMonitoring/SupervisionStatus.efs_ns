@@ -9,9 +9,11 @@
 <Functions>
 <Function
  Type="Boolean"
+ Cacheable="TRUE"
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="t1"
  Guid="21173b5b-57fa-4cbe-a254-6c27357a44c1"
 >
@@ -20,7 +22,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="49356c4c-79cb-458e-b29e-a02a4a90fcfc"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Trigger 1: True if V is less than or equal to the release speed.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="d05d8ee9-8d74-43cf-beb1-fbefcc2b09f4"
@@ -29,10 +32,12 @@
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Cacheable="TRUE"
  Default=""
  X="110"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="t2"
  Guid="800c4ece-1e6b-42f5-99e5-7e617ccc8ffe"
 >
@@ -41,7 +46,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="506a386b-1d34-4c28-8541-edbc462abbb6"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Trigger 2: True if V is greater than the release speed.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="e87ff07c-96e8-4624-84ad-c0161d738821"
@@ -50,10 +56,12 @@
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Cacheable="TRUE"
  Default=""
  X="220"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="r0"
  Guid="75e31b62-b108-4d81-b064-eed24de4afa9"
 >
@@ -62,7 +70,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ba27403f-fe4b-4a61-b699-b98dc5d6a002"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Revocation 0: True if the train is at standstill.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="10ede886-9c10-497e-afc8-27d479211645"
@@ -71,10 +80,12 @@
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Cacheable="TRUE"
  Default=""
  X="330"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="r1"
  Guid="49cd08dd-5e2c-4686-97c7-f5025ca3a039"
 >
@@ -83,7 +94,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d5ca0b44-093b-4d85-a470-da2228564c63"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Revocation 1: True if V is less than or equal to the release speed.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="4d585853-7421-49b1-afc2-fef58639721d"
@@ -97,6 +109,7 @@
  Y="120"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="RSMStatusTriggers"
  Guid="0afaa75c-6892-4e2b-bfce-d7a8ba6e2aa3"
 >
@@ -130,16 +143,28 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dc908281-aa63-4980-bcf0-fe1985bffc49"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><ReqRef
+ Id="dd0da099-d404-4f93-b840-c25c06defab7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d35b22f1-0a85-4edd-89bb-9509ce5460cc"
+>
+</ReqRef><ReqRef
+ Id="4bd9437c-f793-4471-b3f2-d0e50cda8c6a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="671ff45a-6e33-4e09-8da6-59c0a25518c0"
+>
+</ReqRef><Comment>On passing into RSM, this procedure is called to go to the correct supervision status.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Trigger supervision status"
  Guid="44b10dbf-a1c0-43fe-998a-46d4e73bef57"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Indication status"
  Guid="460c2563-9ebe-43b3-9cfc-f30c7e83006f"
 >
@@ -148,12 +173,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a5b38313-6230-427a-9c60-141ee0a1dabd"
 >
-</ReqRef><ReqRef
- Id="dd0da099-d404-4f93-b840-c25c06defab7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9bd00bf4-74e6-4fad-a7e8-a2ae6949f808"
->
-</ReqRef><PreConditions>
+</ReqRef><Comment>When transitioning to RSM, first check trigger 1 to go into indication status.</Comment>
+<PreConditions>
 <PreCondition
  Guid="1b905abe-c4a0-46ea-a5a4-0e6464808679"
 >t1()</PreCondition></PreConditions>
@@ -162,6 +183,7 @@
  Guid="c5969fc7-ddfe-4c0a-b1d9-d2ca0dfbcd85"
 >Monitoring &lt;- MonitoringTypeSM.Release.Indication</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Intervention status"
  Guid="3583026d-b5e3-4b99-9ba6-9c6a800eb502"
 >
@@ -170,12 +192,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e88dff19-1bf8-452c-92d0-afb2fb95515e"
 >
-</ReqRef><ReqRef
- Id="4bd9437c-f793-4471-b3f2-d0e50cda8c6a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="37742fa5-1184-4d09-85c5-c5b4756c147d"
->
-</ReqRef><PreConditions>
+</ReqRef><Comment>If trigger 1 is not satisfied, the speed and distance monitoring function immediately goes to intervention status.</Comment>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action

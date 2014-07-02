@@ -27690,7 +27690,8 @@ Whenever the on-board reference location is updated (e.g. new LRBG), the release
  functionalBlockName=""
  Name=""
  Guid="b1bf47d0-d27a-404a-af99-2117b6bd616b"
->The purpose of the pre-indication is to inform the driver that he is approaching an area where he has to operate the service brake in order to brake to a target. The preindication is used to switch from ceiling speed monitoring to target speed monitoring.<RequirementSets>
+><Comment></Comment>
+The purpose of the pre-indication is to inform the driver that he is approaching an area where he has to operate the service brake in order to brake to a target. The preindication is used to switch from ceiling speed monitoring to target speed monitoring.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="ca188d7d-24c1-4efd-8602-dbe2df3c1ec6"
@@ -27839,7 +27840,8 @@ Then d_preindication = d_I(V_MRSP-n) - V_MSRP-n*Tpreindication<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="8ff0bb4b-bc97-415b-93b4-fde4c5154544"
->If the Indication supervision limit, obtained from the speed of the nth element, is located in advance of the end location of this nth element, and if the Indication supervision limit, obtained from the speed of the n+1th element is located in rear of the end location of this nth element (see Figure 53), the pre-indication location shall be calculated as follows:
+><Comment></Comment>
+If the Indication supervision limit, obtained from the speed of the nth element, is located in advance of the end location of this nth element, and if the Indication supervision limit, obtained from the speed of the n+1th element is located in rear of the end location of this nth element (see Figure 53), the pre-indication location shall be calculated as follows:
 If d_I(V_MRSP-n) &gt; d_MRSP-n^b and d_I(V_MRSP-n+1) &lt; d_MRSP-n^b
 Then d_preindication = d_MRSP-n^b - V_MRSP-n * Tpreindication<RequirementSets>
 <RequirementSetReference
@@ -27960,7 +27962,8 @@ If, in exceptional situation (e.g. after a shortening of MA), the calculation de
  functionalBlockName=""
  Name=""
  Guid="65b4f777-433a-4e69-ad23-cdb6fa994396"
->Note 2: For trackside engineering reasons, the assumptions for the calculation of the EBI supervision limit are necessary to obtain a fully predictable pre-indication location, i.e. independent from the measured acceleration and speed confidence interval.<RequirementSets>
+><Comment></Comment>
+Note 2: For trackside engineering reasons, the assumptions for the calculation of the EBI supervision limit are necessary to obtain a fully predictable pre-indication location, i.e. independent from the measured acceleration and speed confidence interval.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5ff3e5f9-8c03-425b-885e-313ed99b8c90"
@@ -29756,7 +29759,8 @@ t13; Vrelease &lt; Vest &lt;= V_MRSP + d_Vebi(V_MRSP); d_maxsafefront &gt; d_EBI
  functionalBlockName=""
  Name=""
  Guid="b10067eb-6ad7-4c8c-9aab-ef1740ef0e13"
->The braking to target Indication supervision limit is not used for estimated speeds higher than V_MRSP. However the location of the Indication supervision limit, valid for V_MRSP, when used to derive the pre-indication location of the target, shall be used for estimated speeds higher than V_MRSP in order to discriminate whether information related to the Indication status has to be displayed to the driver. In other terms, for estimated speeds above V_MRSP, the Indication supervision limit is a fixed location, which defines a pre-indication display area starting from the pre-indication location and ending to this fixed location.<RequirementSets>
+><Comment></Comment>
+The braking to target Indication supervision limit is not used for estimated speeds higher than V_MRSP. However the location of the Indication supervision limit, valid for V_MRSP, when used to derive the pre-indication location of the target, shall be used for estimated speeds higher than V_MRSP in order to discriminate whether information related to the Indication status has to be displayed to the driver. In other terms, for estimated speeds above V_MRSP, the Indication supervision limit is a fixed location, which defines a pre-indication display area starting from the pre-indication location and ending to this fixed location.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="50175c82-c1ae-4943-829d-5348798f7ba8"
@@ -30462,7 +30466,8 @@ The on-board equipment shall execute the transitions between the different super
  functionalBlockName=""
  Name=""
  Guid="14821325-64bd-40b4-8d61-37c6cf6c30ab"
->Table 15: Transitions between supervision statuses in release speed monitoring<Sub>
+><Comment></Comment>
+Table 15: Transitions between supervision statuses in release speed monitoring<Sub>
 <Paragraph
  id="Entry 3.13.10.5.5.1.1"
  guid=""
@@ -30495,7 +30500,8 @@ The on-board equipment shall execute the transitions between the different super
  functionalBlockName=""
  Name=""
  Guid="dd0da099-d404-4f93-b840-c25c06defab7"
->t1 &gt; -p1-; Indication status; &lt; r1 -p1-; &lt; r1 -p1-; &lt; r0 -p1-<RequirementSets>
+><Comment></Comment>
+t1 &gt; -p1-; Indication status; &lt; r1 -p1-; &lt; r1 -p1-; &lt; r0 -p1-<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="ae84b5d0-eb17-4768-bec2-4b93aacd1641"
