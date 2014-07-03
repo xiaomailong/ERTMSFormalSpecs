@@ -1669,9 +1669,13 @@ SelectMonitoringType()</Action></Actions>
  Guid="f0533ab6-40d0-43ae-a60c-64a801411bc9"
 ><Comment></Comment>
 TARGETS(
-    Targets1=&gt;MRSP.SpeedRestrictions,
-    Targets2=&gt;MA.SpeedRestrictions,
-    Targets3=&gt;NationalValues.MaxDistInSRSpeedRestriction
+    Targets1=&gt;MIN(First=&gt;  MIN(First=&gt; MRSP.SpeedRestrictions,
+                               Second=&gt; MA.SpeedRestrictions
+                               ),
+                  Second=&gt; NationalValues.MaxDistInSRSpeedRestriction
+                  ),
+    Targets2=&gt;EMPTY,
+    Targets3=&gt;EMPTY
 )
 !=
 SupervisedTargets</PreCondition><PreCondition

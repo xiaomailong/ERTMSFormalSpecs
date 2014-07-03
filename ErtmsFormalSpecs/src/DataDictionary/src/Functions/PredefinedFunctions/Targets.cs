@@ -111,7 +111,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
 
-            Types.Collection collectionType = (Types.Collection)EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSupervision"), "Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Targets");
+            Types.Collection collectionType = (Types.Collection)EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"), "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets");
             Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
 
             // compute targets from the MRSP
