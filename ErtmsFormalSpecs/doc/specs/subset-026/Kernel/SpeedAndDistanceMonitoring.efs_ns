@@ -2091,12 +2091,11 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
 >
 <Comment></Comment>
 <Expression>TARGETS(
-    Targets1=&gt;
-    MIN(
-        MIN(MRSP.SpeedRestrictions, MA.SpeedRestrictions),
-        NationalValues.MaxDistInSRSpeedRestriction
-    ),
-
+    Targets1=&gt;MIN(First=&gt;  MIN(First=&gt; MRSP.SpeedRestrictions,
+                               Second=&gt; MA.SpeedRestrictions
+                               ),
+                  Second=&gt; NationalValues.MaxDistInSRSpeedRestriction
+                  ),
     Targets2=&gt;EMPTY,
     Targets3=&gt;EMPTY
 )</Expression>

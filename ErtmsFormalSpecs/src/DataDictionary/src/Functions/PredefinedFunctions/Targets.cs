@@ -160,7 +160,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
                     for (int i = 1; i < graph.Segments.Count; i++)
                     {
                         Graph.Segment s = graph.Segments[i];
-                        Types.Structure structureType = (Types.Structure)EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSupervision"), "Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target");
+                        Types.Structure structureType = (Types.Structure)EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"), "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target");
                         Values.StructureValue value = new Values.StructureValue(structureType);
 
                         Variables.Variable speed = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
