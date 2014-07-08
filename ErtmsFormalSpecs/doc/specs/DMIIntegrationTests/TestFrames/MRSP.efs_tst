@@ -14,114 +14,6 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="MRSP Test DMI - EFS"
- Guid="5daacf00-2785-4ed0-8bdf-f4b1b4e0282e"
->
-<TestCases>
-<TestCase
- Name="Retrievingthe MRSP"
- Guid="cb77fcc6-ee70-40c9-9683-521c81d24732"
->
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Initialize Environment"
- Guid="60e0aea2-9cf3-4f2d-833f-64bcebfc281a"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="d6aa8196-8465-4e9b-8182-78a6d343d07c"
->
-<Actions>
-<Action
- Guid="cb7e03cd-54f7-450c-9b1b-2dd4f995ceba"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="ee351eec-5569-4f59-a585-fea4de70fc54"
-><Comment></Comment>
-Kernel.Mode &lt;- Default.Mode.LS</Action><Action
- Guid="e65eadc2-bb75-459d-832b-d23332c7be6c"
->Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Set MRSP values"
- Guid="d3b654c8-2a82-4fe6-856d-6325dbee17ab"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="5b0ab159-b397-4703-8b4d-f01967aac374"
->
-<Comment></Comment>
-<Actions>
-<Action
- Guid="d51ba97b-b9a1-4d6f-8d9e-788f4a5520a9"
-><Comment></Comment>
-DMI.MasterDMI().Out_MRSP.MRSP &lt;- [Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
-{
-    Location =&gt; 500.0,
-    Speed =&gt; 80.0,
-    Length =&gt; 1000.0
-}, Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
-{
-    Location =&gt; 1500.0,
-    Speed =&gt; 50.0,
-    Length =&gt; 500.0
-}, Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
-{
-    Location =&gt; 2000.0,
-    Speed =&gt; 20.0,
-    Length =&gt; 500.0
-}, Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
-{
-    Location =&gt; 2500.0,
-    Speed =&gt; 60.0,
-    Length =&gt; 1500.0
-}, Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
-{
-    Location =&gt; 4000.0,
-    Speed =&gt; 10.0,
-    Length =&gt; 250.0
-}, Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
-{
-    Location =&gt; 4250.0,
-    Speed =&gt; 0.0,
-    Length =&gt; 250.0
-}, Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
-{
-    Location =&gt; 4500.0,
-    Speed =&gt; 80.0,
-    Length =&gt; 1000.0
-}]</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="1d94f85f-18e7-45aa-83f1-b1411cf882b5"
->DMI.MasterDMI().Out_MRSP.MRSP != []</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
  Name="MRSP coming from BG"
  Guid="2384835e-4c8e-46ab-97ca-84a8466f9423"
 >
@@ -151,7 +43,7 @@ DMI.MasterDMI().Out_MRSP.MRSP &lt;- [Kernel.SpeedAndDistanceMonitoring.TargetSup
 >Kernel.InitializeTestEnvironment()</Action><Action
  Guid="3e44fcd9-f454-4f6a-948a-9c7e620fa7e6"
 ><Comment></Comment>
-Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="37d3938e-ee43-492c-800f-29e1a9aff5c5"
 >Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep></SubSteps>
@@ -785,6 +677,114 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Action
  Guid="07087155-92bb-4e09-b553-22c3e35f4647"
 >Kernel.IndicationLocationAtMrspSpeed &lt;- 150.0</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="MRSP Test DMI - EFS"
+ Guid="5daacf00-2785-4ed0-8bdf-f4b1b4e0282e"
+>
+<TestCases>
+<TestCase
+ Name="Retrievingthe MRSP"
+ Guid="cb77fcc6-ee70-40c9-9683-521c81d24732"
+>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="60e0aea2-9cf3-4f2d-833f-64bcebfc281a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d6aa8196-8465-4e9b-8182-78a6d343d07c"
+>
+<Actions>
+<Action
+ Guid="cb7e03cd-54f7-450c-9b1b-2dd4f995ceba"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="ee351eec-5569-4f59-a585-fea4de70fc54"
+><Comment></Comment>
+Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="e65eadc2-bb75-459d-832b-d23332c7be6c"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set MRSP values"
+ Guid="d3b654c8-2a82-4fe6-856d-6325dbee17ab"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="5b0ab159-b397-4703-8b4d-f01967aac374"
+>
+<Comment></Comment>
+<Actions>
+<Action
+ Guid="d51ba97b-b9a1-4d6f-8d9e-788f4a5520a9"
+><Comment></Comment>
+DMI.MasterDMI().Out_MRSP.MRSP &lt;- [Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
+{
+    Location =&gt; 500.0,
+    Speed =&gt; 80.0,
+    Length =&gt; 1000.0
+}, Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
+{
+    Location =&gt; 1500.0,
+    Speed =&gt; 50.0,
+    Length =&gt; 500.0
+}, Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
+{
+    Location =&gt; 2000.0,
+    Speed =&gt; 20.0,
+    Length =&gt; 500.0
+}, Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
+{
+    Location =&gt; 2500.0,
+    Speed =&gt; 60.0,
+    Length =&gt; 1500.0
+}, Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
+{
+    Location =&gt; 4000.0,
+    Speed =&gt; 10.0,
+    Length =&gt; 250.0
+}, Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
+{
+    Location =&gt; 4250.0,
+    Speed =&gt; 0.0,
+    Length =&gt; 250.0
+}, Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target
+{
+    Location =&gt; 4500.0,
+    Speed =&gt; 80.0,
+    Length =&gt; 1000.0
+}]</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1d94f85f-18e7-45aa-83f1-b1411cf882b5"
+>DMI.MasterDMI().Out_MRSP.MRSP != []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

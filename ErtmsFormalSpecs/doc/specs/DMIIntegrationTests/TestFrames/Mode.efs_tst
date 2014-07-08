@@ -75,5 +75,672 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Acknowledgement of LS mode"
+ Guid="e7c788bc-3def-4b77-90ca-f398b9f642c9"
+>
+<TestCases>
+<TestCase
+ Name="Acknowledgement of LS mode"
+ Guid="6d89d9ee-bc86-4827-a33a-72522b807b4d"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="23a29376-b2bc-456b-8e56-3703ce9357e0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d48ce30e-b081-49b1-a661-44ee9bc30781"
+>
+<Actions>
+<Action
+ Guid="cd7d0eae-28d1-4d9b-880f-51c2033146d7"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="b162b01b-d30d-4e19-a535-dfb835905098"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="7e24e1ff-a7c7-49c4-ac98-b4cda0fc8700"
+>Kernel.Mode &lt;- Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="79024b12-c186-464a-95c7-a4a4c9bc73bb"
+>Kernel.Level.Value == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="db19d872-5eb8-4fe4-b125-661bd84314a0"
+>Kernel.Mode == Mode.SR</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Change Mode To LS"
+ Guid="93a7803c-5e92-416e-9e5c-855ecb22784d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="342d3e2e-de64-4b98-a31b-22942a09250f"
+>
+<Actions>
+<Action
+ Guid="3b36fb11-a521-4e79-b834-fd45d87ef99f"
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="66063d94-6f63-40bd-aa0b-bce3f6d242a2"
+>DMI.MasterDMI().In_AcknOfLSMode.IsActive &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Acknowledgement for OS Mode"
+ Guid="b0175878-ff3d-4a19-a462-0e13aeca9987"
+>
+<TestCases>
+<TestCase
+ Name="Acknowledgement of OS mode"
+ Guid="dc02661d-a3cd-44c6-812b-3c179b205af6"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="3932e12e-6163-48ea-bd74-9c96c8d3bca8"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="e2eb15a5-7f7f-4dc5-8a68-e51c3e1979b7"
+>
+<Actions>
+<Action
+ Guid="5a298542-e4fb-47a7-8421-8f6be69e5539"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="763d57ad-feb2-4ba9-8b47-0a34c4c0691f"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="63ab0902-fafd-4898-8ca7-c05e2c0427d3"
+>Kernel.Mode &lt;- Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c5ec3884-7472-474d-a927-caa23c60d9b4"
+>Kernel.Level.Value == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="a3cfe704-8eeb-4bc7-be06-92f8bc689604"
+>Kernel.Mode == Mode.SR</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Change Mode To OS"
+ Guid="d1700867-6f10-4e41-953c-42668d2b6f2d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="1e440e4a-1f7b-490d-b90b-65190c4ead58"
+>
+<Actions>
+<Action
+ Guid="22d48a30-53f5-46d8-9dda-f0f8f2f74c40"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="e397e408-e038-460d-9a03-df3fa3b1ea81"
+>DMI.MasterDMI().In_AcknOfOSMode.IsActive &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Acknowledgement of RV mode"
+ Guid="ba29ede5-dc77-41db-840b-c2fa798e9142"
+>
+<TestCases>
+<TestCase
+ Name="Acknowledgement of RV mode"
+ Guid="c2bfaf36-7d4b-41d0-aa63-c30ff82de1a2"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="c7e147a5-0f91-4fa5-95b4-71ba7497ce5f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="51533494-c026-483a-9eee-2a2a0d2d11f0"
+>
+<Actions>
+<Action
+ Guid="46bef70d-ff33-4f46-a652-c24c9500f66a"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="b08f7f24-be8b-46b0-ae66-6166232a00b2"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="4b053e38-f2af-4ac1-bc0d-b36c7700c30f"
+>Kernel.Mode &lt;- Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="78410834-ced0-4289-ab74-b849f7228d1d"
+>Kernel.Level.Value == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0ad6ba44-f006-4358-9f76-4e1f84d2f832"
+>Kernel.Mode == Mode.SR</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Change Mode To RV"
+ Guid="a2bfdc99-4f5f-494f-ab71-1f603e9200ad"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d01862c4-a5a8-4417-a822-bb9f322e00f7"
+>
+<Actions>
+<Action
+ Guid="0d197dbe-e965-4e02-a16a-19e6f9347ec0"
+>DMI.MasterDMI().In_AcknOfRVMode.InputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="f27b1cb8-4611-4194-900c-afbd12f888c3"
+>DMI.MasterDMI().In_AcknOfRVMode.IsActive &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Acknowledgement of SH mode"
+ Guid="56b9181a-30bf-4c47-b448-5972005be58a"
+>
+<TestCases>
+<TestCase
+ Name="Acknowledgement of SH mode"
+ Guid="625f97ff-d41c-4509-8b04-292211a89dca"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="8d8dd6b0-f764-4b58-a5ca-db28c2b4d000"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="2975015b-5721-47cc-a941-28b42f111b3f"
+>
+<Actions>
+<Action
+ Guid="6e4a3c08-bab6-4837-8de1-4451312e1331"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="9a328ef3-173b-4f2f-a3b7-272e0a94aac7"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="5e94fb0c-0c52-4fd5-bb56-3c72ef887bfb"
+>Kernel.Mode &lt;- Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b519bc3b-c31c-4c05-86e5-a038dd448a9d"
+>Kernel.Level.Value == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4e9f53ef-a515-4911-b486-b019fd078230"
+>Kernel.Mode == Mode.SR</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Change Mode To SH"
+ Guid="b040034a-b237-4118-85ec-2fb84111c07b"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="e85fb00a-966e-471e-9d4f-4a14a3be2f4e"
+>
+<Actions>
+<Action
+ Guid="a19e2344-647f-4001-b9b0-566af166d496"
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="dabfe739-c23b-4354-b6a9-42cc80cfe769"
+>DMI.MasterDMI().In_AcknOfSHMode.IsActive &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Acknowledgement of SN mode"
+ Guid="ed486eae-f9ad-4bcf-81a5-f6bc5204a50e"
+>
+<TestCases>
+<TestCase
+ Name="Acknowledgement of SN mode"
+ Guid="93c6cb4c-38be-4b9b-bd5a-04da9bce777f"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="398fcc68-ce70-452d-9139-5bb163861658"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="c2287c93-9a8d-42ee-ad10-131a8d33dc52"
+>
+<Actions>
+<Action
+ Guid="f04ffbf7-0873-4658-a119-3ed641601e63"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="d3bcafc6-c4d5-466d-984c-587b521ad0b8"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="429ee45f-62a5-4572-841f-063ba712d025"
+>Kernel.Mode &lt;- Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b4bba9fd-3b52-4e44-8908-c4ee3761da64"
+>Kernel.Level.Value == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="fa957698-7a47-40f1-8970-12e5c1ccde52"
+>Kernel.Mode == Mode.SR</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Change Mode To SN"
+ Guid="45bf2d44-eca0-41a1-807a-b1d3da53dc01"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="6f7af31b-a879-4d15-a5b5-e3841577d0e4"
+>
+<Actions>
+<Action
+ Guid="01142ad4-819f-464a-8cd6-143b6f40ca17"
+>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.DisplayRequested &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Acknowledgement of SR mode"
+ Guid="dac6f541-cf29-4318-bc1c-7f9351a37798"
+>
+<TestCases>
+<TestCase
+ Name="Acknowledgement of SR mode"
+ Guid="01f11319-473f-4aaf-97b5-396407b766f6"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="14ee6b5a-d046-4c2b-ad56-6b732df94767"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="434d42f8-1865-42b7-8b7a-8df07f37cb5b"
+>
+<Actions>
+<Action
+ Guid="839f28b0-8bf1-44d2-b22f-71742f95c5fc"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="225ab0c8-003c-45fd-9336-adf072d14774"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="3f6dded3-c27e-4874-b2a7-495fc426594e"
+>Kernel.Mode &lt;- Mode.FS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f2e5d916-6a64-4bea-af83-fa629ec05267"
+>Kernel.Level.Value == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e3ed06d8-d6c5-46f2-9739-ee4d03495a11"
+>Kernel.Mode == Mode.FS</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Change Mode To SR"
+ Guid="80b69801-2246-4dae-b168-6535d2dadb0f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="784929ff-7621-41a1-bbfe-81e403f44ded"
+>
+<Actions>
+<Action
+ Guid="6189cf7c-cfe3-4846-bc62-afd1e73105a9"
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="a2a1bad9-970c-4f3a-b6e7-041ce692f237"
+>DMI.MasterDMI().In_AcknOfSRMode.IsActive &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Acknowledgement for TR Mode"
+ Guid="c0a7018e-8a45-42d8-b437-23fb5c45feb4"
+>
+<TestCases>
+<TestCase
+ Name="Acknowledgement of TR mode"
+ Guid="01cf6437-ba81-478e-afce-349d31fd4515"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="a037ceda-1002-43b7-9bcc-eee3942ba3eb"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="144bf639-29cf-4374-b15b-e447f0b288db"
+>
+<Actions>
+<Action
+ Guid="0960a07b-d8dc-4913-96c6-1fadd0cb74b9"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="50d3567c-e8d0-41df-8b9b-cd88a60a2175"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="8dacff2a-9cb6-47f5-9535-895499c4f498"
+>Kernel.Mode &lt;- Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="8dbe58f6-851b-4fd6-bc68-ec1bfafe65a4"
+>Kernel.Level.Value == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c765b972-f444-4a50-ba7e-82bafc25b5a8"
+>Kernel.Mode == Mode.SR</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Change Mode To TR"
+ Guid="1a4f2371-2f60-45c6-a675-aab02b262d1e"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="c5b15da7-1787-48f6-9840-57113d496be0"
+>
+<Actions>
+<Action
+ Guid="58694dfe-f9cb-4031-bccd-c919697e4a0f"
+>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="a25b1255-cd36-4206-acae-277f8e73de71"
+>DMI.MasterDMI().In_AcknOfTrainTrip.IsActive &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Acknowledgement for UN Mode"
+ Guid="3bbb7bc6-7f2d-4430-980d-1a4ebb271230"
+>
+<TestCases>
+<TestCase
+ Name="Acknowledgement of UN mode"
+ Guid="6c0e2098-aa87-49f0-8f1c-1266d4e3a2cd"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="df967906-5d58-4ce2-81ae-4d0a92307e94"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="6f9aeb1c-5508-4384-9d3e-3f4f75e191ab"
+>
+<Actions>
+<Action
+ Guid="1a8b73b3-c9e1-4a20-b5e3-502dddda9def"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="667d1754-82cc-4492-8cb5-04b8144c3962"
+>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="074f8147-1272-4827-9545-6396a27c8511"
+>Kernel.Level.Value == Level.L0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Change Mode To UN"
+ Guid="64ef1199-5c4c-42c7-abc0-0c4c703b0744"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="4a6f261a-d7bd-443b-9716-e31bd07fa78c"
+>
+<Actions>
+<Action
+ Guid="296db8b9-a724-43b8-af90-2bde7fc761d2"
+>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="bf959f23-f75b-4ef9-a2fe-d506e07ac246"
+>DMI.MasterDMI().In_AcknOfUNMode.IsActive &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Acknowledgement for NL Mode"
+ Guid="c0603438-3724-4cb3-a795-a5a202ee679d"
+>
+<TestCases>
+<TestCase
+ Name="Acknowledgement of NL mode"
+ Guid="846db42e-b7ba-48fc-9efc-2a19e8fe2677"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="6d42ff69-1c24-41cb-8b72-2050872030a4"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="99353512-8682-4c78-9888-ef183a92ff0b"
+>
+<Actions>
+<Action
+ Guid="c6ef216d-c38b-44f3-ace7-6204132d748a"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="aedeb64a-b64f-4613-94c0-ed45eff065bd"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="d32f8543-0b31-4760-a0cc-e7ae5c280326"
+>Kernel.Mode &lt;- Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9a5c164c-fb16-4ae2-a2ce-687534f9511d"
+>Kernel.Level.Value == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="023ed475-7d2c-49a5-b05f-5452430ea38d"
+>Kernel.Mode == Mode.SR</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Change Mode To NL"
+ Guid="4ccd6408-fdd0-40f9-b095-bad20c111b9c"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="86796e43-039b-44f2-b94d-89a76510871c"
+>
+<Actions>
+<Action
+ Guid="8fde915c-ebc2-47d0-a03d-62cd2afe98a2"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="ecc437f8-adc3-48bb-b8c7-4c15616eddb2"
+>DMI.MasterDMI().In_NonLeadingRequest.NonLeadingRequested &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
