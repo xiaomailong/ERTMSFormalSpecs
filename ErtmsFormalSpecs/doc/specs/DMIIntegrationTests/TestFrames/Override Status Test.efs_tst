@@ -14,7 +14,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Override Status Unitary Test"
+ Name="OUT Override Status Unitary Test"
  Guid="a276c4b4-11a2-49d9-ab50-9fbabbf28242"
 >
 <TestCases>
@@ -74,6 +74,79 @@
 >DMI.MasterDMI().Out_OverrideStatus.OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
  Guid="6e54f42e-c02a-44d4-943d-86b044cf0333"
 >DMI.MasterDMI().Out_OverrideStatus.OverrideStatus &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="IN Override Requested Unitary Test"
+ Guid="34c3bc5e-1344-4c78-89aa-ec8271881e1d"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="f87576ad-5ddb-449c-90ea-59f9e022a4a2"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="2f09f336-6f93-4405-84b5-4487b5067359"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="069baeb2-6cd3-4304-9236-78840386c780"
+>
+<Actions>
+<Action
+ Guid="da2bd606-a42d-423f-a5b9-af67eb8ca751"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="ee80b368-e1b1-4c15-97be-5c5fda213c9a"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="38b56856-62d7-46f0-8d2c-4715cdf62ddf"
+>Kernel.Mode &lt;- Mode.FS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="523ffa23-7a59-485e-b0a6-812a47da316b"
+>Kernel.Level.Value == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="08abc220-c484-4f93-b5d1-63a17f58eaad"
+>Kernel.Mode == Mode.FS</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Override Requested status change"
+ Guid="cca45705-0830-4d30-b8f1-9b4dab10c6e4"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="8e20645d-bf31-4980-987d-a4791103ac83"
+>
+<Actions>
+<Action
+ Guid="3714cfd4-ccf1-42de-b2bd-c8ef638c726a"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.DisplayRequested &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

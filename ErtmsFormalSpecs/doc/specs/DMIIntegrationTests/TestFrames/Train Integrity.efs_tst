@@ -1,0 +1,81 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Train Integrity"
+ Guid="9c350ce9-98f9-4599-8a24-c274667a7d93"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="IN Train Integrity"
+ Guid="14307ee9-5399-459b-93cd-f6ad81b8be1d"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="84e51d96-6277-44d2-951a-4063a8fe523b"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="6e9bfe52-c741-462e-8266-3843aa9aab17"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="510f4a53-8d65-4b59-ac54-58ef922d984c"
+>
+<Actions>
+<Action
+ Guid="14828859-5efc-4b65-b9be-3be8f7598bbd"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="78f2ffe3-492f-4f3e-a049-a62e201e4b12"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="e5908d37-c429-40b3-bf43-286d992ea3ea"
+>Kernel.Mode &lt;- Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="66544ab0-d5f4-4453-bae8-085bcf096e66"
+>Kernel.Level.Value == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="cd1df741-5340-4d9b-994f-7ab4ee4edb1f"
+>Kernel.Mode == Mode.SR</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set Train Integrity Display Requested"
+ Guid="d5792580-5f41-4bf0-b405-24c3812610ef"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="3f5d211b-3987-4cb9-9c65-d017dfe3c148"
+>
+<Actions>
+<Action
+ Guid="b4aef64f-aba5-4298-860d-fba795cc3b53"
+>DMI.MasterDMI().In_TrainIntegrity.InputInformation.DisplayRequested &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

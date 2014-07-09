@@ -14,7 +14,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Set the Adhesion Factor Value"
+ Name="OUT Set the Adhesion Factor Value"
  Guid="6e1522cd-77af-47be-9a59-1ac08d5f8543"
 >
 <TestCases>
@@ -74,6 +74,77 @@
 >DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.AdhFactor &lt;- True</Action><Action
  Guid="5d94221a-0367-4fe5-9152-b48e5e011930"
 >DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="IN Set Adhession Factor"
+ Guid="1fbc299e-4427-4bfb-b72a-c47fff6983d7"
+>
+<TestCases>
+<TestCase
+ Name="Adhession Factor"
+ Guid="50c2c6c0-6f79-4f30-8bbe-e055c3f6b242"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="9748e27b-f113-4e34-9f9a-c69038407bcf"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="ffbd3983-11f9-456c-ad51-f6bc575c023d"
+>
+<Actions>
+<Action
+ Guid="e8104afe-9ea7-4ae1-aefe-9d27f875d72e"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="ac548d23-189f-4539-973a-40398607e3ea"
+>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="85a2d5e8-465d-4671-a1e4-f5c8547609be"
+>Kernel.Level.Value == Level.L0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="00bd331f-a026-4bc7-9997-2743cf5ed3cf"
+>Kernel.Mode != Mode.SB</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Establish the value for the Adhesion Factor"
+ Guid="681b826a-5a57-409b-bfcc-b4ec5a1a97d0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d31f159a-5021-4c68-ad20-e5ded6f975d9"
+>
+<Actions>
+<Action
+ Guid="9a6cf3fe-4cfd-46ec-98c4-016559424c6f"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.DisplayRequested &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

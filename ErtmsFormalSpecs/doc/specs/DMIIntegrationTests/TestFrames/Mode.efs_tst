@@ -742,5 +742,78 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Acknowledgement for SH Mode"
+ Guid="4e912b95-ce00-4517-b329-d651c4688d83"
+>
+<TestCases>
+<TestCase
+ Name="Acknowledgement of SH mode"
+ Guid="565f0588-fb0d-4761-90e1-af98e1c0ae84"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="5fbc585e-6ec8-4a0c-ac48-25653761ef50"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="9b400f9e-150e-467f-8767-d6e22d13e6ef"
+>
+<Actions>
+<Action
+ Guid="e326053c-91c4-41a1-9c7b-6925427bb391"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="b1ae1289-3664-4f18-9ef0-e7d59c0e7272"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="46af5f6b-115f-42e2-852b-8ca658b90ac4"
+>Kernel.Mode &lt;- Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="869dea31-8463-463c-8d8b-69fe298f7606"
+>Kernel.Level.Value == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b12714d9-fb3b-4818-bdc8-3d8cde7f11cd"
+>Kernel.Mode == Mode.SR</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Change Mode To SH"
+ Guid="ba790872-cd00-4ed9-b1ca-fdc34c242594"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="fd43e248-827b-43f5-8183-3510e22637fa"
+>
+<Actions>
+<Action
+ Guid="6b0abd59-3f32-4930-9efb-e4dfb86147b0"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.DisplayRequested &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
