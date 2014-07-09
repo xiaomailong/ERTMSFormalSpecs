@@ -40,6 +40,7 @@
  Name="ConversionModelIsUsed"
  Guid="833a0587-3a60-4c33-84c4-eddbf6afd905"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="34841063-c56b-4747-8a29-d4ee8c1f936e"
@@ -47,7 +48,7 @@
   AND
 Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;= 200.0</PreCondition><PreCondition
  Guid="44dea8f6-d254-4297-b71b-73fbc4ac8c22"
->TrainData.Value.BrakePercentage != Percentage.NA
+>TrainData.Value.BrakePercentage != Default.Percentage.NA
   AND
 30.0 &lt;= TrainData.Value.BrakePercentage
   AND
@@ -1579,6 +1580,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9a7f8631-9335-4841-951d-5a522667a85f"
 >
+<Comment></Comment>
 </ReqRef><Comment>The value of the equivalent emergency brake build up time to be used when the target speed (V_target) is equal to zero.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
