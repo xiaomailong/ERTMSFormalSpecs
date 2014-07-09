@@ -554,7 +554,7 @@ namespace DataDictionary.Interpreter
             }
             catch (Exception e)
             {
-                AddError("Cannot evaluate " + Right + ". Reason is " + e.Message);
+                AddErrorAndExplain("Cannot evaluate " + Right + ". Reason is " + e.Message, context);
                 throw new Exception("inner evaluation failed");
             }
             finally
