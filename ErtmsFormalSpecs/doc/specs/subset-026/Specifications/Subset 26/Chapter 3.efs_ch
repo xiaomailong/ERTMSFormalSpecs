@@ -19686,7 +19686,8 @@ Inputs for speed and distance monitoring<Sub>
  functionalBlockName=""
  Name=""
  Guid="a6f45153-8ad8-444c-8853-f6edb9e480d0"
->Braking models (brake build up time and speed dependent deceleration) or brake percentage<RequirementSets>
+><Comment></Comment>
+Braking models (brake build up time and speed dependent deceleration) or brake percentage<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e1c329e9-7d59-4332-9452-f7a63a67ae40"
@@ -19892,7 +19893,8 @@ Inputs for speed and distance monitoring<Sub>
  functionalBlockName=""
  Name=""
  Guid="237cff95-71a3-436f-ae8c-0ad9e4b65651"
->All train related inputs except the fixed values are acquired as Train Data (see 3.18.3.2 items b) c) and d)).<RequirementSets>
+><Comment></Comment>
+All train related inputs except the fixed values are acquired as Train Data (see 3.18.3.2 items b) c) and d)).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c20d5304-5dbc-4b58-8775-5ba2721ab255"
@@ -20164,7 +20166,8 @@ The model shall be applicable only after full build up of the braking effort (se
  functionalBlockName=""
  Name=""
  Guid="1e561985-3cbf-4745-861a-5731a1c096d6"
->The model shall be used for the emergency brake nominal deceleration (A_brake_emergency(V)), for the full service brake deceleration (A_brake_service(V)) and for the normal service brake deceleration (A_brake_normal_service(V)).<RequirementSets>
+><Comment></Comment>
+The model shall be used for the emergency brake nominal deceleration (A_brake_emergency(V)), for the full service brake deceleration (A_brake_service(V)) and for the normal service brake deceleration (A_brake_normal_service(V)).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3371c7fe-8617-4ace-bfde-8a2369259572"
@@ -20212,7 +20215,8 @@ It shall be possible to define individual speed dependent deceleration models of
  functionalBlockName=""
  Name=""
  Guid="d816e6b0-4253-4add-96a2-e60db31e70b5"
->Note: Individual deceleration models may be equal, thereby avoiding the influence of a specific brake on A_brake_emergency(V) or A_brake_service(V). However, the choice to take into account or not the contribution of a specific brake for A_brake_emergency(V) or A_brake_service(V) is only rolling stock dependent, not an ETCS implementation issue.<RequirementSets>
+><Comment></Comment>
+Note: Individual deceleration models may be equal, thereby avoiding the influence of a specific brake on A_brake_emergency(V) or A_brake_service(V). However, the choice to take into account or not the contribution of a specific brake for A_brake_emergency(V) or A_brake_service(V) is only rolling stock dependent, not an ETCS implementation issue.<RequirementSets>
 <RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="056d1e4a-0994-48b0-99ab-b01630ee4eb3"
@@ -20304,7 +20308,8 @@ It shall be possible to define individual speed dependent deceleration models of
  functionalBlockName=""
  Name=""
  Guid="b647a3db-8587-4fd1-ae37-54bd4a741ef4"
->A set of A_brake_normal_service(V) shall be defined as a function of the full service brake deceleration at zero speed, A_brake_service(V=0):
+><Comment></Comment>
+A set of A_brake_normal_service(V) shall be defined as a function of the full service brake deceleration at zero speed, A_brake_service(V=0):
 	If A_brake_service(V = 0) less than or equal to A_SB01
 		A_brake_normal_service(V) = A_brake_normal_service_0(V)
 	if A_SB01 &lt; A_brake_service(V = 0) less than or equal to A_SB12
@@ -20434,7 +20439,8 @@ The deceleration A_brake is not available immediately after the on-board command
  Guid="94894b58-607c-4d85-8e74-b6e816cdbbf3"
 >
 <Comment>Only T_brake_build_up is of interest</Comment>
-</ReqRef>In Figure 31, the following time intervals are defined:<Sub>
+</ReqRef><Comment></Comment>
+In Figure 31, the following time intervals are defined:<Sub>
 <Paragraph
  id="3.13.2.2.3.2.3.a"
  guid=""
@@ -20924,7 +20930,8 @@ configuration possibilities: No interface exists; Interface exists and status af
  functionalBlockName=""
  Name=""
  Guid="79b931cc-2f34-4e70-9fbc-b136d5f3cdbd"
->Special brake: regenerative brake; x; x; x; x<RequirementSets>
+><Comment></Comment>
+Special brake: regenerative brake; x; x; x; x<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="b2cb733b-7d10-47a9-b14a-3a6acabce477"
@@ -20947,7 +20954,8 @@ configuration possibilities: No interface exists; Interface exists and status af
  functionalBlockName=""
  Name=""
  Guid="f8926fbf-e64d-4aee-adb2-f564912518c8"
->Special brake: eddy current brake; x; x; x; x<RequirementSets>
+><Comment></Comment>
+Special brake: eddy current brake; x; x; x; x<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3cd8a154-b81f-4adb-a053-b891b22ffb68"
@@ -21251,7 +21259,8 @@ The on-board equipment shall be configured to define whether it is allowed to ta
  functionalBlockName=""
  Name=""
  Guid="bdd6feb2-e9fc-4e01-90fb-c2dd7dc7a246"
->If it is allowed to take into account the contribution of a special/additional brake, which is independent from wheel/rail adhesion, the speed and monitoring function shall take into account the status &quot;active&quot; or &quot;not active&quot; of the special/additional brake to select the appropriate National Value under reduced adhesion conditions (see 3.13.2.3.7.7).<RequirementSets>
+><Comment></Comment>
+If it is allowed to take into account the contribution of a special/additional brake, which is independent from wheel/rail adhesion, the speed and monitoring function shall take into account the status &quot;active&quot; or &quot;not active&quot; of the special/additional brake to select the appropriate National Value under reduced adhesion conditions (see 3.13.2.3.7.7).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="8dfb5a87-ac60-4e1d-8bfa-3259670dcacd"
@@ -22192,7 +22201,7 @@ Reduced adhesion conditions<Sub>
  functionalBlockName=""
  Name=""
  Guid="7398172b-264c-4ff9-8f60-3b1e043f2033"
->The speed and distance monitoring shall take into account the track recuced adhesion received from trackside or selected by the driver (see section 3.18.4.6).<RequirementSets>
+>The speed and distance monitoring shall take into account the track reduced adhesion received from trackside or selected by the driver (see section 3.18.4.6).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1f161aa9-4c67-4c44-a478-dd0955322217"
@@ -23083,7 +23092,8 @@ Applicability of the conversion models<Sub>
  functionalBlockName=""
  Name=""
  Guid="d9f83e9a-bcd9-4427-86f8-42f4be0f7b75"
->Note: The overspeed above the maximum train speed which may occur due to the ceiling speed margins is taken into account in the definition of the conversion model.<RequirementSets>
+><Comment></Comment>
+Note: The overspeed above the maximum train speed which may occur due to the ceiling speed margins is taken into account in the definition of the conversion model.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="0a6a454e-dfef-429f-8525-04a0a9c8162a"
@@ -23569,7 +23579,8 @@ T_brake_service_cmt as defined for service brake in A3.9<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="c8787b49-ee97-4460-b52b-1a690c6b12e2"
->The default gradient for TSR shall be compensated in value according to the rotating mass as defined in 3.13.4.3.<RequirementSets>
+><Comment></Comment>
+The default gradient for TSR shall be compensated in value according to the rotating mass as defined in 3.13.4.3.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e604a29a-4527-4290-aab4-7058e9ec36f0"
@@ -23676,7 +23687,8 @@ T_brake_service_cmt as defined for service brake in A3.9<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="a3bd901e-34ee-4f8f-a690-26826dcc32df"
->Rotating mass<Sub>
+><Comment></Comment>
+Rotating mass<Sub>
 <Paragraph
  id="3.13.4.3.1"
  guid=""
@@ -24566,7 +24578,7 @@ The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency be
  Name=""
  Guid="2dff7e7c-9af3-49bc-82ac-19616e3e91e6"
 ><Comment></Comment>
-The values of T_brake_emergency acquired as part of Train Data (see ) or the value of T_brake_emergency derived from the conversion model (see ) using the brake position and train length acquired as Train Data.<RequirementSets>
+The values of T_brake_emergency acquired as part of Train Data (see 3.13.2.2.3.2.8) or the value of T_brake_emergency derived from the conversion model (see 3.13.3.4) using the brake position and train length acquired as Train Data.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="9ebf2f07-438e-4dd1-b888-87782b9e5b7a"
@@ -24683,7 +24695,8 @@ The values of T_brake_emergency acquired as part of Train Data (see ) or the val
  functionalBlockName=""
  Name=""
  Guid="f84eb0ae-cd99-4bc7-a06e-819e76fc2669"
->Expected deceleration<Sub>
+><Comment></Comment>
+Expected deceleration<Sub>
 <Paragraph
  id="3.13.6.3.1.1"
  guid=""
@@ -25642,7 +25655,8 @@ If a target belongs to the MRSP or is an LOA, the on-board shall calculate an EB
  functionalBlockName=""
  Name=""
  Guid="2b4c3cb7-6f06-408a-bfd7-85f5c5069e00"
->If a target is an SvL, the on-board shall calculate an Emergency Brake Deceleration (EBD) curve based on the safe deceleration A_safe(V,d) and that reaches zero speed at the SvL.<RequirementSets>
+><Comment></Comment>
+If a target is an SvL, the on-board shall calculate an Emergency Brake Deceleration (EBD) curve based on the safe deceleration A_safe(V,d) and that reaches zero speed at the SvL.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="db795238-07e5-4f7f-ab87-cd4221ced72b"
@@ -26555,7 +26569,8 @@ with V_delta1 = A_est1 x T_traction and V_delta2 = A_est2 x T_berem<RequirementS
  functionalBlockName=""
  Name=""
  Guid="88d50002-b123-41cd-8621-3ac7ae0408ef"
->For an EBD based target, the on-board shall calculate the location of the SBI supervision limit (SBI2) valid for the estimated speed, assuming that this latter remains constant during the interval T_bs2, until the location of the EBI supervision limit is reached. d_SBI2 (V_est) = d_EBI (V_est) - V_est x T_bs2<RequirementSets>
+><Comment></Comment>
+For an EBD based target, the on-board shall calculate the location of the SBI supervision limit (SBI2) valid for the estimated speed, assuming that this latter remains constant during the interval T_bs2, until the location of the EBI supervision limit is reached. d_SBI2 (V_est) = d_EBI (V_est) - V_est x T_bs2<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c2106227-1b53-4930-95b3-d03f6f760fc8"
@@ -26736,7 +26751,8 @@ With D_bec and V_bec calculated according to 3.13.9.3.2.10<Sub>
  functionalBlockName=""
  Name=""
  Guid="d542f99e-9462-4bb6-9087-35da9a233e06"
->The FLOI (First Line Of Intervention) supervision limit, valid for estimated speed, shall be defined as the SBI supervision limit, of which the location is the closest to the train front, taking into account the max safe train front end for the SBI2 supervision limit(s) and the estimated train front end for the SBI1.
+><Comment></Comment>
+The FLOI (First Line Of Intervention) supervision limit, valid for estimated speed, shall be defined as the SBI supervision limit, of which the location is the closest to the train front, taking into account the max safe train front end for the SBI2 supervision limit(s) and the estimated train front end for the SBI1.
 d_FLOI (V_est) = d_SBI1 (V_est) if d_SBI1 (V_est) - d_estfront &lt;= d_SBI2 (V_est)_MREBDT - d_maxsafefront
 d_FLOI (V_est) = d_SBI2 (V_est)_MREBDT if d_SBI2 (V_est)_MREBDT - d_maxsafefront &lt; d_SBI1 (V_est) - d_estfront
 With d_SBI2 (V_est)_MREBDT = min { d_SBI2 (V_est)_Target_1, ..., d_SBI2 (V_est)_Target_n }
@@ -26926,7 +26942,7 @@ d_P (Vest) = min { d_FLOI (Vest) - Vest * T_driver), d_GUI_FLOI (V_est) }<Requir
 ><Comment></Comment>
 In case the calculation of the GUI curve is inhibited, for display purpose only, the P speed related to SBD shall be calculated for the estimated train front end as follows:
 V_P_EOA (d_estfront) = V_SBD ( d_estfront + Vest * ( T_driver + T_bs1 ) )
-V_P_EOA (d_estfront)=0 if d_estfront + Vest * ( T_driver + T_bs1 ) &gt;= d_EOA<RequirementSets>
+V_P_EOA (d_estfront) = 0 if d_estfront + Vest * ( T_driver + T_bs1 ) &gt;= d_EOA<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="b9b2cee9-c28a-40d5-8c9f-d6b2105db9e2"
@@ -27645,7 +27661,8 @@ Whenever the on-board reference location is updated (e.g. new LRBG), the release
  functionalBlockName=""
  Name=""
  Guid="e5364c1f-ad1b-41da-a26e-1153431ce5b8"
->If the release speed (Figure 52 box 1 gives an example when it is calculated on-board) exceeds the MRSP anywhere in the area (Figure 52 box 2) delimited on one side by the presumed start location of the Release speed monitoring and on the other side by the trip location related to the EoA, the on-board shall use as a fixed release speed (Figure 52 box 4) the most restrictive value of the MRSP (Figure 52 box 3) within this area, and shall re-evaluate the start location of the Release speed monitoring accordingly.<RequirementSets>
+><Comment></Comment>
+If the release speed (Figure 52 box 1 gives an example when it is calculated on-board) exceeds the MRSP anywhere in the area (Figure 52 box 2) delimited on one side by the presumed start location of the Release speed monitoring and on the other side by the trip location related to the EoA, the on-board shall use as a fixed release speed (Figure 52 box 4) the most restrictive value of the MRSP (Figure 52 box 3) within this area, and shall re-evaluate the start location of the Release speed monitoring accordingly.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="498c287a-a18f-41c5-b15b-b938c929979d"
@@ -27919,7 +27936,7 @@ If, in exceptional situation (e.g. after a shortening of MA), the calculation de
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -27943,7 +27960,8 @@ If, in exceptional situation (e.g. after a shortening of MA), the calculation de
  functionalBlockName=""
  Name=""
  Guid="2b4238a1-8763-47d9-8bc6-fc33c61430af"
->Note 1: For ergonomic reasons, the location of a pre-indication is independent of the estimated speed. If the pre-indication would be derived from an EBD or SBD curve according to the estimated speed, then when the train is running at low speed the driver would see the permitted speed already decrease while the DMI is still in ceiling speed display. That is not consistent for the driver and therefore the pre-indication is independent of the estimated speed.<RequirementSets>
+><Comment></Comment>
+Note 1: For ergonomic reasons, the location of a pre-indication is independent of the estimated speed. If the pre-indication would be derived from an EBD or SBD curve according to the estimated speed, then when the train is running at low speed the driver would see the permitted speed already decrease while the DMI is still in ceiling speed display. That is not consistent for the driver and therefore the pre-indication is independent of the estimated speed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d7dd0126-1e61-4f8b-8c10-1ea33b918b2c"
@@ -27977,7 +27995,7 @@ Note 2: For trackside engineering reasons, the assumptions for the calculation o
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30826,7 +30844,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30844,7 +30863,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -30862,7 +30882,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  scope="FLAGS"
  bl="3.1.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""

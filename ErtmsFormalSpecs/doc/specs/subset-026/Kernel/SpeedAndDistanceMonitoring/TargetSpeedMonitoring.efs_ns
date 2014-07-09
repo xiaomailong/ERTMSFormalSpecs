@@ -922,6 +922,7 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="GUI is inhibited, first case"
  Guid="1bf856e8-dee1-44b0-a1a6-bd4d7ac34525"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7b9f6890-4be7-49cf-9750-bc2b6d56cfb4"
@@ -1336,7 +1337,8 @@ TargetSpeedMonitoring.V_P_EOA ( d_estfront =&gt; TrainPosition.FrontEndPosition 
 <PreConditions>
 <PreCondition
  Guid="2e2cb67d-e986-47dd-9a32-d34ea033b11a"
->TargetSpeedMonitoring.V_P_EBD_Target
+><Comment></Comment>
+TargetSpeedMonitoring.V_P_EBD_Target
     (
         d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ),
         Vtarget =&gt; X1.Speed,
@@ -1505,7 +1507,8 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
 <PreConditions>
 <PreCondition
  Guid="3a61714a-aa82-4215-b3f4-b42959f7132d"
->MA.IsEOA ( TargetSpeedMonitoring.MRDT() ) OR MA.IsSvL ( TargetSpeedMonitoring.MRDT() )</PreCondition></PreConditions>
+><Comment></Comment>
+MA.IsEOA ( TargetSpeedMonitoring.MRDT() ) OR MA.IsSvL ( TargetSpeedMonitoring.MRDT() )</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.MinSpeed
 (
     X1 =&gt; Default.BaseTypes.MaxSpeed
@@ -2131,6 +2134,16 @@ TargetSpeedMonitoring.T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></A
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0f35f166-c40b-4574-a5de-a2385cc839fc"
 >
+</ReqRef><ReqRef
+ Id="64f293f1-473e-4a19-b92d-2240f67c616e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="095ec7f6-e9ac-4279-9266-55c3e8647a72"
+>
+</ReqRef><ReqRef
+ Id="e6c96237-f200-4c17-a939-03f51fb70c39"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd090715-e366-4c25-b365-0a44ada6be09"
+>
 </ReqRef><Comment>Time interval used to compute d_SBI1.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
@@ -2148,6 +2161,16 @@ TargetSpeedMonitoring.T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></A
  Id="88d50002-b123-41cd-8621-3ac7ae0408ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="66741b3b-0687-4ac2-9e62-3241d2df9e62"
+>
+</ReqRef><ReqRef
+ Id="64f293f1-473e-4a19-b92d-2240f67c616e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="348adf89-7166-43fe-8105-f77d17486428"
+>
+</ReqRef><ReqRef
+ Id="e6c96237-f200-4c17-a939-03f51fb70c39"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0c8ca36f-3aa7-4f17-9fea-29c6d0237618"
 >
 </ReqRef><Comment>Time interval used to compute d_SBI2.</Comment>
 </Variable><Variable

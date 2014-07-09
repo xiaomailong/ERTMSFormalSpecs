@@ -89,6 +89,7 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="Value"
  Guid="9226eef6-02fb-4694-b13c-ddda96d35d5e"
 >
+<Comment></Comment>
 <Expression>STABILIZE
     VreleaseFunction ( Vrelease_prev =&gt; PREVIOUS, Vtarget =&gt; Vtarget )
 INITIAL_VALUE
@@ -176,7 +177,8 @@ STOP_CONDITION
  Name="Value"
  Guid="17beface-fcb0-4eb8-b204-80baed457e28"
 >
-<Expression>( Vrelease + ReleaseSpeedMonitoring.Vdelta0rsob ( Vrelease ) ) * ( TargetSpeedMonitoring.T_traction() + TargetSpeedMonitoring.T_berem() )</Expression>
+<Comment></Comment>
+<Expression>( Vrelease + Vdelta0rsob ( Vrelease ) ) * ( TargetSpeedMonitoring.T_traction() + TargetSpeedMonitoring.T_berem() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -212,6 +214,7 @@ STOP_CONDITION
  Name="Compensation of inaccuracy not inhibited"
  Guid="564e1949-717c-4079-b079-2b808139515f"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="13f4ccc3-2ef6-4202-bfa6-444572980157"
@@ -322,13 +325,14 @@ Default.BaseTypes.MaxDistance
  Name="First case"
  Guid="3b210ae9-da1a-49a4-833b-d680e1bdf28c"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="af631487-52d1-4c71-a33c-05b2ff35e1b4"
->ReleaseSpeedMonitoring.d_tripEOA() + ReleaseSpeedMonitoring.Dbec ( Vrelease_prev ) &lt; DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
+>d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
  Guid="b7339d74-9848-460e-b4e5-8cb15e9f1566"
->TargetSpeedMonitoring.EBD ( ReleaseSpeedMonitoring.d_tripEOA() + ReleaseSpeedMonitoring.Dbec ( Vrelease_prev ) - ReleaseSpeedMonitoring.Vdelta0rsob ( Vrelease_prev ) ) &gt; Vtarget</PreCondition></PreConditions>
-<Expression>TargetSpeedMonitoring.EBD ( ReleaseSpeedMonitoring.d_tripEOA () + ReleaseSpeedMonitoring.Dbec ( Vrelease_prev ) ) - ReleaseSpeedMonitoring.Vdelta0rsob ( Vrelease_prev )</Expression>
+>TargetSpeedMonitoring.EBD ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ) &gt; Vtarget</PreCondition></PreConditions>
+<Expression>TargetSpeedMonitoring.EBD ( d_tripEOA () + Dbec ( Vrelease_prev ) ) - Vdelta0rsob ( Vrelease_prev )</Expression>
 </Case><Case
  Name="Second case"
  Guid="40790e04-db87-45cd-b756-ba399d78f25b"
