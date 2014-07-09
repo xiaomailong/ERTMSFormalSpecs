@@ -2912,7 +2912,9 @@
 ><Comment></Comment>
 Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle]</PreCondition><PreCondition
  Guid="27f43f3b-9d33-4f93-8af9-d46bf9c93913"
->Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
+>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition><PreCondition
+ Guid="d0a1e23c-06b2-402d-90bd-842d3181788a"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
@@ -9999,7 +10001,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f1a79f31-d740-4203-86e2-3d320b24e047"
 >
-</ReqRef><Rules>
+</ReqRef><Comment></Comment>
+<Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -14843,7 +14846,8 @@ ProcedureOut in ProcedureOutSM.NotApplicable</PreCondition><PreCondition
 <Actions>
 <Action
  Guid="6c795dd9-cfd6-4c71-9695-cc2210c5bcaf"
->ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></Actions>
+><Comment></Comment>
+ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
