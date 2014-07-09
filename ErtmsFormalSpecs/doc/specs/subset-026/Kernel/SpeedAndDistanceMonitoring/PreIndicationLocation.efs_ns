@@ -53,6 +53,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="47a94fda-bebc-46fd-85b7-c302c0878355"
 >
+<Comment></Comment>
 </ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
 <Parameters>
 <Parameter
@@ -78,7 +79,7 @@ TargetSpeedMonitoring.EBD(TrainPosition.FrontEndPosition(Default.DistanceInterva
  Guid="87bc3884-bbcf-40e7-891f-a35b2baa7c00"
 >
 <Comment>Standard case</Comment>
-<Expression>DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.EBD, Speed =&gt; f41 ( Vmrsp ) ) - ( Vmrsp + f41 ( Vmrsp ) ) * ( TargetSpeedMonitoring.T_berem() + TargetSpeedMonitoring.T_traction() )</Expression>
+<Expression>DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.EBD, Speed =&gt; Vmrsp + f41 ( Vmrsp ) ) - ( Vmrsp + f41 ( Vmrsp ) ) * ( TargetSpeedMonitoring.T_berem() + TargetSpeedMonitoring.T_traction() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -462,6 +463,7 @@ PreIndicationLocation.d_I(PreIndicationLocation.FirstTargetFromLocation(MRSPnTar
  Name="GUI is inhibited"
  Guid="f66f3c06-c206-4999-97d9-25170cc4e170"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="dac95c93-f0c0-4ace-862c-c7475c858e6e"
@@ -548,6 +550,7 @@ TargetsList() != []</PreCondition></PreConditions>
  Name="Otherwise"
  Guid="2864273a-427e-4862-800f-f42bb985cd36"
 >
+<Comment></Comment>
 <Expression>Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
