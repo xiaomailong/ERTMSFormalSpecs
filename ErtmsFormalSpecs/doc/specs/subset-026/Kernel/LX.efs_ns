@@ -305,6 +305,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2eb34725-9edf-4f67-b8ee-646d5564503e"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="127b4102-89de-4c50-9c52-b1bead79aa18"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -324,11 +325,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Id="25ba8ee8-fa61-47e2-acbd-df1d8614ed6a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1e8d68f9-0685-4d62-b7f2-816013e62ef2"
->
-</ReqRef><ReqRef
- Id="59bae633-99ce-4f69-992a-cec56e0b4c41"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="939aa264-77f1-42d2-b6b8-1e80a475f373"
 >
 </ReqRef><Comment>Provides the speed profile due to a level crossing.</Comment>
 <Parameters>
@@ -356,24 +352,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Guid="8950058e-304d-4ac4-a86a-a98ef88c42a9"
 >Distance &lt; aLX.Location</PreCondition></PreConditions>
 <Expression>StoppingAreaSpeed(aLX)</Expression>
-</Case><Case
- Name="No stopping area, slowed to LX max speed"
- Guid="490716a2-a961-44c7-8582-7f8cb71bc9b8"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="55683d49-0172-42dc-bf65-040f95b0a038"
-><Comment></Comment>
-aLX.StoppingRequired == Messages.Q_STOPLX.No_stop_required</PreCondition><PreCondition
- Guid="bf08853c-bae7-42e5-94f9-b16da34ea92d"
-><Comment></Comment>
-aLX.Speed != Default.BaseTypes.Speed.NA
-  AND  
-Distance &gt;= d_P_ForLX( aLX )</PreCondition><PreCondition
- Guid="0e772f4a-ee71-4a89-90ee-439cf582c62d"
->Distance &lt; aLX.Location</PreCondition></PreConditions>
-<Expression>NonProtectedSpeed(aLX)</Expression>
 </Case><Case
  Name="During LX"
  Guid="20734346-3c5e-4874-98f2-a6f945ae06cf"
@@ -431,6 +409,7 @@ Distance &gt;= d_P_ForLX( aLX )</PreCondition><PreCondition
  Name="LX is protected"
  Guid="4359d193-2752-4a1e-8efe-3d266fb9367c"
 >
+<Comment></Comment>
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
