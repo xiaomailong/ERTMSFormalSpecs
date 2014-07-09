@@ -1548,10 +1548,12 @@ TrainData.Value.EddyCurrentBrakeInterface in [BrakeInterfaceStatus.SB, BrakeInte
  Name="Regenerative"
  Guid="34c37181-7bac-4ff7-8e4f-7099ea69c2f6"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="955b5dad-79bf-4085-88cb-b6dd7f04ac78"
->aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition></PreConditions>
+><Comment></Comment>
+aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition></PreConditions>
 <Expression>TIU.SpecialBrakeStatus.RegenerativeBrakeIsActive
   AND
 TrainData.Value.RegenerativeBrakeInterface in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
@@ -2057,6 +2059,7 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
  Name="Value"
  Guid="2b332e63-506d-494a-9fa7-cf6be6e69223"
 >
+<Comment></Comment>
 <Expression>Default.BaseTypes.Time ( TrainData.Value.TractionModel.Coefficient * A_traction ( EstimatedTrainAcceleration=&gt;Odometry.EstimatedAcceleration, Gradient=&gt;Kernel.TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance ) ) + TrainData.Value.TractionModel.Constant )</Expression>
 </Case></Cases>
 </Function><Function
@@ -2591,6 +2594,7 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
  Name="Value"
  Guid="5604499c-58ec-43ce-b6c3-ea608aae7813"
 >
+<Comment></Comment>
 <Expression>T_brake_build_upValue
 (
     aT_brake_build_upSet =&gt; TrainData.Value.T_brake_service,
@@ -4107,7 +4111,8 @@ TrainData.Value.T_brake_emergency != EMPTY</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="0d4c2e72-de62-4a44-9820-bd2544d555a6"
->TrainData.Value.T_brake_service != EMPTY</PreCondition></PreConditions>
+><Comment></Comment>
+TrainData.Value.T_brake_service != EMPTY</PreCondition></PreConditions>
 <Expression>T_brake_service()</Expression>
 </Case><Case
  Name="From conversion model"

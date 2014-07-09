@@ -1808,6 +1808,7 @@ SelectMonitoringType()</Action></Actions>
  Name="Speed lower than 30km/h"
  Guid="be93371e-e4bb-49d1-b368-83e2c75653f5"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="5394b5c1-088b-4cd4-99d8-833a9ccb9b0e"
@@ -2164,7 +2165,8 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
 <PreConditions>
 <PreCondition
  Guid="6046f3ef-2d04-439e-badf-03ef3f72e5ea"
->Monitoring in [MonitoringTypeSM.Ceiling.Normal, MonitoringTypeSM.Target.Normal]</PreCondition></PreConditions>
+><Comment></Comment>
+Monitoring in [MonitoringTypeSM.Ceiling.Normal, MonitoringTypeSM.Target.Normal]</PreCondition></PreConditions>
 <Expression>SupervisionStatus.Normal</Expression>
 </Case><Case
  Name="Indication"

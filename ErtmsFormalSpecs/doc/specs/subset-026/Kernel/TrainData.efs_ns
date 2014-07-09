@@ -655,6 +655,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="16737de5-6127-4845-9d40-d3fe26409b1e"
 >
+<Comment></Comment>
 </ReqRef><Comment>Represents the equivalent brake build up time (T_brake_build_up) for the service brake.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Percentage"
@@ -1595,7 +1596,8 @@
             }
         }</Action><Action
  Guid="5ec015f3-36e0-4bcf-b170-e8e6506cc952"
->TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+><Comment></Comment>
+TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
     EddyCurrent =&gt; 12.0,
     EddyCurrent_Magnetic =&gt; 14.0,

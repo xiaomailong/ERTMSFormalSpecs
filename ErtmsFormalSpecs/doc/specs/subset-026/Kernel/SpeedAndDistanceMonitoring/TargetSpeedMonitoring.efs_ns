@@ -264,6 +264,7 @@
  Name="Traction cut-off is implemented"
  Guid="ba5abac1-815c-4cc0-9ead-c4348eab951d"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="cf6f9fc7-ccd1-4d65-a066-2ba3eebe0aad"
@@ -677,6 +678,7 @@ ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable ( aTarget )</PreConditi
  Name="SB feedback interface not available"
  Guid="b91d6f8c-55b0-4316-b754-68a920fca082"
 >
+<Comment></Comment>
 <Expression>Default.BaseTypes.MaxTime ( X1 =&gt; 0.8 * TrainData.BrakingParameters.T_bs(), X2 =&gt; 5.0 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -1898,6 +1900,7 @@ DistanceForSpeed(
  Name="Value"
  Guid="f6c71c64-a1ed-4e52-9eee-68edbd4d2eb7"
 >
+<Comment></Comment>
 <Expression>DistanceForSpeed (
     Function =&gt;
         FUNCTION d : Default.BaseTypes.Distance =&gt; TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
@@ -2002,6 +2005,7 @@ MA.IsSvL(MRDT())</PreCondition></PreConditions>
  Name="Otherwise"
  Guid="0ca3e6c9-dd75-4e99-834a-cff3a97950d4"
 >
+<Comment></Comment>
 <Expression>Default.BaseTypes.MaxDistance(
     X1=&gt; d_P(MRDT().Speed)-TrainPosition.FrontEndPosition(DistanceInterval.Max),
     X2=&gt;0.0

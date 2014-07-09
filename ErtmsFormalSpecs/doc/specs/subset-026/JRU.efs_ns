@@ -1010,7 +1010,8 @@ InitializeMessage()</Action></Actions>
  Guid="f986b9dc-68c2-48f4-aa19-15bc06d987e7"
 >PreviousAdditionalBrakeStatus &lt;- TIU.AdditionalBrakesActive</Action><Action
  Guid="58633a81-4072-494e-a17d-19e34b04acc0"
->PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><Action
+><Comment></Comment>
+PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><Action
  Guid="d461f9a5-7f7b-482b-8ffa-2ca4aed6d474"
 >PreviousTargetSpeed &lt;- DMI.MasterDMI().Out_TargetSpeed.Speed</Action><Action
  Guid="cc02b5bb-d96c-46dd-a3bf-abe2b314c992"
@@ -6281,10 +6282,12 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
  Name="NormalStatus"
  Guid="a7e2039a-a33b-4611-aab6-c3e6252b1712"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="07ac1eae-7593-4e1e-a3da-e63d16ac8bcc"
->Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Normal</PreCondition></PreConditions>
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Normal</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMSUPSTAT.Normal_status</Expression>
 </Case><Case
  Name="InticationsStatus"
@@ -6483,6 +6486,7 @@ V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
  Name="Available"
  Guid="9cc95c12-9865-4286-a8c3-683d2e34e245"
 >
+<Comment></Comment>
 <Expression>Default.MessageTypes.UnScaleDistance(
     distance=&gt;distance,
     scale=&gt;scale
