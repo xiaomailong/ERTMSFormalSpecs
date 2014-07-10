@@ -5484,6 +5484,14 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOut"
  Guid="96f2327c-de3a-499f-9b6f-e35c2cf603f6"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="BrakeActive"
+ Guid="b04cc609-ec9e-4243-af17-31664a5c35a2"
+>
+<Comment>Indicates whether a brake (service or emergency) is active</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -5899,7 +5907,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2edee622-29c7-4a76-952d-d1756ef59698"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment></Comment>
+<StructureElement
  TypeName="OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -6804,6 +6813,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ReversingAllowed"
  Guid="b74471c3-a991-4389-8cef-11378168b336"
 >
+<Comment></Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -8609,7 +8619,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="29f9335f-ec2c-4210-958a-827a37510bb8"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment></Comment>
+<StructureElement
  TypeName="OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -8633,6 +8644,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="OverrideStatus"
  Guid="13c4c3e1-8870-4da2-bc56-5cb895d84b1f"
 >
+<Comment></Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -9066,6 +9078,14 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOut"
  Guid="7da7a49b-1499-4b7a-8b90-9ccf6c123870"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="LXNotProtected"
+ Guid="f249955c-e772-4736-a3c3-1279ddada64a"
+>
+<Comment>Indicates that the LX is non protected</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -9500,9 +9520,17 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOut"
  Guid="5c251e29-b0f4-4ee5-8f7c-c11371bd013b"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="ShuntingRefused"
+ Guid="34b53e47-b6f4-4842-b1d0-3ade96f7997d"
+>
+<Comment>The RBC refused a request to enter shunting mode</Comment>
 </StructureElement><StateMachines>
 <StateMachine
- Default="NotAvailable"
+ Default="ProcedureOutSM.NotAvailable"
  Implemented="TRUE"
  Name="ProcedureOutSM"
  Guid="1de7362d-1e79-44d5-b05e-9154b27f56a9"
@@ -9518,7 +9546,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="68c2bd13-1c4c-4c26-bee5-b903cea0f874"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NotAvailable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="ef386256-bcf2-408b-9a1f-b1980d86b8d9"
@@ -9559,7 +9587,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <Actions>
 <Action
  Guid="35c85ecb-f5b5-4905-a5b2-bc96ae263d90"
->THIS &lt;- NotAvailable.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NotAvailable.Idle</Action><Action
  Guid="58be2fd3-cd1b-4086-8223-7184318fb92f"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -9589,7 +9617,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="dae0544f-c98e-43bb-b3f6-670bff9e43c2"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NationalSystemAvailability.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="099dde03-3a2a-42c0-91e0-73a2b0d1c534"
@@ -9630,7 +9658,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <Actions>
 <Action
  Guid="c384b46e-381d-4ebe-80e8-889404ec406d"
->THIS &lt;- NationalSystemAvailability.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NationalSystemAvailability.Idle</Action><Action
  Guid="a53cd3d4-bf67-48a9-b392-ea0ab6c31445"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -9660,7 +9688,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="26f9d682-3458-4d24-8f4c-b074392867ae"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NotApplicable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="7f45b089-c355-48b6-af6e-7571cb45c2f1"
@@ -9701,7 +9729,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <Actions>
 <Action
  Guid="ca8c818a-c6d0-4e32-ab43-6946967d5a69"
->THIS &lt;- NotApplicable.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NotApplicable.Idle</Action><Action
  Guid="a28d27af-576b-494f-92e7-38ac2b600529"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -9731,7 +9759,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="658fd260-3c1e-4742-9e91-903e38fa7f3f"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.Active.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="d0383dd5-a1cb-4a4e-b2c7-12267b3b9595"
@@ -9772,7 +9800,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <Actions>
 <Action
  Guid="fc5f7eea-11fe-4951-a901-81892f9f4746"
->THIS &lt;- Active.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Active.Send</Action><Action
  Guid="0f151760-7405-40b9-96a7-f8b5d765409b"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
@@ -9802,7 +9830,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Guid="995c950b-f722-4df9-b16f-d45a303ed774"
 >
 <StateMachine
- Default="Idle"
+ Default="ProcedureOutSM.Available.Idle"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="1a12b0ff-c79b-4c0a-8fda-1e8c0375aceb"
@@ -9841,15 +9869,15 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <PreConditions>
 <PreCondition
  Guid="9db79aee-8f47-4642-afcb-47707d5cadff"
->OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.ShowRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e2899a7e-347e-4079-8eb4-45f306296d89"
->THIS &lt;- Available.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Send</Action><Action
  Guid="8d2a4156-9ce2-4ab6-84ae-22cca4e22336"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
  Guid="c4b11158-3b67-437d-94f2-007d3ac8bd78"
->OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9885,15 +9913,15 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <PreConditions>
 <PreCondition
  Guid="cfa20848-a183-4c25-8721-dacd779faa95"
->OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.HideRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bc48afd5-eb8a-4a84-8f9e-f3014e489d99"
->THIS &lt;- Available.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Idle</Action><Action
  Guid="8fd75137-e785-4843-96e7-ea07835d92bc"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
  Guid="81d911d8-1f4f-4f11-8c6d-0a2fbdf5fd0e"
->OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.HideRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -9923,6 +9951,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="OutputInformation"
  Guid="fdd9904d-fd6d-49ee-9fc2-cefb326a062f"
 >
+<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureOutSM"
  Default=""
@@ -9931,6 +9960,14 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOut"
  Guid="b3e11ddf-9578-48ba-a96a-dbcf4d3c5c3e"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="RequestNotAnswered"
+ Guid="22fd053b-c8b2-4063-b6e9-1bbcd92cb226"
+>
+<Comment>The RBC has not answered a request to begin shunting</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -10860,6 +10897,15 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOut"
  Guid="a67a46dd-485e-44cf-a5e0-113dcb6bc1ce"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="ModeEntered"
+ Guid="ec13b56c-9a0c-43f3-96f8-d20052458f8f"
+>
+<Comment>TODO: Find out where this is relevant in Subset-026.
+Remains true for a while after OS or FS modes have been entered.</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -11718,7 +11764,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8cd39df8-b416-4ca5-9934-a7e2aecd876b"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment></Comment>
+<StructureElement
  TypeName="OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -11735,6 +11782,14 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOut"
  Guid="7558c6e1-33e6-4687-aaf3-604f95917138"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="TrackAheadFree"
+ Guid="6aace110-ad15-4a07-a4f4-b37f91f769c2"
+>
+<Comment>Indicates that the train has requested information about the upcoming track</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -12613,6 +12668,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="OutputInformation"
  Guid="dc38667d-6e41-401b-9494-cb793bd4a531"
 >
+<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureOutSM"
  Default=""
@@ -12621,6 +12677,14 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOut"
  Guid="c2a48514-e3a2-4373-98f7-664293b5ea21"
 >
+</StructureElement><StructureElement
+ TypeName="Default.Mode"
+ Default="Default.Mode.UN"
+ Mode="Internal"
+ Name="Mode"
+ Guid="8f910f6b-d41d-4a3c-b446-086da2f68adc"
+>
+<Comment>The mode proposed to the driver</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -12894,7 +12958,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <Actions>
 <Action
  Guid="79f527b7-4fce-465c-99c6-d5927479c52b"
->THIS &lt;- Active.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Active.Send</Action><Action
  Guid="8f422c50-549c-4f3a-b1df-470eddb7b3d2"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
@@ -13036,7 +13100,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="39d15e74-7792-4399-9ab7-a6c1a323d695"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment></Comment>
+<StructureElement
  TypeName="OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -13053,6 +13118,14 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOut"
  Guid="d2e24331-4bbc-4a2f-b181-e6404284df0c"
 >
+</StructureElement><StructureElement
+ TypeName="Default.Mode"
+ Default="Default.Mode.OS"
+ Mode="Internal"
+ Name="Mode"
+ Guid="550a111c-8956-42ed-8eb0-11b9e7cb5a86"
+>
+<Comment>Themode proposed to the driver</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -13485,6 +13558,14 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOut"
  Guid="944ca75b-2958-426b-bc5d-1729fd3fd57f"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="TracksideMalfunction"
+ Guid="3e89c279-075b-4ad4-ad32-1686682ba207"
+>
+<Comment>Indicates a malfunction on the trackside end</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -13938,6 +14019,14 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOut"
  Guid="2137404d-0f23-49e8-82d7-8948def1c9f6"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="TrainDataChanged"
+ Guid="2b76b96e-75e6-4bce-afb1-758bcc936cd2"
+>
+<Comment>Indicates that the train data has been changed by a source other than manual input from the driver</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -14811,6 +14900,14 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="ProcedureOut"
  Guid="40c29488-f376-4086-bf28-5a5f67fa8a3f"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="RegistrationFailed"
+ Guid="21513ade-d77a-43e7-9538-6c404881bd26"
+>
+<Comment>Indicates that registration to a radio network has failed</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -18613,6 +18710,14 @@ The brake reason.</Comment>
  Name="ProcedureOut"
  Guid="9159757e-acc2-4bee-bfe7-63c071870895"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="TracksideIncompatible"
+ Guid="0d129f96-5a56-497a-9b5a-c1af8949d819"
+>
+<Comment>The train is incompatible with a trackside system</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -19066,6 +19171,14 @@ The brake reason.</Comment>
  Name="ProcedureOut"
  Guid="416f5b00-8ab0-4bb1-aa05-cc3c9778666a"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="TrainRejected"
+ Guid="4fce37da-4fd1-451f-8504-f8a4e2ec6b7c"
+>
+<Comment>When in Standby mode, the train must be accepted by the RBC to start the mission (in level 2)</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -21409,7 +21522,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 >
 </StructureElement><StateMachines>
 <StateMachine
- Default="NotAvailable"
+ Default="ProcedureOutSM.NotAvailable"
  Implemented="TRUE"
  Name="ProcedureOutSM"
  Guid="6dfc1f12-f517-42e3-8899-75c0a04e57bd"
@@ -21427,7 +21540,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 >
 <Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NotAvailable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="66043bab-8ec3-428e-a11c-77730eafdfae"
@@ -21470,7 +21583,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 <Actions>
 <Action
  Guid="1dab2460-c677-4f30-bb8e-82e4edafcc02"
->THIS &lt;- NotAvailable.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NotAvailable.Idle</Action><Action
  Guid="1ddcd189-7b1e-4a5b-ac6f-1ffd600663d3"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -21502,7 +21615,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 >
 <Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NationalSystemAvailability.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="436ec700-867b-49ef-9a9e-f57ffc8afbdb"
@@ -21545,7 +21658,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 <Actions>
 <Action
  Guid="743fd981-a760-43ac-82c1-7a666bc07b71"
->THIS &lt;- NationalSystemAvailability.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NationalSystemAvailability.Idle</Action><Action
  Guid="77e78ebe-a2b4-4959-a8d0-65a5d25bb7e1"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -21577,7 +21690,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 >
 <Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NotApplicable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="e0f638e5-a242-483e-a94e-198e66fec7cf"
@@ -21620,7 +21733,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 <Actions>
 <Action
  Guid="9290f6b2-d361-40d2-b084-6c5663edee33"
->THIS &lt;- NotApplicable.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NotApplicable.Idle</Action><Action
  Guid="95bc37c6-5957-47b4-908d-b0479694c73f"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -21652,7 +21765,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 >
 <Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.Active.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="7c15d4e6-95c3-47dd-8704-c5dcdcff5421"
@@ -21695,7 +21808,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 <Actions>
 <Action
  Guid="fcd52190-66d3-41a4-8bae-4545c63be7d0"
->THIS &lt;- Active.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Active.Send</Action><Action
  Guid="af8b45f8-106d-4445-9a70-4a742d12d151"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
@@ -21727,7 +21840,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 >
 <Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
- Default="Idle"
+ Default="ProcedureOutSM.Available.Idle"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="bff21558-c70c-462d-9e42-f556db4e192a"
@@ -21768,15 +21881,15 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="bf32f300-3f75-4d60-8206-82d75f76b4e4"
->OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.ShowRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dd3ebc50-1d26-4c70-a26c-e4b1c7ea7ff2"
->THIS &lt;- Available.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Send</Action><Action
  Guid="833b6bea-87c7-4ecc-976e-8f17c8e4440f"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
  Guid="f21c62a8-f04d-4dde-97b3-a0836dd79e5f"
->OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -21814,15 +21927,15 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="23c6a544-aa02-41dc-88c3-d861a92d3f21"
->OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.HideRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a10d9403-dbac-4230-af0c-d918185b44b1"
->THIS &lt;- Available.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Idle</Action><Action
  Guid="2c56b3c0-8ad3-4bb0-a9bf-a26337b952e4"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
  Guid="a0b618ec-e5b4-48fa-938d-d475504b5d9b"
->OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.HideRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
