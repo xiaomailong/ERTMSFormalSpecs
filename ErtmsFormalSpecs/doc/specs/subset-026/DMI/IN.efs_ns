@@ -121,6 +121,7 @@
  Name="DriverAction"
  Guid="09607d95-2143-4b10-bb46-973612eb2817"
 >
+<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureInSM"
  Default=""
@@ -673,13 +674,6 @@
  Name="ProcedureIn"
  Guid="f26590e9-d371-4268-b8b4-61dba031b2be"
 >
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="LanguageSelected"
- Guid="ebeb974c-45b3-439b-98d5-7db5bf1098a2"
->
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -1222,13 +1216,6 @@
  Name="AdhesionFactor"
  Guid="bd7c1c78-a4f9-4a2e-b140-57e653004e0c"
 >
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="Display"
- Guid="71f2a0a5-8486-40f5-8516-80f1b0b0fd86"
->
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -1742,13 +1729,6 @@
  Implemented="TRUE"
  Name="ProcedureIn"
  Guid="4b57cf94-6f97-4492-a6aa-dfef065ecc3d"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="DriverAnswered"
- Guid="9ee8c4e3-eeef-4eb4-806a-78cc9b620dd5"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -2285,20 +2265,6 @@
  Name="ProcedureIn"
  Guid="c62a7855-659d-4266-8f5a-73787ce73c06"
 >
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="DriverAnswered"
- Guid="1defd4c7-cc92-4181-bd7b-4019c332a399"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="Start"
- Guid="f31559e0-6249-4415-b468-a6516496e9f2"
->
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -2834,21 +2800,6 @@
  Name="ProcedureIn"
  Guid="c5b62c74-ceaa-4775-9881-38a79d4eaa0c"
 >
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Implemented="TRUE"
- Name="OverrideRequested"
- Guid="cf8177f3-5962-4f81-9d23-bae461b2189c"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="DriverAnswered"
- Guid="7c4cd3cb-bab6-435e-96cf-ecf7edf9a396"
->
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -3383,20 +3334,6 @@
  Implemented="TRUE"
  Name="ProcedureIn"
  Guid="04da1b8e-e364-44bf-88ef-54cb9aa47e8f"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="ShuntingRequested"
- Guid="3dceb3d0-ff11-4029-83ec-d958087475d6"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="DriverAnswered"
- Guid="2d938d51-d874-4cb0-972f-ca56eda76641"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -3942,14 +3879,6 @@
  Name="ProcedureIn"
  Guid="08e93001-71c7-451b-9805-f6860888ba8a"
 >
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Implemented="TRUE"
- Name="DriverAcknowledged"
- Guid="a3697bd8-abb5-4f43-8855-d676d62cc9bb"
->
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -4485,20 +4414,6 @@
  Name="ProcedureIn"
  Guid="2af4ba73-80bb-4eef-a3aa-a46e68327796"
 >
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="RequestActive"
- Guid="b919ef51-1716-4b08-801c-4594156392c4"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="DriverAnswered"
- Guid="488a78ff-38ca-4166-9af9-b9135b553262"
->
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -5033,21 +4948,6 @@
  Implemented="TRUE"
  Name="ProcedureIn"
  Guid="de5181fd-2a4c-46ec-9dc0-0ec231ba9dba"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Implemented="TRUE"
- Name="NonLeadingRequested"
- Guid="a73c2822-8779-4bf6-8d96-b908159ff1d5"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="DriverAnswered"
- Guid="98ef4c76-0dce-4cd3-aa8e-8a8e6efe4350"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -5650,14 +5550,6 @@
  Guid="5a21e73a-adee-4b60-88cb-c733eeab5bf6"
 >
 <Comment>Determines whether the conditions are satisfied</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Implemented="TRUE"
- Name="DriverAcknowledged"
- Guid="5f8abfee-927b-411c-8a74-4bc65424563e"
->
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -6197,18 +6089,10 @@
 </StructureElement><StructureElement
  TypeName="String"
  Default=""
- Mode="Internal"
+ Mode="Outgoing"
  Implemented="TRUE"
  Name="Text"
  Guid="08639efd-51e5-4de9-bcba-185d0da0ab6f"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Implemented="TRUE"
- Name="DriverAcknowledged"
- Guid="c862d1ab-20e9-410a-aa11-122882dcdda1"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -6756,14 +6640,6 @@
  Guid="ae7e46f1-c018-45e7-94c1-8a10237617fe"
 >
 <Comment>Contains the information about which is the level to perform the transition</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Implemented="TRUE"
- Name="DriverAcknowledged"
- Guid="72c3ee85-60f2-4a04-9fae-32872fe12a2d"
->
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -7303,18 +7179,10 @@
 </StructureElement><StructureElement
  TypeName="String"
  Default=""
- Mode="Internal"
+ Mode="Outgoing"
  Implemented="TRUE"
  Name="Text"
  Guid="e5443dc8-622c-4d0a-afd9-e2da7a206a9e"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Implemented="TRUE"
- Name="DriverAcknowledged"
- Guid="dd4ff2e4-f9dc-4df0-a062-af8ce2cc1043"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -7855,18 +7723,10 @@
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="False"
- Mode="Internal"
+ Mode="Outgoing"
  Implemented="TRUE"
  Name="DataReceived"
  Guid="5b487e90-1709-4319-9a51-53e480f9c19d"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Implemented="TRUE"
- Name="DriverAcknowledged"
- Guid="5f707974-ec5f-4170-8e94-7373b6a37b35"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -8413,13 +8273,6 @@
  Name="ProcedureIn"
  Guid="ab9c48e0-1b0b-4fa9-8b57-552fe329329a"
 >
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="DriverAnswered"
- Guid="9b70338c-0e9c-487e-8e9e-373890f34ca8"
->
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -8950,8 +8803,8 @@
 >
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
- Default=""
- Mode="Incoming"
+ Default="0.0"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Speed"
@@ -8959,7 +8812,7 @@
 >
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
- Default=""
+ Default="0.0"
  Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -8973,13 +8826,6 @@
  Implemented="TRUE"
  Name="ProcedureIn"
  Guid="946878d0-a3eb-4361-995f-fb7fdba1bfa7"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="DriverAnswered"
- Guid="6d3a28cb-6450-4189-86ae-cbe3000c0fbe"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -9516,21 +9362,6 @@
  Implemented="TRUE"
  Name="ProcedureIn"
  Guid="3a832e03-94d5-4f51-ae8f-7d47ce426403"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Implemented="TRUE"
- Name="EnterIsolation"
- Guid="79e45f72-b490-42f0-9178-cabdc7d6b805"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Internal"
- Name="IsolationAccepted"
- Guid="c304ac3f-31e5-4717-89d0-59225de9c9c1"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -10076,13 +9907,6 @@
  Implemented="TRUE"
  Name="ProcedureIn"
  Guid="4ae54ca8-d022-461f-9e39-727bf0894853"
->
-</StructureElement><StructureElement
- TypeName="Default.Request"
- Default="Default.Request.Disabled"
- Mode="Internal"
- Name="Request"
- Guid="26657c2e-c2c8-4450-8914-38df36fa15dc"
 >
 </StructureElement><StructureElement
  TypeName="Kernel.TrainData.TrainDataValues"
@@ -11193,14 +11017,6 @@
  Name="ProcedureIn"
  Guid="768151b1-855c-4e3f-aefb-c3ed6d0bdbb1"
 >
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Implemented="TRUE"
- Name="DriverAcknowledged"
- Guid="2cc03b5d-26d5-4551-9c90-eb00670f9d69"
->
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -11746,13 +11562,6 @@
  Implemented="TRUE"
  Name="ProcedureIn"
  Guid="139bc8f0-6470-48f7-93f7-155832c1cc01"
->
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Name="DriverAnswered"
- Guid="bfa25813-6bb5-44a3-b9c1-5e7e06647858"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -12301,6 +12110,7 @@
  Name="DriverAction"
  Guid="7773fdad-d3d2-4e06-b73a-65c8d60e7d8a"
 >
+<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureInSM"
  Default=""
