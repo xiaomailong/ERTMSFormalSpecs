@@ -673,6 +673,13 @@
  Name="ProcedureIn"
  Guid="f26590e9-d371-4268-b8b4-61dba031b2be"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="LanguageSelected"
+ Guid="ebeb974c-45b3-439b-98d5-7db5bf1098a2"
+>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -1208,6 +1215,20 @@
  Name="ProcedureIn"
  Guid="ce83a431-bb10-4657-b4a1-7bc859f2a14f"
 >
+</StructureElement><StructureElement
+ TypeName="Messages.M_ADHESION"
+ Default="Messages.M_ADHESION.Non_slippery_rail"
+ Mode="Internal"
+ Name="AdhesionFactor"
+ Guid="bd7c1c78-a4f9-4a2e-b140-57e653004e0c"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="Display"
+ Guid="71f2a0a5-8486-40f5-8516-80f1b0b0fd86"
+>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -1721,6 +1742,13 @@
  Implemented="TRUE"
  Name="ProcedureIn"
  Guid="4b57cf94-6f97-4492-a6aa-dfef065ecc3d"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="DriverAnswered"
+ Guid="9ee8c4e3-eeef-4eb4-806a-78cc9b620dd5"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -2256,6 +2284,20 @@
  Implemented="TRUE"
  Name="ProcedureIn"
  Guid="c62a7855-659d-4266-8f5a-73787ce73c06"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="DriverAnswered"
+ Guid="1defd4c7-cc92-4181-bd7b-4019c332a399"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="Start"
+ Guid="f31559e0-6249-4415-b468-a6516496e9f2"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -2800,6 +2842,13 @@
  Name="OverrideRequested"
  Guid="cf8177f3-5962-4f81-9d23-bae461b2189c"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="DriverAnswered"
+ Guid="7c4cd3cb-bab6-435e-96cf-ecf7edf9a396"
+>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -3334,6 +3383,20 @@
  Implemented="TRUE"
  Name="ProcedureIn"
  Guid="04da1b8e-e364-44bf-88ef-54cb9aa47e8f"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="ShuntingRequested"
+ Guid="3dceb3d0-ff11-4029-83ec-d958087475d6"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="DriverAnswered"
+ Guid="2d938d51-d874-4cb0-972f-ca56eda76641"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -3879,6 +3942,14 @@
  Name="ProcedureIn"
  Guid="08e93001-71c7-451b-9805-f6860888ba8a"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="DriverAcknowledged"
+ Guid="a3697bd8-abb5-4f43-8855-d676d62cc9bb"
+>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -4420,6 +4491,13 @@
  Mode="Internal"
  Name="RequestActive"
  Guid="b919ef51-1716-4b08-801c-4594156392c4"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="DriverAnswered"
+ Guid="488a78ff-38ca-4166-9af9-b9135b553262"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -4964,6 +5042,13 @@
  Name="NonLeadingRequested"
  Guid="a73c2822-8779-4bf6-8d96-b908159ff1d5"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="DriverAnswered"
+ Guid="98ef4c76-0dce-4cd3-aa8e-8a8e6efe4350"
+>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -5503,7 +5588,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="58d9e4ff-4c3f-4297-bb10-37eaba2b6cc3"
 >
-</ReqRef><Procedures>
+</ReqRef><Comment></Comment>
+<Procedures>
 <Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -5564,6 +5650,14 @@
  Guid="5a21e73a-adee-4b60-88cb-c733eeab5bf6"
 >
 <Comment>Determines whether the conditions are satisfied</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="DriverAcknowledged"
+ Guid="5f8abfee-927b-411c-8a74-4bc65424563e"
+>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -8319,6 +8413,13 @@
  Name="ProcedureIn"
  Guid="ab9c48e0-1b0b-4fa9-8b57-552fe329329a"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="DriverAnswered"
+ Guid="9b70338c-0e9c-487e-8e9e-373890f34ca8"
+>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -8873,6 +8974,13 @@
  Name="ProcedureIn"
  Guid="946878d0-a3eb-4361-995f-fb7fdba1bfa7"
 >
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="DriverAnswered"
+ Guid="6d3a28cb-6450-4189-86ae-cbe3000c0fbe"
+>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -9416,6 +9524,13 @@
  Implemented="TRUE"
  Name="EnterIsolation"
  Guid="79e45f72-b490-42f0-9178-cabdc7d6b805"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Name="IsolationAccepted"
+ Guid="c304ac3f-31e5-4717-89d0-59225de9c9c1"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -9961,6 +10076,22 @@
  Implemented="TRUE"
  Name="ProcedureIn"
  Guid="4ae54ca8-d022-461f-9e39-727bf0894853"
+>
+</StructureElement><StructureElement
+ TypeName="Default.Request"
+ Default="Default.Request.Disabled"
+ Mode="Internal"
+ Name="Request"
+ Guid="26657c2e-c2c8-4450-8914-38df36fa15dc"
+>
+</StructureElement><StructureElement
+ TypeName="Kernel.TrainData.TrainDataValues"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Data"
+ Guid="0ff88727-8bc1-4e3f-8582-6d87adb7ba1b"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -11615,6 +11746,13 @@
  Implemented="TRUE"
  Name="ProcedureIn"
  Guid="139bc8f0-6470-48f7-93f7-155832c1cc01"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="DriverAnswered"
+ Guid="bfa25813-6bb5-44a3-b9c1-5e7e06647858"
 >
 </StructureElement><StateMachines>
 <StateMachine
