@@ -1,0 +1,71 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Reverse Movement Distance Excedeed"
+ Guid="2a3f9efd-817a-46c8-afbb-1a30fc001e2c"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Unitary test reverse movement distance excedeed"
+ Guid="b8198bcf-106b-4914-809e-673cf20a41e9"
+>
+<TestCases>
+<TestCase
+ Name="Reverse movement distance excedeed"
+ Guid="ad17cb5f-efa5-456a-8692-4d2498e80a4d"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="d807d1b6-c103-44b6-a441-d5bcdb57670b"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="88fff6e4-2550-4046-8ccc-e43df14e6b62"
+>
+<Actions>
+<Action
+ Guid="01347657-fbb1-4fdc-a3a1-c187dcb4e73f"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="72bbbdbb-eb84-4252-b50b-b137ff757420"
+>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set IsActive and DisplayRequested"
+ Guid="1ad78a05-afca-4681-ba66-d058f8699fcf"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="10f5ba9f-ab01-4b3a-a58c-ce2b23922618"
+>
+<Actions>
+<Action
+ Guid="e26b2b36-5b66-41a5-8584-ec4f3d0ca002"
+>DMI.MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="a72ef8f6-aa5d-4ef7-b93b-45e872b25b95"
+>DMI.MasterDMI().In_AcknForReversingDistanceExceeded.IsActive &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

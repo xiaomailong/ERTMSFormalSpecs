@@ -1,0 +1,74 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Post Trip Distance Excedeed"
+ Guid="1e9a7e0e-e559-4cf9-8644-3d3f7a27d882"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Post Trip Distance Excedeed"
+ Guid="3659ddb0-7805-4f99-b49b-6c87425b8385"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="1f7f0f00-9f5d-4452-b731-df2fe04c0e2e"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="c0185bcc-fd71-471b-b695-d593618d006b"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="9943942c-9c97-4fdf-b328-a4c08770ae8b"
+>
+<Actions>
+<Action
+ Guid="228adbbc-c074-4479-a379-33d10ab30c30"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="888db725-b45e-4599-8334-871b713a0bcc"
+><Comment></Comment>
+Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+ Guid="d6559931-e12b-4bc0-9beb-ed6f873d2631"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set IsActive In Post Trip Distance Exceded"
+ Guid="4448bbf2-1051-4fef-81f7-927354379b81"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="ef0fdb21-f0bc-46c2-be54-9bef2fb6ace9"
+>
+<Actions>
+<Action
+ Guid="ca550f64-5d5a-4873-826c-f0e5857a0d38"
+>DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="713d487f-4157-4a82-bb15-16d5585417af"
+>DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.IsActive &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

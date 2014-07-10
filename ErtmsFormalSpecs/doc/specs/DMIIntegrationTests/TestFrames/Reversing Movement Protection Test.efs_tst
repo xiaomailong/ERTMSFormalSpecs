@@ -1,0 +1,74 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Reversing Movement Protection Test"
+ Guid="950d2268-5a6f-4bb4-8654-8c771620002c"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Unitary Test Reversing Movement Protection"
+ Guid="61d467cc-579e-4d81-bf76-dfe3767d9bb5"
+>
+<TestCases>
+<TestCase
+ Name="Reversing movement protection"
+ Guid="1a09b502-2bd9-4756-b223-f0ddd8ba7969"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="0fba20ea-1ad6-4408-97e4-95d823a20e10"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="bac3c233-0a71-4e50-a363-6eec42fca858"
+>
+<Actions>
+<Action
+ Guid="bc45142d-6774-4bf9-bfac-a144da6307ba"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="34121f0a-fa30-4ff0-88d2-1448c313205d"
+><Comment></Comment>
+Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+ Guid="68700573-6927-4e08-a85b-f46ab450bdad"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set Display Requested and IsActive to true"
+ Guid="0f507550-5801-49b1-988c-8d40a785a249"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="1d4fd5f4-68cb-42cc-962c-4e45b62b24a2"
+>
+<Actions>
+<Action
+ Guid="d8d3c16e-b929-44b3-9cfe-645939a87d86"
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="aa61cd00-5d50-4c15-9b6e-41ca8ba1fa25"
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.IsActive &lt;- True</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

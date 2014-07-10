@@ -14,7 +14,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Track Ahead Free requested"
+ Name="OUT Track Ahead Free requested"
  Guid="d980c14c-8985-43ea-9ec4-eebd233df83d"
 >
 <TestCases>
@@ -77,6 +77,83 @@ Kernel.Mode &lt;- Default.Mode.OS</Action><Action
  DeadLine="1"
  Guid="42e03c01-26ef-48be-9a96-2ffbfc914dc3"
 >DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested == Boolean.True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="IN Track Ahead Free"
+ Guid="5c00e837-8ca8-41af-aab1-83f44fdd946d"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="61574f43-f0a2-46f0-9f5c-65af60771d93"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="f2457fa6-1562-4c57-a3d8-9ca074445ebe"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="94d5e6da-c460-4129-9386-1c901d070f19"
+>
+<Actions>
+<Action
+ Guid="7640b5df-adb0-425b-9adc-3a84109791fb"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="a606bf2f-292e-47ef-8eb3-91e0ad267a72"
+><Comment></Comment>
+
+Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="d55e8d92-d023-4bcc-9b2e-b3fb1feb269e"
+>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="dcaf51ec-8266-4dc3-aad7-ad1ad5890b7c"
+>Kernel.Level.Value == Level.L1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Is Trakc Ahead Free"
+ Guid="105d77b6-409d-4411-b5cc-cb7e445313ab"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="56d0d3ba-d2de-4b06-a9cd-45031519a425"
+>
+<Actions>
+<Action
+ Guid="45dee109-4164-48cd-bc1b-042b562e7d6b"
+>DMI.MasterDMI().In_TrackAheadFree.InputInformation.DisplayRequested &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="be00a21e-61d8-4ba4-a5f7-1cea2ea52788"
+>DMI.MasterDMI().In_TrackAheadFree.InputInformation.DisplayRequested == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

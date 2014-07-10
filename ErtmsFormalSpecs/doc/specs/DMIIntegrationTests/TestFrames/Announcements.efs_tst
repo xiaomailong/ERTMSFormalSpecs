@@ -14,6 +14,130 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
+ Name="Announcements Test DMI - EFS With Sound Horn"
+ Guid="7baba827-2941-45c3-b5c8-10fc9bb3bf14"
+>
+<TestCases>
+<TestCase
+ Name="Retrieving the announcement With Sound Horn"
+ Guid="b17d11e0-f6a5-477d-9de4-e174689afcbf"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="e86b27aa-0379-4ab9-b940-abe667b72bc1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="07a7a615-96c1-4612-9c8d-4b968ac3fa21"
+>
+<Actions>
+<Action
+ Guid="9dfae22f-1e45-452c-8f1e-36511b773f5c"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="da7d2803-5cfe-46a6-95dd-0e0a56f28bce"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+ Guid="7951e0c1-815d-42a8-8923-e960a2ac6b7d"
+>Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set Announcements"
+ Guid="62146296-940b-44d8-86b9-c8199fdadb9a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="b0028aa5-6206-4f9c-b7e0-12aebfd52af1"
+>
+<Comment></Comment>
+<Actions>
+<Action
+ Guid="e734a9e1-8920-4dd6-9474-ee1aec423705"
+><Comment></Comment>
+DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.TrackConditions &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
+    SoundHorn =&gt; Boolean.True,
+    TunnelStoppingArea =&gt; Boolean.False,
+    NonStoppingArea =&gt; Boolean.False,
+    Distance =&gt; 250.0
+},
+Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
+    SoundHorn =&gt; Boolean.False,
+    TunnelStoppingArea =&gt; Boolean.True,
+    NonStoppingArea =&gt; Boolean.False,
+    Distance =&gt; 750.0
+},
+Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
+    SoundHorn =&gt; Boolean.False,
+    TunnelStoppingArea =&gt; Boolean.False,
+    NonStoppingArea =&gt; Boolean.True,
+    Distance =&gt; 1250.0
+}
+]</Action><Action
+ Guid="60d8d255-25e8-42ea-9d4d-5688bb2a9e41"
+><Comment></Comment>
+DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="b82a0740-7df4-4ec2-a29b-6d81a830ef85"
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
+    SoundHorn =&gt; Boolean.True,
+    TunnelStoppingArea =&gt; Boolean.True,
+    NonStoppingArea =&gt; Boolean.True,
+    Distance =&gt; 0.0
+}]</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0742d06a-8468-4220-bfb1-c8057ce25046"
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.TrackConditions != []</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Modifiy Announcements"
+ Guid="a1c839e9-01c3-47bc-a8d6-ef4f0b385cdd"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="00974ab1-2416-4db0-b5ea-c65c8485666d"
+>
+<Actions>
+<Action
+ Guid="9fe2818d-8a3d-45d8-a0d8-7c9c3c3b76fb"
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
+    SoundHorn =&gt; Boolean.False,
+    TunnelStoppingArea =&gt; Boolean.False,
+    NonStoppingArea =&gt; Boolean.False,
+    Distance =&gt; 0.0
+}
+]</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
  Name="Announcements Test DMI - EFS Without Sound Horn"
  Guid="5067f98b-0796-4adc-9c28-bc39c03fc1a1"
 >
@@ -181,130 +305,6 @@ DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayReq
     SwitchOffRegenerativeBrake =&gt; Boolean.False,
     Distance =&gt; 0.0
 }]</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="Announcements Test DMI - EFS With Sound Horn"
- Guid="7baba827-2941-45c3-b5c8-10fc9bb3bf14"
->
-<TestCases>
-<TestCase
- Name="Retrieving the announcement With Sound Horn"
- Guid="b17d11e0-f6a5-477d-9de4-e174689afcbf"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Initialize Environment"
- Guid="e86b27aa-0379-4ab9-b940-abe667b72bc1"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="07a7a615-96c1-4612-9c8d-4b968ac3fa21"
->
-<Actions>
-<Action
- Guid="9dfae22f-1e45-452c-8f1e-36511b773f5c"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="da7d2803-5cfe-46a6-95dd-0e0a56f28bce"
->Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
- Guid="7951e0c1-815d-42a8-8923-e960a2ac6b7d"
->Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Set Announcements"
- Guid="62146296-940b-44d8-86b9-c8199fdadb9a"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="b0028aa5-6206-4f9c-b7e0-12aebfd52af1"
->
-<Comment></Comment>
-<Actions>
-<Action
- Guid="e734a9e1-8920-4dd6-9474-ee1aec423705"
-><Comment></Comment>
-DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.TrackConditions &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
-    SoundHorn =&gt; Boolean.True,
-    TunnelStoppingArea =&gt; Boolean.False,
-    NonStoppingArea =&gt; Boolean.False,
-    Distance =&gt; 250.0
-},
-Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
-    SoundHorn =&gt; Boolean.False,
-    TunnelStoppingArea =&gt; Boolean.True,
-    NonStoppingArea =&gt; Boolean.False,
-    Distance =&gt; 750.0
-},
-Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
-    SoundHorn =&gt; Boolean.False,
-    TunnelStoppingArea =&gt; Boolean.False,
-    NonStoppingArea =&gt; Boolean.True,
-    Distance =&gt; 1250.0
-}
-]</Action><Action
- Guid="60d8d255-25e8-42ea-9d4d-5688bb2a9e41"
-><Comment></Comment>
-DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested &lt;- True</Action><Action
- Guid="b82a0740-7df4-4ec2-a29b-6d81a830ef85"
->DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
-    SoundHorn =&gt; Boolean.True,
-    TunnelStoppingArea =&gt; Boolean.True,
-    NonStoppingArea =&gt; Boolean.True,
-    Distance =&gt; 0.0
-}]</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="0742d06a-8468-4220-bfb1-c8057ce25046"
->DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.TrackConditions != []</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Modifiy Announcements"
- Guid="a1c839e9-01c3-47bc-a8d6-ef4f0b385cdd"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="00974ab1-2416-4db0-b5ea-c65c8485666d"
->
-<Actions>
-<Action
- Guid="9fe2818d-8a3d-45d8-a0d8-7c9c3c3b76fb"
->DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
-    SoundHorn =&gt; Boolean.False,
-    TunnelStoppingArea =&gt; Boolean.False,
-    NonStoppingArea =&gt; Boolean.False,
-    Distance =&gt; 0.0
-}
-]</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

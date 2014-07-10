@@ -1,0 +1,71 @@
+<Frame
+ CycleDuration="0.1"
+ Name="In Fixed Text Information"
+ Guid="945c1ac1-9ea8-49fc-bb9d-b1dfa375db1c"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Fixed text test"
+ Guid="535bafb9-9cec-4e0c-bef9-fcd427df0960"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="b9133dad-4e5c-48f8-928d-1e6aacca939c"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Initialize Environment"
+ Guid="1985ab6f-5145-4bc0-b880-703362f79d8c"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="963b3454-8a4b-4ee4-a9e7-e7de980248e9"
+>
+<Actions>
+<Action
+ Guid="7bed305f-040d-45bd-86df-52b28cccf0e5"
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="2b7e37db-3184-4fe3-8e10-f3314d8b0169"
+>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Set the fiexed text information"
+ Guid="d1551b31-f395-4caf-abca-579ca9b55f6d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="08cc8b52-e408-4dc1-8800-1462e5e52c69"
+>
+<Actions>
+<Action
+ Guid="83a051a0-ae6f-4bef-9cef-cba7b83e928f"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.InputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="84d12056-734d-4ff3-881e-b10fa420cd31"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.Text &lt;- &apos;Text Information&apos;</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>
