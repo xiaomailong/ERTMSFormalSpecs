@@ -28401,11 +28401,10 @@ The on-board equipment shall display the Permitted speed.<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="d5f24a7e-2926-4921-9498-c6e5c16964e4"
-><Comment>There is no interface on DMI allowing to display the FLOI speed, we suppose that this information is displayed instead the permitted speed.</Comment>
+><Comment></Comment>
 When the supervision status is Overspeed, Warning or Intervention, the on-board equipment shall display the SBI speed (i.e. the FLOI speed).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -28922,12 +28921,10 @@ V_P_DMI = min { max { V_P_MRDT, V_Target_MRDT }, V_MRSP }<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
-><Comment>There is no interface on DMI allowing to display the FLOI speed, we suppose that this information is displayed instead the permitted speed.
-For which location is computed the release speed in case of EOA or SvL?</Comment>
+><Comment></Comment>
 When the supervision status is Overspeed, Warning or Intervention, the on-board equipment shall display the FLOI speed, according to the following formulas:
 V_FLOI_DMI = min { max { V_SBI_MRDT, Vtarget_MRDT + dV_SBI_MRDT (Vtarget) }, V_MRSP + dV_SBI (V_MRSP) } in case of MRSP target or LOA
 V_FLOI_DMI = min { max { V_SBI_MRDT, Vrelease }, V_MRSP + dV_SBI (V_MRSP) } in case of EOA or SvL<RequirementSets>
