@@ -550,7 +550,7 @@ TargetsList() != []</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
- Type="TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Cacheable="TRUE"
  Default=""
  Width="100"
@@ -589,7 +589,7 @@ INITIAL_VALUE TargetSupervision.Target{
     }</Expression>
 </Case></Cases>
 </Function><Function
- Type="TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Cacheable="TRUE"
  Default=""
  X="110"
@@ -641,7 +641,7 @@ INITIAL_VALUE TargetSupervision.Target{
 <Comment>Returns the speed of the section prior to the given target</Comment>
 <Parameters>
 <Parameter
- Type="TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="Target"
  Guid="c8c68614-6f99-412d-82c4-e17eee5450af"
 >
@@ -690,7 +690,7 @@ Target == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceInterva
 <Comment>Returns the start of the section n of the MRSP</Comment>
 <Parameters>
 <Parameter
- Type="TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="MRSPnTarget"
  Guid="ccb79e6e-be9c-4165-a11d-92e054b266b0"
 >
@@ -728,7 +728,7 @@ MRSPnTarget == FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceIn
 <Comment>Provides the end of the section whose target is MRSPnTarget. That position is MRSPnTarget.Location.</Comment>
 <Parameters>
 <Parameter
- Type="TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
  Name="MRSPnTarget"
  Guid="a2bac124-a9bd-4d25-b70a-a1a749f16359"
 >

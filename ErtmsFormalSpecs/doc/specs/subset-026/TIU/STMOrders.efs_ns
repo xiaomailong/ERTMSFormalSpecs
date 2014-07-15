@@ -1,4 +1,6 @@
 <NameSpace
+ Width="100"
+ Height="50"
  Name="STMOrders"
  Guid="02e91149-1cea-4632-881c-7d4c7b7b14fb"
 >
@@ -7,6 +9,8 @@
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="BrakeInhibitStruct"
  Guid="78cf7e1b-d098-4812-8d9e-ba265ce76b20"
@@ -64,6 +68,9 @@
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Outgoing"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="OpenMainPowerSwitch"
  Guid="e8ef2747-7e63-4885-abf5-2bb961c680f6"
@@ -77,6 +84,10 @@
 </Variable><Variable
  Type="TIU.STMOrders.BrakeInhibitStruct"
  VariableMode="Outgoing"
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="BrakeInhibit"
  Guid="11c93a7d-1d19-4b45-90ad-701672331f8f"
@@ -96,6 +107,10 @@
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Outgoing"
+ X="220"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="OpenAirTightness"
  Guid="7209bfe9-89cc-4483-921a-8d01d19a2e66"
@@ -110,6 +125,10 @@
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Outgoing"
+ X="330"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="LowerPantograph"
  Guid="bf38c441-fe45-484e-8462-bf318fab0754"
