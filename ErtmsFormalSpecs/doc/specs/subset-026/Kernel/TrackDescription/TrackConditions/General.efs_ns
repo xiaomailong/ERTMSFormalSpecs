@@ -7,7 +7,7 @@
 <Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
- Name="DMI"
+ Name="TCDisplay"
  Guid="39d59acd-4065-49f2-b9b1-f7ba48445dc2"
 >
 </NameSpaceRef></NameSpaces>
@@ -765,6 +765,7 @@ The use of profile points and the functions in this namespace can be found in Er
  Name="AirTightness"
  Guid="8ed96d02-188e-4ec2-ba78-3772ab0d0247"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="158d39b3-532d-4194-ade2-b55879fde745"
@@ -1219,7 +1220,7 @@ The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/Mode
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Remove old information"
+ Name="Remove old information and announcements"
  Guid="4c889b61-eb2b-4bd5-ba0d-91b2d6514374"
 >
 <ReqRef
@@ -1251,14 +1252,25 @@ The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/Mode
 <Actions>
 <Action
  Guid="e442a836-0892-422d-9982-9577731091f3"
->REMOVE ALL X.Distance &gt;= NewInfoStartLocation( Packet=&gt; Packet) 
+><Comment></Comment>
+REMOVE ALL X.Distance &gt;= NewInfoStartLocation( Packet=&gt; Packet) 
+    IN TCProfile</Action><Action
+ Guid="ad4e2691-c733-4e4d-8db1-ff6fd0667df6"
+><Comment></Comment>
+REMOVE ALL X.Distance &gt;= NewInfoStartLocation( Packet=&gt; Packet) - TCDisplay.AnnouncementLocation( MakeTCProfilePoint(
+    TCType=&gt;Packet.M_TRACKCOND,
+    Distance=&gt;Default.MessageTypes.QScaleDistance(
+        distance=&gt;Packet.D_TRACKCOND,
+        scale=&gt;Packet.Q_SCALE  ),
+    EndOfSection=&gt;False  ).Value
+)
     IN TCProfile</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Add new track condition"
+ Name="Add new track conditions + announcements"
  Guid="65ddcb36-4bef-42bb-8990-277543a93ade"
 >
 <Comment>Inserts the newly received track conditions in TCProfile</Comment>
@@ -1267,7 +1279,7 @@ The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/Mode
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Insert first point in the track conditions profile"
+ Name="Insert first point in the track conditions profile with corresponding announcements"
  Guid="a0e066da-f080-415a-aa9e-b727e25af178"
 >
 <ReqRef
@@ -1308,11 +1320,22 @@ The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/Mode
     )
     ,
     TCType=&gt;Packet.M_TRACKCOND
+)</Action><Action
+ Guid="476cb606-a0af-42f5-b297-1cf9bb8e1672"
+><Comment></Comment>
+TCDisplay.MakeAnnouncement(
+    TCType=&gt;Packet.M_TRACKCOND,
+    Distance=&gt;Default.MessageTypes.QScaleDistance(
+        distance=&gt;Packet.D_TRACKCOND,
+        scale=&gt;Packet.Q_SCALE  ),
+    Length=&gt;Default.MessageTypes.QScaleLength(
+        length=&gt;Packet.L_TRACKCOND,
+        scale=&gt;Packet.Q_SCALE  )
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Insert further points in the track condition profile"
+ Name="Insert further points in the track condition and announcements profiles"
  Guid="f825e64f-589c-4c0b-9bed-6757f77d7c26"
 >
 <Comment>Handle Sequence1 in Packet</Comment>
@@ -1336,7 +1359,23 @@ The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/Mode
         TCType=&gt;X.M_TRACKCOND
     )
 ON
-    Packet.Sequence1</Action></Actions>
+    Packet.Sequence1</Action><Action
+ Guid="afebcc0b-73d8-47ef-b24b-7b726330c6b0"
+><Comment></Comment>
+APPLY
+    TCDisplay.MakeAnnouncement(
+        TCType=&gt;X.M_TRACKCOND
+        ,
+        Distance=&gt;Default.MessageTypes.QScaleDistance(
+            distance=&gt;X.D_TRACKCOND,
+            scale=&gt;Packet.Q_SCALE  )
+        ,
+        Length=&gt;Default.MessageTypes.QScaleLength(
+            length=&gt;X.L_TRACKCOND,
+            scale=&gt;Packet.Q_SCALE  )
+    )
+ON
+   Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
