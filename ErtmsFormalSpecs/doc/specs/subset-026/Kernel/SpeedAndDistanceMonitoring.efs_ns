@@ -105,8 +105,8 @@
 </ReqRef><Comment>Lists the types of speed and distance monitoring and handles transitions between them</Comment>
 <States>
 <State
- X="140"
- Y="240"
+ X="80"
+ Y="340"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -121,6 +121,8 @@
 >
 <States>
 <State
+ X="220"
+ Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -252,7 +254,8 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="110"
+ X="480"
+ Y="270"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -388,7 +391,8 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="220"
+ X="230"
+ Y="270"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -505,7 +509,8 @@ CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="330"
+ X="480"
+ Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -628,8 +633,8 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="480"
- Y="250"
+ X="560"
+ Y="330"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -654,6 +659,10 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 >
 <States>
 <State
+ X="190"
+ Y="70"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Normal"
  Guid="dc9b8e37-151c-4c98-b818-2fa70d29126d"
@@ -814,6 +823,10 @@ THIS &lt;- Target.Warning</Action><Action
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ X="180"
+ Y="350"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Indication"
  Guid="17e89b9b-905d-4d3f-81c4-c28ea57a14a5"
@@ -985,6 +998,10 @@ TCOTriggered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ X="560"
+ Y="350"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Overspeed"
  Guid="33e0286f-fd8f-4757-9b71-fa43cf9731e1"
@@ -1160,6 +1177,10 @@ TCOTriggered &lt;- False</Action><Action
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ X="770"
+ Y="230"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Warning"
  Guid="62d08517-d2ba-4717-a60e-edf9e00b38e1"
@@ -1314,6 +1335,10 @@ TCOTriggered &lt;- False</Action><Action
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ X="550"
+ Y="70"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Intervention"
  Guid="6575684f-86c7-47a8-88ac-4b33a05b066c"
@@ -1462,7 +1487,7 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="480"
+ X="560"
  Y="70"
  Width="100"
  Height="50"
@@ -1478,6 +1503,10 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 >
 <States>
 <State
+ X="100"
+ Y="130"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Indication"
  Guid="4f356dc2-e351-400a-b04e-496dc94d46d8"
@@ -1520,6 +1549,10 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
+ X="420"
+ Y="130"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Intervention"
  Guid="d598f770-ef38-4a7f-ba14-fbb1b27c73d6"
@@ -1565,7 +1598,7 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="70"
- Y="40"
+ Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"

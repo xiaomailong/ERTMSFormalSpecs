@@ -1077,6 +1077,7 @@ PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonito
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Track speed and distance monitoring supervision status"
  Guid="af1305d0-ad22-4ad8-ab01-4a070ddb4fb7"
 >
@@ -1087,6 +1088,7 @@ PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonito
  Name="Track supervision status"
  Guid="6167afb7-3ff4-407b-bbd0-d020c5fba3cb"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e4223728-87c9-42d3-9260-16f943874a4a"
@@ -6584,7 +6586,8 @@ jru.PreviousTargetDistance != Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonit
 <PreConditions>
 <PreCondition
  Guid="4fb5f380-6cb1-436f-ba6f-2de471ea9771"
->jru.PreviousReleaseSpeed != DMI.MasterDMI().Out_ReleaseSpeed.Speed</PreCondition></PreConditions>
+><Comment></Comment>
+jru.PreviousReleaseSpeed != DMI.MasterDMI().Out_ReleaseSpeed.Speed</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
