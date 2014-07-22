@@ -65,19 +65,19 @@
 <Action
  Guid="e734a9e1-8920-4dd6-9474-ee1aec423705"
 ><Comment></Comment>
-DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.TrackConditions &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
+DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.TrackConditions &lt;- [Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn{
     SoundHorn =&gt; Boolean.True,
     TunnelStoppingArea =&gt; Boolean.False,
     NonStoppingArea =&gt; Boolean.False,
     Distance =&gt; 250.0
 },
-Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn{
     SoundHorn =&gt; Boolean.False,
     TunnelStoppingArea =&gt; Boolean.True,
     NonStoppingArea =&gt; Boolean.False,
     Distance =&gt; 750.0
 },
-Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn{
     SoundHorn =&gt; Boolean.False,
     TunnelStoppingArea =&gt; Boolean.False,
     NonStoppingArea =&gt; Boolean.True,
@@ -88,11 +88,11 @@ Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
 ><Comment></Comment>
 DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested &lt;- True</Action><Action
  Guid="b82a0740-7df4-4ec2-a29b-6d81a830ef85"
->DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
-    SoundHorn =&gt; Boolean.True,
-    TunnelStoppingArea =&gt; Boolean.True,
-    NonStoppingArea =&gt; Boolean.True,
-    Distance =&gt; 0.0
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct{
+    Type =&gt; Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.LowerPantograph,
+    Distance =&gt; 500.0,
+    Length =&gt; 1000.0,
+    Time =&gt; Default.BaseTypes.Time.Infinity
 }]</Action></Actions>
 <Expectations>
 <Expectation
@@ -118,11 +118,11 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayReques
 <Actions>
 <Action
  Guid="9fe2818d-8a3d-45d8-a0d8-7c9c3c3b76fb"
->DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithSoundHorn{
-    SoundHorn =&gt; Boolean.False,
-    TunnelStoppingArea =&gt; Boolean.False,
-    NonStoppingArea =&gt; Boolean.False,
-    Distance =&gt; 0.0
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct{
+    Type =&gt; Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum. AirTightness,
+    Distance =&gt; 750.0,
+    Length =&gt; 1250.0,
+    Time =&gt; Default.BaseTypes.Time.Infinity
 }
 ]</Action></Actions>
 </SubStep></SubSteps>
@@ -189,7 +189,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayReques
 <Action
  Guid="4278017f-1c12-4a2f-a3e7-02d9a157d011"
 ><Comment></Comment>
-DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.TrackConditions &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.TrackConditions &lt;- [Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithBrakeInhibition 
 {
     AirTightness =&gt; Boolean.True,
     PowerlessSection_LowerPantograph =&gt; Boolean.False,
@@ -200,7 +200,7 @@ DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.TrackConditions &lt;- [Kerne
     SwitchOffRegenerativeBrake =&gt; Boolean.False,
     Distance =&gt; 500.0
 },
-Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithBrakeInhibition
 {
     AirTightness =&gt; Boolean.False,
     PowerlessSection_LowerPantograph =&gt; Boolean.True,
@@ -211,7 +211,7 @@ Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhib
     SwitchOffRegenerativeBrake =&gt; Boolean.False,
     Distance =&gt; 1000.0
 },
-Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithBrakeInhibition
 {
     AirTightness =&gt; Boolean.False,
     PowerlessSection_LowerPantograph =&gt; Boolean.False,
@@ -222,7 +222,7 @@ Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhib
     SwitchOffRegenerativeBrake =&gt; Boolean.False,
     Distance =&gt; 1500.0
 },
-Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithBrakeInhibition
 {
     AirTightness =&gt; Boolean.False,
     PowerlessSection_LowerPantograph =&gt; Boolean.False,
@@ -233,7 +233,7 @@ Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhib
     SwitchOffRegenerativeBrake =&gt; Boolean.False,
     Distance =&gt; 2000.0
 },
-Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithBrakeInhibition
 {
     AirTightness =&gt; Boolean.False,
     PowerlessSection_LowerPantograph =&gt; Boolean.False,
@@ -244,7 +244,7 @@ Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhib
     SwitchOffRegenerativeBrake =&gt; Boolean.False,
     Distance =&gt; 2500.0
 },
-Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithBrakeInhibition
 {
     AirTightness =&gt; Boolean.False,
     PowerlessSection_LowerPantograph =&gt; Boolean.False,
@@ -259,17 +259,13 @@ Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhib
 ><Comment></Comment>
 DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayRequested &lt;- True</Action><Action
  Guid="190aafb1-3370-4bba-8083-f5317adda03e"
->DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
-{
-    AirTightness =&gt; Boolean.True,
-    PowerlessSection_LowerPantograph =&gt; Boolean.False,
-    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; Boolean.False,
-    RadioHole =&gt; Boolean.False,
-    SwitchOffEddyCurrentBrake =&gt; Boolean.True,
-    SwitchOffMagneticShoeBrake =&gt; Boolean.True,
-    SwitchOffRegenerativeBrake =&gt; Boolean.False,
-    Distance =&gt; 0.0
-}]</Action></Actions>
+>DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct{
+    Type =&gt; Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.MagneticShoeBrake,
+    Distance =&gt; 1500.0,
+    Length =&gt; 2000.0,
+    Time =&gt; Default.BaseTypes.Time.Infinity
+}
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -294,17 +290,13 @@ DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayReq
 <Actions>
 <Action
  Guid="33f2a0c6-32e0-428d-af1f-193e11f068da"
->DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.DMI.TrackConditionWithBrakeInhibition
-{
-    AirTightness =&gt; Boolean.False,
-    PowerlessSection_LowerPantograph =&gt; Boolean.False,
-    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; Boolean.False,
-    RadioHole =&gt; Boolean.False,
-    SwitchOffEddyCurrentBrake =&gt; Boolean.True,
-    SwitchOffMagneticShoeBrake =&gt; Boolean.True,
-    SwitchOffRegenerativeBrake =&gt; Boolean.False,
-    Distance =&gt; 0.0
-}]</Action></Actions>
+>DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct{
+    Type =&gt; Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.EddyCurrentBrakeForSB,
+    Distance =&gt; 2500.0,
+    Length =&gt; 1500.0,
+    Time =&gt; Default.BaseTypes.Time.Infinity
+}
+]</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
