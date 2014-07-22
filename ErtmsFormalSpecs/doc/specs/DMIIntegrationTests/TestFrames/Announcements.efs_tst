@@ -89,8 +89,8 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn{
 DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested &lt;- True</Action><Action
  Guid="b82a0740-7df4-4ec2-a29b-6d81a830ef85"
 >DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct{
-    Type =&gt; Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.LowerPantograph,
-    Distance =&gt; 500.0,
+    Type =&gt; Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.AirTightness,
+    Distance =&gt; 0.0,
     Length =&gt; 1000.0,
     Time =&gt; Default.BaseTypes.Time.Infinity
 }]</Action></Actions>
@@ -262,6 +262,12 @@ DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayReq
 >DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.Announcements &lt;- [Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct{
     Type =&gt; Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.MagneticShoeBrake,
     Distance =&gt; 1500.0,
+    Length =&gt; 2000.0,
+    Time =&gt; Default.BaseTypes.Time.Infinity
+},
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct{
+    Type =&gt; Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.EddyCurrentBrakeForEB,
+    Distance =&gt; 3000.0,
     Length =&gt; 2000.0,
     Time =&gt; Default.BaseTypes.Time.Infinity
 }
