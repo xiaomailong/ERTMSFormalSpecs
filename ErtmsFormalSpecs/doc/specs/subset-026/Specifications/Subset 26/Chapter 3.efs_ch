@@ -26920,7 +26920,8 @@ d_P (Vest) = min { d_FLOI (Vest) - Vest * T_driver), d_GUI_FLOI (V_est) }<Requir
  functionalBlockName=""
  Name=""
  Guid="fdddd187-528c-44e6-9583-2900e0e2afca"
->In case the calculation of the GUI curve is inhibited, for display purpose only, the P speed related to SBD shall be calculated for the estimated train front end as follows:
+><Comment></Comment>
+In case the calculation of the GUI curve is inhibited, for display purpose only, the P speed related to SBD shall be calculated for the estimated train front end as follows:
 V_P_EOA (d_estfront) = V_SBD ( d_estfront + Vest * ( T_driver + T_bs1 ) )
 V_P_EOA (d_estfront)=0 if d_estfront + Vest * ( T_driver + T_bs1 ) &gt;= d_EOA<RequirementSets>
 <RequirementSetReference
@@ -26984,7 +26985,8 @@ With D_bec and V_bec calculated according to 3.13.9.3.2.10<Sub>
  functionalBlockName=""
  Name=""
  Guid="02ce8d94-1046-4269-83db-41e6c335b4cd"
->Note: the re-use of the same distance travelled and speed increase between the Permitted speed supervision limit and the EBD, as for the estimated speed (see Figure 49), leads to an overestimation/underestimation of the Permitted speed to be displayed to the driver. This simplification, which avoids the need of an iterated calculation, is however acceptable and necessary since the error made tends to zero when the train reaches the Permitted speed supervision limit.<RequirementSets>
+><Comment></Comment>
+Note: the re-use of the same distance travelled and speed increase between the Permitted speed supervision limit and the EBD, as for the estimated speed (see Figure 49), leads to an overestimation/underestimation of the Permitted speed to be displayed to the driver. This simplification, which avoids the need of an iterated calculation, is however acceptable and necessary since the error made tends to zero when the train reaches the Permitted speed supervision limit.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d719dde3-a61d-4e1e-ae36-6567786f74d5"
@@ -27035,7 +27037,8 @@ With Dbec and Vbec calculated according to 3.13.9.3.2.10<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="972b621c-2a9e-4a94-8256-ae008ed01869"
->In order to determine the reference location of the target distance displayed to the driver and in order to determine the foot of the GUI curve (only if it is enabled) in case of target different from EOA/SvL, the location of the Permitted speed supervision limit, valid for the target speed, shall be calculated from the EBD, taking into account the following assumptions:<Sub>
+><Comment></Comment>
+In order to determine the reference location of the target distance displayed to the driver and in order to determine the foot of the GUI curve (only if it is enabled) in case of target different from EOA/SvL, the location of the Permitted speed supervision limit, valid for the target speed, shall be calculated from the EBD, taking into account the following assumptions:<Sub>
 <Paragraph
  id="3.13.9.3.5.9.a"
  guid=""
