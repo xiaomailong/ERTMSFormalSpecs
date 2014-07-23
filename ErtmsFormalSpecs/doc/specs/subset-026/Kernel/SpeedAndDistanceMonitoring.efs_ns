@@ -1924,6 +1924,7 @@ SelectMonitoringType()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f77e2edc-d3c3-4e18-9ba7-1dd5896b3583"
 >
+<Comment></Comment>
 </ReqRef><Comment>Provides the current permitted speed of the train, accounting for the speed and distance monitoring.</Comment>
 <Parameters>
 <Parameter
@@ -2234,6 +2235,55 @@ Monitoring in [MonitoringTypeSM.Ceiling.Normal, MonitoringTypeSM.Target.Normal]<
  Guid="5a337125-7eba-4ba8-ae7c-4cdf6a26d987"
 >Monitoring in [MonitoringTypeSM.Ceiling.Intervention, MonitoringTypeSM.Target.Intervention, MonitoringTypeSM.Release.Intervention]</PreCondition></PreConditions>
 <Expression>SupervisionStatus.Intervention</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="FLOISpeed"
+ Guid="beeb4057-0fc3-4386-a02a-0a1658883998"
+>
+<ReqRef
+ Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f256a09c-7d89-4cd5-b2f6-9e1c790067ff"
+>
+</ReqRef><ReqRef
+ Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="db43c11d-14da-4358-a984-768d070e34b4"
+>
+<Comment></Comment>
+</ReqRef><Comment>Returns the value of the FLOI curve at the given distance</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="a638ed63-ba73-4d96-94d8-a3d73f64bcda"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="In ceiling speed supervision"
+ Guid="3206369b-6c11-4a65-8d73-d2fbb08375b3"
+>
+<PreConditions>
+<PreCondition
+ Guid="9317ac62-ab65-4993-8355-a3fa4ac12f32"
+>Monitoring in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
+<Expression>CeilingSpeedMonitoring.SBI(Distance)</Expression>
+</Case><Case
+ Name="In target speed supervision"
+ Guid="eb3345ab-0d5e-4790-8fb3-c13af69a753d"
+>
+<PreConditions>
+<PreCondition
+ Guid="1eda699e-a4d2-4106-8a9a-daf5761de88c"
+>Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Expression>TargetSpeedMonitoring.V_FLOI_DMI()</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
