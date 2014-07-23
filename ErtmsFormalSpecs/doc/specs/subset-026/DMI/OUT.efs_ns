@@ -3009,7 +3009,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e1f50546-a62f-4328-a61e-f19bd91f9143"
-<Comment></Comment>
+>
 </ReqRef><ReqRef
  Id="74e64307-2966-461e-a976-9a0194ca8514"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -3019,6 +3019,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c0425da5-9178-4679-b61f-12c39989d2ad"
+>
 </ReqRef><Comment>Keep the value of Speed up-to-date, but only if this information can be displayed</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -3078,7 +3079,7 @@ Speed &lt;- Kernel.ModeRelatedSpeedLimits.SRModeSpeedLimit()</Action><Action
 <PreCondition
  Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
 ><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle]</PreCondition></PreConditions>
+Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
@@ -4099,8 +4100,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <PreConditions>
 <PreCondition
  Guid="bfda245f-e56b-40df-b3fd-b22f703f58a4"
->ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
-<PreCondition
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition><PreCondition
  Guid="8038d0e6-78ca-47b8-8610-07535136491d"
 >Kernel.SpeedAndDistanceMonitoring.DisplayReleaseSpeed()</PreCondition></PreConditions>
 <Actions>
@@ -4575,8 +4575,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <PreConditions>
 <PreCondition
  Guid="63b462dd-77eb-421b-b645-7b971238f6ec"
->ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
-<PreCondition
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition><PreCondition
  Guid="7488f13c-8a6e-4cf8-8931-dd021c1574b6"
 >Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
@@ -20101,8 +20100,7 @@ The brake reason.</Comment>
 <PreConditions>
 <PreCondition
  Guid="08961521-d25e-4e1e-b5ab-f956b5d776fd"
->ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition>
-<PreCondition
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition><PreCondition
  Guid="f4fa4704-a159-4fbe-9c68-7429576b316f"
 >Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
 <Actions>
@@ -21075,11 +21073,9 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Guid="b2656408-99e7-4f0c-bc3a-526060dfebca"
 >Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]</PreCondition><PreCondition
  Guid="859e941a-b30f-46f2-9d7b-1cc226cc0fbe"
->Kernel.SpeedAndDistanceMonitoring.Supervision != Kernel.SpeedAndDistanceMonitoring.SupervisionStatus.Normal
-
+>Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatus.Normal
   AND  
-
-Kernel.SpeedAndDistanceMonitoring.Supervision != Kernel.SpeedAndDistanceMonitoring.SupervisionStatus.Indication</PreCondition><PreCondition
+Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatus.Indication</PreCondition><PreCondition
  Guid="d5634a7b-6cad-4c6f-9dc8-a6a83557e821"
 >Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
  Guid="104bfae1-3091-47e6-b63e-77df74bc368a"
