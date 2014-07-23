@@ -2441,13 +2441,13 @@ Kernel.DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action><Action
 <PreConditions>
 <PreCondition
  Guid="b1d83e04-3d7f-4cbe-898a-48ad9246b13e"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Default.Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="95ad63ec-6c25-4487-9483-5761e7f0231f"
->THIS &lt;- HandleModeChange.StartOfMission.S12</Action><Action
+>THIS &lt;- S12</Action><Action
  Guid="b09e766e-1670-49d6-8d52-64c5a287a287"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
