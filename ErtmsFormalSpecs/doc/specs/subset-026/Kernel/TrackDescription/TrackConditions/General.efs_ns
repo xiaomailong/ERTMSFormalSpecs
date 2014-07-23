@@ -719,7 +719,8 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
 <PreConditions>
 <PreCondition
  Guid="a1f5b781-33c7-4df7-bebc-eee2ce7afa09"
->Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition></PreConditions>
+><Comment></Comment>
+Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition></PreConditions>
 <Expression>REDUCE Packet.Sequence1
   USING Default.BaseTypes.MinDistance(
     X1=&gt; Default.MessageTypes.QScaleDistance(distance=&gt;X.D_TRACKCOND, scale=&gt;Packet.Q_SCALE),
@@ -1116,7 +1117,8 @@ If there is already a point at the start of the section, its conditions will be 
 <Actions>
 <Action
  Guid="be8dab85-6e95-4b9e-b7b4-0a9c8968a606"
->INSERT MakeTCProfilePoint(
+><Comment></Comment>
+INSERT MakeTCProfilePoint(
     TCType=&gt;TCType,
     Distance=&gt;Distance,
     EndOfSection=&gt;False
@@ -1238,6 +1240,7 @@ The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/Mode
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2114f3d4-5e6c-4a8e-941e-7c8d23133337"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1257,24 +1260,19 @@ The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/Mode
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d95e8494-eba9-4371-a5cb-ebaaef8a68b7"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment></Comment>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="e442a836-0892-422d-9982-9577731091f3"
 ><Comment></Comment>
-REMOVE ALL X.Distance &gt;= NewInfoStartLocation( Packet=&gt; Packet) 
+REMOVE ALL X.Distance &gt;= NewInfoStartLocation(Packet) 
     IN TCProfile</Action><Action
  Guid="ad4e2691-c733-4e4d-8db1-ff6fd0667df6"
 ><Comment></Comment>
-REMOVE ALL X.Distance &gt;= NewInfoStartLocation( Packet=&gt; Packet) - TCDisplay.AnnouncementLocation( MakeTCProfilePoint(
-    TCType=&gt;Packet.M_TRACKCOND,
-    Distance=&gt;Default.MessageTypes.QScaleDistance(
-        distance=&gt;Packet.D_TRACKCOND,
-        scale=&gt;Packet.Q_SCALE  ),
-    EndOfSection=&gt;False  ).Value
-)
-    IN TCProfile</Action></Actions>
+REMOVE ALL X.Distance &gt;= TCDisplay.AnnouncementLocation(TrackCondition=&gt;TrackCondition{}, Distance =&gt; NewInfoStartLocation(Packet))
+    IN TCDisplay.Announcements</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1547,6 +1545,11 @@ IN
  Id="00a69e16-494d-4601-947a-02a6541733da"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="03f43435-44b8-4002-8161-f95568d23717"
+>
+</ReqRef><ReqRef
+ Id="fd0688e1-7912-499e-8db3-590b6e01d887"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a0607fd6-9169-46ca-8408-d161bfdc091e"
 >
 </ReqRef><Comment>The list of track conditions received from the trackside.</Comment>
 </Variable><Variable

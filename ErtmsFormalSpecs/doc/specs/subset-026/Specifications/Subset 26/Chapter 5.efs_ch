@@ -16275,7 +16275,8 @@ Intentionally deleted.<RequirementSets>
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -16289,7 +16290,8 @@ Intentionally deleted.<RequirementSets>
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  specIssue="TRUE"
  functionalBlockName=""
@@ -16315,12 +16317,14 @@ This location (point C) shall be determined by the ERTMS/ETCS on-board equipment
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="9dd79c32-df2a-4434-b913-50640beb4281"
-><Comment></Comment>
+><Comment>When is it automatic and when does the drive need to act?</Comment>
 The displayed &quot;Lower pantograph announcement&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- if the driver is requested to act.<Sub>
@@ -16337,7 +16341,8 @@ The displayed &quot;Lower pantograph announcement&quot; information shall also i
  functionalBlockName=""
  Name=""
  Guid="bd9832b1-86fb-4a85-b87f-7fd2b2e2b2ee"
->Note: Whether the operation is automatic or manual is application dependent.<RequirementSets>
+><Comment></Comment>
+Note: Whether the operation is automatic or manual is application dependent.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="25ed6c53-5870-499f-8fbd-dd935391e7ba"
@@ -16364,7 +16369,8 @@ The displayed &quot;Lower pantograph announcement&quot; information shall also i
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -16427,7 +16433,8 @@ Intentionally deleted.<RequirementSets>
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.2.0"
  functionalBlockName=""
  Name=""
@@ -16443,12 +16450,15 @@ When the min safe front end of the train reaches the Powerless section end locat
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="66551c91-ee6f-4402-b569-a9ff81c8d821"
->The displayed &quot;Raise pantograph&quot; information shall also indicate if the related functionality is executed
+><Comment>When is it automatic and when does the drive need to act?</Comment>
+The displayed &quot;Raise pantograph&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- if the driver is requested to act.<Sub>
 <Paragraph
@@ -16464,7 +16474,8 @@ When the min safe front end of the train reaches the Powerless section end locat
  functionalBlockName=""
  Name=""
  Guid="810adb10-8099-45be-bd04-b80a5ee5aebe"
->Note: Whether the operation is automatic or manual is application dependent.<RequirementSets>
+><Comment></Comment>
+Note: Whether the operation is automatic or manual is application dependent.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="0f743913-85e5-4c5f-9618-fa8c4ea7add4"
@@ -16491,7 +16502,8 @@ When the min safe front end of the train reaches the Powerless section end locat
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.2.0"
  functionalBlockName=""
  Name=""
@@ -16574,7 +16586,7 @@ This procedure is dealing with the announcement and indication to the driver of 
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.2.0"
  functionalBlockName=""
  Name=""
@@ -16590,12 +16602,18 @@ This procedure is dealing with the announcement and indication to the driver of 
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.2.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="dd85b47a-25d2-4054-8287-3bd39b7603c3"
-><Comment></Comment>
+><ReqRef
+ Id="c8c32754-763b-4a64-a632-32a3602c83c1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ffb8e960-8749-4fa3-850f-4f1b4461a7fd"
+>
+</ReqRef><Comment>The spec does not state anywhere how point C is to be calculated.</Comment>
 This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -16610,12 +16628,14 @@ This location (point C) shall be determined by the ERTMS/ETCS on-board equipment
  bl="3.2.0"
  optional="FALSE"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.2.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="b04158a3-35ce-4257-b43e-1d9716f76f93"
-><Comment></Comment>
+><Comment>When is it automatic and when does the drive need to act?</Comment>
 The displayed Neutral section announcement information shall also indicate if the related functionality is executed
 - automatically, or
 - if the driver is requested to act.<Sub>
@@ -16627,7 +16647,8 @@ The displayed Neutral section announcement information shall also indicate if th
  bl="3.2.0"
  optional="FALSE"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.2.0"
  functionalBlockName=""
  Name=""
@@ -16660,7 +16681,8 @@ Note: Whether the operation is automatic or manual is application dependent.<Req
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.2.0"
  functionalBlockName=""
  Name=""
@@ -16681,7 +16703,8 @@ When the max safe front end of the train reaches the starting location (point D)
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.2.0"
  functionalBlockName=""
  Name=""
@@ -16697,12 +16720,14 @@ When the min safe front end of the train reaches the Powerless section end locat
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.2.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="54fc1b2f-383b-4d7f-8d4a-91173fd494a8"
-><Comment></Comment>
+><Comment>When is it automatic and when does the drive need to act?</Comment>
 The displayed End of Neutral section information shall also indicate if the related functionality is executed
 - Automatically, or
 - if the driver is requested to act.<Sub>
@@ -16714,7 +16739,8 @@ The displayed End of Neutral section information shall also indicate if the rela
  bl="3.2.0"
  optional="FALSE"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.2.0"
  functionalBlockName=""
  Name=""
@@ -16748,7 +16774,8 @@ Note: Whether the operation is automatic or manual is application dependent.<Req
  bl="3.2.0"
  optional="FALSE"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.2.0"
  functionalBlockName=""
  Name=""
@@ -16834,7 +16861,8 @@ Note: The train front end position, when this information disappears is shown as
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -16859,7 +16887,8 @@ Note: The train front end position, when this information disappears is shown as
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -16882,12 +16911,14 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="3622dce7-f18b-4dc7-8539-e2f01da0803b"
->When the max safe front end reaches the start location (point D) of the non stopping area:
+><Comment></Comment>
+When the max safe front end reaches the start location (point D) of the non stopping area:
 	- &quot;Non stopping area announcement&quot; shall no longer be displayed
 	- &quot;Non stopping area&quot; information shall be displayed to the driver.<RequirementSets>
 <RequirementSetReference
@@ -16906,7 +16937,8 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -16999,7 +17031,8 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -17021,7 +17054,8 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -17091,12 +17125,14 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="37680a2a-2a2a-4293-b7b9-642b8326a938"
->&quot;Close air conditioning intake announcement&quot; information shall be displayed to the driver when the max safe front end of the train reaches a location (point C) in rear of the beginning of the &quot;air tightness&quot; area.<Sub>
+><Comment></Comment>
+&quot;Close air conditioning intake announcement&quot; information shall be displayed to the driver when the max safe front end of the train reaches a location (point C) in rear of the beginning of the &quot;air tightness&quot; area.<Sub>
 <Paragraph
  id="5.18.6.2.1"
  guid=""
@@ -17104,12 +17140,20 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="3ccdba0f-1071-42c1-ba41-099fa2560e4b"
->This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.<RequirementSets>
+><ReqRef
+ Id="c8c32754-763b-4a64-a632-32a3602c83c1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="845cc40f-c1f7-4262-9a50-2d125b783c09"
+>
+</ReqRef><Comment>The spec does not state anywhere how point C is to be calculated.</Comment>
+This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="60f7637c-db17-4b8d-8839-4bd1e398d0fc"
@@ -17126,12 +17170,15 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="cd230e40-3098-4fd4-94b2-cc5f04fa5d77"
->The displayed &quot;Close air conditioning intake announcement&quot; information shall also indicate if the related functionality is executed
+><Comment>When is it automatic and when does the drive need to act?</Comment>
+The displayed &quot;Close air conditioning intake announcement&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- if the driver is requested to act.<Sub>
 <Paragraph
@@ -17147,7 +17194,8 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  functionalBlockName=""
  Name=""
  Guid="e70dc669-621f-4044-8e32-ac4bf3e403f5"
->Note: Whether the operation is automatic or manual is application dependent.<RequirementSets>
+><Comment></Comment>
+Note: Whether the operation is automatic or manual is application dependent.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="dd8164f7-a41f-4ddf-92e7-6a7f243ce58b"
@@ -17186,12 +17234,14 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="b68f5cf2-721d-45e0-bb47-eebf53ac6cfb"
->When the max safe front end of the train reaches the start location (point D) of the air tightness area:
+><Comment></Comment>
+When the max safe front end of the train reaches the start location (point D) of the air tightness area:
 	- &quot;Close air conditioning intake announcement&quot; information shall no longer be displayed.
 	- &quot;Air conditioning intake closed&quot; information shall be displayed to the driver.<RequirementSets>
 <RequirementSetReference
@@ -17210,12 +17260,14 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="12c337c0-55dd-4a63-ae32-c7fed0a16df9"
->When the min safe rear end of the train reaches the end location (point E) of the air tightness area:
+><Comment></Comment>
+When the min safe rear end of the train reaches the end location (point E) of the air tightness area:
 	- &quot;Air conditioning intake closed&quot; information shall no longer be displayed;
 	- &quot;Open air conditioning intake&quot; information shall be displayed to the driver.<Sub>
 <Paragraph
@@ -17225,12 +17277,15 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="ac29e88f-6252-4dc2-ba81-7dde4deecdc7"
->The displayed &quot;Open air conditioning intake&quot; information shall also indicate if the related functionality is executed
+><Comment>When is it automatic and when does the drive need to act?</Comment>
+The displayed &quot;Open air conditioning intake&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- If the driver is requested to act.<Sub>
 <Paragraph
@@ -17246,7 +17301,8 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  functionalBlockName=""
  Name=""
  Guid="953451f5-050a-4862-8378-cd4c2fd8a274"
->Note: Whether the operation is automatic or manual is application dependent.<RequirementSets>
+><Comment></Comment>
+Note: Whether the operation is automatic or manual is application dependent.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="02a336e8-98fa-4bdd-ab21-7e42d7618608"
@@ -17285,7 +17341,8 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -17403,12 +17460,14 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="dd85a59f-1d9f-471f-a5df-61f76a51d906"
->&quot;Inhibition of Regenerative Brake announcement&quot; information shall be displayed to the driver when the max safe front end of the train reaches a location (Point C) in rear of the beginning of the regenerative brake inhibition area.<Sub>
+><Comment></Comment>
+&quot;Inhibition of Regenerative Brake announcement&quot; information shall be displayed to the driver when the max safe front end of the train reaches a location (Point C) in rear of the beginning of the regenerative brake inhibition area.<Sub>
 <Paragraph
  id="5.18.7.3.1"
  guid=""
@@ -17416,12 +17475,15 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="41d40a52-5363-4cb6-925a-671d1d925ce8"
->The displayed &quot;Inhibition of Regenerative Brake announcement&quot; information shall also indicate if the related functionality is executed
+><Comment>When is it automatic and when does the drive need to act?</Comment>
+The displayed &quot;Inhibition of Regenerative Brake announcement&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- if the driver is requested to act.<Sub>
 <Paragraph
@@ -17437,7 +17499,8 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  functionalBlockName=""
  Name=""
  Guid="77802647-0290-4dc9-8d0f-48c4b3c7609b"
->Note: Whether the operation is automatic or manual is application dependent.<RequirementSets>
+><Comment></Comment>
+Note: Whether the operation is automatic or manual is application dependent.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="ce60744d-9a58-4b72-9c5c-ff8abbbccfc4"
@@ -17466,12 +17529,18 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.2.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="d7fe1340-3fcf-4243-abc7-a8d81ae032de"
-><Comment></Comment>
+><ReqRef
+ Id="c8c32754-763b-4a64-a632-32a3602c83c1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d5d77883-74db-4c82-a2e3-dc1cb8be5b6d"
+>
+</ReqRef><Comment>The spec does not state anywhere how point C is to be calculated.</Comment>
 This location (point C) shall be determined by the On-Board equipment taking into account the time necessary for performing the required actions and the current train speed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -17496,12 +17565,14 @@ This location (point C) shall be determined by the On-Board equipment taking int
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="44386e14-f70e-4a34-ae1a-c1ebbc2ca149"
->When the max safe front end of the train reaches the start location (point D) of the regenerative brake inhibition area:
+><Comment></Comment>
+When the max safe front end of the train reaches the start location (point D) of the regenerative brake inhibition area:
 	- Indication &quot;Inhibition of Regenerative Brake announcement&quot; shall no longer be displayed,
 	- Indication &quot;Inhibition of Regenerative Brake&quot; shall be displayed to the driver.<RequirementSets>
 <RequirementSetReference
@@ -17520,12 +17591,14 @@ This location (point C) shall be determined by the On-Board equipment taking int
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="3bc1a1bb-c207-4a66-a42a-62965c4a81cf"
->When the min safe rear end of the train reaches the end location (point E) of the regenerative brake inhibition area the indication &quot;Inhibition of Regenerative Brake&quot; information shall no longer be displayed.<RequirementSets>
+><Comment></Comment>
+When the min safe rear end of the train reaches the end location (point E) of the regenerative brake inhibition area the indication &quot;Inhibition of Regenerative Brake&quot; information shall no longer be displayed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="21e1ffdd-0fca-4a8f-9000-9e3556011191"
@@ -17612,16 +17685,18 @@ Advising a tunnel stopping area<Sub>
 </Paragraph><Paragraph
  id="5.18.8.2"
  guid=""
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="663fd879-3773-489a-a703-cb09d9faa911"
->On driver request, the ERTMS/ETCS on-board equipment shall enable/disable the display of the tunnel stopping area related information (initial state: disabled).<RequirementSets>
+><Comment>This requirement is not relevant to EFS, it provides indications about the information displayed on the DMI.</Comment>
+On driver request, the ERTMS/ETCS on-board equipment shall enable/disable the display of the tunnel stopping area related information (initial state: disabled).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5ad49ec8-c85e-4ec1-815a-5806f013a555"
@@ -17638,12 +17713,14 @@ Advising a tunnel stopping area<Sub>
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="3c13572d-5841-4b36-8f01-b73857688c4b"
->As long as the display of the tunnel stopping areas is enabled (point C) and there are tunnel stopping areas stored on-board, the ERTMS/ETCS on-board equipment shall continuously check the current speed and position of the train to determine whether the driver can stop the train with the full service brake before reaching the end of the closest tunnel stopping area. This shall be achieved taking into account a virtual Permitted supervision limit (with no contribution of the GUI curve, if any), calculated at the estimated speed from an SBD curve of which the foot is the end location of the tunnel stopping area:
+><Comment></Comment>
+As long as the display of the tunnel stopping areas is enabled (point C) and there are tunnel stopping areas stored on-board, the ERTMS/ETCS on-board equipment shall continuously check the current speed and position of the train to determine whether the driver can stop the train with the full service brake before reaching the end of the closest tunnel stopping area. This shall be achieved taking into account a virtual Permitted supervision limit (with no contribution of the GUI curve, if any), calculated at the estimated speed from an SBD curve of which the foot is the end location of the tunnel stopping area:
 	a) If the train front end is in rear of the Permitted supervision limit, the tunnel stopping area related information shall be displayed to the driver. 
 	b) If the train front end is in advance of the Permitted supervision limit, no information related to this tunnel stopping area shall be displayed and the next tunnel stopping area stored on-board, if any, shall be checked.<RequirementSets>
 <RequirementSetReference
@@ -17662,7 +17739,8 @@ Advising a tunnel stopping area<Sub>
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -17684,7 +17762,8 @@ Advising a tunnel stopping area<Sub>
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -17762,7 +17841,8 @@ Advising a tunnel stopping area<Sub>
  functionalBlockName=""
  Name=""
  Guid="a8890d48-040f-475b-9407-2191d3c00899"
->This procedure is dealing with the indication to the driver of a request to sound the horn.<RequirementSets>
+><Comment></Comment>
+This procedure is dealing with the indication to the driver of a request to sound the horn.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d7dc7ddc-8b75-4b5a-8fd7-6118b105a552"
@@ -17779,12 +17859,14 @@ Advising a tunnel stopping area<Sub>
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="4c148829-6224-4b0d-b6f5-d506545632eb"
->&quot;Sound horn&quot; shall be displayed to the driver when the estimated front end of the train reaches a location (point C) in rear of the beginning of the &quot;sound horn&quot; area (point D).<Sub>
+><Comment></Comment>
+&quot;Sound horn&quot; shall be displayed to the driver when the estimated front end of the train reaches a location (point C) in rear of the beginning of the &quot;sound horn&quot; area (point D).<Sub>
 <Paragraph
  id="5.18.9.2.1"
  guid=""
@@ -17793,12 +17875,18 @@ Advising a tunnel stopping area<Sub>
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.2.0"
+ specIssue="TRUE"
  functionalBlockName=""
  Name=""
  Guid="6397141d-8f7d-40fd-a8c6-d323c724d0bd"
-><Comment></Comment>
+><ReqRef
+ Id="c8c32754-763b-4a64-a632-32a3602c83c1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f707f11-2cfa-4eb2-86d3-7cd17a326d2b"
+>
+</ReqRef><Comment>The spec does not state anywhere how point C is to be calculated.</Comment>
 This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for the driver to perform the required action (see Appendix A3.1) and the current train speed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -17823,12 +17911,14 @@ This location (point C) shall be determined by the ERTMS/ETCS on-board equipment
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="fd0688e1-7912-499e-8db3-590b6e01d887"
->When the estimated front end of the train reaches the end location (point E) of the &quot;sound horn&quot; area, the indication &quot;Sound horn&quot; information shall no longer be displayed.<RequirementSets>
+><Comment></Comment>
+When the estimated front end of the train reaches the end location (point E) of the &quot;sound horn&quot; area, the indication &quot;Sound horn&quot; information shall no longer be displayed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7e7bff21-dcad-47c6-bc4f-1e2924610a11"

@@ -7267,6 +7267,184 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  - Air tightness
  - Radio hole
  - Brake inhibition</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Update the TC profile without sound horn"
+ Guid="4090d354-4677-4507-a18a-40a5fc2fa9d0"
+>
+<ReqRef
+ Id="975df280-ccd5-4db5-b2e6-00760162a5c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4dc20220-0518-4198-8df8-50ff89d879bf"
+>
+</ReqRef><ReqRef
+ Id="3bc1a1bb-c207-4a66-a42a-62965c4a81cf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="50bb519e-0b51-4ed0-920e-f0ffa1f59e64"
+>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Update the TC profile without sound horn"
+ Guid="561ce012-08f0-4304-b556-35eed2b66607"
+>
+<PreConditions>
+<PreCondition
+ Guid="e6acfc1e-25dd-42a7-a4ef-f3a2f407c8ae"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bd6cd321-da85-4d70-822f-1231c228bd65"
+>TrackConditions &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToBrakeInhibition(X)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Update displayed announcements"
+ Guid="ff47369f-f0a4-4da1-b59f-ad868d89de75"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Update displayed announcements"
+ Guid="aa272eda-c845-48e0-91f9-d146e2f3bc97"
+>
+<PreConditions>
+<PreCondition
+ Guid="d65673f7-4589-4d1a-9cd3-d6ba89f8e929"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Add new announcements"
+ Guid="42467e2e-ab7c-4b58-9abb-956cafa70971"
+>
+<ReqRef
+ Id="76e592ed-ed99-43e7-914d-f61ca2620144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d144f439-e504-447d-b0ef-d56fbcf0e1e2"
+>
+</ReqRef><ReqRef
+ Id="c5c7a634-701c-4959-ae64-0522e9a953bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6c9ffa4e-a6dd-41aa-b2dd-f75041ce46be"
+>
+</ReqRef><ReqRef
+ Id="6cbde49b-37af-4487-8711-54e2b5be1b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="52a081d7-b378-46f2-b979-da2293b66fa6"
+>
+</ReqRef><ReqRef
+ Id="a8ccc78f-09d7-4eed-b28f-c54108243648"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c90f6c7e-aab7-4074-bb1f-88c66f4b99b1"
+>
+</ReqRef><ReqRef
+ Id="37680a2a-2a2a-4293-b7b9-642b8326a938"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="322ca277-03b0-48de-8b15-8b5b6407bbb7"
+>
+</ReqRef><ReqRef
+ Id="12c337c0-55dd-4a63-ae32-c7fed0a16df9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="059c3d83-84cf-4128-a731-3ec5dfe2e962"
+>
+</ReqRef><ReqRef
+ Id="dd85a59f-1d9f-471f-a5df-61f76a51d906"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="da6772b2-d67d-4fcc-a94c-212dce117c66"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Copy relevant announcements to Announcements"
+ Guid="6d350436-ccf7-47ca-bd7b-1a62d3d6db91"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e34b4f04-fe73-4018-9b61-fe9e819113a5"
+>APPLY Kernel.TrackDescription.TrackConditions.General.TCDisplay.DisplayAnnouncement(X)
+ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements | 
+(
+  NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.IsInSoundHornGroup(X.Type)
+    AND  
+  Kernel.TrackDescription.TrackConditions.General.TCDisplay.TrainIsAtAnnouncementStart(X)
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Delete passed announcements"
+ Guid="2cf86803-d4b1-4abd-b16a-2bada0f9f1f9"
+>
+<ReqRef
+ Id="7ff9da00-1e5b-46f1-b270-f5f14d810fd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="50354a05-a2e4-417e-b1b4-63e1b584c850"
+>
+</ReqRef><ReqRef
+ Id="68413353-2dd0-4dd6-ba33-b1b4afb1c586"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8650377e-92d0-42e4-b881-a7533568f8c0"
+>
+</ReqRef><ReqRef
+ Id="96e826e2-9907-4faa-a010-bae190ca3e11"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5206123a-9f47-44a7-b72d-866ff703fdf2"
+>
+</ReqRef><ReqRef
+ Id="2aea8a30-ac5d-4fd5-baa8-d160b7b48ee7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="416d8e47-b9bf-4572-ac8c-3c9dc469ca98"
+>
+</ReqRef><ReqRef
+ Id="3622dce7-f18b-4dc7-8539-e2f01da0803b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="692fb5b9-8af9-4e0b-b6c6-dd700e047522"
+>
+</ReqRef><ReqRef
+ Id="b68f5cf2-721d-45e0-bb47-eebf53ac6cfb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="598828d3-f19c-4a4b-b52d-5f8a5ff8b0a4"
+>
+</ReqRef><ReqRef
+ Id="35fce87d-1120-47fb-8478-e9057dbcda67"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c4a5798-24c6-4a09-8fd8-69cb51cfb7c1"
+>
+</ReqRef><ReqRef
+ Id="44386e14-f70e-4a34-ae1a-c1ebbc2ca149"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f2fe714d-af5e-4df3-ae64-97e772887e26"
+>
+</ReqRef><ReqRef
+ Id="a42d1ba3-faa3-4d96-9ea1-a86b6415e23d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e15c91e6-6f55-455e-b696-b2bdd15700dd"
+>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Remove announcements past their end condition"
+ Guid="6b494b2e-2c53-4705-8eec-6522ca03e158"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d6e48ca9-23d7-4be2-bcea-1f16889186b1"
+>Announcements &lt;- MAP Announcements | (X.Distance + Default.BaseTypes.LengthToDistance(X.Length) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)  AND  X.Time &gt; Kernel.CurrentTime)
+  USING X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <StructureElement
  TypeName="OutputInformation"
  Default=""
@@ -7301,7 +7479,42 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Announcements"
  Guid="88d93cbd-0c71-4469-a119-d4da984bb569"
 >
-<Comment></Comment>
+<ReqRef
+ Id="c5c7a634-701c-4959-ae64-0522e9a953bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="92a45417-f55f-43d9-a0a6-33f51acf2384"
+>
+</ReqRef><ReqRef
+ Id="6cbde49b-37af-4487-8711-54e2b5be1b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46edd8b0-50a4-4d13-a6df-04eb7ce875e7"
+>
+</ReqRef><ReqRef
+ Id="76e592ed-ed99-43e7-914d-f61ca2620144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d77a8cb2-e169-44a7-b2d9-7585404bb939"
+>
+</ReqRef><ReqRef
+ Id="a8ccc78f-09d7-4eed-b28f-c54108243648"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3fd379d3-0f1a-4be9-9631-386e9dfd2ad8"
+>
+</ReqRef><ReqRef
+ Id="37680a2a-2a2a-4293-b7b9-642b8326a938"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b103440f-601e-482f-bf82-eba73f18f729"
+>
+</ReqRef><ReqRef
+ Id="12c337c0-55dd-4a63-ae32-c7fed0a16df9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ea672ca-a831-450a-b2fb-4bd2038ebdd7"
+>
+</ReqRef><ReqRef
+ Id="dd85a59f-1d9f-471f-a5df-61f76a51d906"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="301792d1-6909-48bb-9423-60e81e339f84"
+>
+</ReqRef><Comment></Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="ProcedureOutSM.NotAvailable"
@@ -7741,6 +7954,191 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  - Sound horn
  - Non stopping area
  - Tunnel stopping area</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Update the TCProfile with sound horn"
+ Guid="4410afeb-6e59-4243-ae9c-37065be322bc"
+>
+<ReqRef
+ Id="fd0688e1-7912-499e-8db3-590b6e01d887"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d2df142d-ba32-41b5-95cc-08a6f596d82f"
+>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Update the TCProfile with sound horn"
+ Guid="0dc169fd-41cd-4887-b5e0-520154065a58"
+>
+<PreConditions>
+<PreCondition
+ Guid="0968cf56-3b93-437d-90cc-aec24193b7f2"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Check non stopping area and tunnel stopping area ends"
+ Guid="0143daf8-1cac-46c0-a8b6-5a1fc440fc6d"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="In non stopping area"
+ Guid="df251260-bf96-439b-893b-e4b0049d4f95"
+>
+<ReqRef
+ Id="a155d204-c214-45ff-a2b4-045e5aa12ba8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b9f81081-46d8-499a-bfd1-3df9809e2580"
+>
+</ReqRef><ReqRef
+ Id="3f38b783-07e2-4c8a-bfd3-a5e8de65d29b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1ad19272-279f-44e5-9464-9f8d9cae08a3"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="691fc000-d2fe-48d0-9fc6-d895fc19d014"
+>Kernel.TrackDescription.TrackConditions.General.CurrentConditions().NonStoppingArea</PreCondition><PreCondition
+ Guid="5080e5c2-603b-46a0-a9b2-7232074165df"
+>Odometry.EstimatedSpeed &gt;= Kernel.TrackDescription.TrackConditions.General.TCDisplay.VirtualSBIForTarget(
+    Distance=&gt; Kernel.TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Min),
+    Target=&gt;Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+    Location =&gt; Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea),
+    Speed =&gt; 0.0,
+    Length =&gt; 1.0
+}
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="21498138-871c-4035-8eda-ed138b81aa0f"
+>TrackConditions &lt;- MAP TrackConditions USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
+    Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea),
+    ProfilePoint=&gt;X,
+    TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
+)</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="In tunnel stopping area"
+ Guid="518946a6-da38-4a0a-9e3d-4e48017188d1"
+>
+<ReqRef
+ Id="3c13572d-5841-4b36-8f01-b73857688c4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f70936f8-66a1-4f27-b571-bd19c4b9e9dc"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="1c2819f1-c12c-4704-ad29-dac614ed2b7c"
+>Kernel.TrackDescription.TrackConditions.General.CurrentConditions().TunnelStoppingArea</PreCondition><PreCondition
+ Guid="3e93c69a-15df-4c15-a84f-a47dda49ee72"
+>Odometry.EstimatedSpeed &gt;= Kernel.TrackDescription.TrackConditions.General.TCDisplay.VirtualSBIForTarget(
+    Distance=&gt; Kernel.TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Nom),
+    Target=&gt;Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+    Location =&gt; Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea),
+    Speed =&gt; 0.0,
+    Length =&gt; 1.0
+}
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="dd8c664b-f24f-4112-8314-a0df1cd21574"
+>TrackConditions &lt;- MAP TrackConditions USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
+    Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea),
+    ProfilePoint=&gt;X,
+    TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Copy the TCProfile to the DMI"
+ Guid="51ffb9cf-3010-4881-9a15-59b75be10def"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="MAP TCProfile to the local variable"
+ Guid="c6a5c0a5-ca0d-48b5-a4dc-5934fef31914"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="848f8401-d665-400b-b48d-be8bbfa8d170"
+>TrackConditions &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Update displayed announcements"
+ Guid="86095bc2-31aa-41c5-98bf-710505a4ee5e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Update displayed announcements"
+ Guid="ea7c2cff-4b92-444f-bfbd-20e26d0ba90f"
+>
+<PreConditions>
+<PreCondition
+ Guid="eadfd07e-2750-432a-8857-64ddd5f0db76"
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Add new announcements"
+ Guid="2f25fe10-0942-4e7c-8544-e086f3777671"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Copy relevant announcements to Announcements"
+ Guid="c3ee7985-d1ba-4ee5-bd00-3185dd3fe4e8"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="b501096d-5057-466d-a460-16d5c836ceed"
+><Comment></Comment>
+APPLY Kernel.TrackDescription.TrackConditions.General.TCDisplay.DisplayAnnouncement(X)
+ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements | 
+(
+  Kernel.TrackDescription.TrackConditions.General.TCDisplay.IsInSoundHornGroup(X.Type)
+    AND  
+  Kernel.TrackDescription.TrackConditions.General.TCDisplay.TrainIsAtAnnouncementStart(X)
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Delete passed announcements"
+ Guid="ba1832f4-5f9f-4895-aed6-018630be5072"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Remove announcements past their end condition"
+ Guid="d8e69cc4-5f84-4777-8303-85bb7247e847"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2a2107fb-0b0d-4ba0-a97a-e44c76c7df83"
+>Announcements &lt;- MAP Announcements | (X.Distance + Default.BaseTypes.LengthToDistance(X.Length) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)  AND  X.Time &gt; Kernel.CurrentTime)
+  USING X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <StructureElement
  TypeName="OutputInformation"
  Default=""
@@ -7775,10 +8173,20 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Name="Announcements"
  Guid="3e9fd95b-9a3e-4052-b64f-1c991c3f9517"
 >
-<Comment></Comment>
+<ReqRef
+ Id="728d48f2-61c9-4dad-9800-8a9daa1cfbf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="02c901ed-d048-47ec-b073-5799708372e8"
+>
+</ReqRef><ReqRef
+ Id="4c148829-6224-4b0d-b6f5-d506545632eb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eb5908c6-594e-439b-94e9-8ce3d6adb6da"
+>
+</ReqRef><Comment></Comment>
 </StructureElement><StateMachines>
 <StateMachine
- Default="NotAvailable"
+ Default="ProcedureOutSM.NotAvailable"
  Implemented="TRUE"
  Name="ProcedureOutSM"
  Guid="9b2f9805-93e0-4118-926f-04337d50ec91"
@@ -7796,7 +8204,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 >
 <Comment>Not available: in this mode, the output information is not displayed.</Comment>
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NotAvailable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="73e697ea-df7c-48fc-8656-ebd33f0819c0"
@@ -7839,7 +8247,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <Actions>
 <Action
  Guid="5304881c-608e-4e13-872e-33075bc9a01c"
->THIS &lt;- NotAvailable.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NotAvailable.Idle</Action><Action
  Guid="306d757e-7cb7-4be2-a752-374f4011d138"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -7871,7 +8279,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 >
 <Comment>National system availability: availability and meaning defined by national system.</Comment>
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NationalSystemAvailability.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="662bb5e4-edf6-48eb-be12-3524a00ff42e"
@@ -7914,7 +8322,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <Actions>
 <Action
  Guid="86229dfc-188b-4776-84d1-dc6a03dd1b81"
->THIS &lt;- NationalSystemAvailability.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NationalSystemAvailability.Idle</Action><Action
  Guid="e0875263-e8cf-4e19-ba5c-fd503703f20e"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -7946,7 +8354,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 >
 <Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NotApplicable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="a487bfaf-8368-495e-83e1-fce7e52a63e3"
@@ -7989,7 +8397,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <Actions>
 <Action
  Guid="43e6b48c-5531-4e6d-bc06-d48aac1fc15b"
->THIS &lt;- NotApplicable.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NotApplicable.Idle</Action><Action
  Guid="c8ba4766-b71d-4175-8159-82dc3fd124e2"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -8021,7 +8429,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 >
 <Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.Active.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="f1bbf255-1c0d-42fb-91f2-a6ca0c3d1c7f"
@@ -8064,7 +8472,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <Actions>
 <Action
  Guid="23522f9e-3995-409c-a8e0-788d5c400978"
->THIS &lt;- Active.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Active.Send</Action><Action
  Guid="7a8015db-2365-462f-b09e-213ce9da8bbc"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
@@ -8096,7 +8504,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 >
 <Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
 <StateMachine
- Default="Idle"
+ Default="ProcedureOutSM.Available.Idle"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="6739043b-6f73-457c-9334-8125cecd2757"
@@ -8137,15 +8545,15 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <PreConditions>
 <PreCondition
  Guid="05a7e1f8-516e-4a38-8c1e-4d374e84881d"
->OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.ShowRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="798bad35-acbe-4f2e-bf59-3f679536c38f"
->THIS &lt;- Available.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Send</Action><Action
  Guid="61febe2c-ed2a-45ef-9824-95f5c255da49"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
  Guid="3401aa7c-8f4d-4606-86df-3dde6c2d3a22"
->OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8183,15 +8591,15 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <PreConditions>
 <PreCondition
  Guid="e5e11805-7aa5-4c90-9e87-79c31bc2c59d"
->OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.HideRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="33f805dd-4531-4238-ad5f-e012581d2a78"
->THIS &lt;- Available.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Idle</Action><Action
  Guid="e9b94518-97b9-4635-aeaf-29ef2ecb750c"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
  Guid="9a63f0fd-fe88-420d-8a36-49933cdb0d76"
->OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.HideRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>

@@ -149,15 +149,15 @@
  Default="Boolean.False"
  Mode="Internal"
  Implemented="TRUE"
- Name="SwitchOffEddyCurrentBrake"
+ Name="SwitchOffEddyCurrentBrakeForEB"
  Guid="79e93ae5-d58f-4946-baea-35490933b3c9"
 >
 <ReqRef
- Id="6eac506c-d1f4-4981-81f7-4f88b90d86a9"
+ Id="caccfa50-6817-419a-bde5-f5880f4e795e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b84e25e6-357c-4c8f-a3d9-5767702fbdc4"
+ Guid="555f7002-9109-416d-a77b-fec724208aeb"
 >
-</ReqRef><Comment>The eddy current brake should be disabled for the service brake</Comment>
+</ReqRef><Comment>The eddy current brake should be disabled for the emergency brake</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
@@ -200,6 +200,19 @@
  Guid="44f7eef5-3fb7-4eb7-a7ce-85bb79e75e8b"
 >
 </ReqRef><Comment>Start location of the track condition</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="SwitchOffEddyCurrentBrakeForSB"
+ Guid="e04c4c6a-05d3-460e-ae3f-7528880c647a"
+>
+<ReqRef
+ Id="6eac506c-d1f4-4981-81f7-4f88b90d86a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53ca0ddb-76b2-4dab-86c7-ffa5f2369995"
+>
+</ReqRef><Comment>The eddy current brake should be disabled for the service brake</Comment>
 </StructureElement></Structure><Structure
  Default=""
  Width="100"
@@ -306,7 +319,49 @@
  Name="Time"
  Guid="1b973fea-c77e-454e-9315-5f94a2b8cf45"
 >
-</StructureElement></Structure></Structures>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Name="Automatic"
+ Guid="6b4715e7-bdec-477d-89ca-2f88dfbae6f5"
+>
+<ReqRef
+ Id="66551c91-ee6f-4402-b569-a9ff81c8d821"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="187007a9-1161-4f86-9f85-3713a963c475"
+>
+</ReqRef><ReqRef
+ Id="9dd79c32-df2a-4434-b913-50640beb4281"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0f448162-e37c-4894-a870-18a9c7443fb8"
+>
+</ReqRef><ReqRef
+ Id="b04158a3-35ce-4257-b43e-1d9716f76f93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="38d5e632-b1f4-44b2-8352-25ebbd30a06c"
+>
+</ReqRef><ReqRef
+ Id="54fc1b2f-383b-4d7f-8d4a-91173fd494a8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26f85fbd-3f06-4e45-82b1-82e6d2280418"
+>
+</ReqRef><ReqRef
+ Id="cd230e40-3098-4fd4-94b2-cc5f04fa5d77"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="420fecb4-778a-4df4-8ae7-ed8d032d1885"
+>
+</ReqRef><ReqRef
+ Id="ac29e88f-6252-4dc2-ba81-7dde4deecdc7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2b4a1a3c-0367-4667-872c-764a357cd4bc"
+>
+</ReqRef><ReqRef
+ Id="41d40a52-5363-4cb6-925a-671d1d925ce8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d3637433-5749-47cc-891a-90598f6cf13b"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithBrakeInhibition"
@@ -381,12 +436,49 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="00d16d20-15fc-437e-bf9b-208f40124290"
 >
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="37680a2a-2a2a-4293-b7b9-642b8326a938"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e7df1291-d486-4be1-8581-c966758b5abc"
+>
+</ReqRef><ReqRef
+ Id="3ccdba0f-1071-42c1-ba41-099fa2560e4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86e1b8cf-442d-4eb8-a491-ede90d98e4e9"
+>
+</ReqRef><ReqRef
+ Id="dd85a59f-1d9f-471f-a5df-61f76a51d906"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="25296f50-0ca3-4560-b920-ea411a795b0a"
+>
+</ReqRef><ReqRef
+ Id="d7fe1340-3fcf-4243-abc7-a8d81ae032de"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a5a6adc5-8b7a-46fa-a29c-761c0c638472"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="6397141d-8f7d-40fd-a8c6-d323c724d0bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f97c04e3-da5e-4b8a-aba2-ea114dffd65f"
+>
+</ReqRef><ReqRef
+ Id="4c148829-6224-4b0d-b6f5-d506545632eb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="52af0d5d-cb6c-4952-9e46-e623ddbde146"
+>
 </ReqRef><Comment>Calculates the announcement location (used in the DMI) of a track condition at the train&apos;s current speed</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.TrackConditions.General.TrackCondition"
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="00bb0340-e1cd-4be5-b2b5-ee143c7846bf"
+>
+</Parameter><Parameter
+ Type="TrackCondition"
  Name="TrackCondition"
- Guid="00751af4-e31d-4466-bbce-25f0938e0bf5"
+ Guid="a48b6dcd-1f31-433c-8089-6568a0810217"
 >
 </Parameter></Parameters>
 <Cases>
@@ -394,7 +486,8 @@
  Name="Value"
  Guid="9a9bfe54-98fb-4549-b01b-8d6d86f4ac13"
 >
-<Expression>Odometry.EstimatedSpeed * DriverReactionTime(TrackCondition)</Expression>
+<Comment></Comment>
+<Expression>Distance - Odometry.EstimatedSpeed * DriverReactionTime(TrackCondition)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Time"
@@ -419,6 +512,27 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f2073c1e-05f7-49b7-a5d8-91208f182ff3"
 >
+</ReqRef><ReqRef
+ Id="3ccdba0f-1071-42c1-ba41-099fa2560e4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4c905c4-5618-4414-aa84-d91b84bb3446"
+>
+</ReqRef><ReqRef
+ Id="d7fe1340-3fcf-4243-abc7-a8d81ae032de"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b9863755-a516-44cb-9db1-6409950d868a"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="f6b3f58f-5fb2-453a-958e-a1a861d66a2f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="da7dce44-01cc-457d-af85-1f6254663855"
+>
+</ReqRef><ReqRef
+ Id="6397141d-8f7d-40fd-a8c6-d323c724d0bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="243c65de-dc0d-4106-9bce-e49c15f6c5a4"
+>
 </ReqRef><Comment>TODO: find actual reaction times for the different track conditions.
 
 Returns the time required by the driver to performs the necessary tasks before a track condition is applied</Comment>
@@ -431,6 +545,16 @@ Returns the time required by the driver to performs the necessary tasks before a
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Tunnel stopping area"
+ Guid="b8ca737e-3a1a-4d04-a845-5f30b1f05413"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="55797e16-d9ea-4780-a757-c930df7d7c9f"
+>TrackConditionType.TunnelStoppingArea</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
  Name="Value"
  Guid="ba6b8ce6-862a-4bc4-9bad-e2f0f28df467"
 >
@@ -438,7 +562,7 @@ Returns the time required by the driver to performs the necessary tasks before a
 <Expression>5.0</Expression>
 </Case></Cases>
 </Function><Function
- Type="TCAnnouncementStruct"
+ Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct"
  Default=""
  Width="100"
  Height="50"
@@ -467,12 +591,622 @@ Returns the time required by the driver to performs the necessary tasks before a
  Name="Make a new struct"
  Guid="527c8c9f-dc30-4ae8-aae0-75ed499011a7"
 >
-<Expression>TCAnnouncementStruct{
+<Expression>Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct{
     Type =&gt; TCType,
     Distance =&gt; Distance,
     Length =&gt; Length,
     Time =&gt; Default.BaseTypes.Time.Infinity
 }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="TCStructWithSoundHorn"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="MapToSoundHorn"
+ Guid="7259b677-9bd3-4142-9650-821d01dcc539"
+>
+<Parameters>
+<Parameter
+ Type="TrackConditionInformation"
+ Name="TCPoint"
+ Guid="cc645dd6-0bc6-4bba-aa94-47d870925bde"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="5476e3dc-171a-41f6-829f-107d66d9e964"
+>
+<Expression>TCStructWithSoundHorn{
+    SoundHorn =&gt; TCPoint.Value.SoundHorn,
+    TunnelStoppingArea =&gt; TCPoint.Value.TunnelStoppingArea,
+    NonStoppingArea =&gt; TCPoint.Value.NonStoppingArea,
+    Distance =&gt; TCPoint.Distance
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="TCStructWithBrakeInhibition"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Name="MapToBrakeInhibition"
+ Guid="beeaa8f6-77b7-4abc-a028-6362e601aebe"
+>
+<Parameters>
+<Parameter
+ Type="TrackConditionInformation"
+ Name="TCPoint"
+ Guid="debb0542-1259-4574-a905-b88be24dd6f6"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="f77c3425-f524-46fa-8a74-3f2e73f98967"
+>
+<Comment></Comment>
+<Expression>TCStructWithBrakeInhibition{
+    AirTightness =&gt; TCPoint.Value.AirTightness,
+    PowerlessSection_LowerPantograph =&gt; TCPoint.Value.PowerlessSection_LowerPantograph,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; TCPoint.Value.PowerlessSection_SwitchOffTheMainPowerSwitch,
+    RadioHole =&gt; TCPoint.Value.RadioHole,
+    SwitchOffEddyCurrentBrakeForEB =&gt; TCPoint.Value.SwitchOffEddyCurrentBrakeForEB,
+    SwitchOffEddyCurrentBrakeForSB =&gt; TCPoint.Value.SwitchOffEddyCurrentBrakeForSB,
+    SwitchOffMagneticShoeBrake =&gt; TCPoint.Value.SwitchOffMagneticShoeBrake,
+    SwitchOffRegenerativeBrake =&gt; TCPoint.Value.SwitchOffRegenerativeBrake,
+    Distance =&gt; TCPoint.Distance
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="IsInSoundHornGroup"
+ Guid="2863ee58-24b2-4bbe-a13b-2a733b3dddd8"
+>
+<Parameters>
+<Parameter
+ Type="TCTypeEnum"
+ Name="Condition"
+ Guid="5fb4ebe7-9f67-4b63-8953-3ec42f1e3f78"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="ddce2fbb-4875-4cea-ad35-a640d8550664"
+>
+<Expression>Condition == TCTypeEnum.SoundHorn
+  OR  
+Condition == TCTypeEnum.NonStoppingArea
+  OR  
+Condition == TCTypeEnum.TunnelStoppingArea</Expression>
+</Case></Cases>
+</Function><Function
+ Type="TCAnnouncementStruct"
+ Default=""
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="AnnouncementWithEnd"
+ Guid="da2c8e8e-b0f4-4484-a1fc-bcdcc52ada1f"
+>
+<ReqRef
+ Id="68413353-2dd0-4dd6-ba33-b1b4afb1c586"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af7b95d0-8ff0-4a0c-90e4-1e284e90f540"
+>
+</ReqRef><ReqRef
+ Id="96e826e2-9907-4faa-a010-bae190ca3e11"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a2ae1668-d169-4dcc-8a6c-48b301cac5e8"
+>
+</ReqRef><ReqRef
+ Id="12c337c0-55dd-4a63-ae32-c7fed0a16df9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="59b74afc-e549-41d5-b7d9-d9bb5143340b"
+>
+</ReqRef><ReqRef
+ Id="35fce87d-1120-47fb-8478-e9057dbcda67"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="215fbcf4-a2c7-4f16-a3ea-bae3c2287aa4"
+>
+</ReqRef><ReqRef
+ Id="3bc1a1bb-c207-4a66-a42a-62965c4a81cf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0b201546-0a06-4e5c-b243-0982c198156f"
+>
+</ReqRef><Comment></Comment>
+<Parameters>
+<Parameter
+ Type="TCAnnouncementStruct"
+ Name="Announcement"
+ Guid="5dd0b869-a7c9-435f-80b3-b38a724e8314"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Start"
+ Guid="aa1dd969-f923-4ff9-be32-77c1fa6fd7ac"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="574650f4-d4be-4607-aae6-1f497f219d1b"
+>Announcement.Length != Default.BaseTypes.Length.NA</PreCondition></PreConditions>
+<Expression>Announcement</Expression>
+</Case><Case
+ Name="End - air tightness and brake inhibition"
+ Guid="8356d99a-80de-4db1-b269-62b8bee53cf2"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="3c1a78a8-b08f-4d9a-af7d-c504ef7b81f9"
+>Announcement.Type == TCTypeEnum.AirTightness
+  OR  
+Announcement.Type == TCTypeEnum.EddyCurrentBrakeForEB
+  OR  
+Announcement.Type == TCTypeEnum.EddyCurrentBrakeForSB
+  OR  
+Announcement.Type == TCTypeEnum.MagneticShoeBrake
+  OR  
+Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
+<Expression>Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct{
+    Type =&gt; Announcement.Type,
+    Distance =&gt; Announcement.Distance,
+    Length =&gt; Announcement.Length + TrainData.TrainData.Value.TrainLength,
+    Time =&gt; CurrentTime + TimeToKeepAnnouncementsInRear
+}</Expression>
+</Case><Case
+ Name="End"
+ Guid="c46e3fa1-e865-42e0-a198-544bbdbe0281"
+>
+<Comment></Comment>
+<Expression>Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct{
+    Type =&gt; Announcement.Type,
+    Distance =&gt; Announcement.Distance,
+    Length =&gt; Announcement.Length,
+    Time =&gt; CurrentTime + TimeToKeepAnnouncementsInRear
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="TrainIsAtTCStartLocation"
+ Guid="350875d4-66ec-4eaf-b954-e763b237a8cf"
+>
+<ReqRef
+ Id="7ff9da00-1e5b-46f1-b270-f5f14d810fd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53ca70e7-9b3a-4fb7-8aeb-f3be5c891550"
+>
+</ReqRef><ReqRef
+ Id="2aea8a30-ac5d-4fd5-baa8-d160b7b48ee7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e970b976-925e-43c5-8f26-da9186c200a4"
+>
+</ReqRef><ReqRef
+ Id="3622dce7-f18b-4dc7-8539-e2f01da0803b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88ce953b-de84-4831-9fe1-a5f3b9bef7c0"
+>
+</ReqRef><ReqRef
+ Id="6f7663bd-2825-4a18-970c-735e9cb6d750"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ab32ddbb-60d2-4062-9cbe-71714738f848"
+>
+</ReqRef><ReqRef
+ Id="b68f5cf2-721d-45e0-bb47-eebf53ac6cfb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="761bcbc3-8ce1-448a-801f-e556578d8b25"
+>
+</ReqRef><ReqRef
+ Id="44386e14-f70e-4a34-ae1a-c1ebbc2ca149"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8b5d30a1-ea1e-46bd-a562-56e8f8ef1dd3"
+>
+</ReqRef><ReqRef
+ Id="a42d1ba3-faa3-4d96-9ea1-a86b6415e23d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6a248985-907a-4108-a8f5-e4d97e212036"
+>
+</ReqRef><ReqRef
+ Id="a155d204-c214-45ff-a2b4-045e5aa12ba8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ed8122fd-c9c8-49a6-ae08-bd97ec5d66d4"
+>
+</ReqRef><Comment>Determines whether the train&apos;s front end has passed the end of the announcement (depending on the track condition announced and whether the announcement is at the start or the end of a track condition)</Comment>
+<Parameters>
+<Parameter
+ Type="TCAnnouncementStruct"
+ Name="Announcement"
+ Guid="4044d402-5eb4-4458-a9c9-4b9900c9ce58"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="End announcement"
+ Guid="1d7db37b-d17c-447d-9a09-08813c84396e"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="950e5d7e-2733-4b57-99ea-67afded8e8f0"
+>Announcement.Length == Default.BaseTypes.Length.NA</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Tunnel stopping area"
+ Guid="716374c5-4f36-428a-a4a1-86fb297309f4"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="1c713b41-8617-430e-a228-0143071d3404"
+>Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions>
+<Expression>TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt;= Announcement.Distance + Default.BaseTypes.LengthToDistance(Announcement.Length)</Expression>
+</Case><Case
+ Name="Sound horn"
+ Guid="16793590-aa89-4df2-92d4-d4200df02408"
+>
+<PreConditions>
+<PreCondition
+ Guid="4d55a5a0-252b-40d7-aca2-f250e5eea64c"
+>Announcement.Type == TCTypeEnum.SoundHorn</PreCondition></PreConditions>
+<Expression>TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt;= Announcement.Distance + Default.BaseTypes.LengthToDistance(Announcement.Length)</Expression>
+</Case><Case
+ Name="Other types"
+ Guid="7965a6a4-1f24-40c5-b623-32892a992bfa"
+>
+<Expression>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;= Announcement.Distance + Default.BaseTypes.LengthToDistance(Announcement.Length)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="TrainIsAtAnnouncementStart"
+ Guid="551a8c1e-f182-44c8-b7fb-8c6926db8492"
+>
+<ReqRef
+ Id="c5c7a634-701c-4959-ae64-0522e9a953bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cbe62774-38d1-4fe4-b85d-b5b4c674de33"
+>
+</ReqRef><ReqRef
+ Id="6cbde49b-37af-4487-8711-54e2b5be1b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5df1e686-68a2-4190-b81b-0350be0b0c7a"
+>
+</ReqRef><ReqRef
+ Id="728d48f2-61c9-4dad-9800-8a9daa1cfbf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="42b0ac6b-3602-4b73-93c7-32eb7a03eb3f"
+>
+</ReqRef><ReqRef
+ Id="37680a2a-2a2a-4293-b7b9-642b8326a938"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6bb69c3d-22b1-404b-b7e2-1c9df46e1d3b"
+>
+</ReqRef><ReqRef
+ Id="dd85a59f-1d9f-471f-a5df-61f76a51d906"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ba1150ce-6c3e-4440-b6fd-d0f207550123"
+>
+</ReqRef><ReqRef
+ Id="f6b3f58f-5fb2-453a-958e-a1a861d66a2f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1ef9e2fd-2f8f-44fb-9f7f-e969a2aaacde"
+>
+</ReqRef><ReqRef
+ Id="4c148829-6224-4b0d-b6f5-d506545632eb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="996c01e1-5f95-4391-b21c-91ebe5cc2ec6"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="76e592ed-ed99-43e7-914d-f61ca2620144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a260ea93-ce17-4f92-8883-60ebc3f4146f"
+>
+</ReqRef><ReqRef
+ Id="a8ccc78f-09d7-4eed-b28f-c54108243648"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fce528da-8572-4c84-ac5d-e6db321eb389"
+>
+</ReqRef><ReqRef
+ Id="a155d204-c214-45ff-a2b4-045e5aa12ba8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f9db3cd7-6cd3-4dc9-80d7-e65b80653ebd"
+>
+</ReqRef><ReqRef
+ Id="12c337c0-55dd-4a63-ae32-c7fed0a16df9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c551d459-cc8c-499f-b7eb-9816e0146124"
+>
+</ReqRef><ReqRef
+ Id="3c13572d-5841-4b36-8f01-b73857688c4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1b7e46a-64a9-4dc8-b134-af45a3a70407"
+>
+</ReqRef><Comment></Comment>
+<Parameters>
+<Parameter
+ Type="TCAnnouncementStruct"
+ Name="Announcement"
+ Guid="ea64b366-1b29-4689-830c-ea6c019f7f83"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Non stopping area - start"
+ Guid="873ea663-7256-4f44-89ec-fd78b96620ff"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="f6afee15-fc7a-47e4-a6f5-05176ac7fa9e"
+>Announcement.Type == TCTypeEnum.NonStoppingArea</PreCondition></PreConditions>
+<Expression>Odometry.EstimatedSpeed &gt;= VirtualSBIForTarget(
+    Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Max),
+    Target=&gt;Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+        Location =&gt; Announcement.Distance + Default.BaseTypes.LengthToDistance(Announcement.Length),
+        Speed =&gt; 0.0,
+        Length =&gt; Default.BaseTypes.Length.Infinity}
+)</Expression>
+</Case><Case
+ Name="Tunnel stopping area - start"
+ Guid="028d9395-6dc0-4cc4-b49d-d78fe9db2603"
+>
+<PreConditions>
+<PreCondition
+ Guid="c70f9ca9-e9b7-4414-938a-38e428031c96"
+><Comment></Comment>
+Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Sound horn - start"
+ Guid="7eb91f50-22d5-43e7-9396-0085e2da4f45"
+>
+<PreConditions>
+<PreCondition
+ Guid="c3790b14-c687-4d89-885d-72e39767003f"
+>Announcement.Type == TCTypeEnum.SoundHorn</PreCondition></PreConditions>
+<Expression>TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt;= Announcement.Distance</Expression>
+</Case><Case
+ Name="Conditions - end"
+ Guid="43cc02b3-c997-4f1d-b0eb-494230903fc3"
+>
+<PreConditions>
+<PreCondition
+ Guid="2ebc94ea-dc49-4889-8574-ac261cead9dd"
+>Announcement.Length == Default.BaseTypes.Length.NA</PreCondition></PreConditions>
+<Expression>TrainPosition.FrontEndPosition(Default.DistanceInterval.Min) &gt;= Announcement.Distance</Expression>
+</Case><Case
+ Name="Other conditions - start"
+ Guid="2712b1ff-1b3d-4999-b9f2-a740966c7e91"
+>
+<Expression>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;= Announcement.Distance</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Name="VirtualSBIForTarget"
+ Guid="aef285ac-6d1f-41d6-8295-a9af0196f6f2"
+>
+<ReqRef
+ Id="728d48f2-61c9-4dad-9800-8a9daa1cfbf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="302af9cb-e307-4a08-a06d-cadb71fc5c53"
+>
+</ReqRef><ReqRef
+ Id="a155d204-c214-45ff-a2b4-045e5aa12ba8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cd82a43e-8c9b-475b-9bdf-af9a959bb3bc"
+>
+</ReqRef><ReqRef
+ Id="3f38b783-07e2-4c8a-bfd3-a5e8de65d29b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd66a62e-fe87-4a0c-b6d8-b889e7d4a878"
+>
+</ReqRef><ReqRef
+ Id="3c13572d-5841-4b36-8f01-b73857688c4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bc215be5-5f8a-46b9-94aa-040dcd0a5c38"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="a5bed748-c7c1-4fb4-874f-b749d688adb1"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="Target"
+ Guid="361d8801-cc78-4d8c-a114-d10e57711ff6"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="1f75f261-a1ed-4441-b109-7e0bcc2a7ac8"
+>
+<Comment></Comment>
+<Expression>DecelerationProfile(
+    SpeedRestrictions=&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; VirtualSpeedRestriction(Distance=&gt;d, Target=&gt;SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+    Location =&gt; Target.Location - Default.BaseTypes.SpeedToMS ( Odometry.EstimatedSpeed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1,
+    Speed =&gt; 0.0,
+    Length =&gt; 0.0
+}),
+    DecelerationFactor=&gt;TrainData.BrakingParameters.A_expected
+)(Distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="VirtualSpeedRestriction"
+ Guid="e29c2519-6260-43a0-9281-165ed7bc6178"
+>
+<ReqRef
+ Id="728d48f2-61c9-4dad-9800-8a9daa1cfbf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a28c2b26-6c0d-48a1-af9e-62723818370c"
+>
+</ReqRef><ReqRef
+ Id="3c13572d-5841-4b36-8f01-b73857688c4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ec9c4a7d-0099-4838-a64a-c937788f7adc"
+>
+</ReqRef><Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="70e22ed7-0c40-4621-b333-d82e16d3ef6e"
+>
+</Parameter><Parameter
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="Target"
+ Guid="9c3765ad-4033-4e59-bb97-622b108f95b0"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Distance &lt; target distance"
+ Guid="7d70bf85-3fd0-44e6-ab90-2281950586bd"
+>
+<PreConditions>
+<PreCondition
+ Guid="b3ee7322-3711-49f4-abb1-1c72b2ccf804"
+>Distance &lt; Target.Location</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+</Case><Case
+ Name="Distance &gt;= target distance"
+ Guid="77df21cf-511e-4fd3-862f-461e26867f2c"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ NeedsRequirement="FALSE"
+ Name="EndOfTC"
+ Guid="921c1626-64ff-49fb-82a0-f21559d43682"
+>
+<ReqRef
+ Id="3f38b783-07e2-4c8a-bfd3-a5e8de65d29b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="deb3d58e-8141-4d4a-a7a7-23f30b38c516"
+>
+</ReqRef><ReqRef
+ Id="3c13572d-5841-4b36-8f01-b73857688c4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e573e0df-0292-4fdd-a38b-1cf97ed0c721"
+>
+</ReqRef><Comment>Returns the end distance of a currently active track condition</Comment>
+<Parameters>
+<Parameter
+ Type="TCTypeEnum"
+ Name="TCType"
+ Guid="e1e7afab-436c-4c9a-a774-4f3518a988ca"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Return distance at end of non stopping area"
+ Guid="286e67de-61a6-4819-9924-a2e75457c7c5"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="85fce91e-776f-4f8e-9eb4-16352c6f1505"
+>TCType == TCTypeEnum.NonStoppingArea</PreCondition></PreConditions>
+<Expression>REDUCE TCProfile | (NOT X.Value.NonStoppingArea)
+USING Default.BaseTypes.MinDistance(
+    X1=&gt;X.Distance,
+    X2=&gt;RESULT
+)
+INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
+</Case></Cases>
+</Function><Function
+ Type="TCStructWithSoundHorn"
+ Default=""
+ Name="HideTCInformation"
+ Guid="43c1e2b3-87e0-4736-a2ff-e720461ac353"
+>
+<ReqRef
+ Id="3f38b783-07e2-4c8a-bfd3-a5e8de65d29b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac829783-2401-423d-bc79-9454324d7b6a"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="f7c2579a-aaa5-4a0b-aa28-ac3d48ef713b"
+>
+</Parameter><Parameter
+ Type="TCStructWithSoundHorn"
+ Name="ProfilePoint"
+ Guid="98e51548-5b4f-4bf6-8a04-04f775eaa648"
+>
+</Parameter><Parameter
+ Type="TCTypeEnum"
+ Name="TCType"
+ Guid="4761551b-fdd6-4b04-bb33-0c438ac93d33"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="In non stopping area"
+ Guid="464a85f9-9645-4466-993d-99d5a7f3483a"
+>
+<PreConditions>
+<PreCondition
+ Guid="147dc229-5272-4fe1-968f-ea42ee8344b3"
+>ProfilePoint.Distance &lt; Distance</PreCondition><PreCondition
+ Guid="0beb59e2-d413-413a-96be-e935e92a36c7"
+>TCType == TCTypeEnum.NonStoppingArea</PreCondition></PreConditions>
+<Expression>TCStructWithSoundHorn{
+    SoundHorn =&gt; ProfilePoint.SoundHorn,
+    TunnelStoppingArea =&gt; ProfilePoint.TunnelStoppingArea,
+    NonStoppingArea =&gt; False,
+    Distance =&gt; ProfilePoint.Distance
+}</Expression>
+</Case><Case
+ Name="In tunnel stopping area"
+ Guid="d80151e2-822b-469b-ba02-3bee6ca4cb4b"
+>
+<PreConditions>
+<PreCondition
+ Guid="68a5334c-effd-4849-9229-fd4b39e19564"
+>TCType == TCTypeEnum.TunnelStoppingArea</PreCondition><PreCondition
+ Guid="d39b4d44-f5c2-4bd8-b14b-a067c3cea797"
+>ProfilePoint.Distance &lt; Distance</PreCondition></PreConditions>
+<Expression>TCStructWithSoundHorn{
+    SoundHorn =&gt; ProfilePoint.SoundHorn,
+    TunnelStoppingArea =&gt; False,
+    NonStoppingArea =&gt; ProfilePoint.NonStoppingArea,
+    Distance =&gt; ProfilePoint.Distance
+}</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="935730e5-8459-4ec3-9428-c1f261dbe4d9"
+>
+<Expression>ProfilePoint</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -483,7 +1217,42 @@ Returns the time required by the driver to performs the necessary tasks before a
  Name="MakeAnnouncement"
  Guid="773d168c-d251-419a-8a80-b38047c9b630"
 >
-<Comment></Comment>
+<ReqRef
+ Id="c5c7a634-701c-4959-ae64-0522e9a953bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e068e870-ce69-49e6-bfa6-8fc880dc50b5"
+>
+</ReqRef><ReqRef
+ Id="6cbde49b-37af-4487-8711-54e2b5be1b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="316748d3-018c-4758-9686-55eb5a996c4f"
+>
+</ReqRef><ReqRef
+ Id="76e592ed-ed99-43e7-914d-f61ca2620144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="36f516fe-ec00-46c2-956c-7287991e0dba"
+>
+</ReqRef><ReqRef
+ Id="a8ccc78f-09d7-4eed-b28f-c54108243648"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="39530206-03d7-4c0b-bd4b-0de602644bce"
+>
+</ReqRef><ReqRef
+ Id="37680a2a-2a2a-4293-b7b9-642b8326a938"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="632e6813-02ff-4d0d-9c38-c299da415653"
+>
+</ReqRef><ReqRef
+ Id="dd85a59f-1d9f-471f-a5df-61f76a51d906"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a9aab5e-877c-4237-8dba-a91bfd08442e"
+>
+</ReqRef><ReqRef
+ Id="4c148829-6224-4b0d-b6f5-d506545632eb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55a9dc1d-0a74-42f2-87b8-be0e138b693c"
+>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.M_TRACKCOND"
@@ -522,10 +1291,11 @@ Returns the time required by the driver to performs the necessary tasks before a
 <Actions>
 <Action
  Guid="546cd297-955f-444f-8d22-b8f9fd70b613"
->INSERT NewAnnouncement(
+><Comment></Comment>
+INSERT NewAnnouncement(
     TCType=&gt;TCTypeEnum.AirTightness,
-    Distance=&gt;Distance - AnnouncementLocation(TrackCondition{AirTightness =&gt; True}),
-    Length=&gt;Default.BaseTypes.DistanceToLength(AnnouncementLocation(TrackCondition{AirTightness =&gt; True}))
+    Distance=&gt;AnnouncementLocation(TrackCondition =&gt; TrackCondition{AirTightness =&gt; True}, Distance =&gt; Distance),
+    Length=&gt;Default.BaseTypes.DistanceToLength(Distance - AnnouncementLocation(TrackCondition =&gt; TrackCondition{AirTightness =&gt; True}, Distance =&gt; Distance))
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
@@ -539,10 +1309,11 @@ IN Announcements</Action></Actions>
 <Actions>
 <Action
  Guid="85a0948f-1d9c-4cab-bf12-37a4ddf0a300"
->INSERT NewAnnouncement(
+><Comment></Comment>
+INSERT NewAnnouncement(
     TCType=&gt;TCTypeEnum.EddyCurrentBrakeForEB,
-    Distance=&gt;Distance - AnnouncementLocation(TrackCondition{SwitchOffEddyCurrentBrakeForEB =&gt; True}),
-    Length=&gt;Default.BaseTypes.DistanceToLength(AnnouncementLocation(TrackCondition{SwitchOffEddyCurrentBrakeForEB =&gt; True}))
+    Distance=&gt;AnnouncementLocation(TrackCondition =&gt; TrackCondition{SwitchOffEddyCurrentBrakeForEB =&gt; True}, Distance =&gt; Distance),
+    Length=&gt;Default.BaseTypes.DistanceToLength(Distance - AnnouncementLocation(TrackCondition =&gt; TrackCondition{SwitchOffEddyCurrentBrakeForEB =&gt; True}, Distance =&gt; Distance))
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
@@ -559,8 +1330,8 @@ IN Announcements</Action></Actions>
  Guid="ac6e5758-3e61-4776-bcfb-524f3b05d73c"
 >INSERT NewAnnouncement(
     TCType=&gt;TCTypeEnum.EddyCurrentBrakeForSB,
-    Distance=&gt;Distance - AnnouncementLocation(TrackCondition{SwitchOffEddyCurrentBrakeForSB =&gt; True}),
-    Length=&gt;Default.BaseTypes.DistanceToLength(AnnouncementLocation(TrackCondition{SwitchOffEddyCurrentBrakeForSB =&gt; True}))
+    Distance=&gt;AnnouncementLocation(TrackCondition =&gt; TrackCondition{SwitchOffEddyCurrentBrakeForSB =&gt; True}, Distance =&gt; Distance),
+    Length=&gt;Default.BaseTypes.DistanceToLength(Distance - AnnouncementLocation(TrackCondition =&gt; TrackCondition{SwitchOffEddyCurrentBrakeForSB =&gt; True}, Distance =&gt; Distance))
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
@@ -576,8 +1347,8 @@ IN Announcements</Action></Actions>
  Guid="9392e167-71c3-4d68-a559-63642bd48557"
 >INSERT NewAnnouncement(
     TCType=&gt;TCTypeEnum.LowerPantograph,
-    Distance=&gt;Distance - AnnouncementLocation(TrackCondition{PowerlessSection_LowerPantograph =&gt; True}),
-    Length=&gt;Default.BaseTypes.DistanceToLength(AnnouncementLocation(TrackCondition{PowerlessSection_LowerPantograph =&gt; True}))
+    Distance=&gt;AnnouncementLocation(TrackCondition =&gt; TrackCondition{PowerlessSection_LowerPantograph =&gt; True}, Distance =&gt; Distance),
+    Length=&gt;Default.BaseTypes.DistanceToLength(Distance - AnnouncementLocation(TrackCondition =&gt; TrackCondition{PowerlessSection_LowerPantograph =&gt; True}, Distance =&gt; Distance))
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
@@ -594,8 +1365,8 @@ IN Announcements</Action></Actions>
 ><Comment></Comment>
 INSERT NewAnnouncement(
     TCType=&gt;TCTypeEnum.MagneticShoeBrake,
-    Distance=&gt;Distance - AnnouncementLocation(TrackCondition{SwitchOffMagneticShoeBrake =&gt; True}),
-    Length=&gt;Default.BaseTypes.DistanceToLength(AnnouncementLocation(TrackCondition{SwitchOffMagneticShoeBrake =&gt; True}))
+    Distance=&gt;AnnouncementLocation(TrackCondition =&gt; TrackCondition{SwitchOffMagneticShoeBrake =&gt; True}, Distance =&gt; Distance),
+    Length=&gt;Default.BaseTypes.DistanceToLength(Distance - AnnouncementLocation(TrackCondition =&gt; TrackCondition{SwitchOffMagneticShoeBrake =&gt; True}, Distance =&gt; Distance))
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
@@ -612,8 +1383,8 @@ IN Announcements</Action></Actions>
 ><Comment></Comment>
 INSERT NewAnnouncement(
     TCType=&gt;TCTypeEnum.NonStoppingArea,
-    Distance=&gt;Distance - AnnouncementLocation(TrackCondition{NonStoppingArea =&gt; True}),
-    Length=&gt;Default.BaseTypes.DistanceToLength(AnnouncementLocation(TrackCondition{NonStoppingArea =&gt; True}))
+    Distance=&gt;AnnouncementLocation(TrackCondition =&gt; TrackCondition{NonStoppingArea =&gt; True}, Distance =&gt; Distance),
+    Length=&gt;Default.BaseTypes.DistanceToLength(Distance - AnnouncementLocation(TrackCondition =&gt; TrackCondition{NonStoppingArea =&gt; True}, Distance =&gt; Distance))
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
@@ -630,8 +1401,8 @@ IN Announcements</Action></Actions>
 ><Comment></Comment>
 INSERT NewAnnouncement(
     TCType=&gt;TCTypeEnum.RegenerativeBrake,
-    Distance=&gt;Distance - AnnouncementLocation(TrackCondition{SwitchOffRegenerativeBrake =&gt; True}),
-    Length=&gt;Default.BaseTypes.DistanceToLength(AnnouncementLocation(TrackCondition{SwitchOffRegenerativeBrake =&gt; True}))
+    Distance=&gt;AnnouncementLocation(TrackCondition =&gt; TrackCondition{SwitchOffRegenerativeBrake =&gt; True}, Distance =&gt; Distance),
+    Length=&gt;Default.BaseTypes.DistanceToLength(Distance - AnnouncementLocation(TrackCondition =&gt; TrackCondition{SwitchOffRegenerativeBrake =&gt; True}, Distance =&gt; Distance))
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
@@ -648,8 +1419,8 @@ IN Announcements</Action></Actions>
 ><Comment></Comment>
 INSERT NewAnnouncement(
     TCType=&gt;TCTypeEnum.SoundHorn,
-    Distance=&gt;Distance - AnnouncementLocation(TrackCondition{SoundHorn =&gt; True}),
-    Length=&gt;Default.BaseTypes.DistanceToLength(AnnouncementLocation(TrackCondition{SoundHorn =&gt; True}))
+    Distance=&gt;AnnouncementLocation(TrackCondition =&gt; TrackCondition{SoundHorn =&gt; True}, Distance =&gt; Distance),
+    Length=&gt;Default.BaseTypes.DistanceToLength(Distance - AnnouncementLocation(TrackCondition =&gt; TrackCondition{SoundHorn =&gt; True}, Distance =&gt; Distance))
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
@@ -667,8 +1438,8 @@ TCType == Messages.M_TRACKCOND.Tunnel_stopping_area__Initial_state__no_tunnel_st
 ><Comment></Comment>
 INSERT NewAnnouncement(
     TCType=&gt;TCTypeEnum.TunnelStoppingArea,
-    Distance=&gt;Distance - AnnouncementLocation(TrackCondition{TunnelStoppingArea =&gt; True}),
-    Length=&gt;Default.BaseTypes.DistanceToLength(AnnouncementLocation(TrackCondition{TunnelStoppingArea =&gt; True}))
+    Distance=&gt;AnnouncementLocation(Distance=&gt;Distance, TrackCondition=&gt;TrackCondition{TunnelStoppingArea =&gt; True}),
+    Length=&gt; Default.BaseTypes.DistanceToLength(Distance - AnnouncementLocation(Distance=&gt;Distance, TrackCondition=&gt;TrackCondition{TunnelStoppingArea =&gt; True}))
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
@@ -685,8 +1456,8 @@ IN Announcements</Action></Actions>
 ><Comment></Comment>
 INSERT NewAnnouncement(
     TCType=&gt;TCTypeEnum.TurnOffMainSwitch,
-    Distance=&gt;Distance - AnnouncementLocation(TrackCondition{PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; True}),
-    Length=&gt;Default.BaseTypes.DistanceToLength(AnnouncementLocation(TrackCondition{PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; True}))
+    Distance=&gt;AnnouncementLocation(TrackCondition =&gt; TrackCondition{PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; True}, Distance =&gt; Distance),
+    Length=&gt;Default.BaseTypes.DistanceToLength(Distance - AnnouncementLocation(TrackCondition =&gt; TrackCondition{PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; True}, Distance =&gt; Distance))
 )
 IN Announcements</Action></Actions>
 </RuleCondition></Conditions>
@@ -719,6 +1490,7 @@ IN Announcements</Action></Actions>
  Name="Lower pantograph"
  Guid="58b850dc-8c38-4ce6-a31f-ae670c948a02"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="c68d40ee-f5a4-4f8e-ba80-2fc479e333b6"
@@ -726,9 +1498,10 @@ IN Announcements</Action></Actions>
 <Actions>
 <Action
  Guid="9dfb5fcc-fb6f-48fa-88d8-65cdd277f680"
->INSERT NewAnnouncement(
+><Comment></Comment>
+INSERT NewAnnouncement(
     TCType=&gt;TCTypeEnum.LowerPantograph,
-    Distance=&gt;Distance Default.BaseTypes.LengthToDistance(Length),
+    Distance=&gt;Distance + Default.BaseTypes.LengthToDistance(Length),
     Length=&gt;Default.BaseTypes.Length.NA
 )
 IN Announcements</Action></Actions>
@@ -752,6 +1525,75 @@ INSERT NewAnnouncement(
 IN Announcements</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="DisplayAnnouncement"
+ Guid="72601b5a-1b53-4bb9-bf5d-28ce7cceeeb3"
+>
+<ReqRef
+ Id="a155d204-c214-45ff-a2b4-045e5aa12ba8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0de8f4ac-1d81-4c26-b4e4-3074af3b6db4"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="TCAnnouncementStruct"
+ Name="Announcement"
+ Guid="9113456c-036b-4dc3-994b-521224d97b0f"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Copy announcement into the DMI variable"
+ Guid="2d817a25-fe3b-4a3a-97a0-68e9157dbbf4"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Is in sound horn group"
+ Guid="3f68b5fb-f3ab-467b-8c42-ab0f2041956c"
+>
+<PreConditions>
+<PreCondition
+ Guid="1f5cc126-5af0-495b-8a3e-512b10b289a0"
+>IsInSoundHornGroup(Announcement.Type)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9cc08fb8-cfcd-4538-a77e-1063f0f5b26c"
+>INSERT AnnouncementWithEnd(Announcement) IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Announcements</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Is in brake inhibition group"
+ Guid="77a65408-382a-4917-983a-5ab299330fa7"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e8de1ca5-53b8-4cc9-9a44-5f5a035de6b4"
+>INSERT AnnouncementWithEnd(Announcement) IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.Announcements</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Delete from kernel"
+ Guid="bbc867a3-01c7-47fd-80bb-1275e6e04a7b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Is in sound horn group"
+ Guid="3715044b-c160-453c-93cd-15c1b635532f"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="8f67b1c5-2634-4c7c-a000-65b01cbdb10e"
+>Announcements &lt;- MAP Announcements | X != Announcement USING X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -764,5 +1606,39 @@ IN Announcements</Action></Actions>
  Name="Announcements"
  Guid="6fc7bd4f-eb71-4e1a-85e6-deb728a602ed"
 >
-</Variable></Variables>
+<ReqRef
+ Id="3c13572d-5841-4b36-8f01-b73857688c4b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0536a3bb-920a-4187-a6db-23ba703423d9"
+>
+</ReqRef></Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="5.0"
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Name="TimeToKeepAnnouncementsInRear"
+ Guid="c125b9c1-22e6-400f-82bb-e8aabed65601"
+>
+<ReqRef
+ Id="10983fc8-b583-4843-84ff-07a943d53256"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1586212b-499e-411f-9b1b-77a41d8a3a4e"
+>
+</ReqRef><ReqRef
+ Id="35fce87d-1120-47fb-8478-e9057dbcda67"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bd4dcd63-91a9-4bc5-983b-1b921d8c3b29"
+>
+</ReqRef><ReqRef
+ Id="96e826e2-9907-4faa-a010-bae190ca3e11"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4ffb297f-9643-4fd3-96aa-1c2c8bd75ae7"
+>
+</ReqRef><ReqRef
+ Id="68413353-2dd0-4dd6-ba33-b1b4afb1c586"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a9b01e2e-45ba-41e9-810b-11223c94103b"
+>
+</ReqRef></Variable></Variables>
 </NameSpace>
