@@ -78,12 +78,13 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ce82ebb8-5d0e-4aaf-8c62-6db17a9619ed"
 >
-</ReqRef></StructureElement></Structure></Structures>
+</ReqRef><Comment></Comment>
+</StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.TrackDescription.AdhesionFactors.AdhesionFactor"
  Default="[]"
- Y="60"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -95,12 +96,13 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c5445d7b-d0f9-421c-98ba-489109b86ec1"
 >
-</ReqRef></Collection></Collections>
+</ReqRef><Comment></Comment>
+</Collection></Collections>
 <Functions>
 <Function
  Type="Default.BaseTypes.Length"
  Default=""
- Y="180"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -130,8 +132,7 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="110"
- Y="180"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -168,7 +169,7 @@
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="240"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -232,8 +233,7 @@
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="110"
- Y="240"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -346,7 +346,7 @@ IN
  Type="AdhesionFactors"
  DefaultValue=""
  VariableMode="Internal"
- Y="120"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -369,7 +369,6 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="58a1fc31-d19b-4874-ac5d-4a069d9d64ff"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="ed2472a1-ec6f-4b94-b43e-a0b17ee7080c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -390,8 +389,7 @@ IN
  Type="Messages.M_ADHESION"
  DefaultValue="Messages.M_ADHESION.Non_slippery_rail"
  VariableMode="Internal"
- X="110"
- Y="120"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -424,7 +422,7 @@ IN
 <Rules>
 <Rule
  Priority="CleanUp"
- Y="300"
+ Y="780"
  Width="100"
  Height="50"
  Implemented="TRUE"

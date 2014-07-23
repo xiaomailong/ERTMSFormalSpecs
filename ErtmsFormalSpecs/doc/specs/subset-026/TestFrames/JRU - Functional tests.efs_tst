@@ -3329,7 +3329,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="7686f40f-2a38-434f-ba1c-b66e9189d897"
->FORALL_IN JRU.JRU1.JRUMessages | X.SPEED_AND_DISTANCE_MONITORING_INFORMATION == EMPTY</Expectation></Expectations>
+>FORALL_IN JRU.JRU1.JRUMessages | X.SPEED_AND_DISTANCE_MONITORING_INFORMATION == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4df3fc7c-e58c-4771-bed2-fd81ec47850e"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3347,10 +3351,6 @@
 >
 <Actions>
 <Action
- Guid="54d6c3cb-a4e0-4df7-82de-84fe0dee2d10"
->Kernel.SupervisionStatus &lt;- Kernel.SupervisionStatus.Overspeed</Action><Action
- Guid="dae936c9-82a8-4afe-ac16-27e68272bac3"
->Kernel.SpeedAndDistanceMonitoring.Monitoring &lt;- Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target.Start</Action><Action
  Guid="85637054-dc20-4bd3-bc85-695bea7c08b4"
 >Kernel.Level &lt;- Kernel.LevelData{
     Value =&gt; Default.Level.L1,
@@ -3363,7 +3363,15 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="50e58ce1-aeb3-4c57-b12d-e0fef0ddd120"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.SPEED_AND_DISTANCE_MONITORING_INFORMATION != EMPTY</Expectation></Expectations>
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.SPEED_AND_DISTANCE_MONITORING_INFORMATION != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="05224c46-ad85-4e98-b0af-64d840450b19"
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged == True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="add20e9e-41d7-4480-9607-7157a28c64c7"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring not in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

@@ -7,7 +7,6 @@
  Name="Kernel"
  Guid="838d10c3-e56e-4b01-83ac-4480aa6fb8b8"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="ConfidenceInterval"
@@ -1210,7 +1209,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="435cbc21-f914-4c53-8f38-cb27dc77ff22"
->Kernel.DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action><Action
+><Comment></Comment>
+Kernel.DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action><Action
  Guid="350eeb7b-97b2-481a-bbc9-e9a9aacb5b12"
 >Kernel.DriverId.DataState &lt;- DataState.Valid</Action><Action
  Guid="4679d68d-3e7b-4be1-b781-808efe281d7e"
@@ -3649,7 +3649,6 @@ Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action
  Name="D2"
  Guid="b7f45c15-92a0-4ebd-8b8f-d50275cb30fa"
 >
-<Comment></Comment>
 <StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -6882,7 +6881,7 @@ Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action
 <Actions>
 <Action
  Guid="d367c039-b4a7-42a3-a80f-a18eed86e4d4"
->HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action><Action
+>Kernel.HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action><Action
  Guid="180ce797-b671-4585-a52f-426f2fa4056b"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="c9cabf9b-e4f8-4ebb-ace5-dbab095ab111"
@@ -7024,7 +7023,7 @@ Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action
 <Actions>
 <Action
  Guid="7ddbbfa8-8c2a-423e-982b-b4feec5a94ae"
->HandleModeChange &lt;- HandleModeChange.TrainTrip.S160</Action></Actions>
+>Kernel.HandleModeChange &lt;- HandleModeChange.TrainTrip.S160</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="E175"
@@ -7059,7 +7058,7 @@ Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action
 <Actions>
 <Action
  Guid="6f1a6f0a-0a50-49dc-a9c6-9024364d3bd2"
->HandleModeChange &lt;- HandleModeChange.TrainTrip.S170</Action></Actions>
+>Kernel.HandleModeChange &lt;- HandleModeChange.TrainTrip.S170</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -9730,14 +9729,16 @@ ModeTransitions.UpdateMode()</Action></Actions>
 >
 <PreConditions>
 <PreCondition
- Guid="2cc5b813-3d35-4889-a890-eb42ed47ff3b"
->ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
+ Guid="1259a90a-34f0-4615-8fdf-2fb95b569326"
+><Comment></Comment>
+ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
  Guid="ee4d3703-e480-48f3-87e0-63c40fc3770d"
 >SpeedAndDistanceMonitoring.Monitoring in SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="f3ed2219-1964-4f3a-8255-fcbc71b7eb9f"
->SpeedAndDistanceMonitoring.UpdateMonitoring()</Action></Actions>
+ Guid="f58ff8d3-2659-4992-92c1-4aa6cfb46808"
+><Comment></Comment>
+SpeedAndDistanceMonitoring.SelectMonitoringType()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -9848,7 +9849,6 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Train position"
  Guid="f56351d1-ad26-469d-a848-02640e64e865"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9903,7 +9903,6 @@ BTM.LRBG &lt;- BTM.BaliseGroup
  Name="Train data"
  Guid="5e656b5e-7ed2-486d-996f-eaadfee75e20"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9944,7 +9943,6 @@ BTM.LRBG &lt;- BTM.BaliseGroup
  Name="Train integrity"
  Guid="4f1244da-71cc-4d18-8bcf-52621d1eff4b"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9965,7 +9963,6 @@ BTM.LRBG &lt;- BTM.BaliseGroup
  Name="Power on"
  Guid="47ba31e2-ec3f-4faf-92d8-aea5dca9da87"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -10346,50 +10343,6 @@ Kernel.EmergencyStops</Action></Actions>
 >
 </ReqRef><Comment>The indication location at MRSP speed.</Comment>
 </Variable><Variable
- Type="SupervisionStatus"
- DefaultValue=""
- VariableMode="Internal"
- X="420"
- Y="30"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- Name="SupervisionStatus"
- Guid="2ddc647d-7d6d-47ef-b66e-23e93b18c46e"
->
-<ReqRef
- Id="b8bd12fa-1398-4b7e-82b5-d9fea4894091"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6c6154a2-f92b-4d09-8ad7-c12cbc13350a"
->
-</ReqRef><ReqRef
- Id="10645ba3-8d86-41ad-9956-71f5be85b4c1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="321147f7-744f-4ad9-a1b8-0352a478f74b"
->
-</ReqRef><Comment></Comment>
-</Variable><Variable
- Type="Default.BaseTypes.Distance"
- DefaultValue="0.0"
- VariableMode="Internal"
- X="370"
- Y="470"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TargetDistance"
- Guid="26e74542-3516-4883-97e5-b45b3f97645a"
->
-<ReqRef
- Id="c5c3fd28-41ac-4ad2-a5ea-ba3e63205382"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="99a6061c-85c1-43c3-9737-4920568539f4"
->
-</ReqRef><Comment>The target distance of the train.</Comment>
-</Variable><Variable
  Type="Kernel.NationalValues.NationalDefaultData"
  DefaultValue=""
  VariableMode="Internal"
@@ -10645,8 +10598,7 @@ Kernel.EmergencyStops</Action></Actions>
 <Actions>
 <Action
  Guid="4d92d3d4-cacc-45f7-affb-7dd10a2b80ed"
-><Comment></Comment>
-HandleInputs()</Action></Actions>
+>HandleInputs()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"

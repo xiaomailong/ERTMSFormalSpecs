@@ -529,10 +529,6 @@ namespace DataDictionary.Interpreter
                                 {
                                     AddError("Error while computing value for " + Right.ToString());
                                 }
-                                if (Left.Name.Contains("EddyCurrentBrakeInterface"))
-                                {
-                                    //    System.Diagnostics.Debugger.Break();
-                                }
                             }
                             break;
 

@@ -388,19 +388,25 @@
  Guid="a4e6e6b8-effa-4367-a651-06b7d80948fe"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Balise Group setup"
+ Name="Sub-step 2 - Initialize elements for MA"
+ Guid="ff938e8b-0184-4890-b16e-c38c7828f699"
+>
+<Actions>
+<Action
+ Guid="b3435b61-7a92-4d7a-9aaf-a03f82fa4fba"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Balise Group setup"
  Guid="092959b1-39ea-4e07-b44f-a111932be729"
 >
 <Actions>
 <Action
- Guid="336015f8-7d8c-4237-b8ac-cc1bae844ef0"
->BTM.LRBG &lt;- EMPTY</Action><Action
  Guid="4d3c9161-a94a-4e46-9049-dc15813314ed"
 >BTM.PreviousLRBGs &lt;- []</Action><Action
  Guid="2e060564-cb52-4933-9704-e8d806049d73"
->Odometry.NominalDistance &lt;- 0.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 100.0</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 3 - Give the train some data"
+ Name="Sub-step 4 - Give the train some data"
  Guid="20af7b53-bc06-41d3-a98a-9ac9bd3e9716"
 >
 <Actions>

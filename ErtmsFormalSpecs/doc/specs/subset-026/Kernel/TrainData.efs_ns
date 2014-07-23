@@ -655,6 +655,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="16737de5-6127-4845-9d40-d3fe26409b1e"
 >
+<Comment></Comment>
 </ReqRef><Comment>Represents the equivalent brake build up time (T_brake_build_up) for the service brake.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Percentage"
@@ -707,6 +708,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3331b0a7-4c8c-4138-8d01-0ccf3bd8681e"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="6daa6231-e601-4f4d-80cc-590024cf24ec"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1594,7 +1596,8 @@
             }
         }</Action><Action
  Guid="5ec015f3-36e0-4bcf-b170-e8e6506cc952"
->TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+><Comment></Comment>
+TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
     EddyCurrent =&gt; 12.0,
     EddyCurrent_Magnetic =&gt; 14.0,
@@ -2079,7 +2082,7 @@
 <Actions>
 <Action
  Guid="0361adbf-b6aa-4058-87ae-8ada5224f5e6"
->SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action></Actions>
+>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.InitializeTimeIntervals()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2099,7 +2102,8 @@
 <Actions>
 <Action
  Guid="0c072176-e823-4329-a6f7-99664157752b"
->SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action></Actions>
+><Comment></Comment>
+SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.UpdateReleaseSpeed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

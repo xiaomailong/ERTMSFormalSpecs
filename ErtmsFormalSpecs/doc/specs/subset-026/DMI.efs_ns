@@ -7,7 +7,6 @@
  Name="DMI"
  Guid="27079fd5-b597-44b6-9a91-248896c6f707"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="IN"
@@ -9344,7 +9343,8 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4a21579d-6160-4b38-95ec-22f82c7e6a08"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment></Comment>
+</StructureElement><StructureElement
  TypeName="OUT.PermittedSpeed"
  Default=""
  Mode="Outgoing"
@@ -10290,8 +10290,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 </StructureElement></Structure><Structure
  Default=""
- X="660"
- Y="60"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10328,7 +10327,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  TypeName="RBCContactActionEnum"
  MaxSize="5"
  Default="[]"
- Y="120"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10361,7 +10360,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 <Function
  Type="DMI.DMIStruct"
  Default=""
- Y="240"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10398,7 +10397,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Type="DMI.DMIStruct"
  Default=""
  X="110"
- Y="240"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10439,7 +10438,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Type="Boolean"
  Default=""
  X="220"
- Y="240"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10459,7 +10458,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Type="TIU.CabStruct"
  Default=""
  X="330"
- Y="240"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10504,7 +10503,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Type="Boolean"
  Default=""
  X="440"
- Y="240"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10553,7 +10552,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Type="Boolean"
  Default=""
  X="550"
- Y="240"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10601,7 +10600,7 @@ NOT DeskIsOpen ( DMI2 )</Expression>
  Type="DMI.DMIStruct"
  DefaultValue=""
  VariableMode="InOut"
- Y="180"
+ Y="240"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -10618,7 +10617,7 @@ NOT DeskIsOpen ( DMI2 )</Expression>
  DefaultValue=""
  VariableMode="InOut"
  X="110"
- Y="180"
+ Y="240"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -10634,7 +10633,7 @@ NOT DeskIsOpen ( DMI2 )</Expression>
 <Rules>
 <Rule
  Priority="Processing"
- Y="300"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"

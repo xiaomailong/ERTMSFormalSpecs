@@ -1010,14 +1010,14 @@ InitializeMessage()</Action></Actions>
 >PreviousElectroPneumaticBrakeStatus &lt;- TIU.SpecialBrakeStatus.EPBrakeIsActive</Action><Action
  Guid="f986b9dc-68c2-48f4-aa19-15bc06d987e7"
 >PreviousAdditionalBrakeStatus &lt;- TIU.AdditionalBrakesActive</Action><Action
- Guid="e147e5df-e42d-47f4-b4b4-bfe04454a4d4"
->PreviousSpeedAndDistanceSuppervisionStatus &lt;- Kernel.SupervisionStatus</Action><Action
  Guid="58633a81-4072-494e-a17d-19e34b04acc0"
->PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><Action
+><Comment></Comment>
+PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><Action
  Guid="d461f9a5-7f7b-482b-8ffa-2ca4aed6d474"
 >PreviousTargetSpeed &lt;- DMI.MasterDMI().Out_TargetSpeed.Speed</Action><Action
  Guid="cc02b5bb-d96c-46dd-a3bf-abe2b314c992"
->PreviousTargetDistance &lt;- Kernel.TargetDistance</Action><Action
+><Comment></Comment>
+PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</Action><Action
  Guid="0eb30b56-c6ab-4c4d-800f-f09532b1c04c"
 >PreviousReleaseSpeed &lt;- DMI.MasterDMI().Out_ReleaseSpeed.Speed</Action><Action
  Guid="ac4c4305-a3dd-45af-9761-831aaa483ba3"
@@ -1067,17 +1067,37 @@ InitializeMessage()</Action></Actions>
  Name="Update FLOI"
  Guid="1daf6c7f-b2f7-473b-9358-cd415058af78"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f5d3dccb-474d-4877-afbc-cf2657785d82"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target</PreCondition><PreCondition
- Guid="136dc8f7-706e-49f4-a35c-cc7fca27d68a"
->Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9bc80e3a-1a1a-429f-98aa-42c1d4d761ce"
->PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</Action></Actions>
+>PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_FLOI_DMI()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Track speed and distance monitoring supervision status"
+ Guid="af1305d0-ad22-4ad8-ab01-4a070ddb4fb7"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Track supervision status"
+ Guid="6167afb7-3ff4-407b-bbd0-d020c5fba3cb"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="e4223728-87c9-42d3-9260-16f943874a4a"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e147e5df-e42d-47f4-b4b4-bfe04454a4d4"
+>PreviousSpeedAndDistanceSupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1441,7 +1461,7 @@ InitializeMessage()</Action></Actions>
 </ReqRef><Comment>Will store the previous additional brakes status</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
- Default="False"
+ Default=""
  Mode="Internal"
  Implemented="TRUE"
  Name="SpeedAndDistanceSupervisionTypeChanged"
@@ -1457,14 +1477,13 @@ InitializeMessage()</Action></Actions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="e94d2665-1917-4943-b0ed-1c591f8a9aa1"
 >
-<Comment></Comment>
 </ReqRef><Comment>Will store the previous value of the M_SDMTYPE variable</Comment>
 </StructureElement><StructureElement
  TypeName="Kernel.SupervisionStatus"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="PreviousSpeedAndDistanceSuppervisionStatus"
+ Name="PreviousSpeedAndDistanceSupervisionStatus"
  Guid="201ec3dc-44e2-48e3-aef0-755635fe2d0e"
 >
 <ReqRef
@@ -6171,8 +6190,8 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 </Function><Function
  Type="Messages.JRU.M_AB_STATUS"
  Default=""
- X="110"
- Y="720"
+ X="70"
+ Y="710"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6268,10 +6287,12 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
  Name="NormalStatus"
  Guid="a7e2039a-a33b-4611-aab6-c3e6252b1712"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="07ac1eae-7593-4e1e-a3da-e63d16ac8bcc"
->Kernel.SupervisionStatus == Kernel.SupervisionStatus.Normal</PreCondition></PreConditions>
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Normal</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMSUPSTAT.Normal_status</Expression>
 </Case><Case
  Name="InticationsStatus"
@@ -6280,7 +6301,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="21f25c2e-9685-471a-97bb-041773f1f6be"
->Kernel.SupervisionStatus == Kernel.SupervisionStatus.Indication</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Indication</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMSUPSTAT.Indication_status</Expression>
 </Case><Case
  Name="OverspeedStatus"
@@ -6289,7 +6310,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="cdd52112-b870-4727-b72d-2133ff2c2508"
->Kernel.SupervisionStatus == Kernel.SupervisionStatus.Overspeed</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Overspeed</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMSUPSTAT.Overspeed_status</Expression>
 </Case><Case
  Name="WarningStatus"
@@ -6298,7 +6319,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="a57fe756-6732-4947-b79e-1c37a9943b9c"
->Kernel.SupervisionStatus == Kernel.SupervisionStatus.Warning</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Warning</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMSUPSTAT.Warning_status</Expression>
 </Case><Case
  Name="InterventionStatus"
@@ -6307,7 +6328,7 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="c8eec333-ca81-4140-b160-66111e8e215d"
->Kernel.SupervisionStatus == Kernel.SupervisionStatus.Intervention</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Intervention</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMSUPSTAT.Intervention_status</Expression>
 </Case></Cases>
 </Function><Function
@@ -6328,12 +6349,10 @@ M_NON_LEADING =&gt; ToJruNonLeadingPermited()
  Name="CSM"
  Guid="a60d076f-ce4a-4a1e-a276-1e3e7fc211b6"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1a616611-6e7d-4a54-ab2e-cc083381415a"
-><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling.Start, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling.MonitoringCeilingSpeed]</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Ceiling_speed_monitoring__CSM</Expression>
 </Case><Case
  Name="TSM"
@@ -6342,7 +6361,7 @@ Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitori
 <PreConditions>
 <PreCondition
  Guid="915ead74-5b53-434c-8c19-72d423b31cf2"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target.TSM</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Target_speed_monitoring__TSM</Expression>
 </Case><Case
  Name="RSM"
@@ -6351,19 +6370,12 @@ Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitori
 <PreConditions>
 <PreCondition
  Guid="79088302-a61b-4499-9717-0db5a3e9ca11"
-><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed.Start, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.ReleaseSpeed.MonitoringReleaseSpeed]</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Release_speed_monitoring_RSM</Expression>
 </Case><Case
  Name="PIM"
  Guid="06dabf03-731f-4ff7-a9c9-cbddddbaa6e3"
 >
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="a1bb5c9b-1fcd-446f-91ad-9562b156355f"
-><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target.PIM, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target.Start]</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMTYPE.Pre_indication_monitoring__PIM</Expression>
 </Case></Cases>
 </Function><Function
@@ -6404,10 +6416,10 @@ Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitori
 M_SDMTYPE =&gt; ToJruSpeedAndDistanceMonitoringType(),
 M_SDMSUPSTAT =&gt; ToJruSpeedAndDistanceMonitoringsupervisionStatus(),
 V_PERM =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_PermittedSpeed.Speed ),
-V_FLOI=&gt;ToMessagesSpeed(Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()),
+V_FLOI=&gt;ToMessagesSpeed(Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_FLOI_DMI()),
 V_TARGET =&gt;ToMessagesSpeed(DMI.MasterDMI().Out_TargetSpeed.Speed),
 D_TARGET=&gt; ToMessagesDistance(
-    distance=&gt;Kernel.TargetDistance,
+    distance=&gt;Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance(),
     scale=&gt;Messages.JRU.Q_SCALE._1_m_scaleC
 ),
 V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
@@ -6479,6 +6491,7 @@ V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
  Name="Available"
  Guid="9cc95c12-9865-4286-a8c3-683d2e34e245"
 >
+<Comment></Comment>
 <Expression>Default.MessageTypes.UnScaleDistance(
     distance=&gt;distance,
     scale=&gt;scale
@@ -6526,7 +6539,9 @@ jru.SpeedAndDistanceSupervisionTypeChanged</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="0f85d667-58cc-4f06-9c3a-6a0eea33498d"
->jru.PreviousSpeedAndDistanceSuppervisionStatus != Kernel.SupervisionStatus</PreCondition></PreConditions>
+>Kernel.ActiveFunctions.SuperviseTrainSpeed()
+  AND  
+jru.PreviousSpeedAndDistanceSupervisionStatus != Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="PremittedSpeedChanged"
@@ -6545,9 +6560,9 @@ jru.SpeedAndDistanceSupervisionTypeChanged</PreCondition></PreConditions>
 <PreCondition
  Guid="13358226-042e-4eb7-a8e9-c752639ee537"
 ><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.Monitoring.Target
+Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target
   AND
-jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_FLOI_DMI()</PreCondition></PreConditions>
+jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_FLOI_DMI()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="TargetSpeedChanged"
@@ -6565,7 +6580,8 @@ jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_
 <PreConditions>
 <PreCondition
  Guid="c720d35c-be42-4990-831b-743cec7e607b"
->jru.PreviousTargetDistance != Kernel.TargetDistance</PreCondition></PreConditions>
+><Comment></Comment>
+jru.PreviousTargetDistance != Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="ReleaseSpeedChanged"
@@ -6574,7 +6590,8 @@ jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_
 <PreConditions>
 <PreCondition
  Guid="4fb5f380-6cb1-436f-ba6f-2de471ea9771"
->jru.PreviousReleaseSpeed != DMI.MasterDMI().Out_ReleaseSpeed.Speed</PreCondition></PreConditions>
+><Comment></Comment>
+jru.PreviousReleaseSpeed != DMI.MasterDMI().Out_ReleaseSpeed.Speed</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"

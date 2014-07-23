@@ -10,15 +10,15 @@
 <Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
- Name="CeilingSupervision"
+ Name="CeilingSpeedMonitoring"
  Guid="a4fc87f0-f9e3-4718-986e-7a7020dc12ef"
 >
 </NameSpaceRef><NameSpaceRef
- Name="TargetSupervision"
+ Name="TargetSpeedMonitoring"
  Guid="b4a654cf-3d2b-4910-82e9-b6e00ac05387"
 >
 </NameSpaceRef><NameSpaceRef
- Name="ReleaseSpeedSupervision"
+ Name="ReleaseSpeedMonitoring"
  Guid="2bb7559d-fea6-4f5f-b0bc-c7427d01c7a3"
 >
 </NameSpaceRef><NameSpaceRef
@@ -26,56 +26,9 @@
  Guid="1694a829-9e08-4edb-b256-3f607da06326"
 >
 </NameSpaceRef></NameSpaces>
-<Enumerations>
-<Enum
- Default="SupervisionStatus.Normal"
- X="200"
- Y="360"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SupervisionStatus"
- Guid="425b2655-5563-4f7d-a175-e9ccc940ac92"
->
-<ReqRef
- Id="b8bd12fa-1398-4b7e-82b5-d9fea4894091"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="52b548fe-0bc1-4a21-b805-664ea56c1ccf"
->
-</ReqRef><Comment>Indicates the current supervision status of the train.</Comment>
-<Values>
-<EnumValue
- Value="0"
- Name="Normal"
- Guid="6b67c3eb-f991-4ad6-9b02-49f003cb70c3"
->
-</EnumValue><EnumValue
- Value="1"
- Name="Indication"
- Guid="26e7f129-502b-465c-b91e-62a92a2cfbc5"
->
-</EnumValue><EnumValue
- Value="2"
- Name="Overspeed"
- Guid="d89741f5-f481-44f1-8c4a-44403efbf242"
->
-</EnumValue><EnumValue
- Value="3"
- Name="Warning"
- Guid="1a5a94a3-fc6d-4ba4-bb7d-abc158d96508"
->
-</EnumValue><EnumValue
- Value="4"
- Name="Intervention"
- Guid="961451cc-ec43-4b91-ae94-3425c4dcd0e3"
->
-</EnumValue></Values>
-</Enum></Enumerations>
 <StateMachines>
 <StateMachine
- Default="Idle"
- X="70"
- Y="360"
+ Default="Ceiling"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -128,11 +81,32 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fa581db5-42d7-473e-afd4-8485d5298f02"
 >
+</ReqRef><ReqRef
+ Id="cc36e13a-d68f-444d-9d8e-e9c7b6082a52"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68fe477b-d35a-43cd-a620-31dca9e75ff1"
+>
+</ReqRef><ReqRef
+ Id="c0c90876-1322-4533-951c-924804b80043"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="853aab1f-89d5-4d35-af23-7575771b9c2e"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="f966f396-c00e-4f6b-945d-6cde4527e814"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88857337-a249-40c8-88b6-6aee76329c62"
+>
+</ReqRef><ReqRef
+ Id="620d2411-2c42-403d-9139-cdb6a68c48b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc5e7a10-907e-482f-be20-47cac37b3439"
+>
 </ReqRef><Comment>Lists the types of speed and distance monitoring and handles transitions between them</Comment>
 <States>
 <State
- X="140"
- Y="240"
+ X="80"
+ Y="340"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -141,69 +115,492 @@
 >
 <Comment>Ceiling Speed Monitoring.</Comment>
 <StateMachine
- Default="Start"
+ Default="Ceiling.Normal"
  Implemented="TRUE"
  Guid="11f43511-b66c-40ff-9cd8-49fc31a1e9cd"
 >
 <States>
 <State
- X="50"
- Y="80"
+ X="220"
+ Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="Start"
- Guid="85b510a2-816e-40c2-a07e-07b074579db2"
+ Name="Normal"
+ Guid="9a91a3dd-9d67-45f1-aaf7-ca93ab42ca33"
 >
-<Comment>Actions to take when entering the state.</Comment>
+<Comment>Normal status.</Comment>
 <StateMachine
  Implemented="TRUE"
- Guid="0ad52c37-1598-4f03-ad37-88ab2b543f94"
+ Guid="5fc83163-4dab-4cba-845b-14e4cfd64b24"
 >
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Record Type Change"
- Guid="e9022530-2a77-4a8b-b0e3-479efed8a498"
+ Name="Update Supervision Status"
+ Guid="aa198f35-bf50-428a-a070-cb002b1d031d"
 >
-<Comment>When this state is entered, record that the supervision type was changed for the JRU and revise the supervision status</Comment>
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Record Change"
- Guid="06055916-4de7-4e04-91b0-6acfca8e7eed"
+ Name="To intervention status"
+ Guid="59f2c155-8c18-4e27-b8b2-d96bbb771aed"
 >
-<Comment>Indicates to the JRU that the monitoring type has changed</Comment>
+<ReqRef
+ Id="58cc5fd9-b319-4df9-87ac-13d82ceb4312"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6f7e8a90-767c-4074-bb64-c3e871975bf5"
+>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="0a877799-74c6-43ee-a1f5-0da5e109a0b1"
+>CeilingSpeedMonitoring.SupervisionStatus.t4()
+  OR  
+CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d4f1b09b-8b81-4f79-852a-c706434fe9fa"
+>THIS &lt;- Ceiling.Intervention</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger emergency brake"
+ Guid="9b46c59e-2c30-4830-a31b-6de455c43d8b"
+>
+<Comment>Trigger 5 also trigger the emergency brake command.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Emergency brake command"
+ Guid="568ce468-3bc0-4eb1-98e4-c48bd8bdcd5c"
+>
+<PreConditions>
+<PreCondition
+ Guid="82608bfc-a68a-44b2-bbfb-aa6ab2c31f43"
+>CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a6d2fbd8-0f64-4192-a5b2-84163e5af965"
+>TriggerEBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger service brake"
+ Guid="ff163483-29c3-4f5c-b15c-8223f3e2aea7"
+>
+<Comment>Trigger 4 also triggers the service brake command.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Service brake command"
+ Guid="e2a1c349-f37d-4da3-9d2a-c2d20f1fdff5"
+>
+<PreConditions>
+<PreCondition
+ Guid="c93f07ac-b68a-4980-8000-613ed3127308"
+>CeilingSpeedMonitoring.SupervisionStatus.t4()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c6d6c81f-7cd1-4580-9f24-216bc4ab4677"
+>TriggerSBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To warning status"
+ Guid="d6a6d61b-9ecd-43ed-a433-fb6d11a33010"
+>
+<ReqRef
+ Id="c7bd0529-99a5-4600-bea6-5ef4c7039d03"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b89fbb88-683c-4134-ad86-94d91c5c59d2"
+>
+</ReqRef><Comment>Trigger warning status, priority 2.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="3f822123-8248-4847-bddb-d174e4e66ab7"
+>CeilingSpeedMonitoring.SupervisionStatus.t3()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ae30d053-d02c-4746-bc91-d38f997cf2ea"
+>THIS &lt;- Ceiling.Warning</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To overspeed status"
+ Guid="6dad9d0d-a9b1-466d-ae7c-c2268c63892e"
+>
+<ReqRef
+ Id="ec408fb0-3a70-40f7-81a8-7756f7442566"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="33e28ba1-1ca3-47fd-be6e-b4d108bd9cf4"
+>
+</ReqRef><Comment>Trigger overspeed status, priority .</Comment>
+<PreConditions>
+<PreCondition
+ Guid="c930ec8e-b48a-484d-980a-2852b8e7d897"
+>CeilingSpeedMonitoring.SupervisionStatus.t2()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7623f15e-2e03-4f14-a080-18758c352e3b"
+>THIS &lt;- Ceiling.Overspeed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="480"
+ Y="270"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Overspeed"
+ Guid="45e0bfcf-d273-4d7f-9f2e-301363f9d68b"
+>
+<Comment>Overspeed status.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="e7f7e587-41ae-4d7b-8350-5d1f64d2faa8"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Supervision Status"
+ Guid="debab188-b9f4-492b-9851-4c18d095533c"
+>
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="To normal status"
+ Guid="5acb2b2c-b019-4a3a-8bdf-efa4e439b6d7"
+>
+<ReqRef
+ Id="644aa967-53f8-4d2c-b5ba-6a857c9cda54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4358e5de-10c9-45d8-bdf5-8c13eb7348e3"
+>
+</ReqRef><Comment>Revoke overspeed status to normal status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="155a5826-4ca6-4c08-9969-8d9809cedddf"
+>CeilingSpeedMonitoring.SupervisionStatus.r1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0bcff294-0f03-4ad9-b4c5-2b0f78b2c25c"
+>THIS &lt;- Ceiling.Normal</Action><Action
+ Guid="0f64190b-782e-48be-b66d-a65acf3d7f43"
+>RevokeSBCommand()</Action><Action
+ Guid="82c762f1-1a5c-4acf-baa9-4f3a88995b97"
+>RevokeEBCommand()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To intervention status"
+ Guid="d47e3e9d-a4f7-43b8-b148-f83a4420bb21"
+>
+<ReqRef
+ Id="58cc5fd9-b319-4df9-87ac-13d82ceb4312"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8dd640ab-bf8e-45fa-b385-fb0e8bf87bf0"
+>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="1706dc4d-7a55-4dff-8e48-18d6c78e2e98"
+>CeilingSpeedMonitoring.SupervisionStatus.t4()
+  OR  
+CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9a4cf466-7670-4920-bee7-61f05887b6a8"
+>THIS &lt;- Ceiling.Intervention</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger service brake"
+ Guid="2989dfdc-0b1f-4437-a2bc-7362d7329000"
+>
+<Comment>Trigger 4 also triggers the cervice brake command.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Service brake command"
+ Guid="52090681-f5f1-4fac-8bd3-3f8d408e5c2d"
+>
+<PreConditions>
+<PreCondition
+ Guid="47495138-d5a7-4529-9e84-ec360b1582cf"
+>CeilingSpeedMonitoring.SupervisionStatus.t4()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="aaefa0d5-8dc4-483b-bc39-01a504e9b24e"
+>TriggerSBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger emergency brake"
+ Guid="f4d65d86-db6c-45d2-99b0-0fdfd7fe7335"
+>
+<Comment>Trigger 5 also triggers the emergnecy brake command.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Emergency brake command"
+ Guid="414c2661-bcff-43c0-b27f-db8c86bf8483"
+>
+<PreConditions>
+<PreCondition
+ Guid="759e6e9b-e183-48c4-812e-85966fa7eaae"
+>CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="cb72271d-3f8f-4114-950d-fabd00a8e402"
+>TriggerEBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To warning status"
+ Guid="05aed128-7a36-4eba-bf13-f901a5a17fe7"
+>
+<ReqRef
+ Id="c7bd0529-99a5-4600-bea6-5ef4c7039d03"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f60a9be1-2f80-4cff-a173-a8c5d7d4b385"
+>
+</ReqRef><Comment>Trigger warning status, priority 2.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d222a7d8-6a85-41f9-b9d7-3dfa8ee8a0f3"
+>CeilingSpeedMonitoring.SupervisionStatus.t3()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="18bf46a2-c513-422f-b7d3-e78bf24aed8c"
+>THIS &lt;- Ceiling.Warning</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="230"
+ Y="270"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Warning"
+ Guid="fc18048a-c0fe-4ed9-aff4-afcfdad18e05"
+>
+<Comment>Warning status.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="b37970a0-5c0a-4ac4-bf00-04fa9ce0dd85"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Supervision Status"
+ Guid="21557f49-bc5c-4c49-9b01-cff833cd85bd"
+>
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="To normal status"
+ Guid="4b9b869f-f6f0-4240-bc8c-231f6425e2da"
+>
+<ReqRef
+ Id="644aa967-53f8-4d2c-b5ba-6a857c9cda54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8649e022-2f5d-4da4-a014-9139c10289cd"
+>
+</ReqRef><Comment>Revoke warning status to normal status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="bfbc37ce-9d92-402a-8bc2-55df87878fa5"
+>CeilingSpeedMonitoring.SupervisionStatus.r1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e5e79ef8-1a39-44fd-ade6-5986186fcbb8"
+>RevokeEBCommand()</Action><Action
+ Guid="cace7409-44d5-4e8d-868e-b499df3c4656"
+>RevokeSBCommand()</Action><Action
+ Guid="817fa162-2296-4161-b34d-2ffdd44d1b74"
+>THIS &lt;- Ceiling.Normal</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To intervention status"
+ Guid="9107756d-ca80-49e6-9686-c698eb85651f"
+>
+<ReqRef
+ Id="58cc5fd9-b319-4df9-87ac-13d82ceb4312"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6a3eb4e9-b2fa-499b-bcf3-01cd3b01e1f7"
+>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="cce87685-6ae3-4736-b400-e34d7c296b02"
+>CeilingSpeedMonitoring.SupervisionStatus.t4()
+  OR  
+CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8b8a0c86-e8f7-4352-a8f8-f14540973b85"
+>THIS &lt;- Ceiling.Intervention</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger service brake"
+ Guid="8128fe2a-7505-445d-b40e-4002b5e21008"
+>
+<Comment>Trigger 4 also triggers the cervice brake command.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Service brake command"
+ Guid="cd2351ac-1466-4ff4-aa03-b32b76f9ea29"
+>
+<PreConditions>
+<PreCondition
+ Guid="755f27bd-b7d2-4f82-a4da-239607e2113d"
+>CeilingSpeedMonitoring.SupervisionStatus.t4()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ecdddfc8-b5cb-4811-a4ff-a6d676def9f9"
+>TriggerSBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger emergency brake"
+ Guid="201c89f4-74d9-4bdb-8b6c-9ad344b9296e"
+>
+<Comment>Trigger 5 also triggers the emergnecy brake command.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Emergency brake command"
+ Guid="e45a1050-658d-44c9-a043-9eade98391ec"
+>
+<PreConditions>
+<PreCondition
+ Guid="8eb8007d-82e0-4300-bdee-1ab66a82ad4c"
+>CeilingSpeedMonitoring.SupervisionStatus.t5()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9e2692d3-b502-49b3-9a62-fba8aac3e7f3"
+>TriggerEBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="480"
+ Y="70"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Intervention"
+ Guid="12c96138-24fa-468c-a28c-5873a73754c3"
+>
+<Comment>Intervention status.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="42d7f7a3-0ae5-49ec-8c3b-8dd602f38965"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Supervision Status"
+ Guid="5ef6a9db-c456-475a-a108-11cc8d77a9c0"
+>
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="To normal status"
+ Guid="8d74bcbd-1eb0-4152-af49-a8af72f454f1"
+>
+<ReqRef
+ Id="644aa967-53f8-4d2c-b5ba-6a857c9cda54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d277a5e6-fb3d-4fba-a0c1-cebedac35673"
+>
+</ReqRef><Comment>Revoke intervention status to normal status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="52406f8d-f9c7-4772-82d9-fe1016c6c270"
+>CeilingSpeedMonitoring.SupervisionStatus.r0()
+  OR  
+CeilingSpeedMonitoring.SupervisionStatus.r1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="26e62111-86c9-48ed-96f0-e1ba75ed6793"
+>THIS &lt;- Ceiling.Normal</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Revoke emergency brake"
+ Guid="544eba29-9113-45cc-950f-5e2edb7d1412"
+>
+<Comment>Revocations 0 and 1 also revoke emergency brake commands.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Emergency brake command"
+ Guid="c808d167-6474-40d9-b6a0-39693e5449f5"
+>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="a21ce3f8-9147-429c-bfb5-3a82d328646a"
-><Comment></Comment>
-JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
- Guid="929fe96c-120f-4740-a4e8-b92a4eb3d5d1"
-><Comment></Comment>
-DetermineSupervisionStatus()</Action><Action
- Guid="3dde4b50-ef4e-45cf-8795-4f1217c66e85"
->THIS &lt;- MonitoringCeilingSpeed</Action></Actions>
+ Guid="cb71f196-1145-4d1a-ba4b-b09787db41b0"
+>RevokeEBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Revoke service brake"
+ Guid="eb9ad14e-1eb9-4aa8-82ce-44531fc2380b"
+>
+<Comment>Revocation 1 also revokes service brake commands</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Service brake command"
+ Guid="44f7bc6a-ff6c-46cc-a3d2-e19f1665ee86"
+>
+<PreConditions>
+<PreCondition
+ Guid="c8edc09c-aebf-4999-8dc0-0bf8987a6478"
+>CeilingSpeedMonitoring.SupervisionStatus.r1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="76c888f8-a330-4870-ae69-0bd7a0fd8b13"
+>RevokeSBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</StateMachine></State><State
- X="50"
- Y="200"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="MonitoringCeilingSpeed"
- Guid="0c7baf12-191d-458e-b33d-fc84dde5b5a5"
->
-<Comment>In CSM state</Comment>
-<StateMachine
- Implemented="TRUE"
- Guid="d45e4a5e-c872-4ea3-ad19-4d0f5ec36313"
->
 </StateMachine></State></States>
 <Rules>
 <Rule
@@ -220,6 +617,7 @@ DetermineSupervisionStatus()</Action><Action
  Name="Train passed pre-indication location"
  Guid="96f51d81-7bf9-40c4-850f-8aafa0a90aa9"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d984a754-d9a0-4a30-ad3c-10001df8ecf0"
@@ -227,127 +625,834 @@ DetermineSupervisionStatus()</Action><Action
 Condition1()</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="24551215-3f50-43dc-95d4-95a90ecbb76f"
->THIS &lt;- MonitoringTypeSM.Target.Start</Action></Actions>
+ Guid="acffd539-8dfa-4740-9930-3f8c6adee307"
+>DetermineSupervisionStatus(Target)</Action><Action
+ Guid="5de6afb7-fad9-40ae-b54b-e37308759455"
+><Comment></Comment>
+JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="480"
- Y="250"
+ X="560"
+ Y="330"
  Width="100"
  Height="50"
  Implemented="TRUE"
  Name="Target"
  Guid="0784fa98-3aea-4f51-8153-d70ae0a50b40"
 >
-<Comment>Target Speed Monitoring.</Comment>
+<ReqRef
+ Id="6112d3b2-46f0-4ecb-8029-415b38396a4d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c8541723-db68-4d14-be22-7d8d19a99a48"
+>
+</ReqRef><ReqRef
+ Id="87168408-94a2-4eeb-8c4a-666507a95b45"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="92818321-8fc2-4eff-9823-d8d163fda06a"
+>
+</ReqRef><Comment>Target Speed Monitoring.</Comment>
 <StateMachine
- Default="Start"
+ Default="Target.Normal"
  Implemented="TRUE"
  Guid="04526e41-51a0-49ff-a66a-c48d62f36411"
 >
 <States>
 <State
- X="370"
- Y="200"
+ X="190"
+ Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TSM"
- Guid="ae5a2442-f7dd-431e-b013-7fd673523c4f"
+ Name="Normal"
+ Guid="dc9b8e37-151c-4c98-b818-2fa70d29126d"
 >
-<Comment>In TSM state</Comment>
+<ReqRef
+ Id="87168408-94a2-4eeb-8c4a-666507a95b45"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="33901e28-a380-48fd-ac96-054de71de008"
+>
+</ReqRef><Comment>Normal status.</Comment>
 <StateMachine
  Implemented="TRUE"
- Guid="93b94389-8aac-473d-974f-6334000ff2c8"
->
-</StateMachine></State><State
- X="160"
- Y="80"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Start"
- Guid="c4d1bfa3-561f-4d90-be02-669d6f3f09a8"
->
-<Comment>Actions to take when entering the state.</Comment>
-<StateMachine
- Implemented="TRUE"
- Guid="106cc06b-db05-464e-a765-dad3372b86ab"
+ Guid="e32c4304-a33b-4af2-b073-7cf18a016480"
 >
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Record Type Change"
- Guid="4cb62586-8162-4381-9d6c-0bd73738f532"
+ Name="Update Supervision Status"
+ Guid="28bd2002-39c1-446a-ae24-190e17a28298"
 >
-<Comment>When this state is entered, record that the supervision type was changed for the JRU and revise the supervision status</Comment>
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Record Change"
- Guid="547cc102-3116-4b48-9f9b-9ee4484aea68"
+ Name="To intervention status"
+ Guid="c7774604-8e3c-47b1-a4aa-ae0fee95eff0"
 >
-<Comment>Indicates to the JRU that the monitoring type has changed</Comment>
+<ReqRef
+ Id="e5f050bb-7e6e-461d-b803-0fddb0a89260"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8d2ef01f-8d3c-49b8-bee0-3d52514ba707"
+>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="96efee33-cf27-4dd5-a7aa-b1cec64d4cf4"
+>TargetSpeedMonitoring.SupervisionStatus.ToIntervention()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f8dbb2b7-3bb9-4241-9ff0-d2a33c0ac9a1"
+>THIS &lt;- Target.Intervention</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger emergency brake"
+ Guid="9d25885d-9280-40dd-866b-31f7e81717a8"
+>
+<Comment>Triggers t13 and t14 also trigger the emergency brake.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Emergency brake command"
+ Guid="4988606b-67ae-4dd8-8b0d-25121f908ebe"
+>
+<PreConditions>
+<PreCondition
+ Guid="89564b8c-8a48-4c06-b8ca-c78c236e53ac"
+>TargetSpeedMonitoring.SupervisionStatus.t13()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t14()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="63d51045-2717-4a15-8ede-ce3ff6fe0323"
+>TriggerEBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger service brake"
+ Guid="3d5b3363-06f3-4f98-a050-86fccccaca39"
+>
+<Comment>Triggers t10, t11 and t12 also trigger the service brake.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Service brake command"
+ Guid="d6215020-3516-4889-a565-ff21c7d99ac8"
+>
+<PreConditions>
+<PreCondition
+ Guid="2cb200b8-ba3c-43f9-8410-a3f2843e6b64"
+>TargetSpeedMonitoring.SupervisionStatus.t10()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t11()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="28417994-ca75-4880-ae1b-d6091d0065be"
+>TriggerSBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To warning status"
+ Guid="9659aa6d-7acb-47da-b8a1-a6b48c5cf4a9"
+>
+<ReqRef
+ Id="f48b3d4c-0b20-4478-8d97-831556c6050e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a10ce3a1-70be-41a1-b444-1c19e5202d51"
+>
+</ReqRef><Comment>Trigger warning status, priority 2.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="0dc28c56-565a-4b93-95d1-5dfe4cfa1de9"
+>TargetSpeedMonitoring.SupervisionStatus.ToWarning()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f1abbb09-b10c-4d7f-b671-6d839b9e1c6b"
+><Comment></Comment>
+THIS &lt;- Target.Warning</Action><Action
+ Guid="b620c0fd-2bf7-463e-b8a9-52495ddd7756"
+>TCOTriggered &lt;- False</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To overspeed status"
+ Guid="680079f0-c759-4169-b1ae-f3e7f6494202"
+>
+<ReqRef
+ Id="c37a61a0-4999-47a6-a190-260324acdb40"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3adde15c-9549-49ee-b4df-1a9d52e8afaa"
+>
+</ReqRef><Comment>Trigger overspeed status, priority 3.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b349ffd5-7e68-4e39-b91a-386f44a1bd2a"
+>TargetSpeedMonitoring.SupervisionStatus.ToOverspeed()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b3c54d10-3d95-4bbc-80aa-855845e9ef32"
+>THIS &lt;- Target.Overspeed</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To indication status"
+ Guid="9ec21dce-8f4a-4c6d-84c5-652157c37565"
+>
+<ReqRef
+ Id="a23ad28c-4aab-471e-a48b-97cc5e84f75a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2e0134fa-0e94-4e97-be51-bbd4bf0b172c"
+>
+</ReqRef><Comment>Trigger indication status, priority 4.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="3ba9539b-74e0-44dc-8159-829adc3984f6"
+>TargetSpeedMonitoring.SupervisionStatus.t3()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f2de064d-6a15-442d-b0fc-154e011cf094"
+>THIS &lt;- Target.Indication</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="180"
+ Y="350"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Indication"
+ Guid="17e89b9b-905d-4d3f-81c4-c28ea57a14a5"
+>
+<ReqRef
+ Id="87168408-94a2-4eeb-8c4a-666507a95b45"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6e612cd9-2ceb-43b7-9256-7dc898dfa2ce"
+>
+</ReqRef><Comment>Indication status.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="3ee50a93-01db-44cb-90fb-61011172f50e"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Supervision Status"
+ Guid="6cf65003-35ec-4e71-bc63-dc20a8c35dca"
+>
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="To normal status"
+ Guid="8a24f01f-fb81-4d5b-81f3-d868a91656c5"
+>
+<ReqRef
+ Id="db019e71-db84-41ad-a3fe-4bf8dae5a1a3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="75272c1d-5dc9-4a16-93d5-7dd072315156"
+>
+</ReqRef><Comment>Revoke indication status to normal status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="fa08245a-da47-4f3f-8b9e-f0e1296ad148"
+>TargetSpeedMonitoring.SupervisionStatus.r1()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="994be1c9-73f3-410c-a63e-2660a8882e0d"
+>THIS &lt;- Target.Normal</Action><Action
+ Guid="3bdaa21d-c33b-4f52-a668-f901cbc9b2f3"
+>RevokeSBCommand()</Action><Action
+ Guid="080d606f-5b95-4e31-a01b-80c6d6c47cb4"
+>RevokeEBCommand()</Action><Action
+ Guid="7afb5b10-1372-4688-a460-73f4fbd1c190"
+><Comment></Comment>
+TCOTriggered &lt;- False</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To intervention status"
+ Guid="f62bfad1-3ce5-493b-b580-591e1bf4cf4b"
+>
+<ReqRef
+ Id="e5f050bb-7e6e-461d-b803-0fddb0a89260"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4a97133e-b15e-4d46-b79e-4cb3d32883d0"
+>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5eafcee0-46fa-42a9-b134-5b6c946a525b"
+>TargetSpeedMonitoring.SupervisionStatus.ToIntervention()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="303ea22d-e695-4887-a955-a2d7a91ebae5"
+>THIS &lt;- Target.Intervention</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger emergency brake"
+ Guid="facdd038-b1cd-493d-bb60-f99652650f8d"
+>
+<Comment>Triggers t13 and t14 also trigger the emergency brake.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Emergency brake command"
+ Guid="8a901347-b429-48e6-b485-8d9063157c41"
+>
+<PreConditions>
+<PreCondition
+ Guid="188ed1ba-e511-47d7-93cd-e70b0b052aeb"
+><Comment></Comment>
+TargetSpeedMonitoring.SupervisionStatus.t13()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t14()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="081aa055-ec6c-4646-af1f-4afeffbf4d01"
+>TriggerEBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger service brake"
+ Guid="944f38aa-10e3-46ea-8739-f14be26b3a02"
+>
+<Comment>Triggers t10, t11 and t12 also trigger the service brake.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Service brake command"
+ Guid="d5adb379-3e47-4f08-8a2c-e7f84c4db59e"
+>
+<PreConditions>
+<PreCondition
+ Guid="b0a4f1ae-3b0e-4b17-899c-db1ade2629b8"
+><Comment></Comment>
+TargetSpeedMonitoring.SupervisionStatus.t10()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t11()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="632f5ddb-9f5f-42ab-b59a-9d6d17c2ed8c"
+>TriggerSBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To warning status"
+ Guid="21bd55a2-ba4d-4669-a3b2-19adbcbaae17"
+>
+<ReqRef
+ Id="f48b3d4c-0b20-4478-8d97-831556c6050e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5c889475-1ae3-46b9-a1c7-3697b5cf05bd"
+>
+</ReqRef><Comment>Trigger warning status, priority 2.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="34322efe-7f5c-4c14-8d08-15f66294ea81"
+>TargetSpeedMonitoring.SupervisionStatus.ToWarning()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0bcdb731-9edd-4a25-84d2-c2ac161e6aba"
+>THIS &lt;- Target.Warning</Action><Action
+ Guid="82876995-e964-4d20-87b2-5e401e8a71eb"
+><Comment></Comment>
+TCOTriggered &lt;- False</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To overspeed status"
+ Guid="a26bed95-5b6b-4834-bcb8-6fee4901832a"
+>
+<ReqRef
+ Id="c37a61a0-4999-47a6-a190-260324acdb40"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="894b3c5f-5e52-4c7d-9deb-2ce752b555e9"
+>
+</ReqRef><Comment>Trigger overspeed status, priority 3.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5d5ec35d-17cf-42d4-b349-521db10b473f"
+>TargetSpeedMonitoring.SupervisionStatus.ToOverspeed()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d28762fe-3632-4bd2-9e7d-fe9f372261f4"
+>THIS &lt;- Target.Overspeed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="560"
+ Y="350"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Overspeed"
+ Guid="33e0286f-fd8f-4757-9b71-fa43cf9731e1"
+>
+<ReqRef
+ Id="87168408-94a2-4eeb-8c4a-666507a95b45"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3695529d-81a0-4cc2-831b-492dde07e6ae"
+>
+</ReqRef><Comment>Overspeed status.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="91132084-fe99-4f56-b3ff-5ebb2357ec2b"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Supervision Status"
+ Guid="23bf3819-abec-4055-b983-d1e9d3cba80f"
+>
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="To normal status"
+ Guid="fc97d455-96e0-4b88-a25b-5bee78cd3f87"
+>
+<ReqRef
+ Id="db019e71-db84-41ad-a3fe-4bf8dae5a1a3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8bb203c8-8cdc-43f4-9beb-8adf8f395e85"
+>
+</ReqRef><Comment>Revoke overspeed status to normal status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="e5aa2b38-c71b-4400-9ab7-da35b297947c"
+>TargetSpeedMonitoring.SupervisionStatus.r1()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3b6c3b7f-2e95-4802-87e8-7df8ab0bb099"
+>THIS &lt;- Target.Normal</Action><Action
+ Guid="a153df48-746c-4583-ab7a-5e91c6876d0b"
+><Comment></Comment>
+RevokeSBCommand()</Action><Action
+ Guid="11b5c65a-bab8-42ce-a618-f160367f82b3"
+>RevokeEBCommand()</Action><Action
+ Guid="ce4346a6-96eb-40c9-b8f9-fb657f9ebf2d"
+>TCOTriggered &lt;- False</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To intervention status"
+ Guid="87afe508-0553-401e-b637-257244d2a5cf"
+>
+<ReqRef
+ Id="e5f050bb-7e6e-461d-b803-0fddb0a89260"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e1f61fc6-99c0-4ec7-ac75-fdb5cab3a4b8"
+>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="7fa23ed1-ae9d-49e3-927c-f3d2da32b78b"
+>TargetSpeedMonitoring.SupervisionStatus.ToIntervention()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7020a9c2-28bc-45fb-b642-e83da6813256"
+>THIS &lt;- Target.Intervention</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger emergency brake"
+ Guid="f4c712b0-05c0-4ac0-8d84-37bbad70cf64"
+>
+<Comment>Trigger t13 and t14 also trigger the emergency brake.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Emergency brake command"
+ Guid="16df3a4b-4880-4cb4-b0a3-84c77f8b5978"
+>
+<PreConditions>
+<PreCondition
+ Guid="39d0b8bc-b84d-4867-a36f-d35df9465a16"
+>TargetSpeedMonitoring.SupervisionStatus.t13()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t14()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="94acb863-d948-4d74-859e-990164c85a3a"
+>TriggerEBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger service brake"
+ Guid="d2e016cb-6527-4a1f-a606-67c0fcad8027"
+>
+<Comment>Triggers t10, t11 and t12 also trigger the service brake.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Service brake command"
+ Guid="07df2567-6091-4e7a-bb7e-1d8667a1fa04"
+>
+<PreConditions>
+<PreCondition
+ Guid="cdb36d26-0cbb-4b9c-81e5-c4d4a9c15fe0"
+>TargetSpeedMonitoring.SupervisionStatus.t10()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t11()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f477d1e9-f42a-4491-9b23-418f58cdf633"
+>TriggerSBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To indication status"
+ Guid="6f240fe6-b6b8-47b2-ba55-e59d2062df4a"
+>
+<ReqRef
+ Id="a23ad28c-4aab-471e-a48b-97cc5e84f75a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1122d942-73da-427c-a291-d78fa5712967"
+>
+</ReqRef><Comment>Revoke overspeed status to indication status, priority 2.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="9a0ab609-66b4-4f48-ad75-d748613106d3"
+>TargetSpeedMonitoring.SupervisionStatus.r3()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2b62fb88-bec1-454b-b74e-5bafacec677c"
+>THIS &lt;- Target.Indication</Action><Action
+ Guid="176a54f9-21ea-488c-9742-3b7503579899"
+><Comment></Comment>
+TCOTriggered &lt;- False</Action><Action
+ Guid="f4c94329-ab92-4e66-abca-57ac145bd83e"
+>RevokeEBCommand()</Action><Action
+ Guid="a576e695-8505-4635-a48d-3ac406fc8673"
+>RevokeSBCommand()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To warning status"
+ Guid="64d10828-4293-4417-8f72-3792041ca92a"
+>
+<ReqRef
+ Id="f48b3d4c-0b20-4478-8d97-831556c6050e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6c7b9129-6498-461b-afdd-91cfadbadb43"
+>
+</ReqRef><Comment>Trigger warning status, priority 2.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="acd44053-6b13-4945-85f2-5086cf185af3"
+>TargetSpeedMonitoring.SupervisionStatus.ToWarning()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6211da03-1df8-44e8-a984-8b0851819f2f"
+>THIS &lt;- Target.Warning</Action><Action
+ Guid="e27cc335-b858-46f4-9a21-a2f27d83201d"
+>TCOTriggered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="770"
+ Y="230"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Warning"
+ Guid="62d08517-d2ba-4717-a60e-edf9e00b38e1"
+>
+<ReqRef
+ Id="87168408-94a2-4eeb-8c4a-666507a95b45"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94b0bfa4-210f-4a5d-b918-25a6228e7816"
+>
+</ReqRef><Comment>Warning status.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="f52bc34a-605e-4f96-85dd-ee16736ea86b"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Supervision Status"
+ Guid="8ea2a956-21d6-4df0-9285-dc34c6936b55"
+>
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="To normal status"
+ Guid="0efa0664-8d58-4956-b9b5-013c20b28ffa"
+>
+<ReqRef
+ Id="db019e71-db84-41ad-a3fe-4bf8dae5a1a3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="181adc0a-dd98-4985-aec5-eab46e4c865b"
+>
+</ReqRef><Comment>Revoke warning status to normal status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="16ec6714-3554-43a3-89b0-f281ca7c2248"
+>TargetSpeedMonitoring.SupervisionStatus.r1()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="37f62c09-1939-40a0-9ec7-00f76f47cf66"
+>TCOTriggered &lt;- False</Action><Action
+ Guid="87afeb58-eb46-4327-9311-929c855e7175"
+><Comment></Comment>
+RevokeSBCommand()</Action><Action
+ Guid="b5e04fb0-0198-43ad-a100-446ab7aec3c4"
+>THIS &lt;- Target.Normal</Action><Action
+ Guid="3debddf5-aa64-41ec-b30c-77f1d9160fc3"
+>RevokeEBCommand()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To intervention status"
+ Guid="c7cd800f-b036-41e2-b923-b8ab6ad1c440"
+>
+<ReqRef
+ Id="e5f050bb-7e6e-461d-b803-0fddb0a89260"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4b51a6c8-8d87-4595-b2fd-572c2b2630ac"
+>
+</ReqRef><Comment>Trigger intervention status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="334e8b10-3ca0-4846-b5b9-e6450318cfe2"
+>TargetSpeedMonitoring.SupervisionStatus.ToIntervention()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9cfeb262-e27d-4e9f-abcb-0a585094e67a"
+>THIS &lt;- Target.Intervention</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger emergency brake"
+ Guid="fb48bafc-f348-4289-a55b-c859f99f1ef5"
+>
+<Comment>Triggers t13 and t14 also trigger the emergency brake.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Emergency brake command"
+ Guid="c2343f89-9e37-425d-8903-6358d49e23cb"
+>
+<PreConditions>
+<PreCondition
+ Guid="61163892-735b-47b9-961e-74f649c6e24b"
+>TargetSpeedMonitoring.SupervisionStatus.t13()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t14()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0fd66ebe-a209-4b32-be08-0d771b37711c"
+>TriggerEBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trigger service brake"
+ Guid="d46d6b3e-de9e-4787-8025-835dfeea50b8"
+>
+<Comment>Triggers t10, t11 and t12 also trigger the service brake.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Service brake command"
+ Guid="0860e853-c246-47b3-9c64-770f59ed5890"
+>
+<PreConditions>
+<PreCondition
+ Guid="144a6025-4304-47c1-887b-0c24fee5c5d1"
+>TargetSpeedMonitoring.SupervisionStatus.t10()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t11()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f57b4fee-f48c-45b6-be79-3bd814fe653a"
+>TriggerSBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To indication status"
+ Guid="466c169b-6e1a-48fe-a2d7-89e62a122f15"
+>
+<ReqRef
+ Id="a23ad28c-4aab-471e-a48b-97cc5e84f75a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="040ac2e6-0ea5-4749-8f57-703688592ccf"
+>
+</ReqRef><Comment>Revoke warning status to indication status, priority2.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="af6b3e87-b970-4322-a880-0ef2d94ec876"
+>TargetSpeedMonitoring.SupervisionStatus.r3()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9a2c4b84-2ba8-4c56-b740-29d7470e73e0"
+>THIS &lt;- Target.Indication</Action><Action
+ Guid="a1760c3c-11b0-4b10-b444-07aad0f08be6"
+><Comment></Comment>
+TCOTriggered &lt;- False</Action><Action
+ Guid="0f1191f2-acc4-4231-acfe-f088fb6e99d7"
+>RevokeEBCommand()</Action><Action
+ Guid="2cb79da2-cda0-4048-a948-ed69337c1100"
+>RevokeSBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="550"
+ Y="70"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Intervention"
+ Guid="6575684f-86c7-47a8-88ac-4b33a05b066c"
+>
+<ReqRef
+ Id="87168408-94a2-4eeb-8c4a-666507a95b45"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0039efaf-1509-41b3-9987-68b1c13ca4c1"
+>
+</ReqRef><Comment>Intervention status.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="cb2d2858-5a12-42a5-bf9f-581fba853d36"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Supervision Status"
+ Guid="85b269a8-f0d6-498b-9c81-d2c48976ca71"
+>
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="To normal status"
+ Guid="569eaeb0-0f32-4bd0-a3f3-eab9aa5507cc"
+>
+<Comment>Revoke intervention status to normal status, priority 1.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="8ad546a7-3fae-409d-80a5-bd48d333a7a7"
+>TargetSpeedMonitoring.SupervisionStatus.r0()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.r1()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a2cc4766-eba5-416a-81e7-940a838dac07"
+>THIS &lt;- Target.Normal</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Revoke emergency brake"
+ Guid="e3e1715a-641c-46b4-a093-ea0ef3c64444"
+>
+<Comment>Revocations 0, 1 and 2 also revoke emergency brake commands.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Emergency brake command"
+ Guid="ff114340-0ca8-4af3-9247-1979f1e707dd"
+>
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="e7a8e765-e6db-4c64-8421-9ae611130e63"
-><Comment></Comment>
-JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
- Guid="543e8165-df83-432e-b4cd-95d43feb70a7"
-><Comment></Comment>
-DetermineSupervisionStatus()</Action><Action
- Guid="f56144fc-d490-42cf-9b0d-6f4f02dcff6f"
-><Comment></Comment>
-THIS &lt;- PIM</Action></Actions>
+ Guid="0242f129-75bb-4b22-8a7e-4eb495129f89"
+>RevokeEBCommand()</Action></Actions>
 </RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="160"
- Y="200"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="PIM"
- Guid="e552da4c-28fd-400b-a579-e320c10e2b53"
->
-<ReqRef
- Id="3ca3f276-f7a0-4c16-8b02-755e929a4ae3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9d07dd4f-658e-411e-a6e6-ce03e5bddc2a"
->
-</ReqRef><Comment>Pre Indication Monitoring, a sub-type of target speed monitoring betzeen the pre-indication location and the indication location</Comment>
-<StateMachine
- Implemented="TRUE"
- Guid="f727d81e-5f5d-4cd0-8962-ea039bad1e56"
->
-<Rules>
-<Rule
+</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Transition to TSM"
- Guid="da6b52aa-d250-4618-895c-17ebd8bf5670"
+ Name="Revoke service brake and traction cut off"
+ Guid="412899dc-f694-41d7-82fd-32f0306a440b"
 >
-<Comment>When the train passes the indication location, the speed and distance monitoring passes from PIM to TSM</Comment>
+<Comment>Revocations 1 and 2 also revoke the service brake and traction cut off commands.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Transition to TSM"
- Guid="163d12c7-571a-498d-aacd-d9b6f9c27a35"
+ Name="SB and TCO commands"
+ Guid="a4073ab5-cef5-41ad-9bea-e0edc2c8e702"
 >
 <PreConditions>
 <PreCondition
- Guid="4f0943be-3c98-4372-a6ef-732f0cedd60c"
->TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt;= PreIndicationLocation.d_I(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition></PreConditions>
+ Guid="6e3d0029-6073-4eb3-a2ac-b9f25f0f728a"
+>TargetSpeedMonitoring.SupervisionStatus.r1()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="47b90428-296a-4ccb-9909-a090ca81b971"
->THIS &lt;- TSM</Action></Actions>
+ Guid="f3c53cde-2634-4974-b341-7160f20afab0"
+>TCOTriggered &lt;- False</Action><Action
+ Guid="ed3e99da-5b08-4436-a98a-2e924fc4442e"
+>RevokeSBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To indication status"
+ Guid="d1b111e0-4708-41ec-9ec9-bddfb55b36ff"
+>
+<Comment>Revoke intervention status to indication status, priority 2.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="7a0d66ec-a534-4378-ba44-c2553e18fa8d"
+>TargetSpeedMonitoring.SupervisionStatus.r3()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4c209a09-ef03-4016-888c-643568a12234"
+><Comment></Comment>
+THIS &lt;- Target.Indication</Action><Action
+ Guid="b32c4ad6-1223-4e76-8be4-bf8836e4a53b"
+>TCOTriggered &lt;- False</Action><Action
+ Guid="3e7bc568-c7b3-482d-81cf-492c7cb4588c"
+>RevokeEBCommand()</Action><Action
+ Guid="4f5057d0-d8bc-4124-9832-dc2628dbffdd"
+>RevokeSBCommand()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -374,86 +1479,125 @@ THIS &lt;- PIM</Action></Actions>
 Condition2()</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="44f973a1-f64e-4717-bc83-fcb6ae9ade4e"
->THIS &lt;- ReleaseSpeed.Start</Action></Actions>
+ Guid="47aa0936-dd4f-438f-981f-372a69f1a293"
+>DetermineSupervisionStatus(Release)</Action><Action
+ Guid="7f6e4ac3-b449-424c-9f97-9e8bb1f56a73"
+><Comment></Comment>
+JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="480"
+ X="560"
  Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="ReleaseSpeed"
+ Name="Release"
  Guid="07de5e9f-788d-415d-8ebd-f5b04846c216"
 >
 <Comment>Release Speed Monitoring.</Comment>
 <StateMachine
- Default="Start"
+ Default="Release.Indication"
  Implemented="TRUE"
  Guid="4c471652-a236-49b9-afdf-492ed8264c22"
 >
 <States>
 <State
- X="80"
- Y="180"
+ X="100"
+ Y="130"
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="MonitoringReleaseSpeed"
- Guid="eb7d32de-8cfa-4ab3-9166-78781b77a38f"
+ Name="Indication"
+ Guid="4f356dc2-e351-400a-b04e-496dc94d46d8"
 >
-<Comment>In RSM state</Comment>
+<Comment>Indication status.</Comment>
 <StateMachine
  Implemented="TRUE"
- Guid="545aebdb-bc36-4743-bc7b-5ac63c6d5616"
->
-</StateMachine></State><State
- X="80"
- Y="70"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Start"
- Guid="578f3616-75f2-4df2-8536-5bf75508d62a"
->
-<Comment>Actions to take when entering the state.</Comment>
-<StateMachine
- Implemented="TRUE"
- Guid="ceab12e6-acb6-4834-accb-1d3568c93c4c"
+ Guid="9a7eee7c-0814-4a7c-92db-1d13b3738742"
 >
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Record Type Change"
- Guid="12f97ad7-84a5-460f-8e1c-a906010df86a"
+ Name="Update Supervision Status"
+ Guid="fb8f3dd3-1913-43c8-b06b-8fe5355c78d7"
 >
-<Comment>When this state is entered, record that the supervision type was changed for the JRU and revise the supervision status</Comment>
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Record Change"
- Guid="8764fd16-244d-453f-9d41-3bcedbb658f4"
+ Name="To intervention status"
+ Guid="d1dc036a-56d0-467a-84bc-a9825c69eac0"
 >
-<Comment>Indicates to the JRU that the monitoring type has changed</Comment>
-<PreConditions>
-</PreConditions>
+<ReqRef
+ Id="4bd9437c-f793-4471-b3f2-d0e50cda8c6a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1089d56e-906d-4cc2-9152-265f0964e27c"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="45e915a5-9592-4f88-83ea-5dae68511a2e"
+>ReleaseSpeedMonitoring.SupervisionStatus.t2()</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="f4548707-2eb2-4d89-9653-5b4755e684c0"
->JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action><Action
- Guid="953c08ed-e977-4766-9ca6-c5043644471e"
-><Comment></Comment>
-DetermineSupervisionStatus()</Action><Action
- Guid="47f71217-2ed4-41e4-b059-fe6375b01867"
->THIS &lt;- MonitoringReleaseSpeed</Action></Actions>
+ Guid="bb925f43-f10f-4d4c-807b-de1fc43d57bd"
+>THIS &lt;- Release.Intervention</Action><Action
+ Guid="8b7254e2-7276-4bb7-9345-bca5f585ad58"
+>TriggerEBCommand()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="420"
+ Y="130"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Intervention"
+ Guid="d598f770-ef38-4a7f-ba14-fbb1b27c73d6"
+>
+<Comment>Intervention status.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="f8fe3162-e2a7-49c1-9bf3-4e6dc42b3593"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Supervision Status"
+ Guid="323cdab9-8688-418b-ba26-83c82d726d7b"
+>
+<Comment>Ensure that the supervision status remains appropriate.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="To indication status"
+ Guid="f2c703aa-5ca5-49ed-876f-8605ee308e6e"
+>
+<ReqRef
+ Id="dd0da099-d404-4f93-b840-c25c06defab7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a02b86e-8fea-4c97-bd49-701d99f0365c"
+>
+</ReqRef><Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="6a9b9f31-0b37-4942-8716-ef9b78526589"
+>ReleaseSpeedMonitoring.SupervisionStatus.r0()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1b0f55fd-51f3-4dd0-a048-2376f9c3bafd"
+>THIS &lt;- Release.Indication</Action><Action
+ Guid="19c76645-c3e5-4685-a624-760afc46db83"
+>RevokeEBCommand()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
- X="130"
+ X="70"
  Y="70"
  Width="100"
  Height="50"
@@ -461,11 +1605,54 @@ DetermineSupervisionStatus()</Action><Action
  Name="Idle"
  Guid="1edf48d7-6c71-4956-a753-852a9d9d4bf9"
 >
-<Comment>This state corresponds to the cases when the train does not have speed and distance monitoring active</Comment>
+<Comment>Speed and distance monitoring is inactive.</Comment>
 <StateMachine
  Implemented="TRUE"
  Guid="98ea433a-587b-40e7-8a72-c66ae4c4b16d"
 >
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="RestartSpeedAndDistanceMonitoring"
+ Guid="5083b87e-34c8-47eb-8d1e-d09514360921"
+>
+<ReqRef
+ Id="ec29a885-8a5f-4c6e-82e7-4e5b41a7dd5d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="67553a48-9bea-4af6-8450-85c14f24593d"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="45862693-0326-4d9c-9414-fb04b4129d68"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a63d6b2-8af1-4e5b-bec1-a10012364f02"
+>
+</ReqRef><ReqRef
+ Id="8468de24-42eb-4959-a546-99c00cccb22a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bfd5f919-3bf7-4400-b670-cd6f3aa1ac0f"
+>
+</ReqRef><Comment>When the train mode is FS, LS, or OS, start monitoring again</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Supervise Train Speed"
+ Guid="0b822837-96e0-4550-bd30-dcb12e0cfd29"
+>
+<PreConditions>
+<PreCondition
+ Guid="6bee5e64-dd3e-4190-b0cc-b9fecd7c8aa1"
+><Comment></Comment>
+ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="351c9b66-e0cc-4a58-9b1c-f39028235a8a"
+><Comment></Comment>
+SelectMonitoringType()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State></States>
 <Rules>
 <Rule
@@ -484,6 +1671,7 @@ DetermineSupervisionStatus()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="60ab2067-a5a3-4b52-baf3-1ce8f0e03a03"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="f966f396-c00e-4f6b-945d-6cde4527e814"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -494,33 +1682,55 @@ DetermineSupervisionStatus()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0c1c75e3-fbe4-47fd-b4bd-ea9113c345ef"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="16a2ffa9-a581-4832-8287-d3a982f4ddd7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="14a6dc97-370b-4080-bc18-3ea25b839dac"
+>
+</ReqRef><ReqRef
+ Id="8e95d803-0ad3-43b6-b488-8471ea3f792a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5440dec9-dcc0-4012-8712-b53b71d85336"
 >
 </ReqRef><Comment>When the list of supervised targets changes, the type of moitoring may change.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="CheckSupervisedTargets"
+ Name="The list of supervised targets was updated"
  Guid="a03fee97-031e-4942-9848-c5b0d7fecc9c"
 >
 <Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f0533ab6-40d0-43ae-a60c-64a801411bc9"
->TargetsList() != SupervisedTargets</PreCondition><PreCondition
- Guid="c91265ff-507c-45ce-9fb3-e4bbc413a44e"
+><Comment></Comment>
+TARGETS(
+    Targets1=&gt;MIN(First=&gt;  MIN(First=&gt; MRSP.SpeedRestrictions,
+                               Second=&gt; MA.SpeedRestrictions
+                               ),
+                  Second=&gt; NationalValues.MaxDistInSRSpeedRestriction
+                  ),
+    Targets2=&gt;EMPTY,
+    Targets3=&gt;EMPTY
+)
+!=
+SupervisedTargets</PreCondition><PreCondition
+ Guid="6f2cc5a3-3453-4c20-acb8-221630d71332"
 >ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="774ac772-0f2b-46db-99c0-8963f899bb81"
->SupervisedTargets &lt;- TargetsList()</Action><Action
- Guid="ddb5319e-07c7-46aa-992d-e8ac18647f7e"
 ><Comment></Comment>
-UpdateMonitoring()</Action></Actions>
+SupervisedTargets &lt;- TARGETS(
+    Targets1=&gt;MRSP.SpeedRestrictions,
+    Targets2=&gt;MA.SpeedRestrictions,
+    Targets3=&gt;NationalValues.MaxDistInSRSpeedRestriction
+)</Action><Action
+ Guid="495f9d03-e905-4e4c-82f4-b48208753eb2"
+><Comment></Comment>
+SelectMonitoringType()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -541,15 +1751,17 @@ UpdateMonitoring()</Action></Actions>
  Name="StopMonitoring"
  Guid="07a58c8a-35cc-4601-b3dd-e3ddd30c61aa"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d2c4fbd4-aea7-44fe-bab3-9fdd15bbb7be"
-><Comment></Comment>
-NOT ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+>NOT ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
+ Guid="28929f8b-8c89-4755-a7ef-914db92b35d2"
+>THIS not in Idle</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="71258306-011a-4ab1-9a0a-397404946f9f"
->THIS &lt;- MonitoringTypeSM.Idle</Action></Actions>
+>THIS &lt;- Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></StateMachines>
@@ -557,8 +1769,8 @@ NOT ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="110"
- Y="120"
+ X="50"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -629,11 +1841,11 @@ NOT ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
  Name="Speed lower than 30km/h"
  Guid="be93371e-e4bb-49d1-b368-83e2c75653f5"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="5394b5c1-088b-4cd4-99d8-833a9ccb9b0e"
-><Comment></Comment>
-V &lt; 30.0</PreCondition><PreCondition
+>V &lt; 30.0</PreCondition><PreCondition
  Guid="fc94aa76-153b-481d-a628-d5e5681681be"
 >NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition></PreConditions>
 <Expression>2.0</Expression>
@@ -655,7 +1867,8 @@ V &lt; 30.0</PreCondition><PreCondition
 </Function><Function
  Type="Boolean"
  Default=""
- Y="60"
+ X="50"
+ Y="70"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -668,23 +1881,26 @@ V &lt; 30.0</PreCondition><PreCondition
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="20f62c9a-5203-4f25-baf1-01ba9e1875ec"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="0f223275-ff77-4025-a194-a347f5ef0542"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b286a8d9-d73a-4c9b-b746-0bdd2e873eac"
 >
-</ReqRef><Comment>Chacks if the service brake is present and whther its use is allowed in the national values</Comment>
+</ReqRef><Comment>Checks if the service brake is present and whther its use is allowed in the national values</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="d01614d0-298f-4107-8b27-4e7ff976e5e9"
 >
+<Comment></Comment>
 <Expression>TrainData.TrainData.Value.SBCommandIsImplemented AND NOT NationalValues.UseOfSBIsInhibited()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- Y="120"
+ X="50"
+ Y="130"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -696,6 +1912,11 @@ V &lt; 30.0</PreCondition><PreCondition
  Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b8cf0ba7-f32e-4c2a-b835-6ba6cb0f32e1"
+>
+</ReqRef><ReqRef
+ Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="07f9f820-4f2d-4f73-886c-d0fc8f968675"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
@@ -720,9 +1941,20 @@ V &lt; 30.0</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="5394d167-a030-4b1d-a096-b176e1075237"
-><Comment></Comment>
-Monitoring in Monitoring.Ceiling</PreCondition></PreConditions>
-<Expression>CeilingSupervision.P ( Distance )</Expression>
+>Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
+ Guid="e902ee0f-8ed6-4c80-aafe-96b258b01056"
+>Monitoring not in [ MonitoringTypeSM.Ceiling.Overspeed, MonitoringTypeSM.Ceiling.Warning, MonitoringTypeSM.Ceiling.Intervention ]</PreCondition></PreConditions>
+<Expression>CeilingSpeedMonitoring.P ( Distance )</Expression>
+</Case><Case
+ Name="CeilingSpeedMonitoring_SBI"
+ Guid="e4f40ce0-734c-4a1d-b8d4-68c346bc038b"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="c4529bc3-bd47-4ae9-8347-84a7d362d528"
+>Monitoring in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
+<Expression>CeilingSpeedMonitoring.SBI ( Distance )</Expression>
 </Case><Case
  Name="TargetSpeedMonitoring_P"
  Guid="c121bdd5-4b33-48ef-b069-9a042e43983d"
@@ -730,13 +1962,24 @@ Monitoring in Monitoring.Ceiling</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="5ba6a2ec-fce4-46ab-8e17-256f0a63ae84"
+>Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
+ Guid="b286ca0d-4051-4c4a-a610-a2615579bcac"
+>Monitoring not in [ MonitoringTypeSM.Target.Overspeed, MonitoringTypeSM.Target.Warning, MonitoringTypeSM.Target.Intervention ]</PreCondition></PreConditions>
+<Expression>TargetSpeedMonitoring.V_P_DMI()</Expression>
+</Case><Case
+ Name="TargetSpeedMonitoring_FLOI"
+ Guid="abb0b3d3-d383-4088-8c65-db4e81cadbae"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="7bfba49b-c9f5-492a-8afc-18d09cf1f725"
 >Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
-<Expression>TargetSupervision.V_P_DMI()</Expression>
+<Expression>TargetSpeedMonitoring.V_FLOI_DMI()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
- X="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -753,6 +1996,7 @@ Monitoring in Monitoring.Ceiling</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="cce65636-616f-4975-9273-277a934d7cda"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="f966f396-c00e-4f6b-945d-6cde4527e814"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -783,7 +2027,8 @@ Monitoring in Monitoring.Ceiling</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="a9cf64fe-934f-41fc-b58b-190b853ccc0d"
->PreIndicationLocation.d_preindication(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+><Comment></Comment>
+PreIndicationLocation.d_preindication(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Train passed pre-indication location"
@@ -794,7 +2039,7 @@ Monitoring in Monitoring.Ceiling</PreCondition></PreConditions>
 <PreCondition
  Guid="699a6b10-e831-4c8a-a3ed-591f85155457"
 ><Comment></Comment>
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -839,9 +2084,9 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; PreIndicationL
 <PreCondition
  Guid="35a78385-5ce1-4613-91ce-27ae1fc32d9e"
 ><Comment></Comment>
-ReleaseSpeedSupervision.ReleaseSpeedSupervisionApplicable(TargetSupervision.MRDT())
+ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable(TargetSpeedMonitoring.MRDT())
 AND
-ReleaseSpeedSupervision.StartRSM(TargetSupervision.MRDT().Speed) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+ReleaseSpeedMonitoring.StartRSM(TargetSpeedMonitoring.MRDT().Speed) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Front end passed RSM start location"
@@ -852,9 +2097,9 @@ ReleaseSpeedSupervision.StartRSM(TargetSupervision.MRDT().Speed) == Default.Base
 <PreCondition
  Guid="5acecc19-8795-458f-bf25-d3d7788ef394"
 ><Comment></Comment>
-ReleaseSpeedSupervision.ReleaseSpeedSupervisionApplicable(TargetSupervision.MRDT())
+ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable(TargetSpeedMonitoring.MRDT())
 AND
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedSupervision.StartRSM(TargetSupervision.MRDT().Speed)</PreCondition></PreConditions>
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedMonitoring.StartRSM(TargetSpeedMonitoring.MRDT().Speed)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -863,83 +2108,132 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="SpeedAndDistanceMonitoring.TargetSupervision.Targets"
+ Type="TargetSpeedMonitoring.Targets"
  Cacheable="TRUE"
  Default=""
- X="110"
  Y="60"
  Width="100"
  Height="50"
- Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TargetsList"
- Guid="8b30ddc6-feb1-4306-817f-f149882e30b9"
+ Guid="f4668202-f4f0-4a13-b076-7ffb98ee3f01"
 >
 <Comment>Returns the list of targets corresponding to a decrease in permitted speed for the train</Comment>
 <Cases>
 <Case
  Name="Value"
- Guid="8b3ebe95-851d-422f-b5c5-9d5fa7abf3f6"
+ Guid="5bfa34f7-80f1-4c7a-8338-d7b0662d057c"
 >
 <Comment></Comment>
 <Expression>TARGETS(
-    Targets1=&gt;
-    MIN(
-        MIN(MRSP.SpeedRestrictions, MA.SpeedRestrictions),
-        NationalValues.MaxDistInSRSpeedRestriction
-    ),
-
+    Targets1=&gt;MIN(First=&gt;  MIN(First=&gt; MRSP.SpeedRestrictions,
+                               Second=&gt; MA.SpeedRestrictions
+                               ),
+                  Second=&gt; NationalValues.MaxDistInSRSpeedRestriction
+                  ),
     Targets2=&gt;EMPTY,
     Targets3=&gt;EMPTY
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Speed"
+ Type="Boolean"
  Default=""
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="FLOISpeed"
- Guid="a795979a-1be0-4dd7-9d76-953aaf006b62"
+ Name="DisplayReleaseSpeed"
+ Guid="0e03db57-f072-4c06-9f8d-37b08022f0ce"
 >
 <ReqRef
- Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
+ Id="da81dc9e-7c01-462c-ae9b-108704d780bc"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4eb45864-0c9f-43b1-8c42-69ac4969464f"
+ Guid="26165586-b87b-4fc6-aef9-ec247e260bce"
 >
 </ReqRef><ReqRef
- Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
+ Id="ee7b5ecc-20f6-480c-aa0a-7836d5308d32"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9fae7ce0-d3ba-4e82-9d48-7ebe90cd4ecc"
+ Guid="c84326fe-ff7d-48f4-a605-f443b22b4615"
 >
-</ReqRef><Comment>Provides the current FLOI speed of the train, accounting for the speed and distance monitoring.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Distance"
- Name="Distance"
- Guid="515672d8-f729-4f68-922e-7105079961b5"
->
-</Parameter></Parameters>
+</ReqRef><Comment>Determines whether the DMI should display a release speed.</Comment>
 <Cases>
 <Case
- Name="CeilingSpeedMonitoring_SBI"
- Guid="e4f40ce0-734c-4a1d-b8d4-68c346bc038b"
+ Name="Monitoring target speed"
+ Guid="c220ae83-9fd0-4062-b2dd-0b4508cc0570"
+>
+<PreConditions>
+<PreCondition
+ Guid="eae54f73-e54c-496a-b739-536763fd2530"
+>Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Expression>MA.IsEOA(TargetSpeedMonitoring.MRDT())
+  OR  
+MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
+</Case><Case
+ Name="Monitoring release speed"
+ Guid="08d09e11-9195-4651-b68a-5e2963886bc4"
+>
+<Expression>Monitoring in MonitoringTypeSM.Release</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Kernel.SupervisionStatus"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SupervisionStatus"
+ Guid="c8264e57-7e0f-4625-bc3b-fd7738fde2b7"
+>
+<Comment>Provides the current supervision status for the DMI and the JRU</Comment>
+<Cases>
+<Case
+ Name="Normal"
+ Guid="cb56c5e9-5033-4439-abd7-add298118842"
 >
 <Comment></Comment>
 <PreConditions>
 <PreCondition
- Guid="c4529bc3-bd47-4ae9-8347-84a7d362d528"
->Monitoring in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
-<Expression>CeilingSupervision.SBI ( Distance )</Expression>
+ Guid="6046f3ef-2d04-439e-badf-03ef3f72e5ea"
+><Comment></Comment>
+Monitoring in [MonitoringTypeSM.Ceiling.Normal, MonitoringTypeSM.Target.Normal]</PreCondition></PreConditions>
+<Expression>SupervisionStatus.Normal</Expression>
 </Case><Case
- Name="TargetSpeedMonitoring_FLOI"
- Guid="abb0b3d3-d383-4088-8c65-db4e81cadbae"
+ Name="Indication"
+ Guid="a190c9f8-024a-4cd4-92cc-77232b862322"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="6b8996e7-374a-42d8-b96e-d1e2037fd939"
+>Monitoring in [MonitoringTypeSM.Target.Indication, MonitoringTypeSM.Release.Indication]</PreCondition></PreConditions>
+<Expression>SupervisionStatus.Indication</Expression>
+</Case><Case
+ Name="Overspeed"
+ Guid="6b8b6771-0529-40b2-a7e9-3386ddf6d9a7"
 >
 <PreConditions>
 <PreCondition
- Guid="7bfba49b-c9f5-492a-8afc-18d09cf1f725"
->Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
-<Expression>TargetSupervision.V_FLOI_DMI()</Expression>
+ Guid="d5f1549a-1606-4c9d-81be-30891d1544f9"
+>Monitoring in [MonitoringTypeSM.Ceiling.Overspeed, MonitoringTypeSM.Target.Overspeed]</PreCondition></PreConditions>
+<Expression>SupervisionStatus.Overspeed</Expression>
+</Case><Case
+ Name="Warning"
+ Guid="e30cbf78-903e-4c9b-aa1d-6530c3ac551c"
+>
+<PreConditions>
+<PreCondition
+ Guid="1163bf4e-8d04-4dc3-b6a0-510752c092f0"
+>Monitoring in [MonitoringTypeSM.Ceiling.Warning, MonitoringTypeSM.Target.Warning]</PreCondition></PreConditions>
+<Expression>SupervisionStatus.Warning</Expression>
+</Case><Case
+ Name="Intervention"
+ Guid="fe46922f-11ce-49cd-87ba-aba98a1f267f"
+>
+<PreConditions>
+<PreCondition
+ Guid="5a337125-7eba-4ba8-ae7c-4cdf6a26d987"
+>Monitoring in [MonitoringTypeSM.Ceiling.Intervention, MonitoringTypeSM.Target.Intervention, MonitoringTypeSM.Release.Intervention]</PreCondition></PreConditions>
+<Expression>SupervisionStatus.Intervention</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -949,235 +2243,106 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedS
  Width="100"
  Height="50"
  Pinned="TRUE"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdateMonitoring"
+ Name="SelectMonitoringType"
  Guid="3343f3ef-10d0-4a24-9849-d799ebf3c545"
 >
-<Comment>Update the speed and distance monitoring type</Comment>
+<ReqRef
+ Id="ec29a885-8a5f-4c6e-82e7-4e5b41a7dd5d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9770b6b4-6db0-4f93-85c2-e61a194149cd"
+>
+</ReqRef><ReqRef
+ Id="452e7369-8988-4a04-9d16-d7e769201a71"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="297b7ad0-755a-4117-ba8c-b8d0a2bbe8f1"
+>
+</ReqRef><ReqRef
+ Id="8e95d803-0ad3-43b6-b488-8471ea3f792a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bdec0d17-674b-4f28-a73e-7cc2558ed8ba"
+>
+</ReqRef><Comment>Update the speed and distance monitoring type</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Go to ceiling speed monitoring"
- Guid="f86a11bf-c055-4ee0-a054-75949711b635"
+ NeedsRequirement="FALSE"
+ Name="Update monitoring"
+ Guid="d68dc5dd-66dd-4df0-94ac-da7e387cd2c4"
 >
-<ReqRef
- Id="c0c90876-1322-4533-951c-924804b80043"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ab90257e-23e9-4496-a48e-3bad8ad39ecd"
->
-</ReqRef><Comment>If condition 1 is not satisfied for the new targets, go to ceiling speed monitoring.</Comment>
+<Comment>Then select the new monitoring type.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Condition 1 is not fulfilled"
- Guid="8483403d-dcf0-4682-b06f-5a2ae4fcfec4"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="d6cc722b-4470-4618-b7ad-a8f6154e0bc8"
->NOT Condition1()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f9cfaf7b-b51a-4ff0-9e43-92e4082c6fbc"
-><Comment></Comment>
-Monitoring &lt;- MonitoringTypeSM.Ceiling</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="TransitionFromTSM"
- Guid="ab964af1-2b30-461e-a94d-9c1eef3e2c16"
->
-<Comment>If the transition occurs from TSM, revoke traction cut-off commands and service brake commands</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="If in TSM, immediately revoke any traction cut-off command"
- Guid="35a7536e-2488-46fb-99bc-e4ceeb17b12c"
->
-<PreConditions>
-<PreCondition
- Guid="968a3c7d-c0d9-4d05-b65e-d84a00f02458"
->Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="a364a045-8542-40c1-91b4-f4821eaa0ef2"
->RevokeTCOCommand()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Go to target speed monitoring"
- Guid="1801c074-2a70-4502-94b1-94b11aedd3bc"
+ Name="Release speed monitoring"
+ Guid="cc74a824-206f-44a4-a2b6-31b96bfddc35"
 >
 <ReqRef
- Id="32b65a6d-139f-482e-98ed-7dd88679ba95"
+ Id="a387bd06-4306-436c-ae73-a3faa509f059"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5d8434c7-38f3-4764-b638-6ba712cc6c9d"
+ Guid="c4fc58fb-68b2-4182-9837-200439de3372"
 >
 </ReqRef><ReqRef
- Id="f966f396-c00e-4f6b-945d-6cde4527e814"
+ Id="88ab50b9-74b8-45a8-b956-3f0754ac2824"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ee63718c-489e-4a57-9499-62830cdba5fb"
+ Guid="94a7764e-b7e3-4d25-bba9-62497f43ca3a"
 >
-</ReqRef><Comment>If condition 1 and condition 2 are satisfied for the new targets, go to release speed monitoring.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Condition 1 is fulfilled but not condition 2"
- Guid="89aaf7b5-70c3-44c6-82ed-7f18fd062b1a"
->
-<Comment></Comment>
+</ReqRef><Comment>The train front end position is beyond the RSM start location.</Comment>
 <PreConditions>
 <PreCondition
- Guid="1889c002-6694-4e01-a062-4c76f5c65090"
->NOT Condition2()</PreCondition><PreCondition
- Guid="e9504089-b7d1-4d41-bf98-d1362f421406"
-><Comment></Comment>
-Condition1()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f7b5bdb0-1344-4d1b-aae3-6ed3ca6f0683"
->Monitoring &lt;- MonitoringTypeSM.Target</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Go to release speed monitoring"
- Guid="8773148e-05e9-4782-8d8d-7a7fa4b79f1c"
->
-<ReqRef
- Id="5554abd5-d957-475f-aa3a-5ae657f9ccf3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a4f73ae6-7983-4110-b727-a925a9c5c0bc"
->
-</ReqRef><ReqRef
- Id="620d2411-2c42-403d-9139-cdb6a68c48b2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="92909b20-78da-4073-8f44-5f39510dcdf4"
->
-</ReqRef><Comment>If condition 1 is satisfied but condition 2 is not for the new targets, go to target speed monitoring.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Conditions 1 and 2 are fulfilled"
- Guid="8db73e0a-1dcf-4723-9386-bca94a1e706a"
->
-<PreConditions>
-<PreCondition
- Guid="119da225-e12b-42f7-9c8f-cebd45faa5b6"
+ Guid="f0a73956-72ca-4e2a-833d-c64917c04a3d"
 >Condition2()</PreCondition><PreCondition
- Guid="733d87fc-f85e-4a60-a964-7db1c74dadcb"
->Condition1()</PreCondition></PreConditions>
+ Guid="d0936740-8827-4152-93cf-3722e478afc0"
+>Monitoring not in MonitoringTypeSM.Release</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="6de0a2d5-3cb9-49e5-ada3-7ac6f14df66a"
+ Guid="9fa14273-a356-4624-b65d-d653232c55c9"
 ><Comment></Comment>
-Monitoring &lt;- MonitoringTypeSM.ReleaseSpeed</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Transition from TSM"
- Guid="9cb19cb6-1fda-4741-b38e-5c2a2f91e529"
->
-<Comment>If the transition occurs from TSM, revoke traction cut-off commands and service brake commands</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Transition from TSM"
- Guid="6eb4b3d8-2a24-4642-a6fe-18a1c26590d3"
->
-<PreConditions>
-<PreCondition
- Guid="21a7d41d-368f-48cb-9bd7-804eddb97e31"
->Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Transition from TSM"
- Guid="7ddf4344-14ce-4424-a2e8-eb70676f6da6"
->
-<Comment>To apply when transitioning from TSM</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Revoke traction cut-off command"
- Guid="3b9fcf9b-a96d-4ee3-87a1-5d68d8f03262"
->
-<Comment>Revoke the traction cut-off command, if one is applied</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="4dc56041-0a8a-4880-a713-5879b5aaf620"
->RevokeTCOCommand()</Action></Actions>
+DetermineSupervisionStatus(MonitoringTypeSM.Release)</Action><Action
+ Guid="bcaf9d41-78d4-4ca2-aa31-aa323b2ff4bc"
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Revoke SB command"
- Guid="0c1c9c7e-d520-49d7-b395-f68efeb38b93"
+ Name="Target speed monitoring"
+ Guid="ceaf0ba0-df34-4dc5-998b-aad8f20e26b2"
 >
-<Comment>Revoke the SB command, if one is applied</Comment>
+<Comment>The train front end position is beyond the pre-indication location.</Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="d65208a9-5e12-45dd-8d14-3dc148564806"
+>Condition1()</PreCondition><PreCondition
+ Guid="7b6d1eb2-9895-4514-8b14-9e6653193465"
+>Monitoring not in MonitoringTypeSM.Target</PreCondition><PreCondition
+ Guid="e50642fe-e198-4f28-a317-12417a620320"
+>NOT Condition2()</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="493126b8-f4a0-4317-933e-c8d819639f84"
->RevokeSBCommand()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- X="830"
- Y="60"
- Width="100"
- Height="50"
- Pinned="TRUE"
+ Guid="5958ef9e-9907-4aa3-a87a-6fde142da01b"
+>DetermineSupervisionStatus(MonitoringTypeSM.Target)</Action><Action
+ Guid="0e28281d-fafb-49e7-afdf-faad241eeea6"
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TriggerEBCommand"
- Guid="6b62b8c5-ce72-4fd2-917e-c093976d77cb"
+ Name="Ceiling speed monitoring"
+ Guid="48dad1da-d913-4d1d-85ad-2da9fe4f6a84"
 >
-<Comment>Procedure to trigger the emergency brake</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TriggerEBCommand"
- Guid="dc7d6796-19bd-466c-a5f0-0b9d08176961"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TriggerEBCommand"
- Guid="555aede7-2e21-4f63-9560-38ff5925a342"
->
+<Comment>The train front end position is not beyond the pre-indication location.</Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="2fb2c2e9-9ab6-4461-b479-a7964b3609b2"
+>NOT Condition1()</PreCondition><PreCondition
+ Guid="90b8efa0-3555-4a19-b99d-3a946712edd7"
+>Monitoring not in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="f1ce2fe3-5fe1-4732-bd7f-6a48f3aabc20"
+ Guid="deecb83d-3be9-418a-ab8d-8ac5f524776f"
 ><Comment></Comment>
-EBTriggered &lt;- True</Action></Actions>
+DetermineSupervisionStatus(MonitoringTypeSM.Ceiling)</Action><Action
+ Guid="01b33342-99cc-4d02-a036-2aa5a1aa6f33"
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1200,6 +2365,11 @@ EBTriggered &lt;- True</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="beccff75-037b-431f-857e-14268cb1f690"
 >
+</ReqRef><ReqRef
+ Id="d5c3e2f6-7747-4faf-95c2-ec06309fe9ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21a37357-1c80-42fe-8434-4d4a98e3b283"
+>
 </ReqRef><Comment>Handles the service brake command by activating the service brake, if allowed, or the emergency brake.</Comment>
 <Rules>
 <Rule
@@ -1218,6 +2388,7 @@ EBTriggered &lt;- True</Action></Actions>
  Name="SBIsAvailableForUse"
  Guid="d1ec4ea1-be7f-4093-ad74-278db6897221"
 >
+<Comment>If the SB is available, trigger it</Comment>
 <PreConditions>
 <PreCondition
  Guid="edcfd47a-ea63-4f62-a207-80679aaf847f"
@@ -1234,12 +2405,13 @@ EBTriggered &lt;- True</Action></Actions>
  Name="Otherwise"
  Guid="68c0b104-9eb6-4b67-904e-efe0a874749b"
 >
+<Comment>If the SB is not available, pass the command onto the EB</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="37d9f842-c365-4e03-8f5e-df6d7484dba6"
->TriggerEBCommand()</Action><Action
+>EBTriggered &lt;- True</Action><Action
  Guid="fd5d023f-77fd-4fd2-8faf-4daa2289d1ad"
 >SBSpecified &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
@@ -1249,11 +2421,109 @@ EBTriggered &lt;- True</Action></Actions>
  Width="100"
  Height="50"
  Pinned="TRUE"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="RevokeEBCommand"
  Guid="4a1fb3de-7c1f-4285-9c15-c45bc8536ccf"
 >
-<Comment>Handles the revocation of an emergency brake command</Comment>
+<ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b2d3b937-5b07-47ca-bd74-92a49ebd577a"
+>
+</ReqRef><ReqRef
+ Id="ec0c435b-0145-4656-99a6-3a16788797ff"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="000f01e1-a4c3-4c18-9935-90d340052d69"
+>
+</ReqRef><ReqRef
+ Id="7d9d0edb-ad9a-48db-a67e-e74e1be64d74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c8a5fb39-76cf-4aa3-90c9-b78e051b4362"
+>
+</ReqRef><ReqRef
+ Id="d5c3e2f6-7747-4faf-95c2-ec06309fe9ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a3ea3b16-c13a-40a9-bc42-ce69079ab587"
+>
+</ReqRef><Comment>Handles the revocation of an emergency brake command</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Revoke EB command"
+ Guid="f4bf398c-5f06-4c70-93cd-92d6fe4522aa"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Revoke SB command, no SB available"
+ Guid="d7d95c99-6bcd-4e69-b30d-773ceda16c48"
+>
+<Comment>If the service brake is not available, SB commands are executed by the EB</Comment>
+<PreConditions>
+<PreCondition
+ Guid="cd7fb674-fa24-4c9b-97f4-babe1908226d"
+>NOT SBIsAvailableForUse()</PreCondition><PreCondition
+ Guid="2163ef71-6d83-4e67-aa6f-cd67c56ec838"
+><Comment></Comment>
+SBSpecified</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2e40dc81-ff12-4049-a5eb-e1994b2236a5"
+><Comment></Comment>
+SBSpecified &lt;- False</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Revoke EB command"
+ Guid="38069d81-edcf-4cb6-baa6-b50e6797433b"
+>
+<Comment>If the EB was not also commanded, cut it off</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Revoke EB command"
+ Guid="57726d91-ee94-44c3-be64-9f09a5339190"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="d51098b6-4aca-4adb-a40e-cb63bc6a3de2"
+>NOT EBSpecified</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0d9b886e-0bc6-4a1e-b674-689aabe86f85"
+><Comment></Comment>
+EBTriggered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Revoke EB command"
+ Guid="d4fc3fbf-c8ad-48db-87e8-14e970778c54"
+>
+<Comment>Revoke the EB command</Comment>
+<PreConditions>
+<PreCondition
+ Guid="1bdbbe3f-110e-40d0-b1fa-f58ed5a4738f"
+><Comment></Comment>
+NationalValues.ReleaseOfEBIsPermitted()
+  OR  
+Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c69226a6-2c28-4bc4-91a1-ff49993f5956"
+><Comment></Comment>
+EBSpecified &lt;- False</Action><Action
+ Guid="887e30d6-0424-450f-9820-8621c7adf272"
+><Comment></Comment>
+EBTriggered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure><Procedure
  X="830"
  Width="100"
@@ -1269,10 +2539,26 @@ EBTriggered &lt;- True</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4d17d182-2f66-480e-9253-75a9d717deb0"
 >
+</ReqRef><ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dc8b5631-3b3a-4b5f-a539-c6f41e5a68be"
+>
+</ReqRef><ReqRef
+ Id="7d9d0edb-ad9a-48db-a67e-e74e1be64d74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4eeac3d2-53e1-4b87-8eaf-65222046fde1"
+>
+</ReqRef><ReqRef
+ Id="d5c3e2f6-7747-4faf-95c2-ec06309fe9ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4517cf0f-7747-468b-b8da-bea0259c6130"
+>
 </ReqRef><Comment>Handles a revocation of the service brake. If theer is no service brake applicable for use on the train, revokes the emergency brake</Comment>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RevokeSBCommand"
  Guid="a6d0da46-9ebd-4a4b-a6a2-40ff906bdbb4"
@@ -1281,15 +2567,17 @@ EBTriggered &lt;- True</Action></Actions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SBIsAvailableForUse"
  Guid="091c4b2f-c933-4ad4-a5e9-32790977174f"
 >
-<Comment>If the SB is available, proceed with revocation</Comment>
+<Comment>If the SB is available, the revocation command is handled</Comment>
 <PreConditions>
 <PreCondition
  Guid="b1c74e83-dd79-4f11-9e75-a901db534064"
->SBIsAvailableForUse()</PreCondition></PreConditions>
+><Comment></Comment>
+SBIsAvailableForUse()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2a6f82f8-80a2-4496-bfa4-445fd6c1d335"
@@ -1299,823 +2587,201 @@ SBTriggered &lt;- False</Action><Action
 ><Comment></Comment>
 SBSpecified &lt;- False</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="EB triggered instead of SB"
+ Name="Otherwise"
  Guid="d4024946-ef07-42fd-905b-695b43215446"
 >
-<Comment>If there is no SB on board, revoke the EB</Comment>
-<PreConditions>
-<PreCondition
- Guid="e82a84f6-e42e-40c0-9247-cb9fc78b2710"
->SBSpecified == True</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="8e4ef373-8406-40ac-8590-06ac5a6d17e7"
->RevokeEBCommand()</Action><Action
- Guid="8a7deeeb-8de4-4d72-a6c2-3d915194084c"
->SBSpecified &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="RevokeTCOCommand"
- Guid="c4505e76-cb5e-4c54-bc59-46765a80b1ea"
->
-<ReqRef
- Id="4ef8d95d-9b39-4a31-af31-f673833b0f7b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="151cd4c2-dc23-4157-ba0a-737d821dcda9"
->
-</ReqRef><Comment>Handles the revocation of the traction cut-off command</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="RevokeTCOCommand"
- Guid="1aae177e-003c-4137-af57-cc959c4ff0b5"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="RevokeTCOCommand"
- Guid="587bdddb-9cb1-455b-8232-1bf08c4697a4"
->
+<Comment>If the SB is not available, the EB needs to be revoked</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="ad3a8895-6976-405a-ad35-42283f4a1661"
->TractionCutOffTriggered &lt;- False</Action></Actions>
+ Guid="8e4ef373-8406-40ac-8590-06ac5a6d17e7"
+><Comment></Comment>
+RevokeEBCommand()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
  Name="DetermineSupervisionStatus"
- Guid="0d97e225-cc76-49d7-913b-a70769652f6c"
+ Guid="e859e947-8a55-4351-a7e5-e7ed69d5e6a5"
 >
 <ReqRef
  Id="452e7369-8988-4a04-9d16-d7e769201a71"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b978eb07-1289-4c13-ae36-a7c6ce9d563a"
+ Guid="0c2fd63b-9ad1-474c-a4b6-060ceb67f368"
 >
 </ReqRef><Comment>Sets the supervision status according to the type of speed and distance monitoring</Comment>
+<Parameters>
+<Parameter
+ Type="MonitoringTypeSM"
+ Name="MonitoringType"
+ Guid="48561c68-d98c-4bb0-801d-1db3d690f533"
+>
+</Parameter></Parameters>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="In target supervision"
- Guid="9071841d-955d-4229-9383-7dc743336b99"
+ Name="Revoke commands"
+ Guid="633bddbb-f48c-495d-9434-0ebf177a01a2"
 >
 <ReqRef
- Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
+ Id="4ef8d95d-9b39-4a31-af31-f673833b0f7b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b86eed7f-978a-4dce-a36d-2a2f73b748e3"
+ Guid="e63ae8c7-d2b7-4aff-81e9-65190d512755"
 >
-</ReqRef><Comment>Supervision status for a train in TSM.</Comment>
+</ReqRef><ReqRef
+ Id="16a2ffa9-a581-4832-8287-d3a982f4ddd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="11603de7-288b-454f-b12c-d38a4f0ae9a3"
+>
+</ReqRef><Comment>First handle the revocation of traction cut-off and service break if switching from target speed monitoring.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="CheckSpeedAndDistanceMonitoringStatus"
- Guid="42b3eca4-28b5-42db-9a3d-d04f839b45ff"
+ Name="Revoke TCO and SB"
+ Guid="63e77da2-5072-4745-9380-d29004a03766"
 >
+<Comment>If switching to release speed monitoring, revoke TCO and SB commands.</Comment>
 <PreConditions>
 <PreCondition
- Guid="035eb855-04d7-4cb3-9e12-2df1736c11d6"
+ Guid="45f18bce-f81d-4f4c-9c04-e09b52bca20c"
+>Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
+ Guid="dd4bbcaa-711f-4430-92d2-b231a4c42955"
+>Condition2()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="26a14c8c-2a37-48c9-bcb6-5f2bceeeca84"
+>TCOTriggered &lt;- False</Action><Action
+ Guid="ea5f6ece-dcce-4ae6-abad-20810e593cd8"
+>RevokeSBCommand()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Revoke TCO"
+ Guid="209ce184-96ea-4cbf-9a87-bb99ffd22b2d"
+>
+<Comment>If switching to ceiling speed monitoring, revoke TCO command.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="3b919df2-96fd-46bd-be00-adfe57e283ab"
+>Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
+ Guid="c83c8401-56d3-4c12-aa65-dcc7ea3965f6"
+>NOT Condition1()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="68c2dfcd-31b1-4949-832f-b0467a5a94ca"
 ><Comment></Comment>
-ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
- Guid="734c0cfb-8504-4804-8e92-7d445b1644b3"
-><Comment></Comment>
-Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
- Guid="1d9d0f82-9b6e-4854-85b9-8c830b0881ef"
->TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- Name="UpdateSupervisionStatus"
- Guid="2850f7e2-6ecd-491c-bdb7-d114298982bd"
->
-<ReqRef
- Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="401bd857-bf4e-4e70-b215-482420f46175"
->
-</ReqRef><Comment>Set the status for a train in target speed monitoring.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="t14"
- Guid="5c449f3c-02da-412e-9337-36c393a81f5c"
->
-<ReqRef
- Id="a77d9b43-ca07-4b88-99c9-aee4aac78473"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="18777e08-24eb-4f7a-ae17-2baa984929b8"
->
-</ReqRef><Comment>Trigger 14: V greater than V_MRSP + dV_ebi. Intervention Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="afbeabf3-73a0-480f-90b7-9ca035f36346"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="5ebff022-19ff-4ed2-96a2-adf32b354df0"
->Supervision != SupervisionStatus.Intervention</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="574ec616-674d-4716-90a5-ac23810d8236"
->TriggerEBCommand()</Action><Action
- Guid="1c1b160c-a7ac-4d11-8228-3453a58ee5a6"
->Supervision &lt;- SupervisionStatus.Intervention</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t13"
- Guid="64ece763-ded1-466c-86bb-dd69ff1f6b88"
->
-<ReqRef
- Id="6d9d71c4-5508-47ef-ab3d-c32522306769"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="60cac50d-0889-48cb-9208-f25269807780"
->
-</ReqRef><Comment>Trigger 13: V between V_Release and V_MRSP + dV_ebi. Train front end position above d_
-EBI. Intervention status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="ac178ee5-75c9-4017-a31b-77f5a5712b55"
->Supervision != SupervisionStatus.Intervention</PreCondition><PreCondition
- Guid="ba231a05-a050-403c-b375-d2c8333d8bc7"
->TargetSupervision.MRDT().Speed + CeilingSupervision.dV_ebi ( V =&gt; TargetSupervision.MRDT().Speed ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="eed3aab7-22ba-4c8b-8416-c2e82b2fd1cb"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( V =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="1d4976bf-6883-4179-a20b-ff3557b6360c"
->TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &gt; TargetSupervision.d_EBI ( Vest =&gt; Odometry.EstimatedSpeed, aTarget =&gt; TargetSupervision.MRDT() )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="4ec0659c-cb29-4181-ba15-eb5f876c2157"
->TriggerEBCommand()</Action><Action
- Guid="0ecf8a7c-4a11-4ed2-9a5c-f5f4272518d9"
->Supervision &lt;- SupervisionStatus.Intervention</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t12"
- Guid="c71050dd-5f8e-469f-a6ef-30bcccc76c25"
->
-<ReqRef
- Id="e354be4a-8c30-493a-8607-87b51d1ac30c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="580ccb1d-8360-44b4-8ff6-44e64b94e868"
->
-</ReqRef><Comment>Trigger 12: V between V_MRSP + dV_sbi and V_MRSP + dV_ebi. Train front end position between d_I and d_EBI. Intervention Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="02d427b2-62df-4767-a44e-af3a12981c9a"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="ec8b68cc-d914-4a9c-b549-e2a1fbecdb4d"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="9ba1c104-6df8-40b0-bf2c-219129357743"
->Supervision != SupervisionStatus.Intervention</PreCondition><PreCondition
- Guid="54504867-13a8-4cca-9739-14e54c19c24f"
->TargetSupervision.d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition><PreCondition
- Guid="9b5b5641-c692-4f1a-a925-9bd18513f887"
->TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &lt;= TargetSupervision.d_EBI ( Vest =&gt; Odometry.EstimatedSpeed, aTarget =&gt; TargetSupervision.MRDT() )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="12a98929-2436-4182-8500-9d8d9f8492b7"
->Supervision &lt;- SupervisionStatus.Intervention</Action><Action
- Guid="ea237c51-28f0-4c60-bcf5-0c10c2d072a3"
->TriggerSBCommand()</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t11"
- Guid="72f87e8f-5216-4a4f-b408-42b17f22afff"
->
-<ReqRef
- Id="b3b7e30c-6bb4-4cd9-8e6d-dfb514676cbd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9f1e9be4-4b71-4825-93bf-7621210e79f4"
->
-</ReqRef><Comment>Trigger 11: V between V_MRSP + dV_sbi and V_MRSP + dV_ebi. Train front end position below d_I. Intervention Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="3502a24e-c239-4db7-a351-1f39c4803574"
->Supervision != SupervisionStatus.Intervention</PreCondition><PreCondition
- Guid="f3191952-180c-4387-8cd1-79a6b645edea"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="2a74a3aa-1b5b-4575-b485-6dce7ee409db"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="56e375e7-c5e1-46e7-a199-6ae22019d736"
->TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &lt;= TargetSupervision.d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="93c187f7-8a69-4338-9c69-e8de1f01194e"
->Supervision &lt;- SupervisionStatus.Intervention</Action><Action
- Guid="6f376875-dd37-4749-8668-f2f46af84d83"
->TriggerSBCommand()</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t10"
- Guid="9c6c3a92-1143-4ebb-a7b1-0160e6314336"
->
-<ReqRef
- Id="49cb1ac1-74b3-4afe-865d-d6b4401719da"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0c464a14-6b23-49eb-aa7f-ba9b744d84a0"
->
-</ReqRef><Comment>Trigger 10: V between V_Release and V_MRSP + dV_sbi. Train front end position greater than d_FLOI. Intervention status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="00b33504-cbcf-493a-b5fa-5e9b6ac7f200"
->Supervision != SupervisionStatus.Intervention</PreCondition><PreCondition
- Guid="f775a343-3e84-41b9-806b-619a7ba9c12c"
->TargetSupervision.MRDT().Speed + CeilingSupervision.dV_sbi ( TargetSupervision.MRDT().Speed ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="f9c78069-1a68-40f0-b9cc-907fcacd3346"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="6f49276c-a3e2-41fc-9e18-5d1b5d445b04"
->TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; TargetSupervision.d_FLOI ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="4bfeb7b4-8ba8-474c-b4f9-70788763aa70"
->Supervision &lt;- SupervisionStatus.Intervention</Action><Action
- Guid="22823a33-1036-45f9-b31b-e8904ef6078b"
->TriggerSBCommand()</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t9"
- Guid="227eeeb6-5dac-492f-a13e-fa4d02beea9f"
->
-<ReqRef
- Id="0342251f-d656-4d41-8ece-bde758fbfadf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="14e4348d-5bfc-4c90-9fda-17fe20a891a4"
->
-</ReqRef><Comment>Trigger 9: V between V_MRSP + dV_Warning and V_MRSP + dV_sbi. Train front end position between d_I and d_FLOI. Warning Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="770fc75a-d345-449a-8fb1-1b27bbab2f6b"
->Supervision != SupervisionStatus.Warning</PreCondition><PreCondition
- Guid="46027e3c-658d-4afe-9d5a-fd9a5c1c51f8"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="7960a7bd-aa52-4d3d-8798-ee8036caba77"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="13c85266-668b-4739-b924-950683628d85"
->TargetSupervision.d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
- Guid="6ec66168-2c16-4b1f-9a3e-efb6cdd7af1c"
->TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= TargetSupervision.d_FLOI ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="420ba468-44ec-45c0-8c9b-1540bc794370"
->Supervision &lt;- SupervisionStatus.Warning</Action><Action
- Guid="0f4026fe-ef7e-4265-84ef-06b47b92108b"
->TCOSpecified &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t8"
- Guid="68a9792e-2c34-457f-b05b-0e651574de88"
->
-<ReqRef
- Id="d916181f-d7a1-4043-9617-e814b97ae7b4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="57692308-60e5-414a-b578-d4e4bcc2f628"
->
-</ReqRef><Comment>Trigger 8: V between V_MRSP + dV_Warning and V_MRSP + dV_sbi. Train front end position above d_I. Warning Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="49687b67-8c5d-45cc-8bc0-9731b5b58f27"
->Supervision != SupervisionStatus.Warning</PreCondition><PreCondition
- Guid="eea23e66-d124-48b5-bdc9-6723dca2bb1a"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="e4c99a45-65ec-4585-95de-683bfd06fc32"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="bedb0b95-76c5-450c-8d99-e36eae71a2e9"
->TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= TargetSupervision.d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="39a30a21-6f5e-484a-8db6-0d9134e53e25"
->Supervision &lt;- SupervisionStatus.Warning</Action><Action
- Guid="f1b68ce1-16fb-4124-9350-5d72c08bab65"
->TCOSpecified &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t7"
- Guid="4bb1c37b-2442-46b7-93d5-8301901cdb82"
->
-<ReqRef
- Id="d394cede-dff2-4764-b72a-288ee8d5617c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1cf3bb60-2074-48e9-a600-aab1aea772bc"
->
-</ReqRef><Comment>Trigger 7: V between V_Release and V_MRSP + dV_Warning. Train front end position above d_W. Warning Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="fe6ca164-f3e8-407b-b9e8-5f535dbdb259"
->Supervision != SupervisionStatus.Warning</PreCondition><PreCondition
- Guid="c592c5c5-77b7-4efd-a378-4a924352da51"
->TargetSupervision.MRDT().Speed + CeilingSupervision.dV_warning ( TargetSupervision.MRDT().Speed ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="b500a741-0746-4a18-9ae0-1e85ef4271a1"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="39d15eb8-2682-4398-b90f-e09db7a20150"
->TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; TargetSupervision.d_W ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="a2466139-4a3c-4574-98cb-26591a56114f"
->Supervision &lt;- SupervisionStatus.Warning</Action><Action
- Guid="3017fa41-c24f-4afe-ba97-d79fcdb85e00"
->TCOSpecified &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t6"
- Guid="e6253ac2-8871-4b56-8e0d-c38de81999b7"
->
-<ReqRef
- Id="ac2002ec-cc04-4e25-8344-d90765ce4d29"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="32d802ed-9f99-4c56-a459-77ccb6f45e4b"
->
-</ReqRef><Comment>Trigger 6: V between V_MRSP and V_MRSP + dV_Warning. Train front end position between d_I and d_W. Overspeed Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="27958052-efc1-4268-95a4-d66bbb1d6bf4"
->Supervision != SupervisionStatus.Overspeed</PreCondition><PreCondition
- Guid="9632ac61-4042-4456-8880-959d2578e443"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="413c079d-224c-4d95-8004-146c1419a9d8"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="19bb6ad6-bb93-4162-91b8-887f69b2f0c8"
->TargetSupervision.d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
- Guid="c4d9e3c3-4232-47e2-9094-a10709e346c4"
->TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= TargetSupervision.d_W ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7b77c378-47f6-45b5-85a5-fa5f03393863"
->Supervision &lt;- SupervisionStatus.Overspeed</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t5"
- Guid="86f184bb-bca0-41c2-aedf-f353f531b395"
->
-<ReqRef
- Id="366c7bc8-9a83-43fb-b4e8-f41812946c97"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="38fb914e-d603-4d29-94b3-4e6a4e90d91d"
->
-</ReqRef><Comment>Trigger 5: V between V_MRSP and V_MRSP + dV_Warning. Train front end position above d_I. Overspeed Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="7f3594f9-bf9a-46d1-93f6-471444e639fc"
->Supervision != SupervisionStatus.Overspeed</PreCondition><PreCondition
- Guid="a0662bd2-d674-48b2-a779-e47c84d847d9"
-><Comment></Comment>
-TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= TargetSupervision.d_W ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
- Guid="23ac3f1b-42d8-4f5e-a3c5-678b0265e2ab"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="79d1c420-2608-4faa-a10d-461c0d543deb"
->TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= TargetSupervision.d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="9afdcb59-ff06-473b-bf67-3aa17483b7dc"
->Supervision &lt;- SupervisionStatus.Overspeed</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t4"
- Guid="a806bee5-3064-4eed-9908-4c6232f4a3fd"
->
-<ReqRef
- Id="81b045fa-67f4-4abe-9d72-380cb0687a1d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b0ad8f80-14a2-4248-97ba-268c502023f5"
->
-</ReqRef><Comment>Trigger 4: V between V_Release and _MRSP. Train front end position above d_P. Overspeed Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="5f52e663-5409-49b4-a7b4-4808006503f4"
->Supervision != SupervisionStatus.Overspeed</PreCondition><PreCondition
- Guid="0f1b6b31-a810-45c1-9216-78ca3ae96ddd"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition><PreCondition
- Guid="0ed05306-8475-4f3f-acea-a2d6579df2ae"
->TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; TargetSupervision.d_P ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
- Guid="792c9f4e-dec9-43d5-ad6d-038c3737a93f"
->TargetSupervision.MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="5b75c2de-0a03-4156-954a-a43169a452fd"
->Supervision &lt;- SupervisionStatus.Overspeed</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t3"
- Guid="63cb73fb-cbe3-42cc-8354-fd9b36a5750a"
->
-<ReqRef
- Id="fda34875-06ef-46a2-b272-8fdf00368ad5"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a0efb810-d1e9-4069-bd78-961dc0d6a172"
->
-</ReqRef><Comment>Trigger 3: V between V_Release and _MRSP. Train front end position above d_I. IndicationStatus.</Comment>
-<PreConditions>
-<PreCondition
- Guid="897246a6-f676-4b64-806e-842f71fe5687"
->Supervision != SupervisionStatus.Indication</PreCondition><PreCondition
- Guid="f6c2ba45-7ec0-4824-baf0-f4ea6619575a"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition><PreCondition
- Guid="f7fc0c37-82b4-4ec6-ac20-288a66574987"
->TargetSupervision.MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="33dc0227-89ad-43e9-a44d-6490c5959c43"
->TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; TargetSupervision.d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f5c3eb5f-3637-440d-a9f8-e8b104ab2c67"
->Supervision &lt;- SupervisionStatus.Indication</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t2"
- Guid="be939158-d7e9-4fa8-85af-7e3f14e0cb79"
->
-<ReqRef
- Id="235a2d43-f1f5-49b1-8517-1f6b17a29a4c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8d354fb7-b010-4dd3-b911-1c0c6da80616"
->
-</ReqRef><Comment>Trigger 2: V between V_Release and _MRSP. Train front end position below d_I. Normal Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="290778ee-0b52-462f-9330-18f3cfc098c1"
->Supervision != SupervisionStatus.Normal</PreCondition><PreCondition
- Guid="7fabec05-34a0-4a41-99b1-d86203cd8292"
->TargetSupervision.MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
- Guid="2d9bb92d-b2a1-4dfb-b458-cc00f9395f09"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition><PreCondition
- Guid="522edb9f-b6a7-4746-a2bb-beb31e76cec5"
->TargetSupervision.FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= TargetSupervision.d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="dee54ca0-aa73-44b5-b9dc-ca095e4bba9e"
->Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t1"
- Guid="c4cd0b49-55ce-42ec-9ced-71ee7115c964"
->
-<ReqRef
- Id="c9726f4e-f5b9-4cb2-8c10-be51cb610a07"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="503396cd-748b-4343-8d23-6d73e0bc2bf3"
->
-</ReqRef><Comment>Trigger1: V below V_Release. Normal status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="b0ac274a-4882-45e8-aed3-666e8d073ad0"
->Supervision != SupervisionStatus.Normal</PreCondition><PreCondition
- Guid="5094c3fb-81d8-42bf-8394-8fb6ea048e1d"
->Odometry.EstimatedSpeed &lt;= TargetSupervision.MRDT().Speed</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="c6b49d0d-967e-4207-bdc5-c3a7c252a213"
->Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+TCOTriggered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="In ceiling supervision"
- Guid="7305bd67-b9c1-4733-988d-7a97e9e0d666"
+ Name="Determine supervision status"
+ Guid="60074a77-efbb-468c-ac79-6f3f207a3aec"
 >
-<ReqRef
- Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2e6673e7-fbe5-44c6-83a4-ea85dddff8cd"
->
-</ReqRef><ReqRef
- Id="3935be43-6132-47c6-8ef3-28195e4f690c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="35f05238-a28e-4047-860a-fcb7d3ddd44b"
->
-</ReqRef><ReqRef
- Id="26d27752-70b9-46bf-ada7-95ba7bb47a3c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9d52f18e-3379-48cb-bdda-a83969b6e6a0"
->
-</ReqRef><ReqRef
- Id="c8000537-75f6-4a09-8790-4dca0585d9f8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6c7db0ce-7a60-42c2-ba89-f491413aee5e"
->
-</ReqRef><Comment>Supervision status for train in CSM.</Comment>
+<Comment>Get the supervision status by applying the triggers of the new monitoring type</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="CheckSpeedAndDistanceMonitoringStatus"
- Guid="7242cc11-af09-4be2-a07f-522ee9ce7205"
+ Name="To target monitoring"
+ Guid="42b3eca4-28b5-42db-9a3d-d04f839b45ff"
 >
+<Comment>Supervision status for a train in TSM.</Comment>
 <PreConditions>
 <PreCondition
- Guid="2000c917-1ae5-46ec-9768-6d88e3fa11f3"
->Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
- Guid="0046535f-3d8c-400a-b35b-bae068e48182"
+ Guid="734c0cfb-8504-4804-8e92-7d445b1644b3"
+>MonitoringType in MonitoringTypeSM.Target</PreCondition><PreCondition
+ Guid="1d9d0f82-9b6e-4854-85b9-8c830b0881ef"
+>TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="646147c7-d863-488e-83c8-2dad26e8f09b"
+>TargetSpeedMonitoring.SupervisionStatus.TSMStatusTriggers()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="To ceiling monitoring"
+ Guid="4f66c5e1-779a-41c9-8ebc-921feddf5c33"
+>
+<Comment>Supervision status for a train in CSM.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d670d6a1-c1ac-44f1-b831-99c4d17bd838"
 ><Comment></Comment>
-ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- Name="UpdateSupervisionStatus"
- Guid="57ac76f3-d736-4abd-b392-a74f056d8e65"
->
-<ReqRef
- Id="c8000537-75f6-4a09-8790-4dca0585d9f8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5b3dd2a8-9a40-486e-a552-4724bd041ed7"
->
-</ReqRef><ReqRef
- Id="26d27752-70b9-46bf-ada7-95ba7bb47a3c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fd39455f-c654-439c-90b5-a8af357a53e3"
->
-</ReqRef><ReqRef
- Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d65d6389-33d7-4407-8bf0-636ff32ca1d4"
->
-</ReqRef><ReqRef
- Id="3935be43-6132-47c6-8ef3-28195e4f690c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c84bf7ac-6784-4944-8c2b-b699190e9ab5"
->
-</ReqRef><Comment>Set the status for a train in ceiling speed monitoring.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="t5"
- Guid="6401d65d-3e16-4a3a-8ba1-28df70b27775"
->
-<ReqRef
- Id="e4afc252-6ba4-4996-b8f6-072d60e63987"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7a6a8628-e0d8-4d4b-8d4b-808133ee16e3"
->
-</ReqRef><ReqRef
- Id="58cc5fd9-b319-4df9-87ac-13d82ceb4312"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="affa7321-ca84-4fd9-84d0-0a7798e2fbfc"
->
-</ReqRef><ReqRef
- Id="1d80a2a9-35e8-42c0-b7af-767e7c110d32"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f892ffe5-ed8c-4b47-82ec-92efc159054d"
->
-</ReqRef><ReqRef
- Id="0b1f3e7f-3acf-435f-8d5e-c7e079fd5ed6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7842365c-7b85-4338-ac4b-4978edfb4e55"
->
-</ReqRef><Comment>Trigger 5: V above V_MRSP + dV_ebi. Intervention Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="e03911e8-ee7e-4b91-8236-aa7bec72864a"
->Odometry.EstimatedSpeed &gt; CeilingSupervision.SupervisedSpeed() + CeilingSupervision.dV_ebi ( CeilingSupervision.SupervisedSpeed() )</PreCondition><PreCondition
- Guid="b2e7644c-8d9d-4475-815b-90425cdbe7a4"
->Supervision != SupervisionStatus.Intervention</PreCondition></PreConditions>
+MonitoringType in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
+ Guid="d839fc91-525d-472c-8bfb-dc7f3595ee3b"
+>TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="69dbf7af-26e1-420a-a2be-d2624eed2eee"
->Supervision &lt;- SupervisionStatus.Intervention</Action><Action
- Guid="08d3e61f-777a-454b-ba65-928ccd503713"
->TriggerEBCommand()</Action></Actions>
+ Guid="b1c0ff01-91ce-4c1f-9bcf-aaf67396cf63"
+><Comment></Comment>
+CeilingSpeedMonitoring.SupervisionStatus.CSMStatusTriggers()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="t4"
- Guid="3c41582b-a286-4eab-9769-f4c31f109804"
+ Name="To release monitoring"
+ Guid="f6f7adb9-bc1e-4b39-ae9b-49cab9466bf1"
 >
-<ReqRef
- Id="d5e287e8-9591-4f40-9968-b9a12d5f800f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="25448ed8-3d3b-4944-b1d7-4068e37600db"
->
-</ReqRef><ReqRef
- Id="58cc5fd9-b319-4df9-87ac-13d82ceb4312"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9e65589d-8001-4a09-8a76-1922ae2b0f1a"
->
-</ReqRef><ReqRef
- Id="1d80a2a9-35e8-42c0-b7af-767e7c110d32"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="495744b5-6e31-45ac-93cc-e232c12e5319"
->
-</ReqRef><ReqRef
- Id="0b1f3e7f-3acf-435f-8d5e-c7e079fd5ed6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ef5e9b2d-9d61-4454-bb17-2615956a126c"
->
-</ReqRef><Comment>Trigger 4: V above V_MRSP + dV_sbi. Intervention Status.</Comment>
+<Comment>Supervision status for a train in RSM.</Comment>
 <PreConditions>
 <PreCondition
- Guid="1ed453e9-b63f-40f6-8c7a-300c09d2bb6c"
->Odometry.EstimatedSpeed &gt; CeilingSupervision.SupervisedSpeed() + CeilingSupervision.dV_sbi ( CeilingSupervision.SupervisedSpeed() )</PreCondition><PreCondition
- Guid="33ba4e0a-6c67-4655-9c66-f31aec6be9f9"
->Supervision != SupervisionStatus.Intervention</PreCondition></PreConditions>
+ Guid="beb69a2c-c219-4dcb-9a3b-7d7ee370bff7"
+>TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
+ Guid="0d0b9a1b-65da-4d93-bfa4-45805bdddd01"
+>MonitoringType in MonitoringTypeSM.Release</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="7263bd8c-d804-4c52-9edd-5aa4d6b5f017"
->Supervision &lt;- SupervisionStatus.Intervention</Action><Action
- Guid="7ceb207e-63a4-41e8-8989-a1b3a0af95a2"
->TriggerSBCommand()</Action></Actions>
-</RuleCondition><RuleCondition
+ Guid="4984d1e4-bfdd-4b2a-aa8f-4885ab876f30"
+><Comment></Comment>
+ReleaseSpeedMonitoring.SupervisionStatus.RSMStatusTriggers()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Width="100"
+ Height="50"
  Implemented="TRUE"
- Name="t3"
- Guid="a88b3d2a-ba47-4efb-98ce-1e4c9d51abdc"
+ NeedsRequirement="FALSE"
+ Name="TriggerEBCommand"
+ Guid="b38ceba8-4d8e-47dd-856e-bb7c4693d339"
 >
 <ReqRef
- Id="baee7a52-b664-4831-ae79-468f1bfa2015"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="511a9222-0b62-464c-bd42-c6bab9418f15"
->
-</ReqRef><ReqRef
- Id="c7bd0529-99a5-4600-bea6-5ef4c7039d03"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c68679ee-30e2-4d2c-9a04-bbc076d15676"
->
-</ReqRef><Comment>Trigger 3: V above V_MRS + dV_Warning. Warning Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="e940b669-d832-47b6-b2ec-d3acfb263b56"
->Odometry.EstimatedSpeed &gt; CeilingSupervision.SupervisedSpeed() + CeilingSupervision.dV_warning ( CeilingSupervision.SupervisedSpeed() )</PreCondition><PreCondition
- Guid="da6a2add-89d9-461c-ac1c-73809d8fbec0"
->Supervision != SupervisionStatus.Warning</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="b67cc471-1329-4651-96a9-dde7de08b73a"
->Supervision &lt;- SupervisionStatus.Warning</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t2"
- Guid="5c468154-0d14-4486-b682-a3f09121be17"
->
-<ReqRef
- Id="af305487-640b-4993-8058-a5d544510580"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="01e3aa27-5817-4eb0-828e-61876886a975"
->
-</ReqRef><ReqRef
- Id="ec408fb0-3a70-40f7-81a8-7756f7442566"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7abb947c-16f1-4cfd-958b-fff1610b36d2"
->
-</ReqRef><Comment>Trigger 2: V above V_MRSP. Overspeed Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="14f14c8e-b9fc-49a4-9d2d-964604839bd0"
->Odometry.EstimatedSpeed &gt; CeilingSupervision.SupervisedSpeed()</PreCondition><PreCondition
- Guid="bdc4071b-c62b-4133-aa88-60fe00ec3bd1"
->Supervision != SupervisionStatus.Overspeed</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="a060f645-d849-461a-a141-c64effd5144a"
->Supervision &lt;- SupervisionStatus.Overspeed</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="t1"
- Guid="8a6ea3f2-97bb-4cc6-a4b1-3ff5edf4c404"
->
-<ReqRef
- Id="4715e18d-a2df-4bd6-ac06-759df725f4f9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="86fa3669-eca9-48d4-9100-475e6f259901"
->
-</ReqRef><ReqRef
- Id="8468de24-42eb-4959-a546-99c00cccb22a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a4621995-51a6-4d92-8939-adad5e3cd7b4"
->
-</ReqRef><Comment>Trigger 1: V below V_MRSP. Normal status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="bfd3501b-bedb-46b6-a428-19ade95d5c74"
->Odometry.EstimatedSpeed &lt;= CeilingSupervision.SupervisedSpeed()</PreCondition><PreCondition
- Guid="ee02b5b4-4c3b-4885-b6f3-8441a6f705ff"
->Supervision != SupervisionStatus.Normal</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="17f0041b-09e7-4c84-ba0c-757afaf714e0"
->Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="r1"
- Guid="1f35326e-e380-4cd3-9f1f-2e24e78b1d44"
->
-<ReqRef
- Id="ec0c435b-0145-4656-99a6-3a16788797ff"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9e0e0c10-0f15-4304-8c14-f4199d2672c7"
->
-</ReqRef><ReqRef
- Id="644aa967-53f8-4d2c-b5ba-6a857c9cda54"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fb6541e4-9acc-4e22-9ee3-ef219b4ca974"
->
-</ReqRef><ReqRef
- Id="da801456-beb5-47fa-b81e-22d23298cdb1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bc2863f5-8dd1-438b-a8b2-d8bd24146cca"
->
-</ReqRef><ReqRef
  Id="d5c3e2f6-7747-4faf-95c2-ec06309fe9ac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="001191ca-87ab-4afd-8869-def18d0d2e88"
+ Guid="baa8fb01-fa3d-4497-a034-28faf3be58fa"
 >
-</ReqRef><Comment>Revocation condition 1: V below V_MRSP. revoke Indication, Overspeed, Warning and Intervention statuses.</Comment>
-<PreConditions>
-<PreCondition
- Guid="51e14c41-a88a-40af-af5b-9cf3f88e0f86"
->Odometry.EstimatedSpeed &lt;= CeilingSupervision.SupervisedSpeed()</PreCondition><PreCondition
- Guid="699b51c8-ddd7-49a2-bad1-89c5dd491b6c"
->Supervision != SupervisionStatus.Normal</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="af826a2f-855b-4980-843d-b088729a722e"
->Supervision &lt;- SupervisionStatus.Normal</Action><Action
- Guid="84c42893-f2cd-4903-b28f-e532ac4069e1"
->SBTriggered &lt;- False</Action><Action
- Guid="49831efe-90f4-40f9-8fbe-fb22fcd620cc"
->RevokeSBCommand()</Action></Actions>
-<SubRules>
+</ReqRef><Comment>Handles an emergency brake command</Comment>
+<Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="RevokeEB"
- Guid="0aa14cf1-8065-4f99-bcc4-dd031e9af9e4"
+ NeedsRequirement="FALSE"
+ Name="Activate EB"
+ Guid="ffdaef94-d5f3-40df-b177-aa1546de09bb"
 >
-<ReqRef
- Id="ec0c435b-0145-4656-99a6-3a16788797ff"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b3f6cb77-eaac-49f3-9f29-4daf4bc3992c"
->
-</ReqRef><Comment>Emergency Brake train interface command revoked</Comment>
+<Comment>On reception, switch on the emergency brake</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="RevokeEB"
- Guid="82b153fc-0c7b-469a-8a15-4dd7d924ebf7"
+ Name="Activate EB"
+ Guid="2d847d6f-2ae1-4b5d-b417-728152b82296"
 >
+<Comment>Switch on the brake and mark it as an emergency brake command</Comment>
 <PreConditions>
-<PreCondition
- Guid="649c3f88-8262-493c-b016-93b647dc82f2"
->NationalValues.ReleaseOfEBIsPermitted()</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
- Guid="a41cfc82-d25b-4253-a90a-157ce0df5384"
->RevokeEBCommand()</Action><Action
- Guid="2e40dc81-ff12-4049-a5eb-e1994b2236a5"
+ Guid="5f2ab883-f8e5-4aed-ad31-ba3342346cd7"
+>EBTriggered &lt;- True</Action><Action
+ Guid="07dd4121-f8b5-4cd2-926b-3e6778eb77b2"
 ><Comment></Comment>
-EBTriggered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="r0"
- Guid="c4307476-0bce-4017-8b43-060ce2599b77"
->
-<ReqRef
- Id="4f24d434-b967-4e8b-b2b1-e0b3f4d6c2dc"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0291a9ed-8988-4005-b65c-707d3b0f92b5"
->
-</ReqRef><ReqRef
- Id="644aa967-53f8-4d2c-b5ba-6a857c9cda54"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8a4fd652-11c7-4a14-b685-1e32a8c6352c"
->
-</ReqRef><Comment>Revocation condition 0: Train at standstill, revoke Intervention Status.</Comment>
-<PreConditions>
-<PreCondition
- Guid="4e4830fc-a94d-426b-9f5e-b913436afab4"
->Odometry.EstimatedSpeed == 0.0</PreCondition><PreCondition
- Guid="0593021b-81e3-477a-9a0e-498d8f4c1092"
->Supervision == SupervisionStatus.Intervention</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f8efea1f-aba7-4784-b942-e6a964f43b62"
->EBTriggered &lt;- False</Action><Action
- Guid="6d175e6c-da20-4473-a4af-64d640ac6605"
->RevokeEBCommand()</Action><Action
- Guid="292dcc2b-5f14-4704-9498-c3afbeea2d95"
->Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+EBSpecified &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2166,9 +2832,14 @@ EBTriggered &lt;- False</Action></Actions>
  Guid="e9555a1b-f367-4622-9faa-66996604960b"
 >
 </ReqRef><ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1fcc5fa9-c9cf-41dd-a448-30996a0eb7d1"
+>
+</ReqRef><ReqRef
  Id="d5c3e2f6-7747-4faf-95c2-ec06309fe9ac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0b063b9d-2320-4226-abd5-8d0c14edd75c"
+ Guid="0989ee0e-13a8-417f-9693-de3171c17c49"
 >
 </ReqRef><Comment>Indicates if SB was triggered.</Comment>
 </Variable><Variable
@@ -2199,9 +2870,19 @@ EBTriggered &lt;- False</Action></Actions>
  Guid="e36e82e0-f29a-4357-bb33-8229c4305f00"
 >
 </ReqRef><ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6fb805d8-e377-4058-ab1b-cfd7d8e60c54"
+>
+</ReqRef><ReqRef
+ Id="987011eb-4ef7-491c-8292-26c140669ff8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bbe65d1a-9c3f-42b9-bda2-895fa04e6a54"
+>
+</ReqRef><ReqRef
  Id="d5c3e2f6-7747-4faf-95c2-ec06309fe9ac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f8e4a97b-98aa-41d8-91be-9ee9ef3580ab"
+ Guid="dde76e0f-6bde-4a1a-b962-12bc22e6802a"
 >
 </ReqRef><Comment>Indicates if EB was triggered (can be triggered either if EB was specified or if SB was specified but there is no on-board interface with the service brake or the use of the service brake command is not allowed by a National Value).</Comment>
 </Variable><Variable
@@ -2213,7 +2894,7 @@ EBTriggered &lt;- False</Action></Actions>
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TractionCutOffTriggered"
+ Name="TCOTriggered"
  Guid="977c190f-a73a-4ed6-a0f3-3c8abe725756"
 >
 <ReqRef
@@ -2226,40 +2907,12 @@ EBTriggered &lt;- False</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7d304123-df8e-4e5b-9c01-015f289a1c6a"
 >
-</ReqRef><Comment>Indicates if the traction cuf-off command was triggered.</Comment>
-</Variable><Variable
- Type="SupervisionStatus"
- DefaultValue="SupervisionStatus.Normal"
- VariableMode="Internal"
- X="200"
- Y="260"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Supervision"
- Guid="80030642-6eaa-408e-9f33-e3ecf28e70ce"
->
-<ReqRef
- Id="b8bd12fa-1398-4b7e-82b5-d9fea4894091"
+</ReqRef><ReqRef
+ Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e87a484a-d1e1-4938-9576-f0275e9d51b9"
+ Guid="a1a5f487-c094-4090-a348-d919c764003d"
 >
-<Comment></Comment>
-</ReqRef><Comment></Comment>
-</Variable><Variable
- Type="Boolean"
- DefaultValue="Boolean.False"
- VariableMode="Incoming"
- X="730"
- Y="460"
- Width="100"
- Height="50"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TCOSpecified"
- Guid="7ea4025a-f5b3-4e8c-9ab9-1b1ae985b2db"
->
-<Comment>Indicates if traction cut-off command was specified.</Comment>
+</ReqRef><Comment>Indicates if the traction cuf-off command was triggered.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
@@ -2277,6 +2930,7 @@ EBTriggered &lt;- False</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="95dd4898-2b4b-450a-8ef2-62b60ac891aa"
 >
+<Comment></Comment>
 </ReqRef><Comment>Indicates if the SB command was specified. Use to determine wheter EB command was triggered due to SBI supervision limit or EBI supervision limit.</Comment>
 </Variable><Variable
  Type="Boolean"
@@ -2293,32 +2947,47 @@ EBTriggered &lt;- False</Action></Actions>
 >
 <Comment>Indicates if the train is tripped.</Comment>
 </Variable><Variable
- Type="TargetSupervision.Targets"
- DefaultValue=""
+ Type="TargetSpeedMonitoring.Targets"
+ DefaultValue="[]"
  VariableMode="Internal"
- X="330"
- Y="260"
  Width="100"
  Height="50"
  Implemented="TRUE"
  Name="SupervisedTargets"
- Guid="341e2310-275a-4c3b-a993-ea6bd6277776"
+ Guid="db7f0679-9b6f-4449-8ad0-5ef9061c3b19"
 >
 <ReqRef
  Id="c0c90876-1322-4533-951c-924804b80043"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="00043c17-e5ed-495a-9e98-62f3bc101763"
+ Guid="982ec8fb-8850-4f99-a5e4-0c0838b70895"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="f966f396-c00e-4f6b-945d-6cde4527e814"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="faba002a-6710-49e6-b36d-66fb50213152"
+ Guid="b8f02617-69ff-4ee6-ae94-d3af6f415114"
 >
 </ReqRef><ReqRef
  Id="620d2411-2c42-403d-9139-cdb6a68c48b2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1f009fa1-e2be-4011-a385-3fe7682eb0cb"
+ Guid="78e50c92-ffa9-411a-a9e4-604b4a013d12"
 >
 </ReqRef><Comment>Keeps the list of supervised targets. Used to determine if the supervised targets have changed</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue=""
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="EBSpecified"
+ Guid="ed388750-8408-4038-b8e2-bdd279e978b7"
+>
+<ReqRef
+ Id="7d9d0edb-ad9a-48db-a67e-e74e1be64d74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="646b91ee-9b3c-49c3-94f4-05e16371f41c"
+>
+</ReqRef><Comment>Indicates if the EB command was specified. Use to determine wheter EB command was triggered due to SBI supervision limit or EBI supervision limit.</Comment>
 </Variable></Variables>
 </NameSpace>

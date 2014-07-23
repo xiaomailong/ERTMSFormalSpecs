@@ -365,7 +365,7 @@ NOT THERE_IS_IN
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="220"
  Y="180"
@@ -406,15 +406,17 @@ NOT THERE_IS_IN
  Name="EOA defined"
  Guid="68d67405-caf7-4094-b3e4-7f0058728b8e"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="cb68af68-0cb6-4298-98b1-fe36a552f264"
->RouteSuitabilityProfile != EMPTY
+><Comment></Comment>
+RouteSuitabilityProfile != EMPTY
   AND
 RouteSuitabilityProfile.Items != []
   AND
 THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></PreConditions>
-<Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
     Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitable ( X )
@@ -429,7 +431,7 @@ THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></P
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="330"
  Y="180"
@@ -473,7 +475,7 @@ THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></P
 RouteSuitabilityProfile.Items != []
   AND
 THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></PreConditions>
-<Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
     Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitable ( X )
@@ -788,7 +790,7 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axl
  Name="Create the route suitability profile"
  Guid="ce752460-e53f-4f33-b629-e2bfb148dca1"
 >
-<Comment>If the route suitability profile is EMPTY, initialize it -James</Comment>
+<Comment>If the route suitability profile is EMPTY, initialize it</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition

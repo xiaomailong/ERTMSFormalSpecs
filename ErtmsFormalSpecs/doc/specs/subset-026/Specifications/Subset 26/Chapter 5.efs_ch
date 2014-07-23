@@ -1211,6 +1211,7 @@ If, in level 2 or 3, the RBC rejects the request for Shunting (E13), the process
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="78c16d2a-47fa-4235-b272-fcbe2fd46848"
 >
+<Comment></Comment>
 </ReqRef><Comment>According to the Condition 46 of the Table 4.6 describing the conditions to pass from the mode SB to the mode NL, three following conditions have to be satisfied:
 1. Driver selects Non Leading.
 2. Train is at standstill.
@@ -1780,8 +1781,7 @@ Following E10, E12,  if the position is still invalid, the ERTMS/ETCS on-board s
  functionalBlockName=""
  Name=""
  Guid="e2eaea17-d87b-4c36-9589-0db802e46f40"
-><Comment></Comment>
-Following E30, if the position is still invalid, the ERTMS/ETCS on-board shall delete the train position data (new status: &quot;unknown&quot;)<RequirementSets>
+>Following E30, if the position is still invalid, the ERTMS/ETCS on-board shall delete the train position data (new status: &quot;unknown&quot;)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="41663fab-2e00-4047-be44-6189aa976142"
@@ -15154,7 +15154,8 @@ Note: Balise groups are read in all levels and orders from balise groups are acc
  functionalBlockName=""
  Name=""
  Guid="b29247fe-e625-4af6-a626-840f4a976c1f"
->Procedure passing a non protected Level Crossing<Sub>
+><Comment></Comment>
+Procedure passing a non protected Level Crossing<Sub>
 <Paragraph
  id="5.16.1"
  guid=""
@@ -15176,7 +15177,7 @@ Note: Balise groups are read in all levels and orders from balise groups are acc
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -15203,7 +15204,8 @@ Note: Balise groups are read in all levels and orders from balise groups are acc
  functionalBlockName=""
  Name=""
  Guid="90d05183-dd5f-471a-929c-200da2581c34"
->The supervision of the LX start location as both the EOA and SvL shall be substituted by the inclusion of the LX speed restriction in the MRSP under conditions depending on whether stopping in rear of the LX start location is required or not. The conditions of this substitution are specified in 5.16.2 or 5.16.3.<RequirementSets>
+><Comment></Comment>
+The supervision of the LX start location as both the EOA and SvL shall be substituted by the inclusion of the LX speed restriction in the MRSP under conditions depending on whether stopping in rear of the LX start location is required or not. The conditions of this substitution are specified in 5.16.2 or 5.16.3.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e3a87ec4-cdae-4daa-898a-7a98f3cca0dc"

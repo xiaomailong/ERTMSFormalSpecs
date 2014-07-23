@@ -486,7 +486,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Expression>aProfile.Distance - BaseTypes.LengthToDistance ( aProfile.AcknLength ) &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="260"
  Y="80"
@@ -526,7 +526,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 >Profile != []</PreCondition><PreCondition
  Guid="72d9cd73-06fc-4d5b-abaa-ec05e4cb3dc7"
 >FirstNonApplicableModeProfile() != EMPTY</PreCondition></PreConditions>
-<Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
 {
     Location =&gt; ( FirstNonApplicableModeProfile() ).Distance,
     Speed =&gt; 0.0,
@@ -539,7 +539,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="260"
  Y="140"
@@ -580,7 +580,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 >Profile != []</PreCondition><PreCondition
  Guid="ae49b5bd-f40e-49bd-b5bd-ea562a6cde15"
 >Available ( MA.MA )</PreCondition></PreConditions>
-<Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
 {
     Location =&gt; ( FirstNonApplicableModeProfile() ).Distance,
     Speed =&gt; 0.0,

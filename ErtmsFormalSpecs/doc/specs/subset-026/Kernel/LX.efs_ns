@@ -13,8 +13,8 @@
 <Structures>
 <Structure
  Default=""
- X="400"
- Y="310"
+ X="580"
+ Y="200"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -138,6 +138,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8e79b32e-2f40-4d5b-9eb6-e5e570c92648"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="f694242d-ad4f-45aa-a715-677610005bcb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -151,7 +152,7 @@
 </ReqRef><Comment>Level crossing protection status.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
- Default=""
+ Default="Default.BaseTypes.Speed.NA"
  Mode="Internal"
  Implemented="TRUE"
  Name="Speed"
@@ -200,11 +201,13 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="202d1272-9864-4eef-9bd9-395e6086362a"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="ece82958-6f94-4168-b5b1-f3fe24058435"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2dff7a7e-cb5e-4d2e-9b12-e6e7c349421d"
 >
+<Comment></Comment>
 </ReqRef><Comment>Length of the stopping area in rear of the start location of the level crossing area.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
@@ -212,8 +215,8 @@
  TypeName="Kernel.LX.LevelCrossing"
  MaxSize="20"
  Default="[]"
- X="220"
- Y="310"
+ X="410"
+ Y="200"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -237,8 +240,7 @@
 <Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="40"
- Y="20"
+ Y="60"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -290,8 +292,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="40"
- Y="80"
+ Y="120"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -304,6 +305,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2eb34725-9edf-4f67-b8ee-646d5564503e"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="127b4102-89de-4c50-9c52-b1bead79aa18"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -342,17 +344,19 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="Stopping area"
  Guid="c02bca9b-8d4b-448d-a0f4-34d1cbdf40f8"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0b2f6eef-b4ba-4d04-b58d-f9e3967cb279"
 >aLX.Location - Default.BaseTypes.LengthToDistance(aLX.StoppingAreaLength) &lt;= Distance</PreCondition><PreCondition
  Guid="8950058e-304d-4ac4-a86a-a98ef88c42a9"
->Distance &lt; aLX.Location - Default.BaseTypes.LengthToDistance(aLX.StoppingAreaLength) + 0.1</PreCondition></PreConditions>
+>Distance &lt; aLX.Location</PreCondition></PreConditions>
 <Expression>StoppingAreaSpeed(aLX)</Expression>
 </Case><Case
  Name="During LX"
  Guid="20734346-3c5e-4874-98f2-a6f945ae06cf"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="aa68eaa3-e106-4898-a5a8-0da6cc9bab87"
@@ -364,13 +368,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="Outside LX"
  Guid="f1b56221-be26-417f-969b-c42462ccb12f"
 >
-<Expression>BaseTypes.Speed.MaxSpeed</Expression>
+<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="150"
- Y="20"
+ X="230"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -396,6 +399,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="LX is not protected"
  Guid="4aeaa947-7bb9-4f94-b693-73f82de18cd0"
 >
+<Comment>If the LX is not protected and it has no stopping area in rear of its start location, the start location is temporarily considered as the EOA and SvL. Once the train has reached the permitted speed supervision limit for the LX speed, the train then monitors the LX speed as if it was in the LX area.</Comment>
 <PreConditions>
 <PreCondition
  Guid="d632bc00-1e4d-44cf-ba8c-2133d1f88ca0"
@@ -405,13 +409,14 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="LX is protected"
  Guid="4359d193-2752-4a1e-8efe-3d266fb9367c"
 >
+<Comment></Comment>
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="150"
- Y="80"
+ X="110"
+ Y="60"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -467,8 +472,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Kernel.LX.LevelCrossing"
  Default=""
- X="260"
- Y="20"
+ X="230"
+ Y="60"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -545,13 +550,184 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >aLevelCrossing.Id != Packet.NID_LX</PreCondition></PreConditions>
 <Expression>aLevelCrossing</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Kernel.LX.LevelCrossing"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="NearestNonProtectedNonStoppingLX"
+ Guid="fae147e0-6891-41b3-99a1-a53243253b5e"
+>
+<ReqRef
+ Id="9b54b401-0857-45af-bbb3-1ec502f39d2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c073c006-3a10-48ea-b73e-d225c97996da"
+>
+</ReqRef><ReqRef
+ Id="59bae633-99ce-4f69-992a-cec56e0b4c41"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f22f1a74-fd95-494d-bb79-12807a725b97"
+>
+</ReqRef><Comment>Returns the LevelCrossing in LevelCrossings with the nearest Location, that is non protected, and with no stopping area</Comment>
+<Cases>
+<Case
+ Name="None exist"
+ Guid="a8d933e2-7a55-4c8f-aade-f052e5d56195"
+>
+<PreConditions>
+<PreCondition
+ Guid="345298f5-7a48-4c2a-b922-299a7609c275"
+>NOT (THERE_IS_IN LevelCrossings | (X.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected) AND (X.StoppingRequired == Messages.Q_STOPLX.No_stop_required))</PreCondition></PreConditions>
+<Expression>EMPTY</Expression>
+</Case><Case
+ Name="Value"
+ Guid="a9bbf1f9-7aa9-4346-acd1-798063f97990"
+>
+<Comment></Comment>
+<Expression>REDUCE LevelCrossings | (X.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected) AND (X.StoppingRequired == Messages.Q_STOPLX.No_stop_required)
+
+USING ClosestLX(LX1=&gt;X, LX2=&gt;RESULT)
+
+INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.Infinity}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Kernel.LX.LevelCrossing"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ClosestLX"
+ Guid="48c39ba9-266b-4a94-bfe3-34d2b653dc14"
+>
+<Comment>Takes two LevelCrossing structures and returns the one with the nearest Location</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.LX.LevelCrossing"
+ Name="LX1"
+ Guid="e98f59f4-6757-40e6-bdbc-335ea6fe69ac"
+>
+</Parameter><Parameter
+ Type="Kernel.LX.LevelCrossing"
+ Name="LX2"
+ Guid="eb6b6b78-008d-439f-b300-dc8b2a6afd71"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="LX1 &gt; LX2"
+ Guid="a61e8f7a-33bc-4207-afb9-1868a25e4ee9"
+>
+<PreConditions>
+<PreCondition
+ Guid="68fd308f-cbbb-43bc-965f-824c84cc5db2"
+>LX1.Location &gt; LX2.Location</PreCondition></PreConditions>
+<Expression>LX2</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="225f89ab-ccd8-4301-857e-cee8e5d504fa"
+>
+<Expression>LX1</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="d_P_ForLX"
+ Guid="d671db7a-c99d-4216-a51f-557be12ddeab"
+>
+<Comment>Calculates the permitted speed deceleration curve for a given level crossing. This is not performed in the TargetSupervision namespace because the calculation requires a target with zero speed at the level crossing start location.</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.LX.LevelCrossing"
+ Name="aLX"
+ Guid="09e9c2a3-5adf-4f57-98bc-d6ff00f2efe6"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="GUI is inhibited"
+ Guid="75ba269e-e11b-4dc9-a74b-6618d5460ba5"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="d4f210eb-abe8-409f-82c1-dcd63fef0895"
+><Comment></Comment>
+NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
+<Expression>d_FLOI_ForLX ( aLX ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver</Expression>
+</Case><Case
+ Name="GUI is enabled"
+ Guid="b1346c7a-ac41-44d2-b6a3-b7c844cda78d"
+>
+<Comment></Comment>
+<Expression>BaseTypes.MinDistance ( X1 =&gt; d_FLOI_ForLX ( aLX ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.GUI, Speed =&gt; aLX.Speed ) )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="d_FLOI_ForLX"
+ Guid="de234ad6-b7f7-465c-a1b8-8847eb483e85"
+>
+<Comment>d_FLOI used to calculate the d_P for the start of the level crossing.</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.LX.LevelCrossing"
+ Name="aLX"
+ Guid="0fa87647-5df9-499f-b0a7-9daf55bf044b"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="d_SBI1"
+ Guid="c5c61626-9cff-41e0-a003-5272909586ad"
+>
+<PreConditions>
+<PreCondition
+ Guid="c96572f1-d44c-4039-8be6-1eb9c3f44363"
+><Comment></Comment>
+SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( aLX.Speed ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )
+ &lt;= 
+SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2(
+  Vest =&gt; aLX.Speed,
+  aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+    Location =&gt; aLX.Location,
+    Speed =&gt; 0.0,
+    Length =&gt; aLX.Length
+  }
+) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( aLX.Speed )</Expression>
+</Case><Case
+ Name="d_SBI2"
+ Guid="5b780a39-26ea-4c85-870c-c287b12e58f7"
+>
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2(
+  Vest =&gt; aLX.Speed,
+  aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+    Location =&gt; aLX.Location,
+    Speed =&gt; 0.0,
+    Length =&gt; aLX.Length
+  }
+)</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
- X="40"
- Y="210"
+ X="110"
+ Y="120"
  Width="100"
  Height="50"
+ Pinned="TRUE"
  Implemented="TRUE"
  Name="LXReceived"
  Guid="ea0c2341-28a7-4f3c-b952-200b3c078ff1"
@@ -561,7 +737,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="db94e85a-ca32-4533-bcc6-219d9f36c47e"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Procedure to handle the reception of one or more new level crossings to supervise</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message"
@@ -582,6 +758,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="UpdateLevelCrossings"
  Guid="2f346b4d-6e5b-4d7c-aa47-e547a9a1601d"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -594,7 +771,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="71622625-e828-4a94-b810-def49fca23c3"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>There are already supervised level crossings</Comment>
+<PreConditions>
 <PreCondition
  Guid="c45454d0-a5f2-4a6d-ad2e-bfc59ec32279"
 >THERE_IS_IN LevelCrossings | X.Id == Packet.NID_LX</PreCondition></PreConditions>
@@ -632,7 +810,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7fa62d07-c1df-4796-b333-a7d62dea0a53"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>There are no supervised level crossings</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -659,8 +837,8 @@ IN LevelCrossings</Action></Actions>
  Type="LevelCrossings"
  DefaultValue=""
  VariableMode="Internal"
- X="40"
- Y="310"
+ X="250"
+ Y="200"
  Width="100"
  Height="50"
  Pinned="TRUE"

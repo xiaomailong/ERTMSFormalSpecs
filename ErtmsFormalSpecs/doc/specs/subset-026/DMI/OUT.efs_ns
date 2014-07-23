@@ -1002,7 +1002,7 @@
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="220"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1497,7 +1497,8 @@ Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditio
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="330"
+ X="110"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1990,7 +1991,7 @@ Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditio
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="440"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2479,7 +2480,8 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="550"
+ X="110"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2490,6 +2492,11 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Id="0701baa9-e1f2-4338-a299-8fb06d891176"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="300ff1ad-e0a5-4b96-b056-167b6eb1009e"
+>
+</ReqRef><ReqRef
+ Id="46fa293d-249a-454b-bbda-cdc527f79dc7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="40aa9e13-0b69-45c1-bf5e-54db43c23892"
 >
 </ReqRef><Rules>
 <Rule
@@ -2967,7 +2974,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="660"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2979,7 +2986,11 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="59591595-be1f-4ff6-b1b2-ae6dd16c7532"
 >
-<Comment></Comment>
+</ReqRef><ReqRef
+ Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc07a549-5d16-45d6-b97e-f5ae67bc78a6"
+>
 </ReqRef><Comment>Handles display of information relative to the train permitted speed.</Comment>
 <Rules>
 <Rule
@@ -2994,12 +3005,20 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="437dece3-cb84-449c-b094-c7141761144d"
 >
+</ReqRef><ReqRef
+ Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e1f50546-a62f-4328-a61e-f19bd91f9143"
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="74e64307-2966-461e-a976-9a0194ca8514"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5c101f1a-5c44-4522-96fa-a040dc6b3fac"
 >
+</ReqRef><ReqRef
+ Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c0425da5-9178-4679-b61f-12c39989d2ad"
 </ReqRef><Comment>Keep the value of Speed up-to-date, but only if this information can be displayed</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -3564,7 +3583,8 @@ OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="770"
+ X="110"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3580,6 +3600,11 @@ OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
  Id="b2d1ec0c-6179-487e-8bd5-c648d7a87f56"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f1539fc9-b2b8-4b17-84ee-d007d7ef10a2"
+>
+</ReqRef><ReqRef
+ Id="66b79932-5e84-4126-abe6-3094347749c2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6eee072c-bb0d-4dfe-bf2c-5398d5799d15"
 >
 </ReqRef><Rules>
 <Rule
@@ -3604,11 +3629,11 @@ OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 ><Comment></Comment>
 ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition><PreCondition
  Guid="718632bd-e801-4c45-95f0-2a3479af5bb4"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c312fe49-c752-4ce5-8361-a09bc8d7ecab"
->Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_MRDT()</Action></Actions>
+>Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_P_MRDT()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -3639,7 +3664,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 >
 </StructureElement><StateMachines>
 <StateMachine
- Default="NotAvailable"
+ Default="ProcedureOutSM.NotAvailable"
  Implemented="TRUE"
  Name="ProcedureOutSM"
  Guid="b4dad98b-6187-447e-abf4-65c04ae305e5"
@@ -3655,7 +3680,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Guid="e0ac105b-c052-41e0-86c2-4d63c88339d8"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NotAvailable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="708f2bb2-b896-41cd-8c41-811a56bf4d92"
@@ -3696,7 +3721,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <Actions>
 <Action
  Guid="9d3ab7ae-b6b6-4d83-ad28-689e22ac798f"
->THIS &lt;- NotAvailable.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NotAvailable.Idle</Action><Action
  Guid="c60177ca-2ac9-45bb-a19c-beb99bf4ed21"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -3726,7 +3751,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Guid="a52596f4-b5ba-4fe3-9417-528ab6508f9a"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NationalSystemAvailability.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="c0e9a594-b895-48d3-9a33-e8e8fb239f29"
@@ -3767,7 +3792,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <Actions>
 <Action
  Guid="2d720773-a767-44eb-8c14-ee17b7a4fe9a"
->THIS &lt;- NationalSystemAvailability.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NationalSystemAvailability.Idle</Action><Action
  Guid="e844143f-51fb-4d5d-9275-86bed30bee36"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -3797,7 +3822,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Guid="9d409013-05e5-475c-bf13-4660b26fdbf7"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.NotApplicable.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="d01c6121-ebec-4abe-bc30-bdf5976a8933"
@@ -3838,7 +3863,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <Actions>
 <Action
  Guid="eda5c59a-d409-4463-853a-1205f9206729"
->THIS &lt;- NotApplicable.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.NotApplicable.Idle</Action><Action
  Guid="ea85d52a-c8d7-4e96-9349-35681eb66dc9"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
@@ -3868,7 +3893,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Guid="d6107256-7d24-4659-9921-bc0e5bde919d"
 >
 <StateMachine
- Default="InitialState"
+ Default="ProcedureOutSM.Active.InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="b836d815-cee1-440a-b0bd-6ea49bf5e95a"
@@ -3909,7 +3934,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <Actions>
 <Action
  Guid="3a46eca0-c4bd-49b0-82bb-89bb0d186689"
->THIS &lt;- Active.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Active.Send</Action><Action
  Guid="b5ffc5a7-f27c-43e0-88f2-0134433f8502"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
@@ -3939,7 +3964,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Guid="c7da5b55-0cf4-489a-8302-aea5b007ee7a"
 >
 <StateMachine
- Default="Idle"
+ Default="ProcedureOutSM.Available.Idle"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="0b1121eb-711b-49a8-8d10-55006ce7a8bc"
@@ -3978,15 +4003,15 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <PreConditions>
 <PreCondition
  Guid="38a36287-3fb8-4541-b87e-6369dcbfbc6b"
->OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.ShowRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b8a960a1-6d00-459f-a592-a2344e7f86bc"
->THIS &lt;- Available.Send</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Send</Action><Action
  Guid="688c3f97-750a-4758-90e3-f53b8e6b5a62"
 >OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
  Guid="fc0ae961-9da5-4421-951e-c05fd81fb327"
->OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4022,15 +4047,15 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <PreConditions>
 <PreCondition
  Guid="784a5bcf-5cdd-4d68-ac3a-6c005c48de4c"
->OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
+>OutputInformation.HideRequestStatus == Default.Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2158dcc4-fa5b-4bf0-a415-ecd0e3c86c49"
->THIS &lt;- Available.Idle</Action><Action
+>THIS &lt;- ProcedureOutSM.Available.Idle</Action><Action
  Guid="8cd679df-f8f7-403c-be35-58046dc53bd5"
 >OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
  Guid="76ab81ee-05f0-48cd-ae84-336ba1d33c67"
->OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
+>OutputInformation.HideRequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -4038,7 +4063,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="880"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4075,11 +4100,13 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <PreCondition
  Guid="bfda245f-e56b-40df-b3fd-b22f703f58a4"
 >ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
+<PreCondition
+ Guid="8038d0e6-78ca-47b8-8610-07535136491d"
+>Kernel.SpeedAndDistanceMonitoring.DisplayReleaseSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ac88bf52-f540-44c2-8c94-930fb08165ef"
-><Comment></Comment>
-Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed</Action></Actions>
+>Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.ReleaseSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -4510,7 +4537,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="60"
+ X="110"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4548,10 +4576,13 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 <PreCondition
  Guid="63b462dd-77eb-421b-b645-7b971238f6ec"
 >ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
+<PreCondition
+ Guid="7488f13c-8a6e-4cf8-8931-dd021c1574b6"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ff5f5c50-07e9-4fef-b3f1-354e16f8124b"
->SupervisionStatus &lt;- Kernel.SupervisionStatus</Action><Action
+>SupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action><Action
  Guid="975c42a9-7e96-48dd-99bb-ee51294679d3"
 >Monitoring &lt;- Kernel.SpeedAndDistanceMonitoring.Monitoring</Action></Actions>
 </RuleCondition></Conditions>
@@ -4574,6 +4605,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
  Name="SupervisionStatus"
  Guid="05418ba3-2072-44cd-854f-981486368998"
 >
+<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureOutSM"
  Default=""
@@ -4991,8 +5023,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="60"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5453,8 +5484,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="220"
- Y="60"
+ X="110"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5894,8 +5925,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="330"
- Y="60"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6336,8 +6366,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="440"
- Y="60"
+ X="110"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6775,8 +6805,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="550"
- Y="60"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7216,8 +7245,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="660"
- Y="60"
+ X="110"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7693,8 +7722,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="770"
- Y="60"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8168,8 +8196,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="880"
- Y="60"
+ X="110"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8607,7 +8635,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="120"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9049,7 +9077,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </Structure><Structure
  Default=""
  X="110"
- Y="120"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9489,8 +9517,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="220"
- Y="120"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9929,8 +9956,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="330"
- Y="120"
+ X="110"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10369,8 +10396,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="440"
- Y="120"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10867,8 +10893,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpe
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="550"
- Y="120"
+ X="110"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11308,8 +11334,7 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="660"
- Y="120"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11751,8 +11776,8 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="770"
- Y="120"
+ X="110"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12191,8 +12216,7 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="880"
- Y="120"
+ Y="780"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12633,7 +12657,8 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="180"
+ X="110"
+ Y="780"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -13088,8 +13113,7 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="180"
+ Y="840"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -13529,8 +13553,8 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="220"
- Y="180"
+ X="110"
+ Y="840"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -13990,8 +14014,7 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="330"
- Y="180"
+ Y="900"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -14430,8 +14453,8 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="440"
- Y="180"
+ X="110"
+ Y="900"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -14871,8 +14894,7 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="550"
- Y="180"
+ Y="960"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -15311,8 +15333,8 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="660"
- Y="180"
+ X="110"
+ Y="960"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -15369,7 +15391,8 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 <Actions>
 <Action
  Guid="6c795dd9-cfd6-4c71-9695-cc2210c5bcaf"
->ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></Actions>
+><Comment></Comment>
+ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -15824,8 +15847,7 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="770"
- Y="180"
+ Y="1020"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -16292,8 +16314,8 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="880"
- Y="180"
+ X="110"
+ Y="1020"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -16786,7 +16808,7 @@ GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING X</Act
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="240"
+ Y="1080"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -17279,7 +17301,7 @@ GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING X</Act
 </Structure><Structure
  Default=""
  X="110"
- Y="240"
+ Y="1080"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -17745,8 +17767,7 @@ GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING X</Act
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="220"
- Y="240"
+ Y="1140"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -18212,8 +18233,8 @@ GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING X</Act
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="330"
- Y="240"
+ X="110"
+ Y="1140"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -18681,8 +18702,7 @@ The brake reason.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="440"
- Y="240"
+ Y="1200"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -19142,8 +19162,8 @@ The brake reason.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="550"
- Y="240"
+ X="110"
+ Y="1200"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -19603,8 +19623,7 @@ The brake reason.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="660"
- Y="240"
+ Y="1260"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -20044,8 +20063,8 @@ The brake reason.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="770"
- Y="240"
+ X="110"
+ Y="1260"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -20056,6 +20075,11 @@ The brake reason.</Comment>
  Id="c5c3fd28-41ac-4ad2-a5ea-ba3e63205382"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="962cd9d0-d0a6-4e8f-a6c1-89046eabead8"
+>
+</ReqRef><ReqRef
+ Id="220617b2-d0d2-4c8e-a475-e9d9a8761441"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="383a3a1b-a16a-4709-90b4-bb8ff8f77de5"
 >
 </ReqRef><Rules>
 <Rule
@@ -20073,14 +20097,19 @@ The brake reason.</Comment>
  Name="UpdateValue"
  Guid="463e57c3-09a7-4c0a-9506-917d7b2b22a0"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="08961521-d25e-4e1e-b5ab-f956b5d776fd"
->ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
+>ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition>
+<PreCondition
+ Guid="f4fa4704-a159-4fbe-9c68-7429576b316f"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4ec9e0a0-7cd1-4cc2-b31f-830372a7fab2"
->Distance &lt;- Kernel.TargetDistance</Action></Actions>
+><Comment></Comment>
+Distance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -20510,8 +20539,7 @@ The brake reason.</Comment>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="880"
- Y="240"
+ Y="1320"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -21001,7 +21029,8 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- Y="300"
+ X="110"
+ Y="1320"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -21490,8 +21519,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="300"
+ Y="1380"
  Width="100"
  Height="50"
  Implemented="TRUE"

@@ -6,7 +6,6 @@
  Name="AxleLoad"
  Guid="2bb7594e-aee3-45d5-bcb6-092282828fe2"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -78,7 +77,7 @@
 <Comment>The collection of axle load speed restrictions.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
+ X="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -122,7 +121,8 @@
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
- X="220"
+ X="110"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -220,6 +220,7 @@
  TypeName="Kernel.TrackDescription.AxleLoad.AxleLoadValue"
  MaxSize="20"
  Default="[]"
+ X="220"
  Y="60"
  Width="100"
  Height="50"
@@ -238,7 +239,6 @@
  MaxSize="30"
  Default="[]"
  X="110"
- Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -274,7 +274,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="55040a00-9112-4c96-95a5-84aa2f1a9c52"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -369,7 +368,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="Value"
  Guid="7ab8f7aa-817f-49eb-8cb8-a7380ea2ea26"
 >
-<Comment></Comment>
 <Expression>AxleLoad
 {
     Distance =&gt; Distance,
@@ -512,8 +510,7 @@ USING
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="550"
- Y="180"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"

@@ -599,6 +599,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="384dbd94-3313-4081-b03f-b0f4a9d0830d"
 >
+</ReqRef><ReqRef
+ Id="4c799cdf-883c-4ea1-bbdd-a4bc41f56fd1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="023d8126-39e7-4779-abbb-a37b41d5c2d3"
+>
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_NVGUIPERM"
  Default="Messages.Q_NVGUIPERM.No"
@@ -1744,7 +1749,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3a3b9acf-62e8-4158-98f3-f3b48bcbe51b"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1768,7 +1772,7 @@
  Guid="3d5a36d0-595f-42e5-a36a-49a44199a640"
 >Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition><PreCondition
  Guid="97ff3cda-e064-42fd-9ef4-2561e441b7cc"
->HandleModeChange in HandleModeChange.Override</PreCondition></PreConditions>
+>Kernel.HandleModeChange in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
 <Expression>Kernel.NationalValues.ApplicableNationalValues.Value.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive</Expression>
 </Case><Case
  Name="DefaultValue"
@@ -1779,7 +1783,7 @@
  Guid="6fe49ff5-1abc-44f8-9fbe-0809314bf327"
 >Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition><PreCondition
  Guid="fdd71851-17b9-4fca-940a-4c6865621452"
->HandleModeChange in HandleModeChange.Override</PreCondition></PreConditions>
+>Kernel.HandleModeChange in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
 <Expression>Kernel.NationalValues.DefaultValues.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive</Expression>
 </Case><Case
  Name="OverrideNotActive"
@@ -1788,7 +1792,7 @@
 <PreConditions>
 <PreCondition
  Guid="14b28a32-c7d1-4f6a-9dfa-7147e1dbf61f"
->HandleModeChange not in HandleModeChange.Override</PreCondition></PreConditions>
+>Kernel.HandleModeChange not in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
@@ -2555,7 +2559,6 @@
  Name="Stopping required"
  Guid="1d0a440f-d2a8-4126-875a-ebd4014ab524"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="3c8e6d4c-7d8f-4e62-833e-dcbdb643906f"
@@ -2735,7 +2738,6 @@
  Name="NationalValues_Standstill"
  Guid="779c4f9e-14ef-41b5-9896-f28f9f3d6f59"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="076e8f62-4c7e-40a8-ad88-47cc8bd4416c"
@@ -2745,6 +2747,7 @@
  Name="NationalValues_SpeedSupervisionLimitIsNoLongerExceeded"
  Guid="c42b9ca4-4e17-4e9c-8e6e-e9970071fd9c"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f7f7c12d-3963-40da-83ea-2d25e6986142"
@@ -2759,6 +2762,7 @@
  Name="DefaultValues_SpeedSupervisionLimitIsNoLongerExceeded"
  Guid="cb889c73-68c2-4ad3-8c17-9640a862ddaa"
 >
+<Comment></Comment>
 <Expression>Kernel.NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Expression>
 </Case></Cases>
 </Function><Function

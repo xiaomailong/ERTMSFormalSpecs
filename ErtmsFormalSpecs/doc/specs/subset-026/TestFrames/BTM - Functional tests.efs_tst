@@ -331,12 +331,12 @@
 </ReqRef><ReqRef
  Id="675394d7-4475-4a7f-9846-627ae90086d9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5c533d8c-e6bc-4b6e-a422-23b63c738dfb"
+ Guid="db879dc5-6f20-494a-80e9-1d300e95d483"
 >
 </ReqRef><ReqRef
  Id="50574953-3247-4859-8de2-1049ab46e862"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9583203b-c62e-490e-a7ae-bd744c68f25f"
+ Guid="4d0d7293-2001-42eb-bd9c-94ee893b4938"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -413,7 +413,6 @@
  Name="Sub-step1"
  Guid="37e33b34-ac78-412c-bb2e-c90177a29f50"
 >
-<Comment></Comment>
 <Actions>
 <Action
  Guid="18cc0d5b-e409-44e5-8d17-feb310a51305"
@@ -456,8 +455,7 @@
 <Actions>
 <Action
  Guid="f85dc298-50a7-47a4-8af9-f2dbc6097dc4"
-><Comment></Comment>
-BTM.Message &lt;- Messages.EUROBALISE.Message
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -935,6 +933,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  Name="Balise reception, incomplete balise group received"
  Guid="44aa3712-051d-481c-badb-925c18ecf83d"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"

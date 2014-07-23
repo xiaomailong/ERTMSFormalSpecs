@@ -13,7 +13,7 @@
 <Function
  Type="Boolean"
  Default=""
- Y="60"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -49,7 +49,7 @@
   AND
 Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;= 200.0</PreCondition><PreCondition
  Guid="44dea8f6-d254-4297-b71b-73fbc4ac8c22"
->TrainData.Value.BrakePercentage != Percentage.NA
+>TrainData.Value.BrakePercentage != Default.Percentage.NA
   AND
 30.0 &lt;= TrainData.Value.BrakePercentage
   AND
@@ -70,7 +70,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  Type="Default.BaseTypes.Acceleration"
  Default=""
  X="110"
- Y="60"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -163,7 +163,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  Type="Default.BaseTypes.Speed"
  Default=""
  X="220"
- Y="60"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -230,7 +230,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  Type="Default.BaseTypes.Time"
  Default=""
  X="330"
- Y="60"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -282,7 +282,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  Type="TrainData.BrakingParameters.CorrectionFactor"
  Default=""
  X="440"
- Y="60"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -334,7 +334,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  Type="Default.BaseTypes.Time"
  Default=""
  X="550"
- Y="60"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -385,8 +385,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
- X="660"
- Y="60"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -416,8 +415,8 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
 </Function><Function
  Type="Default.BaseTypes.Time"
  Default=""
- X="770"
- Y="60"
+ X="110"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -454,8 +453,8 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
 </Function><Function
  Type="Default.BaseTypes.Time"
  Default=""
- X="880"
- Y="60"
+ X="220"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -492,7 +491,8 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
- Y="120"
+ X="330"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -522,8 +522,8 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="110"
- Y="120"
+ X="440"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -555,8 +555,8 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
 </Function><Function
  Type="Double"
  Default=""
- X="220"
- Y="120"
+ X="550"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -641,8 +641,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreCon
 </Function><Function
  Type="Double"
  Default=""
- X="330"
- Y="120"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -727,8 +726,8 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreCon
 </Function><Function
  Type="Double"
  Default=""
- X="440"
- Y="120"
+ X="110"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -813,8 +812,8 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreCon
 </Function><Function
  Type="Double"
  Default=""
- X="550"
- Y="120"
+ X="220"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -858,8 +857,8 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition></
 </Function><Function
  Type="Double"
  Default=""
- X="660"
- Y="120"
+ X="330"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -944,8 +943,8 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreCon
 </Function><Function
  Type="Double"
  Default=""
- X="770"
- Y="120"
+ X="440"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1030,8 +1029,8 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreCon
 </Function><Function
  Type="Double"
  Default=""
- X="880"
- Y="120"
+ X="550"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1116,7 +1115,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreCon
 </Function><Function
  Type="Double"
  Default=""
- Y="180"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1160,7 +1159,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="240"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1270,7 +1269,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 </Rule></Rules>
 </Procedure><Procedure
  X="110"
- Y="240"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1363,7 +1362,7 @@ ComputeA_safe ( aBrakingModel =&gt; A_brake_service, aBrakePercentage =&gt; MinP
 </Rule></Rules>
 </Procedure><Procedure
  X="220"
- Y="240"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1438,7 +1437,7 @@ ComputeA_safe ( aBrakingModel =&gt; A_brake_service, aBrakePercentage =&gt; MinP
 </Rule></Rules>
 </Procedure><Procedure
  X="330"
- Y="240"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1513,7 +1512,7 @@ ComputeA_safe ( aBrakingModel =&gt; A_brake_service, aBrakePercentage =&gt; MinP
 </Rule></Rules>
 </Procedure><Procedure
  X="440"
- Y="240"
+ Y="360"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -1587,6 +1586,7 @@ Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed()</PreC
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9a7f8631-9335-4841-951d-5a522667a85f"
 >
+<Comment></Comment>
 </ReqRef><Comment>The value of the equivalent emergency brake build up time to be used when the target speed (V_target) is equal to zero.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
@@ -1762,7 +1762,7 @@ Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed()</PreC
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
- X="660"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1774,7 +1774,7 @@ Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed()</PreC
 <Rules>
 <Rule
  Priority="Processing"
- Y="300"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
