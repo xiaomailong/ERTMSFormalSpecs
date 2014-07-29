@@ -668,6 +668,11 @@ namespace DataDictionary.Tests.Runner
         }
 
         /// <summary>
+        /// Indicates that the changes performed should be checked for compatibility
+        /// </summary>
+        private bool CheckForCompatibleChanges = false;
+
+        /// <summary>
         /// Applies the selected actions and update the system state
         /// </summary>
         /// <param name="updates"></param>
@@ -697,44 +702,46 @@ namespace DataDictionary.Tests.Runner
                             EventTimeLine.AddModelEvent(variableUpdate, this);
                             ruleFired.AddVariableUpdate(variableUpdate);
 
-                            ChangeList actionChanges = variableUpdate.Changes;
-                            if (variableUpdate.Action.Statement is Interpreter.Statement.ProcedureCallStatement)
+                            if (CheckForCompatibleChanges)
                             {
-                                Dictionary<Variables.IVariable, Change> procedureChanges = new Dictionary<Variables.IVariable, Change>();
-
-                                foreach (Change change in variableUpdate.Changes.Changes)
+                                ChangeList actionChanges = variableUpdate.Changes;
+                                if (variableUpdate.Action.Statement is Interpreter.Statement.ProcedureCallStatement)
                                 {
-                                    procedureChanges[change.Variable] = change;
-                                }
+                                    Dictionary<Variables.IVariable, Change> procedureChanges = new Dictionary<Variables.IVariable, Change>();
 
-                                actionChanges = new ChangeList();
-                                foreach (Change change in procedureChanges.Values)
-                                {
-                                    actionChanges.Add(change, false, this);
-                                }
-                            }
-
-                            foreach (Change change in actionChanges.Changes)
-                            {
-                                Variables.IVariable variable = change.Variable;
-                                if (changes.ContainsKey(change.Variable))
-                                {
-                                    Change otherChange = changes[change.Variable];
-                                    Rules.Action otherAction = traceBack[otherChange].Action;
-                                    if (!variable.Type.CompareForEquality(otherChange.NewValue, change.NewValue))
+                                    foreach (Change change in variableUpdate.Changes.Changes)
                                     {
-                                        string action1 = ((Utils.INamable)action.Enclosing).FullName + " : " + variableUpdate.Action.FullName;
-                                        string action2 = ((Utils.INamable)otherAction.Enclosing).FullName + " : " + traceBack[otherChange].Action.FullName;
-                                        variableUpdate.Action.AddError("Simultaneous change of the same variable with different values. Conflit between " + action1 + " and " + action2);
+                                        procedureChanges[change.Variable] = change;
+                                    }
+
+                                    actionChanges = new ChangeList();
+                                    foreach (Change change in procedureChanges.Values)
+                                    {
+                                        actionChanges.Add(change, false, this);
                                     }
                                 }
-                                else
+
+                                foreach (Change change in actionChanges.Changes)
                                 {
-                                    changes.Add(change.Variable, change);
-                                    traceBack.Add(change, variableUpdate);
+                                    Variables.IVariable variable = change.Variable;
+                                    if (changes.ContainsKey(change.Variable))
+                                    {
+                                        Change otherChange = changes[change.Variable];
+                                        Rules.Action otherAction = traceBack[otherChange].Action;
+                                        if (!variable.Type.CompareForEquality(otherChange.NewValue, change.NewValue))
+                                        {
+                                            string action1 = ((Utils.INamable)action.Enclosing).FullName + " : " + variableUpdate.Action.FullName;
+                                            string action2 = ((Utils.INamable)otherAction.Enclosing).FullName + " : " + traceBack[otherChange].Action.FullName;
+                                            variableUpdate.Action.AddError("Simultaneous change of the same variable with different values. Conflit between " + action1 + " and " + action2);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        changes.Add(change.Variable, change);
+                                        traceBack.Add(change, variableUpdate);
+                                    }
                                 }
                             }
-
                         }
                         else
                         {
