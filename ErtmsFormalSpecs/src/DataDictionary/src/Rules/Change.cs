@@ -99,7 +99,7 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The changes stored in this change list
         /// </summary>
-        List<Change> Changes { get; set; }
+        public List<Change> Changes { get; set; }
 
         /// <summary>
         /// Consdtructor
@@ -178,9 +178,24 @@ namespace DataDictionary.Rules
 
             foreach (Change change in Changes)
             {
-                if (change.Variable == variable)
+                Variables.IVariable current = change.Variable;
+                while (!retVal && current != null)
                 {
-                    retVal = true;
+                    retVal = current == variable;
+
+                    Values.StructureValue enclosingStructureValue = current.Enclosing as Values.StructureValue;
+                    if (enclosingStructureValue != null)
+                    {
+                        current = enclosingStructureValue.Enclosing as Variables.IVariable;
+                    }
+                    else
+                    {
+                        current = null;
+                    }
+                }
+
+                if (retVal)
+                {
                     break;
                 }
             }

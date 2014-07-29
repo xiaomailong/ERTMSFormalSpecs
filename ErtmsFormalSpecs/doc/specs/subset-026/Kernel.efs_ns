@@ -191,7 +191,7 @@
 </ReqRef><Comment></Comment>
 <StructureElement
  TypeName="String"
- Default="&apos;Henry&apos;"
+ Default="&apos;12345&apos;"
  Mode="Internal"
  Implemented="TRUE"
  Name="Value"
@@ -3256,11 +3256,11 @@ Kernel.DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action><Action
 <PreConditions>
 <PreCondition
  Guid="38f3b44b-5a89-41ee-b95f-25ad79bd1cbd"
->DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="923ea094-6be5-481e-94d1-8cdc8568db9d"
->DMI.MasterDMI().InitiateTrainDataRequest()</Action></Actions>
+>DMI.MasterDMI().InitiateTrainDataEntryRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3270,11 +3270,11 @@ Kernel.DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action><Action
 <PreConditions>
 <PreCondition
  Guid="f261ffb0-3546-4eb3-b92e-2e561dd1e3e6"
->DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a59bd1e1-eb5a-476d-9a84-03cc15848aba"
->DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="bd8a96f5-556a-4544-aebd-9e1604aaf8e5"
 ><Comment></Comment>
 Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action><Action
@@ -5329,7 +5329,8 @@ Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3fd7f5ee-ae12-4095-b1bb-15a5f0497c66"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5337,10 +5338,12 @@ Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action
  Name="Allow override for states S10 and S20"
  Guid="c9ee8de7-2b98-4b64-9126-b8c58c5b84fe"
 >
+<Comment>Enable override only in states S10 and S20</Comment>
 <PreConditions>
 <PreCondition
  Guid="7e8aca9e-bed4-4228-a2b5-d53dc47080f8"
->THIS in [S10, S20]</PreCondition><PreCondition
+><Comment></Comment>
+THIS in S10 OR THIS in S20</PreCondition><PreCondition
  Guid="e5583ad4-e0b3-48b8-968c-2ff42b9ff8df"
 >Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
@@ -5353,6 +5356,7 @@ Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action
  Name="Allow override"
  Guid="e4ce4dbe-532b-4a82-93f2-dc0ccdb761ea"
 >
+<Comment>Allow override</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5371,6 +5375,19 @@ Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action
 >DMI.MasterDMI().InitiateOverrideRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Override is not available for the other states of the state machine"
+ Guid="bba737a7-6898-4d3c-a730-0a2d65ef6dcf"
+>
+<Comment>Disable the override when not in states S10 and S20</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="bf81f04d-cac3-4266-9b0e-e6bebcc4c043"
+><Comment></Comment>
+DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5576,6 +5593,7 @@ Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action
  Name="Driver selected to reenter the level"
  Guid="a141fb86-7873-4806-8c02-bb5cedef0402"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="ae7ab92d-f97e-4ee2-b50a-3137e1b17946"
@@ -5585,7 +5603,7 @@ Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action
  Guid="97e2fe25-4b7b-4194-a1a6-5980b8d2cea7"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="d43762ba-cc41-48b3-be35-302b460560c2"
->THIS &lt;- S2</Action></Actions>
+>THIS &lt;- S2.ExitState</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"

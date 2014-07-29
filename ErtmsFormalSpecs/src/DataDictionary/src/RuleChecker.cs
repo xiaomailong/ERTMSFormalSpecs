@@ -974,6 +974,28 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
+        public override void visit(Generated.EnumValue obj, bool visitSubNodes)
+        {
+            Constants.EnumValue enumValue = (Constants.EnumValue)obj;
+
+            CheckIdentifier(enumValue, enumValue.Name);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        /// <summary>
+        /// Ensures that the identifier is correct
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="name"></param>
+        private static void CheckIdentifier(ModelElement model, string name)
+        {
+            if (!EFSSystem.INSTANCE.Parser.IsIdentifier(name))
+            {
+                model.AddError("Invalid identifier");
+            }
+        }
+
         public override void visit(Generated.Range obj, bool visitSubNodes)
         {
             Types.Range range = (Types.Range)obj;

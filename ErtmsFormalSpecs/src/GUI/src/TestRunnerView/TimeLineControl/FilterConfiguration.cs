@@ -92,14 +92,16 @@ namespace GUI.TestRunnerView.TimeLineControl
                     {
                         // Do not filter out variables updates for which the rule is not available
                         // because these updates are related to test steps or external input (using EFS service)
-                        retVal = variableUpdate.Action != null && variableUpdate.Action.Rule == null;
-
-                        foreach (Variable variable in Variables)
+                        if (variableUpdate.Action.RuleCondition != null)
                         {
-                            retVal = variableUpdate.Changes.ImpactVariable(variable);
-                            if (retVal)
+                            retVal = false;
+                            foreach (Variable variable in Variables)
                             {
-                                break;
+                                retVal = variableUpdate.Changes.ImpactVariable(variable);
+                                if (retVal)
+                                {
+                                    break;
+                                }
                             }
                         }
                     }
