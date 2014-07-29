@@ -115,6 +115,21 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
+        /// Indicates if the string provided corresponds to an identifier
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool IsIdentifier(string value)
+        {
+            Buffer = value.ToCharArray();
+            Index = 0;
+
+            string id = Identifier();
+
+            return Index == Buffer.Length && !string.IsNullOrEmpty(id);
+        }
+
+        /// <summary>
         /// Provides the designator at position Index of the Buffer.
         /// </summary>
         /// <param name="root">The root element for which this designator is built</param>
