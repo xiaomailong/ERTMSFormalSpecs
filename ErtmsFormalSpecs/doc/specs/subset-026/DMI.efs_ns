@@ -6228,6 +6228,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Name="FS"
  Guid="20bc25b2-74ee-4f50-8ffa-11a0034ff413"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="fdc00ee3-472e-454c-a099-40afeb3783f3"
@@ -6267,7 +6268,8 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="399dc6ee-ecc2-431d-9ac4-511e2029f874"
 >In_TrainIntegrity.GoToAvailable()</Action><Action
  Guid="27385552-a92a-4eea-b0db-02bb0a5ad4b5"
->In_OverrideRequest.GoToAvailable()</Action><Action
+><Comment></Comment>
+In_OverrideRequest.GoToAvailable()</Action><Action
  Guid="9fd01df9-92b7-4b8e-a296-0b324c676527"
 >In_ShuntingRequest.GoToAvailable()</Action><Action
  Guid="c7a723b2-b9d5-40eb-ab67-3734a97d16ef"
@@ -8899,6 +8901,43 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_VirtualBaliseCover.InputInformation.DriverAnswered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DisableOverrideRequest"
+ Guid="3566e4ea-c9c8-4c0f-8eb3-de358400e9ef"
+>
+<Comment>Allows to disable an override request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Disable override request"
+ Guid="f5bf35ab-e9c7-418c-a3f7-941858d84e86"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Disable override request"
+ Guid="902e4d93-7d9f-4b33-8cfe-c7c426335056"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="7ba6bdcf-8c1d-4523-b4ee-50aacb166385"
+>In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Disabled
+</Action><Action
+ Guid="7661aba2-68b7-4bfc-99c7-c00a9adbfc9c"
+>In_OverrideRequest.InputInformation.DisplayRequested &lt;- False
+</Action><Action
+ Guid="3f6b57ea-c906-45b7-8bb8-f35e1e70e32e"
+>In_OverrideRequest.InputInformation.DriverAnswered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="IN.TrainDataEntryRequest"
@@ -10662,7 +10701,8 @@ NOT DeskIsOpen ( DMI2 )</Expression>
 <Actions>
 <Action
  Guid="7b57277f-e2ab-45c2-a612-f14d23efda3a"
->DMI.MasterDMI().HandleModeChange()</Action></Actions>
+><Comment></Comment>
+DMI.MasterDMI().HandleModeChange()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
