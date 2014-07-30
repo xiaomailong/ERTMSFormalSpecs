@@ -26,7 +26,7 @@ namespace GUI.LongOperations
         /// <summary>
         /// Execution time span
         /// </summary>
-        public TimeSpan Span { get; private set; }
+        public TimeSpan Span { get; set; }
 
         /// <summary>
         /// Indicates that the dialog should be displayed
