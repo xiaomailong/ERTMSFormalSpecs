@@ -5603,7 +5603,11 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
  Guid="97e2fe25-4b7b-4194-a1a6-5980b8d2cea7"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="d43762ba-cc41-48b3-be35-302b460560c2"
->THIS &lt;- S2.ExitState</Action></Actions>
+>THIS &lt;- S2.ExitState</Action><Action
+ Guid="d99e5f6b-1105-4692-a541-3a84839be92f"
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
+ Guid="0c83dfbd-1132-4ae2-9704-6cc161b710db"
+>Kernel.Level.Value &lt;- DMI.MasterDMI().In_ErtmsEtcsLevel.Level</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
