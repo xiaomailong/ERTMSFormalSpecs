@@ -21,9 +21,14 @@ namespace DataDictionary.Tests.Runner.Events
     public class RuleFired : ModelEvent
     {
         /// <summary>
+        /// The activation that launched this rule condition
+        /// </summary>
+        public Runner.Activation Activation { get; private set; }
+
+        /// <summary>
         /// The rule condition associated to this rule fired event
         /// </summary>
-        public Rules.RuleCondition RuleCondition { get; private set; }
+        public Rules.RuleCondition RuleCondition { get { return Activation.RuleCondition; } }
 
         /// <summary>
         /// The namespace associated to this event
@@ -33,16 +38,17 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The variable updates triggered by this rule event
         /// </summary>
-        private List<VariableUpdate> Updates { get; set; }
+        private List<VariableUpdate> Updates { get; set; }      
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="id"></param>
-        public RuleFired(Rules.RuleCondition ruleCondition, Generated.acceptor.RulePriority priority)
-            : base(ruleCondition.Name, ruleCondition, priority)
+        public RuleFired(Runner.Activation activation, Generated.acceptor.RulePriority priority)
+            : base(activation.RuleCondition.Name, activation.RuleCondition, priority)
         {
-            RuleCondition = ruleCondition;
+            Activation = activation;
+            Explanation = Activation.Explanation;
             Updates = new List<VariableUpdate>();
         }
 

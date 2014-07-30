@@ -4825,7 +4825,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="56d3f5cb-66dc-4f1d-a551-9a0081aae8e9"
->DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4844,19 +4844,14 @@
 <Actions>
 <Action
  Guid="9cabd80e-2058-46ee-8026-486b8a99dbfa"
->DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="f46637e0-6770-4af1-9856-9f0e2085a3e0"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action
- Guid="4739c7ac-80a8-4060-a515-3c453dc80b7d"
->DMI.MasterDMI().In_TrainData.Data &lt;- Kernel.TrainData.TrainDataValues{MaximumSpeed=&gt;30.0}</Action></Actions>
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="abe87982-e390-4d22-9cab-fb636940912b"
->Kernel.TrainData.TrainData.Value.MaximumSpeed == 30.0</Expectation><Expectation
- Kind="Instantaneous"
  Guid="d651357e-d0ee-4b55-b962-1b95b52c5d35"
->DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3da79608-7004-4b41-af36-94a40143ee62"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S12</Expectation></Expectations>
