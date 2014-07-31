@@ -499,90 +499,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateTrainRunningNumberRequest"
- Guid="aaf445c0-1673-479e-9f2d-bed3daca2316"
->
-<Parameters>
-<Parameter
- Type="String"
- Name="Number"
- Guid="1bb36445-1c00-4c30-85a1-fdaa5a780246"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="Enter"
- Guid="7eb35541-7d65-45e2-815a-cd65a8ba3f69"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="ReValidate"
- Guid="c386856c-5269-4d52-a3a5-706fe4e498f4"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="951c1525-4110-4d52-ba96-c572a7ba542a"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bb864301-91e2-49aa-a21e-e3947e6e01a1"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="26832f84-613a-4f32-8957-515b4df07da3"
->
-<PreConditions>
-<PreCondition
- Guid="f60bf2e3-8db0-4224-965f-628faef255f2"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="c6b7943b-ee51-43ab-85a2-fd4d6fab2cb3"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="dea06465-365a-41a4-8134-54ff5b5260ee"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="3a7b35a6-4639-469e-9966-7b74cb03436e"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="4bd17968-feb4-43e4-826d-52aa37f14cbe"
->In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
- Guid="d8ee9e5c-f4ef-4148-aa17-8e58cd093ff8"
->In_TrainRunningNumber.Number &lt;- Number</Action><Action
- Guid="8f370cbf-f88b-4137-8558-30f3d72e1dee"
->In_TrainRunningNumber.DriverAction.Enter &lt;- Enter</Action><Action
- Guid="266ca35a-5e19-49d5-bf42-5ee11f3a77a4"
->In_TrainRunningNumber.DriverAction.ReValidate &lt;- ReValidate</Action><Action
- Guid="f9a6278c-36f7-442d-bee3-94cf679b444e"
->In_TrainRunningNumber.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="InitiateStartRequest"
  Guid="d05ed3ec-51dd-4d26-986a-cf3c564deaea"
 >
@@ -8214,15 +8130,21 @@ In_OverrideRequest.GoToAvailable()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b20764b7-ef76-4e55-b13d-bee9e3c98cf0"
 >
-</ReqRef><ReqRef
- Id="8de0ac4e-25fd-4dbb-985d-725e7eb5f9ab"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="13012a6f-e9ff-4741-b4be-ffb7e55efe81"
->
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="63c4543b-5430-4f3e-a524-ce48d640aead"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="19906745-7441-4855-bcf9-8b5f73542d8f"
+>
+</ReqRef><ReqRef
+ Id="cc8be0e3-4edb-46d4-a4e4-a00714d90fc4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3702c875-21c1-42dd-a2af-f5b8e6f89825"
+>
+</ReqRef><ReqRef
+ Id="166e123f-f57c-4045-af2e-915a4c4e849b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f0d919bb-fff2-432a-a7e5-7aae9f74fa8f"
 >
 </ReqRef><Comment>Updates the requests according to the mode change</Comment>
 <SubRules></SubRules>
@@ -8247,7 +8169,10 @@ In_ErtmsEtcsLevel.TrackMode()</Action><Action
 ><Comment></Comment>
 In_TrainData.TrackMode()</Action><Action
  Guid="7ec7436d-c9d5-4c45-9474-2b702ea7b28d"
->In_TrainDataEntryRequest.TrackMode()</Action></Actions>
+>In_TrainDataEntryRequest.TrackMode()</Action><Action
+ Guid="a4edbcfb-504e-419a-88f5-9a55b16db104"
+><Comment></Comment>
+In_TrainRunningNumber.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -8548,6 +8473,7 @@ In_TrainData.TrackMode()</Action><Action
  Name="InitiateVirtualBaliseCoverRequest"
  Guid="f4c4ce85-3624-42c1-813d-6eef8b406f4c"
 >
+<Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"

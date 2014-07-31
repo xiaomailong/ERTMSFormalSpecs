@@ -1043,7 +1043,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="9a44c4a6-0ae2-44c8-862e-44ed64c312ec"
->DMI.MasterDMI().InitiateTrainRunningNumberRequest(
+>DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
   Number =&gt; Kernel.TrainRunningNumber.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; False
@@ -1070,7 +1070,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="affe3d9b-7a1e-4f62-bd0a-f1ff3cb5effd"
->DMI.MasterDMI().InitiateTrainRunningNumberRequest(
+><Comment></Comment>
+DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
   Number =&gt; Kernel.TrainRunningNumber.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
@@ -1242,12 +1243,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="6daf2d43-41a5-4001-aa29-1d9f159ef0a0"
->Kernel.TrainRunningNumber.Value &lt;- DMI.MasterDMI().In_TrainRunningNumber.Number</Action><Action
- Guid="a7099fe4-c560-4131-9ab3-bb8a18d4824e"
->Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action><Action
  Guid="8b33d872-c0c8-4b0b-b8aa-ca338914cc37"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_TrainRunningNumber.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -2854,7 +2851,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="0ac8622f-25d6-4e3a-acd0-dc80b595016a"
->DMI.MasterDMI().InitiateTrainRunningNumberRequest(
+>DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
   Number =&gt; Kernel.TrainRunningNumber.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
@@ -2882,7 +2879,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="27775e3f-6a9f-41e7-bba5-77290d1190ec"
->DMI.MasterDMI().InitiateTrainRunningNumberRequest(
+>DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
   Number =&gt; Kernel.TrainRunningNumber.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; False
@@ -2937,12 +2934,8 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 >DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="2c239333-4325-43a8-9fab-ed6c420c1601"
->Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="72254dd4-eeef-4c2f-98f6-897b4aa95a53"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
- Guid="2d6a6084-f1ea-4dcc-9da1-288b55129be4"
->Kernel.TrainRunningNumber.Value &lt;- DMI.MasterDMI().In_TrainRunningNumber.Number</Action></Actions>
+>DMI.MasterDMI().In_TrainRunningNumber.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -5493,7 +5486,7 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="5e0fd3ed-60e6-4b96-b48c-0786ee77e557"
->DMI.MasterDMI().InitiateTrainRunningNumberRequest(
+>DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
   Number =&gt; TrainRunningNumber.Value, 
   Enter =&gt; True,
   ReValidate =&gt; False
@@ -5511,9 +5504,7 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="5b72fd24-bc2f-4ef6-84bc-99e04d9917fe"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
- Guid="48129c9c-81ba-4a83-97b3-e7698ffec4cc"
->TrainRunningNumber.Value &lt;- DMI.MasterDMI().In_TrainRunningNumber.Number</Action></Actions>
+>DMI.MasterDMI().In_TrainRunningNumber.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
