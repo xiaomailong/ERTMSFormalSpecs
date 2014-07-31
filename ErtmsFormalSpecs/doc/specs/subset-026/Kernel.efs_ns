@@ -1124,7 +1124,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="0ff251f6-8beb-499b-9cdc-55577d26e81a"
->DMI.MasterDMI().InitiateDriverIdRequest(
+>DMI.MasterDMI().In_DriverId.InitiateRequest(
   Id =&gt; Kernel.DriverId.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
@@ -1151,7 +1151,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="b89bff0b-b2af-4d9c-96fc-22bbcf2647e0"
->DMI.MasterDMI().InitiateDriverIdRequest(
+>DMI.MasterDMI().In_DriverId.InitiateRequest(
   Id =&gt; Kernel.DriverId.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; False
@@ -5434,7 +5434,7 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="9ebd91fb-b6f2-4d28-b3f7-6fb87e037047"
->DMI.MasterDMI().InitiateDriverIdRequest(
+>DMI.MasterDMI().In_DriverId.InitiateRequest(
   Id =&gt; DriverId.Value, 
   Enter =&gt; True,
   ReValidate =&gt; False

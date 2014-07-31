@@ -561,90 +561,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateDriverIdRequest"
- Guid="b218826f-51c3-4689-853b-d99155ff3e5f"
->
-<Parameters>
-<Parameter
- Type="String"
- Name="Id"
- Guid="e5462fbe-0e2d-4a37-a980-839c9295c3a3"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="Enter"
- Guid="02298262-dc2b-48cd-bf72-d9b96554545f"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="ReValidate"
- Guid="695cdc92-8b74-4f61-b1e0-6407f41f48ce"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="53928eb1-01d9-4858-8be1-40545b084c67"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7b5ffcb9-9c0d-4d0a-84fc-7d8a18cb8dee"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="687651bc-16ba-4d2e-8610-3d6f1ec9cfed"
->
-<PreConditions>
-<PreCondition
- Guid="03389d9f-7fc5-4e78-ad85-058961ece0f2"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="867bc987-dbf2-42a2-8b42-f2fa4cb69c72"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="2ed4cc3d-0b98-4400-a4cf-be45c27f52ec"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="ca95777f-5c71-463d-a7ec-dee284cf1100"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="9a91cbd8-4ca5-4de3-a5bd-e382ac50ff8c"
->In_DriverId.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="54aa2047-de8d-4c37-94b8-d0f948509474"
->In_DriverId.Id &lt;- Id</Action><Action
- Guid="b51820fd-596f-4613-b3bb-09c8a7592a45"
->In_DriverId.DriverAction.Enter &lt;- Enter</Action><Action
- Guid="e133edd2-a054-4294-a381-253c94401775"
->In_DriverId.DriverAction.ReValidate &lt;- ReValidate</Action><Action
- Guid="bb7f8830-74a0-4559-8fe7-555a6049a97c"
->In_DriverId.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="InitiateTrainRunningNumberRequest"
  Guid="aaf445c0-1673-479e-9f2d-bed3daca2316"
 >
@@ -8477,7 +8393,7 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="In_ErtmsEtcsLevel"
+ Name="Track mode change"
  Guid="7afc886f-cd49-46f5-a66c-0e4b2482448c"
 >
 <ReqRef
@@ -8485,7 +8401,12 @@ In_OverrideRequest.GoToAvailable()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b20764b7-ef76-4e55-b13d-bee9e3c98cf0"
 >
-</ReqRef><Comment>Updates the level according to the mode change</Comment>
+</ReqRef><ReqRef
+ Id="8de0ac4e-25fd-4dbb-985d-725e7eb5f9ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="13012a6f-e9ff-4741-b4be-ffb7e55efe81"
+>
+</ReqRef><Comment>Updates the requests according to the mode change</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -8501,7 +8422,9 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 <Action
  Guid="3f187d6a-e7e5-4287-aed5-a4fe32ff7e96"
 ><Comment></Comment>
-In_ErtmsEtcsLevel.TrackMode()</Action></Actions>
+In_ErtmsEtcsLevel.TrackMode()</Action><Action
+ Guid="3a357883-dbd6-4d62-bc9c-894eb3407d42"
+>In_DriverId.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

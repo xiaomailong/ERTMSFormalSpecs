@@ -242,6 +242,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="InputInformation"
  Guid="eb9df4a1-a6e9-46d2-a241-90040d381893"
 >
+<Comment>Provides information about this request status</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Level"
  Default=""
@@ -251,6 +252,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Level"
  Guid="84f609cb-3e68-4f7e-91fb-994fda61ec84"
 >
+<Comment>This is the level proposed to the driver and, after the driver has selected a level, the one that has been selected</Comment>
 </StructureElement><StructureElement
  TypeName="DriverAction"
  Default=""
@@ -260,7 +262,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="DriverAction"
  Guid="09607d95-2143-4b10-bb46-973612eb2817"
 >
-<Comment></Comment>
+<Comment>Provides the available driver actions (enter / revalidate)</Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureInSM"
  Default=""
@@ -12187,9 +12189,9 @@ THIS.InputInformation.Disable()</Action></Actions>
  Guid="e2122d99-1228-49f7-934d-21fe04dd2984"
 >
 <ReqRef
- Id="3304c4da-5fe0-433e-b102-e0133ee3c22e"
+ Id="8de0ac4e-25fd-4dbb-985d-725e7eb5f9ab"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="751cb020-149e-496a-976c-b487f47a98c1"
+ Guid="fecf0930-89b1-489e-9b64-8bfd9096dc8a"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -12225,6 +12227,144 @@ THIS.InputInformation.Disable()</Action></Actions>
 >ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="8c6c0807-df4e-4b71-869a-031ae3b63785"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="90b0b596-506f-40d5-8f69-e10b643cbce2"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="4fc6379f-c7d4-41b8-8dac-a95f74dc0172"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="cb6883b5-cc98-4506-a1c6-7a0cb4af3488"
+><Comment></Comment>
+
+Kernel.DriverId.DataState &lt;- DataState.Valid</Action><Action
+ Guid="7d3f9ccb-b0de-42eb-90cc-548e800edc28"
+><Comment></Comment>
+
+Kernel.DriverId.Value &lt;- Id</Action><Action
+ Guid="19431aeb-cc52-463d-acfc-343b0ff96809"
+><Comment></Comment>
+
+THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="dbb5ef26-0dff-4812-84b6-cf3332873500"
+>
+<ReqRef
+ Id="8de0ac4e-25fd-4dbb-985d-725e7eb5f9ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d301415-3dfb-4f10-ad16-a73c4dfe95b5"
+>
+</ReqRef><Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="4a829098-f496-4727-9083-5597a525e4f1"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="193c50a3-09ca-4952-8866-fd5bab4836aa"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d1e5b369-ab1f-485c-abef-9ee48b6bc48d"
+><Comment></Comment>
+NOT DriverIdAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="61478187-075c-4259-9f38-5dfdb060188e"
+><Comment></Comment>
+
+THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="b218826f-51c3-4689-853b-d99155ff3e5f"
+>
+<Comment>Initiates a driver ID request</Comment>
+<Parameters>
+<Parameter
+ Type="String"
+ Name="Id"
+ Guid="e5462fbe-0e2d-4a37-a980-839c9295c3a3"
+>
+</Parameter><Parameter
+ Type="Boolean"
+ Name="Enter"
+ Guid="02298262-dc2b-48cd-bf72-d9b96554545f"
+>
+</Parameter><Parameter
+ Type="Boolean"
+ Name="ReValidate"
+ Guid="695cdc92-8b74-4f61-b1e0-6407f41f48ce"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="2ed4cc3d-0b98-4400-a4cf-be45c27f52ec"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="ca95777f-5c71-463d-a7ec-dee284cf1100"
+>
+<PreConditions>
+<PreCondition
+ Guid="9529b0de-0a46-4673-a7e7-7120b3d0d30e"
+>DriverIdAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9a91cbd8-4ca5-4de3-a5bd-e382ac50ff8c"
+>THIS.InputInformation.InitiateRequest()</Action><Action
+ Guid="54aa2047-de8d-4c37-94b8-d0f948509474"
+>THIS.Id &lt;- Id</Action><Action
+ Guid="b51820fd-596f-4613-b3bb-09c8a7592a45"
+>DriverAction.Enter &lt;- Enter</Action><Action
+ Guid="e133edd2-a054-4294-a381-253c94401775"
+>DriverAction.ReValidate &lt;- ReValidate</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="InputInformation"
@@ -12235,6 +12375,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="InputInformation"
  Guid="7955133b-5500-4110-8695-9c4f8d6e5885"
 >
+<Comment>The current status of the request</Comment>
 </StructureElement><StructureElement
  TypeName="String"
  Default=""
@@ -12254,7 +12395,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="DriverAction"
  Guid="7773fdad-d3d2-4e06-b73a-65c8d60e7d8a"
 >
-<Comment></Comment>
+<Comment>The action the driver can perform (enter / revalidate)</Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureInSM"
  Default=""
@@ -13908,6 +14049,41 @@ Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, M
 </Case><Case
  Name="Otherwise"
  Guid="45531538-9137-498d-bf14-fd22a6448d7d"
+>
+<Comment>Otherwise the function is not available</Comment>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DriverIdAvailable"
+ Guid="12b349fb-2237-4578-bf75-f8612af89848"
+>
+<ReqRef
+ Id="8de0ac4e-25fd-4dbb-985d-725e7eb5f9ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9b763279-f011-4979-91cb-1d79e2743c87"
+>
+</ReqRef><Comment>Indicates whether the level can be proposed to the driver</Comment>
+<Cases>
+<Case
+ Name="Available"
+ Guid="776e8526-8a56-4314-9e51-66001f9f78b3"
+>
+<Comment>Identifies the modes where the function is available</Comment>
+<PreConditions>
+<PreCondition
+ Guid="6437298d-bc45-4011-9460-3dbc82c7724e"
+><Comment></Comment>
+
+Kernel.Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="848bbde5-f6be-459b-acf5-d502d9da6311"
 >
 <Comment>Otherwise the function is not available</Comment>
 <Expression>False</Expression>
