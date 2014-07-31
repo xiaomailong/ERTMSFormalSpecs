@@ -9779,6 +9779,7 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="817c9d09-735b-46c7-b87c-2849bb2dd9a8"
 >
+<Comment></Comment>
 </ReqRef><Comment></Comment>
 <Comment></Comment>
 <Steps>
@@ -9801,12 +9802,37 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
  Guid="d86541e5-746d-4015-8570-6b0ccb8ba935"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
  Guid="3e18324f-894f-4112-a0ef-9ef31bb2c012"
->Kernel.PowerOn &lt;- False</Action></Actions>
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="f2c8c4bf-2a5a-4921-815c-ff6060f5dc15"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2da79239-6af8-4604-8893-c4cf0ba4c716"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d72b331d-b7a3-4b3a-9a2d-e91ea7d7a1e0"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="bcd36b6d-1508-4f97-b832-5ed3469a00b6"
+>
+<Actions>
+<Action
+ Guid="81c3ebd9-286a-4c6b-a646-824b136859e4"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="815f7842-ef8e-4ca1-9d4a-314530a53159"
->DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -9827,12 +9853,32 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
  Guid="86adfa7b-9089-45a0-ae59-fbb5bbc7ebcd"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
  Guid="fba07269-f366-4249-bce0-7d04ae23d6e8"
->Kernel.PowerOn &lt;- True</Action></Actions>
+><Comment></Comment>
+Kernel.PowerOn &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="4f5a4a0d-c45c-41d7-878b-7d97fd8772ca"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="33581487-940c-48c3-b917-252ec9a76ccb"
+>
+<Actions>
+<Action
+ Guid="60df5ff4-1b6f-423f-afbf-88c08f9b989f"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="8db9925c-d4e4-4a01-a86e-1006a1c80723"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -9851,12 +9897,37 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
 <Actions>
 <Action
  Guid="71d06e8d-d895-4737-aa89-08f63cfabfec"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="4b4979d3-56c8-4a98-bc59-5eb16a4cac25"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="c96b7b8f-ca24-4c9f-99de-4e2b87ba12a4"
->DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="93fba359-1d2a-4eb9-810e-75a36c36a6e2"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d4e00627-b9d2-4a82-a8e9-7d785c6fe3ea"
+>
+<Actions>
+<Action
+ Guid="f6f75639-6dfa-4958-b105-44cf2f72de8e"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="322e4553-8f21-4cd8-af72-e434ce4adfe7"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -9877,12 +9948,37 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
  Guid="2ae417f3-741c-4134-812b-c2fe0cf842ba"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
  Guid="f9c831bb-5e5a-4ca6-8cff-cf76a6b1add1"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="13d4f77d-93b4-4fde-a67f-367bc9391d4e"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="c9473452-f0cf-40bc-b22a-2cddf3955cdf"
->DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="039498a2-7572-49da-9279-51280fd0322f"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="905f50cd-b6c9-44ab-af6f-232d54331e89"
+>
+<Actions>
+<Action
+ Guid="d0fb4706-bae7-4d9a-b888-7ca3f95a2a52"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3e0ece92-c41a-4580-b5b7-0de553b42945"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -9909,6 +10005,25 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
  Kind="Instantaneous"
  Guid="5c1ac4bb-e2d4-415d-923b-679eedbe367a"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="61d9efb5-106b-4925-b1ba-d7c80662ab5c"
+>
+<Actions>
+<Action
+ Guid="472ab094-fb1e-4378-9195-906b70efd23a"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c2d4c04e-86dd-4be2-a7ac-154ea67d8f59"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -9933,6 +10048,25 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
  Kind="Instantaneous"
  Guid="06a2f2ac-6a9a-45e6-912d-a0af3f58a0b4"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="732db1d9-a29d-4b52-a219-9220c7f0f7ec"
+>
+<Actions>
+<Action
+ Guid="7a33d245-40d7-498b-8de5-6e77bb58780a"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="bd141e25-e532-40c6-a165-543cb4b0a447"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -9957,6 +10091,25 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
  Kind="Instantaneous"
  Guid="c8f72c84-db7c-4f97-948e-5ca99882e890"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="SubStep 2"
+ Guid="6d49713a-933e-474f-bd7f-9e47051dbb36"
+>
+<Actions>
+<Action
+ Guid="068c8e8c-ef25-4d6c-a2c3-86d383af00dd"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9b0f6b0c-9d42-4d0c-a3a7-064a1c6fd0fa"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -9981,6 +10134,25 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
  Kind="Instantaneous"
  Guid="62fc40d7-7875-4b79-8f32-8a0bcf9c83b1"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d24f784e-ecf0-42c7-a217-520b0faa0639"
+>
+<Actions>
+<Action
+ Guid="43bc66c1-f733-4d6e-a857-a296dfce9883"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1937ddf6-a5a0-4f9a-a535-d955b2951647"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10003,12 +10175,37 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
  Guid="f030589c-67ee-44a3-95f2-6f2b51ec231d"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
  Guid="41a0ffb4-ddc5-4be9-a68d-98c4744abc45"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+>TIU.SleepingRequested &lt;- True</Action><Action
+ Guid="20740772-9c80-4138-92b9-17ecfd337a8b"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="02128b95-89e9-4afc-9723-5107b705f7ae"
->DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="650df4ac-b7e1-4029-83d9-762088bfa71d"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="59c02695-478d-441d-bfb2-f263241a37ed"
+>
+<Actions>
+<Action
+ Guid="98074ea0-0ca8-4620-84bb-db6fabb2979e"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b79951ce-3cb9-4512-a540-222577af8515"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10035,6 +10232,25 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
  Kind="Instantaneous"
  Guid="6186f8cd-4ab5-4d4f-8fb3-28e6f7ec237c"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="ea2f6b54-0b2b-473b-bf6c-89fcac4286b9"
+>
+<Actions>
+<Action
+ Guid="6a2b7e80-8c8c-40d3-a4cf-1ce6acaf33ad"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f9b923df-732e-48e8-ba58-f59a45263305"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10061,6 +10277,25 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
  Kind="Instantaneous"
  Guid="a9419588-50db-4035-869d-d6a2c2faab9a"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="5e8de2d0-6320-45f4-85fa-f9bb43aac7e0"
+>
+<Actions>
+<Action
+ Guid="d00fbf63-eb89-4fcc-8a2f-866614c7ac35"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="031d5d07-2653-4625-8740-9511c6152ae8"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10079,12 +10314,37 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
 <Actions>
 <Action
  Guid="88ea908f-48a5-4b83-b9e8-baaef950e0c3"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="1b9e2687-370a-4d50-89e7-3c927de1e5f6"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="15353108-3416-468d-be64-09173b5bbea5"
->DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="863e75c3-d2e4-4f73-b0ed-77437cce13ce"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c6b1baeb-8961-42bb-8d8a-4a74b205c29e"
+>
+<Actions>
+<Action
+ Guid="ec6e3299-8691-438b-97dd-7b0e99fc564d"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7053552a-8bbd-4f69-8c60-0f65b8a3bcbd"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10103,12 +10363,37 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
 <Actions>
 <Action
  Guid="4822d101-d54b-4034-b24a-30373faf0ebb"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="78b70ce4-1d28-48eb-b7af-76ec96b45235"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="6ce14914-6d00-467b-9a1e-d1d78b61d857"
->DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9a51d5ca-40eb-45dc-8518-970ff220a847"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="eb125c4a-0e63-4621-bf26-4e58347dd71f"
+>
+<Actions>
+<Action
+ Guid="bd2e3bbb-d531-46f1-9459-cc19375de144"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="01b649a3-d967-44ae-83c3-887edce24812"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10127,12 +10412,37 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
 <Actions>
 <Action
  Guid="42b3e054-c618-41e3-8eac-a76863da9ab2"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="037ed206-a255-479a-a089-85b19f448074"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="2ba15d03-f756-4b5f-98e2-b2c4afbb4cf0"
->DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotApplicable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="54d98663-c76d-4943-8951-8e4371960913"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="be8f8e7a-8ca7-4d0c-8f1a-6ee3fe1941db"
+>
+<Actions>
+<Action
+ Guid="2c7cc821-1526-4645-8a91-27c09ba706e0"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3142db67-3c99-4790-a933-a92dfadbc39e"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10151,12 +10461,37 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
 <Actions>
 <Action
  Guid="6566e59e-328c-46dd-b711-bed98154be0f"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="8cdae2ef-3c13-4400-924c-2889b06ae0ed"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="6dac18a0-a3fa-42eb-bc23-3c912ee0129f"
->DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotApplicable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f03e7dae-664f-475a-9515-33c749b39dfc"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="3bc70355-c809-4e61-b224-bc9c2d157ad4"
+>
+<Actions>
+<Action
+ Guid="5e1549cc-894c-4efd-841c-93a7062c5243"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3d08f8a8-16ce-47df-8bc3-ce1a19e607f5"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10185,6 +10520,25 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
  Kind="Instantaneous"
  Guid="3502bd10-8183-4e14-a5d5-8a3f69c5fd6a"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="1c2850dc-e687-4298-ab29-981c77e095bf"
+>
+<Actions>
+<Action
+ Guid="cdd926bb-847c-4ca3-a413-2242cd2295a2"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="a87b39d1-1e90-4b36-b7c7-0402e787a6a5"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10203,12 +10557,37 @@ Kernel.Mode == Default.Mode.RV</Expectation></Expectations>
 <Actions>
 <Action
  Guid="0d669530-3fca-4dce-9c09-5bfb74d3cbf8"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="433cb023-129c-4814-b74c-96322f15f0c4"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="d3300f07-9e87-44f5-b68a-33f50592e727"
->DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.ProcedureIn in DMI.IN.ErtmsEtcsLevel.ProcedureIn.NotAvailable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7b5a6b2a-fb1f-4f20-9d20-5c8fd72d7f94"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="cc7c84a9-14e8-493f-affc-d891f7d2045f"
+>
+<Actions>
+<Action
+ Guid="2a74ba7a-a814-4046-a2b5-20d03fbc3a3f"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+   Level =&gt; Default.Level.L0,
+   Enter =&gt; True,
+   ReValidate =&gt; True
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="dcff9865-31d3-47bb-82a0-0f6d0418bb1b"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

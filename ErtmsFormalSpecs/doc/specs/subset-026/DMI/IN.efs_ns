@@ -1,9 +1,12 @@
 <NameSpace
+ X="30"
+ Y="10"
  Width="100"
  Height="50"
  Name="IN"
  Guid="cda5cf76-e875-4230-bdb0-77e5413b50b2"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -93,6 +96,142 @@
 >ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="b9cb0133-f16b-485c-8d48-ba185b887911"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="be03ba35-ee6d-4bf3-9d34-1ccf88f0e6a7"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="af39ff1d-4989-4637-8d83-1cfa11df8e9b"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="751d7670-6993-472a-85fc-cb7e0ad32257"
+><Comment></Comment>
+Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
+ Guid="3e042315-ce85-4d07-bdd0-fbd05fa15ce1"
+><Comment></Comment>
+Kernel.Level.Value &lt;- Level</Action><Action
+ Guid="5d557402-1c5e-4bba-9303-13987824e53f"
+><Comment></Comment>
+THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="12b5c10e-9ade-459b-9343-7ae7912a80b4"
+>
+<Comment>Initiate the ERTMS ETCS Level request</Comment>
+<Parameters>
+<Parameter
+ Type="Default.Level"
+ Name="Level"
+ Guid="0c2d6225-8fb1-4915-8f1c-716d41ef8e54"
+>
+</Parameter><Parameter
+ Type="Boolean"
+ Name="Enter"
+ Guid="f1e6e5ea-3f22-4580-b398-e58816b87790"
+>
+</Parameter><Parameter
+ Type="Boolean"
+ Name="ReValidate"
+ Guid="8c30120f-4f34-4693-bb84-825087b2c539"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="b394b769-8476-4b5e-885a-9e9fc12da27b"
+>
+<Comment>Initiates the level request</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="6610a65a-8348-4084-9168-1e811fd22a35"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="e3e9962a-aafa-431f-9a06-40a6473d8709"
+>ErtmsEtcsLevelAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="078d16e4-7b15-40f7-be59-d84cc829bac1"
+>THIS.InputInformation.InitiateRequest()</Action><Action
+ Guid="238c7b7d-ec0f-43da-9faa-1dcc83b22450"
+>DriverAction.Enter &lt;- Enter</Action><Action
+ Guid="ca58d464-3738-42c5-a904-145687e1b58c"
+>DriverAction.ReValidate &lt;- ReValidate</Action><Action
+ Guid="eee0ff88-2014-46c3-b2db-534f41156c06"
+>THIS.Level &lt;- Level</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="94c5e6e9-9d6e-44d7-9569-482648a50c5f"
+>
+<ReqRef
+ Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a3813592-4235-41e3-8e88-dbbebeb04a6d"
+>
+</ReqRef><Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="1f846ffb-1fee-49ba-849c-082c2ef391d8"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="f08879b9-91b2-4a5c-9e55-602dba6c7e70"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="ba3eec77-d4e1-4bf3-8a99-257ef5e88d19"
+><Comment></Comment>
+NOT ErtmsEtcsLevelAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e4ab45e8-04e0-47b2-8921-9d58fbe632aa"
+><Comment></Comment>
+THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="InputInformation"
@@ -137,6 +276,7 @@
  Name="ProcedureInSM"
  Guid="99632be7-2d38-484d-a38a-87028aa659ec"
 >
+<Comment></Comment>
 <States>
 <State
  X="230"
@@ -5567,6 +5707,7 @@
  Name="NotAvailable"
  Guid="0c553639-6056-43ef-9b7a-c15cd554d7ab"
 >
+<Comment></Comment>
 <StateMachine
  Default="InitialState"
  Implemented="TRUE"
@@ -9363,6 +9504,7 @@
  Name="ProcedureIn"
  Guid="3a832e03-94d5-4f51-ae8f-7d47ce426403"
 >
+<Comment></Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -13735,4 +13877,40 @@
 </StateMachine></State></States>
 </StateMachine></StateMachines>
 </Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ErtmsEtcsLevelAvailable"
+ Guid="c99ff153-5753-46c1-9eae-1754116fa672"
+>
+<ReqRef
+ Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e994bd7b-ddb3-4bac-8e4a-507fee14bd9b"
+>
+</ReqRef><Comment>Indicates whether the level can be proposed to the driver</Comment>
+<Cases>
+<Case
+ Name="Available"
+ Guid="3edff9f2-e6ba-4bfc-99b6-b1a3a1a74a59"
+>
+<Comment>Identifies the modes where the function is available</Comment>
+<PreConditions>
+<PreCondition
+ Guid="4735056d-d737-4c66-b38a-169eb60011f3"
+><Comment></Comment>
+Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.SN]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="45531538-9137-498d-bf14-fd22a6448d7d"
+>
+<Comment>Otherwise the function is not available</Comment>
+<Expression>False</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

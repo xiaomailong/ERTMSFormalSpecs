@@ -20,6 +20,8 @@
 <Enumerations>
 <Enum
  Default="PerformedAction.ActionExecuted"
+ X="740"
+ Y="190"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -42,7 +44,8 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="Desk1"
- X="110"
+ X="470"
+ Y="190"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -69,7 +72,8 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="CabA"
- X="220"
+ X="260"
+ Y="260"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -96,7 +100,8 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="RBCContactActionEnum.ReenterNetworkId"
- X="330"
+ X="740"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -160,7 +165,8 @@
 <Structures>
 <Structure
  Default=""
- Y="60"
+ X="260"
+ Y="160"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5087,90 +5093,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateLevelRequest"
- Guid="12b5c10e-9ade-459b-9343-7ae7912a80b4"
->
-<Parameters>
-<Parameter
- Type="Default.Level"
- Name="Level"
- Guid="0c2d6225-8fb1-4915-8f1c-716d41ef8e54"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="Enter"
- Guid="f1e6e5ea-3f22-4580-b398-e58816b87790"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="ReValidate"
- Guid="8c30120f-4f34-4693-bb84-825087b2c539"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="d44b30bc-e9d1-4eec-b15c-33b57c68cd23"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f40e428d-4649-4f99-8f7e-3c99643f9526"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="adbef620-c655-465f-86be-39b3f0ade0dc"
->
-<PreConditions>
-<PreCondition
- Guid="42a27984-3906-4e5c-a6ba-9763b014f406"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="df4d886b-4d53-4b90-82d8-1ec50d0096cf"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="b394b769-8476-4b5e-885a-9e9fc12da27b"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="6610a65a-8348-4084-9168-1e811fd22a35"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="078d16e4-7b15-40f7-be59-d84cc829bac1"
->In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="238c7b7d-ec0f-43da-9faa-1dcc83b22450"
->In_ErtmsEtcsLevel.DriverAction.Enter &lt;- Enter</Action><Action
- Guid="ca58d464-3738-42c5-a904-145687e1b58c"
->In_ErtmsEtcsLevel.DriverAction.ReValidate &lt;- ReValidate</Action><Action
- Guid="eee0ff88-2014-46c3-b2db-534f41156c06"
->In_ErtmsEtcsLevel.Level &lt;- Level</Action><Action
- Guid="6b22d7ef-e66b-4999-be9a-f074438c3009"
->In_ErtmsEtcsLevel.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="HandleModeChange"
  Guid="e2e20442-d7ea-4113-9e8b-0d37d1def340"
 >
@@ -5625,7 +5547,10 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 <PreConditions>
 <PreCondition
  Guid="e5a3e049-8a1e-4057-88d5-186c28f36bf4"
->IsMaster == True</PreCondition></PreConditions>
+>IsMaster == True</PreCondition><PreCondition
+ Guid="dd05784f-c6f9-4f27-b9c6-802fd68cf420"
+><Comment></Comment>
+PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a2712db3-84fd-4a13-8dfe-168f8bcd01ba"
@@ -6220,6 +6145,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Name="FS"
  Guid="8e047ff6-7cd3-4c09-91e4-9249951675ae"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -6260,7 +6186,8 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="a381b122-9244-46a7-8f39-0878b83b0556"
 >In_TrainRunningNumber.GoToAvailable()</Action><Action
  Guid="91f9e539-0de4-4b74-a096-5a0d17324e6d"
->In_ErtmsEtcsLevel.GoToAvailable()</Action><Action
+><Comment></Comment>
+In_ErtmsEtcsLevel.GoToAvailable()</Action><Action
  Guid="beb93985-f687-4b84-a7ef-02db44316f40"
 >In_TrackAdhesionFactor.GoToAvailable()</Action><Action
  Guid="a6a29c28-c07c-4073-89af-37e37835b413"
@@ -8547,6 +8474,35 @@ In_OverrideRequest.GoToAvailable()</Action><Action
  Guid="b7d36289-8dba-418d-b8eb-cc57844f780a"
 >Out_VirtualBaliseCovers.ProcedureOut &lt;- Out_VirtualBaliseCovers.ProcedureOut.Available</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="In_ErtmsEtcsLevel"
+ Guid="7afc886f-cd49-46f5-a66c-0e4b2482448c"
+>
+<ReqRef
+ Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b20764b7-ef76-4e55-b13d-bee9e3c98cf0"
+>
+</ReqRef><Comment>Updates the level according to the mode change</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Track mode change"
+ Guid="f22d9ee6-a4fc-4a0a-b5d4-e15f3a23bfce"
+>
+<Comment>Tracks the mode change</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3f187d6a-e7e5-4287-aed5-a4fe32ff7e96"
+><Comment></Comment>
+In_ErtmsEtcsLevel.TrackMode()</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -10128,8 +10084,8 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="60"
+ X="280"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10141,6 +10097,119 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 - RequestStatus (of type Request) is used to request begin displaying of some information that needs user&apos;s input.
 - DisplayRequested (of type Boolean) is the out variable. The information shall be displayed on DMI while DisplayRequested = true.
 - DriverAnswered (of type Boolean) is the in variable. DriverAnswered = true means that driver answered on the displayed request.</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="dd455870-7cfe-4b6a-96d0-b068e219ece7"
+>
+<Comment>Updates the input information by disabling this request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accept driver response"
+ Guid="527b58d2-8161-4f78-99bd-cbcbc0abbfd7"
+>
+<Comment>Updates the input information to disable the request</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accept driver response"
+ Guid="18df7044-4c5c-4c2d-92c2-4f53868be3e8"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0400a25c-46b3-4880-b87e-b8c4e9859910"
+>DisplayRequested &lt;- False</Action><Action
+ Guid="1ffe3487-ce94-44ef-a4fa-c404ad3237e0"
+>DriverAnswered &lt;- False</Action><Action
+ Guid="2a9e6a69-a4d0-4ed6-8b66-f274fd0e1ab9"
+>RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="0aa804dd-8945-4d40-b58a-596cd4ad499d"
+>
+<Comment>Initiate a request for a specific driver entry</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Propose driver entry"
+ Guid="67cf8462-588f-4247-9775-8ba09660df19"
+>
+<Comment>Updates the state to propose the data entry</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Propose driver entry"
+ Guid="2edb71d8-a3c9-4975-a1aa-79f9aff5fe26"
+>
+<Comment>Update the structure state</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="275793f8-0e6d-4c76-9295-16a6aa5737e0"
+><Comment></Comment>
+RequestStatus &lt;- Request.Request</Action><Action
+ Guid="ec6b86e3-9e3e-42f2-ae1b-a06e09ba44da"
+><Comment></Comment>
+DriverAnswered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Disable"
+ Guid="c9256f3c-f36c-4f7a-b304-f2ead0351691"
+>
+<Comment>Disables the corresponding request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Disables the request"
+ Guid="93867880-2cd3-4234-95a5-9394ac2588ad"
+>
+<Comment>Disables the request</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Disables the request"
+ Guid="059d5a07-bc55-4ea6-8eae-96ef5571faf9"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2ae47445-50c6-45fe-a4ba-6e9b00b07435"
+>RequestStatus &lt;- Request.Disabled</Action><Action
+ Guid="3e7f0cb1-d54b-47ad-8b54-6a523ac6fb6b"
+>DriverAnswered &lt;- False</Action><Action
+ Guid="e3ffba61-3770-4924-a78b-36a40de67aa8"
+>DisplayRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="Boolean"
  Default=""
@@ -10150,7 +10219,7 @@ In_OverrideRequest.GoToAvailable()</Action><Action
  Name="DisplayRequested"
  Guid="d7bee549-de45-4daf-a804-722f7584add7"
 >
-<Comment></Comment>
+<Comment>Indicates whether this request should be displayed on the DMI</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Request"
  Default=""
@@ -10160,6 +10229,7 @@ In_OverrideRequest.GoToAvailable()</Action><Action
  Name="RequestStatus"
  Guid="337cbc2e-bfc0-48a8-9bde-a8dc7d565426"
 >
+<Comment>Provides the status of the request</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
@@ -10169,10 +10239,11 @@ In_OverrideRequest.GoToAvailable()</Action><Action
  Name="DriverAnswered"
  Guid="ffabf60b-484e-4c36-aef3-9547d8096736"
 >
+<Comment>Indicates whether the driver answered the request</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="220"
- Y="60"
+ X="400"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10215,8 +10286,8 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >
 </StructureElement></Structure><Structure
  Default=""
- X="330"
- Y="60"
+ X="590"
+ Y="190"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10254,8 +10325,8 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >
 </StructureElement></Structure><Structure
  Default=""
- X="440"
- Y="60"
+ X="590"
+ Y="130"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10284,8 +10355,8 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >
 </StructureElement></Structure><Structure
  Default=""
- X="550"
- Y="60"
+ X="590"
+ Y="70"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -10327,6 +10398,7 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >
 </StructureElement></Structure><Structure
  Default=""
+ X="470"
  Y="120"
  Width="100"
  Height="50"
@@ -10364,7 +10436,8 @@ In_OverrideRequest.GoToAvailable()</Action><Action
  TypeName="RBCContactActionEnum"
  MaxSize="5"
  Default="[]"
- Y="180"
+ X="590"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10397,7 +10470,8 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 <Function
  Type="DMI.DMIStruct"
  Default=""
- Y="300"
+ X="20"
+ Y="370"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10433,8 +10507,8 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 </Function><Function
  Type="DMI.DMIStruct"
  Default=""
- X="110"
- Y="300"
+ X="130"
+ Y="370"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10474,8 +10548,8 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 </Function><Function
  Type="Boolean"
  Default=""
- X="220"
- Y="300"
+ X="240"
+ Y="370"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10494,8 +10568,8 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 </Function><Function
  Type="TIU.CabStruct"
  Default=""
- X="330"
- Y="300"
+ X="20"
+ Y="430"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10539,8 +10613,8 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 </Function><Function
  Type="Boolean"
  Default=""
- X="440"
- Y="300"
+ X="130"
+ Y="430"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10588,8 +10662,8 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 </Function><Function
  Type="Boolean"
  Default=""
- X="550"
- Y="300"
+ X="240"
+ Y="430"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10637,7 +10711,8 @@ NOT DeskIsOpen ( DMI2 )</Expression>
  Type="DMI.DMIStruct"
  DefaultValue=""
  VariableMode="InOut"
- Y="240"
+ X="40"
+ Y="130"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -10653,8 +10728,8 @@ NOT DeskIsOpen ( DMI2 )</Expression>
  Type="DMI.DMIStruct"
  DefaultValue=""
  VariableMode="InOut"
- X="110"
- Y="240"
+ X="40"
+ Y="200"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -10670,7 +10745,8 @@ NOT DeskIsOpen ( DMI2 )</Expression>
 <Rules>
 <Rule
  Priority="Processing"
- Y="420"
+ X="20"
+ Y="570"
  Width="100"
  Height="50"
  Implemented="TRUE"

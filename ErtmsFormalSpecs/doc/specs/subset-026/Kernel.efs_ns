@@ -1385,12 +1385,8 @@ Kernel.DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action><Action
 <Action
  Guid="599fb195-5633-44a5-8c59-8f7a5d7cc211"
 >THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action><Action
- Guid="65ce0f35-7fee-45d2-a033-526590cd39fd"
->Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
- Guid="a8793a69-5149-4c5a-a2e8-964d5350a75c"
->Kernel.Level.Value &lt;- DMI.MasterDMI().In_ErtmsEtcsLevel.Level</Action><Action
  Guid="adf83d32-c975-419e-9883-ea64d4a80521"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1569,7 +1565,7 @@ Kernel.DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action><Action
  Guid="c97b8401-32c1-4239-bb8d-54f862ebb584"
 >THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action
  Guid="e3a60529-bb36-4ba8-9e25-407becd12d5c"
->DMI.MasterDMI().InitiateLevelRequest(
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest(
   Level =&gt; Level.Unknown, 
   Enter =&gt; True, 
   ReValidate =&gt; False
@@ -1601,9 +1597,10 @@ Kernel.DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action><Action
 <Actions>
 <Action
  Guid="957c7945-9062-4681-95bd-c5d6c52967a7"
->THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action
+><Comment></Comment>
+THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action
  Guid="24019dfa-3cfc-4da4-a643-b1fc2e787e44"
->DMI.MasterDMI().InitiateLevelRequest(
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest(
   Level =&gt; Kernel.Level.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
@@ -5581,7 +5578,7 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="eff502a6-8c0a-43e4-9cf9-693106460776"
->DMI.MasterDMI().InitiateLevelRequest
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
 (
     Level =&gt; Kernel.Level.Value,
     Enter =&gt; True,
@@ -5601,13 +5598,9 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="97e2fe25-4b7b-4194-a1a6-5980b8d2cea7"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_ErtmsEtcsLevel.AcceptDriverResponse()</Action><Action
  Guid="d43762ba-cc41-48b3-be35-302b460560c2"
->THIS &lt;- S2.ExitState</Action><Action
- Guid="d99e5f6b-1105-4692-a541-3a84839be92f"
->Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
- Guid="0c83dfbd-1132-4ae2-9704-6cc161b710db"
->Kernel.Level.Value &lt;- DMI.MasterDMI().In_ErtmsEtcsLevel.Level</Action></Actions>
+>THIS &lt;- S2.ExitState</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
