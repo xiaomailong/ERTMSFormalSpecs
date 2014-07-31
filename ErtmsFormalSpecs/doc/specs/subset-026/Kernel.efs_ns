@@ -1035,6 +1035,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Unknown train running number"
  Guid="51b165ad-2672-480e-9b3f-149ce0a278df"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="80ee118d-5ba9-4d4d-9192-fc1272b787fa"
@@ -1208,13 +1209,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="435cbc21-f914-4c53-8f38-cb27dc77ff22"
-><Comment></Comment>
-Kernel.DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action><Action
- Guid="350eeb7b-97b2-481a-bbc9-e9a9aacb5b12"
->Kernel.DriverId.DataState &lt;- DataState.Valid</Action><Action
  Guid="4679d68d-3e7b-4be1-b781-808efe281d7e"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_DriverId.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2397,7 +2393,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
  Guid="53277c45-afcc-4bb0-9d91-b72fbadceb57"
 >DMI.MasterDMI().InitiateShuntingRequest()</Action><Action
  Guid="1c386f42-892b-4d1e-9f0a-b64a3cdf7ac6"
->DMI.MasterDMI().InitiateTrainDataEntryRequest()</Action></Actions>
+>DMI.MasterDMI().In_TrainDataEntryRequest.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2444,7 +2440,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
  Guid="95ad63ec-6c25-4487-9483-5761e7f0231f"
 >THIS &lt;- S12</Action><Action
  Guid="b09e766e-1670-49d6-8d52-64c5a287a287"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2493,7 +2489,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
  Guid="4f8db88e-3165-4661-bdc5-92c554074578"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="85d5c94d-3176-4321-980a-89906a0a0b71"
->DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_TrainData.InputInformation.Disable()</Action><Action
  Guid="463167fb-e523-4010-bd09-8a3064471d6d"
 >EURORADIO.OpenRBCSession()</Action></Actions>
 <SubRules>
@@ -3257,7 +3253,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="923ea094-6be5-481e-94d1-8cdc8568db9d"
->DMI.MasterDMI().InitiateTrainDataEntryRequest()</Action></Actions>
+>DMI.MasterDMI().In_TrainDataEntryRequest.InitiateRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3271,10 +3267,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="a59bd1e1-eb5a-476d-9a84-03cc15848aba"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
- Guid="bd8a96f5-556a-4544-aebd-9e1604aaf8e5"
-><Comment></Comment>
-Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action><Action
+>DMI.MasterDMI().In_TrainDataEntryRequest.AcceptDriverResponse()</Action><Action
  Guid="a4ac237c-1c31-4a32-b94b-4140748d8b8b"
 >THIS &lt;- S12</Action></Actions>
 </RuleCondition></Conditions>
@@ -4418,7 +4411,7 @@ Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action
  Guid="7bd24a23-aedd-4739-8b1a-2c72fed5e334"
 >THIS &lt;- HandleModeChange.StartOfMission.S12.TrainDataRequested</Action><Action
  Guid="b31bdb03-0a0c-4c13-b1d6-f32f94ef9601"
->DMI.MasterDMI().InitiateTrainDataRequest()</Action><Action
+>DMI.MasterDMI().In_TrainData.InitiateRequest()</Action><Action
  Guid="64561bba-163c-4270-bb88-1af4a286e579"
 >Kernel.TrainData.TrainData.DataState &lt;- DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>
@@ -4482,11 +4475,7 @@ Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action
  Guid="5d2f8550-d6a7-4e7c-9170-2995928a8efe"
 >THIS &lt;- HandleModeChange.StartOfMission.D12</Action><Action
  Guid="ebe4a3f4-a674-43d8-92d3-2b6166113fa2"
->DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
- Guid="807fba32-d80b-4336-b122-49e7f1892d65"
->Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
- Guid="9a9304db-9a33-40c5-bcad-800fae39799a"
->Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action><Action
+>DMI.MasterDMI().In_TrainData.AcceptDriverResponse()</Action><Action
  Guid="07087530-74d1-4e08-bd95-86f3e2c4cf0d"
 >Kernel.TrainDataVerified &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
@@ -5452,9 +5441,7 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="ea9038aa-42bd-4dc0-a9bd-f3fef9b1d975"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
- Guid="7c44aba8-a712-4041-8926-147260080a85"
->DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action></Actions>
+>DMI.MasterDMI().In_DriverId.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

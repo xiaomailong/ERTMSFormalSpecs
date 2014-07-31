@@ -499,68 +499,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateTrainDataEntryRequest"
- Guid="b5a48611-b3cd-47d3-bb3c-f85c291df3db"
->
-<Comment></Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="abe3ad6a-0698-4a36-ba16-34ae65466113"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="776a5ea4-0c69-4f83-97c4-19598635a723"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="40fc6d06-4a15-403d-bce7-917ff505286f"
->
-<PreConditions>
-<PreCondition
- Guid="789b669f-fd61-45d3-9041-40b851555604"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1a972dd1-e36b-4a15-b01e-bb382fa2c2e2"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="94dc7f85-d675-4f6e-9736-704391f91a71"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="f905b427-4136-4e10-ab88-0db80bf4be6a"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="5992a8d4-9a9d-4a0b-ae4e-13513d37c3ab"
->In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="afc68c0f-1ee4-4be2-add9-ce9dc6a73154"
->In_TrainDataEntryRequest.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="InitiateTrainRunningNumberRequest"
  Guid="aaf445c0-1673-479e-9f2d-bed3daca2316"
 >
@@ -2328,67 +2266,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_TrackAheadFree.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
  Guid="863ee8d8-e175-4b26-8fdc-50e14a4d2705"
 >In_TrackAheadFree.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateTrainIntegrityRequest"
- Guid="7c13bbe8-4e0a-4d56-bdd6-a5f944184448"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="20932bc0-d40d-4774-a630-1f811ef8dd67"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bc0be494-c87f-4ad8-9b06-c93798e96458"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="b0e05349-f5d0-4da0-9169-05eb9f2c0d6f"
->
-<PreConditions>
-<PreCondition
- Guid="a38b5d3c-8ddd-48ae-926a-1ab0efd4e83d"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="5d2b9523-1e9f-4647-8155-73b92a57f4f3"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="bfa1e8c2-1aaa-4cc3-8769-02b2b45cdb7b"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="e362590e-321f-4e95-bb14-ff41d0a86df1"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="ccc19319-150f-40e7-afa4-d9629aa10fc4"
->In_TrainIntegrity.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="1028983d-2025-4143-abdb-d696c2a15ddd"
->In_TrainIntegrity.InputInformation.DriverAnswered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4940,70 +4817,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_RBCContactInformation.AvailableNetworks &lt;- Networks</Action><Action
  Guid="23b8ae56-3c6d-4af5-9779-e36c0a926331"
 >In_RBCContactInformation.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateTrainDataRequest"
- Guid="cf271a61-cf30-4b24-930c-86434fcfd5b1"
->
-<Comment></Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="555d9512-48d2-4bbc-b8c6-5878ea010aad"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="dceec844-9fc0-4860-9115-74649b368717"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="40c78567-af68-4fcc-9f2d-d30d5c2734e2"
->
-<PreConditions>
-<PreCondition
- Guid="ba1314e6-cb6d-40b3-a36f-502cec18912e"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="9f00df19-21fc-4b01-bf9f-462ee08bd439"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="3b414510-3ac0-4535-ac2a-f9e73eefbe01"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="6756f1c8-a9b7-40dc-a0b5-7dcb02edb10e"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="b1511876-75a0-487c-b207-ad7d83e60c22"
->In_TrainData.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="e3c60e02-5c50-4eeb-8bb2-33a0382a63af"
->In_TrainData.Data &lt;- Kernel.TrainData.TrainData.Value</Action><Action
- Guid="a8a6528e-4477-4437-9d46-4ec4ad4fce39"
->In_TrainData.InputInformation.DriverAnswered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -8406,6 +8219,11 @@ In_OverrideRequest.GoToAvailable()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="13012a6f-e9ff-4741-b4be-ffb7e55efe81"
 >
+</ReqRef><ReqRef
+ Id="63c4543b-5430-4f3e-a524-ce48d640aead"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="19906745-7441-4855-bcf9-8b5f73542d8f"
+>
 </ReqRef><Comment>Updates the requests according to the mode change</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -8424,7 +8242,12 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 ><Comment></Comment>
 In_ErtmsEtcsLevel.TrackMode()</Action><Action
  Guid="3a357883-dbd6-4d62-bc9c-894eb3407d42"
->In_DriverId.TrackMode()</Action></Actions>
+>In_DriverId.TrackMode()</Action><Action
+ Guid="c4124830-b14b-4a4a-8148-0bda2a440b7d"
+><Comment></Comment>
+In_TrainData.TrackMode()</Action><Action
+ Guid="7ec7436d-c9d5-4c45-9474-2b702ea7b28d"
+>In_TrainDataEntryRequest.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -8813,6 +8636,38 @@ In_ErtmsEtcsLevel.TrackMode()</Action><Action
 >In_OverrideRequest.InputInformation.DisplayRequested &lt;- False</Action><Action
  Guid="3f6b57ea-c906-45b7-8bb8-f35e1e70e32e"
 >In_OverrideRequest.InputInformation.DriverAnswered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateTrainIntegrityRequest"
+ Guid="7c13bbe8-4e0a-4d56-bdd6-a5f944184448"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="bfa1e8c2-1aaa-4cc3-8769-02b2b45cdb7b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="e362590e-321f-4e95-bb14-ff41d0a86df1"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ccc19319-150f-40e7-afa4-d9629aa10fc4"
+>In_TrainIntegrity.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
+ Guid="1028983d-2025-4143-abdb-d696c2a15ddd"
+>In_TrainIntegrity.InputInformation.DriverAnswered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
