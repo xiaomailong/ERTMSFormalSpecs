@@ -16800,12 +16800,12 @@ Kernel.PowerOn &lt;- True</Action><Action
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="IN Isolation"
- Guid="54b0abbd-9eb7-4ea2-9184-fe49ad86a761"
+ Guid="ee633400-61a0-420f-9231-df0f48c2ad5c"
 >
 <ReqRef
  Id="0cf0e5ee-5c2a-42b6-8389-ca77ab74368b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fc930b23-7092-4897-b151-24f3893feadf"
+ Guid="a245751a-d8b2-4c12-955f-6121818625a4"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -16817,24 +16817,40 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="e2632509-971c-488e-883c-9638f10e14d0"
+ Guid="e030cf26-8ac1-462a-8e2a-c3d9cde7cfa3"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="bcc617fd-c2b1-43d8-9fed-c7ff13d5bea7"
+ Guid="09bb270b-8d78-4ddf-ab59-fd8bf4f01e21"
 >
 <Actions>
 <Action
- Guid="e2fc2275-6185-40e4-b0ff-901fc59d825d"
+ Guid="69597935-584b-4f8b-ac4f-451e8f6fb300"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="359ff337-7ac2-402f-9139-95daf6dae55c"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="85ee0e53-64fa-47a7-b212-ba0baa1c535a"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="878eb78d-1f6d-4fa3-9363-1dcbed902b4d"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="ebe617f8-ceeb-44f6-8c57-c580b46570e8"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="3babd19f-5fd8-424d-9399-f5308ba7df15"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="67baae91-dd2a-4cb4-b61b-f34c918be7f6"
+>
+<Actions>
+<Action
+ Guid="350c245f-fda4-400d-9662-b2c6a72983bf"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="0133ea18-5ef1-4ba3-9560-87f857aaf71b"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -16843,24 +16859,43 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="2334d0c9-9a39-46fc-ba76-2c5f659aca11"
+ Guid="1977456f-a1e2-4cfa-a9ca-8ce13575e507"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="1ec8b467-9977-42ac-a29a-a4a8f0a60a2d"
+ Guid="9c3d8023-b208-4ff8-a2a9-87e7ac44f216"
 >
 <Actions>
 <Action
- Guid="0abd4084-7682-4496-a38e-86f7a2a84be8"
+ Guid="b298b551-3cf8-4eb3-9f0d-897c1483bbc4"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="30cfba63-dae7-4284-9482-23f94460d5a5"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="2f25868c-e47b-4953-8889-de785024164b"
+><Comment></Comment>
+
+Kernel.PowerOn &lt;- True</Action><Action
+ Guid="1ffb9edd-afae-4be4-bd1e-7b003a170116"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="67791ad7-00bf-4ddb-bcf6-b5ab58b3d659"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="e496bdb1-296b-43d8-acca-8dc8e400e3d3"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="ec7336b3-ed5b-4044-9a4f-7fa1fcdeb6f6"
+>
+<Actions>
+<Action
+ Guid="a201b6dd-c2fe-45ea-a6dd-7d78c0c72bd1"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d16b8fc9-5e5a-43a9-acd5-b83bc722833b"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -16869,22 +16904,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="1f8859dd-e03c-4d90-8e74-bfabe6dc6674"
+ Guid="01722976-aafe-4fe5-ae5b-0038a3f08f82"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="4f38b962-24b8-4725-b290-b5e2b46564a0"
+ Guid="e9e4ef4a-1a3a-402f-8bee-d7ffd337221f"
 >
 <Actions>
 <Action
- Guid="a20d43e4-d18a-4d9c-9158-c3b380304ea4"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="79031a5a-f7c8-4e4e-be44-8a8a3bc6bf76"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="b7eeda47-eb20-4ecd-abfc-5124446bfd00"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="4794fc32-47f5-412c-941e-9395f1d7c647"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="5ac6f750-148a-4539-a76b-05bf4eb07f79"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d1515a40-19b9-464e-b712-c663a9fd6f14"
+>
+<Actions>
+<Action
+ Guid="b0fbb79b-f0cd-4837-b36d-8cf148603e43"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b53272cf-0f59-4e53-9fe9-14b9ae3ad5da"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -16893,24 +16945,41 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="ec3b741b-d7b7-4050-a03b-000db0e25968"
+ Guid="0eb26a9e-bf4a-4ae2-a006-558723b48eb0"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8e7cbcd7-cba7-43a8-ad72-f37333515f8d"
+ Guid="0631f515-f67b-49fe-b6e8-665adc1bac90"
 >
 <Actions>
 <Action
- Guid="0d291fa8-0429-47c7-950c-fdf984027686"
+ Guid="89dede16-6237-48f4-b05a-0ae746601c26"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="e4374595-23a9-4794-9f8c-1833a9f41e27"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="fd61700f-dbe6-439b-91c2-89690b3f6f94"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="823145a5-aaf6-43c7-bee2-f8e995adccce"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7430a796-0ba8-4e67-8c82-d2a4dfdd0d39"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="0221268d-f9cd-412c-a416-f5a2cb7f0b68"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="7f049711-1abb-4579-8079-0fb5a0a9dc07"
+>
+<Actions>
+<Action
+ Guid="a94ac1e0-5f29-450f-a6a5-28cd770a49d4"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f23de027-e0d0-413d-a643-5abe6939fb74"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -16919,24 +16988,41 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="686b281e-b57f-4e21-b4e1-a712789b14b7"
+ Guid="fdbcceb1-200c-457c-bb43-686c734e4112"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2a9e76c8-db98-4a47-b0c0-18d6e22c6726"
+ Guid="bd4f662b-7ac1-4519-a512-2cdd30ddc5d8"
 >
 <Actions>
 <Action
- Guid="3dce6e9e-06bc-4b71-94dc-4c3b4f36dc53"
+ Guid="0957d352-d136-438c-933a-ff29d3b4ea32"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="11136dcf-fa63-4732-8079-6ef52c55894b"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="47da4ecf-9287-42f7-938f-d729eb998479"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="5fdd44c6-f529-4f93-b049-21d2f734ffa1"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="95a28a5a-5695-4d4f-aaf5-ef1b0c011a0a"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="40b41d33-59ac-4e1b-832e-e7e37e8dbb1e"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="52c2a2df-6d93-453d-b645-b6c03f1b4838"
+>
+<Actions>
+<Action
+ Guid="ad83e17c-9d83-4ed6-9fd3-afe8647a20f5"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="effacb16-2794-4817-be69-f9a21f537c11"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -16945,22 +17031,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="ed5c1728-9be6-4b0a-9fef-4d75cf729340"
+ Guid="66cbaf89-4774-4c79-bc99-2090bd2ccdff"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="21ff9c30-d9b9-4c2e-a067-6a0dc60298e4"
+ Guid="9d17c1c9-d6e5-4b94-b494-8f89b74a53fc"
 >
 <Actions>
 <Action
- Guid="c87b9e4f-1232-47d3-8cd5-3f28695c5c6c"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="728e3587-1329-42d4-b3fb-a39cbb43123c"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="7b1da4a4-0c21-4700-be32-365f3fcc6ea0"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="d2afeac6-1937-45e3-bac7-ad42d0451728"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="1c774015-cb71-4876-960c-dfa22ee29e4a"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="897eed34-0003-4079-aaa4-e4bc076ce6c3"
+>
+<Actions>
+<Action
+ Guid="31df3dba-321a-4746-9c58-e92d6a6860b0"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="6dd8a653-ed02-4ec3-914e-560aee4a1aa6"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -16969,22 +17072,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="2993526f-6686-4a00-ad3f-abcf7fb7f72e"
+ Guid="4529f2ca-e5f9-4818-aab3-91bac5514cba"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e8c1c86e-7d8d-4514-be7d-2c102b166cb2"
+ Guid="8633e43b-0043-402b-863b-b9671cf84189"
 >
 <Actions>
 <Action
- Guid="770a783e-b8ea-4409-a3dc-1e2c5bb57eca"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="56a7c04f-f616-439c-a935-abdefc4d65ce"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="b75f98aa-0c3d-49da-a0f8-9b96d1b2902a"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="1c0d6fb2-baaa-447c-881b-65e78ae9633d"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="6ddccbaf-48ab-43c1-80cc-9f013670d71d"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="SubStep 2"
+ Guid="08cf4ebf-6c39-4faf-9f00-06fcde6954d5"
+>
+<Actions>
+<Action
+ Guid="71be2fc3-eb60-45d8-b0f4-c83d296379a8"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="88fe712b-b4b7-4e68-a31d-343fd734e647"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -16993,22 +17113,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="f5698404-b8f8-472b-8f28-f5a015978ee0"
+ Guid="4ef2a263-22c0-45d9-b5a5-b73f95dd24be"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="1c2fd0c3-ff07-4b59-85f1-133731e57347"
+ Guid="dbf44e4a-9130-4dce-abe9-4e23a2408a52"
 >
 <Actions>
 <Action
- Guid="d4bf2617-2a9f-47a9-b1eb-d783d10fb719"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="5c406efa-52be-4f06-869c-802decd98433"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="da20c059-ecaa-45e0-9ef8-c0597f694c8d"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="513c8c37-c6f9-4331-b762-3260d14b24d8"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="c30e6bd5-2021-4d42-b581-fce17518fad6"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="395f15ee-5cbe-4e28-adf6-a2085036e2f0"
+>
+<Actions>
+<Action
+ Guid="9a26136e-f09c-4fe2-86c0-f85cac714035"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="83661ad7-0c72-43f9-b765-93ebb7f020dd"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -17017,26 +17154,43 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="26ff01aa-856a-4f8c-8bf9-77896fe54322"
+ Guid="bf864f48-203c-4be1-be4d-30fa87d4d7b6"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="775d7e26-af64-47be-beca-a9ab7b41c11d"
+ Guid="5659ec39-ed33-4d41-91cc-c7c83d006f1e"
 >
 <Actions>
 <Action
- Guid="dbc73243-a4b5-4e31-9533-3ed35ece7447"
+ Guid="2267641f-0636-4347-a57a-25a13826a2c0"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="0d7d3a25-6a86-48a0-a28e-b184c31fda8e"
+ Guid="d59ee436-7887-4ec4-9632-44beb8f42e2b"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="fe4d6f2a-f636-4292-bef2-12109b374543"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="acda4b79-c7eb-4ee1-a9d5-6aaa95082af9"
+>TIU.SleepingRequested &lt;- True</Action><Action
+ Guid="d7a794a6-3d7b-44d3-8727-e32f0b8079f2"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="607a0154-532c-4724-b749-2ee257d9f9c3"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="424cc686-ecaa-4fde-b8f2-b046c6724b1d"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c2df76dd-aab0-42db-9e80-3d0836e8d965"
+>
+<Actions>
+<Action
+ Guid="fb0fa12d-ad5c-4772-84c6-9c5923e7d1c5"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7ba44e86-2660-47b9-9ea8-91a72f6b1d72"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -17045,24 +17199,41 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="394ea40f-ea93-48a7-867d-db532e955749"
+ Guid="6b6cb4ee-af46-462d-88e5-abf7d162e22a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="fdd17410-30c0-4217-bdf6-2c7c7169040c"
+ Guid="b7cd9830-7400-49e5-baaa-ece07c6dbe2e"
 >
 <Actions>
 <Action
- Guid="bc7438da-337b-44ec-af54-b22982976df0"
+ Guid="511b9d47-3f08-4c52-91a4-ffc6e673f356"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="3e34c221-0736-4f97-8d31-ff43577ce123"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="f340f3a8-e3df-491d-af48-af7c03a187ea"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="eb5bdf87-81ff-44cb-910f-7fab04c4bdce"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="15087412-ec08-4947-945f-7936accc7605"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="36b3cc01-50ae-48fd-b1ba-6d91b8c58481"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c05e57e4-10a0-4d03-a95c-18069ec1d49b"
+>
+<Actions>
+<Action
+ Guid="8380b8a4-2d0e-4874-9238-fb6ff03c159b"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="990f24dc-4252-4fb8-8e11-5cf0caf85980"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -17071,24 +17242,41 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="77ad1db5-7516-475a-99d9-4ce8538a8c77"
+ Guid="1e03dd13-90b0-4a49-a306-4ffc145758a7"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="75477832-49de-4b37-b859-73b453228dce"
+ Guid="77b4f2dc-be7f-4325-8f10-137337c9e870"
 >
 <Actions>
 <Action
- Guid="88011b63-084c-4a05-a6ac-66e26794bf28"
+ Guid="3adbba41-4d1b-45f5-80ee-7b3b30c585bd"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="cdff85eb-9a56-4680-aea5-a7b3e801c5d0"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="7d087cc2-21ef-40e0-afdc-9293295db083"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="96807ee6-9474-488b-9d10-7076fcc9357d"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="70c168aa-20eb-44a6-a47d-cacb9d89e834"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="b82f5ffa-9d7e-451d-93ca-008d592d8b45"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="1677d828-f3c2-4fc5-ba22-9642d3ac870c"
+>
+<Actions>
+<Action
+ Guid="1cf4f44c-c00b-43a9-ab83-e0dc8fe2a48f"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f29dcade-be6f-4a8b-a7bc-c51da43405e1"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -17097,22 +17285,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="d55ccb46-d3f0-4a43-b3df-47e05b4ea77a"
+ Guid="f3b3c751-b112-4579-9cad-22c1d380a080"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="f086412f-d305-4486-bf9b-ccb12b51d2c5"
+ Guid="98dcf5b8-562a-4c0d-8307-8820c7700f40"
 >
 <Actions>
 <Action
- Guid="3d98013f-65ce-44f7-ae99-f6093137b110"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="ab466511-5b46-47e0-b1c3-ba6e2b6ed338"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="62f29a39-156f-4dc3-bdbc-949c604cf0e5"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="316778cc-f07b-450c-b2fe-2535477981d7"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="f496c48f-0759-412c-bb80-5fef3007332c"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="f3e64b4e-e80f-4a5b-8c98-3315fcbec988"
+>
+<Actions>
+<Action
+ Guid="62d952fb-f626-4561-9e5c-2bf43bd56e47"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7b4a349e-f59d-4dc3-96eb-8f48438b91f3"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -17121,22 +17326,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="2bcc9a07-7ff4-4a85-bdd7-e94dcf71c56a"
+ Guid="cbb9302b-c891-4986-ac0d-c8cc5efba22e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="871918f5-ec9d-489b-af6d-0e2b3b66d046"
+ Guid="371b784c-8503-4e74-982a-eff02269a0c0"
 >
 <Actions>
 <Action
- Guid="639cac58-5641-439d-a763-90a4cb9cb11e"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="1c50559a-05ec-459e-8fef-998877b506ff"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="af8909b9-e5c5-4fdc-8b8a-ed51f73db0de"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="abe4903f-37cd-4ddc-90c4-06e9cc652869"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="4e5b80c0-c2ec-47dc-8afa-2e78f0d9f6db"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="f5f23130-3e27-4b69-bdbf-07d30cc7e1e9"
+>
+<Actions>
+<Action
+ Guid="2e923b06-143f-4220-9253-8da2f4822fc0"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="227ca907-9e20-49af-b9d3-490542be53d9"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -17145,22 +17367,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="a1de8910-c9f7-4043-a736-74d1144cd6fb"
+ Guid="dc4dd944-2dd0-4959-8f5a-9f346ce49340"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2353182a-1f94-4e9c-92c2-2879e926fbae"
+ Guid="ec3cc697-80ad-4aea-9490-05cca9571054"
 >
 <Actions>
 <Action
- Guid="e7bfe9b6-edf9-4a45-b57e-539d03d86bd7"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="e811b57e-cb16-4cac-b90b-7d8e5ecf028b"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="6c98bc03-b11a-41da-8796-46bf8e7c46ff"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8d9db89a-a76e-4c1f-b484-1db8ba1ab8e9"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="dc7a6f76-8077-4ec8-9725-60062aadcbb1"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="f73e8190-27b0-4f3e-a11d-20df703fe215"
+>
+<Actions>
+<Action
+ Guid="da945e4e-da48-430a-b487-052aea417639"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1d0b7179-05d9-4fdf-9d99-87c623f886a9"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -17169,22 +17408,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="8875c96e-20c4-4a33-b142-53aecba81377"
+ Guid="750b5f17-77c3-4d4c-9afc-a8966884bcc7"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2ab782cf-e34a-4dea-95be-1284b69efcad"
+ Guid="5435e8c6-5c60-428c-ac2b-64e6e39d7580"
 >
 <Actions>
 <Action
- Guid="dc0a3835-49ad-47c2-abe9-b7a240357c7c"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="5679c087-435b-4ad2-ae06-e86050894c9f"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="f146aa91-4a9d-42a8-9be9-f63a2f385046"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="adf45b1d-772d-44b7-b3df-aae14a1fb5f8"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="9d5a9b92-994b-42ca-a580-0db4631d3357"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="309418e0-5994-4a0f-ba82-da6b3eb27215"
+>
+<Actions>
+<Action
+ Guid="3aec630e-d860-4e03-ad1c-fe1dadd04480"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4ddff745-c1bf-41a8-850b-21bfe1a9a37d"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -17193,26 +17449,43 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="18551473-0cdf-4255-a342-3c38aa1b36bf"
+ Guid="db972dfd-e2b5-458b-987e-d4b22f7fbb13"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="791d8858-0da8-4b45-8654-0e1da913f918"
+ Guid="7e2ce9e5-be60-4603-a110-53ec56b24a45"
 >
 <Actions>
 <Action
- Guid="6f4e534c-0b2a-4310-b17c-a770604bc1a7"
+ Guid="3db775e9-7b15-4d08-b52d-1447d2c2e88c"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="f0052578-91fe-4897-877f-d85daf9d8e48"
+ Guid="f269b67b-94a3-4808-b70f-261c6efa0e9a"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="0926d627-3656-45de-ae54-f2668eef3563"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="03184acc-e33d-4caf-b8d1-874f42c43627"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="468830d5-27e5-4b99-bce9-548cfbdd8415"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="0fcdc487-0d4c-4404-ab8e-cfc78b18e096"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="5dc61206-ff9c-4293-920c-9d4bfd0617b9"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="14809fe6-a85d-46fb-8bb0-d4352f78845f"
+>
+<Actions>
+<Action
+ Guid="fcc36a7f-5c24-4176-bb11-219704bd1e77"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ea802233-8f91-4523-a197-64eeb31ec634"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -17221,22 +17494,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="47ae8542-a8f9-4fad-bb1e-930e89aaae94"
+ Guid="a4ae467b-0615-4297-9778-0b50b94a2535"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="34adde2b-9e8f-41a8-b1a4-35f330dec5e2"
+ Guid="95bd4f25-294d-4575-9b92-e09f16869a08"
 >
 <Actions>
 <Action
- Guid="67a0e01e-904b-4d79-a0b0-150cefe82462"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="f6e5a8e7-0831-4beb-a671-3f29928da91c"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="a6dd9d68-cb6b-4276-8117-371d91a74ca4"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="96f0dada-5bb3-4a3d-af5c-bd7f3eea836e"
->DMI.MasterDMI().In_Isolation.ProcedureIn in DMI.IN.Isolation.ProcedureIn.Active</Expectation></Expectations>
+ DeadLine="1"
+ Guid="9021f39c-84d2-4507-8067-fd81b1001962"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="61a69007-31e6-4b63-9002-aa1ace1704f5"
+>
+<Actions>
+<Action
+ Guid="f27901d6-d59e-4dd6-b06f-fb7e21e3375d"
+>DMI.MasterDMI().In_Isolation.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b754c9c4-221c-45e8-baaf-6c3e1cbec682"
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
