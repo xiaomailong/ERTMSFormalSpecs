@@ -499,76 +499,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateAcknOfSNMode"
- Guid="116e3613-a173-4920-8909-0e2435b84b0e"
->
-<Parameters>
-<Parameter
- Type="Default.NID_NTC"
- Name="NationalSystemId"
- Guid="d3360296-4a1a-47fe-ae79-3322dea62e65"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="7f60134e-8630-493e-b429-cd5dac83434b"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="50bee7ef-ae9f-4e26-8da6-ddd838d844f6"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="a79fc78c-c196-4641-aa4b-1bc6294d125d"
->
-<PreConditions>
-<PreCondition
- Guid="b4794c9e-ecdf-419e-872b-2192b5b0beb1"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f79f3e5a-c083-490c-a739-26a3e318a146"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="23b2fccc-18d7-4b05-ac0f-d3c8b45df0ab"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="df99ded8-1d38-4111-95c0-4582730f1eed"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="1043c711-7558-478c-b8cc-12f03c36b5a1"
->In_AcknOfSNMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="5e82bf00-9e78-4d96-bd66-d003521ae460"
->In_AcknOfSNMode.NationalSystemId &lt;- NationalSystemId</Action><Action
- Guid="16209002-cdca-4b6a-b00a-61f81f0ff29d"
->In_AcknOfSNMode.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="InitiateAcknOfUNMode"
  Guid="7e3e4b67-2ac3-4eae-bf1b-deb44f4ae3c8"
 >
@@ -7923,6 +7853,11 @@ In_OverrideRequest.GoToAvailable()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4f0ef0a3-ce20-4554-b89f-c43d703a9364"
 >
+</ReqRef><ReqRef
+ Id="99735e12-128e-4cc9-8fa2-368230a0e2df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="790027a3-0ff6-4ea3-936f-fa8cbec22d0b"
+>
 </ReqRef><Comment>Updates the requests according to the mode change</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -7960,7 +7895,10 @@ In_AcknOfFixedTextInformation.TrackMode()</Action><Action
 In_AcknOfLevelTransition.TrackMode()</Action><Action
  Guid="43028746-5ad9-4296-bca7-432aba463ecd"
 ><Comment></Comment>
-In_AcknOfPlainTextInformation.TrackMode()</Action></Actions>
+In_AcknOfPlainTextInformation.TrackMode()</Action><Action
+ Guid="d338fcb5-0227-40a3-bc6f-630272233913"
+><Comment></Comment>
+In_AcknOfSNMode.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

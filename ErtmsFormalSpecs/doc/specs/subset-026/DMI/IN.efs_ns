@@ -11833,6 +11833,125 @@ THIS.InputInformation.Disable()</Action></Actions>
 >ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="ef6ee74e-312f-4a6e-90f9-048f9d697acb"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="95800cff-0a8b-43bf-92ad-dd538647ca76"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="8590a469-70ad-4762-af9e-a507c1957ce1"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e2a59ace-9b37-4f65-86b3-afa908151d1a"
+><Comment></Comment>
+
+
+
+
+
+THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="e25473b6-ef58-466e-ab65-de09e3324b50"
+>
+<Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="482b1c71-a8e1-4146-b543-a76cb364f359"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="8087b021-f49a-4594-8b89-c729b50f5341"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="3c1ca723-1bfa-472e-8c4d-936a0e1fd394"
+><Comment></Comment>
+
+
+NOT AcknOfSNModeAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6fb39eb4-2bb8-40b9-90ab-23143c097210"
+><Comment></Comment>
+
+THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="116e3613-a173-4920-8909-0e2435b84b0e"
+>
+<Comment>Allows to initiate the Ack of SN mode</Comment>
+<Parameters>
+<Parameter
+ Type="Default.NID_NTC"
+ Name="NationalSystemId"
+ Guid="d3360296-4a1a-47fe-ae79-3322dea62e65"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="23b2fccc-18d7-4b05-ac0f-d3c8b45df0ab"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="df99ded8-1d38-4111-95c0-4582730f1eed"
+>
+<PreConditions>
+<PreCondition
+ Guid="a13c710b-86d9-4b7e-a381-3c236caae8e2"
+>AcknOfSNModeAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1043c711-7558-478c-b8cc-12f03c36b5a1"
+>THIS.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
+ Guid="5e82bf00-9e78-4d96-bd66-d003521ae460"
+>THIS.NationalSystemId &lt;- NationalSystemId</Action><Action
+ Guid="16209002-cdca-4b6a-b00a-61f81f0ff29d"
+>THIS.InputInformation.DriverAnswered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="InputInformation"
@@ -11843,6 +11962,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="InputInformation"
  Guid="7dddbd31-1c13-4dfb-9b60-0317d24c320f"
 >
+<Comment>The request status</Comment>
 </StructureElement><StructureElement
  TypeName="Default.NID_NTC"
  Default=""
@@ -11852,6 +11972,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="NationalSystemId"
  Guid="81c1519d-e5b8-4b69-be29-1dcac8bd4916"
 >
+<Comment>The national system id to be acknowledged</Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureInSM"
  Default=""
@@ -15007,6 +15128,29 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment>Identifies the modes where the function is available</Comment>
 <Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.RV ]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="AcknOfSNModeAvailable"
+ Guid="e51d8ae2-2fe2-4367-9ab7-94acef114f9e"
+>
+<ReqRef
+ Id="99735e12-128e-4cc9-8fa2-368230a0e2df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b2a5edb5-ec09-49fb-89ff-3b6de4c8f6d8"
+>
+</ReqRef><Comment>Indicates whether the level can be proposed to the driver</Comment>
+<Cases>
+<Case
+ Name="Enumerate the modes where available"
+ Guid="a6f59268-d02c-4703-9c1f-f895ce68c6d6"
+>
+<Comment>Identifies the modes where the function is available</Comment>
+<Expression>Kernel.Mode in [Mode.SB]</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
