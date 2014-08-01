@@ -2391,7 +2391,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Guid="9a0b3d4f-3720-433f-98fb-44f7f282703c"
 >DMI.MasterDMI().In_NonLeadingRequest.InitiateRequest()</Action><Action
  Guid="53277c45-afcc-4bb0-9d91-b72fbadceb57"
->DMI.MasterDMI().InitiateShuntingRequest()</Action><Action
+>DMI.MasterDMI().In_ShuntingRequest.InitiateRequest()</Action><Action
  Guid="1c386f42-892b-4d1e-9f0a-b64a3cdf7ac6"
 >DMI.MasterDMI().In_TrainDataEntryRequest.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
@@ -2485,7 +2485,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Guid="787e9a72-addd-4f4c-83f6-45bc400408a6"
 >HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action><Action
  Guid="38d2526d-d9bb-46c0-9a33-4fd93a5f5b7a"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
  Guid="4f8db88e-3165-4661-bdc5-92c554074578"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.Disable()</Action><Action
  Guid="85d5c94d-3176-4321-980a-89906a0a0b71"
@@ -3375,7 +3375,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Actions>
 <Action
  Guid="47ea6985-2b83-4d62-8bdb-f5b4faa5fd71"
->DMI.MasterDMI().InitiateShuntingRequest()</Action></Actions>
+>DMI.MasterDMI().In_ShuntingRequest.InitiateRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3389,7 +3389,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Actions>
 <Action
  Guid="af060c8f-33de-49e1-ab6b-daee80936480"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
  Guid="fcbf15da-671f-480a-b77c-ed25a0c97f53"
 >THIS &lt;- ShuntingInitiatedByDriver</Action></Actions>
 <SubRules>
@@ -6680,7 +6680,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  Guid="823d4bf3-7fa5-47a2-b989-00c45f07221f"
 >THIS &lt;- HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action><Action
  Guid="7a3cf90e-21db-4389-9eed-ba4477662811"
->DMI.MasterDMI().InitiateShuntingRequest()</Action></Actions>
+>DMI.MasterDMI().In_ShuntingRequest.InitiateRequest()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -6802,7 +6802,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  Guid="741cde16-5ca2-4fe2-a0ff-31743d338787"
 >DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="943a1f2f-1239-439f-a012-d060ccc05728"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -6838,7 +6838,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  Guid="91093a5f-2aae-457d-a856-d36fbd2facc9"
 >DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="9617e3b5-fa81-46f2-aefb-50865d8ce869"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -6880,7 +6880,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  Guid="d367c039-b4a7-42a3-a80f-a18eed86e4d4"
 >Kernel.HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action><Action
  Guid="180ce797-b671-4585-a52f-426f2fa4056b"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
  Guid="c9cabf9b-e4f8-4ebb-ace5-dbab095ab111"
 >DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
