@@ -844,7 +844,8 @@ DMI.MasterDMI().HideReversingAllowed()</Action></Actions>
 <Actions>
 <Action
  Guid="f88146f5-3122-4970-9caf-38c8384c9025"
->DMI.MasterDMI().In_AcknOfRVMode.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+><Comment></Comment>
+DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

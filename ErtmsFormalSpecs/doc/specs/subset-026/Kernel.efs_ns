@@ -3476,7 +3476,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="7af6368a-0121-4c32-ba51-1820f2d758c5"
->DMI.MasterDMI().InitiateAcknOfSRMode()</Action><Action
+>DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action><Action
  Guid="b0bc1e94-01eb-4df2-a3b3-2c8eb95e51b7"
 >THIS &lt;- DriverAckRequested</Action></Actions>
 </RuleCondition></Conditions>
@@ -3542,7 +3542,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="df66622a-f945-4112-acc7-25b9c04f84cc"
->DMI.MasterDMI().InitiateAcknOfLSMode()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLSMode.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3581,7 +3581,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="47394cdf-5bcc-499d-92dd-259bbdb4488b"
->DMI.MasterDMI().InitiateAcknOfOSMode()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfOSMode.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3620,7 +3620,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="dcf74279-c0cd-49ac-a698-2ac766fc4fc1"
->DMI.MasterDMI().InitiateAcknOfSHMode()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSHMode.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4964,7 +4964,7 @@ DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.NationalSystemId)</Action
 <Actions>
 <Action
  Guid="dc4095ae-fc09-487b-be90-b86d5bf50080"
->DMI.MasterDMI().InitiateAcknOfUNMode()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfUNMode.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6003,7 +6003,7 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="e974ee8b-f4a6-462c-aeaa-a26536520878"
->DMI.MasterDMI().InitiateAcknOfTrainTrip()</Action><Action
+>DMI.MasterDMI().In_AcknOfTrainTrip.InitiateRequest()</Action><Action
  Guid="3057bc54-5cbc-4164-b149-57051fe70fdc"
 >THIS &lt;- HandleModeChange.TrainTrip.S060.DriverAckRequested</Action></Actions>
 </RuleCondition></Conditions>
@@ -6075,7 +6075,7 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="9b810682-306d-41fa-84ff-890eae846bbc"
->DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action><Action
+>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.Disable()</Action><Action
  Guid="3c874fdb-5764-48db-b436-1d58699af90e"
 >THIS &lt;- HandleModeChange.TrainTrip.D080</Action></Actions>
 </RuleCondition></Conditions>
@@ -7117,7 +7117,8 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="be31f090-2f1d-4061-83a6-729a5aed0a7c"
->DMI.MasterDMI().InitiateAcknOfSRMode()</Action></Actions>
+><Comment></Comment>
+DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7232,7 +7233,7 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="20fa23e1-ae46-4bb5-9b1d-e2b07d2a131e"
->DMI.MasterDMI().InitiateAcknOfOSMode()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfOSMode.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7268,7 +7269,7 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="ea87de01-786e-488a-9595-cfc2398832cd"
->DMI.MasterDMI().InitiateAcknOfLSMode()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLSMode.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7304,7 +7305,7 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="a6c8e672-2266-4133-90e9-57ecccd75c06"
->DMI.MasterDMI().InitiateAcknOfSHMode()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSHMode.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

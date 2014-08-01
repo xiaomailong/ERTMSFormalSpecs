@@ -418,11 +418,11 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt; ReversingAreaProfil
  Guid="02c224ed-0cc3-46ef-b8e8-dec3d21df680"
 >DriverTriesReversing</PreCondition><PreCondition
  Guid="a87006bb-b89e-40ff-a62f-44b80838edb8"
->NOT (DMI.MasterDMI().In_AcknOfRVMode.InputInformation.DisplayRequested)</PreCondition></PreConditions>
+>NOT (DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus == Request.Request)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ed5d42aa-ccad-44b5-b83e-130460638fea"
->DMI.MasterDMI().InitiateAcknOfRVMode()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfRVMode.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
@@ -440,7 +440,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt; ReversingAreaProfil
  Guid="693639f6-da52-48b4-9947-750a66a4dcf4"
 >DMI.MasterDMI().HideReversingAllowed()</Action><Action
  Guid="315ca243-f3b2-480f-87b3-9bdefeaa17b1"
->DMI.MasterDMI().DisableAcknOfRVMode()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfRVMode.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
