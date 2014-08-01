@@ -6430,9 +6430,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="bb5c5893-540c-4b3d-b315-61f43a5d6d43"
->THIS.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
- Guid="768e89d3-bd93-4e0c-a29c-3196a90cdcf7"
->THIS.InputInformation.DriverAnswered &lt;- False</Action><Action
+>THIS.InputInformation.InitiateRequest()</Action><Action
  Guid="6718e005-4ed7-4b15-8934-79007a156c56"
 >THIS.Text &lt;- text</Action></Actions>
 </RuleCondition></Conditions>
@@ -7094,9 +7092,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="6de79a40-cca1-482a-aebd-e688e8041f8e"
->THIS.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
- Guid="fae57898-d07f-4261-8ea0-0608bb83b417"
->THIS.InputInformation.DriverAnswered &lt;- False</Action><Action
+>THIS.InputInformation.InitiateRequest()</Action><Action
  Guid="3220b412-5ce9-4c6d-8f85-308f2c041e4b"
 >THIS.Level &lt;- Level</Action></Actions>
 </RuleCondition></Conditions>
@@ -7758,9 +7754,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="4b2fad25-f978-4e27-8055-a2978840b2ba"
->THIS.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
- Guid="277628ac-6c46-459f-b01f-119364cd6d2e"
->THIS.InputInformation.DriverAnswered &lt;- False</Action><Action
+>THIS.InputInformation.InitiateRequest()</Action><Action
  Guid="5bcec144-68e6-494b-9dcb-09c230ec1a48"
 >THIS.Text &lt;- text</Action></Actions>
 </RuleCondition></Conditions>
@@ -8309,6 +8303,115 @@ THIS.InputInformation.Disable()</Action></Actions>
 >ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="f1630aaf-9134-4c04-b7e9-d9cc78ffa841"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="deff2a8b-1743-437a-957e-5737814c9a21"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="ac1a8d63-b9c3-4b80-a293-0527f08fee24"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="16019496-7dbf-4a92-a6b2-2422e513d3f5"
+><Comment></Comment>
+
+
+
+
+
+
+THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="4e42e09c-c912-47f9-9845-9b050e2f3ba4"
+>
+<Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="e2bf4d89-e1b1-498e-85fa-49756ab50031"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="b6fdf1b0-f266-46dd-95ad-5c95dd3435e6"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="1d509fd1-6e01-45bc-861d-529c9e2a46d5"
+><Comment></Comment>
+NOT AcknOfTrainDataChangeFromOtherSourceAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6bc48613-a883-467c-8f16-e1e4e358d733"
+><Comment></Comment>
+
+
+THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="8effb25d-71e6-4fda-a485-321a6e03fe45"
+>
+<Comment>Initiates the request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="cdddb144-2c8b-4e72-bdd8-1cce34030fdb"
+>
+<Comment>Initiates the request</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="014c8f07-ea16-4bab-8692-9a1c993236a7"
+>
+<PreConditions>
+<PreCondition
+ Guid="f537f0b2-f603-4148-856f-7b5b03bcade3"
+>AcknOfTrainDataChangeFromOtherSourceAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="08adb180-ade3-4730-a1c8-8c89c0424dc5"
+>THIS.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="InputInformation"
@@ -8319,6 +8422,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="InputInformation"
  Guid="b0fc51a5-b5bd-4c57-8790-76d5efdda850"
 >
+<Comment>The request status</Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureInSM"
  Default=""
@@ -8335,6 +8439,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="DataReceived"
  Guid="5b487e90-1709-4319-9a51-53e480f9c19d"
 >
+<Comment>Indicates that data has been received</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -11945,11 +12050,9 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="1043c711-7558-478c-b8cc-12f03c36b5a1"
->THIS.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
+>THIS.InputInformation.InitiateRequest()</Action><Action
  Guid="5e82bf00-9e78-4d96-bd66-d003521ae460"
->THIS.NationalSystemId &lt;- NationalSystemId</Action><Action
- Guid="16209002-cdca-4b6a-b00a-61f81f0ff29d"
->THIS.InputInformation.DriverAnswered &lt;- False</Action></Actions>
+>THIS.NationalSystemId &lt;- NationalSystemId</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -15151,6 +15254,29 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment>Identifies the modes where the function is available</Comment>
 <Expression>Kernel.Mode in [Mode.SB]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="AcknOfTrainDataChangeFromOtherSourceAvailable"
+ Guid="a135d9de-6d39-4d50-b7f2-312f4700776f"
+>
+<ReqRef
+ Id="d76d9d7e-5ca9-42ac-9562-effe483642f8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e378a05f-afca-494f-8146-26c7e572042f"
+>
+</ReqRef><Comment>Indicates whether the level can be proposed to the driver</Comment>
+<Cases>
+<Case
+ Name="Enumerate the modes where available"
+ Guid="f74988b0-5c18-423d-b5ae-49fa86ab0cbd"
+>
+<Comment>Identifies the modes where the function is available</Comment>
+<Expression>Kernel.Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.TR, Mode.SN ]</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
