@@ -2429,12 +2429,7 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Name="TrackMode"
  Guid="d1d8fec6-5667-42ed-996f-7d430cd6262b"
 >
-<ReqRef
- Id="166e123f-f57c-4045-af2e-915a4c4e849b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7e094497-33e5-4509-85c7-0aa17e95c0a1"
->
-</ReqRef><Comment>Updates the request status according to a mode change</Comment>
+<Comment>Updates the request status according to a mode change</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -6290,7 +6285,8 @@ THIS.InputInformation.Disable()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="269b466f-80ec-41ee-8138-ed4cc7fff121"
 >
-</ReqRef><Procedures>
+</ReqRef><Comment>Allow to acknowledge a fixed text</Comment>
+<Procedures>
 <Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -6324,6 +6320,123 @@ THIS.InputInformation.Disable()</Action></Actions>
 >ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="686e3de3-b6e0-4cce-9acb-910ce56926bb"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="de8aedac-75cb-41df-b76d-fce94054cf6b"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="03b88e79-75c3-4ab3-9fa0-0b257ccdcff1"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0608d022-2811-4d61-83cd-12c8978fc21b"
+><Comment></Comment>
+
+
+THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="68efa743-6a90-4203-8e6d-67a24ef90b17"
+>
+<Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="2b4f5794-1fa2-4212-8331-03f2bc7d8aa4"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="513b1e57-eba3-45e8-a526-ed245383f573"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="15f85bde-56a5-47e6-842b-b93d6596c763"
+><Comment></Comment>
+
+
+NOT AcknOfFixedTextInformationAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3ca2e0b4-53a9-45ff-af2f-585799d714d1"
+><Comment></Comment>
+
+
+THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="e84fbe96-a93e-4c93-89f2-e293cbd16e33"
+>
+<Comment>Ask the driver to acknowledge a fixed  information</Comment>
+<Parameters>
+<Parameter
+ Type="String"
+ Name="text"
+ Guid="2fe8c008-b485-4fb9-98ca-fa943a90d87f"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="de583df0-cd3b-46d3-9aeb-80fef4748469"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="291f8c36-f44d-497e-89fb-9354df41afea"
+>
+<PreConditions>
+<PreCondition
+ Guid="8450a9ed-508f-40a9-a7d8-92c7f27f6b73"
+>AcknOfFixedTextInformationAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bb5c5893-540c-4b3d-b315-61f43a5d6d43"
+>THIS.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
+ Guid="768e89d3-bd93-4e0c-a29c-3196a90cdcf7"
+>THIS.InputInformation.DriverAnswered &lt;- False</Action><Action
+ Guid="6718e005-4ed7-4b15-8934-79007a156c56"
+>THIS.Text &lt;- text</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="InputInformation"
@@ -6334,6 +6447,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="InputInformation"
  Guid="77f785a2-784e-4416-9288-4043ba2c778a"
 >
+<Comment>Provides the request status</Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureInSM"
  Default=""
@@ -6350,6 +6464,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Text"
  Guid="08639efd-51e5-4de9-bcba-185d0da0ab6f"
 >
+<Comment>The text to acknowledge</Comment>
 </StructureElement><StateMachines>
 <StateMachine
  Default="NotAvailable"
@@ -10187,12 +10302,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="TrackMode"
  Guid="5db69fc6-567f-4693-b4b0-207b68ef2e6c"
 >
-<ReqRef
- Id="63c4543b-5430-4f3e-a524-ce48d640aead"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="87279987-a965-449d-b917-f76bd009e4a0"
->
-</ReqRef><Comment>Updates the request status according to a mode change</Comment>
+<Comment>Updates the request status according to a mode change</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -10843,12 +10953,7 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Name="TrackMode"
  Guid="b8511bf9-83d6-4941-ad30-d07b887c7658"
 >
-<ReqRef
- Id="cc8be0e3-4edb-46d4-a4e4-a00714d90fc4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="29542363-0ded-46bc-b878-2e27678032d4"
->
-</ReqRef><Comment>Updates the request status according to a mode change</Comment>
+<Comment>Updates the request status according to a mode change</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -12121,12 +12226,7 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Name="TrackMode"
  Guid="3e98c944-1140-4d87-9bbe-adc0cd58ecca"
 >
-<ReqRef
- Id="63c4543b-5430-4f3e-a524-ce48d640aead"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e9f6c22b-900b-4c74-af4a-b1d03bea0737"
->
-</ReqRef><Comment>Updates the request status according to a mode change</Comment>
+<Comment>Updates the request status according to a mode change</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -12749,12 +12849,7 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Name="TrackMode"
  Guid="dbb5ef26-0dff-4812-84b6-cf3332873500"
 >
-<ReqRef
- Id="166e123f-f57c-4045-af2e-915a4c4e849b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9d06b3ca-1501-4a65-b73a-b4e8f4ab0a10"
->
-</ReqRef><Comment>Updates the request status according to a mode change</Comment>
+<Comment>Updates the request status according to a mode change</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -14607,6 +14702,29 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment>Identifies the modes where the function is available</Comment>
 <Expression>Kernel.Mode in [Mode.SB, Mode.SR, Mode.PT ]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="AcknOfFixedTextInformationAvailable"
+ Guid="9ec7a150-e8e0-41e8-83b1-19bc896da754"
+>
+<ReqRef
+ Id="0f95b99b-d98f-4189-b6f9-d0a3699f36a7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f568ce9-d99b-4a04-9e2c-b0a3481d768a"
+>
+</ReqRef><Comment>Indicates whether the level can be proposed to the driver</Comment>
+<Cases>
+<Case
+ Name="Enumerate the modes where available"
+ Guid="2b206bcd-5b95-4d2c-89c5-579c15383e71"
+>
+<Comment>Identifies the modes where the function is available</Comment>
+<Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.RV ]</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
