@@ -3526,13 +3526,13 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="IN Ackn of level transition"
- Guid="7d717ab8-87cd-4b37-ad58-7866ac0de123"
+ Name="IN AcknOfLevelTransition"
+ Guid="d0c7c70b-9a1c-4d0d-8a5a-6af78a071fe0"
 >
 <ReqRef
  Id="bb2f7a44-df6e-4902-a634-5c2e49678710"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="491e7930-2af0-41c5-a58c-fba107b12417"
+ Guid="86b4a4e5-876c-461a-aa67-b957e8b52f10"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -3544,24 +3544,47 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="a0ecceed-e1fe-472b-94d7-ebd25edb5cf1"
+ Guid="2fd3d6ad-3629-47c6-bb28-13cd4728d0a8"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="01b0bdfa-cb21-4335-93d5-9c68ce2926b3"
+ Guid="082561ec-ef5e-4c42-9cc9-fa4291aee4bc"
 >
 <Actions>
 <Action
- Guid="24a1bcda-f987-4e9a-92ee-480d1048d13e"
+ Guid="02c567b6-05bc-4833-a43c-89b1817065a2"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="e8eca7a4-1037-4e3e-bc9c-c426f18b1642"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="ac104114-7c6c-4eb7-89d4-312103f7d428"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="4d998612-36fa-4727-a548-c762b02f7666"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="280fa5d4-9672-4cdb-b23d-d6f90f466c02"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="54188cf7-99c1-43f3-82da-b8809621bf1e"
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e0abe71b-6c90-4a81-9f1c-16ed40b8cc7a"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="bc694272-1810-44d7-bc3c-6cfa62d06845"
+>
+<Actions>
+<Action
+ Guid="965516ae-14ba-437e-9616-99bf6e15be7c"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="c62f3997-9f03-45b1-b6c3-245e483ab498"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3570,24 +3593,43 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="d0f5c8e9-678d-4cf5-8d36-69f9242bba97"
+ Guid="6a63ae3a-be0f-4518-b508-fcb309eec17c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="9f8ef8cf-566d-4db2-a2c6-b6afc88705f3"
+ Guid="966bc5c5-f02d-40d6-a0ed-92a48dffc57c"
 >
 <Actions>
 <Action
- Guid="0d1df847-e5bf-4c25-81da-4c71c5317e08"
+ Guid="f9d4f7f8-f99c-46cb-aa29-0dfcf37339dc"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="23bc8a7b-8cb1-46e1-bbca-f24643661514"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="a76d5f36-1334-4b23-b779-0924449c0d5d"
+><Comment></Comment>
+
+Kernel.PowerOn &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7f826954-7bb7-4866-9b58-de9f49bb5989"
+ Guid="91523570-84a9-4421-b12b-9527b3a59696"
 >DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="334dccfe-ee55-4044-8830-223c494026f7"
+>
+<Actions>
+<Action
+ Guid="cec6722b-f91b-45f3-a8d0-5865f439ad6f"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="5bf99cee-486f-4307-88fd-9949e6e3e169"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3596,22 +3638,45 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="ff46e80e-ce12-45e7-a1f7-58eb00a107c5"
+ Guid="7e6ae978-e339-4c27-b692-7db240e7b4a2"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2bcb19d7-edb0-4cef-a10f-7f2bd9d40aac"
+ Guid="60a4f4b4-7d55-44f9-bba7-dc273c581604"
 >
 <Actions>
 <Action
- Guid="7c553570-17b6-4b51-b751-a6cea8042ae1"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="30376f47-975b-4189-9f79-5e843984c9e8"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="c841d985-6fe6-40d9-bbc1-4f7d11369322"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="620fabb2-c788-421e-9b1b-e62a3909ab34"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
+ Guid="a6a4d7e8-80ee-448e-ad3d-6cd05a4404f9"
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0035c529-9767-45d1-ae13-7577d5aae271"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="60c38d36-30e0-4dae-9e7a-5890d077e372"
+>
+<Actions>
+<Action
+ Guid="52469cb1-b1cf-4c0c-ac68-db3440369c08"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e0acd27e-c154-467a-988a-0e508a477ff9"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3620,24 +3685,47 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="c86bf70e-d50c-4535-bf62-053ae7d1550c"
+ Guid="aa4085a6-9e05-4c2b-befc-2bda2a797382"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="a862d1d1-7d6f-4bb4-b5d7-a361e876cfed"
+ Guid="263f1aaf-5e0a-4a0d-bfc9-83b8088f3601"
 >
 <Actions>
 <Action
- Guid="9f0837f1-1d53-4456-acb4-e64b3ef447a5"
+ Guid="0ea7532d-db6f-46c4-a282-f48a28f0bef6"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="98e5f539-c06e-41b1-bdc0-dc1d4e5b5be8"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="f7ef60f6-a3ab-4b09-9011-6d319a950c84"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="f7e65111-cada-4b97-b7f9-22f8f61d939c"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="e4533bc0-e8bd-4b60-adc8-1bddd72c8b51"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
+ Guid="047b5ca5-8b4a-4165-a6db-6754fcf7cea2"
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="8b93a407-907e-40d9-b423-198545644ae9"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6ae3db86-acf9-426f-bf25-7563ad9310b5"
+>
+<Actions>
+<Action
+ Guid="06036e8b-813b-4f5c-8295-fb54faab89ac"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c5d0c9a8-8f38-404d-a508-eb3049878443"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3646,24 +3734,41 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="0d180bc7-fd89-42ad-b014-643661dc1b11"
+ Guid="a97a6928-cced-447c-9d4b-e2efad52678f"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="56954e28-0dee-4545-acaf-44d885b21178"
+ Guid="36ca56ad-1aab-4ba6-aab9-8db459f7abd3"
 >
 <Actions>
 <Action
- Guid="ec89a10d-ded5-4baa-92f4-f054d052031c"
+ Guid="7bec8ed4-15fd-4dd2-ac4d-884875cde99a"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="5252d2f0-79a7-4a09-96ae-58dd70a64e88"
+ Guid="5a69ffa4-8e5d-401c-b85d-d97e84a09a5b"
 >Kernel.Level.Value &lt;- Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="fce350a3-a39a-46a1-b47f-c51f0bf760a0"
+ Guid="6fdba6b6-5ffb-484f-9914-372389e72e2b"
 >DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="9f526e7d-0b79-4c6e-8cdc-e70d8e62723d"
+>
+<Actions>
+<Action
+ Guid="19f39b0f-8359-4d49-9810-c0c31845074c"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="29bb378a-706b-459a-8bd1-1012fd89d88c"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3672,22 +3777,39 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="4692b1c4-c5aa-44b7-9714-2b255c608c85"
+ Guid="93458a3e-b811-4daa-a036-43ae74fa3d19"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="3b4a7994-5943-4eb6-9a4b-66886822bad6"
+ Guid="c20344b3-5676-4a69-a902-d2f89a5d2c88"
 >
 <Actions>
 <Action
- Guid="9882ae67-b490-431e-85ae-5edd3c0076be"
+ Guid="0532930f-20ff-41c7-9968-26566afb3760"
 >Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="55dbb966-a087-4ac8-8145-3b1044056bec"
+ Guid="a9492b58-41bb-4b8e-b6d2-043e461f82d4"
 >DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6a44af97-c5ef-4fb3-beaf-0b5c7e2ff0fa"
+>
+<Actions>
+<Action
+ Guid="ceba38b4-2f3a-4790-aa04-2e0375571c2f"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="67095dee-476d-4168-a3f7-7862a5a49256"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3696,22 +3818,39 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="e4735e4f-bd93-46d6-8d8b-3c0801cecb7a"
+ Guid="8238f82d-d368-4ecc-81aa-fda02343818a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="874c5bcd-45b2-4252-a814-5a6fe325343d"
+ Guid="4adf06a4-324b-4151-9f77-6ab5be31a30a"
 >
 <Actions>
 <Action
- Guid="c1eee934-aa2c-4266-b12c-23e121cc9d26"
+ Guid="72e22e1d-dfec-4bf8-ba5a-8281180663ea"
 >Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="ce03ff4f-33bb-4e51-b72b-14d3c852f01b"
+ Guid="cacbf6c5-2228-4998-b540-b25e525e18c3"
 >DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="SubStep 2"
+ Guid="77122788-d2d1-4bea-bb3d-e50318ec90d7"
+>
+<Actions>
+<Action
+ Guid="a2746abd-9c10-4937-8e7c-7e0eac6fd5f5"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3f021fd8-57a5-402c-a4ad-d7e670d22556"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3720,22 +3859,39 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="0c265868-cdc3-4e95-8159-137f1dc8e02a"
+ Guid="d58812ee-a23d-4d66-9941-984fe68c5462"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d370f78d-8946-45b2-a460-322537bacc91"
+ Guid="36f3045c-7412-4ed7-8fd6-086c481e1783"
 >
 <Actions>
 <Action
- Guid="2db75353-b530-4ce6-82f9-30f60b1f7ccf"
+ Guid="89468499-eaaa-4068-88c0-82f5a978a1f4"
 >Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7270bb8f-c4d0-4712-9c8f-6f476879c268"
+ Guid="e9fad202-c306-47b4-b751-0112c56e6cb4"
 >DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="25f5c2d6-a282-4378-9b33-8ffb95e49166"
+>
+<Actions>
+<Action
+ Guid="d48c7a6f-e5ae-4acd-a6ca-3bd8b74def0b"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1338a4ae-55a7-4e1e-a998-f42b8c16e0ee"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3744,26 +3900,49 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="01011aa8-57ac-4dd7-b889-e9602de82257"
+ Guid="d4d3b65c-40e7-4001-a5c3-155e15c75442"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="feb49e4a-be25-44a0-9166-bef60a7f443f"
+ Guid="a47e0ec6-3217-4daa-9855-d02724340546"
 >
 <Actions>
 <Action
- Guid="2e542248-8227-46ac-bf42-469affc5d275"
+ Guid="07be6930-e345-4de3-aab0-999827108d82"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="b4459ab6-c8b4-4d9b-8d8f-368b537d4377"
+ Guid="22b95232-2564-4297-afd7-514f5b4edb0e"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="0df098dd-231a-4077-8d47-9bbdfb35a4e6"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="b965f0ec-c65f-4048-88cb-6f42b27a2a4d"
+>TIU.SleepingRequested &lt;- True</Action><Action
+ Guid="16027bb3-be16-4eab-a690-ad96c19153f7"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="363ac488-9655-4d31-8b3e-6c46ebb0f847"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
+ Guid="ff06cb2e-1b21-4074-b836-70d652672960"
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d1311fa0-fe7c-452d-aa0f-aa4eb5fdf5fa"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="3e7de661-c4eb-4f0c-ac0b-b4294dbf2588"
+>
+<Actions>
+<Action
+ Guid="2851e35a-dd5f-4f29-a501-d41e48fd2e0c"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9750ab56-0639-4ab9-92f5-99c0bb717120"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3772,24 +3951,41 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="cbee999e-befb-46b7-93d6-cead9ab4da0f"
+ Guid="8c7288ee-4359-4ead-95c7-977625e8eab0"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="f6f7f7c6-705a-4af5-b2d1-efdbcbda72ed"
+ Guid="1858dfe6-e687-40a9-820c-d6e1e6059b0f"
 >
 <Actions>
 <Action
- Guid="62acdc80-32d8-47f2-a7a6-d5fa287482b7"
+ Guid="06d63a3a-efd2-4854-b4ae-f722159f811a"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="034ba0e3-2277-491d-821c-f1565cfeda79"
+ Guid="387c6f98-482f-4a3a-9715-ea14181aec9c"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="d699b7ac-2d19-4e0b-a1f0-fa60c1d1fbd6"
+ Guid="dc006f43-e802-4622-9e17-a7cf64108cc3"
 >DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="231a4638-1e6c-4959-b9ee-c01dadfb1a40"
+>
+<Actions>
+<Action
+ Guid="c1a9fd04-1db1-4f3b-8e8a-22e7dbd9ce49"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b4010fef-c343-447a-bc2c-3efa833b427f"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3798,24 +3994,41 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="7486a49c-dbdd-488f-a01e-b96bc43fceaa"
+ Guid="8fa1fb8c-774d-4d06-bf2d-5f9917de5a83"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="697ac186-e045-4068-b9f4-592b854dba72"
+ Guid="43ff9fed-bf00-4ad5-bce1-43f9cec27ac0"
 >
 <Actions>
 <Action
- Guid="8886f360-5f19-4799-bb3b-ef5843971095"
+ Guid="be66a014-7da2-4493-ab81-5f61ce42d16a"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="4f7ba0c5-e7dd-4aa0-b828-a0b47abfc6f4"
+ Guid="3db5b4d8-cb9a-42f7-a4ac-a4109a2ad1a2"
 >Kernel.Level.Value &lt;- Level.L0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7f03eb5e-3701-4e6f-8994-9c6a8345e36a"
+ Guid="e67e4cba-12e6-4bad-9929-7987b9fd87da"
 >DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d5659b6f-bb83-4056-87aa-40518a61979d"
+>
+<Actions>
+<Action
+ Guid="fb5bcf50-11ce-48f9-9061-f0e10206730d"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b4851525-23b3-41f1-b396-c58a92291675"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3824,22 +4037,45 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="393f70de-8000-4ec5-a1b4-3eb92eb99586"
+ Guid="cc020fc7-bdb1-4632-b86b-9f01b404d7dd"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="86421813-9a87-4979-8d00-ba9767099b2f"
+ Guid="123c3d42-8854-496b-81e9-4cd707350e11"
 >
 <Actions>
 <Action
- Guid="05313467-fb80-4e79-b3b9-b412bfb0698d"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="435849f6-614c-4190-a825-00c36b7ddb96"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="f5562d26-c4e2-4587-ac47-cdea3c9c2379"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8b816499-f1b5-4c0a-b9b0-503342cf0219"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
+ Guid="7a2dbe4f-4162-4762-971c-a0e9895d4c92"
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="8f008920-b13c-446c-aee9-eccfd38c9688"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="752db0ef-46d5-41c7-a81a-2a09405c5fc7"
+>
+<Actions>
+<Action
+ Guid="5ae6bd69-7208-45de-b45d-8deff2493115"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="360657b9-1cc9-433e-b5b7-df4635fde956"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request </Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3848,22 +4084,45 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="4c6cc6bc-e2c4-4f18-b728-d242f0c522ac"
+ Guid="71cc88b9-b808-4853-b220-12eaf260259d"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="3756b053-1650-484d-beb3-06e3379c6802"
+ Guid="81d920c1-ba5e-43b7-ba20-868dae56e8e5"
 >
 <Actions>
 <Action
- Guid="dd47c43f-7f1d-4a3d-a13c-432354dd6ddc"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="2381e148-ced9-4b3b-8e9e-5d916035ab97"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="b81db5f8-f68c-4b59-a4dc-f04af1104cca"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="0bf4d860-29c9-4b14-8ae0-687918ba1a5c"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
+ Guid="feec6946-af10-4bb3-ba58-c26b2f35a08d"
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9e4b4be0-7cc0-471f-a6ea-c4e40203cfd4"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e4e49585-a48b-4273-ac6b-155f2c385101"
+>
+<Actions>
+<Action
+ Guid="08426912-957a-423e-945f-5517dbf8a429"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e8e12007-2ed5-42ff-b6e3-472a4ba1a78a"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3872,22 +4131,45 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="c3bec6a6-cf35-4f7e-831b-5f9bbb981979"
+ Guid="0344f987-0a88-4fb8-b8df-187df10daa51"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="54ba6177-eead-4ca1-8194-656f601df107"
+ Guid="69040ff2-de59-4503-80d7-24edf11847af"
 >
 <Actions>
 <Action
- Guid="5ebd252a-e81d-44a3-9493-a21f7a70af7b"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="aecc93ca-60ec-4971-8ec1-afa1e38dfd4f"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="03928f50-196d-4eb4-8e5b-8e03dbf61803"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="847d4ed7-10ce-4e1b-a7da-1a121a60aa0d"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotApplicable</Expectation></Expectations>
+ Guid="f63f646b-3e77-41a9-9812-52c67835b5c2"
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotApplicable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="41ee4631-7465-4917-b68c-c37f38d9176e"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="fbb1a632-58f1-46fd-96f4-ae6f8cdf8817"
+>
+<Actions>
+<Action
+ Guid="5394a12e-12d0-45e2-86e3-fcbb1341f5f5"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="448e13dd-69aa-481e-ab10-befcba8e3ccc"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3896,22 +4178,45 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="1a6d99bc-dd06-41ea-96de-d5c5bd0eb4b4"
+ Guid="1f098c94-1a60-48b5-82cf-fea56c1b3886"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8a7a3a89-aadd-49fc-b1ad-7b2ac1ac94b7"
+ Guid="87b13d09-32b6-4afc-9425-6468fe34dede"
 >
 <Actions>
 <Action
- Guid="4759382e-e91f-4eaf-b085-7c6f84f090f9"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="0489a31f-d5f0-4e3a-a166-e0a8b5799c32"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="5a458fd9-6775-4392-8199-eba8b62fc053"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="f1589589-3f15-4385-a84a-d871b4d36a58"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotApplicable</Expectation></Expectations>
+ Guid="b48a1f58-cedf-4155-9f23-5826a6f23f45"
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotApplicable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2be15700-37d8-4a20-96d0-488df1dda2c7"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="f1241318-ce9b-4293-b780-d65d2d1f51dd"
+>
+<Actions>
+<Action
+ Guid="26398c50-f4e0-402d-a9fc-7d43dbd088a3"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="bef93c6c-d93a-4b4d-a413-49e5aaf1efe2"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3920,26 +4225,43 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="81c97bde-10bb-4b88-a240-3ff4f2229825"
+ Guid="03e9ab06-2a35-4186-ae0b-0fb89a4c35ee"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="a4e0e93d-3ed3-47bf-bf4f-aa31cb80f9cf"
+ Guid="16d1198c-e048-4b68-b526-87654b6d86dc"
 >
 <Actions>
 <Action
- Guid="9eb691e9-3f98-4b26-b42a-f84bf32c7cc2"
+ Guid="74f433fc-da74-4d58-adb7-634f700b9650"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="4aee8cb7-6f8c-416c-a8d2-650694615d2d"
+ Guid="6147c24d-df8c-42da-8935-1b82ded7f451"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="1246ef06-c51c-43b0-97e0-17dc900d5106"
+ Guid="8c3d4c9d-f238-4503-905a-e7b5b89a77be"
 >Kernel.NationalSystemId &lt;- 254</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c69e321d-a2e1-4c5b-b0ea-cae3aabad216"
+ Guid="18244764-39b7-4d98-958f-b8cda0f3752b"
 >DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="cfb8d782-4fc8-43e3-9c0e-cb46d95dfe47"
+>
+<Actions>
+<Action
+ Guid="4c62a196-aeb3-4ece-8f67-e712d03e3876"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1b818a24-eeb5-48bf-9414-6fb782798f79"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3948,22 +4270,45 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="e75926e6-9f6b-4c59-a105-a0df088a6a54"
+ Guid="cf3ecd12-c56a-479b-a2c3-cf0d7b0e79fa"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6dcc2e2c-a025-4d18-99d9-376f73ceb36d"
+ Guid="6071eae7-95be-4df0-aaf6-977b20e3f1fd"
 >
 <Actions>
 <Action
- Guid="06ed9d35-8f79-45dc-8241-62b66458aab3"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="1eb589ad-01e0-422f-b84b-3acf714539a6"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="b5ad997a-2177-406e-a57b-bb40a4362be4"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="afe18084-108f-4d35-ab40-a8d3b81ddaa7"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
+ Guid="74ee257b-52c0-479a-aa3b-de4d3acdf218"
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ed6a2ac8-46c1-40a0-b312-caedac57207c"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="59b73e24-c175-4453-9e82-81ae03727a6d"
+>
+<Actions>
+<Action
+ Guid="7198c9fc-87a0-492e-b143-b1af7f953d94"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
+(
+   Level =&gt; Level.L1
+)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0ae340b5-23db-4692-84df-95f2548f88a8"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

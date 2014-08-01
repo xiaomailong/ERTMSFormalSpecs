@@ -1030,6 +1030,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Name="InitiateAcknOfLSMode"
  Guid="45f9393f-9297-46ad-8179-e7c02b4edb63"
 >
+<Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -1327,67 +1328,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
  Guid="58eff226-6826-4d4a-a70c-8fca95c15f21"
 >In_AcknForStandstillSupervision.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateAcknOfLevelTransition"
- Guid="f399e390-e983-4e3b-a691-a05e2a4bb88c"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="198ac519-ba1e-4f68-9b95-084bc9cf101f"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ba2a32b9-66e0-4a33-b5d6-87bba0c5428f"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="b5820803-bc6b-45d2-b6aa-fa0b15afce1f"
->
-<PreConditions>
-<PreCondition
- Guid="6a4fd049-158a-4039-8e2a-027ab6f02bba"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="8c9b78dd-2877-4482-9ba6-b96e31df93b1"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="3a3d60f0-d664-448a-bd30-e6b79bf3391a"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="ce17c187-bd12-45d2-a203-95871bcd149c"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="6de79a40-cca1-482a-aebd-e688e8041f8e"
->In_AcknOfLevelTransition.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="fae57898-d07f-4261-8ea0-0608bb83b417"
->In_AcknOfLevelTransition.InputInformation.DriverAnswered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -8034,6 +7974,11 @@ In_OverrideRequest.GoToAvailable()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5280bc2f-5389-4e5a-9fd2-719c4b9120aa"
 >
+</ReqRef><ReqRef
+ Id="bb2f7a44-df6e-4902-a634-5c2e49678710"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46673c64-9b53-48fc-a7ea-b1b70116a246"
+>
 </ReqRef><Comment>Updates the requests according to the mode change</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -8065,7 +8010,10 @@ In_TrainRunningNumber.TrackMode()</Action><Action
 >In_Start.TrackMode()</Action><Action
  Guid="10c97c94-5e60-4899-8e8c-9f9176d5f30e"
 ><Comment></Comment>
-In_AcknOfFixedTextInformation.TrackMode()</Action></Actions>
+In_AcknOfFixedTextInformation.TrackMode()</Action><Action
+ Guid="f1e0a4a1-8f3e-4eba-aa8c-f8afa797b9d8"
+><Comment></Comment>
+In_AcknOfLevelTransition.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

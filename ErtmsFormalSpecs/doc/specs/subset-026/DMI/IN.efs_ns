@@ -6949,7 +6949,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="87f1713d-80d7-44ec-8ce5-2f5b7704203d"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Allow to ask the driver to acknowledge a change of level</Comment>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -6984,6 +6984,123 @@ THIS.InputInformation.Disable()</Action></Actions>
 >ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="cc0d9b62-eebc-4f3b-b6bc-2cd95a919a3b"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="9a8706b8-6e61-43ea-af53-05fd0d9cde8d"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="dd7970e4-6162-49d8-af31-3559db39c35f"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="4dfc4c81-b5da-4c77-bf59-977850e79762"
+><Comment></Comment>
+
+
+
+THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="d5d06834-8808-4323-b73c-e5d31bc28033"
+>
+<Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="a2be06e8-7898-44a3-be8e-7f6da965939c"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="2f21510c-fdfa-4b58-b8a5-9d3b7d6b4467"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="e9bfcd4e-6186-48b9-aa04-70866de97353"
+><Comment></Comment>
+NOT LevelTransitionAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="740f113c-67a5-49f1-b1f3-fadcbdac5659"
+><Comment></Comment>
+
+
+
+THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="f399e390-e983-4e3b-a691-a05e2a4bb88c"
+>
+<Comment>Allows to initiate the request</Comment>
+<Parameters>
+<Parameter
+ Type="Level"
+ Name="Level"
+ Guid="a2575882-c585-47b2-b62d-129a8a319646"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="3a3d60f0-d664-448a-bd30-e6b79bf3391a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="ce17c187-bd12-45d2-a203-95871bcd149c"
+>
+<PreConditions>
+<PreCondition
+ Guid="fb79d104-6c9d-4f91-9752-c208d1827a89"
+>LevelTransitionAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6de79a40-cca1-482a-aebd-e688e8041f8e"
+>THIS.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
+ Guid="fae57898-d07f-4261-8ea0-0608bb83b417"
+>THIS.InputInformation.DriverAnswered &lt;- False</Action><Action
+ Guid="3220b412-5ce9-4c6d-8f85-308f2c041e4b"
+>THIS.Level &lt;- Level</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="InputInformation"
@@ -6994,6 +7111,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="InputInformation"
  Guid="9e9e2c46-5687-49eb-8699-b0dfff16af45"
 >
+<Comment>Provides information about the request status</Comment>
 </StructureElement><StructureElement
  TypeName="ProcedureInSM"
  Default=""
@@ -7002,6 +7120,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="ProcedureIn"
  Guid="4efa4a84-93fe-4ead-b339-18a451eec8bf"
 >
+<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.Level"
  Default=""
@@ -14725,6 +14844,29 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment>Identifies the modes where the function is available</Comment>
 <Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.RV ]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LevelTransitionAvailable"
+ Guid="39f2a607-26e0-4534-9da1-79bc27f131ac"
+>
+<ReqRef
+ Id="bb2f7a44-df6e-4902-a634-5c2e49678710"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f0552a1-3fc1-41c7-b39b-586894e963fe"
+>
+</ReqRef><Comment>Indicates whether the level can be proposed to the driver</Comment>
+<Cases>
+<Case
+ Name="Enumerate the modes where available"
+ Guid="acaec852-d157-40a0-8b06-4aa275d8e80e"
+>
+<Comment>Identifies the modes where the function is available</Comment>
+<Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.TR, Mode.SN ]</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
