@@ -16973,7 +16973,7 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c41fcb8b-eefd-454c-85c1-42f2628e46b2"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="ebeb974f-c370-41f0-acaa-5605688bdc73"
@@ -17019,7 +17019,7 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="199faf43-57b9-4033-9c77-3b586d01dacc"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="76bf169f-a9d8-4f4a-a03c-ad623dc83692"
@@ -17191,7 +17191,7 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e5f1fe5a-b110-4499-97f7-95fb0aa6eae8"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="7ccdc34d-82f6-4492-a886-37294990f323"
@@ -17995,7 +17995,6 @@ Kernel.PowerOn &lt;- True</Action></Actions>
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
  Guid="c68bc409-5d46-48c4-9967-a6ee7f2f7aa1"
 ><Comment></Comment>
-
 Kernel.PowerOn &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
