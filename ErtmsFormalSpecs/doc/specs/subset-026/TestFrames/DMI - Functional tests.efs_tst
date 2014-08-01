@@ -20191,13 +20191,13 @@ Kernel.PowerOn &lt;- True</Action><Action
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="IN Selection of language"
- Guid="fb484b69-a3dd-4215-8361-6df0e84a9308"
+ Name="IN SelectionOfLanguage"
+ Guid="defdecb5-c9ff-441a-936d-9e22597eec31"
 >
 <ReqRef
  Id="dfcc8430-5256-4624-9c6a-7c5884b42bdb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="abc91ae0-35a1-4842-8139-b3908963b7ce"
+ Guid="20f7096c-97fb-458f-8b0b-b7e9a4382fbd"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -20209,24 +20209,40 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="61c57d05-f346-4980-b587-5989309e0bb5"
+ Guid="12082ade-74ed-4059-a1f1-a964c3778ab9"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="accc29ed-7dd4-49ad-bb04-3bb60433e137"
+ Guid="9fb1a371-57de-4582-ac8c-9861910edfde"
 >
 <Actions>
 <Action
- Guid="475e7fd9-7ffd-4cf2-b4ab-532834c58bcd"
+ Guid="09f2905b-ed7d-4c91-a6ca-31dec9efa394"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="6e75899f-811a-491f-b1bc-a5620f986a89"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="2bb818cd-9770-4bc0-a7d2-e04f15cffa52"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="2147ff22-6785-4cd6-94c1-047dc02a4d6b"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="860a06c4-000b-47c3-a9aa-012153c779cb"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="5a94aa59-2a9d-4b8d-b216-cd7d00dbc740"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="b43ec165-d476-421e-b084-0a37d4022f5d"
+>
+<Actions>
+<Action
+ Guid="f94677f2-53e6-4e7d-996c-87dc42722004"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="7ef6ba68-5385-4539-8b53-8dc7677b9af8"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20235,24 +20251,43 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="a199abdd-a982-42d9-96af-70577dc4a747"
+ Guid="ecd77c66-af99-4bba-b1b3-361575ea7951"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7789ef4e-1cf3-4250-8524-d8d3e753bd1c"
+ Guid="50ea8d2c-f2e5-4d87-8ee9-2f4000c5fc80"
 >
 <Actions>
 <Action
- Guid="08239e55-ab49-49ce-9908-1fc8860bc228"
+ Guid="853bd46c-74af-4fd5-90f8-7327deac4d9b"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="3255885f-614d-46c7-aea0-705643571410"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="c36333b3-1454-4e26-a9c8-a2f7ca0fa4db"
+><Comment></Comment>
+
+Kernel.PowerOn &lt;- True</Action><Action
+ Guid="1fccad45-26de-4c33-a3c6-6bb3290cf4e9"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="62f93534-0089-4b96-b1f3-575d2bee2827"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="7b5277ec-7a09-4b41-beca-58185343018a"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a04f911a-0000-4ade-941a-6b243e44c753"
+>
+<Actions>
+<Action
+ Guid="86892b1b-a11d-4552-b517-a9821951191c"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f10980f1-6537-433d-a867-8fb08c861532"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20261,22 +20296,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="4f10dc26-6397-4341-a85c-1f385c93a667"
+ Guid="7fc108e4-a8b9-4fa7-9bf0-fad59446b59c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2b62eed9-f992-4a6d-8014-5497377f7525"
+ Guid="99fd538d-5b5b-4725-9663-d78e380788e3"
 >
 <Actions>
 <Action
- Guid="11678b33-4e87-4272-be67-601c47b88f6d"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="1877fecd-c6d9-43a6-b6eb-530e5959ffb1"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="7584d5e7-4a83-45c4-9e66-f880224ea50e"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c9e40957-badf-4961-a503-6cf1fae60a5e"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="bb66e9d9-a297-4082-aaa7-8dd771450c89"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="1d774400-2145-4364-a860-3727b64aab5e"
+>
+<Actions>
+<Action
+ Guid="ff158140-6fce-4786-b8ad-430c8d3c6513"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f4917a5a-4a1a-43af-98ef-532ea89e9348"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20285,24 +20337,41 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="398cdbff-e435-487e-8d61-6e00e074ffe0"
+ Guid="cf0fe2a1-1412-4328-a564-aa74e4267105"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="02304218-83a1-4fa4-8e04-ae65a9b72597"
+ Guid="b05c4084-ed4b-4bba-814b-a3138d7132c2"
 >
 <Actions>
 <Action
- Guid="4ea5cbd4-9f13-486d-aeb0-53240f29a352"
+ Guid="6a142b5a-b952-460e-aaec-45aae581699a"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="640591f9-345d-44d7-a339-2895bb664cc8"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="a560f262-652a-4f17-ae8d-b4132251acd6"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="12b240f2-cb3c-4419-bcc4-6cd05bae1043"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="97729226-377d-40de-8c99-e1185849e64e"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="60a2ebe3-77fd-4304-a391-c0b810868e82"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="b0b549a1-33d8-4f87-8685-b43ca44a83a1"
+>
+<Actions>
+<Action
+ Guid="dbc9d421-f48a-4237-9746-478c3f96ef12"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="59238eb5-bbf9-4e8a-a4ef-6af2906c0163"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20311,24 +20380,41 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="1223862a-22cc-4f19-a474-e98f74f67651"
+ Guid="595a6165-6f97-4b33-aca7-41e0c28e8d68"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7b02171b-85cb-4d23-912a-c92039c8980a"
+ Guid="8676d4c8-e48f-43fd-956f-cfe4eae2b07c"
 >
 <Actions>
 <Action
- Guid="f23d40ff-5eb1-488b-bc60-3fee5d65813c"
+ Guid="6d86d64e-383f-4937-bd52-30205adb232c"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="450ec189-1513-4d6e-862c-8858d4a8318f"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="1866f745-e878-4b4a-84b9-31802a3e55ff"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="5e128ac2-f54b-4f2b-ae00-0dcff5bd7018"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="383e741c-c3e6-47d2-8881-6274c5901d52"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="fb7b15df-7ffb-436b-8e03-da32a7c4dc7e"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="84283212-8bc9-4b92-a8bd-346d1c81840a"
+>
+<Actions>
+<Action
+ Guid="51325312-cb6b-4ae7-b80d-43e24188fc13"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="8d89c5df-d7e8-45d5-b64c-cad0e604e886"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20337,22 +20423,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="b406d935-0d11-4d3e-934f-5669c2541fd8"
+ Guid="67e1e83b-6e70-4a81-b292-7d7c14a69c34"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="f8e50ec0-54b7-49f7-9b6a-495995d3b7ac"
+ Guid="9fd59a20-88eb-4282-bb1b-3d62d8d4b6bf"
 >
 <Actions>
 <Action
- Guid="743c3acf-02a9-44f9-8b2f-083f5fe499c7"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="85060b4d-3a20-43f4-a2d8-931647fba9bc"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="613c3f99-e418-4b2f-8883-5495355fd906"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="6eacc004-b0ad-493a-8c58-11f9b2c18199"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="af1317f0-5c0f-478e-9024-46b6edaeb13f"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="52985180-982f-4ac2-8089-14b96ec7c433"
+>
+<Actions>
+<Action
+ Guid="58801f8f-d531-46f3-9d81-1324edeadf1e"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1ffcb629-1df0-4e24-99e6-01358d4c37ef"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20361,22 +20464,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="0f395f17-a959-46a7-9a93-1b9510fa419f"
+ Guid="9d5dc3f8-c2da-47b5-beda-f827623b6eaf"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ee7b23ee-ce22-4078-9e7a-fc5323eac72a"
+ Guid="bce569b9-481e-4896-91d8-74114fefbd78"
 >
 <Actions>
 <Action
- Guid="fcca4d41-b0c1-48f5-8707-c58f4fbd247d"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="7d48e3da-d15e-4b0b-8b2e-e036c74bd4c3"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="cba027b0-0e9c-4846-8149-89e719a45564"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="869136ce-3dc8-437f-8e76-1753d9405ee6"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="b274f9a2-2140-4b4d-8fc4-6520965f6674"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="SubStep 2"
+ Guid="9cf727db-15dc-4611-9f23-c18242297ff2"
+>
+<Actions>
+<Action
+ Guid="54e7f34b-cf4b-480b-95f1-14e74f1b493a"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f973fc60-10e9-4701-af13-bb5f0c3a0398"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20385,22 +20505,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="5991a94d-7c10-4b07-9b7e-da45399b6f9c"
+ Guid="def6dc2e-b574-490c-9284-0064e617465a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="aec9a644-323b-4711-9a55-8c3bd37cc8bd"
+ Guid="c52eece7-ec05-4fda-bb6f-414d9f46bfb5"
 >
 <Actions>
 <Action
- Guid="7db15897-4a40-4a3f-826c-289318e07741"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="c58d8ee9-a33a-477f-9cba-df0e61e33c59"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="c72cfa02-d619-46b7-9df9-9511471c3165"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="3d3dab6b-a090-4c60-9772-d8163fbf1592"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="37e7ca56-fbb8-437c-a421-cf4ea77233ec"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="bae1ff54-487e-447d-b88a-d0e34bd8e03d"
+>
+<Actions>
+<Action
+ Guid="975c67cd-93bc-431d-b976-dd6940e42a2c"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="30dfc478-72eb-4cc3-a8dc-a04eff1e2c7b"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20409,26 +20546,43 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="73078c58-fdd4-4c8e-be0a-7a977e95973e"
+ Guid="f0a8a207-d89f-4c69-a729-d5e965affd2e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="476aad77-142e-48ae-800a-40270cb3f197"
+ Guid="c2717dd2-c84c-474a-be24-a5a0b7020feb"
 >
 <Actions>
 <Action
- Guid="23b08319-111a-48e5-a7f3-5722695963f7"
+ Guid="8eb64533-c12f-46c8-b350-33b385b89592"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="5547b2f1-c058-4a65-b2aa-57e32d6ce1b6"
+ Guid="09097142-33f3-4dfd-bcab-8d1a0cdb0063"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="9bcfac3d-544f-4cb1-9295-7610927f8b4a"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="f728cff6-f4d7-4dde-9643-0f06e1002994"
+>TIU.SleepingRequested &lt;- True</Action><Action
+ Guid="20206c3e-5965-4a19-878a-659b060b5095"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="b6c3b02d-b34c-401c-8770-618f82015467"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="3805f27d-5266-4758-8adc-23315c90df5f"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="04de1ee3-cf15-41d0-950f-353e131eeea3"
+>
+<Actions>
+<Action
+ Guid="11e20a4a-8b34-4188-add6-8a9e345c8446"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="98a9e242-ceaa-4cee-8fa1-2415ceb209c9"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20437,24 +20591,41 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="55a92231-6a86-4fab-8f0f-6867583608ce"
+ Guid="8a24c558-feb6-4d52-9121-cfa89c47539d"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="70f12efc-95ac-433e-8a32-a89d8f1bbd69"
+ Guid="51655c02-715c-4dd9-9b8a-02b850fbf07a"
 >
 <Actions>
 <Action
- Guid="71aa7115-cdec-4ac7-995a-f7b9c7ec7bc0"
+ Guid="1c71fce8-b1a2-4e3f-87ac-36eb834e8a02"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="31a0d4df-0b75-460b-8b26-8e9fc2f21240"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="af85d458-0791-4d33-90e6-d506743bfa72"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="37fabb2b-c9c8-450e-91eb-043c6e0b0d89"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="5c827a85-0a8a-44df-9aa9-88ce0495c8dd"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="40457ec7-d2f1-4ad5-b4b1-b5dd35b8095c"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="b8691be4-ca02-4377-ac18-9a09b7e3aa2f"
+>
+<Actions>
+<Action
+ Guid="afb10564-0de6-4a31-af66-70e0192ed204"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4a237c00-640a-4c2b-a8d4-2270183e5373"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20463,24 +20634,41 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="7f339bad-b76c-4582-bcd0-50171c112e00"
+ Guid="016d9663-ea13-42e1-bc49-f56d6b994c4c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="f81e21b4-8a17-4c9d-bdda-83498deca12a"
+ Guid="071eedda-059e-470d-b360-6b69a66b241d"
 >
 <Actions>
 <Action
- Guid="786bd9a8-08e9-4985-956a-f2df8de7c3d7"
+ Guid="c8f25463-e010-4e51-9b64-b5c3662b2d19"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="0701ee76-0ead-4280-8b26-d97f6580d57f"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="93d5ff4e-c097-42ba-8431-c076cec790b2"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="809e7e56-c7b0-4e5c-b09b-cfae6673ee48"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="a5983497-a963-462e-a555-40772b4cd93a"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="13d7d258-56f4-45fe-9810-cf9730f3bf0f"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="5e875e84-3f55-40a9-9a1d-491dbdcd61eb"
+>
+<Actions>
+<Action
+ Guid="747bd782-0691-4283-bafd-9e483e6a3eb4"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2d45bb03-d43b-41d0-9f56-948c07f75675"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20489,22 +20677,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="3adb2090-d76c-44eb-b65c-067e7b8607b6"
+ Guid="1b1a52ad-7ffe-46bd-b4ce-60547eec9ae6"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="95c405b0-21bc-449e-9868-cc9bb0103076"
+ Guid="c3194cd3-18b2-405d-b332-949fe33e8378"
 >
 <Actions>
 <Action
- Guid="9b68250b-281c-4f2b-b108-4dbd00e043de"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="11aef675-4b54-4d60-8ab8-bdf98c81a02b"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="588ae1b5-336a-4a5d-8e62-2c7b92d0df95"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="5dd4bde3-b8b4-4096-8ac0-99a680c1dab2"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="15609d71-875b-4658-8e72-a85de82002a3"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6e76b48b-2c40-4447-89f7-7667adfb63db"
+>
+<Actions>
+<Action
+ Guid="a12f4a64-d659-4511-8a02-3fa470d62774"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e9417c78-b15b-463e-a236-1cd2a312bb3b"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20513,22 +20718,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="a7298a4c-0a2f-4c0f-ac18-24fe261904b5"
+ Guid="0a2ef00e-7507-415c-8c8a-b9e175046c79"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="34f18532-2a8e-44da-a8ef-6d93d2a224a0"
+ Guid="bb3d3d4a-63ce-424e-bdff-d3a2b5069517"
 >
 <Actions>
 <Action
- Guid="40c7c5b7-a742-4380-8d3a-b33d4635134e"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="5cb857b1-254c-41cb-afa0-17819822a977"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="0830bf85-dd6f-4604-955f-c365c2fac169"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="6bbb6e6d-d6f3-4dd4-bc6c-a810c9590cdc"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="d2694e9b-40e1-4328-abc2-ae4fcbc3c07e"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="69fa412b-310c-46d7-96d7-4e885edd6739"
+>
+<Actions>
+<Action
+ Guid="ece2c7f3-4087-4873-b19e-518f2321b18d"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2c952420-2959-4225-a1d3-75503980b450"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20537,22 +20759,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="69de70e5-8c3c-457b-95de-1ce988fa0fa1"
+ Guid="29926522-a42a-4f42-a3ec-8e98941f3c01"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6067eddf-d1d0-4b54-8d00-4753cc17378d"
+ Guid="29ec34e1-7b76-4d7f-9f67-ca69c03fb422"
 >
 <Actions>
 <Action
- Guid="99bc62d4-6b41-40b9-b487-dfe46b51f6e3"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="4c9e10b5-1671-4e39-9fba-4dd863f42cb1"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="25b1d0c6-4d65-4238-975e-cf5e1223fc16"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="6a0843ba-cd29-4456-b691-383366a3c315"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.NotApplicable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="9e814294-38e3-49bd-885c-ad64d0e0fc3c"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="32d728c3-72db-4f2a-b377-885f7a5d190c"
+>
+<Actions>
+<Action
+ Guid="15057a6b-fd1b-49b6-9dc6-dde48b0e1ddc"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="143577d0-fc9e-417f-ad32-4deea8fd6c98"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20561,22 +20800,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="0df8867c-c25f-43a1-8196-a3ba2b2f5d0d"
+ Guid="f02f5204-a7b8-4039-a176-95c69f382d3d"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6130d7c4-b6ff-488d-a080-b8205b7d8f50"
+ Guid="cc92191a-d35c-4b9d-82a0-b85b4501b285"
 >
 <Actions>
 <Action
- Guid="fe2a8d7e-449c-42b8-a877-86fee919d29b"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="fce7d840-1895-45a2-b41b-78c4f61817d7"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="31103df4-174e-4ec6-9cc7-3b561b4dc015"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="78fabe12-5fc7-4705-ad74-63df6d5c27b7"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.NotApplicable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="05c0941b-6e63-4fb0-bd28-cbb8adb971a8"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="91f3cd93-6405-4b8f-b013-719d9d527ab1"
+>
+<Actions>
+<Action
+ Guid="a6be1b93-e855-4aed-8894-a13718e85433"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="93239cfb-37e6-4dff-a1aa-6672da5dab65"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20585,26 +20841,43 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="651c2b27-76d8-4da4-b436-7639ea4f4f9f"
+ Guid="e6de1bb6-4752-419d-8b78-767fd91e0371"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ea487ce4-155c-4aa9-b998-5717460a152b"
+ Guid="ca9efb16-cc81-41db-b004-796b90b576f7"
 >
 <Actions>
 <Action
- Guid="755b8ab3-5c84-47ec-9359-3c264cd726bf"
+ Guid="01895364-287e-483d-89d9-2e7dfa2895d6"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="4a3fd6b0-399b-474c-9718-ba3640b9819e"
+ Guid="b8d5dca9-c5c7-4612-b273-b8cdc95b9648"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="5c653245-d216-4fed-86dd-e05fb7c67c57"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="783c8968-9660-4897-881a-54db21f9fb97"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="1468fa3b-03b5-4477-b2bc-b18b26133aac"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="52974187-bd35-4d8d-8b06-12fbbb2fc763"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="834554ec-bf6e-40cd-bbae-f55dbb599566"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="75463ffe-f542-4d0d-84a2-e9a37b24c111"
+>
+<Actions>
+<Action
+ Guid="286a6ec9-b60d-4a84-a82b-9fe67e8d6e7a"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2f88d946-518e-425a-8e11-34ece05d58dc"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -20613,22 +20886,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="364997d5-c1da-4f2c-a585-0535f4764def"
+ Guid="14ac93c7-647e-44f4-9f23-ab3a648ee7d3"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e8840a51-d2e9-4260-b46e-2f01de695b3b"
+ Guid="02ca823d-139c-4502-9654-44f70b722716"
 >
 <Actions>
 <Action
- Guid="c54dcba2-1e0f-4204-b31c-ac37bacfadf7"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="94a253ea-819e-40d1-8543-bc41890de864"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="8f5d0d1d-94ee-4f54-abb9-403cf487b5a7"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="74fc4161-38e7-4451-83f8-ea9df4dd9fb5"
->DMI.MasterDMI().In_SelectionOfLanguage.ProcedureIn in DMI.IN.SelectionOfLanguage.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="23b953e2-ee1d-4f62-90b0-9f084f96e693"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="61eda2b2-2bcb-4429-b423-86c9c69c6229"
+>
+<Actions>
+<Action
+ Guid="bfc9f642-4553-4975-848b-c3901e6b9239"
+>DMI.MasterDMI().In_SelectionOfLanguage.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="561bff13-d617-49bd-9947-de47df934396"
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

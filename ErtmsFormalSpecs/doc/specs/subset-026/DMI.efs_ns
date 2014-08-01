@@ -437,68 +437,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateSelectionOfLanguageRequest"
- Guid="f7a1687c-e1b7-42b0-9f69-72e402c52fec"
->
-<Comment></Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="a8f1bce5-865d-47d8-a93c-00d7329a98e0"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cde76702-71f8-41d3-808e-705dac3011d6"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="7d901e89-b4e8-44b2-a8fd-61b1797d7f80"
->
-<PreConditions>
-<PreCondition
- Guid="3ed8cf70-434c-414f-ae04-f26dd5db9796"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="30b64d14-5ad1-4f15-a090-e0674efa3012"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="5102ab6e-9f8c-45fa-9a67-6cad04083710"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="b9121106-b2cd-4722-800c-6d26f76fb054"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="1084ab4d-9958-41bf-83e4-c4ee16c6bbfe"
->In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="02d4b189-7aec-4b46-ad2b-8a52b1055fac"
->In_SelectionOfLanguage.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="InitiateSRModeSpeedLimitAndDistanceRequest"
  Guid="c8f2ac8e-98c4-4dc2-8318-d45fc221e057"
 >
@@ -3687,8 +3625,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.NotAvailable</Action><Action
  Guid="9887fd66-fe13-4284-80f0-59e788bf8648"
 >Out_ReversingAllowed.ProcedureOut &lt;- Out_ReversingAllowed.ProcedureOut.NotAvailable</Action><Action
- Guid="b8841c17-1c55-4f2b-a3c8-e81f16d26ee3"
->In_SelectionOfLanguage.ProcedureIn &lt;- In_SelectionOfLanguage.ProcedureIn.NotAvailable</Action><Action
  Guid="356c148d-78d9-4847-b5a4-1ab27b1f3c03"
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotAvailable</Action><Action
  Guid="000cc86c-1475-4caa-a971-6daa04ee174c"
@@ -3807,8 +3743,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_FixedTextInformation.ProcedureOut &lt;- Out_FixedTextInformation.ProcedureOut.Available</Action><Action
  Guid="4ec39f10-2094-44c0-bd88-b7ab4bc4b2d0"
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
- Guid="f7ba95c1-3bdb-4630-80b7-edbb4f6772a6"
->In_SelectionOfLanguage.GoToAvailable()</Action><Action
  Guid="bd146966-7a33-4367-81be-779e85acafa7"
 >Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.Available</Action><Action
  Guid="088540de-40da-4b40-92d0-08bf83fd6ca2"
@@ -3935,8 +3869,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.Available</Action><Action
  Guid="0acb9d72-3eea-444b-9508-701f1b11440c"
 >Out_BrakeIndication.ProcedureOut &lt;- Out_BrakeIndication.ProcedureOut.Available</Action><Action
- Guid="1e628181-75ba-4619-b46d-be6d823c59f6"
->In_SelectionOfLanguage.GoToAvailable()</Action><Action
  Guid="c987a44f-279e-4a3c-b39c-9dcdfc9c77c6"
 >Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.Available</Action><Action
  Guid="943c16c6-c789-4b37-9926-db1b95b89e7c"
@@ -4093,8 +4025,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
  Guid="d030abc3-62ee-46a2-9927-a1375d663c8a"
 >Out_ReversingAllowed.ProcedureOut &lt;- Out_ReversingAllowed.ProcedureOut.Available</Action><Action
- Guid="6694634a-54c7-4d25-a1d1-fa6b2d567b5f"
->In_SelectionOfLanguage.GoToAvailable()</Action><Action
  Guid="6e626be6-26e8-47a3-af79-cb9a654abdb7"
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.Available</Action><Action
  Guid="7dd1f588-7b7b-45e1-bed3-ba5c5f6d9f75"
@@ -4229,8 +4159,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
  Guid="104f59c8-42bb-49c5-94a7-85ac31c408ee"
 >Out_ReversingAllowed.ProcedureOut &lt;- Out_ReversingAllowed.ProcedureOut.Available</Action><Action
- Guid="766889a3-4cc8-429b-9359-9c9f991940f9"
->In_SelectionOfLanguage.GoToAvailable()</Action><Action
  Guid="da0fec2f-baee-4273-a838-cbe0b9952527"
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.Available</Action><Action
  Guid="d6c09d32-fe92-4fa2-aac2-4ccc828bc2e4"
@@ -4367,8 +4295,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_FixedTextInformation.ProcedureOut &lt;- Out_FixedTextInformation.ProcedureOut.Available</Action><Action
  Guid="8b68f8c9-bc0f-4aa2-a014-b9fff41e7acd"
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
- Guid="15280546-a2eb-4c8a-85df-c554db3f88a5"
->In_SelectionOfLanguage.GoToAvailable()</Action><Action
  Guid="838e2553-286a-47ed-9f72-7b37247e4e80"
 >Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.Available</Action><Action
  Guid="e703b2d8-c365-4884-9731-034d436df2c7"
@@ -4505,8 +4431,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
  Guid="600044f7-1d40-4bd3-af80-a6fd21123811"
 >Out_ReversingAllowed.ProcedureOut &lt;- Out_ReversingAllowed.ProcedureOut.Available</Action><Action
- Guid="4f9504f2-37be-48a6-aaa5-4ccff5955082"
->In_SelectionOfLanguage.GoToAvailable()</Action><Action
  Guid="d2834710-18c0-4d72-bff9-b019005e35f7"
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.Available</Action><Action
  Guid="aeb14211-80bd-4970-9037-0c99d3244570"
@@ -4621,8 +4545,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_FixedTextInformation.ProcedureOut &lt;- Out_FixedTextInformation.ProcedureOut.Available</Action><Action
  Guid="a9e4090a-81b3-4540-bbf2-8855a78033f6"
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
- Guid="ed807565-4715-4317-8339-8e1e2cbee8c8"
->In_SelectionOfLanguage.GoToAvailable()</Action><Action
  Guid="3711c652-7164-4795-bfd1-de9a604b3d61"
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.Available</Action><Action
  Guid="390dc747-867c-44a7-ae10-d87a71b75378"
@@ -4765,8 +4687,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_FixedTextInformation.ProcedureOut &lt;- Out_FixedTextInformation.ProcedureOut.Available</Action><Action
  Guid="78a2da74-f87f-41d8-8a49-c79c85bdbc4d"
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
- Guid="b36f2d84-5826-4046-ab9b-6b487753eb53"
->In_SelectionOfLanguage.GoToAvailable()</Action><Action
  Guid="980a4f80-2fd8-470c-b238-7a46bade25ee"
 >Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.Available</Action><Action
  Guid="481242ba-5e69-4eb6-ab38-96b309e053d9"
@@ -4895,8 +4815,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_FixedTextInformation.ProcedureOut &lt;- Out_FixedTextInformation.ProcedureOut.Available</Action><Action
  Guid="78477fe2-26e0-4da7-85dd-f9fb0cc41782"
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
- Guid="75cf3bad-6a57-482a-a6d6-e9d7f26af103"
->In_SelectionOfLanguage.GoToAvailable()</Action><Action
  Guid="60ad6281-a46e-45b0-82f8-f82526cce505"
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.Available</Action><Action
  Guid="7376f1ac-4be2-4e18-a1e1-fd010b88e149"
@@ -5039,8 +4957,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_FixedTextInformation.ProcedureOut &lt;- Out_FixedTextInformation.ProcedureOut.Available</Action><Action
  Guid="bb90ced5-59d4-442a-a2e1-7b8d5717c866"
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
- Guid="f6732f6f-c3a3-497d-a2e5-c2fff14a04f6"
->In_SelectionOfLanguage.GoToAvailable()</Action><Action
  Guid="5afe1a96-76e7-4239-89c2-784698d093f2"
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.Available</Action><Action
  Guid="3ccaa200-f435-4c90-ab75-cef2dee0b451"
@@ -5189,8 +5105,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.NotApplicable</Action><Action
  Guid="c165ebb8-7426-4afe-8169-ea4703f0e36c"
 >Out_ReversingAllowed.ProcedureOut &lt;- Out_ReversingAllowed.ProcedureOut.NotApplicable</Action><Action
- Guid="fb92b9db-bfa2-44d9-bb94-d89598a1f6aa"
->In_SelectionOfLanguage.ProcedureIn &lt;- In_SelectionOfLanguage.ProcedureIn.NotApplicable</Action><Action
  Guid="bf9c4608-2a3b-4a77-8198-b235d85e89ec"
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotApplicable</Action><Action
  Guid="3683f248-a1a8-48b6-a9b0-7251a9e6bf2c"
@@ -5325,8 +5239,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.NotApplicable</Action><Action
  Guid="ae949b41-958f-4e6c-9947-e3ecf697c5bc"
 >Out_ReversingAllowed.ProcedureOut &lt;- Out_ReversingAllowed.ProcedureOut.NotApplicable</Action><Action
- Guid="04298226-95be-4f05-8dfe-0abac4ca0a14"
->In_SelectionOfLanguage.ProcedureIn &lt;- In_SelectionOfLanguage.ProcedureIn.NotApplicable</Action><Action
  Guid="a3da90a0-3e28-4578-b4a8-b1187db07b1d"
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotApplicable</Action><Action
  Guid="e1b79d49-2ac6-40b6-8efe-689a744795f1"
@@ -5437,8 +5349,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Available</Action><Action
  Guid="a0558895-84bf-4da1-9719-f740a4299744"
 >Out_BrakeIndication.ProcedureOut &lt;- Out_BrakeIndication.ProcedureOut.Available</Action><Action
- Guid="57aac634-2cb7-4bb7-8ba3-070e238c2c6d"
->In_SelectionOfLanguage.GoToAvailable()</Action><Action
  Guid="35e899d7-e6ef-4890-8959-4afc692083fb"
 >Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.Available</Action><Action
  Guid="0e30ce4f-b211-4843-811e-4805af8a600c"
@@ -5581,8 +5491,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_FixedTextInformation.ProcedureOut &lt;- Out_FixedTextInformation.ProcedureOut.Available</Action><Action
  Guid="b12e2cec-53bb-41e6-b666-9ca08a4ea3cd"
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
- Guid="2bdceeed-fe58-4266-bb68-d4589ff0a6c4"
->In_SelectionOfLanguage.GoToAvailable()</Action><Action
  Guid="e49da7b4-dbd3-4de0-96a7-26c679f10c27"
 >Out_TracksideMalfunction.ProcedureOut &lt;- Out_TracksideMalfunction.ProcedureOut.Available</Action><Action
  Guid="8f7d82ef-3f6d-402e-ba53-dc6a48bbaff5"
@@ -5815,6 +5723,11 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="22e73e8d-fbd2-48c3-a308-97f49773e9b3"
 >
+</ReqRef><ReqRef
+ Id="dfcc8430-5256-4624-9c6a-7c5884b42bdb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cb6cc166-8d95-458b-8d84-e2b07d6380b5"
+>
 </ReqRef><Comment>Updates the requests according to the mode change</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -5907,7 +5820,9 @@ In_Isolation.TrackMode()</Action><Action
 ><Comment></Comment>
 In_OverrideRequest.TrackMode()</Action><Action
  Guid="72db7a1c-51f5-4a68-9854-2620811006f9"
->In_RBCContactInformation.TrackMode()</Action></Actions>
+>In_RBCContactInformation.TrackMode()</Action><Action
+ Guid="82cd3c7d-24b4-4b8e-b9bc-26cf2d5d8b6e"
+>In_SelectionOfLanguage.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
