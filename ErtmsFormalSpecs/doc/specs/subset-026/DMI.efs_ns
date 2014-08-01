@@ -376,67 +376,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateTrackAdhesionFactorRequest"
- Guid="66544aa0-74c5-4c66-8154-f39bd3546f38"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="dee4166c-1b15-45e6-bcfc-e5c9c0cccc77"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="22fb365d-b293-45cd-a02b-9b6cd7dfcabc"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="6e2f5c43-ef49-443b-a7f4-b246992c12b7"
->
-<PreConditions>
-<PreCondition
- Guid="f0aca5d7-dfa6-4f80-ac2e-67b470257d3f"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="577281a4-bb06-40a8-b877-2221089639f2"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="d7d35d33-be23-4743-9e75-fb950c485ad2"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="fbe725b6-5b42-437b-9234-8f70911b4db8"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="77a2136b-24bc-4e44-9bbb-7fba60e2a8bf"
->In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="a16b3f87-945e-4818-9f25-fcb4832a90ad"
->In_TrackAdhesionFactor.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="InitiateTrackAheadFreeRequest"
  Guid="4d113d3b-4900-4d5d-afc6-01f004c0d4ed"
 >
@@ -3467,8 +3406,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.NotAvailable</Action><Action
  Guid="34a723c5-0b15-4d9f-9594-3e2c90e530fc"
 >Out_CurrentErtmsEtcsLevel.ProcedureOut &lt;- Out_CurrentErtmsEtcsLevel.ProcedureOut.NotAvailable</Action><Action
- Guid="92223234-e05f-4abc-bb78-48cf3284fce0"
->In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotAvailable</Action><Action
  Guid="95552dcc-d23b-4076-819d-4eb536da90b1"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.NotAvailable</Action><Action
  Guid="eab17d12-f21f-425b-8d36-2842272f2510"
@@ -3597,8 +3534,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="189e8054-6d26-4cbd-bd35-86299309cb4b"
 >Out_CurrentErtmsEtcsLevel.ProcedureOut &lt;- Out_CurrentErtmsEtcsLevel.ProcedureOut.Available</Action><Action
- Guid="f4e43dc2-d8ab-406e-ac8c-d307f9276218"
->In_TrackAdhesionFactor.GoToAvailable()</Action><Action
  Guid="b104dcd8-9c62-4617-bd57-424fdfe33390"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
  Guid="443ba3af-f358-4f73-9995-100e3e00eec9"
@@ -3753,8 +3688,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
  Guid="167894bd-b60f-4d7b-a2a2-90657aded62e"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.NotAvailable</Action><Action
- Guid="6fb13b43-e01c-4e3d-aea6-4d95b2166980"
->In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotAvailable</Action><Action
  Guid="46e4d9a7-1aed-49d0-825d-bc3028add488"
 >In_TrainIntegrity.ProcedureIn &lt;- In_TrainIntegrity.ProcedureIn.NotAvailable</Action><Action
  Guid="8798a953-b0de-4a45-a7fb-8c75193976a3"
@@ -3867,8 +3800,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="3ed031e8-2ed2-4859-b483-3a9b6ea57d56"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
- Guid="beb93985-f687-4b84-a7ef-02db44316f40"
->In_TrackAdhesionFactor.GoToAvailable()</Action><Action
  Guid="a6a29c28-c07c-4073-89af-37e37835b413"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
  Guid="399dc6ee-ecc2-431d-9ac4-511e2029f874"
@@ -3995,8 +3926,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="bf3e0a0d-a2fa-48fc-a59a-7356109dfb29"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
- Guid="c05d01d4-2522-4316-a6c7-c9420ef41822"
->In_TrackAdhesionFactor.GoToAvailable()</Action><Action
  Guid="f799029d-7fea-43e5-888d-83a52a5194bb"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
  Guid="8da4c5bf-0133-468c-9a67-13fbce341222"
@@ -4127,8 +4056,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="66ade492-df78-4e82-9fed-33abac896efa"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
- Guid="8951845e-ab13-488c-89d8-9ab34df3bda1"
->In_TrackAdhesionFactor.GoToAvailable()</Action><Action
  Guid="15bbe280-d1e2-4fd0-be1d-099cf2121e4d"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
  Guid="a68a0505-1d41-4e48-9e74-dacf19869c09"
@@ -4257,8 +4184,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="c7055034-77a9-4d79-9a84-ed1c1550850d"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
- Guid="ed62a797-7c72-480b-967e-70f13442116b"
->In_TrackAdhesionFactor.GoToAvailable()</Action><Action
  Guid="5e4f9ce3-8bfa-4768-860c-cd4a6e3d8632"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
  Guid="1dbeae11-ab2f-4559-8d9e-6539a898653d"
@@ -4387,8 +4312,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="9b2f2f86-6e95-4942-8f90-1f20726acf6b"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
- Guid="79392f51-91c5-4ad5-abe6-a98e9791dcc8"
->In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotAvailable</Action><Action
  Guid="1c7c88cb-f5fa-4c38-82c2-df5b7438e813"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
  Guid="a69b36cb-f1e3-49d9-a221-f3f59ab239cc"
@@ -4519,8 +4442,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="1ff7fcfb-3e32-48a9-9eb4-639eb9386f13"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
- Guid="fb124d9e-6a7b-4644-8778-848579ad9e52"
->In_TrackAdhesionFactor.GoToAvailable()</Action><Action
  Guid="43bd43ee-9699-45ad-8c4c-b43d56ce9422"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
  Guid="6edf1f5a-a250-45bb-a705-49a279eeb487"
@@ -4679,8 +4600,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Available</Action><Action
  Guid="f2e79e5b-fd9b-4fd0-aef6-bc34815840f2"
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
- Guid="ae99ff31-0cd5-421d-9690-715780d12343"
->In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotAvailable</Action><Action
  Guid="e4da1180-79bc-4af5-9f70-161ec6f84e8a"
 >In_TrainIntegrity.ProcedureIn &lt;- In_TrainIntegrity.ProcedureIn.NotAvailable</Action><Action
  Guid="dd96435c-7450-488d-a184-094f11457797"
@@ -4827,8 +4746,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_BrakeReason.ProcedureOut &lt;- Out_BrakeReason.ProcedureOut.Available</Action><Action
  Guid="5db1f5a6-3f35-435f-8dd1-a400f2995dcd"
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
- Guid="c0808a3e-0dfe-4c56-a979-f0b161b11a21"
->In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotAvailable</Action><Action
  Guid="c42cc015-f332-4132-ac68-8bd19ebdfe08"
 >Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="7a2d3f7a-2b0c-47a7-8f4f-5386caa536e1"
@@ -4905,8 +4822,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.NotApplicable</Action><Action
  Guid="8bc4d7af-6f52-4f57-84df-6447fb398745"
 >Out_CurrentErtmsEtcsLevel.ProcedureOut &lt;- Out_CurrentErtmsEtcsLevel.ProcedureOut.NotApplicable</Action><Action
- Guid="26c1df63-3fcc-4323-a95c-5bfb51a4a5aa"
->In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotApplicable</Action><Action
  Guid="e28d90ea-b185-4539-804a-d998bf9af800"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.NotApplicable</Action><Action
  Guid="fbd8a26f-98f1-454f-9613-2d01c976eddd"
@@ -5035,8 +4950,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.NotApplicable</Action><Action
  Guid="898f62a9-ad51-452d-9789-a608701aba6e"
 >Out_CurrentErtmsEtcsLevel.ProcedureOut &lt;- Out_CurrentErtmsEtcsLevel.ProcedureOut.NotApplicable</Action><Action
- Guid="f1355a12-c600-4adf-a4d6-1ccb87afde4c"
->In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotApplicable</Action><Action
  Guid="0e9ce2e2-3b86-47dd-bd97-0304079e93d3"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.NotApplicable</Action><Action
  Guid="15d82653-dfd9-4a59-ba95-91526b94d15c"
@@ -5165,8 +5078,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="48393064-b7e8-4405-a8c0-2aa9d559b4b6"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
- Guid="6ef0fbf3-57ec-4002-a8b6-3ec6360f4c4e"
->In_TrackAdhesionFactor.GoToAvailable()</Action><Action
  Guid="1b4bd290-480a-4d4f-b972-2be121ca0f53"
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
  Guid="153cf7fb-545c-498f-8a98-42eb9fbaf4fe"
@@ -5325,8 +5236,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_BrakeReason.ProcedureOut &lt;- Out_BrakeReason.ProcedureOut.Available</Action><Action
  Guid="a8e56e09-3f47-4041-970c-a55f9a79c6fe"
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
- Guid="808cc9bd-d7d6-4ea4-adbc-74da2a9a2c52"
->In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotAvailable</Action><Action
  Guid="019bd830-b060-4fe9-8c7a-6c896eaf8647"
 >In_TrainIntegrity.ProcedureIn &lt;- In_TrainIntegrity.ProcedureIn.NotAvailable</Action><Action
  Guid="aaf56534-0c41-4443-bdfe-31df57a6b359"
@@ -5556,6 +5465,11 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9f1bf643-1b81-4c82-b9e6-1c539471ab47"
 >
+</ReqRef><ReqRef
+ Id="dc327dea-a3eb-4081-ac8b-06d8c12f1ea7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20864666-d6a4-4480-8370-660b31da38da"
+>
 </ReqRef><Comment>Updates the requests according to the mode change</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -5654,7 +5568,9 @@ In_OverrideRequest.TrackMode()</Action><Action
  Guid="8f025d47-834e-43f9-9c57-4c108a9548b3"
 >In_ShuntingRequest.TrackMode()</Action><Action
  Guid="ace861ab-d2c7-4aea-8ac7-c194d87e2fbf"
->In_SRModeSpeedLimitAndDistance.TrackMode()</Action></Actions>
+>In_SRModeSpeedLimitAndDistance.TrackMode()</Action><Action
+ Guid="c64ebd35-8f33-4964-9fba-5329d6bf5f90"
+>In_TrackAdhesionFactor.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

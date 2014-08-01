@@ -23332,13 +23332,13 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="IN Track adhesion factor"
- Guid="dc3f1380-1546-4061-93ab-b9c2fa07a198"
+ Name="IN TrackAdhesionFactor"
+ Guid="50f1739d-1b8d-4a94-831a-a986a6e29177"
 >
 <ReqRef
  Id="dc327dea-a3eb-4081-ac8b-06d8c12f1ea7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a0935aed-9995-49ad-ac3c-aa2ee150494c"
+ Guid="ed762a68-3a98-4b7e-b3e9-15744e4d0242"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -23350,24 +23350,40 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="28fe0a7a-ab27-4d4d-951b-74c75cce5c75"
+ Guid="3332a6d1-423f-4563-8586-a3d21d319f1f"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="39ca6fa9-4c47-4cf7-be84-6d716dc2292f"
+ Guid="8523fc51-8312-4974-8dec-2a9e1e24e55b"
 >
 <Actions>
 <Action
- Guid="c9ed6770-07ee-4f06-a5bf-4fb049e4fc45"
+ Guid="778d537a-a160-43c4-8a97-41d688ac1a82"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="0f463139-be21-477f-8b4e-2e8e944f0689"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="1ee4b4ff-111b-4c10-aee2-e900be70b3e0"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="e4a7f6a4-eeb0-4c29-a9a8-d400138da2f9"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="4c35fdde-4aef-4cca-93c2-24b72261f520"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="828898b7-5809-4cd2-b125-7ed456a6555d"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="09b8676e-94d3-46a5-a88a-b2ba3c2cd791"
+>
+<Actions>
+<Action
+ Guid="79fa4c00-dda3-4074-90a1-02d2c545ffd7"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="42febec1-2002-445b-be78-0065e63e2362"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23376,24 +23392,43 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="6deac98b-d1b5-4e2e-8ee4-5ec3adb1fd1d"
+ Guid="fc4348e6-1c0a-402c-872d-003b3588c823"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="530f4826-4388-4f8c-839a-89f9c01e2663"
+ Guid="6e4c3bb1-5c34-42f8-a56f-6eda4c3713ed"
 >
 <Actions>
 <Action
- Guid="3360039f-f3db-4166-adcb-b94d041a3c37"
+ Guid="427365fe-8a26-4fc8-9498-705b498b1d4c"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="f33b9bfd-852f-440a-90af-be1adf1a56d9"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="c7ec782c-8eaf-4cf3-ba69-facadee5dd1c"
+><Comment></Comment>
+
+Kernel.PowerOn &lt;- True</Action><Action
+ Guid="5f84df2c-5f2c-4c7e-803d-9361af5acbcb"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8635b79a-49ec-4139-9c7d-81563067903f"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="b1bc7a80-66b7-4073-804d-4d893684607f"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a4931f99-7e1a-4d9f-b4a7-34f0d6808bba"
+>
+<Actions>
+<Action
+ Guid="01e08a68-b8c2-4f00-ade9-4de1525ba1cd"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0ea6485b-ac6a-484d-adb1-ccfd7461b633"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23402,22 +23437,39 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="8aadd5c9-c10f-4c82-98ce-af79b2903c6a"
+ Guid="6d9269e9-8b0f-4732-a6d5-4c3f418a46db"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e40910cf-7fcc-4045-975c-1169228cc5fa"
+ Guid="4d9f6717-87b4-487e-990c-31c03d6ac59e"
 >
 <Actions>
 <Action
- Guid="83a26044-107d-4510-90cf-e12adb85da2c"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="a5174fd6-c697-4291-ab6f-8cfbae030b45"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="95816a19-3258-4897-b6f8-dfa9c3ca43c2"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="a7b43341-064a-4b03-8edf-ff2eb98eaad1"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="d080fad1-9541-45a1-ae04-ae740247dfb5"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="133daf0c-e2e5-4abf-b8bb-ac381718a023"
+>
+<Actions>
+<Action
+ Guid="2657b930-911f-4311-b2ae-a853ab7bf2b9"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f3a03361-c2ca-47e8-8ca8-0b598bb21f08"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23426,24 +23478,41 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="5ab47c0f-c02b-417f-9f82-d2700175f959"
+ Guid="2011b26b-cc91-4e56-8ae3-2771df46ee9d"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d1ecaa49-666a-4946-936a-5f3b561c4216"
+ Guid="84c29500-5cf4-4978-b6ae-ad5942e7fe09"
 >
 <Actions>
 <Action
- Guid="e6911d2f-f9e8-4ef1-8daf-272b63a3c08f"
+ Guid="fea121c0-9e0e-45ba-b4bc-ede8a17b1c6a"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="90f72e39-e592-4e21-84fc-3637f2fc882a"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="c701bc02-5fee-4e8b-9be6-c197286c0cc2"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="bdab7cb4-acb7-42c1-8930-a580cefcf8f5"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="158fe4cb-dff7-4201-8d7c-7082105b001e"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="73f27d80-5378-4cdc-8afd-32b78d6d96da"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="da716ad8-8d42-407b-8f29-215cb5922a59"
+>
+<Actions>
+<Action
+ Guid="70f07a65-b80c-4153-8174-459c2798302b"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="60fb1b69-2fd8-4db2-984a-25fa386a3596"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23452,24 +23521,41 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="33804e83-f849-418a-9e5b-5e55ff6f7be6"
+ Guid="287d6d28-73ad-4721-9cc4-82599581e405"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="9dcc4ffa-7e79-4bc0-a5de-7791cdc80c3d"
+ Guid="f266c886-4827-4add-af79-eac7193e0a3b"
 >
 <Actions>
 <Action
- Guid="4ef56432-05e5-40f4-8857-dd942d4ee4c2"
+ Guid="1bb576a2-ee74-4805-8b51-f8921e32c62c"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="c58e6831-8dc6-4849-8b8b-fd5f544c8db2"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="0414a53c-337c-4bd0-a33c-ed27b1cf4517"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="1a6c9b79-4d3f-49b7-a537-8b5d548bb20c"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="dd1352b3-9aae-4a3a-8fe4-2a67dac879e5"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="0c3bf168-c447-43af-b9fa-d0d748ecf7e6"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e6f58715-84fe-4877-aa08-aa5a12033986"
+>
+<Actions>
+<Action
+ Guid="37e8ea72-bd25-47b1-85e9-0244b27aab6f"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2363dece-23fe-42fa-a680-c74a9cbe5114"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23478,22 +23564,39 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="d1de4bd4-fcd4-439d-bf46-809439dcc73e"
+ Guid="4f840ccc-320f-4667-812a-dfc2439e2963"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="1f615d10-68d8-4c08-9221-071defadfb8c"
+ Guid="092fe0c5-f45e-44b0-87de-f398187d17ea"
 >
 <Actions>
 <Action
- Guid="ba18b65f-b1e8-45c1-9e07-5bf87c1af9e1"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="cb0e5e66-b6e5-4748-a9e2-4fceecf03497"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="ed4e3c93-fde8-4d4a-b1f3-fc8ed340dbdd"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="b6b32f44-119e-4ab8-a74d-fb5d0d7f9d6d"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="df3257b7-b659-4af5-8301-4c81007c99e6"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a9ab52d5-a88e-42b9-a11b-e1ef648536fd"
+>
+<Actions>
+<Action
+ Guid="f71fa781-8f4c-437b-b5a9-fdf3acd0e801"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4e0fd161-d0f9-4be4-967c-20c14373de72"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23502,22 +23605,39 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="fb5057e8-99fd-499f-9e17-73d7fb4323cd"
+ Guid="6b078c44-4f20-428f-a554-2421b07c3eab"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="a547dd64-6a09-4f3c-8f22-e562719e0548"
+ Guid="c5f607ab-88fe-47c1-84b6-7b17bebd339a"
 >
 <Actions>
 <Action
- Guid="e6289652-9d09-40ac-aa26-b2c495835469"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="eeba5c50-4c29-4093-87ad-0cd1357ebbb8"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="5b22c535-3d94-4fa3-958c-f9082da3813f"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="35525b07-5feb-4a65-8194-3db13c633aff"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="9726e1ad-c769-43b4-a590-695f17f77c17"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="SubStep 2"
+ Guid="456a5ca5-a485-41b7-8784-186f4872f340"
+>
+<Actions>
+<Action
+ Guid="80dd802d-1d38-4d8c-8e3f-246c80fc4970"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="42b2f9d0-8f68-427b-99e0-1855ea3ea417"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23526,22 +23646,39 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="dc821d3f-2981-4870-9407-079e4fcc43b8"
+ Guid="a55b4671-4c25-4653-a5b6-21ebb67e585f"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="741ab691-7a68-4a0d-b4fb-abc0b572e64b"
+ Guid="1d2fca50-2bf7-409a-b646-fc52f8b058b0"
 >
 <Actions>
 <Action
- Guid="b9b8ff3a-8f75-4b27-b7d7-1025aba47ad0"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="f5c18daf-db59-4e85-9dab-03cfd98a46c4"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="b8676577-9081-4d76-9c02-fe2db4dc27ff"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="69b3ac12-851e-4ebd-9666-df5d755e9667"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="34af4d5e-c580-4891-8e27-c3c6b72fd901"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6367cdb5-46db-45e8-9a59-90f00627f384"
+>
+<Actions>
+<Action
+ Guid="9cc614d4-9e8d-4535-ae50-c249094078f4"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d26d498a-b055-4992-951c-e75d1e0c2885"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23550,26 +23687,43 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="7854704d-63af-40e5-931d-b284017d20fc"
+ Guid="5a2751f3-a054-4521-801f-b65b3940f92b"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7575b628-bc66-4c97-93df-95fb6870cf8d"
+ Guid="30553ef7-8ed1-41ea-b465-6d4162d534f9"
 >
 <Actions>
 <Action
- Guid="e1695351-c03b-4664-ba31-98b14b09a5e3"
+ Guid="69949dd8-a0d6-458d-b893-9add64e42cad"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="03360519-c8c3-4c45-bc87-cd0320fea495"
+ Guid="0ec850ca-56ea-4362-876b-82102bdec5c2"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="078d794f-fa19-4038-bf58-b2378dc4c88f"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="e2c51559-5ad5-4e63-a604-b3da146a2ff5"
+>TIU.SleepingRequested &lt;- True</Action><Action
+ Guid="5757a233-6b29-4285-a5f6-9942340c0e91"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="ac4c4227-b7e7-4875-93cc-b9b2df15757c"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="a8fa43be-925d-4dbe-97ab-57744ea41758"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="98f2e83a-d06d-4354-8eea-69e037b8b2b6"
+>
+<Actions>
+<Action
+ Guid="fd205faf-95df-4fe2-80e8-79a1399d18c7"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ed083e0d-8e41-4442-86e1-c791236a26a6"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23578,24 +23732,41 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="120cb2cd-f20b-4869-bd4e-412b9cf49cef"
+ Guid="62183b61-9230-46ec-96a4-7cd0089c6710"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="10489bc2-6d38-4f12-a968-46129ea58a53"
+ Guid="4d7b3ae0-66cd-4911-82d8-dfdfa5fe60b4"
 >
 <Actions>
 <Action
- Guid="e38e81c6-ae1c-4777-b8bd-51ac921e5608"
+ Guid="2440c83b-8201-4f44-a51e-4e93b1328a38"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="cbc478d5-4d06-458f-9d65-edc6401eeecd"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="658c382e-d19d-4a7b-824a-fb447be0afd2"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="9ee4b1a5-59d1-4eca-961d-09fe8679b183"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="abdc8788-4bc2-4276-bd83-de0f92763ed3"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="64bf85f3-12b4-4467-9886-2c9354026680"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="83e8b7d8-997f-47fc-b5af-164606b5f5ac"
+>
+<Actions>
+<Action
+ Guid="804eb854-d52a-493a-ade4-afc7849b84c4"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0edb517f-e88d-4909-b3ec-d4896fbe8941"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23604,24 +23775,41 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="019b6e1f-0022-495c-a3c3-8543933fe9be"
+ Guid="464649c3-5234-4832-aa1f-896e3c48d071"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2b1df00d-f655-43a4-9180-3a9f326a96a5"
+ Guid="8fb58535-2943-40b1-ba03-9084dfc37793"
 >
 <Actions>
 <Action
- Guid="1f92bdf8-3d46-4902-aa3d-7b3ac1856382"
+ Guid="3262d5d9-b6fe-4a60-b611-c86b907ffe16"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="2d28c8de-4bca-4036-8abc-307626471df4"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="b1958d49-714c-4927-842c-2573053fc68e"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="4fab112b-16ae-4845-bf7f-48955886bd3e"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="06511f47-149c-44b1-9f14-c1c2e8950fdd"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="863e9344-c615-48c1-b3f7-1810fc06ea7d"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="22f22ec0-19c2-4d3c-be20-7f2215158ea1"
+>
+<Actions>
+<Action
+ Guid="3903b990-194f-4ca7-933f-d99a29b8ae17"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c70e9098-1e36-4824-9553-3098aae4a8d7"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23630,22 +23818,39 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="a91adb3e-92bf-4e02-9d38-c81dfcee00ac"
+ Guid="9440a374-2367-4e9d-b29d-e46660c59127"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="03a04eca-4724-4144-9d78-be88a23a15ed"
+ Guid="b834b77f-ca89-4190-8f25-16f0ca9f2ab4"
 >
 <Actions>
 <Action
- Guid="fc964737-e71c-40d2-ae24-a3f188c6fc32"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="2b609076-67ca-49b1-b3a5-6a004363aa8e"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="5b73583b-de02-4397-b9eb-5203f9edfcb6"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="cadcff73-1005-49c2-b4b9-74a64ee5c088"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="a24d47a2-5f7e-4c1c-ac82-e59b4856ef57"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="594301cc-8447-4b3f-88b3-2773e19063cb"
+>
+<Actions>
+<Action
+ Guid="1c0dd3d2-7571-4f40-958e-45eef9b814c8"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3699c4db-8fa3-4dab-9ea7-e68d8c85aab5"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23654,22 +23859,39 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="f1c0a759-8824-493d-bab8-9116537db3a3"
+ Guid="20b7715c-1a35-4eec-90fe-376e5e155f77"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="51793dd1-3080-4691-b42a-d47a47d00d90"
+ Guid="792a91e6-1a30-47a1-903a-e808e9906181"
 >
 <Actions>
 <Action
- Guid="9ae1ef36-46b2-4ee6-bd2d-86a6272fd8a7"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="fe96fc4b-ed36-437f-b23b-6daa6ac74cf8"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="1af7cad2-fed1-4cbc-8cd8-371355cc462b"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="57fa7779-51b1-4f66-8b67-baa93d287d82"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="8ac297d9-f78f-4e15-b23b-53358f6eaf93"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="86712779-e069-42e0-8817-0323e808c425"
+>
+<Actions>
+<Action
+ Guid="1805eb07-5d8f-42c3-af69-42c020b99931"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7336afae-01cd-41ea-b805-5ad440bf54ac"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23678,22 +23900,39 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="e1222bb5-3197-4ac0-a0bc-82bc8606c4da"
+ Guid="aec60210-9621-491a-a630-106f727477b2"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="de73c559-4653-4e4a-a9f9-ec7fd68f963b"
+ Guid="7106f7c8-bfc1-4f1e-b72a-6da9212ce461"
 >
 <Actions>
 <Action
- Guid="d11072d6-e442-4e40-a9f3-afa9cb67ef75"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="5f9ccdb8-9665-4b10-94fe-a7ac25fd3232"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="7b653459-42a0-48b2-833f-970b1753a520"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="a3aea503-6051-4a8b-85c2-26520e97c070"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.NotApplicable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="c55270cb-36eb-4e56-8f55-ead2517e3167"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="1f25730d-b4e8-4fc5-8dd3-8ec28ff31df4"
+>
+<Actions>
+<Action
+ Guid="00920a34-01f0-49bf-bd73-8c15c10ae52e"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0a4b19ed-b4bb-4ce5-9d16-b4b6d1185118"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23702,22 +23941,39 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="3b263f98-955d-46b9-a4f2-5f3f8304f48a"
+ Guid="d1d905dc-3e20-4dda-a913-11b4f2df7f64"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="f244ae7a-b762-4965-a01e-c935916e5d7f"
+ Guid="5b96b58d-a745-4e14-8788-16ebb4b212f4"
 >
 <Actions>
 <Action
- Guid="bb17ed6b-d24c-43d1-89f8-a4bef7399f5f"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="66024303-896d-4bf3-b181-6169feb5e568"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="7b6afbd7-6799-40df-884d-58fcbc81f9f1"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="251c852b-1512-4534-939b-e073d6859347"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.NotApplicable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="87aea320-8402-477c-8a27-e3dc989b63a0"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="18c01c04-4113-4b0b-ac16-792262706ef1"
+>
+<Actions>
+<Action
+ Guid="b62a0081-ac85-41d3-80f9-bd3278d35210"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="38d033d4-5b52-4440-b162-1434c61de6fa"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23726,26 +23982,43 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="7f2d6528-2c68-4eca-9924-4d26efae599b"
+ Guid="b30a793c-0df5-46ec-b658-9ef22f3f424d"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="376b8cd7-e96a-47ad-91ba-795ac325f5ec"
+ Guid="1305a501-8627-4e63-9e41-897f875552c9"
 >
 <Actions>
 <Action
- Guid="fff36c8c-24bf-425d-bd74-cc266de32b5a"
+ Guid="b1031744-0942-44ad-891a-140390465b4e"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="22ebb22d-5442-43c8-95f1-5c7bcf5ed346"
+ Guid="7eb5266d-48ff-410c-bf10-b77c3a9ab0ac"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="0369ac3d-7d4b-42c5-a79e-cda612a00b0a"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="8c3330eb-4911-427f-a433-2ae807ff9a6b"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="c0c2e96c-c377-4c50-bbbb-dcdd494cf839"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="0cf2c6ce-ae77-4bc5-ba23-93a94b1d9d0f"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="7a46a8c8-a987-48f1-9c63-44d6768f733b"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="f2c8e8f4-526e-4a17-888a-9ae066000a81"
+>
+<Actions>
+<Action
+ Guid="2d5453f8-2db4-47a6-9a07-b6d8a83ab11b"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="91eb4249-280b-4e78-91f7-0b03b14adcdf"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -23754,22 +24027,39 @@ Kernel.PowerOn &lt;- True</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="412861e8-a0ae-4ca6-8841-d0dc741e8db6"
+ Guid="50c9481b-9899-4784-a33c-a121fa26c09a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="5cd06dc7-41cb-408c-9d37-645d4d4f94d1"
+ Guid="30ea557b-952e-4156-9cf2-f7a880fdcdb7"
 >
 <Actions>
 <Action
- Guid="26cd32dd-ede7-4a6c-ae3c-73babb254cc9"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="2f1d2693-859a-44b3-a97d-973f02cbb8cb"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="65e716c1-af51-4c47-991c-fefdec14ba35"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="0f8753b2-ca1d-4bff-a882-d196d53b5d45"
->DMI.MasterDMI().In_TrackAdhesionFactor.ProcedureIn in DMI.IN.TrackAdhesionFactor.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="43d82910-3fa2-43f2-a02e-d976ac93122d"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="f08962d8-8654-479a-9a73-f4d162f769c2"
+>
+<Actions>
+<Action
+ Guid="daea54a2-75df-4514-a9c8-67b54a95221b"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="06b20be1-7c2c-41cb-9152-cf6e8a44039c"
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
