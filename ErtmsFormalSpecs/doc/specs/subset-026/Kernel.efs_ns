@@ -2581,7 +2581,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="a0088699-6873-421d-b5f3-ebd7f80418a5"
->DMI.MasterDMI().InitiateStartRequest()</Action></Actions>
+>DMI.MasterDMI().In_Start.InitiateRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3029,7 +3029,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="6464cf64-f89b-4404-b60a-859c419b5b7c"
->DMI.MasterDMI().InitiateStartRequest()</Action><Action
+>DMI.MasterDMI().In_Start.InitiateRequest()</Action><Action
  Guid="ed50ddde-dc42-4393-841f-8655b39817ba"
 >THIS &lt;- HandleModeChange.StartOfMission.S20.StartProposed</Action></Actions>
 </RuleCondition></Conditions>
@@ -6706,7 +6706,7 @@ DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="579b0f8d-9f55-46d4-b079-98656a53e736"
->DMI.MasterDMI().InitiateStartRequest()</Action></Actions>
+>DMI.MasterDMI().In_Start.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
