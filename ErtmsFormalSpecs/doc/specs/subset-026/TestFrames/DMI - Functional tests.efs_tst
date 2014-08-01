@@ -21786,13 +21786,13 @@ Kernel.PowerOn &lt;- True</Action><Action
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="IN SR mode speed limit and distance"
- Guid="9b61ea96-81a4-40fa-ba7f-3577ccccf993"
+ Name="IN SRModeSpeedLimitAndDistance"
+ Guid="f94254df-9ac9-4f85-8efc-0e73a1e899ae"
 >
 <ReqRef
  Id="7ae1bf11-7b11-466d-abd7-fcec9dee2465"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9aaf2109-a7e7-4cf0-a078-6355f5cf204c"
+ Guid="68c3080e-ab99-4156-9cda-b1cafda89787"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -21804,24 +21804,40 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="ad7080b7-efae-4611-9cf0-c4ed2d94d1da"
+ Guid="88649f61-ca87-4f05-8d59-ff3bd5484d84"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="dafca6b6-085a-466c-b0db-78ae6e538a9d"
+ Guid="526f5512-5337-47a4-b902-6d9374299647"
 >
 <Actions>
 <Action
- Guid="eca7de0c-9eb6-4796-bb92-9c03efbb9b3e"
+ Guid="682b37c2-028c-4d7d-b476-96729a5e1d40"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="53320465-0c8c-49a2-a11b-e01900130e14"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="342fdd6d-b03a-498f-99e1-db053492ded1"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="d4ff5373-8af3-4c9b-89ed-71b370e14b77"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="ceb57237-4c92-4837-b300-6c1b03c7992f"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="7e994977-4970-425c-8742-650acf755252"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="b2de2deb-1de2-43fd-a0be-bcc01089a8ec"
+>
+<Actions>
+<Action
+ Guid="2e3f4a5a-07df-4882-9370-50d75dca8aed"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="331951b4-d9e2-48e0-8d37-121ddc6fad4c"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -21830,24 +21846,43 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="33071711-a135-4e16-8c52-d2f7b1ce78c4"
+ Guid="b71f35f4-bc2a-4119-8817-18d5c8f1902c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="07e02671-2ef8-4a68-bc99-8ea3a1f8e4f4"
+ Guid="53b1599f-99bd-40e9-b2d0-799ff510a120"
 >
 <Actions>
 <Action
- Guid="39e34589-1ea0-4a4a-98e9-9df080dd9960"
+ Guid="8124f683-16ad-4cc9-a300-fbce1f9e9194"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="7bc367b3-1956-40fa-b183-cfaf02aab2fa"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="d2d67c8a-9406-4fa0-a2ce-a3552ba0cd48"
+><Comment></Comment>
+
+Kernel.PowerOn &lt;- True</Action><Action
+ Guid="40e7ad71-834e-4080-a795-e01ccf768d40"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="0dc40c11-9285-43ce-8929-be46eecb8c10"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="e97b6b98-9f8b-4bbc-b432-11f90075c1eb"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6a5c6ea2-b7f4-4daf-a87a-6613acfe3e71"
+>
+<Actions>
+<Action
+ Guid="29376db8-662c-4d52-a5ea-66360f4f98e7"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="22df33b8-02b4-412d-8a6c-502ba046a657"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -21856,22 +21891,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="b4ef213c-ca0d-48cd-b904-a0a6d3810d03"
+ Guid="5768f660-482a-4d72-a08b-e07d37679f16"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d363a8bf-4397-4a7e-91be-e33f567bb6ec"
+ Guid="417caadd-b7d4-4991-9446-d38cb80b36d6"
 >
 <Actions>
 <Action
- Guid="62f252f3-0c28-4956-8c36-e3c8e364da85"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="29de3d2e-d563-4974-9887-8d7e89da7437"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="80451d3f-1c28-42ad-a680-37ef399a369a"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="a85fb5cf-31ab-4d61-8f91-a1b2ea6df8d7"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="f6c78b38-d4bf-4fe4-90d3-173652f672b9"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d3225b08-fd1c-45c3-b9f2-6a2b77ada03e"
+>
+<Actions>
+<Action
+ Guid="62644656-61df-4f7c-9861-a1f8eba8950c"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="78c9b6b0-8de6-4d91-b0b3-9b3be44b0d13"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -21880,24 +21932,41 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="25448eb0-20ca-4676-aef1-38d472650505"
+ Guid="3629f8a9-8a4e-4d33-ac60-1796ade133e1"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="bf74ece0-a226-40b3-afb1-16722652ac59"
+ Guid="c77a82a4-12a6-48a1-a528-6110d73152d1"
 >
 <Actions>
 <Action
- Guid="46ddf1ec-39fc-44a1-afc3-87db1648d2f2"
+ Guid="caa3ed95-9613-4b1a-8e07-87378088bdcf"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="603a73bb-d558-4504-a290-e7b77a695eb0"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="c2588c8d-aca9-4886-b63b-6e966def237d"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="3a04efff-a658-46e5-bbdd-2417495060d2"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="276b2c48-43fd-455d-a954-35f86279c5b7"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="901d338f-6847-4325-81a1-4cfd97f395dd"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c80a6961-1f7c-40bc-89a8-048b6c6cb38b"
+>
+<Actions>
+<Action
+ Guid="a042df5e-ad7a-4096-b437-4b242877d0b0"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="fe3e8459-7e46-4807-a08b-f9475360f03e"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -21906,24 +21975,41 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="38baafc9-5174-4216-aea3-fb3969fe73a0"
+ Guid="080356e0-5f9d-4b0f-9c6a-63a73f38134a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="5754214e-bf24-4d6b-8fbd-cf978123f479"
+ Guid="943a3cf5-5489-4025-9ac3-a274593b827c"
 >
 <Actions>
 <Action
- Guid="038eaaee-202a-443a-8a7f-6905138b970f"
+ Guid="b6492bf4-e0b8-47bb-a302-08713ebaee2e"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="73be719e-b2d7-4a50-8b9d-39e834c0a6c2"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="d5f5c086-b809-4b79-9944-651ebd37f01c"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="30dbca9e-72ad-4fb1-8dcd-ee21c3990503"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="2214d0f7-ea14-48fa-af51-58a5e9c716a2"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="96e01b62-2e90-4ccd-ab1f-dc46c7c8ca4f"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="3bf6ca96-b40e-4782-82a3-b884d25a66a3"
+>
+<Actions>
+<Action
+ Guid="dad337dd-8be9-4938-a0c0-b41b2950cd4e"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="dcb71709-0496-4272-8322-8ed046a12614"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -21932,22 +22018,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="1c2406c7-d1c8-45dc-8fab-6a534576a705"
+ Guid="028b2f66-95b8-44c5-ad00-6a37c0690923"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="31b70e0a-dca0-4bb4-ad50-e1468a3c385b"
+ Guid="2096cf27-d3cf-4778-a74d-7faef0bf03b7"
 >
 <Actions>
 <Action
- Guid="e57b4d58-e3dd-4da3-9423-f993bbda7dc4"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="c6441a4d-df05-48ca-b9b5-2ef96ad82820"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="121f66ed-5072-4360-9fa7-c1c3213216c0"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="ebbfc5c1-1c43-4691-a03e-b1a463300984"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="80b4d5c2-846e-4a2a-b8ed-b6ec5c4ba39d"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="183467b1-ac4c-49b8-936c-48eacd045f64"
+>
+<Actions>
+<Action
+ Guid="9cf37328-133d-4d53-b6d6-c16e7137eaad"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="18106f22-d16e-4283-a26a-f51100a998df"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -21956,22 +22059,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="17fdd2da-e62b-429e-b7c6-c539547a0af6"
+ Guid="1d761ee2-ff8a-4057-8e0c-9d928b1af900"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="01421e99-7c19-4958-8d1a-b5917f4351ab"
+ Guid="6224b2c5-1268-4798-9958-8120573beff4"
 >
 <Actions>
 <Action
- Guid="98bf7116-d065-44b8-9c07-3aa45acb0a54"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="cb2b40b9-4ec8-4f5e-ae11-5bd96f4e6062"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="1634b889-661f-45d9-9665-b961d84a4834"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="56728a0b-ed28-4386-80c0-f09dbcf27a3f"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="f8c46bb9-619f-4bac-b9d0-8c1e955ca8e3"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="SubStep 2"
+ Guid="bba061a7-f55e-4b5c-83de-7ce89ac996a3"
+>
+<Actions>
+<Action
+ Guid="12333967-f19f-4ba4-991c-b6b563296ed8"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2604e1d5-9b00-43b4-aa8b-90bafb195d77"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -21980,22 +22100,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="40d11e0c-754e-4ad5-af3b-647169b15618"
+ Guid="9673e08a-13f0-4fd3-987a-9ae59b7662a0"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="65e9c585-76a0-4361-a42f-e1858484acb8"
+ Guid="c9759d32-e33a-45e3-bc58-9c8f0ecda98d"
 >
 <Actions>
 <Action
- Guid="df44b7df-afbc-4eb4-a593-1b6460c64d8b"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="439cf734-dbcf-4654-a7c1-6c499033d115"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="9be0099b-62c9-4f55-bd8d-01354bbe86ea"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="4173b7ef-9125-40ce-b22e-dbe33bcc1c0b"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="75c3eaaa-90f3-4ddb-897f-d2e2e1788cbc"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="de544cda-2946-4d16-8069-6b43ad0a7222"
+>
+<Actions>
+<Action
+ Guid="4f6f71a3-2a9c-4487-91a7-94af3a0b3eaf"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="21eb29dc-d317-4e8f-85e6-b36e3f7403f5"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -22004,26 +22141,43 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="14f9179f-c345-4fe7-92c8-2dc68e8835e2"
+ Guid="c8997cea-6740-4c07-a897-edc89e4f5208"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="298b2216-98ed-4d99-b42c-35b0d432d535"
+ Guid="fef1ab45-52b1-4384-a287-462ed452fb3e"
 >
 <Actions>
 <Action
- Guid="d7b78772-d960-4a5e-bbef-925b15a992c9"
+ Guid="c8541184-37ec-4c1c-a753-0b8f4b2ac425"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="7d859052-654f-48c3-9d0c-d6905d3301fe"
+ Guid="cc194f3e-4f52-48be-b7b2-deb6814805af"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="eaad24a7-15fe-4a16-b22b-0137f883ceef"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="a56bd7fb-0ff3-46de-a422-587f75d3dad6"
+>TIU.SleepingRequested &lt;- True</Action><Action
+ Guid="7ee085eb-5d61-4757-a07f-a1aadf2909b0"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="500abe82-1c32-44ca-9728-29d845cfdae4"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="47f0947f-2983-4c41-afb6-6883559ded5d"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="051dc05e-c15d-48c8-b105-9b53059c2d90"
+>
+<Actions>
+<Action
+ Guid="126c5b9c-a721-47ac-a944-4b79ff635408"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e01655e2-29dc-42b2-b8e2-c68d6b59e8d2"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -22032,24 +22186,41 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="1a8dfad3-bcb8-4f37-8181-cd5243cc4f12"
+ Guid="877ca952-32f7-426f-a02f-bfe7a3245c83"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="267daf76-971d-4f28-b8a6-5f3d6b5ab836"
+ Guid="36672449-a707-4508-a6f9-b103a3e42b77"
 >
 <Actions>
 <Action
- Guid="3598e664-c619-4685-b19a-0b442144939c"
+ Guid="3765e053-6148-4127-b863-e1094257ea30"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="da7993bc-b1ad-460b-8527-cea6e3b333e6"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="7794e1e1-8f29-4af9-9ed8-57369090061e"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="2eb6c7d8-dcef-465f-ba76-bf3b33926d45"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="18c36f3c-2f26-4f68-9603-a0397dae4359"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="57a9757d-ef9b-4c46-8711-4e550f00792d"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="04f374f5-8e7c-4352-9d64-ca1b55c35710"
+>
+<Actions>
+<Action
+ Guid="4cae06c8-c57e-4c26-be95-cb32e443d4ff"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="93d7e493-b76c-4440-a0e9-4c43e05b5d2c"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -22058,24 +22229,41 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="249650f7-f72f-44f6-8540-cb054144d5c2"
+ Guid="f49ceabb-bb8d-4e68-b607-e25f3e29d3ee"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="bb3bf794-19d3-4d02-a69b-a6d1879ffda6"
+ Guid="86447c0a-be69-4e26-98e8-f86eced87b6e"
 >
 <Actions>
 <Action
- Guid="3e4f900f-a6cc-4d7a-93f2-0a52790add74"
+ Guid="de7afa7b-af6e-4d2e-bc0b-e9ee72207142"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="c557e519-d0c6-4cc9-a67d-a335cdcd560d"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="f293b0db-be7b-40a7-9cad-47dec670863d"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="5d683f47-2ebd-467b-b815-02bed386d266"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="4e466142-29f1-46b1-babb-77c671766502"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="cfefd8b6-6bc3-4e72-b15f-63bfab268e45"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="93c35a18-c8e7-4e34-a981-322d6a017bd0"
+>
+<Actions>
+<Action
+ Guid="f21a589f-f027-40ee-87a8-dcfceb320fa2"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="bf69f9e2-bdf1-41d0-a6d7-1115b4ed173d"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -22084,22 +22272,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="69240451-5673-4465-9536-5d3ed7e66f57"
+ Guid="6b6e985d-5340-47fa-a5c9-f00a14721127"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="276c0672-addc-41fe-b2d5-aa1b8a1814f0"
+ Guid="dccc9f8b-d18b-4bd9-900b-33d38b274609"
 >
 <Actions>
 <Action
- Guid="7221c380-2991-4aaa-aafd-b46cc723b333"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="18833f67-9818-4c42-b06e-ddb7477b5969"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="bdc13794-ea43-4768-8535-f5298f2b0e1a"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="278e7879-fb2a-4a60-baa5-7bc845f9f9f8"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="303376b0-8ae6-4d2e-9f1f-5f2f65b5d55d"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="38b70216-992c-4ce2-9803-fb3b50a714f5"
+>
+<Actions>
+<Action
+ Guid="9de2b839-aaed-49ec-8426-270f0d1320b0"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0c8ab19a-0105-406f-9183-f499551cb2cd"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -22108,22 +22313,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="a0e71655-cfad-45e2-b156-9b53157e56f7"
+ Guid="f97a0393-6576-4d36-90c3-1bdd3ae7bc73"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="47eaed52-0f89-4ec4-8f08-88aba116d8d5"
+ Guid="b232a2cd-c0cd-4b40-9d68-ceb89087cc8d"
 >
 <Actions>
 <Action
- Guid="1d1c3c48-d019-497b-a029-fce4ef651ed9"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="cf14620e-ae6a-43cd-8abc-6480a88e23ef"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="8e5fcb07-6c6b-43bd-9714-421ae1971471"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="62c29739-ef06-4095-b349-b54ca4c57911"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="5421f10c-30d9-43a9-9fd5-f021402d27ba"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="32421814-a281-40ea-879b-dead6bff0f06"
+>
+<Actions>
+<Action
+ Guid="e741ba06-3e08-48cc-b2fb-2e05ed0b091a"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="09106e0b-a65f-4044-93e5-4889bd899b7f"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -22132,22 +22354,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="09cc1e64-52ab-4907-a00e-77cfedea72a3"
+ Guid="0d35662f-9b25-4ba1-b122-e3df5f6dcbbc"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="5b86921d-e3a3-482a-8ad4-2fa785884b9c"
+ Guid="2896e9c9-35d4-42e6-aaae-2b94e0f316f7"
 >
 <Actions>
 <Action
- Guid="6abbb2ed-4626-47dd-81c8-c75b53ec54f2"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="15d51a35-f2b5-4471-a6e1-bde4f5c6247b"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="9718d51b-5183-4bd0-b5b8-250cc220e58a"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="64be1570-64c4-4179-bc53-4762ae017ac1"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotApplicable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="82aab21b-9aec-4df8-908b-96b11ebca436"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="74443c1a-ea85-4649-a18b-c231fbf02300"
+>
+<Actions>
+<Action
+ Guid="601ae641-dd07-427c-b045-56fbf3b02776"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="78c8b75e-f707-4a32-b11e-e96fe2e70f58"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -22156,22 +22395,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="44b0f39a-0330-44c9-a550-37b75d82c352"
+ Guid="c17238c2-d0f2-4690-ad48-dac7de4a4032"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7ff77cf8-7561-49bc-ab0d-bfcd68c997cc"
+ Guid="54ca7ad6-eb04-4388-b445-6027cfc6757d"
 >
 <Actions>
 <Action
- Guid="e0db164e-da7e-47b9-9faf-eb8d84ba3091"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="7b1a257a-a416-43cb-8fb7-5a217723d23b"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="54b830d7-1a03-4767-8707-68d7b799e309"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7a7b28e8-6191-4b82-af48-47af3a01f1c4"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotApplicable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="ee787ef8-a2c1-4e75-b858-42e9387577dc"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="0a495c33-e5c8-4930-ad55-9d0dcac2107b"
+>
+<Actions>
+<Action
+ Guid="235f7836-7e6c-4133-8aa6-d094415a712c"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="46dee4f2-b045-4c62-9f84-8971ba8afa61"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -22180,26 +22436,43 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="e0000cb3-1461-431f-ab87-8dcc52cbfeb2"
+ Guid="f149de6f-073e-4348-8b45-51505678a491"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d75f4580-212c-4210-9bfc-e5d2a317360f"
+ Guid="92b8ac52-16c8-46b3-95a4-e28d86810000"
 >
 <Actions>
 <Action
- Guid="68dabeba-2cb4-4d33-a810-b3420cb75c9e"
+ Guid="b4a1d97d-992f-44fa-9e6e-0691b6aaa0b1"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="ef03302e-ff55-4061-bb9b-78dbb18ede9b"
+ Guid="1e435273-70e9-4568-a8e8-4527444ce77d"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="3b3f3e71-66da-443b-9d0b-726ffccfb6bb"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="db5d3dd5-f446-4482-93fe-7e1299e127d6"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="68d7c978-a78d-4db2-8dde-2efc8bebfd6e"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="09786ce8-ac8b-498e-96ab-dffa2bd31d4e"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="e0a870c3-6546-4ee8-8093-7e79c811dc14"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="7f1d6a81-03bd-480f-ba19-fc7672965717"
+>
+<Actions>
+<Action
+ Guid="0dc30654-7caa-49c1-9554-c60745e71d80"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e3169838-2ffb-4092-ac79-b92661dbb03f"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -22208,22 +22481,39 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="64693e05-33b3-4e3a-854c-8c56ac8fb49b"
+ Guid="1944bf83-d9c1-4959-9658-ce41dd1eacc5"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="c74a924c-f064-4c67-ab16-76c671ea23d4"
+ Guid="d4ebe414-f072-40d1-aa2e-3e2b6a0f2fc1"
 >
 <Actions>
 <Action
- Guid="07d0bcee-7367-4185-9c9a-0a426f438405"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="0010417f-465f-442a-b770-b8c235e72d8a"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="d56c7601-90e5-4350-9ad2-7b03aa965d1a"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c63f9aa3-73dc-4553-95b0-3927bcf4dfa7"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.ProcedureIn in DMI.IN.SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="635b8c40-1ed8-47a1-b228-8eb0b57d6690"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="52865f55-5557-46e5-ac45-2503cfd81c07"
+>
+<Actions>
+<Action
+ Guid="97902075-d5f3-4296-b433-22a3d508fd51"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="07bac875-95fe-45c3-8066-38fbcc78fce0"
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

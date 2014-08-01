@@ -3454,38 +3454,131 @@ THIS.InputInformation.Disable()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6322fccb-dc9c-47a1-9547-1be8361d3ae8"
 >
-</ReqRef><Procedures>
+</ReqRef><Comment>Acknowledgement speed and distance for SR mode</Comment>
+<Procedures>
 <Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="GoToAvailable"
- Guid="aa49ed9f-ecb8-4b26-9a67-5d0f583e7665"
+ Name="AcceptDriverResponse"
+ Guid="4af5856d-f8e3-4000-8bc5-a6f968ea4d88"
 >
-<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="GoToAvailable"
- Guid="5d20f08c-2fa4-4d27-aeba-31ea0ae5ff6c"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="0756a976-b250-4c6a-95e0-b399f851f630"
 >
+<Comment>Accepts the data and updates the system state</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="GoToAvailable"
- Guid="a6468a5b-0bcd-417c-b018-07016ca5ba54"
+ Name="Accepts data from the driver"
+ Guid="758e5721-740a-4700-8b9e-d6702b47e048"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="61c4dab6-f86e-43fc-bc68-b374dd7adee7"
->InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
- Guid="f20ae894-f2c8-4136-a3bd-0cc6424d8b26"
->InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
- Guid="99fcbff6-6851-4cc6-8a36-39c778936fb5"
->ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+ Guid="5cc17c0b-817f-4483-8077-9146d6cbb607"
+><Comment></Comment>
+
+
+
+
+
+
+
+
+
+
+THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="6197b660-3d0c-4d66-83be-af31e019a03a"
+>
+<Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="3d1e1c3a-822b-4ba5-9c12-05bf513b3cd4"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="8b529adc-6d9c-4564-aba6-a2a7ece4d0fe"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="e962044a-7848-4ce2-9aee-5b9eb9645b3d"
+><Comment></Comment>
+
+NOT SRModeSpeedLimitAndDistanceAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6a6a0978-207e-42a1-94cc-90fb6e88698f"
+><Comment></Comment>
+
+
+
+
+
+
+
+
+
+
+
+THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="c8f2ac8e-98c4-4dc2-8318-d45fc221e057"
+>
+<Comment>Initiate request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="7c74e8c7-7723-49a6-a1d9-9a3422cda681"
+>
+<Comment>Initiate request</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="b84e5084-0503-40d5-a399-86057a9cf8f1"
+>
+<PreConditions>
+<PreCondition
+ Guid="ade5b8db-9676-4354-a2b9-0d80eee74184"
+>SRModeSpeedLimitAndDistanceAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c332e274-f2ad-4dc1-a0fc-905db56ee5e1"
+>THIS.InputInformation.InitiateRequest()</Action><Action
+ Guid="b9035fa9-93b8-43a6-9f85-a093eced4621"
+>DMIStruct.In_SRModeSpeedLimitAndDistance.InputInformation.DriverAnswered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -3498,6 +3591,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="InputInformation"
  Guid="5a0c60d9-7e6c-491b-ac81-515ee79f18a7"
 >
+<Comment>The request status</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default="0.0"
@@ -3507,6 +3601,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Speed"
  Guid="279c7719-87a5-4e77-a4e8-5c9d3ee7eccc"
 >
+<Comment>The speed to acknowledge</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
@@ -3516,484 +3611,8 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Distance"
  Guid="6aca2546-bcde-44ab-852c-95f8bd0ace1e"
 >
-</StructureElement><StructureElement
- TypeName="ProcedureInSM"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="ProcedureIn"
- Guid="946878d0-a3eb-4361-995f-fb7fdba1bfa7"
->
-</StructureElement><StateMachines>
-<StateMachine
- Default="NotAvailable"
- Implemented="TRUE"
- Name="ProcedureInSM"
- Guid="e6904fe2-b458-4f78-9862-9c528f6c0c8b"
->
-<States>
-<State
- X="230"
- Y="60"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="NotAvailable"
- Guid="6d2fdaad-d2d0-4fc4-9685-0f809eb5fdb8"
->
-<StateMachine
- Default="InitialState"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="ff34a9e8-4b23-4f70-87eb-4c8c5fb2cf4a"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="InitialState"
- Guid="5f098f21-9b2a-4821-a249-2fe0dce00851"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="172a4e6b-3122-41fe-92a9-44acd87a1f9d"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="88f34ec1-a789-472c-b2e3-7583b2454c32"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="69412165-863b-426c-97c8-79e91f7da52e"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="24be2a8f-3cf8-447e-a106-a0b199feb386"
->THIS &lt;- NotAvailable.Idle</Action><Action
- Guid="339128cb-4888-451d-9849-8abab7c97788"
->InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
- Guid="9a9f3a80-84ce-4c93-a9d7-efa775822f50"
->InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Idle"
- Guid="6350e7d1-a60e-4eb5-8486-6e83102c968c"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="930f46b6-bdbf-4091-b6d4-2c8feaf778d7"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="180"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="NationalSystemAvailability"
- Guid="480b91c1-7096-4c3c-bc1d-fce8a418c869"
->
-<StateMachine
- Default="InitialState"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="5a46c671-62a3-4159-8d8c-520b0beb0f7a"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="InitialState"
- Guid="b4be62a1-27ac-410f-973e-cf89cec59738"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="c6bfeac0-3444-46c2-a138-db1f8874deab"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="4b516fbf-0b76-4bfe-be96-7891b3061b02"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="5dcc9070-d416-4ac1-b65e-f6cde5251591"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="22e32ed1-553c-4252-ad84-b2e39b88feb0"
->THIS &lt;- NationalSystemAvailability.Idle</Action><Action
- Guid="be32e80b-816c-4e84-866f-49945466d117"
->InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
- Guid="a4d4e612-e37c-4023-abec-8ca594dc0437"
->InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Idle"
- Guid="587b2f6d-7af8-4685-992a-0c8c87746ad9"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="870dee0e-7efb-4efa-bd70-e776f95eb6d1"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="180"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="NotApplicable"
- Guid="8689bc0d-06bb-4520-bd20-e873d7f2450e"
->
-<StateMachine
- Default="InitialState"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="afe93fe1-48d2-4b86-88b5-3854276e96e4"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="InitialState"
- Guid="1278ec25-7a9d-4105-b31d-204e11bfe90d"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="4da8e3ea-6cd3-49cc-b9ce-3d5f0da3a227"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="045eabd4-1d6e-4566-8b2a-47f2de58d883"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="0eb53579-acd8-46bf-99ca-da784030d1fa"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="c11e3c1b-a0c0-4753-a138-b9fa2ac106b4"
->THIS &lt;- NotApplicable.Idle</Action><Action
- Guid="6cee7441-5405-4b3b-ac6e-2e84c7aa2e9e"
->InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
- Guid="e9400518-434d-401e-b667-f12079b18345"
->InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Idle"
- Guid="f95fd1eb-f102-4563-885c-4f38584b9c54"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="0c6ae37a-1dbc-4aee-a9e9-2d64542d7476"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="300"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="Active"
- Guid="f0e77c0f-53cf-402b-aff9-e6a4466aa4f6"
->
-<StateMachine
- Default="InitialState"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="acc9bf43-8847-4a8e-8424-2fa14b7465f3"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="InitialState"
- Guid="618015d6-96f7-4e96-9b7d-25f936cb5706"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="07943289-099f-442e-b6b5-e1091d7ea08b"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="85b4888a-3549-49ac-90ac-2077adffa60c"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="f31f4229-1179-4ade-82a1-d81fdf961ca0"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="26cad93e-07ea-43d0-a9ca-c20698f49902"
->THIS &lt;- Active.Send</Action><Action
- Guid="0174d623-0659-4613-8f57-67c5a82f4c67"
->InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
- Guid="28104d57-1e1a-47e8-b664-ffd6d4e87abf"
->InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Send"
- Guid="2ff52a21-8a7c-469c-8702-48c4e789c975"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="1f6dc246-1bcc-4587-9575-076d8c6000bc"
->
-<Rules>
-<Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ResponseReceived"
- Guid="586724f1-e687-448b-89ae-fbaee2d4156a"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ResponseReceived"
- Guid="540f8248-68d3-4bce-ba84-e92e30537e68"
->
-<PreConditions>
-<PreCondition
- Guid="77f82bb2-118a-4584-9b44-3517f04bf911"
->InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="e2c8400d-0b2b-4efc-afb4-a4cd2d652ce2"
->InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="300"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="Available"
- Guid="9a228789-353f-44ce-8f6d-9b9575978493"
->
-<StateMachine
- Default="Idle"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="da1c81fa-bf40-4c83-bb98-b577dce3eae3"
->
-<States>
-<State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Idle"
- Guid="dcd4fa6d-5ab0-464d-a511-c4eb07cb4967"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="5025e6b8-cf56-459f-83f1-767cf8ccbc27"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
- Guid="845a0941-8490-41d8-b927-ba8ce6197c8b"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
- Guid="9edd6bca-cd68-49c8-a414-d6179562960d"
->
-<PreConditions>
-<PreCondition
- Guid="cf9faebd-06e4-4c67-86cb-b4d9e92ff8d3"
->InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="6c732ac3-ca07-41b3-9c31-c7f1cd52fbec"
->THIS &lt;- Available.Send</Action><Action
- Guid="36e5f496-9b4a-48d6-95ad-62975716f824"
->InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="560"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Send"
- Guid="48b4800b-ea4f-4459-b5ed-47a215d2d752"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="83923fbe-5732-442b-9af0-10c51706f8bc"
->
-<Rules>
-<Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ResponseReceived"
- Guid="62988428-7cbd-44ca-9e0b-499edc300069"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ResponseReceived"
- Guid="185f327d-f1c5-41d6-933b-d59d8bece0d8"
->
-<PreConditions>
-<PreCondition
- Guid="190f0281-43f9-4498-9c7f-402ef5669f9a"
->InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="3bb09a48-41b2-45e2-8144-74c0a69c61c3"
->THIS &lt;- Available.Response</Action><Action
- Guid="78c8232f-90f9-4ae7-82de-d91e8e2f3845"
->InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="430"
- Y="170"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Response"
- Guid="08d8022a-4592-4f83-978b-cd0ddda3a666"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="453c94e9-ad1e-40ba-b2e9-bea2197963ff"
->
-<Rules>
-<Rule
- Priority="CleanUp"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestDisabled"
- Guid="cb9a4392-77fc-4ac5-aa25-3e660fa4f62c"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestDisabled"
- Guid="cb819f7b-e52e-4241-a86d-cc4dfdf00b0e"
->
-<PreConditions>
-<PreCondition
- Guid="bfbd9f11-f37f-4e6c-bc63-423bf01ec85a"
->InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="e406e025-f855-448d-8abc-d3814969ffd6"
->THIS &lt;- Available.Idle</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
+<Comment>The distance to acknowledge</Comment>
+</StructureElement></Structure><Structure
  Default=""
  X="880"
  Y="60"
@@ -8061,6 +7680,29 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment>Identifies the modes where the function is available</Comment>
 <Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.PT, Mode.SN]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SRModeSpeedLimitAndDistanceAvailable"
+ Guid="128cee29-6733-4ed8-a2e9-db24918e1724"
+>
+<ReqRef
+ Id="7ae1bf11-7b11-466d-abd7-fcec9dee2465"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e04b7840-b1c9-4cb6-9213-df682f607aa3"
+>
+</ReqRef><Comment>Indicates whether the level can be proposed to the driver</Comment>
+<Cases>
+<Case
+ Name="Enumerate the modes where available"
+ Guid="73f32435-63c4-4634-b870-692d6d53d341"
+>
+<Comment>Identifies the modes where the function is available</Comment>
+<Expression>Kernel.Mode in [Mode.SR]</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
