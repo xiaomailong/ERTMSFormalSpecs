@@ -7614,7 +7614,8 @@ THIS.InputInformation.Disable()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="54c54745-af99-4207-97ce-2c44413013ed"
 >
-</ReqRef><Procedures>
+</ReqRef><Comment>Allow to acknowledge a plain text information</Comment>
+<Procedures>
 <Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7646,6 +7647,122 @@ THIS.InputInformation.Disable()</Action></Actions>
 >InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="97c07ee5-3b96-4a63-9558-f869ccd03255"
 >ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="f72aa15f-58ab-446e-a2f0-f496077cd84d"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="c93e2e8e-39c3-4c35-b4d8-7965cfceb091"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="936c1a27-25fb-4d0a-b568-c56dc87b1d51"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5bfb2800-2c0e-4da8-9d7a-e40e593d6d55"
+><Comment></Comment>
+
+
+
+
+THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="ddef836c-83f2-4021-bf9c-710717d5b528"
+>
+<Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="941d2dfe-2138-4b3b-a361-ad2ad5ca5072"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="112e6d02-9801-42bb-8e91-127c13b837be"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="4458f539-9af9-4af7-9777-27e746c0972f"
+><Comment></Comment>
+
+NOT AcknOfPlainTextInformationAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e37bd4ae-e703-4f42-a376-755065173092"
+><Comment></Comment>
+THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="ed90ace8-be53-41a4-b4c2-d0bccf0b22cd"
+>
+<Comment>Initiates the request</Comment>
+<Parameters>
+<Parameter
+ Type="String"
+ Name="text"
+ Guid="a3aa7273-1e12-4b69-92a4-c5377de9fb50"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="61ce66c6-fcb4-4f18-9050-ee96a2e0e043"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="359be032-4f0a-4997-86c5-1d78e95828e3"
+>
+<PreConditions>
+<PreCondition
+ Guid="413ce5ac-ba4b-4fa3-812b-3eba5f0bd346"
+>AcknOfPlainTextInformationAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4b2fad25-f978-4e27-8055-a2978840b2ba"
+>THIS.InputInformation.RequestStatus &lt;- Default.Request.Request</Action><Action
+ Guid="277628ac-6c46-459f-b01f-119364cd6d2e"
+>THIS.InputInformation.DriverAnswered &lt;- False</Action><Action
+ Guid="5bcec144-68e6-494b-9dcb-09c230ec1a48"
+>THIS.Text &lt;- text</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -14867,6 +14984,29 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment>Identifies the modes where the function is available</Comment>
 <Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.TR, Mode.SN ]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="AcknOfPlainTextInformationAvailable"
+ Guid="cd45a5ea-b0bf-4f94-86f0-19c83b05282a"
+>
+<ReqRef
+ Id="641a1733-782b-41d1-8db8-443710ef091a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="59c4cc47-91c1-447c-b89c-d74810f895b3"
+>
+</ReqRef><Comment>Indicates whether the level can be proposed to the driver</Comment>
+<Cases>
+<Case
+ Name="Enumerate the modes where available"
+ Guid="b2975d63-8936-4972-97f7-6168230d4045"
+>
+<Comment>Identifies the modes where the function is available</Comment>
+<Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.RV ]</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>

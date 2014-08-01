@@ -1333,67 +1333,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateAcknOfPlainTextInformation"
- Guid="ed90ace8-be53-41a4-b4c2-d0bccf0b22cd"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="d42c15ec-ba1f-4950-8079-fe2aaaa277d5"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c3e965ca-8d1d-4be9-8328-ee10cee22b9b"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="47dc474b-c3ce-40bd-ba83-5adc79d88f6b"
->
-<PreConditions>
-<PreCondition
- Guid="4620c05b-d99d-4f1c-9891-c1e5b04cb2cc"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="6e2f9c43-3c31-4356-a995-c93a4a55e434"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="61ce66c6-fcb4-4f18-9050-ee96a2e0e043"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="359be032-4f0a-4997-86c5-1d78e95828e3"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="4b2fad25-f978-4e27-8055-a2978840b2ba"
->In_AcknOfPlainTextInformation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="277628ac-6c46-459f-b01f-119364cd6d2e"
->In_AcknOfPlainTextInformation.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="InitiateAcknOfRVMode"
  Guid="74507a58-b5a7-4df4-b041-0f5bdf8e9621"
 >
@@ -7979,6 +7918,11 @@ In_OverrideRequest.GoToAvailable()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="46673c64-9b53-48fc-a7ea-b1b70116a246"
 >
+</ReqRef><ReqRef
+ Id="641a1733-782b-41d1-8db8-443710ef091a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4f0ef0a3-ce20-4554-b89f-c43d703a9364"
+>
 </ReqRef><Comment>Updates the requests according to the mode change</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -8013,7 +7957,10 @@ In_TrainRunningNumber.TrackMode()</Action><Action
 In_AcknOfFixedTextInformation.TrackMode()</Action><Action
  Guid="f1e0a4a1-8f3e-4eba-aa8c-f8afa797b9d8"
 ><Comment></Comment>
-In_AcknOfLevelTransition.TrackMode()</Action></Actions>
+In_AcknOfLevelTransition.TrackMode()</Action><Action
+ Guid="43028746-5ad9-4296-bca7-432aba463ecd"
+><Comment></Comment>
+In_AcknOfPlainTextInformation.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
