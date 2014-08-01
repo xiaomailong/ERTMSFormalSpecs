@@ -1749,9 +1749,11 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="0d13890a-fdb8-4bb2-a3c5-978e1acfb39f"
->THIS &lt;- HandleModeChange.StartOfMission.S3.RadioNetworkIdChangeOffered</Action><Action
+><Comment></Comment>
+THIS &lt;- HandleModeChange.StartOfMission.S3.RadioNetworkIdChangeOffered</Action><Action
  Guid="4b5b8b50-d10d-4d84-a0e9-46e32601d7c0"
->DMI.MasterDMI().SelectNetworkId(EURORADIO.AvailableNetworks.Networks)</Action></Actions>
+><Comment></Comment>
+DMI.MasterDMI().In_RBCContactInformation.SelectNetworkId(EURORADIO.AvailableNetworks.Networks)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1806,7 +1808,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
  Guid="cb962547-e788-46e1-b257-5e6b0bf8e644"
 >THIS &lt;- HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Action><Action
  Guid="615131b3-e09d-4cab-9cff-21775aa2d817"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.Disable()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1940,7 +1942,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="c81859b1-ca16-401d-97cb-7c06376e4a91"
->DMI.MasterDMI().InitiateRBCContactInformationRequest
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 (
     Actions =&gt; [ DMI.RBCContactActionEnum.RevalidateContactInfo, DMI.RBCContactActionEnum.UseEireneShortNumber, DMI.RBCContactActionEnum.UseLastStoredNumber ],
     anRBCContactInformation =&gt; EURORADIO.CurrentRBCConnection().ContactData
@@ -1963,7 +1965,8 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="bc9da2bf-28aa-4806-88db-3719ca725f9a"
->DMI.MasterDMI().InitiateRBCContactInformationRequest
+><Comment></Comment>
+DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 (
     Actions =&gt; [ DMI.RBCContactActionEnum.EnterContactInfo, DMI.RBCContactActionEnum.UseEireneShortNumber ],
     anRBCContactInformation =&gt; EMPTY
@@ -1986,7 +1989,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="19da3fbc-42e2-4fd0-be14-5f15861cfa54"
->DMI.MasterDMI().InitiateRBCContactInformationRequest
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 (
     Actions =&gt; [ DMI.RBCContactActionEnum.UseEireneShortNumber ],
     anRBCContactInformation =&gt; EURORADIO.CurrentRBCConnection().ContactData
@@ -2043,7 +2046,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="2be288e7-3344-49f9-b8cc-bc0358e5d574"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.Disable()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2222,7 +2225,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="cb908036-5e2d-4e2c-8653-de885b3210a0"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.Disable()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2315,7 +2318,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
  Guid="61891f14-3e04-4ca2-a56b-9e6c6f04364d"
 >THIS &lt;- HandleModeChange.StartOfMission.S3.NetworkIdReenteringOffered</Action><Action
  Guid="295e1d05-4478-4870-97fd-1fa5d8fcf302"
->DMI.MasterDMI().InitiateRBCContactInformationRequest
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 (
     Actions =&gt; [ DMI.RBCContactActionEnum.ReenterNetworkId ],
     anRBCContactInformation =&gt; EMPTY

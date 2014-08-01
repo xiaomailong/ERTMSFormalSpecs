@@ -19224,13 +19224,13 @@ Kernel.PowerOn &lt;- True</Action><Action
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="IN RBC contact information"
- Guid="6bbb6b2c-fff8-4083-a235-1497da58c930"
+ Name="IN RBCContactInformation"
+ Guid="fefc1637-9309-45f1-bdd2-17878d6d8266"
 >
 <ReqRef
  Id="aca297a1-7d62-42ac-ab7e-6c8c590c5637"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="582d35a6-916c-417d-9d32-189bbef0a483"
+ Guid="22f848db-abdf-4beb-9f31-6ae369d7d664"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -19242,24 +19242,50 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="d6769d2b-2d2c-4aa3-832a-f5c832ff1253"
+ Guid="c9cd4bd0-f606-42e3-8499-0ee296105ed5"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="af9dc902-a055-4062-ae2c-599e1460ff00"
+ Guid="3bfab7cb-53a3-4d6f-8856-1d270ea2059f"
 >
 <Actions>
 <Action
- Guid="15b570fd-a01f-408c-83ce-a1b5a2f5d0be"
+ Guid="c039b331-5947-4261-81b1-bb67a0c50004"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="d75c0841-0f38-4c5f-9b39-d0886dee74a5"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="0edcbcff-8a5b-4b79-8475-c9b85af2d576"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="2a3d849e-0723-4c62-a174-d35ecd7b0837"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="3c3f848d-8ad1-42d2-b591-a6138df8d591"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="b1d0f0bf-8bb3-4013-b8b5-b15e90d5c457"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="a2f4e6f3-03a1-4836-a19a-4885901ab34d"
+>
+<Actions>
+<Action
+ Guid="cce133d3-375f-4489-a70b-801cb303cdd7"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="3cfb3bf9-0a08-4ac3-b4fe-9080ab2005fd"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19268,24 +19294,53 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="a54cf508-6d47-445d-bb4e-7deb6aaab729"
+ Guid="36d6de3f-7f85-4024-81be-c2491b15d928"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="9cba647a-00b3-4d33-b47a-b3f52a4a1970"
+ Guid="d0519093-b0c5-4d32-bc87-9ce9c9272ad2"
 >
 <Actions>
 <Action
- Guid="b84dca02-07d8-4a4c-a13c-50f9143bcd6b"
+ Guid="a2f69acd-0c69-489e-a960-4ebb3cd5f36a"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="f468364f-cc39-4d1f-903b-2a00b893f6db"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="6b523e4e-a304-4cc5-934e-9c460889ca1c"
+><Comment></Comment>
+
+Kernel.PowerOn &lt;- True</Action><Action
+ Guid="008ac828-1192-4d10-b313-255567dd96dc"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="b459f661-daea-4b29-9263-17d79c03e317"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="939c61bf-1c69-49c2-8380-d84700ab4589"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="f949f899-2a58-4840-9f99-5057e15eb4f0"
+>
+<Actions>
+<Action
+ Guid="b9aa2618-fe56-44c0-9cd2-0b281f8575ad"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d5fa56df-2d3b-4fd7-ae97-7c64312ec217"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19294,22 +19349,49 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="9167c5db-536b-40f9-9dad-79567d8d41d0"
+ Guid="3963d699-3f4e-479b-ae53-2df54d144bfc"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7886d9c4-d820-4537-81c5-859c373b1387"
+ Guid="c63fe5dc-ff8d-4d01-9c72-5e3510921c0e"
 >
 <Actions>
 <Action
- Guid="2234883c-4b5e-439c-bfaf-31d1fce6986c"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="3d377ba4-5e75-4789-92e7-43a94eee7371"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="8c744b6a-be11-4d70-9bf6-56bd10060f9d"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="0c8b9c4f-dcf6-4cda-9b3b-7e7515691d86"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="63929f3e-467e-4fcd-8137-0acbad06e5b2"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a2663ded-381c-47e6-8a06-dc308ca0eea7"
+>
+<Actions>
+<Action
+ Guid="920477f7-d740-444e-938d-729adb27ddab"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7b3f78c8-2cbb-4543-8eb6-45c47eed1005"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19318,24 +19400,51 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="67d0119e-0a93-4878-a41d-d4fcc7f46944"
+ Guid="4a17b1bc-021c-4a54-ada3-69f8eba7db70"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="78a7137a-8b8c-4944-8bd8-f1cb7c13a53c"
+ Guid="a2b2fad3-73ce-4492-80e5-e5a1eae720a5"
 >
 <Actions>
 <Action
- Guid="93f030ae-4221-4b44-979c-35a4edf201af"
+ Guid="75ff9c95-6b0a-4f16-90c1-14ef40d49966"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="6fa9eed3-f423-48be-8380-93af7bf1611d"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="d4237098-306b-4714-97c2-619dcf7e843f"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="b604a51d-596f-4b45-9fc2-bbf4c94f3e12"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8f2b5827-6873-49e6-b968-d935a4b1152d"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="7933e62e-2086-4694-b32d-70b16c313e47"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="cb90c538-7a51-4f85-96bd-961a4268d14b"
+>
+<Actions>
+<Action
+ Guid="774a85c8-0b76-43ec-b334-31f628c07fc3"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="04956a75-fa6b-4ba4-8f32-7f553cb3c98f"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19344,24 +19453,51 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="42fa4454-ba49-4f9f-a5ef-57ec878109c8"
+ Guid="93dafecc-61ac-4577-8c8e-d2b084981413"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e9ca32b5-f6f8-467a-8bc1-ea8dd5af6136"
+ Guid="b2e61965-9fcb-45fd-9deb-e7f908c97f34"
 >
 <Actions>
 <Action
- Guid="866ae7d3-4621-4200-b411-e2adcf3883c7"
+ Guid="94cb3d82-e16a-4e65-9120-4303239d3eaf"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="1cbc1258-17aa-477a-a656-8ee2bdb45afa"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="d1fcef9d-1f4f-45db-819a-4bc89e111686"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="629b7598-0416-4aec-95f1-a9750044ec42"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="377eebb1-d519-4458-8ed2-9fc8d4625bbe"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="548be27a-5460-462e-b3a7-e4c6198ebbc5"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="06846c6a-d643-438d-9fd3-f0b06b030a1b"
+>
+<Actions>
+<Action
+ Guid="c607eee6-1578-4f36-ba57-2198b97cf58a"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c795d4c3-be60-4ec4-b772-eca6f5193bc8"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19370,22 +19506,49 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="2a4c5c77-78b6-4397-bc06-9c45ab7d27b7"
+ Guid="984036ac-d7ca-49be-ae05-0d93fd2182f8"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="917db78f-5053-4de3-9181-41dd75dbc103"
+ Guid="1bf28996-c3ba-4e3e-ae5d-731a98ab5fb5"
 >
 <Actions>
 <Action
- Guid="2c63bcee-2885-4dbd-9724-e75dfdcc0203"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="2b0f5808-45c9-4aa5-9506-3479280e7670"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="14e274c3-ae46-4599-a752-1b30accb7920"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="5cc52121-ae5e-4ad9-8ea8-43a18b10b303"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="5550e917-246f-4b30-8488-314ebbed827e"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e435ce6e-ad23-4bfb-ace6-3a0801952225"
+>
+<Actions>
+<Action
+ Guid="585f9f81-6f1b-422e-9a3c-39c09cbe6957"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="667486df-402a-4a0d-a5fd-e1885ed43e3c"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19394,22 +19557,49 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="9acd82d8-7a11-4979-b1f1-f077b5dbe0af"
+ Guid="3e3ee841-3811-4482-a437-8910647a8896"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="60a980fe-d499-40e1-ba99-e09e26583701"
+ Guid="ba49d3d9-eea5-45a8-a5d0-c4d0a034333a"
 >
 <Actions>
 <Action
- Guid="cf82a29a-b660-4029-9772-4345f13e3de4"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="8127b845-86e6-4594-b17f-13434b81fbda"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="e7c2cafb-7e68-4bf5-b4b4-ffc8f78396df"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="9a10ce18-f6f7-47ac-a5f6-76f03eaf8f8b"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="2234c82b-f18e-49c5-a5b0-0a0ab073c6a0"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="SubStep 2"
+ Guid="61a95f68-eabb-4b43-b678-9dbdea4bad9a"
+>
+<Actions>
+<Action
+ Guid="ffebec9c-94d9-4174-901a-4cadc0f7697c"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3270b978-abbf-4e07-8f85-de9e7aea663b"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19418,22 +19608,49 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="c9fc65d7-6db7-4b73-94d1-1041a6604044"
+ Guid="d9a55eb3-99af-4d9f-904a-3b1fafe60030"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="4524046d-6d94-4e86-9c20-6c09958226f8"
+ Guid="abb6ca5f-f58c-440e-8d53-169eb1c33f89"
 >
 <Actions>
 <Action
- Guid="f378c1ed-9331-44bf-bc65-923e3283aed5"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="a027fcf2-dd0a-406f-90ef-a77986a68dd6"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="7c90cd1c-cfb3-4b9e-92ab-3ddfc0186d6a"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="bd744508-277f-4e8f-81dc-319481eb09e9"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="e6fb9cec-2781-4204-9517-88c727d07636"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="5937b569-5eb4-43e7-af4d-a323334af650"
+>
+<Actions>
+<Action
+ Guid="21e5a229-136b-454a-ac84-6798e88e3632"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7039df6f-e933-401a-abe9-7fea78c60529"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19442,26 +19659,53 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="a2b0d850-a87e-4658-a59e-dd8014fdbf5c"
+ Guid="cd17cb30-78a9-44db-9cbc-480db31c2c86"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d99cc493-7796-46c8-acf6-118ff96c78ba"
+ Guid="b04a8f4d-dd70-4809-9232-ee839f3b1863"
 >
 <Actions>
 <Action
- Guid="3d392698-b3da-42a2-8dfc-f9978f13439f"
+ Guid="04462e8e-3b65-45e9-9cb1-8e5d969b973c"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="10993158-b92a-4370-b5d2-ba69c3e4a494"
+ Guid="6f9695a9-4e8b-4583-80c8-8652f32194b0"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="1f40758f-73bc-45ab-bc06-71ad43650da5"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="85925651-3b37-4f23-b1aa-267dcb771936"
+>TIU.SleepingRequested &lt;- True</Action><Action
+ Guid="d50fbb5d-6e81-4998-a969-d7c97595c026"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="1b73b87d-d8b6-4503-82a3-39a8ff3a82b8"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="0ebf3cb7-90f0-4fc7-9277-63139ff4258e"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="5995faed-6d69-4e0d-b0ba-26c8fb02087a"
+>
+<Actions>
+<Action
+ Guid="d861de30-620f-4f9f-8247-24393adf1aad"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1e173b5f-b028-46f5-9a5d-bad9b6ba597f"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19470,24 +19714,51 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="52f57987-b87e-4c45-8ca3-fbb4558f7e46"
+ Guid="94418a1b-5a61-4b9e-964b-07af5ec28504"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6c26ecd3-a245-4f0c-a898-05c57d4f34fe"
+ Guid="cdcdcbb3-b4af-4c25-99a8-a1aac2449081"
 >
 <Actions>
 <Action
- Guid="779a776d-b7fb-4aab-b116-a4c594094e4e"
+ Guid="0553beab-0b31-4b75-86da-7a52e4e9fd53"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="9001caa3-ab7b-47f4-9c48-fceeee757ca7"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="d992296e-c7ea-4fa3-bbd4-53749cd4abd9"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="e6c808c0-17eb-45b0-a8d1-b730f2f7968c"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="e61f4f59-ed16-43ed-b9f0-91ce1abc9b2a"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="ebc8f2d9-7c11-4b1c-b321-fdb3c69457f8"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="1dfd22fb-beff-4ffb-a2a7-b99d6eabaff7"
+>
+<Actions>
+<Action
+ Guid="84611ebe-2b53-47fb-a4e8-0631bdbb594c"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="224d3124-3deb-429c-8f00-6a3c44b0c5b6"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19496,24 +19767,51 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="dd424413-e86d-4229-8515-16bcc68b18b2"
+ Guid="05ac0afb-4eaa-4a0b-8b6f-35282682e31f"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="36bbc73e-9023-4c84-88cb-dc006afa6f50"
+ Guid="1364d712-0540-4a6f-94d6-2da72dd84ba4"
 >
 <Actions>
 <Action
- Guid="214da40c-5565-4be8-8b3a-b4dddee32721"
+ Guid="87f4ae3c-9d34-4660-a95b-7a151a05797f"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="0bccc98a-a070-44ec-87e5-a0cfee6dd5fb"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="aa5b4485-a91f-46ad-935e-8181070879eb"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="7fd686f1-fc20-45cf-a968-9ca4e6c8d6f3"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="9ffb6b05-eb08-4a03-ab64-8a59b61c9339"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="1d7090e7-69c3-43fe-92ca-1f51f0d323c6"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d3330ecd-25b0-4329-a765-e553a8ba8709"
+>
+<Actions>
+<Action
+ Guid="9a48ee0f-45f4-42cd-a062-1224fa1a0e2e"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c2db8640-31ba-49c1-ad23-7150de3d43ea"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19522,22 +19820,49 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="fde63334-7974-4527-b2c3-6922cd31a7fa"
+ Guid="9903ea47-2995-4447-876a-de64a21b013c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e4bc8536-f57c-4804-9e0c-54e67b152eee"
+ Guid="8f6802f0-f8c1-41fd-89c1-d5f64d171e6a"
 >
 <Actions>
 <Action
- Guid="e7281616-3e31-4fb1-924e-bf9518796edf"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="6cb05182-f0dd-4945-859c-beb881821508"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="702f8f84-55a8-4d7d-9f42-9a9ff3aee0db"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="58158e24-68b0-4e1e-9574-c7f0e9f6194c"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="551c5372-9946-42fc-a5e1-c0f158a206b6"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="15758c18-0f75-4a2f-8eec-475321555e37"
+>
+<Actions>
+<Action
+ Guid="071dc2af-4ba9-4ee0-ac31-ca20da58e1e4"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="fe9df672-b053-4972-bdc5-9323c9238c6a"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19546,22 +19871,49 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="7c6a6c44-9eec-4314-bae9-e2fca9fda448"
+ Guid="bff04ab4-7d2d-4007-ac59-30cbb256c9ab"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8f0a0344-24d3-4e9f-abb1-1a23128729ba"
+ Guid="07d65b89-1386-406a-a8e5-b492769c69ff"
 >
 <Actions>
 <Action
- Guid="20bd92ea-6e14-4f7f-bcb6-0b18832fcb1f"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="aaea0ad6-6c6e-4b8b-8d1c-ea22cfcc22bd"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="2cd26910-6143-41e0-9f0a-bfa2fe87d621"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7fa360d3-f721-40cf-b5a3-7a2c0891b29d"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="3c90ae40-a26c-456e-89e6-d6482f88bba2"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="377d088f-a254-471b-a97b-b6f2ba5483b6"
+>
+<Actions>
+<Action
+ Guid="a20ddde2-dba2-4433-87a6-1806cb4057b5"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="fda2beb4-1722-4134-8ee9-9edba51a5bf7"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19570,22 +19922,49 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="cc1781d8-1410-4493-8562-b9984794f297"
+ Guid="8e564ab4-2e13-4d31-bc62-142e5d477e89"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7c7a7c9b-bfc7-406b-9b4f-f19f5d52541b"
+ Guid="21f03f63-7595-49b2-8829-6a1997ccb790"
 >
 <Actions>
 <Action
- Guid="8f1ce5f5-2745-4140-8ba2-598da3bdb033"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="f784e5fd-987d-480b-8c59-1386b1debbfd"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="90bb4e71-f61f-4d87-8de1-61bf7598fc88"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="d006b6cd-69df-49fc-8ebd-7749f34b2229"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.NotApplicable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="eb6bb669-274f-4b10-9716-471f08658fe3"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="964b6500-2039-4825-8b06-0632f778a183"
+>
+<Actions>
+<Action
+ Guid="dda703e4-864f-4959-b169-28b4046b953f"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e3ef5129-a279-41f0-ae3d-2d73759b0d7f"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19594,22 +19973,49 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="c90d9e7a-d62d-41be-b0f4-1bcee65b3978"
+ Guid="85484845-b895-46c6-b934-479fb7d53c8a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ac8aab5b-e713-4071-8572-03a9dcdb3c4c"
+ Guid="ddecf61b-c816-4903-a45b-3e9ee6a3093a"
 >
 <Actions>
 <Action
- Guid="e81d0e3a-dec4-4e79-bfdf-cf31f6004d19"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="73af4c98-94a1-4fa6-9573-f918664f4b3e"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="53fc65c8-3db5-4858-beba-58d677eff394"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="2c353c1c-b70a-4d49-9429-05950cf28d91"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.NotApplicable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="c07e2686-b090-4bb4-9f5c-2c3878c9cd14"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="fd61c361-2a84-4b0b-bc66-f5a766600f2b"
+>
+<Actions>
+<Action
+ Guid="a30bbf65-fb5e-41b9-b9af-08d406cb5fae"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ad5d5e24-7367-48ca-b904-eacdb89a04a0"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19618,26 +20024,53 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="fe98e931-50cf-425d-b9a4-6dae99846fe8"
+ Guid="a85193e4-ecd8-41c7-b458-8003a83086de"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2636caa2-8097-4c9b-8524-443f7b8ef22a"
+ Guid="825d1025-82a0-4023-8e93-7bd6da215658"
 >
 <Actions>
 <Action
- Guid="73f54048-e2ad-4392-88df-0c2b29a46cfb"
+ Guid="1cb02ae4-4eab-4c07-9bc3-f0f9ddf21015"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="c6be1730-f764-47be-b6eb-4a9684d3ef9f"
+ Guid="84674921-a6c5-4ec3-a4bc-b228a8972740"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="a4e40d14-e901-43ae-a767-e9e555be5862"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="348a8072-1b1e-4335-896f-cbb287e0441a"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="86e15519-9c30-43f9-8f58-156e9cfede1e"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="dce21ba7-700c-4c44-85d6-8c4be17e739c"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="903a16d5-65b6-4e59-a055-1569193d8844"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e3e2bee4-8d41-4e63-b212-502366093bc6"
+>
+<Actions>
+<Action
+ Guid="4d61955e-d14d-4e8a-8d7e-c2cb5add9bef"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="13572835-b350-43a5-92f4-de83f53ea8f8"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -19646,22 +20079,49 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="d8a7ecd1-9759-4cfe-b103-434760131bc3"
+ Guid="a6cc1011-e8a1-4da0-8782-93a50e455771"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ee0ffecb-e8f2-4d90-8719-806d4a0bf636"
+ Guid="89a1f85e-78c7-4386-82ad-fff95a1dbb92"
 >
 <Actions>
 <Action
- Guid="aa413a6b-e817-49f9-91fb-422e6955899e"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="4a56fd41-7b2c-482d-95ca-82df51bb488e"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="c667232e-0614-40f8-acb7-55c627d90456"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="106fa1ec-d4e8-471f-8d3c-e487edb71c44"
->DMI.MasterDMI().In_RBCContactInformation.ProcedureIn in DMI.IN.RBCContactInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="49272eab-69bb-4be6-b1c3-41c656537685"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="363a0a3d-466d-4090-af8c-e0fbdd373624"
+>
+<Actions>
+<Action
+ Guid="a34494a6-c8c2-418a-848e-1e431736d1ae"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+   Actions =&gt; [DMI.RBCContactActionEnum.EnterContactInfo], 
+   anRBCContactInformation =&gt; EURORADIO.RBCContactStruct{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; 254,
+        Id =&gt; 0
+    },
+    PhoneNumber =&gt; &apos;123456&apos;,
+    DataState =&gt; Default.DataState.Valid
+})</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="dafb3926-52f8-4f02-8c22-9c9457931e1a"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
