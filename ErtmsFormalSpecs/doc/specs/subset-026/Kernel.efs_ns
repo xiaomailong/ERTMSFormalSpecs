@@ -5352,7 +5352,7 @@ THIS in S10 OR THIS in S20</PreCondition><PreCondition
 <Actions>
 <Action
  Guid="c411416d-7cd7-478a-b5f4-22a11a609f78"
->DMI.MasterDMI().InitiateOverrideRequest()</Action></Actions>
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
@@ -5367,7 +5367,7 @@ THIS in S10 OR THIS in S20</PreCondition><PreCondition
 <Action
  Guid="bf81f04d-cac3-4266-9b0e-e6bebcc4c043"
 ><Comment></Comment>
-DMI.MasterDMI().DisableOverrideRequest()</Action></Actions>
+DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7795,7 +7795,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="88f1d610-071e-42a9-a7c7-fcf95319b179"
->DMI.MasterDMI().InitiateOverrideRequest()</Action></Actions>
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State

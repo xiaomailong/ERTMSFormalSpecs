@@ -18410,13 +18410,13 @@ Kernel.PowerOn &lt;- True</Action><Action
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="IN Override request"
- Guid="bbbb49f3-e41e-4413-9400-89210e4bef82"
+ Name="IN OverrideRequest"
+ Guid="49f72abe-b42b-4fbf-9c6e-388b9337f733"
 >
 <ReqRef
  Id="2799a8e9-fa29-467e-8323-c5845b7416dd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ef9d726e-cb1b-474c-b4d7-7a9c0fec51fd"
+ Guid="739f0315-b625-4a89-8849-47624011df31"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -18428,24 +18428,41 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="87c4f4b7-a1c6-47ec-8d04-6e4afc140098"
+ Guid="e9f1f728-869b-44d7-befe-fd935183a4b7"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e8f5d308-c9c4-47a9-ba9c-c39d32003ed6"
+ Guid="6f072500-42d8-4841-91d5-c3cdd5b7b238"
 >
 <Actions>
 <Action
- Guid="8dfbf50f-eea2-46f3-8bf0-cad4c540730a"
+ Guid="1d5536fb-c20a-4f39-b73d-7672de645978"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="97452214-9864-41c3-8996-c675f47d6eb0"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="85457464-fdcb-4b70-8cd3-7f3659c5bba0"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="cf7a7ad6-49ce-43eb-a727-d2d35a5280fe"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="9fde1eac-2168-45e1-8d8d-96679e951ebd"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="2ce4ec98-9e55-4cf7-bc85-2ea8ed4401e4"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="0475173f-4d63-45ec-aa48-a395a29f5b9a"
+>
+<Actions>
+<Action
+ Guid="ac2c2529-1135-4997-aaf3-493c003f52cc"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="c045ce1f-290a-4cf8-932f-9659c0248d81"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18454,24 +18471,44 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="2c571fe1-9aef-4a84-a79f-531069dfcbe4"
+ Guid="13910ccf-4ab3-49ee-a07c-accef148edef"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="3300a5be-3bd3-4120-a659-3f28b8f3e524"
+ Guid="7d002ebe-9a17-4080-bd11-f4f3f3c9309f"
 >
 <Actions>
 <Action
- Guid="f5eab5c6-a028-47be-9e93-3adbac0ace3d"
+ Guid="962ec16b-4b88-41e7-ad43-a5e50b9ddbe4"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="21e509c4-6d02-4508-93ad-6755f48b77c2"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="c3fdc52f-20a6-4d42-955d-6381dd10b251"
+><Comment></Comment>
+
+Kernel.PowerOn &lt;- True</Action><Action
+ Guid="22f9c8a5-6df7-434c-89e1-942a5f813619"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="97bdb9b2-1b48-4745-a7e5-6e32926f79c5"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="261660b0-5c04-48d4-a166-e7041937f0aa"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="8b227b8f-db63-49b5-b266-146b46045240"
+>
+<Actions>
+<Action
+ Guid="06bbdf2a-9415-47f2-8072-f38d10d4ed3d"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="eb353adc-5051-4d85-a83e-bcf9145df6e7"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18480,22 +18517,40 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="1d8306f2-4c93-46a1-846c-316c1adb04f0"
+ Guid="ed91c65a-23de-4b00-bc81-978df3495ebc"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="3e4b7ef7-e8ab-4231-bd3b-1f4fb2fd6e6f"
+ Guid="9242274b-e864-493b-872d-8323dc6d95d7"
 >
 <Actions>
 <Action
- Guid="a2a498b4-9298-4aaf-8c23-fa7c6ac737f1"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="7e12023b-d251-4fb0-86de-b7cc312fb39e"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="b7842e58-3f65-44b2-bb15-a5948c7b78fe"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8df0643e-a8a2-490a-b1c6-7565fffc578a"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="270730cc-b6f8-410f-9917-1194be7efe94"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="5eeded09-0bf3-4e40-a71f-7548be36b032"
+>
+<Actions>
+<Action
+ Guid="0659ef7e-f5fa-4a07-acab-ae5e47ba6403"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c6c0eeac-3fbf-4bee-8474-b69e74e96c18"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18504,24 +18559,42 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="607e5b67-25fa-40c4-8e6a-ac41e71d2ab8"
+ Guid="5e3d51b8-56a2-4391-8aa7-66481853eed9"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ce29ea7f-136d-4a39-aa42-c3ab63bc54a7"
+ Guid="f9221500-26e4-4ec4-befe-ea7d322843ca"
 >
 <Actions>
 <Action
- Guid="8b5bce57-7ac0-4bac-bfb7-162bff96b15a"
+ Guid="51249c22-7145-48a9-8ffc-b56fc558f1e3"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="4df47d56-9e17-4250-81e3-6519a4ffba25"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="f7d3aec0-0732-4a15-9829-c1e0f2c338f1"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="1eabc37a-2bdb-41fa-a885-76c7f0801c69"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="79d175a7-815f-4c13-9d0e-719d3ebb5e26"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="026e1871-c5db-4b09-92eb-8255f04d477c"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6c70e8e4-58cf-4aab-95bc-2b56c618fe1d"
+>
+<Actions>
+<Action
+ Guid="42c97fc0-b12d-4859-971c-7f4f25c0b71e"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="8a982ca9-745f-42be-b51d-be8aae9bcfc8"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18530,24 +18603,42 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="711d9a4c-7d58-4f89-8891-863479e5e6da"
+ Guid="b1250b90-6d43-485f-9a18-3324058c38b8"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="f1def83b-1984-46d5-8260-3197cfd26e21"
+ Guid="fc58d7b7-7174-4382-be45-ce3de2d31cbd"
 >
 <Actions>
 <Action
- Guid="14dea7e5-5725-4e52-b038-5c979f58cb49"
+ Guid="4a8b41f8-db56-4164-a4ac-2b6a2d4f27de"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="136b4546-0896-4bcf-86e4-bdc4a1a4335d"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="26084ed9-e969-45ab-8a64-e742bf49e660"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="8412a53c-2380-4ca6-8cb3-331baea09acf"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="66df8d61-7114-4b65-a077-61f0d234e522"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="47ec0157-b50e-4e85-90f8-c350044dfe23"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="9e5660ca-85db-4d9b-a3ef-b07e34e2db1a"
+>
+<Actions>
+<Action
+ Guid="0f137206-1d97-4f1d-bcf5-d4ecf1384696"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3baf5a95-e460-4ba5-9afd-6b9db6653989"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18556,22 +18647,40 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="d8a2fd83-53c4-4c62-8598-eaefa98f8b76"
+ Guid="5b4358a8-55f7-470d-b888-7b09e1517be1"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="3ac241e1-3e12-48e2-9e3d-f667cec99e60"
+ Guid="899cde5b-a8ad-4171-a2e0-c69aa02c4648"
 >
 <Actions>
 <Action
- Guid="99d06e49-fe9a-413c-82db-2c8ddfa3b2c5"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="b74cd4ff-8dcf-4eb2-acbb-adfc58bb8e47"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="6dd81b2c-534a-4d61-9930-4792258aa8b1"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="79a41f71-1e11-4615-895e-e319b4891e57"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="7e45fd1e-a5e0-4dc2-9704-26e8fbf21350"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e58718b7-da25-4979-8dff-58d9dccd5062"
+>
+<Actions>
+<Action
+ Guid="f450b25c-d294-49e9-a94c-ae966db2aff4"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b29d02a3-900a-4bd5-9a42-86d434d2f659"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18580,22 +18689,40 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="82579ba5-03c3-4d1e-81c5-1befca38f07d"
+ Guid="fadb3bcc-e181-44da-863c-4dda3cff324a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2bee7648-588b-495e-bf7e-60e8f962fe5d"
+ Guid="81ff86ee-6153-4c94-860c-acb87123b7a7"
 >
 <Actions>
 <Action
- Guid="02cd5f77-f77e-433b-83b7-f18ffe66cb1d"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="54cde93e-e000-4130-a2e9-99eb56897a80"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="bdf9e1f1-23c0-4d01-86ae-2bf8486b057f"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="fe1c4136-a917-4af1-a302-5fc321956118"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="16f9e36b-feaa-40e3-8225-c397eec2ae3c"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="SubStep 2"
+ Guid="92a243f6-b5e2-4c6b-a524-a15d100e9043"
+>
+<Actions>
+<Action
+ Guid="1ddf722a-ec13-4dd1-bd08-706a79687783"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4147442a-5ae8-4308-9a3e-51dad5f81310"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18604,22 +18731,40 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="eb423461-d437-40e1-b45f-bee1be3226d9"
+ Guid="35430931-3ee3-429a-aff6-f1d3a5025f22"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="52ea41b9-9ef8-40ff-a4d8-3ff8b3ee3566"
+ Guid="1828c946-2e04-4a31-b2bc-1a89c1137f09"
 >
 <Actions>
 <Action
- Guid="ab403518-6c64-406e-9d51-725adcfec6b4"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="15bad16c-2382-4597-a318-86eee44d1b67"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="7e527b1a-a5a8-4a29-b23b-d7eee49e292b"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="72c9996a-f84e-4588-ba7b-77eebbcc3776"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="d8995984-da60-4d90-b336-4364c0f7d32d"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="b3ca921b-030e-4d30-9486-c8a65103174c"
+>
+<Actions>
+<Action
+ Guid="7d03451d-a6f1-457f-a90f-bfa175bc8851"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="afc152a2-703a-4e1b-94c2-201ad6798293"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18628,26 +18773,44 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="a322c6a3-b785-4ed6-a73c-4d462c34c259"
+ Guid="99b24395-0b8d-4afc-b800-ee863e7b072b"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="01a7a3c4-a388-489c-8ec7-e740c5c72144"
+ Guid="f00da2ca-68c2-47d5-8f1b-66ae26d74863"
 >
 <Actions>
 <Action
- Guid="65e4e7b3-fd39-4cbc-9484-bbe2b8d41789"
+ Guid="126b95e2-7852-4a54-8aa4-0a720694318a"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="a83ca78e-9802-4b29-91af-d3570340d673"
+ Guid="37bd0780-5d34-4fe1-924b-aa5386c95386"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="82337d82-c22e-4c82-8273-1637b5ee062e"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="1b3c8689-3c8b-451a-9a93-751c94d022e2"
+>TIU.SleepingRequested &lt;- True</Action><Action
+ Guid="1b67c762-7b06-4a83-b2a4-6d6b09d90b66"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="afc2691a-236f-418d-9cea-8b6222d9ca19"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="2af37109-ffb4-49bd-83a1-525847d22b51"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a18c75d3-415e-4b4c-9ece-a9d3196b8fe3"
+>
+<Actions>
+<Action
+ Guid="d1cb84a5-f1f9-4693-8805-762809370284"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d36a90d7-a75e-41e8-b92f-a41f76e4d33c"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18656,24 +18819,42 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="6b8c63ff-74f7-4791-8810-96089a07cd44"
+ Guid="c90df3d6-25b4-49a4-b2de-c4f6d04b8c93"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7606332a-cc5b-42ec-bce7-21bd5a6dac52"
+ Guid="83cd8339-d461-4443-af51-3b4829fa1469"
 >
 <Actions>
 <Action
- Guid="6579b570-6be9-4aba-99f1-61b33f878075"
+ Guid="5a4ba889-fb8c-4857-8360-8bed514fcfbe"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="c4ed91e6-aac0-4f9d-a2db-1d36edb7336f"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="20a89bfc-8bc3-4cec-85ce-d42e0233f680"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="504a62e8-8ecd-4b80-ac96-4d0a3cd41651"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8a8c2ae2-9a78-4929-bd34-21f962b10cb2"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="a0a492c2-94b2-477c-873c-1c7dc3d2f5b1"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="de42435e-ca10-41a1-9169-1ec27036046d"
+>
+<Actions>
+<Action
+ Guid="f7ad2083-a566-4e48-9390-8a4458b7621d"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="777be6ac-6e52-4df4-b38f-102b610a106a"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18682,24 +18863,42 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="f08bd325-7d8f-4f13-b866-c1a2246fa9ea"
+ Guid="4d11d5da-26d3-44d3-a0ae-028d7724e194"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ecf6c409-15a0-4dab-bb90-a381e9e56e3c"
+ Guid="476f916c-10b5-49ae-87aa-c9d2d4c52b3a"
 >
 <Actions>
 <Action
- Guid="08dbfbb9-c791-4d77-9796-ac37c830e5b8"
+ Guid="39a7bfde-7fc8-48e8-b6d1-8fb5d743836e"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="dc881a04-c12e-4519-9f1e-7d92d2295347"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="504e6e18-4701-4887-914c-dcb12d0c8262"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="0be52826-6998-4302-acab-a378f1550bbb"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8018ccbd-59b1-426a-99f6-1121f50647f4"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="207c3104-16f1-4147-b0b8-b906e94bf005"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="7d504db2-25fb-4e6c-8607-a9e05b19496b"
+>
+<Actions>
+<Action
+ Guid="11377f07-d113-4eff-9174-7d74e44702a3"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="049f7725-b6bb-4338-ad28-2803c262116f"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18708,22 +18907,40 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="408c23dc-8b9b-4d66-9d31-c42f4087a520"
+ Guid="5b659960-ce28-4989-adc3-99245e8af382"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="04322317-9745-4f6f-b0cd-66721989533b"
+ Guid="7e49a290-fdd6-4a2e-80ff-e73017e4af96"
 >
 <Actions>
 <Action
- Guid="6c4b696b-7707-464d-8f43-594fd36c0439"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="0799ac42-184f-4878-a13a-9bf1fab2d550"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="d069466b-4ff5-46fb-9f4d-852277e2588c"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="6954d040-72b7-4e17-86d1-147892c9dc95"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="1523f8ef-3c7c-457b-b68a-1fc3730487a1"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="46c8a30a-ca14-4c23-972b-5377803be222"
+>
+<Actions>
+<Action
+ Guid="329f6165-dc16-4747-9935-ca7c40a8d402"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3ef8b492-fc4a-4ba0-b0ba-c808889c7a9c"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18732,22 +18949,40 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="9b9c6ee1-592e-4fae-8d63-a8c0d2f42fe0"
+ Guid="e3f3b403-2402-4bf2-88ec-56b1cb5ae67a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="080cf54e-b7c3-4d8b-b95b-f36a97e2f56e"
+ Guid="5372b45c-cda9-41e2-b06b-12dbf2eb8ae6"
 >
 <Actions>
 <Action
- Guid="0a9e2a7c-846c-4e47-b2d9-c1972964c33a"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="0f716967-44da-43ec-9c16-d84d7b380b35"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="0faabf8d-be30-4172-9483-374a4c8fd7f7"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="926b8f8d-17b8-433e-b550-0debf2addeea"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="231ea29c-6f22-45df-9c0c-e6703a4070ef"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="f86515de-4be9-4e95-91f5-1d056915e0cc"
+>
+<Actions>
+<Action
+ Guid="0722816c-6393-496c-8f9a-d5ba44fb8a04"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="232bc9f1-da83-4f43-9a99-4cfd58d28fd3"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18756,22 +18991,40 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="bfe0908f-ef09-4ec6-83e0-5fb8711168be"
+ Guid="13d01286-930d-4c2e-bd79-f33533ee4ba9"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="71a09a49-2424-4dc3-89b7-70f23b37d6ac"
+ Guid="cecfd571-a4e6-4984-a9ef-d92acaf2f7cb"
 >
 <Actions>
 <Action
- Guid="2897fa4b-9efa-4052-9df5-27fde60963b9"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="4be567a3-12d8-4ddf-af6c-c05f1064b64c"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="c525b995-e6b6-4c3e-bef3-214f5db95b72"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="32fe06c7-e05c-45ea-9f83-094e68e58682"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotApplicable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="5bed3539-b76a-4e4e-83bd-ba2a6c76ce89"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="309dbdb3-ab88-4b2c-8c1b-395e5d6f23c4"
+>
+<Actions>
+<Action
+ Guid="84751b5d-c0cc-4725-b137-228b442c3483"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="39e7bcfc-d1d2-42b9-8038-e51b666ae1ea"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18780,22 +19033,40 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="1ab466a0-cc83-4123-afb9-52bdc00f58fb"
+ Guid="c4d494c2-e6a7-428c-8b67-70e262cd496d"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="028e57f7-94a6-434a-a53e-18b270f875c5"
+ Guid="289906aa-bb1b-4417-8c7c-f2b59fa5a7b7"
 >
 <Actions>
 <Action
- Guid="64b8aa55-59d8-4680-8a20-4fac62684ef7"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="a6836279-e2d4-4852-929f-0068185db4af"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="cd1767a3-c383-43c4-b48b-c3d74a356b14"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="3462bfb7-e84e-4560-9cb9-de7cb3373b3f"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotApplicable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="b9f8051d-34d8-4c3e-8f77-88b195df5807"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="51ab3876-7edd-42fa-8b08-cafad2b3b03d"
+>
+<Actions>
+<Action
+ Guid="56c624fd-a92b-4ef6-ba62-b96b548e706d"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1ee105dd-1b4c-4144-8245-b1a8dc9bcdf6"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18804,26 +19075,44 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="11798e9b-a77b-4ade-aef4-8ad3ea250d18"
+ Guid="98231564-096c-4fb9-89ea-1cf7e1c0bd37"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="9ac380ea-a69d-425e-b107-bccefc125fd8"
+ Guid="e7bfb39e-7301-4c2f-9ce1-22e266c74af7"
 >
 <Actions>
 <Action
- Guid="6231ad09-190c-4ba7-90c2-0f5a38f259ce"
+ Guid="87689f97-04ab-4b3d-9843-0b955208c1c2"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="22ec9bd0-b337-4b04-8622-65e1319829aa"
+ Guid="4db5c8c1-65cf-41b0-9e97-02613eb7aa77"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="013976df-7b98-425a-81ac-fb773f714e7b"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="d3d5ccb6-14f7-47c2-bf72-2f58aff922b4"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="084fd098-4b58-4453-9b69-16d5de080341"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="ceeca755-43dc-421d-9958-b29ea63bd0e0"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+ DeadLine="1"
+ Guid="4881c46b-64af-4aa6-87f7-c3aa2ba35622"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="62ed3c97-164d-4116-a64a-96dad98dc966"
+>
+<Actions>
+<Action
+ Guid="f63f6747-efa0-44fc-88a5-501368158bc6"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="bd901544-57ae-486c-9f2d-7734a8f7b0e0"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -18832,22 +19121,40 @@ Kernel.PowerOn &lt;- True</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="a7b34d38-ca85-4484-82a4-f1a3169824d9"
+ Guid="1f9e2d1f-3fa5-4d0a-bc23-9d8b1408d184"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ec3709f1-09a0-4279-a901-522129749bf8"
+ Guid="1d15d352-a2b2-4396-8797-e3d4a97f5b80"
 >
 <Actions>
 <Action
- Guid="c9a36266-d6c9-4e23-9d22-83361d06ff06"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="c3d583e5-5d7a-4a4c-b046-0d9bf22d87d1"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="f7bccd26-d7b1-4e69-bdc7-acdf66550ed6"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="a36c3713-038a-4eba-8ce9-ea3205eeee1f"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
+ DeadLine="1"
+ Guid="c0c1f1c7-d0b2-43f3-a591-dc5945cdd448"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="fbccb2d4-62dd-4553-b34c-9fb7efaeadc9"
+>
+<Actions>
+<Action
+ Guid="a5e15bdc-6620-403c-b9cf-f71d7f991594"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest
+()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="456dd413-1728-4ed2-897b-bc1c2e7aa4f7"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
