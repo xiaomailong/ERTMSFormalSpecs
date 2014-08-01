@@ -2386,7 +2386,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
  Guid="3ca18a1c-a5c4-4fa4-8df9-3a451ea588cb"
 >THIS &lt;- HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action
  Guid="9a0b3d4f-3720-433f-98fb-44f7f282703c"
->DMI.MasterDMI().InitiateNonLeadingRequest()</Action><Action
+>DMI.MasterDMI().In_NonLeadingRequest.InitiateRequest()</Action><Action
  Guid="53277c45-afcc-4bb0-9d91-b72fbadceb57"
 >DMI.MasterDMI().InitiateShuntingRequest()</Action><Action
  Guid="1c386f42-892b-4d1e-9f0a-b64a3cdf7ac6"
@@ -2484,7 +2484,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
  Guid="38d2526d-d9bb-46c0-9a33-4fd93a5f5b7a"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="4f8db88e-3165-4661-bdc5-92c554074578"
->DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.Disable()</Action><Action
  Guid="85d5c94d-3176-4321-980a-89906a0a0b71"
 >DMI.MasterDMI().In_TrainData.InputInformation.Disable()</Action><Action
  Guid="463167fb-e523-4010-bd09-8a3064471d6d"
@@ -3317,7 +3317,7 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="28d21e74-b5c5-4d5a-81c5-631b8d70a4b2"
->DMI.MasterDMI().InitiateNonLeadingRequest()</Action></Actions>
+>DMI.MasterDMI().In_NonLeadingRequest.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

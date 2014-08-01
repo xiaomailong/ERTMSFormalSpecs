@@ -436,68 +436,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateNonLeadingRequest"
- Guid="89c391e8-f26e-45c2-bec3-aa35766926fd"
->
-<Comment></Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="182bb999-e822-4fe2-9e8e-c49c5964d97a"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bb02fa85-f1dc-4446-8867-079d60c13fca"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="cc673398-f425-4572-983b-bd69e6affee8"
->
-<PreConditions>
-<PreCondition
- Guid="0bbb3870-a44d-4809-b7f9-a8d5dd162078"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1f9ba3a3-9429-4d3d-a583-0f7cf135a2ff"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="a61e1e4c-0d5a-443d-8fe7-2688549519c3"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
- Guid="b701463f-ef08-4142-b3b6-78a2f6c246c3"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="282e040d-d34b-438b-a3b8-cb5d47ce2779"
->In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="1df2a125-8ea7-47f5-96e7-fc02e17e674d"
->In_NonLeadingRequest.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
  Name="InitiateRBCContactInformationRequest"
  Guid="896a9ec8-f1cc-49ee-a82a-bae035d64bbc"
 >
@@ -594,6 +532,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Name="InitiateOverrideRequest"
  Guid="aef26f0f-4172-4ceb-88c6-609911471a65"
 >
+<Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -3950,8 +3889,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >In_OverrideRequest.ProcedureIn &lt;- In_OverrideRequest.ProcedureIn.NotAvailable</Action><Action
  Guid="79931442-1eec-422a-b7b2-b2ee3fb2591f"
 >In_ShuntingRequest.ProcedureIn &lt;- In_ShuntingRequest.ProcedureIn.NotAvailable</Action><Action
- Guid="e38fe639-b19b-4b3d-bbba-d72a92533692"
->In_NonLeadingRequest.ProcedureIn &lt;- In_NonLeadingRequest.ProcedureIn.NotAvailable</Action><Action
  Guid="345e6840-2ddb-437d-9f93-6240baaf6b91"
 >In_TrackAheadFree.ProcedureIn &lt;- In_TrackAheadFree.ProcedureIn.NotAvailable</Action><Action
  Guid="1d9dabcb-a884-48d4-be2a-ef71c9aea041"
@@ -4092,8 +4029,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >In_OverrideRequest.GoToAvailable()</Action><Action
  Guid="91fe4d3c-2d04-42fe-9d3f-3ca8a826e583"
 >In_ShuntingRequest.GoToAvailable()</Action><Action
- Guid="d4db2041-d680-44d0-a3ab-d91fdec10ba1"
->In_NonLeadingRequest.GoToAvailable()</Action><Action
  Guid="dcd9adf5-358f-4c06-ba26-3ab948e9f2de"
 >In_TrackAheadFree.GoToAvailable()</Action><Action
  Guid="3e2861f2-7e84-412f-983e-e36d72fea81b"
@@ -4232,8 +4167,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
  Guid="8a5aa8f1-8911-45b6-acdf-4a8a9d76cd09"
 >In_OverrideRequest.GoToAvailable()</Action><Action
- Guid="da6d1963-68a6-46e8-bbaf-850bd58da01f"
->In_NonLeadingRequest.GoToAvailable()</Action><Action
  Guid="d970d8e2-9a17-46dc-8129-9483f7f7a584"
 >Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.Available</Action><Action
  Guid="cce31c72-66eb-4a50-b956-58fb84a3a403"
@@ -4387,8 +4320,6 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 In_OverrideRequest.GoToAvailable()</Action><Action
  Guid="9fd01df9-92b7-4b8e-a296-0b324c676527"
 >In_ShuntingRequest.GoToAvailable()</Action><Action
- Guid="c7a723b2-b9d5-40eb-ab67-3734a97d16ef"
->In_NonLeadingRequest.GoToAvailable()</Action><Action
  Guid="2d497b71-038d-4bcf-be5c-b70b71e90a9b"
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.Available</Action><Action
  Guid="65068899-c713-4332-a79d-ae590a695e98"
@@ -4527,8 +4458,6 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >In_OverrideRequest.GoToAvailable()</Action><Action
  Guid="92b41201-667e-4f9b-9cfe-2294a96d3ebf"
 >In_ShuntingRequest.GoToAvailable()</Action><Action
- Guid="83ae6f00-1761-420b-b36d-98596f8fd402"
->In_NonLeadingRequest.GoToAvailable()</Action><Action
  Guid="c58ac0a2-37de-43c7-9ff8-226c97d38ccb"
 >In_TrackAheadFree.GoToAvailable()</Action><Action
  Guid="315ea8c3-d895-429f-ac43-ee32b0ced549"
@@ -4671,8 +4600,6 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >In_OverrideRequest.GoToAvailable()</Action><Action
  Guid="880e4f3f-dc88-4153-b401-5fabe6dfe62a"
 >In_ShuntingRequest.GoToAvailable()</Action><Action
- Guid="55001210-62c7-41ab-bfa0-01de1dcdf2cc"
->In_NonLeadingRequest.GoToAvailable()</Action><Action
  Guid="b5f278e1-e77f-4a33-bbef-7e32e5025d69"
 >In_TrackAheadFree.GoToAvailable()</Action><Action
  Guid="e425d268-dbc9-4383-8a7e-c5bf4cb61c27"
@@ -4813,8 +4740,6 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >In_OverrideRequest.GoToAvailable()</Action><Action
  Guid="9d75fe38-77cf-443f-9fa8-ddd50832a793"
 >In_ShuntingRequest.GoToAvailable()</Action><Action
- Guid="6bb48819-46ef-429d-b76e-313f5767f824"
->In_NonLeadingRequest.GoToAvailable()</Action><Action
  Guid="5aeb28c2-1dab-4e4c-ac78-1f3e17790c2f"
 >In_TrackAheadFree.GoToAvailable()</Action><Action
  Guid="99b64e57-2b67-4a97-832c-98ca6ab36f5a"
@@ -4977,8 +4902,6 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >In_OverrideRequest.ProcedureIn &lt;- In_OverrideRequest.ProcedureIn.NotAvailable</Action><Action
  Guid="a3c1cb03-aad6-4310-b99c-06f3fba29b87"
 >In_ShuntingRequest.ProcedureIn &lt;- In_ShuntingRequest.ProcedureIn.NotAvailable</Action><Action
- Guid="c9be436c-1ff2-4179-a399-20ce3855730b"
->In_NonLeadingRequest.ProcedureIn &lt;- In_NonLeadingRequest.ProcedureIn.NotAvailable</Action><Action
  Guid="e42afb63-fe49-48f4-9646-483150e5d6a0"
 >In_TrackAheadFree.ProcedureIn &lt;- In_TrackAheadFree.ProcedureIn.NotAvailable</Action><Action
  Guid="0dc99cd7-5206-4e8e-93af-a79eda646b82"
@@ -5129,8 +5052,6 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
  Guid="3ee19a05-07d9-43a0-a946-a1838bea122a"
 >In_TrainIntegrity.ProcedureIn &lt;- In_TrainIntegrity.ProcedureIn.NotAvailable</Action><Action
- Guid="d248ee06-da94-44c7-8564-c4917427a506"
->In_NonLeadingRequest.ProcedureIn &lt;- In_NonLeadingRequest.ProcedureIn.NotAvailable</Action><Action
  Guid="40c313fd-e070-4376-a19a-ca08ee08ffc3"
 >In_TrackAheadFree.ProcedureIn &lt;- In_TrackAheadFree.ProcedureIn.NotAvailable</Action><Action
  Guid="5ad3c961-fd1c-4912-80aa-ae2d9db9e3a4"
@@ -5271,8 +5192,6 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >In_OverrideRequest.ProcedureIn &lt;- In_OverrideRequest.ProcedureIn.NotAvailable</Action><Action
  Guid="0e346384-e534-4477-982a-64d49420aebb"
 >In_ShuntingRequest.ProcedureIn &lt;- In_ShuntingRequest.ProcedureIn.NotAvailable</Action><Action
- Guid="298b0dbe-ccff-4eee-afc1-27ba1f8fdc5d"
->In_NonLeadingRequest.ProcedureIn &lt;- In_NonLeadingRequest.ProcedureIn.NotAvailable</Action><Action
  Guid="dd96435c-7450-488d-a184-094f11457797"
 >In_TrackAheadFree.ProcedureIn &lt;- In_TrackAheadFree.ProcedureIn.NotAvailable</Action><Action
  Guid="10ac970e-117e-48e2-a9ab-8359c6382f21"
@@ -5429,8 +5348,6 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
  Guid="c0808a3e-0dfe-4c56-a979-f0b161b11a21"
 >In_TrackAdhesionFactor.ProcedureIn &lt;- In_TrackAdhesionFactor.ProcedureIn.NotAvailable</Action><Action
- Guid="04470cab-e1f4-4812-bc21-46262a416d4c"
->In_NonLeadingRequest.ProcedureIn &lt;- In_NonLeadingRequest.ProcedureIn.NotAvailable</Action><Action
  Guid="f2882905-69d7-4c6b-b290-593dd4abf0ec"
 >In_SRModeSpeedLimitAndDistance.ProcedureIn &lt;- In_SRModeSpeedLimitAndDistance.ProcedureIn.NotAvailable</Action><Action
  Guid="c42cc015-f332-4132-ac68-8bd19ebdfe08"
@@ -5521,8 +5438,6 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >In_OverrideRequest.ProcedureIn &lt;- In_OverrideRequest.ProcedureIn.NotApplicable</Action><Action
  Guid="700552cc-82b4-4e8d-9441-ee5d58e97551"
 >In_ShuntingRequest.ProcedureIn &lt;- In_ShuntingRequest.ProcedureIn.NotApplicable</Action><Action
- Guid="e453086d-02f8-4a7f-8745-5e653229a5a3"
->In_NonLeadingRequest.ProcedureIn &lt;- In_NonLeadingRequest.ProcedureIn.NotApplicable</Action><Action
  Guid="5a950214-4f1b-4b95-a47a-2d258957c3cf"
 >In_TrackAheadFree.ProcedureIn &lt;- In_TrackAheadFree.ProcedureIn.NotApplicable</Action><Action
  Guid="06ec4a1e-5029-43bc-984e-4d56307c447b"
@@ -5663,8 +5578,6 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >In_OverrideRequest.ProcedureIn &lt;- In_OverrideRequest.ProcedureIn.NotApplicable</Action><Action
  Guid="e845fdf3-3463-4ad6-8054-7fdf35b01972"
 >In_ShuntingRequest.ProcedureIn &lt;- In_ShuntingRequest.ProcedureIn.NotApplicable</Action><Action
- Guid="f7f8f2ef-ec7e-4e04-9f73-2ae9f8d9fc4a"
->In_NonLeadingRequest.ProcedureIn &lt;- In_NonLeadingRequest.ProcedureIn.NotApplicable</Action><Action
  Guid="975afcd9-af38-41c6-8c05-a27f0b3296a2"
 >In_TrackAheadFree.ProcedureIn &lt;- In_TrackAheadFree.ProcedureIn.NotApplicable</Action><Action
  Guid="cb56cbe2-c846-416e-a6a3-7bede7c7c019"
@@ -5841,8 +5754,6 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.NationalSystemAvailability</Action><Action
  Guid="5aa436cd-7b00-4d34-a7c6-75a8d89b4bc7"
 >In_TrainIntegrity.ProcedureIn &lt;- In_TrainIntegrity.ProcedureIn.NotAvailable</Action><Action
- Guid="f6d96435-a799-45ce-b383-998ae7d6cea8"
->In_NonLeadingRequest.ProcedureIn &lt;- In_NonLeadingRequest.ProcedureIn.NotAvailable</Action><Action
  Guid="db8ab649-9677-4a3d-b0b0-ff2d7167ce09"
 >In_TrackAheadFree.ProcedureIn &lt;- In_TrackAheadFree.ProcedureIn.NotAvailable</Action><Action
  Guid="8d4d9119-26c3-4ff1-aec8-30ec53c7f7d1"
@@ -5977,8 +5888,6 @@ In_OverrideRequest.GoToAvailable()</Action><Action
 >In_OverrideRequest.ProcedureIn &lt;- In_OverrideRequest.ProcedureIn.NotAvailable</Action><Action
  Guid="81149063-b400-46eb-babf-3e26c9e206e6"
 >In_ShuntingRequest.ProcedureIn &lt;- In_ShuntingRequest.ProcedureIn.NotAvailable</Action><Action
- Guid="2829ed65-4951-477f-9e69-769e0697e106"
->In_NonLeadingRequest.ProcedureIn &lt;- In_NonLeadingRequest.ProcedureIn.NotAvailable</Action><Action
  Guid="aaf56534-0c41-4443-bdfe-31df57a6b359"
 >In_TrackAheadFree.ProcedureIn &lt;- In_TrackAheadFree.ProcedureIn.NotAvailable</Action><Action
  Guid="e8fee688-035f-413e-bfa2-82a8743436aa"
@@ -6180,6 +6089,11 @@ In_OverrideRequest.GoToAvailable()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b18c27da-8c45-411d-983f-af0f6a44b60f"
 >
+</ReqRef><ReqRef
+ Id="7625fa65-c451-4b57-83e0-fa8f4ebf7336"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="814cabc6-89a4-459e-9316-76fb70d856f1"
+>
 </ReqRef><Comment>Updates the requests according to the mode change</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -6265,7 +6179,9 @@ In_ContinueShuntingOnDeskClosureRequest.TrackMode()</Action><Action
 In_ExitOfShuntingRequest.TrackMode()</Action><Action
  Guid="731ad583-ccff-46b7-a8f6-c94daf946a56"
 ><Comment></Comment>
-In_Isolation.TrackMode()</Action></Actions>
+In_Isolation.TrackMode()</Action><Action
+ Guid="45f2221b-307c-42e5-9e8c-1fa4a1faa127"
+>In_NonLeadingRequest.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
