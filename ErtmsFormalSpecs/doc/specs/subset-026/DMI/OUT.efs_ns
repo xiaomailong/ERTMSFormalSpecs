@@ -7274,6 +7274,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Update the TC profile without sound horn"
  Guid="4090d354-4677-4507-a18a-40a5fc2fa9d0"
 >
@@ -7287,10 +7288,11 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="50bb519e-0b51-4ed0-920e-f0ffa1f59e64"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Fetches the track conditions grouped with brake inhibition from the kernel for display on the DMI</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Update the TC profile without sound horn"
  Guid="561ce012-08f0-4304-b556-35eed2b66607"
 >
@@ -7305,13 +7307,15 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Update displayed announcements"
  Guid="ff47369f-f0a4-4da1-b59f-ad868d89de75"
 >
-<Comment></Comment>
+<Comment>Keeps the displayed announcements up to date by fetching new announcements from the kernel and deleting passed announcements</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Update displayed announcements"
  Guid="aa272eda-c845-48e0-91f9-d146e2f3bc97"
 >
@@ -7324,6 +7328,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Add new announcements"
  Guid="42467e2e-ab7c-4b58-9abb-956cafa70971"
 >
@@ -7362,9 +7367,11 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="da6772b2-d67d-4fcc-a94c-212dce117c66"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Add stored announcements to the list of announcements displayed on the DMI</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Copy relevant announcements to Announcements"
  Guid="6d350436-ccf7-47ca-bd7b-1a62d3d6db91"
 >
@@ -7383,6 +7390,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Delete passed announcements"
  Guid="2cf86803-d4b1-4abd-b16a-2bada0f9f1f9"
 >
@@ -7431,10 +7439,11 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e15c91e6-6f55-455e-b696-b2bdd15700dd"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Delete passed announcements from the displayed list</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Remove announcements past their end condition"
  Guid="6b494b2e-2c53-4705-8eec-6522ca03e158"
 >
@@ -7472,6 +7481,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCBrakes"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="TrackConditions"
  Guid="13896f19-7cb7-45e3-857c-b739dc0cee8e"
 >
@@ -7480,6 +7490,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementCol"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="Announcements"
  Guid="88d93cbd-0c71-4469-a119-d4da984bb569"
 >
@@ -7961,6 +7972,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Update the TCProfile with sound horn"
  Guid="4410afeb-6e59-4243-ae9c-37065be322bc"
 >
@@ -7969,10 +7981,11 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d2df142d-ba32-41b5-95cc-08a6f596d82f"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Fetches the track conditions grouped with sound horn from the kernel for display on the DMI</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Update the TCProfile with sound horn"
  Guid="0dc169fd-41cd-4887-b5e0-520154065a58"
 >
@@ -7985,12 +7998,15 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Check non stopping area and tunnel stopping area ends"
  Guid="0143daf8-1cac-46c0-a8b6-5a1fc440fc6d"
 >
+<Comment>If the train is in a non stopping area, check that it has not passed the end (which is not tied to a fixed location)</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="In non stopping area"
  Guid="df251260-bf96-439b-893b-e4b0049d4f95"
 >
@@ -8004,7 +8020,8 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1ad19272-279f-44e5-9464-9f8d9cae08a3"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Check for the end of a non stopping area, if applicable</Comment>
+<PreConditions>
 <PreCondition
  Guid="691fc000-d2fe-48d0-9fc6-d895fc19d014"
 >Kernel.TrackDescription.TrackConditions.General.CurrentConditions().NonStoppingArea</PreCondition><PreCondition
@@ -8027,6 +8044,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
     TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
 )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="In tunnel stopping area"
  Guid="518946a6-da38-4a0a-9e3d-4e48017188d1"
 >
@@ -8035,7 +8053,8 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f70936f8-66a1-4f27-b571-bd19c4b9e9dc"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Check for the end of a tunnel stopping area, if applicable</Comment>
+<PreConditions>
 <PreCondition
  Guid="1c2819f1-c12c-4704-ad29-dac614ed2b7c"
 >Kernel.TrackDescription.TrackConditions.General.CurrentConditions().TunnelStoppingArea</PreCondition><PreCondition
@@ -8060,12 +8079,15 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Copy the TCProfile to the DMI"
  Guid="51ffb9cf-3010-4881-9a15-59b75be10def"
 >
+<Comment>Fetch the track condition profile for display on the DMI</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="MAP TCProfile to the local variable"
  Guid="c6a5c0a5-ca0d-48b5-a4dc-5934fef31914"
 >
@@ -8073,20 +8095,22 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 </PreConditions>
 <Actions>
 <Action
- Guid="848f8401-d665-400b-b48d-be8bbfa8d170"
-><Comment></Comment>
-TrackConditions &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
+ Guid="120e50dc-b447-40f5-9e72-762c0b86a068"
+>MapToDMI()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Update displayed announcements"
  Guid="86095bc2-31aa-41c5-98bf-710505a4ee5e"
 >
+<Comment>Keeps the displayed announcements up to date by fetching new announcements from the kernel and deleting passed announcements</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Update displayed announcements"
  Guid="ea7c2cff-4b92-444f-bfbd-20e26d0ba90f"
 >
@@ -8099,12 +8123,15 @@ TrackConditions &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProf
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Add new announcements"
  Guid="2f25fe10-0942-4e7c-8544-e086f3777671"
 >
+<Comment>Add stored announcements to the list of announcements displayed on the DMI</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Copy relevant announcements to Announcements"
  Guid="c3ee7985-d1ba-4ee5-bd00-3185dd3fe4e8"
 >
@@ -8124,12 +8151,25 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Delete passed announcements"
  Guid="ba1832f4-5f9f-4895-aed6-018630be5072"
 >
+<ReqRef
+ Id="9ca199da-b431-4208-bbb1-61052c8839e8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b024fee8-cc49-4572-a943-132163ce150a"
+>
+</ReqRef><ReqRef
+ Id="02fc4b04-89a4-4fac-b594-da0bd5d3d31b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="18a905c2-6b06-41b1-a29c-7ad5d17a1bc0"
+>
+</ReqRef><Comment>Delete passed announcements from the displayed list</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Remove announcements past their end condition"
  Guid="d8e69cc4-5f84-4777-8303-85bb7247e847"
 >
@@ -8144,6 +8184,99 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MapToDMI"
+ Guid="6b9249d8-3ea9-4819-b42b-3fe016a7c8de"
+>
+<Comment>Map the track conditions in the kernel to the DMI</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Copy the track conditions"
+ Guid="18407a17-9a33-4a25-9f8d-0f093c41e758"
+>
+<Comment>Copy the general track conditions, converting to the appropriate structure</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Copy the track conditions"
+ Guid="7223634b-8a0a-4126-966c-63ccb2206c4f"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="848f8401-d665-400b-b48d-be8bbfa8d170"
+><Comment></Comment>
+TrackConditions &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Copy the changes of traction systems"
+ Guid="66598e95-5d74-4a1a-8300-bb13ded6551b"
+>
+<Comment>Insert the changes of traction system</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Copy the changes of traction systems"
+ Guid="f3a6c5be-3628-41ce-a5d2-26ca2eb4bbda"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9933f72e-c217-4e30-8566-3181442f2f62"
+><Comment></Comment>
+APPLY InsertTractionSystem(X)
+ON Kernel.TrackDescription.TrackConditions.TractionSystems.TCTractionSystems</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="InsertTractionSystem"
+ Guid="c41db434-8b9b-4531-9aee-0308afb13bc6"
+>
+<Comment>Inserts a change of traction system profile point into the list of displayed track conditions</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformation"
+ Name="TractionSystem"
+ Guid="b6e6a79d-e192-4f5b-826d-8ca9279b1e7f"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Insert element"
+ Guid="9f851c49-8952-4343-862a-6608d52160bb"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Insert element"
+ Guid="17681255-ccff-4a74-982a-d364549d7af3"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="8789d6b0-a839-4feb-8fdf-f3584bd08942"
+>INSERT Kernel.TrackDescription.TrackConditions.TractionSystems.MapToSoundHorn(TractionSystem)
+IN TrackConditions</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="OutputInformation"
  Default=""
@@ -8167,6 +8300,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCSoundHorn"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="TrackConditions"
  Guid="d173d1dc-fa75-4e91-8d2b-b378f6a9607a"
 >
@@ -8175,6 +8309,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementCol"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="Announcements"
  Guid="3e9fd95b-9a3e-4052-b64f-1c991c3f9517"
 >
@@ -8187,6 +8322,11 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  Id="4c148829-6224-4b0d-b6f5-d506545632eb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="eb5908c6-594e-439b-94e9-8ce3d6adb6da"
+>
+</ReqRef><ReqRef
+ Id="9ca199da-b431-4208-bbb1-61052c8839e8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="16dbd31a-c116-4cb6-a03a-ed2ce0da7e57"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StateMachines>

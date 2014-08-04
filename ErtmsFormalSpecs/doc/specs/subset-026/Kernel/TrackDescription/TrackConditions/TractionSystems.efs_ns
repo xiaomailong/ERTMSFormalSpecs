@@ -244,6 +244,112 @@
         X2=&gt;RESULT)
   INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
+</Function><Function
+ Type="General.TCDisplay.TCTypeEnum"
+ Default=""
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="PacketToAnnouncement"
+ Guid="bc77c5c0-a356-4a68-8151-64f23e344f02"
+>
+<Comment>Converts the traction system type received in the message to a TCTypeEnum value for announcements</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.M_VOLTAGE"
+ Name="TractionSystem"
+ Guid="7a025c12-f96d-4b60-8be9-8f7386564e43"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="No traction system"
+ Guid="ced3b648-54a5-4c85-8dbe-f517c1eca595"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="0b195d30-23be-49a7-b88f-db850e515ac9"
+>TractionSystem == Messages.M_VOLTAGE.Line_not_fitted_with_any_traction_system</PreCondition></PreConditions>
+<Expression>General.TCDisplay.TCTypeEnum.TractionSystem__none</Expression>
+</Case><Case
+ Name="AC 25 kV 50 Hz"
+ Guid="5d732ac5-ad93-4b8e-8456-488b153e7646"
+>
+<PreConditions>
+<PreCondition
+ Guid="d5373545-4c2c-4ee9-9d7b-c6a3daf58788"
+>TractionSystem == Messages.M_VOLTAGE.AC_25_kV_50_Hz</PreCondition></PreConditions>
+<Expression>General.TCDisplay.TCTypeEnum.TractionSystem__AC25kV</Expression>
+</Case><Case
+ Name="AC 15 kV 16.7 Hz"
+ Guid="e1e002f4-313f-4154-8b73-faf561d01d68"
+>
+<PreConditions>
+<PreCondition
+ Guid="3df82a5c-c764-41bc-880b-79d52fcee347"
+>TractionSystem == Messages.M_VOLTAGE.AC_15_kV_16_7_Hz</PreCondition></PreConditions>
+<Expression>General.TCDisplay.TCTypeEnum.TractionSystem__AC15kV</Expression>
+</Case><Case
+ Name="DC 3 kV"
+ Guid="d8668fa4-5690-41b3-a18b-98767afa33ce"
+>
+<PreConditions>
+<PreCondition
+ Guid="d5355a54-42b9-4cb4-b670-33a9e418eb28"
+>TractionSystem == Messages.M_VOLTAGE.DC_3_kV</PreCondition></PreConditions>
+<Expression>General.TCDisplay.TCTypeEnum.TractionSystem__DC3kV</Expression>
+</Case><Case
+ Name="DC 1.5 kV"
+ Guid="2649a4ba-791c-477a-8ac0-b2aa1c6e9474"
+>
+<PreConditions>
+<PreCondition
+ Guid="517852ef-f189-403c-aff9-ee3d68e132be"
+>TractionSystem == Messages.M_VOLTAGE.DC_1_5_kV</PreCondition></PreConditions>
+<Expression>General.TCDisplay.TCTypeEnum.TractionSystem__DC1_5kV</Expression>
+</Case><Case
+ Name="DC 600/750 V"
+ Guid="aa56f49c-c96c-451b-8183-57ea5f99fa12"
+>
+<PreConditions>
+<PreCondition
+ Guid="bef5fd34-ace3-4cff-933e-39f0d0b69c13"
+>TractionSystem == Messages.M_VOLTAGE.DC_600_750_V</PreCondition></PreConditions>
+<Expression>General.TCDisplay.TCTypeEnum.TractionSystem__DC600_750V</Expression>
+</Case></Cases>
+</Function><Function
+ Type="General.TCDisplay.TCStructWithSoundHorn"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MapToSoundHorn"
+ Guid="40957cec-4fd2-4ffe-8836-98f451fcafd5"
+>
+<Comment>Takes a change of traction system information and provides it as DMI information</Comment>
+<Parameters>
+<Parameter
+ Type="TractionSystemInformation"
+ Name="TractionSystem"
+ Guid="0c0a19c4-86c3-4674-b1d0-68c1838d55fd"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Convert type"
+ Guid="1d32a1d4-af2e-4812-b39b-e0999d2d11d3"
+>
+<Comment></Comment>
+<Expression>General.TCDisplay.TCStructWithSoundHorn{
+    SoundHorn =&gt; General.ProfileAtDistance(TractionSystem.Distance).SoundHorn,
+    TunnelStoppingArea =&gt; General.ProfileAtDistance(TractionSystem.Distance).TunnelStoppingArea,
+    NonStoppingArea =&gt; General.ProfileAtDistance(TractionSystem.Distance).NonStoppingArea,
+    Distance =&gt; TractionSystem.Distance,
+    TractionSystem =&gt; TractionSystem.Value
+}</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -363,6 +469,11 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="50c58ae9-47d8-4eab-8bc9-577dab2edbfd"
 >
+</ReqRef><ReqRef
+ Id="d27ff68d-c1f1-4be1-a66f-a4a03d05148b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b7c362b5-57a5-4958-9cc0-a071f5fe10a5"
+>
 </ReqRef><Comment>Once the track condition has been received, indicate it on the DMI</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -376,13 +487,83 @@ IN
 <Actions>
 <Action
  Guid="29585674-2fa6-4a76-9dbd-4686d3916b49"
->DMI.MasterDMI().DisplayTrackConditionsWithoutSoundHorn()</Action></Actions>
+>DMI.MasterDMI().DisplayTrackConditionsWithSoundHorn()</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Create announcement before the change of traction system"
+ Guid="7feaab70-d999-4968-9408-067f0c566954"
+>
+<Comment>Adds an announcement for &quot;Upcoming change of traction system&quot; to the collection of track condition announcements</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Create announcement"
+ Guid="125804ca-bb70-4760-a6da-d6ada0fdbde1"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9bd1a5f3-f510-4564-afff-1238e71425a4"
+><Comment></Comment>
+INSERT General.TCDisplay.NewAnnouncement(
+    TCType=&gt; PacketToAnnouncement(Packet.M_VOLTAGE),
+    Distance=&gt; General.TCDisplay.AnnouncementLocation(
+        TrackCondition =&gt; General.TrackCondition{},
+        Distance=&gt;Default.MessageTypes.QScaleDistance(
+            distance=&gt;Packet.D_TRACTION,
+            scale=&gt;Packet.Q_SCALE)
+        ),
+    Length=&gt; Default.BaseTypes.DistanceToLength(
+                 Default.MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACTION, scale=&gt;Packet.Q_SCALE) -
+                 General.TCDisplay.AnnouncementLocation(
+                     TrackCondition =&gt; General.TrackCondition{},
+                     Distance=&gt;Default.MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACTION, scale=&gt;Packet.Q_SCALE)
+                 )
+        )
+)
+IN General.TCDisplay.Announcements</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Create announcement after the change of traction system"
+ Guid="541f4771-58fa-4fd1-8e46-86dc8a0fe670"
+>
+<Comment>Add an announcement for &quot;Traction system changed&quot; to the list of track condition announcements</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Create announcement"
+ Guid="9b364788-b907-43e5-a6ff-dae9d3fe65d5"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="83db5426-16ea-4334-b486-8690bf014ba2"
+>INSERT General.TCDisplay.NewAnnouncement(
+    TCType=&gt; PacketToAnnouncement(Packet.M_VOLTAGE),
+    Distance=&gt; Default.MessageTypes.QScaleDistance(
+            distance=&gt;Packet.D_TRACTION,
+            scale=&gt;Packet.Q_SCALE
+        ),
+    Length=&gt; Default.BaseTypes.Length.NA
+)
+IN General.TCDisplay.Announcements</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
  Type="TractionSystems"
+ DefaultValue=""
  VariableMode="Internal"
  Y="120"
  Width="100"
