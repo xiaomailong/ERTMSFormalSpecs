@@ -89,7 +89,12 @@
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="d4ace2d4-4177-4e1c-aaaa-2c28ecd4dc60"
+>ErtmsEtcsLevelAvailable()</PreCondition><PreCondition
+ Guid="2f7924c5-829f-4f8d-9ac2-285cc8fe7334"
+><Comment></Comment>
+THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="751d7670-6993-472a-85fc-cb7e0ad32257"
@@ -273,19 +278,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="6fdac9a5-3925-4eb0-b511-347686ea6598"
+>SelectionOfLanguageAvailable()</PreCondition><PreCondition
+ Guid="5491ee10-5a13-4934-b3bc-2d0387412d23"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="54cb09b4-5de6-4185-8150-3b3f162136c5"
 ><Comment></Comment>
-
-
-
-
-
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -315,23 +316,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="41f159b0-c718-4d7a-a1c1-52694884fc40"
 ><Comment></Comment>
-
-
 NOT SelectionOfLanguageAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="29c9e2c0-704a-4b04-877c-5a8aed8a9b69"
 ><Comment></Comment>
-
-
-
-
-
-
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -435,13 +424,15 @@ SelectionOfLanguageAvailable()</PreCondition></PreConditions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="40ee1148-f353-409d-a95b-00ebd9edb4f4"
+>TrackAdhesionFactorAvailable()</PreCondition><PreCondition
+ Guid="39fd61ac-6e86-464b-81ba-fca2e139e8bd"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3dfb7e52-d433-403a-8cb0-d646ac39a942"
 ><Comment></Comment>
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -476,8 +467,6 @@ NOT TrackAdhesionFactorAvailable()</PreCondition></PreConditions>
 <Action
  Guid="7baf926e-debe-4fa0-ac5b-e4cf5e84a751"
 ><Comment></Comment>
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -581,12 +570,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="146fdf8b-b8d6-4313-ba45-30e323f7f464"
+>TrainIntegrityAvailable()</PreCondition><PreCondition
+ Guid="555f8da9-4591-4d7b-ac02-d908a2ca5a37"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="96540f3c-63f5-4d64-88ef-9abe7565f3da"
 ><Comment></Comment>
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -656,7 +648,6 @@ NOT TrainIntegrityAvailable()</PreCondition></PreConditions>
 <Action
  Guid="2a049c1c-0ad2-4a3f-ad23-534e9c5a2a07"
 ><Comment></Comment>
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -722,12 +713,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="e4f4ce1b-a698-4e7a-aba3-882084eebcfe"
+>StartAvailable()</PreCondition><PreCondition
+ Guid="723a5656-2006-4b6a-bc2a-e5f585e46f43"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1f6747f9-d7a8-4692-a2b7-2b4403970d81"
 ><Comment></Comment>
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -757,13 +751,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="993ecddc-d6d1-43b2-bb02-a0c2fb151728"
 ><Comment></Comment>
-
 NOT StartAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="038750a6-22fa-4950-a7cd-fc5d303d141d"
 ><Comment></Comment>
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -856,17 +848,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="e14cd8d6-e2b5-4fc4-abea-367df57ed394"
+>OverrideRequestAvailable()</PreCondition><PreCondition
+ Guid="8f2e78b4-2092-4d39-a358-865b0f7d2a0e"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="194261ad-f490-48dc-bf11-831b2aeed50e"
 ><Comment></Comment>
-
-
-
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -901,14 +891,6 @@ NOT OverrideRequestAvailable()</PreCondition></PreConditions>
 <Action
  Guid="f6cbf73a-e9c9-4aca-9e4a-ff4f3ebe436a"
 ><Comment></Comment>
-
-
-
-
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1007,16 +989,6 @@ NOT ShuntingRequestAvailable()</PreCondition></PreConditions>
 <Action
  Guid="726bb807-cbe1-441f-b21b-0b42f18550d2"
 ><Comment></Comment>
-
-
-
-
-
-
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1045,20 +1017,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="b3da6aa0-8264-45d0-89a2-b43c92981f04"
+>ShuntingRequestAvailable()</PreCondition><PreCondition
+ Guid="c319baaa-554f-498c-97bd-2fce99153101"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1a908505-fad5-4429-81ac-4c5b8947cb4a"
 ><Comment></Comment>
-
-
-
-
-
-
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1150,13 +1117,15 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="0ecd27c5-3a58-43af-9001-c7d6fca72139"
+>ContinueShuntingOnDeskClosureRequestAvailable()</PreCondition><PreCondition
+ Guid="55e8898d-63c7-4be7-9504-0a6df9bf3521"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5ef5c085-e528-4c0c-9bce-98437e79b8fb"
 ><Comment></Comment>
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1186,16 +1155,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="abf9d422-90ef-468e-9086-9fb6ccd79421"
 ><Comment></Comment>
-
 NOT ContinueShuntingOnDeskClosureRequestAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a77d8197-fee8-4e2f-a32c-e70678e3a5c7"
 ><Comment></Comment>
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1284,14 +1248,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="e06b7fcb-f9fd-4311-b0b9-f06ab2e99ca5"
+>ExitOfShuntingRequestAvailable()</PreCondition><PreCondition
+ Guid="73a68163-e17f-4f9d-94f1-e2aff8e2e1dd"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="19852f43-635a-4537-bb5d-263d236875bd"
 ><Comment></Comment>
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1321,18 +1286,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="129bf70c-ee36-442d-8ef8-8169e2c6d5c6"
 ><Comment></Comment>
-
-
 NOT ExitOfShuntingRequestAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4a63ec34-d937-4d6b-b92d-60b75c948925"
 ><Comment></Comment>
-
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1423,16 +1381,16 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="2c2dc253-9036-45fd-b9f9-e7c08cc7b5ee"
+>NonLeadingRequestAvailable()</PreCondition><PreCondition
+ Guid="95945dac-fa99-4bff-a870-827fc91a461a"
+><Comment></Comment>
+THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="88bee066-b6fd-4b68-983b-5243aa1acab5"
 ><Comment></Comment>
-
-
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1462,19 +1420,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="5e3017d6-ee53-4cf5-9a2d-a1dd8a46dd81"
 ><Comment></Comment>
-
 NOT NonLeadingRequestAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0186bb3b-5039-48e1-83e1-fa3246b5a5b4"
 ><Comment></Comment>
-
-
-
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1567,13 +1517,15 @@ THIS.InputInformation.InitiateRequest()</Action><Action
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="087e0b78-e4f0-4c57-afe5-d9e1e68207b1"
+>AcknOfFixedTextInformationAvailable()</PreCondition><PreCondition
+ Guid="b2a9eac8-d87c-4030-84a7-5e9c641dae75"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0608d022-2811-4d61-83cd-12c8978fc21b"
 ><Comment></Comment>
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1603,15 +1555,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="15f85bde-56a5-47e6-842b-b93d6596c763"
 ><Comment></Comment>
-
-
 NOT AcknOfFixedTextInformationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3ca2e0b4-53a9-45ff-af2f-585799d714d1"
 ><Comment></Comment>
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1719,14 +1667,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="bb03b1a4-2f0d-4a56-a62b-fffc1f041bb7"
+>LevelTransitionAvailable()</PreCondition><PreCondition
+ Guid="ff01c89f-c0c4-48e6-84af-14da937ae8f9"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4dfc4c81-b5da-4c77-bf59-977850e79762"
 ><Comment></Comment>
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1761,9 +1710,6 @@ NOT LevelTransitionAvailable()</PreCondition></PreConditions>
 <Action
  Guid="740f113c-67a5-49f1-b1f3-fadcbdac5659"
 ><Comment></Comment>
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1871,15 +1817,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="1fc419e1-a444-4869-8c33-daef9118eb6f"
+>AcknOfPlainTextInformationAvailable()</PreCondition><PreCondition
+ Guid="1060099f-3962-44a2-83d7-4f873b629695"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5bfb2800-2c0e-4da8-9d7a-e40e593d6d55"
 ><Comment></Comment>
-
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1909,7 +1855,6 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="4458f539-9af9-4af7-9777-27e746c0972f"
 ><Comment></Comment>
-
 NOT AcknOfPlainTextInformationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
@@ -2022,17 +1967,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="1a23d43a-05e8-434c-855e-abcab2f07a48"
+>AcknOfTrainDataChangeFromOtherSourceAvailable()</PreCondition><PreCondition
+ Guid="54d15b2e-0cb6-4212-bf4d-a1f73231d6bf"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="16019496-7dbf-4a92-a6b2-2422e513d3f5"
 ><Comment></Comment>
-
-
-
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -2067,8 +2010,6 @@ NOT AcknOfTrainDataChangeFromOtherSourceAvailable()</PreCondition></PreCondition
 <Action
  Guid="6bc48613-a883-467c-8f16-e1e4e358d733"
 ><Comment></Comment>
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -2203,14 +2144,15 @@ TrackAheadFreeAvailable()</PreCondition></PreConditions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="15185d03-8fad-457f-9241-e14008b2fef0"
+>TrackAheadFreeAvailable()</PreCondition><PreCondition
+ Guid="62169c94-bf0d-4ce0-b89e-bfa83800013e"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a0e16f10-a236-471b-b610-864623cf30dd"
 ><Comment></Comment>
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -2245,9 +2187,6 @@ NOT TrackAheadFreeAvailable()</PreCondition></PreConditions>
 <Action
  Guid="59ded254-df81-4e42-a4d2-d921130f9798"
 ><Comment></Comment>
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -2314,21 +2253,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="4a5ff4fb-a479-4329-9a24-44380cc918cb"
+>SRModeSpeedLimitAndDistanceAvailable()</PreCondition><PreCondition
+ Guid="c5439b19-0569-4ed7-a458-a7e95d9f7188"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5cc17c0b-817f-4483-8077-9146d6cbb607"
 ><Comment></Comment>
-
-
-
-
-
-
-
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -2358,23 +2291,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="e962044a-7848-4ce2-9aee-5b9eb9645b3d"
 ><Comment></Comment>
-
 NOT SRModeSpeedLimitAndDistanceAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6a6a0978-207e-42a1-94cc-90fb6e88698f"
 ><Comment></Comment>
-
-
-
-
-
-
-
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -2487,15 +2408,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="882c3d51-0327-4bab-9878-5c3a796d6b81"
+>IsolationAvailable()</PreCondition><PreCondition
+ Guid="996659ee-6967-4bd4-b82b-cd1c75c7bb50"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6a6a9b6e-874b-4be6-9651-1f7aca9ce19e"
 ><Comment></Comment>
-
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -2530,12 +2451,6 @@ NOT IsolationAvailable()</PreCondition></PreConditions>
 <Action
  Guid="ed217968-b83d-4bd5-a149-86b178ed3f72"
 ><Comment></Comment>
-
-
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -2704,7 +2619,11 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="a3d2c6d4-b570-4d87-86d5-9075cfcc7ec8"
+>TrainDataAvailable()</PreCondition><PreCondition
+ Guid="0760dd6f-6f9f-4cec-8d5a-77a269edd896"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="89b7128c-9b3a-42b5-ae06-e45beff492f3"
@@ -2765,7 +2684,12 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="20353b9d-dc08-468c-ac7a-cb39c87fb17c"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
+ Guid="a28e0781-9f43-4778-a7f0-f1024bf270f5"
+><Comment></Comment>
+TrainRunningNumberAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="780ce46f-881b-40b8-8b8c-6cea27f0bd63"
@@ -2941,16 +2865,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="3c5be02c-986b-40ec-8a61-d8aa2798c682"
+>AcknOfSNModeAvailable()</PreCondition><PreCondition
+ Guid="2150fbc8-2e49-4512-9284-fc184b599463"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e2a59ace-9b37-4f65-86b3-afa908151d1a"
 ><Comment></Comment>
-
-
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -2980,14 +2903,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="3c1ca723-1bfa-472e-8c4d-936a0e1fd394"
 ><Comment></Comment>
-
-
 NOT AcknOfSNModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6fb39eb4-2bb8-40b9-90ab-23143c097210"
 ><Comment></Comment>
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -3135,7 +3055,11 @@ THIS.Data &lt;- Kernel.TrainData.TrainData.Value</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="58278b2b-d5bd-476a-9cc0-72a35f647608"
+>TrainDataAvailable()</PreCondition><PreCondition
+ Guid="62e84226-7255-44e5-9e4d-c407f46987f6"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c779d55b-4fb3-4c1b-a56f-f589b874ba0a"
@@ -3245,7 +3169,11 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="f685b8fc-85bc-4fce-a311-7d4f80b915a1"
+>DriverIdAvailable()</PreCondition><PreCondition
+ Guid="1d53ec60-ba00-4092-80f5-1501255b527f"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="cb6883b5-cc98-4506-a1c6-7a0cb4af3488"
@@ -3422,18 +3350,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="fbbca60f-bf2c-4b34-9f99-39d06fe2b92d"
+>RBCContactInformationAvailable()</PreCondition><PreCondition
+ Guid="4d658f91-f7cb-4ad0-b1c8-d44c9ebc5fce"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7ea0fcc2-bf7a-47ab-b201-7e29c90a9c96"
 ><Comment></Comment>
-
-
-
-
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -3463,21 +3388,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="2d527f8d-5149-4d3a-9a1e-4984ae66bff1"
 ><Comment></Comment>
-
 NOT RBCContactInformationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1bf55176-46e6-4913-a4be-f6983aa5bb3d"
 ><Comment></Comment>
-
-
-
-
-
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -3708,13 +3623,15 @@ RBCContactInformationAvailable()</PreCondition></PreConditions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="71cda174-55a7-4464-b783-1be7c71c7911"
+>VirtualBaliseCoverAvailable()</PreCondition><PreCondition
+ Guid="cfe86bd9-0719-4e55-a53c-630dcf39fe49"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9484037f-ae8c-4c61-ac5d-d77f23a6c203"
 ><Comment></Comment>
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -3780,14 +3697,11 @@ VirtualBaliseCoverAvailable()</PreCondition></PreConditions>
 <PreCondition
  Guid="00cac2a2-b5cd-44d1-b323-a289024608df"
 ><Comment></Comment>
-
 NOT VirtualBaliseCoverAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="341ad025-67cf-4560-9a2e-57fae6de49b3"
 ><Comment></Comment>
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -3844,7 +3758,12 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="ad8524b2-6768-4b82-be41-35fd4464fe9c"
+><Comment></Comment>
+THIS.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
+ Guid="687ef45e-f902-4b23-95a7-db5c8670998f"
+>AcknOfLSModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7f80394d-d86d-4e0e-9ee9-48ab5ba67ea8"
@@ -3918,7 +3837,6 @@ NOT AcknOfLSModeAvailable()</PreCondition></PreConditions>
 <Action
  Guid="6f6ee152-a97f-4bb4-8580-2bb9e47088e4"
 ><Comment></Comment>
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -3975,7 +3893,11 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="94a5f5a6-f9a5-40c1-b808-fcc02acaee20"
+>AcknOfOSModeAvailable()</PreCondition><PreCondition
+ Guid="1de16209-3717-458c-9890-3a3e3df8dacc"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="719101c0-d5a3-40d8-a756-4698d9924399"
@@ -4043,7 +3965,6 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="0fe29a45-527c-4651-ae47-3b1879773be3"
 ><Comment></Comment>
-
 NOT AcknOfOSModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
@@ -4105,12 +4026,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="2deea77c-9d96-4afb-974b-c52f09c6fb57"
+>AcknOfSHModeAvailable()</PreCondition><PreCondition
+ Guid="b53e52f5-c690-4925-a864-097339907602"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="24769eb4-f757-4ced-8cd3-4a57859a3edb"
 ><Comment></Comment>
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4179,7 +4103,6 @@ NOT AcknOfSHModeAvailable()</PreCondition></PreConditions>
 <Action
  Guid="cc376e6f-561a-4be5-b1f5-6551786cb04a"
 ><Comment></Comment>
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4236,7 +4159,12 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="4829d3ad-5331-4b26-8f56-a5e4f2be8298"
+>AcknOfSRModeAvailable()</PreCondition><PreCondition
+ Guid="22c078b8-2338-4e9f-87b1-485e7b9ca5de"
+><Comment></Comment>
+THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="522267fc-268b-4215-b3c6-3ee21396db96"
@@ -4275,8 +4203,6 @@ NOT AcknOfSRModeAvailable()</PreCondition></PreConditions>
 <Action
  Guid="8ec8893d-8b01-4e00-a463-4980b55fabd1"
 ><Comment></Comment>
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4367,12 +4293,15 @@ AcknOfSRModeAvailable()</PreCondition></PreConditions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="1d41a389-f99a-4954-9018-69d1f0a8abf0"
+>AcknOfUNModeAvailable()</PreCondition><PreCondition
+ Guid="f022db1a-31a9-4631-8efe-9bea1cd6b68a"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c6ae23b0-e926-44d7-9f0c-04a4eeee1ce1"
 ><Comment></Comment>
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4407,9 +4336,6 @@ NOT AcknOfUNModeAvailable()</PreCondition></PreConditions>
 <Action
  Guid="349b17f5-b665-4423-9ce2-c74251ef1005"
 ><Comment></Comment>
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4500,13 +4426,15 @@ AcknOfUNModeAvailable()</PreCondition></PreConditions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="7250aa3f-f716-4460-89fd-9d8a54ec1fd4"
+>AcknOfRVModeAvailable()</PreCondition><PreCondition
+ Guid="b27bc177-21b5-4d61-a797-845651c8dcc3"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="950a0d64-88c9-4e7b-bb22-eb3cb0644b8a"
 ><Comment></Comment>
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4536,16 +4464,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="543c9dde-7d92-4c61-8d7b-1eb8d82a4ad7"
 ><Comment></Comment>
-
 NOT AcknOfRVModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="96b7047b-d2df-4c06-8456-d2006eb4e4a6"
 ><Comment></Comment>
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4636,14 +4559,15 @@ AcknOfRVModeAvailable()</PreCondition></PreConditions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="4bd3d95f-2f28-4a2f-89e8-2721a3e0ea43"
+>AcknOfTrainTripAvailable()</PreCondition><PreCondition
+ Guid="c5da3921-5c94-4364-9792-fee9aad7cec1"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="beebc794-9e66-41ac-bdd5-4af14e37de2f"
 ><Comment></Comment>
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4678,11 +4602,6 @@ NOT AcknOfTrainTripAvailable()</PreCondition></PreConditions>
 <Action
  Guid="f05d70b1-2761-468e-b8d0-658406451f00"
 ><Comment></Comment>
-
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4773,15 +4692,15 @@ AcknOfTrainTripAvailable()</PreCondition></PreConditions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="74984aa5-533e-4d93-adde-3376902ab995"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
+ Guid="537d2a8f-740f-4c14-b1e4-e416a8819ff6"
+>AcknForRollAwayProtectionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="448fbdbe-ce25-407b-85c4-cd5abdbb8a7e"
 ><Comment></Comment>
-
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4816,12 +4735,6 @@ NOT AcknForRollAwayProtectionAvailable()</PreCondition></PreConditions>
 <Action
  Guid="4577bf00-9e60-4691-9698-dd924755436b"
 ><Comment></Comment>
-
-
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4912,16 +4825,15 @@ AcknForRollAwayProtectionAvailable()</PreCondition></PreConditions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="6fe5e053-8049-40b6-8e3f-7d2c7e19cb04"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
+ Guid="f860c61f-dcfd-4dac-8f04-5740860c4a0e"
+>AcknForReverseMovementProtectionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0d0bb983-0452-4009-a999-338ab284e15a"
 ><Comment></Comment>
-
-
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4951,19 +4863,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="bc640a2b-43b8-42ed-bc21-6b4408fbf04b"
 ><Comment></Comment>
-
 NOT AcknForReverseMovementProtectionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d36a0492-fe02-4d06-adc8-db25710f33d0"
 ><Comment></Comment>
-
-
-
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4994,7 +4898,6 @@ THIS.InputInformation.Disable()</Action></Actions>
 <PreCondition
  Guid="9c366715-b619-46a8-85b4-3ee385b4a8db"
 ><Comment></Comment>
-
 AcknForReverseMovementProtectionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
@@ -5056,12 +4959,15 @@ THIS.InputInformation.InitiateRequest()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="b195fb48-2e58-4b6d-8e92-f6c691fefe08"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
+ Guid="1b8b5858-6676-4054-a849-f88918972129"
+>AcknForStandstillSupervisionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3423bc91-1951-405d-8894-dbbeef15ee67"
 ><Comment></Comment>
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5126,14 +5032,11 @@ AcknForStandstillSupervisionAvailable()</PreCondition></PreConditions>
 <PreCondition
  Guid="c9f53997-5996-41d9-ac19-4f76b7699c8a"
 ><Comment></Comment>
-
 NOT AcknForStandstillSupervisionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c40075ee-471e-4396-9752-fdb04c53700e"
 ><Comment></Comment>
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5190,13 +5093,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="d4d6116f-410d-4fbf-9965-397a1bb830c1"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
+ Guid="b6c79151-4260-4507-a189-28d5c6a88842"
+>AcknForPostTripDistanceExceededAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="779ac761-1482-459c-8d66-c3944c74a0cb"
 ><Comment></Comment>
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5266,9 +5171,6 @@ NOT AcknForPostTripDistanceExceededAvailable()</PreCondition></PreConditions>
 <Action
  Guid="5887af77-ad67-49a6-9f9c-fa1a18265732"
 ><Comment></Comment>
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5325,14 +5227,15 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="7aa02568-72f6-49af-848e-677ab5f76231"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
+ Guid="87de1983-eb5a-4c8f-81ff-3a9ec1903a9f"
+>AcknForReversingDistanceExceededAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="cac3a113-83af-4401-b059-0d1fdb629bb8"
 ><Comment></Comment>
-
-
-
 THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5364,7 +5267,6 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreCondition
  Guid="4a90efd1-181c-480d-8779-bc210a8c97bd"
 ><Comment></Comment>
-
 AcknForReversingDistanceExceededAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
@@ -5398,16 +5300,11 @@ AcknForReversingDistanceExceededAvailable()</PreCondition></PreConditions>
 <PreCondition
  Guid="0a0afb3a-c81e-49ba-b886-8c7270f4158d"
 ><Comment></Comment>
-
 NOT AcknForReversingDistanceExceededAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="91e5d153-ecb6-41d2-872c-36e9bf3b4de4"
 ><Comment></Comment>
-
-
-
-
 THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
