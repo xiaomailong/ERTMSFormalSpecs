@@ -231,6 +231,42 @@ namespace GUI.TestRunnerView
             Report.TestReport aReport = new Report.TestReport(Item);
             aReport.Show();
         }
+        
+        public void InsertTest(object sender, EventArgs args)
+        {
+            TextEntry dataEntry = new TextEntry();
+            dataEntry.ShowDialog();
+
+            TestCase driverId = null;
+            SubSequence driverIdSubSequence = Item.Frame.findSubSequence("IN Driver id");
+            foreach (TestCase testCase in driverIdSubSequence.TestCases)
+            {
+                if (testCase.Name == "IN Driver Id")
+                {
+                    driverId = testCase;
+                    break;
+                }
+            }
+
+            TestCase duplicate = driverId.Duplicate() as TestCase;
+            duplicate.Name = "IN " + dataEntry.Value;
+            foreach (Step step in duplicate.Steps)
+            {
+                foreach (SubStep subStep in step.SubSteps)
+                {
+                    foreach (DataDictionary.Rules.Action action in subStep.Actions)
+                    {
+                        action.ExpressionText = action.ExpressionText.Replace("DriverId", dataEntry.Value);
+                    }
+                    foreach (Expectation expectation in subStep.Expectations)
+                    {
+                        expectation.ExpressionText = expectation.ExpressionText.Replace("DriverId", dataEntry.Value);
+                    }
+                }
+            }
+
+            createTestCase(duplicate);
+        }
 
         /// <summary>
         /// The menu items for this tree node
@@ -248,7 +284,7 @@ namespace GUI.TestRunnerView
             retVal.Insert(8, new MenuItem("Execute", new EventHandler(RunHandler)));
             retVal.Insert(9, new MenuItem("Create report", new EventHandler(ReportHandler)));
             retVal.Insert(10, new MenuItem("-"));
-
+            retVal.Insert(9, new MenuItem("Insert test", new EventHandler(InsertTest)));
 
             return retVal;
         }

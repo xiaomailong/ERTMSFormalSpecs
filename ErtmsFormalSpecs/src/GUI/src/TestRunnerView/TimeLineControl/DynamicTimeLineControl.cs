@@ -135,12 +135,21 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         public override void Refresh()
         {
-            if (TimeLine != null && TimeLine.Events.Count != HandledEvents)
+            if (TimeLine == null)
             {
                 UpdatePositionHandler();
                 UpdatePanelSize();
-                HandledEvents = TimeLine.Events.Count;
-                base.Refresh();
+            }
+            else
+            {
+                if (TimeLine != null && TimeLine.Changed)
+                {
+                    TimeLine.Changed = false;
+                    UpdatePositionHandler();
+                    UpdatePanelSize();
+                    HandledEvents = TimeLine.Events.Count;
+                    base.Refresh();
+                }
             }
         }
 

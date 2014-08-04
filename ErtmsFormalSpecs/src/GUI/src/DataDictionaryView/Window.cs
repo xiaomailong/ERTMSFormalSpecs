@@ -84,7 +84,10 @@ namespace GUI.DataDictionaryView
 
         public override void Refresh()
         {
-            dataDictTree.Refresh();
+            if (!GUIUtils.MDIWindow.AfterStep)
+            {
+                dataDictTree.Refresh();
+            }
             base.Refresh();
         }
 
@@ -134,14 +137,6 @@ namespace GUI.DataDictionaryView
         private void nextInfoToolStripButton_Click(object sender, EventArgs e)
         {
             TreeView.SelectNext(Utils.ElementLog.LevelEnum.Info);
-        }
-
-        /// <summary>
-        /// Refreshes the window after a step (=> variable changes) has been performed
-        /// </summary>
-        public void RefreshAfterStep()
-        {
-            dataDictTree.RefreshAfterStep();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
