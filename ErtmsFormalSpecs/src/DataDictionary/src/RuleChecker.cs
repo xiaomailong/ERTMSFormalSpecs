@@ -303,7 +303,7 @@ namespace DataDictionary
                 {
                     if (typedElement.Type != null)
                     {
-                        requiresComment = requiresComment || !string.IsNullOrEmpty(commentable.Comment);
+                        requiresComment = requiresComment && string.IsNullOrEmpty(typedElement.Type.Comment);
                     }
                 }
 
