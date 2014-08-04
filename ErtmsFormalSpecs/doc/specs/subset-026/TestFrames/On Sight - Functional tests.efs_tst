@@ -946,7 +946,7 @@ Messages.EUROBALISE.SubStructure1
         NID_PACKET =&gt; 15,
         Q_DIR =&gt; Messages.Q_DIR.Nominal,
         L_PACKET =&gt; 0,
-        Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
+        Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
         V_LOA =&gt; 0,
         T_LOA =&gt; 0,
         N_ITER =&gt; 1,
@@ -1024,10 +1024,12 @@ Messages.EUROBALISE.SubStructure1
  Name="Sub-step4"
  Guid="0bc3cacf-8620-4431-a94f-49bcaa324700"
 >
+<Comment></Comment>
 <Actions>
 <Action
  Guid="0ed1c5ee-e80a-4bc5-9c90-9f5e86cd369e"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+><Comment></Comment>
+EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
 {
     MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
@@ -1044,7 +1046,7 @@ Messages.EUROBALISE.SubStructure1
         NID_PACKET =&gt; 15,
         Q_DIR =&gt; Messages.Q_DIR.Nominal,
         L_PACKET =&gt; 0,
-        Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
+        Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
         V_LOA =&gt; 0,
         T_LOA =&gt; 0,
         N_ITER =&gt; 1,
@@ -1079,7 +1081,7 @@ Messages.EUROBALISE.SubStructure1
           {
     MODE_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message
                 {
-                   D_MAMODE=&gt;0,
+                   D_MAMODE=&gt;100,
                    L_ACKMAMODE=&gt;500,
                    L_MAMODE=&gt;100,
                    L_PACKET=&gt;0,
