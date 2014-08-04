@@ -5675,6 +5675,306 @@ In_TrackAheadFree.TrackMode()</Action><Action
 >Out_VirtualBaliseCovers.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="a03ed826-baa5-4cc0-ac98-a88f4e55519c"
+>
+<Comment>Accepts the driver response and update the system state</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update system state"
+ Guid="9f705a65-3f09-4a10-8237-361dcb288a67"
+>
+<ReqRef
+ Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b372c965-5eaf-4d25-a866-7912f5ded3f3"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="63c4543b-5430-4f3e-a524-ce48d640aead"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35a69d40-6621-49e7-93d2-d32e69ff29ab"
+>
+</ReqRef><ReqRef
+ Id="cc8be0e3-4edb-46d4-a4e4-a00714d90fc4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cf4efda8-21aa-4c2e-9148-64f263eee432"
+>
+</ReqRef><ReqRef
+ Id="166e123f-f57c-4045-af2e-915a4c4e849b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f50042f9-86b2-47d7-bd70-5c545850b896"
+>
+</ReqRef><ReqRef
+ Id="57ceb9c6-48ae-4809-8630-70941e264ded"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94968a57-b374-4c90-9e22-25af017753c3"
+>
+</ReqRef><ReqRef
+ Id="0f95b99b-d98f-4189-b6f9-d0a3699f36a7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f3dc3b96-772a-46da-8f2a-1b3c5036a39c"
+>
+</ReqRef><ReqRef
+ Id="bb2f7a44-df6e-4902-a634-5c2e49678710"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="753fc0e8-7484-4ba2-9b09-60c92b1f7718"
+>
+</ReqRef><ReqRef
+ Id="641a1733-782b-41d1-8db8-443710ef091a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d2e5a9e-6f5b-4d60-be8e-85af5007efce"
+>
+</ReqRef><ReqRef
+ Id="99735e12-128e-4cc9-8fa2-368230a0e2df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1e520a61-f589-47a7-95e8-cc3cd7d379b2"
+>
+</ReqRef><ReqRef
+ Id="d76d9d7e-5ca9-42ac-9562-effe483642f8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="29252565-42fd-4267-a8d6-1ae4d6124575"
+>
+</ReqRef><ReqRef
+ Id="5dc7196e-3533-4c27-99ef-6bb45c62aaaf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c3262a96-521f-413b-96ab-74fb3e42f744"
+>
+</ReqRef><ReqRef
+ Id="bb550af5-d30a-44f7-a6d0-e396e895d87c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c079bdaf-6e2b-4c5f-a7d1-7cd83b843f98"
+>
+</ReqRef><ReqRef
+ Id="bca41785-82f0-407d-9873-a1feaf619619"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="027f130c-b1da-4822-b8ba-c117a70309a2"
+>
+</ReqRef><ReqRef
+ Id="b3e1c3fa-135d-4573-9b99-1ce66b471a4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb71e0bf-bb0c-46e2-a76d-32940596710e"
+>
+</ReqRef><ReqRef
+ Id="a8974387-814c-4e26-a7a4-5001e32c4554"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fab67999-898d-4d03-aab8-8971f04995c7"
+>
+</ReqRef><ReqRef
+ Id="2c5e9152-5512-4523-8116-03489439ff69"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c23c9950-3e17-451e-9f93-f685d67015f6"
+>
+</ReqRef><ReqRef
+ Id="421ee868-5461-4591-b27c-3e641637cc98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d137c631-d021-405a-aa24-2a37fc2f9c87"
+>
+</ReqRef><ReqRef
+ Id="2ed9a3a8-ad0b-4699-b42d-1c5e17be22af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="51344e66-df8e-4875-b6b0-ca818e957d6f"
+>
+</ReqRef><ReqRef
+ Id="e6a8a09c-e6ba-4a3c-b777-6acb88ac835b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d4bb6f5-f497-4619-83d3-2b12119bd0b3"
+>
+</ReqRef><ReqRef
+ Id="b6c67586-24a9-45f1-8716-2ebbbf63edc2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cba59369-feea-40d2-bd4d-bbd4ba541e5e"
+>
+</ReqRef><ReqRef
+ Id="b6b52185-52d6-42da-9273-5c484d092e08"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4dab43e5-4a0f-4f83-b54b-ce5d9d4a03e2"
+>
+</ReqRef><ReqRef
+ Id="16331b43-cfa0-4f60-88dd-55bf3bd6e93e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53ff8bc0-e5fc-487a-b3a1-7e09f20e350c"
+>
+</ReqRef><ReqRef
+ Id="2dd0cb88-9abd-4a28-9cf2-6cb53656287f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7e92340b-eff3-4fde-933c-ded1f7736c16"
+>
+</ReqRef><ReqRef
+ Id="c5fa7369-35e6-43ac-a64b-f7a48afc50da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2e828797-ed97-4248-85ca-8ea97de67142"
+>
+</ReqRef><ReqRef
+ Id="0cf0e5ee-5c2a-42b6-8389-ca77ab74368b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="109b11c7-a32e-4e0c-a92a-818be35af8a8"
+>
+</ReqRef><ReqRef
+ Id="7625fa65-c451-4b57-83e0-fa8f4ebf7336"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e9563901-d5bd-462f-bb77-7c89f2545bde"
+>
+</ReqRef><ReqRef
+ Id="2799a8e9-fa29-467e-8323-c5845b7416dd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f6527f39-1e05-4e4d-8095-5233367d2543"
+>
+</ReqRef><ReqRef
+ Id="aca297a1-7d62-42ac-ab7e-6c8c590c5637"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="886c06a7-4deb-4164-ab21-faa27123278e"
+>
+</ReqRef><ReqRef
+ Id="dfcc8430-5256-4624-9c6a-7c5884b42bdb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="becc9f54-5a79-4ca3-8fae-f86cb23267b6"
+>
+</ReqRef><ReqRef
+ Id="c49c8e4d-2c96-4314-a79e-904b090becb1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="02c26afd-6e8b-4c2f-b928-7593a70be138"
+>
+</ReqRef><ReqRef
+ Id="7ae1bf11-7b11-466d-abd7-fcec9dee2465"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0602d379-b11e-43ed-b257-dd749dba9880"
+>
+</ReqRef><ReqRef
+ Id="dc327dea-a3eb-4081-ac8b-06d8c12f1ea7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="816b7743-66b5-4f2d-9d6e-954582d93251"
+>
+</ReqRef><ReqRef
+ Id="25a833cc-7385-4baf-a092-22c94d1cafe5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee7ee005-9add-4aed-8dd5-af731b62df32"
+>
+</ReqRef><ReqRef
+ Id="b097af96-5a86-448c-a47a-c1f0866d272b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7498c83b-b8f8-4bb7-a299-6c379b792ee7"
+>
+</ReqRef><ReqRef
+ Id="5f1173da-1cfe-4f41-aa4f-5c394c12e77f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="08f3cfd6-f394-4273-ba28-5ef1652e3b74"
+>
+</ReqRef><Comment>Updates the system state according to the driver&apos;s response</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update system state"
+ Guid="190bfb5e-384a-4ba2-90c1-d1be9451028c"
+>
+<Comment>Tracks the mode change</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="b302e313-c04d-49df-9d1a-d51c5307b11f"
+><Comment></Comment>
+THIS.In_ErtmsEtcsLevel.AcceptDriverResponse()</Action><Action
+ Guid="9c329640-f88c-404a-931e-8c5f25cf779c"
+>THIS.In_DriverId.AcceptDriverResponse()</Action><Action
+ Guid="fd0e8a79-223e-4a1e-b032-d5c5cf3cf509"
+><Comment></Comment>
+THIS.In_TrainData.AcceptDriverResponse()</Action><Action
+ Guid="08d6bab2-3993-4cb5-9192-319c0ede51d4"
+>THIS.In_TrainDataEntryRequest.AcceptDriverResponse()</Action><Action
+ Guid="c02b72b9-a46b-45e5-aea2-51f52d275b06"
+><Comment></Comment>
+THIS.In_TrainRunningNumber.AcceptDriverResponse()</Action><Action
+ Guid="afe89900-4ed1-4a67-9dd6-58bc777e8c95"
+>THIS.In_Start.AcceptDriverResponse()</Action><Action
+ Guid="075c7e3d-a7b6-48e7-8d83-d0317434457a"
+><Comment></Comment>
+THIS.In_AcknOfFixedTextInformation.AcceptDriverResponse()</Action><Action
+ Guid="06dc464c-b2dc-4b2d-9cf3-19c016c501f8"
+><Comment></Comment>
+THIS.In_AcknOfLevelTransition.AcceptDriverResponse()</Action><Action
+ Guid="16410175-8324-4cad-92d4-5ea1448871f7"
+><Comment></Comment>
+THIS.In_AcknOfPlainTextInformation.AcceptDriverResponse()</Action><Action
+ Guid="cd68188d-3c3b-4525-b7e1-d8f679f56127"
+><Comment></Comment>
+THIS.In_AcknOfSNMode.AcceptDriverResponse()</Action><Action
+ Guid="f07dd17f-121a-41ef-9cf8-1b78ce9802a4"
+><Comment></Comment>
+THIS.In_AcknOfTrainDataChangeFromOtherSource.AcceptDriverResponse()</Action><Action
+ Guid="ea7fab53-2883-408a-ba7d-5a417c8b0bb9"
+><Comment></Comment>
+THIS.In_AcknOfLSMode.AcceptDriverResponse()</Action><Action
+ Guid="2a999307-5abf-47e9-9149-d63de6e1b0ab"
+><Comment></Comment>
+THIS.In_AcknOfOSMode.AcceptDriverResponse()</Action><Action
+ Guid="8ecc438f-8ef1-47e3-85b4-bf8de20b39b5"
+><Comment></Comment>
+THIS.In_AcknOfSHMode.AcceptDriverResponse()</Action><Action
+ Guid="5e369454-6dd9-4d3f-968e-ff4b5c6783d4"
+>THIS.In_AcknOfSRMode.AcceptDriverResponse()</Action><Action
+ Guid="81e876cc-1dd0-44a8-9152-25d1648e6357"
+><Comment></Comment>
+THIS.In_AcknOfUNMode.AcceptDriverResponse()</Action><Action
+ Guid="f56cf083-bfce-4faf-b59d-eefcb3f5d292"
+><Comment></Comment>
+THIS.In_AcknOfRVMode.AcceptDriverResponse()</Action><Action
+ Guid="c6820a90-0c7f-4b9d-9d1f-e5a069125163"
+><Comment></Comment>
+THIS.In_AcknOfTrainTrip.AcceptDriverResponse()</Action><Action
+ Guid="1c77c40a-278b-48ea-b041-3d3ee4fb23a6"
+>THIS.In_AcknForRollAwayProtection.AcceptDriverResponse()</Action><Action
+ Guid="61de8260-8a7d-4c29-9e4d-b510728200ba"
+>THIS.In_AcknForReverseMovementProtection.AcceptDriverResponse()</Action><Action
+ Guid="a03cfdd8-a1a7-456f-8794-cb9a83464a12"
+><Comment></Comment>
+THIS.In_AcknForStandstillSupervision.AcceptDriverResponse()</Action><Action
+ Guid="8fa7e934-c848-4b00-a236-aedc81af8f76"
+><Comment></Comment>
+THIS.In_AcknForPostTripDistanceExceeded.AcceptDriverResponse()</Action><Action
+ Guid="d0a1cfe7-916f-48f9-a95a-0d73892db81f"
+><Comment></Comment>
+THIS.In_AcknForReversingDistanceExceeded.AcceptDriverResponse()</Action><Action
+ Guid="d7c5819d-3102-417e-a9c3-9e695baac42b"
+><Comment></Comment>
+THIS.In_ContinueShuntingOnDeskClosureRequest.AcceptDriverResponse()</Action><Action
+ Guid="1269bc74-8e91-4544-bb3f-aac174230c08"
+><Comment></Comment>
+THIS.In_ExitOfShuntingRequest.AcceptDriverResponse()</Action><Action
+ Guid="7e7c9936-44eb-496b-b07b-5f6e0638282a"
+><Comment></Comment>
+THIS.In_Isolation.AcceptDriverResponse()</Action><Action
+ Guid="8baf325f-725b-41cb-84c5-e9f3b93b9e75"
+>THIS.In_NonLeadingRequest.AcceptDriverResponse()</Action><Action
+ Guid="ecbc0a25-04e2-4d46-8759-53da2f78ee13"
+><Comment></Comment>
+THIS.In_OverrideRequest.AcceptDriverResponse()</Action><Action
+ Guid="712dccdd-9204-4120-b84f-564c61163a01"
+>THIS.In_RBCContactInformation.AcceptDriverResponse()</Action><Action
+ Guid="371c90f4-e32f-4231-973e-3209033e2246"
+>THIS.In_SelectionOfLanguage.AcceptDriverResponse()</Action><Action
+ Guid="66dff686-9039-4ea9-8d44-cd1087b8e830"
+>THIS.In_ShuntingRequest.AcceptDriverResponse()</Action><Action
+ Guid="b84a746e-58bd-4034-b3b7-8791d6ef5344"
+>THIS.In_SRModeSpeedLimitAndDistance.AcceptDriverResponse()</Action><Action
+ Guid="b50bb568-7395-4138-8006-2ed0f7b3184e"
+>THIS.In_TrackAdhesionFactor.AcceptDriverResponse()</Action><Action
+ Guid="f73c10a8-0d24-4940-918b-1e7c66f10be0"
+><Comment></Comment>
+THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
+ Guid="32fa69b6-994c-46b8-85e2-1190d43407dd"
+>THIS.In_TrainIntegrity.AcceptDriverResponse()</Action><Action
+ Guid="216a978b-051d-42e3-ba33-a5d67b52054a"
+>THIS.In_VirtualBaliseCover.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="IN.TrainDataEntryRequest"
@@ -6913,7 +7213,8 @@ In_TrackAheadFree.TrackMode()</Action><Action
  Guid="0400a25c-46b3-4880-b87e-b8c4e9859910"
 >DisplayRequested &lt;- False</Action><Action
  Guid="1ffe3487-ce94-44ef-a4fa-c404ad3237e0"
->DriverAnswered &lt;- False</Action><Action
+><Comment></Comment>
+DriverAnswered &lt;- True</Action><Action
  Guid="2a9e6a69-a4d0-4ed6-8b66-f274fd0e1ab9"
 >RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
@@ -7572,6 +7873,27 @@ ModeChanged()</PreCondition></PreConditions>
  Guid="7b57277f-e2ab-45c2-a612-f14d23efda3a"
 ><Comment></Comment>
 DMI.MasterDMI().HandleModeChange()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Width="100"
+ Height="50"
+ Name="Update system state"
+ Guid="67b54514-2cec-4d9e-a928-313c0f8d49ca"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Update system state"
+ Guid="f1841b69-51d6-4354-b40e-5576fd069eb1"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5cf758f0-3851-438d-8ac5-21ad961d5169"
+>DMI.MasterDMI().AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
