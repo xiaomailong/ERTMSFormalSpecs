@@ -179,7 +179,10 @@ namespace GUI.TestRunnerView
                         }
                     }
 
-                    testBrowserTreeView.Refresh();
+                    if (!GUIUtils.MDIWindow.AfterStep)
+                    {
+                        testBrowserTreeView.Refresh();
+                    }
                     testDescriptionTimeLineControl.Refresh();
                     testExecutionTimeLineControl.Refresh();
 
@@ -259,6 +262,16 @@ namespace GUI.TestRunnerView
             if (EFSSystem.Runner != null)
             {
                 EFSSystem.Runner.RunUntilTime(EFSSystem.Runner.Time + EFSSystem.Runner.Step);
+                GUIUtils.MDIWindow.RefreshAfterStep();
+            }
+        }
+
+        public void MiniStep()
+        {
+            CheckRunner();
+            if (EFSSystem.Runner != null)
+            {
+                EFSSystem.Runner.MiniStep();
                 GUIUtils.MDIWindow.RefreshAfterStep();
             }
         }
@@ -444,6 +457,12 @@ namespace GUI.TestRunnerView
             {
                 MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = testExecutionTabPage;
+            MiniStep();
         }
     }
 }

@@ -413,29 +413,7 @@ namespace DataDictionary.Tests.Runner
                 // Clears the cache of functions
                 FunctionCacheCleaner.ClearCaches();
 
-                foreach (KeyValuePair<Utils.ModelElement, List<Utils.ElementLog>> pair in Utils.ModelElement.Errors)
-                {
-                    foreach (Utils.ElementLog log in pair.Value)
-                    {
-                        switch (log.Level)
-                        {
-                            case Utils.ElementLog.LevelEnum.Error:
-                                ModelInterpretationFailure modelInterpretationFailure = new ModelInterpretationFailure(log, pair.Key as Utils.INamable, null);
-                                ModelElement modelElement = pair.Key as ModelElement;
-                                if (modelElement != null)
-                                {
-                                    modelInterpretationFailure.Explanation = modelElement.Explain;
-                                }
-                                EventTimeLine.AddModelEvent(modelInterpretationFailure, this);
-                                break;
-
-                            case Utils.ElementLog.LevelEnum.Warning:
-                                break;
-                            case Utils.ElementLog.LevelEnum.Info:
-                                break;
-                        }
-                    }
-                }
+                RegisterErrors(Utils.ModelElement.Errors);
 
                 EventTimeLine.GarbageCollect();
             }
@@ -1263,6 +1241,105 @@ namespace DataDictionary.Tests.Runner
         public void EndExecution()
         {
             FunctionCacheCleaner.ClearCaches();
+        }
+
+        /// <summary>
+        /// Provides the next rule priority according to the current one
+        /// </summary>
+        /// <returns></returns>
+        private Generated.acceptor.RulePriority NextPriority()
+        {
+            Generated.acceptor.RulePriority retVal = Generated.acceptor.RulePriority.defaultRulePriority;
+
+            if (CurrentPriority != null)
+            {
+                bool currentFound = false;
+                foreach (Generated.acceptor.RulePriority next in PRIORITIES_ORDER)
+                {
+                    if (next == CurrentPriority)
+                    {
+                        currentFound = true;
+                    }
+                    else if (currentFound)
+                    {
+                        retVal = next;
+                    }
+                }
+            }
+
+            if (retVal == Generated.acceptor.RulePriority.defaultRulePriority)
+            {
+                retVal = Generated.acceptor.RulePriority.aVerification;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Activates a mini step
+        /// </summary>
+        public void MiniStep()
+        {
+            try
+            {
+                CurrentPriority = NextPriority();
+
+                if (LogEvents)
+                {
+                    Log.Info("Mini step " + CurrentPriority);
+                }
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+
+                LastActivationTime = Time;
+
+                Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
+
+                innerExecuteOnePriority((Generated.acceptor.RulePriority)CurrentPriority);
+
+                // Clears the cache of functions
+                FunctionCacheCleaner.ClearCaches();
+
+                RegisterErrors(Utils.ModelElement.Errors);
+
+                EventTimeLine.GarbageCollect();
+            }
+            finally
+            {
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+            }
+
+            EventTimeLine.CurrentTime += Step; 
+        }
+
+        /// <summary>
+        /// Registers the errors raised during evaluation and create ModelInterpretationFailure for each one of them
+        /// </summary>
+        /// <param name="errors"></param>
+        private void RegisterErrors(Dictionary<Utils.ModelElement, List<Utils.ElementLog>> errors)
+        {
+            foreach (KeyValuePair<Utils.ModelElement, List<Utils.ElementLog>> pair in errors)
+            {
+                foreach (Utils.ElementLog log in pair.Value)
+                {
+                    switch (log.Level)
+                    {
+                        case Utils.ElementLog.LevelEnum.Error:
+                            ModelInterpretationFailure modelInterpretationFailure = new ModelInterpretationFailure(log, pair.Key as Utils.INamable, null);
+                            ModelElement modelElement = pair.Key as ModelElement;
+                            if (modelElement != null)
+                            {
+                                modelInterpretationFailure.Explanation = modelElement.Explain;
+                            }
+                            EventTimeLine.AddModelEvent(modelInterpretationFailure, this);
+                            break;
+
+                        case Utils.ElementLog.LevelEnum.Warning:
+                            break;
+                        case Utils.ElementLog.LevelEnum.Info:
+                            break;
+                    }
+                }
+            }
         }
     }
 }
