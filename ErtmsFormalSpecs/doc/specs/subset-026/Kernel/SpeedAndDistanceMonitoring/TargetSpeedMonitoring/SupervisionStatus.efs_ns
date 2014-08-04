@@ -147,6 +147,7 @@
  Name="Trigger condition fulfilled"
  Guid="2854a847-3e8d-4468-a9bd-a85e9df77c42"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0f1b6b31-a810-45c1-9216-78ca3ae96ddd"
@@ -192,9 +193,11 @@
 <PreConditions>
 <PreCondition
  Guid="a0662bd2-d674-48b2-a779-e47c84d847d9"
->FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_W ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
+><Comment></Comment>
+MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
  Guid="23ac3f1b-42d8-4f5e-a3c5-678b0265e2ab"
->Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
+><Comment></Comment>
+Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="79d1c420-2608-4faa-a10d-461c0d543deb"
 >FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -581,6 +584,7 @@ TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &lt;= d_I ( MRSP
  Name="Value"
  Guid="8ecc19c1-a5ef-4ee9-a774-b4c117f5757c"
 >
+<Comment></Comment>
 <Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</Expression>
 </Case></Cases>
 </Function><Function
@@ -709,149 +713,6 @@ TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &lt;= d_I ( MRSP
  Guid="c11a524e-dc79-48be-b5fe-3b8f2be869e6"
 >
 <Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Cacheable="TRUE"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="ToIntervention"
- Guid="e4ca206b-e2f2-48fd-b674-16b0731ae18c"
->
-<ReqRef
- Id="e5f050bb-7e6e-461d-b803-0fddb0a89260"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cc0f3b7b-8284-43ae-8156-d8c755d18a44"
->
-</ReqRef><Comment>Combines the conditions for passing to intervention status in TSM.</Comment>
-<Cases>
-<Case
- Name="t14"
- Guid="1f0d74ea-9c8f-4099-bae5-c702af59ec22"
->
-<PreConditions>
-<PreCondition
- Guid="580b3b2d-36bb-4191-a38c-53c30c97a931"
->t14()</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="t13"
- Guid="962c5ca4-0980-405f-99b5-fee3236449cd"
->
-<PreConditions>
-<PreCondition
- Guid="1695c66a-aff2-46d1-9057-345f1c775a7e"
->t13()</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="t12"
- Guid="b3e8c016-7a1b-4c19-9698-6ec4aba97220"
->
-<PreConditions>
-<PreCondition
- Guid="e602651b-5442-4bca-a964-df247c37b084"
->t12()</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="t11"
- Guid="a7063e2d-7dd0-4222-b4c7-17c17b1dd455"
->
-<PreConditions>
-<PreCondition
- Guid="e136aa95-0948-45a7-b8d7-2b2b8107daad"
->t11()</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="t10"
- Guid="c380206f-fc5b-4901-889d-82d41f3f2269"
->
-<Expression>t10()</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Cacheable="TRUE"
- Default=""
- X="110"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="ToOverspeed"
- Guid="a1f9fc0e-f4ef-4429-b837-708f3a78060a"
->
-<ReqRef
- Id="c37a61a0-4999-47a6-a190-260324acdb40"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7f6ce7cf-4ad3-4737-afa1-8b754d3bf056"
->
-</ReqRef><Comment>Combines the conditions for passing to overspeed status in TSM.</Comment>
-<Cases>
-<Case
- Name="t6"
- Guid="68bd81f2-378d-42cd-98e9-98e9aa1f0f7f"
->
-<PreConditions>
-<PreCondition
- Guid="76f4a090-4ee9-497b-a2cf-1eeeaa6bae6d"
->t6()</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="t5"
- Guid="bd0c4f83-a361-429a-b0fa-349f6d81bbb7"
->
-<PreConditions>
-<PreCondition
- Guid="e3e6297f-c434-4f39-9e02-7d9e461f1c4a"
->t5()</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="t4"
- Guid="84352a9d-3e65-4a2c-b049-43fb36cfb418"
->
-<Expression>t4()</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Cacheable="TRUE"
- Default=""
- X="220"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="ToWarning"
- Guid="297a0c1d-af86-4ea4-9876-f3bce2f9c4cd"
->
-<ReqRef
- Id="f48b3d4c-0b20-4478-8d97-831556c6050e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a58b09b5-9e48-440e-beac-2d58ea257370"
->
-</ReqRef><Comment>Combines the conditions for passing to warning status in TSM.</Comment>
-<Cases>
-<Case
- Name="t9"
- Guid="58726dc6-a9b9-43f5-9bcd-dcda7f25fc92"
->
-<PreConditions>
-<PreCondition
- Guid="c97b7866-d3f0-4dc0-9f0f-29f2632a1857"
->t9()</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="t8"
- Guid="49a0b35f-fb0f-4e2d-aa50-3c07361e9ab6"
->
-<PreConditions>
-<PreCondition
- Guid="173b7a77-86e5-4483-92e3-8e1a2337a608"
->t8()</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="t7"
- Guid="58c386ca-fcf5-427e-9f0e-bc21799f3caf"
->
-<Expression>t7()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
