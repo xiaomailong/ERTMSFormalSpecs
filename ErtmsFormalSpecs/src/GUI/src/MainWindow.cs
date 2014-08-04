@@ -1505,33 +1505,40 @@ namespace GUI
             }
         }
 
+        public bool AfterStep = false;
+
         /// <summary>
         /// Refreshes all graph views
         /// </summary>
         public void RefreshAfterStep()
         {
-            foreach (Form form in SubForms)
+            try
             {
-                if (form is GraphView.GraphView)
+                AfterStep = true;
+
+                foreach (Form form in SubForms)
                 {
-                    ((GraphView.GraphView)form).RefreshAfterStep();
+                    if (form is GraphView.GraphView)
+                    {
+                        ((GraphView.GraphView)form).RefreshAfterStep();
+                    }
+                    if (form is StateDiagram.StateDiagramWindow)
+                    {
+                        ((StateDiagram.StateDiagramWindow)form).RefreshAfterStep();
+                    }
+                    if (form is TestRunnerView.Window)
+                    {
+                        ((TestRunnerView.Window)form).RefreshAfterStep();
+                    }
+                    if (form is TestRunnerView.Watch.Window)
+                    {
+                        ((TestRunnerView.Watch.Window)form).RefreshAfterStep();
+                    }
                 }
-                if (form is DataDictionaryView.Window)
-                {
-                    ((DataDictionaryView.Window)form).RefreshAfterStep();
-                }
-                if (form is StateDiagram.StateDiagramWindow)
-                {
-                    ((StateDiagram.StateDiagramWindow)form).RefreshAfterStep();
-                }
-                if (form is TestRunnerView.Window)
-                {
-                    ((TestRunnerView.Window)form).RefreshAfterStep();
-                }
-                if (form is TestRunnerView.Watch.Window)
-                {
-                    ((TestRunnerView.Watch.Window)form).RefreshAfterStep();
-                }
+            }
+            finally
+            {
+                AfterStep = false;
             }
         }
 
