@@ -4537,14 +4537,20 @@
 <Actions>
 <Action
  Guid="76284da9-d3b1-446d-a5f1-2f5d18b06a8a"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
+><Comment>This indicates that the driver has already selected a new Level</Comment>
+DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="85ca8425-2f10-48b6-8ff5-e03a099d98e1"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action
  Guid="ec6507d5-8101-44ab-acef-d9675b4cfae1"
 ><Comment></Comment>
 Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="e590bf4a-fe0e-46cd-83ce-5eb0364b5b14"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
+ Guid="518e2686-7bc1-426e-a1a0-c07ee771796b"
+><Comment></Comment>
+DMI.MasterDMI().In_ErtmsEtcsLevel.Level &lt;- Level.L0</Action><Action
+ Guid="55c47cb3-5353-49c1-b423-829f07b90e3b"
+>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4552,10 +4558,14 @@ Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2b7a7356-fb4b-47d6-9718-1b1f52b3fa1f"
->Kernel.Level.DataState == DataState.Invalid</Expectation><Expectation
+>Kernel.Level.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
  Guid="68625dbf-738d-46d8-ba8a-66504f54e20c"
->EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Invalid</Expectation></Expectations>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Invalid</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c9cd264b-e2c1-41be-aaf6-c2a6fe0ac685"
+>Kernel.Level.Value == Level.L0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
