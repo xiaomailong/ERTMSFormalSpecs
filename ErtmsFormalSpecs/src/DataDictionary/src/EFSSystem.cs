@@ -35,7 +35,6 @@ namespace DataDictionary
         /// </summary>
         public List<DataDictionary.Dictionary> Dictionaries { get; private set; }
 
-        private Tests.Runner.Runner __runner = null;
         /// <summary>
         /// The runner currently set for the system
         /// </summary>
