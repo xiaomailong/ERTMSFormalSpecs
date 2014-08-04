@@ -6,6 +6,7 @@
  Name="OUT"
  Guid="2e7bb3be-16e0-4529-8f0b-c5ac83bceb2d"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -3040,12 +3041,13 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Guid="27f43f3b-9d33-4f93-8af9-d46bf9c93913"
 >Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
  Guid="6419b761-6bf8-4aa3-af63-9c94abdb9795"
->ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
+><Comment></Comment>
+ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
 <Rule
- Priority="Processing"
+ Priority="UpdateOUT"
  Name="Update variable"
  Guid="074eb3af-d97b-455d-bf4b-735c57352494"
 >
@@ -3080,11 +3082,12 @@ Speed &lt;- Kernel.ModeRelatedSpeedLimits.SRModeSpeedLimit()</Action><Action
  Name="Otherwise"
  Guid="3c0e9560-e579-4971-87cc-9fb0389c9b3a"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
 ><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring not in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle]</PreCondition></PreConditions>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in  [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
@@ -8071,7 +8074,8 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <Actions>
 <Action
  Guid="848f8401-d665-400b-b48d-be8bbfa8d170"
->TrackConditions &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
+><Comment></Comment>
+TrackConditions &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -21498,7 +21502,8 @@ Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatu
 <Actions>
 <Action
  Guid="f0c8976c-c957-4f3d-a0a5-3295db9e7317"
->Speed &lt;- Kernel.SpeedAndDistanceMonitoring.FLOISpeed(
+><Comment></Comment>
+Speed &lt;- Kernel.SpeedAndDistanceMonitoring.FLOISpeed(
 Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -21831,6 +21836,7 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="Available"
  Guid="2c5714a6-d3d4-4a6e-bfd1-ccea1e5ffe00"
 >
+<Comment></Comment>
 <StateMachine
  Default="Idle"
  Implemented="TRUE"
