@@ -3307,10 +3307,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 <PreConditions>
 <PreCondition
  Guid="e5a3e049-8a1e-4057-88d5-186c28f36bf4"
->IsMaster == True</PreCondition><PreCondition
- Guid="dd05784f-c6f9-4f27-b9c6-802fd68cf420"
-><Comment></Comment>
-PreviousMode != Kernel.Mode</PreCondition></PreConditions>
+>IsMaster == True</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a2712db3-84fd-4a13-8dfe-168f8bcd01ba"
@@ -7050,7 +7047,7 @@ DriverAnswered &lt;- False</Action><Action
  Name="DisplayRequested"
  Guid="45ad9df0-52e3-44cf-a6ba-25102de45002"
 >
-<Comment></Comment>
+<Comment>Indicates that the request should be displayed to the driver</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Request"
  Default=""
@@ -7100,7 +7097,7 @@ DriverAnswered &lt;- False</Action><Action
  Name="Enter"
  Guid="80ed2edf-7ca7-43e1-b3f3-61b958992ddf"
 >
-<Comment></Comment>
+<Comment>Inidicates that the driver should enter new data</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
@@ -7109,6 +7106,7 @@ DriverAnswered &lt;- False</Action><Action
  Name="ReValidate"
  Guid="051b7121-12e3-4987-90bc-2bc9840446e9"
 >
+<Comment>Indicates that the drvier should re validate the proposed data</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="590"
@@ -7130,6 +7128,7 @@ DriverAnswered &lt;- False</Action><Action
  Name="RemoveExistingInhibition"
  Guid="e68d474e-90aa-4f81-8af5-f39ec258f72a"
 >
+<Comment>Indicates that the inhibition should be removed</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
@@ -7139,6 +7138,7 @@ DriverAnswered &lt;- False</Action><Action
  Name="InhibitLevel"
  Guid="80b24576-e2e7-4b1a-9f7b-8fa2670edeeb"
 >
+<Comment>Indicates that the level should be inhibited</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="590"
@@ -7158,6 +7158,7 @@ DriverAnswered &lt;- False</Action><Action
  Name="Enter"
  Guid="961d8f78-6924-4df4-acf0-c9c0669ca6ba"
 >
+<Comment>Indicates that the RBC ID should be provided by the driver</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
@@ -7166,6 +7167,7 @@ DriverAnswered &lt;- False</Action><Action
  Name="ReEnter"
  Guid="463eea80-1a66-4977-b9a9-f5f3715617ae"
 >
+<Comment>Indicates that the RBC ID is proposed to the driver and should be validated or reentered</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
@@ -7174,6 +7176,7 @@ DriverAnswered &lt;- False</Action><Action
  Name="UseEirene"
  Guid="015be929-091e-4894-8bfb-3819cd89aff2"
 >
+<Comment>Indicates to the driver to used the EIRENE id</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
@@ -7182,6 +7185,7 @@ DriverAnswered &lt;- False</Action><Action
  Name="UseLastStored"
  Guid="1a024936-e626-43f0-b95b-fca512490227"
 >
+<Comment>Indicates that the last stored RBC id should be used</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="470"
@@ -7198,7 +7202,8 @@ DriverAnswered &lt;- False</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5528021b-45eb-429c-97c5-ebcfc75aa797"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment>The language used to display information to the driver</Comment>
+<StructureElement
  TypeName="Default.DataState"
  Default=""
  Mode="InOut"
@@ -7545,7 +7550,8 @@ NOT DeskIsOpen ( DMI2 )</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4edd4452-49b2-41f3-b872-1b3d231e8556"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Takes care of a mode change to update the DMI structure value (automatically enable / disable requests)</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7557,7 +7563,8 @@ NOT DeskIsOpen ( DMI2 )</Expression>
 <PreConditions>
 <PreCondition
  Guid="23ad9e9c-4db8-4c58-b6c8-0a350a70c9ba"
->ModeChanged()</PreCondition></PreConditions>
+><Comment></Comment>
+ModeChanged()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7b57277f-e2ab-45c2-a612-f14d23efda3a"
