@@ -582,10 +582,10 @@ Packet.Sequence1</Action></Actions>
 >LevelTransitionOrder &lt;- LevelTransitionOrder
 {
    IsLTO=&gt; False,
-   Distance =&gt; EMPTY,
+   Distance =&gt; Default.BaseTypes.Distance.Unknown,
    LevelAndLength =&gt; [ 
       LevelTransition { 
-         AcknLength =&gt;EMPTY, 
+         AcknLength =&gt; Default.BaseTypes.Length.NA, 
          TRLevel =&gt; Default.LevelDataStruct {
              Value =&gt; ERTMS_to_EFS_Level( LevelT =&gt;Packet.M_LEVELTR ),
              NTC =&gt; Packet.NID_NTC
@@ -616,8 +616,8 @@ AddNewLTO
 (  
    M_LEVELTR =&gt; X.M_LEVELTR,
    NID_NTC =&gt; Packet.NID_NTC,
-   Q_SCALE =&gt; EMPTY,
-   L_ACKLEVELTR =&gt; EMPTY 
+   Q_SCALE =&gt; Messages.Q_SCALE.Spare,
+   L_ACKLEVELTR =&gt; Default.MessageTypes.Length.NA
 )
 ON 
 Packet.Sequence1</Action></Actions>

@@ -384,6 +384,16 @@
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Undefined values"
+ Guid="e0329b8a-7696-4b92-a5d6-743aed0affc2"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="8758b0ca-d421-41c9-a7a6-68c62585e426"
+>length == Default.MessageTypes.Length.NA OR scale == Messages.Q_SCALE.Spare</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Length.NA</Expression>
+</Case><Case
  Name="10 cm"
  Guid="944c480d-2d8d-4f20-89cf-bd7ee1bf8ffd"
 >
