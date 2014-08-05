@@ -2917,13 +2917,13 @@ TIU.NonLeadingPermitted</Expression>
  Guid="b9f02acb-1a57-4aa3-9132-d976eb86917a"
 >Kernel.Mode &lt;- Mode.NL</Action><Action
  Guid="0d16166b-3f10-4b18-a85c-80fba29cabd5"
->DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.Disable()</Action><Action
  Guid="3a19531c-605b-4225-bdff-76d2aaedf965"
 >MissionIsOnGoing &lt;- True</Action><Action
  Guid="5b0bcbc6-3aa3-496b-9d3b-38422971946a"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
  Guid="5c7cb6fb-f332-4add-94c5-b70199c1263d"
->DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_TrainData.InputInformation.Disable()</Action><Action
  Guid="db598074-7cf7-4649-847d-4ca57b5b309d"
 >EURORADIO.OpenRBCSession()</Action></Actions>
 <SubRules>
@@ -3038,7 +3038,7 @@ TIU.NonLeadingPermitted</Expression>
 <Actions>
 <Action
  Guid="395b6dc7-c737-47e1-b915-e5929d9a123e"
->DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
@@ -3107,7 +3107,7 @@ TIU.NonLeadingPermitted</Expression>
  Guid="87dcd821-f086-414d-8c36-65fd3564a7ec"
 >MissionIsOnGoing &lt;- True</Action><Action
  Guid="26961c38-f889-4f3d-b7a0-c8703bf9d31a"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.Disable()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="SB -&gt; SR"
@@ -3157,7 +3157,7 @@ TIU.NonLeadingPermitted</Expression>
 <Actions>
 <Action
  Guid="dcbf2ee0-1f20-4df8-8c7b-969bdfa78ca4"
->DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.Disable()</Action><Action
  Guid="8b66a8dc-8b80-43b5-8bfb-ac6150e42502"
 >Kernel.MissionIsOnGoing &lt;- True</Action></Actions>
 <SubRules>
@@ -3212,7 +3212,7 @@ TIU.NonLeadingPermitted</Expression>
 <Actions>
 <Action
  Guid="0a1836c1-218e-4000-9fb8-cbbcf0eed705"
->DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action><Action
  Guid="2f1888d3-498c-42e6-bce6-a20108245259"
 >HandleModeChange &lt;- HandleModeChange.Override</Action></Actions>
 <SubRules>
@@ -3282,7 +3282,7 @@ TIU.NonLeadingPermitted</Expression>
  Guid="f90ad43c-3a24-4329-9826-81c480d5f52b"
 >Kernel.Mode &lt;- Mode.OS</Action><Action
  Guid="edb51d2a-e7fa-4f50-948f-b930517328b7"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action><Action
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.Disable()</Action><Action
  Guid="5d08e1db-7caa-444c-9127-90562a204aa2"
 >MissionIsOnGoing &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
@@ -3314,7 +3314,7 @@ TIU.NonLeadingPermitted</Expression>
  Guid="7538c314-9121-4b7b-ab06-f821f7710269"
 >Kernel.Mode &lt;- Mode.UN</Action><Action
  Guid="2182ed1f-2929-4b59-919b-b99284d6b7ef"
->DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.Disable()</Action><Action
  Guid="57bff81f-7c98-42f0-8b15-305f0d22b5d6"
 >MissionIsOnGoing &lt;- True</Action></Actions>
 <SubRules>
@@ -4018,7 +4018,7 @@ TIU.NonLeadingPermitted</Expression>
 <Actions>
 <Action
  Guid="d6a741a6-cd1e-4c40-a94f-dac44356f295"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.Disable()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Driver didn&apos;t acknowledge"
@@ -4131,7 +4131,7 @@ TIU.NonLeadingPermitted</Expression>
 <Actions>
 <Action
  Guid="f22aebba-3be2-4c2c-9ef5-bdd83eb6ae4f"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.Disable()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Driver didn&apos;t akcnowledge"
@@ -4596,7 +4596,7 @@ TIU.NonLeadingPermitted</Expression>
 <Actions>
 <Action
  Guid="2384bf59-8a5a-47ba-81f1-3b6ec6e75247"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.Disable()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Driver didn&apos;t acknowledge"
@@ -5427,7 +5427,7 @@ TIU.NonLeadingPermitted</Expression>
 <Actions>
 <Action
  Guid="a39567e0-8e40-44f5-9651-f8f1c8c780ef"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.Disable()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Driver didn&apos;t acknowledge"
@@ -6441,7 +6441,7 @@ TIU.NonLeadingPermitted</Expression>
 <Actions>
 <Action
  Guid="f6c94a77-b4b3-4ee1-b59f-22c6ddb17c91"
->DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action><Action
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.Disable()</Action><Action
  Guid="817aa53c-4f63-4284-979a-1e646d1c27cf"
 >Kernel.HandleModeChange &lt;- HandleModeChange.NoProcedure</Action></Actions>
 </RuleCondition></Conditions>
@@ -6532,7 +6532,7 @@ TIU.NonLeadingPermitted</Expression>
  Guid="d1b0f51b-01e7-4f35-8b91-cd90455e7067"
 >Kernel.Mode &lt;- Mode.LS</Action><Action
  Guid="ffbf191c-1c71-4800-be9d-a646a22b0343"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action><Action
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.Disable()</Action><Action
  Guid="0b206b75-fdbb-4598-af28-83fe3421144c"
 >Kernel.HandleModeChange &lt;- HandleModeChange.NoProcedure</Action></Actions>
 </RuleCondition><RuleCondition
@@ -6585,7 +6585,7 @@ TIU.NonLeadingPermitted</Expression>
 <Actions>
 <Action
  Guid="fd88537c-6a79-41ec-b72a-b39c9bcde7a6"
->DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action><Action
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.Disable()</Action><Action
  Guid="47b1e10e-814a-4511-8d12-0ac9cdcc3d95"
 >HandleModeChange &lt;- HandleModeChange.NoProcedure</Action></Actions>
 </RuleCondition><RuleCondition
@@ -6642,7 +6642,7 @@ TIU.NonLeadingPermitted</Expression>
  Guid="97a7f9d5-8f23-49dd-98e4-03e542791e15"
 >Kernel.Mode &lt;- Mode.OS</Action><Action
  Guid="9830d5cb-6ee9-4d48-b29b-9d321753b759"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action><Action
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.Disable()</Action><Action
  Guid="ac721fb1-402f-43c7-a022-b2e946076ca9"
 >Kernel.HandleModeChange &lt;- HandleModeChange.NoProcedure</Action></Actions>
 </RuleCondition></Conditions>

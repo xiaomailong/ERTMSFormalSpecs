@@ -75,6 +75,7 @@ namespace GUI.TestRunnerView
             this.testDescriptionTimeLineControl = new GUI.TestRunnerView.TimeLineControl.StaticTimeLineControl();
             this.testExecutionTabPage = new System.Windows.Forms.TabPage();
             this.testExecutionTimeLineControl = new GUI.TestRunnerView.TimeLineControl.DynamicTimeLineControl();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -104,6 +105,7 @@ namespace GUI.TestRunnerView
             this.rewindButton,
             this.RestartButton,
             this.StepOnceButton,
+            this.toolStripButton3,
             this.toolStripSeparator2,
             this.toolStripLabel1,
             this.toolStripTimeTextBox,
@@ -378,6 +380,16 @@ namespace GUI.TestRunnerView
             this.testExecutionTimeLineControl.TabIndex = 1;
             this.testExecutionTimeLineControl.Text = "evcTimeLineControl1";
             // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,6 +451,7 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.TabPage testDescriptionTabPage;
         public TimeLineControl.StaticTimeLineControl testDescriptionTimeLineControl;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
 
     }
 }

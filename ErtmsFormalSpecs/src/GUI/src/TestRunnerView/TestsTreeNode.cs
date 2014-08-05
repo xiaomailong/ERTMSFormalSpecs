@@ -125,11 +125,6 @@ namespace GUI.TestRunnerView
             public int Failed { get; private set; }
 
             /// <summary>
-            /// The time span used to execute all tests
-            /// </summary>
-            public TimeSpan Span { get; private set; }
-
-            /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="window"></param>

@@ -24,28 +24,23 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The current time
         /// </summary>
-        private double currentTime;
-        public double CurrentTime
-        {
-            get { return currentTime; }
-            set { currentTime = value; }
-        }
+        public double CurrentTime {get; set;}
 
         /// <summary>
         /// The list of events handled by this time line
         /// </summary>
-        private List<ModelEvent> modelEvents = new List<ModelEvent>();
-        public List<ModelEvent> Events
-        {
-            get { return modelEvents; }
-            set { modelEvents = value; }
-        }
+        public List<ModelEvent> Events { get; set;}
 
         /// <summary>
         /// Provides the maximum number of events that are stored in the time-line.
         /// Expectations do not count in this number
         /// </summary>
         public int MaxNumberOfEvents { get; set; }
+
+        /// <summary>
+        /// Indicates that the content has changed since last check
+        /// </summary>
+        public bool Changed { get; set; }
 
         /// <summary>
         /// Keeps track of step activation
@@ -70,6 +65,8 @@ namespace DataDictionary.Tests.Runner.Events
         /// </summary>
         public EventTimeLine()
         {
+            Events = new List<ModelEvent>();
+            Changed = true;
             CurrentTime = 0;
             MaxNumberOfEvents = 10000;
         }
@@ -83,7 +80,8 @@ namespace DataDictionary.Tests.Runner.Events
         {
             modelEvent.Time = CurrentTime;
             modelEvent.TimeLine = this;
-            modelEvents.Add(modelEvent);
+            Events.Add(modelEvent);
+            Changed = true;
             modelEvent.Apply(runner);
         }
 
@@ -158,16 +156,16 @@ namespace DataDictionary.Tests.Runner.Events
         /// <param name="time">the time to step back</param>
         public void StepBack(double time)
         {
-            currentTime = currentTime - time;
-            if (currentTime < 0)
+            CurrentTime = CurrentTime - time;
+            if (CurrentTime < 0)
             {
-                currentTime = 0;
+                CurrentTime = 0;
             }
 
             while (Events.Count > 0)
             {
                 ModelEvent evt = Events.Last();
-                if (evt.Time < currentTime)
+                if (evt.Time < CurrentTime)
                 {
                     break;
                 }

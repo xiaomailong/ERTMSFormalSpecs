@@ -794,7 +794,6 @@ namespace GUI
 
                 base.visit(obj, visitSubNodes);
             }
-
         }
 
         /// <summary>

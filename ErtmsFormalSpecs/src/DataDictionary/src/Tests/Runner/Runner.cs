@@ -299,32 +299,28 @@ namespace DataDictionary.Tests.Runner
             /// <summary>
             /// The action to activate
             /// </summary>
-            private Rules.RuleCondition ruleCondition;
-            public Rules.RuleCondition RuleCondition
-            {
-                get { return ruleCondition; }
-                private set { ruleCondition = value; }
-            }
+            public Rules.RuleCondition RuleCondition { get; private set; }
 
             /// <summary>
             /// The instance on which the action is applied
             /// </summary>
-            private Utils.IModelElement instance;
-            public Utils.IModelElement Instance
-            {
-                get { return instance; }
-                private set { instance = value; }
-            }
+            public Utils.IModelElement Instance { get; private set; }
+
+            /// <summary>
+            /// The explanation why this activation has been performed
+            /// </summary>
+            public ExplanationPart Explanation { get; private set; }
 
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="ruleCondition">The rule condition which leads to this activation</param>
             /// <param name="instance">The instance on which this rule condition's preconditions are evaluated to true</param>
-            public Activation(Rules.RuleCondition ruleCondition, Utils.IModelElement instance)
+            public Activation(Rules.RuleCondition ruleCondition, Utils.IModelElement instance, ExplanationPart explanation)
             {
                 RuleCondition = ruleCondition;
                 Instance = instance;
+                Explanation = explanation;
             }
 
             /// <summary>
@@ -370,19 +366,6 @@ namespace DataDictionary.Tests.Runner
                 }
 
                 return retVal;
-            }
-
-            /// <summary>
-            /// Registers the actions to be activated, as an activation.
-            /// </summary>
-            /// <param name="activations"></param>
-            /// <param name="actions"></param>
-            public static void RegisterRules(HashSet<Activation> activations, List<Rules.RuleCondition> ruleConditions, Utils.IModelElement instance)
-            {
-                foreach (Rules.RuleCondition ruleCondition in ruleConditions)
-                {
-                    activations.Add(new Activation(ruleCondition, instance));
-                }
             }
         }
 
@@ -430,29 +413,7 @@ namespace DataDictionary.Tests.Runner
                 // Clears the cache of functions
                 FunctionCacheCleaner.ClearCaches();
 
-                foreach (KeyValuePair<Utils.ModelElement, List<Utils.ElementLog>> pair in Utils.ModelElement.Errors)
-                {
-                    foreach (Utils.ElementLog log in pair.Value)
-                    {
-                        switch (log.Level)
-                        {
-                            case Utils.ElementLog.LevelEnum.Error:
-                                ModelInterpretationFailure modelInterpretationFailure = new ModelInterpretationFailure(log, pair.Key as Utils.INamable, null);
-                                ModelElement modelElement = pair.Key as ModelElement;
-                                if (modelElement != null)
-                                {
-                                    modelInterpretationFailure.Explanation = modelElement.Explain;
-                                }
-                                EventTimeLine.AddModelEvent(modelInterpretationFailure, this);
-                                break;
-
-                            case Utils.ElementLog.LevelEnum.Warning:
-                                break;
-                            case Utils.ElementLog.LevelEnum.Info:
-                                break;
-                        }
-                    }
-                }
+                RegisterErrors(Utils.ModelElement.Errors);
 
                 EventTimeLine.GarbageCollect();
             }
@@ -484,7 +445,7 @@ namespace DataDictionary.Tests.Runner
             {
                 foreach (DataDictionary.Types.NameSpace nameSpace in dictionary.NameSpaces)
                 {
-                    SetupNameSpaceActivations(priority, activations, nameSpace, null, this);
+                    SetupNameSpaceActivations(priority, activations, nameSpace, this);
                 }
             }
 
@@ -538,32 +499,23 @@ namespace DataDictionary.Tests.Runner
         /// <param name="explanation">The explanation part to be filled</param>
         /// <param name="runner"></param>
         /// <returns></returns>
-        protected void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace, ExplanationPart explanation, Tests.Runner.Runner runner)
+        protected void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace, Tests.Runner.Runner runner)
         {
             // Finds all activations in sub namespaces
             foreach (Types.NameSpace subNameSpace in nameSpace.NameSpaces)
             {
-                SetupNameSpaceActivations(priority, activations, subNameSpace, explanation, runner);
+                SetupNameSpaceActivations(priority, activations, subNameSpace, runner);
             }
 
-            List<Rules.RuleCondition> rules = new List<Rules.RuleCondition>();
             foreach (Rule rule in nameSpace.Rules)
             {
-                rules.Clear();
-                rule.Evaluate(this, priority, rule, rules, explanation);
-                Activation.RegisterRules(activations, rules, nameSpace);
-            }
-
-            // BUG : This is irrelevant now. Check that and remove
-            foreach (Functions.Procedure procedure in nameSpace.Procedures)
-            {
-                rules.Clear();
-                Activation.RegisterRules(activations, rules, procedure);
+                ExplanationPart explanation = new ExplanationPart(rule, "Rule evaluation");
+                rule.Evaluate(this, priority, rule, activations, explanation);
             }
 
             foreach (Variables.IVariable variable in nameSpace.Variables)
             {
-                EvaluateVariable(priority, activations, variable, explanation, runner);
+                EvaluateVariable(priority, activations, variable, new ExplanationPart(variable as ModelElement, "Evaluating variable"), runner);
             }
         }
 
@@ -581,13 +533,11 @@ namespace DataDictionary.Tests.Runner
             {
                 if (variable.Type is Types.Structure)
                 {
-                    List<Rules.RuleCondition> rules = new List<RuleCondition>();
                     Types.Structure structure = variable.Type as Types.Structure;
                     foreach (Rule rule in structure.Rules)
                     {
-                        rule.Evaluate(this, priority, variable, rules, explanation);
+                        rule.Evaluate(this, priority, variable, activations, explanation);
                     }
-                    Activation.RegisterRules(activations, rules, variable);
 
                     StructureValue value = variable.Value as StructureValue;
                     if (value != null)
@@ -600,9 +550,7 @@ namespace DataDictionary.Tests.Runner
                 }
                 else if (variable.Type is Types.StateMachine)
                 {
-                    List<Rules.RuleCondition> rules = new List<RuleCondition>();
-                    EvaluateStateMachine(rules, priority, variable, explanation, runner);
-                    Activation.RegisterRules(activations, rules, variable);
+                    EvaluateStateMachine(activations, priority, variable, explanation, runner);
                 }
                 else if (variable.Type is Types.Collection)
                 {
@@ -650,7 +598,7 @@ namespace DataDictionary.Tests.Runner
         /// <param name="currentStateVariable">The variable which holds the current state of the procedure</param>
         /// <param name="explanation">The explanation part to be filled</param>
         /// <param name="runner"></param>
-        private void EvaluateStateMachine(List<Rules.RuleCondition> ruleConditions, Generated.acceptor.RulePriority priority, Variables.IVariable currentStateVariable, ExplanationPart explanation, Tests.Runner.Runner runner)
+        private void EvaluateStateMachine(HashSet<Runner.Activation> activations, Generated.acceptor.RulePriority priority, Variables.IVariable currentStateVariable, ExplanationPart explanation, Tests.Runner.Runner runner)
         {
             if (currentStateVariable != null)
             {
@@ -660,7 +608,7 @@ namespace DataDictionary.Tests.Runner
                 {
                     foreach (Rule rule in currentStateMachine.Rules)
                     {
-                        rule.Evaluate(this, priority, currentStateVariable, ruleConditions, explanation);
+                        rule.Evaluate(this, priority, currentStateVariable, activations, explanation);
                     }
                     currentStateMachine = currentStateMachine.EnclosingStateMachine;
                 }
@@ -690,7 +638,7 @@ namespace DataDictionary.Tests.Runner
                 if (activation.RuleCondition.Actions.Count > 0)
                 {
                     // Register the fact that a rule has been triggered
-                    Events.RuleFired ruleFired = new Events.RuleFired(activation.RuleCondition, priority);
+                    Events.RuleFired ruleFired = new Events.RuleFired(activation, priority);
                     EventTimeLine.AddModelEvent(ruleFired, this);
 
                     // Registers all model updates due to this rule triggering
@@ -1293,6 +1241,105 @@ namespace DataDictionary.Tests.Runner
         public void EndExecution()
         {
             FunctionCacheCleaner.ClearCaches();
+        }
+
+        /// <summary>
+        /// Provides the next rule priority according to the current one
+        /// </summary>
+        /// <returns></returns>
+        private Generated.acceptor.RulePriority NextPriority()
+        {
+            Generated.acceptor.RulePriority retVal = Generated.acceptor.RulePriority.defaultRulePriority;
+
+            if (CurrentPriority != null)
+            {
+                bool currentFound = false;
+                foreach (Generated.acceptor.RulePriority next in PRIORITIES_ORDER)
+                {
+                    if (next == CurrentPriority)
+                    {
+                        currentFound = true;
+                    }
+                    else if (currentFound)
+                    {
+                        retVal = next;
+                    }
+                }
+            }
+
+            if (retVal == Generated.acceptor.RulePriority.defaultRulePriority)
+            {
+                retVal = Generated.acceptor.RulePriority.aVerification;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Activates a mini step
+        /// </summary>
+        public void MiniStep()
+        {
+            try
+            {
+                CurrentPriority = NextPriority();
+
+                if (LogEvents)
+                {
+                    Log.Info("Mini step " + CurrentPriority);
+                }
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+
+                LastActivationTime = Time;
+
+                Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
+
+                innerExecuteOnePriority((Generated.acceptor.RulePriority)CurrentPriority);
+
+                // Clears the cache of functions
+                FunctionCacheCleaner.ClearCaches();
+
+                RegisterErrors(Utils.ModelElement.Errors);
+
+                EventTimeLine.GarbageCollect();
+            }
+            finally
+            {
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+            }
+
+            EventTimeLine.CurrentTime += Step; 
+        }
+
+        /// <summary>
+        /// Registers the errors raised during evaluation and create ModelInterpretationFailure for each one of them
+        /// </summary>
+        /// <param name="errors"></param>
+        private void RegisterErrors(Dictionary<Utils.ModelElement, List<Utils.ElementLog>> errors)
+        {
+            foreach (KeyValuePair<Utils.ModelElement, List<Utils.ElementLog>> pair in errors)
+            {
+                foreach (Utils.ElementLog log in pair.Value)
+                {
+                    switch (log.Level)
+                    {
+                        case Utils.ElementLog.LevelEnum.Error:
+                            ModelInterpretationFailure modelInterpretationFailure = new ModelInterpretationFailure(log, pair.Key as Utils.INamable, null);
+                            ModelElement modelElement = pair.Key as ModelElement;
+                            if (modelElement != null)
+                            {
+                                modelInterpretationFailure.Explanation = modelElement.Explain;
+                            }
+                            EventTimeLine.AddModelEvent(modelInterpretationFailure, this);
+                            break;
+
+                        case Utils.ElementLog.LevelEnum.Warning:
+                            break;
+                        case Utils.ElementLog.LevelEnum.Info:
+                            break;
+                    }
+                }
+            }
         }
     }
 }

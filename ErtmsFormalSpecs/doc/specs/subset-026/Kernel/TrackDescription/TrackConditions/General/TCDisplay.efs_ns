@@ -12,9 +12,12 @@
  Default="TCTypeEnum.LowerPantograph"
  Width="100"
  Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="TCTypeEnum"
  Guid="4410ca44-83d3-4da7-8d02-18e9894d1bf3"
 >
+<Comment>Enumeration of the different types of track condition that can be announced on the DMI</Comment>
 <Values>
 <EnumValue
  Value=""
@@ -71,6 +74,36 @@
  Name="EddyCurrentBrakeForSB"
  Guid="32a5301e-d4f9-41f9-959d-96ffb7cf9a02"
 >
+</EnumValue><EnumValue
+ Value=""
+ Name="TractionSystem__none"
+ Guid="cf5598f7-af09-40fb-9380-502729892df6"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="TractionSystem__AC25kV"
+ Guid="531f5034-4b79-4e73-80a2-63307cb248a1"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="TractionSystem__AC15kV"
+ Guid="8bcf9538-f14e-4ca5-a7c3-0d1df683ea2f"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="TractionSystem__DC3kV"
+ Guid="9b954826-91c3-47c0-b276-93e281b3d8c8"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="TractionSystem__DC1_5kV"
+ Guid="0e56ca98-1d15-4871-bd49-5af64d7adf31"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="TractionSystem__DC600_750V"
+ Guid="db3f2d46-9ebe-4129-ae04-b30da831fd63"
+>
 </EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
@@ -79,6 +112,7 @@
  X="110"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="TCStructWithBrakeInhibition"
  Guid="21138f5c-5501-4929-a88b-8242588bc71a"
 >
@@ -204,6 +238,7 @@
  TypeName="Boolean"
  Default="False"
  Mode="Internal"
+ Implemented="TRUE"
  Name="SwitchOffEddyCurrentBrakeForSB"
  Guid="e04c4c6a-05d3-460e-ae3f-7528880c647a"
 >
@@ -217,6 +252,7 @@
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="TCStructWithSoundHorn"
  Guid="4bfc7dd3-7985-4f2a-8bcf-cf0866594af4"
 >
@@ -239,7 +275,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8a432bc0-3365-4c8b-8a75-3789ba2f0cf5"
 >
-</ReqRef><Comment>The driver should sound the hor,n as long as the train is in this section</Comment>
+</ReqRef><Comment>The driver should sound the horn as long as the train is in this section</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
@@ -267,7 +303,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5539cdf7-103b-4ad3-a89d-c18bbc59cd20"
 >
-</ReqRef><Comment>Are where the train is not permitted to stop</Comment>
+</ReqRef><Comment>Area where the train is not permitted to stop</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -282,47 +318,76 @@
  Guid="66fc6c3c-a730-422c-b00d-3f2789766377"
 >
 </ReqRef><Comment>Start location of the track condition</Comment>
+</StructureElement><StructureElement
+ TypeName="TractionSystems.TractionSystem"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="TractionSystem"
+ Guid="9a98a7d7-1c4e-4659-9fbf-017d9f348018"
+>
+<ReqRef
+ Id="6dae5e9c-2f5e-4dd2-89ec-096e89a76644"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="90f2dbb5-f0a2-494d-b739-45bc5acd86d0"
+>
+</ReqRef><Comment>Traction system in application</Comment>
 </StructureElement></Structure><Structure
  Default=""
  Y="60"
  Width="100"
  Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="TCAnnouncementStruct"
  Guid="5027d2de-d609-42ac-affc-25d2447b5369"
 >
+<Comment>Contains the information needed to announce an upcoming track condition</Comment>
 <StructureElement
  TypeName="TCTypeEnum"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Type"
  Guid="5a887a9d-1213-40a1-a7e7-b898e427de10"
 >
-<Comment></Comment>
+<Comment>The type of announcement displayed</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
  Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Distance"
  Guid="d8ef9e3f-8c92-4a0d-8423-53947c440ba1"
 >
+<Comment>Distance at which the announcement becomes displayed</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="Default.BaseTypes.Length.Infinity"
  Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Length"
  Guid="8b8ca15d-3a98-4430-b3a6-cc71adabe7b3"
 >
+<Comment>Length over which the announcement is displayed (not used for all announcements - some are displayed for a fixed time. In that case, the length is given as NA)</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Time"
  Default="Default.BaseTypes.Time.Infinity"
  Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Time"
  Guid="1b973fea-c77e-454e-9315-5f94a2b8cf45"
 >
+<Comment>Time for which the announcement is displayed (not used for all announcements - some are displayed for a fixed length. In that case, the time is given as Infinity)</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="False"
  Mode="Internal"
+ Implemented="TRUE"
  Name="Automatic"
  Guid="6b4715e7-bdec-477d-89ca-2f88dfbae6f5"
 >
@@ -336,6 +401,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0f448162-e37c-4894-a870-18a9c7443fb8"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="b04158a3-35ce-4257-b43e-1d9716f76f93"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -361,7 +427,13 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d3637433-5749-47cc-891a-90598f6cf13b"
 >
-</ReqRef></StructureElement></Structure></Structures>
+</ReqRef><ReqRef
+ Id="40a60899-55f1-47d6-b778-f25fc8357903"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f57bbdc-bede-4839-9d98-e6be2a0d4047"
+>
+</ReqRef><Comment>Indicates whether the announced condition requires manual action or the train will handle it automatically</Comment>
+</StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithBrakeInhibition"
@@ -370,6 +442,7 @@
  Y="60"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="TCBrakes"
  Guid="f218cca7-8f46-48ed-b5fa-2845430d69db"
 >
@@ -387,6 +460,7 @@
  Y="60"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="TCSoundHorn"
  Guid="e148decc-b70e-4ea3-b3ce-6aaea53f3415"
 >
@@ -398,13 +472,17 @@
 </ReqRef><Comment>Collection used to pass track condition information including sound horn to the DMI</Comment>
 </Collection><Collection
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct"
+ MaxSize="20"
  Default="[]"
  Y="120"
  Width="100"
  Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="TCAnnouncementCol"
  Guid="b0efb494-7f23-4cbd-8e54-bbbfccfa3d29"
 >
+<Comment>Collection used to hold the list of announcements the train will display</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -413,6 +491,7 @@
  Y="120"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="AnnouncementLocation"
  Guid="5080f214-5c31-4f7a-95b0-956b3f6e88cc"
 >
@@ -468,6 +547,16 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="52af0d5d-cb6c-4952-9e46-e623ddbde146"
 >
+</ReqRef><ReqRef
+ Id="d27ff68d-c1f1-4be1-a66f-a4a03d05148b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="43a80109-e15b-4696-aad2-3f03ad32759c"
+>
+</ReqRef><ReqRef
+ Id="c2822061-e212-40f4-9036-6b28ec8567ea"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="67dbe0a3-2849-4b19-84a8-e82f04c9b0d2"
+>
 </ReqRef><Comment>Calculates the announcement location (used in the DMI) of a track condition at the train&apos;s current speed</Comment>
 <Parameters>
 <Parameter
@@ -494,6 +583,7 @@
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="DriverReactionTime"
  Guid="e3f12503-0282-4f78-b89d-6aeb18a434bb"
 >
@@ -533,6 +623,16 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="243c65de-dc0d-4106-9bce-e49c15f6c5a4"
 >
+</ReqRef><ReqRef
+ Id="d27ff68d-c1f1-4be1-a66f-a4a03d05148b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a9d46eeb-ac4c-4534-be96-0ed0ef75a9e6"
+>
+</ReqRef><ReqRef
+ Id="c2822061-e212-40f4-9036-6b28ec8567ea"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2900e7c1-95f9-4e73-9c17-7cc9824958e8"
+>
 </ReqRef><Comment>TODO: find actual reaction times for the different track conditions.
 
 Returns the time required by the driver to performs the necessary tasks before a track condition is applied</Comment>
@@ -566,9 +666,12 @@ Returns the time required by the driver to performs the necessary tasks before a
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="NewAnnouncement"
  Guid="b24560ed-6adb-4343-aef8-254717c1d11d"
 >
+<Comment>Returns a new announcement with the data provided</Comment>
 <Parameters>
 <Parameter
  Type="TCTypeEnum"
@@ -603,9 +706,12 @@ Returns the time required by the driver to performs the necessary tasks before a
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="MapToSoundHorn"
  Guid="7259b677-9bd3-4142-9650-821d01dcc539"
 >
+<Comment>Maps the track condition profile to the format of the sound horn group of track conditions in the DMI</Comment>
 <Parameters>
 <Parameter
  Type="TrackConditionInformation"
@@ -619,6 +725,7 @@ Returns the time required by the driver to performs the necessary tasks before a
  Guid="5476e3dc-171a-41f6-829f-107d66d9e964"
 >
 <Expression>TCStructWithSoundHorn{
+    TractionSystem =&gt; TractionSystems.TSAtDistance(TCPoint.Distance),
     SoundHorn =&gt; TCPoint.Value.SoundHorn,
     TunnelStoppingArea =&gt; TCPoint.Value.TunnelStoppingArea,
     NonStoppingArea =&gt; TCPoint.Value.NonStoppingArea,
@@ -631,9 +738,12 @@ Returns the time required by the driver to performs the necessary tasks before a
  X="110"
  Width="100"
  Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="MapToBrakeInhibition"
  Guid="beeaa8f6-77b7-4abc-a028-6362e601aebe"
 >
+<Comment>Maps the track condition profile to the format of the brake inhibition group of track conditions in the DMI</Comment>
 <Parameters>
 <Parameter
  Type="TrackConditionInformation"
@@ -665,9 +775,26 @@ Returns the time required by the driver to performs the necessary tasks before a
  Y="60"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="IsInSoundHornGroup"
  Guid="2863ee58-24b2-4bbe-a13b-2a733b3dddd8"
 >
+<ReqRef
+ Id="88a9ba90-6c1e-47f7-bced-85484113e0fa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d1c7062-81e8-4d9a-9af3-a6c4fc661ccc"
+>
+</ReqRef><ReqRef
+ Id="72d98796-7871-4e90-85df-298a95950478"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4fda1294-6654-4abb-9536-a5dd629286f8"
+>
+</ReqRef><ReqRef
+ Id="6dae5e9c-2f5e-4dd2-89ec-096e89a76644"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3f54f37c-5068-415e-9fee-0b859f0f93b6"
+>
+</ReqRef><Comment>Indicates whether the given track condition is displayed in the same modes as sound horn</Comment>
 <Parameters>
 <Parameter
  Type="TCTypeEnum"
@@ -684,7 +811,19 @@ Returns the time required by the driver to performs the necessary tasks before a
   OR  
 Condition == TCTypeEnum.NonStoppingArea
   OR  
-Condition == TCTypeEnum.TunnelStoppingArea</Expression>
+Condition == TCTypeEnum.TunnelStoppingArea
+  OR  
+Condition == TCTypeEnum.TractionSystem__none
+  OR  
+Condition == TCTypeEnum.TractionSystem__AC25kV
+  OR  
+Condition == TCTypeEnum.TractionSystem__AC15kV
+  OR  
+Condition == TCTypeEnum.TractionSystem__DC3kV
+  OR  
+Condition == TCTypeEnum.TractionSystem__DC1_5kV
+  OR  
+Condition == TCTypeEnum.TractionSystem__DC600_750V</Expression>
 </Case></Cases>
 </Function><Function
  Type="TCAnnouncementStruct"
@@ -693,6 +832,7 @@ Condition == TCTypeEnum.TunnelStoppingArea</Expression>
  Y="60"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="AnnouncementWithEnd"
  Guid="da2c8e8e-b0f4-4484-a1fc-bcdcc52ada1f"
 >
@@ -721,7 +861,12 @@ Condition == TCTypeEnum.TunnelStoppingArea</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0b201546-0a06-4e5c-b243-0982c198156f"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><ReqRef
+ Id="02fc4b04-89a4-4fac-b594-da0bd5d3d31b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="41dfe058-6369-4873-a81c-80f766c6b135"
+>
+</ReqRef><Comment>Modifies the announcement structures to include end conditions</Comment>
 <Parameters>
 <Parameter
  Type="TCAnnouncementStruct"
@@ -780,6 +925,7 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="TrainIsAtTCStartLocation"
  Guid="350875d4-66ec-4eaf-b954-e763b237a8cf"
 >
@@ -872,6 +1018,7 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="TrainIsAtAnnouncementStart"
  Guid="551a8c1e-f182-44c8-b7fb-8c6926db8492"
 >
@@ -936,7 +1083,12 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a1b7e46a-64a9-4dc8-b134-af45a3a70407"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><ReqRef
+ Id="9ca199da-b431-4208-bbb1-61052c8839e8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf7cb675-2148-4d17-943f-c78c67ecdc9b"
+>
+</ReqRef><Comment>Indicates whether the train has reached the location where the given announcement should start to be displayed</Comment>
 <Parameters>
 <Parameter
  Type="TCAnnouncementStruct"
@@ -993,6 +1145,7 @@ Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions
  Name="Other conditions - start"
  Guid="2712b1ff-1b3d-4999-b9f2-a740966c7e91"
 >
+<Comment></Comment>
 <Expression>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;= Announcement.Distance</Expression>
 </Case></Cases>
 </Function><Function
@@ -1001,6 +1154,7 @@ Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions
  X="110"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="VirtualSBIForTarget"
  Guid="aef285ac-6d1f-41d6-8295-a9af0196f6f2"
 >
@@ -1024,7 +1178,8 @@ Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bc215be5-5f8a-46b9-94aa-040dcd0a5c38"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Creates a SBI deceleration curve ending at the target</Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
@@ -1056,6 +1211,7 @@ Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="VirtualSpeedRestriction"
  Guid="e29c2519-6260-43a0-9281-165ed7bc6178"
 >
@@ -1069,7 +1225,7 @@ Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ec9c4a7d-0099-4838-a64a-c937788f7adc"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Creates a speed restriction function where the train may travel at max speed up to the given distance, where the max allowed speed becomes 0</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -1102,6 +1258,9 @@ Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions
  Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="EndOfTC"
  Guid="921c1626-64ff-49fb-82a0-f21559d43682"
@@ -1144,6 +1303,10 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 </Function><Function
  Type="TCStructWithSoundHorn"
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
  Name="HideTCInformation"
  Guid="43c1e2b3-87e0-4736-a2ff-e720461ac353"
 >
@@ -1152,7 +1315,8 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ac829783-2401-423d-bc79-9454324d7b6a"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Removes the tunnel stopping area and non stopping area information from the displayed track conditions when the ends are passed (these conditions do not end at a fixed location, so this must be done dynamically)</Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
@@ -1214,6 +1378,7 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
  Y="60"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="MakeAnnouncement"
  Guid="773d168c-d251-419a-8a80-b38047c9b630"
 >
@@ -1252,7 +1417,7 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="55a9dc1d-0a74-42f2-87b8-be0e138b693c"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Create a start announcement and an end (if necessary) corresponding to a recently received track condition</Comment>
 <Parameters>
 <Parameter
  Type="Messages.M_TRACKCOND"
@@ -1273,6 +1438,7 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Start"
  Guid="393ba3e2-b5e3-4b80-ae5a-fd17cbb63761"
 >
@@ -1280,10 +1446,11 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Air tightness"
  Guid="5792b6f7-6adf-4e6e-9d49-9185a746957f"
 >
-<Comment></Comment>
+<Comment>Close air intake for air conditioning announcement</Comment>
 <PreConditions>
 <PreCondition
  Guid="427a6812-d486-4f22-b7c2-37b8807f34ac"
@@ -1299,9 +1466,11 @@ INSERT NewAnnouncement(
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Eddy current brake for EB inhibited"
  Guid="e75d59b6-f365-4120-bd50-99d7335f2faf"
 >
+<Comment>Inhibition of eddy current brake for the emergency brake announcement</Comment>
 <PreConditions>
 <PreCondition
  Guid="c9521eae-5f8b-44ce-bd80-38b914aedd00"
@@ -1317,10 +1486,11 @@ INSERT NewAnnouncement(
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Eddy current brake for SB inhibited"
  Guid="d07dc9d3-8de3-44bd-9345-da359323a103"
 >
-<Comment></Comment>
+<Comment>Inhibition of eddy current brake for the service brake announcement</Comment>
 <PreConditions>
 <PreCondition
  Guid="1269e690-bf92-4fdd-8657-c5ce2d284505"
@@ -1335,9 +1505,11 @@ IN Announcements</Action></Actions>
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Lower pantograph"
  Guid="1850fb27-dd99-4552-838a-6e5021c59fbc"
 >
+<Comment>Lower pantograph announcement</Comment>
 <PreConditions>
 <PreCondition
  Guid="cf90b65b-87a3-4e31-99ce-0a8b5ac9571c"
@@ -1352,9 +1524,11 @@ IN Announcements</Action></Actions>
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Magnetic shoe brake inhibition"
  Guid="df2fa0db-eac2-4409-b354-79a502f9731e"
 >
+<Comment>Inhibition of magnetic shoe brake announcement</Comment>
 <PreConditions>
 <PreCondition
  Guid="beef047a-088a-496d-a290-5ede84fe76d3"
@@ -1370,9 +1544,11 @@ INSERT NewAnnouncement(
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="NonStoppingArea"
  Guid="3096ef95-664d-4e3f-9bfa-a86c05c0ea80"
 >
+<Comment>Non stopping area announcement</Comment>
 <PreConditions>
 <PreCondition
  Guid="5bd5c76a-c6eb-47ce-bba1-cdba35115828"
@@ -1388,9 +1564,11 @@ INSERT NewAnnouncement(
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Regenerative brake inhibition"
  Guid="121dd115-40eb-45e1-9135-07222919b127"
 >
+<Comment>Inhibition of regenerative brake announcement</Comment>
 <PreConditions>
 <PreCondition
  Guid="4dc26b8a-a7e2-42a1-8204-bd59482d1fe8"
@@ -1406,9 +1584,11 @@ INSERT NewAnnouncement(
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Sound horn"
  Guid="1268c566-e2ce-436a-a0ad-89fc5d0bf7a6"
 >
+<Comment>Sound horn announcement</Comment>
 <PreConditions>
 <PreCondition
  Guid="54b51ce1-0d66-41d8-9fcd-c343c876c522"
@@ -1424,9 +1604,11 @@ INSERT NewAnnouncement(
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Tunnel stopping area"
  Guid="78897ba3-ce37-42c3-918e-60efcec433c7"
 >
+<Comment>Tunnel stopping area announcement</Comment>
 <PreConditions>
 <PreCondition
  Guid="1ef8cf9f-b365-4544-8bf2-d1e65cb9a6f2"
@@ -1443,9 +1625,11 @@ INSERT NewAnnouncement(
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Turn off main power"
  Guid="bdfca02c-5caa-4f5f-870c-18353f05bb10"
 >
+<Comment>Turn off main power switch announcement</Comment>
 <PreConditions>
 <PreCondition
  Guid="6d3e6e73-0af5-4783-ae3c-4e7d8c363a19"
@@ -1463,6 +1647,7 @@ IN Announcements</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="End"
  Guid="e464ffc8-4a79-4891-a95b-62a86f23ad23"
 >
@@ -1470,9 +1655,11 @@ IN Announcements</Action></Actions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Air tightness"
  Guid="db8a722b-6f89-41a7-8501-7b39456cf412"
 >
+<Comment>Open air intake for air conditioning</Comment>
 <PreConditions>
 <PreCondition
  Guid="cc33fa10-8f1e-4f8b-bc70-a667c2e5aac6"
@@ -1487,10 +1674,11 @@ IN Announcements</Action></Actions>
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Lower pantograph"
  Guid="58b850dc-8c38-4ce6-a31f-ae670c948a02"
 >
-<Comment></Comment>
+<Comment>Raise pantograph</Comment>
 <PreConditions>
 <PreCondition
  Guid="c68d40ee-f5a4-4f8e-ba80-2fc479e333b6"
@@ -1506,9 +1694,11 @@ INSERT NewAnnouncement(
 )
 IN Announcements</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Turn off main power"
  Guid="5c6b105e-f22d-44ef-bacb-40a10c83e0c1"
 >
+<Comment>Turn main power switch back on</Comment>
 <PreConditions>
 <PreCondition
  Guid="8051c6f3-0064-47f9-a1be-683845a5d447"
@@ -1529,6 +1719,7 @@ IN Announcements</Action></Actions>
  Y="120"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="DisplayAnnouncement"
  Guid="72601b5a-1b53-4bb9-bf5d-28ce7cceeeb3"
 >
@@ -1537,7 +1728,8 @@ IN Announcements</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0de8f4ac-1d81-4c26-b4e4-3074af3b6db4"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Send announcements from the kernel to the DMI when they become applicable</Comment>
+<Parameters>
 <Parameter
  Type="TCAnnouncementStruct"
  Name="Announcement"
@@ -1547,15 +1739,19 @@ IN Announcements</Action></Actions>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Copy announcement into the DMI variable"
  Guid="2d817a25-fe3b-4a3a-97a0-68e9157dbbf4"
 >
+<Comment>Copy any applicable announcements to one of the two DMI output variables</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Is in sound horn group"
  Guid="3f68b5fb-f3ab-467b-8c42-ab0f2041956c"
 >
+<Comment>The announcements sound horn, non stopping area, tunnel stopping area and change of traction system</Comment>
 <PreConditions>
 <PreCondition
  Guid="1f5cc126-5af0-495b-8a3e-512b10b289a0"
@@ -1565,9 +1761,11 @@ IN Announcements</Action></Actions>
  Guid="9cc08fb8-cfcd-4538-a77e-1063f0f5b26c"
 >INSERT AnnouncementWithEnd(Announcement) IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Announcements</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Is in brake inhibition group"
  Guid="77a65408-382a-4917-983a-5ab299330fa7"
 >
+<Comment>All other announced track conditions</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -1577,12 +1775,15 @@ IN Announcements</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Delete from kernel"
  Guid="bbc867a3-01c7-47fd-80bb-1275e6e04a7b"
 >
+<Comment>Once announcements have been sent to the DMI, remove them from the kernel</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Is in sound horn group"
  Guid="3715044b-c160-453c-93cd-15c1b635532f"
 >
@@ -1603,6 +1804,7 @@ IN Announcements</Action></Actions>
  Y="180"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Announcements"
  Guid="6fc7bd4f-eb71-4e1a-85e6-deb728a602ed"
 >
@@ -1611,12 +1813,14 @@ IN Announcements</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0536a3bb-920a-4187-a6db-23ba703423d9"
 >
-</ReqRef></Variable><Variable
+</ReqRef><Comment>List containing announcements for all the upcoming track conditions</Comment>
+</Variable><Variable
  Type="Default.BaseTypes.Time"
  DefaultValue="5.0"
  VariableMode="Internal"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="TimeToKeepAnnouncementsInRear"
  Guid="c125b9c1-22e6-400f-82bb-e8aabed65601"
 >
@@ -1639,6 +1843,11 @@ IN Announcements</Action></Actions>
  Id="68413353-2dd0-4dd6-ba33-b1b4afb1c586"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a9b01e2e-45ba-41e9-810b-11223c94103b"
+>
+</ReqRef><ReqRef
+ Id="02fc4b04-89a4-4fac-b594-da0bd5d3d31b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4aa5a015-e426-4432-a7bb-c60372a54a45"
 >
 </ReqRef></Variable></Variables>
 </NameSpace>

@@ -78,8 +78,9 @@ namespace GUI.BoxArrowDiagram
         {
             if (Model.Width == 0 || Model.Height == 0)
             {
-                Model.Width = Panel.DefaultBoxSize.Width;
-                Model.Height = Panel.DefaultBoxSize.Height;
+                Size boxSize = Panel.DefaultBoxSize;
+                Model.Width = boxSize.Width;
+                Model.Height = boxSize.Height;
 
                 Point p = Panel.GetNextPosition(Model);
                 Model.X = p.X;

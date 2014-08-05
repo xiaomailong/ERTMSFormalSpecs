@@ -17,6 +17,7 @@
 using System.Text;
 using System.Collections.Generic;
 using DataDictionary.Interpreter;
+using System;
 namespace DataDictionary
 {
     public abstract class ModelElement : Generated.BaseModelElement
@@ -217,6 +218,50 @@ namespace DataDictionary
             return retVal;
         }
 
+
+        /// <summary>
+        /// Generates new GUID for the element
+        /// </summary>
+        private class RegererateGuidVisitor : DataDictionary.Generated.Visitor
+        {
+            /// <summary>
+            /// Ensures that all elements have a new Guid
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(DataDictionary.Generated.BaseModelElement obj, bool visitSubNodes)
+            {
+                ModelElement element = (ModelElement)obj;
+
+                // Side effect : creates a new Guid if it is empty
+                element.setGuid(null);
+                string guid = element.Guid;
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
+        /// Duplicates the model element and avoid duplicated GUID
+        /// </summary>
+        /// <returns></returns>
+        public ModelElement Duplicate()
+        {
+            ModelElement retVal = null;
+
+            XmlBooster.XmlBStringContext ctxt = new XmlBooster.XmlBStringContext(ToXMLString());
+            try
+            {
+                retVal = DataDictionary.Generated.acceptor.accept(ctxt) as DataDictionary.ModelElement;
+                RegererateGuidVisitor visitor = new RegererateGuidVisitor();
+                visitor.visit(retVal, true);
+            }
+            catch (Exception e)
+            {
+            }
+
+            return retVal;
+        }
     }
 
     public interface TextualExplain

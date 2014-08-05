@@ -701,7 +701,16 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="96efee33-cf27-4dd5-a7aa-b1cec64d4cf4"
->TargetSpeedMonitoring.SupervisionStatus.ToIntervention()</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSpeedMonitoring.SupervisionStatus.t14()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t13()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t12()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t11()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t10()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f8dbb2b7-3bb9-4241-9ff0-d2a33c0ac9a1"
@@ -774,7 +783,12 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="0dc28c56-565a-4b93-95d1-5dfe4cfa1de9"
->TargetSpeedMonitoring.SupervisionStatus.ToWarning()</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSpeedMonitoring.SupervisionStatus.t7()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t8()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t9()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f1abbb09-b10c-4d7f-b671-6d839b9e1c6b"
@@ -796,7 +810,12 @@ THIS &lt;- Target.Warning</Action><Action
 <PreConditions>
 <PreCondition
  Guid="b349ffd5-7e68-4e39-b91a-386f44a1bd2a"
->TargetSpeedMonitoring.SupervisionStatus.ToOverspeed()</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSpeedMonitoring.SupervisionStatus.t4()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t5()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t6()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b3c54d10-3d95-4bbc-80aa-855845e9ef32"
@@ -893,7 +912,16 @@ TCOTriggered &lt;- False</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="5eafcee0-46fa-42a9-b134-5b6c946a525b"
->TargetSpeedMonitoring.SupervisionStatus.ToIntervention()</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSpeedMonitoring.SupervisionStatus.t14()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t13()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t12()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t11()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t10()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="303ea22d-e695-4887-a955-a2d7a91ebae5"
@@ -968,7 +996,12 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="34322efe-7f5c-4c14-8d08-15f66294ea81"
->TargetSpeedMonitoring.SupervisionStatus.ToWarning()</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSpeedMonitoring.SupervisionStatus.t7()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t8()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t9()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0bcdb731-9edd-4a25-84d2-c2ac161e6aba"
@@ -990,7 +1023,12 @@ TCOTriggered &lt;- False</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="5d5ec35d-17cf-42d4-b349-521db10b473f"
->TargetSpeedMonitoring.SupervisionStatus.ToOverspeed()</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSpeedMonitoring.SupervisionStatus.t4()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t5()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t6()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d28762fe-3632-4bd2-9e7d-fe9f372261f4"
@@ -1068,7 +1106,16 @@ RevokeSBCommand()</Action><Action
 <PreConditions>
 <PreCondition
  Guid="7fa23ed1-ae9d-49e3-927c-f3d2da32b78b"
->TargetSpeedMonitoring.SupervisionStatus.ToIntervention()</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSpeedMonitoring.SupervisionStatus.t14()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t13()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t12()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t11()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t10()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7020a9c2-28bc-45fb-b642-e83da6813256"
@@ -1167,7 +1214,12 @@ TCOTriggered &lt;- False</Action><Action
 <PreConditions>
 <PreCondition
  Guid="acd44053-6b13-4945-85f2-5086cf185af3"
->TargetSpeedMonitoring.SupervisionStatus.ToWarning()</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSpeedMonitoring.SupervisionStatus.t7()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t8()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t9()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6211da03-1df8-44e8-a984-8b0851819f2f"
@@ -1247,7 +1299,16 @@ RevokeSBCommand()</Action><Action
 <PreConditions>
 <PreCondition
  Guid="334e8b10-3ca0-4846-b5b9-e6450318cfe2"
->TargetSpeedMonitoring.SupervisionStatus.ToIntervention()</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSpeedMonitoring.SupervisionStatus.t14()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t13()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t12()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t11()
+  OR  
+TargetSpeedMonitoring.SupervisionStatus.t10()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9cfeb262-e27d-4e9f-abcb-0a585094e67a"
@@ -1913,11 +1974,6 @@ SelectMonitoringType()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b8cf0ba7-f32e-4c2a-b835-6ba6cb0f32e1"
 >
-</ReqRef><ReqRef
- Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="07f9f820-4f2d-4f73-886c-d0fc8f968675"
->
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="74e64307-2966-461e-a976-9a0194ca8514"
@@ -1942,20 +1998,9 @@ SelectMonitoringType()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="5394d167-a030-4b1d-a096-b176e1075237"
->Monitoring in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
- Guid="e902ee0f-8ed6-4c80-aafe-96b258b01056"
->Monitoring not in [ MonitoringTypeSM.Ceiling.Overspeed, MonitoringTypeSM.Ceiling.Warning, MonitoringTypeSM.Ceiling.Intervention ]</PreCondition></PreConditions>
+><Comment></Comment>
+Monitoring in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
 <Expression>CeilingSpeedMonitoring.P ( Distance )</Expression>
-</Case><Case
- Name="CeilingSpeedMonitoring_SBI"
- Guid="e4f40ce0-734c-4a1d-b8d4-68c346bc038b"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="c4529bc3-bd47-4ae9-8347-84a7d362d528"
->Monitoring in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
-<Expression>CeilingSpeedMonitoring.SBI ( Distance )</Expression>
 </Case><Case
  Name="TargetSpeedMonitoring_P"
  Guid="c121bdd5-4b33-48ef-b069-9a042e43983d"
@@ -1963,20 +2008,8 @@ SelectMonitoringType()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="5ba6a2ec-fce4-46ab-8e17-256f0a63ae84"
->Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
- Guid="b286ca0d-4051-4c4a-a610-a2615579bcac"
->Monitoring not in [ MonitoringTypeSM.Target.Overspeed, MonitoringTypeSM.Target.Warning, MonitoringTypeSM.Target.Intervention ]</PreCondition></PreConditions>
-<Expression>TargetSpeedMonitoring.V_P_DMI()</Expression>
-</Case><Case
- Name="TargetSpeedMonitoring_FLOI"
- Guid="abb0b3d3-d383-4088-8c65-db4e81cadbae"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="7bfba49b-c9f5-492a-8afc-18d09cf1f725"
 >Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
-<Expression>TargetSpeedMonitoring.V_FLOI_DMI()</Expression>
+<Expression>TargetSpeedMonitoring.V_P_DMI()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

@@ -298,6 +298,15 @@ namespace DataDictionary
                     requiresComment = rule.EnclosingProcedure.Rules.Count > 1;
                 }
 
+                Types.ITypedElement typedElement = commentable as Types.ITypedElement;
+                if (typedElement != null)
+                {
+                    if (typedElement.Type != null)
+                    {
+                        requiresComment = requiresComment && string.IsNullOrEmpty(typedElement.Type.Comment);
+                    }
+                }
+
                 Variables.Variable variable = commentable as Variables.Variable;
                 if (variable != null)
                 {

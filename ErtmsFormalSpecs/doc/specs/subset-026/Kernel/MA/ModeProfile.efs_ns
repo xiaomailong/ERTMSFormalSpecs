@@ -651,7 +651,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Actions>
 <Action
  Guid="98823607-91dd-484b-b5b1-f3e4c5782128"
->DMI.MasterDMI().InitiateAcknOfOSMode()</Action><Action
+>DMI.MasterDMI().In_AcknOfOSMode.InitiateRequest()</Action><Action
  Guid="57a5d091-0427-485b-8afa-b802aca3eebd"
 >DriverAckTimer &lt;- CurrentTime</Action></Actions>
 </RuleCondition><RuleCondition
@@ -671,7 +671,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Actions>
 <Action
  Guid="f3d3707f-1bcd-43de-a194-2b9fbdab9e8c"
->DMI.MasterDMI().InitiateAcknOfLSMode()</Action><Action
+><Comment></Comment>
+DMI.MasterDMI().In_AcknOfLSMode.InitiateRequest()</Action><Action
  Guid="04e8a3f6-bc05-4614-a844-ce7bbc5b31b4"
 >DriverAckTimer &lt;- CurrentTime</Action></Actions>
 </RuleCondition><RuleCondition
@@ -696,7 +697,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Actions>
 <Action
  Guid="33b83755-998c-44ea-b9ca-94db0c606363"
->DMI.MasterDMI().InitiateAcknOfSHMode()</Action><Action
+>DMI.MasterDMI().In_AcknOfSHMode.InitiateRequest()</Action><Action
  Guid="3967bc73-aa86-4222-8f4c-96d110b07eae"
 >DriverAckTimer &lt;- CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
@@ -1371,7 +1372,7 @@ IN
  Guid="961a9514-325f-4dd3-8288-f7f5c316bf3b"
 >ModeRelatedSpeedLimits.LSModeSpeedLimit() &gt; Odometry.EstimatedSpeed</PreCondition><PreCondition
  Guid="3da0d65b-0e2b-4020-8afd-97fbbee5539f"
->NOT DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DisplayRequested</PreCondition></PreConditions>
+>NOT (DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus  == Request.Request)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b5e35da4-c967-4a59-85c6-a08ce49af47a"
@@ -1417,7 +1418,7 @@ IN
  Guid="b7041bbe-293e-4a65-9f11-1f7ea8cd24b3"
 >ModeRelatedSpeedLimits.SHModeSpeedLimit() &gt; Odometry.EstimatedSpeed</PreCondition><PreCondition
  Guid="778ffeec-9d0d-4cc8-9cdb-a9b312b12afe"
->NOT DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DisplayRequested</PreCondition></PreConditions>
+>NOT (DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Request)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c13e2743-8c40-487f-84d9-9f5b18f67495"
@@ -1499,7 +1500,7 @@ IN
  Guid="fee35770-78b9-48c3-86f3-98a4fc5953d7"
 >NOT TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
  Guid="f28f60de-be90-44e4-8046-3653258d54cd"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DisplayRequested</PreCondition><PreCondition
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus  == Request.Request</PreCondition><PreCondition
  Guid="63385cea-a2a5-4761-b295-a54164bb3745"
 >DriverAckTimer + Tack &gt;= CurrentTime</PreCondition></PreConditions>
 <Actions>
@@ -1536,7 +1537,7 @@ IN
  Guid="41b79268-f740-4fa2-9e70-08d78771856a"
 >Kernel.Mode == Mode.SH</PreCondition><PreCondition
  Guid="563dae96-f4da-4c28-ac8e-b7fecd752f0c"
->DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DisplayRequested</PreCondition><PreCondition
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Request</PreCondition><PreCondition
  Guid="a7ac6784-ad88-44b3-aba1-5c17e74862a9"
 >NOT TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
  Guid="b4be8fa9-acea-4bd9-85a6-49c0a4e62385"

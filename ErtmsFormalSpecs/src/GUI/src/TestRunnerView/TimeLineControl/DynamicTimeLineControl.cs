@@ -98,6 +98,15 @@ namespace GUI.TestRunnerView.TimeLineControl
                 GUIUtils.MDIWindow.AddChildWindow(explainTextBox);
             }
 
+            RuleFired rulefired = evt as RuleFired;
+            if (rulefired != null)
+            {
+                DataDictionary.Interpreter.ExplanationPart explain = rulefired.Explanation;
+                ExplainBox explainTextBox = new ExplainBox();
+                explainTextBox.setExplanation(explain);
+                GUIUtils.MDIWindow.AddChildWindow(explainTextBox);
+            }
+
             Expect expect = evt as Expect;
             if (expect != null)
             {
@@ -126,12 +135,21 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         public override void Refresh()
         {
-            if (TimeLine != null && TimeLine.Events.Count != HandledEvents)
+            if (TimeLine == null)
             {
                 UpdatePositionHandler();
                 UpdatePanelSize();
-                HandledEvents = TimeLine.Events.Count;
-                base.Refresh();
+            }
+            else
+            {
+                if (TimeLine != null && TimeLine.Changed)
+                {
+                    TimeLine.Changed = false;
+                    UpdatePositionHandler();
+                    UpdatePanelSize();
+                    HandledEvents = TimeLine.Events.Count;
+                    base.Refresh();
+                }
             }
         }
 

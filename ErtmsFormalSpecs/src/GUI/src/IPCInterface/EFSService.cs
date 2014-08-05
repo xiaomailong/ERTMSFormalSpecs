@@ -442,7 +442,7 @@ namespace GUI.IPCInterface
         {
             Values.Value retVal = null;
 
-            DataDictionary.Interpreter.Expression expressionTree = EFSSystem.INSTANCE.Parser.Expression(null, expression);
+            DataDictionary.Interpreter.Expression expressionTree = EFSSystem.INSTANCE.Parser.Expression(EFSSystem.INSTANCE.Dictionaries[0], expression);
             if (expressionTree != null)
             {
                 retVal = convertOut(expressionTree.GetValue(new DataDictionary.Interpreter.InterpretationContext()));

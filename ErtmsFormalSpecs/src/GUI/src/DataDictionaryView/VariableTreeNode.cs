@@ -127,22 +127,16 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        public bool IsASubVariable;
-        public SubVariablesTreeNode subVariables;
-
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
         /// <param name="children"></param>
         /// <param name="encounteredTypes">the types that have already been encountered in the path to create this variable </param>
-        public VariableTreeNode(DataDictionary.Variables.Variable item, bool buildSubNodes, HashSet<DataDictionary.Types.Type> encounteredTypes, bool isASubVariable = false)
+        public VariableTreeNode(DataDictionary.Variables.Variable item, bool buildSubNodes, HashSet<DataDictionary.Types.Type> encounteredTypes)
             : base(item, buildSubNodes)
         {
             encounteredTypes.Add(item.Type);
-            IsASubVariable = isASubVariable;
-            subVariables = new SubVariablesTreeNode(item, buildSubNodes, encounteredTypes);
-            Nodes.Add(subVariables);
             encounteredTypes.Remove(item.Type);
         }
 
@@ -152,13 +146,10 @@ namespace GUI.DataDictionaryView
         /// <param name="item"></param>
         /// <param name="children"></param>
         /// <param name="encounteredTypes">the types that have already been encountered in the path to create this variable </param>
-        public VariableTreeNode(DataDictionary.Variables.Variable item, bool buildSubNodes, string name, HashSet<DataDictionary.Types.Type> encounteredTypes, bool isASubVariable = false)
+        public VariableTreeNode(DataDictionary.Variables.Variable item, bool buildSubNodes, string name, HashSet<DataDictionary.Types.Type> encounteredTypes)
             : base(item, buildSubNodes, name, false)
         {
             encounteredTypes.Add(item.Type);
-            IsASubVariable = isASubVariable;
-            subVariables = new SubVariablesTreeNode(item, buildSubNodes, encounteredTypes);
-            Nodes.Add(subVariables);
             encounteredTypes.Remove(item.Type);
         }
 
@@ -198,15 +189,8 @@ namespace GUI.DataDictionaryView
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
-            if (!IsASubVariable)
-            {
-                retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
-                retVal.AddRange(base.GetMenuItems());
-            }
-            else
-            {
-                retVal.Add(new MenuItem("Refresh", new EventHandler(RefreshNodeHandler)));
-            }
+            retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
 
             DataDictionary.Functions.Function function = Item.Value as DataDictionary.Functions.Function;
             if (function != null)
@@ -253,17 +237,6 @@ namespace GUI.DataDictionaryView
                 view.Functions.Add(function);
                 view.Refresh();
             }
-        }
-
-        public override void RefreshNode()
-        {
-            if (Nodes != null && subVariables != null)
-            {
-                Nodes.Remove(subVariables);
-                subVariables = new SubVariablesTreeNode(Item, true, new HashSet<DataDictionary.Types.Type>());
-                Nodes.Add(subVariables);
-            }
-            base.RefreshNode();
         }
     }
 }

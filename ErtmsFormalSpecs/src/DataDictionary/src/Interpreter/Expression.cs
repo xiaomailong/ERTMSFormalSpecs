@@ -637,12 +637,13 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Sets up a new explanation
         /// </summary>
+        /// <param name="force"></param>
         /// <returns></returns>
-        public ExplanationPart SetupNewExplanation()
+        public ExplanationPart SetupNewExplanation(bool force)
         {
             ExplanationPart retVal = currentExplanation;
 
-            if (EFSSystem.Runner == null || EFSSystem.Runner.Explain)
+            if (EFSSystem.Runner == null || EFSSystem.Runner.Explain || force)
             {
                 currentExplanation = new ExplanationPart(Root, this);
                 explain = true;
@@ -660,14 +661,21 @@ namespace DataDictionary.Interpreter
         {
             ExplanationPart retVal = currentExplanation;
 
-            if (retVal.SubExplanations.Count == 1)
+            if (retVal != null)
             {
-                // The current explanation is just a placeholder
-                retVal = retVal.SubExplanations[0];
-            }
+                if (retVal.SubExplanations.Count == 1)
+                {
+                    // The current explanation is just a placeholder
+                    retVal = retVal.SubExplanations[0];
+                }
 
-            currentExplanation = previousExplanation;
-            explain = currentExplanation != null;
+                currentExplanation = previousExplanation;
+                explain = currentExplanation != null;
+            }
+            else
+            {
+                retVal = previousExplanation;
+            }
 
             return retVal;
         }
@@ -678,8 +686,8 @@ namespace DataDictionary.Interpreter
         /// <returns></returns>
         public ExplanationPart Explain(InterpretationContext context)
         {
-            ExplanationPart retVal;
-            ExplanationPart previous = SetupNewExplanation();
+            ExplanationPart retVal = null;
+            ExplanationPart previous = SetupNewExplanation(true);
 
             Values.IValue value = null;
             try

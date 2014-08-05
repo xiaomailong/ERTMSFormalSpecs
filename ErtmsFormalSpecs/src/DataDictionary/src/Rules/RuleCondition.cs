@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using DataDictionary.Interpreter;
+using DataDictionary.Tests.Runner;
 
 namespace DataDictionary.Rules
 {
@@ -212,7 +213,7 @@ namespace DataDictionary.Rules
         /// <param name="explanation">The explanation part to be filled</param>
         /// <param name="runner"></param>
         /// <returns>the number of actions that were activated during this evaluation</returns>
-        public bool Evaluate(Tests.Runner.Runner runner, Generated.acceptor.RulePriority priority, Utils.IModelElement instance, List<RuleCondition> ruleConditions, ExplanationPart explanation)
+        public bool Evaluate(Tests.Runner.Runner runner, Generated.acceptor.RulePriority priority, Utils.IModelElement instance, HashSet<Runner.Activation> activations, ExplanationPart explanation)
         {
             bool retVal = false;
 
@@ -235,12 +236,12 @@ namespace DataDictionary.Rules
 
                 foreach (Rule subRule in SubRules)
                 {
-                    subRule.Evaluate(runner, priority, instance, ruleConditions, conditionExplanation);
+                    subRule.Evaluate(runner, priority, instance, activations, conditionExplanation);
                 }
 
                 if (EnclosingRule.getPriority() == priority)
                 {
-                    ruleConditions.Add(this);
+                    activations.Add(new Runner.Activation(this, instance, conditionExplanation));
                 }
             }
             else
@@ -276,7 +277,7 @@ namespace DataDictionary.Rules
                     ExplanationPart previous = null;
                     if (explanation != null)
                     {
-                        previous = expression.SetupNewExplanation();
+                        previous = expression.SetupNewExplanation(false);
                     }
 
                     Values.BoolValue value = expression.GetValue(context) as Values.BoolValue;
@@ -292,7 +293,7 @@ namespace DataDictionary.Rules
 
                     // Log.InfoFormat("Precondition {0} value {1}", preCondition.ExpressionText, retVal);
 
-                    if (explanation != null)
+                    if (previous != null && explanation != null)
                     {
                         explanation.SubExplanations.Add(expression.CompleteNewExplanation(previous));
                     }
