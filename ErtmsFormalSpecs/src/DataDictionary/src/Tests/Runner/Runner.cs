@@ -529,7 +529,7 @@ namespace DataDictionary.Tests.Runner
         /// <param name="runner"></param>
         private void EvaluateVariable(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Variables.IVariable variable, ExplanationPart explanation, Tests.Runner.Runner runner)
         {
-            if (variable != null)
+            if (variable != null && variable.Value != EFSSystem.EmptyValue)
             {
                 if (variable.Type is Types.Structure)
                 {
