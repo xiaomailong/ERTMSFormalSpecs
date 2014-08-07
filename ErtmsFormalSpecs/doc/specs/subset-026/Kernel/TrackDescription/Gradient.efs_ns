@@ -282,15 +282,26 @@
 >Current.Gradient == 255.0</PreCondition></PreConditions>
 <Expression>Current.Distance</Expression>
 </Case><Case
+ Name="No gradient information stop, current is furthest element of gradient profile"
+ Guid="fdd83a84-7b76-49a4-bde4-0ca68dbb7580"
+>
+<Comment>If there is no &quot;End of gradient information&quot; gradient, assume the last element continues to infinity</Comment>
+<PreConditions>
+<PreCondition
+ Guid="04a0d169-1137-49ef-8f92-efde68fdeca0"
+>NOT THERE_IS_IN Gradients | X.Distance &gt; Current.Distance</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case><Case
  Name="Otherwise"
  Guid="57b006b4-2aa4-4cf0-bdb7-fadb3a1a0a54"
 >
+<Comment></Comment>
 <Expression>REDUCE
     Gradients | X.Distance &gt; Current.Distance
 USING
-    BaseTypes.MinDistance ( X.Distance, RESULT )
+    Default.BaseTypes.MinDistance ( X.Distance, RESULT )
 INITIAL_VALUE
-    BaseTypes.Distance.Infinity</Expression>
+    Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Gradient"

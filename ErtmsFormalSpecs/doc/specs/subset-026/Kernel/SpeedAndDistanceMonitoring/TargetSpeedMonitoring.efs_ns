@@ -593,7 +593,7 @@ ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable ( aTarget )</PreConditi
 <PreConditions>
 <PreCondition
  Guid="af655905-681c-467c-8a8c-2b474bb03a43"
->Dmaxsafefrontend + Odometry.EstimatedSpeed * TargetSpeedMonitoring.T_bs2 + TargetSpeedMonitoring.Dbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget ) &lt; DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.EBD, Speed =&gt; Vtarget )</PreCondition></PreConditions>
+>Dmaxsafefrontend + Odometry.EstimatedSpeed * TargetSpeedMonitoring.T_bs2 + TargetSpeedMonitoring.Dbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget ) &lt; EBDForSpeed( Speed =&gt; Vtarget )</PreCondition></PreConditions>
 <Expression>TargetSpeedMonitoring.EBD ( Dmaxsafefrontend + Odometry.EstimatedSpeed * TargetSpeedMonitoring.T_bs2 + TargetSpeedMonitoring.Dbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget) ) - ( TargetSpeedMonitoring.Vbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget ) - Odometry.EstimatedSpeed )</Expression>
 </Case><Case
  Name="After EBD(Vtarget)"
@@ -850,14 +850,16 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
 <PreConditions>
 <PreCondition
  Guid="3b40019d-ded4-4c90-874f-5655ba662c14"
->d_estfront + Vest * ( TargetSpeedMonitoring.T_driver + TargetSpeedMonitoring.T_bs1 ) &lt; MA.EndOfMovementAuthority().Location</PreCondition><PreCondition
+><Comment></Comment>
+d_estfront + Vest * ( TargetSpeedMonitoring.T_driver + TargetSpeedMonitoring.T_bs1 ) &lt; MA.EndOfMovementAuthority().Location</PreCondition><PreCondition
  Guid="8b332ee1-e275-4c1d-b11c-5aaaf0880d71"
 >NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition></PreConditions>
-<Expression>TargetSpeedMonitoring.SBD ( d_estfront + Vest * ( TargetSpeedMonitoring.T_driver + TargetSpeedMonitoring.T_bs1 ) )</Expression>
+<Expression>TargetSpeedMonitoring.SBD ( d_estfront + Default.BaseTypes.Distance(Vest * ( TargetSpeedMonitoring.T_driver + TargetSpeedMonitoring.T_bs1) ) )</Expression>
 </Case><Case
  Name="GUI is enabled, first case"
  Guid="0c8c1aab-75c3-4d07-b159-af8a7433a06f"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="25a8c888-2fbe-4c82-aeed-91f3341c0a3d"
@@ -934,12 +936,13 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
 <PreConditions>
 <PreCondition
  Guid="7b9f6890-4be7-49cf-9750-bc2b6d56cfb4"
->d_maxsafefront + Vest * ( TargetSpeedMonitoring.T_driver + TargetSpeedMonitoring.T_bs2 ) + TargetSpeedMonitoring.Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget )
-  &lt;
-DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
+><Comment></Comment>
+d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget )
+  &lt;  
+EBDForSpeed( Speed =&gt; Vtarget )</PreCondition><PreCondition
  Guid="2784bf61-3ed4-4bb9-ba3c-cfa74d731b58"
 >NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition></PreConditions>
-<Expression>TargetSpeedMonitoring.EBD ( d_maxsafefront + Vest * ( TargetSpeedMonitoring.T_driver + TargetSpeedMonitoring.T_bs2 ) + TargetSpeedMonitoring.Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) ) - ( TargetSpeedMonitoring.Vbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) - Vest )</Expression>
+<Expression>EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) ) - ( Vbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) - Vest )</Expression>
 </Case><Case
  Name="GUI is enabled, first case"
  Guid="ea008d5f-1c70-4000-a4d1-1f59f4575794"
@@ -949,14 +952,15 @@ DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.EBD, Speed =&gt; Vtarget
  Guid="0eca90da-8457-4dee-9fe8-edd31394c8f9"
 >NationalValues.ComputationOfGUIIsEnabled ()</PreCondition><PreCondition
  Guid="b6dbd2ec-7f55-4672-b4b9-9c4635a43455"
->d_maxsafefront + Vest * ( TargetSpeedMonitoring.T_driver + TargetSpeedMonitoring.T_bs2 ) + TargetSpeedMonitoring.Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget )
+>d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget )
   &lt;
-DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.EBD, Speed =&gt; Vtarget )</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; TargetSpeedMonitoring.EBD ( d_maxsafefront + Vest * ( TargetSpeedMonitoring.T_driver + TargetSpeedMonitoring.T_bs2 ) + TargetSpeedMonitoring.Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) ) - ( TargetSpeedMonitoring.Vbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) - Vest ), X2 =&gt; TargetSpeedMonitoring.GUI ( d_maxsafefront ) )</Expression>
+EBDForSpeed( Speed =&gt; Vtarget )</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) ) - ( Vbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) - Vest ), X2 =&gt; GUI ( d_maxsafefront ) )</Expression>
 </Case><Case
  Name="Second case"
  Guid="37ee1eee-2b68-457d-9e98-2a3cf3de4ae6"
 >
+<Comment></Comment>
 <Expression>Vtarget</Expression>
 </Case></Cases>
 </Function><Function
@@ -1895,25 +1899,19 @@ DistanceForSpeed(
  Name="Unknown for given speed"
  Guid="68852627-8a59-4a40-863f-f157164677e2"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="b5f767c0-d69b-47fb-910e-58b4f9b0ec0b"
->DistanceForSpeed (
-    Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
-        Speed =&gt; TargetSpeedMonitoring.Vbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed ) )
-== Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+><Comment></Comment>
+EBD_TargetForSpeed(aTarget=&gt;aTarget, Vest=&gt;Vest) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="f6c71c64-a1ed-4e52-9eee-68edbd4d2eb7"
 >
 <Comment></Comment>
-<Expression>DistanceForSpeed (
-    Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
-        Speed =&gt; TargetSpeedMonitoring.Vbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed ) )
-- TargetSpeedMonitoring.Dbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed )</Expression>
+<Expression>EBD_TargetForSpeed(aTarget=&gt;aTarget, Vest=&gt;Vest) - TargetSpeedMonitoring.Dbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2018,6 +2016,72 @@ MA.IsSvL(MRDT())</PreCondition></PreConditions>
     X1=&gt; d_P(MRDT().Speed)-TrainPosition.FrontEndPosition(DistanceInterval.Max),
     X2=&gt;0.0
 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EBDForSpeed"
+ Guid="51ac520b-1931-4b19-acb8-77932301e35f"
+>
+<Comment>Returns the point where the EBD has the speed provided</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Speed"
+ Guid="cd53fdd3-c973-4de1-83df-8546db46127d"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="e5a1aca8-13d7-47b4-a901-6eafb11d3c44"
+>
+<Comment></Comment>
+<Expression>DistanceForSpeed(
+    Function=&gt;EBD,
+    Speed=&gt;Speed
+)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EBD_TargetForSpeed"
+ Guid="1aa2111c-aee2-4ef9-bb29-e7a13ed20259"
+>
+<Comment>Returns the distance at which the EBD deceleration curve for a given target has the given speed</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vest"
+ Guid="7ebdcb56-85ff-439b-999d-e866f2c509e9"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="a587ea44-f686-4370-9a34-89bf21378e98"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="bca2d71f-a08b-43dc-8b35-801a1a0befca"
+>
+<Comment></Comment>
+<Expression>DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
+        Speed =&gt; TargetSpeedMonitoring.Vbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed ) )</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
