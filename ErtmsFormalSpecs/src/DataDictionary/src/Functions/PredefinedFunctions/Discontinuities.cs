@@ -99,45 +99,58 @@ namespace DataDictionary.Functions.PredefinedFunctions
             if (function != null)
             {
                 Graph graph = function.Graph;
-                if (graph != null && graph.Segments.Count > 1)
+                if (graph != null)
                 {
                     for (int i = 0; i < graph.Segments.Count; i++)
                     {
                         Graph.Segment s = graph.Segments[i];
-                        Types.Structure structureType = (Types.Structure)EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"), "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target");
-                        Values.StructureValue value = new Values.StructureValue(structureType);
-
-                        Variables.Variable speed = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
-                        speed.Type = EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"), "Default.BaseTypes.Speed");
-                        speed.Name = "Speed";
-                        speed.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
-                        speed.Default = "0.0";
-                        speed.Enclosing = value;
-                        speed.Value = new Values.DoubleValue(EFSSystem.DoubleType, s.Val(s.Start));
-                        value.set(speed);
-
-                        Variables.Variable location = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
-                        location.Type = EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"), "Default.BaseTypes.Distance");
-                        location.Name = "Location";
-                        location.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
-                        location.Default = "0.0";
-                        location.Enclosing = value;
-                        location.Value = new Values.DoubleValue(EFSSystem.DoubleType, s.Start);
-                        value.set(location);
-
-                        Variables.Variable length = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
-                        length.Type = EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"), "Default.BaseTypes.Length");
-                        length.Name = "Length";
-                        length.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
-                        length.Default = "0.0";
-                        length.Enclosing = value;
-                        length.Value = new Values.DoubleValue(EFSSystem.DoubleType, s.End - s.Start);
-                        value.set(length);
+                        Values.StructureValue value = CreateTarget(s.Start, s.End - s.Start, s.Val(s.Start));
 
                         collection.Val.Add(value);
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Creates a single target
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="length"></param>
+        /// <param name="speed"></param>
+        /// <returns></returns>
+        private Values.StructureValue CreateTarget(double start, double length, double speed)
+        {
+            Types.Structure structureType = (Types.Structure)EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"), "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target");
+            Values.StructureValue value = new Values.StructureValue(structureType);
+
+            Variables.Variable speedV = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+            speedV.Type = EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"), "Default.BaseTypes.Speed");
+            speedV.Name = "Speed";
+            speedV.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
+            speedV.Default = "0.0";
+            speedV.Enclosing = value;
+            speedV.Value = new Values.DoubleValue(EFSSystem.DoubleType, speed);
+            value.set(speedV);
+
+            Variables.Variable location = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+            location.Type = EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"), "Default.BaseTypes.Distance");
+            location.Name = "Location";
+            location.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
+            location.Default = "0.0";
+            location.Enclosing = value;
+            location.Value = new Values.DoubleValue(EFSSystem.DoubleType, start);
+            value.set(location);
+
+            Variables.Variable lengthV = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+            lengthV.Type = EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"), "Default.BaseTypes.Length");
+            lengthV.Name = "Length";
+            lengthV.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
+            lengthV.Default = "0.0";
+            lengthV.Enclosing = value;
+            lengthV.Value = new Values.DoubleValue(EFSSystem.DoubleType, length);
+            value.set(lengthV);
+            return value;
         }
     }
 }

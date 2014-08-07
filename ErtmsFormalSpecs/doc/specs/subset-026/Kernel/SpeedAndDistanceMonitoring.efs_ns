@@ -1702,6 +1702,7 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
  Name="Supervise Train Speed"
  Guid="0b822837-96e0-4550-bd30-dcb12e0cfd29"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6bee5e64-dd3e-4190-b0cc-b9fecd7c8aa1"
@@ -3073,4 +3074,33 @@ EBSpecified &lt;- True</Action></Actions>
 >
 </ReqRef><Comment>Indicates if the EB command was specified. Use to determine wheter EB command was triggered due to SBI supervision limit or EBI supervision limit.</Comment>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ Width="100"
+ Height="50"
+ Name="Display MRSP"
+ Guid="4a6b2374-9a88-47e0-9c3c-cf876d7d3a87"
+>
+<ReqRef
+ Id="615ccbef-ab0a-4f6f-9624-9ace6361ea83"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb4f40a6-8025-4db1-81be-f6d8438eb1b9"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Displat MRSP"
+ Guid="f5361b70-c1bd-4d5e-b606-01b608f018e8"
+>
+<PreConditions>
+<PreCondition
+ Guid="dd0defa7-a175-483b-bc39-422fbe424b54"
+>Kernel.Mode == Mode.FS</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d54411c2-a29c-4028-9360-884f70cda0d6"
+>DMI.MasterDMI().DisplayMRSP()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>
