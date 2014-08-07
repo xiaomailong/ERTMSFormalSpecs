@@ -301,7 +301,7 @@ namespace DataDictionary.Interpreter.Statement
                         ctxt.LocalScope.setVariable(pair.Key, pair.Value);
                     }
 
-                    foreach (Rules.Rule rule in Rules)
+                    foreach (Rules.Rule rule in procedure.Rules)
                     {
                         ApplyRule(rule, changes, ctxt, part, runner);
                     }
