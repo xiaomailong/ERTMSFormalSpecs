@@ -260,6 +260,31 @@ namespace DataDictionary.Tests.Runner
         }
 
         /// <summary>
+        /// Initializes the execution time for functions and rules
+        /// </summary>
+        private class ExecutionTimeInitializer : Generated.Visitor
+        {
+            public override void visit(Generated.Function obj, bool visitSubNodes)
+            {
+                Functions.Function function = obj as Functions.Function;
+
+                function.ExecutionTimeInMilli = 0L;
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            public override void visit(Generated.Rule obj, bool visitSubNodes)
+            {
+                Rules.Rule rule = obj as Rules.Rule;
+
+                rule.ExecutionTimeInMilli = 0L;
+
+                base.visit(obj, visitSubNodes);
+            }
+
+        }
+
+        /// <summary>
         /// Sets up the runner before performing a test case
         /// </summary>
         public void Setup()
@@ -269,9 +294,11 @@ namespace DataDictionary.Tests.Runner
                 Generated.ControllersManager.DesactivateAllNotifications();
                 // Setup the execution environment
                 Setuper setuper = new Setuper(EFSSystem);
+                ExecutionTimeInitializer executionTimeInitializer = new ExecutionTimeInitializer();
                 foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
                 {
                     setuper.visit(dictionary);
+                    executionTimeInitializer.visit(dictionary);
                 }
 
                 // Clears all caches
@@ -1241,6 +1268,11 @@ namespace DataDictionary.Tests.Runner
         public void EndExecution()
         {
             FunctionCacheCleaner.ClearCaches();
+            ExecutionTimeInitializer initializer = new ExecutionTimeInitializer();
+            foreach (Dictionary dictionary in EFSSystem.Dictionaries)
+            {
+                initializer.visit(dictionary);
+            }
         }
 
         /// <summary>
