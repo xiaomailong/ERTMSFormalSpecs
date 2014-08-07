@@ -268,6 +268,7 @@ namespace DataDictionary.Tests.Runner
             {
                 Functions.Function function = obj as Functions.Function;
 
+                function.ExecutionCount = 0;
                 function.ExecutionTimeInMilli = 0L;
 
                 base.visit(obj, visitSubNodes);
@@ -277,6 +278,7 @@ namespace DataDictionary.Tests.Runner
             {
                 Rules.Rule rule = obj as Rules.Rule;
 
+                rule.ExecutionCount = 0;
                 rule.ExecutionTimeInMilli = 0L;
 
                 base.visit(obj, visitSubNodes);
