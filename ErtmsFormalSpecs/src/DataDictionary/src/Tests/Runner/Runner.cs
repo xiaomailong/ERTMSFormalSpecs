@@ -1269,7 +1269,10 @@ namespace DataDictionary.Tests.Runner
         /// </summary>
         public void EndExecution()
         {
-            FunctionCacheCleaner.ClearCaches();
+            if (FunctionCacheCleaner != null)
+            {
+                FunctionCacheCleaner.ClearCaches();
+            }
             ExecutionTimeInitializer initializer = new ExecutionTimeInitializer();
             foreach (Dictionary dictionary in EFSSystem.Dictionaries)
             {
