@@ -57,6 +57,18 @@ namespace GUI.ModelDiagram
         /// <summary>
         /// The name of the kind of model
         /// </summary>
-        public override string ModelName { get { return "Variable"; } }
+        public override string ModelName 
+        { 
+            get {
+                string retVal = "Variable";
+
+                if (((Variable)Model).getVariableMode() == DataDictionary.Generated.acceptor.VariableModeEnumType.aConstant)
+                {
+                    retVal = "Constant";
+                }
+
+                return retVal;    
+            }
+        }
     }
 }
