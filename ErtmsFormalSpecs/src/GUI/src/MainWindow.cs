@@ -787,7 +787,7 @@ namespace GUI
                     DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
                 }
 
-                Refresh();
+                RefreshModel();
             }
         }
 
