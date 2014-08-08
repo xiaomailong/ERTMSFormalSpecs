@@ -641,40 +641,40 @@ namespace Importers
 
 
             /* Initializing dV_ebi_min */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedmonitoring.dV_ebi_min <- {0:0.0#}", (double)(aRange.Cells[1, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_ebi_min <- {0:0.0#}", (double)(aRange.Cells[1, 2] as Range).Value2));
 
             /* Initializing dV_ebi_max */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedmonitoring.dV_ebi_max <- {0:0.0#}", (double)(aRange.Cells[2, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_ebi_max <- {0:0.0#}", (double)(aRange.Cells[2, 2] as Range).Value2));
 
             /* Initializing V_ebi_min */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedmonitoring.V_ebi_min <- {0:0.0#}", (double)(aRange.Cells[3, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.V_ebi_min <- {0:0.0#}", (double)(aRange.Cells[3, 2] as Range).Value2));
 
             /* Initializing V_ebi_max */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedmonitoring.V_ebi_max <- {0:0.0#}", (double)(aRange.Cells[4, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.V_ebi_max <- {0:0.0#}", (double)(aRange.Cells[4, 2] as Range).Value2));
 
             /* Initializing dV_sbi_min */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedmonitoring.dV_sbi_min <- {0:0.0#}", (double)(aRange.Cells[5, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi_min <- {0:0.0#}", (double)(aRange.Cells[5, 2] as Range).Value2));
 
             /* Initializing dV_sbi_max */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedmonitoring.dV_sbi_max <- {0:0.0#}", (double)(aRange.Cells[6, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi_max <- {0:0.0#}", (double)(aRange.Cells[6, 2] as Range).Value2));
 
             /* Initializing V_sbi_min */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedmonitoring.V_sbi_min <- {0:0.0#}", (double)(aRange.Cells[7, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.V_sbi_min <- {0:0.0#}", (double)(aRange.Cells[7, 2] as Range).Value2));
 
             /* Initializing V_sbi_max */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedmonitoring.V_sbi_max <- {0:0.0#}", (double)(aRange.Cells[8, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.V_sbi_max <- {0:0.0#}", (double)(aRange.Cells[8, 2] as Range).Value2));
 
             /* Initializing dV_warning_min */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedmonitoring.dV_warning_min <- {0:0.0#}", (double)(aRange.Cells[9, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_warning_min <- {0:0.0#}", (double)(aRange.Cells[9, 2] as Range).Value2));
 
             /* Initializing dV_warning_max */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedmonitoring.dV_warning_max <- {0:0.0#}", (double)(aRange.Cells[10, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_warning_max <- {0:0.0#}", (double)(aRange.Cells[10, 2] as Range).Value2));
 
             /* Initializing V_warning_min */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedmonitoring.V_warning_min <- {0:0.0#}", (double)(aRange.Cells[11, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.V_warning_min <- {0:0.0#}", (double)(aRange.Cells[11, 2] as Range).Value2));
 
             /* Initializing V_warning_max */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedmonitoring.V_warning_max <- {0:0.0#}", (double)(aRange.Cells[12, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.V_warning_max <- {0:0.0#}", (double)(aRange.Cells[12, 2] as Range).Value2));
 
             /* Initializing T_warning */
             addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_warning <- {0:0.0#}", (double)(aRange.Cells[13, 2] as Range).Value2));
