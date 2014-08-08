@@ -757,9 +757,7 @@ namespace GUI
                         ExpressionEditorWindow.Show(MoreInfoWindow.Pane, DockAlignment.Right, 0.5);
                         GenericWindowHandling<EditorView.CommentWindow>.AddOrShow(this, CommentEditorWindow, DockAreas.DockBottom);
                         GenericWindowHandling<TestRunnerView.Watch.Window>.AddOrShow(this, WatchWindow, DockAreas.DockBottom);
-                        MoreInfoWindow.Show();
                         ExpressionEditorWindow.Show();
-                        RequirementsWindow.Show();
 
                         // Display the views in the right pane
                         GenericWindowHandling<PropertyView.Window>.AddOrShow(this, PropertyWindow, DockAreas.DockRight);
