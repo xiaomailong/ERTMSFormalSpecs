@@ -216,7 +216,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="1280"
+ Y="80"
  Width="150"
  Height="75"
  RecursiveSelection="TRUE"
@@ -228,6 +228,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
+ X="160"
  Y="80"
  Width="150"
  Height="75"
@@ -240,7 +241,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="160"
+ X="320"
  Y="80"
  Width="150"
  Height="75"
@@ -253,7 +254,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="320"
+ X="480"
  Y="80"
  Width="150"
  Height="75"
@@ -266,7 +267,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="480"
+ X="640"
  Y="80"
  Width="150"
  Height="75"
@@ -279,7 +280,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="640"
+ X="800"
  Y="80"
  Width="150"
  Height="75"
@@ -292,7 +293,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="800"
+ X="960"
  Y="80"
  Width="150"
  Height="75"
@@ -305,7 +306,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="960"
+ X="1120"
  Y="80"
  Width="150"
  Height="75"
@@ -318,8 +319,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="1120"
- Y="80"
+ Y="170"
  Width="150"
  Height="75"
  RecursiveSelection="TRUE"
@@ -331,8 +331,8 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="1280"
- Y="80"
+ X="160"
+ Y="170"
  Width="150"
  Height="75"
  RecursiveSelection="TRUE"
@@ -344,6 +344,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
+ X="320"
  Y="170"
  Width="150"
  Height="75"
@@ -356,39 +357,13 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="160"
- Y="170"
- Width="150"
- Height="75"
- RecursiveSelection="TRUE"
- Name="Definition of the modes"
- Guid="33f89597-1409-41b8-91c0-2e5d556b8ef1"
->
-<Dependancies>
-</Dependancies>
-<SubSets>
-</SubSets>
-</RequirementSet><RequirementSet
- X="320"
- Y="170"
- Width="150"
- Height="75"
- RecursiveSelection="TRUE"
- Name="Modes and Class 1 functions"
- Guid="f5eeedb6-7acf-4977-9395-d6bb2b2268a3"
->
-<Dependancies>
-</Dependancies>
-<SubSets>
-</SubSets>
-</RequirementSet><RequirementSet
  X="480"
  Y="170"
  Width="150"
  Height="75"
  RecursiveSelection="TRUE"
- Name="Transitions between modes"
- Guid="95269d72-2d24-45b0-9098-d9dbe7cf8523"
+ Name="Modes, transitions and class 1 functions"
+ Guid="f5eeedb6-7acf-4977-9395-d6bb2b2268a3"
 >
 <Dependancies>
 </Dependancies>
@@ -426,34 +401,20 @@
  Width="150"
  Height="75"
  RecursiveSelection="TRUE"
- Name="What happens to accepted and stored information when entering a given level"
- Guid="7693d825-554b-4f14-b25b-d8504f4bed18"
->
-<Dependancies>
-</Dependancies>
-<SubSets>
-</SubSets>
-</RequirementSet><RequirementSet
- X="1120"
- Y="170"
- Width="150"
- Height="75"
- RecursiveSelection="TRUE"
- Name="What happens to accepted and stored information when the mode changes"
- Guid="ac43033c-ed84-4cec-9e9e-3d2e9b074c2c"
->
-<Dependancies>
-</Dependancies>
-<SubSets>
-</SubSets>
-</RequirementSet><RequirementSet
- X="1280"
- Y="170"
- Width="150"
- Height="75"
- RecursiveSelection="TRUE"
  Name="Procedure Start of mission"
  Guid="308ce025-379f-4563-af50-131917a687a6"
+>
+<Dependancies>
+</Dependancies>
+<SubSets>
+</SubSets>
+</RequirementSet><RequirementSet
+ Y="250"
+ Width="150"
+ Height="75"
+ RecursiveSelection="TRUE"
+ Name="Shunting"
+ Guid="25061dc2-a2b5-4dca-a81f-6a9354b91253"
 >
 <Dependancies>
 </Dependancies>
@@ -465,33 +426,7 @@
  Width="150"
  Height="75"
  RecursiveSelection="TRUE"
- Name="Shunting Initiated by Driver"
- Guid="25061dc2-a2b5-4dca-a81f-6a9354b91253"
->
-<Dependancies>
-</Dependancies>
-<SubSets>
-</SubSets>
-</RequirementSet><RequirementSet
- X="320"
- Y="250"
- Width="150"
- Height="75"
- RecursiveSelection="TRUE"
- Name="Entry in Shunting with Order from Trackside"
- Guid="69626ece-4166-4c8a-9105-0a7e08d62cc9"
->
-<Dependancies>
-</Dependancies>
-<SubSets>
-</SubSets>
-</RequirementSet><RequirementSet
- X="480"
- Y="250"
- Width="150"
- Height="75"
- RecursiveSelection="TRUE"
- Name="Procedure Override"
+ Name="Override"
  Guid="75718aa5-13d2-429e-97e9-e6a80e956283"
 >
 <Dependancies>
@@ -499,7 +434,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="640"
+ X="320"
  Y="250"
  Width="150"
  Height="75"
@@ -512,20 +447,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="800"
- Y="250"
- Width="150"
- Height="75"
- RecursiveSelection="TRUE"
- Name="Level Transitions"
- Guid="b546a62c-ed9d-4948-9b02-7f2bf0c54b4b"
->
-<Dependancies>
-</Dependancies>
-<SubSets>
-</SubSets>
-</RequirementSet><RequirementSet
- X="960"
+ X="480"
  Y="250"
  Width="150"
  Height="75"
@@ -538,7 +460,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="1120"
+ X="640"
  Y="250"
  Width="150"
  Height="75"
@@ -551,7 +473,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="1280"
+ X="800"
  Y="250"
  Width="150"
  Height="75"
@@ -564,7 +486,8 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- Y="340"
+ X="960"
+ Y="250"
  Width="150"
  Height="75"
  RecursiveSelection="TRUE"
@@ -576,8 +499,8 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="160"
- Y="340"
+ X="1120"
+ Y="250"
  Width="150"
  Height="75"
  RecursiveSelection="TRUE"
@@ -589,7 +512,6 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="320"
  Y="340"
  Width="150"
  Height="75"
@@ -602,7 +524,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="480"
+ X="160"
  Y="340"
  Width="150"
  Height="75"
@@ -615,7 +537,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="640"
+ X="320"
  Y="340"
  Width="150"
  Height="75"
@@ -628,20 +550,7 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- X="800"
- Y="340"
- Width="150"
- Height="75"
- RecursiveSelection="TRUE"
- Name="On-board requirements in relation to older system versions"
- Guid="dc466e86-4645-453e-afc6-358447a83ddc"
->
-<Dependancies>
-</Dependancies>
-<SubSets>
-</SubSets>
-</RequirementSet><RequirementSet
- X="960"
+ X="480"
  Y="340"
  Width="150"
  Height="75"
@@ -654,7 +563,8 @@
 <SubSets>
 </SubSets>
 </RequirementSet><RequirementSet
- Y="250"
+ X="1120"
+ Y="170"
  Width="150"
  Height="75"
  RecursiveSelection="TRUE"

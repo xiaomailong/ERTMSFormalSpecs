@@ -3010,20 +3010,9 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e1f50546-a62f-4328-a61e-f19bd91f9143"
->
-</ReqRef><ReqRef
  Id="74e64307-2966-461e-a976-9a0194ca8514"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5c101f1a-5c44-4522-96fa-a040dc6b3fac"
->
-<Comment></Comment>
-</ReqRef><ReqRef
- Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c0425da5-9178-4679-b61f-12c39989d2ad"
 >
 <Comment></Comment>
 </ReqRef><Comment>Keep the value of Speed up-to-date, but only if this information can be displayed</Comment>
@@ -3048,6 +3037,7 @@ ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition>
 <SubRules>
 <Rule
  Priority="UpdateOUT"
+ Implemented="TRUE"
  Name="Update variable"
  Guid="074eb3af-d97b-455d-bf4b-735c57352494"
 >
@@ -3055,6 +3045,7 @@ ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Train in SR, PT, SH, SN or RV modes"
  Guid="ceca03bb-563c-40a7-be1e-2646f21d018b"
 >
@@ -3079,6 +3070,7 @@ Speed &lt;- Kernel.ModeRelatedSpeedLimits.SRModeSpeedLimit()</Action><Action
  Guid="fa977fee-280c-40d9-8961-ac5e8494d9ef"
 >OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Otherwise"
  Guid="3c0e9560-e579-4971-87cc-9fb0389c9b3a"
 >
@@ -21605,6 +21597,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d4fa0b52-9c1e-4992-80d8-ca48d0addad7"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -21616,11 +21609,20 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="UpdateValue"
  Guid="f035b068-151b-4ba4-9e1c-eaeedd2641a4"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="37110a05-aaaf-4cab-bbc5-5d6b6e30b84c"
+>
+</ReqRef><ReqRef
+ Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="54f47ae7-00d8-4ecd-b05e-7342ca703f88"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
