@@ -39,11 +39,11 @@
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ac22fe94-3b6d-47b2-95eb-5b3878970dee"
+ Guid="3d4e1ad1-0510-4f5c-b1fc-4e1fce9429b2"
 >
 <Actions>
 <Action
- Guid="ff41abc7-b31e-4ed0-bc05-718953ed6b3b"
+ Guid="4db0aaac-64bc-416f-b8de-9331b3272fb6"
 >Kernel.TrainData.Initialize()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -59,27 +59,21 @@
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8d7318b7-1de4-425b-8708-dcb797db7e8a"
+ Guid="abf86c94-ebf1-4b77-b8e5-d519e8410a48"
 >
 <Actions>
 <Action
- Guid="9145d9c1-4776-44cd-8707-1777617b6224"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
- Guid="45e62230-8f34-4498-9a14-25a15efaa83b"
->EURORADIO.CurrentRBCConnection().ContactData.Id.Id &lt;- 1515</Action><Action
- Guid="b7ebbdf1-fd67-4b04-879a-20ac929c3179"
->EURORADIO.CurrentRBCConnection().ContactData.PhoneNumber &lt;- &apos;1234 FFFF FFFF FFFF&apos;</Action><Action
- Guid="64f16624-d405-4e43-94f7-5276074921a6"
+ Guid="70d6b4a8-f2ad-46c3-8a42-9fc1b54d135b"
 >Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
- Guid="20ed9b38-157a-4f5c-bd06-632259754152"
+ Guid="d52be557-9266-4d5e-bb74-4d06d0f2771f"
 >Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action
- Guid="2a1354e5-0311-45ae-824e-09d46d1eb875"
+ Guid="a549fd3c-1932-4048-a8ed-ed59599cf0b7"
 >Kernel.TrainRunningNumber.Value &lt;- &apos;TR007&apos;</Action><Action
- Guid="1bb58696-641d-4cea-ba34-a005f8dbd307"
+ Guid="43f60fd3-6c2b-4bdf-a19c-be5b7d11f2d1"
 >Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Valid</Action><Action
- Guid="c396d603-5a6a-4734-b2ec-e86918ea1300"
+ Guid="23146ba1-d9f5-47a6-ab00-4923570b961e"
 >DMI.DMI1.IsMaster &lt;- True</Action><Action
- Guid="c660ee71-d986-411d-ba62-67269538c607"
+ Guid="af60430b-7866-402f-83db-4f93b17b38cf"
 >Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -132,17 +126,17 @@ The on-board equipment changes to SB mode.</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="759d7ebc-a70c-4ab9-91af-01d909494fc7"
+ Guid="da7e0c34-c5a9-4dc5-ab32-fa8abcd09b83"
 >
 <Actions>
 <Action
- Guid="545c9e9a-b3c8-408d-97a0-c5987c56126e"
+ Guid="fd600478-a622-4209-8226-e0df7a3ff6cd"
 >Kernel.PowerOn &lt;- Boolean.True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="78a7e314-d8e9-470d-b43b-e69eeb46b310"
+ Guid="436373aa-9fb4-4436-80d8-e601b159a2ba"
 >Kernel.Mode == Mode.SB</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -157,12 +151,6 @@ The on-board equipment changes to SB mode.</Description>
  Guid="29f9e28e-5864-47f7-a0b4-2e83126c9411"
 >
 <Description>The new current mode SB is RECORDED on JRU</Description>
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="1f138839-c46a-42b7-8a01-f40071c7991f"
->
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
  Feature="522"
@@ -188,11 +176,11 @@ The on-board equipment changes to SB mode.</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6b4d928f-51b0-4355-a724-5e2a11a26e7b"
+ Guid="37aab476-b5cb-4abe-916e-4eda912aa058"
 >
 <Actions>
 <Action
- Guid="4b74729b-6eec-4693-a215-659644fc67b0"
+ Guid="a6e71477-b640-4338-ad6c-31870805770f"
 >TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -211,18 +199,18 @@ The on-board equipment changes to SB mode.</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="1d98c13c-775d-4893-8430-7c14de4a63d1"
+ Guid="258fb0e0-622f-49b6-83c9-8c01f7cd0aa8"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
  Name="Expectation"
- Guid="aa16fdd2-99b8-4821-a2ba-ce7a85f1739d"
+ Guid="8803344c-a256-459e-b11f-88eadc40708a"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SB</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="e50d955f-f838-4e41-b062-6f4bde5664f2"
+ Guid="d4d19129-3957-4832-bf1c-5609e05094e1"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -272,17 +260,17 @@ The on-board equipment changes to SB mode.</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6ef1562b-18ae-4cb5-8c78-00ae2ebfd371"
+ Guid="50898127-eafc-4e15-8bf4-66b0d09e4d39"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="364226cc-50ca-4dab-9071-fd6371f6fdf5"
+ Guid="39bf3df2-792c-44f8-a814-c38bce45d5d6"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SB</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="7124e87d-549e-4668-beca-170ea4ceafbe"
+ Guid="4947adc3-817e-4957-908e-35a88912ab88"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -311,22 +299,22 @@ There is NO initial Driver ID value displayed</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="487226f4-f019-46bc-b65a-cc21ddc26e64"
+ Guid="b178ba66-7a9c-4a2f-92ca-8fe727649b61"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
  Name=""
- Guid="d6798073-aa96-42b6-a914-b405ccd53585"
+ Guid="762d3ccf-7f8b-4993-87c0-b6519bd35e9a"
 >DMI.MasterDMI().In_DriverId.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="bd925157-5092-415b-bf18-edc1d587987e"
+ Guid="a2e43ffe-da3e-4b9d-913d-e8144f75045c"
 >DMI.MasterDMI().In_DriverId.DriverAction.Enter</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="61ae621a-8c0f-42d5-94ec-6a7ce100233f"
+ Guid="d2a987aa-5b37-44db-96b3-f22a11acf375"
 >DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -355,11 +343,11 @@ There is NO initial Driver ID value displayed</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="4fd7e5b4-6097-49db-903d-5e38079e920a"
+ Guid="263ba92e-8102-4211-a612-d55d9b9720ba"
 >
 <Actions>
 <Action
- Guid="c13e1fb7-6ac9-4bb2-9969-9d2bdfa02525"
+ Guid="b5a8e88e-944a-44da-b8cd-476d00658c5c"
 >DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Driver_ID&apos;</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -377,17 +365,17 @@ There is NO initial Driver ID value displayed</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2ec17f05-181f-43f5-93e1-c8d34ecc9f46"
+ Guid="77575998-1411-43cb-be68-1ad08096c6b6"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="c67547b9-c44e-41ec-b45d-2e54a39751e1"
+ Guid="534f9136-b896-4eab-ba53-4acf7a3f4fe4"
 >DMI.MasterDMI().In_DriverId.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="c192420f-8bbd-4802-a88c-d030550200f6"
+ Guid="bd2e3fb3-5c45-409b-bcd5-d66e501d60a0"
 >DMI.MasterDMI().In_DriverId.DriverAction.Enter</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -405,18 +393,12 @@ There is NO initial Driver ID value displayed</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="b832087f-f87a-4be7-85b2-8b94cac173dd"
+ Guid="1cd5ac6c-2ed1-4b86-83be-5c995f18ea36"
 >
 <Actions>
 <Action
- Guid="68e5ff04-550f-48f4-a4aa-b49309d27e18"
->DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Guid="f7b15bb0-e7d4-4775-a9f9-8e99b7cabe9d"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Response</Expectation></Expectations>
+ Guid="98de7186-a32e-4eca-aed6-6363eda1cc3f"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="15"
@@ -490,21 +472,21 @@ Triggered by : Data Entry completed</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="aecd0bf0-1fa1-4bab-8616-8b2a2080cd2f"
+ Guid="b1b4b601-f7fa-4fe0-9d0c-cec61c940b0c"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="e8553d81-e29b-4631-b42a-6a443b880355"
+ Guid="3b494129-5624-469d-8017-7a57bd99994a"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
- Guid="ae36dea3-87dd-4fff-b47d-623654549888"
+ Guid="ed76c53b-34de-4d5e-a4a9-8f8089520ca4"
 >
 <Actions>
 <Action
- Guid="33bd531c-7468-4ccf-81c0-03dda8f25023"
+ Guid="04e0bab9-4d8d-4118-8b7b-5ca6c780477f"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.Level &lt;- Level.L1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -555,18 +537,12 @@ The On-Board equipment still allows the driver to validate it.</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ca0a1381-52a2-4caf-a386-3530ba08f60c"
+ Guid="9d4de088-aa13-41a7-953e-f93086281820"
 >
 <Actions>
 <Action
- Guid="0e223120-9649-4a0e-8a4d-b851ae1d715d"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Guid="9522fbc1-c035-4a04-aab0-e9ee39216142"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Response</Expectation></Expectations>
+ Guid="2c2b4941-d10e-4af8-8a4d-54c79b1fb40b"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="24"
@@ -723,25 +699,25 @@ The drivers? validation is recorded on the JRU</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="b75f0da4-c926-4ced-bcd2-01489ad726da"
+ Guid="b50a0fb2-082d-41aa-925a-6ff761e3e14e"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="db0547f2-d54a-49d0-bd8a-2b50576fa8a1"
+ Guid="8fc6a4ea-d520-4ede-b5a9-a7ed85ff4ccd"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="34686d1c-4a87-4c4d-a104-31ba48e28129"
+ Guid="cf30dd3e-a23c-4526-ae15-b8e6e75577b1"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="a03d8be0-4d45-49a9-92d1-4aa4db7f3c49"
+ Guid="ef4d55b1-0982-4fe2-beaa-d969a706ee65"
 >DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="a463ad9f-720c-44b7-aa1c-6d418262a47a"
+ Guid="afe162c8-fa1c-4d04-a9c6-771941f1a575"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -759,13 +735,13 @@ The drivers? validation is recorded on the JRU</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="c488a573-63d4-46a8-bf49-852d171c96dc"
+ Guid="af64964f-4065-4b62-a405-9b545e606b91"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="d030a547-1c60-441d-a77e-ca6c64114133"
+ Guid="693ff24b-95de-48b0-b3bc-9407b3633ccd"
 >NOT DMI.MasterDMI().In_OverrideRequest.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -840,18 +816,32 @@ The driver is allowed to modify/validate the train data. Those data includes the
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6f6dfae1-4d58-4956-a188-ce5132183729"
+ Guid="a270686c-7af2-48c8-a7d0-9d91bdb8667f"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
- Guid="90ecdb4d-1ea7-4d42-95a3-440a659f806c"
->DMI.MasterDMI().In_TrainData.InputInformation.DisplayRequested</Expectation><Expectation
+ DeadLine="1"
+ Guid="06c8f38e-2ae6-497b-8116-c3e90c42afa1"
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="d0ab5e8f-d91c-4273-bb9c-de03e6c2a496"
+>
+<Actions>
+<Action
+ Guid="1a1edd11-6e4e-4d58-907f-aa748f13c9e9"
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+<Expectations>
+<Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="f66afed0-c350-42b0-8e70-91d8a9a80a35"
->DMI.MasterDMI().In_TrainData.Data == Kernel.TrainData.TrainData.Value</Expectation></Expectations>
+ Guid="7dc81f1e-afce-4cac-bbe1-058839a1f621"
+>DMI.MasterDMI().In_TrainData.Data == Kernel.TrainData.TrainData.Value</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+ Guid="b64f170b-8518-4fee-92f0-c78ddb3d6b25"
+>DMI.MasterDMI().In_TrainData.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="44"
@@ -869,14 +859,14 @@ The driver is allowed to modify/validate the train data. Those data includes the
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8ccc0cbb-f135-4d4b-8310-c6538d42e773"
+ Guid="9f3235c9-448d-477d-a085-1c4033c3a866"
 >
 <Actions>
 <Action
- Guid="51764b15-a0da-4342-b6a3-277d04939768"
+ Guid="e5ac3e4a-14ff-4dc4-9b21-b288afa3d7ae"
 >DMI.MasterDMI().In_TrainData.Data.TrainLength &lt;- 640.0</Action><Action
- Guid="bf744da2-3016-4f48-8668-67451b5c589a"
->DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+ Guid="04627f10-046d-46e9-af8a-e26c183516ab"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="45"
@@ -918,18 +908,18 @@ The driver is allowed to modify/validate the train data. Those data includes the
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ffefc816-d4db-4582-923f-42cb0943047f"
+ Guid="b6b4d8e9-3d01-4421-935b-e51811014659"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="f8ee8ca0-59d2-47f0-ab83-82c37b2b883b"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DisplayRequested</Expectation><Expectation
+ Guid="5c2ddc22-0c2b-4870-8a89-3102ff0f873d"
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="c4a5d55c-2e70-4054-9fa6-cf228f472ffd"
->DMI.MasterDMI().In_Start.InputInformation.DisplayRequested</Expectation></Expectations>
+ Guid="84d7bcb5-cbe7-4c63-bbb5-b2d3ae584e2f"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -957,29 +947,29 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2ae13d85-b6cc-4fe3-a78d-b62ec54dd47d"
+ Guid="82155994-b629-44cc-9489-79521f7065b8"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="2d37d3ad-923b-4928-83c6-0fce64e6e816"
+ Guid="7cb835d9-c6fa-4656-9515-654e40366f9d"
 >DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="debd552f-783a-43e9-9c9b-aa8101a7a9ec"
+ Guid="82384a38-b786-415d-a232-67838137110c"
 >DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.L1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="4f7008f9-b851-4705-8148-1623eceafbcb"
+ Guid="752b5407-0698-4d60-bb6b-4a09b868afca"
 >DMI.MasterDMI().In_Start.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="016d1c17-f6fc-48f9-9d4c-b8906e6c6638"
+ Guid="9ef77beb-4306-492f-9257-de87433e7b68"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode in [Mode.SB, Mode.PT]</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="559bbb31-5572-4ec2-ab91-bd00c5e8d80b"
+ Guid="df133e4c-fe63-4dcc-ba16-d98b94a4501b"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -997,12 +987,14 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="f201bfc6-6698-4ad7-b2a4-86f0e85c0979"
+ Guid="89a4098f-a1e8-446d-a073-7e9861d06353"
 >
 <Actions>
 <Action
- Guid="6dcd7a4c-4247-4859-83db-320c51c69ccc"
->DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+ Guid="3412172a-e0bc-424b-ae07-993f6b1ee9fe"
+><Comment></Comment>
+
+DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="51"
@@ -1020,13 +1012,13 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e445cc9d-be5f-442c-bffa-696572e76e6e"
+ Guid="8c2d0b31-39da-460d-af0d-d4db57be3b02"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="28afbb80-b7e5-4de6-b41b-b3ecfd765bf7"
+ Guid="7ca957e2-24e2-495f-8203-26718abc8711"
 >DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1053,12 +1045,12 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="3d1ae7ea-c351-4485-8e8f-ba04180de96f"
+ Guid="92da1e06-adbb-4006-b9e9-532da8f612fb"
 >
 <Actions>
 <Action
- Guid="b30ad8b3-e495-4dc8-94d4-373a2886f4a0"
->DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action></Actions>
+ Guid="a22422cc-df4b-4339-9abb-0c9f43d0ad2f"
+>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="54"
@@ -1116,17 +1108,17 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="a9bb853c-98fb-48cf-8035-c0103c400dff"
+ Guid="f3638324-b3d2-494f-a2e8-a30136f5b2d1"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="7a658be1-95ed-462e-851f-61056ef55026"
+ Guid="8ea6aecf-f51c-4d1c-ab78-4450925587e6"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="605a4b33-9142-4e01-bfb3-21765cf0f779"
+ Guid="3dec754f-0b5a-41c6-9a30-2182afb6f93d"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1141,12 +1133,6 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Guid="c83b72c9-9eb9-4cc9-80b8-98813e139317"
 >
 <Description>The transition to SR mode is RECORDED</Description>
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="1a73ebbf-e542-4312-9e02-4037af99718d"
->
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
  Feature="597"
@@ -1193,17 +1179,17 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d1799ee2-3742-4b57-af2d-92db9b17d077"
+ Guid="53c85e40-e3f8-4e04-809a-ac78b726b918"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="51829a25-9220-4d89-9a39-fa556707f6d1"
+ Guid="e938b46b-f4ce-4883-a7dc-352b81045788"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="211e8a37-aca8-4edb-893f-e70d53b5b749"
+ Guid="a641ee13-de19-423e-aeaf-321ab5ccb9fe"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1236,23 +1222,23 @@ Other packets can be included.</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="4b6b52d4-7fcd-400e-a1d4-b52ac015a9ce"
+ Guid="9d95b9ea-6507-42b6-a982-e32cd6c9ab4d"
 >
 <Actions>
 <Action
- Guid="f1c15068-54c4-4bac-a8f1-c4ff498beb0b"
+ Guid="da41fee3-560c-43db-9327-53b083346955"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram, 
+    Q_UPDOWN =&gt; 1, 
     M_VERSION =&gt; 16, 
-    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise, 
+    Q_MEDIA =&gt; 0, 
     N_PIG =&gt; 0, 
     N_TOTAL =&gt; 1, 
-    M_DUP =&gt; Messages.M_DUP.No_duplicates, 
+    M_DUP =&gt; 0, 
     M_MCOUNT =&gt; 255, 
     NID_C =&gt; 352, 
     NID_BG =&gt; 1, 
-    Q_LINK =&gt; Messages.Q_LINK.Linked, 
+    Q_LINK =&gt; 1, 
     Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
 {
     TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
@@ -1263,25 +1249,25 @@ Other packets can be included.</Comment>
     LEVEL_1_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
 {
     NID_PACKET =&gt; 12, 
-    Q_DIR =&gt; Messages.Q_DIR.Nominal, 
+    Q_DIR =&gt; 1, 
     L_PACKET =&gt; 73, 
-    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC, 
+    Q_SCALE =&gt; 1, 
     V_MAIN =&gt; 60, 
     V_LOA =&gt; 0, 
     T_LOA =&gt; 1023, 
     N_ITER =&gt; 0, 
     Sequence1 =&gt; [], 
     L_ENDSECTION =&gt; 10000, 
-    Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information, 
+    Q_SECTIONTIMER =&gt; 0, 
     T_SECTIONTIMER =&gt; 0, 
     D_SECTIONTIMERSTOPLOC =&gt; 0, 
-    Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information, 
+    Q_ENDTIMER =&gt; 0, 
     T_ENDTIMER =&gt; 0, 
     D_ENDTIMERSTARTLOC =&gt; 0, 
-    Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.No_danger_point_information, 
+    Q_DANGERPOINT =&gt; 0, 
     D_DP =&gt; 0, 
     V_RELEASEDP =&gt; 0, 
-    Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information, 
+    Q_OVERLAP =&gt; 0, 
     D_STARTOL =&gt; 0, 
     T_OL =&gt; 0, 
     D_OL =&gt; 0, 
@@ -1294,12 +1280,12 @@ Other packets can be included.</Comment>
     INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message
 {
     NID_PACKET =&gt; 27, 
-    Q_DIR =&gt; Messages.Q_DIR.Nominal, 
+    Q_DIR =&gt; 1, 
     L_PACKET =&gt; 58, 
-    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC, 
+    Q_SCALE =&gt; 1, 
     D_STATIC =&gt; 0, 
     V_STATIC =&gt; 40, 
-    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element, 
+    Q_FRONT =&gt; 1, 
     N_ITER_0 =&gt; 0, 
     Sequence1 =&gt; [], 
     N_ITER_1 =&gt; 0, 
@@ -1348,33 +1334,34 @@ Other packets can be included.</Comment>
     DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM =&gt; EMPTY, 
     END_OF_INFORMATION =&gt; EMPTY
 }
-}]
+}], 
+    BitField =&gt; &apos;&apos;
 }</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="72c6d647-9cd1-46af-b6c5-a0f0db0abeb3"
+ Guid="e02f565a-b19c-4892-9b55-02b5272ebf98"
 >NOT Available ( BTM.Message )</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
- Guid="d6af15d9-8151-4fba-92b5-1e5055886db1"
+ Guid="b3cc0a7f-acd3-42cc-80f0-d2242ea2aa4c"
 >
 <Actions>
 <Action
- Guid="be740782-9cf5-4362-b045-f43a66180be7"
+ Guid="af0a4a58-7c1a-4a41-a67a-aeea7ab479cf"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram, 
+    Q_UPDOWN =&gt; 1, 
     M_VERSION =&gt; 16, 
-    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise, 
+    Q_MEDIA =&gt; 0, 
     N_PIG =&gt; 1, 
     N_TOTAL =&gt; 1, 
-    M_DUP =&gt; Messages.M_DUP.No_duplicates, 
+    M_DUP =&gt; 0, 
     M_MCOUNT =&gt; 255, 
     NID_C =&gt; 352, 
     NID_BG =&gt; 1, 
-    Q_LINK =&gt; Messages.Q_LINK.Linked, 
+    Q_LINK =&gt; 1, 
     Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
 {
     TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
@@ -1384,18 +1371,18 @@ Other packets can be included.</Comment>
     LINKING =&gt; Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message
 {
     NID_PACKET =&gt; 5, 
-    Q_DIR =&gt; Messages.Q_DIR.Nominal, 
+    Q_DIR =&gt; 1, 
     L_PACKET =&gt; 147, 
-    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC, 
+    Q_SCALE =&gt; 1, 
     D_LINK =&gt; 2900, 
-    Q_NEWCOUNTRY =&gt; Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows, 
+    Q_NEWCOUNTRY =&gt; 0, 
     NID_C =&gt; 0, 
     NID_BG =&gt; 0, 
-    Q_LINKORIENTATION =&gt; Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_reverse_direction, 
-    Q_LINKREACTION =&gt; Messages.Q_LINKREACTION.Train_trip, 
+    Q_LINKORIENTATION =&gt; 0, 
+    Q_LINKREACTION =&gt; 0, 
     Q_LOCACC =&gt; 0, 
     N_ITER =&gt; 0, 
-    Sequence1 =&gt; []
+    Sequence1 =&gt; [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]
 }, 
     LEVEL_1_MOVEMENT_AUTHORITY =&gt; EMPTY, 
     STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP =&gt; EMPTY, 
@@ -1404,11 +1391,11 @@ Other packets can be included.</Comment>
     GRADIENT_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message
 {
     NID_PACKET =&gt; 21, 
-    Q_DIR =&gt; Messages.Q_DIR.Nominal, 
+    Q_DIR =&gt; 1, 
     L_PACKET =&gt; 54, 
-    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC, 
+    Q_SCALE =&gt; 1, 
     D_GRADIENT =&gt; 0, 
-    Q_GDIR =&gt; Messages.Q_GDIR.downhill, 
+    Q_GDIR =&gt; 0, 
     G_A =&gt; 0, 
     N_ITER =&gt; 0, 
     Sequence1 =&gt; []
@@ -1457,7 +1444,8 @@ Other packets can be included.</Comment>
     DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM =&gt; EMPTY, 
     END_OF_INFORMATION =&gt; EMPTY
 }
-}]
+}], 
+    BitField =&gt; &apos;&apos;
 }</Action></Actions>
 </SubStep></SubSteps>
 <Messsages>
@@ -2038,21 +2026,21 @@ The driver is informed on the DMI of the change to FS mode.</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6951b393-1f92-481e-ab6e-8118d2aa2b7d"
+ Guid="b9af520f-b78b-4b7a-9854-197f678224c7"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="28bafd71-b5d2-425e-8aab-2d2f209ef192"
+ Guid="b19745e4-8316-498b-8b8e-db7e40c5dd75"
 >Kernel.Mode == Mode.FS</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="d2174c90-a9cc-4400-8a36-f6c58b6bcdaf"
+ Guid="0cf25c36-db17-4e7c-9f9a-b1d56bbcae23"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.FS</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="f0203118-d9d3-4649-a323-4ec42ba6a0cb"
+ Guid="cc7ee407-c4d6-4340-ab45-7cd83f06f211"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -2068,21 +2056,6 @@ The driver is informed on the DMI of the change to FS mode.</Description>
  Guid="03be07ab-5bb6-48a2-ada1-58ad3f571e33"
 >
 <Description>The mode change to FS is stored.</Description>
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="d5160d2a-0ae9-428b-9a82-0fce151f6304"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation"
- Guid="1394842c-dd10-43a8-b542-b9755507fb5b"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
-    ModeInkernel=&gt;Default.Mode.FS
-)</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
  Feature="595"
@@ -4226,23 +4199,23 @@ Other packets can be included.</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="22ffa98e-b47e-4557-94b8-9fb697a64cc1"
+ Guid="e3db95a4-2886-43a5-8392-6eb77223c4a1"
 >
 <Actions>
 <Action
- Guid="1d11875d-a19e-461b-a918-7b0910599158"
+ Guid="4d13f129-1788-4a59-b212-76294cabfbb4"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram, 
+    Q_UPDOWN =&gt; 1, 
     M_VERSION =&gt; 16, 
-    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise, 
+    Q_MEDIA =&gt; 0, 
     N_PIG =&gt; 0, 
     N_TOTAL =&gt; 1, 
-    M_DUP =&gt; Messages.M_DUP.No_duplicates, 
+    M_DUP =&gt; 0, 
     M_MCOUNT =&gt; 255, 
     NID_C =&gt; 352, 
     NID_BG =&gt; 5, 
-    Q_LINK =&gt; Messages.Q_LINK.Linked, 
+    Q_LINK =&gt; 1, 
     Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
 {
     TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
@@ -4253,25 +4226,25 @@ Other packets can be included.</Comment>
     LEVEL_1_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
 {
     NID_PACKET =&gt; 12, 
-    Q_DIR =&gt; Messages.Q_DIR.Nominal, 
+    Q_DIR =&gt; 1, 
     L_PACKET =&gt; 73, 
-    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC, 
+    Q_SCALE =&gt; 1, 
     V_MAIN =&gt; 60, 
     V_LOA =&gt; 0, 
     T_LOA =&gt; 1023, 
     N_ITER =&gt; 0, 
     Sequence1 =&gt; [], 
     L_ENDSECTION =&gt; 21000, 
-    Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information, 
+    Q_SECTIONTIMER =&gt; 0, 
     T_SECTIONTIMER =&gt; 0, 
     D_SECTIONTIMERSTOPLOC =&gt; 0, 
-    Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information, 
+    Q_ENDTIMER =&gt; 0, 
     T_ENDTIMER =&gt; 0, 
     D_ENDTIMERSTARTLOC =&gt; 0, 
-    Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.No_danger_point_information, 
+    Q_DANGERPOINT =&gt; 0, 
     D_DP =&gt; 0, 
     V_RELEASEDP =&gt; 0, 
-    Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information, 
+    Q_OVERLAP =&gt; 0, 
     D_STARTOL =&gt; 0, 
     T_OL =&gt; 0, 
     D_OL =&gt; 0, 
@@ -4284,12 +4257,12 @@ Other packets can be included.</Comment>
     INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message
 {
     NID_PACKET =&gt; 27, 
-    Q_DIR =&gt; Messages.Q_DIR.Nominal, 
+    Q_DIR =&gt; 1, 
     L_PACKET =&gt; 58, 
-    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC, 
+    Q_SCALE =&gt; 1, 
     D_STATIC =&gt; 0, 
     V_STATIC =&gt; 40, 
-    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element, 
+    Q_FRONT =&gt; 1, 
     N_ITER_0 =&gt; 0, 
     Sequence1 =&gt; [], 
     N_ITER_1 =&gt; 0, 
@@ -4338,33 +4311,34 @@ Other packets can be included.</Comment>
     DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM =&gt; EMPTY, 
     END_OF_INFORMATION =&gt; EMPTY
 }
-}]
+}], 
+    BitField =&gt; &apos;&apos;
 }</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="fb7d7df3-9f77-4f7d-80ce-101fb07681c3"
+ Guid="8fcb0fdf-1799-4f06-8fb3-50c1ca9da5b9"
 >NOT Available ( BTM.Message )</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
- Guid="749c51e6-14e4-40c1-aca0-09de14ecf2d1"
+ Guid="1d6a4d4e-67e8-4f84-8d7a-80dcb30fa128"
 >
 <Actions>
 <Action
- Guid="aa0a1cd1-715d-455f-a5c8-955838b7c185"
+ Guid="31a42877-be49-4307-bf9b-1cb143c0f85d"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram, 
+    Q_UPDOWN =&gt; 1, 
     M_VERSION =&gt; 16, 
-    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise, 
+    Q_MEDIA =&gt; 0, 
     N_PIG =&gt; 1, 
     N_TOTAL =&gt; 1, 
-    M_DUP =&gt; Messages.M_DUP.No_duplicates, 
+    M_DUP =&gt; 0, 
     M_MCOUNT =&gt; 255, 
     NID_C =&gt; 352, 
     NID_BG =&gt; 5, 
-    Q_LINK =&gt; Messages.Q_LINK.Linked, 
+    Q_LINK =&gt; 1, 
     Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
 {
     TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
@@ -4374,18 +4348,18 @@ Other packets can be included.</Comment>
     LINKING =&gt; Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message
 {
     NID_PACKET =&gt; 5, 
-    Q_DIR =&gt; Messages.Q_DIR.Nominal, 
+    Q_DIR =&gt; 1, 
     L_PACKET =&gt; 108, 
-    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC, 
+    Q_SCALE =&gt; 1, 
     D_LINK =&gt; 300, 
-    Q_NEWCOUNTRY =&gt; Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows, 
+    Q_NEWCOUNTRY =&gt; 0, 
     NID_C =&gt; 0, 
     NID_BG =&gt; 0, 
-    Q_LINKORIENTATION =&gt; Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_reverse_direction, 
-    Q_LINKREACTION =&gt; Messages.Q_LINKREACTION.Train_trip, 
+    Q_LINKORIENTATION =&gt; 0, 
+    Q_LINKREACTION =&gt; 0, 
     Q_LOCACC =&gt; 0, 
     N_ITER =&gt; 0, 
-    Sequence1 =&gt; []
+    Sequence1 =&gt; [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]
 }, 
     LEVEL_1_MOVEMENT_AUTHORITY =&gt; EMPTY, 
     STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP =&gt; EMPTY, 
@@ -4394,11 +4368,11 @@ Other packets can be included.</Comment>
     GRADIENT_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message
 {
     NID_PACKET =&gt; 21, 
-    Q_DIR =&gt; Messages.Q_DIR.Nominal, 
+    Q_DIR =&gt; 1, 
     L_PACKET =&gt; 54, 
-    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC, 
+    Q_SCALE =&gt; 1, 
     D_GRADIENT =&gt; 0, 
-    Q_GDIR =&gt; Messages.Q_GDIR.downhill, 
+    Q_GDIR =&gt; 0, 
     G_A =&gt; 0, 
     N_ITER =&gt; 0, 
     Sequence1 =&gt; []
@@ -4447,7 +4421,8 @@ Other packets can be included.</Comment>
     DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM =&gt; EMPTY, 
     END_OF_INFORMATION =&gt; EMPTY
 }
-}]
+}], 
+    BitField =&gt; &apos;&apos;
 }</Action></Actions>
 </SubStep></SubSteps>
 <Messsages>
@@ -10029,11 +10004,11 @@ The new current mode is not indicated on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="c2cb9166-9ee1-4c30-9b08-4ecab2348e33"
+ Guid="08bcab60-6e32-4d22-9cc7-2f3f765a90af"
 >
 <Actions>
 <Action
- Guid="799110c5-eadf-4e34-8614-47d7bd745d8c"
+ Guid="05890127-8441-4481-979f-c8931be483a9"
 >Kernel.TrainData.Initialize()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -10049,27 +10024,21 @@ The new current mode is not indicated on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="102313d9-106e-4bdf-afec-64341e845efe"
+ Guid="b8c28a85-0cc4-4687-bb2b-9474bfce390f"
 >
 <Actions>
 <Action
- Guid="f22c204d-6072-4cf0-8625-58a7d483e93d"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
- Guid="a8bec7e0-d4ec-400a-bbe2-2a225bc412e8"
->EURORADIO.CurrentRBCConnection().ContactData.Id.Id &lt;- -1</Action><Action
- Guid="d49c710f-7c06-48d5-b5a9-3bfac8cdf008"
->EURORADIO.CurrentRBCConnection().ContactData.PhoneNumber &lt;- &apos;Unknown&apos;</Action><Action
- Guid="9c22a5f2-b099-4dbe-9e8f-980ebc9868f7"
+ Guid="9723315c-2f92-4c0f-bf0f-ef487b058806"
 >Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
- Guid="1fefdd2a-1c6d-4c21-a3af-ec830ff83c53"
+ Guid="3f17220e-f91c-4dc4-bb0c-7afa2c2e784f"
 >Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action
- Guid="299c86e9-84b6-43e3-95a0-7affc29f8d79"
+ Guid="ffbf2bdb-a13c-41c7-a5d3-43a90869d3c4"
 >Kernel.TrainRunningNumber.Value &lt;- &apos;TR007&apos;</Action><Action
- Guid="1e5f11f3-c3ec-4ccc-ba85-bb5f7419327a"
+ Guid="f2be948a-a1eb-471c-99b4-4e54c2adccf8"
 >Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Valid</Action><Action
- Guid="d29aa8a0-7b41-4277-9ccb-63244d87a01e"
+ Guid="aa6902f8-cae3-4b1d-9c06-a480d75699a8"
 >DMI.DMI1.IsMaster &lt;- True</Action><Action
- Guid="028a09fd-0547-447d-a002-4bfefe8b5f96"
+ Guid="84bd64bc-31b8-490b-bf13-2b4b1f9d9bff"
 >Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -10122,17 +10091,17 @@ The on-board equipment changes to SB mode.</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="9311639f-7a98-434a-80da-3e7d9656384a"
+ Guid="d29cc56c-46fa-4a3f-a2e9-28d0f81701c4"
 >
 <Actions>
 <Action
- Guid="369f1c92-0fb8-4042-b5c4-3fbc94438202"
+ Guid="4aa4a3c1-144f-4dd7-9b73-78809e023b5a"
 >Kernel.PowerOn &lt;- Boolean.True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="eb94a51e-07cc-4fd4-941b-72396d1272e9"
+ Guid="2156566b-b8d1-4e37-b957-4307804217b5"
 >Kernel.Mode == Mode.SB</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -10147,12 +10116,6 @@ The on-board equipment changes to SB mode.</Description>
  Guid="b2247b57-0357-4b62-b4c8-9e91b6eac60f"
 >
 <Description>The new current mode SB is RECORDED on JRU</Description>
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="dcc9fe21-c5ab-40d7-805d-9ff6375b435b"
->
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
  Feature="522"
@@ -10178,11 +10141,11 @@ The on-board equipment changes to SB mode.</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="84b2ddb3-c892-44ce-9742-6d85ce4d00af"
+ Guid="f7e95511-f4e1-4c8e-9b42-c66b40e4606a"
 >
 <Actions>
 <Action
- Guid="f360cd32-49c7-428c-bbcf-943fe8edf202"
+ Guid="9adbd749-0310-424f-a601-ae266e2b475f"
 >TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -10201,18 +10164,18 @@ The on-board equipment changes to SB mode.</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ce1a617b-b186-4fe2-a727-2bc9cae67b7d"
+ Guid="da03998d-98d0-46fb-946d-9a8cef8ecc06"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
  Name="Expectation"
- Guid="a5efef1c-2ea2-446f-b629-b03bee5f13d5"
+ Guid="dbb61f36-f6b9-4fee-becc-223dd4f640d0"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SB</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="7bf8893e-eafe-48a3-9848-41dca4172ce0"
+ Guid="be3d9aab-77a3-4013-8723-2370cf231f2a"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -10262,17 +10225,17 @@ The on-board equipment changes to SB mode.</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="876b3203-8249-4332-a21b-4d6266c120a9"
+ Guid="0b888ae3-1c60-490d-b583-0ec584fe0589"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="9ab71d6f-173b-4bfa-9fd7-d68d078175f8"
+ Guid="0b20c78b-99c5-469d-8df4-de826631b59e"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SB</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="57cc4df0-4c60-4921-bcc9-8bb0f630a20e"
+ Guid="b4424e1e-3943-4045-b68f-c27627b68482"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -10301,22 +10264,22 @@ There is NO initial Driver ID value displayed</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d2f0c7be-69f7-4699-9a47-a1a7db7db08c"
+ Guid="b22829f9-86ce-42a8-a269-44a1f0e643a0"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
  Name=""
- Guid="21b47fa0-9f08-47bd-ae0b-c0872db3c518"
+ Guid="97602fe4-ada9-48be-a53b-2d749fd9f111"
 >DMI.MasterDMI().In_DriverId.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="ed4e7b7b-9165-4ed9-a3d3-ef4929635831"
+ Guid="95efe112-c2ee-4009-8c16-c84673ec1bff"
 >DMI.MasterDMI().In_DriverId.DriverAction.Enter</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="ec936c11-fc9a-4755-9a37-643bd6146822"
+ Guid="8423e370-5da4-44a4-91c4-3cf13e18072f"
 >DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -10345,11 +10308,11 @@ There is NO initial Driver ID value displayed</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8abd35b0-e550-417a-88d8-d5d8eab9a3c2"
+ Guid="854a878b-537a-465a-976e-25578c0d34ae"
 >
 <Actions>
 <Action
- Guid="1b1aa4c6-56fb-4a01-873a-2685fb52d50b"
+ Guid="34403895-31f2-4bbf-a5d7-17940f3ca111"
 >DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Driver_ID&apos;</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -10367,17 +10330,17 @@ There is NO initial Driver ID value displayed</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="f2f973df-6f2b-4942-a226-96e6c4ea669e"
+ Guid="759a5e67-b936-4291-91b8-3d8e400cccb7"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="60473c8f-5ebe-4b67-9d52-fb7349f89636"
+ Guid="e1e23f06-3557-411d-9734-2ae96d1d2f56"
 >DMI.MasterDMI().In_DriverId.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="ca7df7c2-5548-405d-91dc-54c4f9c21c23"
+ Guid="4ca90f90-d108-4f44-b539-4fb09c3f627f"
 >DMI.MasterDMI().In_DriverId.DriverAction.Enter</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -10395,18 +10358,12 @@ There is NO initial Driver ID value displayed</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="bff6786d-dfd0-4f5e-a63f-af4139c18988"
+ Guid="4e110016-e18a-41c8-8cbd-4c7bd7983462"
 >
 <Actions>
 <Action
- Guid="f3358f20-e2dc-406c-85ba-dd0432f5bacb"
->DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Guid="adf6e435-2cd7-42bd-8a7a-2c229190a2fd"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Response</Expectation></Expectations>
+ Guid="a7440fb5-dd42-41a4-a8f3-1c4e3ce84247"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="15"
@@ -10548,18 +10505,12 @@ Triggered by : Data Entry completed</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="507efb43-e593-422e-b710-44e062f3fc7c"
+ Guid="073fbc75-6d9a-43a5-baa2-114a5a132b69"
 >
 <Actions>
 <Action
- Guid="cd10c71c-4790-4b05-8b01-03259c12725c"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Guid="723b1904-77a5-4bce-ab48-5795dec0633d"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Response</Expectation></Expectations>
+ Guid="806c848c-eac3-46af-bc15-d989007daace"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="27"
@@ -10687,25 +10638,25 @@ The drivers? validation is recorded on the JRU</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="5f52d921-4889-457c-ab9d-9fc56dd137cd"
+ Guid="eae0a64b-2a38-4249-b4a0-60f2db148380"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="b3a0eb45-947f-4d3b-addd-a1bcb3cb0090"
+ Guid="fcdcea97-65e5-42c0-8466-a366dd0ff4e0"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="d0215ac6-4d67-4c9b-9d56-5d4e8f6a0fc9"
+ Guid="8b1efe39-d026-4b53-8726-db7328c47599"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="f5038da0-573e-4442-b5a7-18b9ada00617"
+ Guid="273b517e-c99a-44fa-8410-3d49553d767a"
 >DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="cae82591-9675-405a-9d10-7bbe9f019451"
+ Guid="4dde54f1-375c-4e88-848f-f1db2d6cc234"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -10723,13 +10674,13 @@ The drivers? validation is recorded on the JRU</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="295959d1-c369-4b6a-ba02-0254278bc8e9"
+ Guid="a5e486ec-bb13-4a85-b088-5fd34b0a3fa2"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="270d7443-4a69-40e1-ab4a-b12edea209cc"
+ Guid="1a62551f-71e4-4fa0-94e6-2ed494d5052f"
 >NOT DMI.MasterDMI().In_OverrideRequest.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -10755,7 +10706,8 @@ The drivers? validation is recorded on the JRU</Description>
 <Actions>
 <Action
  Guid="87337382-8dbe-4ad5-9829-e14ed56fd726"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+><Comment></Comment>
+DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="41"
@@ -10804,18 +10756,18 @@ The drivers? validation is recorded on the JRU</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="28113a05-4bdd-4991-bed7-c94f86fd6fdb"
+ Guid="cf0e71e9-5ad8-4669-96d9-30d775a7a910"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="9b395fa1-080b-4a95-8234-c15b64cb4d14"
+ Guid="ae22038b-2624-49fb-9ecc-4904b17448cb"
 >DMI.MasterDMI().In_TrainData.Data == Kernel.TrainData.TrainData.Value</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="777212dc-a4ae-4535-9373-adf4f74b1979"
->DMI.MasterDMI().In_TrainData.InputInformation.DisplayRequested</Expectation></Expectations>
+ Guid="27d8d448-29e6-4fdf-9cd6-b8eeeb56df06"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="46"
@@ -10844,13 +10796,13 @@ The drivers? validation is recorded on the JRU</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="33efe8c3-a6d5-4b5f-aed9-446f8199c772"
+ Guid="7812b25a-1bed-4722-8498-44cebb644939"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="d458b46e-cedc-4c1f-8ac9-67f10e7bdb5f"
+ Guid="420e4884-f9c4-498a-bdc6-bf6c7f26d9e4"
 >DMI.MasterDMI().In_TrainData.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -10869,12 +10821,12 @@ The drivers? validation is recorded on the JRU</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="adaa9c06-1e60-4677-bcc5-851691f4a673"
+ Guid="561b80f8-9914-4351-9698-1e3cd8bbb0f8"
 >
 <Actions>
 <Action
- Guid="1f39388f-cd93-4b0a-ba76-3fd50bb86b68"
->DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+ Guid="19c64070-8b45-441a-a206-24674cde8085"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="49"
@@ -10916,18 +10868,18 @@ The drivers? validation is recorded on the JRU</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="547d9deb-3566-4cea-909d-d1adc3b4e23e"
+ Guid="84150ff2-3e6d-4fd9-831b-df574f25cc20"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="d762f27b-166c-423c-8d8b-d4d07430a913"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DisplayRequested</Expectation><Expectation
+ Guid="0bf95800-4c76-4d14-9f82-0b6791bdd3cc"
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="73c3923a-7f26-4b05-a362-a72e046ee1d4"
->DMI.MasterDMI().In_Start.InputInformation.DisplayRequested</Expectation></Expectations>
+ Guid="95ed4599-dc05-49eb-9a93-b6966d90e8b6"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -10955,29 +10907,29 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="47750520-f498-42d6-beaf-9371af2900ff"
+ Guid="d4783b77-7ca7-494a-aa70-9edb61c0d773"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="05d8b379-f918-43cc-92f7-357679896aa7"
+ Guid="ccc43f78-0604-4188-98e8-26b6e540c5ba"
 >DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="e70fd20f-4d69-4b5e-b1a0-a155cd43ac3c"
+ Guid="4f146ed7-035e-4731-b06c-b4e873d9f6e0"
 >DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.L1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="7e4bc322-9dfb-44a9-8d8e-d28a04714af8"
+ Guid="ecf8fc2d-795a-4b2c-a138-fb04e2016991"
 >DMI.MasterDMI().In_Start.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="30e5ffb9-b6f2-43f8-af2a-e3859735de18"
+ Guid="3d2ab841-a366-4698-8b2d-386100bdc398"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode in [Mode.SB, Mode.PT]</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="01465765-9162-4f6b-a695-1866f335a55f"
+ Guid="38648d2d-f60c-492f-bb8d-f09fdadf519a"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -10995,12 +10947,14 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="3b033c2d-4ba3-43fa-b073-a817cf9e965b"
+ Guid="f4af3ccb-3be9-444a-867a-72a9f1469ff8"
 >
 <Actions>
 <Action
- Guid="e18182fe-66a8-4162-b454-afd9fce724c9"
->DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+ Guid="522e82a2-5a24-4c13-a0bb-24758fc0db8d"
+><Comment></Comment>
+
+DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="55"
@@ -11018,13 +10972,13 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="c073f241-f7b1-4d3d-ae1d-8b0b0b5602d1"
+ Guid="eafeda61-55da-400b-9525-c1fa9fa5347e"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="15ae8a55-0766-4bfd-9bfa-5e44b778c52d"
+ Guid="4ecc4b40-bccb-41ab-b45a-e4c324050b6b"
 >DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -11064,12 +11018,12 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="1f2c9c25-3161-4d74-a4e1-1b79f9f81ed1"
+ Guid="415e417a-d6ad-4634-882c-46fded899c3f"
 >
 <Actions>
 <Action
- Guid="e8063bda-ed85-4473-a003-717088141977"
->DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action></Actions>
+ Guid="54fb8883-26f7-42d0-9c64-50f148ea79ab"
+>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="59"
@@ -11097,17 +11051,17 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="20c6e97c-e7eb-4316-b85c-2cfebddd5332"
+ Guid="546ca805-142d-46fa-9a21-4654f2653fa6"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="b0029b19-0680-4a53-9a22-0c9187038260"
+ Guid="e812fcf2-2794-45b2-b23b-c6ac1a03a8be"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="7db02f96-f654-4c11-be61-f027cd92e5c1"
+ Guid="c1e96928-0fed-4d8a-b9f6-00a3d6884345"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -11122,21 +11076,6 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Guid="3ea64f42-244b-4448-8232-24c2b0ad0285"
 >
 <Description>The transition to SR mode is RECORDED</Description>
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="83207330-2b6e-4e7d-9d2f-396f24a097b9"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation"
- Guid="d1dcfae0-2f8b-40a0-bbd1-00cce06c9d22"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
-    ModeInkernel=&gt;Default.Mode.SR
-)</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  TCS_Order="62"
  IO="NA"
@@ -11195,17 +11134,17 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e08f78fb-7eab-42c4-bb88-ddfda29450e5"
+ Guid="54a2b595-ce8b-4cd7-94f9-55ebbd728426"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="19e5a6e7-c7e4-4f30-b943-b0a79434e104"
+ Guid="3838be82-2653-4c3a-abda-8535f350230d"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="5dc6c612-ac95-4a0b-b83d-cac586a36ca6"
+ Guid="499b3d1d-3281-4b9f-ae66-3e26f6f511a5"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -12727,25 +12666,26 @@ Other packets can be included.</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="65d1ec28-5684-4fb9-a17f-750a4a453b85"
+ Guid="6433b502-4309-432d-9049-c7775173fdc9"
 >
 <Actions>
 <Action
- Guid="bea651b9-cd29-4abc-a8e3-58038daeb380"
+ Guid="0f061e17-d3bc-471e-9895-31b3d37ea0ea"
 >BTM.Message &lt;- %Step_Messages_0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="4a758f02-3e35-4a21-8ce5-430c7f384187"
+ Guid="2a33c202-4d04-45b4-a3b9-61c816b12e8d"
 >NOT Available ( BTM.Message )</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
- Guid="8c5ec1d7-944a-4a40-8e48-03c2ad49690c"
+ Guid="155dd4e2-ebae-45ef-98f8-80157d9f4352"
 >
+<Comment></Comment>
 <Actions>
 <Action
- Guid="7ba89756-0c5f-4195-8341-a942934f1fe4"
+ Guid="9dac62e0-d7b3-4248-b841-e76b16b2bc2f"
 >BTM.Message &lt;- %Step_Messages_1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -12760,6 +12700,7 @@ Other packets can be included.</Comment>
  Guid="5188a8e9-f7d4-4683-9a2d-0f0009f02e37"
 >
 <Description>Balise telegram including packet 12: L1 Movement Authority is RECORDED</Description>
+<Comment></Comment>
 </Step></Steps>
 </TestCase><TestCase
  Feature="373"
@@ -15249,18 +15190,12 @@ The on-board equipment allows the driver to simply revalidate it.</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6dce7f2a-d809-4b08-ad20-f3c94f6c29d5"
+ Guid="a5fe64d7-8587-4c80-8bc9-e630255f702e"
 >
 <Actions>
 <Action
- Guid="3f7756ff-57ca-4056-b0c2-816e8048a303"
->DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Guid="49129192-e547-4438-aa1a-adfaf101b7a1"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Response</Expectation></Expectations>
+ Guid="972be0cb-2cc4-4981-8b57-d608f7aac7c8"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="207"
@@ -15383,25 +15318,25 @@ Triggered by : Data Entry completed</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e7e2a199-4a3c-4ad5-9dbf-4b7c9870383a"
+ Guid="85c946e7-743b-489f-9d13-63ad5edd0ffe"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="a2104a48-ae49-46a9-b207-4e9d9da8f199"
+ Guid="c48ef809-7109-474d-a355-d162d95ad0ec"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="4092952f-916c-424f-bb1d-2ccb8dcb0f65"
+ Guid="37b5167a-fb69-4252-b59e-31aa0d68adec"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="f3a72aa4-9742-499b-9889-c0cbe5f13acf"
+ Guid="e03e584e-b4f5-49af-b6ba-45af319cd4cf"
 >DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="49195ae4-3ab8-45d2-bab4-b1b9fe15732e"
+ Guid="f4103d32-b418-47aa-b054-5d3c3bfdd600"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -15420,13 +15355,13 @@ Triggered by : Data Entry completed</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="98f29e48-4843-4040-a257-7ef6dc5e5244"
+ Guid="6c212704-e379-4036-b00b-7b73f2ff9cb1"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="3989c24a-8a0f-4ff5-a20b-3eec12183ba0"
+ Guid="b8287a55-3d73-476f-b11a-6a0b5615e48e"
 >NOT DMI.MasterDMI().In_OverrideRequest.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -15492,18 +15427,18 @@ Triggered by : Data Entry completed</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="1d556e3c-e727-4cc9-ae0f-fa4b72d788c0"
+ Guid="9e55d99b-76de-4a65-8098-52bf066030e6"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="fc278da5-0686-437a-92be-d4d17946610d"
+ Guid="075fde4b-f2c9-427e-acb2-9c25cb9711bb"
 >DMI.MasterDMI().In_TrainData.Data == Kernel.TrainData.TrainData.Value</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="ae7f121c-bc47-45fe-9ba4-e5d316f485f3"
->DMI.MasterDMI().In_TrainData.InputInformation.DisplayRequested</Expectation></Expectations>
+ Guid="749540e2-ed98-4e5a-9a84-d87733929d31"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="225"
@@ -15534,13 +15469,13 @@ Triggered by : Data Entry completed</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="42949830-8b0f-4815-aebc-7b119d6f6fc8"
+ Guid="ff9aa1ea-dfe1-4f03-a4c3-3cd1e40a4b5e"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="616b9292-27e2-47b8-94e9-cd6240c1d91d"
+ Guid="39b86505-dcb5-46e2-ad6f-cc262ee844af"
 >DMI.MasterDMI().In_TrainData.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -15560,12 +15495,12 @@ Triggered by : Data Entry completed</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="c5a93efa-327f-4549-b8e2-49ab013ffe68"
+ Guid="2ed0daae-5606-4f57-9583-024456e581b2"
 >
 <Actions>
 <Action
- Guid="41d00a0f-7a21-4424-9e9d-a9d7bf0fd147"
->DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+ Guid="415ccf56-51a1-4d91-8cbb-71e432198149"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="228"
@@ -15610,18 +15545,18 @@ Triggered by : Data Entry completed</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="81bbe253-f4f2-46f7-80ff-096ae2733bcb"
+ Guid="e5c28836-f746-4f0c-9391-2e8f0d13df44"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="691eebc4-d31d-4377-9cea-3ba26d6e4170"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DisplayRequested</Expectation><Expectation
+ Guid="5f093696-cfc3-48f9-a3a5-c60c9100fe72"
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="16b6401c-a17a-4465-8950-c51a278c060b"
->DMI.MasterDMI().In_Start.InputInformation.DisplayRequested</Expectation></Expectations>
+ Guid="7e83d58e-80a5-44d7-a130-40b4f802381f"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -15650,29 +15585,29 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="a188dbeb-3658-492b-a28d-d223b7c18397"
+ Guid="89ed700b-0541-4c2e-aeda-3e41b99b63bf"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="bf9adc18-4373-42e6-8c6c-739236bfbdf4"
+ Guid="25b9cbba-131e-4947-ad34-f1eb05f93824"
 >DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="8f718e4f-f7e1-47f1-90d9-6d7e8234ae3b"
+ Guid="dab8e819-49e9-4231-adbd-c34606030168"
 >DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.L1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="2a330bd9-e540-4231-a69c-e9fb9875de5c"
+ Guid="154e16d5-6232-4db6-918c-cd6757953b0c"
 >DMI.MasterDMI().In_Start.InputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="fcaa1016-a5ce-46e9-af2a-0f92cf1728ee"
+ Guid="35f8923f-021d-4411-889b-a3c3f75a4d67"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode in [Mode.SB, Mode.PT]</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="b48a5f54-1c15-4a87-89c6-4ea9e76e0f7a"
+ Guid="803b48b5-c762-4d23-9e1c-5890a00624aa"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -15691,12 +15626,14 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="74f77feb-f1b2-4b98-b839-290b8794da27"
+ Guid="82600863-2932-46c8-85f0-64eeda29c2be"
 >
 <Actions>
 <Action
- Guid="dfbd19a1-5f66-4c56-a18f-a090145beeeb"
->DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+ Guid="6f9bf923-4f62-4afd-b573-77370eeec163"
+><Comment></Comment>
+
+DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="234"
@@ -15715,13 +15652,13 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6b1598d0-db52-4abd-9a62-b37f696e0c86"
+ Guid="adfbf5ca-c7d9-462b-b208-0e386063e124"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="ee471bab-c21e-4cbe-b0d0-7bb84da26276"
+ Guid="d393d501-0f7a-4385-afdc-1291885650d3"
 >DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -15762,12 +15699,12 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="bc0fa33e-2dab-4691-b604-915f6822e9d7"
+ Guid="3c5ad69f-6106-4757-8898-cbb14d135dfa"
 >
 <Actions>
 <Action
- Guid="3f37a41a-be11-4a19-82a8-9fbbebdc0d9e"
->DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action></Actions>
+ Guid="02400e58-b4a2-4360-a011-9e2b9a026da5"
+>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="238"
@@ -15797,17 +15734,17 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ef0f2e58-7103-4bca-9439-558a8a64c431"
+ Guid="02b482a9-5402-4f3d-93fd-58fa104fbaf1"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="57a2ac09-55a9-4c5a-8f55-6084d0a75143"
+ Guid="a65904dd-bba5-4727-a14e-5ed8e29dbf3b"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="80288ad2-8178-4d8f-9279-5e7de137a8ac"
+ Guid="c35c0e65-fcb1-46e7-88b2-268497a8da6d"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -15823,21 +15760,6 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Guid="7e665585-36e0-441c-be83-c2ca75219d9a"
 >
 <Description>The transition to SR mode is RECORDED</Description>
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="26e51f9b-9e7e-428d-9c1c-c40e791e7545"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation"
- Guid="dbfee95d-b09a-4ca2-b250-591aba5f304a"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
-    ModeInkernel=&gt;Default.Mode.SR
-)</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  TCS_Order="241"
  IO="NA"
@@ -15876,17 +15798,17 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6bcf12ff-b980-4d57-9b5a-68600a4ec632"
+ Guid="17439c41-aba2-4dbc-90b5-d4390f75fc03"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="e5e80919-f131-476b-9faf-27855f1731bb"
+ Guid="fb8285eb-10cb-4b0c-825e-0ffc46138dce"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
- Guid="76c31206-a94a-447f-ab2d-a00443da0cc5"
+ Guid="36764ac3-6e87-43bd-8e0b-e2d924c84029"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
