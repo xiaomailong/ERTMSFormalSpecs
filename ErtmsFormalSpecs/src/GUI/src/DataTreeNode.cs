@@ -573,10 +573,23 @@ namespace GUI
 
                 base.visit(obj, visitSubNodes);
             }
+
+            /// <summary>
+            /// Marks all req related as implemented
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(DataDictionary.Generated.Paragraph obj, bool visitSubNodes)
+            {
+                obj.setImplementationStatus(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented);
+
+                base.visit(obj, visitSubNodes);
+            }
+
         }
 
         /// <summary>
-        /// Recursively marks all model elements as implemented
+        /// Checks the node
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -593,13 +606,13 @@ namespace GUI
         }
 
         /// <summary>
-        /// Recursively marks all model elements as implemented
+        /// Recursively marks all model elemeSnts as implemented
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void MarkAsImplemented(object sender, EventArgs e)
         {
-            MarkAsImplementedVisitor visitor = new MarkAsImplementedVisitor(Model);
+                MarkAsImplementedVisitor visitor = new MarkAsImplementedVisitor(Model);
         }
 
         /// <summary>
@@ -627,6 +640,18 @@ namespace GUI
             public override void visit(DataDictionary.Generated.ReqRelated obj, bool visitSubNodes)
             {
                 obj.setVerified(true);
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Marks all req related as implemented
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(DataDictionary.Generated.Paragraph obj, bool visitSubNodes)
+            {
+                obj.setReviewed(true);
 
                 base.visit(obj, visitSubNodes);
             }
