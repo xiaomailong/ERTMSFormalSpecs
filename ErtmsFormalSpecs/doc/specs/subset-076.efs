@@ -66,7 +66,7 @@
  DeadLine="1000"
  Name="Expectation"
  Guid="689a32ac-42aa-4c3a-8308-02064869ab14"
->DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == %Step_ModeIN</Expectation><Expectation
+>DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SB</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
  Guid="bf8aef1e-7a05-433e-9ce4-171383a374ea"
@@ -209,14 +209,9 @@ There is NO initial Driver ID value displayed"
 <Actions>
 <Action
  Guid="37b5b920-71db-48cb-a566-4c5ffefbdc18"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Guid="34c25c35-4aa2-4040-beca-d8c2e685183f"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Response</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
+<Comment></Comment>
 </Translation><Translation
  Implemented="TRUE"
  Guid="6a50e65b-82ab-4b09-95dc-3cef77a005c1"
@@ -251,6 +246,7 @@ There is NO initial Driver ID value displayed"
  Guid="d45d491b-0af4-41c1-bf03-2757013bc10c"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
+<Comment></Comment>
 </Translation><Translation
  Implemented="TRUE"
  Guid="73b4d740-3878-4e74-96b1-f068cdc21d38"
@@ -291,13 +287,27 @@ The driver is allowed to modify/validate the train data. Those data includes the
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
- Guid="aa3f4be8-8534-4747-8a1b-d74b4a9f72ac"
->DMI.MasterDMI().In_TrainData.InputInformation.DisplayRequested</Expectation><Expectation
+ DeadLine="1"
+ Guid="7582fce1-e084-4bd2-be7f-9c60e9a45df9"
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="0ecf83d0-07de-4139-a7e0-ace1500114ba"
+>
+<Actions>
+<Action
+ Guid="69442e95-b485-449a-a31b-b8cb1f8f8e4e"
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+<Expectations>
+<Expectation
  Kind="Instantaneous"
  DeadLine="1000"
  Guid="3f0ab513-79b9-4a9b-93c8-ba21663bfe0e"
->DMI.MasterDMI().In_TrainData.Data == Kernel.TrainData.TrainData.Value</Expectation></Expectations>
+>DMI.MasterDMI().In_TrainData.Data == Kernel.TrainData.TrainData.Value</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+ Guid="aa3f4be8-8534-4747-8a1b-d74b4a9f72ac"
+>DMI.MasterDMI().In_TrainData.InputInformation.DisplayRequested</Expectation></Expectations>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
@@ -318,13 +328,7 @@ The driver is allowed to modify/validate the train data. Those data includes the
 <Actions>
 <Action
  Guid="85a0a4e3-985a-44c4-8425-98f939cabdad"
->DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Guid="05f14a4f-619d-47a1-bf08-27fdf8744c58"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Response</Expectation></Expectations>
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
@@ -377,7 +381,7 @@ The driver is allowed to modify/validate the train data. Those data includes the
  Guid="292307da-ccff-492a-9da8-e10547328e3c"
 >DMI.MasterDMI().In_TrainData.Data.TrainLength &lt;- 640.0</Action><Action
  Guid="a7da1d8b-34e7-46ce-b846-292fcf1e0bb6"
->DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
@@ -399,12 +403,13 @@ The driver is allowed to modify/validate the train data. Those data includes the
  Kind="Instantaneous"
  DeadLine="1000"
  Guid="ae68a463-19ee-4f48-82b7-f0cc6dcb1201"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DisplayRequested</Expectation><Expectation
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
  Guid="7a7a2a0b-d255-492a-9632-cbdca79ba226"
->DMI.MasterDMI().In_Start.InputInformation.DisplayRequested</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
+<Comment></Comment>
 </Translation><Translation
  Implemented="TRUE"
  Guid="de96894e-6d25-4c65-968b-06d46d01c90c"
@@ -463,7 +468,8 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
 <Actions>
 <Action
  Guid="095a9250-8e42-4438-9864-2cac7d7b6792"
->DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+><Comment></Comment>
+DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
@@ -505,7 +511,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
 <Actions>
 <Action
  Guid="b92b9e2d-8f0a-4947-a00e-caaaaeaee591"
->DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
@@ -577,7 +583,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
 <Actions>
 <Action
  Guid="70efa341-dcd6-4e6f-b3e4-52df58a3688d"
->DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
@@ -603,7 +609,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
  Kind="Instantaneous"
  DeadLine="1000"
  Guid="96074297-a495-4fff-9382-ad1037cb71d8"
->DMI.MasterDMI().In_TrainData.InputInformation.DisplayRequested</Expectation></Expectations>
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Translation><Translation
  Guid="5b208949-d30c-46b1-a273-1d3f8b45b842"
@@ -631,41 +637,6 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
  Name="JRU"
  Guid="ea62f716-c9d5-45ed-889c-c48c9187824b"
 >
-<Translations>
-<Translation
- Implemented="TRUE"
- Guid="3540ffb1-6361-44f7-9a14-797753679cf5"
->
-<SourceTexts>
-<SourceText
- Name="The new current mode SB is RECORDED on JRU"
- Guid="844fbe0b-d5d8-4de6-bee9-06415bdfe8a1"
->
-</SourceText><SourceText
- Name="The transition to SR mode is RECORDED"
- Guid="ff5498c4-67a1-4b38-a22c-1a30aa5a5ce6"
->
-</SourceText><SourceText
- Name="The mode change to FS is stored."
- Guid="250f8718-4caa-4141-86f7-fac17ddb0375"
->
-</SourceText></SourceTexts>
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="b26413b4-86a1-47d8-acf8-d5320018555d"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1000"
- Name="Expectation"
- Guid="2dec76b1-7808-48b3-8310-0025fcc1c3d2"
->JRU.ModeChanged(
-    jru=&gt; JRU.JRU1
-)</Expectation></Expectations>
-</SubStep></SubSteps>
-</Translation></Translations>
 </Folder><Folder
  Name="EURORADIO"
  Guid="569e1f1e-3603-4760-b733-fe62dccc4943"

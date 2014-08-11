@@ -190,16 +190,14 @@ namespace DataDictionary.Tests.Translations
 
                 foreach (Rules.Action action in subStep.Actions)
                 {
-                    Rules.Action newAct = (Rules.Action)Generated.acceptor.getFactory().createAction();
-                    action.copyTo(newAct);
+                    Rules.Action newAct = (Rules.Action) action.Duplicate();
                     newSubStep.appendActions(newAct);
                     Review(newAct);
                 }
 
                 foreach (Expectation expectation in subStep.Expectations)
                 {
-                    Expectation newExp = (Expectation)Generated.acceptor.getFactory().createExpectation();
-                    expectation.copyTo(newExp);
+                    Expectation newExp = (Expectation)expectation.Duplicate();
                     newSubStep.appendExpectations(newExp);
                     Review(newExp);
                 }
@@ -332,6 +330,11 @@ namespace DataDictionary.Tests.Translations
                     {
                         retVal = retVal.Replace("%Step_Messages_" + i, format_message(message));
                     }
+                }
+
+                if (retVal.IndexOf("%") > 0)
+                {
+                    step.AddError("Cannot completely translate this step");
                 }
             }
 
@@ -477,57 +480,62 @@ namespace DataDictionary.Tests.Translations
 
 
             // then we fill the packets
-            KeyValuePair<string, Variables.IVariable> subSequencePair = structure.SubVariables.ElementAt(structure.SubVariables.Count - 1);
-            Variables.IVariable subSequenceVariable = subSequencePair.Value;
-
-            Types.Collection collectionType = (Types.Collection)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.Collection1");
-            Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
-
-            Types.Structure subStructure1Type = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.SubStructure1");
-            Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
-
-            Types.Structure packetStructure = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
-            Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
-
-            // will contain the list of all packets of the message and then be added to the structure packetValue
-            ArrayList subStructures = new ArrayList();
-
-            foreach (DBElements.DBPacket packet in message.Packets)
+            Variables.IVariable subSequenceVariable;
+            if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
             {
-                Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
+                Types.Collection collectionType = (Types.Collection)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.Collection1");
+                Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
 
-                if (nidPacketField.Value != 255)  // 255 means "end of information"
+                Types.Structure subStructure1Type = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.SubStructure1");
+                Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
+
+                Types.Structure packetStructure = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
+                Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
+
+                // will contain the list of all packets of the message and then be added to the structure packetValue
+                ArrayList subStructures = new ArrayList();
+
+                foreach (DBElements.DBPacket packet in message.Packets)
                 {
-                    Values.StructureValue subStructure = FindStructure(nidPacketField.Value);
+                    Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
 
-                    index = 0;
-                    FillStructure(nameSpace, packet.Fields, ref index, subStructure);
+                    if (nidPacketField.Value != 255)  // 255 means "end of information"
+                    {
+                        Values.StructureValue subStructure = FindStructure(nidPacketField.Value);
 
-                    subStructures.Add(subStructure);
+                        index = 0;
+                        FillStructure(nameSpace, packet.Fields, ref index, subStructure);
+
+                        subStructures.Add(subStructure);
+                    }
                 }
-            }
 
-            // the collection of the message packets is copied to the structure packetValue
-            int i = 0;
-            foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
+                // the collection of the message packets is copied to the structure packetValue
+                int i = 0;
+                foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
+                {
+                    if (i == subStructures.Count)
+                    {
+                        break;
+                    }
+                    string variableName = pair.Key;
+                    Values.StructureValue structureValue = subStructures[i] as Values.StructureValue;
+                    if (structureValue.Structure.FullName.Contains(variableName))
+                    {
+                        Variables.IVariable variable = pair.Value;
+                        variable.Value = structureValue;
+                        i++;
+                    }
+                }
+
+                subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
+                collection.Val.Add(subStructure1);
+                subSequenceVariable.Value = collection;
+            }
+            else
             {
-                if (i == subStructures.Count)
-                {
-                    break;
-                }
-                string variableName = pair.Key;
-                Values.StructureValue structureValue = subStructures[i] as Values.StructureValue;
-                if (structureValue.Structure.FullName.Contains(variableName))
-                {
-                    Variables.IVariable variable = pair.Value;
-                    variable.Value = structureValue;
-                    i++;
-                }
+                throw new Exception("Cannot find SubSequence in variable");
             }
-
-            subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
-            collection.Val.Add(subStructure1);
-            subSequenceVariable.Value = collection;
 
             return structure.Name;
         }

@@ -1652,65 +1652,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="DisplayMRSP"
- Guid="806b2ede-839e-4ef9-96b3-9f368ad72e0f"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="03bd6e19-c086-4408-8665-f844d5e9f968"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0792c2eb-c527-4d8f-a09c-10fab34bc6ac"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="36184e3a-730a-4702-b347-371b94a7314c"
->
-<PreConditions>
-<PreCondition
- Guid="13a537fc-89bd-4edc-aec6-7a1d24b025c0"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ddbc3c72-78ad-4ce4-9c09-2ef0f6e5cd35"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="988da893-872d-411e-86c6-78ed0fabcc0c"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="e2e0cd4d-7a8f-41aa-b219-57f0379fd6b0"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="f68f532f-d10e-467d-8ad6-198960346547"
->Out_MRSP.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="DisplayLXStatusNotProtected"
  Guid="93fdc0ae-f4a9-44fe-b450-642b9c755ab3"
 >
@@ -3418,8 +3359,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.NotAvailable</Action><Action
  Guid="4e2df851-1580-4c73-9dda-8dc65fc83561"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotAvailable</Action><Action
- Guid="797a05f8-0782-406d-b7ae-e0746a29e5ba"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotAvailable</Action><Action
  Guid="e1d3d0e9-dd91-47c7-bf68-6aed7735f872"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="416c126d-b2af-45e8-982c-cf86ebd08473"
@@ -3546,8 +3485,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RVModeProposed.ProcedureOut &lt;- Out_RVModeProposed.ProcedureOut.NotAvailable</Action><Action
  Guid="8d306a79-162f-461e-9502-d7c47560f9d1"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotAvailable</Action><Action
- Guid="93f4df1f-9437-402c-8daa-0a2567d707d0"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotAvailable</Action><Action
  Guid="05be3365-6f12-4a3f-ab2d-901cefb18000"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="1a8c5542-f7a4-4344-a847-456b13c8deab"
@@ -3666,8 +3603,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RadioNetworkRegistrationFailed.ProcedureOut &lt;- Out_RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Action><Action
  Guid="b2be4235-bd77-4f05-8129-9aaf9300fa48"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotAvailable</Action><Action
- Guid="103a1e11-67bf-478e-a36c-fbdc4c78d0c4"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotAvailable</Action><Action
  Guid="75910c07-8cee-4dd4-8913-9d22464d6b21"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="7d70bc68-416e-4bbd-b55e-f83b32856892"
@@ -3772,8 +3707,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_SafeRadioConnectionIndication.ProcedureOut &lt;- Out_SafeRadioConnectionIndication.ProcedureOut.Available</Action><Action
  Guid="1bf6d461-3de1-4db7-8a8b-9f6d65c0c443"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.Available</Action><Action
- Guid="d240c414-2eb9-442f-8ccb-cb861eaf2bce"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.Available</Action><Action
  Guid="bfdb6bdf-5f18-49d7-98fc-901d1ed772cd"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.Available</Action><Action
  Guid="6e077132-3572-4b7c-a70a-0ef4a9a075a7"
@@ -3916,8 +3849,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
  Guid="c1de6af3-a3f6-46f0-8c49-c48682ce1254"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotAvailable</Action><Action
- Guid="43140dda-750b-4daa-bc70-8b55570d3e55"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotAvailable</Action><Action
  Guid="568ee65e-9275-445e-b08e-433b16cf7451"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="1b53dfcd-fd5f-4fa1-8cbf-285e30d432f7"
@@ -4036,8 +3967,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RVModeProposed.ProcedureOut &lt;- Out_RVModeProposed.ProcedureOut.NotAvailable</Action><Action
  Guid="28bc08a5-6825-4598-a56f-16afe69baa1f"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotAvailable</Action><Action
- Guid="574e966f-00db-49b9-855f-89a756986c49"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotAvailable</Action><Action
  Guid="b541e6c3-16ec-44f2-af8c-410c4d77ae9a"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="a30f585f-1afa-414c-8000-5d898ba06f28"
@@ -4162,8 +4091,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
  Guid="5bb65b0e-5eec-4e5d-b01d-8fff58677669"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotAvailable</Action><Action
- Guid="f7dc3ebc-34c1-41fe-86f6-607173b924c7"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotAvailable</Action><Action
  Guid="54f4b162-7a34-4e6d-a4da-0afe33582fae"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="cf2ad434-e378-4bdf-b6af-0e5e7ded22d1"
@@ -4280,8 +4207,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut &lt;- Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.NotAvailable</Action><Action
  Guid="5d2ba2eb-ee41-4d97-accb-488a9e4af6a0"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotAvailable</Action><Action
- Guid="b0a6545b-61cb-482a-bded-5c608a2d4ae5"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotAvailable</Action><Action
  Guid="ed0a69da-73b8-4442-b006-bb26ad916e2e"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="51483e8b-0281-476a-b07c-51f0850ce5c1"
@@ -4404,8 +4329,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RadioNetworkRegistrationFailed.ProcedureOut &lt;- Out_RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Action><Action
  Guid="b3c560a0-8181-483a-b8c3-22c4d8b56c99"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotAvailable</Action><Action
- Guid="69d12720-b351-426f-a382-20e0d7a96af9"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotAvailable</Action><Action
  Guid="5fc0c148-4066-4387-998e-828d1a118bf1"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="70aecf45-c96a-46b0-a4dd-bd31a50a8eb9"
@@ -4524,8 +4447,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RadioNetworkRegistrationFailed.ProcedureOut &lt;- Out_RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Action><Action
  Guid="8e325109-fdca-4b4d-b762-6cb1e1c7c256"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotAvailable</Action><Action
- Guid="d841ab0b-91ba-481f-8234-28c21cb3aaeb"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotAvailable</Action><Action
  Guid="2b2ff71f-48eb-4a12-add7-f6157a64b42d"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="50f97ea7-e42b-4114-b5e7-4d59cab25638"
@@ -4648,8 +4569,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RVModeProposed.ProcedureOut &lt;- Out_RVModeProposed.ProcedureOut.NotAvailable</Action><Action
  Guid="9c4ca29b-14b4-45dc-9f69-beb6ba5580fa"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotAvailable</Action><Action
- Guid="8476744a-25e3-4e94-8557-a4c758730a6d"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotAvailable</Action><Action
  Guid="411fe3fb-7df3-4818-a7b6-96de905134b2"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="5601fad9-a1f3-45ef-b77e-116c45bded6e"
@@ -4766,8 +4685,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.NotApplicable</Action><Action
  Guid="c93381fe-de57-4ed1-b94a-41181c7d22b6"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotApplicable</Action><Action
- Guid="132f9043-4504-4164-a6e3-1d71723d7301"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotApplicable</Action><Action
  Guid="c9be2bb9-54f6-454a-8449-60b8607a2e8d"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotApplicable</Action><Action
  Guid="f1aab8ba-0f60-4949-b1a9-5ff91466c07f"
@@ -4888,8 +4805,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.NotApplicable</Action><Action
  Guid="50a82808-fbf4-4f6e-8ee6-95bd99debee5"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotApplicable</Action><Action
- Guid="9185aa6b-caaa-4ac1-9a49-c19f17bd7545"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotApplicable</Action><Action
  Guid="0bc56676-a48b-424b-8e4b-cba4c63334e9"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotApplicable</Action><Action
  Guid="60bc9ac8-9877-4dd6-83d6-50631435211c"
@@ -5014,8 +4929,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RadioNetworkRegistrationFailed.ProcedureOut &lt;- Out_RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Action><Action
  Guid="c0e393cf-b4ae-4aaa-80a1-8cf4eca0df0e"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotAvailable</Action><Action
- Guid="177962b8-54f2-4a64-aabf-c672453e7acb"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotAvailable</Action><Action
  Guid="3c83adc7-9dfd-427a-842c-bb799f4f8803"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="0bd9b0f4-7b2e-4510-bc53-a38cc597d55d"
@@ -5136,8 +5049,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RadioNetworkRegistrationFailed.ProcedureOut &lt;- Out_RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Action><Action
  Guid="0c9fafd7-8e58-414d-8f7e-398b48347072"
 >Out_Gradient.ProcedureOut &lt;- Out_Gradient.ProcedureOut.NotAvailable</Action><Action
- Guid="754b3dff-1dd8-40aa-9c34-57247d72cc2f"
->Out_MRSP.ProcedureOut &lt;- Out_MRSP.ProcedureOut.NotAvailable</Action><Action
  Guid="8e3269c5-f75b-4349-a4d2-ec520dfe965a"
 >Out_IndicationLocationAtMrspSpeed.ProcedureOut &lt;- Out_IndicationLocationAtMrspSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="1503baf1-a301-456d-bf55-a44a9ebfe6a1"
@@ -5440,7 +5351,9 @@ In_TrackAheadFree.TrackMode()</Action><Action
  Guid="ffc49356-a342-4f80-a304-eaebd1b9cd89"
 >In_TrainIntegrity.TrackMode()</Action><Action
  Guid="a146884b-c77b-4030-aa93-3458ef154f52"
->In_VirtualBaliseCover.TrackMode()</Action></Actions>
+>In_VirtualBaliseCover.TrackMode()</Action><Action
+ Guid="d852eb4f-3cb6-4961-a0e6-3f5b4b6d01cd"
+>Out_MRSP.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -7341,6 +7254,66 @@ DriverAnswered &lt;- False</Action><Action
 - ShowRequestStatus (of type Request) is used to request begin displaying of some information.
 - HideRequestStatus (of type Request) is used to request stop displaying of the information.
 - DisplayRequested (of type Boolean) is the out variable. The information shall be displayed on DMI while DisplayRequested = true.</Comment>
+<Procedures>
+<Procedure
+ NeedsRequirement="FALSE"
+ Name="RequestDisplay"
+ Guid="4a21aee6-e985-4b26-b372-70d78ba4d03d"
+>
+<Comment>Changes the status of the output information to request the display of the corresponding element</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Changes the status of the request"
+ Guid="0bee721d-e5ac-421a-b1ca-6b4fb4c82849"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Changes the status of the request"
+ Guid="985d2421-01d8-4815-a0aa-533e377eed9b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="18294aea-567b-41b7-a2ec-499f5fb4d799"
+>DisplayRequested &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="DoNotDisplay"
+ Guid="5b9cd0e2-59d2-42b7-9023-27cd73df37c8"
+>
+<Comment>Changes the status of the output information to request the display of the corresponding element</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Changes the status of the request"
+ Guid="380005ae-c1cd-4a9b-a7f0-69b549f81a64"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Changes the status of the request"
+ Guid="d16af881-7606-4147-af9a-a3f42b984032"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d725a197-b01f-40bf-b933-855768b89cbd"
+>DisplayRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="Boolean"
  Default=""
@@ -7890,6 +7863,7 @@ DMI.MasterDMI().HandleModeChange()</Action></Actions>
  Name="Update system state"
  Guid="f1841b69-51d6-4354-b40e-5576fd069eb1"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>

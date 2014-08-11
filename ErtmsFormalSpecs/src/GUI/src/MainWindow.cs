@@ -750,12 +750,14 @@ namespace GUI
                         GenericWindowHandling<RequirementsView.Window>.AddOrShow(this, RequirementsWindow, DockAreas.DockBottom);
                         GenericWindowHandling<UsageView.Window>.AddOrShow(this, UsageWindow, DockAreas.DockBottom);
 
-                        GenericWindowHandling<EditorView.ExpressionWindow>.AddOrShow(this, ExpressionEditorWindow, DockAreas.DockBottom);
-                        ExpressionEditorWindow.Show(RequirementsWindow.Pane, DockAlignment.Right, 0.5);
-                        GenericWindowHandling<EditorView.CommentWindow>.AddOrShow(this, CommentEditorWindow, DockAreas.DockBottom);
                         GenericWindowHandling<MoreInfoView.Window>.AddOrShow(this, MoreInfoWindow, DockAreas.DockBottom);
+                        MoreInfoWindow.Show(RequirementsWindow.Pane, DockAlignment.Right, 0.66);
+
+                        GenericWindowHandling<EditorView.ExpressionWindow>.AddOrShow(this, ExpressionEditorWindow, DockAreas.DockBottom);
+                        ExpressionEditorWindow.Show(MoreInfoWindow.Pane, DockAlignment.Right, 0.5);
+                        GenericWindowHandling<EditorView.CommentWindow>.AddOrShow(this, CommentEditorWindow, DockAreas.DockBottom);
                         GenericWindowHandling<TestRunnerView.Watch.Window>.AddOrShow(this, WatchWindow, DockAreas.DockBottom);
-                        MoreInfoWindow.Show();
+                        ExpressionEditorWindow.Show();
 
                         // Display the views in the right pane
                         GenericWindowHandling<PropertyView.Window>.AddOrShow(this, PropertyWindow, DockAreas.DockRight);
