@@ -183,6 +183,13 @@ namespace GUI.SpecificationView
             RefreshNode();
         }
 
+        public void ReviewedHandler(object sender, EventArgs args)
+        {
+            Item.setReviewed(true);
+
+            RefreshNode();
+        }
+
         public void NotImplementableHandler(object sender, EventArgs args)
         {
             Item.setImplementationStatus(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
@@ -381,6 +388,7 @@ namespace GUI.SpecificationView
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.AddRange(base.GetMenuItems());
             MenuItem newItem = new MenuItem("Mark as...");
+            newItem.MenuItems.Add(new MenuItem("Reviewed", new EventHandler(ReviewedHandler)));
             newItem.MenuItems.Add(new MenuItem("Implemented", new EventHandler(ImplementedHandler)));
             newItem.MenuItems.Add(new MenuItem("Not implementable", new EventHandler(NotImplementableHandler)));
             retVal.Insert(4, newItem);
