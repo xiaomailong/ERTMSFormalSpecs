@@ -219,6 +219,7 @@
  Name="Value"
  Guid="aeee2a9d-0dc9-46c1-819a-97c42f1e0772"
 >
+<Comment></Comment>
 <Expression>Default.BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - TargetSpeedMonitoring.T_traction (), X2 =&gt; 0.0 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -312,6 +313,7 @@
  Name="Compensation of speed inaccuracy is inhibited by NV"
  Guid="38db12e7-afec-4eb8-b777-3199e0fbe422"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8b5d2ce3-87d4-4330-8e56-082dd50bbaef"
@@ -352,6 +354,7 @@
  Name="Value"
  Guid="5065369d-4e58-4287-b086-1723c2fa31b5"
 >
+<Comment></Comment>
 <Expression>TargetSpeedMonitoring.Aest1() * TargetSpeedMonitoring.T_traction()</Expression>
 </Case></Cases>
 </Function><Function
@@ -382,6 +385,7 @@
  Name="Value"
  Guid="32aacacd-a015-4db8-9358-18b1f08b683a"
 >
+<Comment></Comment>
 <Expression>TargetSpeedMonitoring.Aest2() * TargetSpeedMonitoring.T_berem()</Expression>
 </Case></Cases>
 </Function><Function
@@ -417,6 +421,7 @@
  Name="Value"
  Guid="6a8616f4-c654-41eb-8c0b-dd85faaf713e"
 >
+<Comment></Comment>
 <Expression>Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + TargetSpeedMonitoring.Vdelta0() + TargetSpeedMonitoring.Vdelta1(), X2 =&gt; Vtarget ) + TargetSpeedMonitoring.Vdelta2()</Expression>
 </Case></Cases>
 </Function><Function
@@ -459,8 +464,9 @@
  Name="Value"
  Guid="65053d1d-56ea-40c0-958e-a23368d66654"
 >
-<Expression>Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + TargetSpeedMonitoring.Vdelta0() + TargetSpeedMonitoring.Vdelta1() / 2.0, X2 =&gt; Vtarget ) ) * TargetSpeedMonitoring.T_traction() +
-Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + TargetSpeedMonitoring.Vdelta0() + TargetSpeedMonitoring.Vdelta1(), X2 =&gt; Vtarget ) + TargetSpeedMonitoring.Vdelta2() / 2.0 )  * TargetSpeedMonitoring.T_berem()</Expression>
+<Comment></Comment>
+<Expression>Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1() / 2.0, X2 =&gt; Vtarget ) ) * T_traction() +
+Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(), X2 =&gt; Vtarget ) + Vdelta2() / 2.0 )  * T_berem()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -941,7 +947,8 @@ d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =
   &lt;  
 EBDForSpeed( Speed =&gt; Vtarget )</PreCondition><PreCondition
  Guid="2784bf61-3ed4-4bb9-ba3c-cfa74d731b58"
->NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition></PreConditions>
+><Comment></Comment>
+NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition></PreConditions>
 <Expression>EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) ) - ( Vbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) - Vest )</Expression>
 </Case><Case
  Name="GUI is enabled, first case"
@@ -1080,6 +1087,7 @@ EBDForSpeed( Speed =&gt; Vtarget )</PreCondition></PreConditions>
  Name="MRDT is the EOA"
  Guid="da50275f-a949-4fe9-b3ab-e1285e86eb11"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="178905dd-ce63-4fba-8a0b-3c4f22c9b159"
@@ -1089,6 +1097,7 @@ EBDForSpeed( Speed =&gt; Vtarget )</PreCondition></PreConditions>
  Name="Otherwise"
  Guid="ce69f6f0-25b3-421d-b722-f59a85591ca8"
 >
+<Comment></Comment>
 <Expression>TargetSpeedMonitoring.V_P_EBD_Target(
     d_maxsafefront =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Max),
     Vtarget =&gt; TargetSpeedMonitoring.MRDT().Speed,
