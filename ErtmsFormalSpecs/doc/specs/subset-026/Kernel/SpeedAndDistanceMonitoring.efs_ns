@@ -3079,6 +3079,7 @@ EBSpecified &lt;- True</Action></Actions>
  Priority="Processing"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Display MRSP"
  Guid="4a6b2374-9a88-47e0-9c3c-cf876d7d3a87"
 >
@@ -3087,12 +3088,21 @@ EBSpecified &lt;- True</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fb4f40a6-8025-4db1-81be-f6d8438eb1b9"
 >
-</ReqRef><SubRules></SubRules>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="ff18547f-9677-4352-91c6-672291b94c64"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ba4e3b0b-161c-4585-912d-2c651484d72e"
+>
+</ReqRef><Comment>Tell the DMI to display the MRSP in FS mode</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Displat MRSP"
+ Implemented="TRUE"
+ Name="Display MRSP"
  Guid="f5361b70-c1bd-4d5e-b606-01b608f018e8"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="dd0defa7-a175-483b-bc39-422fbe424b54"
