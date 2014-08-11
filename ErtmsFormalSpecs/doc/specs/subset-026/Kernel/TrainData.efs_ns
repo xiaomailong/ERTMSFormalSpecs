@@ -1180,7 +1180,8 @@
 <Actions>
 <Action
  Guid="23b06f44-24c6-419a-8941-e8dd55e4b897"
->TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet{
+><Comment></Comment>
+TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet{
             ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet{
                 NoBrake =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
                     Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
@@ -1608,8 +1609,8 @@ TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParame
     Regenerative_Ep =&gt; 1.5,
     EddyCurrent_Magnetic_Regenerative =&gt; 2.8,
     EddyCurrent_Magnetic_Ep =&gt; 1.8,
-    EddyCurrent_Regenerative_Ep =&gt; 2,
-    Magnetic_Regenerative_Ep =&gt; 2,
+    EddyCurrent_Regenerative_Ep =&gt; 2.0,
+    Magnetic_Regenerative_Ep =&gt; 2.0,
     EddyCurrent_Magnetic_Regenerative_Ep =&gt; 2.2,
     Magnetic =&gt; 2.7,
     Regenerative =&gt; 2.2,
@@ -1835,21 +1836,21 @@ TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParame
  Guid="987f6a36-44ba-4ab7-923b-a4d9f5f0ea64"
 >TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
-    EddyCurrent =&gt; 12.1,
-    EddyCurrent_Magnetic =&gt; 5.6,
-    EddyCurrent_Regenerative =&gt; 6.3,
-    EddyCurrent_Ep =&gt; 6.4,
-    Magnetic_Regenerative =&gt; 7.1,
-    Magnetic_Ep =&gt; 7.8,
-    Regenerative_Ep =&gt; 2.1,
-    EddyCurrent_Magnetic_Regenerative =&gt; 6.5,
-    EddyCurrent_Magnetic_Ep =&gt; 10.3,
-    EddyCurrent_Regenerative_Ep =&gt; 8.9,
-    Magnetic_Regenerative_Ep =&gt; 6.2,
-    EddyCurrent_Magnetic_Regenerative_Ep =&gt; 11.8,
-    Magnetic =&gt; 12.4,
-    Regenerative =&gt; 12.1,
-    Ep =&gt; 11.0
+    EddyCurrent =&gt; 2.0,
+    EddyCurrent_Magnetic =&gt; 2.7,
+    EddyCurrent_Regenerative =&gt; 2.6,
+    EddyCurrent_Ep =&gt; 1.6,
+    Magnetic_Regenerative =&gt; 1.8,
+    Magnetic_Ep =&gt; 1.8,
+    Regenerative_Ep =&gt; 1.8,
+    EddyCurrent_Magnetic_Regenerative =&gt; 2.4,
+    EddyCurrent_Magnetic_Ep =&gt; 2.1,
+    EddyCurrent_Regenerative_Ep =&gt; 2.1,
+    Magnetic_Regenerative_Ep =&gt; 1.7,
+    EddyCurrent_Magnetic_Regenerative_Ep =&gt; 1.6,
+    Magnetic =&gt; 2.5,
+    Regenerative =&gt; 2.8,
+    Ep =&gt; 1.8
 }</Action><Action
  Guid="7c2a08c0-ee04-4206-93cc-97200c64d5f2"
 >TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet{
@@ -2011,7 +2012,13 @@ TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParame
  Guid="1150faf4-4606-4991-8763-8a8aafba4453"
 >TrainData.Value.EpBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
  Guid="57d18a98-ba5a-42ff-a4ad-c58afc9c5042"
->TrainData.Value.RegenerativeBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.Both</Action></Actions>
+>TrainData.Value.RegenerativeBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
+ Guid="c50a3f17-017b-4e8f-bccc-2f797b4981f4"
+>INSERT TractionSystem{
+    Voltage =&gt; Messages.M_VOLTAGE.AC_15_kV_16_7_Hz,
+    Country =&gt; 85
+}
+IN TrainData.TrainData.Value.TractionSystems</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
