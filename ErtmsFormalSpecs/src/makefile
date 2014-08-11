@@ -1,8 +1,8 @@
 .phony:all clean increase_release_number release
 .default:all
 
-XMLBOOSTER_ROOT=$(ERTMS_TOOLS_ROOT)/xmlb
-XMLB_CALL=/cygdrive/c/repositories/raincode/xmlb/xmlb2.exe -CFG=../../../tools/xmlb/xmlbcfg.xml
+XMLBOOSTER_ROOT=$(ERTMS_TOOLS_ROOT)/xmlb_2_29_2
+XMLB_CALL=$(XMLBOOSTER_ROOT)/bin/xmlbgui.exe -CFG=../../../tools/xmlb_2_29_2/xmlbcfg.xml
 
 all: 
 	@make -C XmlBooster all 
