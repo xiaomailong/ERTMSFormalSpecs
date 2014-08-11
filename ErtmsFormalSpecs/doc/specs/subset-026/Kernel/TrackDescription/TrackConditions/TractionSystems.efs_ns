@@ -198,7 +198,8 @@
 <PreConditions>
 <PreCondition
  Guid="eb420e4a-b35e-4d9b-8ab6-a8f9e8ba7043"
->THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
+><Comment></Comment>
+THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
 <Expression>REDUCE TCTractionSystems | (X.Distance == TSProfileStartLocation(Distance=&gt;Distance) )
     USING X.Value
   INITIAL_VALUE EMPTY</Expression>
@@ -276,6 +277,7 @@
  Name="AC 25 kV 50 Hz"
  Guid="5d732ac5-ad93-4b8e-8456-488b153e7646"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d5373545-4c2c-4ee9-9d7b-c6a3daf58788"
