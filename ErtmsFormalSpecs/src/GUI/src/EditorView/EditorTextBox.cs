@@ -1388,14 +1388,20 @@ namespace GUI
         {
             bool doSemanticalAnalysis = true;
             bool silent = true;
-            Expression expression = EFSSystem.INSTANCE.Parser.Expression(Instance as ModelElement, EditionTextBox.Text, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
+            ModelElement root = Instance as ModelElement;
+            if (root == null)
+            {
+                root = EFSSystem.INSTANCE.Dictionaries[0];
+            }
+
+            Expression expression = EFSSystem.INSTANCE.Parser.Expression(root, EditionTextBox.Text, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
             if (expression != null)
             {
                 expression = VisitExpression(expression);
                 EditionTextBox.Text = expression.ToString();
             }
 
-            Statement statement = EFSSystem.INSTANCE.Parser.Statement(Instance as ModelElement, EditionTextBox.Text, silent);
+            Statement statement = EFSSystem.INSTANCE.Parser.Statement(root, EditionTextBox.Text, silent);
             if (statement != null)
             {
                 statement = VisitStatement(statement);
