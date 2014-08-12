@@ -1982,6 +1982,11 @@ SelectMonitoringType()</Action></Actions>
  Guid="f77e2edc-d3c3-4e18-9ba7-1dd5896b3583"
 >
 <Comment></Comment>
+</ReqRef><ReqRef
+ Id="66b79932-5e84-4126-abe6-3094347749c2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dce28774-413f-472c-ac6f-6a203e4c010c"
+>
 </ReqRef><Comment>Provides the current permitted speed of the train, accounting for the speed and distance monitoring.</Comment>
 <Parameters>
 <Parameter
@@ -2003,13 +2008,13 @@ SelectMonitoringType()</Action></Actions>
 Monitoring in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
 <Expression>CeilingSpeedMonitoring.P ( Distance )</Expression>
 </Case><Case
- Name="TargetSpeedMonitoring_P"
+ Name="Other monitoring types"
  Guid="c121bdd5-4b33-48ef-b069-9a042e43983d"
 >
 <PreConditions>
 <PreCondition
  Guid="5ba6a2ec-fce4-46ab-8e17-256f0a63ae84"
->Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
+>Monitoring in [MonitoringTypeSM.Target, MonitoringTypeSM.Release]</PreCondition></PreConditions>
 <Expression>TargetSpeedMonitoring.V_P_DMI()</Expression>
 </Case></Cases>
 </Function><Function
@@ -3111,6 +3116,146 @@ EBSpecified &lt;- True</Action></Actions>
 <Action
  Guid="d54411c2-a29c-4028-9360-884f70cda0d6"
 >DMI.MasterDMI().Out_MRSP.Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Display Target Speed"
+ Guid="a5822cb5-dafb-4337-858d-074c90662df4"
+>
+<ReqRef
+ Id="96719821-5827-4475-bf1c-8200e9c230e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6db0d4a2-9ddb-45f8-8a6e-a36e63a1368c"
+>
+</ReqRef><Comment>Tell the DMI when to display the target speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display target speed"
+ Guid="7b051a9a-fc13-4cc6-a0e7-5588d64b7b33"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="e7ebbfe8-e172-42eb-be5f-6df599c4f335"
+>Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1926fc88-a9b1-45a7-9f80-b8057b5eb9c5"
+>DMI.MasterDMI().DisplayTargetSpeed()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Display Permitted Speed"
+ Guid="43709641-63cf-49ae-8c9b-4fc45ae0af6d"
+>
+<ReqRef
+ Id="66b79932-5e84-4126-abe6-3094347749c2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="57a1c785-5fff-4e12-abce-9514092aaf41"
+>
+</ReqRef><ReqRef
+ Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1be067df-ecd5-4bd7-9fdd-eb2263121edf"
+>
+</ReqRef><ReqRef
+ Id="74e64307-2966-461e-a976-9a0194ca8514"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4eb5d983-0e2c-45ba-b9a3-f2a04a34052b"
+>
+</ReqRef><Comment>Tell the DMI when to display the permitted speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display permitted speed"
+ Guid="b2cfd498-b372-4e0a-8e0d-1b33e5ef2b2f"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="72c48f93-c92f-4e85-bcdd-d1a62a905c7a"
+>Monitoring in [MonitoringTypeSM.Ceiling, MonitoringTypeSM.Target, MonitoringTypeSM.Release]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="18eed1e8-ef69-42da-ad89-3afa079af0c6"
+>DMI.MasterDMI().DisplayPermittedSpeed()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Display Release Speed"
+ Guid="3a8f0888-1a89-4baa-b9e6-ec6d5389f3fe"
+>
+<ReqRef
+ Id="ee7b5ecc-20f6-480c-aa0a-7836d5308d32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5f0a438e-31a0-4c5d-b9c7-0c7903d40862"
+>
+</ReqRef><Comment>Tell the DMI when to display the release speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display release speed"
+ Guid="f3e656c5-3798-4b91-92dc-9a084a52eb81"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="86dd3e3d-9722-4c0b-b71c-ee98fed765be"
+>Monitoring in MonitoringTypeSM.Release</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="505b2201-d558-4f04-8db5-0c47fc7ba86b"
+>DMI.MasterDMI().DisplayReleaseSpeed()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ X="220"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Display FLOI speed"
+ Guid="efab0367-0c00-419b-b10c-417a85f63f35"
+>
+<ReqRef
+ Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7e7ef1fe-31e4-4871-ad13-ea163148b92c"
+>
+</ReqRef><ReqRef
+ Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6c8309ba-f1e0-48e0-82ce-146aa897b886"
+>
+</ReqRef><Comment>Tell the DMI when to display the FLOI speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display FLOI speed"
+ Guid="86c1532f-bbef-439d-a50e-ff595adb1091"
+>
+<PreConditions>
+<PreCondition
+ Guid="d7cbe17d-ea14-4291-8549-485f938e1d3f"
+>Monitoring in [MonitoringTypeSM.Ceiling.Warning, MonitoringTypeSM.Ceiling.Overspeed, MonitoringTypeSM.Ceiling.Intervention, MonitoringTypeSM.Target.Warning, MonitoringTypeSM.Target.Overspeed, MonitoringTypeSM.Target.Intervention]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="36bfaa07-eb1d-4ce8-8309-eabd17d7bc29"
+>DMI.MasterDMI().DisplayFLOI()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
