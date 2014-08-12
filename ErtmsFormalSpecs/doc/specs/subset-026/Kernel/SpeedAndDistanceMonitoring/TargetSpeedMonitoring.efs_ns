@@ -128,6 +128,7 @@
  Name="EBIvalue unknown"
  Guid="6caabc93-dfe4-42b6-845e-3a05d61c3524"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="a9d4c728-e23f-4e83-884d-b41a5a7f7494"
@@ -224,6 +225,7 @@
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Time"
+ Cacheable="TRUE"
  Default=""
  Y="360"
  Width="100"
@@ -426,7 +428,6 @@
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
  Default=""
  X="110"
  Y="420"
@@ -518,6 +519,7 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelt
  Name="Release speed"
  Guid="f861860a-db19-489d-b147-5173feb7b3a0"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e21e5249-9a0e-4300-92e7-262b91c17598"
@@ -531,10 +533,11 @@ ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable ( aTarget )</PreConditi
  Guid="1ef44712-63ce-42dc-8422-66cfdb895afb"
 >
 <Comment></Comment>
-<Expression>TargetSpeedMonitoring.EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget )</Expression>
+<Expression>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Cacheable="TRUE"
  Default=""
  X="330"
  Y="420"
@@ -560,6 +563,7 @@ ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable ( aTarget )</PreConditi
  Name="Value"
  Guid="71109ff6-fbb8-4107-af8e-80f3dc312afd"
 >
+<Comment></Comment>
 <Expression>TrainData.TrainData.Value.SBFeedbackIsImplemented AND NationalValues.UseOfSBFeedbackIsPermitted()</Expression>
 </Case></Cases>
 </Function><Function
@@ -651,6 +655,7 @@ ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable ( aTarget )</PreConditi
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Time"
+ Cacheable="TRUE"
  Default=""
  X="220"
  Y="480"
@@ -723,10 +728,12 @@ ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable ( aTarget )</PreConditi
  Name="Vest below all the supervised target speeds"
  Guid="30e99670-6938-4ffe-8626-22edbca60e82"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f3765bd0-74d9-4a3a-8931-9cd8e64befb5"
->FORALL_IN TargetsList() | TargetSpeedMonitoring.d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+><Comment></Comment>
+FORALL_IN TargetsList() | TargetSpeedMonitoring.d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
@@ -1438,25 +1445,19 @@ TargetSpeedMonitoring.V_P_EBD_Target
  Guid="52a5d05b-f8e8-4d2b-a807-315d4cfd1200"
 >
 </ReqRef><Comment>Determines whether the FLOI should be calculated from the EBD or the SBD, depending on which provides the closer FLOI. Depending on which one is used, distances are compared to either the max safe front end of the train or the estimated front end of the train.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Speed"
- Name="Vest"
- Guid="933de1cb-0f73-4b3c-945d-598c4cd2ab06"
->
-</Parameter></Parameters>
 <Cases>
 <Case
  Name="d_SBI1 and d_SBI2_MREBDT unknown"
  Guid="a0f56999-394f-4b00-b423-9c6440c834cc"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7377911b-f405-40f5-a39e-636a7d591d5f"
 ><Comment></Comment>
-TargetSpeedMonitoring.d_SBI1 ( Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+TargetSpeedMonitoring.d_SBI1 ( Odometry.EstimatedSpeed ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="341f5ca9-bbd4-4d97-bbbd-a8d5307c471c"
->TargetSpeedMonitoring.d_SBI2_MREBDT ( Vest ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.EstimatedSpeed ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Infinity</Expression>
 </Case><Case
  Name="SBI1"
@@ -1467,8 +1468,8 @@ TargetSpeedMonitoring.d_SBI1 ( Vest ) == Default.BaseTypes.Distance.Unknown</Pre
  Guid="e862b7cc-9cf5-4c3a-afa3-53925d18277e"
 ><Comment></Comment>
 TargetSpeedMonitoring.SBI1BelowSBI2(
-    d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( Vest ),
-    d_SBI2=&gt; TargetSpeedMonitoring.d_SBI2_MREBDT ( Vest )
+    d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( Odometry.EstimatedSpeed ),
+    d_SBI2=&gt; TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.EstimatedSpeed )
 )</PreCondition></PreConditions>
 <Expression>TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )</Expression>
 </Case><Case
@@ -1890,6 +1891,7 @@ DistanceForSpeed(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c3f0c650-057a-43ec-85d8-8a0df7113e4d"
 >
+<Comment></Comment>
 </ReqRef><Comment>Returns the closest distance at which the EBI value is equal to a provided speed (calculated from Vest and aTarget.Speed).</Comment>
 <Parameters>
 <Parameter
@@ -1936,6 +1938,7 @@ EBD_TargetForSpeed(aTarget=&gt;aTarget, Vest=&gt;Vest) == Default.BaseTypes.Dist
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a089428b-43ef-4852-b96c-8fd5280e0e7f"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="d542f99e-9462-4bb6-9087-35da9a233e06"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1959,6 +1962,7 @@ EBD_TargetForSpeed(aTarget=&gt;aTarget, Vest=&gt;Vest) == Default.BaseTypes.Dist
  Name="No EOA defined"
  Guid="68dd7cc9-0d1c-45c8-bc0c-958e6b369768"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1f71df51-c1b0-48e4-a4f9-a4588272738b"
@@ -1973,6 +1977,7 @@ EBD_TargetForSpeed(aTarget=&gt;aTarget, Vest=&gt;Vest) == Default.BaseTypes.Dist
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
  Default=""
  Width="100"
  Height="50"
@@ -2058,7 +2063,6 @@ MA.IsSvL(MRDT())</PreCondition></PreConditions>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
  Default=""
  X="110"
  Width="100"

@@ -698,27 +698,56 @@ NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 ><Comment></Comment>
 SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( aLX.Speed ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )
  &lt;= 
-SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2(
-  Vest =&gt; aLX.Speed,
-  aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
-    Location =&gt; aLX.Location,
-    Speed =&gt; 0.0,
-    Length =&gt; aLX.Length
-  }
-) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
+d_SBI2LX(aLX) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( aLX.Speed )</Expression>
 </Case><Case
  Name="d_SBI2"
  Guid="5b780a39-26ea-4c85-870c-c287b12e58f7"
 >
-<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2(
-  Vest =&gt; aLX.Speed,
-  aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+<Comment></Comment>
+<Expression>d_SBI2LX(aLX)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ Name="d_SBI2LX"
+ Guid="a2d7bdad-be08-457a-ab64-f63a2831b5c0"
+>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.LX.LevelCrossing"
+ Name="aLX"
+ Guid="af1b6d14-7233-4b8a-9198-5d02fed78e62"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SBI unknown"
+ Guid="91a66bfd-93d1-4bb7-afce-994ea5d2dd7e"
+>
+<PreConditions>
+<PreCondition
+ Guid="b9ee8337-8ab1-42fc-b18e-50d4e6b7787e"
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBIvalue(
+    Vest=&gt;aLX.Speed,
+    aTarget=&gt;SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
     Location =&gt; aLX.Location,
     Speed =&gt; 0.0,
     Length =&gt; aLX.Length
   }
-)</Expression>
+) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
+ Name="Value"
+ Guid="e0098e0c-aa02-466a-aef7-a55cc93835e7"
+>
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBIvalue ( Vest =&gt; aLX.Speed, aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+    Location =&gt; aLX.Location,
+    Speed =&gt; 0.0,
+    Length =&gt; aLX.Length
+  } )  - Default.BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
