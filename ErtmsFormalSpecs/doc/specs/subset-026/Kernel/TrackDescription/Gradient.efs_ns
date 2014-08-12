@@ -197,7 +197,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="039009b7-2b11-4a42-ae95-11b628f26871"
 >
-</ReqRef></Collection></Collections>
+</ReqRef><Comment></Comment>
+</Collection></Collections>
 <Functions>
 <Function
  Type="Default.BaseTypes.Gradient"
@@ -366,6 +367,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="Within gradient info"
  Guid="ccb33418-3a7a-400d-80de-f558fe76b9f4"
 >
+<Comment></Comment>
 <Expression>GradientInfo.Gradient</Expression>
 </Case></Cases>
 </Function><Function
@@ -477,6 +479,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="Value"
  Guid="1312bbb8-8336-43b7-b0ad-aad728fe5af2"
 >
+<Comment></Comment>
 <Expression>SUM
     Gradients |
         Before(ExpectedFirst =&gt; X, ExpectedSecond =&gt; Gradient, Collection =&gt; Gradients) OR ( X == Gradient )
@@ -802,6 +805,7 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
  Name="Within gradient info"
  Guid="4be41a32-e76a-4d41-a8f6-2b8b4b455590"
 >
+<Comment></Comment>
 <Expression>CompensateGradientWithRotatingMass( GradientInfo.Gradient )</Expression>
 </Case></Cases>
 </Function><Function
@@ -1067,6 +1071,29 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
  Guid="a6c148bc-0c26-4f2d-b8bd-f0810ad654d9"
 >
 <Expression>CorrectionFactorFunction ( aCorrectionFactor =&gt; KnMin, V =&gt; V )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="GradientInfo"
+ Default=""
+ Name="CompensateForTrainPosition"
+ Guid="34b9d844-5bc1-45de-a814-e710a434da35"
+>
+<Parameters>
+<Parameter
+ Type="GradientInfo"
+ Name="aGradient"
+ Guid="31c5c86b-208b-4776-8d65-cfb429e2f3af"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="6d7ed6e7-c960-4fcd-8285-ba5f72e50a28"
+>
+<Expression>GradientInfo{
+    Distance =&gt; aGradient.Distance - Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom),
+    Gradient =&gt; aGradient.Gradient
+}</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

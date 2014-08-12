@@ -16903,7 +16903,7 @@ ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></
 <Action
  Guid="bd5f6858-eb55-4cc7-a633-8479451bf90c"
 ><Comment></Comment>
-GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING X</Action></Actions>
+GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING Kernel.TrackDescription.Gradient.CompensateForTrainPosition(X)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
