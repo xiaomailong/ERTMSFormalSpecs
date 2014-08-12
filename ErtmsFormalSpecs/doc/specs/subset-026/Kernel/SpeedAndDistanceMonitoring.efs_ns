@@ -3081,7 +3081,7 @@ EBSpecified &lt;- True</Action></Actions>
 </Variable></Variables>
 <Rules>
 <Rule
- Priority="Processing"
+ Priority="UpdateOUT"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3118,7 +3118,7 @@ EBSpecified &lt;- True</Action></Actions>
 >DMI.MasterDMI().Out_MRSP.Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
- Priority="Processing"
+ Priority="UpdateOUT"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3147,9 +3147,23 @@ EBSpecified &lt;- True</Action></Actions>
 <Action
  Guid="1926fc88-a9b1-45a7-9f80-b8057b5eb9c5"
 >DMI.MasterDMI().DisplayTargetSpeed()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Stop display of target speed"
+ Guid="f21a7100-0c8f-4a7b-abe3-93ad420a06d2"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="1709bbc3-d1c3-4518-a266-9a4254cc44b2"
+>DMI.MasterDMI().Out_TargetSpeed.OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action><Action
+ Guid="d2c5794a-5883-4ee1-8e52-ebd219f23fe2"
+>DMI.MasterDMI().HandleModeChange()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
- Priority="Processing"
+ Priority="UpdateOUT"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3183,14 +3197,28 @@ EBSpecified &lt;- True</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="72c48f93-c92f-4e85-bcdd-d1a62a905c7a"
->Monitoring in [MonitoringTypeSM.Ceiling, MonitoringTypeSM.Target, MonitoringTypeSM.Release]</PreCondition></PreConditions>
+>ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="18eed1e8-ef69-42da-ad89-3afa079af0c6"
 >DMI.MasterDMI().DisplayPermittedSpeed()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Stop display of permitted speed"
+ Guid="c84b0ea5-2d87-4812-89e1-461c081ec465"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="83899328-0079-4945-8c32-50c0c06555e1"
+>DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action><Action
+ Guid="801eff87-0a7a-4df6-8514-6246871f86fe"
+>DMI.MasterDMI().HandleModeChange()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
- Priority="Processing"
+ Priority="UpdateOUT"
  X="110"
  Width="100"
  Height="50"
@@ -3220,9 +3248,22 @@ EBSpecified &lt;- True</Action></Actions>
 <Action
  Guid="505b2201-d558-4f04-8db5-0c47fc7ba86b"
 >DMI.MasterDMI().DisplayReleaseSpeed()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Stop display of release speed"
+ Guid="1dc0416c-6bba-402a-8ae8-1c39db8acbde"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="53869879-c357-4adb-a03f-398226aa0667"
+>DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action><Action
+ Guid="bb81eedc-e932-43d8-b872-87369b680b70"
+>DMI.MasterDMI().HandleModeChange()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
- Priority="Processing"
+ Priority="UpdateOUT"
  X="220"
  Width="100"
  Height="50"
@@ -3248,6 +3289,7 @@ EBSpecified &lt;- True</Action></Actions>
  Name="Display FLOI speed"
  Guid="86c1532f-bbef-439d-a50e-ff595adb1091"
 >
+<Comment>When the FLOI must be displayed to the driver, send the request</Comment>
 <PreConditions>
 <PreCondition
  Guid="d7cbe17d-ea14-4291-8549-485f938e1d3f"
@@ -3256,6 +3298,20 @@ EBSpecified &lt;- True</Action></Actions>
 <Action
  Guid="36bfaa07-eb1d-4ce8-8309-eabd17d7bc29"
 >DMI.MasterDMI().DisplayFLOI()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Stop display of FLOI speed"
+ Guid="9f1e03ab-f43d-4ac4-8027-c4d82a4b3f53"
+>
+<Comment>Stop the request when the FLOI must no longer be displayed</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="1496f63a-bb54-443c-ac91-76f9568b7f08"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action><Action
+ Guid="0a8260ed-5ee8-4faf-8645-ddafa4c90a3d"
+>DMI.MasterDMI().HandleModeChange()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
