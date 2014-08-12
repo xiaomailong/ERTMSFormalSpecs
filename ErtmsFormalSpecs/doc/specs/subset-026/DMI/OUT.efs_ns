@@ -2994,6 +2994,11 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
  Guid="fc07a549-5d16-45d6-b97e-f5ae67bc78a6"
 >
 <Comment></Comment>
+</ReqRef><ReqRef
+ Id="66b79932-5e84-4126-abe6-3094347749c2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f192127-013a-44d0-b253-de9781814f91"
+>
 </ReqRef><Comment>Handles display of information relative to the train permitted speed.</Comment>
 <Rules>
 <Rule
@@ -3079,7 +3084,7 @@ Speed &lt;- Kernel.ModeRelatedSpeedLimits.SRModeSpeedLimit()</Action><Action
 <PreCondition
  Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
 ><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring in  [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]</PreCondition></PreConditions>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in  [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
@@ -3602,11 +3607,6 @@ OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f1539fc9-b2b8-4b17-84ee-d007d7ef10a2"
 >
-</ReqRef><ReqRef
- Id="66b79932-5e84-4126-abe6-3094347749c2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6eee072c-bb0d-4dfe-bf2c-5398d5799d15"
->
 </ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
@@ -3635,7 +3635,7 @@ ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition>
 <Action
  Guid="c312fe49-c752-4ce5-8361-a09bc8d7ecab"
 ><Comment></Comment>
-Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_P_MRDT()</Action></Actions>
+Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -17396,9 +17396,8 @@ GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING Kernel
 THIS.OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="3001d028-535c-4c27-be26-f25714392403"
-><Comment></Comment>
-MRSP &lt;- DISCONT(Kernel.MRSP.SpeedRestrictions)</Action></Actions>
+ Guid="1be84e29-e3d9-42a7-b772-c8c4ffef7f37"
+>GetMRSP()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -17463,6 +17462,65 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Action
  Guid="a5340098-34e5-4d50-8ae9-026a9f014a3f"
 >THIS.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GetMRSP"
+ Guid="ba12483d-ec66-4e53-92d0-e208b44aed8c"
+>
+<Comment>Procedure to get the MRSP values and ensure that they are properly displayed</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Get the values of the MRSP from the EVC"
+ Guid="c1f41203-4dd8-4fa1-8507-a470baad9f7f"
+>
+<Comment>The DISCONT predefined function provides a list of the discontinuities in the MRSP, which are mapped into the DMI variable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Get the values of the MRSP from the EVC"
+ Guid="ff8fc375-3cdb-44a0-9eca-d951b073eb24"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3001d028-535c-4c27-be26-f25714392403"
+><Comment></Comment>
+MRSP &lt;- DISCONT(Kernel.MRSP.SpeedRestrictions)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Modify the distances"
+ Guid="508bf8f6-e90f-44e4-b7b4-bb8c01f1e222"
+>
+<Comment>The distances of the discontinuities (measured from the LRBG) are reduced so that they are displayed from the fron end of the train</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Modify the distances"
+ Guid="2cc94f3e-fb18-4164-bf97-a284227a8721"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="816c448b-3e3d-497e-bc40-71b8a00613f0"
+>MRSP &lt;- MAP MRSP | X.Location &gt;= Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)
+USING Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+    Location =&gt; X.Location - Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom),
+    Speed =&gt; X.Speed,
+    Length =&gt; X.Length
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
