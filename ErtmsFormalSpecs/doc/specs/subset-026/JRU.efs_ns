@@ -54,7 +54,8 @@ SendNewMessage(THIS) == True</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ceacc66c-5e57-4024-81f9-daf7d248fcdf"
->HandleMessagesOut()</Action></Actions>
+><Comment></Comment>
+HandleMessagesOut()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -1070,11 +1071,11 @@ PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonito
 <PreConditions>
 <PreCondition
  Guid="f5d3dccb-474d-4877-afbc-cf2657785d82"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9bc80e3a-1a1a-429f-98aa-42c1d4d761ce"
->PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_FLOI_DMI()</Action></Actions>
+>PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.FLOISpeed(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1119,7 +1120,8 @@ PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonito
 <PreConditions>
 <PreCondition
  Guid="bd5e4bf2-8113-464b-8859-58726f368827"
->SendMessagePeriodically(THIS)</PreCondition></PreConditions>
+><Comment></Comment>
+SendMessagePeriodically(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1dd375f4-1c36-44bc-8f3f-fbd3204b191e"
@@ -2509,6 +2511,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
  Name="Period Has Passed"
  Guid="b301eb6a-e5a2-4959-98dc-d35c98b846f5"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f1ed7a82-bc2e-4196-b866-904859861fa1"
@@ -6526,6 +6529,7 @@ V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
  Name="MonitoringTypeChanged"
  Guid="cf3ed2ff-72a6-4688-bbf1-7817e23712db"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="cf7bc0f9-44ef-4ed0-8243-19b3e15e0791"
@@ -6536,6 +6540,7 @@ jru.SpeedAndDistanceSupervisionTypeChanged</PreCondition></PreConditions>
  Name="MonitoringSupervisionStatusChanged"
  Guid="67eb6523-2d63-4f30-a601-a58145e999cb"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0f85d667-58cc-4f06-9c3a-6a0eea33498d"
@@ -6560,9 +6565,9 @@ jru.PreviousSpeedAndDistanceSupervisionStatus != Kernel.SpeedAndDistanceMonitori
 <PreCondition
  Guid="13358226-042e-4eb7-a8e9-c752639ee537"
 ><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target
+Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling]
   AND
-jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_FLOI_DMI()</PreCondition></PreConditions>
+jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.FLOISpeed(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="TargetSpeedChanged"
