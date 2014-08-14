@@ -17477,13 +17477,16 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Clear MRSP"
  Guid="16e7cbc7-35b0-426f-b44e-4637e341e431"
 >
-<Comment></Comment>
+<Comment>Remove the old MRSP information</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Clear MRSP"
  Guid="c4a66464-06a8-4223-824f-7b32a8b080c3"
 >
@@ -17499,10 +17502,10 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Modify the distances"
+ Name="Insert the MRSP from the kernel"
  Guid="508bf8f6-e90f-44e4-b7b4-bb8c01f1e222"
 >
-<Comment>The distances of the discontinuities (measured from the LRBG) are reduced so that they are displayed from the fron end of the train</Comment>
+<Comment>Map the discontinuities of the MRSP caluclated on-board to the local MRSP variable</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -17531,10 +17534,10 @@ MRSP &lt;- MAP DISCONT(MIN(First=&gt;  MIN(First=&gt; Kernel.MRSP.SpeedRestricti
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Get the values of the MRSP from the EVC"
+ Name="Insert the current MRSP segment"
  Guid="c1f41203-4dd8-4fa1-8507-a470baad9f7f"
 >
-<Comment>The DISCONT predefined function provides a list of the discontinuities in the MRSP, which are mapped into the DMI variable</Comment>
+<Comment>Add a target at the train&apos;s current position with the current MRSP speed</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
