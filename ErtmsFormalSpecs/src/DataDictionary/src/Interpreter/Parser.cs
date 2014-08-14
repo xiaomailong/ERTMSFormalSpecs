@@ -1129,6 +1129,137 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
+        /// Parses a statement
+        /// </summary>
+        /// <returns></returns>
+        private Statement.Statement innerParseStatement()
+        {
+            Statement.Statement retVal = null;
+
+            int start = Index;
+            if (LookAhead("APPLY"))
+            {
+                Match("APPLY");
+                int startCall = Index;
+                Statement.Statement appliedStatement = innerParseStatement();
+                if (appliedStatement != null)
+                {
+                    Match("ON");
+                    Expression listExpression = Expression(0);
+                    Expression condition = null;
+                    if (LookAhead("|"))
+                    {
+                        Match("|");
+                        condition = Expression(0);
+                    }
+                    retVal = new Statement.ApplyStatement(Root, RootLog, appliedStatement, listExpression, condition, start, Index);
+                }
+                else
+                {
+                    RootLog.AddError("Cannot parse call expression");
+                }
+            }
+            else if (LookAhead("INSERT"))
+            {
+                Match("INSERT");
+                Expression value = Expression(0);
+                if (value != null)
+                {
+                    Match("IN");
+                    Expression list = Expression(0);
+                    Expression replaceElement = null;
+                    if (LookAhead("WHEN"))
+                    {
+                        Match("WHEN");
+                        Match("FULL");
+                        Match("REPLACE");
+
+                        replaceElement = Expression(0);
+                    }
+                    retVal = new Statement.InsertStatement(Root, RootLog, value, list, replaceElement, start, Index);
+                }
+            }
+            else if (LookAhead("REMOVE"))
+            {
+                Match("REMOVE");
+
+                Statement.RemoveStatement.PositionEnum position = Interpreter.Statement.RemoveStatement.PositionEnum.First;
+                if (LookAhead("FIRST"))
+                {
+                    Match("FIRST");
+                }
+                else if (LookAhead("LAST"))
+                {
+                    Match("LAST");
+                    position = Interpreter.Statement.RemoveStatement.PositionEnum.Last;
+                }
+                else if (LookAhead("ALL"))
+                {
+                    Match("ALL");
+                    position = Interpreter.Statement.RemoveStatement.PositionEnum.All;
+                }
+
+                Expression condition = null;
+                if (!LookAhead("IN"))
+                {
+                    condition = Expression(0);
+                }
+                Match("IN");
+                Expression list = Expression(0);
+                retVal = new Statement.RemoveStatement(Root, RootLog, condition, position, list, start, Index);
+            }
+            else if (LookAhead("REPLACE"))
+            {
+                Match("REPLACE");
+                Expression condition = Expression(0);
+                Match("IN");
+                Expression list = Expression(0);
+                Match("BY");
+                Expression value = Expression(0);
+
+                retVal = new Statement.ReplaceStatement(Root, RootLog, value, list, condition, start, Index);
+            }
+            else
+            {
+                Expression expression = Expression(0);
+                if (expression != null)
+                {
+                    if (LookAhead("<-"))
+                    {
+                        // This is a variable update
+                        Match("<-");
+                        if (LookAhead("%"))
+                        {
+                            Match("%");
+                        }
+                        Expression expression2 = Expression(0);
+
+                        if (expression2 != null)
+                        {
+                            retVal = new Statement.VariableUpdateStatement(Root, RootLog, expression, expression2, start, Index);
+                        }
+                        else
+                        {
+                            RootLog.AddError("Invalid <- right side");
+                        }
+                        expression.Enclosing = retVal;
+                    }
+                    else
+                    {
+                        // This is a procedure call
+                        Call call = expression as Call;
+                        if (call != null)
+                        {
+                            retVal = new Statement.ProcedureCallStatement(Root, RootLog, call, start, Index);
+                        }
+                    }
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
         /// Provides the Term at position Index of the Buffer.        
         /// </summary>
         /// <param name="root">The root element for which this term is built</param>
@@ -1138,7 +1269,6 @@ namespace DataDictionary.Interpreter
         {
             Statement.Statement retVal = null;
 
-            int start = Index;
             try
             {
                 NoReentrance.WaitOne();
@@ -1151,125 +1281,7 @@ namespace DataDictionary.Interpreter
                     RootLog = Root;
                 }
 
-                if (LookAhead("APPLY"))
-                {
-                    Match("APPLY");
-                    int startCall = Index;
-                    Call callExpression = Expression(0) as Call;
-                    if (callExpression != null)
-                    {
-                        Statement.ProcedureCallStatement call = new Statement.ProcedureCallStatement(Root, RootLog, callExpression, startCall, Index);
-                        Match("ON");
-                        Expression listExpression = Expression(0);
-                        Expression condition = null;
-                        if (LookAhead("|"))
-                        {
-                            Match("|");
-                            condition = Expression(0);
-                        }
-                        retVal = new Statement.ApplyStatement(Root, RootLog, call, listExpression, condition, start, Index);
-                    }
-                    else
-                    {
-                        RootLog.AddError("Cannot parse call expression");
-                    }
-                }
-                else if (LookAhead("INSERT"))
-                {
-                    Match("INSERT");
-                    Expression value = Expression(0);
-                    if (value != null)
-                    {
-                        Match("IN");
-                        Expression list = Expression(0);
-                        Expression replaceElement = null;
-                        if (LookAhead("WHEN"))
-                        {
-                            Match("WHEN");
-                            Match("FULL");
-                            Match("REPLACE");
-
-                            replaceElement = Expression(0);
-                        }
-                        retVal = new Statement.InsertStatement(Root, RootLog, value, list, replaceElement, start, Index);
-                    }
-                }
-                else if (LookAhead("REMOVE"))
-                {
-                    Match("REMOVE");
-
-                    Statement.RemoveStatement.PositionEnum position = Interpreter.Statement.RemoveStatement.PositionEnum.First;
-                    if (LookAhead("FIRST"))
-                    {
-                        Match("FIRST");
-                    }
-                    else if (LookAhead("LAST"))
-                    {
-                        Match("LAST");
-                        position = Interpreter.Statement.RemoveStatement.PositionEnum.Last;
-                    }
-                    else if (LookAhead("ALL"))
-                    {
-                        Match("ALL");
-                        position = Interpreter.Statement.RemoveStatement.PositionEnum.All;
-                    }
-
-                    Expression condition = null;
-                    if (!LookAhead("IN"))
-                    {
-                        condition = Expression(0);
-                    }
-                    Match("IN");
-                    Expression list = Expression(0);
-                    retVal = new Statement.RemoveStatement(Root, RootLog, condition, position, list, start, Index);
-                }
-                else if (LookAhead("REPLACE"))
-                {
-                    Match("REPLACE");
-                    Expression condition = Expression(0);
-                    Match("IN");
-                    Expression list = Expression(0);
-                    Match("BY");
-                    Expression value = Expression(0);
-
-                    retVal = new Statement.ReplaceStatement(Root, RootLog, value, list, condition, start, Index);
-                }
-                else
-                {
-                    Expression expression = Expression(0);
-                    if (expression != null)
-                    {
-                        if (LookAhead("<-"))
-                        {
-                            // This is a variable update
-                            Match("<-");
-                            if (LookAhead("%"))
-                            {
-                                Match("%");
-                            }
-                            Expression expression2 = Expression(0);
-
-                            if (expression2 != null)
-                            {
-                                retVal = new Statement.VariableUpdateStatement(Root, RootLog, expression, expression2, start, Index);
-                            }
-                            else
-                            {
-                                RootLog.AddError("Invalid <- right side");
-                            }
-                            expression.Enclosing = retVal;
-                        }
-                        else
-                        {
-                            // This is a procedure call
-                            Call call = expression as Call;
-                            if (call != null)
-                            {
-                                retVal = new Statement.ProcedureCallStatement(Root, RootLog, call, start, Index);
-                            }
-                        }
-                    }
-                }
+                retVal = innerParseStatement();
             }
             catch (Exception e)
             {
