@@ -569,9 +569,9 @@ namespace DataDictionary.Interpreter
         /// <param name="applyStatement"></param>
         protected virtual void VisitApplyStatement(Statement.ApplyStatement applyStatement)
         {
-            if (applyStatement.Call != null)
+            if (applyStatement.AppliedStatement != null)
             {
-                VisitProcedureCallStatement(applyStatement.Call);
+                VisitStatement(applyStatement.AppliedStatement);
             }
             if (applyStatement.ConditionExpression != null)
             {

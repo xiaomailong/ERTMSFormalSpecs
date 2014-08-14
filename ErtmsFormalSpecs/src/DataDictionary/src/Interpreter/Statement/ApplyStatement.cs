@@ -24,7 +24,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <summary>
         /// The procedure to call
         /// </summary>
-        public ProcedureCallStatement Call { get; private set; }
+        public Statement AppliedStatement { get; private set; }
 
         /// <summary>
         /// The list on which the procedure should be called
@@ -49,13 +49,13 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="parameters">The expressions used to compute the parameters</param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public ApplyStatement(ModelElement root, ModelElement log, ProcedureCallStatement call, Expression listExpression, Expression conditionExpression, int start, int end)
+        public ApplyStatement(ModelElement root, ModelElement log, Statement appliedStatement, Expression listExpression, Expression conditionExpression, int start, int end)
             : base(root, log, start, end)
         {
             DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
 
-            Call = call;
-            Call.Enclosing = this;
+            AppliedStatement = appliedStatement;
+            AppliedStatement.Enclosing = this;
 
             ListExpression = listExpression;
             ListExpression.Enclosing = this;
@@ -123,8 +123,8 @@ namespace DataDictionary.Interpreter.Statement
                     StaticUsage.AddUsages(ConditionExpression.StaticUsage, Usage.ModeEnum.Read);
                 }
 
-                Call.SemanticAnalysis(instance);
-                StaticUsage.AddUsages(Call.StaticUsage, Usage.ModeEnum.Call);
+                AppliedStatement.SemanticAnalysis(instance);
+                StaticUsage.AddUsages(AppliedStatement.StaticUsage, Usage.ModeEnum.Call);
             }
 
             return retVal;
@@ -137,7 +137,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <returns>null if no statement modifies the element</returns>
         public override VariableUpdateStatement Modifies(Types.ITypedElement variable)
         {
-            VariableUpdateStatement retVal = Call.Modifies(variable);
+            VariableUpdateStatement retVal = AppliedStatement.Modifies(variable);
 
             return retVal;
         }
@@ -148,7 +148,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="retVal">the list to fill</param>
         public override void UpdateStatements(List<VariableUpdateStatement> retVal)
         {
-            Call.UpdateStatements(retVal);
+            AppliedStatement.UpdateStatements(retVal);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="retVal">the list to fill</param>
         public override void ReadElements(List<Types.ITypedElement> retVal)
         {
-            Call.ReadElements(retVal);
+            AppliedStatement.ReadElements(retVal);
         }
 
         /// <summary>
@@ -184,9 +184,9 @@ namespace DataDictionary.Interpreter.Statement
                 ConditionExpression.checkExpression();
             }
 
-            if (Call != null)
+            if (AppliedStatement != null)
             {
-                Call.CheckStatement();
+                AppliedStatement.CheckStatement();
             }
             else
             {
@@ -247,7 +247,7 @@ namespace DataDictionary.Interpreter.Statement
                             IteratorVariable.Value = value;
                             if (conditionSatisfied(context))
                             {
-                                Call.GetChanges(context, changes, explanation, apply, runner);
+                                AppliedStatement.GetChanges(context, changes, explanation, apply, runner);
                             }
                         }
                     }
@@ -266,7 +266,7 @@ namespace DataDictionary.Interpreter.Statement
 
         public override string ToString()
         {
-            return "APPLY " + Call.ToString() + " ON " + ListExpression.ToString();
+            return "APPLY " + AppliedStatement.ToString() + " ON " + ListExpression.ToString();
         }
 
         /// <summary>
