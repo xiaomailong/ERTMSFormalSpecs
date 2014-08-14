@@ -3607,7 +3607,8 @@ OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f1539fc9-b2b8-4b17-84ee-d007d7ef10a2"
 >
-</ReqRef><Rules>
+</ReqRef><Comment></Comment>
+<Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -3624,13 +3625,14 @@ OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
  Name="UpdateValue"
  Guid="192abb43-8a6c-4da5-8120-07c256ce6121"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="cfab63ee-7d53-4866-889d-af9c47e77295"
 ><Comment></Comment>
 ProcedureOut in [ProcedureOutSM.Available, ProcedureOutSM.Active]</PreCondition><PreCondition
  Guid="718632bd-e801-4c45-95f0-2a3479af5bb4"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c312fe49-c752-4ce5-8361-a09bc8d7ecab"
@@ -13268,6 +13270,7 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
  Name="ProcedureOutSM"
  Guid="c7160d53-f58c-4e81-b48b-f154549c7f3c"
 >
+<Comment></Comment>
 <States>
 <State
  X="230"
@@ -17474,26 +17477,23 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Rules>
 <Rule
  Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Get the values of the MRSP from the EVC"
- Guid="c1f41203-4dd8-4fa1-8507-a470baad9f7f"
+ Name="Clear MRSP"
+ Guid="16e7cbc7-35b0-426f-b44e-4637e341e431"
 >
-<Comment>The DISCONT predefined function provides a list of the discontinuities in the MRSP, which are mapped into the DMI variable</Comment>
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Implemented="TRUE"
- Name="Get the values of the MRSP from the EVC"
- Guid="ff8fc375-3cdb-44a0-9eca-d951b073eb24"
+ Name="Clear MRSP"
+ Guid="c4a66464-06a8-4223-824f-7b32a8b080c3"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="3001d028-535c-4c27-be26-f25714392403"
-><Comment></Comment>
-MRSP &lt;- DISCONT(Kernel.MRSP.SpeedRestrictions)</Action></Actions>
+ Guid="6b645bee-af3f-4fee-9a4b-79258d6c2bf4"
+>MRSP &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -17515,12 +17515,45 @@ MRSP &lt;- DISCONT(Kernel.MRSP.SpeedRestrictions)</Action></Actions>
 <Actions>
 <Action
  Guid="816c448b-3e3d-497e-bc40-71b8a00613f0"
->MRSP &lt;- MAP MRSP | X.Location &gt;= Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)
+><Comment></Comment>
+APPLY INSERT | X.Location &gt;= Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)
 USING Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
     Location =&gt; X.Location - Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     Speed =&gt; X.Speed,
     Length =&gt; X.Length
-}</Action></Actions>
+} IN MRSP
+ON DISCONT(Kernel.MRSP.SpeedRestrictions)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Get the values of the MRSP from the EVC"
+ Guid="c1f41203-4dd8-4fa1-8507-a470baad9f7f"
+>
+<Comment>The DISCONT predefined function provides a list of the discontinuities in the MRSP, which are mapped into the DMI variable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Get the values of the MRSP from the EVC"
+ Guid="ff8fc375-3cdb-44a0-9eca-d951b073eb24"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3001d028-535c-4c27-be26-f25714392403"
+><Comment></Comment>
+INSERT Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+    Location =&gt; 0.0,
+    Speed =&gt; Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
+    Length =&gt; Default.BaseTypes.DistanceToLength(
+        REDUCE MRSP
+        USING BaseTypes.MinDistance(X.Location,RESULT)
+        INITIAL_VALUE BaseTypes.Distance.Infinity)
+}
+IN MRSP</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
