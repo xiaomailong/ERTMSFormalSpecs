@@ -1009,7 +1009,7 @@ namespace DataDictionary.Functions
         /// <summary>
         /// The cached results for this function
         /// </summary>
-        private Dictionary<Values.IValue, Values.IValue> CachedResult = null;
+        private CurryCache CachedResult = null;
 
         /// <summary>
         /// Provides the value of the function
@@ -1023,24 +1023,16 @@ namespace DataDictionary.Functions
 
             // TODO : Ensure that context.HasSideEffects should not be used in the useCase computation.
             bool useCache = getCacheable();
-
-            Values.IValue cachingActual = null;
             if (retVal == null)
             {
-                if (useCache && actuals.Count == 1)
+                if (useCache)
                 {
                     if (CachedResult == null)
                     {
-                        CachedResult = new Dictionary<Values.IValue, Values.IValue>();
+                        CachedResult = new CurryCache(this);
                     }
 
-                    // Take the result according to the first parameter (there is only one parameter)
-                    foreach (Values.IValue actual in actuals.Values)
-                    {
-                        cachingActual = actual;
-                        CachedResult.TryGetValue(actual, out retVal);
-                        break;
-                    }
+                    retVal = CachedResult.GetValue(actuals);
                 }
             }
 
@@ -1121,9 +1113,9 @@ namespace DataDictionary.Functions
                     {
                         CachedValue = retVal;
                     }
-                    if (actuals.Count == 1)
+                    else
                     {
-                        CachedResult[cachingActual] = retVal;
+                        CachedResult.SetValue(actuals, retVal);
                     }
                 }
             }

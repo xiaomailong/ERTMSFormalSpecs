@@ -123,10 +123,7 @@ namespace DataDictionary.Tests.Runner
 
                 if (function != null)
                 {
-                    if (function.getCacheable())
-                    {
-                        CachedFunctions.Add(function);
-                    }
+                    CachedFunctions.Add(function);
                 }
 
                 base.visit(obj, visitSubNodes);
