@@ -285,6 +285,7 @@ FLOIComparedDistance () &lt;= d_W ( Odometry.EstimatedSpeed )</PreCondition></Pr
  Name="Trigger condition fulfilled"
  Guid="ed30bc4a-a69c-4209-a3e4-837a6726cad1"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="c592c5c5-77b7-4efd-a378-4a924352da51"
@@ -328,6 +329,7 @@ FLOIComparedDistance () &gt; d_W ( Odometry.EstimatedSpeed )</PreCondition></Pre
  Name="Trigger condition fulfilled"
  Guid="20933763-b87b-4bf7-ab53-7119bba2d16a"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="eea23e66-d124-48b5-bdc9-6723dca2bb1a"
@@ -371,6 +373,7 @@ FLOIComparedDistance () &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></Pr
  Name="Trigger condition fulfilled"
  Guid="8425461c-f75f-42f6-8fe4-a064555e00d3"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="46027e3c-658d-4afe-9d5a-fd9a5c1c51f8"
@@ -677,7 +680,8 @@ TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &lt;= d_EBI ( Ve
 <PreConditions>
 <PreCondition
  Guid="66915af3-1dcb-48d1-9580-a93838c4771f"
->MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
+><Comment></Comment>
+SpeedOfTarget() &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
  Guid="f680c221-47b2-44ba-91c1-91c9737fd58e"
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition><PreCondition
  Guid="2fe191b7-05bf-423e-8c02-23fb4922371c"

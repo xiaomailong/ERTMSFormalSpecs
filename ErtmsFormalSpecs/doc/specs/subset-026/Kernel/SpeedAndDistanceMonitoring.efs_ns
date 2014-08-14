@@ -1768,15 +1768,7 @@ SelectMonitoringType()</Action></Actions>
 <PreCondition
  Guid="f0533ab6-40d0-43ae-a60c-64a801411bc9"
 ><Comment></Comment>
-TARGETS(
-    Targets1=&gt;MIN(First=&gt;  MIN(First=&gt; MRSP.SpeedRestrictions,
-                               Second=&gt; MA.SpeedRestrictions
-                               ),
-                  Second=&gt; NationalValues.MaxDistInSRSpeedRestriction
-                  ),
-    Targets2=&gt;EMPTY,
-    Targets3=&gt;EMPTY
-)
+TargetsList()
 !=
 SupervisedTargets</PreCondition><PreCondition
  Guid="6f2cc5a3-3453-4c20-acb8-221630d71332"
@@ -1785,11 +1777,7 @@ SupervisedTargets</PreCondition><PreCondition
 <Action
  Guid="774ac772-0f2b-46db-99c0-8963f899bb81"
 ><Comment></Comment>
-SupervisedTargets &lt;- TARGETS(
-    Targets1=&gt;MRSP.SpeedRestrictions,
-    Targets2=&gt;MA.SpeedRestrictions,
-    Targets3=&gt;NationalValues.MaxDistInSRSpeedRestriction
-)</Action><Action
+SupervisedTargets &lt;- TargetsList()</Action><Action
  Guid="495f9d03-e905-4e4c-82f4-b48208753eb2"
 ><Comment></Comment>
 SelectMonitoringType()</Action></Actions>
@@ -2170,7 +2158,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
  Guid="5bfa34f7-80f1-4c7a-8338-d7b0662d057c"
 >
 <Comment></Comment>
-<Expression>TARGETS(
+<Expression>MAP TARGETS(
     Targets1=&gt;MIN(First=&gt;  MIN(First=&gt; MRSP.SpeedRestrictions,
                                Second=&gt; MA.SpeedRestrictions
                                ),
@@ -2178,7 +2166,8 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
                   ),
     Targets2=&gt;EMPTY,
     Targets3=&gt;EMPTY
-)</Expression>
+) | X.Location &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)
+  USING X</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
