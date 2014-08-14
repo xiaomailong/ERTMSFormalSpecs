@@ -1222,6 +1222,29 @@ THIS.InputInformation.Disable()</Action></Actions>
  Guid="e24c03e7-6d19-4e04-9362-e8e7dd73108a"
 >
 </ReqRef><Comment>Acknowledgement of the exit of shunting</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Always available in SH mode"
+ Guid="c0ac39f0-354a-422f-b8b1-8c3ba430e0e9"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Always available in SH mode"
+ Guid="136f92de-7391-484c-9116-573fb4e7e540"
+>
+<PreConditions>
+<PreCondition
+ Guid="28e09ad3-6ad9-49fa-b9e9-a8124e45ccb3"
+>ExitOfShuntingRequestAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fb96d02d-5cf6-4b9b-8476-488703954bcd"
+>InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -1585,6 +1608,7 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="InitiateRequest"
  Guid="de583df0-cd3b-46d3-9aeb-80fef4748469"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2382,6 +2406,29 @@ THIS.InputInformation.Disable()</Action></Actions>
  Guid="4716a46b-9841-46d5-800f-3a2428317766"
 >
 </ReqRef><Comment>Acknowledgement of isolation</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Always available"
+ Guid="cc2313d0-aa52-42b7-997d-6f3e2ae7dc7e"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Always available"
+ Guid="43ba27b4-a90b-4f8c-b28f-f41bc02b2ec5"
+>
+<PreConditions>
+<PreCondition
+ Guid="8c82e2ad-67a2-4d3d-80ed-c71788446bbf"
+>IsolationAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e86a276e-a4d1-43e2-8976-3a7b7280606b"
+>InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
