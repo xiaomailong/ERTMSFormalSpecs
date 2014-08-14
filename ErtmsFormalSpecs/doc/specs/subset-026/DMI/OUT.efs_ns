@@ -17516,13 +17516,16 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Action
  Guid="816c448b-3e3d-497e-bc40-71b8a00613f0"
 ><Comment></Comment>
-APPLY INSERT | X.Location &gt;= Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)
-USING Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+MRSP &lt;- MAP DISCONT(MIN(First=&gt;  MIN(First=&gt; Kernel.MRSP.SpeedRestrictions,
+                               Second=&gt; Kernel.MA.SpeedRestrictions
+                               ),
+                  Second=&gt; Kernel.NationalValues.MaxDistInSRSpeedRestriction
+                  )) | (X.Location &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))
+  USING Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
     Location =&gt; X.Location - Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     Speed =&gt; X.Speed,
     Length =&gt; X.Length
-} IN MRSP
-ON DISCONT(Kernel.MRSP.SpeedRestrictions)</Action></Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
