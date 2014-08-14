@@ -9,6 +9,47 @@
 <Comment></Comment>
 <NameSpaces>
 </NameSpaces>
+<Enumerations>
+<Enum
+ Default="None"
+ Implemented="TRUE"
+ Name="MonitoringType"
+ Guid="1f626783-2f5e-4d01-87a0-e0c4cf7b413b"
+>
+<ReqRef
+ Id="10645ba3-8d86-41ad-9956-71f5be85b4c1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fe881505-f76c-4600-81bd-a7d7ee9e8a2d"
+>
+</ReqRef><Comment>Provides the sped and distance monitoring type as used by the DMI</Comment>
+<Values>
+<EnumValue
+ Value=""
+ Name="CSM"
+ Guid="fa62acf4-43d2-4dbc-8715-65548c6b8169"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="PIM"
+ Guid="a62b740c-fe43-4308-b8af-fbfbe8e028a4"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="TSM"
+ Guid="e4f8548b-7152-4203-b020-83afff690dd8"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="RSM"
+ Guid="3a80a246-0b82-4d8e-a2e4-0bd2ad2292df"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="None"
+ Guid="5e38e1a4-b390-4757-ba12-f82907a119f5"
+>
+</EnumValue></Values>
+</Enum></Enumerations>
 <Structures>
 <Structure
  Default=""
@@ -4586,7 +4627,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed
  Guid="ff5f5c50-07e9-4fef-b3f1-354e16f8124b"
 >SupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action><Action
  Guid="975c42a9-7e96-48dd-99bb-ee51294679d3"
->Monitoring &lt;- Kernel.SpeedAndDistanceMonitoring.Monitoring</Action></Actions>
+>Monitoring &lt;- GetMonitoringType()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -4617,7 +4658,7 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed
  Guid="c5163b6b-2717-479d-ac71-cbaaa15641fe"
 >
 </StructureElement><StructureElement
- TypeName="Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM"
+ TypeName="MonitoringType"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -17373,6 +17414,7 @@ GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING Kernel
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="69442ebe-cd66-4fdc-9662-61f56838f6f0"
 >
+<Comment></Comment>
 </ReqRef><Comment>Handles display of information relative to the MRSP.</Comment>
 <Rules>
 <Rule
@@ -17598,7 +17640,8 @@ IN MRSP</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="20ac7e4e-3c43-4977-80d0-aa27d27f88d0"
 >
-</ReqRef><Rules>
+</ReqRef><Comment></Comment>
+<Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -22281,12 +22324,71 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="94e1c8d8-aa61-4235-9ad0-18023896c0c3"
 >
+<Comment></Comment>
 </ReqRef><Cases>
 <Case
  Name="Enumerates the cases where the request is available"
  Guid="36cbe3f3-529b-4836-9e94-43ac940232c8"
 >
 <Expression>Kernel.Mode in [Mode.FS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="MonitoringType"
+ Cacheable="TRUE"
+ Default=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GetMonitoringType"
+ Guid="81ccd354-aa2f-474c-910d-88a66385c8dc"
+>
+<Comment>Returns a enum value for the current speed and distance monitoring type (CSM, TSM, ...)</Comment>
+<Cases>
+<Case
+ Name="CSM"
+ Guid="6fae8a65-cefb-46d6-bbab-60430fa382c5"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="53ca0f91-10e5-4dd6-9f22-b2d224fc39db"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
+<Expression>MonitoringType.CSM</Expression>
+</Case><Case
+ Name="RSM"
+ Guid="ab09e191-d5d0-47ea-86f7-b616445f8c35"
+>
+<PreConditions>
+<PreCondition
+ Guid="3f7d104e-b754-41d8-bad2-d90b3d89ee60"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release</PreCondition></PreConditions>
+<Expression>MonitoringType.RSM</Expression>
+</Case><Case
+ Name="PIM"
+ Guid="fcc4c295-dfef-4a1c-b298-67754bc3bed5"
+>
+<PreConditions>
+<PreCondition
+ Guid="83cbb20b-cbe1-4364-967a-c98eb720ea26"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target</PreCondition><PreCondition
+ Guid="ed3001e2-668d-4ae2-8381-1d7db8b7173e"
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition></PreConditions>
+<Expression>MonitoringType.PIM</Expression>
+</Case><Case
+ Name="TSM"
+ Guid="924a647c-efa7-4ca3-98ed-a77cb55a7fba"
+>
+<PreConditions>
+<PreCondition
+ Guid="896f70f4-6cd5-4242-b439-75100b519427"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Expression>MonitoringType.TSM</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="db82fc54-36f1-4723-aeac-cbbd58c1af8d"
+>
+<Comment></Comment>
+<Expression>MonitoringType.None</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
