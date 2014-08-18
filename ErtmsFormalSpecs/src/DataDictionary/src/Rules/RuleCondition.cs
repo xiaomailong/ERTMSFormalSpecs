@@ -374,7 +374,7 @@ namespace DataDictionary.Rules
 
             foreach (Action action in Actions)
             {
-                retVal = retVal + "{" + TextualExplainUtilities.Pad(action.getExplain() + "\\par}", indentLevel + subIndent);
+                retVal = retVal + "{ " + TextualExplainUtilities.Pad(action.getExplain() + "\\par}", indentLevel + subIndent);
             }
 
             return retVal;

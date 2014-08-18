@@ -165,16 +165,16 @@ namespace DataDictionary.Functions
         /// <returns></returns>
         public string getExplain(int indentLevel)
         {
-            string retVal = TextualExplainUtilities.Header(this, indentLevel); ;
-
+            string retVal = "";
             if (PreConditions.Count > 0)
             {
+                retVal = retVal  + " {\\b IF }";
                 bool first = true;
                 foreach (Rules.PreCondition preCondition in PreConditions)
                 {
                     if (first)
                     {
-                        retVal = retVal + TextualExplainUtilities.Pad(preCondition.getExplain(true), indentLevel);
+                        retVal = retVal + TextualExplainUtilities.Pad(preCondition.getExplain(true), 0);
                         first = false;
                     }
                     else
@@ -182,16 +182,13 @@ namespace DataDictionary.Functions
                         retVal = retVal + " {\\b AND} " + preCondition.getExplain(true);
                     }
                 }
-                if (!first)
-                {
-                    retVal = retVal + " {\\b => }\\par";
-                }
-
+                retVal = retVal + " {\\b THEN }\\par";
+                retVal = retVal + TextualExplainUtilities.Header(this, indentLevel);
                 retVal = retVal + TextualExplainUtilities.Expression(this, indentLevel + 2);
             }
             else
             {
-                retVal = retVal + TextualExplainUtilities.Pad("{\\b => }", indentLevel);
+                retVal = retVal + TextualExplainUtilities.Header(this, indentLevel);
                 retVal = retVal + TextualExplainUtilities.Expression(this, indentLevel + 2);
             }
 

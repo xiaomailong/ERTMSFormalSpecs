@@ -438,6 +438,11 @@ namespace DataDictionary
                                 tmp.Append("{");
                                 braces.Push(BraceType.command);
                             }
+                            if (retVal[i + 1] == ' ')
+                            {
+                                tmp.Append("{");
+                                braces.Push(BraceType.command);
+                            }
                             else if (retVal[i + 1] != '\\')
                             {
                                 tmp.Append("\\{");

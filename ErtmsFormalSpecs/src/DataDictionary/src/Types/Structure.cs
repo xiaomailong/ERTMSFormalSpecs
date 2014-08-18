@@ -270,10 +270,16 @@ namespace DataDictionary.Types
                 retVal += element.getExplain(indentLevel + 2) + "\\par ";
             }
 
+            retVal += "\\par ";
+            retVal += TextualExplainUtilities.Comment("-------------------", indentLevel + 2);
+            retVal += TextualExplainUtilities.Comment("Procedures", indentLevel + 2);
+            retVal += TextualExplainUtilities.Comment("-------------------", indentLevel + 2);
             foreach (Procedure procedure in Procedures)
             {
                 retVal += procedure.getExplain(indentLevel + 2, false) + "\\par ";
+                retVal += "\\par ";
             }
+            retVal += TextualExplainUtilities.Pad("{\\b END STRUCTURE }", indentLevel);
 
             return retVal;
         }

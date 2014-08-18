@@ -224,10 +224,20 @@ namespace DataDictionary.Functions
             retVal += TextualExplainUtilities.Pad("{ {\\b PROCEDURE } " + Name, indentLevel);
             if (FormalParameters.Count > 0)
             {
-                retVal += "(\\par";
+                bool first = true;
+                retVal += "(";
+                if (FormalParameters.Count > 1)
+                {
+                    retVal += "\\par";
+                }
                 foreach (Parameter parameter in FormalParameters)
                 {
-                    retVal = retVal + TextualExplainUtilities.Pad(parameter.Name + ":" + parameter.TypeName + ",\\par", indentLevel + 2);
+                    if (!first)
+                    {
+                        retVal = retVal + ",\\par";
+                    }
+                    retVal = retVal + TextualExplainUtilities.Pad(parameter.Name + ":" + parameter.TypeName, indentLevel + 4);
+                    first = false;
                 }
                 retVal = retVal + ")}\\par";
             }
@@ -240,6 +250,8 @@ namespace DataDictionary.Functions
             {
                 retVal += "\\par" + rule.getExplain(indentLevel + 2, true);
             }
+
+            retVal += TextualExplainUtilities.Pad("{ {\\b END PROCEDURE } ", indentLevel);
 
             return retVal;
         }

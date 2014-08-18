@@ -1012,6 +1012,24 @@ namespace DataDictionary.Functions
         private CurryCache CachedResult = null;
 
         /// <summary>
+        /// Provides the average execution time of the function
+        /// </summary>
+        private int AverageExecutionTime
+        {
+            get
+            {
+                int retVal = 0;
+
+                if (ExecutionCount > 0)
+                {
+                    retVal = (int) (ExecutionTimeInMilli / ExecutionCount);
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
         /// Provides the value of the function
         /// </summary>
         /// <param name="instance">the instance on which the function is evaluated</param>
@@ -1022,7 +1040,7 @@ namespace DataDictionary.Functions
             Values.IValue retVal = CachedValue;
 
             // TODO : Ensure that context.HasSideEffects should not be used in the useCase computation.
-            bool useCache = getCacheable();
+            bool useCache = getCacheable() || AverageExecutionTime > 20;
             if (retVal == null)
             {
                 if (useCache)
@@ -1175,11 +1193,16 @@ namespace DataDictionary.Functions
             string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
             // Creates the function header
-            retVal += TextualExplainUtilities.Pad("{{\\b FUNCTION} " + Name + "(", indentLevel);
+            retVal += TextualExplainUtilities.Pad("{ {\\b FUNCTION} " + Name + "(", indentLevel);
             if (FormalParameters.Count > 0)
             {
+                bool first = true;
                 foreach (Parameter parameter in FormalParameters)
                 {
+                    if (!first)
+                    {
+                        retVal += ",";
+                    }
                     retVal = retVal + "\\par" + TextualExplainUtilities.Pad(parameter.Name + " : " + parameter.TypeName, indentLevel + 2);
                 }
                 retVal += "\\par";
@@ -1191,10 +1214,21 @@ namespace DataDictionary.Functions
                 retVal += TextualExplainUtilities.Pad("{\\b RETURNS } { \\cf2" + TypeName + "}}\\par", indentLevel);
             }
 
-            foreach (Case cas in Cases)
             {
-                retVal += cas.getExplain(indentLevel + 2) + "\\par";
+                bool first = true;
+                foreach (Case cas in Cases)
+                {
+                    if (!first)
+                    {
+                        retVal = retVal + TextualExplainUtilities.Pad("{\\b ELSE }", indentLevel);
+                    }
+                    retVal += cas.getExplain(indentLevel + 2) + "\\par ";
+                    first = false;
+                }
             }
+
+            retVal += TextualExplainUtilities.Pad("{ {\\b END FUNCTION } ", indentLevel);
+
 
             return retVal;
         }
