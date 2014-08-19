@@ -39994,13 +39994,13 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="OUT LX status &quot;not protected&quot;"
- Guid="78ac6212-b7ec-4df4-acc6-a134164b67cb"
+ Name="OUT LXStatusNotProtected"
+ Guid="3186aaaa-d3e4-40a9-ac2b-55afa87a5530"
 >
 <ReqRef
  Id="1d72dec1-b4fc-4847-815b-496fc6b78d91"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="dea28f4b-70bd-4ddd-a4ce-36658758891f"
+ Guid="a627950c-6b03-4ee4-8f6f-39db507d3b2f"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -40012,24 +40012,40 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="2b667044-a5e2-4f50-8026-c2e648518be6"
+ Guid="0ec7ecfe-3cd7-459a-b333-75ea9e5fddea"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="b07bebc7-afa8-4e87-bafc-71e785c4666c"
+ Guid="c6550e06-1c64-4cac-bf20-142f1b4ee90c"
 >
 <Actions>
 <Action
- Guid="f13b27e1-3687-4cca-9c44-4141c0b320b4"
+ Guid="792d2602-ce85-4e9f-909c-37e94ec95a77"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="fe34e72a-59ff-4a87-9e2d-cc3493a1d3db"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="fe9b2488-494b-4973-a00d-416558dace99"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="436eb0f0-67a8-4930-912b-f92eb49b11b6"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="a4999ca4-393c-4863-92e0-cfd88b806079"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotAvailable</Expectation></Expectations>
+ Guid="57e81943-d9f1-409c-8740-48fdb399bc15"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="3bb7f45e-383e-4c28-a321-7afbe7a37c7a"
+>
+<Actions>
+<Action
+ Guid="70d9d3f3-8acc-426b-a0bf-527486b5014d"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="e54ed303-2f78-400e-a4e1-6671d1a61c96"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40038,24 +40054,41 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="415ce629-a46f-41fc-ac2a-f15ad6aec64f"
+ Guid="f927be3d-cb1a-45b8-a660-1b1004adbd34"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="edad42bd-9402-4503-82ae-b4f2e3988776"
+ Guid="8365bd00-5f3f-4761-894c-b85280d56dbb"
 >
 <Actions>
 <Action
- Guid="7b774b08-1fc9-4295-8551-6c7e12f1120f"
+ Guid="7e9eda52-523c-4502-beac-453aad56357c"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="8cb39b67-08d6-40f5-bf80-d5567e5751ea"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="1531ce8d-7074-4e8f-a2fa-63f56b3c5587"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="c20e8309-6eda-41b0-ac58-12e5da3417c5"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="73658f20-5667-4051-b937-273af77d71eb"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="6fc54199-2655-4688-a3af-08841d238719"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2c17c4ba-070d-4f2b-a9ac-61b59650fc65"
+>
+<Actions>
+<Action
+ Guid="33a467a9-0da7-4f43-bde6-df5bd16c76fc"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="224ad703-6630-426a-a5c9-670d8858b8ce"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40064,22 +40097,39 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="799ce983-071f-4b8a-95bb-6feaa2697e84"
+ Guid="22ef27db-dc3e-4033-950b-c5f77d6a416e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="3de266c8-90a5-4493-a243-2300fbea2f34"
+ Guid="91bdec3e-a37d-44e4-a814-b8dec463ca34"
 >
 <Actions>
 <Action
- Guid="0dd11ca5-fcf0-4d1b-ad06-0726091b7bb7"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="4fb96e93-6f39-40ce-b231-fbcc7be72ed0"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="c050bc20-6a17-4184-bca2-d01960115dfc"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="be4d6449-bdcb-437d-bb43-89d2516b6ba2"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="0d03aaa4-3103-4027-94ad-752b0f87f7c7"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="76996320-b4e7-472e-b438-d87f02688127"
+>
+<Actions>
+<Action
+ Guid="fc7cf0b9-9ed7-4be1-b8ba-7b23939c628d"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f92236f6-98ca-4b48-93c6-d286e915365a"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40088,24 +40138,41 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="dd251421-e96c-41ab-aa5f-e8a4918cb452"
+ Guid="8b1a697e-cea1-4dbb-9b2e-f4cff70eb2f9"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="93c2ca99-7e40-41ac-bb08-3dc3513c4197"
+ Guid="503da811-d01e-4b9b-954b-9a3387475c1d"
 >
 <Actions>
 <Action
- Guid="98c55921-941a-4974-9eef-8a05c2a048af"
+ Guid="311f96b0-0eea-4429-867a-6fff5ec6b260"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="5f523152-5ecc-4b35-8b7a-b330ff1f35b6"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="b79cd763-d27c-414e-9ce7-e591fb3accf6"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="1f7ea1ae-819a-4b67-89b7-e26e95bc0239"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="e583fbba-9a6f-4cd9-b006-f18ee41a2510"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="a5c920cb-9365-47d6-90e3-423deb90de7d"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d32e2f50-55ee-4d15-b3fd-c44cc2e83504"
+>
+<Actions>
+<Action
+ Guid="e481a903-efc6-42d5-8888-171d03522563"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="06642bae-fb5c-4333-8f06-7a3078227d7c"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40114,24 +40181,43 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="c56e7d5e-49e7-47be-9e9c-772169ba2ff6"
+ Guid="9ea64ac2-6cf3-475a-b919-001eb0b0d6f5"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e972c8e7-197a-4c49-8144-4fc990f5a542"
+ Guid="c4ba7d59-d578-472f-b14d-8f00ff4b6628"
 >
 <Actions>
 <Action
- Guid="86e9e103-caa1-4587-8256-34826f62c43c"
+ Guid="885a0029-9877-492e-98ba-b0770069c47e"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="439d4bbe-3530-46c3-96e1-c639f32b0dbf"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="0918ce86-e3ac-4f1c-8618-730091a7e302"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="7c20481c-8891-4113-83ba-7e1deaf1047a"
+><Comment></Comment>
+
+DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="af1c2457-bb08-4562-9994-a619a8cc9c33"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="64ebfff0-99dd-4142-9a61-c28c1a6c86ba"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="30fc9c54-010b-4f74-8549-60c75964cee1"
+>
+<Actions>
+<Action
+ Guid="1e9d6651-4f46-439b-9bc1-eaf694805aca"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="b5ed009c-3f2a-4669-bf99-57b9eb1eae2f"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40140,22 +40226,39 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="000ac313-98f1-4ae1-9963-b0d42f98d05e"
+ Guid="82cb7801-308f-4e9b-b9b5-5ae99ced6fbb"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="889675a2-7556-4aa2-b213-8c3c2b606c8d"
+ Guid="67785df3-16c8-4737-8e6a-31c4183bc55a"
 >
 <Actions>
 <Action
- Guid="0a4a7d12-b5b2-484c-a88e-856cf46c63d2"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="d6f55d0d-b5ca-408f-a5c2-1197a0a2fc61"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="268cd20e-5db0-45f5-900c-46f0bda2ebbb"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="678d7dca-d2b7-43ca-b181-0d4c9084db37"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="a0267fcb-be48-4b8f-a613-ce858c7b92a9"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="4b984ee2-efa9-4371-b133-82d9e47c313c"
+>
+<Actions>
+<Action
+ Guid="4f0101e9-b200-4c92-b42c-55aec927b36a"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="48b1b27b-0bb0-4911-b5f7-31d86061e3fd"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40164,22 +40267,39 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="f856a01e-96bb-4d09-8bd7-c97cc9056df3"
+ Guid="dfbdf992-66a6-4736-93a6-6c345e7d5ab1"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="5e3875d1-80f4-47de-a741-d76f469f3f65"
+ Guid="c3fcad16-31d7-40d6-80be-3ac390ad0ace"
 >
 <Actions>
 <Action
- Guid="2c507784-b45c-4ecc-affe-34ed8d494e1e"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="b961d5a0-e654-46e4-9115-9e42f74f048a"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="05b46d3d-9417-4cbc-832c-09c3829dd162"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="b8f48565-2c82-4793-9087-500bb34ecfaf"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="dc13e172-b2c0-4ace-b483-f9094bf3224a"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="37ca53ce-1161-4570-9fdb-2bb65c5a89ec"
+>
+<Actions>
+<Action
+ Guid="b107407f-d20e-407a-85ef-6ccf23add3dc"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="156b3d74-2fe2-4e70-a789-f2a2bf87f6df"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40188,22 +40308,39 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="bba35bd2-6d66-47ed-a0dd-19a3b547adfc"
+ Guid="a80894eb-3180-4bd5-988b-21a79e887bcc"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d2d3cfe7-f39a-4de7-a1b2-fc580ed59406"
+ Guid="1a9eb503-5a9e-42bf-bd00-3f266c62da34"
 >
 <Actions>
 <Action
- Guid="9176b4d2-4dab-41ee-8201-b163f9cc8677"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="14c73622-25b0-415c-872a-072bee0fca45"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="a7d575b2-fbd6-4e05-b5e2-1b48e70ec00b"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c7fc31fa-0750-4125-9bdd-a4115f5d1833"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="68c3dd5e-2f32-444b-9fb5-9e074681d2ad"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a399ef7b-2388-47ea-bc38-a7492a2e0bb5"
+>
+<Actions>
+<Action
+ Guid="bbd38188-9233-4531-924e-f01ef9ef9f0c"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f3f24336-5ee2-455b-a6cd-d75c8769709b"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40212,26 +40349,43 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="4dfce16e-d029-466d-872c-8c334b9d875e"
+ Guid="e9e4406b-2680-485c-bf38-7647754f844d"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="5180b0d5-0c24-4c94-b7ee-d63d030e97c8"
+ Guid="e2c50390-8dfa-40ab-902d-ce59f7091759"
 >
 <Actions>
 <Action
- Guid="c716ed6b-725d-434d-8015-776412296cac"
+ Guid="e3188e48-794e-4a16-9c0a-1c270f3d8093"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="617d042e-1568-404e-b5c4-4454f7c928a6"
+ Guid="da74c979-59ef-4b6f-9b1e-44d7ecb879fb"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="fd0fa85c-2a46-476e-b4cb-94f8c55e5e05"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="6d2b9980-39f1-4dd7-89ab-d2badf853d3d"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="84583347-0e0e-439b-a264-e79079f958a1"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="6c0dd6ff-6256-454b-92dd-9ca11692311f"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="c4fa9244-8768-4f17-b637-337e44535059"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2283f7af-1ccd-49f4-965b-cff14b1d363a"
+>
+<Actions>
+<Action
+ Guid="f192b8a6-f159-460a-a19b-90b9f5564d94"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f6ca31f3-b77f-4358-a0ca-eb9b8c4bf11a"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40240,24 +40394,41 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="e495a4a1-8297-4319-915a-0d6516ebb1e5"
+ Guid="29f07e90-59a1-4de5-9a9a-5b7368af28b7"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2d8097fa-6df0-4ca4-bc34-b198feed395a"
+ Guid="d515155b-a44f-41a0-a227-8a9060f00ca2"
 >
 <Actions>
 <Action
- Guid="6c668d68-7121-42e1-ab12-17215d245f5a"
+ Guid="3a517162-04d5-46e4-b0b2-fe2a095809bd"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="7d5cf89e-24a7-4af7-9985-4c7c0cbb4098"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="9d5d059d-52f5-48b4-9ed9-f96a8a6b7857"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="a45cbfa4-adf7-4aa9-a2a5-c8d6ccbe3ee2"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7cc96ed5-2dfe-4b5f-bfb1-11591f1034fd"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="9cb590b8-aaa5-4bb8-a9db-d8ff4c17f144"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="4aec6b2b-b359-499d-b233-a6dae5ab5cda"
+>
+<Actions>
+<Action
+ Guid="b8c38394-039a-41e4-81db-502d260fe92a"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="c72400bc-041d-4dc4-9194-d208684fc318"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40266,24 +40437,41 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="9553729e-5a94-4526-b5b5-0a8314b498c4"
+ Guid="8d42f2de-220a-43a6-82dd-f6b161a7cdcd"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="a2b874ad-1c1b-4b13-b9c7-f2e0b8b02566"
+ Guid="f5668510-3393-42f7-83e1-92c51f4ffe1b"
 >
 <Actions>
 <Action
- Guid="d7190736-481b-404b-afbd-f5b8c072c90f"
+ Guid="8569e111-1869-40fa-82d3-587790fe4e4e"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="643a09f1-c591-4351-aa40-123bef5973fb"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="a224e7d6-d70b-4919-ab41-9b6c0a53cef9"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="a9b985b0-763d-4ed4-9188-ead014262833"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="975eabb9-3e54-4d96-b6bb-27d28f45404c"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="a7f1ffea-8036-4e88-b985-6c9751cee167"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="74b5cef2-ae42-4b0b-bbda-7d7d52ec559c"
+>
+<Actions>
+<Action
+ Guid="47c433bc-18ae-48ee-8b1a-7ecde6745348"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="50073bab-0cd0-4ed3-96a1-54b9eddfbdea"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40292,22 +40480,39 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="63069c85-08bf-4900-bac3-d7342fbc2e0c"
+ Guid="cdf9b65b-23a1-4bf9-bfb5-8e94e0f4f02a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="94493bed-015f-4aa4-962f-4294108a2751"
+ Guid="719525ab-8f49-4ea3-bcee-8d77c6b782e2"
 >
 <Actions>
 <Action
- Guid="8ade0c9c-dd69-4855-88fe-18cc2c82e1de"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="a446cb54-3093-4756-ab9e-91f8ef422346"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="97f44b78-450b-47af-a6fd-9d6eb5a3fbb8"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="1c99fec9-f68e-4021-acfa-b5fd3711da0a"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="eb413063-3417-4339-ab2e-f2f064fbb306"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="fe262f01-17ac-4af8-94e4-a9421a690398"
+>
+<Actions>
+<Action
+ Guid="0fd9ccf7-104d-45a5-8f31-71281d669dc3"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="ec440b7e-2968-4acc-b140-72e55001bce2"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40316,22 +40521,39 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="8c5ec74c-246c-4f1c-b60d-969e96c77311"
+ Guid="b28bac6f-036e-4eee-bb39-fd918d7befa1"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7e1301c4-5804-4f2e-9f45-452023d5ef90"
+ Guid="35a6bdcc-06b0-4687-9758-8364421e94d0"
 >
 <Actions>
 <Action
- Guid="f87f9afe-7fc0-474e-bcd4-f2ae50dff396"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="6e79f974-48a8-4617-b540-4fbf71e06f7a"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="687bebd0-9b6f-4836-a1ae-640054e83ed7"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="31c1afb7-987b-4d98-be37-864e1fbc23e7"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="65b9ad5a-be25-4641-9217-57e5b478a80f"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="98217760-1ee6-4390-a57c-db3f02529dbb"
+>
+<Actions>
+<Action
+ Guid="24a7534c-3ca4-45db-b6d0-9f09e73fe3cb"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="efbf61ff-7141-4ad4-a935-2b7eceadf3aa"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40340,22 +40562,39 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="c56e4994-16f5-4432-8fd7-6e0b63af544d"
+ Guid="66a884ef-7852-47fc-a469-c47ef420e757"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="9314a462-3a5d-40db-b6bc-aacc770358b7"
+ Guid="5e1d52c4-2afd-4df4-aea5-feb1f7817006"
 >
 <Actions>
 <Action
- Guid="befe7cfe-6d4f-4440-9bef-17e51ae852c8"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="f5ef4144-dffa-4a0f-95f4-acf667704127"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="d3bcc18b-4bcb-49a5-b6b6-be719b6e8b29"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="ba977dc2-4ffd-4364-87e2-6f903110b2fb"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="3d78c1aa-2b8b-4590-a2fc-1709bed7c04c"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="dcd78286-4378-4c39-ae3a-080ed7e0d5f9"
+>
+<Actions>
+<Action
+ Guid="624a392d-5d88-4349-9833-19a7a86d8ad1"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="a78beb60-f813-4f99-9e7a-4570f42e9507"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40364,22 +40603,39 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="74a889c2-7d0c-4498-b168-56e90066e96f"
+ Guid="3aaf4a59-a61d-4eb5-9dab-db619b3696f3"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7ffad4a6-dacf-4a3a-b26c-137fb1bb8b51"
+ Guid="5d9f029a-9598-4014-bcb0-0a1980533951"
 >
 <Actions>
 <Action
- Guid="ea34714b-74e3-46c8-9704-325009716def"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="c7717b2b-e0f6-412a-9846-6c3f723d376f"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="0de99aab-a544-4135-8080-bedacad6fb7b"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7d2c3340-7603-4be8-823b-83be79c0d94e"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="8ca21c0a-986f-4cfe-9e69-412f87f0c205"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="01638150-60fc-4696-9db9-56a29f3ca006"
+>
+<Actions>
+<Action
+ Guid="7f08d89a-df7d-4fa2-9a19-bbe4a48c8d61"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="a4378305-d3c2-40ca-94d2-c40ce8da895e"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40388,26 +40644,43 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="bbd04e6d-1dd5-4145-8a4f-95422da0f05f"
+ Guid="a66137cf-f563-42d6-93f0-e63566bc705b"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="c1f2ff84-1dcd-409c-99fa-64a6d8ed3d9f"
+ Guid="10aa9135-6625-4a7e-9515-a4a9bbab6705"
 >
 <Actions>
 <Action
- Guid="503d15a6-2513-445f-b4a1-1a7aa9ff8945"
+ Guid="66070b2c-9a1d-4f14-a495-daef0496aa6d"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="a42bbeaf-f2b4-4c05-b406-306c29244461"
+ Guid="cf9b5bdd-4696-4d2b-90e5-93e7e230163f"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="8f979457-30f6-462a-9252-763e440eb170"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="bf736396-8c40-428e-a18d-1fcc4bb25a9d"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="0018729b-319b-4539-8a08-5e098089f353"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c4ba8e0b-d2e7-4b94-ad84-027d4c117540"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="9135c510-4f45-4f29-9346-47dcb21534de"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="fd81f7cf-d827-41ca-8525-09a6dc5f3638"
+>
+<Actions>
+<Action
+ Guid="99130611-2217-4aee-b50a-d4b893a169a5"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="d0651fcb-d393-4440-b83f-a7e11bae000a"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -40416,22 +40689,39 @@ DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</A
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="5c76b76b-f655-47c2-acdb-4a1098d312fa"
+ Guid="f0e0bcf7-537b-49a3-92cb-dc85b4d9271c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2750b659-4555-487a-b138-70b98dbbe8c5"
+ Guid="05b535f5-3191-4f31-84fb-0f1d80bdb3b5"
 >
 <Actions>
 <Action
- Guid="e2555b93-a29c-4a92-b6da-01a7f684d140"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="28ed47f9-59a2-4863-9a99-a780b323ea23"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="829a0cac-e0b4-4c50-baf7-99203c029c78"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="1cfdb59f-f93a-4506-a5f8-2a01e206f333"
->DMI.MasterDMI().Out_LXStatusNotProtected.ProcedureOut in DMI.OUT.LXStatusNotProtected.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="a162775e-4e08-4d45-84b7-7c4ddcd570dc"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="11319304-33bb-41bd-bf13-c0a6649157cb"
+>
+<Actions>
+<Action
+ Guid="d178dc2b-7161-457a-a4c5-139ff5d0eeef"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="7db848e3-95d9-4f59-96f8-3ad4aa4b8162"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

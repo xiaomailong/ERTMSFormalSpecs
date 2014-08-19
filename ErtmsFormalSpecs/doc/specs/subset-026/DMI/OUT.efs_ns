@@ -7741,7 +7741,100 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a1555b6a-9c27-4289-9a13-7fb7e564c6a0"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment>Indicates whether a level crossing is not protected</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Output when mandatory"
+ Guid="1546ce80-8ac2-4371-bf5a-c45601fe635f"
+>
+<Comment>Outputs the value of this element when mandatory</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Output when mandatory"
+ Guid="3f83365c-51a0-4a7a-ae9c-fc8242b6dbd3"
+>
+<PreConditions>
+<PreCondition
+ Guid="8ba9fbc2-2324-4044-a5a7-c563409bb7c9"
+><Comment></Comment>
+LXStatusNotProtectedMandatory()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="80237b54-a03b-4033-8cde-75ff429e0f6d"
+>Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="Display"
+ Guid="0bf81990-8ab2-4e74-86af-c78f4423c10a"
+>
+<Comment>Requests to display the corresponding information</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Updates the request status"
+ Guid="2648d9b4-7331-4ee0-ba02-c77da34a088e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Updates the request status"
+ Guid="74ef36d2-7e60-491a-9dbc-32b9533bb928"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="69500a35-28b1-4669-a36c-c4ef64ad06da"
+>LXStatusNotProtectedAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3bfbbb9e-57eb-4462-a2c1-e210ee395356"
+><Comment></Comment>
+
+THIS.OutputInformation.RequestDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="03a5e175-b1b6-49b5-b876-ad080c292989"
+>
+<Comment>Tracks the changes of the mode</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Updates the status of the request according to the mode"
+ Guid="ac49680f-6d8d-4fd2-bda0-9fd18437c806"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Updates the status of the request according to the mode"
+ Guid="3caf0701-1dd7-486b-a7af-35c28bf933e2"
+>
+<PreConditions>
+<PreCondition
+ Guid="c152f77a-11d9-4053-8ff8-2695266548fe"
+>NOT LXStatusNotProtectedAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="dfe917bf-95ee-43f6-a3e1-ca0a9c932053"
+>THIS.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
  TypeName="OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -7751,423 +7844,15 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="2002849b-e1cb-4b4c-8284-fac89574b0fa"
 >
 </StructureElement><StructureElement
- TypeName="ProcedureOutSM"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="ProcedureOut"
- Guid="7da7a49b-1499-4b7a-8b90-9ccf6c123870"
->
-</StructureElement><StructureElement
  TypeName="Boolean"
  Default="False"
  Mode="Internal"
+ Implemented="TRUE"
  Name="LXNotProtected"
  Guid="f249955c-e772-4736-a3c3-1279ddada64a"
 >
 <Comment>Indicates that the LX is non protected</Comment>
-</StructureElement><StateMachines>
-<StateMachine
- Default="NotAvailable"
- Implemented="TRUE"
- Name="ProcedureOutSM"
- Guid="4099b007-f359-4979-8457-e39827fb3846"
->
-<Comment></Comment>
-<States>
-<State
- X="230"
- Y="20"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="NotAvailable"
- Guid="d3db058a-ea76-480d-a5dc-137185046125"
->
-<StateMachine
- Default="InitialState"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="898bc0b1-65d5-4cbb-b636-2dffb9dc040e"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="InitialState"
- Guid="7a31e810-df19-408f-afd1-b9d74aa7cdd5"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="25e32050-aff5-44fb-9865-974e455320c5"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="5f911e0b-ad7b-47c7-9662-e40d9213253b"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
- Guid="5a12c2b9-eff0-4f4a-b1b3-5784108f2393"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="ea265a3e-6d2c-473f-bc93-b86776550812"
->THIS &lt;- NotAvailable.Idle</Action><Action
- Guid="a0bad02f-cec6-4776-b083-65ed7a051f6a"
->OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Idle"
- Guid="07671d46-65a8-4a3c-83f8-305ee8db2135"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="cbd8137a-584b-4978-8bda-4c6f4648ae83"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="120"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="NationalSystemAvailability"
- Guid="e5c87a42-716e-48c7-8f29-98964125893c"
->
-<StateMachine
- Default="InitialState"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="b1f0e417-d2fc-459e-be63-41a3c1b0381f"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="InitialState"
- Guid="889c7528-110a-427b-963a-62d5f1e30ec6"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="d6da5f7d-c9ff-4af0-8cfc-d8047f627533"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="19ca64ad-0648-4084-8e9d-7e9edbccd3cf"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
- Guid="f34186e9-64df-4ffd-84f0-f7d793bdc545"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="8b44e9a8-169d-438d-a8fc-57ffdf7391a5"
->THIS &lt;- NationalSystemAvailability.Idle</Action><Action
- Guid="b27ff36d-d026-424b-910d-713534dedbd9"
->OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Idle"
- Guid="faecfcab-60f8-440e-b491-f16f58fdac77"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="a363a5db-c80e-47b1-9751-c1baa99136a4"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="120"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="NotApplicable"
- Guid="d4661d9a-a7fd-477c-9690-cd757c6aa785"
->
-<StateMachine
- Default="InitialState"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="cce09348-44a0-489d-961e-c957d1ebcb89"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="InitialState"
- Guid="0064f3c4-dbf0-4907-ae74-eba92222224a"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="0c885e83-5d9a-4354-ac14-b59786edbf22"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="c84a197b-fb97-4afc-b1d7-fb9246a72f88"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
- Guid="87ad76bf-632c-43e4-a11e-46332356ff37"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="25609410-ff89-4587-b364-cc6da082416c"
->THIS &lt;- NotApplicable.Idle</Action><Action
- Guid="7103910c-c1f3-4149-bf73-c642b8b19952"
->OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Idle"
- Guid="ab72299e-342a-43a3-9fdf-7cb68566fb8c"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="0b3e11b3-593f-4e7e-9723-4aff5eda13b6"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="230"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="Active"
- Guid="6b055b70-1450-4e4f-a062-dcc5ed68e77e"
->
-<Comment>The information is displayed on the DMI</Comment>
-<StateMachine
- Default="InitialState"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="8f7779ec-daa3-40ed-a1f5-4f0d5226351b"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="InitialState"
- Guid="b64a68ce-2a0e-4bba-b19e-3d942c93aa2a"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="93cd227d-98a6-4768-9ee0-8663e9fe75af"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="7ba55cd4-50b7-4f11-9229-8d59c22074c0"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
- Guid="7c1652d4-06a8-4b07-a1b9-e9d1f98b4860"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="a44fb74f-2029-43b0-8ae8-3fb805c65a61"
->THIS &lt;- Active.Send</Action><Action
- Guid="0d0727a4-69db-4c98-9a6d-ec1aca0c512d"
->OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Send"
- Guid="91b82c96-5d7b-4eb2-ac2d-a21fcac77ab8"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="4b6ff1ad-bac3-4720-92ff-721f629bd2c9"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="230"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="Available"
- Guid="38093aea-4857-4d98-9f0d-7fc75db99e03"
->
-<StateMachine
- Default="Idle"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="4d64376a-7eb7-44ee-b5df-d648a81f51af"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Idle"
- Guid="79c89266-8287-4592-829c-76d9a830a348"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="9757d6eb-1521-40f1-b10e-1bfe8c8adca1"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
- Guid="49ec0fed-26ce-4530-a6b8-9bfcb7215d2a"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
- Guid="0f309faa-0a9d-43ad-8d06-a054d2a28ca6"
->
-<PreConditions>
-<PreCondition
- Guid="dd184178-d0ac-4261-a7e4-e774e47e8e17"
->OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f4cef892-4774-4423-8db1-dec09e5c7463"
->THIS &lt;- Available.Send</Action><Action
- Guid="ccc79a96-93d6-492c-9851-885ab5f524e3"
->OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
- Guid="f3457cfb-f6d1-433d-a782-84141fd4881c"
->OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Send"
- Guid="014c0150-f41d-4bbc-9dbc-09d16a788bbf"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="a8e3776a-080e-4719-a3f8-171514087e4e"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
- Guid="f1f26d85-70d9-44ff-a2ec-986cfdc6b2c1"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
- Guid="0c005558-7461-4a60-b264-b48a1828b738"
->
-<PreConditions>
-<PreCondition
- Guid="36f559a7-3bf2-452f-94e5-0237fa6f2e6f"
->OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="c152ac2a-84cc-40cb-97ac-242d5514bcd1"
->THIS &lt;- Available.Idle</Action><Action
- Guid="c45df1fa-0354-4c95-b7f3-79bed8c7ac4a"
->OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
- Guid="28bc11da-276b-47ee-b2f0-3ed99cac4848"
->OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
+</StructureElement></Structure><Structure
  Default=""
  Y="600"
  Width="100"
@@ -18285,6 +17970,53 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 >
 <Comment></Comment>
 <Expression>Kernel.Mode in [Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.PT, Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LXStatusNotProtectedAvailable"
+ Guid="88ef9e0b-1c2f-4d5e-a763-b4a0f503e788"
+>
+<ReqRef
+ Id="1d72dec1-b4fc-4847-815b-496fc6b78d91"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6ab6f1a9-6e5b-41f9-a68f-ce12bb51dead"
+>
+<Comment></Comment>
+</ReqRef><Comment>Identifies the modes where the output is available</Comment>
+<Cases>
+<Case
+ Name="Enumerates the cases where the request is available"
+ Guid="68c18774-417d-4b5e-83be-d1bb36980483"
+>
+<Expression>Kernel.Mode in [Mode.FS, Mode.LS, Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LXStatusNotProtectedMandatory"
+ Guid="2511c5af-621f-4973-a757-3337fff68dac"
+>
+<ReqRef
+ Id="1d72dec1-b4fc-4847-815b-496fc6b78d91"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c28293a3-ca2d-4de8-8bbb-b4f0c6677fe8"
+>
+<Comment></Comment>
+</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
+<Cases>
+<Case
+ Name="Enumerates the cases where the request is mandatory"
+ Guid="297cd063-df7a-451b-a3bb-0d7266988037"
+>
+<Comment></Comment>
+<Expression>False</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
