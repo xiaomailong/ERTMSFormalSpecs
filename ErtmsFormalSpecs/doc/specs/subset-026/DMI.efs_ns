@@ -1883,65 +1883,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="DisplayAdhesionFactorSlipperyRail"
- Guid="e248fe1b-a9bd-4858-a03c-58af1db20ba4"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="f6babaef-7665-4548-8476-48b8b40a216f"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="84bdd1c0-1bb1-4e2e-972a-a0cd57f3a68e"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="f8664238-90df-44bf-a84a-099807694b89"
->
-<PreConditions>
-<PreCondition
- Guid="9c91ff2b-9bda-4e09-bb81-9003dfb60864"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="b71bf1ae-20f6-4d33-940d-d98f59f91e67"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="95747a31-7db6-43a9-8352-f2737ddd05c1"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="45146ea9-1a09-4192-b923-1ce9adb25e85"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="dcb48e43-6e68-410c-96c0-7d1242a5ef53"
->Out_AdhesionFactorSlipperyRail.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="DisplayReleaseSpeed"
  Guid="ad110f96-45dc-451a-a38e-aa81016bc04a"
 >
@@ -3266,8 +3207,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.NotAvailable</Action><Action
  Guid="0f77f8f9-e7df-4947-9e30-501deab97d6d"
 >Out_TrackAheadFreeRequest.ProcedureOut &lt;- Out_TrackAheadFreeRequest.ProcedureOut.NotAvailable</Action><Action
- Guid="1f7927e1-6686-40b4-9e54-c6abdeb4cdfa"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.NotAvailable</Action><Action
  Guid="9b3d9e0c-aef4-4321-9dff-b8b573037894"
 >Out_SRModeProposed.ProcedureOut &lt;- Out_SRModeProposed.ProcedureOut.NotAvailable</Action><Action
  Guid="3e972b91-c34d-43cd-89be-44341edc895f"
@@ -3358,8 +3297,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_ShuntingRequestNotAnsweredByRbc.ProcedureOut &lt;- Out_ShuntingRequestNotAnsweredByRbc.ProcedureOut.Available</Action><Action
  Guid="a31876bc-27e8-4794-bb47-5b6a345369c3"
 >Out_TrackAheadFreeRequest.ProcedureOut &lt;- Out_TrackAheadFreeRequest.ProcedureOut.Available</Action><Action
- Guid="ba481833-6fa1-4bff-babd-38b55caa6465"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.Available</Action><Action
  Guid="14736391-5d85-4cf6-9ff5-7c0823a98009"
 >Out_SRModeProposed.ProcedureOut &lt;- Out_SRModeProposed.ProcedureOut.Available</Action><Action
  Guid="01d47bb2-cf21-428e-a6a3-e6cc42e5f4da"
@@ -3514,8 +3451,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.NotAvailable</Action><Action
  Guid="6e6f0ac3-7e06-436f-990d-d1155e93a46a"
 >Out_TrackAheadFreeRequest.ProcedureOut &lt;- Out_TrackAheadFreeRequest.ProcedureOut.NotAvailable</Action><Action
- Guid="f2c37518-383c-4883-824d-3e6f7c79c639"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.NotAvailable</Action><Action
  Guid="e55f5aca-305b-48dd-9129-dc25373ebefb"
 >Out_SRModeProposed.ProcedureOut &lt;- Out_SRModeProposed.ProcedureOut.NotAvailable</Action><Action
  Guid="4c4d5155-162c-4bfd-85c6-fb51750cee73"
@@ -3618,8 +3553,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_EntryInFsOs.ProcedureOut &lt;- Out_EntryInFsOs.ProcedureOut.Available</Action><Action
  Guid="d70bf066-97f6-462a-960b-22ed327aa75f"
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.Available</Action><Action
- Guid="b5c3f287-ddbb-4375-93db-0c1ff67de719"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.Available</Action><Action
  Guid="d3f1b7a2-dab5-4d82-a198-8b3d64dde592"
 >Out_RVModeProposed.ProcedureOut &lt;- Out_RVModeProposed.ProcedureOut.Available</Action><Action
  Guid="2fd307d6-732b-4948-a188-1c1912a5eaac"
@@ -3736,8 +3669,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.Available</Action><Action
  Guid="f3e85f03-7736-4874-b851-1d0f2f2dcb4a"
 >Out_TrackAheadFreeRequest.ProcedureOut &lt;- Out_TrackAheadFreeRequest.ProcedureOut.Available</Action><Action
- Guid="332f1489-317c-4f08-96a1-78bb9b9ccccd"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.Available</Action><Action
  Guid="4aafba29-c099-432c-9d19-716d740827bd"
 >Out_RVModeProposed.ProcedureOut &lt;- Out_RVModeProposed.ProcedureOut.Available</Action><Action
  Guid="58bbecf3-afbe-4c7a-9ef6-d34936471d0f"
@@ -3848,8 +3779,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.Available</Action><Action
  Guid="3c9be9ac-4655-4d48-9440-331ecdf84a54"
 >Out_TrackAheadFreeRequest.ProcedureOut &lt;- Out_TrackAheadFreeRequest.ProcedureOut.Available</Action><Action
- Guid="31b3d2ef-21aa-473a-959f-0e2735a70862"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.Available</Action><Action
  Guid="77ecc718-19cd-4903-8c8f-ae91c1df122d"
 >Out_TracksideMalfunction.ProcedureOut &lt;- Out_TracksideMalfunction.ProcedureOut.Available</Action><Action
  Guid="8be5c5f2-c8d4-43ab-a975-dbc4045cda50"
@@ -3976,8 +3905,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.Available</Action><Action
  Guid="06e7d42e-a250-4647-8b8e-0206b7aff385"
 >Out_TrackAheadFreeRequest.ProcedureOut &lt;- Out_TrackAheadFreeRequest.ProcedureOut.Available</Action><Action
- Guid="32b62f78-6552-4e3a-bc83-596fc4970cec"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.Available</Action><Action
  Guid="ab7b533f-a9f8-45ea-833c-cd0a4b321e44"
 >Out_RVModeProposed.ProcedureOut &lt;- Out_RVModeProposed.ProcedureOut.Available</Action><Action
  Guid="f20b4e8b-8d97-48fc-94df-b6e8e90854d7"
@@ -4108,8 +4035,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_EntryInFsOs.ProcedureOut &lt;- Out_EntryInFsOs.ProcedureOut.NotAvailable</Action><Action
  Guid="ef92ad89-9c42-4ecb-86a5-4284300d306c"
 >Out_TrackAheadFreeRequest.ProcedureOut &lt;- Out_TrackAheadFreeRequest.ProcedureOut.NotAvailable</Action><Action
- Guid="8d763c4d-ea38-48b7-b278-1dce9e559c09"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.NotAvailable</Action><Action
  Guid="3291e8dc-c7dd-4c57-ad33-9b32ee4e1398"
 >Out_SRModeProposed.ProcedureOut &lt;- Out_SRModeProposed.ProcedureOut.NotAvailable</Action><Action
  Guid="97ba6330-5d27-4b8c-9feb-708d3b903001"
@@ -4192,8 +4117,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.Available</Action><Action
  Guid="9b674289-9139-457c-ae76-6eeda50c72d7"
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.Available</Action><Action
- Guid="1373a105-75f6-4833-a032-3042ee95d4e1"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.Available</Action><Action
  Guid="a77e05d3-6ca7-4ec9-8da4-98958ac14001"
 >Out_TracksideMalfunction.ProcedureOut &lt;- Out_TracksideMalfunction.ProcedureOut.Available</Action><Action
  Guid="12a55027-1323-42b3-bcb5-50bc28a2a8b6"
@@ -4308,8 +4231,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.Available</Action><Action
  Guid="af1553b1-f9df-4e0d-8835-018d081eece4"
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.Available</Action><Action
- Guid="0dc8e532-7d90-4ed0-89c3-f0e08eb7d14f"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.Available</Action><Action
  Guid="a29e4260-96ab-4771-a7e7-28998b422ec3"
 >Out_TracksideMalfunction.ProcedureOut &lt;- Out_TracksideMalfunction.ProcedureOut.Available</Action><Action
  Guid="3af462ce-7be3-4960-a5ed-5f0b36e3d329"
@@ -4434,8 +4355,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.Available</Action><Action
  Guid="dc238a8c-a70a-4757-965b-ee6e78962076"
 >Out_TrackAheadFreeRequest.ProcedureOut &lt;- Out_TrackAheadFreeRequest.ProcedureOut.Available</Action><Action
- Guid="b9719393-ea3f-4ea3-a986-dd9721f54dd9"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.Available</Action><Action
  Guid="a17bf125-b431-4a52-ab2f-c92e106a5e9e"
 >Out_SRModeProposed.ProcedureOut &lt;- Out_SRModeProposed.ProcedureOut.Available</Action><Action
  Guid="7f36dfea-7751-4073-a59e-08e6d1def9de"
@@ -4570,8 +4489,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.NotApplicable</Action><Action
  Guid="383109b7-b427-4603-a4b1-b520f4408786"
 >Out_TrackAheadFreeRequest.ProcedureOut &lt;- Out_TrackAheadFreeRequest.ProcedureOut.NotApplicable</Action><Action
- Guid="9d4bf932-f7db-4b83-83cd-222e1d332a18"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.NotApplicable</Action><Action
  Guid="a54cff34-8e81-4ac0-94e5-b8ddb461fbf0"
 >Out_SRModeProposed.ProcedureOut &lt;- Out_SRModeProposed.ProcedureOut.NotApplicable</Action><Action
  Guid="e2ff275d-33c1-4b28-b87c-92a707bc20ce"
@@ -4688,8 +4605,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.NotApplicable</Action><Action
  Guid="3e2617d9-309f-4ddb-bc3a-9f360edba361"
 >Out_TrackAheadFreeRequest.ProcedureOut &lt;- Out_TrackAheadFreeRequest.ProcedureOut.NotApplicable</Action><Action
- Guid="623a5628-6398-42de-9946-8044f4c0dc1a"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.NotApplicable</Action><Action
  Guid="fbd07014-f184-460e-bf37-21b80975c0d0"
 >Out_SRModeProposed.ProcedureOut &lt;- Out_SRModeProposed.ProcedureOut.NotApplicable</Action><Action
  Guid="fd8ec9e1-cf03-4759-8ec6-47d022713ae0"
@@ -4772,8 +4687,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.Available</Action><Action
  Guid="0e30ce4f-b211-4843-811e-4805af8a600c"
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.Available</Action><Action
- Guid="2d4ac347-c1ae-4916-984b-749b740c22e1"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.Available</Action><Action
  Guid="4f6da411-a211-4bd4-b8a9-47ac0fb5fbf9"
 >Out_TracksideMalfunction.ProcedureOut &lt;- Out_TracksideMalfunction.ProcedureOut.Available</Action><Action
  Guid="16bff69d-2374-4004-aa7f-a745c24c68c5"
@@ -4938,8 +4851,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.NotAvailable</Action><Action
  Guid="4188d3cd-b4aa-4afc-bfc0-6b315fe1f62a"
 >Out_TrackAheadFreeRequest.ProcedureOut &lt;- Out_TrackAheadFreeRequest.ProcedureOut.NotAvailable</Action><Action
- Guid="8949d0f0-2b40-432f-beea-d911f945e6d6"
->Out_AdhesionFactorSlipperyRail.ProcedureOut &lt;- Out_AdhesionFactorSlipperyRail.ProcedureOut.Available</Action><Action
  Guid="e28f3a50-c9b6-4b06-9eeb-0d1a703c09c4"
 >Out_SRModeProposed.ProcedureOut &lt;- Out_SRModeProposed.ProcedureOut.NotAvailable</Action><Action
  Guid="81d6030c-c674-4c3a-b688-b889a0459da2"
@@ -5260,7 +5171,9 @@ In_TrackAheadFree.TrackMode()</Action><Action
  Guid="d852eb4f-3cb6-4961-a0e6-3f5b4b6d01cd"
 >Out_MRSP.TrackMode()</Action><Action
  Guid="8c218d18-6e1a-4665-a809-355eb5571dd0"
->Out_AcceptedEmergencyStops.TrackMode()</Action></Actions>
+>Out_AcceptedEmergencyStops.TrackMode()</Action><Action
+ Guid="8bbfa427-c545-4076-b222-ae0c3210c7df"
+>Out_AdhesionFactorSlipperyRail.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
