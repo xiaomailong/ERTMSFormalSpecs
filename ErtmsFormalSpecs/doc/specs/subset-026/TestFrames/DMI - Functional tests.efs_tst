@@ -48738,6 +48738,7 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  Name="OUT Reversing allowed"
  Guid="db05c30a-b9c4-4b65-80a5-9dee47f0d432"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -48791,13 +48792,13 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="OUT Reversing allowed"
- Guid="3d56deec-0d5d-44c3-987a-d80f285ede0d"
+ Name="OUT ReversingAllowed"
+ Guid="4f354dd5-74f5-41b1-b1f9-ca7123baca4b"
 >
 <ReqRef
  Id="484415c8-ad35-4b77-af44-1748cd2e57a8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b71dbff2-aa84-4b2e-a3a7-415808d5b0d4"
+ Guid="262baa88-cab1-47df-90fe-e00c2bc898cb"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -48809,24 +48810,40 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="a7cf7929-fe33-4ac4-b370-fdfd58900844"
+ Guid="209116ad-666d-4534-8c9b-98636829c0d1"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="eb26d5b2-12ee-4956-8d9d-042bff1b63e1"
+ Guid="295a2177-a0a4-4591-84d9-70b0713431ef"
 >
 <Actions>
 <Action
- Guid="41b18954-a0d1-4780-90da-629cbe118c2a"
+ Guid="dbfa2af0-a972-4abd-85a6-49e23fb48315"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="4f24dce7-a6b8-4780-8be0-dd74f6bc318a"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="454ba7c1-b587-4231-a827-0c3b610a98f2"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="327c5562-aace-432e-b3e4-d6949ad5177d"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="3b315c40-93c0-406f-a934-1369c5ad59ad"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ Guid="040e25f0-2f4d-4462-b238-52e7b5f7e685"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6b473eae-f13a-4245-a52f-44a8aad17e30"
+>
+<Actions>
+<Action
+ Guid="dab60d86-ffd4-4836-a71c-7329ef383f74"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="467b8495-f65c-432c-a9cc-3d020250a2e0"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -48835,24 +48852,41 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="b135211c-4e86-444b-84b8-8c1680012bf0"
+ Guid="e34d2bff-54bb-4af9-b10e-aaa6d4320918"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="bf7ee273-88a3-4aba-a92d-308cf4717fbf"
+ Guid="06ac3067-d54b-435c-8b2a-a803f952f37b"
 >
 <Actions>
 <Action
- Guid="b9a03a05-e942-42e7-aaec-bdcb18708c2a"
+ Guid="462b5dbe-6bc7-47e0-9d2c-d8965945f5e2"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="ec541e77-5f5b-4f5f-8370-c262a499d9b7"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="399f17e2-a7f3-4f97-9e5f-0641dea51b62"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="ee388d3c-c6b3-4a70-9cdd-1b215c064152"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="9e847548-de25-4c42-8398-5a399aa9da94"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="bb6fda37-3613-4919-99b9-2bfd24205cc1"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="99ce9f47-4edb-4558-bb07-db67f31624be"
+>
+<Actions>
+<Action
+ Guid="43853ed8-d6a8-4843-ad9b-714ab7185773"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="4b9c4396-1f42-4016-9c8d-b1f6c009b369"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -48861,22 +48895,39 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="3aad594f-4dfe-4039-b269-5d1b5024ee18"
+ Guid="ccb33811-479a-47e2-8699-fca78e00f58e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="4fe3d049-64fe-4aef-85eb-3d930374ce87"
+ Guid="aa114826-5eca-46cb-91d1-898ff3d25eec"
 >
 <Actions>
 <Action
- Guid="c1c8d971-9ae6-4918-b318-c5501a23d14d"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="a67c0620-cc2b-4d4c-b117-2b478b05139f"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="71a91a64-db9f-4bcc-b0ba-e19dc4d59ed1"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="221edd22-cc21-40a9-a817-21ccd996f82a"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="1b14ade9-5e2c-4510-9b6c-0a5b3b1c7b8e"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="51f8fcda-ecb6-49bc-9d69-5874a7f8195c"
+>
+<Actions>
+<Action
+ Guid="3905b0ce-47ec-4cfd-9126-89a489391839"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="e93e1d8c-8ba9-4816-a5a4-7173ada542d7"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -48885,24 +48936,41 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="addab0f8-9ffb-4e4e-aa60-72f808fa5df9"
+ Guid="46bcf506-0f58-4fda-a815-a3df60ccfb2c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="72d03d9b-d4de-4451-8278-6ae79d23f5c9"
+ Guid="8142e59f-bc92-4e55-8d2f-04820f31268d"
 >
 <Actions>
 <Action
- Guid="e4152134-1c3c-4f23-9e29-37371867e819"
+ Guid="d169b369-6663-499d-8595-dd78f9cbd925"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="cf9ce914-4c25-4c07-ade3-a3e4fd5efde5"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="08263b56-c489-4905-a574-9b097c244cb6"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="75e0f858-4d34-49c7-877b-53db7f48ca98"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="9633ffe9-8b8e-42e1-a1ee-282c94962127"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="51dbdbfb-6893-4308-96e3-69b05588a598"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="9f93aab6-652c-4f5b-a93a-2ab85793ceee"
+>
+<Actions>
+<Action
+ Guid="204d67f6-44ed-4544-a011-44c7a4db774a"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="45c083c0-2514-44cb-b77f-2b2933babd5d"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -48911,24 +48979,43 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="6584657e-582c-46cb-bf96-11460b45b1e4"
+ Guid="46a18983-5675-4595-a845-9b610b2c4c77"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="62f3e3ca-e116-4750-ab01-ad7539a46ada"
+ Guid="40f6282f-210d-4546-8e42-1e8cc47fe9ae"
 >
 <Actions>
 <Action
- Guid="85676509-2ec8-4d49-837f-15549833dc7d"
+ Guid="8684209e-b4ec-45e7-83ed-d180e983d521"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="86d6fea7-06bc-445e-aadd-3b4ec9356623"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="ea39a3ae-2dc9-44b9-aada-05d8dc7aaea2"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="4288c618-7e00-40b5-a7a3-cd7e7c117831"
+><Comment></Comment>
+
+DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="0b53bc22-54b3-4d73-8bd0-127a22c01d6c"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="ceed1ad6-e316-46ea-9526-1c90dc33728f"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c16c81f1-64e7-49ee-82f0-d0e5dabb9783"
+>
+<Actions>
+<Action
+ Guid="2d49b732-87b0-4e6b-a5a4-62b32555c326"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="0a09ce9e-31b0-41a0-b66c-c918e0ac085d"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -48937,22 +49024,39 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="5b359688-65f3-4ff6-a4cc-d17342a77401"
+ Guid="886de3a8-c306-499e-9ea3-cc785259169d"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="18b36ace-2a7c-400f-a54f-25667d426c0f"
+ Guid="c7e12ecc-ad21-4196-9d55-d320a6686b75"
 >
 <Actions>
 <Action
- Guid="0155e003-8ab1-4615-abff-c2f3e1cbefa3"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="ecf8956f-f4b2-429a-8842-1ba90ab37ca6"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="8920fed5-efa9-43fb-b980-a855535f4593"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="86f48421-4bf8-4ad7-8895-15b841a552be"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2b115f1f-5e68-4b8f-ab59-ca46d4842dd2"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e3c6175a-bb14-4d95-a97b-b0bc5a8a6f2e"
+>
+<Actions>
+<Action
+ Guid="f3285520-ed1e-4cb4-b3a2-a51ceb465093"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="058ccf82-ad40-4b39-aa0d-0e7eeae49549"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -48961,22 +49065,39 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="77b1eab1-9996-4821-925c-25644de3998a"
+ Guid="499d9bf7-adfe-4ec0-a5b0-0fc1d8c5835b"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="57ae3c66-ea7c-4fbd-a537-036f7a57d672"
+ Guid="70d13116-fbfa-4925-88f1-b1cf360ddc09"
 >
 <Actions>
 <Action
- Guid="e1d42f39-3463-4538-bd8b-24b12fa73faa"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="d6ac3624-89fc-4cbb-a99e-d81c32034fcc"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="629037da-e4db-410c-bab8-9606d0e4bdd9"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="a3c16392-0b9d-49c1-925e-710edc340744"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="634ac4a3-f59c-40ee-9afb-13f8565d72ef"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="45b06e50-68dc-4a13-b787-b18e3cc147bf"
+>
+<Actions>
+<Action
+ Guid="75afcc91-207a-4fcd-b35a-66437cf58673"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="0d4f75ad-bd07-40c5-b22e-88c15f112c6f"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -48985,22 +49106,39 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="5e80db03-8842-4b51-8bae-d6c0bd99fbe2"
+ Guid="f2d178d9-c50d-4c63-a71e-088a6d82f06c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="65579e7f-6e76-4f64-a3fa-b852bbdfe4be"
+ Guid="0b87b6d0-8988-4382-88da-e14c07aef468"
 >
 <Actions>
 <Action
- Guid="8a05aa0a-3a4e-4a11-b22d-8bbf97a57d5c"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="26ace1ba-ee9a-46f2-962f-0a74a3ec76dd"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="80edeef5-cbd7-4dc0-9510-78724629926c"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="109878e9-8483-47d2-b59b-46b64db7d2de"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="158e3454-fcab-4994-b8c7-43096121a8f6"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="0fdc7987-fbd0-403d-9d24-ae85576f7134"
+>
+<Actions>
+<Action
+ Guid="6660571c-9890-4283-9ab2-234ca8813344"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="48bdf6a1-c81f-4bd6-a52d-ba20f0f1c84c"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -49009,26 +49147,43 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="e9a798eb-472f-4f34-a761-26ed4ad4a389"
+ Guid="1dfe81b3-b087-4320-a934-8fa08d4484df"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="b7f8334e-47ef-46b7-9257-6c582ca3e05b"
+ Guid="a54ef921-2de1-4930-ac55-6ffda1919ce6"
 >
 <Actions>
 <Action
- Guid="9b3c1815-59df-49e5-9c8d-fe7735c2b681"
+ Guid="ed5e9137-6ded-4f78-9f9a-9661d3fcf2c6"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="7d62f5ed-f80f-48c8-b9c9-2bebb8c3bf3e"
+ Guid="4dbd97dc-1927-4709-99d6-58a2e28162df"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="20b1ecd7-8798-4bb1-94d8-c5bad7a29463"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="42685d9a-5716-473d-9441-109c8491f1f3"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="421c3a58-7737-420b-83fd-3222c2b012cc"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="d9bc0715-82f2-44af-9e88-6829caacee1a"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="75553c3e-8edc-43ff-9d2c-2f9272f2499f"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="8ffe30a7-c406-4b26-a351-85860fd7c974"
+>
+<Actions>
+<Action
+ Guid="93489bb3-909f-42c7-bf43-03c386fa127d"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="9aa65228-38af-4426-8924-581861693ca7"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -49037,24 +49192,41 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="e82fcada-28dc-4cc8-8cac-0f9aee6dd008"
+ Guid="4caf810e-62fd-4d92-84e6-b2434542f806"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="cb5b05ab-cb09-4053-be28-a8efa5308725"
+ Guid="69924c6a-2a0d-49af-bab4-05f4ee8a8c93"
 >
 <Actions>
 <Action
- Guid="a7f6479f-e52f-4a7d-a02b-fdc2265b53d5"
+ Guid="9f4fb9fc-118c-4457-8388-176c80fe6f97"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="412346c9-4503-45e5-aa84-5b45284e609e"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="eade5fd3-49e5-484e-a773-7a5ee5a1480e"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="53e12f22-3ad9-476a-8a57-98df0e4183cb"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7c4df500-4035-43e9-9e80-1d2a1819831d"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="3b3760bb-dc31-4129-9ecf-4b1903710f4f"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c24b0deb-f2a9-416a-a90c-c4dccd994938"
+>
+<Actions>
+<Action
+ Guid="f6719d15-1740-4d25-ab0d-cb681f428c0e"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="0daa1c8c-3c14-4cbb-91f3-478051f8a3c0"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -49063,24 +49235,41 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="a7cc804c-4873-44e3-b45b-43ccdf549c5f"
+ Guid="89dde349-e422-4a8d-afae-854c1672ab47"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="66275cdc-bde1-46eb-9022-f63a88ecf16a"
+ Guid="f49e4413-2331-4926-a0c1-e061bda5df0c"
 >
 <Actions>
 <Action
- Guid="931ed576-298e-439c-abb5-15d2f106a877"
+ Guid="6bad064d-b81f-4d20-95be-82b2493a2f0c"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="2af5b417-053c-408b-a0ce-a2164b629022"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="b2638658-be3f-4ce8-88c5-1cacd8491b6e"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="2f589372-4e01-4b10-8279-2643c445f84f"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="eb13d3f6-e762-43c0-9011-7df3b6ef9510"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="5f7b227e-0b05-48d5-b386-9636df85fe0d"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="8cbde7e0-f9ec-4e05-be51-8d572095ac8a"
+>
+<Actions>
+<Action
+ Guid="488bfaed-0839-4ab5-98c0-770e46f31141"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="7c8d8dba-7f83-40fe-ad3c-ceb205c9d5f7"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -49089,22 +49278,39 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="e63d5388-3e5f-4243-a239-7b13ea4a9f55"
+ Guid="5bca9133-9a8b-45a2-a65c-f7763babe2de"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="5b34f7e3-5d8d-442e-bbb2-55d6edda2bff"
+ Guid="e7245a19-86be-40e3-b4fd-6b66b108d92f"
 >
 <Actions>
 <Action
- Guid="a5dae26d-ea11-4d3c-a0e8-e88969df3b6a"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="0a994617-91ca-4544-bd56-e5dda0c9d62b"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="3ea0d655-d8e6-4b44-a91b-3620163b3c11"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="3d311757-6acd-4280-a021-f3c8a85c008c"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="e6499490-d30b-490c-a457-bfc627158e3e"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="b99673b7-65d5-44d9-8962-93c454b98e33"
+>
+<Actions>
+<Action
+ Guid="dc411648-187f-4949-b8ea-fbeb0828d9ed"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="44554906-c8a1-42de-bfb3-baeedea76326"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -49113,22 +49319,39 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="a6759425-3a64-45b7-96ed-fc7a819db9d2"
+ Guid="ab9d5f71-7c4b-4fda-984a-e4eefe59aa1e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d280966a-abd1-418b-82c1-58c4c3957594"
+ Guid="7ff2fec9-6bf4-498d-8292-70762527f9a7"
 >
 <Actions>
 <Action
- Guid="3a13b966-8794-44ce-b6cf-80459b2e5998"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="8275eb97-0491-41c0-87ea-16f92bb4b153"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="9274ab09-cb77-4ab7-bf01-1781f3aa0cbc"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="21ed2d8d-5f7f-4697-a5c6-c1772f9a1412"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="7927d5b8-04ec-4697-ab78-d4515d6e30d4"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="037a0366-e706-4206-ba7d-af25b3e7c6ef"
+>
+<Actions>
+<Action
+ Guid="08659b02-6eb0-46db-bc85-5f97f000046e"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="7925817f-c7fd-4a0a-ae42-243ec6d8558b"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -49137,22 +49360,39 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="95a6aec0-eda0-4ffc-a59d-f47480c1c005"
+ Guid="ee15d45a-e696-4a7b-bd05-8a8b61cdec95"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="58055a45-d58a-4945-b5b7-60e6850919e8"
+ Guid="f7e28cdf-c19b-47de-aaf1-2365b32b7a42"
 >
 <Actions>
 <Action
- Guid="0a515904-cd32-446a-b2d4-baa942935d66"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="ff66ca51-8f9a-4197-840a-54a6b34cf9ab"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="480bc694-46d1-485d-b6a7-e1509f008a0d"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="77dfa2bc-a868-4aea-b5d6-42437b654ae5"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="3e014fb3-5616-431d-ad4b-0fed46a243e7"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="8ebc4039-4c80-4536-a948-4011fbd532a5"
+>
+<Actions>
+<Action
+ Guid="3e809480-4f78-42ad-a31b-308a21cec383"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="a281cad0-98e4-49d0-8496-6f58bbda13ab"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -49161,22 +49401,39 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="b8f1245f-aee0-48c9-a74d-ba6887a2e816"
+ Guid="90126272-37fd-41e4-a313-9979fe453260"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2a5fa448-a854-47bb-87a2-bfb12a6b0cd6"
+ Guid="b4734893-aa0f-4c1a-8291-16c4a420b580"
 >
 <Actions>
 <Action
- Guid="dbb89eb2-2c65-4896-ad7c-40946bd002bd"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="e2e7df34-d8c7-44f0-bc59-f74c23a02308"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="a62d330f-3691-4810-af05-dac827d900c9"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="d6dc6fbc-a5ef-48c2-be0b-875ba80bdfd7"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="d50cd950-11d5-4896-8790-ceeb66f1dce5"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="9163f338-60c8-41e0-b0c1-0c5a0f15888b"
+>
+<Actions>
+<Action
+ Guid="9b151105-bd47-4fa8-b198-5a3f71fcff61"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="cba830ae-bc20-4b0c-ad8a-b85a9b9e627c"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -49185,26 +49442,43 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="529017e0-5829-4b04-8d47-d2ffc548c4e6"
+ Guid="abec768a-f9b1-4cb7-84cb-b7bc99739a58"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="a8896c37-06c4-444b-9544-68843afb2742"
+ Guid="465451a6-4e94-4ea7-aee8-ed31ca40ae74"
 >
 <Actions>
 <Action
- Guid="d945df5d-df03-4fb9-9c16-a74b132d657c"
+ Guid="0ea40f8d-87cd-451d-ae66-8a85ded7d089"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="7a748984-b0c9-40ab-bb7c-2c9544b4cb6b"
+ Guid="a3a97028-e965-4bc4-81c3-ff76e9cd1fd1"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="89032d03-f808-4320-9658-6f21b1a74dbb"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="3bc7ce6c-3eb0-481a-9fcd-7b9eff049402"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="7e706069-91b8-4cd8-91c2-0ab80a7e0b75"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="b70537e2-7918-481b-ae0b-e47300b602d6"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="316e4434-377b-4877-8a42-71a4583727c7"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="ff2ae3ab-cbc6-4931-942b-20df7794e30f"
+>
+<Actions>
+<Action
+ Guid="182f7cd3-75f1-4091-8921-596001b34231"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="b175ac20-e6b3-448f-99c5-ac37c1fa1345"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -49213,22 +49487,39 @@ DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True<
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="eea0440b-919d-4274-abe0-cf037d7bb9b4"
+ Guid="7b4d4a9d-440d-4469-ba4c-98d0b5daca6b"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2b98a235-5500-4dbf-a81a-22855a3f5c55"
+ Guid="1a2b26b5-3de7-45d5-b167-eaf25e4a9a52"
 >
 <Actions>
 <Action
- Guid="9d191744-b703-454d-b233-55d993dfa886"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="9cb50dd1-8390-4033-8fce-19abb7307ecd"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="bedbc0a0-2a40-4618-8979-0126adefdb52"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="764eaaa2-3c52-4726-a466-517115099aea"
->DMI.MasterDMI().Out_ReversingAllowed.ProcedureOut in DMI.OUT.ReversingAllowed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="c5e44507-cf3e-4c99-8cb0-04a826aca0a7"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="9611318c-1c92-43e1-a20d-424ef1df2cf5"
+>
+<Actions>
+<Action
+ Guid="5af05655-cc4e-425a-a748-146260478a9b"
+>DMI.MasterDMI().Out_ReversingAllowed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="5c839637-586c-4b0e-94cd-8713d5ca8476"
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
