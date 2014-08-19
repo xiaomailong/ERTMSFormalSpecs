@@ -328,7 +328,7 @@
     NID_MESSAGE =&gt; 136,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport(),
     Sequence1 =&gt; EMPTY,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime)
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime)
 }</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -448,7 +448,7 @@
     Q_STATUS =&gt; PositionReport.FillQStatus(),
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport(),
     Sequence1 =&gt; EMPTY,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime)
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime)
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -586,7 +586,7 @@
 {
     NID_MESSAGE =&gt; 129,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport(),
     VALIDATED_TRAIN_DATA =&gt; TrainData.CreateTrainData()
@@ -667,7 +667,7 @@
 {
     NID_MESSAGE =&gt; 150,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
 }</Action></Actions>
@@ -747,7 +747,7 @@
 {
     NID_MESSAGE =&gt; 130,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
 }</Action></Actions>
@@ -844,7 +844,7 @@
 {
     NID_MESSAGE =&gt; 132,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     Q_MARQSTREASON =&gt; aReason,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
@@ -947,7 +947,7 @@
  {
     NID_MESSAGE =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_MESSAGE,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     NID_EM =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_EM,
     Q_EMERGENCYSTOP =&gt; Qualifier,
@@ -1029,7 +1029,7 @@
 {
     NID_MESSAGE =&gt; 155,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1114,7 +1114,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 {
     NID_MESSAGE =&gt; 156,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1235,7 +1235,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 {
     NID_MESSAGE =&gt; 154,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1313,7 +1313,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 {
     NID_MESSAGE =&gt; 159,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.CurrentTime),
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     Sequence1 =&gt;
     [
@@ -1611,7 +1611,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="fee0628a-3a16-4a1e-b4b7-32307d0154e3"
 >SendEoMReport()</Action><Action
  Guid="ae7a5d9a-f7cc-436a-8054-cca8f1ca33a5"
->LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+>LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="77ff829d-067e-4e88-b189-763cb81bc53e"
 >NumberOfSentRequests  &lt;- 0</Action><Action
  Guid="a61347f3-f3e0-46cb-9ece-aeb8eb30cdee"
@@ -2004,7 +2004,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="5c7318a3-3c2a-4a71-85c0-c1617d2d9134"
 >SessionManagementData.Action &lt;- ContactActionEnum.Establish</Action><Action
  Guid="36c208cd-4fdb-4529-aac3-4806d371c8a8"
->ConnectionLostTime &lt;- Kernel.CurrentTime</Action></Actions>
+>ConnectionLostTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2172,7 +2172,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <PreConditions>
 <PreCondition
  Guid="efc41a15-575b-4c33-9d93-c2ad1a51a905"
->LastRequestTime + TimeBeforeMessageRepetition &lt; Kernel.CurrentTime</PreCondition></PreConditions>
+>LastRequestTime + TimeBeforeMessageRepetition &lt; Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -2230,7 +2230,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <Actions>
 <Action
  Guid="6c9db820-9596-4dc3-b487-9fb6e343bc2b"
->LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+>LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="ba529648-8bde-4b6c-bab8-b53b04a493ea"
 >SessionManagementData.RequestIsSent &lt;- True</Action><Action
  Guid="00fc6a16-7c65-4f0a-b1b2-6b44b65edf9f"
@@ -2293,7 +2293,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="16ba15f9-a1a0-4ae4-871b-0170a60aa6fb"
 >SessionManagementData.RequestIsSent &lt;- True</Action><Action
  Guid="d32ceab3-f240-4971-86d9-06c897d9b505"
->LastRequestTime &lt;- Kernel.CurrentTime</Action></Actions>
+>LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2345,7 +2345,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <PreConditions>
 <PreCondition
  Guid="051b7c73-d993-4246-ac2a-5099ddc3c5a1"
->ConnectionLostTime + ConnectionStatusTimer &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
+>ConnectionLostTime + ConnectionStatusTimer &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7a967e85-a3aa-4740-a5be-0df764c85620"
@@ -2353,7 +2353,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="066fa5b1-2e86-4ca6-93dd-e597e9fe9c21"
 >NumberOfSentRequests &lt;- NumberOfSentRequests + 1</Action><Action
  Guid="30af9a7f-b3aa-438e-8e2c-8c3166dbfa4d"
->LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+>LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="f77d82ba-eaff-4fd1-81c0-2026665608aa"
 >SessionManagementData.RequestIsSent &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
@@ -2864,11 +2864,11 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="064e439a-0285-414a-99b9-02f9500239f5"
 >NOT SessionManagementData.ConnectionIsEstablished</PreCondition><PreCondition
  Guid="9ad4bbc1-055b-4beb-8d36-44281c10ab76"
->LastRequestTime + TimeBeforeMessageRepetition &gt;= Kernel.CurrentTime</PreCondition></PreConditions>
+>LastRequestTime + TimeBeforeMessageRepetition &gt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="aa75abe0-f19d-4bbb-a7f5-323d4a627543"
->LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+>LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="3a5452b7-fed6-4ef2-9c87-1954d6c666f7"
 >SessionManagementData.RequestIsSent &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
@@ -2912,7 +2912,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="d8e25a87-d35c-437f-864a-def0637bce1e"
 >NOT SessionManagementData.ConnectionIsEstablished</PreCondition><PreCondition
  Guid="0a7021de-e191-4898-b26d-a0940b487b89"
->ConnectionLostTime + MaxTimeToMaintainACommunicationSession &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
+>ConnectionLostTime + MaxTimeToMaintainACommunicationSession &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2d58a44a-39a5-4bf5-9712-d9525d21cb8d"
@@ -3020,7 +3020,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <PreConditions>
 <PreCondition
  Guid="064e51ea-ce48-42f7-ab9e-bdc921765caa"
->ConnectionLostTime + ConnectionStatusTimer &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
+>ConnectionLostTime + ConnectionStatusTimer &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2b49902b-8504-4950-bc31-02fe3e8b403d"
@@ -3153,9 +3153,9 @@ Kernel.TrackDescription.TrackConditions.General.IsInsideRadioHole()</PreConditio
 <Actions>
 <Action
  Guid="31f3937f-b213-4f3e-ad34-8537395d0015"
->ConnectionLostTime &lt;- Kernel.CurrentTime</Action><Action
+>ConnectionLostTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="c4a3e6fd-bbd3-4c4a-9592-37f17c96b1ac"
->LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+>LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="bef7600f-38e6-4557-9a1d-4f08e07554dd"
 >SessionManagementData.RequestIsSent &lt;- True</Action><Action
  Guid="ed5c1847-6ece-4c06-a1fe-50505630488c"
@@ -3228,7 +3228,7 @@ Kernel.TrackDescription.TrackConditions.General.IsInsideRadioHole()</PreConditio
 <Actions>
 <Action
  Guid="1a1a20cb-a8df-46b4-acc5-16faf2b26075"
->LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+>LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="ef59530a-188c-48af-86c4-658498732214"
 >NumberOfSentRequests &lt;- 0</Action><Action
  Guid="5ab8eb84-a856-41fe-81be-92cc80d83d99"
@@ -3344,7 +3344,7 @@ The information related to the current communication session is reinitialized.</
 <PreConditions>
 <PreCondition
  Guid="ebbbdd28-776f-4041-a17e-a784bdf6b436"
->LastRequestTime + TimeBeforeMessageRepetition &lt; Kernel.CurrentTime</PreCondition></PreConditions>
+>LastRequestTime + TimeBeforeMessageRepetition &lt; Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -3383,7 +3383,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 <Actions>
 <Action
  Guid="8c94cd62-33d6-44a8-a726-b48c5e0f1d88"
->LastRequestTime &lt;- Kernel.CurrentTime</Action><Action
+>LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="23e6bfe2-b29f-4f51-a757-32c619717618"
 >SendTerminationOfCommunicationSession()</Action></Actions>
 </RuleCondition><RuleCondition

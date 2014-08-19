@@ -906,7 +906,7 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
     Type =&gt; Announcement.Type,
     Distance =&gt; Announcement.Distance,
     Length =&gt; Announcement.Length + TrainData.TrainData.Value.TrainLength,
-    Time =&gt; CurrentTime + TimeToKeepAnnouncementsInRear
+    Time =&gt; DateAndTime.CurrentTime + TimeToKeepAnnouncementsInRear
 }</Expression>
 </Case><Case
  Name="End"
@@ -917,7 +917,7 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
     Type =&gt; Announcement.Type,
     Distance =&gt; Announcement.Distance,
     Length =&gt; Announcement.Length,
-    Time =&gt; CurrentTime + TimeToKeepAnnouncementsInRear
+    Time =&gt; DateAndTime.CurrentTime + TimeToKeepAnnouncementsInRear
 }</Expression>
 </Case></Cases>
 </Function><Function

@@ -6421,7 +6421,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="528d5e2d-a603-4abf-88cf-70f8a807690e"
->EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition
+>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= DateAndTime.CurrentTime</PreCondition><PreCondition
  Guid="44e7ad72-1a69-4af4-90cf-fe51df4d09ac"
 >EURORADIO.PositionReport.NumberOfSentReportRepetitions == 3</PreCondition></PreConditions>
 <Actions>
@@ -6443,7 +6443,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="af65778b-f8e2-4308-9aad-916b891b06a5"
->EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition
+>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= DateAndTime.CurrentTime</PreCondition><PreCondition
  Guid="65472c45-fb03-45c1-b6c4-4882d5db91a2"
 >EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
@@ -6453,7 +6453,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
  Guid="966a9e43-3c4b-4bbd-8255-7bc4f9d48518"
 >EURORADIO.PositionReport.NumberOfSentReportRepetitions &lt;- EURORADIO.PositionReport.NumberOfSentReportRepetitions + 1</Action><Action
  Guid="00277364-b480-4ce2-879a-9ff25c5617ef"
->EURORADIO.PositionReport.LastPositionReport.Time &lt;- CurrentTime</Action></Actions>
+>EURORADIO.PositionReport.LastPositionReport.Time &lt;- DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8097,7 +8097,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
  Guid="06d67b36-615b-4772-896c-f9e2d15610e5"
 >Shunting.NumberOfSentRequestRepetitions &lt;- 0</Action><Action
  Guid="cb5c1d6c-3df7-4123-895e-6edc8dd00866"
->Shunting.TimeOfTheLastSentRequest &lt;- CurrentTime</Action></Actions>
+>Shunting.TimeOfTheLastSentRequest &lt;- DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8187,7 +8187,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="a4e05313-ab68-48d5-baf5-b37b99f603b5"
->Shunting.TimeOfTheLastSentRequest + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition><PreCondition
+>Shunting.TimeOfTheLastSentRequest + EURORADIO.TimeBeforeMessageRepetition &lt;= DateAndTime.CurrentTime</PreCondition><PreCondition
  Guid="19cb51ac-6e20-41cf-94af-80d94d18f09c"
 >Shunting.NumberOfSentRequestRepetitions == 3</PreCondition></PreConditions>
 <Actions>
@@ -8210,7 +8210,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="703f0fc4-324a-46be-893f-ec651b9a63f0"
->Shunting.TimeOfTheLastSentRequest + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition><PreCondition
+>Shunting.TimeOfTheLastSentRequest + EURORADIO.TimeBeforeMessageRepetition &lt;= DateAndTime.CurrentTime</PreCondition><PreCondition
  Guid="2b7d05e7-a40d-49f4-b17a-d9102490ff91"
 >EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
@@ -8220,7 +8220,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
  Guid="b2283ec0-3f07-401a-85ff-311a71079033"
 >Shunting.NumberOfSentRequestRepetitions &lt;- Shunting.NumberOfSentRequestRepetitions + 1</Action><Action
  Guid="250d0e5c-57fe-4f75-acc6-00eaecafbd84"
->Shunting.TimeOfTheLastSentRequest &lt;- CurrentTime</Action></Actions>
+>Shunting.TimeOfTheLastSentRequest &lt;- DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No answer, no communication session"
@@ -8504,7 +8504,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="f83d0a79-efb0-4b17-a420-f110e0ec8e98"
->EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition
+>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= DateAndTime.CurrentTime</PreCondition><PreCondition
  Guid="440078ee-4366-430c-9ced-803149576982"
 >EURORADIO.PositionReport.NumberOfSentReportRepetitions == 3</PreCondition></PreConditions>
 <Actions>
@@ -8529,7 +8529,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="025ce385-7c44-4331-a241-95eda2d2b47f"
->EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition
+>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= DateAndTime.CurrentTime</PreCondition><PreCondition
  Guid="d0ba0ed8-5ced-42b5-bf0a-648e0110781e"
 >EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
@@ -8539,7 +8539,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
  Guid="e61938d4-b14d-4900-b4ad-496b5688eb58"
 >EURORADIO.PositionReport.NumberOfSentReportRepetitions &lt;- EURORADIO.PositionReport.NumberOfSentReportRepetitions + 1</Action><Action
  Guid="04d05666-6dc8-4d65-b724-1615f7466804"
->EURORADIO.PositionReport.LastPositionReport.Time &lt;- CurrentTime</Action></Actions>
+>EURORADIO.PositionReport.LastPositionReport.Time &lt;- DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9924,7 +9924,8 @@ BTM.LRBG &lt;- BTM.BaliseGroup
 <Actions>
 <Action
  Guid="9df8c9b3-bd08-4a3b-a4cb-9e123bb2c01a"
->TrainData.Initialize()</Action></Actions>
+><Comment></Comment>
+TrainData.Initialize()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -10470,24 +10471,6 @@ Kernel.EmergencyStops</Action></Actions>
 </ReqRef><Comment>Indicates if the train has started a mission.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
- DefaultValue="0.0"
- VariableMode="Internal"
- X="810"
- Y="470"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="CurrentTime"
- Guid="ebb894e6-f214-4679-8014-5d2808a8025c"
->
-<ReqRef
- Id="c786347b-7daa-4026-94f2-b1dfc195823c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="837dd4c5-78ae-4ac6-9eac-a2287ddaa0f3"
->
-</ReqRef><Comment>Represents the current time of the EVC. Its value increases each cycle by the value of the constant CycleDuration.</Comment>
-</Variable><Variable
- Type="Default.BaseTypes.Time"
  DefaultValue="0.34"
  VariableMode="Internal"
  X="700"
@@ -10635,7 +10618,7 @@ Kernel.EmergencyStops</Action></Actions>
 <Actions>
 <Action
  Guid="5255382c-3be3-4546-b1f7-379dad85f82b"
->CurrentTime &lt;- CurrentTime + CycleDuration</Action></Actions>
+>DateAndTime.CurrentTime &lt;- DateAndTime.CurrentTime + CycleDuration</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

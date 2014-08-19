@@ -609,6 +609,22 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// The predefined AddToDate function
+        /// </summary>
+        private Functions.PredefinedFunctions.AddToDate addToDatePredefinedFunction;
+        public Functions.PredefinedFunctions.AddToDate AddToDatePredefinedFunction
+        {
+            get
+            {
+                if (addToDatePredefinedFunction == null)
+                {
+                    addToDatePredefinedFunction = new Functions.PredefinedFunctions.AddToDate(this);
+                }
+                return addToDatePredefinedFunction;
+            }
+        }
+
+        /// <summary>
         /// The predefined override function
         /// </summary>
         private Functions.PredefinedFunctions.Override overridePredefinedFunction;
@@ -680,6 +696,7 @@ namespace DataDictionary
                     predefinedFunctions[DecelerationProfilePredefinedFunction.Name] = DecelerationProfilePredefinedFunction;
                     predefinedFunctions[BeforePredefinedFunction.Name] = BeforePredefinedFunction;
                     predefinedFunctions[AddIncrementPredefinedFunction.Name] = AddIncrementPredefinedFunction;
+                    predefinedFunctions[AddToDatePredefinedFunction.Name] = AddToDatePredefinedFunction;
                     predefinedFunctions[OverridePredefinedFunction.Name] = OverridePredefinedFunction;
                     predefinedFunctions[DistanceForSpeedPredefinedFunction.Name] = DistanceForSpeedPredefinedFunction;
                     predefinedFunctions[IntersectAtFunction.Name] = IntersectAtFunction;

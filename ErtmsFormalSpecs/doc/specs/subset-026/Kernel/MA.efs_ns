@@ -1968,13 +1968,13 @@ X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  is
   AND  
 MA.Sections != []
   AND  
-THERE_IS_IN MA.Sections | (Available(X.TimeOut) AND SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  AND  X.TimeOut.TimeOut + SectionTimerStart &lt; CurrentTime)</PreCondition></PreConditions>
+THERE_IS_IN MA.Sections | (Available(X.TimeOut) AND SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  AND  X.TimeOut.TimeOut + SectionTimerStart &lt; DateAndTime.CurrentTime)</PreCondition></PreConditions>
 <Expression>FIRST_IN MA.Sections | 
 (   Available(X.TimeOut)
   AND
     SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)
   AND  
-    X.TimeOut.TimeOut + SectionTimerStart &lt; CurrentTime )</Expression>
+    X.TimeOut.TimeOut + SectionTimerStart &lt; DateAndTime.CurrentTime )</Expression>
 </Case><Case
  Name="Check the End Section"
  Guid="0cd53d69-33fa-4bd8-838c-2567b54d86e6"
@@ -1992,7 +1992,7 @@ Available(MA.EndSection.TimeOut)
 (
     MA.EndSection.TimeOut.Distance + Default.BaseTypes.LengthToDistance(MA.EndSection.Length) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)
       AND  
-    MA.EndSection.TimeOut.TimeOut + SectionTimerStart &lt; CurrentTime
+    MA.EndSection.TimeOut.TimeOut + SectionTimerStart &lt; DateAndTime.CurrentTime
 )</PreCondition></PreConditions>
 <Expression>Section{
     Length =&gt; MA.EndSection.Length,
@@ -3584,7 +3584,7 @@ Available(MA.MA.EndSection)
   AND  
 Available(MA.MA.EndSection.EndSectionTimeOut)
   AND  
-(CurrentTime &gt; EndSectionTimerStart.TimeOut + MA.MA.EndSection.EndSectionTimeOut.TimeOut)</PreCondition></PreConditions>
+(DateAndTime.CurrentTime &gt; EndSectionTimerStart.TimeOut + MA.MA.EndSection.EndSectionTimeOut.TimeOut)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="87845b6e-e345-4f5d-b307-e656fca337bb"
@@ -4457,7 +4457,7 @@ NOT(Available(EndSectionTimerStart))
 <Action
  Guid="b9c8841c-a50c-46ad-97ae-1da9976bb22e"
 >EndSectionTimerStart &lt;- SectionTimeOut{
-    TimeOut =&gt; CurrentTime,
+    TimeOut =&gt; DateAndTime.CurrentTime,
     Distance =&gt; MA.MA.EndSection.EndSectionTimeOut.Distance
 }</Action></Actions>
 </RuleCondition></Conditions>

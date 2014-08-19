@@ -572,6 +572,78 @@
  Guid="aa1152c8-9d6c-44f2-97c6-316f05ef1276"
 >
 <Comment>The level</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="DateAndTime"
+ Guid="0bba33de-5631-49ce-a4be-8698a44e4a6f"
+>
+<Comment>Keeps a complete date, including time to the millisecond</Comment>
+<StructureElement
+ TypeName="Integer"
+ Default="2012"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Year"
+ Guid="6289974b-ee4b-474c-92c2-9dbb4d48be83"
+>
+<Comment>The year</Comment>
+</StructureElement><StructureElement
+ TypeName="Integer"
+ Default="12"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Month"
+ Guid="84ed11d5-9be6-4c55-8a7d-ffd844619b1e"
+>
+<Comment>The month</Comment>
+</StructureElement><StructureElement
+ TypeName="Integer"
+ Default="20"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Day"
+ Guid="e6bec864-1292-49b6-972f-e676b99bf5d4"
+>
+<Comment>The day of the month</Comment>
+</StructureElement><StructureElement
+ TypeName="Integer"
+ Default="20"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Hour"
+ Guid="32d0b13b-69ad-44b6-b751-bcf9599a5b0f"
+>
+<Comment>The hour</Comment>
+</StructureElement><StructureElement
+ TypeName="Integer"
+ Default="12"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Minute"
+ Guid="b2c83eed-1953-42b8-8729-3b152e480190"
+>
+<Comment>The minutes past the hour</Comment>
+</StructureElement><StructureElement
+ TypeName="Integer"
+ Default="20"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Second"
+ Guid="8d5a5129-f1b8-470e-bcd0-8f01b2efe2f9"
+>
+<Comment>The seconds past the minute</Comment>
+</StructureElement><StructureElement
+ TypeName="Integer"
+ Default="600"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="TTS"
+ Guid="8294ada3-8499-48e0-a59c-5a93915630c1"
+>
+<Comment>Milliseconds</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection

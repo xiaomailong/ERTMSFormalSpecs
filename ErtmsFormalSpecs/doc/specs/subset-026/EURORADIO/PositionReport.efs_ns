@@ -544,7 +544,7 @@ TIU.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost</Expression>
  Name="Value"
  Guid="aaa72c64-bb2e-466c-93eb-5bf924372ffc"
 >
-<Expression>Kernel.CurrentTime &gt;= LastPositionReport.Time + PositionReportParameters.Values.TimeInterval AND PositionReportParameters.DataState == Default.DataState.Valid AND PositionReportParameters.Values.TimeInterval != 0.0</Expression>
+<Expression>Kernel.DateAndTime.CurrentTime &gt;= LastPositionReport.Time + PositionReportParameters.Values.TimeInterval AND PositionReportParameters.DataState == Default.DataState.Valid AND PositionReportParameters.Values.TimeInterval != 0.0</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1544,7 +1544,7 @@ ON
  Guid="11e2aab1-4355-4fc4-be65-995e9d79f494"
 >NumberOfReportsSentToHandingOverRBC &lt;- NumberOfReportsSentToHandingOverRBC + 1</Action><Action
  Guid="10b43a01-1386-4f3f-b773-a520fe5bdd33"
->SecondRBCHandoverPositionReportTime &lt;- Kernel.CurrentTime</Action></Actions>
+>SecondRBCHandoverPositionReportTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Only one RBC connection is available"
@@ -1560,7 +1560,7 @@ ON
  Guid="98ee005b-0814-4319-b1f3-3ac3f5840ced"
 >NumberOfReportsSentToHandingOverRBC &lt;- NumberOfReportsSentToHandingOverRBC + 1</Action><Action
  Guid="42025d97-0b92-40d7-97ee-d7e5a5385fde"
->SecondRBCHandoverPositionReportTime &lt;- Kernel.CurrentTime</Action></Actions>
+>SecondRBCHandoverPositionReportTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1921,7 +1921,7 @@ ON
  Guid="ce1b2dac-1a95-4367-9e31-0328b192cae8"
 >PositionReportParameters.Values.SpecialLocation &lt;- PositionReportSpecialLocation.DoNotSend</Action><Action
  Guid="465e9a0b-308d-4a86-a7e3-75ee18e0f703"
->LastPositionReport.Time &lt;- Kernel.CurrentTime</Action><Action
+>LastPositionReport.Time &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="6541046c-0889-4cf3-9a50-e0778f68cb93"
 >LastPositionReport.Position &lt;- Odometry.NominalDistance</Action></Actions>
 </RuleCondition></Conditions>
@@ -1948,7 +1948,7 @@ ON
 <Actions>
 <Action
  Guid="d52d054b-2c95-4bcb-b1f0-f2cb70ee9265"
->LastPositionReport.Time &lt;- Kernel.CurrentTime</Action></Actions>
+>LastPositionReport.Time &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -2313,7 +2313,7 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; Default.DistanceInt
  Guid="b18ba555-56bf-429c-8587-9d2262a83d58"
 >NumberOfReportsSentToHandingOverRBC &gt; 0</PreCondition><PreCondition
  Guid="bb5277e0-aa5c-48e6-a9b9-1ef76c7ff93a"
->SecondRBCHandoverPositionReportTime + TimeBeforeMessageRepetition &lt; Kernel.CurrentTime</PreCondition><PreCondition
+>SecondRBCHandoverPositionReportTime + TimeBeforeMessageRepetition &lt; Kernel.DateAndTime.CurrentTime</PreCondition><PreCondition
  Guid="aa7bc635-025b-4bfa-b27c-d05d3984511b"
 >NumberOfSentReportRepetitions &lt; NumberOfMessageRepetitions</PreCondition></PreConditions>
 <Actions>
@@ -2338,7 +2338,7 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; Default.DistanceInt
  Guid="22623cd7-98dd-4219-a3da-8d0a348c1178"
 >NumberOfReportsSentToHandingOverRBC &gt; 0</PreCondition><PreCondition
  Guid="d30495ba-3762-4c19-96f3-456143f7ae70"
->SecondRBCHandoverPositionReportTime + TimeBeforeMessageRepetition &lt; Kernel.CurrentTime</PreCondition></PreConditions>
+>SecondRBCHandoverPositionReportTime + TimeBeforeMessageRepetition &lt; Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="17311951-1bd7-40ab-9779-aee39c8727f4"

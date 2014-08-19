@@ -1125,7 +1125,7 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1dd375f4-1c36-44bc-8f3f-fbd3204b191e"
->JRU.JRU1.PreviousTime &lt;- Kernel.CurrentTime</Action></Actions>
+>JRU.JRU1.PreviousTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1809,15 +1809,15 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
         NID_MESSAGE =&gt; MessageId,
         L_MESSAGE =&gt; 0,
         DATE =&gt; Messages.JRU.DATE.Message{
-            YEAR =&gt; Kernel.DateAndTime.Year,
-            MONTH =&gt; Kernel.DateAndTime.Month,
-            DAY =&gt; Kernel.DateAndTime.Day
+            YEAR =&gt; Kernel.DateAndTime.Now().Year,
+            MONTH =&gt; Kernel.DateAndTime.Now().Month,
+            DAY =&gt; Kernel.DateAndTime.Now().Day
         },
         TIME =&gt; Messages.JRU.TIME.Message{
-            HOUR =&gt; Kernel.DateAndTime.Hour,
-            MINUTES =&gt; Kernel.DateAndTime.Min,
-            SECONDS =&gt; Kernel.DateAndTime.Sec,
-            TTS =&gt; Kernel.DateAndTime.TTS
+            HOUR =&gt; Kernel.DateAndTime.Now().Hour,
+            MINUTES =&gt; Kernel.DateAndTime.Now().Minute,
+            SECONDS =&gt; Kernel.DateAndTime.Now().Second,
+            TTS =&gt; Kernel.DateAndTime.Now().TTS
         },
         TRAIN_POSITION =&gt; Messages.JRU.TRAIN_POSITION.Message{
             Q_SCALE =&gt; JRU.ToJruQScale(Messages.Q_SCALE._1_m_scaleC),
@@ -2515,7 +2515,7 @@ SendMTCOMessage(jru)</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="f1ed7a82-bc2e-4196-b866-904859861fa1"
->jru.PreviousTime + 5.0 &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
+>jru.PreviousTime + 5.0 &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Period Has not Passed"

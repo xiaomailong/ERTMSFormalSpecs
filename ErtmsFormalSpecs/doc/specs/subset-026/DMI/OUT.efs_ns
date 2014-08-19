@@ -7491,7 +7491,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <Actions>
 <Action
  Guid="d6e48ca9-23d7-4be2-bcea-1f16889186b1"
->Announcements &lt;- MAP Announcements | (X.Distance + Default.BaseTypes.LengthToDistance(X.Length) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)  AND  X.Time &gt; Kernel.CurrentTime)
+>Announcements &lt;- MAP Announcements | (X.Distance + Default.BaseTypes.LengthToDistance(X.Length) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)  AND  X.Time &gt; Kernel.DateAndTime.CurrentTime)
   USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -8217,7 +8217,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <Actions>
 <Action
  Guid="2a2107fb-0b0d-4ba0-a97a-e44c76c7df83"
->Announcements &lt;- MAP Announcements | (X.Distance + Default.BaseTypes.LengthToDistance(X.Length) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)  AND  X.Time &gt; Kernel.CurrentTime)
+>Announcements &lt;- MAP Announcements | (X.Distance + Default.BaseTypes.LengthToDistance(X.Length) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)  AND  X.Time &gt; Kernel.DateAndTime.CurrentTime)
   USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -16455,7 +16455,8 @@ ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e5dca268-7722-44f1-94e4-8c2675708910"
 >
-</ReqRef><Rules>
+</ReqRef><Comment></Comment>
+<Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -16471,6 +16472,9 @@ ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></
  Name="UpdateValue"
  Guid="1ac88761-f8d9-459f-8ec8-217a6c6f500f"
 >
+<Comment>TODO Get the NID_C from the appropriate location
+
+Fetches the time from the kernel and adjusts according to the current country identifier</Comment>
 <PreConditions>
 <PreCondition
  Guid="a3218da3-d4c8-4875-9c10-08223c2b7e82"
@@ -16478,7 +16482,10 @@ ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></
 <Actions>
 <Action
  Guid="1142b13c-b3ac-4642-81b5-5adb7963db43"
->Time &lt;- Kernel.CurrentTime</Action></Actions>
+><Comment></Comment>
+Time &lt;- Kernel.DateAndTime.LocalTime(
+    Country=&gt;0
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -16491,7 +16498,7 @@ ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></
  Guid="770c2f2f-601a-4cd1-ba05-412d07f35ace"
 >
 </StructureElement><StructureElement
- TypeName="Default.BaseTypes.Time"
+ TypeName="Default.DateAndTime"
  Default=""
  Mode="Outgoing"
  Implemented="TRUE"

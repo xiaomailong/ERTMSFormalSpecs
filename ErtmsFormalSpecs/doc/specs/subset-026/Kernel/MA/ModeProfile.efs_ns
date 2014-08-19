@@ -653,7 +653,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Guid="98823607-91dd-484b-b5b1-f3e4c5782128"
 >DMI.MasterDMI().In_AcknOfOSMode.InitiateRequest()</Action><Action
  Guid="57a5d091-0427-485b-8afa-b802aca3eebd"
->DriverAckTimer &lt;- CurrentTime</Action></Actions>
+>DriverAckTimer &lt;- DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Initiate driver ack for LS"
@@ -674,7 +674,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 ><Comment></Comment>
 DMI.MasterDMI().In_AcknOfLSMode.InitiateRequest()</Action><Action
  Guid="04e8a3f6-bc05-4614-a844-ce7bbc5b31b4"
->DriverAckTimer &lt;- CurrentTime</Action></Actions>
+>DriverAckTimer &lt;- DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Initiate driver ack for SH"
@@ -699,7 +699,7 @@ DMI.MasterDMI().In_AcknOfLSMode.InitiateRequest()</Action><Action
  Guid="33b83755-998c-44ea-b9ca-94db0c606363"
 >DMI.MasterDMI().In_AcknOfSHMode.InitiateRequest()</Action><Action
  Guid="3967bc73-aa86-4222-8f4c-96d110b07eae"
->DriverAckTimer &lt;- CurrentTime</Action></Actions>
+>DriverAckTimer &lt;- DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1459,7 +1459,7 @@ IN
  Guid="1af308aa-11fd-4159-a0ff-6063b49cf8c5"
 >DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="70cd1e0f-c048-41cd-8dd3-f02be417fabf"
->DriverAckTimer + Tack &gt;= CurrentTime</PreCondition><PreCondition
+>DriverAckTimer + Tack &gt;= DateAndTime.CurrentTime</PreCondition><PreCondition
  Guid="605c2a3c-b14b-4de0-b95c-62732be2bb6b"
 >NOT TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
  Guid="c5d7fb66-2f3c-4333-8660-4272cdb19e13"
@@ -1502,7 +1502,7 @@ IN
  Guid="f28f60de-be90-44e4-8046-3653258d54cd"
 >DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus  == Request.Request</PreCondition><PreCondition
  Guid="63385cea-a2a5-4761-b295-a54164bb3745"
->DriverAckTimer + Tack &gt;= CurrentTime</PreCondition></PreConditions>
+>DriverAckTimer + Tack &gt;= DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="34cc8f11-590c-4103-9ee3-90b50fa543c9"
@@ -1541,7 +1541,7 @@ IN
  Guid="a7ac6784-ad88-44b3-aba1-5c17e74862a9"
 >NOT TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
  Guid="b4be8fa9-acea-4bd9-85a6-49c0a4e62385"
->DriverAckTimer + Tack &gt;= CurrentTime</PreCondition></PreConditions>
+>DriverAckTimer + Tack &gt;= DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7cb462a7-f1fe-4184-970f-311588f9441d"

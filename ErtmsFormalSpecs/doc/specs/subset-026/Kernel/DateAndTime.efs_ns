@@ -10,83 +10,78 @@
 <Comment></Comment>
 <NameSpaces>
 </NameSpaces>
+<Functions>
+<Function
+ Type="Default.DateAndTime"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="Now"
+ Guid="8e0c24f2-9a34-4cd0-8304-237a2858e295"
+>
+<Comment>Provides the current time in UTC</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="54eb9656-94b5-40e1-a556-99cc60fb22a9"
+>
+<Expression>AddToDate(StartDate=&gt;StartDate, Increment=&gt;CurrentTime)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.DateAndTime"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="LocalTime"
+ Guid="140c5d9a-2fff-47ba-ab84-8593a80d55d6"
+>
+<Comment>TODO create a proper implementation of local time
+
+Converts the UTC time to local time using a country identifier</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.NID_C"
+ Name="Country"
+ Guid="080bc1c4-6fb7-4a10-959e-94d8e26237fb"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="3ed56381-f9fc-4762-8aa6-f264651d7b07"
+>
+<Expression>Now()</Expression>
+</Case></Cases>
+</Function></Functions>
 <Variables>
 <Variable
- Type="Integer"
+ Type="Default.BaseTypes.Time"
+ DefaultValue="0.0"
  VariableMode="Internal"
- X="50"
- Y="10"
+ X="810"
+ Y="470"
  Width="100"
  Height="50"
- Pinned="TRUE"
- Name="Year"
- Guid="1e3e94fc-dd4c-4322-9cf3-aebd378247a4"
+ Implemented="TRUE"
+ Name="CurrentTime"
+ Guid="ebb894e6-f214-4679-8014-5d2808a8025c"
 >
+<ReqRef
+ Id="c786347b-7daa-4026-94f2-b1dfc195823c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="837dd4c5-78ae-4ac6-9eac-a2287ddaa0f3"
+>
+</ReqRef><Comment>Represents the current time of the EVC. Its value increases each cycle by the value of the constant CycleDuration.</Comment>
 </Variable><Variable
- Type="Integer"
+ Type="Default.DateAndTime"
+ DefaultValue=""
  VariableMode="Internal"
- X="160"
- Y="10"
  Width="100"
  Height="50"
- Pinned="TRUE"
- Name="Month"
- Guid="552d4bfc-3e26-4dee-927e-888a36d45fff"
+ NeedsRequirement="FALSE"
+ Name="StartDate"
+ Guid="27301dea-33a8-4730-b3d3-90824e5bd172"
 >
-</Variable><Variable
- Type="Integer"
- VariableMode="Internal"
- X="270"
- Y="10"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Name="Day"
- Guid="1c138f3b-ae2c-4f2c-a820-307161cfff23"
->
-</Variable><Variable
- Type="Integer"
- VariableMode="Internal"
- X="380"
- Y="10"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Name="Hour"
- Guid="5c14a03d-049b-4e41-ad57-fc5379f79590"
->
-</Variable><Variable
- Type="Integer"
- VariableMode="Internal"
- X="490"
- Y="10"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Name="Min"
- Guid="f80d3b1c-f929-4609-89a3-fc96812f5d66"
->
-</Variable><Variable
- Type="Integer"
- VariableMode="Internal"
- X="600"
- Y="10"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Name="Sec"
- Guid="c9eb8530-f443-4638-9bf9-658f5f290300"
->
-</Variable><Variable
- Type="Integer"
- VariableMode="Internal"
- X="710"
- Y="10"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Name="TTS"
- Guid="08bb934e-f973-4aeb-a219-d223b7c93097"
->
+<Comment>Keeps the start time of the current mission. This is used to send current local time and UTC information to the DMI and the JRU.</Comment>
 </Variable></Variables>
 </NameSpace>
