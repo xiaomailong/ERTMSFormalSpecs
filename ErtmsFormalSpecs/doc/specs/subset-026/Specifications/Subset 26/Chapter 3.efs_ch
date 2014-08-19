@@ -34384,12 +34384,14 @@ a mismatch is detected between the country/region identity read from a balise gr
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.2.0"
+ infoRequired="TRUE"
  functionalBlockName=""
  Name=""
  Guid="615ccbef-ab0a-4f6f-9624-9ace6361ea83"
-><Comment></Comment>
+><Comment>There does not seem to be a way to indicate to the ETCS that the driver requires to display the gradient. 
+ETCS will provide the gradient to the DMI and the latter will display it when required.</Comment>
 The ERTMS/ETCS on-board equipment shall offer the possibility to display, only on driver request, an overview of the gradient profile (as received from trackside), of the MRSP, of the track conditions (except the tunnel stopping areas), of the indication location at MRSP speed (see 3.13.10.4.11) and of the first target at zero speed, if any (e.g. the EOA or the start location of a mode profile), with the remaining distances referred to the train front end position.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"

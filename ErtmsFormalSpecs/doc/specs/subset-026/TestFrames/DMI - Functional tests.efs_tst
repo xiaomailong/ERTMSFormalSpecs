@@ -36751,6 +36751,7 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  Name="OUT Gradient"
  Guid="3a96f205-4054-41bf-b520-6616c489e5d7"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -36805,12 +36806,12 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="OUT Gradient"
- Guid="8cccc113-6344-4644-92bb-4154327a5fdf"
+ Guid="efc13712-c85b-46b7-bf4b-3233a826bacf"
 >
 <ReqRef
  Id="e3651d57-b080-418d-95b4-1c194b24a9f7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0067a36d-5a8f-4df5-a27b-c478e9331d79"
+ Guid="83b4e0ee-9a1e-46fc-a32d-fcb4e5b4a1eb"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -36822,24 +36823,40 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="989c800b-f134-4588-8093-6c418e3bbdf0"
+ Guid="f3fc3865-d114-4359-980a-d2a7bd147070"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="1ce6071b-caea-4e1d-81da-0d0f76ba6cf3"
+ Guid="81474c2f-5c37-44c8-ae11-7ba696e9ef50"
 >
 <Actions>
 <Action
- Guid="5a252086-6a50-465b-9bb4-6ca3f2cc26e1"
+ Guid="aa3a5c5c-5c3a-4b99-b762-5679156aa602"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="bdb31cda-f644-41da-8e18-5652b89202d1"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="c7419f9f-7af6-4dd8-9dea-2c9489aa41db"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="274818d2-b26e-469c-bb4f-2471fb078a18"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="428c7db7-36da-4927-90e4-add4c7d5abfa"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ Guid="7c615c65-7f1c-4735-b668-6003e4a66146"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e7425a92-c390-4b5f-a7ab-2564a42a9640"
+>
+<Actions>
+<Action
+ Guid="5494abdc-7ce7-46a2-958f-978422f2d220"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="bff2b139-9612-4e7e-bc7f-f55bd5c90304"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -36848,24 +36865,41 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="383ba69f-d3c3-434c-b28f-5bd1dc5a09e9"
+ Guid="6dd99432-0e8f-4b63-8066-e4005cee58d5"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="3197b131-75b2-4ed0-85f9-cb9928d2be0a"
+ Guid="af6174da-d008-4ec6-a6e0-1671c1331d62"
 >
 <Actions>
 <Action
- Guid="33dd9123-fdf6-441e-810b-9fdc488d25a6"
+ Guid="7a13ae59-bfc6-4a51-b939-f1e769db6d8f"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="22d5fee3-3410-461c-8a43-f0ed37ffcdfc"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="b2b74cfe-833b-4b81-8b3e-f41c9edcc7c0"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="f7c57323-e9ab-4b3d-8a68-f69107070401"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="1a20c1a8-cc4d-4666-8b63-7bf88461f35e"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="550a11e6-8093-4f3d-960d-f28c46fc1ce8"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="b863468c-6b26-4dc4-9797-c9a4a11d23f3"
+>
+<Actions>
+<Action
+ Guid="b6bc2abb-eef0-458c-8547-be5fe2e2d7b1"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6057b79d-c367-4122-9ad8-3315f9fe3e70"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -36874,22 +36908,39 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="e72cb6df-234f-44e1-91a5-db2ac3777da1"
+ Guid="077b330d-5875-4b2d-9e73-a0011c47a9d2"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="23b89914-0607-443a-8d37-3a7d89366bb2"
+ Guid="6a80efc3-066b-4d9a-9e5d-892cbb228575"
 >
 <Actions>
 <Action
- Guid="d22177f0-3227-49c4-80e6-684c05204804"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="aa103160-8920-4fd1-afcc-bf4010b8c479"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="2f31bc4c-8678-49e4-b3e9-fd4d6f117784"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="d9b1bf6f-2a56-4afc-abcc-aea6d60819fc"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="35a6b26e-330b-4620-86f9-4671f74ae96e"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="85227570-6a33-461f-839c-9fa93b95ada9"
+>
+<Actions>
+<Action
+ Guid="28554783-8ce3-48ca-acab-1af0603c79bc"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="34b8c3cf-e510-4cdc-a06f-e25d46eab942"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -36898,24 +36949,41 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="e2ac7382-054c-42ec-bc14-53456b083286"
+ Guid="8adfb5c4-a9b0-4221-958a-74bb569dd3d9"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="b8850cc7-db6f-424e-b057-c3d2b5ae7b8f"
+ Guid="b4bc2c2c-37e9-4ed2-ae81-1cea0ded074d"
 >
 <Actions>
 <Action
- Guid="0278ea21-cdd3-4b71-9246-7b750cb8cad6"
+ Guid="ef34913d-f8a4-4482-b663-74f38b941ec1"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="3dcbf52f-6557-4ba1-8777-6e9eda003339"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="ed455653-158e-4b79-961f-efd06f59a8dc"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="e9a01f57-2af3-4a5f-9564-97afe154490a"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="d9454d4e-0c65-4240-baa6-53b6291b9d25"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="cdeb1987-cded-4cb8-8313-cb08e6f84391"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="9764e7c1-dfc4-44b3-b157-307a7e0c81e5"
+>
+<Actions>
+<Action
+ Guid="32db7f0c-cfc3-4586-a8e2-52dbaa6f66f0"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="fa04a452-8952-4a58-94ff-765edb4a651d"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -36924,24 +36992,43 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="bd5d5df8-442a-4dcf-9d28-b3de8c90252f"
+ Guid="7c0cb9ad-6e32-4389-9752-1503b64cb220"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="0b539d35-c9ff-4fa8-84b9-7ee723024f19"
+ Guid="4d6210ce-5bff-4fcf-bd1e-a729bbe9e45d"
 >
 <Actions>
 <Action
- Guid="92489fc9-1111-4e5d-bf1f-ab5a4a68d9ce"
+ Guid="80cc3b30-1323-4068-abd2-429d30741304"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="f8da37d8-4769-4813-a305-7be19fe1094d"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="a6742a8a-3e73-4509-b3be-dc736d2e842d"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="3dd3f63a-da02-4592-ae43-a756ba4c1581"
+><Comment></Comment>
+
+DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="40a4a1a5-130b-406b-be99-9e17b6f3307b"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="16ca8e7b-3d73-418b-a94a-f09d535eeb2d"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="70310e1c-dfdd-406b-bab9-0687ff36c882"
+>
+<Actions>
+<Action
+ Guid="9401bb7f-e29d-4719-90cd-25f3b414fd30"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6203951f-6d81-43a9-8593-9e6d09ff09ea"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -36950,22 +37037,39 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="2c61c9a6-bb8d-407e-82fd-66bade640f19"
+ Guid="07f9513d-2538-47f0-96b9-24be4468f813"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8727a807-d6b3-4a1c-b6a6-003183cd1945"
+ Guid="bbdcefa9-9dba-4b6e-a8e8-b07865b15e2f"
 >
 <Actions>
 <Action
- Guid="feff1a41-0666-402e-92fa-b556216edb9f"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="9d7efcfb-8694-45d2-81e8-0b9bc0c68696"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="625bab36-0e7f-4d63-9c83-ce59bf657236"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="582f521a-db8b-4b69-ac49-3b60bf6c3dc7"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="71920b57-3399-43bc-ab2e-f3b99271569a"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="9f410f44-f2d8-4804-b2c3-c68a8df898f7"
+>
+<Actions>
+<Action
+ Guid="9f28e221-cce9-42bd-b4bb-434c4ca85622"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="c95266ff-4dbd-4a77-9c35-28afa84a35b1"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -36974,22 +37078,39 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="581e6fc9-ed0f-466a-9baa-3b718490956c"
+ Guid="a8041d78-eaa5-4f74-924f-74ba7c31e880"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="08f86e3b-a2c3-46a8-8081-44a16acb4701"
+ Guid="40786fdb-110d-49bc-9530-2dd3b2902270"
 >
 <Actions>
 <Action
- Guid="464d236f-902e-4956-bc2e-d979ef1313ba"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="6c7a88d4-765d-4388-b939-60c230afaa75"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="8cacc361-f95a-47a2-9c81-b16d3af709ee"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="0634253c-fc2a-4fa0-b5df-b2679f7aced9"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="7a8445e6-3e1c-48e6-a23f-6a5558a7fb5c"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="937d20e3-a74e-409b-95f0-650a9b6ada3c"
+>
+<Actions>
+<Action
+ Guid="e1d2dfa5-e973-45a7-93fe-59603e8fe8fa"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="a6277e15-066d-42ee-9551-9e12dcc8a447"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -36998,22 +37119,39 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="a6452325-77c4-4492-85e1-7d0a71ece9ba"
+ Guid="40c12aca-7107-42ae-9f01-db34d91e70ac"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7400f040-6191-4b3d-bd49-3b4599c18734"
+ Guid="819f0fd7-83ce-4ef2-847d-4fdf9b683444"
 >
 <Actions>
 <Action
- Guid="e6f9cd5d-22ec-4860-b801-8b04b990fa85"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="190de9b3-e672-4f5d-8f1d-9a78dc844f13"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="6942dc1a-0ca3-4282-a513-e8ca2d908d0d"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="3d6b2d68-9dce-4417-a9d4-4dc72802be2b"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="c4243493-627a-4a6c-b585-46e5d9d64a30"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="eba801af-aa2f-4ec3-b558-6407188ff098"
+>
+<Actions>
+<Action
+ Guid="1a87c389-c64b-4550-b2db-fe749e99d62a"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="778d3594-d1c8-4a15-8ecb-f354bfe448e3"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -37022,26 +37160,43 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="b3dd87c1-d64c-4f67-a570-69c28c780b84"
+ Guid="60cf908b-a7d9-44b8-becd-f933a9023101"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="dfec4e7f-fe39-4d58-9b31-49fa25549c40"
+ Guid="15a69cf3-1da8-44d5-bfd2-8d41ae9d26ff"
 >
 <Actions>
 <Action
- Guid="96b80668-4cd3-48e4-986b-2c5bcf371a9f"
+ Guid="110c267e-f55d-46e7-8f77-15b71a20261c"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="0240f60a-baf1-4887-a3a2-b8feab2dc6fa"
+ Guid="ccdabb3b-6437-4494-bc0b-d766ef7d0897"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="d5d26c3f-53f5-4bc0-9d03-70027d0389d7"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="c88fed00-25d3-4695-801d-52626b35f728"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="72fe105f-f95c-4824-8399-23c3b2a8a54e"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="5fbfd6ae-f714-4d8a-9355-31a6fab5c003"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="597e89cc-f68c-4c6c-9803-98084092f33d"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="f1c5a961-58eb-4913-bc82-c593fe45b9db"
+>
+<Actions>
+<Action
+ Guid="d34f6539-fc17-499d-a7cb-85bb73196e1c"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="5a4a5d4e-16df-405d-bb2b-a86919edaf08"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -37050,24 +37205,41 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="c057396d-7f48-4f8d-9f4f-f251d2ca491e"
+ Guid="5995326d-5267-4ef2-b344-3db3a4a08136"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e6cad491-631f-48a7-b275-811129ae5ddf"
+ Guid="960152a3-5ef4-491c-a63f-63132342b755"
 >
 <Actions>
 <Action
- Guid="3ab1f82c-c4d5-48f3-ade8-d4abba019b8e"
+ Guid="5b30dda9-e055-4c40-bb5c-247b71211aa8"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="e71d45b3-4b68-4271-a83a-7f888392ac06"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="d0954cc2-69c5-478d-926e-3d12a06789dc"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="db70b833-6dcc-45ef-b1b5-8853384de5c7"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="158d1e56-3e47-406c-9d8d-5ab57dadcacd"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="df0bb0e7-1f85-4f54-97a8-ebeefa980c9a"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="76d9e3f7-efde-41f7-8c03-3d3391a119ca"
+>
+<Actions>
+<Action
+ Guid="4ea432dc-57c0-402a-b846-9186a11a4ede"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="e560e1ea-64d1-4a93-9ed3-6bf19b27314c"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -37076,24 +37248,41 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="98e1a409-0f41-431c-9bbc-27a30176c8b7"
+ Guid="1a20c16e-accf-4541-9edb-c82916656786"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="a33abfaa-1a04-41a1-b994-ff04bbe0c5c3"
+ Guid="f1578800-acb0-48dc-8671-5de69a23164c"
 >
 <Actions>
 <Action
- Guid="79065cc7-c7fb-4947-8c3a-1f91f061dd62"
+ Guid="e79591f7-d20c-4b29-827b-c9134700d096"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="816a8caa-1ef4-4de7-ae37-0b47e8cced1e"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="2c255c27-00e2-433c-ae93-00f3ea0e77e9"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="1f0157ab-ec17-42cf-8dac-1c27c21e40f8"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8484e39d-f1bd-46fe-b5a1-f011f0191364"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="673c5daa-d455-4b97-a18c-f0664070a5cb"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="442bcf7b-cbc2-4d5e-a8a2-cb6273a380d3"
+>
+<Actions>
+<Action
+ Guid="c1004ddc-3e29-430a-93fc-b6bf43171b4b"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="1cacd74b-4202-4e9a-84ba-efa3b0925819"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -37102,22 +37291,39 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="d8c35bd2-2dfe-464c-b43a-0afc7cf8fa8b"
+ Guid="08c4c08d-383f-459b-92c3-483cd8afdbaa"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="fa4d3ef1-3489-47f4-8b24-26abdcea0be6"
+ Guid="3b0a2172-5ba5-46bc-9a45-4bb556f3c986"
 >
 <Actions>
 <Action
- Guid="6333a642-6a7d-4b20-b72a-f221646c6b87"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="f25ab3d3-8291-46c5-9868-83b00f26495b"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="f63a9d1e-6727-4150-bd48-490ff79ee827"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7801ba2e-6d1b-4a6b-be33-87a14c4611d1"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="f3ff3872-bc44-429a-afec-01c566563717"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="36dbbfdb-3ace-4e3f-898d-7ab6dfed9927"
+>
+<Actions>
+<Action
+ Guid="12d20ee4-1bca-4613-8089-1ad2eb940efd"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="56b4e756-020c-4211-b972-e4acfba8689e"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -37126,22 +37332,39 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="c908377f-dc34-4831-9fb2-cee52f379d88"
+ Guid="12769a2b-a964-466a-9295-370a24fd0e9b"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6f8c763b-156b-410b-9883-af3178a51232"
+ Guid="738e9e93-bcb9-4bc3-b846-9bab5c515221"
 >
 <Actions>
 <Action
- Guid="a275a054-0fd2-41d4-ac13-549ab362a8b8"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="071af82d-1686-4ee3-8ad4-54d8090ac874"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="f92d3645-ed7d-4505-8d14-e8faf8b59279"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="6c960533-eee8-4596-acbd-e4c95ddc448c"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="f378ef59-6817-4a7f-81e8-6735ff93b380"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="0cc5ea1d-0249-4271-85a1-600d8f4edaf9"
+>
+<Actions>
+<Action
+ Guid="77e963f9-d941-465f-bcd2-d4231f4d0c3a"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="23103404-4e50-4cb2-8d61-6f04561ee159"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -37150,22 +37373,39 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="74401d82-8907-43a0-abe4-ef9d8532eb3f"
+ Guid="247c0fdb-b16a-4e4b-ba70-6918fe3c7110"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="cf1ab5ce-ac8d-4c8f-94d6-e0f3976dcd31"
+ Guid="16757559-38ad-4149-92a7-f5594db1f40f"
 >
 <Actions>
 <Action
- Guid="0b93e9a8-ec34-4e98-90a3-b0ec56db6f7b"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="f8003e93-0692-4156-906a-5996dc0c5c2e"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="b6f35bb2-2507-4dd0-adf6-19f811a16dc4"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="77431426-7529-48ff-b838-0f064cd35804"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="6dc75852-8641-4ff8-bfb5-f77e5d8248d6"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="eb30f907-e570-4513-b18d-26745056da2b"
+>
+<Actions>
+<Action
+ Guid="051ba9a4-4100-41d5-a4a3-505b7ee58fc7"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="b2de24d6-6502-4737-9302-718d657ffcac"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -37174,22 +37414,39 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="73903393-bdb4-4505-895e-29515b3e9bfe"
+ Guid="96169573-064a-4edd-99de-f0c7019d38ea"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="44595ea0-e272-40b3-8de2-730a615c61aa"
+ Guid="fd2d1731-2664-447c-adcf-b5d5194b3fed"
 >
 <Actions>
 <Action
- Guid="80747598-54df-416f-bfb3-af720066c881"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="916601f3-ff35-45f5-881f-0d2b3407ac86"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="86e57b47-c496-4aa2-8efd-19f3aa2aac33"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="cb0b9db0-39df-45be-a2de-5a17d99a8035"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2b4f915f-75af-4739-a4d2-16d194762491"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="7cc1fb27-da91-484b-a3c4-336194d21a95"
+>
+<Actions>
+<Action
+ Guid="04ceab7a-385e-44cd-8830-1f5e958f5254"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="843a23df-c333-48cb-abf6-2501da4c6623"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -37198,26 +37455,43 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="326618ea-1764-4dfb-b276-3f5ff1938547"
+ Guid="1d9d8b3f-6f33-4426-a211-f3da830e6b63"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="0a6ef790-be1f-4154-b857-2a801de756d1"
+ Guid="41136bea-103c-4281-b1aa-af0d8a113e6a"
 >
 <Actions>
 <Action
- Guid="26b93124-90fe-44a4-8ae2-743dbed6a5a5"
+ Guid="3708aea5-1d85-453d-8634-37ede523b8f3"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="48e3f0f3-1f95-4145-a1d4-c956cd592930"
+ Guid="ed2da32d-300d-4980-abdc-bde9c5ade16a"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="bd8518ce-b53c-416b-9f95-cd4a9ec597c2"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="4f645aba-1e67-439b-85dc-b41d35fcf2e5"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="a8ac42b8-9275-479b-b7b5-da063b3a257f"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="070bd6cf-9650-4446-b367-2b9581fb20ae"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="7ef1c23f-ba7f-48eb-948b-a83932cf2671"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="46fcbc8d-52f6-4de8-8619-addef1d14f1f"
+>
+<Actions>
+<Action
+ Guid="b8091624-4cd1-4af2-ba41-c3baf8803a82"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="706340ef-71c9-4c55-a4be-199866527a0e"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -37226,22 +37500,39 @@ DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="5b249f07-b77b-4d2c-8f44-87f6ca7d5258"
+ Guid="bd1554ee-02d9-4019-8a67-0e9a85ff0ea0"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="26f58c24-2568-40c9-b5e9-07b63c8d4253"
+ Guid="5b8688a3-d156-4d57-8ece-267c5ee4c309"
 >
 <Actions>
 <Action
- Guid="d6b0be4c-aef1-42fe-9504-fa086ab22afd"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="6981ff9a-5a61-432a-86ec-dd5ccd4ff3e4"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="1f3af1dc-0193-4b88-9786-63f8dfb342bc"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="719abc0a-4f7c-4ac4-811b-7887336f76d1"
->DMI.MasterDMI().Out_Gradient.ProcedureOut in DMI.OUT.Gradient.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="0399fc06-8061-4c09-8345-548899740e6b"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e608e7c1-2dc7-49c2-85a6-9c1929b0ea48"
+>
+<Actions>
+<Action
+ Guid="0ab8c9ef-e857-4dbc-9e65-32f1d58c97f6"
+>DMI.MasterDMI().Out_Gradient.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="e518403a-16e7-4906-bb52-201d3aa788dd"
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
