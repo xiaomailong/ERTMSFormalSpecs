@@ -41535,6 +41535,7 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  Name="OUT Notification of Train Data change from source different from the driver"
  Guid="8541c857-b9d7-47de-93e0-081b78ce4487"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -41588,13 +41589,13 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="OUT Notification of Train Data change from source different from the driver"
- Guid="ce4e19f6-5abe-40e3-89d2-7e11f6a9db59"
+ Name="OUT NotificationOfTrainDataChangeFromOtherSource"
+ Guid="ccf7b029-7944-46df-9e9a-8eb63295b6c0"
 >
 <ReqRef
  Id="cde58d6c-c5d2-4ee2-8363-fb89efc1fcd7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="69592198-9171-4d9a-80ef-846d0f3a3c35"
+ Guid="d1fdfcd5-5d40-4f82-bee8-bbbb696ab99c"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -41606,24 +41607,40 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="cf0e80e4-a41f-49fa-ad0a-e190a9ef0e60"
+ Guid="79a6b7be-8bb8-41f5-bb33-c616095cef4e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="0347b147-0a0b-4de7-90ce-09eb39ff6df1"
+ Guid="2261f871-5dce-4622-b5c5-6a89d9180d73"
 >
 <Actions>
 <Action
- Guid="8e2fbb3c-bdc4-4883-9101-96acd75f45fb"
+ Guid="df925fe8-0d6e-4595-9819-b86e5972a604"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="7e417d2d-fee9-444e-a697-4b124f8a932d"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="c9eb9719-f5b0-40fb-ad01-b72b75f52f15"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="2610a60c-307a-499f-9635-ab02ed7476db"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="e434d857-4bbc-4dac-92de-c0ba5e9e2606"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.NotAvailable</Expectation></Expectations>
+ Guid="ac5a9293-f04e-43e3-b44b-c9c343a77191"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="1bc67eb1-5992-4fcb-8f12-d1089d3487fc"
+>
+<Actions>
+<Action
+ Guid="d2779565-3271-443b-94bf-b86c391dc1a4"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="06e2bd92-61c1-4581-8891-7b6e79f8edf1"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41632,24 +41649,41 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="b12219ff-6d0f-448f-b825-8c3e120b189f"
+ Guid="6621277c-8d7c-4a23-bff1-36088711b89e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d1b30815-2e8c-4a9e-a2df-bf55f3a8888b"
+ Guid="c9f39553-adfd-47c0-8dbe-161349890903"
 >
 <Actions>
 <Action
- Guid="7c29f32c-b5bd-4b33-b860-151e56edbe9e"
+ Guid="68b158c9-68e9-4db9-9bad-3f73c5def385"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="e70f2763-c0ab-4648-b792-e7c26c3760e6"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="e60e4d9d-b760-454e-bef9-2d370c4ea5e1"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="1ce7960b-d807-4f19-ab53-8882f5428d16"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="38d3a5de-da3f-4a3c-a165-86e2dac87470"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="5a450f7d-776d-4be8-9208-b42047fc1727"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a6965cb4-1655-4bea-b2ea-6ef1234b1b6a"
+>
+<Actions>
+<Action
+ Guid="aa05414c-aeb0-4a2b-9716-7960b08fccaf"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="21bada27-4aa5-4832-a663-6fffa4826d67"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41658,22 +41692,39 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="e82a7959-1e1b-41ea-bdcd-28e192585ff2"
+ Guid="fc90778e-ae33-4eae-ae7e-eda47c9fd0d8"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="0a184f12-3611-4ce5-b809-3c2e8ad9bf00"
+ Guid="6421d402-cef1-4af3-9821-f54a51d4c3f4"
 >
 <Actions>
 <Action
- Guid="a4e40f04-31c2-481e-8cba-718841411a34"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="b448b54e-85dd-41b1-aaf1-f77c50524169"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="1c735d27-f071-4103-9c2a-c5dcbe59aba5"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="5f8a3618-208e-4fc3-8a16-11a9e4e03fde"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="f450434f-7286-4791-b69e-589cf0fae664"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="07d85865-68aa-4ff7-8bcb-82c32d4dcd5f"
+>
+<Actions>
+<Action
+ Guid="8bead629-fad8-45b3-9fb3-80544a4abbee"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="90ddbe0c-a6d8-4a38-bfbf-0bfd3d161cf5"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41682,24 +41733,41 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="00d1ce66-de3e-49b3-82c1-c41f69069025"
+ Guid="ddd4caf9-1ab1-4925-ba4a-6d9284a05c3a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="a5ff8b38-7f1a-43eb-81d2-7a3d574a8606"
+ Guid="82fdcc59-98a9-4853-82fc-411dae21d527"
 >
 <Actions>
 <Action
- Guid="c4757c78-7d69-489d-a163-8cbda1d3f247"
+ Guid="e052e418-1cff-4070-b4c4-7a9b4960b68f"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="9266f5bc-7a99-4563-91bc-d68c62bb81a9"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="83f55c64-62a7-411c-9ab9-c13ee7c889df"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="1ec50055-cb13-4208-b435-1c1197b078e6"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="5bb271e6-1a84-4418-afa4-022dcb0d3296"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="f6b1d11a-b953-4439-9652-6168e732a6b1"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="22e866f5-aec9-436f-9291-14ac9a2d794e"
+>
+<Actions>
+<Action
+ Guid="1a154a93-7f03-43d6-a60e-dda5301ec5dc"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="04b9c909-68a6-4c3d-a9a4-aec851378985"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41708,24 +41776,43 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="8296afb0-75f1-4cad-bbdc-66450d3e41d4"
+ Guid="53c8a5be-2cfa-4857-bc69-a704cd884395"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="5087b61b-5686-494b-9bd9-17b44f1162fd"
+ Guid="8cd7dbfb-dcf8-4108-aa21-1a8437e44804"
 >
 <Actions>
 <Action
- Guid="879aca96-5b97-4297-8a6c-423f69cbe626"
+ Guid="4677739b-630f-4447-9785-f05f1ac92d43"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="dd179f87-2a8b-46e5-be74-29cb26c841cb"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="5f0dd701-bfee-4a4f-ba31-744937da0418"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="2b1744a5-ae99-40eb-a2c8-e9595cd7f95b"
+><Comment></Comment>
+
+DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8dc25e6d-4a6c-468b-a640-9ac15851c0f2"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="b76b5916-3398-4c6a-8b2b-09cdcee0d103"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="db6f4040-7576-4f16-a605-e273e15ffb8f"
+>
+<Actions>
+<Action
+ Guid="27655c68-1703-4589-bae7-beb3173b8af5"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="106af590-c9bb-4fdd-9169-580e5e9c8ba3"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41734,22 +41821,39 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="4abdbec8-f025-4166-bb53-488493676f03"
+ Guid="807f025c-bbf0-42f4-b889-6851ccffdfa5"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="a25dd683-4ccc-4b46-b461-311ca3183e24"
+ Guid="a987ef3f-a3c5-4e29-a559-891fda0c3979"
 >
 <Actions>
 <Action
- Guid="ca70a753-f96b-4961-8c8f-58e9f548b343"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="6af87894-63c3-43c2-95d7-d5e7925c4a4d"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="81cb91c7-5311-4fe1-a542-ec3c63e25e08"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8ba751f1-a719-4d68-af5f-bbca78bfe5ef"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="f139b53a-a81d-4629-8525-ce0c08881991"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="278cab3b-d600-483d-8d89-74fdecce03f5"
+>
+<Actions>
+<Action
+ Guid="3708b434-c1dc-4afe-8c1d-246a9411b0fa"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="65937690-c6f9-4666-81b4-1267c6d5a9e4"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41758,22 +41862,39 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="aaf23911-8b68-4839-936e-5e31c3b04043"
+ Guid="203bd940-c288-4126-9143-b28faff68436"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8b763187-4c83-45ff-bf63-97d45deda77f"
+ Guid="4474aef1-f683-445a-8da6-3d3a0f0dd3d3"
 >
 <Actions>
 <Action
- Guid="8cf2e415-56e8-41d8-8108-751109dd9a9f"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="7a39d4ad-c671-4c50-93cc-7a7162e1ddce"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="98340934-6992-4c09-a7e7-108382bb9401"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="25d93e4f-9aeb-40f0-b62a-241f663a3884"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="55e2ae72-cfd4-469c-badf-50dcfedbdd69"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="9eb1cfbb-6fa8-4c5a-a928-f4f47c4ff61c"
+>
+<Actions>
+<Action
+ Guid="a88ad908-4053-45c6-a251-e4c695056b4b"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="609d9baf-66bf-40fa-84d4-7909755620c6"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41782,22 +41903,39 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="95d02a8c-0bec-4164-936d-b95a8ba4f575"
+ Guid="2139ce23-34d4-4afb-82da-5daded81f1ec"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6e32b601-894b-479c-9626-a6273dc15bd9"
+ Guid="3b919057-c1a6-44d8-bbdb-81e82cc9038e"
 >
 <Actions>
 <Action
- Guid="fa6aac57-38ac-4375-aaee-2d6b7507360f"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="54a60a7e-234c-416a-a236-66f8b24c7b6e"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="3bd76ce6-d1ab-4b76-93e2-8e9f8fe9072c"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="753fa89d-2226-49c7-a0b2-b8bf8a1952d5"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="1545a16f-101f-4d94-b23d-2c4720cd22b4"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="66076717-72f4-460e-9132-0861ca9318cd"
+>
+<Actions>
+<Action
+ Guid="dd82a275-5615-40e5-9630-9d67183f62ad"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="9e256893-2636-4dc5-b715-dbfbe11224c1"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41806,26 +41944,43 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="c26df425-b134-4060-8125-5169a533c8c6"
+ Guid="7926e0b9-7731-48e5-8d19-4be8a20802a4"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e491ae8f-fd04-4531-a84e-043720d05ee9"
+ Guid="ebcf0f3b-a22a-41af-8627-e201f96103a8"
 >
 <Actions>
 <Action
- Guid="a758add6-aa09-4fcc-9b3f-d5dd9ef17620"
+ Guid="7c086dca-2006-49bb-97bc-565c886c08df"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="828164b7-28d5-4e53-a7bd-8a9c1e30640c"
+ Guid="5c14e9a8-17b1-4ffa-95e3-cfdc2f092c56"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="8b6c3ef4-9883-43d1-9445-e4d7fbfa429c"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="33f99ac9-e95e-4cb3-bbd0-733665fd53e1"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="347430fb-ecda-453b-9787-25819926e423"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="af312593-6c9a-4273-9882-df650c113ea5"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="8b7271e4-d8d7-4bd0-8736-cc0d66696312"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e7593538-42ff-41d4-87c1-beb3893ed1fa"
+>
+<Actions>
+<Action
+ Guid="664984e8-f47f-41c0-9afb-da7e64f19578"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="48ec8941-7c75-4606-b39b-4855097d7f0a"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41834,24 +41989,41 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="32a9e8ed-5d64-425a-a825-aeb924c58f3b"
+ Guid="92683cb3-bde9-45d2-b4d1-cf7bcf02e05f"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="94afd7dc-80b9-4b87-a8fe-1ec71f3d6245"
+ Guid="8a128ec8-a52d-4f40-abd3-d85dd48e4fa5"
 >
 <Actions>
 <Action
- Guid="01a041ea-9a82-443f-87fb-81767d2cb9b3"
+ Guid="4ecb5194-113d-4b57-972d-9a833a9ab39e"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="233f8574-d313-4e54-859f-1e1e2fbe0579"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="21c27d79-a5fa-415f-8fba-e417140f4d13"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="a5df8673-e928-4189-abf8-2b6bda5781cf"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="0d2a5bd4-997c-43d0-880d-6bc0562c153e"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2fc1a5cf-7f27-4ab7-8bdf-08af2ae27ed4"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="25cea504-cd88-4ad4-9002-ea7c0b7f2548"
+>
+<Actions>
+<Action
+ Guid="de8ae0fb-5f03-4efe-847d-eef6f7fc9c9e"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="5af3b935-2ae0-4473-ac5d-5320fa3c9018"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41860,24 +42032,41 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="ec1e6b52-8137-4024-97eb-a709de5482a2"
+ Guid="f81f1fca-623a-463e-8498-5095881a55f7"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="c1f515af-2e5c-4aee-9c7b-80d581c8f195"
+ Guid="cc1ceff6-6a0a-4266-9cc5-14bd884cf238"
 >
 <Actions>
 <Action
- Guid="39fd36c0-2738-45ef-bd08-652430acae20"
+ Guid="66dcff8d-e21a-4150-931f-50709073d831"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="d11d2b17-1b53-4cc0-90ae-53151792c95a"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="9a20130c-0267-4108-a349-3457e2f58c8e"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="a08a915f-d556-4fa7-b3db-bfbc8d70ec00"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="fbec7397-9e93-4c66-94ed-45338497ff54"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="9fcff33e-e5f2-477e-a1dd-b787076d0b6a"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="7d52f94e-10be-4816-800b-cab3ac84910a"
+>
+<Actions>
+<Action
+ Guid="4df4ce5f-8d79-4880-b0b4-91f7a76ff782"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="a780116d-c570-4798-a399-cdac0981590c"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41886,22 +42075,39 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="1a723bb6-852f-4450-b42f-5bb1f823cf24"
+ Guid="eeb99a9d-edee-4efc-b0af-7f35638cf869"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="fd208a61-0027-4754-a521-7d12ba5d29c6"
+ Guid="e1171976-f5cb-4a62-87c6-3630cd4f2d13"
 >
 <Actions>
 <Action
- Guid="5ed0b62a-d29a-49cf-b42b-4025e6434343"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="567dd65e-4c70-4f87-a7fe-42c4dcd97f75"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="4566955b-f101-47a6-9d02-ac79969d049b"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="6616a48d-eee5-40bf-a6d2-381fbd7af7f1"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="88a54414-bfd6-43f4-883d-e43b7318742e"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a95d433f-1237-48a8-974a-008d30a95d07"
+>
+<Actions>
+<Action
+ Guid="6dd393c2-75e7-4127-8b89-54675d21f2c3"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f31a1625-bea3-4943-88f0-43d9e5fccec8"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41910,22 +42116,39 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="f10a478b-64e9-4d91-bffe-3771d2af5e46"
+ Guid="a8347ea0-34da-4b7c-8c67-64253c134507"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="9d0295e7-0605-4a27-a5d2-3d8361b3fc95"
+ Guid="0c27d233-d9d2-43cd-818f-6dadfa9cbee1"
 >
 <Actions>
 <Action
- Guid="bae6c98c-5776-44a1-a6e6-753d32b85cfa"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="8f74a128-c8e8-4fd3-916e-3703f11425a7"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="ed7f38da-f04f-4efc-8279-4389c13382e5"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="fa3835d2-07a6-41d0-a31b-d7565f1805b7"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="34def834-ef93-424c-b407-240a2174cb5e"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6cc59164-7bf2-43f0-9ecf-a175fd22180a"
+>
+<Actions>
+<Action
+ Guid="dfb78f02-64ce-43a8-8684-cabd5afa5966"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6a378920-b580-481c-99ad-93ce86225aff"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41934,22 +42157,39 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="8411e3b6-36a1-49cd-919c-6e75722eddf5"
+ Guid="44c829ca-ad72-4506-b05c-ff7ffda8eadf"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="64ee7e7a-12f4-4c44-8b61-993a47bb6d6d"
+ Guid="ec62d0c6-9c2c-4e57-91b8-4aba63280886"
 >
 <Actions>
 <Action
- Guid="c652779d-098b-4ddd-9007-7b5fe50289bd"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="6b40a595-5307-49d5-b72e-539c4698b482"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="068edd86-5f0a-415f-9b4f-0613525010f4"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="f5276566-a185-4249-b58b-ae2d2ea6c613"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2e5c20c0-5f72-4901-ac45-6222fea67d58"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c50ec0eb-0564-4ce3-ae17-b0e13320f976"
+>
+<Actions>
+<Action
+ Guid="aba77e15-30f4-464f-89e4-674f7517b713"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="fd84fe79-70e8-4ba5-8464-67e7f9450937"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41958,22 +42198,39 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="c3fe6f75-d2a8-4431-9de2-7229704d4a47"
+ Guid="dfd179b8-b009-4d7d-b320-d375ac627aaa"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ebccf766-f3dd-4f3c-a813-335eb03dbb86"
+ Guid="037af0f5-5e6a-4c9f-be6e-ec71a5b0945f"
 >
 <Actions>
 <Action
- Guid="c67f8b79-3596-4f42-b9a9-8ce21ff764a1"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="b91cd26b-99aa-4807-99dd-0664950cd9a8"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="57c2b6b3-076f-4cd9-9b30-714b21b08427"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="1d01697a-681a-40eb-8c38-5cb32e250144"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="fcf03f7b-f93b-4928-9216-2f774072ca56"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="1ad4fe46-be85-428b-b4da-be715e122d9d"
+>
+<Actions>
+<Action
+ Guid="e8e83856-d5fd-4bec-a1d4-a5765d51ff48"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="3c9d1747-b304-465f-a3fc-a10332e375d1"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -41982,26 +42239,43 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="30e28dfe-4acc-431d-8a0f-969816aea615"
+ Guid="a828c14e-fcf8-4da8-abe8-dbbf9c634326"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="3c0f774f-edd9-41c7-8891-11d5b11ff395"
+ Guid="62161079-42c3-44ee-bb94-48425afc5b81"
 >
 <Actions>
 <Action
- Guid="902ae09f-a2ee-47d6-a1a5-82d8abd10aa3"
+ Guid="68e4cb16-b537-4e30-a766-d38b98143189"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="31244186-8f5a-4bea-924a-c478cd140070"
+ Guid="1bbe9954-f3da-4226-96a8-8d5cca1a3c1c"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="8dd4a503-5b5e-4b47-a98d-34b3484205c3"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="c0a9853d-1ca2-4e1b-880e-0f9a85c3a9d1"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="7054b323-0cd0-44d0-bab1-bba4773593e1"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="a8667376-2c59-42ea-b849-cab63fe0d880"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="74133ba7-c1b2-46e4-bec3-55816a0acb2c"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="1e307564-c6bd-4c9b-b649-0a736fabc71f"
+>
+<Actions>
+<Action
+ Guid="49496272-d002-45d9-a32e-89a21dc62a68"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="3aea4591-d3fd-4980-8589-f2fe9926f36f"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42010,22 +42284,39 @@ DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="a04a8cc0-5c53-4aeb-9ef0-9c62a95bcfd5"
+ Guid="dc449711-cfd6-4f28-a9ca-fc729d8f9e6e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="50a6ab0f-7d60-4496-8553-5b543296935b"
+ Guid="1c397893-0784-44dd-9593-70545124b4d7"
 >
 <Actions>
 <Action
- Guid="03abb196-30b7-4ad4-a6ca-dfdd81e34513"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="9340cb36-dbaa-41c3-a0cb-7b18daf1e937"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="34c26bd5-6183-4c63-ada3-256e33159d2c"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="b8e251dd-ffee-4d54-879e-f0fb8d5ccac2"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.ProcedureOut in DMI.OUT.NotificationOfTrainDataChangeFromOtherSource.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="41d0dc1f-51a8-48b3-8d5f-0e55b89e18a4"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d387ecab-117b-4cc1-90d4-44e850c9bc1c"
+>
+<Actions>
+<Action
+ Guid="27b2ce18-bc13-4b2e-9497-e1d834b8fc28"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="983f7edd-7064-4ad9-910c-cac615f9a72c"
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
