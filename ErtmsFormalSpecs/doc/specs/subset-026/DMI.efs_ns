@@ -554,65 +554,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="DisplayReleaseSpeed"
- Guid="ad110f96-45dc-451a-a38e-aa81016bc04a"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="09a38923-b99f-4cae-8d9d-02083b38ec2f"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8fe418ec-795c-4426-8992-451e343302d6"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="971cf532-de70-4ca3-8448-b4770a29344e"
->
-<PreConditions>
-<PreCondition
- Guid="c5e9df75-905b-4a14-9caa-b83383404bb7"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="e8d5e274-6378-4fff-ae1a-0b7926eb75af"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="a2c98121-5d8c-458e-8ddc-bf7730032a35"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="469b15cf-bde7-4e9d-a951-776f83de45a3"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="08e3b255-ddd6-48ad-9edd-f7ef025d8ea5"
->Out_ReleaseSpeed.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="DisplayRouteUnsuitabilities"
  Guid="b7a9307a-3de4-481c-8967-acc251b8059b"
 >
@@ -1834,8 +1775,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="dc29a70a-cc62-4b8f-b4c6-435fe7873498"
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.NotAvailable</Action><Action
- Guid="dc075ca0-8d88-4cc9-bfd4-18481d8572cf"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="4136b9df-a90e-4ae2-8ab5-e95dc4ce05fb"
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.NotAvailable</Action><Action
  Guid="b68dcab8-651f-4d89-8d7f-638d4a3f455a"
@@ -1926,8 +1865,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="85a825e9-846f-4dc2-bd14-79df98b23e29"
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.NotAvailable</Action><Action
- Guid="6a7f8603-8e0f-4f96-ae12-a026cf0ae3ae"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="197b304f-d18c-4a6d-86e8-7a4ee9e7d397"
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.NotAvailable</Action><Action
  Guid="f09385ca-419b-491d-a6d5-5b302b6f32f3"
@@ -1986,8 +1923,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="c0e73139-5720-42b8-a3c8-b0f1eb713e88"
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.NotAvailable</Action><Action
- Guid="8b2751f0-0ec2-4a0b-ad76-eedf44ffec21"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="d82ab512-188b-4345-a749-31c4e7ab4e64"
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="5fb91657-6a4b-4775-a6e4-8533abda17c0"
@@ -2052,8 +1987,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.Available</Action><Action
  Guid="65068899-c713-4332-a79d-ae590a695e98"
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.Available</Action><Action
- Guid="ae0a0717-c1de-44d6-9ccd-9c18d5077036"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.Available</Action><Action
  Guid="d8e18b16-a2b5-4a91-a879-e4cacfe7ceb6"
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.Available</Action><Action
  Guid="d030abc3-62ee-46a2-9927-a1375d663c8a"
@@ -2122,8 +2055,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="c44932b6-0ab5-4e34-8a1c-315458b3740d"
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.Available</Action><Action
- Guid="359f7f8d-38b5-458c-be89-10a8122b4e2a"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.Available</Action><Action
  Guid="44a78648-973d-4308-814c-f3debb1757f7"
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.Available</Action><Action
  Guid="104f59c8-42bb-49c5-94a7-85ac31c408ee"
@@ -2210,8 +2141,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_SafeRadioConnectionIndication.ProcedureOut &lt;- Out_SafeRadioConnectionIndication.ProcedureOut.Available</Action><Action
  Guid="87ead6d0-aeab-4bf2-85d4-6270932e4bd8"
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
- Guid="7d9360ee-c107-456d-9ff7-ce982a9c756b"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="fb1154f1-3634-4fd9-ad4c-a6cc8899aeec"
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="cfc5c5ca-5cb8-4a00-887b-02345ca5b981"
@@ -2268,8 +2197,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.Available</Action><Action
  Guid="ad483943-a149-4653-a3e6-fbe3f9f5611d"
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.Available</Action><Action
- Guid="dceacd10-88f1-42a3-93a1-f1c06ec65a8c"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.Available</Action><Action
  Guid="3c20f5ff-5baf-4132-9e3c-84b8d325a209"
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.Available</Action><Action
  Guid="600044f7-1d40-4bd3-af80-a6fd21123811"
@@ -2346,8 +2273,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="89291ec8-0e22-4335-9c73-0c95d4f0a0fe"
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.NotAvailable</Action><Action
- Guid="914c7a89-b8ea-4754-9af9-dafed17ec043"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="116845b3-7a60-454d-989b-b52655d3e542"
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.NotAvailable</Action><Action
  Guid="5b606e01-574a-46b9-a44d-bf737c237367"
@@ -2420,8 +2345,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="14284e45-bfcc-45cf-8110-84fc0cd7c562"
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.NotAvailable</Action><Action
- Guid="72651fbc-f2cd-41fc-a301-4f4b1dc3ae26"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="464f9932-9cf8-4d77-87d4-db61334662bc"
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="3f06da4c-f7c0-43c3-b0d2-d9086b03e5f2"
@@ -2494,8 +2417,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="d766e9cf-0499-4f92-8725-b92a4c802a6c"
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.NotAvailable</Action><Action
- Guid="6b4b08e3-5429-49c1-8cef-3c087025031f"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="8a06aff1-d883-4818-8d17-87ca85942e6d"
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.NotAvailable</Action><Action
  Guid="523732ec-6ef6-43cc-a333-daced0eca8ce"
@@ -2574,8 +2495,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="00d04954-38c7-4284-926c-e4b5c43d155d"
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.NotAvailable</Action><Action
- Guid="ca461ab2-e602-44fe-bf77-f0af7f00139f"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="6b5a1d15-5802-4f70-a33d-ad71cee2e483"
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="743f51a2-1fad-4646-9e6e-988eedfd2395"
@@ -2628,8 +2547,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.NotApplicable</Action><Action
  Guid="605a8775-39f6-4eb5-8e06-d3e3f75996a7"
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.NotApplicable</Action><Action
- Guid="59614800-7941-4302-8176-87be51a27287"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.NotApplicable</Action><Action
  Guid="ca2b7a4b-e925-4d80-b62a-a25bce0cb999"
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.NotApplicable</Action><Action
  Guid="af9b2432-3725-4826-9e38-337559bc611d"
@@ -2700,8 +2617,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.NotApplicable</Action><Action
  Guid="7b73aaf6-23ab-465b-94fe-32233187a8bc"
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.NotApplicable</Action><Action
- Guid="d1935b9b-6709-45e1-839c-ad288a417cb1"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.NotApplicable</Action><Action
  Guid="5cbb6819-8c1c-4c1a-b0bd-33f3815cfc68"
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.NotApplicable</Action><Action
  Guid="a6bd9e9e-37a1-480a-9eb6-c819c4b7f2ba"
@@ -2778,8 +2693,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.NationalSystemAvailability</Action><Action
  Guid="7eef734e-2a79-4113-b229-a30d6a661cca"
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.NationalSystemAvailability</Action><Action
- Guid="e3a0f40a-60f4-4f95-9f35-b37efe034949"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.NationalSystemAvailability</Action><Action
  Guid="1244de2c-28af-4e82-8cb8-02ff155898bf"
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.NationalSystemAvailability</Action><Action
  Guid="e9837bc4-1206-476b-b452-34548ef9383a"
@@ -2852,8 +2765,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
  Guid="56e32f0a-24e1-4c6b-aca5-30107953581f"
 >Out_TargetSpeed.ProcedureOut &lt;- Out_TargetSpeed.ProcedureOut.NotAvailable</Action><Action
- Guid="6a0f93fd-c011-4c0f-b7d5-c53e59b711fb"
->Out_ReleaseSpeed.ProcedureOut &lt;- Out_ReleaseSpeed.ProcedureOut.NotAvailable</Action><Action
  Guid="db760827-edae-4d45-b12b-fe331cbf79d1"
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="b85c66a3-281c-422e-800b-ce2d9e7dd676"
@@ -3224,7 +3135,9 @@ In_TrackAheadFree.TrackMode()</Action><Action
  Guid="a1bc5cf3-b5cc-4a90-8920-a37c0b7fad68"
 >Out_RadioNetworkRegistrationFailed.TrackMode()</Action><Action
  Guid="7909e2db-ed68-4a49-b7c1-e357046c5ae7"
->Out_RBCContactInformation.TrackMode()</Action></Actions>
+>Out_RBCContactInformation.TrackMode()</Action><Action
+ Guid="e5640c9a-8864-41e5-b376-8a99daa110f2"
+>Out_ReleaseSpeed.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
