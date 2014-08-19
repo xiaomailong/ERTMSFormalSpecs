@@ -554,65 +554,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="DisplayOverrideStatus"
- Guid="21d86940-2796-43d0-b931-92e5d1646ca1"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="ed6d9351-431d-4c54-a57c-a919dd4ea79f"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5215a445-6d60-4d03-ba8a-4d92df7c1f08"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="057dc6f9-af0b-4b32-be6c-d36e824de284"
->
-<PreConditions>
-<PreCondition
- Guid="a2b0481b-8abe-4437-a88e-8b16f335a79b"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="79f4fcdf-df2f-4cb6-ba4f-c02b00cc98eb"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="cc611d61-a569-49e9-8e8c-3eac053d10cc"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="316124d2-2b5d-4ea9-a0d1-cebb814acc5c"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="a785bfa9-9400-49fe-912f-0a4a573a7c9b"
->Out_OverrideStatus.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="DisplayShuntingRequestNotAnsweredByRbc"
  Guid="f82d8587-bf41-40db-9482-9d8c6e60732b"
 >
@@ -2148,8 +2089,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotAvailable</Action><Action
  Guid="000cc86c-1475-4caa-a971-6daa04ee174c"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotAvailable</Action><Action
- Guid="8677c8dc-87dd-4bb4-987f-fa57b79dc886"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.NotAvailable</Action><Action
  Guid="b89e9506-cf22-43f5-ac00-bf0ec237d397"
 >Out_ShuntingRefusedByRbc.ProcedureOut &lt;- Out_ShuntingRefusedByRbc.ProcedureOut.NotAvailable</Action><Action
  Guid="6c57cd9a-58f2-4f20-85d1-0210d435c3c2"
@@ -2252,8 +2191,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotAvailable</Action><Action
  Guid="45020693-3254-4969-9757-c39dbe9e6ac9"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotAvailable</Action><Action
- Guid="5d52cffb-af95-498c-a337-11978922cb9b"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.NotAvailable</Action><Action
  Guid="20cadc13-9db0-4b1a-8e01-6009f041f08c"
 >Out_RVModeProposed.ProcedureOut &lt;- Out_RVModeProposed.ProcedureOut.NotAvailable</Action><Action
  Guid="1052ae83-f5ef-4345-af5c-a64cd9bb9982"
@@ -2294,8 +2231,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.Available</Action><Action
  Guid="cce31c72-66eb-4a50-b956-58fb84a3a403"
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.Available</Action><Action
- Guid="c987a44f-279e-4a3c-b39c-9dcdfc9c77c6"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.Available</Action><Action
  Guid="943c16c6-c789-4b37-9926-db1b95b89e7c"
 >Out_TracksideMalfunction.ProcedureOut &lt;- Out_TracksideMalfunction.ProcedureOut.Available</Action><Action
  Guid="e26a72df-5d3a-4a72-8cde-858e10b3d743"
@@ -2412,8 +2347,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.Available</Action><Action
  Guid="838a4941-e67c-43a7-8b3e-c57ea7587185"
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
- Guid="fc9994ef-7aa6-4cce-a103-26db1879e0b6"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.NotAvailable</Action><Action
  Guid="e8fc8120-d18c-4f02-818b-ecf65632dc0a"
 >Out_TrackAheadFreeRequest.ProcedureOut &lt;- Out_TrackAheadFreeRequest.ProcedureOut.NotAvailable</Action><Action
  Guid="21698581-556c-4a7f-a9da-019748936bfa"
@@ -2496,8 +2429,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.NotAvailable</Action><Action
  Guid="e534a788-cb0a-4496-8183-c4fa3cfdfd2b"
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
- Guid="f751b4a1-24d2-4366-b640-cc5882993b0f"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.NotAvailable</Action><Action
  Guid="9ec4a99f-53c6-4339-b480-bdf65eeab133"
 >Out_SRModeProposed.ProcedureOut &lt;- Out_SRModeProposed.ProcedureOut.NotAvailable</Action><Action
  Guid="2b53dddc-250b-4fb4-90a0-978602e8f38f"
@@ -2550,8 +2481,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.Available</Action><Action
  Guid="8b68f8c9-bc0f-4aa2-a014-b9fff41e7acd"
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
- Guid="e703b2d8-c365-4884-9731-034d436df2c7"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.Available</Action><Action
  Guid="ab858518-4e94-4728-aa3e-d5d061883fd1"
 >Out_ShuntingRefusedByRbc.ProcedureOut &lt;- Out_ShuntingRefusedByRbc.ProcedureOut.Available</Action><Action
  Guid="9f86bd52-d44e-4c5a-9ba0-eaed6c305694"
@@ -2660,8 +2589,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RouteUnsuitabilities.ProcedureOut &lt;- Out_RouteUnsuitabilities.ProcedureOut.Available</Action><Action
  Guid="291ed8f0-5df0-4dbf-8b6e-414ddc80fe60"
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
- Guid="736d47db-cfb6-4d76-88e7-8dee298f348a"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.NotAvailable</Action><Action
  Guid="996e4191-dc78-452b-a229-bdffa91e6503"
 >Out_SRModeProposed.ProcedureOut &lt;- Out_SRModeProposed.ProcedureOut.NotAvailable</Action><Action
  Guid="dabb0c89-5bf3-4fb7-aca5-f76147bd1921"
@@ -2730,8 +2657,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_ReversingAllowed.ProcedureOut &lt;- Out_ReversingAllowed.ProcedureOut.NotAvailable</Action><Action
  Guid="a8576c9f-ca7e-4f84-b680-6a72b40b28a8"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotAvailable</Action><Action
- Guid="ac887411-c70e-44ee-9277-fd0ffe170e98"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.NotAvailable</Action><Action
  Guid="33805863-d1ee-4ccb-9e96-b4f5b6712bf1"
 >Out_ShuntingRefusedByRbc.ProcedureOut &lt;- Out_ShuntingRefusedByRbc.ProcedureOut.NotAvailable</Action><Action
  Guid="908efbeb-c18d-47cb-a192-273019fdcca7"
@@ -2790,8 +2715,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.Available</Action><Action
  Guid="78a2da74-f87f-41d8-8a49-c79c85bdbc4d"
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
- Guid="481242ba-5e69-4eb6-ab38-96b309e053d9"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.Available</Action><Action
  Guid="a77e05d3-6ca7-4ec9-8da4-98958ac14001"
 >Out_TracksideMalfunction.ProcedureOut &lt;- Out_TracksideMalfunction.ProcedureOut.Available</Action><Action
  Guid="dfeb374f-1910-4ee2-8481-780688aad699"
@@ -2894,8 +2817,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_ReversingAllowed.ProcedureOut &lt;- Out_ReversingAllowed.ProcedureOut.NotAvailable</Action><Action
  Guid="9f6f2ed6-c732-43cc-9396-49bd6fd5e2e8"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotAvailable</Action><Action
- Guid="5367619d-dfa1-4737-b106-ab648e26995e"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.NotAvailable</Action><Action
  Guid="720fca0f-3bab-4a44-a0d3-410291559613"
 >Out_ShuntingRefusedByRbc.ProcedureOut &lt;- Out_ShuntingRefusedByRbc.ProcedureOut.NotAvailable</Action><Action
  Guid="06c2f6b6-4a07-4fd7-8e0f-fb3ba2323866"
@@ -2986,8 +2907,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_ReversingAllowed.ProcedureOut &lt;- Out_ReversingAllowed.ProcedureOut.NotAvailable</Action><Action
  Guid="f7f6dd16-4609-41c4-b551-7b8a75a14bb7"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotAvailable</Action><Action
- Guid="9f0e1cb1-6a8e-4137-b98f-93e6ec311a23"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.NotAvailable</Action><Action
  Guid="3da0a623-dee7-4ae9-b20d-b30404e088c8"
 >Out_SNModeProposed.ProcedureOut &lt;- Out_SNModeProposed.ProcedureOut.NotAvailable</Action><Action
  Guid="1a473747-a5ef-46d6-be7b-28e78fe5bac6"
@@ -3052,8 +2971,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotApplicable</Action><Action
  Guid="3683f248-a1a8-48b6-a9b0-7251a9e6bf2c"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotApplicable</Action><Action
- Guid="df0702c3-255a-4bc6-a505-1179a67c9dc8"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.NotApplicable</Action><Action
  Guid="06aa01f6-1963-4c19-9652-de5a22c4146a"
 >Out_ShuntingRefusedByRbc.ProcedureOut &lt;- Out_ShuntingRefusedByRbc.ProcedureOut.NotApplicable</Action><Action
  Guid="48bd47e5-e4d8-456a-8701-647908798c7a"
@@ -3134,8 +3051,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotApplicable</Action><Action
  Guid="e1b79d49-2ac6-40b6-8efe-689a744795f1"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotApplicable</Action><Action
- Guid="22ccbadc-acc8-4182-b8be-86e3ffd2eb08"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.NotApplicable</Action><Action
  Guid="f796ca3e-102b-4c33-b967-8c75047f6bbf"
 >Out_ShuntingRefusedByRbc.ProcedureOut &lt;- Out_ShuntingRefusedByRbc.ProcedureOut.NotApplicable</Action><Action
  Guid="bc02c5c8-d1c6-4e5a-ab83-3dcd3926901b"
@@ -3196,8 +3111,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RBCContactInformation.ProcedureOut &lt;- Out_RBCContactInformation.ProcedureOut.Available</Action><Action
  Guid="153cf7fb-545c-498f-8a98-42eb9fbaf4fe"
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Available</Action><Action
- Guid="35e899d7-e6ef-4890-8959-4afc692083fb"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.Available</Action><Action
  Guid="4f6da411-a211-4bd4-b8a9-47ac0fb5fbf9"
 >Out_TracksideMalfunction.ProcedureOut &lt;- Out_TracksideMalfunction.ProcedureOut.Available</Action><Action
  Guid="a5a376cf-a139-428c-9476-29c35c879dea"
@@ -3304,8 +3217,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotAvailable</Action><Action
  Guid="81fb2fda-2bbe-442d-93ab-28a3d5101f9a"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotAvailable</Action><Action
- Guid="f7ddcc7b-5d2c-4b68-991c-6af1c74d9cfa"
->Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.NotAvailable</Action><Action
  Guid="f2de9b66-66ca-46fd-93ea-c3893ed5a937"
 >Out_ShuntingRefusedByRbc.ProcedureOut &lt;- Out_ShuntingRefusedByRbc.ProcedureOut.NotAvailable</Action><Action
  Guid="ca99ab1a-3cc9-4a79-8896-4d29b764a3a5"
@@ -3660,7 +3571,9 @@ In_TrackAheadFree.TrackMode()</Action><Action
  Guid="7727ce62-a381-4f28-96fe-d2d2897141d8"
 >Out_OperatedSystemVersion.TrackMode()</Action><Action
  Guid="c4c760b8-cd70-4a01-9e29-bb77b6511d35"
->Out_OsLsShModeProposed.TrackMode()</Action></Actions>
+>Out_OsLsShModeProposed.TrackMode()</Action><Action
+ Guid="b0f9922d-af5b-40a8-8d7a-6df9fa087bcd"
+>Out_OverrideStatus.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
