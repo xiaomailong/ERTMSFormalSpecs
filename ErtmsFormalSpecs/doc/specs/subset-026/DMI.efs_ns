@@ -436,65 +436,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="DisplayGeographicalPosition"
- Guid="fe69fb23-06e3-40cd-91fe-16c72a3425bf"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="c485eb1e-8653-4b72-96e4-01efc3a1a752"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f371b02c-e301-4ea4-9488-44e026b3d543"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="be25568c-a46e-4083-bba3-d7afa1a165c9"
->
-<PreConditions>
-<PreCondition
- Guid="e8cdd129-c8db-486f-95f1-220b5648adcb"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="e2f0f59c-3859-433b-986e-79a188c218b2"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="fd641268-c875-4eb5-941a-aeb2a9052f8a"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="a68cb5e0-87e2-481f-9377-b713b9741a30"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="e1883dae-e1e1-4b3d-aec8-b2f4389f1f69"
->Out_GeographicalPosition.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="DisplayShuntingRefusedByRbc"
  Guid="ce2de128-4405-4169-8716-c27992e36bf5"
 >
@@ -2699,8 +2640,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotAvailable</Action><Action
  Guid="000cc86c-1475-4caa-a971-6daa04ee174c"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotAvailable</Action><Action
- Guid="b2768d6b-aea6-4c7e-b6c5-cd47d91f72cc"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.NotAvailable</Action><Action
  Guid="4df54d9f-b22d-4ddf-a6fe-cdddcddde3f1"
 >Out_LXStatusNotProtected.ProcedureOut &lt;- Out_LXStatusNotProtected.ProcedureOut.NotAvailable</Action><Action
  Guid="8677c8dc-87dd-4bb4-987f-fa57b79dc886"
@@ -2781,8 +2720,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Available</Action><Action
  Guid="4ec39f10-2094-44c0-bd88-b7ab4bc4b2d0"
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
- Guid="bd146966-7a33-4367-81be-779e85acafa7"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.Available</Action><Action
  Guid="088540de-40da-4b40-92d0-08bf83fd6ca2"
 >Out_ShuntingRefusedByRbc.ProcedureOut &lt;- Out_ShuntingRefusedByRbc.ProcedureOut.Available</Action><Action
  Guid="048dfc72-2034-461c-9e65-77a348414ee2"
@@ -2911,8 +2848,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotAvailable</Action><Action
  Guid="bf01d794-48be-4686-9c76-e0974600be73"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotAvailable</Action><Action
- Guid="bf620d9f-f4a0-423d-98a4-d02e8daf4676"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.NotAvailable</Action><Action
  Guid="009ace43-8b3d-4f27-9eba-563a87b66b0d"
 >Out_LXStatusNotProtected.ProcedureOut &lt;- Out_LXStatusNotProtected.ProcedureOut.NotAvailable</Action><Action
  Guid="fcbe2491-ffdf-4c80-8732-f9da9377029c"
@@ -3001,8 +2936,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.Available</Action><Action
  Guid="7dd1f588-7b7b-45e1-bed3-ba5c5f6d9f75"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.Available</Action><Action
- Guid="15f5d055-719a-41d6-864f-ad435f03bdca"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.Available</Action><Action
  Guid="f770cf43-1bad-4d07-82da-56f3ea495a1a"
 >Out_LXStatusNotProtected.ProcedureOut &lt;- Out_LXStatusNotProtected.ProcedureOut.Available</Action><Action
  Guid="2dfcd3a2-a71a-44e8-92d4-79fecce2637a"
@@ -3099,8 +3032,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.Available</Action><Action
  Guid="d6c09d32-fe92-4fa2-aac2-4ccc828bc2e4"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.Available</Action><Action
- Guid="b6c35dbf-46e9-4b29-bd5c-040268430463"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.Available</Action><Action
  Guid="210f40d6-9064-49eb-8cba-391d3f60e616"
 >Out_LXStatusNotProtected.ProcedureOut &lt;- Out_LXStatusNotProtected.ProcedureOut.Available</Action><Action
  Guid="fb36aac0-4981-47bc-acb7-351027c83d69"
@@ -3195,8 +3126,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.Available</Action><Action
  Guid="8b68f8c9-bc0f-4aa2-a014-b9fff41e7acd"
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
- Guid="838e2553-286a-47ed-9f72-7b37247e4e80"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.Available</Action><Action
  Guid="e703b2d8-c365-4884-9731-034d436df2c7"
 >Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.Available</Action><Action
  Guid="ab858518-4e94-4728-aa3e-d5d061883fd1"
@@ -3303,8 +3232,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.Available</Action><Action
  Guid="aeb14211-80bd-4970-9037-0c99d3244570"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.Available</Action><Action
- Guid="bd2a57c3-6495-48d7-a6be-9f190442df57"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.Available</Action><Action
  Guid="91dced98-efdf-4c21-9f8b-70d63d60cda3"
 >Out_LXStatusNotProtected.ProcedureOut &lt;- Out_LXStatusNotProtected.ProcedureOut.Available</Action><Action
  Guid="0d4e0316-8c2d-4312-a932-a914286d476f"
@@ -3389,8 +3316,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
  Guid="3711c652-7164-4795-bfd1-de9a604b3d61"
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.Available</Action><Action
- Guid="390dc747-867c-44a7-ae10-d87a71b75378"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.Available</Action><Action
  Guid="8db28611-e196-4b72-b7c8-28493728aae3"
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.Available</Action><Action
  Guid="fecd5c53-635c-400b-a355-fe3a28f62283"
@@ -3491,8 +3416,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut &lt;- Out_SpeedAndDistanceMonitoringSupervisionStatus.ProcedureOut.Available</Action><Action
  Guid="78a2da74-f87f-41d8-8a49-c79c85bdbc4d"
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
- Guid="980a4f80-2fd8-470c-b238-7a46bade25ee"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.Available</Action><Action
  Guid="481242ba-5e69-4eb6-ab38-96b309e053d9"
 >Out_OverrideStatus.ProcedureOut &lt;- Out_OverrideStatus.ProcedureOut.Available</Action><Action
  Guid="9b674289-9139-457c-ae76-6eeda50c72d7"
@@ -3591,8 +3514,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
  Guid="60ad6281-a46e-45b0-82f8-f82526cce505"
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.Available</Action><Action
- Guid="7376f1ac-4be2-4e18-a1e1-fd010b88e149"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.Available</Action><Action
  Guid="af1553b1-f9df-4e0d-8835-018d081eece4"
 >Out_LevelTransitionAnnouncement.ProcedureOut &lt;- Out_LevelTransitionAnnouncement.ProcedureOut.Available</Action><Action
  Guid="a29e4260-96ab-4771-a7e7-28998b422ec3"
@@ -3693,8 +3614,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_PlainTextInformation.ProcedureOut &lt;- Out_PlainTextInformation.ProcedureOut.Available</Action><Action
  Guid="5afe1a96-76e7-4239-89c2-784698d093f2"
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.Available</Action><Action
- Guid="3ccaa200-f435-4c90-ab75-cef2dee0b451"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.Available</Action><Action
  Guid="0f22d45b-caa3-47cf-b894-a344ea3479c4"
 >Out_ShuntingRefusedByRbc.ProcedureOut &lt;- Out_ShuntingRefusedByRbc.ProcedureOut.Available</Action><Action
  Guid="e0c173da-eb2c-4084-adc4-484dcc201487"
@@ -3805,8 +3724,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotApplicable</Action><Action
  Guid="3683f248-a1a8-48b6-a9b0-7251a9e6bf2c"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotApplicable</Action><Action
- Guid="f5d4e761-0681-4175-a9c1-abe9efe77777"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.NotApplicable</Action><Action
  Guid="e4fc5d32-f1e7-4226-9487-3f9f436b22d3"
 >Out_LXStatusNotProtected.ProcedureOut &lt;- Out_LXStatusNotProtected.ProcedureOut.NotApplicable</Action><Action
  Guid="df0702c3-255a-4bc6-a505-1179a67c9dc8"
@@ -3905,8 +3822,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotApplicable</Action><Action
  Guid="e1b79d49-2ac6-40b6-8efe-689a744795f1"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotApplicable</Action><Action
- Guid="5b256274-9e5d-4058-9155-a73d7bd5a8cd"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.NotApplicable</Action><Action
  Guid="d2cc3759-236c-49f6-a21c-1c1b15e2263f"
 >Out_LXStatusNotProtected.ProcedureOut &lt;- Out_LXStatusNotProtected.ProcedureOut.NotApplicable</Action><Action
  Guid="22ccbadc-acc8-4182-b8be-86e3ffd2eb08"
@@ -4021,8 +3936,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotAvailable</Action><Action
  Guid="1a2aac16-3eb1-4a9c-9c81-a593ee963d67"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotAvailable</Action><Action
- Guid="7710827c-c5fb-4366-9916-2b60bbde1837"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.NotAvailable</Action><Action
  Guid="bfbadf49-c6e9-4764-8d7d-2ba2beb5f225"
 >Out_LXStatusNotProtected.ProcedureOut &lt;- Out_LXStatusNotProtected.ProcedureOut.NotAvailable</Action><Action
  Guid="d547d6eb-496c-4e56-934e-314d7e29b69b"
@@ -4117,8 +4030,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrackConditionsWithoutSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithoutSoundHorn.ProcedureOut.NotAvailable</Action><Action
  Guid="81fb2fda-2bbe-442d-93ab-28a3d5101f9a"
 >Out_TrackConditionsWithSoundHorn.ProcedureOut &lt;- Out_TrackConditionsWithSoundHorn.ProcedureOut.NotAvailable</Action><Action
- Guid="1ecc402c-700a-4503-8141-cfe4bec4df77"
->Out_GeographicalPosition.ProcedureOut &lt;- Out_GeographicalPosition.ProcedureOut.NotAvailable</Action><Action
  Guid="d606054b-67d1-43ba-8cd9-af9cbb407b58"
 >Out_LXStatusNotProtected.ProcedureOut &lt;- Out_LXStatusNotProtected.ProcedureOut.NotAvailable</Action><Action
  Guid="f7ddcc7b-5d2c-4b68-991c-6af1c74d9cfa"
@@ -4467,7 +4378,9 @@ In_TrackAheadFree.TrackMode()</Action><Action
  Guid="85ad9882-0296-4858-8f01-6e12d1075623"
 >Out_FirstTargetAtZeroSpeed.TrackMode()</Action><Action
  Guid="c0479f1d-03c0-4c2f-8fb6-af0820e6044d"
->Out_FixedTextInformation.TrackMode()</Action></Actions>
+>Out_FixedTextInformation.TrackMode()</Action><Action
+ Guid="cd0372bf-91e0-4630-916b-0430fc7b18c1"
+>Out_GeographicalPosition.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
