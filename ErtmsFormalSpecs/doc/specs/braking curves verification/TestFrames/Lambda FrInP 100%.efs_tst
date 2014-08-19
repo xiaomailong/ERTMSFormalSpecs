@@ -55,7 +55,18 @@
  Guid="ce0223fc-3de6-4f40-a32f-2a779cab4bc6"
 >Kernel.PowerOn &lt;- True</Action><Action
  Guid="98dd90e4-5831-4840-b112-061cef274de5"
->Kernel.Mode &lt;- Mode.FS</Action></Actions>
+>Kernel.Mode &lt;- Mode.FS</Action><Action
+ Guid="fe3b1798-67ed-4b63-9d3a-508d3a64a238"
+><Comment></Comment>
+BTM.LRBG &lt;- BTM.BaliseGroup{
+    Position =&gt; BTM.Position{
+        Position =&gt; 20.0,
+        UnderReadingAmountOdo =&gt; 2.0,
+        OverReadingAmountOdo =&gt; 1.0
+    },
+    NID =&gt; 85,
+    Orientation =&gt; Default.Orientation.Nominal
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
