@@ -3197,7 +3197,8 @@ EBSpecified &lt;- True</Action></Actions>
 <Actions>
 <Action
  Guid="18eed1e8-ef69-42da-ad89-3afa079af0c6"
->DMI.MasterDMI().DisplayPermittedSpeed()</Action></Actions>
+><Comment></Comment>
+DMI.MasterDMI().Out_PermittedSpeed.Display()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Stop display of permitted speed"
@@ -3209,7 +3210,8 @@ EBSpecified &lt;- True</Action></Actions>
 <Actions>
 <Action
  Guid="83899328-0079-4945-8c32-50c0c06555e1"
->DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action><Action
+><Comment></Comment>
+DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DoNotDisplay()</Action><Action
  Guid="801eff87-0a7a-4df6-8514-6246871f86fe"
 >DMI.MasterDMI().HandleModeChange()</Action></Actions>
 </RuleCondition></Conditions>

@@ -438,7 +438,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt; ReversingAreaProfil
 <Actions>
 <Action
  Guid="693639f6-da52-48b4-9947-750a66a4dcf4"
->DMI.MasterDMI().HideReversingAllowed()</Action><Action
+><Comment></Comment>
+DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DoNotDisplay()</Action><Action
  Guid="315ca243-f3b2-480f-87b3-9bdefeaa17b1"
 >DMI.MasterDMI().In_AcknOfRVMode.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>

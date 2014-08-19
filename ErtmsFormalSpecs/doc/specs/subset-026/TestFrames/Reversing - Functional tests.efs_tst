@@ -755,13 +755,14 @@
  Name="Sub-step1 - At standstill outside of accepted area"
  Guid="71d3f0fe-6a7c-47e9-b755-5c05fd70895e"
 >
+<Comment></Comment>
 <Actions>
 <Action
  Guid="391337fe-714a-46ce-8987-27c997236ecd"
 >Odometry.NominalDistance &lt;- 1500.0</Action><Action
  Guid="98e04246-5355-4769-95cc-7cfbc946e794"
 ><Comment>Reset the state of the</Comment>
-DMI.MasterDMI().HideReversingAllowed()</Action></Actions>
+DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DoNotDisplay()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

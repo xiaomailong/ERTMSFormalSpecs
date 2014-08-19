@@ -13914,7 +13914,8 @@ Virtual Balise Cover; A: SB; NA: SF, IS<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="0701baa9-e1f2-4338-a299-8fb06d891176"
->Train Speed; A: SB, TR, SN;  X: SH, FS, LS, SR, OS, NL, UN, PT, RV; NA: SF, IS<RequirementSets>
+><Comment></Comment>
+Train Speed; A: SB, TR, SN;  X: SH, FS, LS, SR, OS, NL, UN, PT, RV; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="8642a3e9-a2ff-4bd1-a94d-7d873e055740"
@@ -13930,10 +13931,12 @@ Virtual Balise Cover; A: SB; NA: SF, IS<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
+ infoRequired="TRUE"
  functionalBlockName=""
  Name=""
  Guid="d71c157f-0723-4ca1-a3ca-bd2eb1e89ec3"
->Permitted Speed; A: SH, LS, SR, OS; X: FS, RV; GREYED: SN; NA: SF, IS<RequirementSets>
+><Comment>Permitted speed shall always be sent to the DMI, when available. The DMI will use this information, if requested</Comment>
+Permitted Speed; A: SH, LS, SR, OS; X: FS, RV; GREYED: SN; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c97f73e4-5abf-4de9-8a67-bde319007414"
